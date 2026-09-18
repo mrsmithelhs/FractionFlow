@@ -15,8 +15,13 @@ index in `docs/development/README.md` — trust those over this file. As of 2026
   returns the expected static smoke page. The working tree was clean; `npm test`, `npm run build`,
   and `node scripts/dev/plan-status.js lint` also passed. `DECISION-001` and the status close-out
   commit record the deployment decision and terminal resolution.
-- `plan-02`, `plan-03`, `plan-04`: `draft`, serial chain 02 → 03 → 04. All revised per Codex review
-  (commit `ef45aa2`); wave originally drafted at `94df306`.
+- `plan-02` (exact-arithmetic mathematical core): **in-progress**. It passed the required
+  `ready` preflight after Plan 01 closed and was then assigned. Its first permitted work is the
+  mechanism-confirmation proposal; no core implementation may start until that proposal is
+  approved. It retains the required Milestone 1 pause before classification and step-validation
+  work.
+- `plan-03`, `plan-04`: `draft`, serially blocked by the 02 → 03 → 04 chain. All were revised per
+  Codex review (commit `ef45aa2`); wave originally drafted at `94df306`.
 
 ## Close-out Note (plan-01)
 
@@ -30,6 +35,10 @@ committed progress report.
 
 - 2026-09-18: Owner directed the first packet be set **directly to `in-progress`** (skipping `ready`)
   — that status write was the assignment signal; no separate initiation prompt was needed.
+- 2026-09-18: Owner asked the orchestrator to close a verified packet and advance the next packet
+  when it needs no further owner decision before starting. Plan 02 was reviewed, passed its
+  `ready` preflight, and moved to `in-progress`; its own mechanism-confirmation and milestone
+  gates remain in force.
 - 2026-09-18: Owner routed the Codex packet-wave review (`F1`–`F8`) into the packets and then
   assigned plan-01. All eight findings are addressed in commit `ef45aa2`; see the review file for text.
 - 2026-09-18: **Orchestrator call, owner may veto** — Codex F5 suggested splitting plan-02 into
@@ -54,7 +63,8 @@ committed progress report.
 - plan-02 also has the Internal Milestone Gate (see above) — do not let an implementer run both
   milestones as one undifferentiated diff.
 
-## Next Orchestration Move (after Plan 01 close-out)
+## Next Orchestration Move
 
-plan-02 assignment: hand the implementer thread plan-02 plus its two gates (mechanism-confirmation
-first, milestone pause second). plan-03 and plan-04 stay draft until their dependencies complete.
+Receive and scrutinize Plan 02's mechanism-confirmation proposal before authorizing any source
+write; after Milestone 1, review primitives and invariants before allowing Milestone 2.
+`plan-03` and `plan-04` stay draft until their dependencies complete.

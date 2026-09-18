@@ -1,11 +1,9 @@
 ---
 id: plan-02
 title: Exact-Arithmetic Mathematical Core
-status: draft
+status: in-progress
 depends_on: [plan-01]
 gate: "Owner approves the packet; mechanism-confirmation gate — the implementer's proposed module/API shape and invariant-test plan is approved before building; orchestrator verifies invariants and golden cases against the objective."
-superseded_by: null
-resolution: null
 summary: >-
   Implement the deterministic, exact-arithmetic fraction engine in `src/math/`
   as a pure, DOM-free, dependency-free module: equivalence, comparison,
