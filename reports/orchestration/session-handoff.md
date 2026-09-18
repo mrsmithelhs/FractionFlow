@@ -62,6 +62,10 @@ committed progress report.
   (then `package.json`/lockfile become write-scope); plan-01 must not pre-install test libraries.
 - plan-02 also has the Internal Milestone Gate (see above) — do not let an implementer run both
   milestones as one undifferentiated diff.
+- On managed Windows Codex tasks, ordinary source-file edits can succeed while `.git` metadata
+  writes fail with `index.lock: Permission denied` and no lock exists. Diagnose read-only first;
+  then use narrowly approved elevation for an explicit-path stage/commit only. Never delete the
+  absent lock, edit ACLs as a workaround, or treat elevation as push authorization.
 
 ## Next Orchestration Move
 

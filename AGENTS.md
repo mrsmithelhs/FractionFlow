@@ -175,10 +175,19 @@ infer one from this rule.
   retry.** Never delete the lock file: a lock that looks stale may be a live commit, and removing
   it can corrupt someone else's work. Disjoint write-scopes prevent content conflicts, not index
   contention — serializing here is expected, not an error.
-
 Running two agents on this tree at once is safe only with disjoint write-scopes (mode B);
 overlapping scopes must be serialized — one agent at a time, or turn-taking with a commit at
 each handoff. See the implementer and orchestrator starting prompts for the full contract,
 including the three concurrency modes and bounded orchestrator authority over unexpected
 working-tree state.
 <!-- bootstrap:commit-discipline v2 end -->
+
+### Codex on Managed Windows: Git Metadata Elevation
+
+Source-file writes may succeed while a Codex task sandbox denies Git metadata writes. For staging
+or committing, expect to request narrowly scoped elevation for the exact `git add` and/or
+`git commit` command when ordinary Git reports `.git/index.lock: Permission denied`. First inspect
+read-only: confirm whether the lock exists, check the effective identity and `.git` ACL if needed,
+and try the harmless `git add --refresh -- .` probe. Do not delete an absent lock or alter ACLs to
+work around the task boundary. If the probe confirms the denial, use an approved elevated command
+that stages only the packet's explicit paths; elevation never authorizes a push.
