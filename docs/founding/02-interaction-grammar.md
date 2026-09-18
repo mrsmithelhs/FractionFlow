@@ -265,13 +265,13 @@ Examples:
 - combine the units;
 - simplify the result.
 
-Secondary actions such as:
+Secondary views and actions such as:
 
 - requesting help;
 - changing representation;
 - replaying a transformation;
 
-may remain available, but they should not compete visually with the primary task.
+may remain available when they serve the current comparison and do not create a competing task, but they should not compete visually with the primary task.
 
 If the screen contains five equally prominent controls, the interaction grammar has failed.
 
@@ -464,6 +464,10 @@ The most advanced form of FractionFlow may look visually simpler than the introd
 
 # 21. Scaffolding Is a Set of Independent Supports
 
+The Interaction Grammar is the canonical owner of the names and operational examples for episode support dimensions and support levels. Its support dimensions are independent axes; a level label is a concise description of the current combination, not a single global difficulty setting. The canonical labels for this document are **high support**, **medium support**, **low support**, and **independent**.
+
+Other founding documents should use these labels when referring to an episode's support state. The Instructional Model owns the learner-facing meaning of evidence and growing independence; it may describe a continuum from supported construction through prediction and independent transfer, but it should not redefine these level names. The Roadmap owns when support capability is built, and Quality and Validation owns how support behavior and leakage are tested. None of these mappings creates a new instructional stage or implies that every learner moves through the labels in a fixed order.
+
 Scaffolding should not be implemented as a single linear setting such as:
 
 - easy;
@@ -516,6 +520,8 @@ The learner solves symbolically, with the model available only if requested.
 The learner solves without visible support.
 
 The underlying mathematical episode remains recognizable throughout.
+
+An `independent` support configuration does not by itself establish `independent transfer`; response provenance and task change still determine the evidence category.
 
 ---
 
@@ -703,7 +709,7 @@ Their distinctiveness helps make the representation change memorable.
 
 # 33. Bridge Episodes Should Preserve the Conceptual Thread
 
-A bridge episode should make explicit what remains invariant.
+A bridge episode should make the learner's correspondence-making observable and should make explicit what remains invariant.
 
 For example:
 
@@ -714,6 +720,8 @@ or an equivalent concise cue may orient the learner.
 The new representation should inherit enough visual structure from the previous one that the relationship is perceptible.
 
 Bridge episodes should not feel like unrelated bonus activities.
+
+The exact prompt form, timing, frequency, and density remain prototype variables to be tested in the Interaction Grammar and validated against the evidence contract.
 
 ---
 
@@ -845,6 +853,8 @@ Useful for:
 
 Interaction should not become elaborate merely because richer mechanics are technically possible.
 
+If a proposed input is mathematically valid but outside the current episode's supported path or the selected representation's reviewed capability, the learner-facing continuation must identify that activity or view boundary rather than report the mathematics as incorrect. Continue, switch, or defer only through a reviewed path; do not silently coerce the value or pass an ineligible state to a renderer.
+
 ---
 
 # 40. Dragging Should Be Used Sparingly
@@ -956,6 +966,8 @@ or:
 
 These actions should be framed as tools for thinking.
 
+An unsupported-but-mathematically-valid state should receive a reviewed continuation rather than an incorrect-answer message.
+
 The system should not signal that a learner has fallen back to a lower mode.
 
 ---
@@ -974,7 +986,7 @@ Learners may have access to alternate views, but FractionFlow should not feel li
 
 When mixed numbers are visualized, whole-number boundaries should remain perceptually stable.
 
-Regrouping should make visible that:
+An intermediate regrouped state is a learner-established exact transformation; a mixed-number form is a settled representation with a whole-number part and proper fractional part. Regrouping should make visible that:
 
 - one whole is being renamed;
 - no quantity is lost;
@@ -1063,6 +1075,8 @@ After receiving help, the learner should return to the next meaningful decision.
 A hint should not typically transform the remaining episode into passive viewing.
 
 The learner should retain ownership whenever possible.
+
+Hints and expected intermediate states should not imply that a canonical hint is the only valid route. Authored episodes must declare their covered valid paths and a reviewed continuation for a valid path outside that coverage; missing authored coverage must not be presented as mathematical incorrectness.
 
 ---
 
@@ -1517,6 +1531,8 @@ Subdivide the existing quantities into twelfths while preserving their amounts.
 
 Ask for the equivalent numerators.
 
+This is **supported construction**: the learner enters values after the subdivision and relevant relationship remain visible.
+
 ### Operate
 
 Ask how many twelfths there are altogether.
@@ -1554,6 +1570,8 @@ Enter:
 \[
 \frac8{12}+\frac3{12}=\frac{11}{12}.
 \]
+
+This is a reduced-support or independent configuration only when the preceding support and response provenance satisfy the evidence contract; the configuration label alone does not establish independent transfer.
 
 ### Resolve
 

@@ -619,6 +619,8 @@ Occasional tasks that ask:
 
 This balance supports both fluency and flexible understanding.
 
+A bridge should include an explicit opportunity for the learner to make the correspondence, such as identifying, predicting, matching, placing, or otherwise stating what remains the same and what has changed. The learner should not receive credit for independent transfer solely because the system displayed two views or completed a transition. The exact prompt form, timing, frequency, and density remain prototype variables to be tested in the Interaction Grammar and validated against the evidence contract.
+
 Exact sequencing and interaction mechanics belong elsewhere.
 
 ---
@@ -668,6 +670,16 @@ FractionFlow should seek evidence of reasoning through multiple forms, including
 Short explanatory prompts may be valuable, but the system should not turn fraction practice into a reading- or writing-heavy exercise unnecessarily.
 
 The learner's mathematical actions can themselves provide evidence of understanding.
+
+Evidence should be labeled by the responsibility actually completed:
+
+- **supported construction:** the learner constructs or selects a valid state while the relevant representation, cue, supplied value, or help layer remains available;
+- **prediction:** the learner commits to a consequence before the corresponding transformation or answer is revealed;
+- **independent transfer:** the learner applies the underlying relationship in a changed representation, problem structure, or reduced-support condition without the target answer being made available first.
+
+These categories are complementary, not interchangeable. Supported construction can show that the learner can act on a visible relationship; prediction can show anticipation of a consequence; independent transfer can show that the relationship is available beyond the demonstrated path. A correct final answer alone does not identify which evidence occurred.
+
+When learner evidence is reviewed, preserve response provenance in plain terms: what was visible or supplied before the response, whether the learner had predicted before demonstration, whether help or replay was used, whether the response followed a correction or retry, and whether the task was a stable-practice, bridge, or reduced-support task. This is an evidence-description contract, not a required event schema or a mastery threshold.
 
 ---
 
@@ -774,6 +786,8 @@ and:
 \]
 
 Learners identify or construct a common unit and correctly rename both fractions.
+
+The roadmap may prototype this later conceptual stage before every earlier family is productized. Phase 2's learner and evidence boundary in `06-roadmap.md` states what that narrow slice can and cannot establish.
 
 ---
 
@@ -898,9 +912,12 @@ Important dimensions include:
 
 ### Scaffold level
 
-- highly guided;
-- partially guided;
+- high support;
+- medium support;
+- low support;
 - independent.
+
+These are the Interaction Grammar's operational support labels; the evidence categories above are not scaffold-level synonyms. An `independent` support configuration does not by itself establish `independent transfer`; provenance and task change still determine the evidence category.
 
 ### Arithmetic burden
 
@@ -1164,6 +1181,8 @@ Final-answer accuracy remains important, but it is one part of a broader evidenc
 # 26. Evidence of Emerging Understanding
 
 The system may interpret understanding along a continuum.
+
+The evidence categories used when reviewing a response are **supported construction**, **prediction**, and **independent transfer** (see §18). The progression below describes broader patterns of emerging understanding and must not be treated as a replacement for response-level provenance.
 
 ## Heavily supported
 

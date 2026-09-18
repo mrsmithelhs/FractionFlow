@@ -331,6 +331,8 @@ The current instructional state may intentionally use an unsimplified form.
 
 The system must therefore never silently simplify every fraction merely because a simpler form exists.
 
+If an episode explicitly offers or requests **simplify first**, that phrase means: apply a learner-visible, exact equivalence transformation to the specified operand or intermediate state before the next instructional step. It does not mean that every operand or intermediate value must be globally reduced, nor that a non-simplified current form is invalid. The instructional state should retain both the exact value and the learner-established current form so later denominator relationships are evaluated from the state actually being used. A simplification may be preferred for the episode while alternate exact paths remain mathematically valid unless the episode's stated responsibility intentionally constrains the path.
+
 ---
 
 # 10. Common Denominators
@@ -374,7 +376,7 @@ FractionFlow should distinguish:
 
 - **valid common denominator**;
 - **least common denominator**;
-- **pedagogically convenient denominator**.
+- **instructionally preferred denominator** (the denominator selected because it best serves the current learning target, representation, or authored path; it remains mathematically valid but is not a separate kind of mathematical truth).
 
 These may coincide, but they are conceptually different.
 
@@ -735,6 +737,8 @@ Subtraction requires renaming a whole as fractional units.
 
 These are instructionally distinct problem structures.
 
+**Regrouping** is the umbrella process that includes composition and decomposition; the classification identifies which direction the learner is using.
+
 ---
 
 # 23. Result Forms
@@ -837,6 +841,8 @@ The method best serves the current learning target.
 These concepts must not be collapsed into one notion of "correct."
 
 For example, using 24 as the common denominator of 3 and 4 is mathematically valid but less efficient than using 12.
+
+See §11 for the denominator-specific application of “instructionally preferred.”
 
 ---
 
@@ -1304,7 +1310,7 @@ over:
 
 as a starting operand in an addition problem.
 
-This avoids introducing unnecessary ambiguity about whether simplification should occur before the target skill.
+This avoids introducing ambiguity unless the episode explicitly makes simplification part of the target skill.
 
 Unsimplified operands may later be introduced deliberately for strategy flexibility.
 
@@ -1384,6 +1390,10 @@ Canonical does not mean uniquely valid.
 
 This distinction should remain explicit.
 
+An authored path is a pedagogical selection layered over mathematical truth. Its prompts, transformations, hints, and expected intermediate states must declare whether they are: (a) required mathematical conditions, (b) the canonical route the episode explains, or (c) optional support for that route. A non-canonical mathematically valid response must be validated by the Math and Content Model independently of whether the authored path has a matching explanation.
+
+For each authored episode, content review must state the covered valid paths and the behavior for a valid path outside that coverage: continue with a generic exact response, switch to a reviewed alternate path, offer a supported continuation, or defer the state with an explicit learner-facing explanation. The episode may intentionally teach one path, but it must not turn missing authored coverage into a claim that the alternate mathematics is wrong.
+
 ---
 
 # 56. Alternate Common Denominators
@@ -1461,7 +1471,7 @@ Examples include:
 - proposed common denominator;
 - proposed scale factor;
 - proposed equivalent numerator;
-- regrouped mixed-number form;
+- intermediate regrouped state or proposed mixed-number form;
 - unsimplified operation result;
 - simplified result.
 
@@ -1487,12 +1497,22 @@ d\mid D.
 
 The system should therefore distinguish:
 
-- invalid;
-- valid;
-- least valid;
-- valid but unusually large.
+- mathematically invalid;
+- mathematically valid;
+- instructionally supported or outside the current episode's supported path;
+- representation-renderable or outside the selected representation's reviewed capability.
 
-Instructional policy may decide how broad a range to accept.
+FractionFlow should distinguish three questions about a proposed denominator or resulting state:
+
+1. **Mathematical validity:** does the denominator satisfy the exact divisibility/equivalence rules and preserve quantity?
+2. **Instructional support:** is this state admitted by the current episode, authored path, and current learner responsibility?
+3. **Representation renderability:** can the selected representation show this valid state clearly and accessibly under its reviewed capability?
+
+Within the mathematical-validity result, the system may additionally classify a denominator as least, non-least, or unusually large for instructional review. Those classifications do not change validity.
+
+These questions must not be collapsed. A state may be mathematically valid but outside the current episode's supported path, or valid and supported mathematically but ineligible for the selected renderer. Learner-facing behavior must preserve the distinction: acknowledge mathematical validity when known, explain that the current activity or view cannot continue with that state, and offer a reviewed continuation such as an eligible representation, a bounded alternate path, or a return to symbolic work. It must not label the mathematics incorrect, silently coerce the value, or pass an ineligible state to a renderer.
+
+Exact acceptance ranges and representation thresholds remain representation- and prototype-specific validation outputs; this contract does not set fixed ceilings.
 
 ---
 
@@ -1534,7 +1554,7 @@ represents:
 \frac{wd+n}{d}.
 \]
 
-Any regrouped or converted form should be validated by exact equality with the original quantity.
+Any proposed mixed-number form, improper-fraction conversion, or intermediate regrouped state should be validated by exact equality with the original quantity. The validation must preserve the distinction between a transient instructional state and the preferred final display form.
 
 This permits the system to recognize multiple correct regrouping forms where appropriate.
 

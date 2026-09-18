@@ -52,9 +52,9 @@ The interface should never become the authoritative source of mathematical truth
 
 ---
 
-# 2. Static-First Product
+# 2. Static-Only Founding Product
 
-The initial FractionFlow product should be capable of running as a static website.
+The founding FractionFlow product must run as a static website.
 
 A deployment environment such as GitHub Pages should be sufficient for the core learning experience.
 
@@ -69,7 +69,7 @@ The initial architecture should therefore avoid requiring:
 - runtime generative AI;
 - mandatory analytics infrastructure.
 
-This constraint is intentional.
+This static-only constraint is intentional and authoritative for the founding product.
 
 It supports:
 
@@ -83,9 +83,9 @@ It supports:
 
 ---
 
-# 3. Static-First Does Not Mean Architecturally Rigid
+# 3. Future Services Require a Charter Change
 
-The application should remain capable of later adding optional services without redesigning its mathematical or instructional core.
+The architecture may preserve clean edges at which a future, owner-approved charter change could add a service without redesigning the mathematical or instructional core. “Optional service” and “static-first” are exploratory descriptions, not authorization to implement a backend.
 
 Possible future services could include:
 
@@ -96,7 +96,7 @@ Possible future services could include:
 - shared devices;
 - account-based settings.
 
-Such services should integrate at the edges of the architecture.
+Such services should integrate at the edges of the architecture only after that charter change.
 
 They should not become prerequisites for:
 
@@ -104,6 +104,8 @@ They should not become prerequisites for:
 - validating answers;
 - rendering representations;
 - running instructional episodes.
+
+The founding core remains static, account-free, and usable without remote learner data.
 
 ---
 
@@ -339,6 +341,8 @@ from:
 and:
 
 ### What the system is currently showing.
+
+Before a state is rendered, the architecture must keep separate the Math and Content Model's mathematical validity, the current episode's instructional support/path coverage, and the selected representation's renderability. The architecture coordinates these results; it does not recompute mathematical truth in a renderer.
 
 This distinction is essential.
 
@@ -604,7 +608,7 @@ The learning system may produce durable information such as:
 A persistence adapter may store this:
 
 - locally in the browser;
-- eventually in a remote service;
+- in a remote service only after an owner-approved future charter change;
 - or nowhere.
 
 The core instructional logic should not care where the data is stored.
@@ -709,6 +713,7 @@ An episode definition should conceptually describe:
 - relevant narrative beats;
 - allowable scaffolds;
 - valid representation roles;
+- covered valid paths and reviewed fallback behavior for valid paths outside that coverage;
 - completion conditions.
 
 It should not need to restate the mathematics of the problem family.
@@ -733,7 +738,7 @@ and:
 \frac35+\frac16.
 \]
 
-Differences in mathematical state should be supplied through problem data.
+Differences in mathematical state should be supplied through problem data. Reuse applies across valid instances, while authored path coverage may be parameterized and must not be assumed to cover every mathematically valid route.
 
 The episode provides the instructional grammar.
 
@@ -806,6 +811,8 @@ A useful conceptual history might contain:
 - representation changes;
 - instructional transitions;
 - final resolution.
+
+If an accepted simplify-first action changes the learner-established current form, that form remains part of instructional state for subsequent path and denominator reasoning; the architecture must not silently replace it with a globally reduced value.
 
 This need not become a learner-facing history panel.
 
@@ -911,6 +918,8 @@ The instructional engine may then select among valid choices.
 
 A renderer should not be forced to display content outside its validated range.
 
+Before rendering, the system must keep separate: mathematical validity from the Math and Content Model; instructional support and authored-path coverage from the episode definition; and representation eligibility/renderability from the capability declaration. A failure in the latter two boundaries must not be converted into a mathematical error.
+
 ---
 
 # 48. Capability Should Be Explicit
@@ -927,6 +936,8 @@ For example, a renderer may support:
 Unsupported combinations should be excluded before rendering.
 
 Do not rely on presentation components failing gracefully after receiving inappropriate content.
+
+The architecture should expose these capability checks explicitly enough that learner-facing behavior can offer a reviewed continuation for a valid but unsupported or non-renderable state, rather than silently coercing it or passing it to the renderer.
 
 ---
 
@@ -1149,7 +1160,12 @@ A dependency should be evaluated against:
 - longevity;
 - accessibility;
 - static-host compatibility;
-- whether it encourages architectural violations.
+- whether it encourages architectural violations;
+- provenance, version/update approach, and third-party license;
+- whether core practice depends on its runtime origin or can remain usable if that origin is unavailable; and
+- whether it can observe learner activity.
+
+For the static core, prefer dependencies that can be reviewed, reproducibly built, and served with the application's static assets. Avoid making core practice depend on runtime CDN requests, third-party scripts, remote fonts, tracking origins, or other external origins whose outage, substitution, or policy change could block or alter a lesson. This does not select a package manager, scanner, content-security policy, or deployment mechanism.
 
 ---
 
@@ -1379,7 +1395,7 @@ Because the initial system can operate locally:
 
 Future features should preserve this baseline where possible.
 
-Remote services should be additions, not retroactive requirements.
+Remote services should be additions only after an owner-approved charter change, not retroactive requirements.
 
 ---
 
@@ -1512,9 +1528,9 @@ It does not need to be infinitely generic.
 
 Do not introduce servers merely because future features might someday require them.
 
-The static-first architecture is both sufficient and advantageous for the founding scope.
+The static-only architecture is both sufficient and authoritative for the founding scope. Future-service language in this section is exploratory and does not authorize implementation.
 
-A backend should enter the architecture only when a concrete feature justifies:
+A backend could enter the architecture only after an owner-approved charter change and a concrete feature justifies:
 
 - cost;
 - privacy impact;
@@ -1622,7 +1638,7 @@ When evaluating a proposed implementation design, ask:
 11. Can instructional transitions be tested without animation?
 12. Can visuals be tested from known scene states?
 13. Can core practice run without a server?
-14. Can a future optional service be added without infecting the core?
+14. Could a future service, after an owner-approved charter change, be added without infecting the core?
 15. Has a component become an independent mini-application?
 16. Could the architecture encourage dashboard accumulation?
 
@@ -1794,7 +1810,7 @@ Developers should be able to:
 - add curated problems without creating one-off components;
 - replace a rendering technology without rewriting instruction;
 - add local persistence without altering the episode model;
-- add an optional backend without making it responsible for core learning.
+- add a future backend only after an owner-approved charter change, without making it responsible for core learning.
 
 The architecture should make the pedagogically desirable implementation the easiest implementation to maintain.
 

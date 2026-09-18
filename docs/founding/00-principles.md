@@ -62,7 +62,7 @@ all changing in parallel.
 
 When multiple representations are educationally valuable, the system should normally transition between them or deliberately juxtapose them for one clearly defined comparison.
 
-**Multiple representations does not mean simultaneous representations.**
+**Multiple representations do not require simultaneous competing full views.**
 
 ---
 
@@ -164,6 +164,8 @@ Do not create separate "easy" and "real math" experiences. The same mathematical
 A useful design test is:
 
 > What can disappear from this interaction once the learner understands it?
+
+Operational support dimensions and episode combinations belong to the Interaction Grammar.
 
 ---
 
@@ -470,7 +472,7 @@ The core interactions should support:
 
 - keyboard operation;
 - touch operation;
-- reasonable screen-reader interpretation where feasible;
+- semantic, programmatically inspectable content and an accessible linear alternative where the visual scene alone is insufficient;
 - sufficient contrast;
 - readable type;
 - reduced motion;
@@ -483,7 +485,7 @@ Visual distinctions should not rely exclusively on color.
 
 Animations should leave behind a stable state that can be inspected after motion ends.
 
-The project should favor interactions that can be made broadly accessible over interactions whose educational value depends on difficult-to-access mechanics.
+The project should favor interactions that can be made broadly accessible over interactions whose educational value depends on difficult-to-access mechanics. The first complete learner-facing episode must meet the accessibility participation floor defined in `05-quality-and-validation.md`; this is a capability floor, not a claim of universal accessibility or completed testing.
 
 ---
 
@@ -549,11 +551,13 @@ The core learning experience should not require:
 - a school-managed deployment;
 - proprietary software.
 
-A static-hosting-compatible architecture such as GitHub Pages is preferred where it does not compromise the instructional goals.
+A static-hosting-compatible architecture such as GitHub Pages is the founding product boundary. The core experience must run from static assets without a server, backend, account, authentication, analytics, or remote learner-data service. Learner progress, if supported, remains local to the learner's browser. “Static-first,” “optional service,” and “future backend” describe exploratory architecture only; they do not authorize implementation.
 
-Core practice should work locally in the browser whenever reasonably possible.
+Core practice must work locally in the browser without remote learner data.
 
-Future features requiring accounts, servers, analytics, synchronization, or cloud persistence should justify the additional complexity and privacy implications.
+Any proposal to add a server, backend, account, authentication, analytics, synchronization, cloud persistence, or remote learner-data service requires an explicit owner-approved charter change that revisits scope, data collected, purpose, retention, access, deletion, operational responsibility, and the continued availability of the static core. No such service may become a prerequisite for generating valid problems, validating answers, rendering representations, or running an instructional episode without that charter change.
+
+Licensing intent is an owner decision separate from the static-hosting and privacy constraints. Before public release, the owner must decide whether the code, instructional content, visual assets, and other repository materials are intended for open-source, open-educational-resource, mixed, or more restricted reuse, and record the selected terms in the appropriate repository license and asset notices. “Freely usable” does not by itself grant permission to copy, modify, or redistribute every project asset.
 
 ---
 
@@ -563,7 +567,7 @@ The system should collect no learner data merely because collection is technical
 
 If progress can be stored locally, that should generally be preferred over requiring an account.
 
-If future features introduce remote storage, the project must explicitly define:
+Remote storage is outside the founding product boundary. If an owner-approved future charter change introduces it, the project must explicitly define:
 
 - what information is collected;
 - why it is necessary;
@@ -572,6 +576,8 @@ If future features introduce remote storage, the project must explicitly define:
 - how it can be deleted.
 
 The core instructional product should remain useful without surveillance.
+
+Child usability evidence follows this data-minimization and public-repository boundary. Retained notes must be de-identified, and version-controlled fixtures should be synthetic, reconstructed, or already public by default.
 
 ---
 

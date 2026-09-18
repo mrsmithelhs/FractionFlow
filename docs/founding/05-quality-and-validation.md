@@ -366,6 +366,8 @@ Curated problems, hints, bridge episodes, and reflection prompts should be check
 - representation feasibility;
 - consistency with founding principles.
 
+For each adopted authored path, review one covered canonical case and one mathematically valid non-canonical case. Missing authored coverage must be reported as a path-coverage issue, not as mathematical incorrectness.
+
 Human authors can introduce errors just as code can.
 
 ---
@@ -505,6 +507,8 @@ Examples include:
 
 This kind of defect may produce excellent apparent accuracy while destroying learning value.
 
+Review records should identify the evidence category and preceding support: supported construction, prediction, or independent transfer. Record in plain language what was visible or supplied, whether help or replay was used, whether the response followed a correction or retry, and whether the task was stable practice, a bridge, or reduced support.
+
 ---
 
 # 20. Over-Scaffolding Should Be Treated as a Quality Defect
@@ -548,6 +552,8 @@ A lower-support version should not accidentally become a different problem.
 For example, removing a bar should not also remove the need to select a denominator unless that is an intentional progression.
 
 Each scaffold dimension should be independently reviewable.
+
+Use the Interaction Grammar's canonical support labels—high support, medium support, low support, and independent—for the support configuration. These labels are not synonyms for the evidence categories above; an independent support configuration does not by itself establish independent transfer.
 
 ---
 
@@ -922,7 +928,29 @@ The exact technical implementation may vary.
 
 ---
 
-# 44. Accessibility Must Preserve Agency
+# 44. Accessibility Acceptance Floor
+
+For the first complete learner-facing episode, acceptance requires at minimum:
+
+- every required learner decision and response can be completed without precision dragging, using keyboard-operable controls and a non-drag touch or equivalent control path;
+- the episode remains usable with motion reduced or disabled, without hiding mathematical meaning in animation;
+- mathematical meaning and available actions are conveyed through semantic, programmatically inspectable content and an accessible linear alternative where the visual scene alone is insufficient;
+- focus, reading order, labels, status changes, contrast, text size, and responsive layout are reviewed for the supported first-slice environments; and
+- the accessible path preserves the same mathematical responsibility and does not reveal a response that the visual path asks the learner to reason out.
+
+This is a participation floor, not a claim that the product is universally accessible. A feature cannot be called `Accessibility validated` until the floor is met and mechanized checks plus human accessibility review are recorded. Child usability evidence is recorded separately when conducted or when an existing roadmap/owner gate calls for learner review.
+
+**Evidence must be separated by kind:**
+
+- mechanized checks may catch structural regressions such as missing labels, focus failures, keyboard reachability, contrast violations, or reduced-motion regressions;
+- human review must inspect the complete episode, semantic meaning, state changes, and agency-preserving alternatives; and
+- child usability evidence may reveal wording, affordance, pacing, or motor difficulties that neither mechanized checks nor adult inspection establishes.
+
+Passing a scanner, a checklist, or a single adult walkthrough is not evidence that children can use the episode successfully. Conversely, a child usability observation is not a substitute for repeatable regression checks. Record each evidence kind separately and leave untested modes explicitly untested.
+
+---
+
+## Accessibility Must Preserve Agency
 
 An accessible adaptation is not sufficient if it changes:
 
@@ -960,6 +988,8 @@ If a particular renderer becomes unclear above a certain complexity, the content
 Validation should confirm these capability boundaries.
 
 It is better to reject an unsuitable pairing than to render an unreadable fraction model.
+
+Validation must test the boundaries separately: mathematically valid and supported/renderable; mathematically valid but outside the current episode's supported path; and mathematically valid but outside the selected representation's reviewed capability. The latter two must not be reported as mathematical errors, silently coerced, or passed to an ineligible renderer.
 
 ---
 
@@ -1087,6 +1117,10 @@ The project should not pretend that automated correctness testing alone proves i
 # 52. Child Usability Review
 
 Whenever practical, learner-facing interactions should be tested with actual members of the target age range before being considered mature.
+
+Any child usability observation must have appropriate adult permission before the session. The project should collect only what is needed to inspect the interaction and should not place names, contact details, identifiable screenshots, recordings, student work, or other learner artifacts in the public repository, issue tracker, test fixtures, or deployment. Retained notes should be de-identified and limited to observed interaction evidence, design impact, and follow-up questions. Use synthetic, reconstructed, or already-public fixtures for automated and regression tests by default; use a real learner artifact only when an owner has reviewed the need, handling, and removal path. These observations are product-design evidence, not a claim of formal research approval or instructional efficacy.
+
+If permission, safe handling, or de-identification cannot be established, do not retain the observation or artifact; record the design question without the learner's identifying material.
 
 Useful observations include:
 
@@ -1368,13 +1402,13 @@ over:
 
 Every displayed equal sign is a mathematical assertion.
 
-Visual and symbolic review should ensure that the interface never displays sequences such as:
+Visual and symbolic review should ensure that the interface never displays a **false stable equality**, such as:
 
 \[
-\frac23+\frac14=\frac8{12}+\frac14
+\frac23+\frac14=\frac8{12}+\frac4{12}
 \]
 
-during a transition unless the entire displayed equality is mathematically true.
+when the second term has not yet been converted. The equality shown here is false because the right-hand side is \(1\), while the left-hand side is \(11/12\); layout should make each accepted intermediate state explicit.
 
 If partial work is being shown, layout should make clear what has and has not yet been transformed.
 
@@ -1389,6 +1423,8 @@ Animations may temporarily show intermediate geometric motion.
 Those states must not imply a false mathematical relationship.
 
 If a transition requires an abstract visual in-between state, labels or layout should avoid presenting it as a stable mathematical equality.
+
+A temporary visual transition may depict motion between accepted states, but it should not be labeled or laid out as a stable mathematical equality until the corresponding state has been established. If an in-between graphic is not itself a mathematical state, use layout, annotation, or sequencing that makes that status clear.
 
 ---
 
@@ -1459,9 +1495,9 @@ Visual sophistication should not require powerful hardware.
 
 # 74. Network Failure Should Not Break Core Practice
 
-For a static-first application, core mathematical practice should remain available once required assets are loaded.
+For the static-only founding application, core mathematical practice should remain available once required assets are loaded and should not depend on runtime third-party origins.
 
-Future optional remote services should fail gracefully.
+If a future remote service is authorized by an owner-approved charter change, it should fail gracefully; the founding static core must not require it.
 
 Examples:
 
@@ -1519,6 +1555,8 @@ They should not exist only:
 - in temporary agent context.
 
 Durable validation examples help maintain consistency across contributors and models.
+
+Version-controlled acceptance examples should be synthetic, reconstructed, or already public by default; raw child observations and identifiable learner artifacts do not belong in the repository.
 
 ---
 
@@ -1597,7 +1635,7 @@ Visual and symbolic representations faithfully express the mathematics.
 
 ## Accessibility validated
 
-Core interactions meet agreed accessibility expectations.
+Core interactions meet the accessibility participation floor and have separate mechanized, human-review, and (where conducted) child-usability evidence recorded.
 
 ## Integrated candidate
 
@@ -2061,6 +2099,7 @@ Before a scaffold is considered mature:
 - Can learner success with and without it be distinguished?
 - Does requesting it preserve dignity and agency?
 - Is it accessible?
+- What support configuration was used, and what evidence category did the learner's response actually satisfy?
 
 ---
 
