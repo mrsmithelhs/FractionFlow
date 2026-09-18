@@ -1,7 +1,7 @@
 ---
 id: plan-02
 title: Exact-Arithmetic Mathematical Core
-status: in-progress
+status: delivered
 depends_on: [plan-01]
 gate: "Owner approves the packet; mechanism-confirmation gate — the implementer's proposed module/API shape and invariant-test plan is approved before building; orchestrator verifies invariants and golden cases against the objective."
 summary: >-

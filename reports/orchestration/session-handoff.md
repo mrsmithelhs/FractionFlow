@@ -15,12 +15,12 @@ index in `docs/development/README.md` — trust those over this file. As of 2026
   returns the expected static smoke page. The working tree was clean; `npm test`, `npm run build`,
   and `node scripts/dev/plan-status.js lint` also passed. `DECISION-001` and the status close-out
   commit record the deployment decision and terminal resolution.
-- `plan-02` (exact-arithmetic mathematical core): **in-progress**. It passed the required
-  `ready` preflight after Plan 01 closed and was then assigned. Its mechanism proposal and
-  Milestone 1 primitives/invariants were reviewed and approved on 2026-09-18. The implementer
-  may now work on Milestone 2 only: classifications, exact intermediate-step validation,
-  response-pattern classification, and synthetic golden cases with the D-17 diversity check.
-  It remains in-progress and must stop for full-packet review before any terminal status.
+- `plan-02` (exact-arithmetic mathematical core): **delivered**. Milestones 1 and 2 were
+  received for full-packet review. The primitive and classification modules, generated
+  invariants, synthetic golden fixtures, and claimed advisor disposition are committed, but the
+  packet is not accepted: response-classification boundary defects require the bounded Repair 01
+  handoff before final verification. See
+  `reports/development/plan-02-exact-arithmetic-mathematical-core/repair-01-response-classification-boundaries.md`.
 - `plan-03`, `plan-04`: `draft`, serially blocked by the 02 → 03 → 04 chain. All were revised per
   Codex review (commit `ef45aa2`); wave originally drafted at `94df306`.
 
@@ -67,14 +67,21 @@ disposition record also remains in the committed Plan 01 progress report.
   writes fail with `index.lock: Permission denied` and no lock exists. Diagnose read-only first;
   then use narrowly approved elevation for an explicit-path stage/commit only. Never delete the
   absent lock, edit ACLs as a workaround, or treat elevation as push authorization.
+- Review-response tier is a practical risk boundary: correct whitespace, obvious typos, and
+  other no-test/no-iteration changes inline as Tier 1 work and report them. Return source or
+  behavioral repairs that need tests to an implementer; use a durable repair note when the fix
+  needs a multi-part handoff.
+- Prefer an orchestrator-and-owner conversation when fewer than four owner decisions are
+  independent. Use the design-review agent for genuinely interdependent decision clusters, then
+  perform a skeptical orchestrator reconciliation to prevent sidequests or incompatible accepted
+  decisions from drifting the core product.
 
 ## Next Orchestration Move
 
-Plan 02's Milestone 1 implementation was independently reviewed and Milestone 2 was approved on
-2026-09-18; see
-`reports/development/plan-02-exact-arithmetic-mathematical-core/milestone-1-review.md`. The
-implementer may add the remaining mathematical classifications, exact step validators,
-response-pattern classifier, and synthetic golden/D-17 evidence, while preserving the strict
-value/current-form/preferred-form separation. One non-blocking cleanup remains: remove the
-extra end-of-file blank line in `src/math/index.js` in the next scoped source/test commit.
-`plan-03` and `plan-04` stay draft until Plan 02 is terminally complete.
+Plan 02 is delivered but not accepted. The Milestone 2 report claims full response-pattern
+coverage, yet review verified an unsupported-operation misclassification, an unsupported
+regrouping-type no-op, a result-only false claim that conversions were correct, and missing direct
+tests for four exported pattern labels. Give a fresh Codex implementer the bounded Repair 01
+handoff; it is an implementation repair, not an owner-design decision. The repairer must make a
+fresh advisor-capability/disposition determination for its own thread and stop for final Plan 02
+review. `plan-03` and `plan-04` stay draft until Plan 02 is terminally complete.
