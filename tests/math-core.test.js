@@ -109,6 +109,20 @@ function shrinkMixed(state) {
   return candidates;
 }
 
+function stateComplexity(value) {
+  if (typeof value === 'bigint') return value < 0n ? -value : value;
+  if (typeof value === 'number') return BigInt(Math.abs(value));
+  if (typeof value === 'string') return BigInt(value.length);
+  if (Array.isArray(value)) return value.reduce((total, item) => total + stateComplexity(item), 0n);
+  if (value && typeof value === 'object') {
+    return Object.entries(value).reduce(
+      (total, [key, nested]) => total + BigInt(key.length) + stateComplexity(nested),
+      0n,
+    );
+  }
+  return 0n;
+}
+
 function minimizeFailingState(state, shrink, stillFails) {
   let current = state;
   let changed = true;
@@ -116,7 +130,7 @@ function minimizeFailingState(state, shrink, stillFails) {
   while (changed) {
     changed = false;
     for (const candidate of shrink(current)) {
-      if (stillFails(candidate)) {
+      if (stateComplexity(candidate) < stateComplexity(current) && stillFails(candidate)) {
         current = candidate;
         changed = true;
         break;
