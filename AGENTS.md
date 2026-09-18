@@ -191,3 +191,10 @@ read-only: confirm whether the lock exists, check the effective identity and `.g
 and try the harmless `git add --refresh -- .` probe. Do not delete an absent lock or alter ACLs to
 work around the task boundary. If the probe confirms the denial, use an approved elevated command
 that stages only the packet's explicit paths; elevation never authorizes a push.
+
+### Machine-Local Companion Paths
+
+Keep machine-specific checkout locations in the ignored root `.env` file, never in committed
+documents, packets, reports, or prompts. The local Bootstrap checkout, when needed for a reverse
+flow note or audit, is named by `BOOTSTRAP_REPOSITORY_PATH`; committed material may name Bootstrap
+and its repository-relative files, but not that variable's resolved path.

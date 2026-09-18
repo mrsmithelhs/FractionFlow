@@ -141,7 +141,7 @@ $ npm test
 > fraction-flow@0.0.1 test
 > vitest run --passWithNoTests
 
- RUN  v3.2.7 C:/AI/FractionFlow
+ RUN  v3.2.7 <repository root>
 
 No test files found, exiting with code 0
 
@@ -168,11 +168,13 @@ dist/index.html  2.96 kB │ gzip: 1.11 kB
 ```
 
 ### E. Clean-Clone Reproduction Verification
-A pristine clone was created in a temporary directory (`$env:TEMP/FractionFlow-clean-clone-spike`), dependencies installed via `npm ci`, tests executed, and static site built:
+A pristine clone was created from the local repository checkout in a temporary directory
+(`$env:TEMP/FractionFlow-clean-clone-spike`), dependencies installed via `npm ci`, tests executed,
+and static site built:
 ```powershell
 $tempDir = Join-Path $env:TEMP "FractionFlow-clean-clone-spike"
 if (Test-Path $tempDir) { Remove-Item -Recurse -Force $tempDir }
-git clone c:/AI/FractionFlow $tempDir
+git clone <repository-root> $tempDir
 Push-Location $tempDir
 npm ci
 npm test

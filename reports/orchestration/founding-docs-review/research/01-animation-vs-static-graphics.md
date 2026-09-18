@@ -27,7 +27,10 @@ critique held up; (4) math-specific evidence on animating fraction equivalence; 
 
 ## Scope note
 
-This is desk research synthesizing meta-analyses and primary studies via web search/fetch, cross-referenced with the FractionFlow repo's design constraints (`C:\AI\FractionFlow\AGENTS.md`, section 5.4: "reduced-motion support" is a foundational, not retrofitted, design input; static-only architecture; child-centered calm design). No repo files were modified.
+This is desk research synthesizing meta-analyses and primary studies via web search/fetch,
+cross-referenced with FractionFlow's design constraints (`AGENTS.md`, section 5.4:
+"reduced-motion support" is a foundational, not retrofitted, design input; static-only
+architecture; child-centered calm design). No repo files were modified.
 
 ---
 
@@ -161,4 +164,5 @@ Based on the converging meta-analytic evidence (§1–2), the largely-held-up ap
 - Fiorella, L., & Mayer, R. E. (2015). Eight Ways to Promote Generative Learning. — [PDF](https://bootcampmilitaryfitnessinstitute.com/wp-content/uploads/2016/01/eight-ways-to-promote-generative-learning-fiorella-mayer-2015.pdf)
 - Hegarty, M., Kriz, S., & Cate, C. (2003). The roles of mental animations and external animations in understanding mechanical systems. *Cognition and Instruction*, 21(4), 325–360. — [search synthesis only]
 
-Relevant local file consulted: `C:\AI\FractionFlow\AGENTS.md` (confirms reduced-motion support and calm design are foundational constraints relevant to the recommendation above).
+Relevant local file consulted: `AGENTS.md` (confirms reduced-motion support and calm design are
+foundational constraints relevant to the recommendation above).

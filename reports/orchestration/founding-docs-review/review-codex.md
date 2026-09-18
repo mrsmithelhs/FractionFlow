@@ -28,14 +28,14 @@ No repository files were created, modified, deleted, renamed, staged, or committ
 **Confidence: High**  
 **Evidence type: Verified specification conflict**
 
-The [project seed, “Defining properties”](/C:/AI/FractionFlow/docs/project-seed.md:17) establishes a **static-only** architecture: no server, accounts, or backend, with progress stored locally. Its “Scope discipline” also identifies teacher dashboards as a project non-goal.
+The [project seed, “Defining properties”](../../../docs/project-seed.md#L17) establishes a **static-only** architecture: no server, accounts, or backend, with progress stored locally. Its “Scope discipline” also identifies teacher dashboards as a project non-goal.
 
 The founding set uses materially different language:
 
-- [00-principles.md, §20, “Free and Low-Friction by Default”](/C:/AI/FractionFlow/docs/founding/00-principles.md:539) makes static hosting a preference and allows future accounts, servers, analytics, and synchronization when justified.
-- [04-system-architecture.md, §3, “Static-First Does Not Mean Architecturally Rigid”](/C:/AI/FractionFlow/docs/founding/04-system-architecture.md:86) explicitly anticipates synchronized progress, research telemetry, classroom management, and account settings.
-- [06-roadmap.md, §§79–80](/C:/AI/FractionFlow/docs/founding/06-roadmap.md:1379) places cloud progress and classroom functionality on the stretch roadmap.
-- [README.md, “Privacy and data boundary”](/C:/AI/FractionFlow/README.md:65) says there is no learner tracking, while also contemplating remote storage after privacy design.
+- [00-principles.md, §20, “Free and Low-Friction by Default”](../../../docs/founding/00-principles.md#L539) makes static hosting a preference and allows future accounts, servers, analytics, and synchronization when justified.
+- [04-system-architecture.md, §3, “Static-First Does Not Mean Architecturally Rigid”](../../../docs/founding/04-system-architecture.md#L86) explicitly anticipates synchronized progress, research telemetry, classroom management, and account settings.
+- [06-roadmap.md, §§79–80](../../../docs/founding/06-roadmap.md#L1379) places cloud progress and classroom functionality on the stretch roadmap.
+- [README.md, “Privacy and data boundary”](../../../README.md#L65) says there is no learner tracking, while also contemplating remote storage after privacy design.
 
 **Why it matters:** An implementer could reasonably interpret a future service as an already-approved architectural direction that merely needs justification. The seed and agent guidance instead make it a change to the project’s defining constraints. Those are different authorization boundaries, particularly for a product intended for children.
 
@@ -55,14 +55,14 @@ Then align the architecture, roadmap, **project seed and root README** in the sa
 
 The commitments are strong, but qualifiers weaken them at the point of acceptance:
 
-- [00-principles.md, §17](/C:/AI/FractionFlow/docs/founding/00-principles.md:465) promises screen-reader interpretation “where feasible.”
-- [05-quality-and-validation.md, §38, “Keyboard Validation”](/C:/AI/FractionFlow/docs/founding/05-quality-and-validation.md:827) qualifies required keyboard actions with “where reasonably feasible.”
-- [05-quality-and-validation.md, §43, “Screen-Reader Meaning”](/C:/AI/FractionFlow/docs/founding/05-quality-and-validation.md:906) requires useful semantics, but does not establish when a complete nonvisual learning path is necessary.
-- [06-roadmap.md, Phase 2 exit gate](/C:/AI/FractionFlow/docs/founding/06-roadmap.md:550) requires the “intended access modes” to work without defining the minimum intended modes.
+- [00-principles.md, §17](../../../docs/founding/00-principles.md#L465) promises screen-reader interpretation “where feasible.”
+- [05-quality-and-validation.md, §38, “Keyboard Validation”](../../../docs/founding/05-quality-and-validation.md#L827) qualifies required keyboard actions with “where reasonably feasible.”
+- [05-quality-and-validation.md, §43, “Screen-Reader Meaning”](../../../docs/founding/05-quality-and-validation.md#L906) requires useful semantics, but does not establish when a complete nonvisual learning path is necessary.
+- [06-roadmap.md, Phase 2 exit gate](../../../docs/founding/06-roadmap.md#L550) requires the “intended access modes” to work without defining the minimum intended modes.
 
 An implementer could satisfy these passages by making controls keyboard accessible and graphics labeled while leaving the actual reasoning task inaccessible.
 
-There is also a specific testing trap: [05-quality-and-validation.md, §40](/C:/AI/FractionFlow/docs/founding/05-quality-and-validation.md:861) gives keyboard movement as a dragging alternative. Keyboard access is necessary, but it does not by itself satisfy the separate requirement for a non-drag **single-pointer** alternative under WCAG 2.2. A touchscreen user may need taps rather than either dragging or a physical keyboard. [W3C explanation of SC 2.5.7](https://www.w3.org/WAI/WCAG22/Understanding/dragging-movements.html)
+There is also a specific testing trap: [05-quality-and-validation.md, §40](../../../docs/founding/05-quality-and-validation.md#L861) gives keyboard movement as a dragging alternative. Keyboard access is necessary, but it does not by itself satisfy the separate requirement for a non-drag **single-pointer** alternative under WCAG 2.2. A touchscreen user may need taps rather than either dragging or a physical keyboard. [W3C explanation of SC 2.5.7](https://www.w3.org/WAI/WCAG22/Understanding/dragging-movements.html)
 
 **Why it matters:** Accessibility can change the instructional mechanism. A number-line control that announces the target’s exact answer, or an alternative that lets a learner copy the fraction already stated in the prompt, may be operable while testing a different skill.
 
@@ -86,7 +86,7 @@ The exact implementation can remain deferred. Whether a core learning task must 
 **Confidence: High about the ambiguity; Medium about its eventual learning impact**  
 **Evidence type: Internal instructional tension**
 
-In [02-interaction-grammar.md, §75, “A Canonical Episode Example”](/C:/AI/FractionFlow/docs/founding/02-interaction-grammar.md:1490), the system:
+In [02-interaction-grammar.md, §75, “A Canonical Episode Example”](../../../docs/founding/02-interaction-grammar.md#L1490), the system:
 
 1. asks for a common denominator;
 2. subdivides the quantities into twelfths;
@@ -94,9 +94,9 @@ In [02-interaction-grammar.md, §75, “A Canonical Episode Example”](/C:/AI/F
 
 A learner can potentially count eight selected twelfths and three selected twelfths. That is a legitimate **supported unit-counting task**. It does not establish that the learner could predict the equivalent numerators before seeing the subdivision.
 
-Similarly, [§76, “A Canonical Bridge Example”](/C:/AI/FractionFlow/docs/founding/02-interaction-grammar.md:1568) preserves an endpoint while asking where it belongs on a number line. An aligned endpoint can support a useful invariance demonstration, but can also make the location answer perceptually available.
+Similarly, [§76, “A Canonical Bridge Example”](../../../docs/founding/02-interaction-grammar.md#L1568) preserves an endpoint while asking where it belongs on a number line. An aligned endpoint can support a useful invariance demonstration, but can also make the location answer perceptually available.
 
-The quality document correctly warns against precisely this kind of confusion in [§19, “Scaffold Leakage”](/C:/AI/FractionFlow/docs/founding/05-quality-and-validation.md:495) and [§58, “Bridge Episodes Should Actually Test Transfer”](/C:/AI/FractionFlow/docs/founding/05-quality-and-validation.md:1201).
+The quality document correctly warns against precisely this kind of confusion in [§19, “Scaffold Leakage”](../../../docs/founding/05-quality-and-validation.md#L495) and [§58, “Bridge Episodes Should Actually Test Transfer”](../../../docs/founding/05-quality-and-validation.md#L1201).
 
 **Why it matters:** The reference episode is likely to become the implementation template. If all correct responses become equivalent evidence of understanding, the system could fade support on the strength of counting, recognition, or predictable interface choreography.
 
@@ -112,7 +112,7 @@ Let **02-interaction-grammar.md** explicitly distinguish:
 
 Let **01-instructional-model.md** own how these observations inform fading. A response after a hint, replay, or revealing transformation should retain that context.
 
-Apply the same disclosure rules to visible labels, accessible names, and announcements. The architectural example of a point described as “three fourths at location three fourths” is appropriate in some states and answer-revealing in others. [04-system-architecture.md, §64](/C:/AI/FractionFlow/docs/founding/04-system-architecture.md:1206)
+Apply the same disclosure rules to visible labels, accessible names, and announcements. The architectural example of a point described as “three fourths at location three fourths” is appropriate in some states and answer-revealing in others. [04-system-architecture.md, §64](../../../docs/founding/04-system-architecture.md#L1206)
 
 ### F4. The roadmap tests breadth before some of its most consequential assumptions
 
@@ -122,13 +122,13 @@ Apply the same disclosure rules to visible labels, accessible names, and announc
 
 The roadmap sensibly starts with a narrow unlike-denominator addition episode. However:
 
-- Phase 3 generalizes the bar language across proper-fraction operations before the second foundational representation enters. [06-roadmap.md, §§26–32](/C:/AI/FractionFlow/docs/founding/06-roadmap.md:586)
-- The coherent scaffold policy arrives in Phase 6, after mixed-number work. [§45](/C:/AI/FractionFlow/docs/founding/06-roadmap.md:891)
-- Deliberate session composition arrives in Phase 7. [§51](/C:/AI/FractionFlow/docs/founding/06-roadmap.md:983)
+- Phase 3 generalizes the bar language across proper-fraction operations before the second foundational representation enters. [06-roadmap.md, §§26–32](../../../docs/founding/06-roadmap.md#L586)
+- The coherent scaffold policy arrives in Phase 6, after mixed-number work. [§45](../../../docs/founding/06-roadmap.md#L891)
+- Deliberate session composition arrives in Phase 7. [§51](../../../docs/founding/06-roadmap.md#L983)
 
 These are reasonable timings for **maturing** those systems. They are late timings for first discovering whether repetition is tolerable, the second representation fits the scene model, or reduced support produces useful independent work.
 
-The documents do include an early learner checkpoint in [§89](/C:/AI/FractionFlow/docs/founding/06-roadmap.md:1541), so this is not a finding that learner review is absent.
+The documents do include an early learner checkpoint in [§89](../../../docs/founding/06-roadmap.md#L1541), so this is not a finding that learner review is absent.
 
 **Why it matters:** A beautiful individual episode can still make an exhausting practice session. A reusable bar architecture can still prove awkward when asked to preserve unfinished work across a number-line switch.
 
@@ -150,14 +150,14 @@ Also state the first slice’s assumed prerequisites. Building the software firs
 **Confidence: High**  
 **Evidence type: Partially mitigated specification gap**
 
-[05-quality-and-validation.md, §66](/C:/AI/FractionFlow/docs/founding/05-quality-and-validation.md:1339) requires subsequent work to follow a valid non-minimal denominator and generally forbids forcing the learner back to the canonical path.
+[05-quality-and-validation.md, §66](../../../docs/founding/05-quality-and-validation.md#L1339) requires subsequent work to follow a valid non-minimal denominator and generally forbids forcing the learner back to the canonical path.
 
 At the same time:
 
-- [03-math-and-content-model.md, §§68–69](/C:/AI/FractionFlow/docs/founding/03-math-and-content-model.md:1682) allows representation-specific limits.
-- [04-system-architecture.md, §§47–48](/C:/AI/FractionFlow/docs/founding/04-system-architecture.md:899) excludes unsupported representation combinations.
-- [03-math-and-content-model.md, §59](/C:/AI/FractionFlow/docs/founding/03-math-and-content-model.md:1474) permits instructional policy to bound accepted denominators.
-- [05-quality-and-validation.md, §7](/C:/AI/FractionFlow/docs/founding/05-quality-and-validation.md:254) explicitly permits rejecting arbitrarily large denominators.
+- [03-math-and-content-model.md, §§68–69](../../../docs/founding/03-math-and-content-model.md#L1682) allows representation-specific limits.
+- [04-system-architecture.md, §§47–48](../../../docs/founding/04-system-architecture.md#L899) excludes unsupported representation combinations.
+- [03-math-and-content-model.md, §59](../../../docs/founding/03-math-and-content-model.md#L1474) permits instructional policy to bound accepted denominators.
+- [05-quality-and-validation.md, §7](../../../docs/founding/05-quality-and-validation.md#L254) explicitly permits rejecting arbitrarily large denominators.
 
 Those last two passages substantially mitigate the apparent conflict. **The specifications do not require unlimited denominators.**
 
@@ -199,9 +199,9 @@ The ownership map is sensible. The main normalization problem is that some behav
 | Accessibility qualifications versus release gates | “Where feasible,” “where appropriate,” and “intended access modes” leave different acceptance interpretations | Commitment in **00**, measurable acceptance in **05**. |
 | Mixed-number terminology | **03 §5** defines a proper fractional part, while **§21** and **§81** require regrouped forms such as \(2\frac{10}{8}\) | Add a brief distinction in **03** between a normalized mixed number and a regrouped whole-plus-fraction form. |
 
-The mixed-number point is **Low severity**, not a mathematical defect. The equality is correct, the required transient form is explicitly shown, and the document already forbids silently simplifying away intentionally studied forms. A future schema must preserve the regrouped form, but no broken schema currently exists. [Mixed-number definition](/C:/AI/FractionFlow/docs/founding/03-math-and-content-model.md:171), [regrouping requirement](/C:/AI/FractionFlow/docs/founding/03-math-and-content-model.md:684), [regrouped-form validation](/C:/AI/FractionFlow/docs/founding/03-math-and-content-model.md:1523)
+The mixed-number point is **Low severity**, not a mathematical defect. The equality is correct, the required transient form is explicitly shown, and the document already forbids silently simplifying away intentionally studied forms. A future schema must preserve the regrouped form, but no broken schema currently exists. [Mixed-number definition](../../../docs/founding/03-math-and-content-model.md#L171), [regrouping requirement](../../../docs/founding/03-math-and-content-model.md#L684), [regrouped-form validation](../../../docs/founding/03-math-and-content-model.md#L1523)
 
-One small editorial repair: [05-quality-and-validation.md, §68](/C:/AI/FractionFlow/docs/founding/05-quality-and-validation.md:1367) uses
+One small editorial repair: [05-quality-and-validation.md, §68](../../../docs/founding/05-quality-and-validation.md#L1367) uses
 
 \[
 \frac23+\frac14=\frac8{12}+\frac14
@@ -219,13 +219,13 @@ I would **not** undertake a wholesale documentation rewrite before the prototype
 
 **A bar-first engineering slice.** Bars expose subdivision and common units clearly, and the first slice exercises much of the intended architecture. This is defensible as a development strategy. It does not establish that bars should precede number lines in every learner’s instruction.
 
-**One focal mathematical question.** The principles do not actually ban simultaneous representations: [00 §2](/C:/AI/FractionFlow/docs/founding/00-principles.md:43) expressly allows deliberate juxtaposition for a defined comparison. That flexibility is valuable. Preserve it.
+**One focal mathematical question.** The principles do not actually ban simultaneous representations: [00 §2](../../../docs/founding/00-principles.md#L43) expressly allows deliberate juxtaposition for a defined comparison. That flexibility is valuable. Preserve it.
 
-**Morphing as an option, not an obligation.** [02 §17](/C:/AI/FractionFlow/docs/founding/02-interaction-grammar.md:388) permits hard cuts when a transformation would be misleading or unclear. I would retain that escape clause and give static comparison equal standing in prototype trials.
+**Morphing as an option, not an obligation.** [02 §17](../../../docs/founding/02-interaction-grammar.md#L388) permits hard cuts when a transformation would be misleading or unclear. I would retain that escape clause and give static comparison equal standing in prototype trials.
 
 **Authored instruction with generated instances.** For this bounded arithmetic domain, determinism makes mathematical and instructional review much more manageable. Runtime generative explanation adds no necessary capability to the founding goal.
 
-**Conceptual architectural layers.** Nine named responsibilities initially look elaborate, but [04 §4](/C:/AI/FractionFlow/docs/founding/04-system-architecture.md:110) explicitly permits combining them physically. I found no basis for demanding nine packages, services, or frameworks. A compact implementation with these ownership boundaries is reasonable.
+**Conceptual architectural layers.** Nine named responsibilities initially look elaborate, but [04 §4](../../../docs/founding/04-system-architecture.md#L110) explicitly permits combining them physically. I found no basis for demanding nine packages, services, or frameworks. A compact implementation with these ownership boundaries is reasonable.
 
 **Animation independent of mathematical completion.** Known before-and-after state, shared reduced-motion paths, and animation-free transition testing are strong safeguards.
 
@@ -248,7 +248,7 @@ I also tested two potential mathematical objections that **did not become findin
 
 **Resolve when the relevant capability is introduced:**
 
-- **Shared-browser progress.** [04 §31](/C:/AI/FractionFlow/docs/founding/04-system-architecture.md:614) and [06 §§59–63](/C:/AI/FractionFlow/docs/founding/06-roadmap.md:1086) describe continuity without specifying whether the next person at the same browser inherits the previous person’s support settings. A device’s history is not necessarily a learner’s history. Before persistence ships, provide a clear fresh-session/reset policy and decide whether guest use saves anything.
+- **Shared-browser progress.** [04 §31](../../../docs/founding/04-system-architecture.md#L614) and [06 §§59–63](../../../docs/founding/06-roadmap.md#L1086) describe continuity without specifying whether the next person at the same browser inherits the previous person’s support settings. A device’s history is not necessarily a learner’s history. Before persistence ships, provide a clear fresh-session/reset policy and decide whether guest use saves anything.
 - **Accessibility accommodations versus instructional scaffolds.** Persistent large text, spoken notation, or an alternative input method should not become evidence that a learner lacks fraction understanding. The evidence model should distinguish these from answer-revealing assistance.
 - **Reproducibility across revisions.** A seed alone may cease to reproduce a problem after generator or content changes. When replay is implemented, retain version information or a sufficient problem snapshot, not merely a seed.
 - **Private observations versus public regression fixtures.** Episode histories may contain actual learner responses. The architecture’s debugging history and the quality document’s durable regression assets should be connected by an explicit synthetic/reconstructed-fixture policy, not automatic publication of real session records.
