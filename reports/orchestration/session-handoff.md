@@ -69,6 +69,9 @@ disposition record also remains in the committed Plan 01 progress report.
 
 ## Next Orchestration Move
 
-Receive and scrutinize Plan 02's mechanism-confirmation proposal before authorizing any source
-write; after Milestone 1, review primitives and invariants before allowing Milestone 2.
+Plan 02's mechanism-confirmation proposal was approved on 2026-09-18 for Milestone 1 only; see
+`reports/development/plan-02-exact-arithmetic-mathematical-core/mechanism-review.md`. The math
+core may now implement exact primitives and invariant/edge tests, but must stop before
+classification, learner-step validation, response patterns, golden fixtures, or D-17 diversity
+work. After Milestone 1, review primitives and invariants before allowing Milestone 2.
 `plan-03` and `plan-04` stay draft until their dependencies complete.
