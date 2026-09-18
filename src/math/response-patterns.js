@@ -189,7 +189,13 @@ export function classifyConversionResponse({ original, proposed, targetDenominat
     if (!isEquiv && proposed.numerator !== original.numerator) {
       detected.push(PATTERNS.NUMERATOR_CHANGED_INCORRECT_SCALE);
       details.requiredScale = requiredScale;
-      details.actualScale = proposed.numerator / original.numerator;
+      if (original.numerator > 0n) {
+        details.actualScale = proposed.numerator % original.numerator === 0n
+          ? proposed.numerator / original.numerator
+          : createFraction(proposed.numerator, original.numerator);
+      } else {
+        details.actualScale = null;
+      }
     }
   }
 

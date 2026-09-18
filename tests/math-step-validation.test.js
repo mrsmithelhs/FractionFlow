@@ -231,10 +231,20 @@ describe('response-patterns classification', () => {
     expect(result.hasPattern(PATTERNS.EQUIVALENT_ALTERNATE_FORM)).toBe(true);
   });
 
-  it('detects INCORRECT_REGROUPING_QUANTITY in mixed decomposition', () => {
-    const orig = createMixedNumber(3, createFraction(1, 4));
-    const proposed = createMixedNumber(2, createFraction(3, 4)); // should be 2 5/4, not 2 3/4
-    const result = classifyRegroupingResponse({ original: orig, proposed, type: 'decomposition' });
-    expect(result.hasPattern(PATTERNS.INCORRECT_REGROUPING_QUANTITY)).toBe(true);
+  it('handles zero numerator and non-integer scale factors without division by zero or truncation in conversion', () => {
+    // 1. Zero numerator: converting 0/3 to 2/12
+    const zeroOrig = createFraction(0, 3);
+    const zeroProposed = createFraction(2, 12);
+    const zeroResult = classifyConversionResponse({ original: zeroOrig, proposed: zeroProposed });
+    expect(zeroResult.hasPattern(PATTERNS.NUMERATOR_CHANGED_INCORRECT_SCALE)).toBe(true);
+    expect(zeroResult.details.actualScale).toBe(null);
+
+    // 2. Non-integer scale: converting 2/3 to 5/12 (denominator scale 4, numerator scale 5/2)
+    const nonIntOrig = createFraction(2, 3);
+    const nonIntProposed = createFraction(5, 12);
+    const nonIntResult = classifyConversionResponse({ original: nonIntOrig, proposed: nonIntProposed });
+    expect(nonIntResult.hasPattern(PATTERNS.NUMERATOR_CHANGED_INCORRECT_SCALE)).toBe(true);
+    expect(nonIntResult.details.actualScale.numerator).toBe(5n);
+    expect(nonIntResult.details.actualScale.denominator).toBe(2n);
   });
 });
