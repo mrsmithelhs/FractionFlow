@@ -1,11 +1,9 @@
 ---
 id: plan-01
 title: Node Toolchain and Static Deployment Spike
-status: draft
+status: in-progress
 depends_on: []
 gate: "Owner approves the packet; owner explicitly authorizes the public publish/push step; orchestrator verifies the published smoke check. Deployment evidence does not prove pedagogy."
-superseded_by: null
-resolution: null
 summary: >-
   Stand up the minimal Node-based dev toolchain (package manifest, lockfile,
   build step, headless test runner), decide and prove the static GitHub Pages
