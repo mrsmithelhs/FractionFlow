@@ -27,10 +27,10 @@ summary: >-
 - Owner/model: investigator (single) / orchestration
 - Date: 2026-09-18
 - Packet type: investigation / docs
-- Mutation level: docs-only (design dossier under `docs/development/` or `docs/`; no application source)
+- Mutation level: docs-only (design dossier at exactly `docs/development/phase-2-first-slice-design/`; no application source)
 - Approval gate: owner reviews and accepts the design dossier; orchestrator confirms it honors every deferred-question boundary before any Phase 2 implementation packet is drafted
 - Depends on: `plan-03` (schemas, family contracts, and classified instances must exist to design against)
-- Expected artifacts: design dossier (one folder or file set under `docs/`), prototype-variable register, evidence-plan outline, progress report
+- Expected artifacts: design dossier at exactly `docs/development/phase-2-first-slice-design/` with the exact file set listed in Scope; prototype-variable register (as the named dossier file); evidence-plan outline; progress report
 
 ## Goal
 
@@ -60,6 +60,8 @@ Required reading:
 - `AGENTS.md`
 - `docs/decision-log.md`
 - `docs/development/README.md`
+- `docs/founding/00-principles.md` §§1–7, 17, 20–27 (focal idea, calmness, accessibility, static-only and privacy boundaries, ownership and contradiction handling)
+- `docs/founding/03-math-and-content-model.md` §§9–11, 27, 35, 54–61, 68–69 (value/current-form/preferred-form distinctions, the Phase 2 family and its canonical example, valid non-least denominators and alternate paths, representation feasibility)
 - `docs/founding/01-instructional-model.md` §§16–19 (bridges, evidence categories, productive prediction, Stage boundaries)
 - `docs/founding/02-interaction-grammar.md` (beats, scaffold dimensions and support labels, canonical episode, help example, fading example)
 - `docs/founding/04-system-architecture.md` §§12–22, 36–48 (Instructional Engine, Scene Model, renderers, episode definitions, capability and eligibility)
@@ -79,12 +81,20 @@ Contracts this packet must preserve:
 
 ### In scope
 
+All dossier artifacts are written to exactly one location — the dossier folder `docs/development/phase-2-first-slice-design/` — containing exactly these files and no others:
+
+- `README.md` — dossier index: goal, section map, claim boundaries, review status.
+- `episode-definition.md` — the episode definition draft (Requirement 1).
+- `scene-model-position.md` — the Scene Model design position answering D-20 (Requirement 2, second bullet), recording the architectural decision, rejected alternatives, and reasons.
+- `prototype-variable-register.md` — the prototype-variable register with the hypothesis/falsification structure (Requirement 2).
+- `evidence-and-accessibility-plan.md` — the learner-prerequisite/evidence contract, accessibility evidence plan, scaffold-leakage test plan sketch (D-16), and replay/defect-report plan.
+
 - **Episode definition draft** for the first slice (unlike-denominator proper-fraction addition, both operands renamed; fraction bar primary; symbolic notation integrated), covering every field of `docs/founding/04-system-architecture.md` §36: instructional purpose; eligible problem family (referencing plan-03 contracts); learner responsibilities and system responsibilities per `docs/founding/02-interaction-grammar.md` §66; narrative beats (encounter → notice → decide → transform → operate → resolve, with selective reflect); allowable scaffold dimensions using the canonical support labels; covered valid paths and the fallback behavior class for valid paths outside coverage; completion conditions.
-- **Scene-model design position** answering deferred item D-20: state whether the scene is a pure projection of validated problem state, instructional state, and active representation, or what (if anything) is stored and why it is source state rather than a drifting cache. This is a written design position for review, not code.
+- **Scene-model design position** answering deferred item D-20: state whether the scene is a pure projection of validated problem state, instructional state, and active representation, or what (if anything) is stored and why it is source state rather than a drifting cache. This is a written design position for review, not code. The position must explicitly separate architectural decisions (derived from the state-ownership constraints of `docs/founding/04-system-architecture.md`; record each rejected alternative and the architectural reason it was rejected) from empirical instructional hypotheses (which belong in the prototype-variable register and require learner-outcome evidence); the former must not be presented as if they needed prototype evidence.
 - **Scaffold-leakage test plan sketch** per deferred item D-16: once scene/prompt models exist in Phase 2, which fail-first invariants will inspect learner-visible state before each required response (reveal timing, help/replay state, constrained choices, retries).
 - **Accessibility evidence plan** for the slice: the participation-floor checklist mapped to planned mechanisms (keyboard-operable non-drag paths, reduced-motion equivalence, semantic/linear alternatives), the supported-environment matrix as an open question (D-22), and the three evidence kinds recorded separately with untested modes explicitly untested.
 - **Learner-prerequisite and evidence contract**: the assumed learner starting point, the readiness/documentation approach before any learner observation, and the exact claims the slice's evidence may and may not support (`docs/founding/06-roadmap.md` §16; §25 gate).
-- **Prototype-variable register**: a table of every deferred mechanic the slice will eventually compare (D-01 animation vs static/key-frame; D-02 transformation choreography; D-05 prompt density; connection-making prompt form per synthesis §2.12 — no prompt / structured mapping / brief explanation, held constant across display conditions), each with candidate conditions, the invariant held constant, and the outcome measures (prediction before reveal, immediate equivalence reasoning, uncued transfer, help/replay use) — per synthesis §3.1's discriminating-experiment shape.
+- **Prototype-variable register**: a table of every deferred mechanic the slice will eventually compare (D-01 animation vs static/key-frame; D-02 transformation choreography; D-05 prompt density; connection-making prompt form per synthesis §2.12 — no prompt / structured mapping / brief explanation, held constant across display conditions), each with candidate conditions, the invariant held constant, and the outcome measures (prediction before reveal, immediate equivalence reasoning, uncued transfer, help/replay use) — per synthesis §3.1's discriminating-experiment shape. Every question in the register must carry the falsification structure required of investigation packets (`docs/development/packet-creation-guidance.md`): rival hypotheses; the observation that would falsify each rival; the manipulated variable; held-constant variables; outcome measures; real-world variation dimensions; at least one discriminating experiment for every live pair of rivals; and a conclusion rule — when the planned evidence would not falsify all rivals, the entry writes "consistent with A and B" and names the next experiment.
 - **Replay and defect-report plan**: how a reported issue will be reconstructed (seed, family, episode definition, support configuration, action sequence) per `docs/founding/04-system-architecture.md` §§41–42.
 
 ### Out of scope
@@ -128,9 +138,11 @@ Constraints:
 
 ## Validation Checklist
 
-- [ ] Required output artifacts exist (design dossier with all named sections).
+- [ ] Required output artifacts exist at exactly `docs/development/phase-2-first-slice-design/`, with the named files (`README.md`, `episode-definition.md`, `scene-model-position.md`, `prototype-variable-register.md`, `evidence-and-accessibility-plan.md`) and all named sections present.
 - [ ] Episode definition draft passes a field-by-field check against `docs/founding/04-system-architecture.md` §36.
 - [ ] Prototype-variable register covers D-01, D-02, D-05, and the connection-making prompt-form question, each marked undecided.
+- [ ] Every prototype-variable register entry carries the full falsification structure: rival hypotheses, a falsifying observation per rival, manipulated and held-constant variables, outcome measures, real-world variation dimensions, at least one discriminating experiment per live pair of rivals, and the conclusion rule — when the planned evidence would not falsify all rivals, the entry writes "consistent with A and B" and names the next experiment.
+- [ ] The Scene Model design position explicitly separates architectural decisions (each with rejected alternatives and the architectural reason) from empirical instructional hypotheses (routed to the prototype-variable register).
 - [ ] Evidence plan states both the allowed and disallowed claim sets.
 - [ ] Accessibility plan maps the §44 floor to mechanisms and evidence kinds without claiming results.
 - [ ] Dossier contains no decision on any item in the packet's Non-goals (orchestrator checks against the deferred-recommendations list).
@@ -153,13 +165,21 @@ Stop and report to the orchestrator if:
 
 ## Commit and Concurrency Guidance
 
-- Commit discipline: stage explicit paths (dossier + report); never `git add -A`; never push.
+- Commit discipline: stage explicit paths (the `docs/development/phase-2-first-slice-design/` dossier folder + this packet's report folder); never `git add -A`; never push.
 - Concurrency: mode A. This packet is docs-only but touches project direction; serialize against any other active thread.
 - If `index.lock: File exists`, wait and retry; never delete the lock file.
 
+## Implementer Authority Boundaries
+
+Per `docs/development/packet-creation-guidance.md` and `docs/workflows/packet-tracking-system.md`:
+
+- The implementer may not set packet completion status and may not edit orchestrator/owner disposition records; status verbs (`delivered`, `complete`, `superseded`, `parked`) belong to the orchestrator/owner.
+- The implementer may not declare the packet, the feature, or the product complete, done, ready to ship, or equivalent. "Ready for orchestrator review: yes/no" in the progress report is a bounded handoff statement, not a status mutation or a shipping declaration.
+- The implementer reports against the packet's objective — what was verified, how, and against which requirement. Passing tests and large counts are evidence, not proof; the report must map evidence to the objective so a reviewer can confirm each claim without re-running everything.
+
 ## Advisor Consultation
 
-This packet is docs-only design work with no behavioral surface of its own; the implementing thread must still record its advisor-consultation disposition per `AGENTS.md` (consultation ran / not warranted with one-line reason / degraded mode naming the mode) in the progress report, without this packet pre-classifying the answer.
+Advisor consultation is a thread-level obligation inherited from `AGENTS.md`. At packet start, the implementing thread must determine and record whether a consultation ran (with a disposition record), was not warranted (with a one-line reason), or a degraded mode applies (naming the mode), following the provider-capability and proportionality rules. This packet does not pre-classify that determination.
 
 ## Progress Report
 

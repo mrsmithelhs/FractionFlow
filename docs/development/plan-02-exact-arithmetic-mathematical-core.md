@@ -86,7 +86,7 @@ Contracts this packet must preserve:
 
 ### Out of scope
 
-Everything in Non-goals, plus: editing founding documents, deployment configuration, and any file outside `src/math/`, `tests/`, and this packet's report folder.
+Everything in Non-goals, plus: editing founding documents, deployment configuration, and any file outside `src/math/`, `tests/`, this packet's report folder, and — only when explicitly approved at the mechanism-confirmation gate — `package.json` and the lockfile.
 
 ## Implementation Requirements
 
@@ -155,13 +155,21 @@ Stop and report to the orchestrator if:
 
 ## Commit and Concurrency Guidance
 
-- Commit discipline: stage explicit paths (`src/math/…`, `tests/…`, fixtures, report); never `git add -A`; never push.
+- Commit discipline: stage explicit paths (`src/math/…`, `tests/…`, fixtures, report, and — only if gate-approved — `package.json`/lockfile); never `git add -A`; never push.
 - Concurrency: mode A. `plan-03` depends on this packet's API and must not start until this packet is complete.
 - If `index.lock: File exists`, wait and retry; never delete the lock file.
 
+## Implementer Authority Boundaries
+
+Per `docs/development/packet-creation-guidance.md` and `docs/workflows/packet-tracking-system.md`:
+
+- The implementer may not set packet completion status and may not edit orchestrator/owner disposition records; status verbs (`delivered`, `complete`, `superseded`, `parked`) belong to the orchestrator/owner.
+- The implementer may not declare the packet, the feature, or the product complete, done, ready to ship, or equivalent. "Ready for orchestrator review: yes/no" in the progress report is a bounded handoff statement, not a status mutation or a shipping declaration.
+- The implementer reports against the packet's objective — what was verified, how, and against which requirement. Passing tests and large counts are evidence, not proof; the report must map evidence to the objective so a reviewer can confirm each claim without re-running everything.
+
 ## Advisor Consultation
 
-This packet has a real behavioral surface (a new mathematical module and test harness), so the implementing thread must address advisor consultation as a thread-level obligation per `AGENTS.md`: state in the progress report whether a consultation ran (with disposition record), was not warranted (one-line reason), or a degraded mode was used. The packet does not pre-classify the answer.
+Advisor consultation is a thread-level obligation inherited from `AGENTS.md`. At packet start, the implementing thread must determine and record whether a consultation ran (with a disposition record), was not warranted (with a one-line reason), or a degraded mode applies (naming the mode), following the provider-capability and proportionality rules. This packet does not pre-classify that determination.
 
 ## Mechanism-Confirmation Gate (required before building)
 
@@ -169,8 +177,18 @@ This packet creates a new module and a test harness — structural/generative wo
 
 1. Propose the public API shape (types/structures for exact fractions, current form vs value vs preferred form, classification results, validation results) with brief rationale.
 2. Propose the invariant-test plan (which properties, over what input ranges, with what generation strategy).
-3. Propose the golden-case fixture format and the D-17 diversity check.
-4. Wait for orchestrator/owner approval. Do not build until the gate clears.
+3. State the test-capability basis: either (a) propose a single narrowly justified development dependency the plan requires (e.g., a property-testing library), with the justification weighed against `docs/founding/04-system-architecture.md` §60, or (b) propose a dependency-free deterministic generation harness and define what qualifies it as property-style testing — generated cases, reproducible failure seeds, stated input ranges, run counts, and minimized counterexamples where applicable. If (a) is approved, `package.json` and the lockfile become approved write-scope paths for that addition only. `plan-01` must not be asked to install speculative test libraries in advance.
+4. Propose the golden-case fixture format and the D-17 diversity check.
+5. Wait for orchestrator/owner approval. Do not build until the gate clears.
+
+## Internal Milestone Gate
+
+Per the 2026-09-18 packet-wave review (finding F5), the owner kept this packet unified rather than split into 02a/02b; in exchange, implementation proceeds in two reviewable milestones:
+
+1. **Milestone 1 — primitives and invariants:** exact rational representation and normalization, comparison/equivalence, gcd/lcm, conversion, addition/subtraction, simplification, mixed/improper conversion, exact benchmark comparisons, and their invariant tests. The implementer reports and pauses; the orchestrator reviews before milestone 2 proceeds.
+2. **Milestone 2 — classification and step validation:** denominator/result/regrouping classifications, intermediate-step validation, response-pattern classification, and golden cases, built on the reviewed primitives.
+
+This separation exists so a bad primitive and a bad classification contract cannot cross review as one indistinguishable diff.
 
 ## Progress Report
 

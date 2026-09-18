@@ -62,5 +62,5 @@ See `docs/workflows/packet-tracking-system.md` for the full system design.
 - Use repository truth over memory.
 - Stop on judgment decisions, evidence gaps, or validation failures that change scope.
 - Write the progress report before the final response.
-- Implementers set `delivered` when work is complete; orchestrators set `complete` after verification.
+- Implementers report and stop; the orchestrator sets `delivered` when the report arrives, verifies the work, and later sets `complete` with a resolution. Implementers never run status-write verbs.
 - Do not hand-edit the packet table above — run `render` instead.

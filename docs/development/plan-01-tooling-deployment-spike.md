@@ -79,7 +79,7 @@ Contracts this packet must preserve:
 - Choose and configure one deployment mechanism (branch vs. `docs/` folder vs. GitHub Actions), documenting the decision criteria and the build-output path.
 - Produce one harmless static smoke page (fixed text only; no forms, no scripts that transmit data, no tracking) and publish it through the chosen mechanism.
 - Ratify or adjust the repository source/build-output layout proposed in `docs/project-seed.md` and record the ratified layout in the progress report (the orchestrator converts it into a decision-log entry).
-- Add ignore rules so build output is never committed.
+- Add ignore rules for build output under a conditional artifact policy: build output is ignored in the source branch by default and is versioned only when the owner-approved deployment mechanism specifically requires versioned generated output (for example, a GitHub Pages `docs/`-folder mechanism, or a dedicated publishing branch). Wherever output is versioned, it is generated output and never durable source of truth; the progress report states where output is versioned, if anywhere, and why.
 
 ### Out of scope
 
@@ -116,7 +116,8 @@ Constraints:
 Required behavior:
 
 - The progress report states the ratified source/build-output layout, any deviation from `docs/project-seed.md`'s proposal, and why.
-- Build output is excluded from version control; committed files contain no secrets or personal information.
+- Source-branch build output is excluded from version control unless the chosen, owner-approved deployment mechanism requires versioned generated output; wherever output is versioned, generated output is never treated as durable source truth, and the report states the artifact boundary the chosen mechanism actually imposes.
+- Committed files contain no secrets or personal information.
 
 Constraints:
 
@@ -125,11 +126,11 @@ Constraints:
 ## Validation Checklist
 
 - [ ] Required output files or artifacts exist (`package.json`, lockfile, build config, smoke page source, deployment configuration).
-- [ ] Clean-clone reproduction: fresh `npm ci` + build produces identical output directory contents.
+- [ ] Clean-clone reproduction: fresh `npm ci` + build produces identical output directory contents, compared by a manifest/hash comparison over the output file set after excluding explicitly documented nondeterministic metadata (e.g., embedded timestamps or content hashes). Byte-for-byte reproducibility is claimed only if proven; the checklist claims no stronger property than the manifest comparison establishes.
 - [ ] Test-runner command runs headlessly and exits 0.
 - [ ] Public smoke URL loads over HTTPS with no console errors and no network calls to any backend or tracking origin.
 - [ ] Ratified repository layout recorded in the progress report.
-- [ ] `git status` shows no build output, secrets, or unrelated changes staged or committed.
+- [ ] `git status` shows no source-branch build output (unless the approved deployment mechanism requires versioned output, which the report states explicitly), no secrets, and no unrelated changes staged or committed.
 - [ ] Progress report exists at `reports/development/plan-01-tooling-deployment-spike/progress.md`.
 - [ ] No unrelated files were changed.
 - [ ] Approval gate is honored: no publish step ran without explicit owner authorization; work stops at the gate and reports if authorization is absent.
@@ -155,9 +156,17 @@ Stop and report to the orchestrator if:
 - Concurrency: mode A (one implementer at a time). No other packet is runnable while this one is in progress, so overlap is not expected; still, keep writes scoped to the files above.
 - If `index.lock: File exists`, wait and retry; never delete the lock file.
 
+## Implementer Authority Boundaries
+
+Per `docs/development/packet-creation-guidance.md` and `docs/workflows/packet-tracking-system.md`:
+
+- The implementer may not set packet completion status and may not edit orchestrator/owner disposition records; status verbs (`delivered`, `complete`, `superseded`, `parked`) belong to the orchestrator/owner.
+- The implementer may not declare the packet, the feature, or the product complete, done, ready to ship, or equivalent. "Ready for orchestrator review: yes/no" in the progress report is a bounded handoff statement, not a status mutation or a shipping declaration.
+- The implementer reports against the packet's objective — what was verified, how, and against which requirement. Passing tests and large counts are evidence, not proof; the report must map evidence to the objective so a reviewer can confirm each claim without re-running everything.
+
 ## Advisor Consultation
 
-Advisor consultation is a thread-level obligation inherited from `AGENTS.md`, not a packet-scoped requirement. The implementing thread must state one of — consultation ran; not warranted (with a one-line reason); or degraded mode (naming the mode used) — in its progress report, even though this packet is expected to be mechanical. Do not pre-classify the packet to pre-empt that declaration.
+Advisor consultation is a thread-level obligation inherited from `AGENTS.md`. At packet start, the implementing thread must determine and record whether a consultation ran (with a disposition record), was not warranted (with a one-line reason), or a degraded mode applies (naming the mode), following the provider-capability and proportionality rules. This packet does not pre-classify that determination.
 
 ## Progress Report
 

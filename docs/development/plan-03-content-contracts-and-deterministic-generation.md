@@ -87,7 +87,7 @@ Contracts this packet must preserve:
 
 ### Out of scope
 
-Everything in Non-goals, plus: editing founding documents, deployment configuration, `src/math/` internals (consume, don't modify — propose an extension packet instead), and files outside `src/content/`, `tests/`, content fixtures, and this packet's report folder.
+Everything in Non-goals, plus: editing founding documents, deployment configuration, `src/math/` internals (consume, don't modify — propose an extension packet instead), and files outside `src/content/`, `tests/`, content fixtures, this packet's report folder, and — only when explicitly approved at the mechanism-confirmation gate — `package.json` and the lockfile.
 
 ## Implementation Requirements
 
@@ -155,13 +155,21 @@ Stop and report to the orchestrator if:
 
 ## Commit and Concurrency Guidance
 
-- Commit discipline: stage explicit paths; never `git add -A`; never push.
+- Commit discipline: stage explicit paths (including, only if gate-approved, `package.json`/lockfile); never `git add -A`; never push.
 - Concurrency: mode A. `plan-04` depends on this packet's schemas; no downstream packet starts early.
 - If `index.lock: File exists`, wait and retry; never delete the lock file.
 
+## Implementer Authority Boundaries
+
+Per `docs/development/packet-creation-guidance.md` and `docs/workflows/packet-tracking-system.md`:
+
+- The implementer may not set packet completion status and may not edit orchestrator/owner disposition records; status verbs (`delivered`, `complete`, `superseded`, `parked`) belong to the orchestrator/owner.
+- The implementer may not declare the packet, the feature, or the product complete, done, ready to ship, or equivalent. "Ready for orchestrator review: yes/no" in the progress report is a bounded handoff statement, not a status mutation or a shipping declaration.
+- The implementer reports against the packet's objective — what was verified, how, and against which requirement. Passing tests and large counts are evidence, not proof; the report must map evidence to the objective so a reviewer can confirm each claim without re-running everything.
+
 ## Advisor Consultation
 
-This packet has a real behavioral surface (schemas, a generator, and validation tooling), so the implementing thread must address advisor consultation as a thread-level obligation per `AGENTS.md`: state in the progress report whether a consultation ran (with disposition record), was not warranted (one-line reason), or a degraded mode was used. The packet does not pre-classify the answer.
+Advisor consultation is a thread-level obligation inherited from `AGENTS.md`. At packet start, the implementing thread must determine and record whether a consultation ran (with a disposition record), was not warranted (with a one-line reason), or a degraded mode applies (naming the mode), following the provider-capability and proportionality rules. This packet does not pre-classify that determination.
 
 ## Mechanism-Confirmation Gate (required before building)
 
@@ -171,7 +179,8 @@ This packet creates schemas and generative structure. Before building, the imple
 2. Propose the family-definition format and the executable membership checks for each Phase 1 family.
 3. Propose the constraint profiles and development defaults (explicitly labeled as defaults, not ceilings).
 4. Propose the bulk-validation report shape.
-5. Wait for orchestrator/owner approval. Do not build until the gate clears.
+5. State the tooling-capability basis: if bulk-validation or distribution tooling requires a narrowly justified development dependency, propose it with the justification weighed against `docs/founding/04-system-architecture.md` §60; if approved, `package.json` and the lockfile become approved write-scope paths for that addition only.
+6. Wait for orchestrator/owner approval. Do not build until the gate clears.
 
 ## Progress Report
 
