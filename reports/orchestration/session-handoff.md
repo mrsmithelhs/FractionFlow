@@ -16,10 +16,11 @@ index in `docs/development/README.md` — trust those over this file. As of 2026
   and `node scripts/dev/plan-status.js lint` also passed. `DECISION-001` and the status close-out
   commit record the deployment decision and terminal resolution.
 - `plan-02` (exact-arithmetic mathematical core): **in-progress**. It passed the required
-  `ready` preflight after Plan 01 closed and was then assigned. Its first permitted work is the
-  mechanism-confirmation proposal; no core implementation may start until that proposal is
-  approved. It retains the required Milestone 1 pause before classification and step-validation
-  work.
+  `ready` preflight after Plan 01 closed and was then assigned. Its mechanism proposal and
+  Milestone 1 primitives/invariants were reviewed and approved on 2026-09-18. The implementer
+  may now work on Milestone 2 only: classifications, exact intermediate-step validation,
+  response-pattern classification, and synthetic golden cases with the D-17 diversity check.
+  It remains in-progress and must stop for full-packet review before any terminal status.
 - `plan-03`, `plan-04`: `draft`, serially blocked by the 02 → 03 → 04 chain. All were revised per
   Codex review (commit `ef45aa2`); wave originally drafted at `94df306`.
 
@@ -69,9 +70,11 @@ disposition record also remains in the committed Plan 01 progress report.
 
 ## Next Orchestration Move
 
-Plan 02's mechanism-confirmation proposal was approved on 2026-09-18 for Milestone 1 only; see
-`reports/development/plan-02-exact-arithmetic-mathematical-core/mechanism-review.md`. The math
-core may now implement exact primitives and invariant/edge tests, but must stop before
-classification, learner-step validation, response patterns, golden fixtures, or D-17 diversity
-work. After Milestone 1, review primitives and invariants before allowing Milestone 2.
-`plan-03` and `plan-04` stay draft until their dependencies complete.
+Plan 02's Milestone 1 implementation was independently reviewed and Milestone 2 was approved on
+2026-09-18; see
+`reports/development/plan-02-exact-arithmetic-mathematical-core/milestone-1-review.md`. The
+implementer may add the remaining mathematical classifications, exact step validators,
+response-pattern classifier, and synthetic golden/D-17 evidence, while preserving the strict
+value/current-form/preferred-form separation. One non-blocking cleanup remains: remove the
+extra end-of-file blank line in `src/math/index.js` in the next scoped source/test commit.
+`plan-03` and `plan-04` stay draft until Plan 02 is terminally complete.
