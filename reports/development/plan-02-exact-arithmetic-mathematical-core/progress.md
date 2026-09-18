@@ -4,19 +4,21 @@
 - **Packet title**: Exact-Arithmetic Mathematical Core
 - **Date**: 2026-09-18
 - **Author**: Implementer
-- **State**: Mechanism-confirmation proposal; implementation not started
+- **State**: Milestone 1 implemented; awaiting orchestrator review before Milestone 2
 
 ## 1. Overall summary
 
 Plan 02 passed the required read-only preflight (`RUNNABLE: plan-02 is ready to
-implement`). Plan 01 supplies the existing Node/Vite/Vitest toolchain and no
-additional development dependency is currently necessary.
+implement`). The orchestrator approved the mechanism for Milestone 1 in
+`mechanism-review.md`, commit `f5a64f1`. Plan 01 supplies the existing
+Node/Vite/Vitest toolchain and no additional development dependency was added.
 
-The packet's mechanism-confirmation gate is still outstanding. In accordance
-with the packet and the orchestration handoff, this report records the proposed
-public API, invariant-test strategy, fixture shape, and D-17 diversity check,
-then stops before creating mathematical source or tests. No implementation
-claim is made from this proposal.
+Milestone 1 is implemented and verified below. The implementation is limited to
+exact fraction primitives, exact arithmetic and conversion, mixed-number
+conversion/regrouping primitives, benchmark comparison, and their invariant and
+edge tests. The required Milestone 1 pause remains in force: classification,
+intermediate-step validation, response-pattern detection, golden fixtures, and
+D-17 diversity work have not been implemented.
 
 ## 2. Scope reconciliation
 
@@ -30,11 +32,12 @@ The attached implementer prompt and packet add binding process constraints:
 - do not change packet status or the generated packet index;
 - commit only scoped work and never push.
 
-The preflight passed. The mechanism gate and the internal Milestone 1 gate are
-not approval to be inferred from the assignment itself, so source implementation
-is intentionally paused here.
+The preflight passed, and the mechanism gate was explicitly approved for
+Milestone 1 only. The internal milestone boundary is preserved: this report is
+the handoff for review of the actual primitives and invariant evidence, not a
+request to advance automatically into Milestone 2.
 
-## 3. Proposed mechanism — pending approval
+## 3. Approved mechanism and implemented API
 
 ### 3.1 Module layout
 
@@ -182,7 +185,7 @@ changes, correct denominator with incorrect numerator, correct conversions with
 arithmetic error, correct unsimplified result, and equivalent alternate form.
 It will make no statement about the learner's beliefs, strategy, or intent.
 
-## 4. Proposed invariant-test plan — pending approval
+## 4. Invariant-test plan and implementation evidence
 
 The existing Vitest runner will be used with a dependency-free deterministic
 generator. No property-testing package is requested. The harness qualifies as
@@ -228,7 +231,7 @@ already-simple raw results, all four denominator relationships, composition,
 decomposition, non-least common denominators, unsimplified answers, and
 alternate mixed/improper forms.
 
-## 5. Proposed golden fixtures and D-17 diversity check — pending approval
+## 5. Golden fixtures and D-17 diversity check — deferred by milestone boundary
 
 Fixtures will be synthetic JavaScript data using decimal strings for integer
 components so the fixture file is durable and does not rely on JSON BigInt
@@ -273,50 +276,138 @@ assertion with the generated invariant suite.
 
 ## 6. Validation and stop plan
 
-After approval, implementation will proceed in the packet's two milestones:
+The approved implementation sequence is:
 
 1. Milestone 1: primitives, exact operations, mixed conversion, benchmark
    comparisons, and their invariant tests. I will report and pause for review.
 2. Milestone 2: classifications, intermediate-step validation, response
    patterns, and golden fixtures. I will then run the complete headless suite.
 
-At each milestone I will run targeted tests first, then the full `npm test`,
-`node scripts/dev/plan-status.js lint`, and `git diff --check`. I will verify
-that no DOM/browser/global APIs or floating-point truth enter `src/math/`.
+For Milestone 1 I ran targeted tests first, then the full `npm test`,
+`node scripts/dev/plan-status.js lint`, `git diff --check`, syntax checks, and
+the production build. I also scanned the production math modules for DOM,
+browser-storage, randomness, wall-clock, serialization, classification,
+response-pattern, and instructional-preference surfaces. No such dependencies
+or APIs were found. I will not run Milestone 2 until the orchestrator reviews
+this handoff and explicitly authorizes it.
 
-## 7. Mechanism-confirmation record
+## 7. Milestone 1 implementation evidence
+
+### Files changed
+
+- `src/math/fraction.js` — immutable BigInt fraction construction and validation;
+  gcd/lcm; common-denominator and LCD primitives; exact comparison and
+  equivalence; scale conversion; addition/subtraction; explicit simplification;
+  exact named benchmark comparison.
+- `src/math/mixed-number.js` — immutable nested mixed-number forms; improper and
+  mixed conversion; composition; whole-unit decomposition; exact mixed addition,
+  subtraction, and comparison.
+- `src/math/index.js` — public re-export boundary.
+- `tests/math-core.test.js` — edge cases, unsupported-input checks, exact-value
+  checks, deterministic generated invariants, failure diagnostics/minimization,
+  and exhaustive small-range LCD minimality.
+
+No package manifest, lockfile, founding document, packet status, generated index,
+serialization helper, browser API, or persistence adapter was changed.
+
+Implementation commits are `9f6afb2` (`feat: implement Plan 02 math primitives`)
+and `d034dc6` (`test: harden generated invariant minimizer`).
+
+### API behavior verified
+
+- `createFraction` accepts only `bigint` or safe integer `number` inputs,
+  rejects negative/zero-denominator/unsafe/non-integer values, freezes results,
+  and preserves forms such as `2/4`.
+- Ordinary arithmetic preserves raw result forms, including `2/2`, `10/8`,
+  and `0/8`; `simplifyFraction` is explicit and value-preserving.
+- Exact comparison uses cross products; no decimal conversion participates in
+  equality, equivalence, ordering, conversion, or arithmetic.
+- Explicit common-denominator operations accept valid non-least denominators,
+  such as 24 for denominators 3 and 4, while rejecting invalid targets.
+- Mixed-number values freeze both the outer object and nested fractional object;
+  construction copies a mutable structural input rather than sharing it.
+- Transient forms such as `2 10/8` are representable, and
+  `3 2/8 -> 2 10/8` is verified to preserve exact quantity.
+- Negative subtraction is rejected at the boundary; zero subtraction results
+  remain representable in their current denominator.
+
+### Generated invariant coverage
+
+- 10,000 deterministic fraction-pair cases, seed `0xF0201` (`983553`), with
+  denominators `1..240` and numerators `0..3*denominator`. Each case checks
+  scale equivalence, cross-product comparison, addition, ordered subtraction,
+  simplification preservation/idempotence, and LCD validity/formula.
+- 5,000 deterministic mixed-number/composition cases, seed `0xF0202`
+  (`983554`), with whole parts `0..20`, denominators `1..120`, proper
+  fractional remainders, and improper values `0..3*denominator`. Each case
+  checks mixed/improper round trips, composition, proper remainder, and nested
+  immutability.
+- 5,000 deterministic nonnegative subtraction cases, seed `0xF0203`
+  (`983555`), with denominators `1..120`. Each case checks nonnegative output
+  and the exact reconstruction identity `result + smaller = larger`.
+- Exhaustive LCD minimality for every denominator pair `1..20`: every positive
+  candidate below the computed LCD is checked and rejected as a common
+  denominator.
+- Deliberate exact cases include `1/3`, `2/7`, `5/12`, `7/15`, equal operands,
+  subtraction to zero, exactly-one and whole-valued results, reducible raw
+  results, all four denominator relationships as arithmetic inputs, composition,
+  decomposition, non-least denominators, and alternate mixed/improper forms.
+
+Every generated-invariant failure is designed to report the stable seed, case
+index, full generated state, and a deterministic minimized state. The minimizer
+only accepts a candidate when the same assertion still fails; it uses no random,
+wall-clock, or environment-dependent input.
+
+### Commands run and results
+
+- `node scripts/dev/plan-status.js check plan-02` — `RUNNABLE`.
+- `node scripts/dev/plan-status.js lint` — `lint: OK (no violations)`.
+- `npm test` — 1 test file, 15 tests passed; Vitest reported the generated
+  10,000-case, 5,000-case, 5,000-case, and exhaustive LCD runs as passing.
+- `npm run build` — Vite build passed and produced the existing disposable
+  `dist/index.html` smoke artifact.
+- `node --check src/math/fraction.js`, `node --check src/math/mixed-number.js`,
+  and `node --check src/math/index.js` — all passed.
+- `git diff --check` — passed; only the expected managed-Windows LF-to-CRLF
+  warning appeared when Git touched files.
+- Production-boundary scan for DOM/browser APIs, storage, randomness, wall clock,
+  serialization, classification, response-pattern, golden-fixture, and
+  instructional-preference terms — clean.
+
+## 8. Mechanism-confirmation record
 
 - **Proposed**: immutable BigInt-backed fraction objects; explicit current-form
   preservation; pure math/classification/validation modules; dependency-free
   seeded property-style tests; string-backed synthetic golden fixtures with a
   programmatic D-17 diversity assertion.
-- **Approval**: pending owner/orchestrator confirmation.
-- **Changes from proposal**: none.
-- **Implementation started**: no. No source or test files have been created.
+- **Approval**: approved for Milestone 1 by the orchestrator in
+  `mechanism-review.md`, commit `f5a64f1`.
+- **Binding clarifications applied**: no production serialization surface;
+  mathematical facts remain separate from instructional preference; nested mixed
+  state is immutable; generated failures are reproducible and minimized; the
+  Milestone 1/Milestone 2 boundary is explicit.
+- **Changes from proposal**: removed the proposed general serialization helper;
+  deferred all classification, step-validation, response-pattern, golden-case,
+  and D-17 work.
+- **Implementation started**: yes, Milestone 1 only.
 
-## 8. Advisor-consultation disposition
+## 9. Advisor-consultation disposition
 
-**Branch C — orchestrator-gate-only at this stage.** This turn has no behavioral
-artifact for an advisor to critique, and this desktop tool surface does not
-provide a callable higher-tier read-only advisor child. No consultation ran.
-Once implementation exists, the applicable advisor branch will be reevaluated
-and recorded honestly in the final packet report.
+**Branch C — orchestrator-gate-only.** This implementation thread's current
+desktop tool surface does not provide a callable higher-tier read-only advisor
+child. No advisor consultation ran. The orchestrator's durable mechanism review
+was read before implementation and is not being represented as an advisor
+consultation. The standard orchestrator review remains required and is not
+waived by this degraded mode.
 
-## 9. Remaining risks / decisions requested
+## 10. Remaining risks / decisions requested
 
-Approval is requested for the mechanism above, especially:
+No unresolved mathematical contract ambiguity was found during Milestone 1.
+The remaining work is intentionally deferred behind the milestone gate:
+classification APIs, full magnitude facts, intermediate-step validation,
+response-pattern classification, golden fixtures, and D-17 diversity checks.
 
-1. BigInt as the exact public numeric representation, with explicit string
-   serialization only at boundaries that require it;
-2. preserving raw/current fraction forms by default and simplifying only by an
-   explicit operation;
-3. allowing an improper fractional component in a transient mixed-number form
-   so `2 10/8` is representable;
-4. the dependency-free seeded generator and stated run counts/ranges; and
-5. the proposed two-milestone implementation sequence.
+The implemented Milestone 1 is ready for orchestrator review. I am stopping
+here and will not begin Milestone 2 without a fresh explicit authorization.
 
-No unresolved mathematical contract ambiguity was found during this proposal
-pass. If the mechanism is approved, implementation should begin at Milestone 1
-and stop again for review before classification work.
-
-**Ready for orchestrator review:** yes — proposal only; awaiting mechanism confirmation.
+**Ready for orchestrator review:** yes — Milestone 1 only; stop before Milestone 2.
