@@ -12,33 +12,33 @@ After the agent finishes, the owner reviews this file. Every item should be reso
 
 ## Required: project identity
 
-| Placeholder | Where used | What to fill in |
+| Placeholder | Where used | Resolved Value |
 |---|---|---|
-| `{{PROJECT_NAME}}` | AGENTS.md.template, CLAUDE.md.template, orchestrator prompt, implementer prompt, design-review prompt | The project's short name (e.g., "MyProject"). Used in headings and context. |
-| `{{ONE_LINER}}` | AGENTS.md.template, orchestrator prompt, implementer prompt, design-review prompt | One sentence describing what the project is and does. Avoid jargon. |
-| `{{STAGE}}` | AGENTS.md.template, orchestrator prompt, implementer prompt, design-review prompt | Current project stage (e.g., "early development", "pre-launch", "post-pilot iteration", "maintenance"). |
+| `{{PROJECT_NAME}}` | AGENTS.md.template, CLAUDE.md.template, orchestrator prompt, implementer prompt, design-review prompt | `FractionFlow` |
+| `{{ONE_LINER}}` | AGENTS.md.template, orchestrator prompt, implementer prompt, design-review prompt | `FractionFlow is a calm, browser-based learning environment for practicing fraction addition and subtraction, designed to help learners move from visual understanding to efficient symbolic computation without accounts or advertising.` |
+| `{{STAGE}}` | AGENTS.md.template, orchestrator prompt, implementer prompt, design-review prompt | `design and specification phase` |
 
 ## Required: project structure
 
-| Placeholder | Where used | What to fill in |
+| Placeholder | Where used | Resolved Value |
 |---|---|---|
-| `{{AREA_MAP_TABLE}}` | AGENTS.md.template | A markdown table listing the project's key areas, strands, modules, or components and a one-line description of each. May be left as a stub if the project is early-stage. |
-| `{{REPO_STRUCTURE}}` | AGENTS.md.template | A tree-style listing of the top-level repo directories and their roles. Read the repo root and write this from observation. |
-| `{{ROUTING_TABLE}}` | AGENTS.md.template | A markdown table of topic → file mappings for the project's key reference files. At minimum: schema files, key implementation modules, and workflow docs. Leave blank if the project is new. |
+| `{{AREA_MAP_TABLE}}` | AGENTS.md.template | Populated with key project areas: Math Core (`src/math/`), Content (`src/content/`), Interaction (`src/interaction/`), Render (`src/render/`), App (`src/app/`), and Founding Docs (`docs/founding/`). |
+| `{{REPO_STRUCTURE}}` | AGENTS.md.template | Tree listing top-level directories: `.claude/`, `.codex/`, `docs/`, `reports/`, `scripts/`, and planned `src/` & `tests/`. |
+| `{{ROUTING_TABLE}}` | AGENTS.md.template | Populated with topic mappings: `docs/project-seed.md`, founding documents in `docs/founding/` (`00-principles.md` through `06-roadmap.md`), `docs/workflows/packet-tracking-system.md`, and `docs/development/packet-creation-guidance.md`. |
 
 ## Required: technical
 
-| Placeholder | Where used | What to fill in |
+| Placeholder | Where used | Resolved Value |
 |---|---|---|
-| `{{KEY_COMMANDS}}` | AGENTS.md.template | The project's standard test/build/run commands (e.g., `npm test`, `npm run build`, `python -m pytest`). The plan-status commands are already included; add project-specific ones here. If the project uses `npm run dev:console` as a submenu-driven command hub, describe it briefly here. |
-| `{{ARCHITECTURE_CONSTRAINTS}}` | AGENTS.md.template | Critical technical constraints that could break things if violated (e.g., "all shared modules must be CommonJS", "no top-level await", "no third-party deps in the shared layer"). Read the code before filling this in. If none are known yet, write "None identified yet — update as constraints emerge." |
+| `{{KEY_COMMANDS}}` | AGENTS.md.template | Documented that build and test commands will be established by the initial tooling spike (no `package.json` installed during initial design and specification phase). Included packet-status commands (`list`, `check`, `lint`, `render`, `set`) and noted planned `npm run dev:console` command hub. |
+| `{{ARCHITECTURE_CONSTRAINTS}}` | AGENTS.md.template | 1. **Strict Unidirectional Pipeline**: `mathematical state → instructional state → presentation`. Render layer never computes math truth.<br>2. **Deterministic Exact Arithmetic Core**: `src/math/` is pure logic, zero DOM, zero UI dependencies, zero generative AI in the math loop.<br>3. **Static-Only GitHub Pages Architecture**: No server, no backend, no accounts. All assets deploy statically. Progress persistence is strictly browser-local.<br>4. **Child-Centered Accessibility & Calm Design**: Accessibility, readability, reduced-motion, and touch targets are foundational day-one design inputs. |
 
 ## Required: contracts and data rules
 
-| Placeholder | Where used | What to fill in |
+| Placeholder | Where used | Resolved Value |
 |---|---|---|
-| `{{PROJECT_SPECIFIC_DATA_RULES}}` | AGENTS.md.template guardrails section | The project's privacy/asset rules. Example: "No real names, emails, private records, or sensitive customer data in the repo. Anonymize before committing." Or: "No third-party proprietary assets (images, sounds, fonts) copied into the repo." Required; do not leave as a placeholder. |
-| `{{PROJECT_SPECIFIC_CONTRACTS}}` | orchestrator prompt | The project's durable contracts the orchestrator must preserve (e.g., folder roles, generated-vs-source-of-truth distinction, release gate rules). Read `docs/decision-log.md` and the existing docs before filling in. If none exist yet, write: "*(No contracts established yet — add them as owner decisions are made.)*" |
+| `{{PROJECT_SPECIFIC_DATA_RULES}}` | AGENTS.md.template guardrails section | `Public repository PII boundary is absolute: Never commit personal information, learner or student data, account credentials, analytics keys, or deployment secrets. The product posture is strictly static with no accounts, no advertising, and no learner tracking; any progress storage must remain local to the learner's browser.` |
+| `{{PROJECT_SPECIFIC_CONTRACTS}}` | orchestrator prompt | 1. **The Separation Rule**: Strict unidirectional pipeline `mathematical state → instructional state → presentation`.<br>2. **Deterministic Exact Arithmetic Core**: All math truth computed deterministically in pure `src/math/`.<br>3. **Static-Only GitHub Pages Deployment**: No server/accounts/backend; browser-local progress.<br>4. **Canonical Specifications Home**: `docs/founding/` owns durable specs once added; docs reference one another rather than duplicate.<br>5. **Child-Centered Accessibility**: Reduced motion, accessible typography, and child-appropriate touch targets. |
 
 ---
 
@@ -84,27 +84,49 @@ Bootstrap is not "copy everything and forget it" — it ships a **capability led
    - `sourceCommit` may be omitted.
 5. **Validate before reporting done**: confirm `.bootstrap-adoption.json` parses as valid JSON and every entry has the required fields per `docs/bootstrap-adoption-schema.md` (consult upstream if manual). A full tracked-mode `bootstrap-audit.js` self-audit against the new project is optional extra confidence, not required.
 
+### Capability Decisions
+
+| Capability | Channel | Adoption Kind | Version | State | Rationale / Notes |
+|---|---|---|---|---|---|
+| `packet-status-system` | core | verbatim | 1.4.0 | adopted | Core packet tracking tooling (`plan-status.js`). |
+| `packet-status-set-verb` | core | verbatim | 1.0.0 | adopted | Atomic set verb for lifecycle changes. |
+| `dev-console-hub` | recommended | project-specific-pattern | 1.1.0 | adopted | Planned for implementation during tooling spike. |
+| `agent-starting-prompts` | core | configurable | 1.7.0 | adopted | Prompts configured for FractionFlow. |
+| `falsification-check` | recommended | verbatim | 3.0.0 | adopted | Review discipline for investigation packets. |
+| `reports-archive` | core | configurable | 1.0.0 | adopted | Progress report folder conventions. |
+| `root-agent-guide` | core | configurable | 1.0.0 | adopted | Canonical `AGENTS.md` and pointer `CLAUDE.md`. |
+| `decision-log` | recommended | configurable | 1.1.0 | adopted | Append-only decision log and open questions. |
+| `subagent-delegation` | recommended | configurable | 2.0.0 | adopted | Owner-approved adoption; rosters intact in `.claude/` and `.codex/`. |
+| `review-response-tiers` | recommended | verbatim | 1.0.0 | adopted | Owner-approved adoption; managed block intact in orchestrator prompt. |
+| `advisor-consultation` | core | verbatim (managed prose) | 1.0.3 | adopted | Core thread-level consultation contract. |
+| `commit-discipline` | core | verbatim (managed prose) | 2.1.0 | adopted | Core git commit rules and concurrency modes. |
+
+**Conflicts and leftovers:**
+- `dependsOn` checks: **0 conflicts detected**. All adopted capabilities have their required dependencies adopted.
+- Declined capabilities: **0 declined**. No leftover files require cleanup notes.
+- Manifest file: `.bootstrap-adoption.json` is updated and validated against the adoption schema.
+
 ## Checklist: file actions
 
 After resolving all placeholders, the customizing agent must:
 
-- [ ] Replace every listed project-specific token in the initialized `*.template` files and role-specific starting prompts. Literal token names may remain in `BOOTSTRAP-PROMPT.md` and this checklist where they describe the setup process.
-- [ ] Rename `AGENTS.md.template` → `AGENTS.md`.
-- [ ] Rename `CLAUDE.md.template` → `CLAUDE.md`.
-- [ ] Rename `docs/README.md.template` → `docs/README.md`.
-- [ ] Rename `docs/decision-log.md.template` → `docs/decision-log.md`.
-- [ ] Rename `docs/open-questions.md.template` → `docs/open-questions.md`.
-- [ ] Rename `docs/development/README.md.template` → `docs/development/README.md`.
-- [ ] Confirm none of the "Do NOT copy" files above were copied in (Bootstrap's own `docs/development/README.md`, its `plan-*.md` packets, its `reports/development/plan-*/` folders, its sync-tooling files, or `docs/bootstrap-dev/`).
-- [ ] Confirm `.claude/agents/` contains the four roster definitions (`explorer.md`, `reviewer.md`, `researcher.md`, `implementer.md`) and is left intact.
-- [ ] Confirm `.codex/agents/` contains `reviewer.toml`, `researcher.toml`, and `implementer.toml`, and that no project `explorer.toml` shadows Codex's built-in explorer.
-- [ ] Verify that the `subagent-delegation` managed-prose block in `AGENTS.md` is left intact and not de-templated.
-- [ ] Walk the capability-selection procedure above; record an explicit `adopted`/`declined`/`deferred` decision for every capability in the local capabilities summary (or upstream ledger for manual fallback); resolve any `dependsOn` conflicts with the owner rather than auto-resolving.
-- [ ] Emit `.bootstrap-adoption.json` at the project root covering every capability; confirm it parses as valid JSON with the required fields.
-- [ ] Note any declined capability whose files are still physically present, for the owner's awareness (not automatically deleted).
-- [ ] Run `node scripts/dev/plan-status.js render` first (even with no packets, this regenerates the index between markers).
-- [ ] Run `node scripts/dev/plan-status.js lint` from the project root. It should exit 0 (no packets exist yet). If it fails, fix the issue before reporting done.
-- [ ] Present this checklist to the owner with every item marked as resolved, unresolved, or deferred.
+- [x] Replace every listed project-specific token in the initialized `*.template` files and role-specific starting prompts. Literal token names may remain in `BOOTSTRAP-PROMPT.md` and this checklist where they describe the setup process.
+- [x] Rename `AGENTS.md.template` → `AGENTS.md`.
+- [x] Rename `CLAUDE.md.template` → `CLAUDE.md`.
+- [x] Rename `docs/README.md.template` → `docs/README.md`.
+- [x] Rename `docs/decision-log.md.template` → `docs/decision-log.md`.
+- [x] Rename `docs/open-questions.md.template` → `docs/open-questions.md`.
+- [x] Rename `docs/development/README.md.template` → `docs/development/README.md`.
+- [x] Confirm none of the "Do NOT copy" files above were copied in (Bootstrap's own `docs/development/README.md`, its `plan-*.md` packets, its `reports/development/plan-*/` folders, its sync-tooling files, or `docs/bootstrap-dev/`).
+- [x] Confirm `.claude/agents/` contains the four roster definitions (`explorer.md`, `reviewer.md`, `researcher.md`, `implementer.md`) and is left intact.
+- [x] Confirm `.codex/agents/` contains `reviewer.toml`, `researcher.toml`, and `implementer.toml`, and that no project `explorer.toml` shadows Codex's built-in explorer.
+- [x] Verify that the `subagent-delegation` managed-prose block in `AGENTS.md` is left intact and not de-templated.
+- [x] Walk the capability-selection procedure above; record an explicit `adopted`/`declined`/`deferred` decision for every capability in the local capabilities summary (or upstream ledger for manual fallback); resolve any `dependsOn` conflicts with the owner rather than auto-resolving.
+- [x] Emit `.bootstrap-adoption.json` at the project root covering every capability; confirm it parses as valid JSON with the required fields.
+- [x] Note any declined capability whose files are still physically present, for the owner's awareness (not automatically deleted). (None declined).
+- [x] Run `node scripts/dev/plan-status.js render` first (even with no packets, this regenerates the index between markers).
+- [x] Run `node scripts/dev/plan-status.js lint` from the project root. It should exit 0 (no packets exist yet). If it fails, fix the issue before reporting done.
+- [x] Present this checklist to the owner with every item marked as resolved, unresolved, or deferred.
 
 ## Checklist: owner review
 

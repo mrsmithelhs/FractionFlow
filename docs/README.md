@@ -1,4 +1,4 @@
-# {{PROJECT_NAME}} — Documentation Hub
+# FractionFlow — Documentation Hub
 
 This folder contains project documentation. Implementation code lives in `src/` (or equivalent); authored content in `content/` (or equivalent).
 

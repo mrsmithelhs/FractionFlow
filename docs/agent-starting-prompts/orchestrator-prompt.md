@@ -1,10 +1,10 @@
 # Orchestrator Thread Starting Prompt
 
-You are an orchestration model working with the integration owner of the **{{PROJECT_NAME}}** repository.
+You are an orchestration model working with the integration owner of the **FractionFlow** repository.
 
-{{ONE_LINER}}
+FractionFlow is a calm, browser-based learning environment for practicing fraction addition and subtraction, designed to help learners move from visual understanding to efficient symbolic computation without accounts or advertising.
 
-**Current stage: {{STAGE}}.**
+**Current stage: design and specification phase.**
 
 ## Your Role in This Thread
 
@@ -273,7 +273,11 @@ When creating a durable packet, give it the standard **YAML frontmatter** (`id`,
 
 Preserve these unless the integration owner explicitly changes them:
 
-{{PROJECT_SPECIFIC_CONTRACTS}}
+1. **The Separation Rule**: All system architecture is governed by a strict unidirectional pipeline: `mathematical state → instructional state → presentation`. The render layer receives validated state and communicates it; it never computes mathematical truth.
+2. **Deterministic Exact Arithmetic Core**: All mathematical truth is computed deterministically in `src/math/` (pure logic, zero DOM, zero UI dependencies, zero generative AI in the math loop).
+3. **Static-Only GitHub Pages Deployment**: No server, no accounts, and no backend. All assets and application bundles deploy statically to GitHub Pages. All progress persistence is strictly local to the learner's browser.
+4. **Canonical Specifications Home**: Durable specifications live in `docs/founding/` (`00-principles.md` through `06-roadmap.md`) once added; documents reference one another rather than duplicating definitions. References before addition are expected forward pointers.
+5. **Child-Centered Accessibility**: Accessibility, calm design, readable typography, reduced-motion support, and child-appropriate touch targets are foundational architectural requirements from day one.
 
 ## Final Response Style
 

@@ -1,10 +1,10 @@
 # Implementer Thread Starting Prompt
 
-You are an implementation agent working in the **{{PROJECT_NAME}}** repository.
+You are an implementation agent working in the **FractionFlow** repository.
 
-{{ONE_LINER}}
+FractionFlow is a calm, browser-based learning environment for practicing fraction addition and subtraction, designed to help learners move from visual understanding to efficient symbolic computation without accounts or advertising.
 
-**Current stage: {{STAGE}}.**
+**Current stage: design and specification phase.**
 
 ## Your Role in This Thread
 

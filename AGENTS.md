@@ -1,4 +1,4 @@
-# {{PROJECT_NAME}} — Agent Guide
+# FractionFlow — Agent Guide
 
 > **This is the canonical agent entry point for this repository.**
 > `CLAUDE.md` (repo root) points here. Read this file before working on any task.
@@ -7,26 +7,42 @@
 
 ## 1. Project Overview and Current Stage
 
-{{ONE_LINER}}
+FractionFlow is a calm, browser-based learning environment for practicing fraction addition and subtraction, designed to help learners move from visual understanding to efficient symbolic computation without accounts or advertising.
 
-**Current stage: {{STAGE}}.**
+**Current stage: design and specification phase.**
 
 ---
 
 ## 2. Area Map
 
-<!-- Replace this table with the project's actual areas, strands, modules, or components. -->
-
 | Area | Description |
 |---|---|
-{{AREA_MAP_TABLE}}
+| Math Core (`src/math/`) | Deterministic exact-arithmetic fraction engine (pure logic, no DOM, no UI). |
+| Content (`src/content/`) | Problem families, instance generation, and deterministic problem seeds. |
+| Interaction (`src/interaction/`) | Episode and scaffold state machines governing instructional state and transitions. |
+| Render (`src/render/`) | Presentation components (fraction bars, number lines, symbolic notation). |
+| App (`src/app/`) | Root application composition, layout, and static site routing. |
+| Founding Docs (`docs/founding/`) | Canonical design specifications (principles, pedagogy, grammar, architecture, quality). |
 
 ---
 
 ## 3. Core Repository Structure
 
 ```
-{{REPO_STRUCTURE}}
+FractionFlow/
+├── .bootstrap-adoption.json      # Bootstrap capability adoption manifest
+├── .claude/                      # Claude Code agent definitions (explorer, implementer, etc.)
+├── .codex/                       # OpenAI Codex agent definitions
+├── docs/                         # Documentation hub, decision log, open questions
+│   ├── agent-starting-prompts/   # Role starting prompts (orchestrator, implementer, etc.)
+│   ├── development/              # Implementer handoff packets (plan-*.md) and packet board
+│   ├── founding/                 # Canonical design specifications (authoring in progress)
+│   ├── workflows/                # Process and tracking guides
+│   └── project-seed.md           # Project seed brief and defining constraints
+├── reports/                      # Implementer progress reports and review records
+├── scripts/                      # Tooling scripts (e.g. scripts/dev/plan-status.js)
+├── src/                          # Planned source code (math, content, interaction, render, app)
+└── tests/                        # Planned property-based and unit tests
 ```
 
 ---
@@ -36,7 +52,8 @@
 Run from the repository root:
 
 ```
-{{KEY_COMMANDS}}
+# Project build/test commands will be established by the initial tooling spike.
+# (No package.json is installed yet during the design and specification phase.)
 
 # Packet status tooling:
 node scripts/dev/plan-status.js list            # table of all packets + effective status
@@ -63,7 +80,10 @@ node scripts/dev/plan-status.js set <id> <status> [--resolution "…"] [--supers
 
 **Read this section before touching any shared code.**
 
-{{ARCHITECTURE_CONSTRAINTS}}
+1. **Strict Unidirectional Pipeline**: All system architecture is governed by `mathematical state → instructional state → presentation`. The render layer receives validated state and communicates it; it never computes mathematical truth.
+2. **Deterministic Exact Arithmetic Core**: All mathematical truth is computed in `src/math/` (pure logic, zero DOM, zero UI dependencies, zero generative AI in the math loop).
+3. **Static-Only GitHub Pages Architecture**: No server, no accounts, and no backend. All assets and application bundles deploy statically to GitHub Pages. All progress persistence is strictly local to the learner's browser.
+4. **Child-Centered Accessibility & Calm Design**: Accessibility, readable typography, reduced-motion support, and child-appropriate touch targets are foundational design inputs from day one, not retrofitted compliance fixes.
 
 ---
 
@@ -79,9 +99,16 @@ When your task touches a component, read these first.
 | Project decisions history | `docs/decision-log.md` |
 | Active / pending plans | `docs/development/README.md` |
 | Documentation hub | `docs/README.md` |
-
-<!-- Add project-specific routing rows below. -->
-{{ROUTING_TABLE}}
+| Project seed & defining constraints | `docs/project-seed.md` |
+| Founding principles & non-goals | `docs/founding/00-principles.md` (authoring in progress) |
+| Instructional model | `docs/founding/01-instructional-model.md` (authoring in progress) |
+| Interaction grammar | `docs/founding/02-interaction-grammar.md` (authoring in progress) |
+| Math & content model | `docs/founding/03-math-and-content-model.md` (authoring in progress) |
+| System architecture | `docs/founding/04-system-architecture.md` (authoring in progress) |
+| Quality & validation | `docs/founding/05-quality-and-validation.md` (authoring in progress) |
+| Project roadmap | `docs/founding/06-roadmap.md` (authoring in progress) |
+| Packet tracking system | `docs/workflows/packet-tracking-system.md` |
+| Packet creation guidance | `docs/development/packet-creation-guidance.md` |
 
 ---
 
@@ -103,7 +130,7 @@ When your task touches a component, read these first.
 
 7. **Docs describe what exists or is decided, never what is imagined.** A doc that describes planned or speculative state misleads the next agent. If it's aspirational, say so explicitly, or don't write it yet.
 
-8. **{{PROJECT_SPECIFIC_DATA_RULES}}**
+8. **Public repository PII boundary is absolute: Never commit personal information, learner or student data, account credentials, analytics keys, or deployment secrets. The product posture is strictly static with no accounts, no advertising, and no learner tracking; any progress storage must remain local to the learner's browser.**
 
 ---
 
