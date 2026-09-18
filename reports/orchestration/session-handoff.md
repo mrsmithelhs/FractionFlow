@@ -9,22 +9,22 @@ First revision: 2026-09-18.
 Authoritative packet status is always `node scripts/dev/plan-status.js list` and the generated
 index in `docs/development/README.md` — trust those over this file. As of 2026-09-18:
 
-- `plan-01` (toolchain/deployment spike): **delivered**. Implementer commits `038626c`, `6f05baf`;
-  orchestrator local verification done, status commit `128c066`. Only unchecked validation item:
-  public smoke URL, blocked on the owner publish gate (below).
+- `plan-01` (toolchain/deployment spike): **complete**. Implementer commits `038626c`, `6f05baf`;
+  initial delivered status commit `128c066`. On 2026-09-18 the owner-provided browser observation
+  and an independent HTTPS request both confirmed `https://mrsmithelhs.github.io/FractionFlow/`
+  returns the expected static smoke page. The working tree was clean; `npm test`, `npm run build`,
+  and `node scripts/dev/plan-status.js lint` also passed. `DECISION-001` and the status close-out
+  commit record the deployment decision and terminal resolution.
 - `plan-02`, `plan-03`, `plan-04`: `draft`, serial chain 02 → 03 → 04. All revised per Codex review
   (commit `ef45aa2`); wave originally drafted at `94df306`.
 
-## Pending Owner Gate (plan-01 close-out)
+## Close-out Note (plan-01)
 
-The implementer correctly stopped before publishing. To finish plan-01 the owner must, in order:
-
-1. GitHub repo **Settings → Pages → Build and deployment → Source → GitHub Actions**.
-2. Authorize the single push (`git push origin main` — 9 unpushed commits, all docs/toolchain,
-   reviewed). No other push is authorized at any time.
-3. Then the orchestrator verifies `https://mrsmithelhs.github.io/FractionFlow/` over HTTPS and runs
-   `node scripts/dev/plan-status.js set plan-01 complete --resolution "…"` (terminal states require
-   a written resolution).
+The former owner publish gate is satisfied: `origin/main` is aligned with `main`, and the live
+HTTPS smoke page was observed. `DECISION-001` records the deployment mechanism. No configured
+Bootstrap sync intake for advisor-reflection notes was found in this repository, so no separate
+intake artifact is assumed or invented; the complete Plan 01 disposition record remains in its
+committed progress report.
 
 ## What the Owner Actually Chose (chat-only judgments)
 
@@ -54,7 +54,7 @@ The implementer correctly stopped before publishing. To finish plan-01 the owner
 - plan-02 also has the Internal Milestone Gate (see above) — do not let an implementer run both
   milestones as one undifferentiated diff.
 
-## Next Orchestration Move (after the owner gate clears)
+## Next Orchestration Move (after Plan 01 close-out)
 
 plan-02 assignment: hand the implementer thread plan-02 plus its two gates (mechanism-confirmation
 first, milestone pause second). plan-03 and plan-04 stay draft until their dependencies complete.

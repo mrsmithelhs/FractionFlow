@@ -1,7 +1,8 @@
 ---
 id: plan-01
 title: Node Toolchain and Static Deployment Spike
-status: delivered
+status: complete
+resolution: "GitHub Actions static deployment accepted after clean-tree review, local test/build/lint, and live HTTPS smoke-page verification."
 depends_on: []
 gate: "Owner approves the packet; owner explicitly authorizes the public publish/push step; orchestrator verifies the published smoke check. Deployment evidence does not prove pedagogy."
 summary: >-
