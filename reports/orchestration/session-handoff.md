@@ -26,10 +26,10 @@ index in `docs/development/README.md` — trust those over this file. As of 2026
 ## Close-out Note (plan-01)
 
 The former owner publish gate is satisfied: `origin/main` is aligned with `main`, and the live
-HTTPS smoke page was observed. `DECISION-001` records the deployment mechanism. No configured
-Bootstrap sync intake for advisor-reflection notes was found in this repository, so no separate
-intake artifact is assumed or invented; the complete Plan 01 disposition record remains in its
-committed progress report.
+HTTPS smoke page was observed. `DECISION-001` records the deployment mechanism. The Plan 01
+advisor-consultation reflection was filed in Bootstrap's shared incoming intake as
+`docs/bootstrap-dev/incoming/2026-09-18-fractionflow-plan-01-advisor-reflection.md`; its full
+disposition record also remains in the committed Plan 01 progress report.
 
 ## What the Owner Actually Chose (chat-only judgments)
 
