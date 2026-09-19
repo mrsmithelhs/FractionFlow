@@ -91,6 +91,30 @@ disposition record also remains in the committed Plan 01 progress report.
   perform a skeptical orchestrator reconciliation to prevent sidequests or incompatible accepted
   decisions from drifting the core product.
 
+## Posture Decisions Recorded 2026-09-19
+
+Four owner decisions landed after plan-04 closed, all in `docs/decision-log.md`. They change how
+existing artifacts are read, so a fresh thread should not treat them as background:
+
+- **DECISION-003** — presentation posture (`docs/presentation-posture.md`). Part 1 accessibility:
+  motion may be the default, prominence need not be equal, the participation floor is untouched.
+  Part 2 learner-facing register: specification vocabulary is never learner-facing vocabulary, the
+  research apparatus is never learner-visible, the product never asks a learner to produce research
+  artifacts.
+- **DECISION-004** — learner-facing text targets grade 2–3, taught mathematical terms exempt,
+  enforced by working rules and human review rather than a readability formula.
+- **DECISION-005** — efficacy research is a sidequest (`docs/evidence-posture.md`). The evidence
+  ladder is small-n and unrandomized, so the plan-04 register is a **disqualification** instrument,
+  never a selection one. Its conclusion rule permanently returns "consistent with A and B".
+- **DECISION-006** — design conditions must be swappable at runtime in the deployed build, selected
+  upstream as episode configuration, recorded in the replay envelope, and kept separate from the
+  learner preference surface. Mechanism is open as OQ-16.
+
+**The most consequential downstream effect:** DECISION-005 means the provisional display condition
+is in practice the shipped condition. It must be chosen on design grounds, not deferred pending a
+study. Any thread that reads the plan-04 register as a plan to *select* a winner is reading it
+wrong.
+
 ## Carried Forward Into the Phase 2 Implementation Packet
 
 From the Plan 04 review (full text in the review file; these are the items most likely to be
@@ -115,15 +139,10 @@ it produces the first learner-facing code and, per `06-roadmap.md` §23, the vis
 interaction reference for every later phase. Do not draft it from the dossier alone; the four
 carried-forward items above are exactly what the dossier does not settle.
 
-**Before the design-review session, `docs/open-questions.md` needs populating.** As of
-2026-09-19 it is still the untouched template ("*(Add your first open question here.)*"), while
-the project's real unresolved-item register is the 29 deferred items `D-01`–`D-29` in
-`reports/orchestration/founding-docs-review/deferred-recommendations.md`. Both the orchestrator
-prompt and `docs/agent-starting-prompts/design-review-prompt.md` name `docs/open-questions.md` as
-the canonical file to read for known questions, so a grilling session started against it today
-would begin from a placeholder and re-derive what the deferred register already holds. The
-project does not need more open questions — it needs the ones it has routed into the file the
-prompts actually read, marked for which are live for Phase 2 and which stay deferred.
+`docs/open-questions.md` was populated on 2026-09-19 and now carries OQ-01 through OQ-16 with a
+scope note. A first design-review session was started and stopped at OQ-01 without recording
+anything; it is being restarted fresh rather than resumed, because the four posture decisions above
+changed the framing of its first question.
 
 Plan 03 closed on 2026-09-19 after Repair 01 and final independent review. The repair rejects
 forged derived state, returns an invalid result for malformed records, and selects directly from
