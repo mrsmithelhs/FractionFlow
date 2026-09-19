@@ -209,6 +209,65 @@ This bundle is labeled not-decided and swappable at runtime upstream per DECISIO
 
 **Supersedes / related:** Resolves OQ-03; resolves `D-22`; `docs/development/phase-2-first-slice-design/evidence-and-accessibility-plan.md`.
 
+### DECISION-010 - Adopt WCAG 2.2 AA as accessibility standard
+
+**Date:** 2026-09-19
+
+**Decision:** The project adopts WCAG 2.2 AA as its accessibility standard, superseding the
+WCAG 2.1 reference in DECISION-009. This explicitly activates Criterion 2.5.7 (Dragging Movements —
+providing an alternative that does not require dragging for any required action) and Criterion 2.5.8
+(Target Size Minimum — minimum 24x24 CSS pixels with sufficient spacing, designed with child-appropriate
+margins).
+
+**Rationale:** The project's founding principles require that required learner decisions be completable
+without precision dragging and with child-appropriate touch targets. WCAG 2.1 lacked formal success
+criteria for dragging movements and minimum target sizes; adopting WCAG 2.2 AA aligns the project's
+formal compliance standard directly with its core accessibility posture (DECISION-003;
+`docs/presentation-posture.md`) and provides explicit normative criteria for OQ-13 and Batch B.
+
+**Supersedes / related:** Supersedes the WCAG standard specification in DECISION-009; resolves OQ-03;
+informs OQ-13; `docs/presentation-posture.md`.
+
+### DECISION-011 - Reconcile Phase 2 presentation ceilings (LCD <= 30, scale factor <= 12)
+
+**Date:** 2026-09-19
+
+**Decision:** The presentation-layer eligibility ceilings for fraction-bar rendering in Phase 2 are
+set to: common denominator <= 30 and single-operand scale factor <= 12, superseding the conservative
+limits (24 and 8) in DECISION-008. Valid mathematical instances or proposals exceeding these bounds
+fail closed to `valid-but-outside-representation-capability` and route to authorized symbolic continuation.
+
+**Rationale:** Reconciles presentation eligibility with the content layer's generator profile
+(`src/content/profiles.js:17-18`, `maxAlternateScaleFactor: 12n`), eliminating the contradiction where
+the content layer asserted a supported alternate path that the renderer rejected. A sweep of the 6
+relatively-prime pairs in `phase1-dev-default` under these ceilings confirms that all 6 pairs have
+renderable canonical paths (including (5,6) with LCD 30), and 4 of 6 pairs (2,3; 2,5; 3,4; 3,5) have
+renderable non-LCD alternate paths (such as alternate denominator 30 for 3,5). Paths with denominators
+above 30 (such as alternate 40 for 4,5 and alternate 60 for 5,6) fail closed to symbolic continuation,
+preventing illegible hairline subdivision on mobile viewports.
+
+**Supersedes / related:** Supersedes DECISION-008; resolves OQ-02 and Phase 2 portion of `D-06`;
+`episode-definition.md` §2.
+
+### DECISION-012 - Instantiate CM-01-M as visual matching task with distractors
+
+**Date:** 2026-09-19
+
+**Decision:** In the provisional condition bundle (DECISION-007), the connection-making prompt form
+(CM-01-M) is instantiated as a visual matching task with distractors — e.g. *"Tap the bar that shows the
+same amount as 2/3"*, presenting the target bar (8/12) alongside plausible distractors (such as 7/12 or
+9/12). It is not a binary "Is the shaded amount still the same? [Yes / No]" verification.
+
+**Rationale:** A binary verification whose correct answer is always "Yes" rapidly degenerates into a
+ritualized trial that measures compliance rather than equivalence reasoning, collapsing toward Rival N
+while bearing Rival M's label. Because the prototype register is a disqualification instrument
+(DECISION-005), an undisqualifiable task is an empirical dead end. Presenting a visual matching choice
+preserves 1-tap, low-motor, no-keyboard, grade 2–3 reading accessibility while providing a genuine,
+falsifiable measurement of whether the learner recognizes quantity preservation across unit renaming.
+
+**Supersedes / related:** Narrows and clarifies DECISION-007 (CM-01 arm); resolves OQ-01;
+`prototype-variable-register.md`.
+
 ## Proposed but not yet accepted
 
 Use the same `**Date:** YYYY-MM-DD` field for proposals, using the proposal date.

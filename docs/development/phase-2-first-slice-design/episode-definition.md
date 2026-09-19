@@ -62,10 +62,10 @@ Note the current boundary precisely: Plan 03 records carry
 denominator, whole span, subdivision counts), but every
 `representationFacts.eligibility` verdict is literally `deferred`
 (`src/content/generator.js`), and `alternateRepresentationRecommendation` is
-`none`. DECISION-008 resolves this for Phase 2: eligibility is evaluated
+`none`. DECISION-008 and DECISION-011 resolve this for Phase 2: eligibility is evaluated
 deterministically upstream in `src/content/` (e.g. `checkBarEligibility`)
-before episode instantiation using initial conservative fraction-bar ceilings
-(LCD <= 24 and single-operand scale factor <= 8). An instance or path exceeding
+before episode instantiation using fraction-bar ceilings reconciled to the content
+profile (LCD <= 30 and single-operand scale factor <= 12). An instance or path exceeding
 these bounds fails closed to `valid-but-outside-representation-capability` and
 transitions to an authorized symbolic continuation.
 
@@ -266,10 +266,9 @@ path classifications. It does not select a permanent empirical winner for:
 - bridge frequency, number-line timing, session dose, first-run placement,
   persistence, identity, or release policies.
 
-Under DECISION-007, Phase 2 adopts Bundle 1 (animated subdivision D-01-A, semantic
-morph-in-place D-02-M, focused key-beat prompts D-05, and 1-tap structured mapping
-CM-01-M) as its provisional build condition on design grounds, swappable upstream
-at runtime per DECISION-006. Under DECISION-008, initial Phase 2 fraction-bar
-ceilings are set to LCD <= 24 and scale factor <= 8. Those open questions remain
-registered in [`prototype-variable-register.md`](prototype-variable-register.md) or
-governed by their deferred items.
+Under DECISION-007 and DECISION-012, Phase 2 adopts Bundle 1 (animated subdivision D-01-A,
+semantic morph-in-place D-02-M, focused key-beat prompts D-05, and visual matching with
+distractors CM-01-M) as its provisional build condition on design grounds, swappable upstream
+at runtime per DECISION-006. Under DECISION-011, initial Phase 2 fraction-bar ceilings are
+set to LCD <= 30 and scale factor <= 12. Those open questions remain registered in
+[`prototype-variable-register.md`](prototype-variable-register.md) or governed by their deferred items.

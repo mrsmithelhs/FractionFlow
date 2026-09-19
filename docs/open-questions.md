@@ -38,13 +38,13 @@ of them becoming the architectural default. But Phase 2 must render something. W
 rule, the provisional choice gets made silently by whoever writes the first renderer and hardens
 into a default by inertia — which is exactly the outcome the register exists to prevent.
 
-**Resolved 2026-09-19 (DECISION-007).** Phase 2 adopts Bundle 1 as its provisional condition:
+**Resolved 2026-09-19 (DECISION-007, DECISION-012).** Phase 2 adopts Bundle 1 as its provisional condition:
 animated subdivision (D-01-A) with static reduced-motion parity, semantic morph-in-place (D-02-M),
-focused key-beat prompts (D-05), and a 1-tap structured mapping check (CM-01-M). Labeled
-not-decided and swappable at runtime upstream per DECISION-006.
+focused key-beat prompts (D-05), and a visual matching task with distractors (CM-01-M per DECISION-012).
+Labeled not-decided and swappable at runtime upstream per DECISION-006.
 
 **Source:** `reports/development/plan-04-first-vertical-slice-design-preparation/review.md`,
-carried-forward item 1; `docs/evidence-posture.md`; DECISION-007.
+carried-forward item 1; `docs/evidence-posture.md`; DECISION-007; DECISION-012.
 
 ### OQ-02 — There is no representation-eligibility verdict to consume
 
@@ -54,14 +54,14 @@ The episode definition requires an explicit capability check before rendering, b
 exists to check against. This is entangled with `D-06` (concrete denominator and rendering
 thresholds), which is also open.
 
-**Resolved 2026-09-19 (DECISION-008).** Eligibility is computed deterministically upstream in
+**Resolved 2026-09-19 (DECISION-008, DECISION-011).** Eligibility is computed deterministically upstream in
 `src/content/` (e.g. `checkBarEligibility`) before episode instantiation. Initial Phase 2 fraction-bar
-ceilings are set at LCD <= 24 and single-operand scale factor <= 8; valid mathematical instances or
-proposals exceeding these bounds fail closed to `valid-but-outside-representation-capability` and
-transition to symbolic continuation.
+ceilings are reconciled by DECISION-011 to LCD <= 30 and single-operand scale factor <= 12 (matching
+the generator profile); valid mathematical instances or proposals exceeding these bounds fail closed
+to `valid-but-outside-representation-capability` and transition to symbolic continuation.
 
 **Source:** `docs/development/phase-2-first-slice-design/episode-definition.md` §2; `D-06`;
-DECISION-008.
+DECISION-008; DECISION-011.
 
 ### OQ-03 — The supported-environment matrix is deferred to a gate that has arrived
 
@@ -69,14 +69,15 @@ DECISION-008.
 environment dimension as *Untested; no matrix selected*. That gate is the Phase 2 packet. The
 participation floor cannot be evidenced against an unnamed set of environments.
 
-**Resolved 2026-09-19 (DECISION-009).** Supported-environment matrix selected: modern evergreen
+**Resolved 2026-09-19 (DECISION-009, DECISION-010).** Supported-environment matrix selected: modern evergreen
 browsers (Chrome, Safari, Firefox, Edge across desktop, ChromeOS, iOS, Android), responsive viewports
 360px–1440px with reflow to 320px, touch (no precision drag), pointer, keyboard, reduced-motion
-instant transitions, WCAG AA contrast (4.5:1 text, 3:1 graphical) and 200% zoom. Explicit exclusions
-named (legacy browsers, offline PWA, custom audio, native shells).
+instant transitions, WCAG 2.2 AA conformance (including 2.5.7 Dragging Movements and 2.5.8 Target Size Minimum
+per DECISION-010), contrast (4.5:1 text, 3:1 graphical), and 200% zoom. Explicit exclusions named (legacy
+browsers, offline PWA, custom audio, native shells).
 
 **Source:** `docs/development/phase-2-first-slice-design/evidence-and-accessibility-plan.md`;
-`D-22`; DECISION-009.
+`D-22`; DECISION-009; DECISION-010.
 
 ### OQ-04 — Accessibility accommodation versus instructional scaffold
 

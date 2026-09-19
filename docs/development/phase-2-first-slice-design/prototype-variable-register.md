@@ -11,7 +11,7 @@ on design grounds:
 - D-01: Animated subdivision (A) with static reduced-motion parity;
 - D-02: Semantic morph-in-place (M);
 - D-05: Focused key-beat prompts;
-- CM-01: Structured mapping check (M) via 1-tap invariant verification.
+- CM-01: Structured mapping check (M) via visual matching task with distractors (DECISION-012).
 
 This provisional bundle remains labeled not-decided in both code and reports.
 Per DECISION-006, design conditions must be swappable at runtime upstream in the

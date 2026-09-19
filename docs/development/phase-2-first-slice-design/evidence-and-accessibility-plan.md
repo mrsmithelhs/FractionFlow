@@ -158,19 +158,19 @@ mechanized checks, human accessibility review, and child evidence separately;
 child evidence is optional until the applicable owner/roadmap gate calls for it,
 but it cannot be silently substituted by adult review.
 
-## Supported-environment matrix (DECISION-009 / D-22)
+## Supported-environment matrix (DECISION-009, DECISION-010 / D-22)
 
 The supported-environment matrix for Phase 2 implementation and verification was
-selected by DECISION-009, resolving D-22 and OQ-03:
+selected by DECISION-009 and updated to WCAG 2.2 AA by DECISION-010, resolving D-22 and OQ-03:
 
-| Dimension | Target condition (DECISION-009) | Implementation status |
+| Dimension | Target condition (DECISION-009, DECISION-010) | Implementation status |
 | --- | --- | --- |
 | Browser/OS | Modern evergreen Chrome/Chromium (Desktop, ChromeOS, Android), Safari (macOS, iOS/iPadOS), Firefox, Edge | Selected; to be tested in Phase 2 implementation |
 | Layout | Responsive width from 360px (mobile portrait) through 768px–1024px (tablets/Chromebooks) to 1440px (desktop), reflowing to 320px | Selected; to be tested in Phase 2 implementation |
-| Input | Touch without precision dragging, pointer/mouse, and full keyboard navigation (visible focus, tab order, Enter/Space/Arrow activation) | Selected; to be tested in Phase 2 implementation |
+| Input | Touch without precision dragging (WCAG 2.2 SC 2.5.7), child-appropriate target size (SC 2.5.8), pointer/mouse, and full keyboard navigation (visible focus, tab order, Enter/Space/Arrow activation) | Selected; to be tested in Phase 2 implementation |
 | Motion | Motion-enabled default; full semantic and inspectable parity under `prefers-reduced-motion: reduce` (instant static transitions) | Selected; to be tested in Phase 2 implementation |
 | Semantic access | Valid DOM ARIA semantics, inspectable linear reading order, and status announcements compatible with standard OS/browser screen readers | Selected; to be tested in Phase 2 implementation |
-| Text and contrast | WCAG 2.1 AA contrast (>= 4.5:1 text, >= 3:1 graphical controls/bars); zoom and text scaling up to 200% without clipping | Selected; to be tested in Phase 2 implementation |
+| Text and contrast | WCAG 2.2 AA conformance: contrast (>= 4.5:1 text, >= 3:1 graphical controls/bars); zoom and text scaling up to 200% without clipping | Selected; to be tested in Phase 2 implementation |
 | Performance | Smooth rendering and responsive interaction on standard student Chromebooks and mobile browsers | Selected; to be tested in Phase 2 implementation |
 
 Explicit exclusions for Phase 2: legacy browsers (IE11, pre-Chromium Edge, outdated WebViews),
