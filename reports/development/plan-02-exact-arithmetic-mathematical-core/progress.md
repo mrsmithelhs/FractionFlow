@@ -21,7 +21,10 @@ Following the approved mechanism and internal milestone gate:
   4. Durable, synthetic golden-case fixtures covering every core family from `docs/founding/05-quality-and-validation.md` §104 applicable to the core, validated alongside a programmatic D-17 diversity assertion (`tests/fixtures/math-golden-cases.js`, `tests/math-golden-cases.test.js`).
   5. The non-blocking hygiene correction in `src/math/index.js` removing the trailing blank line.
 
-All 82 tests pass headlessly in 1.68s across 4 test suites (`math-core.test.js`, `math-classification.test.js`, `math-step-validation.test.js`, `math-golden-cases.test.js`).
+At the Milestone 2 handoff, 82 tests passed headlessly in 1.68s across 4 test
+suites (`math-core.test.js`, `math-classification.test.js`,
+`math-step-validation.test.js`, `math-golden-cases.test.js`). The Repair 01 and
+Repair 02 addenda record the later expanded-suite results.
 
 A pre-delivery Architecture & Mathematical Correctness Advisor consultation was conducted under Branch A. The advisor identified a critical division-by-zero and BigInt truncation defect in `classifyConversionResponse`, which was immediately resolved and validated with targeted regression tests.
 
@@ -297,7 +300,8 @@ $ git diff --check
 ## 9. Validation Checklist Status
 
 - [x] Required output files or artifacts exist (`src/math/` modules, `tests/`, golden-case fixtures).
-- [x] Full test suite passes headlessly via the toolchain from `plan-01` (82/82 tests pass in 1.68s).
+- [x] Full suite passed at the Milestone 2 handoff (82/82 in 1.68s); the
+  Repair 01 and Repair 02 addenda record the later expanded-suite results.
 - [x] Property-based invariants of `05-quality-and-validation.md` §4 hold across stated ranges (10,000 fraction pairs, 5,000 mixed cases, 5,000 subtraction cases, exhaustive LCD minimality `1..20`).
 - [x] Golden cases cover every family in §104 applicable to the core, with D-17 result diversity; no golden case can pass through a single coincidental equality (verified via `tests/math-golden-cases.test.js`).
 - [x] Alternate valid paths (non-least denominators, unsimplified results, equivalent mixed/improper forms) validate correctly; incorrect patterns classify as specified.

@@ -15,13 +15,16 @@ index in `docs/development/README.md` — trust those over this file. As of 2026
   returns the expected static smoke page. The working tree was clean; `npm test`, `npm run build`,
   and `node scripts/dev/plan-status.js lint` also passed. `DECISION-001` and the status close-out
   commit record the deployment decision and terminal resolution.
-- `plan-02` (exact-arithmetic mathematical core): **delivered**. Milestones 1 and 2 plus
-  Repair 01's response-classification correction were reviewed. Repair 01 is accepted, but the
-  packet is not accepted: a transient improper mixed-number form can require more than one whole
-  decomposition while `classifyMixedRegrouping` always reports one. The final bounded repair is
-  `reports/development/plan-02-exact-arithmetic-mathematical-core/repair-02-multiple-whole-regrouping.md`.
-- `plan-03`, `plan-04`: `draft`, serially blocked by the 02 → 03 → 04 chain. All were revised per
-  Codex review (commit `ef45aa2`); wave originally drafted at `94df306`.
+- `plan-02` (exact-arithmetic mathematical core): **complete** after final review. It delivered
+  exact BigInt primitives, classifications, validators, response patterns, synthetic golden
+  fixtures, D-17 diversity evidence, and two bounded repairs. See
+  `reports/development/plan-02-exact-arithmetic-mathematical-core/final-review.md`.
+- `plan-03` (content contracts and deterministic generation): **in-progress**, but only at its
+  required mechanism-confirmation proposal gate. Its implementer may propose the schema, family
+  contracts, generator constraints/defaults, and bulk-report shape, then must stop for review.
+  No Plan 03 source or fixtures are authorized before that gate clears.
+- `plan-04`: `draft`, blocked by Plan 03. All first-wave packets were revised per Codex review
+  (commit `ef45aa2`); the wave was originally drafted at `94df306`.
 
 ## Close-out Note (plan-01)
 
@@ -77,10 +80,9 @@ disposition record also remains in the committed Plan 01 progress report.
 
 ## Next Orchestration Move
 
-Plan 02 is delivered but not accepted. Repair 01 fixed and independently verified the
-response-classification boundary defects. Final review then verified that the accepted transient
-mixed form `3 1/4 - 0 9/4` needs two whole decompositions even though the classifier reports one.
-Give a fresh Codex implementer the bounded Repair 02 handoff; it preserves current forms and
-computes the exact multiple-whole count rather than canonicalizing an operand. The repairer must
-make a fresh advisor-capability/disposition determination and stop for final Plan 02 review.
-`plan-03` and `plan-04` stay draft until Plan 02 is terminally complete.
+Plan 02 closed on 2026-09-18 after final independent review; see its final-review record. Plan 03
+is assigned only to produce its mechanism-confirmation proposal. The first implementer action is
+read-only design/proposal work; it must stop before source, fixture, or generator implementation
+until the schema/family/constraint/report proposal is explicitly approved. The next orchestrator
+review should decide whether the proposal exposes a small direct owner conversation or a genuinely
+interdependent design-review session. Plan 04 remains unavailable until Plan 03 is complete.

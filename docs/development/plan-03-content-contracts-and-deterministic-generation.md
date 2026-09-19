@@ -1,11 +1,9 @@
 ---
 id: plan-03
 title: Content Contracts and Deterministic Problem Generation
-status: draft
+status: in-progress
 depends_on: [plan-02]
 gate: "Owner approves the packet; mechanism-confirmation gate — the problem-instance schema and family/constraint definitions are approved before build; orchestrator verifies bulk validation and seed reproducibility against the objective."
-superseded_by: null
-resolution: null
 summary: >-
   Define the formal problem-instance schema and problem-family contracts, and
   implement constraint-based, deterministic, seeded generation in `src/content/`

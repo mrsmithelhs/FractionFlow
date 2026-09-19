@@ -1,7 +1,8 @@
 ---
 id: plan-02
 title: Exact-Arithmetic Mathematical Core
-status: delivered
+status: complete
+resolution: "Orchestrator verified exact BigInt arithmetic, classifications, validators, response-pattern boundaries, synthetic golden cases, D-17 diversity, and Repairs 01–02 with independent generated and exhaustive probes."
 depends_on: [plan-01]
 gate: "Owner approves the packet; mechanism-confirmation gate — the implementer's proposed module/API shape and invariant-test plan is approved before building; orchestrator verifies invariants and golden cases against the objective."
 summary: >-
