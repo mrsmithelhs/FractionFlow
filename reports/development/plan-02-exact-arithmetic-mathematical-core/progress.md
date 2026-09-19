@@ -4,7 +4,7 @@
 - **Packet title**: Exact-Arithmetic Mathematical Core
 - **Date**: 2026-09-18
 - **Author**: Implementer
-- **State**: Milestone 1 and Milestone 2 implemented; Repair 01 implemented and awaiting final orchestrator review
+- **State**: Milestone 1 and Milestone 2 implemented; Repairs 01 and 02 implemented and awaiting final orchestrator review
 
 ---
 
@@ -466,6 +466,143 @@ substitute for the executable validation listed above.
 ### Commit and handoff
 
 - Source/test commit: `4a8dca1` (`fix(math): repair response classification boundaries`).
+- The progress-report addendum is the final scoped report change and is committed
+  separately as the final report commit.
+- No push was performed.
+- **Ready for final orchestrator review:** **Yes.** This is a bounded handoff
+  statement only; Plan 02 status remains unchanged at `delivered`.
+
+---
+
+## 12. Repair 02 Addendum — Exact Multiple-Whole Regrouping
+
+### Overall summary
+
+Repair 02 corrects the multiple-whole decomposition count for accepted transient
+mixed-number forms. `classifyMixedRegrouping` now expresses both fractional
+components at their exact least common denominator, computes the positive
+fractional deficit, and returns exact ceiling division as `wholeUnitsRenamed`.
+The classifier reports the count only; `regroupForSubtraction` remains the
+existing one-whole transition primitive and is not changed into a multi-whole
+mutation.
+
+The implementation preserves authoritative current forms, including improper
+fractional components on either operand. It does not call
+`canonicalizeMixedNumber`, simplify a component, mutate an operand, or replace a
+transient form with an equivalent canonical form merely to force a one-whole
+answer. Repair 01's full-value negative-result rejection remains before the
+fractional-deficit branch.
+
+### Repair files and changes
+
+- `src/math/classify.js`
+  - Computes the LCD of the two fractional denominators.
+  - Scales both raw fractional numerators exactly to that LCD.
+  - Computes `wholeUnitsRenamed` as
+    `(deficit + LCD - 1n) / LCD` for a positive deficit.
+  - Retains `wholeUnitsRenamed: 0n` for equal or larger left fractional
+    components and `1n` for ordinary proper mixed-number decomposition.
+  - Leaves negative-result rejection, return fields, and frozen classification
+    objects intact.
+- `tests/math-classification.test.js`
+  - Adds the required `3 1/4 - 0 9/4` case with count `2n`, two repeated
+    one-whole transitions, exact-value preservation, and a sufficient final
+    fractional component.
+  - Adds an unlike-denominator case `4 1/4 - 0 17/6` with LCD `12`, deficit
+    `31`, and count `3n`.
+  - Adds an exact positive-count matrix for counts `1n`, `2n`, and `3n`, checking
+    value preservation after every transition and final LCD sufficiency.
+  - Adds an improper-left case (`2 9/4 - 0 13/4`) so both operand current forms
+    are protected from canonicalization.
+  - Adds explicit equal-fraction no-regrouping and negative-result cases where
+    the left fractional component is larger, preserving the Repair 01 boundary.
+
+### Validation performed
+
+The final post-repair run was executed after the advisor-recommended test
+hardening was integrated:
+
+```text
+$ npm test
+Test Files  4 passed (4)
+Tests       94 passed (94)
+Exit code: 0
+
+$ npm run build
+vite build succeeded; dist/index.html emitted
+Exit code: 0
+
+$ node scripts/dev/plan-status.js lint
+lint: OK (no violations)
+Exit code: 0
+
+$ git diff --check
+Exit code: 0
+
+$ exact production-boundary scan over src/math/*.js
+clean: the changed classifier has no canonicalization call, and the remaining
+math source has no floating/random/time, DOM, network, or browser-storage
+references
+Exit code: 0
+```
+
+Targeted validation also passed after the final edits: 43 tests across
+`math-classification.test.js` and `math-core.test.js`.
+
+The required packet preflight reported
+`BLOCKED: plan-02 has status "delivered" — not ready or in-progress`. The direct
+request explicitly resumed this named Repair 02 while requiring that status to
+remain `delivered`; no status mutation or generated-index change was performed.
+
+### Fresh advisor-consultation disposition
+
+- **Consultation branch:** Branch A — capable and warranted. Repair 02 changes
+  executable mathematical classification behavior and its tests.
+- **Capability evidence:** `advisor-capable-providers.json` identifies the Codex
+  provider as capable when a callable subagent surface and higher-tier model
+  selector are available. This thread had the callable `multi_agent_v1` surface
+  and used its read-only reviewer role with a higher-tier model request.
+- **Requested advisor model:** `gpt-6-astra`, reviewer role, high reasoning.
+- **Observed advisor model:** `GPT-6`, stated by the advisor at the start of its
+  response. The observation confirms the GPT-6 family without claiming an
+  unreported model suffix.
+- **Effective sandbox / read-only posture:** Instruction-read-only with
+  post-hoc verification. The actual diff was inlined into a depth-1 reviewer
+  brief; the advisor was instructed not to edit files, mutate Git state, change
+  packet status, or spawn children. Structural read-only enforcement was not
+  independently verifiable from this surface.
+- **Post-consultation status check:** The advisor reported no file or Git-state
+  mutation. The primary thread then confirmed that only the two expected Repair
+  02 source/test paths were modified before the source/test commit.
+- **Coarse cost:** one advisor turn and one bounded completion wait, under one
+  minute of advisor wall time.
+
+#### Advisor findings and dispositions
+
+1. **Improper fractional component on the left was not directly protected by
+   the new tests — accepted.** The advisor independently checked that
+   `2 9/4 - 0 13/4` requires exactly one renamed whole in the authoritative
+   current forms, while canonicalizing the left operand would produce a wrong
+   count. That regression case was added; no production change was needed.
+
+2. **Equality and negative-result boundaries lacked explicit discriminators —
+   accepted.** The advisor recommended an equal fractional-component case that
+   must return `regroupingType: 'none'`, `requiresRegrouping: false`, and
+   `wholeUnitsRenamed: 0n`, plus a negative-result case whose left fractional
+   component is larger than the right. Both tests were added; no production
+   change was needed.
+
+The advisor found no blocking implementation defect. Its independent read-only
+probe covered 76,176 exact combinations using denominators `1..6`, numerators
+from zero through three times each denominator, and whole parts `0..3`. It
+reported all 39,230 nonnegative and 36,946 negative cases behaving as required,
+including minimality, sufficient whole availability, repeated transitions, and
+an above-safe-integer exactness check. These results are corroborating review
+evidence, not a substitute for the repository validation commands above.
+
+### Commit and handoff
+
+- Source/test commit: `d72bd10` (`fix(math): count multiple-whole regrouping`).
 - The progress-report addendum is the final scoped report change and is committed
   separately as the final report commit.
 - No push was performed.
