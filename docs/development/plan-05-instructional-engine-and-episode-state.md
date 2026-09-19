@@ -1,11 +1,9 @@
 ---
 id: plan-05
 title: Instructional Engine and Episode State
-status: draft
+status: in-progress
 depends_on: [plan-04]
 gate: "Mechanism confirmation before implementation: the implementer proposes the episode-state shape, beat transition model, response-classification delegation, provenance record, and the eligibility evaluator's inputs and outputs, and stops for orchestrator approval. No DOM, no rendering, no strings."
-superseded_by: null
-resolution: null
 summary: >-
   Build the instructional layer of the pipeline in src/interaction/: the episode
   state machine for encounter through resolve, support configuration, response

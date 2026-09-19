@@ -17,9 +17,11 @@ Authoritative packet status is `node scripts/dev/plan-status.js list` and the ge
 - `plan-03` (content contracts and deterministic generation): **complete**. Immutable problem
   instances, eight structural selectors, overlays, provenance, deterministic selection, bulk audit.
 - `plan-04` (first-slice design dossier): **complete**, owner-accepted 2026-09-19.
-- `plan-05` through `plan-09`: **draft**, the Phase 2 implementation wave. Drafted at `4bb2879`,
-  revised at `4371c25` after a packet-wave review by the Codex orchestrator thread. All six of that
-  review's recommendations were accepted.
+- `plan-05` (instructional engine plus representation eligibility): **in progress**, assigned by the
+  owner on 2026-09-19 after the revised-wave review. Its mechanism-confirmation gate remains mandatory.
+- `plan-06` through `plan-09`: **draft**, awaiting their dependencies and their own assignment gates.
+  The Phase 2 wave was drafted at `4bb2879` and revised at `4371c25` after a packet-wave review by the
+  Codex orchestrator thread. All six of that review's recommendations were accepted.
 
 ## The Specification Phase Closed on 2026-09-19
 
@@ -132,12 +134,11 @@ and public URL.
 
 ## Next Orchestration Move
 
-The wave review is complete and its recommendations are folded in. The owner is deciding which thread
-oversees implementation; until that is settled, `plan-05` through `plan-09` stay `draft`.
-
-Whichever thread continues: run `check plan-05`, promote it, and take the owner's `ready` versus
-`in-progress` choice. Then hold the mechanism-confirmation gate firmly — it is the guardrail that has
-worked every time it was used here, and the one whose absence produced overclaims.
+The wave review is complete and its recommendations are folded in. The owner assigned `plan-05` directly
+to `in-progress` on 2026-09-19; `node scripts/dev/plan-status.js check plan-05` reported `RUNNABLE`.
+The next implementer action is the **mechanism-confirmation proposal only**. It must propose the episode
+state, beat transitions, response-classification delegation, provenance record, and the narrow content
+eligibility evaluator; it must then stop for orchestrator approval before implementation.
 
 Two cautions for the implementation phase specifically. First, `plan-07`'s three-path gate is the
 wave's load-bearing review moment; approving a boundary that accounts only for the visual and symbolic
