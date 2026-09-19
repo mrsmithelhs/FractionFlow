@@ -327,9 +327,15 @@ as the container for:
 
 To preserve Presentation Posture Part 2 Rule 2 (the research apparatus is never visible to the learner),
 condition options inside this menu must use plain-language, child-safe descriptions of visual/interaction
-styles (e.g. "Visual change: Smooth / Side-by-side / Step-by-step") or be clearly grouped under a distinct
-"Reviewer / Teacher Options" section, with raw specification codes (`D-01`, `CM-01`, etc.) kept in
-internal data attributes rather than user-facing strings.
+styles (e.g. "Visual change: Smooth / Side-by-side / Step-by-step") **and** be clearly grouped under a
+distinct "Reviewer / Teacher Options" section, with raw specification codes (`D-01`, `CM-01`, etc.) kept
+in internal data attributes rather than user-facing strings.
+
+*Clarification 2026-09-19, owner-authorized:* the conjunction above was recorded as "or" and is corrected
+to "and" on the day of entry. With "or", relabeling alone satisfied the rule and condition switching sat
+beside learner preferences with no separation — dissolving DECISION-006's surface-separation rule rather
+than narrowing it as this entry's Supersedes line states. Both the plain-language register and the
+distinct grouping are required.
 
 **Rationale:** Provides an intuitive, discoverable, and touch-accessible reaching mechanism on static
 GitHub Pages across desktop, tablet, and mobile devices without requiring URL manipulation or devtools
