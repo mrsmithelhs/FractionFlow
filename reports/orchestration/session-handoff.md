@@ -24,8 +24,14 @@ index in `docs/development/README.md` — trust those over this file. As of 2026
   provenance, synthetic fixtures, deterministic selection, and reproducible finite-space bulk
   audit. Repair 01 closed validator completeness and seed-selection bias. See
   `reports/development/plan-03-content-contracts-and-deterministic-generation/final-review.md`.
-- `plan-04`: `ready`, pending the packet's explicit owner approval before its design dossier is
-  assigned. All first-wave packets were revised per Codex review (commit `ef45aa2`); the wave was
+- `plan-04` (first-slice design dossier): **delivered, orchestrator-reviewed, awaiting owner
+  acceptance**. Implementer commits `0171d97` (dossier) and `6e78271` (progress report);
+  orchestrator review and Tier-1 corrections at `9db7719`. The packet gate is owner acceptance of
+  the dossier; no Phase 2 implementation packet may be drafted before that. See
+  `reports/development/plan-04-first-vertical-slice-design-preparation/review.md` for what was
+  verified against repository truth, the three inline corrections, and the four items the Phase 2
+  implementation packet must carry.
+- All first-wave packets were revised per Codex review (commit `ef45aa2`); the wave was
   originally drafted at `94df306`.
 
 ## Close-out Note (plan-01)
@@ -83,12 +89,31 @@ disposition record also remains in the committed Plan 01 progress report.
   perform a skeptical orchestrator reconciliation to prevent sidequests or incompatible accepted
   decisions from drifting the core product.
 
+## Carried Forward Into the Phase 2 Implementation Packet
+
+From the Plan 04 review (full text in the review file; these are the items most likely to be
+rediscovered expensively):
+
+1. Phase 2 must ship one display/prompt condition even though D-01, D-02, D-05, and CM-01 are
+   deliberately undecided. The packet needs an explicit provisional-condition rule — chosen for
+   runnability, labeled not-decided, swappable without touching mathematical or instructional
+   state — or the choice hardens into a default by inertia.
+2. The register's primary outcomes require learner observation, which is owner-gated and may
+   never be authorized. State the standing position for that case.
+3. Conclusion rules turn on "meaningful regression" in agency and participation-floor access.
+   Those are tail events; require worst-case and individual-level reporting, not means.
+4. "Uncued transfer" is a primary outcome in every register entry, but no transfer task is
+   authored anywhere. Name it before costing the experiments.
+
 ## Next Orchestration Move
 
-Plan 03 closed on 2026-09-19 after Repair 01 and final independent review. The repair now rejects
+Plan 04's dossier is delivered and orchestrator-reviewed; the open gate is the owner's
+acceptance of it. On acceptance, close `plan-04` with a resolution, then run the design-review
+session for the genuinely interdependent learner-facing prototype decisions, then perform a
+skeptical orchestrator reconciliation before drafting the Phase 2 implementation packet. Do not
+let the implementation packet be drafted from the dossier alone — the four carried-forward items
+above are exactly what the dossier does not settle.
+
+Plan 03 closed on 2026-09-19 after Repair 01 and final independent review. The repair rejects
 forged derived state, returns an invalid result for malformed records, and selects directly from
-ordered eligible candidates; a 70,000-seed sweep ranged 9,758–10,145 across seven cases. Plan 04
-is the next packet and is status-ready, but its explicit owner-approval gate must be cleared
-before it is assigned. It prepares a dossier only; after the dossier, use a design-review session
-for the genuinely interdependent learner-facing prototype decisions, then perform a skeptical
-orchestrator reconciliation before any Phase 2 implementation packet.
+ordered eligible candidates; a 70,000-seed sweep ranged 9,758–10,145 across seven cases.
