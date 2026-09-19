@@ -37,11 +37,10 @@ describe('Plan 03 structural selectors and generated contract', () => {
       expect(instance.resultState.exactResult).toBeDefined();
       expect(instance.resultState.canonicalRawResultForm).toBeDefined();
       expect(instance.resultState.preferredFinalForm).toBeDefined();
-      expect(instance.representationFacts.eligibility).toEqual({
-        fractionBar: 'deferred',
-        numberLine: 'deferred',
-        symbolic: 'deferred',
-      });
+      expect(() => JSON.stringify(instance)).not.toThrow();
+      expect(instance.representationFacts.eligibility.numberLine).toBe('not-in-phase-2');
+      expect(instance.representationFacts.eligibility.symbolic).toBe('eligible');
+      expect(Object.values(instance.representationFacts.eligibility)).not.toContain('deferred');
     }
   });
 

@@ -11,6 +11,7 @@ import {
 import { validateOverlayMembership, validateStructuralMembership } from './membership.js';
 import { buildPathFacts } from './analysis.js';
 import { FAMILY_DEFINITIONS } from './family-definitions.js';
+import { evaluateInstanceEligibility } from './eligibility.js';
 import {
   evaluateCandidate,
   inspectCandidateSpace,
@@ -331,7 +332,11 @@ function expectedClassification(request, facts, canonicalPath, alternatePaths) {
       alternateCommonDenominators: alternatePaths.map((path) => path.targetDenominator),
     },
     transformations: {
-      canonicalRenaming: facts.renaming,
+      canonicalRenaming: {
+        left: facts.renaming.left,
+        right: facts.renaming.right,
+        targetDenominator: facts.renaming.targetDenominator.toString(),
+      },
       canonical: canonicalPath.transformations,
       alternates: alternatePaths.map((path) => path.transformations),
     },
@@ -359,7 +364,8 @@ function expectedClassification(request, facts, canonicalPath, alternatePaths) {
   };
 }
 
-function expectedRepresentationFacts(facts) {
+function expectedRepresentationFacts(facts, instance) {
+  const eligibility = evaluateInstanceEligibility(instance);
   return {
     operandDenominators: {
       left: facts.left.denominator.toString(),
@@ -376,12 +382,8 @@ function expectedRepresentationFacts(facts) {
       right: facts.right.denominator.toString(),
       canonical: facts.lcd.toString(),
     },
-    eligibility: {
-      fractionBar: 'deferred',
-      numberLine: 'deferred',
-      symbolic: 'deferred',
-    },
-    alternateRepresentationRecommendation: 'none',
+    eligibility: eligibility.eligibility,
+    alternateRepresentationRecommendation: eligibility.alternateRepresentationRecommendation,
   };
 }
 
@@ -504,7 +506,7 @@ export function validateProblemInstance(instance) {
     });
     addCheck(checks, 'representation-facts-contract', sameWire(
       instance.representationFacts,
-      expectedRepresentationFacts(facts),
+      expectedRepresentationFacts(facts, instance),
     ));
     addCheck(checks, 'review-metadata-contract', sameWire(
       instance.reviewMetadata,

@@ -116,7 +116,7 @@ the learner enters after an error or a help request.
 
 | Live pair | Minimum discriminating experiment |
 | --- | --- |
-| A vs B | Randomize matched learners or counterbalance within a bounded synthetic episode set. Keep content, prediction, endpoint, controls, support, and replay identical. Compare prediction, immediate equivalence reasoning, fresh-form transfer, help/replay use, and access/agency defects. Repeat with reduced-motion enabled so the same semantic endpoint is tested. |
+| A vs B | Randomize matched learners or counterbalance within a bounded synthetic episode set. Keep content, prediction, endpoint, controls, support, and replay identical. Compare prediction, immediate equivalence reasoning, help/replay use, and access/agency defects. Repeat with reduced-motion enabled so the same semantic endpoint is tested. |
 
 ### Conclusion rule
 
@@ -150,8 +150,8 @@ fixed pixel coordinates across responsive layouts.
 | Rival | Observation that would falsify the rival |
 | --- | --- |
 | M | Morphing causes learners to miss or misidentify the invariant relationship, particularly on narrow layouts or reduced motion, and does not recover that loss through replay or final inspection where J or S does. |
-| J | Juxtaposition adds comparison burden or prompt fragmentation without improving invariant identification, immediate equivalence reasoning, or transfer relative to M or S. |
-| S | Sequential replacement makes the relationship appear to be a value change or removes necessary comparison context, producing worse invariant identification or transfer than M or J. |
+| J | Juxtaposition adds comparison burden or prompt fragmentation without improving invariant identification, immediate equivalence reasoning, or replay comprehension relative to M or S. |
+| S | Sequential replacement makes the relationship appear to be a value change or removes necessary comparison context, producing worse invariant identification or replay comprehension than M or J. |
 
 ### Manipulated and held-constant variables
 
@@ -183,9 +183,9 @@ before or after a correction.
 
 | Live pair | Minimum discriminating experiment |
 | --- | --- |
-| M vs J | Keep a connection-making prompt, endpoints, and final comparison time fixed; compare invariant identification, immediate reasoning, transfer, and access defects. |
+| M vs J | Keep a connection-making prompt, endpoints, and final comparison time fixed; compare invariant identification, immediate reasoning, replay comprehension, and access defects. |
 | M vs S | Keep the semantic anchors and endpoint inspection identical; compare whether continuous versus sequential change affects perceived quantity preservation and replay use. |
-| J vs S | Keep total exposure time and all prompts fixed; compare direct comparison accuracy, cognitive burden, and transfer when both states are co-present versus temporally separated. |
+| J vs S | Keep total exposure time and all prompts fixed; compare direct comparison accuracy, cognitive burden, and replay comprehension when both states are co-present versus temporally separated. |
 
 ### Conclusion rule
 
@@ -256,7 +256,7 @@ is animated or static in a separately controlled comparison.
 
 | Live pair | Minimum discriminating experiment |
 | --- | --- |
-| L vs H | Counterbalance the same learner across matched instances with identical display and support. Compare prediction, immediate reasoning, transfer, burden, help/replay, and evidence completeness. |
+| L vs H | Counterbalance the same learner across matched instances with identical display and support. Compare prediction, immediate reasoning, burden, help/replay, and evidence completeness. |
 | L vs C | Hold the same key moments constant and vary only conditional additions after an error or help request. Compare whether extra prompts repair evidence without introducing inconsistent task demands. |
 | H vs C | Compare fixed dense prompts with conditionally added prompts under the same error/help opportunities. Inspect whether conditional prompts preserve evidence while reducing unnecessary burden. |
 
@@ -296,9 +296,9 @@ equivalent path.
 
 | Rival | Observation that would falsify the rival |
 | --- | --- |
-| N | Co-presence without an explicit demand yields weaker evidence of correspondence and weaker immediate reasoning or fresh-form transfer than M or E, without a compensating reduction in burden that matters to the target episode. |
-| M | Matching/identification does not improve correspondence or transfer over no prompt and adds avoidable guessing or interaction burden compared with E or N. |
-| E | Brief explanation adds language or motor burden without improving correspondence, reasoning, or transfer beyond structured mapping or no prompt, including when an equivalent response mode is provided. |
+| N | Co-presence without an explicit demand yields weaker evidence of correspondence and weaker immediate reasoning than M or E, without a compensating reduction in burden that matters to the target episode. |
+| M | Matching/identification does not improve correspondence or immediate reasoning over no prompt and adds avoidable guessing or interaction burden compared with E or N. |
+| E | Brief explanation adds language or motor burden without improving correspondence or reasoning beyond structured mapping or no prompt, including when an equivalent response mode is provided. |
 
 ### Manipulated and held-constant variables
 
@@ -329,14 +329,14 @@ narrow layout; and supported construction versus reduced-support work.
 
 | Live pair | Minimum discriminating experiment |
 | --- | --- |
-| N vs M | Keep both representations co-present and all display variables fixed; compare explicit correspondence and fresh-form transfer against interaction burden. |
+| N vs M | Keep both representations co-present and all display variables fixed; compare explicit correspondence and immediate reasoning against interaction burden. |
 | N vs E | Keep the same co-presence and response time; compare whether a brief explanation adds evidence of invariant understanding beyond silent co-presence without language-driven confounding. |
-| M vs E | Use equivalent low-language response alternatives where possible; compare mapping accuracy, explanation of the invariant, transfer, and burden. |
+| M vs E | Use equivalent low-language response alternatives where possible; compare mapping accuracy, explanation of the invariant, immediate reasoning, and burden. |
 
 ### Conclusion rule
 
 The prompt form is provisionally favored only if it produces stronger evidence of
-the intended correspondence or transfer without revealing the answer or
+the intended correspondence or immediate reasoning without revealing the answer or
 excluding learners through avoidable response burden. If the data do not separate
 two conditions, explicitly write **consistent with N and M**, **consistent with
 N and E**, or **consistent with M and E**, and name the next experiment. If all

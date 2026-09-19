@@ -14,6 +14,7 @@ import {
 import { deriveFacts, buildPathFacts } from './analysis.js';
 import { validateOverlayMembership, validateStructuralMembership } from './membership.js';
 import { getProfile } from './profiles.js';
+import { evaluateInstanceEligibility } from './eligibility.js';
 import {
   canonicalSeedKey,
   createSeededRng,
@@ -336,7 +337,11 @@ function makeProblem({ request, evaluation, provenance }) {
         alternateCommonDenominators: alternatePaths.map((path) => path.targetDenominator),
       },
       transformations: {
-        canonicalRenaming: facts.renaming,
+        canonicalRenaming: {
+          left: facts.renaming.left,
+          right: facts.renaming.right,
+          targetDenominator: facts.renaming.targetDenominator.toString(),
+        },
         canonical: canonicalPath.transformations,
         alternates: alternatePaths.map((path) => path.transformations),
       },
@@ -379,11 +384,11 @@ function makeProblem({ request, evaluation, provenance }) {
         canonical: facts.lcd.toString(),
       },
       eligibility: {
-        fractionBar: 'deferred',
-        numberLine: 'deferred',
-        symbolic: 'deferred',
+        fractionBar: null,
+        numberLine: null,
+        symbolic: null,
       },
-      alternateRepresentationRecommendation: 'none',
+      alternateRepresentationRecommendation: null,
     },
     reviewMetadata: {
       scaleFactors: {
@@ -403,6 +408,9 @@ function makeProblem({ request, evaluation, provenance }) {
       synthetic: true,
     },
   };
+  const eligibility = evaluateInstanceEligibility(instance);
+  instance.representationFacts.eligibility = eligibility.eligibility;
+  instance.representationFacts.alternateRepresentationRecommendation = eligibility.alternateRepresentationRecommendation;
   return deepFreeze(instance);
 }
 

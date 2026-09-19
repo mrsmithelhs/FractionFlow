@@ -76,7 +76,7 @@ function reportForRequest({ request, sampleSize, baseSeed, profileId }) {
     canonicalPath: { passed: 0, failed: 0 },
     alternatePath: { checked: 0, passed: 0, failed: 0 },
     excludedComplexity: { passed: 0, failed: 0 },
-    representationFacts: { recorded: 0, deferredEligibility: 0, failed: 0 },
+    representationFacts: { recorded: 0, eligibleVerdict: 0, failed: 0 },
   };
 
   for (let index = 0; index < sampleSize; index += 1) {
@@ -105,7 +105,7 @@ function reportForRequest({ request, sampleSize, baseSeed, profileId }) {
       checks.alternatePath[alternatePass ? 'passed' : 'failed'] += alternatePathCount;
       checks.excludedComplexity[complexityPass ? 'passed' : 'failed'] += 1;
       checks.representationFacts.recorded += instance.representationFacts ? 1 : 0;
-      checks.representationFacts.deferredEligibility += representationPass ? 1 : 0;
+      checks.representationFacts.eligibleVerdict += representationPass ? 1 : 0;
       checks.representationFacts.failed += representationPass ? 0 : 1;
       if (!validation.valid) {
         failureSamples.push({ seed, id: instance.id, reason: 'instance-validation-failed' });
