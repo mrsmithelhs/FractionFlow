@@ -15,8 +15,16 @@ on design grounds:
 
 This provisional bundle remains labeled not-decided in both code and reports.
 Per DECISION-006, design conditions must be swappable at runtime upstream in the
-deployed static build. The entries below define the live rival hypotheses and
-falsification observations that would disqualify a condition if observed.
+deployed static build (accessed via the entry-page gear menu per DECISION-019).
+The entries below define the live rival hypotheses and falsification observations
+that would disqualify a condition if observed.
+
+Per DECISION-020, child observation is not a blocking gate on Phase 2 acceptance;
+informal small-n child evidence serves as post-acceptance disqualification evidence.
+Per DECISION-022, participation-floor and accessibility reporting for small-n
+observations must report worst-case individual tail events rather than aggregates.
+Per DECISION-024, uncued transfer is struck from primary outcomes as unmeasurable
+on this evidence ladder, and the Phase 2 specification phase is declared complete.
 
 ## Shared experimental contract
 
@@ -40,15 +48,16 @@ Unless an entry explicitly varies it, hold constant:
   rather than silently treating them as the visual default.
 
 Primary outcomes are prediction before reveal, immediate equivalence reasoning,
-uncued transfer on an appropriately changed but mathematically matched task, and
-help/replay use. Secondary outcomes include comprehension, agency, error
-recovery, response time interpreted cautiously, and accessibility-specific
-failures. Completion speed or click count alone cannot select a condition.
+and help/replay use. (Note: uncued transfer was struck from primary outcomes per
+DECISION-024 as unmeasurable on a small-n disqualification evidence ladder.)
+Secondary outcomes include comprehension, agency, error recovery, response time
+interpreted cautiously, and accessibility-specific failures. Completion speed or
+click count alone cannot select a condition.
 
-For every experiment, record whether the response was supported construction,
-prediction, or independent transfer; what was visible or supplied; whether help,
-replay, correction, or retry preceded it; and whether the task remained the same
-stable episode or changed representation.
+For every experiment, record whether the response was supported construction
+or prediction; what was visible or supplied; whether help, replay, correction, or
+retry preceded it; and whether the task remained the same stable episode or changed
+representation.
 
 ## D-01 — Animated transformation versus static/key-frame comparison
 
@@ -90,7 +99,7 @@ they do not select A or B.
   changed;
 - whether the learner can inspect and identify the post-state after a missed or
   skipped transition;
-- uncued transfer to a fresh denominator pair or symbolic-only matched task;
+- uncued transfer to a fresh denominator pair or symbolic-only matched task (struck per DECISION-024; unmeasurable on small-n ladder);
 - help and replay use, including whether replay restores agency or becomes a
   substitute for prediction; and
 - adult and child evidence of motion burden, meaning, and access, recorded
@@ -157,7 +166,7 @@ fixed pixel coordinates across responsive layouts.
 
 - identification of what stayed invariant and what changed;
 - immediate equivalence reasoning after the transformation;
-- delayed or fresh-form uncued transfer;
+- delayed or fresh-form uncued transfer (struck per DECISION-024; unmeasurable on small-n ladder);
 - errors attributable to visual comparison or missing context;
 - help/replay use and whether replay is sufficient to inspect the relationship;
 - comprehensibility and agency across viewport and input variants; and
@@ -228,7 +237,7 @@ session dose, or fading threshold.
 
 - pre-reveal prediction quality and willingness to predict;
 - immediate equivalence reasoning and operation reasoning;
-- uncued transfer after a prompt-free or changed-format task;
+- uncued transfer after a prompt-free or changed-format task (struck per DECISION-024; unmeasurable on small-n ladder);
 - prompt rereads, skipped prompts, guessing loops, fatigue, and over/under-
   scaffolding observations;
 - help/replay requests and whether they correspond to a useful next support;
@@ -304,7 +313,7 @@ equivalent path.
 
 - immediate identification of equivalent quantities;
 - explanation or demonstration of why the quantity stayed equal;
-- uncued transfer to a fresh representation or fresh denominator pair;
+- uncued transfer to a fresh representation or fresh denominator pair (struck per DECISION-024; unmeasurable on small-n ladder);
 - guessing, burden, response refusal, and language/motor access issues;
 - whether the prompt preserves learner agency rather than telling the answer; and
 - provenance showing whether the response was prompted, supported, corrected, or

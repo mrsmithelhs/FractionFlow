@@ -246,10 +246,10 @@ rule for anything learner-facing.
 ## Related open questions
 
 - **OQ-10** — fully resolved: target set by DECISION-004 (grade 2–3); authoring and review workflow
-  set by DECISION-017 (implementer authors in centralized table `src/content/strings.js`,
+  set by DECISION-017 and DECISION-023 (implementer authors in centralized table `src/render/strings.js`,
   orchestrator/owner reviews and gates during packet verification).
-- **OQ-06** — the §25 aesthetic-coherence criterion still has no review mechanism; the two review
-  questions in this document are the best candidates the project currently has.
+- **OQ-06** — fully resolved: evaluated via 4-point Owner/Teacher Review Rubric per DECISION-021
+  (dashboard accumulation, reading level, touch target size, calm pacing).
 
 # Scope
 

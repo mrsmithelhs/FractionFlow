@@ -460,6 +460,112 @@ it depends on no menu at all.
 DECISION-006 unmodified; related to DECISION-007, DECISION-012, DECISION-013; narrows OQ-15, whose
 formal disposition belongs to Batch D; updates OQ-16.
 
+### DECISION-020 - Phase 2 acceptance conditions and child observation gate
+
+**Date:** 2026-09-19
+
+**Decision:** Phase 2 acceptance is achievable upon solo review, automated/mechanized verification,
+and adult accessibility and instructional review, including deployment verification at the public
+GitHub Pages URL. Child observation is not a blocking gate on Phase 2 acceptance. Informal, small-n
+child observations with parental permission remain valuable post-acceptance disqualification evidence
+that may occur on no fixed schedule per DECISION-005.
+
+**Rationale:** Resolves OQ-05. The accessibility participation floor (`05-quality-and-validation.md` §44)
+is a design and review obligation verified deterministically and via expert accessibility review, not
+an empirical research finding. Small-n child evidence serves strictly to disqualify broken conditions
+rather than select winners. Requiring child observation as a blocking gate would create an indefinite
+scheduling deadlock for an open-source static learning project without altering the mathematical or
+architectural validity of the vertical slice.
+
+**Supersedes / related:** Resolves OQ-05; clarifies `docs/founding/06-roadmap.md` §§16, 25;
+references DECISION-005.
+
+### DECISION-021 - Owner/Teacher aesthetic coherence review rubric
+
+**Date:** 2026-09-19
+
+**Decision:** The Roadmap §25 exit-gate criterion of "aesthetic coherence" (and §23 attention to
+restraint, calm, whitespace, and layout) is evaluated using a 4-point Owner/Teacher Review Rubric
+derived from `docs/presentation-posture.md`. Any single violation is a blocking failure at the Phase 2
+acceptance gate:
+1. **Restraint against dashboard accumulation:** No competing metrics, secondary counters, progress
+   meters, or persistent chrome may clutter the scene or compete with the fraction bar and current question.
+2. **Language and register clarity:** All learner-facing strings must pass DECISION-004 working rules
+   (grade 2–3 reading level, ~12 words per prompt, active voice, concrete words, zero specification or
+   research terminology).
+3. **Child-appropriate touch targets and spacing:** Interactive controls must comply with WCAG 2.2
+   SC 2.5.8 (>= 24x24px) with generous visual margins to prevent accidental touches.
+4. **Calm pacing and anchored inspection:** Visual transitions must be learner-triggered, calm, and
+   spatially anchored in the stable whole, with endpoints remaining inspectable indefinitely without auto-advancing.
+
+**Rationale:** Resolves OQ-06. Replaces an unfalsifiable qualitative slogan with a concrete, binary
+checklist. Linking failure directly to presentation-posture review questions ensures that "calm" is an
+actionable architectural standard that implementers can design against and reviewers can enforce.
+
+**Supersedes / related:** Resolves OQ-06; operationalizes `docs/founding/06-roadmap.md` §§23, 25;
+`docs/presentation-posture.md`.
+
+### DECISION-022 - Reporting rules for participation-floor and accessibility outcomes
+
+**Date:** 2026-09-19
+
+**Decision:** For all small-n learner observations (solo review, small group of children, single classroom),
+reporting of participation-floor and accessibility outcomes must be conducted at the individual level,
+reporting worst-case tail events. An aggregate mean or percentage success rate cannot be used to mask an
+individual access lockout (such as one child unable to operate a control).
+
+Aggregate statistics are permitted when sample sizes warrant them, and this rule does not foreclose larger
+testing if it becomes possible and warranted later; however, aggregate metrics must complement, never
+substitute for, worst-case individual access reporting.
+
+**Rationale:** Resolves OQ-07. At small sample sizes (n approx 5), statistical averages are uninformative
+and misleading. A single child locked out by a motor or reading barrier is a complete failure of the
+participation floor. Requiring individual and tail-first reporting honors the disqualification role of
+evidence under DECISION-005 while preserving the option for larger studies in the future.
+
+**Supersedes / related:** Resolves OQ-07; references DECISION-005; `docs/evidence-posture.md`.
+
+### DECISION-023 - Relocate centralized learner strings to `src/render/strings.js`
+
+**Date:** 2026-09-19
+
+**Decision:** The centralized catalog for learner-facing copy mandated by DECISION-017 is located at
+`src/render/strings.js`, superseding the `src/content/strings.js` path in DECISION-017. All other provisions
+of DECISION-017 (centralized table, implementer authoring, blocking review gate against DECISION-004 rules)
+stand unchanged.
+
+**Rationale:** Conforms to the repository area map (`AGENTS.md:21-24`). `src/content/` owns exact
+arithmetic, instance generation, and problem seeds, with zero DOM and zero UI dependencies. Learner-facing
+copy is presentation state that serves both the graphical rendering layer and the accessible linear
+alternative. Placing strings in `src/render/` maintains the clean architectural boundary of the math core
+and content pipeline.
+
+**Supersedes / related:** Amends the file location in DECISION-017; `AGENTS.md`.
+
+### DECISION-024 - Disposition of remaining Phase 2 blockers and specification completion
+
+**Date:** 2026-09-19
+
+**Decision:** Formally disposes of the remaining items in the Phase 2 blocking section of
+`docs/open-questions.md`:
+1. **OQ-08 (Transfer task): Dissolved.** Uncued transfer is struck from the prototype register's primary
+   outcomes because it is unmeasurable on a small-n disqualification evidence ladder (DECISION-005). No
+   transfer task is required for Phase 2.
+2. **OQ-04 (Accommodation vs scaffold): Downgraded to implementation decision.** Relegated to code
+   authoring for the accessible linear path; any support adaptation is decided and recorded with rationale
+   during implementation per DECISION-018.
+3. **OQ-15 (Preference persistence on shared devices): Reclassified to Deferred Past Phase 2.** Phase 2
+   ships no in-app learner preference surface (DECISION-019); floor items are satisfied by always-on design
+   or native OS/browser settings. OQ-15 becomes live only when in-app learner preferences are introduced.
+
+With OQ-01 through OQ-03, OQ-05 through OQ-07, OQ-13, OQ-14, and OQ-16 resolved by accepted decisions,
+and OQ-04, OQ-08, and OQ-15 disposed of above, the Phase 2 blocking section is empty. Per DECISION-018,
+the **Phase 2 design and specification phase is declared complete**, clearing the way for orchestrator
+reconciliation and implementation packet drafting.
+
+**Supersedes / related:** Amends DECISION-018; dissolves OQ-08; downgrades OQ-04; reclassifies OQ-15;
+updates `prototype-variable-register.md`.
+
 ## Proposed but not yet accepted
 
 Use the same `**Date:** YYYY-MM-DD` field for proposals, using the proposal date.

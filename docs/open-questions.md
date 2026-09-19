@@ -25,9 +25,9 @@ Each entry carries a **Needs:** line stating what would actually resolve it. An 
 
 ## Live for Phase 2 — these block the implementation packet
 
-These cannot be deferred past the Phase 2 implementation packet. They are interdependent: the
-display condition constrains the environment matrix, which constrains the accessibility evidence,
-which depends on the representation-eligibility verdict.
+> **Status: All items resolved or disposed of.** Every question originally in this section has been
+> resolved, downgraded to implementation, dissolved, or reclassified per DECISION-024. There are
+> no remaining blocking open questions for the Phase 2 implementation packet.
 
 ### OQ-01 — The first build must ship one display and prompt condition
 
@@ -86,10 +86,12 @@ semantic/linear path "preserve the same mathematical responsibility" and never b
 answer-revealing fallback — but a learner who needs the linear path may genuinely need more
 support, and the current rule gives no way to grant it without logging it as reduced independence.
 
-**Needs:** a rule for when an access adaptation may change what the learner is asked to do, and how
-that is recorded so it is not silently read as weaker performance.
+**Downgraded to implementation decision 2026-09-19 (DECISION-024).** DECISION-013 (tap primary)
+and DECISION-014 (beat-gated DOM lifecycle) establish the primary interaction and anti-leakage
+boundaries. Any specific support adaptation on the linear path is decided and recorded with rationale
+during implementation of that path, without blocking Phase 2 specification.
 
-**Source:** `D-13`; participation-floor row 5 of the accessibility plan.
+**Source:** `D-13`; participation-floor row 5 of the accessibility plan; DECISION-024.
 
 ### OQ-05 — Will a child ever be observed, and is Phase 2 acceptance conditional on it?
 
@@ -99,16 +101,13 @@ child evidence optional until an owner gate calls for it, and that gate has neve
 scheduled. If it never opens, every register entry is unrunnable and OQ-01's provisional condition
 becomes permanent by default.
 
-**Partially answered 2026-09-19 (DECISION-005).** Children will be observed: informally, at small
-n, with permission, on no fixed schedule. The standing position for the four prototype variables in
-the meantime is set by DECISION-005 and OQ-01.
-
-**Needs:** the narrower remaining question — whether any child observation is a *precondition* of
-Phase 2 acceptance, or whether Phase 2 may be accepted on solo review plus mechanized and human
-checks.
+**Resolved 2026-09-19 (DECISION-020).** Phase 2 acceptance is achievable on solo review, automated
+checks, and adult accessibility/instructional review, including public deployment verification. Child
+observation is not a blocking precondition; small-n child evidence remains valuable post-acceptance
+disqualification evidence on no fixed schedule per DECISION-005.
 
 **Source:** `plan-04` review, carried-forward item 2; `05-quality-and-validation.md` §52;
-`docs/evidence-posture.md`.
+`docs/evidence-posture.md`; DECISION-005; DECISION-020.
 
 ### OQ-06 — "Aesthetic coherence" is an exit-gate criterion with no mechanism
 
@@ -117,10 +116,12 @@ and §23 demands disproportionate attention to whitespace, typography, timing, m
 Nothing in the dossier or any packet plans how that is evidenced or by whom. As written it is
 unfalsifiable at the gate.
 
-**Needs:** a review mechanism — most plausibly an owner/teacher review rubric, since owner/teacher
-review is this project's final authority on anything learner-facing.
+**Resolved 2026-09-19 (DECISION-021).** Evaluated using a 4-point Owner/Teacher Review Rubric derived
+from `docs/presentation-posture.md` review questions (restraint against dashboard accumulation,
+DECISION-004 grade 2–3 reading rules, WCAG 2.2 SC 2.5.8 touch target sizing, and anchored calm pacing).
+Any single violation is a blocking failure at the acceptance gate.
 
-**Source:** `06-roadmap.md` §§23, 25; `plan-04` review, inline correction 3.
+**Source:** `06-roadmap.md` §§23, 25; `docs/presentation-posture.md`; DECISION-021.
 
 ### OQ-07 — Tail reporting, not averages, for participation-floor outcomes
 
@@ -129,13 +130,12 @@ agency, inspectability, or participation-floor access. Those are tail events: on
 out of a required decision matters regardless of the mean. Aggregate statistics would hide exactly
 the failure the floor exists to catch.
 
-**Amended 2026-09-19 (DECISION-005).** This matters more under a small-n ladder, not less: at an n
-of five, every observation *is* the tail and there is no mean worth reporting.
+**Resolved 2026-09-19 (DECISION-022).** For small-n observations, participation-floor and accessibility
+outcomes must be reported at the individual level, reporting worst-case tail events; an aggregate mean
+cannot mask an individual lockout. Aggregate metrics are permitted when sample sizes warrant them, but
+must complement, never substitute for, worst-case individual reporting.
 
-**Needs:** a reporting rule requiring per-condition worst-case and individual-level results for
-participation-floor-relevant outcomes.
-
-**Source:** `plan-04` review, carried-forward item 3; `docs/evidence-posture.md`.
+**Source:** `plan-04` review, carried-forward item 3; `docs/evidence-posture.md`; DECISION-005; DECISION-022.
 
 ### OQ-08 — The transfer task does not exist
 
@@ -144,10 +144,11 @@ in all four register entries. Neither the episode definition nor Plan 03's cover
 such a task. A fresh denominator pair inside `relatively-prime-addition` is available; a
 symbolic-only matched task is not.
 
-**Needs:** the transfer item named and authored, or the outcome removed from the register, before
-the experiments are costed.
+**Dissolved 2026-09-19 (DECISION-024).** Uncued transfer is struck from the prototype-variable
+register's primary outcomes because it is unmeasurable on a small-n disqualification evidence ladder
+(DECISION-005). No transfer task is required or costed for Phase 2.
 
-**Source:** `plan-04` review, carried-forward item 4.
+**Source:** `plan-04` review, carried-forward item 4; DECISION-005; DECISION-024.
 
 ### OQ-13 — Is drag an enhancement over a non-drag primary, or the primary with a non-drag fallback?
 
@@ -191,21 +192,7 @@ and semantic trees with support provenance logged.
 
 ### OQ-15 — How does a learner's access preference persist on a shared device with no accounts?
 
-`docs/presentation-posture.md` requires that basic participation not depend on a deeply hidden or
-teacher-only mode: a learner needing keyboard, non-drag, reduced-motion, or semantic access should
-be able to discover and use that path themselves. The project is static-only with no accounts
-(`00-principles.md`; DECISION-001), so any persisted preference lives in browser storage on a
-device that may be shared by a class.
-
-Both failure directions are real: a persisted preference carries one child's reduced-motion or
-keyboard setting to the next child at the same machine, and a non-persisted preference makes a
-learner who needs it re-select it every session. This is entangled with `D-10` (shared-device
-identity, reset, guest-save) and `D-11` (portable progress token), both currently deferred past
-Phase 2 — which may no longer be the right classification if Phase 2 ships a preference control.
-
-**Needs:** an owner decision on whether access preferences are per-session and set within the
-scene, or persisted locally — and if persisted, what resets them on a shared device. If this forces
-`D-10` earlier, say so explicitly rather than letting Phase 2 improvise a storage behavior.
+*Reclassified out of the Phase 2 blocking section to [Deferred past Phase 2](#oq-15--how-does-a-learners-access-preference-persist-on-a-shared-device-with-no-accounts) per DECISION-024.*
 
 ### OQ-16 — How is the design-condition switcher reached, and does it ship publicly?
 
@@ -272,11 +259,11 @@ the episode teaches exempt, enforced by working rules and human review rather th
 formula. See `docs/presentation-posture.md` Part 2. `docs/presentation-posture.md` Part 2 also rules
 that specification vocabulary is never learner-facing vocabulary.
 
-**Workflow resolved 2026-09-19 (DECISION-017):** Implementers author all learner-facing strings in a
-centralized table (`src/content/strings.js`) against the DECISION-004 working rules; orchestrators and
-owners review and gate them during packet verification before acceptance.
+**Workflow resolved 2026-09-19 (DECISION-017, DECISION-023):** Implementers author all learner-facing
+strings in a centralized table (`src/render/strings.js` per DECISION-023) against the DECISION-004
+working rules; orchestrators and owners review and gate them during packet verification before acceptance.
 
-**Source:** `docs/presentation-posture.md` Part 2; DECISION-004; DECISION-017.
+**Source:** `docs/presentation-posture.md` Part 2; DECISION-004; DECISION-017; DECISION-023.
 
 ### OQ-11 — What is the stopping rule for specification?
 
@@ -318,6 +305,31 @@ as new findings.
 - **Already addressed:** `D-16` scaffold-leakage invariants (planned in the `plan-04` dossier) and
   `D-20` Scene Model projection (answered by the `plan-04` scene-model position). Both remain open
   only in the sense that no implementation exists to satisfy them.
+
+### OQ-15 — How does a learner's access preference persist on a shared device with no accounts?
+
+`docs/presentation-posture.md` requires that basic participation not depend on a deeply hidden or
+teacher-only mode: a learner needing keyboard, non-drag, reduced-motion, or semantic access should
+be able to discover and use that path themselves. The project is static-only with no accounts
+(`00-principles.md`; DECISION-001), so any persisted preference lives in browser storage on a
+device that may be shared by a class.
+
+Both failure directions are real: a persisted preference carries one child's reduced-motion or
+keyboard setting to the next child at the same machine, and a non-persisted preference makes a
+learner who needs it re-select it every session. This is entangled with `D-10` (shared-device
+identity, reset, guest-save) and `D-11` (portable progress token), both currently deferred past
+Phase 2.
+
+**Reclassified to Deferred Past Phase 2 2026-09-19 (DECISION-024).** DECISION-019 removed the
+premise: Phase 2 ships no in-app learner preference surface and stores nothing in the browser. Every
+§44 floor item is met by always-on design or by an OS/browser preference the app honors rather than
+hosts. This question becomes live again when the first in-app learner preference is introduced.
+
+**Needs:** an owner decision on whether access preferences are per-session and set within the
+scene, or persisted locally — and if persisted, what resets them on a shared device. When in-app
+preferences are introduced post-Phase 2, resolve alongside `D-10` and `D-11`.
+
+**Source:** `docs/presentation-posture.md` Part 1; `D-10`; `D-11`; DECISION-019; DECISION-024.
 
 ---
 
