@@ -1,15 +1,17 @@
-# Accessibility and Presentation Posture
+# Presentation Posture
+
+Owner guidance on how the founding contracts apply as the project moves into learner-facing
+layers. Two sections: **accessibility posture** and **learner-facing register**.
 
 **Status:** owner guidance, recorded 2026-09-19. Subordinate to the founding documents; it
-changes none of them. It governs how implementers and reviewers apply the existing accessibility
-contracts as the project moves into presentation layers.
+changes none of them.
 
 **Authority:** owner decision, relayed through the `plan-04` implementer thread and reconciled by
 orchestration. Presentation-layer packets should cite this file alongside
 `docs/founding/05-quality-and-validation.md` §44 and `docs/founding/02-interaction-grammar.md`
 §§71–72.
 
-## The posture
+# Part 1 — Accessibility posture
 
 Accessibility should increase access to the learning experience, not replace the experience with
 an explanatory control panel.
@@ -127,7 +129,93 @@ back that file (see the note in that file).
    teacher-only mode, but the project is static-only with no accounts, so preferences live in
    browser storage on a possibly-shared classroom device.
 
-## Scope
+# Part 2 — Learner-facing register
+
+Recorded 2026-09-19, after the owner asked whether the project's docs prevent the language of
+academic research from reaching the product.
+
+They do not, adequately. The founding documents guard against *mathematical* jargon and against
+*psychological overclaim*. They say nothing about the vocabulary of the research apparatus, because
+until `plan-04` the project had no research apparatus to leak.
+
+## What already protects the learner
+
+- `05-quality-and-validation.md` §33 (Language Quality) requires learner-facing language to be
+  reviewed for age appropriateness, brevity, unnecessary jargon, and unnecessary reading burden.
+- `05-quality-and-validation.md` §16 (Error Classification Must Be Humble) forbids overclaiming
+  psychological certainty, contrasting an acceptable "These denominators were added instead of
+  being made into the same unit" against a less acceptable "You think denominators should always
+  be added."
+- `05-quality-and-validation.md` §90 requires the product be "child-appropriate without being
+  childish."
+- `00-principles.md` §4 requires terminology to follow meaning rather than substitute for it.
+
+## What does not protect the learner
+
+**Nothing separates the analytic register from the learner-facing register.** §33 was written
+against mathematical jargon. Words like *invariant*, *transfer*, *condition*, *provenance*,
+*support configuration*, *prediction cadence*, and *evidence category* are not mathematical
+jargon, and would pass a §33 review conducted by someone thinking about fractions. No rule anywhere
+in the repository states that the vocabulary of the specification must not become the vocabulary of
+the interface.
+
+**The `plan-04` dossier treats wording only as an experimental control.** Every appearance of
+"wording" in the prototype-variable register is an instruction to hold it constant across
+conditions. That is methodologically correct and entirely silent on whether the wording is any good
+for a ten-year-old.
+
+**Nothing states that the research apparatus is invisible to the learner.** The founding documents
+barely mention research at all. The comparison machinery lives in `reports/orchestration/` and in
+the `plan-04` dossier, and no document draws the boundary — because nobody needed to until the
+dossier existed.
+
+This is not hypothetical. The episode definition's Reflect beat currently reads:
+
+> State or match the invariant that the quantity stayed the same while the description changed.
+
+That is the specification register, in the document an implementer is meant to build prompts from.
+A child-facing equivalent is closer to *"Is it still the same amount?"*
+
+## The rules
+
+1. **Specification vocabulary is not learner-facing vocabulary.** The episode definition, scene
+   model, register, and evidence plan describe the system to its builders. Learner-facing strings
+   are authored separately, against a child-facing standard, and are never lifted from a
+   specification document because the specification happened to phrase the idea first.
+2. **The research apparatus is never visible to the learner.** No condition label, variant name,
+   experimental framing, preference-between-versions prompt, or outcome-measure vocabulary appears
+   in the interface. A learner using FractionFlow is doing mathematics, not participating in a
+   study, and the interface must never suggest otherwise.
+3. **The product never asks a learner to produce research artifacts.** It does not ask a child to
+   describe how well a transition worked, to rate a representation, or to have an adult record
+   observations. Where learner observation happens under the
+   `05-quality-and-validation.md` §52 protocol, the adult observer records out of band — the
+   product itself stays silent about being observed.
+4. **A reflection prompt is a mathematical question, not an outcome measure.** The register may
+   define what a reflection response is *evidence of*; the prompt the learner reads asks about
+   quantity, unit, or amount in plain words.
+5. **Internal records keep the analytic vocabulary.** Response provenance, evidence categories, and
+   support configuration are recorded exactly as
+   `05-quality-and-validation.md` §510 and the dossier require. The separation runs between what is
+   *recorded* and what is *displayed*, not between what is precise and what is vague.
+
+## Review question for Part 2
+
+> Would a ten-year-old reading this string know what to do, without knowing anything about how the
+> system is built or why it is being studied?
+
+Applies to every learner-visible string, including accessible names, status announcements, help
+text, and the semantic/linear path — which `docs/open-questions.md` OQ-10 notes is the surface most
+exposed to reading burden, since it is text all the way down.
+
+## Related open questions
+
+- **OQ-10** — no reading-burden target exists for learner-facing text. Part 2 sets the register
+  boundary; it does not set a reading level. Both are needed.
+- **OQ-06** — the §25 aesthetic-coherence criterion still has no review mechanism; the two review
+  questions in this document are the best candidates the project currently has.
+
+# Scope
 
 This is guidance for implementation and review. It is not a founding-document change, and not a
 request to initiate formal accessibility conformance work or learner-efficacy research.

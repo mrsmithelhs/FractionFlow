@@ -16,7 +16,7 @@ design-review session closes, that is a defect.
 
 ## For `docs/decision-log.md`, under "Accepted decisions"
 
-### DECISION-003 - Accessibility and presentation posture for learner-facing layers
+### DECISION-003 - Presentation posture: accessibility and learner-facing register
 
 **Date:** 2026-09-19
 
@@ -29,7 +29,12 @@ most prominent interaction path while keyboard and non-precision alternatives re
 every required decision. Accessibility semantics do not imply a large visible textual interface and
 may use progressive disclosure. Basic participation must not depend on a hidden or teacher-only
 mode. The full posture, including the two-axis distinction it turns on and the participation-floor
-boundary it does not relax, is `docs/accessibility-posture.md`.
+boundary it does not relax, is `docs/presentation-posture.md` Part 1.
+
+Separately, Part 2 of that document rules that specification vocabulary is never learner-facing
+vocabulary, that the research apparatus is never visible to the learner, and that the product never
+asks a learner to produce research artifacts. Internal records keep the analytic vocabulary; the
+separation runs between what is recorded and what is displayed.
 
 **Rationale:** The founding documents already define accessibility as a participation floor and an
 architectural capability rather than a mandate that every access mode be equally prominent
@@ -41,7 +46,12 @@ accessibility work is not misapplied as license for cognitive overload, dashboar
 an explanatory-text-first interface — and equally, so that "calm" is not misapplied as license to
 degrade the floor.
 
-**Supersedes / related:** `docs/accessibility-posture.md`;
+Part 2 exists because `plan-04` introduced a research apparatus the founding documents were never
+written against. §33 guards mathematical jargon and §16 guards psychological overclaim, but neither
+covers the vocabulary of conditions, transfer, provenance, and outcome measures — which would pass
+a §33 review conducted by someone thinking about fractions.
+
+**Supersedes / related:** `docs/presentation-posture.md`;
 `docs/founding/05-quality-and-validation.md` §44; `docs/founding/02-interaction-grammar.md`
 §§71–72; open questions OQ-13, OQ-14, OQ-15.
 
@@ -52,7 +62,7 @@ degrade the floor.
 ### OQ-13 — Is drag an enhancement over a non-drag primary, or the primary with a non-drag fallback?
 
 `05-quality-and-validation.md` §44 requires that every required learner decision be *completable*
-without precision dragging. `docs/accessibility-posture.md` permits mouse and touch to be the most
+without precision dragging. `docs/presentation-posture.md` permits mouse and touch to be the most
 efficient and visually prominent path. Both can be true of a design whose prominent path is
 drag-based and whose non-drag path is a secondary fallback — the letter of the floor is satisfied
 while the experience is drag-first.
@@ -68,7 +78,7 @@ latter, what evidence would show the alternative is not second-class.
 
 ### OQ-14 — What may progressive disclosure hide, per beat, without either leaking or removing access?
 
-`docs/accessibility-posture.md` endorses progressive disclosure so that accessibility semantics do
+`docs/presentation-posture.md` endorses progressive disclosure so that accessibility semantics do
 not become a wall of text. The `plan-04` scaffold-leakage invariants forbid the requested value
 appearing as "accessible-only text" (invariant 2) and forbid answer-revealing alternatives in
 either the visual or the semantic path (invariant 4). Meanwhile, content hidden from the
@@ -83,7 +93,7 @@ enough for the D-16 fail-first invariants to test against.
 
 ### OQ-15 — How does a learner's access preference persist on a shared device with no accounts?
 
-`docs/accessibility-posture.md` requires that basic participation not depend on a deeply hidden or
+`docs/presentation-posture.md` requires that basic participation not depend on a deeply hidden or
 teacher-only mode: a learner needing keyboard, non-drag, reduced-motion, or semantic access should
 be able to discover and use that path themselves. The project is static-only with no accounts
 (`00-principles.md`; DECISION-001), so any persisted preference lives in browser storage on a
