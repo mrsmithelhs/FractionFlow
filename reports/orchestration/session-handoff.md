@@ -17,8 +17,9 @@ Authoritative packet status is `node scripts/dev/plan-status.js list` and the ge
 - `plan-03` (content contracts and deterministic generation): **complete**. Immutable problem
   instances, eight structural selectors, overlays, provenance, deterministic selection, bulk audit.
 - `plan-04` (first-slice design dossier): **complete**, owner-accepted 2026-09-19.
-- `plan-05` through `plan-08`: **draft**, the Phase 2 implementation wave, committed at `4bb2879`.
-  Awaiting a packet-wave review the owner is soliciting from the prior orchestrator thread.
+- `plan-05` through `plan-09`: **draft**, the Phase 2 implementation wave. Drafted at `4bb2879`,
+  revised at `4371c25` after a packet-wave review by the Codex orchestrator thread. All six of that
+  review's recommendations were accepted.
 
 ## The Specification Phase Closed on 2026-09-19
 
@@ -54,14 +55,30 @@ failure mode:
 
 | Packet | Layer | Gate |
 | --- | --- | --- |
-| `plan-05` | `src/interaction/` instructional engine, no DOM | mechanism confirmation |
-| `plan-06` | scene projection + eligibility verdict, no DOM | mechanism confirmation |
-| `plan-07` | `src/render/` renderers, strings, participation floor | mechanism + internal milestone |
-| `plan-08` | `src/app/` shell, switcher, deployed acceptance | owner gate |
+| `plan-05` | `src/interaction/` engine **+ the `src/content/` eligibility evaluator**, no DOM | mechanism confirmation |
+| `plan-06` | scene projection, no DOM | mechanism confirmation |
+| `plan-07` | `src/render/` foundation, strings, bar and symbolic | three-path mechanism confirmation |
+| `plan-08` | linear path, leakage invariants, parity, collapse rule, floor evidence | mechanism confirmation |
+| `plan-09` | `src/app/` shell, switcher, deployed acceptance | owner gate |
 
-`plan-07` is the highest-risk packet in the project so far and the first to touch a child-visible
-surface. `plan-08` carries the roadmap §16 obligation to exercise the slice at the public GitHub
-Pages URL, which `plan-01` proved only for a static page.
+Two things the review changed, and why they matter more than they look:
+
+- **Eligibility moved into `plan-05`.** The first draft had `plan-05` instantiating episodes against
+  a verdict `plan-06` would not create until later — a stub dependency, and precisely the failure the
+  wave's ordering exists to prevent. OQ-02 places eligibility *before episode instantiation*, so the
+  evaluator is now `plan-05`'s one deliberate cross-layer file ownership. `plan-06` consumes the
+  verdict and enforces fail-closed behavior on it.
+- **The renderer packet split in two.** Its internal milestone became a real packet boundary, placed
+  between "the visible renderer looks plausible" (`plan-07`) and "the access model actually preserves
+  agency" (`plan-08`). Reviewing those together would have put the orchestrator's judgment *after* the
+  shared DOM architecture was committed, so a leakage or parity defect found later would force a
+  retrofit of already-accepted work. `plan-07`'s mechanism gate must now specify the boundary against
+  **all three** access paths, so the linear path is never left to join a two-path design.
+
+`plan-08` is the highest-risk packet in the project. `plan-09` carries the roadmap §16 obligation to
+exercise the slice at the public GitHub Pages URL, which `plan-01` proved only for a static page, and
+its closeout now requires a dated owner disposition naming the evidence artifact, deployed revision,
+and public URL.
 
 ## What the Owner Actually Chose (chat-only judgments)
 
@@ -115,15 +132,15 @@ Pages URL, which `plan-01` proved only for a static page.
 
 ## Next Orchestration Move
 
-The owner is soliciting a packet-wave review from the prior orchestrator thread and will then decide
-which thread oversees implementation. Until that lands, `plan-05` through `plan-08` stay `draft`.
+The wave review is complete and its recommendations are folded in. The owner is deciding which thread
+oversees implementation; until that is settled, `plan-05` through `plan-09` stay `draft`.
 
-On review completion: fold accepted suggestions into the packets, run `check plan-05`, promote it,
-and take the owner's `ready` versus `in-progress` choice. Then hold the mechanism-confirmation gate
-firmly — it is the guardrail that has worked every time it was used in this project, and the one
-whose absence produced overclaims.
+Whichever thread continues: run `check plan-05`, promote it, and take the owner's `ready` versus
+`in-progress` choice. Then hold the mechanism-confirmation gate firmly — it is the guardrail that has
+worked every time it was used here, and the one whose absence produced overclaims.
 
-Three things the reviewing thread should be pointed at specifically: whether four packets is the
-right granularity or `plan-07` should split again; whether `plan-06`'s separation from `plan-05` is
-worth its coordination cost; and whether `plan-08`'s owner gate is specified tightly enough to stop
-an implementer declaring the exit gate satisfied.
+Two cautions for the implementation phase specifically. First, `plan-07`'s three-path gate is the
+wave's load-bearing review moment; approving a boundary that accounts only for the visual and symbolic
+paths would reintroduce the risk the split was created to remove. Second, `plan-08` is explicitly
+permitted to report that the `plan-07` boundary is wrong. That is a legitimate outcome and must not be
+treated as implementer failure or worked around silently.
