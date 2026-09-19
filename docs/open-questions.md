@@ -38,12 +38,19 @@ of them becoming the architectural default. But Phase 2 must render something. W
 rule, the provisional choice gets made silently by whoever writes the first renderer and hardens
 into a default by inertia — which is exactly the outcome the register exists to prevent.
 
-**Needs:** an owner-ratified rule for the provisional build condition — chosen for runnability,
+**Amended 2026-09-19 (DECISION-005).** The register cannot select a winner on this project's
+evidence ladder, so the provisional condition is in practice the **shipped** condition
+indefinitely. It must therefore be chosen on design grounds — the founding principles, craft
+judgment, and owner/teacher review — not deferred as though a study were coming. It stays labeled
+not-decided and swappable, because disqualifying evidence can still force a change. DECISION-006
+requires that swap to be exercisable at runtime in the deployed build.
+
+**Needs:** an owner-ratified rule for the provisional build condition — chosen on design grounds,
 labeled not-decided in both code and report, and swappable without touching mathematical or
 instructional state.
 
 **Source:** `reports/development/plan-04-first-vertical-slice-design-preparation/review.md`,
-carried-forward item 1.
+carried-forward item 1; `docs/evidence-posture.md`.
 
 ### OQ-02 — There is no representation-eligibility verdict to consume
 
@@ -92,10 +99,16 @@ child evidence optional until an owner gate calls for it, and that gate has neve
 scheduled. If it never opens, every register entry is unrunnable and OQ-01's provisional condition
 becomes permanent by default.
 
-**Needs:** an owner decision on whether Phase 2 acceptance includes child observation, and if not,
-the standing position for the four prototype variables in its absence.
+**Partially answered 2026-09-19 (DECISION-005).** Children will be observed: informally, at small
+n, with permission, on no fixed schedule. The standing position for the four prototype variables in
+the meantime is set by DECISION-005 and OQ-01.
 
-**Source:** `plan-04` review, carried-forward item 2; `05-quality-and-validation.md` §52.
+**Needs:** the narrower remaining question — whether any child observation is a *precondition* of
+Phase 2 acceptance, or whether Phase 2 may be accepted on solo review plus mechanized and human
+checks.
+
+**Source:** `plan-04` review, carried-forward item 2; `05-quality-and-validation.md` §52;
+`docs/evidence-posture.md`.
 
 ### OQ-06 — "Aesthetic coherence" is an exit-gate criterion with no mechanism
 
@@ -116,10 +129,13 @@ agency, inspectability, or participation-floor access. Those are tail events: on
 out of a required decision matters regardless of the mean. Aggregate statistics would hide exactly
 the failure the floor exists to catch.
 
+**Amended 2026-09-19 (DECISION-005).** This matters more under a small-n ladder, not less: at an n
+of five, every observation *is* the tail and there is no mean worth reporting.
+
 **Needs:** a reporting rule requiring per-condition worst-case and individual-level results for
 participation-floor-relevant outcomes.
 
-**Source:** `plan-04` review, carried-forward item 3.
+**Source:** `plan-04` review, carried-forward item 3; `docs/evidence-posture.md`.
 
 ### OQ-08 — The transfer task does not exist
 
@@ -132,6 +148,77 @@ symbolic-only matched task is not.
 the experiments are costed.
 
 **Source:** `plan-04` review, carried-forward item 4.
+
+### OQ-13 — Is drag an enhancement over a non-drag primary, or the primary with a non-drag fallback?
+
+`05-quality-and-validation.md` §44 requires that every required learner decision be *completable*
+without precision dragging. `docs/presentation-posture.md` permits mouse and touch to be the most
+efficient and visually prominent path. Both can be true of a design whose prominent path is
+drag-based and whose non-drag path is a secondary fallback — the letter of the floor is satisfied
+while the experience is drag-first.
+
+That distinction is not academic for this product. Upper-elementary children on touch devices are
+precisely the population for whom precision dragging fails, and the failure is silent: a child who
+cannot place a drag target accurately does not report an accessibility problem, they just get the
+answer wrong. This interacts with OQ-09.
+
+**Needs:** an owner rule stating whether drag is permitted only as an enhancement layered over a
+non-drag primary interaction, or as a primary interaction with a non-drag alternative — and, if the
+latter, what evidence would show the alternative is not second-class.
+
+### OQ-14 — What may progressive disclosure hide, per beat, without either leaking or removing access?
+
+`docs/presentation-posture.md` endorses progressive disclosure so that accessibility semantics do
+not become a wall of text. The `plan-04` scaffold-leakage invariants forbid the requested value
+appearing as "accessible-only text" (invariant 2) and forbid answer-revealing alternatives in
+either the visual or the semantic path (invariant 4). Meanwhile, content hidden from the
+accessibility tree is not disclosed progressively — it is removed for that access path.
+
+There is a narrow correct band here: present in the DOM, reachable on demand, not announced or
+pre-revealed before the required response. Nobody has written the rule that defines it, and the
+leakage tests cannot be authored without it.
+
+**Needs:** a per-beat rule for what may be present-but-undisclosed in each access path, precise
+enough for the `D-16` fail-first invariants to test against.
+
+### OQ-15 — How does a learner's access preference persist on a shared device with no accounts?
+
+`docs/presentation-posture.md` requires that basic participation not depend on a deeply hidden or
+teacher-only mode: a learner needing keyboard, non-drag, reduced-motion, or semantic access should
+be able to discover and use that path themselves. The project is static-only with no accounts
+(`00-principles.md`; DECISION-001), so any persisted preference lives in browser storage on a
+device that may be shared by a class.
+
+Both failure directions are real: a persisted preference carries one child's reduced-motion or
+keyboard setting to the next child at the same machine, and a non-persisted preference makes a
+learner who needs it re-select it every session. This is entangled with `D-10` (shared-device
+identity, reset, guest-save) and `D-11` (portable progress token), both currently deferred past
+Phase 2 — which may no longer be the right classification if Phase 2 ships a preference control.
+
+**Needs:** an owner decision on whether access preferences are per-session and set within the
+scene, or persisted locally — and if persisted, what resets them on a shared device. If this forces
+`D-10` earlier, say so explicitly rather than letting Phase 2 improvise a storage behavior.
+
+### OQ-16 — How is the design-condition switcher reached, and does it ship publicly?
+
+DECISION-006 requires that the provisional design condition be swappable at runtime in the deployed
+build, so alternatives can be exercised in ordinary browser testing rather than rebuilt. The
+mechanism is open, and it collides with a rule this project just set.
+
+`docs/presentation-posture.md` Part 2 rule 2 states that the research apparatus is never visible to
+the learner. A visible app-root menu offering "morph / juxtapose / sequential" would violate that
+directly. So the switcher and the learner preference surface (OQ-15) are **two different surfaces**
+that must not be merged: preferences are discoverable by design, conditions are not.
+
+Candidate mechanisms, each with a real cost: a URL query parameter (simple, works on a static
+deploy, but touches `D-25` share-link and URL-input validation, and is guessable); a hidden route
+(less guessable, still public); a build-time flag (invisible, but defeats the purpose since the
+owner wants it in the deployed build); a key chord or long-press (obscure, poor discoverability for
+the owner too).
+
+**Needs:** an owner decision on the mechanism and on whether it ships in the public build at all or
+only in a preview deployment. If a URL parameter, `D-25` moves from deferred to live and needs
+input validation before the switcher is built.
 
 ---
 
@@ -159,7 +246,7 @@ learner or the conceptually-repairing learner determines what Phase 3 builds fir
 the Phase 2 slice's deliberately narrow prerequisite boundary — so `D-08` and `D-09` can be
 sequenced against something.
 
-### OQ-10 — No reading-burden target exists for an upper-elementary learner
+### OQ-10 — Who authors and reviews learner-facing strings, and when?
 
 `D-19` names readability targets and prompt-length limits as deferred, and no packet owns them. The
 first slice's entire learner-facing surface is text: prompts, help layers, status announcements,
@@ -168,8 +255,14 @@ it is currently specified in adult technical prose. If prompts are authored at a
 an upper-elementary child cannot participate regardless of how correct the mathematics is — and the
 linear path, which exists precisely to preserve access, would fail hardest.
 
-**Needs:** a reading-level target for learner-facing text and a rule that prompt and help text are
-authored and reviewed against it, before the first prompts are written.
+**Target resolved 2026-09-19 (DECISION-004):** approximately grade 2–3, with the mathematical terms
+the episode teaches exempt, enforced by working rules and human review rather than a readability
+formula. See `docs/presentation-posture.md` Part 2. `docs/presentation-posture.md` Part 2 also rules
+that specification vocabulary is never learner-facing vocabulary.
+
+**Needs:** the remaining half — who authors learner-facing strings, who reviews them against the
+target and the register rules, and at what point in a packet that happens. A target nobody is
+assigned to apply is not yet a control.
 
 ### OQ-11 — What is the stopping rule for specification?
 

@@ -110,10 +110,8 @@ review mechanism.
 ## Unresolved tensions this posture creates
 
 The posture is coherent, but three of its statements collide with existing contracts in ways that
-need an owner decision before presentation code is written. They are queued as OQ-13, OQ-14, and
-OQ-15 for `docs/open-questions.md`, held in
-`reports/orchestration/pending-open-questions-merge.md` until the live design-review session hands
-back that file (see the note in that file).
+need an owner decision before presentation code is written. They are recorded as OQ-13, OQ-14, and
+OQ-15 in `docs/open-questions.md`.
 
 1. **Drag as enhancement, or drag as primary?** §44 requires that required decisions be
    *completable* without precision dragging. If the prominent path is drag-based and the non-drag
