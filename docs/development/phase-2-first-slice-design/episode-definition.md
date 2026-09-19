@@ -42,8 +42,8 @@ record whose request uses:
 - `operation: "add"`;
 - proper, nonzero operands whose denominators are relatively prime;
 - two canonical renamings, one for each operand; and
-- a content record that passes its family, exact-result, path, and representation
-  capability checks.
+- a content record that passes its family, exact-result, path, and
+  representation-facts checks.
 
 The Plan 03 record is the source for exact values, current forms, preferred final
 forms, canonical and alternate paths, result classification, review metadata,
@@ -56,6 +56,24 @@ complexity ceiling. A future implementation must perform explicit capability
 eligibility before rendering and must provide reviewed behavior for a valid
 mathematical instance or path that is outside the episode's supported
 representation.
+
+Note the current boundary precisely: Plan 03 records carry
+`representationFacts` (operand denominators, canonical denominator, result
+denominator, whole span, subdivision counts), but every
+`representationFacts.eligibility` verdict is literally `deferred`
+(`src/content/generator.js`), and `alternateRepresentationRecommendation` is
+`none`. There is therefore no existing capability verdict for this episode to
+consume. Deciding and recording that verdict — and its relationship to the
+still-open D-06 ceilings — is Phase 2 implementation work, not an inherited
+Plan 03 fact.
+
+Likewise, `alternatePaths` enumerates only the one recorded non-least
+denominator. Validity for any other common denominator comes from the exact
+math contract (`validateCommonDenominator` in `src/math/validation.js`, which
+classifies any common denominator as `valid-least` or `valid-non-least`), not
+from the instance record. “Do not independently calculate validity” means the
+instructional and render layers must call that contract rather than reimplement
+it; it does not mean they are limited to the paths the record enumerates.
 
 ## 3. Learner responsibility and system responsibility
 

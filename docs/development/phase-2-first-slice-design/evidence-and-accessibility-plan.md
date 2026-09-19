@@ -190,9 +190,23 @@ order:
 5. if the owner gate calls for child usability, complete the permission and
    de-identification protocol, document readiness, collect only needed
    interaction evidence, and keep it separate from the first two evidence kinds;
-6. record prototype outcomes without converting them into product decisions until
+6. exercise the complete episode at the public GitHub Pages URL with no backend,
+   as `docs/founding/06-roadmap.md` §16 requires; local success and an asset
+   smoke check are explicitly not substitutes for this end-to-end check;
+7. record prototype outcomes without converting them into product decisions until
    the owner/orchestrator reviews the falsification record; and
-7. report allowed claims and residual untested modes separately.
+8. report allowed claims and residual untested modes separately.
+
+### Exit-gate criteria this plan does not carry
+
+The claim table above follows the Phase 2 evidence boundary of
+`docs/founding/06-roadmap.md` §16. The §25 exit gate additionally requires
+**aesthetic coherence** — that the experience feels calm and deliberate rather
+than dashboard-like — alongside the §23 attention to whitespace, typography,
+timing, anchors, motion, mobile layout, and touch/keyboard interaction. No
+mechanism or evidence kind for that criterion is planned here. The Phase 2
+implementation packet must carry it; this dossier neither plans it nor claims it
+is satisfied.
 
 ## Replay and defect-report plan
 

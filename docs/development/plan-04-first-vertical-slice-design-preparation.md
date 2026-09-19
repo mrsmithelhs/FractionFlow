@@ -1,7 +1,7 @@
 ---
 id: plan-04
 title: First Vertical Slice — Design and Evidence Preparation
-status: in-progress
+status: delivered
 depends_on: [plan-03]
 gate: "Owner approves the packet and reviews the resulting design dossier; no Phase 2 implementation packet may be drafted until this dossier is accepted. Design artifacts are proposals, not settled decisions."
 summary: >-
