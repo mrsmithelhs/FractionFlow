@@ -91,9 +91,11 @@ outside this packet.
 ## Scaffold-leakage test plan sketch (D-16)
 
 The implementation should serialize or otherwise expose a reviewable semantic
-scene/prompt snapshot immediately before each required response. Fail-first
-invariants should inspect the learner-visible visual and semantic/linear paths,
-not merely screenshot pixels.
+scene/prompt snapshot immediately before each required response. Under DECISION-014,
+the DOM and accessibility tree lifecycle is beat-gated: unreached beats and future
+mathematical values/answers are not mounted in the DOM at all until reached, making
+scaffold leakage structurally impossible. Fail-first invariants should inspect the
+learner-visible visual and semantic/linear paths, not merely screenshot pixels.
 
 ### Required pre-response invariants
 
@@ -147,7 +149,7 @@ each required floor item to a planned mechanism and separately named evidence.
 
 | Participation-floor requirement | Planned mechanism | Mechanized evidence | Human review | Child usability evidence |
 | --- | --- | --- | --- | --- |
-| Required decisions without precision dragging | Use keyboard-operable buttons/choices and numeric or structured fraction entry for denominator, equivalent forms, operation, help, replay, and continue. Provide a non-drag touch/equivalent control path. | Focus reachability, activation, form validation, and no-drag path regression checks. | Complete the full episode with keyboard and touch-equivalent paths; confirm the same decisions, not answer revelation. | If conducted, observe motor effort, target size, accidental activation, and whether the control communicates its role; retain only de-identified findings. |
+| Required decisions without precision dragging | Direct tap/click and keyboard navigation are primary for all decisions (DECISION-013). Dragging is never required and functions strictly as an optional enhancement. Conforms to WCAG 2.2 SC 2.5.7 and SC 2.5.8. | Focus reachability, activation, form validation, and no-drag path regression checks. | Complete the full episode with keyboard and touch-equivalent paths; confirm the same decisions, not answer revelation. | If conducted, observe motor effort, target size, accidental activation, and whether the control communicates its role; retain only de-identified findings. |
 | Motion reduced or disabled without losing meaning | Use one state transition path with a reduced-motion presentation that reaches the same semantic post-state and retains a meaningful indication of what changed. | Compare standard, reduced-motion, and instant/test endpoints and status changes. | Inspect whether the transformation still communicates quantity preservation and learner control. | If conducted, observe whether learners can follow the change without relying on motion. |
 | Semantic, programmatically inspectable meaning and linear alternative | Expose quantity, numerator, denominator, whole, current task, available action, status, and pre/post relationship in structured semantics and a readable linear order. | Inspect labels, roles, names, reading-order fixtures, status announcements, and stale-state behavior. | Use the semantic/linear path through the complete episode and compare responsibility with the visual path. | If conducted, observe wording, navigation, and whether the linear path remains a reasoning task. |
 | Focus, reading order, labels, status, contrast, text size, responsive layout | Define a candidate supported-environment matrix at the implementation gate; test structural semantics and responsive hierarchy in each chosen environment. | Keyboard/focus, label, status, contrast, zoom/text-size, and responsive regression checks. | Walk the complete episode at selected widths and text scales, including error/help/replay states. | If conducted, observe obstruction, rereading, target size, and affordance confusion. |

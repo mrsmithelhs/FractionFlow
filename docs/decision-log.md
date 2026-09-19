@@ -268,6 +268,78 @@ falsifiable measurement of whether the learner recognizes quantity preservation 
 **Supersedes / related:** Narrows and clarifies DECISION-007 (CM-01 arm); resolves OQ-01;
 `prototype-variable-register.md`.
 
+### DECISION-013 - Tap/direct-select as primary interaction; drag as optional enhancement
+
+**Date:** 2026-09-19
+
+**Decision:** Direct tap/click selection and keyboard navigation are the primary interaction modes
+for all required learner decisions and inputs (noticing unit match, choosing common denominator,
+renaming, operating on numerators, and invariant matching). Dragging is never required to complete
+any decision. If drag-and-drop or continuous slider manipulation is implemented, it operates strictly
+as an optional progressive enhancement that mirrors the discrete tap/click actions and shares the
+exact same underlying instructional state transitions.
+
+**Rationale:** Fulfills WCAG 2.2 AA Success Criterion 2.5.7 (Dragging Movements) and founding
+accessibility contracts (`05-quality-and-validation.md` §44). Precision dragging is a known, silent
+failure mode for upper-elementary children on touchscreens (tablets, Chromebooks, phones), where
+inaccurate drops lead to false mathematical errors. Making tap/select primary guarantees that motor
+dexterity is never a barrier to demonstrating mathematical understanding.
+
+**Supersedes / related:** Resolves OQ-13; conforms to DECISION-010 (WCAG 2.2 AA SC 2.5.7);
+`docs/presentation-posture.md` Part 1.
+
+### DECISION-014 - Beat-gated DOM lifecycle and on-demand scaffold disclosure
+
+**Date:** 2026-09-19
+
+**Decision:** The DOM and accessibility tree lifecycle is strictly gated by the active instructional beat:
+1. **Unreached beats and future mathematical values** (target denominators, scale factors, converted
+   numerators, operation sums, and preferred final forms) are **not mounted in the DOM at all** until
+   the instructional engine reaches that beat. Pre-mounting with `aria-hidden` or `display: none` is
+   forbidden for future unreached answers.
+2. **Current beat:** Mounts only the current question, active mathematical representations, and
+   unanswered choice/input controls. Completed prior beats remain mounted as inspectable context.
+3. **Secondary scaffolds:** Hints, orienting cues, and representation aids are disclosed on-demand
+   only upon explicit learner request (e.g. activating a help button), simultaneously updating the visual
+   scene and accessibility tree while logging support provenance.
+
+**Rationale:** Reconciles progressive disclosure (`docs/presentation-posture.md` Part 1) with the
+scaffold-leakage invariants (`D-16`; `evidence-and-accessibility-plan.md` §§98–132). Screen-reader virtual
+cursors and DOM inspection frequently expose pre-mounted hidden elements, leaking future answers and
+failing automated invariants. Beat-gated mounting makes scaffold leakage structurally impossible while
+keeping the accessibility tree concise, focused, and in parity with the visual scene.
+
+**Supersedes / related:** Resolves OQ-14; operationalizes `D-16` scaffold-leakage invariants;
+`docs/presentation-posture.md` Part 1.
+
+### DECISION-015 - Entry-page gear icon and settings menu for condition switching and future preferences
+
+**Date:** 2026-09-19
+
+**Decision:** The design-condition switcher is reached via a settings gear icon located on the
+application's entry page (`src/app/`). Activating the gear icon opens a settings menu. This menu serves
+as the container for:
+1. **Design/Review Conditions:** Swapping among registered upstream episode conditions (D-01 animated/static,
+   D-02 morph/juxtapose/sequential, D-05 prompt cadence, CM-01 connection-making) in the deployed build
+   per DECISION-006.
+2. **Future Settings:** Housing future learner and application preferences (such as reduced motion,
+   contrast, audio toggles, and session options) as they are introduced.
+
+To preserve Presentation Posture Part 2 Rule 2 (the research apparatus is never visible to the learner),
+condition options inside this menu must use plain-language, child-safe descriptions of visual/interaction
+styles (e.g. "Visual change: Smooth / Side-by-side / Step-by-step") or be clearly grouped under a distinct
+"Reviewer / Teacher Options" section, with raw specification codes (`D-01`, `CM-01`, etc.) kept in
+internal data attributes rather than user-facing strings.
+
+**Rationale:** Provides an intuitive, discoverable, and touch-accessible reaching mechanism on static
+GitHub Pages across desktop, tablet, and mobile devices without requiring URL manipulation or devtools
+consoles. Consolidates settings architecture early into an entry-page gear menu that scales to future
+preferences while strictly guarding the learner-facing register against academic and specification jargon.
+
+**Supersedes / related:** Resolves OQ-16; modifies the surface separation rule in DECISION-006 by hosting
+conditions and preferences in one entry-page menu with internal section/register separation;
+`docs/presentation-posture.md` Part 2.
+
 ## Proposed but not yet accepted
 
 Use the same `**Date:** YYYY-MM-DD` field for proposals, using the proposal date.

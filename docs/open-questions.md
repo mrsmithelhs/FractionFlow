@@ -162,9 +162,12 @@ precisely the population for whom precision dragging fails, and the failure is s
 cannot place a drag target accurately does not report an accessibility problem, they just get the
 answer wrong. This interacts with OQ-09.
 
-**Needs:** an owner rule stating whether drag is permitted only as an enhancement layered over a
-non-drag primary interaction, or as a primary interaction with a non-drag alternative — and, if the
-latter, what evidence would show the alternative is not second-class.
+**Resolved 2026-09-19 (DECISION-013).** Direct tap/click selection and keyboard navigation are the
+primary interaction modes for all required learner decisions. Dragging is never required to complete
+any decision; if implemented, it operates strictly as an optional progressive enhancement that mirrors
+discrete tap actions. Conforms to WCAG 2.2 AA SC 2.5.7 per DECISION-010.
+
+**Source:** `docs/presentation-posture.md` Part 1; DECISION-010; DECISION-013.
 
 ### OQ-14 — What may progressive disclosure hide, per beat, without either leaking or removing access?
 
@@ -178,8 +181,13 @@ There is a narrow correct band here: present in the DOM, reachable on demand, no
 pre-revealed before the required response. Nobody has written the rule that defines it, and the
 leakage tests cannot be authored without it.
 
-**Needs:** a per-beat rule for what may be present-but-undisclosed in each access path, precise
-enough for the `D-16` fail-first invariants to test against.
+**Resolved 2026-09-19 (DECISION-014).** The DOM and accessibility tree lifecycle is beat-gated:
+unreached beats and future mathematical values/answers are not mounted in the DOM at all until
+reached (preventing virtual cursor leaks). Within the current beat, secondary scaffolds (hints,
+orienting cues) are disclosed on-demand upon explicit request, simultaneously mounting to visual
+and semantic trees with support provenance logged.
+
+**Source:** `docs/presentation-posture.md` Part 1; `D-16`; DECISION-014.
 
 ### OQ-15 — How does a learner's access preference persist on a shared device with no accounts?
 
@@ -210,15 +218,13 @@ the learner. A visible app-root menu offering "morph / juxtapose / sequential" w
 directly. So the switcher and the learner preference surface (OQ-15) are **two different surfaces**
 that must not be merged: preferences are discoverable by design, conditions are not.
 
-Candidate mechanisms, each with a real cost: a URL query parameter (simple, works on a static
-deploy, but touches `D-25` share-link and URL-input validation, and is guessable); a hidden route
-(less guessable, still public); a build-time flag (invisible, but defeats the purpose since the
-owner wants it in the deployed build); a key chord or long-press (obscure, poor discoverability for
-the owner too).
+**Resolved 2026-09-19 (DECISION-015).** The design-condition switcher is reached via a settings gear
+icon on the application's entry page (`src/app/`). This menu houses upstream condition switching and
+future preferences (motion, contrast, audio). Condition options inside this menu use plain-language
+descriptions of visual/interaction styles (or a distinct Reviewer/Teacher grouping) to ensure research
+apparatus does not confuse learners, keeping specification codes in internal data attributes.
 
-**Needs:** an owner decision on the mechanism and on whether it ships in the public build at all or
-only in a preview deployment. If a URL parameter, `D-25` moves from deferred to live and needs
-input validation before the switcher is built.
+**Source:** DECISION-006; `docs/presentation-posture.md` Part 2; DECISION-015.
 
 ---
 

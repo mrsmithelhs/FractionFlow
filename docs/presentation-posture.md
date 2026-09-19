@@ -113,19 +113,17 @@ The posture is coherent, but three of its statements collide with existing contr
 need an owner decision before presentation code is written. They are recorded as OQ-13, OQ-14, and
 OQ-15 in `docs/open-questions.md`.
 
-1. **Drag as enhancement, or drag as primary?** §44 requires that required decisions be
-   *completable* without precision dragging. If the prominent path is drag-based and the non-drag
-   path is a fallback, the letter is satisfied while the designed experience is drag-first — and
-   upper-elementary children on touch devices are precisely the population for whom precision
-   dragging fails.
-2. **Progressive disclosure versus the scaffold-leakage invariants.** The posture endorses
-   progressive disclosure so that accessibility semantics do not become a wall of text. But the
-   `plan-04` leakage invariants forbid the requested value appearing as "accessible-only text," and
-   forbid answer-revealing alternatives in either the visual or the semantic path — while hiding
-   content from the accessibility tree removes access entirely.
+1. **Drag as enhancement, or drag as primary? Resolved (DECISION-013):** Direct
+   tap/click selection and keyboard navigation are primary for all required learner
+   decisions. Dragging is never required and functions strictly as an optional progressive
+   enhancement mirroring tap actions (conforming to WCAG 2.2 AA SC 2.5.7 per DECISION-010).
+2. **Progressive disclosure versus the scaffold-leakage invariants. Resolved (DECISION-014):**
+   Gated by instructional beat lifecycle: unreached beats and future mathematical values/answers
+   are not mounted in the DOM at all until reached, preventing virtual-cursor leaks. Secondary
+   scaffolds disclose on-demand upon explicit request, updating visual and semantic trees in parity.
 3. **Preference persistence without accounts.** Participation must not depend on a hidden or
    teacher-only mode, but the project is static-only with no accounts, so preferences live in
-   browser storage on a possibly-shared classroom device.
+   browser storage on a possibly-shared classroom device (remains live as OQ-15).
 
 # Part 2 — Learner-facing register
 
