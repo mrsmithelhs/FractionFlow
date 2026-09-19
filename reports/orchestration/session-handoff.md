@@ -48,7 +48,7 @@ these as foreground, not background:
 Full reconciliation, including the six findings and their dispositions:
 `reports/orchestration/phase-2-specification-reconciliation.md`.
 
-## The Packet Wave (draft, pending review)
+## The Packet Wave (draft, reviewed)
 
 Sequenced along the pipeline so no packet is built against a stub — the project's named implementer
 failure mode:
