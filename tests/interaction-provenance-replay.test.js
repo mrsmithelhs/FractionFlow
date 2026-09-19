@@ -60,6 +60,25 @@ describe('Plan 05 provenance and replay', () => {
     expect(state.responseProvenance.at(-1).visibility.supplied).toContain('reviewed-demonstration');
   });
 
+  it('retains demonstration support across an incorrect retry', () => {
+    let state = createEpisode({ instance: curatedInstance() });
+    state = applyIntent(state, { type: 'acknowledge-encounter' });
+    state = applyIntent(state, { type: 'submit-notice', matchesUnits: false });
+    state = applyIntent(state, { type: 'propose-common-denominator', proposed: whole(12) });
+    state = applyIntent(state, { type: 'request-help' });
+    state = applyIntent(state, { type: 'request-help' });
+    state = applyIntent(state, { type: 'request-help' });
+    state = applyIntent(state, { type: 'request-help' });
+    state = applyIntent(state, { type: 'submit-equivalent-form', proposed: fraction(1, 12) });
+    expect(state.nextResponseSupport).toBe('demonstrate');
+    state = applyIntent(state, { type: 'submit-equivalent-form', proposed: fraction(8, 12) });
+    expect(state.responseProvenance.at(-1).evidenceCategory).toBe('supported-construction');
+    expect(state.responseProvenance.at(-1).visibility.supplied).toContain('reviewed-demonstration');
+    expect(state.established.lastConversion.supportOrigin).toBe('demonstrate');
+    const replayed = replayEpisode(JSON.parse(JSON.stringify(createReplayEnvelope(state))));
+    expect(JSON.stringify(replayed)).toBe(JSON.stringify(state));
+  });
+
   it('replays a generated instance from its envelope identity alone', () => {
     const instance = generateProblem({
       selector: 'relatively-prime-addition',
@@ -71,6 +90,16 @@ describe('Plan 05 provenance and replay', () => {
     expect(envelope.contentIdentity.reconstruction.kind).toBe('generated');
     const replayed = replayEpisode(JSON.parse(JSON.stringify(envelope)));
     expect(JSON.stringify(replayed)).toBe(JSON.stringify(original));
+
+    for (const mutate of [
+      (identity) => { identity.reconstruction.profileId = 'curated-review'; },
+      (identity) => { identity.reconstruction.request.operation = 'subtract'; },
+      (identity) => { identity.reconstruction.request.profileVersion = 'forged'; },
+    ]) {
+      const tampered = JSON.parse(JSON.stringify(envelope));
+      mutate(tampered.contentIdentity);
+      expect(() => replayEpisode(tampered)).toThrow(/reconstruction identity|content identity|profile/);
+    }
   });
 
   it('replays a curated instance and rejects a tampered identity', () => {
@@ -80,8 +109,15 @@ describe('Plan 05 provenance and replay', () => {
     const replayed = replayEpisode(JSON.parse(JSON.stringify(envelope)));
     expect(JSON.stringify(replayed)).toBe(JSON.stringify(original));
 
-    const tampered = structuredClone(envelope);
+    const tampered = JSON.parse(JSON.stringify(envelope));
     tampered.contentIdentity.reconstruction.fixtureId = 'unknown-fixture';
     expect(() => replayEpisode(tampered)).toThrow(/unknown curated replay fixture identity/);
+  });
+
+  it('rejects out-of-order replay intents before constructing an impossible episode', () => {
+    const envelope = createReplayEnvelope(createEpisode({ instance: curatedInstance() }));
+    const tampered = JSON.parse(JSON.stringify(envelope));
+    tampered.learnerIntents = [{ type: 'submit-notice', matchesUnits: false }];
+    expect(() => replayEpisode(tampered)).toThrow(/not valid at beat encounter/);
   });
 });

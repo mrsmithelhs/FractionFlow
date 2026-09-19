@@ -76,6 +76,31 @@ describe('Plan 05 representation eligibility', () => {
     });
   });
 
+  it('applies the scale-factor ceiling independently of the denominator ceiling', () => {
+    const fixture = {
+      id: 'plan05-scale-factor-boundary',
+      authoringRevision: 'plan05-test-v1',
+      profileId: 'curated-review',
+      selector: 'relatively-prime-addition',
+      overlays: [],
+      left: { kind: 'fraction', numerator: '1', denominator: '2' },
+      right: { kind: 'fraction', numerator: '1', denominator: '3' },
+    };
+    const instance = buildCuratedProblem({
+      fixture,
+      selector: fixture.selector,
+      overlays: fixture.overlays,
+      profileId: fixture.profileId,
+      candidate: { left: fixture.left, right: fixture.right },
+    });
+    const proposed = evaluateProposedPathEligibility(instance, whole(30));
+    expect(proposed.mathematicalValidity).toBe('valid');
+    expect(proposed.targetDenominator).toBe('30');
+    expect(proposed.rendering).toBe('ineligible');
+    expect(proposed.reasons).toContain('left-scale-factor-ceiling-exceeded');
+    expect(proposed.reasons).not.toContain('denominator-ceiling-exceeded');
+  });
+
   it('reports an ineligible base fraction-bar instance before episode construction', () => {
     const fixture = {
       id: 'plan05-ineligible-base',

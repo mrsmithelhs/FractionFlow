@@ -133,11 +133,17 @@ function completedBeat(state, beat, established, nextBeat) {
 }
 
 function resolvedState(state, beat, established) {
+  const establishedState = {
+    ...state.established,
+    ...(beat === 'resolve' ? { resolution: established } : {}),
+    ...(beat === 'reflect' ? { reflection: established } : {}),
+  };
   return {
     ...state,
     status: 'resolved',
     beat,
     expectedResponse: null,
+    established: establishedState,
     completedBeats: [...state.completedBeats, { beat, established }],
     revision: state.revision + 1,
     lastRecovery: null,
@@ -164,7 +170,7 @@ function recovery(state, intent, classification) {
     },
     retryHistory: [...next.retryHistory, { beat: state.beat, reason: classification.kind }],
     pendingResponse: null,
-    nextResponseSupport: null,
+    nextResponseSupport: state.nextResponseSupport,
   };
   const provenance = createResponseProvenance({
     state,
@@ -391,19 +397,133 @@ function handleReflect(state, intent) {
   );
 }
 
+const INTENT_KEYS = Object.freeze({
+  'acknowledge-encounter': ['type'],
+  'submit-notice': ['type', 'matchesUnits'],
+  'propose-common-denominator': ['type', 'proposed'],
+  'submit-equivalent-form': ['type', 'proposed'],
+  'submit-operation-result': ['type', 'proposed'],
+  'submit-resolution': ['type', 'proposed'],
+  'submit-reflection': ['type', 'response'],
+  'request-help': ['type'],
+  'request-replay': ['type'],
+});
+
+const INTENT_BEATS = Object.freeze({
+  'acknowledge-encounter': 'encounter',
+  'submit-notice': 'notice',
+  'propose-common-denominator': 'decide',
+  'submit-equivalent-form': 'transform',
+  'submit-operation-result': 'operate',
+  'submit-resolution': 'resolve',
+  'submit-reflection': 'reflect',
+});
+
+function isPlainRecord(value) {
+  if (!value || typeof value !== 'object' || Array.isArray(value)) return false;
+  const prototype = Object.getPrototypeOf(value);
+  return prototype === Object.prototype || prototype === null;
+}
+
+function assertExactKeys(value, expectedKeys, name) {
+  if (!isPlainRecord(value)) {
+    throw new EpisodeIntentError('INVALID_INTENT_SHAPE', `${name} must be a plain object`);
+  }
+  const actualKeys = Object.keys(value).sort();
+  const expected = [...expectedKeys].sort();
+  if (JSON.stringify(actualKeys) !== JSON.stringify(expected)) {
+    throw new EpisodeIntentError('INVALID_INTENT_SHAPE', `${name} has an unsupported shape`);
+  }
+}
+
+function assertWireFraction(value, name) {
+  assertExactKeys(value, ['kind', 'numerator', 'denominator'], name);
+  if (value.kind !== 'fraction'
+    || typeof value.numerator !== 'string'
+    || typeof value.denominator !== 'string'
+    || value.numerator.length === 0
+    || value.denominator.length === 0) {
+    throw new EpisodeIntentError('INVALID_INTENT_SHAPE', `${name} must be a fraction wire value`);
+  }
+  try {
+    BigInt(value.numerator);
+    BigInt(value.denominator);
+  } catch (error) {
+    throw new EpisodeIntentError('INVALID_INTENT_SHAPE', `${name} must contain integer strings`);
+  }
+}
+
+function assertCanonicalWireValue(value, name, seen = new Set()) {
+  if (value === null || typeof value === 'string' || typeof value === 'boolean') return;
+  if (typeof value === 'number') {
+    if (!Number.isFinite(value)) {
+      throw new EpisodeIntentError('NON_JSON_INTENT', `${name} must not contain non-finite numbers`);
+    }
+    return;
+  }
+  if (typeof value === 'undefined' || typeof value === 'function' || typeof value === 'symbol' || typeof value === 'bigint') {
+    throw new EpisodeIntentError('NON_JSON_INTENT', `${name} contains a value that is not JSON wire data`);
+  }
+  if (typeof value !== 'object') {
+    throw new EpisodeIntentError('NON_JSON_INTENT', `${name} contains an unsupported value`);
+  }
+  if (seen.has(value)) throw new EpisodeIntentError('NON_JSON_INTENT', `${name} must not be circular`);
+  seen.add(value);
+  if (Array.isArray(value)) {
+    value.forEach((entry, index) => assertCanonicalWireValue(entry, `${name}[${index}]`, seen));
+  } else {
+    if (!isPlainRecord(value) || Object.prototype.hasOwnProperty.call(value, 'toJSON')) {
+      throw new EpisodeIntentError('NON_JSON_INTENT', `${name} must contain only plain records and arrays`);
+    }
+    Object.entries(value).forEach(([key, entry]) => assertCanonicalWireValue(entry, `${name}.${key}`, seen));
+  }
+  seen.delete(value);
+}
+
+function assertIntentShape(intent) {
+  if (!Object.prototype.hasOwnProperty.call(INTENT_KEYS, intent.type)) {
+    throw new EpisodeIntentError('UNEXPECTED_INTENT', `intent ${intent.type} is not recognized`);
+  }
+  assertExactKeys(intent, INTENT_KEYS[intent.type], 'intent');
+  if (intent.type === 'submit-notice' && typeof intent.matchesUnits !== 'boolean') {
+    throw new EpisodeIntentError('INVALID_INTENT_SHAPE', 'submit-notice.matchesUnits must be boolean');
+  }
+  if (intent.type === 'propose-common-denominator') assertWireFraction(intent.proposed, 'intent.proposed');
+  if (intent.type === 'submit-equivalent-form') assertWireFraction(intent.proposed, 'intent.proposed');
+  if (intent.type === 'submit-operation-result') assertWireFraction(intent.proposed, 'intent.proposed');
+  if (intent.type === 'submit-resolution') assertWireFraction(intent.proposed, 'intent.proposed');
+  if (intent.type === 'submit-reflection'
+    && (typeof intent.response !== 'string' || intent.response.length === 0)) {
+    throw new EpisodeIntentError('INVALID_REFLECTION_RESPONSE', 'reflection response must be a stable choice identity');
+  }
+}
+
 function ensureIntent(intent) {
-  if (!intent || typeof intent !== 'object' || typeof intent.type !== 'string') {
+  if (!isPlainRecord(intent) || typeof intent.type !== 'string') {
     throw new EpisodeIntentError('INVALID_INTENT', 'intent must have a type');
   }
   if (intent.type === 'continue') {
     throw new EpisodeIntentError('APP_SHELL_INTENT', 'continue is outside the instructional reducer');
   }
-  try {
-    JSON.stringify(intent);
-  } catch (error) {
-    throw new EpisodeIntentError('NON_JSON_INTENT', `intent must be JSON-safe: ${error.message}`);
-  }
+  assertCanonicalWireValue(intent, 'intent');
+  assertIntentShape(intent);
   return deepFreeze({ ...intent });
+}
+
+function assertIntentAllowedAtBeat(state, intent) {
+  const expectedBeat = INTENT_BEATS[intent.type];
+  if (expectedBeat && state.beat !== expectedBeat) {
+    throw new EpisodeIntentError(
+      'UNEXPECTED_INTENT',
+      `intent ${intent.type} is not valid at beat ${state.beat}`,
+    );
+  }
+  if (intent.type === 'submit-reflection' && !state.episodeDefinition.includeReflection) {
+    throw new EpisodeIntentError(
+      'UNEXPECTED_INTENT',
+      'submit-reflection is not enabled for this episode definition',
+    );
+  }
 }
 
 export function createEpisode({
@@ -460,6 +580,7 @@ export function applyIntent(state, rawIntent) {
     throw new EpisodeIntentError('EPISODE_RESOLVED', 'resolved episodes do not accept more instructional intents');
   }
   const intent = ensureIntent(rawIntent);
+  assertIntentAllowedAtBeat(state, intent);
   if (intent.type === 'request-help') return handleHelp(state, intent);
   if (intent.type === 'request-replay') return handleReplay(state, intent);
   if (intent.type === 'acknowledge-encounter') return handleEncounter(state, intent);

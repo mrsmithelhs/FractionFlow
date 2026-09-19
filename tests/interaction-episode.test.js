@@ -2,6 +2,7 @@ import { describe, expect, it } from 'vitest';
 import {
   applyIntent,
   createEpisode,
+  episodeStateSnapshot,
   EpisodeConstructionError,
   EpisodeIntentError,
   PHASE2_EPISODE_DEFINITION,
@@ -131,6 +132,37 @@ describe('Plan 05 instructional episode', () => {
     expect(() => applyIntent(state, { type: 'continue' })).toThrowError(EpisodeIntentError);
   });
 
+  it('rejects beat-specific intents outside the active instructional beat', () => {
+    const state = createEpisode({ instance: canonicalInstance() });
+    const outOfOrderIntents = [
+      { type: 'submit-notice', matchesUnits: false },
+      { type: 'propose-common-denominator', proposed: whole(12) },
+      { type: 'submit-equivalent-form', proposed: fraction(8, 12) },
+      { type: 'submit-operation-result', proposed: fraction(11, 12) },
+      { type: 'submit-resolution', proposed: fraction(11, 12) },
+      { type: 'submit-reflection', response: 'same-quantity-different-form' },
+    ];
+    for (const intent of outOfOrderIntents) {
+      expect(() => applyIntent(state, intent)).toThrowError(
+        expect.objectContaining({ code: 'UNEXPECTED_INTENT' }),
+      );
+    }
+    expect(state.beat).toBe('encounter');
+    expect(state.completedBeats).toEqual([]);
+  });
+
+  it('rejects non-canonical intent wire values and preserves JSON round-trip state', () => {
+    const state = createEpisode({ instance: canonicalInstance() });
+    expect(() => applyIntent(state, { type: 'acknowledge-encounter', diagnostic: NaN })).toThrowError(
+      expect.objectContaining({ code: 'NON_JSON_INTENT' }),
+    );
+    expect(() => applyIntent(state, { type: 'acknowledge-encounter', optional: undefined })).toThrowError(
+      expect.objectContaining({ code: 'NON_JSON_INTENT' }),
+    );
+    const next = applyIntent(state, { type: 'acknowledge-encounter' });
+    expect(JSON.parse(JSON.stringify(next))).toEqual(next);
+  });
+
   it('resolves only through the final instructional beat and records completion context', () => {
     const state = canonicalResolved();
     expect(state.status).toBe('resolved');
@@ -144,6 +176,10 @@ describe('Plan 05 instructional episode', () => {
       'operate',
       'resolve',
     ]);
+    expect(state.established.resolution.proposed).toEqual(fraction(11, 12));
+    expect(episodeStateSnapshot(state).resolution.proposed).toEqual(fraction(11, 12));
+    expect(state.responseProvenance.at(-1).resultingState.established.resolution.proposed)
+      .toEqual(fraction(11, 12));
     expect(() => applyIntent(state, { type: 'request-help' })).toThrowError(EpisodeIntentError);
   });
 
@@ -165,5 +201,6 @@ describe('Plan 05 instructional episode', () => {
     state = applyIntent(state, { type: 'submit-reflection', response: 'same-quantity-different-form' });
     expect(state.status).toBe('resolved');
     expect(state.beat).toBe('reflect');
+    expect(state.established.reflection).toEqual({ response: 'same-quantity-different-form' });
   });
 });
