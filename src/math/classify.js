@@ -6,7 +6,7 @@ import {
   isFraction,
   leastCommonDenominator,
 } from './fraction.js';
-import { isMixedNumber } from './mixed-number.js';
+import { isMixedNumber, mixedToImproper } from './mixed-number.js';
 
 function toExactPositiveBigInt(value, name) {
   if (typeof value === 'bigint') {
@@ -149,6 +149,10 @@ export function classifyMixedRegrouping(left, right, operation = 'add') {
   }
 
   if (operation === 'subtract') {
+    if (compareFractions(mixedToImproper(left), mixedToImproper(right)) < 0) {
+      throw new RangeError('subtraction would produce a negative mixed-number result');
+    }
+
     const leftScaled = left.fraction.numerator * right.fraction.denominator;
     const rightScaled = right.fraction.numerator * left.fraction.denominator;
 

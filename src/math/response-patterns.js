@@ -8,6 +8,24 @@ import {
 } from './fraction.js';
 import { isMixedNumber } from './mixed-number.js';
 
+function toPositiveExactInteger(value, name) {
+  if (typeof value === 'bigint') {
+    if (value <= 0n) {
+      throw new RangeError(`${name} must be positive`);
+    }
+    return value;
+  }
+
+  if (typeof value === 'number' && Number.isSafeInteger(value)) {
+    if (value <= 0) {
+      throw new RangeError(`${name} must be positive`);
+    }
+    return BigInt(value);
+  }
+
+  throw new TypeError(`${name} must be a positive integer`);
+}
+
 export const PATTERNS = Object.freeze({
   ADD_NUMERATORS_AND_DENOMINATORS: 'ADD_NUMERATORS_AND_DENOMINATORS',
   SUBTRACT_NUMERATORS_AND_DENOMINATORS: 'SUBTRACT_NUMERATORS_AND_DENOMINATORS',
@@ -32,18 +50,35 @@ export function classifyOperationResponse({
   right,
   proposed,
   targetDenominator = null,
+  convertedLeft = null,
+  convertedRight = null,
 }) {
   if (!isFraction(left) || !isFraction(right) || !isFraction(proposed)) {
     throw new TypeError('operands and proposed result must be fractions');
+  }
+
+  if (operation !== 'add' && operation !== 'subtract') {
+    throw new RangeError(`unsupported operation: ${String(operation)}`);
+  }
+
+  if (convertedLeft !== null && !isFraction(convertedLeft)) {
+    throw new TypeError('convertedLeft must be a fraction when supplied');
+  }
+  if (convertedRight !== null && !isFraction(convertedRight)) {
+    throw new TypeError('convertedRight must be a fraction when supplied');
   }
 
   const detected = [];
   const details = {};
 
   const lcd = leastCommonDenominator(left.denominator, right.denominator);
-  const commonDenom = targetDenominator !== null
-    ? BigInt(targetDenominator)
-    : lcd;
+  const commonDenom = targetDenominator === null
+    ? lcd
+    : toPositiveExactInteger(targetDenominator, 'target denominator');
+
+  if (!isCommonDenominator(commonDenom, left.denominator, right.denominator)) {
+    throw new RangeError('target denominator must be a common multiple of both operands');
+  }
 
   // 1. ADD_NUMERATORS_AND_DENOMINATORS: (a+c)/(b+d)
   if (operation === 'add') {
@@ -135,15 +170,23 @@ export function classifyOperationResponse({
         actualNumerator: proposed.numerator,
       };
 
-      // Check if conversion scale was applied but arithmetic had an off-by-small error
-      const actualAtCommon = (expectedNumerator * proposed.denominator) / commonDenom;
-      const difference = proposed.numerator > actualAtCommon
-        ? proposed.numerator - actualAtCommon
-        : actualAtCommon - proposed.numerator;
+      const hasExplicitConversionEvidence = convertedLeft !== null && convertedRight !== null;
+      const conversionsAreCorrect = hasExplicitConversionEvidence
+        && convertedLeft.denominator === commonDenom
+        && convertedRight.denominator === commonDenom
+        && areEquivalent(convertedLeft, left)
+        && areEquivalent(convertedRight, right);
+      const finalResultUsesSelectedDenominator = proposed.denominator === commonDenom;
 
-      if (difference > 0n && difference <= 5n) {
-        detected.push(PATTERNS.CORRECT_CONVERSIONS_ARITHMETIC_ERROR);
-        details.arithmeticErrorDifference = difference;
+      if (conversionsAreCorrect && finalResultUsesSelectedDenominator) {
+        const difference = proposed.numerator > expectedNumerator
+          ? proposed.numerator - expectedNumerator
+          : expectedNumerator - proposed.numerator;
+
+        if (difference > 0n) {
+          detected.push(PATTERNS.CORRECT_CONVERSIONS_ARITHMETIC_ERROR);
+          details.arithmeticErrorDifference = difference;
+        }
       }
     } else {
       detected.push(PATTERNS.INVALID_COMMON_DENOMINATOR);
@@ -171,7 +214,13 @@ export function classifyConversionResponse({ original, proposed, targetDenominat
   const detected = [];
   const details = {};
 
-  const target = targetDenominator !== null ? BigInt(targetDenominator) : proposed.denominator;
+  const target = targetDenominator === null
+    ? proposed.denominator
+    : toPositiveExactInteger(targetDenominator, 'target denominator');
+
+  if (target % original.denominator !== 0n) {
+    throw new RangeError('target denominator must be divisible by the original denominator');
+  }
 
   // Denominator changed while numerator stayed fixed (e.g. 1/3 -> 1/12)
   if (proposed.denominator !== original.denominator && proposed.numerator === original.numerator) {
@@ -218,30 +267,32 @@ export function classifyRegroupingResponse({ original, proposed, type = 'decompo
     throw new TypeError('original and proposed values must be mixed numbers');
   }
 
+  if (type !== 'decomposition') {
+    throw new RangeError(`unsupported regrouping type: ${String(type)}`);
+  }
+
   const detected = [];
   const details = {};
 
-  if (type === 'decomposition') {
-    const expectedFractionNum = original.fraction.numerator + original.fraction.denominator;
-    const expectedWhole = original.whole - 1n;
+  const expectedFractionNum = original.fraction.numerator + original.fraction.denominator;
+  const expectedWhole = original.whole - 1n;
 
-    const wholeDecreased = proposed.whole === expectedWhole;
-    const fractionIncremented = proposed.fraction.numerator === expectedFractionNum
-      && proposed.fraction.denominator === original.fraction.denominator;
+  const wholeDecreased = proposed.whole === expectedWhole;
+  const fractionIncremented = proposed.fraction.numerator === expectedFractionNum
+    && proposed.fraction.denominator === original.fraction.denominator;
 
-    if (!wholeDecreased || !fractionIncremented) {
-      detected.push(PATTERNS.INCORRECT_REGROUPING_QUANTITY);
-      details.expected = {
-        whole: expectedWhole,
-        numerator: expectedFractionNum,
-        denominator: original.fraction.denominator,
-      };
-      details.actual = {
-        whole: proposed.whole,
-        numerator: proposed.fraction.numerator,
-        denominator: proposed.fraction.denominator,
-      };
-    }
+  if (!wholeDecreased || !fractionIncremented) {
+    detected.push(PATTERNS.INCORRECT_REGROUPING_QUANTITY);
+    details.expected = {
+      whole: expectedWhole,
+      numerator: expectedFractionNum,
+      denominator: original.fraction.denominator,
+    };
+    details.actual = {
+      whole: proposed.whole,
+      numerator: proposed.fraction.numerator,
+      denominator: proposed.fraction.denominator,
+    };
   }
 
   return Object.freeze({

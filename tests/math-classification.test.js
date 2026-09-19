@@ -184,6 +184,12 @@ describe('classifyMixedRegrouping', () => {
     expect(result.wholeUnitsRenamed).toBe(1n);
   });
 
+  it('rejects a mixed-number subtraction whose minuend is smaller overall', () => {
+    const left = createMixedNumber(0, createFraction(1, 4));
+    const right = createMixedNumber(0, createFraction(1, 2));
+    expect(() => classifyMixedRegrouping(left, right, 'subtract')).toThrow(RangeError);
+  });
+
   it('rejects invalid inputs', () => {
     expect(() => classifyMixedRegrouping(createFraction(1, 2), createFraction(1, 3), 'add')).toThrow(TypeError);
     expect(() => classifyMixedRegrouping(
