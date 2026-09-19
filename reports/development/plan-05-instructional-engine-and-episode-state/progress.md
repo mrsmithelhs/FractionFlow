@@ -4,6 +4,7 @@
 - **Report date:** 2026-09-19
 - **Mechanism approval:** `reports/development/plan-05-instructional-engine-and-episode-state/mechanism-review.md`, approved with binding clarifications on 2026-09-19
 - **Implementation commit:** `bc63229` (`feat: implement plan-05 instructional engine`)
+- **Repair commit:** `0d2c3bd` (`fix: harden plan-05 episode and replay boundaries`)
 - **Packet status:** unchanged; the implementer did not edit frontmatter or run the status setter
 - **Ready for orchestrator review:** yes
 
@@ -13,10 +14,13 @@ Implemented the pure instructional layer for the Phase 2 unlike-denominator
 addition episode and the prerequisite content capability evaluator. The engine
 now creates immutable JSON-safe episode state, advances through explicit
 encounter → notice → decide → transform → operate → resolve beats, retains
-completed-beat context, preserves valid earlier work after invalid responses,
-records independent support dimensions and layered help, emits synthetic
-response-level provenance, and reconstructs generated or curated episodes from
-deterministic replay envelopes.
+  completed-beat context, preserves valid earlier work after invalid responses,
+  records independent support dimensions and layered help, emits synthetic
+  response-level provenance, and reconstructs generated or curated episodes from
+  deterministic replay envelopes. Beat-specific intents are gated to the active
+  responsibility, demonstration support survives incorrect retries for the same
+  responsibility, and resolved/reflected establishments are present in the
+  canonical state projection.
 
 The content layer now computes Phase 2 representation eligibility before episode
 construction. Exact mathematical validity remains delegated to Plan 02; the
@@ -44,13 +48,16 @@ review:
 - `continue` is rejected by the instructional reducer and remains an app-shell
   transition. It is not placed in replay intent history.
 - State, provenance, replay envelopes, action intents, and content records are
-  JSON-safe wire data. The pre-existing content classification field
+  canonical JSON-safe wire data with exact intent shapes and round-trip checks.
+  The pre-existing content classification field
   `canonicalRenaming.targetDenominator` was normalized to its established
   string-wire form so the full retained content record is serializable.
 - Replay reconstructs generated instances from selector, overlays, profile,
   seed, generator/version, and seed-algorithm identity; curated instances use
-  the static fixture id and authoring revision. Reconstruction is validated and
-  identity-checked, with no network, ambient lookup, or best-effort substitute.
+  the static fixture id and authoring revision. Every nested reconstruction
+  identity field is checked after JSON wire round-trip reconstruction, with
+  unknown, tampered, or out-of-order replay failing closed. There is no network,
+  ambient lookup, or best-effort substitute.
 - Eligibility derives profile identity from the validated instance. A base
   fraction-bar capability failure prevents construction; a valid learner path
   that exceeds the visual ceiling remains active and routes to symbolic
@@ -108,7 +115,9 @@ Implemented in `src/interaction/episode.js` and
 - Completed beats retain the structured establishment made at that beat.
 - Transitions occur only through learner-intent actions or the reducer's
   deterministic internal consequence of a successful learner action. There is
-  no timer, DOM callback, animation callback, or presentation dependency.
+  no timer, DOM callback, animation callback, or presentation dependency. Each
+  beat-specific intent is rejected unless it matches the active beat; `continue`
+  remains outside the reducer.
 
 ### Requirement 2 — Response classification by delegation
 
@@ -139,7 +148,8 @@ Implemented in `src/interaction/support.js` and the reducer.
 - Help and replay are recorded as support use rather than failure.
 - A demonstration marks the subsequent assessed response as
   `supported-construction`, preventing it from being recorded as uncued
-  prediction evidence.
+  prediction evidence. That support marker remains attached through incorrect
+  retries until the demonstrated responsibility is completed.
 
 ### Requirement 4 — Provenance and replay
 
@@ -155,7 +165,10 @@ Implemented in `src/interaction/provenance.js` and
   episode definition, support, active condition, and ordered learner intents.
 - Generated and curated replay tests round-trip deterministically through JSON.
 - Tampered curated identity is rejected before substitution. Invalid generated
-  version, seed, request, or instance identity is also rejected.
+  reconstruction profile, request, version, seed, or instance identity is also
+  rejected. Exact replay envelope shape and JSON round-trip preservation are
+  checked before reconstruction, and an out-of-order learner-intent sequence
+  fails before it can construct an impossible episode.
 
 ### Requirement 5 — Register cleanup
 
@@ -208,15 +221,16 @@ rendering-ineligible because its target denominator exceeds 30.
   `RUNNABLE: plan-05 is ready to implement`.
 - `node scripts/dev/plan-status.js lint` → `lint: OK (no violations)`.
 - Baseline before source changes: `npm test` → 113 tests passed.
-- Final `npm test` → **11 test files passed, 127 tests passed**.
+- Final `npm test` → **11 test files passed, 132 tests passed**.
 - Focused Plan 05 tests → eligibility, interaction, provenance, replay, base
   capability, deferred rejection, and reflection cases passed.
 - `git diff --check` and `git diff --cached --check` → no whitespace errors.
 - Read-only exact eligibility sweep → figures recorded above.
 - Static boundary scan over `src/interaction/` → no DOM, browser API,
   storage, or network API references.
-- JSON serialization checks → generated/curated content, episode state,
-  provenance, intents, and replay envelopes serialize without `BigInt` errors.
+- JSON wire checks → generated/curated content, episode state, provenance,
+  intents, and replay envelopes reject non-canonical values and survive JSON
+  serialization round trips without `BigInt` or silent-loss errors.
 - Final staged path audit → exactly the 17 implementation/test/register paths
   listed in the implementation commit.
 
@@ -228,14 +242,16 @@ present and no lock or ACL was removed or changed.
 
 ## Advisor-consultation disposition
 
-**Branch C — orchestrator-gate-only.** This individual implementer thread has
-no callable higher-tier, read-only advisor child tool in its exposed tool
-surface. The available Codex app thread-management tools create or continue
-user-owned tasks; they do not provide the qualified model-tier override and
-structural read-only advisor path required by the packet. I therefore did not
-create a substitute task or claim that an advisor consultation ran. The
-implementation remains subject to the approved mechanism gate and the normal
-artifact-based orchestrator review.
+**Branch A — Sol consultation ran.** After the owner corrected the earlier
+disposition, this implementer launched the `gpt-5.6-sol` reviewer as a
+read-only advisor with an artifact-specific Plan 05 brief. Sol found defects in
+beat sequencing, generated replay identity verification, demonstration support
+taint, canonical JSON-wire validation, and resolved-state establishment, plus a
+missing scale-factor boundary test. The implementer verified those findings
+against the repository, repaired them in `0d2c3bd`, added regression coverage,
+and reran the full suite. Sol also confirmed the eligibility integration and
+scope discipline and left help-ladder scope as a residual question rather than
+a proven defect.
 
 ## Remaining risks and follow-ups
 
@@ -247,6 +263,11 @@ artifact-based orchestrator review.
 - The symbolic continuation is represented as instructional route state. Its
   learner-facing rendering and accessibility behavior require the later
   renderer/linear-path packets.
+- The approved documents do not settle whether the orient → represent →
+  constrain → demonstrate help ladder resets per beat or per response
+  responsibility. The current deterministic behavior is preserved as a
+  residual question for orchestrator/owner disposition; no new adaptive rule
+  was introduced.
 - The `not-in-phase-2` number-line label is intentionally a scope marker, not a
   permanent capability verdict.
 - No learner data, account data, credentials, analytics, or deployment state
