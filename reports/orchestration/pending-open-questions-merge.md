@@ -57,7 +57,77 @@ a §33 review conducted by someone thinking about fractions.
 
 ---
 
-## For `docs/open-questions.md`, under "Live for Phase 2"
+### DECISION-004 - Reading-level target for learner-facing text
+
+**Date:** 2026-09-19
+
+**Decision:** Learner-facing interface text targets approximately a grade 2–3 reading level — two
+or more grades below the upper-elementary audience — so that reading is never the barrier to the
+mathematics. The mathematical terms the episode teaches are exempt and are introduced with meaning
+rather than avoided. The target is enforced through working rules (one idea per string, a prompt of
+about 12 words, active voice, no conditionals in a prompt that asks for a response, concrete words,
+no culture-dependent idiom) and human review — **not** through a readability formula, which is
+unreliable at prompt length. Full rules: `docs/presentation-posture.md` Part 2.
+
+**Rationale:** `05-quality-and-validation.md` §33 requires review for reading burden and age
+appropriateness but sets no target, so nothing could be checked against it. Formula-based gating
+was rejected because Flesch–Kincaid and its relatives produce meaningless scores below roughly 100
+words; gating on one would have been a proxy metric of exactly the kind this project's guardrails
+warn about.
+
+**Supersedes / related:** `docs/presentation-posture.md` Part 2; resolves the target half of OQ-10;
+`D-19`.
+
+---
+
+### DECISION-005 - Efficacy research is a sidequest, not a primary concern
+
+**Date:** 2026-09-19
+
+**Decision:** High-quality instructional-efficacy research may be advanced someday but is not a
+primary concern and is not a gate on shipping. The project's realistic evidence ladder is solo
+review, then a handful of children with parental permission, then possibly a single classroom with
+teacher approval — all small-n, none randomized, none controlled, none powered. Consequently the
+`plan-04` prototype-variable register is retained as a **disqualification** instrument rather than
+a **selection** instrument: it can rule a condition out, it cannot rule one in, and its conclusion
+rule will correctly and permanently return "consistent with A and B" for the selection question.
+Claims name their evidence tier and n; "evidence shows X is better" is not an available sentence.
+Full posture: `docs/evidence-posture.md`.
+
+**Rationale:** The register's discriminating experiments assume randomized or counterbalanced
+comparison, which this project will not run. Leaving that mismatch unrecorded would have produced
+either a permanently blocked decision, waiting on a study that was never coming, or an overclaim
+built on a handful of observations. Naming the ladder makes both failure modes visible.
+
+This does not lower the accessibility floor or the mathematical-correctness bar. Small-n evidence
+is *strong* at participation-floor failures — one child unable to complete a required decision is
+conclusive — and mathematical truth is established deterministically in `src/math/`, owing nothing
+to learner observation.
+
+**Supersedes / related:** `docs/evidence-posture.md`; `docs/development/phase-2-first-slice-design/prototype-variable-register.md`;
+reframes OQ-01; partially answers OQ-05; `06-roadmap.md` §16.
+
+---
+
+## For `docs/open-questions.md`
+
+### Amendments to existing entries
+
+- **OQ-01** — add: per DECISION-005 the register cannot select a winner, so the provisional
+  condition is in practice the shipped condition indefinitely and must be chosen on design grounds
+  (founding principles, craft judgment, owner/teacher review). It stays labeled not-decided and
+  swappable, because disqualifying evidence can still force a change. Do not defer the choice as
+  though a study were coming.
+- **OQ-05** — partially answered by DECISION-005: yes, informally, at small n, with permission, on
+  no fixed schedule. What remains open is narrower — whether any child observation is a
+  *precondition* of Phase 2 acceptance, or whether Phase 2 may be accepted on solo review plus
+  mechanized and human checks.
+- **OQ-07** — amend: tail reporting matters more, not less, under DECISION-005. At n of five,
+  every observation *is* the tail; there is no mean worth reporting.
+- **OQ-10** — target half resolved by DECISION-004. Rewrite the remaining question as: who authors
+  and reviews learner-facing strings, and at what point in a packet?
+
+### New entries, under "Live for Phase 2"
 
 ### OQ-13 — Is drag an enhancement over a non-drag primary, or the primary with a non-drag fallback?
 

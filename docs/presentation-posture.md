@@ -208,10 +208,45 @@ Applies to every learner-visible string, including accessible names, status anno
 text, and the semantic/linear path — which `docs/open-questions.md` OQ-10 notes is the surface most
 exposed to reading burden, since it is text all the way down.
 
+## Reading-level target
+
+Recorded 2026-09-19, resolving the target half of `docs/open-questions.md` OQ-10. Register
+separation (above) and reading level are different problems: a string can be in the right register
+and still be too hard to read.
+
+**Target.** Learner-facing interface text reads at approximately **grade 2–3** — two or more grades
+below the upper-elementary audience — so that reading is never the barrier to the mathematics. A
+learner who can do the arithmetic must not be stopped by the sentence describing it.
+
+**Exempt: the mathematical terms the episode is teaching.** *Numerator*, *denominator*,
+*equivalent*, *common denominator*, and *whole* are content, not reading burden. `00-principles.md`
+§4 requires terminology to follow meaning, and `05-quality-and-validation.md` §34 requires it to be
+used consistently. Introduce them with meaning; do not avoid them, and do not count them against
+the target.
+
+**Working rules**, which are what actually gets checked:
+
+- one idea per string; a prompt is one sentence;
+- a required-response prompt runs to about 12 words, a help step to about 25;
+- active voice, present tense, second person;
+- no subordinate clauses or conditionals in a prompt that asks for a response;
+- concrete words over abstract ones — *amount* rather than *quantity*, *bar* rather than
+  *representation*; and
+- no metaphor or idiom that assumes cultural or regional knowledge.
+
+**Do not gate on a readability formula.** Flesch–Kincaid and its relatives are unreliable below
+roughly 100 words and produce meaningless scores on a six-word prompt — a short sentence full of
+hard words can score well, and a clear one can score badly. Gate on the working rules and on human
+review. A formula may be run across aggregate help text as a smell test, never as an acceptance
+criterion for an individual string.
+
+**Authority.** Owner/teacher review is the final judge, consistent with this project's standing
+rule for anything learner-facing.
+
 ## Related open questions
 
-- **OQ-10** — no reading-burden target exists for learner-facing text. Part 2 sets the register
-  boundary; it does not set a reading level. Both are needed.
+- **OQ-10** — the reading-level target above resolves the target half. What remains open is who
+  authors and reviews learner-facing strings in practice, and at what point in a packet.
 - **OQ-06** — the §25 aesthetic-coherence criterion still has no review mechanism; the two review
   questions in this document are the best candidates the project currently has.
 
