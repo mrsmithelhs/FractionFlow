@@ -1,11 +1,9 @@
 ---
 id: plan-04
 title: First Vertical Slice — Design and Evidence Preparation
-status: draft
+status: ready
 depends_on: [plan-03]
 gate: "Owner approves the packet and reviews the resulting design dossier; no Phase 2 implementation packet may be drafted until this dossier is accepted. Design artifacts are proposals, not settled decisions."
-superseded_by: null
-resolution: null
 summary: >-
   Prepare — but do not begin — the Phase 2 first vertical slice: draft the
   episode definition for unlike-denominator proper-fraction addition (both

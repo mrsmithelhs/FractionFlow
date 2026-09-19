@@ -1,7 +1,8 @@
 ---
 id: plan-03
 title: Content Contracts and Deterministic Problem Generation
-status: delivered
+status: complete
+resolution: "Orchestrator verified the exact immutable content contract, all eight selectors and overlays, curated provenance, deterministic uniform eligible selection, full derived-state validation, and reproducible bulk audit after Repair 01."
 depends_on: [plan-02]
 gate: "Owner approves the packet; mechanism-confirmation gate — the problem-instance schema and family/constraint definitions are approved before build; orchestrator verifies bulk validation and seed reproducibility against the objective."
 summary: >-

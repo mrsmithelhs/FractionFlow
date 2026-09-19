@@ -4,10 +4,10 @@ Living pointer document (see `docs/agent-starting-prompts/orchestrator-prompt.md
 Orchestrator-owned; update in place before thread boundaries. Anchor dates, never countdowns.
 First revision: 2026-09-18.
 
-## Live State (as of 2026-09-18)
+## Live State (as of 2026-09-19)
 
 Authoritative packet status is always `node scripts/dev/plan-status.js list` and the generated
-index in `docs/development/README.md` — trust those over this file. As of 2026-09-18:
+index in `docs/development/README.md` — trust those over this file. As of 2026-09-19:
 
 - `plan-01` (toolchain/deployment spike): **complete**. Implementer commits `038626c`, `6f05baf`;
   initial delivered status commit `128c066`. On 2026-09-18 the owner-provided browser observation
@@ -19,15 +19,14 @@ index in `docs/development/README.md` — trust those over this file. As of 2026
   exact BigInt primitives, classifications, validators, response patterns, synthetic golden
   fixtures, D-17 diversity evidence, and two bounded repairs. See
   `reports/development/plan-02-exact-arithmetic-mathematical-core/final-review.md`.
-- `plan-03` (content contracts and deterministic generation): **delivered**, but final
-  acceptance is blocked by Repair 01. Its mechanism-confirmation gate remains approved;
-  `DECISION-002` and
-  `reports/development/plan-03-content-contracts-and-deterministic-generation/mechanism-review.md`
-  bind its structural selectors/overlays, honest generated-versus-curated provenance, explicit
-  result state, and finite-candidate-space bulk-audit semantics. Repair 01 is
-  `reports/development/plan-03-content-contracts-and-deterministic-generation/repair-01-contract-validation-and-unbiased-selection.md`.
-- `plan-04`: `draft`, blocked by Plan 03. All first-wave packets were revised per Codex review
-  (commit `ef45aa2`); the wave was originally drafted at `94df306`.
+- `plan-03` (content contracts and deterministic generation): **complete** after final review.
+  It delivered exact immutable problem instances, eight structural selectors, overlays, honest
+  provenance, synthetic fixtures, deterministic selection, and reproducible finite-space bulk
+  audit. Repair 01 closed validator completeness and seed-selection bias. See
+  `reports/development/plan-03-content-contracts-and-deterministic-generation/final-review.md`.
+- `plan-04`: `ready`, pending the packet's explicit owner approval before its design dossier is
+  assigned. All first-wave packets were revised per Codex review (commit `ef45aa2`); the wave was
+  originally drafted at `94df306`.
 
 ## Close-out Note (plan-01)
 
@@ -86,11 +85,10 @@ disposition record also remains in the committed Plan 01 progress report.
 
 ## Next Orchestration Move
 
-Plan 03 delivery is pending bounded Repair 01. The initial implementation passed its own suite
-and bulk run but final review proved two contract defects: it accepted deeply frozen forged
-derived fields (including operand `currentForm` and classification metadata) and its raw-index
-plus cyclic eligibility scan was severely biased (62,318 of 70,000 fixed seeds selected one of
-seven ordinary like-denominator cases). Give a fresh implementer the durable Repair 01 note.
-It must validate every consumer-visible derived field, fail closed for malformed records, select
-directly and uniformly from `eligibleIndices`, regenerate reports, consult an advisor when
-capable, and stop. Plan 04 remains unavailable until Plan 03 is complete.
+Plan 03 closed on 2026-09-19 after Repair 01 and final independent review. The repair now rejects
+forged derived state, returns an invalid result for malformed records, and selects directly from
+ordered eligible candidates; a 70,000-seed sweep ranged 9,758–10,145 across seven cases. Plan 04
+is the next packet and is status-ready, but its explicit owner-approval gate must be cleared
+before it is assigned. It prepares a dossier only; after the dossier, use a design-review session
+for the genuinely interdependent learner-facing prototype decisions, then perform a skeptical
+orchestrator reconciliation before any Phase 2 implementation packet.
