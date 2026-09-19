@@ -15,12 +15,11 @@ index in `docs/development/README.md` — trust those over this file. As of 2026
   returns the expected static smoke page. The working tree was clean; `npm test`, `npm run build`,
   and `node scripts/dev/plan-status.js lint` also passed. `DECISION-001` and the status close-out
   commit record the deployment decision and terminal resolution.
-- `plan-02` (exact-arithmetic mathematical core): **delivered**. Milestones 1 and 2 were
-  received for full-packet review. The primitive and classification modules, generated
-  invariants, synthetic golden fixtures, and claimed advisor disposition are committed, but the
-  packet is not accepted: response-classification boundary defects require the bounded Repair 01
-  handoff before final verification. See
-  `reports/development/plan-02-exact-arithmetic-mathematical-core/repair-01-response-classification-boundaries.md`.
+- `plan-02` (exact-arithmetic mathematical core): **delivered**. Milestones 1 and 2 plus
+  Repair 01's response-classification correction were reviewed. Repair 01 is accepted, but the
+  packet is not accepted: a transient improper mixed-number form can require more than one whole
+  decomposition while `classifyMixedRegrouping` always reports one. The final bounded repair is
+  `reports/development/plan-02-exact-arithmetic-mathematical-core/repair-02-multiple-whole-regrouping.md`.
 - `plan-03`, `plan-04`: `draft`, serially blocked by the 02 → 03 → 04 chain. All were revised per
   Codex review (commit `ef45aa2`); wave originally drafted at `94df306`.
 
@@ -78,10 +77,10 @@ disposition record also remains in the committed Plan 01 progress report.
 
 ## Next Orchestration Move
 
-Plan 02 is delivered but not accepted. The Milestone 2 report claims full response-pattern
-coverage, yet review verified an unsupported-operation misclassification, an unsupported
-regrouping-type no-op, a result-only false claim that conversions were correct, and missing direct
-tests for four exported pattern labels. Give a fresh Codex implementer the bounded Repair 01
-handoff; it is an implementation repair, not an owner-design decision. The repairer must make a
-fresh advisor-capability/disposition determination for its own thread and stop for final Plan 02
-review. `plan-03` and `plan-04` stay draft until Plan 02 is terminally complete.
+Plan 02 is delivered but not accepted. Repair 01 fixed and independently verified the
+response-classification boundary defects. Final review then verified that the accepted transient
+mixed form `3 1/4 - 0 9/4` needs two whole decompositions even though the classifier reports one.
+Give a fresh Codex implementer the bounded Repair 02 handoff; it preserves current forms and
+computes the exact multiple-whole count rather than canonicalizing an operand. The repairer must
+make a fresh advisor-capability/disposition determination and stop for final Plan 02 review.
+`plan-03` and `plan-04` stay draft until Plan 02 is terminally complete.
