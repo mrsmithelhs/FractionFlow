@@ -136,9 +136,11 @@ and public URL.
 
 The wave review is complete and its recommendations are folded in. The owner assigned `plan-05` directly
 to `in-progress` on 2026-09-19; `node scripts/dev/plan-status.js check plan-05` reported `RUNNABLE`.
-The next implementer action is the **mechanism-confirmation proposal only**. It must propose the episode
-state, beat transitions, response-classification delegation, provenance record, and the narrow content
-eligibility evaluator; it must then stop for orchestrator approval before implementation.
+The Plan 05 mechanism was approved with binding clarifications on 2026-09-19. See
+`reports/development/plan-05-instructional-engine-and-episode-state/mechanism-review.md`. The
+implementer may now build only the approved instructional engine and narrow content eligibility
+evaluator, then report and stop for orchestrator review. The approval does not authorize Scene Model,
+renderer, app-shell, deployment, or packet-status work.
 
 Two cautions for the implementation phase specifically. First, `plan-07`'s three-path gate is the
 wave's load-bearing review moment; approving a boundary that accounts only for the visual and symbolic
