@@ -2,148 +2,128 @@
 
 Living pointer document (see `docs/agent-starting-prompts/orchestrator-prompt.md` § "Session Handoff File").
 Orchestrator-owned; update in place before thread boundaries. Anchor dates, never countdowns.
-First revision: 2026-09-18.
+First revision: 2026-09-18. Rewritten 2026-09-19 when the specification phase closed — the prior
+revision was organized around an open specification phase and patching it would have misled.
 
 ## Live State (as of 2026-09-19)
 
-Authoritative packet status is always `node scripts/dev/plan-status.js list` and the generated
-index in `docs/development/README.md` — trust those over this file. As of 2026-09-19:
+Authoritative packet status is `node scripts/dev/plan-status.js list` and the generated index in
+`docs/development/README.md` — trust those over this file.
 
-- `plan-01` (toolchain/deployment spike): **complete**. Implementer commits `038626c`, `6f05baf`;
-  initial delivered status commit `128c066`. On 2026-09-18 the owner-provided browser observation
-  and an independent HTTPS request both confirmed `https://mrsmithelhs.github.io/FractionFlow/`
-  returns the expected static smoke page. The working tree was clean; `npm test`, `npm run build`,
-  and `node scripts/dev/plan-status.js lint` also passed. `DECISION-001` and the status close-out
-  commit record the deployment decision and terminal resolution.
-- `plan-02` (exact-arithmetic mathematical core): **complete** after final review. It delivered
-  exact BigInt primitives, classifications, validators, response patterns, synthetic golden
-  fixtures, D-17 diversity evidence, and two bounded repairs. See
-  `reports/development/plan-02-exact-arithmetic-mathematical-core/final-review.md`.
-- `plan-03` (content contracts and deterministic generation): **complete** after final review.
-  It delivered exact immutable problem instances, eight structural selectors, overlays, honest
-  provenance, synthetic fixtures, deterministic selection, and reproducible finite-space bulk
-  audit. Repair 01 closed validator completeness and seed-selection bias. See
-  `reports/development/plan-03-content-contracts-and-deterministic-generation/final-review.md`.
-- `plan-04` (first-slice design dossier): **complete**. Owner accepted the dossier on 2026-09-19;
-  closed at `44c5874`. Implementer commits `0171d97` (dossier) and `6e78271` (progress report);
-  orchestrator review and Tier-1 corrections at `9db7719`. Advisor disposition was Branch B, so no
-  reflection note was authored. See
-  `reports/development/plan-04-first-vertical-slice-design-preparation/review.md` for what was
-  verified against repository truth, the three inline corrections, and the four items the Phase 2
-  implementation packet must carry.
-- All first-wave packets were revised per Codex review (commit `ef45aa2`); the wave was
-  originally drafted at `94df306`.
+- `plan-01` (toolchain/deployment spike): **complete**. Live HTTPS smoke page verified 2026-09-18.
+  `DECISION-001` records the deployment mechanism. The remaining owner gate is publish only.
+- `plan-02` (exact-arithmetic core): **complete**. Exact BigInt primitives, classifications,
+  validators, response patterns, golden fixtures, two bounded repairs.
+- `plan-03` (content contracts and deterministic generation): **complete**. Immutable problem
+  instances, eight structural selectors, overlays, provenance, deterministic selection, bulk audit.
+- `plan-04` (first-slice design dossier): **complete**, owner-accepted 2026-09-19.
+- `plan-05` through `plan-08`: **draft**, the Phase 2 implementation wave, committed at `4bb2879`.
+  Awaiting a packet-wave review the owner is soliciting from the prior orchestrator thread.
 
-## Close-out Note (plan-01)
+## The Specification Phase Closed on 2026-09-19
 
-The former owner publish gate is satisfied: `origin/main` is aligned with `main`, and the live
-HTTPS smoke page was observed. `DECISION-001` records the deployment mechanism. The Plan 01
-advisor-consultation reflection was filed in Bootstrap's shared incoming intake as
-`docs/bootstrap-dev/incoming/2026-09-18-fractionflow-plan-01-advisor-reflection.md`; its full
-disposition record also remains in the committed Plan 01 progress report.
+A design-review session ran Batches A–D plus a correction batch and produced DECISION-007 through
+DECISION-024. `DECISION-024` declares Phase 2 design and specification complete; the "Live for
+Phase 2" section of `docs/open-questions.md` is verified empty of open blockers.
+
+The decisions that most change how earlier artifacts must be read — a fresh thread should treat
+these as foreground, not background:
+
+- **DECISION-005** (`docs/evidence-posture.md`) — efficacy research is a sidequest. The evidence
+  ladder is small-n and unrandomized, so the `plan-04` prototype-variable register is a
+  **disqualification** instrument, never a selection one. Any thread reading that register as a plan
+  to *select* a winner is reading it wrong.
+- **DECISION-007 + 012 + 026** — Bundle 1 is the provisional shipped condition, chosen on design
+  grounds because no study is coming. DECISION-007's CM-01 text is superseded: the check is a
+  matching task with distractors whose expected answer is not always the reassuring one. Cite 012 and
+  026 alongside 007, never 007 alone.
+- **DECISION-003 + 004** (`docs/presentation-posture.md`) — accessibility posture, the learner-facing
+  register rules, and a grade 2–3 reading target enforced by working rules rather than a formula.
+- **DECISION-025** — fraction-bar segments are not interactive targets; control size is decoupled
+  from denominator.
+- **DECISION-019** — the gear menu holds the condition switcher only; Phase 2 ships no learner
+  preference surface and stores nothing in the browser.
+
+Full reconciliation, including the six findings and their dispositions:
+`reports/orchestration/phase-2-specification-reconciliation.md`.
+
+## The Packet Wave (draft, pending review)
+
+Sequenced along the pipeline so no packet is built against a stub — the project's named implementer
+failure mode:
+
+| Packet | Layer | Gate |
+| --- | --- | --- |
+| `plan-05` | `src/interaction/` instructional engine, no DOM | mechanism confirmation |
+| `plan-06` | scene projection + eligibility verdict, no DOM | mechanism confirmation |
+| `plan-07` | `src/render/` renderers, strings, participation floor | mechanism + internal milestone |
+| `plan-08` | `src/app/` shell, switcher, deployed acceptance | owner gate |
+
+`plan-07` is the highest-risk packet in the project so far and the first to touch a child-visible
+surface. `plan-08` carries the roadmap §16 obligation to exercise the slice at the public GitHub
+Pages URL, which `plan-01` proved only for a static page.
 
 ## What the Owner Actually Chose (chat-only judgments)
 
-- 2026-09-18: Owner directed the first packet be set **directly to `in-progress`** (skipping `ready`)
-  — that status write was the assignment signal; no separate initiation prompt was needed.
-- 2026-09-18: Owner asked the orchestrator to close a verified packet and advance the next packet
-  when it needs no further owner decision before starting. Plan 02 was reviewed, passed its
-  `ready` preflight, and moved to `in-progress`; its own mechanism-confirmation and milestone
-  gates remain in force.
-- 2026-09-18: Owner routed the Codex packet-wave review (`F1`–`F8`) into the packets and then
-  assigned plan-01. All eight findings are addressed in commit `ef45aa2`; see the review file for text.
-- 2026-09-18: **Orchestrator call, owner may veto** — Codex F5 suggested splitting plan-02 into
-  02a/02b. Owner gave no split instruction, so plan-02 stayed unified with an Internal Milestone
-  Gate (primitives+invariants reported and reviewed before classification/step-validation code).
-  If the owner prefers the split, rework the board while packets are still cheap to renumber.
-- Deployment mechanism (GitHub Actions) was the implementer's decision under plan-01 authority,
-  ratified by the orchestrator — not an owner decision. The owner gate that remains is publish only.
-- 2026-09-18: Owner approved the Plan 03 mechanism bundle: operation-specific structural
-  selectors plus explicit overlays, a common exact contract with generated/curated provenance,
-  and bulk reports that distinguish sampled draws from unique finite-space coverage.
+- 2026-09-18: first packet set directly to `in-progress`, skipping `ready` — the status write is the
+  assignment signal.
+- 2026-09-18: the orchestrator may close a verified packet and advance the next when no owner
+  decision is needed to start it.
+- 2026-09-18: plan-02 stayed unified rather than split per Codex F5, with an internal milestone gate.
+  Orchestrator call, owner may still veto.
+- 2026-09-19: LCD ceiling raised to 30 over the recommended lower bound, accepting visual cramping at
+  narrow widths because mobile is a lower-priority target than Chromebook, tablet, and desktop, and
+  because scaffolding toward higher LCDs is wanted later.
+- 2026-09-19: the condition switcher is a gear icon on the entry page, not a URL parameter — the
+  owner's judgment being that most children will not click it.
+- 2026-09-19: the gear menu carries **only** the condition switcher at this stage; assigning future
+  preferences to it was explicitly withdrawn.
+- 2026-09-19: connection-making checks must sometimes have an unexpected correct answer, or children
+  click through them like a licence agreement.
+- 2026-09-19: support for learners below the prerequisite boundary stays a *bounded* opportunity
+  (OQ-17) — at most a calm message suggesting a teacher conversation. Explicitly not an obligation to
+  teach basic arithmetic.
 
 ## Standing Cautions (expensive rediscoveries avoided)
 
-- ~~`reports/orchestration/founding-docs-review/initial-packet-wave-review-codex.md` is deliberately
-  uncommitted and untracked.~~ **Corrected 2026-09-19:** it is tracked and committed — the owner
-  committed it themselves at `2445c47` on 2026-09-18. The original caution was written from the
-  pre-commit state and is no longer true. It remains an owner/Codex artifact: do not edit it.
+- **The orchestrator's own recurring failure mode here has been hand-derived arithmetic.** A family
+  sweep computed by hand omitted `maxCanonicalScaleFactor`, producing a wrong eligible set that was
+  handed to the owner as evidence; the design-review agent's figures, computed with
+  `inspectCandidateSpace`, were right. Run the code. The correction is recorded in the Batch A/B
+  exchange and in `phase-2-specification-reconciliation.md`.
+- `docs/decision-log.md` is **append-only**. Supersede with a new entry; never amend in place. One
+  same-day clarification to DECISION-015 was made with an explicit dated, owner-authorized note, and
+  that is the only acceptable form of in-place edit.
 - Never hand-edit the packet table between the `plan-index` markers in `docs/development/README.md`;
-  run `render`. Lint runs atomically with `set` and refuses bad writes.
+  run `render`. `set` lints atomically and refuses bad writes.
 - Status verbs (`delivered`, `complete`, `superseded`, `parked`) are orchestrator/owner-only.
-  Implementers report and stop; "ready for orchestrator review: yes/no" is a handoff statement.
-- `npm`/`node` are not on Git Bash PATH in this environment; use
-  `export PATH="/c/Program Files/nodejs:$PATH"` (node v26.7.0 present as of 2026-09-18).
-- plan-02's mechanism-confirmation gate may approve **one** narrowly justified dev dependency
-  (then `package.json`/lockfile become write-scope); plan-01 must not pre-install test libraries.
-- plan-02 also has the Internal Milestone Gate (see above) — do not let an implementer run both
-  milestones as one undifferentiated diff.
-- On managed Windows Codex tasks, ordinary source-file edits can succeed while `.git` metadata
-  writes fail with `index.lock: Permission denied` and no lock exists. Diagnose read-only first;
-  then use narrowly approved elevation for an explicit-path stage/commit only. Never delete the
-  absent lock, edit ACLs as a workaround, or treat elevation as push authorization.
-- Review-response tier is a practical risk boundary: correct whitespace, obvious typos, and
-  other no-test/no-iteration changes inline as Tier 1 work and report them. Return source or
-  behavioral repairs that need tests to an implementer; use a durable repair note when the fix
-  needs a multi-part handoff.
-- Prefer an orchestrator-and-owner conversation when fewer than four owner decisions are
-  independent. Use the design-review agent for genuinely interdependent decision clusters, then
-  perform a skeptical orchestrator reconciliation to prevent sidequests or incompatible accepted
-  decisions from drifting the core product.
-
-## Posture Decisions Recorded 2026-09-19
-
-Four owner decisions landed after plan-04 closed, all in `docs/decision-log.md`. They change how
-existing artifacts are read, so a fresh thread should not treat them as background:
-
-- **DECISION-003** — presentation posture (`docs/presentation-posture.md`). Part 1 accessibility:
-  motion may be the default, prominence need not be equal, the participation floor is untouched.
-  Part 2 learner-facing register: specification vocabulary is never learner-facing vocabulary, the
-  research apparatus is never learner-visible, the product never asks a learner to produce research
-  artifacts.
-- **DECISION-004** — learner-facing text targets grade 2–3, taught mathematical terms exempt,
-  enforced by working rules and human review rather than a readability formula.
-- **DECISION-005** — efficacy research is a sidequest (`docs/evidence-posture.md`). The evidence
-  ladder is small-n and unrandomized, so the plan-04 register is a **disqualification** instrument,
-  never a selection one. Its conclusion rule permanently returns "consistent with A and B".
-- **DECISION-006** — design conditions must be swappable at runtime in the deployed build, selected
-  upstream as episode configuration, recorded in the replay envelope, and kept separate from the
-  learner preference surface. Mechanism is open as OQ-16.
-
-**The most consequential downstream effect:** DECISION-005 means the provisional display condition
-is in practice the shipped condition. It must be chosen on design grounds, not deferred pending a
-study. Any thread that reads the plan-04 register as a plan to *select* a winner is reading it
-wrong.
-
-## Carried Forward Into the Phase 2 Implementation Packet
-
-From the Plan 04 review (full text in the review file; these are the items most likely to be
-rediscovered expensively):
-
-1. Phase 2 must ship one display/prompt condition even though D-01, D-02, D-05, and CM-01 are
-   deliberately undecided. The packet needs an explicit provisional-condition rule — chosen for
-   runnability, labeled not-decided, swappable without touching mathematical or instructional
-   state — or the choice hardens into a default by inertia.
-2. The register's primary outcomes require learner observation, which is owner-gated and may
-   never be authorized. State the standing position for that case.
-3. Conclusion rules turn on "meaningful regression" in agency and participation-floor access.
-   Those are tail events; require worst-case and individual-level reporting, not means.
-4. "Uncued transfer" is a primary outcome in every register entry, but no transfer task is
-   authored anywhere. Name it before costing the experiments.
+- `npm`/`node` are not on Git Bash PATH here; use `export PATH="/c/Program Files/nodejs:$PATH"`.
+- Heredocs with `<<'EOF'` have failed twice in this environment on long Markdown payloads. Write the
+  file with the Write tool, or use `python -c` with the content in a scratchpad file.
+- `docs/agent-starting-prompts/design-review-prompt.md` is a **mixed file**: only the
+  `bootstrap:commit-discipline v2` block (lines 17–39) is Bootstrap-managed. Project-local edits
+  elsewhere are safe, and one was made 2026-09-19 requiring batches to brief before asking.
+- Bootstrap intake notes are left **untracked** in `C:\AI\Bootstrap` by convention; a Bootstrap
+  orchestrator sweeps them. Do not commit there.
+- On managed Windows Codex tasks, source writes can succeed while `.git` metadata writes fail with
+  `index.lock: Permission denied` and no lock present. Diagnose read-only first, then narrow
+  elevation for an explicit-path stage/commit. Never delete an absent lock; never treat elevation as
+  push authorization.
+- A design-review agent was observed reading host-level session transcript logs mid-session to
+  recover its own batch instructions, which means the assignment had fallen out of context. Restate
+  the batch assignment at each boundary, or keep sessions shorter.
 
 ## Next Orchestration Move
 
-All four packets are `complete`; the board is empty as of 2026-09-19. The next packet is the
-Phase 2 implementation packet, which is the most path-dependent packet the project has faced —
-it produces the first learner-facing code and, per `06-roadmap.md` §23, the visual and
-interaction reference for every later phase. Do not draft it from the dossier alone; the four
-carried-forward items above are exactly what the dossier does not settle.
+The owner is soliciting a packet-wave review from the prior orchestrator thread and will then decide
+which thread oversees implementation. Until that lands, `plan-05` through `plan-08` stay `draft`.
 
-`docs/open-questions.md` was populated on 2026-09-19 and now carries OQ-01 through OQ-16 with a
-scope note. A first design-review session was started and stopped at OQ-01 without recording
-anything; it is being restarted fresh rather than resumed, because the four posture decisions above
-changed the framing of its first question.
+On review completion: fold accepted suggestions into the packets, run `check plan-05`, promote it,
+and take the owner's `ready` versus `in-progress` choice. Then hold the mechanism-confirmation gate
+firmly — it is the guardrail that has worked every time it was used in this project, and the one
+whose absence produced overclaims.
 
-Plan 03 closed on 2026-09-19 after Repair 01 and final independent review. The repair rejects
-forged derived state, returns an invalid result for malformed records, and selects directly from
-ordered eligible candidates; a 70,000-seed sweep ranged 9,758–10,145 across seven cases.
+Three things the reviewing thread should be pointed at specifically: whether four packets is the
+right granularity or `plan-07` should split again; whether `plan-06`'s separation from `plan-05` is
+worth its coordination cost; and whether `plan-08`'s owner gate is specified tightly enough to stop
+an implementer declaring the exit gate satisfied.
