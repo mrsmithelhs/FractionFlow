@@ -19,10 +19,12 @@ index in `docs/development/README.md` — trust those over this file. As of 2026
   exact BigInt primitives, classifications, validators, response patterns, synthetic golden
   fixtures, D-17 diversity evidence, and two bounded repairs. See
   `reports/development/plan-02-exact-arithmetic-mathematical-core/final-review.md`.
-- `plan-03` (content contracts and deterministic generation): **in-progress**, but only at its
-  required mechanism-confirmation proposal gate. Its implementer may propose the schema, family
-  contracts, generator constraints/defaults, and bulk-report shape, then must stop for review.
-  No Plan 03 source or fixtures are authorized before that gate clears.
+- `plan-03` (content contracts and deterministic generation): **in-progress** and its
+  mechanism-confirmation gate is approved. `DECISION-002` and
+  `reports/development/plan-03-content-contracts-and-deterministic-generation/mechanism-review.md`
+  bind its structural selectors/overlays, honest generated-versus-curated provenance, explicit
+  result state, and finite-candidate-space bulk-audit semantics. Implementation may begin within
+  the packet scope; package changes remain unapproved.
 - `plan-04`: `draft`, blocked by Plan 03. All first-wave packets were revised per Codex review
   (commit `ef45aa2`); the wave was originally drafted at `94df306`.
 
@@ -50,6 +52,9 @@ disposition record also remains in the committed Plan 01 progress report.
   If the owner prefers the split, rework the board while packets are still cheap to renumber.
 - Deployment mechanism (GitHub Actions) was the implementer's decision under plan-01 authority,
   ratified by the orchestrator — not an owner decision. The owner gate that remains is publish only.
+- 2026-09-18: Owner approved the Plan 03 mechanism bundle: operation-specific structural
+  selectors plus explicit overlays, a common exact contract with generated/curated provenance,
+  and bulk reports that distinguish sampled draws from unique finite-space coverage.
 
 ## Standing Cautions (expensive rediscoveries avoided)
 
@@ -80,9 +85,10 @@ disposition record also remains in the committed Plan 01 progress report.
 
 ## Next Orchestration Move
 
-Plan 02 closed on 2026-09-18 after final independent review; see its final-review record. Plan 03
-is assigned only to produce its mechanism-confirmation proposal. The first implementer action is
-read-only design/proposal work; it must stop before source, fixture, or generator implementation
-until the schema/family/constraint/report proposal is explicitly approved. The next orchestrator
-review should decide whether the proposal exposes a small direct owner conversation or a genuinely
-interdependent design-review session. Plan 04 remains unavailable until Plan 03 is complete.
+Plan 03's mechanism gate cleared on 2026-09-18. A fresh implementer may now build the approved
+content schema, family definitions, deterministic generation, fixtures, tests, and bulk audit
+within the packet scope. Require the binding gate-review contract, especially explicit
+selector/overlay compatibility, honest provenance, an explicit result state, fixed seed vectors,
+and sampled-versus-unique candidate-space reporting. Stop for final review after artifact-level
+validation and the required advisor-consultation disposition. Plan 04 remains unavailable until
+Plan 03 is complete.

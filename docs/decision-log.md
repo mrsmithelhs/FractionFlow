@@ -40,6 +40,27 @@ plumbing only, not learner-facing readiness, pedagogy, or accessibility.
 **Supersedes / related:** `docs/development/plan-01-tooling-deployment-spike.md`; public smoke
 URL: `https://mrsmithelhs.github.io/FractionFlow/`.
 
+### DECISION-002 - Plan 03 content-contract and bulk-audit semantics
+
+**Date:** 2026-09-18
+
+**Decision:** Plan 03 uses operation-specific structural selectors for like-denominator,
+nested-denominator, shared-factor, and relatively-prime addition/subtraction. Reducible-result
+and crosses-one-whole are orthogonal overlays, with every allowed selector/overlay combination
+declared explicitly; under the initial proper-fraction profile, crosses-one-whole is addition-only.
+Problem instances use a common exact-mathematical contract with a discriminated generated-versus-
+curated provenance section, an explicit result state, and immutable source content. The initial
+development profile remains replaceable, but bulk reporting must distinguish sampled draws from
+unique mathematical instances and report finite candidate-space coverage whenever practical.
+
+**Rationale:** This maintains the founding distinction between mathematical structure and
+cross-cutting result properties, avoids inventing generator history for curated fixtures, and
+prevents a large sampled batch from being misread as broad content variety when a deliberately
+narrow default profile has a small eligible state space.
+
+**Supersedes / related:** `docs/development/plan-03-content-contracts-and-deterministic-generation.md`;
+`reports/development/plan-03-content-contracts-and-deterministic-generation/mechanism-review.md`.
+
 ## Proposed but not yet accepted
 
 Use the same `**Date:** YYYY-MM-DD` field for proposals, using the proposal date.
