@@ -24,10 +24,10 @@ index in `docs/development/README.md` — trust those over this file. As of 2026
   provenance, synthetic fixtures, deterministic selection, and reproducible finite-space bulk
   audit. Repair 01 closed validator completeness and seed-selection bias. See
   `reports/development/plan-03-content-contracts-and-deterministic-generation/final-review.md`.
-- `plan-04` (first-slice design dossier): **delivered, orchestrator-reviewed, awaiting owner
-  acceptance**. Implementer commits `0171d97` (dossier) and `6e78271` (progress report);
-  orchestrator review and Tier-1 corrections at `9db7719`. The packet gate is owner acceptance of
-  the dossier; no Phase 2 implementation packet may be drafted before that. See
+- `plan-04` (first-slice design dossier): **complete**. Owner accepted the dossier on 2026-09-19;
+  closed at `44c5874`. Implementer commits `0171d97` (dossier) and `6e78271` (progress report);
+  orchestrator review and Tier-1 corrections at `9db7719`. Advisor disposition was Branch B, so no
+  reflection note was authored. See
   `reports/development/plan-04-first-vertical-slice-design-preparation/review.md` for what was
   verified against repository truth, the three inline corrections, and the four items the Phase 2
   implementation packet must carry.
@@ -64,8 +64,10 @@ disposition record also remains in the committed Plan 01 progress report.
 
 ## Standing Cautions (expensive rediscoveries avoided)
 
-- `reports/orchestration/founding-docs-review/initial-packet-wave-review-codex.md` is deliberately
-  **uncommitted and untracked** (owner/Codex artifact). Never stage, commit, or delete it.
+- ~~`reports/orchestration/founding-docs-review/initial-packet-wave-review-codex.md` is deliberately
+  uncommitted and untracked.~~ **Corrected 2026-09-19:** it is tracked and committed — the owner
+  committed it themselves at `2445c47` on 2026-09-18. The original caution was written from the
+  pre-commit state and is no longer true. It remains an owner/Codex artifact: do not edit it.
 - Never hand-edit the packet table between the `plan-index` markers in `docs/development/README.md`;
   run `render`. Lint runs atomically with `set` and refuses bad writes.
 - Status verbs (`delivered`, `complete`, `superseded`, `parked`) are orchestrator/owner-only.
@@ -107,12 +109,21 @@ rediscovered expensively):
 
 ## Next Orchestration Move
 
-Plan 04's dossier is delivered and orchestrator-reviewed; the open gate is the owner's
-acceptance of it. On acceptance, close `plan-04` with a resolution, then run the design-review
-session for the genuinely interdependent learner-facing prototype decisions, then perform a
-skeptical orchestrator reconciliation before drafting the Phase 2 implementation packet. Do not
-let the implementation packet be drafted from the dossier alone — the four carried-forward items
-above are exactly what the dossier does not settle.
+All four packets are `complete`; the board is empty as of 2026-09-19. The next packet is the
+Phase 2 implementation packet, which is the most path-dependent packet the project has faced —
+it produces the first learner-facing code and, per `06-roadmap.md` §23, the visual and
+interaction reference for every later phase. Do not draft it from the dossier alone; the four
+carried-forward items above are exactly what the dossier does not settle.
+
+**Before the design-review session, `docs/open-questions.md` needs populating.** As of
+2026-09-19 it is still the untouched template ("*(Add your first open question here.)*"), while
+the project's real unresolved-item register is the 29 deferred items `D-01`–`D-29` in
+`reports/orchestration/founding-docs-review/deferred-recommendations.md`. Both the orchestrator
+prompt and `docs/agent-starting-prompts/design-review-prompt.md` name `docs/open-questions.md` as
+the canonical file to read for known questions, so a grilling session started against it today
+would begin from a placeholder and re-derive what the deferred register already holds. The
+project does not need more open questions — it needs the ones it has routed into the file the
+prompts actually read, marked for which are live for Phase 2 and which stay deferred.
 
 Plan 03 closed on 2026-09-19 after Repair 01 and final independent review. The repair rejects
 forged derived state, returns an invalid result for malformed records, and selects directly from
