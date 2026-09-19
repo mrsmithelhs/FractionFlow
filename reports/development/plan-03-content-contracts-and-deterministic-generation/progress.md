@@ -1,12 +1,20 @@
-# Plan 03 Progress Report — Mechanism-Confirmation Proposal
+# Plan 03 Progress Report — Implementation Addendum and Historical Proposal
 
 - **Packet:** `plan-03` — Content Contracts and Deterministic Problem Generation
 - **Proposal date:** 2026-09-18 (environment date: `2026-09-18 21:45:14 -04:00`)
-- **Stage:** mechanism-confirmation proposal only
+- **Stage:** implementation complete; pending final orchestrator/owner review
 - **Packet status:** unchanged; no status command was run that mutates packet state
-- **Ready for orchestrator review:** yes — approval is required before implementation
+- **Ready for orchestrator review:** yes — implementation evidence and advisor disposition are recorded below
 
-## Overall summary
+## Current authoritative status
+
+The mechanism-confirmation gate is approved in `mechanism-review.md` and `DECISION-002`.
+The implementation described in the addendum at the end of this report is the current
+authoritative state. The proposal record that follows this status section is retained as a
+historical record of the pre-approval mechanism gate; its statements that implementation had
+not yet occurred describe that earlier stage and do not supersede the addendum.
+
+## Historical mechanism-confirmation proposal record
 
 This report proposes the Plan 03 mechanism for a formal, inspectable problem-instance
 schema; declarative family contracts; development-only constraint defaults; deterministic
@@ -720,3 +728,208 @@ Stopping now at the required mechanism-confirmation gate. Await explicit orchest
 approval or requested revisions. No Plan 03 source, tests, fixtures, package configuration,
 bulk tooling, deployment file, or packet-status change is authorized by this report.
 
+## Implementation addendum — 2026-09-18
+
+### Scope and gate
+
+The approved mechanism gate was used as the implementation boundary. The implementation stayed
+within `src/content/`, content tests, synthetic fixture data, deterministic seed utilities, bulk
+validation tooling and its report artifacts, and this Plan 03 progress report. No package file,
+lockfile, deployment file, packet frontmatter, packet-status index, founding document, decision
+log, or Plan 02 math-core file was modified. Packet status remains `in-progress`.
+
+The required preflight was run before implementation:
+
+```text
+node scripts/dev/plan-status.js check plan-03
+  RUNNABLE: plan-03 is ready to implement
+```
+
+The same read-only check was rerun during final verification and returned the same result. It was
+not treated as permission to change packet status.
+
+### Implemented contract
+
+The implementation provides one immutable `fractionflow.problem-instance/v1` contract with:
+
+- the eight approved selectors: `like-denominator-addition`,
+  `like-denominator-subtraction`, `nested-denominator-addition`,
+  `nested-denominator-subtraction`, `shared-factor-addition`,
+  `shared-factor-subtraction`, `relatively-prime-addition`, and
+  `relatively-prime-subtraction`;
+- declarative `reducible-result` and `crosses-one-whole` overlays, with normalized overlay
+  order and configuration-time compatibility rejection; crossing is unavailable for subtraction
+  in the initial profile;
+- discriminated `generated` and `curated` provenance. Generated records contain generator and
+  profile versions, seed, seed algorithm, accepted-candidate index, attempt count, candidate-space
+  counts, and sampled rejection counts. Curated records contain only durable fixture identity and
+  authoring revision in their provenance section;
+- explicit result state for exact result, canonical raw result form, current form, and preferred
+  final form;
+- immutable source operand forms plus reviewed, exact-equivalent transformations. The source
+  record contains no learner history or learner-established mutation;
+- classification and representation facts, with representation eligibility explicitly deferred
+  rather than inventing renderer thresholds.
+
+`src/content/analysis.js` and `src/content/validation.js` call the existing Plan 02 exports for
+fraction creation, comparison, denominator relationship, least common denominator, conversion,
+operation results, equivalence, simplification, and classification. A static search found no
+`gcd`, `lcm`, `Math.random`, `Date.now`, or `performance.now` use in `src/content/`; the only
+`gcd`/`lcm` matches in the combined search were existing Plan 02 math tests.
+
+The validator now fails closed for the contract boundaries identified during review: deep
+immutability, instance identity, request profile version, result current form, and generated-only
+versus curated-only provenance fields. Curated fixtures and generated instances both enter through
+the same candidate derivation, membership, path, result, and validation pipeline.
+
+### Determinism and synthetic fixtures
+
+The seed utility is dependency-free and documents the fixed algorithm as FNV-1a-64 followed by
+SplitMix64 and uint64 rejection sampling. Fixed vectors are recorded in
+`tests/content-seed.test.js`; the seed hash vector is `d2ecedc70ede55dd`, and the first three
+SplitMix64 vectors are `31059bfd7acd41a8`, `f90ec645da3e2f21`, and `fb3fce375ac4ec78`.
+
+The separate-process test compares the generated instance's ID, result state, classification,
+canonical path, alternate paths, and provenance with the parent-process snapshot. The fixed
+cross-process vector remains `like-denominator-addition__none__1__3__1__3`, with exact result
+`2/3`, accepted candidate index `14`, and `117` scan attempts.
+
+Twelve synthetic curated fixtures in `src/content/data/phase1-golden-cases.js` exercise all eight
+selectors, the approved overlays, exact results, alternate valid paths, and the reviewed
+simplify-first transformation. The simplify-first fixture preserves an authored `2/4` initial
+form, an exact value of `1/2`, and an explicit exact-equivalent review transition to `1/2`.
+All twelve fixtures pass the common pipeline and retain curated-only provenance.
+
+### Bulk-validation evidence
+
+The committed default report was generated with:
+
+```text
+node src/content/bulk-validation.js --sample-size 1000 --seed plan03-bulk-v1
+```
+
+The report covers all 24 declaratively allowed selector/overlay request combinations. It records
+status, raw and eligible finite candidate-space cardinality, requested and accepted sampled
+draws, unique mathematical instances, duplicate accepted draws, finite-space coverage, contract
+checks, distributions, representative instances, and rejection reasons separated by population
+(`candidateSpaceEnumeration` versus `sampledGeneration`).
+
+The ordinary no-overlay eligible cardinalities are 7/7 for like denominators, 40/40 for nested
+denominators, 68/68 for shared-factor denominators, and 34/34 for relatively-prime denominators
+(addition/subtraction respectively). Every validated overlay request accepted all 1,000 requested
+draws. The default report contains 21 validated requests and three explicit
+`unsatisfiable-for-profile` requests: relatively-prime addition with `reducible-result`, the
+same combination with crossing, and relatively-prime subtraction with `reducible-result`.
+Those three have zero eligible candidates and are surfaced as warnings with sampled
+`NO_ELIGIBLE_CANDIDATE` counts rather than being presented as successful coverage. Duplicate
+draws are expected for these small finite spaces and are reported separately from unique counts.
+
+The generated artifacts are:
+
+- `reports/development/plan-03-content-contracts-and-deterministic-generation/bulk-validation-report.json`
+- `reports/development/plan-03-content-contracts-and-deterministic-generation/bulk-validation-report.md`
+
+The report replay check compared a fresh in-memory default run with both artifacts:
+
+```text
+jsonMatches: true
+markdownMatches: true
+selectorCount: 24
+curated: requested 12, passed 12, failed 0
+pass: true
+```
+
+Custom bulk runs now record a replay command containing their actual sample size, seed, profile,
+and request set rather than claiming the default CLI invocation.
+
+### Advisor-capability and disposition record
+
+This implementation has a real behavioral surface (schemas, generators, validators, seed
+selection, fixtures, and bulk reporting), so an advisor review was warranted. The available
+review route was a bounded clean-context reviewer. The requested reviewer was instructed to be
+read-only, not spawn further agents, not commit, not change packet status, and not modify files;
+the primary thread remained the sole writer. The observed model/provider was **GPT-5 via the
+OpenAI Codex runtime**. The effective disposition was a compensating clean-context advisor review
+with immediate post-review worktree verification; no higher-tier model override was selected.
+
+The advisor reported five findings. All five were addressed within scope:
+
+1. The stale proposal-only progress report was converted into a historical proposal record with
+   this authoritative implementation addendum and final advisor disposition.
+2. Validation was hardened for deep nested immutability, forged instance IDs, profile-version
+   mismatch, invalid result current forms, and invented generated fields on curated provenance.
+3. Default bulk requests now enumerate every declared overlay set. Profile-unsatisfiable sets are
+   explicitly reported and warned rather than silently omitted.
+4. Bulk replay metadata now reflects custom API runs as well as the default CLI run.
+5. Cross-process reproducibility now compares classification and canonical/alternate paths in
+   addition to ID, result state, and provenance.
+
+The advisor made no repository changes. A post-review status inspection confirmed that only the
+explicit Plan 03 implementation/report paths were present. The remaining risks below are
+recorded as risks, not silently reclassified as defects or owner decisions.
+
+### Files changed in this implementation
+
+Within the authorized scope:
+
+- `src/content/analysis.js`
+- `src/content/bulk-validation.js`
+- `src/content/curated.js`
+- `src/content/data/phase1-golden-cases.js`
+- `src/content/family-definitions.js`
+- `src/content/generator.js`
+- `src/content/index.js`
+- `src/content/membership.js`
+- `src/content/profiles.js`
+- `src/content/schema.js`
+- `src/content/seed.js`
+- `src/content/validation.js`
+- `tests/content-bulk-validation.test.js`
+- `tests/content-curated.test.js`
+- `tests/content-generator.test.js`
+- `tests/content-seed.test.js`
+- `reports/development/plan-03-content-contracts-and-deterministic-generation/bulk-validation-report.json`
+- `reports/development/plan-03-content-contracts-and-deterministic-generation/bulk-validation-report.md`
+- this progress report
+
+No other paths are authorized by or included in this implementation.
+
+### Final verification
+
+```text
+npm test
+  8 test files passed; 107 tests passed
+
+npm run build
+  Vite production build passed
+
+node scripts/dev/plan-status.js lint
+  lint: OK (no violations)
+
+node scripts/dev/plan-status.js check plan-03
+  RUNNABLE: plan-03 is ready to implement
+
+git diff --check
+  passed
+
+node src/content/bulk-validation.js --sample-size 1000 --seed plan03-bulk-v1
+  pass: true; report JSON and Markdown written
+```
+
+### Remaining risks and owner-visible questions
+
+- The initial development profile is intentionally finite and narrow; duplicate warnings and the
+  three profile-unsatisfiable overlay combinations are evidence for future profile/coverage
+  decisions, not a product-quality ceiling.
+- Mixed-number forms are represented by the common schema but are not generated by this initial
+  fraction-only profile. Expanding that generator surface needs a separate scoped decision.
+- Representation eligibility remains deferred facts for a later renderer/interaction gate; this
+  packet does not establish classroom-facing visual thresholds.
+- The bulk report's overall result is `PASS` for validated draws while retaining explicit warnings
+  for duplicates and profile-unsatisfiable declared combinations. An owner may later choose to
+  promote those warnings to a stricter release gate without changing the mathematical contract.
+
+### Stop condition
+
+Implementation and evidence are complete for this turn. No packet status was changed, no package
+or deployment file was touched, and nothing was pushed. Stop for final orchestrator/owner review.
