@@ -333,6 +333,55 @@ preferences are introduced post-Phase 2, resolve alongside `D-10` and `D-11`.
 
 ---
 
+## Deferred opportunities — not blocking Phase 2
+
+Opportunities the owner deliberately wants held open rather than closed. They are not blockers and
+must not become scope creep inside Phase 2; each names the minimum Phase 2 owes it, which is
+usually very little.
+
+### OQ-17 — A bounded exit for learners below the prerequisite boundary
+
+DECISION-016 names the primary learner as one who may hold persistent misconceptions, including
+adding denominators across. The episode's stated prerequisites include the idea of a common unit,
+which such a learner plausibly lacks, and DECISION-016's own remedy — backward routing to
+prerequisite episodes — is `D-09`, deferred past Phase 2. A learner who stalls on equivalence
+therefore has nowhere to go.
+
+The owner's position is explicit and bounded: keep the product focused on the identified learner,
+and **do not** let this become an obligation to teach basic arithmetic. The opportunity is a
+graceful exit, not a curriculum. At minimum, a learner who repeatedly cannot proceed could be
+told, calmly and without blame, that this might be a good thing to talk through with a teacher —
+common denominators and common units by name, so the conversation has a starting point.
+
+**Phase 2 owes this:** nothing beyond not foreclosing it. The episode's error-recovery and help
+paths should leave room for such a message to be added later without restructuring.
+
+**Needs:** a decision on whether the bounded message ships at all, what triggers it, and how it
+avoids reading as failure or as a dead end. Resolve alongside `D-08` and `D-09` rather than
+separately.
+
+### OQ-18 — Creative approaches to completed-beat clutter
+
+DECISION-014 keeps completed beats mounted as inspectable context. DECISION-021 criterion 1 blocks
+acceptance on a scene that competes with the fraction bar and the current question. Across six
+beats on a narrow viewport those two pull against each other, and founding `05-quality-and-validation.md`
+§32 asks what can be removed from the learner's immediate visual field.
+
+The owner reads this as a design opportunity rather than a constraint problem, and wants the space
+held open for good UX options: a completed beat might collapse to a compact line, fold into a
+reviewable trail, fade to a quieter register, or resolve some other way that keeps it reachable
+without keeping it loud. Inspectable need not mean full-size and fully expanded.
+
+**Phase 2 owes this:** one working collapse behavior that satisfies both DECISION-014 (completed
+beats remain reachable and inspectable) and DECISION-021 criterion 1 (the scene stays calm). The
+renderer packet must ship *a* rule. It does not have to ship the best one.
+
+**Needs:** exploration of richer options once the first slice runs and the clutter is observable
+rather than hypothetical. A candidate for a later design pass with real screens in front of the
+owner.
+
+---
+
 ## Process / workflow
 
 ### OQ-12 — Advisor consultation has not yet been exercised on a behavioral packet

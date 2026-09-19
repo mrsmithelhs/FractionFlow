@@ -566,6 +566,60 @@ reconciliation and implementation packet drafting.
 **Supersedes / related:** Amends DECISION-018; dissolves OQ-08; downgrades OQ-04; reclassifies OQ-15;
 updates `prototype-variable-register.md`.
 
+### DECISION-025 - Fraction-bar segments are not interactive targets
+
+**Date:** 2026-09-19
+
+**Decision:** Individual fraction-bar segments are **not** tap, click, or focus targets. The bar is a
+display surface. Every required learner decision — noticing the unit mismatch, choosing a common
+denominator, supplying scale factors and equivalent numerators, operating, matching, and resolving —
+is made through discrete controls, choice lists, or numeric entry, each sized and spaced per WCAG 2.2
+SC 2.5.8 (DECISION-010) independently of how many parts the bar is divided into.
+
+**Rationale:** Resolves finding R2 of `reports/orchestration/phase-2-specification-reconciliation.md`.
+Without this rule the decision set was self-contradicting at its extremes: DECISION-011 permits an LCD
+of 30, DECISION-009 supports a 360px viewport, and DECISION-021 criterion 3 makes a sub-24px target a
+blocking acceptance failure. A 30-part bar at 360px yields roughly 12px per segment, so a
+segment-interactive design would have been rejected by the project's own acceptance gate using content
+its own ceiling permits.
+
+Decoupling target size from denominator also means the visual cramping the owner accepted at high LCD
+on narrow screens stays what it was intended to be — a *visual discrimination* tradeoff — rather than
+silently becoming a motor-accessibility failure. Segment count may grow with the mathematics; control
+size may not shrink with it.
+
+**Supersedes / related:** Resolves reconciliation finding R2; constrains DECISION-013; depends on
+DECISION-010 and DECISION-021; bounds DECISION-011 and DECISION-009.
+
+### DECISION-026 - Connection-making checks include check-the-premise cases
+
+**Date:** 2026-09-19
+
+**Decision:** The CM-01 connection-making check, instantiated as a matching task with plausible
+distractors by DECISION-012, must also include cases where the expected or habitual answer is **not**
+the correct one. A learner must not be able to succeed by always selecting the reassuring option.
+Where a yes/no or confirm-style form is used at all, the correct answer varies across instances.
+
+**Rationale:** Completes finding R1. DECISION-012 removed the invariant-yes form because it was
+undisqualifiable; this decision removes the deeper failure the invariant-yes form exposed. A check whose
+answer never changes is dismissed the way a license agreement is dismissed — clicked through to make it
+go away — and it then measures compliance rather than understanding, which is useless to a register
+that exists only to disqualify (DECISION-005).
+
+This activates, for the connection-making check only, the check-the-premise recommendation recorded
+under `D-05` in `reports/orchestration/founding-docs-review/deferred-recommendations.md`: deliberate
+items that reveal choreography-following rather than reasoning. `D-05`'s broader questions of prompt
+density and cadence remain deferred and are not reopened here.
+
+Constraint: a check-the-premise case must remain mathematically honest and calm. It presents a genuinely
+incorrect transformation to be identified, never a trick of wording, ambiguous framing, or a deliberately
+misleading visual. Founding rule `05-quality-and-validation.md` §16 continues to apply — the system
+reports what happened mathematically and does not claim knowledge of the learner's beliefs.
+
+**Supersedes / related:** Completes reconciliation finding R1; extends DECISION-012; narrowly activates
+the `D-05` check-the-premise recommendation; related to DECISION-005 and `05-quality-and-validation.md`
+§16.
+
 ## Proposed but not yet accepted
 
 Use the same `**Date:** YYYY-MM-DD` field for proposals, using the proposal date.
