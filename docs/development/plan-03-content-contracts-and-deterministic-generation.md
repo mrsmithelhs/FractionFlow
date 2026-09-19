@@ -1,7 +1,7 @@
 ---
 id: plan-03
 title: Content Contracts and Deterministic Problem Generation
-status: in-progress
+status: delivered
 depends_on: [plan-02]
 gate: "Owner approves the packet; mechanism-confirmation gate — the problem-instance schema and family/constraint definitions are approved before build; orchestrator verifies bulk validation and seed reproducibility against the objective."
 summary: >-

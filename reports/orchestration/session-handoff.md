@@ -19,12 +19,13 @@ index in `docs/development/README.md` — trust those over this file. As of 2026
   exact BigInt primitives, classifications, validators, response patterns, synthetic golden
   fixtures, D-17 diversity evidence, and two bounded repairs. See
   `reports/development/plan-02-exact-arithmetic-mathematical-core/final-review.md`.
-- `plan-03` (content contracts and deterministic generation): **in-progress** and its
-  mechanism-confirmation gate is approved. `DECISION-002` and
+- `plan-03` (content contracts and deterministic generation): **delivered**, but final
+  acceptance is blocked by Repair 01. Its mechanism-confirmation gate remains approved;
+  `DECISION-002` and
   `reports/development/plan-03-content-contracts-and-deterministic-generation/mechanism-review.md`
   bind its structural selectors/overlays, honest generated-versus-curated provenance, explicit
-  result state, and finite-candidate-space bulk-audit semantics. Implementation may begin within
-  the packet scope; package changes remain unapproved.
+  result state, and finite-candidate-space bulk-audit semantics. Repair 01 is
+  `reports/development/plan-03-content-contracts-and-deterministic-generation/repair-01-contract-validation-and-unbiased-selection.md`.
 - `plan-04`: `draft`, blocked by Plan 03. All first-wave packets were revised per Codex review
   (commit `ef45aa2`); the wave was originally drafted at `94df306`.
 
@@ -85,10 +86,11 @@ disposition record also remains in the committed Plan 01 progress report.
 
 ## Next Orchestration Move
 
-Plan 03's mechanism gate cleared on 2026-09-18. A fresh implementer may now build the approved
-content schema, family definitions, deterministic generation, fixtures, tests, and bulk audit
-within the packet scope. Require the binding gate-review contract, especially explicit
-selector/overlay compatibility, honest provenance, an explicit result state, fixed seed vectors,
-and sampled-versus-unique candidate-space reporting. Stop for final review after artifact-level
-validation and the required advisor-consultation disposition. Plan 04 remains unavailable until
-Plan 03 is complete.
+Plan 03 delivery is pending bounded Repair 01. The initial implementation passed its own suite
+and bulk run but final review proved two contract defects: it accepted deeply frozen forged
+derived fields (including operand `currentForm` and classification metadata) and its raw-index
+plus cyclic eligibility scan was severely biased (62,318 of 70,000 fixed seeds selected one of
+seven ordinary like-denominator cases). Give a fresh implementer the durable Repair 01 note.
+It must validate every consumer-visible derived field, fail closed for malformed records, select
+directly and uniformly from `eligibleIndices`, regenerate reports, consult an advisor when
+capable, and stop. Plan 04 remains unavailable until Plan 03 is complete.
