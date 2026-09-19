@@ -158,23 +158,24 @@ mechanized checks, human accessibility review, and child evidence separately;
 child evidence is optional until the applicable owner/roadmap gate calls for it,
 but it cannot be silently substituted by adult review.
 
-## Supported-environment matrix: open D-22 question
+## Supported-environment matrix (DECISION-009 / D-22)
 
-The concrete supported-environment matrix is intentionally open. The following
-are test dimensions to select and record later, not a current support claim:
+The supported-environment matrix for Phase 2 implementation and verification was
+selected by DECISION-009, resolving D-22 and OQ-03:
 
-| Dimension | Candidate test condition | Status in Plan 04 |
+| Dimension | Target condition (DECISION-009) | Implementation status |
 | --- | --- | --- |
-| Browser/OS | Owner-selected current desktop and mobile browser combinations used by the Phase 2 implementation target | Untested; no matrix selected |
-| Layout | Narrow phone, wide phone/tablet, and desktop-width layouts | Untested |
-| Input | Keyboard-only, touch without precision dragging, and ordinary pointer where available | Untested |
-| Motion | Default motion and reduced/disabled motion | Untested |
-| Semantic access | Screen-reader/linear reading path selected by the implementation gate | Untested |
-| Text and contrast | Owner-selected text-size/zoom and contrast review conditions | Untested |
-| Performance | At least one lower-performance target if it is in the selected support scope | Untested |
+| Browser/OS | Modern evergreen Chrome/Chromium (Desktop, ChromeOS, Android), Safari (macOS, iOS/iPadOS), Firefox, Edge | Selected; to be tested in Phase 2 implementation |
+| Layout | Responsive width from 360px (mobile portrait) through 768px–1024px (tablets/Chromebooks) to 1440px (desktop), reflowing to 320px | Selected; to be tested in Phase 2 implementation |
+| Input | Touch without precision dragging, pointer/mouse, and full keyboard navigation (visible focus, tab order, Enter/Space/Arrow activation) | Selected; to be tested in Phase 2 implementation |
+| Motion | Motion-enabled default; full semantic and inspectable parity under `prefers-reduced-motion: reduce` (instant static transitions) | Selected; to be tested in Phase 2 implementation |
+| Semantic access | Valid DOM ARIA semantics, inspectable linear reading order, and status announcements compatible with standard OS/browser screen readers | Selected; to be tested in Phase 2 implementation |
+| Text and contrast | WCAG 2.1 AA contrast (>= 4.5:1 text, >= 3:1 graphical controls/bars); zoom and text scaling up to 200% without clipping | Selected; to be tested in Phase 2 implementation |
+| Performance | Smooth rendering and responsive interaction on standard student Chromebooks and mobile browsers | Selected; to be tested in Phase 2 implementation |
 
-No concrete WCAG standard, browser support promise, dedicated keypad, audio
-requirement, or universal-accessibility claim is selected in this dossier.
+Explicit exclusions for Phase 2: legacy browsers (IE11, pre-Chromium Edge, outdated WebViews),
+custom audio/sound effect engines, native app shells/wrappers, and offline service worker/PWA
+caching (deferred under D-21).
 
 ## Evidence collection sequence for Phase 2
 

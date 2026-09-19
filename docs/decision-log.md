@@ -166,6 +166,49 @@ state, not merely presentation, so a render-layer flag would have crossed a laye
 `docs/development/phase-2-first-slice-design/scene-model-position.md`;
 `docs/founding/04-system-architecture.md` §§41–42.
 
+### DECISION-007 - Phase 2 provisional display and prompt condition bundle
+
+**Date:** 2026-09-19
+
+**Decision:** The provisional display and prompt condition for Phase 2 is Bundle 1:
+1. **D-01 (Animated subdivision):** Animated subdivision transition showing the physical dividing of unit parts into common unit pieces at a calm, learner-paced speed; reduced-motion provides an instant, static equivalent preserving the identical semantic post-state and quantity invariance.
+2. **D-02 (Semantic morph-in-place):** Transformation subdivides the fraction bar in place with anchored spatial continuity, avoiding vertical stacking and viewport crowding on mobile screens.
+3. **D-05 (Focused key-beat prompts):** Structured prompts at core decision boundaries (Notice, Choose common denominator, Rename, Operate, Resolve) targeting grade 2–3 reading level (~12 words per prompt, active voice, concrete nouns) without conversational clutter or prompt fragmentation.
+4. **CM-01 (Structured mapping check):** A low-motor, single-tap invariant verification check (e.g. "Is the shaded amount still the same? [Yes / No]") to explicitly probe correspondence without imposing written language or essay-typing burdens.
+
+This bundle is labeled not-decided and swappable at runtime upstream per DECISION-006.
+
+**Rationale:** Selected on pedagogical craft grounds and presentation posture rules rather than awaiting unfeasible statistical comparisons (DECISION-005). Morph-in-place preserves the founding principle of the stable whole and avoids mobile layout bloat. 1-tap structured mapping preserves invariant verification without violating the grade 2–3 reading/writing target (DECISION-004) or creating motor barriers on touch devices.
+
+**Supersedes / related:** Resolves OQ-01; operationalizes DECISION-005 and DECISION-006; references `D-01`, `D-02`, `D-05`, `CM-01`, `docs/presentation-posture.md`.
+
+### DECISION-008 - Representation-eligibility verdict and Phase 2 D-06 ceilings
+
+**Date:** 2026-09-19
+
+**Decision:** Representation-eligibility is computed deterministically upstream in `src/content/` (e.g. `checkBarEligibility`) before episode instantiation. For Phase 2, initial conservative fraction-bar ceilings are established: common denominator <= 24 and single-operand scale factor <= 8. Problem instances and paths within these bounds return `eligible`. Valid mathematical instances or learner-selected common denominators exceeding these bounds fail closed to `valid-but-outside-representation-capability` and transition to an authorized symbolic continuation rather than attempting illegible hairline rendering.
+
+**Rationale:** Plan 03 previously left `representationFacts.eligibility` as the string `'deferred'`. Establishing an explicit content-layer capability function prevents the renderer from deciding eligibility, enforces the unidirectional pipeline (`content -> instructional -> presentation`), protects mobile viewports from unreadable hairline subdivision smudges, and cleanly supports both the canonical LCD (12) and alternate path (24) for the synthetic fixture while safely gating unbounded generated instances.
+
+**Supersedes / related:** Resolves OQ-02; resolves the Phase 2 portion of `D-06`; `episode-definition.md` §2.
+
+### DECISION-009 - Supported-environment matrix for Phase 2 (D-22)
+
+**Date:** 2026-09-19
+
+**Decision:** The supported-environment matrix for the Phase 2 implementation packet and public GitHub Pages verification is:
+1. **Browsers / OS:** Modern evergreen Chrome/Chromium (Desktop, ChromeOS, Android), Safari (macOS, iOS/iPadOS), Firefox, and Edge.
+2. **Viewports / Layout:** Responsive width range from 360px (mobile portrait / compact handhelds) through 768px–1024px (tablets / Chromebooks) to 1440px (desktop), reflowing cleanly without loss of controls or horizontal scrolling down to 320px.
+3. **Input modalities:** Touch (tap/select with child-appropriate target sizing, zero precision dragging required), pointer/mouse, and full keyboard navigation (focus indicators, tab order, Enter/Space/Arrow activation).
+4. **Motion:** Motion-enabled by default; full semantic and inspectable parity under `prefers-reduced-motion: reduce` (instant static transitions).
+5. **Semantic accessibility:** Valid DOM ARIA semantics, inspectable linear reading order, and status announcements compatible with standard OS/browser screen readers (VoiceOver, NVDA, TalkBack, ChromeVox).
+6. **Contrast and Zoom:** WCAG 2.1 AA contrast ratios (minimum 4.5:1 for body text, 3:1 for graphical controls and fraction bar boundaries); text scaling and browser zoom up to 200% without clipping or layout breakage.
+7. **Explicit exclusions:** Legacy browsers (IE11, pre-Chromium Edge, outdated WebViews), custom audio/sound effect engines, native app shells/wrappers, and offline service worker/PWA caching (deferred under D-21).
+
+**Rationale:** Aligns testing and verification obligations with actual elementary school and home hardware (Chromebooks, iPads, family phones, laptops) without imposing impossible testing matrices on a static-only, small-n project. Explicitly enumerating exclusions prevents scope creep and makes the participation floor concretely falsifiable.
+
+**Supersedes / related:** Resolves OQ-03; resolves `D-22`; `docs/development/phase-2-first-slice-design/evidence-and-accessibility-plan.md`.
+
 ## Proposed but not yet accepted
 
 Use the same `**Date:** YYYY-MM-DD` field for proposals, using the proposal date.

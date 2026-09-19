@@ -38,19 +38,13 @@ of them becoming the architectural default. But Phase 2 must render something. W
 rule, the provisional choice gets made silently by whoever writes the first renderer and hardens
 into a default by inertia — which is exactly the outcome the register exists to prevent.
 
-**Amended 2026-09-19 (DECISION-005).** The register cannot select a winner on this project's
-evidence ladder, so the provisional condition is in practice the **shipped** condition
-indefinitely. It must therefore be chosen on design grounds — the founding principles, craft
-judgment, and owner/teacher review — not deferred as though a study were coming. It stays labeled
-not-decided and swappable, because disqualifying evidence can still force a change. DECISION-006
-requires that swap to be exercisable at runtime in the deployed build.
-
-**Needs:** an owner-ratified rule for the provisional build condition — chosen on design grounds,
-labeled not-decided in both code and report, and swappable without touching mathematical or
-instructional state.
+**Resolved 2026-09-19 (DECISION-007).** Phase 2 adopts Bundle 1 as its provisional condition:
+animated subdivision (D-01-A) with static reduced-motion parity, semantic morph-in-place (D-02-M),
+focused key-beat prompts (D-05), and a 1-tap structured mapping check (CM-01-M). Labeled
+not-decided and swappable at runtime upstream per DECISION-006.
 
 **Source:** `reports/development/plan-04-first-vertical-slice-design-preparation/review.md`,
-carried-forward item 1; `docs/evidence-posture.md`.
+carried-forward item 1; `docs/evidence-posture.md`; DECISION-007.
 
 ### OQ-02 — There is no representation-eligibility verdict to consume
 
@@ -60,11 +54,14 @@ The episode definition requires an explicit capability check before rendering, b
 exists to check against. This is entangled with `D-06` (concrete denominator and rendering
 thresholds), which is also open.
 
-**Needs:** a decision on who computes the eligibility verdict, what it is computed from, and
-whether `D-06` thresholds are set now or the verdict is left deliberately permissive for one
-family.
+**Resolved 2026-09-19 (DECISION-008).** Eligibility is computed deterministically upstream in
+`src/content/` (e.g. `checkBarEligibility`) before episode instantiation. Initial Phase 2 fraction-bar
+ceilings are set at LCD <= 24 and single-operand scale factor <= 8; valid mathematical instances or
+proposals exceeding these bounds fail closed to `valid-but-outside-representation-capability` and
+transition to symbolic continuation.
 
-**Source:** `docs/development/phase-2-first-slice-design/episode-definition.md` §2; `D-06`.
+**Source:** `docs/development/phase-2-first-slice-design/episode-definition.md` §2; `D-06`;
+DECISION-008.
 
 ### OQ-03 — The supported-environment matrix is deferred to a gate that has arrived
 
@@ -72,12 +69,14 @@ family.
 environment dimension as *Untested; no matrix selected*. That gate is the Phase 2 packet. The
 participation floor cannot be evidenced against an unnamed set of environments.
 
-**Needs:** owner selection of the browser/OS, layout, input, motion, semantic-access, text/contrast,
-and performance conditions the first slice claims to support — and explicit naming of what it does
-not.
+**Resolved 2026-09-19 (DECISION-009).** Supported-environment matrix selected: modern evergreen
+browsers (Chrome, Safari, Firefox, Edge across desktop, ChromeOS, iOS, Android), responsive viewports
+360px–1440px with reflow to 320px, touch (no precision drag), pointer, keyboard, reduced-motion
+instant transitions, WCAG AA contrast (4.5:1 text, 3:1 graphical) and 200% zoom. Explicit exclusions
+named (legacy browsers, offline PWA, custom audio, native shells).
 
 **Source:** `docs/development/phase-2-first-slice-design/evidence-and-accessibility-plan.md`;
-`D-22`.
+`D-22`; DECISION-009.
 
 ### OQ-04 — Accessibility accommodation versus instructional scaffold
 

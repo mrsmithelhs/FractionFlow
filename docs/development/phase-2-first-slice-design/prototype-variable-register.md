@@ -2,15 +2,21 @@
 
 ## Register status
 
-Every entry below is a live prototype question. Each is marked:
+Every entry below is a live prototype comparison. Under DECISION-005, this
+register functions as a **disqualification instrument** rather than a selection
+instrument.
 
-> **Prototype output — not decided by this dossier.**
+Under DECISION-007, Phase 2 adopts **Bundle 1** as its provisional build condition
+on design grounds:
+- D-01: Animated subdivision (A) with static reduced-motion parity;
+- D-02: Semantic morph-in-place (M);
+- D-05: Focused key-beat prompts;
+- CM-01: Structured mapping check (M) via 1-tap invariant verification.
 
-The episode definition fixes the mathematical responsibility map and the
-invariants that every condition must preserve. It does not select a display,
-choreography, prompt density, prediction cadence, or connection-making prompt
-form. The comparisons below are plans for future evidence, not evidence already
-collected.
+This provisional bundle remains labeled not-decided in both code and reports.
+Per DECISION-006, design conditions must be swappable at runtime upstream in the
+deployed static build. The entries below define the live rival hypotheses and
+falsification observations that would disqualify a condition if observed.
 
 ## Shared experimental contract
 

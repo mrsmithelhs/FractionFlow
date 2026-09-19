@@ -62,10 +62,12 @@ Note the current boundary precisely: Plan 03 records carry
 denominator, whole span, subdivision counts), but every
 `representationFacts.eligibility` verdict is literally `deferred`
 (`src/content/generator.js`), and `alternateRepresentationRecommendation` is
-`none`. There is therefore no existing capability verdict for this episode to
-consume. Deciding and recording that verdict — and its relationship to the
-still-open D-06 ceilings — is Phase 2 implementation work, not an inherited
-Plan 03 fact.
+`none`. DECISION-008 resolves this for Phase 2: eligibility is evaluated
+deterministically upstream in `src/content/` (e.g. `checkBarEligibility`)
+before episode instantiation using initial conservative fraction-bar ceilings
+(LCD <= 24 and single-operand scale factor <= 8). An instance or path exceeding
+these bounds fails closed to `valid-but-outside-representation-capability` and
+transitions to an authorized symbolic continuation.
 
 Likewise, `alternatePaths` enumerates only the one recorded non-least
 denominator. Validity for any other common denominator comes from the exact
@@ -255,15 +257,19 @@ outside this slice's evidence boundary.
 ## Deferred mechanics preserved by this definition
 
 This draft fixes the responsibility map, content boundary, state ownership, and
-path classifications. It does not select:
+path classifications. It does not select a permanent empirical winner for:
 
 - animation versus static/key-frame transformation (D-01);
 - morphing versus deliberate juxtaposition versus sequential replacement (D-02);
 - prompt density or prediction cadence (D-05);
-- connection-making prompt form;
-- bridge frequency, number-line timing, denominator/rendering thresholds, session
-  dose, first-run placement, persistence, identity, or release policies.
+- connection-making prompt form (CM-01);
+- bridge frequency, number-line timing, session dose, first-run placement,
+  persistence, identity, or release policies.
 
-Those open questions are registered in
-[`prototype-variable-register.md`](prototype-variable-register.md) or left
-outside this slice with their governing deferred item named.
+Under DECISION-007, Phase 2 adopts Bundle 1 (animated subdivision D-01-A, semantic
+morph-in-place D-02-M, focused key-beat prompts D-05, and 1-tap structured mapping
+CM-01-M) as its provisional build condition on design grounds, swappable upstream
+at runtime per DECISION-006. Under DECISION-008, initial Phase 2 fraction-bar
+ceilings are set to LCD <= 24 and scale factor <= 8. Those open questions remain
+registered in [`prototype-variable-register.md`](prototype-variable-register.md) or
+governed by their deferred items.
