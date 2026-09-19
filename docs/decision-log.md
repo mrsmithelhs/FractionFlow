@@ -412,6 +412,54 @@ its architectural pipeline against reality.
 
 **Supersedes / related:** Resolves OQ-11; gates Phase 2 implementation packet creation.
 
+### DECISION-019 - Gear menu holds the design-condition switcher only
+
+**Date:** 2026-09-19
+
+**Decision:** Supersedes DECISION-015. The entry-page gear icon and its menu exist for **one purpose
+in Phase 2**: switching among the registered upstream design conditions that Plan 04's
+prototype-variable register enumerates (D-01 display, D-02 choreography, D-05 prompt cadence, CM-01
+connection-making form), per DECISION-006 and the Bundle 1 provisional condition of DECISION-007 and
+DECISION-012.
+
+No learner or application preferences are assigned to this menu at this stage. Reduced motion,
+contrast, audio, and session options are **not** placed here by this decision. The menu is a
+plausible future home for such settings, but that is a later decision, not a current allocation.
+
+Consequently:
+
+1. **DECISION-006's surface-separation rule is preserved, not modified.** DECISION-015's Supersedes
+   line claimed to modify it by hosting conditions and preferences together. With preferences removed,
+   nothing is merged and the original rule stands intact: the condition switcher is not the learner
+   preference surface.
+2. **The whole menu is the reviewer surface.** The DECISION-015 clarification requiring both
+   plain-language labels *and* a distinct "Reviewer / Teacher Options" grouping is superseded by the
+   simpler arrangement: the menu is reviewer-facing in its entirety. Condition options still use
+   plain-language, child-safe descriptions of visual and interaction style (e.g. "Visual change:
+   Smooth / Side-by-side / Step-by-step") with specification codes (`D-01`, `CM-01`) kept in internal
+   data attributes, because a curious learner may open it.
+3. **Condition selection does not persist across sessions.** A reload returns to the provisional
+   default condition. This keeps Phase 2 free of any browser-stored state and prevents a switched
+   condition from following one user to the next on a shared device.
+
+**Rationale:** Plan 04's register exists to compare visual composition arrangements, and the gear menu
+was introduced to make that comparison exercisable in the deployed build. Attaching unrelated future
+preferences to it in the same decision widened the surface beyond its purpose and created a
+preference-storage obligation that Phase 2 does not otherwise have.
+
+Phase 2 needs no learner preference surface at all. Every `05-quality-and-validation.md` §44
+participation-floor item is met either by always-on design — keyboard operability and non-drag
+interaction (DECISION-013), semantic DOM and linear reading order, preserved responsibility across
+paths — or by an operating-system and browser preference the application honors rather than hosts:
+`prefers-reduced-motion` for motion, browser zoom and text scaling for text size. Nothing on the floor
+depends on a control the learner must find. That satisfies DECISION-003's requirement that basic
+participation never depend on a hidden or teacher-only mode more strongly than a menu would, because
+it depends on no menu at all.
+
+**Supersedes / related:** Supersedes DECISION-015 and its 2026-09-19 clarification; restores
+DECISION-006 unmodified; related to DECISION-007, DECISION-012, DECISION-013; narrows OQ-15, whose
+formal disposition belongs to Batch D; updates OQ-16.
+
 ## Proposed but not yet accepted
 
 Use the same `**Date:** YYYY-MM-DD` field for proposals, using the proposal date.

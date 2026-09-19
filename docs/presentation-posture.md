@@ -121,9 +121,13 @@ OQ-15 in `docs/open-questions.md`.
    Gated by instructional beat lifecycle: unreached beats and future mathematical values/answers
    are not mounted in the DOM at all until reached, preventing virtual-cursor leaks. Secondary
    scaffolds disclose on-demand upon explicit request, updating visual and semantic trees in parity.
-3. **Preference persistence without accounts.** Participation must not depend on a hidden or
-   teacher-only mode, but the project is static-only with no accounts, so preferences live in
-   browser storage on a possibly-shared classroom device (remains live as OQ-15).
+3. **Preference persistence without accounts. Narrowed (DECISION-019):** Phase 2 ships no learner
+   preference surface and stores nothing in the browser. Every §44 participation-floor item is met
+   either by always-on design (keyboard operability, non-drag interaction, semantic DOM, preserved
+   responsibility across paths) or by an operating-system and browser preference the application
+   honors rather than hosts (`prefers-reduced-motion`, browser zoom and text scaling). The question
+   becomes live again when the first in-app learner preference is introduced. Formal disposition of
+   OQ-15 belongs to Batch D.
 
 # Part 2 — Learner-facing register
 

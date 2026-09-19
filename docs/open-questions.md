@@ -218,13 +218,15 @@ the learner. A visible app-root menu offering "morph / juxtapose / sequential" w
 directly. So the switcher and the learner preference surface (OQ-15) are **two different surfaces**
 that must not be merged: preferences are discoverable by design, conditions are not.
 
-**Resolved 2026-09-19 (DECISION-015).** The design-condition switcher is reached via a settings gear
-icon on the application's entry page (`src/app/`). This menu houses upstream condition switching and
-future preferences (motion, contrast, audio). Condition options inside this menu use plain-language
-descriptions of visual/interaction styles (or a distinct Reviewer/Teacher grouping) to ensure research
-apparatus does not confuse learners, keeping specification codes in internal data attributes.
+**Resolved 2026-09-19 (DECISION-015, superseded by DECISION-019).** The design-condition switcher is
+reached via a settings gear icon on the application entry page (`src/app/`). Per DECISION-019 the menu
+holds the condition switcher **only** in Phase 2 — no learner or application preferences are assigned
+to it at this stage — so DECISION-006 surface separation is preserved rather than modified, and the
+whole menu is the reviewer surface. Condition options use plain-language, child-safe descriptions of
+visual and interaction style, with specification codes kept in internal data attributes. Condition
+selection does not persist across sessions.
 
-**Source:** DECISION-006; `docs/presentation-posture.md` Part 2; DECISION-015.
+**Source:** DECISION-006; `docs/presentation-posture.md` Part 2; DECISION-015; DECISION-019.
 
 ---
 
