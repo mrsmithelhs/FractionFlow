@@ -113,7 +113,25 @@ Instead:
 
 Batch closely related questions together, usually two or three at a time. Avoid dumping every possible concern at once, and avoid a long sequence of tiny questions with no shared context.
 
-If your environment provides a structured question tool, use it. If it does not, present the same structure as a numbered list in chat.
+### Present the batch before asking it
+
+Do not open a batch with the questions. Think first, then write a short prose briefing for the
+batch, then ask. The owner should have something to read before they have something to answer.
+
+The briefing runs a few paragraphs and covers: what you examined and what you found; what
+currently holds together; where the questions came from and how they depend on each other; and
+any finding that reframes a question before it is asked. Name the specific files, sections, and
+evidence you relied on, so the owner can check your reasoning rather than only your conclusion.
+Where a question is cheap to answer wrongly and expensive to unwind, say so explicitly.
+
+Only then present the options, tradeoffs, and recommendation for each question in the batch.
+
+A batch whose first words are a question has skipped a step. An owner answering from the options
+alone is deciding on your framing without seeing what produced it, and the reasoning you did not
+show is the part they most need in order to disagree with you.
+
+If your environment provides a structured question tool, use it for the questions themselves —
+but put the briefing in the conversation first, not inside the tool call.
 
 ## Recording Discipline
 
