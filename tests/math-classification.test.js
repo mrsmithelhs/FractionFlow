@@ -6,7 +6,11 @@ import {
   createFraction,
   createMixedNumber,
   denominatorRelationship,
+  equalFractions,
+  leastCommonDenominator,
+  mixedToImproper,
   operandsRequiringRenaming,
+  regroupForSubtraction,
 } from '../src/math/index.js';
 
 describe('denominatorRelationship', () => {
@@ -184,10 +188,103 @@ describe('classifyMixedRegrouping', () => {
     expect(result.wholeUnitsRenamed).toBe(1n);
   });
 
+  it('counts multiple whole decompositions without canonicalizing transient forms', () => {
+    const left = createMixedNumber(3, createFraction(1, 4));
+    const right = createMixedNumber(0, createFraction(9, 4));
+    const result = classifyMixedRegrouping(left, right, 'subtract');
+    expect(result.regroupingType).toBe('decomposition');
+    expect(result.requiresRegrouping).toBe(true);
+    expect(result.wholeUnitsRenamed).toBe(2n);
+
+    const once = regroupForSubtraction(left);
+    const twice = regroupForSubtraction(once);
+    expect(once).toEqual(createMixedNumber(2, createFraction(5, 4)));
+    expect(twice).toEqual(createMixedNumber(1, createFraction(9, 4)));
+    expect(equalFractions(mixedToImproper(left), mixedToImproper(twice))).toBe(true);
+    expect(twice.fraction.numerator).toBeGreaterThanOrEqual(right.fraction.numerator);
+  });
+
+  it('computes the multiple-whole count at the least common denominator', () => {
+    const left = createMixedNumber(4, createFraction(1, 4));
+    const right = createMixedNumber(0, createFraction(17, 6));
+    const result = classifyMixedRegrouping(left, right, 'subtract');
+    expect(result.regroupingType).toBe('decomposition');
+    expect(result.wholeUnitsRenamed).toBe(3n);
+
+    const lcd = leastCommonDenominator(left.fraction.denominator, right.fraction.denominator);
+    const leftAtLcd = left.fraction.numerator * (lcd / left.fraction.denominator);
+    const rightAtLcd = right.fraction.numerator * (lcd / right.fraction.denominator);
+    expect(rightAtLcd - leftAtLcd).toBe(31n);
+    expect((rightAtLcd - leftAtLcd + lcd - 1n) / lcd).toBe(3n);
+  });
+
+  it('uses the authoritative improper left component without canonicalizing it', () => {
+    const left = createMixedNumber(2, createFraction(9, 4));
+    const right = createMixedNumber(0, createFraction(13, 4));
+    const result = classifyMixedRegrouping(left, right, 'subtract');
+    expect(result.regroupingType).toBe('decomposition');
+    expect(result.requiresRegrouping).toBe(true);
+    expect(result.wholeUnitsRenamed).toBe(1n);
+  });
+
+  it('preserves exact value and reaches a sufficient fractional component for every positive count', () => {
+    const cases = [
+      {
+        left: createMixedNumber(3, createFraction(1, 4)),
+        right: createMixedNumber(1, createFraction(5, 8)),
+        expectedCount: 1n,
+      },
+      {
+        left: createMixedNumber(3, createFraction(1, 4)),
+        right: createMixedNumber(0, createFraction(9, 4)),
+        expectedCount: 2n,
+      },
+      {
+        left: createMixedNumber(4, createFraction(1, 4)),
+        right: createMixedNumber(0, createFraction(17, 6)),
+        expectedCount: 3n,
+      },
+    ];
+
+    for (const { left, right, expectedCount } of cases) {
+      const result = classifyMixedRegrouping(left, right, 'subtract');
+      expect(result.wholeUnitsRenamed).toBe(expectedCount);
+
+      let regrouped = left;
+      for (let step = 0n; step < expectedCount; step += 1n) {
+        regrouped = regroupForSubtraction(regrouped);
+        expect(equalFractions(mixedToImproper(left), mixedToImproper(regrouped))).toBe(true);
+      }
+
+      const lcd = leastCommonDenominator(
+        regrouped.fraction.denominator,
+        right.fraction.denominator,
+      );
+      const regroupedNumeratorAtLcd = regrouped.fraction.numerator
+        * (lcd / regrouped.fraction.denominator);
+      const rightNumeratorAtLcd = right.fraction.numerator
+        * (lcd / right.fraction.denominator);
+      expect(regroupedNumeratorAtLcd).toBeGreaterThanOrEqual(rightNumeratorAtLcd);
+    }
+  });
+
   it('rejects a mixed-number subtraction whose minuend is smaller overall', () => {
     const left = createMixedNumber(0, createFraction(1, 4));
     const right = createMixedNumber(0, createFraction(1, 2));
     expect(() => classifyMixedRegrouping(left, right, 'subtract')).toThrow(RangeError);
+
+    const largerFractionalPart = createMixedNumber(0, createFraction(3, 4));
+    const largerWhole = createMixedNumber(1, createFraction(1, 4));
+    expect(() => classifyMixedRegrouping(largerFractionalPart, largerWhole, 'subtract')).toThrow(RangeError);
+  });
+
+  it('reports no decomposition when fractional components are exactly equal', () => {
+    const left = createMixedNumber(2, createFraction(1, 2));
+    const right = createMixedNumber(1, createFraction(2, 4));
+    const result = classifyMixedRegrouping(left, right, 'subtract');
+    expect(result.regroupingType).toBe('none');
+    expect(result.requiresRegrouping).toBe(false);
+    expect(result.wholeUnitsRenamed).toBe(0n);
   });
 
   it('rejects invalid inputs', () => {

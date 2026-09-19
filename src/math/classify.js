@@ -153,15 +153,25 @@ export function classifyMixedRegrouping(left, right, operation = 'add') {
       throw new RangeError('subtraction would produce a negative mixed-number result');
     }
 
-    const leftScaled = left.fraction.numerator * right.fraction.denominator;
-    const rightScaled = right.fraction.numerator * left.fraction.denominator;
+    const commonDenominator = leastCommonDenominator(
+      left.fraction.denominator,
+      right.fraction.denominator,
+    );
+    const leftNumeratorAtCommon = left.fraction.numerator
+      * (commonDenominator / left.fraction.denominator);
+    const rightNumeratorAtCommon = right.fraction.numerator
+      * (commonDenominator / right.fraction.denominator);
 
-    if (leftScaled < rightScaled) {
+    if (leftNumeratorAtCommon < rightNumeratorAtCommon) {
+      const fractionalDeficit = rightNumeratorAtCommon - leftNumeratorAtCommon;
+      const wholeUnitsRenamed = (fractionalDeficit + commonDenominator - 1n)
+        / commonDenominator;
+
       return Object.freeze({
         process: 'regrouping',
         regroupingType: 'decomposition',
         requiresRegrouping: true,
-        wholeUnitsRenamed: 1n,
+        wholeUnitsRenamed,
       });
     }
 
