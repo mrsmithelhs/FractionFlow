@@ -4,7 +4,7 @@
 - **Packet title**: Exact-Arithmetic Mathematical Core
 - **Date**: 2026-09-18
 - **Author**: Implementer
-- **State**: Milestone 1 and Milestone 2 fully implemented; awaiting orchestrator full-packet review
+- **State**: Milestone 1 and Milestone 2 implemented; Repair 01 implemented and awaiting final orchestrator review
 
 ---
 
@@ -312,3 +312,162 @@ $ git diff --check
 ## 10. Handoff Statement
 
 - **Ready for orchestrator review**: **Yes** (full-packet review for Plan 02).
+
+---
+
+## 11. Repair 01 Addendum — Response-Classification Boundaries
+
+### Overall summary
+
+Repair 01 was implemented within the bounded handoff scope. The response-pattern
+surface now rejects unsupported operation and regrouping types, validates explicit
+and resolved conversion targets at exact positive integer boundaries, and does not
+claim that conversions were correct unless both converted fractions are explicitly
+supplied, exactly equivalent to their originals, and expressed at the selected
+valid common denominator. Mixed-number regrouping now rejects a subtraction whose
+overall exact result would be negative before reporting that decomposition is
+required.
+
+The repair preserves the existing contracts: all mathematical truth remains
+BigInt-based and exact; unreduced/current forms remain unreduced; equivalent
+alternate forms remain valid; and response classifications describe mathematical
+shapes without attributing learner intent or beliefs. No packet frontmatter,
+generated index, package file, founding document, Plan 03/04 file, or remote state
+was changed.
+
+### Repair files and changes
+
+- `src/math/response-patterns.js`
+  - Rejects operations other than `add` and `subtract` with `RangeError` before
+    operation-dependent arithmetic.
+  - Resolves target denominators through exact positive-integer validation and
+    rejects non-common operation targets before expected-result arithmetic.
+  - Adds optional `convertedLeft` and `convertedRight` evidence fields and emits
+    `CORRECT_CONVERSIONS_ARITHMETIC_ERROR` only for two exact equivalent states at
+    the selected denominator plus a nonzero final numerator discrepancy.
+  - Applies the same divisibility boundary to an omitted conversion target after
+    resolving it to the proposed denominator; no non-divisible target can pass as
+    a silent empty classification.
+  - Rejects non-positive, non-integer, and non-divisible conversion targets without
+    coercive truncation.
+  - Rejects regrouping types other than the implemented `decomposition` surface.
+- `src/math/classify.js`
+  - Compares complete exact mixed-number values before subtraction regrouping and
+    rejects negative-result cases with `RangeError`.
+- `tests/math-step-validation.test.js`
+  - Directly covers all ten exported pattern labels with positive assertions and
+    discriminating near-miss assertions.
+  - Adds unsupported-operation and target-boundary tests; final-result-only,
+    one-sided, incorrect, wrong-denominator, correct, non-least, and large-error
+    conversion-evidence cases; and independent unsimplified-versus-alternate-form
+    cases.
+- `tests/math-classification.test.js`
+  - Adds the smaller-overall-minuend negative mixed-subtraction boundary case.
+
+### Validation performed
+
+The final post-repair run was executed after the advisor findings were integrated:
+
+```text
+$ npm test
+Test Files  4 passed (4)
+Tests       89 passed (89)
+Exit code: 0
+
+$ npm run build
+vite build succeeded; dist/index.html emitted
+Exit code: 0
+
+$ node scripts/dev/plan-status.js lint
+lint: OK (no violations)
+Exit code: 0
+
+$ git diff --check
+Exit code: 0
+
+$ exact production-boundary scan over src/math/*.js
+clean: no direct BigInt(targetDenominator) coercion, floating/random/time,
+DOM, network, or browser-storage references
+Exit code: 0
+```
+
+Targeted validation also passed after the final edits: 53 tests across
+`math-step-validation.test.js` and `math-classification.test.js`.
+
+The preflight `node scripts/dev/plan-status.js check plan-02` reported
+`BLOCKED: plan-02 has status "delivered" — not ready or in-progress`. This was
+the status-boundary behavior expected for an already delivered packet; the direct
+owner request explicitly resumed this named Repair 01. No status mutation was
+performed.
+
+### Fresh advisor-consultation disposition
+
+- **Consultation branch:** Branch A — capable and warranted. This repair changes
+  executable mathematical classification behavior and tests.
+- **Capability evidence:** `advisor-capable-providers.json` identifies the Codex
+  provider as capable when a callable subagent surface and higher-tier model
+  selector are available. This thread had the callable `multi_agent_v1` subagent
+  surface and used its read-only reviewer role with a higher-tier model request.
+- **Requested advisor model:** `gpt-6-astra`, reviewer role, high reasoning.
+- **Observed advisor model:** `GPT-6`, stated by the advisor at the start of its
+  response. The observation confirms the GPT-6 family but does not claim a more
+  specific self-reported suffix than the advisor provided.
+- **Effective sandbox / read-only posture:** Instruction-read-only with
+  post-hoc verification. The actual diff was inlined into a depth-1 reviewer
+  brief; the reviewer was instructed not to edit files, mutate Git state, change
+  packet status, or spawn children. Structural read-only enforcement was not
+  independently verifiable from this surface.
+- **Post-consultation status check:** `git status --short` and
+  `git diff --name-only` showed only the four expected Repair 01 source/test
+  paths. No advisor-created or advisor-modified path was present.
+- **Coarse cost:** one advisor turn, one initial bounded wait that timed out while
+  the advisor continued, one completion wait, and roughly two minutes of elapsed
+  advisor wall time.
+
+#### Advisor findings and dispositions
+
+1. **Omitted conversion target could bypass divisibility validation — accepted.**
+   The advisor independently probed `2/3 -> 3/10` without an explicit target and
+   observed an empty classification instead of a boundary rejection. The repair
+   now validates the resolved proposed denominator, and a regression test asserts
+   the `RangeError`.
+
+2. **Conversion-evidence tests did not independently protect each requirement —
+   accepted.** The advisor noted that the original added tests could not detect
+   accepting only one evidence field or accepting incorrect/wrong-denominator
+   evidence. Tests now cover one-sided evidence, incorrect evidence, equivalent
+   evidence at the wrong denominator, final-result denominator mismatch, valid
+   non-least subtraction evidence, and an arithmetic discrepancy larger than the
+   former inherited five-unit cutoff.
+
+3. **Unsimplified and alternate-form tests shared one positive case — accepted.**
+   Tests now separately assert `2/4` for `1/4 + 1/4` as unsimplified but not
+   alternate, and `1/2` as alternate but not unsimplified.
+
+4. **Inherited five-unit arithmetic-error cutoff — accepted and repaired.** The
+   advisor identified that correct conversion evidence plus a discrepancy greater
+   than five was suppressed. Because the Repair 01 contract requires the final
+   arithmetic discrepancy to be classified without a magnitude qualification, the
+   cutoff was removed and a difference of 13 is tested.
+
+5. **Improper fractional components can require more than one whole for
+   decomposition — deferred/out of scope.** The advisor verified that an accepted
+   mixed form such as `3 1/4 - 0 9/4` reports one renamed whole although its
+   preserved improper fractional component would need two. This is a pre-existing
+   mixed-number contract question, not introduced by the negative-result boundary,
+   and repairing it would broaden the named Repair 01 scope. It remains an
+   orchestrator follow-up rather than a silent change here.
+
+The advisor also confirmed the exact-target, explicit-conversion, unsupported
+operation/type, negative-result, current-form, and no-presentation-boundary
+properties. Those confirmations were treated as review evidence, not as a
+substitute for the executable validation listed above.
+
+### Commit and handoff
+
+- Source/test commit: `4a8dca1` (`fix(math): repair response classification boundaries`).
+- The progress-report addendum is the final scoped report change and is committed
+  separately as the final report commit.
+- No push was performed.
+- **Ready for final orchestrator review:** **Yes.** This is a bounded handoff
+  statement only; Plan 02 status remains unchanged at `delivered`.
