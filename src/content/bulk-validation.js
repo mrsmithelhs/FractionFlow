@@ -76,7 +76,7 @@ function reportForRequest({ request, sampleSize, baseSeed, profileId }) {
     canonicalPath: { passed: 0, failed: 0 },
     alternatePath: { checked: 0, passed: 0, failed: 0 },
     excludedComplexity: { passed: 0, failed: 0 },
-    representationFacts: { recorded: 0, deferredEligibility: 0 },
+    representationFacts: { recorded: 0, deferredEligibility: 0, failed: 0 },
   };
 
   for (let index = 0; index < sampleSize; index += 1) {
@@ -88,12 +88,16 @@ function reportForRequest({ request, sampleSize, baseSeed, profileId }) {
       const find = (id) => validation.checks.find((check) => check.id === id);
       const membershipPass = Boolean(find('candidate-membership')?.valid && find('structural-membership')?.valid && find('overlay-membership')?.valid);
       const exactPass = Boolean(find('canonical-operation-result')?.valid);
-      const canonicalPass = Boolean(find('canonical-path-reproducible')?.valid && find('canonical-path-is-least')?.valid);
+      const canonicalPass = Boolean(
+        find('canonical-path-contract')?.valid
+        && find('canonical-path-is-least')?.valid
+        && find('canonical-operation-result')?.valid,
+      );
       const alternateChecks = validation.checks.filter((check) => check.id.startsWith('alternate-'));
       const alternatePathCount = instance.alternatePaths.length;
       const alternatePass = alternateChecks.every((check) => check.valid);
       const complexityPass = Boolean(find('candidate-membership')?.valid);
-      const representationPass = Boolean(find('representation-eligibility-deferred')?.valid);
+      const representationPass = Boolean(find('representation-facts-contract')?.valid);
       checks.familyMembership[membershipPass ? 'passed' : 'failed'] += 1;
       checks.exactResult[exactPass ? 'passed' : 'failed'] += 1;
       checks.canonicalPath[canonicalPass ? 'passed' : 'failed'] += 1;
@@ -102,6 +106,7 @@ function reportForRequest({ request, sampleSize, baseSeed, profileId }) {
       checks.excludedComplexity[complexityPass ? 'passed' : 'failed'] += 1;
       checks.representationFacts.recorded += instance.representationFacts ? 1 : 0;
       checks.representationFacts.deferredEligibility += representationPass ? 1 : 0;
+      checks.representationFacts.failed += representationPass ? 0 : 1;
       if (!validation.valid) {
         failureSamples.push({ seed, id: instance.id, reason: 'instance-validation-failed' });
       }
@@ -137,6 +142,8 @@ function reportForRequest({ request, sampleSize, baseSeed, profileId }) {
     percent: percent(uniqueCount, eligible),
     finiteSpaceEnumerated: true,
   };
+  const contractFailureCount = Object.values(checks)
+    .reduce((total, check) => total + (check.failed ?? 0), 0);
 
   return {
     selector: request.selector,
@@ -155,6 +162,7 @@ function reportForRequest({ request, sampleSize, baseSeed, profileId }) {
     sampledAcceptancePercent: percent(accepted, sampleSize),
     uniquenessAmongAcceptedPercent: percent(uniqueCount, accepted),
     finiteSpaceCoverage: coverage,
+    contractFailureCount,
     rejectionReasons: {
       candidateSpaceEnumeration: space.rejectionCounts,
       sampledGeneration: sampledRejectionReasons,
@@ -202,6 +210,9 @@ export function runBulkValidation({
     if (selectorReport.status === 'validated' && selectorReport.failureSamples.length > 0) {
       blockingFailures.push(`${selectorReport.selector}:validation-failure`);
     }
+    if (selectorReport.status === 'validated' && selectorReport.contractFailureCount > 0) {
+      blockingFailures.push(`${selectorReport.selector}+${selectorReport.overlays.join('+') || 'none'}:contract-check-failure`);
+    }
   }
   const profile = getProfile(profileId);
   if (curatedFailures.length > 0) blockingFailures.push('curated-fixtures:validation-failure');
@@ -214,7 +225,7 @@ export function runBulkValidation({
       profileVersion: profile.version,
       baseSeed,
       requestedBatchSize: sampleSize,
-      seedDerivation: 'FNV-1a-64 -> SplitMix64 -> domain-separated batch seed -> cyclic candidate scan',
+      seedDerivation: 'FNV-1a-64 -> SplitMix64 -> domain-separated batch seed -> direct uniform selection from ordered eligible candidate indexes',
       command: replayCommand({ requests, sampleSize, baseSeed, profileId }),
       recordedAt: null,
     },

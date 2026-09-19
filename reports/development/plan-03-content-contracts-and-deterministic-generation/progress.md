@@ -761,9 +761,10 @@ The implementation provides one immutable `fractionflow.problem-instance/v1` con
   order and configuration-time compatibility rejection; crossing is unavailable for subtraction
   in the initial profile;
 - discriminated `generated` and `curated` provenance. Generated records contain generator and
-  profile versions, seed, seed algorithm, accepted-candidate index, attempt count, candidate-space
-  counts, and sampled rejection counts. Curated records contain only durable fixture identity and
-  authoring revision in their provenance section;
+  profile versions, seed, seed algorithm, selected raw candidate index, and the selected ordinal
+  in the ordered eligible-index list. Candidate-space rejection counts belong to enumeration and
+  bulk reports, not to generation-attempt history. Curated records contain only durable fixture
+  identity and authoring revision in their provenance section;
 - explicit result state for exact result, canonical raw result form, current form, and preferred
   final form;
 - immutable source operand forms plus reviewed, exact-equivalent transformations. The source
@@ -791,8 +792,8 @@ SplitMix64 vectors are `31059bfd7acd41a8`, `f90ec645da3e2f21`, and `fb3fce375ac4
 
 The separate-process test compares the generated instance's ID, result state, classification,
 canonical path, alternate paths, and provenance with the parent-process snapshot. The fixed
-cross-process vector remains `like-denominator-addition__none__1__3__1__3`, with exact result
-`2/3`, accepted candidate index `14`, and `117` scan attempts.
+cross-process vector is `like-denominator-addition__none__2__5__2__5`, with exact result
+`4/5`, selected candidate index `64`, uniform-eligible ordinal `5`, and no scan-attempt field.
 
 Twelve synthetic curated fixtures in `src/content/data/phase1-golden-cases.js` exercise all eight
 selectors, the approved overlays, exact results, alternate valid paths, and the reviewed
@@ -933,3 +934,169 @@ node src/content/bulk-validation.js --sample-size 1000 --seed plan03-bulk-v1
 
 Implementation and evidence are complete for this turn. No packet status was changed, no package
 or deployment file was touched, and nothing was pushed. Stop for final orchestrator/owner review.
+
+## Repair 01 addendum — contract validation and unbiased eligible selection
+
+### Repair scope and authorization
+
+Plan 03 remains `delivered` and is not accepted. The packet preflight therefore returned:
+
+```text
+BLOCKED: plan-03 has status "delivered" — not ready or in-progress
+```
+
+That result was preserved. The explicit Repair 01 assignment authorized this bounded repair
+without reopening or mutating packet status. No package, lockfile, deployment, packet frontmatter,
+decision-log, founding-document, or Plan 02 math-core file was changed.
+
+### Contract-validation repair
+
+`validateProblemInstance` now has one outer fail-closed boundary: malformed, missing, cyclic, or
+otherwise unexpected records return `{ valid: false, checks, errors, facts, request }` instead of
+leaking a `TypeError` or another validation exception. The validator independently derives the
+expected content through the Plan 02-backed candidate pipeline and compares the complete
+consumer-visible contract, including:
+
+- schema/version, deep immutability, source/provenance discriminator, exact provenance shape,
+  generated seed replay, selected candidate index, eligible ordinal, and curated durable
+  non-empty fixture identifiers;
+- selector, operation, overlays, profile identity/version, and deterministic ID;
+- both operands' exact value, authored initial form, source-preserved current form, preferred
+  final form, transition array, transition equivalence, simplify-first target, and transition
+  metadata;
+- exact result state, canonical and alternate paths, path transformations, and operation results;
+- family, denominator, transformation, result, regrouping, and magnitude classification;
+- representation facts, deferred eligibility fields, subdivision facts, and review metadata.
+
+The source-record rule remains explicit: an operand's `currentForm` must equal its authored
+`initialForm`. A reviewed simplify-first transition is validated as an exact-equivalent future
+allowed transformation and does not mutate the source record. The curated `2/4` fixture continues
+to validate with `2/4` as its initial/current source form and `1/2` as its exact value and reviewed
+future transformation.
+
+### Direct uniform eligible selection
+
+Generation now enumerates and filters the finite candidate space once, then calls the existing
+bounded `SplitMix64.nextIndex` on the ordered `eligibleIndices` list. It directly selects
+`eligibleIndices[selectedEligibleOrdinal]`; it no longer selects a raw candidate and scans
+cyclically to the next accepted candidate.
+
+Generated provenance now records `selectedCandidateIndex` and:
+
+```text
+selection: {
+  strategy: "uniform-eligible-index",
+  eligibleOrdinal: string
+}
+```
+
+It no longer records generation `attempts` or sampled rejection counts. Candidate-space rejection
+counts remain available from finite enumeration and bulk reports, where their population is named.
+The bulk report's seed derivation wording now states direct uniform selection from ordered eligible
+candidate indexes.
+
+The fixed separate-process vector was updated to:
+
+```text
+ID:               like-denominator-addition__none__2__5__2__5
+exact result:     4/5
+selected index:   64
+eligible ordinal: 5
+```
+
+The FNV-1a-64 and SplitMix64 fixed primitive vectors are unchanged. Generated provenance
+validation now recreates the seed key and bounded selection and rejects a seed that no longer
+replays the recorded eligible ordinal.
+
+### Distribution evidence
+
+The focused regression test uses 7,000 fixed seed labels with the prefix
+`repair-01-sweep-` over the seven ordinary like-denominator eligible cases. Direct eligible-index
+selection produced this complete range and count set:
+
+```text
+cases: 7; min: 966; max: 1064
+1015, 990, 999, 966, 996, 1064, 970
+```
+
+Replaying the former raw-index-plus-cyclic-scan algorithm over the identical labels produced
+`min: 12; max: 6202`, including one case at 6,202 and several below 20. The new `900..1100`
+assertion therefore passes for the repaired algorithm and fails under the former biased algorithm.
+
+### Bulk-report repair
+
+The bulk validator now consumes the current validator check IDs, including canonical-path,
+representation-facts, and complete-contract checks. Any failed contract counter is a blocking bulk
+failure; the report can no longer declare `PASS` while sampled contract checks fail. The default
+report was regenerated with:
+
+```text
+node src/content/bulk-validation.js --sample-size 1000 --seed plan03-bulk-v1
+```
+
+Fresh replay comparison returned:
+
+```text
+jsonMatches: true
+markdownMatches: true
+pass: true
+blocking: []
+selectorCount: 24
+contractFailures: []
+curated: requested 12, passed 12, failed 0
+```
+
+Both committed report artifacts now state direct eligible-index selection and show zero failed
+contract checks for every validated sampled request.
+
+### Fresh advisor-capability and disposition record
+
+This repair changes validator behavior, provenance semantics, selection behavior, tests, and bulk
+acceptance logic, so a fresh consultation was warranted. The current Codex surface has a callable
+reviewer subagent tool, matching the `codex-cli` advisor-capable provider entry. Because structural
+read-only isolation is not verifiable, the effective posture was instruction-only read-only with
+depth-one scope, no agent spawning, sole primary-thread writing, and immediate post-consultation
+worktree verification. The advisor ran as **GPT-5 / OpenAI Codex runtime** and made no repository
+changes.
+
+The advisor initially identified four defects in the repair state. All were resolved before
+closeout:
+
+1. Bulk validation had stale check IDs and could report `PASS` despite failed contract counters;
+   the check IDs and blocking gate were corrected, tests now assert zero failed counters, and the
+   reports were regenerated.
+2. Generated seed provenance did not replay the recorded selection; validation now recreates the
+   seed key and ordinal, with a focused forged-seed test.
+3. The progress report retained stale cyclic-scan, accepted-index, attempts, and old-vector text;
+   the implementation section was corrected and this Repair 01 addendum is authoritative.
+4. Curated provenance accepted blank durable identifiers; empty fixture IDs and authoring revisions
+   now fail validation with a focused test.
+
+### Final verification record
+
+The final closeout commands completed after the repair and artifact regeneration:
+
+```text
+npm test
+  8 test files passed; 113 tests passed
+
+npm run build
+  Vite production build passed
+
+node scripts/dev/plan-status.js lint
+  lint: OK (no violations)
+
+git diff --check
+  passed
+
+node src/content/bulk-validation.js --sample-size 1000 --seed plan03-bulk-v1
+  pass: true; JSON and Markdown artifacts regenerated
+```
+
+Artifact replay then returned `jsonMatches: true`, `markdownMatches: true`, `pass: true`,
+`blocking: []`, `selectorCount: 24`, `contractFailures: []`, and curated validation of 12/12.
+The independent 7,000-draw sweep returned direct-selection `min: 966`, `max: 1064`; the former
+raw-index-plus-cyclic-scan replay returned `min: 12`, `max: 6202`.
+
+Packet status remains `delivered`; no status mutation is authorized here. Commit only the explicit
+Repair 01 paths, do not push, and stop for final orchestrator review.

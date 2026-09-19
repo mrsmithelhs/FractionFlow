@@ -1,7 +1,9 @@
 import { describe, expect, it } from 'vitest';
 import {
+  deepFreeze,
   PHASE1_GOLDEN_CASES,
   validateCuratedFixtures,
+  validateProblemInstance,
 } from '../src/content/index.js';
 
 describe('Plan 03 curated synthetic content', () => {
@@ -17,8 +19,8 @@ describe('Plan 03 curated synthetic content', () => {
         authoringRevision: result.fixture.authoringRevision,
       });
       expect(result.instance.provenance.seed).toBeUndefined();
-      expect(result.instance.provenance.acceptedCandidateIndex).toBeUndefined();
-      expect(result.instance.provenance.attempts).toBeUndefined();
+      expect(result.instance.provenance.selectedCandidateIndex).toBeUndefined();
+      expect(result.instance.provenance.selection).toBeUndefined();
       expect(Object.isFrozen(result.instance)).toBe(true);
     }
   });
@@ -42,5 +44,24 @@ describe('Plan 03 curated synthetic content', () => {
       toForm: { kind: 'fraction', numerator: '1', denominator: '2' },
       preservesExactValue: true,
     });
+  });
+
+  it('rejects a forged reviewed transition while preserving the authored current form', () => {
+    const source = validateCuratedFixtures().find((entry) => entry.fixture.id === 'curated-simplify-first-state').instance;
+    const forged = structuredClone(source);
+    forged.operands.left.acceptedFormTransitions[0].preservesExactValue = false;
+    deepFreeze(forged);
+    const validation = validateProblemInstance(forged);
+    expect(validation.valid).toBe(false);
+    expect(validation.checks.find((check) => check.id.startsWith('left-transition-contract')).valid).toBe(false);
+    expect(forged.operands.left.currentForm).toEqual(forged.operands.left.initialForm);
+  });
+
+  it('rejects blank curated provenance identifiers', () => {
+    const source = validateCuratedFixtures()[0].instance;
+    const forged = structuredClone(source);
+    forged.provenance.fixtureId = '';
+    deepFreeze(forged);
+    expect(validateProblemInstance(forged).valid).toBe(false);
   });
 });

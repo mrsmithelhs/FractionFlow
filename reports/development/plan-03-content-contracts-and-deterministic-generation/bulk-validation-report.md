@@ -5,7 +5,7 @@
 - Profile: `phase1-dev-default/1`
 - Base seed: `plan03-bulk-v1`
 - Requested sampled draws per selector: 1000
-- Seed derivation: FNV-1a-64 -> SplitMix64 -> domain-separated batch seed -> cyclic candidate scan
+- Seed derivation: FNV-1a-64 -> SplitMix64 -> domain-separated batch seed -> direct uniform selection from ordered eligible candidate indexes
 - Replay command: `node src/content/bulk-validation.js --sample-size 1000 --seed plan03-bulk-v1`
 
 ## Overall result: PASS
@@ -20,24 +20,24 @@ Warnings: like-denominator-addition+none:sampled-draws-include-duplicates, like-
 | like-denominator-addition | none | validated | 1000 | 1000 | 7 | 993 | 7 | 100% |
 | like-denominator-addition | reducible-result | validated | 1000 | 1000 | 43 | 957 | 43 | 100% |
 | like-denominator-addition | crosses-one-whole | validated | 1000 | 1000 | 7 | 993 | 7 | 100% |
-| like-denominator-addition | reducible-result, crosses-one-whole | validated | 1000 | 1000 | 19 | 981 | 20 | 95% |
+| like-denominator-addition | reducible-result, crosses-one-whole | validated | 1000 | 1000 | 20 | 980 | 20 | 100% |
 | like-denominator-subtraction | none | validated | 1000 | 1000 | 7 | 993 | 7 | 100% |
 | like-denominator-subtraction | reducible-result | validated | 1000 | 1000 | 20 | 980 | 20 | 100% |
-| nested-denominator-addition | none | validated | 1000 | 1000 | 39 | 961 | 40 | 97.5% |
+| nested-denominator-addition | none | validated | 1000 | 1000 | 40 | 960 | 40 | 100% |
 | nested-denominator-addition | reducible-result | validated | 1000 | 1000 | 28 | 972 | 28 | 100% |
-| nested-denominator-addition | crosses-one-whole | validated | 1000 | 1000 | 38 | 962 | 40 | 95% |
+| nested-denominator-addition | crosses-one-whole | validated | 1000 | 1000 | 40 | 960 | 40 | 100% |
 | nested-denominator-addition | reducible-result, crosses-one-whole | validated | 1000 | 1000 | 28 | 972 | 28 | 100% |
 | nested-denominator-subtraction | none | validated | 1000 | 1000 | 40 | 960 | 40 | 100% |
 | nested-denominator-subtraction | reducible-result | validated | 1000 | 1000 | 28 | 972 | 28 | 100% |
-| shared-factor-addition | none | validated | 1000 | 1000 | 66 | 934 | 68 | 97.0588% |
-| shared-factor-addition | reducible-result | validated | 1000 | 1000 | 7 | 993 | 8 | 87.5% |
-| shared-factor-addition | crosses-one-whole | validated | 1000 | 1000 | 65 | 935 | 68 | 95.5882% |
+| shared-factor-addition | none | validated | 1000 | 1000 | 68 | 932 | 68 | 100% |
+| shared-factor-addition | reducible-result | validated | 1000 | 1000 | 8 | 992 | 8 | 100% |
+| shared-factor-addition | crosses-one-whole | validated | 1000 | 1000 | 68 | 932 | 68 | 100% |
 | shared-factor-addition | reducible-result, crosses-one-whole | validated | 1000 | 1000 | 8 | 992 | 8 | 100% |
-| shared-factor-subtraction | none | validated | 1000 | 1000 | 62 | 938 | 68 | 91.1765% |
+| shared-factor-subtraction | none | validated | 1000 | 1000 | 68 | 932 | 68 | 100% |
 | shared-factor-subtraction | reducible-result | validated | 1000 | 1000 | 8 | 992 | 8 | 100% |
-| relatively-prime-addition | none | validated | 1000 | 1000 | 31 | 969 | 34 | 91.1765% |
+| relatively-prime-addition | none | validated | 1000 | 1000 | 34 | 966 | 34 | 100% |
 | relatively-prime-addition | reducible-result | unsatisfiable-for-profile | 1000 | 0 | 0 | 0 | 0 | n/a% |
-| relatively-prime-addition | crosses-one-whole | validated | 1000 | 1000 | 30 | 970 | 34 | 88.2353% |
+| relatively-prime-addition | crosses-one-whole | validated | 1000 | 1000 | 34 | 966 | 34 | 100% |
 | relatively-prime-addition | reducible-result, crosses-one-whole | unsatisfiable-for-profile | 1000 | 0 | 0 | 0 | 0 | n/a% |
 | relatively-prime-subtraction | none | validated | 1000 | 1000 | 34 | 966 | 34 | 100% |
 | relatively-prime-subtraction | reducible-result | unsatisfiable-for-profile | 1000 | 0 | 0 | 0 | 0 | n/a% |
@@ -114,7 +114,7 @@ Population n=1000; percentile method=nearest-rank
 
 | Min | P50 | P90 | P95 | P99 | Max |
 |---:|---:|---:|---:|---:|---:|
-| 3 | 3 | 5 | 5 | 5 | 5 |
+| 3 | 5 | 5 | 5 | 5 | 5 |
 
 #### Result form
 Population n=1000
@@ -148,9 +148,9 @@ Population n=1000
 
 | ID | Seed |
 |---|---|
-| like-denominator-addition__none__1__3__1__3 | plan03-bulk-v1:like-denominator-addition:none#0 |
-| like-denominator-addition__none__1__3__1__3 | plan03-bulk-v1:like-denominator-addition:none#1 |
-| like-denominator-addition__none__1__3__1__3 | plan03-bulk-v1:like-denominator-addition:none#2 |
+| like-denominator-addition__none__2__5__2__5 | plan03-bulk-v1:like-denominator-addition:none#0 |
+| like-denominator-addition__none__1__5__2__5 | plan03-bulk-v1:like-denominator-addition:none#1 |
+| like-denominator-addition__none__3__5__1__5 | plan03-bulk-v1:like-denominator-addition:none#2 |
 
 ## like-denominator-addition (reducible-result)
 
@@ -225,15 +225,15 @@ Population n=1000; percentile method=nearest-rank
 
 | Min | P50 | P90 | P95 | P99 | Max |
 |---:|---:|---:|---:|---:|---:|
-| 2 | 10 | 12 | 12 | 12 | 12 |
+| 2 | 8 | 12 | 12 | 12 | 12 |
 
 #### Result form
 Population n=1000
 
 | Value | Count | Percent of n |
 |---|---:|---:|
-| exactly-one | 438 | 43.8% |
-| proper | 562 | 56.2% |
+| exactly-one | 545 | 54.5% |
+| proper | 455 | 45.5% |
 
 #### Simplification status
 Population n=1000
@@ -254,16 +254,16 @@ Population n=1000
 
 | Value | Count | Percent of n |
 |---|---:|---:|
-| exactly-one|reducible|does-not-cross-one-whole | 438 | 43.8% |
-| proper|reducible|does-not-cross-one-whole | 562 | 56.2% |
+| exactly-one|reducible|does-not-cross-one-whole | 545 | 54.5% |
+| proper|reducible|does-not-cross-one-whole | 455 | 45.5% |
 
 ### Representative instances
 
 | ID | Seed |
 |---|---|
-| like-denominator-addition__reducible-result__1__10__1__10 | plan03-bulk-v1:like-denominator-addition:reducible-result#0 |
-| like-denominator-addition__reducible-result__5__12__5__12 | plan03-bulk-v1:like-denominator-addition:reducible-result#1 |
-| like-denominator-addition__reducible-result__1__6__1__6 | plan03-bulk-v1:like-denominator-addition:reducible-result#2 |
+| like-denominator-addition__reducible-result__1__12__11__12 | plan03-bulk-v1:like-denominator-addition:reducible-result#0 |
+| like-denominator-addition__reducible-result__1__10__3__10 | plan03-bulk-v1:like-denominator-addition:reducible-result#1 |
+| like-denominator-addition__reducible-result__3__10__1__10 | plan03-bulk-v1:like-denominator-addition:reducible-result#2 |
 
 ## like-denominator-addition (crosses-one-whole)
 
@@ -338,7 +338,7 @@ Population n=1000; percentile method=nearest-rank
 
 | Min | P50 | P90 | P95 | P99 | Max |
 |---:|---:|---:|---:|---:|---:|
-| 3 | 3 | 5 | 5 | 5 | 5 |
+| 3 | 5 | 5 | 5 | 5 | 5 |
 
 #### Result form
 Population n=1000
@@ -373,16 +373,16 @@ Population n=1000
 | ID | Seed |
 |---|---|
 | like-denominator-addition__crosses-one-whole__2__3__2__3 | plan03-bulk-v1:like-denominator-addition:crosses-one-whole#0 |
-| like-denominator-addition__crosses-one-whole__2__3__2__3 | plan03-bulk-v1:like-denominator-addition:crosses-one-whole#1 |
-| like-denominator-addition__crosses-one-whole__2__5__4__5 | plan03-bulk-v1:like-denominator-addition:crosses-one-whole#2 |
+| like-denominator-addition__crosses-one-whole__3__5__4__5 | plan03-bulk-v1:like-denominator-addition:crosses-one-whole#1 |
+| like-denominator-addition__crosses-one-whole__4__5__4__5 | plan03-bulk-v1:like-denominator-addition:crosses-one-whole#2 |
 
 ## like-denominator-addition (reducible-result, crosses-one-whole)
 
 - Candidate-space cardinality: raw=506, eligible=20, finite enumeration=true
 - Sampled accepted draws: 1000/1000
-- Unique mathematical instances: 19
-- Duplicate accepted draws: 981
-- Finite-space coverage: 19/20 = 95%
+- Unique mathematical instances: 20
+- Duplicate accepted draws: 980
+- Finite-space coverage: 20/20 = 100%
 
 ### Rejection reasons by population
 
@@ -484,9 +484,9 @@ Population n=1000
 
 | ID | Seed |
 |---|---|
-| like-denominator-addition__reducible-result+crosses-one-whole__3__8__7__8 | plan03-bulk-v1:like-denominator-addition:reducible-result+crosses-one-whole#0 |
-| like-denominator-addition__reducible-result+crosses-one-whole__11__12__5__12 | plan03-bulk-v1:like-denominator-addition:reducible-result+crosses-one-whole#1 |
-| like-denominator-addition__reducible-result+crosses-one-whole__7__12__7__12 | plan03-bulk-v1:like-denominator-addition:reducible-result+crosses-one-whole#2 |
+| like-denominator-addition__reducible-result+crosses-one-whole__7__10__7__10 | plan03-bulk-v1:like-denominator-addition:reducible-result+crosses-one-whole#0 |
+| like-denominator-addition__reducible-result+crosses-one-whole__7__10__7__10 | plan03-bulk-v1:like-denominator-addition:reducible-result+crosses-one-whole#1 |
+| like-denominator-addition__reducible-result+crosses-one-whole__9__10__3__10 | plan03-bulk-v1:like-denominator-addition:reducible-result+crosses-one-whole#2 |
 
 ## like-denominator-subtraction (no overlays)
 
@@ -559,7 +559,7 @@ Population n=1000; percentile method=nearest-rank
 
 | Min | P50 | P90 | P95 | P99 | Max |
 |---:|---:|---:|---:|---:|---:|
-| 3 | 3 | 5 | 5 | 5 | 5 |
+| 3 | 5 | 5 | 5 | 5 | 5 |
 
 #### Result form
 Population n=1000
@@ -593,8 +593,8 @@ Population n=1000
 
 | ID | Seed |
 |---|---|
-| like-denominator-subtraction__none__2__3__1__3 | plan03-bulk-v1:like-denominator-subtraction:none#0 |
-| like-denominator-subtraction__none__2__3__1__3 | plan03-bulk-v1:like-denominator-subtraction:none#1 |
+| like-denominator-subtraction__none__4__5__2__5 | plan03-bulk-v1:like-denominator-subtraction:none#0 |
+| like-denominator-subtraction__none__3__5__2__5 | plan03-bulk-v1:like-denominator-subtraction:none#1 |
 | like-denominator-subtraction__none__2__3__1__3 | plan03-bulk-v1:like-denominator-subtraction:none#2 |
 
 ## like-denominator-subtraction (reducible-result)
@@ -703,17 +703,17 @@ Population n=1000
 
 | ID | Seed |
 |---|---|
-| like-denominator-subtraction__reducible-result__5__6__1__6 | plan03-bulk-v1:like-denominator-subtraction:reducible-result#0 |
-| like-denominator-subtraction__reducible-result__5__8__1__8 | plan03-bulk-v1:like-denominator-subtraction:reducible-result#1 |
-| like-denominator-subtraction__reducible-result__3__4__1__4 | plan03-bulk-v1:like-denominator-subtraction:reducible-result#2 |
+| like-denominator-subtraction__reducible-result__9__10__1__10 | plan03-bulk-v1:like-denominator-subtraction:reducible-result#0 |
+| like-denominator-subtraction__reducible-result__7__10__1__10 | plan03-bulk-v1:like-denominator-subtraction:reducible-result#1 |
+| like-denominator-subtraction__reducible-result__5__8__1__8 | plan03-bulk-v1:like-denominator-subtraction:reducible-result#2 |
 
 ## nested-denominator-addition (no overlays)
 
 - Candidate-space cardinality: raw=964, eligible=40, finite enumeration=true
 - Sampled accepted draws: 1000/1000
-- Unique mathematical instances: 39
-- Duplicate accepted draws: 961
-- Finite-space coverage: 39/40 = 97.5%
+- Unique mathematical instances: 40
+- Duplicate accepted draws: 960
+- Finite-space coverage: 40/40 = 100%
 
 ### Rejection reasons by population
 
@@ -758,22 +758,22 @@ Population n=1000
 
 | Value | Count | Percent of n |
 |---|---:|---:|
-| left+unchanged | 493 | 49.3% |
-| unchanged+right | 507 | 50.7% |
+| left+unchanged | 517 | 51.7% |
+| unchanged+right | 483 | 48.3% |
 
 #### Left scale factor
 Population n=1000; percentile method=nearest-rank
 
 | Min | P50 | P90 | P95 | P99 | Max |
 |---:|---:|---:|---:|---:|---:|
-| 1 | 1 | 4 | 6 | 6 | 6 |
+| 1 | 2 | 4 | 6 | 6 | 6 |
 
 #### Right scale factor
 Population n=1000; percentile method=nearest-rank
 
 | Min | P50 | P90 | P95 | P99 | Max |
 |---:|---:|---:|---:|---:|---:|
-| 1 | 2 | 4 | 4 | 6 | 6 |
+| 1 | 1 | 4 | 4 | 6 | 6 |
 
 #### Canonical denominator
 Population n=1000; percentile method=nearest-rank
@@ -814,9 +814,9 @@ Population n=1000
 
 | ID | Seed |
 |---|---|
-| nested-denominator-addition__none__7__10__1__5 | plan03-bulk-v1:nested-denominator-addition:none#0 |
-| nested-denominator-addition__none__1__5__1__10 | plan03-bulk-v1:nested-denominator-addition:none#1 |
-| nested-denominator-addition__none__1__10__1__5 | plan03-bulk-v1:nested-denominator-addition:none#2 |
+| nested-denominator-addition__none__3__5__1__10 | plan03-bulk-v1:nested-denominator-addition:none#0 |
+| nested-denominator-addition__none__7__12__1__3 | plan03-bulk-v1:nested-denominator-addition:none#1 |
+| nested-denominator-addition__none__1__8__1__2 | plan03-bulk-v1:nested-denominator-addition:none#2 |
 
 ## nested-denominator-addition (reducible-result)
 
@@ -870,29 +870,29 @@ Population n=1000
 
 | Value | Count | Percent of n |
 |---|---:|---:|
-| left+unchanged | 457 | 45.7% |
-| unchanged+right | 543 | 54.3% |
+| left+unchanged | 521 | 52.1% |
+| unchanged+right | 479 | 47.9% |
 
 #### Left scale factor
 Population n=1000; percentile method=nearest-rank
 
 | Min | P50 | P90 | P95 | P99 | Max |
 |---:|---:|---:|---:|---:|---:|
-| 1 | 1 | 4 | 5 | 5 | 5 |
+| 1 | 2 | 4 | 5 | 5 | 5 |
 
 #### Right scale factor
 Population n=1000; percentile method=nearest-rank
 
 | Min | P50 | P90 | P95 | P99 | Max |
 |---:|---:|---:|---:|---:|---:|
-| 1 | 2 | 5 | 5 | 5 | 5 |
+| 1 | 1 | 4 | 5 | 5 | 5 |
 
 #### Canonical denominator
 Population n=1000; percentile method=nearest-rank
 
 | Min | P50 | P90 | P95 | P99 | Max |
 |---:|---:|---:|---:|---:|---:|
-| 6 | 10 | 12 | 12 | 12 | 12 |
+| 6 | 12 | 12 | 12 | 12 | 12 |
 
 #### Result form
 Population n=1000
@@ -926,17 +926,17 @@ Population n=1000
 
 | ID | Seed |
 |---|---|
-| nested-denominator-addition__reducible-result__1__3__1__6 | plan03-bulk-v1:nested-denominator-addition:reducible-result#0 |
-| nested-denominator-addition__reducible-result__1__4__1__12 | plan03-bulk-v1:nested-denominator-addition:reducible-result#1 |
-| nested-denominator-addition__reducible-result__7__12__1__6 | plan03-bulk-v1:nested-denominator-addition:reducible-result#2 |
+| nested-denominator-addition__reducible-result__5__12__1__4 | plan03-bulk-v1:nested-denominator-addition:reducible-result#0 |
+| nested-denominator-addition__reducible-result__1__6__1__12 | plan03-bulk-v1:nested-denominator-addition:reducible-result#1 |
+| nested-denominator-addition__reducible-result__1__12__2__3 | plan03-bulk-v1:nested-denominator-addition:reducible-result#2 |
 
 ## nested-denominator-addition (crosses-one-whole)
 
 - Candidate-space cardinality: raw=964, eligible=40, finite enumeration=true
 - Sampled accepted draws: 1000/1000
-- Unique mathematical instances: 38
-- Duplicate accepted draws: 962
-- Finite-space coverage: 38/40 = 95%
+- Unique mathematical instances: 40
+- Duplicate accepted draws: 960
+- Finite-space coverage: 40/40 = 100%
 
 ### Rejection reasons by population
 
@@ -982,22 +982,22 @@ Population n=1000
 
 | Value | Count | Percent of n |
 |---|---:|---:|
-| left+unchanged | 463 | 46.3% |
-| unchanged+right | 537 | 53.7% |
+| left+unchanged | 508 | 50.8% |
+| unchanged+right | 492 | 49.2% |
 
 #### Left scale factor
 Population n=1000; percentile method=nearest-rank
 
 | Min | P50 | P90 | P95 | P99 | Max |
 |---:|---:|---:|---:|---:|---:|
-| 1 | 1 | 4 | 6 | 6 | 6 |
+| 1 | 2 | 4 | 6 | 6 | 6 |
 
 #### Right scale factor
 Population n=1000; percentile method=nearest-rank
 
 | Min | P50 | P90 | P95 | P99 | Max |
 |---:|---:|---:|---:|---:|---:|
-| 1 | 2 | 4 | 4 | 6 | 6 |
+| 1 | 1 | 4 | 4 | 6 | 6 |
 
 #### Canonical denominator
 Population n=1000; percentile method=nearest-rank
@@ -1038,9 +1038,9 @@ Population n=1000
 
 | ID | Seed |
 |---|---|
-| nested-denominator-addition__crosses-one-whole__5__6__7__12 | plan03-bulk-v1:nested-denominator-addition:crosses-one-whole#0 |
-| nested-denominator-addition__crosses-one-whole__5__8__3__4 | plan03-bulk-v1:nested-denominator-addition:crosses-one-whole#1 |
-| nested-denominator-addition__crosses-one-whole__7__12__5__6 | plan03-bulk-v1:nested-denominator-addition:crosses-one-whole#2 |
+| nested-denominator-addition__crosses-one-whole__1__2__5__8 | plan03-bulk-v1:nested-denominator-addition:crosses-one-whole#0 |
+| nested-denominator-addition__crosses-one-whole__1__2__7__12 | plan03-bulk-v1:nested-denominator-addition:crosses-one-whole#1 |
+| nested-denominator-addition__crosses-one-whole__3__4__1__2 | plan03-bulk-v1:nested-denominator-addition:crosses-one-whole#2 |
 
 ## nested-denominator-addition (reducible-result, crosses-one-whole)
 
@@ -1095,22 +1095,22 @@ Population n=1000
 
 | Value | Count | Percent of n |
 |---|---:|---:|
-| left+unchanged | 498 | 49.8% |
-| unchanged+right | 502 | 50.2% |
+| left+unchanged | 497 | 49.7% |
+| unchanged+right | 503 | 50.3% |
 
 #### Left scale factor
 Population n=1000; percentile method=nearest-rank
 
 | Min | P50 | P90 | P95 | P99 | Max |
 |---:|---:|---:|---:|---:|---:|
-| 1 | 1 | 3 | 5 | 5 | 5 |
+| 1 | 1 | 4 | 5 | 5 | 5 |
 
 #### Right scale factor
 Population n=1000; percentile method=nearest-rank
 
 | Min | P50 | P90 | P95 | P99 | Max |
 |---:|---:|---:|---:|---:|---:|
-| 1 | 2 | 5 | 5 | 5 | 5 |
+| 1 | 2 | 4 | 5 | 5 | 5 |
 
 #### Canonical denominator
 Population n=1000; percentile method=nearest-rank
@@ -1151,9 +1151,9 @@ Population n=1000
 
 | ID | Seed |
 |---|---|
-| nested-denominator-addition__reducible-result+crosses-one-whole__1__2__5__6 | plan03-bulk-v1:nested-denominator-addition:reducible-result+crosses-one-whole#0 |
-| nested-denominator-addition__reducible-result+crosses-one-whole__7__10__1__2 | plan03-bulk-v1:nested-denominator-addition:reducible-result+crosses-one-whole#1 |
-| nested-denominator-addition__reducible-result+crosses-one-whole__7__10__4__5 | plan03-bulk-v1:nested-denominator-addition:reducible-result+crosses-one-whole#2 |
+| nested-denominator-addition__reducible-result+crosses-one-whole__3__5__9__10 | plan03-bulk-v1:nested-denominator-addition:reducible-result+crosses-one-whole#0 |
+| nested-denominator-addition__reducible-result+crosses-one-whole__5__6__11__12 | plan03-bulk-v1:nested-denominator-addition:reducible-result+crosses-one-whole#1 |
+| nested-denominator-addition__reducible-result+crosses-one-whole__2__3__7__12 | plan03-bulk-v1:nested-denominator-addition:reducible-result+crosses-one-whole#2 |
 
 ## nested-denominator-subtraction (no overlays)
 
@@ -1205,15 +1205,15 @@ Population n=1000
 
 | Value | Count | Percent of n |
 |---|---:|---:|
-| left+unchanged | 462 | 46.2% |
-| unchanged+right | 538 | 53.8% |
+| left+unchanged | 495 | 49.5% |
+| unchanged+right | 505 | 50.5% |
 
 #### Left scale factor
 Population n=1000; percentile method=nearest-rank
 
 | Min | P50 | P90 | P95 | P99 | Max |
 |---:|---:|---:|---:|---:|---:|
-| 1 | 1 | 4 | 6 | 6 | 6 |
+| 1 | 1 | 4 | 4 | 6 | 6 |
 
 #### Right scale factor
 Population n=1000; percentile method=nearest-rank
@@ -1261,9 +1261,9 @@ Population n=1000
 
 | ID | Seed |
 |---|---|
-| nested-denominator-subtraction__none__2__3__7__12 | plan03-bulk-v1:nested-denominator-subtraction:none#0 |
-| nested-denominator-subtraction__none__1__2__1__8 | plan03-bulk-v1:nested-denominator-subtraction:none#1 |
-| nested-denominator-subtraction__none__5__6__2__3 | plan03-bulk-v1:nested-denominator-subtraction:none#2 |
+| nested-denominator-subtraction__none__7__8__3__4 | plan03-bulk-v1:nested-denominator-subtraction:none#0 |
+| nested-denominator-subtraction__none__4__5__1__10 | plan03-bulk-v1:nested-denominator-subtraction:none#1 |
+| nested-denominator-subtraction__none__1__2__1__4 | plan03-bulk-v1:nested-denominator-subtraction:none#2 |
 
 ## nested-denominator-subtraction (reducible-result)
 
@@ -1316,8 +1316,8 @@ Population n=1000
 
 | Value | Count | Percent of n |
 |---|---:|---:|
-| left+unchanged | 511 | 51.1% |
-| unchanged+right | 489 | 48.9% |
+| left+unchanged | 514 | 51.4% |
+| unchanged+right | 486 | 48.6% |
 
 #### Left scale factor
 Population n=1000; percentile method=nearest-rank
@@ -1331,7 +1331,7 @@ Population n=1000; percentile method=nearest-rank
 
 | Min | P50 | P90 | P95 | P99 | Max |
 |---:|---:|---:|---:|---:|---:|
-| 1 | 1 | 5 | 5 | 5 | 5 |
+| 1 | 1 | 4 | 5 | 5 | 5 |
 
 #### Canonical denominator
 Population n=1000; percentile method=nearest-rank
@@ -1372,17 +1372,17 @@ Population n=1000
 
 | ID | Seed |
 |---|---|
-| nested-denominator-subtraction__reducible-result__5__12__1__4 | plan03-bulk-v1:nested-denominator-subtraction:reducible-result#0 |
-| nested-denominator-subtraction__reducible-result__7__10__1__2 | plan03-bulk-v1:nested-denominator-subtraction:reducible-result#1 |
-| nested-denominator-subtraction__reducible-result__7__10__1__2 | plan03-bulk-v1:nested-denominator-subtraction:reducible-result#2 |
+| nested-denominator-subtraction__reducible-result__7__10__1__5 | plan03-bulk-v1:nested-denominator-subtraction:reducible-result#0 |
+| nested-denominator-subtraction__reducible-result__11__12__1__4 | plan03-bulk-v1:nested-denominator-subtraction:reducible-result#1 |
+| nested-denominator-subtraction__reducible-result__2__3__1__6 | plan03-bulk-v1:nested-denominator-subtraction:reducible-result#2 |
 
 ## shared-factor-addition (no overlays)
 
 - Candidate-space cardinality: raw=1178, eligible=68, finite enumeration=true
 - Sampled accepted draws: 1000/1000
-- Unique mathematical instances: 66
-- Duplicate accepted draws: 934
-- Finite-space coverage: 66/68 = 97.0588%
+- Unique mathematical instances: 68
+- Duplicate accepted draws: 932
+- Finite-space coverage: 68/68 = 100%
 
 ### Rejection reasons by population
 
@@ -1482,17 +1482,17 @@ Population n=1000
 
 | ID | Seed |
 |---|---|
-| shared-factor-addition__none__1__12__1__10 | plan03-bulk-v1:shared-factor-addition:none#0 |
-| shared-factor-addition__none__1__4__3__10 | plan03-bulk-v1:shared-factor-addition:none#1 |
-| shared-factor-addition__none__1__6__1__4 | plan03-bulk-v1:shared-factor-addition:none#2 |
+| shared-factor-addition__none__1__6__3__4 | plan03-bulk-v1:shared-factor-addition:none#0 |
+| shared-factor-addition__none__3__10__1__8 | plan03-bulk-v1:shared-factor-addition:none#1 |
+| shared-factor-addition__none__3__8__1__12 | plan03-bulk-v1:shared-factor-addition:none#2 |
 
 ## shared-factor-addition (reducible-result)
 
 - Candidate-space cardinality: raw=1178, eligible=8, finite enumeration=true
 - Sampled accepted draws: 1000/1000
-- Unique mathematical instances: 7
-- Duplicate accepted draws: 993
-- Finite-space coverage: 7/8 = 87.5%
+- Unique mathematical instances: 8
+- Duplicate accepted draws: 992
+- Finite-space coverage: 8/8 = 100%
 
 ### Rejection reasons by population
 
@@ -1545,14 +1545,14 @@ Population n=1000; percentile method=nearest-rank
 
 | Min | P50 | P90 | P95 | P99 | Max |
 |---:|---:|---:|---:|---:|---:|
-| 3 | 5 | 5 | 5 | 5 | 5 |
+| 3 | 3 | 5 | 5 | 5 | 5 |
 
 #### Right scale factor
 Population n=1000; percentile method=nearest-rank
 
 | Min | P50 | P90 | P95 | P99 | Max |
 |---:|---:|---:|---:|---:|---:|
-| 3 | 3 | 5 | 5 | 5 | 5 |
+| 3 | 5 | 5 | 5 | 5 | 5 |
 
 #### Canonical denominator
 Population n=1000; percentile method=nearest-rank
@@ -1593,17 +1593,17 @@ Population n=1000
 
 | ID | Seed |
 |---|---|
-| shared-factor-addition__reducible-result__1__6__1__10 | plan03-bulk-v1:shared-factor-addition:reducible-result#0 |
-| shared-factor-addition__reducible-result__1__6__1__10 | plan03-bulk-v1:shared-factor-addition:reducible-result#1 |
-| shared-factor-addition__reducible-result__1__10__1__6 | plan03-bulk-v1:shared-factor-addition:reducible-result#2 |
+| shared-factor-addition__reducible-result__1__10__5__6 | plan03-bulk-v1:shared-factor-addition:reducible-result#0 |
+| shared-factor-addition__reducible-result__1__6__3__10 | plan03-bulk-v1:shared-factor-addition:reducible-result#1 |
+| shared-factor-addition__reducible-result__1__10__5__6 | plan03-bulk-v1:shared-factor-addition:reducible-result#2 |
 
 ## shared-factor-addition (crosses-one-whole)
 
 - Candidate-space cardinality: raw=1178, eligible=68, finite enumeration=true
 - Sampled accepted draws: 1000/1000
-- Unique mathematical instances: 65
-- Duplicate accepted draws: 935
-- Finite-space coverage: 65/68 = 95.5882%
+- Unique mathematical instances: 68
+- Duplicate accepted draws: 932
+- Finite-space coverage: 68/68 = 100%
 
 ### Rejection reasons by population
 
@@ -1704,9 +1704,9 @@ Population n=1000
 
 | ID | Seed |
 |---|---|
-| shared-factor-addition__crosses-one-whole__5__8__5__12 | plan03-bulk-v1:shared-factor-addition:crosses-one-whole#0 |
-| shared-factor-addition__crosses-one-whole__1__8__9__10 | plan03-bulk-v1:shared-factor-addition:crosses-one-whole#1 |
-| shared-factor-addition__crosses-one-whole__5__12__5__8 | plan03-bulk-v1:shared-factor-addition:crosses-one-whole#2 |
+| shared-factor-addition__crosses-one-whole__7__8__5__6 | plan03-bulk-v1:shared-factor-addition:crosses-one-whole#0 |
+| shared-factor-addition__crosses-one-whole__5__12__7__10 | plan03-bulk-v1:shared-factor-addition:crosses-one-whole#1 |
+| shared-factor-addition__crosses-one-whole__7__10__5__8 | plan03-bulk-v1:shared-factor-addition:crosses-one-whole#2 |
 
 ## shared-factor-addition (reducible-result, crosses-one-whole)
 
@@ -1768,14 +1768,14 @@ Population n=1000; percentile method=nearest-rank
 
 | Min | P50 | P90 | P95 | P99 | Max |
 |---:|---:|---:|---:|---:|---:|
-| 3 | 5 | 5 | 5 | 5 | 5 |
+| 3 | 3 | 5 | 5 | 5 | 5 |
 
 #### Right scale factor
 Population n=1000; percentile method=nearest-rank
 
 | Min | P50 | P90 | P95 | P99 | Max |
 |---:|---:|---:|---:|---:|---:|
-| 3 | 3 | 5 | 5 | 5 | 5 |
+| 3 | 5 | 5 | 5 | 5 | 5 |
 
 #### Canonical denominator
 Population n=1000; percentile method=nearest-rank
@@ -1816,17 +1816,17 @@ Population n=1000
 
 | ID | Seed |
 |---|---|
-| shared-factor-addition__reducible-result+crosses-one-whole__1__6__9__10 | plan03-bulk-v1:shared-factor-addition:reducible-result+crosses-one-whole#0 |
+| shared-factor-addition__reducible-result+crosses-one-whole__7__10__5__6 | plan03-bulk-v1:shared-factor-addition:reducible-result+crosses-one-whole#0 |
 | shared-factor-addition__reducible-result+crosses-one-whole__1__6__9__10 | plan03-bulk-v1:shared-factor-addition:reducible-result+crosses-one-whole#1 |
-| shared-factor-addition__reducible-result+crosses-one-whole__3__10__5__6 | plan03-bulk-v1:shared-factor-addition:reducible-result+crosses-one-whole#2 |
+| shared-factor-addition__reducible-result+crosses-one-whole__1__6__9__10 | plan03-bulk-v1:shared-factor-addition:reducible-result+crosses-one-whole#2 |
 
 ## shared-factor-subtraction (no overlays)
 
 - Candidate-space cardinality: raw=1178, eligible=68, finite enumeration=true
 - Sampled accepted draws: 1000/1000
-- Unique mathematical instances: 62
-- Duplicate accepted draws: 938
-- Finite-space coverage: 62/68 = 91.1765%
+- Unique mathematical instances: 68
+- Duplicate accepted draws: 932
+- Finite-space coverage: 68/68 = 100%
 
 ### Rejection reasons by population
 
@@ -1925,9 +1925,9 @@ Population n=1000
 
 | ID | Seed |
 |---|---|
-| shared-factor-subtraction__none__11__12__1__8 | plan03-bulk-v1:shared-factor-subtraction:none#0 |
-| shared-factor-subtraction__none__1__4__1__6 | plan03-bulk-v1:shared-factor-subtraction:none#1 |
-| shared-factor-subtraction__none__7__8__1__12 | plan03-bulk-v1:shared-factor-subtraction:none#2 |
+| shared-factor-subtraction__none__11__12__3__10 | plan03-bulk-v1:shared-factor-subtraction:none#0 |
+| shared-factor-subtraction__none__11__12__1__8 | plan03-bulk-v1:shared-factor-subtraction:none#1 |
+| shared-factor-subtraction__none__9__10__7__8 | plan03-bulk-v1:shared-factor-subtraction:none#2 |
 
 ## shared-factor-subtraction (reducible-result)
 
@@ -2035,17 +2035,17 @@ Population n=1000
 
 | ID | Seed |
 |---|---|
-| shared-factor-subtraction__reducible-result__1__6__1__10 | plan03-bulk-v1:shared-factor-subtraction:reducible-result#0 |
-| shared-factor-subtraction__reducible-result__1__6__1__10 | plan03-bulk-v1:shared-factor-subtraction:reducible-result#1 |
-| shared-factor-subtraction__reducible-result__7__10__1__6 | plan03-bulk-v1:shared-factor-subtraction:reducible-result#2 |
+| shared-factor-subtraction__reducible-result__7__10__1__6 | plan03-bulk-v1:shared-factor-subtraction:reducible-result#0 |
+| shared-factor-subtraction__reducible-result__3__10__1__6 | plan03-bulk-v1:shared-factor-subtraction:reducible-result#1 |
+| shared-factor-subtraction__reducible-result__9__10__5__6 | plan03-bulk-v1:shared-factor-subtraction:reducible-result#2 |
 
 ## relatively-prime-addition (no overlays)
 
 - Candidate-space cardinality: raw=716, eligible=34, finite enumeration=true
 - Sampled accepted draws: 1000/1000
-- Unique mathematical instances: 31
-- Duplicate accepted draws: 969
-- Finite-space coverage: 31/34 = 91.1765%
+- Unique mathematical instances: 34
+- Duplicate accepted draws: 966
+- Finite-space coverage: 34/34 = 100%
 
 ### Rejection reasons by population
 
@@ -2099,21 +2099,21 @@ Population n=1000; percentile method=nearest-rank
 
 | Min | P50 | P90 | P95 | P99 | Max |
 |---:|---:|---:|---:|---:|---:|
-| 2 | 3 | 5 | 6 | 6 | 6 |
+| 2 | 5 | 6 | 6 | 6 | 6 |
 
 #### Right scale factor
 Population n=1000; percentile method=nearest-rank
 
 | Min | P50 | P90 | P95 | P99 | Max |
 |---:|---:|---:|---:|---:|---:|
-| 2 | 4 | 6 | 6 | 6 | 6 |
+| 2 | 5 | 6 | 6 | 6 | 6 |
 
 #### Canonical denominator
 Population n=1000; percentile method=nearest-rank
 
 | Min | P50 | P90 | P95 | P99 | Max |
 |---:|---:|---:|---:|---:|---:|
-| 6 | 12 | 30 | 30 | 30 | 30 |
+| 6 | 15 | 30 | 30 | 30 | 30 |
 
 #### Result form
 Population n=1000
@@ -2147,9 +2147,9 @@ Population n=1000
 
 | ID | Seed |
 |---|---|
-| relatively-prime-addition__none__1__2__1__3 | plan03-bulk-v1:relatively-prime-addition:none#0 |
-| relatively-prime-addition__none__3__5__1__6 | plan03-bulk-v1:relatively-prime-addition:none#1 |
-| relatively-prime-addition__none__1__6__1__5 | plan03-bulk-v1:relatively-prime-addition:none#2 |
+| relatively-prime-addition__none__1__4__2__5 | plan03-bulk-v1:relatively-prime-addition:none#0 |
+| relatively-prime-addition__none__1__2__1__3 | plan03-bulk-v1:relatively-prime-addition:none#1 |
+| relatively-prime-addition__none__4__5__1__6 | plan03-bulk-v1:relatively-prime-addition:none#2 |
 
 ## relatively-prime-addition (reducible-result)
 
@@ -8267,9 +8267,9 @@ Population n=0
 
 - Candidate-space cardinality: raw=716, eligible=34, finite enumeration=true
 - Sampled accepted draws: 1000/1000
-- Unique mathematical instances: 30
-- Duplicate accepted draws: 970
-- Finite-space coverage: 30/34 = 88.2353%
+- Unique mathematical instances: 34
+- Duplicate accepted draws: 966
+- Finite-space coverage: 34/34 = 100%
 
 ### Rejection reasons by population
 
@@ -8324,21 +8324,21 @@ Population n=1000; percentile method=nearest-rank
 
 | Min | P50 | P90 | P95 | P99 | Max |
 |---:|---:|---:|---:|---:|---:|
-| 2 | 3 | 5 | 5 | 6 | 6 |
+| 2 | 5 | 6 | 6 | 6 | 6 |
 
 #### Right scale factor
 Population n=1000; percentile method=nearest-rank
 
 | Min | P50 | P90 | P95 | P99 | Max |
 |---:|---:|---:|---:|---:|---:|
-| 2 | 4 | 6 | 6 | 6 | 6 |
+| 2 | 5 | 6 | 6 | 6 | 6 |
 
 #### Canonical denominator
 Population n=1000; percentile method=nearest-rank
 
 | Min | P50 | P90 | P95 | P99 | Max |
 |---:|---:|---:|---:|---:|---:|
-| 6 | 12 | 30 | 30 | 30 | 30 |
+| 6 | 15 | 30 | 30 | 30 | 30 |
 
 #### Result form
 Population n=1000
@@ -8372,9 +8372,9 @@ Population n=1000
 
 | ID | Seed |
 |---|---|
-| relatively-prime-addition__crosses-one-whole__5__6__1__5 | plan03-bulk-v1:relatively-prime-addition:crosses-one-whole#0 |
-| relatively-prime-addition__crosses-one-whole__1__2__2__3 | plan03-bulk-v1:relatively-prime-addition:crosses-one-whole#1 |
-| relatively-prime-addition__crosses-one-whole__2__3__3__4 | plan03-bulk-v1:relatively-prime-addition:crosses-one-whole#2 |
+| relatively-prime-addition__crosses-one-whole__1__2__4__5 | plan03-bulk-v1:relatively-prime-addition:crosses-one-whole#0 |
+| relatively-prime-addition__crosses-one-whole__4__5__3__4 | plan03-bulk-v1:relatively-prime-addition:crosses-one-whole#1 |
+| relatively-prime-addition__crosses-one-whole__2__3__2__5 | plan03-bulk-v1:relatively-prime-addition:crosses-one-whole#2 |
 
 ## relatively-prime-addition (reducible-result, crosses-one-whole)
 
@@ -14548,21 +14548,21 @@ Population n=1000; percentile method=nearest-rank
 
 | Min | P50 | P90 | P95 | P99 | Max |
 |---:|---:|---:|---:|---:|---:|
-| 2 | 3 | 5 | 5 | 6 | 6 |
+| 2 | 5 | 6 | 6 | 6 | 6 |
 
 #### Right scale factor
 Population n=1000; percentile method=nearest-rank
 
 | Min | P50 | P90 | P95 | P99 | Max |
 |---:|---:|---:|---:|---:|---:|
-| 2 | 4 | 6 | 6 | 6 | 6 |
+| 2 | 5 | 6 | 6 | 6 | 6 |
 
 #### Canonical denominator
 Population n=1000; percentile method=nearest-rank
 
 | Min | P50 | P90 | P95 | P99 | Max |
 |---:|---:|---:|---:|---:|---:|
-| 6 | 12 | 30 | 30 | 30 | 30 |
+| 6 | 15 | 30 | 30 | 30 | 30 |
 
 #### Result form
 Population n=1000
@@ -14596,9 +14596,9 @@ Population n=1000
 
 | ID | Seed |
 |---|---|
-| relatively-prime-subtraction__none__2__3__1__2 | plan03-bulk-v1:relatively-prime-subtraction:none#0 |
-| relatively-prime-subtraction__none__1__2__1__3 | plan03-bulk-v1:relatively-prime-subtraction:none#1 |
-| relatively-prime-subtraction__none__1__4__1__5 | plan03-bulk-v1:relatively-prime-subtraction:none#2 |
+| relatively-prime-subtraction__none__5__6__4__5 | plan03-bulk-v1:relatively-prime-subtraction:none#0 |
+| relatively-prime-subtraction__none__3__4__3__5 | plan03-bulk-v1:relatively-prime-subtraction:none#1 |
+| relatively-prime-subtraction__none__2__3__1__5 | plan03-bulk-v1:relatively-prime-subtraction:none#2 |
 
 ## relatively-prime-subtraction (reducible-result)
 

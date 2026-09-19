@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import {
   ContentConfigurationError,
+  deepFreeze,
   generateProblem,
   inspectCandidateSpace,
   STRUCTURAL_SELECTOR_IDS,
@@ -113,5 +114,83 @@ describe('Plan 03 structural selectors and generated contract', () => {
     expect(validation.checks.find((check) => check.id === 'instance-id').valid).toBe(false);
     expect(validation.checks.find((check) => check.id === 'request-profile-version').valid).toBe(false);
     expect(validation.checks.find((check) => check.id === 'result-state-current-form').valid).toBe(false);
+  });
+
+  it('keeps the seven ordinary like-denominator cases broadly comparable', () => {
+    const counts = new Map();
+    for (let index = 0; index < 7000; index += 1) {
+      const instance = generateProblem({
+        selector: 'like-denominator-addition',
+        seed: `repair-01-sweep-${index}`,
+      });
+      counts.set(instance.id, (counts.get(instance.id) ?? 0) + 1);
+    }
+    const values = [...counts.values()].sort((left, right) => left - right);
+    expect(counts.size).toBe(7);
+    expect(values[0]).toBeGreaterThanOrEqual(900);
+    expect(values.at(-1)).toBeLessThanOrEqual(1100);
+  });
+
+  it('rejects deeply frozen forgeries of every remaining consumer-derived field group', () => {
+    const source = generateProblem({
+      selector: 'like-denominator-addition',
+      seed: 'derived-content-boundary',
+    });
+    const mutations = [
+      (instance) => {
+        instance.operands.left.currentForm = { kind: 'fraction', numerator: '99', denominator: '100' };
+      },
+      (instance) => {
+        instance.classification.magnitude.benchmarkRegion = 'exact-zero';
+      },
+      (instance) => {
+        instance.representationFacts.canonicalDenominator = '999';
+      },
+      (instance) => {
+        instance.reviewMetadata.intendedTargetConcept = 'forged-target';
+      },
+    ];
+    for (const mutate of mutations) {
+      const forged = structuredClone(source);
+      mutate(forged);
+      deepFreeze(forged);
+      expect(validateProblemInstance(forged).valid).toBe(false);
+    }
+  });
+
+  it('returns a normal invalid result for missing and malformed provenance', () => {
+    const source = generateProblem({
+      selector: 'like-denominator-addition',
+      seed: 'provenance-boundary',
+    });
+    const missing = structuredClone(source);
+    delete missing.provenance;
+    deepFreeze(missing);
+    expect(() => validateProblemInstance(missing)).not.toThrow();
+    expect(validateProblemInstance(missing).valid).toBe(false);
+
+    const malformed = structuredClone(source);
+    malformed.provenance = {
+      kind: 'curated',
+      fixtureId: 'forged-fixture',
+      authoringRevision: 'forged-revision',
+      selectedCandidateIndex: '0',
+    };
+    deepFreeze(malformed);
+    expect(() => validateProblemInstance(malformed)).not.toThrow();
+    expect(validateProblemInstance(malformed).valid).toBe(false);
+  });
+
+  it('rejects generated provenance whose seed no longer replays its selected eligible ordinal', () => {
+    const source = generateProblem({
+      selector: 'like-denominator-addition',
+      seed: 'seed-a',
+    });
+    const forged = structuredClone(source);
+    forged.provenance.seed = 'seed-b-replay-mismatch';
+    deepFreeze(forged);
+    const validation = validateProblemInstance(forged);
+    expect(validation.valid).toBe(false);
+    expect(validation.checks.find((check) => check.id === 'generated-provenance:seed-replays-selection').valid).toBe(false);
   });
 });

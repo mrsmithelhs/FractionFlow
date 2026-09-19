@@ -227,6 +227,8 @@ function inspectRequest(request) {
   const inspected = deepFreeze({
     rawCardinality: rawCandidates.length,
     eligibleCardinality: eligibleIndices.length,
+    eligibleIndices,
+    eligibleCandidates: eligibleIndices.map((index) => rawCandidates[index]),
     rejectionCounts,
     evaluations,
   });
@@ -420,6 +422,8 @@ export function inspectCandidateSpace({ selector, overlays = [], profileId = 'ph
     profileVersion: request.profile.version,
     rawCardinality: inspected.rawCardinality,
     eligibleCardinality: inspected.eligibleCardinality,
+    eligibleIndices: inspected.eligibleIndices,
+    eligibleCandidates: inspected.eligibleCandidates,
     rejectionCounts: inspected.rejectionCounts,
   });
 }
@@ -462,29 +466,9 @@ export function generateProblem({
     seed,
   });
   const rng = createSeededRng(seedKey);
-  const startingIndex = rng.nextIndex(inspected.evaluations.length);
-  const rejectionCounts = {};
-  let selected = null;
-  let selectedIndex = null;
-  let attempts = 0;
-  for (let offset = 0; offset < inspected.evaluations.length && attempts < request.profile.maxAttempts; offset += 1) {
-    const index = (startingIndex + offset) % inspected.evaluations.length;
-    const evaluation = inspected.evaluations[index];
-    attempts += 1;
-    if (evaluation.accepted) {
-      selected = evaluation;
-      selectedIndex = index;
-      break;
-    }
-    countReasons(rejectionCounts, evaluation.reasons);
-  }
-  if (!selected) {
-    throw new ContentGenerationError(
-      'ATTEMPT_LIMIT_EXCEEDED',
-      `candidate search exceeded ${request.profile.maxAttempts} attempts`,
-      { selector, overlays: request.overlays, startingIndex, attempts, rejectionCounts },
-    );
-  }
+  const selectedEligibleOrdinal = rng.nextIndex(inspected.eligibleIndices.length);
+  const selectedIndex = inspected.eligibleIndices[selectedEligibleOrdinal];
+  const selected = inspected.evaluations[selectedIndex];
 
   return makeProblem({
     request,
@@ -496,13 +480,15 @@ export function generateProblem({
       profileVersion: request.profile.version,
       seed,
       seedAlgorithm: SEED_ALGORITHM,
-      acceptedCandidateIndex: selectedIndex.toString(),
-      attempts: attempts.toString(),
+      selectedCandidateIndex: selectedIndex.toString(),
+      selection: {
+        strategy: 'uniform-eligible-index',
+        eligibleOrdinal: selectedEligibleOrdinal.toString(),
+      },
       candidateSpace: {
         rawCardinality: inspected.rawCardinality.toString(),
         eligibleCardinality: inspected.eligibleCardinality.toString(),
       },
-      rejectionCounts,
     },
   });
 }

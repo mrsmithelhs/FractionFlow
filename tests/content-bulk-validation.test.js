@@ -34,6 +34,10 @@ describe('Plan 03 bulk validation reporting', () => {
         n: selector.sampledAcceptedDraws,
         percentileMethod: 'nearest-rank',
       });
+      expect(selector.contractFailureCount).toBe(0);
+      for (const check of Object.values(selector.contractChecks)) {
+        expect(check.failed ?? 0).toBe(0);
+      }
     }
     const markdown = renderBulkValidationMarkdown(report);
     expect(markdown).toContain('Unique mathematical instances');

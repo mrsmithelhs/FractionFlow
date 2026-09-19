@@ -70,18 +70,21 @@ describe('Plan 03 deterministic seed utility', () => {
       alternatePaths: parent.alternatePaths,
       provenance: parent.provenance,
     }));
-    expect(child.id).toBe('like-denominator-addition__none__1__3__1__3');
+    expect(child.id).toBe('like-denominator-addition__none__2__5__2__5');
     expect(child.resultState).toEqual({
-      exactResult: { kind: 'fraction', numerator: '2', denominator: '3' },
-      canonicalRawResultForm: { kind: 'fraction', numerator: '2', denominator: '3' },
-      currentForm: { kind: 'fraction', numerator: '2', denominator: '3' },
-      preferredFinalForm: { kind: 'fraction', numerator: '2', denominator: '3' },
+      exactResult: { kind: 'fraction', numerator: '4', denominator: '5' },
+      canonicalRawResultForm: { kind: 'fraction', numerator: '4', denominator: '5' },
+      currentForm: { kind: 'fraction', numerator: '4', denominator: '5' },
+      preferredFinalForm: { kind: 'fraction', numerator: '4', denominator: '5' },
     });
     expect(child.provenance).toMatchObject({
       kind: 'generated',
       seed: 'fixed-seed-001',
-      acceptedCandidateIndex: '14',
-      attempts: '117',
+      selectedCandidateIndex: '64',
+      selection: {
+        strategy: 'uniform-eligible-index',
+        eligibleOrdinal: '5',
+      },
     });
   });
 });
