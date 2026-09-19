@@ -72,7 +72,7 @@ participation floor cannot be evidenced against an unnamed set of environments.
 **Resolved 2026-09-19 (DECISION-009, DECISION-010).** Supported-environment matrix selected: modern evergreen
 browsers (Chrome, Safari, Firefox, Edge across desktop, ChromeOS, iOS, Android), responsive viewports
 360px–1440px with reflow to 320px, touch (no precision drag), pointer, keyboard, reduced-motion
-instant transitions, WCAG 2.2 AA conformance (including 2.5.7 Dragging Movements and 2.5.8 Target Size Minimum
+instant transitions, built against WCAG 2.2 AA (including 2.5.7 Dragging Movements and 2.5.8 Target Size Minimum
 per DECISION-010), contrast (4.5:1 text, 3:1 graphical), and 200% zoom. Explicit exclusions named (legacy
 browsers, offline PWA, custom audio, native shells).
 

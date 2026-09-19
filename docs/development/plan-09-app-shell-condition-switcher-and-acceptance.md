@@ -1,8 +1,8 @@
 ---
-id: plan-08
+id: plan-09
 title: App Shell, Condition Switcher, and Phase 2 Acceptance
 status: draft
-depends_on: [plan-07]
+depends_on: [plan-08]
 gate: "Owner gate. The deployed public exercise, the accessibility evidence, and the aesthetic rubric are presented for owner/teacher review. Only the owner declares the Phase 2 exit gate satisfied; the implementer may not, and neither may the orchestrator alone."
 superseded_by: null
 resolution: null
@@ -15,11 +15,11 @@ summary: >-
   slice against the Phase 2 exit gate for owner review.
 ---
 
-# Plan 08: App Shell, Condition Switcher, and Phase 2 Acceptance
+# Plan 09: App Shell, Condition Switcher, and Phase 2 Acceptance
 
 ## Packet Metadata
 
-- Packet id: `plan-08`
+- Packet id: `plan-09`
 - Packet title: App Shell, Condition Switcher, and Phase 2 Acceptance
 - Status: (see frontmatter)
 - Owner/model: implementer (single) / orchestration
@@ -27,7 +27,7 @@ summary: >-
 - Packet type: feature
 - Mutation level: user-facing release
 - Approval gate: owner review of the deployed slice against the Phase 2 exit gate
-- Depends on: `plan-07` (renderers, strings, participation floor)
+- Depends on: `plan-08` (participation floor and cross-path accessibility)
 - Expected artifacts: `src/app/` modules, condition switcher, deployed public exercise evidence, Phase 2 acceptance evidence packet, progress report
 
 ## Goal
@@ -48,7 +48,7 @@ public URL, with its evidence organized against the exit gate rather than assert
 
 ## Depends on
 
-`plan-07` delivered and reviewed. This packet composes; it does not build renderers.
+`plan-08` delivered and reviewed. This packet composes; it does not build renderers.
 
 ## Why this packet exists
 
@@ -174,7 +174,7 @@ Constraints:
 - [ ] No conformance claim anywhere in code, copy, or report.
 - [ ] `npm test`, `npm run build`, `node scripts/dev/plan-status.js lint` pass; tree clean.
 - [ ] Progress report exists at
-      `reports/development/plan-08-app-shell-condition-switcher-and-acceptance/progress.md`.
+      `reports/development/plan-09-app-shell-condition-switcher-and-acceptance/progress.md`.
 - [ ] No unrelated files were changed.
 
 ## Stop Conditions
@@ -193,6 +193,11 @@ Stop and report if:
 - **The implementer may not declare the Phase 2 exit gate satisfied, the slice accepted, or the product
   ready.** The gate is the owner's, informed by orchestrator verification. "Ready for orchestrator
   review: yes/no" is the bounded handoff statement.
+- **Closeout is explicit.** The implementer stops at "ready for orchestrator review." The orchestrator
+  may verify the evidence and set this packet `delivered`. The packet may become `complete`, and the
+  Phase 2 exit gate may be declared satisfied, **only after a dated owner disposition naming the
+  reviewed acceptance-evidence artifact, the deployed revision, and the public URL.** This closes the
+  gap between "the packet work appears finished" and "the owner has accepted the exit gate."
 - Evidence maps to criteria. A green build and a working demo are evidence, not acceptance.
 
 ## Advisor Consultation
@@ -207,7 +212,7 @@ declaration would be non-compliant. Record a full disposition or a named degrade
 
 ## Progress Report
 
-`reports/development/plan-08-app-shell-condition-switcher-and-acceptance/progress.md`
+`reports/development/plan-09-app-shell-condition-switcher-and-acceptance/progress.md`
 
 Minimum contents: summary; composition map; switcher behavior and its boundaries; deploy record with
 owner authorization reference; what was exercised at the public URL and what was not; acceptance

@@ -3,7 +3,7 @@ id: plan-05
 title: Instructional Engine and Episode State
 status: draft
 depends_on: [plan-04]
-gate: "Mechanism confirmation before implementation: the implementer proposes the episode-state shape, beat transition model, response-classification delegation, and provenance record, and stops for orchestrator approval. No DOM, no rendering, no strings."
+gate: "Mechanism confirmation before implementation: the implementer proposes the episode-state shape, beat transition model, response-classification delegation, provenance record, and the eligibility evaluator's inputs and outputs, and stops for orchestrator approval. No DOM, no rendering, no strings."
 superseded_by: null
 resolution: null
 summary: >-
@@ -11,8 +11,11 @@ summary: >-
   state machine for encounter through resolve, support configuration, response
   classification delegating all mathematical truth to src/math and src/content,
   response provenance, local error recovery, layered help, and the replay
-  envelope. Pure logic with zero DOM and zero presentation dependencies, proven
-  by headless tests before any renderer exists.
+  envelope. Also closes the one missing prerequisite: the deterministic
+  representation-eligibility evaluator in src/content/, which episode
+  instantiation requires and which Plan 03 left as the literal string
+  'deferred'. Pure logic with zero DOM, proven by headless tests before any
+  renderer exists.
 ---
 
 # Plan 05: Instructional Engine and Episode State
@@ -25,10 +28,10 @@ summary: >-
 - Owner/model: implementer (single) / orchestration
 - Date: 2026-09-19
 - Packet type: feature
-- Mutation level: source (new `src/interaction/`; tests; one small docs cleanup)
+- Mutation level: source (new `src/interaction/`; the eligibility evaluator in `src/content/`; tests; one small docs cleanup)
 - Approval gate: mechanism confirmation before implementation, then orchestrator review of the delivered engine
 - Depends on: `plan-04` (episode definition, scene-model position, evidence plan), and the delivered `src/math/` and `src/content/` contracts from `plan-02` and `plan-03`
-- Expected artifacts: `src/interaction/` modules, tests under `tests/`, the register cleanup named in Requirement 5, progress report
+- Expected artifacts: `src/interaction/` modules, the `src/content/` eligibility evaluator, tests under `tests/`, the register cleanup named in Requirement 5, progress report
 
 ## Goal
 
@@ -48,12 +51,14 @@ looks.
   the words. See `docs/presentation-posture.md` Part 2.
 - **No Scene Model.** The semantic projection is `plan-06`. This packet must not grow a scene shape,
   even a provisional one.
-- **No capability eligibility check.** `checkBarEligibility` and the DECISION-011 ceilings belong to
-  `plan-06`. This packet consumes an eligibility verdict as an input it does not compute.
+- **No Scene Model-side capability logic.** This packet supplies the deterministic eligibility
+  evaluator in `src/content/` (Requirement 6) because episode instantiation requires it. Everything
+  scene-side — projection, staleness, the six scene obligations — remains `plan-06`.
 - No persistence, no storage, no session or progress state beyond one episode in memory
   (DECISION-019 keeps Phase 2 free of browser-stored state).
-- No changes to `src/math/` or `src/content/`. If either lacks something the engine needs, stop and
-  report rather than extending a delivered contract.
+- No changes to `src/math/`, and no change to `src/content/` beyond the eligibility evaluator. If
+  either lacks something else the engine needs, stop and report rather than extending a delivered
+  contract.
 
 ## Depends on
 
@@ -110,14 +115,17 @@ Contracts this packet must preserve:
 
 - `src/interaction/` — new module: episode state, beat transitions, support configuration, response
   handling, classification delegation, help and retry state, provenance records, replay envelope.
+- `src/content/` — the deterministic representation-eligibility evaluator only (Requirement 6). This
+  is the packet's one cross-layer file ownership, and it is deliberate.
 - `tests/` — headless tests for the above.
 - One docs cleanup: `docs/development/phase-2-first-slice-design/prototype-variable-register.md`
   (Requirement 5).
 
 ### Out of scope
 
-- Everything in Non-goals, plus any change to `src/math/`, `src/content/`, `package.json`, the build,
-  the deployment workflow, packet files, or packet statuses.
+- Everything in Non-goals, plus any change to `src/math/`, any change to `src/content/` beyond the
+  eligibility evaluator, `package.json`, the build, the deployment workflow, packet files, or packet
+  statuses.
 
 ## Implementation Requirements
 
@@ -130,7 +138,7 @@ Required behavior:
 - At every point the engine can state: the active beat, the expected response, the active support
   configuration, and what the learner has established so far.
 - Completed beats are retained as inspectable context (DECISION-014 item 2). The engine exposes
-  *that* they are complete and *what* they established; how much of that is displayed is `plan-07`'s
+  *that* they are complete and *what* they established; how much of that is displayed is `plan-08`'s
   decision under DECISION-021 criterion 1 and OQ-18.
 
 Constraints:
@@ -201,6 +209,31 @@ Constraints:
 
 - Do not otherwise edit the `plan-04` dossier.
 
+### Requirement 6 — Representation-eligibility evaluator
+
+Required behavior:
+
+- Replace Plan 03's literal `'deferred'` eligibility values for the Phase 2 family with a
+  deterministic evaluator in `src/content/`, applying the DECISION-011 ceilings of LCD ≤ 30 and
+  single-operand scale factor ≤ 12.
+- The evaluator runs on the canonical path *and* on any alternate or learner-proposed common
+  denominator, since a path can be ineligible while its instance is eligible.
+- **Episode construction rejects a missing or `'deferred'` verdict.** An episode may not be
+  instantiated from an unresolved eligibility state.
+- An ineligible instance or path yields `valid-but-outside-representation-capability`, distinct from
+  `valid-but-outside-authored-coverage`.
+- Tests cover three cases: an eligible canonical/LCD path, an eligible alternate path, and a
+  mathematically valid but representation-ineligible path.
+
+Constraints:
+
+- The ceilings bound *rendering eligibility*, never *validity*. A denominator above the ceiling stays
+  mathematically valid and still classifies as `valid-least` or `valid-non-least`.
+- This requirement exists here, rather than in `plan-06`, because OQ-02's accepted resolution places
+  eligibility **before episode instantiation**. Leaving it downstream would have had this packet
+  instantiate episodes against a stub — the failure mode the wave's ordering exists to prevent.
+- Report the current eligibility sweep figures for both profiles rather than assuming earlier ones.
+
 ## Validation Checklist
 
 - [ ] Mechanism confirmation was reported and approved before implementation began.
@@ -213,6 +246,11 @@ Constraints:
 - [ ] A supported response and an uncued response are distinguishable in the provenance record.
 - [ ] Replay reconstructs an episode from the envelope alone.
 - [ ] Requirement 5 cleanup applied; no other dossier edits.
+- [ ] No `'deferred'` eligibility values remain for the Phase 2 family.
+- [ ] Episode construction rejects a missing or `'deferred'` verdict.
+- [ ] Eligible canonical, eligible alternate, and ineligible-but-valid cases all tested.
+- [ ] A denominator above the ceiling is still mathematically valid and refused only for rendering.
+- [ ] Current eligibility sweep figures reported for both profiles.
 - [ ] `npm test` passes; `node scripts/dev/plan-status.js lint` passes; working tree clean.
 - [ ] Progress report exists at
       `reports/development/plan-05-instructional-engine-and-episode-state/progress.md`.
@@ -223,7 +261,9 @@ Constraints:
 Stop and report if:
 
 - The episode definition requires a fact that `src/math/` or `src/content/` does not expose. Report
-  the gap; do not extend a delivered contract.
+  the gap; do not extend a delivered contract beyond the eligibility evaluator.
+- The eligibility ceilings exclude the canonical fixture or its supported alternate path. They should
+  not — report immediately if they do.
 - Implementing a beat appears to require deciding a presentational question. That is `plan-06` or
   `plan-07` work.
 - A founding document and a decision-log entry conflict.

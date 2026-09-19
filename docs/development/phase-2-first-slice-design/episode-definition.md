@@ -1,5 +1,22 @@
 # Episode Definition Draft: Unlike-Denominator Proper-Fraction Addition
 
+> **Status note added 2026-09-19.** Plan 04 is owner-accepted and complete, and the specification
+> phase closed with DECISION-024. This file remains the *historical design proposal*. For Phase 2 its
+> episode responsibilities and state-boundary decisions are binding **only as constrained by** later
+> accepted decisions, the Phase 2 reconciliation, and the active implementation packet. Where they
+> conflict, the later decision and the packet govern.
+>
+> Foreground the later decisions rather than reading this file alone: **DECISION-012** and
+> **DECISION-026** replace the connection-making check with a matching task carrying distractors whose
+> expected answer is not always the reassuring one; **DECISION-025** makes fraction-bar segments
+> non-interactive; **DECISION-019** removes any learner preference surface from Phase 2; **DECISION-011**
+> sets the eligibility ceilings; and **DECISION-005** makes the prototype-variable register a
+> disqualification instrument rather than a selection one. See
+> `reports/orchestration/phase-2-specification-reconciliation.md`.
+>
+> The phrase "not an implementation contract yet" below refers to the state of this file when it was
+> written, before owner acceptance. It is not an instruction to stop.
+
 ## Draft identity and review boundary
 
 - **Proposed episode type:** `phase-2-unlike-proper-addition`

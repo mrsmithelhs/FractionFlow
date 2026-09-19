@@ -1,41 +1,41 @@
 ---
 id: plan-06
-title: Scene Model Projection and Capability Eligibility
+title: Scene Model Projection
 status: draft
 depends_on: [plan-05]
-gate: "Mechanism confirmation before implementation: the implementer proposes the scene projection shape, the staleness/derivation rule, and the eligibility verdict's inputs and outputs, and stops for orchestrator approval. Still no DOM and no renderer."
+gate: "Mechanism confirmation before implementation: the implementer proposes the scene projection shape and the staleness/derivation rule, and stops for orchestrator approval. Still no DOM and no renderer."
 superseded_by: null
 resolution: null
 summary: >-
   Implement the D-20 Scene Model as a pure semantic projection of validated
-  mathematical state, instructional state, and active representation, and
-  implement the representation-eligibility verdict that Plan 03 left deferred,
-  with the DECISION-011 ceilings. Proves that identical inputs yield identical
-  scene meaning, that nothing downstream computes mathematics, and that
-  unsupported instances fail closed before any renderer sees them.
+  mathematical state, instructional state, and active representation. Proves
+  that identical inputs yield identical scene meaning, that nothing downstream
+  computes mathematics, that a reduced-motion transition reaches the same
+  post-state, and that an ineligible capability input fails closed before any
+  renderer sees it.
 ---
 
-# Plan 06: Scene Model Projection and Capability Eligibility
+# Plan 06: Scene Model Projection
 
 ## Packet Metadata
 
 - Packet id: `plan-06`
-- Packet title: Scene Model Projection and Capability Eligibility
+- Packet title: Scene Model Projection
 - Status: (see frontmatter)
 - Owner/model: implementer (single) / orchestration
 - Date: 2026-09-19
 - Packet type: feature
-- Mutation level: source (scene projection module; eligibility in `src/content/`; tests)
+- Mutation level: source (scene projection module; tests)
 - Approval gate: mechanism confirmation before implementation, then orchestrator review
 - Depends on: `plan-05` (instructional state must exist to project from)
-- Expected artifacts: scene projection module, eligibility verdict, tests, progress report
+- Expected artifacts: scene projection module, tests, progress report
 
 ## Goal
 
 Turn the `plan-04` scene-model position from a written architectural stance into working code, and
-close the one gap `plan-03` left open: every `representationFacts.eligibility` verdict it produces is
-the literal string `'deferred'`, so no capability check exists to run. This packet supplies the
-projection and the verdict, and proves both behave as the architecture claims.
+prove it behaves as the architecture claims: identical inputs yield identical meaning, nothing
+downstream computes mathematics, and an ineligible capability input fails closed before a renderer
+ever sees it.
 
 ## Non-goals
 
@@ -46,6 +46,8 @@ projection and the verdict, and proves both behave as the architecture claims.
 - No layout, coordinates, colors, typography, timing, or animation frames. The scene-model position
   is explicit that these are renderer concerns and must not become scene authority.
 - No new problem families, selectors, overlays, or profile changes.
+- **No eligibility evaluator.** `plan-05` supplies it, because OQ-02 places eligibility before
+  episode instantiation. This packet *consumes* a real verdict and enforces fail-closed behavior on it.
 
 ## Depends on
 
@@ -61,9 +63,11 @@ claim becomes falsifiable: if two renderers can be given the same inputs and dis
 can drift from its sources, the architecture is wrong and it is far cheaper to learn that now than
 after two renderers exist.
 
-The eligibility verdict is here rather than in `plan-05` because it is a *representation* question —
-can this instance be shown as a fraction bar at all — and because the DECISION-011 ceilings bound the
-scene, not the instruction.
+Eligibility itself is *not* here. An earlier draft of this wave placed it in this packet, which would
+have had `plan-05` instantiate episodes against an unresolved verdict — a stub dependency, and exactly
+the failure the wave's ordering exists to prevent. OQ-02's accepted resolution places eligibility
+before episode instantiation, so `plan-05` owns the evaluator and this packet enforces fail-closed
+behavior on its output.
 
 ## Authority and contracts
 
@@ -97,9 +101,7 @@ Contracts this packet must preserve:
 
 - The scene projection module (location proposed at mechanism confirmation; it is instructional-side
   output, not a renderer, so it does not belong in `src/render/`).
-- The representation-eligibility verdict in `src/content/`, replacing the `'deferred'` placeholders,
-  applying the DECISION-011 ceilings of LCD ≤ 30 and single-operand scale factor ≤ 12.
-- Tests for both.
+- Tests for the projection and its fail-closed behavior.
 
 ### Out of scope
 
@@ -125,25 +127,21 @@ Constraints:
   instructional state (scene-model position, rejected alternative "Scene Model as a learner-history
   database").
 
-### Requirement 2 — Eligibility verdict
+### Requirement 2 — Fail closed on capability
 
 Required behavior:
 
-- A deterministic check in `src/content/` replaces the `'deferred'` eligibility values with a real
-  verdict, applying LCD ≤ 30 and single-operand scale factor ≤ 12 per DECISION-011.
-- The verdict is computed for the canonical path *and* for any alternate or learner-proposed common
-  denominator, since a path can be ineligible while its instance is eligible.
-- An ineligible instance or path yields `valid-but-outside-representation-capability` and a reviewed
-  continuation, distinct from `valid-but-outside-authored-coverage`.
+- The projection consumes the `plan-05` eligibility verdict and refuses to produce a renderable scene
+  for an ineligible instance or path, yielding `valid-but-outside-representation-capability` and a
+  reviewed continuation — distinct from `valid-but-outside-authored-coverage`.
+- Refusal happens before any consumer receives a scene, not as a renderer-side check.
 
 Constraints:
 
-- The ceilings bound *rendering*, never *validity*. A denominator above the ceiling remains
-  mathematically valid and must still classify as `valid-least` or `valid-non-least`.
-- Known and expected: under these ceilings only some eligible denominator pairs retain an eligible
-  non-LCD alternate path — four of six under `phase1-dev-default` and four of eleven under
-  `curated-review` at the time of the reconciliation sweep. This is accepted, not a defect. Re-run the
-  sweep and report the current figures rather than assuming these.
+- The projection never recomputes eligibility and never softens a verdict.
+- Known and expected: under the DECISION-011 ceilings only some eligible denominator pairs retain an
+  eligible non-LCD alternate path — four of six under `phase1-dev-default` and four of eleven under
+  `curated-review` at the time of the reconciliation sweep. This is accepted, not a defect.
 
 ### Requirement 3 — The six obligations
 
@@ -180,14 +178,13 @@ Constraints:
 - [ ] Mechanism confirmation reported and approved before implementation.
 - [ ] No DOM, renderer, or browser API anywhere in this packet's source.
 - [ ] Same inputs → same scene, proven by test.
-- [ ] No `'deferred'` eligibility values remain for the Phase 2 family; verdicts are real.
-- [ ] A denominator above the ceiling is still mathematically valid and is refused only for rendering.
+- [ ] An ineligible instance or path is refused before any consumer receives a scene.
+- [ ] The projection neither recomputes nor softens an eligibility verdict.
 - [ ] All six scene-model obligations have tests.
 - [ ] Each registered condition can be represented; none is structural.
-- [ ] Current eligibility sweep figures reported for both profiles.
 - [ ] `npm test`, `node scripts/dev/plan-status.js lint` pass; working tree clean.
 - [ ] Progress report exists at
-      `reports/development/plan-06-scene-model-and-capability-eligibility/progress.md`.
+      `reports/development/plan-06-scene-model-projection/progress.md`.
 - [ ] No unrelated files were changed.
 
 ## Stop Conditions
@@ -196,8 +193,8 @@ Stop and report if:
 
 - The projection cannot be computed without storing something that looks like source state. That is
   the `D-20` failure mode and it needs orchestrator review, not a workaround.
-- The eligibility ceilings exclude the canonical fixture or its supported alternate path. They should
-  not — report immediately if they do.
+- The `plan-05` eligibility verdict is missing, unresolved, or shaped so the projection cannot act on
+  it. Report rather than working around it.
 - A scene field can only be expressed as a coordinate, dimension, or frame.
 
 ## Implementer Authority Boundaries
@@ -217,9 +214,9 @@ non-compliant. Record a full disposition or a named degraded mode.
 
 ## Progress Report
 
-`reports/development/plan-06-scene-model-and-capability-eligibility/progress.md`
+`reports/development/plan-06-scene-model-projection/progress.md`
 
 Minimum contents: summary; mechanism proposal and approval reference; projection shape and where a
-snapshot may exist and why it cannot drift; eligibility verdict and current sweep figures;
+snapshot may exist and why it cannot drift; fail-closed behavior;
 requirement-by-requirement evidence; commands; validation; problems; remaining risks; advisor
 disposition; ready for orchestrator review yes/no.

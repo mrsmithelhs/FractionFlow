@@ -2,6 +2,12 @@
 
 ## Review status
 
+> **Status note added 2026-09-19.** Plan 04 is owner-accepted and complete; the owner approval gate
+> referenced below is satisfied. This dossier is the historical design proposal and remains binding for
+> Phase 2 only as constrained by later accepted decisions, the Phase 2 reconciliation, and the active
+> implementation packet. In a conflict, the later decision and packet govern. See
+> `docs/decision-log.md` and `reports/orchestration/phase-2-specification-reconciliation.md`.
+
 This is a design proposal for owner and orchestrator review under `plan-04`. It is
 not an implementation, an acceptance record, a WCAG conformance claim, or a
 decision that closes any deferred prototype variable. The packet remains subject
