@@ -1,7 +1,7 @@
 ---
 id: plan-05
 title: Instructional Engine and Episode State
-status: in-progress
+status: delivered
 depends_on: [plan-04]
 gate: "Mechanism confirmation before implementation: the implementer proposes the episode-state shape, beat transition model, response-classification delegation, provenance record, and the eligibility evaluator's inputs and outputs, and stops for orchestrator approval. No DOM, no rendering, no strings."
 summary: >-
