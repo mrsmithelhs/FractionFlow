@@ -241,8 +241,9 @@ rule for anything learner-facing.
 
 ## Related open questions
 
-- **OQ-10** — the reading-level target above resolves the target half. What remains open is who
-  authors and reviews learner-facing strings in practice, and at what point in a packet.
+- **OQ-10** — fully resolved: target set by DECISION-004 (grade 2–3); authoring and review workflow
+  set by DECISION-017 (implementer authors in centralized table `src/content/strings.js`,
+  orchestrator/owner reviews and gates during packet verification).
 - **OQ-06** — the §25 aesthetic-coherence criterion still has no review mechanism; the two review
   questions in this document are the best candidates the project currently has.
 

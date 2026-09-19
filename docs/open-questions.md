@@ -248,9 +248,13 @@ The open question is what it implies for the product: whether the primary learne
 learner or the conceptually-repairing learner determines what Phase 3 builds first, and `D-08`
 (first-run placement) and `D-09` (backward routing to prerequisites) are both downstream of it.
 
-**Needs:** an owner statement of the primary learner for the product as a whole — distinct from
-the Phase 2 slice's deliberately narrow prerequisite boundary — so `D-08` and `D-09` can be
-sequenced against something.
+**Resolved 2026-09-19 (DECISION-016).** The primary learner for the product as a whole is the
+conceptually-repairing upper-elementary learner (grades 4–6) who has encountered fractions in school
+but lacks conceptual understanding or struggles with operations. The platform functions as an intervention
+and visual sense-making environment; first-run placement (`D-08`) and backward routing (`D-09`) orient
+around targeted visual repair of prerequisites.
+
+**Source:** `docs/founding/01-instructional-model.md`; DECISION-016.
 
 ### OQ-10 — Who authors and reviews learner-facing strings, and when?
 
@@ -266,9 +270,11 @@ the episode teaches exempt, enforced by working rules and human review rather th
 formula. See `docs/presentation-posture.md` Part 2. `docs/presentation-posture.md` Part 2 also rules
 that specification vocabulary is never learner-facing vocabulary.
 
-**Needs:** the remaining half — who authors learner-facing strings, who reviews them against the
-target and the register rules, and at what point in a packet that happens. A target nobody is
-assigned to apply is not yet a control.
+**Workflow resolved 2026-09-19 (DECISION-017):** Implementers author all learner-facing strings in a
+centralized table (`src/content/strings.js`) against the DECISION-004 working rules; orchestrators and
+owners review and gate them during packet verification before acceptance.
+
+**Source:** `docs/presentation-posture.md` Part 2; DECISION-004; DECISION-017.
 
 ### OQ-11 — What is the stopping rule for specification?
 
@@ -280,8 +286,13 @@ documents are the product's spine rather than overhead. But every one of those 4
 an assumption about a learner nobody has observed, and the ratio is the project's main standing
 risk.
 
-**Needs:** an owner position on what triggers the shift from specifying to building — most usefully
-expressed as a rule about what Phase 2 is allowed to leave unspecified, rather than a target ratio.
+**Resolved 2026-09-19 (DECISION-018).** The specification phase stops immediately after Batch D
+(exit-gate criteria). Phase 2 specifies only state contracts, transition rules, scene projections,
+and accessibility invariants; layout coordinates, visual styling, and animation tuning are left
+to implementation discovery. All post-slice features (session dose `D-07`, multi-episode progression,
+placement `D-08`, backward routing `D-09`, shared identity `D-10`, portable tokens `D-11`) remain deferred.
+
+**Source:** DECISION-018.
 
 ---
 

@@ -340,6 +340,72 @@ preferences while strictly guarding the learner-facing register against academic
 conditions and preferences in one entry-page menu with internal section/register separation;
 `docs/presentation-posture.md` Part 2.
 
+### DECISION-016 - Primary learner profile: conceptually-repairing upper-elementary learner
+
+**Date:** 2026-09-19
+
+**Decision:** The primary learner for FractionFlow as a whole is an upper-elementary learner (grades 4–6)
+who has encountered fractions and addition/subtraction in school, but lacks conceptual grounding, relies
+on fragile rote procedures, or holds persistent misconceptions (such as adding numerators and denominators
+across). The product is an intervention and sense-making environment rather than an introductory first-exposure
+curriculum.
+
+Consequently, first-run placement (`D-08`) and backward routing (`D-09`) are oriented around diagnostic entry
+and targeted visual repair: when a learner struggles with unlike addition, the system routes backward to
+prerequisite equivalence or unit-partitioning episodes as repair interventions, rather than forcing a linear
+progression from unit fractions.
+
+**Rationale:** The project's founding mission is practicing fraction addition and subtraction calmly and
+effectively. Novice learners approaching fractions for the first time require extensive physical manipulatives
+and introductory sharing contexts; upper-elementary learners struggling with operations need visual models
+to understand *why* common denominators are required and *how* equivalent renaming preserves quantity.
+Scoping to the conceptually-repairing learner provides a stable anchor for curriculum sequencing in Phase 3
+and beyond.
+
+**Supersedes / related:** Resolves OQ-09; guides future resolution of `D-08` and `D-09`;
+`docs/founding/01-instructional-model.md`.
+
+### DECISION-017 - Learner string authoring and review workflow
+
+**Date:** 2026-09-19
+
+**Decision:** The authoring and verification lifecycle for learner-facing text is assigned as follows:
+1. **Centralized table:** All learner-facing strings (prompts, guidance, status announcements, accessible
+   descriptions, button labels, error recovery messages) must be authored in a centralized content table
+   (e.g. `src/content/strings.js` or an episode string catalog), not scattered inline in renderer components.
+2. **Implementer authoring:** The implementer drafts all episode strings in this table against the working
+   rules in DECISION-004 and Presentation Posture Part 2 (grade 2–3 reading level, ~12 words per prompt,
+   active voice, concrete words, no specification vocabulary).
+3. **Review gate:** Reviewing strings against the working rules and child-comprehension review questions is
+   a mandatory, blocking gate in the implementer's progress report and orchestrator review before packet
+   acceptance.
+
+**Rationale:** Resolves the operational half of OQ-10. Establishing a concrete authoring location and gating
+step ensures that DECISION-004 is enforced as an active control rather than an aspirational policy, preventing
+adult specification terminology from leaking into the interface.
+
+**Supersedes / related:** Resolves remaining half of OQ-10; complements DECISION-004;
+`docs/presentation-posture.md` Part 2.
+
+### DECISION-018 - Specification stopping rule and transition to implementation
+
+**Date:** 2026-09-19
+
+**Decision:** The project transitions from design-and-specification to implementation immediately upon
+completion of Batch D (resolving Phase 2 exit-gate criteria). The Phase 2 implementation packet specifies
+only mathematical state contracts, instructional state machines, scene projections, and accessibility
+invariants; it leaves concrete visual tuning, layout coordinates, CSS styling, and animation durations to
+be discovered and refined in running code. All post-slice features (session dose `D-07`, multi-episode
+progression, placement `D-08`, backward routing `D-09`, shared-device identity `D-10`, portable tokens `D-11`)
+remain strictly deferred.
+
+**Rationale:** Resolves OQ-11. With ~3,700 lines of source code and ~45,800 lines of documentation, further
+prose specification risks designing speculative abstractions that cannot be validated without running software.
+Drawing a hard boundary at Batch D allows the project to produce its first working vertical slice and test
+its architectural pipeline against reality.
+
+**Supersedes / related:** Resolves OQ-11; gates Phase 2 implementation packet creation.
+
 ## Proposed but not yet accepted
 
 Use the same `**Date:** YYYY-MM-DD` field for proposals, using the proposal date.
