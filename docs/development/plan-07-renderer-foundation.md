@@ -130,6 +130,35 @@ Constraints:
 - Designing for two paths and assuming the third will fit is the specific failure this gate exists to
   prevent. If the linear path's needs cannot be stated yet, stop and report rather than proceeding.
 
+**The mechanism proposal must answer this specific question, added 2026-09-19 after an orchestrator
+read of the delivered Plan 06 code.** `REPRESENTATION_ROLES` in `src/interaction/scene.js` is
+`['fraction-bar', 'symbolic', 'number-line']`. There is no role for the accessible linear path, and
+`number-line` — which the episode definition excludes from this slice — does have one. Plan 06 chose
+this deliberately rather than by oversight: its mechanism review and progress report record carrying
+"enough structured meaning for the later linear path" and testing a semantic-linear-alternative
+contract. So the implicit architecture is that the linear path is a **renderer over the same scene**,
+not a distinct representation role.
+
+That choice is defensible and may well be right, but it exists only in Plan 06's test names and report
+prose. Ratify or reject it in writing here, and answer the consequence that follows from it:
+
+- **Which role does a linear renderer request?** `projectScene` requires a `representationRole`, and
+  the only Phase 2 roles are `fraction-bar` and `symbolic`.
+- **Does the linear path inherit that role's capability verdict?** `capabilityFor`
+  (`src/interaction/scene.js:365`) keys eligibility off the role, and its ineligibility branch at line
+  394 is scoped to `role === 'fraction-bar'`. A linear renderer requesting `fraction-bar` therefore
+  inherits a refusal for LCD > 30 — a ceiling that exists because a 30-part bar at 360px is visually
+  cramped (DECISION-011). That constraint has no force over text. A learner on the linear path would
+  be denied content for a legibility reason that does not apply to their access path, which cuts
+  against the `05-quality-and-validation.md` §44 requirement that the accessible path preserve the
+  same mathematical responsibility.
+- Requesting `symbolic` instead sidesteps that refusal but makes the linear path an alternative to the
+  symbolic view rather than to the bar. That may be fine; it is an argument to make, not to assume.
+
+Whatever the answer, it belongs in the approved boundary. If it requires a new representation role, a
+capability rule that distinguishes legibility ceilings from access refusals, or an owner decision,
+**stop and report** — do not resolve it inside the renderer.
+
 ### Requirement 2 — Renderer purity
 
 Required behavior:
