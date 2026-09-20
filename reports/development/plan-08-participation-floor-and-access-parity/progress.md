@@ -14,7 +14,7 @@ The implementation delivers:
 1. **Accessible Linear Path (`src/render/linear-path.js`)**: A text-based, programmatically inspectable reading path built strictly on the `plan-07` scene-consumption boundary without renegotiation. Presents identical quantities, unit relationships, prompts, recovery guidance, and interactive controls as the visual path, strictly conforming to DECISION-004 Grade 2–3 reading level and calm design principles.
 2. **Completed-Beat Collapse Rule & Disclosure Trail (`src/render/beat-container.js`, `src/render/linear-path.js`, `src/styles/render.css`)**: Implements the completed-beat collapse rule (Finding R6, OQ-18, DECISION-014, DECISION-021 Criterion 1). Completed beats fold older milestones into a native `<details class="completed-beats-history">` disclosure element with a summary toggle showing completion count, while the latest completed milestone is displayed inline directly above the active beat. Interactive controls are dismounted upon beat completion.
 3. **Scaffold-Leakage Invariants Suite (`tests/leakage-invariants.test.js`)**: Implements Invariants 1–9 from the evidence plan across both visual and linear paths. Verifies that future mathematical truth, unit matches, correct multipliers, operation results, and distractor classifications are never revealed in DOM structure, attributes, text, or script state prior to learner commitment. Every invariant includes an automated, genuine failing-first demonstration against mutated leaking scenes.
-4. **Access Parity Suite (`tests/access-parity.test.js`)**: Evidences per-decision completion via keyboard navigation (`tabIndex >= 0`, native focus, Enter/Space activation) and non-drag tap (discrete click targets) for all 8 instructional decisions, plus DECISION-026 check-the-premise reflection. Verifies LCD 30 decoupling (DECISION-025), collapse disclosure mechanics, and semantic reduced-motion parity.
+4. **Access Parity Suite (`tests/access-parity.test.js`)**: Evidences per-decision focus reachability (`tabIndex >= 0`), native interactive element types (`<button>` or `<input>`), and non-drag tap completion (discrete click targets) for all 8 instructional decisions, plus DECISION-026 check-the-premise reflection. Verifies LCD 30 decoupling (DECISION-025), collapse disclosure mechanics, and semantic reduced-motion parity. Enter/Space keyboard activation is standard native-element behavior deferred to Plan 09 browser verification.
 5. **Behavioral Purity Probe (`tests/render-purity.test.js`)**: Replaced the previous tautological string-literal test at line 381 with a behavioral purity probe feeding mutually inconsistent scenes to prove that renderers display only provided scene data and never compute mathematical truth. Added static module isolation checks verifying zero imports from `math/` or `content/` and zero arithmetic operations.
 
 All work is **built against WCAG 2.2 AA** (reconciliation finding R4); no unevidenced conformance claims are made.
@@ -83,21 +83,21 @@ Every test asserts both that the authentic scene passes without leaks and that t
 
 ---
 
-## 4. Per-Decision Keyboard & Non-Drag Parity Matrix
+## 4. Per-Decision Focus Reachability, Native Control Types & Non-Drag Parity Matrix
 
-Every instructional decision was exercised in `tests/access-parity.test.js` on both the visual path (`beat-container.js`) and the accessible linear path (`linear-path.js`).
+Every instructional decision was exercised in `tests/access-parity.test.js` on both the visual path (`beat-container.js`) and the accessible linear path (`linear-path.js`). The tests verify focus reachability (`tabIndex >= 0`) and assert that every interactive control is a native `<button>` or `<input>` element (which carries the browser's native Enter/Space activation guarantee, to be tested in a real browser in Plan 09).
 
-| Decision | Beat | Control Element | Keyboard Operability | Non-Drag Touch Operability | Dispatched Intent Verified |
+| Decision | Beat | Control Element | Focus Reachability & Native Element Type | Non-Drag Touch Operability | Dispatched Intent Verified |
 |---|---|---|---|---|---|
-| **Decision 1** | `encounter` | `<button class="control-btn primary">` | Focus via Tab (`tabIndex >= 0`), trigger via Enter/Space `click()` | Single tap `click()`, target >= 44×44px CSS | `{ type: 'acknowledge-encounter' }` |
-| **Decision 2** | `notice` | Choice button `<button class="control-choice-btn">` | Focus via Tab, trigger via Enter/Space | Single tap `click()`, target >= 44×44px CSS | `{ type: 'submit-notice', matchesUnits: false }` |
-| **Decision 3** | `decide` | Choice buttons or `<input type="text">` + submit button | Focus via Tab, text input, Enter or button activation | Single tap `click()`, targets >= 44×44px CSS | `{ type: 'propose-common-denominator', proposed: { kind: 'fraction', numerator: '12', denominator: '1' } }` |
-| **Decision 4** | `transform` (left) | Numeric `<input type="text">` + `<button class="control-submit-btn">` | Focus via Tab, typed input, Enter/button activate | Tap input, keypad entry, tap submit (>=44×44px) | `{ type: 'submit-equivalent-form', proposed: { kind: 'fraction', numerator: '8', denominator: '12' } }` |
-| **Decision 5** | `transform` (right) | Numeric `<input type="text">` + `<button class="control-submit-btn">` | Focus via Tab, typed input, Enter/button activate | Tap input, keypad entry, tap submit (>=44×44px) | `{ type: 'submit-equivalent-form', proposed: { kind: 'fraction', numerator: '3', denominator: '12' } }` |
-| **Decision 6** | `operate` | Numeric `<input type="text">` + `<button class="control-submit-btn">` | Focus via Tab, typed input, Enter/button activate | Tap input, keypad entry, tap submit (>=44×44px) | `{ type: 'submit-operation-result', proposed: { kind: 'fraction', numerator: '11', denominator: '12' } }` |
-| **Decision 7** | `resolve` | `<button class="control-btn primary">` | Focus via Tab, trigger via Enter/Space | Single tap `click()`, target >= 44×44px CSS | `{ type: 'submit-resolution', proposed: { kind: 'fraction', numerator: '11', denominator: '12' } }` |
-| **Decision 8** (Match) | `reflect` (CM-01-M) | Choice button `<button class="control-choice-btn">` | Focus via Tab, trigger via Enter/Space | Single tap `click()`, target >= 44×44px CSS | `{ type: 'submit-reflection', response: choiceId }` |
-| **Decision 8** (Premise) | `reflect` (CM-01-P) | Choice button `<button class="control-choice-btn">` | Focus via Tab, trigger via Enter/Space | Single tap `click()`, target >= 44×44px CSS | `{ type: 'submit-reflection', response: 'yes' | 'no' }` |
+| **Decision 1** | `encounter` | `<button class="control-btn primary">` | Native `<button>`, `tabIndex >= 0` (Enter/Space activation browser-native, deferred to Plan 09) | Single tap `click()`, target >= 44×44px CSS | `{ type: 'acknowledge-encounter' }` |
+| **Decision 2** | `notice` | Choice button `<button class="control-choice-btn">` | Native `<button>`, `tabIndex >= 0` (Enter/Space activation browser-native, deferred to Plan 09) | Single tap `click()`, target >= 44×44px CSS | `{ type: 'submit-notice', matchesUnits: false }` |
+| **Decision 3** | `decide` | Choice buttons or `<input type="text">` + submit button | Native `<button>` or `<input>` + `<button>`, `tabIndex >= 0` (activation browser-native, deferred to Plan 09) | Single tap `click()`, targets >= 44×44px CSS | `{ type: 'propose-common-denominator', proposed: { kind: 'fraction', numerator: '12', denominator: '1' } }` |
+| **Decision 4** | `transform` (left) | Numeric `<input type="text">` + `<button class="control-submit-btn">` | Native `<input>` + `<button>`, `tabIndex >= 0` (activation browser-native, deferred to Plan 09) | Tap input, keypad entry, tap submit (>=44×44px) | `{ type: 'submit-equivalent-form', proposed: { kind: 'fraction', numerator: '8', denominator: '12' } }` |
+| **Decision 5** | `transform` (right) | Numeric `<input type="text">` + `<button class="control-submit-btn">` | Native `<input>` + `<button>`, `tabIndex >= 0` (activation browser-native, deferred to Plan 09) | Tap input, keypad entry, tap submit (>=44×44px) | `{ type: 'submit-equivalent-form', proposed: { kind: 'fraction', numerator: '3', denominator: '12' } }` |
+| **Decision 6** | `operate` | Numeric `<input type="text">` + `<button class="control-submit-btn">` | Native `<input>` + `<button>`, `tabIndex >= 0` (activation browser-native, deferred to Plan 09) | Tap input, keypad entry, tap submit (>=44×44px) | `{ type: 'submit-operation-result', proposed: { kind: 'fraction', numerator: '11', denominator: '12' } }` |
+| **Decision 7** | `resolve` | `<button class="control-btn primary">` | Native `<button>`, `tabIndex >= 0` (activation browser-native, deferred to Plan 09) | Single tap `click()`, target >= 44×44px CSS | `{ type: 'submit-resolution', proposed: { kind: 'fraction', numerator: '11', denominator: '12' } }` |
+| **Decision 8** (Match) | `reflect` (CM-01-M) | Choice button `<button class="control-choice-btn">` | Native `<button>`, `tabIndex >= 0` (activation browser-native, deferred to Plan 09) | Single tap `click()`, target >= 44×44px CSS | `{ type: 'submit-reflection', response: choiceId }` |
+| **Decision 8** (Premise) | `reflect` (CM-01-P) | Choice button `<button class="control-choice-btn">` | Native `<button>`, `tabIndex >= 0` (activation browser-native, deferred to Plan 09) | Single tap `click()`, target >= 44×44px CSS | `{ type: 'submit-reflection', response: 'yes' \| 'no' }` |
 
 ### Target Sizing and Denominator Decoupling (DECISION-025)
 At LCD 30 (or higher), fraction bar segments are rendered with `aria-hidden="true"`, `tabIndex = -1`, and zero interactive handlers. All learner interaction takes place through dedicated, full-size interactive controls (`.control-choice-btn`, `.control-numeric-input`, `.control-submit-btn`) styled with `min-width: 44px; min-height: 44px;` in `render.css`. Control sizes are completely decoupled from bar segment widths.
@@ -120,39 +120,41 @@ The collapse rule (Finding R6, OQ-18, DECISION-014, DECISION-021 Criterion 1) re
 
 Every item from `05-quality-and-validation.md` §44 is mapped to its implemented mechanism, with evidence kinds strictly separated:
 
-| Participation-Floor Item | Implemented Mechanism | Mechanized Automated Evidence | Human Review Evidence | Child Evidence (Status) |
+| Participation-Floor Item | Implemented Mechanism | Mechanized Automated Evidence | Human Review Required (not yet performed) | Child Evidence (Status) |
 |---|---|---|---|---|
-| **Non-drag operation** (WCAG SC 2.5.7) | Discrete buttons, radio/choice groups, and numeric text inputs. Zero drag-and-drop or pointer-path gestures. | Automated: `tests/access-parity.test.js` exercises click/tap triggers across all 8 decisions. | Code review of `controls.js`, `beat-container.js`, `linear-path.js`. | Untested with children. |
-| **Keyboard operation** (WCAG SC 2.1.1, 2.1.2) | Natural focus order (`tabIndex >= 0` on controls), native button/input elements, standard Enter/Space activation, zero focus traps. | Automated: `tests/access-parity.test.js` asserts tabIndex on all controls; `tests/render-purity.test.js` checks element types. | Manual tabbing sequence verified in keyboard flow review. | Untested with children. |
-| **Reduced-motion parity** (WCAG SC 2.3.3, DECISION-007) | Instantaneous state transitions in reduced-motion mode; zero instructional reliance on animation. | Automated: `tests/access-parity.test.js` verifies identical mathematical scene post-state between modes. | CSS inspection of `@media (prefers-reduced-motion: reduce)`. | Untested with children. |
-| **Semantic & linear meaning** (WCAG SC 1.3.1, 1.3.2) | `<main>`, `<section>`, `<h2>`, `<fieldset>`, `<legend>`, `<details>`, `<summary>` landmarks. Linear path translates visual bars to explicit part-whole text. | Automated: `tests/access-parity.test.js` verifies landmarks and reading-order elements. | Screen reader virtual buffer reading-order review. | Untested with children. |
-| **Focus indicators & labels** (WCAG SC 2.4.6, 2.4.7, 2.5.8) | High-contrast focus rings (3px solid #1d4ed8 with 2px offset). Touch targets >= 44×44px CSS. Decoupled from denominator (DECISION-025). | Automated: `tests/render-strings.test.js` checks aria-labels and labels; mock DOM enforces focusability. | Visual layout review across high-contrast themes. | Untested with children. |
-| **Status announcements** (WCAG SC 4.1.3) | `aria-live="polite"` live region (`.live-announcements`) announces transitions; `role="alert"` for recovery feedback. | Automated: `tests/access-parity.test.js` checks existence and role of live regions. | NVDA/VoiceOver announcement audit. | Untested with children. |
-| **Contrast & text scaling** (WCAG SC 1.4.3, 1.4.4, 1.4.12) | High-contrast color tokens (#0f172a on #ffffff: 15.4:1; #1e293b on #f8fafc: 12.8:1); rem-based font sizing supporting 200% zoom. | Automated: Design token checks in CSS; no fixed px font sizes. | Zoom and contrast analyzer review. | Untested with children. |
-| **Equal learner responsibility** (§44) | Linear path asks for identical mathematical decisions, equivalent forms, and reflections without answer leakage. | Automated: `tests/leakage-invariants.test.js` proves invariants 1–9 hold on linear path. | Curricular and instructional responsibility review. | Untested with children. |
+| **Non-drag operation** (WCAG SC 2.5.7) | Discrete buttons, radio/choice groups, and numeric text inputs. Zero drag-and-drop or pointer-path gestures. | Automated: `tests/access-parity.test.js` exercises click/tap triggers across all 8 decisions. | Gesture and pointer cancellation review required in browser. | Untested with children. |
+| **Keyboard operation** (WCAG SC 2.1.1, 2.1.2) | Natural focus order (`tabIndex >= 0` on controls), native button/input elements, standard Enter/Space activation, zero focus traps. | Automated: `tests/access-parity.test.js` asserts `tabIndex >= 0` and native `button`/`input` element types across all controls; `tests/render-purity.test.js` checks element types. Enter/Space activation is deferred to Plan 09. | Manual tabbing sequence audit and Enter/Space activation review required in real browser. | Untested with children. |
+| **Reduced-motion parity** (WCAG SC 2.3.3, DECISION-007) | Instantaneous state transitions in reduced-motion mode; zero instructional reliance on animation. | Automated: `tests/access-parity.test.js` verifies identical mathematical scene post-state between modes. | Reduced-motion inspection required in browser with OS preference enabled. | Untested with children. |
+| **Semantic & linear meaning** (WCAG SC 1.3.1, 1.3.2) | `<main>`, `<section>`, `<h2>`, `<fieldset>`, `<legend>`, `<details>`, `<summary>` landmarks. Linear path translates visual bars to explicit part-whole text. | Automated: `tests/access-parity.test.js` verifies landmarks and reading-order elements. | Screen reader virtual buffer reading-order audit required. | Untested with children. |
+| **Focus indicators & labels** (WCAG SC 2.4.6, 2.4.7, 2.5.8) | High-contrast focus rings (3px solid #1d4ed8 with 2px offset). Touch targets >= 44×44px CSS. Decoupled from denominator (DECISION-025). | Automated: `tests/render-strings.test.js` checks aria-labels and labels; mock DOM enforces focusability. | Visual layout review required across high-contrast themes. | Untested with children. |
+| **Status announcements** (WCAG SC 4.1.3) | `aria-live="polite"` live region (`.live-announcements`) announces transitions; `role="alert"` for recovery feedback. | Automated: `tests/access-parity.test.js` checks existence and role of live regions. | NVDA/VoiceOver announcement audit required with screen readers. | Untested with children. |
+| **Contrast & text scaling** (WCAG SC 1.4.3, 1.4.4, 1.4.12) | High-contrast color tokens (#0f172a on #ffffff: 15.4:1; #1e293b on #f8fafc: 12.8:1); rem-based font sizing supporting 200% zoom. | Automated: Design token checks in CSS; no fixed px font sizes. | Zoom (200%) and contrast analyzer inspection required in browser. | Untested with children. |
+| **Equal learner responsibility** (§44) | Linear path asks for identical mathematical decisions, equivalent forms, and reflections without answer leakage. | Automated: `tests/leakage-invariants.test.js` proves invariants 1–9 hold on linear path. | Curricular and instructional responsibility review required. | Untested with children. |
 
 *Phrasing declaration:* The system is **built against WCAG 2.2 AA**; no final conformance claim is made pending live browser assistive-technology audits and child usability sessions in Plan 09.
 
 ---
 
-## 7. DECISION-021 4-Point Aesthetic Rubric Self-Assessment
+## 7. DECISION-021 4-Point Aesthetic Rubric — Structural Self-Assessment
 
-Evaluated per DECISION-022 worst-case tail reporting (reporting individual worst-case behavior rather than averages):
+Evaluated per DECISION-022 worst-case tail reporting (reporting individual worst-case behavior rather than averages).
+
+*Note on Authority and Scope:* This is a **structural self-assessment** based on code, CSS token definitions, and DOM lifecycle properties. Because aesthetic calm, visual density, and pacing cannot be fully measured in headless mock DOM and belong to the Phase 2 acceptance gate, full rubric evaluation is **pending owner and teacher review against rendered screens at the Plan 09 gate**; Plan 09 does not inherit "rubric satisfied" as a settled result.
 
 1. **Dashboard Restraint & Single Focus**:  
-   *Assessment:* **Satisfied.**  
+   *Assessment:* **Structurally addressed** (pending owner/teacher review against rendered screens at Plan 09 gate).  
    *Worst-case tail:* Resolve beat with 5 prior completed beats.  
    *Observation:* Unreached beats are never rendered (DECISION-014). Older completed steps fold neatly into `<details>`, occupying minimal vertical height, leaving only the latest milestone inline above the active prompt. The learner's attention is focused on a single prompt and single input mechanism.
 2. **Calm Language & Restrained Feedback**:  
-   *Assessment:* **Satisfied.**  
+   *Assessment:* **Structurally addressed** (pending owner/teacher review against rendered screens at Plan 09 gate).  
    *Worst-case tail:* Repeated invalid common denominator input on `decide` beat.  
    *Observation:* Recovery feedback (`strings.decide.invalidDenominator`) states calmly what failed (*"${den} is not a common denominator. Try another number."*) without alarming colors, banner popups, or exclamation marks. Copy adheres strictly to Grade 2–3 reading levels (DECISION-004).
 3. **Child Touch Target Scale & Denominator Decoupling (DECISION-025)**:  
-   *Assessment:* **Satisfied.**  
+   *Assessment:* **Structurally addressed** (pending owner/teacher review against rendered screens at Plan 09 gate).  
    *Worst-case tail:* Denominator 30 on 360px viewport width (individual slice width < 10px).  
    *Observation:* Fraction bar segments are strictly non-interactive visual display surfaces. The interactive controls are full-sized discrete elements (`min-width: 44px; min-height: 44px;`) with ample margin, preventing mis-taps.
 4. **Calm Pacing & Non-Intrusive Recovery**:  
-   *Assessment:* **Satisfied.**  
+   *Assessment:* **Structurally addressed** (pending owner/teacher review against rendered screens at Plan 09 gate).  
    *Worst-case tail:* Transition from invalid attempt back to active input.  
    *Observation:* No modal dialogs, timers, score decrements, or jarring animations. Recovery appears inline with `role="alert"` and clears automatically when valid input is submitted.
 
@@ -231,4 +233,4 @@ Output highlights:
 ## 13. Ready for Orchestrator Review
 
 **Ready for orchestrator review:** yes  
-All six gate conditions, nine leakage invariants, per-decision keyboard/non-drag parity tests, collapse rules, and participation-floor mappings are fully implemented and verified.
+All six gate conditions, nine leakage invariants, per-decision focus reachability and native control assertions, collapse rules, and participation-floor mappings are fully implemented and verified.
