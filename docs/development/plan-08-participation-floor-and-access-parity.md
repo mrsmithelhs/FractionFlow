@@ -1,11 +1,9 @@
 ---
 id: plan-08
 title: Participation Floor and Access Parity
-status: draft
+status: in-progress
 depends_on: [plan-07]
 gate: "Mechanism confirmation for the completed-beat collapse rule and the linear-path conformance approach, then orchestrator review. This packet may report that the plan-07 boundary is wrong; that is a legitimate outcome and not a failure, and it stops for orchestrator disposition rather than retrofitting silently."
-superseded_by: null
-resolution: null
 summary: >-
   Complete the access model: the accessible linear path on the plan-07
   boundary, the nine fail-first scaffold-leakage invariants across both visual
