@@ -151,3 +151,112 @@ git status --short --branch
 ```
 
 The implementation is ready for orchestrator review. Packet status remains unchanged.
+
+## 9. Repair 01 disposition
+
+Repair 01 was implemented against the returned acceptance checklist. The previously accepted
+composition, registered condition switcher, existing test work, and addition-symbol repair were
+left intact. Requirement 3 and the packet exit gate remain owner-gated and unchanged.
+
+**Repair implementation commit:** `7c911a9` (`Repair Plan 09 learner surface and matching check`)
+
+### Learner-surface repairs
+
+| Repair 01 blocker | Disposition and evidence |
+|---|---|
+| CM-01 matching check was degenerate | **Repaired.** `src/content/data/reflection-choices.js` supplies three frozen, authored forms for the ready-subset fixture: target `8/12`, plus plausible non-correct `7/12` and `9/12`. The records contain stable IDs and forms, but no correctness field. `src/interaction/classification.js` compares the selected authored form with the established equivalent form upstream; a distractor stays in `reflect` and produces local recovery, while the target resolves. Both rendered paths were exercised with wrong and correct button clicks. |
+| Completion message was doubled | **Repaired.** Each renderer mounts the completion heading once. The completion panel no longer repeats the message through an accessible label; the screen-reader-only support notice carries the single completion announcement. |
+| Choice prompts were doubled | **Repaired.** The active-beat heading remains the visible question. Choice-group legends remain present and programmatically useful but use the existing `sr-only` utility, so they do not add visible copy. The live browser tree still exposes the group name as expected for assistive technology; this is not claimed as a real screen-reader announcement result. |
+| 360px layout pushed the current question below the fold | **Repaired and measured.** At a 360px × 752px viewport on the transform beat with scroll position 0, the first fraction bar began at **108.8px**, or **14.47%** of the viewport. The stated ~15% target is 112.8px. The current question began at **604.94px** and was above the fold. `document.documentElement.scrollWidth` was **345px** and `document.body.scrollWidth` was **329px**, so neither exceeded the 360px viewport. |
+| DECISION-021 rubric was summarized | **Repaired in this report.** The four criteria are answered individually below, with evidence, residual limits, and owner-gated judgment kept separate. |
+
+### Footer end state and clutter boundary
+
+The header is removed from the DOM. The app root begins with `<main aria-label="Fraction practice">`
+and ends with a non-sticky `<footer>` containing the sole `h1` (`FractionFlow`) and the gear menu.
+The gear menu opens upward through footer-relative positioning. The DOM order is episode first and
+footer second; no CSS `order`, reverse flex direction, sticky positioning, or fixed positioning is
+used. The **Read the steps** control remains near the start of `<main>` before the mathematics.
+
+The subtitle, introduction, visible `Display: …` status line, and `Extra help` heading are removed
+from the learner surface. The support notice is retained as a screen-reader-only `aria-live="polite"`
+region. Help text is also placed next to the active question, so the response is spatially adjacent
+for a learner while the notice remains the sole explicit polite announcement source. The live browser
+probe found one explicit polite live region.
+
+The packet's Requirement 2 wording refers to a gear icon on an entry page. This repair implements the
+requested footer end state only. It does not invent an entry page; that remains OQ-19 and a later
+packet concern. The divergence is recorded rather than silently reinterpreted.
+
+### DECISION-021 criterion-by-criterion review
+
+1. **Restraint against dashboard accumulation — pass for the measured artifact; owner review remains.**
+   The five stacked pieces of pre-math chrome were removed or relocated. The first bar is within
+   14.47% of the 752px viewport and the question is above the fold at 360px. The page has no measured
+   horizontal overflow. The footer scrolls with the document. Final teacher/owner aesthetic judgment
+   remains an owner gate, and the trailing-`h1` heading-navigation question is explicitly unverified.
+
+2. **Language and register clarity — pass for the changed surface.** The visible question appears
+   once per active choice beat; completion appears once per visible path; the linear matching prompt,
+   option labels, and distractor recovery use “fraction,” not “bar.” Copy remains concrete and
+   suitable for learners approximately ages 8–11. Actual assistive-technology announcement timing
+   remains unverified.
+
+3. **Child-appropriate touch targets and spacing — structural pass; live touch matrix unverified.**
+   Existing controls retain their established target sizing. Matching choices use full native buttons
+   with an 8rem minimum width and 5.5rem minimum height, independent of denominator size. No control
+   was shrunk and no completed beat was removed to make the 360px layout fit. A real touch-device
+   matrix was not performed.
+
+4. **Calm pacing and anchored inspection — structural pass; owner review remains.** The repair adds
+   no timer or automatic advancement. Completed beats remain available through the existing disclosure
+   trail, and the footer is not pinned. The static visual/linear choice flow preserves learner agency
+   after an incorrect matching selection. Live reduced-motion preference behavior and real
+   screen-reader interaction were not independently verified in this repair.
+
+### Advisor consultation and complete disposition
+
+Because this repair changes code and has a real behavioral surface, the complete callable runtime
+inventory was inspected before any degraded path was considered. It exposed a depth-one reviewer
+child and accepted an independent explicit `gpt-5.6-sol` model override. Branch A was therefore
+required. No Astra model was requested for this Repair 01 consultation; the historical Astra
+consultation recorded in the original Plan 09 report was not reused as this repair's advisor.
+
+The consultation record is:
+
+- Reviewer child: `01a0bf2f-22fd-7561-9532-d549fbf0458b` (`Ampere`); depth one.
+- Requested model override: `gpt-5.6-sol`, with the reviewer role's fixed high reasoning setting.
+  The callable tool accepted the override, but backend identity is not independently verifiable from
+  runtime metadata; this is recorded conservatively as the requested Sol-class selection.
+- Brief: self-contained, read-only, no-write, no-child, no-deploy, no-push review against the current
+  artifact and Repair 01 checklist.
+- First review finding: distractor identities were all resolving; duplicate live-announcement sources
+  existed; the report lacked the required Repair 01 evidence; the new renderer was missing from the
+  purity guard. These findings were accepted and repaired.
+- Follow-up finding: linear distractor recovery still said “bar.” A linear-specific “fraction” string
+  and regression assertion were added.
+- Final follow-up: **pass**, with no remaining actionable findings. It verified the wrong/correct
+  rendered interactions on both paths, correctness-free content choices, upstream classification,
+  single explicit polite live region, completion structure, and renderer-purity coverage.
+- Post-consultation `git status --short --branch` was run immediately after the final read-only review;
+  it showed only the expected Repair 01 source/test paths and no reviewer mutation. No deployment,
+  push, packet-status change, or orchestrator review-note change was made.
+
+The remaining uncertainties are not silently promoted to passes: real screen-reader heading navigation
+with the only `h1` trailing the episode, actual live-announcement timing, touch-device behavior,
+cross-browser behavior, and owner/teacher aesthetic acceptance remain outside the evidence collected
+here. In particular, the trailing-`h1` question is **unverified**, not resolved.
+
+### Repair 01 verification commands
+
+| Check | Result |
+|---|---|
+| `node scripts/dev/plan-status.js check plan-09` | `RUNNABLE` preflight result |
+| `npm test -- --run` | **18 files, 207 tests passed** |
+| `npm run build` | **Passed**; Vite 6.4.3, 41 modules transformed |
+| `node scripts/dev/plan-status.js lint` | **Passed**: `lint: OK (no violations)` |
+| `git diff --check` | **Passed**; only informational LF/CRLF conversion warnings were emitted |
+| Live browser at 360px | **Passed measured target**; values recorded above |
+
+No deploy, push, public URL, public-access, or Requirement 3 acceptance claim is made. Packet status
+and the exit gate remain unchanged and owner/orchestrator-controlled.
