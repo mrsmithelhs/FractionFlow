@@ -402,6 +402,38 @@ it gates the episode or is merely passed through, and how a learner returns to i
 gear belongs there rather than in the episode footer. Worth deciding with real screens in hand, and
 worth pairing with the DECISION-019 question of who the switcher is for once the app is public.
 
+### OQ-20 — What does a fraction bar look like when the result crosses one whole?
+
+Raised by the owner on 2026-09-20, from the running app: "how does the bar setup change when we get
+to mixed numbers? Are we ready for that development when it happens?"
+
+Partly. The **mathematics is ready**: `src/math/mixed-number.js` carries exact composition,
+decomposition, and `classifyRegroupingRequirement`, and `classify.js` already computes `crossesWhole`
+and a `resultForm` of `improper`. The **content layer is ready**: `crosses-one-whole` is a first-class
+overlay with a selector predicate and a bulk-validation histogram, the wire schema carries
+`kind: 'mixed-number'`, and `curated-like-addition-crossing-reducible` (`7/8 + 3/8 = 10/8`) is an
+existing reviewed golden case.
+
+The **renderer is not ready, and fails quietly**. `src/render/fraction-bar.js` draws exactly
+`denominator` segments in one unit whole and shades `i < numerator`, so `10/8` renders as eight
+shaded segments — a picture identical to `8/8` — while the readout honestly reads "10 / 8". `plan-09`
+Repair 02 adds a guard so this throws instead of drawing a wrong bar, which buys time without
+answering the design question.
+
+The design question is genuinely open, and it is not only a rendering choice — crossing the whole is
+the moment the unit stops being "the bar" and becomes "a bar," which is a conceptual step, not a
+layout one. Candidates: a second bar appearing beside the first; one bar that visually splits at the
+whole boundary; a bar that fills and then a counter of completed wholes; or a deliberate instructional
+beat that names the crossing before showing it.
+
+**Phase 2 owes this:** nothing beyond the guard, and not foreclosing it. Any bar redesign in Phase 2 —
+including the Repair 02 change that removes the "1 WHOLE" caption and moves the readout beside the
+track — should leave room for a second whole to appear without restructuring the component.
+
+**Needs:** a decision on the visual treatment, on whether mixed numbers get their own instructional
+beat, and on whether the answer is presented improper, mixed, or learner's choice. Resolve with real
+screens, and alongside whatever packet first ships crossing content.
+
 ---
 
 ## Process / workflow

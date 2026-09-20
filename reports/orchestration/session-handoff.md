@@ -210,5 +210,16 @@ open:
    disposition, not a repair. **`plan-08`'s final review credited DECISION-026 as satisfied on the
    strength of the code existing; reachability was not checked. That was an orchestrator error.**
 2. **Owner gate — deploy authorization.** Requirement 3 cannot start without it.
-3. Two small non-blocking items are recorded in the Repair 01 review: the authored correct choice sits
+3. **Repair 02 is drafted and not yet handed to the implementer**
+   (`reports/development/plan-09-app-shell-condition-switcher-and-acceptance/repair-02.md`): one
+   defect (reflection choices keyed per fixture rather than per denominator route, so the `24` path
+   is shown twelfths), two owner-directed layout changes, and a guard on improper bars.
+4. Two small non-blocking items are recorded in the Repair 01 review: the authored correct choice sits
    at index 0 in every set, and leakage Invariant 6 asserts a class no code applies.
+
+**Read `reports/orchestration/phase-2-unreachable-mechanisms.md` before planning Phase 3.** Three
+specified mechanisms are built, tested, and reachable by no learner: the support ladder (no writer —
+`state.support` is set once at `createEpisode` and the app never passes it), DECISION-026, and
+invalid-denominator recovery on the button path. Each was credited from an artifact's existence
+rather than from an exercise. For Phase 3 review the question is not "is it implemented?" but "what
+sequence of learner actions produces it?"
