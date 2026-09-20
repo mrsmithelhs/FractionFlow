@@ -161,7 +161,9 @@ of the supplied current inputs. Add positive round-trip tests and negative tampe
 meaning (including an invented operation result and transition), result kind/schema, and refusal
 continuation. Preserve all existing architectural boundaries: no Plan 05/content/math mutation, no
 renderer/DOM/app/condition-switcher/deployment work, no packet-status change, and no push. The
-mechanism gate is not reopened; report and stop for final review after the repair.
+mechanism gate is not reopened. Because the repaired admission boundary has a real behavioral and
+integrity surface, run a fresh bounded Branch A advisor consultation against the repaired artifact;
+the earlier consultation is not evidence about the new guard. Then report and stop for final review.
 
 Two cautions for the implementation phase specifically. First, `plan-07`'s three-path gate is the
 wave's load-bearing review moment; approving a boundary that accounts only for the visual and symbolic
