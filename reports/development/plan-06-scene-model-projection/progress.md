@@ -1,7 +1,7 @@
 # Plan 06 Progress Report — Scene Model Projection
 
-**Report date:** 2026-09-19  
-**Packet status:** unchanged; remains `in-progress` and is owned by orchestration  
+**Report date:** 2026-09-19
+**Packet status:** unchanged; remains `in-progress` and is owned by orchestration
 **Ready for orchestrator review:** yes
 
 ## Summary
@@ -121,6 +121,8 @@ override were callable. Branch A therefore ran at depth one.
 - **Immediate post-consultation status check:** unchanged working tree containing only the three
   Plan 06 implementation/test paths (`src/interaction/index.js`, `src/interaction/scene.js`, and
   `tests/interaction-scene.test.js`); no report edits, packet edits, or child-created changes.
+- **Coarse consultation cost:** one depth-one advisor review plus a primary repair-and-validation
+  pass; the runtime did not provide a reliable elapsed-time measurement, so none is inferred here.
 
 ### Findings and disposition
 

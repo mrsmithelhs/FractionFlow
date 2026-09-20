@@ -20,8 +20,9 @@ Authoritative packet status is `node scripts/dev/plan-status.js list` and the ge
 - `plan-05` (instructional engine plus representation eligibility): **complete**, accepted on
   2026-09-19 after a bounded replay-definition repair. Registered immutable definition identities,
   including the selective-reflection variant, now reconstruct exactly through a JSON replay envelope.
-- `plan-06` (Scene Model projection): **in progress**, assigned on 2026-09-19. Its
-  mechanism-confirmation gate is the next required stop.
+- `plan-06` (Scene Model projection): **in progress, repair pending**. Its approved implementation
+  was delivered on 2026-09-19, but final orchestrator review found a scene-admission integrity
+  defect; one bounded repair must preserve the status and stop for another review.
 - `plan-07` through `plan-09`: **draft**, awaiting their dependencies and their own assignment gates.
   The Phase 2 wave was drafted at `4bb2879` and revised at `4371c25` after a packet-wave review by the
   Codex orchestrator thread. All six of that review's recommendations were accepted.
@@ -144,14 +145,23 @@ variant is a distinct registered identity that JSON replay reconstructs exactly.
 found no remaining defect in the repaired boundary. The final resolution is recorded in the packet
 frontmatter.
 
-`plan-06` is now in progress. Its pure Scene Model projection mechanism was approved with binding
-clarifications on 2026-09-19; see
-`reports/development/plan-06-scene-model-projection/mechanism-review.md`. The implementer may now
-write only the approved projection, tests, exports, and progress report. It consumes the completed
-Plan 05 instructional state and eligibility verdicts rather than duplicating math, content,
-eligibility, or episode-transition logic. The approval does not authorize DOM, rendering,
-application-shell, deployment, runtime condition-switching, or packet-status work. Delivery requires
-the declared Branch A advisor review and a final orchestrator gate.
+`plan-06` remains in progress and is **not accepted or complete**. Its pure Scene Model mechanism
+was approved with binding clarifications on 2026-09-19; see
+`reports/development/plan-06-scene-model-projection/mechanism-review.md`. The delivered projection
+correctly derives immutable scenes and detects a changed upstream source context, but
+`assertSceneCurrent()` currently trusts a supplied scene/refusal payload whenever its derivation key
+matches the current inputs. A scene that crossed a JSON/cache boundary can therefore have its
+semantic meaning, result kind, schema, transition, or refusal continuation forged while retaining a
+matching derivation key, and the advertised admission guard will accept it.
+
+Assign one bounded Plan 06 repair: make the renderer-facing admission guard prove both source
+freshness **and** scene-result integrity. It must reject malformed/noncanonical results and a
+JSON-round-tripped result whose complete canonical scene/refusal payload differs from the projection
+of the supplied current inputs. Add positive round-trip tests and negative tampering tests for scene
+meaning (including an invented operation result and transition), result kind/schema, and refusal
+continuation. Preserve all existing architectural boundaries: no Plan 05/content/math mutation, no
+renderer/DOM/app/condition-switcher/deployment work, no packet-status change, and no push. The
+mechanism gate is not reopened; report and stop for final review after the repair.
 
 Two cautions for the implementation phase specifically. First, `plan-07`'s three-path gate is the
 wave's load-bearing review moment; approving a boundary that accounts only for the visual and symbolic
