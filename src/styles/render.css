@@ -1,0 +1,356 @@
+/**
+ * FractionFlow Presentation Foundation Styles
+ *
+ * Designed against WCAG 2.2 AA:
+ * - High contrast (minimum 4.5:1 text, 3:1 graphical objects).
+ * - Minimum control target size: 24×24 CSS px (WCAG 2.2 SC 2.5.8), default 44×44px for touch.
+ * - Responsive layout: 360px mobile portrait to 1440px desktop, reflowing down to 320px.
+ * - Reduced motion support (prefers-reduced-motion: reduce).
+ * - Calm, restrained visual hierarchy (DECISION-021, Interaction Grammar §70-71).
+ */
+
+:root {
+  --ff-font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --ff-color-bg: #f8fafc;
+  --ff-color-surface: #ffffff;
+  --ff-color-text: #0f172a;
+  --ff-color-text-muted: #475569;
+  --ff-color-border: #cbd5e1;
+  --ff-color-border-focus: #0284c7;
+
+  /* Mathematical representation colors */
+  --ff-bar-border: #334155;
+  --ff-bar-shaded: #0284c7;
+  --ff-bar-unshaded: #f1f5f9;
+  --ff-bar-subdivide-line: #ffffff;
+
+  /* Interactive control colors */
+  --ff-btn-bg: #f8fafc;
+  --ff-btn-text: #0f172a;
+  --ff-btn-border: #94a3b8;
+  --ff-btn-hover-bg: #e2e8f0;
+  --ff-btn-active-bg: #cbd5e1;
+  --ff-btn-primary-bg: #0284c7;
+  --ff-btn-primary-text: #ffffff;
+  --ff-btn-primary-hover: #0369a1;
+
+  /* Spacing */
+  --ff-min-target-size: 44px;
+  --ff-margin-generous: 12px;
+}
+
+/* Base Episode Beat Container */
+.episode-beat-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  width: 100%;
+  max-width: 48rem;
+  margin: 0 auto;
+  padding: 1rem;
+  font-family: var(--ff-font-family);
+  color: var(--ff-color-text);
+  box-sizing: border-box;
+}
+
+/* Visual Section & Fraction Bars */
+.render-visual-section {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 100%;
+}
+
+.fraction-bars-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  width: 100%;
+}
+
+.fraction-bar-box {
+  width: 100%;
+}
+
+.fraction-bar-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+  width: 100%;
+  outline: none;
+}
+
+.fraction-bar-whole-label {
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--ff-color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.fraction-bar-track {
+  display: flex;
+  width: 100%;
+  height: 2.75rem;
+  border: 2px solid var(--ff-bar-border);
+  border-radius: 0.375rem;
+  overflow: hidden;
+  background-color: var(--ff-bar-unshaded);
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.fraction-bar-segment {
+  flex: 1 1 0;
+  height: 100%;
+  border-right: 1px solid var(--ff-bar-subdivide-line);
+  box-sizing: border-box;
+  transition: background-color 0.25s ease;
+}
+
+.fraction-bar-segment:last-child {
+  border-right: none;
+}
+
+.fraction-bar-segment.shaded {
+  background-color: var(--ff-bar-shaded);
+}
+
+.fraction-bar-segment.unshaded {
+  background-color: var(--ff-bar-unshaded);
+}
+
+.fraction-bar-readout {
+  font-size: 0.875rem;
+  color: var(--ff-color-text-muted);
+  font-variant-numeric: tabular-nums;
+  align-self: flex-end;
+}
+
+/* Reduced Motion Overrides */
+@media (prefers-reduced-motion: reduce) {
+  .fraction-bar-segment,
+  .fraction-control {
+    transition: none !important;
+    animation: none !important;
+  }
+}
+
+.fraction-bar-track.reduced-motion .fraction-bar-segment {
+  transition: none !important;
+  animation: none !important;
+}
+
+/* Symbolic Representation Section */
+.render-symbolic-section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 1rem;
+  background-color: var(--ff-color-surface);
+  border: 1px solid var(--ff-color-border);
+  border-radius: 0.5rem;
+}
+
+.symbolic-expression {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 1.5rem;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+.symbolic-fraction {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  vertical-align: middle;
+}
+
+.symbolic-numerator,
+.symbolic-denominator {
+  line-height: 1.1;
+  padding: 0 0.25rem;
+}
+
+.symbolic-bar {
+  display: block;
+  width: 100%;
+  height: 2px;
+  background-color: var(--ff-color-text);
+  margin: 1px 0;
+}
+
+.symbolic-operator {
+  padding: 0 0.25rem;
+  color: var(--ff-color-text-muted);
+}
+
+/* Completed Beats Section (Collapsed Context, Finding R6) */
+.completed-beats-section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+  padding: 0.5rem 0.75rem;
+  background-color: #f1f5f9;
+  border-radius: 0.375rem;
+  font-size: 0.875rem;
+  color: var(--ff-color-text-muted);
+}
+
+.completed-beat-summary {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  line-height: 1.4;
+}
+
+.completed-beat-summary::before {
+  content: "✓";
+  color: #16a34a;
+  font-weight: bold;
+}
+
+/* Active Beat Section */
+.active-beat-section {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1.25rem;
+  background-color: var(--ff-color-surface);
+  border: 2px solid var(--ff-color-border);
+  border-radius: 0.5rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+}
+
+.active-beat-prompt {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--ff-color-text);
+  line-height: 1.4;
+}
+
+.active-beat-controls {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 100%;
+}
+
+.active-beat-feedback {
+  padding: 0.625rem 0.875rem;
+  border-radius: 0.375rem;
+  font-size: 0.9375rem;
+  line-height: 1.4;
+}
+
+.recovery-feedback {
+  background-color: #fef2f2;
+  border: 1px solid #fecaca;
+  color: #991b1b;
+}
+
+/* Interactive Controls (Decoupled from denominator, WCAG 2.2 SC 2.5.8) */
+.fraction-control {
+  min-width: var(--ff-min-target-size);
+  min-height: var(--ff-min-target-size);
+  padding: 0.625rem 1.25rem;
+  border-radius: 0.375rem;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.15s ease, border-color 0.15s ease;
+}
+
+.fraction-control:focus-visible {
+  outline: 3px solid var(--ff-color-border-focus);
+  outline-offset: 2px;
+}
+
+.control-btn {
+  background-color: var(--ff-btn-primary-bg);
+  color: var(--ff-btn-primary-text);
+  border: 1px solid var(--ff-btn-primary-bg);
+}
+
+.control-btn:hover {
+  background-color: var(--ff-btn-primary-hover);
+}
+
+.control-choice-fieldset {
+  border: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.control-legend {
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.control-choice-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.control-choice-btn {
+  background-color: var(--ff-btn-bg);
+  color: var(--ff-btn-text);
+  border: 1px solid var(--ff-btn-border);
+}
+
+.control-choice-btn:hover {
+  background-color: var(--ff-btn-hover-bg);
+}
+
+.control-numeric-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.control-label {
+  font-weight: 500;
+  font-size: 0.9375rem;
+}
+
+.control-input-group {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.control-numeric-input {
+  width: 6rem;
+  text-align: center;
+  font-size: 1.25rem;
+  border: 2px solid var(--ff-btn-border);
+  background-color: #ffffff;
+}
+
+.control-submit-btn {
+  background-color: var(--ff-btn-primary-bg);
+  color: var(--ff-btn-primary-text);
+  border: none;
+}
+
+/* Screen Reader Only Utility */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
