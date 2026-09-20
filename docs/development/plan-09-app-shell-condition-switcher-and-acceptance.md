@@ -1,11 +1,9 @@
 ---
 id: plan-09
 title: App Shell, Condition Switcher, and Phase 2 Acceptance
-status: draft
+status: in-progress
 depends_on: [plan-08]
 gate: "Owner gate. The deployed public exercise, the accessibility evidence, and the aesthetic rubric are presented for owner/teacher review. Only the owner declares the Phase 2 exit gate satisfied; the implementer may not, and neither may the orchestrator alone."
-superseded_by: null
-resolution: null
 summary: >-
   Assemble the first complete learner-facing episode: entry page, app shell,
   the reviewer-only design-condition switcher behind a gear icon, and the
