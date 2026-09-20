@@ -115,10 +115,10 @@ function sceneInput(state, overrides = {}) {
 }
 
 function deliverToStub(result, input, deliveries) {
-  assertSceneCurrent(result, input);
-  if (result.kind !== 'scene') throw new Error('capability refusal is not a renderable scene');
-  deliveries.push(result);
-  return result.meaning;
+  const admitted = assertSceneCurrent(result, input);
+  if (admitted.kind !== 'scene') throw new Error('capability refusal is not a renderable scene');
+  deliveries.push(admitted);
+  return admitted.meaning;
 }
 
 describe('Plan 06 semantic Scene Model', () => {
@@ -357,7 +357,7 @@ describe('Plan 06 semantic Scene Model', () => {
     expect(() => deliverToStub(scene, currentInput, deliveries))
       .toThrowError(expect.objectContaining({ code: 'STALE_SCENE' }));
     expect(deliveries).toEqual([]);
-    expect(assertSceneCurrent(scene, originalInput)).toBe(scene);
+    expect(assertSceneCurrent(scene, originalInput)).toEqual(scene);
   });
 
   it('rejects stale capability refusals before stub-consumer delivery', () => {
@@ -376,6 +376,126 @@ describe('Plan 06 semantic Scene Model', () => {
       deliveries,
     )).toThrowError(expect.objectContaining({ code: 'STALE_SCENE' }));
     expect(deliveries).toEqual([]);
+  });
+
+  it('accepts authentic JSON-round-tripped scenes and capability refusals', () => {
+    const sceneInputValue = sceneInput(afterOperation(canonicalInstance()));
+    const scene = projectScene(sceneInputValue);
+    const roundTrippedScene = JSON.parse(JSON.stringify(scene));
+    const admittedScene = assertSceneCurrent(roundTrippedScene, sceneInputValue);
+    expect(admittedScene).toEqual(scene);
+    expect(admittedScene).not.toBe(roundTrippedScene);
+    expect(Object.isFrozen(admittedScene)).toBe(true);
+    expect(Object.isFrozen(admittedScene.meaning.operation)).toBe(true);
+    expect(Object.isFrozen(admittedScene.meaning.operation.rawResult)).toBe(true);
+
+    let refusalState = atDecide();
+    refusalState = applyIntent(refusalState, {
+      type: 'propose-common-denominator',
+      proposed: whole(36),
+    });
+    const refusalInput = sceneInput(refusalState);
+    const refusal = projectScene(refusalInput);
+    const roundTrippedRefusal = JSON.parse(JSON.stringify(refusal));
+    const admittedRefusal = assertSceneCurrent(roundTrippedRefusal, refusalInput);
+    expect(admittedRefusal).toEqual(refusal);
+    expect(admittedRefusal).not.toBe(roundTrippedRefusal);
+    expect(Object.isFrozen(admittedRefusal)).toBe(true);
+  });
+
+  it('rejects tampered scene and refusal payloads even when their derivation key is retained', () => {
+    const operationInput = sceneInput(afterOperation(canonicalInstance()));
+    const operationScene = JSON.parse(JSON.stringify(projectScene(operationInput)));
+    operationScene.meaning.operation.rawResult = fraction(999, 1);
+    expect(() => assertSceneCurrent(operationScene, operationInput)).toThrowError(
+      expect.objectContaining({ code: 'SCENE_INTEGRITY' }),
+    );
+
+    const transitionInput = sceneInput(afterLeftConversion());
+    const transitionScene = JSON.parse(JSON.stringify(projectScene(transitionInput)));
+    transitionScene.meaning.transition.post.left = fraction(999, 1);
+    expect(() => assertSceneCurrent(transitionScene, transitionInput)).toThrowError(
+      expect.objectContaining({ code: 'SCENE_INTEGRITY' }),
+    );
+
+    const schemaTampered = JSON.parse(JSON.stringify(projectScene(operationInput)));
+    schemaTampered.schemaVersion = 'tampered.scene/v9';
+    expect(() => assertSceneCurrent(schemaTampered, operationInput)).toThrowError(
+      expect.objectContaining({ code: 'SCENE_INTEGRITY' }),
+    );
+
+    const kindTampered = JSON.parse(JSON.stringify(projectScene(operationInput)));
+    kindTampered.kind = 'capability-refusal';
+    expect(() => assertSceneCurrent(kindTampered, operationInput)).toThrowError(
+      expect.objectContaining({ code: 'SCENE_INTEGRITY' }),
+    );
+
+    let refusalState = atDecide();
+    refusalState = applyIntent(refusalState, {
+      type: 'propose-common-denominator',
+      proposed: whole(36),
+    });
+    const refusalInput = sceneInput(refusalState);
+    const refusalTampered = JSON.parse(JSON.stringify(projectScene(refusalInput)));
+    refusalTampered.continuation = { representationRole: 'number-line', route: 'invented' };
+    expect(() => assertSceneCurrent(refusalTampered, refusalInput)).toThrowError(
+      expect.objectContaining({ code: 'SCENE_INTEGRITY' }),
+    );
+
+    const refusalKindTampered = JSON.parse(JSON.stringify(projectScene(refusalInput)));
+    refusalKindTampered.kind = 'scene';
+    expect(() => assertSceneCurrent(refusalKindTampered, refusalInput)).toThrowError(
+      expect.objectContaining({ code: 'SCENE_INTEGRITY' }),
+    );
+
+    const malformed = JSON.parse(JSON.stringify(projectScene(operationInput)));
+    malformed.meaning.operation.rawResult = undefined;
+    expect(() => assertSceneCurrent(malformed, operationInput)).toThrowError(
+      expect.objectContaining({ code: 'INVALID_SCENE_RESULT' }),
+    );
+
+    const accessorTampered = JSON.parse(JSON.stringify(projectScene(operationInput)));
+    let getterReads = 0;
+    Object.defineProperty(accessorTampered.meaning.operation, 'rawResult', {
+      enumerable: true,
+      get() {
+        getterReads += 1;
+        return fraction(999, 1);
+      },
+    });
+    expect(() => assertSceneCurrent(accessorTampered, operationInput)).toThrowError(
+      expect.objectContaining({ code: 'INVALID_SCENE_RESULT' }),
+    );
+    expect(getterReads).toBe(0);
+
+    const symbolTampered = JSON.parse(JSON.stringify(projectScene(operationInput)));
+    symbolTampered.meaning[Symbol('tamper')] = 'ignored';
+    expect(() => assertSceneCurrent(symbolTampered, operationInput)).toThrowError(
+      expect.objectContaining({ code: 'INVALID_SCENE_RESULT' }),
+    );
+
+    const nonEnumerableTampered = JSON.parse(JSON.stringify(projectScene(operationInput)));
+    Object.defineProperty(nonEnumerableTampered.meaning, 'tamper', {
+      enumerable: false,
+      value: 'ignored',
+    });
+    expect(() => assertSceneCurrent(nonEnumerableTampered, operationInput)).toThrowError(
+      expect.objectContaining({ code: 'INVALID_SCENE_RESULT' }),
+    );
+
+    const arrayAccessorTampered = JSON.parse(JSON.stringify(projectScene(transitionInput)));
+    let arrayGetterReads = 0;
+    Object.defineProperty(arrayAccessorTampered.meaning.transition.changed, 0, {
+      enumerable: true,
+      get() {
+        arrayGetterReads += 1;
+        return 'left';
+      },
+    });
+    expect(() => assertSceneCurrent(arrayAccessorTampered, transitionInput)).toThrowError(
+      expect.objectContaining({ code: 'INVALID_SCENE_RESULT' }),
+    );
+    expect(arrayGetterReads).toBe(0);
   });
 
   it('binds freshness to every content fact consumed by the projection', () => {

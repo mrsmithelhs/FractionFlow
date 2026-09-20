@@ -78,27 +78,49 @@ function canonicalWireCopy(value, path = 'value', seen = new Set()) {
 
   let copy;
   if (Array.isArray(value)) {
+    const lengthDescriptor = Object.getOwnPropertyDescriptor(value, 'length');
+    if (!lengthDescriptor || !Object.prototype.hasOwnProperty.call(lengthDescriptor, 'value')) {
+      wireError(path, 'array length must be a data property');
+    }
+    const arrayLength = lengthDescriptor.value;
     for (const key of Reflect.ownKeys(value)) {
       if (key === 'length') continue;
       if (typeof key !== 'string' || !/^(0|[1-9]\d*)$/.test(key)
-        || Number(key) >= value.length || Number(key) >= 2 ** 32 - 1) {
+        || Number(key) >= arrayLength || Number(key) >= 2 ** 32 - 1) {
         wireError(path, 'arrays must contain only dense JSON index keys');
+      }
+      const descriptor = Object.getOwnPropertyDescriptor(value, key);
+      if (!descriptor || !descriptor.enumerable
+        || !Object.prototype.hasOwnProperty.call(descriptor, 'value')) {
+        wireError(`${path}[${key}]`, 'array entries must be enumerable data properties');
       }
     }
     copy = [];
-    for (let index = 0; index < value.length; index += 1) {
+    for (let index = 0; index < arrayLength; index += 1) {
       if (!Object.prototype.hasOwnProperty.call(value, index)) {
         wireError(`${path}[${index}]`, 'sparse arrays are not canonical JSON-wire data');
       }
-      copy[index] = canonicalWireCopy(value[index], `${path}[${index}]`, seen);
+      const descriptor = Object.getOwnPropertyDescriptor(value, String(index));
+      copy[index] = canonicalWireCopy(descriptor.value, `${path}[${index}]`, seen);
     }
   } else {
     if (!isPlainRecord(value) || Object.prototype.hasOwnProperty.call(value, 'toJSON')) {
       wireError(path, 'only plain records and arrays are allowed');
     }
     copy = Object.create(null);
+    for (const key of Reflect.ownKeys(value)) {
+      if (typeof key !== 'string') {
+        wireError(path, 'records must not contain symbol keys');
+      }
+      const descriptor = Object.getOwnPropertyDescriptor(value, key);
+      if (!descriptor || !descriptor.enumerable
+        || !Object.prototype.hasOwnProperty.call(descriptor, 'value')) {
+        wireError(`${path}.${key}`, 'record entries must be enumerable data properties');
+      }
+    }
     for (const key of Object.keys(value).sort()) {
-      copy[key] = canonicalWireCopy(value[key], `${path}.${key}`, seen);
+      const descriptor = Object.getOwnPropertyDescriptor(value, key);
+      copy[key] = canonicalWireCopy(descriptor.value, `${path}.${key}`, seen);
     }
   }
   seen.delete(value);
@@ -108,6 +130,21 @@ function canonicalWireCopy(value, path = 'value', seen = new Set()) {
 function canonicalWireSerialize(value, path = 'value') {
   const copy = canonicalWireCopy(value, path);
   return serializeCanonicalValue(copy);
+}
+
+function canonicalSceneResult(value) {
+  try {
+    const copy = canonicalWireCopy(value, 'scene result');
+    return {
+      copy,
+      serialized: serializeCanonicalValue(copy),
+    };
+  } catch (error) {
+    if (error instanceof SceneProjectionError && error.code === 'INVALID_SCENE_INPUT') {
+      throw new SceneProjectionError('INVALID_SCENE_RESULT', error.message);
+    }
+    throw error;
+  }
 }
 
 function serializeCanonicalValue(value) {
@@ -615,12 +652,13 @@ export function projectScene({ state, representationRole, presentationMode } = {
 
 export function assertSceneCurrent(sceneResult, { state, representationRole, presentationMode } = {}) {
   if (!sceneResult || typeof sceneResult !== 'object') {
-    throw new SceneProjectionError('STALE_SCENE', 'scene result is required');
+    throw new SceneProjectionError('INVALID_SCENE_RESULT', 'scene result is required');
   }
   assertStateShape(state);
   assertProjectionOptions({ representationRole, presentationMode });
   const current = derivationContext({ state, representationRole, presentationMode });
-  const sceneKey = sceneResult.derivation?.key ?? sceneResult.derivationKey;
+  const supplied = canonicalSceneResult(sceneResult);
+  const sceneKey = supplied.copy.derivation?.key ?? supplied.copy.derivationKey;
   if (sceneKey !== current.key) {
     throw new SceneProjectionError(
       'STALE_SCENE',
@@ -628,11 +666,16 @@ export function assertSceneCurrent(sceneResult, { state, representationRole, pre
       { expected: current.key, actual: sceneKey ?? null },
     );
   }
-  if (sceneResult.kind === 'capability-refusal') return sceneResult;
-  if (sceneResult.kind !== 'scene') {
-    throw new SceneProjectionError('STALE_SCENE', 'unknown scene result kind');
+
+  const expected = projectScene({ state, representationRole, presentationMode });
+  const expectedCanonical = canonicalWireSerialize(expected, 'expected scene result');
+  if (supplied.serialized !== expectedCanonical) {
+    throw new SceneProjectionError(
+      'SCENE_INTEGRITY',
+      'scene result payload does not match the canonical projection for the current inputs',
+    );
   }
-  return sceneResult;
+  return expected;
 }
 
 export function isSceneCurrent(sceneResult, input) {
