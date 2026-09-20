@@ -13,7 +13,7 @@ import { projectScene } from '../src/interaction/scene.js';
  * Access Parity & Participation-Floor Suite (Plan 08, Requirements 4, 5, 6)
  *
  * Evidences:
- * 1. Keyboard and Non-Drag Touch Parity per Decision (DECISION-010, DECISION-013).
+ * 1. Focus Reachability, Native Control Types & Non-Drag Touch Parity per Decision (DECISION-010, DECISION-013).
  * 2. Target Sizing & Denominator Decoupling (DECISION-010 WCAG 2.2 SC 2.5.8, DECISION-025).
  * 3. Completed-Beat Collapse Rule & Disclosure Trail (Finding R6, OQ-18, DECISION-014, DECISION-021 Criterion 1).
  * 4. Reduced-Motion Endpoint & Semantic Parity (DECISION-007, DECISION-009).
@@ -45,7 +45,7 @@ describe('Access Parity & Participation Floor (Plan 08)', () => {
     });
   }
 
-  describe('Requirement 4: Per-Decision Keyboard & Non-Drag Touch Parity', () => {
+  describe('Requirement 4: Per-Decision Focus Reachability, Native Control Types & Non-Drag Tap Parity', () => {
     const decisions = [
       {
         name: 'Decision 1 (acknowledge-encounter)',
@@ -54,6 +54,7 @@ describe('Access Parity & Participation Floor (Plan 08)', () => {
         triggerControl: (box) => {
           const btn = box.querySelector('button');
           expect(btn).toBeTruthy();
+          expect(['BUTTON', 'INPUT']).toContain(btn.tagName);
           expect(btn.tabIndex).toBeGreaterThanOrEqual(0);
           btn.click();
         },
@@ -65,6 +66,7 @@ describe('Access Parity & Participation Floor (Plan 08)', () => {
         triggerControl: (box) => {
           const btn = box.querySelectorAll('.control-choice-btn')[1]; // 'different'
           expect(btn).toBeTruthy();
+          expect(['BUTTON', 'INPUT']).toContain(btn.tagName);
           expect(btn.tabIndex).toBeGreaterThanOrEqual(0);
           btn.click();
         },
@@ -79,14 +81,18 @@ describe('Access Parity & Participation Floor (Plan 08)', () => {
         triggerControl: (box) => {
           const choiceBtn = box.querySelector('.control-choice-btn');
           if (choiceBtn) {
+            expect(['BUTTON', 'INPUT']).toContain(choiceBtn.tagName);
             expect(choiceBtn.tabIndex).toBeGreaterThanOrEqual(0);
             choiceBtn.click();
           } else {
             const input = box.querySelector('input');
             const submit = box.querySelector('.control-submit-btn') || box.querySelector('button');
             expect(input).toBeTruthy();
+            expect(['BUTTON', 'INPUT']).toContain(input.tagName);
             expect(input.tabIndex).toBeGreaterThanOrEqual(0);
             expect(submit).toBeTruthy();
+            expect(['BUTTON', 'INPUT']).toContain(submit.tagName);
+            expect(submit.tabIndex).toBeGreaterThanOrEqual(0);
             input.value = '12';
             submit.click();
           }
@@ -107,7 +113,11 @@ describe('Access Parity & Participation Floor (Plan 08)', () => {
           const input = box.querySelector('input');
           const submit = box.querySelector('.control-submit-btn');
           expect(input).toBeTruthy();
+          expect(['BUTTON', 'INPUT']).toContain(input.tagName);
+          expect(input.tabIndex).toBeGreaterThanOrEqual(0);
           expect(submit).toBeTruthy();
+          expect(['BUTTON', 'INPUT']).toContain(submit.tagName);
+          expect(submit.tabIndex).toBeGreaterThanOrEqual(0);
           input.value = '8';
           submit.click();
         },
@@ -131,7 +141,11 @@ describe('Access Parity & Participation Floor (Plan 08)', () => {
           const input = box.querySelector('input');
           const submit = box.querySelector('.control-submit-btn');
           expect(input).toBeTruthy();
+          expect(['BUTTON', 'INPUT']).toContain(input.tagName);
+          expect(input.tabIndex).toBeGreaterThanOrEqual(0);
           expect(submit).toBeTruthy();
+          expect(['BUTTON', 'INPUT']).toContain(submit.tagName);
+          expect(submit.tabIndex).toBeGreaterThanOrEqual(0);
           input.value = '3';
           submit.click();
         },
@@ -159,7 +173,11 @@ describe('Access Parity & Participation Floor (Plan 08)', () => {
           const input = box.querySelector('input');
           const submit = box.querySelector('.control-submit-btn');
           expect(input).toBeTruthy();
+          expect(['BUTTON', 'INPUT']).toContain(input.tagName);
+          expect(input.tabIndex).toBeGreaterThanOrEqual(0);
           expect(submit).toBeTruthy();
+          expect(['BUTTON', 'INPUT']).toContain(submit.tagName);
+          expect(submit.tabIndex).toBeGreaterThanOrEqual(0);
           input.value = '11';
           submit.click();
         },
@@ -190,6 +208,7 @@ describe('Access Parity & Participation Floor (Plan 08)', () => {
         triggerControl: (box) => {
           const btn = box.querySelector('button');
           expect(btn).toBeTruthy();
+          expect(['BUTTON', 'INPUT']).toContain(btn.tagName);
           expect(btn.tabIndex).toBeGreaterThanOrEqual(0);
           btn.click();
         },
@@ -224,6 +243,7 @@ describe('Access Parity & Participation Floor (Plan 08)', () => {
         triggerControl: (box) => {
           const btn = box.querySelector('.control-choice-btn');
           expect(btn).toBeTruthy();
+          expect(['BUTTON', 'INPUT']).toContain(btn.tagName);
           expect(btn.tabIndex).toBeGreaterThanOrEqual(0);
           btn.click();
         },
@@ -231,7 +251,7 @@ describe('Access Parity & Participation Floor (Plan 08)', () => {
     ];
 
     for (const d of decisions) {
-      it(`evidences keyboard and non-drag tap completion for ${d.name} across visual and linear paths`, () => {
+      it(`evidences focus reachability, native element type, and non-drag tap completion for ${d.name} across visual and linear paths`, () => {
         let ep = canonicalEpisode(null, d.name.includes('Decision 8'));
         ep = d.advanceTo(ep);
         const scene = resolveRenderableScene({ state: ep });
@@ -262,7 +282,7 @@ describe('Access Parity & Participation Floor (Plan 08)', () => {
       });
     }
 
-    it('evidences DECISION-026 check-the-premise reflection parity across visual and linear paths (Condition 6)', () => {
+    it('evidences focus reachability, native element type, and non-drag tap reflection parity for DECISION-026 check-the-premise across visual and linear paths (Condition 6)', () => {
       // Create episode with premise condition CM-01-P
       const premiseCondition = {
         id: 'phase2-bundle-premise',
@@ -311,6 +331,10 @@ describe('Access Parity & Participation Floor (Plan 08)', () => {
       expect(visualPrompt.textContent).toContain('same amount');
       const visualButtons = visualBox.querySelectorAll('.control-choice-btn');
       expect(visualButtons.length).toBe(2);
+      expect(['BUTTON', 'INPUT']).toContain(visualButtons[0].tagName);
+      expect(visualButtons[0].tabIndex).toBeGreaterThanOrEqual(0);
+      expect(['BUTTON', 'INPUT']).toContain(visualButtons[1].tagName);
+      expect(visualButtons[1].tabIndex).toBeGreaterThanOrEqual(0);
       expect(visualButtons[0].textContent).toContain('same amount');
       expect(visualButtons[1].textContent).toContain('amount changed');
       visualButtons[1].click(); // click 'no'
@@ -329,6 +353,10 @@ describe('Access Parity & Participation Floor (Plan 08)', () => {
       expect(linearPrompt.textContent).toContain('same amount');
       const linearButtons = linearBox.querySelectorAll('.control-choice-btn');
       expect(linearButtons.length).toBe(2);
+      expect(['BUTTON', 'INPUT']).toContain(linearButtons[0].tagName);
+      expect(linearButtons[0].tabIndex).toBeGreaterThanOrEqual(0);
+      expect(['BUTTON', 'INPUT']).toContain(linearButtons[1].tagName);
+      expect(linearButtons[1].tabIndex).toBeGreaterThanOrEqual(0);
       expect(linearButtons[0].textContent).toContain('same amount');
       expect(linearButtons[1].textContent).toContain('amount changed');
       linearButtons[0].click(); // click 'yes'
@@ -371,10 +399,13 @@ describe('Access Parity & Participation Floor (Plan 08)', () => {
 
       const input = beatBox.querySelector('.control-numeric-input');
       expect(input).toBeTruthy();
+      expect(['BUTTON', 'INPUT']).toContain(input.tagName);
       expect(input.tabIndex).toBeGreaterThanOrEqual(0);
 
       const submitBtn = beatBox.querySelector('.control-submit-btn');
       expect(submitBtn).toBeTruthy();
+      expect(['BUTTON', 'INPUT']).toContain(submitBtn.tagName);
+      expect(submitBtn.tabIndex).toBeGreaterThanOrEqual(0);
       expect(submitBtn.classList.contains('fraction-control')).toBe(true);
     });
   });
