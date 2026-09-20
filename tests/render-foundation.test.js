@@ -77,6 +77,12 @@ describe('Renderer Foundation & Shared Boundary (Plan 07)', () => {
     const root = barRenderer.getElement();
     expect(root.getAttribute('role')).toBe('img');
     expect(root.getAttribute('tabindex')).toBe('-1'); // not focusable
+    expect(root.querySelector('.fraction-bar-whole-label')).toBeNull();
+    expect(root.getAttribute('aria-label')).toContain('in 1 whole');
+    expect(root.querySelector('.fraction-bar-readout-numerator').textContent).toBe('2');
+    expect(root.querySelector('.fraction-bar-readout-divider')).toBeTruthy();
+    expect(root.querySelector('.fraction-bar-readout-denominator').textContent).toBe('3');
+    expect(root.querySelector('.fraction-bar-readout').getAttribute('aria-hidden')).toBe('true');
 
     const segments = root.querySelectorAll('.fraction-bar-segment');
     expect(segments.length).toBe(3); // 2/3 has 3 segments
@@ -88,6 +94,30 @@ describe('Renderer Foundation & Shared Boundary (Plan 07)', () => {
       expect(segment.tabIndex).toBe(-1);
       expect(segment.tagName).toBe('DIV');
     }
+  });
+
+  it('keeps the active beat before completed context while visual stays before symbolic', () => {
+    const episode = canonicalEpisode();
+    const container = doc.createElement('div');
+    const beatContainer = createBeatContainer({
+      container,
+      dispatchAction: () => {},
+    });
+    beatContainer.mount(resolveRenderableScene({ state: episode }));
+
+    expect([...container.querySelector('.episode-beat-container').children]
+      .map((child) => [
+        'render-visual-section',
+        'render-symbolic-section',
+        'active-beat-section',
+        'completed-beats-section',
+      ].find((className) => child.classList.contains(className))))
+      .toEqual([
+        'render-visual-section',
+        'render-symbolic-section',
+        'active-beat-section',
+        'completed-beats-section',
+      ]);
   });
 
   it('DECISION-014: strict beat-gated mounting — unreached beats and future values NEVER exist in DOM', () => {

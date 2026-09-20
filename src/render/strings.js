@@ -20,9 +20,8 @@ export const STRINGS = Object.freeze({
   encounter: Object.freeze({
     prompt: 'Look at these two fractions.',
     barAriaLabel: (side, num, den) => (
-      `${side === 'left' ? 'First' : 'Second'} fraction bar: ${num} of ${den} equal parts shaded.`
+      `${side === 'left' ? 'First' : 'Second'} fraction bar: ${num} of ${den} equal parts shaded in 1 whole.`
     ),
-    wholeLabel: '1 whole',
   }),
 
   notice: Object.freeze({

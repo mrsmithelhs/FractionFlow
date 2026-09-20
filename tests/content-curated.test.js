@@ -66,11 +66,12 @@ describe('Plan 03 curated synthetic content', () => {
     expect(validateProblemInstance(forged).valid).toBe(false);
   });
 
-  it('supplies correctness-free authored CM-01 matching choices for the ready subset', () => {
+  it('supplies correctness-free authored CM-01 matching choices per established denominator', () => {
     const instance = validateCuratedFixtures().find((entry) => (
       entry.fixture.id === 'curated-relatively-prime-addition-non-least'
     )).instance;
-    const choices = reflectionChoicesForInstance(instance);
+    const choices = reflectionChoicesForInstance(instance, '12');
+    const alternateChoices = reflectionChoicesForInstance(instance, '24');
 
     expect(choices).toHaveLength(3);
     expect(choices.map((choice) => choice.id)).toEqual(['match-a', 'match-b', 'match-c']);
@@ -78,5 +79,11 @@ describe('Plan 03 curated synthetic content', () => {
       .toEqual(['8/12', '7/12', '9/12']);
     expect(choices.every((choice) => !Object.prototype.hasOwnProperty.call(choice, 'correct'))).toBe(true);
     expect(Object.isFrozen(choices)).toBe(true);
+
+    expect(alternateChoices.map((choice) => `${choice.form.numerator}/${choice.form.denominator}`))
+      .toEqual(['16/24', '15/24', '17/24']);
+    expect(alternateChoices.every((choice) => !Object.prototype.hasOwnProperty.call(choice, 'correct'))).toBe(true);
+    expect(Object.isFrozen(alternateChoices)).toBe(true);
+    expect(reflectionChoicesForInstance(instance, '30')).toBe(null);
   });
 });

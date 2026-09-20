@@ -114,6 +114,30 @@ describe('Plan 09 app shell and upstream display switcher', () => {
     expect(root.querySelector('.app-completion-panel').hasAttribute('hidden')).toBe(false);
   });
 
+  it('serves the authored reflection set for the established twenty-fourths route', () => {
+    app.dispatch({ type: 'acknowledge-encounter' });
+    app.dispatch({ type: 'submit-notice', matchesUnits: false });
+    app.dispatch({ type: 'propose-common-denominator', proposed: whole(24) });
+    app.dispatch({ type: 'submit-equivalent-form', proposed: fraction(16, 24) });
+    app.dispatch({ type: 'submit-equivalent-form', proposed: fraction(6, 24) });
+    app.dispatch({ type: 'submit-operation-result', proposed: fraction(22, 24) });
+    app.dispatch({ type: 'submit-resolution', proposed: fraction(22, 24) });
+
+    expect(app.getState().beat).toBe('reflect');
+    expect([...root.querySelectorAll('.matching-choice-btn')]
+      .map((choice) => choice.getAttribute('aria-label')))
+      .toEqual([
+        'Bar with 16 of 24 equal parts shaded',
+        'Bar with 15 of 24 equal parts shaded',
+        'Bar with 17 of 24 equal parts shaded',
+      ]);
+
+    root.querySelectorAll('.matching-choice-btn')[1].click();
+    expect(app.getState().status).toBe('active');
+    root.querySelectorAll('.matching-choice-btn')[0].click();
+    expect(app.getState().status).toBe('resolved');
+  });
+
   it('can switch to the linear access path without changing the episode state', () => {
     const before = app.getState();
     root.querySelector('.app-view-controls .app-secondary-button').click();

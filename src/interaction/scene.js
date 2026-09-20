@@ -602,7 +602,10 @@ function sceneMeaning(state, representationRole, capability) {
     representationRole,
     condition: state.activeCondition,
     reflectionChoices: state.beat === 'reflect'
-      ? reflectionChoicesForInstance(state.content)
+      ? reflectionChoicesForInstance(
+        state.content,
+        state.established?.commonDenominator?.targetDenominator,
+      )
       : null,
     quantities: { left, right },
     unitRelationship: {

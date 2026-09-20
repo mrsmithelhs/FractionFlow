@@ -211,8 +211,8 @@ export function classifyResolutionResponse({ instance, targetDenominator, propos
  * Choice records remain correctness-free; the instructional layer compares the
  * selected authored form with the already-established equivalent form.
  */
-export function classifyReflectionResponse({ instance, targetForm, response }) {
-  const choices = reflectionChoicesForInstance(instance);
+export function classifyReflectionResponse({ instance, establishedDenominator, targetForm, response }) {
+  const choices = reflectionChoicesForInstance(instance, establishedDenominator);
   const selected = choices?.find((choice) => choice.id === response);
   if (!selected) {
     return {

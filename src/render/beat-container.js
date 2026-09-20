@@ -71,16 +71,16 @@ export function createBeatContainer({
     symbolicSectionEl.setAttribute('aria-label', 'Symbolic notation');
     rootEl.appendChild(symbolicSectionEl);
 
+    // Active beat section
+    activeBeatEl = document.createElement('section');
+    activeBeatEl.classList.add('active-beat-section');
+    rootEl.appendChild(activeBeatEl);
+
     // Completed beats section (collapsed summary context)
     completedBeatsEl = document.createElement('section');
     completedBeatsEl.classList.add('completed-beats-section');
     completedBeatsEl.setAttribute('aria-label', 'Previous steps');
     rootEl.appendChild(completedBeatsEl);
-
-    // Active beat section
-    activeBeatEl = document.createElement('section');
-    activeBeatEl.classList.add('active-beat-section');
-    rootEl.appendChild(activeBeatEl);
 
     // Initialize sub-renderers
     leftBarRenderer = createFractionBarRenderer({ side: 'left', container: leftBarBox, strings });

@@ -153,6 +153,15 @@ describe('Renderer Purity & Determinism by Construction (Requirement 2, Conditio
     expect(unshaded.length).toBe(12);
   });
 
+  it('rejects improper fractions instead of drawing a misleading one-whole bar', () => {
+    const scene = createSyntheticScene({ leftNum: '10', leftDen: '8' });
+    const container = doc.createElement('div');
+    const barRenderer = createFractionBarRenderer({ side: 'left', container });
+
+    expect(() => barRenderer.mount(scene)).toThrowError(TypeError);
+    expect(() => barRenderer.mount(scene)).toThrow(/outside the supported bar range/);
+  });
+
   it('proves by construction that symbolic renderer does not compute sums', () => {
     // When rawResult is null in the scene, the renderer never computes 2/3 + 1/4 = 11/12
     const beforeOperationScene = createSyntheticScene({
@@ -385,11 +394,11 @@ describe('Renderer Purity & Determinism by Construction (Requirement 2, Conditio
     expect(linearButtons).toEqual(['7', '19']);
 
     // 2. Inconsistent common unit and converted numerators:
-    // Common denominator '5' with converted numerators '13' and '29' for 2/3 and 1/4
+    // Common denominator '5' with authored numerators '4' and '1' for 2/3 and 1/4
     const sceneTransform = createSyntheticScene({
-      leftNum: '13',
+      leftNum: '4',
       leftDen: '5',
-      rightNum: '29',
+      rightNum: '1',
       rightDen: '5',
       beat: 'operate',
       commonUnit: { targetDenominator: '5' },
@@ -398,21 +407,21 @@ describe('Renderer Purity & Determinism by Construction (Requirement 2, Conditio
     beatContainer.update(sceneTransform);
     linearPath.update(sceneTransform);
 
-    // The operate input label must display '5', and completed summaries must display 13/5 and 29/5
+    // The operate input label must display '5', and completed summaries must display 4/5 and 1/5
     const visualLabel = containerVisual.querySelector('.control-label');
     expect(visualLabel.textContent).toContain('5');
     const linearPrompt = containerLinear.querySelector('.active-beat-prompt');
     expect(linearPrompt.textContent).toBeTruthy();
 
     const visualSummaries = Array.from(containerVisual.querySelectorAll('.completed-beat-summary')).map((s) => s.textContent);
-    expect(visualSummaries.some((text) => text.includes('13/5'))).toBe(true);
-    expect(visualSummaries.some((text) => text.includes('29/5'))).toBe(true);
+    expect(visualSummaries.some((text) => text.includes('4/5'))).toBe(true);
+    expect(visualSummaries.some((text) => text.includes('1/5'))).toBe(true);
 
     // 3. Arithmetically false sum: 99/5 instead of 42/5
     const sceneResolve = createSyntheticScene({
-      leftNum: '13',
+      leftNum: '4',
       leftDen: '5',
-      rightNum: '29',
+      rightNum: '1',
       rightDen: '5',
       rawSumNum: '99',
       rawSumDen: '5',

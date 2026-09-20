@@ -457,6 +457,7 @@ function handleReflect(state, intent) {
   if (state.activeCondition.connectionMaking !== 'CM-01-P') {
     const classification = classifyReflectionResponse({
       instance: state.content,
+      establishedDenominator: state.established.commonDenominator.targetDenominator,
       targetForm: state.established.conversions.left,
       response: intent.response,
     });

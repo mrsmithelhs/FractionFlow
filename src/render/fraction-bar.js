@@ -36,6 +36,13 @@ export function createFractionBarRenderer({
     const currentForm = quantityData.currentForm;
     const numerator = Number(currentForm.numerator);
     const denominator = Number(currentForm.denominator);
+    if (!Number.isSafeInteger(numerator)
+      || !Number.isSafeInteger(denominator)
+      || numerator < 0
+      || denominator <= 0
+      || numerator > denominator) {
+      throw new TypeError('fraction bar form is outside the supported bar range');
+    }
     const mode = scene.presentation.mode;
 
     const barAria = strings.encounter.barAriaLabel(side, numerator, denominator);
@@ -54,13 +61,6 @@ export function createFractionBarRenderer({
 
     // Clear and build bar contents
     rootEl.replaceChildren();
-
-    // Header label: whole boundary indicator (0 to 1)
-    const wholeLabelEl = document.createElement('div');
-    wholeLabelEl.classList.add('fraction-bar-whole-label');
-    wholeLabelEl.setAttribute('aria-hidden', 'true');
-    wholeLabelEl.textContent = strings.encounter.wholeLabel;
-    rootEl.appendChild(wholeLabelEl);
 
     // Fraction bar track
     const trackEl = document.createElement('div');
@@ -96,7 +96,17 @@ export function createFractionBarRenderer({
     const readoutEl = document.createElement('div');
     readoutEl.classList.add('fraction-bar-readout');
     readoutEl.setAttribute('aria-hidden', 'true');
-    readoutEl.textContent = `${numerator} / ${denominator}`;
+    const numeratorEl = document.createElement('span');
+    numeratorEl.classList.add('fraction-bar-readout-numerator');
+    numeratorEl.textContent = String(numerator);
+    const dividerEl = document.createElement('span');
+    dividerEl.classList.add('fraction-bar-readout-divider');
+    const denominatorEl = document.createElement('span');
+    denominatorEl.classList.add('fraction-bar-readout-denominator');
+    denominatorEl.textContent = String(denominator);
+    readoutEl.appendChild(numeratorEl);
+    readoutEl.appendChild(dividerEl);
+    readoutEl.appendChild(denominatorEl);
     rootEl.appendChild(readoutEl);
   }
 
