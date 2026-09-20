@@ -260,3 +260,120 @@ here. In particular, the trailing-`h1` question is **unverified**, not resolved.
 
 No deploy, push, public URL, public-access, or Requirement 3 acceptance claim is made. Packet status
 and the exit gate remain unchanged and owner/orchestrator-controlled.
+
+## 10. Repair 02 disposition
+
+Repair 02 was implemented as a bounded follow-up to the accepted Repair 01. Repair 01's
+composition, condition switcher, test work, addition-symbol correction, footer end state, and
+learner-surface fixes were not revisited. Requirement 3, the support ladder, DECISION-026
+reachability, deployment, push, and public-URL claims remain outside this repair.
+
+**Repair implementation commit:** `622b7f6` (`Repair Plan 09 route-specific reflection and bar layout`)
+
+### Changed files
+
+- `src/content/data/reflection-choices.js` — keyed authored CM-01 matching sets by fixture and
+  established denominator; added the reviewed twenty-fourths set.
+- `src/interaction/scene.js` — supplies the established denominator from instructional state to
+  the reflection-choice projection.
+- `src/interaction/classification.js` and `src/interaction/episode.js` — supply the same
+  state-derived denominator to interaction-layer reflection classification.
+- `src/render/fraction-bar.js` and `src/render/strings.js` — reject improper bar forms, remove the
+  decorative `1 whole` caption, add the whole context to the bar accessible name, and render the
+  readout as a stacked numerator/divider/denominator.
+- `src/render/beat-container.js` — orders visual, symbolic, active, and completed sections as
+  `render-visual-section`, `render-symbolic-section`, `active-beat-section`,
+  `completed-beats-section`.
+- `src/styles/render.css` — places the track and stacked readout in adjacent grid columns, keeps
+  the readout within the track height, and reduces only active-panel vertical padding to bring the
+  final matching choice above the fold. Interactive control sizing is unchanged.
+- `tests/app-shell.test.js`, `tests/content-curated.test.js`, `tests/render-foundation.test.js`,
+  and `tests/render-purity.test.js` — cover the 24ths route, missing-route behavior,
+  correctness-free records, section order, accessible bar labeling/readout structure, and the
+  improper-fraction guard. The existing renderer-purity fixture was kept meaningful with valid
+  one-whole forms while retaining its deliberately false symbolic result.
+
+### Acceptance checklist evidence
+
+| Repair 02 check | Evidence-bounded disposition |
+|---|---|
+| Authored choices are keyed by fixture and established denominator; a 24ths set exists and is served on the 24ths route | **Pass.** The content record now has separate `12` and `24` sets. The 24ths set is `16/24`, `15/24`, `17/24`. The app-shell test establishes `24`, enters `16/24`, `6/24`, and `22/24`, reaches reflection, observes those three labels, rejects the distractor, and resolves on `16/24`. |
+| Missing authored route stops/reports rather than falling back or generating choices | **Pass, fail-closed.** `reflectionChoicesForInstance(instance, '30')` returns `null`; the lookup contains no fixture-level fallback and no renderer generation. A visual reflection with no supplied set reaches the existing `MISSING_REFLECTION_CHOICES` render-contract error rather than mounting invented options. No permitted route lacked a set during this repair, so no stop condition was triggered. |
+| Records remain correctness-free; classification remains in interaction | **Pass.** Both authored sets contain only stable IDs and fraction forms. Tests assert no `correct` property. `classifyReflectionResponse()` selects the authored identity and compares it with the established form using existing exact-fraction logic; neither renderer performs classification. |
+| `1 WHOLE` is removed; `in 1 whole` is in the bar accessible name; no tooltip | **Pass.** The visible caption node and its unused style are gone. The bar label now says, for example, `First fraction bar: 2 of 3 equal parts shaded in 1 whole.` The render-foundation test asserts caption absence and accessible-name content. No tooltip was added. |
+| Readout is stacked beside the bar and fits within the track height | **Pass.** The bar is a two-column grid; track and readout share row 1, with the readout in column 2. The readout has separate numerator, divider, and denominator nodes, is decorative/`aria-hidden`, and measures **31px** against a **48px** track in the narrow rendered check. |
+| Segment widths at denominators 12, 24, and 30 at 360px; report anything below about 6px | **Pass; no stop condition.** The constrained 360px-width local rendered measurement reported a **222px** track and segment widths of **17.83px** at denominator 12, **8.92px** at 24, and **7.13px** at 30. The narrowest is above the approximately 6px reporting threshold. |
+| No interactive control shrank; DECISION-025 remains decoupled | **Pass.** The repair changes only the visual bar allocation and active-panel padding. `.fraction-control` retains its existing 44px minimum target variables and matching choices retain their existing 8rem minimum width and 5.5rem minimum height. Bar segments remain non-interactive display elements. |
+| Active precedes completed; visual precedes symbolic; completed remains mounted/inspectable | **Pass.** Direct-child order is visual → symbolic → active → completed. The completed section is still mounted and the existing details-disclosure test continues to open and inspect its summaries. |
+| `fraction-bar.js` throws on `numerator > denominator` | **Pass.** The renderer now throws `TypeError('fraction bar form is outside the supported bar range')` before rebuilding the DOM for unsafe/non-integral values, negative numerators, non-positive denominators, or improper fractions. `10/8` is covered by a test. `numerator === denominator` remains allowed; no mixed-number or two-whole behavior was added. |
+| Reflect-beat 360px measurement | **Pass for the constrained 360px-width/752px-fold rendered check.** First bar top: **101px**. Current-question section top: **347.78px**. Matching choice rectangles: **462.03–550.03px**, **562.03–650.03px**, and **662.03–750.03px**; **3 of 3** clear the 752px fold. |
+| No horizontal page overflow at 360px | **Pass for the app surface.** The narrow check measured `appClientWidth=360`, `appScrollWidth=360`, and `bodyScrollWidth=360`. The earlier accepted Repair 01 page-level 360px probe measured `documentElement.scrollWidth=345` and `body.scrollWidth=329`; Repair 02 changes do not add a wider page child. The temporary headless measurement backend had a 500px minimum outer CSS viewport, so its `documentElement.scrollWidth=485` is not used as a claim about a 360px viewport; the app/body-width evidence and the accepted page-level probe are the relevant bounded evidence. |
+| Required validation and clean tree | **Pass after report commit.** Full validation before the implementation commit: 18 test files / 210 tests passed; build passed with Vite 6.4.3 and 41 modules transformed; packet lint passed; `git diff --check` passed. The report commit and final status check remain to be completed. |
+| No deploy, push, public URL claim | **Pass.** No deployment, push, public URL, public-access probe, or Requirement 3 acceptance claim was made. |
+
+The learner-facing result stays appropriate for the intended ages 8–11: the visual path keeps
+concrete language such as `parts`, `bar`, and `same amount`; the learner sees a route-matched
+reflection task instead of a mathematically equivalent but instructionally mismatched denominator;
+and the smaller screen gives the current question and all three choices a calm, above-fold starting
+surface without shrinking the controls used to answer.
+
+### Branch A advisor consultation and complete disposition
+
+This repair has a real behavioral surface. Before considering Branch C, the complete callable
+runtime inventory was inspected and showed a depth-one reviewer child plus an independently
+callable explicit `gpt-5.6-sol` model override. Branch A was therefore required and performed.
+
+- **Reviewer child:** `01a0c0c4-e29c-7a20-8fc5-475e607dfb6f` (`Peirce`), depth one.
+- **Requested advisor model:** `gpt-5.6-sol`; the reviewer role used its fixed high-reasoning
+  setting. The reviewer reported that backend model/tier identity was not independently observable;
+  this report therefore records the requested Sol-class selection, not an unverified backend claim.
+- **Posture:** instruction-read-only with post-hoc verification. The brief was self-contained and
+  inlined the implementation artifact; it prohibited writes, status changes, child spawning,
+  deployment, and push.
+- **Immediate post-consultation status check:** `git status --short --branch` showed only the 12
+  expected Repair 02 source/test paths, with no reviewer-created files or Git metadata changes.
+- **Coarse cost:** one depth-one reviewer, one bounded wait sequence, and approximately two minutes
+  of additional wall-clock work. No Astra-class reviewer was requested for Repair 02.
+
+Finding-by-finding disposition:
+
+1. **Accepted and fixed — high confidence, low severity:** the reviewer found that runtime behavior
+   was covered but the artifact lacked direct assertions for caption removal, the updated accessible
+   name, stacked readout structure, and completed-section persistence. I independently checked the
+   existing completed-beat disclosure test and added the missing focused renderer assertions. The
+   resulting test-only change verifies caption absence, `in 1 whole`, the numerator/divider/
+   denominator nodes, and the decorative readout contract. No runtime behavior changed in response.
+2. **Rejected — high confidence:** the reviewer did not identify a missing authored route in the
+   permitted 12ths/24ths paths. The content test and end-to-end 24ths app test independently verify
+   both authored sets, while the explicit 30ths lookup returns `null`; therefore no stop/report
+   escalation beyond the fail-closed behavior was required.
+3. **Rejected — high confidence:** the reviewer did not identify renderer-side correctness or
+   denominator selection. The diff and tests show denominator lookup in content/scene/interaction
+   state flow, with exact-fraction comparison retained in `src/interaction/classification.js`.
+4. **Rejected — high confidence:** the reviewer did not identify a visual stop condition. The
+   measured narrowest segment is 7.13px, the readout is 31px inside a 48px track, all three choices
+   clear the fold, and control minimums are unchanged. No divider suppression or interactive-control
+   shrink was introduced.
+5. **Rejected — high confidence:** the reviewer did not identify scope expansion into Repair 01,
+   support-ladder implementation, DECISION-026 reachability, Requirement 3, mixed-number rendering,
+   deployment, push, or public-URL work. None appears in the artifact.
+
+The reviewer’s overall disposition was **no blocking issues found** and that the bounded Repair 02
+acceptance contract was satisfied. The reviewer’s non-blocking test-coverage concern was addressed
+within scope before the implementation commit.
+
+### Repair 02 verification commands
+
+| Check | Result |
+|---|---|
+| `node scripts/dev/plan-status.js check plan-09` | `RUNNABLE` preflight result before implementation |
+| `npm test -- --run` | **18 files, 210 tests passed** |
+| `npm run build` | **Passed**; Vite 6.4.3, 41 modules transformed |
+| `node scripts/dev/plan-status.js lint` | **Passed**: `lint: OK (no violations)` |
+| `git diff --check` | **Passed**; only informational LF/CRLF conversion warnings were emitted |
+| `git status --short --branch` immediately after advisor | **Expected Repair 02 paths only**; no advisor mutation |
+| Local browser route check | **Passed** at the 24ths route: bars and symbolic pane showed `16/24` and `6/24`; reflection offered `16/24`, `15/24`, `17/24`; wrong choice recovered and correct choice resolved |
+| Narrow rendered check | **Passed**; measurements recorded above; temporary harness removed |
+
+The packet status and exit gate remain unchanged and owner/orchestrator-controlled. The next
+authority-bearing step is orchestrator/owner review, not an automatic status advance.
