@@ -20,10 +20,13 @@ Authoritative packet status is `node scripts/dev/plan-status.js list` and the ge
 - `plan-05` (instructional engine plus representation eligibility): **complete**, accepted on
   2026-09-19 after a bounded replay-definition repair. Registered immutable definition identities,
   including the selective-reflection variant, now reconstruct exactly through a JSON replay envelope.
-- `plan-06` (Scene Model projection): **in progress, repair pending**. Its approved implementation
-  was delivered on 2026-09-19, but final orchestrator review found a scene-admission integrity
-  defect; one bounded repair must preserve the status and stop for another review.
-- `plan-07` through `plan-09`: **draft**, awaiting their dependencies and their own assignment gates.
+- `plan-06` (Scene Model projection): **complete**, accepted on 2026-09-19 after a bounded
+  scene-admission repair. The renderer-facing guard now admits only a complete canonical payload
+  matching a fresh projection of current inputs and returns that fresh frozen projection.
+- `plan-07` (renderer foundation and learner-facing strings): **in progress**. Its first required
+  action is the three-path mechanism-confirmation proposal; it may not build a visual/symbolic
+  boundary that expects the accessible linear path to attach later.
+- `plan-08` through `plan-09`: **draft**, awaiting their dependencies and their own assignment gates.
   The Phase 2 wave was drafted at `4bb2879` and revised at `4371c25` after a packet-wave review by the
   Codex orchestrator thread. All six of that review's recommendations were accepted.
 
@@ -145,28 +148,23 @@ variant is a distinct registered identity that JSON replay reconstructs exactly.
 found no remaining defect in the repaired boundary. The final resolution is recorded in the packet
 frontmatter.
 
-`plan-06` remains in progress and is **not accepted or complete**. Its pure Scene Model mechanism
-was approved with binding clarifications on 2026-09-19; see
-`reports/development/plan-06-scene-model-projection/mechanism-review.md`. The delivered projection
-correctly derives immutable scenes and detects a changed upstream source context, but
-`assertSceneCurrent()` currently trusts a supplied scene/refusal payload whenever its derivation key
-matches the current inputs. A scene that crossed a JSON/cache boundary can therefore have its
-semantic meaning, result kind, schema, transition, or refusal continuation forged while retaining a
-matching derivation key, and the advertised admission guard will accept it.
+`plan-06` is complete. The bounded repair corrected the admission-boundary defect found in final
+review: `assertSceneCurrent()` first rejects malformed or noncanonical caller data, checks source
+freshness, and then requires the complete canonical scene/refusal payload to equal a fresh
+`projectScene()` result for the same current inputs. It returns that fresh deeply frozen projection,
+not the caller's cache/JSON object. Direct tests cover authentic JSON round trips, forged operation
+results and transitions, schema and union-kind changes, refusal-continuation changes, accessors that
+must not run, hidden/symbol fields, and nested immutability. The focused suite was 22/22 and the full
+suite 155/155; build and lint passed. A fresh Branch A consultation against the repaired artifact and
+an independent final review found no blocking issue. Proxy traps remain an intentionally documented
+risk outside the ordinary JSON/cache boundary, not a reason to expand this packet.
 
-Assign one bounded Plan 06 repair: make the renderer-facing admission guard prove both source
-freshness **and** scene-result integrity. It must reject malformed/noncanonical results and a
-JSON-round-tripped result whose complete canonical scene/refusal payload differs from the projection
-of the supplied current inputs. Add positive round-trip tests and negative tampering tests for scene
-meaning (including an invented operation result and transition), result kind/schema, and refusal
-continuation. Preserve all existing architectural boundaries: no Plan 05/content/math mutation, no
-renderer/DOM/app/condition-switcher/deployment work, no packet-status change, and no push. The
-mechanism gate is not reopened. Because the repaired admission boundary has a real behavioral and
-integrity surface, run a fresh bounded Branch A advisor consultation against the repaired artifact;
-the earlier consultation is not evidence about the new guard. Then report and stop for final review.
-
-Two cautions for the implementation phase specifically. First, `plan-07`'s three-path gate is the
-wave's load-bearing review moment; approving a boundary that accounts only for the visual and symbolic
-paths would reintroduce the risk the split was created to remove. Second, `plan-08` is explicitly
-permitted to report that the `plan-07` boundary is wrong. That is a legitimate outcome and must not be
-treated as implementer failure or worked around silently.
+`plan-07` is now in progress and has no implementation authorization until its three-path mechanism
+proposal is accepted. Its gate is the load-bearing review moment for the wave: specify one shared
+scene-consumption, beat-mounting, and semantic boundary that the visual bar, symbolic, and accessible
+linear paths can all use, even though this packet builds only the first two. It must include the
+central learner-facing strings table and preserve the Plan 06 admission rule by using the returned
+canonical projection, not a caller-owned scene object. A two-path boundary with a vague promise to
+add linear access in `plan-08` is a failed proposal, not an acceptable deferral. `plan-08` is
+explicitly permitted to report that the boundary is wrong; that is legitimate evidence, never an
+implementer failure to conceal.

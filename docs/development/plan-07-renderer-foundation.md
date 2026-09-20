@@ -1,11 +1,9 @@
 ---
 id: plan-07
 title: Renderer Foundation and Learner-Facing Strings
-status: draft
+status: in-progress
 depends_on: [plan-06]
 gate: "Mechanism confirmation, and it must cover all three access paths. Before any renderer is built, the implementer proposes the shared scene-consumption boundary, the beat-mounting contract, and the semantic contract — specified so that the visual, symbolic, and accessible linear paths all satisfy it — plus the strings table shape, and stops for approval. A two-path design that the linear path is expected to join later is the failure this gate exists to prevent."
-superseded_by: null
-resolution: null
 summary: >-
   Build the renderer foundation in src/render/: the shared scene-consumption
   and beat-mounting contract, the centralized learner-facing strings table, the

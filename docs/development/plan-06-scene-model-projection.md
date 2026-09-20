@@ -1,7 +1,8 @@
 ---
 id: plan-06
 title: Scene Model Projection
-status: in-progress
+status: complete
+resolution: "Scene Model projection accepted after independent review; the renderer-facing guard now validates canonical payload integrity, rejects stale or forged scene/refusal snapshots, and returns a fresh frozen projection."
 depends_on: [plan-05]
 gate: "Mechanism confirmation before implementation: the implementer proposes the scene projection shape and the staleness/derivation rule, and stops for orchestrator approval. Still no DOM and no renderer."
 summary: >-
