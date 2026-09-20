@@ -1,7 +1,8 @@
 ---
 id: plan-07
 title: Renderer Foundation and Learner-Facing Strings
-status: in-progress
+status: complete
+resolution: "Renderer foundation, three-path boundary, strings catalog, display-only bar, symbolic path, discrete controls, and beat-gated mounting accepted after Repair 01 removed render-layer arithmetic and gated candidate denominators on support configuration; two test-quality findings carried into plan-08."
 depends_on: [plan-06]
 gate: "Mechanism confirmation, and it must cover all three access paths. Before any renderer is built, the implementer proposes the shared scene-consumption boundary, the beat-mounting contract, and the semantic contract — specified so that the visual, symbolic, and accessible linear paths all satisfy it — plus the strings table shape, and stops for approval. A two-path design that the linear path is expected to join later is the failure this gate exists to prevent."
 summary: >-

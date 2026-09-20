@@ -23,9 +23,13 @@ Authoritative packet status is `node scripts/dev/plan-status.js list` and the ge
 - `plan-06` (Scene Model projection): **complete**, accepted on 2026-09-19 after a bounded
   scene-admission repair. The renderer-facing guard now admits only a complete canonical payload
   matching a fresh projection of current inputs and returns that fresh frozen projection.
-- `plan-07` (renderer foundation and learner-facing strings): **in progress**. Its first required
-  action is the three-path mechanism-confirmation proposal; it may not build a visual/symbolic
-  boundary that expects the accessible linear path to attach later.
+- `plan-07` (renderer foundation and learner-facing strings): **complete**, accepted 2026-09-20
+  after Repair 01. The render layer had been deriving candidate common denominators by arithmetic and
+  duplicating the DECISION-011 ceiling; candidates now come from `candidateDenominatorsForInstance`
+  in `src/content/eligibility.js`, projected into `scene.meaning.unitRelationship.candidateDenominators`
+  and gated on both the `decide` beat and `support.dimensions.commonDenominator === high support`.
+  Two test-quality findings were carried into `plan-08`; see
+  `reports/development/plan-07-renderer-foundation/final-review.md`.
 - `plan-08` through `plan-09`: **draft**, awaiting their dependencies and their own assignment gates.
   The Phase 2 wave was drafted at `4bb2879` and revised at `4371c25` after a packet-wave review by the
   Codex orchestrator thread. All six of that review's recommendations were accepted.
@@ -110,7 +114,29 @@ and public URL.
   (OQ-17) — at most a calm message suggesting a teacher conversation. Explicitly not an obligation to
   teach basic arithmetic.
 
+## Carried Into plan-08 From the plan-07 Review
+
+Test-quality obligations, not code defects. Reasoning in
+`reports/development/plan-07-renderer-foundation/final-review.md`.
+
+1. **Replace the signature scan.** `tests/render-purity.test.js:352` is named for a general purity
+   guarantee but matches four literal regexes transcribed from the one defect found. Renaming a
+   variable defeats every assertion. A replacement must catch render-layer arithmetic written
+   differently from the original — or be dropped and said to be dropped, not kept narrow under a
+   broad name.
+2. **Make fail-first demonstrations real or omit them.** `tests/render-purity.test.js:381` writes
+   the defect into a string literal and asserts the literal matches a regex for it. It never invokes
+   the real scan and cannot fail. `plan-08` Requirement 3 demands the failing-first property for all
+   nine leakage invariants; read that as requiring demonstration against real prior content.
+
 ## Standing Cautions (expensive rediscoveries avoided)
+
+- **Watch for a test whose name asserts a general property while its body checks one instance.**
+  Three times in one packet: a purity suite named for renderer purity that covered two of five
+  modules and missed the one that computed; a static scan named for the absence of derived
+  mathematics that matched four literal regexes; a fail-first test that was tautologically true. Each
+  time the suite was green and the claim was false. Check which modules a test imports, and read the
+  body against the name before crediting it.
 
 - **The orchestrator's own recurring failure mode here has been hand-derived arithmetic.** A family
   sweep computed by hand omitted `maxCanonicalScaleFactor`, producing a wrong eligible set that was
@@ -159,12 +185,18 @@ suite 155/155; build and lint passed. A fresh Branch A consultation against the 
 an independent final review found no blocking issue. Proxy traps remain an intentionally documented
 risk outside the ordinary JSON/cache boundary, not a reason to expand this packet.
 
-`plan-07` is now in progress and has no implementation authorization until its three-path mechanism
-proposal is accepted. Its gate is the load-bearing review moment for the wave: specify one shared
-scene-consumption, beat-mounting, and semantic boundary that the visual bar, symbolic, and accessible
-linear paths can all use, even though this packet builds only the first two. It must include the
-central learner-facing strings table and preserve the Plan 06 admission rule by using the returned
-canonical projection, not a caller-owned scene object. A two-path boundary with a vague promise to
-add linear access in `plan-08` is a failed proposal, not an acceptable deferral. `plan-08` is
-explicitly permitted to report that the boundary is wrong; that is legitimate evidence, never an
-implementer failure to conceal.
+'`plan-07` is complete as of 2026-09-20. Its three-path gate did the job it was written for: the
+proposal had to ratify in writing that the accessible linear path is an access modality over the
+same scene rather than a distinct representation role, and to answer whether it inherits the
+fraction-bar capability verdict. It does, and correctly so — an ineligible bar path always carries a
+symbolic continuation, so every learner transitions together rather than any one being locked out.
+
+Repair 01 then removed render-layer arithmetic that had escaped a green 171-test suite. See the
+carried-forward findings above before running `plan-08`.
+
+`plan-08` is next. It needs no owner decision to start, but it is the highest-risk packet in the
+project and deserves a deliberate start. Two things to hold firmly. It is **explicitly permitted to
+report that the `plan-07` boundary is wrong** — named in its own gate, legitimate evidence, never an
+implementer failure to conceal, and the first real test of the access-modality argument against an
+implementation. And its nine fail-first leakage invariants must be demonstrated against real prior
+content rather than a restatement of the defect inside the test.
