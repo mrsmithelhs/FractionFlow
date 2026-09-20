@@ -1,7 +1,8 @@
 ---
 id: plan-08
 title: Participation Floor and Access Parity
-status: in-progress
+status: complete
+resolution: "Accessible linear path, nine fail-first leakage invariants across both paths, focus-reachability and native-element access parity, completed-beat collapse rule, and participation-floor evidence accepted after Repair 01 corrected claim strength in the human-review column, the keyboard test name, and the rubric self-assessment; built against WCAG 2.2 AA with no conformance claim."
 depends_on: [plan-07]
 gate: "Mechanism confirmation for the completed-beat collapse rule and the linear-path conformance approach, then orchestrator review. This packet may report that the plan-07 boundary is wrong; that is a legitimate outcome and not a failure, and it stops for orchestrator disposition rather than retrofitting silently."
 summary: >-

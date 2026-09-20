@@ -30,9 +30,13 @@ Authoritative packet status is `node scripts/dev/plan-status.js list` and the ge
   and gated on both the `decide` beat and `support.dimensions.commonDenominator === high support`.
   Two test-quality findings were carried into `plan-08`; see
   `reports/development/plan-07-renderer-foundation/final-review.md`.
-- `plan-08` through `plan-09`: **draft**, awaiting their dependencies and their own assignment gates.
-  The Phase 2 wave was drafted at `4bb2879` and revised at `4371c25` after a packet-wave review by the
-  Codex orchestrator thread. All six of that review's recommendations were accepted.
+- `plan-08` (participation floor and access parity): **complete**, accepted 2026-09-20 after a
+  documentation-only Repair 01. Delivered the accessible linear path on the `plan-07` boundary
+  without renegotiating it, nine fail-first leakage invariants across both paths, focus-reachability
+  and native-element access parity, and the completed-beat collapse rule. See
+  `reports/development/plan-08-participation-floor-and-access-parity/final-review.md`.
+- `plan-09` (app shell, condition switcher, deployed acceptance): **draft**. The last packet of the
+  Phase 2 wave and the one carrying the owner gate.
 
 ## The Specification Phase Closed on 2026-09-19
 
@@ -114,29 +118,33 @@ and public URL.
   (OQ-17) — at most a calm message suggesting a teacher conversation. Explicitly not an obligation to
   teach basic arithmetic.
 
-## Carried Into plan-08 From the plan-07 Review
+## Carried Into plan-09
 
-Test-quality obligations, not code defects. Reasoning in
-`reports/development/plan-07-renderer-foundation/final-review.md`.
-
-1. **Replace the signature scan.** `tests/render-purity.test.js:352` is named for a general purity
-   guarantee but matches four literal regexes transcribed from the one defect found. Renaming a
-   variable defeats every assertion. A replacement must catch render-layer arithmetic written
-   differently from the original — or be dropped and said to be dropped, not kept narrow under a
-   broad name.
-2. **Make fail-first demonstrations real or omit them.** `tests/render-purity.test.js:381` writes
-   the defect into a string literal and asserts the literal matches a regex for it. It never invokes
-   the real scan and cannot fail. `plan-08` Requirement 3 demands the failing-first property for all
-   nine leakage invariants; read that as requiring demonstration against real prior content.
+1. **Two figures are design intent, not evidence.** The collapse rule's 48px folded height and 85%
+   active-content claims were correctly labeled unmeasurable in `plan-08`, since the mock DOM has no
+   layout geometry. `plan-09` runs in a real browser and owns turning them into measurements or
+   dropping them.
+2. **The DECISION-021 rubric is structurally self-assessed, not evaluated.** `plan-08` labeled it so
+   explicitly and stated that `plan-09` does not inherit "rubric satisfied." The rubric is an
+   acceptance-gate instrument with owner/teacher review as its authority, and `plan-09` is that gate.
+3. **Enter/Space activation is untested.** `plan-08` verifies focus reachability and native element
+   types; actual key activation is browser behavior deferred here.
+4. **Screen readers, real viewports, and contrast tooling are all untested.** `plan-08` Section 8
+   separates exercised environments from the DECISION-009 target matrix honestly. `plan-09` is the
+   first packet with a browser.
 
 ## Standing Cautions (expensive rediscoveries avoided)
 
-- **Watch for a test whose name asserts a general property while its body checks one instance.**
-  Three times in one packet: a purity suite named for renderer purity that covered two of five
-  modules and missed the one that computed; a static scan named for the absence of derived
-  mathematics that matched four literal regexes; a fail-first test that was tautologically true. Each
-  time the suite was green and the claim was false. Check which modules a test imports, and read the
-  body against the name before crediting it.
+- **Watch for a label that promises more than its body delivers — now six instances across
+  `plan-07` and `plan-08`, with no decline in rate.** A purity suite named for renderer purity that
+  imported two of five modules and missed the one that computed; a static scan named for the absence
+  of derived mathematics that matched four literal regexes; a "fail-first" test that wrote the defect
+  into a string literal and asserted the literal matched a regex for it; a keyboard-*completion* test
+  asserting only `tabIndex`; a column headed "Human Review Evidence" listing reviews that never
+  happened; a rubric marked "Satisfied" on criteria the same report called unmeasurable. Every time
+  the suite was green and the underlying code was sound — the defect was always the distance between
+  a claim and its evidence. **Read the body against the name, and check which modules a test actually
+  imports, before crediting any general claim.** Assume it recurs in `plan-09`.
 
 - **The orchestrator's own recurring failure mode here has been hand-derived arithmetic.** A family
   sweep computed by hand omitted `maxCanonicalScaleFactor`, producing a wrong eligible set that was
@@ -167,36 +175,20 @@ Test-quality obligations, not code defects. Reasoning in
 
 ## Next Orchestration Move
 
-`plan-05` is complete. The final repair replaced loose caller-supplied episode-definition semantics
-with an immutable registered-definition authority: every accepted definition now has a unique recorded
-identity, altered or non-wire definition data fails before construction, and the reflection-enabled
-variant is a distinct registered identity that JSON replay reconstructs exactly. Independent review
-found no remaining defect in the repaired boundary. The final resolution is recorded in the packet
-frontmatter.
+`plan-09` is the last packet of the Phase 2 wave and the only one carrying an **owner** gate. It
+composes the shell and the reviewer-only condition switcher, then exercises the slice at the public
+GitHub Pages URL as roadmap §16 requires — the first time real application behavior crosses the
+deployment path that `plan-01` proved only for a static page.
 
-`plan-06` is complete. The bounded repair corrected the admission-boundary defect found in final
-review: `assertSceneCurrent()` first rejects malformed or noncanonical caller data, checks source
-freshness, and then requires the complete canonical scene/refusal payload to equal a fresh
-`projectScene()` result for the same current inputs. It returns that fresh deeply frozen projection,
-not the caller's cache/JSON object. Direct tests cover authentic JSON round trips, forged operation
-results and transitions, schema and union-kind changes, refusal-continuation changes, accessors that
-must not run, hidden/symbol fields, and nested immutability. The focused suite was 22/22 and the full
-suite 155/155; build and lint passed. A fresh Branch A consultation against the repaired artifact and
-an independent final review found no blocking issue. Proxy traps remain an intentionally documented
-risk outside the ordinary JSON/cache boundary, not a reason to expand this packet.
+Three things to hold when it runs:
 
-'`plan-07` is complete as of 2026-09-20. Its three-path gate did the job it was written for: the
-proposal had to ratify in writing that the accessible linear path is an access modality over the
-same scene rather than a distinct representation role, and to answer whether it inherits the
-fraction-bar capability verdict. It does, and correctly so — an ineligible bar path always carries a
-symbolic continuation, so every learner transitions together rather than any one being locked out.
+- **Publishing is outward-facing.** The packet requires owner confirmation before the first deploy of
+  application behavior, and push authority is separately owner-gated. Neither is a formality.
+- **Only the owner declares the exit gate satisfied**, via a dated disposition naming the reviewed
+  acceptance-evidence artifact, the deployed revision, and the public URL. The implementer stops at
+  "ready for orchestrator review"; the orchestrator may set `delivered` and verify, and that is all.
+- **It is the first packet with a browser**, so it inherits everything the headless packets could not
+  measure. See "Carried Into plan-09" above.
 
-Repair 01 then removed render-layer arithmetic that had escaped a green 171-test suite. See the
-carried-forward findings above before running `plan-08`.
-
-`plan-08` is next. It needs no owner decision to start, but it is the highest-risk packet in the
-project and deserves a deliberate start. Two things to hold firmly. It is **explicitly permitted to
-report that the `plan-07` boundary is wrong** — named in its own gate, legitimate evidence, never an
-implementer failure to conceal, and the first real test of the access-modality argument against an
-implementation. And its nine fail-first leakage invariants must be demonstrated against real prior
-content rather than a restatement of the defect inside the test.
+Per the owner convention, report board state and needed owner action on completion, then advance the
+next packet if it needs no owner decision. Never push without explicit authorization.
