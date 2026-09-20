@@ -144,11 +144,14 @@ variant is a distinct registered identity that JSON replay reconstructs exactly.
 found no remaining defect in the repaired boundary. The final resolution is recorded in the packet
 frontmatter.
 
-`plan-06` is now in progress. Before it writes source, its implementer must run the packet preflight,
-propose the pure Scene Model projection mechanism, and stop for orchestrator/owner approval. It must
-consume the completed Plan 05 instructional state and eligibility verdicts rather than duplicating
-math, content, eligibility, or episode-transition logic. Its gate does not authorize DOM, rendering,
-application-shell, deployment, condition-switching, or packet-status work.
+`plan-06` is now in progress. Its pure Scene Model projection mechanism was approved with binding
+clarifications on 2026-09-19; see
+`reports/development/plan-06-scene-model-projection/mechanism-review.md`. The implementer may now
+write only the approved projection, tests, exports, and progress report. It consumes the completed
+Plan 05 instructional state and eligibility verdicts rather than duplicating math, content,
+eligibility, or episode-transition logic. The approval does not authorize DOM, rendering,
+application-shell, deployment, runtime condition-switching, or packet-status work. Delivery requires
+the declared Branch A advisor review and a final orchestrator gate.
 
 Two cautions for the implementation phase specifically. First, `plan-07`'s three-path gate is the
 wave's load-bearing review moment; approving a boundary that accounts only for the visual and symbolic
