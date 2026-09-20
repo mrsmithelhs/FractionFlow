@@ -15,6 +15,11 @@ status change, mathematical computation, eligibility evaluator, or instructional
 The implementation is in `src/interaction/scene.js`, exported through the existing interaction
 barrel, with contract coverage in `tests/interaction-scene.test.js`.
 
+The bounded orchestration repair is now included. `assertSceneCurrent()` validates the supplied
+snapshot as canonical wire data, compares its complete canonical payload with a fresh projection of
+the current inputs, and returns that fresh frozen projection on success. It therefore does not pass
+through a mutable JSON/cache object merely because its derivation key is authentic.
+
 ## Mechanism approval and implementation shape
 
 The mechanism proposal was approved by orchestration in
@@ -31,16 +36,19 @@ The mechanism proposal was approved by orchestration in
 - `scene.derivation` carries a safe source context and a recursively key-sorted canonical
   JSON-wire derivation key. It is a disposable snapshot, not a source of truth.
 - `assertSceneCurrent(sceneResult, input)` is the enforceable delivery guard. A consumer must call
-  it before accepting either a renderable scene or a refusal. `isSceneCurrent` provides the boolean
-  form for admission checks.
+  it before accepting either a renderable scene or a refusal. The guard rejects malformed or
+  noncanonical payloads, compares the entire canonical payload with a fresh projection, and returns
+  that fresh frozen projection. `isSceneCurrent` provides the boolean form for source-freshness
+  checks.
 
 The canonical serializer does not use ordinary object `JSON.stringify()` as its derivation key. It
-validates JSON-wire values, rejects unsupported/circular/sparse data, safely preserves prototype-like
-JSON keys, recursively sorts record keys, and serializes arrays in index order. The source context
-binds every content fact the projection consumes: operand exact/current/source forms, capability
-verdicts, alternate-representation recommendation, and result `wholeSpan` only after Plan 05 has
-established operation/result meaning. This prevents content mutation from silently making a scene
-stale while keeping unreached result data out of the renderable scene before establishment.
+validates JSON-wire values, rejects unsupported/circular/sparse/accessor/non-enumerable data and
+symbol keys, safely preserves prototype-like JSON keys, recursively sorts record keys, and
+serializes arrays in index order. The source context binds every content fact the projection
+consumes: operand exact/current/source forms, capability verdicts, alternate-representation
+recommendation, and result `wholeSpan` only after Plan 05 has established operation/result meaning.
+This prevents content mutation from silently making a scene stale while keeping unreached result
+data out of the renderable scene before establishment.
 
 ## Fail-closed capability behavior
 
@@ -80,7 +88,10 @@ The projection uses the explicit Plan 05 role-to-verdict mapping and never recom
 4. **Stale and unsupported inputs are stopped before a consumer.** Stub-delivery tests call
    `assertSceneCurrent` before delivery and prove that stale scenes, stale capability refusals, and
    capability refusals never enter the delivery list. Role and presentation changes also invalidate
-   the derivation key.
+   the derivation key. Authentic JSON-round-tripped scenes/refusals are accepted only when their
+   complete canonical payload matches a fresh projection; the admitted return value is fresh and
+   frozen. Invented results, altered transitions, schema, union kinds, refusal continuations,
+   accessors, symbols, non-enumerable properties, and accessor array entries are rejected.
 
 5. **Semantic linear alternative contract.** Tests assert the presence of quantity, denominator
    unit, numerator count, stable whole, current task, available action, status, and known
@@ -137,11 +148,45 @@ override were callable. Branch A therefore ran at depth one.
 The consultation was advisory only; it did not set packet status or replace the orchestrator gate.
 All repairs were made by the primary implementer, followed by the full validation suite.
 
+### Repair-specific fresh Branch A consultation
+
+Because the admission-boundary repair introduced new integrity behavior, a second fresh Branch A
+consultation was run against the final repaired artifact; the original consultation was not treated
+as evidence for this guard.
+
+- **Requested advisor model:** `gpt-6-astra`.
+- **Observed advisor model:** the reviewer identified itself as Codex/GPT-6 and stated that the
+  exact backend model identifier, build, and runtime version were unavailable. This report does not
+  infer the requested variant from that description.
+- **Reviewer:** bounded reviewer child `01a0bca5-af59-7761-ac20-85c945a980d5`.
+- **Brief/posture:** depth one, inline final source/tests, explicit no-write/no-status/no-report/no-
+  child instructions. Structural read-only was not exposed as verifiable metadata; posture remains
+  **instruction-read-only with post-hoc verification**.
+- **Immediate post-consultation status check:** only the two expected Plan 06 source/test paths were
+  modified (`src/interaction/scene.js` and `tests/interaction-scene.test.js`); no report, packet,
+  or child-created changes appeared.
+- **Coarse consultation cost:** one fresh depth-one review and two bounded wait calls (the first
+  timed out before the second returned the completed disposition); the runtime did not provide a
+  reliable elapsed-time measurement, so none is inferred.
+
+### Repair-specific findings and disposition
+
+| Reviewer claim | Independent verification and disposition | Resulting change |
+|---|---|---|
+| P1: enumerable accessors could return an authentic value during comparison and a forged value after the guard returned the caller object. | Accepted and independently traced against the pre-final repair. This was a real integrity bypass. | The canonical wire copier now requires enumerable own data descriptors for records and array entries, rejects accessors, symbols, non-enumerable properties, sparse/extra array keys, and array accessors before reading values. `assertSceneCurrent` returns a fresh frozen projection rather than the caller-supplied object. Getter non-invocation, symbol, non-enumerable, array-accessor, and nested-freeze tests were added. |
+| P2: the repair needed explicit union-kind tampering tests in addition to schema tampering. | Accepted as a required coverage correction. Full-payload comparison already rejects ordinary kind tampering, but the stated repair contract required direct tests. | Added scene-to-capability-refusal and capability-refusal-to-scene tampering cases with the authentic derivation information retained. |
+| Residual: several canonical rejection branches were not independently tested in the final inline review, including cycles, non-finite numbers, negative zero, custom prototypes, and extra array properties. | Not accepted as a new delivery blocker. The branches are covered by the canonical validation structure and earlier malformed-wire tests; the final reviewer found no concrete fault. They remain follow-up coverage opportunities. | No scope expansion. |
+| Residual: proxy traps may execute while inspecting arbitrary live objects. | Accepted as a documented residual risk, not a JSON/cache-boundary defect. There is no portable JavaScript test for “is a Proxy”; the contract accepts canonical data objects and explicitly rejects ordinary accessors. | No scope expansion; recorded under remaining risks. |
+| Review-scope limitation: imported freeze/content/episode implementations were not re-reviewed by the fresh child. | Rejected as a finding against this bounded repair. Those upstream contracts were already part of the completed Plan 05 dependency and were not changed. | No source change. |
+
+The final reviewer found no blocking issue requiring another implementation change and did not modify
+the repository.
+
 ## Validation commands and results
 
 - `node scripts/dev/plan-status.js check plan-06` → `RUNNABLE: plan-06 is ready to implement`.
-- `npx vitest run tests/interaction-scene.test.js` → 20 tests passed.
-- `npm test` → 12 test files and 153 tests passed.
+- `npx vitest run tests/interaction-scene.test.js` → 22 tests passed.
+- `npm test` → 12 test files and 155 tests passed.
 - `npm run build` → Vite production build passed.
 - `node scripts/dev/plan-status.js lint` → `lint: OK (no violations)`.
 - `git diff --check` → no whitespace errors. Git emitted only the existing LF/CRLF normalization
@@ -153,11 +198,12 @@ All repairs were made by the primary implementer, followed by the full validatio
 
 - `caf56c2 feat: add plan-06 scene projection`
 - `c88212f test: tighten plan-06 scene guards`
+- `9018dd0 fix: verify scene payload integrity before delivery`
 
-Only the approved Plan 06 implementation and test paths were committed before this report. The
-progress report is the final scoped repository artifact and will be committed separately. No push
-was performed. Packet frontmatter, generated packet indexes, Plan 05 source, render/app paths, and
-deployment configuration were not changed.
+The repaired guard and its tests are committed within the approved Plan 06 implementation paths.
+This progress report is the final scoped repository artifact for this repair and will be committed
+separately. No push was performed. Packet frontmatter, generated packet indexes, Plan 05 source,
+render/app paths, and deployment configuration were not changed.
 
 ## Problems and remaining risks
 
@@ -167,11 +213,15 @@ deployment configuration were not changed.
 - Git emitted a permission warning while reading the user's global ignore file; it did not affect
   staging, tests, lint, or the final scope check.
 - Plan 07 must preserve the `assertSceneCurrent` admission boundary before any renderer receives a
-  scene or capability refusal. This packet deliberately provides only a stub consumer.
+  scene or capability refusal and must use the guard's returned fresh projection. This packet
+  deliberately provides only a stub consumer.
 - Condition fixtures demonstrate one schema without creating the future runtime condition system;
   Plan 09 remains responsible for switching/persistence/labels.
 - The advisor could report only a runtime-family description rather than the exact requested model
   identifier; that limitation is recorded rather than inferred away.
+- The guard inspects live JavaScript objects before accepting them. Proxy traps can have side effects
+  during prototype/key/descriptor inspection; proxy-specific behavior is outside the canonical
+  JSON/cache-boundary contract and remains untested.
 
 The implementation is ready for orchestrator artifact review. The orchestrator/owner must decide
 packet lifecycle status; this report does not declare Plan 06 complete.
