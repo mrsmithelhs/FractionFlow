@@ -658,4 +658,23 @@ export function episodeStateSnapshot(state) {
   return deepFreeze(stateSnapshot(state));
 }
 
+/**
+ * Replace the upstream design condition without resetting the episode.
+ *
+ * A condition is presentation/instruction configuration, not learner work. It
+ * therefore does not become a learner intent and does not advance the math or
+ * instructional revision. The replay envelope records the resulting active
+ * condition when the episode is exported.
+ */
+export function withActiveCondition(state, activeCondition) {
+  if (!state || state.schemaVersion !== 'fractionflow.episode-state/v1') {
+    throw new EpisodeIntentError('INVALID_EPISODE_STATE', 'state is not a Plan 05 episode state');
+  }
+  const normalizedCondition = validateActiveCondition(activeCondition);
+  return deepFreeze({
+    ...state,
+    activeCondition: normalizedCondition,
+  });
+}
+
 export { evaluateProposedPathEligibility };

@@ -208,6 +208,18 @@ export function createBeatContainer({
     const controlsContainer = document.createElement('div');
     controlsContainer.classList.add('active-beat-controls');
 
+    if (scene.meaning.status.episode === 'resolved') {
+      promptText.textContent = strings.resolve.complete || 'You finished this problem.';
+      const completeEl = document.createElement('p');
+      completeEl.classList.add('resolve-complete');
+      completeEl.textContent = strings.resolve.complete || 'You finished this problem.';
+      controlsContainer.appendChild(completeEl);
+      promptHeader.appendChild(promptText);
+      activeBeatEl.appendChild(promptHeader);
+      activeBeatEl.appendChild(controlsContainer);
+      return;
+    }
+
     // Local recovery feedback (Quality doc §16, §63)
     if (recovery && recovery.beat === beat) {
       const recoveryEl = document.createElement('div');
@@ -222,6 +234,8 @@ export function createBeatContainer({
         recoveryEl.textContent = strings.transform.errorNumerator;
       } else if (recovery.classification.kind === 'incorrect-operation') {
         recoveryEl.textContent = strings.operate.errorArithmetic;
+      } else if (recovery.classification.kind === 'incorrect-notice') {
+        recoveryEl.textContent = strings.notice.feedbackDiff;
       } else if (recovery.classification.kind === 'incorrect') {
         const leftDen = scene.meaning.quantities.left.unit.denominator;
         const rightDen = scene.meaning.quantities.right.unit.denominator;
@@ -393,7 +407,9 @@ export function createBeatContainer({
         controlsContainer.appendChild(summaryEl);
 
         const nextBtn = createButton({
-          label: strings.resolve.continueButton,
+          label: scene.meaning.currentTask.promptId?.includes('reflect')
+            ? (strings.resolve.continueReflectionButton || strings.resolve.continueButton)
+            : strings.resolve.continueButton,
           onClick: () => {
             dispatchAction({
               type: 'submit-resolution',

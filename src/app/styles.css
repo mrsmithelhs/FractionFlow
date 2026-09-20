@@ -1,0 +1,224 @@
+.fractionflow-app {
+  --app-bg: #f5f7fb;
+  --app-surface: #ffffff;
+  --app-ink: #14213d;
+  --app-muted: #53627a;
+  --app-border: #d7deea;
+  --app-accent: #275dad;
+  --app-accent-soft: #eaf1ff;
+  min-height: 100vh;
+  padding: clamp(1rem, 3vw, 2.75rem);
+  color: var(--app-ink);
+  background: var(--app-bg);
+  font-family: var(--ff-font-family);
+}
+
+/* Keep app-only panels out of the visual and accessibility flow when closed. */
+.fractionflow-app [hidden] {
+  display: none !important;
+}
+
+.app-header,
+.app-episode,
+.app-introduction,
+.app-display-status {
+  width: min(100%, 68rem);
+  margin-inline: auto;
+}
+
+.app-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.app-title-block h1 {
+  margin: 0;
+  color: var(--app-ink);
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  letter-spacing: -0.035em;
+}
+
+.app-subtitle {
+  margin: 0.25rem 0 0;
+  color: var(--app-muted);
+  font-size: 1.05rem;
+}
+
+.app-introduction,
+.app-display-status {
+  color: var(--app-muted);
+}
+
+.app-introduction {
+  margin-top: 0;
+  margin-bottom: 0.35rem;
+  font-size: 1.05rem;
+}
+
+.app-display-status {
+  margin-top: 0;
+  margin-bottom: 1.25rem;
+  font-size: 0.9rem;
+}
+
+.app-display-menu-wrap {
+  position: relative;
+}
+
+.app-gear-button {
+  min-width: 2.75rem;
+  padding-inline: 0.5rem;
+  font-size: 1.35rem;
+  line-height: 1;
+}
+
+.app-display-menu {
+  position: absolute;
+  z-index: 5;
+  top: calc(100% + 0.5rem);
+  right: 0;
+  width: min(22rem, calc(100vw - 2rem));
+  padding: 1rem;
+  border: 1px solid var(--app-border);
+  border-radius: 0.75rem;
+  background: var(--app-surface);
+  box-shadow: 0 0.75rem 2.25rem rgba(20, 33, 61, 0.14);
+}
+
+.app-display-menu-heading {
+  margin: 0 0 0.75rem;
+  font-size: 1rem;
+}
+
+.app-display-options {
+  display: grid;
+  gap: 0.5rem;
+}
+
+.app-display-option {
+  display: grid;
+  gap: 0.2rem;
+  min-height: 3.4rem;
+  padding: 0.75rem;
+  text-align: left;
+  color: var(--app-ink);
+  border: 1px solid var(--app-border);
+  border-radius: 0.5rem;
+  background: var(--app-surface);
+  cursor: pointer;
+}
+
+.app-display-option:hover,
+.app-display-option[aria-pressed="true"] {
+  border-color: var(--app-accent);
+  background: var(--app-accent-soft);
+}
+
+.app-display-option-label {
+  font-weight: 700;
+}
+
+.app-display-option-description {
+  color: var(--app-muted);
+  font-size: 0.9rem;
+  font-weight: 400;
+}
+
+.app-episode {
+  display: grid;
+  gap: 1rem;
+  padding: clamp(1rem, 2.5vw, 2rem);
+  border: 1px solid var(--app-border);
+  border-radius: 1rem;
+  background: var(--app-surface);
+  box-shadow: 0 0.5rem 1.5rem rgba(20, 33, 61, 0.06);
+}
+
+.app-view-controls {
+  display: flex;
+  justify-content: flex-end;
+  min-height: 2.75rem;
+}
+
+.app-visual-view,
+.app-linear-view {
+  min-width: 0;
+}
+
+.app-support-panel {
+  display: grid;
+  gap: 0.6rem;
+  padding-top: 0.25rem;
+  border-top: 1px solid var(--app-border);
+}
+
+.app-support-panel h2 {
+  margin: 0;
+  font-size: 0.95rem;
+  color: var(--app-muted);
+}
+
+.app-support-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.app-secondary-button {
+  color: var(--app-ink);
+  border: 1px solid var(--app-border);
+  background: var(--app-surface);
+}
+
+.app-secondary-button:hover:not(:disabled) {
+  border-color: var(--app-accent);
+  background: var(--app-accent-soft);
+}
+
+.app-secondary-button:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+
+.app-support-notice {
+  min-height: 1.5em;
+  margin: 0;
+  color: var(--app-muted);
+}
+
+.app-completion-panel {
+  display: grid;
+  justify-items: start;
+  gap: 0.75rem;
+  padding: 1rem;
+  border: 1px solid #b8d3c3;
+  border-radius: 0.75rem;
+  background: #f1faf4;
+}
+
+.app-completion-panel h2 {
+  margin: 0;
+  font-size: 1.15rem;
+}
+
+@media (max-width: 32rem) {
+  .fractionflow-app {
+    padding: 0.75rem;
+  }
+
+  .app-header {
+    align-items: center;
+  }
+
+  .app-episode {
+    padding: 0.75rem;
+    border-radius: 0.75rem;
+  }
+
+  .app-display-menu {
+    right: -0.25rem;
+  }
+}

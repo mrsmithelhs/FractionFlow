@@ -1,9 +1,6 @@
-import {
-  buildCuratedProblem,
-  generateProblem,
-  PHASE1_GOLDEN_CASES,
-  validateProblemInstance,
-} from '../content/index.js';
+import { buildCuratedProblem, generateProblem } from '../content/generator.js';
+import { PHASE1_GOLDEN_CASES } from '../content/data/phase1-golden-cases.js';
+import { validateProblemInstance } from '../content/validation.js';
 import { deepFreeze } from '../content/schema.js';
 import { applyIntent, createEpisode } from './episode.js';
 import { getEpisodeDefinition, validateActiveCondition } from './episode-definition.js';

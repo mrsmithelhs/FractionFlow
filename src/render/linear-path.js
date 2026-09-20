@@ -80,7 +80,7 @@ export function createLinearPathRenderer({
     problemDesc.classList.add('linear-problem-statement');
     const leftSource = `${quantities.left.sourceForm.numerator}/${quantities.left.sourceForm.denominator}`;
     const rightSource = `${quantities.right.sourceForm.numerator}/${quantities.right.sourceForm.denominator}`;
-    const symbol = op.operation === 'addition' ? '+' : '-';
+    const symbol = op.operation === 'add' ? '+' : '-';
     problemDesc.textContent = `Problem: ${leftSource} ${symbol} ${rightSource}`;
     contextSectionEl.appendChild(problemDesc);
 
@@ -207,6 +207,18 @@ export function createLinearPathRenderer({
     const controlsContainer = document.createElement('div');
     controlsContainer.classList.add('active-beat-controls');
 
+    if (scene.meaning.status.episode === 'resolved') {
+      promptText.textContent = strings.resolve.complete || 'You finished this problem.';
+      const completeEl = document.createElement('p');
+      completeEl.classList.add('resolve-complete');
+      completeEl.textContent = strings.resolve.complete || 'You finished this problem.';
+      controlsContainer.appendChild(completeEl);
+      promptHeader.appendChild(promptText);
+      activeBeatEl.appendChild(promptHeader);
+      activeBeatEl.appendChild(controlsContainer);
+      return;
+    }
+
     // Local recovery feedback
     if (recovery && recovery.beat === beat) {
       const recoveryEl = document.createElement('div');
@@ -221,6 +233,8 @@ export function createLinearPathRenderer({
         recoveryEl.textContent = strings.transform.errorNumerator;
       } else if (recovery.classification.kind === 'incorrect-operation') {
         recoveryEl.textContent = strings.operate.errorArithmetic;
+      } else if (recovery.classification.kind === 'incorrect-notice') {
+        recoveryEl.textContent = strings.notice.feedbackDiff;
       } else if (recovery.classification.kind === 'incorrect') {
         const leftDen = scene.meaning.quantities.left.unit.denominator;
         const rightDen = scene.meaning.quantities.right.unit.denominator;
@@ -392,7 +406,9 @@ export function createLinearPathRenderer({
         controlsContainer.appendChild(summaryEl);
 
         const nextBtn = createButton({
-          label: strings.resolve.continueButton,
+          label: scene.meaning.currentTask.promptId?.includes('reflect')
+            ? (strings.resolve.continueReflectionButton || strings.resolve.continueButton)
+            : strings.resolve.continueButton,
           onClick: () => {
             dispatchAction({
               type: 'submit-resolution',

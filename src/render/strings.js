@@ -81,6 +81,8 @@ export const STRINGS = Object.freeze({
       `${raw} is correct! It can also be written as ${simp}.`
     ),
     continueButton: 'Next Problem',
+    continueReflectionButton: 'Continue',
+    complete: 'You finished this problem.',
   }),
 
   // Condition B: Satisfies DECISION-012 (visual matching with distractors)
@@ -144,5 +146,50 @@ export const STRINGS = Object.freeze({
     resolveDone: (result) => `Result: ${result}`,
     reflectDone: 'Equivalence verified.',
     summaryDisclosureLabel: (count) => `Show previous steps (${count} completed)`,
+  }),
+
+  app: Object.freeze({
+    title: 'FractionFlow',
+    subtitle: 'Make the parts match.',
+    introduction: 'Add two fractions by making same-size parts.',
+    displayChoicesButton: 'Open display choices',
+    displayChoicesHeading: 'Choose a display style',
+    closeDisplayChoices: 'Close display choices',
+    displayStyles: Object.freeze({
+      smooth: Object.freeze({
+        label: 'Smooth change',
+        description: 'The bars change smoothly after you choose.',
+      }),
+      compare: Object.freeze({
+        label: 'Compare before and after',
+        description: 'See the old and new bars together.',
+      }),
+      steps: Object.freeze({
+        label: 'Step-by-step change',
+        description: 'See one clear change at a time.',
+      }),
+    }),
+    activeDisplay: (label) => `Display: ${label}`,
+    selectedDisplay: 'Selected',
+    showPicture: 'Show the picture',
+    readSteps: 'Read the steps',
+    visualViewLabel: 'Picture and symbols',
+    linearViewLabel: 'Step-by-step reading view',
+    supportHeading: 'Extra help',
+    helpButton: 'Need help?',
+    replayButton: 'Replay the last change',
+    helpLevels: Object.freeze({
+      orient: 'Look at the parts in each bar. What do you notice?',
+      represent: 'Think about one whole and the size of each part.',
+      constrain: 'Choose a number that both bottom numbers can make.',
+      demonstrate: 'Watch this step, then try the next one yourself.',
+    }),
+    replayNote: 'Take another look at the current bars and symbols.',
+    displayChanged: (label) => `Now showing ${label}. Your work stays here.`,
+    problemRestarted: 'The same problem is ready again.',
+    completedHelp: 'This problem is complete. Try it again when you are ready.',
+    restartButton: 'Try this problem again',
+    noReplayYet: 'Finish a change before replaying it.',
+    tryAgain: 'Let us try that step again.',
   }),
 });
