@@ -17,6 +17,7 @@ import {
   EPISODE_BEATS,
   PHASE2_ACTIVE_CONDITION,
   PHASE2_EPISODE_DEFINITION,
+  getEpisodeDefinition,
   validateActiveCondition,
 } from './episode-definition.js';
 import { createResponseProvenance } from './provenance.js';
@@ -67,15 +68,75 @@ function responseForBeat(definition, beat, state) {
   return { ...common, responsibility: 'inspect-invariant', inputKind: 'structured-choice' };
 }
 
+function sameDefinitionValue(left, right) {
+  if (Object.is(left, right)) return true;
+  if (typeof left !== 'object' || left === null || typeof right !== 'object' || right === null) return false;
+  if (Array.isArray(left) || Array.isArray(right)) {
+    return Array.isArray(left)
+      && Array.isArray(right)
+      && left.length === right.length
+      && left.every((value, index) => sameDefinitionValue(value, right[index]));
+  }
+  if (!isPlainRecord(left) || !isPlainRecord(right)) return false;
+  const leftKeys = Object.keys(left).sort();
+  const rightKeys = Object.keys(right).sort();
+  return JSON.stringify(leftKeys) === JSON.stringify(rightKeys)
+    && leftKeys.every((key) => sameDefinitionValue(left[key], right[key]));
+}
+
+function assertDefinitionWireData(value, name, seen = new Set()) {
+  if (value === null || typeof value === 'string' || typeof value === 'boolean') return;
+  if (typeof value === 'number') {
+    if (!Number.isFinite(value)) {
+      throw new EpisodeConstructionError('INVALID_EPISODE_DEFINITION', `${name} contains a non-finite number`);
+    }
+    return;
+  }
+  if (typeof value === 'undefined' || typeof value === 'function'
+    || typeof value === 'symbol' || typeof value === 'bigint') {
+    throw new EpisodeConstructionError('INVALID_EPISODE_DEFINITION', `${name} is not JSON-safe wire data`);
+  }
+  if (typeof value !== 'object') {
+    throw new EpisodeConstructionError('INVALID_EPISODE_DEFINITION', `${name} contains an unsupported value`);
+  }
+  if (seen.has(value)) {
+    throw new EpisodeConstructionError('INVALID_EPISODE_DEFINITION', `${name} must not be circular`);
+  }
+  seen.add(value);
+  if (Array.isArray(value)) {
+    for (let index = 0; index < value.length; index += 1) {
+      assertDefinitionWireData(value[index], `${name}[${index}]`, seen);
+    }
+  } else {
+    if (!isPlainRecord(value) || Object.prototype.hasOwnProperty.call(value, 'toJSON')) {
+      throw new EpisodeConstructionError('INVALID_EPISODE_DEFINITION', `${name} must contain only plain records and arrays`);
+    }
+    Object.entries(value).forEach(([key, entry]) => assertDefinitionWireData(entry, `${name}.${key}`, seen));
+  }
+  seen.delete(value);
+}
+
 function assertDefinition(definition) {
-  if (!definition || definition.id !== PHASE2_EPISODE_DEFINITION.id
-    || definition.revision !== PHASE2_EPISODE_DEFINITION.revision) {
+  if (!isPlainRecord(definition) || typeof definition.id !== 'string' || typeof definition.revision !== 'string') {
     throw new EpisodeConstructionError('UNKNOWN_EPISODE_DEFINITION', 'unsupported episode definition');
   }
-  if (JSON.stringify(definition.beats) !== JSON.stringify(EPISODE_BEATS)) {
-    throw new EpisodeConstructionError('INVALID_EPISODE_DEFINITION', 'episode beats do not match the approved grammar');
+  assertDefinitionWireData(definition, 'episodeDefinition');
+  let registered;
+  try {
+    registered = getEpisodeDefinition(definition.id, definition.revision);
+  } catch (error) {
+    throw new EpisodeConstructionError('UNKNOWN_EPISODE_DEFINITION', 'unsupported episode definition');
   }
-  return deepFreeze(definition);
+  if (!sameDefinitionValue(definition, registered)) {
+    throw new EpisodeConstructionError(
+      'INVALID_EPISODE_DEFINITION',
+      'episode definition semantics do not match its registered identity',
+    );
+  }
+  if (JSON.stringify(registered.beats) !== JSON.stringify(EPISODE_BEATS)) {
+    throw new EpisodeConstructionError('INVALID_EPISODE_DEFINITION', 'registered episode beats do not match the approved grammar');
+  }
+  return registered;
 }
 
 function assertInstance(instance) {

@@ -40,11 +40,25 @@ export const PHASE2_EPISODE_DEFINITION = deepFreeze({
   },
 });
 
+export const PHASE2_REFLECTION_EPISODE_DEFINITION = deepFreeze({
+  ...PHASE2_EPISODE_DEFINITION,
+  id: 'phase-2-unlike-proper-addition-reflection',
+  includeReflection: true,
+});
+
+const EPISODE_DEFINITIONS = Object.freeze([
+  PHASE2_EPISODE_DEFINITION,
+  PHASE2_REFLECTION_EPISODE_DEFINITION,
+]);
+
 export function getEpisodeDefinition(id = EPISODE_DEFINITION_ID, revision = EPISODE_DEFINITION_REVISION) {
-  if (id !== PHASE2_EPISODE_DEFINITION.id || revision !== PHASE2_EPISODE_DEFINITION.revision) {
+  const definition = EPISODE_DEFINITIONS.find((candidate) => (
+    candidate.id === id && candidate.revision === revision
+  ));
+  if (!definition) {
     throw new RangeError(`unknown episode definition: ${String(id)}@${String(revision)}`);
   }
-  return PHASE2_EPISODE_DEFINITION;
+  return definition;
 }
 
 export function validateActiveCondition(condition) {

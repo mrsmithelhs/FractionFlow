@@ -2,10 +2,13 @@ import { describe, expect, it } from 'vitest';
 import {
   applyIntent,
   createEpisode,
+  createReplayEnvelope,
   episodeStateSnapshot,
   EpisodeConstructionError,
   EpisodeIntentError,
   PHASE2_EPISODE_DEFINITION,
+  PHASE2_REFLECTION_EPISODE_DEFINITION,
+  replayEpisode,
 } from '../src/interaction/index.js';
 import { buildCuratedProblem, validateCuratedFixtures } from '../src/content/index.js';
 
@@ -132,6 +135,30 @@ describe('Plan 05 instructional episode', () => {
     expect(() => applyIntent(state, { type: 'continue' })).toThrowError(EpisodeIntentError);
   });
 
+  it('accepts only registered episode-definition semantics and canonical wire values', () => {
+    const alteredPrompt = structuredClone(PHASE2_EPISODE_DEFINITION);
+    alteredPrompt.promptIdentities.encounter = 'tampered.encounter';
+    expect(() => createEpisode({ instance: canonicalInstance(), episodeDefinition: alteredPrompt }))
+      .toThrowError(expect.objectContaining({ code: 'INVALID_EPISODE_DEFINITION' }));
+
+    const missingPrompt = structuredClone(PHASE2_EPISODE_DEFINITION);
+    delete missingPrompt.promptIdentities.notice;
+    expect(() => createEpisode({ instance: canonicalInstance(), episodeDefinition: missingPrompt }))
+      .toThrowError(expect.objectContaining({ code: 'INVALID_EPISODE_DEFINITION' }));
+
+    const sameIdentityReflection = {
+      ...PHASE2_EPISODE_DEFINITION,
+      includeReflection: true,
+    };
+    expect(() => createEpisode({ instance: canonicalInstance(), episodeDefinition: sameIdentityReflection }))
+      .toThrowError(expect.objectContaining({ code: 'INVALID_EPISODE_DEFINITION' }));
+
+    const nonWirePrompt = structuredClone(PHASE2_EPISODE_DEFINITION);
+    nonWirePrompt.promptIdentities.encounter = undefined;
+    expect(() => createEpisode({ instance: canonicalInstance(), episodeDefinition: nonWirePrompt }))
+      .toThrowError(expect.objectContaining({ code: 'INVALID_EPISODE_DEFINITION' }));
+  });
+
   it('rejects beat-specific intents outside the active instructional beat', () => {
     const state = createEpisode({ instance: canonicalInstance() });
     const outOfOrderIntents = [
@@ -184,10 +211,7 @@ describe('Plan 05 instructional episode', () => {
   });
 
   it('supports the selective reflection beat without making it mandatory', () => {
-    const definition = {
-      ...PHASE2_EPISODE_DEFINITION,
-      includeReflection: true,
-    };
+    const definition = PHASE2_REFLECTION_EPISODE_DEFINITION;
     let state = createEpisode({ instance: canonicalInstance(), episodeDefinition: definition });
     state = applyIntent(state, { type: 'acknowledge-encounter' });
     state = applyIntent(state, { type: 'submit-notice', matchesUnits: false });
@@ -202,5 +226,8 @@ describe('Plan 05 instructional episode', () => {
     expect(state.status).toBe('resolved');
     expect(state.beat).toBe('reflect');
     expect(state.established.reflection).toEqual({ response: 'same-quantity-different-form' });
+
+    const replayed = replayEpisode(JSON.parse(JSON.stringify(createReplayEnvelope(state))));
+    expect(JSON.stringify(replayed)).toBe(JSON.stringify(state));
   });
 });
