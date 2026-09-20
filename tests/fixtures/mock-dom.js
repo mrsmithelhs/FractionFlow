@@ -74,7 +74,9 @@ export class MockElement {
     this._textContent = '';
     this.disabled = false;
     this.value = '';
-    this.tabIndex = -1;
+    const naturallyFocusable = ['BUTTON', 'INPUT', 'SELECT', 'TEXTAREA', 'A'];
+    this.tabIndex = naturallyFocusable.includes(this.tagName) ? 0 : -1;
+    this.open = false;
   }
 
   get id() {
@@ -104,6 +106,9 @@ export class MockElement {
     if (name === 'disabled') {
       this.disabled = true;
     }
+    if (name === 'open') {
+      this.open = true;
+    }
     if (name === 'value') {
       this.value = valStr;
     }
@@ -127,6 +132,13 @@ export class MockElement {
     }
     if (name === 'disabled') {
       this.disabled = false;
+    }
+    if (name === 'open') {
+      this.open = false;
+    }
+    if (name === 'tabindex') {
+      const naturallyFocusable = ['BUTTON', 'INPUT', 'SELECT', 'TEXTAREA', 'A'];
+      this.tabIndex = naturallyFocusable.includes(this.tagName) ? 0 : -1;
     }
   }
 
@@ -200,13 +212,37 @@ export class MockElement {
   }
 
   querySelector(selector) {
-    return this._find((el) => matchesSelector(el, selector));
+    const parts = selector.trim().split(/\s+/);
+    if (parts.length === 1) {
+      return this._find((el) => matchesSelector(el, selector));
+    }
+    let current = [this];
+    for (const part of parts) {
+      const next = [];
+      for (const el of current) {
+        el._findAll((candidate) => matchesSelector(candidate, part), next);
+      }
+      current = next;
+    }
+    return current[0] || null;
   }
 
   querySelectorAll(selector) {
-    const results = [];
-    this._findAll((el) => matchesSelector(el, selector), results);
-    return results;
+    const parts = selector.trim().split(/\s+/);
+    if (parts.length === 1) {
+      const results = [];
+      this._findAll((el) => matchesSelector(el, selector), results);
+      return results;
+    }
+    let current = [this];
+    for (const part of parts) {
+      const next = [];
+      for (const el of current) {
+        el._findAll((candidate) => matchesSelector(candidate, part), next);
+      }
+      current = next;
+    }
+    return Array.from(new Set(current));
   }
 
   _find(predicate) {
@@ -244,6 +280,15 @@ function matchesSelector(element, selector) {
       return element.getAttribute(key.trim()) === val;
     }
     return element.hasAttribute(attrExpr.trim());
+  }
+  if (selector.includes('.')) {
+    const parts = selector.split('.');
+    const tag = parts[0];
+    const classNames = parts.slice(1).filter(Boolean);
+    if (tag && element.tagName.toLowerCase() !== tag.toLowerCase()) {
+      return false;
+    }
+    return classNames.every((cls) => element.classList.contains(cls));
   }
   return element.tagName.toLowerCase() === selector.toLowerCase();
 }

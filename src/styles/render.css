@@ -342,6 +342,85 @@
   border: none;
 }
 
+/* Completed Beats Disclosure (Finding R6, OQ-18, DECISION-021) */
+.completed-beats-history {
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+  margin-bottom: 0.25rem;
+}
+
+.completed-beats-summary-toggle {
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--ff-color-text-muted);
+  cursor: pointer;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+  user-select: none;
+}
+
+.completed-beats-summary-toggle:hover {
+  background-color: #e2e8f0;
+}
+
+.completed-beats-summary-toggle:focus-visible {
+  outline: 2px solid var(--ff-color-border-focus);
+  outline-offset: 1px;
+}
+
+.completed-beat-summary.latest-milestone {
+  font-weight: 500;
+  color: var(--ff-color-text);
+}
+
+/* Accessible Linear Path Modality (Plan 08, Requirement 1) */
+.accessible-linear-path {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  width: 100%;
+  max-width: 48rem;
+  margin: 0 auto;
+  padding: 1rem;
+  font-family: var(--ff-font-family);
+  color: var(--ff-color-text);
+  box-sizing: border-box;
+}
+
+.linear-context-section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: 1rem;
+  background-color: var(--ff-color-surface);
+  border: 1px solid var(--ff-color-border);
+  border-radius: 0.5rem;
+}
+
+.linear-context-heading {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--ff-color-text-muted);
+  margin: 0;
+}
+
+.linear-problem-statement {
+  font-size: 1.25rem;
+  font-weight: bold;
+  margin: 0;
+}
+
+.linear-quantities-list {
+  margin: 0;
+  padding-left: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+  font-size: 1rem;
+  line-height: 1.4;
+}
+
 /* Screen Reader Only Utility */
 .sr-only {
   position: absolute;
@@ -354,3 +433,4 @@
   white-space: nowrap;
   border-width: 0;
 }
+

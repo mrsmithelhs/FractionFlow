@@ -4,6 +4,7 @@ import { setupMockDOM, teardownMockDOM } from './fixtures/mock-dom.js';
 import { createFractionBarRenderer } from '../src/render/fraction-bar.js';
 import { createSymbolicRenderer } from '../src/render/symbolic.js';
 import { createBeatContainer } from '../src/render/beat-container.js';
+import { createLinearPathRenderer } from '../src/render/linear-path.js';
 import { createChoiceGroup, createNumericInput } from '../src/render/controls.js';
 import { assertValidScene, RenderContractError } from '../src/render/contract.js';
 
@@ -349,7 +350,89 @@ describe('Renderer Purity & Determinism by Construction (Requirement 2, Conditio
     expect(actions).toEqual(['9999']);
   });
 
-  it('statically verifies that no render module contains hardcoded mathematical literals or derived common denominators', () => {
+  it('behavioral purity probe: renderers faithfully display mutually inconsistent mathematical values without derivation (Condition 2)', () => {
+    // Condition 2: Behavioral purity check that is completely rename-proof.
+    // Feed the renderers scenes whose mathematical fields are mutually inconsistent:
+    // 1. Inconsistent candidates ['7', '19'] for 2/3 and 1/4 (real candidates would be 12, 24).
+    const sceneDecide = createSyntheticScene({
+      leftNum: '2',
+      leftDen: '3',
+      rightNum: '1',
+      rightDen: '4',
+      beat: 'decide',
+      candidateDenominators: ['7', '19'],
+    });
+
+    const containerVisual = doc.createElement('div');
+    const beatContainer = createBeatContainer({
+      container: containerVisual,
+      dispatchAction: () => {},
+    });
+    beatContainer.mount(sceneDecide);
+
+    const containerLinear = doc.createElement('div');
+    const linearPath = createLinearPathRenderer({
+      container: containerLinear,
+      dispatchAction: () => {},
+    });
+    linearPath.mount(sceneDecide);
+
+    // Both renderers must display exactly '7' and '19', never deriving 12 or 24 from 3 and 4
+    const visualButtons = Array.from(containerVisual.querySelectorAll('.control-choice-btn')).map((b) => b.textContent);
+    expect(visualButtons).toEqual(['7', '19']);
+
+    const linearButtons = Array.from(containerLinear.querySelectorAll('.control-choice-btn')).map((b) => b.textContent);
+    expect(linearButtons).toEqual(['7', '19']);
+
+    // 2. Inconsistent common unit and converted numerators:
+    // Common denominator '5' with converted numerators '13' and '29' for 2/3 and 1/4
+    const sceneTransform = createSyntheticScene({
+      leftNum: '13',
+      leftDen: '5',
+      rightNum: '29',
+      rightDen: '5',
+      beat: 'operate',
+      commonUnit: { targetDenominator: '5' },
+    });
+
+    beatContainer.update(sceneTransform);
+    linearPath.update(sceneTransform);
+
+    // The operate input label must display '5', and completed summaries must display 13/5 and 29/5
+    const visualLabel = containerVisual.querySelector('.control-label');
+    expect(visualLabel.textContent).toContain('5');
+    const linearPrompt = containerLinear.querySelector('.active-beat-prompt');
+    expect(linearPrompt.textContent).toBeTruthy();
+
+    const visualSummaries = Array.from(containerVisual.querySelectorAll('.completed-beat-summary')).map((s) => s.textContent);
+    expect(visualSummaries.some((text) => text.includes('13/5'))).toBe(true);
+    expect(visualSummaries.some((text) => text.includes('29/5'))).toBe(true);
+
+    // 3. Arithmetically false sum: 99/5 instead of 42/5
+    const sceneResolve = createSyntheticScene({
+      leftNum: '13',
+      leftDen: '5',
+      rightNum: '29',
+      rightDen: '5',
+      rawSumNum: '99',
+      rawSumDen: '5',
+      beat: 'resolve',
+      commonUnit: { targetDenominator: '5' },
+    });
+
+    beatContainer.update(sceneResolve);
+    linearPath.update(sceneResolve);
+
+    const visualSummary = containerVisual.querySelector('.resolve-summary');
+    expect(visualSummary.textContent).toContain('99/5');
+    expect(visualSummary.textContent).not.toContain('42');
+
+    const linearSummary = containerLinear.querySelector('.resolve-summary');
+    expect(linearSummary.textContent).toContain('99/5');
+    expect(linearSummary.textContent).not.toContain('42');
+  });
+
+  it('statically verifies module isolation: render modules never import from math/content or call arithmetic functions', () => {
     const renderFiles = [
       'contract.js',
       'strings.js',
@@ -357,11 +440,21 @@ describe('Renderer Purity & Determinism by Construction (Requirement 2, Conditio
       'symbolic.js',
       'controls.js',
       'beat-container.js',
+      'linear-path.js',
       'index.js',
     ];
 
     for (const file of renderFiles) {
       const source = readFileSync(new URL(`../src/render/${file}`, import.meta.url), 'utf8');
+
+      // No imports from mathematical or content layers
+      expect(source).not.toMatch(/from\s+['"][^'"]*\/math\//);
+      expect(source).not.toMatch(/from\s+['"][^'"]*\/content\//);
+
+      // No exact arithmetic derivation or BigInt in render
+      expect(source).not.toMatch(/\bBigInt\b/);
+      expect(source).not.toMatch(/\bgcd\s*\(/);
+      expect(source).not.toMatch(/\blcm\s*\(/);
 
       // No hardcoded unit size names in strings/code
       expect(source).not.toMatch(/\bthirds\b/i);
@@ -369,46 +462,6 @@ describe('Renderer Purity & Determinism by Construction (Requirement 2, Conditio
 
       // No fallback to '12'
       expect(source).not.toMatch(/\|\|\s*['"]12['"]/);
-
-      // No inline denominator multiplication or ceiling checks
-      expect(source).not.toMatch(/Number\(leftDen\)\s*\*\s*Number\(rightDen\)/);
-      expect(source).not.toMatch(/Number\(leftDen\)\s*\*\s*2/);
-      expect(source).not.toMatch(/Number\(rightDen\)\s*\*\s*2/);
-      expect(source).not.toMatch(/<=\s*30/);
     }
-  });
-
-  it('demonstrates fail-first: static and behavioral checks fail against the defective code from commit 4f26887', () => {
-    // 1. Static check fails against 4f26887 code patterns:
-    const defectiveBeatContainerSource = `
-      const leftDen = scene.meaning.quantities.left.currentForm.denominator;
-      const rightDen = scene.meaning.quantities.right.currentForm.denominator;
-      const candidates = [
-        String(Number(leftDen) * Number(rightDen)),
-        String(Number(leftDen) * 2),
-        String(Number(rightDen) * 2),
-      ].filter((v, i, arr) => arr.indexOf(v) === i && Number(v) <= 30).sort((a, b) => Number(a) - Number(b));
-      const targetDen = scene.meaning.unitRelationship.commonUnit?.targetDenominator || '12';
-    `;
-    expect(defectiveBeatContainerSource).toMatch(/Number\(leftDen\)\s*\*\s*Number\(rightDen\)/);
-    expect(defectiveBeatContainerSource).toMatch(/<=\s*30/);
-    expect(defectiveBeatContainerSource).toMatch(/\|\|\s*['"]12['"]/);
-
-    const defectiveStringsSource = "feedbackSame: 'Look at the parts: one bar has thirds and one has fourths.',";
-    expect(defectiveStringsSource).toMatch(/\bthirds\b/);
-    expect(defectiveStringsSource).toMatch(/\bfourths\b/);
-
-    // 2. Behavioral check fails against 4f26887 for non-standard fractions:
-    // With 5/17 and 3/19:
-    const leftDen = 17;
-    const rightDen = 19;
-    const derived4f26887Candidates = [
-      String(leftDen * rightDen), // 323
-      String(leftDen * 2),        // 34
-      String(rightDen * 2),       // 38
-    ].filter((v, i, arr) => arr.indexOf(v) === i && Number(v) <= 30);
-    // 4f26887 produced an empty array [] because all values exceeded the hardcoded 30 ceiling
-    expect(derived4f26887Candidates).toEqual([]);
-    // Whereas upstream candidates ['17', '34', '51'] are faithfully preserved in the repaired code
   });
 });

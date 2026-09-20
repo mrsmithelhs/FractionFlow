@@ -20,3 +20,4 @@ export {
   createChoiceGroup,
 } from './controls.js';
 export { createBeatContainer } from './beat-container.js';
+export { createLinearPathRenderer } from './linear-path.js';

@@ -109,6 +109,13 @@ export const STRINGS = Object.freeze({
     // DECISION-026: "None of these" distractor option for matching
     noneOfTheseOption: 'None of these bars show the same amount',
     noneOfTheseCorrect: 'Correct! None of those bars show the same shaded amount.',
+
+    // Accessible linear path phrasing (DECISION-004, Condition 6)
+    matchingPromptLinear: (targetFraction) => (
+      `Choose the fraction that shows the same amount as ${targetFraction}.`
+    ),
+    premisePromptLinear: 'Does this new fraction show the same amount as before?',
+    noneOfTheseOptionLinear: 'None of these fractions show the same amount',
   }),
 
   controls: Object.freeze({
@@ -127,6 +134,7 @@ export const STRINGS = Object.freeze({
   }),
 
   summaryLines: Object.freeze({
+    encounterDone: 'Problem established.',
     noticeDone: 'Units do not match.',
     decideDone: (den) => `Common denominator: ${den}`,
     transformDone: (side, initial, converted) => (
@@ -135,5 +143,6 @@ export const STRINGS = Object.freeze({
     operateDone: (sum) => `Sum: ${sum}`,
     resolveDone: (result) => `Result: ${result}`,
     reflectDone: 'Equivalence verified.',
+    summaryDisclosureLabel: (count) => `Show previous steps (${count} completed)`,
   }),
 });

@@ -1,99 +1,101 @@
 import { assertValidScene, RenderContractError } from './contract.js';
 import { STRINGS } from './strings.js';
-import { createFractionBarRenderer } from './fraction-bar.js';
-import { createSymbolicRenderer } from './symbolic.js';
 import { createButton, createNumericInput, createChoiceGroup } from './controls.js';
 
 /**
- * Beat-Gated Mounting Container (DECISION-014, Reconciliation Finding R6, DECISION-021)
+ * Accessible Linear Alternative Renderer (Plan 08, Requirement 1, DECISION-004, DECISION-024)
  *
- * Coordinates the presentation of an episode:
- * - Condition C: Receives ONLY the validated frozen scene and dispatchAction callback.
- *   Does NOT hold or receive episode state.
- * - DECISION-014 (Beat-gated DOM lifecycle):
- *   1. Unreached beats and future mathematical values/answers are NEVER mounted in the DOM.
- *      No aria-hidden or display:none pre-mounting.
- *   2. Active beat mounts primary prompt, representations, and active controls.
- *   3. Completed beats remain mounted as inspectable context, but collapse to compact
- *      summary lines with interactive controls dismounted (Finding R6, DECISION-021 criterion 1).
- * - Coordinates pure fraction-bar and symbolic renderers.
+ * Implements the third access path on the Plan 07 presentation boundary:
+ * - Pure display consumer of validated frozen scene (Condition C).
+ * - Modality translation: expresses spatial part-whole quantities in programmatically
+ *   inspectable text, preserving 100% of learner responsibility (OQ-04).
+ * - Text all the way down, held strictly to Grade 2–3 reading level (DECISION-004).
+ * - Completed beats collapse into parameterized summaryLines under the <details>
+ *   disclosure rule (Finding R6, OQ-18, DECISION-014, DECISION-021).
+ * - Full parity for DECISION-026 check-the-premise and matching reflection forms.
  */
 
-export function createBeatContainer({
+export function createLinearPathRenderer({
   container,
   dispatchAction,
   strings = STRINGS,
 } = {}) {
   if (!container) {
-    throw new Error('container element is required for beat container');
+    throw new Error('container element is required for linear path renderer');
   }
   if (!dispatchAction || typeof dispatchAction !== 'function') {
-    throw new Error('dispatchAction function is required for beat container');
+    throw new Error('dispatchAction function is required for linear path renderer');
   }
 
   let rootEl = null;
   let liveRegionEl = null;
-  let visualSectionEl = null;
-  let symbolicSectionEl = null;
+  let contextSectionEl = null;
   let completedBeatsEl = null;
   let activeBeatEl = null;
 
-  let leftBarRenderer = null;
-  let rightBarRenderer = null;
-  let symbolicRenderer = null;
-
   function initLayout() {
     rootEl = document.createElement('div');
-    rootEl.classList.add('episode-beat-container');
+    rootEl.classList.add('accessible-linear-path');
+    rootEl.setAttribute('role', 'region');
+    rootEl.setAttribute('aria-label', 'Accessible step-by-step fraction lesson');
     container.appendChild(rootEl);
 
-    // ARIA Live Region for screen-reader status announcements
+    // Live Region for screen-reader announcements
     liveRegionEl = document.createElement('div');
     liveRegionEl.setAttribute('role', 'status');
     liveRegionEl.setAttribute('aria-live', 'polite');
-    liveRegionEl.classList.add('sr-only', 'live-announcements');
+    liveRegionEl.classList.add('sr-only', 'linear-live-announcements');
     rootEl.appendChild(liveRegionEl);
 
-    // Visual representations section
-    visualSectionEl = document.createElement('section');
-    visualSectionEl.classList.add('render-visual-section');
-    visualSectionEl.setAttribute('aria-label', 'Fraction bar models');
+    // Mathematical Context Section
+    contextSectionEl = document.createElement('section');
+    contextSectionEl.classList.add('linear-context-section');
+    contextSectionEl.setAttribute('aria-label', 'Current problem and quantities');
+    rootEl.appendChild(contextSectionEl);
 
-    const barsWrapper = document.createElement('div');
-    barsWrapper.classList.add('fraction-bars-wrapper');
-
-    const leftBarBox = document.createElement('div');
-    leftBarBox.classList.add('fraction-bar-box');
-    const rightBarBox = document.createElement('div');
-    rightBarBox.classList.add('fraction-bar-box');
-
-    barsWrapper.appendChild(leftBarBox);
-    barsWrapper.appendChild(rightBarBox);
-    visualSectionEl.appendChild(barsWrapper);
-    rootEl.appendChild(visualSectionEl);
-
-    // Symbolic representation section
-    symbolicSectionEl = document.createElement('section');
-    symbolicSectionEl.classList.add('render-symbolic-section');
-    symbolicSectionEl.setAttribute('aria-label', 'Symbolic notation');
-    rootEl.appendChild(symbolicSectionEl);
-
-    // Completed beats section (collapsed summary context)
+    // Completed Beats Section (Collapsed Context)
     completedBeatsEl = document.createElement('section');
-    completedBeatsEl.classList.add('completed-beats-section');
+    completedBeatsEl.classList.add('completed-beats-section', 'linear-completed-section');
     completedBeatsEl.setAttribute('aria-label', 'Previous steps');
     rootEl.appendChild(completedBeatsEl);
 
-    // Active beat section
+    // Active Beat Section
     activeBeatEl = document.createElement('section');
-    activeBeatEl.classList.add('active-beat-section');
+    activeBeatEl.classList.add('active-beat-section', 'linear-active-section');
     activeBeatEl.setAttribute('aria-live', 'polite');
     rootEl.appendChild(activeBeatEl);
+  }
 
-    // Initialize sub-renderers
-    leftBarRenderer = createFractionBarRenderer({ side: 'left', container: leftBarBox, strings });
-    rightBarRenderer = createFractionBarRenderer({ side: 'right', container: rightBarBox, strings });
-    symbolicRenderer = createSymbolicRenderer({ container: symbolicSectionEl });
+  function renderContext(scene) {
+    contextSectionEl.replaceChildren();
+    const quantities = scene.meaning.quantities;
+    const op = scene.meaning.operation;
+
+    const heading = document.createElement('h2');
+    heading.classList.add('linear-context-heading');
+    heading.textContent = 'Problem and Quantities';
+    contextSectionEl.appendChild(heading);
+
+    const problemDesc = document.createElement('p');
+    problemDesc.classList.add('linear-problem-statement');
+    const leftSource = `${quantities.left.sourceForm.numerator}/${quantities.left.sourceForm.denominator}`;
+    const rightSource = `${quantities.right.sourceForm.numerator}/${quantities.right.sourceForm.denominator}`;
+    const symbol = op.operation === 'addition' ? '+' : '-';
+    problemDesc.textContent = `Problem: ${leftSource} ${symbol} ${rightSource}`;
+    contextSectionEl.appendChild(problemDesc);
+
+    const list = document.createElement('ul');
+    list.classList.add('linear-quantities-list');
+
+    const itemLeft = document.createElement('li');
+    itemLeft.textContent = `First fraction: ${quantities.left.currentForm.numerator} of ${quantities.left.currentForm.denominator} equal parts in 1 whole.`;
+    list.appendChild(itemLeft);
+
+    const itemRight = document.createElement('li');
+    itemRight.textContent = `Second fraction: ${quantities.right.currentForm.numerator} of ${quantities.right.currentForm.denominator} equal parts in 1 whole.`;
+    list.appendChild(itemRight);
+
+    contextSectionEl.appendChild(list);
   }
 
   function renderCompletedBeats(scene) {
@@ -105,22 +107,22 @@ export function createBeatContainer({
 
     const milestones = [];
 
-    // Encounter is completed if past encounter
+    // Encounter
     if (currentBeat !== 'encounter') {
       milestones.push(strings.summaryLines.encounterDone || 'Problem established.');
     }
 
-    // Notice completed if past notice
+    // Notice
     if (currentBeat !== 'encounter' && currentBeat !== 'notice') {
       milestones.push(strings.summaryLines.noticeDone);
     }
 
-    // Decide completed if common unit is established and past decide
+    // Decide
     if (unitRel.commonUnit && currentBeat !== 'encounter' && currentBeat !== 'notice' && currentBeat !== 'decide') {
       milestones.push(strings.summaryLines.decideDone(unitRel.commonUnit.targetDenominator));
     }
 
-    // Transform completed if conversions established and past transform
+    // Transform
     if (currentBeat === 'operate' || currentBeat === 'resolve' || currentBeat === 'reflect') {
       milestones.push(strings.summaryLines.transformDone(
         'left',
@@ -134,14 +136,14 @@ export function createBeatContainer({
       ));
     }
 
-    // Operate completed if past operate
+    // Operate
     if ((currentBeat === 'resolve' || currentBeat === 'reflect') && op.rawResult) {
       milestones.push(strings.summaryLines.operateDone(
         `${op.rawResult.numerator}/${op.rawResult.denominator}`,
       ));
     }
 
-    // Resolve completed if past resolve
+    // Resolve
     if (currentBeat === 'reflect' && (op.preferredFinalForm || op.rawResult)) {
       const finalForm = op.preferredFinalForm || op.rawResult;
       milestones.push(strings.summaryLines.resolveDone(
@@ -161,10 +163,7 @@ export function createBeatContainer({
       return;
     }
 
-    // Collapse rule (Finding R6, OQ-18, DECISION-014, DECISION-021 Criterion 1):
-    // Design intent: Fold older milestones into native <details> disclosure so scene remains
-    // calm and occupies minimal vertical height on 360px viewports, while keeping all past
-    // milestones reachable in the DOM for screen readers and learner inspection.
+    // Completed-Beat Collapse Rule (Finding R6, OQ-18, Condition 1)
     const details = document.createElement('details');
     details.classList.add('completed-beats-history');
 
@@ -184,7 +183,7 @@ export function createBeatContainer({
     }
     completedBeatsEl.appendChild(details);
 
-    // Most recent milestone is always visible inline directly above active beat
+    // Latest milestone visible inline
     const latestSummary = document.createElement('div');
     latestSummary.classList.add('completed-beat-summary', 'latest-milestone');
     latestSummary.textContent = milestones[milestones.length - 1];
@@ -197,18 +196,18 @@ export function createBeatContainer({
     const beat = task.beat;
     const recovery = scene.meaning.status.recovery;
 
-    // Prompt header
+    // Prompt Header
     const promptHeader = document.createElement('div');
     promptHeader.classList.add('active-beat-header');
 
-    const promptText = document.createElement('h2');
+    const promptText = document.createElement('h3');
     promptText.classList.add('active-beat-prompt');
 
-    // Controls container
+    // Controls Container
     const controlsContainer = document.createElement('div');
     controlsContainer.classList.add('active-beat-controls');
 
-    // Local recovery feedback (Quality doc §16, §63)
+    // Local recovery feedback
     if (recovery && recovery.beat === beat) {
       const recoveryEl = document.createElement('div');
       recoveryEl.classList.add('active-beat-feedback', 'recovery-feedback');
@@ -290,7 +289,7 @@ export function createBeatContainer({
           controlsContainer.appendChild(choiceGroup);
         } else {
           const numInput = createNumericInput({
-            id: 'decide-common-denominator-input',
+            id: 'linear-decide-common-denominator-input',
             label: strings.decide.prompt,
             min: 1,
             max: 99,
@@ -330,7 +329,7 @@ export function createBeatContainer({
         promptText.textContent = strings.transform.prompt(side, targetDen);
 
         const numInput = createNumericInput({
-          id: `transform-num-input-${side}`,
+          id: `linear-transform-num-input-${side}`,
           label: strings.transform.equivalentNumeratorPrompt(targetDen),
           min: 1,
           max: Number(targetDen),
@@ -355,7 +354,7 @@ export function createBeatContainer({
         promptText.textContent = strings.operate.prompt;
 
         const sumInput = createNumericInput({
-          id: 'operate-sum-input',
+          id: 'linear-operate-sum-input',
           label: strings.operate.inputLabel(commonDen),
           min: 1,
           max: 999,
@@ -406,12 +405,12 @@ export function createBeatContainer({
       }
 
       case 'reflect': {
+        // DECISION-026 & Condition 6: Check-the-premise form and visual matching form
         const isPremise = scene.meaning.condition.connectionMaking === 'CM-01-P'
           || scene.meaning.currentTask.promptId?.includes('premise');
 
         if (isPremise) {
-          // DECISION-026: Check-the-premise form (answer is not always the reassuring one)
-          promptText.textContent = strings.reflect.premisePrompt;
+          promptText.textContent = strings.reflect.premisePromptLinear || strings.reflect.premisePrompt;
           const options = [
             {
               label: strings.reflect.premiseOptions.yes,
@@ -437,23 +436,25 @@ export function createBeatContainer({
           });
           controlsContainer.appendChild(choiceGroup);
         } else {
-          // DECISION-012 & DECISION-026: Visual matching check with distractors
           const left = scene.meaning.quantities.left;
           const targetForm = `${left.sourceForm.numerator}/${left.sourceForm.denominator}`;
-          promptText.textContent = strings.reflect.matchingPrompt(targetForm);
+          promptText.textContent = typeof strings.reflect.matchingPromptLinear === 'function'
+            ? strings.reflect.matchingPromptLinear(targetForm)
+            : strings.reflect.matchingPrompt(targetForm);
 
           const currentLeft = left.currentForm;
           const currentLabel = `${currentLeft.numerator}/${currentLeft.denominator}`;
+          const noneLabel = strings.reflect.noneOfTheseOptionLinear || strings.reflect.noneOfTheseOption;
           const options = [
             {
               label: currentLabel,
               value: 'correct',
-              ariaLabel: strings.reflect.matchingOptionLabel(currentLeft.numerator, currentLeft.denominator),
+              ariaLabel: `${currentLabel} shows the same amount`,
             },
             {
-              label: strings.reflect.noneOfTheseOption,
+              label: noneLabel,
               value: 'none',
-              ariaLabel: strings.reflect.noneOfTheseOption,
+              ariaLabel: noneLabel,
             },
           ];
 
@@ -485,13 +486,7 @@ export function createBeatContainer({
 
   function update(scene) {
     assertValidScene(scene);
-
-    // Update child renderers
-    leftBarRenderer.update(scene);
-    rightBarRenderer.update(scene);
-    symbolicRenderer.update(scene);
-
-    // Update beat lifecycle
+    renderContext(scene);
     renderCompletedBeats(scene);
     renderActiveBeat(scene);
   }
@@ -507,9 +502,6 @@ export function createBeatContainer({
       return this;
     },
     destroy() {
-      if (leftBarRenderer) leftBarRenderer.destroy();
-      if (rightBarRenderer) rightBarRenderer.destroy();
-      if (symbolicRenderer) symbolicRenderer.destroy();
       if (rootEl && rootEl.parentNode) {
         rootEl.parentNode.removeChild(rootEl);
       }
