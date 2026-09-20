@@ -380,6 +380,28 @@ renderer packet must ship *a* rule. It does not have to ship the best one.
 rather than hypothetical. A candidate for a later design pass with real screens in front of the
 owner.
 
+### OQ-19 — An entry page that holds the app's identity
+
+Raised by the owner on 2026-09-20 from the first rendered screens. The header block — title,
+subtitle, introduction, and display status — consumed 37% of a 360px viewport and pushed the current
+question below the fold, failing DECISION-021 criterion 1. The `plan-09` Repair 01 response removes
+the header and relocates the `h1` to a footer while a problem is being worked.
+
+The owner's fuller idea is an entry page that carries the app's name and identity, after which the
+name recedes to the bottom once work begins. That page is a natural home for whatever else
+eventually needs somewhere to live and does not belong beside the mathematics — the reviewer's gear
+menu among them, which `plan-09`'s Requirement 2 already assumed would sit there.
+
+**Phase 2 owes this:** nothing beyond not foreclosing it. The footer end state is exactly the state
+an entry page would hand off to, so building it now is a step toward the idea rather than away from
+it. `plan-09`'s Requirement 2 wording ("the gear icon on the entry page") should be read as
+anticipating this question, not as specifying a page that exists.
+
+**Needs:** a decision on whether an entry page ships at all, what it holds beyond the name, whether
+it gates the episode or is merely passed through, and how a learner returns to it. Also whether the
+gear belongs there rather than in the episode footer. Worth deciding with real screens in hand, and
+worth pairing with the DECISION-019 question of who the switcher is for once the app is public.
+
 ---
 
 ## Process / workflow

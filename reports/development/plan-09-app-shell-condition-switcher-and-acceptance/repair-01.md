@@ -117,8 +117,54 @@ they are being asked to do without scrolling. `02-interaction-grammar.md` §71's
 question, response mechanism, secondary support — holds in DOM order but not in what reaches the
 screen.
 
-**Repair:** see the clutter list below, then re-measure at 360px and report the two numbers (first
-bar top, current question top) against viewport height.
+**Repair:** apply "The title moves to the footer" and the clutter list below, then re-measure at
+360px and report the two numbers (first bar top, current question top) against viewport height.
+
+**Target:** at 360px, at the deepest beat, the first fraction bar sits within the top ~15% of the
+viewport and the current question is above the fold. If that cannot be reached without violating a
+constraint below, stop and report the conflict rather than resolving it by shrinking a control
+(DECISION-021 criterion 3) or hiding a completed beat (DECISION-014).
+
+## The title moves to the footer
+
+**Owner direction, 2026-09-20.** The app name alone is sufficient identification; the problem box
+takes center stage. While a learner is working a problem, `FractionFlow` moves to the **bottom** of
+the page. The owner's eventual intent is an entry page that holds the name, with the name relegated
+to the footer once work begins; that landing page is **explicitly not this packet's job** and is
+recorded as OQ-19. Build the footer end state now, without the entry page.
+
+Required behavior:
+
+- The `<header class="app-header">` block is removed. `<main>` becomes the first content in the
+  document.
+- A `<footer>` at the end of the app root carries the `h1` "FractionFlow". It remains an `h1` and
+  remains the document's only one.
+- The gear button and its menu move into that footer with the title. Leaving the gear alone at the
+  top would re-create persistent chrome above the mathematics, which is the whole point of the
+  change, and the switcher is reviewer-only by DECISION-019 — the owner's own framing is that most
+  learners will never click it. The menu opens upward from the footer.
+
+Constraints — each of these is a way this change could go wrong:
+
+- **Move it in the DOM. Do not reorder with CSS.** `order`, `flex-direction: column-reverse`, or
+  absolute positioning would leave the gear's tab position before the content while its visual
+  position is after it, which is a WCAG 2.2 SC 2.4.3 (Focus Order) and SC 1.3.2 (Meaningful
+  Sequence) failure. Reading order and focus order must both be episode-then-footer.
+- **The footer must not be sticky or fixed.** A pinned footer is persistent chrome at the other end
+  of the page and re-opens DECISION-021 criterion 1. It scrolls with the document.
+- **Do not compensate by moving the access-path toggle down.** "Read the steps" must stay early in
+  DOM order so a screen-reader or keyboard user reaches the linear path without traversing the
+  visual one first. Make it visually compact if it costs too much vertical space; do not relocate it
+  below the mathematics.
+- **`plan-09`'s Requirement 2 says "the gear icon on the entry page."** That wording anticipates a
+  landing page that is now deferred. Placement was never decided — DECISION-019 constrains the
+  switcher's *scope*, not its position — so the footer satisfies the requirement's intent. Note the
+  divergence in the report rather than treating it as a silent reinterpretation.
+
+Report explicitly: an `h1` at the end of the document means a screen-reader user navigating by
+heading meets the beat's `h2` with no `h1` above it. `<main aria-label="Fraction practice">` and the
+document `<title>` both still name the page, so this is defensible, but it is **not verified**. Name
+it as a screen-reader item for the owner gate rather than asserting it is fine.
 
 ## Blocker 5 — The rubric was not applied criterion by criterion
 
@@ -139,11 +185,10 @@ the fix is small.
 Raised by the owner from the running app, extended by this review. Items 1–3 are the owner's
 direction; 4–7 are additional.
 
-1. **Header block: cut to the title.** Remove `app.subtitle` ("Make the parts match.") and
-   `app.introduction` ("Add two fractions by making same-size parts.") from the rendered header.
-   *One judgment call for the owner:* if any orientation line is kept, "Make the parts match." is the
-   one worth keeping — it states the mathematical goal in five words. The repair as written removes
-   both; restoring one is a one-line change.
+1. **Remove the header entirely and move the app name to the bottom.** See "The title moves to the
+   footer" below — this is the largest single change in the repair and has its own section. Both
+   `app.subtitle` ("Make the parts match.") and `app.introduction` ("Add two fractions by making
+   same-size parts.") are deleted outright; the `h1` survives, relocated.
 2. **Remove the "Display: …" status line from the learner surface.** It is reviewer apparatus. The
    gear menu already marks the active condition with `aria-pressed`, and presentation-posture Part 2
    says research apparatus is never visible to the learner. Keep the condition on the `data-*`
@@ -181,9 +226,16 @@ direction; 4–7 are additional.
 - [ ] Visual path renders the matching candidates as bars; linear path says "fraction," not "bar."
 - [ ] The completion message appears once per path.
 - [ ] No beat renders its prompt twice; choice groups remain programmatically labelled.
-- [ ] Header trimmed per the clutter list; "Display: …" line removed from the learner surface.
-- [ ] Help text appears next to the question, not in the footer; the polite live region survives.
-- [ ] Re-measured at 360px: first-bar top and current-question top reported against viewport height.
+- [ ] Header block removed; `<main>` is the first content; `h1` and the gear relocated to a
+      non-sticky `<footer>` by DOM order, not CSS reordering.
+- [ ] Subtitle, introduction, "Display: …", and "Extra help" removed from the learner surface.
+- [ ] "Read the steps" still precedes the mathematics in DOM and focus order.
+- [ ] Help text appears next to the question, not in the trailing region; the polite live region
+      survives.
+- [ ] Re-measured at 360px: first-bar top and current-question top reported against viewport height,
+      against the stated target.
+- [ ] The trailing-`h1` screen-reader question named as unverified, not asserted resolved.
+- [ ] The Requirement 2 "entry page" divergence noted in the report.
 - [ ] No horizontal page scroll at 360px.
 - [ ] DECISION-021 applied as four criteria with four verdicts, failures named.
 - [ ] `npm test`, `npm run build`, `node scripts/dev/plan-status.js lint` pass; tree clean.
