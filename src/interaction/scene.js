@@ -1,4 +1,5 @@
 import { deepFreeze } from '../content/schema.js';
+import { candidateDenominatorsForInstance } from '../content/eligibility.js';
 import { makeContentIdentity } from './provenance.js';
 import { validateActiveCondition } from './episode-definition.js';
 
@@ -497,6 +498,13 @@ function taskMeaning(state) {
   };
 }
 
+function candidateDenominatorsMeaning(state) {
+  if (state.beat !== 'decide') return null;
+  const supportLevel = state.support?.dimensions?.commonDenominator;
+  if (supportLevel !== 'high support') return null;
+  return candidateDenominatorsForInstance(state.content);
+}
+
 function commonUnitMeaning(state) {
   const commonDenominator = state.established?.commonDenominator;
   if (!commonDenominator) return null;
@@ -598,6 +606,7 @@ function sceneMeaning(state, representationRole, capability) {
         left: left.unit.denominator,
         right: right.unit.denominator,
       },
+      candidateDenominators: candidateDenominatorsMeaning(state),
       commonUnit: commonUnitMeaning(state),
       authoredCoverage: state.established?.commonDenominator?.authoredCoverage ?? null,
     },

@@ -184,3 +184,36 @@ export function evaluateProposedPathEligibility(instance, proposedDenominator) {
       : 'episode-definition',
   });
 }
+
+/**
+ * Derives the list of eligible candidate common denominators for an instance.
+ * Collects the canonical target denominator and any eligible authored alternate paths.
+ * If fewer than 2 eligible targets exist, returns null to avoid a 1-element list that
+ * would violate Leakage Invariant 2 (falling back to learner-supplied numeric entry).
+ */
+export function candidateDenominatorsForInstance(instance) {
+  if (!instance) return null;
+  const eligibility = evaluateInstanceEligibility(instance);
+  const canonical = eligibility.paths?.canonical;
+  const alternates = eligibility.paths?.alternates ?? [];
+
+  const candidates = [];
+  if (canonical?.rendering === REPRESENTATION_ELIGIBILITY.ELIGIBLE && canonical.targetDenominator) {
+    candidates.push(canonical.targetDenominator);
+  }
+  for (const alt of alternates) {
+    if (alt?.rendering === REPRESENTATION_ELIGIBILITY.ELIGIBLE && alt.targetDenominator) {
+      if (!candidates.includes(alt.targetDenominator)) {
+        candidates.push(alt.targetDenominator);
+      }
+    }
+  }
+
+  candidates.sort((a, b) => Number(a) - Number(b));
+
+  if (candidates.length < 2) {
+    return null;
+  }
+
+  return deepFreeze(candidates);
+}

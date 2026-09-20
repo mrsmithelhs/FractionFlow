@@ -115,6 +115,23 @@ describe('Learner Strings Catalog (src/render/strings.js)', () => {
     expect(message24).not.toContain('12');
   });
 
+  it('Finding 3: notice.feedbackSame is parameterized and does not hardcode canonical thirds or fourths', () => {
+    const fn = STRINGS.notice.feedbackSame;
+    expect(typeof fn).toBe('function');
+
+    const msg = fn(3, 4);
+    expect(msg).toContain('3 equal parts');
+    expect(msg).toContain('4 equal parts');
+    expect(msg).not.toContain('thirds');
+    expect(msg).not.toContain('fourths');
+
+    const msgNonCanonical = fn(5, 7);
+    expect(msgNonCanonical).toContain('5 equal parts');
+    expect(msgNonCanonical).toContain('7 equal parts');
+    expect(msgNonCanonical).not.toContain('3');
+    expect(msgNonCanonical).not.toContain('4');
+  });
+
   it('condition B: reflect block supports visual matching with distractors (DECISION-012) AND check-the-premise cases (DECISION-026)', () => {
     // DECISION-012 visual matching
     expect(typeof STRINGS.reflect.matchingPrompt).toBe('function');

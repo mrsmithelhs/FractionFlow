@@ -215,14 +215,80 @@ Tested in `tests/render-foundation.test.js`:
 
 ---
 
-## 12. Remaining Risks or Follow-Ups
+---
 
-- `plan-08` will join the accessible linear alternative to this foundation boundary and execute the nine fail-first scaffold-leakage invariants across both visual and linear paths.
-- `plan-08` will also conduct the comprehensive WCAG 2.2 AA participation-floor and aesthetic coherence rubric self-assessment.
-- Condition switching and runtime registry integration remain cleanly deferred to `plan-09`.
+## 12. Remaining Risks or Limitations (Corrected per Repair 01)
+
+- **Headless Test Double Limitation (`mock-dom.js`)**:
+  `tests/fixtures/mock-dom.js` is a lightweight, zero-dependency headless test double modeling basic element hierarchy, class lists, attributes, event listeners, and selector matching. It does **not** model:
+  1. Visual rendering geometry, CSS cascading/box-sizing, layout overflow, or responsive breakpoints.
+  2. Browser focus management, `document.activeElement` tracking, or keyboard tab sequences.
+  3. Accessibility tree construction or assistive-technology (screen reader / virtual cursor) interaction.
+  Therefore, passing tests in Plan 07 demonstrate contract correctness and structural integrity by construction; they constitute **zero empirical accessibility evidence**. Plan 08 is the first true test of WCAG 2.2 AA accessibility claims against real browser and screen-reader environments.
+- **Scaffold-Leakage Invariants**:
+  The nine fail-first scaffold-leakage invariants across both visual and linear paths will be executed in Plan 08.
+- **Condition Switching & Multi-Condition Harness**:
+  Runtime condition arm switching and registration remain cleanly deferred to Plan 09.
 
 ---
 
-## 13. Ready for Orchestrator Review
+## 13. Repair 01 Execution & Resolution Record
 
-**Yes.** All Plan 07 requirements, checklist items, and the four mechanism-approval conditions (A, B, C, D) are implemented, verified by automated tests, and committed. No packet frontmatter or generated index files were modified.
+In response to `reports/development/plan-07-renderer-foundation/repair-01.md` (commit `4044ce3`), the following defects were systematically repaired under the authorized narrow write scope:
+
+### 1. Blocker 1 Resolved — Elimination of Presentation-Layer Arithmetic
+- **The Defect**: `beat-container.js:235-240` computed candidate common denominators by multiplying and doubling denominators (`leftDen * rightDen`, `leftDen * 2`, `rightDen * 2`) and filtering `<= 30`.
+- **The Upstream Solution**:
+  - Authored `candidateDenominatorsForInstance(instance)` in `src/content/eligibility.js` as a pure content-level helper. It reads `paths.canonical` and `paths.alternates` where `rendering === 'eligible'`.
+  - Added support-gated candidate projection in `src/interaction/scene.js`:
+    ```javascript
+    function candidateDenominatorsMeaning(state) {
+      if (state.beat !== 'decide') return null;
+      const supportLevel = state.support?.dimensions?.commonDenominator;
+      if (supportLevel !== 'high support') return null;
+      return candidateDenominatorsForInstance(state.content);
+    }
+    ```
+  - `candidateDenominators` is projected under `scene.meaning.unitRelationship.candidateDenominators`.
+- **Renderer Purity**:
+  - `beat-container.js` mounts candidate buttons directly from `scene.meaning.unitRelationship.candidateDenominators`. It performs **zero arithmetic**.
+  - When `candidateDenominators` is `null` (e.g. at `medium support`, `low support`, `independent`, or when fewer than 2 candidates exist), `beat-container.js` mounts a numeric entry control (`createNumericInput`) rather than choice buttons, preserving learner responsibility without collapsing the scaffold.
+
+### 2. Single-Element Candidate Edge Case Analysis & Recommendation
+- **Analysis**: Under DECISION-011 ceilings, instances without an eligible alternate (e.g. `shared-factor-addition` where LCD is 24 and alternate 48 > 30, or `seed-0` relatively prime where LCD is 30 and alternate 60 > 30) produce only 1 candidate (`['24']` or `['30']`).
+- **Leakage Invariant 2 Rule**: Presenting a single-element list reveals the target answer, violating Leakage Invariant 2.
+- **Implemented Fallback**: In `candidateDenominatorsForInstance`, if `candidates.length < 2`, it returns `null`. The interaction falls back to learner-supplied numeric entry with validation. The mathematics remains identical; only the scaffold form adjusts safely.
+
+### 3. Blocker 2 Resolved — Elimination of Hardcoded Fallback
+- In `beat-container.js:264`, removed `|| '12'`.
+- A missing `commonUnit` at the `transform` beat now throws `RenderContractError('MISSING_ESTABLISHED_UNIT', ...)` loudly.
+- In `beat-container.js:376-405` (`reflect` beat), removed hardcoded `8/12` and `7/12`, deriving option labels dynamically from `scene.meaning.quantities.left.currentForm` and `strings.reflect.noneOfTheseOption`.
+
+### 4. Finding 3 Resolved — Parameterized `feedbackSame`
+- In `src/render/strings.js`, replaced hardcoded `'thirds and...fourths'` with:
+  ```javascript
+  feedbackSame: (leftDen, rightDen) => (
+    `Look at the parts: one bar has ${leftDen} equal parts and one has ${rightDen} equal parts.`
+  ),
+  ```
+- In `beat-container.js:194`, notice recovery extracts `leftDen` and `rightDen` from `scene.meaning.quantities` and passes them to `strings.notice.feedbackSame`.
+- Conforms to Grade 2–3 length (~16 words) and register rules.
+
+### 5. Schema Version Decision
+- **Decision**: Retained `SCENE_SCHEMA_VERSION = 'fractionflow.scene/v1'`.
+- **Reasoning**: The project is in pre-release design and specification phase. The addition of `candidateDenominators` (`string[] | null`) to `unitRelationship` is purely additive and backward-compatible. Bumping the schema version would break replay envelopes and fixtures without representing a breaking semantic change.
+
+### 6. Extended Purity Verification & Fail-First Demonstration
+- `tests/render-purity.test.js` was expanded to 10 comprehensive tests:
+  - Proven by construction: non-standard arbitrary fractions (5/17 and 3/19) mount exact candidates (`['17', '34', '51']`) without derivation.
+  - Proven by construction: numeric fallback when `candidateDenominators` is `null`.
+  - Proven by construction: fail-loud throw when `commonUnit` is missing at `transform`.
+  - Proven by construction: `controls.js` does not validate math or compute truth.
+  - Statically verified: zero occurrences of forbidden literals (`'12'`, `'thirds'`, `'fourths'`) or inline denominator arithmetic in any file under `src/render/`.
+  - Demonstrated fail-first: static and behavioral checks explicitly fail against the code as delivered in commit `4f26887`.
+
+---
+
+## 14. Ready for Orchestrator Review
+
+**Yes.** All blockers and findings from `repair-01.md` are resolved and verified. All 179 tests pass, production build succeeds, and plan status lints cleanly.

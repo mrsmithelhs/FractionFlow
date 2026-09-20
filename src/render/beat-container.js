@@ -1,4 +1,4 @@
-import { assertValidScene } from './contract.js';
+import { assertValidScene, RenderContractError } from './contract.js';
 import { STRINGS } from './strings.js';
 import { createFractionBarRenderer } from './fraction-bar.js';
 import { createSymbolicRenderer } from './symbolic.js';
@@ -191,7 +191,11 @@ export function createBeatContainer({
       } else if (recovery.classification.kind === 'incorrect-operation') {
         recoveryEl.textContent = strings.operate.errorArithmetic;
       } else if (recovery.classification.kind === 'incorrect') {
-        recoveryEl.textContent = strings.notice.feedbackSame;
+        const leftDen = scene.meaning.quantities.left.unit.denominator;
+        const rightDen = scene.meaning.quantities.right.unit.denominator;
+        recoveryEl.textContent = typeof strings.notice.feedbackSame === 'function'
+          ? strings.notice.feedbackSame(leftDen, rightDen)
+          : strings.notice.feedbackSame;
       } else {
         recoveryEl.textContent = strings.status.stepIncorrect;
       }
@@ -230,40 +234,67 @@ export function createBeatContainer({
 
       case 'decide': {
         promptText.textContent = strings.decide.prompt;
-        const leftDen = scene.meaning.quantities.left.currentForm.denominator;
-        const rightDen = scene.meaning.quantities.right.currentForm.denominator;
-        // Common candidate options (e.g. 12, 24, or multiples)
-        const candidates = [
-          String(Number(leftDen) * Number(rightDen)),
-          String(Number(leftDen) * 2),
-          String(Number(rightDen) * 2),
-        ].filter((v, i, arr) => arr.indexOf(v) === i && Number(v) <= 30).sort((a, b) => Number(a) - Number(b));
+        const candidates = scene.meaning.unitRelationship.candidateDenominators;
 
-        const choiceGroup = createChoiceGroup({
-          legend: strings.decide.prompt,
-          options: candidates.map((den) => ({
-            label: den,
-            value: den,
-            ariaLabel: strings.decide.optionAriaLabel(den),
-          })),
-          onSelect: (den) => {
-            dispatchAction({
-              type: 'propose-common-denominator',
-              proposed: {
-                kind: 'fraction',
-                numerator: String(den),
-                denominator: '1',
-              },
-            });
-          },
-        });
-        controlsContainer.appendChild(choiceGroup);
+        if (Array.isArray(candidates) && candidates.length >= 2) {
+          const choiceGroup = createChoiceGroup({
+            legend: strings.decide.prompt,
+            options: candidates.map((den) => ({
+              label: den,
+              value: den,
+              ariaLabel: strings.decide.optionAriaLabel(den),
+            })),
+            onSelect: (den) => {
+              dispatchAction({
+                type: 'propose-common-denominator',
+                proposed: {
+                  kind: 'fraction',
+                  numerator: String(den),
+                  denominator: '1',
+                },
+              });
+            },
+          });
+          controlsContainer.appendChild(choiceGroup);
+        } else {
+          const numInput = createNumericInput({
+            id: 'decide-common-denominator-input',
+            label: strings.decide.prompt,
+            min: 1,
+            max: 99,
+            strings,
+            onSubmit: (val) => {
+              dispatchAction({
+                type: 'propose-common-denominator',
+                proposed: {
+                  kind: 'fraction',
+                  numerator: String(val),
+                  denominator: '1',
+                },
+              });
+            },
+          });
+          controlsContainer.appendChild(numInput.element);
+        }
         break;
       }
 
       case 'transform': {
-        const side = task.target || 'left';
-        const targetDen = scene.meaning.unitRelationship.commonUnit?.targetDenominator || '12';
+        const side = task.target;
+        if (side !== 'left' && side !== 'right') {
+          throw new RenderContractError(
+            'MISSING_TASK_TARGET',
+            'transform beat requires a valid target side ("left" or "right")',
+          );
+        }
+        const commonUnit = scene.meaning.unitRelationship.commonUnit;
+        if (!commonUnit || !commonUnit.targetDenominator) {
+          throw new RenderContractError(
+            'MISSING_ESTABLISHED_UNIT',
+            'transform beat requires established commonUnit.targetDenominator in scene',
+          );
+        }
+        const targetDen = commonUnit.targetDenominator;
         promptText.textContent = strings.transform.prompt(side, targetDen);
 
         const numInput = createNumericInput({
@@ -344,16 +375,28 @@ export function createBeatContainer({
 
       case 'reflect': {
         // DECISION-012 & DECISION-026: Visual matching check with distractors
-        const targetForm = `${scene.meaning.quantities.left.sourceForm.numerator}/${scene.meaning.quantities.left.sourceForm.denominator}`;
+        const left = scene.meaning.quantities.left;
+        const targetForm = `${left.sourceForm.numerator}/${left.sourceForm.denominator}`;
         promptText.textContent = strings.reflect.matchingPrompt(targetForm);
+
+        const currentLeft = left.currentForm;
+        const currentLabel = `${currentLeft.numerator}/${currentLeft.denominator}`;
+        const options = [
+          {
+            label: currentLabel,
+            value: 'correct',
+            ariaLabel: strings.reflect.matchingOptionLabel(currentLeft.numerator, currentLeft.denominator),
+          },
+          {
+            label: strings.reflect.noneOfTheseOption,
+            value: 'none',
+            ariaLabel: strings.reflect.noneOfTheseOption,
+          },
+        ];
 
         const choiceGroup = createChoiceGroup({
           legend: promptText.textContent,
-          options: [
-            { label: `8/12`, value: 'correct', ariaLabel: strings.reflect.matchingOptionLabel(8, 12) },
-            { label: `7/12`, value: 'distractor-1', ariaLabel: strings.reflect.matchingOptionLabel(7, 12) },
-            { label: strings.reflect.noneOfTheseOption, value: 'none', ariaLabel: strings.reflect.noneOfTheseOption },
-          ],
+          options,
           onSelect: (val) => {
             dispatchAction({
               type: 'submit-reflection',

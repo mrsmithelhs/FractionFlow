@@ -32,7 +32,9 @@ export const STRINGS = Object.freeze({
       different: 'No, different sizes',
     }),
     feedbackDiff: 'The parts are different sizes. We need a common unit.',
-    feedbackSame: 'Look at the parts: one bar has thirds and one has fourths.',
+    feedbackSame: (leftDen, rightDen) => (
+      `Look at the parts: one bar has ${leftDen} equal parts and one has ${rightDen} equal parts.`
+    ),
   }),
 
   decide: Object.freeze({

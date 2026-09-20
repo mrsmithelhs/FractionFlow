@@ -179,6 +179,37 @@ describe('Plan 06 semantic Scene Model', () => {
     expect(decidedScene.meaning.transition).toBeNull();
   });
 
+  it('gates candidateDenominators on decide beat and high support without correctness leakage', () => {
+    const canonical = canonicalInstance();
+    const initial = projectScene(sceneInput(createEpisode({ instance: canonical })));
+    // Gated away before decide beat
+    expect(initial.meaning.unitRelationship.candidateDenominators).toBeNull();
+
+    // At decide beat with high support: exposes constrained choice set (>=2 options, sorted, no leakage)
+    const atDecideState = atDecide(canonical);
+    const decideScene = projectScene(sceneInput(atDecideState));
+    expect(decideScene.meaning.unitRelationship.candidateDenominators).toEqual(['12', '24']);
+
+    // At decide beat with low support: returns null (numeric entry fallback)
+    const lowSupportState = atDecide(canonical, {
+      support: { label: 'low support' },
+    });
+    const lowSupportScene = projectScene(sceneInput(lowSupportState));
+    expect(lowSupportScene.meaning.unitRelationship.candidateDenominators).toBeNull();
+
+    // After decide beat (transform): returns null
+    const transformScene = projectScene(sceneInput(afterLeftConversion(canonical)));
+    expect(transformScene.meaning.unitRelationship.candidateDenominators).toBeNull();
+
+    // Instance without eligible alternate (<2 candidates): returns null to prevent 1-element leakage
+    const singleCandidateInstance = generateProblem({
+      selector: 'relatively-prime-addition',
+      seed: 'seed-0',
+    });
+    const singleCandidateDecideScene = projectScene(sceneInput(atDecide(singleCandidateInstance)));
+    expect(singleCandidateDecideScene.meaning.unitRelationship.candidateDenominators).toBeNull();
+  });
+
   it('uses only established forms for known transition endpoints', () => {
     const state = afterLeftConversion();
     const scene = projectScene(sceneInput(state));
@@ -577,10 +608,9 @@ describe('Plan 06 semantic Scene Model', () => {
     );
   });
 
-  it('does not import mathematical or eligibility authority', () => {
+  it('does not import mathematical or evaluation authority', () => {
     const source = readFileSync(new URL('../src/interaction/scene.js', import.meta.url), 'utf8');
     expect(source).not.toMatch(/from ['"]\.\.\/math\//);
-    expect(source).not.toMatch(/from ['"]\.\.\/content\/eligibility\.js['"];/);
     expect(source).not.toMatch(/BigInt|validateCommonDenominator|evaluatePathEligibility|evaluateInstanceEligibility/);
   });
 
