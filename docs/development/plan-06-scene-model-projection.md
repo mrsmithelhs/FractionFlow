@@ -1,11 +1,9 @@
 ---
 id: plan-06
 title: Scene Model Projection
-status: draft
+status: in-progress
 depends_on: [plan-05]
 gate: "Mechanism confirmation before implementation: the implementer proposes the scene projection shape and the staleness/derivation rule, and stops for orchestrator approval. Still no DOM and no renderer."
-superseded_by: null
-resolution: null
 summary: >-
   Implement the D-20 Scene Model as a pure semantic projection of validated
   mathematical state, instructional state, and active representation. Proves

@@ -17,11 +17,12 @@ Authoritative packet status is `node scripts/dev/plan-status.js list` and the ge
 - `plan-03` (content contracts and deterministic generation): **complete**. Immutable problem
   instances, eight structural selectors, overlays, provenance, deterministic selection, bulk audit.
 - `plan-04` (first-slice design dossier): **complete**, owner-accepted 2026-09-19.
-- `plan-05` (instructional engine plus representation eligibility): **delivered, repair pending**.
-  The mechanism was approved and the implementation plus advisor repairs were delivered on
-  2026-09-19, but final orchestrator review found a replay-definition identity defect. Its one
-  bounded repair must preserve the delivered status and stop for another review.
-- `plan-06` through `plan-09`: **draft**, awaiting their dependencies and their own assignment gates.
+- `plan-05` (instructional engine plus representation eligibility): **complete**, accepted on
+  2026-09-19 after a bounded replay-definition repair. Registered immutable definition identities,
+  including the selective-reflection variant, now reconstruct exactly through a JSON replay envelope.
+- `plan-06` (Scene Model projection): **in progress**, assigned on 2026-09-19. Its
+  mechanism-confirmation gate is the next required stop.
+- `plan-07` through `plan-09`: **draft**, awaiting their dependencies and their own assignment gates.
   The Phase 2 wave was drafted at `4bb2879` and revised at `4371c25` after a packet-wave review by the
   Codex orchestrator thread. All six of that review's recommendations were accepted.
 
@@ -136,26 +137,18 @@ and public URL.
 
 ## Next Orchestration Move
 
-`plan-05` is delivered but is **not accepted or complete**. Its final review confirmed that
-`createEpisode()` accepts caller-supplied definitions that share the registered definition's ID,
-revision, and beat order while changing semantics such as `includeReflection` or prompt identities.
-The replay envelope records only ID/revision and consequently reconstructs the registered no-reflection
-definition. A resolved reflection-enabled episode therefore fails to replay its own valid final
-reflection action after a JSON round trip. The loose definition check can also admit missing prompt
-identities whose `undefined` values are silently dropped by JSON serialization.
+`plan-05` is complete. The final repair replaced loose caller-supplied episode-definition semantics
+with an immutable registered-definition authority: every accepted definition now has a unique recorded
+identity, altered or non-wire definition data fails before construction, and the reflection-enabled
+variant is a distinct registered identity that JSON replay reconstructs exactly. Independent review
+found no remaining defect in the repaired boundary. The final resolution is recorded in the packet
+frontmatter.
 
-Assign one bounded Plan 05 repair: make accepted episode definitions authoritative and uniquely
-reconstructible from their recorded identity. Either resolve the supplied ID/revision to the registered
-immutable definition before construction, or require exact equality with it. If a reflection-enabled
-definition is a supported variant, register it under a distinct identity or revision and have replay
-resolve that identity. Add regressions that reject altered/missing definition fields and JSON-round-trip
-and replay every definition the constructor accepts. Do not change packet status, content/math contracts,
-Scene Model, renderer, app shell, or deployment behavior. Then report and stop for final review.
-
-The wave review is otherwise complete and its recommendations are folded in. The Plan 05 mechanism was
-approved with binding clarifications on 2026-09-19; see
-`reports/development/plan-05-instructional-engine-and-episode-state/mechanism-review.md`. The repair
-does not reopen that gate or authorize later-packet work.
+`plan-06` is now in progress. Before it writes source, its implementer must run the packet preflight,
+propose the pure Scene Model projection mechanism, and stop for orchestrator/owner approval. It must
+consume the completed Plan 05 instructional state and eligibility verdicts rather than duplicating
+math, content, eligibility, or episode-transition logic. Its gate does not authorize DOM, rendering,
+application-shell, deployment, condition-switching, or packet-status work.
 
 Two cautions for the implementation phase specifically. First, `plan-07`'s three-path gate is the
 wave's load-bearing review moment; approving a boundary that accounts only for the visual and symbolic
