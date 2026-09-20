@@ -360,6 +360,24 @@ describe('Plan 06 semantic Scene Model', () => {
     expect(assertSceneCurrent(scene, originalInput)).toBe(scene);
   });
 
+  it('rejects stale capability refusals before stub-consumer delivery', () => {
+    const original = createEpisode({ instance: canonicalInstance() });
+    const originalInput = sceneInput(original, { representationRole: 'number-line' });
+    const refusal = projectScene(originalInput);
+    const current = applyIntent(original, { type: 'acknowledge-encounter' });
+    const deliveries = [];
+
+    expect(refusal.kind).toBe('capability-refusal');
+    expect(isSceneCurrent(refusal, sceneInput(current, { representationRole: 'number-line' })))
+      .toBe(false);
+    expect(() => deliverToStub(
+      refusal,
+      sceneInput(current, { representationRole: 'number-line' }),
+      deliveries,
+    )).toThrowError(expect.objectContaining({ code: 'STALE_SCENE' }));
+    expect(deliveries).toEqual([]);
+  });
+
   it('binds freshness to every content fact consumed by the projection', () => {
     const original = createEpisode({ instance: canonicalInstance() });
     const scene = projectScene(sceneInput(original));
@@ -478,5 +496,16 @@ describe('Plan 06 semantic Scene Model', () => {
     expect(() => projectScene(sceneInput(sparse))).toThrowError(
       expect.objectContaining({ code: 'INVALID_SCENE_INPUT' }),
     );
+  });
+
+  it('recursively sorts nested object keys in the derivation key', () => {
+    const state = createEpisode({ instance: canonicalInstance() });
+    const first = structuredClone(state);
+    first.pendingResponse = JSON.parse('{"z":{"b":1,"a":2},"a":0}');
+    const second = structuredClone(state);
+    second.pendingResponse = JSON.parse('{"a":0,"z":{"a":2,"b":1}}');
+
+    expect(projectScene(sceneInput(first)).derivation.key)
+      .toBe(projectScene(sceneInput(second)).derivation.key);
   });
 });
