@@ -5,7 +5,8 @@
 - **Mechanism approval:** `reports/development/plan-05-instructional-engine-and-episode-state/mechanism-review.md`, approved with binding clarifications on 2026-09-19
 - **Implementation commit:** `bc63229` (`feat: implement plan-05 instructional engine`)
 - **Repair commit:** `0d2c3bd` (`fix: harden plan-05 episode and replay boundaries`)
-- **Packet status:** unchanged; the implementer did not edit frontmatter or run the status setter
+- **Bounded replay repair commit:** `b5f2be2` (`fix: make plan-05 definitions replayable`)
+- **Packet status:** `delivered`; unchanged by the implementer, who did not edit frontmatter or run the status setter
 - **Ready for orchestrator review:** yes
 
 ## Overall summary
@@ -14,13 +15,19 @@ Implemented the pure instructional layer for the Phase 2 unlike-denominator
 addition episode and the prerequisite content capability evaluator. The engine
 now creates immutable JSON-safe episode state, advances through explicit
 encounter → notice → decide → transform → operate → resolve beats, retains
-  completed-beat context, preserves valid earlier work after invalid responses,
-  records independent support dimensions and layered help, emits synthetic
-  response-level provenance, and reconstructs generated or curated episodes from
-  deterministic replay envelopes. Beat-specific intents are gated to the active
-  responsibility, demonstration support survives incorrect retries for the same
-  responsibility, and resolved/reflected establishments are present in the
-  canonical state projection.
+completed-beat context, preserves valid earlier work after invalid responses,
+records independent support dimensions and layered help, emits synthetic
+response-level provenance, and reconstructs generated or curated episodes from
+deterministic replay envelopes. Beat-specific intents are gated to the active
+responsibility, demonstration support survives incorrect retries for the same
+responsibility, and resolved/reflected establishments are present in the
+canonical state projection.
+
+The bounded replay repair makes episode-definition identity authoritative. The
+default and reflection-enabled definitions are registered under distinct
+identities, caller-provided definitions must exactly match their registered
+semantics and JSON-wire constraints, and replay resolves the recorded identity
+through the same registry used by construction.
 
 The content layer now computes Phase 2 representation eligibility before episode
 construction. Exact mathematical validity remains delegated to Plan 02; the
@@ -86,8 +93,8 @@ review:
 ### Interaction
 
 - `src/interaction/episode-definition.js` — approved episode identity/revision,
-  explicit beat order, bounded active-condition descriptor, and prompt
-  identities.
+  explicit beat order, registered default/reflection variants, bounded
+  active-condition descriptor, and prompt identities.
 - `src/interaction/support.js` — canonical support labels, independent support
   dimensions, and deterministic help levels.
 - `src/interaction/classification.js` — response delegation to exact math/content
@@ -112,6 +119,10 @@ Implemented in `src/interaction/episode.js` and
 - The active beat and expected response are explicit.
 - Encounter, notice, decide, transform, operate, resolve, and selective reflect
   are represented.
+- Accepted episode definitions are authoritative registered values. The
+  reflection-enabled variant has its own definition identity; changing
+  `includeReflection`, prompt identities, beat order, or other semantics behind
+  the default identity is rejected before construction.
 - Completed beats retain the structured establishment made at that beat.
 - Transitions occur only through learner-intent actions or the reducer's
   deterministic internal consequence of a successful learner action. There is
@@ -164,6 +175,9 @@ Implemented in `src/interaction/provenance.js` and
 - The envelope carries complete generated or curated reconstruction identity,
   episode definition, support, active condition, and ordered learner intents.
 - Generated and curated replay tests round-trip deterministically through JSON.
+- Every definition accepted by `createEpisode()` is replayable from its recorded
+  ID/revision. The reflection-enabled definition is JSON-round-tripped and its
+  final resolved state matches the original exactly.
 - Tampered curated identity is rejected before substitution. Invalid generated
   reconstruction profile, request, version, seed, or instance identity is also
   rejected. Exact replay envelope shape and JSON round-trip preservation are
@@ -218,12 +232,16 @@ rendering-ineligible because its target denominator exceeds 30.
 ## Validation commands and results
 
 - `node scripts/dev/plan-status.js check plan-05` →
-  `RUNNABLE: plan-05 is ready to implement`.
+  `BLOCKED: plan-05 has status "delivered" — not ready or in-progress`.
+  This is the expected status-tool result while the orchestrator-authorized
+  bounded repair is pending; the implementer did not change packet status.
 - `node scripts/dev/plan-status.js lint` → `lint: OK (no violations)`.
 - Baseline before source changes: `npm test` → 113 tests passed.
-- Final `npm test` → **11 test files passed, 132 tests passed**.
+- Final `npm test` → **11 test files passed, 133 tests passed**.
+- `npm run build` → production build passed.
 - Focused Plan 05 tests → eligibility, interaction, provenance, replay, base
-  capability, deferred rejection, and reflection cases passed.
+  capability, deferred rejection, definition-identity rejection, and
+  reflection-definition replay cases passed.
 - `git diff --check` and `git diff --cached --check` → no whitespace errors.
 - Read-only exact eligibility sweep → figures recorded above.
 - Static boundary scan over `src/interaction/` → no DOM, browser API,
@@ -231,8 +249,9 @@ rendering-ineligible because its target denominator exceeds 30.
 - JSON wire checks → generated/curated content, episode state, provenance,
   intents, and replay envelopes reject non-canonical values and survive JSON
   serialization round trips without `BigInt` or silent-loss errors.
-- Final staged path audit → exactly the 17 implementation/test/register paths
-  listed in the implementation commit.
+- Bounded-repair staged path audit → exactly the 3 authorized existing paths:
+  episode definition registry, episode construction validation, and interaction
+  regression tests.
 
 The normal Git global-ignore warning (`C:\Users\orion\.config\git\ignore`
 permission denied) appeared during read-only status/diff operations. It did not
