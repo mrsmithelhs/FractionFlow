@@ -35,8 +35,10 @@ Authoritative packet status is `node scripts/dev/plan-status.js list` and the ge
   without renegotiating it, nine fail-first leakage invariants across both paths, focus-reachability
   and native-element access parity, and the completed-beat collapse rule. See
   `reports/development/plan-08-participation-floor-and-access-parity/final-review.md`.
-- `plan-09` (app shell, condition switcher, deployed acceptance): **draft**. The last packet of the
-  Phase 2 wave and the one carrying the owner gate.
+- `plan-09` (app shell, condition switcher, deployed acceptance): **in-progress**. Requirements 1
+  and 2 are built and Repair 01 is accepted (`reports/development/plan-09-app-shell-condition-switcher-and-acceptance/repair-01-review.md`).
+  Requirement 3 — the deployed public exercise — is unstarted and blocked on owner authorization.
+  The last packet of the Phase 2 wave and the one carrying the owner gate.
 
 ## The Specification Phase Closed on 2026-09-19
 
@@ -192,3 +194,21 @@ Three things to hold when it runs:
 
 Per the owner convention, report board state and needed owner action on completion, then advance the
 next packet if it needs no owner decision. Never push without explicit authorization.
+
+### Live as of 2026-09-20, after `plan-09` Repair 01
+
+The shell, the switcher, and both access paths are built and verified in a real browser. What is
+open:
+
+1. **Owner decision — DECISION-026 has no reachable instantiation.** All three registered conditions
+   use `CM-01-M`; the `CM-01-P` premise branch is unreachable in the app; and the matching arm's
+   "None of these" option (never the correct answer, so never a premise check) was removed by
+   Repair 01 in favour of three real candidates. No learner can currently meet a connection-making
+   check whose habitual answer is wrong, which is the exact failure DECISION-026 was written to
+   prevent. The fix is a choice about what ships — a fourth registered condition, a second authored
+   choice set whose answer is "none," or an explicit deferral to Phase 3 — so it is owner
+   disposition, not a repair. **`plan-08`'s final review credited DECISION-026 as satisfied on the
+   strength of the code existing; reachability was not checked. That was an orchestrator error.**
+2. **Owner gate — deploy authorization.** Requirement 3 cannot start without it.
+3. Two small non-blocking items are recorded in the Repair 01 review: the authored correct choice sits
+   at index 0 in every set, and leakage Invariant 6 asserts a class no code applies.
