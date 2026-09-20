@@ -4,6 +4,7 @@ import {
   PHASE1_GOLDEN_CASES,
   validateCuratedFixtures,
   validateProblemInstance,
+  reflectionChoicesForInstance,
 } from '../src/content/index.js';
 
 describe('Plan 03 curated synthetic content', () => {
@@ -63,5 +64,19 @@ describe('Plan 03 curated synthetic content', () => {
     forged.provenance.fixtureId = '';
     deepFreeze(forged);
     expect(validateProblemInstance(forged).valid).toBe(false);
+  });
+
+  it('supplies correctness-free authored CM-01 matching choices for the ready subset', () => {
+    const instance = validateCuratedFixtures().find((entry) => (
+      entry.fixture.id === 'curated-relatively-prime-addition-non-least'
+    )).instance;
+    const choices = reflectionChoicesForInstance(instance);
+
+    expect(choices).toHaveLength(3);
+    expect(choices.map((choice) => choice.id)).toEqual(['match-a', 'match-b', 'match-c']);
+    expect(choices.map((choice) => `${choice.form.numerator}/${choice.form.denominator}`))
+      .toEqual(['8/12', '7/12', '9/12']);
+    expect(choices.every((choice) => !Object.prototype.hasOwnProperty.call(choice, 'correct'))).toBe(true);
+    expect(Object.isFrozen(choices)).toBe(true);
   });
 });

@@ -222,10 +222,10 @@ describe('Plan 05 instructional episode', () => {
     state = applyIntent(state, { type: 'submit-resolution', proposed: fraction(11, 12) });
     expect(state.status).toBe('active');
     expect(state.beat).toBe('reflect');
-    state = applyIntent(state, { type: 'submit-reflection', response: 'same-quantity-different-form' });
+    state = applyIntent(state, { type: 'submit-reflection', response: 'match-a' });
     expect(state.status).toBe('resolved');
     expect(state.beat).toBe('reflect');
-    expect(state.established.reflection).toEqual({ response: 'same-quantity-different-form' });
+    expect(state.established.reflection).toEqual({ response: 'match-a' });
 
     const replayed = replayEpisode(JSON.parse(JSON.stringify(createReplayEnvelope(state))));
     expect(JSON.stringify(replayed)).toBe(JSON.stringify(state));

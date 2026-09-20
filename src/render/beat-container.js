@@ -3,6 +3,7 @@ import { STRINGS } from './strings.js';
 import { createFractionBarRenderer } from './fraction-bar.js';
 import { createSymbolicRenderer } from './symbolic.js';
 import { createButton, createNumericInput, createChoiceGroup } from './controls.js';
+import { createVisualMatchingChoice } from './matching-choice.js';
 
 /**
  * Beat-Gated Mounting Container (DECISION-014, Reconciliation Finding R6, DECISION-021)
@@ -32,7 +33,6 @@ export function createBeatContainer({
   }
 
   let rootEl = null;
-  let liveRegionEl = null;
   let visualSectionEl = null;
   let symbolicSectionEl = null;
   let completedBeatsEl = null;
@@ -46,13 +46,6 @@ export function createBeatContainer({
     rootEl = document.createElement('div');
     rootEl.classList.add('episode-beat-container');
     container.appendChild(rootEl);
-
-    // ARIA Live Region for screen-reader status announcements
-    liveRegionEl = document.createElement('div');
-    liveRegionEl.setAttribute('role', 'status');
-    liveRegionEl.setAttribute('aria-live', 'polite');
-    liveRegionEl.classList.add('sr-only', 'live-announcements');
-    rootEl.appendChild(liveRegionEl);
 
     // Visual representations section
     visualSectionEl = document.createElement('section');
@@ -87,7 +80,6 @@ export function createBeatContainer({
     // Active beat section
     activeBeatEl = document.createElement('section');
     activeBeatEl.classList.add('active-beat-section');
-    activeBeatEl.setAttribute('aria-live', 'polite');
     rootEl.appendChild(activeBeatEl);
 
     // Initialize sub-renderers
@@ -210,13 +202,8 @@ export function createBeatContainer({
 
     if (scene.meaning.status.episode === 'resolved') {
       promptText.textContent = strings.resolve.complete || 'You finished this problem.';
-      const completeEl = document.createElement('p');
-      completeEl.classList.add('resolve-complete');
-      completeEl.textContent = strings.resolve.complete || 'You finished this problem.';
-      controlsContainer.appendChild(completeEl);
       promptHeader.appendChild(promptText);
       activeBeatEl.appendChild(promptHeader);
-      activeBeatEl.appendChild(controlsContainer);
       return;
     }
 
@@ -242,6 +229,8 @@ export function createBeatContainer({
         recoveryEl.textContent = typeof strings.notice.feedbackSame === 'function'
           ? strings.notice.feedbackSame(leftDen, rightDen)
           : strings.notice.feedbackSame;
+      } else if (recovery.classification.kind === 'incorrect-reflection') {
+        recoveryEl.textContent = strings.reflect.matchingDistractor;
       } else {
         recoveryEl.textContent = strings.status.stepIncorrect;
       }
@@ -390,21 +379,17 @@ export function createBeatContainer({
       }
 
       case 'resolve': {
-        promptText.textContent = strings.resolve.prompt;
         const raw = scene.meaning.operation.rawResult;
         const pref = scene.meaning.operation.preferredFinalForm || raw;
 
-        const summaryEl = document.createElement('div');
-        summaryEl.classList.add('resolve-summary');
         if (pref && raw && (pref.numerator !== raw.numerator || pref.denominator !== raw.denominator)) {
-          summaryEl.textContent = strings.resolve.unsimplifiedNotice(
+          promptText.textContent = strings.resolve.unsimplifiedNotice(
             `${raw.numerator}/${raw.denominator}`,
             `${pref.numerator}/${pref.denominator}`,
           );
         } else if (pref) {
-          summaryEl.textContent = strings.resolve.summary(pref.numerator, pref.denominator);
+          promptText.textContent = strings.resolve.summary(pref.numerator, pref.denominator);
         }
-        controlsContainer.appendChild(summaryEl);
 
         const nextBtn = createButton({
           label: scene.meaning.currentTask.promptId?.includes('reflect')
@@ -457,25 +442,29 @@ export function createBeatContainer({
           const left = scene.meaning.quantities.left;
           const targetForm = `${left.sourceForm.numerator}/${left.sourceForm.denominator}`;
           promptText.textContent = strings.reflect.matchingPrompt(targetForm);
-
-          const currentLeft = left.currentForm;
-          const currentLabel = `${currentLeft.numerator}/${currentLeft.denominator}`;
-          const options = [
-            {
-              label: currentLabel,
-              value: 'correct',
-              ariaLabel: strings.reflect.matchingOptionLabel(currentLeft.numerator, currentLeft.denominator),
-            },
-            {
-              label: strings.reflect.noneOfTheseOption,
-              value: 'none',
-              ariaLabel: strings.reflect.noneOfTheseOption,
-            },
-          ];
+          const choices = scene.meaning.reflectionChoices;
+          if (!Array.isArray(choices) || choices.length < 3) {
+            throw new RenderContractError(
+              'MISSING_REFLECTION_CHOICES',
+              'visual matching requires at least three content-supplied choices',
+            );
+          }
 
           const choiceGroup = createChoiceGroup({
             legend: promptText.textContent,
-            options,
+            options: choices.map((choice) => ({
+              value: choice.id,
+              choice,
+              ariaLabel: strings.reflect.matchingOptionLabel(
+                choice.form.numerator,
+                choice.form.denominator,
+              ),
+            })),
+            renderOption: (option, onClick) => createVisualMatchingChoice({
+              choice: option.choice,
+              ariaLabel: option.ariaLabel,
+              onClick,
+            }),
             onSelect: (val) => {
               dispatchAction({
                 type: 'submit-reflection',
@@ -494,8 +483,18 @@ export function createBeatContainer({
       }
     }
 
+    const lastHelp = scene.meaning.supportConsequence?.lastHelp;
+    const helpMessage = lastHelp && lastHelp.beat === beat
+      ? strings.app?.helpLevels?.[lastHelp.level]
+      : null;
     promptHeader.appendChild(promptText);
     activeBeatEl.appendChild(promptHeader);
+    if (helpMessage) {
+      const helpEl = document.createElement('p');
+      helpEl.classList.add('active-beat-help');
+      helpEl.textContent = helpMessage;
+      activeBeatEl.appendChild(helpEl);
+    }
     activeBeatEl.appendChild(controlsContainer);
   }
 

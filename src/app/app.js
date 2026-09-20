@@ -48,7 +48,11 @@ function canonicalInstance() {
 
 function makeElement(tagName, className = '') {
   const element = document.createElement(tagName);
-  if (className) element.classList.add(className);
+  if (className) {
+    for (const name of className.split(/\s+/)) {
+      if (name) element.classList.add(name);
+    }
+  }
   return element;
 }
 
@@ -99,7 +103,6 @@ export function createFractionFlowApp({
   let motionListener = null;
 
   let appRoot;
-  let displayStatus;
   let displayMenu;
   let displayMenuButton;
   let viewToggle;
@@ -177,25 +180,6 @@ export function createFractionFlowApp({
   function createShell() {
     appRoot = makeElement('div', 'fractionflow-app');
 
-    const header = makeElement('header', 'app-header');
-    const titleBlock = makeElement('div', 'app-title-block');
-    const title = makeElement('h1');
-    title.textContent = STRINGS.app.title;
-    titleBlock.appendChild(title);
-    const subtitle = makeElement('p', 'app-subtitle');
-    subtitle.textContent = STRINGS.app.subtitle;
-    titleBlock.appendChild(subtitle);
-    header.appendChild(titleBlock);
-    header.appendChild(createDisplayMenu());
-    appRoot.appendChild(header);
-
-    const introduction = makeElement('p', 'app-introduction');
-    introduction.textContent = STRINGS.app.introduction;
-    appRoot.appendChild(introduction);
-
-    displayStatus = makeElement('p', 'app-display-status');
-    appRoot.appendChild(displayStatus);
-
     const episode = makeElement('main', 'app-episode');
     episode.setAttribute('aria-label', 'Fraction practice');
 
@@ -223,9 +207,6 @@ export function createFractionFlowApp({
     episode.appendChild(linearHost);
 
     const supportPanel = makeElement('aside', 'app-support-panel');
-    const supportHeadingEl = makeElement('h2');
-    supportHeadingEl.textContent = STRINGS.app.supportHeading;
-    supportPanel.appendChild(supportHeadingEl);
     const supportControls = makeElement('div', 'app-support-controls');
     helpButton = createButton({
       label: STRINGS.app.helpButton,
@@ -240,14 +221,12 @@ export function createFractionFlowApp({
     supportControls.appendChild(helpButton);
     supportControls.appendChild(replayButton);
     supportPanel.appendChild(supportControls);
-    supportNotice = makeElement('p', 'app-support-notice');
+    supportNotice = makeElement('p', 'app-support-notice sr-only');
     supportNotice.setAttribute('aria-live', 'polite');
     supportPanel.appendChild(supportNotice);
     episode.appendChild(supportPanel);
 
     completionPanel = makeElement('section', 'app-completion-panel');
-    completionPanel.setAttribute('aria-live', 'polite');
-    completionPanel.setAttribute('aria-label', STRINGS.resolve.complete);
     const restartButton = createButton({
       label: STRINGS.app.restartButton,
       className: 'app-secondary-button',
@@ -262,6 +241,13 @@ export function createFractionFlowApp({
     episode.appendChild(completionPanel);
 
     appRoot.appendChild(episode);
+
+    const footer = makeElement('footer', 'app-footer');
+    const title = makeElement('h1');
+    title.textContent = STRINGS.app.title;
+    footer.appendChild(title);
+    footer.appendChild(createDisplayMenu());
+    appRoot.appendChild(footer);
     root.replaceChildren(appRoot);
   }
 
@@ -279,7 +265,6 @@ export function createFractionFlowApp({
     appRoot.setAttribute('data-choreography-code', selectedCondition.activeCondition.choreography);
     appRoot.setAttribute('data-prompt-cadence-code', selectedCondition.activeCondition.promptCadence);
     appRoot.setAttribute('data-connection-code', selectedCondition.activeCondition.connectionMaking);
-    displayStatus.textContent = STRINGS.app.activeDisplay(selectedCondition.label);
     for (const option of displayMenu.querySelectorAll('.app-display-option')) {
       option.setAttribute(
         'aria-pressed',
@@ -340,6 +325,8 @@ export function createFractionFlowApp({
         activityNotice = STRINGS.app.helpLevels[help.level] || STRINGS.app.helpLevels.orient;
       } else if (action.type === 'request-replay') {
         activityNotice = STRINGS.app.replayNote;
+      } else if (state.status === 'resolved') {
+        activityNotice = STRINGS.resolve.complete;
       } else {
         activityNotice = '';
       }

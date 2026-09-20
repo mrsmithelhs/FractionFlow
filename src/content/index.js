@@ -3,6 +3,7 @@ export * from './seed.js';
 export * from './family-definitions.js';
 export * from './profiles.js';
 export * from './eligibility.js';
+export * from './data/reflection-choices.js';
 export * from './generator.js';
 export * from './validation.js';
 export * from './curated.js';

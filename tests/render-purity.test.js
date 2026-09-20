@@ -423,11 +423,11 @@ describe('Renderer Purity & Determinism by Construction (Requirement 2, Conditio
     beatContainer.update(sceneResolve);
     linearPath.update(sceneResolve);
 
-    const visualSummary = containerVisual.querySelector('.resolve-summary');
+    const visualSummary = containerVisual.querySelector('.active-beat-prompt');
     expect(visualSummary.textContent).toContain('99/5');
     expect(visualSummary.textContent).not.toContain('42');
 
-    const linearSummary = containerLinear.querySelector('.resolve-summary');
+    const linearSummary = containerLinear.querySelector('.active-beat-prompt');
     expect(linearSummary.textContent).toContain('99/5');
     expect(linearSummary.textContent).not.toContain('42');
   });
@@ -439,6 +439,7 @@ describe('Renderer Purity & Determinism by Construction (Requirement 2, Conditio
       'fraction-bar.js',
       'symbolic.js',
       'controls.js',
+      'matching-choice.js',
       'beat-container.js',
       'linear-path.js',
       'index.js',

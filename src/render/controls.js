@@ -107,12 +107,13 @@ export function createChoiceGroup({
   name,
   options = [], // [{ label, value, ariaLabel }]
   onSelect,
+  renderOption = null,
 } = {}) {
   const fieldset = document.createElement('fieldset');
   fieldset.classList.add('control-choice-fieldset');
 
   const legendEl = document.createElement('legend');
-  legendEl.classList.add('control-legend');
+  legendEl.classList.add('control-legend', 'sr-only');
   legendEl.textContent = legend;
   fieldset.appendChild(legendEl);
 
@@ -120,14 +121,17 @@ export function createChoiceGroup({
   optionsContainer.classList.add('control-choice-options');
 
   for (const opt of options) {
-    const btn = createButton({
-      label: opt.label,
-      ariaLabel: opt.ariaLabel || null,
-      className: 'control-choice-btn',
-      onClick: () => {
-        if (onSelect) onSelect(opt.value);
-      },
-    });
+    const onOptionClick = () => {
+      if (onSelect) onSelect(opt.value);
+    };
+    const btn = typeof renderOption === 'function'
+      ? renderOption(opt, onOptionClick)
+      : createButton({
+        label: opt.label,
+        ariaLabel: opt.ariaLabel || null,
+        className: 'control-choice-btn',
+        onClick: onOptionClick,
+      });
     optionsContainer.appendChild(btn);
   }
 

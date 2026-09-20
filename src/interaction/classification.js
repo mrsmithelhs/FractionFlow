@@ -1,11 +1,13 @@
 import {
   classifyConversionResponse as classifyMathConversionResponse,
   classifyOperationResponse as classifyMathOperationResponse,
+  equalFractions,
   PATTERNS,
   validateCommonDenominator,
   validateEquivalentFraction,
   validateOperationResult,
 } from '../math/index.js';
+import { reflectionChoicesForInstance } from '../content/data/reflection-choices.js';
 import {
   evaluateProposedPathEligibility,
 } from '../content/eligibility.js';
@@ -201,5 +203,33 @@ export function classifyResolutionResponse({ instance, targetDenominator, propos
     mathClassification: validation.classification,
     proposed,
     reasons: [...validation.reasons],
+  };
+}
+
+/**
+ * Classify a reviewed matching-choice identity upstream of presentation.
+ * Choice records remain correctness-free; the instructional layer compares the
+ * selected authored form with the already-established equivalent form.
+ */
+export function classifyReflectionResponse({ instance, targetForm, response }) {
+  const choices = reflectionChoicesForInstance(instance);
+  const selected = choices?.find((choice) => choice.id === response);
+  if (!selected) {
+    return {
+      kind: 'invalid-reflection-choice',
+      response,
+      continuation: 'local-recovery',
+    };
+  }
+
+  const target = fractionFromWire(targetForm, 'reflection target');
+  const selectedExact = fractionFromWire(selected.form, 'reflection choice');
+  const equivalent = equalFractions(selectedExact, target);
+  return {
+    kind: equivalent ? 'correct-reflection' : 'incorrect-reflection',
+    response,
+    targetForm,
+    selectedForm: selected.form,
+    continuation: equivalent ? 'resolved' : 'local-recovery',
   };
 }

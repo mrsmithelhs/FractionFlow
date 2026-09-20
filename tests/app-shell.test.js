@@ -32,10 +32,16 @@ describe('Plan 09 app shell and upstream display switcher', () => {
 
   it('mounts one calm episode with visual and linear access paths', () => {
     expect(root.querySelector('h1').textContent).toBe('FractionFlow');
+    expect(root.querySelector('.app-header')).toBe(null);
+    expect(root.querySelector('.app-introduction')).toBe(null);
+    expect(root.querySelector('.app-display-status')).toBe(null);
+    expect(root.querySelector('.fractionflow-app').children[0].tagName).toBe('MAIN');
+    expect(root.querySelector('.fractionflow-app').children.at(-1).tagName).toBe('FOOTER');
     expect(root.textContent).toContain('Look at these two fractions.');
     expect(root.querySelector('.app-linear-view').hasAttribute('hidden')).toBe(true);
     expect(root.querySelector('.app-visual-view').hasAttribute('hidden')).toBe(false);
     expect(root.querySelector('.app-display-menu').hasAttribute('hidden')).toBe(true);
+    expect(root.querySelectorAll('[aria-live="polite"]').length).toBe(1);
     expect(root.textContent).not.toContain('11/12');
     expect(root.textContent).not.toContain('D-02');
   });
@@ -68,6 +74,9 @@ describe('Plan 09 app shell and upstream display switcher', () => {
     root.querySelector('.app-support-panel .app-secondary-button').click();
     expect(app.getState().helpHistory).toHaveLength(1);
     expect(root.textContent).toContain('Look at the parts in each bar.');
+    expect(root.querySelector('.active-beat-help').textContent)
+      .toBe(root.querySelector('.app-support-notice').textContent);
+    expect(root.querySelector('.app-support-notice').classList.contains('sr-only')).toBe(true);
     expect(root.textContent).not.toContain('11/12');
   });
 
@@ -82,10 +91,26 @@ describe('Plan 09 app shell and upstream display switcher', () => {
     app.dispatch({ type: 'submit-resolution', proposed: fraction(11, 12) });
     expect(app.getState().beat).toBe('reflect');
     expect(root.textContent).toContain('same amount');
-    app.dispatch({ type: 'submit-reflection', response: 'correct' });
+    expect(root.querySelectorAll('.matching-choice-btn')).toHaveLength(3);
+    expect(root.querySelectorAll('.matching-choice-bar')).toHaveLength(3);
+    expect(root.querySelector('.control-legend').classList.contains('sr-only')).toBe(true);
+    root.querySelectorAll('.app-visual-view .matching-choice-btn')[1].click();
+    expect(app.getState().status).toBe('active');
+    expect(app.getState().lastRecovery.classification.kind).toBe('incorrect-reflection');
+    expect(root.querySelector('.app-visual-view .recovery-feedback').textContent)
+      .toContain('different shaded amount');
+
+    root.querySelector('.app-view-controls .app-secondary-button').click();
+    root.querySelectorAll('.app-linear-view .control-choice-btn')[1].click();
+    expect(app.getState().status).toBe('active');
+    expect(root.querySelector('.app-linear-view .recovery-feedback').textContent).toContain('fraction');
+    expect(root.querySelector('.app-linear-view .recovery-feedback').textContent).not.toContain('bar');
+    root.querySelectorAll('.app-linear-view .control-choice-btn')[0].click();
 
     expect(app.getState().status).toBe('resolved');
     expect(root.textContent).toContain('You finished this problem.');
+    expect(root.querySelector('.app-linear-view').textContent.match(/You finished this problem\./g))
+      .toHaveLength(1);
     expect(root.querySelector('.app-completion-panel').hasAttribute('hidden')).toBe(false);
   });
 

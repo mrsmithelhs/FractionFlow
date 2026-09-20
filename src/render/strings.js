@@ -97,6 +97,7 @@ export const STRINGS = Object.freeze({
     ),
     matchingCorrect: 'That is the same amount! The parts changed size, but the shaded amount stayed the same.',
     matchingDistractor: 'This bar has a different shaded amount. Look closely at the shaded length.',
+    matchingDistractorLinear: 'This fraction shows a different amount. Look closely at its parts.',
 
     // DECISION-026: Check-the-premise form (answer is not always the reassuring one)
     premisePrompt: 'Does this new bar show the same amount as before?',
@@ -115,6 +116,9 @@ export const STRINGS = Object.freeze({
     // Accessible linear path phrasing (DECISION-004, Condition 6)
     matchingPromptLinear: (targetFraction) => (
       `Choose the fraction that shows the same amount as ${targetFraction}.`
+    ),
+    matchingOptionLabelLinear: (num, den) => (
+      `Fraction ${num}/${den} shows a shaded amount`
     ),
     premisePromptLinear: 'Does this new fraction show the same amount as before?',
     noneOfTheseOptionLinear: 'None of these fractions show the same amount',
@@ -175,7 +179,6 @@ export const STRINGS = Object.freeze({
     readSteps: 'Read the steps',
     visualViewLabel: 'Picture and symbols',
     linearViewLabel: 'Step-by-step reading view',
-    supportHeading: 'Extra help',
     helpButton: 'Need help?',
     replayButton: 'Replay the last change',
     helpLevels: Object.freeze({
@@ -185,7 +188,7 @@ export const STRINGS = Object.freeze({
       demonstrate: 'Watch this step, then try the next one yourself.',
     }),
     replayNote: 'Take another look at the current bars and symbols.',
-    displayChanged: (label) => `Now showing ${label}. Your work stays here.`,
+    displayChanged: (label) => `Now showing ${label}.`,
     problemRestarted: 'The same problem is ready again.',
     completedHelp: 'This problem is complete. Try it again when you are ready.',
     restartButton: 'Try this problem again',

@@ -28,7 +28,6 @@ export function createLinearPathRenderer({
   }
 
   let rootEl = null;
-  let liveRegionEl = null;
   let contextSectionEl = null;
   let completedBeatsEl = null;
   let activeBeatEl = null;
@@ -39,13 +38,6 @@ export function createLinearPathRenderer({
     rootEl.setAttribute('role', 'region');
     rootEl.setAttribute('aria-label', 'Accessible step-by-step fraction lesson');
     container.appendChild(rootEl);
-
-    // Live Region for screen-reader announcements
-    liveRegionEl = document.createElement('div');
-    liveRegionEl.setAttribute('role', 'status');
-    liveRegionEl.setAttribute('aria-live', 'polite');
-    liveRegionEl.classList.add('sr-only', 'linear-live-announcements');
-    rootEl.appendChild(liveRegionEl);
 
     // Mathematical Context Section
     contextSectionEl = document.createElement('section');
@@ -62,7 +54,6 @@ export function createLinearPathRenderer({
     // Active Beat Section
     activeBeatEl = document.createElement('section');
     activeBeatEl.classList.add('active-beat-section', 'linear-active-section');
-    activeBeatEl.setAttribute('aria-live', 'polite');
     rootEl.appendChild(activeBeatEl);
   }
 
@@ -209,13 +200,8 @@ export function createLinearPathRenderer({
 
     if (scene.meaning.status.episode === 'resolved') {
       promptText.textContent = strings.resolve.complete || 'You finished this problem.';
-      const completeEl = document.createElement('p');
-      completeEl.classList.add('resolve-complete');
-      completeEl.textContent = strings.resolve.complete || 'You finished this problem.';
-      controlsContainer.appendChild(completeEl);
       promptHeader.appendChild(promptText);
       activeBeatEl.appendChild(promptHeader);
-      activeBeatEl.appendChild(controlsContainer);
       return;
     }
 
@@ -241,6 +227,9 @@ export function createLinearPathRenderer({
         recoveryEl.textContent = typeof strings.notice.feedbackSame === 'function'
           ? strings.notice.feedbackSame(leftDen, rightDen)
           : strings.notice.feedbackSame;
+      } else if (recovery.classification.kind === 'incorrect-reflection') {
+        recoveryEl.textContent = strings.reflect.matchingDistractorLinear
+          || strings.reflect.matchingDistractor;
       } else {
         recoveryEl.textContent = strings.status.stepIncorrect;
       }
@@ -389,21 +378,17 @@ export function createLinearPathRenderer({
       }
 
       case 'resolve': {
-        promptText.textContent = strings.resolve.prompt;
         const raw = scene.meaning.operation.rawResult;
         const pref = scene.meaning.operation.preferredFinalForm || raw;
 
-        const summaryEl = document.createElement('div');
-        summaryEl.classList.add('resolve-summary');
         if (pref && raw && (pref.numerator !== raw.numerator || pref.denominator !== raw.denominator)) {
-          summaryEl.textContent = strings.resolve.unsimplifiedNotice(
+          promptText.textContent = strings.resolve.unsimplifiedNotice(
             `${raw.numerator}/${raw.denominator}`,
             `${pref.numerator}/${pref.denominator}`,
           );
         } else if (pref) {
-          summaryEl.textContent = strings.resolve.summary(pref.numerator, pref.denominator);
+          promptText.textContent = strings.resolve.summary(pref.numerator, pref.denominator);
         }
-        controlsContainer.appendChild(summaryEl);
 
         const nextBtn = createButton({
           label: scene.meaning.currentTask.promptId?.includes('reflect')
@@ -458,21 +443,21 @@ export function createLinearPathRenderer({
             ? strings.reflect.matchingPromptLinear(targetForm)
             : strings.reflect.matchingPrompt(targetForm);
 
-          const currentLeft = left.currentForm;
-          const currentLabel = `${currentLeft.numerator}/${currentLeft.denominator}`;
-          const noneLabel = strings.reflect.noneOfTheseOptionLinear || strings.reflect.noneOfTheseOption;
-          const options = [
-            {
-              label: currentLabel,
-              value: 'correct',
-              ariaLabel: `${currentLabel} shows the same amount`,
-            },
-            {
-              label: noneLabel,
-              value: 'none',
-              ariaLabel: noneLabel,
-            },
-          ];
+          const choices = scene.meaning.reflectionChoices;
+          if (!Array.isArray(choices) || choices.length < 3) {
+            throw new RenderContractError(
+              'MISSING_REFLECTION_CHOICES',
+              'linear matching requires at least three content-supplied choices',
+            );
+          }
+          const options = choices.map((choice) => ({
+            label: `${choice.form.numerator}/${choice.form.denominator}`,
+            value: choice.id,
+            ariaLabel: strings.reflect.matchingOptionLabelLinear(
+              choice.form.numerator,
+              choice.form.denominator,
+            ),
+          }));
 
           const choiceGroup = createChoiceGroup({
             legend: promptText.textContent,
@@ -495,8 +480,18 @@ export function createLinearPathRenderer({
       }
     }
 
+    const lastHelp = scene.meaning.supportConsequence?.lastHelp;
+    const helpMessage = lastHelp && lastHelp.beat === beat
+      ? strings.app?.helpLevels?.[lastHelp.level]
+      : null;
     promptHeader.appendChild(promptText);
     activeBeatEl.appendChild(promptHeader);
+    if (helpMessage) {
+      const helpEl = document.createElement('p');
+      helpEl.classList.add('active-beat-help');
+      helpEl.textContent = helpMessage;
+      activeBeatEl.appendChild(helpEl);
+    }
     activeBeatEl.appendChild(controlsContainer);
   }
 

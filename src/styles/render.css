@@ -230,6 +230,15 @@
   line-height: 1.4;
 }
 
+.active-beat-help {
+  margin: 0;
+  padding: 0.625rem 0.875rem;
+  border-left: 4px solid var(--ff-color-border-focus);
+  background-color: #eff6ff;
+  color: var(--ff-color-text);
+  line-height: 1.4;
+}
+
 .active-beat-controls {
   display: flex;
   flex-direction: column;
@@ -309,6 +318,51 @@
 
 .control-choice-btn:hover {
   background-color: var(--ff-btn-hover-bg);
+}
+
+.matching-choice-btn {
+  flex: 1 1 10rem;
+  min-width: 8rem;
+  min-height: 5.5rem;
+  padding: 0.75rem;
+}
+
+.matching-choice-bar,
+.matching-choice-track,
+.matching-choice-segment {
+  display: block;
+}
+
+.matching-choice-bar {
+  width: 100%;
+}
+
+.matching-choice-track {
+  display: flex;
+  width: 100%;
+  height: 2.5rem;
+  overflow: hidden;
+  border: 2px solid var(--ff-btn-border);
+  border-radius: 0.25rem;
+  background-color: var(--ff-color-surface);
+}
+
+.matching-choice-segment {
+  flex: 1 1 0;
+  min-width: 0;
+  border-right: 1px solid var(--ff-btn-border);
+}
+
+.matching-choice-segment:last-child {
+  border-right: none;
+}
+
+.matching-choice-segment.shaded {
+  background-color: var(--ff-color-primary-soft, #bfdbfe);
+}
+
+.matching-choice-segment.unshaded {
+  background-color: var(--ff-color-surface);
 }
 
 .control-numeric-wrapper {
@@ -433,4 +487,3 @@
   white-space: nowrap;
   border-width: 0;
 }
-

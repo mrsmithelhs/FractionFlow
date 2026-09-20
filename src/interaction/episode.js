@@ -11,6 +11,7 @@ import {
   classifyConversionResponseForEpisode,
   classifyNoticeResponse,
   classifyOperationResponseForEpisode,
+  classifyReflectionResponse,
   classifyResolutionResponse,
 } from './classification.js';
 import {
@@ -449,6 +450,27 @@ function handleReflect(state, intent) {
   if (typeof intent.response !== 'string' || intent.response.length === 0) {
     throw new EpisodeIntentError('INVALID_REFLECTION_RESPONSE', 'reflection response must be a stable choice identity');
   }
+
+  // DECISION-026 premise checks intentionally use their authored yes/no
+  // response contract. CM-01 matching choices are classified here, upstream
+  // of both renderers, against the established equivalent form.
+  if (state.activeCondition.connectionMaking !== 'CM-01-P') {
+    const classification = classifyReflectionResponse({
+      instance: state.content,
+      targetForm: state.established.conversions.left,
+      response: intent.response,
+    });
+    if (classification.kind !== 'correct-reflection') {
+      return recovery(state, intent, classification);
+    }
+    return assessedSuccess(
+      state,
+      intent,
+      classification,
+      resolvedState(state, 'reflect', { response: intent.response }),
+    );
+  }
+
   const established = { response: intent.response };
   return assessedSuccess(
     state,

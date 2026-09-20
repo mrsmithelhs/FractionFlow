@@ -1,5 +1,6 @@
 import { deepFreeze } from '../content/schema.js';
 import { candidateDenominatorsForInstance } from '../content/eligibility.js';
+import { reflectionChoicesForInstance } from '../content/data/reflection-choices.js';
 import { makeContentIdentity } from './provenance.js';
 import { validateActiveCondition } from './episode-definition.js';
 
@@ -600,6 +601,9 @@ function sceneMeaning(state, representationRole, capability) {
   return {
     representationRole,
     condition: state.activeCondition,
+    reflectionChoices: state.beat === 'reflect'
+      ? reflectionChoicesForInstance(state.content)
+      : null,
     quantities: { left, right },
     unitRelationship: {
       sourceDenominators: {
