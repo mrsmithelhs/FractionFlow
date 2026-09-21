@@ -32,6 +32,7 @@ export function createLinearPathRenderer({
   let completedBeatsEl = null;
   let activeBeatEl = null;
   let previousFocusRef = null;
+  let activeBeatRenderToken = null;
 
   function initLayout() {
     rootEl = document.createElement('div');
@@ -107,19 +108,21 @@ export function createLinearPathRenderer({
         if (isTransformed && scene.presentation.choreography === 'juxtaposed' && strings.transition?.linearJuxtaposed) {
           const pre = scene.meaning.transition.pre[side];
           const post = scene.meaning.transition.post[side];
-          item.textContent = strings.transition.linearJuxtaposed(side, pre.numerator, pre.denominator, post.numerator, post.denominator);
-          if (isReplaying) item.classList.add('replay-active');
+          const baseText = strings.transition.linearJuxtaposed(side, pre.numerator, pre.denominator, post.numerator, post.denominator);
+          item.textContent = isReplaying ? `${baseText} (replaying)` : baseText;
+          if (isReplaying) item.classList.add('replay-active', 'replay-highlight');
         } else if (isTransformed && scene.presentation.choreography === 'sequential' && strings.transition?.linearSequential) {
           const pre = scene.meaning.transition.pre[side];
           const post = scene.meaning.transition.post[side];
-          item.textContent = strings.transition.linearSequential(side, pre.numerator, pre.denominator, post.numerator, post.denominator);
-          if (isReplaying) item.classList.add('replay-active');
+          const baseText = strings.transition.linearSequential(side, pre.numerator, pre.denominator, post.numerator, post.denominator);
+          item.textContent = isReplaying ? `${baseText} (replaying)` : baseText;
+          if (isReplaying) item.classList.add('replay-active', 'replay-highlight');
         } else if (isTransformed && isReplaying && scene.presentation.choreography === 'in-place') {
           const pre = scene.meaning.transition.pre[side];
           item.textContent = typeof strings.transition?.replayingAria === 'function'
             ? strings.transition.replayingAria(side, pre.numerator, pre.denominator)
             : `${side === 'left' ? 'First' : 'Second'} fraction replaying: started with ${pre.numerator} of ${pre.denominator} equal parts in 1 whole.`;
-          item.classList.add('replay-active');
+          item.classList.add('replay-active', 'replay-highlight');
         } else {
           const ord = side === 'left' ? 'First' : 'Second';
           item.textContent = `${ord} fraction: ${quantities[side].currentForm.numerator} of ${quantities[side].currentForm.denominator} equal parts in 1 whole.`;
@@ -227,10 +230,32 @@ export function createLinearPathRenderer({
   }
 
   function renderActiveBeat(scene) {
-    activeBeatEl.replaceChildren();
     const task = scene.meaning.currentTask;
     const beat = task.beat;
+    const isReplaying = Boolean(scene.presentation?.isReplaying);
     const recovery = scene.meaning.status.recovery;
+
+    // Condition B & Repair 07 Item 2: Scope re-render so active control subtree is not rebuilt on replay
+    const token = JSON.stringify({
+      beat,
+      target: task.target,
+      promptId: task.promptId,
+      connectionForm: task.connectionForm,
+      resolved: scene.meaning.status.episode === 'resolved',
+      recoveryKind: recovery?.classification?.kind,
+      recoveryTarget: recovery?.classification?.targetDenominator || recovery?.classification?.proposed,
+      helpLevel: scene.meaning.supportConsequence?.lastHelp?.level,
+      helpBeat: scene.meaning.supportConsequence?.lastHelp?.beat,
+      isInspection: beat === 'reflect' && isReplaying && Boolean(scene.meaning.transition),
+      premiseCaseId: scene.meaning.premiseCase?.id,
+    });
+
+    if (activeBeatRenderToken === token) {
+      return;
+    }
+    activeBeatRenderToken = token;
+
+    activeBeatEl.replaceChildren();
 
     // Prompt Header
     const promptHeader = document.createElement('div');
@@ -660,6 +685,7 @@ export function createLinearPathRenderer({
         rootEl.parentNode.removeChild(rootEl);
       }
       rootEl = null;
+      activeBeatRenderToken = null;
     },
     getElement() {
       return rootEl;

@@ -265,12 +265,35 @@
 }
 
 .fraction-bar-toggle-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 28px;
+  min-width: 44px;
+  box-sizing: border-box;
   font-size: 0.75rem;
-  padding: 0.25rem 0.5rem;
+  padding: 0.25rem 0.625rem;
+  margin: 2px 0;
   border-radius: 0.25rem;
   border: 1px solid var(--ff-color-border);
   background-color: #fff;
   cursor: pointer;
+}
+
+/* Persistent non-motion replay acknowledgement for juxtaposed and sequential */
+.fraction-bar-comparison-row.replay-highlight,
+.fraction-bar-step-card.replay-highlight {
+  border-color: var(--ff-color-border-focus);
+  box-shadow: 0 0 0 2px var(--ff-color-border-focus);
+  background-color: #f0f9ff;
+}
+
+.linear-quantities-list li.replay-highlight {
+  font-weight: 600;
+  color: var(--ff-color-text);
+  background-color: #f0f9ff;
+  border-left: 3px solid var(--ff-color-border-focus);
+  padding-left: 0.5rem;
 }
 
 .replay-inspection-card,

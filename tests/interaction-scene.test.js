@@ -417,6 +417,34 @@ describe('Plan 06 semantic Scene Model', () => {
     expect(admitted.presentation.isReplaying).toBe(true);
   });
 
+  it('transitionMeaning projects true pre-conversion form at operate and reflect beats (Repair 07 Item 1)', () => {
+    // Progress through to operate beat
+    const operateState = afterOperation(canonicalInstance());
+    const operateScene = projectScene(sceneInput(operateState, { isReplaying: true }));
+    const operateTransition = operateScene.meaning.transition;
+
+    expect(operateTransition).not.toBeNull();
+    expect(operateTransition.changed).toEqual(['right']);
+    // Operand is right: pre must be pre-conversion form 1/4, post must be 3/12
+    expect(operateTransition.pre.right).toEqual(fraction(1, 4));
+    expect(operateTransition.post.right).toEqual(fraction(3, 12));
+    expect(operateTransition.pre.right).not.toEqual(operateTransition.post.right);
+
+    // Progress through to reflect beat
+    const reflectState = applyIntent(operateState, {
+      type: 'submit-resolution',
+      proposed: fraction(11, 12),
+    });
+    const reflectScene = projectScene(sceneInput(reflectState, { isReplaying: true }));
+    const reflectTransition = reflectScene.meaning.transition;
+
+    expect(reflectTransition).not.toBeNull();
+    expect(reflectTransition.changed).toEqual(['right']);
+    expect(reflectTransition.pre.right).toEqual(fraction(1, 4));
+    expect(reflectTransition.post.right).toEqual(fraction(3, 12));
+    expect(reflectTransition.pre.right).not.toEqual(reflectTransition.post.right);
+  });
+
   it('rejects stale capability refusals before stub-consumer delivery', () => {
     const original = createEpisode({ instance: canonicalInstance() });
     const originalInput = sceneInput(original, { representationRole: 'number-line' });

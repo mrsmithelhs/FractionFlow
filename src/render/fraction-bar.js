@@ -117,7 +117,7 @@ export function createFractionBarRenderer({
 
     if (isJuxtaposed) {
       rootEl.classList.add('choreography-juxtaposed');
-      rootEl.classList.remove('choreography-sequential');
+      rootEl.classList.remove('choreography-sequential', 'choreography-in-place');
       rootEl.classList.toggle('replay-active', isReplaying);
 
       const pre = scene.meaning.transition.pre[side];
@@ -135,11 +135,16 @@ export function createFractionBarRenderer({
       // Row 1: Before
       const beforeRow = document.createElement('div');
       beforeRow.classList.add('fraction-bar-comparison-row', 'fraction-bar-row-before');
+      if (isReplaying) {
+        beforeRow.classList.add('replay-highlight');
+      }
       const beforeBadgeWrap = document.createElement('div');
       beforeBadgeWrap.classList.add('fraction-bar-badge-wrap');
       const beforeBadge = document.createElement('span');
       beforeBadge.classList.add('fraction-bar-badge');
-      beforeBadge.textContent = strings.transition.beforeLabel(preNum, preDen);
+      beforeBadge.textContent = isReplaying
+        ? `${strings.transition.beforeLabel(preNum, preDen)} (replaying)`
+        : strings.transition.beforeLabel(preNum, preDen);
       beforeBadgeWrap.appendChild(beforeBadge);
       beforeRow.appendChild(beforeBadgeWrap);
 
@@ -183,7 +188,7 @@ export function createFractionBarRenderer({
       rootEl.appendChild(wrapper);
     } else if (isSequential) {
       rootEl.classList.add('choreography-sequential');
-      rootEl.classList.remove('choreography-juxtaposed');
+      rootEl.classList.remove('choreography-juxtaposed', 'choreography-in-place');
       rootEl.classList.toggle('replay-active', isReplaying);
 
       const pre = scene.meaning.transition.pre[side];
@@ -201,11 +206,16 @@ export function createFractionBarRenderer({
       // Card 1: Step 1
       const step1Card = document.createElement('div');
       step1Card.classList.add('fraction-bar-step-card', 'fraction-bar-step-1');
+      if (isReplaying) {
+        step1Card.classList.add('replay-highlight');
+      }
       const step1Header = document.createElement('div');
       step1Header.classList.add('fraction-bar-step-header');
       const step1Heading = document.createElement('span');
       step1Heading.classList.add('fraction-bar-step-heading');
-      step1Heading.textContent = strings.transition.step1Label(preNum, preDen);
+      step1Heading.textContent = isReplaying
+        ? `${strings.transition.step1Label(preNum, preDen)} (replaying)`
+        : strings.transition.step1Label(preNum, preDen);
       step1Header.appendChild(step1Heading);
       step1Card.appendChild(step1Header);
 
@@ -313,7 +323,7 @@ export function createFractionBarRenderer({
       rootEl.appendChild(wrapper);
     } else {
       // Standard single-bar layout (in-place or default)
-      rootEl.classList.remove('choreography-juxtaposed', 'choreography-sequential', 'replay-active');
+      rootEl.classList.remove('choreography-juxtaposed', 'choreography-sequential', 'choreography-in-place', 'replay-active');
       rootEl.setAttribute('aria-label', strings.encounter.barAriaLabel(side, numerator, denominator));
 
       const isSubdivided = Boolean(scene.meaning.transition && scene.meaning.transition.changed.includes(side));

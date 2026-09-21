@@ -430,4 +430,102 @@ describe('Plan 09 app shell and upstream display switcher', () => {
     expect(restoredChoices.length).toBe(initialChoices.length);
     expect(replayButton.getAttribute('aria-pressed')).toBe('false');
   });
+
+  it('preserves document.activeElement and input state across replay at interactive beat (Repair 07 Item 2)', () => {
+    // Advance to transform-right
+    app.dispatch({ type: 'acknowledge-encounter' });
+    app.dispatch({ type: 'submit-notice', matchesUnits: false });
+    app.dispatch({ type: 'propose-common-denominator', proposed: whole(12) });
+    app.dispatch({ type: 'submit-equivalent-form', proposed: fraction(8, 12) });
+    expect(app.getState().beat).toBe('transform');
+    expect(app.getState().established.lastConversion.side).toBe('left');
+
+    // Visual view: focus numerator input and enter value
+    const visualInput = root.querySelector('.app-visual-view input.control-numeric-input');
+    expect(visualInput).not.toBeNull();
+    visualInput.value = '3';
+    visualInput.focus();
+    expect(document.activeElement).toBe(visualInput);
+
+    const replayButton = Array.from(root.querySelectorAll('.app-secondary-button'))
+      .find((b) => b.textContent.includes('Replay'));
+
+    // Trigger replay
+    replayButton.click();
+    expect(document.activeElement).toBe(visualInput);
+    expect(visualInput.value).toBe('3');
+
+    // Toggle off replay
+    replayButton.click();
+    expect(document.activeElement).toBe(visualInput);
+    expect(visualInput.value).toBe('3');
+
+    // Linear view: switch to linear and test focus preservation
+    const linearView = root.querySelector('.app-linear-view');
+    root.querySelector('.app-visual-view').setAttribute('hidden', 'true');
+    linearView.removeAttribute('hidden');
+
+    const linearInput = linearView.querySelector('input.control-numeric-input');
+    expect(linearInput).not.toBeNull();
+    linearInput.value = '3';
+    linearInput.focus();
+    expect(document.activeElement).toBe(linearInput);
+
+    // Trigger replay
+    replayButton.click();
+    expect(document.activeElement).toBe(linearInput);
+    expect(linearInput.value).toBe('3');
+
+    replayButton.click();
+    expect(document.activeElement).toBe(linearInput);
+    expect(linearInput.value).toBe('3');
+  });
+
+  it('provides persistent non-motion replay acknowledgement under reduced motion and clears stale choreography-in-place (Repair 07 Items 4 & 5)', () => {
+    const replayButton = Array.from(root.querySelectorAll('.app-secondary-button'))
+      .find((b) => b.textContent.includes('Replay'));
+
+    // Advance to operate
+    app.dispatch({ type: 'acknowledge-encounter' });
+    app.dispatch({ type: 'submit-notice', matchesUnits: false });
+    app.dispatch({ type: 'propose-common-denominator', proposed: whole(12) });
+    app.dispatch({ type: 'submit-equivalent-form', proposed: fraction(8, 12) });
+    app.dispatch({ type: 'submit-equivalent-form', proposed: fraction(3, 12) });
+    expect(app.getState().beat).toBe('operate');
+
+    // First trigger replay in default in-place mode to add choreography-in-place
+    replayButton.click();
+    const inPlaceBar = root.querySelector('.fraction-bar-container.choreography-in-place');
+    expect(inPlaceBar).not.toBeNull();
+
+    // Switch condition to juxtaposed (Compare before and after)
+    root.querySelector('.app-gear-button').click();
+    root.querySelector('[data-condition-id="phase2-bundle-2"]').click();
+
+    // Item 5 check: choreography-in-place MUST be removed
+    const juxtaposedBar = root.querySelector('.fraction-bar-container.choreography-juxtaposed');
+    expect(juxtaposedBar).not.toBeNull();
+    expect(juxtaposedBar.classList.contains('choreography-in-place')).toBe(false);
+
+    // Item 4 check: trigger replay on juxtaposed
+    replayButton.click();
+    const beforeRow = juxtaposedBar.querySelector('.fraction-bar-row-before');
+    expect(beforeRow.classList.contains('replay-highlight')).toBe(true);
+    expect(beforeRow.querySelector('.fraction-bar-badge').textContent).toContain('(replaying)');
+
+    // Switch condition to sequential (Step-by-step change)
+    root.querySelector('.app-gear-button').click();
+    root.querySelector('[data-condition-id="phase2-bundle-3"]').click();
+
+    // Item 5 check: choreography-in-place MUST NOT be present
+    const sequentialBar = root.querySelector('.fraction-bar-container.choreography-sequential');
+    expect(sequentialBar).not.toBeNull();
+    expect(sequentialBar.classList.contains('choreography-in-place')).toBe(false);
+
+    // Item 4 check: trigger replay on sequential
+    replayButton.click();
+    const step1Card = sequentialBar.querySelector('.fraction-bar-step-1');
+    expect(step1Card.classList.contains('replay-highlight')).toBe(true);
+    expect(step1Card.querySelector('.fraction-bar-step-heading').textContent).toContain('(replaying)');
+  });
 });

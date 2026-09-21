@@ -45,6 +45,7 @@ export function createBeatContainer({
   let rightBarRenderer = null;
   let symbolicRenderer = null;
   let previousFocusRef = null;
+  let activeBeatRenderToken = null;
 
   function initLayout() {
     rootEl = document.createElement('div');
@@ -191,10 +192,32 @@ export function createBeatContainer({
   }
 
   function renderActiveBeat(scene) {
-    activeBeatEl.replaceChildren();
     const task = scene.meaning.currentTask;
     const beat = task.beat;
+    const isReplaying = Boolean(scene.presentation?.isReplaying);
     const recovery = scene.meaning.status.recovery;
+
+    // Condition B & Repair 07 Item 2: Scope re-render so active control subtree is not rebuilt on replay
+    const token = JSON.stringify({
+      beat,
+      target: task.target,
+      promptId: task.promptId,
+      connectionForm: task.connectionForm,
+      resolved: scene.meaning.status.episode === 'resolved',
+      recoveryKind: recovery?.classification?.kind,
+      recoveryTarget: recovery?.classification?.targetDenominator || recovery?.classification?.proposed,
+      helpLevel: scene.meaning.supportConsequence?.lastHelp?.level,
+      helpBeat: scene.meaning.supportConsequence?.lastHelp?.beat,
+      isInspection: beat === 'reflect' && isReplaying && Boolean(scene.meaning.transition),
+      premiseCaseId: scene.meaning.premiseCase?.id,
+    });
+
+    if (activeBeatRenderToken === token) {
+      return;
+    }
+    activeBeatRenderToken = token;
+
+    activeBeatEl.replaceChildren();
 
     // Prompt header
     const promptHeader = document.createElement('div');
@@ -856,6 +879,7 @@ export function createBeatContainer({
         rootEl.parentNode.removeChild(rootEl);
       }
       rootEl = null;
+      activeBeatRenderToken = null;
     },
     getElement() {
       return rootEl;

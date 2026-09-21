@@ -565,7 +565,7 @@ function operationMeaning(state) {
 function transitionMeaning(state) {
   const lastConversion = state.established?.lastConversion;
   if (!lastConversion) return null;
-  const provenanceIndex = state.responseProvenance.findLastIndex((entry) => {
+  const provenanceIndex = state.responseProvenance.findIndex((entry) => {
     const candidate = entry?.resultingState?.established?.lastConversion;
     if (!candidate || candidate.side !== lastConversion.side
       || candidate.targetDenominator !== lastConversion.targetDenominator) {

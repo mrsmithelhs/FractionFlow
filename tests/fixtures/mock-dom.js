@@ -91,6 +91,14 @@ export class MockElement {
     this.setAttribute('id', String(value));
   }
 
+  get className() {
+    return this.getAttribute('class') || '';
+  }
+
+  set className(value) {
+    this.setAttribute('class', String(value));
+  }
+
   get textContent() {
     if (this.children.length === 0) return this._textContent;
     return this.children.map((c) => c.textContent).join('');
@@ -182,17 +190,33 @@ export class MockElement {
     return child;
   }
 
+  contains(target) {
+    if (!target) return false;
+    let curr = target;
+    while (curr) {
+      if (curr === this) return true;
+      curr = curr.parentNode;
+    }
+    return false;
+  }
+
   removeChild(child) {
     const index = this.children.indexOf(child);
     if (index >= 0) {
       this.children.splice(index, 1);
       child.parentNode = null;
+      if (globalThis.document && child.contains(globalThis.document.activeElement)) {
+        globalThis.document.activeElement = globalThis.document.body;
+      }
     }
     return child;
   }
 
   replaceChildren(...newChildren) {
     for (const child of this.children) {
+      if (globalThis.document && child.contains(globalThis.document.activeElement)) {
+        globalThis.document.activeElement = globalThis.document.body;
+      }
       child.parentNode = null;
     }
     this.children = [];
@@ -236,11 +260,17 @@ export class MockElement {
 
   focus() {
     this._isFocused = true;
+    if (globalThis.document) {
+      globalThis.document.activeElement = this;
+    }
     this.dispatchEvent({ type: 'focus', target: this });
   }
 
   blur() {
     this._isFocused = false;
+    if (globalThis.document && globalThis.document.activeElement === this) {
+      globalThis.document.activeElement = globalThis.document.body;
+    }
     this.dispatchEvent({ type: 'blur', target: this });
   }
 
@@ -330,6 +360,7 @@ export class MockDocument {
   constructor() {
     this.body = new MockElement('body');
     this._eventListeners = new Map();
+    this.activeElement = this.body;
   }
 
   addEventListener(type, listener) {
