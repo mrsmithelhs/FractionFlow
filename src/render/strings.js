@@ -197,6 +197,9 @@ export const STRINGS = Object.freeze({
         label: 'Step-by-step change',
         description: 'See one clear change at a time.',
       }),
+      // Held for the unregistered CM-01-P condition (owner decision 2026-09-20). Intentionally
+      // unused, not accidentally dead: see the note in src/app/conditions.js. "Check the premise"
+      // is also specification register and should be rewritten to DECISION-004 before it ships.
       premise: Object.freeze({
         label: 'Check the premise',
         description: 'Ask whether the new parts really match the starting fraction.',

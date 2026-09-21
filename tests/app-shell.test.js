@@ -263,15 +263,16 @@ describe('Plan 09 app shell and upstream display switcher', () => {
     expect(visualView.textContent).toContain('Step 2: New parts 8/12');
   });
 
-  it('reaches reflect beat with premise check under phase2-bundle-4', () => {
-    // Switch to bundle-4 via gear menu
-    root.querySelector('.app-gear-button').click();
-    const bundle4Btn = root.querySelector('[data-condition-id="phase2-bundle-4"]');
-    expect(bundle4Btn).toBeTruthy();
-    expect(bundle4Btn.getAttribute('data-connection-code')).toBe('CM-01-P');
-    bundle4Btn.click();
+  // Owner decision 2026-09-20: the CM-01-P premise condition is unregistered until it works.
+  // This test pins that state so the condition cannot be re-registered without the design work
+  // in Repair 04 Item 0 — classification of the answer, content in which the premise is false,
+  // and referents visible on screen when the question is asked. Deleting this test is the
+  // signal that all three are done.
+  it('registers no CM-01-P condition while the premise check is undesigned', () => {
+    expect(REGISTERED_CONDITIONS.some((c) => c.activeCondition.connectionMaking === 'CM-01-P'))
+      .toBe(false);
+    expect(root.querySelector('[data-connection-code="CM-01-P"]')).toBe(null);
 
-    // Advance through all beats to reflect
     app.dispatch({ type: 'acknowledge-encounter' });
     app.dispatch({ type: 'submit-notice', matchesUnits: false });
     app.dispatch({ type: 'propose-common-denominator', proposed: whole(12) });
@@ -281,13 +282,8 @@ describe('Plan 09 app shell and upstream display switcher', () => {
     app.dispatch({ type: 'submit-resolution', proposed: fraction(11, 12) });
 
     expect(app.getState().beat).toBe('reflect');
-    // Connection form must be 'premise'
-    expect(root.textContent).toContain('Does this new fraction show the same amount as before?');
-    // Must render Yes / No options (not 3 matching choice cards)
-    expect(root.querySelectorAll('.matching-choice-card')).toHaveLength(0);
-    const choiceButtons = root.querySelectorAll('.app-visual-view .control-choice-btn');
-    expect(choiceButtons).toHaveLength(2);
-    expect(choiceButtons[0].textContent).toBe('Yes, it is the same amount');
-    expect(choiceButtons[1].textContent).toBe('No, the amount changed');
+    expect(root.querySelector('.app-visual-view .active-beat-prompt').textContent)
+      .not.toContain('same amount as before');
+    expect(root.querySelectorAll('.app-visual-view .matching-choice-btn')).toHaveLength(3);
   });
 });

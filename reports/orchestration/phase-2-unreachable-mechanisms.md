@@ -55,8 +55,21 @@ vestige.
 No learner can currently meet a connection-making check whose habitual answer is wrong, which is the
 failure DECISION-026 exists to prevent.
 
-**Disposition needed:** a fourth registered condition using `CM-01-P`, a second authored choice set
-whose answer genuinely is "none," or explicit deferral to Phase 3.
+**Disposition, 2026-09-20 — deferred by the owner, and the record stays open.** `plan-09` Repair 03
+registered `phase2-bundle-4` with `CM-01-P`, which made the form reachable and nothing more. Review
+found three defects: `handleReflect` returns `assessedSuccess` for any response, so both answers
+completed the episode; every renaming in the fixture is a correct equivalence, so the answer is always
+the reassuring one; and the question names a "new bar" and a "before" state that are not on screen at
+the reflect beat. The owner unregistered the condition rather than leave DECISION-026 looking
+satisfied when it is not.
+
+The `CM-01-P` branch, the premise strings, and the `connectionForm` plumbing remain in place, and
+`tests/app-shell.test.js` pins the absence so the condition cannot return without the design work.
+Re-registering is one entry in `src/app/conditions.js`.
+
+**Still needed:** classification of the premise answer in the interaction layer; authored content in
+which a renaming is genuinely wrong; and referents visible when the question is asked. Tracked as
+`repair-04.md` Item 0. This remains an open, unsatisfied decision.
 
 ## 3. The condition switcher changes nothing the learner can see
 

@@ -53,19 +53,13 @@ export const REGISTERED_CONDITIONS = deepFreeze([
       connectionMaking: 'CM-01-M',
     },
   }),
-  registerCondition({
-    id: 'phase2-bundle-4',
-    label: STRINGS.app.displayStyles.premise.label,
-    description: STRINGS.app.displayStyles.premise.description,
-    activeCondition: {
-      id: 'phase2-bundle-4',
-      revision: '1',
-      display: 'D-01-A',
-      choreography: 'D-02-M',
-      promptCadence: 'D-05-focused-key-beats',
-      connectionMaking: 'CM-01-P',
-    },
-  }),
+  // `phase2-bundle-4` (CM-01-P, "Check the premise") was registered by Repair 03 and
+  // unregistered by owner decision on 2026-09-20. The form was reachable but not working:
+  // both answers completed the episode, the correct answer was always the reassuring one,
+  // and the question named a "new bar" and a "before" state that are not on screen at the
+  // reflect beat. Leaving it registered would have shown DECISION-026 as satisfied when it
+  // is not. The CM-01-P branch, the premise strings, and the connectionForm plumbing all
+  // remain; re-registering is one entry here once the design work in Repair 04 Item 0 lands.
 ]);
 
 export function getRegisteredCondition(id) {
