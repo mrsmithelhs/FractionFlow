@@ -127,14 +127,14 @@ describe('Plan 09 app shell and upstream display switcher', () => {
     expect([...root.querySelectorAll('.matching-choice-btn')]
       .map((choice) => choice.getAttribute('aria-label')))
       .toEqual([
-        'Bar with 16 of 24 equal parts shaded',
         'Bar with 15 of 24 equal parts shaded',
+        'Bar with 16 of 24 equal parts shaded',
         'Bar with 17 of 24 equal parts shaded',
       ]);
 
-    root.querySelectorAll('.matching-choice-btn')[1].click();
-    expect(app.getState().status).toBe('active');
     root.querySelectorAll('.matching-choice-btn')[0].click();
+    expect(app.getState().status).toBe('active');
+    root.querySelectorAll('.matching-choice-btn')[1].click();
     expect(app.getState().status).toBe('resolved');
   });
 
@@ -181,5 +181,113 @@ describe('Plan 09 app shell and upstream display switcher', () => {
 
     app.destroy();
     expect(removedListener).toBe(changeListener);
+  });
+
+  it('dismisses the display choices menu on Escape key and click-outside, returning focus on Escape', () => {
+    const gearBtn = root.querySelector('.app-gear-button');
+    const menu = root.querySelector('.app-display-menu');
+
+    // Initially closed
+    expect(menu.hasAttribute('hidden')).toBe(true);
+    expect(gearBtn.getAttribute('aria-expanded')).toBe('false');
+
+    // Open menu
+    gearBtn.click();
+    expect(menu.hasAttribute('hidden')).toBe(false);
+    expect(gearBtn.getAttribute('aria-expanded')).toBe('true');
+
+    // Dismiss with Escape inside menu
+    const escapeEvent = { key: 'Escape', stopPropagation: () => {} };
+    for (const listener of menu._eventListeners.get('keydown') || []) {
+      listener(escapeEvent);
+    }
+    expect(menu.hasAttribute('hidden')).toBe(true);
+    expect(gearBtn.getAttribute('aria-expanded')).toBe('false');
+    expect(gearBtn._isFocused).toBe(true);
+
+    // Reopen menu
+    gearBtn.click();
+    expect(menu.hasAttribute('hidden')).toBe(false);
+
+    // Dismiss by clicking outside
+    const outsideEvent = { target: document.body };
+    for (const listener of document._eventListeners.get('click') || []) {
+      listener(outsideEvent);
+    }
+    expect(menu.hasAttribute('hidden')).toBe(true);
+    expect(gearBtn.getAttribute('aria-expanded')).toBe('false');
+  });
+
+  it('produces visibly and structurally distinct output for each condition during transform beat', () => {
+    // Advance to transform beat with left converted
+    app.dispatch({ type: 'acknowledge-encounter' });
+    app.dispatch({ type: 'submit-notice', matchesUnits: false });
+    app.dispatch({ type: 'propose-common-denominator', proposed: whole(12) });
+    app.dispatch({ type: 'submit-equivalent-form', proposed: fraction(8, 12) });
+
+    const visualView = root.querySelector('.app-visual-view');
+
+    // Default: phase2-bundle-1 (in-place)
+    const inPlaceHtml = visualView.innerHTML;
+    expect(visualView.querySelector('.choreography-juxtaposed')).toBe(null);
+    expect(visualView.querySelector('.choreography-sequential')).toBe(null);
+    expect(visualView.querySelectorAll('.fraction-bar-segment.subdivided').length).toBeGreaterThan(0);
+
+    // Switch to phase2-bundle-2 (juxtaposed)
+    root.querySelector('.app-gear-button').click();
+    root.querySelector('[data-condition-id="phase2-bundle-2"]').click();
+
+    const juxtaposedHtml = visualView.innerHTML;
+    expect(juxtaposedHtml).not.toBe(inPlaceHtml);
+    expect(visualView.querySelector('.choreography-juxtaposed')).toBeTruthy();
+    expect(visualView.querySelector('.fraction-bar-juxtaposed')).toBeTruthy();
+    expect(visualView.querySelector('.fraction-bar-row-before')).toBeTruthy();
+    expect(visualView.querySelector('.fraction-bar-row-after')).toBeTruthy();
+    expect(visualView.textContent).toContain('Before: 2/3');
+    expect(visualView.textContent).toContain('After: 8/12');
+
+    // Switch to phase2-bundle-3 (sequential)
+    root.querySelector('.app-gear-button').click();
+    root.querySelector('[data-condition-id="phase2-bundle-3"]').click();
+
+    const sequentialHtml = visualView.innerHTML;
+    expect(sequentialHtml).not.toBe(inPlaceHtml);
+    expect(sequentialHtml).not.toBe(juxtaposedHtml);
+    expect(visualView.querySelector('.choreography-sequential')).toBeTruthy();
+    expect(visualView.querySelector('.fraction-bar-sequential')).toBeTruthy();
+    expect(visualView.querySelector('.fraction-bar-step-1')).toBeTruthy();
+    expect(visualView.querySelector('.fraction-bar-step-2')).toBeTruthy();
+    expect(visualView.querySelector('.fraction-bar-step-connector')).toBeTruthy();
+    expect(visualView.textContent).toContain('Step 1: Start with 2/3');
+    expect(visualView.textContent).toContain('Split into 12 parts');
+    expect(visualView.textContent).toContain('Step 2: New parts 8/12');
+  });
+
+  it('reaches reflect beat with premise check under phase2-bundle-4', () => {
+    // Switch to bundle-4 via gear menu
+    root.querySelector('.app-gear-button').click();
+    const bundle4Btn = root.querySelector('[data-condition-id="phase2-bundle-4"]');
+    expect(bundle4Btn).toBeTruthy();
+    expect(bundle4Btn.getAttribute('data-connection-code')).toBe('CM-01-P');
+    bundle4Btn.click();
+
+    // Advance through all beats to reflect
+    app.dispatch({ type: 'acknowledge-encounter' });
+    app.dispatch({ type: 'submit-notice', matchesUnits: false });
+    app.dispatch({ type: 'propose-common-denominator', proposed: whole(12) });
+    app.dispatch({ type: 'submit-equivalent-form', proposed: fraction(8, 12) });
+    app.dispatch({ type: 'submit-equivalent-form', proposed: fraction(3, 12) });
+    app.dispatch({ type: 'submit-operation-result', proposed: fraction(11, 12) });
+    app.dispatch({ type: 'submit-resolution', proposed: fraction(11, 12) });
+
+    expect(app.getState().beat).toBe('reflect');
+    // Connection form must be 'premise'
+    expect(root.textContent).toContain('Does this new fraction show the same amount as before?');
+    // Must render Yes / No options (not 3 matching choice cards)
+    expect(root.querySelectorAll('.matching-choice-card')).toHaveLength(0);
+    const choiceButtons = root.querySelectorAll('.app-visual-view .control-choice-btn');
+    expect(choiceButtons).toHaveLength(2);
+    expect(choiceButtons[0].textContent).toBe('Yes, it is the same amount');
+    expect(choiceButtons[1].textContent).toBe('No, the amount changed');
   });
 });

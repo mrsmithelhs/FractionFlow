@@ -91,10 +91,19 @@
   cursor: pointer;
 }
 
-.app-display-option:hover,
-.app-display-option[aria-pressed="true"] {
+.app-display-option:hover {
   border-color: var(--app-accent);
   background: var(--app-accent-soft);
+}
+
+.app-display-option[aria-pressed="true"] {
+  border-color: var(--app-accent);
+  background: #dbeafe;
+  box-shadow: inset 0 0 0 1px var(--app-accent);
+}
+
+.app-display-option[aria-pressed="true"] .app-display-option-label {
+  color: var(--app-accent);
 }
 
 .app-display-option-label {

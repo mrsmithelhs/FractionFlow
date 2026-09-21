@@ -43,6 +43,10 @@ class MockClassList {
     return true;
   }
 
+  [Symbol.iterator]() {
+    return this._classes[Symbol.iterator]();
+  }
+
   _sync() {
     this._element._attributes.set('class', Array.from(this._classes).join(' '));
   }
@@ -97,6 +101,21 @@ export class MockElement {
     this._textContent = String(text ?? '');
   }
 
+  get innerHTML() {
+    if (this.children.length === 0) return this._textContent;
+    return this.children.map((c) => c.outerHTML).join('');
+  }
+
+  get outerHTML() {
+    const tag = this.tagName.toLowerCase();
+    const attrs = [];
+    for (const [name, val] of this._attributes) {
+      attrs.push(`${name}="${val}"`);
+    }
+    const attrStr = attrs.length > 0 ? ` ${attrs.join(' ')}` : '';
+    return `<${tag}${attrStr}>${this.innerHTML}</${tag}>`;
+  }
+
   setAttribute(name, value) {
     const valStr = String(value);
     this._attributes.set(name, valStr);
@@ -115,6 +134,10 @@ export class MockElement {
     if (name === 'tabindex') {
       this.tabIndex = Number(valStr);
     }
+  }
+
+  getAttributeNames() {
+    return Array.from(this._attributes.keys());
   }
 
   getAttribute(name) {
@@ -140,6 +163,16 @@ export class MockElement {
       const naturallyFocusable = ['BUTTON', 'INPUT', 'SELECT', 'TEXTAREA', 'A'];
       this.tabIndex = naturallyFocusable.includes(this.tagName) ? 0 : -1;
     }
+  }
+
+  contains(node) {
+    if (!node) return false;
+    let curr = node;
+    while (curr) {
+      if (curr === this) return true;
+      curr = curr.parentNode;
+    }
+    return false;
   }
 
   appendChild(child) {
@@ -296,6 +329,31 @@ function matchesSelector(element, selector) {
 export class MockDocument {
   constructor() {
     this.body = new MockElement('body');
+    this._eventListeners = new Map();
+  }
+
+  addEventListener(type, listener) {
+    if (!this._eventListeners.has(type)) {
+      this._eventListeners.set(type, new Set());
+    }
+    this._eventListeners.get(type).add(listener);
+  }
+
+  removeEventListener(type, listener) {
+    const set = this._eventListeners.get(type);
+    if (set) {
+      set.delete(listener);
+    }
+  }
+
+  dispatchEvent(event) {
+    const set = this._eventListeners.get(event.type);
+    if (set) {
+      for (const listener of set) {
+        listener(event);
+      }
+    }
+    return true;
   }
 
   createElement(tagName) {

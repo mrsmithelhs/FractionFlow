@@ -407,8 +407,7 @@ export function createBeatContainer({
       }
 
       case 'reflect': {
-        const isPremise = scene.meaning.condition.connectionMaking === 'CM-01-P'
-          || scene.meaning.currentTask.promptId?.includes('premise');
+        const isPremise = scene.meaning.currentTask.connectionForm === 'premise';
 
         if (isPremise) {
           // DECISION-026: Check-the-premise form (answer is not always the reassuring one)

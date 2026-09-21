@@ -101,6 +101,7 @@ export function createFractionFlowApp({
   let linearRenderer = null;
   let motionQuery = null;
   let motionListener = null;
+  let documentClickListener = null;
 
   let appRoot;
   let displayMenu;
@@ -112,6 +113,13 @@ export function createFractionFlowApp({
   let replayButton;
   let supportNotice;
   let completionPanel;
+
+  function closeDisplayMenu() {
+    if (!displayMenu || displayMenu.hasAttribute('hidden')) return;
+    setHidden(displayMenu, true);
+    displayMenuButton.setAttribute('aria-expanded', 'false');
+    displayMenuButton.setAttribute('aria-label', STRINGS.app.displayChoicesButton);
+  }
 
   function createDisplayMenu() {
     const wrapper = makeElement('div', 'app-display-menu-wrap');
@@ -131,12 +139,27 @@ export function createFractionFlowApp({
     });
     displayMenuButton.setAttribute('aria-expanded', 'false');
     displayMenuButton.setAttribute('aria-controls', 'fractionflow-display-menu');
+    displayMenuButton.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && !displayMenu.hasAttribute('hidden')) {
+        event.stopPropagation();
+        closeDisplayMenu();
+        displayMenuButton.focus();
+      }
+    });
     wrapper.appendChild(displayMenuButton);
 
     displayMenu = makeElement('div', 'app-display-menu');
     displayMenu.id = 'fractionflow-display-menu';
     displayMenu.setAttribute('role', 'group');
     setHidden(displayMenu, true);
+
+    displayMenu.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') {
+        event.stopPropagation();
+        closeDisplayMenu();
+        displayMenuButton.focus();
+      }
+    });
 
     const heading = makeElement('h2', 'app-display-menu-heading');
     heading.textContent = STRINGS.app.displayChoicesHeading;
@@ -164,9 +187,7 @@ export function createFractionFlowApp({
         selectedCondition = getRegisteredCondition(condition.id);
         state = withActiveCondition(state, selectedCondition.activeCondition);
         activityNotice = STRINGS.app.displayChanged(selectedCondition.label);
-        setHidden(displayMenu, true);
-        displayMenuButton.setAttribute('aria-expanded', 'false');
-        displayMenuButton.setAttribute('aria-label', STRINGS.app.displayChoicesButton);
+        closeDisplayMenu();
         render();
         displayMenuButton.focus();
       });
@@ -174,6 +195,16 @@ export function createFractionFlowApp({
     }
     displayMenu.appendChild(list);
     wrapper.appendChild(displayMenu);
+
+    documentClickListener = (event) => {
+      if (!displayMenu.hasAttribute('hidden') && !wrapper.contains(event.target)) {
+        closeDisplayMenu();
+      }
+    };
+    if (typeof document !== 'undefined' && typeof document.addEventListener === 'function') {
+      document.addEventListener('click', documentClickListener);
+    }
+
     return wrapper;
   }
 
@@ -365,6 +396,10 @@ export function createFractionFlowApp({
     destroy() {
       if (motionQuery && motionListener && typeof motionQuery.removeEventListener === 'function') {
         motionQuery.removeEventListener('change', motionListener);
+      }
+      if (documentClickListener && typeof document !== 'undefined' && typeof document.removeEventListener === 'function') {
+        document.removeEventListener('click', documentClickListener);
+        documentClickListener = null;
       }
       visualRenderer?.destroy();
       linearRenderer?.destroy();

@@ -78,13 +78,26 @@ export function createLinearPathRenderer({
     const list = document.createElement('ul');
     list.classList.add('linear-quantities-list');
 
-    const itemLeft = document.createElement('li');
-    itemLeft.textContent = `First fraction: ${quantities.left.currentForm.numerator} of ${quantities.left.currentForm.denominator} equal parts in 1 whole.`;
-    list.appendChild(itemLeft);
+    for (const side of ['left', 'right']) {
+      const item = document.createElement('li');
+      const isTransformed = scene.meaning.currentTask?.beat === 'transform'
+        && scene.meaning.transition
+        && scene.meaning.transition.changed?.includes(side);
 
-    const itemRight = document.createElement('li');
-    itemRight.textContent = `Second fraction: ${quantities.right.currentForm.numerator} of ${quantities.right.currentForm.denominator} equal parts in 1 whole.`;
-    list.appendChild(itemRight);
+      if (isTransformed && scene.presentation.choreography === 'juxtaposed' && strings.transition?.linearJuxtaposed) {
+        const pre = scene.meaning.transition.pre[side];
+        const post = scene.meaning.transition.post[side];
+        item.textContent = strings.transition.linearJuxtaposed(side, pre.numerator, pre.denominator, post.numerator, post.denominator);
+      } else if (isTransformed && scene.presentation.choreography === 'sequential' && strings.transition?.linearSequential) {
+        const pre = scene.meaning.transition.pre[side];
+        const post = scene.meaning.transition.post[side];
+        item.textContent = strings.transition.linearSequential(side, pre.numerator, pre.denominator, post.numerator, post.denominator);
+      } else {
+        const ord = side === 'left' ? 'First' : 'Second';
+        item.textContent = `${ord} fraction: ${quantities[side].currentForm.numerator} of ${quantities[side].currentForm.denominator} equal parts in 1 whole.`;
+      }
+      list.appendChild(item);
+    }
 
     contextSectionEl.appendChild(list);
   }
@@ -407,8 +420,7 @@ export function createLinearPathRenderer({
 
       case 'reflect': {
         // DECISION-026 & Condition 6: Check-the-premise form and visual matching form
-        const isPremise = scene.meaning.condition.connectionMaking === 'CM-01-P'
-          || scene.meaning.currentTask.promptId?.includes('premise');
+        const isPremise = scene.meaning.currentTask.connectionForm === 'premise';
 
         if (isPremise) {
           promptText.textContent = strings.reflect.premisePromptLinear || strings.reflect.premisePrompt;

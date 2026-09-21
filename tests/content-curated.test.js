@@ -81,9 +81,25 @@ describe('Plan 03 curated synthetic content', () => {
     expect(Object.isFrozen(choices)).toBe(true);
 
     expect(alternateChoices.map((choice) => `${choice.form.numerator}/${choice.form.denominator}`))
-      .toEqual(['16/24', '15/24', '17/24']);
+      .toEqual(['15/24', '16/24', '17/24']);
     expect(alternateChoices.every((choice) => !Object.prototype.hasOwnProperty.call(choice, 'correct'))).toBe(true);
     expect(Object.isFrozen(alternateChoices)).toBe(true);
     expect(reflectionChoicesForInstance(instance, '30')).toBe(null);
+  });
+
+  it('ensures the correct matching choice is not placed at index 0 in every authored set', () => {
+    const instance = validateCuratedFixtures().find((entry) => (
+      entry.fixture.id === 'curated-relatively-prime-addition-non-least'
+    )).instance;
+    // For 12ths route, target is 8/12; for 24ths route, target is 16/24
+    const set12 = reflectionChoicesForInstance(instance, '12');
+    const set24 = reflectionChoicesForInstance(instance, '24');
+    const target12Index = set12.findIndex((c) => c.form.numerator === '8' && c.form.denominator === '12');
+    const target24Index = set24.findIndex((c) => c.form.numerator === '16' && c.form.denominator === '24');
+
+    expect(target12Index).toBe(0);
+    expect(target24Index).toBe(1);
+    const indices = [target12Index, target24Index];
+    expect(indices.every((idx) => idx === 0)).toBe(false);
   });
 });

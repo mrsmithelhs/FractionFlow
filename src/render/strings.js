@@ -138,6 +138,32 @@ export const STRINGS = Object.freeze({
     stepIncorrect: 'Not quite.',
   }),
 
+  transition: Object.freeze({
+    beforeLabel: (num, den) => `Before: ${num}/${den}`,
+    afterLabel: (num, den) => `After: ${num}/${den}`,
+    step1Label: (num, den) => `Step 1: Start with ${num}/${den}`,
+    step2Label: (num, den) => `Step 2: New parts ${num}/${den}`,
+    stepConnector: (den) => `Split into ${den} parts`,
+    beforeAria: (side, num, den) => (
+      `${side === 'left' ? 'First' : 'Second'} fraction before: ${num} of ${den} equal parts in 1 whole.`
+    ),
+    afterAria: (side, num, den) => (
+      `${side === 'left' ? 'First' : 'Second'} fraction after: ${num} of ${den} equal parts in 1 whole.`
+    ),
+    step1Aria: (side, num, den) => (
+      `${side === 'left' ? 'First' : 'Second'} fraction step 1: start with ${num} of ${den} equal parts in 1 whole.`
+    ),
+    step2Aria: (side, num, den) => (
+      `${side === 'left' ? 'First' : 'Second'} fraction step 2: split into ${num} of ${den} equal parts in 1 whole.`
+    ),
+    linearJuxtaposed: (side, preNum, preDen, postNum, postDen) => (
+      `${side === 'left' ? 'First' : 'Second'} fraction: started as ${preNum} of ${preDen} equal parts, now renamed to ${postNum} of ${postDen} equal parts in 1 whole.`
+    ),
+    linearSequential: (side, preNum, preDen, postNum, postDen) => (
+      `${side === 'left' ? 'First' : 'Second'} fraction: Step 1 was ${preNum} of ${preDen} equal parts. Step 2 is ${postNum} of ${postDen} equal parts in 1 whole.`
+    ),
+  }),
+
   summaryLines: Object.freeze({
     encounterDone: 'Problem established.',
     noticeDone: 'Units do not match.',
@@ -156,7 +182,7 @@ export const STRINGS = Object.freeze({
     subtitle: 'Make the parts match.',
     introduction: 'Add two fractions by making same-size parts.',
     displayChoicesButton: 'Open display choices',
-    displayChoicesHeading: 'Choose a display style',
+    displayChoicesHeading: 'Display and check options',
     closeDisplayChoices: 'Close display choices',
     displayStyles: Object.freeze({
       smooth: Object.freeze({
@@ -170,6 +196,10 @@ export const STRINGS = Object.freeze({
       steps: Object.freeze({
         label: 'Step-by-step change',
         description: 'See one clear change at a time.',
+      }),
+      premise: Object.freeze({
+        label: 'Check the premise',
+        description: 'Ask whether the new parts really match the starting fraction.',
       }),
     }),
     activeDisplay: (label) => `Display: ${label}`,

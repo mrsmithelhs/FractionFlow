@@ -479,6 +479,9 @@ function quantityScene(state, side) {
 
 function taskMeaning(state) {
   const expected = state.expectedResponse;
+  const connectionForm = state.beat === 'reflect'
+    ? (state.activeCondition?.connectionMaking === 'CM-01-P' ? 'premise' : 'matching')
+    : null;
   if (!expected) {
     return {
       beat: state.beat,
@@ -487,6 +490,7 @@ function taskMeaning(state) {
       inputKind: null,
       target: null,
       evidenceCategory: null,
+      connectionForm,
     };
   }
   return {
@@ -496,6 +500,7 @@ function taskMeaning(state) {
     inputKind: expected.inputKind,
     target: expected.target ?? null,
     evidenceCategory: expected.evidenceCategory,
+    connectionForm,
   };
 }
 
@@ -645,6 +650,18 @@ function assertNoSceneHistory(scene) {
   }
 }
 
+function choreographyDirectiveFor(activeCondition) {
+  switch (activeCondition?.choreography) {
+    case 'D-02-J':
+      return 'juxtaposed';
+    case 'D-02-S':
+      return 'sequential';
+    case 'D-02-M':
+    default:
+      return 'in-place';
+  }
+}
+
 export function projectScene({ state, representationRole, presentationMode } = {}) {
   assertStateShape(state);
   assertProjectionOptions({ representationRole, presentationMode });
@@ -658,6 +675,7 @@ export function projectScene({ state, representationRole, presentationMode } = {
     meaning: sceneMeaning(state, representationRole, capability),
     presentation: {
       mode: presentationMode,
+      choreography: choreographyDirectiveFor(state.activeCondition),
     },
     derivation,
   };

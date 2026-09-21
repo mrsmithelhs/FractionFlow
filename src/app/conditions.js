@@ -53,6 +53,19 @@ export const REGISTERED_CONDITIONS = deepFreeze([
       connectionMaking: 'CM-01-M',
     },
   }),
+  registerCondition({
+    id: 'phase2-bundle-4',
+    label: STRINGS.app.displayStyles.premise.label,
+    description: STRINGS.app.displayStyles.premise.description,
+    activeCondition: {
+      id: 'phase2-bundle-4',
+      revision: '1',
+      display: 'D-01-A',
+      choreography: 'D-02-M',
+      promptCadence: 'D-05-focused-key-beats',
+      connectionMaking: 'CM-01-P',
+    },
+  }),
 ]);
 
 export function getRegisteredCondition(id) {

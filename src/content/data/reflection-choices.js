@@ -25,12 +25,12 @@ export const REFLECTION_CHOICES_BY_FIXTURE = deepFreeze({
     ],
     '24': [
       {
-        id: 'match-a',
-        form: { kind: 'fraction', numerator: '16', denominator: '24' },
-      },
-      {
         id: 'match-b',
         form: { kind: 'fraction', numerator: '15', denominator: '24' },
+      },
+      {
+        id: 'match-a',
+        form: { kind: 'fraction', numerator: '16', denominator: '24' },
       },
       {
         id: 'match-c',

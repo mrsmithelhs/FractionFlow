@@ -1,6 +1,7 @@
 import { describe, it, expect, beforeEach, afterEach } from 'vitest';
 import { setupMockDOM, teardownMockDOM } from './fixtures/mock-dom.js';
 import { createEpisode, applyIntent } from '../src/interaction/episode.js';
+import { PHASE2_REFLECTION_EPISODE_DEFINITION } from '../src/interaction/episode-definition.js';
 import { validateCuratedFixtures } from '../src/content/index.js';
 import { resolveRenderableScene } from '../src/render/contract.js';
 import { createBeatContainer } from '../src/render/beat-container.js';
@@ -29,11 +30,14 @@ describe('Scaffold-Leakage Invariants Suite & Failing-First Verifications (Plan 
     teardownMockDOM();
   });
 
-  function canonicalEpisode() {
+  function canonicalEpisode(episodeDefinition) {
     const instance = validateCuratedFixtures().find((entry) => (
       entry.fixture.id === 'curated-relatively-prime-addition-non-least'
     )).instance;
-    return createEpisode({ instance });
+    return createEpisode({
+      instance,
+      ...(episodeDefinition ? { episodeDefinition } : {}),
+    });
   }
 
   function mountBoth(scene, dispatch = () => {}) {
@@ -296,11 +300,32 @@ describe('Scaffold-Leakage Invariants Suite & Failing-First Verifications (Plan 
       if (selected.length > 0) {
         throw new Error('Scaffold Leak [Invariant 6]: Reflection choice is pre-selected');
       }
+
+      const choices = [...box.querySelectorAll('.control-choice-btn')];
+      if (choices.length > 1) {
+        const referenceClasses = [...choices[0].classList].sort().join(' ');
+        const referenceAttrs = choices[0].getAttributeNames().sort().join(' ');
+
+        for (let i = 1; i < choices.length; i += 1) {
+          const currentClasses = [...choices[i].classList].sort().join(' ');
+          const currentAttrs = choices[i].getAttributeNames().sort().join(' ');
+          if (currentClasses !== referenceClasses) {
+            throw new Error(
+              `Scaffold Leak [Invariant 6]: Choice controls have divergent classes: "${referenceClasses}" vs "${currentClasses}"`,
+            );
+          }
+          if (currentAttrs !== referenceAttrs) {
+            throw new Error(
+              `Scaffold Leak [Invariant 6]: Choice controls have divergent attribute sets: "${referenceAttrs}" vs "${currentAttrs}"`,
+            );
+          }
+        }
+      }
     }
   }
 
-  it('Invariant 6 (Resolve/Reflect): connection choices are not pre-selected, and catches leak fail-first', () => {
-    let episode = canonicalEpisode();
+  it('Invariant 6 (Resolve/Reflect): connection choices are not pre-selected and mutually indistinguishable, and catches leak fail-first', () => {
+    let episode = canonicalEpisode(PHASE2_REFLECTION_EPISODE_DEFINITION);
     episode = applyIntent(episode, { type: 'acknowledge-encounter' });
     episode = applyIntent(episode, { type: 'submit-notice', matchesUnits: false });
     episode = applyIntent(episode, {
@@ -328,14 +353,27 @@ describe('Scaffold-Leakage Invariants Suite & Failing-First Verifications (Plan 
     const scene = resolveRenderableScene({ state: episode });
     const { visualBox, linearBox } = mountBoth(scene);
 
+    // Passes cleanly against real rendered output on both paths
     expect(() => assertResolveReflectNoLeak(visualBox, linearBox)).not.toThrow();
 
-    // Failing-first: simulate pre-selected reflection option
-    const leakingVisual = doc.createElement('div');
-    const btn = doc.createElement('button');
-    btn.classList.add('control-choice-btn', 'selected');
-    leakingVisual.appendChild(btn);
-    expect(() => assertResolveReflectNoLeak(leakingVisual, linearBox)).toThrow(/Invariant 6/);
+    // Failing-first: demonstrate by mutating real rendered options
+    const targetBtn = visualBox.querySelector('.matching-choice-btn');
+    expect(targetBtn).not.toBeNull();
+
+    // 1. Mutate class on real rendered option
+    targetBtn.classList.add('leaked-indicator');
+    expect(() => assertResolveReflectNoLeak(visualBox, linearBox)).toThrow(/Invariant 6/);
+    targetBtn.classList.remove('leaked-indicator');
+
+    // 2. Mutate attribute on real rendered option
+    targetBtn.setAttribute('data-correct', 'true');
+    expect(() => assertResolveReflectNoLeak(visualBox, linearBox)).toThrow(/Invariant 6/);
+    targetBtn.removeAttribute('data-correct');
+
+    // 3. Pre-selected marker on real rendered option
+    targetBtn.classList.add('selected');
+    expect(() => assertResolveReflectNoLeak(visualBox, linearBox)).toThrow(/Invariant 6/);
+    targetBtn.classList.remove('selected');
   });
 
   // --- Invariant 7: Help & Replay ---
