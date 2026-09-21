@@ -178,9 +178,16 @@ export const STRINGS = Object.freeze({
     displayChoicesHeading: 'Display and check options',
     closeDisplayChoices: 'Close display choices',
     displayStyles: Object.freeze({
+      // Interim copy, owner decision 2026-09-20. This bundle is D-01-A / D-02-M — animated
+      // subdivision morphing in place — and the animation does not exist: render.css has no
+      // keyframes, and fraction-bar.js rebuilds every segment on each render, so nothing can
+      // transition across a denominator change. The former "Smooth change / The bars change
+      // smoothly after you choose" described behavior the code does not perform. This copy says
+      // what the bundle actually does. Restore the original wording when plan-10 implements the
+      // animation; the internal key stays `smooth` because the bundle's intent is unchanged.
       smooth: Object.freeze({
-        label: 'Smooth change',
-        description: 'The bars change smoothly after you choose.',
+        label: 'New parts only',
+        description: 'The bar shows the new parts right away.',
       }),
       compare: Object.freeze({
         label: 'Compare before and after',
