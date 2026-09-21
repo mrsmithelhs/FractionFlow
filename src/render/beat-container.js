@@ -1,6 +1,6 @@
 import { assertValidScene, RenderContractError } from './contract.js';
 import { STRINGS } from './strings.js';
-import { createFractionBarRenderer } from './fraction-bar.js';
+import { createFractionBarRenderer, createTrackAndReadout } from './fraction-bar.js';
 import { createSymbolicRenderer } from './symbolic.js';
 import { createButton, createNumericInput, createChoiceGroup } from './controls.js';
 import { createVisualMatchingChoice } from './matching-choice.js';
@@ -34,6 +34,9 @@ export function createBeatContainer({
 
   let rootEl = null;
   let visualSectionEl = null;
+  let barsWrapper = null;
+  let leftBarBox = null;
+  let rightBarBox = null;
   let symbolicSectionEl = null;
   let completedBeatsEl = null;
   let activeBeatEl = null;
@@ -52,12 +55,12 @@ export function createBeatContainer({
     visualSectionEl.classList.add('render-visual-section');
     visualSectionEl.setAttribute('aria-label', 'Fraction bar models');
 
-    const barsWrapper = document.createElement('div');
+    barsWrapper = document.createElement('div');
     barsWrapper.classList.add('fraction-bars-wrapper');
 
-    const leftBarBox = document.createElement('div');
+    leftBarBox = document.createElement('div');
     leftBarBox.classList.add('fraction-bar-box');
-    const rightBarBox = document.createElement('div');
+    rightBarBox = document.createElement('div');
     rightBarBox.classList.add('fraction-bar-box');
 
     barsWrapper.appendChild(leftBarBox);
@@ -201,7 +204,13 @@ export function createBeatContainer({
     controlsContainer.classList.add('active-beat-controls');
 
     if (scene.meaning.status.episode === 'resolved') {
-      promptText.textContent = strings.resolve.complete || 'You finished this problem.';
+      let completeMessage = strings.resolve.complete || 'You finished this problem.';
+      if (task.connectionForm === 'premise' && scene.meaning.premiseCase) {
+        completeMessage = scene.meaning.premiseCase.expectedResponse === 'yes'
+          ? (strings.reflect.premiseExpectedYes || completeMessage)
+          : (strings.reflect.premiseExpectedNo || completeMessage);
+      }
+      promptText.textContent = completeMessage;
       promptHeader.appendChild(promptText);
       activeBeatEl.appendChild(promptHeader);
       return;
@@ -225,17 +234,23 @@ export function createBeatContainer({
       } else if (recovery.classification.kind === 'incorrect-numerator-arithmetic') {
         recoveryEl.textContent = strings.operate.errorArithmetic;
       } else if (recovery.classification.kind === 'incorrect-notice') {
-        if (recovery.classification.expectedMatches) {
-          recoveryEl.textContent = strings.notice.feedbackDiff;
-        } else {
-          const leftDen = scene.meaning.quantities.left.unit.denominator;
-          const rightDen = scene.meaning.quantities.right.unit.denominator;
-          recoveryEl.textContent = typeof strings.notice.feedbackSame === 'function'
-            ? strings.notice.feedbackSame(leftDen, rightDen)
-            : strings.notice.feedbackSame;
-        }
+        // In Phase 2, only unlike-denominator fixtures ship (expectedMatches is always false).
+        // A like-denominator mistake (learner answers "different" when denominators match) has no
+        // authored string yet and is deferred to Phase 3 like-denominator work.
+        const leftDen = scene.meaning.quantities.left.unit.denominator;
+        const rightDen = scene.meaning.quantities.right.unit.denominator;
+        recoveryEl.textContent = typeof strings.notice.feedbackSame === 'function'
+          ? strings.notice.feedbackSame(leftDen, rightDen)
+          : strings.notice.feedbackSame;
       } else if (recovery.classification.kind === 'incorrect-reflection') {
-        recoveryEl.textContent = strings.reflect.matchingDistractor;
+        if (task.connectionForm === 'premise') {
+          const isYes = recovery.classification.response === 'yes';
+          recoveryEl.textContent = isYes
+            ? strings.reflect.premiseFalseYesNotice
+            : (strings.reflect.premiseFalseNoNotice || strings.status.stepIncorrect);
+        } else {
+          recoveryEl.textContent = strings.reflect.matchingDistractor;
+        }
       } else if (recovery.classification.kind === 'invalid-reflection-choice') {
         recoveryEl.textContent = strings.reflect.invalidChoice || strings.status.stepIncorrect;
       } else {
@@ -387,7 +402,7 @@ export function createBeatContainer({
 
       case 'resolve': {
         const raw = scene.meaning.operation.rawResult;
-        const pref = scene.meaning.operation.preferredFinalForm || raw;
+        const pref = scene.meaning.operation.simplifiedResult || raw;
 
         if (pref && raw && (pref.numerator !== raw.numerator || pref.denominator !== raw.denominator)) {
           promptText.textContent = strings.resolve.unsimplifiedNotice(
@@ -405,7 +420,7 @@ export function createBeatContainer({
           onClick: () => {
             dispatchAction({
               type: 'submit-resolution',
-              proposed: pref || raw,
+              proposed: raw,
             });
           },
         });
@@ -418,6 +433,11 @@ export function createBeatContainer({
 
         if (isPremise) {
           // DECISION-026: Check-the-premise form (answer is not always the reassuring one)
+          const framingEl = document.createElement('p');
+          framingEl.classList.add('premise-framing');
+          framingEl.textContent = strings.reflect?.premiseFraming || 'Check this renaming:';
+          promptHeader.appendChild(framingEl);
+
           promptText.textContent = strings.reflect.premisePrompt;
           const options = [
             {
@@ -504,12 +524,100 @@ export function createBeatContainer({
     activeBeatEl.appendChild(controlsContainer);
   }
 
+  function renderVisualSection(scene) {
+    const isPremise = scene.meaning.currentTask?.beat === 'reflect'
+      && scene.meaning.currentTask?.connectionForm === 'premise';
+
+    if (isPremise && scene.meaning.premiseCase) {
+      const premiseCase = scene.meaning.premiseCase;
+      const srcNum = Number(premiseCase.sourceForm.numerator);
+      const srcDen = Number(premiseCase.sourceForm.denominator);
+      const presNum = Number(premiseCase.presentedForm.numerator);
+      const presDen = Number(premiseCase.presentedForm.denominator);
+      const mode = scene.presentation.mode;
+
+      barsWrapper.replaceChildren();
+
+      const comparisonEl = document.createElement('div');
+      comparisonEl.classList.add('fraction-bar-container', 'premise-comparison');
+      comparisonEl.setAttribute('role', 'img');
+      comparisonEl.setAttribute('tabindex', '-1');
+      comparisonEl.setAttribute(
+        'aria-label',
+        `Starting fraction: ${srcNum} of ${srcDen} equal parts shaded. New parts: ${presNum} of ${presDen} equal parts shaded.`,
+      );
+
+      const wrapper = document.createElement('div');
+      wrapper.classList.add('fraction-bar-juxtaposed');
+
+      // Top Row: Starting fraction
+      const topRow = document.createElement('div');
+      topRow.classList.add('fraction-bar-comparison-row', 'fraction-bar-row-before');
+      const topBadgeWrap = document.createElement('div');
+      topBadgeWrap.classList.add('fraction-bar-badge-wrap');
+      const topBadge = document.createElement('span');
+      topBadge.classList.add('fraction-bar-badge');
+      topBadge.textContent = typeof strings.reflect?.premiseTopBarLabel === 'function'
+        ? strings.reflect.premiseTopBarLabel(srcNum, srcDen)
+        : `Starting fraction: ${srcNum}/${srcDen}`;
+      topBadgeWrap.appendChild(topBadge);
+      topRow.appendChild(topBadgeWrap);
+
+      const topBody = document.createElement('div');
+      topBody.classList.add('fraction-bar-row-body');
+      const topElements = createTrackAndReadout({
+        numerator: srcNum,
+        denominator: srcDen,
+        isSubdivided: false,
+        mode,
+      });
+      topBody.appendChild(topElements.trackEl);
+      topBody.appendChild(topElements.readoutEl);
+      topRow.appendChild(topBody);
+      wrapper.appendChild(topRow);
+
+      // Bottom Row: New parts
+      const bottomRow = document.createElement('div');
+      bottomRow.classList.add('fraction-bar-comparison-row', 'fraction-bar-row-after');
+      const bottomBadgeWrap = document.createElement('div');
+      bottomBadgeWrap.classList.add('fraction-bar-badge-wrap');
+      const bottomBadge = document.createElement('span');
+      bottomBadge.classList.add('fraction-bar-badge');
+      bottomBadge.textContent = typeof strings.reflect?.premiseBottomBarLabel === 'function'
+        ? strings.reflect.premiseBottomBarLabel(presNum, presDen)
+        : `New parts: ${presNum}/${presDen}`;
+      bottomBadgeWrap.appendChild(bottomBadge);
+      bottomRow.appendChild(bottomBadgeWrap);
+
+      const bottomBody = document.createElement('div');
+      bottomBody.classList.add('fraction-bar-row-body');
+      const bottomElements = createTrackAndReadout({
+        numerator: presNum,
+        denominator: presDen,
+        isSubdivided: true,
+        mode,
+      });
+      bottomBody.appendChild(bottomElements.trackEl);
+      bottomBody.appendChild(bottomElements.readoutEl);
+      bottomRow.appendChild(bottomBody);
+      wrapper.appendChild(bottomRow);
+
+      comparisonEl.appendChild(wrapper);
+      barsWrapper.appendChild(comparisonEl);
+    } else {
+      if (!barsWrapper.contains(leftBarBox)) {
+        barsWrapper.replaceChildren(leftBarBox, rightBarBox);
+      }
+      leftBarRenderer.update(scene);
+      rightBarRenderer.update(scene);
+    }
+  }
+
   function update(scene) {
     assertValidScene(scene);
 
     // Update child renderers
-    leftBarRenderer.update(scene);
-    rightBarRenderer.update(scene);
+    renderVisualSection(scene);
     symbolicRenderer.update(scene);
 
     // Update beat lifecycle

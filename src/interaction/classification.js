@@ -3,15 +3,27 @@ import {
   classifyOperationResponse as classifyMathOperationResponse,
   equalFractions,
   PATTERNS,
+  simplifyFraction,
   validateCommonDenominator,
   validateEquivalentFraction,
   validateOperationResult,
 } from '../math/index.js';
 import { reflectionChoicesForInstance } from '../content/data/reflection-choices.js';
+import { premiseCheckForInstance } from '../content/data/premise-checks.js';
 import {
   evaluateProposedPathEligibility,
 } from '../content/eligibility.js';
-import { wireToFraction } from '../content/schema.js';
+import { fractionToWire, wireToFraction } from '../content/schema.js';
+
+export const CLASSIFICATION_RECOVERY_KINDS = Object.freeze([
+  'denominator-changed-without-numerator',
+  'incorrect-equivalent-numerator',
+  'incorrect-notice',
+  'incorrect-numerator-arithmetic',
+  'incorrect-reflection',
+  'invalid-common-denominator',
+  'invalid-reflection-choice',
+]);
 
 export function fractionFromWire(value, name) {
   try {
@@ -171,6 +183,7 @@ export function classifyOperationResponseForEpisode({
     : validation.classification === 'correct-unsimplified'
       ? 'correct-unsimplified'
       : 'correct-simplified';
+  const simplifiedResult = fractionToWire(simplifyFraction(proposedResult));
   return {
     kind,
     validity: validation.validity,
@@ -178,6 +191,7 @@ export function classifyOperationResponseForEpisode({
     patterns: [...patterns.patterns],
     targetDenominator: target.toString(),
     proposed,
+    simplifiedResult,
     reasons: [...validation.reasons],
   };
 }
@@ -193,6 +207,7 @@ export function classifyResolutionResponse({ instance, targetDenominator, propos
     instance.request.operation,
     target,
   );
+  const simplifiedResult = fractionToWire(simplifyFraction(proposedResult));
   return {
     kind: validation.validity !== 'valid'
       ? 'incorrect-resolution'
@@ -202,6 +217,7 @@ export function classifyResolutionResponse({ instance, targetDenominator, propos
     validity: validation.validity,
     mathClassification: validation.classification,
     proposed,
+    simplifiedResult,
     reasons: [...validation.reasons],
   };
 }
@@ -231,5 +247,35 @@ export function classifyReflectionResponse({ instance, establishedDenominator, t
     targetForm,
     selectedForm: selected.form,
     continuation: equivalent ? 'resolved' : 'local-recovery',
+  };
+}
+
+/**
+ * Classify a CM-01-P premise-check response ('yes' or 'no') upstream of presentation.
+ * Evaluates the learner's response against the authored premise expectation.
+ */
+export function classifyPremiseResponse({ instance, establishedDenominator, response }) {
+  if (response !== 'yes' && response !== 'no') {
+    return {
+      kind: 'invalid-reflection-choice',
+      response,
+      continuation: 'local-recovery',
+    };
+  }
+  const premiseCase = premiseCheckForInstance(instance, establishedDenominator);
+  if (!premiseCase) {
+    return {
+      kind: 'invalid-reflection-choice',
+      response,
+      continuation: 'local-recovery',
+    };
+  }
+
+  const correct = response === premiseCase.expectedResponse;
+  return {
+    kind: correct ? 'correct-reflection' : 'incorrect-reflection',
+    response,
+    premiseCase,
+    continuation: correct ? 'resolved' : 'local-recovery',
   };
 }

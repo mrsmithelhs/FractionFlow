@@ -263,15 +263,17 @@ describe('Plan 09 app shell and upstream display switcher', () => {
     expect(visualView.textContent).toContain('Step 2: New parts 8/12');
   });
 
-  // Owner decision 2026-09-20: the CM-01-P premise condition is unregistered until it works.
-  // This test pins that state so the condition cannot be re-registered without the design work
-  // in Repair 04 Item 0 — classification of the answer, content in which the premise is false,
-  // and referents visible on screen when the question is asked. Deleting this test is the
-  // signal that all three are done.
-  it('registers no CM-01-P condition while the premise check is undesigned', () => {
+  it('registers phase2-bundle-4 and reaches the premise check in the app shell', () => {
     expect(REGISTERED_CONDITIONS.some((c) => c.activeCondition.connectionMaking === 'CM-01-P'))
-      .toBe(false);
-    expect(root.querySelector('[data-connection-code="CM-01-P"]')).toBe(null);
+      .toBe(true);
+
+    root.querySelector('.app-gear-button').click();
+    const bundle4 = root.querySelector('[data-condition-id="phase2-bundle-4"]');
+    expect(bundle4).not.toBeNull();
+    expect(bundle4.getAttribute('data-connection-code')).toBe('CM-01-P');
+    bundle4.click();
+
+    expect(app.getState().activeCondition.connectionMaking).toBe('CM-01-P');
 
     app.dispatch({ type: 'acknowledge-encounter' });
     app.dispatch({ type: 'submit-notice', matchesUnits: false });
@@ -282,8 +284,29 @@ describe('Plan 09 app shell and upstream display switcher', () => {
     app.dispatch({ type: 'submit-resolution', proposed: fraction(11, 12) });
 
     expect(app.getState().beat).toBe('reflect');
-    expect(root.querySelector('.app-visual-view .active-beat-prompt').textContent)
-      .not.toContain('same amount as before');
-    expect(root.querySelectorAll('.app-visual-view .matching-choice-btn')).toHaveLength(3);
+    // Premise check is presented: framing and referents
+    expect(root.querySelector('.app-visual-view').textContent)
+      .toContain('Check this renaming:');
+    expect(root.querySelector('.app-visual-view').textContent)
+      .toContain('Does this new bar show the same amount as before?');
+    expect(root.querySelector('.app-visual-view .premise-comparison')).toBeTruthy();
+
+    // Denominator 12 has false premise (7/12 for 2/3). Answering 'yes' triggers recovery!
+    const choiceButtons = root.querySelectorAll('.app-visual-view .control-choice-btn');
+    const yesBtn = Array.from(choiceButtons).find((b) => b.textContent.includes('Yes'));
+    const noBtn = Array.from(choiceButtons).find((b) => b.textContent.includes('No'));
+    expect(yesBtn).toBeTruthy();
+    expect(noBtn).toBeTruthy();
+
+    yesBtn.click();
+    expect(app.getState().status).toBe('active');
+    expect(app.getState().lastRecovery.classification.kind).toBe('incorrect-reflection');
+    expect(root.querySelector('.app-visual-view .recovery-feedback').textContent)
+      .toContain('Look closely: the shaded length became longer');
+
+    // Answering correctly ('no') completes the episode!
+    noBtn.click();
+    expect(app.getState().status).toBe('resolved');
+    expect(app.getState().established.reflection.premiseCaseId).toBe('premise-rel-prime-12');
   });
 });

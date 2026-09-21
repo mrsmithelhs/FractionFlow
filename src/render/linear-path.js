@@ -78,25 +78,44 @@ export function createLinearPathRenderer({
     const list = document.createElement('ul');
     list.classList.add('linear-quantities-list');
 
-    for (const side of ['left', 'right']) {
-      const item = document.createElement('li');
-      const isTransformed = scene.meaning.currentTask?.beat === 'transform'
-        && scene.meaning.transition
-        && scene.meaning.transition.changed?.includes(side);
+    const isPremise = scene.meaning.currentTask?.beat === 'reflect'
+      && scene.meaning.currentTask?.connectionForm === 'premise';
 
-      if (isTransformed && scene.presentation.choreography === 'juxtaposed' && strings.transition?.linearJuxtaposed) {
-        const pre = scene.meaning.transition.pre[side];
-        const post = scene.meaning.transition.post[side];
-        item.textContent = strings.transition.linearJuxtaposed(side, pre.numerator, pre.denominator, post.numerator, post.denominator);
-      } else if (isTransformed && scene.presentation.choreography === 'sequential' && strings.transition?.linearSequential) {
-        const pre = scene.meaning.transition.pre[side];
-        const post = scene.meaning.transition.post[side];
-        item.textContent = strings.transition.linearSequential(side, pre.numerator, pre.denominator, post.numerator, post.denominator);
-      } else {
-        const ord = side === 'left' ? 'First' : 'Second';
-        item.textContent = `${ord} fraction: ${quantities[side].currentForm.numerator} of ${quantities[side].currentForm.denominator} equal parts in 1 whole.`;
+    if (isPremise && scene.meaning.premiseCase) {
+      const premiseCase = scene.meaning.premiseCase;
+      const src = premiseCase.sourceForm;
+      const pres = premiseCase.presentedForm;
+
+      const item1 = document.createElement('li');
+      item1.textContent = `Starting fraction: ${src.numerator} of ${src.denominator} equal parts in 1 whole.`;
+      list.appendChild(item1);
+
+      const item2 = document.createElement('li');
+      item2.textContent = `New parts: ${pres.numerator} of ${pres.denominator} equal parts in 1 whole.`;
+      list.appendChild(item2);
+    } else {
+      for (const side of ['left', 'right']) {
+        const item = document.createElement('li');
+        const beat = scene.meaning.currentTask?.beat;
+        const isConversionBeat = beat === 'transform' || beat === 'operate';
+        const isTransformed = isConversionBeat
+          && scene.meaning.transition
+          && scene.meaning.transition.changed?.includes(side);
+
+        if (isTransformed && scene.presentation.choreography === 'juxtaposed' && strings.transition?.linearJuxtaposed) {
+          const pre = scene.meaning.transition.pre[side];
+          const post = scene.meaning.transition.post[side];
+          item.textContent = strings.transition.linearJuxtaposed(side, pre.numerator, pre.denominator, post.numerator, post.denominator);
+        } else if (isTransformed && scene.presentation.choreography === 'sequential' && strings.transition?.linearSequential) {
+          const pre = scene.meaning.transition.pre[side];
+          const post = scene.meaning.transition.post[side];
+          item.textContent = strings.transition.linearSequential(side, pre.numerator, pre.denominator, post.numerator, post.denominator);
+        } else {
+          const ord = side === 'left' ? 'First' : 'Second';
+          item.textContent = `${ord} fraction: ${quantities[side].currentForm.numerator} of ${quantities[side].currentForm.denominator} equal parts in 1 whole.`;
+        }
+        list.appendChild(item);
       }
-      list.appendChild(item);
     }
 
     contextSectionEl.appendChild(list);
@@ -212,7 +231,13 @@ export function createLinearPathRenderer({
     controlsContainer.classList.add('active-beat-controls');
 
     if (scene.meaning.status.episode === 'resolved') {
-      promptText.textContent = strings.resolve.complete || 'You finished this problem.';
+      let completeMessage = strings.resolve.complete || 'You finished this problem.';
+      if (task.connectionForm === 'premise' && scene.meaning.premiseCase) {
+        completeMessage = scene.meaning.premiseCase.expectedResponse === 'yes'
+          ? (strings.reflect.premiseExpectedYes || completeMessage)
+          : (strings.reflect.premiseExpectedNo || completeMessage);
+      }
+      promptText.textContent = completeMessage;
       promptHeader.appendChild(promptText);
       activeBeatEl.appendChild(promptHeader);
       return;
@@ -236,18 +261,24 @@ export function createLinearPathRenderer({
       } else if (recovery.classification.kind === 'incorrect-numerator-arithmetic') {
         recoveryEl.textContent = strings.operate.errorArithmetic;
       } else if (recovery.classification.kind === 'incorrect-notice') {
-        if (recovery.classification.expectedMatches) {
-          recoveryEl.textContent = strings.notice.feedbackDiff;
-        } else {
-          const leftDen = scene.meaning.quantities.left.unit.denominator;
-          const rightDen = scene.meaning.quantities.right.unit.denominator;
-          recoveryEl.textContent = typeof strings.notice.feedbackSame === 'function'
-            ? strings.notice.feedbackSame(leftDen, rightDen)
-            : strings.notice.feedbackSame;
-        }
+        // In Phase 2, only unlike-denominator fixtures ship (expectedMatches is always false).
+        // A like-denominator mistake (learner answers "different" when denominators match) has no
+        // authored string yet and is deferred to Phase 3 like-denominator work.
+        const leftDen = scene.meaning.quantities.left.unit.denominator;
+        const rightDen = scene.meaning.quantities.right.unit.denominator;
+        recoveryEl.textContent = typeof strings.notice.feedbackSame === 'function'
+          ? strings.notice.feedbackSame(leftDen, rightDen)
+          : strings.notice.feedbackSame;
       } else if (recovery.classification.kind === 'incorrect-reflection') {
-        recoveryEl.textContent = strings.reflect.matchingDistractorLinear
-          || strings.reflect.matchingDistractor;
+        if (task.connectionForm === 'premise') {
+          const isYes = recovery.classification.response === 'yes';
+          recoveryEl.textContent = isYes
+            ? strings.reflect.premiseFalseYesNotice
+            : (strings.reflect.premiseFalseNoNotice || strings.status.stepIncorrect);
+        } else {
+          recoveryEl.textContent = strings.reflect.matchingDistractorLinear
+            || strings.reflect.matchingDistractor;
+        }
       } else if (recovery.classification.kind === 'invalid-reflection-choice') {
         recoveryEl.textContent = strings.reflect.invalidChoiceLinear
           || strings.reflect.invalidChoice
@@ -401,7 +432,7 @@ export function createLinearPathRenderer({
 
       case 'resolve': {
         const raw = scene.meaning.operation.rawResult;
-        const pref = scene.meaning.operation.preferredFinalForm || raw;
+        const pref = scene.meaning.operation.simplifiedResult || raw;
 
         if (pref && raw && (pref.numerator !== raw.numerator || pref.denominator !== raw.denominator)) {
           promptText.textContent = strings.resolve.unsimplifiedNotice(
@@ -419,7 +450,7 @@ export function createLinearPathRenderer({
           onClick: () => {
             dispatchAction({
               type: 'submit-resolution',
-              proposed: pref || raw,
+              proposed: raw,
             });
           },
         });
@@ -432,6 +463,18 @@ export function createLinearPathRenderer({
         const isPremise = scene.meaning.currentTask.connectionForm === 'premise';
 
         if (isPremise) {
+          const premiseCase = scene.meaning.premiseCase;
+          const framingEl = document.createElement('p');
+          framingEl.classList.add('premise-framing');
+          if (premiseCase && typeof strings.reflect?.premiseFramingLinear === 'function') {
+            const pres = `${premiseCase.presentedForm.numerator}/${premiseCase.presentedForm.denominator}`;
+            const src = `${premiseCase.sourceForm.numerator}/${premiseCase.sourceForm.denominator}`;
+            framingEl.textContent = strings.reflect.premiseFramingLinear(pres, src);
+          } else {
+            framingEl.textContent = strings.reflect?.premiseFraming || 'Check this renaming:';
+          }
+          promptHeader.appendChild(framingEl);
+
           promptText.textContent = strings.reflect.premisePromptLinear || strings.reflect.premisePrompt;
           const options = [
             {

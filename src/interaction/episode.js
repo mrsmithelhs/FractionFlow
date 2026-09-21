@@ -11,6 +11,7 @@ import {
   classifyConversionResponseForEpisode,
   classifyNoticeResponse,
   classifyOperationResponseForEpisode,
+  classifyPremiseResponse,
   classifyReflectionResponse,
   classifyResolutionResponse,
 } from './classification.js';
@@ -451,33 +452,47 @@ function handleReflect(state, intent) {
     throw new EpisodeIntentError('INVALID_REFLECTION_RESPONSE', 'reflection response must be a stable choice identity');
   }
 
+  const establishedDenominator = state.established.commonDenominator.targetDenominator;
+
   // DECISION-026 premise checks intentionally use their authored yes/no
   // response contract. CM-01 matching choices are classified here, upstream
   // of both renderers, against the established equivalent form.
-  if (state.activeCondition.connectionMaking !== 'CM-01-P') {
-    const classification = classifyReflectionResponse({
+  if (state.activeCondition.connectionMaking === 'CM-01-P') {
+    const classification = classifyPremiseResponse({
       instance: state.content,
-      establishedDenominator: state.established.commonDenominator.targetDenominator,
-      targetForm: state.established.conversions.left,
+      establishedDenominator,
       response: intent.response,
     });
     if (classification.kind !== 'correct-reflection') {
       return recovery(state, intent, classification);
     }
+    const established = {
+      premiseCaseId: classification.premiseCase.id,
+      response: intent.response,
+      expected: classification.premiseCase.expectedResponse,
+    };
     return assessedSuccess(
       state,
       intent,
       classification,
-      resolvedState(state, 'reflect', { response: intent.response }),
+      resolvedState(state, 'reflect', established),
     );
   }
 
-  const established = { response: intent.response };
+  const classification = classifyReflectionResponse({
+    instance: state.content,
+    establishedDenominator,
+    targetForm: state.established.conversions.left,
+    response: intent.response,
+  });
+  if (classification.kind !== 'correct-reflection') {
+    return recovery(state, intent, classification);
+  }
   return assessedSuccess(
     state,
     intent,
-    { kind: 'reflection-recorded' },
-    resolvedState(state, 'reflect', established),
+    classification,
+    resolvedState(state, 'reflect', { response: intent.response }),
   );
 }
 

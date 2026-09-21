@@ -14,7 +14,7 @@ import { STRINGS } from './strings.js';
  * - Pure: computes zero mathematics; reads quantities directly from scene.meaning.
  */
 
-function createTrackAndReadout({ numerator, denominator, isSubdivided = false, mode }) {
+export function createTrackAndReadout({ numerator, denominator, isSubdivided = false, mode }) {
   const trackEl = document.createElement('div');
   trackEl.classList.add('fraction-bar-track');
   if (mode === 'reduced-motion') {
@@ -105,12 +105,13 @@ export function createFractionBarRenderer({
     // Clear and build bar contents
     rootEl.replaceChildren();
 
-    // Determine choreography treatment during transform beat
-    const isTransformBeat = scene.meaning.currentTask?.beat === 'transform';
+    // Determine choreography treatment when a conversion is established (transform or operate)
+    const beat = scene.meaning.currentTask?.beat;
+    const isConversionBeat = beat === 'transform' || beat === 'operate';
     const isChanged = Boolean(scene.meaning.transition?.changed?.includes(side));
     const choreography = scene.presentation.choreography || 'in-place';
-    const isJuxtaposed = isTransformBeat && isChanged && choreography === 'juxtaposed';
-    const isSequential = isTransformBeat && isChanged && choreography === 'sequential';
+    const isJuxtaposed = isConversionBeat && isChanged && choreography === 'juxtaposed';
+    const isSequential = isConversionBeat && isChanged && choreography === 'sequential';
 
     if (isJuxtaposed) {
       rootEl.classList.add('choreography-juxtaposed');

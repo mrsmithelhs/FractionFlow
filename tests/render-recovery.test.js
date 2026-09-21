@@ -1,9 +1,11 @@
+import { readFileSync } from 'node:fs';
 import { describe, it, expect, beforeEach, afterEach } from 'vitest';
 import { setupMockDOM, teardownMockDOM } from './fixtures/mock-dom.js';
 import { createBeatContainer } from '../src/render/beat-container.js';
 import { createLinearPathRenderer } from '../src/render/linear-path.js';
 import { STRINGS } from '../src/render/strings.js';
 import { deepFreeze } from '../src/content/schema.js';
+import { CLASSIFICATION_RECOVERY_KINDS } from '../src/interaction/classification.js';
 
 describe('Render Recovery Dispatch & Dead-Code Guard (Repair 04, Items 1, 4, 6)', () => {
   let doc;
@@ -257,5 +259,24 @@ describe('Render Recovery Dispatch & Dead-Code Guard (Repair 04, Items 1, 4, 6)'
     const linearAlert = linearContainer.querySelector('.recovery-feedback');
     expect(linearAlert.textContent).toContain('18');
     expect(linearAlert.textContent).not.toContain('This number');
+  });
+
+  it('Item 5: covers every recovery kind emitted by classification.js in the guard table', () => {
+    const tableKinds = new Set(recoveryKinds.map((entry) => entry.kind));
+    for (const kind of CLASSIFICATION_RECOVERY_KINDS) {
+      expect(tableKinds.has(kind)).toBe(true);
+    }
+    expect(tableKinds.size).toBe(CLASSIFICATION_RECOVERY_KINDS.length);
+
+    // Statically verify that classification.js does not contain undeclared recovery kinds
+    const source = readFileSync(new URL('../src/interaction/classification.js', import.meta.url), 'utf8');
+    const matches = new Set(
+      [...source.matchAll(/(?:kind:\s*|kind\s*=\s*)(?:[^\n;{}]*?\?\s*)?'([a-z-]+)'(?:\s*:\s*'([a-z-]+)')?/g)]
+        .flatMap((m) => [m[1], m[2]].filter(Boolean))
+        .filter((k) => (k.startsWith('incorrect-') || k.startsWith('invalid-') || k.startsWith('denominator-changed-')) && k !== 'incorrect-resolution'),
+    );
+    for (const kind of matches) {
+      expect(tableKinds.has(kind)).toBe(true);
+    }
   });
 });

@@ -99,15 +99,16 @@ export function createSymbolicRenderer({ container } = {}) {
     rootEl.appendChild(exprEl);
 
     // If preferred final form differs (simplification established in resolve beat)
-    if (operation.preferredFinalForm && operation.rawResult
-      && (operation.preferredFinalForm.numerator !== operation.rawResult.numerator
-        || operation.preferredFinalForm.denominator !== operation.rawResult.denominator)) {
+    const simplified = operation.simplifiedResult || operation.preferredFinalForm;
+    if (simplified && operation.rawResult
+      && (simplified.numerator !== operation.rawResult.numerator
+        || simplified.denominator !== operation.rawResult.denominator)) {
       const simplifiedEl = document.createElement('div');
       simplifiedEl.classList.add('symbolic-simplified');
       simplifiedEl.appendChild(createOperatorElement('=', 'simplified to'));
       simplifiedEl.appendChild(createFractionElement(
-        operation.preferredFinalForm.numerator,
-        operation.preferredFinalForm.denominator,
+        simplified.numerator,
+        simplified.denominator,
         'simplified to',
       ));
       rootEl.appendChild(simplifiedEl);

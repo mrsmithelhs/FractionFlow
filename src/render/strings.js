@@ -101,6 +101,9 @@ export const STRINGS = Object.freeze({
     invalidChoiceLinear: 'Choose one of the fractions shown.',
 
     // DECISION-026: Check-the-premise form (answer is not always the reassuring one)
+    premiseFraming: 'Check this renaming:',
+    premiseTopBarLabel: (num, den) => `Starting fraction: ${num}/${den}`,
+    premiseBottomBarLabel: (num, den) => `New parts: ${num}/${den}`,
     premisePrompt: 'Does this new bar show the same amount as before?',
     premiseOptions: Object.freeze({
       yes: 'Yes, it is the same amount',
@@ -108,9 +111,13 @@ export const STRINGS = Object.freeze({
     }),
     premiseExpectedNo: 'Good eye! The amount changed, so these fractions are not equivalent.',
     premiseFalseYesNotice: 'Look closely: the shaded length became longer. It is not the same amount.',
+    premiseFalseNoNotice: 'Look closely: the shaded length is the same. It is the same amount.',
     premiseExpectedYes: 'Correct! The parts are smaller, but the total shaded amount is the same.',
 
     // Accessible linear path phrasing (DECISION-004, Condition 6)
+    premiseFramingLinear: (presented, source) => (
+      `Check this fraction: ${presented}. Does this fraction show the same amount as ${source}?`
+    ),
     matchingPromptLinear: (targetFraction) => (
       `Choose the fraction that shows the same amount as ${targetFraction}.`
     ),

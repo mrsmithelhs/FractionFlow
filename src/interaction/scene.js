@@ -1,6 +1,7 @@
 import { deepFreeze } from '../content/schema.js';
 import { candidateDenominatorsForInstance } from '../content/eligibility.js';
 import { reflectionChoicesForInstance } from '../content/data/reflection-choices.js';
+import { premiseCheckForInstance } from '../content/data/premise-checks.js';
 import { makeContentIdentity } from './provenance.js';
 import { validateActiveCondition } from './episode-definition.js';
 
@@ -533,8 +534,12 @@ function operationMeaning(state) {
       rawResult: null,
       resultWholeSpan: null,
       preferredFinalForm: null,
+      simplifiedResult: null,
     };
   }
+
+  const rawResult = operation?.proposed ?? null;
+  const simplifiedResult = operation?.simplifiedResult ?? resolution?.simplifiedResult ?? null;
 
   return {
     operation: state.content.request.operation,
@@ -542,9 +547,10 @@ function operationMeaning(state) {
       left: state.established.conversions.left,
       right: state.established.conversions.right,
     },
-    rawResult: operation?.proposed ?? null,
+    rawResult,
     resultWholeSpan: state.content.representationFacts.wholeSpan,
-    preferredFinalForm: resolution?.proposed ?? null,
+    preferredFinalForm: resolution?.proposed ?? (simplifiedResult || rawResult),
+    simplifiedResult,
   };
 }
 
@@ -603,11 +609,18 @@ function sceneMeaning(state, representationRole, capability) {
       classification: state.lastRecovery.classification,
     }
     : null;
+  const isPremise = state.beat === 'reflect' && state.activeCondition?.connectionMaking === 'CM-01-P';
   return {
     representationRole,
     condition: state.activeCondition,
-    reflectionChoices: state.beat === 'reflect'
+    reflectionChoices: state.beat === 'reflect' && !isPremise
       ? reflectionChoicesForInstance(
+        state.content,
+        state.established?.commonDenominator?.targetDenominator,
+      )
+      : null,
+    premiseCase: isPremise
+      ? premiseCheckForInstance(
         state.content,
         state.established?.commonDenominator?.targetDenominator,
       )
