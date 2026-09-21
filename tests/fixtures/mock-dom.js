@@ -99,6 +99,16 @@ export class MockElement {
     this.setAttribute('class', String(value));
   }
 
+  get isConnected() {
+    let curr = this;
+    while (curr) {
+      if (globalThis.document && curr === globalThis.document.body) return true;
+      if (!curr.parentNode) return false;
+      curr = curr.parentNode;
+    }
+    return false;
+  }
+
   get textContent() {
     if (this.children.length === 0) return this._textContent;
     return this.children.map((c) => c.textContent).join('');
@@ -275,6 +285,13 @@ export class MockElement {
   }
 
   querySelector(selector) {
+    if (selector.includes(',')) {
+      for (const part of selector.split(',')) {
+        const found = this.querySelector(part.trim());
+        if (found) return found;
+      }
+      return null;
+    }
     const parts = selector.trim().split(/\s+/);
     if (parts.length === 1) {
       return this._find((el) => matchesSelector(el, selector));
@@ -291,6 +308,13 @@ export class MockElement {
   }
 
   querySelectorAll(selector) {
+    if (selector.includes(',')) {
+      const results = [];
+      for (const part of selector.split(',')) {
+        results.push(...this.querySelectorAll(part.trim()));
+      }
+      return Array.from(new Set(results));
+    }
     const parts = selector.trim().split(/\s+/);
     if (parts.length === 1) {
       const results = [];

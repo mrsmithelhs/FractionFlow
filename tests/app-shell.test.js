@@ -431,6 +431,68 @@ describe('Plan 09 app shell and upstream display switcher', () => {
     expect(replayButton.getAttribute('aria-pressed')).toBe('false');
   });
 
+  it('restores focus to reflection choices upon exiting Inspection Mode in visual and linear paths', async () => {
+    const replayButton = Array.from(root.querySelectorAll('.app-secondary-button'))
+      .find((b) => b.textContent.includes('Replay'));
+
+    // Advance through the episode to reflect
+    app.dispatch({ type: 'acknowledge-encounter' });
+    app.dispatch({ type: 'submit-notice', matchesUnits: false });
+    app.dispatch({ type: 'propose-common-denominator', proposed: whole(12) });
+    app.dispatch({ type: 'submit-equivalent-form', proposed: fraction(8, 12) });
+    app.dispatch({ type: 'submit-equivalent-form', proposed: fraction(3, 12) });
+    app.dispatch({ type: 'submit-operation-result', proposed: fraction(11, 12) });
+    app.dispatch({ type: 'submit-resolution', proposed: fraction(11, 12) });
+
+    expect(app.getState().beat).toBe('reflect');
+
+    // --- Visual Path ---
+    const visualView = root.querySelector('.app-visual-view');
+    const visualChoice = visualView.querySelector('.matching-choice-btn');
+    expect(visualChoice).not.toBeNull();
+    visualChoice.focus();
+    expect(document.activeElement).toBe(visualChoice);
+    expect(document.activeElement.className).toContain('matching-choice-btn');
+
+    // Enter Inspection Mode
+    replayButton.click();
+    await new Promise((resolve) => setTimeout(resolve, 10));
+    expect(document.activeElement.tagName).toBe('BUTTON');
+    expect(document.activeElement.className).toContain('app-done-looking-button');
+
+    // Exit Inspection Mode
+    const doneButtonVisual = visualView.querySelector('.app-done-looking-button');
+    doneButtonVisual.click();
+    await new Promise((resolve) => setTimeout(resolve, 10));
+    expect(document.activeElement.tagName).toBe('BUTTON');
+    expect(document.activeElement.className).toContain('matching-choice-btn');
+
+    // --- Linear Path ---
+    const viewSwitchButton = root.querySelector('.app-view-controls .app-secondary-button');
+    viewSwitchButton.click();
+    const linearView = root.querySelector('.app-linear-view');
+    expect(linearView.hasAttribute('hidden')).toBe(false);
+
+    const linearChoice = linearView.querySelector('.control-choice-btn');
+    expect(linearChoice).not.toBeNull();
+    linearChoice.focus();
+    expect(document.activeElement).toBe(linearChoice);
+    expect(document.activeElement.className).toContain('control-choice-btn');
+
+    // Enter Inspection Mode
+    replayButton.click();
+    await new Promise((resolve) => setTimeout(resolve, 10));
+    expect(document.activeElement.tagName).toBe('BUTTON');
+    expect(document.activeElement.className).toContain('app-done-looking-button');
+
+    // Exit Inspection Mode
+    const doneButtonLinear = linearView.querySelector('.app-done-looking-button');
+    doneButtonLinear.click();
+    await new Promise((resolve) => setTimeout(resolve, 10));
+    expect(document.activeElement.tagName).toBe('BUTTON');
+    expect(document.activeElement.className).toContain('control-choice-btn');
+  });
+
   it('preserves document.activeElement and input state across replay at interactive beat (Repair 07 Item 2)', () => {
     // Advance to transform-right
     app.dispatch({ type: 'acknowledge-encounter' });

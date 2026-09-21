@@ -34,6 +34,17 @@ export function createLinearPathRenderer({
   let previousFocusRef = null;
   let activeBeatRenderToken = null;
 
+  function isElementVisible(el) {
+    let curr = el;
+    while (curr) {
+      if (curr.hidden || (typeof curr.hasAttribute === 'function' && curr.hasAttribute('hidden'))) {
+        return false;
+      }
+      curr = curr.parentNode;
+    }
+    return true;
+  }
+
   function initLayout() {
     rootEl = document.createElement('div');
     rootEl.classList.add('accessible-linear-path');
@@ -254,6 +265,12 @@ export function createLinearPathRenderer({
       return;
     }
     activeBeatRenderToken = token;
+
+    // Focus management (Condition B): Capture active element before unmount
+    const isInspection = beat === 'reflect' && isReplaying && Boolean(scene.meaning.transition);
+    if (isInspection && !previousFocusRef && typeof document !== 'undefined' && document.activeElement && rootEl.contains(document.activeElement)) {
+      previousFocusRef = document.activeElement;
+    }
 
     activeBeatEl.replaceChildren();
 
@@ -543,7 +560,7 @@ export function createLinearPathRenderer({
             previousFocusRef = document.activeElement;
           }
           setTimeout(() => {
-            if (typeof doneButton.focus === 'function') {
+            if (isElementVisible(rootEl) && typeof doneButton.focus === 'function') {
               doneButton.focus();
             }
           }, 0);
@@ -553,10 +570,11 @@ export function createLinearPathRenderer({
             const elToFocus = previousFocusRef;
             previousFocusRef = null;
             setTimeout(() => {
+              if (!isElementVisible(rootEl)) return;
               if (elToFocus && elToFocus.isConnected && typeof elToFocus.focus === 'function') {
                 elToFocus.focus();
               } else {
-                const firstChoice = controlsContainer.querySelector('button, input');
+                const firstChoice = controlsContainer.querySelector('button, input') || controlsContainer.querySelector('button');
                 if (firstChoice && typeof firstChoice.focus === 'function') firstChoice.focus();
               }
             }, 0);
