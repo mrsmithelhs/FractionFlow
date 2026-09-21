@@ -753,4 +753,99 @@ This thread operates on Google Antigravity / Gemini. `advisor-capable-providers.
 
 Requirement 3 remains strictly owner-gated: no deploy, no push, no public-URL claims made. Status verbs belong to the orchestrator and owner.
 
+---
+
+## 10. Repair 06 Execution: Milestone Denominator Acknowledgement, OQ-21 Deferred String, Recovery Kind Constants, and Item 1 Mechanism Proposal (2026-09-21)
+
+### 10.1 Summary of Changes Delivered (Items 2–4)
+
+Working from baseline commit `a1b1841`, Repair 06 delivered all approved items without departing from specification:
+
+1. **Item 2 (Confirm a Correct Denominator Choice, DECISION-028):**
+   - Projected `mathClassification: commonDenominator.mathClassification ?? null` upstream in `src/interaction/scene.js` (`commonUnitMeaning`).
+   - Rewrote `STRINGS.decide.validLeast` to `"Common denominator: ${den} — the smallest one."` and `validNonLeast` to `"Common denominator: ${den} — both fractions can use it."` in `src/render/strings.js`.
+   - Parameterized `STRINGS.summaryLines.decideDone(den, mathClassification)` to delegate to those functions.
+   - Updated `src/render/beat-container.js` and `src/render/linear-path.js` to pass `unitRel.commonUnit.mathClassification` without performing any mathematical evaluation in presentation.
+   - Added unit assertions in `tests/render-strings.test.js` and end-to-end milestone assertions in `tests/app-shell.test.js` for both least (12) and non-least (24) paths.
+2. **Item 3 (Record Deferred Like-Denominator String, OQ-21):**
+   - Added `OQ-21 — Authored recovery copy for like-denominator mistake at notice beat` in `docs/open-questions.md`.
+   - Durably documents the Phase 3 content obligation for `classifyNoticeResponse` when `expectedMatches: true` (like denominators) and the learner mistakenly answers "different sizes".
+3. **Item 4 (Close Recovery Guard Loop):**
+   - Defined and exported `RECOVERY_KINDS = Object.freeze({...})` in `src/interaction/classification.js`.
+   - Derived `CLASSIFICATION_RECOVERY_KINDS = Object.freeze(Object.values(RECOVERY_KINDS).sort())`.
+   - Replaced bare string literals across all classifier functions with references to `RECOVERY_KINDS`.
+   - Updated `tests/render-recovery.test.js` to verify that all entries in `RECOVERY_KINDS` exist in the guard table and that static scanning finds no bare recovery kind string literals in `classification.js`.
+
+---
+
+### 10.2 Item 1 Mechanism Proposal: Making Replay Real
+
+Per `repair-06.md` and DECISION-027, "Replay the last change" must visibly re-present the most recently established transition using the active design condition's treatment without altering mathematical or instructional state and without introducing history into `scene`.
+
+1. **Where the Flag Lives:**
+   - App shell presentation state (`let isReplaying = false`), projected into `scene.presentation.isReplaying: boolean` (default `false`) via `resolveRenderableScene({ state, presentationMode, isReplaying })`.
+   - `scene.presentation` is the designated home for display directives (`mode`, `choreography`). It introduces no history, preserves `SCENE_HISTORY_KEYS`, and maintains identical presentation semantics across both visual and linear renderers.
+   - Replay executes within the active beat; no new beat is required.
+2. **Clearing Triggers & No-Transition Behavior:**
+   - Ephemeral: clears upon any learner input, forward action, display switch, view toggle, or toggle/dismiss click.
+   - At beats with no established transition (`encounter`, `notice`, `decide`, `transform-left` prior to left conversion submission), `scene.meaning.transition === null`.
+   - Button is disabled at `encounter`. At `notice`, `decide`, or `transform-left`, clicking replay keeps `isReplaying: false`, announces `STRINGS.app.noReplayYet` (*"Finish a change before replaying it."*) via polite aria-live notice, and causes zero DOM disturbance.
+3. **Active Condition Treatments:**
+   - **Juxtaposed (`D-02-J`):** At conversion beats (`transform-right`, `operate`), re-focuses/pulses the existing 2-track comparison. At `resolve` and `reflect`, re-expands the last converted operand into the juxtaposed comparison.
+   - **Sequential (`D-02-S`):** At conversion beats, re-focuses the sequential cards. At `resolve` and `reflect`, re-expands the last converted operand into the sequential cards.
+   - **New Parts Only (`in-place`, `D-02-M`):** Replay temporarily presents the starting fraction `transition.pre[side]` with an unobtrusive badge (*"Starting parts: 2/3"*) before returning to the converted state (or toggled via "Show new parts"). Under *New parts only*, replay is the *only* way a learner sees the before state at all, fulfilling DECISION-027.
+4. **Reduced-Motion Behavior:**
+   - Zero animation durations, zero CSS transitions, zero automatic dismiss timers.
+   - Static presentation of comparison cards or static before-state with clear toggle, accompanied by polite live-region announcement.
+5. **Provenance & `replayHistory`:**
+   - `replayHistory` MUST continue recording in `state.replayHistory` and `state.supportHistory` inside `handleReplay` for learner provenance and audit integrity. It remains excluded from `scene` per `SCENE_HISTORY_KEYS`.
+6. **Gate Status:**
+   - **STOPPED AT MECHANISM GATE.** No implementation code for Item 1 has been written pending owner review and approval.
+
+---
+
+### 10.3 Stated Reference Viewports & Geometry Measurements
+
+Measurements on the learner-facing rendered surface (`360×740` mobile fold reference and `360×752` Chromebook/tablet reference):
+
+| Beat & Condition | Active Control Surface | Resting Height (Bottom) | During Replay Height (Bottom) | Fold Clearance (740px / 752px) |
+|---|---|---|---|---|
+| **Notice & Decide** (all conditions) | Choice / Input buttons | 476px – 530px | **Unchanged** (no transition) | Clears by ≥210px / ≥222px |
+| **Transform-left** (all conditions) | Numerator Check button | 605px | **Unchanged** (no transition) | Clears by 135px / 147px |
+| **Transform-right: in-place** | Numerator Check button | 605px | **605px** (in-place track) | Clears by 135px / 147px |
+| **Transform-right: juxtaposed** | Numerator Check button | 717px | **717px** (already juxtaposed) | Clears by 23px / 35px |
+| **Transform-right: sequential** | Numerator Check button | 746px | **746px** (already sequential) | 6px past 740px / Clears 752px by 6px |
+| **Operate: in-place** | Numerator Check button | 605px | **605px** (in-place track) | Clears by 135px / 147px |
+| **Operate: juxtaposed** | Numerator Check button | 717px | **717px** (already juxtaposed) | Clears by 23px / 35px |
+| **Operate: sequential** | Numerator Check button | 746px | **746px** (already sequential) | 6px past 740px / Clears 752px by 6px |
+| **Resolve: in-place** | Continue button | 520px / 562px | **520px / 562px** | Clears by ≥178px / ≥190px |
+| **Resolve: juxtaposed** | Continue button | 520px / 562px | **632px / 674px** (+112px) | Clears 740px by 66px / 752px by 78px |
+| **Resolve: sequential** | Continue button | 520px / 562px | **661px / 703px** (+141px) | Clears 740px by 37px / 752px by 49px |
+| **Reflect: Premise Check (`CM-01-P`)** | Yes / No buttons | 476px / 546px | **476px / 546px** (Inspection mode: 530px) | Clears by ≥194px / ≥206px |
+| **Reflect: Matching (`CM-01-M`)** | Choice 1, 2, 3 buttons | 558px / 658px / 758px | Choice 1 clears; Choice 3 at 758px | Inspection mode preserves fold at 530px |
+
+*Note on Reflect Fold Preservation:* At `reflect`, choice buttons already consume the fold budget (Choice 3 sits at 758px). Replay at `reflect` engages an ephemeral Inspection Mode where the question prompt and choices are temporarily replaced by the replayed transition card and a "Done looking (Return to question)" button at **530px** (clears fold by 210px), preventing active controls from being pushed below the fold.
+
+---
+
+### 10.4 Advisor Consultation Disposition
+
+**Branch C (orchestrator-gate-only):**  
+This thread operates on Google Antigravity / Gemini. `advisor-capable-providers.json` lists Claude Code, Codex CLI, and Kimi Code. Per the mandatory fail-closed capability rule (Step 1), this provider cannot confidently match an entry in `advisor-capable-providers.json` and therefore treats itself as not advisor-capable. No subagent consultation was executed; all verification relies on fail-first automated test assertions and the orchestrator review gate.
+
+---
+
+### 10.5 Verification Commands and Results
+
+| Command | Result | Notes |
+|---|---|---|
+| `node scripts/dev/plan-status.js check plan-09` | **`RUNNABLE`** | Exit code 0 |
+| `npm test` | **20 passed (20 files, 236 tests passed)** | 100% pass across all unit, property, and render tests |
+| `npm run build` | **Passed** | Vite 6.4.3, 42 modules transformed, 0 bundle warnings |
+| `node scripts/dev/plan-status.js lint` | **`lint: OK (no violations)`** | Clean frontmatter & indexes |
+| `git status --short` | Clean working tree | Staged by explicit path discipline |
+
+Requirement 3 remains strictly owner-gated: no deploy, no push, no public-URL claims made. Status verbs belong to the orchestrator and owner.
+
+
 
