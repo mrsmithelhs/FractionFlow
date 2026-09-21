@@ -464,6 +464,43 @@ describe('Access Parity & Participation Floor (Plan 08)', () => {
         expect(details.open).toBe(true);
       }
     });
+
+    it('verifies DOM ordering parity: active beat section precedes completed beats section across both visual and linear paths', () => {
+      let ep = canonicalEpisode();
+      ep = applyIntent(ep, { type: 'acknowledge-encounter' });
+      ep = applyIntent(ep, { type: 'submit-notice', matchesUnits: false });
+      const scene = resolveRenderableScene({ state: ep });
+
+      // Visual path
+      const visualBox = doc.createElement('div');
+      const visual = createBeatContainer({ container: visualBox, dispatchAction: () => {} });
+      visual.mount(scene);
+      const visualRoot = visualBox.querySelector('.episode-beat-container') || visualBox.children[0];
+      const visualActive = visualRoot.querySelector('.active-beat-section');
+      const visualCompleted = visualRoot.querySelector('.completed-beats-section');
+      expect(visualActive).toBeTruthy();
+      expect(visualCompleted).toBeTruthy();
+      const visualActiveIdx = visualRoot.children.indexOf(visualActive);
+      const visualCompletedIdx = visualRoot.children.indexOf(visualCompleted);
+      expect(visualActiveIdx).toBeGreaterThanOrEqual(0);
+      expect(visualCompletedIdx).toBeGreaterThanOrEqual(0);
+      expect(visualActiveIdx).toBeLessThan(visualCompletedIdx);
+
+      // Linear path
+      const linearBox = doc.createElement('div');
+      const linear = createLinearPathRenderer({ container: linearBox, dispatchAction: () => {} });
+      linear.mount(scene);
+      const linearRoot = linearBox.querySelector('.accessible-linear-path') || linearBox.children[0];
+      const linearActive = linearRoot.querySelector('.active-beat-section');
+      const linearCompleted = linearRoot.querySelector('.completed-beats-section');
+      expect(linearActive).toBeTruthy();
+      expect(linearCompleted).toBeTruthy();
+      const linearActiveIdx = linearRoot.children.indexOf(linearActive);
+      const linearCompletedIdx = linearRoot.children.indexOf(linearCompleted);
+      expect(linearActiveIdx).toBeGreaterThanOrEqual(0);
+      expect(linearCompletedIdx).toBeGreaterThanOrEqual(0);
+      expect(linearActiveIdx).toBeLessThan(linearCompletedIdx);
+    });
   });
 
   describe('Reduced-Motion Parity', () => {

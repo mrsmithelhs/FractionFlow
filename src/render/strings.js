@@ -63,7 +63,7 @@ export const STRINGS = Object.freeze({
       `How many of the ${den} equal parts are shaded?`
     ),
     errorNumerator: 'Count the shaded parts in the new bar and try again.',
-    errorScaleFactor: 'Check the number you multiply by to make the new denominator.',
+    errorScaleFactor: 'Multiply the top and bottom by the same number.',
   }),
 
   operate: Object.freeze({
@@ -97,6 +97,8 @@ export const STRINGS = Object.freeze({
     matchingCorrect: 'That is the same amount! The parts changed size, but the shaded amount stayed the same.',
     matchingDistractor: 'This bar has a different shaded amount. Look closely at the shaded length.',
     matchingDistractorLinear: 'This fraction shows a different amount. Look closely at its parts.',
+    invalidChoice: 'Choose one of the options shown.',
+    invalidChoiceLinear: 'Choose one of the fractions shown.',
 
     // DECISION-026: Check-the-premise form (answer is not always the reassuring one)
     premisePrompt: 'Does this new bar show the same amount as before?',
@@ -108,10 +110,6 @@ export const STRINGS = Object.freeze({
     premiseFalseYesNotice: 'Look closely: the shaded length became longer. It is not the same amount.',
     premiseExpectedYes: 'Correct! The parts are smaller, but the total shaded amount is the same.',
 
-    // DECISION-026: "None of these" distractor option for matching
-    noneOfTheseOption: 'None of these bars show the same amount',
-    noneOfTheseCorrect: 'Correct! None of those bars show the same shaded amount.',
-
     // Accessible linear path phrasing (DECISION-004, Condition 6)
     matchingPromptLinear: (targetFraction) => (
       `Choose the fraction that shows the same amount as ${targetFraction}.`
@@ -120,7 +118,6 @@ export const STRINGS = Object.freeze({
       `Fraction ${num}/${den} shows a shaded amount`
     ),
     premisePromptLinear: 'Does this new fraction show the same amount as before?',
-    noneOfTheseOptionLinear: 'None of these fractions show the same amount',
   }),
 
   controls: Object.freeze({
@@ -131,10 +128,6 @@ export const STRINGS = Object.freeze({
   }),
 
   status: Object.freeze({
-    transitionComplete: (side, den) => (
-      `The ${side === 'left' ? 'first' : 'second'} bar is now divided into ${den} parts.`
-    ),
-    stepCorrect: 'Correct.',
     stepIncorrect: 'Not quite.',
   }),
 
@@ -222,7 +215,6 @@ export const STRINGS = Object.freeze({
     replayNote: 'Take another look at the current bars and symbols.',
     displayChanged: (label) => `Now showing ${label}.`,
     problemRestarted: 'The same problem is ready again.',
-    completedHelp: 'This problem is complete. Try it again when you are ready.',
     restartButton: 'Try this problem again',
     noReplayYet: 'Finish a change before replaying it.',
     tryAgain: 'Let us try that step again.',

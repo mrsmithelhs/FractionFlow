@@ -214,23 +214,30 @@ export function createBeatContainer({
       recoveryEl.setAttribute('role', 'alert');
 
       if (recovery.classification.kind === 'invalid-common-denominator') {
-        recoveryEl.textContent = strings.decide.invalidDenominator(
-          recovery.classification.proposed || 'This number',
-        );
-      } else if (recovery.classification.kind === 'incorrect-conversion') {
+        const denom = recovery.classification.targetDenominator
+          || recovery.classification.proposed
+          || 'This number';
+        recoveryEl.textContent = strings.decide.invalidDenominator(denom);
+      } else if (recovery.classification.kind === 'denominator-changed-without-numerator') {
+        recoveryEl.textContent = strings.transform.errorScaleFactor;
+      } else if (recovery.classification.kind === 'incorrect-equivalent-numerator') {
         recoveryEl.textContent = strings.transform.errorNumerator;
-      } else if (recovery.classification.kind === 'incorrect-operation') {
+      } else if (recovery.classification.kind === 'incorrect-numerator-arithmetic') {
         recoveryEl.textContent = strings.operate.errorArithmetic;
       } else if (recovery.classification.kind === 'incorrect-notice') {
-        recoveryEl.textContent = strings.notice.feedbackDiff;
-      } else if (recovery.classification.kind === 'incorrect') {
-        const leftDen = scene.meaning.quantities.left.unit.denominator;
-        const rightDen = scene.meaning.quantities.right.unit.denominator;
-        recoveryEl.textContent = typeof strings.notice.feedbackSame === 'function'
-          ? strings.notice.feedbackSame(leftDen, rightDen)
-          : strings.notice.feedbackSame;
+        if (recovery.classification.expectedMatches) {
+          recoveryEl.textContent = strings.notice.feedbackDiff;
+        } else {
+          const leftDen = scene.meaning.quantities.left.unit.denominator;
+          const rightDen = scene.meaning.quantities.right.unit.denominator;
+          recoveryEl.textContent = typeof strings.notice.feedbackSame === 'function'
+            ? strings.notice.feedbackSame(leftDen, rightDen)
+            : strings.notice.feedbackSame;
+        }
       } else if (recovery.classification.kind === 'incorrect-reflection') {
         recoveryEl.textContent = strings.reflect.matchingDistractor;
+      } else if (recovery.classification.kind === 'invalid-reflection-choice') {
+        recoveryEl.textContent = strings.reflect.invalidChoice || strings.status.stepIncorrect;
       } else {
         recoveryEl.textContent = strings.status.stepIncorrect;
       }

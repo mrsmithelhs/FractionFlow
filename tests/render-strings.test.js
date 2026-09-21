@@ -145,8 +145,8 @@ describe('Learner Strings Catalog (src/render/strings.js)', () => {
     expect(STRINGS.reflect.premiseOptions.no).toBeTruthy();
     expect(STRINGS.reflect.premiseExpectedNo).toBeTruthy();
     expect(STRINGS.reflect.premiseExpectedYes).toBeTruthy();
-    expect(STRINGS.reflect.noneOfTheseOption).toBeTruthy();
-    expect(STRINGS.reflect.noneOfTheseCorrect).toBeTruthy();
+    expect(STRINGS.reflect.invalidChoice).toBeTruthy();
+    expect(STRINGS.reflect.invalidChoiceLinear).toBeTruthy();
   });
 
   it('avoids awkward screen-reader fraction voicing (no ${den}ths)', () => {
