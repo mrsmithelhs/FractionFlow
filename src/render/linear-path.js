@@ -36,7 +36,10 @@ export function createLinearPathRenderer({
 
   function isElementVisible(el) {
     let curr = el;
-    while (curr) {
+    // Stop at the document: `document.hidden` is the Page Visibility API, not an
+    // element's hidden attribute, and reading it would disable focus management
+    // in any backgrounded tab.
+    while (curr && curr !== globalThis.document) {
       if (curr.hidden || (typeof curr.hasAttribute === 'function' && curr.hasAttribute('hidden'))) {
         return false;
       }

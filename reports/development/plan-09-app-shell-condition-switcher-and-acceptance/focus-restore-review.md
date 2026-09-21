@@ -100,3 +100,35 @@ One line, in two files, plus the dead-fallback cleanup. When that lands and I ha
 the browser, implementer work on `plan-09` is complete and `owner-gate-checklist.md` governs the rest:
 deploy authorization, the public-URL exercise, the §25 evidence packet, the DECISION-021 rubric against
 rendered screens, and the dated owner disposition.
+
+## Addendum — the correction was applied by the orchestrator
+
+- **Date:** 2026-09-21
+- **Change:** `isElementVisible` now stops its walk at the document in both
+  `src/render/beat-container.js` and `src/render/linear-path.js`, with a comment naming why. No other
+  change; the dead `|| controlsContainer.querySelector('button')` fallback is left in place as
+  cosmetic.
+
+Verified in the browser at `reflect`, with `document.hidden` forced to `true` — the exact condition
+that previously disabled focus management:
+
+```
+run 1:  before BUTTON.control-choice-btn → during BUTTON.app-done-looking-button → after BUTTON.control-choice-btn
+run 2:  before BUTTON.control-choice-btn → during BUTTON.app-done-looking-button → after BUTTON.control-choice-btn
+run 3:  before BUTTON.control-choice-btn → during BUTTON.app-done-looking-button → after BUTTON.control-choice-btn
+```
+
+The guard still does its real job. Switched to the linear view and replayed there; two "Done looking"
+controls exist, one per renderer, and focus went to the visible one:
+
+```
+done button 0:  inVisual=true   hiddenAncestor=true   isActive=false
+done button 1:  inLinear=true   hiddenAncestor=false  isActive=true
+```
+
+Focus returned to a linear-path choice on exit, with no leak to the hidden visual renderer.
+
+244 tests, build, and lint pass; tree clean.
+
+**Implementer work on `plan-09` is complete.** What remains is owner action, listed in
+`owner-gate-checklist.md`.
