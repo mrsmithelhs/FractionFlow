@@ -453,6 +453,26 @@ equal parts. They are already the same size.").
 **Needs:** authored pedagogical copy in `strings.notice` for `expectedMatches === true` and test coverage
 in `tests/render-recovery.test.js` when Phase 3 introduces like-denominator practice.
 
+### OQ-22 — A lower-support form of the check-the-premise task
+
+**Raised:** 2026-09-21, by the owner, from the deployed `plan-09` slice.
+
+`CM-01-P` currently presents the premise check with both bars on screen — "Starting fraction: 2/3"
+above "New parts: 7/12" — so the comparison is visually obvious. The owner observed that a
+lower-support form could withhold that support: show only the new bar, or drop to a linear/symbolic
+presentation like the "Read the steps" view, and ask the same question.
+
+This is a genuine scaffold-fading axis and the most concrete candidate yet for giving the support
+ladder in `src/interaction/support.js` its first real writer. It is also the first support variation
+proposed from watching the thing run rather than from the specification.
+
+**Needs:** a Phase 3 packet. It must not be implemented as a renderer flag — support level is
+instructional configuration selected upstream (DECISION-006), and the premise content itself
+(`src/content/data/premise-checks.js`) stays unchanged across support levels. DECISION-026's
+constraint holds at every support level: the reassuring answer must still sometimes be wrong.
+
+---
+
 ---
 
 ## Process / workflow
