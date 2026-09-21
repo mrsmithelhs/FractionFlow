@@ -3,7 +3,7 @@ id: plan-13
 title: Scaffold Fading Made Real
 status: draft
 depends_on: [plan-12, plan-14]
-gate: "Blocked on an owner decision: DECISION-019 confines the gear menu to the four registered design-condition axes, and support level is not one of them, so there is no authorized reviewer surface for selecting it. That decision precedes the packet. Then mechanism confirmation, then owner review of at least two support levels on rendered screens with an explicit agency check."
+gate: "Mechanism confirmation before source work: where state.support is written, which of the six dimensions actually vary, and the negative evidence that no renderer flag or performance policy is involved. Then owner review of at least two support levels on rendered screens with an explicit agency check. The surface is settled by DECISION-030; the policy remains out of scope."
 superseded_by: null
 resolution: null
 summary: >-
@@ -26,8 +26,8 @@ summary: >-
 - Date: 2026-09-21
 - Packet type: feature
 - Mutation level: user-facing release
-- Approval gate: owner decision on the support-selection surface; then mechanism confirmation; then owner review on rendered screens with an explicit agency check
-- Depends on: an owner decision on the reviewer support-selection surface; `plan-12` (if the entry page is that surface); `plan-14` (a support level that cannot be reached is the defect this packet exists to fix)
+- Approval gate: mechanism confirmation; then owner review on rendered screens with an explicit agency check
+- Depends on: `plan-12` (DECISION-029 and DECISION-030 put the selector in the entry page gear menu); `plan-14` (a support level that cannot be reached is the defect this packet exists to fix)
 - Expected artifacts: `src/interaction/` and `src/app/` changes; at least two reachable support levels; OQ-22 addressed; progress report
 
 ## Goal
@@ -53,16 +53,17 @@ does not. This packet gives it a writer.
 
 ## Depends on
 
-**An owner decision that does not yet exist.** DECISION-019 confines the gear menu to *one purpose in
-Phase 2*: switching among the four registered design-condition axes of the prototype-variable register
-— D-01 display, D-02 choreography, D-05 prompt cadence, CM-01 connection-making form. **Support level
-is not one of them.** So this packet needs a reviewer-reachable upstream selector that does not exist
-and cannot be created by an implementer: it may not be quietly added to the gear menu, may not become
-a learner preference (DECISION-006's surface separation), and may not be a test-only constructor
-argument, which would reproduce the exact `plan-09` failure this packet exists to repair.
+**`plan-12`, which builds the surface this packet needs.** DECISION-019 confined the gear menu to the
+four registered design-condition axes, and support level is not among them, so until 2026-09-21 there
+was no authorized way for a reviewer to select one. **DECISION-030 amends that**: the gear menu now
+carries reviewer-selected instructional configuration, of which support level is a member.
+**DECISION-029** puts the gear on the entry page and nowhere else.
 
-`plan-12` if the entry page turns out to be that surface. The two packets should not both invent a
-reviewer configuration surface.
+So the selector is settled and located, and `plan-12` is what builds the page it lives on. The
+implementer does not design this surface and does not widen it: support level is selected there,
+before an episode begins, and nowhere else. It may not become a learner preference (DECISION-006's
+surface separation stands), and it may not be a test-only constructor argument — that would reproduce
+the exact `plan-09` failure this packet exists to repair.
 
 `plan-14` accepted. The whole deliverable here is reachability, so it is witnessed by the route matrix
 rather than asserted in a report.
@@ -94,6 +95,7 @@ Required reading:
 - `docs/founding/06-roadmap.md` §22
 - `docs/founding/05-quality-and-validation.md` — "Accessibility Must Preserve Agency"
 - `docs/open-questions.md` — OQ-22
+- `docs/decision-log.md` — **DECISION-029 and DECISION-030**, which settle where support is selected
 - `reports/orchestration/phase-2-unreachable-mechanisms.md`
 - `reports/orchestration/plans-10-13-codex-review.md` — §2, which is why this packet does not wait on `plan-10`
 - `docs/development/phase-3-generalization-design/` — if `plan-10` has landed; it is an input, not a gate
@@ -120,8 +122,10 @@ Contracts this packet must preserve:
 
 - `src/interaction/support.js` and `src/interaction/episode.js` — make `state.support` writable from
   upstream episode configuration rather than pinned at construction.
-- `src/app/` — the reviewer support-selection surface **exactly as the owner's decision defines it**,
-  and nothing wider. This packet implements that decision; it does not choose it.
+- `src/app/` — support level added to the entry-page gear menu **exactly as DECISION-029 and
+  DECISION-030 define it**, and nothing wider. This packet implements those decisions; it does not
+  revisit them. Plain-language labels; specification codes in internal data attributes; no persistence
+  across reload.
 - `src/interaction/scene.js` — projecting support-dependent instructional state, if the scene does not
   already carry what the renderers need.
 - The presentation consequences of at least two levels, including OQ-22's lower-support premise check.
@@ -136,10 +140,10 @@ Contracts this packet must preserve:
 
 ### Requirement 0 — Mechanism confirmation (gate)
 
-**Propose and stop**, after the owner's decision on the selection surface and before source work:
+**Propose and stop** before source work:
 
-- Where `state.support` is written and by what, tracing the path from the approved reviewer surface
-  through episode configuration to the scene, and showing it satisfies the Separation Rule.
+- Where `state.support` is written and by what, tracing the path from the entry-page gear menu through
+  episode configuration to the scene, and showing it satisfies the Separation Rule.
 - Which dimensions of the six actually vary between the levels being implemented, and which stay
   pinned. A level that changes a label and nothing else is not a level.
 - The negative evidence: no renderer flag, no learner-performance policy, no presentation informing
@@ -201,7 +205,8 @@ Required behavior:
 - [ ] Decisions required by the learner compared per level and stated.
 - [ ] Participation floor verified at every implemented level.
 - [ ] Support level appears in the replay envelope.
-- [ ] Owner decision on the selection surface obtained before source work; mechanism proposal approved.
+- [ ] Mechanism proposal approved before source work.
+- [ ] Support level selectable only from the entry-page gear menu; no persistence across reload.
 - [ ] Route-matrix rows for each implemented level, each with the other level as a negative control.
 - [ ] 360px measured per beat per level, against a stated viewport height.
 - [ ] No changes to `src/math/` or `src/content/data/`.
@@ -214,8 +219,8 @@ Required behavior:
 Stop and report if:
 
 - Making `state.support` writable appears to require presentation to inform instructional state.
-- The approved selection surface turns out not to work, or to require widening DECISION-019 further
-  than the owner's decision authorized.
+- The entry-page gear menu turns out not to work as the selector, or the work appears to require
+  widening the menu beyond what DECISION-030 authorized.
 - A reduced-support level cannot be built without removing a decision from the learner rather than
   removing support for it.
 - The participation floor cannot be held at a lower support level.

@@ -682,6 +682,99 @@ scene projection was missing.
 **Supersedes / related:** makes `strings.decide.validLeast` and `validNonLeast` reachable; constrained
 by DECISION-021 criterion 1 and DECISION-004; related to DECISION-011.
 
+### DECISION-029 - The app has an entry page that gates the episode, and the gear lives there
+
+**Date:** 2026-09-21
+
+**Decision:** Resolves OQ-19. FractionFlow opens on an **entry page** carrying the app's name. The
+learner must act on it to begin; it is not a splash that passes through. Consequently:
+
+1. **The entry page gates the episode.** Arriving at the app is not the same as arriving mid-problem.
+   The episode is entered deliberately.
+2. **The reviewer's gear menu lives on the entry page only**, and is not reachable while an episode is
+   being worked. Switching a design condition therefore means starting a fresh episode. This makes
+   DECISION-019's requirement — that switching never alters the learner's established work —
+   structurally impossible to violate rather than a rule to be honored, and it removes the reviewer
+   control from the learner's work surface, where the Phase 2 rendered screens showed the menu
+   overlapping the completion message.
+3. **"Try this problem again" is retained**, alongside a control that returns to the entry page. The
+   two are kept because they serve different intentions — retry this problem, versus leave it — and
+   **they must discard exactly the same episode state**, asserted by a route witness rather than by
+   inspection. Two notions of reset that diverge is a defect; two labels over one discard is not.
+4. **The app title returns to the entry page** as the primary identity. Its placement on the episode
+   surface is whatever the instructional hierarchy and the `plan-09` Repair 01 clutter boundary allow,
+   which may be the footer as now or may be nothing at all.
+5. **What the entry page holds beyond the name** is not settled here. It stays a mechanism-gate
+   proposal in `plan-12`, to be judged on rendered screens, because it is a restraint question and
+   DECISION-021 criterion 1 applies to the entry page exactly as it applies to the episode.
+
+No accounts, no storage, no persistence, no progress. Condition selection still does not survive a
+reload. Static-only (DECISION-001).
+
+**Rationale:** The footer title and the floating gear were both adopted in `plan-09` Repair 01 as
+explicit workarounds for a page that did not exist, and both were recorded as temporary at the time.
+OQ-19 asked five questions; the owner answered four on 2026-09-21 and deliberately left the fifth
+where it can be judged against real screens.
+
+Confining the gear to the entry page was the least obvious of the four and the most load-bearing. It
+converts a behavioral guarantee into a structural one, which is the same move that closed several
+`plan-09` defects: the reliable way to keep a mechanism from doing harm is to make the harmful path
+unreachable rather than to forbid it.
+
+**Supersedes / related:** Resolves OQ-19; constrains DECISION-019 by relocating the menu without
+widening its purpose; preserves DECISION-001, DECISION-006, DECISION-021 criterion 1; governs
+`plan-12`; makes `plan-13` depend on `plan-12`.
+
+### DECISION-030 - The gear menu also carries reviewer-selected support level
+
+**Date:** 2026-09-21
+
+**Decision:** Amends DECISION-019. The gear menu's purpose widens from *"switching among the registered
+upstream design conditions that Plan 04's prototype-variable register enumerates"* to **switching among
+reviewer-selected instructional configuration**, of which the register's four axes (D-01 display, D-02
+choreography, D-05 prompt cadence, CM-01 connection-making form) and **support level** are the members
+in this phase.
+
+Everything else in DECISION-019 stands unchanged:
+
+- The menu remains **reviewer-facing in its entirety**. Support level is not a learner preference, and
+  this amendment does not create one. DECISION-006's surface-separation rule is untouched.
+- Plain-language labels; specification codes stay in internal data attributes.
+- **No persistence across reload.** A reload returns to the default support level as it returns to the
+  default condition.
+- No learner or application preferences — reduced motion, contrast, audio, and session options remain
+  outside this menu.
+
+Support level is selected **upstream, as episode configuration**, and reaches presentation only through
+instructional state. It is not a renderer flag, and per DECISION-029 it is chosen on the entry page
+before an episode begins, so it does not change under a learner mid-episode.
+
+**This amendment authorizes a surface, not a policy.** Which support level a given learner receives,
+and whether it ever changes in response to performance, is out of scope here and in `plan-13`.
+
+**Rationale:** `src/interaction/support.js` builds a four-level ladder across six dimensions;
+`state.support` is written once at construction with every dimension pinned at `high support` and never
+updated. Roadmap §22 asks the slice to demonstrate "the architectural ability to fade," and the owner
+accepted that §25 criterion in a stated weak condition on 2026-09-21 precisely because the ladder has
+no writer.
+
+A reviewer-reachable selector is what the ladder lacks, and DECISION-019 as written did not authorize
+one: support level is not among the register's four axes. The three ways an implementer would have
+closed that gap unaided were all unacceptable — quietly extending the gear beyond its stated purpose,
+making support a learner preference, or accepting a test-only constructor argument, which is the exact
+unreachable-mechanism failure `plan-13` exists to repair. Naming the widening in a decision is the
+honest version of the first of those.
+
+The alternative considered was adding support level to the prototype-variable register, which would
+have made it gear-eligible under DECISION-019 unamended. That was rejected as heavier than the need:
+the register exists to hold rival hypotheses with falsification observations and conclusion rules, and
+this phase wants to *demonstrate* that fading is architecturally possible, not to adjudicate between
+support designs. If support level later becomes a variable the project means to falsify, it can be
+registered then.
+
+**Supersedes / related:** Amends DECISION-019; preserves DECISION-006 unmodified; depends on
+DECISION-029 for the surface's location; unblocks `plan-13`; related to DECISION-016 and Roadmap §22.
+
 ## Proposed but not yet accepted
 
 Use the same `**Date:** YYYY-MM-DD` field for proposals, using the proposal date.

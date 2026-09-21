@@ -397,10 +397,11 @@ an entry page would hand off to, so building it now is a step toward the idea ra
 it. `plan-09`'s Requirement 2 wording ("the gear icon on the entry page") should be read as
 anticipating this question, not as specifying a page that exists.
 
-**Needs:** a decision on whether an entry page ships at all, what it holds beyond the name, whether
-it gates the episode or is merely passed through, and how a learner returns to it. Also whether the
-gear belongs there rather than in the episode footer. Worth deciding with real screens in hand, and
-worth pairing with the DECISION-019 question of who the switcher is for once the app is public.
+**RESOLVED 2026-09-21 by DECISION-029.** The entry page ships and gates the episode; the gear menu
+lives there and only there, so a condition switch means a fresh episode; "Try this problem again" is
+retained alongside a return-to-entry control, and the two must discard identical state. One part is
+deliberately still open: **what the entry page holds beyond the name** stays a mechanism-gate proposal
+in `plan-12`, to be judged against rendered screens under DECISION-021 criterion 1. See also OQ-23.
 
 ### OQ-20 — What does a fraction bar look like when the result crosses one whole?
 
@@ -472,6 +473,29 @@ instructional configuration selected upstream (DECISION-006), and the premise co
 constraint holds at every support level: the reassuring answer must still sometimes be wrong.
 
 ---
+
+---
+
+### OQ-23 — "Try another problem" needs content the slice does not have
+
+**Raised:** 2026-09-21, by the owner, while resolving OQ-19.
+
+DECISION-029 keeps "Try this problem again" and adds a return to the entry page. The owner also named a
+third intention neither one serves: **try a *different* problem** — a new instance rather than a retry
+of the same one.
+
+The slice ships one authored instance with two valid routes (the twelfths route and the
+twenty-fourths route), so "another problem" has nothing to offer yet. `plan-03` did build deterministic
+generation with bulk validation across many instances, so the content machinery may already be able to
+supply one; what does not exist is the decision about which instances are *appropriate* to hand a
+learner unsupervised, and the surface that offers them.
+
+**Phase 2 owes this:** nothing. `plan-12` must not build it, and must not foreclose it — a third
+control alongside retry and return is a straightforward addition once there is something to try.
+
+**Needs:** a decision on where the next instance comes from (authored set, generator draw, or a fixed
+sequence), and on whether choosing it is the learner's or the reviewer's. Worth deciding alongside the
+`plan-10` reach assessment, which will say how many families exist to draw from.
 
 ---
 

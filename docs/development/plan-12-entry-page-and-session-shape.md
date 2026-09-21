@@ -3,7 +3,7 @@ id: plan-12
 title: Entry Page and Session Shape
 status: draft
 depends_on: [plan-09, plan-14]
-gate: "Mechanism confirmation before any source work: the implementer proposes, and the owner approves, answers to the five questions OQ-19 leaves open. Then owner review of the entry page and the episode surface on rendered screens against DECISION-021 criteria 1 and 3."
+gate: "DECISION-029 settles the shape. One question stays open and gated: what the entry page holds beyond the name is proposed and owner-approved before source work, judged as a restraint question. Then owner review of the entry page and the episode surface on rendered screens against DECISION-021 criteria 1 and 3."
 superseded_by: null
 resolution: null
 summary: >-
@@ -25,7 +25,7 @@ summary: >-
 - Date: 2026-09-21
 - Packet type: feature
 - Mutation level: user-facing release
-- Approval gate: owner-approved OQ-19 mechanism proposal, then owner review on rendered screens
+- Approval gate: owner-approved proposal for the entry page's contents, then owner review on rendered screens
 - Depends on: `plan-09` (the shell, the condition registry, and the footer arrangement this replaces); `plan-14` (entry, return, and condition transport are route claims)
 - Expected artifacts: `src/app/` changes; entry-page module; OQ-19 resolution recorded; progress report
 
@@ -45,8 +45,10 @@ packet gives the app a front door and returns the title to it.
 - **No learner preferences.** The gear menu stays reviewer-only and condition-only.
 - **No routing library, no client-side router framework.** Static-only.
 - **No second episode.**
-- **The implementer does not settle OQ-19 by building it.** The five open questions are the owner's;
-  this packet routes them through a mechanism gate rather than answering them in code.
+- **The implementer does not reopen DECISION-029.** Four of OQ-19's five questions are settled; this
+  packet implements them. Only the entry page's contents remain a proposal.
+- **No "try another problem" control.** That is OQ-23 and needs content the slice does not have. Do not
+  build it and do not foreclose it.
 
 ## Depends on
 
@@ -111,26 +113,24 @@ Contracts this packet must preserve:
 
 ## Implementation Requirements
 
-### Requirement 0 — The OQ-19 mechanism proposal (gate)
+### Requirement 0 — What the entry page holds, and the focus contract (gate)
 
-**Propose and stop.** OQ-19 states its open questions explicitly, and they are owner decisions, not
-implementation details. Answer each as a proposal with reasoning, and wait for approval before writing
-source:
+**DECISION-029 settles four of OQ-19's five questions and they are not reopened.** The entry page
+ships, it gates the episode, the gear menu lives there and only there, "Try this problem again" is
+retained alongside a return-to-entry control, and the title returns to the entry page.
 
-1. **Does an entry page ship at all**, or is there a better resolution of the footer-title workaround?
-2. **What does it hold beyond the name?**
-3. **Does it gate the episode, or is it merely passed through?** A page the learner must act on and a
-   page that appears once and never returns are different products.
-4. **How does a learner return to it**, and how does that relate to the existing "Try this problem
-   again" control? Two notions of reset is a defect, not a feature.
-5. **Does the gear belong there** rather than in the episode footer? OQ-19 pairs this with the
-   DECISION-019 question of who the switcher is for once the app is public.
+**Propose and stop on the fifth.** What the entry page holds beyond the name is deliberately unsettled,
+because it is a restraint question and DECISION-021 criterion 1 applies to the entry page exactly as it
+applies to the episode. Propose the contents with reasoning, and what each element earns. The owner
+judges it against rendered screens; a packet that arrives with three headings and an explanatory
+paragraph will be sent back, as `plan-09` Repair 01 was.
 
-Also propose the **focus contract**: where focus lands after "begin", after a return, and what a
-keyboard user's first Tab reaches on each surface. `plan-09` lost focus to `BODY` twice on claims that
-had never been observed; this packet states the contract up front instead.
+**Also propose the focus contract**, which OQ-19 did not ask for and which this packet will not ship
+without: where focus lands after "begin", where it lands after a return, and what a keyboard user's
+first Tab reaches on each surface. `plan-09` lost focus to `BODY` twice on claims that had never been
+observed, so this is stated up front rather than discovered in review.
 
-The proposal names what it would cost at 360px. Everything below is conditional on approval.
+Name the 360px cost of the proposal. Everything below is conditional on approval.
 
 ### Requirement 1 — The entry page
 
@@ -138,8 +138,10 @@ Required behavior:
 
 - The app opens on an entry page carrying the app name, a one-line statement of what the learner will
   do, and a single obvious control to begin.
-- The reviewer-only condition switcher is reachable from the entry page, with its plain-language
-  labels and its specification codes still in internal data attributes.
+- The reviewer-only gear menu is reachable from the entry page **and from nowhere else**
+  (DECISION-029). It keeps its plain-language labels and its specification codes in internal data
+  attributes. A reviewer changing a condition therefore starts a fresh episode, which is what makes it
+  structurally impossible for a switch to disturb established work.
 - The entry page holds no metrics, no counters, no progress, and no more than one level of heading
   below the app name.
 
@@ -147,18 +149,22 @@ Constraints:
 
 - A learner who begins is in the episode; there is no intermediate configuration step for them.
 
-### Requirement 2 — The return path
+### Requirement 2 — The return path and the retained retry
 
 Required behavior:
 
 - The episode can return to the entry page, and the return is deliberate rather than accidental.
-- Returning discards episode state cleanly — the next entry starts a fresh episode with no residue.
-  The existing "Try this problem again" control and this path must not produce two different notions
-  of reset.
+- **"Try this problem again" is retained** (DECISION-029). It and the return path serve different
+  intentions — retry this problem, versus leave it.
+- **The two must discard exactly the same episode state.** This is the condition the owner attached to
+  keeping both, and it is asserted by a route witness comparing the post-discard state of each, not by
+  inspection. Two labels over one discard is fine; two discards that diverge is the defect.
 
 Constraints:
 
-- No state survives the round trip. Verify by returning mid-episode and re-entering.
+- No state survives either round trip. Verify by returning mid-episode, re-entering, and separately by
+  retrying mid-episode.
+- OQ-23's "try another problem" is not built here and must not be foreclosed.
 
 ### Requirement 3 — Condition selection carried upstream
 
@@ -195,8 +201,9 @@ Required behavior:
 - [ ] App opens on an entry page; one control begins the episode.
 - [ ] Condition switcher reachable from the entry page, reviewer-only, codes internal.
 - [ ] Condition selected upstream; appears in the replay envelope; does not persist across reload.
-- [ ] Mechanism proposal answering all five OQ-19 questions plus the focus contract, approved before
-      source work.
+- [ ] Proposal for the entry page's contents plus the focus contract, approved before source work.
+- [ ] Gear menu reachable from the entry page and from nowhere else.
+- [ ] "Try this problem again" and return-to-entry discard identical state, asserted by a route witness.
 - [ ] Return path exists, discards state, and does not conflict with "Try this problem again."
 - [ ] Route-matrix rows for per-condition launch (with negative controls) and for return to re-entry.
 - [ ] Focus contract verified in a browser at both transitions.
