@@ -1,7 +1,8 @@
 ---
 id: plan-09
 title: App Shell, Condition Switcher, and Phase 2 Acceptance
-status: in-progress
+status: complete
+resolution: "Owner disposition 2026-09-21: Phase 2 exit gate satisfied. Reviewed acceptance-evidence.md, deployed-exercise-record.md, and aesthetic-rubric.md at revision b418e8a, exercised at https://mrsmithelhs.github.io/FractionFlow/. Carried forward: OQ-19, OQ-20, OQ-21, OQ-22, animated subdivision (D-01-A), and the unwritten support ladder. n=0 children."
 depends_on: [plan-08]
 gate: "Owner gate. The deployed public exercise, the accessibility evidence, and the aesthetic rubric are presented for owner/teacher review. Only the owner declares the Phase 2 exit gate satisfied; the implementer may not, and neither may the orchestrator alone."
 summary: >-

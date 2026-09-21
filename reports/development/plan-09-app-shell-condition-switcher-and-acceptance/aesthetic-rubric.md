@@ -151,3 +151,13 @@ can settle, and nobody has watched one try.
 
 **Orchestrator: no blocking violation found.** The rubric is the owner's to apply; this is the
 evidence for it, not the verdict.
+
+---
+
+## Owner confirmation
+
+The owner's dated disposition of 2026-09-21 (`acceptance-evidence.md`, "Owner disposition") declared
+the Phase 2 exit gate **satisfied**, which carries §25 criterion 8 and therefore this rubric. No
+criterion was marked as a violation.
+
+The two child's-eye items above remain open observations for tier-2 evidence, not rubric failures.

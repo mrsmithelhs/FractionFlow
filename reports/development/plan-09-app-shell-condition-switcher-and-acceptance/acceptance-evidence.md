@@ -167,10 +167,22 @@ public URL, not inferred from the workflow log.
 
 ## Owner disposition
 
-To be completed by the owner. See `owner-gate-checklist.md` §5.
+Recorded by the owner, 2026-09-21. The packet requires the disposition to *name* the reviewed
+artifact, the deployed revision, and the public URL; they are named here.
 
-- [ ] Reviewed acceptance-evidence artifact: _______________
-- [ ] Deployed revision: _______________
-- [ ] Public URL: _______________
-- [ ] Date: _______________
-- [ ] Phase 2 exit gate: satisfied / not satisfied
+- [x] **Reviewed acceptance-evidence artifact:** this document
+      (`reports/development/plan-09-app-shell-condition-switcher-and-acceptance/acceptance-evidence.md`),
+      together with `deployed-exercise-record.md` and `aesthetic-rubric.md`, at revision `b418e8a`.
+- [x] **Deployed revision:** `b418e8a`
+- [x] **Public URL:** https://mrsmithelhs.github.io/FractionFlow/
+- [x] **Date:** 2026-09-21
+- [x] **Phase 2 exit gate: satisfied.**
+
+The owner's disposition carries the DECISION-021 rubric in `aesthetic-rubric.md`, and carries
+criterion 5 (scaffold variability) as accepted in its stated condition — the four-level support type
+exists and has no writer, recorded in `acceptance-evidence.md` §5 and carried forward as OQ-22.
+
+Testing basis: one device, one adult. Chrome at 1080p (full episode, all four display conditions,
+error and recovery, the alternate valid path, reduced motion), with Edge and Firefox at varying widths
+on the basic path. **n = 0 children.** The limits in §6 and §7 stand as written and are not waived by
+this disposition.
