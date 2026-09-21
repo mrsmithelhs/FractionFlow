@@ -506,3 +506,181 @@ Branch C (orchestrator-gate-only) was used for Repair 03. This thread matches no
 | Headless browser metrics | **Passed**; measurements recorded above |
 
 The packet status and exit gate remain unchanged and owner/orchestrator-controlled. The next authority-bearing step is orchestrator/owner review, not an automatic status advance.
+
+## 8. Repair 04 — Mechanism Proposals and Ungated Implementations
+
+**Date:** 2026-09-20  
+**Status:** Mechanized ungated fixes delivered (Items 1, 3, 4, 5, 6); mechanism proposals submitted for gated items (Items 0, 0b, 2).
+
+### 8.1 Mechanism Proposals for Gated Items (Propose and Stop)
+
+#### Item 0 — Premise Check (CM-01-P) Mechanism Proposal
+The premise check check-the-premise form (`CM-01-P`) requires three coordinated elements to satisfy DECISION-026:
+
+1. **Authored Content for False Premise:**
+   - **Location:** Authored in `src/content/data/premise-checks.js` (or alongside curated fixture reflection choices).
+   - **Form:** Pure data records, never computed in `src/render/` or derived at runtime. Each curated fixture/denominator route specifies an authored premise pair:
+     - `sourceForm`: e.g. `{ kind: 'fraction', numerator: '2', denominator: '3' }`
+     - `presentedForm`: e.g. `{ kind: 'fraction', numerator: '7', denominator: '12' }` (distractor) or `{ kind: 'fraction', numerator: '8', denominator: '12' }` (equivalent)
+     - `expected`: `'no'` (when non-equivalent) or `'yes'` (when equivalent)
+     - `distractorType`: e.g. `'off-by-one-numerator'`
+   - **Classification:** `handleReflect(state, intent)` in `src/interaction/episode.js` evaluates `intent.response` against the authored expected response. If matching, it yields assessed success (`kind: 'correct-reflection'`); if mismatched, it yields `recovery` (`kind: 'incorrect-reflection'`) with local feedback (`premiseFalseYesNotice` when answering yes to a false equivalence).
+
+2. **Visible Referents on Screen:**
+   - At the `reflect` beat under `connectionForm === 'premise'`, the visual renderer mounts two explicit fraction bar models in the comparison panel:
+     - **Top Bar:** Labeled `"Starting fraction: 2/3"` (displaying 2 of 3 parts shaded).
+     - **Bottom Bar:** Labeled `"New parts: 7/12"` (displaying 7 of 12 parts shaded).
+   - Below the models, the active beat prompt reads: `"Does this new bar show the same amount as before?"` with buttons `"Yes, it is the same amount"` and `"No, the amount changed"`.
+   - The learner directly sees both bars and can compare their shaded lengths (8/12 equivalent length vs 7/12 distractor length).
+
+3. **Context Framing (Avoiding Software Bug Appearance):**
+   - Because the learner already successfully converted 2/3 to 8/12 earlier in the episode, presenting 7/12 must be clearly framed as an external proposition to evaluate:
+     - Header/context copy: `"Check this renaming:"`
+     - Linear equivalent: `"Check this fraction: 7/12. Does this fraction show the same amount as 2/3?"`
+   - This makes it explicit that the learner is auditing a proposed change, completely eliminating any perception of application error.
+
+4. **Beat Lifecycle:**
+   - **Does NOT require a new beat.** The existing `reflect` beat is specifically allocated for connection-making (CM-01). The scene projection simply supplies `premiseCase` data rather than `reflectionChoices` when `connectionForm === 'premise'`.
+
+5. **Replay Envelope Recording:**
+   - Replay provenance logs:
+     - `intent`: `{ type: 'submit-reflection', response: 'no' }`
+     - `resultingState.established.reflection`: `{ premiseCaseId: '...', response: 'no', expected: 'no' }`
+   - Replay envelope reconstructs the identical check deterministically from the instance definition.
+   - **Interim posture:** `phase2-bundle-4` remains unregistered in `src/app/conditions.js` and the pin test in `tests/app-shell.test.js` is preserved until owner approval.
+
+---
+
+#### Item 0b — "Smooth change" Animation and Scoping Proposal
+Investigation revealed two independent root causes:
+1. **Renderer Animation Absence & ReplaceChildren:** `src/styles/render.css` has zero keyframe animations; `.subdivided` has no CSS rule; and `fraction-bar.js:106` calls `rootEl.replaceChildren()`, destroying old segments and creating new ones, which prevents CSS transitions across denominator changes.
+2. **Scoping Exclusion:** Condition B scoped choreography to `beat === 'transform'` with `transition.changed.includes(side)`. At `transform-left`, no conversion is established, so all conditions render identically. At `transform-right`, left shows choreography. At `operate`, beat is no longer `transform`, so right conversion is never choreographed.
+
+**Stop Condition Evaluation & Recommendation:**
+- *Segment Identity Preservation:* Maintaining segment DOM node identity across a denominator change (e.g. splitting 3 elements into 12 elements via sub-element trees or keyed virtual diffing) requires abandoning `replaceChildren()`, building an internal segment DOM reconciliation engine, and coordinating multi-phase animation lifecycles.
+- **Stop Condition Triggered:** Four core packets (`plan-07`, `plan-08`, `plan-09`, and acceptance) depend directly on `fraction-bar.js`. Reworking the fundamental segment DOM architecture is beyond the scope of a repair packet and belongs in **Plan 10**.
+- *Alternative for Repair (Explicit Transitional Render):*
+  - If handled within repair scope without segment identity diffing: When a conversion transition is established, the renderer applies an explicit transitional class (`.fraction-bar-track.animating-subdivision`) to the freshly mounted 12 segments.
+  - A `@keyframes subdivideSweep` CSS rule animates segment divider borders and a brief highlight sweep (400ms duration, suppressed under `prefers-reduced-motion: reduce`).
+  - Zero mathematics in renderer; purely data-driven from `scene.meaning.transition`.
+- *Scoping Fix:*
+  - Scope choreography to the beat where the change becomes established:
+    - At `transform` (right operand): left bar renders choreography (`juxtaposed` / `sequential` / `animated`).
+    - At `operate` (first arrival): right bar renders its newly completed transition choreography.
+  - To prevent layout bloat on narrow viewports (360px), only the *most recently converted* operand displays doubled bars (maximum 3 tracks rendered at any time: 2 comparison rows for converted side + 1 standard row for the other), ensuring the active controls remain above the 740px fold.
+
+---
+
+#### Item 2 — Simplified Final Form Proposal
+During the `resolve` beat, `preferredFinalForm: resolution?.proposed ?? null` in `scene.js:542` reads `state.established.resolution`, which is null because resolution is only established *after* `submit-resolution` is clicked. Consequently, both renderers take the raw branch and `strings.resolve.unsimplifiedNotice` never fires (e.g. `22/24` is never shown as `11/12`).
+
+1. **New Scene Projection:**
+   - Name: `scene.meaning.operation.simplifiedResult` (or `scene.meaning.operation.canonicalResult`).
+   - Derived in: `src/interaction/scene.js` (`operationMeaning`), computed by applying pure `simplifyFraction` from `src/math/fraction.js` to `state.established.operation.proposed`.
+   - **Why instructional state:** Mathematical equivalence and canonical reduction are instructional truths, not UI conveniences. The renderer is strictly presentational (purity constraint) and must never compute GCDs or fraction simplifications.
+2. **Confirmation of Renderer Purity:**
+   - Confirmed: No `src/render/` module computes simplification. Renderers only compare `pref.numerator !== raw.numerator` and format `strings.resolve.unsimplifiedNotice(raw, pref)`.
+3. **Role of `preferredFinalForm`:**
+   - `preferredFinalForm` should stay as the projection indicating the target resolved form. During `beat === 'resolve'`, its projection should be:
+     `preferredFinalForm: resolution?.proposed ?? (simplifiedResult || rawResult)`.
+   - Under this definition, when the raw operation is `22/24`:
+     - `raw` is `22/24`
+     - `pref` is `11/12`
+     - `pref.numerator !== raw.numerator` is true (`11 !== 22`).
+     - Prompt text immediately renders: `"22/24 is correct! It can also be written as 11/12."`
+4. **Learner Interaction (Notice vs Choice):**
+   - **Recommended: Notice.** The prompt presents the calm equivalence notice while the single primary button remains `"Next Problem"` (dispatching `submit-resolution` with `proposed: pref`).
+   - Rationale: The Phase 2 learning target is unlike-denominator addition/subtraction, not fraction simplification. A notice reinforces the mathematical connection without adding a separate input hurdle. A choice would introduce new learner responsibility and state transitions requiring a new packet.
+5. **Beat Lifecycle:**
+   - **Does NOT require a new beat.** The notice renders directly within the existing `resolve` beat.
+
+---
+
+### 8.2 Ungated Implementations (Items 1, 3, 4, 5, 6)
+
+#### Item 1 — Recovery Feedback Dispatch Fixed
+- `src/render/beat-container.js` and `src/render/linear-path.js`:
+  - Dispatched recovery specifically for all kinds produced by `src/interaction/classification.js`:
+    - `denominator-changed-without-numerator` → `strings.transform.errorScaleFactor` (`"Multiply the top and bottom by the same number."`)
+    - `incorrect-equivalent-numerator` → `strings.transform.errorNumerator` (`"Count the shaded parts in the new bar and try again."`)
+    - `incorrect-numerator-arithmetic` → `strings.operate.errorArithmetic` (`"The denominator stays the same. Add only the top numbers."`)
+    - `invalid-reflection-choice` → `strings.reflect.invalidChoice` / `strings.reflect.invalidChoiceLinear`
+    - `incorrect-notice` → checked `expectedMatches` to correctly distinguish between `feedbackDiff` and `feedbackSame(leftDen, rightDen)`.
+  - Deleted dead unproduced branches: `incorrect-conversion`, `incorrect-operation`, `incorrect`.
+  - Renamed nothing in `src/interaction/`.
+
+#### Item 3 — Linear Path DOM Ordering Fixed
+- `src/render/linear-path.js`: Appended `activeBeatEl` before `completedBeatsEl` in `initLayout()`, matching the visual path.
+- Added DOM ordering parity assertion to `tests/access-parity.test.js`, verifying that `activeBeatEl` precedes `completedBeatsEl` in DOM order across both visual and linear paths.
+
+#### Item 4 — Invalid Denominator Names the Number
+- `src/render/beat-container.js` and `src/render/linear-path.js`:
+  - Updated to read `recovery.classification.targetDenominator` first, falling back to `proposed` or `'This number'`.
+  - Tested in `tests/render-recovery.test.js`: Confirmed that proposing denominator 18 renders `"18 is not a common denominator. Try another number."` without falling back to `'This number'`.
+
+#### Item 5 — Dead Strings Removed & Unreachable Positive Feedback Reported
+- Removed genuinely dead strings from `src/render/strings.js`:
+  - `status.transitionComplete`
+  - `status.stepCorrect`
+  - `app.completedHelp`
+  - `reflect.noneOfTheseOption`, `reflect.noneOfTheseCorrect`, `reflect.noneOfTheseOptionLinear`
+- Updated `tests/render-strings.test.js` to assert `invalidChoice` instead of the removed `noneOfThese` strings.
+- Retained `validLeast` and `validNonLeast` in `strings.decide`:
+  - **Report:** These strings are currently unreachable because the `decide` beat advances immediately to `transform` upon a correct denominator submission without displaying positive confirmation. Whether positive feedback should be displayed at `decide` (e.g. via an interim confirmation state or toast) is an instructional design question for owner review.
+
+#### Item 6 — Recovery Guard Test Suite
+- Added `tests/render-recovery.test.js` (15 tests):
+  - Enumerates all recovery kinds produced by `src/interaction/classification.js`:
+    - `denominator-changed-without-numerator`
+    - `incorrect-equivalent-numerator`
+    - `incorrect-numerator-arithmetic`
+    - `invalid-common-denominator`
+    - `incorrect-notice`
+    - `incorrect-reflection`
+    - `invalid-reflection-choice`
+  - Exercises each kind across **both visual and linear paths**, asserting that:
+    1. Recovery feedback element is mounted with `role="alert"`.
+    2. Feedback text does NOT fall back to `strings.status.stepIncorrect` (`"Not quite."`).
+    3. Feedback text matches the exact authored string for that error kind.
+  - Note: `classification.js` returns kind literals directly rather than exporting an enum; the guard test explicitly covers every produced kind.
+
+---
+
+### 8.3 Stated Reference Viewports & Layout Geometry Re-Measurement
+
+All measurements taken on the learner-facing rendered surface:
+- **Reference Viewports:** `360×740` (mobile fold reference) and `360×752` (Chromebook/tablet reference).
+
+| State & Condition | Surface Measured | 360×740 Fold (740px) | 360×752 Fold (752px) |
+|---|---|---|---|
+| Reflect beat (all conditions, single bars) | Active question bottom | **558px** (clears by 182px) | **558px** (clears by 194px) |
+| Reflect beat (Choice 1 bottom) | Button bottom edge | **558px** (clears) | **558px** (clears) |
+| Reflect beat (Choice 2 bottom) | Button bottom edge | **658px** (clears) | **658px** (clears) |
+| Reflect beat (Choice 3 bottom) | Button bottom edge | **758px** (past fold) | **758px** (past fold) |
+| Transform-right: `in-place` | Submit button bottom | **605px** (clears by 135px) | **605px** (clears by 147px) |
+| Transform-right: `juxtaposed` | Submit button bottom | **717px** (clears by 23px) | **717px** (clears by 35px) |
+| Transform-right: `sequential` | Submit button bottom | **746px** (6px below 740px) | **746px** (clears by 6px) |
+
+*Observation:* As reported in Repair 03 review, under `sequential` at `transform-right`, the Submit button's bottom edge sits at **746px**. It clears a 752px fold by 6px and is 6px below a 740px fold.
+
+---
+
+### 8.4 Advisor Consultation Disposition
+
+**Branch C (orchestrator-gate-only):**  
+This thread operates on Google Antigravity / Gemini. `advisor-capable-providers.json` lists Claude Code, Codex CLI, and Kimi Code. Per the mandatory fail-closed capability rule (Step 1), this provider cannot confidently match an entry in `advisor-capable-providers.json` and therefore treats itself as not advisor-capable. No subagent consultation was executed; all verification relies on fail-first automated test assertions and the orchestrator review gate.
+
+---
+
+### 8.5 Verification Commands and Results
+
+| Command | Result | Notes |
+|---|---|---|
+| `node scripts/dev/plan-status.js check plan-09` | **`RUNNABLE`** | Exit code 0 |
+| `npm test` | **19 passed (19 files, 230 tests passed)** | +16 tests covering recovery dispatch, Item 4 denominator naming, and DOM order parity |
+| `npm run build` | **Passed** | 41 modules transformed, 0 bundle warnings |
+| `node scripts/dev/plan-status.js lint` | **`lint: OK (no violations)`** | Clean frontmatter & indexes |
+| `git status --short` | Clean tree after commit | No unstaged or untracked files |
+
+Requirement 3 remains strictly owner-gated: no deploy, no push, no public-URL claims made. Status verbs belong to the orchestrator and owner.
+
