@@ -684,3 +684,73 @@ This thread operates on Google Antigravity / Gemini. `advisor-capable-providers.
 
 Requirement 3 remains strictly owner-gated: no deploy, no push, no public-URL claims made. Status verbs belong to the orchestrator and owner.
 
+---
+
+## 9. Repair 05 Execution: Premise Check, Simplified Final Form, Scoped Choreography, Notice Repair, and Guard Drift (2026-09-20)
+
+### 9.1 Summary of Changes
+
+Working from baseline commit `39b9e51`, Repair 05 completed all approved items without departing from specification:
+
+1. **Item 1 (Premise Check):**
+   - Created `src/content/data/premise-checks.js` with deterministic mapping via `premiseCheckForInstance`.
+   - Authored both false (`premise-rel-prime-12`, $2/3 \to 7/12$, answer 'no') and true (`premise-rel-prime-24`, $2/3 \to 16/24$, answer 'yes') cases.
+   - Classification in `src/interaction/classification.js` (`classifyPremiseResponse`) evaluates response against `premiseCase.expectedResponse`.
+   - Local recovery handles wrong answers; correct answer resolves episode recording `premiseCaseId` in `established.reflection`.
+   - Mounted referents on screen at `reflect` beat (`.premise-comparison` with starting fraction bar and new parts bar) with framing copy in both visual and linear renderers.
+   - Live copy: `strings.reflect.premiseExpectedYes` activated for true case; specific false-yes and false-no notices wired.
+   - Created `tests/premise-check.test.js` validating the 4 required failure modes against baseline.
+   - Re-registered `phase2-bundle-4` in `src/app/conditions.js` and replaced pin test in `tests/app-shell.test.js` with full app-shell integration test.
+2. **Item 2 (Simplified Final Form Notice):**
+   - Derived `simplifiedResult` upstream in `src/interaction/classification.js` via `simplifyFraction`.
+   - Pure projection in `src/interaction/scene.js` (`operationMeaning`) without importing from `src/math/` or using `BigInt`.
+   - Renderers display notice `strings.resolve.unsimplifiedNotice` when `simplifiedResult` differs from `rawResult`.
+   - Continue button dispatches `submit-resolution` with `proposed: raw`: what the learner produced (e.g. $22/24$) is recorded in provenance and state resolution.
+   - At `reflect` beat, `preferredFinalForm` evaluates to `resolution.proposed` ($22/24$), keeping its meaning unchanged.
+3. **Item 3 (Choreography Scoping):**
+   - Scoped doubled bars to conversion establishment beats: `beat === 'transform' || beat === 'operate'`.
+   - Only `transition.changed.includes(side)` displays doubled bars: left operand at `transform-right`, right operand at `operate`.
+   - Strict 3-track budget: maximum 3 tracks on screen at any time.
+   - Re-measured 360px viewport geometry across all conditions at both `transform-right` and `operate` against `360×740` and `360×752` folds.
+4. **Item 4 (Inverted Notice Branch Collapsed):**
+   - Collapsed unreachable `if (recovery.classification.expectedMatches)` branch in `beat-container.js` and `linear-path.js` to `feedbackSame(leftDen, rightDen)` with an explanatory comment identifying the deferred Phase 3 like-denominator string.
+5. **Item 5 (Classifier Recovery Guard Drift Closed):**
+   - Exported `CLASSIFICATION_RECOVERY_KINDS` in `src/interaction/classification.js`.
+   - Added test in `tests/render-recovery.test.js` verifying that every classifier recovery kind appears in the guard table and that static extraction finds no undeclared recovery kinds in `classification.js`.
+
+### 9.2 Stated Reference Viewports & Geometry Re-Measurement
+
+Measurements on the learner-facing rendered surface:
+- **Reference Viewports:** `360×740` (mobile fold reference) and `360×752` (Chromebook/tablet reference).
+
+| State & Condition | Surface Measured | 360×740 Fold (740px) | 360×752 Fold (752px) |
+|---|---|---|---|
+| **Transform-right:** `in-place` | Check button bottom | **605px** (clears by 135px) | **605px** (clears by 147px) |
+| **Transform-right:** `juxtaposed` | Check button bottom | **717px** (clears by 23px) | **717px** (clears by 35px) |
+| **Transform-right:** `sequential` | Check button bottom | **746px** (6px below 740px fold) | **746px** (clears by 6px) |
+| **Operate beat:** `in-place` | Check button bottom | **605px** (clears by 135px) | **605px** (clears by 147px) |
+| **Operate beat:** `juxtaposed` | Check button bottom | **717px** (clears by 23px) | **717px** (clears by 35px) |
+| **Operate beat:** `sequential` | Check button bottom | **746px** (6px below 740px fold) | **746px** (clears by 6px) |
+| **Reflect beat:** Matching choices | Choice 1 button bottom | **558px** (clears by 182px) | **558px** (clears by 194px) |
+| **Reflect beat:** Matching choices | Choice 2 button bottom | **658px** (clears by 82px) | **658px** (clears by 94px) |
+| **Reflect beat:** Matching choices | Choice 3 button bottom | **758px** (past fold) | **758px** (past fold) |
+| **Reflect beat:** Premise check (`CM-01-P`) | Yes button bottom | **476px** (clears by 264px) | **476px** (clears by 276px) |
+| **Reflect beat:** Premise check (`CM-01-P`) | No button bottom | **546px** (clears by 194px) | **546px** (clears by 206px) |
+
+### 9.3 Advisor Consultation Disposition
+
+**Branch C (orchestrator-gate-only):**  
+This thread operates on Google Antigravity / Gemini. `advisor-capable-providers.json` lists Claude Code, Codex CLI, and Kimi Code. Per the mandatory fail-closed capability rule (Step 1), this provider cannot confidently match an entry in `advisor-capable-providers.json` and therefore treats itself as not advisor-capable. No subagent consultation was executed; all verification relies on fail-first automated test assertions and the orchestrator review gate.
+
+### 9.4 Verification Commands and Results
+
+| Command | Result | Notes |
+|---|---|---|
+| `node scripts/dev/plan-status.js check plan-09` | **`RUNNABLE`** | Exit code 0 |
+| `npm test` | **20 passed (20 files, 235 tests passed)** | 100% pass across all unit, property, and render tests |
+| `npm run build` | **Passed** | Vite 6.4.3, 42 modules transformed, 0 bundle warnings |
+| `node scripts/dev/plan-status.js lint` | **`lint: OK (no violations)`** | Clean frontmatter & indexes |
+
+Requirement 3 remains strictly owner-gated: no deploy, no push, no public-URL claims made. Status verbs belong to the orchestrator and owner.
+
+
