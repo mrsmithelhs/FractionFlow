@@ -90,6 +90,7 @@ describe('Plan 09 app shell and upstream display switcher', () => {
     expect(app.getState().beat).toBe('resolve');
     app.dispatch({ type: 'submit-resolution', proposed: fraction(11, 12) });
     expect(app.getState().beat).toBe('reflect');
+    expect(root.textContent).toContain('Common denominator: 12 — the smallest one.');
     expect(root.textContent).toContain('same amount');
     expect(root.querySelectorAll('.matching-choice-btn')).toHaveLength(3);
     expect(root.querySelectorAll('.matching-choice-bar')).toHaveLength(3);
@@ -124,6 +125,7 @@ describe('Plan 09 app shell and upstream display switcher', () => {
     app.dispatch({ type: 'submit-resolution', proposed: fraction(22, 24) });
 
     expect(app.getState().beat).toBe('reflect');
+    expect(root.textContent).toContain('Common denominator: 24 — both fractions can use it.');
     expect([...root.querySelectorAll('.matching-choice-btn')]
       .map((choice) => choice.getAttribute('aria-label')))
       .toEqual([

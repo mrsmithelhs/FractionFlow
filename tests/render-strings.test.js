@@ -115,6 +115,18 @@ describe('Learner Strings Catalog (src/render/strings.js)', () => {
     expect(message24).not.toContain('12');
   });
 
+  it('DECISION-028: parameterizes milestone lines for least and non-least common denominators', () => {
+    expect(STRINGS.decide.validLeast(12)).toBe('Common denominator: 12 — the smallest one.');
+    expect(STRINGS.decide.validNonLeast(24)).toBe('Common denominator: 24 — both fractions can use it.');
+
+    expect(STRINGS.summaryLines.decideDone(12, 'valid-least'))
+      .toBe('Common denominator: 12 — the smallest one.');
+    expect(STRINGS.summaryLines.decideDone(24, 'valid-non-least'))
+      .toBe('Common denominator: 24 — both fractions can use it.');
+    expect(STRINGS.summaryLines.decideDone(12))
+      .toBe('Common denominator: 12');
+  });
+
   it('Finding 3: notice.feedbackSame is parameterized and does not hardcode canonical thirds or fourths', () => {
     const fn = STRINGS.notice.feedbackSame;
     expect(typeof fn).toBe('function');

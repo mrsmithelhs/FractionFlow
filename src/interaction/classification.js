@@ -15,15 +15,19 @@ import {
 } from '../content/eligibility.js';
 import { fractionToWire, wireToFraction } from '../content/schema.js';
 
-export const CLASSIFICATION_RECOVERY_KINDS = Object.freeze([
-  'denominator-changed-without-numerator',
-  'incorrect-equivalent-numerator',
-  'incorrect-notice',
-  'incorrect-numerator-arithmetic',
-  'incorrect-reflection',
-  'invalid-common-denominator',
-  'invalid-reflection-choice',
-]);
+export const RECOVERY_KINDS = Object.freeze({
+  DENOMINATOR_CHANGED_WITHOUT_NUMERATOR: 'denominator-changed-without-numerator',
+  INCORRECT_EQUIVALENT_NUMERATOR: 'incorrect-equivalent-numerator',
+  INCORRECT_NOTICE: 'incorrect-notice',
+  INCORRECT_NUMERATOR_ARITHMETIC: 'incorrect-numerator-arithmetic',
+  INCORRECT_REFLECTION: 'incorrect-reflection',
+  INVALID_COMMON_DENOMINATOR: 'invalid-common-denominator',
+  INVALID_REFLECTION_CHOICE: 'invalid-reflection-choice',
+});
+
+export const CLASSIFICATION_RECOVERY_KINDS = Object.freeze(
+  Object.values(RECOVERY_KINDS).sort(),
+);
 
 export function fractionFromWire(value, name) {
   try {
@@ -74,7 +78,7 @@ export function classifyNoticeResponse(instance, matchesUnits) {
   if (typeof matchesUnits !== 'boolean') throw new TypeError('notice response must be boolean');
   const expected = instance.classification.denominator.relationship === 'same';
   return {
-    kind: matchesUnits === expected ? 'correct' : 'incorrect-notice',
+    kind: matchesUnits === expected ? 'correct' : RECOVERY_KINDS.INCORRECT_NOTICE,
     expectedMatches: expected,
     matchesUnits,
   };
@@ -86,7 +90,7 @@ export function classifyCommonDenominatorResponse(instance, proposedWire) {
   const validation = validateCommonDenominator(targetDenominator, left, right);
   if (validation.validity !== 'valid') {
     return {
-      kind: 'invalid-common-denominator',
+      kind: RECOVERY_KINDS.INVALID_COMMON_DENOMINATOR,
       validity: validation.validity,
       mathClassification: validation.classification,
       targetDenominator: targetDenominator.toString(),
@@ -129,8 +133,8 @@ export function classifyConversionResponseForEpisode({ instance, targetDenominat
   if (validation.validity !== 'valid') {
     return {
       kind: patterns.hasPattern(PATTERNS.DENOMINATOR_CHANGED_NUMERATOR_FIXED)
-        ? 'denominator-changed-without-numerator'
-        : 'incorrect-equivalent-numerator',
+        ? RECOVERY_KINDS.DENOMINATOR_CHANGED_WITHOUT_NUMERATOR
+        : RECOVERY_KINDS.INCORRECT_EQUIVALENT_NUMERATOR,
       validity: validation.validity,
       mathClassification: 'invalid-equivalent-fraction',
       patterns: [...patterns.patterns],
@@ -179,7 +183,7 @@ export function classifyOperationResponseForEpisode({
     convertedRight: rightForm,
   });
   const kind = validation.validity !== 'valid'
-    ? 'incorrect-numerator-arithmetic'
+    ? RECOVERY_KINDS.INCORRECT_NUMERATOR_ARITHMETIC
     : validation.classification === 'correct-unsimplified'
       ? 'correct-unsimplified'
       : 'correct-simplified';
@@ -232,7 +236,7 @@ export function classifyReflectionResponse({ instance, establishedDenominator, t
   const selected = choices?.find((choice) => choice.id === response);
   if (!selected) {
     return {
-      kind: 'invalid-reflection-choice',
+      kind: RECOVERY_KINDS.INVALID_REFLECTION_CHOICE,
       response,
       continuation: 'local-recovery',
     };
@@ -242,7 +246,7 @@ export function classifyReflectionResponse({ instance, establishedDenominator, t
   const selectedExact = fractionFromWire(selected.form, 'reflection choice');
   const equivalent = equalFractions(selectedExact, target);
   return {
-    kind: equivalent ? 'correct-reflection' : 'incorrect-reflection',
+    kind: equivalent ? 'correct-reflection' : RECOVERY_KINDS.INCORRECT_REFLECTION,
     response,
     targetForm,
     selectedForm: selected.form,
@@ -257,7 +261,7 @@ export function classifyReflectionResponse({ instance, establishedDenominator, t
 export function classifyPremiseResponse({ instance, establishedDenominator, response }) {
   if (response !== 'yes' && response !== 'no') {
     return {
-      kind: 'invalid-reflection-choice',
+      kind: RECOVERY_KINDS.INVALID_REFLECTION_CHOICE,
       response,
       continuation: 'local-recovery',
     };
@@ -265,7 +269,7 @@ export function classifyPremiseResponse({ instance, establishedDenominator, resp
   const premiseCase = premiseCheckForInstance(instance, establishedDenominator);
   if (!premiseCase) {
     return {
-      kind: 'invalid-reflection-choice',
+      kind: RECOVERY_KINDS.INVALID_REFLECTION_CHOICE,
       response,
       continuation: 'local-recovery',
     };
@@ -273,7 +277,7 @@ export function classifyPremiseResponse({ instance, establishedDenominator, resp
 
   const correct = response === premiseCase.expectedResponse;
   return {
-    kind: correct ? 'correct-reflection' : 'incorrect-reflection',
+    kind: correct ? 'correct-reflection' : RECOVERY_KINDS.INCORRECT_REFLECTION,
     response,
     premiseCase,
     continuation: correct ? 'resolved' : 'local-recovery',

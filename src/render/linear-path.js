@@ -142,7 +142,10 @@ export function createLinearPathRenderer({
 
     // Decide
     if (unitRel.commonUnit && currentBeat !== 'encounter' && currentBeat !== 'notice' && currentBeat !== 'decide') {
-      milestones.push(strings.summaryLines.decideDone(unitRel.commonUnit.targetDenominator));
+      milestones.push(strings.summaryLines.decideDone(
+        unitRel.commonUnit.targetDenominator,
+        unitRel.commonUnit.mathClassification,
+      ));
     }
 
     // Transform

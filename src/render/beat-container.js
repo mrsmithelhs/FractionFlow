@@ -112,7 +112,10 @@ export function createBeatContainer({
 
     // Decide completed if common unit is established and past decide
     if (unitRel.commonUnit && currentBeat !== 'encounter' && currentBeat !== 'notice' && currentBeat !== 'decide') {
-      milestones.push(strings.summaryLines.decideDone(unitRel.commonUnit.targetDenominator));
+      milestones.push(strings.summaryLines.decideDone(
+        unitRel.commonUnit.targetDenominator,
+        unitRel.commonUnit.mathClassification,
+      ));
     }
 
     // Transform completed if conversions established and past transform

@@ -434,6 +434,25 @@ track — should leave room for a second whole to appear without restructuring t
 beat, and on whether the answer is presented improper, mixed, or learner's choice. Resolve with real
 screens, and alongside whatever packet first ships crossing content.
 
+### OQ-21 — Authored recovery copy for like-denominator mistake at notice beat
+
+Raised in `plan-09` Repair 05. `src/interaction/classification.js:classifyNoticeResponse` returns
+`kind: 'incorrect-notice'` with `expectedMatches: true` when denominators match (like-denominator
+problem) and the learner mistakenly answers "different sizes". Both authored notice strings in
+`src/render/strings.js` (`feedbackDiff` and `feedbackSame`) currently describe *unlike* denominators
+(e.g. "Look at the parts: one bar has 3 equal parts and one has 4 equal parts").
+
+Phase 2 ships only unlike-denominator curated and generated content, so `expectedMatches: true` is
+unreachable in Phase 2 episodes, and Repair 05 collapsed the renderers' dispatch to the reachable false
+case. When Phase 3 introduces like-denominator problem instances, a learner asserting that parts are
+different when denominators are equal needs specific feedback (e.g. "Look at the parts: both bars have 4
+equal parts. They are already the same size.").
+
+**Phase 2 owes this:** nothing; recorded as a Phase 3 content obligation so it is not lost.
+
+**Needs:** authored pedagogical copy in `strings.notice` for `expectedMatches === true` and test coverage
+in `tests/render-recovery.test.js` when Phase 3 introduces like-denominator practice.
+
 ---
 
 ## Process / workflow

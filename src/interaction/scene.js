@@ -519,6 +519,7 @@ function commonUnitMeaning(state) {
     targetDenominator: commonDenominator.targetDenominator,
     validity: commonDenominator.validity,
     kind: commonDenominator.kind,
+    mathClassification: commonDenominator.mathClassification ?? null,
     rendering: commonDenominator.rendering,
     authoredCoverage: commonDenominator.authoredCoverage,
   };

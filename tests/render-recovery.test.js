@@ -5,7 +5,7 @@ import { createBeatContainer } from '../src/render/beat-container.js';
 import { createLinearPathRenderer } from '../src/render/linear-path.js';
 import { STRINGS } from '../src/render/strings.js';
 import { deepFreeze } from '../src/content/schema.js';
-import { CLASSIFICATION_RECOVERY_KINDS } from '../src/interaction/classification.js';
+import { CLASSIFICATION_RECOVERY_KINDS, RECOVERY_KINDS } from '../src/interaction/classification.js';
 
 describe('Render Recovery Dispatch & Dead-Code Guard (Repair 04, Items 1, 4, 6)', () => {
   let doc;
@@ -261,22 +261,24 @@ describe('Render Recovery Dispatch & Dead-Code Guard (Repair 04, Items 1, 4, 6)'
     expect(linearAlert.textContent).not.toContain('This number');
   });
 
-  it('Item 5: covers every recovery kind emitted by classification.js in the guard table', () => {
+  it('Item 4 & 5: classifiers draw their recovery kinds from RECOVERY_KINDS and are covered by guard table', () => {
     const tableKinds = new Set(recoveryKinds.map((entry) => entry.kind));
     for (const kind of CLASSIFICATION_RECOVERY_KINDS) {
       expect(tableKinds.has(kind)).toBe(true);
     }
     expect(tableKinds.size).toBe(CLASSIFICATION_RECOVERY_KINDS.length);
 
-    // Statically verify that classification.js does not contain undeclared recovery kinds
+    for (const kind of Object.values(RECOVERY_KINDS)) {
+      expect(tableKinds.has(kind)).toBe(true);
+    }
+
+    // Statically verify that classification.js routes all emitted recovery kinds through RECOVERY_KINDS
     const source = readFileSync(new URL('../src/interaction/classification.js', import.meta.url), 'utf8');
-    const matches = new Set(
+    const bareKindLiterals = new Set(
       [...source.matchAll(/(?:kind:\s*|kind\s*=\s*)(?:[^\n;{}]*?\?\s*)?'([a-z-]+)'(?:\s*:\s*'([a-z-]+)')?/g)]
         .flatMap((m) => [m[1], m[2]].filter(Boolean))
         .filter((k) => (k.startsWith('incorrect-') || k.startsWith('invalid-') || k.startsWith('denominator-changed-')) && k !== 'incorrect-resolution'),
     );
-    for (const kind of matches) {
-      expect(tableKinds.has(kind)).toBe(true);
-    }
+    expect(bareKindLiterals.size).toBe(0);
   });
 });

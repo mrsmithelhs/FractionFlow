@@ -43,11 +43,10 @@ export const STRINGS = Object.freeze({
       `${den} is not a common denominator. Try another number.`
     ),
     validNonLeast: (den) => (
-      `${den} works! Both fractions can use this denominator.`
+      `Common denominator: ${den} — both fractions can use it.`
     ),
-    // Condition A: Parameterized by den, never hardcoding the canonical instance.
     validLeast: (den) => (
-      `${den} works! That is the smallest common denominator.`
+      `Common denominator: ${den} — the smallest one.`
     ),
   }),
 
@@ -167,7 +166,15 @@ export const STRINGS = Object.freeze({
   summaryLines: Object.freeze({
     encounterDone: 'Problem established.',
     noticeDone: 'Units do not match.',
-    decideDone: (den) => `Common denominator: ${den}`,
+    decideDone: (den, mathClassification) => {
+      if (mathClassification === 'valid-least') {
+        return STRINGS.decide.validLeast(den);
+      }
+      if (mathClassification === 'valid-non-least') {
+        return STRINGS.decide.validNonLeast(den);
+      }
+      return `Common denominator: ${den}`;
+    },
     transformDone: (side, initial, converted) => (
       `${side === 'left' ? 'First' : 'Second'} fraction: ${initial} = ${converted}`
     ),
