@@ -4,8 +4,7 @@
 - **Raised by:** owner decision on the replay button's promise; the standing `decide`-confirmation
   question; two observations from the Repair 05 review
 - **Status:** drafted. Work from the accepted Repair 05 (`f25bdd1`) or later.
-- **Gate:** mechanism confirmation for Item 1 only. Item 2 is pending an owner confirmation noted
-  below. Items 3–4 need no gate.
+- **Gate:** mechanism confirmation for Item 1 only. Items 2–4 need no gate.
 
 Intended as the last repair before the owner gate.
 
@@ -52,10 +51,9 @@ Required in the proposal:
 **Stop and report** if this needs a new beat, or if it cannot be done without putting history into the
 scene.
 
-## Item 2 — Confirm a correct denominator choice (pending owner confirmation)
+## Item 2 — Confirm a correct denominator choice
 
-**This item is not authorized yet.** The orchestrator recommended it and the owner has not confirmed.
-Do not implement it until the handoff says so explicitly.
+**Authorized by the owner, 2026-09-20 (DECISION-028).**
 
 A correct denominator choice currently advances in silence. The learner does get a ✓ milestone reading
 "Common denominator: 12", so this is not nothing — but `strings.decide.validLeast` and `validNonLeast`
@@ -108,9 +106,8 @@ hardening, not a defect.
 - [ ] No replay history enters the scene.
 - [ ] 360px measured under all three conditions at every beat where replay can be triggered, reported
       against a stated viewport height.
-- [ ] Item 2 implemented **only if** the handoff authorizes it; if authorized, the milestone line
-      names least versus non-least, the renderer computes nothing, and `validLeast` / `validNonLeast`
-      are reachable.
+- [ ] The milestone line names least versus non-least, the renderer computes nothing, and
+      `validLeast` / `validNonLeast` are reachable.
 - [ ] The deferred like-denominator string is recorded in a durable document, not only in a comment.
 - [ ] `npm test`, `npm run build`, `node scripts/dev/plan-status.js lint` pass; tree clean.
 - [ ] No deploy, no push, no public-URL claim.

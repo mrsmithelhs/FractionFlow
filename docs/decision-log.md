@@ -620,6 +620,68 @@ reports what happened mathematically and does not claim knowledge of the learner
 the `D-05` check-the-premise recommendation; related to DECISION-005 and `05-quality-and-validation.md`
 §16.
 
+### DECISION-027 - The replay control is built, not removed or relabelled
+
+**Date:** 2026-09-20
+
+**Decision:** "Replay the last change" re-presents the most recently established transition using the
+active design condition's treatment. It is a re-display and changes no mathematical or instructional
+state. It is not removed, and it is not relabelled to describe the sentence it currently prints.
+
+**Rationale:** `plan-09` review found the control inert — it appends to `replayHistory` and
+`supportHistory`, prints one sentence, and changes nothing visible. Its only state effect feeds
+`evidenceCategory`'s `independent-transfer` branch, which also requires `support.label ===
+'independent'`, never true while support is pinned at `high support`.
+
+Two facts decided this. `02-interaction-grammar.md` §38, "Replay Should Be Available for Important
+Transformations," names *equivalent-fraction subdivision* as its first candidate — precisely this
+episode — and requires replay to be secondary and unobtrusive, which the footer placement satisfies.
+Removing the control would therefore have been a deviation from a founding document, not a free
+simplification.
+
+And the architectural objection dissolved on inspection. Replay does not need `replayHistory`, which
+`SCENE_HISTORY_KEYS` rightly forbids in the scene. It needs to re-present `transition.pre` and
+`transition.post`, which the scene has projected since `plan-06` and which both renderers learned to
+consume in Repairs 03 and 05. The control is cheap now because that work already happened.
+
+Under the "New parts only" condition, replay is the only way a learner sees the before state at all,
+so the control earns its place rather than duplicating what is already on screen.
+
+**Supersedes / related:** implements `02-interaction-grammar.md` §38; depends on the transition
+contract from `plan-06` and its consumption in `plan-09` Repairs 03 and 05; related to DECISION-014.
+
+### DECISION-028 - A correct common denominator is acknowledged in the milestone line
+
+**Date:** 2026-09-20
+
+**Decision:** A valid common-denominator choice is acknowledged by parameterizing the existing
+completed-beat milestone line, not by adding a control, a beat, or a new element:
+
+- least: "Common denominator: 12 — the smallest one."
+- valid but not least: "Common denominator: 24 — both fractions can use it."
+
+The non-least form does not mention that a smaller denominator exists.
+
+**Rationale:** The app gave targeted feedback on wrong answers and nothing but a checkmark on right
+ones, and `strings.decide.validLeast` and `validNonLeast` were authored but unreachable. What they add
+beyond the checkmark is mathematical: that the chosen denominator is the *smallest*, which is the LCD
+concept named at the moment the learner earns it.
+
+The milestone slot was chosen over a confirmation message at the beat because `decide` has the
+tightest vertical budget in the episode, three repairs were spent reclaiming that space, and
+DECISION-021 criterion 1 blocks acceptance on chrome that competes with the current question. Folding
+the acknowledgement into a line that already exists costs nothing.
+
+The non-least wording is deliberate. Both routes are mathematically valid and the episode supports
+both; a learner who chooses 24 is not making a mistake and is not told they made one.
+
+No mathematics moves into the renderer. `src/math/validation.js` already computes
+`classification: 'valid-least' | 'valid-non-least'` and the instructional layer captures it; only the
+scene projection was missing.
+
+**Supersedes / related:** makes `strings.decide.validLeast` and `validNonLeast` reachable; constrained
+by DECISION-021 criterion 1 and DECISION-004; related to DECISION-011.
+
 ## Proposed but not yet accepted
 
 Use the same `**Date:** YYYY-MM-DD` field for proposals, using the proposal date.
