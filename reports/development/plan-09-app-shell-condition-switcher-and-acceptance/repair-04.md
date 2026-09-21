@@ -3,16 +3,46 @@
 - **Packet:** `plan-09` — App Shell, Condition Switcher, and Phase 2 Acceptance
 - **Date:** 2026-09-20
 - **Raised by:** `specification-gap-scan.md`, verified independently in `specification-gap-scan-review.md`
-- **Status:** drafted. **Blocked on Repair 03 landing and being accepted.**
-- **Gate:** mechanism confirmation for Item 2 only. Items 1 and 3–6 need no gate.
+- **Status:** **unblocked** — Repair 03 landed at `f92ffb5` and its Item 1 is accepted.
+- **Gate:** mechanism confirmation for Items 0 and 2. Items 1 and 3–6 need no gate.
 
-## Sequencing — read this first
+## Sequencing
 
-**Do not start this repair until Repair 03 is accepted.** Both touch `src/render/beat-container.js`,
-`src/render/linear-path.js`, `src/interaction/scene.js`, and `src/render/strings.js`, and Repair 03's
-approved mechanism changes the scene's presentation contract. Rebase onto the accepted Repair 03 and
-re-read these items against it — Item 3 in particular may already be resolved by Repair 03's work, in
-which case say so and skip it rather than re-doing it.
+Repair 03 has landed. Work from `f92ffb5` onward. Re-read each item against it before starting —
+Item 3 in particular may already be resolved, in which case say so and skip it rather than re-doing
+it.
+
+## Item 0 — The premise check accepts both answers (mechanism gate)
+
+Carried from the Repair 03 review. `phase2-bundle-4` made the `CM-01-P` form reachable, and the form
+still checks nothing: `handleReflect` (`episode.js:475-481`) records the response and returns
+`assessedSuccess` unconditionally. Demonstrated in the browser — answering "Yes, it is the same
+amount" completes the episode, and answering "No, the amount changed," which is factually wrong for
+`2/3 = 8/12`, also completes it. No recovery either way. `premiseFalseYesNotice` and
+`premiseExpectedNo` are dead.
+
+Two things are missing, and the second is the one that was never asked for:
+
+1. **Classification.** The premise response must be classified against the mathematics in the
+   interaction layer, the same way `classifyReflectionResponse` handles matching, with local recovery
+   on a wrong answer.
+2. **Content in which the premise is false.** Every renaming in the canonical fixture is a correct
+   equivalence, so "Does this show the same amount?" always answers *yes* — the reassuring answer.
+   DECISION-026 requires a case where the habitual answer is wrong, which means an authored
+   **incorrect** renaming presented for the learner to reject. The existing strings already
+   presuppose it: `premiseExpectedNo` reads "Good eye! The amount changed."
+
+Required in the proposal:
+
+- Where the incorrect renaming is authored, and how it is marked as content rather than computed.
+  It must not be generated in `src/render/` or derived in a renderer.
+- How the learner encounters it without it reading as the app making a mistake. A premise check that
+  looks like a bug is worse than none.
+- Whether this needs a new beat. **If it does, stop and report** — that is a packet, not a repair.
+- How the replay envelope records which premise case the learner met.
+
+Constraint: a premise check whose answer is always the reassuring one does not satisfy DECISION-026,
+so "add classification" alone is not a complete answer to this item.
 
 ## Item 1 — Recovery feedback never reaches the learner
 
@@ -143,8 +173,11 @@ next one.
 
 ## Acceptance checks
 
-- [ ] Repair 03 accepted and this work rebased on it.
-- [ ] Mechanism proposal for Item 2 reported and approved before implementation.
+- [ ] Work based on `f92ffb5` or later; items already resolved by Repair 03 reported as skipped.
+- [ ] Mechanism proposals for Items 0 and 2 reported and approved before implementation.
+- [ ] A premise check exists whose correct answer is **not** the reassuring one, reachable in a
+      browser by a stated sequence; answering the reassuring way produces local recovery rather than
+      completion, demonstrated by a test that fails against current code.
 - [ ] Every recovery kind the interaction layer produces renders a specific authored message; the
       three never-produced branches are deleted.
 - [ ] No renaming in `src/interaction/`; no renderer computes a simplification.
