@@ -1077,6 +1077,76 @@ This thread operates on Google Antigravity / Gemini. Per `advisor-capable-provid
 
 Requirement 3 remains strictly owner-gated: no deploy, no push, no public-URL claims made. Status verbs belong to the orchestrator and owner.
 
+---
+
+## 13. Inspection Mode Focus Restoration Fix (Final Defect Resolved)
+
+- **Date:** 2026-09-21
+- **Base Commit:** `b29c35b`
+- **Implementation Commit:** `9273fa8`
+- **Scope:** Resolve remaining Inspection Mode focus restoration defect identified in `repair-07-review.md`.
+
+### 13.1 Root Cause & Solution
+
+- **Root Cause:** In `src/render/beat-container.js` and `src/render/linear-path.js`, `previousFocusRef` was captured *inside* `case 'reflect'` after `activeBeatEl.replaceChildren()` had already stripped the focused choice button from the document. By the time `document.activeElement` was inspected, it had already dropped to `document.body`, causing `rootEl.contains(document.activeElement)` to evaluate to `false`. `previousFocusRef` remained `null`, and the exit restoration branch was never entered, leaving focus on `BODY`.
+- **Solution:**
+  1. **Capture Before Unmount:** In both `src/render/beat-container.js` and `src/render/linear-path.js`, capture `previousFocusRef` before calling `activeBeatEl.replaceChildren()` specifically when entering Inspection Mode (`isInspection && !previousFocusRef && rootEl.contains(document.activeElement)`).
+  2. **View Visibility Guard (`isElementVisible`):** Since both `visualRenderer` and `linearRenderer` update concurrently within the app shell, added `isElementVisible(rootEl)` guards to ensure that hidden renderers do not steal focus during deferred focus updates.
+  3. **Safe Control Fallback:** Retained the `elToFocus.isConnected` check and the first-control fallback on the exit path, safely focusing the newly mounted choice button when the previous instance was unmounted.
+  4. **DOM Mock Realism:** Enhanced `tests/fixtures/mock-dom.js` to implement `get isConnected()` and support comma-separated selector lists (`'button, input'`) in `querySelector` and `querySelectorAll`.
+
+### 13.2 Failing-First Test Evidence
+
+Added test in `tests/app-shell.test.js`:
+- Tested against base commit `b29c35b`: Fails with:
+  ```
+  FAIL tests/app-shell.test.js > Plan 09 app shell and upstream display switcher > restores focus to reflection choices upon exiting Inspection Mode in visual and linear paths
+  AssertionError: expected 'BODY' to be 'BUTTON' // Object.is equality
+
+  Expected: "BUTTON"
+  Received: "BODY"
+  ```
+- Tested after fix: Passes cleanly across both visual and linear paths.
+
+### 13.3 Verbatim Focus Captures Across Both Paths
+
+Captured from live execution of the running application:
+```
+--- Visual Path ---
+before replay:         BUTTON.fraction-control.matching-choice-btn.control-choice-btn
+during replay:         BUTTON.fraction-control.app-done-looking-button
+after Done looking:    BUTTON.fraction-control.matching-choice-btn.control-choice-btn
+
+--- Linear Path ---
+before replay:         BUTTON.fraction-control.control-choice-btn
+during replay:         BUTTON.fraction-control.app-done-looking-button
+after Done looking:    BUTTON.fraction-control.control-choice-btn
+```
+
+### 13.4 Conditions A, C, and D Status
+
+- **Condition A (No Auto-Advance):** No timers or auto-advance mechanisms introduced.
+- **Condition C (Currency Contract):** `isReplaying` remains validated in `scene.presentation` and verified by `assertSceneCurrent`.
+- **Condition D (Leakage Suite & Inspection Unmounting):** Full leakage test suite (`tests/leakage-invariants.test.js`) ran and passed 100% (10 tests passed in 247ms) against replaying and non-replaying reflect scenes.
+
+### 13.5 Advisor Consultation Disposition
+
+**Branch C (orchestrator-gate-only):**  
+This thread operates on Google Antigravity / Gemini. Per `advisor-capable-providers.json` and the mandatory fail-closed capability rule (Step 1), this provider cannot confidently match an entry in `advisor-capable-providers.json` and therefore treats itself as not advisor-capable. No subagent consultation was executed; verification relies strictly on fail-first automated test assertions and the orchestrator review gate.
+
+### 13.6 Verification Commands and Results
+
+| Command | Result | Notes |
+|---|---|---|
+| `node scripts/dev/plan-status.js check plan-09` | **`RUNNABLE`** | Exit code 0 |
+| `npm test` | **20 passed (20 files, 244 tests passed)** | 100% pass across all unit, property, and render tests (+1 new test) |
+| `npm run build` | **Passed** | Vite 6.4.3, 42 modules transformed, 0 bundle warnings |
+| `node scripts/dev/plan-status.js lint` | **`lint: OK (no violations)`** | Clean frontmatter & indexes |
+| `git status --short` | Clean working tree | Staged by explicit path |
+
+Requirement 3 remains strictly owner-gated: no deploy, no push, no public-URL claims made. Status verbs belong to the orchestrator and owner.
+
+
 
 
 
