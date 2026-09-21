@@ -55,14 +55,20 @@ name.
   after "Done looking": BUTTON.control-choice-btn
   ```
 
+### Reduced motion, at the public URL
+
+Exercised by the owner on 2026-09-21 with the OS motion preference set, Chrome on Windows. Result:
+same behavior, same reachable states, nothing lost.
+
+Stated precisely, because the result is true and cheap: there is no motion in the standard path
+either. `D-01-A` animated subdivision was never built, which is why bundle 1 is labelled *New parts
+only*. In the owner's words — *"there was no motion to see before, there still isn't, but the app does
+the same thing."* Parity holds; it should be re-exercised when `plan-10` adds animation, because that
+is when the criterion acquires teeth.
+
 ## Not covered
 
-- **The reduced-motion path at the public URL.** `matchMedia('(prefers-reduced-motion: reduce)')`
-  reported `false` in every session driven here, and neither the browser pane nor the owner's pass set
-  the OS preference. The reduced-motion presentation was verified locally at `b90084b` — the replay
-  acknowledgement is static styling plus a text change, with no dependence on the suppressed pulse —
-  but that is a local verification, not a deployed exercise. It is the one named Requirement 3
-  coverage item outstanding.
+- **Reduced motion:** covered — see the section above.
 - **Screen readers.** No assistive technology was run against the deployed slice. Semantics were
   inspected; announcement behavior in a real screen reader is untested.
 - **Touch hardware.** Non-drag touch parity was verified structurally and by emulation, not on a
