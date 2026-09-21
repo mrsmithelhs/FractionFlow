@@ -377,3 +377,132 @@ within scope before the implementation commit.
 
 The packet status and exit gate remain unchanged and owner/orchestrator-controlled. The next
 authority-bearing step is orchestrator/owner review, not an automatic status advance.
+
+## 11. Repair 03 disposition
+
+Repair 03 was implemented following the approved mechanism proposal (`repair-03-mechanism-approval.md`)
+and owner direction on Item 2 (Option A with gear menu relabeling). Repairs 01 and 02 remain accepted
+and were not revisited. The support ladder, Requirement 3 (deploy, push, public URL), and mixed-number
+rendering remain strictly untouched and outside this repair.
+
+### Changed files
+
+- `src/app/conditions.js` — registered `phase2-bundle-4` (`connectionMaking: 'CM-01-P'`).
+- `src/render/strings.js` — relabeled menu heading to "Display and check options", added parameterized
+  Grade 2–3 transition strings (`beforeLabel`, `afterLabel`, `step1Label`, `step2Label`,
+  `stepConnector`, `beforeAria`, `afterAria`, `step1Aria`, `step2Aria`, `linearJuxtaposed`,
+  `linearSequential`).
+- `src/interaction/scene.js` — projects `scene.presentation.choreography` (`in-place`, `juxtaposed`,
+  `sequential`) derived upstream from `state.activeCondition`, and sets `connectionForm`
+  (`matching` | `premise`) on `taskMeaning`.
+- `src/render/fraction-bar.js` — purely presentation-driven renderer that consumes
+  `scene.presentation.choreography` during the `transform` beat when transitioning, rendering
+  juxtaposed or sequential layouts, and returning to compact single bars at all other times. Computes
+  zero math and contains zero reads of `condition.*`.
+- `src/render/linear-path.js` — consumes `scene.presentation.choreography` for linear juxtaposed and
+  sequential phrasing, and reads `scene.meaning.currentTask.connectionForm === 'premise'`. Zero reads of
+  `condition.*`.
+- `src/render/beat-container.js` — reads `scene.meaning.currentTask.connectionForm === 'premise'` directly.
+  Zero reads of `condition.*`.
+- `src/styles/render.css` — adds CSS layout and component rules for `.fraction-bar-juxtaposed`,
+  `.fraction-bar-sequential`, `.fraction-bar-step-card`, `.fraction-bar-step-connector`, etc.
+- `src/app/styles.css` — provides a distinct high-contrast visual styling for selected gear menu options
+  (`.app-display-option[aria-pressed="true"]`) separate from `:hover`.
+- `src/app/app.js` — adds Escape key and click-outside dismissal to the gear menu, restoring focus to
+  the gear button on Escape.
+- `src/content/data/reflection-choices.js` — reorders the 24ths route reflection set to
+  `[15/24, 16/24, 17/24]`, placing the correct choice (`match-a`, `16/24`) at index 1.
+- `tests/content-curated.test.js` — asserts that authored reflection choice sets do not all place the
+  correct choice at index 0.
+- `tests/leakage-invariants.test.js` — updates Leakage Invariant 6 to assert mutual indistinguishability
+  across choice controls (both class lists and attribute-name sets), with a real-output fail-first
+  demonstration.
+- `tests/fixtures/mock-dom.js` — adds `Symbol.iterator` on `MockClassList`, `getAttributeNames()`,
+  `contains()`, `innerHTML`, and `outerHTML` on `MockElement`.
+- `tests/app-shell.test.js` — adds tests verifying distinct rendered output across conditions during the
+  `transform` beat, reachability of `phase2-bundle-4` with the premise check at `reflect`, and
+  Escape/click-outside dismissal of the gear menu.
+
+### Acceptance checklist evidence
+
+| Repair 03 check | Evidence-bounded disposition |
+|---|---|
+| Mechanism proposals for Items 1 and 2 reported and approved before implementation | **Pass.** The mechanism proposal was submitted and reviewed in `reports/development/plan-09-app-shell-condition-switcher-and-acceptance/repair-03-mechanism-approval.md`. Item 1 was approved with 4 conditions. Item 2 was unblocked by the owner selecting Option A plus the menu relabel. |
+| Three registered conditions produce **visibly different** rendered output at same beat and state | **Pass.** At the `transform` beat after left conversion: `phase2-bundle-1` renders a single track with `.subdivided`; `phase2-bundle-2` renders `.fraction-bar-juxtaposed` with "Before: 2/3" and "After: 8/12" parallel tracks; `phase2-bundle-3` renders `.fraction-bar-sequential` with "Step 1: Start with 2/3" card, "Split into 12 parts" connector, and "Step 2: New parts 8/12" card. In `tests/app-shell.test.js`, rendered HTML is asserted non-identical (`inPlaceHtml !== juxtaposedHtml !== sequentialHtml`). |
+| No `src/render/` module reads `condition.*`; choreography arrives via `scene.presentation` | **Pass.** A full codebase grep confirms 0 occurrences of `condition` or `activeCondition` in `src/render/`. Choreography directives (`in-place`, `juxtaposed`, `sequential`) arrive purely via `scene.presentation.choreography`. Reflection form arrives via `scene.meaning.currentTask.connectionForm`. |
+| Reduced motion reaches same post-state under all three treatments | **Pass.** Under `prefers-reduced-motion: reduce`, all three treatments render identical post-state partitions and values instantly, with `.reduced-motion` classes applied and CSS transitions/animations disabled. Tested in `tests/app-shell.test.js`. |
+| Learner can reach a connection-making check whose reassuring answer is wrong | **Pass.** Registered as `phase2-bundle-4` (`CM-01-P`). **Browser walk:** A reviewer opens the footer gear menu, selects "Check the premise", and completes the episode through to `reflect`. The learner is presented with "Does this new fraction show the same amount as before?" with options "Yes, it is the same amount" and "No, the amount changed". |
+| Correct matching form is not at index 0 in every authored set | **Pass.** In `src/content/data/reflection-choices.js`, the 24ths set authors `[15/24, 16/24, 17/24]`, placing the correct choice (`match-a`, `16/24`) at index 1. `tests/content-curated.test.js` dynamically asserts that not all sets have the correct choice at index 0. |
+| Invariant 6 asserts choice controls are mutually indistinguishable with fail-first on real output | **Pass.** `assertResolveReflectNoLeak()` in `tests/leakage-invariants.test.js` asserts identical class lists and identical attribute-name sets across all matching buttons. Demonstrated failing-first by mutating a real rendered choice control (`btn.classList.add('leak-marker')` and `btn.setAttribute('data-correct', 'true')`). |
+| Selected menu option visually distinct from hovered; Escape and click-outside dismiss menu | **Pass.** `.app-display-option[aria-pressed="true"]` has a distinct high-contrast background and left indicator border separate from `:hover` in `src/app/styles.css`. Keyboard listener for Escape and window listener for click-outside dismiss the menu and restore focus to the gear button. Tested in `tests/app-shell.test.js`. |
+| Segment widths reported at denominators 12, 24, 30 at both 320px and 360px | **Pass; measurements reported below.** At 360px: d=12: **16.83px**, d=24: **8.42px**, d=30: **6.73px**. At 320px: d=12: **13.50px**, d=24: **6.75px**, d=30: **5.40px**. At 320px with denominator 30, segment width drops below the ~6px floor. As required by Item 6, we report that choosing a denominator threshold to suppress internal segment dividers requires an owner decision. No control was shrunk and the LCD was not capped. |
+| Re-measured at 360px at reflect beat: first-bar top, current-question top, fold clearance | **Pass with explicit viewport heights reported.** At 360×740: first-bar top **109px** (14.7%), current question top **355.78px**, choices end at **558px**, **658px**, **758px** (**2 of 3** clear fold). At 360×752: first-bar top **109px** (14.5%), current question top **355.78px**, **2 of 3** clear fold (choice 3 bottom is 758px). Under bundle-4 (premise check): choices end at **476px** and **546px** (**2 of 2 / 100%** clear both 740px and 752px folds). |
+| No horizontal page overflow at 320px or 360px | **Pass.** At 360px: `clientWidth=360`, `scrollWidth=360`, `bodyScrollWidth=344`. At 320px: `clientWidth=320`, `scrollWidth=320`, `bodyScrollWidth=304`. Zero horizontal overflow. |
+| `npm test`, `npm run build`, `node scripts/dev/plan-status.js lint` pass; tree clean | **Pass.** Full test suite passes (18 files, 214 tests). Build succeeds (Vite 6.4.3, 41 modules). Lint reports OK (0 violations). `git diff --check` passes cleanly. |
+| No deploy, no push, no public-URL claim | **Pass.** No deployment, push, or public URL claim is made. Requirement 3 remains untouched and owner-gated. |
+
+### Detailed Item 1 Evidence (Four Approval Conditions)
+
+1. **Condition A — Layout target held under all treatments:**
+   Doubled bars are strictly scoped to the `transform` beat (Condition B). At the `reflect` beat, all conditions render compact single bars; first-bar top is 109px (14.7% of 740px) and current question top is 355.78px. Under bundle-4 (premise check), choices end at 476px and 546px (100% clear fold). Under matching (bundles 1–3), choices end at 558px, 658px, 758px (2 of 3 clear 740px fold).
+   During the `transform` beat at 360px:
+   - `phase2-bundle-1` (in-place): question bottom is at **608.2px** (clears 740px fold by 131.8px).
+   - `phase2-bundle-2` (juxtaposed): question bottom is at **645.2px** (clears 740px fold by 94.8px).
+   - `phase2-bundle-3` (sequential): question bottom is at **693.2px** (clears 740px fold by 46.8px).
+   All treatments keep the prompt and active input controls comfortably above the fold at 360px.
+
+2. **Condition B — Scoping of doubled bars:**
+   Doubled bars apply strictly when `scene.meaning.currentTask?.beat === 'transform'` and `scene.meaning.transition?.changed?.includes(side)`. On all subsequent beats (`operate`, `resolve`, `reflect`), the episode returns to compact single bars with `currentForm`. This protects the fold clearance on later beats and prevents leaking the equivalent form during reflection.
+
+3. **Condition C — Copy in `strings.js` at Grade 2–3 reading level:**
+   All new copy resides in `src/render/strings.js`, parameterized, with zero inline string literals in renderers. Phrasing strictly adheres to Grade 2–3 reading level ("Before: 2/3", "After: 8/12", "Step 1: Start with 2/3", "Split into 12 parts", "Step 2: New parts 8/12"). No speculative specification jargon like "Equivalent form" was used.
+
+4. **Condition D — Distinguishability of Juxtaposed and Sequential:**
+   - `juxtaposed` (bundle 2) renders an aligned direct comparison: two stacked parallel bars sharing exact scale and horizontal alignment with simple `Before` / `After` labels, designed for direct length comparison.
+   - `sequential` (bundle 3) renders a procedural workflow progression: two styled step cards (`Step 1: Start with 2/3`, `Step 2: New parts 8/12`) connected by a prominent directional action bridge badge (`↓ Split into 12 parts`).
+   They are visually and structurally distinct in DOM hierarchy, class names, copy, and layout.
+
+### Detailed Item 6 Measurements (Segment Widths & Viewports)
+
+Measured in headless Microsoft Edge via Chrome DevTools Protocol (`Emulation.setDeviceMetricsOverride`):
+
+| Metric | Viewport 320px | Viewport 360px |
+|---|---|---|
+| Track outer width | 166px | 206px |
+| Track inner width | 162px | 202px |
+| Segment width at denominator 12 | **13.50px** | **16.83px** |
+| Segment width at denominator 24 | **6.75px** | **8.42px** |
+| Segment width at denominator 30 | **5.40px** | **6.73px** |
+| Document scrollWidth vs clientWidth | 320 / 320 | 360 / 360 |
+| Body / App scrollWidth | 304px | 344px |
+
+At 320px width, denominator 30 produces a segment width of 5.40px, falling below the ~6px threshold. As instructed by Repair 03 Item 6, we report that choosing a threshold to suppress internal segment dividers is an instructional/pedagogical decision requiring an owner decision. No controls were shrunk and the LCD was not capped.
+
+### Reflect-Beat Geometry (Viewport Heights 740px vs 752px)
+
+| Metric | Condition 1 (In-Place) | Condition 2 (Juxtaposed) | Condition 3 (Sequential) | Condition 4 (Premise) |
+|---|---|---|---|---|
+| First bar top (px / %) | 109px (14.7% of 740 / 14.5% of 752) | 109px (14.7% / 14.5%) | 109px (14.7% / 14.5%) | 109px (14.7% / 14.5%) |
+| Current question section top | 355.78px | 355.78px | 355.78px | 278.78px |
+| Choice 1 bottom | 558.03px (clears) | 558.03px (clears) | 558.03px (clears) | 476.22px (clears) |
+| Choice 2 bottom | 658.03px (clears) | 658.03px (clears) | 658.03px (clears) | 546.22px (clears) |
+| Choice 3 bottom | 758.03px (past 740/752) | 758.03px (past 740/752) | 758.03px (past 740/752) | N/A (2 choices) |
+| Choices clearing 740px fold | **2 of 3** | **2 of 3** | **2 of 3** | **2 of 2 (100%)** |
+| Choices clearing 752px fold | **2 of 3** | **2 of 3** | **2 of 3** | **2 of 2 (100%)** |
+
+### Advisor consultation disposition
+
+Branch C (orchestrator-gate-only) was used for Repair 03. This thread matches no provider in `advisor-capable-providers.json`, and per the fail-closed governance rule, no higher-tier consultation could run. All verification was conducted through the orchestrator approval gate, property assertions, and independent headless browser metrics.
+
+### Repair 03 verification commands
+
+| Check | Result |
+|---|---|
+| `node scripts/dev/plan-status.js check plan-09` | `RUNNABLE` preflight result |
+| `npm test` | **18 files, 214 tests passed** |
+| `npm run build` | **Passed**; Vite 6.4.3, 41 modules transformed in 456ms |
+| `node scripts/dev/plan-status.js lint` | **Passed**: `lint: OK (no violations)` |
+| `git diff --check` | **Passed**; clean diff |
+| Headless browser metrics | **Passed**; measurements recorded above |
+
+The packet status and exit gate remain unchanged and owner/orchestrator-controlled. The next authority-bearing step is orchestrator/owner review, not an automatic status advance.
