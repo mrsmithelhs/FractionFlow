@@ -847,5 +847,87 @@ This thread operates on Google Antigravity / Gemini. `advisor-capable-providers.
 
 Requirement 3 remains strictly owner-gated: no deploy, no push, no public-URL claims made. Status verbs belong to the orchestrator and owner.
 
+---
+
+## 11. Repair 06 Implementation — Making Replay Real (Items 1–4 Complete)
+
+- **Date:** 2026-09-21
+- **Base Commit:** `755445f`
+- **Scope:** Item 1 implemented per approved mechanism proposal and review conditions A–D. Items 2–4 accepted per `repair-06-review.md`.
+
+### 11.1 Implementation of Conditions A–D
+
+1. **Condition A (Zero Auto-Advance in Every Motion Mode):**
+   - Endpoints remain inspectable indefinitely without timers across standard motion, reduced motion, and instant-test modes (DECISION-021 criterion 4).
+   - Under *New parts only* (`in-place`, `D-02-M`), triggering replay mounts the starting fraction track with an explicit badge (*"Starting parts: 2/3"*) and a "Show new parts" toggle button (`.fraction-bar-toggle-btn`).
+   - Zero `setTimeout` or automatic delays. Clicking "Show new parts" dispatches `{ type: 'dismiss-replay' }`, returning to new parts ($8/12$).
+2. **Condition B (Focus Preservation & Calm Styling):**
+   - Replay does not steal focus or displace the learner's typing caret during interactive beats (`transform`, `operate`).
+   - Standard motion pulses (`@keyframes replay-pulse` on `.replay-active`) are strictly suppressed under `@media (prefers-reduced-motion: reduce)` and `[data-presentation-mode="reduced-motion"]`.
+   - In Inspection Mode at `reflect`, `previousFocusRef` saves `document.activeElement`, focus moves deliberately to "Done looking", and on exit focus is cleanly restored.
+3. **Condition C (`assertSceneCurrent` Currency Contract):**
+   - `src/interaction/scene.js:sourceContext()` includes `isReplaying: Boolean(isReplaying)` in its canonical projection digest.
+   - `assertSceneCurrent(sceneResult, { state, representationRole, presentationMode, isReplaying })` verifies currency across replay states, throwing `STALE_SCENE` on any mismatch.
+   - Verified bidirectional staleness detection, currency passing, and JSON round-trip admission in `tests/interaction-scene.test.js`.
+4. **Condition D (Leakage Invariant 6b & Inspection Mode):**
+   - At `reflect`, Inspection Mode genuinely unmounts reflection choices (`controlsContainer.replaceChildren(card)`), leaving zero choice buttons in the DOM (DECISION-014).
+   - Upon exiting Inspection Mode, choices remount in identical order, unselected, with no leaked indicators.
+   - Fail-first verified in `tests/leakage-invariants.test.js` (`Invariant 6b / Condition D`).
+
+### 11.2 Live Captured DOM Outputs
+
+- **Condition 1 (New parts only / in-place / `D-02-M`):**
+  - *Before:* Left bar shows 8/12 subdivided parts only; starting 2/3 hidden. `in-place` replay card absent; `aria-pressed="false"`.
+  - *During:* Shows Starting parts: 2/3 with "Show new parts" toggle button; `in-place` replay card present; `aria-pressed="true"`.
+- **Condition 2 (Compare / juxtaposed / `D-02-J`):**
+  - *Before:* Shows Before (2/3) and After (8/12) tracks; `.replay-active` absent; `aria-pressed="false"`.
+  - *During:* Adds `.replay-active` to active comparison card (pulse in standard motion, suppressed in reduced motion); `aria-pressed="true"`.
+- **Condition 3 (Steps / sequential / `D-02-S`):**
+  - *Before:* Shows Step 1 (2/3), connector, and Step 2 (8/12); `.replay-active` absent; `aria-pressed="false"`.
+  - *During:* Adds `.replay-active` to active sequential card; `aria-pressed="true"`.
+- **Reflect Beat (Inspection Mode):**
+  - *Before:* Prompt "Tap the bar that shows the same amount as 2/3."; 3 choices mounted; inspection card absent.
+  - *During:* Prompt "Looking back at the last change:"; 0 choices in DOM (genuinely unmounted); `.replay-inspection-card` with "Done looking" button present; focus moved to "Done looking".
+  - *After:* Choices remounted in original order; inspection card absent; focus restored.
+
+### 11.3 360px Viewport Cost Across All Beats and Conditions
+
+| Beat & Condition | Active Control Surface | Resting Height (Bottom) | During Replay Height (Bottom) | Fold Clearance (740px / 752px) |
+|---|---|---|---|---|
+| **Notice & Decide** (all conditions) | Choice / Input buttons | 476px – 530px | **Unchanged** (no transition) | Clears by ≥210px / ≥222px |
+| **Transform-left** (all conditions) | Numerator Check button | 605px | **Unchanged** (no transition yet) | Clears by 135px / 147px |
+| **Transform-right: in-place** | Numerator Check button | 605px | **605px** (in-place track) | Clears by 135px / 147px |
+| **Transform-right: juxtaposed** | Numerator Check button | 717px | **717px** (already juxtaposed) | Clears by 23px / 35px |
+| **Transform-right: sequential** | Numerator Check button | 746px | **746px** (already sequential) | 6px past 740px / Clears 752px by 6px |
+| **Operate: in-place** | Numerator Check button | 605px | **605px** (in-place track) | Clears by 135px / 147px |
+| **Operate: juxtaposed** | Numerator Check button | 717px | **717px** (already juxtaposed) | Clears by 23px / 35px |
+| **Operate: sequential** | Numerator Check button | 746px | **746px** (already sequential) | 6px past 740px / Clears 752px by 6px |
+| **Resolve: in-place** | Continue button | 520px / 562px | **520px / 562px** | Clears by ≥178px / ≥190px |
+| **Resolve: juxtaposed** | Continue button | 520px / 562px | **632px / 674px** (+112px) | Clears 740px by 66px / 752px by 78px |
+| **Resolve: sequential** | Continue button | 520px / 562px | **661px / 703px** (+141px) | Clears 740px by 37px / 752px by 49px |
+| **Reflect: Premise Check (`CM-01-P`)** | Yes / No buttons | 476px / 546px | **530px** (Inspection card + "Done looking") | Clears by 210px / 222px |
+| **Reflect: Matching (`CM-01-M`)** | Choices 1, 2, 3 | Choice 3 at 758px | **530px** (Inspection card + "Done looking") | Clears by 210px / 222px |
+
+### 11.4 Owner Review Note: Dual Comparison at Reflect
+
+Flagged for owner rendered-screen review per review prompt: At `reflect`, the replayed conversion is the right operand ($1/4 = 3/12$) while the reflection prompt asks about the left ($2/3$).
+
+### 11.5 Advisor Consultation Disposition
+
+**Branch C (orchestrator-gate-only):**
+This thread operates on Google Antigravity / Gemini. Per the fail-closed capability rule (Step 1), this provider cannot confidently match an entry in `advisor-capable-providers.json` and therefore treats itself as not advisor-capable. No subagent consultation was executed; verification relies on fail-first automated test assertions and the orchestrator review gate.
+
+### 11.6 Verification Commands and Results
+
+| Command | Result | Notes |
+|---|---|---|
+| `node scripts/dev/plan-status.js check plan-09` | **`RUNNABLE`** | Exit code 0 |
+| `npm test` | **20 passed (20 files, 240 tests passed)** | 100% pass across all unit, property, and render tests |
+| `npm run build` | **Passed** | Vite 6.4.3, 42 modules transformed, 0 bundle warnings |
+| `node scripts/dev/plan-status.js lint` | **`lint: OK (no violations)`** | Clean frontmatter & indexes |
+| `git status --short` | Clean working tree | All files committed by explicit path |
+
+Requirement 3 remains strictly owner-gated: no deploy, no push, no public-URL claims made. Status verbs belong to the orchestrator and owner.
+
 
 
