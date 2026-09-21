@@ -21,7 +21,25 @@ amount" completes the episode, and answering "No, the amount changed," which is 
 `2/3 = 8/12`, also completes it. No recovery either way. `premiseFalseYesNotice` and
 `premiseExpectedNo` are dead.
 
-Two things are missing, and the second is the one that was never asked for:
+**Third problem, found by the owner: the question has no referents on screen.** At the reflect beat
+the visual section contains exactly two bars — `8/12` and `3/12` — unchanged since the transform
+beats. Captured live:
+
+```
+beat:  "Does this new bar show the same amount as before?"
+bars:  "First fraction bar: 8 of 12 equal parts shaded in 1 whole."
+       "Second fraction bar: 3 of 12 equal parts shaded in 1 whole."
+```
+
+There is no new bar. There is no before bar. "This new bar" names neither of the two on screen, and
+"before" is not displayed anywhere. The owner's reading is correct: as rendered, the question cannot
+be answered from the visuals.
+
+The matching form does not have this problem — it mounts three candidate bars, so "tap the bar that
+shows the same amount as 2/3" has referents. The premise form was written for a context in which a
+before/after pair is visible, and no beat presents one at reflect.
+
+Three things are missing, and the last two were never asked for:
 
 1. **Classification.** The premise response must be classified against the mathematics in the
    interaction layer, the same way `classifyReflectionResponse` handles matching, with local recovery
@@ -32,10 +50,14 @@ Two things are missing, and the second is the one that was never asked for:
    **incorrect** renaming presented for the learner to reject. The existing strings already
    presuppose it: `premiseExpectedNo` reads "Good eye! The amount changed."
 
+3. **Visible referents.** Whatever the premise asks about must be on screen when it asks. A
+   before/after pair at the reflect beat, or a question rewritten to name what is actually displayed.
+
 Required in the proposal:
 
 - Where the incorrect renaming is authored, and how it is marked as content rather than computed.
   It must not be generated in `src/render/` or derived in a renderer.
+- What the learner is looking at when the question is asked, named concretely.
 - How the learner encounters it without it reading as the app making a mistake. A premise check that
   looks like a bug is worse than none.
 - Whether this needs a new beat. **If it does, stop and report** — that is a packet, not a repair.
@@ -43,6 +65,57 @@ Required in the proposal:
 
 Constraint: a premise check whose answer is always the reassuring one does not satisfy DECISION-026,
 so "add classification" alone is not a complete answer to this item.
+
+**Interim:** `phase2-bundle-4` currently ships a question that accepts any answer and refers to
+nothing on screen. Recommend to the owner that it be unregistered until this item is designed, rather
+than left in the menu. Do not unregister it without the owner saying so.
+
+## Item 0b — "Smooth change" does not animate anything (mechanism gate)
+
+Owner observation: "Smooth change" and "Step-by-step change" look the same during the change itself.
+Confirmed, and there are two independent causes.
+
+**There is no animation anywhere in the renderer.** `src/styles/render.css` contains no `@keyframes`
+and no `animation` property except two `animation: none !important` suppressors in the reduced-motion
+blocks. The `.subdivided` class that `fraction-bar.js:86` applies **has no CSS rule at all**. The only
+transitions are `background-color` on segments and controls.
+
+**And nothing could animate even if it were styled.** `fraction-bar.js:106` calls
+`rootEl.replaceChildren()` and rebuilds every segment element on each render, so a denominator change
+destroys the old segments and creates new ones. A CSS transition cannot run across that.
+
+So D-01-A — animated subdivision, the provisional Bundle 1 display of DECISION-007 — was never
+implemented, and the reduced-motion machinery suppresses animation that does not exist. The
+learner-facing copy says "Smooth change — the bars change smoothly after you choose." It does not.
+
+**The second cause is scoping, and it is mine.** Repair 03 Condition B scoped the choreography to
+`beat === 'transform'` with `transition.changed.includes(side)`. The transition only exists *after* a
+conversion is established, so at transform-left — the beat where the learner makes the first change —
+every condition renders identically. Captured live:
+
+| | at transform-LEFT | at transform-RIGHT |
+|---|---|---|
+| Smooth change | `2 \| 3 \| 1 \| 4` (2 tracks) | `8 \| 12 \| 1 \| 4` (2 tracks) |
+| Step-by-step change | `2 \| 3 \| 1 \| 4` (2 tracks) | `Step 1: Start with 2/3 … Step 2: New parts 8/12` (3 tracks) |
+
+The treatment never choreographs the change the learner is currently making. It shows the *previous*
+operand's completed change while the learner works on the next one. My Condition B asked for the
+narrow scoping and I did not notice it excludes the moment that matters.
+
+Required in the proposal:
+
+- How subdivision animates without a full teardown: segment identity preserved across a denominator
+  change, or an explicit transitional render. State which, and confirm no mathematics moves into the
+  renderer.
+- How the treatment covers the change the learner just made, not only the previous one. Re-check
+  Condition B's scoping against that — it may need to be "the beat in which the change becomes
+  established," not "the beat where a past transition exists."
+- Reduced-motion parity: the same post-state with no motion, per DECISION-009.
+- The 360px layout cost of showing choreography at both transform beats instead of one.
+
+**Stop condition:** if preserving segment identity across a denominator change requires reworking how
+`fraction-bar.js` builds its DOM beyond what a repair should carry, **stop and report**. That is
+`plan-10`. Rebuilding the bar renderer is not a small change and four packets depend on it.
 
 ## Item 1 — Recovery feedback never reaches the learner
 
@@ -178,6 +251,10 @@ next one.
 - [ ] A premise check exists whose correct answer is **not** the reassuring one, reachable in a
       browser by a stated sequence; answering the reassuring way produces local recovery rather than
       completion, demonstrated by a test that fails against current code.
+- [ ] Everything the premise question names is visible on screen when it is asked.
+- [ ] "Smooth change" visibly differs from the other treatments **at the beat where the learner makes
+      the change**, not only at the following one; shown by captured output at both transform beats.
+- [ ] No learner-facing label describes behavior the code does not perform.
 - [ ] Every recovery kind the interaction layer produces renders a specific authored message; the
       three never-produced branches are deleted.
 - [ ] No renaming in `src/interaction/`; no renderer computes a simplification.
