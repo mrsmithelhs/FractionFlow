@@ -113,6 +113,7 @@ export function createFractionFlowApp({
   let replayButton;
   let supportNotice;
   let completionPanel;
+  let isReplaying = false;
 
   function closeDisplayMenu() {
     if (!displayMenu || displayMenu.hasAttribute('hidden')) return;
@@ -187,6 +188,7 @@ export function createFractionFlowApp({
         selectedCondition = getRegisteredCondition(condition.id);
         state = withActiveCondition(state, selectedCondition.activeCondition);
         activityNotice = STRINGS.app.displayChanged(selectedCondition.label);
+        isReplaying = false;
         closeDisplayMenu();
         render();
         displayMenuButton.focus();
@@ -221,6 +223,7 @@ export function createFractionFlowApp({
       className: 'app-secondary-button',
       onClick: () => {
         visualView = !visualView;
+        isReplaying = false;
         updateViewVisibility();
       },
     });
@@ -263,6 +266,7 @@ export function createFractionFlowApp({
       className: 'app-secondary-button',
       onClick: () => {
         state = createInitialState(instance, selectedCondition);
+        isReplaying = false;
         activityNotice = STRINGS.app.problemRestarted;
         render();
       },
@@ -308,6 +312,7 @@ export function createFractionFlowApp({
     const resolved = state.status === 'resolved';
     helpButton.disabled = resolved;
     replayButton.disabled = resolved || state.beat === 'encounter';
+    replayButton.setAttribute('aria-pressed', String(isReplaying));
     setHidden(completionPanel, !resolved);
     supportNotice.textContent = activityNotice;
   }
@@ -319,6 +324,7 @@ export function createFractionFlowApp({
       state,
       initialRole: 'fraction-bar',
       presentationMode: mode,
+      isReplaying,
     });
 
     if (!visualRenderer) {
@@ -349,20 +355,39 @@ export function createFractionFlowApp({
   }
 
   function dispatchAction(action) {
+    if (action.type === 'dismiss-replay') {
+      isReplaying = false;
+      activityNotice = '';
+      render();
+      return;
+    }
+
     try {
       state = applyIntent(state, action);
       if (action.type === 'request-help') {
+        isReplaying = false;
         const help = state.helpHistory.at(-1);
         activityNotice = STRINGS.app.helpLevels[help.level] || STRINGS.app.helpLevels.orient;
       } else if (action.type === 'request-replay') {
-        activityNotice = STRINGS.app.replayNote;
-      } else if (state.status === 'resolved') {
-        activityNotice = STRINGS.resolve.complete;
+        const hasTransition = Boolean(state.established?.lastConversion);
+        if (hasTransition) {
+          isReplaying = !isReplaying;
+          activityNotice = isReplaying ? STRINGS.app.replayNote : '';
+        } else {
+          isReplaying = false;
+          activityNotice = STRINGS.app.noReplayYet;
+        }
       } else {
-        activityNotice = '';
+        isReplaying = false;
+        if (state.status === 'resolved') {
+          activityNotice = STRINGS.resolve.complete;
+        } else {
+          activityNotice = '';
+        }
       }
       render();
     } catch (error) {
+      isReplaying = false;
       activityNotice = action.type === 'request-replay'
         ? STRINGS.app.noReplayYet
         : STRINGS.app.tryAgain;

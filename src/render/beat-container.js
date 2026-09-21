@@ -44,6 +44,7 @@ export function createBeatContainer({
   let leftBarRenderer = null;
   let rightBarRenderer = null;
   let symbolicRenderer = null;
+  let previousFocusRef = null;
 
   function initLayout() {
     rootEl = document.createElement('div');
@@ -74,7 +75,7 @@ export function createBeatContainer({
     symbolicSectionEl.setAttribute('aria-label', 'Symbolic notation');
     rootEl.appendChild(symbolicSectionEl);
 
-    // Active beat section
+    // Active beat interaction section
     activeBeatEl = document.createElement('section');
     activeBeatEl.classList.add('active-beat-section');
     rootEl.appendChild(activeBeatEl);
@@ -86,8 +87,8 @@ export function createBeatContainer({
     rootEl.appendChild(completedBeatsEl);
 
     // Initialize sub-renderers
-    leftBarRenderer = createFractionBarRenderer({ side: 'left', container: leftBarBox, strings });
-    rightBarRenderer = createFractionBarRenderer({ side: 'right', container: rightBarBox, strings });
+    leftBarRenderer = createFractionBarRenderer({ side: 'left', container: leftBarBox, strings, dispatchAction });
+    rightBarRenderer = createFractionBarRenderer({ side: 'right', container: rightBarBox, strings, dispatchAction });
     symbolicRenderer = createSymbolicRenderer({ container: symbolicSectionEl });
   }
 
@@ -432,76 +433,285 @@ export function createBeatContainer({
       }
 
       case 'reflect': {
-        const isPremise = scene.meaning.currentTask.connectionForm === 'premise';
+        if (scene.presentation?.isReplaying && scene.meaning.transition) {
+          const transition = scene.meaning.transition;
+          const side = transition.changed[0] || 'right';
+          const pre = transition.pre[side];
+          const post = transition.post[side];
+          const preNum = Number(pre.numerator);
+          const preDen = Number(pre.denominator);
+          const postNum = Number(post.numerator);
+          const postDen = Number(post.denominator);
 
-        if (isPremise) {
-          // DECISION-026: Check-the-premise form (answer is not always the reassuring one)
-          const framingEl = document.createElement('p');
-          framingEl.classList.add('premise-framing');
-          framingEl.textContent = strings.reflect?.premiseFraming || 'Check this renaming:';
-          promptHeader.appendChild(framingEl);
+          promptText.textContent = strings.app?.replayInspectionHeading || 'Looking back at the last change:';
 
-          promptText.textContent = strings.reflect.premisePrompt;
-          const options = [
-            {
-              label: strings.reflect.premiseOptions.yes,
-              value: 'yes',
-              ariaLabel: strings.reflect.premiseOptions.yes,
-            },
-            {
-              label: strings.reflect.premiseOptions.no,
-              value: 'no',
-              ariaLabel: strings.reflect.premiseOptions.no,
-            },
-          ];
+          const card = document.createElement('div');
+          card.classList.add('replay-inspection-card');
+          card.setAttribute('role', 'region');
+          card.setAttribute('aria-label', promptText.textContent);
 
-          const choiceGroup = createChoiceGroup({
-            legend: promptText.textContent,
-            options,
-            onSelect: (val) => {
-              dispatchAction({
-                type: 'submit-reflection',
-                response: val,
-              });
-            },
-          });
-          controlsContainer.appendChild(choiceGroup);
-        } else {
-          // DECISION-012 & DECISION-026: Visual matching check with distractors
-          const left = scene.meaning.quantities.left;
-          const targetForm = `${left.sourceForm.numerator}/${left.sourceForm.denominator}`;
-          promptText.textContent = strings.reflect.matchingPrompt(targetForm);
-          const choices = scene.meaning.reflectionChoices;
-          if (!Array.isArray(choices) || choices.length < 3) {
-            throw new RenderContractError(
-              'MISSING_REFLECTION_CHOICES',
-              'visual matching requires at least three content-supplied choices',
-            );
+          const summaryText = typeof strings.summaryLines?.transformDone === 'function'
+            ? strings.summaryLines.transformDone(side, `${preNum}/${preDen}`, `${postNum}/${postDen}`)
+            : `${side === 'left' ? 'First' : 'Second'} fraction: ${preNum}/${preDen} = ${postNum}/${postDen}`;
+          const noteEl = document.createElement('p');
+          noteEl.classList.add('replay-inspection-note');
+          noteEl.textContent = summaryText;
+          card.appendChild(noteEl);
+
+          const choreography = scene.presentation.choreography || 'in-place';
+          const mode = scene.presentation.mode;
+
+          if (choreography === 'juxtaposed') {
+            const wrapper = document.createElement('div');
+            wrapper.classList.add('fraction-bar-juxtaposed');
+
+            // Row 1: Before
+            const beforeRow = document.createElement('div');
+            beforeRow.classList.add('fraction-bar-comparison-row', 'fraction-bar-row-before');
+            const beforeBadgeWrap = document.createElement('div');
+            beforeBadgeWrap.classList.add('fraction-bar-badge-wrap');
+            const beforeBadge = document.createElement('span');
+            beforeBadge.classList.add('fraction-bar-badge');
+            beforeBadge.textContent = strings.transition.beforeLabel(preNum, preDen);
+            beforeBadgeWrap.appendChild(beforeBadge);
+            beforeRow.appendChild(beforeBadgeWrap);
+
+            const beforeBody = document.createElement('div');
+            beforeBody.classList.add('fraction-bar-row-body');
+            const beforeElements = createTrackAndReadout({
+              numerator: preNum,
+              denominator: preDen,
+              isSubdivided: false,
+              mode,
+            });
+            beforeBody.appendChild(beforeElements.trackEl);
+            beforeBody.appendChild(beforeElements.readoutEl);
+            beforeRow.appendChild(beforeBody);
+            wrapper.appendChild(beforeRow);
+
+            // Row 2: After
+            const afterRow = document.createElement('div');
+            afterRow.classList.add('fraction-bar-comparison-row', 'fraction-bar-row-after');
+            const afterBadgeWrap = document.createElement('div');
+            afterBadgeWrap.classList.add('fraction-bar-badge-wrap');
+            const afterBadge = document.createElement('span');
+            afterBadge.classList.add('fraction-bar-badge');
+            afterBadge.textContent = strings.transition.afterLabel(postNum, postDen);
+            afterBadgeWrap.appendChild(afterBadge);
+            afterRow.appendChild(afterBadgeWrap);
+
+            const afterBody = document.createElement('div');
+            afterBody.classList.add('fraction-bar-row-body');
+            const afterElements = createTrackAndReadout({
+              numerator: postNum,
+              denominator: postDen,
+              isSubdivided: true,
+              mode,
+            });
+            afterBody.appendChild(afterElements.trackEl);
+            afterBody.appendChild(afterElements.readoutEl);
+            afterRow.appendChild(afterBody);
+            wrapper.appendChild(afterRow);
+
+            card.appendChild(wrapper);
+          } else if (choreography === 'sequential') {
+            const wrapper = document.createElement('div');
+            wrapper.classList.add('fraction-bar-sequential');
+
+            // Card 1: Step 1
+            const step1Card = document.createElement('div');
+            step1Card.classList.add('fraction-bar-step-card', 'fraction-bar-step-1');
+            const step1Header = document.createElement('div');
+            step1Header.classList.add('fraction-bar-step-header');
+            const step1Heading = document.createElement('span');
+            step1Heading.classList.add('fraction-bar-step-heading');
+            step1Heading.textContent = strings.transition.step1Label(preNum, preDen);
+            step1Header.appendChild(step1Heading);
+            step1Card.appendChild(step1Header);
+
+            const step1Body = document.createElement('div');
+            step1Body.classList.add('fraction-bar-row-body');
+            const step1Elements = createTrackAndReadout({
+              numerator: preNum,
+              denominator: preDen,
+              isSubdivided: false,
+              mode,
+            });
+            step1Body.appendChild(step1Elements.trackEl);
+            step1Body.appendChild(step1Elements.readoutEl);
+            step1Card.appendChild(step1Body);
+            wrapper.appendChild(step1Card);
+
+            // Connector
+            const connector = document.createElement('div');
+            connector.classList.add('fraction-bar-step-connector');
+            connector.setAttribute('aria-hidden', 'true');
+            const connectorText = document.createElement('span');
+            connectorText.classList.add('fraction-bar-connector-text');
+            connectorText.textContent = `\u2193 ${strings.transition.stepConnector(postDen)}`;
+            connector.appendChild(connectorText);
+            wrapper.appendChild(connector);
+
+            // Card 2: Step 2
+            const step2Card = document.createElement('div');
+            step2Card.classList.add('fraction-bar-step-card', 'fraction-bar-step-2');
+            const step2Header = document.createElement('div');
+            step2Header.classList.add('fraction-bar-step-header');
+            const step2Heading = document.createElement('span');
+            step2Heading.classList.add('fraction-bar-step-heading');
+            step2Heading.textContent = strings.transition.step2Label(postNum, postDen);
+            step2Header.appendChild(step2Heading);
+            step2Card.appendChild(step2Header);
+
+            const step2Body = document.createElement('div');
+            step2Body.classList.add('fraction-bar-row-body');
+            const step2Elements = createTrackAndReadout({
+              numerator: postNum,
+              denominator: postDen,
+              isSubdivided: true,
+              mode,
+            });
+            step2Body.appendChild(step2Elements.trackEl);
+            step2Body.appendChild(step2Elements.readoutEl);
+            step2Card.appendChild(step2Body);
+            wrapper.appendChild(step2Card);
+
+            card.appendChild(wrapper);
+          } else {
+            // in-place
+            const wrapper = document.createElement('div');
+            wrapper.classList.add('fraction-bar-in-place-replay');
+
+            const headerRow = document.createElement('div');
+            headerRow.classList.add('fraction-bar-replay-header');
+            const badge = document.createElement('span');
+            badge.classList.add('fraction-bar-badge');
+            badge.textContent = typeof strings.transition?.replayingLabel === 'function'
+              ? strings.transition.replayingLabel(preNum, preDen)
+              : `Starting parts: ${preNum}/${preDen}`;
+            headerRow.appendChild(badge);
+            wrapper.appendChild(headerRow);
+
+            const body = document.createElement('div');
+            body.classList.add('fraction-bar-row-body');
+            const elements = createTrackAndReadout({
+              numerator: preNum,
+              denominator: preDen,
+              isSubdivided: false,
+              mode,
+            });
+            body.appendChild(elements.trackEl);
+            body.appendChild(elements.readoutEl);
+            wrapper.appendChild(body);
+
+            card.appendChild(wrapper);
           }
 
-          const choiceGroup = createChoiceGroup({
-            legend: promptText.textContent,
-            options: choices.map((choice) => ({
-              value: choice.id,
-              choice,
-              ariaLabel: strings.reflect.matchingOptionLabel(
-                choice.form.numerator,
-                choice.form.denominator,
-              ),
-            })),
-            renderOption: (option, onClick) => createVisualMatchingChoice({
-              choice: option.choice,
-              ariaLabel: option.ariaLabel,
-              onClick,
-            }),
-            onSelect: (val) => {
-              dispatchAction({
-                type: 'submit-reflection',
-                response: val,
-              });
+          const doneButton = createButton({
+            label: strings.app?.doneLooking || 'Done looking',
+            className: 'app-done-looking-button',
+            onClick: () => {
+              dispatchAction({ type: 'dismiss-replay' });
             },
           });
-          controlsContainer.appendChild(choiceGroup);
+          card.appendChild(doneButton);
+          controlsContainer.appendChild(card);
+
+          // Focus management (Condition B)
+          if (!previousFocusRef && typeof document !== 'undefined' && document.activeElement && rootEl.contains(document.activeElement)) {
+            previousFocusRef = document.activeElement;
+          }
+          setTimeout(() => {
+            if (typeof doneButton.focus === 'function') {
+              doneButton.focus();
+            }
+          }, 0);
+        } else {
+          // Restore focus on exit if saved (Condition B)
+          if (previousFocusRef) {
+            const elToFocus = previousFocusRef;
+            previousFocusRef = null;
+            setTimeout(() => {
+              if (elToFocus && elToFocus.isConnected && typeof elToFocus.focus === 'function') {
+                elToFocus.focus();
+              } else {
+                const firstChoice = controlsContainer.querySelector('button, input');
+                if (firstChoice && typeof firstChoice.focus === 'function') firstChoice.focus();
+              }
+            }, 0);
+          }
+
+          const isPremise = scene.meaning.currentTask.connectionForm === 'premise';
+
+          if (isPremise) {
+            // DECISION-026: Check-the-premise form (answer is not always the reassuring one)
+            const framingEl = document.createElement('p');
+            framingEl.classList.add('premise-framing');
+            framingEl.textContent = strings.reflect?.premiseFraming || 'Check this renaming:';
+            promptHeader.appendChild(framingEl);
+
+            promptText.textContent = strings.reflect.premisePrompt;
+            const options = [
+              {
+                label: strings.reflect.premiseOptions.yes,
+                value: 'yes',
+                ariaLabel: strings.reflect.premiseOptions.yes,
+              },
+              {
+                label: strings.reflect.premiseOptions.no,
+                value: 'no',
+                ariaLabel: strings.reflect.premiseOptions.no,
+              },
+            ];
+
+            const choiceGroup = createChoiceGroup({
+              legend: promptText.textContent,
+              options,
+              onSelect: (val) => {
+                dispatchAction({
+                  type: 'submit-reflection',
+                  response: val,
+                });
+              },
+            });
+            controlsContainer.appendChild(choiceGroup);
+          } else {
+            // DECISION-012 & DECISION-026: Visual matching check with distractors
+            const left = scene.meaning.quantities.left;
+            const targetForm = `${left.sourceForm.numerator}/${left.sourceForm.denominator}`;
+            promptText.textContent = strings.reflect.matchingPrompt(targetForm);
+            const choices = scene.meaning.reflectionChoices;
+            if (!Array.isArray(choices) || choices.length < 3) {
+              throw new RenderContractError(
+                'MISSING_REFLECTION_CHOICES',
+                'visual matching requires at least three content-supplied choices',
+              );
+            }
+
+            const choiceGroup = createChoiceGroup({
+              legend: promptText.textContent,
+              options: choices.map((choice) => ({
+                value: choice.id,
+                choice,
+                ariaLabel: strings.reflect.matchingOptionLabel(
+                  choice.form.numerator,
+                  choice.form.denominator,
+                ),
+              })),
+              renderOption: (option, onClick) => createVisualMatchingChoice({
+                choice: option.choice,
+                ariaLabel: option.ariaLabel,
+                onClick,
+              }),
+              onSelect: (val) => {
+                dispatchAction({
+                  type: 'submit-reflection',
+                  response: val,
+                });
+              },
+            });
+            controlsContainer.appendChild(choiceGroup);
+          }
         }
         break;
       }

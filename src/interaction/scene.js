@@ -199,7 +199,7 @@ function assertStateShape(state) {
   }
 }
 
-function assertProjectionOptions({ representationRole, presentationMode }) {
+function assertProjectionOptions({ representationRole, presentationMode, isReplaying = false }) {
   if (!REPRESENTATION_ROLES.includes(representationRole)) {
     throw new SceneProjectionError(
       'INVALID_SCENE_INPUT',
@@ -210,6 +210,12 @@ function assertProjectionOptions({ representationRole, presentationMode }) {
     throw new SceneProjectionError(
       'INVALID_SCENE_INPUT',
       `unsupported presentation mode: ${String(presentationMode)}`,
+    );
+  }
+  if (typeof isReplaying !== 'boolean') {
+    throw new SceneProjectionError(
+      'INVALID_SCENE_INPUT',
+      `isReplaying must be a boolean: ${String(isReplaying)}`,
     );
   }
 }
@@ -281,13 +287,14 @@ function contentProjectionSource(state) {
   };
 }
 
-function sourceContext({ state, representationRole, presentationMode }) {
+function sourceContext({ state, representationRole, presentationMode, isReplaying = false }) {
   return {
     contentIdentity: contentIdentity(state),
     contentProjection: contentProjectionSource(state),
     instructional: instructionalSourceContext(state),
     representationRole,
     presentationMode,
+    isReplaying: Boolean(isReplaying),
   };
 }
 
@@ -676,10 +683,10 @@ function choreographyDirectiveFor(activeCondition) {
   }
 }
 
-export function projectScene({ state, representationRole, presentationMode } = {}) {
+export function projectScene({ state, representationRole, presentationMode, isReplaying = false } = {}) {
   assertStateShape(state);
-  assertProjectionOptions({ representationRole, presentationMode });
-  const derivation = derivationContext({ state, representationRole, presentationMode });
+  assertProjectionOptions({ representationRole, presentationMode, isReplaying });
+  const derivation = derivationContext({ state, representationRole, presentationMode, isReplaying });
   const capability = capabilityFor(state, representationRole, derivation);
   if (capability.kind === 'capability-refusal') return capability;
 
@@ -690,6 +697,7 @@ export function projectScene({ state, representationRole, presentationMode } = {
     presentation: {
       mode: presentationMode,
       choreography: choreographyDirectiveFor(state.activeCondition),
+      isReplaying: Boolean(isReplaying),
     },
     derivation,
   };
@@ -698,13 +706,13 @@ export function projectScene({ state, representationRole, presentationMode } = {
   return frozen;
 }
 
-export function assertSceneCurrent(sceneResult, { state, representationRole, presentationMode } = {}) {
+export function assertSceneCurrent(sceneResult, { state, representationRole, presentationMode, isReplaying = false } = {}) {
   if (!sceneResult || typeof sceneResult !== 'object') {
     throw new SceneProjectionError('INVALID_SCENE_RESULT', 'scene result is required');
   }
   assertStateShape(state);
-  assertProjectionOptions({ representationRole, presentationMode });
-  const current = derivationContext({ state, representationRole, presentationMode });
+  assertProjectionOptions({ representationRole, presentationMode, isReplaying });
+  const current = derivationContext({ state, representationRole, presentationMode, isReplaying });
   const supplied = canonicalSceneResult(sceneResult);
   const sceneKey = supplied.copy.derivation?.key ?? supplied.copy.derivationKey;
   if (sceneKey !== current.key) {
@@ -715,7 +723,7 @@ export function assertSceneCurrent(sceneResult, { state, representationRole, pre
     );
   }
 
-  const expected = projectScene({ state, representationRole, presentationMode });
+  const expected = projectScene({ state, representationRole, presentationMode, isReplaying });
   const expectedCanonical = canonicalWireSerialize(expected, 'expected scene result');
   if (supplied.serialized !== expectedCanonical) {
     throw new SceneProjectionError(

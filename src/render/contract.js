@@ -46,20 +46,21 @@ export function resolveRenderableScene({
   state,
   initialRole = 'fraction-bar',
   presentationMode = 'standard-motion',
+  isReplaying = false,
 } = {}) {
   if (!state || typeof state !== 'object') {
     throw new RenderContractError('INVALID_INPUT', 'state is required to resolve scene');
   }
 
   let role = initialRole;
-  let sceneResult = projectScene({ state, representationRole: role, presentationMode });
+  let sceneResult = projectScene({ state, representationRole: role, presentationMode, isReplaying });
 
   // Condition D: Data-driven role switch from refusal continuation
   if (sceneResult && sceneResult.kind === 'capability-refusal') {
     const continuationRole = sceneResult.continuation?.representationRole;
     if (continuationRole && continuationRole !== role) {
       role = continuationRole;
-      sceneResult = projectScene({ state, representationRole: role, presentationMode });
+      sceneResult = projectScene({ state, representationRole: role, presentationMode, isReplaying });
     }
   }
 
@@ -73,7 +74,7 @@ export function resolveRenderableScene({
   }
 
   // Assert currency and return the fresh, deeply frozen scene
-  return assertSceneCurrent(sceneResult, { state, representationRole: role, presentationMode });
+  return assertSceneCurrent(sceneResult, { state, representationRole: role, presentationMode, isReplaying });
 }
 
 /**

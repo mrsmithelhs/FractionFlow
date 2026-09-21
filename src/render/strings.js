@@ -161,6 +161,12 @@ export const STRINGS = Object.freeze({
     linearSequential: (side, preNum, preDen, postNum, postDen) => (
       `${side === 'left' ? 'First' : 'Second'} fraction: Step 1 was ${preNum} of ${preDen} equal parts. Step 2 is ${postNum} of ${postDen} equal parts in 1 whole.`
     ),
+    showNewParts: 'Show new parts',
+    showStartingParts: 'Show starting parts',
+    replayingLabel: (num, den) => `Starting parts: ${num}/${den}`,
+    replayingAria: (side, num, den) => (
+      `${side === 'left' ? 'First' : 'Second'} fraction replaying: started with ${num} of ${den} equal parts in 1 whole.`
+    ),
   }),
 
   summaryLines: Object.freeze({
@@ -238,6 +244,8 @@ export const STRINGS = Object.freeze({
     problemRestarted: 'The same problem is ready again.',
     restartButton: 'Try this problem again',
     noReplayYet: 'Finish a change before replaying it.',
+    doneLooking: 'Done looking',
+    replayInspectionHeading: 'Looking back at the last change:',
     tryAgain: 'Let us try that step again.',
   }),
 });

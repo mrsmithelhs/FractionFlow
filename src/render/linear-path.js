@@ -31,6 +31,7 @@ export function createLinearPathRenderer({
   let contextSectionEl = null;
   let completedBeatsEl = null;
   let activeBeatEl = null;
+  let previousFocusRef = null;
 
   function initLayout() {
     rootEl = document.createElement('div');
@@ -97,7 +98,8 @@ export function createLinearPathRenderer({
       for (const side of ['left', 'right']) {
         const item = document.createElement('li');
         const beat = scene.meaning.currentTask?.beat;
-        const isConversionBeat = beat === 'transform' || beat === 'operate';
+        const isReplaying = Boolean(scene.presentation?.isReplaying);
+        const isConversionBeat = beat === 'transform' || beat === 'operate' || isReplaying;
         const isTransformed = isConversionBeat
           && scene.meaning.transition
           && scene.meaning.transition.changed?.includes(side);
@@ -106,10 +108,18 @@ export function createLinearPathRenderer({
           const pre = scene.meaning.transition.pre[side];
           const post = scene.meaning.transition.post[side];
           item.textContent = strings.transition.linearJuxtaposed(side, pre.numerator, pre.denominator, post.numerator, post.denominator);
+          if (isReplaying) item.classList.add('replay-active');
         } else if (isTransformed && scene.presentation.choreography === 'sequential' && strings.transition?.linearSequential) {
           const pre = scene.meaning.transition.pre[side];
           const post = scene.meaning.transition.post[side];
           item.textContent = strings.transition.linearSequential(side, pre.numerator, pre.denominator, post.numerator, post.denominator);
+          if (isReplaying) item.classList.add('replay-active');
+        } else if (isTransformed && isReplaying && scene.presentation.choreography === 'in-place') {
+          const pre = scene.meaning.transition.pre[side];
+          item.textContent = typeof strings.transition?.replayingAria === 'function'
+            ? strings.transition.replayingAria(side, pre.numerator, pre.denominator)
+            : `${side === 'left' ? 'First' : 'Second'} fraction replaying: started with ${pre.numerator} of ${pre.denominator} equal parts in 1 whole.`;
+          item.classList.add('replay-active');
         } else {
           const ord = side === 'left' ? 'First' : 'Second';
           item.textContent = `${ord} fraction: ${quantities[side].currentForm.numerator} of ${quantities[side].currentForm.denominator} equal parts in 1 whole.`;
@@ -462,81 +472,147 @@ export function createLinearPathRenderer({
       }
 
       case 'reflect': {
-        // DECISION-026 & Condition 6: Check-the-premise form and visual matching form
-        const isPremise = scene.meaning.currentTask.connectionForm === 'premise';
+        if (scene.presentation?.isReplaying && scene.meaning.transition) {
+          const transition = scene.meaning.transition;
+          const side = transition.changed[0] || 'right';
+          const pre = transition.pre[side];
+          const post = transition.post[side];
+          const preNum = Number(pre.numerator);
+          const preDen = Number(pre.denominator);
+          const postNum = Number(post.numerator);
+          const postDen = Number(post.denominator);
 
-        if (isPremise) {
-          const premiseCase = scene.meaning.premiseCase;
-          const framingEl = document.createElement('p');
-          framingEl.classList.add('premise-framing');
-          if (premiseCase && typeof strings.reflect?.premiseFramingLinear === 'function') {
-            const pres = `${premiseCase.presentedForm.numerator}/${premiseCase.presentedForm.denominator}`;
-            const src = `${premiseCase.sourceForm.numerator}/${premiseCase.sourceForm.denominator}`;
-            framingEl.textContent = strings.reflect.premiseFramingLinear(pres, src);
+          promptText.textContent = strings.app?.replayInspectionHeading || 'Looking back at the last change:';
+
+          const card = document.createElement('div');
+          card.classList.add('linear-replay-inspection-card');
+          card.setAttribute('role', 'region');
+          card.setAttribute('aria-label', promptText.textContent);
+
+          const note = document.createElement('p');
+          note.classList.add('linear-replay-inspection-note');
+          const choreography = scene.presentation.choreography || 'in-place';
+          if (choreography === 'juxtaposed' && typeof strings.transition?.linearJuxtaposed === 'function') {
+            note.textContent = strings.transition.linearJuxtaposed(side, preNum, preDen, postNum, postDen);
+          } else if (choreography === 'sequential' && typeof strings.transition?.linearSequential === 'function') {
+            note.textContent = strings.transition.linearSequential(side, preNum, preDen, postNum, postDen);
           } else {
-            framingEl.textContent = strings.reflect?.premiseFraming || 'Check this renaming:';
+            note.textContent = typeof strings.summaryLines?.transformDone === 'function'
+              ? strings.summaryLines.transformDone(side, `${preNum}/${preDen}`, `${postNum}/${postDen}`)
+              : `${side === 'left' ? 'First' : 'Second'} fraction: ${preNum}/${preDen} = ${postNum}/${postDen}`;
           }
-          promptHeader.appendChild(framingEl);
+          card.appendChild(note);
 
-          promptText.textContent = strings.reflect.premisePromptLinear || strings.reflect.premisePrompt;
-          const options = [
-            {
-              label: strings.reflect.premiseOptions.yes,
-              value: 'yes',
-              ariaLabel: strings.reflect.premiseOptions.yes,
-            },
-            {
-              label: strings.reflect.premiseOptions.no,
-              value: 'no',
-              ariaLabel: strings.reflect.premiseOptions.no,
-            },
-          ];
-
-          const choiceGroup = createChoiceGroup({
-            legend: promptText.textContent,
-            options,
-            onSelect: (val) => {
-              dispatchAction({
-                type: 'submit-reflection',
-                response: val,
-              });
+          const doneButton = createButton({
+            label: strings.app?.doneLooking || 'Done looking',
+            className: 'app-done-looking-button',
+            onClick: () => {
+              dispatchAction({ type: 'dismiss-replay' });
             },
           });
-          controlsContainer.appendChild(choiceGroup);
+          card.appendChild(doneButton);
+          controlsContainer.appendChild(card);
+
+          // Focus management (Condition B)
+          if (!previousFocusRef && typeof document !== 'undefined' && document.activeElement && rootEl.contains(document.activeElement)) {
+            previousFocusRef = document.activeElement;
+          }
+          setTimeout(() => {
+            if (typeof doneButton.focus === 'function') {
+              doneButton.focus();
+            }
+          }, 0);
         } else {
-          const left = scene.meaning.quantities.left;
-          const targetForm = `${left.sourceForm.numerator}/${left.sourceForm.denominator}`;
-          promptText.textContent = typeof strings.reflect.matchingPromptLinear === 'function'
-            ? strings.reflect.matchingPromptLinear(targetForm)
-            : strings.reflect.matchingPrompt(targetForm);
-
-          const choices = scene.meaning.reflectionChoices;
-          if (!Array.isArray(choices) || choices.length < 3) {
-            throw new RenderContractError(
-              'MISSING_REFLECTION_CHOICES',
-              'linear matching requires at least three content-supplied choices',
-            );
+          // Restore focus on exit if saved (Condition B)
+          if (previousFocusRef) {
+            const elToFocus = previousFocusRef;
+            previousFocusRef = null;
+            setTimeout(() => {
+              if (elToFocus && elToFocus.isConnected && typeof elToFocus.focus === 'function') {
+                elToFocus.focus();
+              } else {
+                const firstChoice = controlsContainer.querySelector('button, input');
+                if (firstChoice && typeof firstChoice.focus === 'function') firstChoice.focus();
+              }
+            }, 0);
           }
-          const options = choices.map((choice) => ({
-            label: `${choice.form.numerator}/${choice.form.denominator}`,
-            value: choice.id,
-            ariaLabel: strings.reflect.matchingOptionLabelLinear(
-              choice.form.numerator,
-              choice.form.denominator,
-            ),
-          }));
 
-          const choiceGroup = createChoiceGroup({
-            legend: promptText.textContent,
-            options,
-            onSelect: (val) => {
-              dispatchAction({
-                type: 'submit-reflection',
-                response: val,
-              });
-            },
-          });
-          controlsContainer.appendChild(choiceGroup);
+          // DECISION-026 & Condition 6: Check-the-premise form and visual matching form
+          const isPremise = scene.meaning.currentTask.connectionForm === 'premise';
+
+          if (isPremise) {
+            const premiseCase = scene.meaning.premiseCase;
+            const framingEl = document.createElement('p');
+            framingEl.classList.add('premise-framing');
+            if (premiseCase && typeof strings.reflect?.premiseFramingLinear === 'function') {
+              const pres = `${premiseCase.presentedForm.numerator}/${premiseCase.presentedForm.denominator}`;
+              const src = `${premiseCase.sourceForm.numerator}/${premiseCase.sourceForm.denominator}`;
+              framingEl.textContent = strings.reflect.premiseFramingLinear(pres, src);
+            } else {
+              framingEl.textContent = strings.reflect?.premiseFraming || 'Check this renaming:';
+            }
+            promptHeader.appendChild(framingEl);
+
+            promptText.textContent = strings.reflect.premisePromptLinear || strings.reflect.premisePrompt;
+            const options = [
+              {
+                label: strings.reflect.premiseOptions.yes,
+                value: 'yes',
+                ariaLabel: strings.reflect.premiseOptions.yes,
+              },
+              {
+                label: strings.reflect.premiseOptions.no,
+                value: 'no',
+                ariaLabel: strings.reflect.premiseOptions.no,
+              },
+            ];
+
+            const choiceGroup = createChoiceGroup({
+              legend: promptText.textContent,
+              options,
+              onSelect: (val) => {
+                dispatchAction({
+                  type: 'submit-reflection',
+                  response: val,
+                });
+              },
+            });
+            controlsContainer.appendChild(choiceGroup);
+          } else {
+            const left = scene.meaning.quantities.left;
+            const targetForm = `${left.sourceForm.numerator}/${left.sourceForm.denominator}`;
+            promptText.textContent = typeof strings.reflect.matchingPromptLinear === 'function'
+              ? strings.reflect.matchingPromptLinear(targetForm)
+              : strings.reflect.matchingPrompt(targetForm);
+
+            const choices = scene.meaning.reflectionChoices;
+            if (!Array.isArray(choices) || choices.length < 3) {
+              throw new RenderContractError(
+                'MISSING_REFLECTION_CHOICES',
+                'linear matching requires at least three content-supplied choices',
+              );
+            }
+            const options = choices.map((choice) => ({
+              label: `${choice.form.numerator}/${choice.form.denominator}`,
+              value: choice.id,
+              ariaLabel: strings.reflect.matchingOptionLabelLinear(
+                choice.form.numerator,
+                choice.form.denominator,
+              ),
+            }));
+
+            const choiceGroup = createChoiceGroup({
+              legend: promptText.textContent,
+              options,
+              onSelect: (val) => {
+                dispatchAction({
+                  type: 'submit-reflection',
+                  response: val,
+                });
+              },
+            });
+            controlsContainer.appendChild(choiceGroup);
+          }
         }
         break;
       }

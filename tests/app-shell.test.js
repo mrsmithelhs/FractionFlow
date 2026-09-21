@@ -311,4 +311,123 @@ describe('Plan 09 app shell and upstream display switcher', () => {
     expect(app.getState().status).toBe('resolved');
     expect(app.getState().established.reflection.premiseCaseId).toBe('premise-rel-prime-12');
   });
+
+  it('makes replay real across in-place, juxtaposed, and sequential conditions (Repair 06 Item 1)', () => {
+    const replayButton = Array.from(root.querySelectorAll('.app-secondary-button'))
+      .find((b) => b.textContent.includes('Replay'));
+    expect(replayButton).toBeTruthy();
+
+    // 1. Encounter beat: replay button is disabled
+    expect(replayButton.disabled).toBe(true);
+
+    // Advance to decide beat
+    app.dispatch({ type: 'acknowledge-encounter' });
+    app.dispatch({ type: 'submit-notice', matchesUnits: false });
+    expect(app.getState().beat).toBe('decide');
+    expect(replayButton.disabled).toBe(false);
+
+    // Clicking replay before any conversion gives intentional guidance
+    replayButton.click();
+    const notice = root.querySelector('.app-support-notice');
+    expect(notice.textContent).toBe('Finish a change before replaying it.');
+    expect(replayButton.getAttribute('aria-pressed')).toBe('false');
+
+    // Establish common denominator and first conversion (left: 2/3 -> 8/12)
+    app.dispatch({ type: 'propose-common-denominator', proposed: whole(12) });
+    app.dispatch({ type: 'submit-equivalent-form', proposed: fraction(8, 12) });
+
+    // Now in transform beat for right fraction (with left converted)
+    expect(app.getState().beat).toBe('transform');
+    expect(app.getState().established.lastConversion).toBeTruthy();
+
+    // --- Condition 1: New parts only (in-place / D-02-M) ---
+    // In-place before replay does not show replay card
+    expect(root.querySelector('.fraction-bar-in-place-replay')).toBeNull();
+
+    // Trigger replay
+    replayButton.click();
+    expect(replayButton.getAttribute('aria-pressed')).toBe('true');
+    expect(notice.textContent).toBe('Take another look at the current bars and symbols.');
+
+    // Shows starting parts (2/3) with badge and toggle button (Condition A)
+    const replayCard = root.querySelector('.app-visual-view .fraction-bar-in-place-replay');
+    expect(replayCard).not.toBeNull();
+    expect(replayCard.textContent).toContain('Starting parts: 2/3');
+    const toggleBtn = replayCard.querySelector('.fraction-bar-toggle-btn');
+    expect(toggleBtn).not.toBeNull();
+    expect(toggleBtn.textContent).toBe('Show new parts');
+
+    // Clicking toggle button dismisses replay cleanly
+    toggleBtn.click();
+    expect(root.querySelector('.app-visual-view .fraction-bar-in-place-replay')).toBeNull();
+    expect(replayButton.getAttribute('aria-pressed')).toBe('false');
+
+    // --- Condition 2: Compare (juxtaposed / D-02-J) ---
+    root.querySelector('.app-gear-button').click();
+    root.querySelector('[data-condition-id="phase2-bundle-2"]').click();
+
+    expect(root.querySelector('.choreography-juxtaposed.replay-active')).toBeNull();
+    replayButton.click();
+    expect(replayButton.getAttribute('aria-pressed')).toBe('true');
+    expect(root.querySelector('.choreography-juxtaposed.replay-active')).not.toBeNull();
+
+    // Toggle off replay
+    replayButton.click();
+    expect(replayButton.getAttribute('aria-pressed')).toBe('false');
+    expect(root.querySelector('.choreography-juxtaposed.replay-active')).toBeNull();
+
+    // --- Condition 3: Steps (sequential / D-02-S) ---
+    root.querySelector('.app-gear-button').click();
+    root.querySelector('[data-condition-id="phase2-bundle-3"]').click();
+
+    expect(root.querySelector('.choreography-sequential.replay-active')).toBeNull();
+    replayButton.click();
+    expect(replayButton.getAttribute('aria-pressed')).toBe('true');
+    expect(root.querySelector('.choreography-sequential.replay-active')).not.toBeNull();
+    replayButton.click();
+    expect(replayButton.getAttribute('aria-pressed')).toBe('false');
+  });
+
+  it('enters Inspection Mode at reflect, unmounting choices and restoring focus on exit (Conditions B & D)', () => {
+    const replayButton = Array.from(root.querySelectorAll('.app-secondary-button'))
+      .find((b) => b.textContent.includes('Replay'));
+
+    // Advance through the episode to reflect
+    app.dispatch({ type: 'acknowledge-encounter' });
+    app.dispatch({ type: 'submit-notice', matchesUnits: false });
+    app.dispatch({ type: 'propose-common-denominator', proposed: whole(12) });
+    app.dispatch({ type: 'submit-equivalent-form', proposed: fraction(8, 12) });
+    app.dispatch({ type: 'submit-equivalent-form', proposed: fraction(3, 12) });
+    app.dispatch({ type: 'submit-operation-result', proposed: fraction(11, 12) });
+    app.dispatch({ type: 'submit-resolution', proposed: fraction(11, 12) });
+
+    expect(app.getState().beat).toBe('reflect');
+
+    // Visual matching choices are present
+    const visualView = root.querySelector('.app-visual-view');
+    const initialChoices = visualView.querySelectorAll('.matching-choice-btn');
+    expect(initialChoices.length).toBeGreaterThanOrEqual(3);
+
+    // Trigger replay -> Inspection Mode
+    replayButton.click();
+
+    // Inspection card is mounted, choices are unmounted (Condition D)
+    const inspectionCard = visualView.querySelector('.replay-inspection-card');
+    expect(inspectionCard).not.toBeNull();
+    expect(visualView.querySelectorAll('.matching-choice-btn').length).toBe(0);
+    expect(visualView.querySelectorAll('.control-choice-btn').length).toBe(0);
+
+    const doneButton = inspectionCard.querySelector('.app-done-looking-button');
+    expect(doneButton).not.toBeNull();
+    expect(doneButton.textContent).toBe('Done looking');
+
+    // Exit Inspection Mode by clicking "Done looking"
+    doneButton.click();
+
+    // Choices remount cleanly
+    expect(visualView.querySelector('.replay-inspection-card')).toBeNull();
+    const restoredChoices = visualView.querySelectorAll('.matching-choice-btn');
+    expect(restoredChoices.length).toBe(initialChoices.length);
+    expect(replayButton.getAttribute('aria-pressed')).toBe('false');
+  });
 });

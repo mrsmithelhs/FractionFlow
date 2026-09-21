@@ -376,6 +376,95 @@ describe('Scaffold-Leakage Invariants Suite & Failing-First Verifications (Plan 
     targetBtn.classList.remove('selected');
   });
 
+  it('Invariant 6b / Condition D (Inspection Mode at reflect): genuinely unmounts reflection choices during replay and remounts identically on exit without leak, fail-first verified', () => {
+    let episode = canonicalEpisode(PHASE2_REFLECTION_EPISODE_DEFINITION);
+    episode = applyIntent(episode, { type: 'acknowledge-encounter' });
+    episode = applyIntent(episode, { type: 'submit-notice', matchesUnits: false });
+    episode = applyIntent(episode, {
+      type: 'propose-common-denominator',
+      proposed: { kind: 'fraction', numerator: '12', denominator: '1' },
+    });
+    episode = applyIntent(episode, {
+      type: 'submit-equivalent-form',
+      proposed: { kind: 'fraction', numerator: '8', denominator: '12' },
+    });
+    episode = applyIntent(episode, {
+      type: 'submit-equivalent-form',
+      proposed: { kind: 'fraction', numerator: '3', denominator: '12' },
+    });
+    episode = applyIntent(episode, {
+      type: 'submit-operation-result',
+      proposed: { kind: 'fraction', numerator: '11', denominator: '12' },
+    });
+    episode = applyIntent(episode, {
+      type: 'submit-resolution',
+      proposed: { kind: 'fraction', numerator: '11', denominator: '12' },
+    });
+
+    // 1. Initial reflect scene (isReplaying: false)
+    const normalScene = resolveRenderableScene({ state: episode, isReplaying: false });
+    const { visualBox, linearBox, visual, linear } = mountBoth(normalScene);
+
+    // Initial choices are present and clean
+    const initialVisualButtons = [...visualBox.querySelectorAll('.control-choice-btn')];
+    const initialLinearButtons = [...linearBox.querySelectorAll('.control-choice-btn')];
+    expect(initialVisualButtons.length).toBeGreaterThanOrEqual(3);
+    expect(initialLinearButtons.length).toBeGreaterThanOrEqual(3);
+    expect(() => assertResolveReflectNoLeak(visualBox, linearBox)).not.toThrow();
+
+    const initialVisualTexts = initialVisualButtons.map((b) => b.textContent);
+    const initialLinearTexts = initialLinearButtons.map((b) => b.textContent);
+
+    // 2. Transition to Inspection Mode (isReplaying: true)
+    const replayScene = resolveRenderableScene({ state: episode, isReplaying: true });
+    visual.update(replayScene);
+    linear.update(replayScene);
+
+    // Genuinely unmounted in both paths (Condition D / DECISION-014)
+    expect(visualBox.querySelectorAll('.control-choice-btn').length).toBe(0);
+    expect(visualBox.querySelectorAll('.matching-choice-btn').length).toBe(0);
+    expect(linearBox.querySelectorAll('.control-choice-btn').length).toBe(0);
+
+    // Inspection cards and Done Looking controls are present
+    expect(visualBox.querySelector('.replay-inspection-card')).not.toBeNull();
+    expect(visualBox.querySelector('.app-done-looking-button')).not.toBeNull();
+    expect(linearBox.querySelector('.linear-replay-inspection-card')).not.toBeNull();
+    expect(linearBox.querySelector('.app-done-looking-button')).not.toBeNull();
+
+    // 3. Exit Inspection Mode (isReplaying: false)
+    const restoredScene = resolveRenderableScene({ state: episode, isReplaying: false });
+    visual.update(restoredScene);
+    linear.update(restoredScene);
+
+    // Choices are remounted cleanly
+    const restoredVisualButtons = [...visualBox.querySelectorAll('.control-choice-btn')];
+    const restoredLinearButtons = [...linearBox.querySelectorAll('.control-choice-btn')];
+    expect(restoredVisualButtons.length).toBe(initialVisualButtons.length);
+    expect(restoredLinearButtons.length).toBe(initialLinearButtons.length);
+
+    expect(restoredVisualButtons.map((b) => b.textContent)).toEqual(initialVisualTexts);
+    expect(restoredLinearButtons.map((b) => b.textContent)).toEqual(initialLinearTexts);
+
+    expect(() => assertResolveReflectNoLeak(visualBox, linearBox)).not.toThrow();
+
+    // 4. Failing-first: catch pseudo-unmount (hidden rather than unmounted during replay)
+    visual.update(replayScene);
+    linear.update(replayScene);
+
+    const phantomChoice = doc.createElement('button');
+    phantomChoice.classList.add('control-choice-btn');
+    phantomChoice.setAttribute('hidden', 'true');
+    visualBox.appendChild(phantomChoice);
+
+    expect(() => {
+      if (visualBox.querySelectorAll('.control-choice-btn').length > 0) {
+        throw new Error('Scaffold Leak [Invariant 6b]: Reflection choices retained in DOM during replay inspection');
+      }
+    }).toThrow(/Invariant 6b/);
+
+    visualBox.removeChild(phantomChoice);
+  });
+
   // --- Invariant 7: Help & Replay ---
   it('Invariant 7 (Help/Replay): supported states record provenance and do not alter mathematical requirement, fail-first verified', () => {
     let episode = canonicalEpisode();

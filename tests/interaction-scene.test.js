@@ -385,10 +385,36 @@ describe('Plan 06 semantic Scene Model', () => {
     expect(isSceneCurrent(scene, currentInput)).toBe(false);
     expect(isSceneCurrent(scene, { ...originalInput, representationRole: 'symbolic' })).toBe(false);
     expect(isSceneCurrent(scene, { ...originalInput, presentationMode: 'reduced-motion' })).toBe(false);
+    expect(isSceneCurrent(scene, { ...originalInput, isReplaying: true })).toBe(false);
     expect(() => deliverToStub(scene, currentInput, deliveries))
       .toThrowError(expect.objectContaining({ code: 'STALE_SCENE' }));
     expect(deliveries).toEqual([]);
     expect(assertSceneCurrent(scene, originalInput)).toEqual(scene);
+  });
+
+  it('assertSceneCurrent verifies currency contract across isReplaying states (Condition C)', () => {
+    const original = createEpisode({ instance: canonicalInstance() });
+    const originalInput = sceneInput(original);
+    const scene = projectScene(originalInput);
+
+    const replayInput = { ...originalInput, isReplaying: true };
+    const replayScene = projectScene(replayInput);
+    expect(replayScene.presentation.isReplaying).toBe(true);
+    expect(assertSceneCurrent(replayScene, replayInput)).toEqual(replayScene);
+
+    // Stale when isReplaying mismatches in either direction
+    expect(() => assertSceneCurrent(replayScene, originalInput)).toThrowError(
+      expect.objectContaining({ code: 'STALE_SCENE' }),
+    );
+    expect(() => assertSceneCurrent(scene, replayInput)).toThrowError(
+      expect.objectContaining({ code: 'STALE_SCENE' }),
+    );
+
+    // Round-trip works when authentic
+    const roundTrippedReplay = JSON.parse(JSON.stringify(replayScene));
+    const admitted = assertSceneCurrent(roundTrippedReplay, replayInput);
+    expect(admitted).toEqual(replayScene);
+    expect(admitted.presentation.isReplaying).toBe(true);
   });
 
   it('rejects stale capability refusals before stub-consumer delivery', () => {

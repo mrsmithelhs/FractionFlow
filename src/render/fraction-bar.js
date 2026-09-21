@@ -64,6 +64,7 @@ export function createFractionBarRenderer({
   side = 'left',
   container,
   strings = STRINGS,
+  dispatchAction,
 } = {}) {
   if (!container) {
     throw new Error('container element is required for fraction-bar renderer');
@@ -105,9 +106,10 @@ export function createFractionBarRenderer({
     // Clear and build bar contents
     rootEl.replaceChildren();
 
-    // Determine choreography treatment when a conversion is established (transform or operate)
+    // Determine choreography treatment when a conversion is established (transform or operate) or replaying
+    const isReplaying = Boolean(scene.presentation?.isReplaying);
     const beat = scene.meaning.currentTask?.beat;
-    const isConversionBeat = beat === 'transform' || beat === 'operate';
+    const isConversionBeat = beat === 'transform' || beat === 'operate' || isReplaying;
     const isChanged = Boolean(scene.meaning.transition?.changed?.includes(side));
     const choreography = scene.presentation.choreography || 'in-place';
     const isJuxtaposed = isConversionBeat && isChanged && choreography === 'juxtaposed';
@@ -116,6 +118,7 @@ export function createFractionBarRenderer({
     if (isJuxtaposed) {
       rootEl.classList.add('choreography-juxtaposed');
       rootEl.classList.remove('choreography-sequential');
+      rootEl.classList.toggle('replay-active', isReplaying);
 
       const pre = scene.meaning.transition.pre[side];
       const post = scene.meaning.transition.post[side];
@@ -181,6 +184,7 @@ export function createFractionBarRenderer({
     } else if (isSequential) {
       rootEl.classList.add('choreography-sequential');
       rootEl.classList.remove('choreography-juxtaposed');
+      rootEl.classList.toggle('replay-active', isReplaying);
 
       const pre = scene.meaning.transition.pre[side];
       const post = scene.meaning.transition.post[side];
@@ -253,9 +257,63 @@ export function createFractionBarRenderer({
       wrapper.appendChild(step2Card);
 
       rootEl.appendChild(wrapper);
+    } else if (isReplaying && isChanged && scene.meaning.transition && choreography === 'in-place') {
+      rootEl.classList.remove('choreography-juxtaposed', 'choreography-sequential');
+      rootEl.classList.add('choreography-in-place', 'replay-active');
+
+      const pre = scene.meaning.transition.pre[side];
+      const preNum = Number(pre.numerator);
+      const preDen = Number(pre.denominator);
+
+      rootEl.setAttribute(
+        'aria-label',
+        typeof strings.transition?.replayingAria === 'function'
+          ? strings.transition.replayingAria(side, preNum, preDen)
+          : `${side === 'left' ? 'First' : 'Second'} fraction replaying: started with ${preNum} of ${preDen} equal parts.`,
+      );
+
+      const wrapper = document.createElement('div');
+      wrapper.classList.add('fraction-bar-in-place-replay');
+
+      const headerRow = document.createElement('div');
+      headerRow.classList.add('fraction-bar-replay-header');
+
+      const badge = document.createElement('span');
+      badge.classList.add('fraction-bar-badge');
+      badge.textContent = typeof strings.transition?.replayingLabel === 'function'
+        ? strings.transition.replayingLabel(preNum, preDen)
+        : `Starting parts: ${preNum}/${preDen}`;
+      headerRow.appendChild(badge);
+
+      const toggleBtn = document.createElement('button');
+      toggleBtn.type = 'button';
+      toggleBtn.classList.add('fraction-bar-toggle-btn', 'app-secondary-button');
+      toggleBtn.textContent = strings.transition?.showNewParts || 'Show new parts';
+      toggleBtn.setAttribute('aria-label', toggleBtn.textContent);
+      toggleBtn.addEventListener('click', () => {
+        if (dispatchAction) {
+          dispatchAction({ type: 'dismiss-replay' });
+        }
+      });
+      headerRow.appendChild(toggleBtn);
+      wrapper.appendChild(headerRow);
+
+      const body = document.createElement('div');
+      body.classList.add('fraction-bar-row-body');
+      const elements = createTrackAndReadout({
+        numerator: preNum,
+        denominator: preDen,
+        isSubdivided: false,
+        mode,
+      });
+      body.appendChild(elements.trackEl);
+      body.appendChild(elements.readoutEl);
+      wrapper.appendChild(body);
+
+      rootEl.appendChild(wrapper);
     } else {
       // Standard single-bar layout (in-place or default)
-      rootEl.classList.remove('choreography-juxtaposed', 'choreography-sequential');
+      rootEl.classList.remove('choreography-juxtaposed', 'choreography-sequential', 'replay-active');
       rootEl.setAttribute('aria-label', strings.encounter.barAriaLabel(side, numerator, denominator));
 
       const isSubdivided = Boolean(scene.meaning.transition && scene.meaning.transition.changed.includes(side));
