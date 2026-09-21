@@ -3,7 +3,7 @@ id: plan-10
 title: Phase 3 Generalization — Design and Reach Assessment
 status: draft
 depends_on: [plan-09]
-gate: "Owner reviews and accepts the design dossier. No Phase 3 implementation packet may be drafted until it is accepted. Design artifacts are proposals, not settled decisions; any new decision is reported for owner disposition rather than taken."
+gate: "Owner reviews and accepts the design dossier. No Phase 3 *problem-family* implementation packet may be assigned until it is accepted; this gate does not block plan-11, plan-12, plan-13, or plan-14, and does not block drafting. Design artifacts are proposals, not settled decisions; any new decision is reported for owner disposition rather than taken."
 superseded_by: null
 resolution: null
 summary: >-
@@ -27,7 +27,7 @@ summary: >-
 - Date: 2026-09-21
 - Packet type: investigation / docs
 - Mutation level: docs-only (dossier at exactly `docs/development/phase-3-generalization-design/`; no application source)
-- Approval gate: owner reviews and accepts the dossier; orchestrator confirms it honors every deferred boundary before any Phase 3 implementation packet is drafted
+- Approval gate: owner reviews and accepts the dossier; orchestrator confirms it honors every deferred boundary before any Phase 3 problem-family implementation packet is assigned
 - Depends on: `plan-09` (there must be a working episode to generalize *from*)
 - Expected artifacts: dossier at exactly `docs/development/phase-3-generalization-design/` with the file set listed in Scope; progress report
 
@@ -127,9 +127,16 @@ Required behavior:
 - Each classification cites the specific mechanism it reuses or lacks, by file and symbol —
   `beat-container.js` beat cases, `classification.js` recovery kinds, `content/` family contracts,
   `fraction-bar.js` rendering paths.
-- Where a family appears to reuse an existing motif, say what would *reach* it: which content, which
-  generator change, which condition. The Phase 2 lesson is that a mechanism's existence is not
-  evidence that anything reaches it.
+- **Demonstrated reuse and plausible reuse are different classifications and must be labelled
+  differently.** A family may be called *demonstrated reuse* only when the dossier records an
+  executable current path — the configuration, the starting surface, and the action sequence that
+  reaches the motif today, in the shape `plan-14`'s route matrix uses. Everything else is *plausible
+  reuse*, and must say what is missing before it could be witnessed.
+- **Every "needs a representation the bar cannot give" classification carries a refusal witness**: the
+  concrete current behavior — an error, a guard, a blank, a wrong drawing — captured from the running
+  code, not an assertion that it would fail.
+- The Phase 2 lesson is that a mechanism's existence is not evidence that anything reaches it, and a
+  dossier can repeat that failure in prose as easily as code can repeat it in a registry.
 
 Constraints:
 
@@ -170,6 +177,10 @@ Required behavior:
 - [ ] Dossier exists at exactly `docs/development/phase-3-generalization-design/` with the five named
       files and no others.
 - [ ] Every §27 family and §28 focused episode classified, with code-level citation.
+- [ ] Each classification labelled **demonstrated reuse**, **plausible reuse**, **needs a new beat**, or
+      **needs a representation the bar cannot give**; no unlabelled rows.
+- [ ] Every demonstrated-reuse row carries an executable current path; every cannot-give row carries a
+      captured refusal witness.
 - [ ] OQ-20 proposal includes at least two candidates, a recommendation, and 360px consequences.
 - [ ] Mixed-number position stated with reasoning.
 - [ ] Sequencing proposal includes dependency reasoning.

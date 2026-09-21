@@ -2,8 +2,8 @@
 id: plan-12
 title: Entry Page and Session Shape
 status: draft
-depends_on: [plan-09]
-gate: "Owner reviews the entry page and the returned title placement on rendered screens at the deployed URL, against DECISION-021 criteria 1 and 3."
+depends_on: [plan-09, plan-14]
+gate: "Mechanism confirmation before any source work: the implementer proposes, and the owner approves, answers to the five questions OQ-19 leaves open. Then owner review of the entry page and the episode surface on rendered screens against DECISION-021 criteria 1 and 3."
 superseded_by: null
 resolution: null
 summary: >-
@@ -25,8 +25,8 @@ summary: >-
 - Date: 2026-09-21
 - Packet type: feature
 - Mutation level: user-facing release
-- Approval gate: owner review of the entry page and the episode surface on rendered screens
-- Depends on: `plan-09` (the shell, the condition registry, and the footer arrangement this replaces)
+- Approval gate: owner-approved OQ-19 mechanism proposal, then owner review on rendered screens
+- Depends on: `plan-09` (the shell, the condition registry, and the footer arrangement this replaces); `plan-14` (entry, return, and condition transport are route claims)
 - Expected artifacts: `src/app/` changes; entry-page module; OQ-19 resolution recorded; progress report
 
 ## Goal
@@ -45,12 +45,18 @@ packet gives the app a front door and returns the title to it.
 - **No learner preferences.** The gear menu stays reviewer-only and condition-only.
 - **No routing library, no client-side router framework.** Static-only.
 - **No second episode.**
-- **No new decisions.** If the work exposes one, report it.
+- **The implementer does not settle OQ-19 by building it.** The five open questions are the owner's;
+  this packet routes them through a mechanism gate rather than answering them in code.
 
 ## Depends on
 
 `plan-09` complete. The condition registry, the episode shell, and the footer arrangement this packet
 rearranges all exist and are owner-accepted.
+
+`plan-14` accepted. "The condition chosen on the entry page is the episode's condition" is precisely
+the kind of claim that passed in `plan-09` while every condition rendered identically, and "returning
+discards state" is precisely the kind of claim a direct reset call can satisfy without the learner's
+route ever being exercised. Both belong in the route matrix.
 
 ## Why this packet exists
 
@@ -105,6 +111,27 @@ Contracts this packet must preserve:
 
 ## Implementation Requirements
 
+### Requirement 0 — The OQ-19 mechanism proposal (gate)
+
+**Propose and stop.** OQ-19 states its open questions explicitly, and they are owner decisions, not
+implementation details. Answer each as a proposal with reasoning, and wait for approval before writing
+source:
+
+1. **Does an entry page ship at all**, or is there a better resolution of the footer-title workaround?
+2. **What does it hold beyond the name?**
+3. **Does it gate the episode, or is it merely passed through?** A page the learner must act on and a
+   page that appears once and never returns are different products.
+4. **How does a learner return to it**, and how does that relate to the existing "Try this problem
+   again" control? Two notions of reset is a defect, not a feature.
+5. **Does the gear belong there** rather than in the episode footer? OQ-19 pairs this with the
+   DECISION-019 question of who the switcher is for once the app is public.
+
+Also propose the **focus contract**: where focus lands after "begin", after a return, and what a
+keyboard user's first Tab reaches on each surface. `plan-09` lost focus to `BODY` twice on claims that
+had never been observed; this packet states the contract up front instead.
+
+The proposal names what it would cost at 360px. Everything below is conditional on approval.
+
 ### Requirement 1 — The entry page
 
 Required behavior:
@@ -152,12 +179,27 @@ Required behavior:
   repairs reclaimed roughly 95px at the bars and moved the title out of the top; a regression here
   undoes accepted work.
 
+### Requirement 5 — Route witnesses
+
+Required behavior:
+
+- Route-matrix rows in `plan-14`'s schema for: **entry → select each registered condition → begin →
+  observe that condition's expected route signature**, with the other conditions as negative controls.
+  A default condition silently launching regardless of selection must fail.
+- A row for **return mid-episode → re-enter → observe fresh state**, driven through the actual entry
+  and return controls, not a reset call.
+- Browser witness for the focus contract at both transitions.
+
 ## Validation Checklist
 
 - [ ] App opens on an entry page; one control begins the episode.
 - [ ] Condition switcher reachable from the entry page, reviewer-only, codes internal.
 - [ ] Condition selected upstream; appears in the replay envelope; does not persist across reload.
+- [ ] Mechanism proposal answering all five OQ-19 questions plus the focus contract, approved before
+      source work.
 - [ ] Return path exists, discards state, and does not conflict with "Try this problem again."
+- [ ] Route-matrix rows for per-condition launch (with negative controls) and for return to re-entry.
+- [ ] Focus contract verified in a browser at both transitions.
 - [ ] Hierarchy holds at 360px, tablet, and 1440px.
 - [ ] 360px vertical budget measured before and after, against a stated viewport height.
 - [ ] Entry page has no metrics, counters, or progress, and at most one heading level below the name.
@@ -174,6 +216,7 @@ Stop and report if:
 - The entry page appears to require instructional or mathematical state.
 - Returning from an episode cannot discard state cleanly without an interaction-layer change.
 - The entry page and the clutter boundary appear to be in conflict.
+- The gear menu's placement appears to require widening DECISION-019's surface.
 
 ## Implementer Authority Boundaries
 

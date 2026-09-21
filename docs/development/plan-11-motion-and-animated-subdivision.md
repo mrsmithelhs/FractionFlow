@@ -2,8 +2,8 @@
 id: plan-11
 title: Motion and Animated Subdivision
 status: draft
-depends_on: [plan-09]
-gate: "Owner reviews the motion against DECISION-021 criterion 4 on rendered screens at the deployed URL. Motion is a prototype variable (D-01, D-02); this packet may not convert it into a settled default."
+depends_on: [plan-09, plan-14]
+gate: "Mechanism confirmation before implementation: how the subdivision animates without rebuilding the element, and what it does to the scene contract, are proposed and approved first. Then owner review against DECISION-021 criterion 4 on rendered screens at the deployed URL. Motion is a prototype variable (D-01, D-02); this packet may not convert it into a settled default."
 superseded_by: null
 resolution: null
 summary: >-
@@ -25,8 +25,8 @@ summary: >-
 - Date: 2026-09-21
 - Packet type: feature
 - Mutation level: user-facing release
-- Approval gate: owner review of the motion on rendered screens against DECISION-021 criterion 4
-- Depends on: `plan-09` (the display conditions, replay, and reduced-motion suppressors it extends)
+- Approval gate: mechanism confirmation, then owner review of the motion on rendered screens against DECISION-021 criterion 4
+- Depends on: `plan-09` (the conditions, replay, and reduced-motion suppressors it extends); `plan-14` (the animated arm is witnessed by the route matrix, not by a staged screenshot)
 - Expected artifacts: `src/render/` and `src/styles/` changes; restored condition label; evidence of reduced-motion parity that means something; progress report
 
 ## Goal
@@ -52,6 +52,11 @@ for restoration here.
 `plan-09` complete. The condition registry, the three choreography treatments, the replay mechanism,
 and the reduced-motion suppressors in `src/styles/render.css` all already exist; this packet gives the
 first of them something to animate.
+
+`plan-14` accepted. An animated condition is exactly the kind of behavior `plan-09` shipped four times
+without a path to it, and a screenshot staged by test code proves nothing about whether a reviewer can
+select the condition and see the animation. The route matrix is how this packet's central claim is
+checked.
 
 ## Why this packet exists
 
@@ -147,7 +152,23 @@ Required behavior:
   condition does. The `plan-09` comment recording the original wording is removed once honored.
 - The label passes DECISION-004: grade 2–3, concrete, no specification terminology.
 
-### Requirement 4 — Layout cost
+### Requirement 4 — Route witnesses, not staged captures
+
+Required behavior:
+
+- Route-matrix rows, in `plan-14`'s schema, covering: **select the animated condition through the app →
+  reach a conversion through ordinary learner actions → observe the mid-transition state → observe the
+  stable post-state → replay**, in standard motion and in reduced motion.
+- Each row carries the other choreographies as negative controls, so an animated arm that renders
+  identically to a static one fails rather than passes.
+- Browser witness for every claim about geometry, timing, or visibility. The mock DOM cannot see any
+  of them.
+
+Constraints:
+
+- A capture produced by calling the renderer directly is not a witness.
+
+### Requirement 5 — Layout cost
 
 Required behavior:
 
@@ -160,6 +181,9 @@ Required behavior:
 - [ ] Every transition learner-triggered; no timer governs content in any motion mode.
 - [ ] Both endpoints inspectable indefinitely.
 - [ ] Reduced-motion parity demonstrated by captured output at the same beat, both modes.
+- [ ] Route-matrix rows exist for condition selection → conversion → mid-transition → post-state →
+      replay, in both motion modes, with the other choreographies as negative controls.
+- [ ] Mechanism proposal reported and approved before implementation.
 - [ ] Bundle 1's label describes the behavior; the parking comment is gone.
 - [ ] 360px measured at rest and mid-transition, against a stated viewport height.
 - [ ] Replay works in the animated condition as it does in the others.
@@ -182,6 +206,9 @@ Stop and report if:
 - Status verbs belong to the orchestrator and owner.
 - **The implementer may not declare the motion accepted, calm, or preferred.** D-01 remains a
   prototype variable; a working animated arm is the deliverable, not a recommendation that it wins.
+- **The animation is scoped to the existing unlike-denominator conversion.** It is a prototype arm made
+  testable, not a visual grammar for families that do not yet exist. If it appears to generalize, say
+  so in the report and leave the generalizing to `plan-10`.
 - Verification claims about focus, layout, or visibility must come from a browser, not from the test
   harness. This is a standing lesson from `plan-09`.
 
