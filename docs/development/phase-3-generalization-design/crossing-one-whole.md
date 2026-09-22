@@ -125,33 +125,68 @@ Candidate 1 is the only representation that satisfies all founding architectural
 
 ## 4. 360px Mobile Viewport Layout Budget
 
-DECISION-009 mandates responsive support down to a 360px viewport width (with reflow to 320px). DECISION-021 criterion 1 requires that the primary question and controls remain visible without competing chrome or unnecessary scrolling.
+DECISION-009 mandates responsive support down to a 360px viewport width (with reflow to 320px). DECISION-021 criterion 1 requires that the primary question and controls remain visible without competing chrome or unnecessary scrolling. Throughout Phase 2 and `plan-09`, geometry was measured against the project's two established reference viewports:
+- **`360×740`**: Mobile viewport reference (e.g., standard Android/iOS phone).
+- **`360×752`**: School Chromebook / compact tablet reference.
 
-Here is the exact spatial budget for Candidate 1 on a 360px $\times$ 640px viewport:
+*(Note: An arbitrary 640px height has no standing in repo decisions or acceptance records; reference viewports are 740px and 752px).*
 
-```
-+-------------------------------------------------------------+ 360px Viewport
-| Header: Milestone Context (Compact single line)       36px  |
-+-------------------------------------------------------------+
-| Active Prompt: "Add the shaded parts together."       44px  |
-+-------------------------------------------------------------+
-| Visual Area (Multi-Whole Stack):                            |
-|                                                             |
-| Whole 1: [■■■■■■■■]  8/8                         40px  |
-| Whole 2: [■■□□□□□□]  2/8                         40px  |
-| Stack Gap:                                             8px  |
-| Total Visual Height:                                  88px  |
-+-------------------------------------------------------------+
-| Symbolic Row:  7/8 + 3/8 = [ ? ]                      42px  |
-+-------------------------------------------------------------+
-| Interactive Input: Numeric field + Submit button      52px  |
-+-------------------------------------------------------------+
-| Spacing & Margins:                                    58px  |
-+-------------------------------------------------------------+
-| TOTAL CONSUMED HEIGHT:                               320px  |
-| REMAINING VIEWPORT MARGIN (to 640px fold):           320px  |
-+-------------------------------------------------------------+
-```
+### Measured Baseline at the `operate` Beat
+
+In the running deployed application at commit `199c104`, measured at the `operate` beat on a 360px viewport:
+- **Submit button bottom edge:** **541px**
+- **Page scroll height:** **905px**
+- **One fraction bar height:** **47px** (track + readout container + vertical margins; the initial sketch assumed 40px)
+- **Baseline clearance to 740px fold:** $740\text{px} - 541\text{px} = \mathbf{199\text{px}}$
+- **Baseline clearance to 752px fold:** $752\text{px} - 541\text{px} = \mathbf{211\text{px}}$
+- *(Baseline clearance to an unstated 640px height: $640\text{px} - 541\text{px} = 99\text{px}$)*
+
+Crucially, the 541px baseline already carries all active chrome of the running episode:
+1. Header / title element (`#app-header` / footer arrangement per `plan-09` Repair 01)
+2. Milestone context line (`.milestone-line`)
+3. The "Show previous steps" / completed-beats disclosure section (`.completed-beats-section`)
+4. Two rendered addend bars (Left: 47px, Right: 47px)
+5. Symbolic row with equals sign and question box (`.render-symbolic-section`)
+6. Active `operate` prompt ("Add the shaded parts together.")
+7. Numeric input field and Submit button (`#operate-sum-input`, `.control-btn`)
+*(The remaining 364px to the 905px scroll height comprises the help/replay footer and app bottom chrome below the fold).*
+
+### Delta Added by Candidate 1 Design
+
+For results crossing one whole ($\text{numerator} > \text{denominator}$), Candidate 1 renders a second unit whole bar:
+- **Second whole bar:** **47px** (measured height matching the primary bar)
+- **Inter-bar gap:** **8px**
+- **Added vertical delta:** $47\text{px} + 8\text{px} = \mathbf{55\text{px}}$
+
+#### Without Mitigation:
+If the second whole bar is added directly below the existing visual model without adjusting the addend bars:
+- Submit button bottom edge moves from $541\text{px} \to 541\text{px} + 55\text{px} = \mathbf{596\text{px}}$.
+- **Clearance to 740px fold:** $740\text{px} - 596\text{px} = \mathbf{144\text{px}}$.
+- **Clearance to 752px fold:** $752\text{px} - 596\text{px} = \mathbf{156\text{px}}$.
+- *(Clearance to an unstated 640px height: $640\text{px} - 596\text{px} = 44\text{px}$).*
+
+**The recommendation survives:** At 596px, the Submit button remains inside the fold for both reference viewports. However, claiming a "320px margin" was an idealized component sketch that omitted existing chrome. Stating clearance accurately rather than generously: the resting unmitigated margin is 144px at 740px and 156px at 752px. Furthermore, if richer choreography is active (such as `juxtaposed` or `sequential` replay, which adds comparison rows of 47px–112px per `plan-09` measurements), Submit can push to 701px–746px, severely eroding fold clearance.
+
+### Required Mitigation: Collapsing Addend Bars at the Operate Beat
+
+Because displaying two addend bars ($\sim 94\text{px}$) simultaneously with a two-whole result stack ($102\text{px}$) would accumulate four bars ($\sim 200\text{px}$ of visual elements), **collapsing the addend bars into the completed-beats summary section is REQUIRED, not optional.**
+
+#### How the Required Mitigation Works:
+1. Upon transitioning from `transform` to `operate`, the two individual addend bars (`left` and `right`) are dismounted from the active visual stage (`.fraction-bars-wrapper`).
+2. They are collapsed into the inspectable completed-beats summary section (`.completed-beats-section`) as compact text milestone lines (e.g., `"First fraction: 7/8"`, `"Second fraction: 3/8"`, conforming strictly to DECISION-014 / Finding R6).
+3. The active visual stage is dedicated exclusively to the **two-whole result stack** (Whole 1: 8/8, Whole 2: 2/8).
+
+#### Measured Geometry with Required Mitigation Applied:
+- **Retired elements:** Two addend bars ($47\text{px} \times 2 = 94\text{px}$) removed from the active stage.
+- **Added elements:** Two result bars plus gap ($47\text{px} \times 2 + 8\text{px} = 102\text{px}$) mounted on the active stage.
+- **Net active visual delta:** $102\text{px} - 94\text{px} = \mathbf{+8\text{px}}$.
+- **Completed steps text delta:** Text milestone line added to completed-beats disclosure adds $\sim 24\text{px}$–$30\text{px}$.
+- **Net Submit bottom position:** $541\text{px} + 8\text{px} + 26\text{px} \approx \mathbf{575\text{px}}$.
+- **Verified clearance to 740px fold:** $740\text{px} - 575\text{px} = \mathbf{165\text{px}}$ ($\sim 22.3\%$ viewport margin).
+- **Verified clearance to 752px fold:** $752\text{px} - 575\text{px} = \mathbf{177\text{px}}$ ($\sim 23.5\%$ viewport margin).
+- *(Clearance to 640px height: $640\text{px} - 575\text{px} = 65\text{px}$).*
+
+This makes Candidate 1 robust, calm, and spacious, ensuring that all interactive elements remain comfortably above the fold with verified margins under all reference conditions.
 
 ### Horizontal Dimensions (360px width, 16px lateral padding $\to$ 328px content):
 - **Bar Track:** $232\text{px}$ wide.
@@ -160,12 +195,6 @@ Here is the exact spatial budget for Candidate 1 on a 360px $\times$ 640px viewp
 - **Sum:** $232 + 16 + 80 = 328\text{px}$ (exact fit).
 - For denominator $8$: each segment is $232 / 8 = 29.0\text{px}$ wide.
 - For maximum Phase 2 LCD ($30$): each segment is $232 / 30 = 7.73\text{px}$ wide. (Segments remain display-only per DECISION-025).
-
-### Managing Screen Clutter at the Operate Beat:
-To prevent vertical crowding when the result stack appears:
-- During `encounter`, `notice`, and `transform`, the two addend bars ($\text{left}$ and $\text{right}$) occupy the visual area ($\sim 88\text{px}$).
-- When entering the `operate` beat, the addend bars **collapse into the completed beats summary section** as compact inspectable text lines (e.g., `"First fraction: 7/8"`, `"Second fraction: 3/8"` per DECISION-014).
-- The active visual area is then dedicated to the **result model** (the two stacked whole bars), ensuring total screen height remains under $350\text{px}$—well above the 640px fold.
 
 ---
 
