@@ -775,6 +775,49 @@ registered then.
 **Supersedes / related:** Amends DECISION-019; preserves DECISION-006 unmodified; depends on
 DECISION-029 for the surface's location; unblocks `plan-13`; related to DECISION-016 and Roadmap §22.
 
+### DECISION-031 - Practice types are addressable by URL fragment; conditions and learner state are not
+
+**Date:** 2026-09-21
+
+**Decision:** The entry page's practice types are addressable by a **URL fragment** — for example
+`https://…/FractionFlow/#sum-under-one` — so that a teacher can hand out a link that opens a chosen
+kind of practice directly.
+
+Constraints, all of them load-bearing:
+
+1. **Fragment only.** Not a path segment, which would need a server-side rewrite the static
+   deployment path does not have (DECISION-001), and not a query string, so that nothing about the
+   link is ever sent to a server or logged by one.
+2. **Practice type only.** The fragment names *what kind of problem*, and nothing else.
+3. **The design-condition switcher is explicitly NOT URL-addressable.** No `#bundle-2`, no condition in
+   any part of the URL. DECISION-019 requires condition selection not to persist across a reload
+   precisely so a switched condition cannot follow one user to the next on a shared device; a shareable
+   link would restore exactly the stickiness that decision removed. The same exclusion applies to
+   support level under DECISION-030. Both stay reviewer choices made on the entry page, in that
+   session, and nowhere else.
+4. **No learner state in the URL, ever** — no progress, no answers, no attempt counts, no identifiers.
+   This restates `plan-12`'s existing prohibition rather than softening it.
+5. **An unrecognized or malformed fragment opens the entry page normally**, with no error shown to the
+   learner. A stale link from a future practice type that does not exist yet must be indistinguishable
+   from arriving at the front door.
+6. **A fragment naming a practice type that exists must actually start it.** This is a route claim and
+   belongs in `plan-14`'s matrix like any other; a fragment that silently lands on the entry page
+   instead is the same defect as a dead button.
+
+**Rationale:** The owner is a teacher who will hand this to students, and "use this link" is the
+realistic distribution mechanism for a static site with no accounts. Retrofitting addressability after
+the entry page is built is more disruptive than allowing for it while it is being designed, and the
+cost now is small: the entry page already has to decide which practice type to start.
+
+The exclusions matter more than the feature. A URL is the most durable and most shareable state a
+static application has, which makes it exactly the wrong place for anything the project has
+deliberately kept non-persistent. Conditions and support levels are reviewer instruments for
+comparison; making them linkable would turn a deliberate session choice into something that spreads.
+
+**Supersedes / related:** Extends DECISION-029's entry page; preserves DECISION-001 and DECISION-019
+point 3; constrains DECISION-030; governs `plan-12`; witnessed by `plan-14`; related to OQ-23, whose
+"try another problem" control will select from the same practice-type registry.
+
 ## Proposed but not yet accepted
 
 Use the same `**Date:** YYYY-MM-DD` field for proposals, using the proposal date.

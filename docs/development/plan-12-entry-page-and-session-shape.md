@@ -78,7 +78,9 @@ Required reading:
 
 - `AGENTS.md`; `docs/decision-log.md` — DECISION-001, 006, 009, 013, 019, 021 especially
 - `docs/founding/02-interaction-grammar.md` §71 — the instructional hierarchy
-- `docs/open-questions.md` — OQ-19
+- `docs/open-questions.md` — OQ-19, OQ-23
+- `docs/decision-log.md` — **DECISION-029** (the entry page's settled shape), **DECISION-030** (support
+  level joins the gear menu), **DECISION-031** (practice types are URL-addressable; conditions are not)
 - `reports/development/plan-09-app-shell-condition-switcher-and-acceptance/repair-01-review.md` — the
   clutter audit whose conclusions must not be undone
 
@@ -110,6 +112,7 @@ Contracts this packet must preserve:
 - `src/math/`, `src/content/`, `src/interaction/`, `src/render/` — no changes. This is composition.
   If the entry page appears to need instructional state, **stop and report**.
 - Any persistence mechanism, including `localStorage` and URL parameters carrying learner state.
+- Making the design condition or support level addressable by URL (DECISION-031 point 3).
 
 ## Implementation Requirements
 
@@ -161,6 +164,13 @@ Required behavior:
   structurally impossible for a switch to disturb established work.
 - The entry page holds no metrics, no counters, no progress, and no more than one level of heading
   below the app name.
+- **Practice types come from a registry, not from hard-coded buttons.** The registry has one member
+  today. Adding the second must be registration plus content, not a redesign — that is what makes the
+  page a holding pen rather than a page with dead controls in it.
+- **Only practice types that run are offered.** No disabled buttons, no "coming soon". A control that
+  names a capability the app does not have is the defect this packet is surrounded by.
+- Each registered practice type is addressable by URL fragment per DECISION-031, and an unrecognized
+  fragment opens the entry page with no error.
 
 Constraints:
 
