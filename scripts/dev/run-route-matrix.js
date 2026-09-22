@@ -98,6 +98,23 @@ async function validateMatrixIntegrity(matrix, registeredConditions) {
       errors.push(`FATAL (Rule 3): Route "${route.id}" lacks executable expect assertions.`);
     }
 
+    // Known defect schema validation
+    if (route.knownDefect !== undefined && route.knownDefect !== null) {
+      if (typeof route.knownDefect !== 'object' || Array.isArray(route.knownDefect)) {
+        errors.push(`Route "${route.id}" has invalid "knownDefect": must be an object.`);
+      } else {
+        if (!route.knownDefect.id || typeof route.knownDefect.id !== 'string' || !route.knownDefect.id.trim()) {
+          errors.push(`Route "${route.id}" has "knownDefect" missing required non-empty "id".`);
+        }
+        if (!route.knownDefect.description || typeof route.knownDefect.description !== 'string' || !route.knownDefect.description.trim()) {
+          errors.push(`Route "${route.id}" has "knownDefect" missing required non-empty "description".`);
+        }
+        if (!route.knownDefect.trackedIn || typeof route.knownDefect.trackedIn !== 'string' || !route.knownDefect.trackedIn.trim()) {
+          errors.push(`Route "${route.id}" has "knownDefect" missing required non-empty "trackedIn".`);
+        }
+      }
+    }
+
     // Condition A: Dispatch-fallback enforcement
     for (const action of route.actions || []) {
       if (action.method === 'dispatch-fallback') {
@@ -422,15 +439,28 @@ async function runRouteMatrix(options = {}) {
         await verifyAssertions(page, route.expect.assertions, route.id);
 
         const duration = Date.now() - startTime;
-        routeResults.push({ id: route.id, status: 'pass', duration, route });
-
-        if (verbose) {
-          console.log(`  ✓ ${route.id} (${duration}ms)`);
+        if (route.knownDefect) {
+          routeResults.push({ id: route.id, status: 'known-defect', duration, route });
+          if (verbose) {
+            console.log(`  ⚠ ${route.id} (${duration}ms) [KNOWN DEFECT: ${route.knownDefect.id} - ${route.knownDefect.description}]`);
+          }
+        } else {
+          routeResults.push({ id: route.id, status: 'pass', duration, route });
+          if (verbose) {
+            console.log(`  ✓ ${route.id} (${duration}ms)`);
+          }
         }
       } catch (err) {
         const duration = Date.now() - startTime;
-        routeResults.push({ id: route.id, status: 'fail', error: err.message, duration, route });
-        console.error(`  ✗ ${route.id} (${duration}ms): ${err.message}`);
+        if (route.knownDefect) {
+          const cleanMsg = err.message.endsWith('.') ? err.message : `${err.message}.`;
+          const defectErrMsg = `FATAL: Route "${route.id}" is marked with knownDefect "${route.knownDefect.id}", but stopped exhibiting the defect: ${cleanMsg} If this defect has been repaired, retire the "knownDefect" marker and invert the expectation assertion.`;
+          routeResults.push({ id: route.id, status: 'fail', error: defectErrMsg, duration, route });
+          console.error(`  ✗ ${route.id} (${duration}ms): ${defectErrMsg}`);
+        } else {
+          routeResults.push({ id: route.id, status: 'fail', error: err.message, duration, route });
+          console.error(`  ✗ ${route.id} (${duration}ms): ${err.message}`);
+        }
       } finally {
         await context.close();
       }
@@ -438,7 +468,7 @@ async function runRouteMatrix(options = {}) {
 
     // Now enforce Rule 2 (Negative Controls) and Condition B (Declared Sameness)
     for (const res of routeResults) {
-      if (res.status !== 'pass') continue;
+      if (res.status !== 'pass' && res.status !== 'known-defect') continue;
       const { route } = res;
 
       // Condition B: Declared Sameness Verification
@@ -477,11 +507,13 @@ async function runRouteMatrix(options = {}) {
   }
 
   const passed = routeResults.filter((r) => r.status === 'pass').length;
+  const knownDefects = routeResults.filter((r) => r.status === 'known-defect').length;
   const failed = routeResults.filter((r) => r.status === 'fail').length;
 
   return {
     total: routeResults.length,
     passed,
+    knownDefects,
     failed,
     results: routeResults,
   };
@@ -509,7 +541,12 @@ if (require.main === module) {
   console.log('--- FractionFlow Reachable Behavior Route Contract Runner ---');
   runRouteMatrix({ filter, verbose })
     .then((summary) => {
-      console.log(`\nRoute Matrix Run Complete: ${summary.passed}/${summary.total} passed (${summary.failed} failed).`);
+      const parts = [`${summary.passed} passed`];
+      if (summary.knownDefects > 0) {
+        parts.push(`${summary.knownDefects} known defect${summary.knownDefects === 1 ? '' : 's'}`);
+      }
+      parts.push(`${summary.failed} failed`);
+      console.log(`\nRoute Matrix Run Complete: ${parts.join(', ')} (${summary.total} total).`);
       if (summary.failed > 0) {
         process.exit(1);
       } else {

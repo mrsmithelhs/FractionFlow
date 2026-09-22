@@ -14,11 +14,11 @@ Plan 14 transforms the Plan 09 hard-won lesson into an automated, executable, br
 
 This packet implements:
 1. A declarative **route matrix data file** (`tests/routes/route-matrix.json`) capturing 20 concrete behavior witnesses across all four registered conditions, replay transitions, recovery feedback, both premise check branches, reduced motion, and focus behaviors.
-2. A **Playwright-driven execution harness** (`scripts/dev/run-route-matrix.js`) driving the production build (`dist/`) in headless Microsoft Edge / Google Chrome with explicit mobile viewport geometry (`360x740`), named motion modes, zero deployed seams, and strict enforcement of the Three Non-Negotiable Rules and Conditions A–D.
-3. Unit test coverage (`tests/route-contract.test.js`) integrated into `npm test` to statically enforce schema conformance, registered condition coverage, and dispatch-fallback constraints.
+2. A **Playwright-driven execution harness** (`scripts/dev/run-route-matrix.js`) driving the production build (`dist/`) in headless Microsoft Edge / Google Chrome with explicit mobile viewport geometry (`360x740`), named motion modes, zero deployed seams, and strict enforcement of the Three Non-Negotiable Rules, Conditions A–D, and the `knownDefect` contract.
+3. Unit test coverage (`tests/route-contract.test.js`) integrated into `npm test` to statically enforce schema conformance, registered condition coverage, dispatch-fallback constraints, and `knownDefect` schema invariants.
 4. An npm script `npm run test:routes` running the automated browser route matrix.
 5. Verbatim verification of two deliberately seeded defects (unreachable configuration under Rule 1, and identical negative control output under Rule 2), both caught, captured, and reverted with a clean tree.
-6. A critical behavioral finding revealing the exact gap between `mock-dom.js` and real browsers regarding focus preservation and Inspection Mode restoration.
+6. A critical behavioral finding revealing the exact gap between `mock-dom.js` and real browsers regarding focus preservation and Inspection Mode restoration, encoded via a `knownDefect` marker that surfaces distinctly, prevents false "clean" passes, and fails when the defect is repaired.
 
 ---
 
@@ -71,7 +71,7 @@ The route matrix contains **20 executable rows** in `tests/routes/route-matrix.j
 | `ROUTE-PREMISE-24-TRUE-NO` | `phase2-bundle-4` | Visual | 24ths true premise route: contrarian answer ("No") triggers recovery ("Look closely: the shaded length is the same"). | `ROUTE-PREMISE-24-TRUE-YES` |
 | `ROUTE-REDUCED-MOTION` | `phase2-bundle-1` | Reduced | Under `prefers-reduced-motion: reduce`, renders reduced-motion styling while preserving identical mathematical state. | `INITIAL-ENCOUNTER-BASELINE` |
 | `ROUTE-FOCUS-REPLAY-INTERACTIVE` | `phase2-bundle-1` | Visual | Preserves numeric input value ("3") and DOM node identity across replay toggle without unmounting active controls (Repair 07 Item 2). | `INITIAL-ENCOUNTER-BASELINE` |
-| `ROUTE-FOCUS-INSPECTION-RESTORE` | `phase2-bundle-1` | Visual | Witnesses actual browser focus drop to `BODY` on exiting Inspection Mode via "Done looking" due to Replay button location outside `rootEl`. | `INSPECTION-ACTIVE-FOCUS-BASELINE` |
+| `ROUTE-FOCUS-INSPECTION-RESTORE` | `phase2-bundle-1` | Visual | Witnesses actual browser focus drop to `BODY` on exiting Inspection Mode via "Done looking" due to Replay button location outside `rootEl` (known defect: `DEFECT-FOCUS-INSPECTION-RESTORE`, tracked in `plan-12`). | `INSPECTION-ACTIVE-FOCUS-BASELINE` |
 
 ---
 
@@ -113,7 +113,35 @@ In accordance with this rule and the strict prohibition against modifying `src/`
 - We did **not** modify `src/render/beat-container.js` or `src/app/app.js` to patch the bug.
 - We did **not** invent a synthetic dispatch bypass to fake focus.
 - The route matrix asserts the **authentic observed browser reality**: `activeElementEquals: "body"`, with a negative control against `button.app-done-looking-button`.
-- This finding is formally documented here for orchestrator disposition.
+- This finding was formally documented for orchestrator disposition.
+
+### 4.4 The `knownDefect` Contract & Runner Enforcement
+Per orchestrator delivery review (`reports/development/plan-14-reachable-behavior-route-contract/delivery-review.md`), encoding a live defect as a plain expectation must never result in a "clean" pass (`20/20 passed`). The harness implements a three-part `knownDefect` contract:
+1. **Schema Field:** Any row asserting an active defect carries a `knownDefect` object with `id`, `description`, and `trackedIn` pointer:
+   ```json
+   "knownDefect": {
+     "id": "DEFECT-FOCUS-INSPECTION-RESTORE",
+     "description": "Exiting Inspection Mode by clicking 'Done looking' drops focus to BODY because Replay button is mounted in aside.app-support-panel outside rootEl.",
+     "trackedIn": "docs/development/plan-12-entry-page-and-session-shape.md#requirement-6--repair-the-inspection-mode-focus-defect"
+   }
+   ```
+2. **Distinct Runner Surfacing & Summary Reporting:**
+   - A known defect row is surfaced distinctly during execution:
+     ```
+     ⚠ ROUTE-FOCUS-INSPECTION-RESTORE (610ms) [KNOWN DEFECT: DEFECT-FOCUS-INSPECTION-RESTORE - Exiting Inspection Mode by clicking 'Done looking' drops focus to BODY because Replay button is mounted in aside.app-support-panel outside rootEl.]
+     ```
+   - The summary reports known defects separately:
+     ```
+     Route Matrix Run Complete: 19 passed, 1 known defect, 0 failed (20 total).
+     ```
+   - No run ever reads clean (`20/20 passed`) while a declared defect stands.
+3. **Failure When Defect Stops Exhibiting:**
+   - The runner detects if a `knownDefect` row stops exhibiting its defect (e.g. when Plan 12 repairs the focus restoration behavior, causing `activeElementEquals: "body"` to fail).
+   - Rather than silently passing, the runner fails with exit code 1 and prints:
+     ```
+     FATAL: Route "ROUTE-FOCUS-INSPECTION-RESTORE" is marked with knownDefect "DEFECT-FOCUS-INSPECTION-RESTORE", but stopped exhibiting the defect: Route "ROUTE-FOCUS-INSPECTION-RESTORE" activeElement assertion failed: expected "body", observed "button.matching-choice-btn". If this defect has been repaired, retire the "knownDefect" marker and invert the expectation assertion.
+     ```
+   - This prevents a defect marker from surviving its own repair.
 
 ---
 
@@ -168,9 +196,9 @@ Route Matrix Run Complete: 4/6 passed (2 failed).
 
 ### 5.3 Clean Tree Verification
 Ran full test suite after reverting both seeds:
-- `npm run test:routes`: **20/20 passed (0 failed)**.
-- `npm test`: **21 test files passed (253 tests passed)**.
-- `npm run build`: built in 329ms, production bundles generated.
+- `npm run test:routes`: **19 passed, 1 known defect, 0 failed (20 total)**.
+- `npm test`: **21 test files passed (255 tests passed)**.
+- `npm run build`: built in 340ms, production bundles generated.
 - `node scripts/dev/plan-status.js lint`: **lint: OK (no violations)**.
 - `git diff src/`: **0 modified files in `src/`**.
 
@@ -218,6 +246,7 @@ node scripts/dev/plan-status.js lint
 - **Ready:** **YES**.
 - All four requirements met.
 - Both seeded defect catches documented with verbatim output.
-- All 20 route witnesses passing in real browser.
+- All 20 route witnesses executed in real browser (19 passed, 1 known defect).
+- `knownDefect` contract strictly enforced (surfaces distinctly, fails when defect repaired).
 - `src/` completely unmodified.
 - Tree clean. Ready for orchestrator evaluation.

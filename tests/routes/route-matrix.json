@@ -673,6 +673,11 @@
       "viewport": { "width": 360, "height": 740 },
       "motionMode": "standard-motion",
       "witness": "browser",
+      "knownDefect": {
+        "id": "DEFECT-FOCUS-INSPECTION-RESTORE",
+        "description": "Exiting Inspection Mode by clicking 'Done looking' drops focus to BODY because Replay button is mounted in aside.app-support-panel outside rootEl.",
+        "trackedIn": "docs/development/plan-12-entry-page-and-session-shape.md#requirement-6--repair-the-inspection-mode-focus-defect"
+      },
       "actions": [
         { "step": 1, "method": "click", "target": ".app-visual-view .control-btn", "description": "Acknowledge encounter" },
         { "step": 2, "method": "click", "target": ".app-visual-view .control-choice-btn >> nth=1", "description": "Notice: choose different sized parts" },

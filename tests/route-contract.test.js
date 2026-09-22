@@ -105,4 +105,23 @@ describe('Plan 14 Reachable Behavior Route Contract & Matrix Schema', () => {
       expect(route.witness).toBe('browser');
     }
   });
+
+  it('enforces knownDefect contract on ROUTE-FOCUS-INSPECTION-RESTORE', () => {
+    const route = matrix.routes.find((r) => r.id === 'ROUTE-FOCUS-INSPECTION-RESTORE');
+    expect(route).toBeDefined();
+    expect(route.knownDefect).toBeDefined();
+    expect(route.knownDefect.id).toBe('DEFECT-FOCUS-INSPECTION-RESTORE');
+    expect(route.knownDefect.description).toBeTruthy();
+    expect(route.knownDefect.trackedIn).toContain('plan-12');
+  });
+
+  it('fails validation if knownDefect is missing required fields', async () => {
+    const mutated = JSON.parse(JSON.stringify(matrix));
+    const target = mutated.routes.find((r) => r.id === 'ROUTE-FOCUS-INSPECTION-RESTORE');
+    target.knownDefect = { id: 'TEST' }; // missing description and trackedIn
+    const result = await validateMatrixIntegrity(mutated, REGISTERED_CONDITIONS);
+    expect(result.valid).toBe(false);
+    expect(result.errors.some((e) => e.includes('missing required non-empty "description"'))).toBe(true);
+    expect(result.errors.some((e) => e.includes('missing required non-empty "trackedIn"'))).toBe(true);
+  });
 });
