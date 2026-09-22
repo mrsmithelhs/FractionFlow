@@ -125,6 +125,23 @@ applies to the episode. Propose the contents with reasoning, and what each eleme
 judges it against rendered screens; a packet that arrives with three headings and an explanatory
 paragraph will be sent back, as `plan-09` Repair 01 was.
 
+**The owner has stated an intent for the contents** (2026-09-21), which the proposal should build on
+rather than start behind. The entry page is meant to be a start screen in the video-game sense and a
+holding pen for capability the project does not yet have: the app name, possibly as an animated SVG
+with an accessible text fallback; a short about line and a creator credit; the gear; and buttons that
+start a practice sequence. The owner named three eventual practice types — adding with a sum below
+one, adding with a sum above one, and adding or subtracting mixed numbers — and wants the door left
+open for other fraction work the existing common-denominator and common-multiple mathematics could
+support.
+
+**Two of those three practice types do not exist.** A sum crossing one whole is OQ-20 and the bar
+currently refuses to draw it; mixed numbers are a Roadmap §24 Phase 2 non-goal and are unbuilt. A
+button that starts a practice type the app cannot run, or that is visibly disabled with a promise
+attached, is the same defect this packet is surrounded by: a surface asserting capability nothing
+reaches. **The proposal must offer only starts that run**, and should get the holding-pen property from
+the structure instead — a registry of practice types that today has one member, so adding the second
+is registration and content rather than a redesign.
+
 **Also propose the focus contract**, which OQ-19 did not ask for and which this packet will not ship
 without: where focus lands after "begin", where it lands after a return, and what a keyboard user's
 first Tab reaches on each surface. `plan-09` lost focus to `BODY` twice on claims that had never been

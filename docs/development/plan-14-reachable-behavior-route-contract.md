@@ -1,11 +1,9 @@
 ---
 id: plan-14
 title: Reachable Behavior Contract and Browser Route Matrix
-status: draft
+status: in-progress
 depends_on: [plan-09]
 gate: "Mechanism confirmation before implementation: the route-matrix schema and the harness's starting-surface rule are proposed and approved before any route is written. Final acceptance requires the harness to catch a deliberately seeded unreachable-behavior defect and a deliberately seeded identical-output defect."
-superseded_by: null
-resolution: null
 summary: >-
   Turn the Phase 2 diagnosis into an executable artifact. Every learner-visible
   behavior the project claims gets a route witness: a registered configuration, a
