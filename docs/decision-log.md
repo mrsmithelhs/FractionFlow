@@ -818,6 +818,92 @@ comparison; making them linkable would turn a deliberate session choice into som
 point 3; constrains DECISION-030; governs `plan-12`; witnessed by `plan-14`; related to OQ-23, whose
 "try another problem" control will select from the same practice-type registry.
 
+### DECISION-032 - Results crossing one whole use a discrete multi-whole stack
+
+**Date:** 2026-09-21
+
+**Decision:** Resolves **OQ-20**. A result greater than one is drawn as a **discrete multi-whole
+stack**: one bar per whole, stacked vertically, every unit segment the same pixel width in every bar
+(`plan-10` dossier, `crossing-one-whole.md`, Candidate 1). `7/8 + 3/8` renders as a full bar of eight
+eighths above a bar with two of eight shaded.
+
+Adopted because it is the only candidate that preserves **length conservation** — one eighth is the
+same width anywhere on the screen — while letting a learner count the improper quantity directly
+(ten eighths) and while avoiding horizontal scrolling or microscopic segments at 360px.
+
+Four constraints attach, and they are part of the decision:
+
+1. **Collapsing the addend bars at `operate` is required, not optional.** Two addend bars plus a
+   two-whole result stack is four bars and roughly 200px of visual elements. On entering `operate`, the
+   addend bars are dismounted from the active stage and collapsed into the completed-beats summary as
+   compact text, per DECISION-014.
+2. **The multi-whole stack must be sized against the choreography conditions, not only at rest.** The
+   `plan-10` correction found that a juxtaposed or sequential replay adds comparison rows of 47–112px
+   at the same beat, which can push the active control to **701–746px** — past the 740px fold. The
+   Phase 3 packet implementing this must measure the stack **under every registered condition with a
+   replay active**, not only in the default condition at rest.
+3. **Nothing on the stack may state the result the learner is being asked to produce.** Before the
+   learner responds at `operate`, no element may display the improper total or its mixed equivalent.
+   The visual shows the quantity; the learner supplies the count. This is the scaffold-leakage boundary
+   and it is the specific risk this representation carries, because the answer is legible from the
+   picture in a way it was not for a proper-fraction sum.
+4. **Row labels stay in learner language.** Register terms such as "Completed Whole" or "Partial
+   Remainder" fail DECISION-004 and DECISION-021 criterion 2. Where a label is needed at all, it is
+   plain ("Whole 1", "Whole 2"), and a per-row count that merely restates the readout beside it is
+   removed — the `plan-09` Repair 02 finding that "1 WHOLE" was redundant with the image applies here
+   unchanged.
+
+**Learner-facing notation in Phase 3 remains the improper fraction.** The input asks for the total
+count of eighths; the readout shows `10/8`. The resolve beat may calmly state that `10/8 is 1 whole
+and 2/8` as information, which is not the same as requiring mixed-number computation (DECISION-033).
+
+**Rationale:** The current renderer does not merely lack this capability; it lies about it. With its
+guard removed, `createTrackAndReadout({ numerator: 10, denominator: 8 })` builds eight segments, shades
+all eight, and prints `10 / 8` beside a bar byte-identical to `8/8`. The guard at
+`src/render/fraction-bar.js:90` is honest refusal, and OQ-20 asks what to draw instead.
+
+Candidate 2 (a continuous extended track) and Candidate 3 (a solid whole-tile accumulator) were
+considered and are recorded in the dossier. The stack was preferred because it keeps the unit visible
+and countable at the boundary, which is the thing being taught.
+
+**Supersedes / related:** Resolves OQ-20; governs the Phase 3 packet implementing results crossing one
+whole; depends on DECISION-014 for the collapse mechanism; constrained by DECISION-009, DECISION-021
+criteria 1 and 2, and DECISION-025; accommodates DECISION-033.
+
+### DECISION-033 - Mixed numbers stay out of Phase 3, and Phase 5 owes a strategy
+
+**Date:** 2026-09-21
+
+**Decision:** Mixed numbers do **not** enter Phase 3 as an operational type, an input type, or a
+required learner notation. Phase 3 operations conclude in improper form. Roadmap §§38–44 keep mixed
+numbers as Phase 5, behind the §91 decision checkpoint.
+
+Permitted in Phase 3: a calm informational statement at `resolve` that `10/8 is 1 whole and 2/8`. That
+is a reading of the picture the learner already has, not a computation they are asked to perform.
+
+**The owner's condition is recorded as an obligation, not a deferral:** *"if we don't have a good
+strategy for them yet, we can keep them out of Phase 3. But we will need a strategy."* There is
+currently no mixed-number instructional strategy anywhere in the project — only the mathematics
+(`src/math/mixed-number.js`, including `regroupForSubtraction`, which is Phase 5 §43 decomposition) and
+five roadmap sections describing what the phase must cover.
+
+So: **the strategy is owed before Phase 5 begins, and §91 is where it is written.** The Phase 3 work on
+DECISION-032 must not foreclose it, and the dossier argues it does not — the multi-whole stack is
+structurally the mixed-number visual already (`1 + 2/8`), needing only a different readout mode, so
+Phase 5 reuses the renderer rather than replacing it.
+
+**Rationale:** Admitting mixed numbers to Phase 3 would impose input parsing, symbolic-row layout,
+classification, recovery copy, and regrouping interaction across all four layers, for a phase whose
+question is whether the existing grammar generalizes across *proper-fraction* operations. It would also
+bypass §91, a checkpoint the roadmap placed deliberately.
+
+Keeping them out is not a judgement that they are unimportant. `src/math/mixed-number.js` is complete
+and §13 explicitly permitted building it early; what does not exist is any account of how a learner
+should meet them.
+
+**Supersedes / related:** Confirms Roadmap §24 and §§38–44; preserves the §91 checkpoint; related to
+DECISION-032, which must accommodate rather than foreclose; raises OQ-24.
+
 ## Proposed but not yet accepted
 
 Use the same `**Date:** YYYY-MM-DD` field for proposals, using the proposal date.

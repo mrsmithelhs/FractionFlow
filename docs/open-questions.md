@@ -435,6 +435,14 @@ track — should leave room for a second whole to appear without restructuring t
 beat, and on whether the answer is presented improper, mixed, or learner's choice. Resolve with real
 screens, and alongside whatever packet first ships crossing content.
 
+**RESOLVED 2026-09-21 by DECISION-032.** A **discrete multi-whole stack** — one bar per whole, stacked
+vertically, every unit segment the same pixel width in every bar — chosen because it preserves length
+conservation and keeps the unit countable across the boundary. Four constraints attach: collapsing the
+addend bars at `operate` is required; the stack must be measured under every condition with a replay
+active, not only at rest; nothing on the stack may state the result before the learner supplies it; and
+row labels stay in learner language. Phase 3 notation stays improper — mixed numbers are **DECISION-033**
+and **OQ-24**.
+
 ### OQ-21 — Authored recovery copy for like-denominator mistake at notice beat
 
 Raised in `plan-09` Repair 05. `src/interaction/classification.js:classifyNoticeResponse` returns
@@ -474,8 +482,6 @@ constraint holds at every support level: the reassuring answer must still someti
 
 ---
 
----
-
 ### OQ-23 — "Try another problem" needs content the slice does not have
 
 **Raised:** 2026-09-21, by the owner, while resolving OQ-19.
@@ -496,6 +502,32 @@ control alongside retry and return is a straightforward addition once there is s
 **Needs:** a decision on where the next instance comes from (authored set, generator draw, or a fixed
 sequence), and on whether choosing it is the learner's or the reviewer's. Worth deciding alongside the
 `plan-10` reach assessment, which will say how many families exist to draw from.
+
+---
+
+### OQ-24 — There is no mixed-number instructional strategy
+
+**Raised:** 2026-09-21, by the owner, when accepting DECISION-033 — *"we will need a strategy for
+them."*
+
+The project has complete mixed-number **mathematics** and no mixed-number **pedagogy**.
+`src/math/mixed-number.js` carries composition, decomposition, and `regroupForSubtraction`, which is
+Roadmap §43. Roadmap §§38–44 describe what Phase 5 must cover — foundations, addition without
+composition, composition, subtraction without decomposition, decomposition — but describe outcomes,
+not an approach.
+
+Unanswered: how a learner first meets a quantity greater than one; whether the improper form or the
+mixed form is the primary notation and when that changes; what regrouping looks like on the bar, given
+that the multi-whole stack of DECISION-032 makes `1 + 2/8` visible but does nothing to show `1 2/8`
+being decomposed back into `10/8` for subtraction; and whether mixed numbers are their own episodes or
+an overlay on existing families.
+
+**Phase 3 owes this:** nothing except not foreclosing it. DECISION-032's stack is structurally the
+mixed-number visual already, which is why it was preferred.
+
+**Needs:** an instructional strategy before Phase 5 begins, written at the §91 decision checkpoint. It
+should be a design dossier in the shape of `plan-04` and `plan-10`, not a packet requirement invented
+mid-build.
 
 ---
 
