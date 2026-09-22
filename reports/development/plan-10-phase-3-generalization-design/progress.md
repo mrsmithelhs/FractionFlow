@@ -58,10 +58,12 @@ The dossier resolves Open Question **OQ-20** (results crossing one whole) throug
   1. Reconciles Roadmap §17 directly: "One stable whole" is defined as the immutable benchmark unit of measure, not a fixed single frame. The physical pixel width of fractional unit partitions remains invariant across all wholes and addends.
   2. Truthfully depicts improper fractions: enables direct visual counting of all shaded parts (e.g. 10 individual eighth-segments across two stacked whole bars).
   3. Avoids Candidate 2's severe pitfall: compressing a 2-whole continuous track into a 360px viewport shrinks unit segments by 50%, introducing the dangerous misconception that adding fractions shrinks the pieces.
-- **360px Layout Budget:**
+- **360px Layout Budget (Re-derived against Reference Viewports `360×740` and `360×752`):**
   - Track width $232\text{px}$, readout $80\text{px}$, total row width $328\text{px}$ (fits 360px viewport with 16px lateral padding).
-  - Two stacked whole bars occupy $88\text{px}$ total height.
-  - Total vertical screen height at the `operate` beat remains $\le 320\text{px}$ (leaving $> 320\text{px}$ margin above the 640px fold) by collapsing addend bars into a compact summary line upon entering `operate`.
+  - Measured baseline in running application at `operate`: Submit bottom sits at **541px** (carrying existing header, milestone line, completed-beats disclosure, addend bars, prompt, input).
+  - One measured bar height is **47px** (plus 8px gap $\to$ 55px delta for second whole bar).
+  - Without mitigation, Submit bottom moves to **596px**, clearing the 740px fold by **144px** and the 752px fold by **156px** (and clears a 640px height by 44px).
+  - **Required mitigation:** Collapsing the addend bars into the completed-beats summary section is required; this removes 94px of addend bars and adds two result bars (+102px) plus summary text (~26px), placing Submit bottom near **575px** with verified clearances of **$\ge 165\text{px}$** (at 740px) and **$\ge 177\text{px}$** (at 752px).
 
 ---
 
