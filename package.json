@@ -10,9 +10,11 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "test": "vitest run --passWithNoTests"
+    "test": "vitest run --passWithNoTests",
+    "test:routes": "node scripts/dev/run-route-matrix.js"
   },
   "devDependencies": {
+    "playwright": "^1.63.0",
     "vite": "^6.2.1",
     "vitest": "^3.0.8"
   }

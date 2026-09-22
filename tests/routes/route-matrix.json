@@ -1,0 +1,708 @@
+{
+  "version": "1.0.0",
+  "routes": [
+    {
+      "id": "ROUTE-TRAVERSAL-VISUAL-NO-DISPATCH",
+      "behavior": "A learner completes a full addition problem visually from encounter to reflect using mounted UI controls with zero dispatch fallback.",
+      "configuration": "phase2-bundle-1",
+      "startingSurface": "mounted-app-entry",
+      "viewport": { "width": 360, "height": 740 },
+      "motionMode": "standard-motion",
+      "witness": "browser",
+      "actions": [
+        { "step": 1, "method": "click", "target": ".app-visual-view .control-btn", "description": "Acknowledge encounter" },
+        { "step": 2, "method": "click", "target": ".app-visual-view .control-choice-btn >> nth=1", "description": "Notice: choose different sized parts" },
+        { "step": 3, "method": "click", "target": ".app-visual-view .control-choice-btn >> nth=0", "description": "Decide: choose common denominator 12" },
+        { "step": 4, "method": "fill", "target": ".app-visual-view input.control-numeric-input", "value": "8", "description": "Transform left: enter numerator 8" },
+        { "step": 5, "method": "click", "target": ".app-visual-view .control-submit-btn", "description": "Transform left: submit 8" },
+        { "step": 6, "method": "fill", "target": ".app-visual-view input.control-numeric-input", "value": "3", "description": "Transform right: enter numerator 3" },
+        { "step": 7, "method": "click", "target": ".app-visual-view .control-submit-btn", "description": "Transform right: submit 3" },
+        { "step": 8, "method": "fill", "target": ".app-visual-view input.control-numeric-input", "value": "11", "description": "Operate: enter sum 11" },
+        { "step": 9, "method": "click", "target": ".app-visual-view .control-submit-btn", "description": "Operate: submit 11" },
+        { "step": 10, "method": "click", "target": ".app-visual-view .control-btn", "description": "Resolve: acknowledge completed operation" }
+      ],
+      "expect": {
+        "capture": {
+          "target": ".app-visual-view",
+          "type": "innerHTML"
+        },
+        "assertions": [
+          { "type": "containsText", "target": ".app-visual-view", "value": "Common denominator: 12 — the smallest one." },
+          { "type": "hasSelector", "target": ".app-visual-view .matching-choice-btn" }
+        ]
+      },
+      "negativeControl": {
+        "targetRouteId": "INITIAL-ENCOUNTER-BASELINE",
+        "comparison": "notIdenticalCapture"
+      }
+    },
+    {
+      "id": "ROUTE-TRAVERSAL-LINEAR-NO-DISPATCH",
+      "behavior": "A learner completes a full addition problem in the accessible linear path from encounter to reflect using mounted UI controls with zero dispatch fallback.",
+      "configuration": "phase2-bundle-1",
+      "startingSurface": "mounted-app-entry",
+      "viewport": { "width": 360, "height": 740 },
+      "motionMode": "standard-motion",
+      "witness": "browser",
+      "actions": [
+        { "step": 1, "method": "click", "target": ".app-view-controls .app-secondary-button", "description": "Switch to accessible linear path" },
+        { "step": 2, "method": "click", "target": ".app-linear-view .control-btn", "description": "Acknowledge encounter" },
+        { "step": 3, "method": "click", "target": ".app-linear-view .control-choice-btn >> nth=1", "description": "Notice: choose different sized parts" },
+        { "step": 4, "method": "click", "target": ".app-linear-view .control-choice-btn >> nth=0", "description": "Decide: choose common denominator 12" },
+        { "step": 5, "method": "fill", "target": ".app-linear-view input.control-numeric-input", "value": "8", "description": "Transform left: enter numerator 8" },
+        { "step": 6, "method": "click", "target": ".app-linear-view .control-submit-btn", "description": "Transform left: submit 8" },
+        { "step": 7, "method": "fill", "target": ".app-linear-view input.control-numeric-input", "value": "3", "description": "Transform right: enter numerator 3" },
+        { "step": 8, "method": "click", "target": ".app-linear-view .control-submit-btn", "description": "Transform right: submit 3" },
+        { "step": 9, "method": "fill", "target": ".app-linear-view input.control-numeric-input", "value": "11", "description": "Operate: enter sum 11" },
+        { "step": 10, "method": "click", "target": ".app-linear-view .control-submit-btn", "description": "Operate: submit 11" },
+        { "step": 11, "method": "click", "target": ".app-linear-view .control-btn", "description": "Resolve: acknowledge completed operation" }
+      ],
+      "expect": {
+        "capture": {
+          "target": ".app-linear-view",
+          "type": "innerHTML"
+        },
+        "assertions": [
+          { "type": "containsText", "target": ".app-linear-view", "value": "Common denominator: 12 — the smallest one." },
+          { "type": "hasSelector", "target": ".app-linear-view .control-choice-btn" }
+        ]
+      },
+      "negativeControl": {
+        "targetRouteId": "ROUTE-TRAVERSAL-VISUAL-NO-DISPATCH",
+        "comparison": "notIdenticalCapture"
+      }
+    },
+    {
+      "id": "ROUTE-COND-1-TRANSFORM",
+      "behavior": "Condition 1 (bundle-1: in-place subdivision) renders in-place subdivided fraction bar segments at conversion beat without juxtaposed or sequential structures.",
+      "configuration": "phase2-bundle-1",
+      "startingSurface": "mounted-app-entry",
+      "viewport": { "width": 360, "height": 740 },
+      "motionMode": "standard-motion",
+      "witness": "browser",
+      "actions": [
+        { "step": 1, "method": "click", "target": ".app-visual-view .control-btn", "description": "Acknowledge encounter" },
+        { "step": 2, "method": "click", "target": ".app-visual-view .control-choice-btn >> nth=1", "description": "Notice: choose different sized parts" },
+        { "step": 3, "method": "click", "target": ".app-visual-view .control-choice-btn >> nth=0", "description": "Decide: choose common denominator 12" },
+        { "step": 4, "method": "fill", "target": ".app-visual-view input.control-numeric-input", "value": "8", "description": "Transform left: enter numerator 8" },
+        { "step": 5, "method": "click", "target": ".app-visual-view .control-submit-btn", "description": "Transform left: submit 8" }
+      ],
+      "expect": {
+        "capture": {
+          "target": ".app-visual-view .fraction-bar-container",
+          "type": "outerHTML"
+        },
+        "assertions": [
+          { "type": "hasSelector", "target": ".app-visual-view .fraction-bar-segment.subdivided" },
+          { "type": "notHasSelector", "target": ".app-visual-view .choreography-juxtaposed" },
+          { "type": "notHasSelector", "target": ".app-visual-view .choreography-sequential" }
+        ]
+      },
+      "negativeControl": {
+        "targetRouteId": "ROUTE-COND-2-TRANSFORM",
+        "comparison": "notIdenticalCapture"
+      }
+    },
+    {
+      "id": "ROUTE-COND-2-TRANSFORM",
+      "behavior": "Condition 2 (bundle-2: juxtaposed) renders distinct before-and-after juxtaposed rows at conversion beat.",
+      "configuration": "phase2-bundle-2",
+      "startingSurface": "mounted-app-entry",
+      "viewport": { "width": 360, "height": 740 },
+      "motionMode": "standard-motion",
+      "witness": "browser",
+      "actions": [
+        { "step": 1, "method": "click", "target": ".app-gear-button", "description": "Open gear menu" },
+        { "step": 2, "method": "click", "target": "[data-condition-id=\"phase2-bundle-2\"]", "description": "Select condition 2 (Compare before and after)" },
+        { "step": 3, "method": "click", "target": ".app-visual-view .control-btn", "description": "Acknowledge encounter" },
+        { "step": 4, "method": "click", "target": ".app-visual-view .control-choice-btn >> nth=1", "description": "Notice: choose different sized parts" },
+        { "step": 5, "method": "click", "target": ".app-visual-view .control-choice-btn >> nth=0", "description": "Decide: choose common denominator 12" },
+        { "step": 6, "method": "fill", "target": ".app-visual-view input.control-numeric-input", "value": "8", "description": "Transform left: enter numerator 8" },
+        { "step": 7, "method": "click", "target": ".app-visual-view .control-submit-btn", "description": "Transform left: submit 8" }
+      ],
+      "expect": {
+        "capture": {
+          "target": ".app-visual-view .fraction-bar-container",
+          "type": "outerHTML"
+        },
+        "assertions": [
+          { "type": "hasSelector", "target": ".app-visual-view .choreography-juxtaposed" },
+          { "type": "hasSelector", "target": ".app-visual-view .fraction-bar-row-before" },
+          { "type": "hasSelector", "target": ".app-visual-view .fraction-bar-row-after" },
+          { "type": "containsText", "target": ".app-visual-view", "value": "Before: 2/3" },
+          { "type": "containsText", "target": ".app-visual-view", "value": "After: 8/12" }
+        ]
+      },
+      "negativeControl": {
+        "targetRouteId": "ROUTE-COND-1-TRANSFORM",
+        "comparison": "notIdenticalCapture"
+      }
+    },
+    {
+      "id": "ROUTE-COND-3-TRANSFORM",
+      "behavior": "Condition 3 (bundle-3: sequential) renders step-by-step cards and connectors at conversion beat.",
+      "configuration": "phase2-bundle-3",
+      "startingSurface": "mounted-app-entry",
+      "viewport": { "width": 360, "height": 740 },
+      "motionMode": "standard-motion",
+      "witness": "browser",
+      "actions": [
+        { "step": 1, "method": "click", "target": ".app-gear-button", "description": "Open gear menu" },
+        { "step": 2, "method": "click", "target": "[data-condition-id=\"phase2-bundle-3\"]", "description": "Select condition 3 (Step-by-step change)" },
+        { "step": 3, "method": "click", "target": ".app-visual-view .control-btn", "description": "Acknowledge encounter" },
+        { "step": 4, "method": "click", "target": ".app-visual-view .control-choice-btn >> nth=1", "description": "Notice: choose different sized parts" },
+        { "step": 5, "method": "click", "target": ".app-visual-view .control-choice-btn >> nth=0", "description": "Decide: choose common denominator 12" },
+        { "step": 6, "method": "fill", "target": ".app-visual-view input.control-numeric-input", "value": "8", "description": "Transform left: enter numerator 8" },
+        { "step": 7, "method": "click", "target": ".app-visual-view .control-submit-btn", "description": "Transform left: submit 8" }
+      ],
+      "expect": {
+        "capture": {
+          "target": ".app-visual-view .fraction-bar-container",
+          "type": "outerHTML"
+        },
+        "assertions": [
+          { "type": "hasSelector", "target": ".app-visual-view .choreography-sequential" },
+          { "type": "hasSelector", "target": ".app-visual-view .fraction-bar-step-1" },
+          { "type": "hasSelector", "target": ".app-visual-view .fraction-bar-step-2" },
+          { "type": "containsText", "target": ".app-visual-view", "value": "Step 1: Start with 2/3" },
+          { "type": "containsText", "target": ".app-visual-view", "value": "Step 2: New parts 8/12" }
+        ]
+      },
+      "negativeControl": {
+        "targetRouteId": "ROUTE-COND-2-TRANSFORM",
+        "comparison": "notIdenticalCapture"
+      }
+    },
+    {
+      "id": "ROUTE-COND-4-TRANSFORM-SAME",
+      "behavior": "Condition 4 (bundle-4: premise check) shares in-place choreography with Condition 1 at conversion beat and intentionally renders identical structure.",
+      "configuration": "phase2-bundle-4",
+      "startingSurface": "mounted-app-entry",
+      "viewport": { "width": 360, "height": 740 },
+      "motionMode": "standard-motion",
+      "witness": "browser",
+      "actions": [
+        { "step": 1, "method": "click", "target": ".app-gear-button", "description": "Open gear menu" },
+        { "step": 2, "method": "click", "target": "[data-condition-id=\"phase2-bundle-4\"]", "description": "Select condition 4 (Check the premise)" },
+        { "step": 3, "method": "click", "target": ".app-visual-view .control-btn", "description": "Acknowledge encounter" },
+        { "step": 4, "method": "click", "target": ".app-visual-view .control-choice-btn >> nth=1", "description": "Notice: choose different sized parts" },
+        { "step": 5, "method": "click", "target": ".app-visual-view .control-choice-btn >> nth=0", "description": "Decide: choose common denominator 12" },
+        { "step": 6, "method": "fill", "target": ".app-visual-view input.control-numeric-input", "value": "8", "description": "Transform left: enter numerator 8" },
+        { "step": 7, "method": "click", "target": ".app-visual-view .control-submit-btn", "description": "Transform left: submit 8" }
+      ],
+      "expect": {
+        "capture": {
+          "target": ".app-visual-view .fraction-bar-container",
+          "type": "outerHTML"
+        },
+        "assertions": [
+          { "type": "hasSelector", "target": ".app-visual-view .fraction-bar-segment.subdivided" },
+          { "type": "notHasSelector", "target": ".app-visual-view .choreography-juxtaposed" },
+          { "type": "notHasSelector", "target": ".app-visual-view .choreography-sequential" }
+        ]
+      },
+      "declaredSameAs": {
+        "targetRouteId": "ROUTE-COND-1-TRANSFORM",
+        "comparison": "identicalDOMStructure"
+      }
+    },
+    {
+      "id": "ROUTE-COND-1-REFLECT",
+      "behavior": "Condition 1 (bundle-1: matching choices) renders 3 visual matching bars with distractor choices at reflect beat.",
+      "configuration": "phase2-bundle-1",
+      "startingSurface": "mounted-app-entry",
+      "viewport": { "width": 360, "height": 740 },
+      "motionMode": "standard-motion",
+      "witness": "browser",
+      "actions": [
+        { "step": 1, "method": "click", "target": ".app-visual-view .control-btn", "description": "Acknowledge encounter" },
+        { "step": 2, "method": "click", "target": ".app-visual-view .control-choice-btn >> nth=1", "description": "Notice: choose different sized parts" },
+        { "step": 3, "method": "click", "target": ".app-visual-view .control-choice-btn >> nth=0", "description": "Decide: choose common denominator 12" },
+        { "step": 4, "method": "fill", "target": ".app-visual-view input.control-numeric-input", "value": "8", "description": "Transform left: enter numerator 8" },
+        { "step": 5, "method": "click", "target": ".app-visual-view .control-submit-btn", "description": "Transform left: submit 8" },
+        { "step": 6, "method": "fill", "target": ".app-visual-view input.control-numeric-input", "value": "3", "description": "Transform right: enter numerator 3" },
+        { "step": 7, "method": "click", "target": ".app-visual-view .control-submit-btn", "description": "Transform right: submit 3" },
+        { "step": 8, "method": "fill", "target": ".app-visual-view input.control-numeric-input", "value": "11", "description": "Operate: enter sum 11" },
+        { "step": 9, "method": "click", "target": ".app-visual-view .control-submit-btn", "description": "Operate: submit 11" },
+        { "step": 10, "method": "click", "target": ".app-visual-view .control-btn", "description": "Resolve: acknowledge completed operation" }
+      ],
+      "expect": {
+        "capture": {
+          "target": ".app-visual-view",
+          "type": "innerHTML"
+        },
+        "assertions": [
+          { "type": "hasSelector", "target": ".app-visual-view .matching-choice-btn" },
+          { "type": "notHasSelector", "target": ".app-visual-view .premise-comparison" },
+          { "type": "containsText", "target": ".app-visual-view", "value": "same amount" }
+        ]
+      },
+      "negativeControl": {
+        "targetRouteId": "ROUTE-COND-4-REFLECT",
+        "comparison": "notIdenticalCapture"
+      }
+    },
+    {
+      "id": "ROUTE-COND-4-REFLECT",
+      "behavior": "Condition 4 (bundle-4: premise check) renders a check-the-premise comparison frame with Yes/No buttons at reflect beat.",
+      "configuration": "phase2-bundle-4",
+      "startingSurface": "mounted-app-entry",
+      "viewport": { "width": 360, "height": 740 },
+      "motionMode": "standard-motion",
+      "witness": "browser",
+      "actions": [
+        { "step": 1, "method": "click", "target": ".app-gear-button", "description": "Open gear menu" },
+        { "step": 2, "method": "click", "target": "[data-condition-id=\"phase2-bundle-4\"]", "description": "Select condition 4" },
+        { "step": 3, "method": "click", "target": ".app-visual-view .control-btn", "description": "Acknowledge encounter" },
+        { "step": 4, "method": "click", "target": ".app-visual-view .control-choice-btn >> nth=1", "description": "Notice: choose different sized parts" },
+        { "step": 5, "method": "click", "target": ".app-visual-view .control-choice-btn >> nth=0", "description": "Decide: choose common denominator 12" },
+        { "step": 6, "method": "fill", "target": ".app-visual-view input.control-numeric-input", "value": "8", "description": "Transform left: enter numerator 8" },
+        { "step": 7, "method": "click", "target": ".app-visual-view .control-submit-btn", "description": "Transform left: submit 8" },
+        { "step": 8, "method": "fill", "target": ".app-visual-view input.control-numeric-input", "value": "3", "description": "Transform right: enter numerator 3" },
+        { "step": 9, "method": "click", "target": ".app-visual-view .control-submit-btn", "description": "Transform right: submit 3" },
+        { "step": 10, "method": "fill", "target": ".app-visual-view input.control-numeric-input", "value": "11", "description": "Operate: enter sum 11" },
+        { "step": 11, "method": "click", "target": ".app-visual-view .control-submit-btn", "description": "Operate: submit 11" },
+        { "step": 12, "method": "click", "target": ".app-visual-view .control-btn", "description": "Resolve: acknowledge completed operation" }
+      ],
+      "expect": {
+        "capture": {
+          "target": ".app-visual-view",
+          "type": "innerHTML"
+        },
+        "assertions": [
+          { "type": "hasSelector", "target": ".app-visual-view .premise-comparison" },
+          { "type": "containsText", "target": ".app-visual-view", "value": "Check this renaming:" },
+          { "type": "containsText", "target": ".app-visual-view", "value": "Does this new bar show the same amount as before?" }
+        ]
+      },
+      "negativeControl": {
+        "targetRouteId": "ROUTE-COND-1-REFLECT",
+        "comparison": "notIdenticalCapture"
+      }
+    },
+    {
+      "id": "ROUTE-REPLAY-COND-1",
+      "behavior": "Replay under Condition 1 (in-place) mounts an interactive toggle card with starting fraction and toggle button.",
+      "configuration": "phase2-bundle-1",
+      "startingSurface": "mounted-app-entry",
+      "viewport": { "width": 360, "height": 740 },
+      "motionMode": "standard-motion",
+      "witness": "browser",
+      "actions": [
+        { "step": 1, "method": "click", "target": ".app-visual-view .control-btn", "description": "Acknowledge encounter" },
+        { "step": 2, "method": "click", "target": ".app-visual-view .control-choice-btn >> nth=1", "description": "Notice: choose different sized parts" },
+        { "step": 3, "method": "click", "target": ".app-visual-view .control-choice-btn >> nth=0", "description": "Decide: choose common denominator 12" },
+        { "step": 4, "method": "fill", "target": ".app-visual-view input.control-numeric-input", "value": "8", "description": "Transform left: enter numerator 8" },
+        { "step": 5, "method": "click", "target": ".app-visual-view .control-submit-btn", "description": "Transform left: submit 8" },
+        { "step": 6, "method": "click", "target": ".app-support-controls .app-secondary-button:has-text(\"Replay\")", "description": "Trigger Replay" }
+      ],
+      "expect": {
+        "capture": {
+          "target": ".app-visual-view .fraction-bar-in-place-replay",
+          "type": "outerHTML"
+        },
+        "assertions": [
+          { "type": "hasSelector", "target": ".app-visual-view .fraction-bar-in-place-replay" },
+          { "type": "containsText", "target": ".app-visual-view", "value": "Starting parts: 2/3" },
+          { "type": "hasSelector", "target": ".app-visual-view .fraction-bar-toggle-btn" },
+          { "type": "attributeEquals", "target": ".app-support-controls .app-secondary-button:has-text(\"Replay\")", "attribute": "aria-pressed", "value": "true" }
+        ]
+      },
+      "negativeControl": {
+        "targetRouteId": "ROUTE-COND-1-TRANSFORM",
+        "comparison": "notIdenticalCapture"
+      }
+    },
+    {
+      "id": "ROUTE-REPLAY-COND-2",
+      "behavior": "Replay under Condition 2 (juxtaposed) activates choreography-juxtaposed replay highlight and badge.",
+      "configuration": "phase2-bundle-2",
+      "startingSurface": "mounted-app-entry",
+      "viewport": { "width": 360, "height": 740 },
+      "motionMode": "standard-motion",
+      "witness": "browser",
+      "actions": [
+        { "step": 1, "method": "click", "target": ".app-gear-button", "description": "Open gear menu" },
+        { "step": 2, "method": "click", "target": "[data-condition-id=\"phase2-bundle-2\"]", "description": "Select condition 2" },
+        { "step": 3, "method": "click", "target": ".app-visual-view .control-btn", "description": "Acknowledge encounter" },
+        { "step": 4, "method": "click", "target": ".app-visual-view .control-choice-btn >> nth=1", "description": "Notice: choose different sized parts" },
+        { "step": 5, "method": "click", "target": ".app-visual-view .control-choice-btn >> nth=0", "description": "Decide: choose common denominator 12" },
+        { "step": 6, "method": "fill", "target": ".app-visual-view input.control-numeric-input", "value": "8", "description": "Transform left: enter numerator 8" },
+        { "step": 7, "method": "click", "target": ".app-visual-view .control-submit-btn", "description": "Transform left: submit 8" },
+        { "step": 8, "method": "fill", "target": ".app-visual-view input.control-numeric-input", "value": "3", "description": "Transform right: enter numerator 3" },
+        { "step": 9, "method": "click", "target": ".app-visual-view .control-submit-btn", "description": "Transform right: submit 3" },
+        { "step": 10, "method": "click", "target": ".app-support-controls .app-secondary-button:has-text(\"Replay\")", "description": "Trigger Replay" }
+      ],
+      "expect": {
+        "capture": {
+          "target": ".app-visual-view .fraction-bar-container",
+          "type": "outerHTML"
+        },
+        "assertions": [
+          { "type": "hasSelector", "target": ".app-visual-view .choreography-juxtaposed.replay-active" },
+          { "type": "hasSelector", "target": ".app-visual-view .replay-highlight" },
+          { "type": "containsText", "target": ".app-visual-view", "value": "(replaying)" }
+        ]
+      },
+      "negativeControl": {
+        "targetRouteId": "ROUTE-COND-2-TRANSFORM",
+        "comparison": "notIdenticalCapture"
+      }
+    },
+    {
+      "id": "ROUTE-REPLAY-COND-3",
+      "behavior": "Replay under Condition 3 (sequential) activates choreography-sequential replay highlight and step heading.",
+      "configuration": "phase2-bundle-3",
+      "startingSurface": "mounted-app-entry",
+      "viewport": { "width": 360, "height": 740 },
+      "motionMode": "standard-motion",
+      "witness": "browser",
+      "actions": [
+        { "step": 1, "method": "click", "target": ".app-gear-button", "description": "Open gear menu" },
+        { "step": 2, "method": "click", "target": "[data-condition-id=\"phase2-bundle-3\"]", "description": "Select condition 3" },
+        { "step": 3, "method": "click", "target": ".app-visual-view .control-btn", "description": "Acknowledge encounter" },
+        { "step": 4, "method": "click", "target": ".app-visual-view .control-choice-btn >> nth=1", "description": "Notice: choose different sized parts" },
+        { "step": 5, "method": "click", "target": ".app-visual-view .control-choice-btn >> nth=0", "description": "Decide: choose common denominator 12" },
+        { "step": 6, "method": "fill", "target": ".app-visual-view input.control-numeric-input", "value": "8", "description": "Transform left: enter numerator 8" },
+        { "step": 7, "method": "click", "target": ".app-visual-view .control-submit-btn", "description": "Transform left: submit 8" },
+        { "step": 8, "method": "fill", "target": ".app-visual-view input.control-numeric-input", "value": "3", "description": "Transform right: enter numerator 3" },
+        { "step": 9, "method": "click", "target": ".app-visual-view .control-submit-btn", "description": "Transform right: submit 3" },
+        { "step": 10, "method": "click", "target": ".app-support-controls .app-secondary-button:has-text(\"Replay\")", "description": "Trigger Replay" }
+      ],
+      "expect": {
+        "capture": {
+          "target": ".app-visual-view .fraction-bar-container",
+          "type": "outerHTML"
+        },
+        "assertions": [
+          { "type": "hasSelector", "target": ".app-visual-view .choreography-sequential.replay-active" },
+          { "type": "hasSelector", "target": ".app-visual-view .replay-highlight" },
+          { "type": "containsText", "target": ".app-visual-view", "value": "(replaying)" }
+        ]
+      },
+      "negativeControl": {
+        "targetRouteId": "ROUTE-COND-3-TRANSFORM",
+        "comparison": "notIdenticalCapture"
+      }
+    },
+    {
+      "id": "ROUTE-RECOVERY-TRANSFORM",
+      "behavior": "Submitting an incorrect numerator at transform triggers pedagogical transform recovery feedback, distinct from generic messages.",
+      "configuration": "phase2-bundle-1",
+      "startingSurface": "mounted-app-entry",
+      "viewport": { "width": 360, "height": 740 },
+      "motionMode": "standard-motion",
+      "witness": "browser",
+      "actions": [
+        { "step": 1, "method": "click", "target": ".app-visual-view .control-btn", "description": "Acknowledge encounter" },
+        { "step": 2, "method": "click", "target": ".app-visual-view .control-choice-btn >> nth=1", "description": "Notice: choose different sized parts" },
+        { "step": 3, "method": "click", "target": ".app-visual-view .control-choice-btn >> nth=0", "description": "Decide: choose common denominator 12" },
+        { "step": 4, "method": "fill", "target": ".app-visual-view input.control-numeric-input", "value": "5", "description": "Enter wrong equivalent numerator" },
+        { "step": 5, "method": "click", "target": ".app-visual-view .control-submit-btn", "description": "Submit wrong numerator" }
+      ],
+      "expect": {
+        "capture": {
+          "target": ".app-visual-view .recovery-feedback",
+          "type": "textContent"
+        },
+        "assertions": [
+          { "type": "hasSelector", "target": ".app-visual-view .recovery-feedback" },
+          { "type": "containsText", "target": ".app-visual-view .recovery-feedback", "value": "Count the shaded parts in the new bar" },
+          { "type": "notContainsText", "target": ".app-visual-view .recovery-feedback", "value": "Not quite." }
+        ]
+      },
+      "negativeControl": {
+        "targetRouteId": "ROUTE-RECOVERY-OPERATE",
+        "comparison": "notIdenticalCapture"
+      }
+    },
+    {
+      "id": "ROUTE-RECOVERY-OPERATE",
+      "behavior": "Submitting an incorrect sum at operate triggers pedagogical operate recovery feedback, distinct from transform recovery.",
+      "configuration": "phase2-bundle-1",
+      "startingSurface": "mounted-app-entry",
+      "viewport": { "width": 360, "height": 740 },
+      "motionMode": "standard-motion",
+      "witness": "browser",
+      "actions": [
+        { "step": 1, "method": "click", "target": ".app-visual-view .control-btn", "description": "Acknowledge encounter" },
+        { "step": 2, "method": "click", "target": ".app-visual-view .control-choice-btn >> nth=1", "description": "Notice: choose different sized parts" },
+        { "step": 3, "method": "click", "target": ".app-visual-view .control-choice-btn >> nth=0", "description": "Decide: choose common denominator 12" },
+        { "step": 4, "method": "fill", "target": ".app-visual-view input.control-numeric-input", "value": "8", "description": "Transform left: enter numerator 8" },
+        { "step": 5, "method": "click", "target": ".app-visual-view .control-submit-btn", "description": "Transform left: submit 8" },
+        { "step": 6, "method": "fill", "target": ".app-visual-view input.control-numeric-input", "value": "3", "description": "Transform right: enter numerator 3" },
+        { "step": 7, "method": "click", "target": ".app-visual-view .control-submit-btn", "description": "Transform right: submit 3" },
+        { "step": 8, "method": "fill", "target": ".app-visual-view input.control-numeric-input", "value": "15", "description": "Enter wrong numerator sum" },
+        { "step": 9, "method": "click", "target": ".app-visual-view .control-submit-btn", "description": "Submit wrong sum" }
+      ],
+      "expect": {
+        "capture": {
+          "target": ".app-visual-view .recovery-feedback",
+          "type": "textContent"
+        },
+        "assertions": [
+          { "type": "hasSelector", "target": ".app-visual-view .recovery-feedback" },
+          { "type": "containsText", "target": ".app-visual-view .recovery-feedback", "value": "Add only the top numbers." },
+          { "type": "notContainsText", "target": ".app-visual-view .recovery-feedback", "value": "Not quite." }
+        ]
+      },
+      "negativeControl": {
+        "targetRouteId": "ROUTE-RECOVERY-TRANSFORM",
+        "comparison": "notIdenticalCapture"
+      }
+    },
+    {
+      "id": "ROUTE-PREMISE-12-FALSE-NO",
+      "behavior": "Twelfths route has a false premise renaming (7/12 for 2/3); answering correctly ('No') completes the episode.",
+      "configuration": "phase2-bundle-4",
+      "startingSurface": "mounted-app-entry",
+      "viewport": { "width": 360, "height": 740 },
+      "motionMode": "standard-motion",
+      "witness": "browser",
+      "actions": [
+        { "step": 1, "method": "click", "target": ".app-gear-button", "description": "Open gear menu" },
+        { "step": 2, "method": "click", "target": "[data-condition-id=\"phase2-bundle-4\"]", "description": "Select condition 4" },
+        { "step": 3, "method": "click", "target": ".app-visual-view .control-btn", "description": "Acknowledge encounter" },
+        { "step": 4, "method": "click", "target": ".app-visual-view .control-choice-btn >> nth=1", "description": "Notice: choose different sized parts" },
+        { "step": 5, "method": "click", "target": ".app-visual-view .control-choice-btn >> nth=0", "description": "Decide: choose common denominator 12" },
+        { "step": 6, "method": "fill", "target": ".app-visual-view input.control-numeric-input", "value": "8", "description": "Transform left: enter numerator 8" },
+        { "step": 7, "method": "click", "target": ".app-visual-view .control-submit-btn", "description": "Transform left: submit 8" },
+        { "step": 8, "method": "fill", "target": ".app-visual-view input.control-numeric-input", "value": "3", "description": "Transform right: enter numerator 3" },
+        { "step": 9, "method": "click", "target": ".app-visual-view .control-submit-btn", "description": "Transform right: submit 3" },
+        { "step": 10, "method": "fill", "target": ".app-visual-view input.control-numeric-input", "value": "11", "description": "Operate: enter sum 11" },
+        { "step": 11, "method": "click", "target": ".app-visual-view .control-submit-btn", "description": "Operate: submit 11" },
+        { "step": 12, "method": "click", "target": ".app-visual-view .control-btn", "description": "Resolve: acknowledge completed operation" },
+        { "step": 13, "method": "click", "target": ".app-visual-view .control-choice-btn:has-text(\"No\")", "description": "Answer 'No' to false premise" }
+      ],
+      "expect": {
+        "capture": {
+          "target": ".app-completion-panel",
+          "type": "textContent"
+        },
+        "assertions": [
+          { "type": "hasSelector", "target": ".app-completion-panel:not([hidden])" },
+          { "type": "containsText", "target": ".app-visual-view", "value": "Good eye! The amount changed" }
+        ]
+      },
+      "negativeControl": {
+        "targetRouteId": "ROUTE-PREMISE-12-FALSE-YES",
+        "comparison": "notIdenticalCapture"
+      }
+    },
+    {
+      "id": "ROUTE-PREMISE-12-FALSE-YES",
+      "behavior": "Twelfths route has a false premise renaming (7/12 for 2/3); answering reassuringly but wrongly ('Yes') triggers recovery feedback and does not complete.",
+      "configuration": "phase2-bundle-4",
+      "startingSurface": "mounted-app-entry",
+      "viewport": { "width": 360, "height": 740 },
+      "motionMode": "standard-motion",
+      "witness": "browser",
+      "actions": [
+        { "step": 1, "method": "click", "target": ".app-gear-button", "description": "Open gear menu" },
+        { "step": 2, "method": "click", "target": "[data-condition-id=\"phase2-bundle-4\"]", "description": "Select condition 4" },
+        { "step": 3, "method": "click", "target": ".app-visual-view .control-btn", "description": "Acknowledge encounter" },
+        { "step": 4, "method": "click", "target": ".app-visual-view .control-choice-btn >> nth=1", "description": "Notice: choose different sized parts" },
+        { "step": 5, "method": "click", "target": ".app-visual-view .control-choice-btn >> nth=0", "description": "Decide: choose common denominator 12" },
+        { "step": 6, "method": "fill", "target": ".app-visual-view input.control-numeric-input", "value": "8", "description": "Transform left: enter numerator 8" },
+        { "step": 7, "method": "click", "target": ".app-visual-view .control-submit-btn", "description": "Transform left: submit 8" },
+        { "step": 8, "method": "fill", "target": ".app-visual-view input.control-numeric-input", "value": "3", "description": "Transform right: enter numerator 3" },
+        { "step": 9, "method": "click", "target": ".app-visual-view .control-submit-btn", "description": "Transform right: submit 3" },
+        { "step": 10, "method": "fill", "target": ".app-visual-view input.control-numeric-input", "value": "11", "description": "Operate: enter sum 11" },
+        { "step": 11, "method": "click", "target": ".app-visual-view .control-submit-btn", "description": "Operate: submit 11" },
+        { "step": 12, "method": "click", "target": ".app-visual-view .control-btn", "description": "Resolve: acknowledge completed operation" },
+        { "step": 13, "method": "click", "target": ".app-visual-view .control-choice-btn:has-text(\"Yes\")", "description": "Answer 'Yes' to false premise" }
+      ],
+      "expect": {
+        "capture": {
+          "target": ".app-visual-view .recovery-feedback",
+          "type": "textContent"
+        },
+        "assertions": [
+          { "type": "hasSelector", "target": ".app-visual-view .recovery-feedback" },
+          { "type": "containsText", "target": ".app-visual-view .recovery-feedback", "value": "Look closely: the shaded length became longer" },
+          { "type": "hasSelector", "target": ".app-completion-panel[hidden]" }
+        ]
+      },
+      "negativeControl": {
+        "targetRouteId": "ROUTE-PREMISE-12-FALSE-NO",
+        "comparison": "notIdenticalCapture"
+      }
+    },
+    {
+      "id": "ROUTE-PREMISE-24-TRUE-YES",
+      "behavior": "Twenty-fourths route has a true premise renaming (16/24 for 2/3); answering correctly ('Yes') completes the episode.",
+      "configuration": "phase2-bundle-4",
+      "startingSurface": "mounted-app-entry",
+      "viewport": { "width": 360, "height": 740 },
+      "motionMode": "standard-motion",
+      "witness": "browser",
+      "actions": [
+        { "step": 1, "method": "click", "target": ".app-gear-button", "description": "Open gear menu" },
+        { "step": 2, "method": "click", "target": "[data-condition-id=\"phase2-bundle-4\"]", "description": "Select condition 4" },
+        { "step": 3, "method": "click", "target": ".app-visual-view .control-btn", "description": "Acknowledge encounter" },
+        { "step": 4, "method": "click", "target": ".app-visual-view .control-choice-btn >> nth=1", "description": "Notice: choose different sized parts" },
+        { "step": 5, "method": "click", "target": ".app-visual-view .control-choice-btn >> nth=1", "description": "Decide: choose common denominator 24" },
+        { "step": 6, "method": "fill", "target": ".app-visual-view input.control-numeric-input", "value": "16", "description": "Transform left: enter numerator 16" },
+        { "step": 7, "method": "click", "target": ".app-visual-view .control-submit-btn", "description": "Transform left: submit 16" },
+        { "step": 8, "method": "fill", "target": ".app-visual-view input.control-numeric-input", "value": "6", "description": "Transform right: enter numerator 6" },
+        { "step": 9, "method": "click", "target": ".app-visual-view .control-submit-btn", "description": "Transform right: submit 6" },
+        { "step": 10, "method": "fill", "target": ".app-visual-view input.control-numeric-input", "value": "22", "description": "Operate: enter sum 22" },
+        { "step": 11, "method": "click", "target": ".app-visual-view .control-submit-btn", "description": "Operate: submit 22" },
+        { "step": 12, "method": "click", "target": ".app-visual-view .control-btn", "description": "Resolve: acknowledge completed operation" },
+        { "step": 13, "method": "click", "target": ".app-visual-view .control-choice-btn:has-text(\"Yes\")", "description": "Answer 'Yes' to true premise" }
+      ],
+      "expect": {
+        "capture": {
+          "target": ".app-completion-panel",
+          "type": "textContent"
+        },
+        "assertions": [
+          { "type": "hasSelector", "target": ".app-completion-panel:not([hidden])" },
+          { "type": "containsText", "target": ".app-visual-view", "value": "Correct! The parts are smaller" }
+        ]
+      },
+      "negativeControl": {
+        "targetRouteId": "ROUTE-PREMISE-24-TRUE-NO",
+        "comparison": "notIdenticalCapture"
+      }
+    },
+    {
+      "id": "ROUTE-PREMISE-24-TRUE-NO",
+      "behavior": "Twenty-fourths route has a true premise renaming (16/24 for 2/3); answering contrarianly ('No') triggers recovery feedback and does not complete.",
+      "configuration": "phase2-bundle-4",
+      "startingSurface": "mounted-app-entry",
+      "viewport": { "width": 360, "height": 740 },
+      "motionMode": "standard-motion",
+      "witness": "browser",
+      "actions": [
+        { "step": 1, "method": "click", "target": ".app-gear-button", "description": "Open gear menu" },
+        { "step": 2, "method": "click", "target": "[data-condition-id=\"phase2-bundle-4\"]", "description": "Select condition 4" },
+        { "step": 3, "method": "click", "target": ".app-visual-view .control-btn", "description": "Acknowledge encounter" },
+        { "step": 4, "method": "click", "target": ".app-visual-view .control-choice-btn >> nth=1", "description": "Notice: choose different sized parts" },
+        { "step": 5, "method": "click", "target": ".app-visual-view .control-choice-btn >> nth=1", "description": "Decide: choose common denominator 24" },
+        { "step": 6, "method": "fill", "target": ".app-visual-view input.control-numeric-input", "value": "16", "description": "Transform left: enter numerator 16" },
+        { "step": 7, "method": "click", "target": ".app-visual-view .control-submit-btn", "description": "Transform left: submit 16" },
+        { "step": 8, "method": "fill", "target": ".app-visual-view input.control-numeric-input", "value": "6", "description": "Transform right: enter numerator 6" },
+        { "step": 9, "method": "click", "target": ".app-visual-view .control-submit-btn", "description": "Transform right: submit 6" },
+        { "step": 10, "method": "fill", "target": ".app-visual-view input.control-numeric-input", "value": "22", "description": "Operate: enter sum 22" },
+        { "step": 11, "method": "click", "target": ".app-visual-view .control-submit-btn", "description": "Operate: submit 22" },
+        { "step": 12, "method": "click", "target": ".app-visual-view .control-btn", "description": "Resolve: acknowledge completed operation" },
+        { "step": 13, "method": "click", "target": ".app-visual-view .control-choice-btn:has-text(\"No\")", "description": "Answer 'No' to true premise" }
+      ],
+      "expect": {
+        "capture": {
+          "target": ".app-visual-view .recovery-feedback",
+          "type": "textContent"
+        },
+        "assertions": [
+          { "type": "hasSelector", "target": ".app-visual-view .recovery-feedback" },
+          { "type": "containsText", "target": ".app-visual-view .recovery-feedback", "value": "Look closely: the shaded length is the same" },
+          { "type": "hasSelector", "target": ".app-completion-panel[hidden]" }
+        ]
+      },
+      "negativeControl": {
+        "targetRouteId": "ROUTE-PREMISE-24-TRUE-YES",
+        "comparison": "notIdenticalCapture"
+      }
+    },
+    {
+      "id": "ROUTE-REDUCED-MOTION",
+      "behavior": "Under prefers-reduced-motion: reduce, the fraction bar renders with reduced-motion track styling while preserving identical mathematical state.",
+      "configuration": "phase2-bundle-1",
+      "startingSurface": "mounted-app-entry",
+      "viewport": { "width": 360, "height": 740 },
+      "motionMode": "reduced-motion",
+      "witness": "browser",
+      "actions": [
+        { "step": 1, "method": "click", "target": ".app-visual-view .control-btn", "description": "Acknowledge encounter" }
+      ],
+      "expect": {
+        "capture": {
+          "target": ".app-visual-view .fraction-bar-track",
+          "type": "outerHTML"
+        },
+        "assertions": [
+          { "type": "hasSelector", "target": ".app-visual-view .fraction-bar-track.reduced-motion" }
+        ]
+      },
+      "negativeControl": {
+        "targetRouteId": "INITIAL-ENCOUNTER-BASELINE",
+        "comparison": "notIdenticalCapture"
+      }
+    },
+    {
+      "id": "ROUTE-FOCUS-REPLAY-INTERACTIVE",
+      "behavior": "Toggling Replay during numeric input preserves input value and DOM node identity without unmounting active controls (Repair 07 Item 2), with activeElement on the clicked Replay control.",
+      "configuration": "phase2-bundle-1",
+      "startingSurface": "mounted-app-entry",
+      "viewport": { "width": 360, "height": 740 },
+      "motionMode": "standard-motion",
+      "witness": "browser",
+      "actions": [
+        { "step": 1, "method": "click", "target": ".app-visual-view .control-btn", "description": "Acknowledge encounter" },
+        { "step": 2, "method": "click", "target": ".app-visual-view .control-choice-btn >> nth=1", "description": "Notice: choose different sized parts" },
+        { "step": 3, "method": "click", "target": ".app-visual-view .control-choice-btn >> nth=0", "description": "Decide: choose common denominator 12" },
+        { "step": 4, "method": "fill", "target": ".app-visual-view input.control-numeric-input", "value": "8", "description": "Transform left: enter numerator 8" },
+        { "step": 5, "method": "click", "target": ".app-visual-view .control-submit-btn", "description": "Transform left: submit 8" },
+        { "step": 6, "method": "focus", "target": ".app-visual-view input.control-numeric-input", "description": "Focus numerator input" },
+        { "step": 7, "method": "fill", "target": ".app-visual-view input.control-numeric-input", "value": "3", "description": "Enter value 3" },
+        { "step": 8, "method": "click", "target": ".app-support-controls .app-secondary-button:has-text(\"Replay\")", "description": "Toggle replay on" },
+        { "step": 9, "method": "click", "target": ".app-support-controls .app-secondary-button:has-text(\"Replay\")", "description": "Toggle replay off" }
+      ],
+      "expect": {
+        "capture": {
+          "target": ".app-visual-view input.control-numeric-input",
+          "type": "inputValue"
+        },
+        "assertions": [
+          { "type": "hasSelector", "target": ".app-visual-view input.control-numeric-input" },
+          { "type": "inputValueEquals", "target": ".app-visual-view input.control-numeric-input", "value": "3" },
+          { "type": "activeElementEquals", "target": "activeElement", "value": "button.fraction-control.app-secondary-button" }
+        ]
+      },
+      "negativeControl": {
+        "targetRouteId": "INITIAL-ENCOUNTER-BASELINE",
+        "comparison": "notIdenticalCapture"
+      }
+    },
+    {
+      "id": "ROUTE-FOCUS-INSPECTION-RESTORE",
+      "behavior": "Exiting Inspection Mode by clicking 'Done looking' in browser drops focus to BODY because Replay button is outside rootEl, preventing previousFocusRef capture (Plan 09 claim vs browser reality finding).",
+      "configuration": "phase2-bundle-1",
+      "startingSurface": "mounted-app-entry",
+      "viewport": { "width": 360, "height": 740 },
+      "motionMode": "standard-motion",
+      "witness": "browser",
+      "actions": [
+        { "step": 1, "method": "click", "target": ".app-visual-view .control-btn", "description": "Acknowledge encounter" },
+        { "step": 2, "method": "click", "target": ".app-visual-view .control-choice-btn >> nth=1", "description": "Notice: choose different sized parts" },
+        { "step": 3, "method": "click", "target": ".app-visual-view .control-choice-btn >> nth=0", "description": "Decide: choose common denominator 12" },
+        { "step": 4, "method": "fill", "target": ".app-visual-view input.control-numeric-input", "value": "8", "description": "Transform left: enter numerator 8" },
+        { "step": 5, "method": "click", "target": ".app-visual-view .control-submit-btn", "description": "Transform left: submit 8" },
+        { "step": 6, "method": "fill", "target": ".app-visual-view input.control-numeric-input", "value": "3", "description": "Transform right: enter numerator 3" },
+        { "step": 7, "method": "click", "target": ".app-visual-view .control-submit-btn", "description": "Transform right: submit 3" },
+        { "step": 8, "method": "fill", "target": ".app-visual-view input.control-numeric-input", "value": "11", "description": "Operate: enter sum 11" },
+        { "step": 9, "method": "click", "target": ".app-visual-view .control-submit-btn", "description": "Operate: submit 11" },
+        { "step": 10, "method": "click", "target": ".app-visual-view .control-btn", "description": "Resolve: acknowledge completed operation" },
+        { "step": 11, "method": "focus", "target": ".app-visual-view .matching-choice-btn >> nth=0", "description": "Focus first matching choice button" },
+        { "step": 12, "method": "click", "target": ".app-support-controls .app-secondary-button:has-text(\"Replay\")", "description": "Enter inspection mode" },
+        { "step": 13, "method": "click", "target": ".app-visual-view .app-done-looking-button", "description": "Exit inspection mode via Done Looking" }
+      ],
+      "expect": {
+        "capture": {
+          "target": "activeElement",
+          "type": "activeElementSelector"
+        },
+        "assertions": [
+          { "type": "hasSelector", "target": ".app-visual-view .matching-choice-btn" },
+          { "type": "notHasSelector", "target": ".app-visual-view .app-done-looking-button" },
+          { "type": "activeElementEquals", "target": "activeElement", "value": "body" }
+        ]
+      },
+      "negativeControl": {
+        "targetRouteId": "INSPECTION-ACTIVE-FOCUS-BASELINE",
+        "comparison": "notIdenticalCapture"
+      }
+    }
+  ]
+}
