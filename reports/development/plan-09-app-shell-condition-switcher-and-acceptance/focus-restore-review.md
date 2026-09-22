@@ -132,3 +132,34 @@ Focus returned to a linear-path choice on exit, with no leak to the hidden visua
 
 **Implementer work on `plan-09` is complete.** What remains is owner action, listed in
 `owner-gate-checklist.md`.
+
+---
+
+## Correction — 2026-09-22
+
+**The verification in this document was wrong, and the defect it certified as fixed is still live.**
+
+`plan-14`'s browser route matrix found that Inspection Mode focus restoration does not happen for a
+real user. Reproduced on the deployed build at `reflect`, with a reflection choice focused:
+
+```
+A — programmatic .click()   before: choice → during: Done looking → after: choice   ✓ restores
+B — focus() then .click()   before: choice → during: Done looking → after: BODY     ✗ drops
+```
+
+Path B is what a browser does on mousedown: it focuses the target before activating it. Path A is the
+method used for the "3 for 3" runs reported above. Those runs happened and their output is accurately
+transcribed; the gesture could not produce the failure.
+
+**Cause.** `beat-container.js:236` guards the `previousFocusRef` capture with
+`rootEl.contains(document.activeElement)`. The Replay button is mounted in `aside.app-support-panel`,
+outside the view `rootEl`. After a real click, `document.activeElement` is the Replay button, the guard
+is false, `previousFocusRef` stays `null`, and the exit branch never runs. `linear-path.js:274` is
+identical.
+
+The `isElementVisible` correction committed at `b418e8a` remains correct and necessary — it fixed a
+different defect in the same code path. It was not sufficient, and this document said it was.
+
+The standing lesson in this file — *"a focus, layout, or visibility claim needs the browser"* — was
+right and incomplete. It needs: **and a real gesture.** A programmatic `.click()` in a real browser is
+still a synthetic event, and it is blind to exactly the class of defect that browsers exist to expose.
