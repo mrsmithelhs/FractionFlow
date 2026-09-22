@@ -531,6 +531,66 @@ mid-build.
 
 ---
 
+### OQ-25 — How should a fraction bar represent subtraction?
+
+**Raised:** 2026-09-21 by the `plan-10` reach assessment, which classified like-denominator and
+nested-denominator subtraction as **needing a representation the bar cannot give**.
+
+The Phase 2 grammar equates operation with combination. `strings.operate.prompt` is *"Add the shaded
+parts together."*; the input label is *"Total shaded parts out of N:"*; the arithmetic recovery string
+is *"The denominator stays the same. Add only the top numbers."* The renderer draws only positive
+shaded quantities, so presented with `4/7` and `1/7` it draws two co-present addends — which
+misrepresents subtraction rather than merely failing to show it.
+
+Two candidates, neither tested:
+
+- **Takeaway** — remove or cross-hatch segments from the minuend, so the operation is an action on one
+  quantity.
+- **Comparison** — show both bars and mark the difference between them, so the operation is a gap.
+
+The dossier's own statement is the right posture: *"We cannot know which representation is
+pedagogically effective for children without building and observing prototypes of both. Asserting that
+one is superior in specification prose is guesswork."*
+
+**Phase 3 owes this:** a decision before any subtraction family ships. Four of §27's eight families are
+subtraction, so this is not a corner case — it is half the phase.
+
+**Needs:** prototypes of both, exercised and observed, rather than a choice made on paper. This is the
+first question in the project where the honest answer is a prototype rather than a decision, and it
+should be scoped as one.
+
+---
+
+### OQ-26 — Should the seven-beat arc become a computed schedule?
+
+**Raised:** 2026-09-21, from the `plan-10` reach assessment's remedy for Family 1
+(like-denominator addition).
+
+`src/interaction/episode.js` runs a fixed arc — `encounter → notice → decide → transform ×2 → operate →
+resolve` — built for the Phase 2 slice, where both operands require renaming. For a like-denominator
+problem (`renamingCount: 0`) that arc asks the learner to choose a common denominator when the
+denominators already match, and then to enter two conversions that change nothing. For a nested
+problem (`renamingCount: 1`) it demands a redundant conversion of the operand that is already in the
+target unit.
+
+The dossier's remedy is one line inside a family row: refactor the fixed beat list into a **data-driven
+beat schedule**, where the instance's `renamingCount` determines whether `transform` runs zero, one, or
+two times.
+
+That is the most consequential architectural proposal in the dossier and it deserves to be a named
+design question rather than a sentence. A fixed arc becoming a computed schedule touches DECISION-014's
+beat-gated mounting, every scaffold-leakage invariant that reasons about which beat mounts what, the
+completed-beats summary, and the replay provenance that assumes a known predecessor beat.
+
+**Phase 3 owes this:** a design position before the first family that needs a variable schedule —
+which is the first family after the canonical one, so effectively immediately.
+
+**Needs:** a mechanism proposal at the packet that first requires it, not a refactor discovered
+mid-build. Whether the schedule is computed once at episode construction or re-derived per beat is
+itself part of the question, because one of those keeps history out of the scene and one invites it in.
+
+---
+
 ## Process / workflow
 
 ### OQ-12 — Advisor consultation has not yet been exercised on a behavioral packet

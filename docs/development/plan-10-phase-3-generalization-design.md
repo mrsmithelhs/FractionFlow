@@ -1,7 +1,8 @@
 ---
 id: plan-10
 title: Phase 3 Generalization — Design and Reach Assessment
-status: delivered
+status: complete
+resolution: "Design dossier delivered at b1f63f7, budget-corrected at 05b399a, and owner-dispositioned 2026-09-21: DECISION-032 adopts the discrete multi-whole stack for results crossing one whole (resolving OQ-20) with four constraints; DECISION-033 keeps mixed numbers out of Phase 3 with a strategy owed at the roadmap section 91 checkpoint (OQ-24). Headline finding: demonstrated reach across exactly one of fourteen section 27 and 28 targets. Carried forward as OQ-25 (subtraction representation, empirical) and OQ-26 (computed beat schedule). The sequencing proposal is an input to Phase 3 drafting, not a gate."
 depends_on: [plan-09]
 gate: "Owner reviews and accepts the design dossier. No Phase 3 *problem-family* implementation packet may be assigned until it is accepted; this gate does not block plan-11, plan-12, plan-13, or plan-14, and does not block drafting. Design artifacts are proposals, not settled decisions; any new decision is reported for owner disposition rather than taken."
 summary: >-
