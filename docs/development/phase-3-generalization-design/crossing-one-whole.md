@@ -176,17 +176,17 @@ Because displaying two addend bars ($\sim 94\text{px}$) simultaneously with a tw
 2. They are collapsed into the inspectable completed-beats summary section (`.completed-beats-section`) as compact text milestone lines (e.g., `"First fraction: 7/8"`, `"Second fraction: 3/8"`, conforming strictly to DECISION-014 / Finding R6).
 3. The active visual stage is dedicated exclusively to the **two-whole result stack** (Whole 1: 8/8, Whole 2: 2/8).
 
-#### Measured Geometry with Required Mitigation Applied:
+#### Projected Geometry with Required Mitigation Applied:
 - **Retired elements:** Two addend bars ($47\text{px} \times 2 = 94\text{px}$) removed from the active stage.
 - **Added elements:** Two result bars plus gap ($47\text{px} \times 2 + 8\text{px} = 102\text{px}$) mounted on the active stage.
 - **Net active visual delta:** $102\text{px} - 94\text{px} = \mathbf{+8\text{px}}$.
 - **Completed steps text delta:** Text milestone line added to completed-beats disclosure adds $\sim 24\text{px}$–$30\text{px}$.
 - **Net Submit bottom position:** $541\text{px} + 8\text{px} + 26\text{px} \approx \mathbf{575\text{px}}$.
-- **Verified clearance to 740px fold:** $740\text{px} - 575\text{px} = \mathbf{165\text{px}}$ ($\sim 22.3\%$ viewport margin).
-- **Verified clearance to 752px fold:** $752\text{px} - 575\text{px} = \mathbf{177\text{px}}$ ($\sim 23.5\%$ viewport margin).
+- **Projected clearance to 740px fold:** $740\text{px} - 575\text{px} = \mathbf{165\text{px}}$ ($\sim 22.3\%$ viewport margin).
+- **Projected clearance to 752px fold:** $752\text{px} - 575\text{px} = \mathbf{177\text{px}}$ ($\sim 23.5\%$ viewport margin).
 - *(Clearance to 640px height: $640\text{px} - 575\text{px} = 65\text{px}$).*
 
-This makes Candidate 1 robust, calm, and spacious, ensuring that all interactive elements remain comfortably above the fold with verified margins under all reference conditions.
+This makes Candidate 1 robust, calm, and spacious, ensuring that all interactive elements remain comfortably above the fold under all reference conditions. These mitigated figures are projections from a measured 541px baseline plus estimated deltas; the multi-whole bar does not exist yet, so they must be re-measured when it does.
 
 ### Horizontal Dimensions (360px width, 16px lateral padding $\to$ 328px content):
 - **Bar Track:** $232\text{px}$ wide.

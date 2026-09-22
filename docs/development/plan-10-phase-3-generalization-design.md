@@ -1,7 +1,7 @@
 ---
 id: plan-10
 title: Phase 3 Generalization — Design and Reach Assessment
-status: in-progress
+status: delivered
 depends_on: [plan-09]
 gate: "Owner reviews and accepts the design dossier. No Phase 3 *problem-family* implementation packet may be assigned until it is accepted; this gate does not block plan-11, plan-12, plan-13, or plan-14, and does not block drafting. Design artifacts are proposals, not settled decisions; any new decision is reported for owner disposition rather than taken."
 summary: >-
