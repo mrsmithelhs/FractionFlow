@@ -11,7 +11,10 @@ summary: >-
   the reviewer-only condition switcher live, from which a learner enters the
   episode, and to which the episode returns. Removes the footer-title workaround
   adopted in plan-09 Repair 01, and gives the gear menu somewhere to live that
-  does not overlap the work surface. No accounts, no storage, no progress.
+  does not overlap the work surface. No accounts, no storage, no progress. Also
+  repairs the Inspection Mode focus defect that plan-14 found on the deployed
+  slice, because it is a defect in the same focus contract this packet is
+  opening.
 ---
 
 # Plan 12: Entry Page and Session Shape
@@ -27,7 +30,7 @@ summary: >-
 - Mutation level: user-facing release
 - Approval gate: owner-approved proposal for the entry page's contents, then owner review on rendered screens
 - Depends on: `plan-09` (the shell, the condition registry, and the footer arrangement this replaces); `plan-14` (entry, return, and condition transport are route claims)
-- Expected artifacts: `src/app/` changes; entry-page module; OQ-19 resolution recorded; progress report
+- Expected artifacts: `src/app/` changes; entry-page module; the Inspection Mode focus repair in `src/render/`; a retired `knownDefect` marker in the route matrix; OQ-19 resolution recorded; progress report
 
 ## Goal
 
@@ -83,6 +86,10 @@ Required reading:
   level joins the gear menu), **DECISION-031** (practice types are URL-addressable; conditions are not)
 - `reports/development/plan-09-app-shell-condition-switcher-and-acceptance/repair-01-review.md` — the
   clutter audit whose conclusions must not be undone
+- `reports/development/plan-14-reachable-behavior-route-contract/delivery-review.md` — the focus finding
+  and the three layers of verification it passed through
+- `reports/development/plan-09-app-shell-condition-switcher-and-acceptance/focus-restore-review.md` —
+  including its 2026-09-22 correction
 
 Contracts this packet must preserve:
 
@@ -105,12 +112,18 @@ Contracts this packet must preserve:
 - The reviewer-only condition switcher's placement and the state it carries into an episode.
 - Title placement: on the entry page as the primary identity; on the episode surface wherever the
   hierarchy and the clutter boundary allow, which may be the footer as now or may be nothing at all.
+- **`src/render/beat-container.js` and `src/render/linear-path.js`, for the Inspection Mode focus
+  repair in Requirement 6 and for nothing else.**
+- **`tests/routes/route-matrix.json`**, to retire the `knownDefect` marker on
+  `ROUTE-FOCUS-INSPECTION-RESTORE` and invert its assertion once the repair lands.
 - Tests covering entry, episode, and the return path.
 
 ### Out of scope
 
-- `src/math/`, `src/content/`, `src/interaction/`, `src/render/` — no changes. This is composition.
-  If the entry page appears to need instructional state, **stop and report**.
+- `src/math/`, `src/content/`, `src/interaction/` — no changes. This is composition. If the entry page
+  appears to need instructional state, **stop and report**.
+- `src/render/` — no changes **except** the focus repair named in Requirement 6. Everything else in the
+  renderers is out of scope, including anything the entry page might seem to make convenient.
 - Any persistence mechanism, including `localStorage` and URL parameters carrying learner state.
 - Making the design condition or support level addressable by URL (DECISION-031 point 3).
 
@@ -223,6 +236,48 @@ Required behavior:
   and return controls, not a reset call.
 - Browser witness for the focus contract at both transitions.
 
+### Requirement 6 — Repair the Inspection Mode focus defect
+
+`plan-14`'s route matrix found, and the orchestrator reproduced on the deployed build, that focus is
+**not** restored when a learner leaves Inspection Mode at `reflect`. It drops to `body`, which returns
+a keyboard or screen-reader user to the top of the document mid-task.
+
+**Cause.** `src/render/beat-container.js:236` guards the `previousFocusRef` capture with
+`rootEl.contains(document.activeElement)`, where `rootEl` is the view section. The Replay button is
+mounted in `aside.app-support-panel`, **outside** that section. A real click focuses the button before
+activating it, so the guard evaluates false, `previousFocusRef` stays `null`, and the exit branch —
+including its first-control fallback — never runs. `src/render/linear-path.js:274` is identical.
+
+**Why it lives here.** This is a defect in exactly the focus contract Requirement 0 asks you to state,
+and this packet is restructuring the shell that produced it. Repairing it in isolation would mean
+fixing a containment relationship that this packet is about to change.
+
+Required behavior:
+
+- Leaving Inspection Mode returns focus to the reflection choice group, on both the visual and the
+  linear path. Returning to the first choice satisfies this; the saved node is legitimately stale after
+  the remount, and the first-control fallback is what makes that safe.
+- The repair holds **after** the entry page restructures the shell, not only before it.
+- The fix does not widen into general focus management. Two files, the smallest change that makes the
+  capture see the real active element.
+
+Constraints:
+
+- **Verify with a real gesture, not a synthetic one.** A programmatic `.click()` in a real browser does
+  not move focus and is blind to this defect — that is how it survived both the mock harness and an
+  orchestrator review. Drive it through `plan-14`'s runner, or with a real browser click.
+- Do not "fix" focus landing on the Replay button after a learner presses it. That is correct browser
+  behavior and Repair 06's Condition B never prohibited it; it prohibited replay *stealing* focus to a
+  display card mid-entry.
+- Report `document.activeElement` before replay, during Inspection Mode, and after "Done looking", on
+  both paths, verbatim.
+
+**Retire the marker.** Once the repair lands, `ROUTE-FOCUS-INSPECTION-RESTORE` in
+`tests/routes/route-matrix.json` must lose its `knownDefect` field and invert its assertion from
+`activeElementEquals: "body"` to the restored choice control. `plan-14`'s runner is required to fail
+when a known-defect row stops exhibiting its defect, so leaving the marker in place will itself break
+the suite — as intended.
+
 ## Validation Checklist
 
 - [ ] App opens on an entry page; one control begins the episode.
@@ -233,7 +288,12 @@ Required behavior:
 - [ ] "Try this problem again" and return-to-entry discard identical state, asserted by a route witness.
 - [ ] Return path exists, discards state, and does not conflict with "Try this problem again."
 - [ ] Route-matrix rows for per-condition launch (with negative controls) and for return to re-entry.
-- [ ] Focus contract verified in a browser at both transitions.
+- [ ] Focus contract verified in a browser at both transitions, **with a real gesture**.
+- [ ] Inspection Mode returns focus to the reflection choice group on both paths, verified after the
+      entry page restructure, with `activeElement` reported verbatim at three points.
+- [ ] `ROUTE-FOCUS-INSPECTION-RESTORE`'s `knownDefect` marker retired and its assertion inverted;
+      `npm run test:routes` green with no known-defect rows remaining for this defect.
+- [ ] No `src/render/` changes beyond the two files named in Requirement 6.
 - [ ] Hierarchy holds at 360px, tablet, and 1440px.
 - [ ] 360px vertical budget measured before and after, against a stated viewport height.
 - [ ] Entry page has no metrics, counters, or progress, and at most one heading level below the name.
@@ -251,6 +311,8 @@ Stop and report if:
 - Returning from an episode cannot discard state cleanly without an interaction-layer change.
 - The entry page and the clutter boundary appear to be in conflict.
 - The gear menu's placement appears to require widening DECISION-019's surface.
+- The focus repair cannot be made without restructuring focus management more broadly, or without
+  changing `src/interaction/`. Report it rather than widening the packet.
 
 ## Implementer Authority Boundaries
 
