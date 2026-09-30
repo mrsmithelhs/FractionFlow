@@ -407,7 +407,9 @@ in `plan-12`, to be judged against rendered screens under DECISION-021 criterion
 FractionFlow title, the line "See how different-sized fraction parts fit together," a small creator
 credit, the reviewer-only gear, and only runnable practice types from the practice-type registry. At
 approval, that registry has one practice button: "Add fractions with different denominators." The
-gear carries the design-condition and support-level selectors. The entry/begin/return focus contract,
+implemented gear carries the design-condition selector only. DECISION-030 authorizes a future
+support-level selector, whose activation remains gated in Plan 13; Plan 12 Repair 01 removed the
+active support selector and upstream writer from the initial delivery. The entry/begin/return focus contract,
 recognized-fragment launch focus, and first-choice targeting on Inspection Mode exit were approved
 with the proposal. Rendered-screen acceptance remains the owner gate in Plan 12.
 

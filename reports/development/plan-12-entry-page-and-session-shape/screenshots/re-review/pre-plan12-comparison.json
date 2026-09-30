@@ -1,0 +1,474 @@
+[
+  {
+    "build": "pre-plan12-c03ba5a",
+    "height": 740,
+    "path": "visual",
+    "state": "reflection",
+    "scrollHeight": 1121,
+    "scrollWidth": 360,
+    "horizontalOverflow": false,
+    "question": {
+      "left": 71,
+      "top": 388.71875,
+      "right": 289,
+      "bottom": 439.09375,
+      "width": 218,
+      "height": 50.375
+    },
+    "controls": {
+      "left": 71,
+      "top": 470.03125,
+      "right": 289,
+      "bottom": 758.03125,
+      "width": 218,
+      "height": 288
+    },
+    "bar": {
+      "left": 49,
+      "top": 109,
+      "right": 311,
+      "bottom": 157,
+      "width": 262,
+      "height": 48
+    }
+  },
+  {
+    "build": "pre-plan12-c03ba5a",
+    "height": 740,
+    "path": "visual",
+    "state": "reflection-help-recovery",
+    "scrollHeight": 1324,
+    "scrollWidth": 360,
+    "horizontalOverflow": false,
+    "question": {
+      "left": 71,
+      "top": 510.71875,
+      "right": 289,
+      "bottom": 561.09375,
+      "width": 218,
+      "height": 50.375
+    },
+    "controls": {
+      "left": 71,
+      "top": 672.8125,
+      "right": 289,
+      "bottom": 960.8125,
+      "width": 218,
+      "height": 288
+    },
+    "bar": {
+      "left": 49,
+      "top": 109,
+      "right": 311,
+      "bottom": 157,
+      "width": 262,
+      "height": 48
+    }
+  },
+  {
+    "build": "pre-plan12-c03ba5a",
+    "height": 740,
+    "path": "linear",
+    "state": "reflection",
+    "scrollHeight": 943,
+    "scrollWidth": 360,
+    "horizontalOverflow": false,
+    "question": {
+      "left": 71,
+      "top": 370.5625,
+      "right": 289,
+      "bottom": 446.125,
+      "width": 218,
+      "height": 75.5625
+    },
+    "controls": {
+      "left": 71,
+      "top": 480.125,
+      "right": 289,
+      "bottom": 580.125,
+      "width": 218,
+      "height": 100
+    },
+    "bar": null
+  },
+  {
+    "build": "pre-plan12-c03ba5a",
+    "height": 740,
+    "path": "linear",
+    "state": "reflection-help-recovery",
+    "scrollHeight": 1125,
+    "scrollWidth": 360,
+    "horizontalOverflow": false,
+    "question": {
+      "left": 71,
+      "top": 471.5625,
+      "right": 289,
+      "bottom": 547.125,
+      "width": 218,
+      "height": 75.5625
+    },
+    "controls": {
+      "left": 71,
+      "top": 661.90625,
+      "right": 289,
+      "bottom": 761.90625,
+      "width": 218,
+      "height": 100
+    },
+    "bar": null
+  },
+  {
+    "build": "pre-plan12-c03ba5a",
+    "height": 752,
+    "path": "visual",
+    "state": "reflection",
+    "scrollHeight": 1121,
+    "scrollWidth": 360,
+    "horizontalOverflow": false,
+    "question": {
+      "left": 71,
+      "top": 388.71875,
+      "right": 289,
+      "bottom": 439.09375,
+      "width": 218,
+      "height": 50.375
+    },
+    "controls": {
+      "left": 71,
+      "top": 470.03125,
+      "right": 289,
+      "bottom": 758.03125,
+      "width": 218,
+      "height": 288
+    },
+    "bar": {
+      "left": 49,
+      "top": 109,
+      "right": 311,
+      "bottom": 157,
+      "width": 262,
+      "height": 48
+    }
+  },
+  {
+    "build": "pre-plan12-c03ba5a",
+    "height": 752,
+    "path": "visual",
+    "state": "reflection-help-recovery",
+    "scrollHeight": 1324,
+    "scrollWidth": 360,
+    "horizontalOverflow": false,
+    "question": {
+      "left": 71,
+      "top": 510.71875,
+      "right": 289,
+      "bottom": 561.09375,
+      "width": 218,
+      "height": 50.375
+    },
+    "controls": {
+      "left": 71,
+      "top": 672.8125,
+      "right": 289,
+      "bottom": 960.8125,
+      "width": 218,
+      "height": 288
+    },
+    "bar": {
+      "left": 49,
+      "top": 109,
+      "right": 311,
+      "bottom": 157,
+      "width": 262,
+      "height": 48
+    }
+  },
+  {
+    "build": "pre-plan12-c03ba5a",
+    "height": 752,
+    "path": "linear",
+    "state": "reflection",
+    "scrollHeight": 943,
+    "scrollWidth": 360,
+    "horizontalOverflow": false,
+    "question": {
+      "left": 71,
+      "top": 370.5625,
+      "right": 289,
+      "bottom": 446.125,
+      "width": 218,
+      "height": 75.5625
+    },
+    "controls": {
+      "left": 71,
+      "top": 480.125,
+      "right": 289,
+      "bottom": 580.125,
+      "width": 218,
+      "height": 100
+    },
+    "bar": null
+  },
+  {
+    "build": "pre-plan12-c03ba5a",
+    "height": 752,
+    "path": "linear",
+    "state": "reflection-help-recovery",
+    "scrollHeight": 1125,
+    "scrollWidth": 360,
+    "horizontalOverflow": false,
+    "question": {
+      "left": 71,
+      "top": 471.5625,
+      "right": 289,
+      "bottom": 547.125,
+      "width": 218,
+      "height": 75.5625
+    },
+    "controls": {
+      "left": 71,
+      "top": 661.90625,
+      "right": 289,
+      "bottom": 761.90625,
+      "width": 218,
+      "height": 100
+    },
+    "bar": null
+  },
+  {
+    "build": "repaired-51bdec7",
+    "height": 740,
+    "path": "visual",
+    "state": "reflection",
+    "scrollHeight": 1142,
+    "scrollWidth": 360,
+    "horizontalOverflow": false,
+    "question": {
+      "left": 63,
+      "top": 440.71875,
+      "right": 297,
+      "bottom": 491.09375,
+      "width": 234,
+      "height": 50.375
+    },
+    "controls": {
+      "left": 63,
+      "top": 522.03125,
+      "right": 297,
+      "bottom": 810.03125,
+      "width": 234,
+      "height": 288
+    },
+    "bar": {
+      "left": 41,
+      "top": 161,
+      "right": 319,
+      "bottom": 209,
+      "width": 278,
+      "height": 48
+    }
+  },
+  {
+    "build": "repaired-51bdec7",
+    "height": 740,
+    "path": "visual",
+    "state": "reflection-help-recovery",
+    "scrollHeight": 1324,
+    "scrollWidth": 360,
+    "horizontalOverflow": false,
+    "question": {
+      "left": 63,
+      "top": 541.71875,
+      "right": 297,
+      "bottom": 592.09375,
+      "width": 234,
+      "height": 50.375
+    },
+    "controls": {
+      "left": 63,
+      "top": 703.8125,
+      "right": 297,
+      "bottom": 991.8125,
+      "width": 234,
+      "height": 288
+    },
+    "bar": {
+      "left": 41,
+      "top": 161,
+      "right": 319,
+      "bottom": 209,
+      "width": 278,
+      "height": 48
+    }
+  },
+  {
+    "build": "repaired-51bdec7",
+    "height": 740,
+    "path": "linear",
+    "state": "reflection",
+    "scrollHeight": 964,
+    "scrollWidth": 360,
+    "horizontalOverflow": false,
+    "question": {
+      "left": 63,
+      "top": 422.5625,
+      "right": 297,
+      "bottom": 498.125,
+      "width": 234,
+      "height": 75.5625
+    },
+    "controls": {
+      "left": 63,
+      "top": 532.125,
+      "right": 297,
+      "bottom": 632.125,
+      "width": 234,
+      "height": 100
+    },
+    "bar": null
+  },
+  {
+    "build": "repaired-51bdec7",
+    "height": 740,
+    "path": "linear",
+    "state": "reflection-help-recovery",
+    "scrollHeight": 1146,
+    "scrollWidth": 360,
+    "horizontalOverflow": false,
+    "question": {
+      "left": 63,
+      "top": 523.5625,
+      "right": 297,
+      "bottom": 599.125,
+      "width": 234,
+      "height": 75.5625
+    },
+    "controls": {
+      "left": 63,
+      "top": 713.90625,
+      "right": 297,
+      "bottom": 813.90625,
+      "width": 234,
+      "height": 100
+    },
+    "bar": null
+  },
+  {
+    "build": "repaired-51bdec7",
+    "height": 752,
+    "path": "visual",
+    "state": "reflection",
+    "scrollHeight": 1142,
+    "scrollWidth": 360,
+    "horizontalOverflow": false,
+    "question": {
+      "left": 63,
+      "top": 440.71875,
+      "right": 297,
+      "bottom": 491.09375,
+      "width": 234,
+      "height": 50.375
+    },
+    "controls": {
+      "left": 63,
+      "top": 522.03125,
+      "right": 297,
+      "bottom": 810.03125,
+      "width": 234,
+      "height": 288
+    },
+    "bar": {
+      "left": 41,
+      "top": 161,
+      "right": 319,
+      "bottom": 209,
+      "width": 278,
+      "height": 48
+    }
+  },
+  {
+    "build": "repaired-51bdec7",
+    "height": 752,
+    "path": "visual",
+    "state": "reflection-help-recovery",
+    "scrollHeight": 1324,
+    "scrollWidth": 360,
+    "horizontalOverflow": false,
+    "question": {
+      "left": 63,
+      "top": 541.71875,
+      "right": 297,
+      "bottom": 592.09375,
+      "width": 234,
+      "height": 50.375
+    },
+    "controls": {
+      "left": 63,
+      "top": 703.8125,
+      "right": 297,
+      "bottom": 991.8125,
+      "width": 234,
+      "height": 288
+    },
+    "bar": {
+      "left": 41,
+      "top": 161,
+      "right": 319,
+      "bottom": 209,
+      "width": 278,
+      "height": 48
+    }
+  },
+  {
+    "build": "repaired-51bdec7",
+    "height": 752,
+    "path": "linear",
+    "state": "reflection",
+    "scrollHeight": 964,
+    "scrollWidth": 360,
+    "horizontalOverflow": false,
+    "question": {
+      "left": 63,
+      "top": 422.5625,
+      "right": 297,
+      "bottom": 498.125,
+      "width": 234,
+      "height": 75.5625
+    },
+    "controls": {
+      "left": 63,
+      "top": 532.125,
+      "right": 297,
+      "bottom": 632.125,
+      "width": 234,
+      "height": 100
+    },
+    "bar": null
+  },
+  {
+    "build": "repaired-51bdec7",
+    "height": 752,
+    "path": "linear",
+    "state": "reflection-help-recovery",
+    "scrollHeight": 1146,
+    "scrollWidth": 360,
+    "horizontalOverflow": false,
+    "question": {
+      "left": 63,
+      "top": 523.5625,
+      "right": 297,
+      "bottom": 599.125,
+      "width": 234,
+      "height": 75.5625
+    },
+    "controls": {
+      "left": 63,
+      "top": 713.90625,
+      "right": 297,
+      "bottom": 813.90625,
+      "width": 234,
+      "height": 100
+    },
+    "bar": null
+  }
+]
