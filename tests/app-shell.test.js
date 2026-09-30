@@ -49,7 +49,7 @@ describe('Plan 09 app shell and upstream display switcher', () => {
     expect(root.textContent).not.toContain('D-02');
   });
 
-  it('selects reviewer configuration on the entry page and applies it to a fresh episode', () => {
+  it('selects reviewer condition on the entry page and applies it to a fresh episode', () => {
     const encounterButton = root.querySelector('.app-visual-view .control-btn');
     encounterButton.click();
     root.querySelectorAll('.app-visual-view .control-choice-btn')[1].click();
@@ -64,16 +64,15 @@ describe('Plan 09 app shell and upstream display switcher', () => {
     const second = root.querySelector('[data-condition-id="phase2-bundle-2"]');
     expect(second.getAttribute('data-choreography-code')).toBe('D-02-J');
     second.click();
-    const support = root.querySelector('.app-support-level');
-    support.value = 'medium support';
-    support.dispatchEvent({ type: 'change' });
+    expect(root.querySelector('.app-support-level')).toBeNull();
     root.querySelector('.app-practice-button').click();
 
     const after = app.getState();
     expect(after.activeCondition).toEqual(REGISTERED_CONDITIONS[1].activeCondition);
     expect(after.revision).toBe(0);
     expect(after.established.notice).toBe(null);
-    expect(after.support.label).toBe('medium support');
+    expect(after.support.label).toBe('high support');
+    expect(root.querySelector('.fractionflow-app').getAttribute('data-support-level')).toBeNull();
     expect(app.getReplayEnvelope().activeCondition).toEqual(after.activeCondition);
     expect(root.textContent).not.toContain('D-02-J');
     expect(root.querySelector('.app-episode .app-gear-button')).toBe(null);

@@ -1,0 +1,2562 @@
+[
+  {
+    "build": "before-74e7e1b",
+    "viewport": {
+      "width": 360,
+      "height": 740
+    },
+    "condition": "phase2-bundle-1",
+    "path": "visual",
+    "state": "reflection",
+    "motionMode": "reduced-motion",
+    "scrollHeight": 1142,
+    "scrollWidth": 360,
+    "horizontalOverflow": false,
+    "scrollY": 12,
+    "questionText": "Tap the bar that shows the same amount as 2/3.",
+    "question": {
+      "left": 63,
+      "top": 441,
+      "right": 297,
+      "bottom": 491,
+      "width": 234,
+      "height": 50
+    },
+    "controls": {
+      "left": 63,
+      "top": 522,
+      "right": 297,
+      "bottom": 810,
+      "width": 234,
+      "height": 288
+    }
+  },
+  {
+    "build": "before-74e7e1b",
+    "viewport": {
+      "width": 360,
+      "height": 740
+    },
+    "condition": "phase2-bundle-1",
+    "path": "visual",
+    "state": "reflection-help-recovery",
+    "motionMode": "reduced-motion",
+    "scrollHeight": 1324,
+    "scrollWidth": 360,
+    "horizontalOverflow": false,
+    "scrollY": 503,
+    "questionText": "Tap the bar that shows the same amount as 2/3.",
+    "question": {
+      "left": 63,
+      "top": 542,
+      "right": 297,
+      "bottom": 592,
+      "width": 234,
+      "height": 50
+    },
+    "controls": {
+      "left": 63,
+      "top": 704,
+      "right": 297,
+      "bottom": 992,
+      "width": 234,
+      "height": 288
+    }
+  },
+  {
+    "build": "before-74e7e1b",
+    "viewport": {
+      "width": 360,
+      "height": 752
+    },
+    "condition": "phase2-bundle-1",
+    "path": "visual",
+    "state": "reflection",
+    "motionMode": "reduced-motion",
+    "scrollHeight": 1142,
+    "scrollWidth": 360,
+    "horizontalOverflow": false,
+    "scrollY": 12,
+    "questionText": "Tap the bar that shows the same amount as 2/3.",
+    "question": {
+      "left": 63,
+      "top": 441,
+      "right": 297,
+      "bottom": 491,
+      "width": 234,
+      "height": 50
+    },
+    "controls": {
+      "left": 63,
+      "top": 522,
+      "right": 297,
+      "bottom": 810,
+      "width": 234,
+      "height": 288
+    }
+  },
+  {
+    "build": "before-74e7e1b",
+    "viewport": {
+      "width": 360,
+      "height": 752
+    },
+    "condition": "phase2-bundle-1",
+    "path": "visual",
+    "state": "reflection-help-recovery",
+    "motionMode": "reduced-motion",
+    "scrollHeight": 1324,
+    "scrollWidth": 360,
+    "horizontalOverflow": false,
+    "scrollY": 491,
+    "questionText": "Tap the bar that shows the same amount as 2/3.",
+    "question": {
+      "left": 63,
+      "top": 542,
+      "right": 297,
+      "bottom": 592,
+      "width": 234,
+      "height": 50
+    },
+    "controls": {
+      "left": 63,
+      "top": 704,
+      "right": 297,
+      "bottom": 992,
+      "width": 234,
+      "height": 288
+    }
+  },
+  {
+    "build": "before-74e7e1b",
+    "viewport": {
+      "width": 768,
+      "height": 1024
+    },
+    "condition": "phase2-bundle-1",
+    "path": "visual",
+    "state": "reflection",
+    "motionMode": "reduced-motion",
+    "scrollHeight": 1024,
+    "scrollWidth": 768,
+    "horizontalOverflow": false,
+    "scrollY": 0,
+    "questionText": "Tap the bar that shows the same amount as 2/3.",
+    "question": {
+      "left": 81,
+      "top": 459,
+      "right": 687,
+      "bottom": 484,
+      "width": 606,
+      "height": 25
+    },
+    "controls": {
+      "left": 81,
+      "top": 515,
+      "right": 687,
+      "bottom": 603,
+      "width": 606,
+      "height": 88
+    }
+  },
+  {
+    "build": "before-74e7e1b",
+    "viewport": {
+      "width": 768,
+      "height": 1024
+    },
+    "condition": "phase2-bundle-1",
+    "path": "visual",
+    "state": "reflection-help-recovery",
+    "motionMode": "reduced-motion",
+    "scrollHeight": 1024,
+    "scrollWidth": 768,
+    "horizontalOverflow": false,
+    "scrollY": 0,
+    "questionText": "Tap the bar that shows the same amount as 2/3.",
+    "question": {
+      "left": 81,
+      "top": 518,
+      "right": 687,
+      "bottom": 543,
+      "width": 606,
+      "height": 25
+    },
+    "controls": {
+      "left": 81,
+      "top": 632,
+      "right": 687,
+      "bottom": 720,
+      "width": 606,
+      "height": 88
+    }
+  },
+  {
+    "build": "before-74e7e1b",
+    "viewport": {
+      "width": 1440,
+      "height": 900
+    },
+    "condition": "phase2-bundle-1",
+    "path": "visual",
+    "state": "reflection",
+    "motionMode": "reduced-motion",
+    "scrollHeight": 912,
+    "scrollWidth": 1440,
+    "horizontalOverflow": false,
+    "scrollY": 0,
+    "questionText": "Tap the bar that shows the same amount as 2/3.",
+    "question": {
+      "left": 374,
+      "top": 492,
+      "right": 1066,
+      "bottom": 517,
+      "width": 692,
+      "height": 25
+    },
+    "controls": {
+      "left": 374,
+      "top": 548,
+      "right": 1066,
+      "bottom": 636,
+      "width": 692,
+      "height": 88
+    }
+  },
+  {
+    "build": "before-74e7e1b",
+    "viewport": {
+      "width": 1440,
+      "height": 900
+    },
+    "condition": "phase2-bundle-1",
+    "path": "visual",
+    "state": "reflection-help-recovery",
+    "motionMode": "reduced-motion",
+    "scrollHeight": 1029,
+    "scrollWidth": 1440,
+    "horizontalOverflow": false,
+    "scrollY": 0,
+    "questionText": "Tap the bar that shows the same amount as 2/3.",
+    "question": {
+      "left": 374,
+      "top": 551,
+      "right": 1066,
+      "bottom": 576,
+      "width": 692,
+      "height": 25
+    },
+    "controls": {
+      "left": 374,
+      "top": 665,
+      "right": 1066,
+      "bottom": 753,
+      "width": 692,
+      "height": 88
+    }
+  },
+  {
+    "build": "before-74e7e1b",
+    "viewport": {
+      "width": 360,
+      "height": 740
+    },
+    "condition": "phase2-bundle-1",
+    "path": "linear",
+    "state": "reflection",
+    "motionMode": "reduced-motion",
+    "scrollHeight": 964,
+    "scrollWidth": 360,
+    "horizontalOverflow": false,
+    "scrollY": 12,
+    "questionText": "Choose the fraction that shows the same amount as 2/3.",
+    "question": {
+      "left": 63,
+      "top": 423,
+      "right": 297,
+      "bottom": 498,
+      "width": 234,
+      "height": 76
+    },
+    "controls": {
+      "left": 63,
+      "top": 532,
+      "right": 297,
+      "bottom": 632,
+      "width": 234,
+      "height": 100
+    }
+  },
+  {
+    "build": "before-74e7e1b",
+    "viewport": {
+      "width": 360,
+      "height": 740
+    },
+    "condition": "phase2-bundle-1",
+    "path": "linear",
+    "state": "reflection-help-recovery",
+    "motionMode": "reduced-motion",
+    "scrollHeight": 1146,
+    "scrollWidth": 360,
+    "horizontalOverflow": false,
+    "scrollY": 325,
+    "questionText": "Choose the fraction that shows the same amount as 2/3.",
+    "question": {
+      "left": 63,
+      "top": 524,
+      "right": 297,
+      "bottom": 599,
+      "width": 234,
+      "height": 76
+    },
+    "controls": {
+      "left": 63,
+      "top": 714,
+      "right": 297,
+      "bottom": 814,
+      "width": 234,
+      "height": 100
+    }
+  },
+  {
+    "build": "before-74e7e1b",
+    "viewport": {
+      "width": 360,
+      "height": 752
+    },
+    "condition": "phase2-bundle-1",
+    "path": "linear",
+    "state": "reflection",
+    "motionMode": "reduced-motion",
+    "scrollHeight": 964,
+    "scrollWidth": 360,
+    "horizontalOverflow": false,
+    "scrollY": 12,
+    "questionText": "Choose the fraction that shows the same amount as 2/3.",
+    "question": {
+      "left": 63,
+      "top": 423,
+      "right": 297,
+      "bottom": 498,
+      "width": 234,
+      "height": 76
+    },
+    "controls": {
+      "left": 63,
+      "top": 532,
+      "right": 297,
+      "bottom": 632,
+      "width": 234,
+      "height": 100
+    }
+  },
+  {
+    "build": "before-74e7e1b",
+    "viewport": {
+      "width": 360,
+      "height": 752
+    },
+    "condition": "phase2-bundle-1",
+    "path": "linear",
+    "state": "reflection-help-recovery",
+    "motionMode": "reduced-motion",
+    "scrollHeight": 1146,
+    "scrollWidth": 360,
+    "horizontalOverflow": false,
+    "scrollY": 313,
+    "questionText": "Choose the fraction that shows the same amount as 2/3.",
+    "question": {
+      "left": 63,
+      "top": 524,
+      "right": 297,
+      "bottom": 599,
+      "width": 234,
+      "height": 76
+    },
+    "controls": {
+      "left": 63,
+      "top": 714,
+      "right": 297,
+      "bottom": 814,
+      "width": 234,
+      "height": 100
+    }
+  },
+  {
+    "build": "before-74e7e1b",
+    "viewport": {
+      "width": 768,
+      "height": 1024
+    },
+    "condition": "phase2-bundle-1",
+    "path": "linear",
+    "state": "reflection",
+    "motionMode": "reduced-motion",
+    "scrollHeight": 1024,
+    "scrollWidth": 768,
+    "horizontalOverflow": false,
+    "scrollY": 0,
+    "questionText": "Choose the fraction that shows the same amount as 2/3.",
+    "question": {
+      "left": 81,
+      "top": 396,
+      "right": 687,
+      "bottom": 421,
+      "width": 606,
+      "height": 25
+    },
+    "controls": {
+      "left": 81,
+      "top": 455,
+      "right": 687,
+      "bottom": 499,
+      "width": 606,
+      "height": 44
+    }
+  },
+  {
+    "build": "before-74e7e1b",
+    "viewport": {
+      "width": 768,
+      "height": 1024
+    },
+    "condition": "phase2-bundle-1",
+    "path": "linear",
+    "state": "reflection-help-recovery",
+    "motionMode": "reduced-motion",
+    "scrollHeight": 1024,
+    "scrollWidth": 768,
+    "horizontalOverflow": false,
+    "scrollY": 0,
+    "questionText": "Choose the fraction that shows the same amount as 2/3.",
+    "question": {
+      "left": 81,
+      "top": 455,
+      "right": 687,
+      "bottom": 480,
+      "width": 606,
+      "height": 25
+    },
+    "controls": {
+      "left": 81,
+      "top": 573,
+      "right": 687,
+      "bottom": 617,
+      "width": 606,
+      "height": 44
+    }
+  },
+  {
+    "build": "before-74e7e1b",
+    "viewport": {
+      "width": 1440,
+      "height": 900
+    },
+    "condition": "phase2-bundle-1",
+    "path": "linear",
+    "state": "reflection",
+    "motionMode": "reduced-motion",
+    "scrollHeight": 900,
+    "scrollWidth": 1440,
+    "horizontalOverflow": false,
+    "scrollY": 0,
+    "questionText": "Choose the fraction that shows the same amount as 2/3.",
+    "question": {
+      "left": 374,
+      "top": 429,
+      "right": 1066,
+      "bottom": 454,
+      "width": 692,
+      "height": 25
+    },
+    "controls": {
+      "left": 374,
+      "top": 488,
+      "right": 1066,
+      "bottom": 532,
+      "width": 692,
+      "height": 44
+    }
+  },
+  {
+    "build": "before-74e7e1b",
+    "viewport": {
+      "width": 1440,
+      "height": 900
+    },
+    "condition": "phase2-bundle-1",
+    "path": "linear",
+    "state": "reflection-help-recovery",
+    "motionMode": "reduced-motion",
+    "scrollHeight": 925,
+    "scrollWidth": 1440,
+    "horizontalOverflow": false,
+    "scrollY": 0,
+    "questionText": "Choose the fraction that shows the same amount as 2/3.",
+    "question": {
+      "left": 374,
+      "top": 488,
+      "right": 1066,
+      "bottom": 513,
+      "width": 692,
+      "height": 25
+    },
+    "controls": {
+      "left": 374,
+      "top": 606,
+      "right": 1066,
+      "bottom": 650,
+      "width": 692,
+      "height": 44
+    }
+  },
+  {
+    "build": "before-74e7e1b",
+    "viewport": {
+      "width": 360,
+      "height": 740
+    },
+    "condition": "phase2-bundle-2",
+    "path": "visual",
+    "state": "reflection",
+    "motionMode": "reduced-motion",
+    "scrollHeight": 1142,
+    "scrollWidth": 360,
+    "horizontalOverflow": false,
+    "scrollY": 12,
+    "questionText": "Tap the bar that shows the same amount as 2/3.",
+    "question": {
+      "left": 63,
+      "top": 441,
+      "right": 297,
+      "bottom": 491,
+      "width": 234,
+      "height": 50
+    },
+    "controls": {
+      "left": 63,
+      "top": 522,
+      "right": 297,
+      "bottom": 810,
+      "width": 234,
+      "height": 288
+    }
+  },
+  {
+    "build": "before-74e7e1b",
+    "viewport": {
+      "width": 360,
+      "height": 740
+    },
+    "condition": "phase2-bundle-2",
+    "path": "visual",
+    "state": "reflection-help-recovery",
+    "motionMode": "reduced-motion",
+    "scrollHeight": 1324,
+    "scrollWidth": 360,
+    "horizontalOverflow": false,
+    "scrollY": 503,
+    "questionText": "Tap the bar that shows the same amount as 2/3.",
+    "question": {
+      "left": 63,
+      "top": 542,
+      "right": 297,
+      "bottom": 592,
+      "width": 234,
+      "height": 50
+    },
+    "controls": {
+      "left": 63,
+      "top": 704,
+      "right": 297,
+      "bottom": 992,
+      "width": 234,
+      "height": 288
+    }
+  },
+  {
+    "build": "before-74e7e1b",
+    "viewport": {
+      "width": 360,
+      "height": 752
+    },
+    "condition": "phase2-bundle-2",
+    "path": "visual",
+    "state": "reflection",
+    "motionMode": "reduced-motion",
+    "scrollHeight": 1142,
+    "scrollWidth": 360,
+    "horizontalOverflow": false,
+    "scrollY": 12,
+    "questionText": "Tap the bar that shows the same amount as 2/3.",
+    "question": {
+      "left": 63,
+      "top": 441,
+      "right": 297,
+      "bottom": 491,
+      "width": 234,
+      "height": 50
+    },
+    "controls": {
+      "left": 63,
+      "top": 522,
+      "right": 297,
+      "bottom": 810,
+      "width": 234,
+      "height": 288
+    }
+  },
+  {
+    "build": "before-74e7e1b",
+    "viewport": {
+      "width": 360,
+      "height": 752
+    },
+    "condition": "phase2-bundle-2",
+    "path": "visual",
+    "state": "reflection-help-recovery",
+    "motionMode": "reduced-motion",
+    "scrollHeight": 1324,
+    "scrollWidth": 360,
+    "horizontalOverflow": false,
+    "scrollY": 491,
+    "questionText": "Tap the bar that shows the same amount as 2/3.",
+    "question": {
+      "left": 63,
+      "top": 542,
+      "right": 297,
+      "bottom": 592,
+      "width": 234,
+      "height": 50
+    },
+    "controls": {
+      "left": 63,
+      "top": 704,
+      "right": 297,
+      "bottom": 992,
+      "width": 234,
+      "height": 288
+    }
+  },
+  {
+    "build": "before-74e7e1b",
+    "viewport": {
+      "width": 360,
+      "height": 740
+    },
+    "condition": "phase2-bundle-2",
+    "path": "linear",
+    "state": "reflection",
+    "motionMode": "reduced-motion",
+    "scrollHeight": 964,
+    "scrollWidth": 360,
+    "horizontalOverflow": false,
+    "scrollY": 12,
+    "questionText": "Choose the fraction that shows the same amount as 2/3.",
+    "question": {
+      "left": 63,
+      "top": 423,
+      "right": 297,
+      "bottom": 498,
+      "width": 234,
+      "height": 76
+    },
+    "controls": {
+      "left": 63,
+      "top": 532,
+      "right": 297,
+      "bottom": 632,
+      "width": 234,
+      "height": 100
+    }
+  },
+  {
+    "build": "before-74e7e1b",
+    "viewport": {
+      "width": 360,
+      "height": 740
+    },
+    "condition": "phase2-bundle-2",
+    "path": "linear",
+    "state": "reflection-help-recovery",
+    "motionMode": "reduced-motion",
+    "scrollHeight": 1146,
+    "scrollWidth": 360,
+    "horizontalOverflow": false,
+    "scrollY": 325,
+    "questionText": "Choose the fraction that shows the same amount as 2/3.",
+    "question": {
+      "left": 63,
+      "top": 524,
+      "right": 297,
+      "bottom": 599,
+      "width": 234,
+      "height": 76
+    },
+    "controls": {
+      "left": 63,
+      "top": 714,
+      "right": 297,
+      "bottom": 814,
+      "width": 234,
+      "height": 100
+    }
+  },
+  {
+    "build": "before-74e7e1b",
+    "viewport": {
+      "width": 360,
+      "height": 752
+    },
+    "condition": "phase2-bundle-2",
+    "path": "linear",
+    "state": "reflection",
+    "motionMode": "reduced-motion",
+    "scrollHeight": 964,
+    "scrollWidth": 360,
+    "horizontalOverflow": false,
+    "scrollY": 12,
+    "questionText": "Choose the fraction that shows the same amount as 2/3.",
+    "question": {
+      "left": 63,
+      "top": 423,
+      "right": 297,
+      "bottom": 498,
+      "width": 234,
+      "height": 76
+    },
+    "controls": {
+      "left": 63,
+      "top": 532,
+      "right": 297,
+      "bottom": 632,
+      "width": 234,
+      "height": 100
+    }
+  },
+  {
+    "build": "before-74e7e1b",
+    "viewport": {
+      "width": 360,
+      "height": 752
+    },
+    "condition": "phase2-bundle-2",
+    "path": "linear",
+    "state": "reflection-help-recovery",
+    "motionMode": "reduced-motion",
+    "scrollHeight": 1146,
+    "scrollWidth": 360,
+    "horizontalOverflow": false,
+    "scrollY": 313,
+    "questionText": "Choose the fraction that shows the same amount as 2/3.",
+    "question": {
+      "left": 63,
+      "top": 524,
+      "right": 297,
+      "bottom": 599,
+      "width": 234,
+      "height": 76
+    },
+    "controls": {
+      "left": 63,
+      "top": 714,
+      "right": 297,
+      "bottom": 814,
+      "width": 234,
+      "height": 100
+    }
+  },
+  {
+    "build": "before-74e7e1b",
+    "viewport": {
+      "width": 360,
+      "height": 740
+    },
+    "condition": "phase2-bundle-3",
+    "path": "visual",
+    "state": "reflection",
+    "motionMode": "reduced-motion",
+    "scrollHeight": 1142,
+    "scrollWidth": 360,
+    "horizontalOverflow": false,
+    "scrollY": 38,
+    "questionText": "Tap the bar that shows the same amount as 2/3.",
+    "question": {
+      "left": 63,
+      "top": 441,
+      "right": 297,
+      "bottom": 491,
+      "width": 234,
+      "height": 50
+    },
+    "controls": {
+      "left": 63,
+      "top": 522,
+      "right": 297,
+      "bottom": 810,
+      "width": 234,
+      "height": 288
+    }
+  },
+  {
+    "build": "before-74e7e1b",
+    "viewport": {
+      "width": 360,
+      "height": 740
+    },
+    "condition": "phase2-bundle-3",
+    "path": "visual",
+    "state": "reflection-help-recovery",
+    "motionMode": "reduced-motion",
+    "scrollHeight": 1324,
+    "scrollWidth": 360,
+    "horizontalOverflow": false,
+    "scrollY": 503,
+    "questionText": "Tap the bar that shows the same amount as 2/3.",
+    "question": {
+      "left": 63,
+      "top": 542,
+      "right": 297,
+      "bottom": 592,
+      "width": 234,
+      "height": 50
+    },
+    "controls": {
+      "left": 63,
+      "top": 704,
+      "right": 297,
+      "bottom": 992,
+      "width": 234,
+      "height": 288
+    }
+  },
+  {
+    "build": "before-74e7e1b",
+    "viewport": {
+      "width": 360,
+      "height": 752
+    },
+    "condition": "phase2-bundle-3",
+    "path": "visual",
+    "state": "reflection",
+    "motionMode": "reduced-motion",
+    "scrollHeight": 1142,
+    "scrollWidth": 360,
+    "horizontalOverflow": false,
+    "scrollY": 26,
+    "questionText": "Tap the bar that shows the same amount as 2/3.",
+    "question": {
+      "left": 63,
+      "top": 441,
+      "right": 297,
+      "bottom": 491,
+      "width": 234,
+      "height": 50
+    },
+    "controls": {
+      "left": 63,
+      "top": 522,
+      "right": 297,
+      "bottom": 810,
+      "width": 234,
+      "height": 288
+    }
+  },
+  {
+    "build": "before-74e7e1b",
+    "viewport": {
+      "width": 360,
+      "height": 752
+    },
+    "condition": "phase2-bundle-3",
+    "path": "visual",
+    "state": "reflection-help-recovery",
+    "motionMode": "reduced-motion",
+    "scrollHeight": 1324,
+    "scrollWidth": 360,
+    "horizontalOverflow": false,
+    "scrollY": 491,
+    "questionText": "Tap the bar that shows the same amount as 2/3.",
+    "question": {
+      "left": 63,
+      "top": 542,
+      "right": 297,
+      "bottom": 592,
+      "width": 234,
+      "height": 50
+    },
+    "controls": {
+      "left": 63,
+      "top": 704,
+      "right": 297,
+      "bottom": 992,
+      "width": 234,
+      "height": 288
+    }
+  },
+  {
+    "build": "before-74e7e1b",
+    "viewport": {
+      "width": 360,
+      "height": 740
+    },
+    "condition": "phase2-bundle-3",
+    "path": "linear",
+    "state": "reflection",
+    "motionMode": "reduced-motion",
+    "scrollHeight": 964,
+    "scrollWidth": 360,
+    "horizontalOverflow": false,
+    "scrollY": 12,
+    "questionText": "Choose the fraction that shows the same amount as 2/3.",
+    "question": {
+      "left": 63,
+      "top": 423,
+      "right": 297,
+      "bottom": 498,
+      "width": 234,
+      "height": 76
+    },
+    "controls": {
+      "left": 63,
+      "top": 532,
+      "right": 297,
+      "bottom": 632,
+      "width": 234,
+      "height": 100
+    }
+  },
+  {
+    "build": "before-74e7e1b",
+    "viewport": {
+      "width": 360,
+      "height": 740
+    },
+    "condition": "phase2-bundle-3",
+    "path": "linear",
+    "state": "reflection-help-recovery",
+    "motionMode": "reduced-motion",
+    "scrollHeight": 1146,
+    "scrollWidth": 360,
+    "horizontalOverflow": false,
+    "scrollY": 325,
+    "questionText": "Choose the fraction that shows the same amount as 2/3.",
+    "question": {
+      "left": 63,
+      "top": 524,
+      "right": 297,
+      "bottom": 599,
+      "width": 234,
+      "height": 76
+    },
+    "controls": {
+      "left": 63,
+      "top": 714,
+      "right": 297,
+      "bottom": 814,
+      "width": 234,
+      "height": 100
+    }
+  },
+  {
+    "build": "before-74e7e1b",
+    "viewport": {
+      "width": 360,
+      "height": 752
+    },
+    "condition": "phase2-bundle-3",
+    "path": "linear",
+    "state": "reflection",
+    "motionMode": "reduced-motion",
+    "scrollHeight": 964,
+    "scrollWidth": 360,
+    "horizontalOverflow": false,
+    "scrollY": 12,
+    "questionText": "Choose the fraction that shows the same amount as 2/3.",
+    "question": {
+      "left": 63,
+      "top": 423,
+      "right": 297,
+      "bottom": 498,
+      "width": 234,
+      "height": 76
+    },
+    "controls": {
+      "left": 63,
+      "top": 532,
+      "right": 297,
+      "bottom": 632,
+      "width": 234,
+      "height": 100
+    }
+  },
+  {
+    "build": "before-74e7e1b",
+    "viewport": {
+      "width": 360,
+      "height": 752
+    },
+    "condition": "phase2-bundle-3",
+    "path": "linear",
+    "state": "reflection-help-recovery",
+    "motionMode": "reduced-motion",
+    "scrollHeight": 1146,
+    "scrollWidth": 360,
+    "horizontalOverflow": false,
+    "scrollY": 313,
+    "questionText": "Choose the fraction that shows the same amount as 2/3.",
+    "question": {
+      "left": 63,
+      "top": 524,
+      "right": 297,
+      "bottom": 599,
+      "width": 234,
+      "height": 76
+    },
+    "controls": {
+      "left": 63,
+      "top": 714,
+      "right": 297,
+      "bottom": 814,
+      "width": 234,
+      "height": 100
+    }
+  },
+  {
+    "build": "before-74e7e1b",
+    "viewport": {
+      "width": 360,
+      "height": 740
+    },
+    "condition": "phase2-bundle-4",
+    "path": "visual",
+    "state": "reflection",
+    "motionMode": "reduced-motion",
+    "scrollHeight": 1052,
+    "scrollWidth": 360,
+    "horizontalOverflow": false,
+    "scrollY": 12,
+    "questionText": "Does this new bar show the same amount as before?",
+    "question": {
+      "left": 63,
+      "top": 525,
+      "right": 297,
+      "bottom": 575,
+      "width": 234,
+      "height": 50
+    },
+    "controls": {
+      "left": 63,
+      "top": 606,
+      "right": 297,
+      "bottom": 720,
+      "width": 234,
+      "height": 114
+    }
+  },
+  {
+    "build": "before-74e7e1b",
+    "viewport": {
+      "width": 360,
+      "height": 740
+    },
+    "condition": "phase2-bundle-4",
+    "path": "visual",
+    "state": "reflection-help-recovery",
+    "motionMode": "reduced-motion",
+    "scrollHeight": 1234,
+    "scrollWidth": 360,
+    "horizontalOverflow": false,
+    "scrollY": 413,
+    "questionText": "Does this new bar show the same amount as before?",
+    "question": {
+      "left": 63,
+      "top": 626,
+      "right": 297,
+      "bottom": 676,
+      "width": 234,
+      "height": 50
+    },
+    "controls": {
+      "left": 63,
+      "top": 788,
+      "right": 297,
+      "bottom": 902,
+      "width": 234,
+      "height": 114
+    }
+  },
+  {
+    "build": "before-74e7e1b",
+    "viewport": {
+      "width": 360,
+      "height": 752
+    },
+    "condition": "phase2-bundle-4",
+    "path": "visual",
+    "state": "reflection",
+    "motionMode": "reduced-motion",
+    "scrollHeight": 1052,
+    "scrollWidth": 360,
+    "horizontalOverflow": false,
+    "scrollY": 12,
+    "questionText": "Does this new bar show the same amount as before?",
+    "question": {
+      "left": 63,
+      "top": 525,
+      "right": 297,
+      "bottom": 575,
+      "width": 234,
+      "height": 50
+    },
+    "controls": {
+      "left": 63,
+      "top": 606,
+      "right": 297,
+      "bottom": 720,
+      "width": 234,
+      "height": 114
+    }
+  },
+  {
+    "build": "before-74e7e1b",
+    "viewport": {
+      "width": 360,
+      "height": 752
+    },
+    "condition": "phase2-bundle-4",
+    "path": "visual",
+    "state": "reflection-help-recovery",
+    "motionMode": "reduced-motion",
+    "scrollHeight": 1234,
+    "scrollWidth": 360,
+    "horizontalOverflow": false,
+    "scrollY": 401,
+    "questionText": "Does this new bar show the same amount as before?",
+    "question": {
+      "left": 63,
+      "top": 626,
+      "right": 297,
+      "bottom": 676,
+      "width": 234,
+      "height": 50
+    },
+    "controls": {
+      "left": 63,
+      "top": 788,
+      "right": 297,
+      "bottom": 902,
+      "width": 234,
+      "height": 114
+    }
+  },
+  {
+    "build": "before-74e7e1b",
+    "viewport": {
+      "width": 360,
+      "height": 740
+    },
+    "condition": "phase2-bundle-4",
+    "path": "linear",
+    "state": "reflection",
+    "motionMode": "reduced-motion",
+    "scrollHeight": 1032,
+    "scrollWidth": 360,
+    "horizontalOverflow": false,
+    "scrollY": 12,
+    "questionText": "Does this new fraction show the same amount as before?",
+    "question": {
+      "left": 63,
+      "top": 502,
+      "right": 297,
+      "bottom": 552,
+      "width": 234,
+      "height": 50
+    },
+    "controls": {
+      "left": 63,
+      "top": 586,
+      "right": 297,
+      "bottom": 700,
+      "width": 234,
+      "height": 114
+    }
+  },
+  {
+    "build": "before-74e7e1b",
+    "viewport": {
+      "width": 360,
+      "height": 740
+    },
+    "condition": "phase2-bundle-4",
+    "path": "linear",
+    "state": "reflection-help-recovery",
+    "motionMode": "reduced-motion",
+    "scrollHeight": 1214,
+    "scrollWidth": 360,
+    "horizontalOverflow": false,
+    "scrollY": 393,
+    "questionText": "Does this new fraction show the same amount as before?",
+    "question": {
+      "left": 63,
+      "top": 603,
+      "right": 297,
+      "bottom": 653,
+      "width": 234,
+      "height": 50
+    },
+    "controls": {
+      "left": 63,
+      "top": 768,
+      "right": 297,
+      "bottom": 882,
+      "width": 234,
+      "height": 114
+    }
+  },
+  {
+    "build": "before-74e7e1b",
+    "viewport": {
+      "width": 360,
+      "height": 752
+    },
+    "condition": "phase2-bundle-4",
+    "path": "linear",
+    "state": "reflection",
+    "motionMode": "reduced-motion",
+    "scrollHeight": 1032,
+    "scrollWidth": 360,
+    "horizontalOverflow": false,
+    "scrollY": 12,
+    "questionText": "Does this new fraction show the same amount as before?",
+    "question": {
+      "left": 63,
+      "top": 502,
+      "right": 297,
+      "bottom": 552,
+      "width": 234,
+      "height": 50
+    },
+    "controls": {
+      "left": 63,
+      "top": 586,
+      "right": 297,
+      "bottom": 700,
+      "width": 234,
+      "height": 114
+    }
+  },
+  {
+    "build": "before-74e7e1b",
+    "viewport": {
+      "width": 360,
+      "height": 752
+    },
+    "condition": "phase2-bundle-4",
+    "path": "linear",
+    "state": "reflection-help-recovery",
+    "motionMode": "reduced-motion",
+    "scrollHeight": 1214,
+    "scrollWidth": 360,
+    "horizontalOverflow": false,
+    "scrollY": 381,
+    "questionText": "Does this new fraction show the same amount as before?",
+    "question": {
+      "left": 63,
+      "top": 603,
+      "right": 297,
+      "bottom": 653,
+      "width": 234,
+      "height": 50
+    },
+    "controls": {
+      "left": 63,
+      "top": 768,
+      "right": 297,
+      "bottom": 882,
+      "width": 234,
+      "height": 114
+    }
+  },
+  {
+    "build": "after-repair",
+    "viewport": {
+      "width": 360,
+      "height": 740
+    },
+    "condition": "phase2-bundle-1",
+    "path": "visual",
+    "state": "reflection",
+    "motionMode": "reduced-motion",
+    "scrollHeight": 1142,
+    "scrollWidth": 360,
+    "horizontalOverflow": false,
+    "scrollY": 12,
+    "questionText": "Tap the bar that shows the same amount as 2/3.",
+    "question": {
+      "left": 63,
+      "top": 441,
+      "right": 297,
+      "bottom": 491,
+      "width": 234,
+      "height": 50
+    },
+    "controls": {
+      "left": 63,
+      "top": 522,
+      "right": 297,
+      "bottom": 810,
+      "width": 234,
+      "height": 288
+    }
+  },
+  {
+    "build": "after-repair",
+    "viewport": {
+      "width": 360,
+      "height": 740
+    },
+    "condition": "phase2-bundle-1",
+    "path": "visual",
+    "state": "reflection-help-recovery",
+    "motionMode": "reduced-motion",
+    "scrollHeight": 1324,
+    "scrollWidth": 360,
+    "horizontalOverflow": false,
+    "scrollY": 503,
+    "questionText": "Tap the bar that shows the same amount as 2/3.",
+    "question": {
+      "left": 63,
+      "top": 542,
+      "right": 297,
+      "bottom": 592,
+      "width": 234,
+      "height": 50
+    },
+    "controls": {
+      "left": 63,
+      "top": 704,
+      "right": 297,
+      "bottom": 992,
+      "width": 234,
+      "height": 288
+    }
+  },
+  {
+    "build": "after-repair",
+    "viewport": {
+      "width": 360,
+      "height": 752
+    },
+    "condition": "phase2-bundle-1",
+    "path": "visual",
+    "state": "reflection",
+    "motionMode": "reduced-motion",
+    "scrollHeight": 1142,
+    "scrollWidth": 360,
+    "horizontalOverflow": false,
+    "scrollY": 12,
+    "questionText": "Tap the bar that shows the same amount as 2/3.",
+    "question": {
+      "left": 63,
+      "top": 441,
+      "right": 297,
+      "bottom": 491,
+      "width": 234,
+      "height": 50
+    },
+    "controls": {
+      "left": 63,
+      "top": 522,
+      "right": 297,
+      "bottom": 810,
+      "width": 234,
+      "height": 288
+    }
+  },
+  {
+    "build": "after-repair",
+    "viewport": {
+      "width": 360,
+      "height": 752
+    },
+    "condition": "phase2-bundle-1",
+    "path": "visual",
+    "state": "reflection-help-recovery",
+    "motionMode": "reduced-motion",
+    "scrollHeight": 1324,
+    "scrollWidth": 360,
+    "horizontalOverflow": false,
+    "scrollY": 491,
+    "questionText": "Tap the bar that shows the same amount as 2/3.",
+    "question": {
+      "left": 63,
+      "top": 542,
+      "right": 297,
+      "bottom": 592,
+      "width": 234,
+      "height": 50
+    },
+    "controls": {
+      "left": 63,
+      "top": 704,
+      "right": 297,
+      "bottom": 992,
+      "width": 234,
+      "height": 288
+    }
+  },
+  {
+    "build": "after-repair",
+    "viewport": {
+      "width": 768,
+      "height": 1024
+    },
+    "condition": "phase2-bundle-1",
+    "path": "visual",
+    "state": "reflection",
+    "motionMode": "reduced-motion",
+    "scrollHeight": 1024,
+    "scrollWidth": 768,
+    "horizontalOverflow": false,
+    "scrollY": 0,
+    "questionText": "Tap the bar that shows the same amount as 2/3.",
+    "question": {
+      "left": 81,
+      "top": 459,
+      "right": 687,
+      "bottom": 484,
+      "width": 606,
+      "height": 25
+    },
+    "controls": {
+      "left": 81,
+      "top": 515,
+      "right": 687,
+      "bottom": 603,
+      "width": 606,
+      "height": 88
+    }
+  },
+  {
+    "build": "after-repair",
+    "viewport": {
+      "width": 768,
+      "height": 1024
+    },
+    "condition": "phase2-bundle-1",
+    "path": "visual",
+    "state": "reflection-help-recovery",
+    "motionMode": "reduced-motion",
+    "scrollHeight": 1024,
+    "scrollWidth": 768,
+    "horizontalOverflow": false,
+    "scrollY": 0,
+    "questionText": "Tap the bar that shows the same amount as 2/3.",
+    "question": {
+      "left": 81,
+      "top": 518,
+      "right": 687,
+      "bottom": 543,
+      "width": 606,
+      "height": 25
+    },
+    "controls": {
+      "left": 81,
+      "top": 632,
+      "right": 687,
+      "bottom": 720,
+      "width": 606,
+      "height": 88
+    }
+  },
+  {
+    "build": "after-repair",
+    "viewport": {
+      "width": 1440,
+      "height": 900
+    },
+    "condition": "phase2-bundle-1",
+    "path": "visual",
+    "state": "reflection",
+    "motionMode": "reduced-motion",
+    "scrollHeight": 912,
+    "scrollWidth": 1440,
+    "horizontalOverflow": false,
+    "scrollY": 0,
+    "questionText": "Tap the bar that shows the same amount as 2/3.",
+    "question": {
+      "left": 374,
+      "top": 492,
+      "right": 1066,
+      "bottom": 517,
+      "width": 692,
+      "height": 25
+    },
+    "controls": {
+      "left": 374,
+      "top": 548,
+      "right": 1066,
+      "bottom": 636,
+      "width": 692,
+      "height": 88
+    }
+  },
+  {
+    "build": "after-repair",
+    "viewport": {
+      "width": 1440,
+      "height": 900
+    },
+    "condition": "phase2-bundle-1",
+    "path": "visual",
+    "state": "reflection-help-recovery",
+    "motionMode": "reduced-motion",
+    "scrollHeight": 1029,
+    "scrollWidth": 1440,
+    "horizontalOverflow": false,
+    "scrollY": 0,
+    "questionText": "Tap the bar that shows the same amount as 2/3.",
+    "question": {
+      "left": 374,
+      "top": 551,
+      "right": 1066,
+      "bottom": 576,
+      "width": 692,
+      "height": 25
+    },
+    "controls": {
+      "left": 374,
+      "top": 665,
+      "right": 1066,
+      "bottom": 753,
+      "width": 692,
+      "height": 88
+    }
+  },
+  {
+    "build": "after-repair",
+    "viewport": {
+      "width": 360,
+      "height": 740
+    },
+    "condition": "phase2-bundle-1",
+    "path": "linear",
+    "state": "reflection",
+    "motionMode": "reduced-motion",
+    "scrollHeight": 964,
+    "scrollWidth": 360,
+    "horizontalOverflow": false,
+    "scrollY": 12,
+    "questionText": "Choose the fraction that shows the same amount as 2/3.",
+    "question": {
+      "left": 63,
+      "top": 423,
+      "right": 297,
+      "bottom": 498,
+      "width": 234,
+      "height": 76
+    },
+    "controls": {
+      "left": 63,
+      "top": 532,
+      "right": 297,
+      "bottom": 632,
+      "width": 234,
+      "height": 100
+    }
+  },
+  {
+    "build": "after-repair",
+    "viewport": {
+      "width": 360,
+      "height": 740
+    },
+    "condition": "phase2-bundle-1",
+    "path": "linear",
+    "state": "reflection-help-recovery",
+    "motionMode": "reduced-motion",
+    "scrollHeight": 1146,
+    "scrollWidth": 360,
+    "horizontalOverflow": false,
+    "scrollY": 325,
+    "questionText": "Choose the fraction that shows the same amount as 2/3.",
+    "question": {
+      "left": 63,
+      "top": 524,
+      "right": 297,
+      "bottom": 599,
+      "width": 234,
+      "height": 76
+    },
+    "controls": {
+      "left": 63,
+      "top": 714,
+      "right": 297,
+      "bottom": 814,
+      "width": 234,
+      "height": 100
+    }
+  },
+  {
+    "build": "after-repair",
+    "viewport": {
+      "width": 360,
+      "height": 752
+    },
+    "condition": "phase2-bundle-1",
+    "path": "linear",
+    "state": "reflection",
+    "motionMode": "reduced-motion",
+    "scrollHeight": 964,
+    "scrollWidth": 360,
+    "horizontalOverflow": false,
+    "scrollY": 12,
+    "questionText": "Choose the fraction that shows the same amount as 2/3.",
+    "question": {
+      "left": 63,
+      "top": 423,
+      "right": 297,
+      "bottom": 498,
+      "width": 234,
+      "height": 76
+    },
+    "controls": {
+      "left": 63,
+      "top": 532,
+      "right": 297,
+      "bottom": 632,
+      "width": 234,
+      "height": 100
+    }
+  },
+  {
+    "build": "after-repair",
+    "viewport": {
+      "width": 360,
+      "height": 752
+    },
+    "condition": "phase2-bundle-1",
+    "path": "linear",
+    "state": "reflection-help-recovery",
+    "motionMode": "reduced-motion",
+    "scrollHeight": 1146,
+    "scrollWidth": 360,
+    "horizontalOverflow": false,
+    "scrollY": 313,
+    "questionText": "Choose the fraction that shows the same amount as 2/3.",
+    "question": {
+      "left": 63,
+      "top": 524,
+      "right": 297,
+      "bottom": 599,
+      "width": 234,
+      "height": 76
+    },
+    "controls": {
+      "left": 63,
+      "top": 714,
+      "right": 297,
+      "bottom": 814,
+      "width": 234,
+      "height": 100
+    }
+  },
+  {
+    "build": "after-repair",
+    "viewport": {
+      "width": 768,
+      "height": 1024
+    },
+    "condition": "phase2-bundle-1",
+    "path": "linear",
+    "state": "reflection",
+    "motionMode": "reduced-motion",
+    "scrollHeight": 1024,
+    "scrollWidth": 768,
+    "horizontalOverflow": false,
+    "scrollY": 0,
+    "questionText": "Choose the fraction that shows the same amount as 2/3.",
+    "question": {
+      "left": 81,
+      "top": 396,
+      "right": 687,
+      "bottom": 421,
+      "width": 606,
+      "height": 25
+    },
+    "controls": {
+      "left": 81,
+      "top": 455,
+      "right": 687,
+      "bottom": 499,
+      "width": 606,
+      "height": 44
+    }
+  },
+  {
+    "build": "after-repair",
+    "viewport": {
+      "width": 768,
+      "height": 1024
+    },
+    "condition": "phase2-bundle-1",
+    "path": "linear",
+    "state": "reflection-help-recovery",
+    "motionMode": "reduced-motion",
+    "scrollHeight": 1024,
+    "scrollWidth": 768,
+    "horizontalOverflow": false,
+    "scrollY": 0,
+    "questionText": "Choose the fraction that shows the same amount as 2/3.",
+    "question": {
+      "left": 81,
+      "top": 455,
+      "right": 687,
+      "bottom": 480,
+      "width": 606,
+      "height": 25
+    },
+    "controls": {
+      "left": 81,
+      "top": 573,
+      "right": 687,
+      "bottom": 617,
+      "width": 606,
+      "height": 44
+    }
+  },
+  {
+    "build": "after-repair",
+    "viewport": {
+      "width": 1440,
+      "height": 900
+    },
+    "condition": "phase2-bundle-1",
+    "path": "linear",
+    "state": "reflection",
+    "motionMode": "reduced-motion",
+    "scrollHeight": 900,
+    "scrollWidth": 1440,
+    "horizontalOverflow": false,
+    "scrollY": 0,
+    "questionText": "Choose the fraction that shows the same amount as 2/3.",
+    "question": {
+      "left": 374,
+      "top": 429,
+      "right": 1066,
+      "bottom": 454,
+      "width": 692,
+      "height": 25
+    },
+    "controls": {
+      "left": 374,
+      "top": 488,
+      "right": 1066,
+      "bottom": 532,
+      "width": 692,
+      "height": 44
+    }
+  },
+  {
+    "build": "after-repair",
+    "viewport": {
+      "width": 1440,
+      "height": 900
+    },
+    "condition": "phase2-bundle-1",
+    "path": "linear",
+    "state": "reflection-help-recovery",
+    "motionMode": "reduced-motion",
+    "scrollHeight": 925,
+    "scrollWidth": 1440,
+    "horizontalOverflow": false,
+    "scrollY": 0,
+    "questionText": "Choose the fraction that shows the same amount as 2/3.",
+    "question": {
+      "left": 374,
+      "top": 488,
+      "right": 1066,
+      "bottom": 513,
+      "width": 692,
+      "height": 25
+    },
+    "controls": {
+      "left": 374,
+      "top": 606,
+      "right": 1066,
+      "bottom": 650,
+      "width": 692,
+      "height": 44
+    }
+  },
+  {
+    "build": "after-repair",
+    "viewport": {
+      "width": 360,
+      "height": 740
+    },
+    "condition": "phase2-bundle-2",
+    "path": "visual",
+    "state": "reflection",
+    "motionMode": "reduced-motion",
+    "scrollHeight": 1142,
+    "scrollWidth": 360,
+    "horizontalOverflow": false,
+    "scrollY": 12,
+    "questionText": "Tap the bar that shows the same amount as 2/3.",
+    "question": {
+      "left": 63,
+      "top": 441,
+      "right": 297,
+      "bottom": 491,
+      "width": 234,
+      "height": 50
+    },
+    "controls": {
+      "left": 63,
+      "top": 522,
+      "right": 297,
+      "bottom": 810,
+      "width": 234,
+      "height": 288
+    }
+  },
+  {
+    "build": "after-repair",
+    "viewport": {
+      "width": 360,
+      "height": 740
+    },
+    "condition": "phase2-bundle-2",
+    "path": "visual",
+    "state": "reflection-help-recovery",
+    "motionMode": "reduced-motion",
+    "scrollHeight": 1324,
+    "scrollWidth": 360,
+    "horizontalOverflow": false,
+    "scrollY": 503,
+    "questionText": "Tap the bar that shows the same amount as 2/3.",
+    "question": {
+      "left": 63,
+      "top": 542,
+      "right": 297,
+      "bottom": 592,
+      "width": 234,
+      "height": 50
+    },
+    "controls": {
+      "left": 63,
+      "top": 704,
+      "right": 297,
+      "bottom": 992,
+      "width": 234,
+      "height": 288
+    }
+  },
+  {
+    "build": "after-repair",
+    "viewport": {
+      "width": 360,
+      "height": 752
+    },
+    "condition": "phase2-bundle-2",
+    "path": "visual",
+    "state": "reflection",
+    "motionMode": "reduced-motion",
+    "scrollHeight": 1142,
+    "scrollWidth": 360,
+    "horizontalOverflow": false,
+    "scrollY": 12,
+    "questionText": "Tap the bar that shows the same amount as 2/3.",
+    "question": {
+      "left": 63,
+      "top": 441,
+      "right": 297,
+      "bottom": 491,
+      "width": 234,
+      "height": 50
+    },
+    "controls": {
+      "left": 63,
+      "top": 522,
+      "right": 297,
+      "bottom": 810,
+      "width": 234,
+      "height": 288
+    }
+  },
+  {
+    "build": "after-repair",
+    "viewport": {
+      "width": 360,
+      "height": 752
+    },
+    "condition": "phase2-bundle-2",
+    "path": "visual",
+    "state": "reflection-help-recovery",
+    "motionMode": "reduced-motion",
+    "scrollHeight": 1324,
+    "scrollWidth": 360,
+    "horizontalOverflow": false,
+    "scrollY": 491,
+    "questionText": "Tap the bar that shows the same amount as 2/3.",
+    "question": {
+      "left": 63,
+      "top": 542,
+      "right": 297,
+      "bottom": 592,
+      "width": 234,
+      "height": 50
+    },
+    "controls": {
+      "left": 63,
+      "top": 704,
+      "right": 297,
+      "bottom": 992,
+      "width": 234,
+      "height": 288
+    }
+  },
+  {
+    "build": "after-repair",
+    "viewport": {
+      "width": 360,
+      "height": 740
+    },
+    "condition": "phase2-bundle-2",
+    "path": "linear",
+    "state": "reflection",
+    "motionMode": "reduced-motion",
+    "scrollHeight": 964,
+    "scrollWidth": 360,
+    "horizontalOverflow": false,
+    "scrollY": 12,
+    "questionText": "Choose the fraction that shows the same amount as 2/3.",
+    "question": {
+      "left": 63,
+      "top": 423,
+      "right": 297,
+      "bottom": 498,
+      "width": 234,
+      "height": 76
+    },
+    "controls": {
+      "left": 63,
+      "top": 532,
+      "right": 297,
+      "bottom": 632,
+      "width": 234,
+      "height": 100
+    }
+  },
+  {
+    "build": "after-repair",
+    "viewport": {
+      "width": 360,
+      "height": 740
+    },
+    "condition": "phase2-bundle-2",
+    "path": "linear",
+    "state": "reflection-help-recovery",
+    "motionMode": "reduced-motion",
+    "scrollHeight": 1146,
+    "scrollWidth": 360,
+    "horizontalOverflow": false,
+    "scrollY": 325,
+    "questionText": "Choose the fraction that shows the same amount as 2/3.",
+    "question": {
+      "left": 63,
+      "top": 524,
+      "right": 297,
+      "bottom": 599,
+      "width": 234,
+      "height": 76
+    },
+    "controls": {
+      "left": 63,
+      "top": 714,
+      "right": 297,
+      "bottom": 814,
+      "width": 234,
+      "height": 100
+    }
+  },
+  {
+    "build": "after-repair",
+    "viewport": {
+      "width": 360,
+      "height": 752
+    },
+    "condition": "phase2-bundle-2",
+    "path": "linear",
+    "state": "reflection",
+    "motionMode": "reduced-motion",
+    "scrollHeight": 964,
+    "scrollWidth": 360,
+    "horizontalOverflow": false,
+    "scrollY": 12,
+    "questionText": "Choose the fraction that shows the same amount as 2/3.",
+    "question": {
+      "left": 63,
+      "top": 423,
+      "right": 297,
+      "bottom": 498,
+      "width": 234,
+      "height": 76
+    },
+    "controls": {
+      "left": 63,
+      "top": 532,
+      "right": 297,
+      "bottom": 632,
+      "width": 234,
+      "height": 100
+    }
+  },
+  {
+    "build": "after-repair",
+    "viewport": {
+      "width": 360,
+      "height": 752
+    },
+    "condition": "phase2-bundle-2",
+    "path": "linear",
+    "state": "reflection-help-recovery",
+    "motionMode": "reduced-motion",
+    "scrollHeight": 1146,
+    "scrollWidth": 360,
+    "horizontalOverflow": false,
+    "scrollY": 313,
+    "questionText": "Choose the fraction that shows the same amount as 2/3.",
+    "question": {
+      "left": 63,
+      "top": 524,
+      "right": 297,
+      "bottom": 599,
+      "width": 234,
+      "height": 76
+    },
+    "controls": {
+      "left": 63,
+      "top": 714,
+      "right": 297,
+      "bottom": 814,
+      "width": 234,
+      "height": 100
+    }
+  },
+  {
+    "build": "after-repair",
+    "viewport": {
+      "width": 360,
+      "height": 740
+    },
+    "condition": "phase2-bundle-3",
+    "path": "visual",
+    "state": "reflection",
+    "motionMode": "reduced-motion",
+    "scrollHeight": 1142,
+    "scrollWidth": 360,
+    "horizontalOverflow": false,
+    "scrollY": 38,
+    "questionText": "Tap the bar that shows the same amount as 2/3.",
+    "question": {
+      "left": 63,
+      "top": 441,
+      "right": 297,
+      "bottom": 491,
+      "width": 234,
+      "height": 50
+    },
+    "controls": {
+      "left": 63,
+      "top": 522,
+      "right": 297,
+      "bottom": 810,
+      "width": 234,
+      "height": 288
+    }
+  },
+  {
+    "build": "after-repair",
+    "viewport": {
+      "width": 360,
+      "height": 740
+    },
+    "condition": "phase2-bundle-3",
+    "path": "visual",
+    "state": "reflection-help-recovery",
+    "motionMode": "reduced-motion",
+    "scrollHeight": 1324,
+    "scrollWidth": 360,
+    "horizontalOverflow": false,
+    "scrollY": 503,
+    "questionText": "Tap the bar that shows the same amount as 2/3.",
+    "question": {
+      "left": 63,
+      "top": 542,
+      "right": 297,
+      "bottom": 592,
+      "width": 234,
+      "height": 50
+    },
+    "controls": {
+      "left": 63,
+      "top": 704,
+      "right": 297,
+      "bottom": 992,
+      "width": 234,
+      "height": 288
+    }
+  },
+  {
+    "build": "after-repair",
+    "viewport": {
+      "width": 360,
+      "height": 752
+    },
+    "condition": "phase2-bundle-3",
+    "path": "visual",
+    "state": "reflection",
+    "motionMode": "reduced-motion",
+    "scrollHeight": 1142,
+    "scrollWidth": 360,
+    "horizontalOverflow": false,
+    "scrollY": 26,
+    "questionText": "Tap the bar that shows the same amount as 2/3.",
+    "question": {
+      "left": 63,
+      "top": 441,
+      "right": 297,
+      "bottom": 491,
+      "width": 234,
+      "height": 50
+    },
+    "controls": {
+      "left": 63,
+      "top": 522,
+      "right": 297,
+      "bottom": 810,
+      "width": 234,
+      "height": 288
+    }
+  },
+  {
+    "build": "after-repair",
+    "viewport": {
+      "width": 360,
+      "height": 752
+    },
+    "condition": "phase2-bundle-3",
+    "path": "visual",
+    "state": "reflection-help-recovery",
+    "motionMode": "reduced-motion",
+    "scrollHeight": 1324,
+    "scrollWidth": 360,
+    "horizontalOverflow": false,
+    "scrollY": 491,
+    "questionText": "Tap the bar that shows the same amount as 2/3.",
+    "question": {
+      "left": 63,
+      "top": 542,
+      "right": 297,
+      "bottom": 592,
+      "width": 234,
+      "height": 50
+    },
+    "controls": {
+      "left": 63,
+      "top": 704,
+      "right": 297,
+      "bottom": 992,
+      "width": 234,
+      "height": 288
+    }
+  },
+  {
+    "build": "after-repair",
+    "viewport": {
+      "width": 360,
+      "height": 740
+    },
+    "condition": "phase2-bundle-3",
+    "path": "linear",
+    "state": "reflection",
+    "motionMode": "reduced-motion",
+    "scrollHeight": 964,
+    "scrollWidth": 360,
+    "horizontalOverflow": false,
+    "scrollY": 12,
+    "questionText": "Choose the fraction that shows the same amount as 2/3.",
+    "question": {
+      "left": 63,
+      "top": 423,
+      "right": 297,
+      "bottom": 498,
+      "width": 234,
+      "height": 76
+    },
+    "controls": {
+      "left": 63,
+      "top": 532,
+      "right": 297,
+      "bottom": 632,
+      "width": 234,
+      "height": 100
+    }
+  },
+  {
+    "build": "after-repair",
+    "viewport": {
+      "width": 360,
+      "height": 740
+    },
+    "condition": "phase2-bundle-3",
+    "path": "linear",
+    "state": "reflection-help-recovery",
+    "motionMode": "reduced-motion",
+    "scrollHeight": 1146,
+    "scrollWidth": 360,
+    "horizontalOverflow": false,
+    "scrollY": 325,
+    "questionText": "Choose the fraction that shows the same amount as 2/3.",
+    "question": {
+      "left": 63,
+      "top": 524,
+      "right": 297,
+      "bottom": 599,
+      "width": 234,
+      "height": 76
+    },
+    "controls": {
+      "left": 63,
+      "top": 714,
+      "right": 297,
+      "bottom": 814,
+      "width": 234,
+      "height": 100
+    }
+  },
+  {
+    "build": "after-repair",
+    "viewport": {
+      "width": 360,
+      "height": 752
+    },
+    "condition": "phase2-bundle-3",
+    "path": "linear",
+    "state": "reflection",
+    "motionMode": "reduced-motion",
+    "scrollHeight": 964,
+    "scrollWidth": 360,
+    "horizontalOverflow": false,
+    "scrollY": 12,
+    "questionText": "Choose the fraction that shows the same amount as 2/3.",
+    "question": {
+      "left": 63,
+      "top": 423,
+      "right": 297,
+      "bottom": 498,
+      "width": 234,
+      "height": 76
+    },
+    "controls": {
+      "left": 63,
+      "top": 532,
+      "right": 297,
+      "bottom": 632,
+      "width": 234,
+      "height": 100
+    }
+  },
+  {
+    "build": "after-repair",
+    "viewport": {
+      "width": 360,
+      "height": 752
+    },
+    "condition": "phase2-bundle-3",
+    "path": "linear",
+    "state": "reflection-help-recovery",
+    "motionMode": "reduced-motion",
+    "scrollHeight": 1146,
+    "scrollWidth": 360,
+    "horizontalOverflow": false,
+    "scrollY": 313,
+    "questionText": "Choose the fraction that shows the same amount as 2/3.",
+    "question": {
+      "left": 63,
+      "top": 524,
+      "right": 297,
+      "bottom": 599,
+      "width": 234,
+      "height": 76
+    },
+    "controls": {
+      "left": 63,
+      "top": 714,
+      "right": 297,
+      "bottom": 814,
+      "width": 234,
+      "height": 100
+    }
+  },
+  {
+    "build": "after-repair",
+    "viewport": {
+      "width": 360,
+      "height": 740
+    },
+    "condition": "phase2-bundle-4",
+    "path": "visual",
+    "state": "reflection",
+    "motionMode": "reduced-motion",
+    "scrollHeight": 1052,
+    "scrollWidth": 360,
+    "horizontalOverflow": false,
+    "scrollY": 12,
+    "questionText": "Does this new bar show the same amount as before?",
+    "question": {
+      "left": 63,
+      "top": 525,
+      "right": 297,
+      "bottom": 575,
+      "width": 234,
+      "height": 50
+    },
+    "controls": {
+      "left": 63,
+      "top": 606,
+      "right": 297,
+      "bottom": 720,
+      "width": 234,
+      "height": 114
+    }
+  },
+  {
+    "build": "after-repair",
+    "viewport": {
+      "width": 360,
+      "height": 740
+    },
+    "condition": "phase2-bundle-4",
+    "path": "visual",
+    "state": "reflection-help-recovery",
+    "motionMode": "reduced-motion",
+    "scrollHeight": 1234,
+    "scrollWidth": 360,
+    "horizontalOverflow": false,
+    "scrollY": 413,
+    "questionText": "Does this new bar show the same amount as before?",
+    "question": {
+      "left": 63,
+      "top": 626,
+      "right": 297,
+      "bottom": 676,
+      "width": 234,
+      "height": 50
+    },
+    "controls": {
+      "left": 63,
+      "top": 788,
+      "right": 297,
+      "bottom": 902,
+      "width": 234,
+      "height": 114
+    }
+  },
+  {
+    "build": "after-repair",
+    "viewport": {
+      "width": 360,
+      "height": 752
+    },
+    "condition": "phase2-bundle-4",
+    "path": "visual",
+    "state": "reflection",
+    "motionMode": "reduced-motion",
+    "scrollHeight": 1052,
+    "scrollWidth": 360,
+    "horizontalOverflow": false,
+    "scrollY": 12,
+    "questionText": "Does this new bar show the same amount as before?",
+    "question": {
+      "left": 63,
+      "top": 525,
+      "right": 297,
+      "bottom": 575,
+      "width": 234,
+      "height": 50
+    },
+    "controls": {
+      "left": 63,
+      "top": 606,
+      "right": 297,
+      "bottom": 720,
+      "width": 234,
+      "height": 114
+    }
+  },
+  {
+    "build": "after-repair",
+    "viewport": {
+      "width": 360,
+      "height": 752
+    },
+    "condition": "phase2-bundle-4",
+    "path": "visual",
+    "state": "reflection-help-recovery",
+    "motionMode": "reduced-motion",
+    "scrollHeight": 1234,
+    "scrollWidth": 360,
+    "horizontalOverflow": false,
+    "scrollY": 401,
+    "questionText": "Does this new bar show the same amount as before?",
+    "question": {
+      "left": 63,
+      "top": 626,
+      "right": 297,
+      "bottom": 676,
+      "width": 234,
+      "height": 50
+    },
+    "controls": {
+      "left": 63,
+      "top": 788,
+      "right": 297,
+      "bottom": 902,
+      "width": 234,
+      "height": 114
+    }
+  },
+  {
+    "build": "after-repair",
+    "viewport": {
+      "width": 360,
+      "height": 740
+    },
+    "condition": "phase2-bundle-4",
+    "path": "linear",
+    "state": "reflection",
+    "motionMode": "reduced-motion",
+    "scrollHeight": 1032,
+    "scrollWidth": 360,
+    "horizontalOverflow": false,
+    "scrollY": 12,
+    "questionText": "Does this new fraction show the same amount as before?",
+    "question": {
+      "left": 63,
+      "top": 502,
+      "right": 297,
+      "bottom": 552,
+      "width": 234,
+      "height": 50
+    },
+    "controls": {
+      "left": 63,
+      "top": 586,
+      "right": 297,
+      "bottom": 700,
+      "width": 234,
+      "height": 114
+    }
+  },
+  {
+    "build": "after-repair",
+    "viewport": {
+      "width": 360,
+      "height": 740
+    },
+    "condition": "phase2-bundle-4",
+    "path": "linear",
+    "state": "reflection-help-recovery",
+    "motionMode": "reduced-motion",
+    "scrollHeight": 1214,
+    "scrollWidth": 360,
+    "horizontalOverflow": false,
+    "scrollY": 393,
+    "questionText": "Does this new fraction show the same amount as before?",
+    "question": {
+      "left": 63,
+      "top": 603,
+      "right": 297,
+      "bottom": 653,
+      "width": 234,
+      "height": 50
+    },
+    "controls": {
+      "left": 63,
+      "top": 768,
+      "right": 297,
+      "bottom": 882,
+      "width": 234,
+      "height": 114
+    }
+  },
+  {
+    "build": "after-repair",
+    "viewport": {
+      "width": 360,
+      "height": 752
+    },
+    "condition": "phase2-bundle-4",
+    "path": "linear",
+    "state": "reflection",
+    "motionMode": "reduced-motion",
+    "scrollHeight": 1032,
+    "scrollWidth": 360,
+    "horizontalOverflow": false,
+    "scrollY": 12,
+    "questionText": "Does this new fraction show the same amount as before?",
+    "question": {
+      "left": 63,
+      "top": 502,
+      "right": 297,
+      "bottom": 552,
+      "width": 234,
+      "height": 50
+    },
+    "controls": {
+      "left": 63,
+      "top": 586,
+      "right": 297,
+      "bottom": 700,
+      "width": 234,
+      "height": 114
+    }
+  },
+  {
+    "build": "after-repair",
+    "viewport": {
+      "width": 360,
+      "height": 752
+    },
+    "condition": "phase2-bundle-4",
+    "path": "linear",
+    "state": "reflection-help-recovery",
+    "motionMode": "reduced-motion",
+    "scrollHeight": 1214,
+    "scrollWidth": 360,
+    "horizontalOverflow": false,
+    "scrollY": 381,
+    "questionText": "Does this new fraction show the same amount as before?",
+    "question": {
+      "left": 63,
+      "top": 603,
+      "right": 297,
+      "bottom": 653,
+      "width": 234,
+      "height": 50
+    },
+    "controls": {
+      "left": 63,
+      "top": 768,
+      "right": 297,
+      "bottom": 882,
+      "width": 234,
+      "height": 114
+    }
+  }
+]

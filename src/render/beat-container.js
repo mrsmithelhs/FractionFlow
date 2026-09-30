@@ -653,15 +653,13 @@ export function createBeatContainer({
               // Dispatch synchronously remounts the current reflection choices.
               // Resolve the target after that remount, rather than restoring the
               // Replay button that a real mouse click has just focused.
-              setTimeout(() => {
-                if (!rootEl?.isConnected || !isElementVisible(rootEl)) return;
-                const currentControls = rootEl.querySelector('.active-beat-controls');
-                if (!currentControls?.isConnected || !rootEl.contains(currentControls)) return;
-                const firstChoice = currentControls.querySelector('.matching-choice-btn, .control-choice-btn');
-                if (!firstChoice?.isConnected || !currentControls.contains(firstChoice) || !isElementVisible(firstChoice)) return;
-                firstChoice.classList.add('inspection-focus-return-target');
-                if (typeof firstChoice.focus === 'function') firstChoice.focus();
-              }, 0);
+              if (!rootEl?.isConnected || !isElementVisible(rootEl)) return;
+              const currentControls = rootEl.querySelector('.active-beat-controls');
+              if (!currentControls?.isConnected || !rootEl.contains(currentControls)) return;
+              const firstChoice = currentControls.querySelector('.matching-choice-btn, .control-choice-btn');
+              if (!firstChoice?.isConnected || !currentControls.contains(firstChoice) || !isElementVisible(firstChoice)) return;
+              firstChoice.classList.add('inspection-focus-return-target');
+              if (typeof firstChoice.focus === 'function') firstChoice.focus();
             },
           });
           card.appendChild(doneButton);

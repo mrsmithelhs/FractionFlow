@@ -700,30 +700,8 @@
       }
     },
     {
-      "id": "ROUTE-ENTRY-SUPPORT-CONFIGURATION",
-      "behavior": "The reviewer-selected support level reaches the episode through instructional state.",
-      "configuration": "phase2-bundle-1",
-      "startingSurface": "mounted-app-entry",
-      "viewport": {"width":360,"height":740},
-      "motionMode": "standard-motion",
-      "witness": "browser",
-      "actions": [
-        {"step":1,"method":"click","target":".app-gear-button","description":"Open reviewer settings on the entry page"},
-        {"step":2,"method":"click","target":".app-support-level","description":"Focus the support selector"},
-        {"step":3,"method":"pressKey","target":".app-support-level","value":"ArrowDown","description":"Select medium support"},
-        {"step":4,"method":"pressKey","target":".app-support-level","value":"Enter","description":"Apply the reviewer support selection"},
-        {"step":5,"method":"click","target":".app-practice-button","description":"Begin with the selected support configuration"}
-      ],
-      "expect": {
-        "capture": {"target":".fractionflow-app","type":"attribute","attribute":"data-support-level"},
-        "assertions": [
-          {"type":"attributeEquals","target":".fractionflow-app","attribute":"data-support-level","value":"medium support"}
-        ]
-      }
-    },
-    {
       "id": "ROUTE-RETRY-RESET-STATE",
-      "behavior": "Retry from mid-episode discards episode state and returns to the initial beat.",
+      "behavior": "After a wrong answer and recovery, help, established conversion work, replay, and unsubmitted input, retry discards the entire episode and returns to a fresh encounter.",
       "configuration": "phase2-bundle-1",
       "startingSurface": "mounted-app-entry",
       "viewport": {"width":360,"height":740},
@@ -731,19 +709,32 @@
       "witness": "browser",
       "actions": [
         {"step":1,"method":"click","target":".app-practice-button","description":"Begin the registered practice"},
-        {"step":2,"method":"click","target":".app-visual-view .control-btn","description":"Advance from the encounter beat"},
-        {"step":3,"method":"click","target":".app-restart-button","description":"Try this problem again from mid-episode"}
+        {"step":2,"method":"click","target":".app-visual-view .control-btn","description":"Advance from encounter"},
+        {"step":3,"method":"click","target":".app-visual-view .control-choice-btn:has-text(\"Yes, same size\")","description":"Submit an incorrect unit comparison and recover"},
+        {"step":4,"method":"click","target":".app-support-controls button:has-text(\"Need help?\")","description":"Request help after the recovery"},
+        {"step":5,"method":"click","target":".app-visual-view .control-choice-btn:has-text(\"No, different sizes\")","description":"Submit the correct unit comparison"},
+        {"step":6,"method":"click","target":".app-visual-view button[aria-label=\"Common denominator 12\"]","description":"Establish common-denominator work"},
+        {"step":7,"method":"fill","target":".app-visual-view #transform-num-input-left","value":"8","description":"Enter the equivalent numerator"},
+        {"step":8,"method":"click","target":".app-visual-view .control-submit-btn","description":"Establish the first equivalent form"},
+        {"step":9,"method":"click","target":".app-support-controls button:has-text(\"Replay the last change\")","description":"Record replay history"},
+        {"step":10,"method":"fill","target":".app-visual-view #transform-num-input-right","value":"9","description":"Enter an unsubmitted numerator"},
+        {"step":11,"method":"click","target":".app-restart-button","description":"Try this problem again after accumulated state"}
       ],
       "expect": {
         "capture": {"target":".app-visual-view","type":"innerHTML"},
         "assertions": [
-          {"type":"containsText","target":".app-visual-view","value":"Look at these two fractions."}
+          {"type":"containsText","target":".app-visual-view .active-beat-prompt","value":"Look at these two fractions."},
+          {"type":"notHasSelector","target":".app-visual-view .active-beat-feedback"},
+          {"type":"notHasSelector","target":".app-visual-view .active-beat-help"},
+          {"type":"notHasSelector","target":".app-visual-view input.control-numeric-input"},
+          {"type":"attributeEquals","target":".app-support-controls button:has-text(\"Replay the last change\")","attribute":"aria-pressed","value":"false"},
+          {"type":"notHasSelector","target":".app-episode:not([hidden]) .app-gear-button"}
         ]
       }
     },
     {
       "id": "ROUTE-RETURN-REENTER-RESET-STATE",
-      "behavior": "Returning mid-episode and re-entering discards the same episode state as retry.",
+      "behavior": "After a wrong answer and recovery, help, established conversion work, replay, and unsubmitted input, return and re-enter discards the same entire episode state as retry.",
       "configuration": "phase2-bundle-1",
       "startingSurface": "mounted-app-entry",
       "viewport": {"width":360,"height":740},
@@ -751,14 +742,27 @@
       "witness": "browser",
       "actions": [
         {"step":1,"method":"click","target":".app-practice-button","description":"Begin the registered practice"},
-        {"step":2,"method":"click","target":".app-visual-view .control-btn","description":"Advance from the encounter beat"},
-        {"step":3,"method":"click","target":".app-return-button","description":"Return to the entry page mid-episode"},
-        {"step":4,"method":"click","target":".app-practice-button","description":"Re-enter the registered practice"}
+        {"step":2,"method":"click","target":".app-visual-view .control-btn","description":"Advance from encounter"},
+        {"step":3,"method":"click","target":".app-visual-view .control-choice-btn:has-text(\"Yes, same size\")","description":"Submit an incorrect unit comparison and recover"},
+        {"step":4,"method":"click","target":".app-support-controls button:has-text(\"Need help?\")","description":"Request help after the recovery"},
+        {"step":5,"method":"click","target":".app-visual-view .control-choice-btn:has-text(\"No, different sizes\")","description":"Submit the correct unit comparison"},
+        {"step":6,"method":"click","target":".app-visual-view button[aria-label=\"Common denominator 12\"]","description":"Establish common-denominator work"},
+        {"step":7,"method":"fill","target":".app-visual-view #transform-num-input-left","value":"8","description":"Enter the equivalent numerator"},
+        {"step":8,"method":"click","target":".app-visual-view .control-submit-btn","description":"Establish the first equivalent form"},
+        {"step":9,"method":"click","target":".app-support-controls button:has-text(\"Replay the last change\")","description":"Record replay history"},
+        {"step":10,"method":"fill","target":".app-visual-view #transform-num-input-right","value":"9","description":"Enter an unsubmitted numerator"},
+        {"step":11,"method":"click","target":".app-return-button","description":"Return to entry after accumulated state"},
+        {"step":12,"method":"click","target":".app-practice-button","description":"Re-enter the registered practice"}
       ],
       "expect": {
         "capture": {"target":".app-visual-view","type":"innerHTML"},
         "assertions": [
-          {"type":"containsText","target":".app-visual-view","value":"Look at these two fractions."}
+          {"type":"containsText","target":".app-visual-view .active-beat-prompt","value":"Look at these two fractions."},
+          {"type":"notHasSelector","target":".app-visual-view .active-beat-feedback"},
+          {"type":"notHasSelector","target":".app-visual-view .active-beat-help"},
+          {"type":"notHasSelector","target":".app-visual-view input.control-numeric-input"},
+          {"type":"attributeEquals","target":".app-support-controls button:has-text(\"Replay the last change\")","attribute":"aria-pressed","value":"false"},
+          {"type":"notHasSelector","target":".app-episode:not([hidden]) .app-gear-button"}
         ]
       },
       "declaredSameAs": {"targetRouteId":"ROUTE-RETRY-RESET-STATE","comparison":"identicalCapture"}

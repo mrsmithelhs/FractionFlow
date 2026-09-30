@@ -4,7 +4,6 @@ import {
   applyIntent,
   createEpisode,
   createReplayEnvelope,
-  SUPPORT_LABELS,
 } from '../interaction/index.js';
 import {
   createBeatContainer,
@@ -69,12 +68,11 @@ function presentationModeFor({ override, motionQuery }) {
   return motionQuery?.matches ? 'reduced-motion' : 'standard-motion';
 }
 
-function createInitialState(instance, practiceType, condition, supportLabel) {
+function createInitialState(instance, practiceType, condition) {
   return createEpisode({
     instance,
     episodeDefinition: practiceType.episodeDefinition,
     activeCondition: condition.activeCondition,
-    support: { label: supportLabel },
   });
 }
 
@@ -94,7 +92,6 @@ export function createFractionFlowApp({
   if (!root) throw new Error('app root element is required');
 
   let selectedCondition = getRegisteredCondition(initialConditionId);
-  let selectedSupportLabel = SUPPORT_LABELS[0];
   let selectedPracticeType = null;
   let state = null;
   let visualView = true;
@@ -202,26 +199,6 @@ export function createFractionFlowApp({
     }
     displayMenu.appendChild(list);
 
-    const supportLabel = makeElement('label', 'app-support-level-label');
-    supportLabel.textContent = 'Support level';
-    const supportSelect = makeElement('select', 'app-support-level');
-    supportSelect.setAttribute('aria-label', 'Support level');
-    for (const label of SUPPORT_LABELS) {
-      const option = makeElement('option');
-      option.value = label;
-      option.textContent = label;
-      supportSelect.appendChild(option);
-    }
-    supportSelect.value = selectedSupportLabel;
-    supportSelect.addEventListener('change', () => {
-      selectedSupportLabel = SUPPORT_LABELS.includes(supportSelect.value)
-        ? supportSelect.value
-        : SUPPORT_LABELS[0];
-      closeDisplayMenu();
-      displayMenuButton.focus();
-    });
-    supportLabel.appendChild(supportSelect);
-    displayMenu.appendChild(supportLabel);
     wrapper.appendChild(displayMenu);
 
     documentClickListener = (event) => {
@@ -365,7 +342,7 @@ export function createFractionFlowApp({
     if (!practiceType || !PRACTICE_TYPES.includes(practiceType)) return;
     selectedPracticeType = practiceType;
     const instance = suppliedInstance || canonicalInstance(practiceType.fixtureId);
-    state = createInitialState(instance, practiceType, selectedCondition, selectedSupportLabel);
+    state = createInitialState(instance, practiceType, selectedCondition);
     isReplaying = false;
     activityNotice = '';
     setHidden(entryPage, true);
@@ -381,7 +358,7 @@ export function createFractionFlowApp({
   function returnToEntry() {
     if (selectedPracticeType && state) {
       const instance = suppliedInstance || canonicalInstance(selectedPracticeType.fixtureId);
-      state = createInitialState(instance, selectedPracticeType, selectedCondition, selectedSupportLabel);
+      state = createInitialState(instance, selectedPracticeType, selectedCondition);
     }
     isReplaying = false;
     activityNotice = '';
@@ -418,7 +395,6 @@ export function createFractionFlowApp({
 
   function updateConditionMetadata() {
     appRoot.setAttribute('data-condition-id', selectedCondition.id);
-    if (state?.support?.label) appRoot.setAttribute('data-support-level', state.support.label);
     appRoot.setAttribute('data-display-code', selectedCondition.activeCondition.display);
     appRoot.setAttribute('data-choreography-code', selectedCondition.activeCondition.choreography);
     appRoot.setAttribute('data-prompt-cadence-code', selectedCondition.activeCondition.promptCadence);
