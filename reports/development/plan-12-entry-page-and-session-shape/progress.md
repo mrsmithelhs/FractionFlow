@@ -13,7 +13,7 @@ The page deliberately omits a catalogue, extra headings, metrics, counters, prog
 
 - The entry practice button begins the registered episode. A recognized practice fragment (for example `#sum-under-one`) launches that episode directly; an unrecognized fragment leaves the learner on the entry page without an error. Conditions and support configuration are not encoded in the fragment.
 - The selected condition is passed into episode creation upstream, before rendering, and remains in the replay envelope. Route witnesses cover each registered condition with other conditions as negative controls, reviewer support configuration, direct recognized and unrecognized fragments, and fresh-state entry.
-- “Return to entry” and “Try this problem again” are both reachable during the episode. Each discards the current episode and re-enters with fresh state. The route matrix compares their post-discard state rather than relying on a direct reset call.
+- “Return to entry” and “Try this problem again” are both reachable during the episode. Each discards the current episode and re-enters with fresh state. The route matrix compares their rendered visual subtrees after discard; it does not capture the full episode state. See the delivery review for an independent full-state probe and the required stronger regression evidence.
 - Browser focus contract: Begin and recognized-fragment launches put focus on the episode main region. Return puts focus on the entry title. The first Tab from the entry page reaches the practice button; normal Tab navigation can still reach the gear. This preserves keyboard access to reviewer settings.
 
 ## Inspection Mode focus repair
@@ -36,7 +36,7 @@ Measurements are from a real browser viewport of 360×740 unless specified. Thes
 | Surface | Before implementation | Current |
 |---|---|---|
 | Entry page | Not present | Document scroll height 740px; page box top 12px, bottom 728px, height 716px. Title bounds y=76–119, learner line y=129–171, practice button y=195–259 (64px high), gear y=12–56 (44px), credit y=678–728. No page overflow. |
-| Episode | Baseline episode box y=20–720 (700px); document scroll height 817px | Episode box measured after episode focus at y=0–788 (788px); document scroll height 812px. The content is 48px taller than the viewport and the document is 72px taller. |
+| Episode, opening encounter beat | Baseline episode box y=20–720 (700px); document scroll height 817px | Episode box measured after episode focus at y=0–788 (788px); document scroll height 812px. The content is 48px taller than the viewport and the document is 72px taller. |
 
 At 768×1024 and 1440×900 the measured episode document height matched the viewport (1024px and 900px respectively). The entry page also fit at 1440×900. The episode remains vertically scrollable at 360×740; that is a review item against DECISION-021 criteria 1 and 3, not a claim of acceptance.
 
@@ -69,9 +69,9 @@ Screenshots:
 
 ## Problems and remaining risks
 
-The 360px episode still requires vertical scrolling: its measured document exceeds the viewport by 72px. The expanded reviewer popover covers some entry content while open. Both states are captured for rendered-screen review. No math, content, or interaction-state modules were changed. No deployment or push was made.
+The opening encounter beat at 360px requires vertical scrolling: its measured document exceeds the viewport by 72px. This is not the episode's maximum overflow. Orchestrator review measured the reflection document at 1142px on the visual path and 964px on the linear path at 360×740; see the delivery review and review screenshots. The expanded reviewer popover covers some entry content while open. No math, content, or interaction-state modules were changed. No deployment or push was made.
 
-The repository's advisor capability manifest was unavailable at `.codex/advisor-capable-providers.json`, so capability could not be confidently established. **Advisor disposition: degraded mode, orchestrator-gate-only (Branch C); no independent advisor consultation ran.**
+**Implementer advisor disposition: degraded mode, orchestrator-gate-only (Branch C); no independent advisor consultation ran.** Orchestrator correction, 2026-09-30: the manifest exists at the repository root as `advisor-capable-providers.json`; the implementer's lookup at `.codex/advisor-capable-providers.json` was incorrect. The implementer must correct the capability/disposition rationale using its own callable tool surface. The manifest's existence alone does not establish that thread's capability, and this correction does not claim a consultation ran.
 
 ## Review handoff
 
