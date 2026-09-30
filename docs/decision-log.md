@@ -904,6 +904,49 @@ should meet them.
 **Supersedes / related:** Confirms Roadmap §24 and §§38–44; preserves the §91 checkpoint; related to
 DECISION-032, which must accommodate rather than foreclose; raises OQ-24.
 
+### DECISION-034 - The episode arc is a schedule computed once from the problem
+
+**Date:** 2026-09-29
+
+**Decision:** Resolves **OQ-26**. The fixed seven-beat arc in `src/interaction/episode.js` becomes a
+**beat schedule computed once, at episode construction, from the content instance, and frozen** for
+the life of the episode.
+
+1. **The schedule is a function of the problem only** — `renamingCount`, which operands need renaming,
+   and the operation. It is episode configuration, like the active condition: deterministic, testable,
+   and outside the scene's history.
+2. **It is never re-derived during an episode.** A learner's actions never reshape the arc. Errors
+   produce recovery within a beat, exactly as now. A schedule that responds to learner behavior is
+   adaptive sequencing, which is Roadmap Phase 6 and 7, and it is not authorized here.
+3. **Schedule entries are beat instances, not beat names.** `transform-left` and `transform-right` are
+   explicit entries. A like-denominator problem has neither; a nested problem has one; the canonical
+   Phase 2 problem has both. The side stops being implicit state inside a single `transform` beat.
+4. **It lands as its own refactor packet, before any new problem family**, and the canonical instance
+   must produce **exactly** today's arc. The proof is the `plan-14` route matrix: every route stays
+   green with **no route edited**. A route that has to be changed to pass is evidence the refactor
+   changed behavior.
+5. **The invariants move with it.** DECISION-014's beat-gated mounting, the scaffold-leakage
+   invariants, the completed-beats summary, and replay provenance key on schedule position rather than
+   beat name. The route matrix gains one row per distinct schedule shape as new families arrive.
+
+**Rationale:** The `plan-10` reach assessment found that the fixed arc forces a like-denominator
+learner to choose a common denominator the problem already has and to enter two conversions that
+change nothing, and forces a nested learner to convert an operand already in the target unit. Every
+Phase 3 family after the canonical one needs a variable arc.
+
+Computing the schedule once rather than per beat is the load-bearing choice. It keeps the schedule a
+property of the problem instead of a record of the learner, which is the same line `SCENE_HISTORY_KEYS`
+draws for the scene, and it keeps adaptive behavior out of a phase whose question is whether the
+grammar generalizes.
+
+Landing it alone, under a green route matrix, isolates the structural risk from the first new family's
+content risk. If the refactor breaks something, the matrix says so before any new content exists to
+confuse the diagnosis.
+
+**Supersedes / related:** Resolves OQ-26; constrains DECISION-014; governs `plan-16`; precedes every
+Phase 3 problem-family packet; related to DECISION-032, whose crossing-one-whole packet will be among
+the first consumers of a non-canonical schedule.
+
 ## Proposed but not yet accepted
 
 Use the same `**Date:** YYYY-MM-DD` field for proposals, using the proposal date.

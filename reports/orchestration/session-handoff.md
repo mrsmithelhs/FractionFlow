@@ -2,224 +2,133 @@
 
 Living pointer document (see `docs/agent-starting-prompts/orchestrator-prompt.md` § "Session Handoff File").
 Orchestrator-owned; update in place before thread boundaries. Anchor dates, never countdowns.
-First revision: 2026-09-18. Rewritten 2026-09-19 when the specification phase closed — the prior
-revision was organized around an open specification phase and patching it would have misled.
 
-## Live State (as of 2026-09-19)
+First revision 2026-09-18. Rewritten 2026-09-19 when the specification phase closed. **Rewritten again
+2026-09-29** at an orchestrator change: the prior revision stopped at `plan-09` Repair 01 on
+2026-09-20, before Phase 2 closed, and patching it would have left a file describing a phase that no
+longer exists.
 
-Authoritative packet status is `node scripts/dev/plan-status.js list` and the generated index in
-`docs/development/README.md` — trust those over this file.
+## Orchestrator change — 2026-09-29
 
-- `plan-01` (toolchain/deployment spike): **complete**. Live HTTPS smoke page verified 2026-09-18.
-  `DECISION-001` records the deployment mechanism. The remaining owner gate is publish only.
-- `plan-02` (exact-arithmetic core): **complete**. Exact BigInt primitives, classifications,
-  validators, response patterns, golden fixtures, two bounded repairs.
-- `plan-03` (content contracts and deterministic generation): **complete**. Immutable problem
-  instances, eight structural selectors, overlays, provenance, deterministic selection, bulk audit.
-- `plan-04` (first-slice design dossier): **complete**, owner-accepted 2026-09-19.
-- `plan-05` (instructional engine plus representation eligibility): **complete**, accepted on
-  2026-09-19 after a bounded replay-definition repair. Registered immutable definition identities,
-  including the selective-reflection variant, now reconstruct exactly through a JSON replay envelope.
-- `plan-06` (Scene Model projection): **complete**, accepted on 2026-09-19 after a bounded
-  scene-admission repair. The renderer-facing guard now admits only a complete canonical payload
-  matching a fresh projection of current inputs and returns that fresh frozen projection.
-- `plan-07` (renderer foundation and learner-facing strings): **complete**, accepted 2026-09-20
-  after Repair 01. The render layer had been deriving candidate common denominators by arithmetic and
-  duplicating the DECISION-011 ceiling; candidates now come from `candidateDenominatorsForInstance`
-  in `src/content/eligibility.js`, projected into `scene.meaning.unitRelationship.candidateDenominators`
-  and gated on both the `decide` beat and `support.dimensions.commonDenominator === high support`.
-  Two test-quality findings were carried into `plan-08`; see
-  `reports/development/plan-07-renderer-foundation/final-review.md`.
-- `plan-08` (participation floor and access parity): **complete**, accepted 2026-09-20 after a
-  documentation-only Repair 01. Delivered the accessible linear path on the `plan-07` boundary
-  without renegotiating it, nine fail-first leakage invariants across both paths, focus-reachability
-  and native-element access parity, and the completed-beat collapse rule. See
-  `reports/development/plan-08-participation-floor-and-access-parity/final-review.md`.
-- `plan-09` (app shell, condition switcher, deployed acceptance): **in-progress**. Requirements 1
-  and 2 are built and Repair 01 is accepted (`reports/development/plan-09-app-shell-condition-switcher-and-acceptance/repair-01-review.md`).
-  Requirement 3 — the deployed public exercise — is unstarted and blocked on owner authorization.
-  The last packet of the Phase 2 wave and the one carrying the owner gate.
+The owner is moving plan orchestration to **Codex** "for a while," from a Claude Code thread that ran
+it from `plan-09` Repair 01 through `plan-16`'s drafting. Codex was primary through `plan-08` and
+reviewed `plan-10`–`plan-13` adversarially on 2026-09-21
+(`reports/orchestration/plans-10-13-codex-review.md`); that review was accepted almost entirely
+(`plans-10-13-codex-review-disposition.md`) and is the reason `plan-14` exists.
 
-## The Specification Phase Closed on 2026-09-19
+Nothing is mid-review. Everything below is committed at or after `b654487`.
 
-A design-review session ran Batches A–D plus a correction batch and produced DECISION-007 through
-DECISION-024. `DECISION-024` declares Phase 2 design and specification complete; the "Live for
-Phase 2" section of `docs/open-questions.md` is verified empty of open blockers.
+## Live state (as of 2026-09-29)
 
-The decisions that most change how earlier artifacts must be read — a fresh thread should treat
-these as foreground, not background:
+Authoritative status is `node scripts/dev/plan-status.js list` and the generated index in
+`docs/development/README.md`. Trust those over this file.
 
-- **DECISION-005** (`docs/evidence-posture.md`) — efficacy research is a sidequest. The evidence
-  ladder is small-n and unrandomized, so the `plan-04` prototype-variable register is a
-  **disqualification** instrument, never a selection one. Any thread reading that register as a plan
-  to *select* a winner is reading it wrong.
-- **DECISION-007 + 012 + 026** — Bundle 1 is the provisional shipped condition, chosen on design
-  grounds because no study is coming. DECISION-007's CM-01 text is superseded: the check is a
-  matching task with distractors whose expected answer is not always the reassuring one. Cite 012 and
-  026 alongside 007, never 007 alone.
-- **DECISION-003 + 004** (`docs/presentation-posture.md`) — accessibility posture, the learner-facing
-  register rules, and a grade 2–3 reading target enforced by working rules rather than a formula.
-- **DECISION-025** — fraction-bar segments are not interactive targets; control size is decoupled
-  from denominator.
-- **DECISION-019** — the gear menu holds the condition switcher only; Phase 2 ships no learner
-  preference surface and stores nothing in the browser.
+| packet | status | note |
+|---|---|---|
+| `plan-09` | complete | **Phase 2 exit gate satisfied by owner disposition, 2026-09-21**, at `b418e8a`, public URL https://mrsmithelhs.github.io/FractionFlow/ |
+| `plan-10` | complete | Phase 3 reach assessment. Headline: **demonstrated reach across exactly one of fourteen** §27/§28 targets |
+| `plan-14` | complete | Browser route matrix. 20 routes: 19 pass, 1 known defect. All three enforcement paths re-verified with independent seeds |
+| **`plan-12`** | **in-progress** | Entry page + the Inspection Mode focus repair. **Next action is at its Requirement 0 gate** |
+| `plan-11` | draft | Motion / animated subdivision (D-01-A). Unblocked |
+| `plan-15` | draft | Subtraction representation prototypes (OQ-25). Unblocked |
+| `plan-16` | draft | Computed beat schedule (DECISION-034). Unblocked |
+| `plan-13` | draft | Scaffold fading. Waits on `plan-12` |
 
-Full reconciliation, including the six findings and their dispositions:
-`reports/orchestration/phase-2-specification-reconciliation.md`.
+### Recommended order after `plan-12`
 
-## The Packet Wave (draft, reviewed)
+1. **`plan-16`** — behavior-preserving refactor under the unedited route matrix. Every Phase 3 family
+   needs it, so it precedes all of them. **Serial with `plan-12`**: both edit `beat-container.js` and
+   `linear-path.js`.
+2. **`plan-15`** can run **in parallel with anything** in a separate checkout. It is a standalone
+   surface outside the learner app. Its only shared file is `tests/routes/route-matrix.json`.
+3. **`plan-13`** once `plan-12` lands, since the entry-page gear menu is its support selector.
+4. **`plan-11`** is independent and can slot in wherever there is capacity.
+5. The first Phase 3 **family** packet — multi-whole bar and results crossing one whole
+   (DECISION-032) — is **not drafted**. The owner asked to hold it until `plan-14` was certified; it now
+   is. It should be written against `plan-16`'s schedule and the route matrix.
 
-Sequenced along the pipeline so no packet is built against a stub — the project's named implementer
-failure mode:
+## What `plan-12` needs next
 
-| Packet | Layer | Gate |
-| --- | --- | --- |
-| `plan-05` | `src/interaction/` engine **+ the `src/content/` eligibility evaluator**, no DOM | mechanism confirmation |
-| `plan-06` | scene projection, no DOM | mechanism confirmation |
-| `plan-07` | `src/render/` foundation, strings, bar and symbolic | three-path mechanism confirmation |
-| `plan-08` | linear path, leakage invariants, parity, collapse rule, floor evidence | mechanism confirmation |
-| `plan-09` | `src/app/` shell, switcher, deployed acceptance | owner gate |
+It is at **Requirement 0**, which is a propose-and-stop gate:
 
-Two things the review changed, and why they matter more than they look:
+- **What the entry page holds beyond the name** — the one OQ-19 question DECISION-029 deliberately left
+  open. The owner's stated intent is recorded in the packet: a "start screen / holding pen," name
+  (possibly animated SVG with text fallback), a short learner-facing line, a small creator credit at
+  the bottom, the gear, and practice-type buttons. **Only practice types that run may be offered** —
+  today that is one. The holding-pen property comes from a registry, not from disabled buttons.
+- **The focus contract**, including **Requirement 6**, the focus repair. Read its note on the obvious
+  fix: widening the capture guard sends focus to the **Replay button**, not the choice group. The
+  route matrix already rejects it.
 
-- **Eligibility moved into `plan-05`.** The first draft had `plan-05` instantiating episodes against
-  a verdict `plan-06` would not create until later — a stub dependency, and precisely the failure the
-  wave's ordering exists to prevent. OQ-02 places eligibility *before episode instantiation*, so the
-  evaluator is now `plan-05`'s one deliberate cross-layer file ownership. `plan-06` consumes the
-  verdict and enforces fail-closed behavior on it.
-- **The renderer packet split in two.** Its internal milestone became a real packet boundary, placed
-  between "the visible renderer looks plausible" (`plan-07`) and "the access model actually preserves
-  agency" (`plan-08`). Reviewing those together would have put the orchestrator's judgment *after* the
-  shared DOM architecture was committed, so a leakage or parity defect found later would force a
-  retrofit of already-accepted work. `plan-07`'s mechanism gate must now specify the boundary against
-  **all three** access paths, so the linear path is never left to join a two-path design.
+When `plan-12` lands, `ROUTE-FOCUS-INSPECTION-RESTORE`'s `knownDefect` marker must be retired and its
+assertion inverted. The runner fails if the marker survives the repair.
 
-`plan-08` is the highest-risk packet in the project. `plan-09` carries the roadmap §16 obligation to
-exercise the slice at the public GitHub Pages URL, which `plan-01` proved only for a static page, and
-its closeout now requires a dated owner disposition naming the evidence artifact, deployed revision,
-and public URL.
+## Decisions since the last revision
 
-## What the Owner Actually Chose (chat-only judgments)
+DECISION-025 through **DECISION-034** are all new since 2026-09-19. The ones a fresh orchestrator must
+hold in the foreground:
 
-- 2026-09-18: first packet set directly to `in-progress`, skipping `ready` — the status write is the
-  assignment signal.
-- 2026-09-18: the orchestrator may close a verified packet and advance the next when no owner
-  decision is needed to start it.
-- 2026-09-18: plan-02 stayed unified rather than split per Codex F5, with an internal milestone gate.
-  Orchestrator call, owner may still veto.
-- 2026-09-19: LCD ceiling raised to 30 over the recommended lower bound, accepting visual cramping at
-  narrow widths because mobile is a lower-priority target than Chromebook, tablet, and desktop, and
-  because scaffolding toward higher LCDs is wanted later.
-- 2026-09-19: the condition switcher is a gear icon on the entry page, not a URL parameter — the
-  owner's judgment being that most children will not click it.
-- 2026-09-19: the gear menu carries **only** the condition switcher at this stage; assigning future
-  preferences to it was explicitly withdrawn.
-- 2026-09-19: connection-making checks must sometimes have an unexpected correct answer, or children
-  click through them like a licence agreement.
-- 2026-09-19: support for learners below the prerequisite boundary stays a *bounded* opportunity
-  (OQ-17) — at most a calm message suggesting a teacher conversation. Explicitly not an obligation to
-  teach basic arithmetic.
+- **029** — entry page gates the episode; the gear lives there **and nowhere else**; retry and
+  return-to-entry are both kept and must discard identical state.
+- **030** — the gear also carries reviewer-selected **support level** (amends 019).
+- **031** — practice types are URL-addressable **by fragment only**; conditions and support level are
+  **never** in a URL.
+- **032** — results crossing one whole use a **discrete multi-whole stack**, with four constraints.
+  Constraint 3 matters most: nothing may show the result before the learner supplies it. A Gemini mock
+  of this design did exactly that, twice.
+- **033** — mixed numbers stay out of Phase 3; **a strategy is owed** before Phase 5 (OQ-24).
+- **034** — the arc is a schedule computed **once** from the problem, never from learner actions.
 
-## Carried Into plan-09
+Open questions of note: **OQ-23** (try another problem), **OQ-24** (no mixed-number pedagogy exists),
+**OQ-25** (subtraction representation — `plan-15` gathers evidence, does not decide).
 
-1. **Two figures are design intent, not evidence.** The collapse rule's 48px folded height and 85%
-   active-content claims were correctly labeled unmeasurable in `plan-08`, since the mock DOM has no
-   layout geometry. `plan-09` runs in a real browser and owns turning them into measurements or
-   dropping them.
-2. **The DECISION-021 rubric is structurally self-assessed, not evaluated.** `plan-08` labeled it so
-   explicitly and stated that `plan-09` does not inherit "rubric satisfied." The rubric is an
-   acceptance-gate instrument with owner/teacher review as its authority, and `plan-09` is that gate.
-3. **Enter/Space activation is untested.** `plan-08` verifies focus reachability and native element
-   types; actual key activation is browser behavior deferred here.
-4. **Screen readers, real viewports, and contrast tooling are all untested.** `plan-08` Section 8
-   separates exercised environments from the DECISION-009 target matrix honestly. `plan-09` is the
-   first packet with a browser.
+## What the owner actually chose (chat-only judgments, 2026-09-21 → 2026-09-29)
 
-## Standing Cautions (expensive rediscoveries avoided)
+- Accepted the Phase 2 gate with **n = 0 children**, and with scaffold variability in a named weak
+  state (the support ladder had no writer).
+- Wants learner surfaces **uncluttered**: no redundant labels, no text restating an image, no
+  explanatory chrome. The owner's first `plan-09` review was about exactly this, and it recurred in the
+  Candidate 1 mock.
+- Wants in-chat handoffs as **quotable blocks**, and wants trivial fixes done by the orchestrator rather
+  than round-tripped ("It's one line — do that yourself").
+- Deployed `b418e8a` personally and exercised it on Chrome, Edge, and Firefox on one laptop. **Pushing
+  to `main` is deploying** — `deploy.yml` fires on push.
+- Works with **high school** students. A feedback exercise is drafted at
+  `reports/orchestration/student-feedback-questions.md`; its results are secondary-age evidence
+  relevant to DECISION-016's repair learner, **not** child-usability evidence for the 8–11 target.
+- Folded the focus repair into `plan-12` rather than a `plan-09` Repair 08.
 
-- **Watch for a label that promises more than its body delivers — now six instances across
-  `plan-07` and `plan-08`, with no decline in rate.** A purity suite named for renderer purity that
-  imported two of five modules and missed the one that computed; a static scan named for the absence
-  of derived mathematics that matched four literal regexes; a "fail-first" test that wrote the defect
-  into a string literal and asserted the literal matched a regex for it; a keyboard-*completion* test
-  asserting only `tabIndex`; a column headed "Human Review Evidence" listing reviews that never
-  happened; a rubric marked "Satisfied" on criteria the same report called unmeasurable. Every time
-  the suite was green and the underlying code was sound — the defect was always the distance between
-  a claim and its evidence. **Read the body against the name, and check which modules a test actually
-  imports, before crediting any general claim.** Assume it recurs in `plan-09`.
+## Standing cautions
 
-- **The orchestrator's own recurring failure mode here has been hand-derived arithmetic.** A family
-  sweep computed by hand omitted `maxCanonicalScaleFactor`, producing a wrong eligible set that was
-  handed to the owner as evidence; the design-review agent's figures, computed with
-  `inspectCandidateSpace`, were right. Run the code. The correction is recorded in the Batch A/B
-  exchange and in `phase-2-specification-reconciliation.md`.
-- `docs/decision-log.md` is **append-only**. Supersede with a new entry; never amend in place. One
-  same-day clarification to DECISION-015 was made with an explicit dated, owner-authorized note, and
-  that is the only acceptable form of in-place edit.
-- Never hand-edit the packet table between the `plan-index` markers in `docs/development/README.md`;
-  run `render`. `set` lints atomically and refuses bad writes.
-- Status verbs (`delivered`, `complete`, `superseded`, `parked`) are orchestrator/owner-only.
-- `npm`/`node` are not on Git Bash PATH here; use `export PATH="/c/Program Files/nodejs:$PATH"`.
-- Heredocs with `<<'EOF'` have failed twice in this environment on long Markdown payloads. Write the
-  file with the Write tool, or use `python -c` with the content in a scratchpad file.
-- `docs/agent-starting-prompts/design-review-prompt.md` is a **mixed file**: only the
-  `bootstrap:commit-discipline v2` block (lines 17–39) is Bootstrap-managed. Project-local edits
-  elsewhere are safe, and one was made 2026-09-19 requiring batches to brief before asking.
-- Bootstrap intake notes are left **untracked** in `C:\AI\Bootstrap` by convention; a Bootstrap
-  orchestrator sweeps them. Do not commit there.
-- On managed Windows Codex tasks, source writes can succeed while `.git` metadata writes fail with
-  `index.lock: Permission denied` and no lock present. Diagnose read-only first, then narrow
-  elevation for an explicit-path stage/commit. Never delete an absent lock; never treat elevation as
-  push authorization.
-- A design-review agent was observed reading host-level session transcript logs mid-session to
-  recover its own batch instructions, which means the assignment had fallen out of context. Restate
-  the batch assignment at each boundary, or keep sessions shorter.
+- **The label-versus-body caution is not retired.** It was prematurely called "declining" on
+  2026-09-20 and withdrawn. Codex's reformulation stands: it **changed shape**, from structural
+  overclaim to post-repair verification overclaim. Retirement condition: several independently reviewed
+  user-facing packets run against the common route matrix, and the matrix catches a seeded defect.
+- **Verify focus, layout, and visibility with a real gesture, not just a real browser.** A
+  programmatic `.click()` does not move focus. The Inspection Mode focus defect passed the mock harness
+  *and* an orchestrator browser check that used synthetic clicks, and was found only by Playwright. The
+  correction is appended to `plan-09`'s `focus-restore-review.md`.
+- **Reachability, not existence.** Read `reports/orchestration/phase-2-unreachable-mechanisms.md`
+  before planning. The question for any mechanism is what sequence of real actions reaches it.
+- **Measure, do not sum.** `plan-10`'s first 360px budget was a component sum that missed 220px of
+  existing chrome. Reference viewports are **360×740 and 360×752**.
+- **Two implementer threads shared one checkout** on 2026-09-21. Nothing was lost because both staged
+  by explicit path, but one described the other's live work as "pre-existing modified files." Parallel
+  packets need separate worktrees. The owner has not formally decided this.
+- `docs/decision-log.md` is **append-only**. Never hand-edit the packet table; run `render`. Status
+  verbs are orchestrator/owner-only.
+- Long heredocs have failed repeatedly in this environment. Write files with a file tool, or run a
+  script from the scratchpad.
+- `npm` and `node` were on PATH throughout the 2026-09-21 → 2026-09-29 sessions. The older note that
+  they need `export PATH="/c/Program Files/nodejs:$PATH"` may be environment-specific.
+- On managed Windows Codex tasks, `.git` writes can fail with `index.lock: Permission denied` when no
+  lock exists. Diagnose read-only first. Never delete an absent lock; never treat elevation as push
+  authorization.
 
-## Next Orchestration Move
+## Where the project stands against the roadmap
 
-`plan-09` is the last packet of the Phase 2 wave and the only one carrying an **owner** gate. It
-composes the shell and the reviewer-only condition switcher, then exercises the slice at the public
-GitHub Pages URL as roadmap §16 requires — the first time real application behavior crosses the
-deployment path that `plan-01` proved only for a static page.
-
-Three things to hold when it runs:
-
-- **Publishing is outward-facing.** The packet requires owner confirmation before the first deploy of
-  application behavior, and push authority is separately owner-gated. Neither is a formality.
-- **Only the owner declares the exit gate satisfied**, via a dated disposition naming the reviewed
-  acceptance-evidence artifact, the deployed revision, and the public URL. The implementer stops at
-  "ready for orchestrator review"; the orchestrator may set `delivered` and verify, and that is all.
-- **It is the first packet with a browser**, so it inherits everything the headless packets could not
-  measure. See "Carried Into plan-09" above.
-
-Per the owner convention, report board state and needed owner action on completion, then advance the
-next packet if it needs no owner decision. Never push without explicit authorization.
-
-### Live as of 2026-09-20, after `plan-09` Repair 01
-
-The shell, the switcher, and both access paths are built and verified in a real browser. What is
-open:
-
-1. **Owner decision — DECISION-026 has no reachable instantiation.** All three registered conditions
-   use `CM-01-M`; the `CM-01-P` premise branch is unreachable in the app; and the matching arm's
-   "None of these" option (never the correct answer, so never a premise check) was removed by
-   Repair 01 in favour of three real candidates. No learner can currently meet a connection-making
-   check whose habitual answer is wrong, which is the exact failure DECISION-026 was written to
-   prevent. The fix is a choice about what ships — a fourth registered condition, a second authored
-   choice set whose answer is "none," or an explicit deferral to Phase 3 — so it is owner
-   disposition, not a repair. **`plan-08`'s final review credited DECISION-026 as satisfied on the
-   strength of the code existing; reachability was not checked. That was an orchestrator error.**
-2. **Owner gate — deploy authorization.** Requirement 3 cannot start without it.
-3. **Repair 02 is drafted and not yet handed to the implementer**
-   (`reports/development/plan-09-app-shell-condition-switcher-and-acceptance/repair-02.md`): one
-   defect (reflection choices keyed per fixture rather than per denominator route, so the `24` path
-   is shown twelfths), two owner-directed layout changes, and a guard on improper bars.
-4. Two small non-blocking items are recorded in the Repair 01 review: the authored correct choice sits
-   at index 0 in every set, and leakage Invariant 6 asserts a class no code applies.
-
-**Read `reports/orchestration/phase-2-unreachable-mechanisms.md` before planning Phase 3.** Three
-specified mechanisms are built, tested, and reachable by no learner: the support ladder (no writer —
-`state.support` is set once at `createEpisode` and the app never passes it), DECISION-026, and
-invalid-denominator recovery on the button path. Each was credited from an artifact's existence
-rather than from an exercise. For Phase 3 review the question is not "is it implemented?" but "what
-sequence of learner actions produces it?"
+`reports/orchestration/roadmap-position-2026-09-21.md`. Short version: on track, standing at the §89
+checkpoint. The mathematics runs well ahead of the presentation — the content layer can generate
+problems crossing one whole, and even Phase 5 decomposition, that no renderer can draw — so from here
+every open question is a presentation question. §89's first question, "did learners understand the
+visual transformation?", still has no answer.

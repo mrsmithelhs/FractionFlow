@@ -589,7 +589,10 @@ which is the first family after the canonical one, so effectively immediately.
 mid-build. Whether the schedule is computed once at episode construction or re-derived per beat is
 itself part of the question, because one of those keeps history out of the scene and one invites it in.
 
-**Orchestrator recommendation (2026-09-29), pending owner decision:**
+**RESOLVED 2026-09-29 by DECISION-034**, adopting the recommendation below as written. Implemented by
+`plan-16`.
+
+**Orchestrator recommendation (2026-09-29), accepted by the owner the same day:**
 
 1. **Yes, a computed schedule — computed once, at episode construction, from the content instance, and
    frozen.** It is a function of the problem (`renamingCount`, which operands need renaming, the

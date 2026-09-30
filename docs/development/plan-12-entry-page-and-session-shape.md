@@ -1,11 +1,9 @@
 ---
 id: plan-12
 title: Entry Page and Session Shape
-status: draft
+status: in-progress
 depends_on: [plan-09, plan-14]
 gate: "DECISION-029 settles the shape. One question stays open and gated: what the entry page holds beyond the name is proposed and owner-approved before source work, judged as a restraint question. Then owner review of the entry page and the episode surface on rendered screens against DECISION-021 criteria 1 and 3."
-superseded_by: null
-resolution: null
 summary: >-
   Give the app a front door. Resolve OQ-19: an entry page where the app name and
   the reviewer-only condition switcher live, from which a learner enters the
