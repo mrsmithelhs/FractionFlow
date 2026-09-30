@@ -63,7 +63,7 @@ same behavior, same reachable states, nothing lost.
 Stated precisely, because the result is true and cheap: there is no motion in the standard path
 either. `D-01-A` animated subdivision was never built, which is why bundle 1 is labelled *New parts
 only*. In the owner's words — *"there was no motion to see before, there still isn't, but the app does
-the same thing."* Parity holds; it should be re-exercised when `plan-10` adds animation, because that
+the same thing."* Parity holds; it should be re-exercised when `plan-11` adds animation, because that
 is when the criterion acquires teeth.
 
 ## Not covered

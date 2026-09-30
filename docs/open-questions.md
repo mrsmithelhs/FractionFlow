@@ -589,6 +589,26 @@ which is the first family after the canonical one, so effectively immediately.
 mid-build. Whether the schedule is computed once at episode construction or re-derived per beat is
 itself part of the question, because one of those keeps history out of the scene and one invites it in.
 
+**Orchestrator recommendation (2026-09-29), pending owner decision:**
+
+1. **Yes, a computed schedule — computed once, at episode construction, from the content instance, and
+   frozen.** It is a function of the problem (`renamingCount`, which operands need renaming, the
+   operation), not of anything the learner does. That makes it episode configuration, like the active
+   condition: deterministic, testable, and outside the scene's history.
+2. **Never re-derived per beat.** A schedule that changes in response to learner actions is adaptive
+   sequencing, which is Phase 6 and 7 territory, and it is the path by which history enters structure.
+   Learner errors produce recovery within a beat, as they do now; they do not reshape the arc.
+3. **Schedule entries are beat instances, not beat names.** `transform-left` and `transform-right` are
+   explicit entries, so a like-denominator problem has neither and a nested problem has one. Today the
+   side is implicit state inside a single `transform` beat.
+4. **Land it as its own refactor packet, before any new family.** The canonical instance must produce
+   *exactly* today's arc, and `plan-14`'s route matrix is the proof: all twenty routes stay green with no
+   route edited. A refactor under a green witness matrix is the cleanest thing the harness makes
+   possible, and it isolates the structural risk from the first new family's content risk.
+5. **The invariants move with it.** DECISION-014's beat-gated mounting, the scaffold-leakage invariants,
+   the completed-beats summary, and replay provenance must key on schedule position rather than beat
+   name, and the route matrix gains one row per distinct schedule shape.
+
 ---
 
 ## Process / workflow

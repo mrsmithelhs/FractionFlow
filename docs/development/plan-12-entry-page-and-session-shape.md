@@ -258,8 +258,19 @@ Required behavior:
   linear path. Returning to the first choice satisfies this; the saved node is legitimately stale after
   the remount, and the first-control fallback is what makes that safe.
 - The repair holds **after** the entry page restructures the shell, not only before it.
-- The fix does not widen into general focus management. Two files, the smallest change that makes the
-  capture see the real active element.
+- The fix does not widen into general focus management. Two files, the smallest change that returns
+  focus to the choice group.
+
+**The obvious fix is wrong, and this is already known.** While verifying `plan-14`'s inversion
+failure on 2026-09-29, the orchestrator seeded the naive repair — widening the capture guard from
+`rootEl.contains(document.activeElement)` to "anything but `body`". The route matrix rejected it, and
+the observed focus after "Done looking" was **`button.app-secondary-button` — the Replay button**, not
+a reflection choice. By the time Inspection Mode renders, a real click has already moved focus onto
+Replay, so a wider guard faithfully saves and restores the wrong element.
+
+The requirement is the choice group, not "whatever was focused." Either capture the element that held
+focus *before* the Replay control took it, or target the choice group directly on exit. Propose which
+at the Requirement 0 gate, alongside the focus contract.
 
 Constraints:
 

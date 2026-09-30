@@ -1,7 +1,8 @@
 ---
 id: plan-14
 title: Reachable Behavior Contract and Browser Route Matrix
-status: in-progress
+status: complete
+resolution: "Delivered at 9155684, knownDefect correction at ef172ca. Orchestrator re-verified all three enforcement paths with independent seeds on 2026-09-29: Rule 1 (unregistered-witness condition refused before browser launch), Rule 2 (juxtaposed forced to in-place failed on negative control), and knownDefect inversion (a seeded repair failed with the retire-the-marker message). 20 routes; 19 passed, 1 known defect (DEFECT-FOCUS-INSPECTION-RESTORE, tracked in plan-12 Requirement 6). src untouched. Found a live focus defect that the mock harness and an orchestrator review had both certified as fixed."
 depends_on: [plan-09]
 gate: "Mechanism confirmation before implementation: the route-matrix schema and the harness's starting-surface rule are proposed and approved before any route is written. Final acceptance requires the harness to catch a deliberately seeded unreachable-behavior defect and a deliberately seeded identical-output defect."
 summary: >-
