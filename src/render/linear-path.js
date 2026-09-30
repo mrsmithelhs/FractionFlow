@@ -31,7 +31,6 @@ export function createLinearPathRenderer({
   let contextSectionEl = null;
   let completedBeatsEl = null;
   let activeBeatEl = null;
-  let previousFocusRef = null;
   let activeBeatRenderToken = null;
 
   function isElementVisible(el) {
@@ -269,11 +268,7 @@ export function createLinearPathRenderer({
     }
     activeBeatRenderToken = token;
 
-    // Focus management (Condition B): Capture active element before unmount
     const isInspection = beat === 'reflect' && isReplaying && Boolean(scene.meaning.transition);
-    if (isInspection && !previousFocusRef && typeof document !== 'undefined' && document.activeElement && rootEl.contains(document.activeElement)) {
-      previousFocusRef = document.activeElement;
-    }
 
     activeBeatEl.replaceChildren();
 
@@ -553,36 +548,29 @@ export function createLinearPathRenderer({
             className: 'app-done-looking-button',
             onClick: () => {
               dispatchAction({ type: 'dismiss-replay' });
+              // Dispatch synchronously remounts the current reflection choices.
+              // Resolve the target after that remount, rather than restoring the
+              // Replay button that a real mouse click has just focused.
+              setTimeout(() => {
+                if (!rootEl?.isConnected || !isElementVisible(rootEl)) return;
+                const currentControls = rootEl.querySelector('.active-beat-controls');
+                if (!currentControls?.isConnected || !rootEl.contains(currentControls)) return;
+                const firstChoice = currentControls.querySelector('.matching-choice-btn, .control-choice-btn');
+                if (!firstChoice?.isConnected || !currentControls.contains(firstChoice) || !isElementVisible(firstChoice)) return;
+                firstChoice.classList.add('inspection-focus-return-target');
+                if (typeof firstChoice.focus === 'function') firstChoice.focus();
+              }, 0);
             },
           });
           card.appendChild(doneButton);
           controlsContainer.appendChild(card);
 
-          // Focus management (Condition B)
-          if (!previousFocusRef && typeof document !== 'undefined' && document.activeElement && rootEl.contains(document.activeElement)) {
-            previousFocusRef = document.activeElement;
-          }
           setTimeout(() => {
             if (isElementVisible(rootEl) && typeof doneButton.focus === 'function') {
               doneButton.focus();
             }
           }, 0);
         } else {
-          // Restore focus on exit if saved (Condition B)
-          if (previousFocusRef) {
-            const elToFocus = previousFocusRef;
-            previousFocusRef = null;
-            setTimeout(() => {
-              if (!isElementVisible(rootEl)) return;
-              if (elToFocus && elToFocus.isConnected && typeof elToFocus.focus === 'function') {
-                elToFocus.focus();
-              } else {
-                const firstChoice = controlsContainer.querySelector('button, input') || controlsContainer.querySelector('button');
-                if (firstChoice && typeof firstChoice.focus === 'function') firstChoice.focus();
-              }
-            }, 0);
-          }
-
           // DECISION-026 & Condition 6: Check-the-premise form and visual matching form
           const isPremise = scene.meaning.currentTask.connectionForm === 'premise';
 

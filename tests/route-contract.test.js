@@ -106,16 +106,34 @@ describe('Plan 14 Reachable Behavior Route Contract & Matrix Schema', () => {
     }
   });
 
-  it('enforces knownDefect contract on ROUTE-FOCUS-INSPECTION-RESTORE', () => {
+  it('requires the retired focus defect to assert the restored first choice', () => {
     const route = matrix.routes.find((r) => r.id === 'ROUTE-FOCUS-INSPECTION-RESTORE');
     expect(route).toBeDefined();
-    expect(route.knownDefect).toBeDefined();
-    expect(route.knownDefect.id).toBe('DEFECT-FOCUS-INSPECTION-RESTORE');
-    expect(route.knownDefect.description).toBeTruthy();
-    expect(route.knownDefect.trackedIn).toContain('plan-12');
+    expect(route.knownDefect).toBeUndefined();
+    expect(route.expect.assertions).toContainEqual(expect.objectContaining({
+      type: 'activeElementEquals',
+      value: 'button.fraction-control.matching-choice-btn.control-choice-btn.inspection-focus-return-target',
+    }));
+    const linearRoute = matrix.routes.find((r) => r.id === 'ROUTE-FOCUS-INSPECTION-RESTORE-LINEAR');
+    expect(linearRoute).toBeDefined();
+    expect(linearRoute.knownDefect).toBeUndefined();
+    expect(linearRoute.expect.assertions).toContainEqual(expect.objectContaining({
+      type: 'activeElementEquals',
+      value: 'button.fraction-control.control-choice-btn.inspection-focus-return-target',
+    }));
   });
 
-  it('fails validation if knownDefect is missing required fields', async () => {
+  it('witnesses the first keyboard stop after episode entry', () => {
+    const route = matrix.routes.find((r) => r.id === 'ROUTE-ENTRY-BEGIN-FIRST-TAB-EPISODE');
+    expect(route).toBeDefined();
+    expect(route.actions.some((action) => action.method === 'pressKey' && action.value === 'Tab')).toBe(true);
+    expect(route.expect.assertions).toContainEqual(expect.objectContaining({
+      type: 'activeElementEquals',
+      value: 'button.fraction-control.app-secondary-button.app-view-toggle',
+    }));
+  });
+
+  it('rejects malformed knownDefect fields on any row', async () => {
     const mutated = JSON.parse(JSON.stringify(matrix));
     const target = mutated.routes.find((r) => r.id === 'ROUTE-FOCUS-INSPECTION-RESTORE');
     target.knownDefect = { id: 'TEST' }; // missing description and trackedIn

@@ -22,6 +22,7 @@ describe('Plan 09 app shell and upstream display switcher', () => {
     document.body.appendChild(root);
     app = createFractionFlowApp({ root, presentationMode: 'instant-test' });
     app.mount();
+    root.querySelector('.app-practice-button').click();
   });
 
   afterEach(() => {
@@ -36,7 +37,9 @@ describe('Plan 09 app shell and upstream display switcher', () => {
     expect(root.querySelector('.app-introduction')).toBe(null);
     expect(root.querySelector('.app-display-status')).toBe(null);
     expect(root.querySelector('.fractionflow-app').children[0].tagName).toBe('MAIN');
-    expect(root.querySelector('.fractionflow-app').children.at(-1).tagName).toBe('FOOTER');
+    expect(root.querySelector('.fractionflow-app').children.at(-1).classList.contains('app-episode')).toBe(true);
+    expect(root.querySelector('.app-entry-page').hasAttribute('hidden')).toBe(true);
+    expect(root.querySelector('.app-episode .app-gear-button')).toBe(null);
     expect(root.textContent).toContain('Look at these two fractions.');
     expect(root.querySelector('.app-linear-view').hasAttribute('hidden')).toBe(true);
     expect(root.querySelector('.app-visual-view').hasAttribute('hidden')).toBe(false);
@@ -46,7 +49,7 @@ describe('Plan 09 app shell and upstream display switcher', () => {
     expect(root.textContent).not.toContain('D-02');
   });
 
-  it('switches registered display styles upstream without resetting learner work or persisting', () => {
+  it('selects reviewer configuration on the entry page and applies it to a fresh episode', () => {
     const encounterButton = root.querySelector('.app-visual-view .control-btn');
     encounterButton.click();
     root.querySelectorAll('.app-visual-view .control-choice-btn')[1].click();
@@ -54,20 +57,27 @@ describe('Plan 09 app shell and upstream display switcher', () => {
     const before = app.getState();
     expect(before.beat).toBe('decide');
     expect(before.established.notice.relationship).toBe('relatively-prime');
-
+    root.querySelector('.app-return-button').click();
+    expect(root.querySelector('.app-entry-page').hasAttribute('hidden')).toBe(false);
+    expect(root.querySelector('.app-episode .app-gear-button')).toBe(null);
     root.querySelector('.app-gear-button').click();
     const second = root.querySelector('[data-condition-id="phase2-bundle-2"]');
     expect(second.getAttribute('data-choreography-code')).toBe('D-02-J');
     second.click();
+    const support = root.querySelector('.app-support-level');
+    support.value = 'medium support';
+    support.dispatchEvent({ type: 'change' });
+    root.querySelector('.app-practice-button').click();
 
     const after = app.getState();
     expect(after.activeCondition).toEqual(REGISTERED_CONDITIONS[1].activeCondition);
-    expect(after.revision).toBe(before.revision);
-    expect(after.established).toEqual(before.established);
+    expect(after.revision).toBe(0);
+    expect(after.established.notice).toBe(null);
+    expect(after.support.label).toBe('medium support');
     expect(app.getReplayEnvelope().activeCondition).toEqual(after.activeCondition);
-    expect(root.textContent).toContain('Now showing Compare before and after.');
     expect(root.textContent).not.toContain('D-02-J');
-    expect(root.querySelector('.app-gear-button')._isFocused).toBe(true);
+    expect(root.querySelector('.app-episode .app-gear-button')).toBe(null);
+    expect(before.established.notice.relationship).toBe('relatively-prime');
   });
 
   it('keeps help secondary and records a help request without revealing the answer', () => {
@@ -112,7 +122,7 @@ describe('Plan 09 app shell and upstream display switcher', () => {
     expect(root.textContent).toContain('You finished this problem.');
     expect(root.querySelector('.app-linear-view').textContent.match(/You finished this problem\./g))
       .toHaveLength(1);
-    expect(root.querySelector('.app-completion-panel').hasAttribute('hidden')).toBe(false);
+    expect(root.querySelector('.app-completion-panel')).toBe(null);
   });
 
   it('serves the authored reflection set for the established twenty-fourths route', () => {
@@ -172,6 +182,7 @@ describe('Plan 09 app shell and upstream display switcher', () => {
 
     app = createFractionFlowApp({ root, presentationMode: 'auto' });
     app.mount();
+    root.querySelector('.app-practice-button').click();
     expect(root.querySelector('.fraction-bar-track.reduced-motion')).toBe(null);
 
     const before = app.getState();
@@ -235,9 +246,16 @@ describe('Plan 09 app shell and upstream display switcher', () => {
     expect(visualView.querySelector('.choreography-sequential')).toBe(null);
     expect(visualView.querySelectorAll('.fraction-bar-segment.subdivided').length).toBeGreaterThan(0);
 
-    // Switch to phase2-bundle-2 (juxtaposed)
+    // Switch to phase2-bundle-2 through the entry page, then replay the same beat.
+    root.querySelector('.app-return-button').click();
+    root.querySelector('.app-return-button').click();
     root.querySelector('.app-gear-button').click();
     root.querySelector('[data-condition-id="phase2-bundle-2"]').click();
+    root.querySelector('.app-practice-button').click();
+    app.dispatch({ type: 'acknowledge-encounter' });
+    app.dispatch({ type: 'submit-notice', matchesUnits: false });
+    app.dispatch({ type: 'propose-common-denominator', proposed: whole(12) });
+    app.dispatch({ type: 'submit-equivalent-form', proposed: fraction(8, 12) });
 
     const juxtaposedHtml = visualView.innerHTML;
     expect(juxtaposedHtml).not.toBe(inPlaceHtml);
@@ -248,9 +266,15 @@ describe('Plan 09 app shell and upstream display switcher', () => {
     expect(visualView.textContent).toContain('Before: 2/3');
     expect(visualView.textContent).toContain('After: 8/12');
 
-    // Switch to phase2-bundle-3 (sequential)
+    // Switch to phase2-bundle-3 through the entry page, then replay the same beat.
+    root.querySelector('.app-return-button').click();
     root.querySelector('.app-gear-button').click();
     root.querySelector('[data-condition-id="phase2-bundle-3"]').click();
+    root.querySelector('.app-practice-button').click();
+    app.dispatch({ type: 'acknowledge-encounter' });
+    app.dispatch({ type: 'submit-notice', matchesUnits: false });
+    app.dispatch({ type: 'propose-common-denominator', proposed: whole(12) });
+    app.dispatch({ type: 'submit-equivalent-form', proposed: fraction(8, 12) });
 
     const sequentialHtml = visualView.innerHTML;
     expect(sequentialHtml).not.toBe(inPlaceHtml);
@@ -269,11 +293,13 @@ describe('Plan 09 app shell and upstream display switcher', () => {
     expect(REGISTERED_CONDITIONS.some((c) => c.activeCondition.connectionMaking === 'CM-01-P'))
       .toBe(true);
 
+    root.querySelector('.app-return-button').click();
     root.querySelector('.app-gear-button').click();
     const bundle4 = root.querySelector('[data-condition-id="phase2-bundle-4"]');
     expect(bundle4).not.toBeNull();
     expect(bundle4.getAttribute('data-connection-code')).toBe('CM-01-P');
     bundle4.click();
+    root.querySelector('.app-practice-button').click();
 
     expect(app.getState().activeCondition.connectionMaking).toBe('CM-01-P');
 
@@ -312,7 +338,7 @@ describe('Plan 09 app shell and upstream display switcher', () => {
     expect(app.getState().established.reflection.premiseCaseId).toBe('premise-rel-prime-12');
   });
 
-  it('makes replay real across in-place, juxtaposed, and sequential conditions (Repair 06 Item 1)', () => {
+  it('makes replay real in the selected episode condition (Repair 06 Item 1)', () => {
     const replayButton = Array.from(root.querySelectorAll('.app-secondary-button'))
       .find((b) => b.textContent.includes('Replay'));
     expect(replayButton).toBeTruthy();
@@ -362,30 +388,6 @@ describe('Plan 09 app shell and upstream display switcher', () => {
     expect(root.querySelector('.app-visual-view .fraction-bar-in-place-replay')).toBeNull();
     expect(replayButton.getAttribute('aria-pressed')).toBe('false');
 
-    // --- Condition 2: Compare (juxtaposed / D-02-J) ---
-    root.querySelector('.app-gear-button').click();
-    root.querySelector('[data-condition-id="phase2-bundle-2"]').click();
-
-    expect(root.querySelector('.choreography-juxtaposed.replay-active')).toBeNull();
-    replayButton.click();
-    expect(replayButton.getAttribute('aria-pressed')).toBe('true');
-    expect(root.querySelector('.choreography-juxtaposed.replay-active')).not.toBeNull();
-
-    // Toggle off replay
-    replayButton.click();
-    expect(replayButton.getAttribute('aria-pressed')).toBe('false');
-    expect(root.querySelector('.choreography-juxtaposed.replay-active')).toBeNull();
-
-    // --- Condition 3: Steps (sequential / D-02-S) ---
-    root.querySelector('.app-gear-button').click();
-    root.querySelector('[data-condition-id="phase2-bundle-3"]').click();
-
-    expect(root.querySelector('.choreography-sequential.replay-active')).toBeNull();
-    replayButton.click();
-    expect(replayButton.getAttribute('aria-pressed')).toBe('true');
-    expect(root.querySelector('.choreography-sequential.replay-active')).not.toBeNull();
-    replayButton.click();
-    expect(replayButton.getAttribute('aria-pressed')).toBe('false');
   });
 
   it('enters Inspection Mode at reflect, unmounting choices and restoring focus on exit (Conditions B & D)', () => {
@@ -466,6 +468,7 @@ describe('Plan 09 app shell and upstream display switcher', () => {
     await new Promise((resolve) => setTimeout(resolve, 10));
     expect(document.activeElement.tagName).toBe('BUTTON');
     expect(document.activeElement.className).toContain('matching-choice-btn');
+    expect(document.activeElement.className).toContain('inspection-focus-return-target');
 
     // --- Linear Path ---
     const viewSwitchButton = root.querySelector('.app-view-controls .app-secondary-button');
@@ -491,6 +494,7 @@ describe('Plan 09 app shell and upstream display switcher', () => {
     await new Promise((resolve) => setTimeout(resolve, 10));
     expect(document.activeElement.tagName).toBe('BUTTON');
     expect(document.activeElement.className).toContain('control-choice-btn');
+    expect(document.activeElement.className).toContain('inspection-focus-return-target');
   });
 
   it('preserves document.activeElement and input state across replay at interactive beat (Repair 07 Item 2)', () => {
@@ -543,7 +547,7 @@ describe('Plan 09 app shell and upstream display switcher', () => {
     expect(linearInput.value).toBe('3');
   });
 
-  it('provides persistent non-motion replay acknowledgement under reduced motion and clears stale choreography-in-place (Repair 07 Items 4 & 5)', () => {
+  it('provides replay acknowledgement under reduced motion without exposing reviewer settings in the episode', () => {
     const replayButton = Array.from(root.querySelectorAll('.app-secondary-button'))
       .find((b) => b.textContent.includes('Replay'));
 
@@ -559,35 +563,11 @@ describe('Plan 09 app shell and upstream display switcher', () => {
     replayButton.click();
     const inPlaceBar = root.querySelector('.fraction-bar-container.choreography-in-place');
     expect(inPlaceBar).not.toBeNull();
+    expect(root.querySelector('.app-entry-page').hasAttribute('hidden')).toBe(true);
+    expect(root.querySelector('.app-episode .app-gear-button')).toBe(null);
 
-    // Switch condition to juxtaposed (Compare before and after)
-    root.querySelector('.app-gear-button').click();
-    root.querySelector('[data-condition-id="phase2-bundle-2"]').click();
-
-    // Item 5 check: choreography-in-place MUST be removed
-    const juxtaposedBar = root.querySelector('.fraction-bar-container.choreography-juxtaposed');
-    expect(juxtaposedBar).not.toBeNull();
-    expect(juxtaposedBar.classList.contains('choreography-in-place')).toBe(false);
-
-    // Item 4 check: trigger replay on juxtaposed
+    // Toggle replay off on the same episode.
     replayButton.click();
-    const beforeRow = juxtaposedBar.querySelector('.fraction-bar-row-before');
-    expect(beforeRow.classList.contains('replay-highlight')).toBe(true);
-    expect(beforeRow.querySelector('.fraction-bar-badge').textContent).toContain('(replaying)');
-
-    // Switch condition to sequential (Step-by-step change)
-    root.querySelector('.app-gear-button').click();
-    root.querySelector('[data-condition-id="phase2-bundle-3"]').click();
-
-    // Item 5 check: choreography-in-place MUST NOT be present
-    const sequentialBar = root.querySelector('.fraction-bar-container.choreography-sequential');
-    expect(sequentialBar).not.toBeNull();
-    expect(sequentialBar.classList.contains('choreography-in-place')).toBe(false);
-
-    // Item 4 check: trigger replay on sequential
-    replayButton.click();
-    const step1Card = sequentialBar.querySelector('.fraction-bar-step-1');
-    expect(step1Card.classList.contains('replay-highlight')).toBe(true);
-    expect(step1Card.querySelector('.fraction-bar-step-heading').textContent).toContain('(replaying)');
+    expect(inPlaceBar.classList.contains('replay-active')).toBe(false);
   });
 });

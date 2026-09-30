@@ -4,8 +4,7 @@ import {
   applyIntent,
   createEpisode,
   createReplayEnvelope,
-  PHASE2_REFLECTION_EPISODE_DEFINITION,
-  withActiveCondition,
+  SUPPORT_LABELS,
 } from '../interaction/index.js';
 import {
   createBeatContainer,
@@ -19,6 +18,7 @@ import {
   getRegisteredCondition,
   REGISTERED_CONDITIONS,
 } from './conditions.js';
+import { getPracticeType, PRACTICE_TYPES } from './practice-types.js';
 
 const APP_RENDER_STRINGS = Object.freeze({
   ...STRINGS,
@@ -28,11 +28,11 @@ const APP_RENDER_STRINGS = Object.freeze({
   }),
 });
 
-function canonicalInstance() {
+function canonicalInstance(fixtureId = 'curated-relatively-prime-addition-non-least') {
   const fixture = PHASE1_GOLDEN_CASES.find((candidate) => (
-    candidate.id === 'curated-relatively-prime-addition-non-least'
+    candidate.id === fixtureId
   ));
-  if (!fixture) throw new Error('the canonical Phase 2 fixture is missing');
+  if (!fixture) throw new Error(`practice fixture is missing: ${fixtureId}`);
   return buildCuratedProblem({
     fixture,
     selector: fixture.selector,
@@ -69,11 +69,12 @@ function presentationModeFor({ override, motionQuery }) {
   return motionQuery?.matches ? 'reduced-motion' : 'standard-motion';
 }
 
-function createInitialState(instance, condition) {
+function createInitialState(instance, practiceType, condition, supportLabel) {
   return createEpisode({
     instance,
-    episodeDefinition: PHASE2_REFLECTION_EPISODE_DEFINITION,
+    episodeDefinition: practiceType.episodeDefinition,
     activeCondition: condition.activeCondition,
+    support: { label: supportLabel },
   });
 }
 
@@ -88,12 +89,14 @@ export function createFractionFlowApp({
   root,
   initialConditionId = getDefaultCondition().id,
   presentationMode = 'auto',
-  instance = canonicalInstance(),
+  instance: suppliedInstance = null,
 } = {}) {
   if (!root) throw new Error('app root element is required');
 
   let selectedCondition = getRegisteredCondition(initialConditionId);
-  let state = createInitialState(instance, selectedCondition);
+  let selectedSupportLabel = SUPPORT_LABELS[0];
+  let selectedPracticeType = null;
+  let state = null;
   let visualView = true;
   let activityNotice = '';
   let mounted = false;
@@ -112,8 +115,9 @@ export function createFractionFlowApp({
   let helpButton;
   let replayButton;
   let supportNotice;
-  let completionPanel;
   let isReplaying = false;
+  let entryPage;
+  let entryTitle;
 
   function closeDisplayMenu() {
     if (!displayMenu || displayMenu.hasAttribute('hidden')) return;
@@ -163,8 +167,12 @@ export function createFractionFlowApp({
     });
 
     const heading = makeElement('h2', 'app-display-menu-heading');
-    heading.textContent = STRINGS.app.displayChoicesHeading;
+    heading.textContent = 'Reviewer settings';
     displayMenu.appendChild(heading);
+
+    const conditionLabel = makeElement('p', 'app-display-menu-label');
+    conditionLabel.textContent = STRINGS.app.displayChoicesHeading;
+    displayMenu.appendChild(conditionLabel);
 
     const list = makeElement('div', 'app-display-options');
     for (const condition of REGISTERED_CONDITIONS) {
@@ -186,16 +194,34 @@ export function createFractionFlowApp({
 
       option.addEventListener('click', () => {
         selectedCondition = getRegisteredCondition(condition.id);
-        state = withActiveCondition(state, selectedCondition.activeCondition);
-        activityNotice = STRINGS.app.displayChanged(selectedCondition.label);
-        isReplaying = false;
         closeDisplayMenu();
-        render();
+        updateConditionMetadata();
         displayMenuButton.focus();
       });
       list.appendChild(option);
     }
     displayMenu.appendChild(list);
+
+    const supportLabel = makeElement('label', 'app-support-level-label');
+    supportLabel.textContent = 'Support level';
+    const supportSelect = makeElement('select', 'app-support-level');
+    supportSelect.setAttribute('aria-label', 'Support level');
+    for (const label of SUPPORT_LABELS) {
+      const option = makeElement('option');
+      option.value = label;
+      option.textContent = label;
+      supportSelect.appendChild(option);
+    }
+    supportSelect.value = selectedSupportLabel;
+    supportSelect.addEventListener('change', () => {
+      selectedSupportLabel = SUPPORT_LABELS.includes(supportSelect.value)
+        ? supportSelect.value
+        : SUPPORT_LABELS[0];
+      closeDisplayMenu();
+      displayMenuButton.focus();
+    });
+    supportLabel.appendChild(supportSelect);
+    displayMenu.appendChild(supportLabel);
     wrapper.appendChild(displayMenu);
 
     documentClickListener = (event) => {
@@ -213,8 +239,51 @@ export function createFractionFlowApp({
   function createShell() {
     appRoot = makeElement('div', 'fractionflow-app');
 
+    entryPage = makeElement('main', 'app-entry-page');
+    entryPage.setAttribute('aria-labelledby', 'fractionflow-title');
+    const entryHeader = makeElement('header', 'app-entry-header');
+    entryTitle = makeElement('h1', 'app-entry-title');
+    entryTitle.id = 'fractionflow-title';
+    entryTitle.tabIndex = -1;
+    entryTitle.textContent = STRINGS.app.title;
+    entryHeader.appendChild(entryTitle);
+    const entryLine = makeElement('p', 'app-entry-line');
+    entryLine.textContent = 'See how different-sized fraction parts fit together.';
+    entryHeader.appendChild(entryLine);
+    entryPage.appendChild(entryHeader);
+
+    const practiceList = makeElement('div', 'app-practice-list');
+    for (const practiceType of PRACTICE_TYPES) {
+      const practiceButton = createButton({
+        label: practiceType.label,
+        className: 'app-practice-button',
+        onClick: () => startPractice(practiceType, { focusEpisode: true, updateFragment: true }),
+      });
+      practiceButton.setAttribute('data-practice-type', practiceType.id);
+      practiceList.appendChild(practiceButton);
+    }
+    entryPage.appendChild(practiceList);
+    // Keep the gear in the natural tab order after the practice button. CSS
+    // positions it at the upper right without changing keyboard order.
+    entryPage.appendChild(createDisplayMenu());
+    const creatorCredit = makeElement('small', 'app-creator-credit');
+    creatorCredit.textContent = 'Created by an educator';
+    entryPage.appendChild(creatorCredit);
+    appRoot.appendChild(entryPage);
+
     const episode = makeElement('main', 'app-episode');
     episode.setAttribute('aria-label', 'Fraction practice');
+    episode.tabIndex = -1;
+    setHidden(episode, true);
+    const episodeNavigation = makeElement('nav', 'app-episode-navigation');
+    episodeNavigation.setAttribute('aria-label', 'Episode navigation');
+    const returnButton = createButton({
+      label: 'Back to start',
+      className: 'app-secondary-button',
+      onClick: returnToEntry,
+    });
+    returnButton.classList.add('app-return-button');
+    episodeNavigation.appendChild(returnButton);
 
     const viewControls = makeElement('div', 'app-view-controls');
     viewToggle = createButton({
@@ -227,9 +296,11 @@ export function createFractionFlowApp({
         updateViewVisibility();
       },
     });
+    viewToggle.classList.add('app-view-toggle');
     viewToggle.setAttribute('aria-pressed', 'false');
     viewControls.appendChild(viewToggle);
     episode.appendChild(viewControls);
+    episode.appendChild(episodeNavigation);
 
     visualHost = makeElement('section', 'app-visual-view');
     visualHost.setAttribute('aria-label', STRINGS.app.visualViewLabel);
@@ -252,38 +323,89 @@ export function createFractionFlowApp({
       className: 'app-secondary-button',
       onClick: () => dispatchAction({ type: 'request-replay' }),
     });
+    const restartButton = createButton({
+      label: STRINGS.app.restartButton,
+      className: 'app-secondary-button',
+      onClick: () => {
+        if (selectedPracticeType) startPractice(selectedPracticeType, { focusEpisode: true });
+      },
+    });
+    restartButton.classList.add('app-restart-button');
     supportControls.appendChild(helpButton);
     supportControls.appendChild(replayButton);
+    supportControls.appendChild(restartButton);
     supportPanel.appendChild(supportControls);
     supportNotice = makeElement('p', 'app-support-notice sr-only');
     supportNotice.setAttribute('aria-live', 'polite');
     supportPanel.appendChild(supportNotice);
     episode.appendChild(supportPanel);
 
-    completionPanel = makeElement('section', 'app-completion-panel');
-    const restartButton = createButton({
-      label: STRINGS.app.restartButton,
-      className: 'app-secondary-button',
-      onClick: () => {
-        state = createInitialState(instance, selectedCondition);
-        isReplaying = false;
-        activityNotice = STRINGS.app.problemRestarted;
-        render();
-      },
-    });
-    completionPanel.appendChild(restartButton);
-    setHidden(completionPanel, true);
-    episode.appendChild(completionPanel);
-
     appRoot.appendChild(episode);
-
-    const footer = makeElement('footer', 'app-footer');
-    const title = makeElement('h1');
-    title.textContent = STRINGS.app.title;
-    footer.appendChild(title);
-    footer.appendChild(createDisplayMenu());
-    appRoot.appendChild(footer);
     root.replaceChildren(appRoot);
+  }
+
+  function visiblePracticeTypeFromFragment() {
+    if (typeof globalThis.location !== 'object') return null;
+    let id;
+    try {
+      id = decodeURIComponent(globalThis.location.hash.slice(1));
+    } catch {
+      return null;
+    }
+    return getPracticeType(id);
+  }
+
+  function setPracticeFragment(id) {
+    if (typeof globalThis.location === 'object' && globalThis.location.hash !== `#${id}`) {
+      globalThis.location.hash = id;
+    }
+  }
+
+  function startPractice(practiceType, { focusEpisode = false, updateFragment = false } = {}) {
+    if (!practiceType || !PRACTICE_TYPES.includes(practiceType)) return;
+    selectedPracticeType = practiceType;
+    const instance = suppliedInstance || canonicalInstance(practiceType.fixtureId);
+    state = createInitialState(instance, practiceType, selectedCondition, selectedSupportLabel);
+    isReplaying = false;
+    activityNotice = '';
+    setHidden(entryPage, true);
+    setHidden(appRoot.querySelector('.app-episode'), false);
+    render();
+    if (focusEpisode) {
+      const episode = appRoot.querySelector('.app-episode');
+      if (episode?.isConnected && !episode.hasAttribute('hidden')) episode.focus();
+    }
+    if (updateFragment) setPracticeFragment(practiceType.id);
+  }
+
+  function returnToEntry() {
+    if (selectedPracticeType && state) {
+      const instance = suppliedInstance || canonicalInstance(selectedPracticeType.fixtureId);
+      state = createInitialState(instance, selectedPracticeType, selectedCondition, selectedSupportLabel);
+    }
+    isReplaying = false;
+    activityNotice = '';
+    closeDisplayMenu();
+    setHidden(appRoot.querySelector('.app-episode'), true);
+    setHidden(entryPage, false);
+    if (typeof globalThis.location === 'object'
+      && globalThis.location.hash
+      && typeof globalThis.history?.replaceState === 'function') {
+      globalThis.history.replaceState(null, '', `${globalThis.location.pathname}${globalThis.location.search}`);
+    }
+    if (entryTitle?.isConnected && !entryPage.hasAttribute('hidden')) entryTitle.focus();
+  }
+
+  function handleHashChange() {
+    const practiceType = visiblePracticeTypeFromFragment();
+    const episode = appRoot?.querySelector('.app-episode');
+    if (practiceType) {
+      if (selectedPracticeType?.id !== practiceType.id || episode?.hasAttribute('hidden')) {
+        startPractice(practiceType, { focusEpisode: true });
+      }
+      return;
+    }
+    if (episode && !episode.hasAttribute('hidden')) returnToEntry();
   }
 
   function updateViewVisibility() {
@@ -296,6 +418,7 @@ export function createFractionFlowApp({
 
   function updateConditionMetadata() {
     appRoot.setAttribute('data-condition-id', selectedCondition.id);
+    if (state?.support?.label) appRoot.setAttribute('data-support-level', state.support.label);
     appRoot.setAttribute('data-display-code', selectedCondition.activeCondition.display);
     appRoot.setAttribute('data-choreography-code', selectedCondition.activeCondition.choreography);
     appRoot.setAttribute('data-prompt-cadence-code', selectedCondition.activeCondition.promptCadence);
@@ -313,12 +436,11 @@ export function createFractionFlowApp({
     helpButton.disabled = resolved;
     replayButton.disabled = resolved || state.beat === 'encounter';
     replayButton.setAttribute('aria-pressed', String(isReplaying));
-    setHidden(completionPanel, !resolved);
     supportNotice.textContent = activityNotice;
   }
 
   function render() {
-    if (!mounted) return;
+    if (!mounted || !state) return;
     const mode = presentationModeFor({ override: presentationMode, motionQuery });
     const scene = resolveRenderableScene({
       state,
@@ -403,6 +525,9 @@ export function createFractionFlowApp({
     mount() {
       if (mounted) return this;
       createShell();
+      if (typeof globalThis.addEventListener === 'function') {
+        globalThis.addEventListener('hashchange', handleHashChange);
+      }
       if (presentationMode === 'auto' && typeof globalThis.matchMedia === 'function') {
         motionQuery = globalThis.matchMedia('(prefers-reduced-motion: reduce)');
         motionListener = handleMotionChange;
@@ -411,7 +536,8 @@ export function createFractionFlowApp({
         }
       }
       mounted = true;
-      render();
+      const fragmentPracticeType = visiblePracticeTypeFromFragment();
+      if (fragmentPracticeType) startPractice(fragmentPracticeType, { focusEpisode: true });
       return this;
     },
     update() {
@@ -425,6 +551,9 @@ export function createFractionFlowApp({
       if (documentClickListener && typeof document !== 'undefined' && typeof document.removeEventListener === 'function') {
         document.removeEventListener('click', documentClickListener);
         documentClickListener = null;
+      }
+      if (typeof globalThis.removeEventListener === 'function') {
+        globalThis.removeEventListener('hashchange', handleHashChange);
       }
       visualRenderer?.destroy();
       linearRenderer?.destroy();

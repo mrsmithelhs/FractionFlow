@@ -403,6 +403,14 @@ retained alongside a return-to-entry control, and the two must discard identical
 deliberately still open: **what the entry page holds beyond the name** stays a mechanism-gate proposal
 in `plan-12`, to be judged against rendered screens under DECISION-021 criterion 1. See also OQ-23.
 
+**RESOLVED 2026-09-30 by owner approval under Plan 12 Requirement 0.** The entry page carries the
+FractionFlow title, the line "See how different-sized fraction parts fit together," a small creator
+credit, the reviewer-only gear, and only runnable practice types from the practice-type registry. At
+approval, that registry has one practice button: "Add fractions with different denominators." The
+gear carries the design-condition and support-level selectors. The entry/begin/return focus contract,
+recognized-fragment launch focus, and first-choice targeting on Inspection Mode exit were approved
+with the proposal. Rendered-screen acceptance remains the owner gate in Plan 12.
+
 ### OQ-20 — What does a fraction bar look like when the result crosses one whole?
 
 Raised by the owner on 2026-09-20, from the running app: "how does the bar setup change when we get
