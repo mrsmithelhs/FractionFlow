@@ -16,9 +16,11 @@ reviewed `plan-10`–`plan-13` adversarially on 2026-09-21
 (`reports/orchestration/plans-10-13-codex-review.md`); that review was accepted almost entirely
 (`plans-10-13-codex-review-disposition.md`) and is the reason `plan-14` exists.
 
-Nothing is mid-review. Everything below is committed at or after `b654487`.
+Plan 12 was accepted by the owner on 2026-09-30 after technical re-review at `9c81538`; see
+`reports/development/plan-12-entry-page-and-session-shape/owner-disposition.md`. Plan 16 is ready,
+not initiated, and its baseline was refreshed to the accepted 27-route Plan 12 matrix.
 
-## Live state (as of 2026-09-29)
+## Live state (as of 2026-09-30)
 
 Authoritative status is `node scripts/dev/plan-status.js list` and the generated index in
 `docs/development/README.md`. Trust those over this file.
@@ -28,11 +30,11 @@ Authoritative status is `node scripts/dev/plan-status.js list` and the generated
 | `plan-09` | complete | **Phase 2 exit gate satisfied by owner disposition, 2026-09-21**, at `b418e8a`, public URL https://mrsmithelhs.github.io/FractionFlow/ |
 | `plan-10` | complete | Phase 3 reach assessment. Headline: **demonstrated reach across exactly one of fourteen** §27/§28 targets |
 | `plan-14` | complete | Browser route matrix. 20 routes: 19 pass, 1 known defect. All three enforcement paths re-verified with independent seeds |
-| **`plan-12`** | **in-progress** | Entry page + the Inspection Mode focus repair. **Next action is at its Requirement 0 gate** |
+| **`plan-12`** | **complete** | Owner accepted current screens for now; Repair 01 technical review at `9c81538`; no deployment authorized |
 | `plan-11` | draft | Motion / animated subdivision (D-01-A). Unblocked |
 | `plan-15` | draft | Subtraction representation prototypes (OQ-25). Unblocked |
-| `plan-16` | draft | Computed beat schedule (DECISION-034). Unblocked |
-| `plan-13` | draft | Scaffold fading. Waits on `plan-12` |
+| `plan-16` | ready | Computed beat schedule (DECISION-034); next recommended packet, awaiting owner initiation |
+| `plan-13` | draft | Scaffold fading. Unblocked; support selector/writer remains deferred to its mechanism gate |
 
 ### Recommended order after `plan-12`
 
@@ -41,27 +43,24 @@ Authoritative status is `node scripts/dev/plan-status.js list` and the generated
    `linear-path.js`.
 2. **`plan-15`** can run **in parallel with anything** in a separate checkout. It is a standalone
    surface outside the learner app. Its only shared file is `tests/routes/route-matrix.json`.
-3. **`plan-13`** once `plan-12` lands, since the entry-page gear menu is its support selector.
+3. **`plan-13`** now that `plan-12` has landed; it adds the gated support selector/writer to the
+   entry-page gear. The delivered Plan 12 gear is condition-only.
 4. **`plan-11`** is independent and can slot in wherever there is capacity.
 5. The first Phase 3 **family** packet — multi-whole bar and results crossing one whole
    (DECISION-032) — is **not drafted**. The owner asked to hold it until `plan-14` was certified; it now
    is. It should be written against `plan-16`'s schedule and the route matrix.
 
-## What `plan-12` needs next
+## Plan 12 closeout and next gate
 
-It is at **Requirement 0**, which is a propose-and-stop gate:
+The owner accepted the current entry and episode screens for now on 2026-09-30, after viewing the
+screenshots. The suggested compact navigation row is not a pending repair. The condition-only gear,
+single runnable practice registry, exact reset evidence, and Done-looking first-choice focus on both
+paths are accepted. The focus known-defect marker is retired; the current matrix has 27 passing routes.
 
-- **What the entry page holds beyond the name** — the one OQ-19 question DECISION-029 deliberately left
-  open. The owner's stated intent is recorded in the packet: a "start screen / holding pen," name
-  (possibly animated SVG with text fallback), a short learner-facing line, a small creator credit at
-  the bottom, the gear, and practice-type buttons. **Only practice types that run may be offered** —
-  today that is one. The holding-pen property comes from a registry, not from disabled buttons.
-- **The focus contract**, including **Requirement 6**, the focus repair. Read its note on the obvious
-  fix: widening the capture guard sends focus to the **Replay button**, not the choice group. The
-  route matrix already rejects it.
-
-When `plan-12` lands, `ROUTE-FOCUS-INSPECTION-RESTORE`'s `knownDefect` marker must be retired and its
-assertion inverted. The runner fails if the marker survives the repair.
+Next is Plan 16's Requirement 0 mechanism proposal: schedule shape, construction/freeze rule,
+registered-definition and replay compatibility, and schedule-position keying. Its unedited matrix
+baseline is `51bdec7`, including the accepted entry/session and focus behavior. No Plan 16 source work
+or later packet is authorized by Plan 12 acceptance.
 
 ## Decisions since the last revision
 

@@ -1,7 +1,8 @@
 ---
 id: plan-12
 title: Entry Page and Session Shape
-status: delivered
+status: complete
+resolution: "Owner accepted the current entry and episode screens on 2026-09-30 after Repair 01 technical review; support activation deferred to Plan 13, 27 routes pass, no deployment authorized."
 depends_on: [plan-09, plan-14]
 gate: "DECISION-029 settles the shape. One question stays open and gated: what the entry page holds beyond the name is proposed and owner-approved before source work, judged as a restraint question. Then owner review of the entry page and the episode surface on rendered screens against DECISION-021 criteria 1 and 3."
 summary: >-

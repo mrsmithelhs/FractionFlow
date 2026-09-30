@@ -1,11 +1,9 @@
 ---
 id: plan-16
 title: Computed Beat Schedule
-status: draft
+status: ready
 depends_on: [plan-14]
 gate: "Mechanism confirmation before source work: the schedule's shape, where it is computed, how beat-gated mounting and the leakage invariants key on it, and what happens to the registered definition identity and the replay envelope. Acceptance requires every existing route in the plan-14 matrix to pass with no route edited."
-superseded_by: null
-resolution: null
 summary: >-
   Implement DECISION-034. Replace the fixed seven-beat arc with a beat schedule
   computed once at episode construction from the content instance and frozen,
@@ -34,7 +32,7 @@ summary: >-
 
 **DECISION-034**: the episode arc becomes a schedule computed once from the problem. This packet does
 the structural half and nothing else. When it lands, the canonical Phase 2 episode behaves exactly as
-it does at `b654487`, and the code can express a like-denominator arc with no `transform` and a nested
+it does at the accepted Plan 12 implementation `51bdec7`, and the code can express a like-denominator arc with no `transform` and a nested
 arc with one — without yet shipping either.
 
 ## Non-goals
@@ -47,7 +45,7 @@ arc with one — without yet shipping either.
 
 ## Depends on
 
-`plan-14` complete. This is the refactor the route matrix was built to make safe: twenty browser-driven
+`plan-14` complete. This is the refactor the route matrix was built to make safe: 27 browser-driven
 routes, each checked through mounted controls with a real gesture, with negative controls that fail if
 two conditions collapse into one. **If every route passes without being edited, the refactor preserved
 behavior.** If a route must change to pass, it did not.
@@ -89,8 +87,8 @@ Required reading:
 Contracts this packet must preserve:
 
 - **Behavior identity for the canonical instance.** Same beats, same order, same prompts, same
-  mounts, same recovery, same focus behavior — including the known focus defect, which is `plan-12`'s
-  to repair, not this packet's. The known-defect row must still exhibit its defect.
+  mounts, same recovery, same focus behavior — including Plan 12's accepted Done-looking focus repair
+  on both paths. No known focus-defect marker remains in the acceptance baseline.
 - **The Separation Rule** — `mathematical state → instructional state → presentation`.
 - **No history in the scene.** The schedule is configuration, not a record. `SCENE_HISTORY_KEYS` and
   `assertNoSceneHistory` hold, and the schedule must not be derivable only from response history.
@@ -117,7 +115,7 @@ Contracts this packet must preserve:
 - `src/math/`, `src/content/`, `src/app/` — no changes.
 - Any edit to `tests/routes/route-matrix.json`. **The matrix is the acceptance instrument; editing it
   voids the proof.** If a route seems to need changing, stop and report.
-- The Inspection Mode focus defect. Leave it exactly as it is.
+- Any further Inspection Mode focus work. Preserve Plan 12's accepted focus behavior exactly.
 - Offering any non-canonical schedule to a learner.
 
 ## Implementation Requirements
@@ -170,10 +168,11 @@ Required behavior:
 
 Required behavior:
 
-- `npm run test:routes` reports **19 passed, 1 known defect, 0 failed**, identical to `b654487`, with
-  `tests/routes/route-matrix.json` byte-identical to `b654487`.
-- The known-defect row still exhibits its defect. If the refactor happens to change focus behavior,
-  the runner will say so, and that is a stop condition, not a fix.
+- `npm run test:routes` reports **27 passed, 0 known defects, 0 failed**, identical to the accepted
+  Plan 12 implementation `51bdec7`, with `tests/routes/route-matrix.json` byte-identical to that revision.
+  Its SHA-256 is `ef56b30ed99fd641fa185d7b788552f64ce034865cf474854616e723d4659891`.
+- Both repaired focus rows retain their first-choice assertions. If the refactor changes focus
+  behavior, that is a stop condition, not an opportunity for a new focus repair.
 - `npm test` passes; the leakage suite passes unmodified in its assertions.
 - A replay recorded before the refactor reconstructs after it, or the gate-approved alternative holds.
 
@@ -183,8 +182,8 @@ Required behavior:
 - [ ] Schedule computed once from the instance, frozen, provably unchangeable by learner action.
 - [ ] No inline successor beat names remain.
 - [ ] One-renamed and none-renamed schedules unit-tested; still unreachable by learners.
-- [ ] `tests/routes/route-matrix.json` byte-identical to `b654487`.
-- [ ] `npm run test:routes`: 19 passed, 1 known defect, 0 failed.
+- [ ] `tests/routes/route-matrix.json` byte-identical to `51bdec7`, with the Requirement 4 SHA-256.
+- [ ] `npm run test:routes`: 27 passed, 0 known defects, 0 failed.
 - [ ] Leakage invariants and scene-history guards pass unmodified.
 - [ ] Replay reconstruction holds across the refactor, or the approved alternative is implemented.
 - [ ] No changes to `src/math/`, `src/content/`, or `src/app/`.
@@ -197,7 +196,7 @@ Required behavior:
 Stop and report if:
 
 - Any route in the matrix fails, or seems to need editing, after the refactor.
-- The known-defect row stops exhibiting its defect.
+- Either repaired focus row regresses, or any accepted entry/session route changes behavior.
 - Replay reconstruction cannot be preserved and no clean revision path exists.
 - A leakage invariant cannot be re-keyed without weakening its assertion.
 - The schedule appears to need learner history to compute.
@@ -213,7 +212,8 @@ Stop and report if:
 ## Advisor Consultation
 
 Inherited from `AGENTS.md`. A structural change to the instructional engine that every later packet
-builds on; a full disposition is expected, not a degraded mode.
+builds on; record a consultation disposition or a justified thread-specific degraded mode under the
+guide's capability rules.
 
 ## Commit and Concurrency Guidance
 
@@ -222,9 +222,9 @@ Mode A. Never delete a lock file.
 
 **`plan-12` and this packet both edit `src/render/beat-container.js` and `src/render/linear-path.js`.**
 They must not share a checkout while both are in flight. Whichever lands second rebases onto the
-first, and after a `plan-12` landing the proof in Requirement 4 changes: the focus row will have been
-inverted, so the expected run becomes **20 passed, 0 known defects**, against the matrix as `plan-12`
-left it.
+first. Plan 12 is now accepted; this packet starts from its current entry/session composition and
+repaired focus routes. The proof is the **27-route** baseline in Requirement 4, not the former
+20-route matrix or its retired known defect.
 
 ## Progress Report
 
