@@ -237,3 +237,140 @@ measurements. No packet status field was changed and nothing was pushed.
 - Progress report: this document, committed separately after implementation as the final repository action.
 
 **Ready for orchestrator delivery review: yes. Rendered-screen acceptance remains owner-gated.**
+
+## Repair 01 addendum (2026-10-01)
+
+This addendum records the bounded repair authorized after delivery review. It
+supersedes the earlier report's stale `in-progress` state and its statement
+that a 0.18-second transition was measured. The packet remains `delivered`;
+the earlier 0.18-second value was a configured CSS duration, not executed
+motion. Those unused transitions have been removed, and the refreshed evidence
+records observed browser events instead.
+
+### Surface and rendered-witness repair
+
+The completed removal/gap button is now hidden after its final action, which
+removes it from visible content and keyboard order. The redundant
+`.model-note` paragraphs and completed-action badge text are gone. The
+inspectable bars/removal marks/bracket remain, with one short visible answer
+instruction. The final removal or gap-reveal click/keyboard activation focuses
+the numerator field. A nested-denominator keyboard path confirms the
+intermediate takeaway action keeps its button focused and its first removal
+mark; retries preserve operation marks and do not move focus.
+
+Both prototype route witnesses now assert visible dimensions and actual paint.
+Their representation capture contains rendered bar, segment, pseudo-element,
+and gap geometry/styles, without visible text or wrapper classes in the
+serialized capture. Takeaway additionally requires its removed segment's
+computed background image to contain the hatch pattern. Browser-only seeded
+styles exercise three defects:
+
+- Hidden bars/gaps: **4/4** filtered prototype executions fail a visible
+  geometry assertion.
+- Collapsed bars/gaps/marks: **4/4** filtered executions fail a visible
+  geometry assertion.
+- Erased takeaway removal hatch: **2/2** takeaway executions fail the
+  required-paint assertion; the reciprocal comparison executions pass **2/2**.
+- After all seeded runs and disposal of their browser contexts/styles, a clean
+  browser run passes **4/4** executions.
+
+These seeded styles are injected into isolated browser pages and are not
+written to source or build output. The advisor's erased-mark finding and the
+correction are detailed under Advisor disposition below.
+
+The existing 27 learner route rows are preserved exactly as parsed JSON values
+from the pre-repair `HEAD`. The matrix remains 29 declarative rows and expands
+to 31 executions, including both prototype witnesses under standard and
+reduced motion. Filtered takeaway selection still includes its reciprocal
+comparison route and passes all four executions.
+
+### Refreshed evidence and participation
+
+The refreshed evidence folder contains 16 rendered screenshots for four
+fixtures × two representations × two viewport heights (360×740 and 360×752);
+the screenshots show the standard-motion static endpoint. Its measurement file
+contains 32 fixture/representation/viewport/motion records across standard and
+reduced-motion browser preferences. All 32 records show zero document
+overflow, zero `transitionrun` events, zero `animationstart` events, zero
+active animations, and no visible spent operation control. At 360px viewport
+width, each whole remains 328px wide. The rendered operation status retains
+“Enter the difference.”
+
+Participation evidence uses the nested-denominator fixture for each model.
+Keyboard evidence confirms the first takeaway removal is intermediate, its
+button remains visible and focused, and the final operation focuses the
+numerator. Once complete, the operation button is absent from the tab sequence:
+the observed previous/next tab stops are the fixture selector and numerator.
+Both prototype operations also completed with Playwright touch gestures, and
+their answer controls measured 44px high. Text entry was supplied by the
+browser driver; native mobile-device keyboard entry remains untested.
+
+The draft SUB-01 register entry and handling rules remain in the original
+report above; `observation-guide.md` remains the one-page guide. No real
+learner observations were run or retained. This work does not select a
+representation or satisfy owner review of the rendered screens.
+
+### Advisor disposition
+
+- **Branch A: consultation ran.** Requested `gpt-6.1-sol` at medium effort
+  through one depth-one read-only advisor call. The advisor's final response
+  identified itself as a Codex agent based on GPT-6; it could not independently
+  confirm the more specific model override or service tier. The requested call
+  settings are observable, but the exact runtime identity is not independently
+  verified.
+- **Effective posture:** instruction-read-only with post-hoc verification.
+  The platform did not establish a structural read-only guarantee. The brief
+  prohibited writes and child agents; the advisor reported no files written,
+  the primary remained sole writer, and the subsequent status inspection showed
+  only the recognized Plan 15 implementation/evidence paths.
+- **R1 — completed controls and focus; accepted as satisfied.** The advisor
+  inspected the implementation and confirmed the spent button is hidden, the
+  duplicate note removed, final-action focus handled in the operation branches,
+  and intermediate/retry focus behavior retained. The refreshed keyboard and
+  touch participation record verifies the final focus and completed tab order.
+- **R2 — removed mark could lose its visual distinction; accepted and
+  repaired.** The advisor injected a page-only CSS defect that made removed
+  parts use the ordinary shaded fill and removed the hatch/pseudo-mark; all
+  four then-current filtered routes passed. I independently verified the
+  described failure, changed the takeaway witness to require the rendered
+  repeating hatch, and added an `erased-removal-mark` seed. The rerun rejects
+  both takeaway motion modes for missing hatch paint while both comparison
+  modes pass; hidden/collapsed seeds fail all four route executions, followed
+  by a clean 4/4 pass.
+- **R3 — configured duration is not executed motion; accepted as satisfied.**
+  Unused transition declarations were removed. The evidence now records
+  `transitionrun`, `animationstart`, and active animation counts; all remain
+  zero under both browser motion preferences.
+- **Cost:** one bounded advisor review and one repair/reverification cycle,
+  completed within this implementation turn.
+
+### Repair validation and handoff
+
+- `npm test` — **23 test files, 271 tests passed**.
+- `npm run build` — learner build (**44 modules**) and standalone prototype
+  build (**6 modules**) succeeded in separate outputs.
+- `npm run test:routes` — **31 passed, 0 failed**, across 29 rows.
+- `node scripts/dev/run-route-matrix.js --filter ROUTE-PROTOTYPE-SUBTRACTION-TAKEAWAY`
+  — **4 passed, 0 failed**, with reciprocal comparison and both motion modes.
+- `node scripts/dev/verify-subtraction-visual-witness.mjs` — expected seeded
+  failures and subsequent clean **4/4** success as recorded above.
+- `node scripts/dev/capture-subtraction-evidence.mjs` — **16 screenshots and
+  32 measurements** refreshed; keyboard/touch evidence completed for both
+  models.
+- Measurement JSON audit — 32 records across all four fixtures, both
+  representations, both viewport heights, and both motion modes; zero
+  overflow, executed motion, visible spent control, or missing answer
+  instruction.
+- `node scripts/dev/plan-status.js lint` — `lint: OK (no violations)`.
+- `git diff --check` and staged diff check — passed; only expected Windows
+  line-ending/config ignore warnings were printed.
+- `node scripts/dev/plan-status.js list` — Plan 15 remains `delivered`.
+  The required preflight returned `BLOCKED` because the packet was already
+  delivered; the user's explicit Repair 01 authorization allowed this bounded
+  repair without lifecycle mutation.
+
+Implementation and refreshed evidence were committed first as `9254ae5`
+(`fix: repair Plan 15 subtraction prototype evidence`). This report addendum
+is being committed separately as the final repository action. No packet
+status was changed, and nothing was pushed or deployed. The work returns for
+technical re-review; rendered-screen acceptance remains owner-gated.
