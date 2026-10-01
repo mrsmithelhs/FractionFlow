@@ -1,7 +1,7 @@
 ---
 id: plan-16
 title: Computed Beat Schedule
-status: in-progress
+status: delivered
 depends_on: [plan-14]
 gate: "Mechanism confirmation before source work: the schedule's shape, where it is computed, how beat-gated mounting and the leakage invariants key on it, and what happens to the registered definition identity and the replay envelope. Acceptance requires every existing route in the plan-14 matrix to pass with no route edited."
 summary: >-
