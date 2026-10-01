@@ -15,8 +15,8 @@ export function computeBeatSchedule(instance, episodeDefinition) {
   if (!renaming || typeof renaming.left !== 'boolean' || typeof renaming.right !== 'boolean') {
     throw scheduleError('canonical renaming sides must be validated booleans');
   }
-  if (typeof instance?.request?.operation !== 'string' || instance.request.operation.length === 0) {
-    throw scheduleError('problem operation is required to derive the beat schedule');
+  if (!['add', 'subtract'].includes(instance?.request?.operation)) {
+    throw scheduleError('problem operation must be add or subtract to derive the beat schedule');
   }
   if (!episodeDefinition || typeof episodeDefinition.includeReflection !== 'boolean') {
     throw scheduleError('registered reflection setting is required to derive the beat schedule');

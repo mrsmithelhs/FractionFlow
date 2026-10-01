@@ -112,6 +112,36 @@ describe('Plan 05 instructional episode', () => {
     expect(Object.isFrozen(noReflection[0])).toBe(true);
   });
 
+  it('rejects unsupported operations while retaining add and subtract schedule derivation', () => {
+    const instance = canonicalInstance();
+    const expectedIds = [
+      'encounter', 'notice', 'decide', 'transform-left', 'transform-right', 'operate', 'resolve', 'reflect',
+    ];
+
+    for (const operation of ['add', 'subtract']) {
+      const supportedInstance = {
+        ...instance,
+        request: { ...instance.request, operation },
+      };
+      expect(computeBeatSchedule(supportedInstance, PHASE2_REFLECTION_EPISODE_DEFINITION)
+        .map((entry) => entry.id)).toEqual(expectedIds);
+    }
+
+    for (const operation of ['bogus', 'multiply', '', ' ', undefined, null, 3, {}]) {
+      const unsupportedInstance = {
+        ...instance,
+        request: { ...instance.request, operation },
+      };
+      let error;
+      try {
+        computeBeatSchedule(unsupportedInstance, PHASE2_REFLECTION_EPISODE_DEFINITION);
+      } catch (caught) {
+        error = caught;
+      }
+      expect(error).toMatchObject({ code: 'INVALID_BEAT_SCHEDULE_INPUT' });
+    }
+  });
+
   it('keeps the construction-time schedule reference unchanged across learner actions', () => {
     let state = createEpisode({ instance: canonicalInstance() });
     const schedule = state.beatSchedule;
