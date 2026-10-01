@@ -17,8 +17,9 @@ reviewed `plan-10`–`plan-13` adversarially on 2026-09-21
 (`plans-10-13-codex-review-disposition.md`) and is the reason `plan-14` exists.
 
 Plan 12 was accepted by the owner on 2026-09-30 after technical re-review at `9c81538`; see
-`reports/development/plan-12-entry-page-and-session-shape/owner-disposition.md`. Plan 16 is ready,
-not initiated, and its baseline was refreshed to the accepted 27-route Plan 12 matrix.
+`reports/development/plan-12-entry-page-and-session-shape/owner-disposition.md`. The owner initiated
+Plan 16 on 2026-09-30; its Requirement 0 mechanism is approved with binding clarifications in
+`reports/development/plan-16-computed-beat-schedule/mechanism-review.md`.
 
 ## Live state (as of 2026-09-30)
 
@@ -33,7 +34,7 @@ Authoritative status is `node scripts/dev/plan-status.js list` and the generated
 | **`plan-12`** | **complete** | Owner accepted current screens for now; Repair 01 technical review at `9c81538`; no deployment authorized |
 | `plan-11` | draft | Motion / animated subdivision (D-01-A). Unblocked |
 | `plan-15` | draft | Subtraction representation prototypes (OQ-25). Unblocked |
-| `plan-16` | ready | Computed beat schedule (DECISION-034); next recommended packet, awaiting owner initiation |
+| `plan-16` | in-progress | Computed beat schedule (DECISION-034); mechanism approved, source work authorized within its review constraints |
 | `plan-13` | draft | Scaffold fading. Unblocked; support selector/writer remains deferred to its mechanism gate |
 
 ### Recommended order after `plan-12`
@@ -57,10 +58,10 @@ screenshots. The suggested compact navigation row is not a pending repair. The c
 single runnable practice registry, exact reset evidence, and Done-looking first-choice focus on both
 paths are accepted. The focus known-defect marker is retired; the current matrix has 27 passing routes.
 
-Next is Plan 16's Requirement 0 mechanism proposal: schedule shape, construction/freeze rule,
-registered-definition and replay compatibility, and schedule-position keying. Its unedited matrix
-baseline is `51bdec7`, including the accepted entry/session and focus behavior. No Plan 16 source work
-or later packet is authorized by Plan 12 acceptance.
+Plan 16's Requirement 0 mechanism is now approved separately after owner initiation: see its
+mechanism review for canonical-renaming derivation, unchanged definition constructor shape,
+legacy replay oracle/projection, and schedule-position keying. Its unedited matrix baseline is
+`51bdec7`, including the accepted entry/session and focus behavior. No later packet is initiated.
 
 ## Decisions since the last revision
 

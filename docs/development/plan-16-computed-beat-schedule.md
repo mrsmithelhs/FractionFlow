@@ -1,7 +1,7 @@
 ---
 id: plan-16
 title: Computed Beat Schedule
-status: ready
+status: in-progress
 depends_on: [plan-14]
 gate: "Mechanism confirmation before source work: the schedule's shape, where it is computed, how beat-gated mounting and the leakage invariants key on it, and what happens to the registered definition identity and the replay envelope. Acceptance requires every existing route in the plan-14 matrix to pass with no route edited."
 summary: >-
@@ -106,9 +106,12 @@ Contracts this packet must preserve:
 - `src/interaction/episode-definition.js`, `src/interaction/episode.js` — the schedule, its
   computation from the instance, and schedule-driven transitions.
 - `src/interaction/scene.js` — only as far as the scene must expose the current schedule entry.
+- `src/interaction/provenance.js` — only to add schedule-position/entry identity to response
+  provenance while preserving its existing semantic fields, as approved at Requirement 0.
 - `src/render/beat-container.js`, `src/render/linear-path.js` — only the changes needed to key on a
   schedule entry rather than a beat name.
 - Unit tests for schedule computation, including schedules the app cannot yet reach.
+- Frozen pre-refactor replay fixtures and compatibility tests for the Requirement 0 legacy oracle.
 
 ### Out of scope
 
@@ -138,6 +141,10 @@ Contracts this packet must preserve:
    none renamed — written out entry by entry, even though only the first is reachable.
 
 ### Requirement 1 — The schedule
+
+Requirement 0 was approved by the orchestrator on 2026-09-30 with the binding constraints in
+`reports/development/plan-16-computed-beat-schedule/mechanism-review.md`. Source work may proceed
+within that approved mechanism; stop if its definition or replay compatibility cannot be preserved.
 
 Required behavior:
 
