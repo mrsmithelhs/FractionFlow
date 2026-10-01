@@ -23,3 +23,11 @@ Re-run the unit suite, build, unchanged 27-route matrix, packet lint, and diff c
 ## Limits retained
 
 Synthetic one-sided and zero-renaming schedules are configuration tests, not executable learner-family acceptance. Their future common-unit/summary and operation prerequisites remain later family work. The implementer's advisor report honestly distinguishes requested model settings from unverified runtime identity; no independently verified higher-tier consultation is claimed here. No source changes were made during this delivery review.
+
+## Repair re-review and acceptance — 2026-09-30
+
+Reviewed repair `fe4f507` and updated report `5872418`. The source change is limited to rejecting operations outside `add` and `subtract`; the new test preserves both supported schedules and checks invalid strings, whitespace, missing/null values, numbers, and objects for `INVALID_BEAT_SCHEDULE_INPUT`. The required repair is satisfied, with no remaining blocking findings.
+
+The orchestrator independently reran the full suite (265 tests), build, all 27 browser routes, packet lint, and diff check; all passed. Matrix bytes and the required SHA-256 still match `51bdec7`. The replay oracle tests passed again; the untouched old-reducer verification recorded above remains applicable because neither replay nor oracle data changed in the repair. The working tree was clean before setting `complete` with a written resolution. Acceptance covers the canonical refactor and synthetic schedule derivation only, not delivery of another learner family. Nothing was pushed or deployed.
+
+Advisor accounting from the implementer report: one reported future-family finding, retained as one accepted scope limit, zero reported rejected findings, and one independently verified boundary in the renderer/constructor source. No rejected advice was reported, so no rejection rationale is fabricated. Consultation cost is not recorded beyond one reported consultation; requested versus observed identity remains explicitly uncertain. The required closeout reflection records those limits.

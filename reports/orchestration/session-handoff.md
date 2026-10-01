@@ -34,7 +34,7 @@ Authoritative status is `node scripts/dev/plan-status.js list` and the generated
 | **`plan-12`** | **complete** | Owner accepted current screens for now; Repair 01 technical review at `9c81538`; no deployment authorized |
 | `plan-11` | draft | Motion / animated subdivision (D-01-A). Unblocked |
 | `plan-15` | draft | Subtraction representation prototypes (OQ-25). Unblocked |
-| `plan-16` | delivered | Implementation `27480ff`, report `9320930`; delivery review requires bounded unsupported-operation rejection in the exported schedule helper; see its `delivery-review.md` |
+| `plan-16` | complete | Accepted after operation-validation repair `fe4f507` and report `5872418`; legacy replay evidence and all 27 unchanged browser routes independently verified; see its `delivery-review.md` |
 | `plan-13` | draft | Scaffold fading. Unblocked; support selector/writer remains deferred to its mechanism gate |
 
 ### Recommended order after `plan-12`
