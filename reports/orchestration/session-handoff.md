@@ -21,7 +21,7 @@ Plan 12 was accepted by the owner on 2026-09-30 after technical re-review at `9c
 Plan 16 on 2026-09-30; its Requirement 0 mechanism is approved with binding clarifications in
 `reports/development/plan-16-computed-beat-schedule/mechanism-review.md`.
 
-## Live state (as of 2026-09-30)
+## Live state (as of 2026-10-01)
 
 Authoritative status is `node scripts/dev/plan-status.js list` and the generated index in
 `docs/development/README.md`. Trust those over this file.
@@ -33,7 +33,7 @@ Authoritative status is `node scripts/dev/plan-status.js list` and the generated
 | `plan-14` | complete | Browser route matrix. 20 routes: 19 pass, 1 known defect. All three enforcement paths re-verified with independent seeds |
 | **`plan-12`** | **complete** | Owner accepted current screens for now; Repair 01 technical review at `9c81538`; no deployment authorized |
 | `plan-11` | draft | Motion / animated subdivision (D-01-A). Unblocked |
-| `plan-15` | draft | Subtraction representation prototypes (OQ-25). Unblocked |
+| `plan-15` | in-progress | Owner initiated; mechanism approved 2026-10-01 with build/route and observation clarifications; see its `mechanism-review.md`; rendered screens remain owner-gated |
 | `plan-16` | complete | Accepted after operation-validation repair `fe4f507` and report `5872418`; legacy replay evidence and all 27 unchanged browser routes independently verified; see its `delivery-review.md` |
 | `plan-13` | draft | Scaffold fading. Unblocked; support selector/writer remains deferred to its mechanism gate |
 

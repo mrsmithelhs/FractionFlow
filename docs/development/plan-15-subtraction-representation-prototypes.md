@@ -1,11 +1,9 @@
 ---
 id: plan-15
 title: Subtraction Representation Prototypes
-status: draft
+status: in-progress
 depends_on: [plan-14]
 gate: "Mechanism confirmation before any source work: where the prototypes live, how they reach the real mathematics without touching the episode machine, and the draft register entry. Then owner review of both prototypes on rendered screens. This packet produces evidence for OQ-25; it does not answer it, and neither prototype may be declared preferred."
-superseded_by: null
-resolution: null
 summary: >-
   Build two reviewer-facing prototypes of fraction-bar subtraction — takeaway
   (segments removed from the minuend) and comparison (both quantities shown,
@@ -146,6 +144,10 @@ Contracts this packet must preserve:
 5. **The 360px cost** of each prototype at its tallest state, against 360×740 and 360×752.
 
 ### Requirement 1 — Two prototypes, each operable
+
+Requirement 0 was approved by the orchestrator on 2026-10-01 with binding clarifications in
+`reports/development/plan-15-subtraction-representation-prototypes/mechanism-review.md`.
+This clears source work within that mechanism; rendered-screen acceptance remains owner-gated.
 
 Required behavior:
 
