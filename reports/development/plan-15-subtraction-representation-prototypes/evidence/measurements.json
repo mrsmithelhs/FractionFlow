@@ -1,5 +1,5 @@
 {
-  "purpose": "Synthetic browser layout and participation evidence for Plan 15; no learner observations were conducted.",
+  "purpose": "Synthetic browser evidence for static subtraction endpoints; executed transition and animation events are measured explicitly. No learner observations were conducted.",
   "screenshotCount": 16,
   "measurements": [
     {
@@ -37,30 +37,42 @@
           "withinViewport": true
         },
         "operation": {
-          "top": 340.25,
-          "bottom": 384.25,
-          "width": 302,
-          "height": 44,
-          "visible": true,
+          "top": 0,
+          "bottom": 0,
+          "width": 0,
+          "height": 0,
+          "visible": false,
           "withinViewport": true
         },
         "answerForm": {
-          "top": 425.5,
-          "bottom": 562.5,
+          "top": 353.25,
+          "bottom": 490.25,
           "width": 328,
           "height": 137,
           "visible": true,
           "withinViewport": true
         },
         "feedback": {
-          "top": 570.5,
-          "bottom": 592.09,
+          "top": 498.25,
+          "bottom": 519.84,
           "width": 328,
           "height": 21.59,
           "visible": true,
           "withinViewport": true
         }
       },
+      "spentOperationControl": {
+        "exists": true,
+        "hidden": true,
+        "visible": false
+      },
+      "operationMarks": [
+        {
+          "width": 46.56,
+          "height": 34,
+          "visibility": "visible"
+        }
+      ],
       "bars": [
         {
           "width": 328,
@@ -90,12 +102,6 @@
           "withinViewport": true
         },
         {
-          "name": "Parts marked",
-          "width": 302,
-          "height": 44,
-          "withinViewport": true
-        },
-        {
           "name": "Numerator",
           "width": 102,
           "height": 44,
@@ -115,8 +121,13 @@
         }
       ],
       "questionVisible": true,
-      "motionTransitionDuration": "0.18s, 0.18s",
-      "operationStatus": "Count the parts that are still shaded.",
+      "motion": {
+        "prefersReducedMotion": false,
+        "transitionRunEvents": 0,
+        "animationStartEvents": 0,
+        "activeAnimations": 0
+      },
+      "operationStatus": "Removal is marked. Enter the difference.",
       "feedback": "That’s right."
     },
     {
@@ -154,30 +165,42 @@
           "withinViewport": true
         },
         "operation": {
-          "top": 340.25,
-          "bottom": 384.25,
-          "width": 302,
-          "height": 44,
-          "visible": true,
+          "top": 0,
+          "bottom": 0,
+          "width": 0,
+          "height": 0,
+          "visible": false,
           "withinViewport": true
         },
         "answerForm": {
-          "top": 425.5,
-          "bottom": 562.5,
+          "top": 353.25,
+          "bottom": 490.25,
           "width": 328,
           "height": 137,
           "visible": true,
           "withinViewport": true
         },
         "feedback": {
-          "top": 570.5,
-          "bottom": 592.09,
+          "top": 498.25,
+          "bottom": 519.84,
           "width": 328,
           "height": 21.59,
           "visible": true,
           "withinViewport": true
         }
       },
+      "spentOperationControl": {
+        "exists": true,
+        "hidden": true,
+        "visible": false
+      },
+      "operationMarks": [
+        {
+          "width": 46.56,
+          "height": 34,
+          "visibility": "visible"
+        }
+      ],
       "bars": [
         {
           "width": 328,
@@ -207,12 +230,6 @@
           "withinViewport": true
         },
         {
-          "name": "Parts marked",
-          "width": 302,
-          "height": 44,
-          "withinViewport": true
-        },
-        {
           "name": "Numerator",
           "width": 102,
           "height": 44,
@@ -232,8 +249,13 @@
         }
       ],
       "questionVisible": true,
-      "motionTransitionDuration": "0s",
-      "operationStatus": "Count the parts that are still shaded.",
+      "motion": {
+        "prefersReducedMotion": true,
+        "transitionRunEvents": 0,
+        "animationStartEvents": 0,
+        "activeAnimations": 0
+      },
+      "operationStatus": "Removal is marked. Enter the difference.",
       "feedback": "That’s right."
     },
     {
@@ -271,30 +293,42 @@
           "withinViewport": true
         },
         "operation": {
-          "top": 340.25,
-          "bottom": 384.25,
-          "width": 302,
-          "height": 44,
-          "visible": true,
+          "top": 0,
+          "bottom": 0,
+          "width": 0,
+          "height": 0,
+          "visible": false,
           "withinViewport": true
         },
         "answerForm": {
-          "top": 425.5,
-          "bottom": 562.5,
+          "top": 353.25,
+          "bottom": 490.25,
           "width": 328,
           "height": 137,
           "visible": true,
           "withinViewport": true
         },
         "feedback": {
-          "top": 570.5,
-          "bottom": 592.09,
+          "top": 498.25,
+          "bottom": 519.84,
           "width": 328,
           "height": 21.59,
           "visible": true,
           "withinViewport": true
         }
       },
+      "spentOperationControl": {
+        "exists": true,
+        "hidden": true,
+        "visible": false
+      },
+      "operationMarks": [
+        {
+          "width": 46.56,
+          "height": 34,
+          "visibility": "visible"
+        }
+      ],
       "bars": [
         {
           "width": 328,
@@ -324,12 +358,6 @@
           "withinViewport": true
         },
         {
-          "name": "Parts marked",
-          "width": 302,
-          "height": 44,
-          "withinViewport": true
-        },
-        {
           "name": "Numerator",
           "width": 102,
           "height": 44,
@@ -349,8 +377,13 @@
         }
       ],
       "questionVisible": true,
-      "motionTransitionDuration": "0.18s, 0.18s",
-      "operationStatus": "Count the parts that are still shaded.",
+      "motion": {
+        "prefersReducedMotion": false,
+        "transitionRunEvents": 0,
+        "animationStartEvents": 0,
+        "activeAnimations": 0
+      },
+      "operationStatus": "Removal is marked. Enter the difference.",
       "feedback": "That’s right."
     },
     {
@@ -388,30 +421,42 @@
           "withinViewport": true
         },
         "operation": {
-          "top": 340.25,
-          "bottom": 384.25,
-          "width": 302,
-          "height": 44,
-          "visible": true,
+          "top": 0,
+          "bottom": 0,
+          "width": 0,
+          "height": 0,
+          "visible": false,
           "withinViewport": true
         },
         "answerForm": {
-          "top": 425.5,
-          "bottom": 562.5,
+          "top": 353.25,
+          "bottom": 490.25,
           "width": 328,
           "height": 137,
           "visible": true,
           "withinViewport": true
         },
         "feedback": {
-          "top": 570.5,
-          "bottom": 592.09,
+          "top": 498.25,
+          "bottom": 519.84,
           "width": 328,
           "height": 21.59,
           "visible": true,
           "withinViewport": true
         }
       },
+      "spentOperationControl": {
+        "exists": true,
+        "hidden": true,
+        "visible": false
+      },
+      "operationMarks": [
+        {
+          "width": 46.56,
+          "height": 34,
+          "visibility": "visible"
+        }
+      ],
       "bars": [
         {
           "width": 328,
@@ -441,12 +486,6 @@
           "withinViewport": true
         },
         {
-          "name": "Parts marked",
-          "width": 302,
-          "height": 44,
-          "withinViewport": true
-        },
-        {
           "name": "Numerator",
           "width": 102,
           "height": 44,
@@ -466,8 +505,13 @@
         }
       ],
       "questionVisible": true,
-      "motionTransitionDuration": "0s",
-      "operationStatus": "Count the parts that are still shaded.",
+      "motion": {
+        "prefersReducedMotion": true,
+        "transitionRunEvents": 0,
+        "animationStartEvents": 0,
+        "activeAnimations": 0
+      },
+      "operationStatus": "Removal is marked. Enter the difference.",
       "feedback": "That’s right."
     },
     {
@@ -505,30 +549,47 @@
           "withinViewport": true
         },
         "operation": {
-          "top": 364.84,
-          "bottom": 408.84,
-          "width": 302,
-          "height": 44,
-          "visible": true,
+          "top": 0,
+          "bottom": 0,
+          "width": 0,
+          "height": 0,
+          "visible": false,
           "withinViewport": true
         },
         "answerForm": {
-          "top": 450.09,
-          "bottom": 587.09,
+          "top": 377.84,
+          "bottom": 514.84,
           "width": 328,
           "height": 137,
           "visible": true,
           "withinViewport": true
         },
         "feedback": {
-          "top": 595.09,
-          "bottom": 616.69,
+          "top": 522.84,
+          "bottom": 544.44,
           "width": 328,
           "height": 21.59,
           "visible": true,
           "withinViewport": true
         }
       },
+      "spentOperationControl": {
+        "exists": true,
+        "hidden": true,
+        "visible": false
+      },
+      "operationMarks": [
+        {
+          "width": 54.33,
+          "height": 34,
+          "visibility": "visible"
+        },
+        {
+          "width": 54.33,
+          "height": 34,
+          "visibility": "visible"
+        }
+      ],
       "bars": [
         {
           "width": 328,
@@ -558,12 +619,6 @@
           "withinViewport": true
         },
         {
-          "name": "Parts marked",
-          "width": 302,
-          "height": 44,
-          "withinViewport": true
-        },
-        {
           "name": "Numerator",
           "width": 102,
           "height": 44,
@@ -583,8 +638,13 @@
         }
       ],
       "questionVisible": true,
-      "motionTransitionDuration": "0.18s, 0.18s",
-      "operationStatus": "Count the parts that are still shaded.",
+      "motion": {
+        "prefersReducedMotion": false,
+        "transitionRunEvents": 0,
+        "animationStartEvents": 0,
+        "activeAnimations": 0
+      },
+      "operationStatus": "Removal is marked. Enter the difference.",
       "feedback": "That’s right."
     },
     {
@@ -622,30 +682,47 @@
           "withinViewport": true
         },
         "operation": {
-          "top": 364.84,
-          "bottom": 408.84,
-          "width": 302,
-          "height": 44,
-          "visible": true,
+          "top": 0,
+          "bottom": 0,
+          "width": 0,
+          "height": 0,
+          "visible": false,
           "withinViewport": true
         },
         "answerForm": {
-          "top": 450.09,
-          "bottom": 587.09,
+          "top": 377.84,
+          "bottom": 514.84,
           "width": 328,
           "height": 137,
           "visible": true,
           "withinViewport": true
         },
         "feedback": {
-          "top": 595.09,
-          "bottom": 616.69,
+          "top": 522.84,
+          "bottom": 544.44,
           "width": 328,
           "height": 21.59,
           "visible": true,
           "withinViewport": true
         }
       },
+      "spentOperationControl": {
+        "exists": true,
+        "hidden": true,
+        "visible": false
+      },
+      "operationMarks": [
+        {
+          "width": 54.33,
+          "height": 34,
+          "visibility": "visible"
+        },
+        {
+          "width": 54.33,
+          "height": 34,
+          "visibility": "visible"
+        }
+      ],
       "bars": [
         {
           "width": 328,
@@ -675,12 +752,6 @@
           "withinViewport": true
         },
         {
-          "name": "Parts marked",
-          "width": 302,
-          "height": 44,
-          "withinViewport": true
-        },
-        {
           "name": "Numerator",
           "width": 102,
           "height": 44,
@@ -700,8 +771,13 @@
         }
       ],
       "questionVisible": true,
-      "motionTransitionDuration": "0s",
-      "operationStatus": "Count the parts that are still shaded.",
+      "motion": {
+        "prefersReducedMotion": true,
+        "transitionRunEvents": 0,
+        "animationStartEvents": 0,
+        "activeAnimations": 0
+      },
+      "operationStatus": "Removal is marked. Enter the difference.",
       "feedback": "That’s right."
     },
     {
@@ -739,30 +815,47 @@
           "withinViewport": true
         },
         "operation": {
-          "top": 364.84,
-          "bottom": 408.84,
-          "width": 302,
-          "height": 44,
-          "visible": true,
+          "top": 0,
+          "bottom": 0,
+          "width": 0,
+          "height": 0,
+          "visible": false,
           "withinViewport": true
         },
         "answerForm": {
-          "top": 450.09,
-          "bottom": 587.09,
+          "top": 377.84,
+          "bottom": 514.84,
           "width": 328,
           "height": 137,
           "visible": true,
           "withinViewport": true
         },
         "feedback": {
-          "top": 595.09,
-          "bottom": 616.69,
+          "top": 522.84,
+          "bottom": 544.44,
           "width": 328,
           "height": 21.59,
           "visible": true,
           "withinViewport": true
         }
       },
+      "spentOperationControl": {
+        "exists": true,
+        "hidden": true,
+        "visible": false
+      },
+      "operationMarks": [
+        {
+          "width": 54.33,
+          "height": 34,
+          "visibility": "visible"
+        },
+        {
+          "width": 54.33,
+          "height": 34,
+          "visibility": "visible"
+        }
+      ],
       "bars": [
         {
           "width": 328,
@@ -792,12 +885,6 @@
           "withinViewport": true
         },
         {
-          "name": "Parts marked",
-          "width": 302,
-          "height": 44,
-          "withinViewport": true
-        },
-        {
           "name": "Numerator",
           "width": 102,
           "height": 44,
@@ -817,8 +904,13 @@
         }
       ],
       "questionVisible": true,
-      "motionTransitionDuration": "0.18s, 0.18s",
-      "operationStatus": "Count the parts that are still shaded.",
+      "motion": {
+        "prefersReducedMotion": false,
+        "transitionRunEvents": 0,
+        "animationStartEvents": 0,
+        "activeAnimations": 0
+      },
+      "operationStatus": "Removal is marked. Enter the difference.",
       "feedback": "That’s right."
     },
     {
@@ -856,30 +948,47 @@
           "withinViewport": true
         },
         "operation": {
-          "top": 364.84,
-          "bottom": 408.84,
-          "width": 302,
-          "height": 44,
-          "visible": true,
+          "top": 0,
+          "bottom": 0,
+          "width": 0,
+          "height": 0,
+          "visible": false,
           "withinViewport": true
         },
         "answerForm": {
-          "top": 450.09,
-          "bottom": 587.09,
+          "top": 377.84,
+          "bottom": 514.84,
           "width": 328,
           "height": 137,
           "visible": true,
           "withinViewport": true
         },
         "feedback": {
-          "top": 595.09,
-          "bottom": 616.69,
+          "top": 522.84,
+          "bottom": 544.44,
           "width": 328,
           "height": 21.59,
           "visible": true,
           "withinViewport": true
         }
       },
+      "spentOperationControl": {
+        "exists": true,
+        "hidden": true,
+        "visible": false
+      },
+      "operationMarks": [
+        {
+          "width": 54.33,
+          "height": 34,
+          "visibility": "visible"
+        },
+        {
+          "width": 54.33,
+          "height": 34,
+          "visibility": "visible"
+        }
+      ],
       "bars": [
         {
           "width": 328,
@@ -909,12 +1018,6 @@
           "withinViewport": true
         },
         {
-          "name": "Parts marked",
-          "width": 302,
-          "height": 44,
-          "withinViewport": true
-        },
-        {
           "name": "Numerator",
           "width": 102,
           "height": 44,
@@ -934,8 +1037,13 @@
         }
       ],
       "questionVisible": true,
-      "motionTransitionDuration": "0s",
-      "operationStatus": "Count the parts that are still shaded.",
+      "motion": {
+        "prefersReducedMotion": true,
+        "transitionRunEvents": 0,
+        "animationStartEvents": 0,
+        "activeAnimations": 0
+      },
+      "operationStatus": "Removal is marked. Enter the difference.",
       "feedback": "That’s right."
     },
     {
@@ -973,30 +1081,57 @@
           "withinViewport": true
         },
         "operation": {
-          "top": 364.84,
-          "bottom": 408.84,
-          "width": 302,
-          "height": 44,
-          "visible": true,
+          "top": 0,
+          "bottom": 0,
+          "width": 0,
+          "height": 0,
+          "visible": false,
           "withinViewport": true
         },
         "answerForm": {
-          "top": 450.09,
-          "bottom": 587.09,
+          "top": 377.84,
+          "bottom": 514.84,
           "width": 328,
           "height": 137,
           "visible": true,
           "withinViewport": true
         },
         "feedback": {
-          "top": 595.09,
-          "bottom": 616.69,
+          "top": 522.84,
+          "bottom": 544.44,
           "width": 328,
           "height": 21.59,
           "visible": true,
           "withinViewport": true
         }
       },
+      "spentOperationControl": {
+        "exists": true,
+        "hidden": true,
+        "visible": false
+      },
+      "operationMarks": [
+        {
+          "width": 27.16,
+          "height": 34,
+          "visibility": "visible"
+        },
+        {
+          "width": 27.17,
+          "height": 34,
+          "visibility": "visible"
+        },
+        {
+          "width": 27.16,
+          "height": 34,
+          "visibility": "visible"
+        },
+        {
+          "width": 27.17,
+          "height": 34,
+          "visibility": "visible"
+        }
+      ],
       "bars": [
         {
           "width": 328,
@@ -1026,12 +1161,6 @@
           "withinViewport": true
         },
         {
-          "name": "Parts marked",
-          "width": 302,
-          "height": 44,
-          "withinViewport": true
-        },
-        {
           "name": "Numerator",
           "width": 102,
           "height": 44,
@@ -1051,8 +1180,13 @@
         }
       ],
       "questionVisible": true,
-      "motionTransitionDuration": "0.18s, 0.18s",
-      "operationStatus": "Count the parts that are still shaded.",
+      "motion": {
+        "prefersReducedMotion": false,
+        "transitionRunEvents": 0,
+        "animationStartEvents": 0,
+        "activeAnimations": 0
+      },
+      "operationStatus": "Removal is marked. Enter the difference.",
       "feedback": "That’s right."
     },
     {
@@ -1090,30 +1224,57 @@
           "withinViewport": true
         },
         "operation": {
-          "top": 364.84,
-          "bottom": 408.84,
-          "width": 302,
-          "height": 44,
-          "visible": true,
+          "top": 0,
+          "bottom": 0,
+          "width": 0,
+          "height": 0,
+          "visible": false,
           "withinViewport": true
         },
         "answerForm": {
-          "top": 450.09,
-          "bottom": 587.09,
+          "top": 377.84,
+          "bottom": 514.84,
           "width": 328,
           "height": 137,
           "visible": true,
           "withinViewport": true
         },
         "feedback": {
-          "top": 595.09,
-          "bottom": 616.69,
+          "top": 522.84,
+          "bottom": 544.44,
           "width": 328,
           "height": 21.59,
           "visible": true,
           "withinViewport": true
         }
       },
+      "spentOperationControl": {
+        "exists": true,
+        "hidden": true,
+        "visible": false
+      },
+      "operationMarks": [
+        {
+          "width": 27.16,
+          "height": 34,
+          "visibility": "visible"
+        },
+        {
+          "width": 27.17,
+          "height": 34,
+          "visibility": "visible"
+        },
+        {
+          "width": 27.16,
+          "height": 34,
+          "visibility": "visible"
+        },
+        {
+          "width": 27.17,
+          "height": 34,
+          "visibility": "visible"
+        }
+      ],
       "bars": [
         {
           "width": 328,
@@ -1143,12 +1304,6 @@
           "withinViewport": true
         },
         {
-          "name": "Parts marked",
-          "width": 302,
-          "height": 44,
-          "withinViewport": true
-        },
-        {
           "name": "Numerator",
           "width": 102,
           "height": 44,
@@ -1168,8 +1323,13 @@
         }
       ],
       "questionVisible": true,
-      "motionTransitionDuration": "0s",
-      "operationStatus": "Count the parts that are still shaded.",
+      "motion": {
+        "prefersReducedMotion": true,
+        "transitionRunEvents": 0,
+        "animationStartEvents": 0,
+        "activeAnimations": 0
+      },
+      "operationStatus": "Removal is marked. Enter the difference.",
       "feedback": "That’s right."
     },
     {
@@ -1207,30 +1367,57 @@
           "withinViewport": true
         },
         "operation": {
-          "top": 364.84,
-          "bottom": 408.84,
-          "width": 302,
-          "height": 44,
-          "visible": true,
+          "top": 0,
+          "bottom": 0,
+          "width": 0,
+          "height": 0,
+          "visible": false,
           "withinViewport": true
         },
         "answerForm": {
-          "top": 450.09,
-          "bottom": 587.09,
+          "top": 377.84,
+          "bottom": 514.84,
           "width": 328,
           "height": 137,
           "visible": true,
           "withinViewport": true
         },
         "feedback": {
-          "top": 595.09,
-          "bottom": 616.69,
+          "top": 522.84,
+          "bottom": 544.44,
           "width": 328,
           "height": 21.59,
           "visible": true,
           "withinViewport": true
         }
       },
+      "spentOperationControl": {
+        "exists": true,
+        "hidden": true,
+        "visible": false
+      },
+      "operationMarks": [
+        {
+          "width": 27.16,
+          "height": 34,
+          "visibility": "visible"
+        },
+        {
+          "width": 27.17,
+          "height": 34,
+          "visibility": "visible"
+        },
+        {
+          "width": 27.16,
+          "height": 34,
+          "visibility": "visible"
+        },
+        {
+          "width": 27.17,
+          "height": 34,
+          "visibility": "visible"
+        }
+      ],
       "bars": [
         {
           "width": 328,
@@ -1260,12 +1447,6 @@
           "withinViewport": true
         },
         {
-          "name": "Parts marked",
-          "width": 302,
-          "height": 44,
-          "withinViewport": true
-        },
-        {
           "name": "Numerator",
           "width": 102,
           "height": 44,
@@ -1285,8 +1466,13 @@
         }
       ],
       "questionVisible": true,
-      "motionTransitionDuration": "0.18s, 0.18s",
-      "operationStatus": "Count the parts that are still shaded.",
+      "motion": {
+        "prefersReducedMotion": false,
+        "transitionRunEvents": 0,
+        "animationStartEvents": 0,
+        "activeAnimations": 0
+      },
+      "operationStatus": "Removal is marked. Enter the difference.",
       "feedback": "That’s right."
     },
     {
@@ -1324,30 +1510,57 @@
           "withinViewport": true
         },
         "operation": {
-          "top": 364.84,
-          "bottom": 408.84,
-          "width": 302,
-          "height": 44,
-          "visible": true,
+          "top": 0,
+          "bottom": 0,
+          "width": 0,
+          "height": 0,
+          "visible": false,
           "withinViewport": true
         },
         "answerForm": {
-          "top": 450.09,
-          "bottom": 587.09,
+          "top": 377.84,
+          "bottom": 514.84,
           "width": 328,
           "height": 137,
           "visible": true,
           "withinViewport": true
         },
         "feedback": {
-          "top": 595.09,
-          "bottom": 616.69,
+          "top": 522.84,
+          "bottom": 544.44,
           "width": 328,
           "height": 21.59,
           "visible": true,
           "withinViewport": true
         }
       },
+      "spentOperationControl": {
+        "exists": true,
+        "hidden": true,
+        "visible": false
+      },
+      "operationMarks": [
+        {
+          "width": 27.16,
+          "height": 34,
+          "visibility": "visible"
+        },
+        {
+          "width": 27.17,
+          "height": 34,
+          "visibility": "visible"
+        },
+        {
+          "width": 27.16,
+          "height": 34,
+          "visibility": "visible"
+        },
+        {
+          "width": 27.17,
+          "height": 34,
+          "visibility": "visible"
+        }
+      ],
       "bars": [
         {
           "width": 328,
@@ -1377,12 +1590,6 @@
           "withinViewport": true
         },
         {
-          "name": "Parts marked",
-          "width": 302,
-          "height": 44,
-          "withinViewport": true
-        },
-        {
           "name": "Numerator",
           "width": 102,
           "height": 44,
@@ -1402,8 +1609,13 @@
         }
       ],
       "questionVisible": true,
-      "motionTransitionDuration": "0s",
-      "operationStatus": "Count the parts that are still shaded.",
+      "motion": {
+        "prefersReducedMotion": true,
+        "transitionRunEvents": 0,
+        "animationStartEvents": 0,
+        "activeAnimations": 0
+      },
+      "operationStatus": "Removal is marked. Enter the difference.",
       "feedback": "That’s right."
     },
     {
@@ -1441,30 +1653,57 @@
           "withinViewport": true
         },
         "operation": {
-          "top": 364.84,
-          "bottom": 408.84,
-          "width": 302,
-          "height": 44,
-          "visible": true,
+          "top": 0,
+          "bottom": 0,
+          "width": 0,
+          "height": 0,
+          "visible": false,
           "withinViewport": true
         },
         "answerForm": {
-          "top": 450.09,
-          "bottom": 587.09,
+          "top": 377.84,
+          "bottom": 514.84,
           "width": 328,
           "height": 137,
           "visible": true,
           "withinViewport": true
         },
         "feedback": {
-          "top": 595.09,
-          "bottom": 616.69,
+          "top": 522.84,
+          "bottom": 544.44,
           "width": 328,
           "height": 21.59,
           "visible": true,
           "withinViewport": true
         }
       },
+      "spentOperationControl": {
+        "exists": true,
+        "hidden": true,
+        "visible": false
+      },
+      "operationMarks": [
+        {
+          "width": 40.75,
+          "height": 34,
+          "visibility": "visible"
+        },
+        {
+          "width": 40.75,
+          "height": 34,
+          "visibility": "visible"
+        },
+        {
+          "width": 40.75,
+          "height": 34,
+          "visibility": "visible"
+        },
+        {
+          "width": 40.75,
+          "height": 34,
+          "visibility": "visible"
+        }
+      ],
       "bars": [
         {
           "width": 328,
@@ -1494,12 +1733,6 @@
           "withinViewport": true
         },
         {
-          "name": "Parts marked",
-          "width": 302,
-          "height": 44,
-          "withinViewport": true
-        },
-        {
           "name": "Numerator",
           "width": 102,
           "height": 44,
@@ -1519,8 +1752,13 @@
         }
       ],
       "questionVisible": true,
-      "motionTransitionDuration": "0.18s, 0.18s",
-      "operationStatus": "Count the parts that are still shaded.",
+      "motion": {
+        "prefersReducedMotion": false,
+        "transitionRunEvents": 0,
+        "animationStartEvents": 0,
+        "activeAnimations": 0
+      },
+      "operationStatus": "Removal is marked. Enter the difference.",
       "feedback": "That’s right."
     },
     {
@@ -1558,30 +1796,57 @@
           "withinViewport": true
         },
         "operation": {
-          "top": 364.84,
-          "bottom": 408.84,
-          "width": 302,
-          "height": 44,
-          "visible": true,
+          "top": 0,
+          "bottom": 0,
+          "width": 0,
+          "height": 0,
+          "visible": false,
           "withinViewport": true
         },
         "answerForm": {
-          "top": 450.09,
-          "bottom": 587.09,
+          "top": 377.84,
+          "bottom": 514.84,
           "width": 328,
           "height": 137,
           "visible": true,
           "withinViewport": true
         },
         "feedback": {
-          "top": 595.09,
-          "bottom": 616.69,
+          "top": 522.84,
+          "bottom": 544.44,
           "width": 328,
           "height": 21.59,
           "visible": true,
           "withinViewport": true
         }
       },
+      "spentOperationControl": {
+        "exists": true,
+        "hidden": true,
+        "visible": false
+      },
+      "operationMarks": [
+        {
+          "width": 40.75,
+          "height": 34,
+          "visibility": "visible"
+        },
+        {
+          "width": 40.75,
+          "height": 34,
+          "visibility": "visible"
+        },
+        {
+          "width": 40.75,
+          "height": 34,
+          "visibility": "visible"
+        },
+        {
+          "width": 40.75,
+          "height": 34,
+          "visibility": "visible"
+        }
+      ],
       "bars": [
         {
           "width": 328,
@@ -1611,12 +1876,6 @@
           "withinViewport": true
         },
         {
-          "name": "Parts marked",
-          "width": 302,
-          "height": 44,
-          "withinViewport": true
-        },
-        {
           "name": "Numerator",
           "width": 102,
           "height": 44,
@@ -1636,8 +1895,13 @@
         }
       ],
       "questionVisible": true,
-      "motionTransitionDuration": "0s",
-      "operationStatus": "Count the parts that are still shaded.",
+      "motion": {
+        "prefersReducedMotion": true,
+        "transitionRunEvents": 0,
+        "animationStartEvents": 0,
+        "activeAnimations": 0
+      },
+      "operationStatus": "Removal is marked. Enter the difference.",
       "feedback": "That’s right."
     },
     {
@@ -1675,30 +1939,57 @@
           "withinViewport": true
         },
         "operation": {
-          "top": 364.84,
-          "bottom": 408.84,
-          "width": 302,
-          "height": 44,
-          "visible": true,
+          "top": 0,
+          "bottom": 0,
+          "width": 0,
+          "height": 0,
+          "visible": false,
           "withinViewport": true
         },
         "answerForm": {
-          "top": 450.09,
-          "bottom": 587.09,
+          "top": 377.84,
+          "bottom": 514.84,
           "width": 328,
           "height": 137,
           "visible": true,
           "withinViewport": true
         },
         "feedback": {
-          "top": 595.09,
-          "bottom": 616.69,
+          "top": 522.84,
+          "bottom": 544.44,
           "width": 328,
           "height": 21.59,
           "visible": true,
           "withinViewport": true
         }
       },
+      "spentOperationControl": {
+        "exists": true,
+        "hidden": true,
+        "visible": false
+      },
+      "operationMarks": [
+        {
+          "width": 40.75,
+          "height": 34,
+          "visibility": "visible"
+        },
+        {
+          "width": 40.75,
+          "height": 34,
+          "visibility": "visible"
+        },
+        {
+          "width": 40.75,
+          "height": 34,
+          "visibility": "visible"
+        },
+        {
+          "width": 40.75,
+          "height": 34,
+          "visibility": "visible"
+        }
+      ],
       "bars": [
         {
           "width": 328,
@@ -1728,12 +2019,6 @@
           "withinViewport": true
         },
         {
-          "name": "Parts marked",
-          "width": 302,
-          "height": 44,
-          "withinViewport": true
-        },
-        {
           "name": "Numerator",
           "width": 102,
           "height": 44,
@@ -1753,8 +2038,13 @@
         }
       ],
       "questionVisible": true,
-      "motionTransitionDuration": "0.18s, 0.18s",
-      "operationStatus": "Count the parts that are still shaded.",
+      "motion": {
+        "prefersReducedMotion": false,
+        "transitionRunEvents": 0,
+        "animationStartEvents": 0,
+        "activeAnimations": 0
+      },
+      "operationStatus": "Removal is marked. Enter the difference.",
       "feedback": "That’s right."
     },
     {
@@ -1792,30 +2082,57 @@
           "withinViewport": true
         },
         "operation": {
-          "top": 364.84,
-          "bottom": 408.84,
-          "width": 302,
-          "height": 44,
-          "visible": true,
+          "top": 0,
+          "bottom": 0,
+          "width": 0,
+          "height": 0,
+          "visible": false,
           "withinViewport": true
         },
         "answerForm": {
-          "top": 450.09,
-          "bottom": 587.09,
+          "top": 377.84,
+          "bottom": 514.84,
           "width": 328,
           "height": 137,
           "visible": true,
           "withinViewport": true
         },
         "feedback": {
-          "top": 595.09,
-          "bottom": 616.69,
+          "top": 522.84,
+          "bottom": 544.44,
           "width": 328,
           "height": 21.59,
           "visible": true,
           "withinViewport": true
         }
       },
+      "spentOperationControl": {
+        "exists": true,
+        "hidden": true,
+        "visible": false
+      },
+      "operationMarks": [
+        {
+          "width": 40.75,
+          "height": 34,
+          "visibility": "visible"
+        },
+        {
+          "width": 40.75,
+          "height": 34,
+          "visibility": "visible"
+        },
+        {
+          "width": 40.75,
+          "height": 34,
+          "visibility": "visible"
+        },
+        {
+          "width": 40.75,
+          "height": 34,
+          "visibility": "visible"
+        }
+      ],
       "bars": [
         {
           "width": 328,
@@ -1845,12 +2162,6 @@
           "withinViewport": true
         },
         {
-          "name": "Parts marked",
-          "width": 302,
-          "height": 44,
-          "withinViewport": true
-        },
-        {
           "name": "Numerator",
           "width": 102,
           "height": 44,
@@ -1870,8 +2181,13 @@
         }
       ],
       "questionVisible": true,
-      "motionTransitionDuration": "0s",
-      "operationStatus": "Count the parts that are still shaded.",
+      "motion": {
+        "prefersReducedMotion": true,
+        "transitionRunEvents": 0,
+        "animationStartEvents": 0,
+        "activeAnimations": 0
+      },
+      "operationStatus": "Removal is marked. Enter the difference.",
       "feedback": "That’s right."
     },
     {
@@ -1909,30 +2225,42 @@
           "withinViewport": true
         },
         "operation": {
-          "top": 427.25,
-          "bottom": 471.25,
-          "width": 302,
-          "height": 44,
-          "visible": true,
+          "top": 0,
+          "bottom": 0,
+          "width": 0,
+          "height": 0,
+          "visible": false,
           "withinViewport": true
         },
         "answerForm": {
-          "top": 512.5,
-          "bottom": 649.5,
+          "top": 440.25,
+          "bottom": 577.25,
           "width": 328,
           "height": 137,
           "visible": true,
           "withinViewport": true
         },
         "feedback": {
-          "top": 657.5,
-          "bottom": 679.09,
+          "top": 585.25,
+          "bottom": 606.84,
           "width": 328,
           "height": 21.59,
           "visible": true,
           "withinViewport": true
         }
       },
+      "spentOperationControl": {
+        "exists": true,
+        "hidden": true,
+        "visible": false
+      },
+      "operationMarks": [
+        {
+          "width": 140.58,
+          "height": 18,
+          "visibility": "visible"
+        }
+      ],
       "bars": [
         {
           "width": 328,
@@ -1967,12 +2295,6 @@
           "withinViewport": true
         },
         {
-          "name": "Gap shown",
-          "width": 302,
-          "height": 44,
-          "withinViewport": true
-        },
-        {
           "name": "Numerator",
           "width": 102,
           "height": 44,
@@ -1992,8 +2314,13 @@
         }
       ],
       "questionVisible": true,
-      "motionTransitionDuration": "0.18s",
-      "operationStatus": "Count the parts inside the bracket.",
+      "motion": {
+        "prefersReducedMotion": false,
+        "transitionRunEvents": 0,
+        "animationStartEvents": 0,
+        "activeAnimations": 0
+      },
+      "operationStatus": "The gap is marked. Enter the difference.",
       "feedback": "That’s right."
     },
     {
@@ -2031,30 +2358,42 @@
           "withinViewport": true
         },
         "operation": {
-          "top": 427.25,
-          "bottom": 471.25,
-          "width": 302,
-          "height": 44,
-          "visible": true,
+          "top": 0,
+          "bottom": 0,
+          "width": 0,
+          "height": 0,
+          "visible": false,
           "withinViewport": true
         },
         "answerForm": {
-          "top": 512.5,
-          "bottom": 649.5,
+          "top": 440.25,
+          "bottom": 577.25,
           "width": 328,
           "height": 137,
           "visible": true,
           "withinViewport": true
         },
         "feedback": {
-          "top": 657.5,
-          "bottom": 679.09,
+          "top": 585.25,
+          "bottom": 606.84,
           "width": 328,
           "height": 21.59,
           "visible": true,
           "withinViewport": true
         }
       },
+      "spentOperationControl": {
+        "exists": true,
+        "hidden": true,
+        "visible": false
+      },
+      "operationMarks": [
+        {
+          "width": 140.58,
+          "height": 18,
+          "visibility": "visible"
+        }
+      ],
       "bars": [
         {
           "width": 328,
@@ -2089,12 +2428,6 @@
           "withinViewport": true
         },
         {
-          "name": "Gap shown",
-          "width": 302,
-          "height": 44,
-          "withinViewport": true
-        },
-        {
           "name": "Numerator",
           "width": 102,
           "height": 44,
@@ -2114,8 +2447,13 @@
         }
       ],
       "questionVisible": true,
-      "motionTransitionDuration": "0s",
-      "operationStatus": "Count the parts inside the bracket.",
+      "motion": {
+        "prefersReducedMotion": true,
+        "transitionRunEvents": 0,
+        "animationStartEvents": 0,
+        "activeAnimations": 0
+      },
+      "operationStatus": "The gap is marked. Enter the difference.",
       "feedback": "That’s right."
     },
     {
@@ -2153,30 +2491,42 @@
           "withinViewport": true
         },
         "operation": {
-          "top": 427.25,
-          "bottom": 471.25,
-          "width": 302,
-          "height": 44,
-          "visible": true,
+          "top": 0,
+          "bottom": 0,
+          "width": 0,
+          "height": 0,
+          "visible": false,
           "withinViewport": true
         },
         "answerForm": {
-          "top": 512.5,
-          "bottom": 649.5,
+          "top": 440.25,
+          "bottom": 577.25,
           "width": 328,
           "height": 137,
           "visible": true,
           "withinViewport": true
         },
         "feedback": {
-          "top": 657.5,
-          "bottom": 679.09,
+          "top": 585.25,
+          "bottom": 606.84,
           "width": 328,
           "height": 21.59,
           "visible": true,
           "withinViewport": true
         }
       },
+      "spentOperationControl": {
+        "exists": true,
+        "hidden": true,
+        "visible": false
+      },
+      "operationMarks": [
+        {
+          "width": 140.58,
+          "height": 18,
+          "visibility": "visible"
+        }
+      ],
       "bars": [
         {
           "width": 328,
@@ -2211,12 +2561,6 @@
           "withinViewport": true
         },
         {
-          "name": "Gap shown",
-          "width": 302,
-          "height": 44,
-          "withinViewport": true
-        },
-        {
           "name": "Numerator",
           "width": 102,
           "height": 44,
@@ -2236,8 +2580,13 @@
         }
       ],
       "questionVisible": true,
-      "motionTransitionDuration": "0.18s",
-      "operationStatus": "Count the parts inside the bracket.",
+      "motion": {
+        "prefersReducedMotion": false,
+        "transitionRunEvents": 0,
+        "animationStartEvents": 0,
+        "activeAnimations": 0
+      },
+      "operationStatus": "The gap is marked. Enter the difference.",
       "feedback": "That’s right."
     },
     {
@@ -2275,30 +2624,42 @@
           "withinViewport": true
         },
         "operation": {
-          "top": 427.25,
-          "bottom": 471.25,
-          "width": 302,
-          "height": 44,
-          "visible": true,
+          "top": 0,
+          "bottom": 0,
+          "width": 0,
+          "height": 0,
+          "visible": false,
           "withinViewport": true
         },
         "answerForm": {
-          "top": 512.5,
-          "bottom": 649.5,
+          "top": 440.25,
+          "bottom": 577.25,
           "width": 328,
           "height": 137,
           "visible": true,
           "withinViewport": true
         },
         "feedback": {
-          "top": 657.5,
-          "bottom": 679.09,
+          "top": 585.25,
+          "bottom": 606.84,
           "width": 328,
           "height": 21.59,
           "visible": true,
           "withinViewport": true
         }
       },
+      "spentOperationControl": {
+        "exists": true,
+        "hidden": true,
+        "visible": false
+      },
+      "operationMarks": [
+        {
+          "width": 140.58,
+          "height": 18,
+          "visibility": "visible"
+        }
+      ],
       "bars": [
         {
           "width": 328,
@@ -2333,12 +2694,6 @@
           "withinViewport": true
         },
         {
-          "name": "Gap shown",
-          "width": 302,
-          "height": 44,
-          "withinViewport": true
-        },
-        {
           "name": "Numerator",
           "width": 102,
           "height": 44,
@@ -2358,8 +2713,13 @@
         }
       ],
       "questionVisible": true,
-      "motionTransitionDuration": "0s",
-      "operationStatus": "Count the parts inside the bracket.",
+      "motion": {
+        "prefersReducedMotion": true,
+        "transitionRunEvents": 0,
+        "animationStartEvents": 0,
+        "activeAnimations": 0
+      },
+      "operationStatus": "The gap is marked. Enter the difference.",
       "feedback": "That’s right."
     },
     {
@@ -2397,30 +2757,42 @@
           "withinViewport": true
         },
         "operation": {
-          "top": 451.84,
-          "bottom": 495.84,
-          "width": 302,
-          "height": 44,
-          "visible": true,
+          "top": 0,
+          "bottom": 0,
+          "width": 0,
+          "height": 0,
+          "visible": false,
           "withinViewport": true
         },
         "answerForm": {
-          "top": 537.09,
-          "bottom": 674.09,
+          "top": 464.84,
+          "bottom": 601.84,
           "width": 328,
           "height": 137,
           "visible": true,
           "withinViewport": true
         },
         "feedback": {
-          "top": 682.09,
-          "bottom": 703.69,
+          "top": 609.84,
+          "bottom": 631.44,
           "width": 328,
           "height": 21.59,
           "visible": true,
           "withinViewport": true
         }
       },
+      "spentOperationControl": {
+        "exists": true,
+        "hidden": true,
+        "visible": false
+      },
+      "operationMarks": [
+        {
+          "width": 164,
+          "height": 18,
+          "visibility": "visible"
+        }
+      ],
       "bars": [
         {
           "width": 328,
@@ -2455,12 +2827,6 @@
           "withinViewport": true
         },
         {
-          "name": "Gap shown",
-          "width": 302,
-          "height": 44,
-          "withinViewport": true
-        },
-        {
           "name": "Numerator",
           "width": 102,
           "height": 44,
@@ -2480,8 +2846,13 @@
         }
       ],
       "questionVisible": true,
-      "motionTransitionDuration": "0.18s",
-      "operationStatus": "Count the parts inside the bracket.",
+      "motion": {
+        "prefersReducedMotion": false,
+        "transitionRunEvents": 0,
+        "animationStartEvents": 0,
+        "activeAnimations": 0
+      },
+      "operationStatus": "The gap is marked. Enter the difference.",
       "feedback": "That’s right."
     },
     {
@@ -2519,30 +2890,42 @@
           "withinViewport": true
         },
         "operation": {
-          "top": 451.84,
-          "bottom": 495.84,
-          "width": 302,
-          "height": 44,
-          "visible": true,
+          "top": 0,
+          "bottom": 0,
+          "width": 0,
+          "height": 0,
+          "visible": false,
           "withinViewport": true
         },
         "answerForm": {
-          "top": 537.09,
-          "bottom": 674.09,
+          "top": 464.84,
+          "bottom": 601.84,
           "width": 328,
           "height": 137,
           "visible": true,
           "withinViewport": true
         },
         "feedback": {
-          "top": 682.09,
-          "bottom": 703.69,
+          "top": 609.84,
+          "bottom": 631.44,
           "width": 328,
           "height": 21.59,
           "visible": true,
           "withinViewport": true
         }
       },
+      "spentOperationControl": {
+        "exists": true,
+        "hidden": true,
+        "visible": false
+      },
+      "operationMarks": [
+        {
+          "width": 164,
+          "height": 18,
+          "visibility": "visible"
+        }
+      ],
       "bars": [
         {
           "width": 328,
@@ -2577,12 +2960,6 @@
           "withinViewport": true
         },
         {
-          "name": "Gap shown",
-          "width": 302,
-          "height": 44,
-          "withinViewport": true
-        },
-        {
           "name": "Numerator",
           "width": 102,
           "height": 44,
@@ -2602,8 +2979,13 @@
         }
       ],
       "questionVisible": true,
-      "motionTransitionDuration": "0s",
-      "operationStatus": "Count the parts inside the bracket.",
+      "motion": {
+        "prefersReducedMotion": true,
+        "transitionRunEvents": 0,
+        "animationStartEvents": 0,
+        "activeAnimations": 0
+      },
+      "operationStatus": "The gap is marked. Enter the difference.",
       "feedback": "That’s right."
     },
     {
@@ -2641,30 +3023,42 @@
           "withinViewport": true
         },
         "operation": {
-          "top": 451.84,
-          "bottom": 495.84,
-          "width": 302,
-          "height": 44,
-          "visible": true,
+          "top": 0,
+          "bottom": 0,
+          "width": 0,
+          "height": 0,
+          "visible": false,
           "withinViewport": true
         },
         "answerForm": {
-          "top": 537.09,
-          "bottom": 674.09,
+          "top": 464.84,
+          "bottom": 601.84,
           "width": 328,
           "height": 137,
           "visible": true,
           "withinViewport": true
         },
         "feedback": {
-          "top": 682.09,
-          "bottom": 703.69,
+          "top": 609.84,
+          "bottom": 631.44,
           "width": 328,
           "height": 21.59,
           "visible": true,
           "withinViewport": true
         }
       },
+      "spentOperationControl": {
+        "exists": true,
+        "hidden": true,
+        "visible": false
+      },
+      "operationMarks": [
+        {
+          "width": 164,
+          "height": 18,
+          "visibility": "visible"
+        }
+      ],
       "bars": [
         {
           "width": 328,
@@ -2699,12 +3093,6 @@
           "withinViewport": true
         },
         {
-          "name": "Gap shown",
-          "width": 302,
-          "height": 44,
-          "withinViewport": true
-        },
-        {
           "name": "Numerator",
           "width": 102,
           "height": 44,
@@ -2724,8 +3112,13 @@
         }
       ],
       "questionVisible": true,
-      "motionTransitionDuration": "0.18s",
-      "operationStatus": "Count the parts inside the bracket.",
+      "motion": {
+        "prefersReducedMotion": false,
+        "transitionRunEvents": 0,
+        "animationStartEvents": 0,
+        "activeAnimations": 0
+      },
+      "operationStatus": "The gap is marked. Enter the difference.",
       "feedback": "That’s right."
     },
     {
@@ -2763,30 +3156,42 @@
           "withinViewport": true
         },
         "operation": {
-          "top": 451.84,
-          "bottom": 495.84,
-          "width": 302,
-          "height": 44,
-          "visible": true,
+          "top": 0,
+          "bottom": 0,
+          "width": 0,
+          "height": 0,
+          "visible": false,
           "withinViewport": true
         },
         "answerForm": {
-          "top": 537.09,
-          "bottom": 674.09,
+          "top": 464.84,
+          "bottom": 601.84,
           "width": 328,
           "height": 137,
           "visible": true,
           "withinViewport": true
         },
         "feedback": {
-          "top": 682.09,
-          "bottom": 703.69,
+          "top": 609.84,
+          "bottom": 631.44,
           "width": 328,
           "height": 21.59,
           "visible": true,
           "withinViewport": true
         }
       },
+      "spentOperationControl": {
+        "exists": true,
+        "hidden": true,
+        "visible": false
+      },
+      "operationMarks": [
+        {
+          "width": 164,
+          "height": 18,
+          "visibility": "visible"
+        }
+      ],
       "bars": [
         {
           "width": 328,
@@ -2821,12 +3226,6 @@
           "withinViewport": true
         },
         {
-          "name": "Gap shown",
-          "width": 302,
-          "height": 44,
-          "withinViewport": true
-        },
-        {
           "name": "Numerator",
           "width": 102,
           "height": 44,
@@ -2846,8 +3245,13 @@
         }
       ],
       "questionVisible": true,
-      "motionTransitionDuration": "0s",
-      "operationStatus": "Count the parts inside the bracket.",
+      "motion": {
+        "prefersReducedMotion": true,
+        "transitionRunEvents": 0,
+        "animationStartEvents": 0,
+        "activeAnimations": 0
+      },
+      "operationStatus": "The gap is marked. Enter the difference.",
       "feedback": "That’s right."
     },
     {
@@ -2885,30 +3289,42 @@
           "withinViewport": true
         },
         "operation": {
-          "top": 451.84,
-          "bottom": 495.84,
-          "width": 302,
-          "height": 44,
-          "visible": true,
+          "top": 0,
+          "bottom": 0,
+          "width": 0,
+          "height": 0,
+          "visible": false,
           "withinViewport": true
         },
         "answerForm": {
-          "top": 537.09,
-          "bottom": 674.09,
+          "top": 464.84,
+          "bottom": 601.84,
           "width": 328,
           "height": 137,
           "visible": true,
           "withinViewport": true
         },
         "feedback": {
-          "top": 682.09,
-          "bottom": 703.69,
+          "top": 609.84,
+          "bottom": 631.44,
           "width": 328,
           "height": 21.59,
           "visible": true,
           "withinViewport": true
         }
       },
+      "spentOperationControl": {
+        "exists": true,
+        "hidden": true,
+        "visible": false
+      },
+      "operationMarks": [
+        {
+          "width": 136.67,
+          "height": 18,
+          "visibility": "visible"
+        }
+      ],
       "bars": [
         {
           "width": 328,
@@ -2943,12 +3359,6 @@
           "withinViewport": true
         },
         {
-          "name": "Gap shown",
-          "width": 302,
-          "height": 44,
-          "withinViewport": true
-        },
-        {
           "name": "Numerator",
           "width": 102,
           "height": 44,
@@ -2968,8 +3378,13 @@
         }
       ],
       "questionVisible": true,
-      "motionTransitionDuration": "0.18s",
-      "operationStatus": "Count the parts inside the bracket.",
+      "motion": {
+        "prefersReducedMotion": false,
+        "transitionRunEvents": 0,
+        "animationStartEvents": 0,
+        "activeAnimations": 0
+      },
+      "operationStatus": "The gap is marked. Enter the difference.",
       "feedback": "That’s right."
     },
     {
@@ -3007,30 +3422,42 @@
           "withinViewport": true
         },
         "operation": {
-          "top": 451.84,
-          "bottom": 495.84,
-          "width": 302,
-          "height": 44,
-          "visible": true,
+          "top": 0,
+          "bottom": 0,
+          "width": 0,
+          "height": 0,
+          "visible": false,
           "withinViewport": true
         },
         "answerForm": {
-          "top": 537.09,
-          "bottom": 674.09,
+          "top": 464.84,
+          "bottom": 601.84,
           "width": 328,
           "height": 137,
           "visible": true,
           "withinViewport": true
         },
         "feedback": {
-          "top": 682.09,
-          "bottom": 703.69,
+          "top": 609.84,
+          "bottom": 631.44,
           "width": 328,
           "height": 21.59,
           "visible": true,
           "withinViewport": true
         }
       },
+      "spentOperationControl": {
+        "exists": true,
+        "hidden": true,
+        "visible": false
+      },
+      "operationMarks": [
+        {
+          "width": 136.67,
+          "height": 18,
+          "visibility": "visible"
+        }
+      ],
       "bars": [
         {
           "width": 328,
@@ -3065,12 +3492,6 @@
           "withinViewport": true
         },
         {
-          "name": "Gap shown",
-          "width": 302,
-          "height": 44,
-          "withinViewport": true
-        },
-        {
           "name": "Numerator",
           "width": 102,
           "height": 44,
@@ -3090,8 +3511,13 @@
         }
       ],
       "questionVisible": true,
-      "motionTransitionDuration": "0s",
-      "operationStatus": "Count the parts inside the bracket.",
+      "motion": {
+        "prefersReducedMotion": true,
+        "transitionRunEvents": 0,
+        "animationStartEvents": 0,
+        "activeAnimations": 0
+      },
+      "operationStatus": "The gap is marked. Enter the difference.",
       "feedback": "That’s right."
     },
     {
@@ -3129,30 +3555,42 @@
           "withinViewport": true
         },
         "operation": {
-          "top": 451.84,
-          "bottom": 495.84,
-          "width": 302,
-          "height": 44,
-          "visible": true,
+          "top": 0,
+          "bottom": 0,
+          "width": 0,
+          "height": 0,
+          "visible": false,
           "withinViewport": true
         },
         "answerForm": {
-          "top": 537.09,
-          "bottom": 674.09,
+          "top": 464.84,
+          "bottom": 601.84,
           "width": 328,
           "height": 137,
           "visible": true,
           "withinViewport": true
         },
         "feedback": {
-          "top": 682.09,
-          "bottom": 703.69,
+          "top": 609.84,
+          "bottom": 631.44,
           "width": 328,
           "height": 21.59,
           "visible": true,
           "withinViewport": true
         }
       },
+      "spentOperationControl": {
+        "exists": true,
+        "hidden": true,
+        "visible": false
+      },
+      "operationMarks": [
+        {
+          "width": 136.67,
+          "height": 18,
+          "visibility": "visible"
+        }
+      ],
       "bars": [
         {
           "width": 328,
@@ -3187,12 +3625,6 @@
           "withinViewport": true
         },
         {
-          "name": "Gap shown",
-          "width": 302,
-          "height": 44,
-          "withinViewport": true
-        },
-        {
           "name": "Numerator",
           "width": 102,
           "height": 44,
@@ -3212,8 +3644,13 @@
         }
       ],
       "questionVisible": true,
-      "motionTransitionDuration": "0.18s",
-      "operationStatus": "Count the parts inside the bracket.",
+      "motion": {
+        "prefersReducedMotion": false,
+        "transitionRunEvents": 0,
+        "animationStartEvents": 0,
+        "activeAnimations": 0
+      },
+      "operationStatus": "The gap is marked. Enter the difference.",
       "feedback": "That’s right."
     },
     {
@@ -3251,30 +3688,42 @@
           "withinViewport": true
         },
         "operation": {
-          "top": 451.84,
-          "bottom": 495.84,
-          "width": 302,
-          "height": 44,
-          "visible": true,
+          "top": 0,
+          "bottom": 0,
+          "width": 0,
+          "height": 0,
+          "visible": false,
           "withinViewport": true
         },
         "answerForm": {
-          "top": 537.09,
-          "bottom": 674.09,
+          "top": 464.84,
+          "bottom": 601.84,
           "width": 328,
           "height": 137,
           "visible": true,
           "withinViewport": true
         },
         "feedback": {
-          "top": 682.09,
-          "bottom": 703.69,
+          "top": 609.84,
+          "bottom": 631.44,
           "width": 328,
           "height": 21.59,
           "visible": true,
           "withinViewport": true
         }
       },
+      "spentOperationControl": {
+        "exists": true,
+        "hidden": true,
+        "visible": false
+      },
+      "operationMarks": [
+        {
+          "width": 136.67,
+          "height": 18,
+          "visibility": "visible"
+        }
+      ],
       "bars": [
         {
           "width": 328,
@@ -3309,12 +3758,6 @@
           "withinViewport": true
         },
         {
-          "name": "Gap shown",
-          "width": 302,
-          "height": 44,
-          "withinViewport": true
-        },
-        {
           "name": "Numerator",
           "width": 102,
           "height": 44,
@@ -3334,8 +3777,13 @@
         }
       ],
       "questionVisible": true,
-      "motionTransitionDuration": "0s",
-      "operationStatus": "Count the parts inside the bracket.",
+      "motion": {
+        "prefersReducedMotion": true,
+        "transitionRunEvents": 0,
+        "animationStartEvents": 0,
+        "activeAnimations": 0
+      },
+      "operationStatus": "The gap is marked. Enter the difference.",
       "feedback": "That’s right."
     },
     {
@@ -3373,30 +3821,42 @@
           "withinViewport": true
         },
         "operation": {
-          "top": 451.84,
-          "bottom": 495.84,
-          "width": 302,
-          "height": 44,
-          "visible": true,
+          "top": 0,
+          "bottom": 0,
+          "width": 0,
+          "height": 0,
+          "visible": false,
           "withinViewport": true
         },
         "answerForm": {
-          "top": 537.09,
-          "bottom": 674.09,
+          "top": 464.84,
+          "bottom": 601.84,
           "width": 328,
           "height": 137,
           "visible": true,
           "withinViewport": true
         },
         "feedback": {
-          "top": 682.09,
-          "bottom": 703.69,
+          "top": 609.84,
+          "bottom": 631.44,
           "width": 328,
           "height": 21.59,
           "visible": true,
           "withinViewport": true
         }
       },
+      "spentOperationControl": {
+        "exists": true,
+        "hidden": true,
+        "visible": false
+      },
+      "operationMarks": [
+        {
+          "width": 41,
+          "height": 18,
+          "visibility": "visible"
+        }
+      ],
       "bars": [
         {
           "width": 328,
@@ -3431,12 +3891,6 @@
           "withinViewport": true
         },
         {
-          "name": "Gap shown",
-          "width": 302,
-          "height": 44,
-          "withinViewport": true
-        },
-        {
           "name": "Numerator",
           "width": 102,
           "height": 44,
@@ -3456,8 +3910,13 @@
         }
       ],
       "questionVisible": true,
-      "motionTransitionDuration": "0.18s",
-      "operationStatus": "Count the parts inside the bracket.",
+      "motion": {
+        "prefersReducedMotion": false,
+        "transitionRunEvents": 0,
+        "animationStartEvents": 0,
+        "activeAnimations": 0
+      },
+      "operationStatus": "The gap is marked. Enter the difference.",
       "feedback": "That’s right."
     },
     {
@@ -3495,30 +3954,42 @@
           "withinViewport": true
         },
         "operation": {
-          "top": 451.84,
-          "bottom": 495.84,
-          "width": 302,
-          "height": 44,
-          "visible": true,
+          "top": 0,
+          "bottom": 0,
+          "width": 0,
+          "height": 0,
+          "visible": false,
           "withinViewport": true
         },
         "answerForm": {
-          "top": 537.09,
-          "bottom": 674.09,
+          "top": 464.84,
+          "bottom": 601.84,
           "width": 328,
           "height": 137,
           "visible": true,
           "withinViewport": true
         },
         "feedback": {
-          "top": 682.09,
-          "bottom": 703.69,
+          "top": 609.84,
+          "bottom": 631.44,
           "width": 328,
           "height": 21.59,
           "visible": true,
           "withinViewport": true
         }
       },
+      "spentOperationControl": {
+        "exists": true,
+        "hidden": true,
+        "visible": false
+      },
+      "operationMarks": [
+        {
+          "width": 41,
+          "height": 18,
+          "visibility": "visible"
+        }
+      ],
       "bars": [
         {
           "width": 328,
@@ -3553,12 +4024,6 @@
           "withinViewport": true
         },
         {
-          "name": "Gap shown",
-          "width": 302,
-          "height": 44,
-          "withinViewport": true
-        },
-        {
           "name": "Numerator",
           "width": 102,
           "height": 44,
@@ -3578,8 +4043,13 @@
         }
       ],
       "questionVisible": true,
-      "motionTransitionDuration": "0s",
-      "operationStatus": "Count the parts inside the bracket.",
+      "motion": {
+        "prefersReducedMotion": true,
+        "transitionRunEvents": 0,
+        "animationStartEvents": 0,
+        "activeAnimations": 0
+      },
+      "operationStatus": "The gap is marked. Enter the difference.",
       "feedback": "That’s right."
     },
     {
@@ -3617,30 +4087,42 @@
           "withinViewport": true
         },
         "operation": {
-          "top": 451.84,
-          "bottom": 495.84,
-          "width": 302,
-          "height": 44,
-          "visible": true,
+          "top": 0,
+          "bottom": 0,
+          "width": 0,
+          "height": 0,
+          "visible": false,
           "withinViewport": true
         },
         "answerForm": {
-          "top": 537.09,
-          "bottom": 674.09,
+          "top": 464.84,
+          "bottom": 601.84,
           "width": 328,
           "height": 137,
           "visible": true,
           "withinViewport": true
         },
         "feedback": {
-          "top": 682.09,
-          "bottom": 703.69,
+          "top": 609.84,
+          "bottom": 631.44,
           "width": 328,
           "height": 21.59,
           "visible": true,
           "withinViewport": true
         }
       },
+      "spentOperationControl": {
+        "exists": true,
+        "hidden": true,
+        "visible": false
+      },
+      "operationMarks": [
+        {
+          "width": 41,
+          "height": 18,
+          "visibility": "visible"
+        }
+      ],
       "bars": [
         {
           "width": 328,
@@ -3675,12 +4157,6 @@
           "withinViewport": true
         },
         {
-          "name": "Gap shown",
-          "width": 302,
-          "height": 44,
-          "withinViewport": true
-        },
-        {
           "name": "Numerator",
           "width": 102,
           "height": 44,
@@ -3700,8 +4176,13 @@
         }
       ],
       "questionVisible": true,
-      "motionTransitionDuration": "0.18s",
-      "operationStatus": "Count the parts inside the bracket.",
+      "motion": {
+        "prefersReducedMotion": false,
+        "transitionRunEvents": 0,
+        "animationStartEvents": 0,
+        "activeAnimations": 0
+      },
+      "operationStatus": "The gap is marked. Enter the difference.",
       "feedback": "That’s right."
     },
     {
@@ -3739,30 +4220,42 @@
           "withinViewport": true
         },
         "operation": {
-          "top": 451.84,
-          "bottom": 495.84,
-          "width": 302,
-          "height": 44,
-          "visible": true,
+          "top": 0,
+          "bottom": 0,
+          "width": 0,
+          "height": 0,
+          "visible": false,
           "withinViewport": true
         },
         "answerForm": {
-          "top": 537.09,
-          "bottom": 674.09,
+          "top": 464.84,
+          "bottom": 601.84,
           "width": 328,
           "height": 137,
           "visible": true,
           "withinViewport": true
         },
         "feedback": {
-          "top": 682.09,
-          "bottom": 703.69,
+          "top": 609.84,
+          "bottom": 631.44,
           "width": 328,
           "height": 21.59,
           "visible": true,
           "withinViewport": true
         }
       },
+      "spentOperationControl": {
+        "exists": true,
+        "hidden": true,
+        "visible": false
+      },
+      "operationMarks": [
+        {
+          "width": 41,
+          "height": 18,
+          "visibility": "visible"
+        }
+      ],
       "bars": [
         {
           "width": 328,
@@ -3797,12 +4290,6 @@
           "withinViewport": true
         },
         {
-          "name": "Gap shown",
-          "width": 302,
-          "height": 44,
-          "withinViewport": true
-        },
-        {
           "name": "Numerator",
           "width": 102,
           "height": 44,
@@ -3822,31 +4309,55 @@
         }
       ],
       "questionVisible": true,
-      "motionTransitionDuration": "0s",
-      "operationStatus": "Count the parts inside the bracket.",
+      "motion": {
+        "prefersReducedMotion": true,
+        "transitionRunEvents": 0,
+        "animationStartEvents": 0,
+        "activeAnimations": 0
+      },
+      "operationStatus": "The gap is marked. Enter the difference.",
       "feedback": "That’s right."
     }
   ],
   "participation": {
+    "fixture": "nested-denominators",
     "keyboard": {
       "takeaway": {
         "passed": true,
-        "tabStops": [
+        "initialTabStops": [
           "takeaway-link",
           "comparison-link",
           "fixture-select",
           "operation-button"
         ],
+        "intermediateTakeaway": {
+          "removedPartCount": 1,
+          "operationControlVisible": true,
+          "focusRemainedOnOperationControl": true
+        },
+        "finalActionFocusedNumerator": true,
+        "spentControlHiddenFromTabSequence": true,
+        "completedTabNeighbors": {
+          "previous": "fixture-select",
+          "next": "answer-numerator"
+        },
         "resultEnteredWithKeyboard": true
       },
       "comparison": {
         "passed": true,
-        "tabStops": [
+        "initialTabStops": [
           "takeaway-link",
           "comparison-link",
           "fixture-select",
           "operation-button"
         ],
+        "intermediateTakeaway": null,
+        "finalActionFocusedNumerator": true,
+        "spentControlHiddenFromTabSequence": true,
+        "completedTabNeighbors": {
+          "previous": "fixture-select",
+          "next": "answer-numerator"
+        },
         "resultEnteredWithKeyboard": true
       }
     },
@@ -3854,11 +4365,15 @@
       "takeaway": {
         "passed": true,
         "realTouchEvents": true,
+        "operationTargetBeforeCompletion": {
+          "x": 29,
+          "y": 336.59375,
+          "width": 302,
+          "height": 44
+        },
+        "spentControlHiddenAfterCompletion": true,
+        "finalActionFocusedNumerator": true,
         "targetSizes": [
-          {
-            "width": 302,
-            "height": 44
-          },
           {
             "width": 102,
             "height": 44
@@ -3877,11 +4392,15 @@
       "comparison": {
         "passed": true,
         "realTouchEvents": true,
+        "operationTargetBeforeCompletion": {
+          "x": 29,
+          "y": 401.59375,
+          "width": 302,
+          "height": 44
+        },
+        "spentControlHiddenAfterCompletion": true,
+        "finalActionFocusedNumerator": true,
         "targetSizes": [
-          {
-            "width": 302,
-            "height": 44
-          },
           {
             "width": 102,
             "height": 44

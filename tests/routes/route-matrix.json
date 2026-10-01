@@ -796,16 +796,23 @@
       "witness": "browser",
       "actions": [
         {"step":1,"method":"click","target":"#operation-button","description":"Mark the seventh from the subtrahend as taken away"},
-        {"step":2,"method":"fill","target":"#answer-numerator","value":"3","description":"Enter the difference numerator"},
-        {"step":3,"method":"fill","target":"#answer-denominator","value":"7","description":"Enter the difference denominator"},
-        {"step":4,"method":"click","target":"#answer-form button[type=submit]","description":"Check the entered difference"}
+        {"step":2,"method":"assertFocused","target":"#answer-numerator","description":"The final removal focuses the answer numerator"},
+        {"step":3,"method":"fill","target":"#answer-numerator","value":"3","description":"Enter the difference numerator"},
+        {"step":4,"method":"fill","target":"#answer-denominator","value":"7","description":"Enter the difference denominator"},
+        {"step":5,"method":"click","target":"#answer-form button[type=submit]","description":"Check the entered difference"}
       ],
       "expect": {
-        "capture": {"target":"#representation-visual","type":"innerHTML"},
+        "capture": {"target":"#representation-visual","type":"renderedFractionRepresentation"},
         "assertions": [
           {"type":"attributeEquals","target":"#subtraction-prototype","attribute":"data-mode","value":"takeaway"},
           {"type":"hasSelector","target":".bar-segment.is-removed"},
+          {"type":"visibleGeometry","target":".fraction-whole","minCount":1,"minWidth":280,"minHeight":30},
+          {"type":"visibleGeometry","target":".fraction-whole .bar-segment","minCount":7,"minWidth":24,"minHeight":30},
+          {"type":"visibleGeometry","target":".bar-segment.is-shaded","minCount":4,"minWidth":24,"minHeight":30},
+          {"type":"visibleGeometry","target":".bar-segment.is-removed","minCount":1,"minWidth":24,"minHeight":24,"backgroundImageIncludes":"repeating-linear-gradient"},
+          {"type":"notVisible","target":"#operation-button"},
           {"type":"notHasSelector","target":".gap-marker"},
+          {"type":"containsText","target":"#operation-status","value":"Enter the difference."},
           {"type":"containsText","target":"#answer-feedback","value":"That’s right."}
         ]
       },
@@ -825,17 +832,24 @@
       "witness": "browser",
       "actions": [
         {"step":1,"method":"click","target":"#operation-button","description":"Reveal the gap between the amounts"},
-        {"step":2,"method":"fill","target":"#answer-numerator","value":"3","description":"Enter the difference numerator"},
-        {"step":3,"method":"fill","target":"#answer-denominator","value":"7","description":"Enter the difference denominator"},
-        {"step":4,"method":"click","target":"#answer-form button[type=submit]","description":"Check the entered difference"}
+        {"step":2,"method":"assertFocused","target":"#answer-numerator","description":"The gap reveal focuses the answer numerator"},
+        {"step":3,"method":"fill","target":"#answer-numerator","value":"3","description":"Enter the difference numerator"},
+        {"step":4,"method":"fill","target":"#answer-denominator","value":"7","description":"Enter the difference denominator"},
+        {"step":5,"method":"click","target":"#answer-form button[type=submit]","description":"Check the entered difference"}
       ],
       "expect": {
-        "capture": {"target":"#representation-visual","type":"innerHTML"},
+        "capture": {"target":"#representation-visual","type":"renderedFractionRepresentation"},
         "assertions": [
           {"type":"attributeEquals","target":"#subtraction-prototype","attribute":"data-mode","value":"comparison"},
           {"type":"hasSelector","target":".comparison-model .quantity-row:nth-of-type(2)"},
+          {"type":"visibleGeometry","target":".fraction-whole","minCount":2,"minWidth":280,"minHeight":30},
+          {"type":"visibleGeometry","target":".fraction-whole .bar-segment","minCount":14,"minWidth":24,"minHeight":30},
+          {"type":"visibleGeometry","target":".bar-segment.is-shaded","minCount":5,"minWidth":24,"minHeight":30},
           {"type":"hasSelector","target":".gap-marker"},
+          {"type":"visibleGeometry","target":".gap-marker","minCount":1,"minWidth":24,"minHeight":12},
+          {"type":"notVisible","target":"#operation-button"},
           {"type":"notHasSelector","target":".bar-segment.is-removed"},
+          {"type":"containsText","target":"#operation-status","value":"Enter the difference."},
           {"type":"containsText","target":"#answer-feedback","value":"That’s right."}
         ]
       },

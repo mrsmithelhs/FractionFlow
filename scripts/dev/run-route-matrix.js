@@ -27,6 +27,29 @@ const rootDir = path.resolve(__dirname, '../..');
 const distDir = path.join(rootDir, 'dist');
 const matrixPath = path.join(rootDir, 'tests/routes/route-matrix.json');
 const validMotionModes = new Set(['standard-motion', 'reduced-motion']);
+const seededPrototypeVisualDefects = Object.freeze({
+  hidden: `#representation-visual .fraction-whole,
+#representation-visual .gap-grid { visibility: hidden !important; }`,
+  collapsed: `#representation-visual .fraction-whole,
+#representation-visual .gap-grid {
+  height: 0 !important;
+  min-height: 0 !important;
+  max-height: 0 !important;
+  border: 0 !important;
+  overflow: hidden !important;
+}
+#representation-visual .bar-segment,
+#representation-visual .gap-marker { display: none !important; }`,
+  'erased-removal-mark': `#representation-visual .bar-segment.is-removed {
+  background-color: #3976bd !important;
+  background-image: none !important;
+  border-color: #17457f !important;
+}
+#representation-visual .bar-segment.is-removed::after {
+  content: none !important;
+  display: none !important;
+}`,
+});
 const startingSurfaces = Object.freeze({
   'mounted-app-entry': Object.freeze({
     path: '',
@@ -294,6 +317,15 @@ async function executeAction(page, action, routeId) {
       await page.locator(action.target).focus();
       break;
 
+    case 'assertFocused': {
+      const target = page.locator(action.target);
+      const count = await target.count();
+      if (count === 0 || !await target.first().evaluate((element) => element === document.activeElement)) {
+        throw new Error(`Route "${routeId}" expected "${action.target}" to have focus after step ${action.step}.`);
+      }
+      break;
+    }
+
     case 'dispatch-fallback':
       throw new Error(
         `dispatch-fallback in route "${routeId}" requires a mounted app dispatch seam which is not allowed in production static bundle.`
@@ -344,6 +376,52 @@ async function captureOutput(page, captureDef) {
         const cls = el.className ? `.${el.className.trim().split(/\s+/).join('.')}` : '';
         return `${tag}${cls}`;
       });
+    case 'renderedFractionRepresentation':
+      return locator.first().evaluate((root) => {
+        const round = (value) => Math.round(value * 100) / 100;
+        const describeGraphic = (element, pseudo = null) => {
+          const box = element.getBoundingClientRect();
+          const style = getComputedStyle(element, pseudo);
+          return {
+            geometry: {
+              x: round(box.x),
+              y: round(box.y),
+              width: round(box.width),
+              height: round(box.height),
+            },
+            paint: {
+              display: style.display,
+              visibility: style.visibility,
+              opacity: style.opacity,
+              backgroundColor: style.backgroundColor,
+              backgroundImage: style.backgroundImage,
+              borderTopColor: style.borderTopColor,
+              borderTopWidth: style.borderTopWidth,
+              borderRightColor: style.borderRightColor,
+              borderRightWidth: style.borderRightWidth,
+              borderBottomColor: style.borderBottomColor,
+              borderBottomWidth: style.borderBottomWidth,
+              borderLeftColor: style.borderLeftColor,
+              borderLeftWidth: style.borderLeftWidth,
+              content: style.content,
+              transform: style.transform,
+            },
+          };
+        };
+
+        return JSON.stringify({
+          bars: [...root.querySelectorAll('.fraction-whole')].map((bar) => ({
+            whole: describeGraphic(bar),
+            parts: [...bar.querySelectorAll('.bar-segment')].map((part) => ({
+              segment: describeGraphic(part),
+              mark: describeGraphic(part, '::after'),
+            })),
+          })),
+          gaps: [...root.querySelectorAll('.gap-grid, .gap-marker')].map((gap) => (
+            describeGraphic(gap)
+          )),
+        });
+      });
     default:
       return locator.first().innerHTML();
   }
@@ -375,6 +453,78 @@ async function verifyAssertions(page, assertions, routeId) {
     const locator = page.locator(target);
 
     switch (type) {
+      case 'notVisible': {
+        const count = await locator.count();
+        if (count > 0 && await locator.first().isVisible()) {
+          throw new Error(`Route "${routeId}" assertion failed: selector "${target}" should not be visible.`);
+        }
+        break;
+      }
+
+      case 'visibleGeometry': {
+        const minCount = assertion.minCount ?? 1;
+        const minWidth = assertion.minWidth ?? 12;
+        const minHeight = assertion.minHeight ?? 12;
+        const backgroundImageIncludes = assertion.backgroundImageIncludes?.toLowerCase();
+        const geometries = await locator.evaluateAll((elements) => elements.map((element) => {
+          const box = element.getBoundingClientRect();
+          let current = element;
+          let styleVisible = true;
+          let combinedOpacity = 1;
+          while (current instanceof Element) {
+            const style = getComputedStyle(current);
+            combinedOpacity *= Number(style.opacity);
+            if (style.display === 'none' || style.visibility === 'hidden'
+              || style.visibility === 'collapse') {
+              styleVisible = false;
+            }
+            current = current.parentElement;
+          }
+          const style = getComputedStyle(element);
+          const colorIsVisible = (color) => {
+            if (color === 'transparent') return false;
+            const rgba = color.match(/rgba\([^,]+,[^,]+,[^,]+,\s*([\d.]+)\s*\)/);
+            return !rgba || Number(rgba[1]) > 0;
+          };
+          const borderPaintVisible = [
+            ['borderTopWidth', 'borderTopColor'],
+            ['borderRightWidth', 'borderRightColor'],
+            ['borderBottomWidth', 'borderBottomColor'],
+            ['borderLeftWidth', 'borderLeftColor'],
+          ].some(([width, color]) => (
+            Number.parseFloat(style[width]) > 0 && colorIsVisible(style[color])
+          ));
+          const paintVisible = (style.backgroundImage !== 'none'
+            && style.backgroundImage !== '')
+            || colorIsVisible(style.backgroundColor)
+            || borderPaintVisible;
+          return {
+            width: box.width,
+            height: box.height,
+            visible: styleVisible && combinedOpacity >= 0.1
+              && element.getClientRects().length > 0 && box.width > 0 && box.height > 0,
+            paintVisible,
+            backgroundImage: style.backgroundImage,
+          };
+        }));
+        const undersized = geometries.filter((geometry) => (
+          !geometry.visible || !geometry.paintVisible
+            || geometry.width < minWidth || geometry.height < minHeight
+            || (backgroundImageIncludes
+              && !geometry.backgroundImage.toLowerCase().includes(backgroundImageIncludes))
+        ));
+        if (geometries.length < minCount || undersized.length > 0) {
+          throw new Error(
+            `Route "${routeId}" visible geometry assertion failed for "${target}": `
+            + `found ${geometries.length}, expected at least ${minCount} visible items `
+            + `of ${minWidth}x${minHeight}px${backgroundImageIncludes
+              ? ` with background image containing "${backgroundImageIncludes}"`
+              : ''}; ${undersized.length} were hidden, unpainted, undersized, or missing required paint.`,
+          );
+        }
+        break;
+      }
+
       case 'hasSelector': {
         const count = await locator.count();
         if (count === 0) {
@@ -433,7 +583,16 @@ async function verifyAssertions(page, assertions, routeId) {
  * Run the full route matrix suite.
  */
 async function runRouteMatrix(options = {}) {
-  const { filter, verbose = false, preferredChannel } = options;
+  const {
+    filter,
+    verbose = false,
+    preferredChannel,
+    seededVisualDefect = null,
+  } = options;
+
+  if (seededVisualDefect !== null && !Object.hasOwn(seededPrototypeVisualDefects, seededVisualDefect)) {
+    throw new Error(`Unknown seeded prototype visual defect "${seededVisualDefect}".`);
+  }
 
   if (!fs.existsSync(distDir)) {
     throw new Error('Built distribution (dist/) not found. Run `npm run build` before running route matrix.');
@@ -523,6 +682,9 @@ async function runRouteMatrix(options = {}) {
         const startUrl = new URL(startingSurface.path, baseUrl).toString();
         await page.goto(startUrl);
         await page.waitForSelector(startingSurface.readySelector);
+        if (seededVisualDefect && route.configuration === 'plan15-subtraction-prototype') {
+          await page.addStyleTag({ content: seededPrototypeVisualDefects[seededVisualDefect] });
+        }
 
         // Execute action sequence
         for (const action of route.actions) {

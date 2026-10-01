@@ -37,6 +37,12 @@ async function openPrototype(browser, baseUrl, mode, fixtureIndex, viewportHeigh
   url.searchParams.set('fixture', String(fixtureIndex));
   await page.goto(url.toString());
   await page.waitForSelector(surface.readySelector);
+  await page.evaluate(() => {
+    const events = { transitionRun: 0, animationStart: 0 };
+    document.addEventListener('transitionrun', () => { events.transitionRun += 1; }, true);
+    document.addEventListener('animationstart', () => { events.animationStart += 1; }, true);
+    window.__fractionFlowPlan15MotionEvents = events;
+  });
   return { context, page };
 }
 
@@ -50,6 +56,17 @@ async function operateAndAnswer(page, mode, model, testRetry = true) {
   } else {
     await operationButton.click();
   }
+
+  assert(await operationButton.isHidden(), mode + ' kept the completed operation control visible.');
+  assert(
+    await page.locator('#answer-numerator').evaluate((element) => element === document.activeElement),
+    mode + ' did not move focus to the numerator after the final operation action.',
+  );
+  assert(
+    (await page.locator('#operation-status').textContent()).includes('Enter the difference.'),
+    mode + ' did not retain the short answer instruction.',
+  );
+  assert((await page.locator('.model-note').count()) === 0, mode + ' retained a redundant model note.');
 
   const beforeAnswer = await page.locator('#subtraction-prototype').evaluate((root) => {
     const text = root.innerText;
@@ -75,12 +92,16 @@ async function operateAndAnswer(page, mode, model, testRetry = true) {
       mode + ' did not show the plain retry message.',
     );
     assert(
-      (await operationButton.getAttribute('aria-disabled')) === 'true',
-      mode + ' reset the completed operation after retry.',
+      await page.evaluate(() => document.activeElement?.textContent.trim()) === 'Check answer',
+      mode + ' moved focus away from answer submission after retry.',
+    );
+    assert(
+      await operationButton.isHidden(),
+      mode + ' restored the spent operation control after retry.',
     );
     assert(
       mode === 'takeaway'
-        ? (await page.locator('.bar-segment.is-removed').count()) > 0
+        ? (await page.locator('.bar-segment.is-removed').count()) === Number(model.renamedRight.numerator)
         : (await page.locator('.gap-marker').count()) === 1,
       mode + ' removed the operation mark after retry.',
     );
@@ -131,9 +152,7 @@ async function measurePage(page, viewportHeight, motion, mode) {
         parts: bar.querySelectorAll('.bar-segment').length,
       };
     });
-    const motionTarget = representationMode === 'takeaway'
-      ? document.querySelector('.bar-segment.is-shaded')
-      : document.querySelector('.gap-marker');
+    const motionEvents = window.__fractionFlowPlan15MotionEvents;
     return {
       viewport: { width: window.innerWidth, height },
       motionMode,
@@ -153,14 +172,30 @@ async function measurePage(page, viewportHeight, motion, mode) {
         answerForm: rect('#answer-form'),
         feedback: rect('#answer-feedback'),
       },
+      spentOperationControl: {
+        exists: Boolean(document.querySelector('#operation-button')),
+        hidden: document.querySelector('#operation-button')?.hidden === true,
+        visible: document.querySelector('#operation-button')?.getClientRects().length > 0,
+      },
+      operationMarks: [...document.querySelectorAll('.bar-segment.is-removed, .gap-marker')].map((element) => {
+        const box = element.getBoundingClientRect();
+        return {
+          width: Math.round(box.width * 100) / 100,
+          height: Math.round(box.height * 100) / 100,
+          visibility: getComputedStyle(element).visibility,
+        };
+      }),
       bars,
       visibleControlsAtLeast24px: controls.every((control) => control.width >= 24 && control.height >= 24),
       allControlsWithinViewport: controls.every((control) => control.withinViewport),
       controls,
       questionVisible: rect('.problem')?.withinViewport === true,
-      motionTransitionDuration: motionTarget
-        ? getComputedStyle(motionTarget).transitionDuration
-        : 'no moving target',
+      motion: {
+        prefersReducedMotion: window.matchMedia('(prefers-reduced-motion: reduce)').matches,
+        transitionRunEvents: motionEvents?.transitionRun ?? null,
+        animationStartEvents: motionEvents?.animationStart ?? null,
+        activeAnimations: document.getAnimations().length,
+      },
       operationStatus: document.querySelector('#operation-status').textContent,
       feedback: document.querySelector('#answer-feedback').textContent,
     };
@@ -180,10 +215,14 @@ async function measurePage(page, viewportHeight, motion, mode) {
     mode + ' whole width differs from the approved 328px width at a 360px viewport.',
   );
   assert(
-    motion === 'reduced-motion'
-      ? measurement.motionTransitionDuration === '0s'
-      : measurement.motionTransitionDuration !== '0s',
-    mode + ' motion treatment does not match ' + motion + '.',
+    measurement.motion.prefersReducedMotion === (motion === 'reduced-motion'),
+    mode + ' browser preference did not match ' + motion + '.',
+  );
+  assert(
+    measurement.motion.transitionRunEvents === 0
+      && measurement.motion.animationStartEvents === 0
+      && measurement.motion.activeAnimations === 0,
+    mode + ' static endpoint unexpectedly executed CSS motion.',
   );
   return measurement;
 }
@@ -191,7 +230,10 @@ async function measurePage(page, viewportHeight, motion, mode) {
 async function runKeyboardParticipation(browser, baseUrl, mode, model) {
   const context = await browser.newContext({ viewport: { width: 360, height: 740 } });
   const page = await context.newPage();
-  await page.goto(new URL(resolveStartingSurface(startingSurfaceIds[mode]).path, baseUrl).toString());
+  const fixtureIndex = SUBTRACTION_FIXTURE_MODELS.findIndex((fixture) => fixture.id === model.id);
+  const url = new URL(resolveStartingSurface(startingSurfaceIds[mode]).path, baseUrl);
+  url.searchParams.set('fixture', String(fixtureIndex));
+  await page.goto(url.toString());
   await page.waitForSelector(resolveStartingSurface(startingSurfaceIds[mode]).readySelector);
 
   const expectedTabStops = [
@@ -207,19 +249,41 @@ async function runKeyboardParticipation(browser, baseUrl, mode, model) {
     assert(reached[reached.length - 1] === id, mode + ' keyboard order missed ' + id + '.');
   }
 
+  let intermediateEvidence = null;
   if (mode === 'takeaway') {
     const count = Number(model.renamedRight.numerator);
-    for (let index = 0; index < count; index += 1) {
+    for (let index = 0; index < count - 1; index += 1) {
       await page.keyboard.press('Space');
     }
+    assert(await page.locator('#operation-button').isVisible(), 'Takeaway hid its control before all parts were removed.');
+    assert(
+      await page.evaluate(() => document.activeElement.id) === 'operation-button',
+      'Takeaway moved focus before the final removal.',
+    );
+    assert(
+      await page.locator('.bar-segment.is-removed').count() === count - 1,
+      'Takeaway did not preserve each intermediate removal mark.',
+    );
+    intermediateEvidence = {
+      removedPartCount: count - 1,
+      operationControlVisible: true,
+      focusRemainedOnOperationControl: true,
+    };
+    await page.keyboard.press('Space');
   } else {
     await page.keyboard.press('Space');
   }
-  await page.keyboard.press('Tab');
   assert(
     (await page.evaluate(() => document.activeElement.id)) === 'answer-numerator',
-    mode + ' keyboard focus did not reach the numerator field.',
+    mode + ' final operation action did not focus the numerator field.',
   );
+  assert(await page.locator('#operation-button').isHidden(), mode + ' kept a spent control visible to keyboard users.');
+  await page.keyboard.press('Shift+Tab');
+  const previousTabStop = await page.evaluate(() => document.activeElement.id);
+  assert(previousTabStop === 'fixture-select', mode + ' spent operation control remained in the completed-state tab sequence.');
+  await page.keyboard.press('Tab');
+  const nextTabStop = await page.evaluate(() => document.activeElement.id);
+  assert(nextTabStop === 'answer-numerator', mode + ' completed-state tab sequence did not skip the spent control.');
   await page.keyboard.type(model.exactDifference.numerator.toString());
   await page.keyboard.press('Tab');
   assert(
@@ -238,7 +302,16 @@ async function runKeyboardParticipation(browser, baseUrl, mode, model) {
     mode + ' keyboard completion did not reach the correct response.',
   );
   await context.close();
-  return { passed: true, tabStops: reached, resultEnteredWithKeyboard: true };
+  return {
+    passed: true,
+    initialTabStops: reached,
+    intermediateTakeaway: intermediateEvidence,
+    finalActionFocusedNumerator: true,
+    spentControlHiddenFromTabSequence: previousTabStop === 'fixture-select'
+      && nextTabStop === 'answer-numerator',
+    completedTabNeighbors: { previous: previousTabStop, next: nextTabStop },
+    resultEnteredWithKeyboard: true,
+  };
 }
 
 async function runTouchParticipation(browser, baseUrl, mode, model) {
@@ -248,14 +321,23 @@ async function runTouchParticipation(browser, baseUrl, mode, model) {
     hasTouch: true,
   });
   const page = await context.newPage();
-  await page.goto(new URL(resolveStartingSurface(startingSurfaceIds[mode]).path, baseUrl).toString());
+  const fixtureIndex = SUBTRACTION_FIXTURE_MODELS.findIndex((fixture) => fixture.id === model.id);
+  const url = new URL(resolveStartingSurface(startingSurfaceIds[mode]).path, baseUrl);
+  url.searchParams.set('fixture', String(fixtureIndex));
+  await page.goto(url.toString());
   await page.waitForSelector(resolveStartingSurface(startingSurfaceIds[mode]).readySelector);
 
   const operationButton = page.locator('#operation-button');
   const count = mode === 'takeaway' ? Number(model.renamedRight.numerator) : 1;
+  const operationTarget = await operationButton.boundingBox();
   for (let index = 0; index < count; index += 1) {
     await operationButton.tap();
   }
+  assert(await operationButton.isHidden(), mode + ' kept a spent touch control visible.');
+  assert(
+    (await page.evaluate(() => document.activeElement.id)) === 'answer-numerator',
+    mode + ' final touch action did not focus the numerator field.',
+  );
   await page.locator('#answer-numerator').tap();
   await page.locator('#answer-numerator').fill(model.exactDifference.numerator.toString());
   await page.locator('#answer-denominator').tap();
@@ -265,7 +347,7 @@ async function runTouchParticipation(browser, baseUrl, mode, model) {
     (await page.locator('#answer-feedback').textContent()).trim() === 'That’s right.',
     mode + ' touch completion did not reach the correct response.',
   );
-  const targets = await page.locator('#operation-button, #answer-numerator, #answer-denominator, #answer-form button[type=submit]')
+  const targets = await page.locator('#answer-numerator, #answer-denominator, #answer-form button[type=submit]')
     .evaluateAll((elements) => elements.map((element) => {
       const box = element.getBoundingClientRect();
       return { width: box.width, height: box.height };
@@ -274,10 +356,14 @@ async function runTouchParticipation(browser, baseUrl, mode, model) {
     targets.every((target) => target.width >= 24 && target.height >= 24),
     mode + ' touch path includes a target below 24x24px.',
   );
+  const spentControlHiddenAfterCompletion = await operationButton.isHidden();
   await context.close();
   return {
     passed: true,
     realTouchEvents: true,
+    operationTargetBeforeCompletion: operationTarget,
+    spentControlHiddenAfterCompletion,
+    finalActionFocusedNumerator: true,
     targetSizes: targets,
     answerTextEntry: 'Fields were tapped and focused; text was supplied by the browser driver because the headless context has no mobile operating-system keyboard.',
   };
@@ -290,7 +376,11 @@ async function main() {
   const baseUrl = 'http://127.0.0.1:' + server.address().port + '/FractionFlow/';
   const browser = await chromium.launch({ headless: true });
   const measurements = [];
-  const participation = { keyboard: {}, touch: {} };
+  const participation = {
+    fixture: SUBTRACTION_FIXTURE_MODELS[1].id,
+    keyboard: {},
+    touch: {},
+  };
 
   try {
     for (const mode of ['takeaway', 'comparison']) {
@@ -320,7 +410,6 @@ async function main() {
               await page.screenshot({
                 path: path.join(evidenceDirectory, filename),
                 fullPage: false,
-                animations: 'disabled',
               });
             }
             await context.close();
@@ -332,13 +421,13 @@ async function main() {
         browser,
         baseUrl,
         mode,
-        SUBTRACTION_FIXTURE_MODELS[0],
+        SUBTRACTION_FIXTURE_MODELS[1],
       );
       participation.touch[mode] = await runTouchParticipation(
         browser,
         baseUrl,
         mode,
-        SUBTRACTION_FIXTURE_MODELS[0],
+        SUBTRACTION_FIXTURE_MODELS[1],
       );
     }
   } finally {
@@ -347,7 +436,7 @@ async function main() {
   }
 
   const results = {
-    purpose: 'Synthetic browser layout and participation evidence for Plan 15; no learner observations were conducted.',
+    purpose: 'Synthetic browser evidence for static subtraction endpoints; executed transition and animation events are measured explicitly. No learner observations were conducted.',
     screenshotCount: 16,
     measurements,
     participation,
@@ -358,7 +447,7 @@ async function main() {
     'utf8',
   );
   console.log('Captured 16 rendered screens and ' + measurements.length + ' layout/motion measurements.');
-  console.log('Keyboard and touch paths completed both prototypes for the like-denominator fixture.');
+  console.log('Keyboard and touch paths completed both prototypes for the nested-denominator fixture, including final-action focus and spent-control removal.');
 }
 
 main().catch((error) => {

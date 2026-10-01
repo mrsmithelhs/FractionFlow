@@ -98,9 +98,6 @@ function makeComparisonMarkup(model) {
     + makeBarMarkup(model.renamedLeft, 'First amount')
     + makeBarMarkup(model.renamedRight, 'Second amount')
     + gap
-    + (gapShown
-      ? '<p class="model-note">The bracket marks the space between the bars.</p>'
-      : '')
     + '</div>';
 }
 
@@ -130,25 +127,24 @@ function render() {
   visual.innerHTML = mode === 'takeaway'
     ? '<div class="takeaway-model">'
       + makeBarMarkup(model.renamedLeft, 'Starting amount', state.removedParts)
-      + (state.removedParts > 0n
-        ? '<p class="model-note">A marked part was taken away.</p>'
-        : '')
       + '</div>'
     : makeComparisonMarkup(model);
 
   if (mode === 'takeaway') {
     const removalComplete = state.removedParts >= model.renamedRight.numerator;
-    operationButton.textContent = removalComplete ? 'Parts marked' : 'Remove one part';
-    operationButton.setAttribute('aria-disabled', removalComplete ? 'true' : 'false');
+    operationButton.hidden = removalComplete;
+    if (!removalComplete) operationButton.textContent = 'Remove one part';
     operationStatus.textContent = removalComplete
-      ? 'Count the parts that are still shaded.'
-      : 'Mark each part from the second fraction as taken away.';
+      ? 'Removal is marked. Enter the difference.'
+      : state.removedParts > 0n
+        ? 'A part is marked as taken away. Keep marking the remaining parts.'
+        : 'Mark each part from the second fraction as taken away.';
     answerForm.hidden = !removalComplete;
   } else {
-    operationButton.textContent = state.gapShown ? 'Gap shown' : 'Show the gap';
-    operationButton.setAttribute('aria-disabled', state.gapShown ? 'true' : 'false');
+    operationButton.hidden = state.gapShown;
+    if (!state.gapShown) operationButton.textContent = 'Show the gap';
     operationStatus.textContent = state.gapShown
-      ? 'Count the parts inside the bracket.'
+      ? 'The gap is marked. Enter the difference.'
       : 'Show the space between the two amounts.';
     answerForm.hidden = !state.gapShown;
   }
@@ -171,14 +167,13 @@ operationButton.addEventListener('click', () => {
   const model = SUBTRACTION_FIXTURE_MODELS[state.fixtureIndex];
   if (mode === 'takeaway' && state.removedParts < model.renamedRight.numerator) {
     state.removedParts += 1n;
-    operationStatus.textContent = state.removedParts >= model.renamedRight.numerator
-      ? 'Count the parts that are still shaded.'
-      : 'A part is marked as taken away.';
+    const removalComplete = state.removedParts >= model.renamedRight.numerator;
     render();
+    if (removalComplete) numeratorInput.focus({ preventScroll: true });
   } else if (mode === 'comparison' && !state.gapShown) {
     state.gapShown = true;
-    operationStatus.textContent = 'Count the parts inside the bracket.';
     render();
+    numeratorInput.focus({ preventScroll: true });
   }
 });
 
