@@ -1,4 +1,5 @@
 import { deepFreeze } from '../content/schema.js';
+import { currentScheduleEntry } from './beat-schedule.js';
 
 function contentIdentity(content) {
   return {
@@ -62,6 +63,7 @@ function evidenceCategory(state) {
 
 export function createResponseProvenance({ state, intent, classification, nextState }) {
   const supportActions = state.supportHistory.map((entry) => entry.type);
+  const scheduleEntry = currentScheduleEntry(state);
   const record = {
     schemaVersion: 'fractionflow.response-provenance/v1',
     responseIndex: state.responseProvenance.length,
@@ -73,6 +75,8 @@ export function createResponseProvenance({ state, intent, classification, nextSt
     activeCondition: state.activeCondition,
     support: state.support,
     beat: state.beat,
+    schedulePosition: state.schedulePosition,
+    scheduleEntryId: scheduleEntry?.id ?? null,
     expectedResponse: state.expectedResponse,
     visibility: visibleFields(state),
     prompt: {
@@ -91,6 +95,8 @@ export function createResponseProvenance({ state, intent, classification, nextSt
     resultingState: {
       status: nextState.status,
       beat: nextState.beat,
+      schedulePosition: nextState.schedulePosition,
+      scheduleEntryId: currentScheduleEntry(nextState)?.id ?? scheduleEntry?.id ?? null,
       established: nextState.established,
       revision: nextState.revision,
     },

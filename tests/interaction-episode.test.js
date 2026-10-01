@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import {
   applyIntent,
+  computeBeatSchedule,
   createEpisode,
   createReplayEnvelope,
   episodeStateSnapshot,
@@ -71,8 +72,68 @@ describe('Plan 05 instructional episode', () => {
     expect(state.content.canonicalPath).toBeDefined();
     expect(state.content.alternatePaths).toHaveLength(1);
     expect(state.content.resultState).toBeDefined();
+    expect(state.beatSchedule.map((entry) => entry.id)).toEqual([
+      'encounter', 'notice', 'decide', 'transform-left', 'transform-right', 'operate', 'resolve',
+    ]);
+    expect(Object.isFrozen(state.beatSchedule)).toBe(true);
+    expect(Object.isFrozen(state.beatSchedule[0])).toBe(true);
     expect(JSON.stringify(state)).not.toContain('BigInt');
     expect(() => JSON.stringify(state)).not.toThrow();
+  });
+
+  it('derives frozen schedules for both, one, and no renaming without registering new families', () => {
+    const instance = canonicalInstance();
+    const scheduleIds = (left, right) => computeBeatSchedule({
+      ...instance,
+      classification: {
+        ...instance.classification,
+        transformations: {
+          ...instance.classification.transformations,
+          canonicalRenaming: { left, right, targetDenominator: '12' },
+        },
+      },
+    }, PHASE2_REFLECTION_EPISODE_DEFINITION).map((entry) => entry.id);
+
+    expect(scheduleIds(true, true)).toEqual([
+      'encounter', 'notice', 'decide', 'transform-left', 'transform-right', 'operate', 'resolve', 'reflect',
+    ]);
+    expect(scheduleIds(true, false)).toEqual([
+      'encounter', 'notice', 'decide', 'transform-left', 'operate', 'resolve', 'reflect',
+    ]);
+    expect(scheduleIds(false, true)).toEqual([
+      'encounter', 'notice', 'decide', 'transform-right', 'operate', 'resolve', 'reflect',
+    ]);
+    expect(scheduleIds(false, false)).toEqual([
+      'encounter', 'notice', 'operate', 'resolve', 'reflect',
+    ]);
+    const noReflection = computeBeatSchedule(instance, PHASE2_EPISODE_DEFINITION);
+    expect(noReflection.at(-1).id).toBe('resolve');
+    expect(Object.isFrozen(noReflection)).toBe(true);
+    expect(Object.isFrozen(noReflection[0])).toBe(true);
+  });
+
+  it('keeps the construction-time schedule reference unchanged across learner actions', () => {
+    let state = createEpisode({ instance: canonicalInstance() });
+    const schedule = state.beatSchedule;
+    state = applyIntent(state, { type: 'acknowledge-encounter' });
+    expect(state.beatSchedule).toBe(schedule);
+    state = applyIntent(state, { type: 'submit-notice', matchesUnits: false });
+    expect(state.beatSchedule).toBe(schedule);
+    state = applyIntent(state, { type: 'propose-common-denominator', proposed: whole(5) });
+    expect(state.beatSchedule).toBe(schedule);
+    state = applyIntent(state, { type: 'propose-common-denominator', proposed: whole(12) });
+    expect(state.beatSchedule).toBe(schedule);
+    state = applyIntent(state, { type: 'request-help' });
+    expect(state.beatSchedule).toBe(schedule);
+    state = applyIntent(state, { type: 'request-replay' });
+    expect(state.beatSchedule).toBe(schedule);
+    state = applyIntent(state, { type: 'submit-equivalent-form', proposed: fraction(8, 12) });
+    expect(state.beatSchedule).toBe(schedule);
+    expect(state.schedulePosition).toBe(4);
+    expect(state.expectedResponse.target).toBe('right');
+    state = applyIntent(state, { type: 'submit-equivalent-form', proposed: fraction(3, 12) });
+    expect(state.beatSchedule).toBe(schedule);
+    expect(state.schedulePosition).toBe(5);
   });
 
   it('recovers locally from invalid work and preserves earlier progress', () => {
@@ -136,6 +197,11 @@ describe('Plan 05 instructional episode', () => {
   });
 
   it('accepts only registered episode-definition semantics and canonical wire values', () => {
+    const exactCopy = structuredClone(PHASE2_EPISODE_DEFINITION);
+    const compatible = createEpisode({ instance: canonicalInstance(), episodeDefinition: exactCopy });
+    expect(compatible.episodeDefinition).toEqual(PHASE2_EPISODE_DEFINITION);
+    expect(compatible.episodeDefinition.beats).toEqual(PHASE2_EPISODE_DEFINITION.beats);
+
     const alteredPrompt = structuredClone(PHASE2_EPISODE_DEFINITION);
     alteredPrompt.promptIdentities.encounter = 'tampered.encounter';
     expect(() => createEpisode({ instance: canonicalInstance(), episodeDefinition: alteredPrompt }))

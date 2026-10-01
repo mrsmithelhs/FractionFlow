@@ -22,8 +22,12 @@ describe('Renderer Purity & Determinism by Construction (Requirement 2, Conditio
   function createSyntheticScene({
     leftNum = '2',
     leftDen = '3',
+    leftSourceNum = leftNum,
+    leftSourceDen = leftDen,
     rightNum = '1',
     rightDen = '4',
+    rightSourceNum = rightNum,
+    rightSourceDen = rightDen,
     rawSumNum = null,
     rawSumDen = null,
     mode = 'standard-motion',
@@ -49,7 +53,7 @@ describe('Renderer Purity & Determinism by Construction (Requirement 2, Conditio
           left: {
             id: 'left',
             quantity: { exactValue: { n: leftNum, d: leftDen } },
-            sourceForm: { kind: 'fraction', numerator: leftNum, denominator: leftDen },
+            sourceForm: { kind: 'fraction', numerator: leftSourceNum, denominator: leftSourceDen },
             currentForm: { kind: 'fraction', numerator: leftNum, denominator: leftDen },
             unit: { denominator: leftDen },
             count: { numerator: leftNum },
@@ -62,7 +66,7 @@ describe('Renderer Purity & Determinism by Construction (Requirement 2, Conditio
           right: {
             id: 'right',
             quantity: { exactValue: { n: rightNum, d: rightDen } },
-            sourceForm: { kind: 'fraction', numerator: rightNum, denominator: rightDen },
+            sourceForm: { kind: 'fraction', numerator: rightSourceNum, denominator: rightSourceDen },
             currentForm: { kind: 'fraction', numerator: rightNum, denominator: rightDen },
             unit: { denominator: rightDen },
             count: { numerator: rightNum },
@@ -81,6 +85,8 @@ describe('Renderer Purity & Determinism by Construction (Requirement 2, Conditio
         },
         currentTask: {
           beat,
+          schedulePosition: ({ encounter: 0, notice: 1, decide: 2, transform: 3, operate: 5, resolve: 6, reflect: 7 })[beat],
+          scheduleEntryId: beat === 'transform' ? 'transform-left' : beat,
           responsibility: beat === 'decide' ? 'choose-common-denominator' : beat === 'transform' ? 'construct-equivalent-form' : 'inspect-expression',
           promptId: `phase2.${beat}`,
           inputKind: beat === 'decide' ? 'whole-fraction' : beat === 'transform' ? 'fraction' : 'acknowledge',
@@ -398,8 +404,12 @@ describe('Renderer Purity & Determinism by Construction (Requirement 2, Conditio
     const sceneTransform = createSyntheticScene({
       leftNum: '4',
       leftDen: '5',
+      leftSourceNum: '2',
+      leftSourceDen: '3',
       rightNum: '1',
       rightDen: '5',
+      rightSourceNum: '1',
+      rightSourceDen: '4',
       beat: 'operate',
       commonUnit: { targetDenominator: '5' },
     });
@@ -421,8 +431,12 @@ describe('Renderer Purity & Determinism by Construction (Requirement 2, Conditio
     const sceneResolve = createSyntheticScene({
       leftNum: '4',
       leftDen: '5',
+      leftSourceNum: '2',
+      leftSourceDen: '3',
       rightNum: '1',
       rightDen: '5',
+      rightSourceNum: '1',
+      rightSourceDen: '4',
       rawSumNum: '99',
       rawSumDen: '5',
       beat: 'resolve',

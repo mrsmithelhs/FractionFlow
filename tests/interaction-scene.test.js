@@ -129,6 +129,11 @@ describe('Plan 06 semantic Scene Model', () => {
     const second = projectScene(input);
 
     expect(first.kind).toBe('scene');
+    expect(first.meaning.currentTask).toMatchObject({
+      schedulePosition: 0,
+      scheduleEntryId: 'encounter',
+    });
+    expect(first).not.toHaveProperty('beatSchedule');
     expect(JSON.stringify(first)).toBe(JSON.stringify(second));
     expect(Object.isFrozen(first)).toBe(true);
     expect(Object.isFrozen(first.meaning)).toBe(true);

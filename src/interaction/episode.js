@@ -23,6 +23,7 @@ import {
   validateActiveCondition,
 } from './episode-definition.js';
 import { createResponseProvenance } from './provenance.js';
+import { computeBeatSchedule, currentScheduleEntry } from './beat-schedule.js';
 import {
   createSupportConfiguration,
   DEFAULT_SUPPORT_CONFIGURATION,
@@ -46,7 +47,8 @@ export class EpisodeIntentError extends Error {
   }
 }
 
-function responseForBeat(definition, beat, state) {
+function responseForEntry(definition, entry) {
+  const beat = entry.kind;
   const common = {
     promptId: definition.promptIdentities[beat],
     beat,
@@ -56,12 +58,11 @@ function responseForBeat(definition, beat, state) {
   if (beat === 'notice') return { ...common, responsibility: 'identify-unit-relationship', inputKind: 'unit-match-choice' };
   if (beat === 'decide') return { ...common, responsibility: 'choose-common-denominator', inputKind: 'whole-fraction' };
   if (beat === 'transform') {
-    const side = state.established.conversions.left === null ? 'left' : 'right';
     return {
       ...common,
       responsibility: 'construct-equivalent-form',
       inputKind: 'fraction',
-      target: side,
+      target: entry.side,
       evidenceCategory: 'prediction',
     };
   }
@@ -178,15 +179,26 @@ function stateSnapshot(state) {
   };
 }
 
-function completedBeat(state, beat, established, nextBeat) {
-  const completed = [
-    ...state.completedBeats,
-    { beat, established },
-  ];
+function advanceSchedule(state, established, { completeCurrent = true } = {}) {
+  const entry = currentScheduleEntry(state);
+  const nextPosition = state.schedulePosition + 1;
+  const nextEntry = state.beatSchedule[nextPosition];
+  if (!entry || !nextEntry) {
+    throw new EpisodeIntentError('INVALID_BEAT_SCHEDULE', 'a non-terminal beat must have a scheduled successor');
+  }
+  const completed = completeCurrent
+    ? [...state.completedBeats, {
+      beat: entry.kind,
+      established,
+      schedulePosition: state.schedulePosition,
+      scheduleEntryId: entry.id,
+    }]
+    : state.completedBeats;
   const next = {
     ...state,
-    beat: nextBeat,
-    expectedResponse: responseForBeat(state.episodeDefinition, nextBeat, state),
+    beat: nextEntry.kind,
+    schedulePosition: nextPosition,
+    expectedResponse: responseForEntry(state.episodeDefinition, nextEntry),
     completedBeats: completed,
     revision: state.revision + 1,
     lastRecovery: null,
@@ -195,7 +207,12 @@ function completedBeat(state, beat, established, nextBeat) {
   return next;
 }
 
-function resolvedState(state, beat, established) {
+function resolvedState(state, established) {
+  const entry = currentScheduleEntry(state);
+  if (!entry || state.schedulePosition !== state.beatSchedule.length - 1) {
+    throw new EpisodeIntentError('INVALID_BEAT_SCHEDULE', 'only the final scheduled beat can resolve the episode');
+  }
+  const beat = entry.kind;
   const establishedState = {
     ...state.established,
     ...(beat === 'resolve' ? { resolution: established } : {}),
@@ -207,7 +224,12 @@ function resolvedState(state, beat, established) {
     beat,
     expectedResponse: null,
     established: establishedState,
-    completedBeats: [...state.completedBeats, { beat, established }],
+    completedBeats: [...state.completedBeats, {
+      beat,
+      established,
+      schedulePosition: state.schedulePosition,
+      scheduleEntryId: entry.id,
+    }],
     revision: state.revision + 1,
     lastRecovery: null,
     pendingResponse: null,
@@ -301,12 +323,7 @@ function handleReplay(state, intent) {
 function handleEncounter(state, intent) {
   if (intent.type !== 'acknowledge-encounter') return null;
   const established = { acknowledged: true };
-  const next = completedBeat(
-    state,
-    'encounter',
-    established,
-    'notice',
-  );
+  const next = advanceSchedule(state, established);
   return assessedSuccess(state, intent, { kind: 'encounter-acknowledged' }, {
     ...next,
     established: { ...next.established, encounter: established },
@@ -321,7 +338,7 @@ function handleNotice(state, intent) {
     ...classification,
     relationship: state.content.classification.denominator.relationship,
   };
-  const next = completedBeat(state, 'notice', established, 'decide');
+  const next = advanceSchedule(state, established);
   return assessedSuccess(state, intent, classification, {
     ...next,
     established: { ...next.established, notice: established },
@@ -339,7 +356,7 @@ function handleDecide(state, intent) {
       ? 'symbolic-continuation'
       : 'episode-definition',
   };
-  const next = completedBeat(state, 'decide', established, 'transform');
+  const next = advanceSchedule(state, established);
   return assessedSuccess(state, intent, classification, {
     ...next,
     established: { ...next.established, commonDenominator: established, route: established.route },
@@ -368,20 +385,13 @@ function handleTransform(state, intent) {
     targetDenominator,
     supportOrigin: state.nextResponseSupport ?? 'learner',
   };
-  const bothComplete = establishedConversions.left !== null && establishedConversions.right !== null;
-  const next = bothComplete
-    ? completedBeat(state, 'transform', establishedConversions, 'operate')
-    : {
+  const nextEntry = state.beatSchedule[state.schedulePosition + 1];
+  const next = nextEntry?.kind === 'transform'
+    ? advanceSchedule({
       ...state,
       established: { ...state.established, conversions: establishedConversions },
-      expectedResponse: responseForBeat(state.episodeDefinition, 'transform', {
-        ...state,
-        established: { ...state.established, conversions: establishedConversions },
-      }),
-      revision: state.revision + 1,
-      lastRecovery: null,
-      pendingResponse: null,
-    };
+    }, establishedConversions, { completeCurrent: false })
+    : advanceSchedule(state, establishedConversions);
   return assessedSuccess(state, intent, classification, {
     ...next,
     established: {
@@ -409,7 +419,7 @@ function handleOperate(state, intent) {
     proposed: intent.proposed,
     targetDenominator,
   };
-  const next = completedBeat(state, 'operate', established, 'resolve');
+  const next = advanceSchedule(state, established);
   return assessedSuccess(state, intent, classification, {
     ...next,
     established: { ...next.established, operation: established },
@@ -431,7 +441,7 @@ function handleResolve(state, intent) {
     proposed: intent.proposed,
   };
   if (state.episodeDefinition.includeReflection) {
-    const next = completedBeat(state, 'resolve', established, 'reflect');
+    const next = advanceSchedule(state, established);
     return assessedSuccess(state, intent, classification, {
       ...next,
       established: { ...next.established, resolution: established },
@@ -442,7 +452,7 @@ function handleResolve(state, intent) {
     state,
     intent,
     classification,
-    resolvedState(state, 'resolve', established),
+    resolvedState(state, established),
   );
 }
 
@@ -475,7 +485,7 @@ function handleReflect(state, intent) {
       state,
       intent,
       classification,
-      resolvedState(state, 'reflect', established),
+      resolvedState(state, established),
     );
   }
 
@@ -492,7 +502,7 @@ function handleReflect(state, intent) {
     state,
     intent,
     classification,
-    resolvedState(state, 'reflect', { response: intent.response }),
+    resolvedState(state, { response: intent.response }),
   );
 }
 
@@ -610,6 +620,15 @@ function ensureIntent(intent) {
 }
 
 function assertIntentAllowedAtBeat(state, intent) {
+  const scheduleEntry = currentScheduleEntry(state);
+  if (!Array.isArray(state.beatSchedule)
+    || !Number.isInteger(state.schedulePosition)
+    || !scheduleEntry
+    || scheduleEntry.kind !== state.beat
+    || state.expectedResponse?.beat !== state.beat
+    || (state.beat === 'transform' && state.expectedResponse.target !== scheduleEntry.side)) {
+    throw new EpisodeIntentError('INVALID_EPISODE_STATE', 'active beat does not match its scheduled entry');
+  }
   const expectedBeat = INTENT_BEATS[intent.type];
   if (expectedBeat && state.beat !== expectedBeat) {
     throw new EpisodeIntentError(
@@ -635,6 +654,8 @@ export function createEpisode({
   const definition = assertDefinition(episodeDefinition);
   const normalizedSupport = createSupportConfiguration(support);
   const normalizedCondition = validateActiveCondition(activeCondition);
+  const beatSchedule = computeBeatSchedule(content, definition);
+  const firstEntry = beatSchedule[0];
   const initial = {
     schemaVersion: 'fractionflow.episode-state/v1',
     status: 'active',
@@ -642,11 +663,11 @@ export function createEpisode({
     content,
     episodeDefinition: definition,
     activeCondition: normalizedCondition,
+    beatSchedule,
+    schedulePosition: 0,
     support: normalizedSupport,
-    beat: 'encounter',
-    expectedResponse: responseForBeat(definition, 'encounter', {
-      established: { conversions: { left: null, right: null } },
-    }),
+    beat: firstEntry.kind,
+    expectedResponse: responseForEntry(definition, firstEntry),
     established: {
       encounter: null,
       notice: null,

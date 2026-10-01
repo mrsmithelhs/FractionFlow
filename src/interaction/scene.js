@@ -4,6 +4,7 @@ import { reflectionChoicesForInstance } from '../content/data/reflection-choices
 import { premiseCheckForInstance } from '../content/data/premise-checks.js';
 import { makeContentIdentity } from './provenance.js';
 import { validateActiveCondition } from './episode-definition.js';
+import { currentScheduleEntry } from './beat-schedule.js';
 
 export const SCENE_SCHEMA_VERSION = 'fractionflow.scene/v1';
 export const EPISODE_STATE_SCHEMA_VERSION = 'fractionflow.episode-state/v1';
@@ -192,6 +193,17 @@ function assertStateShape(state) {
   if (!state.activeCondition || typeof state.activeCondition !== 'object') {
     throw new SceneProjectionError('INVALID_SCENE_INPUT', 'state.activeCondition is required');
   }
+  if (!Array.isArray(state.beatSchedule)
+    || !Number.isInteger(state.schedulePosition)
+    || state.schedulePosition < 0
+    || state.schedulePosition >= state.beatSchedule.length) {
+    throw new SceneProjectionError('INVALID_SCENE_INPUT', 'state must carry a valid active schedule position');
+  }
+  const scheduleEntry = currentScheduleEntry(state);
+  if (!scheduleEntry || scheduleEntry.kind !== state.beat
+    || typeof scheduleEntry.id !== 'string') {
+    throw new SceneProjectionError('INVALID_SCENE_INPUT', 'active beat must match its schedule entry');
+  }
   try {
     validateActiveCondition(state.activeCondition);
   } catch (error) {
@@ -244,11 +256,14 @@ function currentSupportConsequence(state) {
 }
 
 function instructionalSourceContext(state) {
+  const scheduleEntry = currentScheduleEntry(state);
   return {
     schemaVersion: state.schemaVersion,
     revision: state.revision,
     status: state.status,
     beat: state.beat,
+    schedulePosition: state.schedulePosition,
+    scheduleEntryId: scheduleEntry.id,
     episodeDefinition: {
       id: state.episodeDefinition.id,
       revision: state.episodeDefinition.revision,
@@ -487,12 +502,15 @@ function quantityScene(state, side) {
 
 function taskMeaning(state) {
   const expected = state.expectedResponse;
+  const scheduleEntry = currentScheduleEntry(state);
   const connectionForm = state.beat === 'reflect'
     ? (state.activeCondition?.connectionMaking === 'CM-01-P' ? 'premise' : 'matching')
     : null;
   if (!expected) {
     return {
       beat: state.beat,
+      schedulePosition: state.schedulePosition,
+      scheduleEntryId: scheduleEntry.id,
       responsibility: null,
       promptId: null,
       inputKind: null,
@@ -503,6 +521,8 @@ function taskMeaning(state) {
   }
   return {
     beat: state.beat,
+    schedulePosition: state.schedulePosition,
+    scheduleEntryId: scheduleEntry.id,
     responsibility: expected.responsibility,
     promptId: expected.promptId,
     inputKind: expected.inputKind,
@@ -649,6 +669,8 @@ function sceneMeaning(state, representationRole, capability) {
         responsibility: state.expectedResponse.responsibility,
         inputKind: state.expectedResponse.inputKind,
         target: state.expectedResponse.target ?? null,
+        schedulePosition: state.schedulePosition,
+        scheduleEntryId: currentScheduleEntry(state).id,
       }
       : null,
     status: {

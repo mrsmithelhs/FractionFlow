@@ -1,4 +1,5 @@
 import { describe, expect, it } from 'vitest';
+import { readFileSync } from 'node:fs';
 import {
   applyIntent,
   createEpisode,
@@ -44,7 +45,33 @@ function curatedInstance() {
   )).instance;
 }
 
+function legacyScheduleProjection(value) {
+  if (Array.isArray(value)) return value.map(legacyScheduleProjection);
+  if (!value || typeof value !== 'object') return value;
+  return Object.fromEntries(Object.entries(value)
+    .filter(([key]) => !['beatSchedule', 'schedulePosition', 'scheduleEntryId'].includes(key))
+    .map(([key, entry]) => [key, legacyScheduleProjection(entry)]));
+}
+
 describe('Plan 05 provenance and replay', () => {
+  it('reconstructs the b654487 envelope and state oracles under the approved narrow projection', () => {
+    const oracle = JSON.parse(readFileSync(
+      new URL('./fixtures/plan-16-legacy-replay-oracle.json', import.meta.url),
+      'utf8',
+    ));
+    expect(oracle.oracleCommit).toBe('b65448794cd4c4577b1ad20683e63acafe5a5d38');
+    expect(oracle.fixtures).toHaveLength(23);
+
+    for (const fixture of oracle.fixtures) {
+      const replayed = replayEpisode(JSON.parse(JSON.stringify(fixture.envelope)));
+      expect(legacyScheduleProjection(replayed), fixture.name).toEqual(fixture.expectedState);
+      expect(fixture.envelope.schemaVersion).toBe('fractionflow.episode-replay/v1');
+      expect(fixture.envelope.episodeDefinition).toEqual(fixture.episodeDefinition);
+      const currentRoundTrip = replayEpisode(JSON.parse(JSON.stringify(createReplayEnvelope(replayed))));
+      expect(JSON.stringify(currentRoundTrip), `${fixture.name} current replay`).toBe(JSON.stringify(replayed));
+    }
+  });
+
   it('records supported help separately from an uncued response opportunity', () => {
     let state = createEpisode({ instance: curatedInstance() });
     state = applyIntent(state, { type: 'acknowledge-encounter' });
@@ -58,6 +85,10 @@ describe('Plan 05 provenance and replay', () => {
     expect(state.responseProvenance.at(-1).evidenceCategory).toBe('supported-construction');
     expect(state.responseProvenance.at(-1).helpHistory.at(-1).level).toBe('demonstrate');
     expect(state.responseProvenance.at(-1).visibility.supplied).toContain('reviewed-demonstration');
+    expect(state.responseProvenance.at(-1)).toMatchObject({
+      schedulePosition: 3,
+      scheduleEntryId: 'transform-left',
+    });
   });
 
   it('retains demonstration support across an incorrect retry', () => {

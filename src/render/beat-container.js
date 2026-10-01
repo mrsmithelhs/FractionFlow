@@ -108,7 +108,9 @@ export function createBeatContainer({
 
   function renderCompletedBeats(scene) {
     completedBeatsEl.replaceChildren();
-    const currentBeat = scene.meaning.currentTask.beat;
+    const currentTask = scene.meaning.currentTask;
+    const currentEntryId = currentTask.scheduleEntryId;
+    const schedulePosition = currentTask.schedulePosition;
     const unitRel = scene.meaning.unitRelationship;
     const quantities = scene.meaning.quantities;
     const op = scene.meaning.operation;
@@ -116,17 +118,17 @@ export function createBeatContainer({
     const milestones = [];
 
     // Encounter is completed if past encounter
-    if (currentBeat !== 'encounter') {
+    if (schedulePosition > 0) {
       milestones.push(strings.summaryLines.encounterDone || 'Problem established.');
     }
 
     // Notice completed if past notice
-    if (currentBeat !== 'encounter' && currentBeat !== 'notice') {
+    if (schedulePosition > 1) {
       milestones.push(strings.summaryLines.noticeDone);
     }
 
     // Decide completed if common unit is established and past decide
-    if (unitRel.commonUnit && currentBeat !== 'encounter' && currentBeat !== 'notice' && currentBeat !== 'decide') {
+    if (unitRel.commonUnit && schedulePosition > 2 && currentEntryId !== 'decide') {
       milestones.push(strings.summaryLines.decideDone(
         unitRel.commonUnit.targetDenominator,
         unitRel.commonUnit.mathClassification,
@@ -134,28 +136,31 @@ export function createBeatContainer({
     }
 
     // Transform completed if conversions established and past transform
-    if (currentBeat === 'operate' || currentBeat === 'resolve' || currentBeat === 'reflect') {
-      milestones.push(strings.summaryLines.transformDone(
-        'left',
-        `${quantities.left.sourceForm.numerator}/${quantities.left.sourceForm.denominator}`,
-        `${quantities.left.currentForm.numerator}/${quantities.left.currentForm.denominator}`,
-      ));
-      milestones.push(strings.summaryLines.transformDone(
-        'right',
-        `${quantities.right.sourceForm.numerator}/${quantities.right.sourceForm.denominator}`,
-        `${quantities.right.currentForm.numerator}/${quantities.right.currentForm.denominator}`,
-      ));
+    if (schedulePosition > 2 && !currentEntryId.startsWith('transform-')) {
+      const changedSides = ['left', 'right'].filter((side) => {
+        const quantity = quantities[side];
+        return quantity.sourceForm.numerator !== quantity.currentForm.numerator
+          || quantity.sourceForm.denominator !== quantity.currentForm.denominator;
+      });
+      for (const side of changedSides) {
+        const quantity = quantities[side];
+        milestones.push(strings.summaryLines.transformDone(
+          side,
+          `${quantity.sourceForm.numerator}/${quantity.sourceForm.denominator}`,
+          `${quantity.currentForm.numerator}/${quantity.currentForm.denominator}`,
+        ));
+      }
     }
 
     // Operate completed if past operate
-    if ((currentBeat === 'resolve' || currentBeat === 'reflect') && op.rawResult) {
+    if (op.rawResult && currentEntryId !== 'operate') {
       milestones.push(strings.summaryLines.operateDone(
         `${op.rawResult.numerator}/${op.rawResult.denominator}`,
       ));
     }
 
     // Resolve completed if past resolve
-    if (currentBeat === 'reflect' && (op.preferredFinalForm || op.rawResult)) {
+    if (currentEntryId === 'reflect' && (op.preferredFinalForm || op.rawResult)) {
       const finalForm = op.preferredFinalForm || op.rawResult;
       milestones.push(strings.summaryLines.resolveDone(
         `${finalForm.numerator}/${finalForm.denominator}`,
@@ -213,6 +218,8 @@ export function createBeatContainer({
     // Condition B & Repair 07 Item 2: Scope re-render so active control subtree is not rebuilt on replay
     const token = JSON.stringify({
       beat,
+      schedulePosition: task.schedulePosition,
+      scheduleEntryId: task.scheduleEntryId,
       target: task.target,
       promptId: task.promptId,
       connectionForm: task.connectionForm,

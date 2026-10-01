@@ -1,4 +1,5 @@
 export * from './episode-definition.js';
+export * from './beat-schedule.js';
 export * from './support.js';
 export * from './classification.js';
 export * from './provenance.js';
