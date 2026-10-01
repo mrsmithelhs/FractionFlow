@@ -63,6 +63,21 @@ The initial harmless Git metadata refresh/staging attempt was denied by the mana
 
 An early synthetic render-summary test fixture lacked the current schedule identity and separate source/current forms now required by scene derivation. The fixture was corrected to express the intended current scene; no product behavior was weakened. The expanded tests then passed with the full suite and route matrix.
 
+## Bounded delivery-review repair
+
+The delivery review found that the exported schedule helper accepted arbitrary nonempty operation strings. Updated `computeBeatSchedule` to accept only `add` and `subtract`; unsupported and malformed values now fail with `INVALID_BEAT_SCHEDULE_INPUT`. Added a focused regression test covering both supported operations and rejecting `bogus`, `multiply`, empty and whitespace strings, `undefined`, `null`, a number, and an object. This does not change family admission, registered definitions, replay semantics, learner behavior, or the route matrix.
+
+Repair validation:
+
+- `npm test` — passed: 22 test files, 265 tests.
+- `npm run build` — passed with Vite 6.4.3 (44 modules).
+- `npm run test:routes` — passed: `Route Matrix Run Complete: 27 passed, 0 failed (27 total).`
+- `node scripts/dev/plan-status.js lint` — passed: `lint: OK (no violations)`.
+- `git diff --check` — passed; Git emitted only LF-to-CRLF working-copy warnings.
+- Route matrix SHA-256 — current and `51bdec7` baseline both equal `ef56b30ed99fd641fa185d7b788552f64ce034865cf474854616e723d4659891`; `git diff` reported no route-matrix change.
+
+The packet start check reports `BLOCKED: plan-16 has status "delivered" — not ready or in-progress`. The orchestrator's bounded repair handoff explicitly authorizes this repair. The existing `delivered` status was preserved as instructed; packet lint passes.
+
 ## Remaining risks and limits
 
 - The route matrix is the bounded behavioral witness for the currently supported canonical learner path; this does not test browser behavior for the synthetic unreachable schedules.
@@ -78,4 +93,4 @@ The advisor found no blocking issue in schedule successors, combined transformat
 
 ## Delivery handoff
 
-Implementation is committed as `27480ff`. The progress report is committed separately as the final implementation act. No packet status was changed and nothing was pushed. This work is ready for orchestrator/owner delivery review; that review owns acceptance and any packet-status update.
+The original implementation is committed as `27480ff`; the bounded operation-validation repair is committed as `fe4f507`. This progress-report update is committed separately as the final write. Packet status remains `delivered`, and nothing was pushed. The repaired work is ready for orchestrator re-review; acceptance remains with the orchestrator/owner.
