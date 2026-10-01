@@ -785,6 +785,65 @@
           {"type":"activeElementEquals","target":"activeElement","value":"button.fraction-control.app-secondary-button.app-view-toggle"}
         ]
       }
+    },
+    {
+      "id": "ROUTE-PROTOTYPE-SUBTRACTION-TAKEAWAY",
+      "behavior": "A learner removes the subtrahend's part from the minuend, enters the difference, and can inspect the marked part.",
+      "configuration": "plan15-subtraction-prototype",
+      "startingSurface": "subtraction-takeaway-prototype",
+      "viewport": {"width":360,"height":740},
+      "motionModes": ["standard-motion","reduced-motion"],
+      "witness": "browser",
+      "actions": [
+        {"step":1,"method":"click","target":"#operation-button","description":"Mark the seventh from the subtrahend as taken away"},
+        {"step":2,"method":"fill","target":"#answer-numerator","value":"3","description":"Enter the difference numerator"},
+        {"step":3,"method":"fill","target":"#answer-denominator","value":"7","description":"Enter the difference denominator"},
+        {"step":4,"method":"click","target":"#answer-form button[type=submit]","description":"Check the entered difference"}
+      ],
+      "expect": {
+        "capture": {"target":"#representation-visual","type":"innerHTML"},
+        "assertions": [
+          {"type":"attributeEquals","target":"#subtraction-prototype","attribute":"data-mode","value":"takeaway"},
+          {"type":"hasSelector","target":".bar-segment.is-removed"},
+          {"type":"notHasSelector","target":".gap-marker"},
+          {"type":"containsText","target":"#answer-feedback","value":"That’s right."}
+        ]
+      },
+      "negativeControl": {
+        "targetRouteId":"ROUTE-PROTOTYPE-SUBTRACTION-COMPARISON",
+        "comparison":"notIdenticalCapture",
+        "sameMotionMode":true
+      }
+    },
+    {
+      "id": "ROUTE-PROTOTYPE-SUBTRACTION-COMPARISON",
+      "behavior": "A learner reveals the aligned bars' gap, enters the difference, and can inspect the marked gap.",
+      "configuration": "plan15-subtraction-prototype",
+      "startingSurface": "subtraction-comparison-prototype",
+      "viewport": {"width":360,"height":740},
+      "motionModes": ["standard-motion","reduced-motion"],
+      "witness": "browser",
+      "actions": [
+        {"step":1,"method":"click","target":"#operation-button","description":"Reveal the gap between the amounts"},
+        {"step":2,"method":"fill","target":"#answer-numerator","value":"3","description":"Enter the difference numerator"},
+        {"step":3,"method":"fill","target":"#answer-denominator","value":"7","description":"Enter the difference denominator"},
+        {"step":4,"method":"click","target":"#answer-form button[type=submit]","description":"Check the entered difference"}
+      ],
+      "expect": {
+        "capture": {"target":"#representation-visual","type":"innerHTML"},
+        "assertions": [
+          {"type":"attributeEquals","target":"#subtraction-prototype","attribute":"data-mode","value":"comparison"},
+          {"type":"hasSelector","target":".comparison-model .quantity-row:nth-of-type(2)"},
+          {"type":"hasSelector","target":".gap-marker"},
+          {"type":"notHasSelector","target":".bar-segment.is-removed"},
+          {"type":"containsText","target":"#answer-feedback","value":"That’s right."}
+        ]
+      },
+      "negativeControl": {
+        "targetRouteId":"ROUTE-PROTOTYPE-SUBTRACTION-TAKEAWAY",
+        "comparison":"notIdenticalCapture",
+        "sameMotionMode":true
+      }
     }
   ]
 }

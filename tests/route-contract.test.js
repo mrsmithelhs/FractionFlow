@@ -6,7 +6,12 @@ import { fileURLToPath } from 'node:url';
 import { REGISTERED_CONDITIONS } from '../src/app/conditions.js';
 
 const require = createRequire(import.meta.url);
-const { validateMatrixIntegrity } = require('../scripts/dev/run-route-matrix.js');
+const {
+  expandRouteExecutions,
+  resolveStartingSurface,
+  selectRoutesForRun,
+  validateMatrixIntegrity,
+} = require('../scripts/dev/run-route-matrix.js');
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const matrixPath = path.resolve(__dirname, 'routes/route-matrix.json');
@@ -97,13 +102,97 @@ describe('Plan 14 Reachable Behavior Route Contract & Matrix Schema', () => {
     }
   });
 
-  it('enforces starting-surface rule: all routes begin from mounted-app-entry', () => {
-    for (const route of matrix.routes) {
+  it('preserves the 27 learner routes and declares two subtraction prototype rows', () => {
+    expect(matrix.routes).toHaveLength(29);
+    const learnerRoutes = matrix.routes.filter((route) => route.configuration !== 'plan15-subtraction-prototype');
+    expect(learnerRoutes).toHaveLength(27);
+    for (const route of learnerRoutes) {
       expect(route.startingSurface).toBe('mounted-app-entry');
       expect(route.viewport).toEqual({ width: 360, height: 740 });
       expect(['standard-motion', 'reduced-motion']).toContain(route.motionMode);
       expect(route.witness).toBe('browser');
     }
+
+    const prototypeRoutes = matrix.routes.filter((route) => (
+      route.configuration === 'plan15-subtraction-prototype'
+    ));
+    expect(prototypeRoutes.map((route) => route.id)).toEqual([
+      'ROUTE-PROTOTYPE-SUBTRACTION-TAKEAWAY',
+      'ROUTE-PROTOTYPE-SUBTRACTION-COMPARISON',
+    ]);
+    for (const route of prototypeRoutes) {
+      expect(route.viewport).toEqual({ width: 360, height: 740 });
+      expect(route.motionModes).toEqual(['standard-motion', 'reduced-motion']);
+      expect(route.witness).toBe('browser');
+      expect(route.negativeControl.sameMotionMode).toBe(true);
+      expect(route.expect.capture.target).toBe('#representation-visual');
+    }
+  });
+
+  it('executes each prototype route in both motion modes and brings in its filtered negative control', () => {
+    const executions = expandRouteExecutions(matrix.routes);
+    expect(executions).toHaveLength(31);
+    expect(executions.filter((execution) => (
+      execution.route.configuration === 'plan15-subtraction-prototype'
+    ))).toHaveLength(4);
+
+    const filtered = selectRoutesForRun(
+      matrix.routes,
+      'ROUTE-PROTOTYPE-SUBTRACTION-TAKEAWAY',
+    );
+    expect(filtered.map((route) => route.id)).toEqual([
+      'ROUTE-PROTOTYPE-SUBTRACTION-TAKEAWAY',
+      'ROUTE-PROTOTYPE-SUBTRACTION-COMPARISON',
+    ]);
+    expect(expandRouteExecutions(filtered)).toHaveLength(4);
+  });
+
+  it('rejects a prototype route when its same-motion negative control row is removed', async () => {
+    const mutated = JSON.parse(JSON.stringify(matrix));
+    mutated.routes = mutated.routes.filter((route) => (
+      route.id !== 'ROUTE-PROTOTYPE-SUBTRACTION-COMPARISON'
+    ));
+    const result = await validateMatrixIntegrity(mutated, REGISTERED_CONDITIONS);
+    expect(result.valid).toBe(false);
+    expect(result.errors.some((error) => error.includes('negative control references missing route'))).toBe(true);
+  });
+
+  it('maps only declared browser starting surfaces and supplies their readiness selectors', async () => {
+    expect(resolveStartingSurface('mounted-app-entry')).toEqual({
+      path: '',
+      readySelector: '.fractionflow-app',
+    });
+    expect(resolveStartingSurface('subtraction-takeaway-prototype')).toEqual({
+      path: 'prototypes/subtraction/index.html?mode=takeaway&fixture=0',
+      readySelector: '#subtraction-prototype[data-mode="takeaway"]',
+    });
+    expect(resolveStartingSurface('subtraction-comparison-prototype')).toEqual({
+      path: 'prototypes/subtraction/index.html?mode=comparison&fixture=0',
+      readySelector: '#subtraction-prototype[data-mode="comparison"]',
+    });
+    expect(resolveStartingSurface('unknown-surface')).toBeNull();
+
+    const mutated = JSON.parse(JSON.stringify(matrix));
+    mutated.routes[0].startingSurface = 'unknown-surface';
+    const result = await validateMatrixIntegrity(mutated, REGISTERED_CONDITIONS);
+    expect(result.valid).toBe(false);
+    expect(result.errors.some((error) => error.includes('unknown startingSurface'))).toBe(true);
+  });
+
+  it('rejects unknown motion modes and missing same-mode negative controls', async () => {
+    const mutatedMode = JSON.parse(JSON.stringify(matrix));
+    mutatedMode.routes.find((route) => route.id === 'ROUTE-PROTOTYPE-SUBTRACTION-TAKEAWAY')
+      .motionModes[1] = 'automatic-motion';
+    const modeResult = await validateMatrixIntegrity(mutatedMode, REGISTERED_CONDITIONS);
+    expect(modeResult.valid).toBe(false);
+    expect(modeResult.errors.some((error) => error.includes('invalid motion mode "automatic-motion"'))).toBe(true);
+
+    const mutatedControl = JSON.parse(JSON.stringify(matrix));
+    mutatedControl.routes.find((route) => route.id === 'ROUTE-PROTOTYPE-SUBTRACTION-COMPARISON')
+      .motionModes = ['standard-motion'];
+    const controlResult = await validateMatrixIntegrity(mutatedControl, REGISTERED_CONDITIONS);
+    expect(controlResult.valid).toBe(false);
+    expect(controlResult.errors.some((error) => error.includes('requires negative control'))).toBe(true);
   });
 
   it('requires the retired focus defect to assert the restored first choice', () => {

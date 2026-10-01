@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#f5f7fb">
+    <title>FractionFlow subtraction prototype</title>
+  </head>
+  <body>
+    <div id="subtraction-prototype">
+      <header class="page-header">
+        <h1>Show subtraction</h1>
+        <nav aria-label="Choose a way to show subtraction" class="mode-switch">
+          <a id="takeaway-link" href="?mode=takeaway">Take away</a>
+          <a id="comparison-link" href="?mode=comparison">Compare</a>
+        </nav>
+      </header>
+
+      <main>
+        <div class="fixture-picker">
+          <label for="fixture-select">Choose an example</label>
+          <select id="fixture-select">
+            <option value="0">4/7 − 1/7</option>
+            <option value="1">5/6 − 1/3</option>
+            <option value="2">3/4 − 1/3</option>
+            <option value="3">5/8 − 1/2</option>
+          </select>
+        </div>
+
+        <section aria-labelledby="problem-heading" class="problem">
+          <h2 id="problem-heading">Find the difference</h2>
+          <p id="original-equation" class="equation"></p>
+          <p id="renamed-equation" class="equation renamed-equation" hidden></p>
+        </section>
+
+        <section id="representation" aria-label="Fraction bar model">
+          <div id="representation-visual"></div>
+          <button id="operation-button" class="primary-control" type="button"></button>
+          <p id="operation-status" class="status-message" aria-live="polite"></p>
+        </section>
+
+        <form id="answer-form" aria-label="Enter your fraction" hidden>
+          <fieldset>
+            <legend>Your answer</legend>
+            <label class="fraction-input">
+              <span class="visually-hidden">Numerator</span>
+              <input id="answer-numerator" name="numerator" type="text" inputmode="numeric" autocomplete="off" aria-label="Numerator">
+              <span aria-hidden="true" class="fraction-divider">/</span>
+              <span class="visually-hidden">Denominator</span>
+              <input id="answer-denominator" name="denominator" type="text" inputmode="numeric" autocomplete="off" aria-label="Denominator">
+            </label>
+            <button class="primary-control" type="submit">Check answer</button>
+          </fieldset>
+        </form>
+        <p id="answer-feedback" class="answer-feedback" role="status" aria-live="polite"></p>
+      </main>
+    </div>
+    <script type="module" src="./main.js"></script>
+  </body>
+</html>

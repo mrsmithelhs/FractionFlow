@@ -8,7 +8,10 @@
   },
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "dev:prototype": "vite --config vite.subtraction.config.js",
+    "build": "node scripts/dev/build.mjs",
+    "build:learner": "vite build",
+    "build:prototype": "vite build --config vite.subtraction.config.js",
     "preview": "vite preview",
     "test": "vitest run --passWithNoTests",
     "test:routes": "node scripts/dev/run-route-matrix.js"

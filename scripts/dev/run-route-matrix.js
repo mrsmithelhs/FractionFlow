@@ -26,6 +26,60 @@ const { chromium } = require('playwright');
 const rootDir = path.resolve(__dirname, '../..');
 const distDir = path.join(rootDir, 'dist');
 const matrixPath = path.join(rootDir, 'tests/routes/route-matrix.json');
+const validMotionModes = new Set(['standard-motion', 'reduced-motion']);
+const startingSurfaces = Object.freeze({
+  'mounted-app-entry': Object.freeze({
+    path: '',
+    readySelector: '.fractionflow-app',
+  }),
+  'subtraction-takeaway-prototype': Object.freeze({
+    path: 'prototypes/subtraction/index.html?mode=takeaway&fixture=0',
+    readySelector: '#subtraction-prototype[data-mode="takeaway"]',
+  }),
+  'subtraction-comparison-prototype': Object.freeze({
+    path: 'prototypes/subtraction/index.html?mode=comparison&fixture=0',
+    readySelector: '#subtraction-prototype[data-mode="comparison"]',
+  }),
+});
+
+function resolveStartingSurface(surfaceId) {
+  return startingSurfaces[surfaceId] || null;
+}
+
+function getRouteMotionModes(route) {
+  if (Array.isArray(route.motionModes)) return route.motionModes;
+  return typeof route.motionMode === 'string' ? [route.motionMode] : [];
+}
+
+function expandRouteExecutions(routes) {
+  return routes.flatMap((route) => getRouteMotionModes(route).map((motionMode) => ({
+    route,
+    motionMode,
+  })));
+}
+
+function selectRoutesForRun(routes, filter) {
+  if (!filter) return routes;
+
+  const selected = new Set(routes.filter((route) => route.id.includes(filter)).map((route) => route.id));
+  let changed = true;
+  while (changed) {
+    changed = false;
+    for (const route of routes) {
+      if (!selected.has(route.id) || route.negativeControl?.sameMotionMode !== true) continue;
+      const targetId = route.negativeControl.targetRouteId;
+      if (routes.some((candidate) => candidate.id === targetId) && !selected.has(targetId)) {
+        selected.add(targetId);
+        changed = true;
+      }
+    }
+  }
+  return routes.filter((route) => selected.has(route.id));
+}
+
+function routeCaptureKey(routeId, motionMode) {
+  return routeId + '::' + motionMode;
+}
 
 const mimeTypes = {
   '.html': 'text/html',
@@ -79,10 +133,32 @@ async function validateMatrixIntegrity(matrix, registeredConditions) {
     configurationsCovered.add(route.configuration);
 
     if (!route.startingSurface) errors.push(`Route "${route.id}" missing required "startingSurface".`);
+    else if (!resolveStartingSurface(route.startingSurface)) {
+      errors.push(`Route "${route.id}" has unknown startingSurface "${route.startingSurface}".`);
+    }
     if (!route.viewport || !route.viewport.width || !route.viewport.height) {
       errors.push(`Route "${route.id}" missing explicit "viewport" geometry.`);
     }
-    if (!route.motionMode) errors.push(`Route "${route.id}" missing required "motionMode".`);
+    const hasMotionMode = typeof route.motionMode === 'string';
+    const hasMotionModes = Object.hasOwn(route, 'motionModes');
+    if (hasMotionMode && hasMotionModes) {
+      errors.push(`Route "${route.id}" must use either "motionMode" or "motionModes", not both.`);
+    } else if (!hasMotionMode && !hasMotionModes) {
+      errors.push(`Route "${route.id}" missing required motion mode declaration.`);
+    } else {
+      const modes = getRouteMotionModes(route);
+      if (modes.length === 0) {
+        errors.push(`Route "${route.id}" must declare at least one motion mode.`);
+      }
+      if (new Set(modes).size !== modes.length) {
+        errors.push(`Route "${route.id}" repeats a motion mode.`);
+      }
+      for (const mode of modes) {
+        if (!validMotionModes.has(mode)) {
+          errors.push(`Route "${route.id}" has invalid motion mode "${mode}".`);
+        }
+      }
+    }
     if (!['browser', 'harness'].includes(route.witness)) {
       errors.push(`Route "${route.id}" has invalid witness "${route.witness}".`);
     }
@@ -124,6 +200,25 @@ async function validateMatrixIntegrity(matrix, registeredConditions) {
           if (!action.witnessRouteId) {
             errors.push(`FATAL (Condition A): Route "${route.id}" step ${action.step} fast-forward must specify "witnessRouteId".`);
           }
+        }
+      }
+    }
+  }
+
+  for (const route of matrix.routes) {
+    if (!route.negativeControl) continue;
+    const target = matrix.routes.find((candidate) => candidate.id === route.negativeControl.targetRouteId);
+    if (!target) {
+      if (route.negativeControl.sameMotionMode === true) {
+        errors.push(`Route "${route.id}" negative control references missing route "${route.negativeControl.targetRouteId}".`);
+      }
+      continue;
+    }
+    if (route.negativeControl.sameMotionMode === true) {
+      const targetModes = getRouteMotionModes(target);
+      for (const mode of getRouteMotionModes(route)) {
+        if (!targetModes.includes(mode)) {
+          errors.push(`Route "${route.id}" requires negative control "${target.id}" under "${mode}", but that mode is not declared.`);
         }
       }
     }
@@ -402,20 +497,21 @@ async function runRouteMatrix(options = {}) {
     throw new Error(`Failed to capture initial baseline: ${err.message}`);
   }
 
-  const routesToRun = filter
-    ? matrix.routes.filter((r) => r.id.includes(filter))
-    : matrix.routes;
+  const routesToRun = selectRoutesForRun(matrix.routes, filter);
+  const routeExecutions = expandRouteExecutions(routesToRun);
 
   if (verbose) {
-    console.log(`Executing ${routesToRun.length} route witnesses using browser channel: ${browserChannel || 'default chromium'}...`);
+    console.log(`Executing ${routeExecutions.length} browser witnesses from ${routesToRun.length} route rows using browser channel: ${browserChannel || 'default chromium'}...`);
   }
 
   try {
-    for (const route of routesToRun) {
+    for (const execution of routeExecutions) {
+      const { route, motionMode } = execution;
+      const resultId = route.id + ' [' + motionMode + ']';
       const startTime = Date.now();
       const contextOptions = {
         viewport: route.viewport,
-        reducedMotion: route.motionMode === 'reduced-motion' ? 'reduce' : 'no-preference',
+        reducedMotion: motionMode === 'reduced-motion' ? 'reduce' : 'no-preference',
       };
 
       const context = await browser.newContext(contextOptions);
@@ -423,8 +519,10 @@ async function runRouteMatrix(options = {}) {
       page.setDefaultTimeout(5000);
 
       try {
-        await page.goto(baseUrl);
-        await page.waitForSelector('.fractionflow-app');
+        const startingSurface = resolveStartingSurface(route.startingSurface);
+        const startUrl = new URL(startingSurface.path, baseUrl).toString();
+        await page.goto(startUrl);
+        await page.waitForSelector(startingSurface.readySelector);
 
         // Execute action sequence
         for (const action of route.actions) {
@@ -433,6 +531,7 @@ async function runRouteMatrix(options = {}) {
 
         // Capture output for negative control / sameness check
         const capturedVal = await captureOutput(page, route.expect.capture);
+        captures.set(routeCaptureKey(route.id, motionMode), capturedVal);
         captures.set(route.id, capturedVal);
 
         // Verify assertions
@@ -440,14 +539,14 @@ async function runRouteMatrix(options = {}) {
 
         const duration = Date.now() - startTime;
         if (route.knownDefect) {
-          routeResults.push({ id: route.id, status: 'known-defect', duration, route });
+          routeResults.push({ id: resultId, routeId: route.id, motionMode, status: 'known-defect', duration, route });
           if (verbose) {
-            console.log(`  ⚠ ${route.id} (${duration}ms) [KNOWN DEFECT: ${route.knownDefect.id} - ${route.knownDefect.description}]`);
+            console.log(`  ⚠ ${resultId} (${duration}ms) [KNOWN DEFECT: ${route.knownDefect.id} - ${route.knownDefect.description}]`);
           }
         } else {
-          routeResults.push({ id: route.id, status: 'pass', duration, route });
+          routeResults.push({ id: resultId, routeId: route.id, motionMode, status: 'pass', duration, route });
           if (verbose) {
-            console.log(`  ✓ ${route.id} (${duration}ms)`);
+            console.log(`  ✓ ${resultId} (${duration}ms)`);
           }
         }
       } catch (err) {
@@ -455,11 +554,11 @@ async function runRouteMatrix(options = {}) {
         if (route.knownDefect) {
           const cleanMsg = err.message.endsWith('.') ? err.message : `${err.message}.`;
           const defectErrMsg = `FATAL: Route "${route.id}" is marked with knownDefect "${route.knownDefect.id}", but stopped exhibiting the defect: ${cleanMsg} If this defect has been repaired, retire the "knownDefect" marker and invert the expectation assertion.`;
-          routeResults.push({ id: route.id, status: 'fail', error: defectErrMsg, duration, route });
-          console.error(`  ✗ ${route.id} (${duration}ms): ${defectErrMsg}`);
+          routeResults.push({ id: resultId, routeId: route.id, motionMode, status: 'fail', error: defectErrMsg, duration, route });
+          console.error(`  ✗ ${resultId} (${duration}ms): ${defectErrMsg}`);
         } else {
-          routeResults.push({ id: route.id, status: 'fail', error: err.message, duration, route });
-          console.error(`  ✗ ${route.id} (${duration}ms): ${err.message}`);
+          routeResults.push({ id: resultId, routeId: route.id, motionMode, status: 'fail', error: err.message, duration, route });
+          console.error(`  ✗ ${resultId} (${duration}ms): ${err.message}`);
         }
       } finally {
         await context.close();
@@ -475,7 +574,7 @@ async function runRouteMatrix(options = {}) {
       if (route.declaredSameAs) {
         const targetId = route.declaredSameAs.targetRouteId;
         const targetCapture = captures.get(targetId);
-        const myCapture = captures.get(route.id);
+        const myCapture = captures.get(routeCaptureKey(res.routeId, res.motionMode));
 
         if (!targetCapture) {
           res.status = 'fail';
@@ -491,13 +590,20 @@ async function runRouteMatrix(options = {}) {
       // Rule 2: Negative Control Diversity Verification
       if (route.negativeControl) {
         const targetId = route.negativeControl.targetRouteId;
-        const targetCapture = captures.get(targetId);
-        const myCapture = captures.get(route.id);
+        const sameMotionMode = route.negativeControl.sameMotionMode === true;
+        const targetCapture = sameMotionMode
+          ? captures.get(routeCaptureKey(targetId, res.motionMode))
+          : captures.get(targetId);
+        const myCapture = captures.get(routeCaptureKey(res.routeId, res.motionMode));
 
-        if (targetCapture !== undefined && myCapture !== undefined && myCapture === targetCapture) {
+        if (sameMotionMode && targetCapture === undefined) {
           res.status = 'fail';
-          res.error = `FATAL (Rule 2): Route "${route.id}" produced output identical to negative control "${targetId}".`;
-          console.error(`  ✗ ${route.id}: ${res.error}`);
+          res.error = `FATAL (Rule 2): Route "${route.id}" lacks a captured negative control "${targetId}" under "${res.motionMode}".`;
+          console.error(`  ✗ ${res.id}: ${res.error}`);
+        } else if (targetCapture !== undefined && myCapture !== undefined && myCapture === targetCapture) {
+          res.status = 'fail';
+          res.error = `FATAL (Rule 2): Route "${route.id}" produced output identical to negative control "${targetId}" under "${res.motionMode}".`;
+          console.error(`  ✗ ${res.id}: ${res.error}`);
         }
       }
     }
@@ -512,6 +618,7 @@ async function runRouteMatrix(options = {}) {
 
   return {
     total: routeResults.length,
+    routeCount: routesToRun.length,
     passed,
     knownDefects,
     failed,
@@ -520,7 +627,12 @@ async function runRouteMatrix(options = {}) {
 }
 
 module.exports = {
+  createStaticServer,
+  expandRouteExecutions,
+  getRouteMotionModes,
+  resolveStartingSurface,
   runRouteMatrix,
+  selectRoutesForRun,
   validateMatrixIntegrity,
 };
 
@@ -546,7 +658,7 @@ if (require.main === module) {
         parts.push(`${summary.knownDefects} known defect${summary.knownDefects === 1 ? '' : 's'}`);
       }
       parts.push(`${summary.failed} failed`);
-      console.log(`\nRoute Matrix Run Complete: ${parts.join(', ')} (${summary.total} total).`);
+      console.log(`\nRoute Matrix Run Complete: ${parts.join(', ')} (${summary.routeCount} route rows; ${summary.total} browser executions).`);
       if (summary.failed > 0) {
         process.exit(1);
       } else {

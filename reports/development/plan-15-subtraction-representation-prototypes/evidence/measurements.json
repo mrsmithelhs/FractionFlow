@@ -1,0 +1,3902 @@
+{
+  "purpose": "Synthetic browser layout and participation evidence for Plan 15; no learner observations were conducted.",
+  "screenshotCount": 16,
+  "measurements": [
+    {
+      "fixture": "like-denominators",
+      "equation": "4/7 − 1/7",
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "motionMode": "standard-motion",
+      "representationMode": "takeaway",
+      "document": {
+        "scrollWidth": 360,
+        "scrollHeight": 740,
+        "clientWidth": 360,
+        "clientHeight": 740,
+        "horizontalOverflow": false,
+        "verticalOverflow": false
+      },
+      "bounds": {
+        "fixturePicker": {
+          "top": 108,
+          "bottom": 152,
+          "width": 328,
+          "height": 44,
+          "visible": true,
+          "withinViewport": true
+        },
+        "question": {
+          "top": 160,
+          "bottom": 234,
+          "width": 328,
+          "height": 74,
+          "visible": true,
+          "withinViewport": true
+        },
+        "operation": {
+          "top": 340.25,
+          "bottom": 384.25,
+          "width": 302,
+          "height": 44,
+          "visible": true,
+          "withinViewport": true
+        },
+        "answerForm": {
+          "top": 425.5,
+          "bottom": 562.5,
+          "width": 328,
+          "height": 137,
+          "visible": true,
+          "withinViewport": true
+        },
+        "feedback": {
+          "top": 570.5,
+          "bottom": 592.09,
+          "width": 328,
+          "height": 21.59,
+          "visible": true,
+          "withinViewport": true
+        }
+      },
+      "bars": [
+        {
+          "width": 328,
+          "partWidth": 46.56,
+          "parts": 7
+        }
+      ],
+      "visibleControlsAtLeast24px": true,
+      "allControlsWithinViewport": true,
+      "controls": [
+        {
+          "name": "Take away",
+          "width": 106.88,
+          "height": 40,
+          "withinViewport": true
+        },
+        {
+          "name": "Compare",
+          "width": 97.36,
+          "height": 40,
+          "withinViewport": true
+        },
+        {
+          "name": "4/7 − 1/7\n            5/6 − 1/3\n            3/4 − 1/3\n            5/8 − 1/2",
+          "width": 160,
+          "height": 44,
+          "withinViewport": true
+        },
+        {
+          "name": "Parts marked",
+          "width": 302,
+          "height": 44,
+          "withinViewport": true
+        },
+        {
+          "name": "Numerator",
+          "width": 102,
+          "height": 44,
+          "withinViewport": true
+        },
+        {
+          "name": "Denominator",
+          "width": 102,
+          "height": 44,
+          "withinViewport": true
+        },
+        {
+          "name": "Check answer",
+          "width": 302,
+          "height": 44,
+          "withinViewport": true
+        }
+      ],
+      "questionVisible": true,
+      "motionTransitionDuration": "0.18s, 0.18s",
+      "operationStatus": "Count the parts that are still shaded.",
+      "feedback": "That’s right."
+    },
+    {
+      "fixture": "like-denominators",
+      "equation": "4/7 − 1/7",
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "motionMode": "reduced-motion",
+      "representationMode": "takeaway",
+      "document": {
+        "scrollWidth": 360,
+        "scrollHeight": 740,
+        "clientWidth": 360,
+        "clientHeight": 740,
+        "horizontalOverflow": false,
+        "verticalOverflow": false
+      },
+      "bounds": {
+        "fixturePicker": {
+          "top": 108,
+          "bottom": 152,
+          "width": 328,
+          "height": 44,
+          "visible": true,
+          "withinViewport": true
+        },
+        "question": {
+          "top": 160,
+          "bottom": 234,
+          "width": 328,
+          "height": 74,
+          "visible": true,
+          "withinViewport": true
+        },
+        "operation": {
+          "top": 340.25,
+          "bottom": 384.25,
+          "width": 302,
+          "height": 44,
+          "visible": true,
+          "withinViewport": true
+        },
+        "answerForm": {
+          "top": 425.5,
+          "bottom": 562.5,
+          "width": 328,
+          "height": 137,
+          "visible": true,
+          "withinViewport": true
+        },
+        "feedback": {
+          "top": 570.5,
+          "bottom": 592.09,
+          "width": 328,
+          "height": 21.59,
+          "visible": true,
+          "withinViewport": true
+        }
+      },
+      "bars": [
+        {
+          "width": 328,
+          "partWidth": 46.56,
+          "parts": 7
+        }
+      ],
+      "visibleControlsAtLeast24px": true,
+      "allControlsWithinViewport": true,
+      "controls": [
+        {
+          "name": "Take away",
+          "width": 106.88,
+          "height": 40,
+          "withinViewport": true
+        },
+        {
+          "name": "Compare",
+          "width": 97.36,
+          "height": 40,
+          "withinViewport": true
+        },
+        {
+          "name": "4/7 − 1/7\n            5/6 − 1/3\n            3/4 − 1/3\n            5/8 − 1/2",
+          "width": 160,
+          "height": 44,
+          "withinViewport": true
+        },
+        {
+          "name": "Parts marked",
+          "width": 302,
+          "height": 44,
+          "withinViewport": true
+        },
+        {
+          "name": "Numerator",
+          "width": 102,
+          "height": 44,
+          "withinViewport": true
+        },
+        {
+          "name": "Denominator",
+          "width": 102,
+          "height": 44,
+          "withinViewport": true
+        },
+        {
+          "name": "Check answer",
+          "width": 302,
+          "height": 44,
+          "withinViewport": true
+        }
+      ],
+      "questionVisible": true,
+      "motionTransitionDuration": "0s",
+      "operationStatus": "Count the parts that are still shaded.",
+      "feedback": "That’s right."
+    },
+    {
+      "fixture": "like-denominators",
+      "equation": "4/7 − 1/7",
+      "viewport": {
+        "width": 360,
+        "height": 752
+      },
+      "motionMode": "standard-motion",
+      "representationMode": "takeaway",
+      "document": {
+        "scrollWidth": 360,
+        "scrollHeight": 752,
+        "clientWidth": 360,
+        "clientHeight": 752,
+        "horizontalOverflow": false,
+        "verticalOverflow": false
+      },
+      "bounds": {
+        "fixturePicker": {
+          "top": 108,
+          "bottom": 152,
+          "width": 328,
+          "height": 44,
+          "visible": true,
+          "withinViewport": true
+        },
+        "question": {
+          "top": 160,
+          "bottom": 234,
+          "width": 328,
+          "height": 74,
+          "visible": true,
+          "withinViewport": true
+        },
+        "operation": {
+          "top": 340.25,
+          "bottom": 384.25,
+          "width": 302,
+          "height": 44,
+          "visible": true,
+          "withinViewport": true
+        },
+        "answerForm": {
+          "top": 425.5,
+          "bottom": 562.5,
+          "width": 328,
+          "height": 137,
+          "visible": true,
+          "withinViewport": true
+        },
+        "feedback": {
+          "top": 570.5,
+          "bottom": 592.09,
+          "width": 328,
+          "height": 21.59,
+          "visible": true,
+          "withinViewport": true
+        }
+      },
+      "bars": [
+        {
+          "width": 328,
+          "partWidth": 46.56,
+          "parts": 7
+        }
+      ],
+      "visibleControlsAtLeast24px": true,
+      "allControlsWithinViewport": true,
+      "controls": [
+        {
+          "name": "Take away",
+          "width": 106.88,
+          "height": 40,
+          "withinViewport": true
+        },
+        {
+          "name": "Compare",
+          "width": 97.36,
+          "height": 40,
+          "withinViewport": true
+        },
+        {
+          "name": "4/7 − 1/7\n            5/6 − 1/3\n            3/4 − 1/3\n            5/8 − 1/2",
+          "width": 160,
+          "height": 44,
+          "withinViewport": true
+        },
+        {
+          "name": "Parts marked",
+          "width": 302,
+          "height": 44,
+          "withinViewport": true
+        },
+        {
+          "name": "Numerator",
+          "width": 102,
+          "height": 44,
+          "withinViewport": true
+        },
+        {
+          "name": "Denominator",
+          "width": 102,
+          "height": 44,
+          "withinViewport": true
+        },
+        {
+          "name": "Check answer",
+          "width": 302,
+          "height": 44,
+          "withinViewport": true
+        }
+      ],
+      "questionVisible": true,
+      "motionTransitionDuration": "0.18s, 0.18s",
+      "operationStatus": "Count the parts that are still shaded.",
+      "feedback": "That’s right."
+    },
+    {
+      "fixture": "like-denominators",
+      "equation": "4/7 − 1/7",
+      "viewport": {
+        "width": 360,
+        "height": 752
+      },
+      "motionMode": "reduced-motion",
+      "representationMode": "takeaway",
+      "document": {
+        "scrollWidth": 360,
+        "scrollHeight": 752,
+        "clientWidth": 360,
+        "clientHeight": 752,
+        "horizontalOverflow": false,
+        "verticalOverflow": false
+      },
+      "bounds": {
+        "fixturePicker": {
+          "top": 108,
+          "bottom": 152,
+          "width": 328,
+          "height": 44,
+          "visible": true,
+          "withinViewport": true
+        },
+        "question": {
+          "top": 160,
+          "bottom": 234,
+          "width": 328,
+          "height": 74,
+          "visible": true,
+          "withinViewport": true
+        },
+        "operation": {
+          "top": 340.25,
+          "bottom": 384.25,
+          "width": 302,
+          "height": 44,
+          "visible": true,
+          "withinViewport": true
+        },
+        "answerForm": {
+          "top": 425.5,
+          "bottom": 562.5,
+          "width": 328,
+          "height": 137,
+          "visible": true,
+          "withinViewport": true
+        },
+        "feedback": {
+          "top": 570.5,
+          "bottom": 592.09,
+          "width": 328,
+          "height": 21.59,
+          "visible": true,
+          "withinViewport": true
+        }
+      },
+      "bars": [
+        {
+          "width": 328,
+          "partWidth": 46.56,
+          "parts": 7
+        }
+      ],
+      "visibleControlsAtLeast24px": true,
+      "allControlsWithinViewport": true,
+      "controls": [
+        {
+          "name": "Take away",
+          "width": 106.88,
+          "height": 40,
+          "withinViewport": true
+        },
+        {
+          "name": "Compare",
+          "width": 97.36,
+          "height": 40,
+          "withinViewport": true
+        },
+        {
+          "name": "4/7 − 1/7\n            5/6 − 1/3\n            3/4 − 1/3\n            5/8 − 1/2",
+          "width": 160,
+          "height": 44,
+          "withinViewport": true
+        },
+        {
+          "name": "Parts marked",
+          "width": 302,
+          "height": 44,
+          "withinViewport": true
+        },
+        {
+          "name": "Numerator",
+          "width": 102,
+          "height": 44,
+          "withinViewport": true
+        },
+        {
+          "name": "Denominator",
+          "width": 102,
+          "height": 44,
+          "withinViewport": true
+        },
+        {
+          "name": "Check answer",
+          "width": 302,
+          "height": 44,
+          "withinViewport": true
+        }
+      ],
+      "questionVisible": true,
+      "motionTransitionDuration": "0s",
+      "operationStatus": "Count the parts that are still shaded.",
+      "feedback": "That’s right."
+    },
+    {
+      "fixture": "nested-denominators",
+      "equation": "5/6 − 1/3",
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "motionMode": "standard-motion",
+      "representationMode": "takeaway",
+      "document": {
+        "scrollWidth": 360,
+        "scrollHeight": 740,
+        "clientWidth": 360,
+        "clientHeight": 740,
+        "horizontalOverflow": false,
+        "verticalOverflow": false
+      },
+      "bounds": {
+        "fixturePicker": {
+          "top": 108,
+          "bottom": 152,
+          "width": 328,
+          "height": 44,
+          "visible": true,
+          "withinViewport": true
+        },
+        "question": {
+          "top": 160,
+          "bottom": 258.59,
+          "width": 328,
+          "height": 98.59,
+          "visible": true,
+          "withinViewport": true
+        },
+        "operation": {
+          "top": 364.84,
+          "bottom": 408.84,
+          "width": 302,
+          "height": 44,
+          "visible": true,
+          "withinViewport": true
+        },
+        "answerForm": {
+          "top": 450.09,
+          "bottom": 587.09,
+          "width": 328,
+          "height": 137,
+          "visible": true,
+          "withinViewport": true
+        },
+        "feedback": {
+          "top": 595.09,
+          "bottom": 616.69,
+          "width": 328,
+          "height": 21.59,
+          "visible": true,
+          "withinViewport": true
+        }
+      },
+      "bars": [
+        {
+          "width": 328,
+          "partWidth": 54.33,
+          "parts": 6
+        }
+      ],
+      "visibleControlsAtLeast24px": true,
+      "allControlsWithinViewport": true,
+      "controls": [
+        {
+          "name": "Take away",
+          "width": 106.88,
+          "height": 40,
+          "withinViewport": true
+        },
+        {
+          "name": "Compare",
+          "width": 97.36,
+          "height": 40,
+          "withinViewport": true
+        },
+        {
+          "name": "4/7 − 1/7\n            5/6 − 1/3\n            3/4 − 1/3\n            5/8 − 1/2",
+          "width": 160,
+          "height": 44,
+          "withinViewport": true
+        },
+        {
+          "name": "Parts marked",
+          "width": 302,
+          "height": 44,
+          "withinViewport": true
+        },
+        {
+          "name": "Numerator",
+          "width": 102,
+          "height": 44,
+          "withinViewport": true
+        },
+        {
+          "name": "Denominator",
+          "width": 102,
+          "height": 44,
+          "withinViewport": true
+        },
+        {
+          "name": "Check answer",
+          "width": 302,
+          "height": 44,
+          "withinViewport": true
+        }
+      ],
+      "questionVisible": true,
+      "motionTransitionDuration": "0.18s, 0.18s",
+      "operationStatus": "Count the parts that are still shaded.",
+      "feedback": "That’s right."
+    },
+    {
+      "fixture": "nested-denominators",
+      "equation": "5/6 − 1/3",
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "motionMode": "reduced-motion",
+      "representationMode": "takeaway",
+      "document": {
+        "scrollWidth": 360,
+        "scrollHeight": 740,
+        "clientWidth": 360,
+        "clientHeight": 740,
+        "horizontalOverflow": false,
+        "verticalOverflow": false
+      },
+      "bounds": {
+        "fixturePicker": {
+          "top": 108,
+          "bottom": 152,
+          "width": 328,
+          "height": 44,
+          "visible": true,
+          "withinViewport": true
+        },
+        "question": {
+          "top": 160,
+          "bottom": 258.59,
+          "width": 328,
+          "height": 98.59,
+          "visible": true,
+          "withinViewport": true
+        },
+        "operation": {
+          "top": 364.84,
+          "bottom": 408.84,
+          "width": 302,
+          "height": 44,
+          "visible": true,
+          "withinViewport": true
+        },
+        "answerForm": {
+          "top": 450.09,
+          "bottom": 587.09,
+          "width": 328,
+          "height": 137,
+          "visible": true,
+          "withinViewport": true
+        },
+        "feedback": {
+          "top": 595.09,
+          "bottom": 616.69,
+          "width": 328,
+          "height": 21.59,
+          "visible": true,
+          "withinViewport": true
+        }
+      },
+      "bars": [
+        {
+          "width": 328,
+          "partWidth": 54.33,
+          "parts": 6
+        }
+      ],
+      "visibleControlsAtLeast24px": true,
+      "allControlsWithinViewport": true,
+      "controls": [
+        {
+          "name": "Take away",
+          "width": 106.88,
+          "height": 40,
+          "withinViewport": true
+        },
+        {
+          "name": "Compare",
+          "width": 97.36,
+          "height": 40,
+          "withinViewport": true
+        },
+        {
+          "name": "4/7 − 1/7\n            5/6 − 1/3\n            3/4 − 1/3\n            5/8 − 1/2",
+          "width": 160,
+          "height": 44,
+          "withinViewport": true
+        },
+        {
+          "name": "Parts marked",
+          "width": 302,
+          "height": 44,
+          "withinViewport": true
+        },
+        {
+          "name": "Numerator",
+          "width": 102,
+          "height": 44,
+          "withinViewport": true
+        },
+        {
+          "name": "Denominator",
+          "width": 102,
+          "height": 44,
+          "withinViewport": true
+        },
+        {
+          "name": "Check answer",
+          "width": 302,
+          "height": 44,
+          "withinViewport": true
+        }
+      ],
+      "questionVisible": true,
+      "motionTransitionDuration": "0s",
+      "operationStatus": "Count the parts that are still shaded.",
+      "feedback": "That’s right."
+    },
+    {
+      "fixture": "nested-denominators",
+      "equation": "5/6 − 1/3",
+      "viewport": {
+        "width": 360,
+        "height": 752
+      },
+      "motionMode": "standard-motion",
+      "representationMode": "takeaway",
+      "document": {
+        "scrollWidth": 360,
+        "scrollHeight": 752,
+        "clientWidth": 360,
+        "clientHeight": 752,
+        "horizontalOverflow": false,
+        "verticalOverflow": false
+      },
+      "bounds": {
+        "fixturePicker": {
+          "top": 108,
+          "bottom": 152,
+          "width": 328,
+          "height": 44,
+          "visible": true,
+          "withinViewport": true
+        },
+        "question": {
+          "top": 160,
+          "bottom": 258.59,
+          "width": 328,
+          "height": 98.59,
+          "visible": true,
+          "withinViewport": true
+        },
+        "operation": {
+          "top": 364.84,
+          "bottom": 408.84,
+          "width": 302,
+          "height": 44,
+          "visible": true,
+          "withinViewport": true
+        },
+        "answerForm": {
+          "top": 450.09,
+          "bottom": 587.09,
+          "width": 328,
+          "height": 137,
+          "visible": true,
+          "withinViewport": true
+        },
+        "feedback": {
+          "top": 595.09,
+          "bottom": 616.69,
+          "width": 328,
+          "height": 21.59,
+          "visible": true,
+          "withinViewport": true
+        }
+      },
+      "bars": [
+        {
+          "width": 328,
+          "partWidth": 54.33,
+          "parts": 6
+        }
+      ],
+      "visibleControlsAtLeast24px": true,
+      "allControlsWithinViewport": true,
+      "controls": [
+        {
+          "name": "Take away",
+          "width": 106.88,
+          "height": 40,
+          "withinViewport": true
+        },
+        {
+          "name": "Compare",
+          "width": 97.36,
+          "height": 40,
+          "withinViewport": true
+        },
+        {
+          "name": "4/7 − 1/7\n            5/6 − 1/3\n            3/4 − 1/3\n            5/8 − 1/2",
+          "width": 160,
+          "height": 44,
+          "withinViewport": true
+        },
+        {
+          "name": "Parts marked",
+          "width": 302,
+          "height": 44,
+          "withinViewport": true
+        },
+        {
+          "name": "Numerator",
+          "width": 102,
+          "height": 44,
+          "withinViewport": true
+        },
+        {
+          "name": "Denominator",
+          "width": 102,
+          "height": 44,
+          "withinViewport": true
+        },
+        {
+          "name": "Check answer",
+          "width": 302,
+          "height": 44,
+          "withinViewport": true
+        }
+      ],
+      "questionVisible": true,
+      "motionTransitionDuration": "0.18s, 0.18s",
+      "operationStatus": "Count the parts that are still shaded.",
+      "feedback": "That’s right."
+    },
+    {
+      "fixture": "nested-denominators",
+      "equation": "5/6 − 1/3",
+      "viewport": {
+        "width": 360,
+        "height": 752
+      },
+      "motionMode": "reduced-motion",
+      "representationMode": "takeaway",
+      "document": {
+        "scrollWidth": 360,
+        "scrollHeight": 752,
+        "clientWidth": 360,
+        "clientHeight": 752,
+        "horizontalOverflow": false,
+        "verticalOverflow": false
+      },
+      "bounds": {
+        "fixturePicker": {
+          "top": 108,
+          "bottom": 152,
+          "width": 328,
+          "height": 44,
+          "visible": true,
+          "withinViewport": true
+        },
+        "question": {
+          "top": 160,
+          "bottom": 258.59,
+          "width": 328,
+          "height": 98.59,
+          "visible": true,
+          "withinViewport": true
+        },
+        "operation": {
+          "top": 364.84,
+          "bottom": 408.84,
+          "width": 302,
+          "height": 44,
+          "visible": true,
+          "withinViewport": true
+        },
+        "answerForm": {
+          "top": 450.09,
+          "bottom": 587.09,
+          "width": 328,
+          "height": 137,
+          "visible": true,
+          "withinViewport": true
+        },
+        "feedback": {
+          "top": 595.09,
+          "bottom": 616.69,
+          "width": 328,
+          "height": 21.59,
+          "visible": true,
+          "withinViewport": true
+        }
+      },
+      "bars": [
+        {
+          "width": 328,
+          "partWidth": 54.33,
+          "parts": 6
+        }
+      ],
+      "visibleControlsAtLeast24px": true,
+      "allControlsWithinViewport": true,
+      "controls": [
+        {
+          "name": "Take away",
+          "width": 106.88,
+          "height": 40,
+          "withinViewport": true
+        },
+        {
+          "name": "Compare",
+          "width": 97.36,
+          "height": 40,
+          "withinViewport": true
+        },
+        {
+          "name": "4/7 − 1/7\n            5/6 − 1/3\n            3/4 − 1/3\n            5/8 − 1/2",
+          "width": 160,
+          "height": 44,
+          "withinViewport": true
+        },
+        {
+          "name": "Parts marked",
+          "width": 302,
+          "height": 44,
+          "withinViewport": true
+        },
+        {
+          "name": "Numerator",
+          "width": 102,
+          "height": 44,
+          "withinViewport": true
+        },
+        {
+          "name": "Denominator",
+          "width": 102,
+          "height": 44,
+          "withinViewport": true
+        },
+        {
+          "name": "Check answer",
+          "width": 302,
+          "height": 44,
+          "withinViewport": true
+        }
+      ],
+      "questionVisible": true,
+      "motionTransitionDuration": "0s",
+      "operationStatus": "Count the parts that are still shaded.",
+      "feedback": "That’s right."
+    },
+    {
+      "fixture": "unlike-denominators",
+      "equation": "3/4 − 1/3",
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "motionMode": "standard-motion",
+      "representationMode": "takeaway",
+      "document": {
+        "scrollWidth": 360,
+        "scrollHeight": 740,
+        "clientWidth": 360,
+        "clientHeight": 740,
+        "horizontalOverflow": false,
+        "verticalOverflow": false
+      },
+      "bounds": {
+        "fixturePicker": {
+          "top": 108,
+          "bottom": 152,
+          "width": 328,
+          "height": 44,
+          "visible": true,
+          "withinViewport": true
+        },
+        "question": {
+          "top": 160,
+          "bottom": 258.59,
+          "width": 328,
+          "height": 98.59,
+          "visible": true,
+          "withinViewport": true
+        },
+        "operation": {
+          "top": 364.84,
+          "bottom": 408.84,
+          "width": 302,
+          "height": 44,
+          "visible": true,
+          "withinViewport": true
+        },
+        "answerForm": {
+          "top": 450.09,
+          "bottom": 587.09,
+          "width": 328,
+          "height": 137,
+          "visible": true,
+          "withinViewport": true
+        },
+        "feedback": {
+          "top": 595.09,
+          "bottom": 616.69,
+          "width": 328,
+          "height": 21.59,
+          "visible": true,
+          "withinViewport": true
+        }
+      },
+      "bars": [
+        {
+          "width": 328,
+          "partWidth": 27.16,
+          "parts": 12
+        }
+      ],
+      "visibleControlsAtLeast24px": true,
+      "allControlsWithinViewport": true,
+      "controls": [
+        {
+          "name": "Take away",
+          "width": 106.88,
+          "height": 40,
+          "withinViewport": true
+        },
+        {
+          "name": "Compare",
+          "width": 97.36,
+          "height": 40,
+          "withinViewport": true
+        },
+        {
+          "name": "4/7 − 1/7\n            5/6 − 1/3\n            3/4 − 1/3\n            5/8 − 1/2",
+          "width": 160,
+          "height": 44,
+          "withinViewport": true
+        },
+        {
+          "name": "Parts marked",
+          "width": 302,
+          "height": 44,
+          "withinViewport": true
+        },
+        {
+          "name": "Numerator",
+          "width": 102,
+          "height": 44,
+          "withinViewport": true
+        },
+        {
+          "name": "Denominator",
+          "width": 102,
+          "height": 44,
+          "withinViewport": true
+        },
+        {
+          "name": "Check answer",
+          "width": 302,
+          "height": 44,
+          "withinViewport": true
+        }
+      ],
+      "questionVisible": true,
+      "motionTransitionDuration": "0.18s, 0.18s",
+      "operationStatus": "Count the parts that are still shaded.",
+      "feedback": "That’s right."
+    },
+    {
+      "fixture": "unlike-denominators",
+      "equation": "3/4 − 1/3",
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "motionMode": "reduced-motion",
+      "representationMode": "takeaway",
+      "document": {
+        "scrollWidth": 360,
+        "scrollHeight": 740,
+        "clientWidth": 360,
+        "clientHeight": 740,
+        "horizontalOverflow": false,
+        "verticalOverflow": false
+      },
+      "bounds": {
+        "fixturePicker": {
+          "top": 108,
+          "bottom": 152,
+          "width": 328,
+          "height": 44,
+          "visible": true,
+          "withinViewport": true
+        },
+        "question": {
+          "top": 160,
+          "bottom": 258.59,
+          "width": 328,
+          "height": 98.59,
+          "visible": true,
+          "withinViewport": true
+        },
+        "operation": {
+          "top": 364.84,
+          "bottom": 408.84,
+          "width": 302,
+          "height": 44,
+          "visible": true,
+          "withinViewport": true
+        },
+        "answerForm": {
+          "top": 450.09,
+          "bottom": 587.09,
+          "width": 328,
+          "height": 137,
+          "visible": true,
+          "withinViewport": true
+        },
+        "feedback": {
+          "top": 595.09,
+          "bottom": 616.69,
+          "width": 328,
+          "height": 21.59,
+          "visible": true,
+          "withinViewport": true
+        }
+      },
+      "bars": [
+        {
+          "width": 328,
+          "partWidth": 27.16,
+          "parts": 12
+        }
+      ],
+      "visibleControlsAtLeast24px": true,
+      "allControlsWithinViewport": true,
+      "controls": [
+        {
+          "name": "Take away",
+          "width": 106.88,
+          "height": 40,
+          "withinViewport": true
+        },
+        {
+          "name": "Compare",
+          "width": 97.36,
+          "height": 40,
+          "withinViewport": true
+        },
+        {
+          "name": "4/7 − 1/7\n            5/6 − 1/3\n            3/4 − 1/3\n            5/8 − 1/2",
+          "width": 160,
+          "height": 44,
+          "withinViewport": true
+        },
+        {
+          "name": "Parts marked",
+          "width": 302,
+          "height": 44,
+          "withinViewport": true
+        },
+        {
+          "name": "Numerator",
+          "width": 102,
+          "height": 44,
+          "withinViewport": true
+        },
+        {
+          "name": "Denominator",
+          "width": 102,
+          "height": 44,
+          "withinViewport": true
+        },
+        {
+          "name": "Check answer",
+          "width": 302,
+          "height": 44,
+          "withinViewport": true
+        }
+      ],
+      "questionVisible": true,
+      "motionTransitionDuration": "0s",
+      "operationStatus": "Count the parts that are still shaded.",
+      "feedback": "That’s right."
+    },
+    {
+      "fixture": "unlike-denominators",
+      "equation": "3/4 − 1/3",
+      "viewport": {
+        "width": 360,
+        "height": 752
+      },
+      "motionMode": "standard-motion",
+      "representationMode": "takeaway",
+      "document": {
+        "scrollWidth": 360,
+        "scrollHeight": 752,
+        "clientWidth": 360,
+        "clientHeight": 752,
+        "horizontalOverflow": false,
+        "verticalOverflow": false
+      },
+      "bounds": {
+        "fixturePicker": {
+          "top": 108,
+          "bottom": 152,
+          "width": 328,
+          "height": 44,
+          "visible": true,
+          "withinViewport": true
+        },
+        "question": {
+          "top": 160,
+          "bottom": 258.59,
+          "width": 328,
+          "height": 98.59,
+          "visible": true,
+          "withinViewport": true
+        },
+        "operation": {
+          "top": 364.84,
+          "bottom": 408.84,
+          "width": 302,
+          "height": 44,
+          "visible": true,
+          "withinViewport": true
+        },
+        "answerForm": {
+          "top": 450.09,
+          "bottom": 587.09,
+          "width": 328,
+          "height": 137,
+          "visible": true,
+          "withinViewport": true
+        },
+        "feedback": {
+          "top": 595.09,
+          "bottom": 616.69,
+          "width": 328,
+          "height": 21.59,
+          "visible": true,
+          "withinViewport": true
+        }
+      },
+      "bars": [
+        {
+          "width": 328,
+          "partWidth": 27.16,
+          "parts": 12
+        }
+      ],
+      "visibleControlsAtLeast24px": true,
+      "allControlsWithinViewport": true,
+      "controls": [
+        {
+          "name": "Take away",
+          "width": 106.88,
+          "height": 40,
+          "withinViewport": true
+        },
+        {
+          "name": "Compare",
+          "width": 97.36,
+          "height": 40,
+          "withinViewport": true
+        },
+        {
+          "name": "4/7 − 1/7\n            5/6 − 1/3\n            3/4 − 1/3\n            5/8 − 1/2",
+          "width": 160,
+          "height": 44,
+          "withinViewport": true
+        },
+        {
+          "name": "Parts marked",
+          "width": 302,
+          "height": 44,
+          "withinViewport": true
+        },
+        {
+          "name": "Numerator",
+          "width": 102,
+          "height": 44,
+          "withinViewport": true
+        },
+        {
+          "name": "Denominator",
+          "width": 102,
+          "height": 44,
+          "withinViewport": true
+        },
+        {
+          "name": "Check answer",
+          "width": 302,
+          "height": 44,
+          "withinViewport": true
+        }
+      ],
+      "questionVisible": true,
+      "motionTransitionDuration": "0.18s, 0.18s",
+      "operationStatus": "Count the parts that are still shaded.",
+      "feedback": "That’s right."
+    },
+    {
+      "fixture": "unlike-denominators",
+      "equation": "3/4 − 1/3",
+      "viewport": {
+        "width": 360,
+        "height": 752
+      },
+      "motionMode": "reduced-motion",
+      "representationMode": "takeaway",
+      "document": {
+        "scrollWidth": 360,
+        "scrollHeight": 752,
+        "clientWidth": 360,
+        "clientHeight": 752,
+        "horizontalOverflow": false,
+        "verticalOverflow": false
+      },
+      "bounds": {
+        "fixturePicker": {
+          "top": 108,
+          "bottom": 152,
+          "width": 328,
+          "height": 44,
+          "visible": true,
+          "withinViewport": true
+        },
+        "question": {
+          "top": 160,
+          "bottom": 258.59,
+          "width": 328,
+          "height": 98.59,
+          "visible": true,
+          "withinViewport": true
+        },
+        "operation": {
+          "top": 364.84,
+          "bottom": 408.84,
+          "width": 302,
+          "height": 44,
+          "visible": true,
+          "withinViewport": true
+        },
+        "answerForm": {
+          "top": 450.09,
+          "bottom": 587.09,
+          "width": 328,
+          "height": 137,
+          "visible": true,
+          "withinViewport": true
+        },
+        "feedback": {
+          "top": 595.09,
+          "bottom": 616.69,
+          "width": 328,
+          "height": 21.59,
+          "visible": true,
+          "withinViewport": true
+        }
+      },
+      "bars": [
+        {
+          "width": 328,
+          "partWidth": 27.16,
+          "parts": 12
+        }
+      ],
+      "visibleControlsAtLeast24px": true,
+      "allControlsWithinViewport": true,
+      "controls": [
+        {
+          "name": "Take away",
+          "width": 106.88,
+          "height": 40,
+          "withinViewport": true
+        },
+        {
+          "name": "Compare",
+          "width": 97.36,
+          "height": 40,
+          "withinViewport": true
+        },
+        {
+          "name": "4/7 − 1/7\n            5/6 − 1/3\n            3/4 − 1/3\n            5/8 − 1/2",
+          "width": 160,
+          "height": 44,
+          "withinViewport": true
+        },
+        {
+          "name": "Parts marked",
+          "width": 302,
+          "height": 44,
+          "withinViewport": true
+        },
+        {
+          "name": "Numerator",
+          "width": 102,
+          "height": 44,
+          "withinViewport": true
+        },
+        {
+          "name": "Denominator",
+          "width": 102,
+          "height": 44,
+          "withinViewport": true
+        },
+        {
+          "name": "Check answer",
+          "width": 302,
+          "height": 44,
+          "withinViewport": true
+        }
+      ],
+      "questionVisible": true,
+      "motionTransitionDuration": "0s",
+      "operationStatus": "Count the parts that are still shaded.",
+      "feedback": "That’s right."
+    },
+    {
+      "fixture": "small-difference",
+      "equation": "5/8 − 1/2",
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "motionMode": "standard-motion",
+      "representationMode": "takeaway",
+      "document": {
+        "scrollWidth": 360,
+        "scrollHeight": 740,
+        "clientWidth": 360,
+        "clientHeight": 740,
+        "horizontalOverflow": false,
+        "verticalOverflow": false
+      },
+      "bounds": {
+        "fixturePicker": {
+          "top": 108,
+          "bottom": 152,
+          "width": 328,
+          "height": 44,
+          "visible": true,
+          "withinViewport": true
+        },
+        "question": {
+          "top": 160,
+          "bottom": 258.59,
+          "width": 328,
+          "height": 98.59,
+          "visible": true,
+          "withinViewport": true
+        },
+        "operation": {
+          "top": 364.84,
+          "bottom": 408.84,
+          "width": 302,
+          "height": 44,
+          "visible": true,
+          "withinViewport": true
+        },
+        "answerForm": {
+          "top": 450.09,
+          "bottom": 587.09,
+          "width": 328,
+          "height": 137,
+          "visible": true,
+          "withinViewport": true
+        },
+        "feedback": {
+          "top": 595.09,
+          "bottom": 616.69,
+          "width": 328,
+          "height": 21.59,
+          "visible": true,
+          "withinViewport": true
+        }
+      },
+      "bars": [
+        {
+          "width": 328,
+          "partWidth": 40.75,
+          "parts": 8
+        }
+      ],
+      "visibleControlsAtLeast24px": true,
+      "allControlsWithinViewport": true,
+      "controls": [
+        {
+          "name": "Take away",
+          "width": 106.88,
+          "height": 40,
+          "withinViewport": true
+        },
+        {
+          "name": "Compare",
+          "width": 97.36,
+          "height": 40,
+          "withinViewport": true
+        },
+        {
+          "name": "4/7 − 1/7\n            5/6 − 1/3\n            3/4 − 1/3\n            5/8 − 1/2",
+          "width": 160,
+          "height": 44,
+          "withinViewport": true
+        },
+        {
+          "name": "Parts marked",
+          "width": 302,
+          "height": 44,
+          "withinViewport": true
+        },
+        {
+          "name": "Numerator",
+          "width": 102,
+          "height": 44,
+          "withinViewport": true
+        },
+        {
+          "name": "Denominator",
+          "width": 102,
+          "height": 44,
+          "withinViewport": true
+        },
+        {
+          "name": "Check answer",
+          "width": 302,
+          "height": 44,
+          "withinViewport": true
+        }
+      ],
+      "questionVisible": true,
+      "motionTransitionDuration": "0.18s, 0.18s",
+      "operationStatus": "Count the parts that are still shaded.",
+      "feedback": "That’s right."
+    },
+    {
+      "fixture": "small-difference",
+      "equation": "5/8 − 1/2",
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "motionMode": "reduced-motion",
+      "representationMode": "takeaway",
+      "document": {
+        "scrollWidth": 360,
+        "scrollHeight": 740,
+        "clientWidth": 360,
+        "clientHeight": 740,
+        "horizontalOverflow": false,
+        "verticalOverflow": false
+      },
+      "bounds": {
+        "fixturePicker": {
+          "top": 108,
+          "bottom": 152,
+          "width": 328,
+          "height": 44,
+          "visible": true,
+          "withinViewport": true
+        },
+        "question": {
+          "top": 160,
+          "bottom": 258.59,
+          "width": 328,
+          "height": 98.59,
+          "visible": true,
+          "withinViewport": true
+        },
+        "operation": {
+          "top": 364.84,
+          "bottom": 408.84,
+          "width": 302,
+          "height": 44,
+          "visible": true,
+          "withinViewport": true
+        },
+        "answerForm": {
+          "top": 450.09,
+          "bottom": 587.09,
+          "width": 328,
+          "height": 137,
+          "visible": true,
+          "withinViewport": true
+        },
+        "feedback": {
+          "top": 595.09,
+          "bottom": 616.69,
+          "width": 328,
+          "height": 21.59,
+          "visible": true,
+          "withinViewport": true
+        }
+      },
+      "bars": [
+        {
+          "width": 328,
+          "partWidth": 40.75,
+          "parts": 8
+        }
+      ],
+      "visibleControlsAtLeast24px": true,
+      "allControlsWithinViewport": true,
+      "controls": [
+        {
+          "name": "Take away",
+          "width": 106.88,
+          "height": 40,
+          "withinViewport": true
+        },
+        {
+          "name": "Compare",
+          "width": 97.36,
+          "height": 40,
+          "withinViewport": true
+        },
+        {
+          "name": "4/7 − 1/7\n            5/6 − 1/3\n            3/4 − 1/3\n            5/8 − 1/2",
+          "width": 160,
+          "height": 44,
+          "withinViewport": true
+        },
+        {
+          "name": "Parts marked",
+          "width": 302,
+          "height": 44,
+          "withinViewport": true
+        },
+        {
+          "name": "Numerator",
+          "width": 102,
+          "height": 44,
+          "withinViewport": true
+        },
+        {
+          "name": "Denominator",
+          "width": 102,
+          "height": 44,
+          "withinViewport": true
+        },
+        {
+          "name": "Check answer",
+          "width": 302,
+          "height": 44,
+          "withinViewport": true
+        }
+      ],
+      "questionVisible": true,
+      "motionTransitionDuration": "0s",
+      "operationStatus": "Count the parts that are still shaded.",
+      "feedback": "That’s right."
+    },
+    {
+      "fixture": "small-difference",
+      "equation": "5/8 − 1/2",
+      "viewport": {
+        "width": 360,
+        "height": 752
+      },
+      "motionMode": "standard-motion",
+      "representationMode": "takeaway",
+      "document": {
+        "scrollWidth": 360,
+        "scrollHeight": 752,
+        "clientWidth": 360,
+        "clientHeight": 752,
+        "horizontalOverflow": false,
+        "verticalOverflow": false
+      },
+      "bounds": {
+        "fixturePicker": {
+          "top": 108,
+          "bottom": 152,
+          "width": 328,
+          "height": 44,
+          "visible": true,
+          "withinViewport": true
+        },
+        "question": {
+          "top": 160,
+          "bottom": 258.59,
+          "width": 328,
+          "height": 98.59,
+          "visible": true,
+          "withinViewport": true
+        },
+        "operation": {
+          "top": 364.84,
+          "bottom": 408.84,
+          "width": 302,
+          "height": 44,
+          "visible": true,
+          "withinViewport": true
+        },
+        "answerForm": {
+          "top": 450.09,
+          "bottom": 587.09,
+          "width": 328,
+          "height": 137,
+          "visible": true,
+          "withinViewport": true
+        },
+        "feedback": {
+          "top": 595.09,
+          "bottom": 616.69,
+          "width": 328,
+          "height": 21.59,
+          "visible": true,
+          "withinViewport": true
+        }
+      },
+      "bars": [
+        {
+          "width": 328,
+          "partWidth": 40.75,
+          "parts": 8
+        }
+      ],
+      "visibleControlsAtLeast24px": true,
+      "allControlsWithinViewport": true,
+      "controls": [
+        {
+          "name": "Take away",
+          "width": 106.88,
+          "height": 40,
+          "withinViewport": true
+        },
+        {
+          "name": "Compare",
+          "width": 97.36,
+          "height": 40,
+          "withinViewport": true
+        },
+        {
+          "name": "4/7 − 1/7\n            5/6 − 1/3\n            3/4 − 1/3\n            5/8 − 1/2",
+          "width": 160,
+          "height": 44,
+          "withinViewport": true
+        },
+        {
+          "name": "Parts marked",
+          "width": 302,
+          "height": 44,
+          "withinViewport": true
+        },
+        {
+          "name": "Numerator",
+          "width": 102,
+          "height": 44,
+          "withinViewport": true
+        },
+        {
+          "name": "Denominator",
+          "width": 102,
+          "height": 44,
+          "withinViewport": true
+        },
+        {
+          "name": "Check answer",
+          "width": 302,
+          "height": 44,
+          "withinViewport": true
+        }
+      ],
+      "questionVisible": true,
+      "motionTransitionDuration": "0.18s, 0.18s",
+      "operationStatus": "Count the parts that are still shaded.",
+      "feedback": "That’s right."
+    },
+    {
+      "fixture": "small-difference",
+      "equation": "5/8 − 1/2",
+      "viewport": {
+        "width": 360,
+        "height": 752
+      },
+      "motionMode": "reduced-motion",
+      "representationMode": "takeaway",
+      "document": {
+        "scrollWidth": 360,
+        "scrollHeight": 752,
+        "clientWidth": 360,
+        "clientHeight": 752,
+        "horizontalOverflow": false,
+        "verticalOverflow": false
+      },
+      "bounds": {
+        "fixturePicker": {
+          "top": 108,
+          "bottom": 152,
+          "width": 328,
+          "height": 44,
+          "visible": true,
+          "withinViewport": true
+        },
+        "question": {
+          "top": 160,
+          "bottom": 258.59,
+          "width": 328,
+          "height": 98.59,
+          "visible": true,
+          "withinViewport": true
+        },
+        "operation": {
+          "top": 364.84,
+          "bottom": 408.84,
+          "width": 302,
+          "height": 44,
+          "visible": true,
+          "withinViewport": true
+        },
+        "answerForm": {
+          "top": 450.09,
+          "bottom": 587.09,
+          "width": 328,
+          "height": 137,
+          "visible": true,
+          "withinViewport": true
+        },
+        "feedback": {
+          "top": 595.09,
+          "bottom": 616.69,
+          "width": 328,
+          "height": 21.59,
+          "visible": true,
+          "withinViewport": true
+        }
+      },
+      "bars": [
+        {
+          "width": 328,
+          "partWidth": 40.75,
+          "parts": 8
+        }
+      ],
+      "visibleControlsAtLeast24px": true,
+      "allControlsWithinViewport": true,
+      "controls": [
+        {
+          "name": "Take away",
+          "width": 106.88,
+          "height": 40,
+          "withinViewport": true
+        },
+        {
+          "name": "Compare",
+          "width": 97.36,
+          "height": 40,
+          "withinViewport": true
+        },
+        {
+          "name": "4/7 − 1/7\n            5/6 − 1/3\n            3/4 − 1/3\n            5/8 − 1/2",
+          "width": 160,
+          "height": 44,
+          "withinViewport": true
+        },
+        {
+          "name": "Parts marked",
+          "width": 302,
+          "height": 44,
+          "withinViewport": true
+        },
+        {
+          "name": "Numerator",
+          "width": 102,
+          "height": 44,
+          "withinViewport": true
+        },
+        {
+          "name": "Denominator",
+          "width": 102,
+          "height": 44,
+          "withinViewport": true
+        },
+        {
+          "name": "Check answer",
+          "width": 302,
+          "height": 44,
+          "withinViewport": true
+        }
+      ],
+      "questionVisible": true,
+      "motionTransitionDuration": "0s",
+      "operationStatus": "Count the parts that are still shaded.",
+      "feedback": "That’s right."
+    },
+    {
+      "fixture": "like-denominators",
+      "equation": "4/7 − 1/7",
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "motionMode": "standard-motion",
+      "representationMode": "comparison",
+      "document": {
+        "scrollWidth": 360,
+        "scrollHeight": 740,
+        "clientWidth": 360,
+        "clientHeight": 740,
+        "horizontalOverflow": false,
+        "verticalOverflow": false
+      },
+      "bounds": {
+        "fixturePicker": {
+          "top": 108,
+          "bottom": 152,
+          "width": 328,
+          "height": 44,
+          "visible": true,
+          "withinViewport": true
+        },
+        "question": {
+          "top": 160,
+          "bottom": 234,
+          "width": 328,
+          "height": 74,
+          "visible": true,
+          "withinViewport": true
+        },
+        "operation": {
+          "top": 427.25,
+          "bottom": 471.25,
+          "width": 302,
+          "height": 44,
+          "visible": true,
+          "withinViewport": true
+        },
+        "answerForm": {
+          "top": 512.5,
+          "bottom": 649.5,
+          "width": 328,
+          "height": 137,
+          "visible": true,
+          "withinViewport": true
+        },
+        "feedback": {
+          "top": 657.5,
+          "bottom": 679.09,
+          "width": 328,
+          "height": 21.59,
+          "visible": true,
+          "withinViewport": true
+        }
+      },
+      "bars": [
+        {
+          "width": 328,
+          "partWidth": 46.56,
+          "parts": 7
+        },
+        {
+          "width": 328,
+          "partWidth": 46.56,
+          "parts": 7
+        }
+      ],
+      "visibleControlsAtLeast24px": true,
+      "allControlsWithinViewport": true,
+      "controls": [
+        {
+          "name": "Take away",
+          "width": 106.88,
+          "height": 40,
+          "withinViewport": true
+        },
+        {
+          "name": "Compare",
+          "width": 97.36,
+          "height": 40,
+          "withinViewport": true
+        },
+        {
+          "name": "4/7 − 1/7\n            5/6 − 1/3\n            3/4 − 1/3\n            5/8 − 1/2",
+          "width": 160,
+          "height": 44,
+          "withinViewport": true
+        },
+        {
+          "name": "Gap shown",
+          "width": 302,
+          "height": 44,
+          "withinViewport": true
+        },
+        {
+          "name": "Numerator",
+          "width": 102,
+          "height": 44,
+          "withinViewport": true
+        },
+        {
+          "name": "Denominator",
+          "width": 102,
+          "height": 44,
+          "withinViewport": true
+        },
+        {
+          "name": "Check answer",
+          "width": 302,
+          "height": 44,
+          "withinViewport": true
+        }
+      ],
+      "questionVisible": true,
+      "motionTransitionDuration": "0.18s",
+      "operationStatus": "Count the parts inside the bracket.",
+      "feedback": "That’s right."
+    },
+    {
+      "fixture": "like-denominators",
+      "equation": "4/7 − 1/7",
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "motionMode": "reduced-motion",
+      "representationMode": "comparison",
+      "document": {
+        "scrollWidth": 360,
+        "scrollHeight": 740,
+        "clientWidth": 360,
+        "clientHeight": 740,
+        "horizontalOverflow": false,
+        "verticalOverflow": false
+      },
+      "bounds": {
+        "fixturePicker": {
+          "top": 108,
+          "bottom": 152,
+          "width": 328,
+          "height": 44,
+          "visible": true,
+          "withinViewport": true
+        },
+        "question": {
+          "top": 160,
+          "bottom": 234,
+          "width": 328,
+          "height": 74,
+          "visible": true,
+          "withinViewport": true
+        },
+        "operation": {
+          "top": 427.25,
+          "bottom": 471.25,
+          "width": 302,
+          "height": 44,
+          "visible": true,
+          "withinViewport": true
+        },
+        "answerForm": {
+          "top": 512.5,
+          "bottom": 649.5,
+          "width": 328,
+          "height": 137,
+          "visible": true,
+          "withinViewport": true
+        },
+        "feedback": {
+          "top": 657.5,
+          "bottom": 679.09,
+          "width": 328,
+          "height": 21.59,
+          "visible": true,
+          "withinViewport": true
+        }
+      },
+      "bars": [
+        {
+          "width": 328,
+          "partWidth": 46.56,
+          "parts": 7
+        },
+        {
+          "width": 328,
+          "partWidth": 46.56,
+          "parts": 7
+        }
+      ],
+      "visibleControlsAtLeast24px": true,
+      "allControlsWithinViewport": true,
+      "controls": [
+        {
+          "name": "Take away",
+          "width": 106.88,
+          "height": 40,
+          "withinViewport": true
+        },
+        {
+          "name": "Compare",
+          "width": 97.36,
+          "height": 40,
+          "withinViewport": true
+        },
+        {
+          "name": "4/7 − 1/7\n            5/6 − 1/3\n            3/4 − 1/3\n            5/8 − 1/2",
+          "width": 160,
+          "height": 44,
+          "withinViewport": true
+        },
+        {
+          "name": "Gap shown",
+          "width": 302,
+          "height": 44,
+          "withinViewport": true
+        },
+        {
+          "name": "Numerator",
+          "width": 102,
+          "height": 44,
+          "withinViewport": true
+        },
+        {
+          "name": "Denominator",
+          "width": 102,
+          "height": 44,
+          "withinViewport": true
+        },
+        {
+          "name": "Check answer",
+          "width": 302,
+          "height": 44,
+          "withinViewport": true
+        }
+      ],
+      "questionVisible": true,
+      "motionTransitionDuration": "0s",
+      "operationStatus": "Count the parts inside the bracket.",
+      "feedback": "That’s right."
+    },
+    {
+      "fixture": "like-denominators",
+      "equation": "4/7 − 1/7",
+      "viewport": {
+        "width": 360,
+        "height": 752
+      },
+      "motionMode": "standard-motion",
+      "representationMode": "comparison",
+      "document": {
+        "scrollWidth": 360,
+        "scrollHeight": 752,
+        "clientWidth": 360,
+        "clientHeight": 752,
+        "horizontalOverflow": false,
+        "verticalOverflow": false
+      },
+      "bounds": {
+        "fixturePicker": {
+          "top": 108,
+          "bottom": 152,
+          "width": 328,
+          "height": 44,
+          "visible": true,
+          "withinViewport": true
+        },
+        "question": {
+          "top": 160,
+          "bottom": 234,
+          "width": 328,
+          "height": 74,
+          "visible": true,
+          "withinViewport": true
+        },
+        "operation": {
+          "top": 427.25,
+          "bottom": 471.25,
+          "width": 302,
+          "height": 44,
+          "visible": true,
+          "withinViewport": true
+        },
+        "answerForm": {
+          "top": 512.5,
+          "bottom": 649.5,
+          "width": 328,
+          "height": 137,
+          "visible": true,
+          "withinViewport": true
+        },
+        "feedback": {
+          "top": 657.5,
+          "bottom": 679.09,
+          "width": 328,
+          "height": 21.59,
+          "visible": true,
+          "withinViewport": true
+        }
+      },
+      "bars": [
+        {
+          "width": 328,
+          "partWidth": 46.56,
+          "parts": 7
+        },
+        {
+          "width": 328,
+          "partWidth": 46.56,
+          "parts": 7
+        }
+      ],
+      "visibleControlsAtLeast24px": true,
+      "allControlsWithinViewport": true,
+      "controls": [
+        {
+          "name": "Take away",
+          "width": 106.88,
+          "height": 40,
+          "withinViewport": true
+        },
+        {
+          "name": "Compare",
+          "width": 97.36,
+          "height": 40,
+          "withinViewport": true
+        },
+        {
+          "name": "4/7 − 1/7\n            5/6 − 1/3\n            3/4 − 1/3\n            5/8 − 1/2",
+          "width": 160,
+          "height": 44,
+          "withinViewport": true
+        },
+        {
+          "name": "Gap shown",
+          "width": 302,
+          "height": 44,
+          "withinViewport": true
+        },
+        {
+          "name": "Numerator",
+          "width": 102,
+          "height": 44,
+          "withinViewport": true
+        },
+        {
+          "name": "Denominator",
+          "width": 102,
+          "height": 44,
+          "withinViewport": true
+        },
+        {
+          "name": "Check answer",
+          "width": 302,
+          "height": 44,
+          "withinViewport": true
+        }
+      ],
+      "questionVisible": true,
+      "motionTransitionDuration": "0.18s",
+      "operationStatus": "Count the parts inside the bracket.",
+      "feedback": "That’s right."
+    },
+    {
+      "fixture": "like-denominators",
+      "equation": "4/7 − 1/7",
+      "viewport": {
+        "width": 360,
+        "height": 752
+      },
+      "motionMode": "reduced-motion",
+      "representationMode": "comparison",
+      "document": {
+        "scrollWidth": 360,
+        "scrollHeight": 752,
+        "clientWidth": 360,
+        "clientHeight": 752,
+        "horizontalOverflow": false,
+        "verticalOverflow": false
+      },
+      "bounds": {
+        "fixturePicker": {
+          "top": 108,
+          "bottom": 152,
+          "width": 328,
+          "height": 44,
+          "visible": true,
+          "withinViewport": true
+        },
+        "question": {
+          "top": 160,
+          "bottom": 234,
+          "width": 328,
+          "height": 74,
+          "visible": true,
+          "withinViewport": true
+        },
+        "operation": {
+          "top": 427.25,
+          "bottom": 471.25,
+          "width": 302,
+          "height": 44,
+          "visible": true,
+          "withinViewport": true
+        },
+        "answerForm": {
+          "top": 512.5,
+          "bottom": 649.5,
+          "width": 328,
+          "height": 137,
+          "visible": true,
+          "withinViewport": true
+        },
+        "feedback": {
+          "top": 657.5,
+          "bottom": 679.09,
+          "width": 328,
+          "height": 21.59,
+          "visible": true,
+          "withinViewport": true
+        }
+      },
+      "bars": [
+        {
+          "width": 328,
+          "partWidth": 46.56,
+          "parts": 7
+        },
+        {
+          "width": 328,
+          "partWidth": 46.56,
+          "parts": 7
+        }
+      ],
+      "visibleControlsAtLeast24px": true,
+      "allControlsWithinViewport": true,
+      "controls": [
+        {
+          "name": "Take away",
+          "width": 106.88,
+          "height": 40,
+          "withinViewport": true
+        },
+        {
+          "name": "Compare",
+          "width": 97.36,
+          "height": 40,
+          "withinViewport": true
+        },
+        {
+          "name": "4/7 − 1/7\n            5/6 − 1/3\n            3/4 − 1/3\n            5/8 − 1/2",
+          "width": 160,
+          "height": 44,
+          "withinViewport": true
+        },
+        {
+          "name": "Gap shown",
+          "width": 302,
+          "height": 44,
+          "withinViewport": true
+        },
+        {
+          "name": "Numerator",
+          "width": 102,
+          "height": 44,
+          "withinViewport": true
+        },
+        {
+          "name": "Denominator",
+          "width": 102,
+          "height": 44,
+          "withinViewport": true
+        },
+        {
+          "name": "Check answer",
+          "width": 302,
+          "height": 44,
+          "withinViewport": true
+        }
+      ],
+      "questionVisible": true,
+      "motionTransitionDuration": "0s",
+      "operationStatus": "Count the parts inside the bracket.",
+      "feedback": "That’s right."
+    },
+    {
+      "fixture": "nested-denominators",
+      "equation": "5/6 − 1/3",
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "motionMode": "standard-motion",
+      "representationMode": "comparison",
+      "document": {
+        "scrollWidth": 360,
+        "scrollHeight": 740,
+        "clientWidth": 360,
+        "clientHeight": 740,
+        "horizontalOverflow": false,
+        "verticalOverflow": false
+      },
+      "bounds": {
+        "fixturePicker": {
+          "top": 108,
+          "bottom": 152,
+          "width": 328,
+          "height": 44,
+          "visible": true,
+          "withinViewport": true
+        },
+        "question": {
+          "top": 160,
+          "bottom": 258.59,
+          "width": 328,
+          "height": 98.59,
+          "visible": true,
+          "withinViewport": true
+        },
+        "operation": {
+          "top": 451.84,
+          "bottom": 495.84,
+          "width": 302,
+          "height": 44,
+          "visible": true,
+          "withinViewport": true
+        },
+        "answerForm": {
+          "top": 537.09,
+          "bottom": 674.09,
+          "width": 328,
+          "height": 137,
+          "visible": true,
+          "withinViewport": true
+        },
+        "feedback": {
+          "top": 682.09,
+          "bottom": 703.69,
+          "width": 328,
+          "height": 21.59,
+          "visible": true,
+          "withinViewport": true
+        }
+      },
+      "bars": [
+        {
+          "width": 328,
+          "partWidth": 54.33,
+          "parts": 6
+        },
+        {
+          "width": 328,
+          "partWidth": 54.33,
+          "parts": 6
+        }
+      ],
+      "visibleControlsAtLeast24px": true,
+      "allControlsWithinViewport": true,
+      "controls": [
+        {
+          "name": "Take away",
+          "width": 106.88,
+          "height": 40,
+          "withinViewport": true
+        },
+        {
+          "name": "Compare",
+          "width": 97.36,
+          "height": 40,
+          "withinViewport": true
+        },
+        {
+          "name": "4/7 − 1/7\n            5/6 − 1/3\n            3/4 − 1/3\n            5/8 − 1/2",
+          "width": 160,
+          "height": 44,
+          "withinViewport": true
+        },
+        {
+          "name": "Gap shown",
+          "width": 302,
+          "height": 44,
+          "withinViewport": true
+        },
+        {
+          "name": "Numerator",
+          "width": 102,
+          "height": 44,
+          "withinViewport": true
+        },
+        {
+          "name": "Denominator",
+          "width": 102,
+          "height": 44,
+          "withinViewport": true
+        },
+        {
+          "name": "Check answer",
+          "width": 302,
+          "height": 44,
+          "withinViewport": true
+        }
+      ],
+      "questionVisible": true,
+      "motionTransitionDuration": "0.18s",
+      "operationStatus": "Count the parts inside the bracket.",
+      "feedback": "That’s right."
+    },
+    {
+      "fixture": "nested-denominators",
+      "equation": "5/6 − 1/3",
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "motionMode": "reduced-motion",
+      "representationMode": "comparison",
+      "document": {
+        "scrollWidth": 360,
+        "scrollHeight": 740,
+        "clientWidth": 360,
+        "clientHeight": 740,
+        "horizontalOverflow": false,
+        "verticalOverflow": false
+      },
+      "bounds": {
+        "fixturePicker": {
+          "top": 108,
+          "bottom": 152,
+          "width": 328,
+          "height": 44,
+          "visible": true,
+          "withinViewport": true
+        },
+        "question": {
+          "top": 160,
+          "bottom": 258.59,
+          "width": 328,
+          "height": 98.59,
+          "visible": true,
+          "withinViewport": true
+        },
+        "operation": {
+          "top": 451.84,
+          "bottom": 495.84,
+          "width": 302,
+          "height": 44,
+          "visible": true,
+          "withinViewport": true
+        },
+        "answerForm": {
+          "top": 537.09,
+          "bottom": 674.09,
+          "width": 328,
+          "height": 137,
+          "visible": true,
+          "withinViewport": true
+        },
+        "feedback": {
+          "top": 682.09,
+          "bottom": 703.69,
+          "width": 328,
+          "height": 21.59,
+          "visible": true,
+          "withinViewport": true
+        }
+      },
+      "bars": [
+        {
+          "width": 328,
+          "partWidth": 54.33,
+          "parts": 6
+        },
+        {
+          "width": 328,
+          "partWidth": 54.33,
+          "parts": 6
+        }
+      ],
+      "visibleControlsAtLeast24px": true,
+      "allControlsWithinViewport": true,
+      "controls": [
+        {
+          "name": "Take away",
+          "width": 106.88,
+          "height": 40,
+          "withinViewport": true
+        },
+        {
+          "name": "Compare",
+          "width": 97.36,
+          "height": 40,
+          "withinViewport": true
+        },
+        {
+          "name": "4/7 − 1/7\n            5/6 − 1/3\n            3/4 − 1/3\n            5/8 − 1/2",
+          "width": 160,
+          "height": 44,
+          "withinViewport": true
+        },
+        {
+          "name": "Gap shown",
+          "width": 302,
+          "height": 44,
+          "withinViewport": true
+        },
+        {
+          "name": "Numerator",
+          "width": 102,
+          "height": 44,
+          "withinViewport": true
+        },
+        {
+          "name": "Denominator",
+          "width": 102,
+          "height": 44,
+          "withinViewport": true
+        },
+        {
+          "name": "Check answer",
+          "width": 302,
+          "height": 44,
+          "withinViewport": true
+        }
+      ],
+      "questionVisible": true,
+      "motionTransitionDuration": "0s",
+      "operationStatus": "Count the parts inside the bracket.",
+      "feedback": "That’s right."
+    },
+    {
+      "fixture": "nested-denominators",
+      "equation": "5/6 − 1/3",
+      "viewport": {
+        "width": 360,
+        "height": 752
+      },
+      "motionMode": "standard-motion",
+      "representationMode": "comparison",
+      "document": {
+        "scrollWidth": 360,
+        "scrollHeight": 752,
+        "clientWidth": 360,
+        "clientHeight": 752,
+        "horizontalOverflow": false,
+        "verticalOverflow": false
+      },
+      "bounds": {
+        "fixturePicker": {
+          "top": 108,
+          "bottom": 152,
+          "width": 328,
+          "height": 44,
+          "visible": true,
+          "withinViewport": true
+        },
+        "question": {
+          "top": 160,
+          "bottom": 258.59,
+          "width": 328,
+          "height": 98.59,
+          "visible": true,
+          "withinViewport": true
+        },
+        "operation": {
+          "top": 451.84,
+          "bottom": 495.84,
+          "width": 302,
+          "height": 44,
+          "visible": true,
+          "withinViewport": true
+        },
+        "answerForm": {
+          "top": 537.09,
+          "bottom": 674.09,
+          "width": 328,
+          "height": 137,
+          "visible": true,
+          "withinViewport": true
+        },
+        "feedback": {
+          "top": 682.09,
+          "bottom": 703.69,
+          "width": 328,
+          "height": 21.59,
+          "visible": true,
+          "withinViewport": true
+        }
+      },
+      "bars": [
+        {
+          "width": 328,
+          "partWidth": 54.33,
+          "parts": 6
+        },
+        {
+          "width": 328,
+          "partWidth": 54.33,
+          "parts": 6
+        }
+      ],
+      "visibleControlsAtLeast24px": true,
+      "allControlsWithinViewport": true,
+      "controls": [
+        {
+          "name": "Take away",
+          "width": 106.88,
+          "height": 40,
+          "withinViewport": true
+        },
+        {
+          "name": "Compare",
+          "width": 97.36,
+          "height": 40,
+          "withinViewport": true
+        },
+        {
+          "name": "4/7 − 1/7\n            5/6 − 1/3\n            3/4 − 1/3\n            5/8 − 1/2",
+          "width": 160,
+          "height": 44,
+          "withinViewport": true
+        },
+        {
+          "name": "Gap shown",
+          "width": 302,
+          "height": 44,
+          "withinViewport": true
+        },
+        {
+          "name": "Numerator",
+          "width": 102,
+          "height": 44,
+          "withinViewport": true
+        },
+        {
+          "name": "Denominator",
+          "width": 102,
+          "height": 44,
+          "withinViewport": true
+        },
+        {
+          "name": "Check answer",
+          "width": 302,
+          "height": 44,
+          "withinViewport": true
+        }
+      ],
+      "questionVisible": true,
+      "motionTransitionDuration": "0.18s",
+      "operationStatus": "Count the parts inside the bracket.",
+      "feedback": "That’s right."
+    },
+    {
+      "fixture": "nested-denominators",
+      "equation": "5/6 − 1/3",
+      "viewport": {
+        "width": 360,
+        "height": 752
+      },
+      "motionMode": "reduced-motion",
+      "representationMode": "comparison",
+      "document": {
+        "scrollWidth": 360,
+        "scrollHeight": 752,
+        "clientWidth": 360,
+        "clientHeight": 752,
+        "horizontalOverflow": false,
+        "verticalOverflow": false
+      },
+      "bounds": {
+        "fixturePicker": {
+          "top": 108,
+          "bottom": 152,
+          "width": 328,
+          "height": 44,
+          "visible": true,
+          "withinViewport": true
+        },
+        "question": {
+          "top": 160,
+          "bottom": 258.59,
+          "width": 328,
+          "height": 98.59,
+          "visible": true,
+          "withinViewport": true
+        },
+        "operation": {
+          "top": 451.84,
+          "bottom": 495.84,
+          "width": 302,
+          "height": 44,
+          "visible": true,
+          "withinViewport": true
+        },
+        "answerForm": {
+          "top": 537.09,
+          "bottom": 674.09,
+          "width": 328,
+          "height": 137,
+          "visible": true,
+          "withinViewport": true
+        },
+        "feedback": {
+          "top": 682.09,
+          "bottom": 703.69,
+          "width": 328,
+          "height": 21.59,
+          "visible": true,
+          "withinViewport": true
+        }
+      },
+      "bars": [
+        {
+          "width": 328,
+          "partWidth": 54.33,
+          "parts": 6
+        },
+        {
+          "width": 328,
+          "partWidth": 54.33,
+          "parts": 6
+        }
+      ],
+      "visibleControlsAtLeast24px": true,
+      "allControlsWithinViewport": true,
+      "controls": [
+        {
+          "name": "Take away",
+          "width": 106.88,
+          "height": 40,
+          "withinViewport": true
+        },
+        {
+          "name": "Compare",
+          "width": 97.36,
+          "height": 40,
+          "withinViewport": true
+        },
+        {
+          "name": "4/7 − 1/7\n            5/6 − 1/3\n            3/4 − 1/3\n            5/8 − 1/2",
+          "width": 160,
+          "height": 44,
+          "withinViewport": true
+        },
+        {
+          "name": "Gap shown",
+          "width": 302,
+          "height": 44,
+          "withinViewport": true
+        },
+        {
+          "name": "Numerator",
+          "width": 102,
+          "height": 44,
+          "withinViewport": true
+        },
+        {
+          "name": "Denominator",
+          "width": 102,
+          "height": 44,
+          "withinViewport": true
+        },
+        {
+          "name": "Check answer",
+          "width": 302,
+          "height": 44,
+          "withinViewport": true
+        }
+      ],
+      "questionVisible": true,
+      "motionTransitionDuration": "0s",
+      "operationStatus": "Count the parts inside the bracket.",
+      "feedback": "That’s right."
+    },
+    {
+      "fixture": "unlike-denominators",
+      "equation": "3/4 − 1/3",
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "motionMode": "standard-motion",
+      "representationMode": "comparison",
+      "document": {
+        "scrollWidth": 360,
+        "scrollHeight": 740,
+        "clientWidth": 360,
+        "clientHeight": 740,
+        "horizontalOverflow": false,
+        "verticalOverflow": false
+      },
+      "bounds": {
+        "fixturePicker": {
+          "top": 108,
+          "bottom": 152,
+          "width": 328,
+          "height": 44,
+          "visible": true,
+          "withinViewport": true
+        },
+        "question": {
+          "top": 160,
+          "bottom": 258.59,
+          "width": 328,
+          "height": 98.59,
+          "visible": true,
+          "withinViewport": true
+        },
+        "operation": {
+          "top": 451.84,
+          "bottom": 495.84,
+          "width": 302,
+          "height": 44,
+          "visible": true,
+          "withinViewport": true
+        },
+        "answerForm": {
+          "top": 537.09,
+          "bottom": 674.09,
+          "width": 328,
+          "height": 137,
+          "visible": true,
+          "withinViewport": true
+        },
+        "feedback": {
+          "top": 682.09,
+          "bottom": 703.69,
+          "width": 328,
+          "height": 21.59,
+          "visible": true,
+          "withinViewport": true
+        }
+      },
+      "bars": [
+        {
+          "width": 328,
+          "partWidth": 27.16,
+          "parts": 12
+        },
+        {
+          "width": 328,
+          "partWidth": 27.16,
+          "parts": 12
+        }
+      ],
+      "visibleControlsAtLeast24px": true,
+      "allControlsWithinViewport": true,
+      "controls": [
+        {
+          "name": "Take away",
+          "width": 106.88,
+          "height": 40,
+          "withinViewport": true
+        },
+        {
+          "name": "Compare",
+          "width": 97.36,
+          "height": 40,
+          "withinViewport": true
+        },
+        {
+          "name": "4/7 − 1/7\n            5/6 − 1/3\n            3/4 − 1/3\n            5/8 − 1/2",
+          "width": 160,
+          "height": 44,
+          "withinViewport": true
+        },
+        {
+          "name": "Gap shown",
+          "width": 302,
+          "height": 44,
+          "withinViewport": true
+        },
+        {
+          "name": "Numerator",
+          "width": 102,
+          "height": 44,
+          "withinViewport": true
+        },
+        {
+          "name": "Denominator",
+          "width": 102,
+          "height": 44,
+          "withinViewport": true
+        },
+        {
+          "name": "Check answer",
+          "width": 302,
+          "height": 44,
+          "withinViewport": true
+        }
+      ],
+      "questionVisible": true,
+      "motionTransitionDuration": "0.18s",
+      "operationStatus": "Count the parts inside the bracket.",
+      "feedback": "That’s right."
+    },
+    {
+      "fixture": "unlike-denominators",
+      "equation": "3/4 − 1/3",
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "motionMode": "reduced-motion",
+      "representationMode": "comparison",
+      "document": {
+        "scrollWidth": 360,
+        "scrollHeight": 740,
+        "clientWidth": 360,
+        "clientHeight": 740,
+        "horizontalOverflow": false,
+        "verticalOverflow": false
+      },
+      "bounds": {
+        "fixturePicker": {
+          "top": 108,
+          "bottom": 152,
+          "width": 328,
+          "height": 44,
+          "visible": true,
+          "withinViewport": true
+        },
+        "question": {
+          "top": 160,
+          "bottom": 258.59,
+          "width": 328,
+          "height": 98.59,
+          "visible": true,
+          "withinViewport": true
+        },
+        "operation": {
+          "top": 451.84,
+          "bottom": 495.84,
+          "width": 302,
+          "height": 44,
+          "visible": true,
+          "withinViewport": true
+        },
+        "answerForm": {
+          "top": 537.09,
+          "bottom": 674.09,
+          "width": 328,
+          "height": 137,
+          "visible": true,
+          "withinViewport": true
+        },
+        "feedback": {
+          "top": 682.09,
+          "bottom": 703.69,
+          "width": 328,
+          "height": 21.59,
+          "visible": true,
+          "withinViewport": true
+        }
+      },
+      "bars": [
+        {
+          "width": 328,
+          "partWidth": 27.16,
+          "parts": 12
+        },
+        {
+          "width": 328,
+          "partWidth": 27.16,
+          "parts": 12
+        }
+      ],
+      "visibleControlsAtLeast24px": true,
+      "allControlsWithinViewport": true,
+      "controls": [
+        {
+          "name": "Take away",
+          "width": 106.88,
+          "height": 40,
+          "withinViewport": true
+        },
+        {
+          "name": "Compare",
+          "width": 97.36,
+          "height": 40,
+          "withinViewport": true
+        },
+        {
+          "name": "4/7 − 1/7\n            5/6 − 1/3\n            3/4 − 1/3\n            5/8 − 1/2",
+          "width": 160,
+          "height": 44,
+          "withinViewport": true
+        },
+        {
+          "name": "Gap shown",
+          "width": 302,
+          "height": 44,
+          "withinViewport": true
+        },
+        {
+          "name": "Numerator",
+          "width": 102,
+          "height": 44,
+          "withinViewport": true
+        },
+        {
+          "name": "Denominator",
+          "width": 102,
+          "height": 44,
+          "withinViewport": true
+        },
+        {
+          "name": "Check answer",
+          "width": 302,
+          "height": 44,
+          "withinViewport": true
+        }
+      ],
+      "questionVisible": true,
+      "motionTransitionDuration": "0s",
+      "operationStatus": "Count the parts inside the bracket.",
+      "feedback": "That’s right."
+    },
+    {
+      "fixture": "unlike-denominators",
+      "equation": "3/4 − 1/3",
+      "viewport": {
+        "width": 360,
+        "height": 752
+      },
+      "motionMode": "standard-motion",
+      "representationMode": "comparison",
+      "document": {
+        "scrollWidth": 360,
+        "scrollHeight": 752,
+        "clientWidth": 360,
+        "clientHeight": 752,
+        "horizontalOverflow": false,
+        "verticalOverflow": false
+      },
+      "bounds": {
+        "fixturePicker": {
+          "top": 108,
+          "bottom": 152,
+          "width": 328,
+          "height": 44,
+          "visible": true,
+          "withinViewport": true
+        },
+        "question": {
+          "top": 160,
+          "bottom": 258.59,
+          "width": 328,
+          "height": 98.59,
+          "visible": true,
+          "withinViewport": true
+        },
+        "operation": {
+          "top": 451.84,
+          "bottom": 495.84,
+          "width": 302,
+          "height": 44,
+          "visible": true,
+          "withinViewport": true
+        },
+        "answerForm": {
+          "top": 537.09,
+          "bottom": 674.09,
+          "width": 328,
+          "height": 137,
+          "visible": true,
+          "withinViewport": true
+        },
+        "feedback": {
+          "top": 682.09,
+          "bottom": 703.69,
+          "width": 328,
+          "height": 21.59,
+          "visible": true,
+          "withinViewport": true
+        }
+      },
+      "bars": [
+        {
+          "width": 328,
+          "partWidth": 27.16,
+          "parts": 12
+        },
+        {
+          "width": 328,
+          "partWidth": 27.16,
+          "parts": 12
+        }
+      ],
+      "visibleControlsAtLeast24px": true,
+      "allControlsWithinViewport": true,
+      "controls": [
+        {
+          "name": "Take away",
+          "width": 106.88,
+          "height": 40,
+          "withinViewport": true
+        },
+        {
+          "name": "Compare",
+          "width": 97.36,
+          "height": 40,
+          "withinViewport": true
+        },
+        {
+          "name": "4/7 − 1/7\n            5/6 − 1/3\n            3/4 − 1/3\n            5/8 − 1/2",
+          "width": 160,
+          "height": 44,
+          "withinViewport": true
+        },
+        {
+          "name": "Gap shown",
+          "width": 302,
+          "height": 44,
+          "withinViewport": true
+        },
+        {
+          "name": "Numerator",
+          "width": 102,
+          "height": 44,
+          "withinViewport": true
+        },
+        {
+          "name": "Denominator",
+          "width": 102,
+          "height": 44,
+          "withinViewport": true
+        },
+        {
+          "name": "Check answer",
+          "width": 302,
+          "height": 44,
+          "withinViewport": true
+        }
+      ],
+      "questionVisible": true,
+      "motionTransitionDuration": "0.18s",
+      "operationStatus": "Count the parts inside the bracket.",
+      "feedback": "That’s right."
+    },
+    {
+      "fixture": "unlike-denominators",
+      "equation": "3/4 − 1/3",
+      "viewport": {
+        "width": 360,
+        "height": 752
+      },
+      "motionMode": "reduced-motion",
+      "representationMode": "comparison",
+      "document": {
+        "scrollWidth": 360,
+        "scrollHeight": 752,
+        "clientWidth": 360,
+        "clientHeight": 752,
+        "horizontalOverflow": false,
+        "verticalOverflow": false
+      },
+      "bounds": {
+        "fixturePicker": {
+          "top": 108,
+          "bottom": 152,
+          "width": 328,
+          "height": 44,
+          "visible": true,
+          "withinViewport": true
+        },
+        "question": {
+          "top": 160,
+          "bottom": 258.59,
+          "width": 328,
+          "height": 98.59,
+          "visible": true,
+          "withinViewport": true
+        },
+        "operation": {
+          "top": 451.84,
+          "bottom": 495.84,
+          "width": 302,
+          "height": 44,
+          "visible": true,
+          "withinViewport": true
+        },
+        "answerForm": {
+          "top": 537.09,
+          "bottom": 674.09,
+          "width": 328,
+          "height": 137,
+          "visible": true,
+          "withinViewport": true
+        },
+        "feedback": {
+          "top": 682.09,
+          "bottom": 703.69,
+          "width": 328,
+          "height": 21.59,
+          "visible": true,
+          "withinViewport": true
+        }
+      },
+      "bars": [
+        {
+          "width": 328,
+          "partWidth": 27.16,
+          "parts": 12
+        },
+        {
+          "width": 328,
+          "partWidth": 27.16,
+          "parts": 12
+        }
+      ],
+      "visibleControlsAtLeast24px": true,
+      "allControlsWithinViewport": true,
+      "controls": [
+        {
+          "name": "Take away",
+          "width": 106.88,
+          "height": 40,
+          "withinViewport": true
+        },
+        {
+          "name": "Compare",
+          "width": 97.36,
+          "height": 40,
+          "withinViewport": true
+        },
+        {
+          "name": "4/7 − 1/7\n            5/6 − 1/3\n            3/4 − 1/3\n            5/8 − 1/2",
+          "width": 160,
+          "height": 44,
+          "withinViewport": true
+        },
+        {
+          "name": "Gap shown",
+          "width": 302,
+          "height": 44,
+          "withinViewport": true
+        },
+        {
+          "name": "Numerator",
+          "width": 102,
+          "height": 44,
+          "withinViewport": true
+        },
+        {
+          "name": "Denominator",
+          "width": 102,
+          "height": 44,
+          "withinViewport": true
+        },
+        {
+          "name": "Check answer",
+          "width": 302,
+          "height": 44,
+          "withinViewport": true
+        }
+      ],
+      "questionVisible": true,
+      "motionTransitionDuration": "0s",
+      "operationStatus": "Count the parts inside the bracket.",
+      "feedback": "That’s right."
+    },
+    {
+      "fixture": "small-difference",
+      "equation": "5/8 − 1/2",
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "motionMode": "standard-motion",
+      "representationMode": "comparison",
+      "document": {
+        "scrollWidth": 360,
+        "scrollHeight": 740,
+        "clientWidth": 360,
+        "clientHeight": 740,
+        "horizontalOverflow": false,
+        "verticalOverflow": false
+      },
+      "bounds": {
+        "fixturePicker": {
+          "top": 108,
+          "bottom": 152,
+          "width": 328,
+          "height": 44,
+          "visible": true,
+          "withinViewport": true
+        },
+        "question": {
+          "top": 160,
+          "bottom": 258.59,
+          "width": 328,
+          "height": 98.59,
+          "visible": true,
+          "withinViewport": true
+        },
+        "operation": {
+          "top": 451.84,
+          "bottom": 495.84,
+          "width": 302,
+          "height": 44,
+          "visible": true,
+          "withinViewport": true
+        },
+        "answerForm": {
+          "top": 537.09,
+          "bottom": 674.09,
+          "width": 328,
+          "height": 137,
+          "visible": true,
+          "withinViewport": true
+        },
+        "feedback": {
+          "top": 682.09,
+          "bottom": 703.69,
+          "width": 328,
+          "height": 21.59,
+          "visible": true,
+          "withinViewport": true
+        }
+      },
+      "bars": [
+        {
+          "width": 328,
+          "partWidth": 40.75,
+          "parts": 8
+        },
+        {
+          "width": 328,
+          "partWidth": 40.75,
+          "parts": 8
+        }
+      ],
+      "visibleControlsAtLeast24px": true,
+      "allControlsWithinViewport": true,
+      "controls": [
+        {
+          "name": "Take away",
+          "width": 106.88,
+          "height": 40,
+          "withinViewport": true
+        },
+        {
+          "name": "Compare",
+          "width": 97.36,
+          "height": 40,
+          "withinViewport": true
+        },
+        {
+          "name": "4/7 − 1/7\n            5/6 − 1/3\n            3/4 − 1/3\n            5/8 − 1/2",
+          "width": 160,
+          "height": 44,
+          "withinViewport": true
+        },
+        {
+          "name": "Gap shown",
+          "width": 302,
+          "height": 44,
+          "withinViewport": true
+        },
+        {
+          "name": "Numerator",
+          "width": 102,
+          "height": 44,
+          "withinViewport": true
+        },
+        {
+          "name": "Denominator",
+          "width": 102,
+          "height": 44,
+          "withinViewport": true
+        },
+        {
+          "name": "Check answer",
+          "width": 302,
+          "height": 44,
+          "withinViewport": true
+        }
+      ],
+      "questionVisible": true,
+      "motionTransitionDuration": "0.18s",
+      "operationStatus": "Count the parts inside the bracket.",
+      "feedback": "That’s right."
+    },
+    {
+      "fixture": "small-difference",
+      "equation": "5/8 − 1/2",
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "motionMode": "reduced-motion",
+      "representationMode": "comparison",
+      "document": {
+        "scrollWidth": 360,
+        "scrollHeight": 740,
+        "clientWidth": 360,
+        "clientHeight": 740,
+        "horizontalOverflow": false,
+        "verticalOverflow": false
+      },
+      "bounds": {
+        "fixturePicker": {
+          "top": 108,
+          "bottom": 152,
+          "width": 328,
+          "height": 44,
+          "visible": true,
+          "withinViewport": true
+        },
+        "question": {
+          "top": 160,
+          "bottom": 258.59,
+          "width": 328,
+          "height": 98.59,
+          "visible": true,
+          "withinViewport": true
+        },
+        "operation": {
+          "top": 451.84,
+          "bottom": 495.84,
+          "width": 302,
+          "height": 44,
+          "visible": true,
+          "withinViewport": true
+        },
+        "answerForm": {
+          "top": 537.09,
+          "bottom": 674.09,
+          "width": 328,
+          "height": 137,
+          "visible": true,
+          "withinViewport": true
+        },
+        "feedback": {
+          "top": 682.09,
+          "bottom": 703.69,
+          "width": 328,
+          "height": 21.59,
+          "visible": true,
+          "withinViewport": true
+        }
+      },
+      "bars": [
+        {
+          "width": 328,
+          "partWidth": 40.75,
+          "parts": 8
+        },
+        {
+          "width": 328,
+          "partWidth": 40.75,
+          "parts": 8
+        }
+      ],
+      "visibleControlsAtLeast24px": true,
+      "allControlsWithinViewport": true,
+      "controls": [
+        {
+          "name": "Take away",
+          "width": 106.88,
+          "height": 40,
+          "withinViewport": true
+        },
+        {
+          "name": "Compare",
+          "width": 97.36,
+          "height": 40,
+          "withinViewport": true
+        },
+        {
+          "name": "4/7 − 1/7\n            5/6 − 1/3\n            3/4 − 1/3\n            5/8 − 1/2",
+          "width": 160,
+          "height": 44,
+          "withinViewport": true
+        },
+        {
+          "name": "Gap shown",
+          "width": 302,
+          "height": 44,
+          "withinViewport": true
+        },
+        {
+          "name": "Numerator",
+          "width": 102,
+          "height": 44,
+          "withinViewport": true
+        },
+        {
+          "name": "Denominator",
+          "width": 102,
+          "height": 44,
+          "withinViewport": true
+        },
+        {
+          "name": "Check answer",
+          "width": 302,
+          "height": 44,
+          "withinViewport": true
+        }
+      ],
+      "questionVisible": true,
+      "motionTransitionDuration": "0s",
+      "operationStatus": "Count the parts inside the bracket.",
+      "feedback": "That’s right."
+    },
+    {
+      "fixture": "small-difference",
+      "equation": "5/8 − 1/2",
+      "viewport": {
+        "width": 360,
+        "height": 752
+      },
+      "motionMode": "standard-motion",
+      "representationMode": "comparison",
+      "document": {
+        "scrollWidth": 360,
+        "scrollHeight": 752,
+        "clientWidth": 360,
+        "clientHeight": 752,
+        "horizontalOverflow": false,
+        "verticalOverflow": false
+      },
+      "bounds": {
+        "fixturePicker": {
+          "top": 108,
+          "bottom": 152,
+          "width": 328,
+          "height": 44,
+          "visible": true,
+          "withinViewport": true
+        },
+        "question": {
+          "top": 160,
+          "bottom": 258.59,
+          "width": 328,
+          "height": 98.59,
+          "visible": true,
+          "withinViewport": true
+        },
+        "operation": {
+          "top": 451.84,
+          "bottom": 495.84,
+          "width": 302,
+          "height": 44,
+          "visible": true,
+          "withinViewport": true
+        },
+        "answerForm": {
+          "top": 537.09,
+          "bottom": 674.09,
+          "width": 328,
+          "height": 137,
+          "visible": true,
+          "withinViewport": true
+        },
+        "feedback": {
+          "top": 682.09,
+          "bottom": 703.69,
+          "width": 328,
+          "height": 21.59,
+          "visible": true,
+          "withinViewport": true
+        }
+      },
+      "bars": [
+        {
+          "width": 328,
+          "partWidth": 40.75,
+          "parts": 8
+        },
+        {
+          "width": 328,
+          "partWidth": 40.75,
+          "parts": 8
+        }
+      ],
+      "visibleControlsAtLeast24px": true,
+      "allControlsWithinViewport": true,
+      "controls": [
+        {
+          "name": "Take away",
+          "width": 106.88,
+          "height": 40,
+          "withinViewport": true
+        },
+        {
+          "name": "Compare",
+          "width": 97.36,
+          "height": 40,
+          "withinViewport": true
+        },
+        {
+          "name": "4/7 − 1/7\n            5/6 − 1/3\n            3/4 − 1/3\n            5/8 − 1/2",
+          "width": 160,
+          "height": 44,
+          "withinViewport": true
+        },
+        {
+          "name": "Gap shown",
+          "width": 302,
+          "height": 44,
+          "withinViewport": true
+        },
+        {
+          "name": "Numerator",
+          "width": 102,
+          "height": 44,
+          "withinViewport": true
+        },
+        {
+          "name": "Denominator",
+          "width": 102,
+          "height": 44,
+          "withinViewport": true
+        },
+        {
+          "name": "Check answer",
+          "width": 302,
+          "height": 44,
+          "withinViewport": true
+        }
+      ],
+      "questionVisible": true,
+      "motionTransitionDuration": "0.18s",
+      "operationStatus": "Count the parts inside the bracket.",
+      "feedback": "That’s right."
+    },
+    {
+      "fixture": "small-difference",
+      "equation": "5/8 − 1/2",
+      "viewport": {
+        "width": 360,
+        "height": 752
+      },
+      "motionMode": "reduced-motion",
+      "representationMode": "comparison",
+      "document": {
+        "scrollWidth": 360,
+        "scrollHeight": 752,
+        "clientWidth": 360,
+        "clientHeight": 752,
+        "horizontalOverflow": false,
+        "verticalOverflow": false
+      },
+      "bounds": {
+        "fixturePicker": {
+          "top": 108,
+          "bottom": 152,
+          "width": 328,
+          "height": 44,
+          "visible": true,
+          "withinViewport": true
+        },
+        "question": {
+          "top": 160,
+          "bottom": 258.59,
+          "width": 328,
+          "height": 98.59,
+          "visible": true,
+          "withinViewport": true
+        },
+        "operation": {
+          "top": 451.84,
+          "bottom": 495.84,
+          "width": 302,
+          "height": 44,
+          "visible": true,
+          "withinViewport": true
+        },
+        "answerForm": {
+          "top": 537.09,
+          "bottom": 674.09,
+          "width": 328,
+          "height": 137,
+          "visible": true,
+          "withinViewport": true
+        },
+        "feedback": {
+          "top": 682.09,
+          "bottom": 703.69,
+          "width": 328,
+          "height": 21.59,
+          "visible": true,
+          "withinViewport": true
+        }
+      },
+      "bars": [
+        {
+          "width": 328,
+          "partWidth": 40.75,
+          "parts": 8
+        },
+        {
+          "width": 328,
+          "partWidth": 40.75,
+          "parts": 8
+        }
+      ],
+      "visibleControlsAtLeast24px": true,
+      "allControlsWithinViewport": true,
+      "controls": [
+        {
+          "name": "Take away",
+          "width": 106.88,
+          "height": 40,
+          "withinViewport": true
+        },
+        {
+          "name": "Compare",
+          "width": 97.36,
+          "height": 40,
+          "withinViewport": true
+        },
+        {
+          "name": "4/7 − 1/7\n            5/6 − 1/3\n            3/4 − 1/3\n            5/8 − 1/2",
+          "width": 160,
+          "height": 44,
+          "withinViewport": true
+        },
+        {
+          "name": "Gap shown",
+          "width": 302,
+          "height": 44,
+          "withinViewport": true
+        },
+        {
+          "name": "Numerator",
+          "width": 102,
+          "height": 44,
+          "withinViewport": true
+        },
+        {
+          "name": "Denominator",
+          "width": 102,
+          "height": 44,
+          "withinViewport": true
+        },
+        {
+          "name": "Check answer",
+          "width": 302,
+          "height": 44,
+          "withinViewport": true
+        }
+      ],
+      "questionVisible": true,
+      "motionTransitionDuration": "0s",
+      "operationStatus": "Count the parts inside the bracket.",
+      "feedback": "That’s right."
+    }
+  ],
+  "participation": {
+    "keyboard": {
+      "takeaway": {
+        "passed": true,
+        "tabStops": [
+          "takeaway-link",
+          "comparison-link",
+          "fixture-select",
+          "operation-button"
+        ],
+        "resultEnteredWithKeyboard": true
+      },
+      "comparison": {
+        "passed": true,
+        "tabStops": [
+          "takeaway-link",
+          "comparison-link",
+          "fixture-select",
+          "operation-button"
+        ],
+        "resultEnteredWithKeyboard": true
+      }
+    },
+    "touch": {
+      "takeaway": {
+        "passed": true,
+        "realTouchEvents": true,
+        "targetSizes": [
+          {
+            "width": 302,
+            "height": 44
+          },
+          {
+            "width": 102,
+            "height": 44
+          },
+          {
+            "width": 102,
+            "height": 44
+          },
+          {
+            "width": 302,
+            "height": 44
+          }
+        ],
+        "answerTextEntry": "Fields were tapped and focused; text was supplied by the browser driver because the headless context has no mobile operating-system keyboard."
+      },
+      "comparison": {
+        "passed": true,
+        "realTouchEvents": true,
+        "targetSizes": [
+          {
+            "width": 302,
+            "height": 44
+          },
+          {
+            "width": 102,
+            "height": 44
+          },
+          {
+            "width": 102,
+            "height": 44
+          },
+          {
+            "width": 302,
+            "height": 44
+          }
+        ],
+        "answerTextEntry": "Fields were tapped and focused; text was supplied by the browser driver because the headless context has no mobile operating-system keyboard."
+      }
+    }
+  }
+}
