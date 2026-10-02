@@ -33,7 +33,7 @@ Authoritative status is `node scripts/dev/plan-status.js list` and the generated
 | `plan-14` | complete | Browser route matrix. 20 routes: 19 pass, 1 known defect. All three enforcement paths re-verified with independent seeds |
 | **`plan-12`** | **complete** | Owner accepted current screens for now; Repair 01 technical review at `9c81538`; no deployment authorized |
 | `plan-11` | draft | Motion / animated subdivision (D-01-A). Unblocked |
-| `plan-15` | delivered | Repair `9254ae5`, report `f6dcd50`: surface/focus and static-motion repairs verified; Repair 02 required because erased comparison gap and fully clipped graphics still pass visual witnesses; screens remain owner-gated |
+| `plan-15` | delivered | Repair `1848419`, report `211e31c`: technically accepted after all five seeded visual cases and clean/full runs independently verified; SUB-01 draft recorded; only owner rendered-screen acceptance remains |
 | `plan-16` | complete | Accepted after operation-validation repair `fe4f507` and report `5872418`; legacy replay evidence and all 27 unchanged browser routes independently verified; see its `delivery-review.md` |
 | `plan-13` | draft | Scaffold fading. Unblocked; support selector/writer remains deferred to its mechanism gate |
 

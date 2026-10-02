@@ -1,5 +1,41 @@
 # Prototype-Variable Register
 
+## SUB-01 — Subtraction takeaway versus aligned comparison
+
+**Draft Phase 3 entry recorded by orchestration on 2026-10-02. Not decided.**
+Plan 15 supplies standalone prototypes; technical acceptance is recorded in
+`reports/development/plan-15-subtraction-representation-prototypes/repair-02-review.md`.
+Owner rendered-screen acceptance and any learner observation remain pending.
+
+This entry is a bounded exception to the Phase 2 shared experimental contract below:
+it uses four fixed synthetic operands and the real exact-math core, supplies renaming,
+and runs outside the episode machine, without support levels, help, replay, storage,
+or learner-response logging.
+
+- **Live rivals:** takeaway removal from one amount; comparison of two aligned
+  quantities with a revealed gap.
+- **Falsification observations:** repeated inability to connect removed parts to the
+  second amount or identify what remains; repeated inability to explain the bracket
+  or confusion with addition; recurring access/retry burden after the control is
+  understood. A single hesitation prompts inspection, not automatic disqualification.
+- **Manipulated:** representation and its corresponding operation action, including
+  repeated removals versus one gap reveal and representation-specific labels.
+- **Held constant:** fixtures and exact answers, original and supplied renamed
+  equations, whole/segment widths per denominator, shared task, answer fields,
+  feedback, target sizing, and opportunity to respond without a supplied answer.
+- **Outcome measures:** hesitation/rereading, predicted control action, explanation
+  of the removed part/gap and what the answer counts, retries, and individual access
+  burdens. Record representation order, fixture exposure, and action count; alternate
+  order where practical. Second attempts may benefit from already knowing the answer.
+- **Conclusion rule:** report design problems and follow-up questions, not preference,
+  efficacy, or a winning representation. Timing/click count alone cannot favor a
+  rival. High-school feedback is not target-age child-usability evidence. Apply the
+  observation guide's section 52 permission and de-identification rules; no actual
+  observations have been conducted for this delivery.
+
+The fixed set is `4/7 - 1/7`, `5/6 - 1/3`, `3/4 - 1/3`, and `5/8 - 1/2`.
+Both rivals remain open; acceptance of the prototype implementation does not answer OQ-25.
+
 ## Register status
 
 Every entry below is a live prototype comparison. Under DECISION-005, this
