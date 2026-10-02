@@ -9,14 +9,41 @@ function assert(condition, message) {
   if (!condition) throw new Error(message);
 }
 
-for (const seededVisualDefect of ['hidden', 'collapsed', 'erased-removal-mark']) {
-  const result = await runRouteMatrix({ filter, seededVisualDefect, verbose: true });
-  const expectedFailedRoutes = seededVisualDefect === 'erased-removal-mark'
-    ? new Set(['ROUTE-PROTOTYPE-SUBTRACTION-TAKEAWAY'])
-    : new Set([
+const expectedFailuresBySeed = {
+  hidden: {
+    routes: new Set([
       'ROUTE-PROTOTYPE-SUBTRACTION-TAKEAWAY',
       'ROUTE-PROTOTYPE-SUBTRACTION-COMPARISON',
-    ]);
+    ]),
+    reason: 'visible geometry assertion failed',
+  },
+  collapsed: {
+    routes: new Set([
+      'ROUTE-PROTOTYPE-SUBTRACTION-TAKEAWAY',
+      'ROUTE-PROTOTYPE-SUBTRACTION-COMPARISON',
+    ]),
+    reason: 'visible geometry assertion failed',
+  },
+  'erased-removal-mark': {
+    routes: new Set(['ROUTE-PROTOTYPE-SUBTRACTION-TAKEAWAY']),
+    reason: 'visible geometry assertion failed',
+  },
+  'erased-comparison-gap-mark': {
+    routes: new Set(['ROUTE-PROTOTYPE-SUBTRACTION-COMPARISON']),
+    reason: 'visible geometry assertion failed',
+  },
+  'fully-clipped-representation': {
+    routes: new Set([
+      'ROUTE-PROTOTYPE-SUBTRACTION-TAKEAWAY',
+      'ROUTE-PROTOTYPE-SUBTRACTION-COMPARISON',
+    ]),
+    reason: 'visible geometry assertion failed',
+  },
+};
+
+for (const [seededVisualDefect, expectation] of Object.entries(expectedFailuresBySeed)) {
+  const result = await runRouteMatrix({ filter, seededVisualDefect, verbose: true });
+  const expectedFailedRoutes = expectation.routes;
   const expectedFailures = expectedFailedRoutes.size * 2;
   assert(
     result.total === expectedExecutions
@@ -27,15 +54,15 @@ for (const seededVisualDefect of ['hidden', 'collapsed', 'erased-removal-mark'])
   assert(
     result.results.every((route) => (
       expectedFailedRoutes.has(route.routeId)
-        ? route.status === 'fail' && route.error?.includes('visible geometry assertion failed')
+        ? route.status === 'fail' && route.error?.includes(expectation.reason)
         : route.status === 'pass'
     )),
     `The ${seededVisualDefect} visual defect did not fail only its intended visible-geometry witnesses.`,
   );
-  const outcome = seededVisualDefect === 'erased-removal-mark'
-    ? `${result.failed}/${result.total} takeaway executions rejected by required hatch paint; reciprocal comparison passed ${result.passed}/${result.total - result.failed}`
-    : `${result.failed}/${result.total} prototype executions rejected by visible-geometry assertions`;
-  console.log(`EXPECTED SEEDED FAILURE (${seededVisualDefect}): ${outcome}.`);
+  const details = expectedFailedRoutes.size === 1
+    ? `${expectedFailures}/${result.total} ${[...expectedFailedRoutes][0]} executions failed; unaffected counterpart passed ${result.passed}/${result.total - result.failed}`
+    : `${result.failed}/${result.total} prototype executions failed`;
+  console.log(`EXPECTED SEEDED FAILURE (${seededVisualDefect}): ${details}.`);
 }
 
 const restored = await runRouteMatrix({ filter, verbose: true });

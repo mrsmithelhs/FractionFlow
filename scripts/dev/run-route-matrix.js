@@ -49,6 +49,13 @@ const seededPrototypeVisualDefects = Object.freeze({
   content: none !important;
   display: none !important;
 }`,
+  'erased-comparison-gap-mark': `.gap-marker {
+  background: white !important;
+  border-color: white !important;
+}`,
+  'fully-clipped-representation': `#representation-visual {
+  clip-path: inset(100%) !important;
+}`,
 });
 const startingSurfaces = Object.freeze({
   'mounted-app-entry': Object.freeze({
@@ -466,7 +473,9 @@ async function verifyAssertions(page, assertions, routeId) {
         const minWidth = assertion.minWidth ?? 12;
         const minHeight = assertion.minHeight ?? 12;
         const backgroundImageIncludes = assertion.backgroundImageIncludes?.toLowerCase();
-        const geometries = await locator.evaluateAll((elements) => elements.map((element) => {
+        const requireVisibleCenterHit = assertion.requireVisibleCenterHit === true;
+        const requireContrastingBorder = assertion.borderContrastAgainstAncestor === true;
+        const geometries = await locator.evaluateAll((elements, checks) => elements.map((element) => {
           const box = element.getBoundingClientRect();
           let current = element;
           let styleVisible = true;
@@ -498,6 +507,57 @@ async function verifyAssertions(page, assertions, routeId) {
             && style.backgroundImage !== '')
             || colorIsVisible(style.backgroundColor)
             || borderPaintVisible;
+          let centerHitWithinElement = true;
+          if (checks.requireVisibleCenterHit) {
+            let hit = document.elementFromPoint(box.left + box.width / 2, box.top + box.height / 2);
+            centerHitWithinElement = false;
+            while (hit instanceof Element) {
+              if (hit === element) {
+                centerHitWithinElement = true;
+                break;
+              }
+              hit = hit.parentElement;
+            }
+          }
+
+          let hasContrastingBorder = true;
+          if (checks.requireContrastingBorder) {
+            const readColor = (color) => {
+              const channels = color.match(/[\d.]+/g)?.map(Number);
+              if (!channels || channels.length < 3) return null;
+              const alpha = channels.length > 3 ? channels[3] : 1;
+              return alpha <= 0 ? null : channels.slice(0, 3);
+            };
+            let backdrop = null;
+            current = element.parentElement;
+            while (current instanceof Element && !backdrop) {
+              backdrop = readColor(getComputedStyle(current).backgroundColor);
+              current = current.parentElement;
+            }
+            const luminance = ([red, green, blue]) => {
+              const linear = (channel) => {
+                const normalized = channel / 255;
+                return normalized <= 0.04045
+                  ? normalized / 12.92
+                  : ((normalized + 0.055) / 1.055) ** 2.4;
+              };
+              return 0.2126 * linear(red) + 0.7152 * linear(green) + 0.0722 * linear(blue);
+            };
+            const contrastRatio = (first, second) => {
+              const levels = [luminance(first), luminance(second)].sort((a, b) => b - a);
+              return (levels[0] + 0.05) / (levels[1] + 0.05);
+            };
+            const borderColors = [
+              ['borderTopWidth', 'borderTopColor'],
+              ['borderRightWidth', 'borderRightColor'],
+              ['borderBottomWidth', 'borderBottomColor'],
+              ['borderLeftWidth', 'borderLeftColor'],
+            ].filter(([width]) => Number.parseFloat(style[width]) > 0)
+              .map(([, color]) => readColor(style[color]))
+              .filter(Boolean);
+            hasContrastingBorder = Boolean(backdrop)
+              && borderColors.some((borderColor) => contrastRatio(borderColor, backdrop) >= 3);
+          }
           return {
             width: box.width,
             height: box.height,
@@ -505,13 +565,17 @@ async function verifyAssertions(page, assertions, routeId) {
               && element.getClientRects().length > 0 && box.width > 0 && box.height > 0,
             paintVisible,
             backgroundImage: style.backgroundImage,
+            centerHitWithinElement,
+            hasContrastingBorder,
           };
-        }));
+        }), { requireVisibleCenterHit, requireContrastingBorder });
         const undersized = geometries.filter((geometry) => (
           !geometry.visible || !geometry.paintVisible
             || geometry.width < minWidth || geometry.height < minHeight
             || (backgroundImageIncludes
               && !geometry.backgroundImage.toLowerCase().includes(backgroundImageIncludes))
+            || (requireVisibleCenterHit && !geometry.centerHitWithinElement)
+            || (requireContrastingBorder && !geometry.hasContrastingBorder)
         ));
         if (geometries.length < minCount || undersized.length > 0) {
           throw new Error(
@@ -519,7 +583,9 @@ async function verifyAssertions(page, assertions, routeId) {
             + `found ${geometries.length}, expected at least ${minCount} visible items `
             + `of ${minWidth}x${minHeight}px${backgroundImageIncludes
               ? ` with background image containing "${backgroundImageIncludes}"`
-              : ''}; ${undersized.length} were hidden, unpainted, undersized, or missing required paint.`,
+              : ''}${requireVisibleCenterHit ? ' with a visible center hit' : ''}`
+            + `${requireContrastingBorder ? ' with a contrasting border against its ancestor background' : ''}`
+            + `; ${undersized.length} were hidden, clipped, unpainted, undersized, or missing required paint.`,
           );
         }
         break;

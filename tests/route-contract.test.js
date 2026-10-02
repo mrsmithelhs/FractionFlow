@@ -141,6 +141,26 @@ describe('Plan 14 Reachable Behavior Route Contract & Matrix Schema', () => {
         type: 'notVisible',
         target: '#operation-button',
       }));
+      expect(route.expect.assertions).toContainEqual(expect.objectContaining({
+        type: 'visibleGeometry',
+        target: '.fraction-whole',
+        requireVisibleCenterHit: true,
+      }));
+      if (route.id === 'ROUTE-PROTOTYPE-SUBTRACTION-TAKEAWAY') {
+        expect(route.expect.assertions).toContainEqual(expect.objectContaining({
+          type: 'visibleGeometry',
+          target: '.bar-segment.is-removed',
+          requireVisibleCenterHit: true,
+        }));
+      } else {
+        expect(route.expect.assertions).toContainEqual(expect.objectContaining({
+          type: 'visibleGeometry',
+          target: '.gap-marker',
+          backgroundImageIncludes: 'repeating-linear-gradient',
+          requireVisibleCenterHit: true,
+          borderContrastAgainstAncestor: true,
+        }));
+      }
     }
   });
 
