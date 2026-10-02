@@ -35,7 +35,7 @@ Authoritative status is `node scripts/dev/plan-status.js list` and the generated
 | `plan-11` | draft | Motion / animated subdivision (D-01-A). Unblocked |
 | `plan-15` | complete | Owner accepted both screens 2026-10-02 after technical acceptance at `c0b9143`; SUB-01 remains draft with both alternatives open; no observation or deployment authorized |
 | `plan-16` | complete | Accepted after operation-validation repair `fe4f507` and report `5872418`; legacy replay evidence and all 27 unchanged browser routes independently verified; see its `delivery-review.md` |
-| `plan-13` | draft | Scaffold fading. Unblocked; support selector/writer remains deferred to its mechanism gate |
+| `plan-13` | in-progress | Owner initiated; mechanism approved 2026-10-02 for explicit high/medium profiles, denominator entry, and withheld premise source bar with source text retained; see its `mechanism-review.md`; owner screen/agency acceptance remains |
 
 ### Remaining work after Plan 15
 

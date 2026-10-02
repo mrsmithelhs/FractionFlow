@@ -1,11 +1,9 @@
 ---
 id: plan-13
 title: Scaffold Fading Made Real
-status: draft
+status: in-progress
 depends_on: [plan-12, plan-14]
 gate: "Mechanism confirmation before source work: where state.support is written, which of the six dimensions actually vary, and the negative evidence that no renderer flag or performance policy is involved. Then owner review of at least two support levels on rendered screens with an explicit agency check. The surface is settled by DECISION-030; the policy remains out of scope."
-superseded_by: null
-resolution: null
 summary: >-
   Give the four-level support ladder a writer. src/interaction/support.js builds
   high / medium / low / independent across six dimensions; state.support is
@@ -152,6 +150,10 @@ Contracts this packet must preserve:
   removing the learner's ability to participate.
 
 ### Requirement 1 — The ladder has a writer
+
+Requirement 0 was approved by the orchestrator on 2026-10-02 with the binding clarifications in
+`reports/development/plan-13-scaffold-fading-made-real/mechanism-review.md`. Source work may proceed
+within that mechanism; owner rendered-screen and agency acceptance remain required.
 
 Required behavior:
 
