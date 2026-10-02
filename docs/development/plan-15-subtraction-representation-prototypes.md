@@ -1,7 +1,8 @@
 ---
 id: plan-15
 title: Subtraction Representation Prototypes
-status: delivered
+status: complete
+resolution: "Owner accepted both rendered screens on 2026-10-02 after independent technical acceptance of both repairs; both subtraction representations remain open and OQ-25 is undecided."
 depends_on: [plan-14]
 gate: "Mechanism confirmation before any source work: where the prototypes live, how they reach the real mathematics without touching the episode machine, and the draft register entry. Then owner review of both prototypes on rendered screens. This packet produces evidence for OQ-25; it does not answer it, and neither prototype may be declared preferred."
 summary: >-

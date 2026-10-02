@@ -5,7 +5,8 @@
 **Draft Phase 3 entry recorded by orchestration on 2026-10-02. Not decided.**
 Plan 15 supplies standalone prototypes; technical acceptance is recorded in
 `reports/development/plan-15-subtraction-representation-prototypes/repair-02-review.md`.
-Owner rendered-screen acceptance and any learner observation remain pending.
+The owner accepted both rendered screens on 2026-10-02; no learner observations
+have been conducted, and neither representation has been selected.
 
 This entry is a bounded exception to the Phase 2 shared experimental contract below:
 it uses four fixed synthetic operands and the real exact-math core, supplies renaming,

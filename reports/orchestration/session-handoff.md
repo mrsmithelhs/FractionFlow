@@ -21,7 +21,7 @@ Plan 12 was accepted by the owner on 2026-09-30 after technical re-review at `9c
 Plan 16 on 2026-09-30; its Requirement 0 mechanism is approved with binding clarifications in
 `reports/development/plan-16-computed-beat-schedule/mechanism-review.md`.
 
-## Live state (as of 2026-10-01)
+## Live state (as of 2026-10-02)
 
 Authoritative status is `node scripts/dev/plan-status.js list` and the generated index in
 `docs/development/README.md`. Trust those over this file.
@@ -33,23 +33,22 @@ Authoritative status is `node scripts/dev/plan-status.js list` and the generated
 | `plan-14` | complete | Browser route matrix. 20 routes: 19 pass, 1 known defect. All three enforcement paths re-verified with independent seeds |
 | **`plan-12`** | **complete** | Owner accepted current screens for now; Repair 01 technical review at `9c81538`; no deployment authorized |
 | `plan-11` | draft | Motion / animated subdivision (D-01-A). Unblocked |
-| `plan-15` | delivered | Repair `1848419`, report `211e31c`: technically accepted after all five seeded visual cases and clean/full runs independently verified; SUB-01 draft recorded; only owner rendered-screen acceptance remains |
+| `plan-15` | complete | Owner accepted both screens 2026-10-02 after technical acceptance at `c0b9143`; SUB-01 remains draft with both alternatives open; no observation or deployment authorized |
 | `plan-16` | complete | Accepted after operation-validation repair `fe4f507` and report `5872418`; legacy replay evidence and all 27 unchanged browser routes independently verified; see its `delivery-review.md` |
 | `plan-13` | draft | Scaffold fading. Unblocked; support selector/writer remains deferred to its mechanism gate |
 
-### Recommended order after `plan-12`
+### Remaining work after Plan 15
 
-1. **`plan-16`** — behavior-preserving refactor under the unedited route matrix. Every Phase 3 family
-   needs it, so it precedes all of them. **Serial with `plan-12`**: both edit `beat-container.js` and
-   `linear-path.js`.
-2. **`plan-15`** can run **in parallel with anything** in a separate checkout. It is a standalone
-   surface outside the learner app. Its only shared file is `tests/routes/route-matrix.json`.
-3. **`plan-13`** now that `plan-12` has landed; it adds the gated support selector/writer to the
-   entry-page gear. The delivered Plan 12 gear is condition-only.
-4. **`plan-11`** is independent and can slot in wherever there is capacity.
-5. The first Phase 3 **family** packet — multi-whole bar and results crossing one whole
-   (DECISION-032) — is **not drafted**. The owner asked to hold it until `plan-14` was certified; it now
-   is. It should be written against `plan-16`'s schedule and the route matrix.
+1. **`plan-13`** is recommended next, starting with packet preparation and its mechanism gate.
+   It adds the gated support selector/writer to the entry-page gear; the current gear is condition-only.
+   No automatic advancement is authorized.
+2. **`plan-11`** remains an independent motion packet and can slot in where there is capacity.
+3. The first Phase 3 **family** packet — multi-whole bar and results crossing one whole
+   (DECISION-032) — is **not drafted**. Plan 14 and Plan 16 are now complete; draft against the
+   computed schedule and current route matrix when the owner chooses to initiate it.
+4. Plan 15's standalone prototypes are accepted for observation preparation. Both subtraction
+   representations remain open; actual observation sessions, OQ-25 selection, and deployment
+   require their own owner direction.
 
 ## Plan 12 closeout and next gate
 
