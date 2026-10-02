@@ -374,3 +374,122 @@ Implementation and refreshed evidence were committed first as `9254ae5`
 is being committed separately as the final repository action. No packet
 status was changed, and nothing was pushed or deployed. The work returns for
 technical re-review; rendered-screen acceptance remains owner-gated.
+
+## Repair 02 addendum (2026-10-02)
+
+This bounded follow-up repairs the two remaining R2 witness gaps in
+`repair-01-review.md`. It changes only the browser route runner, seeded visual
+verifier, two prototype route assertions, and their route-contract test. The
+prototype UI, focus code, CSS/static endpoints, math, learner bundle, and first
+27 learner routes were not changed. Screenshots and layout measurements were
+not regenerated because neither the rendered product nor measurement script
+changed.
+
+### Rendered witness changes
+
+The comparison `.gap-marker` assertion now requires its rendered background
+image to contain the repeating hatch, a center point that resolves through
+`document.elementFromPoint` to the marker or its descendant, and at least one
+positive-width border side with a contrast ratio of 3:1 or greater against
+the nearest nontransparent ancestor background. The exact white fill/border
+seed therefore fails even though the marker retains its box dimensions and
+the route still has a `.gap-marker` element. This tests the rendered bracket
+and hatch without using labels or class-name differences as proof.
+
+Required bar, removed-segment, and gap-marker graphics also have a bounded
+center hit test. The exact ancestor `clip-path: inset(100%)` seed preserves
+computed styles and layout boxes but removes the graphics from hit testing, so
+all four route/motion executions fail their visible-geometry assertion. The
+check is intentionally bounded to the static Plan 15 prototype selectors; it
+does not introduce a repository-wide visibility framework.
+
+The failing-first verifier retains all three earlier defects and adds the two
+new review seeds:
+
+```css
+.gap-marker { background: white !important; border-color: white !important; }
+#representation-visual { clip-path: inset(100%) !important; }
+```
+
+Observed results from `node scripts/dev/verify-subtraction-visual-witness.mjs`:
+
+- Hidden graphics: **4/4** prototype executions fail.
+- Collapsed graphics: **4/4** fail.
+- Erased takeaway removal mark: takeaway fails **2/2**; unaffected comparison
+  passes **2/2**.
+- Erased comparison bracket/hatch: comparison fails **2/2**; unaffected
+  takeaway passes **2/2**.
+- Fully clipped representation: **4/4** fail.
+- After the seeded runs, fresh unseeded browser contexts pass the clean routes
+  **4/4**.
+
+The original 27 learner route rows remain exactly equal to their parsed JSON
+values at the pre-repair `HEAD`; the matrix remains 29 rows and 31 complete
+browser executions. The filtered reciprocal prototype run passes all four
+executions. The existing static endpoint, keyboard-focus, and touch behavior
+evidence is untouched.
+
+### Advisor disposition
+
+- **Branch A: consultation ran.** Requested `gpt-6.1-sol` at medium effort in
+  a depth-one read-only advisor call. The advisor identified itself as a Codex
+  agent based on GPT-6, but could not independently verify a specific model
+  SKU, service tier, or higher-tier relationship. The call-site model and
+  effort request are known; the exact runtime identity is not independently
+  verified.
+- **Effective posture:** instruction-read-only with post-hoc verification.
+  Structural read-only was not verifiable. The brief prohibited writes and
+  further agents; the advisor reported no writes. The immediate post-review
+  `git status --short` showed only the four expected Repair 02 files, and the
+  primary remained sole writer.
+- **White comparison-gap seed — accepted as a valid failure case, fix
+  confirmed.** The advisor confirmed the white shorthand removes the gradient
+  and the white border loses contrast against the white card. Primary browser
+  evidence shows both comparison motion modes fail the paint/contrast check
+  while both unaffected takeaway modes pass. No further code change was
+  requested after review.
+- **Fully clipped representation seed — accepted as a valid failure case,
+  fix confirmed.** The advisor confirmed that unchanged rectangles and paint
+  declarations can survive the clip, while center-point hit testing observes
+  that the graphic is no longer rendered at that location. Primary browser
+  evidence shows all four route/motion executions fail, followed by a clean
+  4/4 pass. No further code change was requested after review.
+- **Earlier seeds and restored run — accepted as preserved.** The advisor
+  inspected that all earlier seeds remain and their expected unaffected-route
+  pass counts are enforced. The primary reran the complete expanded verifier.
+- **Recorded limitations:** center-point hit testing does not prove every
+  pixel is visible and can accept partial clipping that leaves the center
+  exposed. The border check accepts one sufficiently contrasting side and
+  assumes the current prototype's opaque RGB ancestor background; the gradient
+  assertion does not independently measure stripe contrast. These bounds
+  address the exact fully-clipped and erased-white seeds against the existing
+  static prototype CSS and do not claim a general paint oracle.
+- **Cost:** one bounded advisor response and one implementation/verification
+  cycle, completed within this turn.
+
+### Validation and handoff
+
+- `npm test` — **23 files and 271 tests passed**.
+- `npm run build` — learner build (**44 modules**) and separate prototype
+  build (**6 modules**) passed.
+- `npm run test:routes` — **31 passed, 0 failed** across 29 rows.
+- `node scripts/dev/run-route-matrix.js --filter ROUTE-PROTOTYPE-SUBTRACTION-TAKEAWAY`
+  — **4 passed, 0 failed**, including reciprocal comparison and both motion
+  modes.
+- `node scripts/dev/verify-subtraction-visual-witness.mjs` — all five seeded
+  outcomes matched the required route/motion failures and unaffected-route
+  passes; clean run passed **4/4**.
+- Parsed route comparison — **29 total rows**, with the original 27 learner
+  rows unchanged.
+- `node scripts/dev/plan-status.js lint` — `lint: OK (no violations)`;
+  `git diff --check` and staged diff check passed.
+- `node scripts/dev/plan-status.js list` — Plan 15 remains `delivered`. The
+  preflight reported `BLOCKED` because the packet is already delivered; the
+  user's explicit Repair 02 request authorized this scoped follow-up without
+  changing its status.
+
+Implementation and verification changes were committed first as `1848419`
+(`test: reject clipped Plan 15 subtraction graphics`). This Repair 02 report
+addendum is committed separately as the final repository action. No status
+was changed, and nothing was pushed or deployed. **Ready for technical
+re-review: yes; owner rendered-screen acceptance remains pending.**
