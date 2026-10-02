@@ -102,10 +102,10 @@ describe('Plan 14 Reachable Behavior Route Contract & Matrix Schema', () => {
     }
   });
 
-  it('preserves the 27 learner routes and declares two subtraction prototype rows', () => {
-    expect(matrix.routes).toHaveLength(29);
+  it('preserves learner and prototype routes while adding mounted high/medium support witnesses', () => {
+    expect(matrix.routes).toHaveLength(39);
     const learnerRoutes = matrix.routes.filter((route) => route.configuration !== 'plan15-subtraction-prototype');
-    expect(learnerRoutes).toHaveLength(27);
+    expect(learnerRoutes).toHaveLength(37);
     for (const route of learnerRoutes) {
       expect(route.startingSurface).toBe('mounted-app-entry');
       expect(route.viewport).toEqual({ width: 360, height: 740 });
@@ -166,7 +166,7 @@ describe('Plan 14 Reachable Behavior Route Contract & Matrix Schema', () => {
 
   it('executes each prototype route in both motion modes and brings in its filtered negative control', () => {
     const executions = expandRouteExecutions(matrix.routes);
-    expect(executions).toHaveLength(31);
+    expect(executions).toHaveLength(41);
     expect(executions.filter((execution) => (
       execution.route.configuration === 'plan15-subtraction-prototype'
     ))).toHaveLength(4);
@@ -180,6 +180,44 @@ describe('Plan 14 Reachable Behavior Route Contract & Matrix Schema', () => {
       'ROUTE-PROTOTYPE-SUBTRACTION-COMPARISON',
     ]);
     expect(expandRouteExecutions(filtered)).toHaveLength(4);
+  });
+
+  it('declares reciprocal matched-profile controls and all medium premise outcomes', () => {
+    const matchedRoutes = [
+      ['ROUTE-SUPPORT-HIGH-DECIDE', 'ROUTE-SUPPORT-MEDIUM-DECIDE'],
+      ['ROUTE-SUPPORT-HIGH-PREMISE-12', 'ROUTE-SUPPORT-MEDIUM-PREMISE-12'],
+      ['ROUTE-SUPPORT-HIGH-PREMISE-24', 'ROUTE-SUPPORT-MEDIUM-PREMISE-24'],
+    ];
+    for (const [highId, mediumId] of matchedRoutes) {
+      const high = matrix.routes.find((route) => route.id === highId);
+      const medium = matrix.routes.find((route) => route.id === mediumId);
+      expect(high).toBeDefined();
+      expect(medium).toBeDefined();
+      expect(high.negativeControl).toMatchObject({ targetRouteId: mediumId, sameMotionMode: true });
+      expect(medium.negativeControl).toMatchObject({ targetRouteId: highId, sameMotionMode: true });
+      expect(high.viewport).toEqual(medium.viewport);
+      expect(high.motionMode).toBe(medium.motionMode);
+      expect(high.actions.some((action) => action.target === '[data-support-id="high-support"]')).toBe(true);
+      expect(medium.actions.some((action) => action.target === '[data-support-id="medium-support"]')).toBe(true);
+    }
+
+    const mediumOutcomes = [
+      ['ROUTE-PREMISE-MEDIUM-12-FALSE-NO', 'ROUTE-PREMISE-12-FALSE-NO'],
+      ['ROUTE-PREMISE-MEDIUM-12-FALSE-YES', 'ROUTE-PREMISE-12-FALSE-YES'],
+      ['ROUTE-PREMISE-MEDIUM-24-TRUE-YES', 'ROUTE-PREMISE-24-TRUE-YES'],
+      ['ROUTE-PREMISE-MEDIUM-24-TRUE-NO', 'ROUTE-PREMISE-24-TRUE-NO'],
+    ];
+    for (const [mediumId, highId] of mediumOutcomes) {
+      const medium = matrix.routes.find((route) => route.id === mediumId);
+      expect(medium, `Missing medium-support outcome route ${mediumId}`).toBeDefined();
+      expect(medium.configuration).toBe('phase2-bundle-4');
+      expect(medium.actions.some((action) => action.target === '[data-support-id="medium-support"]')).toBe(true);
+      expect(medium.negativeControl).toMatchObject({ targetRouteId: highId, sameMotionMode: true });
+      if (mediumId.includes('12-FALSE-NO')) {
+        expect(medium.actions.some((action) => action.method === 'assertText'
+          && action.value.includes('not a common denominator.'))).toBe(true);
+      }
+    }
   });
 
   it('rejects a prototype route when its same-motion negative control row is removed', async () => {

@@ -18,6 +18,11 @@ import {
   REGISTERED_CONDITIONS,
 } from './conditions.js';
 import { getPracticeType, PRACTICE_TYPES } from './practice-types.js';
+import {
+  getDefaultSupportLevel,
+  getRegisteredSupportLevel,
+  REGISTERED_SUPPORT_LEVELS,
+} from './support-levels.js';
 
 const APP_RENDER_STRINGS = Object.freeze({
   ...STRINGS,
@@ -68,11 +73,12 @@ function presentationModeFor({ override, motionQuery }) {
   return motionQuery?.matches ? 'reduced-motion' : 'standard-motion';
 }
 
-function createInitialState(instance, practiceType, condition) {
+function createInitialState(instance, practiceType, condition, supportLevel) {
   return createEpisode({
     instance,
     episodeDefinition: practiceType.episodeDefinition,
     activeCondition: condition.activeCondition,
+    support: supportLevel.configuration,
   });
 }
 
@@ -92,6 +98,7 @@ export function createFractionFlowApp({
   if (!root) throw new Error('app root element is required');
 
   let selectedCondition = getRegisteredCondition(initialConditionId);
+  let selectedSupportLevel = getDefaultSupportLevel();
   let selectedPracticeType = null;
   let state = null;
   let visualView = true;
@@ -198,6 +205,35 @@ export function createFractionFlowApp({
       list.appendChild(option);
     }
     displayMenu.appendChild(list);
+
+    const supportHeading = makeElement('p', 'app-display-menu-label');
+    supportHeading.textContent = 'Support level';
+    displayMenu.appendChild(supportHeading);
+
+    const supportList = makeElement('div', 'app-support-options');
+    for (const supportLevel of REGISTERED_SUPPORT_LEVELS) {
+      const option = makeElement('button', 'app-display-option');
+      option.type = 'button';
+      option.setAttribute('data-support-id', supportLevel.id);
+      option.setAttribute('data-support-code', supportLevel.configuration.label);
+      option.setAttribute('aria-pressed', String(supportLevel.id === selectedSupportLevel.id));
+
+      const optionLabel = makeElement('span', 'app-display-option-label');
+      optionLabel.textContent = supportLevel.label;
+      option.appendChild(optionLabel);
+      const optionDescription = makeElement('span', 'app-display-option-description');
+      optionDescription.textContent = supportLevel.description;
+      option.appendChild(optionDescription);
+
+      option.addEventListener('click', () => {
+        selectedSupportLevel = getRegisteredSupportLevel(supportLevel.id);
+        closeDisplayMenu();
+        updateSupportMetadata();
+        displayMenuButton.focus();
+      });
+      supportList.appendChild(option);
+    }
+    displayMenu.appendChild(supportList);
 
     wrapper.appendChild(displayMenu);
 
@@ -342,7 +378,7 @@ export function createFractionFlowApp({
     if (!practiceType || !PRACTICE_TYPES.includes(practiceType)) return;
     selectedPracticeType = practiceType;
     const instance = suppliedInstance || canonicalInstance(practiceType.fixtureId);
-    state = createInitialState(instance, practiceType, selectedCondition);
+    state = createInitialState(instance, practiceType, selectedCondition, selectedSupportLevel);
     isReplaying = false;
     activityNotice = '';
     setHidden(entryPage, true);
@@ -358,7 +394,7 @@ export function createFractionFlowApp({
   function returnToEntry() {
     if (selectedPracticeType && state) {
       const instance = suppliedInstance || canonicalInstance(selectedPracticeType.fixtureId);
-      state = createInitialState(instance, selectedPracticeType, selectedCondition);
+      state = createInitialState(instance, selectedPracticeType, selectedCondition, selectedSupportLevel);
     }
     isReplaying = false;
     activityNotice = '';
@@ -399,10 +435,21 @@ export function createFractionFlowApp({
     appRoot.setAttribute('data-choreography-code', selectedCondition.activeCondition.choreography);
     appRoot.setAttribute('data-prompt-cadence-code', selectedCondition.activeCondition.promptCadence);
     appRoot.setAttribute('data-connection-code', selectedCondition.activeCondition.connectionMaking);
-    for (const option of displayMenu.querySelectorAll('.app-display-option')) {
+    for (const option of displayMenu.querySelectorAll('.app-display-options [data-condition-id]')) {
       option.setAttribute(
         'aria-pressed',
         String(option.getAttribute('data-condition-id') === selectedCondition.id),
+      );
+    }
+  }
+
+  function updateSupportMetadata() {
+    appRoot.setAttribute('data-support-level', selectedSupportLevel.id);
+    appRoot.setAttribute('data-support-code', selectedSupportLevel.configuration.label);
+    for (const option of displayMenu.querySelectorAll('.app-support-options [data-support-id]')) {
+      option.setAttribute(
+        'aria-pressed',
+        String(option.getAttribute('data-support-id') === selectedSupportLevel.id),
       );
     }
   }
@@ -448,6 +495,7 @@ export function createFractionFlowApp({
     }
 
     updateConditionMetadata();
+    updateSupportMetadata();
     updateSupportControls();
     updateViewVisibility();
   }
@@ -546,6 +594,9 @@ export function createFractionFlowApp({
     },
     getSelectedCondition() {
       return selectedCondition;
+    },
+    getSelectedSupportLevel() {
+      return selectedSupportLevel;
     },
     dispatch(action) {
       dispatchAction(action);

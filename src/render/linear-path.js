@@ -266,6 +266,9 @@ export function createLinearPathRenderer({
       recoveryTarget: recovery?.classification?.targetDenominator || recovery?.classification?.proposed,
       helpLevel: scene.meaning.supportConsequence?.lastHelp?.level,
       helpBeat: scene.meaning.supportConsequence?.lastHelp?.beat,
+      support: scene.meaning.support,
+      premiseComparison: scene.meaning.supportConsequence?.premiseComparison,
+      candidateDenominators: scene.meaning.unitRelationship?.candidateDenominators,
       isInspection: beat === 'reflect' && isReplaying && Boolean(scene.meaning.transition),
       premiseCaseId: scene.meaning.premiseCase?.id,
     });

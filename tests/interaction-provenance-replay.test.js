@@ -6,6 +6,7 @@ import {
   createReplayEnvelope,
   replayEpisode,
 } from '../src/interaction/index.js';
+import { PHASE2_REFLECTION_EPISODE_DEFINITION } from '../src/interaction/episode-definition.js';
 import {
   generateProblem,
   validateCuratedFixtures,
@@ -54,6 +55,62 @@ function legacyScheduleProjection(value) {
 }
 
 describe('Plan 05 provenance and replay', () => {
+  it('round-trips complete high and medium support profiles through replay v1', () => {
+    const profiles = [
+      {
+        label: 'high support',
+        dimensions: {
+          fractionBarModel: 'high support',
+          commonDenominator: 'high support',
+          equivalentNumerators: 'high support',
+          prediction: 'high support',
+          symbolicIntegration: 'high support',
+          helpAndReplay: 'high support',
+        },
+      },
+      {
+        label: 'medium support',
+        dimensions: {
+          fractionBarModel: 'medium support',
+          commonDenominator: 'medium support',
+          equivalentNumerators: 'high support',
+          prediction: 'high support',
+          symbolicIntegration: 'high support',
+          helpAndReplay: 'high support',
+        },
+      },
+    ];
+
+    for (const support of profiles) {
+      let state = createEpisode({
+        instance: curatedInstance(),
+        episodeDefinition: PHASE2_REFLECTION_EPISODE_DEFINITION,
+        activeCondition: {
+          id: 'phase2-bundle-4',
+          revision: '1',
+          display: 'D-01-A',
+          choreography: 'D-02-M',
+          promptCadence: 'D-05-focused-key-beats',
+          connectionMaking: 'CM-01-P',
+        },
+        support,
+      });
+      state = applyIntent(state, { type: 'acknowledge-encounter' });
+      state = applyIntent(state, { type: 'submit-notice', matchesUnits: false });
+      state = applyIntent(state, { type: 'propose-common-denominator', proposed: whole(12) });
+      state = applyIntent(state, { type: 'submit-equivalent-form', proposed: fraction(8, 12) });
+      state = applyIntent(state, { type: 'submit-equivalent-form', proposed: fraction(3, 12) });
+      state = applyIntent(state, { type: 'submit-operation-result', proposed: fraction(11, 12) });
+      state = applyIntent(state, { type: 'submit-resolution', proposed: fraction(11, 12) });
+      state = applyIntent(state, { type: 'submit-reflection', response: 'no' });
+      const envelope = createReplayEnvelope(state);
+      expect(envelope.schemaVersion).toBe('fractionflow.episode-replay/v1');
+      expect(envelope.support).toEqual(support);
+      expect(JSON.stringify(replayEpisode(JSON.parse(JSON.stringify(envelope)))))
+        .toBe(JSON.stringify(state));
+    }
+  });
+
   it('reconstructs the b654487 envelope and state oracles under the approved narrow projection', () => {
     const oracle = JSON.parse(readFileSync(
       new URL('./fixtures/plan-16-legacy-replay-oracle.json', import.meta.url),

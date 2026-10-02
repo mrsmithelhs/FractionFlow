@@ -1,0 +1,2460 @@
+{
+  "captureDate": "2026-10-02",
+  "browser": {
+    "engine": "Chromium via Playwright",
+    "channel": "msedge"
+  },
+  "viewportWidth": 360,
+  "viewportHeights": [
+    740,
+    752
+  ],
+  "screenshots": [
+    {
+      "name": "high-decide",
+      "file": "evidence/high-decide-360x740.png",
+      "viewport": {
+        "width": 360,
+        "height": 740
+      }
+    },
+    {
+      "name": "high-premise-false-12",
+      "file": "evidence/high-premise-false-12-360x740.png",
+      "viewport": {
+        "width": 360,
+        "height": 740
+      }
+    },
+    {
+      "name": "medium-decide",
+      "file": "evidence/medium-decide-360x740.png",
+      "viewport": {
+        "width": 360,
+        "height": 740
+      }
+    },
+    {
+      "name": "medium-premise-false-12",
+      "file": "evidence/medium-premise-false-12-360x740.png",
+      "viewport": {
+        "width": 360,
+        "height": 740
+      }
+    },
+    {
+      "name": "high-premise-true-24",
+      "file": "evidence/high-premise-true-24-360x740.png",
+      "viewport": {
+        "width": 360,
+        "height": 740
+      }
+    },
+    {
+      "name": "medium-premise-true-24",
+      "file": "evidence/medium-premise-true-24-360x740.png",
+      "viewport": {
+        "width": 360,
+        "height": 740
+      }
+    },
+    {
+      "name": "reviewer-gear",
+      "file": "evidence/reviewer-gear-360x740.png",
+      "viewport": {
+        "width": 360,
+        "height": 740
+      }
+    }
+  ],
+  "measurements": [
+    {
+      "profile": "high",
+      "beat": "encounter",
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "view": {
+        "left": 25,
+        "top": 133,
+        "right": 335,
+        "bottom": 602.84,
+        "width": 310,
+        "height": 469.84,
+        "withinViewport": true
+      },
+      "activeTask": {
+        "left": 41,
+        "top": 395.78,
+        "right": 319,
+        "bottom": 546.84,
+        "width": 278,
+        "height": 151.06,
+        "withinViewport": true
+      },
+      "question": {
+        "text": "Look at these two fractions.",
+        "bounds": {
+          "left": 63,
+          "top": 428.72,
+          "right": 297,
+          "bottom": 453.91,
+          "width": 234,
+          "height": 25.19,
+          "withinViewport": true
+        }
+      },
+      "controls": [
+        {
+          "tag": "button",
+          "label": "Next",
+          "bounds": {
+            "left": 63,
+            "top": 484.84,
+            "right": 297,
+            "bottom": 528.84,
+            "width": 234,
+            "height": 44,
+            "withinViewport": true
+          }
+        }
+      ],
+      "scroll": {
+        "x": 0,
+        "y": 12,
+        "documentWidth": 360,
+        "documentHeight": 812,
+        "horizontalOverflow": false,
+        "verticalOverflow": true
+      }
+    },
+    {
+      "profile": "high",
+      "beat": "notice",
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "view": {
+        "left": 25,
+        "top": 133,
+        "right": 335,
+        "bottom": 703.63,
+        "width": 310,
+        "height": 570.63,
+        "withinViewport": true
+      },
+      "activeTask": {
+        "left": 41,
+        "top": 395.78,
+        "right": 319,
+        "bottom": 628.03,
+        "width": 278,
+        "height": 232.25,
+        "withinViewport": true
+      },
+      "question": {
+        "text": "Do these two fractions have the same size parts?",
+        "bounds": {
+          "left": 63,
+          "top": 428.72,
+          "right": 297,
+          "bottom": 479.09,
+          "width": 234,
+          "height": 50.38,
+          "withinViewport": true
+        }
+      },
+      "controls": [
+        {
+          "tag": "button",
+          "label": "Yes, same size",
+          "bounds": {
+            "left": 63,
+            "top": 510.03,
+            "right": 217.09,
+            "bottom": 554.03,
+            "width": 154.09,
+            "height": 44,
+            "withinViewport": true
+          }
+        },
+        {
+          "tag": "button",
+          "label": "No, different sizes",
+          "bounds": {
+            "left": 63,
+            "top": 566.03,
+            "right": 242.81,
+            "bottom": 610.03,
+            "width": 179.81,
+            "height": 44,
+            "withinViewport": true
+          }
+        }
+      ],
+      "scroll": {
+        "x": 0,
+        "y": 12,
+        "documentWidth": 360,
+        "documentHeight": 913,
+        "horizontalOverflow": false,
+        "verticalOverflow": true
+      }
+    },
+    {
+      "profile": "high",
+      "beat": "decide",
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "view": {
+        "left": 25,
+        "top": 133,
+        "right": 335,
+        "bottom": 713.81,
+        "width": 310,
+        "height": 580.81,
+        "withinViewport": true
+      },
+      "activeTask": {
+        "left": 41,
+        "top": 395.78,
+        "right": 319,
+        "bottom": 597.22,
+        "width": 278,
+        "height": 201.44,
+        "withinViewport": true
+      },
+      "question": {
+        "text": "Choose a common denominator for both fractions.",
+        "bounds": {
+          "left": 63,
+          "top": 428.72,
+          "right": 297,
+          "bottom": 504.28,
+          "width": 234,
+          "height": 75.56,
+          "withinViewport": true
+        }
+      },
+      "controls": [
+        {
+          "tag": "button",
+          "label": "Common denominator 12",
+          "bounds": {
+            "left": 63,
+            "top": 535.22,
+            "right": 122.8,
+            "bottom": 579.22,
+            "width": 59.8,
+            "height": 44,
+            "withinViewport": true
+          }
+        },
+        {
+          "tag": "button",
+          "label": "Common denominator 24",
+          "bounds": {
+            "left": 134.8,
+            "top": 535.22,
+            "right": 194.59,
+            "bottom": 579.22,
+            "width": 59.8,
+            "height": 44,
+            "withinViewport": true
+          }
+        }
+      ],
+      "scroll": {
+        "x": 0,
+        "y": 12,
+        "documentWidth": 360,
+        "documentHeight": 923,
+        "horizontalOverflow": false,
+        "verticalOverflow": true
+      }
+    },
+    {
+      "profile": "high",
+      "beat": "transform-left",
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "view": {
+        "left": 25,
+        "top": 133,
+        "right": 335,
+        "bottom": 759.22,
+        "width": 310,
+        "height": 626.22,
+        "withinViewport": false
+      },
+      "activeTask": {
+        "left": 41,
+        "top": 395.78,
+        "right": 319,
+        "bottom": 623.03,
+        "width": 278,
+        "height": 227.25,
+        "withinViewport": true
+      },
+      "question": {
+        "text": "Rename the first fraction with 12 equal parts.",
+        "bounds": {
+          "left": 63,
+          "top": 428.72,
+          "right": 297,
+          "bottom": 479.09,
+          "width": 234,
+          "height": 50.38,
+          "withinViewport": true
+        }
+      },
+      "controls": [
+        {
+          "tag": "input",
+          "label": "",
+          "bounds": {
+            "left": 63,
+            "top": 558.03,
+            "right": 159,
+            "bottom": 605.03,
+            "width": 96,
+            "height": 47,
+            "withinViewport": true
+          }
+        },
+        {
+          "tag": "button",
+          "label": "Submit",
+          "bounds": {
+            "left": 167,
+            "top": 559.53,
+            "right": 261.22,
+            "bottom": 603.53,
+            "width": 94.22,
+            "height": 44,
+            "withinViewport": true
+          }
+        }
+      ],
+      "scroll": {
+        "x": 0,
+        "y": 12,
+        "documentWidth": 360,
+        "documentHeight": 968,
+        "horizontalOverflow": false,
+        "verticalOverflow": true
+      }
+    },
+    {
+      "profile": "high",
+      "beat": "transform-right",
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "view": {
+        "left": 25,
+        "top": 133,
+        "right": 335,
+        "bottom": 759.22,
+        "width": 310,
+        "height": 626.22,
+        "withinViewport": false
+      },
+      "activeTask": {
+        "left": 41,
+        "top": 395.78,
+        "right": 319,
+        "bottom": 623.03,
+        "width": 278,
+        "height": 227.25,
+        "withinViewport": true
+      },
+      "question": {
+        "text": "Rename the second fraction with 12 equal parts.",
+        "bounds": {
+          "left": 63,
+          "top": 428.72,
+          "right": 297,
+          "bottom": 479.09,
+          "width": 234,
+          "height": 50.38,
+          "withinViewport": true
+        }
+      },
+      "controls": [
+        {
+          "tag": "input",
+          "label": "",
+          "bounds": {
+            "left": 63,
+            "top": 558.03,
+            "right": 159,
+            "bottom": 605.03,
+            "width": 96,
+            "height": 47,
+            "withinViewport": true
+          }
+        },
+        {
+          "tag": "button",
+          "label": "Submit",
+          "bounds": {
+            "left": 167,
+            "top": 559.53,
+            "right": 261.22,
+            "bottom": 603.53,
+            "width": 94.22,
+            "height": 44,
+            "withinViewport": true
+          }
+        }
+      ],
+      "scroll": {
+        "x": 0,
+        "y": 12,
+        "documentWidth": 360,
+        "documentHeight": 968,
+        "horizontalOverflow": false,
+        "verticalOverflow": true
+      }
+    },
+    {
+      "profile": "high",
+      "beat": "operate",
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "view": {
+        "left": 25,
+        "top": 133,
+        "right": 335,
+        "bottom": 719.63,
+        "width": 310,
+        "height": 586.63,
+        "withinViewport": true
+      },
+      "activeTask": {
+        "left": 41,
+        "top": 395.78,
+        "right": 319,
+        "bottom": 603.03,
+        "width": 278,
+        "height": 207.25,
+        "withinViewport": true
+      },
+      "question": {
+        "text": "Add the shaded parts together.",
+        "bounds": {
+          "left": 63,
+          "top": 428.72,
+          "right": 297,
+          "bottom": 479.09,
+          "width": 234,
+          "height": 50.38,
+          "withinViewport": true
+        }
+      },
+      "controls": [
+        {
+          "tag": "input",
+          "label": "",
+          "bounds": {
+            "left": 63,
+            "top": 538.03,
+            "right": 159,
+            "bottom": 585.03,
+            "width": 96,
+            "height": 47,
+            "withinViewport": true
+          }
+        },
+        {
+          "tag": "button",
+          "label": "Submit",
+          "bounds": {
+            "left": 167,
+            "top": 539.53,
+            "right": 261.22,
+            "bottom": 583.53,
+            "width": 94.22,
+            "height": 44,
+            "withinViewport": true
+          }
+        }
+      ],
+      "scroll": {
+        "x": 0,
+        "y": 12,
+        "documentWidth": 360,
+        "documentHeight": 929,
+        "horizontalOverflow": false,
+        "verticalOverflow": true
+      }
+    },
+    {
+      "profile": "high",
+      "beat": "resolve",
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "view": {
+        "left": 25,
+        "top": 133,
+        "right": 335,
+        "bottom": 663.44,
+        "width": 310,
+        "height": 530.44,
+        "withinViewport": true
+      },
+      "activeTask": {
+        "left": 41,
+        "top": 395.78,
+        "right": 319,
+        "bottom": 546.84,
+        "width": 278,
+        "height": 151.06,
+        "withinViewport": true
+      },
+      "question": {
+        "text": "The answer is 11/12.",
+        "bounds": {
+          "left": 63,
+          "top": 428.72,
+          "right": 297,
+          "bottom": 453.91,
+          "width": 234,
+          "height": 25.19,
+          "withinViewport": true
+        }
+      },
+      "controls": [
+        {
+          "tag": "button",
+          "label": "Continue",
+          "bounds": {
+            "left": 63,
+            "top": 484.84,
+            "right": 297,
+            "bottom": 528.84,
+            "width": 234,
+            "height": 44,
+            "withinViewport": true
+          }
+        }
+      ],
+      "scroll": {
+        "x": 0,
+        "y": 12,
+        "documentWidth": 360,
+        "documentHeight": 873,
+        "horizontalOverflow": false,
+        "verticalOverflow": true
+      }
+    },
+    {
+      "profile": "high",
+      "beat": "reflect",
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "view": {
+        "left": 25,
+        "top": 133,
+        "right": 335,
+        "bottom": 842.69,
+        "width": 310,
+        "height": 709.69,
+        "withinViewport": false
+      },
+      "activeTask": {
+        "left": 41,
+        "top": 441.78,
+        "right": 319,
+        "bottom": 726.09,
+        "width": 278,
+        "height": 284.31,
+        "withinViewport": true
+      },
+      "question": {
+        "text": "Does this new bar show the same amount as before?",
+        "bounds": {
+          "left": 63,
+          "top": 512.78,
+          "right": 297,
+          "bottom": 563.16,
+          "width": 234,
+          "height": 50.38,
+          "withinViewport": true
+        }
+      },
+      "controls": [
+        {
+          "tag": "button",
+          "label": "Yes, it is the same amount",
+          "bounds": {
+            "left": 63,
+            "top": 594.09,
+            "right": 297,
+            "bottom": 652.09,
+            "width": 234,
+            "height": 58,
+            "withinViewport": true
+          }
+        },
+        {
+          "tag": "button",
+          "label": "No, the amount changed",
+          "bounds": {
+            "left": 63,
+            "top": 664.09,
+            "right": 291.67,
+            "bottom": 708.09,
+            "width": 228.67,
+            "height": 44,
+            "withinViewport": true
+          }
+        }
+      ],
+      "scroll": {
+        "x": 0,
+        "y": 12,
+        "documentWidth": 360,
+        "documentHeight": 1052,
+        "horizontalOverflow": false,
+        "verticalOverflow": true
+      }
+    },
+    {
+      "profile": "high",
+      "beat": "encounter",
+      "viewport": {
+        "width": 360,
+        "height": 752
+      },
+      "view": {
+        "left": 25,
+        "top": 133,
+        "right": 335,
+        "bottom": 602.84,
+        "width": 310,
+        "height": 469.84,
+        "withinViewport": true
+      },
+      "activeTask": {
+        "left": 41,
+        "top": 395.78,
+        "right": 319,
+        "bottom": 546.84,
+        "width": 278,
+        "height": 151.06,
+        "withinViewport": true
+      },
+      "question": {
+        "text": "Look at these two fractions.",
+        "bounds": {
+          "left": 63,
+          "top": 428.72,
+          "right": 297,
+          "bottom": 453.91,
+          "width": 234,
+          "height": 25.19,
+          "withinViewport": true
+        }
+      },
+      "controls": [
+        {
+          "tag": "button",
+          "label": "Next",
+          "bounds": {
+            "left": 63,
+            "top": 484.84,
+            "right": 297,
+            "bottom": 528.84,
+            "width": 234,
+            "height": 44,
+            "withinViewport": true
+          }
+        }
+      ],
+      "scroll": {
+        "x": 0,
+        "y": 12,
+        "documentWidth": 360,
+        "documentHeight": 812,
+        "horizontalOverflow": false,
+        "verticalOverflow": true
+      }
+    },
+    {
+      "profile": "high",
+      "beat": "notice",
+      "viewport": {
+        "width": 360,
+        "height": 752
+      },
+      "view": {
+        "left": 25,
+        "top": 133,
+        "right": 335,
+        "bottom": 703.63,
+        "width": 310,
+        "height": 570.63,
+        "withinViewport": true
+      },
+      "activeTask": {
+        "left": 41,
+        "top": 395.78,
+        "right": 319,
+        "bottom": 628.03,
+        "width": 278,
+        "height": 232.25,
+        "withinViewport": true
+      },
+      "question": {
+        "text": "Do these two fractions have the same size parts?",
+        "bounds": {
+          "left": 63,
+          "top": 428.72,
+          "right": 297,
+          "bottom": 479.09,
+          "width": 234,
+          "height": 50.38,
+          "withinViewport": true
+        }
+      },
+      "controls": [
+        {
+          "tag": "button",
+          "label": "Yes, same size",
+          "bounds": {
+            "left": 63,
+            "top": 510.03,
+            "right": 217.09,
+            "bottom": 554.03,
+            "width": 154.09,
+            "height": 44,
+            "withinViewport": true
+          }
+        },
+        {
+          "tag": "button",
+          "label": "No, different sizes",
+          "bounds": {
+            "left": 63,
+            "top": 566.03,
+            "right": 242.81,
+            "bottom": 610.03,
+            "width": 179.81,
+            "height": 44,
+            "withinViewport": true
+          }
+        }
+      ],
+      "scroll": {
+        "x": 0,
+        "y": 12,
+        "documentWidth": 360,
+        "documentHeight": 913,
+        "horizontalOverflow": false,
+        "verticalOverflow": true
+      }
+    },
+    {
+      "profile": "high",
+      "beat": "decide",
+      "viewport": {
+        "width": 360,
+        "height": 752
+      },
+      "view": {
+        "left": 25,
+        "top": 133,
+        "right": 335,
+        "bottom": 713.81,
+        "width": 310,
+        "height": 580.81,
+        "withinViewport": true
+      },
+      "activeTask": {
+        "left": 41,
+        "top": 395.78,
+        "right": 319,
+        "bottom": 597.22,
+        "width": 278,
+        "height": 201.44,
+        "withinViewport": true
+      },
+      "question": {
+        "text": "Choose a common denominator for both fractions.",
+        "bounds": {
+          "left": 63,
+          "top": 428.72,
+          "right": 297,
+          "bottom": 504.28,
+          "width": 234,
+          "height": 75.56,
+          "withinViewport": true
+        }
+      },
+      "controls": [
+        {
+          "tag": "button",
+          "label": "Common denominator 12",
+          "bounds": {
+            "left": 63,
+            "top": 535.22,
+            "right": 122.8,
+            "bottom": 579.22,
+            "width": 59.8,
+            "height": 44,
+            "withinViewport": true
+          }
+        },
+        {
+          "tag": "button",
+          "label": "Common denominator 24",
+          "bounds": {
+            "left": 134.8,
+            "top": 535.22,
+            "right": 194.59,
+            "bottom": 579.22,
+            "width": 59.8,
+            "height": 44,
+            "withinViewport": true
+          }
+        }
+      ],
+      "scroll": {
+        "x": 0,
+        "y": 12,
+        "documentWidth": 360,
+        "documentHeight": 923,
+        "horizontalOverflow": false,
+        "verticalOverflow": true
+      }
+    },
+    {
+      "profile": "high",
+      "beat": "transform-left",
+      "viewport": {
+        "width": 360,
+        "height": 752
+      },
+      "view": {
+        "left": 25,
+        "top": 133,
+        "right": 335,
+        "bottom": 759.22,
+        "width": 310,
+        "height": 626.22,
+        "withinViewport": false
+      },
+      "activeTask": {
+        "left": 41,
+        "top": 395.78,
+        "right": 319,
+        "bottom": 623.03,
+        "width": 278,
+        "height": 227.25,
+        "withinViewport": true
+      },
+      "question": {
+        "text": "Rename the first fraction with 12 equal parts.",
+        "bounds": {
+          "left": 63,
+          "top": 428.72,
+          "right": 297,
+          "bottom": 479.09,
+          "width": 234,
+          "height": 50.38,
+          "withinViewport": true
+        }
+      },
+      "controls": [
+        {
+          "tag": "input",
+          "label": "",
+          "bounds": {
+            "left": 63,
+            "top": 558.03,
+            "right": 159,
+            "bottom": 605.03,
+            "width": 96,
+            "height": 47,
+            "withinViewport": true
+          }
+        },
+        {
+          "tag": "button",
+          "label": "Submit",
+          "bounds": {
+            "left": 167,
+            "top": 559.53,
+            "right": 261.22,
+            "bottom": 603.53,
+            "width": 94.22,
+            "height": 44,
+            "withinViewport": true
+          }
+        }
+      ],
+      "scroll": {
+        "x": 0,
+        "y": 12,
+        "documentWidth": 360,
+        "documentHeight": 968,
+        "horizontalOverflow": false,
+        "verticalOverflow": true
+      }
+    },
+    {
+      "profile": "high",
+      "beat": "transform-right",
+      "viewport": {
+        "width": 360,
+        "height": 752
+      },
+      "view": {
+        "left": 25,
+        "top": 133,
+        "right": 335,
+        "bottom": 759.22,
+        "width": 310,
+        "height": 626.22,
+        "withinViewport": false
+      },
+      "activeTask": {
+        "left": 41,
+        "top": 395.78,
+        "right": 319,
+        "bottom": 623.03,
+        "width": 278,
+        "height": 227.25,
+        "withinViewport": true
+      },
+      "question": {
+        "text": "Rename the second fraction with 12 equal parts.",
+        "bounds": {
+          "left": 63,
+          "top": 428.72,
+          "right": 297,
+          "bottom": 479.09,
+          "width": 234,
+          "height": 50.38,
+          "withinViewport": true
+        }
+      },
+      "controls": [
+        {
+          "tag": "input",
+          "label": "",
+          "bounds": {
+            "left": 63,
+            "top": 558.03,
+            "right": 159,
+            "bottom": 605.03,
+            "width": 96,
+            "height": 47,
+            "withinViewport": true
+          }
+        },
+        {
+          "tag": "button",
+          "label": "Submit",
+          "bounds": {
+            "left": 167,
+            "top": 559.53,
+            "right": 261.22,
+            "bottom": 603.53,
+            "width": 94.22,
+            "height": 44,
+            "withinViewport": true
+          }
+        }
+      ],
+      "scroll": {
+        "x": 0,
+        "y": 12,
+        "documentWidth": 360,
+        "documentHeight": 968,
+        "horizontalOverflow": false,
+        "verticalOverflow": true
+      }
+    },
+    {
+      "profile": "high",
+      "beat": "operate",
+      "viewport": {
+        "width": 360,
+        "height": 752
+      },
+      "view": {
+        "left": 25,
+        "top": 133,
+        "right": 335,
+        "bottom": 719.63,
+        "width": 310,
+        "height": 586.63,
+        "withinViewport": true
+      },
+      "activeTask": {
+        "left": 41,
+        "top": 395.78,
+        "right": 319,
+        "bottom": 603.03,
+        "width": 278,
+        "height": 207.25,
+        "withinViewport": true
+      },
+      "question": {
+        "text": "Add the shaded parts together.",
+        "bounds": {
+          "left": 63,
+          "top": 428.72,
+          "right": 297,
+          "bottom": 479.09,
+          "width": 234,
+          "height": 50.38,
+          "withinViewport": true
+        }
+      },
+      "controls": [
+        {
+          "tag": "input",
+          "label": "",
+          "bounds": {
+            "left": 63,
+            "top": 538.03,
+            "right": 159,
+            "bottom": 585.03,
+            "width": 96,
+            "height": 47,
+            "withinViewport": true
+          }
+        },
+        {
+          "tag": "button",
+          "label": "Submit",
+          "bounds": {
+            "left": 167,
+            "top": 539.53,
+            "right": 261.22,
+            "bottom": 583.53,
+            "width": 94.22,
+            "height": 44,
+            "withinViewport": true
+          }
+        }
+      ],
+      "scroll": {
+        "x": 0,
+        "y": 12,
+        "documentWidth": 360,
+        "documentHeight": 929,
+        "horizontalOverflow": false,
+        "verticalOverflow": true
+      }
+    },
+    {
+      "profile": "high",
+      "beat": "resolve",
+      "viewport": {
+        "width": 360,
+        "height": 752
+      },
+      "view": {
+        "left": 25,
+        "top": 133,
+        "right": 335,
+        "bottom": 663.44,
+        "width": 310,
+        "height": 530.44,
+        "withinViewport": true
+      },
+      "activeTask": {
+        "left": 41,
+        "top": 395.78,
+        "right": 319,
+        "bottom": 546.84,
+        "width": 278,
+        "height": 151.06,
+        "withinViewport": true
+      },
+      "question": {
+        "text": "The answer is 11/12.",
+        "bounds": {
+          "left": 63,
+          "top": 428.72,
+          "right": 297,
+          "bottom": 453.91,
+          "width": 234,
+          "height": 25.19,
+          "withinViewport": true
+        }
+      },
+      "controls": [
+        {
+          "tag": "button",
+          "label": "Continue",
+          "bounds": {
+            "left": 63,
+            "top": 484.84,
+            "right": 297,
+            "bottom": 528.84,
+            "width": 234,
+            "height": 44,
+            "withinViewport": true
+          }
+        }
+      ],
+      "scroll": {
+        "x": 0,
+        "y": 12,
+        "documentWidth": 360,
+        "documentHeight": 873,
+        "horizontalOverflow": false,
+        "verticalOverflow": true
+      }
+    },
+    {
+      "profile": "high",
+      "beat": "reflect",
+      "viewport": {
+        "width": 360,
+        "height": 752
+      },
+      "view": {
+        "left": 25,
+        "top": 133,
+        "right": 335,
+        "bottom": 842.69,
+        "width": 310,
+        "height": 709.69,
+        "withinViewport": false
+      },
+      "activeTask": {
+        "left": 41,
+        "top": 441.78,
+        "right": 319,
+        "bottom": 726.09,
+        "width": 278,
+        "height": 284.31,
+        "withinViewport": true
+      },
+      "question": {
+        "text": "Does this new bar show the same amount as before?",
+        "bounds": {
+          "left": 63,
+          "top": 512.78,
+          "right": 297,
+          "bottom": 563.16,
+          "width": 234,
+          "height": 50.38,
+          "withinViewport": true
+        }
+      },
+      "controls": [
+        {
+          "tag": "button",
+          "label": "Yes, it is the same amount",
+          "bounds": {
+            "left": 63,
+            "top": 594.09,
+            "right": 297,
+            "bottom": 652.09,
+            "width": 234,
+            "height": 58,
+            "withinViewport": true
+          }
+        },
+        {
+          "tag": "button",
+          "label": "No, the amount changed",
+          "bounds": {
+            "left": 63,
+            "top": 664.09,
+            "right": 291.67,
+            "bottom": 708.09,
+            "width": 228.67,
+            "height": 44,
+            "withinViewport": true
+          }
+        }
+      ],
+      "scroll": {
+        "x": 0,
+        "y": 12,
+        "documentWidth": 360,
+        "documentHeight": 1052,
+        "horizontalOverflow": false,
+        "verticalOverflow": true
+      }
+    },
+    {
+      "profile": "medium",
+      "beat": "encounter",
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "view": {
+        "left": 25,
+        "top": 133,
+        "right": 335,
+        "bottom": 602.84,
+        "width": 310,
+        "height": 469.84,
+        "withinViewport": true
+      },
+      "activeTask": {
+        "left": 41,
+        "top": 395.78,
+        "right": 319,
+        "bottom": 546.84,
+        "width": 278,
+        "height": 151.06,
+        "withinViewport": true
+      },
+      "question": {
+        "text": "Look at these two fractions.",
+        "bounds": {
+          "left": 63,
+          "top": 428.72,
+          "right": 297,
+          "bottom": 453.91,
+          "width": 234,
+          "height": 25.19,
+          "withinViewport": true
+        }
+      },
+      "controls": [
+        {
+          "tag": "button",
+          "label": "Next",
+          "bounds": {
+            "left": 63,
+            "top": 484.84,
+            "right": 297,
+            "bottom": 528.84,
+            "width": 234,
+            "height": 44,
+            "withinViewport": true
+          }
+        }
+      ],
+      "scroll": {
+        "x": 0,
+        "y": 12,
+        "documentWidth": 360,
+        "documentHeight": 812,
+        "horizontalOverflow": false,
+        "verticalOverflow": true
+      }
+    },
+    {
+      "profile": "medium",
+      "beat": "notice",
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "view": {
+        "left": 25,
+        "top": 133,
+        "right": 335,
+        "bottom": 703.63,
+        "width": 310,
+        "height": 570.63,
+        "withinViewport": true
+      },
+      "activeTask": {
+        "left": 41,
+        "top": 395.78,
+        "right": 319,
+        "bottom": 628.03,
+        "width": 278,
+        "height": 232.25,
+        "withinViewport": true
+      },
+      "question": {
+        "text": "Do these two fractions have the same size parts?",
+        "bounds": {
+          "left": 63,
+          "top": 428.72,
+          "right": 297,
+          "bottom": 479.09,
+          "width": 234,
+          "height": 50.38,
+          "withinViewport": true
+        }
+      },
+      "controls": [
+        {
+          "tag": "button",
+          "label": "Yes, same size",
+          "bounds": {
+            "left": 63,
+            "top": 510.03,
+            "right": 217.09,
+            "bottom": 554.03,
+            "width": 154.09,
+            "height": 44,
+            "withinViewport": true
+          }
+        },
+        {
+          "tag": "button",
+          "label": "No, different sizes",
+          "bounds": {
+            "left": 63,
+            "top": 566.03,
+            "right": 242.81,
+            "bottom": 610.03,
+            "width": 179.81,
+            "height": 44,
+            "withinViewport": true
+          }
+        }
+      ],
+      "scroll": {
+        "x": 0,
+        "y": 12,
+        "documentWidth": 360,
+        "documentHeight": 913,
+        "horizontalOverflow": false,
+        "verticalOverflow": true
+      }
+    },
+    {
+      "profile": "medium",
+      "beat": "decide",
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "view": {
+        "left": 25,
+        "top": 133,
+        "right": 335,
+        "bottom": 764.81,
+        "width": 310,
+        "height": 631.81,
+        "withinViewport": false
+      },
+      "activeTask": {
+        "left": 41,
+        "top": 395.78,
+        "right": 319,
+        "bottom": 648.22,
+        "width": 278,
+        "height": 252.44,
+        "withinViewport": true
+      },
+      "question": {
+        "text": "Choose a common denominator for both fractions.",
+        "bounds": {
+          "left": 63,
+          "top": 428.72,
+          "right": 297,
+          "bottom": 504.28,
+          "width": 234,
+          "height": 75.56,
+          "withinViewport": true
+        }
+      },
+      "controls": [
+        {
+          "tag": "input",
+          "label": "",
+          "bounds": {
+            "left": 63,
+            "top": 583.22,
+            "right": 159,
+            "bottom": 630.22,
+            "width": 96,
+            "height": 47,
+            "withinViewport": true
+          }
+        },
+        {
+          "tag": "button",
+          "label": "Submit",
+          "bounds": {
+            "left": 167,
+            "top": 584.72,
+            "right": 261.22,
+            "bottom": 628.72,
+            "width": 94.22,
+            "height": 44,
+            "withinViewport": true
+          }
+        }
+      ],
+      "scroll": {
+        "x": 0,
+        "y": 12,
+        "documentWidth": 360,
+        "documentHeight": 974,
+        "horizontalOverflow": false,
+        "verticalOverflow": true
+      }
+    },
+    {
+      "profile": "medium",
+      "beat": "transform-left",
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "view": {
+        "left": 25,
+        "top": 133,
+        "right": 335,
+        "bottom": 759.22,
+        "width": 310,
+        "height": 626.22,
+        "withinViewport": false
+      },
+      "activeTask": {
+        "left": 41,
+        "top": 395.78,
+        "right": 319,
+        "bottom": 623.03,
+        "width": 278,
+        "height": 227.25,
+        "withinViewport": true
+      },
+      "question": {
+        "text": "Rename the first fraction with 12 equal parts.",
+        "bounds": {
+          "left": 63,
+          "top": 428.72,
+          "right": 297,
+          "bottom": 479.09,
+          "width": 234,
+          "height": 50.38,
+          "withinViewport": true
+        }
+      },
+      "controls": [
+        {
+          "tag": "input",
+          "label": "",
+          "bounds": {
+            "left": 63,
+            "top": 558.03,
+            "right": 159,
+            "bottom": 605.03,
+            "width": 96,
+            "height": 47,
+            "withinViewport": true
+          }
+        },
+        {
+          "tag": "button",
+          "label": "Submit",
+          "bounds": {
+            "left": 167,
+            "top": 559.53,
+            "right": 261.22,
+            "bottom": 603.53,
+            "width": 94.22,
+            "height": 44,
+            "withinViewport": true
+          }
+        }
+      ],
+      "scroll": {
+        "x": 0,
+        "y": 12,
+        "documentWidth": 360,
+        "documentHeight": 968,
+        "horizontalOverflow": false,
+        "verticalOverflow": true
+      }
+    },
+    {
+      "profile": "medium",
+      "beat": "transform-right",
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "view": {
+        "left": 25,
+        "top": 133,
+        "right": 335,
+        "bottom": 759.22,
+        "width": 310,
+        "height": 626.22,
+        "withinViewport": false
+      },
+      "activeTask": {
+        "left": 41,
+        "top": 395.78,
+        "right": 319,
+        "bottom": 623.03,
+        "width": 278,
+        "height": 227.25,
+        "withinViewport": true
+      },
+      "question": {
+        "text": "Rename the second fraction with 12 equal parts.",
+        "bounds": {
+          "left": 63,
+          "top": 428.72,
+          "right": 297,
+          "bottom": 479.09,
+          "width": 234,
+          "height": 50.38,
+          "withinViewport": true
+        }
+      },
+      "controls": [
+        {
+          "tag": "input",
+          "label": "",
+          "bounds": {
+            "left": 63,
+            "top": 558.03,
+            "right": 159,
+            "bottom": 605.03,
+            "width": 96,
+            "height": 47,
+            "withinViewport": true
+          }
+        },
+        {
+          "tag": "button",
+          "label": "Submit",
+          "bounds": {
+            "left": 167,
+            "top": 559.53,
+            "right": 261.22,
+            "bottom": 603.53,
+            "width": 94.22,
+            "height": 44,
+            "withinViewport": true
+          }
+        }
+      ],
+      "scroll": {
+        "x": 0,
+        "y": 12,
+        "documentWidth": 360,
+        "documentHeight": 968,
+        "horizontalOverflow": false,
+        "verticalOverflow": true
+      }
+    },
+    {
+      "profile": "medium",
+      "beat": "operate",
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "view": {
+        "left": 25,
+        "top": 133,
+        "right": 335,
+        "bottom": 719.63,
+        "width": 310,
+        "height": 586.63,
+        "withinViewport": true
+      },
+      "activeTask": {
+        "left": 41,
+        "top": 395.78,
+        "right": 319,
+        "bottom": 603.03,
+        "width": 278,
+        "height": 207.25,
+        "withinViewport": true
+      },
+      "question": {
+        "text": "Add the shaded parts together.",
+        "bounds": {
+          "left": 63,
+          "top": 428.72,
+          "right": 297,
+          "bottom": 479.09,
+          "width": 234,
+          "height": 50.38,
+          "withinViewport": true
+        }
+      },
+      "controls": [
+        {
+          "tag": "input",
+          "label": "",
+          "bounds": {
+            "left": 63,
+            "top": 538.03,
+            "right": 159,
+            "bottom": 585.03,
+            "width": 96,
+            "height": 47,
+            "withinViewport": true
+          }
+        },
+        {
+          "tag": "button",
+          "label": "Submit",
+          "bounds": {
+            "left": 167,
+            "top": 539.53,
+            "right": 261.22,
+            "bottom": 583.53,
+            "width": 94.22,
+            "height": 44,
+            "withinViewport": true
+          }
+        }
+      ],
+      "scroll": {
+        "x": 0,
+        "y": 12,
+        "documentWidth": 360,
+        "documentHeight": 929,
+        "horizontalOverflow": false,
+        "verticalOverflow": true
+      }
+    },
+    {
+      "profile": "medium",
+      "beat": "resolve",
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "view": {
+        "left": 25,
+        "top": 133,
+        "right": 335,
+        "bottom": 663.44,
+        "width": 310,
+        "height": 530.44,
+        "withinViewport": true
+      },
+      "activeTask": {
+        "left": 41,
+        "top": 395.78,
+        "right": 319,
+        "bottom": 546.84,
+        "width": 278,
+        "height": 151.06,
+        "withinViewport": true
+      },
+      "question": {
+        "text": "The answer is 11/12.",
+        "bounds": {
+          "left": 63,
+          "top": 428.72,
+          "right": 297,
+          "bottom": 453.91,
+          "width": 234,
+          "height": 25.19,
+          "withinViewport": true
+        }
+      },
+      "controls": [
+        {
+          "tag": "button",
+          "label": "Continue",
+          "bounds": {
+            "left": 63,
+            "top": 484.84,
+            "right": 297,
+            "bottom": 528.84,
+            "width": 234,
+            "height": 44,
+            "withinViewport": true
+          }
+        }
+      ],
+      "scroll": {
+        "x": 0,
+        "y": 12,
+        "documentWidth": 360,
+        "documentHeight": 873,
+        "horizontalOverflow": false,
+        "verticalOverflow": true
+      }
+    },
+    {
+      "profile": "medium",
+      "beat": "reflect",
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "view": {
+        "left": 25,
+        "top": 133,
+        "right": 335,
+        "bottom": 805.69,
+        "width": 310,
+        "height": 672.69,
+        "withinViewport": false
+      },
+      "activeTask": {
+        "left": 41,
+        "top": 404.78,
+        "right": 319,
+        "bottom": 689.09,
+        "width": 278,
+        "height": 284.31,
+        "withinViewport": true
+      },
+      "question": {
+        "text": "Does this new bar show the same amount as before?",
+        "bounds": {
+          "left": 63,
+          "top": 475.78,
+          "right": 297,
+          "bottom": 526.16,
+          "width": 234,
+          "height": 50.38,
+          "withinViewport": true
+        }
+      },
+      "controls": [
+        {
+          "tag": "button",
+          "label": "Yes, it is the same amount",
+          "bounds": {
+            "left": 63,
+            "top": 557.09,
+            "right": 297,
+            "bottom": 615.09,
+            "width": 234,
+            "height": 58,
+            "withinViewport": true
+          }
+        },
+        {
+          "tag": "button",
+          "label": "No, the amount changed",
+          "bounds": {
+            "left": 63,
+            "top": 627.09,
+            "right": 291.67,
+            "bottom": 671.09,
+            "width": 228.67,
+            "height": 44,
+            "withinViewport": true
+          }
+        }
+      ],
+      "scroll": {
+        "x": 0,
+        "y": 12,
+        "documentWidth": 360,
+        "documentHeight": 1015,
+        "horizontalOverflow": false,
+        "verticalOverflow": true
+      }
+    },
+    {
+      "profile": "medium",
+      "beat": "encounter",
+      "viewport": {
+        "width": 360,
+        "height": 752
+      },
+      "view": {
+        "left": 25,
+        "top": 133,
+        "right": 335,
+        "bottom": 602.84,
+        "width": 310,
+        "height": 469.84,
+        "withinViewport": true
+      },
+      "activeTask": {
+        "left": 41,
+        "top": 395.78,
+        "right": 319,
+        "bottom": 546.84,
+        "width": 278,
+        "height": 151.06,
+        "withinViewport": true
+      },
+      "question": {
+        "text": "Look at these two fractions.",
+        "bounds": {
+          "left": 63,
+          "top": 428.72,
+          "right": 297,
+          "bottom": 453.91,
+          "width": 234,
+          "height": 25.19,
+          "withinViewport": true
+        }
+      },
+      "controls": [
+        {
+          "tag": "button",
+          "label": "Next",
+          "bounds": {
+            "left": 63,
+            "top": 484.84,
+            "right": 297,
+            "bottom": 528.84,
+            "width": 234,
+            "height": 44,
+            "withinViewport": true
+          }
+        }
+      ],
+      "scroll": {
+        "x": 0,
+        "y": 12,
+        "documentWidth": 360,
+        "documentHeight": 812,
+        "horizontalOverflow": false,
+        "verticalOverflow": true
+      }
+    },
+    {
+      "profile": "medium",
+      "beat": "notice",
+      "viewport": {
+        "width": 360,
+        "height": 752
+      },
+      "view": {
+        "left": 25,
+        "top": 133,
+        "right": 335,
+        "bottom": 703.63,
+        "width": 310,
+        "height": 570.63,
+        "withinViewport": true
+      },
+      "activeTask": {
+        "left": 41,
+        "top": 395.78,
+        "right": 319,
+        "bottom": 628.03,
+        "width": 278,
+        "height": 232.25,
+        "withinViewport": true
+      },
+      "question": {
+        "text": "Do these two fractions have the same size parts?",
+        "bounds": {
+          "left": 63,
+          "top": 428.72,
+          "right": 297,
+          "bottom": 479.09,
+          "width": 234,
+          "height": 50.38,
+          "withinViewport": true
+        }
+      },
+      "controls": [
+        {
+          "tag": "button",
+          "label": "Yes, same size",
+          "bounds": {
+            "left": 63,
+            "top": 510.03,
+            "right": 217.09,
+            "bottom": 554.03,
+            "width": 154.09,
+            "height": 44,
+            "withinViewport": true
+          }
+        },
+        {
+          "tag": "button",
+          "label": "No, different sizes",
+          "bounds": {
+            "left": 63,
+            "top": 566.03,
+            "right": 242.81,
+            "bottom": 610.03,
+            "width": 179.81,
+            "height": 44,
+            "withinViewport": true
+          }
+        }
+      ],
+      "scroll": {
+        "x": 0,
+        "y": 12,
+        "documentWidth": 360,
+        "documentHeight": 913,
+        "horizontalOverflow": false,
+        "verticalOverflow": true
+      }
+    },
+    {
+      "profile": "medium",
+      "beat": "decide",
+      "viewport": {
+        "width": 360,
+        "height": 752
+      },
+      "view": {
+        "left": 25,
+        "top": 133,
+        "right": 335,
+        "bottom": 764.81,
+        "width": 310,
+        "height": 631.81,
+        "withinViewport": false
+      },
+      "activeTask": {
+        "left": 41,
+        "top": 395.78,
+        "right": 319,
+        "bottom": 648.22,
+        "width": 278,
+        "height": 252.44,
+        "withinViewport": true
+      },
+      "question": {
+        "text": "Choose a common denominator for both fractions.",
+        "bounds": {
+          "left": 63,
+          "top": 428.72,
+          "right": 297,
+          "bottom": 504.28,
+          "width": 234,
+          "height": 75.56,
+          "withinViewport": true
+        }
+      },
+      "controls": [
+        {
+          "tag": "input",
+          "label": "",
+          "bounds": {
+            "left": 63,
+            "top": 583.22,
+            "right": 159,
+            "bottom": 630.22,
+            "width": 96,
+            "height": 47,
+            "withinViewport": true
+          }
+        },
+        {
+          "tag": "button",
+          "label": "Submit",
+          "bounds": {
+            "left": 167,
+            "top": 584.72,
+            "right": 261.22,
+            "bottom": 628.72,
+            "width": 94.22,
+            "height": 44,
+            "withinViewport": true
+          }
+        }
+      ],
+      "scroll": {
+        "x": 0,
+        "y": 12,
+        "documentWidth": 360,
+        "documentHeight": 974,
+        "horizontalOverflow": false,
+        "verticalOverflow": true
+      }
+    },
+    {
+      "profile": "medium",
+      "beat": "transform-left",
+      "viewport": {
+        "width": 360,
+        "height": 752
+      },
+      "view": {
+        "left": 25,
+        "top": 133,
+        "right": 335,
+        "bottom": 759.22,
+        "width": 310,
+        "height": 626.22,
+        "withinViewport": false
+      },
+      "activeTask": {
+        "left": 41,
+        "top": 395.78,
+        "right": 319,
+        "bottom": 623.03,
+        "width": 278,
+        "height": 227.25,
+        "withinViewport": true
+      },
+      "question": {
+        "text": "Rename the first fraction with 12 equal parts.",
+        "bounds": {
+          "left": 63,
+          "top": 428.72,
+          "right": 297,
+          "bottom": 479.09,
+          "width": 234,
+          "height": 50.38,
+          "withinViewport": true
+        }
+      },
+      "controls": [
+        {
+          "tag": "input",
+          "label": "",
+          "bounds": {
+            "left": 63,
+            "top": 558.03,
+            "right": 159,
+            "bottom": 605.03,
+            "width": 96,
+            "height": 47,
+            "withinViewport": true
+          }
+        },
+        {
+          "tag": "button",
+          "label": "Submit",
+          "bounds": {
+            "left": 167,
+            "top": 559.53,
+            "right": 261.22,
+            "bottom": 603.53,
+            "width": 94.22,
+            "height": 44,
+            "withinViewport": true
+          }
+        }
+      ],
+      "scroll": {
+        "x": 0,
+        "y": 12,
+        "documentWidth": 360,
+        "documentHeight": 968,
+        "horizontalOverflow": false,
+        "verticalOverflow": true
+      }
+    },
+    {
+      "profile": "medium",
+      "beat": "transform-right",
+      "viewport": {
+        "width": 360,
+        "height": 752
+      },
+      "view": {
+        "left": 25,
+        "top": 133,
+        "right": 335,
+        "bottom": 759.22,
+        "width": 310,
+        "height": 626.22,
+        "withinViewport": false
+      },
+      "activeTask": {
+        "left": 41,
+        "top": 395.78,
+        "right": 319,
+        "bottom": 623.03,
+        "width": 278,
+        "height": 227.25,
+        "withinViewport": true
+      },
+      "question": {
+        "text": "Rename the second fraction with 12 equal parts.",
+        "bounds": {
+          "left": 63,
+          "top": 428.72,
+          "right": 297,
+          "bottom": 479.09,
+          "width": 234,
+          "height": 50.38,
+          "withinViewport": true
+        }
+      },
+      "controls": [
+        {
+          "tag": "input",
+          "label": "",
+          "bounds": {
+            "left": 63,
+            "top": 558.03,
+            "right": 159,
+            "bottom": 605.03,
+            "width": 96,
+            "height": 47,
+            "withinViewport": true
+          }
+        },
+        {
+          "tag": "button",
+          "label": "Submit",
+          "bounds": {
+            "left": 167,
+            "top": 559.53,
+            "right": 261.22,
+            "bottom": 603.53,
+            "width": 94.22,
+            "height": 44,
+            "withinViewport": true
+          }
+        }
+      ],
+      "scroll": {
+        "x": 0,
+        "y": 12,
+        "documentWidth": 360,
+        "documentHeight": 968,
+        "horizontalOverflow": false,
+        "verticalOverflow": true
+      }
+    },
+    {
+      "profile": "medium",
+      "beat": "operate",
+      "viewport": {
+        "width": 360,
+        "height": 752
+      },
+      "view": {
+        "left": 25,
+        "top": 133,
+        "right": 335,
+        "bottom": 719.63,
+        "width": 310,
+        "height": 586.63,
+        "withinViewport": true
+      },
+      "activeTask": {
+        "left": 41,
+        "top": 395.78,
+        "right": 319,
+        "bottom": 603.03,
+        "width": 278,
+        "height": 207.25,
+        "withinViewport": true
+      },
+      "question": {
+        "text": "Add the shaded parts together.",
+        "bounds": {
+          "left": 63,
+          "top": 428.72,
+          "right": 297,
+          "bottom": 479.09,
+          "width": 234,
+          "height": 50.38,
+          "withinViewport": true
+        }
+      },
+      "controls": [
+        {
+          "tag": "input",
+          "label": "",
+          "bounds": {
+            "left": 63,
+            "top": 538.03,
+            "right": 159,
+            "bottom": 585.03,
+            "width": 96,
+            "height": 47,
+            "withinViewport": true
+          }
+        },
+        {
+          "tag": "button",
+          "label": "Submit",
+          "bounds": {
+            "left": 167,
+            "top": 539.53,
+            "right": 261.22,
+            "bottom": 583.53,
+            "width": 94.22,
+            "height": 44,
+            "withinViewport": true
+          }
+        }
+      ],
+      "scroll": {
+        "x": 0,
+        "y": 12,
+        "documentWidth": 360,
+        "documentHeight": 929,
+        "horizontalOverflow": false,
+        "verticalOverflow": true
+      }
+    },
+    {
+      "profile": "medium",
+      "beat": "resolve",
+      "viewport": {
+        "width": 360,
+        "height": 752
+      },
+      "view": {
+        "left": 25,
+        "top": 133,
+        "right": 335,
+        "bottom": 663.44,
+        "width": 310,
+        "height": 530.44,
+        "withinViewport": true
+      },
+      "activeTask": {
+        "left": 41,
+        "top": 395.78,
+        "right": 319,
+        "bottom": 546.84,
+        "width": 278,
+        "height": 151.06,
+        "withinViewport": true
+      },
+      "question": {
+        "text": "The answer is 11/12.",
+        "bounds": {
+          "left": 63,
+          "top": 428.72,
+          "right": 297,
+          "bottom": 453.91,
+          "width": 234,
+          "height": 25.19,
+          "withinViewport": true
+        }
+      },
+      "controls": [
+        {
+          "tag": "button",
+          "label": "Continue",
+          "bounds": {
+            "left": 63,
+            "top": 484.84,
+            "right": 297,
+            "bottom": 528.84,
+            "width": 234,
+            "height": 44,
+            "withinViewport": true
+          }
+        }
+      ],
+      "scroll": {
+        "x": 0,
+        "y": 12,
+        "documentWidth": 360,
+        "documentHeight": 873,
+        "horizontalOverflow": false,
+        "verticalOverflow": true
+      }
+    },
+    {
+      "profile": "medium",
+      "beat": "reflect",
+      "viewport": {
+        "width": 360,
+        "height": 752
+      },
+      "view": {
+        "left": 25,
+        "top": 133,
+        "right": 335,
+        "bottom": 805.69,
+        "width": 310,
+        "height": 672.69,
+        "withinViewport": false
+      },
+      "activeTask": {
+        "left": 41,
+        "top": 404.78,
+        "right": 319,
+        "bottom": 689.09,
+        "width": 278,
+        "height": 284.31,
+        "withinViewport": true
+      },
+      "question": {
+        "text": "Does this new bar show the same amount as before?",
+        "bounds": {
+          "left": 63,
+          "top": 475.78,
+          "right": 297,
+          "bottom": 526.16,
+          "width": 234,
+          "height": 50.38,
+          "withinViewport": true
+        }
+      },
+      "controls": [
+        {
+          "tag": "button",
+          "label": "Yes, it is the same amount",
+          "bounds": {
+            "left": 63,
+            "top": 557.09,
+            "right": 297,
+            "bottom": 615.09,
+            "width": 234,
+            "height": 58,
+            "withinViewport": true
+          }
+        },
+        {
+          "tag": "button",
+          "label": "No, the amount changed",
+          "bounds": {
+            "left": 63,
+            "top": 627.09,
+            "right": 291.67,
+            "bottom": 671.09,
+            "width": 228.67,
+            "height": 44,
+            "withinViewport": true
+          }
+        }
+      ],
+      "scroll": {
+        "x": 0,
+        "y": 12,
+        "documentWidth": 360,
+        "documentHeight": 1015,
+        "horizontalOverflow": false,
+        "verticalOverflow": true
+      }
+    }
+  ],
+  "participation": {
+    "high-keyboard": {
+      "completed": true,
+      "focusAfterSelection": true,
+      "focusAfterStart": true,
+      "linearVisible": null,
+      "touchContext": false,
+      "reducedMotion": null,
+      "noHorizontalOverflow": true
+    },
+    "high-touch": {
+      "completed": true,
+      "focusAfterSelection": true,
+      "focusAfterStart": true,
+      "linearVisible": null,
+      "touchContext": true,
+      "reducedMotion": null,
+      "noHorizontalOverflow": true
+    },
+    "high-reduced-motion": {
+      "completed": true,
+      "focusAfterSelection": true,
+      "focusAfterStart": true,
+      "linearVisible": null,
+      "touchContext": false,
+      "reducedMotion": {
+        "preferenceMatches": true,
+        "reducedTrackPresent": true,
+        "segmentTransitionDuration": "0s",
+        "completion": true
+      },
+      "noHorizontalOverflow": true
+    },
+    "high-linear": {
+      "completed": true,
+      "focusAfterSelection": true,
+      "focusAfterStart": true,
+      "linearVisible": true,
+      "touchContext": false,
+      "reducedMotion": null,
+      "noHorizontalOverflow": true
+    },
+    "medium-keyboard": {
+      "completed": true,
+      "focusAfterSelection": true,
+      "focusAfterStart": true,
+      "linearVisible": null,
+      "touchContext": false,
+      "reducedMotion": null,
+      "noHorizontalOverflow": true
+    },
+    "medium-touch": {
+      "completed": true,
+      "focusAfterSelection": true,
+      "focusAfterStart": true,
+      "linearVisible": null,
+      "touchContext": true,
+      "reducedMotion": null,
+      "noHorizontalOverflow": true
+    },
+    "medium-reduced-motion": {
+      "completed": true,
+      "focusAfterSelection": true,
+      "focusAfterStart": true,
+      "linearVisible": null,
+      "touchContext": false,
+      "reducedMotion": {
+        "preferenceMatches": true,
+        "reducedTrackPresent": true,
+        "segmentTransitionDuration": "0s",
+        "completion": true
+      },
+      "noHorizontalOverflow": true
+    },
+    "medium-linear": {
+      "completed": true,
+      "focusAfterSelection": true,
+      "focusAfterStart": true,
+      "linearVisible": true,
+      "touchContext": false,
+      "reducedMotion": null,
+      "noHorizontalOverflow": true
+    }
+  },
+  "resetAndFocus": {
+    "high-740": {
+      "focusAfterSelection": true,
+      "focusAfterStart": true
+    },
+    "high-752": {
+      "focusAfterSelection": true,
+      "focusAfterStart": true
+    },
+    "medium-740": {
+      "focusAfterSelection": true,
+      "focusAfterStart": true
+    },
+    "medium-752": {
+      "focusAfterSelection": true,
+      "focusAfterStart": true
+    },
+    "lifecycle": {
+      "selectedMediumBeforeReload": "true",
+      "reloadDefaults": {
+        "highSelected": "true",
+        "mediumSelected": "false"
+      },
+      "retry": {
+        "supportCode": "medium support",
+        "entryPromptVisible": true,
+        "previousBeatsCleared": true
+      },
+      "mediumStart": "medium support",
+      "returnFocus": true,
+      "reentry": {
+        "supportCode": "high support",
+        "freshEpisode": true
+      }
+    }
+  },
+  "limitations": [
+    "Touch evidence uses Playwright browser touch events on a touch-enabled browser context; no physical device or native on-screen keyboard was used.",
+    "Keyboard evidence uses browser keyboard events with focus placed on mounted controls by the browser automation harness; no assistive technology was tested."
+  ]
+}

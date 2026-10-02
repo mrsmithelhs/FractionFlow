@@ -64,7 +64,6 @@ describe('Plan 09 app shell and upstream display switcher', () => {
     const second = root.querySelector('[data-condition-id="phase2-bundle-2"]');
     expect(second.getAttribute('data-choreography-code')).toBe('D-02-J');
     second.click();
-    expect(root.querySelector('.app-support-level')).toBeNull();
     root.querySelector('.app-practice-button').click();
 
     const after = app.getState();
@@ -72,7 +71,7 @@ describe('Plan 09 app shell and upstream display switcher', () => {
     expect(after.revision).toBe(0);
     expect(after.established.notice).toBe(null);
     expect(after.support.label).toBe('high support');
-    expect(root.querySelector('.fractionflow-app').getAttribute('data-support-level')).toBeNull();
+    expect(root.querySelector('.fractionflow-app').getAttribute('data-support-level')).toBe('high-support');
     expect(app.getReplayEnvelope().activeCondition).toEqual(after.activeCondition);
     expect(root.textContent).not.toContain('D-02-J');
     expect(root.querySelector('.app-episode .app-gear-button')).toBe(null);

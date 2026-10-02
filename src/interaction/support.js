@@ -16,6 +16,30 @@ export const SUPPORT_DIMENSIONS = Object.freeze([
   'helpAndReplay',
 ]);
 
+export const HIGH_SUPPORT_CONFIGURATION = Object.freeze({
+  label: 'high support',
+  dimensions: Object.freeze({
+    fractionBarModel: 'high support',
+    commonDenominator: 'high support',
+    equivalentNumerators: 'high support',
+    prediction: 'high support',
+    symbolicIntegration: 'high support',
+    helpAndReplay: 'high support',
+  }),
+});
+
+export const MEDIUM_SUPPORT_CONFIGURATION = Object.freeze({
+  label: 'medium support',
+  dimensions: Object.freeze({
+    fractionBarModel: 'medium support',
+    commonDenominator: 'medium support',
+    equivalentNumerators: 'high support',
+    prediction: 'high support',
+    symbolicIntegration: 'high support',
+    helpAndReplay: 'high support',
+  }),
+});
+
 function validateSupportLevel(value, name) {
   if (!SUPPORT_LABELS.includes(value)) {
     throw new RangeError(`${name} must use a canonical support label`);
@@ -52,7 +76,7 @@ export function validateSupportConfiguration(support) {
   return createSupportConfiguration(support);
 }
 
-export const DEFAULT_SUPPORT_CONFIGURATION = createSupportConfiguration();
+export const DEFAULT_SUPPORT_CONFIGURATION = createSupportConfiguration(HIGH_SUPPORT_CONFIGURATION);
 
 export const HELP_LEVELS = Object.freeze([
   'orient',

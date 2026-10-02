@@ -1,7 +1,7 @@
 {
   "version": "1.0.0",
   "routes": [
-    {
+{
       "id": "ROUTE-TRAVERSAL-VISUAL-NO-DISPATCH",
       "behavior": "A learner completes a full addition problem visually from encounter to reflect using mounted UI controls with zero dispatch fallback.",
       "configuration": "phase2-bundle-1",
@@ -31,7 +31,7 @@
       },
       "negativeControl": {"targetRouteId":"INITIAL-ENCOUNTER-BASELINE","comparison":"notIdenticalCapture"}
     },
-    {
+{
       "id": "ROUTE-TRAVERSAL-LINEAR-NO-DISPATCH",
       "behavior": "A learner completes a full addition problem in the accessible linear path from encounter to reflect using mounted UI controls with zero dispatch fallback.",
       "configuration": "phase2-bundle-1",
@@ -62,7 +62,7 @@
       },
       "negativeControl": {"targetRouteId":"ROUTE-TRAVERSAL-VISUAL-NO-DISPATCH","comparison":"notIdenticalCapture"}
     },
-    {
+{
       "id": "ROUTE-COND-1-TRANSFORM",
       "behavior": "Condition 1 (bundle-1: in-place subdivision) renders in-place subdivided fraction bar segments at conversion beat without juxtaposed or sequential structures.",
       "configuration": "phase2-bundle-1",
@@ -88,7 +88,7 @@
       },
       "negativeControl": {"targetRouteId":"ROUTE-COND-2-TRANSFORM","comparison":"notIdenticalCapture"}
     },
-    {
+{
       "id": "ROUTE-COND-2-TRANSFORM",
       "behavior": "Condition 2 (bundle-2: juxtaposed) renders distinct before-and-after juxtaposed rows at conversion beat.",
       "configuration": "phase2-bundle-2",
@@ -118,7 +118,7 @@
       },
       "negativeControl": {"targetRouteId":"ROUTE-COND-1-TRANSFORM","comparison":"notIdenticalCapture"}
     },
-    {
+{
       "id": "ROUTE-COND-3-TRANSFORM",
       "behavior": "Condition 3 (bundle-3: sequential) renders step-by-step cards and connectors at conversion beat.",
       "configuration": "phase2-bundle-3",
@@ -148,7 +148,7 @@
       },
       "negativeControl": {"targetRouteId":"ROUTE-COND-2-TRANSFORM","comparison":"notIdenticalCapture"}
     },
-    {
+{
       "id": "ROUTE-COND-4-TRANSFORM-SAME",
       "behavior": "Condition 4 (bundle-4: premise check) shares in-place choreography with Condition 1 at conversion beat and intentionally renders identical structure.",
       "configuration": "phase2-bundle-4",
@@ -176,7 +176,7 @@
       },
       "declaredSameAs": {"targetRouteId":"ROUTE-COND-1-TRANSFORM","comparison":"identicalDOMStructure"}
     },
-    {
+{
       "id": "ROUTE-COND-1-REFLECT",
       "behavior": "Condition 1 (bundle-1: matching choices) renders 3 visual matching bars with distractor choices at reflect beat.",
       "configuration": "phase2-bundle-1",
@@ -207,7 +207,7 @@
       },
       "negativeControl": {"targetRouteId":"ROUTE-COND-4-REFLECT","comparison":"notIdenticalCapture"}
     },
-    {
+{
       "id": "ROUTE-COND-4-REFLECT",
       "behavior": "Condition 4 (bundle-4: premise check) renders a check-the-premise comparison frame with Yes/No buttons at reflect beat.",
       "configuration": "phase2-bundle-4",
@@ -240,7 +240,7 @@
       },
       "negativeControl": {"targetRouteId":"ROUTE-COND-1-REFLECT","comparison":"notIdenticalCapture"}
     },
-    {
+{
       "id": "ROUTE-REPLAY-COND-1",
       "behavior": "Replay under Condition 1 (in-place) mounts an interactive toggle card with starting fraction and toggle button.",
       "configuration": "phase2-bundle-1",
@@ -268,7 +268,7 @@
       },
       "negativeControl": {"targetRouteId":"ROUTE-COND-1-TRANSFORM","comparison":"notIdenticalCapture"}
     },
-    {
+{
       "id": "ROUTE-REPLAY-COND-2",
       "behavior": "Replay under Condition 2 (juxtaposed) activates choreography-juxtaposed replay highlight and badge.",
       "configuration": "phase2-bundle-2",
@@ -299,7 +299,7 @@
       },
       "negativeControl": {"targetRouteId":"ROUTE-COND-2-TRANSFORM","comparison":"notIdenticalCapture"}
     },
-    {
+{
       "id": "ROUTE-REPLAY-COND-3",
       "behavior": "Replay under Condition 3 (sequential) activates choreography-sequential replay highlight and step heading.",
       "configuration": "phase2-bundle-3",
@@ -330,7 +330,7 @@
       },
       "negativeControl": {"targetRouteId":"ROUTE-COND-3-TRANSFORM","comparison":"notIdenticalCapture"}
     },
-    {
+{
       "id": "ROUTE-RECOVERY-TRANSFORM",
       "behavior": "Submitting an incorrect numerator at transform triggers pedagogical transform recovery feedback, distinct from generic messages.",
       "configuration": "phase2-bundle-1",
@@ -356,7 +356,7 @@
       },
       "negativeControl": {"targetRouteId":"ROUTE-RECOVERY-OPERATE","comparison":"notIdenticalCapture"}
     },
-    {
+{
       "id": "ROUTE-RECOVERY-OPERATE",
       "behavior": "Submitting an incorrect sum at operate triggers pedagogical operate recovery feedback, distinct from transform recovery.",
       "configuration": "phase2-bundle-1",
@@ -391,136 +391,586 @@
       "behavior": "Twelfths route has a false premise renaming (7/12 for 2/3); answering correctly ('No') completes the episode.",
       "configuration": "phase2-bundle-4",
       "startingSurface": "mounted-app-entry",
-      "viewport": {"width":360,"height":740},
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
       "motionMode": "standard-motion",
       "witness": "browser",
       "actions": [
-        {"step":1,"method":"click","target":".app-gear-button","description":"Open gear menu"},
-        {"step":2,"method":"click","target":"[data-condition-id=\"phase2-bundle-4\"]","description":"Select condition 4"},
-        {"method":"click","target":".app-practice-button","description":"Begin the registered practice type","step":3},
-        {"step":4,"method":"click","target":".app-visual-view .control-btn","description":"Acknowledge encounter"},
-        {"step":5,"method":"click","target":".app-visual-view .control-choice-btn >> nth=1","description":"Notice: choose different sized parts"},
-        {"step":6,"method":"click","target":".app-visual-view .control-choice-btn >> nth=0","description":"Decide: choose common denominator 12"},
-        {"step":7,"method":"fill","target":".app-visual-view input.control-numeric-input","value":"8","description":"Transform left: enter numerator 8"},
-        {"step":8,"method":"click","target":".app-visual-view .control-submit-btn","description":"Transform left: submit 8"},
-        {"step":9,"method":"fill","target":".app-visual-view input.control-numeric-input","value":"3","description":"Transform right: enter numerator 3"},
-        {"step":10,"method":"click","target":".app-visual-view .control-submit-btn","description":"Transform right: submit 3"},
-        {"step":11,"method":"fill","target":".app-visual-view input.control-numeric-input","value":"11","description":"Operate: enter sum 11"},
-        {"step":12,"method":"click","target":".app-visual-view .control-submit-btn","description":"Operate: submit 11"},
-        {"step":13,"method":"click","target":".app-visual-view .control-btn","description":"Resolve: acknowledge completed operation"},
-        {"step":14,"method":"click","target":".app-visual-view .control-choice-btn:has-text(\"No\")","description":"Answer 'No' to false premise"}
+        {
+          "step": 1,
+          "method": "click",
+          "target": ".app-gear-button",
+          "description": "Open gear menu"
+        },
+        {
+          "step": 2,
+          "method": "click",
+          "target": "[data-condition-id=\"phase2-bundle-4\"]",
+          "description": "Select condition 4"
+        },
+        {
+          "step": 3,
+          "method": "click",
+          "target": ".app-gear-button",
+          "description": "Reopen reviewer settings"
+        },
+        {
+          "step": 4,
+          "method": "click",
+          "target": "[data-support-id=\"high-support\"]",
+          "description": "Select more support"
+        },
+        {
+          "method": "click",
+          "target": ".app-practice-button",
+          "description": "Begin the registered practice type",
+          "step": 5
+        },
+        {
+          "step": 6,
+          "method": "click",
+          "target": ".app-visual-view .control-btn",
+          "description": "Acknowledge encounter"
+        },
+        {
+          "step": 7,
+          "method": "click",
+          "target": ".app-visual-view .control-choice-btn >> nth=1",
+          "description": "Notice: choose different sized parts"
+        },
+        {
+          "step": 8,
+          "method": "click",
+          "target": ".app-visual-view .control-choice-btn >> nth=0",
+          "description": "Decide: choose common denominator 12"
+        },
+        {
+          "step": 9,
+          "method": "fill",
+          "target": ".app-visual-view input.control-numeric-input",
+          "value": "8",
+          "description": "Transform left: enter numerator 8"
+        },
+        {
+          "step": 10,
+          "method": "click",
+          "target": ".app-visual-view .control-submit-btn",
+          "description": "Transform left: submit 8"
+        },
+        {
+          "step": 11,
+          "method": "fill",
+          "target": ".app-visual-view input.control-numeric-input",
+          "value": "3",
+          "description": "Transform right: enter numerator 3"
+        },
+        {
+          "step": 12,
+          "method": "click",
+          "target": ".app-visual-view .control-submit-btn",
+          "description": "Transform right: submit 3"
+        },
+        {
+          "step": 13,
+          "method": "fill",
+          "target": ".app-visual-view input.control-numeric-input",
+          "value": "11",
+          "description": "Operate: enter sum 11"
+        },
+        {
+          "step": 14,
+          "method": "click",
+          "target": ".app-visual-view .control-submit-btn",
+          "description": "Operate: submit 11"
+        },
+        {
+          "step": 15,
+          "method": "click",
+          "target": ".app-visual-view .control-btn",
+          "description": "Resolve: acknowledge completed operation"
+        },
+        {
+          "step": 16,
+          "method": "click",
+          "target": ".app-visual-view .control-choice-btn:has-text(\"No\")",
+          "description": "Answer 'No' to false premise"
+        }
       ],
       "expect": {
-        "capture": {"target":".app-completion-panel","type":"textContent"},
+        "capture": {
+          "target": ".app-visual-view",
+          "type": "innerHTML"
+        },
         "assertions": [
-          {"type":"containsText","target":".app-visual-view","value":"Good eye! The amount changed"},
-          {"type":"hasSelector","target":".app-restart-button"}
+          {
+            "type": "containsText",
+            "target": ".app-visual-view",
+            "value": "Good eye! The amount changed"
+          },
+          {
+            "type": "hasSelector",
+            "target": ".app-restart-button"
+          },
+          {
+            "type": "attributeEquals",
+            "target": ".fractionflow-app",
+            "attribute": "data-support-code",
+            "value": "high support"
+          },
+          {
+            "type": "hasSelector",
+            "target": ".app-visual-view .premise-comparison .fraction-bar-row-before"
+          }
         ]
       },
-      "negativeControl": {"targetRouteId":"ROUTE-PREMISE-12-FALSE-YES","comparison":"notIdenticalCapture"}
+      "negativeControl": {
+        "targetRouteId": "ROUTE-PREMISE-12-FALSE-YES",
+        "comparison": "notIdenticalCapture"
+      }
     },
     {
       "id": "ROUTE-PREMISE-12-FALSE-YES",
       "behavior": "Twelfths route has a false premise renaming (7/12 for 2/3); answering reassuringly but wrongly ('Yes') triggers recovery feedback and does not complete.",
       "configuration": "phase2-bundle-4",
       "startingSurface": "mounted-app-entry",
-      "viewport": {"width":360,"height":740},
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
       "motionMode": "standard-motion",
       "witness": "browser",
       "actions": [
-        {"step":1,"method":"click","target":".app-gear-button","description":"Open gear menu"},
-        {"step":2,"method":"click","target":"[data-condition-id=\"phase2-bundle-4\"]","description":"Select condition 4"},
-        {"method":"click","target":".app-practice-button","description":"Begin the registered practice type","step":3},
-        {"step":4,"method":"click","target":".app-visual-view .control-btn","description":"Acknowledge encounter"},
-        {"step":5,"method":"click","target":".app-visual-view .control-choice-btn >> nth=1","description":"Notice: choose different sized parts"},
-        {"step":6,"method":"click","target":".app-visual-view .control-choice-btn >> nth=0","description":"Decide: choose common denominator 12"},
-        {"step":7,"method":"fill","target":".app-visual-view input.control-numeric-input","value":"8","description":"Transform left: enter numerator 8"},
-        {"step":8,"method":"click","target":".app-visual-view .control-submit-btn","description":"Transform left: submit 8"},
-        {"step":9,"method":"fill","target":".app-visual-view input.control-numeric-input","value":"3","description":"Transform right: enter numerator 3"},
-        {"step":10,"method":"click","target":".app-visual-view .control-submit-btn","description":"Transform right: submit 3"},
-        {"step":11,"method":"fill","target":".app-visual-view input.control-numeric-input","value":"11","description":"Operate: enter sum 11"},
-        {"step":12,"method":"click","target":".app-visual-view .control-submit-btn","description":"Operate: submit 11"},
-        {"step":13,"method":"click","target":".app-visual-view .control-btn","description":"Resolve: acknowledge completed operation"},
-        {"step":14,"method":"click","target":".app-visual-view .control-choice-btn:has-text(\"Yes\")","description":"Answer 'Yes' to false premise"}
+        {
+          "step": 1,
+          "method": "click",
+          "target": ".app-gear-button",
+          "description": "Open gear menu"
+        },
+        {
+          "step": 2,
+          "method": "click",
+          "target": "[data-condition-id=\"phase2-bundle-4\"]",
+          "description": "Select condition 4"
+        },
+        {
+          "step": 3,
+          "method": "click",
+          "target": ".app-gear-button",
+          "description": "Reopen reviewer settings"
+        },
+        {
+          "step": 4,
+          "method": "click",
+          "target": "[data-support-id=\"high-support\"]",
+          "description": "Select more support"
+        },
+        {
+          "method": "click",
+          "target": ".app-practice-button",
+          "description": "Begin the registered practice type",
+          "step": 5
+        },
+        {
+          "step": 6,
+          "method": "click",
+          "target": ".app-visual-view .control-btn",
+          "description": "Acknowledge encounter"
+        },
+        {
+          "step": 7,
+          "method": "click",
+          "target": ".app-visual-view .control-choice-btn >> nth=1",
+          "description": "Notice: choose different sized parts"
+        },
+        {
+          "step": 8,
+          "method": "click",
+          "target": ".app-visual-view .control-choice-btn >> nth=0",
+          "description": "Decide: choose common denominator 12"
+        },
+        {
+          "step": 9,
+          "method": "fill",
+          "target": ".app-visual-view input.control-numeric-input",
+          "value": "8",
+          "description": "Transform left: enter numerator 8"
+        },
+        {
+          "step": 10,
+          "method": "click",
+          "target": ".app-visual-view .control-submit-btn",
+          "description": "Transform left: submit 8"
+        },
+        {
+          "step": 11,
+          "method": "fill",
+          "target": ".app-visual-view input.control-numeric-input",
+          "value": "3",
+          "description": "Transform right: enter numerator 3"
+        },
+        {
+          "step": 12,
+          "method": "click",
+          "target": ".app-visual-view .control-submit-btn",
+          "description": "Transform right: submit 3"
+        },
+        {
+          "step": 13,
+          "method": "fill",
+          "target": ".app-visual-view input.control-numeric-input",
+          "value": "11",
+          "description": "Operate: enter sum 11"
+        },
+        {
+          "step": 14,
+          "method": "click",
+          "target": ".app-visual-view .control-submit-btn",
+          "description": "Operate: submit 11"
+        },
+        {
+          "step": 15,
+          "method": "click",
+          "target": ".app-visual-view .control-btn",
+          "description": "Resolve: acknowledge completed operation"
+        },
+        {
+          "step": 16,
+          "method": "click",
+          "target": ".app-visual-view .control-choice-btn:has-text(\"Yes\")",
+          "description": "Answer 'Yes' to false premise"
+        }
       ],
       "expect": {
-        "capture": {"target":".app-visual-view .recovery-feedback","type":"textContent"},
+        "capture": {
+          "target": ".app-visual-view",
+          "type": "innerHTML"
+        },
         "assertions": [
-          {"type":"hasSelector","target":".app-visual-view .recovery-feedback"},
-          {"type":"containsText","target":".app-visual-view .recovery-feedback","value":"Look closely: the shaded length became longer"},
-          {"type":"hasSelector","target":".app-restart-button"}
+          {
+            "type": "hasSelector",
+            "target": ".app-visual-view .recovery-feedback"
+          },
+          {
+            "type": "containsText",
+            "target": ".app-visual-view .recovery-feedback",
+            "value": "Look closely: the shaded length became longer"
+          },
+          {
+            "type": "hasSelector",
+            "target": ".app-restart-button"
+          },
+          {
+            "type": "attributeEquals",
+            "target": ".fractionflow-app",
+            "attribute": "data-support-code",
+            "value": "high support"
+          },
+          {
+            "type": "hasSelector",
+            "target": ".app-visual-view .premise-comparison .fraction-bar-row-before"
+          }
         ]
       },
-      "negativeControl": {"targetRouteId":"ROUTE-PREMISE-12-FALSE-NO","comparison":"notIdenticalCapture"}
+      "negativeControl": {
+        "targetRouteId": "ROUTE-PREMISE-12-FALSE-NO",
+        "comparison": "notIdenticalCapture"
+      }
     },
     {
       "id": "ROUTE-PREMISE-24-TRUE-YES",
       "behavior": "Twenty-fourths route has a true premise renaming (16/24 for 2/3); answering correctly ('Yes') completes the episode.",
       "configuration": "phase2-bundle-4",
       "startingSurface": "mounted-app-entry",
-      "viewport": {"width":360,"height":740},
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
       "motionMode": "standard-motion",
       "witness": "browser",
       "actions": [
-        {"step":1,"method":"click","target":".app-gear-button","description":"Open gear menu"},
-        {"step":2,"method":"click","target":"[data-condition-id=\"phase2-bundle-4\"]","description":"Select condition 4"},
-        {"method":"click","target":".app-practice-button","description":"Begin the registered practice type","step":3},
-        {"step":4,"method":"click","target":".app-visual-view .control-btn","description":"Acknowledge encounter"},
-        {"step":5,"method":"click","target":".app-visual-view .control-choice-btn >> nth=1","description":"Notice: choose different sized parts"},
-        {"step":6,"method":"click","target":".app-visual-view .control-choice-btn >> nth=1","description":"Decide: choose common denominator 24"},
-        {"step":7,"method":"fill","target":".app-visual-view input.control-numeric-input","value":"16","description":"Transform left: enter numerator 16"},
-        {"step":8,"method":"click","target":".app-visual-view .control-submit-btn","description":"Transform left: submit 16"},
-        {"step":9,"method":"fill","target":".app-visual-view input.control-numeric-input","value":"6","description":"Transform right: enter numerator 6"},
-        {"step":10,"method":"click","target":".app-visual-view .control-submit-btn","description":"Transform right: submit 6"},
-        {"step":11,"method":"fill","target":".app-visual-view input.control-numeric-input","value":"22","description":"Operate: enter sum 22"},
-        {"step":12,"method":"click","target":".app-visual-view .control-submit-btn","description":"Operate: submit 22"},
-        {"step":13,"method":"click","target":".app-visual-view .control-btn","description":"Resolve: acknowledge completed operation"},
-        {"step":14,"method":"click","target":".app-visual-view .control-choice-btn:has-text(\"Yes\")","description":"Answer 'Yes' to true premise"}
+        {
+          "step": 1,
+          "method": "click",
+          "target": ".app-gear-button",
+          "description": "Open gear menu"
+        },
+        {
+          "step": 2,
+          "method": "click",
+          "target": "[data-condition-id=\"phase2-bundle-4\"]",
+          "description": "Select condition 4"
+        },
+        {
+          "step": 3,
+          "method": "click",
+          "target": ".app-gear-button",
+          "description": "Reopen reviewer settings"
+        },
+        {
+          "step": 4,
+          "method": "click",
+          "target": "[data-support-id=\"high-support\"]",
+          "description": "Select more support"
+        },
+        {
+          "method": "click",
+          "target": ".app-practice-button",
+          "description": "Begin the registered practice type",
+          "step": 5
+        },
+        {
+          "step": 6,
+          "method": "click",
+          "target": ".app-visual-view .control-btn",
+          "description": "Acknowledge encounter"
+        },
+        {
+          "step": 7,
+          "method": "click",
+          "target": ".app-visual-view .control-choice-btn >> nth=1",
+          "description": "Notice: choose different sized parts"
+        },
+        {
+          "step": 8,
+          "method": "click",
+          "target": ".app-visual-view .control-choice-btn >> nth=1",
+          "description": "Decide: choose common denominator 24"
+        },
+        {
+          "step": 9,
+          "method": "fill",
+          "target": ".app-visual-view input.control-numeric-input",
+          "value": "16",
+          "description": "Transform left: enter numerator 16"
+        },
+        {
+          "step": 10,
+          "method": "click",
+          "target": ".app-visual-view .control-submit-btn",
+          "description": "Transform left: submit 16"
+        },
+        {
+          "step": 11,
+          "method": "fill",
+          "target": ".app-visual-view input.control-numeric-input",
+          "value": "6",
+          "description": "Transform right: enter numerator 6"
+        },
+        {
+          "step": 12,
+          "method": "click",
+          "target": ".app-visual-view .control-submit-btn",
+          "description": "Transform right: submit 6"
+        },
+        {
+          "step": 13,
+          "method": "fill",
+          "target": ".app-visual-view input.control-numeric-input",
+          "value": "22",
+          "description": "Operate: enter sum 22"
+        },
+        {
+          "step": 14,
+          "method": "click",
+          "target": ".app-visual-view .control-submit-btn",
+          "description": "Operate: submit 22"
+        },
+        {
+          "step": 15,
+          "method": "click",
+          "target": ".app-visual-view .control-btn",
+          "description": "Resolve: acknowledge completed operation"
+        },
+        {
+          "step": 16,
+          "method": "click",
+          "target": ".app-visual-view .control-choice-btn:has-text(\"Yes\")",
+          "description": "Answer 'Yes' to true premise"
+        }
       ],
       "expect": {
-        "capture": {"target":".app-completion-panel","type":"textContent"},
+        "capture": {
+          "target": ".app-visual-view",
+          "type": "innerHTML"
+        },
         "assertions": [
-          {"type":"containsText","target":".app-visual-view","value":"Correct! The parts are smaller"},
-          {"type":"hasSelector","target":".app-restart-button"}
+          {
+            "type": "containsText",
+            "target": ".app-visual-view",
+            "value": "Correct! The parts are smaller"
+          },
+          {
+            "type": "hasSelector",
+            "target": ".app-restart-button"
+          },
+          {
+            "type": "attributeEquals",
+            "target": ".fractionflow-app",
+            "attribute": "data-support-code",
+            "value": "high support"
+          },
+          {
+            "type": "hasSelector",
+            "target": ".app-visual-view .premise-comparison .fraction-bar-row-before"
+          }
         ]
       },
-      "negativeControl": {"targetRouteId":"ROUTE-PREMISE-24-TRUE-NO","comparison":"notIdenticalCapture"}
+      "negativeControl": {
+        "targetRouteId": "ROUTE-PREMISE-24-TRUE-NO",
+        "comparison": "notIdenticalCapture"
+      }
     },
     {
       "id": "ROUTE-PREMISE-24-TRUE-NO",
       "behavior": "Twenty-fourths route has a true premise renaming (16/24 for 2/3); answering contrarianly ('No') triggers recovery feedback and does not complete.",
       "configuration": "phase2-bundle-4",
       "startingSurface": "mounted-app-entry",
-      "viewport": {"width":360,"height":740},
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
       "motionMode": "standard-motion",
       "witness": "browser",
       "actions": [
-        {"step":1,"method":"click","target":".app-gear-button","description":"Open gear menu"},
-        {"step":2,"method":"click","target":"[data-condition-id=\"phase2-bundle-4\"]","description":"Select condition 4"},
-        {"method":"click","target":".app-practice-button","description":"Begin the registered practice type","step":3},
-        {"step":4,"method":"click","target":".app-visual-view .control-btn","description":"Acknowledge encounter"},
-        {"step":5,"method":"click","target":".app-visual-view .control-choice-btn >> nth=1","description":"Notice: choose different sized parts"},
-        {"step":6,"method":"click","target":".app-visual-view .control-choice-btn >> nth=1","description":"Decide: choose common denominator 24"},
-        {"step":7,"method":"fill","target":".app-visual-view input.control-numeric-input","value":"16","description":"Transform left: enter numerator 16"},
-        {"step":8,"method":"click","target":".app-visual-view .control-submit-btn","description":"Transform left: submit 16"},
-        {"step":9,"method":"fill","target":".app-visual-view input.control-numeric-input","value":"6","description":"Transform right: enter numerator 6"},
-        {"step":10,"method":"click","target":".app-visual-view .control-submit-btn","description":"Transform right: submit 6"},
-        {"step":11,"method":"fill","target":".app-visual-view input.control-numeric-input","value":"22","description":"Operate: enter sum 22"},
-        {"step":12,"method":"click","target":".app-visual-view .control-submit-btn","description":"Operate: submit 22"},
-        {"step":13,"method":"click","target":".app-visual-view .control-btn","description":"Resolve: acknowledge completed operation"},
-        {"step":14,"method":"click","target":".app-visual-view .control-choice-btn:has-text(\"No\")","description":"Answer 'No' to true premise"}
+        {
+          "step": 1,
+          "method": "click",
+          "target": ".app-gear-button",
+          "description": "Open gear menu"
+        },
+        {
+          "step": 2,
+          "method": "click",
+          "target": "[data-condition-id=\"phase2-bundle-4\"]",
+          "description": "Select condition 4"
+        },
+        {
+          "step": 3,
+          "method": "click",
+          "target": ".app-gear-button",
+          "description": "Reopen reviewer settings"
+        },
+        {
+          "step": 4,
+          "method": "click",
+          "target": "[data-support-id=\"high-support\"]",
+          "description": "Select more support"
+        },
+        {
+          "method": "click",
+          "target": ".app-practice-button",
+          "description": "Begin the registered practice type",
+          "step": 5
+        },
+        {
+          "step": 6,
+          "method": "click",
+          "target": ".app-visual-view .control-btn",
+          "description": "Acknowledge encounter"
+        },
+        {
+          "step": 7,
+          "method": "click",
+          "target": ".app-visual-view .control-choice-btn >> nth=1",
+          "description": "Notice: choose different sized parts"
+        },
+        {
+          "step": 8,
+          "method": "click",
+          "target": ".app-visual-view .control-choice-btn >> nth=1",
+          "description": "Decide: choose common denominator 24"
+        },
+        {
+          "step": 9,
+          "method": "fill",
+          "target": ".app-visual-view input.control-numeric-input",
+          "value": "16",
+          "description": "Transform left: enter numerator 16"
+        },
+        {
+          "step": 10,
+          "method": "click",
+          "target": ".app-visual-view .control-submit-btn",
+          "description": "Transform left: submit 16"
+        },
+        {
+          "step": 11,
+          "method": "fill",
+          "target": ".app-visual-view input.control-numeric-input",
+          "value": "6",
+          "description": "Transform right: enter numerator 6"
+        },
+        {
+          "step": 12,
+          "method": "click",
+          "target": ".app-visual-view .control-submit-btn",
+          "description": "Transform right: submit 6"
+        },
+        {
+          "step": 13,
+          "method": "fill",
+          "target": ".app-visual-view input.control-numeric-input",
+          "value": "22",
+          "description": "Operate: enter sum 22"
+        },
+        {
+          "step": 14,
+          "method": "click",
+          "target": ".app-visual-view .control-submit-btn",
+          "description": "Operate: submit 22"
+        },
+        {
+          "step": 15,
+          "method": "click",
+          "target": ".app-visual-view .control-btn",
+          "description": "Resolve: acknowledge completed operation"
+        },
+        {
+          "step": 16,
+          "method": "click",
+          "target": ".app-visual-view .control-choice-btn:has-text(\"No\")",
+          "description": "Answer 'No' to true premise"
+        }
       ],
       "expect": {
-        "capture": {"target":".app-visual-view .recovery-feedback","type":"textContent"},
+        "capture": {
+          "target": ".app-visual-view",
+          "type": "innerHTML"
+        },
         "assertions": [
-          {"type":"hasSelector","target":".app-visual-view .recovery-feedback"},
-          {"type":"containsText","target":".app-visual-view .recovery-feedback","value":"Look closely: the shaded length is the same"},
-          {"type":"hasSelector","target":".app-restart-button"}
+          {
+            "type": "hasSelector",
+            "target": ".app-visual-view .recovery-feedback"
+          },
+          {
+            "type": "containsText",
+            "target": ".app-visual-view .recovery-feedback",
+            "value": "Look closely: the shaded length is the same"
+          },
+          {
+            "type": "hasSelector",
+            "target": ".app-restart-button"
+          },
+          {
+            "type": "attributeEquals",
+            "target": ".fractionflow-app",
+            "attribute": "data-support-code",
+            "value": "high support"
+          },
+          {
+            "type": "hasSelector",
+            "target": ".app-visual-view .premise-comparison .fraction-bar-row-before"
+          }
         ]
       },
-      "negativeControl": {"targetRouteId":"ROUTE-PREMISE-24-TRUE-YES","comparison":"notIdenticalCapture"}
+      "negativeControl": {
+        "targetRouteId": "ROUTE-PREMISE-24-TRUE-YES",
+        "comparison": "notIdenticalCapture"
+      }
     },
-    {
+{
       "id": "ROUTE-REDUCED-MOTION",
       "behavior": "Under prefers-reduced-motion: reduce, the fraction bar renders with reduced-motion track styling while preserving identical mathematical state.",
       "configuration": "phase2-bundle-1",
@@ -540,7 +990,7 @@
       },
       "negativeControl": {"targetRouteId":"INITIAL-ENCOUNTER-BASELINE","comparison":"notIdenticalCapture"}
     },
-    {
+{
       "id": "ROUTE-FOCUS-REPLAY-INTERACTIVE",
       "behavior": "Toggling Replay during numeric input preserves input value and DOM node identity without unmounting active controls (Repair 07 Item 2), with activeElement on the clicked Replay control.",
       "configuration": "phase2-bundle-1",
@@ -570,7 +1020,7 @@
       },
       "negativeControl": {"targetRouteId":"INITIAL-ENCOUNTER-BASELINE","comparison":"notIdenticalCapture"}
     },
-    {
+{
       "id": "ROUTE-FOCUS-INSPECTION-RESTORE",
       "behavior": "After a real click on Done looking, focus returns to the first mounted reflection choice in the visual path.",
       "configuration": "phase2-bundle-1",
@@ -605,7 +1055,7 @@
       },
       "negativeControl": {"targetRouteId":"INSPECTION-ACTIVE-FOCUS-BASELINE","comparison":"notIdenticalCapture"}
     },
-    {
+{
       "id": "ROUTE-FOCUS-INSPECTION-RESTORE-LINEAR",
       "behavior": "After a real click on Done looking, focus returns to the first mounted reflection choice in the linear path.",
       "configuration": "phase2-bundle-1",
@@ -641,7 +1091,7 @@
       },
       "negativeControl": {"targetRouteId":"INSPECTION-ACTIVE-FOCUS-BASELINE","comparison":"notIdenticalCapture"}
     },
-    {
+{
       "id": "ROUTE-ENTRY-FIRST-TAB",
       "behavior": "The first Tab from the entry page reaches the runnable practice button.",
       "configuration": "phase2-bundle-1",
@@ -659,7 +1109,7 @@
         ]
       }
     },
-    {
+{
       "id": "ROUTE-ENTRY-GEAR-TAB",
       "behavior": "The reviewer gear remains in the entry page keyboard order after the practice button.",
       "configuration": "phase2-bundle-1",
@@ -678,7 +1128,7 @@
         ]
       }
     },
-    {
+{
       "id": "ROUTE-ENTRY-BEGIN-RETURN-FOCUS",
       "behavior": "Begin focuses the episode landmark; return focuses the entry title, whose first Tab reaches the practice button.",
       "configuration": "phase2-bundle-1",
@@ -699,7 +1149,7 @@
         ]
       }
     },
-    {
+{
       "id": "ROUTE-RETRY-RESET-STATE",
       "behavior": "After a wrong answer and recovery, help, established conversion work, replay, and unsubmitted input, retry discards the entire episode and returns to a fresh encounter.",
       "configuration": "phase2-bundle-1",
@@ -732,7 +1182,7 @@
         ]
       }
     },
-    {
+{
       "id": "ROUTE-RETURN-REENTER-RESET-STATE",
       "behavior": "After a wrong answer and recovery, help, established conversion work, replay, and unsubmitted input, return and re-enter discards the same entire episode state as retry.",
       "configuration": "phase2-bundle-1",
@@ -767,7 +1217,7 @@
       },
       "declaredSameAs": {"targetRouteId":"ROUTE-RETRY-RESET-STATE","comparison":"identicalCapture"}
     },
-    {
+{
       "id": "ROUTE-ENTRY-BEGIN-FIRST-TAB-EPISODE",
       "behavior": "After Begin focuses the episode landmark, the first Tab reaches the view control at the start of the episode keyboard order.",
       "configuration": "phase2-bundle-1",
@@ -786,7 +1236,7 @@
         ]
       }
     },
-    {
+{
       "id": "ROUTE-PROTOTYPE-SUBTRACTION-TAKEAWAY",
       "behavior": "A learner removes the subtrahend's part from the minuend, enters the difference, and can inspect the marked part.",
       "configuration": "plan15-subtraction-prototype",
@@ -822,7 +1272,7 @@
         "sameMotionMode":true
       }
     },
-    {
+{
       "id": "ROUTE-PROTOTYPE-SUBTRACTION-COMPARISON",
       "behavior": "A learner reveals the aligned bars' gap, enters the difference, and can inspect the marked gap.",
       "configuration": "plan15-subtraction-prototype",
@@ -858,6 +1308,1440 @@
         "comparison":"notIdenticalCapture",
         "sameMotionMode":true
       }
+    },
+        {
+      "id": "ROUTE-PREMISE-MEDIUM-12-FALSE-NO",
+      "behavior": "Medium support reaches the same authored premise outcome through the mounted controls after entering the denominator.",
+      "configuration": "phase2-bundle-4",
+      "startingSurface": "mounted-app-entry",
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "motionMode": "standard-motion",
+      "witness": "browser",
+      "actions": [
+        {
+          "step": 1,
+          "method": "click",
+          "target": ".app-gear-button",
+          "description": "Open gear menu"
+        },
+        {
+          "step": 2,
+          "method": "click",
+          "target": "[data-condition-id=\"phase2-bundle-4\"]",
+          "description": "Select condition 4"
+        },
+        {
+          "step": 3,
+          "method": "click",
+          "target": ".app-gear-button",
+          "description": "Reopen reviewer settings"
+        },
+        {
+          "step": 4,
+          "method": "click",
+          "target": "[data-support-id=\"medium-support\"]",
+          "description": "Select less support"
+        },
+        {
+          "method": "click",
+          "target": ".app-practice-button",
+          "description": "Begin the registered practice type",
+          "step": 5
+        },
+        {
+          "step": 6,
+          "method": "click",
+          "target": ".app-visual-view .control-btn",
+          "description": "Acknowledge encounter"
+        },
+        {
+          "step": 7,
+          "method": "click",
+          "target": ".app-visual-view .control-choice-btn >> nth=1",
+          "description": "Notice: choose different sized parts"
+        },
+        {
+          "step": 8,
+          "method": "fill",
+          "target": ".app-visual-view input.control-numeric-input",
+          "value": "11",
+          "description": "Enter an invalid denominator"
+        },
+        {
+          "step": 9,
+          "method": "click",
+          "target": ".app-visual-view .control-submit-btn",
+          "description": "Submit the invalid denominator"
+        },
+        {
+          "step": 10,
+          "method": "assertText",
+          "target": ".app-visual-view .recovery-feedback",
+          "value": "not a common denominator.",
+          "description": "Confirm denominator recovery"
+        },
+        {
+          "step": 11,
+          "method": "fill",
+          "target": ".app-visual-view input.control-numeric-input",
+          "value": "12",
+          "description": "Correct the denominator"
+        },
+        {
+          "step": 12,
+          "method": "click",
+          "target": ".app-visual-view .control-submit-btn",
+          "description": "Submit the corrected denominator"
+        },
+        {
+          "step": 13,
+          "method": "fill",
+          "target": ".app-visual-view input.control-numeric-input",
+          "value": "8",
+          "description": "Transform left: enter numerator 8"
+        },
+        {
+          "step": 14,
+          "method": "click",
+          "target": ".app-visual-view .control-submit-btn",
+          "description": "Transform left: submit 8"
+        },
+        {
+          "step": 15,
+          "method": "fill",
+          "target": ".app-visual-view input.control-numeric-input",
+          "value": "3",
+          "description": "Transform right: enter numerator 3"
+        },
+        {
+          "step": 16,
+          "method": "click",
+          "target": ".app-visual-view .control-submit-btn",
+          "description": "Transform right: submit 3"
+        },
+        {
+          "step": 17,
+          "method": "fill",
+          "target": ".app-visual-view input.control-numeric-input",
+          "value": "11",
+          "description": "Operate: enter sum 11"
+        },
+        {
+          "step": 18,
+          "method": "click",
+          "target": ".app-visual-view .control-submit-btn",
+          "description": "Operate: submit 11"
+        },
+        {
+          "step": 19,
+          "method": "click",
+          "target": ".app-visual-view .control-btn",
+          "description": "Resolve: acknowledge completed operation"
+        },
+        {
+          "step": 20,
+          "method": "click",
+          "target": ".app-visual-view .control-choice-btn:has-text(\"No\")",
+          "description": "Answer 'No' to false premise"
+        }
+      ],
+      "expect": {
+        "capture": {
+          "target": ".app-visual-view",
+          "type": "innerHTML"
+        },
+        "assertions": [
+          {
+            "type": "containsText",
+            "target": ".app-visual-view",
+            "value": "Good eye! The amount changed"
+          },
+          {
+            "type": "hasSelector",
+            "target": ".app-restart-button"
+          },
+          {
+            "type": "notHasSelector",
+            "target": ".app-visual-view .premise-comparison .fraction-bar-row-before"
+          },
+          {
+            "type": "containsText",
+            "target": ".app-visual-view .premise-source-reference",
+            "value": "Starting fraction: 2/3"
+          }
+        ]
+      },
+      "negativeControl": {
+        "targetRouteId": "ROUTE-PREMISE-12-FALSE-NO",
+        "comparison": "notIdenticalCapture",
+        "sameMotionMode": true
+      }
+    },
+        {
+      "id": "ROUTE-PREMISE-MEDIUM-12-FALSE-YES",
+      "behavior": "Medium support reaches the same authored premise outcome through the mounted controls after entering the denominator.",
+      "configuration": "phase2-bundle-4",
+      "startingSurface": "mounted-app-entry",
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "motionMode": "standard-motion",
+      "witness": "browser",
+      "actions": [
+        {
+          "step": 1,
+          "method": "click",
+          "target": ".app-gear-button",
+          "description": "Open gear menu"
+        },
+        {
+          "step": 2,
+          "method": "click",
+          "target": "[data-condition-id=\"phase2-bundle-4\"]",
+          "description": "Select condition 4"
+        },
+        {
+          "step": 3,
+          "method": "click",
+          "target": ".app-gear-button",
+          "description": "Reopen reviewer settings"
+        },
+        {
+          "step": 4,
+          "method": "click",
+          "target": "[data-support-id=\"medium-support\"]",
+          "description": "Select less support"
+        },
+        {
+          "method": "click",
+          "target": ".app-practice-button",
+          "description": "Begin the registered practice type",
+          "step": 5
+        },
+        {
+          "step": 6,
+          "method": "click",
+          "target": ".app-visual-view .control-btn",
+          "description": "Acknowledge encounter"
+        },
+        {
+          "step": 7,
+          "method": "click",
+          "target": ".app-visual-view .control-choice-btn >> nth=1",
+          "description": "Notice: choose different sized parts"
+        },
+        {
+          "step": 8,
+          "method": "fill",
+          "target": ".app-visual-view input.control-numeric-input",
+          "value": "12",
+          "description": "Enter the denominator"
+        },
+        {
+          "step": 9,
+          "method": "click",
+          "target": ".app-visual-view .control-submit-btn",
+          "description": "Submit the denominator"
+        },
+        {
+          "step": 10,
+          "method": "fill",
+          "target": ".app-visual-view input.control-numeric-input",
+          "value": "8",
+          "description": "Transform left: enter numerator 8"
+        },
+        {
+          "step": 11,
+          "method": "click",
+          "target": ".app-visual-view .control-submit-btn",
+          "description": "Transform left: submit 8"
+        },
+        {
+          "step": 12,
+          "method": "fill",
+          "target": ".app-visual-view input.control-numeric-input",
+          "value": "3",
+          "description": "Transform right: enter numerator 3"
+        },
+        {
+          "step": 13,
+          "method": "click",
+          "target": ".app-visual-view .control-submit-btn",
+          "description": "Transform right: submit 3"
+        },
+        {
+          "step": 14,
+          "method": "fill",
+          "target": ".app-visual-view input.control-numeric-input",
+          "value": "11",
+          "description": "Operate: enter sum 11"
+        },
+        {
+          "step": 15,
+          "method": "click",
+          "target": ".app-visual-view .control-submit-btn",
+          "description": "Operate: submit 11"
+        },
+        {
+          "step": 16,
+          "method": "click",
+          "target": ".app-visual-view .control-btn",
+          "description": "Resolve: acknowledge completed operation"
+        },
+        {
+          "step": 17,
+          "method": "click",
+          "target": ".app-visual-view .control-choice-btn:has-text(\"Yes\")",
+          "description": "Answer 'Yes' to false premise"
+        }
+      ],
+      "expect": {
+        "capture": {
+          "target": ".app-visual-view",
+          "type": "innerHTML"
+        },
+        "assertions": [
+          {
+            "type": "hasSelector",
+            "target": ".app-visual-view .recovery-feedback"
+          },
+          {
+            "type": "containsText",
+            "target": ".app-visual-view .recovery-feedback",
+            "value": "Look closely: the shaded length became longer"
+          },
+          {
+            "type": "hasSelector",
+            "target": ".app-restart-button"
+          },
+          {
+            "type": "notHasSelector",
+            "target": ".app-visual-view .premise-comparison .fraction-bar-row-before"
+          },
+          {
+            "type": "containsText",
+            "target": ".app-visual-view .premise-source-reference",
+            "value": "Starting fraction: 2/3"
+          }
+        ]
+      },
+      "negativeControl": {
+        "targetRouteId": "ROUTE-PREMISE-12-FALSE-YES",
+        "comparison": "notIdenticalCapture",
+        "sameMotionMode": true
+      }
+    },
+        {
+      "id": "ROUTE-PREMISE-MEDIUM-24-TRUE-YES",
+      "behavior": "Medium support reaches the same authored premise outcome through the mounted controls after entering the denominator.",
+      "configuration": "phase2-bundle-4",
+      "startingSurface": "mounted-app-entry",
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "motionMode": "standard-motion",
+      "witness": "browser",
+      "actions": [
+        {
+          "step": 1,
+          "method": "click",
+          "target": ".app-gear-button",
+          "description": "Open gear menu"
+        },
+        {
+          "step": 2,
+          "method": "click",
+          "target": "[data-condition-id=\"phase2-bundle-4\"]",
+          "description": "Select condition 4"
+        },
+        {
+          "step": 3,
+          "method": "click",
+          "target": ".app-gear-button",
+          "description": "Reopen reviewer settings"
+        },
+        {
+          "step": 4,
+          "method": "click",
+          "target": "[data-support-id=\"medium-support\"]",
+          "description": "Select less support"
+        },
+        {
+          "method": "click",
+          "target": ".app-practice-button",
+          "description": "Begin the registered practice type",
+          "step": 5
+        },
+        {
+          "step": 6,
+          "method": "click",
+          "target": ".app-visual-view .control-btn",
+          "description": "Acknowledge encounter"
+        },
+        {
+          "step": 7,
+          "method": "click",
+          "target": ".app-visual-view .control-choice-btn >> nth=1",
+          "description": "Notice: choose different sized parts"
+        },
+        {
+          "step": 8,
+          "method": "fill",
+          "target": ".app-visual-view input.control-numeric-input",
+          "value": "24",
+          "description": "Enter the denominator"
+        },
+        {
+          "step": 9,
+          "method": "click",
+          "target": ".app-visual-view .control-submit-btn",
+          "description": "Submit the denominator"
+        },
+        {
+          "step": 10,
+          "method": "fill",
+          "target": ".app-visual-view input.control-numeric-input",
+          "value": "16",
+          "description": "Transform left: enter numerator 16"
+        },
+        {
+          "step": 11,
+          "method": "click",
+          "target": ".app-visual-view .control-submit-btn",
+          "description": "Transform left: submit 16"
+        },
+        {
+          "step": 12,
+          "method": "fill",
+          "target": ".app-visual-view input.control-numeric-input",
+          "value": "6",
+          "description": "Transform right: enter numerator 6"
+        },
+        {
+          "step": 13,
+          "method": "click",
+          "target": ".app-visual-view .control-submit-btn",
+          "description": "Transform right: submit 6"
+        },
+        {
+          "step": 14,
+          "method": "fill",
+          "target": ".app-visual-view input.control-numeric-input",
+          "value": "22",
+          "description": "Operate: enter sum 22"
+        },
+        {
+          "step": 15,
+          "method": "click",
+          "target": ".app-visual-view .control-submit-btn",
+          "description": "Operate: submit 22"
+        },
+        {
+          "step": 16,
+          "method": "click",
+          "target": ".app-visual-view .control-btn",
+          "description": "Resolve: acknowledge completed operation"
+        },
+        {
+          "step": 17,
+          "method": "click",
+          "target": ".app-visual-view .control-choice-btn:has-text(\"Yes\")",
+          "description": "Answer 'Yes' to true premise"
+        }
+      ],
+      "expect": {
+        "capture": {
+          "target": ".app-visual-view",
+          "type": "innerHTML"
+        },
+        "assertions": [
+          {
+            "type": "containsText",
+            "target": ".app-visual-view",
+            "value": "Correct! The parts are smaller"
+          },
+          {
+            "type": "hasSelector",
+            "target": ".app-restart-button"
+          },
+          {
+            "type": "notHasSelector",
+            "target": ".app-visual-view .premise-comparison .fraction-bar-row-before"
+          },
+          {
+            "type": "containsText",
+            "target": ".app-visual-view .premise-source-reference",
+            "value": "Starting fraction: 2/3"
+          }
+        ]
+      },
+      "negativeControl": {
+        "targetRouteId": "ROUTE-PREMISE-24-TRUE-YES",
+        "comparison": "notIdenticalCapture",
+        "sameMotionMode": true
+      }
+    },
+        {
+      "id": "ROUTE-PREMISE-MEDIUM-24-TRUE-NO",
+      "behavior": "Medium support reaches the same authored premise outcome through the mounted controls after entering the denominator.",
+      "configuration": "phase2-bundle-4",
+      "startingSurface": "mounted-app-entry",
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "motionMode": "standard-motion",
+      "witness": "browser",
+      "actions": [
+        {
+          "step": 1,
+          "method": "click",
+          "target": ".app-gear-button",
+          "description": "Open gear menu"
+        },
+        {
+          "step": 2,
+          "method": "click",
+          "target": "[data-condition-id=\"phase2-bundle-4\"]",
+          "description": "Select condition 4"
+        },
+        {
+          "step": 3,
+          "method": "click",
+          "target": ".app-gear-button",
+          "description": "Reopen reviewer settings"
+        },
+        {
+          "step": 4,
+          "method": "click",
+          "target": "[data-support-id=\"medium-support\"]",
+          "description": "Select less support"
+        },
+        {
+          "method": "click",
+          "target": ".app-practice-button",
+          "description": "Begin the registered practice type",
+          "step": 5
+        },
+        {
+          "step": 6,
+          "method": "click",
+          "target": ".app-visual-view .control-btn",
+          "description": "Acknowledge encounter"
+        },
+        {
+          "step": 7,
+          "method": "click",
+          "target": ".app-visual-view .control-choice-btn >> nth=1",
+          "description": "Notice: choose different sized parts"
+        },
+        {
+          "step": 8,
+          "method": "fill",
+          "target": ".app-visual-view input.control-numeric-input",
+          "value": "24",
+          "description": "Enter the denominator"
+        },
+        {
+          "step": 9,
+          "method": "click",
+          "target": ".app-visual-view .control-submit-btn",
+          "description": "Submit the denominator"
+        },
+        {
+          "step": 10,
+          "method": "fill",
+          "target": ".app-visual-view input.control-numeric-input",
+          "value": "16",
+          "description": "Transform left: enter numerator 16"
+        },
+        {
+          "step": 11,
+          "method": "click",
+          "target": ".app-visual-view .control-submit-btn",
+          "description": "Transform left: submit 16"
+        },
+        {
+          "step": 12,
+          "method": "fill",
+          "target": ".app-visual-view input.control-numeric-input",
+          "value": "6",
+          "description": "Transform right: enter numerator 6"
+        },
+        {
+          "step": 13,
+          "method": "click",
+          "target": ".app-visual-view .control-submit-btn",
+          "description": "Transform right: submit 6"
+        },
+        {
+          "step": 14,
+          "method": "fill",
+          "target": ".app-visual-view input.control-numeric-input",
+          "value": "22",
+          "description": "Operate: enter sum 22"
+        },
+        {
+          "step": 15,
+          "method": "click",
+          "target": ".app-visual-view .control-submit-btn",
+          "description": "Operate: submit 22"
+        },
+        {
+          "step": 16,
+          "method": "click",
+          "target": ".app-visual-view .control-btn",
+          "description": "Resolve: acknowledge completed operation"
+        },
+        {
+          "step": 17,
+          "method": "click",
+          "target": ".app-visual-view .control-choice-btn:has-text(\"No\")",
+          "description": "Answer 'No' to true premise"
+        }
+      ],
+      "expect": {
+        "capture": {
+          "target": ".app-visual-view",
+          "type": "innerHTML"
+        },
+        "assertions": [
+          {
+            "type": "hasSelector",
+            "target": ".app-visual-view .recovery-feedback"
+          },
+          {
+            "type": "containsText",
+            "target": ".app-visual-view .recovery-feedback",
+            "value": "Look closely: the shaded length is the same"
+          },
+          {
+            "type": "hasSelector",
+            "target": ".app-restart-button"
+          },
+          {
+            "type": "notHasSelector",
+            "target": ".app-visual-view .premise-comparison .fraction-bar-row-before"
+          },
+          {
+            "type": "containsText",
+            "target": ".app-visual-view .premise-source-reference",
+            "value": "Starting fraction: 2/3"
+          }
+        ]
+      },
+      "negativeControl": {
+        "targetRouteId": "ROUTE-PREMISE-24-TRUE-NO",
+        "comparison": "notIdenticalCapture",
+        "sameMotionMode": true
+      }
+    },
+        {
+      "id": "ROUTE-SUPPORT-HIGH-DECIDE",
+      "behavior": "High support offers the authored denominator choices at decide.",
+      "configuration": "phase2-bundle-4",
+      "startingSurface": "mounted-app-entry",
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "motionMode": "standard-motion",
+      "witness": "browser",
+      "actions": [
+        {
+          "step": 1,
+          "method": "click",
+          "target": ".app-gear-button",
+          "description": "Open reviewer settings"
+        },
+        {
+          "step": 2,
+          "method": "click",
+          "target": "[data-condition-id=\"phase2-bundle-4\"]",
+          "description": "Select Check the premise"
+        },
+        {
+          "step": 3,
+          "method": "click",
+          "target": ".app-gear-button",
+          "description": "Reopen reviewer settings"
+        },
+        {
+          "step": 4,
+          "method": "click",
+          "target": "[data-support-id=\"high-support\"]",
+          "description": "Select high support"
+        },
+        {
+          "step": 5,
+          "method": "click",
+          "target": ".app-practice-button",
+          "description": "Begin the registered practice type"
+        },
+        {
+          "step": 6,
+          "method": "click",
+          "target": ".app-visual-view .control-btn",
+          "description": "Acknowledge encounter"
+        },
+        {
+          "step": 7,
+          "method": "click",
+          "target": ".app-visual-view .control-choice-btn >> nth=1",
+          "description": "Notice: choose different sized parts"
+        }
+      ],
+      "expect": {
+        "capture": {
+          "target": ".app-visual-view .active-beat-section",
+          "type": "innerHTML"
+        },
+        "assertions": [
+          {
+            "type": "attributeEquals",
+            "target": ".fractionflow-app",
+            "attribute": "data-support-code",
+            "value": "high support"
+          },
+          {
+            "type": "hasSelector",
+            "target": ".app-visual-view .control-choice-btn"
+          },
+          {
+            "type": "hasSelector",
+            "target": ".app-visual-view .control-choice-btn >> nth=0"
+          },
+          {
+            "type": "hasSelector",
+            "target": ".app-visual-view .control-choice-btn >> nth=1"
+          }
+        ]
+      },
+      "negativeControl": {
+        "targetRouteId": "ROUTE-SUPPORT-MEDIUM-DECIDE",
+        "comparison": "notIdenticalCapture",
+        "sameMotionMode": true
+      }
+    },
+    {
+      "id": "ROUTE-SUPPORT-MEDIUM-DECIDE",
+      "behavior": "Medium support requests the same denominator decision as numeric entry.",
+      "configuration": "phase2-bundle-4",
+      "startingSurface": "mounted-app-entry",
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "motionMode": "standard-motion",
+      "witness": "browser",
+      "actions": [
+        {
+          "step": 1,
+          "method": "click",
+          "target": ".app-gear-button",
+          "description": "Open reviewer settings"
+        },
+        {
+          "step": 2,
+          "method": "click",
+          "target": "[data-condition-id=\"phase2-bundle-4\"]",
+          "description": "Select Check the premise"
+        },
+        {
+          "step": 3,
+          "method": "click",
+          "target": ".app-gear-button",
+          "description": "Reopen reviewer settings"
+        },
+        {
+          "step": 4,
+          "method": "click",
+          "target": "[data-support-id=\"medium-support\"]",
+          "description": "Select medium support"
+        },
+        {
+          "step": 5,
+          "method": "click",
+          "target": ".app-practice-button",
+          "description": "Begin the registered practice type"
+        },
+        {
+          "step": 6,
+          "method": "click",
+          "target": ".app-visual-view .control-btn",
+          "description": "Acknowledge encounter"
+        },
+        {
+          "step": 7,
+          "method": "click",
+          "target": ".app-visual-view .control-choice-btn >> nth=1",
+          "description": "Notice: choose different sized parts"
+        }
+      ],
+      "expect": {
+        "capture": {
+          "target": ".app-visual-view .active-beat-section",
+          "type": "innerHTML"
+        },
+        "assertions": [
+          {
+            "type": "attributeEquals",
+            "target": ".fractionflow-app",
+            "attribute": "data-support-code",
+            "value": "medium support"
+          },
+          {
+            "type": "hasSelector",
+            "target": ".app-visual-view input.control-numeric-input"
+          },
+          {
+            "type": "notHasSelector",
+            "target": ".app-visual-view .control-choice-btn"
+          },
+          {
+            "type": "containsText",
+            "target": ".app-visual-view .active-beat-section",
+            "value": "Choose a common denominator for both fractions."
+          }
+        ]
+      },
+      "negativeControl": {
+        "targetRouteId": "ROUTE-SUPPORT-HIGH-DECIDE",
+        "comparison": "notIdenticalCapture",
+        "sameMotionMode": true
+      }
+    },
+    {
+      "id": "ROUTE-SUPPORT-HIGH-PREMISE-12",
+      "behavior": "high support shows the authored 12-denominator premise at the same reflect beat before judgement.",
+      "configuration": "phase2-bundle-4",
+      "startingSurface": "mounted-app-entry",
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "motionMode": "standard-motion",
+      "witness": "browser",
+      "actions": [
+        {
+          "step": 1,
+          "method": "click",
+          "target": ".app-gear-button",
+          "description": "Open reviewer settings"
+        },
+        {
+          "step": 2,
+          "method": "click",
+          "target": "[data-condition-id=\"phase2-bundle-4\"]",
+          "description": "Select Check the premise"
+        },
+        {
+          "step": 3,
+          "method": "click",
+          "target": ".app-gear-button",
+          "description": "Reopen reviewer settings"
+        },
+        {
+          "step": 4,
+          "method": "click",
+          "target": "[data-support-id=\"high-support\"]",
+          "description": "Select high support"
+        },
+        {
+          "step": 5,
+          "method": "click",
+          "target": ".app-practice-button",
+          "description": "Begin the registered practice type"
+        },
+        {
+          "step": 6,
+          "method": "click",
+          "target": ".app-visual-view .control-btn",
+          "description": "Acknowledge encounter"
+        },
+        {
+          "step": 7,
+          "method": "click",
+          "target": ".app-visual-view .control-choice-btn >> nth=1",
+          "description": "Notice: choose different sized parts"
+        },
+        {
+          "step": 8,
+          "method": "click",
+          "target": ".app-visual-view .control-choice-btn >> nth=0",
+          "description": "Choose denominator 12"
+        },
+        {
+          "step": 9,
+          "method": "fill",
+          "target": ".app-visual-view input.control-numeric-input",
+          "value": "8",
+          "description": "Transform left numerator"
+        },
+        {
+          "step": 10,
+          "method": "click",
+          "target": ".app-visual-view .control-submit-btn",
+          "description": "Submit transformed left numerator"
+        },
+        {
+          "step": 11,
+          "method": "fill",
+          "target": ".app-visual-view input.control-numeric-input",
+          "value": "3",
+          "description": "Transform right numerator"
+        },
+        {
+          "step": 12,
+          "method": "click",
+          "target": ".app-visual-view .control-submit-btn",
+          "description": "Submit transformed right numerator"
+        },
+        {
+          "step": 13,
+          "method": "fill",
+          "target": ".app-visual-view input.control-numeric-input",
+          "value": "11",
+          "description": "Enter the operation result"
+        },
+        {
+          "step": 14,
+          "method": "click",
+          "target": ".app-visual-view .control-submit-btn",
+          "description": "Submit the operation result"
+        },
+        {
+          "step": 15,
+          "method": "click",
+          "target": ".app-visual-view .control-btn",
+          "description": "Resolve the operation"
+        }
+      ],
+      "expect": {
+        "capture": {
+          "target": ".app-visual-view",
+          "type": "innerHTML"
+        },
+        "assertions": [
+          {
+            "type": "attributeEquals",
+            "target": ".fractionflow-app",
+            "attribute": "data-support-code",
+            "value": "high support"
+          },
+          {
+            "type": "hasSelector",
+            "target": ".app-visual-view .premise-comparison .fraction-bar-row-before"
+          },
+          {
+            "type": "containsText",
+            "target": ".app-visual-view",
+            "value": "Starting fraction: 2/3"
+          },
+          {
+            "type": "containsText",
+            "target": ".app-visual-view",
+            "value": "New parts: 7/12"
+          },
+          {
+            "type": "containsText",
+            "target": ".app-visual-view",
+            "value": "Does this new bar show the same amount as before?"
+          },
+          {
+            "type": "hasSelector",
+            "target": ".app-visual-view .control-choice-btn:has-text(\"Yes, it is the same amount\")"
+          },
+          {
+            "type": "hasSelector",
+            "target": ".app-visual-view .control-choice-btn:has-text(\"No, the amount changed\")"
+          }
+        ]
+      },
+      "negativeControl": {
+        "targetRouteId": "ROUTE-SUPPORT-MEDIUM-PREMISE-12",
+        "comparison": "notIdenticalCapture",
+        "sameMotionMode": true
+      }
+    },
+    {
+      "id": "ROUTE-SUPPORT-MEDIUM-PREMISE-12",
+      "behavior": "medium support shows the authored 12-denominator premise at the same reflect beat before judgement.",
+      "configuration": "phase2-bundle-4",
+      "startingSurface": "mounted-app-entry",
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "motionMode": "standard-motion",
+      "witness": "browser",
+      "actions": [
+        {
+          "step": 1,
+          "method": "click",
+          "target": ".app-gear-button",
+          "description": "Open reviewer settings"
+        },
+        {
+          "step": 2,
+          "method": "click",
+          "target": "[data-condition-id=\"phase2-bundle-4\"]",
+          "description": "Select Check the premise"
+        },
+        {
+          "step": 3,
+          "method": "click",
+          "target": ".app-gear-button",
+          "description": "Reopen reviewer settings"
+        },
+        {
+          "step": 4,
+          "method": "click",
+          "target": "[data-support-id=\"medium-support\"]",
+          "description": "Select medium support"
+        },
+        {
+          "step": 5,
+          "method": "click",
+          "target": ".app-practice-button",
+          "description": "Begin the registered practice type"
+        },
+        {
+          "step": 6,
+          "method": "click",
+          "target": ".app-visual-view .control-btn",
+          "description": "Acknowledge encounter"
+        },
+        {
+          "step": 7,
+          "method": "click",
+          "target": ".app-visual-view .control-choice-btn >> nth=1",
+          "description": "Notice: choose different sized parts"
+        },
+        {
+          "step": 8,
+          "method": "fill",
+          "target": ".app-visual-view input.control-numeric-input",
+          "value": "12",
+          "description": "Enter denominator 12"
+        },
+        {
+          "step": 9,
+          "method": "click",
+          "target": ".app-visual-view .control-submit-btn",
+          "description": "Submit denominator 12"
+        },
+        {
+          "step": 10,
+          "method": "fill",
+          "target": ".app-visual-view input.control-numeric-input",
+          "value": "8",
+          "description": "Transform left numerator"
+        },
+        {
+          "step": 11,
+          "method": "click",
+          "target": ".app-visual-view .control-submit-btn",
+          "description": "Submit transformed left numerator"
+        },
+        {
+          "step": 12,
+          "method": "fill",
+          "target": ".app-visual-view input.control-numeric-input",
+          "value": "3",
+          "description": "Transform right numerator"
+        },
+        {
+          "step": 13,
+          "method": "click",
+          "target": ".app-visual-view .control-submit-btn",
+          "description": "Submit transformed right numerator"
+        },
+        {
+          "step": 14,
+          "method": "fill",
+          "target": ".app-visual-view input.control-numeric-input",
+          "value": "11",
+          "description": "Enter the operation result"
+        },
+        {
+          "step": 15,
+          "method": "click",
+          "target": ".app-visual-view .control-submit-btn",
+          "description": "Submit the operation result"
+        },
+        {
+          "step": 16,
+          "method": "click",
+          "target": ".app-visual-view .control-btn",
+          "description": "Resolve the operation"
+        }
+      ],
+      "expect": {
+        "capture": {
+          "target": ".app-visual-view",
+          "type": "innerHTML"
+        },
+        "assertions": [
+          {
+            "type": "attributeEquals",
+            "target": ".fractionflow-app",
+            "attribute": "data-support-code",
+            "value": "medium support"
+          },
+          {
+            "type": "notHasSelector",
+            "target": ".app-visual-view .premise-comparison .fraction-bar-row-before"
+          },
+          {
+            "type": "containsText",
+            "target": ".app-visual-view .premise-source-reference",
+            "value": "Starting fraction: 2/3"
+          },
+          {
+            "type": "containsText",
+            "target": ".app-visual-view",
+            "value": "New parts: 7/12"
+          },
+          {
+            "type": "containsText",
+            "target": ".app-visual-view",
+            "value": "Does this new bar show the same amount as before?"
+          },
+          {
+            "type": "hasSelector",
+            "target": ".app-visual-view .control-choice-btn:has-text(\"Yes, it is the same amount\")"
+          },
+          {
+            "type": "hasSelector",
+            "target": ".app-visual-view .control-choice-btn:has-text(\"No, the amount changed\")"
+          }
+        ]
+      },
+      "negativeControl": {
+        "targetRouteId": "ROUTE-SUPPORT-HIGH-PREMISE-12",
+        "comparison": "notIdenticalCapture",
+        "sameMotionMode": true
+      }
+    },
+    {
+      "id": "ROUTE-SUPPORT-HIGH-PREMISE-24",
+      "behavior": "high support shows the authored 24-denominator premise at the same reflect beat before judgement.",
+      "configuration": "phase2-bundle-4",
+      "startingSurface": "mounted-app-entry",
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "motionMode": "standard-motion",
+      "witness": "browser",
+      "actions": [
+        {
+          "step": 1,
+          "method": "click",
+          "target": ".app-gear-button",
+          "description": "Open reviewer settings"
+        },
+        {
+          "step": 2,
+          "method": "click",
+          "target": "[data-condition-id=\"phase2-bundle-4\"]",
+          "description": "Select Check the premise"
+        },
+        {
+          "step": 3,
+          "method": "click",
+          "target": ".app-gear-button",
+          "description": "Reopen reviewer settings"
+        },
+        {
+          "step": 4,
+          "method": "click",
+          "target": "[data-support-id=\"high-support\"]",
+          "description": "Select high support"
+        },
+        {
+          "step": 5,
+          "method": "click",
+          "target": ".app-practice-button",
+          "description": "Begin the registered practice type"
+        },
+        {
+          "step": 6,
+          "method": "click",
+          "target": ".app-visual-view .control-btn",
+          "description": "Acknowledge encounter"
+        },
+        {
+          "step": 7,
+          "method": "click",
+          "target": ".app-visual-view .control-choice-btn >> nth=1",
+          "description": "Notice: choose different sized parts"
+        },
+        {
+          "step": 8,
+          "method": "click",
+          "target": ".app-visual-view .control-choice-btn >> nth=1",
+          "description": "Choose denominator 24"
+        },
+        {
+          "step": 9,
+          "method": "fill",
+          "target": ".app-visual-view input.control-numeric-input",
+          "value": "16",
+          "description": "Transform left numerator"
+        },
+        {
+          "step": 10,
+          "method": "click",
+          "target": ".app-visual-view .control-submit-btn",
+          "description": "Submit transformed left numerator"
+        },
+        {
+          "step": 11,
+          "method": "fill",
+          "target": ".app-visual-view input.control-numeric-input",
+          "value": "6",
+          "description": "Transform right numerator"
+        },
+        {
+          "step": 12,
+          "method": "click",
+          "target": ".app-visual-view .control-submit-btn",
+          "description": "Submit transformed right numerator"
+        },
+        {
+          "step": 13,
+          "method": "fill",
+          "target": ".app-visual-view input.control-numeric-input",
+          "value": "22",
+          "description": "Enter the operation result"
+        },
+        {
+          "step": 14,
+          "method": "click",
+          "target": ".app-visual-view .control-submit-btn",
+          "description": "Submit the operation result"
+        },
+        {
+          "step": 15,
+          "method": "click",
+          "target": ".app-visual-view .control-btn",
+          "description": "Resolve the operation"
+        }
+      ],
+      "expect": {
+        "capture": {
+          "target": ".app-visual-view",
+          "type": "innerHTML"
+        },
+        "assertions": [
+          {
+            "type": "attributeEquals",
+            "target": ".fractionflow-app",
+            "attribute": "data-support-code",
+            "value": "high support"
+          },
+          {
+            "type": "hasSelector",
+            "target": ".app-visual-view .premise-comparison .fraction-bar-row-before"
+          },
+          {
+            "type": "containsText",
+            "target": ".app-visual-view",
+            "value": "Starting fraction: 2/3"
+          },
+          {
+            "type": "containsText",
+            "target": ".app-visual-view",
+            "value": "New parts: 16/24"
+          },
+          {
+            "type": "containsText",
+            "target": ".app-visual-view",
+            "value": "Does this new bar show the same amount as before?"
+          },
+          {
+            "type": "hasSelector",
+            "target": ".app-visual-view .control-choice-btn:has-text(\"Yes, it is the same amount\")"
+          },
+          {
+            "type": "hasSelector",
+            "target": ".app-visual-view .control-choice-btn:has-text(\"No, the amount changed\")"
+          }
+        ]
+      },
+      "negativeControl": {
+        "targetRouteId": "ROUTE-SUPPORT-MEDIUM-PREMISE-24",
+        "comparison": "notIdenticalCapture",
+        "sameMotionMode": true
+      }
+    },
+    {
+      "id": "ROUTE-SUPPORT-MEDIUM-PREMISE-24",
+      "behavior": "medium support shows the authored 24-denominator premise at the same reflect beat before judgement.",
+      "configuration": "phase2-bundle-4",
+      "startingSurface": "mounted-app-entry",
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "motionMode": "standard-motion",
+      "witness": "browser",
+      "actions": [
+        {
+          "step": 1,
+          "method": "click",
+          "target": ".app-gear-button",
+          "description": "Open reviewer settings"
+        },
+        {
+          "step": 2,
+          "method": "click",
+          "target": "[data-condition-id=\"phase2-bundle-4\"]",
+          "description": "Select Check the premise"
+        },
+        {
+          "step": 3,
+          "method": "click",
+          "target": ".app-gear-button",
+          "description": "Reopen reviewer settings"
+        },
+        {
+          "step": 4,
+          "method": "click",
+          "target": "[data-support-id=\"medium-support\"]",
+          "description": "Select medium support"
+        },
+        {
+          "step": 5,
+          "method": "click",
+          "target": ".app-practice-button",
+          "description": "Begin the registered practice type"
+        },
+        {
+          "step": 6,
+          "method": "click",
+          "target": ".app-visual-view .control-btn",
+          "description": "Acknowledge encounter"
+        },
+        {
+          "step": 7,
+          "method": "click",
+          "target": ".app-visual-view .control-choice-btn >> nth=1",
+          "description": "Notice: choose different sized parts"
+        },
+        {
+          "step": 8,
+          "method": "fill",
+          "target": ".app-visual-view input.control-numeric-input",
+          "value": "24",
+          "description": "Enter denominator 24"
+        },
+        {
+          "step": 9,
+          "method": "click",
+          "target": ".app-visual-view .control-submit-btn",
+          "description": "Submit denominator 24"
+        },
+        {
+          "step": 10,
+          "method": "fill",
+          "target": ".app-visual-view input.control-numeric-input",
+          "value": "16",
+          "description": "Transform left numerator"
+        },
+        {
+          "step": 11,
+          "method": "click",
+          "target": ".app-visual-view .control-submit-btn",
+          "description": "Submit transformed left numerator"
+        },
+        {
+          "step": 12,
+          "method": "fill",
+          "target": ".app-visual-view input.control-numeric-input",
+          "value": "6",
+          "description": "Transform right numerator"
+        },
+        {
+          "step": 13,
+          "method": "click",
+          "target": ".app-visual-view .control-submit-btn",
+          "description": "Submit transformed right numerator"
+        },
+        {
+          "step": 14,
+          "method": "fill",
+          "target": ".app-visual-view input.control-numeric-input",
+          "value": "22",
+          "description": "Enter the operation result"
+        },
+        {
+          "step": 15,
+          "method": "click",
+          "target": ".app-visual-view .control-submit-btn",
+          "description": "Submit the operation result"
+        },
+        {
+          "step": 16,
+          "method": "click",
+          "target": ".app-visual-view .control-btn",
+          "description": "Resolve the operation"
+        }
+      ],
+      "expect": {
+        "capture": {
+          "target": ".app-visual-view",
+          "type": "innerHTML"
+        },
+        "assertions": [
+          {
+            "type": "attributeEquals",
+            "target": ".fractionflow-app",
+            "attribute": "data-support-code",
+            "value": "medium support"
+          },
+          {
+            "type": "notHasSelector",
+            "target": ".app-visual-view .premise-comparison .fraction-bar-row-before"
+          },
+          {
+            "type": "containsText",
+            "target": ".app-visual-view .premise-source-reference",
+            "value": "Starting fraction: 2/3"
+          },
+          {
+            "type": "containsText",
+            "target": ".app-visual-view",
+            "value": "New parts: 16/24"
+          },
+          {
+            "type": "containsText",
+            "target": ".app-visual-view",
+            "value": "Does this new bar show the same amount as before?"
+          },
+          {
+            "type": "hasSelector",
+            "target": ".app-visual-view .control-choice-btn:has-text(\"Yes, it is the same amount\")"
+          },
+          {
+            "type": "hasSelector",
+            "target": ".app-visual-view .control-choice-btn:has-text(\"No, the amount changed\")"
+          }
+        ]
+      },
+      "negativeControl": {
+        "targetRouteId": "ROUTE-SUPPORT-HIGH-PREMISE-24",
+        "comparison": "notIdenticalCapture",
+        "sameMotionMode": true
+      }
     }
+
   ]
 }

@@ -10,6 +10,7 @@ import {
   replayEpisode,
   SceneProjectionError,
 } from '../src/interaction/index.js';
+import { PHASE2_REFLECTION_EPISODE_DEFINITION } from '../src/interaction/episode-definition.js';
 import {
   buildCuratedProblem,
   generateProblem,
@@ -158,10 +159,56 @@ describe('Plan 06 semantic Scene Model', () => {
     expect(scene.meaning.support).toEqual(state.support);
     expect(scene.meaning.supportConsequence).toEqual({
       nextResponseSupport: null,
+      premiseComparison: null,
       lastHelp: { type: 'help', level: 'orient', beat: 'decide' },
     });
     expect(scene.derivation.sourceContext.instructional.supportConsequence)
       .toEqual(scene.meaning.supportConsequence);
+  });
+
+  it('projects the premise comparison aid from the fraction-bar support dimension', () => {
+    const instance = canonicalInstance();
+    const condition = {
+      id: 'phase2-bundle-4',
+      revision: '1',
+      display: 'D-01-A',
+      choreography: 'D-02-M',
+      promptCadence: 'D-05-focused-key-beats',
+      connectionMaking: 'CM-01-P',
+    };
+    const reachPremise = (support) => {
+      let state = createEpisode({
+        instance,
+        episodeDefinition: PHASE2_REFLECTION_EPISODE_DEFINITION,
+        activeCondition: condition,
+        support,
+      });
+      state = applyIntent(state, { type: 'acknowledge-encounter' });
+      state = applyIntent(state, { type: 'submit-notice', matchesUnits: false });
+      state = applyIntent(state, { type: 'propose-common-denominator', proposed: whole(12) });
+      state = applyIntent(state, { type: 'submit-equivalent-form', proposed: fraction(8, 12) });
+      state = applyIntent(state, { type: 'submit-equivalent-form', proposed: fraction(3, 12) });
+      state = applyIntent(state, { type: 'submit-operation-result', proposed: fraction(11, 12) });
+      return applyIntent(state, { type: 'submit-resolution', proposed: fraction(11, 12) });
+    };
+
+    const high = projectScene(sceneInput(reachPremise({ label: 'high support' })));
+    const medium = projectScene(sceneInput(reachPremise({
+      label: 'medium support',
+      dimensions: {
+        fractionBarModel: 'medium support',
+        commonDenominator: 'medium support',
+        equivalentNumerators: 'high support',
+        prediction: 'high support',
+        symbolicIntegration: 'high support',
+        helpAndReplay: 'high support',
+      },
+    })));
+
+    expect(high.meaning.supportConsequence.premiseComparison).toBe('paired-bars');
+    expect(medium.meaning.supportConsequence.premiseComparison).toBe('new-bar-with-source-reference');
+    expect(high.meaning.premiseCase).toEqual(medium.meaning.premiseCase);
+    expect(high.meaning.currentTask).toEqual(medium.meaning.currentTask);
   });
 
   it('keeps future mathematical values out of the renderable scene until established', () => {

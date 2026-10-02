@@ -320,6 +320,16 @@ async function executeAction(page, action, routeId) {
       await page.locator(action.target).press(action.value);
       break;
 
+    case 'assertText': {
+      const actual = await page.locator(action.target).first().textContent();
+      if (!actual || !actual.includes(action.value)) {
+        throw new Error(
+          `Route "${routeId}" expected "${action.target}" to contain "${action.value}" after step ${action.step}; observed "${actual}".`,
+        );
+      }
+      break;
+    }
+
     case 'focus':
       await page.locator(action.target).focus();
       break;

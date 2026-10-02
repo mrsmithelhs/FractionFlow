@@ -55,15 +55,67 @@ describe('Plan 12 entry page', () => {
     expect(document.activeElement).toBe(root.querySelector('.app-entry-title'));
   });
 
-  it('keeps the entry gear condition-only until Plan 13 defines support activation', () => {
+  it('selects a complete support profile on the entry gear and writes it into a fresh episode', () => {
     root.querySelector('.app-gear-button').click();
-    expect(root.querySelectorAll('.app-display-option')).toHaveLength(4);
-    expect(root.querySelector('.app-support-level')).toBeNull();
+    expect(root.querySelectorAll('.app-display-options .app-display-option')).toHaveLength(4);
+    expect(root.querySelectorAll('.app-support-options .app-display-option')).toHaveLength(2);
+    expect(root.querySelector('[data-support-id="high-support"]').getAttribute('aria-pressed')).toBe('true');
+    root.querySelector('[data-support-id="medium-support"]').click();
+    expect(document.activeElement).toBe(root.querySelector('.app-gear-button'));
     root.querySelector('.app-practice-button').click();
 
+    expect(app.getState().support).toEqual({
+      label: 'medium support',
+      dimensions: {
+        fractionBarModel: 'medium support',
+        commonDenominator: 'medium support',
+        equivalentNumerators: 'high support',
+        prediction: 'high support',
+        symbolicIntegration: 'high support',
+        helpAndReplay: 'high support',
+      },
+    });
+    expect(app.getReplayEnvelope().support).toEqual(app.getState().support);
+    expect(root.querySelector('.fractionflow-app').getAttribute('data-support-level')).toBe('medium-support');
+  });
+
+  it('retains the selected profile on retry and applies an entry-page change on return and re-entry', () => {
+    root.querySelector('.app-gear-button').click();
+    root.querySelector('[data-support-id="medium-support"]').click();
+    root.querySelector('.app-practice-button').click();
+    app.dispatch({ type: 'acknowledge-encounter' });
+    root.querySelector('.app-restart-button').click();
+    expect(app.getState().support.label).toBe('medium support');
+
+    root.querySelector('.app-return-button').click();
+    root.querySelector('.app-gear-button').click();
+    root.querySelector('[data-support-id="high-support"]').click();
+    root.querySelector('.app-practice-button').click();
     expect(app.getState().support.label).toBe('high support');
-    expect(app.getReplayEnvelope().support.label).toBe('high support');
-    expect(root.querySelector('.fractionflow-app').getAttribute('data-support-level')).toBeNull();
+    expect(app.getState().revision).toBe(0);
+  });
+
+  it('makes the medium denominator path numeric and preserves recovery before correction', () => {
+    root.querySelector('.app-gear-button').click();
+    root.querySelector('[data-condition-id="phase2-bundle-4"]').click();
+    root.querySelector('.app-gear-button').click();
+    root.querySelector('[data-support-id="medium-support"]').click();
+    root.querySelector('.app-practice-button').click();
+    root.querySelector('.app-visual-view .control-btn').click();
+    root.querySelectorAll('.app-visual-view .control-choice-btn')[1].click();
+
+    const denominator = root.querySelector('.app-visual-view input.control-numeric-input');
+    expect(denominator).not.toBeNull();
+    denominator.value = '11';
+    root.querySelector('.app-visual-view .control-submit-btn').click();
+    expect(root.querySelector('.app-visual-view .recovery-feedback')).not.toBeNull();
+    expect(app.getState().beat).toBe('decide');
+
+    const correctedDenominator = root.querySelector('.app-visual-view input.control-numeric-input');
+    correctedDenominator.value = '12';
+    root.querySelector('.app-visual-view .control-submit-btn').click();
+    expect(app.getState().beat).toBe('transform');
+    expect(app.getState().established.commonDenominator.targetDenominator).toBe('12');
   });
 
   it.each(['retry', 'return and re-enter'])(

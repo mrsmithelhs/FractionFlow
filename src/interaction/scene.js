@@ -243,8 +243,16 @@ function contentIdentity(state) {
 
 function currentSupportConsequence(state) {
   const lastHelp = state.helpHistory.at(-1) ?? null;
+  const isPremiseCheck = state.beat === 'reflect'
+    && state.activeCondition?.connectionMaking === 'CM-01-P';
+  const premiseComparison = isPremiseCheck
+    ? (state.support.dimensions.fractionBarModel === 'high support'
+      ? 'paired-bars'
+      : 'new-bar-with-source-reference')
+    : null;
   return {
     nextResponseSupport: state.nextResponseSupport ?? null,
+    premiseComparison,
     lastHelp: lastHelp
       ? {
         type: lastHelp.type,

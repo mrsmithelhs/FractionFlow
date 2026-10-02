@@ -228,6 +228,9 @@ export function createBeatContainer({
       recoveryTarget: recovery?.classification?.targetDenominator || recovery?.classification?.proposed,
       helpLevel: scene.meaning.supportConsequence?.lastHelp?.level,
       helpBeat: scene.meaning.supportConsequence?.lastHelp?.beat,
+      support: scene.meaning.support,
+      premiseComparison: scene.meaning.supportConsequence?.premiseComparison,
+      candidateDenominators: scene.meaning.unitRelationship?.candidateDenominators,
       isInspection: beat === 'reflect' && isReplaying && Boolean(scene.meaning.transition),
       premiseCaseId: scene.meaning.premiseCase?.id,
     });
@@ -785,8 +788,16 @@ export function createBeatContainer({
       const presNum = Number(premiseCase.presentedForm.numerator);
       const presDen = Number(premiseCase.presentedForm.denominator);
       const mode = scene.presentation.mode;
+      const showSourceBar = scene.meaning.supportConsequence?.premiseComparison === 'paired-bars';
 
       barsWrapper.replaceChildren();
+
+      if (!showSourceBar) {
+        const sourceReference = document.createElement('p');
+        sourceReference.classList.add('premise-source-reference');
+        sourceReference.textContent = `Starting fraction: ${srcNum}/${srcDen}`;
+        barsWrapper.appendChild(sourceReference);
+      }
 
       const comparisonEl = document.createElement('div');
       comparisonEl.classList.add('fraction-bar-container', 'premise-comparison');
@@ -794,7 +805,9 @@ export function createBeatContainer({
       comparisonEl.setAttribute('tabindex', '-1');
       comparisonEl.setAttribute(
         'aria-label',
-        `Starting fraction: ${srcNum} of ${srcDen} equal parts shaded. New parts: ${presNum} of ${presDen} equal parts shaded.`,
+        showSourceBar
+          ? `Starting fraction: ${srcNum} of ${srcDen} equal parts shaded. New parts: ${presNum} of ${presDen} equal parts shaded.`
+          : `New parts: ${presNum} of ${presDen} equal parts shaded.`,
       );
 
       const wrapper = document.createElement('div');
@@ -824,7 +837,7 @@ export function createBeatContainer({
       topBody.appendChild(topElements.trackEl);
       topBody.appendChild(topElements.readoutEl);
       topRow.appendChild(topBody);
-      wrapper.appendChild(topRow);
+      if (showSourceBar) wrapper.appendChild(topRow);
 
       // Bottom Row: New parts
       const bottomRow = document.createElement('div');
