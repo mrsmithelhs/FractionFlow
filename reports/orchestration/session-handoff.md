@@ -21,7 +21,7 @@ Plan 12 was accepted by the owner on 2026-09-30 after technical re-review at `9c
 Plan 16 on 2026-09-30; its Requirement 0 mechanism is approved with binding clarifications in
 `reports/development/plan-16-computed-beat-schedule/mechanism-review.md`.
 
-## Live state (as of 2026-10-02)
+## Live state (as of 2026-10-04)
 
 Authoritative status is `node scripts/dev/plan-status.js list` and the generated index in
 `docs/development/README.md`. Trust those over this file.
@@ -35,18 +35,17 @@ Authoritative status is `node scripts/dev/plan-status.js list` and the generated
 | `plan-11` | draft | Motion / animated subdivision (D-01-A). Unblocked |
 | `plan-15` | complete | Owner accepted both screens 2026-10-02 after technical acceptance at `c0b9143`; SUB-01 remains draft with both alternatives open; no observation or deployment authorized |
 | `plan-16` | complete | Accepted after operation-validation repair `fe4f507` and report `5872418`; legacy replay evidence and all 27 unchanged browser routes independently verified; see its `delivery-review.md` |
-| `plan-13` | in-progress | Owner initiated; mechanism approved 2026-10-02 for explicit high/medium profiles, denominator entry, and withheld premise source bar with source text retained; see its `mechanism-review.md`; owner screen/agency acceptance remains |
+| `plan-13` | complete | Accepted 2026-10-04; owner screenshots OK with requested premise question applied and recaptured; technical/agency review at `854d3fc`; two dimensions vary, no adaptive policy or deployment |
 
-### Remaining work after Plan 15
+### Remaining work after Plan 13
 
-1. **`plan-13`** is recommended next, starting with packet preparation and its mechanism gate.
-   It adds the gated support selector/writer to the entry-page gear; the current gear is condition-only.
-   No automatic advancement is authorized.
-2. **`plan-11`** remains an independent motion packet and can slot in where there is capacity.
-3. The first Phase 3 **family** packet — multi-whole bar and results crossing one whole
+1. **`plan-11`** is the remaining drafted packet; refresh it against the current support
+   profiles and 39-row/41-execution baseline before its mechanism gate. No automatic advancement
+   is authorized.
+2. The first Phase 3 **family** packet — multi-whole bar and results crossing one whole
    (DECISION-032) — is **not drafted**. Plan 14 and Plan 16 are now complete; draft against the
    computed schedule and current route matrix when the owner chooses to initiate it.
-4. Plan 15's standalone prototypes are accepted for observation preparation. Both subtraction
+3. Plan 15's standalone prototypes are accepted for observation preparation. Both subtraction
    representations remain open; actual observation sessions, OQ-25 selection, and deployment
    require their own owner direction.
 
