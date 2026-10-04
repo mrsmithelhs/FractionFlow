@@ -167,7 +167,7 @@ describe('Premise Check (CM-01-P, Repair 05 Item 1)', () => {
 
     // Prompt and framing
     expect(container.textContent).toContain('Check this renaming:');
-    expect(container.textContent).toContain('Does this new bar show the same amount as before?');
+    expect(container.textContent).toContain('Does the "New parts" bar show the same amount as the starting fraction?');
 
     // Both referent fraction bars must be on screen!
     expect(container.textContent).toContain('Starting fraction: 2/3');

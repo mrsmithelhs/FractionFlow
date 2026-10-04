@@ -1,5 +1,5 @@
 {
-  "captureDate": "2026-10-02",
+  "captureDate": "2026-10-04",
   "browser": {
     "engine": "Chromium via Playwright",
     "channel": "msedge"
@@ -571,29 +571,29 @@
         "left": 25,
         "top": 133,
         "right": 335,
-        "bottom": 842.69,
+        "bottom": 867.88,
         "width": 310,
-        "height": 709.69,
+        "height": 734.88,
         "withinViewport": false
       },
       "activeTask": {
         "left": 41,
         "top": 441.78,
         "right": 319,
-        "bottom": 726.09,
+        "bottom": 751.28,
         "width": 278,
-        "height": 284.31,
-        "withinViewport": true
+        "height": 309.5,
+        "withinViewport": false
       },
       "question": {
-        "text": "Does this new bar show the same amount as before?",
+        "text": "Does the \"New parts\" bar show the same amount as the starting fraction?",
         "bounds": {
           "left": 63,
           "top": 512.78,
           "right": 297,
-          "bottom": 563.16,
+          "bottom": 588.34,
           "width": 234,
-          "height": 50.38,
+          "height": 75.56,
           "withinViewport": true
         }
       },
@@ -603,9 +603,9 @@
           "label": "Yes, it is the same amount",
           "bounds": {
             "left": 63,
-            "top": 594.09,
+            "top": 619.28,
             "right": 297,
-            "bottom": 652.09,
+            "bottom": 677.28,
             "width": 234,
             "height": 58,
             "withinViewport": true
@@ -616,9 +616,9 @@
           "label": "No, the amount changed",
           "bounds": {
             "left": 63,
-            "top": 664.09,
+            "top": 689.28,
             "right": 291.67,
-            "bottom": 708.09,
+            "bottom": 733.28,
             "width": 228.67,
             "height": 44,
             "withinViewport": true
@@ -629,7 +629,7 @@
         "x": 0,
         "y": 12,
         "documentWidth": 360,
-        "documentHeight": 1052,
+        "documentHeight": 1077,
         "horizontalOverflow": false,
         "verticalOverflow": true
       }
@@ -1137,29 +1137,29 @@
         "left": 25,
         "top": 133,
         "right": 335,
-        "bottom": 842.69,
+        "bottom": 867.88,
         "width": 310,
-        "height": 709.69,
+        "height": 734.88,
         "withinViewport": false
       },
       "activeTask": {
         "left": 41,
         "top": 441.78,
         "right": 319,
-        "bottom": 726.09,
+        "bottom": 751.28,
         "width": 278,
-        "height": 284.31,
+        "height": 309.5,
         "withinViewport": true
       },
       "question": {
-        "text": "Does this new bar show the same amount as before?",
+        "text": "Does the \"New parts\" bar show the same amount as the starting fraction?",
         "bounds": {
           "left": 63,
           "top": 512.78,
           "right": 297,
-          "bottom": 563.16,
+          "bottom": 588.34,
           "width": 234,
-          "height": 50.38,
+          "height": 75.56,
           "withinViewport": true
         }
       },
@@ -1169,9 +1169,9 @@
           "label": "Yes, it is the same amount",
           "bounds": {
             "left": 63,
-            "top": 594.09,
+            "top": 619.28,
             "right": 297,
-            "bottom": 652.09,
+            "bottom": 677.28,
             "width": 234,
             "height": 58,
             "withinViewport": true
@@ -1182,9 +1182,9 @@
           "label": "No, the amount changed",
           "bounds": {
             "left": 63,
-            "top": 664.09,
+            "top": 689.28,
             "right": 291.67,
-            "bottom": 708.09,
+            "bottom": 733.28,
             "width": 228.67,
             "height": 44,
             "withinViewport": true
@@ -1195,7 +1195,7 @@
         "x": 0,
         "y": 12,
         "documentWidth": 360,
-        "documentHeight": 1052,
+        "documentHeight": 1077,
         "horizontalOverflow": false,
         "verticalOverflow": true
       }
@@ -1703,29 +1703,29 @@
         "left": 25,
         "top": 133,
         "right": 335,
-        "bottom": 805.69,
+        "bottom": 830.88,
         "width": 310,
-        "height": 672.69,
+        "height": 697.88,
         "withinViewport": false
       },
       "activeTask": {
         "left": 41,
         "top": 404.78,
         "right": 319,
-        "bottom": 689.09,
+        "bottom": 714.28,
         "width": 278,
-        "height": 284.31,
+        "height": 309.5,
         "withinViewport": true
       },
       "question": {
-        "text": "Does this new bar show the same amount as before?",
+        "text": "Does the \"New parts\" bar show the same amount as the starting fraction?",
         "bounds": {
           "left": 63,
           "top": 475.78,
           "right": 297,
-          "bottom": 526.16,
+          "bottom": 551.34,
           "width": 234,
-          "height": 50.38,
+          "height": 75.56,
           "withinViewport": true
         }
       },
@@ -1735,9 +1735,9 @@
           "label": "Yes, it is the same amount",
           "bounds": {
             "left": 63,
-            "top": 557.09,
+            "top": 582.28,
             "right": 297,
-            "bottom": 615.09,
+            "bottom": 640.28,
             "width": 234,
             "height": 58,
             "withinViewport": true
@@ -1748,9 +1748,9 @@
           "label": "No, the amount changed",
           "bounds": {
             "left": 63,
-            "top": 627.09,
+            "top": 652.28,
             "right": 291.67,
-            "bottom": 671.09,
+            "bottom": 696.28,
             "width": 228.67,
             "height": 44,
             "withinViewport": true
@@ -1761,7 +1761,7 @@
         "x": 0,
         "y": 12,
         "documentWidth": 360,
-        "documentHeight": 1015,
+        "documentHeight": 1040,
         "horizontalOverflow": false,
         "verticalOverflow": true
       }
@@ -2269,29 +2269,29 @@
         "left": 25,
         "top": 133,
         "right": 335,
-        "bottom": 805.69,
+        "bottom": 830.88,
         "width": 310,
-        "height": 672.69,
+        "height": 697.88,
         "withinViewport": false
       },
       "activeTask": {
         "left": 41,
         "top": 404.78,
         "right": 319,
-        "bottom": 689.09,
+        "bottom": 714.28,
         "width": 278,
-        "height": 284.31,
+        "height": 309.5,
         "withinViewport": true
       },
       "question": {
-        "text": "Does this new bar show the same amount as before?",
+        "text": "Does the \"New parts\" bar show the same amount as the starting fraction?",
         "bounds": {
           "left": 63,
           "top": 475.78,
           "right": 297,
-          "bottom": 526.16,
+          "bottom": 551.34,
           "width": 234,
-          "height": 50.38,
+          "height": 75.56,
           "withinViewport": true
         }
       },
@@ -2301,9 +2301,9 @@
           "label": "Yes, it is the same amount",
           "bounds": {
             "left": 63,
-            "top": 557.09,
+            "top": 582.28,
             "right": 297,
-            "bottom": 615.09,
+            "bottom": 640.28,
             "width": 234,
             "height": 58,
             "withinViewport": true
@@ -2314,9 +2314,9 @@
           "label": "No, the amount changed",
           "bounds": {
             "left": 63,
-            "top": 627.09,
+            "top": 652.28,
             "right": 291.67,
-            "bottom": 671.09,
+            "bottom": 696.28,
             "width": 228.67,
             "height": 44,
             "withinViewport": true
@@ -2327,7 +2327,7 @@
         "x": 0,
         "y": 12,
         "documentWidth": 360,
-        "documentHeight": 1015,
+        "documentHeight": 1040,
         "horizontalOverflow": false,
         "verticalOverflow": true
       }

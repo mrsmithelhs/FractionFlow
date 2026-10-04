@@ -46,7 +46,7 @@ Matched screenshots and browser measurements are saved under [`evidence`](./evid
 | transform-right | 428.72–479.09 | 558.03–605.03 | 558.03–605.03 | 968 / 968 |
 | operate | 428.72–479.09 | 538.03–585.03 | 538.03–585.03 | 929 / 929 |
 | resolve | 428.72–453.91 | 484.84–528.84 | 484.84–528.84 | 873 / 873 |
-| reflect | high: 512.78–563.16; medium: 475.78–526.16 | 594.09–708.09 | 557.09–671.09 | 1052 / 1015 |
+| reflect | high: 512.78–588.34; medium: 475.78–551.34 | 619.28–733.28 | 582.28–696.28 | 1077 / 1040 |
 
 All 32 measurements report document width 360px, no horizontal overflow, and vertical overflow requiring ordinary page scrolling. Every active question and active control is within the viewport at both heights. The full scene extends below the viewport on reflection and on medium-support denominator entry; the active task controls themselves remain in view. Lower non-active page content therefore still uses normal vertical scrolling.
 
@@ -102,3 +102,9 @@ No advisor finding was rejected. The advisor's conclusion is not treated as pack
 The sandbox denied ordinary Git index writes (`.git/index.lock: Permission denied`) even though no lock file existed; the harmless `git add --refresh -- .` probe confirmed the metadata-write restriction. Repository guidance allowed a narrowly scoped elevation, which successfully staged and committed only the explicit Plan 13 implementation/evidence paths. No ACL was changed.
 
 The owner must review the rendered high/medium screens and make the required agency acceptance decision. This implementation does not close OQ-22 or claim Roadmap §22 is satisfied. Delivery review should also confirm the intended premise-comparison demand and the entry-menu descriptions. Packet status remains owner/orchestrator-controlled.
+
+## Orchestration delivery update — 2026-10-04
+
+Technical review accepted the implementation. The owner said the screenshots were OK, subject to the question wording now applied exactly: `Does the "New parts" bar show the same amount as the starting fraction?` The existing text assertions were updated; seven screenshots, 32 measurements, and eight participation records were regenerated. The reflection row above reflects the new wording. All questions/controls fit in the captured state with the recorded scroll position; ordinary page scrolling remains.
+
+Route-accounting clarification: the prior 29 route IDs and 31 executions were retained, but four high-premise rows gained explicit support selection, additional assertions, and broader captures. Their original assertions and reciprocal targets remain; they were not byte-identical rows. Orchestration's copy edit then changed only literal question assertions. Independent suite/build/all 41 executions and packet lint/diff checks passed after the edit. See `delivery-review.md` and `owner-disposition.md` for evidence and bounded acceptance; no push or deployment was made.

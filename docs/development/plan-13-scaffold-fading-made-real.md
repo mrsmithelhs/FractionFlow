@@ -1,7 +1,7 @@
 ---
 id: plan-13
 title: Scaffold Fading Made Real
-status: in-progress
+status: delivered
 depends_on: [plan-12, plan-14]
 gate: "Mechanism confirmation before source work: where state.support is written, which of the six dimensions actually vary, and the negative evidence that no renderer flag or performance policy is involved. Then owner review of at least two support levels on rendered screens with an explicit agency check. The surface is settled by DECISION-030; the policy remains out of scope."
 summary: >-

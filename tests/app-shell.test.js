@@ -314,7 +314,7 @@ describe('Plan 09 app shell and upstream display switcher', () => {
     expect(root.querySelector('.app-visual-view').textContent)
       .toContain('Check this renaming:');
     expect(root.querySelector('.app-visual-view').textContent)
-      .toContain('Does this new bar show the same amount as before?');
+      .toContain('Does the "New parts" bar show the same amount as the starting fraction?');
     expect(root.querySelector('.app-visual-view .premise-comparison')).toBeTruthy();
 
     // Denominator 12 has false premise (7/12 for 2/3). Answering 'yes' triggers recovery!

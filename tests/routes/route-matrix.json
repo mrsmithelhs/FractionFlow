@@ -235,7 +235,7 @@
         "assertions": [
           {"type":"hasSelector","target":".app-visual-view .premise-comparison"},
           {"type":"containsText","target":".app-visual-view","value":"Check this renaming:"},
-          {"type":"containsText","target":".app-visual-view","value":"Does this new bar show the same amount as before?"}
+          {"type":"containsText","target":".app-visual-view","value":"Does the \"New parts\" bar show the same amount as the starting fraction?"}
         ]
       },
       "negativeControl": {"targetRouteId":"ROUTE-COND-1-REFLECT","comparison":"notIdenticalCapture"}
@@ -2251,7 +2251,7 @@
           {
             "type": "containsText",
             "target": ".app-visual-view",
-            "value": "Does this new bar show the same amount as before?"
+            "value": "Does the \"New parts\" bar show the same amount as the starting fraction?"
           },
           {
             "type": "hasSelector",
@@ -2411,7 +2411,7 @@
           {
             "type": "containsText",
             "target": ".app-visual-view",
-            "value": "Does this new bar show the same amount as before?"
+            "value": "Does the \"New parts\" bar show the same amount as the starting fraction?"
           },
           {
             "type": "hasSelector",
@@ -2564,7 +2564,7 @@
           {
             "type": "containsText",
             "target": ".app-visual-view",
-            "value": "Does this new bar show the same amount as before?"
+            "value": "Does the \"New parts\" bar show the same amount as the starting fraction?"
           },
           {
             "type": "hasSelector",
@@ -2724,7 +2724,7 @@
           {
             "type": "containsText",
             "target": ".app-visual-view",
-            "value": "Does this new bar show the same amount as before?"
+            "value": "Does the \"New parts\" bar show the same amount as the starting fraction?"
           },
           {
             "type": "hasSelector",

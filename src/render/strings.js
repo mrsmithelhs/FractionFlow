@@ -103,7 +103,7 @@ export const STRINGS = Object.freeze({
     premiseFraming: 'Check this renaming:',
     premiseTopBarLabel: (num, den) => `Starting fraction: ${num}/${den}`,
     premiseBottomBarLabel: (num, den) => `New parts: ${num}/${den}`,
-    premisePrompt: 'Does this new bar show the same amount as before?',
+    premisePrompt: 'Does the "New parts" bar show the same amount as the starting fraction?',
     premiseOptions: Object.freeze({
       yes: 'Yes, it is the same amount',
       no: 'No, the amount changed',
