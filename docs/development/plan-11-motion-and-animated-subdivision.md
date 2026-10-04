@@ -117,6 +117,10 @@ Contracts this packet must preserve:
 
 ### Requirement 1 — Animated subdivision
 
+The mechanism gate was approved by orchestration on 2026-10-04 with binding clarifications in
+`reports/development/plan-11-motion-and-animated-subdivision/mechanism-review.md`. Source work may
+proceed within that mechanism. Deployment authorization and owner motion acceptance remain separate.
+
 Required behavior:
 
 - Under the animated condition, a renaming visibly subdivides the existing parts within the same

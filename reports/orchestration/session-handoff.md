@@ -32,7 +32,7 @@ Authoritative status is `node scripts/dev/plan-status.js list` and the generated
 | `plan-10` | complete | Phase 3 reach assessment. Headline: **demonstrated reach across exactly one of fourteen** §27/§28 targets |
 | `plan-14` | complete | Browser route matrix. 20 routes: 19 pass, 1 known defect. All three enforcement paths re-verified with independent seeds |
 | **`plan-12`** | **complete** | Owner accepted current screens for now; Repair 01 technical review at `9c81538`; no deployment authorized |
-| `plan-11` | draft | Motion / animated subdivision (D-01-A). Unblocked |
+| `plan-11` | in-progress | Owner initiated at `8d5805f`; mechanism approved 2026-10-04 with persistent track/boundaries, explicit Show-new-parts replay, and static reflect Inspection Mode; see its `mechanism-review.md`; deployed motion acceptance requires separate deployment authorization |
 | `plan-15` | complete | Owner accepted both screens 2026-10-02 after technical acceptance at `c0b9143`; SUB-01 remains draft with both alternatives open; no observation or deployment authorized |
 | `plan-16` | complete | Accepted after operation-validation repair `fe4f507` and report `5872418`; legacy replay evidence and all 27 unchanged browser routes independently verified; see its `delivery-review.md` |
 | `plan-13` | complete | Accepted 2026-10-04; owner screenshots OK with requested premise question applied and recaptured; technical/agency review at `854d3fc`; two dimensions vary, no adaptive policy or deployment |
