@@ -37,14 +37,15 @@ Authoritative status is `node scripts/dev/plan-status.js list` and the generated
 | `plan-16` | complete | Accepted after operation-validation repair `fe4f507` and report `5872418`; legacy replay evidence and all 27 unchanged browser routes independently verified; see its `delivery-review.md` |
 | `plan-13` | complete | Accepted 2026-10-04; owner screenshots OK with requested premise question applied and recaptured; technical/agency review at `854d3fc`; two dimensions vary, no adaptive policy or deployment |
 
-### Remaining work after Plan 13
+### Draft next wave — 2026-10-04
 
-1. **`plan-11`** is the remaining drafted packet; refresh it against the current support
-   profiles and 39-row/41-execution baseline before its mechanism gate. No automatic advancement
-   is authorized.
-2. The first Phase 3 **family** packet — multi-whole bar and results crossing one whole
-   (DECISION-032) — is **not drafted**. Plan 14 and Plan 16 are now complete; draft against the
-   computed schedule and current route matrix when the owner chooses to initiate it.
+1. **`plan-11`** is in progress with its mechanism approved at `a472fc1`. Delivery and
+   deployed owner acceptance remain pending; no deployment or automatic advancement is authorized.
+2. **Plans 17–21 are drafts for owner review**, not assignments: crossing-one-whole addition,
+   nested addition, shared-factor addition, like-denominator addition, then practice-variety/
+   next-problem design. See `roadmap-position-2026-10-04.md` for order and gates. In particular,
+   Plan 18 must resolve a valid alternate denominator needing more conversions than the frozen
+   canonical schedule permits. No policy amendment is adopted by drafting the packet.
 3. Plan 15's standalone prototypes are accepted for observation preparation. Both subtraction
    representations remain open; actual observation sessions, OQ-25 selection, and deployment
    require their own owner direction.
@@ -125,8 +126,8 @@ Open questions of note: **OQ-23** (try another problem), **OQ-24** (no mixed-num
 
 ## Where the project stands against the roadmap
 
-`reports/orchestration/roadmap-position-2026-09-21.md`. Short version: on track, standing at the §89
-checkpoint. The mathematics runs well ahead of the presentation — the content layer can generate
-problems crossing one whole, and even Phase 5 decomposition, that no renderer can draw — so from here
-every open question is a presentation question. §89's first question, "did learners understand the
-visual transformation?", still has no answer.
+`reports/orchestration/roadmap-position-2026-10-04.md` supersedes the older position snapshot for
+current planning. The precursor wave is accepted except Plan 11; the learner app still offers one
+practice type. Phase 3 family expansion is drafted, not implemented. §89's learner-understanding
+questions still have no observation evidence. The next wave also carries an instructional schedule
+policy decision and a content-selection decision, not only presentation work.
