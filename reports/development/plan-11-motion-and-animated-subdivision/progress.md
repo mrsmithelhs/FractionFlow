@@ -86,3 +86,59 @@ These tracked plan files also had unowned working-tree edits at final report pre
 - `docs/development/plan-19-shared-factor-addition.md`
 - `docs/development/plan-20-like-denominator-addition.md`
 - `docs/development/plan-21-practice-variety-and-next-problem-design.md`
+
+## Repair 01 — Replay trigger and motion witness closure
+
+Date: 2026-10-04
+
+Implementation commit: `2603fe1` (`fix(plan-11): close replay motion repair`)
+
+### Changes and evidence
+
+The in-place renderer now remembers the semantic pre/post endpoints it last rendered. A conversion animates when the supplied endpoints describe a new conversion on this side, the mounted bar still shows that conversion's pre-form, and the learner's current form is the post-form. This lets a new accepted right-side conversion animate after Replay while preventing an ordinary Replay dismissal, help update, repeated render, or mode/view restoration from replaying an old transition. The changed-side directive remains part of the acceptance guard. The endpoint history clears with renderer destruction.
+
+`ROUTE-REPLAY-NEW-CONVERSION-COND-1` uses mounted controls for the direct regression: accept left 8/12, click Replay, then submit right 3/12. Edge observed eight executed new-boundary animations on the right. The previous left effect had zero running animations during the right conversion. It later Replay-held the new right transition, requested help, and asserted that help did not restart that established conversion. The route also asserts the settled 8/12 and 3/12 endpoints. It ran at 360×752.
+
+`ROUTE-REPLAY-REDUCED-COND-1` uses mounted controls to accept 8/12, enter Replay and hold 2/3 without motion, then activate the real **Show new parts** button. The browser observer checks the endpoint immediately after the click and after two paint frames, zero running effects at both points, stable root/track/fill/layer and existing boundary identities and geometry, grid-aligned full-height boundaries, and retained right response-input identity/value/selection. The response input was not focused during the button activation; its DOM/value/selection remained stable and the active element remained connected. The route then re-enters Replay, accepts right 3/12 immediately under reduced motion, returns from the episode, and begins a fresh one; no stale Replay controls/effect remain, and the fresh bars are 2/3 and 1/4. It ran at 360×752.
+
+The standard motion observer now measures partial boundary paint against the inner `.fraction-bar-boundary-layer` (40px in the 360px reference run), requiring a height strictly greater than 1px and at least 1px below the interior. The 360×740 witness sampled 7.41px/40px at progress 0.185. At settlement it verifies every new boundary is connected to the layer, spans its full height within 0.5px, and is centered at its rational grid position within 0.75px. Track/fill geometry is compared relative to the persistent bar root so an unrelated page scroll or task reflow does not masquerade as bar motion; question/control rectangles and scroll offsets remain recorded and checked against the viewport.
+
+The route runner exposes reproducible browser-only sensitivity runs via `--motion-witness-seed`; no source or build mutation is needed. Each run requires exactly one failure at its named witness assertion. The two Repair 01 seeds failed as intended: `no-op-keyframes` at partial paint and `half-height-new-boundary` at full settled boundary geometry. Retained sensitivity checks also passed: `disabled-motion` was rejected for no executed boundary animation, `static-accidental-motion` was rejected by the static track witness, and `reduced-accidental-motion` was rejected by the reduced-motion track witness. The shared subtraction visual verifier retained its seeded outcomes and clean restored result.
+
+The route matrix now has **41 rows / 43 executions** (the former 39/41 baseline plus the two Replay journeys). Existing juxtaposed/sequential static controls and visual/linear Inspection Mode **Done looking** focus routes remain present and pass. High- and medium-support routes both pass in the full matrix.
+
+### Advisor consultation and disposition
+
+**Branch A — consultation ran** for this behavioral repair.
+
+- Requested advisor override: `gpt-6-sol`, low effort. The advisor self-reported as a “GPT-6 based Codex agent”; its exact model ID and effort were not independently observable, so the requested override is not recorded as verified identity.
+- Posture: instruction-read-only, with post-hoc verification. The tool did not expose a structurally read-only filesystem sandbox. The reviewer was depth 1 and instructed not to write or delegate. The immediate post-review check showed no advisor-authored files or edits; packet lint and `git diff --check` passed, and only the four scoped implementation files were modified before commit.
+- Cost: one short reviewer pass and several minutes of coordination.
+
+| Advisor finding | Independent verification and disposition | Result |
+|---|---|---|
+| Distinguish a new accepted endpoint transition after Replay from dismissal of the old Replay transition. | **Accepted.** Inspected the semantic endpoint signature and `lastDisplayedForm` guard, then ran the direct real-control route. Right 3/12 started eight boundary animations; the left Replay conversion had zero concurrent animations. Help after Replay did not restart the right conversion. | `src/render/fraction-bar.js`; `tests/routes/route-matrix.json` |
+| Measure partial paint against the inner layer and require every new boundary to settle full-height at its grid position. | **Accepted.** Inspected the observer and ran both browser-only geometry seeds. No-op keyframes failed at the partial-paint assertion; the half-height boundary failed at the settled geometry assertion. The clean routes passed. | `scripts/dev/run-route-matrix.js` |
+| Verify reduced Replay through the mounted learner control, including anchors, response input, focus applicability, and reset/re-entry. | **Accepted.** Ran the reduced journey in Edge. The Show control produced 8/12 immediately with no running effect; track/fill/layer and old-boundary geometry were unchanged; response input/value/selection remained stable. Return and re-entry showed 2/3 and 1/4 without stale Replay. | `scripts/dev/run-route-matrix.js`; `tests/routes/route-matrix.json` |
+| A missing concurrent-left selector could falsely count as zero old animations; the new reset/re-entry must actually leave and re-enter; no-op/half-height tests must fail at their intended checks. | **Accepted.** The observer now errors on a missing concurrent container and schema validation requires the selector. The route uses Return then Practice. Seed CLI mode checks for exactly one matching failure and no other failures. | `scripts/dev/run-route-matrix.js`; `tests/route-contract.test.js`; `tests/routes/route-matrix.json` |
+
+Rejected findings: none. The advisor reviewed the diff only; the validation runs below are implementer evidence, not advisor runs.
+
+### Validation and gates
+
+- `npm test` — **24 files, 280 tests passed**.
+- `npm run build` — learner and subtraction-prototype builds passed.
+- `npm run test:routes -- --quiet` — **43 passed, 0 failed**, 41 route rows, 43 browser executions in local Microsoft Edge. This retains both support profiles, the static juxtaposed/sequential routes, both visual/linear Inspection Mode focus routes, and the standard Replay route.
+- `node scripts/dev/run-route-matrix.js --motion-witness-seed no-op-keyframes` — intended partial-paint failure detected.
+- `node scripts/dev/run-route-matrix.js --motion-witness-seed half-height-new-boundary` — intended settled-geometry failure detected.
+- `node scripts/dev/run-route-matrix.js --motion-witness-seed disabled-motion` — missing executed animation detected.
+- `node scripts/dev/run-route-matrix.js --motion-witness-seed static-accidental-motion` — accidental static motion detected.
+- `node scripts/dev/run-route-matrix.js --motion-witness-seed reduced-accidental-motion` — accidental reduced-motion animation detected.
+- `node scripts/dev/verify-subtraction-visual-witness.mjs` — all hidden, collapsed, fully clipped, erased-removal-mark, and erased-comparison-gap-mark seeded outcomes were detected; clean restored run passed **4/4**.
+- `node scripts/dev/plan-status.js lint` — passed with no violations.
+- `git diff --check` — passed.
+- Post-review `node scripts/dev/plan-status.js check plan-11` — reports `BLOCKED: plan-11 has status "delivered" — not ready or in-progress`. The owner explicitly authorized this named Repair 01 despite the delivered packet preflight. Packet status was left unchanged; no status/index file was edited.
+
+The implementation commit is `2603fe1`. This progress report is committed separately as the final task commit. No Plan 22 file was edited, staged, or committed. No push or deployment was performed. The prior owner gate for rendered-motion judgment and deployed-URL acceptance remains pending. Browser checks do not establish physical-device behavior, assistive-technology behavior, or child usability.
+
+**Ready for delivery re-review: yes.**
