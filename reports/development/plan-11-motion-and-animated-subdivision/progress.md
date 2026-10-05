@@ -142,3 +142,49 @@ Rejected findings: none. The advisor reviewed the diff only; the validation runs
 The implementation commit is `2603fe1`. This progress report is committed separately as the final task commit. No Plan 22 file was edited, staged, or committed. No push or deployment was performed. The prior owner gate for rendered-motion judgment and deployed-URL acceptance remains pending. Browser checks do not establish physical-device behavior, assistive-technology behavior, or child usability.
 
 **Ready for delivery re-review: yes.**
+
+## Repair 02 — whole-position conservation and populated reduced Replay
+
+Date: 2026-10-04
+
+### Changes and evidence
+
+The renderer now preserves the actual layout footprint of the left Replay column after its button and badge are dismissed. It clears their children, changes the wrapper into an empty `aria-hidden` layout reserve, and retains its measured pixel height. If Replay is entered again, it reuses that node and rebuilds the real controls. The reserve has no text, focusable descendants, pointer behavior, or visible decoration. In the clean Edge reproduction, the prior dismissal reduced `.fraction-bars-wrapper` from 147.84375px to 108px, moving the following right bar upward 39.84375px. The retained column prevents that reflow while leaving the accepted whole and fill endpoints unchanged.
+
+The standard motion witness now captures the whole track and shaded fill in document coordinates (`getBoundingClientRect()` plus the measured `scrollX`/`scrollY`) before the click, during partial paint, and after settlement. It compares x, y, width, and height at all three points within 0.5px. Root-relative track/fill and existing-boundary checks remain supplementary. In the repaired direct right-conversion route, the whole's document box was x=41px, y=264.84375px, width=218px, height=44px before, during, and after the motion. The fill stayed at x=43px, y=266.84375px, width=53.5px, height=40px. Page scroll changed from y=248px to y=209px, while the corrected document positions and local anchor deltas stayed at zero. The partial new boundary painted to 7.45px of the 40px interior at progress 0.185; every new boundary settled connected, full-height, and aligned to its supplied grid.
+
+The durable `whole-bar-translation` browser seed translates the right bar root 12px horizontally after its new-boundary animation starts on route step 12. It failed once at the conservation assertion with x drift 12px for both whole and fill, and zero y or dimension drift; no unrelated failure was reported. The five earlier seeds remain present and each produced exactly one intended failure at its named check.
+
+The reduced Replay route now enters the correct unsubmitted right answer `8` and selects its full text `[0,1]` before using the mounted **Show new parts** button. The production input is `type=number`, whose browser selection values are `null`; for this browser-only selection witness, the same mounted node is temporarily changed to `type=text`, then its identity, value, and selection are checked immediately and after two paint frames. The click remains a real Playwright click. The observer records that the mounted button received focus during the click and that the final active element remains connected after the button is removed. The reduced route also measures right whole/fill document positions before and after accepting 3/12 during left Replay: both document boxes had zero x/y/width/height drift, with zero running animations and all boundaries on the full supplied grid. Return/re-entry still yields fresh 2/3 and 1/4 bars.
+
+Static juxtaposed and sequential presentations and both visual and linear Inspection Mode focus-return routes remain in the full route matrix. Both high- and medium-support routes remain covered. The matrix remains at **41 rows / 43 browser executions**, preserving the earlier 39-row / 41-execution baseline and the two previously added Plan 11 Replay journeys.
+
+### Advisor consultation and disposition
+
+**Branch A — consultation ran.** Requested advisor override: `gpt-6-sol` at low effort. The advisor reported only “GPT-6 based Codex agent”; its exact model identifier and effective effort were not independently observable. The consultation was instruction-read-only with post-hoc verification; structural read-only access was not established by platform metadata. The advisor was depth 1 and did not write or spawn children; the primary remained the only writer.
+
+The first review pass identified two concrete defects, both independently reproduced by inspecting the changed route and renderer behavior and both accepted: (1) the measured Replay reserve could remain when a fresh episode had no transition; the renderer now removes that reserve on reset, and the return/re-entry route asserts its absence and the ordinary 108px two-bar stack; (2) the reduced-motion selection witness temporarily changed the mounted response input to `type=text` but did not restore it before a later conversion; the route now restores `type=number` before filling/submitting that response. The advisor re-read the updated diff and found **no remaining blocking issue**. It independently checked that the document-coordinate witness includes scroll correction and compares before/during/settled positions, that the new 12px translation seed targets the conservation assertion, that reduced Replay uses a real click with nonempty selected content, and that static and both Inspection Mode routes remain present. No findings were rejected; the two initial findings were accepted and repaired. The advisor did not independently run tests, builds, or browser routes.
+
+Post-consultation `git status --short` showed only the seven scoped Plan 11 files (six implementation/test files and this report); no Plan 22 file or advisor-authored change appeared. `git diff --check` passed. The post-consultation packet check still reports `BLOCKED: plan-11 has status "delivered" — not ready or in-progress`; no packet status changed. Review cost was one follow-up review cycle after the initial pass, roughly a few minutes of elapsed review time.
+
+### Validation and gates
+
+- `npm test` — **24 files, 280 tests passed**.
+- `npm run build` — learner and subtraction-prototype builds passed.
+- `npm run test:routes` — **43 passed, 0 failed**, 41 route rows / 43 executions in local Microsoft Edge. This includes both support profiles, static juxtaposed/sequential routes, and both Inspection Mode focus routes.
+- `node scripts/dev/run-route-matrix.js --motion-witness-seed no-op-keyframes` — intended partial-paint failure detected.
+- `node scripts/dev/run-route-matrix.js --motion-witness-seed half-height-new-boundary` — intended settled-geometry failure detected.
+- `node scripts/dev/run-route-matrix.js --motion-witness-seed disabled-motion` — missing executed animation detected.
+- `node scripts/dev/run-route-matrix.js --motion-witness-seed static-accidental-motion` — accidental static motion detected.
+- `node scripts/dev/run-route-matrix.js --motion-witness-seed reduced-accidental-motion` — accidental reduced-motion animation detected.
+- `node scripts/dev/run-route-matrix.js --motion-witness-seed whole-bar-translation` — 12px whole/fill document-position change rejected by the conservation assertion; one intended seed failure, zero unrelated failures.
+- `node scripts/dev/verify-subtraction-visual-witness.mjs` — hidden, collapsed, fully clipped, erased-removal-mark, and erased-comparison-gap-mark seeded outcomes detected; clean restored run passed **4/4**.
+- `node scripts/dev/plan-status.js lint` — passed with no violations.
+- `git diff --check` — passed.
+- `node scripts/dev/plan-status.js check plan-11` — still reports `BLOCKED: plan-11 has status "delivered" — not ready or in-progress`. The named repair was explicitly authorized; status was not changed.
+
+Only the permitted renderer, renderer CSS, route runner, route contract test, app-shell test, and this progress report are in scope. No Plan 22 files were changed. No push or deployment was performed. Physical-device behavior, assistive-technology behavior, owner rendered-motion judgment, and deployed-URL acceptance remain outside this browser evidence.
+
+**Ready for technical re-review: yes.**
+
+The six implementation/test files were committed as `82fcd51` (`fix(plan-11): preserve subdivision position after replay`). This report is being committed separately as the final task commit.
