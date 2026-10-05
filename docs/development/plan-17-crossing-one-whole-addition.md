@@ -42,7 +42,7 @@ levels, adaptive policy, session sequencing, persistence, and deployment are exc
 ## Depends on
 
 The entry and support writers, route harness, frozen schedule, and actual motion
-must be accepted first. Plan 11 is delivered with Repair 01 required; drafting this
+must be accepted first. Plan 11 is delivered with Repair 02 required; drafting this
 packet does not authorize starting it while that dependency is incomplete. Plan 22 repairs
 the live numeric-denominator coverage/capability dead end before expansion and
 before a combined public release. DECISION-035 settles the small learner-goal policy; Plan 21 supplies concrete
