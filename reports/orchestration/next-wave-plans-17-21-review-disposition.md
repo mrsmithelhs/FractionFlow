@@ -164,6 +164,9 @@ review of amended dependencies/gates are the applicable validation. Advisor decl
 consultation not warranted for prose-only drafting/disposition; the verification agents
 above are not claimed as independently verified higher-tier advisor models. No source
 changes or tests of the in-flight app are part of this commit. All new/revised packets
-remain draft; owner policy fields remain pending. Packet lint and diff checks passed;
-the final read-only gate/dependency review found no introduced circular gate or
+remain draft; owner policy fields remain pending. Packet lint and scoped revision
+diff checks passed. The preserved original Gemini report has four intentional Markdown
+hard-break lines with trailing spaces, flagged by the all-staged whitespace check;
+these were retained to preserve the report's content/formatting and are not packet
+or source validation failures. The final read-only gate/dependency review found no introduced circular gate or
 silently adopted owner policy. Its small drafting clarifications were applied.
