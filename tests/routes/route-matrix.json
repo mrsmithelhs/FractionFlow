@@ -249,7 +249,7 @@
       },
       "negativeControl": {"targetRouteId":"ROUTE-COND-1-REFLECT","comparison":"notIdenticalCapture"}
     },
-{
+    {
       "id": "ROUTE-REPLAY-COND-1",
       "behavior": "Condition 1 Replay keeps the starting fraction inspectable, then animates new boundaries only after the learner chooses Show new parts.",
       "configuration": "phase2-bundle-1",
@@ -283,7 +283,91 @@
       },
       "negativeControl": {"targetRouteId":"ROUTE-REPLAY-COND-2","comparison":"notIdenticalCapture","sameMotionMode":true}
     },
-{
+    {
+      "id": "ROUTE-REPLAY-NEW-CONVERSION-COND-1",
+      "behavior": "A newly accepted right conversion animates after Replay, while the established left conversion stays settled through help and ordinary Replay dismissal.",
+      "configuration": "phase2-bundle-1",
+      "startingSurface": "mounted-app-entry",
+      "viewport": {"width":360,"height":752},
+      "motionMode": "standard-motion",
+      "witness": "browser",
+      "actions": [
+        {"step":1,"method":"click","target":".app-gear-button","description":"Open gear menu"},
+        {"step":2,"method":"click","target":"[data-condition-id=\"phase2-bundle-1\"]","description":"Select the animated in-place condition"},
+        {"step":3,"method":"click","target":".app-practice-button","description":"Begin practice"},
+        {"step":4,"method":"click","target":".app-visual-view .control-btn","description":"Advance from encounter"},
+        {"step":5,"method":"click","target":".app-visual-view .control-choice-btn >> nth=1","description":"Notice unlike part sizes"},
+        {"step":6,"method":"click","target":".app-visual-view .control-choice-btn >> nth=0","description":"Choose twelfths"},
+        {"step":7,"method":"fill","target":".app-visual-view #transform-num-input-left","value":"8","description":"Enter left equivalent numerator"},
+        {"step":8,"method":"clickAndObserveSubdivision","target":".app-visual-view .control-submit-btn","container":".app-visual-view .fraction-bar-container[data-side=\"left\"]","description":"Accept and settle the first conversion"},
+        {"step":9,"method":"click","target":".app-support-controls .app-secondary-button:has-text(\"Replay\")","description":"Replay the established left conversion"},
+        {"step":10,"method":"assertNoSubdivisionMotion","container":".app-visual-view .fraction-bar-container[data-side=\"left\"]","denominator":3,"description":"Replay holds the established starting form without motion"},
+        {"step":11,"method":"fill","target":".app-visual-view #transform-num-input-right","value":"3","description":"Enter right equivalent numerator while Replay is active"},
+        {"step":12,"method":"clickAndObserveSubdivision","target":".app-visual-view .control-submit-btn","container":".app-visual-view .fraction-bar-container[data-side=\"right\"]","concurrentContainer":".app-visual-view .fraction-bar-container[data-side=\"left\"]","forbidConcurrentMotion":true,"description":"Accept right 3/12 immediately after Replay, observe its new boundaries, and prove the old left conversion does not restart"},
+        {"step":13,"method":"click","target":".app-support-controls .app-secondary-button:has-text(\"Replay\")","description":"Replay the newly established right conversion"},
+        {"step":14,"method":"click","target":".app-support-controls button:has-text(\"Need help?\")","description":"Dismiss the established Replay by requesting help"},
+        {"step":15,"method":"assertNoSubdivisionMotion","container":".app-visual-view .fraction-bar-container[data-side=\"right\"]","denominator":12,"description":"Help does not restart the established right conversion"}
+      ],
+      "expect": {
+        "capture": {"target":".app-visual-view","type":"innerHTML"},
+        "assertions": [
+          {"type":"attributeEquals","target":".app-visual-view .fraction-bar-container[data-side=\"left\"] .fraction-bar-track","attribute":"data-numerator","value":"8"},
+          {"type":"attributeEquals","target":".app-visual-view .fraction-bar-container[data-side=\"left\"] .fraction-bar-track","attribute":"data-denominator","value":"12"},
+          {"type":"attributeEquals","target":".app-visual-view .fraction-bar-container[data-side=\"right\"] .fraction-bar-track","attribute":"data-numerator","value":"3"},
+          {"type":"attributeEquals","target":".app-visual-view .fraction-bar-container[data-side=\"right\"] .fraction-bar-track","attribute":"data-denominator","value":"12"},
+          {"type":"notHasSelector","target":".app-visual-view .fraction-bar-in-place-replay"},
+          {"type":"attributeEquals","target":".app-support-controls .app-secondary-button:has-text(\"Replay\")","attribute":"aria-pressed","value":"false"}
+        ]
+      }
+    },
+    {
+      "id": "ROUTE-REPLAY-REDUCED-COND-1",
+      "behavior": "Reduced-motion Replay holds its starting form, reveals the endpoint only on the learner's mounted Show new parts control, and accepts new work without running effects.",
+      "configuration": "phase2-bundle-1",
+      "startingSurface": "mounted-app-entry",
+      "viewport": {"width":360,"height":752},
+      "motionMode": "reduced-motion",
+      "witness": "browser",
+      "actions": [
+        {"step":1,"method":"click","target":".app-gear-button","description":"Open gear menu"},
+        {"step":2,"method":"click","target":"[data-condition-id=\"phase2-bundle-1\"]","description":"Select the animated in-place condition"},
+        {"step":3,"method":"click","target":".app-practice-button","description":"Begin practice"},
+        {"step":4,"method":"click","target":".app-visual-view .control-btn","description":"Advance from encounter"},
+        {"step":5,"method":"click","target":".app-visual-view .control-choice-btn >> nth=1","description":"Notice unlike part sizes"},
+        {"step":6,"method":"click","target":".app-visual-view .control-choice-btn >> nth=0","description":"Choose twelfths"},
+        {"step":7,"method":"fill","target":".app-visual-view #transform-num-input-left","value":"8","description":"Enter left equivalent numerator"},
+        {"step":8,"method":"click","target":".app-visual-view .control-submit-btn","description":"Accept left conversion under reduced motion"},
+        {"step":9,"method":"assertNoSubdivisionMotion","container":".app-visual-view .fraction-bar-container[data-side=\"left\"]","denominator":12,"description":"Reduced conversion reaches 8/12 immediately"},
+        {"step":10,"method":"click","target":".app-support-controls .app-secondary-button:has-text(\"Replay\")","description":"Replay the accepted conversion"},
+        {"step":11,"method":"assert","assertions":[{"type":"containsText","target":".app-visual-view","value":"Starting parts: 2/3"},{"type":"attributeEquals","target":".app-support-controls .app-secondary-button:has-text(\"Replay\")","attribute":"aria-pressed","value":"true"}],"description":"Confirm persistent starting form before learner reveal"},
+        {"step":12,"method":"assertNoSubdivisionMotion","container":".app-visual-view .fraction-bar-container[data-side=\"left\"]","denominator":3,"description":"Held Replay has no running effect"},
+        {"step":13,"method":"clickAndObserveReplayReveal","target":".app-visual-view .fraction-bar-toggle-btn","container":".app-visual-view .fraction-bar-container[data-side=\"left\"]","responseInput":".app-visual-view #transform-num-input-right","numerator":8,"denominator":12,"description":"Use the mounted Show new parts control and witness immediate endpoint, stable anchors, and retained response input"},
+        {"step":14,"method":"assert","assertions":[{"type":"containsText","target":".app-visual-view .fraction-bar-readout","value":"8"},{"type":"containsText","target":".app-visual-view .fraction-bar-readout","value":"12"},{"type":"attributeEquals","target":".app-support-controls .app-secondary-button:has-text(\"Replay\")","attribute":"aria-pressed","value":"false"}],"description":"Verify the reduced Replay endpoint and ordinary control state"},
+        {"step":15,"method":"click","target":".app-support-controls .app-secondary-button:has-text(\"Replay\")","description":"Hold the previous conversion again before new work"},
+        {"step":16,"method":"assertNoSubdivisionMotion","container":".app-visual-view .fraction-bar-container[data-side=\"left\"]","denominator":3,"description":"Re-entering Replay does not animate restored old content"},
+        {"step":17,"method":"fill","target":".app-visual-view #transform-num-input-right","value":"3","description":"Enter right equivalent numerator while Replay is active"},
+        {"step":18,"method":"click","target":".app-visual-view .control-submit-btn","description":"Accept new right conversion under reduced motion"},
+        {"step":19,"method":"assertNoSubdivisionMotion","container":".app-visual-view .fraction-bar-container[data-side=\"right\"]","numerator":3,"denominator":12,"description":"New conversion reaches 3/12 immediately with no animation"},
+        {"step":20,"method":"assert","assertions":[{"type":"attributeEquals","target":".app-visual-view .fraction-bar-container[data-side=\"left\"] .fraction-bar-track","attribute":"data-numerator","value":"8"},{"type":"attributeEquals","target":".app-visual-view .fraction-bar-container[data-side=\"left\"] .fraction-bar-track","attribute":"data-denominator","value":"12"},{"type":"attributeEquals","target":".app-visual-view .fraction-bar-container[data-side=\"right\"] .fraction-bar-track","attribute":"data-numerator","value":"3"},{"type":"attributeEquals","target":".app-visual-view .fraction-bar-container[data-side=\"right\"] .fraction-bar-track","attribute":"data-denominator","value":"12"}],"description":"Verify both reduced-motion accepted conversion endpoints before reset"},
+        {"step":21,"method":"click","target":".app-return-button","description":"Leave the episode after replayed conversion work"},
+        {"step":22,"method":"click","target":".app-practice-button","description":"Re-enter practice from a fresh episode"},
+        {"step":23,"method":"assertNoSubdivisionMotion","container":".app-visual-view","denominator":3,"description":"Fresh re-entry shows no stale replay or subdivision effect"},
+        {"step":24,"method":"assert","assertions":[{"type":"notHasSelector","target":".app-visual-view .fraction-bar-in-place-replay"},{"type":"attributeEquals","target":".app-support-controls .app-secondary-button:has-text(\"Replay\")","attribute":"aria-pressed","value":"false"},{"type":"attributeEquals","target":".app-visual-view .fraction-bar-container[data-side=\"left\"] .fraction-bar-track","attribute":"data-denominator","value":"3"},{"type":"attributeEquals","target":".app-visual-view .fraction-bar-container[data-side=\"right\"] .fraction-bar-track","attribute":"data-denominator","value":"4"}],"description":"Verify fresh episode endpoints with no stale Replay state"}
+      ],
+      "expect": {
+        "capture": {"target":".app-visual-view","type":"innerHTML"},
+        "assertions": [
+          {"type":"attributeEquals","target":".app-visual-view .fraction-bar-container[data-side=\"left\"] .fraction-bar-track","attribute":"data-numerator","value":"2"},
+          {"type":"attributeEquals","target":".app-visual-view .fraction-bar-container[data-side=\"left\"] .fraction-bar-track","attribute":"data-denominator","value":"3"},
+          {"type":"attributeEquals","target":".app-visual-view .fraction-bar-container[data-side=\"right\"] .fraction-bar-track","attribute":"data-numerator","value":"1"},
+          {"type":"attributeEquals","target":".app-visual-view .fraction-bar-container[data-side=\"right\"] .fraction-bar-track","attribute":"data-denominator","value":"4"},
+          {"type":"notHasSelector","target":".app-visual-view .fraction-bar-in-place-replay"},
+          {"type":"notHasSelector","target":".app-visual-view .fraction-bar-boundary-new"},
+          {"type":"attributeEquals","target":".app-support-controls .app-secondary-button:has-text(\"Replay\")","attribute":"aria-pressed","value":"false"}
+        ]
+      }
+    },
+    {
       "id": "ROUTE-REPLAY-COND-2",
       "behavior": "Replay under Condition 2 (juxtaposed) activates choreography-juxtaposed replay highlight and badge.",
       "configuration": "phase2-bundle-2",

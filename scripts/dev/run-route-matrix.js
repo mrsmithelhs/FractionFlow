@@ -57,6 +57,13 @@ const seededPrototypeVisualDefects = Object.freeze({
   clip-path: inset(100%) !important;
 }`,
 });
+const motionWitnessSeeds = Object.freeze({
+  'no-op-keyframes': { routeId: 'ROUTE-COND-1-TRANSFORM', failure: 'no partially painted boundary was observed' },
+  'half-height-new-boundary': { routeId: 'ROUTE-COND-1-TRANSFORM', failure: 'settled new boundaries did not span' },
+  'disabled-motion': { routeId: 'ROUTE-COND-1-TRANSFORM', failure: 'expected one executed animation per new boundary' },
+  'static-accidental-motion': { routeId: 'ROUTE-COND-2-TRANSFORM', failure: 'unexpectedly ran animation within the fraction track' },
+  'reduced-accidental-motion': { routeId: 'ROUTE-REDUCED-MOTION', failure: 'unexpectedly ran animation within the fraction track' },
+});
 const startingSurfaces = Object.freeze({
   'mounted-app-entry': Object.freeze({
     path: '',
@@ -162,6 +169,7 @@ async function validateMatrixIntegrity(matrix, registeredConditions) {
     'assert',
     'scrollIntoView',
     'clickAndObserveSubdivision',
+    'clickAndObserveReplayReveal',
     'clickAndStartSubdivision',
     'assertNoSubdivisionMotion',
     'dispatch-fallback',
@@ -240,9 +248,13 @@ async function validateMatrixIntegrity(matrix, registeredConditions) {
       if (!validActionMethods.has(action.method)) {
         errors.push(`Route "${route.id}" step ${action.step} has unknown action method "${action.method}".`);
       }
-      if (['clickAndObserveSubdivision', 'clickAndStartSubdivision'].includes(action.method)
+      if (['clickAndObserveSubdivision', 'clickAndStartSubdivision', 'clickAndObserveReplayReveal'].includes(action.method)
         && (!action.target || !action.container)) {
         errors.push(`Route "${route.id}" step ${action.step} subdivision action requires a mounted "target" and "container".`);
+      }
+      if (action.method === 'clickAndObserveReplayReveal'
+        && (!action.responseInput || !Number.isInteger(action.numerator) || !Number.isInteger(action.denominator))) {
+        errors.push(`Route "${route.id}" step ${action.step} reduced Replay witness requires responseInput and integer endpoint numerator/denominator.`);
       }
       if (action.method === 'clickAndObserveSubdivision' && action.interruptReducedMotion
         && route.motionMode !== 'standard-motion') {
@@ -251,6 +263,10 @@ async function validateMatrixIntegrity(matrix, registeredConditions) {
       if (action.method === 'clickAndObserveSubdivision' && action.requireConcurrentMotion
         && (!action.concurrentContainer || action.interruptReducedMotion)) {
         errors.push(`Route "${route.id}" step ${action.step} concurrent subdivision evidence requires a concurrent container and cannot interrupt motion.`);
+      }
+      if (action.method === 'clickAndObserveSubdivision' && action.forbidConcurrentMotion
+        && !action.concurrentContainer) {
+        errors.push(`Route "${route.id}" step ${action.step} no-restart subdivision evidence requires a concurrent container.`);
       }
       if (action.method === 'assertNoSubdivisionMotion' && !action.container) {
         errors.push(`Route "${route.id}" step ${action.step} static-motion assertion requires a mounted "container".`);
@@ -341,15 +357,16 @@ async function validateMatrixIntegrity(matrix, registeredConditions) {
 async function observeSubdivision(page, action, routeId) {
   const evidenceId = `${routeId}:${action.step}`;
   const container = page.locator(action.container);
-  await container.evaluate((root, id) => {
+  await container.evaluate((root, options) => {
     const track = root.querySelector('.fraction-bar-track');
     const fill = track?.querySelector('.fraction-bar-fill');
+    const boundaryLayer = track?.querySelector('.fraction-bar-boundary-layer');
     const episode = root.closest('.app-episode');
     const question = episode?.querySelector('.active-beat-prompt');
     const controls = episode?.querySelector('.active-beat-controls');
     const whole = track?.getBoundingClientRect();
     const fillBox = fill?.getBoundingClientRect();
-    if (!track || !fill || !whole || !fillBox || !question || !controls) {
+    if (!track || !fill || !boundaryLayer || !whole || !fillBox || !question || !controls) {
       throw new Error('persistent track, fill, question, and active controls must be mounted before the learner action');
     }
     const rect = (element) => {
@@ -365,16 +382,25 @@ async function observeSubdivision(page, action, routeId) {
         height: box.height,
       };
     };
+    const relativeRect = (element, ancestor) => {
+      const box = rect(element);
+      const base = rect(ancestor);
+      return { ...box, x: box.x - base.x, y: box.y - base.y };
+    };
     window.__fractionFlowMotionWitnesses ||= new Map();
     const boundaries = [...track.querySelectorAll('.fraction-bar-boundary')];
     const record = {
       root,
       track,
       fill,
+      boundaryLayer,
+      rootBox: rect(root),
       boundaries: new Map(boundaries.map((element) => [element.dataset.boundaryKey, element])),
       before: {
         whole: { x: whole.x, y: whole.y, width: whole.width, height: whole.height },
         fill: { x: fillBox.x, y: fillBox.y, width: fillBox.width, height: fillBox.height },
+        relativeWhole: relativeRect(track, root),
+        relativeFill: relativeRect(fill, root),
         layout: {
           question: rect(question),
           controls: rect(controls),
@@ -386,17 +412,27 @@ async function observeSubdivision(page, action, routeId) {
         boundaryCount: boundaries.length,
         boundaryGeometry: new Map(boundaries.map((element) => {
           const box = element.getBoundingClientRect();
-          return [element.dataset.boundaryKey, {
-            x: box.x,
-            y: box.y,
-            width: box.width,
-            height: box.height,
-          }];
+          return [element.dataset.boundaryKey, relativeRect(element, root)];
         })),
       },
     };
-    window.__fractionFlowMotionWitnesses.set(id, record);
-  }, evidenceId);
+    window.__fractionFlowMotionWitnesses.set(options.id, record);
+    if (options.seed === 'no-op-keyframes' || options.seed === 'disabled-motion') {
+      const originalAnimate = Element.prototype.animate;
+      Element.prototype.animate = function animateWithWitnessSeed(keyframes, timing) {
+        if (this.matches?.('.fraction-bar-boundary-new')) {
+          if (options.seed === 'disabled-motion') {
+            return originalAnimate.call(this, keyframes, { ...timing, duration: 0 });
+          }
+          return originalAnimate.call(this, [
+            { transform: 'scaleY(1)' },
+            { transform: 'scaleY(1)' },
+          ], timing);
+        }
+        return originalAnimate.call(this, keyframes, timing);
+      };
+    }
+  }, { id: evidenceId, seed: action.motionWitnessSeed || null });
 
   // This is the same mounted control a learner activates. The observer is attached
   // to the real page; it does not call or configure a renderer.
@@ -435,6 +471,9 @@ async function observeSubdivision(page, action, routeId) {
     const concurrentContainer = options.concurrentContainer
       ? document.querySelector(options.concurrentContainer)
       : null;
+    if ((options.requireConcurrentMotion || options.forbidConcurrentMotion) && !concurrentContainer) {
+      throw new Error(`concurrent subdivision witness container was missing: ${options.concurrentContainer}`);
+    }
     const concurrentAnimations = concurrentContainer
       ? [...concurrentContainer.querySelectorAll('.fraction-bar-boundary')]
         .flatMap((element) => element.getAnimations())
@@ -444,15 +483,19 @@ async function observeSubdivision(page, action, routeId) {
     if (options.requireConcurrentMotion && concurrentAnimations === 0) {
       throw new Error(`expected the preceding submission's effect to remain active during the rapid next submission`);
     }
+    if (options.forbidConcurrentMotion && concurrentAnimations !== 0) {
+      throw new Error(`an established conversion restarted while the learner accepted a different conversion (${concurrentAnimations} animations)`);
+    }
     return { existingBoundaryCount: existing.length, newBoundaryCount: newBoundaries.length, concurrentAnimations };
   }, {
     id: evidenceId,
     concurrentContainer: action.concurrentContainer || null,
     requireConcurrentMotion: action.requireConcurrentMotion === true,
+    forbidConcurrentMotion: action.forbidConcurrentMotion === true,
   });
 
-  const intermediate = await container.evaluate(async (root, id) => {
-    const previous = window.__fractionFlowMotionWitnesses?.get(id);
+  const intermediate = await container.evaluate(async (root, options) => {
+    const previous = window.__fractionFlowMotionWitnesses?.get(options.id);
     if (!previous) throw new Error('missing in-flight DOM identity witness');
     const track = root.querySelector('.fraction-bar-track');
     const fill = track?.querySelector('.fraction-bar-fill');
@@ -472,6 +515,11 @@ async function observeSubdivision(page, action, routeId) {
         height: box.height,
       };
     };
+    const relativeRect = (element, ancestor) => {
+      const box = rect(element);
+      const base = rect(ancestor);
+      return { ...box, x: box.x - base.x, y: box.y - base.y };
+    };
     const measureLayout = () => {
       const currentQuestion = root.closest('.app-episode')?.querySelector('.active-beat-prompt');
       const currentControls = root.closest('.app-episode')?.querySelector('.active-beat-controls');
@@ -486,6 +534,9 @@ async function observeSubdivision(page, action, routeId) {
       };
     };
     if (!question || !controls) throw new Error('question and active response control bounds are missing during subdivision');
+    const boundaryLayer = track.querySelector('.fraction-bar-boundary-layer');
+    if (!boundaryLayer) throw new Error('inner boundary layer is missing during subdivision');
+    const interiorHeight = rect(boundaryLayer).height;
     let sample = null;
     for (let frame = 0; frame < 24 && !sample; frame += 1) {
       await new Promise((resolve) => requestAnimationFrame(resolve));
@@ -497,17 +548,29 @@ async function observeSubdivision(page, action, routeId) {
           if (boundary.height > 0) {
             const layout = measureLayout();
             if (!layout) throw new Error('question and active response control bounds disappeared during subdivision');
-            sample = { progress, boundary, whole: rect(track), fill: rect(fill), layout };
+            sample = {
+              progress,
+              boundary,
+              whole: rect(track),
+              fill: rect(fill),
+              rootBox: rect(root),
+              relativeWhole: relativeRect(track, root),
+              relativeFill: relativeRect(fill, root),
+              layout,
+            };
             break;
           }
         }
       }
     }
-    if (!sample || sample.boundary.height >= rect(track).height) {
+    if (!sample || sample.boundary.height < 1 || sample.boundary.height > interiorHeight - 1) {
       throw new Error('no partially painted boundary was observed during the executed animation');
     }
-    return sample;
-  }, evidenceId);
+    if (options.seed === 'half-height-new-boundary') {
+      previous.newBoundaries[0].style.bottom = '50%';
+    }
+    return { ...sample, interiorHeight };
+  }, { id: evidenceId, seed: action.motionWitnessSeed || null });
 
   let interrupted = null;
   let restored = null;
@@ -570,7 +633,9 @@ async function observeSubdivision(page, action, routeId) {
     if (!previous) throw new Error('missing settled DOM identity witness');
     const track = root.querySelector('.fraction-bar-track');
     const fill = track?.querySelector('.fraction-bar-fill');
-    if (root !== previous.root || track !== previous.track || fill !== previous.fill) {
+    const boundaryLayer = track?.querySelector('.fraction-bar-boundary-layer');
+    if (root !== previous.root || track !== previous.track || fill !== previous.fill
+      || boundaryLayer !== previous.boundaryLayer || !boundaryLayer?.isConnected) {
       throw new Error('bar root, track, or shaded-fill element was replaced before the effect settled');
     }
     const boundaries = [...track.querySelectorAll('.fraction-bar-boundary')];
@@ -587,11 +652,17 @@ async function observeSubdivision(page, action, routeId) {
         height: box.height,
       };
     };
+    const relativeRect = (element, ancestor) => {
+      const box = rect(element);
+      const base = rect(ancestor);
+      return { ...box, x: box.x - base.x, y: box.y - base.y };
+    };
     const rectDelta = (beforeBox, afterBox) => Object.fromEntries(
       ['x', 'y', 'width', 'height'].map((key) => [key, Math.abs(beforeBox[key] - afterBox[key])]),
     );
     const whole = rect(track);
     const fillBox = rect(fill);
+    const boundaryLayerBox = rect(boundaryLayer);
     const episode = root.closest('.app-episode');
     const question = episode?.querySelector('.active-beat-prompt');
     const activeControls = episode?.querySelector('.active-beat-controls');
@@ -608,10 +679,28 @@ async function observeSubdivision(page, action, routeId) {
     };
     const visibleInViewport = (box, height) => box.top >= 0 && box.bottom <= height;
     const newBoundaries = previous.newBoundaries;
+    const newBoundaryGeometry = newBoundaries.map((element) => {
+      const box = rect(element);
+      const [indexText, denominatorText] = element.dataset.boundaryKey.split('/');
+      const index = Number(indexText);
+      const denominator = Number(denominatorText);
+      const expectedCenter = boundaryLayerBox.left + (index / denominator) * boundaryLayerBox.width;
+      return {
+        key: element.dataset.boundaryKey,
+        connected: element.isConnected && boundaryLayer.contains(element),
+        rect: box,
+        expectedCenter,
+        centerDelta: Math.abs((box.left + box.width / 2) - expectedCenter),
+        topDelta: Math.abs(box.top - boundaryLayerBox.top),
+        bottomDelta: Math.abs(box.bottom - boundaryLayerBox.bottom),
+        heightDelta: Math.abs(box.height - boundaryLayerBox.height),
+      };
+    });
     const settled = {
       whole,
       fill: fillBox,
-      firstNewBoundary: rect(newBoundaries[0]),
+      boundaryLayer: boundaryLayerBox,
+      newBoundaryGeometry,
       activeAnimations: track.getAnimations({ subtree: true })
         .filter((animation) => animation.playState === 'running').length,
       denominator: track.dataset.denominator,
@@ -625,18 +714,18 @@ async function observeSubdivision(page, action, routeId) {
     const questionAndControlsVisible = [taskLayout.before, taskLayout.intermediate, taskLayout.settled]
       .every((frame) => visibleInViewport(frame.question, frame.viewportHeight)
         && visibleInViewport(frame.controls, frame.viewportHeight));
-    const wholeBefore = previous.before.whole;
-    const fillBefore = previous.before.fill;
+    const relativeWholeBefore = previous.before.relativeWhole;
+    const relativeFillBefore = previous.before.relativeFill;
     const anchorDrift = {
-      wholeIntermediate: rectDelta(wholeBefore, evidence.intermediate.whole),
-      fillIntermediate: rectDelta(fillBefore, evidence.intermediate.fill),
-      wholeSettled: rectDelta(wholeBefore, whole),
-      fillSettled: rectDelta(fillBefore, fillBox),
+      wholeIntermediate: rectDelta(relativeWholeBefore, evidence.intermediate.relativeWhole),
+      fillIntermediate: rectDelta(relativeFillBefore, evidence.intermediate.relativeFill),
+      wholeSettled: rectDelta(relativeWholeBefore, relativeRect(track, root)),
+      fillSettled: rectDelta(relativeFillBefore, relativeRect(fill, root)),
     };
     const existing = [...previous.boundaries.entries()];
     const existingBoundaryDrifts = existing.map(([key, element]) => ({
       key,
-      delta: rectDelta(previous.before.boundaryGeometry.get(key), rect(element)),
+      delta: rectDelta(previous.before.boundaryGeometry.get(key), relativeRect(element, root)),
       activeAnimations: element.getAnimations().filter((animation) => animation.playState === 'running').length,
     }));
     const driftWithinTolerance = (drift) => Object.values(drift).every((delta) => delta <= 0.5);
@@ -653,6 +742,10 @@ async function observeSubdivision(page, action, routeId) {
       anchorDrift,
       existingBoundaryCount: existing.length,
       newBoundaryCount: newBoundaries.length,
+      newBoundariesSpanGrid: newBoundaryGeometry.length > 0 && newBoundaryGeometry.every((entry) => (
+        entry.connected && entry.centerDelta <= 0.75 && entry.topDelta <= 0.5
+        && entry.bottomDelta <= 0.5 && entry.heightDelta <= 0.5
+      )),
       concurrentAnimations: previous.concurrentAnimations,
       interrupted: evidence.interrupted,
       restored: evidence.restored,
@@ -672,6 +765,9 @@ async function observeSubdivision(page, action, routeId) {
   }
   if (finalState.settled.activeAnimations !== 0) {
     throw new Error(`subdivision effect did not settle: ${JSON.stringify(finalState)}`);
+  }
+  if (!finalState.newBoundariesSpanGrid) {
+    throw new Error(`settled new boundaries did not span the connected inner layer at their supplied grid positions: ${JSON.stringify(finalState.settled.newBoundaryGeometry)}`);
   }
   if (!finalState.questionAndControlsVisible) {
     throw new Error(`question or active response controls left the visible viewport during subdivision: ${JSON.stringify(finalState.taskLayout)}`);
@@ -728,6 +824,182 @@ async function executeAction(page, action, routeId) {
     case 'clickAndObserveSubdivision':
       await observeSubdivision(page, action, routeId);
       break;
+
+    case 'clickAndObserveReplayReveal': {
+      const container = page.locator(action.container);
+      const evidenceId = `${routeId}:${action.step}`;
+      const before = await container.evaluate((root, options) => {
+        const track = root.querySelector('.fraction-bar-track');
+        const fill = track?.querySelector('.fraction-bar-fill');
+        const layer = track?.querySelector('.fraction-bar-boundary-layer');
+        const input = options.responseInput ? document.querySelector(options.responseInput) : null;
+        if (!track || !fill || !layer || !input) {
+          throw new Error('reduced Replay requires persistent anchors and the mounted response input');
+        }
+        const box = (element) => {
+          const rect = element.getBoundingClientRect();
+          const rootRect = root.getBoundingClientRect();
+          return {
+            x: rect.x - rootRect.x,
+            y: rect.y - rootRect.y,
+            width: rect.width,
+            height: rect.height,
+          };
+        };
+        const witness = {
+          root,
+          track,
+          fill,
+          layer,
+          boundaries: [...track.querySelectorAll('.fraction-bar-boundary')],
+          trackRect: box(track),
+          fillRect: box(fill),
+          layerRect: box(layer),
+          boundaryRects: new Map([...track.querySelectorAll('.fraction-bar-boundary')]
+            .map((boundary) => [boundary.dataset.boundaryKey, box(boundary)])),
+          input,
+          inputValue: input.value,
+          selectionStart: input.selectionStart,
+          selectionEnd: input.selectionEnd,
+          responseInputFocused: document.activeElement === input,
+          focusedElement: document.activeElement,
+        };
+        window.__fractionFlowReplayWitnesses ||= new Map();
+        window.__fractionFlowReplayWitnesses.set(options.id, witness);
+        return {
+          inputValue: witness.inputValue,
+          selectionStart: witness.selectionStart,
+          selectionEnd: witness.selectionEnd,
+          oldBoundaryCount: witness.boundaries.length,
+        };
+      }, { responseInput: action.responseInput, id: evidenceId });
+      await page.locator(action.target).click();
+      const result = await container.evaluate(async (root, options) => {
+        const previous = window.__fractionFlowReplayWitnesses?.get(options.id);
+        if (!previous) throw new Error('missing reduced Replay anchor and input witness');
+        const inspect = (label) => {
+          const track = root.querySelector('.fraction-bar-track');
+          const fill = track?.querySelector('.fraction-bar-fill');
+          const layer = track?.querySelector('.fraction-bar-boundary-layer');
+          if (root !== previous.root || track !== previous.track || fill !== previous.fill
+            || layer !== previous.layer || !layer?.isConnected) {
+            throw new Error(`reduced Replay ${label} replaced the bar root, track, fill, or boundary layer`);
+          }
+          const boundaries = [...track.querySelectorAll('.fraction-bar-boundary')];
+          if (!previous.boundaries.every((boundary) => boundaries.includes(boundary))) {
+            throw new Error(`reduced Replay ${label} replaced an existing boundary`);
+          }
+          const input = document.querySelector(options.responseInput);
+          if (input !== previous.input || !input?.isConnected
+            || input.value !== previous.inputValue
+            || input.selectionStart !== previous.selectionStart
+            || input.selectionEnd !== previous.selectionEnd
+            || (previous.responseInputFocused && document.activeElement !== input)
+            || !document.activeElement?.isConnected) {
+            throw new Error(`reduced Replay ${label} changed the response input, value, selection, or applicable focus`);
+          }
+          const layerBox = layer.getBoundingClientRect();
+          const box = (element) => {
+            const rect = element.getBoundingClientRect();
+            const rootRect = root.getBoundingClientRect();
+            return {
+              x: rect.x - rootRect.x,
+              y: rect.y - rootRect.y,
+              width: rect.width,
+              height: rect.height,
+            };
+          };
+          const geometryDelta = (before, after) => Object.fromEntries(
+            ['x', 'y', 'width', 'height'].map((key) => [key, Math.abs(before[key] - after[key])]),
+          );
+          const anchorDrift = {
+            track: geometryDelta(previous.trackRect, box(track)),
+            fill: geometryDelta(previous.fillRect, box(fill)),
+            layer: geometryDelta(previous.layerRect, box(layer)),
+          };
+          const oldBoundaryDrifts = previous.boundaries.map((boundary) => ({
+            key: boundary.dataset.boundaryKey,
+            delta: geometryDelta(previous.boundaryRects.get(boundary.dataset.boundaryKey), box(boundary)),
+          }));
+          const stable = [...Object.values(anchorDrift), ...oldBoundaryDrifts.map((entry) => entry.delta)]
+            .every((drift) => Object.values(drift).every((delta) => delta <= 0.5));
+          if (!stable) {
+            throw new Error(`reduced Replay moved the persistent track, shaded extent, layer, or an existing boundary: ${JSON.stringify({ anchorDrift, oldBoundaryDrifts })}`);
+          }
+          const boundaryGeometry = boundaries.map((boundary) => {
+            const box = boundary.getBoundingClientRect();
+            const [indexText, denominatorText] = boundary.dataset.boundaryKey.split('/');
+            const expectedCenter = layerBox.left + (Number(indexText) / Number(denominatorText)) * layerBox.width;
+            return {
+              key: boundary.dataset.boundaryKey,
+              connected: boundary.isConnected && layer.contains(boundary),
+              heightDelta: Math.abs(box.height - layerBox.height),
+              topDelta: Math.abs(box.top - layerBox.top),
+              bottomDelta: Math.abs(box.bottom - layerBox.bottom),
+              centerDelta: Math.abs((box.left + box.width / 2) - expectedCenter),
+            };
+          });
+          const runningAnimations = track.getAnimations({ subtree: true })
+            .filter((animation) => animation.playState === 'running').length;
+          if (track.dataset.numerator !== String(options.numerator)
+            || track.dataset.denominator !== String(options.denominator)) {
+            throw new Error(`reduced Replay ${label} did not reach ${options.numerator}/${options.denominator}: ${track.dataset.numerator}/${track.dataset.denominator}`);
+          }
+          if (root.querySelector('.fraction-bar-in-place-replay') || runningAnimations !== 0) {
+            throw new Error(`reduced Replay ${label} left stale replay controls or running effects (${runningAnimations})`);
+          }
+          if (boundaryGeometry.length !== Number(options.denominator) - 1
+            || !boundaryGeometry.every((entry) => entry.connected && entry.heightDelta <= 0.5
+              && entry.topDelta <= 0.5 && entry.bottomDelta <= 0.5 && entry.centerDelta <= 0.75)) {
+            throw new Error(`reduced Replay ${label} geometry did not settle at its endpoint: ${JSON.stringify(boundaryGeometry)}`);
+          }
+          return {
+            boundaryGeometry,
+            anchorDrift,
+            oldBoundaryDrifts,
+            runningAnimations,
+            numerator: track.dataset.numerator,
+            denominator: track.dataset.denominator,
+            inputValue: input.value,
+            selectionStart: input.selectionStart,
+            selectionEnd: input.selectionEnd,
+            focusPreserved: !previous.responseInputFocused || document.activeElement === input,
+          };
+        };
+        const immediate = inspect('immediately after click');
+        await new Promise((resolve) => requestAnimationFrame(() => requestAnimationFrame(resolve)));
+        const settled = inspect('after two paint frames');
+        return {
+          rootPreserved: true,
+          trackPreserved: true,
+          fillPreserved: true,
+          boundaryLayerPreserved: true,
+          oldBoundaryCount: previous.boundaries.length,
+          newBoundaryCount: settled.boundaryGeometry.length - options.oldBoundaryCount,
+          immediate,
+          settled,
+          boundaryGeometry: settled.boundaryGeometry,
+          runningAnimations: settled.runningAnimations,
+          numerator: settled.numerator,
+          denominator: settled.denominator,
+          responseInputPreserved: true,
+          responseInputFocusPreserved: immediate.focusPreserved && settled.focusPreserved,
+          focusedElementRemainsConnected: document.activeElement.isConnected,
+          inputValue: settled.inputValue,
+          selectionStart: settled.selectionStart,
+          selectionEnd: settled.selectionEnd,
+        };
+      }, {
+        id: evidenceId,
+        responseInput: action.responseInput,
+        numerator: action.numerator,
+        denominator: action.denominator,
+        oldBoundaryCount: before.oldBoundaryCount,
+      });
+      action.motionEvidence = result;
+      console.log(`  Reduced Replay witness ${routeId}:${action.step}: ${JSON.stringify(result)}`);
+      break;
+    }
 
     case 'clickAndStartSubdivision': {
       const container = page.locator(action.container);
@@ -808,6 +1080,7 @@ async function executeAction(page, action, routeId) {
             activeAnimations,
             activeVisualAnimations,
             denominator: tracks[0]?.dataset.denominator || null,
+            numerator: tracks[0]?.dataset.numerator || null,
           };
         });
         return {
@@ -818,6 +1091,7 @@ async function executeAction(page, action, routeId) {
           activeAnimations: items.reduce((sum, item) => sum + item.activeAnimations, 0),
           activeVisualAnimations: items.reduce((sum, item) => sum + item.activeVisualAnimations, 0),
           denominator: items[0]?.denominator || null,
+          numerator: items[0]?.numerator || null,
         };
       });
       if (observed.rootCount === 0) {
@@ -834,6 +1108,9 @@ async function executeAction(page, action, routeId) {
       }
       if (action.denominator && observed.denominator !== String(action.denominator)) {
         throw new Error(`expected immediate denominator ${action.denominator}; observed ${JSON.stringify(observed)}`);
+      }
+      if (action.numerator && observed.numerator !== String(action.numerator)) {
+        throw new Error(`expected immediate numerator ${action.numerator}; observed ${JSON.stringify(observed)}`);
       }
       action.motionEvidence = observed;
       break;
@@ -1160,10 +1437,14 @@ async function runRouteMatrix(options = {}) {
     verbose = false,
     preferredChannel,
     seededVisualDefect = null,
+    motionWitnessSeed = null,
   } = options;
 
   if (seededVisualDefect !== null && !Object.hasOwn(seededPrototypeVisualDefects, seededVisualDefect)) {
     throw new Error(`Unknown seeded prototype visual defect "${seededVisualDefect}".`);
+  }
+  if (motionWitnessSeed !== null && !Object.hasOwn(motionWitnessSeeds, motionWitnessSeed)) {
+    throw new Error(`Unknown motion witness seed "${motionWitnessSeed}".`);
   }
 
   if (!fs.existsSync(distDir)) {
@@ -1228,7 +1509,8 @@ async function runRouteMatrix(options = {}) {
     throw new Error(`Failed to capture initial baseline: ${err.message}`);
   }
 
-  const routesToRun = selectRoutesForRun(matrix.routes, filter);
+  const effectiveFilter = motionWitnessSeed ? motionWitnessSeeds[motionWitnessSeed].routeId : filter;
+  const routesToRun = selectRoutesForRun(matrix.routes, effectiveFilter);
   const routeExecutions = expandRouteExecutions(routesToRun);
 
   if (verbose) {
@@ -1254,13 +1536,25 @@ async function runRouteMatrix(options = {}) {
         const startUrl = new URL(startingSurface.path, baseUrl).toString();
         await page.goto(startUrl);
         await page.waitForSelector(startingSurface.readySelector);
+        if (motionWitnessSeed === 'static-accidental-motion'
+          || motionWitnessSeed === 'reduced-accidental-motion') {
+          await page.addStyleTag({ content: `
+            @keyframes fractionflow-witness-motion-seed { from { opacity: .98; } to { opacity: 1; } }
+            .app-visual-view .fraction-bar-track { animation: fractionflow-witness-motion-seed 1s linear infinite !important; }
+          ` });
+        }
         if (seededVisualDefect && route.configuration === 'plan15-subtraction-prototype') {
           await page.addStyleTag({ content: seededPrototypeVisualDefects[seededVisualDefect] });
         }
 
         // Execute action sequence
         for (const action of route.actions) {
-          await executeAction(page, action, route.id);
+          const seededAction = motionWitnessSeed
+            && route.id === motionWitnessSeeds[motionWitnessSeed].routeId
+            && action.method === 'clickAndObserveSubdivision'
+            ? { ...action, motionWitnessSeed }
+            : action;
+          await executeAction(page, seededAction, route.id);
         }
 
         // Capture output for negative control / sameness check
@@ -1285,7 +1579,11 @@ async function runRouteMatrix(options = {}) {
         }
       } catch (err) {
         const duration = Date.now() - startTime;
-        if (route.knownDefect) {
+        if (motionWitnessSeed && route.id === motionWitnessSeeds[motionWitnessSeed].routeId
+          && err.message.includes(motionWitnessSeeds[motionWitnessSeed].failure)) {
+          routeResults.push({ id: resultId, routeId: route.id, motionMode, status: 'seed-detected', error: err.message, duration, route });
+          console.log(`  ✓ ${resultId} (${duration}ms) [seed detected at intended assertion: ${motionWitnessSeed}]`);
+        } else if (route.knownDefect) {
           const cleanMsg = err.message.endsWith('.') ? err.message : `${err.message}.`;
           const defectErrMsg = `FATAL: Route "${route.id}" is marked with knownDefect "${route.knownDefect.id}", but stopped exhibiting the defect: ${cleanMsg} If this defect has been repaired, retire the "knownDefect" marker and invert the expectation assertion.`;
           routeResults.push({ id: resultId, routeId: route.id, motionMode, status: 'fail', error: defectErrMsg, duration, route });
@@ -1349,6 +1647,10 @@ async function runRouteMatrix(options = {}) {
   const passed = routeResults.filter((r) => r.status === 'pass').length;
   const knownDefects = routeResults.filter((r) => r.status === 'known-defect').length;
   const failed = routeResults.filter((r) => r.status === 'fail').length;
+  const seedDetected = routeResults.filter((r) => r.status === 'seed-detected').length;
+  if (motionWitnessSeed && (seedDetected !== 1 || failed !== 0 || routeResults.length !== 1)) {
+    throw new Error(`Motion witness seed "${motionWitnessSeed}" did not produce exactly one intended failure; detected=${seedDetected}, failed=${failed}, executions=${routeResults.length}.`);
+  }
 
   return {
     total: routeResults.length,
@@ -1356,6 +1658,7 @@ async function runRouteMatrix(options = {}) {
     passed,
     knownDefects,
     failed,
+    seedDetected,
     results: routeResults,
   };
 }
@@ -1375,25 +1678,32 @@ if (require.main === module) {
   const args = process.argv.slice(2);
   let filter = null;
   let verbose = true;
+  let motionWitnessSeed = null;
 
   for (let i = 0; i < args.length; i++) {
     if (args[i] === '--filter' && args[i + 1]) {
       filter = args[++i];
     } else if (args[i] === '--quiet') {
       verbose = false;
+    } else if (args[i] === '--motion-witness-seed' && args[i + 1]) {
+      motionWitnessSeed = args[++i];
     }
   }
 
   console.log('--- FractionFlow Reachable Behavior Route Contract Runner ---');
-  runRouteMatrix({ filter, verbose })
+  runRouteMatrix({ filter, verbose, motionWitnessSeed })
     .then((summary) => {
       const parts = [`${summary.passed} passed`];
+      if (summary.seedDetected > 0) parts.push(`${summary.seedDetected} intended seed failure${summary.seedDetected === 1 ? '' : 's'} detected`);
       if (summary.knownDefects > 0) {
         parts.push(`${summary.knownDefects} known defect${summary.knownDefects === 1 ? '' : 's'}`);
       }
       parts.push(`${summary.failed} failed`);
       console.log(`\nRoute Matrix Run Complete: ${parts.join(', ')} (${summary.routeCount} route rows; ${summary.total} browser executions).`);
       if (summary.failed > 0) {
+        process.exit(1);
+      } else if (motionWitnessSeed && summary.seedDetected !== 1) {
+        console.error(`Motion witness seed "${motionWitnessSeed}" was not detected at its intended assertion.`);
         process.exit(1);
       } else {
         process.exit(0);

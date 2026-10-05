@@ -205,6 +205,7 @@ export function createFractionBarRenderer({
   let rootEl = null;
   let persistentElements = null;
   let lastDisplayedForm = null;
+  let lastTransitionEndpoints = null;
   let wasReplaying = false;
   let pendingReplayReveal = false;
   const activeBoundaryAnimations = new Set();
@@ -263,6 +264,15 @@ export function createFractionBarRenderer({
       && String(first.denominator) === String(second.denominator));
   }
 
+  function transitionEndpoints(transition) {
+    if (!transition?.pre || !transition?.post) return null;
+    const serialize = (forms) => ['left', 'right'].map((operandSide) => {
+      const form = forms[operandSide];
+      return form ? `${form.numerator}/${form.denominator}` : '-';
+    }).join('|');
+    return `${serialize(transition.pre)}>${serialize(transition.post)}`;
+  }
+
   function renderPersistentInPlace(scene, currentForm, mode) {
     const transition = scene.meaning.transition;
     const beat = scene.meaning.currentTask?.beat;
@@ -274,9 +284,14 @@ export function createFractionBarRenderer({
       && Boolean(transition?.changed?.includes(side));
     const pre = transition?.pre?.[side];
     const post = transition?.post?.[side];
+    const currentTransitionEndpoints = transitionEndpoints(transition);
+    const isNewTransition = Boolean(currentTransitionEndpoints
+      && currentTransitionEndpoints !== lastTransitionEndpoints);
     const isAcceptedConversion = !isReplaying
-      && !wasReplaying
-      && Boolean(pre && post && transition?.changed?.includes(side))
+      && isNewTransition
+      && Boolean(pre && post)
+      && Boolean(transition?.changed?.includes(side))
+      && !sameForm(pre, post)
       && sameForm(lastDisplayedForm, pre)
       && sameForm(currentForm, post);
     const isExplicitReplayReveal = pendingReplayReveal
@@ -366,6 +381,7 @@ export function createFractionBarRenderer({
       numerator: String(displayForm.numerator),
       denominator: String(displayForm.denominator),
     };
+    lastTransitionEndpoints = currentTransitionEndpoints;
     wasReplaying = isReplaying;
   }
 
@@ -612,6 +628,7 @@ export function createFractionBarRenderer({
       rootEl = null;
       persistentElements = null;
       lastDisplayedForm = null;
+      lastTransitionEndpoints = null;
       wasReplaying = false;
       pendingReplayReveal = false;
     },

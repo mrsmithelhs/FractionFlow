@@ -103,13 +103,17 @@ describe('Plan 14 Reachable Behavior Route Contract & Matrix Schema', () => {
   });
 
   it('preserves learner and prototype routes while adding mounted high/medium support witnesses', () => {
-    expect(matrix.routes).toHaveLength(39);
+    expect(matrix.routes).toHaveLength(41);
     const learnerRoutes = matrix.routes.filter((route) => route.configuration !== 'plan15-subtraction-prototype');
-    expect(learnerRoutes).toHaveLength(37);
+    expect(learnerRoutes).toHaveLength(39);
     for (const route of learnerRoutes) {
       expect(route.startingSurface).toBe('mounted-app-entry');
       expect(route.viewport.width).toBe(360);
-      expect(route.viewport.height).toBe(route.id === 'ROUTE-REPLAY-COND-1' ? 752 : 740);
+      expect(route.viewport.height).toBe([
+        'ROUTE-REPLAY-COND-1',
+        'ROUTE-REPLAY-NEW-CONVERSION-COND-1',
+        'ROUTE-REPLAY-REDUCED-COND-1',
+      ].includes(route.id) ? 752 : 740);
       expect(['standard-motion', 'reduced-motion']).toContain(route.motionMode);
       expect(route.witness).toBe('browser');
     }
@@ -167,7 +171,7 @@ describe('Plan 14 Reachable Behavior Route Contract & Matrix Schema', () => {
 
   it('executes each prototype route in both motion modes and brings in its filtered negative control', () => {
     const executions = expandRouteExecutions(matrix.routes);
-    expect(executions).toHaveLength(41);
+    expect(executions).toHaveLength(43);
     expect(executions.filter((execution) => (
       execution.route.configuration === 'plan15-subtraction-prototype'
     ))).toHaveLength(4);
@@ -222,8 +226,8 @@ describe('Plan 14 Reachable Behavior Route Contract & Matrix Schema', () => {
   });
 
   it('preserves the Plan 11 route baseline and witnesses executed motion, interruption, Replay, static arms, and both support profiles', () => {
-    expect(matrix.routes).toHaveLength(39);
-    expect(expandRouteExecutions(matrix.routes)).toHaveLength(41);
+    expect(matrix.routes).toHaveLength(41);
+    expect(expandRouteExecutions(matrix.routes)).toHaveLength(43);
 
     const route = (id) => matrix.routes.find((candidate) => candidate.id === id);
     const primary = route('ROUTE-COND-1-TRANSFORM');
@@ -253,6 +257,20 @@ describe('Plan 14 Reachable Behavior Route Contract & Matrix Schema', () => {
         minWidth: 24,
         minHeight: 24,
       }));
+
+    const replayNewConversion = route('ROUTE-REPLAY-NEW-CONVERSION-COND-1');
+    expect(replayNewConversion.motionMode).toBe('standard-motion');
+    expect(replayNewConversion.actions.some((action) => action.method === 'click'
+      && action.target.includes('Need help?'))).toBe(true);
+    expect(replayNewConversion.actions.some((action) => action.method === 'clickAndObserveSubdivision'
+      && action.container.includes('data-side="right"'))).toBe(true);
+
+    const reducedReplay = route('ROUTE-REPLAY-REDUCED-COND-1');
+    expect(reducedReplay.motionMode).toBe('reduced-motion');
+    expect(reducedReplay.actions.some((action) => action.method === 'clickAndObserveReplayReveal'
+      && action.target === '.app-visual-view .fraction-bar-toggle-btn')).toBe(true);
+    expect(reducedReplay.actions.some((action) => action.method === 'assertNoSubdivisionMotion'
+      && action.container.includes('data-side="right"'))).toBe(true);
 
     const high = route('ROUTE-SUPPORT-HIGH-DECIDE');
     const medium = route('ROUTE-SUPPORT-MEDIUM-DECIDE');
@@ -321,6 +339,15 @@ describe('Plan 14 Reachable Behavior Route Contract & Matrix Schema', () => {
     const containerResult = await validateMatrixIntegrity(missingContainer, REGISTERED_CONDITIONS);
     expect(containerResult.valid).toBe(false);
     expect(containerResult.errors.some((error) => error.includes('requires a mounted "target" and "container"'))).toBe(true);
+
+    const missingNoRestartContainer = JSON.parse(JSON.stringify(matrix));
+    const noRestartAction = missingNoRestartContainer.routes
+      .find((candidate) => candidate.id === 'ROUTE-REPLAY-NEW-CONVERSION-COND-1')
+      .actions.find((action) => action.forbidConcurrentMotion);
+    delete noRestartAction.concurrentContainer;
+    const noRestartResult = await validateMatrixIntegrity(missingNoRestartContainer, REGISTERED_CONDITIONS);
+    expect(noRestartResult.valid).toBe(false);
+    expect(noRestartResult.errors.some((error) => error.includes('no-restart subdivision evidence requires a concurrent container'))).toBe(true);
   });
 
   it('rejects a prototype route when its same-motion negative control row is removed', async () => {
