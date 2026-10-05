@@ -1,7 +1,7 @@
 ---
 id: plan-11
 title: Motion and Animated Subdivision
-status: in-progress
+status: delivered
 depends_on: [plan-09, plan-14]
 gate: "Mechanism confirmation before implementation: how the subdivision animates without rebuilding the element, and what it does to the scene contract, are proposed and approved first. Then owner review against DECISION-021 criterion 4 on rendered screens at the deployed URL. Motion is a prototype variable (D-01, D-02); this packet may not convert it into a settled default."
 summary: >-
