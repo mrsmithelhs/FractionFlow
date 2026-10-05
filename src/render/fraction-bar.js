@@ -338,8 +338,12 @@ export function createFractionBarRenderer({
       persistentElements.readoutEl.setAttribute('hidden', 'true');
       let replayControls = rootEl.querySelector('.fraction-bar-in-place-replay');
       if (!replayControls) {
-        replayControls = document.createElement('div');
+        replayControls = rootEl.querySelector('.fraction-bar-replay-reserve') || document.createElement('div');
+        replayControls.classList.remove('fraction-bar-replay-reserve');
         replayControls.classList.add('fraction-bar-in-place-replay', 'fraction-bar-replay-controls');
+        replayControls.style.height = '';
+        replayControls.removeAttribute('aria-hidden');
+        replayControls.replaceChildren();
         const badge = document.createElement('span');
         badge.classList.add('fraction-bar-badge');
         replayControls.appendChild(badge);
@@ -353,7 +357,7 @@ export function createFractionBarRenderer({
           }
         });
         replayControls.appendChild(toggleBtn);
-        rootEl.appendChild(replayControls);
+        if (!replayControls.isConnected) rootEl.appendChild(replayControls);
       }
       const badge = replayControls.querySelector('.fraction-bar-badge');
       const toggleBtn = replayControls.querySelector('.fraction-bar-toggle-btn');
@@ -371,7 +375,21 @@ export function createFractionBarRenderer({
     } else {
       persistentElements.readoutEl.removeAttribute('hidden');
       const replayControls = rootEl.querySelector('.fraction-bar-in-place-replay');
-      if (replayControls) rootEl.removeChild(replayControls);
+      if (replayControls) {
+        const measuredHeight = replayControls.getBoundingClientRect?.().height;
+        const retainedHeight = Number.isFinite(measuredHeight) && measuredHeight > 0
+          ? measuredHeight
+          : (Number(replayControls.offsetHeight) || 84);
+        replayControls.replaceChildren();
+        replayControls.classList.remove('fraction-bar-in-place-replay', 'fraction-bar-replay-controls');
+        replayControls.classList.add('fraction-bar-replay-reserve');
+        replayControls.style.height = `${retainedHeight}px`;
+        replayControls.setAttribute('aria-hidden', 'true');
+      }
+      if (!transition) {
+        const replayReserve = rootEl.querySelector('.fraction-bar-replay-reserve');
+        if (replayReserve) rootEl.removeChild(replayReserve);
+      }
       rootEl.setAttribute('aria-label', strings.encounter.barAriaLabel(side, numerator, denominator));
     }
 

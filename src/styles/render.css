@@ -343,6 +343,17 @@
   text-align: center;
 }
 
+/* Preserve the Replay column's measured flow height after its controls are dismissed. */
+.fraction-bar-container-persistent .fraction-bar-replay-reserve {
+  grid-column: 2;
+  grid-row: 1;
+  box-sizing: border-box;
+  width: 3rem;
+  min-width: 3rem;
+  max-width: 3rem;
+  pointer-events: none;
+}
+
 .fraction-bar-container-persistent .fraction-bar-replay-controls .fraction-bar-badge {
   max-width: 100%;
   font-size: 0.6875rem;

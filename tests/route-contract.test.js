@@ -269,8 +269,32 @@ describe('Plan 14 Reachable Behavior Route Contract & Matrix Schema', () => {
     expect(reducedReplay.motionMode).toBe('reduced-motion');
     expect(reducedReplay.actions.some((action) => action.method === 'clickAndObserveReplayReveal'
       && action.target === '.app-visual-view .fraction-bar-toggle-btn')).toBe(true);
+    const retainedAnswer = reducedReplay.actions.find((action) => action.method === 'fillWithKnownSelection');
+    const reveal = reducedReplay.actions.find((action) => action.method === 'clickAndObserveReplayReveal');
+    expect(retainedAnswer).toMatchObject({
+      value: '8',
+      selectionStart: 0,
+      selectionEnd: 1,
+      target: '.app-visual-view #transform-num-input-right',
+    });
+    expect(retainedAnswer.step).toBeLessThan(reveal.step);
+    const restoredInputType = reducedReplay.actions.find((action) => action.method === 'restoreInputType');
+    expect(restoredInputType).toMatchObject({
+      value: 'number',
+      target: '.app-visual-view #transform-num-input-right',
+    });
+    expect(restoredInputType.step).toBeGreaterThan(reveal.step);
+    expect(restoredInputType.step).toBeLessThan(reducedReplay.actions.find((action) => (
+      action.method === 'fill' && action.value === '3'
+    )).step);
     expect(reducedReplay.actions.some((action) => action.method === 'assertNoSubdivisionMotion'
       && action.container.includes('data-side="right"'))).toBe(true);
+    expect(reducedReplay.actions.some((action) => action.method === 'clickAndAssertBarPosition'
+      && action.container.includes('data-side="right"')
+      && action.numerator === 3 && action.denominator === 12)).toBe(true);
+    expect(reducedReplay.actions.some((action) => action.method === 'assertFreshBarLayout'
+      && action.container === '.app-visual-view .fraction-bars-wrapper'
+      && action.expectedHeight === 108)).toBe(true);
 
     const high = route('ROUTE-SUPPORT-HIGH-DECIDE');
     const medium = route('ROUTE-SUPPORT-MEDIUM-DECIDE');

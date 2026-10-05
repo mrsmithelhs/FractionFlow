@@ -384,6 +384,11 @@ describe('Plan 09 app shell and upstream display switcher', () => {
     // Clicking toggle button dismisses replay cleanly
     toggleBtn.click();
     expect(root.querySelector('.app-visual-view .fraction-bar-in-place-replay')).toBeNull();
+    const layoutReserve = root.querySelector('.app-visual-view .fraction-bar-replay-reserve');
+    expect(layoutReserve).not.toBeNull();
+    expect(layoutReserve.getAttribute('aria-hidden')).toBe('true');
+    expect(layoutReserve.children).toHaveLength(0);
+    expect(layoutReserve.style.height).not.toBe('');
     expect(replayButton.getAttribute('aria-pressed')).toBe('false');
 
   });
