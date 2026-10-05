@@ -32,15 +32,15 @@ Authoritative status is `node scripts/dev/plan-status.js list` and the generated
 | `plan-10` | complete | Phase 3 reach assessment. Headline: **demonstrated reach across exactly one of fourteen** §27/§28 targets |
 | `plan-14` | complete | Browser route matrix. 20 routes: 19 pass, 1 known defect. All three enforcement paths re-verified with independent seeds |
 | **`plan-12`** | **complete** | Owner accepted current screens for now; Repair 01 technical review at `9c81538`; no deployment authorized |
-| `plan-11` | delivered | Implementation `9430c4c`, report `fbd9ad9` received; Repair 01 implementation `2603fe1` and report `fa8405b` reviewed; trigger/paint/reduced-Replay fixes verified, but Repair 02 is required for actual right-bar movement and root-relative conservation false passes. See `repair-01-review.md` / `repair-02.md`; owner motion/deployed acceptance and deployment authorization remain pending |
+| `plan-11` | delivered | Implementation `9430c4c`, report `fbd9ad9` received; Repair 02 implementation `82fcd51` and report `c93934d` technically accepted 2026-10-05; actual whole position, translation sensitivity and reserve reset independently verified. See `repair-02-review.md`; owner motion/deployed acceptance and deployment authorization remain pending |
 | `plan-15` | complete | Owner accepted both screens 2026-10-02 after technical acceptance at `c0b9143`; SUB-01 remains draft with both alternatives open; no observation or deployment authorized |
 | `plan-16` | complete | Accepted after operation-validation repair `fe4f507` and report `5872418`; legacy replay evidence and all 27 unchanged browser routes independently verified; see its `delivery-review.md` |
 | `plan-13` | complete | Accepted 2026-10-04; owner screenshots OK with requested premise question applied and recaptured; technical/agency review at `854d3fc`; two dimensions vary, no adaptive policy or deployment |
 
 ### Draft next wave — 2026-10-04
 
-1. **`plan-11`** is delivered with Repair 02 required; its mechanism approval remains
-   `a472fc1`. Technical re-review and deployed owner acceptance are pending; no
+1. **`plan-11`** is delivered and technically accepted after Repair 02; its mechanism approval remains
+   `a472fc1`. Owner rendered-motion/deployed acceptance remains pending; no
    deployment or automatic advancement is authorized.
 2. **Plans 17–22 are drafts for owner review**, not assignments. The independent Claude/Gemini
    reviews are dispositioned in `next-wave-plans-17-21-review-disposition.md`. Plan 21 now has
@@ -152,3 +152,14 @@ practice type. Phase 3 family expansion is drafted, not implemented. §89's lear
 questions still have no observation evidence. The next wave carries approved focused-task and authored-selection policies
 (DECISION-035–040); their source mechanisms and accepted reachable behavior remain
 outstanding. Follow-up obligations preserve the wider Phase 3 goals.
+
+### Plan 11 technical re-review — 2026-10-05
+
+Repair 02 is technically accepted; no further source repair is required by the
+review. Full tests/builds, 43 browser executions, all six motion seeds and the
+shared subtraction verifier passed independently. Eight repeated reduced Replay
+cycles showed no reserve accumulation; re-entry removed the reserve. See
+`reports/development/plan-11-motion-and-animated-subdivision/repair-02-review.md`.
+Plan 11 stays delivered pending owner motion and deployed-URL acceptance. Plan 22
+remains a separate draft repair and must clear mechanism/implementation/review
+before the combined release; no publication is authorized.
