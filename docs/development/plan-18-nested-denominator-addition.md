@@ -2,8 +2,8 @@
 id: plan-18
 title: Nested-Denominator Addition
 status: draft
-depends_on: [plan-17]
-gate: "Requirement 0: owner decision, recorded by the orchestrator, on the alternate-denominator versus frozen canonical schedule conflict, then mechanism approval before source work. Technical and owner rendered-screen/agency acceptance; deployment separately authorized."
+depends_on: [plan-11, plan-12, plan-13, plan-14, plan-16, plan-22]
+gate: "Before assignment, owner task-policy decision in the separate nested brief, recorded by orchestration. Requirement 0 verifies that decision and obtains execution mechanism approval before source work. Technical and owner rendered-screen/agency acceptance; deployment separately authorized."
 superseded_by: null
 resolution: null
 summary: >-
@@ -23,8 +23,8 @@ summary: >-
 - Packet type: feature
 - Mutation level: source / learner-facing local behavior
 - Approval gate: alternate-unit policy decision, mechanism, technical and owner acceptance
-- Depends on: `plan-17`
-- Expected artifacts: schedule-policy investigation and approved bounded source work; tests, browser evidence and report
+- Depends on: `plan-11`, `plan-12`, `plan-13`, `plan-14`, `plan-16`, `plan-22`
+- Expected artifacts: execution of recorded owner task policy, approved bounded source work, tests, browser evidence and report
 
 ## Goal and why this packet exists
 
@@ -43,9 +43,15 @@ answers merely because they do not fit the current UI.
 
 ## Depends on
 
-Plan 17 establishes the new-definition admission/replay path against the accepted
-precursors. This sequencing keeps shared source work single-writer and separates
-multi-whole rendering risk from asymmetric scheduling risk.
+The accepted entry/support, motion, route and schedule precursors plus Plan 22's
+path-closure repair are real dependencies. Plan 17 need not generalize admission:
+its relatively-prime crossing content already passes today's instruction guard.
+Nested policy consideration runs now through
+`reports/orchestration/nested-addition-policy-decision-brief.md`, independently of
+source delivery. Owner policy must be recorded before this feature is assigned;
+Plan 21's practice-type model must also be settled before a new learner entry surface.
+No hard dependency on another new family is asserted. Serialize shared source work;
+like-denominator execution first is useful but is a preferred order, not a blocker.
 
 ## Authority and contracts
 
@@ -66,18 +72,25 @@ the gate. Existing definition semantics and previous routes remain protected.
 
 ### Requirement 0 — Discriminating investigation and decision; stop
 
-Run preflight. Trace denominator 8 and 16 through the actual pure engine with a
+Run preflight and verify the recorded owner disposition of the separate nested
+policy brief. If absent, stop; do not make the policy choice inside source work.
+Trace denominator 8, 16 and eligible-but-unauthored 24 through the actual pure engine with a
 synthetic nested instance; record current acceptance/refusal and which conversion
 facts/controls the frozen schedule can represent. Also inspect the mirrored case
 `3/8 + 1/2` and support profiles. Distinguish a synthetic harness from a learner route.
-Compare at least: canonical-unit-only *instructional task* with honest feedback for
-other valid common units, versus retaining general denominator choice with a
-different approved construction/configuration contract. Name falsifying observations
-and show where predictions differ. Do not decide between them or amend DECISION-034.
-Present the consequences for agency, prompts, replay identity and fixed schedule;
-obtain the owner's policy decision, recorded by the orchestrator, and mechanism
-approval before source changes. Orchestrator mechanism approval alone does not
-authorize narrowing alternate pathways or amending DECISION-034.
+The earlier brief compares a canonical-unit-specific task, general unit choice
+under an amended construction contract, and identifying which fraction needs renaming.
+Verify the selected task's agency, prompts, replay identity and fixed schedule;
+obtain mechanism approval before source changes. Orchestrator mechanism approval
+alone does not authorize narrowing alternate pathways or amending DECISION-034.
+Explicitly name reducer/classification prerequisites for operate/resolve: distinguish
+the unchanged original operand from a learner-performed conversion. Current code
+unconditionally parses two conversion records. Generalize effective operand forms
+without fabricated responses/provenance. Reflection subject and prompts across
+instruction, scene, visual and linear paths must follow the actual task/converted
+side rather than always `conversions.left`. Author and validate the fixture and
+applicable path-specific premise/reflection data. Prove accepted-definition pure
+completion and replay for both operand orders; schedule construction alone is insufficient.
 If a structural amendment requires a separate packet, stop and propose that packet.
 
 ### Requirement 1 — Approved reachable one-renaming flow
@@ -95,7 +108,8 @@ Add full routes for both operand orders and both support profiles, wrong denomin
 and conversion recovery, Replay/help, linear and reduced-motion completion, retry
 and return/re-entry. Verify skipped controls are absent visually and semantically;
 completed summaries/provenance match actual schedule positions. Demonstrate how a
-valid non-least denominator is handled under the approved policy. Seed a wrong-side
+valid non-least denominator and eligible-but-unauthored 24 are handled under the
+approved policy and Plan 22 coverage contract. Seed a wrong-side
 conversion or stale skipped control and prove the witness fails. Measure rest,
 conversion and Replay at 360×740/752 and retain the approved motion behavior.
 

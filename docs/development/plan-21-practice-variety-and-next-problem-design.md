@@ -2,13 +2,13 @@
 id: plan-21
 title: Practice Variety and Next-Problem Design
 status: draft
-depends_on: [plan-17, plan-18, plan-19, plan-20]
-gate: "Owner disposition of content selection, learner/reviewer control and next-problem/reset semantics before a later implementation packet. This packet investigates and proposes; it does not activate generated content or close OQ-23."
+depends_on: [plan-10, plan-12, plan-13, plan-14, plan-16]
+gate: "Early owner practice-type/entry-model disposition before new family entry surfaces; later owner disposition of content selection, learner/reviewer control and next-problem/reset semantics before implementation. This investigation can proceed before new families are delivered and does not activate content or close OQ-23."
 superseded_by: null
 resolution: null
 summary: >-
-  Prepare Roadmap section 30 and OQ-23: inventory content the demonstrated bar
-  grammar can actually support, then propose a bounded source and selection policy
+  Prepare Roadmap section 30 and OQ-23: first propose what constitutes a learner
+  practice type, then inventory demonstrated and candidate content and a bounded selection policy
   for trying another problem. Keep session composition and automatic generation
   activation behind a separate owner-approved implementation packet.
 ---
@@ -24,13 +24,15 @@ summary: >-
 - Packet type: investigation
 - Mutation level: docs / generated local analysis artifacts
 - Approval gate: owner content/selection/reset-policy disposition, implementation separately authorized
-- Depends on: `plan-17`, `plan-18`, `plan-19`, `plan-20`
+- Depends on: `plan-10`, `plan-12`, `plan-13`, `plan-14`, `plan-16`
 - Expected artifacts: design dossier under `docs/development/phase-3-practice-variety-design/`; progress report
 
 ## Goal and why this packet exists
 
-Recommend a bounded way to try a genuinely different problem using the families
-demonstrated by the current app. Roadmap §30 requires meaningful denominator,
+First make the practice-type/entry organization decision actionable, then recommend
+a bounded way to try a genuinely different problem. Separate current demonstrated
+families from proposed future content; the investigation need not wait for all new
+source packets. Roadmap §30 requires meaningful denominator,
 scale-factor, result and magnitude variety; one fixture per button is an engineering
 milestone, not sufficient practice content. OQ-23 distinguishes a new instance
 from retrying the current one or returning to entry. The generator exists, but
@@ -40,15 +42,17 @@ generator validity alone does not establish instructional or rendered suitabilit
 
 No app/source changes, activated generator draws, new families/beats, autonomous
 adaptive selection, a session length/order policy, persistence, learner tracking,
-accounts, recruitment, observation sessions or deployment. Accepted Plans 17–20
-bound what this design may claim the app can run. This draft may be discussed earlier,
-but packet execution/preflight waits for its declared dependencies.
+accounts, recruitment, observation sessions or deployment. Only accepted artifacts
+bound what this design may claim the app can run. Plans 17–20 are candidate future
+coverage, not prerequisites and not demonstrated reach. This docs/analysis scope can
+run alongside Plan 11 in disjoint files after owner initiation. Any future content
+selection implementation still waits for accepted applicable families and owner policy.
 
 ## Authority and contracts
 
 Read `AGENTS.md`, `docs/decision-log.md` (029–034), `docs/open-questions.md` (23),
 `docs/development/README.md`, Roadmap §§29–31 and §§51–58, the Plan 10 reach
-assessment, accepted Plan 17–20 reports, content generation/validation/eligibility
+assessment, available accepted family reports (do not assume Plans 17–20 exist), content generation/validation/eligibility
 contracts, practice registry and episode/replay/reset contracts. Preserve exact
 math, immutable configuration, registered semantic identity, capability refusal,
 fragment-only practice addressing and the public-repository PII boundary.
@@ -56,7 +60,7 @@ fragment-only practice addressing and the public-repository PII boundary.
 ## Scope
 
 Read source/tests/accepted browser evidence. Write `README.md`, `content-inventory.md`,
-`selection-options.md`, and `next-problem-contract-proposal.md` in the new dossier;
+`selection-options.md`, `practice-type-model.md`, and `next-problem-contract-proposal.md` in the new dossier;
 optional aggregate synthetic analysis JSON under this packet's report folder.
 Do not edit source, canonical decisions/open questions, prototype registers, route
 matrix, disposition records or other packet statuses. Existing command invocations
@@ -64,10 +68,25 @@ and ephemeral analysis are permitted; persistent tooling requires scope approval
 
 ## Implementation Requirements
 
+### Requirement 0 — Early practice-model decision brief
+
+Run preflight. Use Principle §8, the owner's previously named practice goals and
+the existing registry to compare learner-meaningful practice goals with internal
+mathematical families. Explain whether nested/shared-factor/like-denominator cases
+belong inside a goal with varied instances, on distinct entry buttons, or on reviewer-
+only addressable routes. Do not conflate a stable content/definition identity with
+a required learner button. Show the resulting entry labels and number of controls
+without building UI. Recommend the smallest calm model and give the owner a concrete
+decision brief early; do not wait for the entire content sweep. Record the owner's
+decision through orchestration before family packets add entry surfaces. No model
+is adopted by this packet. Existing coarse sum-above-one intent remains an input;
+mixed-number availability is not activated. Continue later analysis only within
+the resulting scope and keep undecided next-problem choices labeled proposed.
+
 ### Requirement 1 — Inspect real coverage
 
 Run preflight and inventory candidate authored fixtures and bounded deterministic
-generation across the accepted addition families. Mark separately: math-valid,
+generation across current accepted and prospective addition families. Mark separately: math-valid,
 content-valid, representation-eligible, fully authored instructional data, replay-
 reconstructable, and actually witnessed through the learner app. Synthetic checks
 cannot promote a candidate to browser-demonstrated reach. Include scale factors,

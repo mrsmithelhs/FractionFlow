@@ -2,7 +2,7 @@
 id: plan-17
 title: Crossing-One-Whole Addition
 status: draft
-depends_on: [plan-11, plan-12, plan-13, plan-14, plan-16]
+depends_on: [plan-11, plan-12, plan-13, plan-14, plan-16, plan-22]
 gate: "Requirement 0: approve semantic stack projection, answer withholding, capability bounds, registry identity, and measured layout mechanism before source work. Technical and owner rendered-screen/agency acceptance before completion; deployment separately authorized."
 superseded_by: null
 resolution: null
@@ -23,7 +23,7 @@ summary: >-
 - Packet type: feature
 - Mutation level: source / learner-facing local behavior
 - Approval gate: mechanism, technical delivery, and owner screen/agency acceptance
-- Depends on: `plan-11`, `plan-12`, `plan-13`, `plan-14`, `plan-16`
+- Depends on: `plan-11`, `plan-12`, `plan-13`, `plan-14`, `plan-16`, `plan-22`
 - Expected artifacts: bounded content/interaction/render/app changes, tests and browser evidence, packet progress report
 
 ## Goal
@@ -42,7 +42,12 @@ levels, adaptive policy, session sequencing, persistence, and deployment are exc
 
 The entry and support writers, route harness, frozen schedule, and actual motion
 must be accepted first. Plan 11 is currently in progress; drafting this packet does
-not authorize starting it while that dependency is incomplete.
+not authorize starting it while that dependency is incomplete. Plan 22 repairs
+the live numeric-denominator coverage/capability dead end before expansion and
+before a combined public release. Plan 21's early owner practice-type disposition
+must precede adding a new entry surface; it is a named policy gate, not a requirement
+that every future content-inventory task be finished. Other family packets are not
+technical dependencies. Implement source packets one writer at a time.
 
 ## Why this packet exists
 
@@ -76,13 +81,29 @@ the standalone subtraction prototypes, or owner/orchestrator disposition records
 
 ### Requirement 0 — Investigate and propose; stop
 
-Run packet preflight. Capture the then-current route baseline and construction
-refusal for the proposed fixture. Propose registered definition identity, vetted
+Run packet preflight. Capture the then-current route baseline and actual construction
+acceptance/refusal separately from renderer refusal. At the reviewed baseline the
+existing relatively-prime definition admits this crossing fixture; do not invent an
+instructional refusal or assume a new definition also generalizes family admission.
+Propose registered definition identity, admissible selector/result semantics, vetted
 fixture and alternate-denominator routes, upstream semantic stack data, capability
 limits for operands/results/choice distractors, and answer-withholding rules.
 Specify where quotient/remainder facts come from validated exact math; renderers
 consume supplied quantities, never become a second math engine. Explain how the
 last conversion animation, operate collapse, Replay and reflection share layout.
+Tightening the legacy definition's accepted result range is a semantic change,
+not automatically authorized by this new identity; propose and verify compatibility
+before adopting it. Reuse existing validated `representationFacts.wholeSpan` where
+applicable instead of inventing a second mathematical derivation.
+State the intended operate responsibility explicitly: DECISION-032 permits a
+countable combined stack, while today's task names combining addend quantities.
+Explain the proposed upstream pre-answer projection and whether contributions
+remain identifiable. Give a concrete non-visual equivalent that exposes the needed
+quantity information without announcing the total; hiding all countable information
+is not participation parity. Present the agency tradeoff and the alternative of
+retaining addends until the answer for owner consideration. The latter changes
+DECISION-032 timing and cannot be adopted without an owner amendment. No categorical
+leakage finding or automatic relocation to resolve is assumed here.
 Return for approval before source edits. A prototype variable is not settled by
 this proposal. If an upstream math addition is necessary, return for scope review.
 
@@ -107,7 +128,14 @@ semantics their own registered identity. Exercise canonical denominator 12 and
 a vetted alternative (proposed 24), both support profiles, local recovery, help,
 Replay, reflection, retry, return and clean re-entry through mounted controls.
 Premise/reflection data must be vetted for this content; do not reuse false facts
-from the canonical `2/3 + 1/4` episode. Missing authored data is a gate issue.
+from the canonical `2/3 + 1/4` episode. Reuse is allowed when verified facts genuinely
+match (this fixture retains the same left operand); new equations and right-side
+facts still need validation. Missing authored data is a gate issue. Author and
+validate the proposed fixture explicitly; it is not a currently stored golden case.
+For each admitted path, verify condition-specific authored coverage or the approved
+Plan 22 continuation/boundary, not just denominator eligibility. Add typed out-of-
+coverage/capability routes; 12/24 alone cannot prove this property. Entry labels must
+distinguish the two learner goals plainly, under the approved practice-type model.
 
 ### Requirement 3 — Browser geometry and access
 
@@ -129,6 +157,7 @@ projection; add reciprocal browser witnesses and failure seeds; run `npm test`,
 
 - [ ] Existing route rows/assertions are preserved; additions are separately identified.
 - [ ] Browser witnesses reject a one-whole truncation, resized second whole, and answer leakage before submission; clean runs pass.
+- [ ] Non-visual quantity/agency parity and accepted-path closure are witnessed; no total announced before response and no unsupported renderer mount.
 - [ ] Required artifacts and measured screenshots exist; access and recovery journeys reach completion.
 - [ ] No unrelated files changed and all approval gates honored.
 - [ ] Progress report exists at `reports/development/plan-17-crossing-one-whole-addition/progress.md`.

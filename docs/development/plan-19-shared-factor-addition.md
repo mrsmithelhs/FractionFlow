@@ -2,7 +2,7 @@
 id: plan-19
 title: Shared-Factor Addition
 status: draft
-depends_on: [plan-18]
+depends_on: [plan-11, plan-12, plan-13, plan-14, plan-16, plan-22]
 gate: "Requirement 0 mechanism confirmation before source work; technical and owner rendered-screen/agency acceptance; deployment separately authorized."
 superseded_by: null
 resolution: null
@@ -23,7 +23,7 @@ summary: >-
 - Packet type: feature
 - Mutation level: source / learner-facing local behavior
 - Approval gate: mechanism, technical and owner acceptance
-- Depends on: `plan-18`
+- Depends on: `plan-11`, `plan-12`, `plan-13`, `plan-14`, `plan-16`, `plan-22`
 - Expected artifacts: vetted family/definition/registry increment, authored data, tests, routes, screenshots and report
 
 ## Goal and why this packet exists
@@ -37,13 +37,18 @@ without combining it with a new simplification lesson.
 ## Non-goals and dependencies
 
 No subtraction, new beats, mixed numbers, adaptive fading, arbitrary generation,
-session sequencing, persistence or deployment. Plan 18 is sequenced first to settle
-generalized family admission and denominator-task contracts before this reuse.
+session sequencing, persistence or deployment. The accepted baseline and Plan 22
+path-closure repair are dependencies; nested addition is not. Both operands need
+renaming for 12 and 24 here, so the nested schedule choice cannot block this work.
+Plan 21's early owner practice-type decision must precede assignment of a new entry
+surface. A separate family button is not assumed; implement the approved route
+inside the approved practice model. Serialize source changes with other packets.
 
 ## Authority and contracts
 
 Read `AGENTS.md`, `docs/decision-log.md`, `docs/development/README.md`, Roadmap
-§§27–31, Plan 10 reach assessment, accepted Plan 17/18 reports and the current
+§§27–31, Plan 10 reach assessment, Plan 21's recorded practice-model disposition,
+the Plan 22 report and the current
 definition, content eligibility, scene, premise/reflection and replay contracts.
 Preserve exact arithmetic, frozen schedules/support, meaningful alternate pathways,
 existing identities and route assertions, beat leakage and the participation floor.
@@ -63,7 +68,12 @@ fixture, complete canonical/alternate paths, accepted final forms and authored
 connection/reflection truth. Inspect which denominators are eligible and which
 choice distractors remain renderable. Show wiring from registry through validated
 content to immutable configuration and scene; identify exact write paths.
-Obtain mechanism approval before source changes.
+The current admission guard compares against the Phase 2 constant rather than the
+supplied definition. Specify bounded registered-selector validation without opening
+unreviewed families. Author and validate the fixture and per-path data; verify any
+reuse against actual facts. Add valid-but-unauthored and out-of-capability numeric
+proposals to the coverage plan using the approved Plan 22 policy. Obtain mechanism
+approval before source changes.
 
 ### Requirement 1 — Full vetted learner route
 
@@ -89,7 +99,7 @@ scrolling honestly. Retain all pre-existing route rows/assertions.
 Approved mechanism → bounded implementation → targeted exact-state/content checks
 and browser evidence → full tests/build/routes, packet lint and diff check → report.
 
-- [ ] New practice is reachable from entry and recognized fragment, with truthful authored data.
+- [ ] Vetted content is reachable through the approved practice entry/fragment contract, with truthful authored data and accepted-path closure.
 - [ ] Required artifacts, failure-seed rejection, access journeys and screenshots exist.
 - [ ] No unrelated files changed; gates honored and legacy replay checked.
 - [ ] `reports/development/plan-19-shared-factor-addition/progress.md` exists.

@@ -2,7 +2,7 @@
 id: plan-20
 title: Like-Denominator Addition and Notice Recovery
 status: draft
-depends_on: [plan-19]
+depends_on: [plan-11, plan-12, plan-13, plan-14, plan-16, plan-22]
 gate: "Requirement 0 mechanism confirmation before source work; technical and owner rendered-screen/agency acceptance; deployment separately authorized."
 superseded_by: null
 resolution: null
@@ -23,7 +23,7 @@ summary: >-
 - Packet type: feature
 - Mutation level: source / learner-facing local behavior
 - Approval gate: mechanism, technical and owner screen/agency acceptance
-- Depends on: `plan-19`
+- Depends on: `plan-11`, `plan-12`, `plan-13`, `plan-14`, `plan-16`, `plan-22`
 - Expected artifacts: vetted practice/definition, same-parts recovery copy, tests, routes, browser evidence and report
 
 ## Goal and why this packet exists
@@ -37,22 +37,25 @@ feedback for incorrectly saying equal-denominator parts have different sizes.
 
 No redundant denominator choice or conversions, new simplify beat, subtraction,
 mixed numbers, generated draws, adaptive support/session policy or deployment.
-Plan 19 supplies the accepted incremental family/registry path; the source packets
-are intentionally sequential. This packet does not require every family to share
+The accepted precursors and Plan 22's closure repair are dependencies; no other
+new family is a technical prerequisite. Execute source work one writer at a time.
+Plan 21's early owner practice-model decision gates any new entry surface; a
+button per family is not assumed. This packet does not require every family to share
 the canonical episode's number of controls or visual differences between profiles.
 
 ## Authority and contracts
 
 Read `AGENTS.md`, `docs/decision-log.md` (034), `docs/open-questions.md` (21),
 `docs/development/README.md`, Roadmap §§27–31, Plan 10 reach assessment, accepted
-Plan 16/18/19 reports, current notice classification, strings, scene, schedule and
+Plan 16/22 reports and the early Plan 21 practice-model disposition, current notice classification, strings, scene, schedule and
 leakage contracts. Preserve exact math, frozen configuration, learner agency,
 legacy identity/replay and keyboard/touch/linear participation.
 
 ## Scope
 
-Vetted fixture and registered definition, admission/notice recovery, scene and
-renderer consumption of the existing zero-renaming schedule, applicable authored
+Vetted fixture and registered definition, admission/notice recovery, pure reducer
+and classification prerequisites for the zero-renaming arc, scene and renderer
+consumption of the existing schedule, applicable authored
 reflection data, entry registry, tests and routes. No learner surfaces solely to
 make support profiles look different when their varied dimensions are inapplicable.
 
@@ -60,12 +63,27 @@ make support profiles look different when their varied dimensions are inapplicab
 
 ### Requirement 0 — Propose and stop
 
-Run preflight. Trace the zero-renaming flow and wrong notice response. Propose
+Run preflight. Trace the zero-renaming flow through operate, resolve and completion,
+not only schedule construction, and the wrong notice response. The current reducer
+sets `commonDenominator` only in decide and unconditionally parses both conversions;
+name the changes establishing the implied unit from validated content and effective
+original operand forms without inventing a learner choice or conversion. Verify
+accepted-definition completion and replay. Name registered-selector admission and
+explicit fixture authoring/validation as work, not already available capability.
+Propose
 same-sized-parts feedback, reflection/condition applicability, registry identity,
 final-form handling and absence checks for skipped beats. Explicitly establish
 what the premise-check condition means with no conversion; do not show a stale
 conversion question or silently invent a new mathematical task. If that requires
-an owner condition-policy decision, obtain it at this gate. Approve the mechanism
+an owner condition-policy decision, obtain it at this gate. The recommended option
+for owner consideration is `includeReflection: false` with transformation-specific
+conditions inapplicable; this is a proposal, not an adopted task decision. A meaningful
+authored alternative needs explicit task semantics and identity, not a trivial unchanged-
+fraction check. Specify the per-practice applicability contract and route declarations:
+use existing `declaredSameAs` machinery where appropriate, absence assertions for
+skipped work, and negative controls only where a difference is genuinely expected.
+Do not weaken canonical condition witnesses or add controls just to manufacture diversity.
+Approve the mechanism
 and exact files before source changes.
 
 ### Requirement 1 — Real bypass with honest recovery
@@ -79,13 +97,14 @@ uses vetted content and retains the required mathematical decision.
 ### Requirement 2 — Reach and absence evidence
 
 Browser witnesses start at entry and exercise correct notice and wrong-notice
-recovery, arithmetic recovery, help/Replay where meaningful, reflection, retry,
+recovery, arithmetic recovery including the denominator-addition response `5/14`
+to `2/7 + 3/7`, help/Replay where meaningful, approved reflection/applicability, retry,
 return/re-entry and fragment launch. Verify no skipped denominator/conversion
 control or answer content is mounted in either visual or linear path. Run both
 support profiles and document when projected output legitimately matches. Cover
 keyboard, non-drag touch and reduced motion. Seed stale conversion content or
 unlike-denominator recovery text and show the witness rejects it. Measure and
-capture both 360px viewports, including recovery and reflection. Keep old route
+capture both 360px viewports, including recovery and reflection when applicable. Keep old route
 rows/assertions and applicable reciprocal controls intact.
 
 ## Work plan and validation checklist

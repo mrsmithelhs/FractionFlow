@@ -41,11 +41,14 @@ Authoritative status is `node scripts/dev/plan-status.js list` and the generated
 
 1. **`plan-11`** is in progress with its mechanism approved at `a472fc1`. Delivery and
    deployed owner acceptance remain pending; no deployment or automatic advancement is authorized.
-2. **Plans 17–21 are drafts for owner review**, not assignments: crossing-one-whole addition,
-   nested addition, shared-factor addition, like-denominator addition, then practice-variety/
-   next-problem design. See `roadmap-position-2026-10-04.md` for order and gates. In particular,
-   Plan 18 must resolve a valid alternate denominator needing more conversions than the frozen
-   canonical schedule permits. No policy amendment is adopted by drafting the packet.
+2. **Plans 17–22 are drafts for owner review**, not assignments. The independent Claude/Gemini
+   reviews are dispositioned in `next-wave-plans-17-21-review-disposition.md`. Plan 21 now has
+   completed foundation deps and produces an early practice-model decision; the nested policy
+   has a separate brief. Artificial family-to-family deps are removed. Plan 22 repairs a verified
+   live denominator-36 reflection/capability dead end before release and expansion. Receive Plan 11's
+   technical commit, serialize Plan 22 source work, then seek a concrete repaired release authorization
+   and Plan 11's deployed acceptance. Preferred family order thereafter is 17,20,19,18, with policy
+   flexibility. Source work remains single-writer. No policy change or deployment is adopted here.
 3. Plan 15's standalone prototypes are accepted for observation preparation. Both subtraction
    representations remain open; actual observation sessions, OQ-25 selection, and deployment
    require their own owner direction.
