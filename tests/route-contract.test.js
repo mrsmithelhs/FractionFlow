@@ -108,7 +108,8 @@ describe('Plan 14 Reachable Behavior Route Contract & Matrix Schema', () => {
     expect(learnerRoutes).toHaveLength(37);
     for (const route of learnerRoutes) {
       expect(route.startingSurface).toBe('mounted-app-entry');
-      expect(route.viewport).toEqual({ width: 360, height: 740 });
+      expect(route.viewport.width).toBe(360);
+      expect(route.viewport.height).toBe(route.id === 'ROUTE-REPLAY-COND-1' ? 752 : 740);
       expect(['standard-motion', 'reduced-motion']).toContain(route.motionMode);
       expect(route.witness).toBe('browser');
     }
@@ -218,6 +219,108 @@ describe('Plan 14 Reachable Behavior Route Contract & Matrix Schema', () => {
           && action.value.includes('not a common denominator.'))).toBe(true);
       }
     }
+  });
+
+  it('preserves the Plan 11 route baseline and witnesses executed motion, interruption, Replay, static arms, and both support profiles', () => {
+    expect(matrix.routes).toHaveLength(39);
+    expect(expandRouteExecutions(matrix.routes)).toHaveLength(41);
+
+    const route = (id) => matrix.routes.find((candidate) => candidate.id === id);
+    const primary = route('ROUTE-COND-1-TRANSFORM');
+    expect(primary.viewport).toEqual({ width: 360, height: 740 });
+    expect(primary.actions.some((action) => action.method === 'clickAndObserveSubdivision'
+      && action.container.includes('data-side="left"'))).toBe(true);
+    expect(primary.actions.some((action) => action.method === 'clickAndObserveSubdivision'
+      && action.interruptReducedMotion === true
+      && action.container.includes('data-side="left"'))).toBe(true);
+    expect(primary.actions.some((action) => action.method === 'click'
+      && action.target.includes('Need help?'))).toBe(true);
+    expect(primary.actions.some((action) => action.method === 'assertNoSubdivisionMotion'
+      && action.container === '.app-visual-view .fraction-bar-container[data-side="left"]')).toBe(true);
+
+    const replay = route('ROUTE-REPLAY-COND-1');
+    expect(replay.viewport).toEqual({ width: 360, height: 752 });
+    const replayMotion = replay.actions.filter((action) => action.method === 'clickAndObserveSubdivision');
+    expect(replayMotion).toHaveLength(2);
+    expect(replayMotion[0].target).toBe('.app-visual-view .control-submit-btn');
+    expect(replayMotion[1].target).toBe('.app-visual-view .fraction-bar-toggle-btn');
+    expect(replay.actions.some((action) => action.method === 'scrollIntoView'
+      && action.target === '.app-visual-view .fraction-bar-toggle-btn')).toBe(true);
+    expect(replay.actions.find((action) => action.step === 10).assertions)
+      .toContainEqual(expect.objectContaining({
+        type: 'visibleGeometry',
+        target: '.app-visual-view .fraction-bar-toggle-btn',
+        minWidth: 24,
+        minHeight: 24,
+      }));
+
+    const high = route('ROUTE-SUPPORT-HIGH-DECIDE');
+    const medium = route('ROUTE-SUPPORT-MEDIUM-DECIDE');
+    for (const [candidate, profile] of [[high, 'high-support'], [medium, 'medium-support']]) {
+      expect(candidate.actions.some((action) => action.target === `[data-support-id="${profile}"]`)).toBe(true);
+      expect(candidate.actions.some((action) => action.target?.includes('control-choice-btn >> nth=1')
+        || action.value === '24')).toBe(true);
+      for (const side of ['left', 'right']) {
+        expect(candidate.actions.some((action) => (
+          ['clickAndObserveSubdivision', 'clickAndStartSubdivision'].includes(action.method)
+          && action.container?.includes(`data-side="${side}"`)
+        ))).toBe(true);
+      }
+      expect(candidate.expect.assertions).toContainEqual(expect.objectContaining({
+        type: 'attributeEquals',
+        target: `.app-visual-view .fraction-bar-container[data-side="left"] .fraction-bar-track`,
+        attribute: 'data-denominator',
+        value: '24',
+      }));
+    }
+    expect(high.actions.some((action) => action.method === 'clickAndObserveSubdivision'
+      && action.requireConcurrentMotion === true)).toBe(true);
+
+    const reduced = route('ROUTE-REDUCED-MOTION');
+    expect(reduced.motionMode).toBe('reduced-motion');
+    expect(reduced.actions.filter((action) => action.method === 'assertNoSubdivisionMotion'
+      && action.denominator === 24)).toHaveLength(2);
+    const endpointSignature = (assertions) => assertions
+      .filter((assertion) => assertion.target?.endsWith('.fraction-bar-track'))
+      .map(({ target, attribute, value }) => ({ target, attribute, value }))
+      .sort((left, right) => `${left.target}:${left.attribute}`.localeCompare(`${right.target}:${right.attribute}`));
+    const mediumEndpoint = endpointSignature(route('ROUTE-SUPPORT-MEDIUM-DECIDE').expect.assertions);
+    const reducedEndpoint = endpointSignature(reduced.expect.assertions);
+    expect(reducedEndpoint).toEqual(mediumEndpoint);
+
+    for (const id of ['ROUTE-COND-2-TRANSFORM', 'ROUTE-COND-3-TRANSFORM', 'ROUTE-COND-4-REFLECT']) {
+      expect(route(id).actions.some((action) => action.method === 'assertNoSubdivisionMotion')).toBe(true);
+    }
+    expect(route('ROUTE-FOCUS-INSPECTION-RESTORE').actions.some((action) => (
+      action.method === 'assertNoSubdivisionMotion' && action.container === '.app-visual-view'
+    ))).toBe(true);
+    expect(route('ROUTE-FOCUS-INSPECTION-RESTORE-LINEAR').actions.some((action) => (
+      action.method === 'assertNoSubdivisionMotion' && action.container === '.app-linear-view'
+    ))).toBe(true);
+    expect(route('ROUTE-COND-4-TRANSFORM-SAME').actions.some((action) => (
+      action.method === 'clickAndObserveSubdivision'
+    ))).toBe(true);
+    expect(route('ROUTE-COND-1-REFLECT').actions.some((action) => (
+      action.method === 'clickAndObserveSubdivision'
+      && action.interruptReducedMotion === true
+      && action.container.includes('data-side="right"')
+    ))).toBe(true);
+  });
+
+  it('rejects unknown methods and incomplete subdivision-motion witnesses', async () => {
+    const unknown = JSON.parse(JSON.stringify(matrix));
+    unknown.routes[0].actions[0].method = 'clickAndPretendSubdivision';
+    const unknownResult = await validateMatrixIntegrity(unknown, REGISTERED_CONDITIONS);
+    expect(unknownResult.valid).toBe(false);
+    expect(unknownResult.errors.some((error) => error.includes('unknown action method'))).toBe(true);
+
+    const missingContainer = JSON.parse(JSON.stringify(matrix));
+    const observer = missingContainer.routes.find((candidate) => candidate.id === 'ROUTE-COND-1-TRANSFORM')
+      .actions.find((action) => action.method === 'clickAndObserveSubdivision');
+    delete observer.container;
+    const containerResult = await validateMatrixIntegrity(missingContainer, REGISTERED_CONDITIONS);
+    expect(containerResult.valid).toBe(false);
+    expect(containerResult.errors.some((error) => error.includes('requires a mounted "target" and "container"'))).toBe(true);
   });
 
   it('rejects a prototype route when its same-motion negative control row is removed', async () => {

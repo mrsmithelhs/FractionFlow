@@ -121,6 +121,63 @@
   background-color: var(--ff-bar-unshaded);
 }
 
+/* Persistent in-place bars keep their whole, fill, and old boundaries anchored. */
+.fraction-bar-container-persistent {
+  align-items: start;
+}
+
+.fraction-bar-container-persistent .fraction-bar-track-persistent {
+  position: relative;
+  display: block;
+  align-self: start;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.fraction-bar-fill {
+  position: absolute;
+  z-index: 0;
+  inset-block: 0;
+  left: 0;
+  background-color: var(--ff-bar-shaded);
+  pointer-events: none;
+}
+
+.fraction-bar-segment-layer,
+.fraction-bar-boundary-layer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.fraction-bar-segment-layer {
+  z-index: 1;
+  display: flex;
+}
+
+.fraction-bar-track-persistent .fraction-bar-segment {
+  flex: 1 1 0;
+  min-width: 0;
+  border: 0;
+  background-color: transparent;
+  transition: none;
+}
+
+.fraction-bar-boundary-layer {
+  z-index: 2;
+}
+
+.fraction-bar-boundary {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  margin-left: -0.5px;
+  background-color: var(--ff-bar-subdivide-line);
+  transform-origin: top center;
+  pointer-events: none;
+}
+
 .fraction-bar-readout {
   grid-column: 2;
   grid-row: 1;
@@ -133,6 +190,13 @@
   line-height: 1;
   color: var(--ff-color-text-muted);
   font-variant-numeric: tabular-nums;
+}
+
+.fraction-bar-container-persistent .fraction-bar-readout {
+  align-self: center;
+  box-sizing: border-box;
+  width: 3rem;
+  min-width: 3rem;
 }
 
 .fraction-bar-readout-numerator,
@@ -264,6 +328,38 @@
   width: 100%;
 }
 
+.fraction-bar-container-persistent .fraction-bar-replay-controls {
+  grid-column: 2;
+  grid-row: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.125rem;
+  box-sizing: border-box;
+  width: 3rem;
+  min-width: 3rem;
+  max-width: 3rem;
+  text-align: center;
+}
+
+.fraction-bar-container-persistent .fraction-bar-replay-controls .fraction-bar-badge {
+  max-width: 100%;
+  font-size: 0.6875rem;
+  line-height: 1.1;
+  overflow-wrap: anywhere;
+}
+
+.fraction-bar-container-persistent .fraction-bar-toggle-btn {
+  width: 100%;
+  min-width: 0;
+  min-height: 28px;
+  margin: 0;
+  padding: 0.125rem;
+  line-height: 1.1;
+  white-space: normal;
+}
+
 .fraction-bar-replay-header {
   display: flex;
   align-items: center;
@@ -338,6 +434,7 @@
 /* Reduced Motion Overrides */
 @media (prefers-reduced-motion: reduce) {
   .fraction-bar-segment,
+  .fraction-bar-boundary,
   .fraction-control,
   .replay-active {
     transition: none !important;

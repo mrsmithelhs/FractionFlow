@@ -152,6 +152,20 @@ async function validateMatrixIntegrity(matrix, registeredConditions) {
 
   const routeIds = new Set();
   const configurationsCovered = new Set();
+  const validActionMethods = new Set([
+    'click',
+    'fill',
+    'pressKey',
+    'assertText',
+    'focus',
+    'assertFocused',
+    'assert',
+    'scrollIntoView',
+    'clickAndObserveSubdivision',
+    'clickAndStartSubdivision',
+    'assertNoSubdivisionMotion',
+    'dispatch-fallback',
+  ]);
 
   for (const route of matrix.routes) {
     if (!route.id) errors.push('Route missing required "id".');
@@ -223,6 +237,24 @@ async function validateMatrixIntegrity(matrix, registeredConditions) {
 
     // Condition A: Dispatch-fallback enforcement
     for (const action of route.actions || []) {
+      if (!validActionMethods.has(action.method)) {
+        errors.push(`Route "${route.id}" step ${action.step} has unknown action method "${action.method}".`);
+      }
+      if (['clickAndObserveSubdivision', 'clickAndStartSubdivision'].includes(action.method)
+        && (!action.target || !action.container)) {
+        errors.push(`Route "${route.id}" step ${action.step} subdivision action requires a mounted "target" and "container".`);
+      }
+      if (action.method === 'clickAndObserveSubdivision' && action.interruptReducedMotion
+        && route.motionMode !== 'standard-motion') {
+        errors.push(`Route "${route.id}" step ${action.step} may interrupt with reduced motion only from standard motion.`);
+      }
+      if (action.method === 'clickAndObserveSubdivision' && action.requireConcurrentMotion
+        && (!action.concurrentContainer || action.interruptReducedMotion)) {
+        errors.push(`Route "${route.id}" step ${action.step} concurrent subdivision evidence requires a concurrent container and cannot interrupt motion.`);
+      }
+      if (action.method === 'assertNoSubdivisionMotion' && !action.container) {
+        errors.push(`Route "${route.id}" step ${action.step} static-motion assertion requires a mounted "container".`);
+      }
       if (action.method === 'dispatch-fallback') {
         if (!action.reason) {
           errors.push(`FATAL (Condition A): Route "${route.id}" step ${action.step} has dispatch-fallback without a "reason".`);
@@ -306,6 +338,348 @@ async function validateMatrixIntegrity(matrix, registeredConditions) {
 /**
  * Execute a single action against Playwright page.
  */
+async function observeSubdivision(page, action, routeId) {
+  const evidenceId = `${routeId}:${action.step}`;
+  const container = page.locator(action.container);
+  await container.evaluate((root, id) => {
+    const track = root.querySelector('.fraction-bar-track');
+    const fill = track?.querySelector('.fraction-bar-fill');
+    const episode = root.closest('.app-episode');
+    const question = episode?.querySelector('.active-beat-prompt');
+    const controls = episode?.querySelector('.active-beat-controls');
+    const whole = track?.getBoundingClientRect();
+    const fillBox = fill?.getBoundingClientRect();
+    if (!track || !fill || !whole || !fillBox || !question || !controls) {
+      throw new Error('persistent track, fill, question, and active controls must be mounted before the learner action');
+    }
+    const rect = (element) => {
+      const box = element.getBoundingClientRect();
+      return {
+        x: box.x,
+        y: box.y,
+        left: box.left,
+        top: box.top,
+        right: box.right,
+        bottom: box.bottom,
+        width: box.width,
+        height: box.height,
+      };
+    };
+    window.__fractionFlowMotionWitnesses ||= new Map();
+    const boundaries = [...track.querySelectorAll('.fraction-bar-boundary')];
+    const record = {
+      root,
+      track,
+      fill,
+      boundaries: new Map(boundaries.map((element) => [element.dataset.boundaryKey, element])),
+      before: {
+        whole: { x: whole.x, y: whole.y, width: whole.width, height: whole.height },
+        fill: { x: fillBox.x, y: fillBox.y, width: fillBox.width, height: fillBox.height },
+        layout: {
+          question: rect(question),
+          controls: rect(controls),
+          scrollX: window.scrollX,
+          scrollY: window.scrollY,
+          viewportWidth: window.innerWidth,
+          viewportHeight: window.innerHeight,
+        },
+        boundaryCount: boundaries.length,
+        boundaryGeometry: new Map(boundaries.map((element) => {
+          const box = element.getBoundingClientRect();
+          return [element.dataset.boundaryKey, {
+            x: box.x,
+            y: box.y,
+            width: box.width,
+            height: box.height,
+          }];
+        })),
+      },
+    };
+    window.__fractionFlowMotionWitnesses.set(id, record);
+  }, evidenceId);
+
+  // This is the same mounted control a learner activates. The observer is attached
+  // to the real page; it does not call or configure a renderer.
+  await page.locator(action.target).click();
+
+  const started = await container.evaluate((root, options) => {
+    const records = window.__fractionFlowMotionWitnesses;
+    const previous = records?.get(options.id);
+    if (!previous) throw new Error('missing pre-action DOM identity witness');
+    const track = root.querySelector('.fraction-bar-track');
+    const fill = track?.querySelector('.fraction-bar-fill');
+    if (root !== previous.root || track !== previous.track || fill !== previous.fill) {
+      throw new Error('bar root, track, or shaded-fill element was replaced by the conversion');
+    }
+    const boundaries = [...track.querySelectorAll('.fraction-bar-boundary')];
+    const existing = [...previous.boundaries.entries()];
+    const replacedExisting = existing.filter(([key, element]) => (
+      !boundaries.some((current) => current === element && current.dataset.boundaryKey === key)
+    ));
+    if (replacedExisting.length > 0) {
+      throw new Error(`existing partition boundary nodes were replaced: ${replacedExisting.map(([key]) => key).join(', ')}`);
+    }
+    const newBoundaries = boundaries.filter((element) => !existing.some(([, old]) => old === element));
+    if (newBoundaries.length === 0) throw new Error('the learner action added no subdivision boundaries');
+    const animations = newBoundaries.flatMap((element) => element.getAnimations());
+    if (animations.length !== newBoundaries.length) {
+      throw new Error(`expected one executed animation per new boundary; found ${animations.length} for ${newBoundaries.length} boundaries`);
+    }
+    const allAnimations = track.getAnimations({ subtree: true });
+    if (allAnimations.length !== animations.length
+      || allAnimations.some((animation) => !newBoundaries.includes(animation.effect?.target))) {
+      throw new Error('motion ran on a visual element other than a newly introduced boundary');
+    }
+    previous.newBoundaries = newBoundaries;
+    previous.animations = animations;
+    const concurrentContainer = options.concurrentContainer
+      ? document.querySelector(options.concurrentContainer)
+      : null;
+    const concurrentAnimations = concurrentContainer
+      ? [...concurrentContainer.querySelectorAll('.fraction-bar-boundary')]
+        .flatMap((element) => element.getAnimations())
+        .filter((animation) => animation.playState === 'running').length
+      : 0;
+    previous.concurrentAnimations = concurrentAnimations;
+    if (options.requireConcurrentMotion && concurrentAnimations === 0) {
+      throw new Error(`expected the preceding submission's effect to remain active during the rapid next submission`);
+    }
+    return { existingBoundaryCount: existing.length, newBoundaryCount: newBoundaries.length, concurrentAnimations };
+  }, {
+    id: evidenceId,
+    concurrentContainer: action.concurrentContainer || null,
+    requireConcurrentMotion: action.requireConcurrentMotion === true,
+  });
+
+  const intermediate = await container.evaluate(async (root, id) => {
+    const previous = window.__fractionFlowMotionWitnesses?.get(id);
+    if (!previous) throw new Error('missing in-flight DOM identity witness');
+    const track = root.querySelector('.fraction-bar-track');
+    const fill = track?.querySelector('.fraction-bar-fill');
+    const episode = root.closest('.app-episode');
+    const question = episode?.querySelector('.active-beat-prompt');
+    const controls = episode?.querySelector('.active-beat-controls');
+    const rect = (element) => {
+      const box = element.getBoundingClientRect();
+      return {
+        x: box.x,
+        y: box.y,
+        left: box.left,
+        top: box.top,
+        right: box.right,
+        bottom: box.bottom,
+        width: box.width,
+        height: box.height,
+      };
+    };
+    const measureLayout = () => {
+      const currentQuestion = root.closest('.app-episode')?.querySelector('.active-beat-prompt');
+      const currentControls = root.closest('.app-episode')?.querySelector('.active-beat-controls');
+      if (!currentQuestion || !currentControls) return null;
+      return {
+        question: rect(currentQuestion),
+        controls: rect(currentControls),
+        scrollX: window.scrollX,
+        scrollY: window.scrollY,
+        viewportWidth: window.innerWidth,
+        viewportHeight: window.innerHeight,
+      };
+    };
+    if (!question || !controls) throw new Error('question and active response control bounds are missing during subdivision');
+    let sample = null;
+    for (let frame = 0; frame < 24 && !sample; frame += 1) {
+      await new Promise((resolve) => requestAnimationFrame(resolve));
+      for (const animation of previous.animations) {
+        const progress = animation.effect?.getComputedTiming().progress;
+        const target = animation.effect?.target;
+        if (target && Number.isFinite(progress) && progress > 0.15 && progress < 0.9) {
+          const boundary = rect(target);
+          if (boundary.height > 0) {
+            const layout = measureLayout();
+            if (!layout) throw new Error('question and active response control bounds disappeared during subdivision');
+            sample = { progress, boundary, whole: rect(track), fill: rect(fill), layout };
+            break;
+          }
+        }
+      }
+    }
+    if (!sample || sample.boundary.height >= rect(track).height) {
+      throw new Error('no partially painted boundary was observed during the executed animation');
+    }
+    return sample;
+  }, evidenceId);
+
+  let interrupted = null;
+  let restored = null;
+  if (action.interruptReducedMotion) {
+    await page.emulateMedia({ reducedMotion: 'reduce' });
+    interrupted = await container.evaluate(async (root) => {
+      await new Promise((resolve) => requestAnimationFrame(() => requestAnimationFrame(resolve)));
+      const track = root.querySelector('.fraction-bar-track');
+      const fill = track?.querySelector('.fraction-bar-fill');
+      const rect = (element) => {
+        const box = element.getBoundingClientRect();
+        return { x: box.x, y: box.y, width: box.width, height: box.height };
+      };
+      return {
+        reducedMotionTrack: track.classList.contains('reduced-motion'),
+        activeAnimations: track.getAnimations({ subtree: true })
+          .filter((animation) => animation.playState === 'running').length,
+        whole: rect(track),
+        fill: rect(fill),
+        denominator: track.dataset.denominator,
+        numerator: track.dataset.numerator,
+      };
+    });
+    if (!interrupted.reducedMotionTrack || interrupted.activeAnimations !== 0) {
+      throw new Error(`switching to reduced motion failed to cancel and settle the effect: ${JSON.stringify(interrupted)}`);
+    }
+    await page.emulateMedia({ reducedMotion: 'no-preference' });
+    restored = await container.evaluate(async (root) => {
+      await new Promise((resolve) => requestAnimationFrame(() => requestAnimationFrame(resolve)));
+      const track = root.querySelector('.fraction-bar-track');
+      return {
+        reducedMotionTrack: track.classList.contains('reduced-motion'),
+        activeAnimations: track.getAnimations({ subtree: true })
+          .filter((animation) => animation.playState === 'running').length,
+        denominator: track.dataset.denominator,
+        numerator: track.dataset.numerator,
+      };
+    });
+    if (restored.reducedMotionTrack || restored.activeAnimations !== 0
+      || restored.denominator !== interrupted.denominator
+      || restored.numerator !== interrupted.numerator) {
+      throw new Error(`restoring standard motion replayed or changed the settled endpoint: ${JSON.stringify(restored)}`);
+    }
+  } else {
+    await container.evaluate(async (root) => {
+      let running = true;
+      for (let frame = 0; frame < 90 && running; frame += 1) {
+        await new Promise((resolve) => requestAnimationFrame(resolve));
+        const track = root.querySelector('.fraction-bar-track');
+        running = track.getAnimations({ subtree: true })
+          .some((animation) => animation.playState === 'running');
+      }
+      if (running) throw new Error('subdivision animation did not settle within 90 rendered frames');
+    });
+  }
+
+  const finalState = await container.evaluate((root, evidence) => {
+    const records = window.__fractionFlowMotionWitnesses;
+    const previous = records?.get(evidence.id);
+    if (!previous) throw new Error('missing settled DOM identity witness');
+    const track = root.querySelector('.fraction-bar-track');
+    const fill = track?.querySelector('.fraction-bar-fill');
+    if (root !== previous.root || track !== previous.track || fill !== previous.fill) {
+      throw new Error('bar root, track, or shaded-fill element was replaced before the effect settled');
+    }
+    const boundaries = [...track.querySelectorAll('.fraction-bar-boundary')];
+    const rect = (element) => {
+      const box = element.getBoundingClientRect();
+      return {
+        x: box.x,
+        y: box.y,
+        left: box.left,
+        top: box.top,
+        right: box.right,
+        bottom: box.bottom,
+        width: box.width,
+        height: box.height,
+      };
+    };
+    const rectDelta = (beforeBox, afterBox) => Object.fromEntries(
+      ['x', 'y', 'width', 'height'].map((key) => [key, Math.abs(beforeBox[key] - afterBox[key])]),
+    );
+    const whole = rect(track);
+    const fillBox = rect(fill);
+    const episode = root.closest('.app-episode');
+    const question = episode?.querySelector('.active-beat-prompt');
+    const activeControls = episode?.querySelector('.active-beat-controls');
+    if (!question || !activeControls) {
+      throw new Error('question and active response control bounds are missing after subdivision');
+    }
+    const layout = {
+      question: rect(question),
+      controls: rect(activeControls),
+      scrollX: window.scrollX,
+      scrollY: window.scrollY,
+      viewportWidth: window.innerWidth,
+      viewportHeight: window.innerHeight,
+    };
+    const visibleInViewport = (box, height) => box.top >= 0 && box.bottom <= height;
+    const newBoundaries = previous.newBoundaries;
+    const settled = {
+      whole,
+      fill: fillBox,
+      firstNewBoundary: rect(newBoundaries[0]),
+      activeAnimations: track.getAnimations({ subtree: true })
+        .filter((animation) => animation.playState === 'running').length,
+      denominator: track.dataset.denominator,
+      numerator: track.dataset.numerator,
+    };
+    const taskLayout = {
+      before: previous.before.layout,
+      intermediate: evidence.intermediate.layout,
+      settled: layout,
+    };
+    const questionAndControlsVisible = [taskLayout.before, taskLayout.intermediate, taskLayout.settled]
+      .every((frame) => visibleInViewport(frame.question, frame.viewportHeight)
+        && visibleInViewport(frame.controls, frame.viewportHeight));
+    const wholeBefore = previous.before.whole;
+    const fillBefore = previous.before.fill;
+    const anchorDrift = {
+      wholeIntermediate: rectDelta(wholeBefore, evidence.intermediate.whole),
+      fillIntermediate: rectDelta(fillBefore, evidence.intermediate.fill),
+      wholeSettled: rectDelta(wholeBefore, whole),
+      fillSettled: rectDelta(fillBefore, fillBox),
+    };
+    const existing = [...previous.boundaries.entries()];
+    const existingBoundaryDrifts = existing.map(([key, element]) => ({
+      key,
+      delta: rectDelta(previous.before.boundaryGeometry.get(key), rect(element)),
+      activeAnimations: element.getAnimations().filter((animation) => animation.playState === 'running').length,
+    }));
+    const driftWithinTolerance = (drift) => Object.values(drift).every((delta) => delta <= 0.5);
+    records.delete(evidence.id);
+    return {
+      before: {
+        ...previous.before,
+        boundaryGeometry: [...previous.before.boundaryGeometry.entries()].map(([key, geometry]) => ({ key, ...geometry })),
+      },
+      intermediate: evidence.intermediate,
+      settled,
+      taskLayout,
+      questionAndControlsVisible,
+      anchorDrift,
+      existingBoundaryCount: existing.length,
+      newBoundaryCount: newBoundaries.length,
+      concurrentAnimations: previous.concurrentAnimations,
+      interrupted: evidence.interrupted,
+      restored: evidence.restored,
+      existingBoundaryDrifts,
+      existingBoundariesStable: existingBoundaryDrifts.every((entry) => (
+        driftWithinTolerance(entry.delta) && entry.activeAnimations === 0
+      )),
+      stableAnchors: Object.values(anchorDrift).every(driftWithinTolerance),
+    };
+  }, { id: evidenceId, intermediate, interrupted, restored });
+
+  if (!finalState.stableAnchors) {
+    throw new Error(`bar outline or shaded amount moved during subdivision: ${JSON.stringify(finalState)}`);
+  }
+  if (!finalState.existingBoundariesStable) {
+    throw new Error(`an existing boundary moved or animated during subdivision: ${JSON.stringify(finalState)}`);
+  }
+  if (finalState.settled.activeAnimations !== 0) {
+    throw new Error(`subdivision effect did not settle: ${JSON.stringify(finalState)}`);
+  }
+  if (!finalState.questionAndControlsVisible) {
+    throw new Error(`question or active response controls left the visible viewport during subdivision: ${JSON.stringify(finalState.taskLayout)}`);
+  }
+  action.motionEvidence = finalState;
+  console.log(`  Motion witness ${evidenceId}: ${JSON.stringify(finalState)}`);
+}
+
 async function executeAction(page, action, routeId) {
   switch (action.method) {
     case 'click':
@@ -334,12 +708,134 @@ async function executeAction(page, action, routeId) {
       await page.locator(action.target).focus();
       break;
 
+    case 'scrollIntoView':
+      await page.locator(action.target).scrollIntoViewIfNeeded();
+      break;
+
     case 'assertFocused': {
       const target = page.locator(action.target);
       const count = await target.count();
       if (count === 0 || !await target.first().evaluate((element) => element === document.activeElement)) {
         throw new Error(`Route "${routeId}" expected "${action.target}" to have focus after step ${action.step}.`);
       }
+      break;
+    }
+
+    case 'assert':
+      await verifyAssertions(page, action.assertions || [], routeId);
+      break;
+
+    case 'clickAndObserveSubdivision':
+      await observeSubdivision(page, action, routeId);
+      break;
+
+    case 'clickAndStartSubdivision': {
+      const container = page.locator(action.container);
+      const evidenceId = `${routeId}:${action.step}`;
+      await container.evaluate((root, id) => {
+        const track = root.querySelector('.fraction-bar-track');
+        const fill = track?.querySelector('.fraction-bar-fill');
+        if (!track || !fill) throw new Error('persistent track and fill must be mounted before the learner action');
+        window.__fractionFlowRapidMotionWitnesses ||= new Map();
+        window.__fractionFlowRapidMotionWitnesses.set(id, {
+          root,
+          track,
+          fill,
+          boundaries: [...track.querySelectorAll('.fraction-bar-boundary')],
+        });
+      }, evidenceId);
+      await page.locator(action.target).click();
+      const evidence = await container.evaluate((root, id) => {
+        const previous = window.__fractionFlowRapidMotionWitnesses?.get(id);
+        if (!previous) throw new Error('missing rapid-response pre-action identity witness');
+        const track = root.querySelector('.fraction-bar-track');
+        const fill = track?.querySelector('.fraction-bar-fill');
+        const boundaries = [...(track?.querySelectorAll('.fraction-bar-boundary') || [])];
+        const introduced = boundaries.filter((element) => !previous.boundaries.includes(element));
+        const animations = introduced.flatMap((element) => element.getAnimations());
+        const allPreviousBoundariesRetained = previous.boundaries.every((element) => boundaries.includes(element));
+        const onlyNewBoundaryTargets = track.getAnimations({ subtree: true }).every((animation) => (
+          introduced.includes(animation.effect?.target)
+        ));
+        if (root !== previous.root || track !== previous.track || fill !== previous.fill
+          || !allPreviousBoundariesRetained || introduced.length === 0
+          || animations.length !== introduced.length || !onlyNewBoundaryTargets) {
+          throw new Error('rapid response did not start only on persistent track’s newly added boundaries');
+        }
+        const result = {
+          rootPreserved: true,
+          trackPreserved: true,
+          fillPreserved: true,
+          existingBoundariesPreserved: true,
+          newBoundaryCount: introduced.length,
+          runningAnimations: animations.filter((animation) => animation.playState === 'running').length,
+        };
+        window.__fractionFlowRapidMotionWitnesses.delete(id);
+        return result;
+      }, evidenceId);
+      if (evidence.runningAnimations === 0) {
+        throw new Error('rapid-response witness found no running subdivision animation');
+      }
+      action.motionEvidence = evidence;
+      console.log(`  Rapid motion witness ${routeId}:${action.step}: ${JSON.stringify(evidence)}`);
+      break;
+    }
+
+    case 'assertNoSubdivisionMotion': {
+      const container = page.locator(action.container);
+      const observed = await container.evaluateAll((roots) => {
+        const items = roots.map((root) => {
+          const tracks = root.matches('.fraction-bar-track')
+            ? [root]
+            : [...root.querySelectorAll('.fraction-bar-track')];
+          const boundaryCount = tracks.reduce((sum, track) => (
+            sum + track.querySelectorAll('.fraction-bar-boundary').length
+          ), 0);
+          const activeAnimations = tracks.reduce((sum, track) => (
+            sum + track.getAnimations({ subtree: true })
+              .filter((animation) => animation.playState === 'running').length
+          ), 0);
+          const activeVisualAnimations = root.getAnimations({ subtree: true })
+            .filter((animation) => {
+              if (animation.playState !== 'running') return false;
+              const target = animation.effect?.target;
+              if (!target || target.nodeType !== Node.ELEMENT_NODE) return false;
+              return Boolean(target.closest('.fraction-bar-container, .replay-inspection-card'));
+            }).length;
+          return {
+            trackCount: tracks.length,
+            boundaryCount,
+            activeAnimations,
+            activeVisualAnimations,
+            denominator: tracks[0]?.dataset.denominator || null,
+          };
+        });
+        return {
+          rootCount: roots.length,
+          items,
+          trackCount: items.reduce((sum, item) => sum + item.trackCount, 0),
+          boundaryCount: items.reduce((sum, item) => sum + item.boundaryCount, 0),
+          activeAnimations: items.reduce((sum, item) => sum + item.activeAnimations, 0),
+          activeVisualAnimations: items.reduce((sum, item) => sum + item.activeVisualAnimations, 0),
+          denominator: items[0]?.denominator || null,
+        };
+      });
+      if (observed.rootCount === 0) {
+        throw new Error(`static or reduced-motion route did not find the configured view: ${JSON.stringify(observed)}`);
+      }
+      if (observed.activeAnimations !== 0) {
+        throw new Error(`static or reduced-motion route unexpectedly ran animation within the fraction track: ${JSON.stringify(observed)}`);
+      }
+      if (observed.activeVisualAnimations !== 0) {
+        throw new Error(`static or reduced-motion route unexpectedly animated visual presentation: ${JSON.stringify(observed)}`);
+      }
+      if (action.expectBoundaries === false && observed.boundaryCount !== 0) {
+        throw new Error(`static choreography unexpectedly mounted animated-arm boundaries: ${JSON.stringify(observed)}`);
+      }
+      if (action.denominator && observed.denominator !== String(action.denominator)) {
+        throw new Error(`expected immediate denominator ${action.denominator}; observed ${JSON.stringify(observed)}`);
+      }
+      action.motionEvidence = observed;
       break;
     }
 

@@ -64,26 +64,32 @@
     },
 {
       "id": "ROUTE-COND-1-TRANSFORM",
-      "behavior": "Condition 1 (bundle-1: in-place subdivision) renders in-place subdivided fraction bar segments at conversion beat without juxtaposed or sequential structures.",
+      "behavior": "Condition 1 animates only newly introduced in-place partition boundaries and keeps the stable bar anchors in place.",
       "configuration": "phase2-bundle-1",
       "startingSurface": "mounted-app-entry",
       "viewport": {"width":360,"height":740},
       "motionMode": "standard-motion",
       "witness": "browser",
       "actions": [
-        {"method":"click","target":".app-practice-button","description":"Begin the registered practice type","step":1},
-        {"step":2,"method":"click","target":".app-visual-view .control-btn","description":"Acknowledge encounter"},
-        {"step":3,"method":"click","target":".app-visual-view .control-choice-btn >> nth=1","description":"Notice: choose different sized parts"},
-        {"step":4,"method":"click","target":".app-visual-view .control-choice-btn >> nth=0","description":"Decide: choose common denominator 12"},
-        {"step":5,"method":"fill","target":".app-visual-view input.control-numeric-input","value":"8","description":"Transform left: enter numerator 8"},
-        {"step":6,"method":"click","target":".app-visual-view .control-submit-btn","description":"Transform left: submit 8"}
+        {"step":1,"method":"click","target":".app-gear-button","description":"Open gear menu"},
+        {"step":2,"method":"click","target":"[data-condition-id=\"phase2-bundle-1\"]","description":"Select the animated in-place condition"},
+        {"method":"click","target":".app-practice-button","description":"Begin the registered practice type","step":3},
+        {"step":4,"method":"click","target":".app-visual-view .control-btn","description":"Acknowledge encounter"},
+        {"step":5,"method":"click","target":".app-visual-view .control-choice-btn >> nth=1","description":"Notice: choose different sized parts"},
+        {"step":6,"method":"click","target":".app-visual-view .control-choice-btn >> nth=0","description":"Decide: choose common denominator 12"},
+        {"step":7,"method":"fill","target":".app-visual-view input.control-numeric-input","value":"8","description":"Transform left: enter numerator 8"},
+        {"step":8,"method":"clickAndObserveSubdivision","target":".app-visual-view .control-submit-btn","container":".app-visual-view .fraction-bar-container[data-side=\"left\"]","interruptReducedMotion":true,"description":"Observe the accepted conversion, interrupt it with reduced motion, then restore standard motion without replay"},
+        {"step":9,"method":"click","target":".app-support-controls button:has-text(\"Need help?\")","description":"Request help after the conversion is established"},
+        {"step":10,"method":"assertNoSubdivisionMotion","container":".app-visual-view .fraction-bar-container[data-side=\"left\"]","denominator":12,"description":"A later help render does not replay the established conversion"}
       ],
       "expect": {
         "capture": {"target":".app-visual-view .fraction-bar-container","type":"outerHTML"},
         "assertions": [
+          {"type":"attributeEquals","target":".fractionflow-app","attribute":"data-condition-id","value":"phase2-bundle-1"},
           {"type":"hasSelector","target":".app-visual-view .fraction-bar-segment.subdivided"},
+          {"type":"hasSelector","target":".app-visual-view .fraction-bar-boundary"},
           {"type":"notHasSelector","target":".app-visual-view .choreography-juxtaposed"},
-          {"type":"notHasSelector","target":".app-visual-view .choreography-sequential"}
+        {"type":"notHasSelector","target":".app-visual-view .choreography-sequential"}
         ]
       },
       "negativeControl": {"targetRouteId":"ROUTE-COND-2-TRANSFORM","comparison":"notIdenticalCapture"}
@@ -104,7 +110,8 @@
         {"step":5,"method":"click","target":".app-visual-view .control-choice-btn >> nth=1","description":"Notice: choose different sized parts"},
         {"step":6,"method":"click","target":".app-visual-view .control-choice-btn >> nth=0","description":"Decide: choose common denominator 12"},
         {"step":7,"method":"fill","target":".app-visual-view input.control-numeric-input","value":"8","description":"Transform left: enter numerator 8"},
-        {"step":8,"method":"click","target":".app-visual-view .control-submit-btn","description":"Transform left: submit 8"}
+        {"step":8,"method":"click","target":".app-visual-view .control-submit-btn","description":"Transform left: submit 8"},
+        {"step":9,"method":"assertNoSubdivisionMotion","container":".app-visual-view .fraction-bar-container","expectBoundaries":false,"description":"Juxtaposed rows remain static"}
       ],
       "expect": {
         "capture": {"target":".app-visual-view .fraction-bar-container","type":"outerHTML"},
@@ -134,7 +141,8 @@
         {"step":5,"method":"click","target":".app-visual-view .control-choice-btn >> nth=1","description":"Notice: choose different sized parts"},
         {"step":6,"method":"click","target":".app-visual-view .control-choice-btn >> nth=0","description":"Decide: choose common denominator 12"},
         {"step":7,"method":"fill","target":".app-visual-view input.control-numeric-input","value":"8","description":"Transform left: enter numerator 8"},
-        {"step":8,"method":"click","target":".app-visual-view .control-submit-btn","description":"Transform left: submit 8"}
+        {"step":8,"method":"click","target":".app-visual-view .control-submit-btn","description":"Transform left: submit 8"},
+        {"step":9,"method":"assertNoSubdivisionMotion","container":".app-visual-view .fraction-bar-container","expectBoundaries":false,"description":"Sequential steps remain static"}
       ],
       "expect": {
         "capture": {"target":".app-visual-view .fraction-bar-container","type":"outerHTML"},
@@ -164,7 +172,7 @@
         {"step":5,"method":"click","target":".app-visual-view .control-choice-btn >> nth=1","description":"Notice: choose different sized parts"},
         {"step":6,"method":"click","target":".app-visual-view .control-choice-btn >> nth=0","description":"Decide: choose common denominator 12"},
         {"step":7,"method":"fill","target":".app-visual-view input.control-numeric-input","value":"8","description":"Transform left: enter numerator 8"},
-        {"step":8,"method":"click","target":".app-visual-view .control-submit-btn","description":"Transform left: submit 8"}
+        {"step":8,"method":"clickAndObserveSubdivision","target":".app-visual-view .control-submit-btn","container":".app-visual-view .fraction-bar-container[data-side=\"left\"]","description":"Observe the settled bundle-4 in-place conversion using the same display directive"}
       ],
       "expect": {
         "capture": {"target":".app-visual-view .fraction-bar-container","type":"outerHTML"},
@@ -192,7 +200,7 @@
         {"step":5,"method":"fill","target":".app-visual-view input.control-numeric-input","value":"8","description":"Transform left: enter numerator 8"},
         {"step":6,"method":"click","target":".app-visual-view .control-submit-btn","description":"Transform left: submit 8"},
         {"step":7,"method":"fill","target":".app-visual-view input.control-numeric-input","value":"3","description":"Transform right: enter numerator 3"},
-        {"step":8,"method":"click","target":".app-visual-view .control-submit-btn","description":"Transform right: submit 3"},
+        {"step":8,"method":"clickAndObserveSubdivision","target":".app-visual-view .control-submit-btn","container":".app-visual-view .fraction-bar-container[data-side=\"right\"]","interruptReducedMotion":true,"description":"Observe the right conversion, interrupt it with reduced motion, and restore standard motion"},
         {"step":9,"method":"fill","target":".app-visual-view input.control-numeric-input","value":"11","description":"Operate: enter sum 11"},
         {"step":10,"method":"click","target":".app-visual-view .control-submit-btn","description":"Operate: submit 11"},
         {"step":11,"method":"click","target":".app-visual-view .control-btn","description":"Resolve: acknowledge completed operation"}
@@ -228,7 +236,8 @@
         {"step":10,"method":"click","target":".app-visual-view .control-submit-btn","description":"Transform right: submit 3"},
         {"step":11,"method":"fill","target":".app-visual-view input.control-numeric-input","value":"11","description":"Operate: enter sum 11"},
         {"step":12,"method":"click","target":".app-visual-view .control-submit-btn","description":"Operate: submit 11"},
-        {"step":13,"method":"click","target":".app-visual-view .control-btn","description":"Resolve: acknowledge completed operation"}
+        {"step":13,"method":"click","target":".app-visual-view .control-btn","description":"Resolve: acknowledge completed operation"},
+        {"step":14,"method":"assertNoSubdivisionMotion","container":".app-visual-view .premise-comparison","description":"Bundle 4 reflection inspection remains static"}
       ],
       "expect": {
         "capture": {"target":".app-visual-view","type":"innerHTML"},
@@ -242,31 +251,37 @@
     },
 {
       "id": "ROUTE-REPLAY-COND-1",
-      "behavior": "Replay under Condition 1 (in-place) mounts an interactive toggle card with starting fraction and toggle button.",
+      "behavior": "Condition 1 Replay keeps the starting fraction inspectable, then animates new boundaries only after the learner chooses Show new parts.",
       "configuration": "phase2-bundle-1",
       "startingSurface": "mounted-app-entry",
-      "viewport": {"width":360,"height":740},
+      "viewport": {"width":360,"height":752},
       "motionMode": "standard-motion",
       "witness": "browser",
       "actions": [
-        {"method":"click","target":".app-practice-button","description":"Begin the registered practice type","step":1},
-        {"step":2,"method":"click","target":".app-visual-view .control-btn","description":"Acknowledge encounter"},
-        {"step":3,"method":"click","target":".app-visual-view .control-choice-btn >> nth=1","description":"Notice: choose different sized parts"},
-        {"step":4,"method":"click","target":".app-visual-view .control-choice-btn >> nth=0","description":"Decide: choose common denominator 12"},
-        {"step":5,"method":"fill","target":".app-visual-view input.control-numeric-input","value":"8","description":"Transform left: enter numerator 8"},
-        {"step":6,"method":"click","target":".app-visual-view .control-submit-btn","description":"Transform left: submit 8"},
-        {"step":7,"method":"click","target":".app-support-controls .app-secondary-button:has-text(\"Replay\")","description":"Trigger Replay"}
+        {"step":1,"method":"click","target":".app-gear-button","description":"Open gear menu"},
+        {"step":2,"method":"click","target":"[data-condition-id=\"phase2-bundle-1\"]","description":"Select the animated in-place condition"},
+        {"method":"click","target":".app-practice-button","description":"Begin the registered practice type","step":3},
+        {"step":4,"method":"click","target":".app-visual-view .control-btn","description":"Acknowledge encounter"},
+        {"step":5,"method":"click","target":".app-visual-view .control-choice-btn >> nth=1","description":"Notice: choose different sized parts"},
+        {"step":6,"method":"click","target":".app-visual-view .control-choice-btn >> nth=0","description":"Decide: choose common denominator 12"},
+        {"step":7,"method":"fill","target":".app-visual-view input.control-numeric-input","value":"8","description":"Transform left: enter numerator 8"},
+        {"step":8,"method":"clickAndObserveSubdivision","target":".app-visual-view .control-submit-btn","container":".app-visual-view .fraction-bar-container[data-side=\"left\"]","description":"Transform left at 360x752 and observe ordinary subdivision motion"},
+        {"step":9,"method":"click","target":".app-support-controls .app-secondary-button:has-text(\"Replay\")","description":"Trigger Replay and inspect the starting fraction"},
+        {"step":10,"method":"assert","assertions":[{"type":"hasSelector","target":".app-visual-view .fraction-bar-in-place-replay"},{"type":"containsText","target":".app-visual-view","value":"Starting parts: 2/3"},{"type":"attributeEquals","target":".app-support-controls .app-secondary-button:has-text(\"Replay\")","attribute":"aria-pressed","value":"true"},{"type":"visibleGeometry","target":".app-visual-view .fraction-bar-toggle-btn","minWidth":24,"minHeight":24}],"description":"Verify the persistent pre-state and usable Show new parts target"},
+        {"step":11,"method":"scrollIntoView","target":".app-visual-view .fraction-bar-toggle-btn","description":"Bring the persistent bar and Show new parts control into the viewport"},
+        {"step":12,"method":"clickAndObserveSubdivision","target":".app-visual-view .fraction-bar-toggle-btn","container":".app-visual-view .fraction-bar-container[data-side=\"left\"]","description":"Activate Show new parts and observe the second real boundary animation"}
       ],
       "expect": {
-        "capture": {"target":".app-visual-view .fraction-bar-in-place-replay","type":"outerHTML"},
+        "capture": {"target":".app-visual-view .fraction-bar-container[data-side=\"left\"]","type":"outerHTML"},
         "assertions": [
-          {"type":"hasSelector","target":".app-visual-view .fraction-bar-in-place-replay"},
-          {"type":"containsText","target":".app-visual-view","value":"Starting parts: 2/3"},
-          {"type":"hasSelector","target":".app-visual-view .fraction-bar-toggle-btn"},
-          {"type":"attributeEquals","target":".app-support-controls .app-secondary-button:has-text(\"Replay\")","attribute":"aria-pressed","value":"true"}
+          {"type":"notHasSelector","target":".app-visual-view .fraction-bar-in-place-replay"},
+          {"type":"attributeEquals","target":".app-support-controls .app-secondary-button:has-text(\"Replay\")","attribute":"aria-pressed","value":"false"},
+          {"type":"hasSelector","target":".app-visual-view .fraction-bar-boundary"},
+          {"type":"containsText","target":".app-visual-view .fraction-bar-readout","value":"8"},
+          {"type":"containsText","target":".app-visual-view .fraction-bar-readout","value":"12"}
         ]
       },
-      "negativeControl": {"targetRouteId":"ROUTE-COND-1-TRANSFORM","comparison":"notIdenticalCapture"}
+      "negativeControl": {"targetRouteId":"ROUTE-REPLAY-COND-2","comparison":"notIdenticalCapture","sameMotionMode":true}
     },
 {
       "id": "ROUTE-REPLAY-COND-2",
@@ -344,7 +359,8 @@
         {"step":3,"method":"click","target":".app-visual-view .control-choice-btn >> nth=1","description":"Notice: choose different sized parts"},
         {"step":4,"method":"click","target":".app-visual-view .control-choice-btn >> nth=0","description":"Decide: choose common denominator 12"},
         {"step":5,"method":"fill","target":".app-visual-view input.control-numeric-input","value":"5","description":"Enter wrong equivalent numerator"},
-        {"step":6,"method":"click","target":".app-visual-view .control-submit-btn","description":"Submit wrong numerator"}
+        {"step":6,"method":"click","target":".app-visual-view .control-submit-btn","description":"Submit wrong numerator"},
+        {"step":7,"method":"assertNoSubdivisionMotion","container":".app-visual-view .fraction-bar-container[data-side=\"left\"]","denominator":3,"description":"Rejected transform recovery leaves the accepted starting form static"}
       ],
       "expect": {
         "capture": {"target":".app-visual-view .recovery-feedback","type":"textContent"},
@@ -979,13 +995,37 @@
       "motionMode": "reduced-motion",
       "witness": "browser",
       "actions": [
-        {"method":"click","target":".app-practice-button","description":"Begin the registered practice type","step":1},
-        {"step":2,"method":"click","target":".app-visual-view .control-btn","description":"Acknowledge encounter"}
+        {"step":1,"method":"click","target":".app-gear-button","description":"Open gear menu"},
+        {"step":2,"method":"click","target":"[data-condition-id=\"phase2-bundle-1\"]","description":"Select the animated in-place condition"},
+        {"step":3,"method":"click","target":".app-gear-button","description":"Reopen support settings"},
+        {"step":4,"method":"click","target":"[data-support-id=\"medium-support\"]","description":"Select medium support"},
+        {"step":5,"method":"click","target":".app-practice-button","description":"Begin the registered practice type"},
+        {"step":6,"method":"click","target":".app-visual-view .control-btn","description":"Acknowledge encounter"},
+        {"step":7,"method":"click","target":".app-visual-view .control-choice-btn >> nth=1","description":"Notice: choose different sized parts"},
+        {"step":8,"method":"fill","target":".app-visual-view input.control-numeric-input","value":"24","description":"Enter non-least common denominator 24"},
+        {"step":9,"method":"click","target":".app-visual-view .control-submit-btn","description":"Submit common denominator 24"},
+        {"step":10,"method":"fill","target":".app-visual-view input.control-numeric-input","value":"16","description":"Transform left: enter numerator 16"},
+        {"step":11,"method":"click","target":".app-visual-view .control-submit-btn","description":"Submit left conversion; reduced motion must reach the post-state immediately"},
+        {"step":12,"method":"assertNoSubdivisionMotion","container":".app-visual-view .fraction-bar-container[data-side=\"left\"]","denominator":24,"description":"Verify left 16/24 is settled with no executed effect"},
+        {"step":13,"method":"fill","target":".app-visual-view input.control-numeric-input","value":"6","description":"Transform right: enter numerator 6"},
+        {"step":14,"method":"click","target":".app-visual-view .control-submit-btn","description":"Submit right conversion; reduced motion must reach the post-state immediately"},
+        {"step":15,"method":"assertNoSubdivisionMotion","container":".app-visual-view .fraction-bar-container[data-side=\"right\"]","denominator":24,"description":"Verify right 6/24 is settled with no executed effect"}
       ],
       "expect": {
         "capture": {"target":".app-visual-view .fraction-bar-track","type":"outerHTML"},
         "assertions": [
-          {"type":"hasSelector","target":".app-visual-view .fraction-bar-track.reduced-motion"}
+          {"type":"attributeEquals","target":".fractionflow-app","attribute":"data-support-code","value":"medium support"},
+          {"type":"hasSelector","target":".app-visual-view .fraction-bar-track.reduced-motion"},
+          {"type":"attributeEquals","target":".app-visual-view .fraction-bar-container[data-side=\"left\"] .fraction-bar-track","attribute":"data-numerator","value":"16"},
+          {"type":"attributeEquals","target":".app-visual-view .fraction-bar-container[data-side=\"right\"] .fraction-bar-track","attribute":"data-numerator","value":"6"},
+          {"type":"attributeEquals","target":".app-visual-view .fraction-bar-container[data-side=\"left\"] .fraction-bar-track","attribute":"data-denominator","value":"24"},
+          {"type":"attributeEquals","target":".app-visual-view .fraction-bar-container[data-side=\"right\"] .fraction-bar-track","attribute":"data-denominator","value":"24"},
+          {"type":"hasSelector","target":".app-visual-view .fraction-bar-container[data-side=\"left\"] .fraction-bar-boundary"},
+          {"type":"hasSelector","target":".app-visual-view .fraction-bar-container[data-side=\"right\"] .fraction-bar-boundary"},
+          {"type":"containsText","target":".app-visual-view .fraction-bar-container[data-side=\"left\"] .fraction-bar-readout","value":"16"},
+          {"type":"containsText","target":".app-visual-view .fraction-bar-container[data-side=\"left\"] .fraction-bar-readout","value":"24"},
+          {"type":"containsText","target":".app-visual-view .fraction-bar-container[data-side=\"right\"] .fraction-bar-readout","value":"6"},
+          {"type":"containsText","target":".app-visual-view .fraction-bar-container[data-side=\"right\"] .fraction-bar-readout","value":"24"}
         ]
       },
       "negativeControl": {"targetRouteId":"INITIAL-ENCOUNTER-BASELINE","comparison":"notIdenticalCapture"}
@@ -1042,7 +1082,8 @@
         {"step":11,"method":"click","target":".app-visual-view .control-btn","description":"Resolve: acknowledge completed operation"},
         {"step":12,"method":"focus","target":".app-visual-view .matching-choice-btn >> nth=0","description":"Focus first matching choice button"},
         {"step":13,"method":"click","target":".app-support-controls .app-secondary-button:has-text(\"Replay\")","description":"Enter inspection mode"},
-        {"step":14,"method":"click","target":".app-visual-view .app-done-looking-button","description":"Exit inspection mode via Done Looking"}
+        {"step":14,"method":"assertNoSubdivisionMotion","container":".app-visual-view","description":"Reflection Inspection Mode remains static while choices are unmounted"},
+        {"step":15,"method":"click","target":".app-visual-view .app-done-looking-button","description":"Exit inspection mode via Done Looking"}
       ],
       "expect": {
         "capture": {"target":"activeElement","type":"activeElementSelector"},
@@ -1078,7 +1119,8 @@
         {"step":12,"method":"click","target":".app-linear-view .control-btn","description":"Resolve: acknowledge completed operation"},
         {"step":13,"method":"focus","target":".app-linear-view .control-choice-btn >> nth=0","description":"Focus first matching choice button"},
         {"step":14,"method":"click","target":".app-support-controls .app-secondary-button:has-text(\"Replay\")","description":"Enter inspection mode"},
-        {"step":15,"method":"click","target":".app-linear-view .app-done-looking-button","description":"Exit inspection mode via Done Looking"}
+        {"step":15,"method":"assertNoSubdivisionMotion","container":".app-linear-view","description":"Linear reflection Inspection Mode remains static"},
+        {"step":16,"method":"click","target":".app-linear-view .app-done-looking-button","description":"Exit inspection mode via Done Looking"}
       ],
       "expect": {
         "capture": {"target":"activeElement","type":"activeElementSelector"},
@@ -1165,10 +1207,11 @@
         {"step":5,"method":"click","target":".app-visual-view .control-choice-btn:has-text(\"No, different sizes\")","description":"Submit the correct unit comparison"},
         {"step":6,"method":"click","target":".app-visual-view button[aria-label=\"Common denominator 12\"]","description":"Establish common-denominator work"},
         {"step":7,"method":"fill","target":".app-visual-view #transform-num-input-left","value":"8","description":"Enter the equivalent numerator"},
-        {"step":8,"method":"click","target":".app-visual-view .control-submit-btn","description":"Establish the first equivalent form"},
+        {"step":8,"method":"clickAndStartSubdivision","target":".app-visual-view .control-submit-btn","container":".app-visual-view .fraction-bar-container[data-side=\"left\"]","description":"Establish the first equivalent form and start its effect"},
         {"step":9,"method":"click","target":".app-support-controls button:has-text(\"Replay the last change\")","description":"Record replay history"},
-        {"step":10,"method":"fill","target":".app-visual-view #transform-num-input-right","value":"9","description":"Enter an unsubmitted numerator"},
-        {"step":11,"method":"click","target":".app-restart-button","description":"Try this problem again after accumulated state"}
+        {"step":10,"method":"assertNoSubdivisionMotion","container":".app-visual-view .fraction-bar-container[data-side=\"left\"]","denominator":3,"description":"Replay cancels the in-flight effect and returns to the persistent pre-state"},
+        {"step":11,"method":"fill","target":".app-visual-view #transform-num-input-right","value":"9","description":"Enter an unsubmitted numerator"},
+        {"step":12,"method":"click","target":".app-restart-button","description":"Try this problem again after accumulated state"}
       ],
       "expect": {
         "capture": {"target":".app-visual-view","type":"innerHTML"},
@@ -1198,11 +1241,12 @@
         {"step":5,"method":"click","target":".app-visual-view .control-choice-btn:has-text(\"No, different sizes\")","description":"Submit the correct unit comparison"},
         {"step":6,"method":"click","target":".app-visual-view button[aria-label=\"Common denominator 12\"]","description":"Establish common-denominator work"},
         {"step":7,"method":"fill","target":".app-visual-view #transform-num-input-left","value":"8","description":"Enter the equivalent numerator"},
-        {"step":8,"method":"click","target":".app-visual-view .control-submit-btn","description":"Establish the first equivalent form"},
+        {"step":8,"method":"clickAndStartSubdivision","target":".app-visual-view .control-submit-btn","container":".app-visual-view .fraction-bar-container[data-side=\"left\"]","description":"Establish the first equivalent form and start its effect"},
         {"step":9,"method":"click","target":".app-support-controls button:has-text(\"Replay the last change\")","description":"Record replay history"},
-        {"step":10,"method":"fill","target":".app-visual-view #transform-num-input-right","value":"9","description":"Enter an unsubmitted numerator"},
-        {"step":11,"method":"click","target":".app-return-button","description":"Return to entry after accumulated state"},
-        {"step":12,"method":"click","target":".app-practice-button","description":"Re-enter the registered practice"}
+        {"step":10,"method":"assertNoSubdivisionMotion","container":".app-visual-view .fraction-bar-container[data-side=\"left\"]","denominator":3,"description":"Replay cancels the in-flight effect and returns to the persistent pre-state"},
+        {"step":11,"method":"fill","target":".app-visual-view #transform-num-input-right","value":"9","description":"Enter an unsubmitted numerator"},
+        {"step":12,"method":"click","target":".app-return-button","description":"Return to entry after accumulated state"},
+        {"step":13,"method":"click","target":".app-practice-button","description":"Re-enter the registered practice"}
       ],
       "expect": {
         "capture": {"target":".app-visual-view","type":"innerHTML"},
@@ -1943,7 +1987,7 @@
     },
         {
       "id": "ROUTE-SUPPORT-HIGH-DECIDE",
-      "behavior": "High support offers the authored denominator choices at decide.",
+      "behavior": "High support selects authored denominator 24 and reaches both ordinary in-place conversions with executed boundary motion.",
       "configuration": "phase2-bundle-4",
       "startingSurface": "mounted-app-entry",
       "viewport": {
@@ -1994,12 +2038,57 @@
           "method": "click",
           "target": ".app-visual-view .control-choice-btn >> nth=1",
           "description": "Notice: choose different sized parts"
+        },
+        {
+          "step": 8,
+          "method": "assert",
+          "assertions": [
+            {"type":"hasSelector","target":".app-visual-view .control-choice-btn >> nth=0"},
+            {"type":"hasSelector","target":".app-visual-view .control-choice-btn >> nth=1"}
+          ],
+          "description": "Verify high support offers denominator choices before selecting 24"
+        },
+        {
+          "step": 9,
+          "method": "click",
+          "target": ".app-visual-view .control-choice-btn >> nth=1",
+          "description": "Choose the valid non-least denominator 24"
+        },
+        {
+          "step": 10,
+          "method": "fill",
+          "target": ".app-visual-view input.control-numeric-input",
+          "value": "16",
+          "description": "Transform left: enter numerator 16"
+        },
+        {
+          "step": 11,
+          "method": "clickAndStartSubdivision",
+          "target": ".app-visual-view .control-submit-btn",
+          "container": ".app-visual-view .fraction-bar-container[data-side=\"left\"]",
+          "description": "Submit left 16/24 and confirm its boundary effect starts before the rapid next response"
+        },
+        {
+          "step": 12,
+          "method": "fill",
+          "target": ".app-visual-view input.control-numeric-input",
+          "value": "6",
+          "description": "Transform right: enter numerator 6"
+        },
+        {
+          "step": 13,
+          "method": "clickAndObserveSubdivision",
+          "target": ".app-visual-view .control-submit-btn",
+          "container": ".app-visual-view .fraction-bar-container[data-side=\"right\"]",
+          "concurrentContainer": ".app-visual-view .fraction-bar-container[data-side=\"left\"]",
+          "requireConcurrentMotion": true,
+          "description": "Submit right 6/24 rapidly and observe its boundary motion while the prior effect is still active"
         }
       ],
       "expect": {
         "capture": {
-          "target": ".app-visual-view .active-beat-section",
-          "type": "innerHTML"
+          "target": ".fractionflow-app",
+          "type": "outerHTML"
         },
         "assertions": [
           {
@@ -2008,18 +2097,16 @@
             "attribute": "data-support-code",
             "value": "high support"
           },
-          {
-            "type": "hasSelector",
-            "target": ".app-visual-view .control-choice-btn"
-          },
-          {
-            "type": "hasSelector",
-            "target": ".app-visual-view .control-choice-btn >> nth=0"
-          },
-          {
-            "type": "hasSelector",
-            "target": ".app-visual-view .control-choice-btn >> nth=1"
-          }
+          {"type":"attributeEquals","target":".app-visual-view .fraction-bar-container[data-side=\"left\"] .fraction-bar-track","attribute":"data-numerator","value":"16"},
+          {"type":"attributeEquals","target":".app-visual-view .fraction-bar-container[data-side=\"left\"] .fraction-bar-track","attribute":"data-denominator","value":"24"},
+          {"type":"attributeEquals","target":".app-visual-view .fraction-bar-container[data-side=\"right\"] .fraction-bar-track","attribute":"data-numerator","value":"6"},
+          {"type":"attributeEquals","target":".app-visual-view .fraction-bar-container[data-side=\"right\"] .fraction-bar-track","attribute":"data-denominator","value":"24"},
+          {"type":"hasSelector","target":".app-visual-view .fraction-bar-container[data-side=\"left\"] .fraction-bar-boundary"},
+          {"type":"hasSelector","target":".app-visual-view .fraction-bar-container[data-side=\"right\"] .fraction-bar-boundary"},
+          {"type":"containsText","target":".app-visual-view .fraction-bar-container[data-side=\"left\"] .fraction-bar-readout","value":"16"},
+          {"type":"containsText","target":".app-visual-view .fraction-bar-container[data-side=\"left\"] .fraction-bar-readout","value":"24"},
+          {"type":"containsText","target":".app-visual-view .fraction-bar-container[data-side=\"right\"] .fraction-bar-readout","value":"6"},
+          {"type":"containsText","target":".app-visual-view .fraction-bar-container[data-side=\"right\"] .fraction-bar-readout","value":"24"}
         ]
       },
       "negativeControl": {
@@ -2030,7 +2117,7 @@
     },
     {
       "id": "ROUTE-SUPPORT-MEDIUM-DECIDE",
-      "behavior": "Medium support requests the same denominator decision as numeric entry.",
+      "behavior": "Medium support enters denominator 24 and reaches both ordinary in-place conversions with executed boundary motion.",
       "configuration": "phase2-bundle-4",
       "startingSurface": "mounted-app-entry",
       "viewport": {
@@ -2081,12 +2168,62 @@
           "method": "click",
           "target": ".app-visual-view .control-choice-btn >> nth=1",
           "description": "Notice: choose different sized parts"
+        },
+        {
+          "step": 8,
+          "method": "assert",
+          "assertions": [
+            {"type":"hasSelector","target":".app-visual-view input.control-numeric-input"},
+            {"type":"notHasSelector","target":".app-visual-view .control-choice-btn"}
+          ],
+          "description": "Verify medium support uses numeric denominator entry"
+        },
+        {
+          "step": 9,
+          "method": "fill",
+          "target": ".app-visual-view input.control-numeric-input",
+          "value": "24",
+          "description": "Enter the valid non-least denominator 24"
+        },
+        {
+          "step": 10,
+          "method": "click",
+          "target": ".app-visual-view .control-submit-btn",
+          "description": "Submit common denominator 24"
+        },
+        {
+          "step": 11,
+          "method": "fill",
+          "target": ".app-visual-view input.control-numeric-input",
+          "value": "16",
+          "description": "Transform left: enter numerator 16"
+        },
+        {
+          "step": 12,
+          "method": "clickAndObserveSubdivision",
+          "target": ".app-visual-view .control-submit-btn",
+          "container": ".app-visual-view .fraction-bar-container[data-side=\"left\"]",
+          "description": "Submit left 16/24 and observe medium-support boundary motion"
+        },
+        {
+          "step": 13,
+          "method": "fill",
+          "target": ".app-visual-view input.control-numeric-input",
+          "value": "6",
+          "description": "Transform right: enter numerator 6"
+        },
+        {
+          "step": 14,
+          "method": "clickAndObserveSubdivision",
+          "target": ".app-visual-view .control-submit-btn",
+          "container": ".app-visual-view .fraction-bar-container[data-side=\"right\"]",
+          "description": "Submit right 6/24 and observe medium-support boundary motion"
         }
       ],
       "expect": {
         "capture": {
-          "target": ".app-visual-view .active-beat-section",
-          "type": "innerHTML"
+          "target": ".fractionflow-app",
+          "type": "outerHTML"
         },
         "assertions": [
           {
@@ -2095,19 +2232,16 @@
             "attribute": "data-support-code",
             "value": "medium support"
           },
-          {
-            "type": "hasSelector",
-            "target": ".app-visual-view input.control-numeric-input"
-          },
-          {
-            "type": "notHasSelector",
-            "target": ".app-visual-view .control-choice-btn"
-          },
-          {
-            "type": "containsText",
-            "target": ".app-visual-view .active-beat-section",
-            "value": "Choose a common denominator for both fractions."
-          }
+          {"type":"attributeEquals","target":".app-visual-view .fraction-bar-container[data-side=\"left\"] .fraction-bar-track","attribute":"data-numerator","value":"16"},
+          {"type":"attributeEquals","target":".app-visual-view .fraction-bar-container[data-side=\"left\"] .fraction-bar-track","attribute":"data-denominator","value":"24"},
+          {"type":"attributeEquals","target":".app-visual-view .fraction-bar-container[data-side=\"right\"] .fraction-bar-track","attribute":"data-numerator","value":"6"},
+          {"type":"attributeEquals","target":".app-visual-view .fraction-bar-container[data-side=\"right\"] .fraction-bar-track","attribute":"data-denominator","value":"24"},
+          {"type":"hasSelector","target":".app-visual-view .fraction-bar-container[data-side=\"left\"] .fraction-bar-boundary"},
+          {"type":"hasSelector","target":".app-visual-view .fraction-bar-container[data-side=\"right\"] .fraction-bar-boundary"},
+          {"type":"containsText","target":".app-visual-view .fraction-bar-container[data-side=\"left\"] .fraction-bar-readout","value":"16"},
+          {"type":"containsText","target":".app-visual-view .fraction-bar-container[data-side=\"left\"] .fraction-bar-readout","value":"24"},
+          {"type":"containsText","target":".app-visual-view .fraction-bar-container[data-side=\"right\"] .fraction-bar-readout","value":"6"},
+          {"type":"containsText","target":".app-visual-view .fraction-bar-container[data-side=\"right\"] .fraction-bar-readout","value":"24"}
         ]
       },
       "negativeControl": {

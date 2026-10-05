@@ -60,6 +60,138 @@ export function createTrackAndReadout({ numerator, denominator, isSubdivided = f
   return { trackEl, readoutEl };
 }
 
+function greatestCommonDivisor(a, b) {
+  let left = Math.abs(a);
+  let right = Math.abs(b);
+  while (right !== 0) {
+    [left, right] = [right, left % right];
+  }
+  return left || 1;
+}
+
+function boundaryKey(index, denominator) {
+  const divisor = greatestCommonDivisor(index, denominator);
+  return `${index / divisor}/${denominator / divisor}`;
+}
+
+function createPersistentTrackAndReadout({ numerator, denominator, mode }) {
+  const trackEl = document.createElement('div');
+  trackEl.classList.add('fraction-bar-track', 'fraction-bar-track-persistent');
+  if (mode === 'reduced-motion') trackEl.classList.add('reduced-motion');
+
+  const fillEl = document.createElement('div');
+  fillEl.classList.add('fraction-bar-fill');
+  fillEl.setAttribute('aria-hidden', 'true');
+  fillEl.style.width = `${(numerator / denominator) * 100}%`;
+  trackEl.appendChild(fillEl);
+
+  const segmentLayerEl = document.createElement('div');
+  segmentLayerEl.classList.add('fraction-bar-segment-layer');
+  segmentLayerEl.setAttribute('aria-hidden', 'true');
+  trackEl.appendChild(segmentLayerEl);
+
+  const boundaryLayerEl = document.createElement('div');
+  boundaryLayerEl.classList.add('fraction-bar-boundary-layer');
+  boundaryLayerEl.setAttribute('aria-hidden', 'true');
+  trackEl.appendChild(boundaryLayerEl);
+
+  const readoutEl = document.createElement('div');
+  readoutEl.classList.add('fraction-bar-readout');
+  readoutEl.setAttribute('aria-hidden', 'true');
+  const numeratorEl = document.createElement('span');
+  numeratorEl.classList.add('fraction-bar-readout-numerator');
+  const dividerEl = document.createElement('span');
+  dividerEl.classList.add('fraction-bar-readout-divider');
+  const denominatorEl = document.createElement('span');
+  denominatorEl.classList.add('fraction-bar-readout-denominator');
+  readoutEl.appendChild(numeratorEl);
+  readoutEl.appendChild(dividerEl);
+  readoutEl.appendChild(denominatorEl);
+
+  return {
+    trackEl,
+    fillEl,
+    segmentLayerEl,
+    boundaryLayerEl,
+    boundaryNodes: new Map(),
+    readoutEl,
+    numeratorEl,
+    denominatorEl,
+  };
+}
+
+function updatePersistentTrack(elements, {
+  numerator,
+  denominator,
+  isSubdivided,
+  mode,
+  preserveFill,
+  markNewBoundaries,
+}) {
+  const {
+    trackEl,
+    fillEl,
+    segmentLayerEl,
+    boundaryLayerEl,
+    boundaryNodes,
+    numeratorEl,
+    denominatorEl,
+  } = elements;
+  trackEl.classList.toggle('reduced-motion', mode === 'reduced-motion');
+  trackEl.classList.toggle('subdivided', isSubdivided);
+  trackEl.setAttribute('data-numerator', String(numerator));
+  trackEl.setAttribute('data-denominator', String(denominator));
+
+  if (!preserveFill) fillEl.style.width = `${(numerator / denominator) * 100}%`;
+
+  segmentLayerEl.replaceChildren();
+  for (let index = 0; index < denominator; index += 1) {
+    const segmentEl = document.createElement('div');
+    segmentEl.classList.add(
+      'fraction-bar-segment',
+      index < numerator ? 'shaded' : 'unshaded',
+    );
+    if (isSubdivided) segmentEl.classList.add('subdivided');
+    segmentEl.setAttribute('aria-hidden', 'true');
+    segmentLayerEl.appendChild(segmentEl);
+  }
+
+  const targetKeys = new Set();
+  for (let index = 1; index < denominator; index += 1) {
+    const key = boundaryKey(index, denominator);
+    targetKeys.add(key);
+    if (boundaryNodes.has(key)) continue;
+
+    const boundaryEl = document.createElement('span');
+    boundaryEl.classList.add('fraction-bar-boundary');
+    if (markNewBoundaries) boundaryEl.classList.add('fraction-bar-boundary-new');
+    boundaryEl.setAttribute('data-boundary-key', key);
+    boundaryEl.setAttribute('aria-hidden', 'true');
+    boundaryEl.style.left = `${(index / denominator) * 100}%`;
+    if (markNewBoundaries) boundaryEl.style.transform = 'scaleY(0)';
+    boundaryLayerEl.appendChild(boundaryEl);
+    boundaryNodes.set(key, boundaryEl);
+  }
+
+  for (const [key, boundaryEl] of boundaryNodes) {
+    if (!markNewBoundaries && boundaryEl.classList.contains('fraction-bar-boundary-new')) {
+      boundaryEl.classList.remove('fraction-bar-boundary-new');
+      boundaryEl.style.transform = '';
+    }
+    if (targetKeys.has(key)) continue;
+    if (boundaryEl.parentNode === boundaryLayerEl) {
+      boundaryLayerEl.removeChild(boundaryEl);
+    }
+    boundaryNodes.delete(key);
+  }
+
+  numeratorEl.textContent = String(numerator);
+  denominatorEl.textContent = String(denominator);
+  return [...boundaryNodes.values()].filter((boundaryEl) => (
+    boundaryEl.classList.contains('fraction-bar-boundary-new')
+  ));
+}
+
 export function createFractionBarRenderer({
   side = 'left',
   container,
@@ -71,6 +203,171 @@ export function createFractionBarRenderer({
   }
 
   let rootEl = null;
+  let persistentElements = null;
+  let lastDisplayedForm = null;
+  let wasReplaying = false;
+  let pendingReplayReveal = false;
+  const activeBoundaryAnimations = new Set();
+
+  function cancelBoundaryAnimations({ settle = true } = {}) {
+    for (const record of activeBoundaryAnimations) {
+      if (settle && record.element.isConnected) {
+        record.element.style.transform = '';
+        record.element.classList.remove('fraction-bar-boundary-new');
+      }
+      record.animation.cancel();
+    }
+    activeBoundaryAnimations.clear();
+  }
+
+  function animateBoundaries(boundaries) {
+    if (!boundaries.length) return;
+    cancelBoundaryAnimations();
+    for (const element of boundaries) {
+      if (typeof element.animate !== 'function') {
+        element.style.transform = '';
+        element.classList.remove('fraction-bar-boundary-new');
+        continue;
+      }
+      const animation = element.animate(
+        [
+          { transform: 'scaleY(0)' },
+          { transform: 'scaleY(1)' },
+        ],
+        {
+          duration: 560,
+          easing: 'cubic-bezier(0.2, 0.75, 0.25, 1)',
+          fill: 'both',
+        },
+      );
+      const record = { element, animation };
+      activeBoundaryAnimations.add(record);
+      Promise.resolve(animation.finished).then(() => {
+        if (!activeBoundaryAnimations.has(record)) return;
+        if (element.isConnected) {
+          element.style.transform = '';
+          element.classList.remove('fraction-bar-boundary-new');
+        }
+        activeBoundaryAnimations.delete(record);
+        animation.cancel();
+      }).catch(() => {
+        // Cancellation is expected when the learner changes modes, begins another
+        // conversion, leaves the view, or destroys the renderer.
+      });
+    }
+  }
+
+  function sameForm(first, second) {
+    return Boolean(first && second
+      && String(first.numerator) === String(second.numerator)
+      && String(first.denominator) === String(second.denominator));
+  }
+
+  function renderPersistentInPlace(scene, currentForm, mode) {
+    const transition = scene.meaning.transition;
+    const beat = scene.meaning.currentTask?.beat;
+    const isReplaying = Boolean(scene.presentation?.isReplaying);
+    const isReflectionInspection = beat === 'reflect' && isReplaying && Boolean(transition);
+    const replayPre = isReplaying && transition?.pre?.[side];
+    const displayForm = replayPre || currentForm;
+    const isSubdivided = !isReplaying
+      && Boolean(transition?.changed?.includes(side));
+    const pre = transition?.pre?.[side];
+    const post = transition?.post?.[side];
+    const isAcceptedConversion = !isReplaying
+      && !wasReplaying
+      && Boolean(pre && post && transition?.changed?.includes(side))
+      && sameForm(lastDisplayedForm, pre)
+      && sameForm(currentForm, post);
+    const isExplicitReplayReveal = pendingReplayReveal
+      && wasReplaying
+      && !isReplaying
+      && !isReflectionInspection
+      && Boolean(pre && post && transition?.changed?.includes(side))
+      && sameForm(lastDisplayedForm, pre)
+      && sameForm(currentForm, post);
+    const shouldAnimate = mode === 'standard-motion'
+      && (isAcceptedConversion || isExplicitReplayReveal)
+      && !isReflectionInspection;
+    pendingReplayReveal = false;
+
+    if (mode !== 'standard-motion' || isReplaying || !transition) {
+      cancelBoundaryAnimations();
+    } else if (shouldAnimate) {
+      cancelBoundaryAnimations();
+    }
+
+    if (!persistentElements) {
+      persistentElements = createPersistentTrackAndReadout({
+        numerator: Number(displayForm.numerator),
+        denominator: Number(displayForm.denominator),
+        mode,
+      });
+      rootEl.classList.add('fraction-bar-container-persistent');
+      rootEl.appendChild(persistentElements.trackEl);
+      rootEl.appendChild(persistentElements.readoutEl);
+    }
+
+    const numerator = Number(displayForm.numerator);
+    const denominator = Number(displayForm.denominator);
+    const addedBoundaries = updatePersistentTrack(persistentElements, {
+      numerator,
+      denominator,
+      isSubdivided,
+      mode,
+      preserveFill: Boolean(isReplaying || wasReplaying || shouldAnimate),
+      markNewBoundaries: shouldAnimate,
+    });
+
+    if (isReplaying && transition?.changed?.includes(side)) {
+      persistentElements.readoutEl.setAttribute('hidden', 'true');
+      let replayControls = rootEl.querySelector('.fraction-bar-in-place-replay');
+      if (!replayControls) {
+        replayControls = document.createElement('div');
+        replayControls.classList.add('fraction-bar-in-place-replay', 'fraction-bar-replay-controls');
+        const badge = document.createElement('span');
+        badge.classList.add('fraction-bar-badge');
+        replayControls.appendChild(badge);
+        const toggleBtn = document.createElement('button');
+        toggleBtn.type = 'button';
+        toggleBtn.classList.add('fraction-bar-toggle-btn', 'app-secondary-button');
+        toggleBtn.addEventListener('click', () => {
+          if (dispatchAction) {
+            pendingReplayReveal = true;
+            dispatchAction({ type: 'dismiss-replay' });
+          }
+        });
+        replayControls.appendChild(toggleBtn);
+        rootEl.appendChild(replayControls);
+      }
+      const badge = replayControls.querySelector('.fraction-bar-badge');
+      const toggleBtn = replayControls.querySelector('.fraction-bar-toggle-btn');
+      badge.textContent = typeof strings.transition?.replayingLabel === 'function'
+        ? strings.transition.replayingLabel(numerator, denominator)
+        : `Starting parts: ${numerator}/${denominator}`;
+      toggleBtn.textContent = strings.transition?.showNewParts || 'Show new parts';
+      toggleBtn.setAttribute('aria-label', toggleBtn.textContent);
+      rootEl.setAttribute(
+        'aria-label',
+        typeof strings.transition?.replayingAria === 'function'
+          ? strings.transition.replayingAria(side, numerator, denominator)
+          : `${side === 'left' ? 'First' : 'Second'} fraction replaying: started with ${numerator} of ${denominator} equal parts.`,
+      );
+    } else {
+      persistentElements.readoutEl.removeAttribute('hidden');
+      const replayControls = rootEl.querySelector('.fraction-bar-in-place-replay');
+      if (replayControls) rootEl.removeChild(replayControls);
+      rootEl.setAttribute('aria-label', strings.encounter.barAriaLabel(side, numerator, denominator));
+    }
+
+    if (shouldAnimate) animateBoundaries(addedBoundaries);
+
+    lastDisplayedForm = {
+      numerator: String(displayForm.numerator),
+      denominator: String(displayForm.denominator),
+    };
+    wasReplaying = isReplaying;
+  }
 
   function render(scene) {
     assertValidScene(scene);
@@ -103,9 +400,6 @@ export function createFractionBarRenderer({
     rootEl.setAttribute('role', 'img');
     rootEl.setAttribute('tabindex', '-1'); // Display surface: never focusable
 
-    // Clear and build bar contents
-    rootEl.replaceChildren();
-
     // Determine choreography treatment when a conversion is established (transform or operate) or replaying
     const isReplaying = Boolean(scene.presentation?.isReplaying);
     const beat = scene.meaning.currentTask?.beat;
@@ -114,6 +408,23 @@ export function createFractionBarRenderer({
     const choreography = scene.presentation.choreography || 'in-place';
     const isJuxtaposed = isConversionBeat && isChanged && choreography === 'juxtaposed';
     const isSequential = isConversionBeat && isChanged && choreography === 'sequential';
+
+    if (choreography === 'in-place') {
+      rootEl.classList.remove('choreography-juxtaposed', 'choreography-sequential');
+      rootEl.classList.add('choreography-in-place');
+      renderPersistentInPlace(scene, currentForm, mode);
+      return;
+    }
+
+    cancelBoundaryAnimations();
+    persistentElements = null;
+    lastDisplayedForm = null;
+    wasReplaying = false;
+    pendingReplayReveal = false;
+    rootEl.classList.remove('fraction-bar-container-persistent', 'choreography-in-place');
+
+    // Static comparison treatments retain their existing segment rendering.
+    rootEl.replaceChildren();
 
     if (isJuxtaposed) {
       rootEl.classList.add('choreography-juxtaposed');
@@ -267,62 +578,8 @@ export function createFractionBarRenderer({
       wrapper.appendChild(step2Card);
 
       rootEl.appendChild(wrapper);
-    } else if (isReplaying && isChanged && scene.meaning.transition && choreography === 'in-place') {
-      rootEl.classList.remove('choreography-juxtaposed', 'choreography-sequential');
-      rootEl.classList.add('choreography-in-place', 'replay-active');
-
-      const pre = scene.meaning.transition.pre[side];
-      const preNum = Number(pre.numerator);
-      const preDen = Number(pre.denominator);
-
-      rootEl.setAttribute(
-        'aria-label',
-        typeof strings.transition?.replayingAria === 'function'
-          ? strings.transition.replayingAria(side, preNum, preDen)
-          : `${side === 'left' ? 'First' : 'Second'} fraction replaying: started with ${preNum} of ${preDen} equal parts.`,
-      );
-
-      const wrapper = document.createElement('div');
-      wrapper.classList.add('fraction-bar-in-place-replay');
-
-      const headerRow = document.createElement('div');
-      headerRow.classList.add('fraction-bar-replay-header');
-
-      const badge = document.createElement('span');
-      badge.classList.add('fraction-bar-badge');
-      badge.textContent = typeof strings.transition?.replayingLabel === 'function'
-        ? strings.transition.replayingLabel(preNum, preDen)
-        : `Starting parts: ${preNum}/${preDen}`;
-      headerRow.appendChild(badge);
-
-      const toggleBtn = document.createElement('button');
-      toggleBtn.type = 'button';
-      toggleBtn.classList.add('fraction-bar-toggle-btn', 'app-secondary-button');
-      toggleBtn.textContent = strings.transition?.showNewParts || 'Show new parts';
-      toggleBtn.setAttribute('aria-label', toggleBtn.textContent);
-      toggleBtn.addEventListener('click', () => {
-        if (dispatchAction) {
-          dispatchAction({ type: 'dismiss-replay' });
-        }
-      });
-      headerRow.appendChild(toggleBtn);
-      wrapper.appendChild(headerRow);
-
-      const body = document.createElement('div');
-      body.classList.add('fraction-bar-row-body');
-      const elements = createTrackAndReadout({
-        numerator: preNum,
-        denominator: preDen,
-        isSubdivided: false,
-        mode,
-      });
-      body.appendChild(elements.trackEl);
-      body.appendChild(elements.readoutEl);
-      wrapper.appendChild(body);
-
-      rootEl.appendChild(wrapper);
     } else {
-      // Standard single-bar layout (in-place or default)
+      // Static single-bar fallback for non-transition scenes.
       rootEl.classList.remove('choreography-juxtaposed', 'choreography-sequential', 'choreography-in-place', 'replay-active');
       rootEl.setAttribute('aria-label', strings.encounter.barAriaLabel(side, numerator, denominator));
 
@@ -348,10 +605,15 @@ export function createFractionBarRenderer({
       return this;
     },
     destroy() {
+      cancelBoundaryAnimations();
       if (rootEl && rootEl.parentNode) {
         rootEl.parentNode.removeChild(rootEl);
       }
       rootEl = null;
+      persistentElements = null;
+      lastDisplayedForm = null;
+      wasReplaying = false;
+      pendingReplayReveal = false;
     },
     getElement() {
       return rootEl;
