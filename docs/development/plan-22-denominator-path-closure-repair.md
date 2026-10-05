@@ -3,7 +3,7 @@ id: plan-22
 title: Denominator Path Closure Repair
 status: draft
 depends_on: [plan-13, plan-14]
-gate: "Requirement 0: verify the live denominator coverage/capability defect and approve the bounded continuation mechanism before source work. Any change to the authorized symbolic-continuation or valid-answer policy requires owner disposition. Technical and owner behavior acceptance; release separately authorized."
+gate: "Requirement 0: verify the live denominator coverage/capability defect and approve the DECISION-036 task-boundary mechanism before source work. Preserve valid-answer classification and verify identity/replay compatibility. Technical and owner behavior acceptance; release separately authorized."
 superseded_by: null
 resolution: null
 summary: >-
@@ -59,8 +59,9 @@ Quality §46, the Plan 13 report and delivery review, the two next-wave reviews 
 `reports/orchestration/next-wave-plans-17-21-review-disposition.md`.
 Inspect eligibility, denominator classification/handling, reflection data, scene,
 visual/linear renderers and the existing route runner. Representation bounds are
-capability limits, not mathematical limits. Decisions 008/011 currently authorize
-symbolic continuation beyond bar capability; departure needs owner approval.
+capability limits, not mathematical limits. DECISION-036 amends Decisions 008/011 for the current demo: implement honest
+task-bounded recovery now. Broader symbolic continuation remains a follow-up review
+when content/capability coverage expands.
 
 ## Scope
 
@@ -71,7 +72,7 @@ Do not broaden into family expansion or change owner/orchestrator disposition re
 
 ## Implementation Requirements
 
-### Requirement 0 — Reproduce, compare mechanisms, stop
+### Requirement 0 — Reproduce and propose the adopted boundary; stop
 
 Run preflight. Reproduce the 36 path through both conditions using pure state and
 real mounted controls. Record mathematical validity, authored coverage, rendering
@@ -79,32 +80,33 @@ verdict, continuation and actual end state separately. Inspect the eligible-but-
 unauthored category too: the nested fixture's 24 path is a useful pure content
 example but is not a live registered family today. Do not admit nested content here.
 Verify all reachable canonical paths, including 12/24, and identify any denominator-
-dependent authored subjects and distractors. Compare the smallest working symbolic
-continuation with an honest task-bounded retry/return policy; the latter is a proposed
-departure from current authorization and cannot be silently substituted.
-Propose how a valid eligible but unauthored path finishes or is explicitly bounded,
-how an ineligible visual path is avoided, and how applicable reflection is supplied,
-changed or bypassed under the approved task policy. Never label a valid common unit
-mathematically wrong. Obtain mechanism approval and any necessary owner policy decision
-before source changes. Do not extrapolate an ad hoc infinite set of authored prompts.
+dependent authored subjects and distractors. Apply DECISION-036: propose an upstream
+admission check that distinguishes valid-but-unsupported units from mathematical
+errors before advancing to unsupported work. Keep the response field usable for
+another unit and preserve retry/return paths and clear focus. Derive the reviewed
+coverage from the actual definition, condition and capability, not a global hardcoded
+12/24 rule. Never label a valid common unit mathematically wrong or coerce it.
+Obtain mechanism approval before source changes; the owner policy is already adopted.
+Explain replay/identity compatibility, including prior unsupported-unit envelopes.
+Do not extrapolate an ad hoc infinite set of authored prompts.
 
 ### Requirement 1 — Honest closure and fail-closed presentation
 
 Retain mathematical classifications and configuration/replay provenance. Every accepted
 path through a registered practice must reach its defined completion or the explicitly
 approved task boundary with usable recovery/return; no null premise, missing choices,
-dead-end answer control, or unsupported bar mounting. If symbolic continuation is
-chosen, demonstrate it is an actual usable path, not just `route` metadata or the
-presence of the linear-view toggle. The existing scene already projects the symbolic
-role; require the visual container to honor that role/capability rather than call
-fraction-bar renderers unconditionally. A renderer-local numerical ceiling is not
+dead-end answer control, or unsupported bar mounting. The approved task boundary
+must prevent unsupported advance in visual and linear paths. Respect upstream
+role/capability wherever presentation remains reachable; do not call fraction-bar
+renderers unconditionally when the scene forbids them. A linear-view toggle alone
+is not a usable recovery path. A renderer-local numerical ceiling is not
 a substitute for upstream ownership. Preserve canonical 12/24 semantics and existing
 correct-answer acknowledgement. Do not coerce a proposal to a different denominator.
 
 ### Requirement 2 — Failing-first coverage beyond authored examples
 
 Add browser routes entering 36 under medium support for matching and premise conditions,
-and assert the approved outcome after the relevant subsequent actions. Include the
+and assert the approved outcome at the task boundary and after recovery through mounted controls. Include the
 linear route and reduced motion, recovery, retry and return focus. Test mathematically
 invalid input separately from valid-but-unsupported task coverage and representation
 ineligibility. Add a registration/path-closure check: an accepted path has applicable

@@ -673,6 +673,16 @@ Variety should include meaningful differences in:
 
 Numeric variety should remain constrained enough to preserve visual clarity.
 
+Owner staging decision, 2026-10-04 (DECISION-035–040): the first selection increment
+uses a small vetted authored set and learner-triggered Next problem, with small
+learner-goal entry choices. This does not discharge this section's broader variety
+requirement. General nested common-unit choice, broader denominator-path coverage
+and bounded generated learner practice have explicit revisit triggers in
+[Phase 3 follow-up obligations](../development/phase-3-follow-up-obligations.md).
+Review those obligations at the §31 exit gate. Meaningful reflection for concept
+tasks remains purpose-driven; the first like-denominator task intentionally omits
+conversion reflection. These are planning decisions, not implemented capabilities.
+
 ---
 
 # 31. Phase 3 Exit Gate

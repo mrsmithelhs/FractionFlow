@@ -170,3 +170,19 @@ hard-break lines with trailing spaces, flagged by the all-staged whitespace chec
 these were retained to preserve the report's content/formatting and are not packet
 or source validation failures. The final read-only gate/dependency review found no introduced circular gate or
 silently adopted owner policy. Its small drafting clarifications were applied.
+
+## Subsequent owner disposition — 2026-10-04
+
+The owner accepted all six recommendations from the later owner-decision summary.
+DECISION-035–040 record the adopted policies; drafts 17–22 now reflect them. Earlier
+references in this review to pending owner choices describe the review-time state.
+`docs/development/phase-3-follow-up-obligations.md` preserves the broader roadmap
+work and revisit triggers. This disposition does not initiate drafts or approve
+source mechanisms, observations or deployment.
+
+Validation of this owner-directed docs amendment: packet index regenerated, packet
+lint passed, and scoped `git diff --check` passed. A read-only consistency reviewer
+found one stale Plan 18 policy-gate reference; it was corrected. No other blocking
+document issue was reported. Advisor consultation was not warranted for this
+prose-only change. No application tests or source edits were made by orchestration.
+Concurrent Plan 11 repair edits in source/route files are outside this commit.

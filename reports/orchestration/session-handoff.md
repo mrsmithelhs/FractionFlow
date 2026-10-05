@@ -49,10 +49,26 @@ Authoritative status is `node scripts/dev/plan-status.js list` and the generated
    live denominator-36 reflection/capability dead end before release and expansion. Receive Plan 11's
    technical commit, serialize Plan 22 source work, then seek a concrete repaired release authorization
    and Plan 11's deployed acceptance. Preferred family order thereafter is 17,20,19,18, with policy
-   flexibility. Source work remains single-writer. No policy change or deployment is adopted here.
+   flexibility. Source work remains single-writer. The owner subsequently adopted the six policy
+   recommendations as DECISION-035–040; draft initiation and deployment remain gated.
 3. Plan 15's standalone prototypes are accepted for observation preparation. Both subtraction
    representations remain open; actual observation sessions, OQ-25 selection, and deployment
    require their own owner direction.
+
+### Owner policy disposition — 2026-10-04
+
+DECISION-035–040 record small learner-goal entry, honest unsupported-unit task
+boundaries for the current demo, focused nested side identification, result stack
+only after the correct total, no conversion reflection in the first like-denominator
+task, and an authored set with learner-triggered Next problem. Drafts 17–22 reflect
+these choices. Plan 21 still supplies concrete labels/selection/reset/focus details
+and a follow-on source scope. Source mechanisms, initiation and release are separate
+gates; do not ask the owner to choose these six directions again.
+
+`docs/development/phase-3-follow-up-obligations.md` tracks general nested unit choice,
+broader denominator-path coverage/symbolic continuation, generated practice and the
+Next implementation, with revisit triggers. §30's variety obligation remains owed.
+Like-task reflection omission is intentional, not a promise to reinsert it.
 
 ## Plan 12 closeout and next gate
 
@@ -133,5 +149,6 @@ Open questions of note: **OQ-23** (try another problem), **OQ-24** (no mixed-num
 `reports/orchestration/roadmap-position-2026-10-04.md` supersedes the older position snapshot for
 current planning. The precursor wave is accepted except Plan 11; the learner app still offers one
 practice type. Phase 3 family expansion is drafted, not implemented. §89's learner-understanding
-questions still have no observation evidence. The next wave also carries an instructional schedule
-policy decision and a content-selection decision, not only presentation work.
+questions still have no observation evidence. The next wave carries approved focused-task and authored-selection policies
+(DECISION-035–040); their source mechanisms and accepted reachable behavior remain
+outstanding. Follow-up obligations preserve the wider Phase 3 goals.

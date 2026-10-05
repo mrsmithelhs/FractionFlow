@@ -952,3 +952,126 @@ the first consumers of a non-canonical schedule.
 Use the same `**Date:** YYYY-MM-DD` field for proposals, using the proposal date.
 
 *(Implementer proposals waiting for owner review go here.)*
+
+## Accepted owner disposition — 2026-10-04
+
+The owner accepted all six recommendations in the next-wave owner-decision summary.
+These decisions authorize the policy and draft amendments below, not initiation of
+draft packets, source mechanisms, packet completion, observations or deployment.
+
+### DECISION-035 - Organize entry by small learner goals
+
+**Date:** 2026-10-04
+
+**Decision:** Keep the entry page organized around a small number of meaningful
+learner practice goals. Nested and shared-factor denominator relationships are
+variations within a suitable goal, not a button taxonomy. Specific reviewer routes
+may retain distinct content identities. Plan 21 will make labels, mappings and
+selection/reach details concrete before implementation; it need not reopen this
+direction choice. Unavailable practice stays absent.
+
+**Rationale:** Internal mathematical families should provide practice variety
+without making the learner navigate a growing list of specification terms.
+
+**Supersedes / related:** DECISION-029/031; Plans 17–21; Roadmap §30.
+
+### DECISION-036 - Bound unsupported valid units honestly in the current demo
+
+**Date:** 2026-10-04
+
+**Decision:** For the current reviewed practice, use an explicit task boundary and
+usable recovery when a mathematically valid common denominator lacks authored
+path coverage or reviewed representation capability. Acknowledge mathematical
+validity; explain that this practice cannot use that unit and allow another entry,
+retry or return. Do not advance into missing reflection or draw an unsupported bar.
+Do not classify the unit as mathematically wrong, silently coerce it, or impose a
+mathematical ceiling. Plan 22 proposes the upstream enforcement, feedback and
+identity/replay compatibility mechanism before source changes.
+
+For this bounded demo repair, this amends DECISION-008/011's symbolic-continuation
+authorization: a complete generic symbolic continuation is not required now.
+Reassess broader coverage and executable symbolic continuation when the vetted
+content/capability set expands; see the follow-up obligations record.
+
+**Rationale:** An honest recoverable boundary is a smaller repair than generalizing
+all authored reflection paths, while preserving exact mathematical truth.
+
+**Supersedes / related:** Amends DECISION-008/011 for this scope; preserves
+DECISION-028's valid-answer distinction; Plan 22.
+
+### DECISION-037 - Start nested addition with a focused renaming decision
+
+**Date:** 2026-10-04
+
+**Decision:** The first nested episode asks which fraction needs renaming to use
+the common unit already available in the problem. Retain that meaningful learner
+decision and one conversion, with both operand orders proven. It is a distinct
+authored task with explicit definition identity, not an unrestricted denominator
+choice whose valid alternatives are marked wrong. DECISION-034's frozen schedule
+remains unchanged. Plan 18 still requires an execution mechanism proposal.
+
+General common-unit choice for nested addition remains a follow-up review obligation;
+implementing it requires an explicitly approved task/schedule contract and proven
+alternate-unit coverage. The first focused task does not establish general-family reach.
+
+**Rationale:** This tests the one-renaming grammar without inventing conversions
+or silently changing the schedule in response to a denominator choice.
+
+**Supersedes / related:** DECISION-028/034; Plan 18; Roadmap §28.
+
+### DECISION-038 - Show the combined multi-whole stack after the accepted total
+
+**Date:** 2026-10-04
+
+**Decision:** For crossing-one-whole addition, retain the two addends while the
+learner calculates. After a correct total is accepted, replace the addends with
+the inspectable discrete multi-whole result stack. Wrong submissions retain the
+calculation view. Do not mount the combined result graphic or expose its total
+before acceptance. Preserve equal-width wholes, equal unit subdivisions, short
+labels, replay inspection and actual narrow-screen measurements; never accumulate
+four active bars. This changes DECISION-032's operate-collapse timing.
+
+**Rationale:** Keeping the addends visible makes the learner's calculation
+responsibility clearer and avoids a pre-answer combined countable result. The prior
+decision expressly allowed countability; this is an owner policy amendment, not a
+retroactive defect finding against that permission.
+
+**Supersedes / related:** Amends DECISION-032 timing; Plan 17; DECISION-021.
+
+### DECISION-039 - Omit conversion reflection from the first like-denominator task
+
+**Date:** 2026-10-04
+
+**Decision:** The first like-denominator episode has `includeReflection: false`
+and the arc encounter → notice → operate → resolve. Transformation-specific
+conditions are inapplicable. Identical output across those conditions/support
+dimensions is legitimate when no relevant task exists; keep the canonical episode's
+condition witnesses intact. Do not invent a trivial conversion or unchanged-fraction
+question to manufacture diversity. Later concept reflection needs its own meaningful
+purpose, authored task and approval; omission is not debt to force reflection back.
+
+**Rationale:** The zero-renaming episode should teach the work it actually requires.
+
+**Supersedes / related:** DECISION-034; Plan 20; OQ-21; Roadmap §28.
+
+### DECISION-040 - Start variety with a vetted authored set and learner-triggered Next
+
+**Date:** 2026-10-04
+
+**Decision:** Start next-instance practice with a small reviewed authored set and
+a learner-triggered Next problem action. Retry keeps content identity and starts
+fresh; Next changes vetted content and starts fresh. No automatic advance, session
+dose, adaptation, tracking or persistence is introduced. Plan 21 proposes concrete
+selection/order, exhaustion/refusal, configuration, focus and replay semantics and
+a bounded follow-on implementation packet before activation.
+
+Bounded generated learner practice remains a roadmap follow-up after the authored
+selection contract is demonstrated. This staging does not discharge §30's broader
+variety requirement. OQ-23's source/control direction is decided; its concrete
+contract and implemented reachable behavior remain outstanding.
+
+**Rationale:** A vetted set isolates selection and reset behavior from unreviewed
+instructional/representation coverage in generated content.
+
+**Supersedes / related:** DECISION-029/035; Plan 21; OQ-23; Roadmap §30;
+`docs/development/phase-3-follow-up-obligations.md`.

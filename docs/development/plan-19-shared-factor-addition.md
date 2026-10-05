@@ -40,9 +40,9 @@ No subtraction, new beats, mixed numbers, adaptive fading, arbitrary generation,
 session sequencing, persistence or deployment. The accepted baseline and Plan 22
 path-closure repair are dependencies; nested addition is not. Both operands need
 renaming for 12 and 24 here, so the nested schedule choice cannot block this work.
-Plan 21's early owner practice-type decision must precede assignment of a new entry
-surface. A separate family button is not assumed; implement the approved route
-inside the approved practice model. Serialize source changes with other packets.
+DECISION-035 adopts the small learner-goal model. Plan 21 supplies concrete
+selection/reach details. If reaching this content requires its future implementation
+packet, record that dependency before source work; do not add a family button. Serialize source changes with other packets.
 
 ## Authority and contracts
 

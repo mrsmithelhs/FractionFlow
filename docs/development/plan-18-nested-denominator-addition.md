@@ -3,13 +3,13 @@ id: plan-18
 title: Nested-Denominator Addition
 status: draft
 depends_on: [plan-11, plan-12, plan-13, plan-14, plan-16, plan-22]
-gate: "Before assignment, owner task-policy decision in the separate nested brief, recorded by orchestration. Requirement 0 verifies that decision and obtains execution mechanism approval before source work. Technical and owner rendered-screen/agency acceptance; deployment separately authorized."
+gate: "DECISION-037 adopts the focused renaming task. Requirement 0 verifies that task and obtains execution mechanism approval before source work. Technical and owner rendered-screen/agency acceptance; deployment separately authorized."
 superseded_by: null
 resolution: null
 summary: >-
   Make nested-denominator addition learner-reachable, with one required canonical
-  conversion and honest handling of alternate units. First resolve the mismatch
-  between a frozen canonical schedule and learner-chosen non-least denominators.
+  conversion and a meaningful decision about which fraction needs renaming.
+  General common-unit choice remains a separately gated follow-up.
 ---
 # Plan 18: Nested-Denominator Addition
 
@@ -22,7 +22,7 @@ summary: >-
 - Date: 2026-10-04
 - Packet type: feature
 - Mutation level: source / learner-facing local behavior
-- Approval gate: alternate-unit policy decision, mechanism, technical and owner acceptance
+- Approval gate: verify adopted focused task; mechanism, technical and owner acceptance
 - Depends on: `plan-11`, `plan-12`, `plan-13`, `plan-14`, `plan-16`, `plan-22`
 - Expected artifacts: execution of recorded owner task policy, approved bounded source work, tests, browser evidence and report
 
@@ -46,16 +46,17 @@ answers merely because they do not fit the current UI.
 The accepted entry/support, motion, route and schedule precursors plus Plan 22's
 path-closure repair are real dependencies. Plan 17 need not generalize admission:
 its relatively-prime crossing content already passes today's instruction guard.
-Nested policy consideration runs now through
+The adopted nested policy is recorded in
 `reports/orchestration/nested-addition-policy-decision-brief.md`, independently of
-source delivery. Owner policy must be recorded before this feature is assigned;
-Plan 21's practice-type model must also be settled before a new learner entry surface.
+source delivery. DECISION-037 records the focused task; DECISION-035 records the learner-goal
+model. Plan 21 must make content-selection reach concrete before a new surface;
+record a real dependency if that requires its future implementation packet.
 No hard dependency on another new family is asserted. Serialize shared source work;
 like-denominator execution first is useful but is a preferred order, not a blocker.
 
 ## Authority and contracts
 
-Read `AGENTS.md`, `docs/decision-log.md` (034), `docs/development/README.md`,
+Read `AGENTS.md`, `docs/decision-log.md` (034–040), `docs/development/README.md`,
 Roadmap §§27–31, the Plan 10 reach assessment, Plan 16 mechanism/delivery reviews,
 `src/interaction/beat-schedule.js`, episode/definition/replay, and current denominator
 classification/support logic. Preserve exact math, immutable episode configuration,
@@ -72,15 +73,16 @@ the gate. Existing definition semantics and previous routes remain protected.
 
 ### Requirement 0 — Discriminating investigation and decision; stop
 
-Run preflight and verify the recorded owner disposition of the separate nested
-policy brief. If absent, stop; do not make the policy choice inside source work.
+Run preflight and verify DECISION-037 and the adopted disposition in the separate
+nested brief. The first task identifies which fraction needs renaming to the unit
+already available; it does not offer unrestricted denominator entry.
 Trace denominator 8, 16 and eligible-but-unauthored 24 through the actual pure engine with a
 synthetic nested instance; record current acceptance/refusal and which conversion
 facts/controls the frozen schedule can represent. Also inspect the mirrored case
 `3/8 + 1/2` and support profiles. Distinguish a synthetic harness from a learner route.
-The earlier brief compares a canonical-unit-specific task, general unit choice
-under an amended construction contract, and identifying which fraction needs renaming.
-Verify the selected task's agency, prompts, replay identity and fixed schedule;
+The earlier brief retains rival options as history. General unit choice is deferred
+to the follow-up obligations record, not silently discarded. Verify the approved
+focused task's agency, prompts, replay identity and fixed schedule;
 obtain mechanism approval before source changes. Orchestrator mechanism approval
 alone does not authorize narrowing alternate pathways or amending DECISION-034.
 Explicitly name reducer/classification prerequisites for operate/resolve: distinguish
@@ -97,19 +99,20 @@ If a structural amendment requires a separate packet, stop and propose that pack
 
 Implement only the selected policy. Both left-renaming and mirrored right-renaming
 cases must be proven; register only vetted, fully runnable content. Retain notice,
-denominator reasoning where the approved task requires it, the needed conversion,
+the decision about which operand needs renaming, the needed conversion,
 operate, resolve and authored reflection. No redundant unchanged conversion.
 Keep high/medium support honest about the same mathematical task. Preserve legacy
 definitions/replay; new prompts and task semantics get explicit registered identity.
 
 ### Requirement 2 — Evidence through mounted controls
 
-Add full routes for both operand orders and both support profiles, wrong denominator
-and conversion recovery, Replay/help, linear and reduced-motion completion, retry
+Add full routes for both operand orders and both support profiles, wrong-side
+selection and conversion recovery, Replay/help, linear and reduced-motion completion, retry
 and return/re-entry. Verify skipped controls are absent visually and semantically;
 completed summaries/provenance match actual schedule positions. Demonstrate how a
-valid non-least denominator and eligible-but-unauthored 24 are handled under the
-approved policy and Plan 22 coverage contract. Seed a wrong-side
+valid non-least denominator and eligible-but-unauthored 24 relate to the task
+boundary: they are not offered denominator responses and are not mathematical
+errors. Preserve the Plan 22 distinction between validity and task coverage. Seed a wrong-side
 conversion or stale skipped control and prove the witness fails. Measure rest,
 conversion and Replay at 360×740/752 and retain the approved motion behavior.
 
@@ -133,6 +136,6 @@ commit explicit scoped files and progress last, and never push/deploy.
 
 ## Progress Report
 
-Include rival policy evidence and decision pointer, exact schedule and response paths,
+Include the adopted policy and rival-evidence pointers, exact schedule and response paths,
 registered identities, legacy compatibility, browser/geometry/access evidence,
 negative controls, advisor disposition, and remaining owner acceptance.

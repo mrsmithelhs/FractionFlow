@@ -31,7 +31,8 @@ summary: >-
 Make one vetted crossing-one-whole addition episode reachable from the entry page.
 The primary proposed fixture is `2/3 + 3/4 = 17/12`: it reuses two-renaming addition
 and avoids making a new simplification lesson part of the first crossing increment.
-This is one practice type, not generated practice or all crossing families.
+This is one vetted increment within the approved learner-goal model (DECISION-035),
+not a family taxonomy button, generated practice or all crossing families.
 
 ## Non-goals
 
@@ -41,12 +42,13 @@ levels, adaptive policy, session sequencing, persistence, and deployment are exc
 ## Depends on
 
 The entry and support writers, route harness, frozen schedule, and actual motion
-must be accepted first. Plan 11 is currently in progress; drafting this packet does
-not authorize starting it while that dependency is incomplete. Plan 22 repairs
+must be accepted first. Plan 11 is delivered with Repair 01 required; drafting this
+packet does not authorize starting it while that dependency is incomplete. Plan 22 repairs
 the live numeric-denominator coverage/capability dead end before expansion and
-before a combined public release. Plan 21's early owner practice-type disposition
-must precede adding a new entry surface; it is a named policy gate, not a requirement
-that every future content-inventory task be finished. Other family packets are not
+before a combined public release. DECISION-035 settles the small learner-goal policy; Plan 21 supplies concrete
+labels and content-selection reach. If reaching the fixture requires the future
+Next problem control, record that dependency at the mechanism gate instead of
+adding a family button or broadening this packet. Other family packets are not
 technical dependencies. Implement source packets one writer at a time.
 
 ## Why this packet exists
@@ -58,11 +60,12 @@ but does not implement it.
 
 ## Authority and contracts
 
-Read `AGENTS.md`, `docs/decision-log.md` (032–034), `docs/open-questions.md` (20, 24),
+Read `AGENTS.md`, `docs/decision-log.md` (032–040), `docs/open-questions.md` (20, 24),
 `docs/development/README.md`, Roadmap §§26–31, the Plan 10 dossier's
 `crossing-one-whole.md`, and the Plan 11/13/16 mechanism and delivery reviews.
 The dossier's layout sums are historical projections, not acceptance evidence;
-DECISION-032's four constraints govern where proposal wording conflicts.
+DECISION-038 amends DECISION-032's timing: retain addends until a correct total
+is accepted, then replace them with the result stack.
 
 Preserve math → instructional state → presentation; definition/replay compatibility;
 immutable support and schedule; beat leakage and participation floors; fragment-only
@@ -90,39 +93,39 @@ fixture and alternate-denominator routes, upstream semantic stack data, capabili
 limits for operands/results/choice distractors, and answer-withholding rules.
 Specify where quotient/remainder facts come from validated exact math; renderers
 consume supplied quantities, never become a second math engine. Explain how the
-last conversion animation, operate collapse, Replay and reflection share layout.
+last conversion animation, retained operate addends, post-answer result stack,
+Replay and reflection share layout.
 Tightening the legacy definition's accepted result range is a semantic change,
 not automatically authorized by this new identity; propose and verify compatibility
 before adopting it. Reuse existing validated `representationFacts.wholeSpan` where
 applicable instead of inventing a second mathematical derivation.
-State the intended operate responsibility explicitly: DECISION-032 permits a
-countable combined stack, while today's task names combining addend quantities.
-Explain the proposed upstream pre-answer projection and whether contributions
-remain identifiable. Give a concrete non-visual equivalent that exposes the needed
-quantity information without announcing the total; hiding all countable information
-is not participation parity. Present the agency tradeoff and the alternative of
-retaining addends until the answer for owner consideration. The latter changes
-DECISION-032 timing and cannot be adopted without an owner amendment. No categorical
-leakage finding or automatic relocation to resolve is assumed here.
+Apply the owner timing decision in DECISION-038. Propose upstream mounting rules
+that retain addend quantity information during operate, with equivalent non-visual
+participation, and expose the result stack only after the correct total is accepted.
+Verify wrong submissions do not reveal the combined result. The prior countability
+permission was intentional; the owner has now changed the task responsibility.
+Do not reopen this policy choice; obtain approval of its execution mechanism.
 Return for approval before source edits. A prototype variable is not settled by
 this proposal. If an upstream math addition is necessary, return for scope review.
 
 ### Requirement 1 — Truthful stack and learner responsibility
 
 Use equal-width wholes stacked vertically, with equal segment widths for the same
-denominator. Preserve the raw improper form and unit count. At `operate`, retire
-active addend bars into compact inspectable completed-step text. Before a learner
-supplies the total, withhold numerical result readouts and mixed equivalents from
+denominator. Preserve the raw improper form and unit count. At `operate`, retain
+the addends. After a correct total is accepted, replace them with the result stack
+and compact inspectable completed-step text. Before acceptance, withhold the
+combined result graphic, numerical result readouts and mixed equivalents from
 visible text, accessible names, live regions, summaries and hidden mounted content.
-The countable visual quantity is allowed; an answer-bearing label is not.
+Wrong-answer recovery must not reveal the combined result.
 Keep labels short and omit redundant per-row counts. Preserve existing final-form
 behavior rather than invent a simplify beat. Beyond supported bounds, fail closed
 upstream with an explicit reason rather than clamp, shrink or truncate a stack.
 
 ### Requirement 2 — Reachable registered practice
 
-Add one plain-language entry button for the runnable sum-above-one practice and
-its recognized fragment launch. Keep unavailable families absent. Preserve the
+Make this vetted content reachable within the approved small learner-goal model
+and its recognized fragment addressing. Propose the exact entry/selection route;
+do not assume a new family button. Keep unavailable families absent. Preserve the
 existing practice definition identities/revisions and replay oracle; give new
 semantics their own registered identity. Exercise canonical denominator 12 and
 a vetted alternative (proposed 24), both support profiles, local recovery, help,
@@ -135,7 +138,7 @@ validate the proposed fixture explicitly; it is not a currently stored golden ca
 For each admitted path, verify condition-specific authored coverage or the approved
 Plan 22 continuation/boundary, not just denominator eligibility. Add typed out-of-
 coverage/capability routes; 12/24 alone cannot prove this property. Entry labels must
-distinguish the two learner goals plainly, under the approved practice-type model.
+name learner goals plainly, under DECISION-035 and the concrete Plan 21 model.
 
 ### Requirement 3 — Browser geometry and access
 
@@ -143,7 +146,8 @@ Measure both reference viewports, 360×740 and 360×752, under every registered
 condition with Replay active as DECISION-032 requires, plus rest, operate before
 answer, resolve and reflection. Record actual scrolling and question/control
 bounds, horizontal overflow, whole/segment widths and painted shaded counts.
-Observe the Plan 11 transition before operate retires the addends. Cover high and
+Observe the Plan 11 transition while addends remain mounted; measure the result
+stack after the accepted answer retires them. Cover high and
 medium support, keyboard, non-drag browser touch, linear path and reduced motion.
 Do not claim physical-device typing or assistive-technology evidence unless tested.
 Supply screenshots for owner review. Ordinary vertical scrolling is reported;

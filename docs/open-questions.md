@@ -635,3 +635,17 @@ convention.
 
 **Needs:** nothing yet — this is a watch item for the Phase 2 review, recorded so it is not
 forgotten.
+
+## Owner direction update — 2026-10-04
+
+- **OQ-20:** DECISION-038 amends DECISION-032 timing. The first crossing episode
+  retains addends during calculation and shows the stack after the correct total
+  is accepted. Plan 17 implementation/acceptance remains outstanding.
+- **OQ-23:** DECISION-035/040 decide the initial direction: small learner goals,
+  a vetted authored set and learner-triggered Next problem. Plan 21 still owes
+  concrete selection/exhaustion/focus/identity semantics and a source handoff.
+  Reachable Next behavior is not yet implemented; the question is not closed
+  merely by adopting the direction. Broader generated variety remains a follow-up.
+
+See `docs/development/phase-3-follow-up-obligations.md` for the staged work and
+revisit triggers; this update does not declare Phase 3 or its content-variety gate complete.

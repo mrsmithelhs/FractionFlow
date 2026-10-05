@@ -29,7 +29,8 @@ summary: >-
 ## Goal and why this packet exists
 
 Launch a vetted like-denominator addition episode, proposed `2/7 + 3/7 = 5/7`,
-with `encounter → notice → operate → resolve` and authored reflection if enabled.
+with `encounter → notice → operate → resolve` and `includeReflection: false`
+(DECISION-039). Transformation-specific conditions are inapplicable.
 Plan 16 can express this schedule, but no learner reaches it. OQ-21 records missing
 feedback for incorrectly saying equal-denominator parts have different sizes.
 
@@ -39,13 +40,14 @@ No redundant denominator choice or conversions, new simplify beat, subtraction,
 mixed numbers, generated draws, adaptive support/session policy or deployment.
 The accepted precursors and Plan 22's closure repair are dependencies; no other
 new family is a technical prerequisite. Execute source work one writer at a time.
-Plan 21's early owner practice-model decision gates any new entry surface; a
-button per family is not assumed. This packet does not require every family to share
+DECISION-035 settles the learner-goal model; Plan 21 supplies concrete selection
+reach. Record a dependency on its follow-on implementation if needed; do not add
+a family taxonomy button. This packet does not require every family to share
 the canonical episode's number of controls or visual differences between profiles.
 
 ## Authority and contracts
 
-Read `AGENTS.md`, `docs/decision-log.md` (034), `docs/open-questions.md` (21),
+Read `AGENTS.md`, `docs/decision-log.md` (034–040), `docs/open-questions.md` (21),
 `docs/development/README.md`, Roadmap §§27–31, Plan 10 reach assessment, accepted
 Plan 16/22 reports and the early Plan 21 practice-model disposition, current notice classification, strings, scene, schedule and
 leakage contracts. Preserve exact math, frozen configuration, learner agency,
@@ -55,8 +57,7 @@ legacy identity/replay and keyboard/touch/linear participation.
 
 Vetted fixture and registered definition, admission/notice recovery, pure reducer
 and classification prerequisites for the zero-renaming arc, scene and renderer
-consumption of the existing schedule, applicable authored
-reflection data, entry registry, tests and routes. No learner surfaces solely to
+consumption of the existing schedule and approved reflection absence, entry registry, tests and routes. No learner surfaces solely to
 make support profiles look different when their varied dimensions are inapplicable.
 
 ## Implementation Requirements
@@ -71,15 +72,11 @@ original operand forms without inventing a learner choice or conversion. Verify
 accepted-definition completion and replay. Name registered-selector admission and
 explicit fixture authoring/validation as work, not already available capability.
 Propose
-same-sized-parts feedback, reflection/condition applicability, registry identity,
-final-form handling and absence checks for skipped beats. Explicitly establish
-what the premise-check condition means with no conversion; do not show a stale
-conversion question or silently invent a new mathematical task. If that requires
-an owner condition-policy decision, obtain it at this gate. The recommended option
-for owner consideration is `includeReflection: false` with transformation-specific
-conditions inapplicable; this is a proposal, not an adopted task decision. A meaningful
-authored alternative needs explicit task semantics and identity, not a trivial unchanged-
-fraction check. Specify the per-practice applicability contract and route declarations:
+same-sized-parts feedback, registry identity, final-form handling and absence checks
+for skipped beats. Apply DECISION-039: `includeReflection: false` and transformation-
+specific conditions inapplicable. Do not show a stale conversion question or invent
+a task to distinguish conditions. Later meaningful concept reflection has a separate
+approval boundary. Specify the per-practice applicability contract and route declarations:
 use existing `declaredSameAs` machinery where appropriate, absence assertions for
 skipped work, and negative controls only where a difference is genuinely expected.
 Do not weaken canonical condition witnesses or add controls just to manufacture diversity.
@@ -91,8 +88,8 @@ and exact files before source changes.
 Use the accepted frozen schedule; do not visit a hidden decide/transform beat or
 auto-submit made-up conversions. Wrong notice feedback names the shared unit in
 short learner language and lets the learner retry. Help remains local to the task.
-Completed summaries/provenance show only actual work. Reflection, when enabled,
-uses vetted content and retains the required mathematical decision.
+Completed summaries/provenance show only actual work. No reflection is mounted
+for this task; prove completion and replay with the definition flag false.
 
 ### Requirement 2 — Reach and absence evidence
 
@@ -104,7 +101,7 @@ control or answer content is mounted in either visual or linear path. Run both
 support profiles and document when projected output legitimately matches. Cover
 keyboard, non-drag touch and reduced motion. Seed stale conversion content or
 unlike-denominator recovery text and show the witness rejects it. Measure and
-capture both 360px viewports, including recovery and reflection when applicable. Keep old route
+capture both 360px viewports, including recovery and the completion state; assert reflection absence. Keep old route
 rows/assertions and applicable reciprocal controls intact.
 
 ## Work plan and validation checklist

@@ -3,12 +3,12 @@ id: plan-21
 title: Practice Variety and Next-Problem Design
 status: draft
 depends_on: [plan-10, plan-12, plan-13, plan-14, plan-16]
-gate: "Early owner practice-type/entry-model disposition before new family entry surfaces; later owner disposition of content selection, learner/reviewer control and next-problem/reset semantics before implementation. This investigation can proceed before new families are delivered and does not activate content or close OQ-23."
+gate: "DECISION-035/040 adopt small learner goals and a vetted authored set with learner-triggered Next. Propose concrete mapping, selection, exhaustion and reset semantics for owner acceptance before implementation. This investigation can proceed before new families are delivered and does not activate content or close OQ-23."
 superseded_by: null
 resolution: null
 summary: >-
-  Prepare Roadmap section 30 and OQ-23: first propose what constitutes a learner
-  practice type, then inventory demonstrated and candidate content and a bounded selection policy
+  Prepare Roadmap section 30 and OQ-23: operationalize the adopted learner
+  practice type, then inventory demonstrated and candidate content and a bounded authored-set selection policy
   for trying another problem. Keep session composition and automatic generation
   activation behind a separate owner-approved implementation packet.
 ---
@@ -29,8 +29,9 @@ summary: >-
 
 ## Goal and why this packet exists
 
-First make the practice-type/entry organization decision actionable, then recommend
-a bounded way to try a genuinely different problem. Separate current demonstrated
+Make DECISION-035/040 actionable: small learner goals, a reviewed authored set
+and learner-triggered Next problem. Propose the concrete contract for trying a
+genuinely different problem. Separate current demonstrated
 families from proposed future content; the investigation need not wait for all new
 source packets. Roadmap §30 requires meaningful denominator,
 scale-factor, result and magnitude variety; one fixture per button is an engineering
@@ -50,7 +51,7 @@ selection implementation still waits for accepted applicable families and owner 
 
 ## Authority and contracts
 
-Read `AGENTS.md`, `docs/decision-log.md` (029–034), `docs/open-questions.md` (23),
+Read `AGENTS.md`, `docs/decision-log.md` (029–040), `docs/open-questions.md` (23),
 `docs/development/README.md`, Roadmap §§29–31 and §§51–58, the Plan 10 reach
 assessment, available accepted family reports (do not assume Plans 17–20 exist), content generation/validation/eligibility
 contracts, practice registry and episode/replay/reset contracts. Preserve exact
@@ -68,18 +69,19 @@ and ephemeral analysis are permitted; persistent tooling requires scope approval
 
 ## Implementation Requirements
 
-### Requirement 0 — Early practice-model decision brief
+### Requirement 0 — Concrete practice-model brief within adopted direction
 
 Run preflight. Use Principle §8, the owner's previously named practice goals and
-the existing registry to compare learner-meaningful practice goals with internal
-mathematical families. Explain whether nested/shared-factor/like-denominator cases
-belong inside a goal with varied instances, on distinct entry buttons, or on reviewer-
-only addressable routes. Do not conflate a stable content/definition identity with
+the existing registry to map learner-meaningful goals to internal mathematical
+families under DECISION-035. Nested/shared-factor relationships belong within a
+suitable goal with varied instances, not taxonomy buttons; specific reviewer routes
+may retain distinct identity. Propose where like-denominator and crossing tasks fit. Do not conflate a stable content/definition identity with
 a required learner button. Show the resulting entry labels and number of controls
-without building UI. Recommend the smallest calm model and give the owner a concrete
-decision brief early; do not wait for the entire content sweep. Record the owner's
-decision through orchestration before family packets add entry surfaces. No model
-is adopted by this packet. Existing coarse sum-above-one intent remains an input;
+without building UI. Recommend the smallest calm model and give the owner a
+concrete brief early; do not wait for the entire content sweep. The direction is
+already adopted; detailed labels/mapping/reach remain proposed until accepted.
+Name any selection implementation prerequisite before family source work.
+Existing coarse sum-above-one intent remains an input;
 mixed-number availability is not activated. Continue later analysis only within
 the resulting scope and keep undecided next-problem choices labeled proposed.
 
@@ -97,17 +99,19 @@ Use aggregate synthetic outcomes only, never learner data. If sampling, state th
 seed set, bounds, sample size and uncovered dimensions; report extrema/distributions
 and refusal reasons rather than only an average or a successful count.
 
-### Requirement 2 — Compare owner choices without selecting one
+### Requirement 2 — Design the authored-set increment and retain future alternatives
 
-Compare a reviewed authored set, a fixed deterministic sequence and a bounded
-generator draw. State learner-selected versus reviewer-selected next-instance
-control as a separate dimension. Name rival claims and their falsifying observation;
+Design the adopted reviewed authored set and learner-triggered Next action.
+Propose order/selection and exhaustion rules. Compare a fixed sequence and bounded
+generator draw as future alternatives, with explicit revisit triggers from
+`docs/development/phase-3-follow-up-obligations.md`; do not reopen the initial
+source/control choice or activate generation. Name rival claims and their falsifying observation;
 use discriminating cases (e.g. repeated numeric draws, eligible math with missing
 authored reflection, alternate units that exceed visible capacity) rather than
 only convenient passing samples. Compare authoring burden, reproducibility,
 meaningful variety, repetitions, bounded refusals and explanatory product language.
 No recommendation may rely on unobserved child efficacy or invented observations.
-Recommend one small *proposed* increment and record what remains undecided.
+Specify the small adopted increment and clearly label its undecided mechanism details.
 
 ### Requirement 3 — Explicit next-instance contract
 
@@ -118,7 +122,7 @@ or exhaustion without a loop that hangs or silently falls back to unsuitable
 content. Do not specify Phase 7 session dose, progress rewards or automatic advance.
 Propose future browser witnesses for retained retry identity, changed next identity,
 no leaked accumulated work, wrong/recovery paths, content refusal and access parity.
-End with a concrete owner decision brief and a bounded follow-on implementation
+End with a concrete owner contract-acceptance brief and a bounded follow-on implementation
 scope; do not enact it or close OQ-23 yourself.
 
 ## Work plan and validation checklist

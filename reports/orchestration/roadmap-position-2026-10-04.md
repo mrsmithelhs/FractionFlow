@@ -55,7 +55,8 @@ are identities, not priority. Plan 10's old sequence is input, not a gate.
 
 Plan 21 and `nested-addition-policy-decision-brief.md` can advance as docs work
 while Plan 11 runs. Family packets do not assume a learner button per fixture or
-mathematical family. The owner must settle the practice model first.
+mathematical family. DECISION-035 now settles the small learner-goal direction; Plan 21 makes labels,
+selection and reach concrete before source changes.
 
 The repair-release checkpoint is explicit: receive Plan 11's technical commit,
 approve/execute Plan 22, then present the exact repaired candidate for owner push
@@ -68,16 +69,17 @@ Plan 16 computes the frozen schedule from canonical renaming flags. For
 `1/2 + 3/8`, denominator 8 requires left conversion only, but a learner-selected
 valid denominator 16 requires both conversions. The current schedule cannot simply
 acquire an extra beat in response to the learner without contradicting DECISION-034.
-The separate nested brief exposes that decision now; Plan 18 verifies the recorded
-policy before assignment. No restriction of valid mathematics or amendment of the
+DECISION-037 now selects the focused side-identification task; Plan 18 verifies
+its mechanism before implementation. General unit choice remains follow-up work. No restriction of valid mathematics or amendment of the
 schedule rule is silently adopted. Its executable prerequisites include an unchanged
 operand and task-specific reflection subject; Plan 20 also needs a real implied
 common unit. Schedule construction tests alone do not prove these paths execute.
 
-The stack's pre-answer countability is explicitly permitted by DECISION-032. Reviews
-raised a genuine agency and non-visual parity question, not a categorical rule
-violation. Moving the stack after the answer would require an owner amendment;
-the Plan 17 mechanism gate now makes the responsibility and access tradeoff explicit.
+DECISION-032 historically permitted pre-answer countability; the reviews raised
+an agency/parity tradeoff, not a categorical violation of that permission. The
+owner has now adopted DECISION-038: retain addends during calculation and replace
+them with the stack only after the correct total is accepted. Plan 17's mechanism
+gate must implement that timing.
 
 ## Parallel owner evidence track
 
@@ -102,6 +104,18 @@ for vetted content variety/next-problem behavior rather than unsupervised genera
 activation. Reassess §31 before number lines (§90); mixed-number strategy remains
 owed before Phase 5 (§91/OQ-24). Adaptive fading, session composition, local progress
 and cloud/classroom features are outside this wave.
+
+## Accepted staging and follow-up obligations
+
+The owner accepted all six recommendations on 2026-10-04; DECISION-035–040 and
+the revised drafts are authoritative for direction. Plan 22 uses honest task-bounded
+recovery now; Plan 20 omits conversion reflection; Plan 21 designs an authored set
+with learner-triggered Next. Broader symbolic coverage, general nested unit choice
+and bounded generated practice are preserved in
+`docs/development/phase-3-follow-up-obligations.md`, with review triggers. These
+small first increments do not satisfy the whole of Roadmap §§27–30. No draft packet
+is initiated, no source mechanism accepted and no deployment authorized by the
+policy disposition.
 
 ## Review and validation
 

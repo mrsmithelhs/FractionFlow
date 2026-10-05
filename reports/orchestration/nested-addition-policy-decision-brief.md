@@ -1,6 +1,9 @@
 # Nested-addition policy decision brief — 2026-10-04
 
-**Status: proposed options for the owner; no decision or contract amendment adopted.**
+**Status: owner adopted the focused side-identification task on 2026-10-04
+(DECISION-037); execution mechanism remains gated.**
+The options below preserve the investigation history. The adopted task does not
+authorize changing DECISION-034 or starting Plan 18.
 This docs brief can be considered while Plan 11 is underway. It does not depend on
 crossing-one-whole implementation and is not source-work authorization for Plan 18.
 
@@ -39,7 +42,9 @@ use the word "adaptive" as the sole argument.
 Do not select an option through implementation convenience. First decide whether
 general common-unit choice is part of the intended nested practice or whether a
 focused side/unit task is the better increment. Then approve the smallest mechanism
-that realizes that task. No winner is declared here.
+that realizes that task. The owner subsequently selected the focused side-identification increment;
+general common-unit choice remains a review obligation in
+`docs/development/phase-3-follow-up-obligations.md`.
 
 Any mechanism brief must trace 8, 16 and 24, plus both operand orders; show effective
 operand forms at operate; identify the reflection subject by the actual task rather
@@ -48,11 +53,11 @@ coverage from ineligible drawing. Compare the retained and lost learner decision
 prompt density, support parity and replay identity. Name an observation that would
 show the narrowed task fails the desired instructional goal.
 
-## Decision record to fill after owner direction
+## Adopted owner disposition — 2026-10-04
 
-- Owner task choice: pending.
-- Decision-log amendment, if any: pending.
+- Owner task choice: identify which fraction needs renaming to the common unit already available.
+- Decision-log record: DECISION-037; DECISION-034 remains unchanged.
 - Registered task/definition identity: pending.
-- Treatment of valid alternate units and unauthored paths: pending.
-- Structural prerequisite packet, if needed: pending.
-- Plan 18 gate release: pending; orchestration records rather than invents the decision.
+- Treatment of valid alternate units: not offered as denominator responses in this focused task; never classified as mathematical errors. General choice remains follow-up work.
+- Structural prerequisite: none adopted for the focused task; general unit choice needs a separate approved contract before implementation.
+- Plan 18 policy gate: satisfied by owner direction; draft initiation, execution mechanism approval, technical/owner acceptance remain pending.
