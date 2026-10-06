@@ -649,3 +649,25 @@ forgotten.
 
 See `docs/development/phase-3-follow-up-obligations.md` for the staged work and
 revisit triggers; this update does not declare Phase 3 or its content-variety gate complete.
+
+### OQ-27 — How does a learner find a common denominator?
+
+**Raised:** 2026-10-06, by the owner. Selecting a suggested denominator or having
+a numeric proposal checked does not establish a process for finding one.
+
+The founding instructional model (§§6–7, Stage F) and Roadmap (§§19/21/28) name the
+objective, common-unit meaning and layered help. The current decide screen offers
+high-support candidates or medium-support numeric entry; generic help strings
+do not yet supply an interactive discovery process or selected-unit demonstration.
+
+**Needs:** a bounded investigation of explaining why a selected number works and
+optional learner-driven assistance for constructing/checking a common multiple.
+Compare product and shared-multiple strategies without making leastness a validity
+requirement. Preserve later equivalent-numerator responsibility, exact upstream
+classification, task-local help provenance, reset/access and current task-coverage
+boundaries. No extra controls, top-level schedule change or source mechanism is
+adopted by raising this question.
+
+See `reports/orchestration/common-denominator-support-design-brief.md` and the
+Phase 3 follow-up obligations record. Revisit before claiming unaided denominator
+reasoning or completing the related focused concept episodes.
