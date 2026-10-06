@@ -163,3 +163,25 @@ cycles showed no reserve accumulation; re-entry removed the reserve. See
 Plan 11 stays delivered pending owner motion and deployed-URL acceptance. Plan 22
 remains a separate draft repair and must clear mechanism/implementation/review
 before the combined release; no publication is authorized.
+
+### Local tooling and motion feedback — 2026-10-06
+
+The owner asked about adopting dev:console and gave positive feedback on Smooth
+change, suggesting a one-second glow on newly arrived dividing lines. The adoption
+manifest already declares dev-console-hub 1.1.0 adopted, but only its guidance is
+present: no dev:console package script or runtime implementation exists. Bootstrap
+ships the project-specific pattern, not portable console code.
+
+Draft Plan 23 proposes the local console with owned-server lifecycle, Windows-safe
+package-script execution and confirmation parity; it is independent of learner
+release gates and is not initiated. The bounded glow proposal lives at
+`reports/development/plan-11-motion-and-animated-subdivision/glow-mechanism-proposal.md`.
+Only new lines get a single post-arrival paint highlight; reduced motion stays
+instant/static. Source mechanism approval and enhanced-candidate review remain
+pending. Positive local feedback does not satisfy deployed-URL acceptance or
+authorize publication. Plan 22 remains separate.
+
+For this prose-only investigation/drafting, advisor consultation was not warranted.
+Verified current package/scripts, adoption manifest and companion capability ledger;
+packet index was regenerated, lint and diff checks passed. No source or dependency
+change, dev-server launch, observation or deployment was performed.

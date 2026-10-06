@@ -31,6 +31,7 @@ Packets are assigned to implementer agents. Each packet defines scope, required 
 | `plan-20` | Like-Denominator Addition and Notice Recovery | draft | Make like-denominator addition reachable with the accepted zero-renaming schedule and authored same-sized-parts recovery. Resolve OQ-21 through an actual learner route while preserving mathematical responsibility and clean remounts. |
 | `plan-21` | Practice Variety and Next-Problem Design | draft | Prepare Roadmap section 30 and OQ-23: operationalize the adopted learner practice type, then inventory demonstrated and candidate content and a bounded authored-set selection policy for trying another problem. Keep session composition and automatic generation activation behind a separate owner-approved implementation packet. |
 | `plan-22` | Denominator Path Closure Repair | draft | Repair a reachable dead end introduced by numeric denominator entry: a valid denominator can lack authored reflection data or exceed bar capability while still advancing to conversion and reflection. Preserve mathematical validity, enforce representation eligibility, and guarantee an honest completable path. |
+| `plan-23` | Local Development Console | draft | Make Bootstrap's adopted dev-console-hub guidance usable in FractionFlow: an npm run dev:console menu for local server start/stop, tests, builds and packet visibility with safe Windows invocation and explicit mutation confirmations. |
 <!-- plan-index:end -->
 
 ## Report Folders
