@@ -188,3 +188,43 @@ Only the permitted renderer, renderer CSS, route runner, route contract test, ap
 **Ready for technical re-review: yes.**
 
 The six implementation/test files were committed as `82fcd51` (`fix(plan-11): preserve subdivision position after replay`). This report is being committed separately as the final task commit.
+
+## Divider-glow enhancement — bounded composite boundary effect
+
+Date: 2026-10-06
+
+### Changes and browser evidence
+
+Each newly introduced subdivision boundary now runs one finite WAAPI effect: the approved 560ms reveal, an approximately 80ms restrained highlight arrival, then a 920ms fade back to baseline (1560ms total). The accepted-conversion and learner-activated **Show new parts** Replay guards remain in place. The same cancellation owner still removes the complete effect when a new conversion supersedes it, the renderer is destroyed, or reduced motion is selected. Under reduced motion the endpoint appears immediately with no glow. No state, scene, content, or instructional behavior changed.
+
+The browser route witness now separately observes partial reveal paint, the full-height/grid-aligned post-arrival highlight, and the settled unhighlighted boundary. It verifies that existing boundaries stay unhighlighted and unmoved, the track and fill preserve both local and scroll-corrected document coordinates, and the question and active controls remain visible. On denominator 24 at 360px viewport width, both support profiles had an 8.906px minimum center gap; the observed glow half-outset was approximately 3.4–3.5px with 8.906px edge clearance, and the fit assertion passed. Whole and fill document positions had zero drift during reveal, highlight, and settlement.
+
+The highlight-interruption witness now records the browser preference-change time and each active animation's remaining duration before switching media preference. It requires the reduced-motion media query to change before the effect could naturally end, then requires the renderer's settled class, zero active animations, and baseline shadows within two frames, with a 50ms margin still remaining at the completed observation. The immediate media-query witness and later renderer-class witness are separate because the class update is asynchronous.
+
+The route matrix remains at **41 rows / 43 browser executions**, preserving the earlier **39-row / 41-execution** baseline plus the two Replay journeys. The full matrix passed on local Microsoft Edge with both high- and medium-support profiles. Juxtaposed and sequential presentations remained static; visual and linear Inspection Mode focus-return routes passed. Reduced-motion Replay retained its nonempty unsubmitted right answer and known selection while the mounted **Show new parts** button retained real-click focus behavior.
+
+All seven motion sensitivity seeds produced exactly one intended failure and zero unrelated failures: `no-op-keyframes`, `half-height-new-boundary`, `disabled-motion`, `static-accidental-motion`, `reduced-accidental-motion`, `whole-bar-translation`, and `glow-suppressed`. The glow-suppression seed failed specifically at the post-arrival highlight assertion while observing full-height new boundaries. The shared subtraction visual verifier again detected all seeded outcomes and passed its restored static run 4/4.
+
+### Advisor consultation and disposition
+
+**Branch A — consultation ran.** Requested advisor override: `gpt-6-sol` at medium effort. The reviewer self-reported “Codex based on GPT-6” and could not attest to a more specific model or tier; requested override is recorded separately from this unverified runtime identity. The advisor was a depth-1 read-only reviewer; it stated that it made no edits, spawned no agents, or ran validation. The immediate post-consultation status check showed only the five scoped implementation/test files modified. The primary remained the sole writer.
+
+The first review identified a gap because the highlight-interruption route did not establish that an effect was running at the preference change. The next review found a race between that snapshot and the browser media update. A third review found that the two-frame cancellation sample could occur after the captured natural end. All three findings were accepted. The witness now snapshots active effect count and minimum remaining time, verifies the media query changed within that remaining time, and timestamps the completed two-frame state/paint sample, requiring at least 50ms before natural completion. The final read-only review found no blocking issue; it found the capture order closes the timing concern. One exploratory implementation check initially used the renderer class as an immediate media-change marker; the matrix exposed its asynchronous update, so the check now observes `matchMedia` immediately and checks the class in the settled sample. No advisor finding was rejected. The advisor did not independently run tests, builds, or browser routes. Consultation cost was four reviewer turns (initial pass plus three focused follow-ups), roughly several minutes of review time.
+
+Post-consultation `git status --short` contained only the five scoped implementation/test files; the progress report is the only additional intended change. `node scripts/dev/plan-status.js check plan-11` continues to report `BLOCKED: plan-11 has status "delivered" — not ready or in-progress`; the named enhancement was authorized and status remains unchanged.
+
+### Validation and gates
+
+- `npm test` — **24 files, 281 tests passed**.
+- `npm run build` — learner and subtraction-prototype builds passed.
+- `npm run test:routes` — **43 passed, 0 failed**, 41 route rows / 43 browser executions, including both support profiles, static presentations, and both Inspection Mode focus routes.
+- All seven motion sensitivity seeds above — each detected once at its intended assertion with zero unrelated failures.
+- `node scripts/dev/verify-subtraction-visual-witness.mjs` — seeded outcomes detected; clean restored run passed **4/4**.
+- `node scripts/dev/plan-status.js lint` and `git diff --check` — passed.
+- `node scripts/dev/plan-status.js check plan-11` — remains blocked because packet status is `delivered`; status was not changed.
+
+No Plan 22 files were changed. No push or deployment was performed. Physical-device behavior, assistive-technology behavior, owner rendered-motion judgment, and deployed-URL acceptance remain outside this browser evidence. Delivery review remains pending.
+
+The scoped glow implementation was committed as `b3b6f85` (`feat(plan-11): highlight new subdivision boundaries`). This progress report is committed separately as the final task commit.
+
+**Ready for delivery re-review: yes.**
