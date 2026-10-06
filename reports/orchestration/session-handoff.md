@@ -202,3 +202,22 @@ the uncommitted intake note is
 `docs/bootstrap-dev/incoming/2026-10-06-fractionflow-codex-thread-authorization-investigation.md`
 in Bootstrap. Orchestration can retrieve completion from the implementer chat using
 read/wait rather than requiring an outbound return message. No blocked send retry.
+
+### Denominator support sequencing — 2026-10-06
+
+Draft Plan 24 makes OQ-27's discovery-support gap actionable. It depends on
+Plans 13/14/22. Preferred source order: active Plan 11 enhancement handoff,
+Plan 22 path closure, Plan 24 compact task-local assistance, then Plans 17/19
+using the accepted denominator-support baseline. This is a priority recommendation,
+not a new hard dependency on all family packets. Confirm integration at their
+mechanism gates; like-denominator and focused nested tasks have different unit
+decisions. Plan 21 planning and Plan 23 tooling remain independently schedulable.
+
+The owner requires help where the denominator question/response is being read,
+and restraint against wordiness/information overload. Current source puts Help
+in an aside after both episode hosts; rendered location remains to be measured.
+Plan 24 requires one task-local entry, one prompt/decision at a time, retained input,
+meaningful learner contributions and no later numerator-answer disclosure.
+The first strategy and exact copy remain Requirement 0 proposals, not implemented
+or approved mechanics. Drafting does not initiate the packet or authorize source.
+Advisor consultation was not warranted for this prose-only planning change.
