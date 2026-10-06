@@ -224,6 +224,12 @@ export function createFractionBarRenderer({
   function animateBoundaries(boundaries) {
     if (!boundaries.length) return;
     cancelBoundaryAnimations();
+    const revealDuration = 560;
+    const highlightArrivalDuration = 80;
+    const highlightFadeDuration = 920;
+    const totalDuration = revealDuration + highlightArrivalDuration + highlightFadeDuration;
+    const revealEnd = revealDuration / totalDuration;
+    const highlightFull = (revealDuration + highlightArrivalDuration) / totalDuration;
     for (const element of boundaries) {
       if (typeof element.animate !== 'function') {
         element.style.transform = '';
@@ -232,12 +238,32 @@ export function createFractionBarRenderer({
       }
       const animation = element.animate(
         [
-          { transform: 'scaleY(0)' },
-          { transform: 'scaleY(1)' },
+          {
+            offset: 0,
+            transform: 'scaleY(0)',
+            boxShadow: 'none',
+            easing: 'cubic-bezier(0.2, 0.75, 0.25, 1)',
+          },
+          {
+            offset: revealEnd,
+            transform: 'scaleY(1)',
+            boxShadow: 'none',
+            easing: 'ease-out',
+          },
+          {
+            offset: highlightFull,
+            transform: 'scaleY(1)',
+            boxShadow: '0 0 2px 1px var(--ff-bar-boundary-glow)',
+            easing: 'ease-out',
+          },
+          {
+            offset: 1,
+            transform: 'scaleY(1)',
+            boxShadow: 'none',
+          },
         ],
         {
-          duration: 560,
-          easing: 'cubic-bezier(0.2, 0.75, 0.25, 1)',
+          duration: totalDuration,
           fill: 'both',
         },
       );

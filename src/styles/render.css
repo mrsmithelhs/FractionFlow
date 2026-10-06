@@ -23,6 +23,7 @@
   --ff-bar-shaded: #0284c7;
   --ff-bar-unshaded: #f1f5f9;
   --ff-bar-subdivide-line: #ffffff;
+  --ff-bar-boundary-glow: rgba(2, 132, 199, 0.48);
 
   /* Interactive control colors */
   --ff-btn-bg: #f8fafc;
@@ -174,6 +175,7 @@
   width: 1px;
   margin-left: -0.5px;
   background-color: var(--ff-bar-subdivide-line);
+  box-shadow: none;
   transform-origin: top center;
   pointer-events: none;
 }

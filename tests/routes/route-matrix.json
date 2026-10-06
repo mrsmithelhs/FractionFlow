@@ -172,7 +172,7 @@
         {"step":5,"method":"click","target":".app-visual-view .control-choice-btn >> nth=1","description":"Notice: choose different sized parts"},
         {"step":6,"method":"click","target":".app-visual-view .control-choice-btn >> nth=0","description":"Decide: choose common denominator 12"},
         {"step":7,"method":"fill","target":".app-visual-view input.control-numeric-input","value":"8","description":"Transform left: enter numerator 8"},
-        {"step":8,"method":"clickAndObserveSubdivision","target":".app-visual-view .control-submit-btn","container":".app-visual-view .fraction-bar-container[data-side=\"left\"]","description":"Observe the settled bundle-4 in-place conversion using the same display directive"}
+        {"step":8,"method":"clickAndObserveSubdivision","target":".app-visual-view .control-submit-btn","container":".app-visual-view .fraction-bar-container[data-side=\"left\"]","interruptReducedMotionAtHighlight":true,"description":"Observe bundle-4 reveal and highlight, then cancel the highlight under reduced motion using the same display directive"}
       ],
       "expect": {
         "capture": {"target":".app-visual-view .fraction-bar-container","type":"outerHTML"},

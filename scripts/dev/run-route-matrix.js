@@ -64,6 +64,7 @@ const motionWitnessSeeds = Object.freeze({
   'static-accidental-motion': { routeId: 'ROUTE-COND-2-TRANSFORM', failure: 'unexpectedly ran animation within the fraction track' },
   'reduced-accidental-motion': { routeId: 'ROUTE-REDUCED-MOTION', failure: 'unexpectedly ran animation within the fraction track' },
   'whole-bar-translation': { routeId: 'ROUTE-REPLAY-NEW-CONVERSION-COND-1', step: 12, failure: 'whole/fill document position changed during subdivision' },
+  'glow-suppressed': { routeId: 'ROUTE-REPLAY-NEW-CONVERSION-COND-1', step: 12, failure: 'new subdivision boundary did not show the post-arrival highlight' },
 });
 const startingSurfaces = Object.freeze({
   'mounted-app-entry': Object.freeze({
@@ -281,6 +282,14 @@ async function validateMatrixIntegrity(matrix, registeredConditions) {
         && route.motionMode !== 'standard-motion') {
         errors.push(`Route "${route.id}" step ${action.step} may interrupt with reduced motion only from standard motion.`);
       }
+      if (action.method === 'clickAndObserveSubdivision' && action.interruptReducedMotionAtHighlight
+        && route.motionMode !== 'standard-motion') {
+        errors.push(`Route "${route.id}" step ${action.step} may interrupt a boundary highlight only from standard motion.`);
+      }
+      if (action.method === 'clickAndObserveSubdivision' && action.interruptReducedMotion
+        && action.interruptReducedMotionAtHighlight) {
+        errors.push(`Route "${route.id}" step ${action.step} cannot interrupt both the reveal and highlight phases.`);
+      }
       if (action.method === 'clickAndObserveSubdivision' && action.requireConcurrentMotion
         && (!action.concurrentContainer || action.interruptReducedMotion)) {
         errors.push(`Route "${route.id}" step ${action.step} concurrent subdivision evidence requires a concurrent container and cannot interrupt motion.`);
@@ -438,18 +447,26 @@ async function observeSubdivision(page, action, routeId) {
         },
         boundaryCount: boundaries.length,
         boundaryGeometry: new Map(boundaries.map((element) => {
-          const box = element.getBoundingClientRect();
-          return [element.dataset.boundaryKey, relativeRect(element, root)];
+          return [element.dataset.boundaryKey, {
+            ...relativeRect(element, root),
+            boxShadow: getComputedStyle(element).boxShadow,
+          }];
         })),
       },
     };
     window.__fractionFlowMotionWitnesses.set(options.id, record);
-    if (options.seed === 'no-op-keyframes' || options.seed === 'disabled-motion') {
+    if (options.seed === 'no-op-keyframes'
+      || options.seed === 'disabled-motion'
+      || options.seed === 'glow-suppressed') {
       const originalAnimate = Element.prototype.animate;
       Element.prototype.animate = function animateWithWitnessSeed(keyframes, timing) {
         if (this.matches?.('.fraction-bar-boundary-new')) {
           if (options.seed === 'disabled-motion') {
             return originalAnimate.call(this, keyframes, { ...timing, duration: 0 });
+          }
+          if (options.seed === 'glow-suppressed') {
+            this.style.setProperty('--ff-bar-boundary-glow', 'rgba(2, 132, 199, 0)');
+            return originalAnimate.call(this, keyframes, timing);
           }
           return originalAnimate.call(this, [
             { transform: 'scaleY(1)' },
@@ -577,8 +594,13 @@ async function observeSubdivision(page, action, routeId) {
       await new Promise((resolve) => requestAnimationFrame(resolve));
       for (const animation of previous.animations) {
         const progress = animation.effect?.getComputedTiming().progress;
+        const revealEnd = animation.effect?.getKeyframes()
+          .find((frame) => frame.transform === 'scaleY(1)')?.offset;
         const target = animation.effect?.target;
-        if (target && Number.isFinite(progress) && progress > 0.15 && progress < 0.9) {
+        // The reveal is the first keyframe phase. Sample only before its first
+        // full-height keyframe; the longer composite timeline must not stretch it.
+        if (target && Number.isFinite(progress) && Number.isFinite(revealEnd)
+          && progress > 0.08 && progress < revealEnd - 0.025) {
           const boundary = rect(target);
           if (boundary.height > 0) {
             const layout = measureLayout();
@@ -609,11 +631,176 @@ async function observeSubdivision(page, action, routeId) {
     return { ...sample, interiorHeight };
   }, { id: evidenceId, seed: action.motionWitnessSeed || null });
 
+  let highlight = null;
+  if (!action.interruptReducedMotion) {
+    highlight = await container.evaluate(async (root, options) => {
+      const previous = window.__fractionFlowMotionWitnesses?.get(options.id);
+      if (!previous) throw new Error('missing post-arrival highlight witness');
+      const track = root.querySelector('.fraction-bar-track');
+      const fill = track?.querySelector('.fraction-bar-fill');
+      const layer = track?.querySelector('.fraction-bar-boundary-layer');
+      if (!track || !fill || !layer) throw new Error('persistent anchors disappeared before boundary highlight');
+      const rect = (element) => {
+        const box = element.getBoundingClientRect();
+        return {
+          x: box.x, y: box.y, left: box.left, top: box.top,
+          right: box.right, bottom: box.bottom, width: box.width, height: box.height,
+        };
+      };
+      const relativeRect = (element, ancestor) => {
+        const box = rect(element);
+        const base = rect(ancestor);
+        return { ...box, x: box.x - base.x, y: box.y - base.y };
+      };
+      const documentRect = (element) => {
+        const box = rect(element);
+        return { ...box, x: box.x + window.scrollX, y: box.y + window.scrollY };
+      };
+      const layout = () => {
+        const episode = root.closest('.app-episode');
+        const question = episode?.querySelector('.active-beat-prompt');
+        const controls = episode?.querySelector('.active-beat-controls');
+        if (!question || !controls) return null;
+        return {
+          question: rect(question), controls: rect(controls),
+          scrollX: window.scrollX, scrollY: window.scrollY,
+          viewportWidth: window.innerWidth, viewportHeight: window.innerHeight,
+        };
+      };
+      const interior = rect(layer);
+      const highlightKeyframe = previous.animations[0]?.effect?.getKeyframes()
+        .find((frame) => frame.transform === 'scaleY(1)'
+          && typeof frame.boxShadow === 'string' && frame.boxShadow !== 'none');
+      if (!Number.isFinite(highlightKeyframe?.offset)) {
+        throw new Error('subdivision effect has no bounded post-arrival highlight keyframe');
+      }
+      let sample = null;
+      const deadline = performance.now() + 1500;
+      while (!sample && performance.now() < deadline) {
+        await new Promise((resolve) => requestAnimationFrame(resolve));
+        const geometry = previous.newBoundaries.map((element) => {
+          const box = rect(element);
+          const [indexText, denominatorText] = element.dataset.boundaryKey.split('/');
+          const expectedCenter = interior.left + (Number(indexText) / Number(denominatorText)) * interior.width;
+          const paint = getComputedStyle(element);
+          return {
+            key: element.dataset.boundaryKey,
+            connected: element.isConnected && layer.contains(element),
+            rect: box,
+            boxShadow: paint.boxShadow,
+            expectedCenter,
+            centerDelta: Math.abs((box.left + box.width / 2) - expectedCenter),
+            topDelta: Math.abs(box.top - interior.top),
+            bottomDelta: Math.abs(box.bottom - interior.bottom),
+            heightDelta: Math.abs(box.height - interior.height),
+          };
+        });
+        const fullHeight = geometry.length > 0 && geometry.every((entry) => (
+          entry.connected && entry.heightDelta <= 0.5 && entry.topDelta <= 0.5
+          && entry.bottomDelta <= 0.5 && entry.centerDelta <= 0.75
+        ));
+        const afterHighlightArrival = previous.animations.every((animation) => {
+          const timing = animation.effect?.getComputedTiming();
+          return Number.isFinite(timing?.progress) && timing.progress >= highlightKeyframe.offset;
+        });
+        const allHighlighted = geometry.every((entry) => {
+          const alpha = entry.boxShadow.match(/rgba\([^)]*,\s*([0-9.]+)\)/)?.[1];
+          return alpha !== undefined && Number(alpha) > 0.2;
+        });
+        if (afterHighlightArrival && fullHeight && allHighlighted) {
+          const taskLayout = layout();
+          if (!taskLayout) throw new Error('question and active controls disappeared during boundary highlight');
+          const centers = geometry.map((entry) => entry.rect.left + entry.rect.width / 2).sort((a, b) => a - b);
+          const minimumCenterGap = Math.min(...centers.slice(1).map((center, index) => center - centers[index]));
+          const shadowLengths = [...geometry[0].boxShadow.matchAll(/(-?(?:\d+|\d*\.\d+))px/g)]
+            .map((match) => Math.abs(Number(match[1])));
+          const glowHalfOutset = geometry[0].rect.width / 2 + (shadowLengths[2] || 0) + (shadowLengths[3] || 0);
+          const edgeClearance = Math.min(centers[0] - interior.left, interior.right - centers.at(-1));
+          const oldBoundaries = [...previous.boundaries.entries()].map(([key, element]) => ({
+            key,
+            boxShadow: getComputedStyle(element).boxShadow,
+            activeAnimations: element.getAnimations().filter((animation) => animation.playState === 'running').length,
+          }));
+          sample = {
+            whole: rect(track), fill: rect(fill),
+            documentWhole: documentRect(track), documentFill: documentRect(fill),
+            relativeWhole: relativeRect(track, root), relativeFill: relativeRect(fill, root),
+            interior, boundaryGeometry: geometry, oldBoundaries, taskLayout,
+            allNewBoundariesHighlighted: true,
+            oldBoundariesUnhighlighted: oldBoundaries.every((entry) => (
+              entry.boxShadow === 'none' && entry.activeAnimations === 0
+            )),
+            minimumCenterGap,
+            glowHalfOutset,
+            edgeClearance,
+            glowFitsNarrowParts: glowHalfOutset * 2 < minimumCenterGap - 0.5
+              && edgeClearance > glowHalfOutset,
+          };
+          previous.highlight = sample;
+        }
+      }
+      if (!sample) {
+        throw new Error(`new subdivision boundary did not show the post-arrival highlight: ${JSON.stringify({
+        fullHeightObserved: previous.newBoundaries.every((element) => (
+          Math.abs(rect(element).height - interior.height) <= 0.5
+        )),
+          boundaryShadows: previous.newBoundaries.map((element) => ({
+            key: element.dataset.boundaryKey,
+            boxShadow: getComputedStyle(element).boxShadow,
+          })),
+        })}`);
+      }
+      return sample;
+    }, { id: evidenceId });
+  }
+
   let interrupted = null;
   let restored = null;
-  if (action.interruptReducedMotion) {
+  if (action.interruptReducedMotion || action.interruptReducedMotionAtHighlight) {
+    const beforePreferenceChange = await container.evaluate((root) => {
+      const capturedAt = performance.now();
+      const track = root.querySelector('.fraction-bar-track');
+      if (!track) throw new Error('fraction track disappeared before reduced-motion interruption');
+      const boundaries = [...track.querySelectorAll('.fraction-bar-boundary-new')];
+      const runningAnimations = track.getAnimations({ subtree: true })
+        .filter((animation) => animation.playState === 'running');
+      const remainingTimes = runningAnimations.map((animation) => {
+        const timing = animation.effect?.getComputedTiming();
+        const currentTime = Number(animation.currentTime);
+        return Number.isFinite(timing?.endTime) && Number.isFinite(currentTime)
+          ? Math.max(0, timing.endTime - currentTime)
+          : 0;
+      });
+      return {
+        capturedAt,
+        activeAnimations: runningAnimations.length,
+        minimumRemainingMs: remainingTimes.length > 0 ? Math.min(...remainingTimes) : 0,
+        highlightedBoundaries: boundaries.filter((element) => (
+          getComputedStyle(element).boxShadow !== 'none'
+        )).length,
+        newBoundaryCount: boundaries.length,
+      };
+    });
+    if (beforePreferenceChange.activeAnimations === 0
+      || (action.interruptReducedMotionAtHighlight
+        && beforePreferenceChange.highlightedBoundaries !== beforePreferenceChange.newBoundaryCount)) {
+      throw new Error(`reduced-motion interruption did not begin during the expected running phase: ${JSON.stringify(beforePreferenceChange)}`);
+    }
     await page.emulateMedia({ reducedMotion: 'reduce' });
-    interrupted = await container.evaluate(async (root) => {
+    const preferenceChange = await container.evaluate((root, before) => {
+      const observedAt = performance.now();
+      const elapsedMs = observedAt - before.capturedAt;
+      return {
+        elapsedMs,
+        minimumRemainingMsBeforeChange: before.minimumRemainingMs,
+        reducedMotionPreference: matchMedia('(prefers-reduced-motion: reduce)').matches,
+      };
+    }, beforePreferenceChange);
+    if (!preferenceChange.reducedMotionPreference
+      || preferenceChange.elapsedMs + 50 >= preferenceChange.minimumRemainingMsBeforeChange) {
+      throw new Error(`reduced motion was not applied before the effect could naturally settle: ${JSON.stringify({ beforePreferenceChange, preferenceChange })}`);
+    }
+    interrupted = await container.evaluate(async (root, before) => {
       await new Promise((resolve) => requestAnimationFrame(() => requestAnimationFrame(resolve)));
       const track = root.querySelector('.fraction-bar-track');
       const fill = track?.querySelector('.fraction-bar-fill');
@@ -621,17 +808,29 @@ async function observeSubdivision(page, action, routeId) {
         const box = element.getBoundingClientRect();
         return { x: box.x, y: box.y, width: box.width, height: box.height };
       };
-      return {
+      const observed = {
+        minimumRemainingMsBeforeChange: before.minimumRemainingMs,
         reducedMotionTrack: track.classList.contains('reduced-motion'),
         activeAnimations: track.getAnimations({ subtree: true })
           .filter((animation) => animation.playState === 'running').length,
         whole: rect(track),
         fill: rect(fill),
+        boundaryPaint: [...track.querySelectorAll('.fraction-bar-boundary')]
+          .map((element) => getComputedStyle(element).boxShadow),
         denominator: track.dataset.denominator,
         numerator: track.dataset.numerator,
       };
-    });
-    if (!interrupted.reducedMotionTrack || interrupted.activeAnimations !== 0) {
+      observed.observedAt = performance.now();
+      return observed;
+    }, beforePreferenceChange);
+    interrupted.elapsedMs = interrupted.observedAt - beforePreferenceChange.capturedAt;
+    interrupted.beforePreferenceChange = beforePreferenceChange;
+    interrupted.preferenceChange = preferenceChange;
+    if (interrupted.elapsedMs + 50 >= interrupted.minimumRemainingMsBeforeChange) {
+      throw new Error(`cancellation was not observed before the effect could naturally settle: ${JSON.stringify(interrupted)}`);
+    }
+    if (!interrupted.reducedMotionTrack || interrupted.activeAnimations !== 0
+      || interrupted.boundaryPaint.some((shadow) => shadow !== 'none')) {
       throw new Error(`switching to reduced motion failed to cancel and settle the effect: ${JSON.stringify(interrupted)}`);
     }
     await page.emulateMedia({ reducedMotion: 'no-preference' });
@@ -654,13 +853,16 @@ async function observeSubdivision(page, action, routeId) {
   } else {
     await container.evaluate(async (root) => {
       let running = true;
-      for (let frame = 0; frame < 90 && running; frame += 1) {
+      // The reveal plus highlight/fade is 1560ms. Give the browser 2600ms of
+      // rendered frames to settle, while still requiring observed completion.
+      const deadline = performance.now() + 2600;
+      while (running && performance.now() < deadline) {
         await new Promise((resolve) => requestAnimationFrame(resolve));
         const track = root.querySelector('.fraction-bar-track');
         running = track.getAnimations({ subtree: true })
           .some((animation) => animation.playState === 'running');
       }
-      if (running) throw new Error('subdivision animation did not settle within 90 rendered frames');
+      if (running) throw new Error('subdivision reveal and highlight did not settle within 2600 rendered milliseconds');
     });
   }
 
@@ -742,6 +944,11 @@ async function observeSubdivision(page, action, routeId) {
       fill: fillBox,
       boundaryLayer: boundaryLayerBox,
       newBoundaryGeometry,
+      newBoundaryPaint: newBoundaries.map((element) => ({
+        key: element.dataset.boundaryKey,
+        boxShadow: getComputedStyle(element).boxShadow,
+      })),
+      normalPaintRestored: newBoundaries.every((element) => getComputedStyle(element).boxShadow === 'none'),
       activeAnimations: track.getAnimations({ subtree: true })
         .filter((animation) => animation.playState === 'running').length,
       denominator: track.dataset.denominator,
@@ -750,9 +957,15 @@ async function observeSubdivision(page, action, routeId) {
     const taskLayout = {
       before: previous.before.layout,
       intermediate: evidence.intermediate.layout,
+      ...(evidence.highlight ? { highlight: evidence.highlight.taskLayout } : {}),
       settled: layout,
     };
-    const questionAndControlsVisible = [taskLayout.before, taskLayout.intermediate, taskLayout.settled]
+    const questionAndControlsVisible = [
+      taskLayout.before,
+      taskLayout.intermediate,
+      ...(taskLayout.highlight ? [taskLayout.highlight] : []),
+      taskLayout.settled,
+    ]
       .every((frame) => visibleInViewport(frame.question, frame.viewportHeight)
         && visibleInViewport(frame.controls, frame.viewportHeight));
     const relativeWholeBefore = previous.before.relativeWhole;
@@ -760,12 +973,20 @@ async function observeSubdivision(page, action, routeId) {
     const anchorDrift = {
       wholeIntermediate: rectDelta(relativeWholeBefore, evidence.intermediate.relativeWhole),
       fillIntermediate: rectDelta(relativeFillBefore, evidence.intermediate.relativeFill),
+      ...(evidence.highlight ? {
+        wholeHighlight: rectDelta(relativeWholeBefore, evidence.highlight.relativeWhole),
+        fillHighlight: rectDelta(relativeFillBefore, evidence.highlight.relativeFill),
+      } : {}),
       wholeSettled: rectDelta(relativeWholeBefore, relativeRect(track, root)),
       fillSettled: rectDelta(relativeFillBefore, relativeRect(fill, root)),
     };
     const documentPositionDrift = {
       wholeIntermediate: rectDelta(previous.before.documentWhole, evidence.intermediate.documentWhole),
       fillIntermediate: rectDelta(previous.before.documentFill, evidence.intermediate.documentFill),
+      ...(evidence.highlight ? {
+        wholeHighlight: rectDelta(previous.before.documentWhole, evidence.highlight.documentWhole),
+        fillHighlight: rectDelta(previous.before.documentFill, evidence.highlight.documentFill),
+      } : {}),
       wholeSettled: rectDelta(previous.before.documentWhole, documentRect(track)),
       fillSettled: rectDelta(previous.before.documentFill, documentRect(fill)),
     };
@@ -773,6 +994,7 @@ async function observeSubdivision(page, action, routeId) {
     const existingBoundaryDrifts = existing.map(([key, element]) => ({
       key,
       delta: rectDelta(previous.before.boundaryGeometry.get(key), relativeRect(element, root)),
+      paintUnchanged: getComputedStyle(element).boxShadow === previous.before.boundaryGeometry.get(key).boxShadow,
       activeAnimations: element.getAnimations().filter((animation) => animation.playState === 'running').length,
     }));
     const driftWithinTolerance = (drift) => Object.values(drift).every((delta) => delta <= 0.5);
@@ -783,9 +1005,17 @@ async function observeSubdivision(page, action, routeId) {
         boundaryGeometry: [...previous.before.boundaryGeometry.entries()].map(([key, geometry]) => ({ key, ...geometry })),
       },
       intermediate: evidence.intermediate,
+      highlight: evidence.highlight,
       settled,
       taskLayout,
       questionAndControlsVisible,
+      highlightBoundariesSpanGrid: evidence.highlight?.boundaryGeometry.length > 0
+        && evidence.highlight.boundaryGeometry.every((entry) => (
+          entry.connected && entry.centerDelta <= 0.75 && entry.topDelta <= 0.5
+          && entry.bottomDelta <= 0.5 && entry.heightDelta <= 0.5
+        )),
+      highlightPaintVisible: evidence.highlight?.allNewBoundariesHighlighted === true,
+      oldBoundariesUnhighlighted: evidence.highlight?.oldBoundariesUnhighlighted !== false,
       anchorDrift,
       documentPositionDrift,
       existingBoundaryCount: existing.length,
@@ -799,12 +1029,12 @@ async function observeSubdivision(page, action, routeId) {
       restored: evidence.restored,
       existingBoundaryDrifts,
       existingBoundariesStable: existingBoundaryDrifts.every((entry) => (
-        driftWithinTolerance(entry.delta) && entry.activeAnimations === 0
+        driftWithinTolerance(entry.delta) && entry.paintUnchanged && entry.activeAnimations === 0
       )),
       stableAnchors: Object.values(anchorDrift).every(driftWithinTolerance),
       conservedDocumentPosition: Object.values(documentPositionDrift).every(driftWithinTolerance),
     };
-  }, { id: evidenceId, intermediate, interrupted, restored });
+  }, { id: evidenceId, intermediate, highlight, interrupted, restored });
 
   if (!finalState.conservedDocumentPosition) {
     throw new Error(`whole/fill document position changed during subdivision: ${JSON.stringify({ drift: finalState.documentPositionDrift, before: { whole: finalState.before.documentWhole, fill: finalState.before.documentFill }, intermediate: { whole: finalState.intermediate.documentWhole, fill: finalState.intermediate.documentFill }, settled: { whole: finalState.settled.whole, fill: finalState.settled.fill, scrollX: finalState.taskLayout.settled.scrollX, scrollY: finalState.taskLayout.settled.scrollY } })}`);
@@ -815,8 +1045,15 @@ async function observeSubdivision(page, action, routeId) {
   if (!finalState.existingBoundariesStable) {
     throw new Error(`an existing boundary moved or animated during subdivision: ${JSON.stringify(finalState)}`);
   }
+  if (highlight && (!finalState.highlightPaintVisible || !finalState.highlightBoundariesSpanGrid
+    || !finalState.oldBoundariesUnhighlighted || !highlight.glowFitsNarrowParts)) {
+    throw new Error(`post-arrival boundary highlight did not preserve the new-line grid and old-line paint: ${JSON.stringify(finalState.highlight)}`);
+  }
   if (finalState.settled.activeAnimations !== 0) {
     throw new Error(`subdivision effect did not settle: ${JSON.stringify(finalState)}`);
+  }
+  if (highlight && !finalState.settled.normalPaintRestored) {
+    throw new Error(`new boundary highlight did not return to normal paint: ${JSON.stringify(finalState.settled.newBoundaryPaint)}`);
   }
   if (!finalState.newBoundariesSpanGrid) {
     throw new Error(`settled new boundaries did not span the connected inner layer at their supplied grid positions: ${JSON.stringify(finalState.settled.newBoundaryGeometry)}`);
@@ -825,6 +1062,21 @@ async function observeSubdivision(page, action, routeId) {
     throw new Error(`question or active response controls left the visible viewport during subdivision: ${JSON.stringify(finalState.taskLayout)}`);
   }
   action.motionEvidence = finalState;
+  if (highlight) {
+    console.log(`  Glow witness ${evidenceId}: ${JSON.stringify({
+      boundaryShadow: highlight.boundaryGeometry[0]?.boxShadow,
+      everyNewBoundaryHighlighted: highlight.allNewBoundariesHighlighted,
+      everyNewBoundaryFullHeightAndOnGrid: finalState.highlightBoundariesSpanGrid,
+      oldBoundariesUnhighlighted: highlight.oldBoundariesUnhighlighted,
+      minBoundaryCenterGap: highlight.minimumCenterGap,
+      glowHalfOutset: highlight.glowHalfOutset,
+      edgeClearance: highlight.edgeClearance,
+      fitsNarrowParts: highlight.glowFitsNarrowParts,
+      wholeDocumentBox: highlight.documentWhole,
+      fillDocumentBox: highlight.documentFill,
+      taskVisible: finalState.questionAndControlsVisible,
+    })}`);
+  }
   console.log(`  Motion witness ${evidenceId}: ${JSON.stringify(finalState)}`);
 }
 
@@ -1037,8 +1289,10 @@ async function executeAction(page, action, routeId) {
               topDelta: Math.abs(box.top - layerBox.top),
               bottomDelta: Math.abs(box.bottom - layerBox.bottom),
               centerDelta: Math.abs((box.left + box.width / 2) - expectedCenter),
+              boxShadow: getComputedStyle(boundary).boxShadow,
             };
           });
+          const highlightedBoundaryCount = boundaryGeometry.filter((entry) => entry.boxShadow !== 'none').length;
           const runningAnimations = track.getAnimations({ subtree: true })
             .filter((animation) => animation.playState === 'running').length;
           if (track.dataset.numerator !== String(options.numerator)
@@ -1048,6 +1302,9 @@ async function executeAction(page, action, routeId) {
           if (root.querySelector('.fraction-bar-in-place-replay') || runningAnimations !== 0) {
             throw new Error(`reduced Replay ${label} left stale replay controls or running effects (${runningAnimations})`);
           }
+          if (highlightedBoundaryCount !== 0) {
+            throw new Error(`reduced Replay ${label} retained a boundary highlight: ${JSON.stringify(boundaryGeometry)}`);
+          }
           if (boundaryGeometry.length !== Number(options.denominator) - 1
             || !boundaryGeometry.every((entry) => entry.connected && entry.heightDelta <= 0.5
               && entry.topDelta <= 0.5 && entry.bottomDelta <= 0.5 && entry.centerDelta <= 0.75)) {
@@ -1055,6 +1312,7 @@ async function executeAction(page, action, routeId) {
           }
           return {
             boundaryGeometry,
+            highlightedBoundaryCount,
             anchorDrift,
             oldBoundaryDrifts,
             runningAnimations,
@@ -1270,6 +1528,10 @@ async function executeAction(page, action, routeId) {
           const boundaryCount = tracks.reduce((sum, track) => (
             sum + track.querySelectorAll('.fraction-bar-boundary').length
           ), 0);
+          const highlightedBoundaryCount = tracks.reduce((sum, track) => (
+            sum + [...track.querySelectorAll('.fraction-bar-boundary')]
+              .filter((boundary) => getComputedStyle(boundary).boxShadow !== 'none').length
+          ), 0);
           const activeAnimations = tracks.reduce((sum, track) => (
             sum + track.getAnimations({ subtree: true })
               .filter((animation) => animation.playState === 'running').length
@@ -1284,6 +1546,7 @@ async function executeAction(page, action, routeId) {
           return {
             trackCount: tracks.length,
             boundaryCount,
+            highlightedBoundaryCount,
             activeAnimations,
             activeVisualAnimations,
             denominator: tracks[0]?.dataset.denominator || null,
@@ -1295,6 +1558,7 @@ async function executeAction(page, action, routeId) {
           items,
           trackCount: items.reduce((sum, item) => sum + item.trackCount, 0),
           boundaryCount: items.reduce((sum, item) => sum + item.boundaryCount, 0),
+          highlightedBoundaryCount: items.reduce((sum, item) => sum + item.highlightedBoundaryCount, 0),
           activeAnimations: items.reduce((sum, item) => sum + item.activeAnimations, 0),
           activeVisualAnimations: items.reduce((sum, item) => sum + item.activeVisualAnimations, 0),
           denominator: items[0]?.denominator || null,
@@ -1309,6 +1573,9 @@ async function executeAction(page, action, routeId) {
       }
       if (observed.activeVisualAnimations !== 0) {
         throw new Error(`static or reduced-motion route unexpectedly animated visual presentation: ${JSON.stringify(observed)}`);
+      }
+      if (observed.highlightedBoundaryCount !== 0) {
+        throw new Error(`static or reduced-motion route unexpectedly retained a subdivision highlight: ${JSON.stringify(observed)}`);
       }
       if (action.expectBoundaries === false && observed.boundaryCount !== 0) {
         throw new Error(`static choreography unexpectedly mounted animated-arm boundaries: ${JSON.stringify(observed)}`);
@@ -1876,6 +2143,7 @@ module.exports = {
   createStaticServer,
   expandRouteExecutions,
   getRouteMotionModes,
+  motionWitnessSeeds,
   resolveStartingSurface,
   runRouteMatrix,
   selectRoutesForRun,

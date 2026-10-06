@@ -8,6 +8,7 @@ import { REGISTERED_CONDITIONS } from '../src/app/conditions.js';
 const require = createRequire(import.meta.url);
 const {
   expandRouteExecutions,
+  motionWitnessSeeds,
   resolveStartingSurface,
   selectRoutesForRun,
   validateMatrixIntegrity,
@@ -231,6 +232,8 @@ describe('Plan 14 Reachable Behavior Route Contract & Matrix Schema', () => {
 
     const route = (id) => matrix.routes.find((candidate) => candidate.id === id);
     const primary = route('ROUTE-COND-1-TRANSFORM');
+    expect(primary.actions.find((action) => action.method === 'clickAndObserveSubdivision')
+      .interruptReducedMotion).toBe(true);
     expect(primary.viewport).toEqual({ width: 360, height: 740 });
     expect(primary.actions.some((action) => action.method === 'clickAndObserveSubdivision'
       && action.container.includes('data-side="left"'))).toBe(true);
@@ -342,6 +345,9 @@ describe('Plan 14 Reachable Behavior Route Contract & Matrix Schema', () => {
     expect(route('ROUTE-COND-4-TRANSFORM-SAME').actions.some((action) => (
       action.method === 'clickAndObserveSubdivision'
     ))).toBe(true);
+    expect(route('ROUTE-COND-4-TRANSFORM-SAME').actions.find((action) => (
+      action.method === 'clickAndObserveSubdivision'
+    )).interruptReducedMotionAtHighlight).toBe(true);
     expect(route('ROUTE-COND-1-REFLECT').actions.some((action) => (
       action.method === 'clickAndObserveSubdivision'
       && action.interruptReducedMotion === true
@@ -420,6 +426,30 @@ describe('Plan 14 Reachable Behavior Route Contract & Matrix Schema', () => {
     const controlResult = await validateMatrixIntegrity(mutatedControl, REGISTERED_CONDITIONS);
     expect(controlResult.valid).toBe(false);
     expect(controlResult.errors.some((error) => error.includes('requires negative control'))).toBe(true);
+
+    const wrongHighlightMode = JSON.parse(JSON.stringify(matrix));
+    wrongHighlightMode.routes.find((route) => route.id === 'ROUTE-COND-4-TRANSFORM-SAME')
+      .motionMode = 'reduced-motion';
+    const highlightModeResult = await validateMatrixIntegrity(wrongHighlightMode, REGISTERED_CONDITIONS);
+    expect(highlightModeResult.valid).toBe(false);
+    expect(highlightModeResult.errors.some((error) => error.includes('may interrupt a boundary highlight only from standard motion'))).toBe(true);
+  });
+
+  it('retains the six subdivision sensitivity seeds and adds glow suppression at an explicit Replay reveal', () => {
+    expect(Object.keys(motionWitnessSeeds).sort()).toEqual([
+      'disabled-motion',
+      'glow-suppressed',
+      'half-height-new-boundary',
+      'no-op-keyframes',
+      'reduced-accidental-motion',
+      'static-accidental-motion',
+      'whole-bar-translation',
+    ]);
+    expect(motionWitnessSeeds['glow-suppressed']).toEqual({
+      routeId: 'ROUTE-REPLAY-NEW-CONVERSION-COND-1',
+      step: 12,
+      failure: 'new subdivision boundary did not show the post-arrival highlight',
+    });
   });
 
   it('requires the retired focus defect to assert the restored first choice', () => {
