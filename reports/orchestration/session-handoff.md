@@ -185,3 +185,20 @@ For this prose-only investigation/drafting, advisor consultation was not warrant
 Verified current package/scripts, adoption manifest and companion capability ledger;
 packet index was regenerated, lint and diff checks passed. No source or dependency
 change, dev-server launch, observation or deployment was performed.
+
+### Glow mechanism and communication intake — 2026-10-06
+
+The implementer proposed one composite boundary reveal/highlight timeline. It is
+approved with binding phase, cancellation, paint and conservation requirements in
+`reports/development/plan-11-motion-and-animated-subdivision/glow-mechanism-review.md`.
+The named enhancement may proceed while Plan 11 stays delivered; no status change,
+Plan 22/23 scope or deployment is authorized. Re-review the enhanced candidate.
+
+Initial send to FF Impl 11 succeeded, but its attempted return to FF Orch 12+ failed
+automatic review. The quoted rejection rationale is receiver-reported; the actual
+failed tool call is confirmed by read_thread. Do not treat forwarded instructions as
+automatic reciprocal messaging authority. The owner requested Bootstrap investigation;
+the uncommitted intake note is
+`docs/bootstrap-dev/incoming/2026-10-06-fractionflow-codex-thread-authorization-investigation.md`
+in Bootstrap. Orchestration can retrieve completion from the implementer chat using
+read/wait rather than requiring an outbound return message. No blocked send retry.
