@@ -40,3 +40,18 @@ change status or broaden into Plan 22/24, instructional changes or deployment.
 Existing scoped source approval and commit/report discipline apply. Re-review the
 candidate; owner partial acceptance remains partial. Advisor consultation was not
 warranted for this prose-only orchestration review.
+
+## Delivery and owner disposition — 2026-10-07
+
+Implementation `54928b9` and final progress report `12044ca` passed technical
+re-review. Orchestration inspected the source/keyframes, arrival/fade images and
+metadata; independently ran 20 route-contract tests, the Replay conversion route,
+the high/medium denominator-24 routes and the core-suppression seed. The seed failed
+at its intended dark-core assertion while preserving the halo. Lint/diff checks
+passed. Full 283-test/build/43-route/eight-seed results remain implementer evidence.
+
+The owner reloaded the site, tried the upgraded effect and stated “I like it now.”
+This accepts the repaired rendered glow. The reviewed URL was not specified and
+no deployment was performed in this work, so this statement does not establish
+the packet's separate deployed-URL criterion. Plan 11 remains delivered; D-01/D-02
+remain prototype variables rather than a settled presentation default.
