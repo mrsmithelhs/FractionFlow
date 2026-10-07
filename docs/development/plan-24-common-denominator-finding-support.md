@@ -1,11 +1,9 @@
 ---
 id: plan-24
 title: Common Denominator Finding Support
-status: draft
+status: in-progress
 depends_on: [plan-13, plan-14, plan-22]
 gate: "Requirement 0: investigate current help placement and propose one bounded learner-driven denominator-finding mechanism; stop before source work. Technical and owner rendered-screen/agency acceptance; deployment separately authorized."
-superseded_by: null
-resolution: null
 summary: >-
   Add compact task-local assistance for finding a common denominator and
   understanding a selected unit, preserving learner decisions, mathematical
