@@ -1,11 +1,9 @@
 ---
 id: plan-22
 title: Denominator Path Closure Repair
-status: draft
+status: in-progress
 depends_on: [plan-13, plan-14]
 gate: "Requirement 0: verify the live denominator coverage/capability defect and approve the DECISION-036 task-boundary mechanism before source work. Preserve valid-answer classification and verify identity/replay compatibility. Technical and owner behavior acceptance; release separately authorized."
-superseded_by: null
-resolution: null
 summary: >-
   Repair a reachable dead end introduced by numeric denominator entry: a valid
   denominator can lack authored reflection data or exceed bar capability while
