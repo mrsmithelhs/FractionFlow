@@ -16,6 +16,13 @@
  * - Avoid awkward "${den}ths" screen-reader voicing; use natural phrasing.
  */
 
+function equivalentPartsPrompt(sourceForm, targetDenominator) {
+  const sourceFraction = sourceForm?.numerator && sourceForm?.denominator
+    ? `${sourceForm.numerator}/${sourceForm.denominator}`
+    : 'this fraction';
+  return `How many parts out of ${targetDenominator} make the same amount as ${sourceFraction}?`;
+}
+
 export const STRINGS = Object.freeze({
   encounter: Object.freeze({
     prompt: 'Look at these two fractions.',
@@ -58,10 +65,8 @@ export const STRINGS = Object.freeze({
       `Multiply the top and bottom by ${mult}.`
     ),
     // Minor note: Natural phrasing for grade 2–3 and clean screen-reader voicing.
-    equivalentNumeratorPrompt: (den) => (
-      `How many of the ${den} equal parts are shaded?`
-    ),
-    errorNumerator: 'Count the shaded parts in the new bar and try again.',
+    equivalentNumeratorPrompt: equivalentPartsPrompt,
+    errorNumerator: equivalentPartsPrompt,
     errorScaleFactor: 'Multiply the top and bottom by the same number.',
   }),
 

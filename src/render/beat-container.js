@@ -282,7 +282,11 @@ export function createBeatContainer({
       } else if (recovery.classification.kind === 'denominator-changed-without-numerator') {
         recoveryEl.textContent = strings.transform.errorScaleFactor;
       } else if (recovery.classification.kind === 'incorrect-equivalent-numerator') {
-        recoveryEl.textContent = strings.transform.errorNumerator;
+        const sourceForm = scene.meaning.quantities[recovery.classification.side]?.sourceForm;
+        recoveryEl.textContent = strings.transform.errorNumerator(
+          sourceForm,
+          recovery.classification.targetDenominator,
+        );
       } else if (recovery.classification.kind === 'incorrect-numerator-arithmetic') {
         recoveryEl.textContent = strings.operate.errorArithmetic;
       } else if (recovery.classification.kind === 'incorrect-notice') {
@@ -404,11 +408,12 @@ export function createBeatContainer({
           );
         }
         const targetDen = commonUnit.targetDenominator;
+        const sourceForm = scene.meaning.quantities[side].sourceForm;
         promptText.textContent = strings.transform.prompt(side, targetDen);
 
         const numInput = createNumericInput({
           id: `transform-num-input-${side}`,
-          label: strings.transform.equivalentNumeratorPrompt(targetDen),
+          label: strings.transform.equivalentNumeratorPrompt(sourceForm, targetDen),
           min: 1,
           max: Number(targetDen),
           strings,

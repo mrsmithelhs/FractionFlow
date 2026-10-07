@@ -445,15 +445,16 @@
         {"step":2,"method":"click","target":".app-visual-view .control-btn","description":"Acknowledge encounter"},
         {"step":3,"method":"click","target":".app-visual-view .control-choice-btn >> nth=1","description":"Notice: choose different sized parts"},
         {"step":4,"method":"click","target":".app-visual-view .control-choice-btn >> nth=0","description":"Decide: choose common denominator 12"},
-        {"step":5,"method":"fill","target":".app-visual-view input.control-numeric-input","value":"5","description":"Enter wrong equivalent numerator"},
-        {"step":6,"method":"click","target":".app-visual-view .control-submit-btn","description":"Submit wrong numerator"},
-        {"step":7,"method":"assertNoSubdivisionMotion","container":".app-visual-view .fraction-bar-container[data-side=\"left\"]","denominator":3,"description":"Rejected transform recovery leaves the accepted starting form static"}
+        {"step":5,"method":"assert","assertions":[{"type":"containsText","target":".app-visual-view .control-label","value":"How many parts out of 12 make the same amount as 2/3?"}],"description":"Ask about equivalent parts before any subdivision appears"},
+        {"step":6,"method":"fill","target":".app-visual-view input.control-numeric-input","value":"5","description":"Enter wrong equivalent numerator"},
+        {"step":7,"method":"click","target":".app-visual-view .control-submit-btn","description":"Submit wrong numerator"},
+        {"step":8,"method":"assertNoSubdivisionMotion","container":".app-visual-view .fraction-bar-container[data-side=\"left\"]","denominator":3,"description":"Rejected transform recovery leaves the accepted starting form static"}
       ],
       "expect": {
         "capture": {"target":".app-visual-view .recovery-feedback","type":"textContent"},
         "assertions": [
           {"type":"hasSelector","target":".app-visual-view .recovery-feedback"},
-          {"type":"containsText","target":".app-visual-view .recovery-feedback","value":"Count the shaded parts in the new bar"},
+          {"type":"containsText","target":".app-visual-view .recovery-feedback","value":"How many parts out of 12 make the same amount as 2/3?"},
           {"type":"notContainsText","target":".app-visual-view .recovery-feedback","value":"Not quite."}
         ]
       },

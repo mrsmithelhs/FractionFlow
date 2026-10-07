@@ -134,7 +134,7 @@ describe('Render Recovery Dispatch & Dead-Code Guard (Repair 04, Items 1, 4, 6)'
         side: 'left',
         reasons: ['numerator-incorrect'],
       },
-      expectedString: STRINGS.transform.errorNumerator,
+      expectedString: STRINGS.transform.errorNumerator({ numerator: '2', denominator: '3' }, '12'),
     },
     {
       kind: 'incorrect-numerator-arithmetic',

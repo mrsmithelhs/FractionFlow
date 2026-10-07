@@ -31,6 +31,7 @@ describe('Learner Strings Catalog (src/render/strings.js)', () => {
         // Exercise functions with sample inputs
         const sampleCalls = [
           value('left', 2, 3),
+          value({ numerator: '2', denominator: '3' }, 12),
           value(12),
           value('left', 12),
           value(4),
@@ -86,7 +87,7 @@ describe('Learner Strings Catalog (src/render/strings.js)', () => {
       STRINGS.notice.prompt,
       STRINGS.decide.prompt,
       STRINGS.transform.prompt('left', 12),
-      STRINGS.transform.equivalentNumeratorPrompt(12),
+      STRINGS.transform.equivalentNumeratorPrompt({ numerator: '2', denominator: '3' }, 12),
       STRINGS.operate.prompt,
       STRINGS.resolve.prompt,
       STRINGS.reflect.matchingPrompt('2/3'),
@@ -99,6 +100,13 @@ describe('Learner Strings Catalog (src/render/strings.js)', () => {
       expect(wordCount).toBeLessThanOrEqual(20);
       expect(wordCount).toBeGreaterThanOrEqual(3);
     }
+  });
+
+  it('asks about equivalent parts using the source fraction and target denominator', () => {
+    expect(STRINGS.transform.equivalentNumeratorPrompt({ numerator: '2', denominator: '3' }, '12'))
+      .toBe('How many parts out of 12 make the same amount as 2/3?');
+    expect(STRINGS.transform.equivalentNumeratorPrompt({ numerator: '1', denominator: '4' }, '12'))
+      .toBe('How many parts out of 12 make the same amount as 1/4?');
   });
 
   it('condition A: validLeast is parameterized and does not hardcode canonical 12', () => {
