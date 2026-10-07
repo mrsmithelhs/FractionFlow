@@ -1,0 +1,306 @@
+{
+  "createdAt": "2026-10-07T13:00:18.402Z",
+  "source": "src\\interaction\\episode.js",
+  "originalSourceSha256": "95bfa0db3f020bea07d6ddc60f2c8b5672f0f832a3d7aa6c863df11c074a60f0",
+  "mutation": "Temporarily changed the fresh revision-2 admission condition to false, rebuilt dist, and ran only the matching and premise Plan 22 browser routes.",
+  "guardSeed": [
+    {
+      "routeId": "ROUTE-PLAN22-36-MATCHING-VISUAL",
+      "expectedExitCode": 1,
+      "failureAtExpectedRecoveryAssertion": "✗ ROUTE-PLAN22-36-MATCHING-VISUAL [standard-motion] (5655ms): locator.textContent: Timeout 5000ms exceeded.",
+      "expectedAssertionCallLog": "waiting for locator('.app-visual-view .recovery-feedback')",
+      "summary": "Route Matrix Run Complete: 2 passed, 1 failed (3 route rows; 3 browser executions)."
+    },
+    {
+      "routeId": "ROUTE-PLAN22-36-PREMISE-LINEAR-REDUCED",
+      "expectedExitCode": 1,
+      "failureAtExpectedRecoveryAssertion": "✗ ROUTE-PLAN22-36-PREMISE-LINEAR-REDUCED [reduced-motion] (5817ms): locator.textContent: Timeout 5000ms exceeded.",
+      "expectedAssertionCallLog": "waiting for locator('.app-linear-view .recovery-feedback')",
+      "summary": "Route Matrix Run Complete: 1 passed, 1 failed (2 route rows; 2 browser executions)."
+    }
+  ],
+  "restoration": {
+    "byteForByteRestored": true,
+    "restoredSourceSha256": "95bfa0db3f020bea07d6ddc60f2c8b5672f0f832a3d7aa6c863df11c074a60f0"
+  },
+  "cleanRoutes": [
+    {
+      "routeId": "ROUTE-PLAN22-36-MATCHING-VISUAL",
+      "exitCode": 0,
+      "summary": "Route Matrix Run Complete: 3 passed, 0 failed (3 route rows; 3 browser executions)."
+    },
+    {
+      "routeId": "ROUTE-PLAN22-36-PREMISE-LINEAR-REDUCED",
+      "exitCode": 0,
+      "summary": "Route Matrix Run Complete: 2 passed, 0 failed (2 route rows; 2 browser executions)."
+    }
+  ],
+  "renderedScenarios": [
+    {
+      "id": "matching-visual-standard-320",
+      "motionPreference": "standard-motion",
+      "conditionId": "phase2-bundle-1",
+      "support": "medium-support",
+      "viewport": "320x740 CSS px, touch emulation",
+      "view": "visual",
+      "boundary": {
+        "screenshot": "reports\\development\\plan-22-denominator-path-closure-repair\\evidence\\matching-visual-standard-320-36-boundary.png",
+        "viewport": {
+          "width": 320,
+          "height": 740
+        },
+        "document": {
+          "clientWidth": 320,
+          "scrollWidth": 320,
+          "scrollHeight": 1125,
+          "scrollX": 0,
+          "scrollY": 36,
+          "horizontalOverflow": false,
+          "verticallyScrollable": true
+        },
+        "conditionId": "phase2-bundle-1",
+        "supportCode": "medium support",
+        "activeElement": "input#decide-common-denominator-input.fraction-control.control-numeric-input",
+        "feedback": "36 is a valid common denominator, but this practice cannot use it. Try another number.",
+        "feedbackRole": "alert",
+        "feedbackBounds": {
+          "x": 63,
+          "y": 381.78125,
+          "top": 381.78125,
+          "right": 257,
+          "bottom": 487.78125,
+          "left": 63,
+          "width": 194,
+          "height": 106,
+          "documentX": 63,
+          "documentY": 417.78125,
+          "viewportIntersection": {
+            "left": 63,
+            "top": 381.78125,
+            "right": 257,
+            "bottom": 487.78125
+          }
+        },
+        "inputValue": "",
+        "inputBounds": {
+          "x": 63,
+          "y": 693.21875,
+          "top": 693.21875,
+          "right": 156.9375,
+          "bottom": 740.21875,
+          "left": 63,
+          "width": 93.9375,
+          "height": 47,
+          "documentX": 63,
+          "documentY": 729.21875,
+          "viewportIntersection": {
+            "left": 63,
+            "top": 693.21875,
+            "right": 156.9375,
+            "bottom": 740
+          }
+        },
+        "submitBounds": {
+          "x": 164.9375,
+          "y": 694.71875,
+          "top": 694.71875,
+          "right": 257,
+          "bottom": 738.71875,
+          "left": 164.9375,
+          "width": 92.0625,
+          "height": 44,
+          "documentX": 164.9375,
+          "documentY": 730.71875,
+          "viewportIntersection": {
+            "left": 164.9375,
+            "top": 694.71875,
+            "right": 257,
+            "bottom": 738.71875
+          }
+        },
+        "activeBeatBounds": null,
+        "transformInputPresent": false,
+        "viewHidden": false
+      },
+      "recoveryTo12": {
+        "screenshot": "reports\\development\\plan-22-denominator-path-closure-repair\\evidence\\matching-visual-standard-320-12-recovery.png",
+        "viewport": {
+          "width": 320,
+          "height": 740
+        },
+        "document": {
+          "clientWidth": 320,
+          "scrollWidth": 320,
+          "scrollHeight": 1023,
+          "scrollX": 0,
+          "scrollY": 36,
+          "horizontalOverflow": false,
+          "verticallyScrollable": true
+        },
+        "conditionId": "phase2-bundle-1",
+        "supportCode": "medium support",
+        "activeElement": "body",
+        "feedback": null,
+        "feedbackRole": null,
+        "feedbackBounds": null,
+        "inputValue": null,
+        "inputBounds": null,
+        "submitBounds": {
+          "x": 164.9375,
+          "y": 572.71875,
+          "top": 572.71875,
+          "right": 257,
+          "bottom": 616.71875,
+          "left": 164.9375,
+          "width": 92.0625,
+          "height": 44,
+          "documentX": 164.9375,
+          "documentY": 608.71875,
+          "viewportIntersection": {
+            "left": 164.9375,
+            "top": 572.71875,
+            "right": 257,
+            "bottom": 616.71875
+          }
+        },
+        "activeBeatBounds": null,
+        "transformInputPresent": true,
+        "viewHidden": false,
+        "activeBeatPrompt": "Rename the first fraction with 12 equal parts."
+      }
+    },
+    {
+      "id": "premise-linear-reduced-320",
+      "motionPreference": "reduced-motion",
+      "conditionId": "phase2-bundle-4",
+      "support": "medium-support",
+      "viewport": "320x740 CSS px, touch emulation",
+      "view": "linear",
+      "boundary": {
+        "screenshot": "reports\\development\\plan-22-denominator-path-closure-repair\\evidence\\premise-linear-reduced-320-36-boundary.png",
+        "viewport": {
+          "width": 320,
+          "height": 740
+        },
+        "document": {
+          "clientWidth": 320,
+          "scrollWidth": 320,
+          "scrollHeight": 1118,
+          "scrollX": 0,
+          "scrollY": 25,
+          "horizontalOverflow": false,
+          "verticallyScrollable": true
+        },
+        "conditionId": "phase2-bundle-4",
+        "supportCode": "medium support",
+        "activeElement": "button.fraction-control.app-secondary-button.app-view-toggle",
+        "feedback": "36 is a valid common denominator, but this practice cannot use it. Try another number.",
+        "feedbackRole": "alert",
+        "feedbackBounds": {
+          "x": 63,
+          "y": 379.5625,
+          "top": 379.5625,
+          "right": 257,
+          "bottom": 485.5625,
+          "left": 63,
+          "width": 194,
+          "height": 106,
+          "documentX": 63,
+          "documentY": 404.5625,
+          "viewportIntersection": {
+            "left": 63,
+            "top": 379.5625,
+            "right": 257,
+            "bottom": 485.5625
+          }
+        },
+        "inputValue": "",
+        "inputBounds": {
+          "x": 63,
+          "y": 697.125,
+          "top": 697.125,
+          "right": 156.9375,
+          "bottom": 744.125,
+          "left": 63,
+          "width": 93.9375,
+          "height": 47,
+          "documentX": 63,
+          "documentY": 722.125,
+          "viewportIntersection": {
+            "left": 63,
+            "top": 697.125,
+            "right": 156.9375,
+            "bottom": 740
+          }
+        },
+        "submitBounds": {
+          "x": 164.9375,
+          "y": 698.625,
+          "top": 698.625,
+          "right": 257,
+          "bottom": 742.625,
+          "left": 164.9375,
+          "width": 92.0625,
+          "height": 44,
+          "documentX": 164.9375,
+          "documentY": 723.625,
+          "viewportIntersection": {
+            "left": 164.9375,
+            "top": 698.625,
+            "right": 257,
+            "bottom": 740
+          }
+        },
+        "activeBeatBounds": null,
+        "transformInputPresent": false,
+        "viewHidden": false
+      },
+      "recoveryTo12": {
+        "screenshot": "reports\\development\\plan-22-denominator-path-closure-repair\\evidence\\premise-linear-reduced-320-12-recovery.png",
+        "viewport": {
+          "width": 320,
+          "height": 740
+        },
+        "document": {
+          "clientWidth": 320,
+          "scrollWidth": 320,
+          "scrollHeight": 1016,
+          "scrollX": 0,
+          "scrollY": 28,
+          "horizontalOverflow": false,
+          "verticallyScrollable": true
+        },
+        "conditionId": "phase2-bundle-4",
+        "supportCode": "medium support",
+        "activeElement": "body",
+        "feedback": null,
+        "feedbackRole": null,
+        "feedbackBounds": null,
+        "inputValue": null,
+        "inputBounds": null,
+        "submitBounds": {
+          "x": 164.9375,
+          "y": 573.625,
+          "top": 573.625,
+          "right": 257,
+          "bottom": 617.625,
+          "left": 164.9375,
+          "width": 92.0625,
+          "height": 44,
+          "documentX": 164.9375,
+          "documentY": 601.625,
+          "viewportIntersection": {
+            "left": 164.9375,
+            "top": 573.625,
+            "right": 257,
+            "bottom": 617.625
+          }
+        },
+        "activeBeatBounds": null,
+        "transformInputPresent": false,
+        "viewHidden": false,
+        "activeBeatPrompt": "Rename the first fraction with 12 equal parts."
+      }
+    }
+  ]
+}
