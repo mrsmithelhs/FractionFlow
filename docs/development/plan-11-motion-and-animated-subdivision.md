@@ -1,7 +1,8 @@
 ---
 id: plan-11
 title: Motion and Animated Subdivision
-status: delivered
+status: complete
+resolution: "Technical reviews accepted subdivision, Replay conservation, reduced-motion behavior and divider glow/core repairs. Owner accepted repaired appearance and on 2026-10-07 confirmed local testing followed by their GitHub push and verification at https://mrsmithelhs.github.io/FractionFlow/#sum-under-one. D-01/D-02 remain prototype variables; completion does not choose a preferred presentation."
 depends_on: [plan-09, plan-14]
 gate: "Mechanism confirmation before implementation: how the subdivision animates without rebuilding the element, and what it does to the scene contract, are proposed and approved first. Then owner review against DECISION-021 criterion 4 on rendered screens at the deployed URL. Motion is a prototype variable (D-01, D-02); this packet may not convert it into a settled default."
 summary: >-

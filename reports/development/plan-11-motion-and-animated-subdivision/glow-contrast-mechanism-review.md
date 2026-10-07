@@ -55,3 +55,14 @@ This accepts the repaired rendered glow. The reviewed URL was not specified and
 no deployment was performed in this work, so this statement does not establish
 the packet's separate deployed-URL criterion. Plan 11 remains delivered; D-01/D-02
 remain prototype variables rather than a settled presentation default.
+
+## Deployed acceptance and completion — 2026-10-07
+
+The owner clarified that they first verified the animations locally, then pushed
+to GitHub and verified the same behaviors at
+https://mrsmithelhs.github.io/FractionFlow/#sum-under-one. This is owner-reported
+deployed behavior acceptance, not an independent orchestration replay of the live
+site. Together with the technical review and rendered acceptance above, it satisfies
+Plan 11's remaining deployed-URL gate. Orchestration marks Plan 11 complete with
+a written resolution. D-01/D-02 remain prototype variables. No additional push
+or deployment was performed by orchestration.
