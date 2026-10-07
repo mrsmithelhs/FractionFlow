@@ -13,12 +13,13 @@ panel after both the visual and linear hosts. A request records a generic help
 level, which each renderer displays as a short paragraph in the active beat. The
 action is not beside the denominator question or response.
 
-I recommend one optional, task-local help workspace that starts with the product
-of the two denominators as a reliable common-unit route. It keeps the learner's
-normal denominator choice as a separate action, preserves mathematically valid
-non-least choices, and gives a short denominator-only explanation of the chosen
-unit. This is a proposal for orchestration/owner review, not an approved source
-mechanism. I am stopping before source work.
+I recommend one optional, task-local strategy cue that names multiplying the two
+denominators as one way to find a common unit. The learner still submits a common
+denominator through the existing response; the response is never scored as a
+multiplication exercise. Valid non-least choices remain valid. After an assisted
+choice, a short, denominator-only explanation is available in the completed
+decide summary. This is a proposal for orchestration/owner review, not an approved
+source mechanism. I am stopping before source work.
 
 ## Investigation evidence
 
@@ -81,62 +82,87 @@ check whether a candidate is also a multiple of the other denominator. For 3 and
 repeated substeps and may expose a growing list or encourage stopping only at the
 first (least) shared multiple. Handling arbitrary counts would expand this packet.
 
-**Product reasoning (recommended first route):** Ask the learner to calculate
-`3 × 4`. This takes one learner contribution and always supplies a valid common
-unit for positive denominators. It can be larger than needed, so other valid
-choices must remain accepted. For investigation only, denominators 4 and 6 show
-the distinction: their product 24 works, while 12 is a smaller shared multiple.
-This comparison does not add a 4-and-6 learner route or broaden content reach.
+**Product reasoning as a cue (recommended):** Suggest multiplying the two
+denominators, but ask the learner for a common denominator. Do not add a separate
+`3 × 4 = ?` quiz or grade denominator responses as multiplication answers. Thus
+12 and 24 are both accepted as common denominators, while 36 reaches the existing
+valid-but-unavailable boundary. For investigation only, denominators 4 and 6 show
+the strategy tradeoff: their product 24 works, while 12 is a smaller shared
+multiple. This comparison does not add a 4-and-6 learner route or broaden content
+reach.
 
-The product route is the smaller first mechanism for the registered problem and
-does not require a new math primitive. Exact response validity and task closure
-remain upstream through the existing math/interaction path. It is not evidence
-of general independent denominator discovery or a claim that product reasoning
-is the most efficient strategy for all denominators.
+This is the smaller first mechanism for the registered problem and does not
+require a new math primitive or a new intent. Exact response validity and task
+closure remain upstream through the existing math/interaction path. It is not
+evidence of general independent denominator discovery or a claim that product
+reasoning is the most efficient strategy for all denominators.
 
 ## Proposed bounded mechanism — awaiting approval
 
-1. Keep the current unaided response available. Move/route its single `Need
-   help?` entry into the active decide region beside or immediately below the
-   denominator response in both visual and linear paths. Do not show a competing
-   help button in the app-level support panel while decide is active.
-2. On request, open a compact local workspace with one learner response at a
-   time. Suggested first prompt: **“Multiply the two bottom numbers. What is
-   3 × 4?”** Do not auto-fill or submit the main denominator response.
-3. If the learner enters an invalid one-sided candidate such as 8, use exact
-   upstream classification to explain that it fits groups of 4 but not groups
-   of 3. For a valid, supported alternative such as 24, acknowledge it as valid;
-   do not mark it wrong because it is not the product or least denominator. For a
-   valid but unavailable candidate such as 36, preserve Plan 22's current local
-   boundary and recovery. Do not recommend continuing into missing task data.
-4. After the learner manually chooses a supported denominator, show one compact
-   denominator-only reason, for example: **“12 works: 3 × 4 = 12 and 4 × 3 =
-   12. Both fractions can use twelfths.”** Parameterize this from the selected
-   denominator and exact upstream relationship. Do not show converted numerator
-   forms or pre-answer the following transform task. A 24 reason may name only
-   denominator relationships (`3 × 8 = 24`, `4 × 6 = 24`), not `16/24` or
-   `6/24`; Plan 25 retains numerator-construction help.
-5. Closing help, reopening it, or switching between visual and linear views must
-   preserve any unsubmitted main denominator draft. Treat that draft as
-   view-local UI input, not mathematical truth or replayed learner work. Reset it
-   and all helper substeps on retry, return/re-entry, or a fresh episode.
-6. Record requested assistance and learner-provided substeps in instructional
-   provenance so later response evidence is marked assisted. Keep completed
-   instructions replaced by the next substep rather than accumulating a recipe.
-   Use no new top-level beat, support profile, menu of algorithms, automatic
-   advance, persistence, or newly reachable family.
+1. **Closed:** keep the current common-denominator response available, with the
+   single `Need help?` entry beside or immediately below it in both visual and
+   linear paths. While decide is active, do not show a competing help button in
+   the app-level support panel.
+2. **Open:** the same button becomes `Close help`; show this single compact cue
+   beside the response: **“Try multiplying 3 by 4 to find one common denominator.”**
+   Keep the original prompt **“Choose a common denominator for both fractions.”**
+   and its existing response control. This cue is one strategy, not a separate
+   `3 × 4 = ?` quiz. Do not add a multiplication field, product grader, or
+   denominator autofill.
+3. The exact common-denominator response outcomes remain distinct:
+
+   | Learner enters | Classification | Recovery/result and next state |
+   |---|---|---|
+   | 8 | Invalid: multiple of 4, not 3 | “8 is a multiple of 4, but not 3. Try another number.” Remain at decide; response control stays available. |
+   | 10 | Invalid: multiple of neither | “10 is not a common denominator. Try another number.” Remain at decide. |
+   | 12 | Valid, supported least choice | Accept existing response and advance to the first transform. |
+   | 24 | Valid, supported non-least choice | Accept existing response and advance to the first transform. Never describe 24 as wrong for not equaling 3 × 4. |
+   | 36 | Valid mathematically, unsupported here | Use Plan 22's “36 is a valid common denominator, but this practice cannot use it. Try another number.” Remain at decide; do not mount transform/reflection. |
+
+   Use existing upstream `classifyCommonDenominatorResponse` and
+   `evaluateTaskPathClosure`; renderers do not compute validity. The “product”
+   is never a separately submitted or graded response.
+   On 8/10, replace the initial cue with local recovery so the active task does
+   not repeat the same hint. On 12/24, accept the original response, close the
+   active help workspace as the beat advances, and begin transform. On 36, stay
+   at decide with Plan 22's response recovery; do not mount the next task.
+4. **After selection:** show the selected-unit explanation only if help was
+   requested at decide. Once denominator submission advances to transform, put a
+   closed native `<details>` disclosure in the completed decide summary:
+   **“Why does 24 work?”** It opens to **“24 is 8 groups of 3 and 6 groups of
+   4, so both fractions can use twenty-fourths.”** For 12, use **“12 is 4 groups
+   of 3 and 3 groups of 4, so both fractions can use twelfths.”** These are
+   denominator-only explanations; do not show `16/24` or `6/24`. Do not append
+   explanation text to every transform or show it on unaided routes. Plan 25
+   retains equivalent-numerator help.
+5. Opening dispatches the existing `request-help` intent and uses its existing
+   help/provenance history. Closing the inline workspace is presentation-only.
+   The helper has no separate semantic substeps or learner input; the meaningful
+   contribution is the existing common-denominator response. App-local
+   `helpOpen` and the unsubmitted denominator draft are view-local UI state:
+   preserve the draft across help remounts, close/reopen, and view switches, but
+   omit it from episode truth and replay. Retry, return/re-entry and fresh
+   episodes start closed with no stale draft.
+6. Do not add helper intents, persisted state, a math primitive, or a new top-level
+   beat. Therefore no episode-definition revision or replay-schema change is
+   proposed: registered revision 1 and revision 2 keep their existing reducer
+   intent contracts and full replay behavior; `request-help` remains the only
+   assistance intent. Existing response provenance records help history and
+   classifies the later response as supported-construction. Their existing
+   `INTENT_KEYS` whitelist continues to allow the existing `request-help` and
+   common-denominator intents and reject unknown intent shapes; no new helper
+   intent is admitted. If source work proves that a new semantic intent/state is
+   necessary, stop for a revision-3 mechanism decision rather than adding it
+   under this proposal.
 
 ### Candidate exact implementation scope after approval
 
-- Pure instructional state, intents, task-local help history and decide response:
-  `src/interaction/episode.js` and `src/interaction/provenance.js`.
-- Definition identity and replay compatibility: `src/interaction/episode-definition.js`
-  and `src/interaction/replay.js`; preserve registered revision 1 and revision 2
-  behavior/oracles, and add a new revision only if the accepted intent/state
-  contract requires it. Do not broaden replay schema without evidence.
-- Validated projection and learner strings: `src/interaction/scene.js` and
-  `src/render/strings.js`.
-- One local help entry point and visual/linear rendering/layout:
+- Validated selected-unit/help-request projection and learner strings:
+  `src/interaction/scene.js` and `src/render/strings.js`. Project the per-beat
+  help request from existing `helpHistory` and selected-unit proof values from
+  the validated denominator classification; renderers only format those values.
+- One visible help entry point, app-local open/draft state, and visual/linear
+  rendering/layout:
   `src/app/app.js`, `src/render/beat-container.js`, `src/render/linear-path.js`,
   `src/app/styles.css`, and `src/styles/render.css`.
 - Focused tests: `tests/interaction-episode.test.js`,
@@ -144,10 +170,12 @@ is the most efficient strategy for all denominators.
   `tests/route-contract.test.js`, and additive witnesses in
   `tests/routes/route-matrix.json`. Add a Plan 24 evidence-capture script only if
   needed to produce repeatable visual/linear measurements and screenshots.
-- No `src/math/` change is proposed. Existing exact common-denominator
-  classification and Plan 22 task-path closure should own validity. If approved
-  behavior cannot be implemented with those APIs, stop and propose that change
-  separately before adding a math primitive.
+- No new helper file and no change to `src/interaction/episode-definition.js`, `src/interaction/episode.js`,
+  `src/interaction/provenance.js`, `src/interaction/replay.js`, or `src/math/` is
+  proposed. Existing request-help history, response provenance, replay, exact
+  common-denominator classification and Plan 22 task-path closure should own
+  behavior. If approved behavior cannot be implemented within those contracts,
+  stop and propose that change separately before adding state or a math primitive.
 
 ## Falsifying evidence proposed for the post-approval implementation
 
@@ -155,14 +183,16 @@ is the most efficient strategy for all denominators.
   to the response area in visual and linear paths at 360×740 and 360×752. Capture
   screenshots and measured question, response, help-button, and open-workspace
   bounds; include document overflow and control/touch-target bounds.
-- Show a learner contribution (product 12), manual denominator submission, and
-  continued authored completion without supplied equivalent numerators.
-- Exercise wrong 10, one-sided 8, valid non-least 24, and valid-but-unavailable
-  36. Require distinct mathematical classifications and useful local recovery;
-  demonstrate that 36 never mounts unsupported conversion/reflection content.
+- Show common-denominator response semantics, not a product quiz: reject one-sided
+  8 with targeted recovery, reject 10 as non-common, accept 12 and 24, and keep
+  valid-but-unavailable 36 at the Plan 22 boundary. Complete the authored route
+  without supplied equivalent numerators.
 - Open and close help with a nonempty, unsubmitted denominator draft and verify
   the exact value remains. Verify reset, return/re-entry, and replay have no stale
   helper state. Compare full replay results for existing definition revisions.
+- Prove rev1/rev2 learner-intent shapes and reconstructed states remain unchanged:
+  no helper intent is introduced, and app-local `helpOpen`/draft state never
+  enters replay.
 - Verify keyboard, non-drag touch, reduced-motion and linear participation using
   real mounted controls/gestures. Include negative controls for answer leakage,
   duplicate help entries, invalid promotion, unavailable-path advance, and lost
