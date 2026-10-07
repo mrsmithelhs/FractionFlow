@@ -41,3 +41,23 @@ No unrelated test weakening or product changes. If a real product defect emerges
 report it before broadening the mechanism. Commit scoped repair and report last.
 Do not change packet status or push/deploy. Owner acceptance remains pending.
 Advisor consultation was not warranted for this prose-only orchestration record.
+
+## Repair 01 re-review — 2026-10-07
+
+Evidence/verifier d62ce25 and report 328c8d6 satisfy the requested repair.
+Inspected the actual revision-2 guard mutation, build/route checks, finally-based
+restoration and source hashes. Recorded seeded matching/premise executions fail
+at the missing recovery-message assertion; restored clean executions pass 3/3
+and 2/2 including controls. Orchestration inspected these diagnostics but did not
+independently rerun the source mutation. Independently reran the clean reduced-motion
+linear premise route and its reciprocal control: 2/2 passed. Lint/diff checks pass.
+
+Inspected committed visual/linear boundary screenshots and measurements. No horizontal
+overflow is recorded; documents vertically scroll and controls cross the initial
+320×740 viewport edge slightly (visual input 0.22px, linear input/button 4.13/2.63px).
+These are participation/layout limits for owner review, not an all-controls-fit claim.
+Playwright fills numbers; touch interaction is browser emulation, not physical-device
+keyboard or assistive-technology evidence.
+
+Technical delivery accepted; orchestration sets Plan 22 delivered. Owner rendered
+behavior acceptance remains pending. No source redesign, push or deployment authorized.
