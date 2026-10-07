@@ -7,6 +7,7 @@ import {
   episodeStateSnapshot,
   EpisodeConstructionError,
   EpisodeIntentError,
+  LEGACY_PHASE2_REFLECTION_EPISODE_DEFINITION,
   PHASE2_EPISODE_DEFINITION,
   PHASE2_REFLECTION_EPISODE_DEFINITION,
   replayEpisode,
@@ -204,12 +205,76 @@ describe('Plan 05 instructional episode', () => {
     expect(alternate.beat).toBe('resolve');
   });
 
-  it('distinguishes a valid but visually ineligible proposed path from base construction', () => {
+  it('keeps valid but unavailable denominator paths at the decide boundary', () => {
     let state = atDecide();
     state = applyIntent(state, { type: 'propose-common-denominator', proposed: whole(36) });
     expect(state.status).toBe('active');
-    expect(state.established.commonDenominator.kind).toBe('valid-but-outside-representation-capability');
-    expect(state.established.route).toBe('symbolic-continuation');
+    expect(state.beat).toBe('decide');
+    expect(state.established.commonDenominator).toBeNull();
+    expect(state.lastRecovery.classification).toMatchObject({
+      kind: 'valid-but-unavailable-task-path',
+      validity: 'valid',
+      mathClassification: 'valid-non-least',
+      targetDenominator: '36',
+      pathClassification: {
+        kind: 'valid-but-outside-representation-capability',
+        validity: 'valid',
+        rendering: 'ineligible',
+        authoredCoverage: 'outside-authored-coverage',
+      },
+      taskPathClosure: {
+        available: false,
+        reason: 'outside-representation-capability',
+      },
+      continuation: 'local-recovery',
+    });
+    expect(state.responseProvenance.at(-1).classification.validity).toBe('valid');
+
+    state = applyIntent(state, { type: 'propose-common-denominator', proposed: whole(12) });
+    expect(state.beat).toBe('transform');
+    expect(state.established.commonDenominator.targetDenominator).toBe('12');
+  });
+
+  it('replays pinned revision 1 with its original unsupported-unit transition', () => {
+    let state = createEpisode({
+      instance: canonicalInstance(),
+      episodeDefinition: LEGACY_PHASE2_REFLECTION_EPISODE_DEFINITION,
+    });
+    state = applyIntent(state, { type: 'acknowledge-encounter' });
+    state = applyIntent(state, { type: 'submit-notice', matchesUnits: false });
+    state = applyIntent(state, { type: 'propose-common-denominator', proposed: whole(36) });
+    expect(state.episodeDefinition.revision).toBe('1');
+    expect(state.beat).toBe('transform');
+    expect(state.established.commonDenominator.targetDenominator).toBe('36');
+    expect(replayEpisode(JSON.parse(JSON.stringify(createReplayEnvelope(state)))))
+      .toEqual(state);
+  });
+
+  it('detects removal of the new admission guard with the legacy 36 route as a failing-first seed', () => {
+    let state = createEpisode({
+      instance: canonicalInstance(),
+      episodeDefinition: LEGACY_PHASE2_REFLECTION_EPISODE_DEFINITION,
+    });
+    state = applyIntent(state, { type: 'acknowledge-encounter' });
+    state = applyIntent(state, { type: 'submit-notice', matchesUnits: false });
+    state = applyIntent(state, { type: 'propose-common-denominator', proposed: whole(36) });
+
+    const assertApprovedBoundary = () => expect(state).toMatchObject({
+      beat: 'decide',
+      established: { commonDenominator: null },
+      lastRecovery: { classification: { kind: 'valid-but-unavailable-task-path' } },
+    });
+    expect(() => assertApprovedBoundary()).toThrow();
+    expect(state).toMatchObject({
+      beat: 'transform',
+      established: {
+        commonDenominator: {
+          validity: 'valid',
+          rendering: 'ineligible',
+          authoredCoverage: 'outside-authored-coverage',
+        },
+      },
+    });
   });
 
   it('rejects invalid construction and keeps continue outside the reducer', () => {

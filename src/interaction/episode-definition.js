@@ -1,7 +1,8 @@
 import { deepFreeze } from '../content/schema.js';
 
 export const EPISODE_DEFINITION_ID = 'phase-2-unlike-proper-addition';
-export const EPISODE_DEFINITION_REVISION = '1';
+export const EPISODE_DEFINITION_REVISION = '2';
+export const LEGACY_EPISODE_DEFINITION_REVISION = '1';
 
 export const PHASE2_ACTIVE_CONDITION = deepFreeze({
   id: 'phase2-bundle-1',
@@ -22,9 +23,7 @@ export const EPISODE_BEATS = Object.freeze([
   'reflect',
 ]);
 
-export const PHASE2_EPISODE_DEFINITION = deepFreeze({
-  id: EPISODE_DEFINITION_ID,
-  revision: EPISODE_DEFINITION_REVISION,
+const BASE_EPISODE_DEFINITION = {
   operation: 'add',
   selector: 'relatively-prime-addition',
   beats: EPISODE_BEATS,
@@ -38,15 +37,41 @@ export const PHASE2_EPISODE_DEFINITION = deepFreeze({
     resolve: 'phase2.resolve',
     reflect: 'phase2.reflect',
   },
-});
+};
 
-export const PHASE2_REFLECTION_EPISODE_DEFINITION = deepFreeze({
-  ...PHASE2_EPISODE_DEFINITION,
-  id: 'phase-2-unlike-proper-addition-reflection',
-  includeReflection: true,
-});
+function episodeDefinition(id, revision, includeReflection) {
+  return deepFreeze({
+    ...BASE_EPISODE_DEFINITION,
+    id,
+    revision,
+    includeReflection,
+  });
+}
+
+export const LEGACY_PHASE2_EPISODE_DEFINITION = episodeDefinition(
+  EPISODE_DEFINITION_ID,
+  LEGACY_EPISODE_DEFINITION_REVISION,
+  false,
+);
+export const LEGACY_PHASE2_REFLECTION_EPISODE_DEFINITION = episodeDefinition(
+  'phase-2-unlike-proper-addition-reflection',
+  LEGACY_EPISODE_DEFINITION_REVISION,
+  true,
+);
+export const PHASE2_EPISODE_DEFINITION = episodeDefinition(
+  EPISODE_DEFINITION_ID,
+  EPISODE_DEFINITION_REVISION,
+  false,
+);
+export const PHASE2_REFLECTION_EPISODE_DEFINITION = episodeDefinition(
+  'phase-2-unlike-proper-addition-reflection',
+  EPISODE_DEFINITION_REVISION,
+  true,
+);
 
 const EPISODE_DEFINITIONS = Object.freeze([
+  LEGACY_PHASE2_EPISODE_DEFINITION,
+  LEGACY_PHASE2_REFLECTION_EPISODE_DEFINITION,
   PHASE2_EPISODE_DEFINITION,
   PHASE2_REFLECTION_EPISODE_DEFINITION,
 ]);

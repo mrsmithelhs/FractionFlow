@@ -2963,6 +2963,107 @@
         "comparison": "notIdenticalCapture",
         "sameMotionMode": true
       }
+    },
+    {
+      "id": "ROUTE-PLAN22-36-MATCHING-VISUAL",
+      "behavior": "A valid but unsupported denominator is acknowledged at decide, then the learner can enter authored 12ths and continue.",
+      "configuration": "phase2-bundle-1",
+      "startingSurface": "mounted-app-entry",
+      "viewport": {"width":360,"height":740},
+      "motionMode": "standard-motion",
+      "witness": "browser",
+      "actions": [
+        {"step":1,"method":"click","target":".app-gear-button","description":"Open reviewer settings"},
+        {"step":2,"method":"click","target":"[data-support-id=\"medium-support\"]","description":"Select medium support"},
+        {"step":3,"method":"click","target":".app-practice-button","description":"Begin the registered reflection practice"},
+        {"step":4,"method":"click","target":".app-visual-view .control-btn","description":"Acknowledge encounter"},
+        {"step":5,"method":"click","target":".app-visual-view .control-choice-btn:has-text(\"No, different sizes\")","description":"Identify the different-sized parts"},
+        {"step":6,"method":"fill","target":".app-visual-view #decide-common-denominator-input","value":"36","description":"Enter the valid but unsupported denominator"},
+        {"step":7,"method":"pressKey","target":".app-visual-view #decide-common-denominator-input","value":"Enter","description":"Submit 36 by keyboard and receive the task boundary"},
+        {"step":8,"method":"assert","assertions":[
+          {"type":"containsText","target":".app-visual-view .recovery-feedback","value":"36 is a valid common denominator, but this practice cannot use it. Try another number."},
+          {"type":"hasSelector","target":".app-visual-view #decide-common-denominator-input"},
+          {"type":"notHasSelector","target":".app-visual-view #transform-num-input-left"},
+          {"type":"notHasSelector","target":".app-visual-view .fraction-bar-track[data-denominator=\"36\"]"},
+          {"type":"activeElementEquals","target":"activeElement","value":"input.fraction-control.control-numeric-input"}
+        ],"description":"Verify valid math remains distinct and no unsupported task mounts"},
+        {"step":9,"method":"fill","target":".app-visual-view #decide-common-denominator-input","value":"12","description":"Enter the authored common denominator"},
+        {"step":10,"method":"click","target":".app-visual-view .control-submit-btn","description":"Continue with 12ths"}
+      ],
+      "expect":{"capture":{"target":".app-visual-view","type":"innerHTML"},"assertions":[
+        {"type":"containsText","target":".app-visual-view .active-beat-prompt","value":"Rename the first fraction with 12 equal parts."},
+        {"type":"attributeEquals","target":".fractionflow-app","attribute":"data-support-code","value":"medium support"},
+        {"type":"notHasSelector","target":".app-visual-view .recovery-feedback"}
+      ]},
+      "negativeControl":{"targetRouteId":"ROUTE-SUPPORT-MEDIUM-DECIDE","comparison":"notIdenticalCapture","sameMotionMode":true}
+    },
+    {
+      "id": "ROUTE-PLAN22-36-PREMISE-LINEAR-REDUCED",
+      "behavior": "The same valid-unit boundary is available in the linear path under reduced motion, then recovers to authored 12ths.",
+      "configuration": "phase2-bundle-4",
+      "startingSurface": "mounted-app-entry",
+      "viewport": {"width":320,"height":740},
+      "motionMode": "reduced-motion",
+      "witness": "browser",
+      "actions": [
+        {"step":1,"method":"click","target":".app-gear-button","description":"Open reviewer settings"},
+        {"step":2,"method":"click","target":"[data-condition-id=\"phase2-bundle-4\"]","description":"Select Check the premise"},
+        {"step":3,"method":"click","target":".app-gear-button","description":"Reopen reviewer settings"},
+        {"step":4,"method":"click","target":"[data-support-id=\"medium-support\"]","description":"Select medium support"},
+        {"step":5,"method":"click","target":".app-practice-button","description":"Begin the registered reflection practice"},
+        {"step":6,"method":"click","target":".app-visual-view .control-btn","description":"Acknowledge encounter"},
+        {"step":7,"method":"click","target":".app-visual-view .control-choice-btn:has-text(\"No, different sizes\")","description":"Identify the different-sized parts"},
+        {"step":8,"method":"fill","target":".app-visual-view #decide-common-denominator-input","value":"36","description":"Enter the valid but unsupported denominator"},
+        {"step":9,"method":"click","target":".app-visual-view .control-submit-btn","description":"Submit 36 and receive the task boundary"},
+        {"step":10,"method":"click","target":".app-view-toggle","description":"Switch to the linear path"},
+        {"step":11,"method":"assert","assertions":[
+          {"type":"containsText","target":".app-linear-view .recovery-feedback","value":"36 is a valid common denominator, but this practice cannot use it. Try another number."},
+          {"type":"hasSelector","target":".app-linear-view #linear-decide-common-denominator-input"},
+          {"type":"notHasSelector","target":".app-linear-view .control-choice-btn:has-text(\"Yes, it is the same amount\")"}
+        ],"description":"Verify the boundary and usable input in the linear path"},
+        {"step":12,"method":"fill","target":".app-linear-view #linear-decide-common-denominator-input","value":"12","description":"Enter the authored common denominator"},
+        {"step":13,"method":"click","target":".app-linear-view .control-submit-btn","description":"Continue with 12ths"}
+      ],
+      "expect":{"capture":{"target":".app-linear-view","type":"innerHTML"},"assertions":[
+        {"type":"containsText","target":".app-linear-view .active-beat-prompt","value":"Rename the first fraction with 12 equal parts."},
+        {"type":"notHasSelector","target":".app-linear-view .recovery-feedback"},
+        {"type":"notHasSelector","target":".app-linear-view input#linear-decide-common-denominator-input"}
+      ]},
+      "negativeControl":{"targetRouteId":"ROUTE-REDUCED-MOTION","comparison":"notIdenticalCapture","sameMotionMode":true}
+    },
+    {
+      "id": "ROUTE-PLAN22-36-RETRY-RETURN",
+      "behavior": "After the valid-unit boundary, retry and return both create a clean episode and restore entry focus.",
+      "configuration": "phase2-bundle-1",
+      "startingSurface": "mounted-app-entry",
+      "viewport": {"width":360,"height":740},
+      "motionMode": "standard-motion",
+      "witness": "browser",
+      "actions": [
+        {"step":1,"method":"click","target":".app-gear-button","description":"Open reviewer settings"},
+        {"step":2,"method":"click","target":"[data-support-id=\"medium-support\"]","description":"Select medium support"},
+        {"step":3,"method":"click","target":".app-practice-button","description":"Begin the registered reflection practice"},
+        {"step":4,"method":"click","target":".app-visual-view .control-btn","description":"Acknowledge encounter"},
+        {"step":5,"method":"click","target":".app-visual-view .control-choice-btn:has-text(\"No, different sizes\")","description":"Identify the different-sized parts"},
+        {"step":6,"method":"fill","target":".app-visual-view #decide-common-denominator-input","value":"36","description":"Enter the valid but unsupported denominator"},
+        {"step":7,"method":"click","target":".app-visual-view .control-submit-btn","description":"Submit 36 and receive the task boundary"},
+        {"step":8,"method":"click","target":".app-restart-button","description":"Retry from the task boundary"},
+        {"step":9,"method":"assert","assertions":[
+          {"type":"containsText","target":".app-visual-view .active-beat-prompt","value":"Look at these two fractions."},
+          {"type":"notHasSelector","target":".app-visual-view .recovery-feedback"},
+          {"type":"notHasSelector","target":".app-visual-view input.control-numeric-input"}
+        ],"description":"Verify retry starts at a clean encounter"},
+        {"step":10,"method":"click","target":".app-return-button","description":"Return to the entry page"},
+        {"step":11,"method":"assertFocused","target":".app-entry-title","description":"Verify focus returns to the entry title"},
+        {"step":12,"method":"click","target":".app-practice-button","description":"Re-enter the registered practice"}
+      ],
+      "expect":{"capture":{"target":".app-visual-view","type":"innerHTML"},"assertions":[
+        {"type":"containsText","target":".app-visual-view .active-beat-prompt","value":"Look at these two fractions."},
+        {"type":"notHasSelector","target":".app-visual-view .recovery-feedback"},
+        {"type":"notHasSelector","target":".app-visual-view input.control-numeric-input"},
+        {"type":"attributeEquals","target":".fractionflow-app","attribute":"data-support-code","value":"medium support"}
+      ]},
+      "negativeControl":{"targetRouteId":"ROUTE-ENTRY-FIRST-TAB","comparison":"notIdenticalCapture","sameMotionMode":true}
     }
 
   ]

@@ -104,12 +104,12 @@ describe('Plan 14 Reachable Behavior Route Contract & Matrix Schema', () => {
   });
 
   it('preserves learner and prototype routes while adding mounted high/medium support witnesses', () => {
-    expect(matrix.routes).toHaveLength(41);
+    expect(matrix.routes).toHaveLength(44);
     const learnerRoutes = matrix.routes.filter((route) => route.configuration !== 'plan15-subtraction-prototype');
-    expect(learnerRoutes).toHaveLength(39);
+    expect(learnerRoutes).toHaveLength(42);
     for (const route of learnerRoutes) {
       expect(route.startingSurface).toBe('mounted-app-entry');
-      expect(route.viewport.width).toBe(360);
+      expect(route.viewport.width).toBe(route.id === 'ROUTE-PLAN22-36-PREMISE-LINEAR-REDUCED' ? 320 : 360);
       expect(route.viewport.height).toBe([
         'ROUTE-REPLAY-COND-1',
         'ROUTE-REPLAY-NEW-CONVERSION-COND-1',
@@ -118,6 +118,28 @@ describe('Plan 14 Reachable Behavior Route Contract & Matrix Schema', () => {
       expect(['standard-motion', 'reduced-motion']).toContain(route.motionMode);
       expect(route.witness).toBe('browser');
     }
+
+    const closureRoutes = matrix.routes.filter((route) => route.id.startsWith('ROUTE-PLAN22-36-'));
+    expect(closureRoutes.map((route) => route.id)).toEqual([
+      'ROUTE-PLAN22-36-MATCHING-VISUAL',
+      'ROUTE-PLAN22-36-PREMISE-LINEAR-REDUCED',
+      'ROUTE-PLAN22-36-RETRY-RETURN',
+    ]);
+    expect(closureRoutes.some((route) => route.configuration === 'phase2-bundle-1')).toBe(true);
+    expect(closureRoutes.some((route) => route.configuration === 'phase2-bundle-4')).toBe(true);
+    const hasBoundaryRecoveryWitness = closureRoutes.some((route) => (
+      route.actions.some((action) => (
+        action.method === 'assert'
+        && action.assertions?.some((assertion) => (
+          assertion.type === 'containsText'
+          && assertion.value.includes('valid common denominator')
+        ))
+      ))
+    ));
+    expect(hasBoundaryRecoveryWitness).toBe(true);
+    expect(closureRoutes.some((route) => route.motionMode === 'reduced-motion')).toBe(true);
+    expect(closureRoutes.some((route) => route.actions.some((action) => action.method === 'assertFocused'
+      && action.target === '.app-entry-title'))).toBe(true);
 
     const prototypeRoutes = matrix.routes.filter((route) => (
       route.configuration === 'plan15-subtraction-prototype'
@@ -172,7 +194,7 @@ describe('Plan 14 Reachable Behavior Route Contract & Matrix Schema', () => {
 
   it('executes each prototype route in both motion modes and brings in its filtered negative control', () => {
     const executions = expandRouteExecutions(matrix.routes);
-    expect(executions).toHaveLength(43);
+    expect(executions).toHaveLength(46);
     expect(executions.filter((execution) => (
       execution.route.configuration === 'plan15-subtraction-prototype'
     ))).toHaveLength(4);
@@ -227,8 +249,9 @@ describe('Plan 14 Reachable Behavior Route Contract & Matrix Schema', () => {
   });
 
   it('preserves the Plan 11 route baseline and witnesses executed motion, interruption, Replay, static arms, and both support profiles', () => {
-    expect(matrix.routes).toHaveLength(41);
-    expect(expandRouteExecutions(matrix.routes)).toHaveLength(43);
+    expect(matrix.routes).toHaveLength(44);
+    expect(matrix.routes.filter((route) => !route.id.startsWith('ROUTE-PLAN22-36-'))).toHaveLength(41);
+    expect(expandRouteExecutions(matrix.routes)).toHaveLength(46);
 
     const route = (id) => matrix.routes.find((candidate) => candidate.id === id);
     const primary = route('ROUTE-COND-1-TRANSFORM');

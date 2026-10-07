@@ -10,7 +10,10 @@ import {
   replayEpisode,
   SceneProjectionError,
 } from '../src/interaction/index.js';
-import { PHASE2_REFLECTION_EPISODE_DEFINITION } from '../src/interaction/episode-definition.js';
+import {
+  LEGACY_PHASE2_EPISODE_DEFINITION,
+  PHASE2_REFLECTION_EPISODE_DEFINITION,
+} from '../src/interaction/episode-definition.js';
 import {
   buildCuratedProblem,
   generateProblem,
@@ -152,7 +155,9 @@ describe('Plan 06 semantic Scene Model', () => {
   });
 
   it('projects the current support configuration and consequence without deciding help reset policy', () => {
-    let state = atDecide();
+    let state = atDecide(canonicalInstance(), {
+      episodeDefinition: LEGACY_PHASE2_EPISODE_DEFINITION,
+    });
     state = applyIntent(state, { type: 'request-help' });
     const scene = projectScene(sceneInput(state));
 
@@ -381,7 +386,9 @@ describe('Plan 06 semantic Scene Model', () => {
   });
 
   it('refuses an ineligible valid path before a stub consumer can receive a scene', () => {
-    let state = atDecide();
+    let state = atDecide(canonicalInstance(), {
+      episodeDefinition: LEGACY_PHASE2_EPISODE_DEFINITION,
+    });
     state = applyIntent(state, {
       type: 'propose-common-denominator',
       proposed: whole(36),
@@ -406,7 +413,9 @@ describe('Plan 06 semantic Scene Model', () => {
   });
 
   it('keeps valid outside-authored coverage distinct from capability ineligibility', () => {
-    const state = atDecide(outsideAuthoredCoverageInstance());
+    const state = atDecide(outsideAuthoredCoverageInstance(), {
+      episodeDefinition: LEGACY_PHASE2_EPISODE_DEFINITION,
+    });
     const selected = applyIntent(state, {
       type: 'propose-common-denominator',
       proposed: whole(18),
@@ -526,7 +535,9 @@ describe('Plan 06 semantic Scene Model', () => {
     expect(Object.isFrozen(admittedScene.meaning.operation)).toBe(true);
     expect(Object.isFrozen(admittedScene.meaning.operation.rawResult)).toBe(true);
 
-    let refusalState = atDecide();
+    let refusalState = atDecide(canonicalInstance(), {
+      episodeDefinition: LEGACY_PHASE2_EPISODE_DEFINITION,
+    });
     refusalState = applyIntent(refusalState, {
       type: 'propose-common-denominator',
       proposed: whole(36),
@@ -567,7 +578,9 @@ describe('Plan 06 semantic Scene Model', () => {
       expect.objectContaining({ code: 'SCENE_INTEGRITY' }),
     );
 
-    let refusalState = atDecide();
+    let refusalState = atDecide(canonicalInstance(), {
+      episodeDefinition: LEGACY_PHASE2_EPISODE_DEFINITION,
+    });
     refusalState = applyIntent(refusalState, {
       type: 'propose-common-denominator',
       proposed: whole(36),

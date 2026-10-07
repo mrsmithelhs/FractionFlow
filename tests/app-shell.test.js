@@ -47,6 +47,7 @@ describe('Plan 09 app shell and upstream display switcher', () => {
     expect(root.querySelectorAll('[aria-live="polite"]').length).toBe(1);
     expect(root.textContent).not.toContain('11/12');
     expect(root.textContent).not.toContain('D-02');
+    expect(app.getState().episodeDefinition.revision).toBe('2');
   });
 
   it('selects reviewer condition on the entry page and applies it to a fresh episode', () => {

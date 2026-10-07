@@ -279,6 +279,10 @@ export function createBeatContainer({
           || recovery.classification.proposed
           || 'This number';
         recoveryEl.textContent = strings.decide.invalidDenominator(denom);
+      } else if (recovery.classification.kind === 'valid-but-unavailable-task-path') {
+        recoveryEl.textContent = strings.decide.validButUnavailable(
+          recovery.classification.targetDenominator,
+        );
       } else if (recovery.classification.kind === 'denominator-changed-without-numerator') {
         recoveryEl.textContent = strings.transform.errorScaleFactor;
       } else if (recovery.classification.kind === 'incorrect-equivalent-numerator') {
@@ -776,6 +780,17 @@ export function createBeatContainer({
       activeBeatEl.appendChild(helpEl);
     }
     activeBeatEl.appendChild(controlsContainer);
+
+    if (recovery?.classification?.kind === 'valid-but-unavailable-task-path' && beat === 'decide') {
+      let ancestor = activeBeatEl;
+      let visible = true;
+      while (ancestor) {
+        if (ancestor.hasAttribute?.('hidden')) visible = false;
+        ancestor = ancestor.parentNode;
+      }
+      const responseInput = controlsContainer.querySelector('input.control-numeric-input');
+      if (visible && responseInput && typeof responseInput.focus === 'function') responseInput.focus();
+    }
   }
 
   function renderVisualSection(scene) {

@@ -5,6 +5,7 @@ import { createBeatContainer } from '../src/render/beat-container.js';
 import { createFractionBarRenderer } from '../src/render/fraction-bar.js';
 import { createButton, createNumericInput, createChoiceGroup } from '../src/render/controls.js';
 import { createEpisode, applyIntent } from '../src/interaction/episode.js';
+import { LEGACY_PHASE2_EPISODE_DEFINITION } from '../src/interaction/episode-definition.js';
 import { validateCuratedFixtures } from '../src/content/index.js';
 import { projectScene } from '../src/interaction/scene.js';
 
@@ -27,7 +28,7 @@ describe('Renderer Foundation & Shared Boundary (Plan 07)', () => {
     const instance = validateCuratedFixtures().find((entry) => (
       entry.fixture.id === 'curated-relatively-prime-addition-non-least'
     )).instance;
-    return createEpisode({ instance });
+    return createEpisode({ instance, episodeDefinition: LEGACY_PHASE2_EPISODE_DEFINITION });
   }
 
   it('condition D: resolveRenderableScene performs data-driven role switch from refusal continuation', () => {

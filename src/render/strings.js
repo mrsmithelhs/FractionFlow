@@ -49,6 +49,9 @@ export const STRINGS = Object.freeze({
     invalidDenominator: (den) => (
       `${den} is not a common denominator. Try another number.`
     ),
+    validButUnavailable: (den) => (
+      `${den} is a valid common denominator, but this practice cannot use it. Try another number.`
+    ),
     validNonLeast: (den) => (
       `Common denominator: ${den} — both fractions can use it.`
     ),

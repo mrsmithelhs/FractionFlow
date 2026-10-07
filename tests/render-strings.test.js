@@ -140,6 +140,13 @@ describe('Learner Strings Catalog (src/render/strings.js)', () => {
       .toBe('Common denominator: 12');
   });
 
+  it('acknowledges valid but unavailable units without calling the mathematics wrong', () => {
+    expect(STRINGS.decide.validButUnavailable(36)).toBe(
+      '36 is a valid common denominator, but this practice cannot use it. Try another number.',
+    );
+    expect(STRINGS.decide.validButUnavailable(48)).toContain('48 is a valid common denominator');
+  });
+
   it('Finding 3: notice.feedbackSame is parameterized and does not hardcode canonical thirds or fourths', () => {
     const fn = STRINGS.notice.feedbackSame;
     expect(typeof fn).toBe('function');

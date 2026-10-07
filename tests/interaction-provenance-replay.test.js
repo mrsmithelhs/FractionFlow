@@ -129,6 +129,31 @@ describe('Plan 05 provenance and replay', () => {
     }
   });
 
+  it('preserves the full pre-repair revision-1 12/24/36 replay states', () => {
+    const oracle = JSON.parse(readFileSync(
+      new URL('./fixtures/plan-22-legacy-replay-oracle.json', import.meta.url),
+      'utf8',
+    ));
+    expect(oracle).toMatchObject({
+      sourceCommit: 'df7a2ec',
+      capturedBeforePlan22SourceChanges: true,
+      cases: expect.arrayContaining([
+        expect.objectContaining({ name: 'matching-12' }),
+        expect.objectContaining({ name: 'matching-24' }),
+        expect.objectContaining({ name: 'matching-36' }),
+        expect.objectContaining({ name: 'premise-12' }),
+        expect.objectContaining({ name: 'premise-24' }),
+        expect.objectContaining({ name: 'premise-36' }),
+      ]),
+    });
+
+    for (const fixture of oracle.cases) {
+      expect(fixture.envelope.episodeDefinition).toMatchObject({ revision: '1' });
+      const replayed = replayEpisode(JSON.parse(JSON.stringify(fixture.envelope)));
+      expect(replayed, fixture.name).toEqual(fixture.replayedState);
+    }
+  });
+
   it('records supported help separately from an uncued response opportunity', () => {
     let state = createEpisode({ instance: curatedInstance() });
     state = applyIntent(state, { type: 'acknowledge-encounter' });

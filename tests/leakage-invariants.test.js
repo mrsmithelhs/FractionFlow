@@ -1,7 +1,10 @@
 import { describe, it, expect, beforeEach, afterEach } from 'vitest';
 import { setupMockDOM, teardownMockDOM } from './fixtures/mock-dom.js';
 import { createEpisode, applyIntent } from '../src/interaction/episode.js';
-import { PHASE2_REFLECTION_EPISODE_DEFINITION } from '../src/interaction/episode-definition.js';
+import {
+  LEGACY_PHASE2_EPISODE_DEFINITION,
+  PHASE2_REFLECTION_EPISODE_DEFINITION,
+} from '../src/interaction/episode-definition.js';
 import { validateCuratedFixtures } from '../src/content/index.js';
 import { resolveRenderableScene } from '../src/render/contract.js';
 import { createBeatContainer } from '../src/render/beat-container.js';
@@ -553,7 +556,7 @@ describe('Scaffold-Leakage Invariants Suite & Failing-First Verifications (Plan 
 
   // --- Invariant 9: Capability Fallback ---
   it('Invariant 9 (Capability Fallback): valid path exceeding LCD 30 fails closed to authorized symbolic continuation, fail-first verified', () => {
-    let episode = canonicalEpisode();
+    let episode = canonicalEpisode(LEGACY_PHASE2_EPISODE_DEFINITION);
     episode = applyIntent(episode, { type: 'acknowledge-encounter' });
     episode = applyIntent(episode, { type: 'submit-notice', matchesUnits: false });
 

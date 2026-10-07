@@ -17,11 +17,13 @@ import {
 } from './classification.js';
 import {
   EPISODE_BEATS,
+  EPISODE_DEFINITION_REVISION,
   PHASE2_ACTIVE_CONDITION,
   PHASE2_EPISODE_DEFINITION,
   getEpisodeDefinition,
   validateActiveCondition,
 } from './episode-definition.js';
+import { evaluateTaskPathClosure } from './path-closure.js';
 import { createResponseProvenance } from './provenance.js';
 import { computeBeatSchedule, currentScheduleEntry } from './beat-schedule.js';
 import {
@@ -349,6 +351,25 @@ function handleDecide(state, intent) {
   if (intent.type !== 'propose-common-denominator') return null;
   const classification = classifyCommonDenominatorResponse(state.content, intent.proposed);
   if (classification.kind === 'invalid-common-denominator') return recovery(state, intent, classification);
+
+  if (state.episodeDefinition.revision === EPISODE_DEFINITION_REVISION) {
+    const taskPathClosure = evaluateTaskPathClosure({
+      instance: state.content,
+      targetDenominator: classification.targetDenominator,
+      episodeDefinition: state.episodeDefinition,
+      activeCondition: state.activeCondition,
+    });
+    if (!taskPathClosure.available) {
+      return recovery(state, intent, {
+        ...classification,
+        kind: 'valid-but-unavailable-task-path',
+        pathClassification: classification,
+        taskPathClosure,
+        continuation: 'local-recovery',
+      });
+    }
+  }
+
   const established = {
     ...classification,
     proposed: intent.proposed,
