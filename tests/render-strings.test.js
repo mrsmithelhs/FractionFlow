@@ -109,6 +109,11 @@ describe('Learner Strings Catalog (src/render/strings.js)', () => {
       .toBe('How many parts out of 12 make the same amount as 1/4?');
   });
 
+  it('keeps incorrect-equivalent-numerator recovery local and non-prescriptive', () => {
+    expect(STRINGS.transform.errorNumerator)
+      .toBe('Not the same amount yet. Try a different number of parts.');
+  });
+
   it('condition A: validLeast is parameterized and does not hardcode canonical 12', () => {
     const fn = STRINGS.decide.validLeast;
     expect(typeof fn).toBe('function');

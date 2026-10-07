@@ -454,7 +454,7 @@
         "capture": {"target":".app-visual-view .recovery-feedback","type":"textContent"},
         "assertions": [
           {"type":"hasSelector","target":".app-visual-view .recovery-feedback"},
-          {"type":"containsText","target":".app-visual-view .recovery-feedback","value":"How many parts out of 12 make the same amount as 2/3?"},
+          {"type":"containsText","target":".app-visual-view .recovery-feedback","value":"Not the same amount yet. Try a different number of parts."},
           {"type":"notContainsText","target":".app-visual-view .recovery-feedback","value":"Not quite."}
         ]
       },

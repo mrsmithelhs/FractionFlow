@@ -282,11 +282,7 @@ export function createBeatContainer({
       } else if (recovery.classification.kind === 'denominator-changed-without-numerator') {
         recoveryEl.textContent = strings.transform.errorScaleFactor;
       } else if (recovery.classification.kind === 'incorrect-equivalent-numerator') {
-        const sourceForm = scene.meaning.quantities[recovery.classification.side]?.sourceForm;
-        recoveryEl.textContent = strings.transform.errorNumerator(
-          sourceForm,
-          recovery.classification.targetDenominator,
-        );
+        recoveryEl.textContent = strings.transform.errorNumerator;
       } else if (recovery.classification.kind === 'incorrect-numerator-arithmetic') {
         recoveryEl.textContent = strings.operate.errorArithmetic;
       } else if (recovery.classification.kind === 'incorrect-notice') {

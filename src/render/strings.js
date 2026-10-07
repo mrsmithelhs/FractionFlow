@@ -66,7 +66,7 @@ export const STRINGS = Object.freeze({
     ),
     // Minor note: Natural phrasing for grade 2–3 and clean screen-reader voicing.
     equivalentNumeratorPrompt: equivalentPartsPrompt,
-    errorNumerator: equivalentPartsPrompt,
+    errorNumerator: 'Not the same amount yet. Try a different number of parts.',
     errorScaleFactor: 'Multiply the top and bottom by the same number.',
   }),
 
