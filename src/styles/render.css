@@ -561,6 +561,28 @@
   line-height: 1.4;
 }
 
+.active-denominator-help-cue {
+  margin: 0;
+  padding: 0.625rem 0.875rem;
+  border-left: 4px solid var(--ff-color-border-focus);
+  border-radius: 0.25rem;
+  background: #eff6ff;
+  color: var(--ff-color-text);
+  line-height: 1.4;
+}
+
+.selected-unit-help {
+  margin-top: 0.5rem;
+}
+
+.selected-unit-help > summary {
+  cursor: pointer;
+}
+
+.selected-unit-help > p {
+  margin: 0.5rem 0 0;
+}
+
 .active-beat-controls {
   display: flex;
   flex-direction: column;

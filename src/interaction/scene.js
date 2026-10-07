@@ -260,6 +260,7 @@ function currentSupportConsequence(state) {
         beat: lastHelp.beat,
       }
       : null,
+    decideHelpRequested: state.helpHistory.some((entry) => entry.type === 'help' && entry.beat === 'decide'),
   };
 }
 
@@ -390,6 +391,7 @@ function pathSummary(state) {
     targetDenominator: path.targetDenominator ?? null,
     rendering,
     authoredCoverage: path.authoredCoverage ?? null,
+    scaleFactors: path.scaleFactors ?? null,
     continuation: path.continuation ?? null,
     reasons: path.reasons ?? [],
   };
@@ -550,13 +552,26 @@ function candidateDenominatorsMeaning(state) {
 function commonUnitMeaning(state) {
   const commonDenominator = state.established?.commonDenominator;
   if (!commonDenominator) return null;
+  const targetDenominator = commonDenominator.targetDenominator;
+  const classification = state.content.classification;
+  const canonicalFactors = classification?.denominator?.canonicalScaleFactors;
+  const alternate = classification?.transformations?.alternates?.find((path) => (
+    Array.isArray(path) && path.length === 2
+      && path.every((step) => step.toForm?.denominator === targetDenominator)
+  ));
+  const exactScaleFactors = targetDenominator === classification?.denominator?.leastCommonDenominator
+    ? canonicalFactors
+    : alternate
+      ? { left: alternate[0].scaleFactor, right: alternate[1].scaleFactor }
+      : null;
   return {
-    targetDenominator: commonDenominator.targetDenominator,
+    targetDenominator,
     validity: commonDenominator.validity,
     kind: commonDenominator.kind,
     mathClassification: commonDenominator.mathClassification ?? null,
     rendering: commonDenominator.rendering,
     authoredCoverage: commonDenominator.authoredCoverage,
+    scaleFactors: exactScaleFactors ?? commonDenominator.scaleFactors ?? null,
   };
 }
 

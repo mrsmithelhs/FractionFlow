@@ -45,6 +45,16 @@ export const STRINGS = Object.freeze({
 
   decide: Object.freeze({
     prompt: 'Choose a common denominator for both fractions.',
+    findingHelpCue: 'Try multiplying 3 by 4 to find one common denominator.',
+    invalidOneSidedDenominator: (proposed, multipleOf, notMultipleOf) => (
+      `${proposed} is a multiple of ${multipleOf}, but not ${notMultipleOf}. Try another number.`
+    ),
+    selectedUnitHelpSummary: (den) => `Why does ${den} work?`,
+    selectedUnitName: (den) => ({ '12': 'twelfths', '24': 'twenty-fourths' })[den]
+      || `${den} equal parts`,
+    selectedUnitHelp: (den, unitName, leftGroups, leftDen, rightGroups, rightDen) => (
+      `${den} is ${leftGroups} groups of ${leftDen} and ${rightGroups} groups of ${rightDen}, so both fractions can use ${unitName}.`
+    ),
     optionAriaLabel: (den) => `Common denominator ${den}`,
     invalidDenominator: (den) => (
       `${den} is not a common denominator. Try another number.`
@@ -233,6 +243,7 @@ export const STRINGS = Object.freeze({
     visualViewLabel: 'Picture and symbols',
     linearViewLabel: 'Step-by-step reading view',
     helpButton: 'Need help?',
+    closeHelpButton: 'Close help',
     replayButton: 'Replay the last change',
     helpLevels: Object.freeze({
       orient: 'Look at the parts in each bar. What do you notice?',

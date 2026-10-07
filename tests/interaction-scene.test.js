@@ -166,6 +166,7 @@ describe('Plan 06 semantic Scene Model', () => {
       nextResponseSupport: null,
       premiseComparison: null,
       lastHelp: { type: 'help', level: 'orient', beat: 'decide' },
+      decideHelpRequested: true,
     });
     expect(scene.derivation.sourceContext.instructional.supportConsequence)
       .toEqual(scene.meaning.supportConsequence);
@@ -232,7 +233,14 @@ describe('Plan 06 semantic Scene Model', () => {
     expect(decidedScene.meaning.unitRelationship.commonUnit).toMatchObject({
       targetDenominator: '12',
       kind: 'valid-common-denominator',
+      scaleFactors: { left: '4', right: '3' },
     });
+    const alternateUnitState = applyIntent(
+      atDecide(),
+      { type: 'propose-common-denominator', proposed: whole(24) },
+    );
+    expect(projectScene(sceneInput(alternateUnitState)).meaning.unitRelationship.commonUnit)
+      .toMatchObject({ targetDenominator: '24', scaleFactors: { left: '8', right: '6' } });
     expect(decidedScene.meaning.transition).toBeNull();
   });
 

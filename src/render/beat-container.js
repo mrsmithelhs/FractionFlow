@@ -129,10 +129,15 @@ export function createBeatContainer({
 
     // Decide completed if common unit is established and past decide
     if (unitRel.commonUnit && schedulePosition > 2 && currentEntryId !== 'decide') {
-      milestones.push(strings.summaryLines.decideDone(
-        unitRel.commonUnit.targetDenominator,
-        unitRel.commonUnit.mathClassification,
-      ));
+      milestones.push({
+        text: strings.summaryLines.decideDone(
+          unitRel.commonUnit.targetDenominator,
+          unitRel.commonUnit.mathClassification,
+        ),
+        selectedUnitHelp: scene.meaning.supportConsequence?.decideHelpRequested
+          ? unitRel.commonUnit
+          : null,
+      });
     }
 
     // Transform completed if conversions established and past transform
@@ -174,7 +179,7 @@ export function createBeatContainer({
     if (milestones.length === 1) {
       const summary = document.createElement('div');
       summary.classList.add('completed-beat-summary');
-      summary.textContent = milestones[0];
+      appendMilestoneSummary(summary, milestones[0], quantities);
       completedBeatsEl.appendChild(summary);
       return;
     }
@@ -197,7 +202,7 @@ export function createBeatContainer({
     for (let i = 0; i < olderCount; i += 1) {
       const summary = document.createElement('div');
       summary.classList.add('completed-beat-summary');
-      summary.textContent = milestones[i];
+      appendMilestoneSummary(summary, milestones[i], quantities);
       details.appendChild(summary);
     }
     completedBeatsEl.appendChild(details);
@@ -205,8 +210,37 @@ export function createBeatContainer({
     // Most recent milestone is always visible inline directly above active beat
     const latestSummary = document.createElement('div');
     latestSummary.classList.add('completed-beat-summary', 'latest-milestone');
-    latestSummary.textContent = milestones[milestones.length - 1];
+    appendMilestoneSummary(latestSummary, milestones[milestones.length - 1], quantities);
     completedBeatsEl.appendChild(latestSummary);
+  }
+
+  function appendMilestoneSummary(containerEl, milestone, quantities) {
+    if (typeof milestone === 'string') {
+      containerEl.textContent = milestone;
+      return;
+    }
+    const milestoneText = document.createElement('span');
+    milestoneText.textContent = milestone.text;
+    containerEl.appendChild(milestoneText);
+    const unit = milestone.selectedUnitHelp;
+    if (!unit?.scaleFactors) return;
+    const details = document.createElement('details');
+    details.classList.add('selected-unit-help');
+    const summary = document.createElement('summary');
+    summary.textContent = strings.decide.selectedUnitHelpSummary(unit.targetDenominator);
+    details.appendChild(summary);
+    const explanation = document.createElement('p');
+    const unitName = strings.decide.selectedUnitName(unit.targetDenominator);
+    explanation.textContent = strings.decide.selectedUnitHelp(
+      unit.targetDenominator,
+      unitName,
+      unit.scaleFactors.left,
+      quantities.left.unit.denominator,
+      unit.scaleFactors.right,
+      quantities.right.unit.denominator,
+    );
+    details.appendChild(explanation);
+    containerEl.appendChild(details);
   }
 
   function renderActiveBeat(scene) {
@@ -226,8 +260,8 @@ export function createBeatContainer({
       resolved: scene.meaning.status.episode === 'resolved',
       recoveryKind: recovery?.classification?.kind,
       recoveryTarget: recovery?.classification?.targetDenominator || recovery?.classification?.proposed,
-      helpLevel: scene.meaning.supportConsequence?.lastHelp?.level,
-      helpBeat: scene.meaning.supportConsequence?.lastHelp?.beat,
+      helpLevel: beat === 'decide' ? null : scene.meaning.supportConsequence?.lastHelp?.level,
+      helpBeat: beat === 'decide' ? null : scene.meaning.supportConsequence?.lastHelp?.beat,
       support: scene.meaning.support,
       premiseComparison: scene.meaning.supportConsequence?.premiseComparison,
       candidateDenominators: scene.meaning.unitRelationship?.candidateDenominators,
@@ -269,6 +303,7 @@ export function createBeatContainer({
     }
 
     // Local recovery feedback (Quality doc §16, §63)
+    let decideRecoveryEl = null;
     if (recovery && recovery.beat === beat) {
       const recoveryEl = document.createElement('div');
       recoveryEl.classList.add('active-beat-feedback', 'recovery-feedback');
@@ -278,7 +313,20 @@ export function createBeatContainer({
         const denom = recovery.classification.targetDenominator
           || recovery.classification.proposed
           || 'This number';
-        recoveryEl.textContent = strings.decide.invalidDenominator(denom);
+        const reasons = recovery.classification.reasons || [];
+        const failedSide = reasons.includes('not-divisible-by-left-denominator')
+          ? 'left'
+          : reasons.includes('not-divisible-by-right-denominator') ? 'right' : null;
+        if (failedSide && reasons.length === 1) {
+          const multipleSide = failedSide === 'left' ? 'right' : 'left';
+          recoveryEl.textContent = strings.decide.invalidOneSidedDenominator(
+            denom,
+            scene.meaning.unitRelationship.sourceDenominators[multipleSide],
+            scene.meaning.unitRelationship.sourceDenominators[failedSide],
+          );
+        } else {
+          recoveryEl.textContent = strings.decide.invalidDenominator(denom);
+        }
       } else if (recovery.classification.kind === 'valid-but-unavailable-task-path') {
         recoveryEl.textContent = strings.decide.validButUnavailable(
           recovery.classification.targetDenominator,
@@ -312,7 +360,8 @@ export function createBeatContainer({
       } else {
         recoveryEl.textContent = strings.status.stepIncorrect;
       }
-      activeBeatEl.appendChild(recoveryEl);
+      if (beat === 'decide') decideRecoveryEl = recoveryEl;
+      else activeBeatEl.appendChild(recoveryEl);
     }
 
     switch (beat) {
@@ -768,7 +817,7 @@ export function createBeatContainer({
     }
 
     const lastHelp = scene.meaning.supportConsequence?.lastHelp;
-    const helpMessage = lastHelp && lastHelp.beat === beat
+    const helpMessage = lastHelp && lastHelp.beat === beat && beat !== 'decide'
       ? strings.app?.helpLevels?.[lastHelp.level]
       : null;
     promptHeader.appendChild(promptText);
@@ -780,6 +829,7 @@ export function createBeatContainer({
       activeBeatEl.appendChild(helpEl);
     }
     activeBeatEl.appendChild(controlsContainer);
+    if (decideRecoveryEl) activeBeatEl.appendChild(decideRecoveryEl);
 
     if (recovery?.classification?.kind === 'valid-but-unavailable-task-path' && beat === 'decide') {
       let ancestor = activeBeatEl;

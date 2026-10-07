@@ -1,0 +1,854 @@
+{
+  "captureDate": "2026-10-07",
+  "browser": {
+    "engine": "Chromium via Playwright",
+    "channel": "msedge"
+  },
+  "limitations": [
+    "Touch checks use Playwright tap events in a touch-enabled browser context; no physical device or native on-screen keyboard was used.",
+    "Keyboard checks use a focused mounted help control with Enter; no assistive technology was tested.",
+    "These are static rendered-state checks and do not measure learner understanding or independent discovery."
+  ],
+  "observations": [
+    {
+      "profile": "high",
+      "view": "visual",
+      "stage": "help-open",
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "question": {
+        "left": 63,
+        "top": 420.72,
+        "right": 297,
+        "bottom": 496.28,
+        "width": 234,
+        "height": 75.56
+      },
+      "response": {
+        "left": 63,
+        "top": 527.22,
+        "right": 297,
+        "bottom": 571.22,
+        "width": 234,
+        "height": 44
+      },
+      "help": {
+        "left": 63,
+        "top": 587.22,
+        "right": 297,
+        "bottom": 631.22,
+        "width": 234,
+        "height": 44
+      },
+      "cue": {
+        "left": 63,
+        "top": 647.22,
+        "right": 297,
+        "bottom": 734.39,
+        "width": 234,
+        "height": 87.17
+      },
+      "helpText": "Close help",
+      "cueText": "Try multiplying 3 by 4 to find one common denominator.",
+      "document": {
+        "width": 360,
+        "height": 1025,
+        "horizontalOverflow": false
+      },
+      "interaction": "keyboard",
+      "screenshot": "plan24-high-visual-help-open-360x740.png"
+    },
+    {
+      "profile": "high",
+      "view": "visual",
+      "stage": "selected-unit",
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "question": {
+        "left": 63,
+        "top": 420.72,
+        "right": 297,
+        "bottom": 471.09,
+        "width": 234,
+        "height": 50.38
+      },
+      "response": {
+        "left": 63,
+        "top": 550.03,
+        "right": 159,
+        "bottom": 597.03,
+        "width": 96,
+        "height": 47
+      },
+      "help": null,
+      "cue": null,
+      "document": {
+        "width": 360,
+        "height": 988,
+        "horizontalOverflow": false
+      },
+      "interaction": "keyboard",
+      "screenshot": "plan24-high-visual-selected-unit-360x740.png"
+    },
+    {
+      "profile": "high",
+      "view": "linear",
+      "stage": "help-open",
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "question": {
+        "left": 63,
+        "top": 410.56,
+        "right": 297,
+        "bottom": 486.13,
+        "width": 234,
+        "height": 75.56
+      },
+      "response": {
+        "left": 63,
+        "top": 520.13,
+        "right": 297,
+        "bottom": 564.13,
+        "width": 234,
+        "height": 44
+      },
+      "help": {
+        "left": 63,
+        "top": 580.13,
+        "right": 297,
+        "bottom": 624.13,
+        "width": 234,
+        "height": 44
+      },
+      "cue": {
+        "left": 63,
+        "top": 640.13,
+        "right": 297,
+        "bottom": 727.3,
+        "width": 234,
+        "height": 87.17
+      },
+      "helpText": "Close help",
+      "cueText": "Try multiplying 3 by 4 to find one common denominator.",
+      "document": {
+        "width": 360,
+        "height": 1017,
+        "horizontalOverflow": false
+      },
+      "interaction": "click",
+      "screenshot": "plan24-high-linear-help-open-360x740.png"
+    },
+    {
+      "profile": "high",
+      "view": "linear",
+      "stage": "selected-unit",
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "question": {
+        "left": 63,
+        "top": 410.56,
+        "right": 297,
+        "bottom": 460.94,
+        "width": 234,
+        "height": 50.38
+      },
+      "response": {
+        "left": 63,
+        "top": 542.94,
+        "right": 159,
+        "bottom": 589.94,
+        "width": 96,
+        "height": 47
+      },
+      "help": null,
+      "cue": null,
+      "document": {
+        "width": 360,
+        "height": 981,
+        "horizontalOverflow": false
+      },
+      "interaction": "click",
+      "screenshot": "plan24-high-linear-selected-unit-360x740.png"
+    },
+    {
+      "profile": "medium",
+      "view": "visual",
+      "stage": "help-open",
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "question": {
+        "left": 63,
+        "top": 420.72,
+        "right": 297,
+        "bottom": 496.28,
+        "width": 234,
+        "height": 75.56
+      },
+      "response": {
+        "left": 63,
+        "top": 575.22,
+        "right": 159,
+        "bottom": 622.22,
+        "width": 96,
+        "height": 47
+      },
+      "help": {
+        "left": 63,
+        "top": 638.22,
+        "right": 297,
+        "bottom": 682.22,
+        "width": 234,
+        "height": 44
+      },
+      "cue": {
+        "left": 63,
+        "top": 698.22,
+        "right": 297,
+        "bottom": 785.39,
+        "width": 234,
+        "height": 87.17
+      },
+      "helpText": "Close help",
+      "cueText": "Try multiplying 3 by 4 to find one common denominator.",
+      "document": {
+        "width": 360,
+        "height": 1076,
+        "horizontalOverflow": false
+      },
+      "interaction": "click",
+      "screenshot": "plan24-medium-visual-help-open-360x740.png"
+    },
+    {
+      "profile": "medium",
+      "view": "visual",
+      "stage": "one-sided-recovery",
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "question": {
+        "left": 63,
+        "top": 420.72,
+        "right": 297,
+        "bottom": 496.28,
+        "width": 234,
+        "height": 75.56
+      },
+      "response": {
+        "left": 63,
+        "top": 575.22,
+        "right": 159,
+        "bottom": 622.22,
+        "width": 96,
+        "height": 47
+      },
+      "help": {
+        "left": 63,
+        "top": 638.22,
+        "right": 297,
+        "bottom": 682.22,
+        "width": 234,
+        "height": 44
+      },
+      "cue": null,
+      "helpText": "Need help?",
+      "document": {
+        "width": 360,
+        "height": 1052,
+        "horizontalOverflow": false
+      },
+      "interaction": "click",
+      "screenshot": "plan24-medium-visual-one-sided-recovery-360x740.png"
+    },
+    {
+      "profile": "medium",
+      "view": "visual",
+      "stage": "selected-unit",
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "question": {
+        "left": 63,
+        "top": 420.72,
+        "right": 297,
+        "bottom": 471.09,
+        "width": 234,
+        "height": 50.38
+      },
+      "response": {
+        "left": 63,
+        "top": 550.03,
+        "right": 159,
+        "bottom": 597.03,
+        "width": 96,
+        "height": 47
+      },
+      "help": null,
+      "cue": null,
+      "document": {
+        "width": 360,
+        "height": 988,
+        "horizontalOverflow": false
+      },
+      "interaction": "click",
+      "screenshot": "plan24-medium-visual-selected-unit-360x740.png"
+    },
+    {
+      "profile": "medium",
+      "view": "linear",
+      "stage": "help-open",
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "question": {
+        "left": 63,
+        "top": 410.56,
+        "right": 297,
+        "bottom": 486.13,
+        "width": 234,
+        "height": 75.56
+      },
+      "response": {
+        "left": 63,
+        "top": 568.13,
+        "right": 159,
+        "bottom": 615.13,
+        "width": 96,
+        "height": 47
+      },
+      "help": {
+        "left": 63,
+        "top": 631.13,
+        "right": 297,
+        "bottom": 675.13,
+        "width": 234,
+        "height": 44
+      },
+      "cue": {
+        "left": 63,
+        "top": 691.13,
+        "right": 297,
+        "bottom": 778.3,
+        "width": 234,
+        "height": 87.17
+      },
+      "helpText": "Close help",
+      "cueText": "Try multiplying 3 by 4 to find one common denominator.",
+      "document": {
+        "width": 360,
+        "height": 1068,
+        "horizontalOverflow": false
+      },
+      "interaction": "touch",
+      "screenshot": "plan24-medium-linear-help-open-360x740.png"
+    },
+    {
+      "profile": "medium",
+      "view": "linear",
+      "stage": "one-sided-recovery",
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "question": {
+        "left": 63,
+        "top": 410.56,
+        "right": 297,
+        "bottom": 486.13,
+        "width": 234,
+        "height": 75.56
+      },
+      "response": {
+        "left": 63,
+        "top": 568.13,
+        "right": 159,
+        "bottom": 615.13,
+        "width": 96,
+        "height": 47
+      },
+      "help": {
+        "left": 63,
+        "top": 631.13,
+        "right": 297,
+        "bottom": 675.13,
+        "width": 234,
+        "height": 44
+      },
+      "cue": null,
+      "helpText": "Need help?",
+      "document": {
+        "width": 360,
+        "height": 1045,
+        "horizontalOverflow": false
+      },
+      "interaction": "touch",
+      "screenshot": "plan24-medium-linear-one-sided-recovery-360x740.png"
+    },
+    {
+      "profile": "medium",
+      "view": "linear",
+      "stage": "selected-unit",
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "question": {
+        "left": 63,
+        "top": 410.56,
+        "right": 297,
+        "bottom": 460.94,
+        "width": 234,
+        "height": 50.38
+      },
+      "response": {
+        "left": 63,
+        "top": 542.94,
+        "right": 159,
+        "bottom": 589.94,
+        "width": 96,
+        "height": 47
+      },
+      "help": null,
+      "cue": null,
+      "document": {
+        "width": 360,
+        "height": 981,
+        "horizontalOverflow": false
+      },
+      "interaction": "touch",
+      "screenshot": "plan24-medium-linear-selected-unit-360x740.png"
+    },
+    {
+      "profile": "high",
+      "view": "visual",
+      "stage": "help-open",
+      "viewport": {
+        "width": 360,
+        "height": 752
+      },
+      "question": {
+        "left": 63,
+        "top": 420.72,
+        "right": 297,
+        "bottom": 496.28,
+        "width": 234,
+        "height": 75.56
+      },
+      "response": {
+        "left": 63,
+        "top": 527.22,
+        "right": 297,
+        "bottom": 571.22,
+        "width": 234,
+        "height": 44
+      },
+      "help": {
+        "left": 63,
+        "top": 587.22,
+        "right": 297,
+        "bottom": 631.22,
+        "width": 234,
+        "height": 44
+      },
+      "cue": {
+        "left": 63,
+        "top": 647.22,
+        "right": 297,
+        "bottom": 734.39,
+        "width": 234,
+        "height": 87.17
+      },
+      "helpText": "Close help",
+      "cueText": "Try multiplying 3 by 4 to find one common denominator.",
+      "document": {
+        "width": 360,
+        "height": 1025,
+        "horizontalOverflow": false
+      },
+      "interaction": "keyboard",
+      "screenshot": "plan24-high-visual-help-open-360x752.png"
+    },
+    {
+      "profile": "high",
+      "view": "visual",
+      "stage": "selected-unit",
+      "viewport": {
+        "width": 360,
+        "height": 752
+      },
+      "question": {
+        "left": 63,
+        "top": 420.72,
+        "right": 297,
+        "bottom": 471.09,
+        "width": 234,
+        "height": 50.38
+      },
+      "response": {
+        "left": 63,
+        "top": 550.03,
+        "right": 159,
+        "bottom": 597.03,
+        "width": 96,
+        "height": 47
+      },
+      "help": null,
+      "cue": null,
+      "document": {
+        "width": 360,
+        "height": 988,
+        "horizontalOverflow": false
+      },
+      "interaction": "keyboard",
+      "screenshot": "plan24-high-visual-selected-unit-360x752.png"
+    },
+    {
+      "profile": "high",
+      "view": "linear",
+      "stage": "help-open",
+      "viewport": {
+        "width": 360,
+        "height": 752
+      },
+      "question": {
+        "left": 63,
+        "top": 410.56,
+        "right": 297,
+        "bottom": 486.13,
+        "width": 234,
+        "height": 75.56
+      },
+      "response": {
+        "left": 63,
+        "top": 520.13,
+        "right": 297,
+        "bottom": 564.13,
+        "width": 234,
+        "height": 44
+      },
+      "help": {
+        "left": 63,
+        "top": 580.13,
+        "right": 297,
+        "bottom": 624.13,
+        "width": 234,
+        "height": 44
+      },
+      "cue": {
+        "left": 63,
+        "top": 640.13,
+        "right": 297,
+        "bottom": 727.3,
+        "width": 234,
+        "height": 87.17
+      },
+      "helpText": "Close help",
+      "cueText": "Try multiplying 3 by 4 to find one common denominator.",
+      "document": {
+        "width": 360,
+        "height": 1017,
+        "horizontalOverflow": false
+      },
+      "interaction": "click",
+      "screenshot": "plan24-high-linear-help-open-360x752.png"
+    },
+    {
+      "profile": "high",
+      "view": "linear",
+      "stage": "selected-unit",
+      "viewport": {
+        "width": 360,
+        "height": 752
+      },
+      "question": {
+        "left": 63,
+        "top": 410.56,
+        "right": 297,
+        "bottom": 460.94,
+        "width": 234,
+        "height": 50.38
+      },
+      "response": {
+        "left": 63,
+        "top": 542.94,
+        "right": 159,
+        "bottom": 589.94,
+        "width": 96,
+        "height": 47
+      },
+      "help": null,
+      "cue": null,
+      "document": {
+        "width": 360,
+        "height": 981,
+        "horizontalOverflow": false
+      },
+      "interaction": "click",
+      "screenshot": "plan24-high-linear-selected-unit-360x752.png"
+    },
+    {
+      "profile": "medium",
+      "view": "visual",
+      "stage": "help-open",
+      "viewport": {
+        "width": 360,
+        "height": 752
+      },
+      "question": {
+        "left": 63,
+        "top": 420.72,
+        "right": 297,
+        "bottom": 496.28,
+        "width": 234,
+        "height": 75.56
+      },
+      "response": {
+        "left": 63,
+        "top": 575.22,
+        "right": 159,
+        "bottom": 622.22,
+        "width": 96,
+        "height": 47
+      },
+      "help": {
+        "left": 63,
+        "top": 638.22,
+        "right": 297,
+        "bottom": 682.22,
+        "width": 234,
+        "height": 44
+      },
+      "cue": {
+        "left": 63,
+        "top": 698.22,
+        "right": 297,
+        "bottom": 785.39,
+        "width": 234,
+        "height": 87.17
+      },
+      "helpText": "Close help",
+      "cueText": "Try multiplying 3 by 4 to find one common denominator.",
+      "document": {
+        "width": 360,
+        "height": 1076,
+        "horizontalOverflow": false
+      },
+      "interaction": "click",
+      "screenshot": "plan24-medium-visual-help-open-360x752.png"
+    },
+    {
+      "profile": "medium",
+      "view": "visual",
+      "stage": "one-sided-recovery",
+      "viewport": {
+        "width": 360,
+        "height": 752
+      },
+      "question": {
+        "left": 63,
+        "top": 420.72,
+        "right": 297,
+        "bottom": 496.28,
+        "width": 234,
+        "height": 75.56
+      },
+      "response": {
+        "left": 63,
+        "top": 575.22,
+        "right": 159,
+        "bottom": 622.22,
+        "width": 96,
+        "height": 47
+      },
+      "help": {
+        "left": 63,
+        "top": 638.22,
+        "right": 297,
+        "bottom": 682.22,
+        "width": 234,
+        "height": 44
+      },
+      "cue": null,
+      "helpText": "Need help?",
+      "document": {
+        "width": 360,
+        "height": 1052,
+        "horizontalOverflow": false
+      },
+      "interaction": "click",
+      "screenshot": "plan24-medium-visual-one-sided-recovery-360x752.png"
+    },
+    {
+      "profile": "medium",
+      "view": "visual",
+      "stage": "selected-unit",
+      "viewport": {
+        "width": 360,
+        "height": 752
+      },
+      "question": {
+        "left": 63,
+        "top": 420.72,
+        "right": 297,
+        "bottom": 471.09,
+        "width": 234,
+        "height": 50.38
+      },
+      "response": {
+        "left": 63,
+        "top": 550.03,
+        "right": 159,
+        "bottom": 597.03,
+        "width": 96,
+        "height": 47
+      },
+      "help": null,
+      "cue": null,
+      "document": {
+        "width": 360,
+        "height": 988,
+        "horizontalOverflow": false
+      },
+      "interaction": "click",
+      "screenshot": "plan24-medium-visual-selected-unit-360x752.png"
+    },
+    {
+      "profile": "medium",
+      "view": "linear",
+      "stage": "help-open",
+      "viewport": {
+        "width": 360,
+        "height": 752
+      },
+      "question": {
+        "left": 63,
+        "top": 410.56,
+        "right": 297,
+        "bottom": 486.13,
+        "width": 234,
+        "height": 75.56
+      },
+      "response": {
+        "left": 63,
+        "top": 568.13,
+        "right": 159,
+        "bottom": 615.13,
+        "width": 96,
+        "height": 47
+      },
+      "help": {
+        "left": 63,
+        "top": 631.13,
+        "right": 297,
+        "bottom": 675.13,
+        "width": 234,
+        "height": 44
+      },
+      "cue": {
+        "left": 63,
+        "top": 691.13,
+        "right": 297,
+        "bottom": 778.3,
+        "width": 234,
+        "height": 87.17
+      },
+      "helpText": "Close help",
+      "cueText": "Try multiplying 3 by 4 to find one common denominator.",
+      "document": {
+        "width": 360,
+        "height": 1068,
+        "horizontalOverflow": false
+      },
+      "interaction": "touch",
+      "screenshot": "plan24-medium-linear-help-open-360x752.png"
+    },
+    {
+      "profile": "medium",
+      "view": "linear",
+      "stage": "one-sided-recovery",
+      "viewport": {
+        "width": 360,
+        "height": 752
+      },
+      "question": {
+        "left": 63,
+        "top": 410.56,
+        "right": 297,
+        "bottom": 486.13,
+        "width": 234,
+        "height": 75.56
+      },
+      "response": {
+        "left": 63,
+        "top": 568.13,
+        "right": 159,
+        "bottom": 615.13,
+        "width": 96,
+        "height": 47
+      },
+      "help": {
+        "left": 63,
+        "top": 631.13,
+        "right": 297,
+        "bottom": 675.13,
+        "width": 234,
+        "height": 44
+      },
+      "cue": null,
+      "helpText": "Need help?",
+      "document": {
+        "width": 360,
+        "height": 1045,
+        "horizontalOverflow": false
+      },
+      "interaction": "touch",
+      "screenshot": "plan24-medium-linear-one-sided-recovery-360x752.png"
+    },
+    {
+      "profile": "medium",
+      "view": "linear",
+      "stage": "selected-unit",
+      "viewport": {
+        "width": 360,
+        "height": 752
+      },
+      "question": {
+        "left": 63,
+        "top": 410.56,
+        "right": 297,
+        "bottom": 460.94,
+        "width": 234,
+        "height": 50.38
+      },
+      "response": {
+        "left": 63,
+        "top": 542.94,
+        "right": 159,
+        "bottom": 589.94,
+        "width": 96,
+        "height": 47
+      },
+      "help": null,
+      "cue": null,
+      "document": {
+        "width": 360,
+        "height": 981,
+        "horizontalOverflow": false
+      },
+      "interaction": "touch",
+      "screenshot": "plan24-medium-linear-selected-unit-360x752.png"
+    }
+  ]
+}

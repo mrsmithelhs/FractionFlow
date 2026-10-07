@@ -103,6 +103,9 @@ export function createFractionFlowApp({
   let state = null;
   let visualView = true;
   let activityNotice = '';
+  let decideHelpOpen = false;
+  let commonDenominatorDraft = '';
+  let preserveDecideInputFocusOnViewChange = false;
   let mounted = false;
   let visualRenderer = null;
   let linearRenderer = null;
@@ -119,6 +122,7 @@ export function createFractionFlowApp({
   let helpButton;
   let replayButton;
   let supportNotice;
+  let helpCue;
   let isReplaying = false;
   let entryPage;
   let entryTitle;
@@ -304,10 +308,21 @@ export function createFractionFlowApp({
       ariaLabel: STRINGS.app.readSteps,
       className: 'app-secondary-button',
       onClick: () => {
+        captureDecideDraft();
+        const preserveInputFocus = preserveDecideInputFocusOnViewChange
+          || Boolean(getVisibleDecideInput()?.isConnected
+            && getVisibleDecideInput() === document.activeElement);
+        preserveDecideInputFocusOnViewChange = false;
         visualView = !visualView;
         isReplaying = false;
         updateViewVisibility();
+        restoreDecideDraft();
+        updateHelpPlacement();
+        if (preserveInputFocus) getVisibleDecideInput()?.focus();
       },
+    });
+    viewToggle.addEventListener('pointerdown', () => {
+      preserveDecideInputFocusOnViewChange = getVisibleDecideInput() === document.activeElement;
     });
     viewToggle.classList.add('app-view-toggle');
     viewToggle.setAttribute('aria-pressed', 'false');
@@ -329,7 +344,22 @@ export function createFractionFlowApp({
     helpButton = createButton({
       label: STRINGS.app.helpButton,
       className: 'app-secondary-button',
-      onClick: () => dispatchAction({ type: 'request-help' }),
+      onClick: () => {
+        captureDecideDraft();
+        if (state?.beat === 'decide') {
+          if (decideHelpOpen) {
+            decideHelpOpen = false;
+            updateHelpPlacement();
+            helpButton.focus();
+          } else {
+            decideHelpOpen = true;
+            dispatchAction({ type: 'request-help' });
+            helpButton.focus();
+          }
+        } else {
+          dispatchAction({ type: 'request-help' });
+        }
+      },
     });
     replayButton = createButton({
       label: STRINGS.app.replayButton,
@@ -351,6 +381,10 @@ export function createFractionFlowApp({
     supportNotice = makeElement('p', 'app-support-notice sr-only');
     supportNotice.setAttribute('aria-live', 'polite');
     supportPanel.appendChild(supportNotice);
+    helpCue = makeElement('p', 'active-denominator-help-cue');
+    helpCue.setAttribute('id', 'fractionflow-decide-help-cue');
+    helpCue.setAttribute('role', 'status');
+    helpCue.setAttribute('aria-live', 'polite');
     episode.appendChild(supportPanel);
 
     appRoot.appendChild(episode);
@@ -381,6 +415,8 @@ export function createFractionFlowApp({
     state = createInitialState(instance, practiceType, selectedCondition, selectedSupportLevel);
     isReplaying = false;
     activityNotice = '';
+    decideHelpOpen = false;
+    commonDenominatorDraft = '';
     setHidden(entryPage, true);
     setHidden(appRoot.querySelector('.app-episode'), false);
     render();
@@ -398,6 +434,9 @@ export function createFractionFlowApp({
     }
     isReplaying = false;
     activityNotice = '';
+    decideHelpOpen = false;
+    commonDenominatorDraft = '';
+    updateHelpPlacement();
     closeDisplayMenu();
     setHidden(appRoot.querySelector('.app-episode'), true);
     setHidden(entryPage, false);
@@ -457,13 +496,82 @@ export function createFractionFlowApp({
   function updateSupportControls() {
     const resolved = state.status === 'resolved';
     helpButton.disabled = resolved;
+    helpButton.setAttribute('aria-expanded', 'false');
     replayButton.disabled = resolved || state.beat === 'encounter';
     replayButton.setAttribute('aria-pressed', String(isReplaying));
     supportNotice.textContent = activityNotice;
+    helpButton.textContent = state.beat === 'decide' && decideHelpOpen
+      ? STRINGS.app.closeHelpButton
+      : STRINGS.app.helpButton;
+  }
+
+  function getVisibleDecideInput() {
+    const host = visualView ? visualHost : linearHost;
+    return host?.querySelector('input.control-numeric-input') || null;
+  }
+
+  function captureDecideDraft() {
+    if (state?.beat !== 'decide') return;
+    const input = getVisibleDecideInput();
+    if (input) commonDenominatorDraft = input.value;
+  }
+
+  function restoreDecideDraft() {
+    if (state?.beat !== 'decide') return;
+    const input = getVisibleDecideInput();
+    if (input) input.value = commonDenominatorDraft;
+  }
+
+  function updateHelpPlacement() {
+    if (!helpButton || !state) return;
+    if (state.beat !== 'decide') {
+      helpButton.setAttribute('aria-expanded', 'false');
+      helpButton.removeAttribute('aria-controls');
+      if (helpCue.parentNode) helpCue.parentNode.removeChild(helpCue);
+      const supportControls = appRoot.querySelector('.app-support-controls');
+      if (helpButton.parentNode !== supportControls) {
+        if (helpButton.parentNode) helpButton.parentNode.removeChild(helpButton);
+        supportControls.replaceChildren(
+          helpButton,
+          replayButton,
+          appRoot.querySelector('.app-restart-button'),
+        );
+      }
+      return;
+    }
+    const host = visualView ? visualHost : linearHost;
+    const controls = host.querySelector('.active-beat-controls');
+    if (!controls) return;
+    if (helpButton.parentNode !== controls && helpButton.parentNode) {
+      helpButton.parentNode.removeChild(helpButton);
+    }
+    controls.appendChild(helpButton);
+    const recovery = state.lastRecovery?.beat === 'decide'
+      ? state.lastRecovery.classification
+      : null;
+    const cue = recovery ? '' : STRINGS.decide.findingHelpCue;
+    if (decideHelpOpen && cue) {
+      if (helpCue.parentNode !== controls && helpCue.parentNode) helpCue.parentNode.removeChild(helpCue);
+      helpButton.setAttribute('aria-controls', helpCue.getAttribute('id'));
+      helpButton.setAttribute('aria-expanded', 'true');
+      controls.appendChild(helpCue);
+      helpCue.textContent = cue;
+    }
+    else {
+      helpButton.setAttribute('aria-expanded', 'false');
+      helpButton.removeAttribute('aria-controls');
+      helpCue.textContent = '';
+      if (helpCue.parentNode) helpCue.parentNode.removeChild(helpCue);
+    }
   }
 
   function render() {
     if (!mounted || !state) return;
+    captureDecideDraft();
+    if (state.beat !== 'decide') {
+      decideHelpOpen = false;
+      commonDenominatorDraft = '';
+    }
     const mode = presentationModeFor({ override: presentationMode, motionQuery });
     const scene = resolveRenderableScene({
       state,
@@ -498,6 +606,8 @@ export function createFractionFlowApp({
     updateSupportMetadata();
     updateSupportControls();
     updateViewVisibility();
+    restoreDecideDraft();
+    updateHelpPlacement();
   }
 
   function dispatchAction(action) {
@@ -509,11 +619,15 @@ export function createFractionFlowApp({
     }
 
     try {
+      captureDecideDraft();
+      if (action.type === 'propose-common-denominator') commonDenominatorDraft = '';
       state = applyIntent(state, action);
       if (action.type === 'request-help') {
         isReplaying = false;
         const help = state.helpHistory.at(-1);
-        activityNotice = STRINGS.app.helpLevels[help.level] || STRINGS.app.helpLevels.orient;
+        activityNotice = help.beat === 'decide'
+          ? ''
+          : STRINGS.app.helpLevels[help.level] || STRINGS.app.helpLevels.orient;
       } else if (action.type === 'request-replay') {
         const hasTransition = Boolean(state.established?.lastConversion);
         if (hasTransition) {

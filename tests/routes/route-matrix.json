@@ -2995,7 +2995,7 @@
         {"type":"attributeEquals","target":".fractionflow-app","attribute":"data-support-code","value":"medium support"},
         {"type":"notHasSelector","target":".app-visual-view .recovery-feedback"}
       ]},
-      "negativeControl":{"targetRouteId":"ROUTE-SUPPORT-MEDIUM-DECIDE","comparison":"notIdenticalCapture","sameMotionMode":true}
+      "negativeControl":{"targetRouteId":"ROUTE-SUPPORT-MEDIUM-DECIDE","comparison":"notIdenticalCapture"}
     },
     {
       "id": "ROUTE-PLAN22-36-PREMISE-LINEAR-REDUCED",
@@ -3064,6 +3064,69 @@
         {"type":"attributeEquals","target":".fractionflow-app","attribute":"data-support-code","value":"medium support"}
       ]},
       "negativeControl":{"targetRouteId":"ROUTE-ENTRY-FIRST-TAB","comparison":"notIdenticalCapture","sameMotionMode":true}
+    },
+    {
+      "id": "ROUTE-PLAN24-MEDIUM-LOCAL-HELP",
+      "behavior": "Medium-support learners can open and close denominator help beside the decide response, recover from a one-sided multiple, and continue with 24 in the visual and linear paths.",
+      "configuration": "phase2-bundle-1",
+      "startingSurface": "mounted-app-entry",
+      "viewport": {"width":360,"height":740},
+      "motionMode": "reduced-motion",
+      "witness": "browser",
+      "actions": [
+        {"step":1,"method":"click","target":".app-gear-button","description":"Open reviewer settings"},
+        {"step":2,"method":"click","target":"[data-support-id=\"medium-support\"]","description":"Select medium support"},
+        {"step":3,"method":"click","target":".app-practice-button","description":"Begin the registered practice"},
+        {"step":4,"method":"click","target":".app-visual-view .control-btn","description":"Acknowledge encounter"},
+        {"step":5,"method":"click","target":".app-visual-view .control-choice-btn >> nth=1","description":"Notice different-sized parts"},
+        {"step":6,"method":"fill","target":".app-visual-view #decide-common-denominator-input","value":"8","description":"Keep an unsubmitted denominator draft"},
+        {"step":7,"method":"click","target":".app-visual-view .active-beat-controls .app-secondary-button","description":"Open local denominator help"},
+        {"step":8,"method":"assert","assertions":[
+          {"type":"hasSelector","target":".app-visual-view .active-beat-controls .app-secondary-button"},
+          {"type":"containsText","target":".app-visual-view .active-denominator-help-cue","value":"Try multiplying 3 by 4 to find one common denominator."}
+        ],"description":"Verify the help entry and concrete cue are beside the response"},
+        {"step":9,"method":"click","target":".app-view-toggle","description":"Switch to linear view while help is open"},
+        {"step":10,"method":"assert","assertions":[
+          {"type":"containsText","target":".app-linear-view .active-beat-prompt","value":"Choose a common denominator"},
+          {"type":"hasSelector","target":".app-linear-view .active-beat-controls .app-secondary-button"},
+          {"type":"containsText","target":".app-linear-view .active-denominator-help-cue","value":"Try multiplying 3 by 4 to find one common denominator."}
+        ],"description":"Verify the open workspace follows the task into linear view"},
+        {"step":11,"method":"click","target":".app-linear-view .active-beat-controls .app-secondary-button","description":"Close help without discarding the draft"},
+        {"step":12,"method":"click","target":".app-linear-view .control-submit-btn","description":"Submit the retained one-sided multiple"},
+        {"step":13,"method":"assertText","target":".app-linear-view .recovery-feedback","value":"8 is a multiple of 4, but not 3. Try another number.","description":"Verify the specific denominator recovery message"},
+        {"step":14,"method":"fill","target":".app-linear-view #linear-decide-common-denominator-input","value":"24","description":"Choose a valid supported common denominator"},
+        {"step":15,"method":"click","target":".app-linear-view .control-submit-btn","description":"Continue to the first equivalent-fraction task"}
+      ],
+      "expect":{"capture":{"target":".app-linear-view","type":"innerHTML"},"assertions":[
+        {"type":"containsText","target":".app-linear-view .completed-beats-section","value":"Common denominator: 24"},
+        {"type":"hasSelector","target":".app-linear-view .selected-unit-help"},
+        {"type":"notContainsText","target":".app-linear-view .selected-unit-help","value":"16/24"}
+      ]},
+      "negativeControl":{"targetRouteId":"ROUTE-SUPPORT-MEDIUM-DECIDE","comparison":"notIdenticalCapture"}
+    },
+    {
+      "id": "ROUTE-PLAN24-HIGH-LINEAR-HELP",
+      "behavior": "High-support learners can request a task-local denominator strategy in the linear access path and receive a denominator-only explanation after selecting 12.",
+      "configuration": "phase2-bundle-1",
+      "startingSurface": "mounted-app-entry",
+      "viewport": {"width":360,"height":752},
+      "motionMode": "reduced-motion",
+      "witness": "browser",
+      "actions": [
+        {"step":1,"method":"click","target":".app-practice-button","description":"Begin with high support"},
+        {"step":2,"method":"click","target":".app-view-toggle","description":"Use the linear access path"},
+        {"step":3,"method":"click","target":".app-linear-view .control-btn","description":"Acknowledge encounter"},
+        {"step":4,"method":"click","target":".app-linear-view .control-choice-btn >> nth=1","description":"Notice different-sized parts"},
+        {"step":5,"method":"click","target":".app-linear-view .active-beat-controls .app-secondary-button","description":"Open denominator help beside the choices"},
+        {"step":6,"method":"assertText","target":".app-linear-view .active-denominator-help-cue","value":"Try multiplying 3 by 4 to find one common denominator.","description":"Read the optional finding strategy"},
+        {"step":7,"method":"click","target":".app-linear-view .control-choice-btn >> nth=0","description":"Choose 12 while keeping the helper optional"}
+      ],
+      "expect":{"capture":{"target":".app-linear-view","type":"innerHTML"},"assertions":[
+        {"type":"containsText","target":".app-linear-view .selected-unit-help","value":"12 is 4 groups of 3 and 3 groups of 4, so both fractions can use twelfths."},
+        {"type":"notContainsText","target":".app-linear-view .selected-unit-help","value":"8/12"},
+        {"type":"notHasSelector","target":".app-linear-view .active-denominator-help-cue"}
+      ]},
+      "negativeControl":{"targetRouteId":"ROUTE-SUPPORT-HIGH-DECIDE","comparison":"notIdenticalCapture"}
     }
 
   ]

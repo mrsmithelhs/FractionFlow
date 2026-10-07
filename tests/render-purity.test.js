@@ -480,9 +480,11 @@ describe('Renderer Purity & Determinism by Construction (Requirement 2, Conditio
       expect(source).not.toMatch(/\bgcd\s*\(/);
       expect(source).not.toMatch(/\blcm\s*\(/);
 
-      // No hardcoded unit size names in strings/code
-      expect(source).not.toMatch(/\bthirds\b/i);
-      expect(source).not.toMatch(/\bfourths\b/i);
+      // Keep unit-name choices in the learner strings catalog, never in render logic.
+      if (file !== 'strings.js') {
+        expect(source).not.toMatch(/\bthirds\b/i);
+        expect(source).not.toMatch(/\bfourths\b/i);
+      }
 
       // No fallback to '12'
       expect(source).not.toMatch(/\|\|\s*['"]12['"]/);

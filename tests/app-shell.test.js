@@ -89,6 +89,71 @@ describe('Plan 09 app shell and upstream display switcher', () => {
     expect(root.textContent).not.toContain('11/12');
   });
 
+  it('places denominator help beside the response, preserves its draft, and explains the selected unit', () => {
+    root.querySelector('.app-return-button').click();
+    root.querySelector('.app-gear-button').click();
+    root.querySelector('[data-support-id="medium-support"]').click();
+    root.querySelector('.app-practice-button').click();
+    app.dispatch({ type: 'acknowledge-encounter' });
+    app.dispatch({ type: 'submit-notice', matchesUnits: false });
+
+    let input = root.querySelector('.app-visual-view #decide-common-denominator-input');
+    input.value = '8';
+    input.focus();
+    const help = root.querySelector('.app-visual-view .active-beat-controls .app-secondary-button');
+    expect(help.parentNode.classList.contains('active-beat-controls')).toBe(true);
+    expect(help.getAttribute('aria-expanded')).toBe('false');
+    help.click();
+    expect(app.getState().helpHistory.at(-1).beat).toBe('decide');
+    expect(help.parentNode.classList.contains('active-beat-controls')).toBe(true);
+    expect(root.querySelector('.active-denominator-help-cue').textContent)
+      .toBe('Try multiplying 3 by 4 to find one common denominator.');
+    expect(help.getAttribute('aria-expanded')).toBe('true');
+    expect(help.getAttribute('aria-controls')).toBe('fractionflow-decide-help-cue');
+    expect(input.value).toBe('8');
+
+    root.querySelector('.app-view-toggle').click();
+    let linearInput = root.querySelector('.app-linear-view #linear-decide-common-denominator-input');
+    expect(linearInput.value).toBe('8');
+    expect(root.querySelector('.app-linear-view .active-denominator-help-cue')).not.toBeNull();
+    root.querySelector('.app-view-toggle').click();
+    expect(root.querySelector('.app-visual-view .active-denominator-help-cue')).not.toBeNull();
+
+    help.click();
+    expect(root.querySelector('.active-denominator-help-cue')).toBe(null);
+    expect(help.getAttribute('aria-expanded')).toBe('false');
+    expect(help.hasAttribute('aria-controls')).toBe(false);
+    expect(input.value).toBe('8');
+    input.focus();
+    root.querySelector('.app-view-toggle').click();
+    input = root.querySelector('.app-linear-view #linear-decide-common-denominator-input');
+    expect(input.value).toBe('8');
+    expect(input._isFocused).toBe(true);
+    expect(help.parentNode.classList.contains('active-beat-controls')).toBe(true);
+
+    app.dispatch({ type: 'propose-common-denominator', proposed: whole(8) });
+    expect(root.querySelector('.app-linear-view .recovery-feedback').textContent)
+      .toBe('8 is a multiple of 4, but not 3. Try another number.');
+    expect(root.querySelector('.active-denominator-help-cue')).toBe(null);
+
+    app.dispatch({ type: 'propose-common-denominator', proposed: whole(10) });
+    expect(root.querySelector('.app-linear-view .recovery-feedback').textContent)
+      .toBe('10 is not a common denominator. Try another number.');
+    app.dispatch({ type: 'propose-common-denominator', proposed: whole(36) });
+    expect(app.getState().beat).toBe('decide');
+    expect(root.querySelector('.app-linear-view .recovery-feedback').textContent)
+      .toBe('36 is a valid common denominator, but this practice cannot use it. Try another number.');
+
+    app.dispatch({ type: 'propose-common-denominator', proposed: whole(24) });
+    const explanation = root.querySelector('.app-linear-view .selected-unit-help');
+    expect(explanation.querySelector('summary').textContent).toBe('Why does 24 work?');
+    expect(explanation.hasAttribute('open')).toBe(false);
+    expect(explanation.textContent).toBe(
+      'Why does 24 work?24 is 8 groups of 3 and 6 groups of 4, so both fractions can use twenty-fourths.',
+    );
+    expect(explanation.textContent).not.toContain('16/24');
+  });
+
   it('lets the same composed episode reach reflection and completion', () => {
     app.dispatch({ type: 'acknowledge-encounter' });
     app.dispatch({ type: 'submit-notice', matchesUnits: false });
