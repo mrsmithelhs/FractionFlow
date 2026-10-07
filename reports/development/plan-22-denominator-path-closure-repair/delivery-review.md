@@ -61,3 +61,12 @@ keyboard or assistive-technology evidence.
 
 Technical delivery accepted; orchestration sets Plan 22 delivered. Owner rendered
 behavior acceptance remains pending. No source redesign, push or deployment authorized.
+
+## Owner acceptance — 2026-10-07
+
+The owner tested Less support (internal medium support), submitted 36 and 72,
+and accepted both boundary messages as looking fine. This satisfies the owner
+behavior gate alongside technical re-review; orchestration closes Plan 22 with
+resolution. No publication is authorized. The owner identifies school Chromebooks
+as primary consumer devices and asks about larger denominators; that is a separate
+capability/coverage investigation, not a reversal of this repair's task boundary.

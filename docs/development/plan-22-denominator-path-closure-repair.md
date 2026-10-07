@@ -1,7 +1,8 @@
 ---
 id: plan-22
 title: Denominator Path Closure Repair
-status: delivered
+status: complete
+resolution: "Technical delivery and Repair 01 browser sensitivity/rendered evidence accepted. On 2026-10-07 the owner tested valid unavailable denominators 36 and 72 under Less support and accepted their recovery messages. Fresh revision-2 paths fail closed with usable retry; legacy revision-1 replay preserved. Larger Chromebook denominator capability is a separate follow-up; no deployment authorized."
 depends_on: [plan-13, plan-14]
 gate: "Requirement 0: verify the live denominator coverage/capability defect and approve the DECISION-036 task-boundary mechanism before source work. Preserve valid-answer classification and verify identity/replay compatibility. Technical and owner behavior acceptance; release separately authorized."
 summary: >-

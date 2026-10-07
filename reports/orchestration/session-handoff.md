@@ -250,3 +250,16 @@ and acceptance. The implementer was notified to send its Requirement 0 proposal
 and stop before source approval. This communication authority preserves mechanism,
 owner behavior and deployment gates. No source work, push or deployment is authorized
 merely by packet startup. Plan 24 follows the repaired denominator boundary.
+
+### Plan 22 accepted and Chromebook priority — 2026-10-07
+
+Owner tested 36 and 72 under Less support (internal medium) and accepted the
+messages. Technical review plus owner acceptance closes Plan 22. No push or
+deployment is authorized by acceptance. Plan 24 can proceed on this baseline.
+
+School Chromebooks are the owner's primary consumer devices. Current capability
+has fixed denominator 30 and scale-factor 12 ceilings; authored reflection coverage
+is separate. A future investigation must consider CSS bar width/zoom/readability,
+complete task coverage and resize semantics. Higher pixel density alone does not
+authorize greater reach. Do not alter pure admission from the viewport or silently
+reschedule an episode. The follow-up obligations record this separately gated work.
