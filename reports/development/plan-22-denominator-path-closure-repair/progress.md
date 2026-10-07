@@ -36,9 +36,22 @@ A separate Edge browser session with `hasTouch: true` and a 320×740 viewport us
 
 ## Failing-first and legacy replay
 
-The admission-removal seed is in `tests/interaction-episode.test.js`: it routes a 36 proposal through the pinned revision-1 behavior, then runs the approved-boundary assertion at the intended point. The assertion throws because that state is already at `transform` with 36 established, demonstrating that the seed detects the missing admission boundary. The following assertions record the actual legacy state and its valid-but-ineligible classification.
+**Correction from Delivery Review Repair 01:** the earlier `tests/interaction-episode.test.js` assertion routed through revision 1 and was not an admission-guard removal seed for a fresh revision-2 learner launch. It remains only as a legacy compatibility witness; the earlier description of it as the required admission-removal seed was incorrect.
+
+The replacement browser sensitivity verifier is `scripts/dev/plan22-delivery-evidence.cjs`. It requires exactly one source guard to match, changes only that revision-2 condition to `false`, rebuilds the app, and runs the existing matching and premise Plan 22 browser routes against the mutated build. With the guard disabled, both routes fail at their expected recovery-copy assertion: matching waits for `.app-visual-view .recovery-feedback`, and premise waits for `.app-linear-view .recovery-feedback`. Each filtered run reports exactly one failed route; dependent controls pass. The verifier then restores `src/interaction/episode.js` byte-for-byte and checks its SHA-256 (`95bfa0db3f020bea07d6ddc60f2c8b5672f0f832a3d7aa6c863df11c074a60f0` before and after), rebuilds cleanly, and requires both filtered routes to pass. The recorded seed failures and clean passes are in [`guard-seed-and-rendered-measurements.json`](./evidence/guard-seed-and-rendered-measurements.json).
 
 Before Plan 22 source edits, six revision-1 replay envelopes and their complete replayed states were captured from commit `df7a2ec`: matching and premise at 12, 24, and 36. `tests/interaction-provenance-replay.test.js` replays each envelope and compares the full state with `toEqual`; all six exact comparisons pass. A separate reducer test confirms a new explicit revision-1 episode still transitions to 36 as before. This is bounded evidence for these six fixtures, not a claim covering every possible historical envelope.
+
+## Delivery review screenshots and measurements
+
+The following screenshots were captured from a restored clean production build in Microsoft Edge through Playwright touch emulation. Both scenarios use a 320×740 CSS-pixel viewport and medium support. The matching route uses standard motion; the premise route uses reduced motion and the linear view.
+
+| Scenario | At denominator 36 boundary | After recovery with 12 |
+|---|---|---|
+| Matching, visual, standard motion | ![Matching visual path at the 36 boundary](./evidence/matching-visual-standard-320-36-boundary.png) | ![Matching visual path after recovery to 12](./evidence/matching-visual-standard-320-12-recovery.png) |
+| Premise, linear, reduced motion | ![Premise linear path at the 36 boundary](./evidence/premise-linear-reduced-320-36-boundary.png) | ![Premise linear path after recovery to 12](./evidence/premise-linear-reduced-320-12-recovery.png) |
+
+The measurements include viewport and document dimensions, scroll offsets, feedback/input/submit bounds in viewport and document coordinates, viewport intersections, active focus, recovery role/copy, and horizontal-overflow state. Both scenarios had `clientWidth=320`, `scrollWidth=320`, and no horizontal overflow; both documents were vertically scrollable. At the visual matching boundary, the focused input bounds were x=63, y=693.22, width=93.94, height=47; its bottom was 0.22px beyond the initial viewport edge. In the reduced-motion linear premise boundary, after switching views the input bounds were x=63, y=697.13, width=93.94, height=47, and submit bounds were x=164.94, y=698.63, width=92.06, height=44; their bottoms were 4.13px and 2.63px beyond the viewport edge. The full document remained vertically scrollable, and the touch-emulated 12 submission succeeded. These captures do not claim that every control initially fits on screen, and they are not physical-device or assistive-technology results.
 
 ## Validation performed
 
@@ -47,6 +60,7 @@ Before Plan 22 source edits, six revision-1 replay envelopes and their complete 
 - `npm run test:routes` — **46 browser executions passed across 44 route rows**.
 - `node scripts/dev/plan-status.js lint` — **OK; no violations**. Packet remains `in-progress`; no packet status or owner disposition was changed.
 - `git diff --check` and `git diff --cached --check` — no whitespace errors.
+- Delivery Review Repair 01 verifier — both guard-disabled browser witnesses failed at their recovery-feedback assertions; the source was byte-for-byte restored; the clean build and both browser witnesses passed; four screenshots and measurements were captured.
 
 ## Advisor consultation disposition
 
