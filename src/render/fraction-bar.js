@@ -241,24 +241,28 @@ export function createFractionBarRenderer({
           {
             offset: 0,
             transform: 'scaleY(0)',
+            backgroundColor: 'var(--ff-bar-subdivide-line)',
             boxShadow: 'none',
             easing: 'cubic-bezier(0.2, 0.75, 0.25, 1)',
           },
           {
             offset: revealEnd,
             transform: 'scaleY(1)',
+            backgroundColor: 'var(--ff-bar-subdivide-line)',
             boxShadow: 'none',
             easing: 'ease-out',
           },
           {
             offset: highlightFull,
             transform: 'scaleY(1)',
+            backgroundColor: 'var(--ff-bar-boundary-core)',
             boxShadow: '0 0 2px 1px var(--ff-bar-boundary-glow)',
             easing: 'ease-out',
           },
           {
             offset: 1,
             transform: 'scaleY(1)',
+            backgroundColor: 'var(--ff-bar-subdivide-line)',
             boxShadow: 'none',
           },
         ],

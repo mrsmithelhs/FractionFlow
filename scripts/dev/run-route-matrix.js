@@ -65,6 +65,7 @@ const motionWitnessSeeds = Object.freeze({
   'reduced-accidental-motion': { routeId: 'ROUTE-REDUCED-MOTION', failure: 'unexpectedly ran animation within the fraction track' },
   'whole-bar-translation': { routeId: 'ROUTE-REPLAY-NEW-CONVERSION-COND-1', step: 12, failure: 'whole/fill document position changed during subdivision' },
   'glow-suppressed': { routeId: 'ROUTE-REPLAY-NEW-CONVERSION-COND-1', step: 12, failure: 'new subdivision boundary did not show the post-arrival highlight' },
+  'core-suppressed': { routeId: 'ROUTE-REPLAY-NEW-CONVERSION-COND-1', step: 12, failure: 'new subdivision boundary did not show the temporary dark core' },
 });
 const startingSurfaces = Object.freeze({
   'mounted-app-entry': Object.freeze({
@@ -450,6 +451,7 @@ async function observeSubdivision(page, action, routeId) {
           return [element.dataset.boundaryKey, {
             ...relativeRect(element, root),
             boxShadow: getComputedStyle(element).boxShadow,
+            backgroundColor: getComputedStyle(element).backgroundColor,
           }];
         })),
       },
@@ -457,7 +459,8 @@ async function observeSubdivision(page, action, routeId) {
     window.__fractionFlowMotionWitnesses.set(options.id, record);
     if (options.seed === 'no-op-keyframes'
       || options.seed === 'disabled-motion'
-      || options.seed === 'glow-suppressed') {
+      || options.seed === 'glow-suppressed'
+      || options.seed === 'core-suppressed') {
       const originalAnimate = Element.prototype.animate;
       Element.prototype.animate = function animateWithWitnessSeed(keyframes, timing) {
         if (this.matches?.('.fraction-bar-boundary-new')) {
@@ -467,6 +470,12 @@ async function observeSubdivision(page, action, routeId) {
           if (options.seed === 'glow-suppressed') {
             this.style.setProperty('--ff-bar-boundary-glow', 'rgba(2, 132, 199, 0)');
             return originalAnimate.call(this, keyframes, timing);
+          }
+          if (options.seed === 'core-suppressed') {
+            return originalAnimate.call(this, keyframes.map((frame) => ({
+              ...frame,
+              ...(frame.backgroundColor ? { backgroundColor: 'var(--ff-bar-subdivide-line)' } : {}),
+            })), timing);
           }
           return originalAnimate.call(this, [
             { transform: 'scaleY(1)' },
@@ -674,6 +683,11 @@ async function observeSubdivision(page, action, routeId) {
       if (!Number.isFinite(highlightKeyframe?.offset)) {
         throw new Error('subdivision effect has no bounded post-arrival highlight keyframe');
       }
+      const coreKeyframe = previous.animations[0]?.effect?.getKeyframes()
+        .find((frame) => frame.boxShadow !== 'none' && typeof frame.backgroundColor === 'string');
+      if (!Number.isFinite(coreKeyframe?.offset)) {
+        throw new Error('subdivision effect has no bounded temporary boundary-core keyframe');
+      }
       let sample = null;
       const deadline = performance.now() + 1500;
       while (!sample && performance.now() < deadline) {
@@ -688,6 +702,7 @@ async function observeSubdivision(page, action, routeId) {
             connected: element.isConnected && layer.contains(element),
             rect: box,
             boxShadow: paint.boxShadow,
+            backgroundColor: paint.backgroundColor,
             expectedCenter,
             centerDelta: Math.abs((box.left + box.width / 2) - expectedCenter),
             topDelta: Math.abs(box.top - interior.top),
@@ -707,7 +722,18 @@ async function observeSubdivision(page, action, routeId) {
           const alpha = entry.boxShadow.match(/rgba\([^)]*,\s*([0-9.]+)\)/)?.[1];
           return alpha !== undefined && Number(alpha) > 0.2;
         });
+        const allCoresDark = geometry.every((entry) => {
+          const channels = entry.backgroundColor.match(/\d+/g)?.map(Number);
+          return channels?.length === 3
+            && channels[0] <= 32 && channels[1] <= 32 && channels[2] <= 48;
+        });
         if (afterHighlightArrival && fullHeight && allHighlighted) {
+          if (!allCoresDark) {
+            throw new Error(`new subdivision boundary did not show the temporary dark core: ${JSON.stringify({
+              expected: 'dark core channels <= 32, 32, 48',
+              actual: geometry.map((entry) => ({ key: entry.key, backgroundColor: entry.backgroundColor })),
+            })}`);
+          }
           const taskLayout = layout();
           if (!taskLayout) throw new Error('question and active controls disappeared during boundary highlight');
           const centers = geometry.map((entry) => entry.rect.left + entry.rect.width / 2).sort((a, b) => a - b);
@@ -719,6 +745,7 @@ async function observeSubdivision(page, action, routeId) {
           const oldBoundaries = [...previous.boundaries.entries()].map(([key, element]) => ({
             key,
             boxShadow: getComputedStyle(element).boxShadow,
+            backgroundColor: getComputedStyle(element).backgroundColor,
             activeAnimations: element.getAnimations().filter((animation) => animation.playState === 'running').length,
           }));
           sample = {
@@ -727,8 +754,10 @@ async function observeSubdivision(page, action, routeId) {
             relativeWhole: relativeRect(track, root), relativeFill: relativeRect(fill, root),
             interior, boundaryGeometry: geometry, oldBoundaries, taskLayout,
             allNewBoundariesHighlighted: true,
+            allNewBoundariesHaveDarkCore: true,
             oldBoundariesUnhighlighted: oldBoundaries.every((entry) => (
-              entry.boxShadow === 'none' && entry.activeAnimations === 0
+              entry.boxShadow === 'none' && entry.backgroundColor === 'rgb(255, 255, 255)'
+              && entry.activeAnimations === 0
             )),
             minimumCenterGap,
             glowHalfOutset,
@@ -752,6 +781,93 @@ async function observeSubdivision(page, action, routeId) {
       }
       return sample;
     }, { id: evidenceId });
+  }
+
+  const contrastEvidenceDir = process.env.FF_PLAN11_CONTRAST_EVIDENCE_DIR;
+  if (highlight && contrastEvidenceDir) {
+    const track = container.locator('.fraction-bar-track');
+    const denominator = Number(await track.getAttribute('data-denominator'));
+    const numerator = Number(await track.getAttribute('data-numerator'));
+    const isOwnerReviewConversion = (denominator === 12 && numerator === 8)
+      || (denominator === 24 && numerator === 16);
+    if (isOwnerReviewConversion) {
+      fs.mkdirSync(contrastEvidenceDir, { recursive: true });
+      const prefix = `${routeId}-denominator-${denominator}`;
+      const peakPath = path.join(contrastEvidenceDir, `${prefix}-arrival.png`);
+      const fadePath = path.join(contrastEvidenceDir, `${prefix}-mid-fade.png`);
+      await container.screenshot({ path: peakPath });
+      await page.waitForTimeout(380);
+      const inspectFade = () => container.evaluate((root) => {
+        const trackEl = root.querySelector('.fraction-bar-track');
+        const numerator = Number(trackEl.dataset.numerator);
+        const denominatorValue = Number(trackEl.dataset.denominator);
+        const boundaries = [...trackEl.querySelectorAll('.fraction-bar-boundary-new')];
+        const colors = boundaries.map((element) => ({
+          key: element.dataset.boundaryKey,
+          backgroundColor: getComputedStyle(element).backgroundColor,
+          boxShadow: getComputedStyle(element).boxShadow,
+        }));
+        const bothRegions = boundaries.some((element) => {
+          const [index, total] = element.dataset.boundaryKey.split('/').map(Number);
+          const position = index / total;
+          return position < numerator / denominatorValue;
+        }) && boundaries.some((element) => {
+          const [index, total] = element.dataset.boundaryKey.split('/').map(Number);
+          const position = index / total;
+          return position > numerator / denominatorValue;
+        });
+        const midFade = colors.length > 0 && colors.every((entry) => (
+          entry.backgroundColor !== 'rgb(255, 255, 255)'
+          && entry.backgroundColor !== 'rgb(11, 16, 32)'
+          && entry.boxShadow !== 'none'
+        ));
+        return { sampledAt: performance.now(), denominator: denominatorValue, numerator, colors, bothRegions, midFade };
+      });
+      const fadeBeforeScreenshot = await inspectFade();
+      if (!fadeBeforeScreenshot.bothRegions || !fadeBeforeScreenshot.midFade) {
+        throw new Error(`rendered contrast fade evidence missed a filled/unfilled region or intermediate core paint before screenshot: ${JSON.stringify(fadeBeforeScreenshot)}`);
+      }
+      await container.screenshot({ path: fadePath });
+      const fadeAfterScreenshot = await inspectFade();
+      const afterByKey = new Map(fadeAfterScreenshot.colors.map((entry) => [entry.key, entry]));
+      const screenshotPaintDeltas = fadeBeforeScreenshot.colors.map((entry) => {
+        const after = afterByKey.get(entry.key);
+        if (!after) return { key: entry.key, delta: Infinity };
+        const beforeChannels = entry.backgroundColor.match(/\d+/g).map(Number);
+        const afterChannels = after.backgroundColor.match(/\d+/g).map(Number);
+        return {
+          key: entry.key,
+          delta: Math.max(...beforeChannels.map((channel, index) => Math.abs(channel - afterChannels[index]))),
+        };
+      });
+      const screenshotPaintDelta = Math.max(...screenshotPaintDeltas.map((entry) => entry.delta));
+      if (screenshotPaintDeltas.length !== fadeAfterScreenshot.colors.length
+        || !fadeAfterScreenshot.bothRegions || !fadeAfterScreenshot.midFade || screenshotPaintDelta > 24) {
+        throw new Error(`rendered contrast fade screenshot was not bounded by matching intermediate paint samples: ${JSON.stringify({ before: fadeBeforeScreenshot, after: fadeAfterScreenshot, screenshotPaintDelta })}`);
+      }
+      const fade = { ...fadeAfterScreenshot, fadeBeforeScreenshot, screenshotPaintDeltas, screenshotPaintDelta };
+      if (!fade.bothRegions || !fade.midFade) {
+        throw new Error(`rendered contrast fade evidence missed a filled/unfilled region or intermediate core paint: ${JSON.stringify(fade)}`);
+      }
+      const manifestPath = path.join(contrastEvidenceDir, 'contrast-evidence.json');
+      let manifest = [];
+      if (fs.existsSync(manifestPath)) manifest = JSON.parse(fs.readFileSync(manifestPath, 'utf8'));
+      manifest.push({
+        routeId,
+        denominator,
+        numerator: fade.numerator,
+        arrivalScreenshot: path.basename(peakPath),
+        midFadeScreenshot: path.basename(fadePath),
+        arrivalCoreColor: highlight.boundaryGeometry[0]?.backgroundColor,
+        midFadeCoreColors: [...new Set(fade.colors.map((entry) => entry.backgroundColor))],
+        newBoundaryCount: fade.colors.length,
+        bothFilledAndUnfilledRegions: fade.bothRegions,
+        allNewBoundariesInMidFade: fade.midFade,
+        screenshotBracketMaxChannelDelta: screenshotPaintDelta,
+        screenshotBracketLimit: 24,
+      });
+      fs.writeFileSync(manifestPath, `${JSON.stringify(manifest, null, 2)}\n`);
+    }
   }
 
   let interrupted = null;
@@ -817,6 +933,8 @@ async function observeSubdivision(page, action, routeId) {
         fill: rect(fill),
         boundaryPaint: [...track.querySelectorAll('.fraction-bar-boundary')]
           .map((element) => getComputedStyle(element).boxShadow),
+        boundaryCorePaint: [...track.querySelectorAll('.fraction-bar-boundary')]
+          .map((element) => getComputedStyle(element).backgroundColor),
         denominator: track.dataset.denominator,
         numerator: track.dataset.numerator,
       };
@@ -830,7 +948,8 @@ async function observeSubdivision(page, action, routeId) {
       throw new Error(`cancellation was not observed before the effect could naturally settle: ${JSON.stringify(interrupted)}`);
     }
     if (!interrupted.reducedMotionTrack || interrupted.activeAnimations !== 0
-      || interrupted.boundaryPaint.some((shadow) => shadow !== 'none')) {
+      || interrupted.boundaryPaint.some((shadow) => shadow !== 'none')
+      || interrupted.boundaryCorePaint.some((color) => color !== 'rgb(255, 255, 255)')) {
       throw new Error(`switching to reduced motion failed to cancel and settle the effect: ${JSON.stringify(interrupted)}`);
     }
     await page.emulateMedia({ reducedMotion: 'no-preference' });
@@ -947,8 +1066,12 @@ async function observeSubdivision(page, action, routeId) {
       newBoundaryPaint: newBoundaries.map((element) => ({
         key: element.dataset.boundaryKey,
         boxShadow: getComputedStyle(element).boxShadow,
+        backgroundColor: getComputedStyle(element).backgroundColor,
       })),
-      normalPaintRestored: newBoundaries.every((element) => getComputedStyle(element).boxShadow === 'none'),
+      normalPaintRestored: newBoundaries.every((element) => {
+        const paint = getComputedStyle(element);
+        return paint.boxShadow === 'none' && paint.backgroundColor === 'rgb(255, 255, 255)';
+      }),
       activeAnimations: track.getAnimations({ subtree: true })
         .filter((animation) => animation.playState === 'running').length,
       denominator: track.dataset.denominator,
@@ -995,6 +1118,8 @@ async function observeSubdivision(page, action, routeId) {
       key,
       delta: rectDelta(previous.before.boundaryGeometry.get(key), relativeRect(element, root)),
       paintUnchanged: getComputedStyle(element).boxShadow === previous.before.boundaryGeometry.get(key).boxShadow,
+      corePaintUnchanged: getComputedStyle(element).backgroundColor
+        === previous.before.boundaryGeometry.get(key).backgroundColor,
       activeAnimations: element.getAnimations().filter((animation) => animation.playState === 'running').length,
     }));
     const driftWithinTolerance = (drift) => Object.values(drift).every((delta) => delta <= 0.5);
@@ -1015,6 +1140,7 @@ async function observeSubdivision(page, action, routeId) {
           && entry.bottomDelta <= 0.5 && entry.heightDelta <= 0.5
         )),
       highlightPaintVisible: evidence.highlight?.allNewBoundariesHighlighted === true,
+      highlightCoreVisible: evidence.highlight?.allNewBoundariesHaveDarkCore === true,
       oldBoundariesUnhighlighted: evidence.highlight?.oldBoundariesUnhighlighted !== false,
       anchorDrift,
       documentPositionDrift,
@@ -1029,7 +1155,8 @@ async function observeSubdivision(page, action, routeId) {
       restored: evidence.restored,
       existingBoundaryDrifts,
       existingBoundariesStable: existingBoundaryDrifts.every((entry) => (
-        driftWithinTolerance(entry.delta) && entry.paintUnchanged && entry.activeAnimations === 0
+        driftWithinTolerance(entry.delta) && entry.paintUnchanged && entry.corePaintUnchanged
+        && entry.activeAnimations === 0
       )),
       stableAnchors: Object.values(anchorDrift).every(driftWithinTolerance),
       conservedDocumentPosition: Object.values(documentPositionDrift).every(driftWithinTolerance),
@@ -1046,14 +1173,14 @@ async function observeSubdivision(page, action, routeId) {
     throw new Error(`an existing boundary moved or animated during subdivision: ${JSON.stringify(finalState)}`);
   }
   if (highlight && (!finalState.highlightPaintVisible || !finalState.highlightBoundariesSpanGrid
-    || !finalState.oldBoundariesUnhighlighted || !highlight.glowFitsNarrowParts)) {
+    || !finalState.highlightCoreVisible || !finalState.oldBoundariesUnhighlighted || !highlight.glowFitsNarrowParts)) {
     throw new Error(`post-arrival boundary highlight did not preserve the new-line grid and old-line paint: ${JSON.stringify(finalState.highlight)}`);
   }
   if (finalState.settled.activeAnimations !== 0) {
     throw new Error(`subdivision effect did not settle: ${JSON.stringify(finalState)}`);
   }
   if (highlight && !finalState.settled.normalPaintRestored) {
-    throw new Error(`new boundary highlight did not return to normal paint: ${JSON.stringify(finalState.settled.newBoundaryPaint)}`);
+    throw new Error(`new boundary highlight and core did not return to normal paint: ${JSON.stringify(finalState.settled.newBoundaryPaint)}`);
   }
   if (!finalState.newBoundariesSpanGrid) {
     throw new Error(`settled new boundaries did not span the connected inner layer at their supplied grid positions: ${JSON.stringify(finalState.settled.newBoundaryGeometry)}`);
@@ -1290,6 +1417,7 @@ async function executeAction(page, action, routeId) {
               bottomDelta: Math.abs(box.bottom - layerBox.bottom),
               centerDelta: Math.abs((box.left + box.width / 2) - expectedCenter),
               boxShadow: getComputedStyle(boundary).boxShadow,
+              backgroundColor: getComputedStyle(boundary).backgroundColor,
             };
           });
           const highlightedBoundaryCount = boundaryGeometry.filter((entry) => entry.boxShadow !== 'none').length;
@@ -1304,6 +1432,9 @@ async function executeAction(page, action, routeId) {
           }
           if (highlightedBoundaryCount !== 0) {
             throw new Error(`reduced Replay ${label} retained a boundary highlight: ${JSON.stringify(boundaryGeometry)}`);
+          }
+          if (boundaryGeometry.some((entry) => entry.backgroundColor !== 'rgb(255, 255, 255)')) {
+            throw new Error(`reduced Replay ${label} retained temporary boundary core paint: ${JSON.stringify(boundaryGeometry)}`);
           }
           if (boundaryGeometry.length !== Number(options.denominator) - 1
             || !boundaryGeometry.every((entry) => entry.connected && entry.heightDelta <= 0.5
@@ -1532,6 +1663,10 @@ async function executeAction(page, action, routeId) {
             sum + [...track.querySelectorAll('.fraction-bar-boundary')]
               .filter((boundary) => getComputedStyle(boundary).boxShadow !== 'none').length
           ), 0);
+          const nonBaselineCoreBoundaryCount = tracks.reduce((sum, track) => (
+            sum + [...track.querySelectorAll('.fraction-bar-boundary')]
+              .filter((boundary) => getComputedStyle(boundary).backgroundColor !== 'rgb(255, 255, 255)').length
+          ), 0);
           const activeAnimations = tracks.reduce((sum, track) => (
             sum + track.getAnimations({ subtree: true })
               .filter((animation) => animation.playState === 'running').length
@@ -1547,6 +1682,7 @@ async function executeAction(page, action, routeId) {
             trackCount: tracks.length,
             boundaryCount,
             highlightedBoundaryCount,
+            nonBaselineCoreBoundaryCount,
             activeAnimations,
             activeVisualAnimations,
             denominator: tracks[0]?.dataset.denominator || null,
@@ -1559,6 +1695,7 @@ async function executeAction(page, action, routeId) {
           trackCount: items.reduce((sum, item) => sum + item.trackCount, 0),
           boundaryCount: items.reduce((sum, item) => sum + item.boundaryCount, 0),
           highlightedBoundaryCount: items.reduce((sum, item) => sum + item.highlightedBoundaryCount, 0),
+          nonBaselineCoreBoundaryCount: items.reduce((sum, item) => sum + item.nonBaselineCoreBoundaryCount, 0),
           activeAnimations: items.reduce((sum, item) => sum + item.activeAnimations, 0),
           activeVisualAnimations: items.reduce((sum, item) => sum + item.activeVisualAnimations, 0),
           denominator: items[0]?.denominator || null,
@@ -1576,6 +1713,9 @@ async function executeAction(page, action, routeId) {
       }
       if (observed.highlightedBoundaryCount !== 0) {
         throw new Error(`static or reduced-motion route unexpectedly retained a subdivision highlight: ${JSON.stringify(observed)}`);
+      }
+      if (observed.nonBaselineCoreBoundaryCount !== 0) {
+        throw new Error(`static or reduced-motion route unexpectedly retained non-baseline boundary core paint: ${JSON.stringify(observed)}`);
       }
       if (action.expectBoundaries === false && observed.boundaryCount !== 0) {
         throw new Error(`static choreography unexpectedly mounted animated-arm boundaries: ${JSON.stringify(observed)}`);

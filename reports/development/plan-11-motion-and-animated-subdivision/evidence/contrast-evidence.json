@@ -1,0 +1,34 @@
+[
+  {
+    "routeId": "ROUTE-REPLAY-NEW-CONVERSION-COND-1",
+    "denominator": 12,
+    "numerator": 8,
+    "arrivalScreenshot": "ROUTE-REPLAY-NEW-CONVERSION-COND-1-denominator-12-arrival.png",
+    "midFadeScreenshot": "ROUTE-REPLAY-NEW-CONVERSION-COND-1-denominator-12-mid-fade.png",
+    "arrivalCoreColor": "rgb(14, 19, 35)",
+    "midFadeCoreColors": [
+      "rgb(187, 189, 193)"
+    ],
+    "newBoundaryCount": 9,
+    "bothFilledAndUnfilledRegions": true,
+    "allNewBoundariesInMidFade": true,
+    "screenshotBracketMaxChannelDelta": 14,
+    "screenshotBracketLimit": 24
+  },
+  {
+    "routeId": "ROUTE-SUPPORT-MEDIUM-DECIDE",
+    "denominator": 24,
+    "numerator": 16,
+    "arrivalScreenshot": "ROUTE-SUPPORT-MEDIUM-DECIDE-denominator-24-arrival.png",
+    "midFadeScreenshot": "ROUTE-SUPPORT-MEDIUM-DECIDE-denominator-24-mid-fade.png",
+    "arrivalCoreColor": "rgb(14, 19, 35)",
+    "midFadeCoreColors": [
+      "rgb(189, 190, 195)"
+    ],
+    "newBoundaryCount": 21,
+    "bothFilledAndUnfilledRegions": true,
+    "allNewBoundariesInMidFade": true,
+    "screenshotBracketMaxChannelDelta": 13,
+    "screenshotBracketLimit": 24
+  }
+]

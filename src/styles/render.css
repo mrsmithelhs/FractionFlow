@@ -23,6 +23,7 @@
   --ff-bar-shaded: #0284c7;
   --ff-bar-unshaded: #f1f5f9;
   --ff-bar-subdivide-line: #ffffff;
+  --ff-bar-boundary-core: #0b1020;
   --ff-bar-boundary-glow: rgba(2, 132, 199, 0.48);
 
   /* Interactive control colors */

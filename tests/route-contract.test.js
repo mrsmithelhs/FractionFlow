@@ -435,8 +435,9 @@ describe('Plan 14 Reachable Behavior Route Contract & Matrix Schema', () => {
     expect(highlightModeResult.errors.some((error) => error.includes('may interrupt a boundary highlight only from standard motion'))).toBe(true);
   });
 
-  it('retains the six subdivision sensitivity seeds and adds glow suppression at an explicit Replay reveal', () => {
+  it('retains the subdivision sensitivity seeds and adds independent glow and core suppression at Replay', () => {
     expect(Object.keys(motionWitnessSeeds).sort()).toEqual([
+      'core-suppressed',
       'disabled-motion',
       'glow-suppressed',
       'half-height-new-boundary',
@@ -449,6 +450,11 @@ describe('Plan 14 Reachable Behavior Route Contract & Matrix Schema', () => {
       routeId: 'ROUTE-REPLAY-NEW-CONVERSION-COND-1',
       step: 12,
       failure: 'new subdivision boundary did not show the post-arrival highlight',
+    });
+    expect(motionWitnessSeeds['core-suppressed']).toEqual({
+      routeId: 'ROUTE-REPLAY-NEW-CONVERSION-COND-1',
+      step: 12,
+      failure: 'new subdivision boundary did not show the temporary dark core',
     });
   });
 
