@@ -143,6 +143,71 @@ The implementation commit is `2603fe1`. This progress report is committed separa
 
 **Ready for delivery re-review: yes.**
 
+## Divider-core contrast repair
+
+Date: 2026-10-07
+
+### Changes and rendered evidence
+
+Newly introduced subdivision boundaries now use an explicit temporary dark core
+(`--ff-bar-boundary-core: #0b1020`) under the existing blue halo. The core remains
+at baseline white through the 560ms reveal, darkens during the existing 80ms
+arrival, and returns to white during the existing 920ms fade. The boundary uses
+explicit white paint at the beginning, reveal endpoint, and final endpoint, so
+completion and cancellation restore normal paint. No boundary size or position,
+track, fill, whole outline, existing boundary, or empty-cell paint changed. The
+accepted-conversion and learner-activated Replay ownership remains unchanged.
+
+The mounted Edge witness observed the core, halo, and settled white paint on new
+boundaries. It also checked old-boundary core paint before, during, and after the
+effect; reduced-motion interruption and Replay require baseline white with no
+halo or running effect. Static/juxtaposed/sequential and reflection Inspection
+Mode routes remain static, and the existing visual and linear Inspection Mode
+focus-return checks still pass.
+
+Rendered evidence was captured at 360px viewport width for both 8/12 and 16/24.
+Each arrival and mid-fade screenshot shows newly introduced lines in both the
+shaded and unshaded regions. The browser sampled every new boundary before and
+after each mid-fade screenshot; the maximum RGB channel drift during capture was
+14 for 12 parts and 13 for 24 parts, within the 24-channel evidence bound. The
+observed arrival samples were `rgb(14, 19, 35)` and mid-fade samples were
+`rgb(187, 189, 193)` for 12 parts and `rgb(189, 190, 195)` for 24 parts. These
+are rendered candidate evidence for owner review; no contrast ratio or screenshot
+is treated as an accessibility-conformance result.
+
+The screenshots and compact browser sample record are in
+`reports/development/plan-11-motion-and-animated-subdivision/evidence/`:
+
+- `ROUTE-REPLAY-NEW-CONVERSION-COND-1-denominator-12-arrival.png`
+- `ROUTE-REPLAY-NEW-CONVERSION-COND-1-denominator-12-mid-fade.png`
+- `ROUTE-SUPPORT-MEDIUM-DECIDE-denominator-24-arrival.png`
+- `ROUTE-SUPPORT-MEDIUM-DECIDE-denominator-24-mid-fade.png`
+- `contrast-evidence.json`
+
+### Advisor review and validation
+
+**Read-only advisor review ran.** The first review found that old-boundary core
+paint was not yet compared through the whole effect and that static/reduced
+checks rejected only the exact peak color. Both findings were accepted: old
+boundaries are now compared against their captured baseline before/during/after,
+and static/reduced routes require baseline white. The advisor's follow-up review
+found no blockers. A final review noted the screenshot timing bound compared only
+one boundary; the witness was tightened to compare every new boundary by key,
+and the advisor confirmed that this closes the evidence gap. The review runtime
+did not expose a specific model or tier identity; no validation was delegated.
+
+- `npm test` — **24 files, 283 tests passed**.
+- `npm run build` — learner and subtraction-prototype builds passed.
+- `npm run test:routes` — **43 passed, 0 failed**, preserving 41 route rows / 43 executions and both support profiles.
+- All eight motion sensitivity seeds — each produced one intended failure and zero unrelated failures, including independent glow suppression and core suppression that retains the halo.
+- `node scripts/dev/verify-subtraction-visual-witness.mjs` — seeded defects detected; restored static run passed **4/4**.
+- `node scripts/dev/plan-status.js lint` and `git diff --check` — passed.
+- `node scripts/dev/plan-status.js check plan-11` — still reports `BLOCKED` because the packet status remains `delivered`; status was not changed.
+
+The scoped renderer and evidence commit is `54928b9` (`feat(plan-11): add temporary dark divider core`). This progress report is committed separately as the final task commit. Plan 22 was untouched. No push or deployment was performed. Owner rendered acceptance remains open for the captured appearance; physical-device and assistive-technology behavior were not assessed.
+
+**Ready for re-review: yes.**
+
 ## Repair 02 — whole-position conservation and populated reduced Replay
 
 Date: 2026-10-04
