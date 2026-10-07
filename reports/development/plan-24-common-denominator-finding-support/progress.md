@@ -254,3 +254,114 @@ authorized until this mechanism gate is approved**. Owner rendered-screen and
 agency acceptance, technical delivery review, packet status changes, and
 deployment remain separate gates. No child/learner usability or efficacy claim
 is made from browser automation.
+
+---
+
+## Post-approval implementation and delivery evidence (2026-10-07)
+
+The orchestrator's written Requirement 0 approval is recorded in the handoff
+material referenced above. I implemented that bounded mechanism without changing
+the packet's lifecycle fields, episode definition, reducer, math layer, replay
+schema, or task provenance contracts.
+
+### Implemented behavior
+
+- The existing **Need help** control moves into the active decide controls in
+  either visual or linear view, beside the denominator response. Opening it records
+  the existing `request-help` intent and reveals one local prompt. It does not
+  enter the learner's current response, auto-submit, list every matching number,
+  or supply later equivalent numerators. Closing the prompt adds no help intent.
+- The unsubmitted denominator and its focus survive open/close and visual/linear
+  switches. Fresh practice, retry, return, and leaving decide clear the local help
+  state and draft. The app-local state is not part of replay or episode history.
+- A one-sided multiple such as 8 receives targeted recovery; 10 remains an
+  ordinary non-common denominator; 12 and authored alternate 24 remain valid;
+  valid but unavailable 36 remains blocked at the Plan 22 task-path boundary.
+  When help was requested, the completed task can disclose a closed explanation
+  of the selected unit using the validated authored scale factors. It does not
+  reveal the upcoming converted numerators.
+- The help control now exposes `aria-expanded` and `aria-controls` while the
+  prompt is present; the prompt is a polite status region. Unit tests assert the
+  open/closed relationships. No screen reader was used, so announcement behavior
+  remains unverified in assistive technology.
+
+### Advisor consultation disposition
+
+**Branch A — consultation ran.** Requested `gpt-6-sol`; the advisor self-reported
+Sol-class, while the exact runtime variant could not be verified from the tool
+surface. The bounded critique was instruction-read-only; structural read-only
+could not be verified, so I checked the working tree immediately after
+consultation. That check showed only the primary implementer's known Plan 24
+source/test changes and evidence artifacts; no advisor-created or unexpected
+files appeared. The primary remained the sole writer.
+
+1. **Replay drift concern — rejected as inapplicable.** The advisor hypothesized
+   that local open-help state could survive a replay rewind. Independent source
+   inspection of `handleReplay` in `src/interaction/episode.js` shows it only
+   appends replay/support history at the current beat; it does not rewind or
+   replace episode state. In `src/app/app.js`, replay only toggles the current
+   scene at a beat with an established conversion. Help open state is cleared
+   when leaving decide and on fresh practice, retry, and return. There is no
+   replay cursor or rewind path for this state to survive.
+2. **Help discoverability/accessibility concern — accepted and changed.** The
+   advisor noted that a live cue without an explicit expanded relationship left
+   the button's state unclear to assistive technology. The cue now has a stable
+   id and `role="status"`; while it is visible, the button has
+   `aria-expanded="true"` and references it with `aria-controls`. Tests cover
+   open and closed states. Actual assistive-technology behavior remains untested.
+3. **Authored factor projection concern — accepted as a verified dependency; no
+   production change needed.** The advisor questioned whether selected-unit
+   factors could be detached from authored paths. Independent inspection of
+   `src/content/validation.js` confirms each path is checked with exact common
+   denominator validation, exact conversions/results, and contract comparison
+   against regenerated canonical and alternate paths; the instance's full
+   classification must match the recomputed classification. I added scene tests
+   asserting canonical 12 factors (4 and 3) and authored alternate 24 factors
+   (8 and 6).
+
+Coarse consultation cost: one additional advisor turn, roughly one minute. The
+advisor did not edit files or run commands.
+
+### Verification and captured artifacts
+
+- `npm test` — **25 files and 293 tests passed** after the accessibility update.
+- `npm run build` — **passed** for both the learner application and subtraction
+  prototype.
+- `node scripts/dev/run-route-matrix.js --filter ROUTE-PLAN24` — **2/2 passed**.
+- `node scripts/dev/run-route-matrix.js` — **48/48 browser executions passed**
+  across 46 route rows, including Plan 22 boundary witnesses.
+- `node scripts/dev/capture-plan-24-evidence.mjs` — **20 screenshots and
+  measurements captured** for high/medium support, visual/linear views, and
+  360×740 / 360×752 viewports. The repeatable capture script and results live in
+  `scripts/dev/capture-plan-24-evidence.mjs` and this report's `evidence/`
+  directory. Measurements show no horizontal document overflow, and the
+  denominator question, response, and help button remain together. In medium
+  support the full open cue extends roughly 26–46 pixels below the tested
+  viewport, depending on height/view; a short scroll is needed to read all of it.
+  This is recorded for the owner screen review rather than treated as fully
+  above-the-fold copy.
+- `node scripts/dev/plan-status.js lint` — **OK, no violations**;
+  `node scripts/dev/plan-status.js check plan-24` — **RUNNABLE**;
+  `git diff --check` — **no whitespace errors** (Git emitted only its usual
+  LF-to-CRLF working-copy notices).
+- Normal sandbox Edge launch still fails while writing the temporary profile
+  (`error = -5`). The repository's local Playwright/Edge commands passed when
+  retried through narrowly elevated execution. The original post-restart shell
+  issue no longer occurs; tests and both builds also passed without elevation.
+
+### Commit, remaining limits, and handoff
+
+- Scoped implementation and evidence commit: `1d4b141` — `Implement Plan 24
+  common denominator help`.
+- Git metadata writes remain restricted in the ordinary sandbox: `.git/index.lock`
+  was absent, and `git add --refresh -- .` still returned `Permission denied`.
+  The documented elevated path staged only the explicit Plan 24 paths and made
+  the local commit. No push was performed.
+- Evidence uses Playwright on desktop Edge. Touch was a Playwright tap in a
+  touch-enabled browser context; keyboard used a mounted control. No physical
+  device, native on-screen keyboard, assistive technology, or learner study was
+  used. No independent-discovery or efficacy claim is made.
+- Implementation is ready for orchestrator technical delivery review. Owner
+  rendered-screen/agency acceptance, packet status change, and deployment remain
+  separate gates. This implementer did not edit packet frontmatter or review
+  dispositions.
