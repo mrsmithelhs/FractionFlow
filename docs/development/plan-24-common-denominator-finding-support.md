@@ -41,6 +41,12 @@ priority, not a new hard family dependency; confirm actual integration needs at
 their mechanism gates. Plans 18/20 have different unit decisions. Plan 21 planning
 and Plan 23 local tooling can proceed independently with disjoint write scopes.
 
+Plan 25 separately covers requested help constructing an equivalent numerator
+after the target denominator is known. Keep that learner decision out of this
+packet's discovery flow; propose a reusable local-help contract without building
+speculative shared infrastructure. Preferred source sequence is Plan 24 → Plan 25
+before broader unlike-denominator practice. Plans 11/22 are now complete.
+
 ## Authority, scope and non-goals
 
 Read AGENTS.md, decision-log.md, development/README.md, founding instructional

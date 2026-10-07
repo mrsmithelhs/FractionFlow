@@ -263,3 +263,15 @@ is separate. A future investigation must consider CSS bar width/zoom/readability
 complete task coverage and resize semantics. Higher pixel density alone does not
 authorize greater reach. Do not alter pure admission from the viewport or silently
 reschedule an episode. The follow-up obligations record this separately gated work.
+
+### Requested conversion help — 2026-10-07
+
+Owner agrees to retain larger-denominator investigation as a follow-up and asks
+for requested help converting 2/3 to a fraction out of 24 after the target is known.
+Plan 22 is complete; this is new help scope, not a repair to its accepted boundary.
+Draft Plan 25 handles multiplier/equivalent-numerator reasoning after Plan 24's
+task-local denominator-discovery help baseline. Both have Requirement 0 source gates.
+Keep one short prompt/learner decision at a time, no premature 16/24 disclosure,
+no automatic help opening and no new live family/capability. Preferred source order:
+Plan 24, Plan 25, broader unlike-denominator family work. No new packet initiated.
+Advisor consultation was not warranted for this prose-only planning change.
