@@ -178,6 +178,59 @@ describe('Plan 09 app shell and upstream display switcher', () => {
       .toBe('Try multiplying 2 by 3 to find one common denominator.');
   });
 
+  it('uses one visible associated question for decide and transform across profiles and views', () => {
+    const assertSingleQuestion = (view, expected, controlKind) => {
+      const active = root.querySelector(`.app-${view}-view .active-beat-section`);
+      const questions = active.querySelectorAll('.active-beat-prompt');
+      expect(questions).toHaveLength(1);
+      const question = questions[0];
+      expect(question.textContent).toBe(expected);
+      expect(active.querySelector('.active-beat-header .active-beat-prompt')).toBe(null);
+      expect(active.textContent.split(expected).length - 1).toBe(1);
+      if (controlKind === 'input') {
+        const input = active.querySelector('input.control-numeric-input');
+        expect(question.tagName).toBe('LABEL');
+        expect(question.getAttribute('for')).toBe(input.id);
+      } else {
+        const fieldset = active.querySelector('fieldset.control-choice-fieldset');
+        expect(question.tagName).toBe('LEGEND');
+        expect(question.parentNode).toBe(fieldset);
+        expect(question.classList.contains('sr-only')).toBe(false);
+      }
+    };
+
+    for (const profile of ['high', 'medium']) {
+      for (const view of ['visual', 'linear']) {
+        for (const denominator of ['12', '24']) {
+          root.querySelector('.app-return-button').click();
+          root.querySelector('.app-gear-button').click();
+          root.querySelector(`[data-support-id="${profile}-support"]`).click();
+          root.querySelector('.app-practice-button').click();
+          const currentlyLinear = !root.querySelector('.app-linear-view').hasAttribute('hidden');
+          if (currentlyLinear !== (view === 'linear')) root.querySelector('.app-view-toggle').click();
+
+          app.dispatch({ type: 'acknowledge-encounter' });
+          app.dispatch({ type: 'submit-notice', matchesUnits: false });
+          const controlKind = profile === 'high' ? 'choice' : 'input';
+          assertSingleQuestion(view, 'Choose a common denominator for both fractions.', controlKind);
+
+          if (controlKind === 'choice') {
+            const button = Array.from(root.querySelectorAll(`.app-${view}-view .control-choice-btn`))
+              .find((option) => option.textContent.trim() === denominator);
+            button.click();
+          } else {
+            app.dispatch({ type: 'propose-common-denominator', proposed: whole(denominator) });
+          }
+          assertSingleQuestion(
+            view,
+            `How many parts out of ${denominator} make the same amount as 2/3?`,
+            'input',
+          );
+        }
+      }
+    }
+  });
+
   it('lets the same composed episode reach reflection and completion', () => {
     app.dispatch({ type: 'acknowledge-encounter' });
     app.dispatch({ type: 'submit-notice', matchesUnits: false });

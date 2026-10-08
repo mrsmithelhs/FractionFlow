@@ -1,5 +1,5 @@
 {
-  "captureDate": "2026-10-07",
+  "captureDate": "2026-10-08",
   "browser": {
     "engine": "Chromium via Playwright",
     "channel": "msedge"
@@ -13,842 +13,2642 @@
     {
       "profile": "high",
       "view": "visual",
-      "stage": "help-open",
+      "stage": "help-closed",
+      "targetDenominator": null,
       "viewport": {
         "width": 360,
         "height": 740
       },
       "question": {
         "left": 63,
-        "top": 420.72,
+        "top": 405.78,
         "right": 297,
-        "bottom": 496.28,
+        "bottom": 481.34,
         "width": 234,
         "height": 75.56
       },
+      "questionText": "Choose a common denominator for both fractions.",
+      "questionTag": "LEGEND",
+      "visibleTaskQuestionCount": 1,
+      "redundantHeaderQuestionVisible": false,
+      "questionAssociatedWithResponse": true,
       "response": {
         "left": 63,
-        "top": 527.22,
+        "top": 405.78,
         "right": 297,
-        "bottom": 571.22,
+        "bottom": 525.34,
         "width": 234,
-        "height": 44
+        "height": 119.56
       },
       "help": {
         "left": 63,
-        "top": 587.22,
+        "top": 541.34,
         "right": 297,
-        "bottom": 631.22,
+        "bottom": 585.34,
+        "width": 234,
+        "height": 44
+      },
+      "cue": null,
+      "helpText": "Need help?",
+      "cueText": null,
+      "recoveryText": null,
+      "selectedUnitSummary": null,
+      "selectedUnitDetailsOpen": false,
+      "document": {
+        "width": 360,
+        "height": 876,
+        "horizontalOverflow": false
+      },
+      "interaction": "keyboard",
+      "computedAccessibleRole": "group",
+      "computedAccessibleNameMatches": true,
+      "screenshot": "plan24-high-visual-help-closed-360x740.png"
+    },
+    {
+      "profile": "high",
+      "view": "visual",
+      "stage": "help-open",
+      "targetDenominator": null,
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "question": {
+        "left": 63,
+        "top": 405.78,
+        "right": 297,
+        "bottom": 481.34,
+        "width": 234,
+        "height": 75.56
+      },
+      "questionText": "Choose a common denominator for both fractions.",
+      "questionTag": "LEGEND",
+      "visibleTaskQuestionCount": 1,
+      "redundantHeaderQuestionVisible": false,
+      "questionAssociatedWithResponse": true,
+      "response": {
+        "left": 63,
+        "top": 405.78,
+        "right": 297,
+        "bottom": 525.34,
+        "width": 234,
+        "height": 119.56
+      },
+      "help": {
+        "left": 63,
+        "top": 541.34,
+        "right": 297,
+        "bottom": 585.34,
         "width": 234,
         "height": 44
       },
       "cue": {
         "left": 63,
-        "top": 647.22,
+        "top": 601.34,
         "right": 297,
-        "bottom": 734.39,
+        "bottom": 688.52,
         "width": 234,
         "height": 87.17
       },
       "helpText": "Close help",
       "cueText": "Try multiplying 3 by 4 to find one common denominator.",
+      "recoveryText": null,
+      "selectedUnitSummary": null,
+      "selectedUnitDetailsOpen": false,
       "document": {
         "width": 360,
-        "height": 1025,
+        "height": 979,
         "horizontalOverflow": false
       },
       "interaction": "keyboard",
+      "computedAccessibleRole": "group",
+      "computedAccessibleNameMatches": true,
       "screenshot": "plan24-high-visual-help-open-360x740.png"
     },
     {
       "profile": "high",
       "view": "visual",
-      "stage": "selected-unit",
+      "stage": "transform",
+      "targetDenominator": 12,
       "viewport": {
         "width": 360,
         "height": 740
       },
       "question": {
         "left": 63,
-        "top": 420.72,
+        "top": 405.78,
         "right": 297,
-        "bottom": 471.09,
+        "bottom": 481.34,
         "width": 234,
-        "height": 50.38
+        "height": 75.56
       },
+      "questionText": "How many parts out of 12 make the same amount as 2/3?",
+      "questionTag": "LABEL",
+      "visibleTaskQuestionCount": 1,
+      "redundantHeaderQuestionVisible": false,
+      "questionAssociatedWithResponse": true,
       "response": {
         "left": 63,
-        "top": 550.03,
+        "top": 489.34,
         "right": 159,
-        "bottom": 597.03,
+        "bottom": 536.34,
         "width": 96,
         "height": 47
       },
       "help": null,
       "cue": null,
+      "helpText": null,
+      "cueText": null,
+      "recoveryText": null,
+      "selectedUnitSummary": "Why does 12 work?",
+      "selectedUnitDetailsOpen": false,
       "document": {
         "width": 360,
-        "height": 988,
+        "height": 927,
         "horizontalOverflow": false
       },
       "interaction": "keyboard",
-      "screenshot": "plan24-high-visual-selected-unit-360x740.png"
+      "computedAccessibleRole": "spinbutton",
+      "computedAccessibleNameMatches": true,
+      "screenshot": "plan24-high-visual-transform-12-360x740.png"
+    },
+    {
+      "profile": "high",
+      "view": "visual",
+      "stage": "selected-unit",
+      "targetDenominator": 12,
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "question": {
+        "left": 63,
+        "top": 405.78,
+        "right": 297,
+        "bottom": 481.34,
+        "width": 234,
+        "height": 75.56
+      },
+      "questionText": "How many parts out of 12 make the same amount as 2/3?",
+      "questionTag": "LABEL",
+      "visibleTaskQuestionCount": 1,
+      "redundantHeaderQuestionVisible": false,
+      "questionAssociatedWithResponse": true,
+      "response": {
+        "left": 63,
+        "top": 489.34,
+        "right": 159,
+        "bottom": 536.34,
+        "width": 96,
+        "height": 47
+      },
+      "help": null,
+      "cue": null,
+      "helpText": null,
+      "cueText": null,
+      "recoveryText": null,
+      "selectedUnitSummary": "Why does 12 work?",
+      "selectedUnitDetailsOpen": true,
+      "document": {
+        "width": 360,
+        "height": 975,
+        "horizontalOverflow": false
+      },
+      "interaction": "keyboard",
+      "computedAccessibleRole": "spinbutton",
+      "computedAccessibleNameMatches": true,
+      "screenshot": "plan24-high-visual-selected-unit-12-360x740.png"
+    },
+    {
+      "profile": "high",
+      "view": "visual",
+      "stage": "transform",
+      "targetDenominator": 24,
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "question": {
+        "left": 63,
+        "top": 405.78,
+        "right": 297,
+        "bottom": 481.34,
+        "width": 234,
+        "height": 75.56
+      },
+      "questionText": "How many parts out of 24 make the same amount as 2/3?",
+      "questionTag": "LABEL",
+      "visibleTaskQuestionCount": 1,
+      "redundantHeaderQuestionVisible": false,
+      "questionAssociatedWithResponse": true,
+      "response": {
+        "left": 63,
+        "top": 489.34,
+        "right": 159,
+        "bottom": 536.34,
+        "width": 96,
+        "height": 47
+      },
+      "help": null,
+      "cue": null,
+      "helpText": null,
+      "cueText": null,
+      "recoveryText": null,
+      "selectedUnitSummary": "Why does 24 work?",
+      "selectedUnitDetailsOpen": false,
+      "document": {
+        "width": 360,
+        "height": 927,
+        "horizontalOverflow": false
+      },
+      "interaction": "keyboard",
+      "computedAccessibleRole": "spinbutton",
+      "computedAccessibleNameMatches": true,
+      "screenshot": "plan24-high-visual-transform-24-360x740.png"
+    },
+    {
+      "profile": "high",
+      "view": "visual",
+      "stage": "selected-unit",
+      "targetDenominator": 24,
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "question": {
+        "left": 63,
+        "top": 405.78,
+        "right": 297,
+        "bottom": 481.34,
+        "width": 234,
+        "height": 75.56
+      },
+      "questionText": "How many parts out of 24 make the same amount as 2/3?",
+      "questionTag": "LABEL",
+      "visibleTaskQuestionCount": 1,
+      "redundantHeaderQuestionVisible": false,
+      "questionAssociatedWithResponse": true,
+      "response": {
+        "left": 63,
+        "top": 489.34,
+        "right": 159,
+        "bottom": 536.34,
+        "width": 96,
+        "height": 47
+      },
+      "help": null,
+      "cue": null,
+      "helpText": null,
+      "cueText": null,
+      "recoveryText": null,
+      "selectedUnitSummary": "Why does 24 work?",
+      "selectedUnitDetailsOpen": true,
+      "document": {
+        "width": 360,
+        "height": 994,
+        "horizontalOverflow": false
+      },
+      "interaction": "keyboard",
+      "computedAccessibleRole": "spinbutton",
+      "computedAccessibleNameMatches": true,
+      "screenshot": "plan24-high-visual-selected-unit-24-360x740.png"
+    },
+    {
+      "profile": "high",
+      "view": "linear",
+      "stage": "help-closed",
+      "targetDenominator": null,
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "question": {
+        "left": 63,
+        "top": 392.56,
+        "right": 297,
+        "bottom": 468.13,
+        "width": 234,
+        "height": 75.56
+      },
+      "questionText": "Choose a common denominator for both fractions.",
+      "questionTag": "LEGEND",
+      "visibleTaskQuestionCount": 1,
+      "redundantHeaderQuestionVisible": false,
+      "questionAssociatedWithResponse": true,
+      "response": {
+        "left": 63,
+        "top": 392.56,
+        "right": 297,
+        "bottom": 512.13,
+        "width": 234,
+        "height": 119.56
+      },
+      "help": {
+        "left": 63,
+        "top": 528.13,
+        "right": 297,
+        "bottom": 572.13,
+        "width": 234,
+        "height": 44
+      },
+      "cue": null,
+      "helpText": "Need help?",
+      "cueText": null,
+      "recoveryText": null,
+      "selectedUnitSummary": null,
+      "selectedUnitDetailsOpen": false,
+      "document": {
+        "width": 360,
+        "height": 862,
+        "horizontalOverflow": false
+      },
+      "interaction": "click",
+      "computedAccessibleRole": "group",
+      "computedAccessibleNameMatches": true,
+      "screenshot": "plan24-high-linear-help-closed-360x740.png"
     },
     {
       "profile": "high",
       "view": "linear",
       "stage": "help-open",
+      "targetDenominator": null,
       "viewport": {
         "width": 360,
         "height": 740
       },
       "question": {
         "left": 63,
-        "top": 410.56,
+        "top": 392.56,
         "right": 297,
-        "bottom": 486.13,
+        "bottom": 468.13,
         "width": 234,
         "height": 75.56
       },
+      "questionText": "Choose a common denominator for both fractions.",
+      "questionTag": "LEGEND",
+      "visibleTaskQuestionCount": 1,
+      "redundantHeaderQuestionVisible": false,
+      "questionAssociatedWithResponse": true,
       "response": {
         "left": 63,
-        "top": 520.13,
+        "top": 392.56,
         "right": 297,
-        "bottom": 564.13,
+        "bottom": 512.13,
         "width": 234,
-        "height": 44
+        "height": 119.56
       },
       "help": {
         "left": 63,
-        "top": 580.13,
+        "top": 528.13,
         "right": 297,
-        "bottom": 624.13,
+        "bottom": 572.13,
         "width": 234,
         "height": 44
       },
       "cue": {
         "left": 63,
-        "top": 640.13,
+        "top": 588.13,
         "right": 297,
-        "bottom": 727.3,
+        "bottom": 675.3,
         "width": 234,
         "height": 87.17
       },
       "helpText": "Close help",
       "cueText": "Try multiplying 3 by 4 to find one common denominator.",
+      "recoveryText": null,
+      "selectedUnitSummary": null,
+      "selectedUnitDetailsOpen": false,
       "document": {
         "width": 360,
-        "height": 1017,
+        "height": 965,
         "horizontalOverflow": false
       },
       "interaction": "click",
+      "computedAccessibleRole": "group",
+      "computedAccessibleNameMatches": true,
       "screenshot": "plan24-high-linear-help-open-360x740.png"
     },
     {
       "profile": "high",
       "view": "linear",
-      "stage": "selected-unit",
+      "stage": "transform",
+      "targetDenominator": 12,
       "viewport": {
         "width": 360,
         "height": 740
       },
       "question": {
         "left": 63,
-        "top": 410.56,
+        "top": 392.56,
         "right": 297,
-        "bottom": 460.94,
+        "bottom": 468.13,
         "width": 234,
-        "height": 50.38
+        "height": 75.56
       },
+      "questionText": "How many parts out of 12 make the same amount as 2/3?",
+      "questionTag": "LABEL",
+      "visibleTaskQuestionCount": 1,
+      "redundantHeaderQuestionVisible": false,
+      "questionAssociatedWithResponse": true,
       "response": {
         "left": 63,
-        "top": 542.94,
+        "top": 476.13,
         "right": 159,
-        "bottom": 589.94,
+        "bottom": 523.13,
         "width": 96,
         "height": 47
       },
       "help": null,
       "cue": null,
+      "helpText": null,
+      "cueText": null,
+      "recoveryText": null,
+      "selectedUnitSummary": "Why does 12 work?",
+      "selectedUnitDetailsOpen": false,
+      "document": {
+        "width": 360,
+        "height": 914,
+        "horizontalOverflow": false
+      },
+      "interaction": "click",
+      "computedAccessibleRole": "spinbutton",
+      "computedAccessibleNameMatches": true,
+      "screenshot": "plan24-high-linear-transform-12-360x740.png"
+    },
+    {
+      "profile": "high",
+      "view": "linear",
+      "stage": "selected-unit",
+      "targetDenominator": 12,
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "question": {
+        "left": 63,
+        "top": 392.56,
+        "right": 297,
+        "bottom": 468.13,
+        "width": 234,
+        "height": 75.56
+      },
+      "questionText": "How many parts out of 12 make the same amount as 2/3?",
+      "questionTag": "LABEL",
+      "visibleTaskQuestionCount": 1,
+      "redundantHeaderQuestionVisible": false,
+      "questionAssociatedWithResponse": true,
+      "response": {
+        "left": 63,
+        "top": 476.13,
+        "right": 159,
+        "bottom": 523.13,
+        "width": 96,
+        "height": 47
+      },
+      "help": null,
+      "cue": null,
+      "helpText": null,
+      "cueText": null,
+      "recoveryText": null,
+      "selectedUnitSummary": "Why does 12 work?",
+      "selectedUnitDetailsOpen": true,
+      "document": {
+        "width": 360,
+        "height": 961,
+        "horizontalOverflow": false
+      },
+      "interaction": "click",
+      "computedAccessibleRole": "spinbutton",
+      "computedAccessibleNameMatches": true,
+      "screenshot": "plan24-high-linear-selected-unit-12-360x740.png"
+    },
+    {
+      "profile": "high",
+      "view": "linear",
+      "stage": "transform",
+      "targetDenominator": 24,
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "question": {
+        "left": 63,
+        "top": 392.56,
+        "right": 297,
+        "bottom": 468.13,
+        "width": 234,
+        "height": 75.56
+      },
+      "questionText": "How many parts out of 24 make the same amount as 2/3?",
+      "questionTag": "LABEL",
+      "visibleTaskQuestionCount": 1,
+      "redundantHeaderQuestionVisible": false,
+      "questionAssociatedWithResponse": true,
+      "response": {
+        "left": 63,
+        "top": 476.13,
+        "right": 159,
+        "bottom": 523.13,
+        "width": 96,
+        "height": 47
+      },
+      "help": null,
+      "cue": null,
+      "helpText": null,
+      "cueText": null,
+      "recoveryText": null,
+      "selectedUnitSummary": "Why does 24 work?",
+      "selectedUnitDetailsOpen": false,
+      "document": {
+        "width": 360,
+        "height": 914,
+        "horizontalOverflow": false
+      },
+      "interaction": "click",
+      "computedAccessibleRole": "spinbutton",
+      "computedAccessibleNameMatches": true,
+      "screenshot": "plan24-high-linear-transform-24-360x740.png"
+    },
+    {
+      "profile": "high",
+      "view": "linear",
+      "stage": "selected-unit",
+      "targetDenominator": 24,
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "question": {
+        "left": 63,
+        "top": 392.56,
+        "right": 297,
+        "bottom": 468.13,
+        "width": 234,
+        "height": 75.56
+      },
+      "questionText": "How many parts out of 24 make the same amount as 2/3?",
+      "questionTag": "LABEL",
+      "visibleTaskQuestionCount": 1,
+      "redundantHeaderQuestionVisible": false,
+      "questionAssociatedWithResponse": true,
+      "response": {
+        "left": 63,
+        "top": 476.13,
+        "right": 159,
+        "bottom": 523.13,
+        "width": 96,
+        "height": 47
+      },
+      "help": null,
+      "cue": null,
+      "helpText": null,
+      "cueText": null,
+      "recoveryText": null,
+      "selectedUnitSummary": "Why does 24 work?",
+      "selectedUnitDetailsOpen": true,
       "document": {
         "width": 360,
         "height": 981,
         "horizontalOverflow": false
       },
       "interaction": "click",
-      "screenshot": "plan24-high-linear-selected-unit-360x740.png"
+      "computedAccessibleRole": "spinbutton",
+      "computedAccessibleNameMatches": true,
+      "screenshot": "plan24-high-linear-selected-unit-24-360x740.png"
     },
     {
       "profile": "medium",
       "view": "visual",
-      "stage": "help-open",
+      "stage": "help-closed",
+      "targetDenominator": null,
       "viewport": {
         "width": 360,
         "height": 740
       },
       "question": {
         "left": 63,
-        "top": 420.72,
+        "top": 405.78,
         "right": 297,
-        "bottom": 496.28,
+        "bottom": 481.34,
         "width": 234,
         "height": 75.56
       },
+      "questionText": "Choose a common denominator for both fractions.",
+      "questionTag": "LABEL",
+      "visibleTaskQuestionCount": 1,
+      "redundantHeaderQuestionVisible": false,
+      "questionAssociatedWithResponse": true,
       "response": {
         "left": 63,
-        "top": 575.22,
+        "top": 489.34,
         "right": 159,
-        "bottom": 622.22,
+        "bottom": 536.34,
         "width": 96,
         "height": 47
       },
       "help": {
         "left": 63,
-        "top": 638.22,
+        "top": 552.34,
         "right": 297,
-        "bottom": 682.22,
+        "bottom": 596.34,
+        "width": 234,
+        "height": 44
+      },
+      "cue": null,
+      "helpText": "Need help?",
+      "cueText": null,
+      "recoveryText": null,
+      "selectedUnitSummary": null,
+      "selectedUnitDetailsOpen": false,
+      "document": {
+        "width": 360,
+        "height": 887,
+        "horizontalOverflow": false
+      },
+      "interaction": "click",
+      "computedAccessibleRole": "spinbutton",
+      "computedAccessibleNameMatches": true,
+      "screenshot": "plan24-medium-visual-help-closed-360x740.png"
+    },
+    {
+      "profile": "medium",
+      "view": "visual",
+      "stage": "help-open",
+      "targetDenominator": null,
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "question": {
+        "left": 63,
+        "top": 405.78,
+        "right": 297,
+        "bottom": 481.34,
+        "width": 234,
+        "height": 75.56
+      },
+      "questionText": "Choose a common denominator for both fractions.",
+      "questionTag": "LABEL",
+      "visibleTaskQuestionCount": 1,
+      "redundantHeaderQuestionVisible": false,
+      "questionAssociatedWithResponse": true,
+      "response": {
+        "left": 63,
+        "top": 489.34,
+        "right": 159,
+        "bottom": 536.34,
+        "width": 96,
+        "height": 47
+      },
+      "help": {
+        "left": 63,
+        "top": 552.34,
+        "right": 297,
+        "bottom": 596.34,
         "width": 234,
         "height": 44
       },
       "cue": {
         "left": 63,
-        "top": 698.22,
+        "top": 612.34,
         "right": 297,
-        "bottom": 785.39,
+        "bottom": 699.52,
         "width": 234,
         "height": 87.17
       },
       "helpText": "Close help",
       "cueText": "Try multiplying 3 by 4 to find one common denominator.",
+      "recoveryText": null,
+      "selectedUnitSummary": null,
+      "selectedUnitDetailsOpen": false,
       "document": {
         "width": 360,
-        "height": 1076,
+        "height": 990,
         "horizontalOverflow": false
       },
       "interaction": "click",
+      "computedAccessibleRole": "spinbutton",
+      "computedAccessibleNameMatches": true,
       "screenshot": "plan24-medium-visual-help-open-360x740.png"
     },
     {
       "profile": "medium",
       "view": "visual",
       "stage": "one-sided-recovery",
+      "targetDenominator": null,
       "viewport": {
         "width": 360,
         "height": 740
       },
       "question": {
         "left": 63,
-        "top": 420.72,
+        "top": 405.78,
         "right": 297,
-        "bottom": 496.28,
+        "bottom": 481.34,
         "width": 234,
         "height": 75.56
       },
+      "questionText": "Choose a common denominator for both fractions.",
+      "questionTag": "LABEL",
+      "visibleTaskQuestionCount": 1,
+      "redundantHeaderQuestionVisible": false,
+      "questionAssociatedWithResponse": true,
       "response": {
         "left": 63,
-        "top": 575.22,
+        "top": 489.34,
         "right": 159,
-        "bottom": 622.22,
+        "bottom": 536.34,
         "width": 96,
         "height": 47
       },
       "help": {
         "left": 63,
-        "top": 638.22,
+        "top": 552.34,
         "right": 297,
-        "bottom": 682.22,
+        "bottom": 596.34,
         "width": 234,
         "height": 44
       },
       "cue": null,
       "helpText": "Need help?",
+      "cueText": null,
+      "recoveryText": null,
+      "selectedUnitSummary": null,
+      "selectedUnitDetailsOpen": false,
       "document": {
         "width": 360,
-        "height": 1052,
+        "height": 967,
         "horizontalOverflow": false
       },
       "interaction": "click",
+      "computedAccessibleRole": "spinbutton",
+      "computedAccessibleNameMatches": true,
       "screenshot": "plan24-medium-visual-one-sided-recovery-360x740.png"
     },
     {
       "profile": "medium",
       "view": "visual",
-      "stage": "selected-unit",
+      "stage": "transform",
+      "targetDenominator": 12,
       "viewport": {
         "width": 360,
         "height": 740
       },
       "question": {
         "left": 63,
-        "top": 420.72,
+        "top": 405.78,
         "right": 297,
-        "bottom": 471.09,
+        "bottom": 481.34,
         "width": 234,
-        "height": 50.38
+        "height": 75.56
       },
+      "questionText": "How many parts out of 12 make the same amount as 2/3?",
+      "questionTag": "LABEL",
+      "visibleTaskQuestionCount": 1,
+      "redundantHeaderQuestionVisible": false,
+      "questionAssociatedWithResponse": true,
       "response": {
         "left": 63,
-        "top": 550.03,
+        "top": 489.34,
         "right": 159,
-        "bottom": 597.03,
+        "bottom": 536.34,
         "width": 96,
         "height": 47
       },
       "help": null,
       "cue": null,
+      "helpText": null,
+      "cueText": null,
+      "recoveryText": null,
+      "selectedUnitSummary": "Why does 12 work?",
+      "selectedUnitDetailsOpen": false,
       "document": {
         "width": 360,
-        "height": 988,
+        "height": 927,
         "horizontalOverflow": false
       },
       "interaction": "click",
-      "screenshot": "plan24-medium-visual-selected-unit-360x740.png"
+      "computedAccessibleRole": "spinbutton",
+      "computedAccessibleNameMatches": true,
+      "screenshot": "plan24-medium-visual-transform-12-360x740.png"
     },
     {
       "profile": "medium",
-      "view": "linear",
-      "stage": "help-open",
+      "view": "visual",
+      "stage": "selected-unit",
+      "targetDenominator": 12,
       "viewport": {
         "width": 360,
         "height": 740
       },
       "question": {
         "left": 63,
-        "top": 410.56,
+        "top": 405.78,
         "right": 297,
-        "bottom": 486.13,
+        "bottom": 481.34,
         "width": 234,
         "height": 75.56
       },
+      "questionText": "How many parts out of 12 make the same amount as 2/3?",
+      "questionTag": "LABEL",
+      "visibleTaskQuestionCount": 1,
+      "redundantHeaderQuestionVisible": false,
+      "questionAssociatedWithResponse": true,
       "response": {
         "left": 63,
-        "top": 568.13,
+        "top": 489.34,
         "right": 159,
-        "bottom": 615.13,
+        "bottom": 536.34,
+        "width": 96,
+        "height": 47
+      },
+      "help": null,
+      "cue": null,
+      "helpText": null,
+      "cueText": null,
+      "recoveryText": null,
+      "selectedUnitSummary": "Why does 12 work?",
+      "selectedUnitDetailsOpen": true,
+      "document": {
+        "width": 360,
+        "height": 975,
+        "horizontalOverflow": false
+      },
+      "interaction": "click",
+      "computedAccessibleRole": "spinbutton",
+      "computedAccessibleNameMatches": true,
+      "screenshot": "plan24-medium-visual-selected-unit-12-360x740.png"
+    },
+    {
+      "profile": "medium",
+      "view": "visual",
+      "stage": "transform",
+      "targetDenominator": 24,
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "question": {
+        "left": 63,
+        "top": 405.78,
+        "right": 297,
+        "bottom": 481.34,
+        "width": 234,
+        "height": 75.56
+      },
+      "questionText": "How many parts out of 24 make the same amount as 2/3?",
+      "questionTag": "LABEL",
+      "visibleTaskQuestionCount": 1,
+      "redundantHeaderQuestionVisible": false,
+      "questionAssociatedWithResponse": true,
+      "response": {
+        "left": 63,
+        "top": 489.34,
+        "right": 159,
+        "bottom": 536.34,
+        "width": 96,
+        "height": 47
+      },
+      "help": null,
+      "cue": null,
+      "helpText": null,
+      "cueText": null,
+      "recoveryText": null,
+      "selectedUnitSummary": "Why does 24 work?",
+      "selectedUnitDetailsOpen": false,
+      "document": {
+        "width": 360,
+        "height": 927,
+        "horizontalOverflow": false
+      },
+      "interaction": "click",
+      "computedAccessibleRole": "spinbutton",
+      "computedAccessibleNameMatches": true,
+      "screenshot": "plan24-medium-visual-transform-24-360x740.png"
+    },
+    {
+      "profile": "medium",
+      "view": "visual",
+      "stage": "selected-unit",
+      "targetDenominator": 24,
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "question": {
+        "left": 63,
+        "top": 405.78,
+        "right": 297,
+        "bottom": 481.34,
+        "width": 234,
+        "height": 75.56
+      },
+      "questionText": "How many parts out of 24 make the same amount as 2/3?",
+      "questionTag": "LABEL",
+      "visibleTaskQuestionCount": 1,
+      "redundantHeaderQuestionVisible": false,
+      "questionAssociatedWithResponse": true,
+      "response": {
+        "left": 63,
+        "top": 489.34,
+        "right": 159,
+        "bottom": 536.34,
+        "width": 96,
+        "height": 47
+      },
+      "help": null,
+      "cue": null,
+      "helpText": null,
+      "cueText": null,
+      "recoveryText": null,
+      "selectedUnitSummary": "Why does 24 work?",
+      "selectedUnitDetailsOpen": true,
+      "document": {
+        "width": 360,
+        "height": 994,
+        "horizontalOverflow": false
+      },
+      "interaction": "click",
+      "computedAccessibleRole": "spinbutton",
+      "computedAccessibleNameMatches": true,
+      "screenshot": "plan24-medium-visual-selected-unit-24-360x740.png"
+    },
+    {
+      "profile": "medium",
+      "view": "linear",
+      "stage": "help-closed",
+      "targetDenominator": null,
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "question": {
+        "left": 63,
+        "top": 392.56,
+        "right": 297,
+        "bottom": 468.13,
+        "width": 234,
+        "height": 75.56
+      },
+      "questionText": "Choose a common denominator for both fractions.",
+      "questionTag": "LABEL",
+      "visibleTaskQuestionCount": 1,
+      "redundantHeaderQuestionVisible": false,
+      "questionAssociatedWithResponse": true,
+      "response": {
+        "left": 63,
+        "top": 476.13,
+        "right": 159,
+        "bottom": 523.13,
         "width": 96,
         "height": 47
       },
       "help": {
         "left": 63,
-        "top": 631.13,
+        "top": 539.13,
         "right": 297,
-        "bottom": 675.13,
+        "bottom": 583.13,
+        "width": 234,
+        "height": 44
+      },
+      "cue": null,
+      "helpText": "Need help?",
+      "cueText": null,
+      "recoveryText": null,
+      "selectedUnitSummary": null,
+      "selectedUnitDetailsOpen": false,
+      "document": {
+        "width": 360,
+        "height": 873,
+        "horizontalOverflow": false
+      },
+      "interaction": "touch",
+      "computedAccessibleRole": "spinbutton",
+      "computedAccessibleNameMatches": true,
+      "screenshot": "plan24-medium-linear-help-closed-360x740.png"
+    },
+    {
+      "profile": "medium",
+      "view": "linear",
+      "stage": "help-open",
+      "targetDenominator": null,
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "question": {
+        "left": 63,
+        "top": 392.56,
+        "right": 297,
+        "bottom": 468.13,
+        "width": 234,
+        "height": 75.56
+      },
+      "questionText": "Choose a common denominator for both fractions.",
+      "questionTag": "LABEL",
+      "visibleTaskQuestionCount": 1,
+      "redundantHeaderQuestionVisible": false,
+      "questionAssociatedWithResponse": true,
+      "response": {
+        "left": 63,
+        "top": 476.13,
+        "right": 159,
+        "bottom": 523.13,
+        "width": 96,
+        "height": 47
+      },
+      "help": {
+        "left": 63,
+        "top": 539.13,
+        "right": 297,
+        "bottom": 583.13,
         "width": 234,
         "height": 44
       },
       "cue": {
         "left": 63,
-        "top": 691.13,
+        "top": 599.13,
         "right": 297,
-        "bottom": 778.3,
+        "bottom": 686.3,
         "width": 234,
         "height": 87.17
       },
       "helpText": "Close help",
       "cueText": "Try multiplying 3 by 4 to find one common denominator.",
+      "recoveryText": null,
+      "selectedUnitSummary": null,
+      "selectedUnitDetailsOpen": false,
       "document": {
         "width": 360,
-        "height": 1068,
+        "height": 976,
         "horizontalOverflow": false
       },
       "interaction": "touch",
+      "computedAccessibleRole": "spinbutton",
+      "computedAccessibleNameMatches": true,
       "screenshot": "plan24-medium-linear-help-open-360x740.png"
     },
     {
       "profile": "medium",
       "view": "linear",
       "stage": "one-sided-recovery",
+      "targetDenominator": null,
       "viewport": {
         "width": 360,
         "height": 740
       },
       "question": {
         "left": 63,
-        "top": 410.56,
+        "top": 392.56,
         "right": 297,
-        "bottom": 486.13,
+        "bottom": 468.13,
         "width": 234,
         "height": 75.56
       },
+      "questionText": "Choose a common denominator for both fractions.",
+      "questionTag": "LABEL",
+      "visibleTaskQuestionCount": 1,
+      "redundantHeaderQuestionVisible": false,
+      "questionAssociatedWithResponse": true,
       "response": {
         "left": 63,
-        "top": 568.13,
+        "top": 476.13,
         "right": 159,
-        "bottom": 615.13,
+        "bottom": 523.13,
         "width": 96,
         "height": 47
       },
       "help": {
         "left": 63,
-        "top": 631.13,
+        "top": 539.13,
         "right": 297,
-        "bottom": 675.13,
+        "bottom": 583.13,
         "width": 234,
         "height": 44
       },
       "cue": null,
       "helpText": "Need help?",
+      "cueText": null,
+      "recoveryText": null,
+      "selectedUnitSummary": null,
+      "selectedUnitDetailsOpen": false,
       "document": {
         "width": 360,
-        "height": 1045,
+        "height": 953,
         "horizontalOverflow": false
       },
       "interaction": "touch",
+      "computedAccessibleRole": "spinbutton",
+      "computedAccessibleNameMatches": true,
       "screenshot": "plan24-medium-linear-one-sided-recovery-360x740.png"
     },
     {
       "profile": "medium",
       "view": "linear",
-      "stage": "selected-unit",
+      "stage": "transform",
+      "targetDenominator": 12,
       "viewport": {
         "width": 360,
         "height": 740
       },
       "question": {
         "left": 63,
-        "top": 410.56,
+        "top": 392.56,
         "right": 297,
-        "bottom": 460.94,
+        "bottom": 468.13,
         "width": 234,
-        "height": 50.38
+        "height": 75.56
       },
+      "questionText": "How many parts out of 12 make the same amount as 2/3?",
+      "questionTag": "LABEL",
+      "visibleTaskQuestionCount": 1,
+      "redundantHeaderQuestionVisible": false,
+      "questionAssociatedWithResponse": true,
       "response": {
         "left": 63,
-        "top": 542.94,
+        "top": 476.13,
         "right": 159,
-        "bottom": 589.94,
+        "bottom": 523.13,
         "width": 96,
         "height": 47
       },
       "help": null,
       "cue": null,
+      "helpText": null,
+      "cueText": null,
+      "recoveryText": null,
+      "selectedUnitSummary": "Why does 12 work?",
+      "selectedUnitDetailsOpen": false,
+      "document": {
+        "width": 360,
+        "height": 914,
+        "horizontalOverflow": false
+      },
+      "interaction": "touch",
+      "computedAccessibleRole": "spinbutton",
+      "computedAccessibleNameMatches": true,
+      "screenshot": "plan24-medium-linear-transform-12-360x740.png"
+    },
+    {
+      "profile": "medium",
+      "view": "linear",
+      "stage": "selected-unit",
+      "targetDenominator": 12,
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "question": {
+        "left": 63,
+        "top": 392.56,
+        "right": 297,
+        "bottom": 468.13,
+        "width": 234,
+        "height": 75.56
+      },
+      "questionText": "How many parts out of 12 make the same amount as 2/3?",
+      "questionTag": "LABEL",
+      "visibleTaskQuestionCount": 1,
+      "redundantHeaderQuestionVisible": false,
+      "questionAssociatedWithResponse": true,
+      "response": {
+        "left": 63,
+        "top": 476.13,
+        "right": 159,
+        "bottom": 523.13,
+        "width": 96,
+        "height": 47
+      },
+      "help": null,
+      "cue": null,
+      "helpText": null,
+      "cueText": null,
+      "recoveryText": null,
+      "selectedUnitSummary": "Why does 12 work?",
+      "selectedUnitDetailsOpen": true,
+      "document": {
+        "width": 360,
+        "height": 961,
+        "horizontalOverflow": false
+      },
+      "interaction": "touch",
+      "computedAccessibleRole": "spinbutton",
+      "computedAccessibleNameMatches": true,
+      "screenshot": "plan24-medium-linear-selected-unit-12-360x740.png"
+    },
+    {
+      "profile": "medium",
+      "view": "linear",
+      "stage": "transform",
+      "targetDenominator": 24,
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "question": {
+        "left": 63,
+        "top": 392.56,
+        "right": 297,
+        "bottom": 468.13,
+        "width": 234,
+        "height": 75.56
+      },
+      "questionText": "How many parts out of 24 make the same amount as 2/3?",
+      "questionTag": "LABEL",
+      "visibleTaskQuestionCount": 1,
+      "redundantHeaderQuestionVisible": false,
+      "questionAssociatedWithResponse": true,
+      "response": {
+        "left": 63,
+        "top": 476.13,
+        "right": 159,
+        "bottom": 523.13,
+        "width": 96,
+        "height": 47
+      },
+      "help": null,
+      "cue": null,
+      "helpText": null,
+      "cueText": null,
+      "recoveryText": null,
+      "selectedUnitSummary": "Why does 24 work?",
+      "selectedUnitDetailsOpen": false,
+      "document": {
+        "width": 360,
+        "height": 914,
+        "horizontalOverflow": false
+      },
+      "interaction": "touch",
+      "computedAccessibleRole": "spinbutton",
+      "computedAccessibleNameMatches": true,
+      "screenshot": "plan24-medium-linear-transform-24-360x740.png"
+    },
+    {
+      "profile": "medium",
+      "view": "linear",
+      "stage": "selected-unit",
+      "targetDenominator": 24,
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "question": {
+        "left": 63,
+        "top": 392.56,
+        "right": 297,
+        "bottom": 468.13,
+        "width": 234,
+        "height": 75.56
+      },
+      "questionText": "How many parts out of 24 make the same amount as 2/3?",
+      "questionTag": "LABEL",
+      "visibleTaskQuestionCount": 1,
+      "redundantHeaderQuestionVisible": false,
+      "questionAssociatedWithResponse": true,
+      "response": {
+        "left": 63,
+        "top": 476.13,
+        "right": 159,
+        "bottom": 523.13,
+        "width": 96,
+        "height": 47
+      },
+      "help": null,
+      "cue": null,
+      "helpText": null,
+      "cueText": null,
+      "recoveryText": null,
+      "selectedUnitSummary": "Why does 24 work?",
+      "selectedUnitDetailsOpen": true,
       "document": {
         "width": 360,
         "height": 981,
         "horizontalOverflow": false
       },
       "interaction": "touch",
-      "screenshot": "plan24-medium-linear-selected-unit-360x740.png"
+      "computedAccessibleRole": "spinbutton",
+      "computedAccessibleNameMatches": true,
+      "screenshot": "plan24-medium-linear-selected-unit-24-360x740.png"
     },
     {
       "profile": "high",
       "view": "visual",
-      "stage": "help-open",
+      "stage": "help-closed",
+      "targetDenominator": null,
       "viewport": {
         "width": 360,
         "height": 752
       },
       "question": {
         "left": 63,
-        "top": 420.72,
+        "top": 405.78,
         "right": 297,
-        "bottom": 496.28,
+        "bottom": 481.34,
         "width": 234,
         "height": 75.56
       },
+      "questionText": "Choose a common denominator for both fractions.",
+      "questionTag": "LEGEND",
+      "visibleTaskQuestionCount": 1,
+      "redundantHeaderQuestionVisible": false,
+      "questionAssociatedWithResponse": true,
       "response": {
         "left": 63,
-        "top": 527.22,
+        "top": 405.78,
         "right": 297,
-        "bottom": 571.22,
+        "bottom": 525.34,
         "width": 234,
-        "height": 44
+        "height": 119.56
       },
       "help": {
         "left": 63,
-        "top": 587.22,
+        "top": 541.34,
         "right": 297,
-        "bottom": 631.22,
+        "bottom": 585.34,
+        "width": 234,
+        "height": 44
+      },
+      "cue": null,
+      "helpText": "Need help?",
+      "cueText": null,
+      "recoveryText": null,
+      "selectedUnitSummary": null,
+      "selectedUnitDetailsOpen": false,
+      "document": {
+        "width": 360,
+        "height": 876,
+        "horizontalOverflow": false
+      },
+      "interaction": "keyboard",
+      "computedAccessibleRole": "group",
+      "computedAccessibleNameMatches": true,
+      "screenshot": "plan24-high-visual-help-closed-360x752.png"
+    },
+    {
+      "profile": "high",
+      "view": "visual",
+      "stage": "help-open",
+      "targetDenominator": null,
+      "viewport": {
+        "width": 360,
+        "height": 752
+      },
+      "question": {
+        "left": 63,
+        "top": 405.78,
+        "right": 297,
+        "bottom": 481.34,
+        "width": 234,
+        "height": 75.56
+      },
+      "questionText": "Choose a common denominator for both fractions.",
+      "questionTag": "LEGEND",
+      "visibleTaskQuestionCount": 1,
+      "redundantHeaderQuestionVisible": false,
+      "questionAssociatedWithResponse": true,
+      "response": {
+        "left": 63,
+        "top": 405.78,
+        "right": 297,
+        "bottom": 525.34,
+        "width": 234,
+        "height": 119.56
+      },
+      "help": {
+        "left": 63,
+        "top": 541.34,
+        "right": 297,
+        "bottom": 585.34,
         "width": 234,
         "height": 44
       },
       "cue": {
         "left": 63,
-        "top": 647.22,
+        "top": 601.34,
         "right": 297,
-        "bottom": 734.39,
+        "bottom": 688.52,
         "width": 234,
         "height": 87.17
       },
       "helpText": "Close help",
       "cueText": "Try multiplying 3 by 4 to find one common denominator.",
+      "recoveryText": null,
+      "selectedUnitSummary": null,
+      "selectedUnitDetailsOpen": false,
       "document": {
         "width": 360,
-        "height": 1025,
+        "height": 979,
         "horizontalOverflow": false
       },
       "interaction": "keyboard",
+      "computedAccessibleRole": "group",
+      "computedAccessibleNameMatches": true,
       "screenshot": "plan24-high-visual-help-open-360x752.png"
     },
     {
       "profile": "high",
       "view": "visual",
-      "stage": "selected-unit",
+      "stage": "transform",
+      "targetDenominator": 12,
       "viewport": {
         "width": 360,
         "height": 752
       },
       "question": {
         "left": 63,
-        "top": 420.72,
+        "top": 405.78,
         "right": 297,
-        "bottom": 471.09,
+        "bottom": 481.34,
         "width": 234,
-        "height": 50.38
+        "height": 75.56
       },
+      "questionText": "How many parts out of 12 make the same amount as 2/3?",
+      "questionTag": "LABEL",
+      "visibleTaskQuestionCount": 1,
+      "redundantHeaderQuestionVisible": false,
+      "questionAssociatedWithResponse": true,
       "response": {
         "left": 63,
-        "top": 550.03,
+        "top": 489.34,
         "right": 159,
-        "bottom": 597.03,
+        "bottom": 536.34,
         "width": 96,
         "height": 47
       },
       "help": null,
       "cue": null,
+      "helpText": null,
+      "cueText": null,
+      "recoveryText": null,
+      "selectedUnitSummary": "Why does 12 work?",
+      "selectedUnitDetailsOpen": false,
       "document": {
         "width": 360,
-        "height": 988,
+        "height": 927,
         "horizontalOverflow": false
       },
       "interaction": "keyboard",
-      "screenshot": "plan24-high-visual-selected-unit-360x752.png"
+      "computedAccessibleRole": "spinbutton",
+      "computedAccessibleNameMatches": true,
+      "screenshot": "plan24-high-visual-transform-12-360x752.png"
+    },
+    {
+      "profile": "high",
+      "view": "visual",
+      "stage": "selected-unit",
+      "targetDenominator": 12,
+      "viewport": {
+        "width": 360,
+        "height": 752
+      },
+      "question": {
+        "left": 63,
+        "top": 405.78,
+        "right": 297,
+        "bottom": 481.34,
+        "width": 234,
+        "height": 75.56
+      },
+      "questionText": "How many parts out of 12 make the same amount as 2/3?",
+      "questionTag": "LABEL",
+      "visibleTaskQuestionCount": 1,
+      "redundantHeaderQuestionVisible": false,
+      "questionAssociatedWithResponse": true,
+      "response": {
+        "left": 63,
+        "top": 489.34,
+        "right": 159,
+        "bottom": 536.34,
+        "width": 96,
+        "height": 47
+      },
+      "help": null,
+      "cue": null,
+      "helpText": null,
+      "cueText": null,
+      "recoveryText": null,
+      "selectedUnitSummary": "Why does 12 work?",
+      "selectedUnitDetailsOpen": true,
+      "document": {
+        "width": 360,
+        "height": 975,
+        "horizontalOverflow": false
+      },
+      "interaction": "keyboard",
+      "computedAccessibleRole": "spinbutton",
+      "computedAccessibleNameMatches": true,
+      "screenshot": "plan24-high-visual-selected-unit-12-360x752.png"
+    },
+    {
+      "profile": "high",
+      "view": "visual",
+      "stage": "transform",
+      "targetDenominator": 24,
+      "viewport": {
+        "width": 360,
+        "height": 752
+      },
+      "question": {
+        "left": 63,
+        "top": 405.78,
+        "right": 297,
+        "bottom": 481.34,
+        "width": 234,
+        "height": 75.56
+      },
+      "questionText": "How many parts out of 24 make the same amount as 2/3?",
+      "questionTag": "LABEL",
+      "visibleTaskQuestionCount": 1,
+      "redundantHeaderQuestionVisible": false,
+      "questionAssociatedWithResponse": true,
+      "response": {
+        "left": 63,
+        "top": 489.34,
+        "right": 159,
+        "bottom": 536.34,
+        "width": 96,
+        "height": 47
+      },
+      "help": null,
+      "cue": null,
+      "helpText": null,
+      "cueText": null,
+      "recoveryText": null,
+      "selectedUnitSummary": "Why does 24 work?",
+      "selectedUnitDetailsOpen": false,
+      "document": {
+        "width": 360,
+        "height": 927,
+        "horizontalOverflow": false
+      },
+      "interaction": "keyboard",
+      "computedAccessibleRole": "spinbutton",
+      "computedAccessibleNameMatches": true,
+      "screenshot": "plan24-high-visual-transform-24-360x752.png"
+    },
+    {
+      "profile": "high",
+      "view": "visual",
+      "stage": "selected-unit",
+      "targetDenominator": 24,
+      "viewport": {
+        "width": 360,
+        "height": 752
+      },
+      "question": {
+        "left": 63,
+        "top": 405.78,
+        "right": 297,
+        "bottom": 481.34,
+        "width": 234,
+        "height": 75.56
+      },
+      "questionText": "How many parts out of 24 make the same amount as 2/3?",
+      "questionTag": "LABEL",
+      "visibleTaskQuestionCount": 1,
+      "redundantHeaderQuestionVisible": false,
+      "questionAssociatedWithResponse": true,
+      "response": {
+        "left": 63,
+        "top": 489.34,
+        "right": 159,
+        "bottom": 536.34,
+        "width": 96,
+        "height": 47
+      },
+      "help": null,
+      "cue": null,
+      "helpText": null,
+      "cueText": null,
+      "recoveryText": null,
+      "selectedUnitSummary": "Why does 24 work?",
+      "selectedUnitDetailsOpen": true,
+      "document": {
+        "width": 360,
+        "height": 994,
+        "horizontalOverflow": false
+      },
+      "interaction": "keyboard",
+      "computedAccessibleRole": "spinbutton",
+      "computedAccessibleNameMatches": true,
+      "screenshot": "plan24-high-visual-selected-unit-24-360x752.png"
+    },
+    {
+      "profile": "high",
+      "view": "linear",
+      "stage": "help-closed",
+      "targetDenominator": null,
+      "viewport": {
+        "width": 360,
+        "height": 752
+      },
+      "question": {
+        "left": 63,
+        "top": 392.56,
+        "right": 297,
+        "bottom": 468.13,
+        "width": 234,
+        "height": 75.56
+      },
+      "questionText": "Choose a common denominator for both fractions.",
+      "questionTag": "LEGEND",
+      "visibleTaskQuestionCount": 1,
+      "redundantHeaderQuestionVisible": false,
+      "questionAssociatedWithResponse": true,
+      "response": {
+        "left": 63,
+        "top": 392.56,
+        "right": 297,
+        "bottom": 512.13,
+        "width": 234,
+        "height": 119.56
+      },
+      "help": {
+        "left": 63,
+        "top": 528.13,
+        "right": 297,
+        "bottom": 572.13,
+        "width": 234,
+        "height": 44
+      },
+      "cue": null,
+      "helpText": "Need help?",
+      "cueText": null,
+      "recoveryText": null,
+      "selectedUnitSummary": null,
+      "selectedUnitDetailsOpen": false,
+      "document": {
+        "width": 360,
+        "height": 862,
+        "horizontalOverflow": false
+      },
+      "interaction": "click",
+      "computedAccessibleRole": "group",
+      "computedAccessibleNameMatches": true,
+      "screenshot": "plan24-high-linear-help-closed-360x752.png"
     },
     {
       "profile": "high",
       "view": "linear",
       "stage": "help-open",
+      "targetDenominator": null,
       "viewport": {
         "width": 360,
         "height": 752
       },
       "question": {
         "left": 63,
-        "top": 410.56,
+        "top": 392.56,
         "right": 297,
-        "bottom": 486.13,
+        "bottom": 468.13,
         "width": 234,
         "height": 75.56
       },
+      "questionText": "Choose a common denominator for both fractions.",
+      "questionTag": "LEGEND",
+      "visibleTaskQuestionCount": 1,
+      "redundantHeaderQuestionVisible": false,
+      "questionAssociatedWithResponse": true,
       "response": {
         "left": 63,
-        "top": 520.13,
+        "top": 392.56,
         "right": 297,
-        "bottom": 564.13,
+        "bottom": 512.13,
         "width": 234,
-        "height": 44
+        "height": 119.56
       },
       "help": {
         "left": 63,
-        "top": 580.13,
+        "top": 528.13,
         "right": 297,
-        "bottom": 624.13,
+        "bottom": 572.13,
         "width": 234,
         "height": 44
       },
       "cue": {
         "left": 63,
-        "top": 640.13,
+        "top": 588.13,
         "right": 297,
-        "bottom": 727.3,
+        "bottom": 675.3,
         "width": 234,
         "height": 87.17
       },
       "helpText": "Close help",
       "cueText": "Try multiplying 3 by 4 to find one common denominator.",
+      "recoveryText": null,
+      "selectedUnitSummary": null,
+      "selectedUnitDetailsOpen": false,
       "document": {
         "width": 360,
-        "height": 1017,
+        "height": 965,
         "horizontalOverflow": false
       },
       "interaction": "click",
+      "computedAccessibleRole": "group",
+      "computedAccessibleNameMatches": true,
       "screenshot": "plan24-high-linear-help-open-360x752.png"
     },
     {
       "profile": "high",
       "view": "linear",
-      "stage": "selected-unit",
+      "stage": "transform",
+      "targetDenominator": 12,
       "viewport": {
         "width": 360,
         "height": 752
       },
       "question": {
         "left": 63,
-        "top": 410.56,
+        "top": 392.56,
         "right": 297,
-        "bottom": 460.94,
+        "bottom": 468.13,
         "width": 234,
-        "height": 50.38
+        "height": 75.56
       },
+      "questionText": "How many parts out of 12 make the same amount as 2/3?",
+      "questionTag": "LABEL",
+      "visibleTaskQuestionCount": 1,
+      "redundantHeaderQuestionVisible": false,
+      "questionAssociatedWithResponse": true,
       "response": {
         "left": 63,
-        "top": 542.94,
+        "top": 476.13,
         "right": 159,
-        "bottom": 589.94,
+        "bottom": 523.13,
         "width": 96,
         "height": 47
       },
       "help": null,
       "cue": null,
+      "helpText": null,
+      "cueText": null,
+      "recoveryText": null,
+      "selectedUnitSummary": "Why does 12 work?",
+      "selectedUnitDetailsOpen": false,
+      "document": {
+        "width": 360,
+        "height": 914,
+        "horizontalOverflow": false
+      },
+      "interaction": "click",
+      "computedAccessibleRole": "spinbutton",
+      "computedAccessibleNameMatches": true,
+      "screenshot": "plan24-high-linear-transform-12-360x752.png"
+    },
+    {
+      "profile": "high",
+      "view": "linear",
+      "stage": "selected-unit",
+      "targetDenominator": 12,
+      "viewport": {
+        "width": 360,
+        "height": 752
+      },
+      "question": {
+        "left": 63,
+        "top": 392.56,
+        "right": 297,
+        "bottom": 468.13,
+        "width": 234,
+        "height": 75.56
+      },
+      "questionText": "How many parts out of 12 make the same amount as 2/3?",
+      "questionTag": "LABEL",
+      "visibleTaskQuestionCount": 1,
+      "redundantHeaderQuestionVisible": false,
+      "questionAssociatedWithResponse": true,
+      "response": {
+        "left": 63,
+        "top": 476.13,
+        "right": 159,
+        "bottom": 523.13,
+        "width": 96,
+        "height": 47
+      },
+      "help": null,
+      "cue": null,
+      "helpText": null,
+      "cueText": null,
+      "recoveryText": null,
+      "selectedUnitSummary": "Why does 12 work?",
+      "selectedUnitDetailsOpen": true,
+      "document": {
+        "width": 360,
+        "height": 961,
+        "horizontalOverflow": false
+      },
+      "interaction": "click",
+      "computedAccessibleRole": "spinbutton",
+      "computedAccessibleNameMatches": true,
+      "screenshot": "plan24-high-linear-selected-unit-12-360x752.png"
+    },
+    {
+      "profile": "high",
+      "view": "linear",
+      "stage": "transform",
+      "targetDenominator": 24,
+      "viewport": {
+        "width": 360,
+        "height": 752
+      },
+      "question": {
+        "left": 63,
+        "top": 392.56,
+        "right": 297,
+        "bottom": 468.13,
+        "width": 234,
+        "height": 75.56
+      },
+      "questionText": "How many parts out of 24 make the same amount as 2/3?",
+      "questionTag": "LABEL",
+      "visibleTaskQuestionCount": 1,
+      "redundantHeaderQuestionVisible": false,
+      "questionAssociatedWithResponse": true,
+      "response": {
+        "left": 63,
+        "top": 476.13,
+        "right": 159,
+        "bottom": 523.13,
+        "width": 96,
+        "height": 47
+      },
+      "help": null,
+      "cue": null,
+      "helpText": null,
+      "cueText": null,
+      "recoveryText": null,
+      "selectedUnitSummary": "Why does 24 work?",
+      "selectedUnitDetailsOpen": false,
+      "document": {
+        "width": 360,
+        "height": 914,
+        "horizontalOverflow": false
+      },
+      "interaction": "click",
+      "computedAccessibleRole": "spinbutton",
+      "computedAccessibleNameMatches": true,
+      "screenshot": "plan24-high-linear-transform-24-360x752.png"
+    },
+    {
+      "profile": "high",
+      "view": "linear",
+      "stage": "selected-unit",
+      "targetDenominator": 24,
+      "viewport": {
+        "width": 360,
+        "height": 752
+      },
+      "question": {
+        "left": 63,
+        "top": 392.56,
+        "right": 297,
+        "bottom": 468.13,
+        "width": 234,
+        "height": 75.56
+      },
+      "questionText": "How many parts out of 24 make the same amount as 2/3?",
+      "questionTag": "LABEL",
+      "visibleTaskQuestionCount": 1,
+      "redundantHeaderQuestionVisible": false,
+      "questionAssociatedWithResponse": true,
+      "response": {
+        "left": 63,
+        "top": 476.13,
+        "right": 159,
+        "bottom": 523.13,
+        "width": 96,
+        "height": 47
+      },
+      "help": null,
+      "cue": null,
+      "helpText": null,
+      "cueText": null,
+      "recoveryText": null,
+      "selectedUnitSummary": "Why does 24 work?",
+      "selectedUnitDetailsOpen": true,
       "document": {
         "width": 360,
         "height": 981,
         "horizontalOverflow": false
       },
       "interaction": "click",
-      "screenshot": "plan24-high-linear-selected-unit-360x752.png"
+      "computedAccessibleRole": "spinbutton",
+      "computedAccessibleNameMatches": true,
+      "screenshot": "plan24-high-linear-selected-unit-24-360x752.png"
     },
     {
       "profile": "medium",
       "view": "visual",
-      "stage": "help-open",
+      "stage": "help-closed",
+      "targetDenominator": null,
       "viewport": {
         "width": 360,
         "height": 752
       },
       "question": {
         "left": 63,
-        "top": 420.72,
+        "top": 405.78,
         "right": 297,
-        "bottom": 496.28,
+        "bottom": 481.34,
         "width": 234,
         "height": 75.56
       },
+      "questionText": "Choose a common denominator for both fractions.",
+      "questionTag": "LABEL",
+      "visibleTaskQuestionCount": 1,
+      "redundantHeaderQuestionVisible": false,
+      "questionAssociatedWithResponse": true,
       "response": {
         "left": 63,
-        "top": 575.22,
+        "top": 489.34,
         "right": 159,
-        "bottom": 622.22,
+        "bottom": 536.34,
         "width": 96,
         "height": 47
       },
       "help": {
         "left": 63,
-        "top": 638.22,
+        "top": 552.34,
         "right": 297,
-        "bottom": 682.22,
+        "bottom": 596.34,
+        "width": 234,
+        "height": 44
+      },
+      "cue": null,
+      "helpText": "Need help?",
+      "cueText": null,
+      "recoveryText": null,
+      "selectedUnitSummary": null,
+      "selectedUnitDetailsOpen": false,
+      "document": {
+        "width": 360,
+        "height": 887,
+        "horizontalOverflow": false
+      },
+      "interaction": "click",
+      "computedAccessibleRole": "spinbutton",
+      "computedAccessibleNameMatches": true,
+      "screenshot": "plan24-medium-visual-help-closed-360x752.png"
+    },
+    {
+      "profile": "medium",
+      "view": "visual",
+      "stage": "help-open",
+      "targetDenominator": null,
+      "viewport": {
+        "width": 360,
+        "height": 752
+      },
+      "question": {
+        "left": 63,
+        "top": 405.78,
+        "right": 297,
+        "bottom": 481.34,
+        "width": 234,
+        "height": 75.56
+      },
+      "questionText": "Choose a common denominator for both fractions.",
+      "questionTag": "LABEL",
+      "visibleTaskQuestionCount": 1,
+      "redundantHeaderQuestionVisible": false,
+      "questionAssociatedWithResponse": true,
+      "response": {
+        "left": 63,
+        "top": 489.34,
+        "right": 159,
+        "bottom": 536.34,
+        "width": 96,
+        "height": 47
+      },
+      "help": {
+        "left": 63,
+        "top": 552.34,
+        "right": 297,
+        "bottom": 596.34,
         "width": 234,
         "height": 44
       },
       "cue": {
         "left": 63,
-        "top": 698.22,
+        "top": 612.34,
         "right": 297,
-        "bottom": 785.39,
+        "bottom": 699.52,
         "width": 234,
         "height": 87.17
       },
       "helpText": "Close help",
       "cueText": "Try multiplying 3 by 4 to find one common denominator.",
+      "recoveryText": null,
+      "selectedUnitSummary": null,
+      "selectedUnitDetailsOpen": false,
       "document": {
         "width": 360,
-        "height": 1076,
+        "height": 990,
         "horizontalOverflow": false
       },
       "interaction": "click",
+      "computedAccessibleRole": "spinbutton",
+      "computedAccessibleNameMatches": true,
       "screenshot": "plan24-medium-visual-help-open-360x752.png"
     },
     {
       "profile": "medium",
       "view": "visual",
       "stage": "one-sided-recovery",
+      "targetDenominator": null,
       "viewport": {
         "width": 360,
         "height": 752
       },
       "question": {
         "left": 63,
-        "top": 420.72,
+        "top": 405.78,
         "right": 297,
-        "bottom": 496.28,
+        "bottom": 481.34,
         "width": 234,
         "height": 75.56
       },
+      "questionText": "Choose a common denominator for both fractions.",
+      "questionTag": "LABEL",
+      "visibleTaskQuestionCount": 1,
+      "redundantHeaderQuestionVisible": false,
+      "questionAssociatedWithResponse": true,
       "response": {
         "left": 63,
-        "top": 575.22,
+        "top": 489.34,
         "right": 159,
-        "bottom": 622.22,
+        "bottom": 536.34,
         "width": 96,
         "height": 47
       },
       "help": {
         "left": 63,
-        "top": 638.22,
+        "top": 552.34,
         "right": 297,
-        "bottom": 682.22,
+        "bottom": 596.34,
         "width": 234,
         "height": 44
       },
       "cue": null,
       "helpText": "Need help?",
+      "cueText": null,
+      "recoveryText": null,
+      "selectedUnitSummary": null,
+      "selectedUnitDetailsOpen": false,
       "document": {
         "width": 360,
-        "height": 1052,
+        "height": 967,
         "horizontalOverflow": false
       },
       "interaction": "click",
+      "computedAccessibleRole": "spinbutton",
+      "computedAccessibleNameMatches": true,
       "screenshot": "plan24-medium-visual-one-sided-recovery-360x752.png"
     },
     {
       "profile": "medium",
       "view": "visual",
-      "stage": "selected-unit",
+      "stage": "transform",
+      "targetDenominator": 12,
       "viewport": {
         "width": 360,
         "height": 752
       },
       "question": {
         "left": 63,
-        "top": 420.72,
+        "top": 405.78,
         "right": 297,
-        "bottom": 471.09,
+        "bottom": 481.34,
         "width": 234,
-        "height": 50.38
+        "height": 75.56
       },
+      "questionText": "How many parts out of 12 make the same amount as 2/3?",
+      "questionTag": "LABEL",
+      "visibleTaskQuestionCount": 1,
+      "redundantHeaderQuestionVisible": false,
+      "questionAssociatedWithResponse": true,
       "response": {
         "left": 63,
-        "top": 550.03,
+        "top": 489.34,
         "right": 159,
-        "bottom": 597.03,
+        "bottom": 536.34,
         "width": 96,
         "height": 47
       },
       "help": null,
       "cue": null,
+      "helpText": null,
+      "cueText": null,
+      "recoveryText": null,
+      "selectedUnitSummary": "Why does 12 work?",
+      "selectedUnitDetailsOpen": false,
       "document": {
         "width": 360,
-        "height": 988,
+        "height": 927,
         "horizontalOverflow": false
       },
       "interaction": "click",
-      "screenshot": "plan24-medium-visual-selected-unit-360x752.png"
+      "computedAccessibleRole": "spinbutton",
+      "computedAccessibleNameMatches": true,
+      "screenshot": "plan24-medium-visual-transform-12-360x752.png"
     },
     {
       "profile": "medium",
-      "view": "linear",
-      "stage": "help-open",
+      "view": "visual",
+      "stage": "selected-unit",
+      "targetDenominator": 12,
       "viewport": {
         "width": 360,
         "height": 752
       },
       "question": {
         "left": 63,
-        "top": 410.56,
+        "top": 405.78,
         "right": 297,
-        "bottom": 486.13,
+        "bottom": 481.34,
         "width": 234,
         "height": 75.56
       },
+      "questionText": "How many parts out of 12 make the same amount as 2/3?",
+      "questionTag": "LABEL",
+      "visibleTaskQuestionCount": 1,
+      "redundantHeaderQuestionVisible": false,
+      "questionAssociatedWithResponse": true,
       "response": {
         "left": 63,
-        "top": 568.13,
+        "top": 489.34,
         "right": 159,
-        "bottom": 615.13,
+        "bottom": 536.34,
+        "width": 96,
+        "height": 47
+      },
+      "help": null,
+      "cue": null,
+      "helpText": null,
+      "cueText": null,
+      "recoveryText": null,
+      "selectedUnitSummary": "Why does 12 work?",
+      "selectedUnitDetailsOpen": true,
+      "document": {
+        "width": 360,
+        "height": 975,
+        "horizontalOverflow": false
+      },
+      "interaction": "click",
+      "computedAccessibleRole": "spinbutton",
+      "computedAccessibleNameMatches": true,
+      "screenshot": "plan24-medium-visual-selected-unit-12-360x752.png"
+    },
+    {
+      "profile": "medium",
+      "view": "visual",
+      "stage": "transform",
+      "targetDenominator": 24,
+      "viewport": {
+        "width": 360,
+        "height": 752
+      },
+      "question": {
+        "left": 63,
+        "top": 405.78,
+        "right": 297,
+        "bottom": 481.34,
+        "width": 234,
+        "height": 75.56
+      },
+      "questionText": "How many parts out of 24 make the same amount as 2/3?",
+      "questionTag": "LABEL",
+      "visibleTaskQuestionCount": 1,
+      "redundantHeaderQuestionVisible": false,
+      "questionAssociatedWithResponse": true,
+      "response": {
+        "left": 63,
+        "top": 489.34,
+        "right": 159,
+        "bottom": 536.34,
+        "width": 96,
+        "height": 47
+      },
+      "help": null,
+      "cue": null,
+      "helpText": null,
+      "cueText": null,
+      "recoveryText": null,
+      "selectedUnitSummary": "Why does 24 work?",
+      "selectedUnitDetailsOpen": false,
+      "document": {
+        "width": 360,
+        "height": 927,
+        "horizontalOverflow": false
+      },
+      "interaction": "click",
+      "computedAccessibleRole": "spinbutton",
+      "computedAccessibleNameMatches": true,
+      "screenshot": "plan24-medium-visual-transform-24-360x752.png"
+    },
+    {
+      "profile": "medium",
+      "view": "visual",
+      "stage": "selected-unit",
+      "targetDenominator": 24,
+      "viewport": {
+        "width": 360,
+        "height": 752
+      },
+      "question": {
+        "left": 63,
+        "top": 405.78,
+        "right": 297,
+        "bottom": 481.34,
+        "width": 234,
+        "height": 75.56
+      },
+      "questionText": "How many parts out of 24 make the same amount as 2/3?",
+      "questionTag": "LABEL",
+      "visibleTaskQuestionCount": 1,
+      "redundantHeaderQuestionVisible": false,
+      "questionAssociatedWithResponse": true,
+      "response": {
+        "left": 63,
+        "top": 489.34,
+        "right": 159,
+        "bottom": 536.34,
+        "width": 96,
+        "height": 47
+      },
+      "help": null,
+      "cue": null,
+      "helpText": null,
+      "cueText": null,
+      "recoveryText": null,
+      "selectedUnitSummary": "Why does 24 work?",
+      "selectedUnitDetailsOpen": true,
+      "document": {
+        "width": 360,
+        "height": 994,
+        "horizontalOverflow": false
+      },
+      "interaction": "click",
+      "computedAccessibleRole": "spinbutton",
+      "computedAccessibleNameMatches": true,
+      "screenshot": "plan24-medium-visual-selected-unit-24-360x752.png"
+    },
+    {
+      "profile": "medium",
+      "view": "linear",
+      "stage": "help-closed",
+      "targetDenominator": null,
+      "viewport": {
+        "width": 360,
+        "height": 752
+      },
+      "question": {
+        "left": 63,
+        "top": 392.56,
+        "right": 297,
+        "bottom": 468.13,
+        "width": 234,
+        "height": 75.56
+      },
+      "questionText": "Choose a common denominator for both fractions.",
+      "questionTag": "LABEL",
+      "visibleTaskQuestionCount": 1,
+      "redundantHeaderQuestionVisible": false,
+      "questionAssociatedWithResponse": true,
+      "response": {
+        "left": 63,
+        "top": 476.13,
+        "right": 159,
+        "bottom": 523.13,
         "width": 96,
         "height": 47
       },
       "help": {
         "left": 63,
-        "top": 631.13,
+        "top": 539.13,
         "right": 297,
-        "bottom": 675.13,
+        "bottom": 583.13,
+        "width": 234,
+        "height": 44
+      },
+      "cue": null,
+      "helpText": "Need help?",
+      "cueText": null,
+      "recoveryText": null,
+      "selectedUnitSummary": null,
+      "selectedUnitDetailsOpen": false,
+      "document": {
+        "width": 360,
+        "height": 873,
+        "horizontalOverflow": false
+      },
+      "interaction": "touch",
+      "computedAccessibleRole": "spinbutton",
+      "computedAccessibleNameMatches": true,
+      "screenshot": "plan24-medium-linear-help-closed-360x752.png"
+    },
+    {
+      "profile": "medium",
+      "view": "linear",
+      "stage": "help-open",
+      "targetDenominator": null,
+      "viewport": {
+        "width": 360,
+        "height": 752
+      },
+      "question": {
+        "left": 63,
+        "top": 392.56,
+        "right": 297,
+        "bottom": 468.13,
+        "width": 234,
+        "height": 75.56
+      },
+      "questionText": "Choose a common denominator for both fractions.",
+      "questionTag": "LABEL",
+      "visibleTaskQuestionCount": 1,
+      "redundantHeaderQuestionVisible": false,
+      "questionAssociatedWithResponse": true,
+      "response": {
+        "left": 63,
+        "top": 476.13,
+        "right": 159,
+        "bottom": 523.13,
+        "width": 96,
+        "height": 47
+      },
+      "help": {
+        "left": 63,
+        "top": 539.13,
+        "right": 297,
+        "bottom": 583.13,
         "width": 234,
         "height": 44
       },
       "cue": {
         "left": 63,
-        "top": 691.13,
+        "top": 599.13,
         "right": 297,
-        "bottom": 778.3,
+        "bottom": 686.3,
         "width": 234,
         "height": 87.17
       },
       "helpText": "Close help",
       "cueText": "Try multiplying 3 by 4 to find one common denominator.",
+      "recoveryText": null,
+      "selectedUnitSummary": null,
+      "selectedUnitDetailsOpen": false,
       "document": {
         "width": 360,
-        "height": 1068,
+        "height": 976,
         "horizontalOverflow": false
       },
       "interaction": "touch",
+      "computedAccessibleRole": "spinbutton",
+      "computedAccessibleNameMatches": true,
       "screenshot": "plan24-medium-linear-help-open-360x752.png"
     },
     {
       "profile": "medium",
       "view": "linear",
       "stage": "one-sided-recovery",
+      "targetDenominator": null,
       "viewport": {
         "width": 360,
         "height": 752
       },
       "question": {
         "left": 63,
-        "top": 410.56,
+        "top": 392.56,
         "right": 297,
-        "bottom": 486.13,
+        "bottom": 468.13,
         "width": 234,
         "height": 75.56
       },
+      "questionText": "Choose a common denominator for both fractions.",
+      "questionTag": "LABEL",
+      "visibleTaskQuestionCount": 1,
+      "redundantHeaderQuestionVisible": false,
+      "questionAssociatedWithResponse": true,
       "response": {
         "left": 63,
-        "top": 568.13,
+        "top": 476.13,
         "right": 159,
-        "bottom": 615.13,
+        "bottom": 523.13,
         "width": 96,
         "height": 47
       },
       "help": {
         "left": 63,
-        "top": 631.13,
+        "top": 539.13,
         "right": 297,
-        "bottom": 675.13,
+        "bottom": 583.13,
         "width": 234,
         "height": 44
       },
       "cue": null,
       "helpText": "Need help?",
+      "cueText": null,
+      "recoveryText": null,
+      "selectedUnitSummary": null,
+      "selectedUnitDetailsOpen": false,
       "document": {
         "width": 360,
-        "height": 1045,
+        "height": 953,
         "horizontalOverflow": false
       },
       "interaction": "touch",
+      "computedAccessibleRole": "spinbutton",
+      "computedAccessibleNameMatches": true,
       "screenshot": "plan24-medium-linear-one-sided-recovery-360x752.png"
     },
     {
       "profile": "medium",
       "view": "linear",
-      "stage": "selected-unit",
+      "stage": "transform",
+      "targetDenominator": 12,
       "viewport": {
         "width": 360,
         "height": 752
       },
       "question": {
         "left": 63,
-        "top": 410.56,
+        "top": 392.56,
         "right": 297,
-        "bottom": 460.94,
+        "bottom": 468.13,
         "width": 234,
-        "height": 50.38
+        "height": 75.56
       },
+      "questionText": "How many parts out of 12 make the same amount as 2/3?",
+      "questionTag": "LABEL",
+      "visibleTaskQuestionCount": 1,
+      "redundantHeaderQuestionVisible": false,
+      "questionAssociatedWithResponse": true,
       "response": {
         "left": 63,
-        "top": 542.94,
+        "top": 476.13,
         "right": 159,
-        "bottom": 589.94,
+        "bottom": 523.13,
         "width": 96,
         "height": 47
       },
       "help": null,
       "cue": null,
+      "helpText": null,
+      "cueText": null,
+      "recoveryText": null,
+      "selectedUnitSummary": "Why does 12 work?",
+      "selectedUnitDetailsOpen": false,
+      "document": {
+        "width": 360,
+        "height": 914,
+        "horizontalOverflow": false
+      },
+      "interaction": "touch",
+      "computedAccessibleRole": "spinbutton",
+      "computedAccessibleNameMatches": true,
+      "screenshot": "plan24-medium-linear-transform-12-360x752.png"
+    },
+    {
+      "profile": "medium",
+      "view": "linear",
+      "stage": "selected-unit",
+      "targetDenominator": 12,
+      "viewport": {
+        "width": 360,
+        "height": 752
+      },
+      "question": {
+        "left": 63,
+        "top": 392.56,
+        "right": 297,
+        "bottom": 468.13,
+        "width": 234,
+        "height": 75.56
+      },
+      "questionText": "How many parts out of 12 make the same amount as 2/3?",
+      "questionTag": "LABEL",
+      "visibleTaskQuestionCount": 1,
+      "redundantHeaderQuestionVisible": false,
+      "questionAssociatedWithResponse": true,
+      "response": {
+        "left": 63,
+        "top": 476.13,
+        "right": 159,
+        "bottom": 523.13,
+        "width": 96,
+        "height": 47
+      },
+      "help": null,
+      "cue": null,
+      "helpText": null,
+      "cueText": null,
+      "recoveryText": null,
+      "selectedUnitSummary": "Why does 12 work?",
+      "selectedUnitDetailsOpen": true,
+      "document": {
+        "width": 360,
+        "height": 961,
+        "horizontalOverflow": false
+      },
+      "interaction": "touch",
+      "computedAccessibleRole": "spinbutton",
+      "computedAccessibleNameMatches": true,
+      "screenshot": "plan24-medium-linear-selected-unit-12-360x752.png"
+    },
+    {
+      "profile": "medium",
+      "view": "linear",
+      "stage": "transform",
+      "targetDenominator": 24,
+      "viewport": {
+        "width": 360,
+        "height": 752
+      },
+      "question": {
+        "left": 63,
+        "top": 392.56,
+        "right": 297,
+        "bottom": 468.13,
+        "width": 234,
+        "height": 75.56
+      },
+      "questionText": "How many parts out of 24 make the same amount as 2/3?",
+      "questionTag": "LABEL",
+      "visibleTaskQuestionCount": 1,
+      "redundantHeaderQuestionVisible": false,
+      "questionAssociatedWithResponse": true,
+      "response": {
+        "left": 63,
+        "top": 476.13,
+        "right": 159,
+        "bottom": 523.13,
+        "width": 96,
+        "height": 47
+      },
+      "help": null,
+      "cue": null,
+      "helpText": null,
+      "cueText": null,
+      "recoveryText": null,
+      "selectedUnitSummary": "Why does 24 work?",
+      "selectedUnitDetailsOpen": false,
+      "document": {
+        "width": 360,
+        "height": 914,
+        "horizontalOverflow": false
+      },
+      "interaction": "touch",
+      "computedAccessibleRole": "spinbutton",
+      "computedAccessibleNameMatches": true,
+      "screenshot": "plan24-medium-linear-transform-24-360x752.png"
+    },
+    {
+      "profile": "medium",
+      "view": "linear",
+      "stage": "selected-unit",
+      "targetDenominator": 24,
+      "viewport": {
+        "width": 360,
+        "height": 752
+      },
+      "question": {
+        "left": 63,
+        "top": 392.56,
+        "right": 297,
+        "bottom": 468.13,
+        "width": 234,
+        "height": 75.56
+      },
+      "questionText": "How many parts out of 24 make the same amount as 2/3?",
+      "questionTag": "LABEL",
+      "visibleTaskQuestionCount": 1,
+      "redundantHeaderQuestionVisible": false,
+      "questionAssociatedWithResponse": true,
+      "response": {
+        "left": 63,
+        "top": 476.13,
+        "right": 159,
+        "bottom": 523.13,
+        "width": 96,
+        "height": 47
+      },
+      "help": null,
+      "cue": null,
+      "helpText": null,
+      "cueText": null,
+      "recoveryText": null,
+      "selectedUnitSummary": "Why does 24 work?",
+      "selectedUnitDetailsOpen": true,
       "document": {
         "width": 360,
         "height": 981,
         "horizontalOverflow": false
       },
       "interaction": "touch",
-      "screenshot": "plan24-medium-linear-selected-unit-360x752.png"
+      "computedAccessibleRole": "spinbutton",
+      "computedAccessibleNameMatches": true,
+      "screenshot": "plan24-medium-linear-selected-unit-24-360x752.png"
     }
   ]
 }

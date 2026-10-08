@@ -436,7 +436,6 @@ export function createLinearPathRenderer({
       }
 
       case 'decide': {
-        promptText.textContent = strings.decide.prompt;
         const candidates = scene.meaning.unitRelationship.candidateDenominators;
 
         if (Array.isArray(candidates) && candidates.length >= 2) {
@@ -458,6 +457,9 @@ export function createLinearPathRenderer({
               });
             },
           });
+          const questionLegend = choiceGroup.querySelector('.control-legend');
+          questionLegend.classList.remove('sr-only');
+          questionLegend.classList.add('active-beat-prompt');
           controlsContainer.appendChild(choiceGroup);
         } else {
           const numInput = createNumericInput({
@@ -477,6 +479,7 @@ export function createLinearPathRenderer({
               });
             },
           });
+          numInput.element.querySelector('.control-label').classList.add('active-beat-prompt');
           controlsContainer.appendChild(numInput.element);
         }
         break;
@@ -499,7 +502,6 @@ export function createLinearPathRenderer({
         }
         const targetDen = commonUnit.targetDenominator;
         const sourceForm = scene.meaning.quantities[side].sourceForm;
-        promptText.textContent = strings.transform.prompt(side, targetDen);
 
         const numInput = createNumericInput({
           id: `linear-transform-num-input-${side}`,
@@ -518,6 +520,7 @@ export function createLinearPathRenderer({
             });
           },
         });
+        numInput.element.querySelector('.control-label').classList.add('active-beat-prompt');
         controlsContainer.appendChild(numInput.element);
         break;
       }
@@ -723,8 +726,10 @@ export function createLinearPathRenderer({
     const helpMessage = lastHelp && lastHelp.beat === beat && beat !== 'decide'
       ? strings.app?.helpLevels?.[lastHelp.level]
       : null;
-    promptHeader.appendChild(promptText);
-    activeBeatEl.appendChild(promptHeader);
+    if (beat !== 'decide' && beat !== 'transform') {
+      promptHeader.appendChild(promptText);
+      activeBeatEl.appendChild(promptHeader);
+    }
     if (helpMessage) {
       const helpEl = document.createElement('p');
       helpEl.classList.add('active-beat-help');

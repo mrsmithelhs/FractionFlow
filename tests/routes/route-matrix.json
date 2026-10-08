@@ -2991,7 +2991,9 @@
         {"step":10,"method":"click","target":".app-visual-view .control-submit-btn","description":"Continue with 12ths"}
       ],
       "expect":{"capture":{"target":".app-visual-view","type":"innerHTML"},"assertions":[
-        {"type":"containsText","target":".app-visual-view .active-beat-prompt","value":"Rename the first fraction with 12 equal parts."},
+        {"type":"containsText","target":".app-visual-view .control-label.active-beat-prompt","value":"How many parts out of 12 make the same amount as 2/3?"},
+        {"type":"notHasSelector","target":".app-visual-view .active-beat-header .active-beat-prompt"},
+        {"type":"notContainsText","target":".app-visual-view","value":"Rename the first fraction with 12 equal parts."},
         {"type":"attributeEquals","target":".fractionflow-app","attribute":"data-support-code","value":"medium support"},
         {"type":"notHasSelector","target":".app-visual-view .recovery-feedback"}
       ]},
@@ -3025,7 +3027,9 @@
         {"step":13,"method":"click","target":".app-linear-view .control-submit-btn","description":"Continue with 12ths"}
       ],
       "expect":{"capture":{"target":".app-linear-view","type":"innerHTML"},"assertions":[
-        {"type":"containsText","target":".app-linear-view .active-beat-prompt","value":"Rename the first fraction with 12 equal parts."},
+        {"type":"containsText","target":".app-linear-view .control-label.active-beat-prompt","value":"How many parts out of 12 make the same amount as 2/3?"},
+        {"type":"notHasSelector","target":".app-linear-view .active-beat-header .active-beat-prompt"},
+        {"type":"notContainsText","target":".app-linear-view","value":"Rename the first fraction with 12 equal parts."},
         {"type":"notHasSelector","target":".app-linear-view .recovery-feedback"},
         {"type":"notHasSelector","target":".app-linear-view input#linear-decide-common-denominator-input"}
       ]},
@@ -3087,7 +3091,8 @@
         ],"description":"Verify the help entry and concrete cue are beside the response"},
         {"step":9,"method":"click","target":".app-view-toggle","description":"Switch to linear view while help is open"},
         {"step":10,"method":"assert","assertions":[
-          {"type":"containsText","target":".app-linear-view .active-beat-prompt","value":"Choose a common denominator"},
+          {"type":"containsText","target":".app-linear-view .control-label.active-beat-prompt","value":"Choose a common denominator for both fractions."},
+          {"type":"notHasSelector","target":".app-linear-view .active-beat-header .active-beat-prompt"},
           {"type":"hasSelector","target":".app-linear-view .active-beat-controls .app-secondary-button"},
           {"type":"containsText","target":".app-linear-view .active-denominator-help-cue","value":"Try multiplying 3 by 4 to find one common denominator."}
         ],"description":"Verify the open workspace follows the task into linear view"},
@@ -3119,7 +3124,11 @@
         {"step":4,"method":"click","target":".app-linear-view .control-choice-btn >> nth=1","description":"Notice different-sized parts"},
         {"step":5,"method":"click","target":".app-linear-view .active-beat-controls .app-secondary-button","description":"Open denominator help beside the choices"},
         {"step":6,"method":"assertText","target":".app-linear-view .active-denominator-help-cue","value":"Try multiplying 3 by 4 to find one common denominator.","description":"Read the optional finding strategy"},
-        {"step":7,"method":"click","target":".app-linear-view .control-choice-btn >> nth=0","description":"Choose 12 while keeping the helper optional"}
+        {"step":7,"method":"assert","assertions":[
+          {"type":"containsText","target":".app-linear-view .control-legend.active-beat-prompt","value":"Choose a common denominator for both fractions."},
+          {"type":"notHasSelector","target":".app-linear-view .active-beat-header .active-beat-prompt"}
+        ],"description":"Verify the fieldset legend is the single visible task question"},
+        {"step":8,"method":"click","target":".app-linear-view .control-choice-btn >> nth=0","description":"Choose 12 while keeping the helper optional"}
       ],
       "expect":{"capture":{"target":".app-linear-view","type":"innerHTML"},"assertions":[
         {"type":"containsText","target":".app-linear-view .selected-unit-help","value":"12 is 4 groups of 3 and 3 groups of 4, so both fractions can use twelfths."},
