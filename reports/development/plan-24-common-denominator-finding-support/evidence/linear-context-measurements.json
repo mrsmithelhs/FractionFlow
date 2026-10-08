@@ -1,0 +1,559 @@
+{
+  "captureDate": "2026-10-08",
+  "browser": {
+    "engine": "Chromium via Playwright",
+    "channel": "msedge"
+  },
+  "limitations": [
+    "Computed accessible names were checked through Playwright browser role queries; no screen reader or assistive technology was used.",
+    "These rendered-state checks do not establish learner understanding or instructional efficacy."
+  ],
+  "observations": [
+    {
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "context": {
+        "left": 41,
+        "top": 161,
+        "right": 319,
+        "bottom": 251.78,
+        "width": 278,
+        "height": 90.78
+      },
+      "expression": {
+        "left": 134.33,
+        "top": 178,
+        "right": 225.66,
+        "bottom": 234.78,
+        "width": 91.33,
+        "height": 56.78
+      },
+      "expressionRole": "math",
+      "accessibleName": "2 over 3 plus 1 over 4",
+      "hiddenVisualChildren": true,
+      "childCount": 3,
+      "transitionText": [],
+      "premiseLabels": [],
+      "questionText": "How many parts out of 12 make the same amount as 2/3?",
+      "question": {
+        "left": 63,
+        "top": 293.78,
+        "right": 297,
+        "bottom": 369.34,
+        "width": 234,
+        "height": 75.56
+      },
+      "document": {
+        "width": 360,
+        "height": 776,
+        "horizontalOverflow": false
+      },
+      "state": "ordinary-decide",
+      "screenshot": "plan24-linear-context-ordinary-decide-360x740.png"
+    },
+    {
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "context": {
+        "left": 41,
+        "top": 161,
+        "right": 319,
+        "bottom": 330.95,
+        "width": 278,
+        "height": 169.95
+      },
+      "expression": {
+        "left": 127.67,
+        "top": 178,
+        "right": 232.33,
+        "bottom": 234.78,
+        "width": 104.66,
+        "height": 56.78
+      },
+      "expressionRole": "math",
+      "accessibleName": "8 over 12 plus 1 over 4",
+      "hiddenVisualChildren": true,
+      "childCount": 3,
+      "transitionText": [
+        "First fraction: started as 2 of 3 equal parts, now renamed to 8 of 12 equal parts in 1 whole."
+      ],
+      "premiseLabels": [],
+      "questionText": "How many parts out of 12 make the same amount as 1/4?",
+      "question": {
+        "left": 63,
+        "top": 372.95,
+        "right": 297,
+        "bottom": 448.52,
+        "width": 234,
+        "height": 75.56
+      },
+      "document": {
+        "width": 360,
+        "height": 855,
+        "horizontalOverflow": false
+      },
+      "state": "juxtaposed-transition",
+      "screenshot": "plan24-linear-context-juxtaposed-transition-360x740.png"
+    },
+    {
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "context": {
+        "left": 41,
+        "top": 161,
+        "right": 319,
+        "bottom": 330.95,
+        "width": 278,
+        "height": 169.95
+      },
+      "expression": {
+        "left": 127.67,
+        "top": 178,
+        "right": 232.33,
+        "bottom": 234.78,
+        "width": 104.66,
+        "height": 56.78
+      },
+      "expressionRole": "math",
+      "accessibleName": "8 over 12 plus 1 over 4",
+      "hiddenVisualChildren": true,
+      "childCount": 3,
+      "transitionText": [
+        "First fraction: Step 1 was 2 of 3 equal parts. Step 2 is 8 of 12 equal parts in 1 whole."
+      ],
+      "premiseLabels": [],
+      "questionText": "How many parts out of 12 make the same amount as 1/4?",
+      "question": {
+        "left": 63,
+        "top": 372.95,
+        "right": 297,
+        "bottom": 448.52,
+        "width": 234,
+        "height": 75.56
+      },
+      "document": {
+        "width": 360,
+        "height": 855,
+        "horizontalOverflow": false
+      },
+      "state": "sequential-transition",
+      "screenshot": "plan24-linear-context-sequential-transition-360x740.png"
+    },
+    {
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "context": {
+        "left": 41,
+        "top": 161,
+        "right": 319,
+        "bottom": 330.95,
+        "width": 278,
+        "height": 169.95
+      },
+      "expression": {
+        "left": 127.67,
+        "top": 178,
+        "right": 232.33,
+        "bottom": 234.78,
+        "width": 104.66,
+        "height": 56.78
+      },
+      "expressionRole": "math",
+      "accessibleName": "8 over 12 plus 1 over 4",
+      "hiddenVisualChildren": true,
+      "childCount": 3,
+      "transitionText": [
+        "First fraction replaying: started with 2 of 3 equal parts in 1 whole."
+      ],
+      "premiseLabels": [],
+      "questionText": "How many parts out of 12 make the same amount as 1/4?",
+      "question": {
+        "left": 63,
+        "top": 372.95,
+        "right": 297,
+        "bottom": 448.52,
+        "width": 234,
+        "height": 75.56
+      },
+      "document": {
+        "width": 360,
+        "height": 855,
+        "horizontalOverflow": false
+      },
+      "state": "in-place-replay",
+      "screenshot": "plan24-linear-context-in-place-replay-360x740.png"
+    },
+    {
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "context": {
+        "left": 41,
+        "top": 161,
+        "right": 319,
+        "bottom": 251.78,
+        "width": 278,
+        "height": 90.78
+      },
+      "expression": {
+        "left": 121,
+        "top": 178,
+        "right": 238.98,
+        "bottom": 234.78,
+        "width": 117.98,
+        "height": 56.78
+      },
+      "expressionRole": "math",
+      "accessibleName": "8 over 12 plus 3 over 12",
+      "hiddenVisualChildren": true,
+      "childCount": 3,
+      "transitionText": [],
+      "premiseLabels": [],
+      "questionText": "The answer is 11/12.",
+      "question": {
+        "left": 63,
+        "top": 311.78,
+        "right": 297,
+        "bottom": 336.97,
+        "width": 234,
+        "height": 25.19
+      },
+      "document": {
+        "width": 360,
+        "height": 747,
+        "horizontalOverflow": false
+      },
+      "state": "converted-resolve",
+      "screenshot": "plan24-linear-context-converted-resolve-360x740.png"
+    },
+    {
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "context": {
+        "left": 41,
+        "top": 161,
+        "right": 319,
+        "bottom": 281.38,
+        "width": 278,
+        "height": 120.38
+      },
+      "expression": {
+        "left": 58,
+        "top": 178,
+        "right": 302,
+        "bottom": 264.38,
+        "width": 244,
+        "height": 86.38
+      },
+      "expressionRole": "math",
+      "accessibleName": "Starting fraction: 2 over 3. New parts: 7 over 12.",
+      "hiddenVisualChildren": true,
+      "childCount": 4,
+      "transitionText": [],
+      "premiseLabels": [
+        "Starting fraction",
+        "New parts"
+      ],
+      "questionText": "Does this new fraction show the same amount as before?",
+      "question": {
+        "left": 63,
+        "top": 420.38,
+        "right": 297,
+        "bottom": 470.75,
+        "width": 234,
+        "height": 50.38
+      },
+      "document": {
+        "width": 360,
+        "height": 951,
+        "horizontalOverflow": false
+      },
+      "state": "premise-comparison",
+      "screenshot": "plan24-linear-context-premise-comparison-360x740.png"
+    },
+    {
+      "viewport": {
+        "width": 360,
+        "height": 752
+      },
+      "context": {
+        "left": 41,
+        "top": 161,
+        "right": 319,
+        "bottom": 251.78,
+        "width": 278,
+        "height": 90.78
+      },
+      "expression": {
+        "left": 134.33,
+        "top": 178,
+        "right": 225.66,
+        "bottom": 234.78,
+        "width": 91.33,
+        "height": 56.78
+      },
+      "expressionRole": "math",
+      "accessibleName": "2 over 3 plus 1 over 4",
+      "hiddenVisualChildren": true,
+      "childCount": 3,
+      "transitionText": [],
+      "premiseLabels": [],
+      "questionText": "How many parts out of 12 make the same amount as 2/3?",
+      "question": {
+        "left": 63,
+        "top": 293.78,
+        "right": 297,
+        "bottom": 369.34,
+        "width": 234,
+        "height": 75.56
+      },
+      "document": {
+        "width": 360,
+        "height": 776,
+        "horizontalOverflow": false
+      },
+      "state": "ordinary-decide",
+      "screenshot": "plan24-linear-context-ordinary-decide-360x752.png"
+    },
+    {
+      "viewport": {
+        "width": 360,
+        "height": 752
+      },
+      "context": {
+        "left": 41,
+        "top": 161,
+        "right": 319,
+        "bottom": 330.95,
+        "width": 278,
+        "height": 169.95
+      },
+      "expression": {
+        "left": 127.67,
+        "top": 178,
+        "right": 232.33,
+        "bottom": 234.78,
+        "width": 104.66,
+        "height": 56.78
+      },
+      "expressionRole": "math",
+      "accessibleName": "8 over 12 plus 1 over 4",
+      "hiddenVisualChildren": true,
+      "childCount": 3,
+      "transitionText": [
+        "First fraction: started as 2 of 3 equal parts, now renamed to 8 of 12 equal parts in 1 whole."
+      ],
+      "premiseLabels": [],
+      "questionText": "How many parts out of 12 make the same amount as 1/4?",
+      "question": {
+        "left": 63,
+        "top": 372.95,
+        "right": 297,
+        "bottom": 448.52,
+        "width": 234,
+        "height": 75.56
+      },
+      "document": {
+        "width": 360,
+        "height": 855,
+        "horizontalOverflow": false
+      },
+      "state": "juxtaposed-transition",
+      "screenshot": "plan24-linear-context-juxtaposed-transition-360x752.png"
+    },
+    {
+      "viewport": {
+        "width": 360,
+        "height": 752
+      },
+      "context": {
+        "left": 41,
+        "top": 161,
+        "right": 319,
+        "bottom": 330.95,
+        "width": 278,
+        "height": 169.95
+      },
+      "expression": {
+        "left": 127.67,
+        "top": 178,
+        "right": 232.33,
+        "bottom": 234.78,
+        "width": 104.66,
+        "height": 56.78
+      },
+      "expressionRole": "math",
+      "accessibleName": "8 over 12 plus 1 over 4",
+      "hiddenVisualChildren": true,
+      "childCount": 3,
+      "transitionText": [
+        "First fraction: Step 1 was 2 of 3 equal parts. Step 2 is 8 of 12 equal parts in 1 whole."
+      ],
+      "premiseLabels": [],
+      "questionText": "How many parts out of 12 make the same amount as 1/4?",
+      "question": {
+        "left": 63,
+        "top": 372.95,
+        "right": 297,
+        "bottom": 448.52,
+        "width": 234,
+        "height": 75.56
+      },
+      "document": {
+        "width": 360,
+        "height": 855,
+        "horizontalOverflow": false
+      },
+      "state": "sequential-transition",
+      "screenshot": "plan24-linear-context-sequential-transition-360x752.png"
+    },
+    {
+      "viewport": {
+        "width": 360,
+        "height": 752
+      },
+      "context": {
+        "left": 41,
+        "top": 161,
+        "right": 319,
+        "bottom": 330.95,
+        "width": 278,
+        "height": 169.95
+      },
+      "expression": {
+        "left": 127.67,
+        "top": 178,
+        "right": 232.33,
+        "bottom": 234.78,
+        "width": 104.66,
+        "height": 56.78
+      },
+      "expressionRole": "math",
+      "accessibleName": "8 over 12 plus 1 over 4",
+      "hiddenVisualChildren": true,
+      "childCount": 3,
+      "transitionText": [
+        "First fraction replaying: started with 2 of 3 equal parts in 1 whole."
+      ],
+      "premiseLabels": [],
+      "questionText": "How many parts out of 12 make the same amount as 1/4?",
+      "question": {
+        "left": 63,
+        "top": 372.95,
+        "right": 297,
+        "bottom": 448.52,
+        "width": 234,
+        "height": 75.56
+      },
+      "document": {
+        "width": 360,
+        "height": 855,
+        "horizontalOverflow": false
+      },
+      "state": "in-place-replay",
+      "screenshot": "plan24-linear-context-in-place-replay-360x752.png"
+    },
+    {
+      "viewport": {
+        "width": 360,
+        "height": 752
+      },
+      "context": {
+        "left": 41,
+        "top": 161,
+        "right": 319,
+        "bottom": 251.78,
+        "width": 278,
+        "height": 90.78
+      },
+      "expression": {
+        "left": 121,
+        "top": 178,
+        "right": 238.98,
+        "bottom": 234.78,
+        "width": 117.98,
+        "height": 56.78
+      },
+      "expressionRole": "math",
+      "accessibleName": "8 over 12 plus 3 over 12",
+      "hiddenVisualChildren": true,
+      "childCount": 3,
+      "transitionText": [],
+      "premiseLabels": [],
+      "questionText": "The answer is 11/12.",
+      "question": {
+        "left": 63,
+        "top": 311.78,
+        "right": 297,
+        "bottom": 336.97,
+        "width": 234,
+        "height": 25.19
+      },
+      "document": {
+        "width": 360,
+        "height": 752,
+        "horizontalOverflow": false
+      },
+      "state": "converted-resolve",
+      "screenshot": "plan24-linear-context-converted-resolve-360x752.png"
+    },
+    {
+      "viewport": {
+        "width": 360,
+        "height": 752
+      },
+      "context": {
+        "left": 41,
+        "top": 161,
+        "right": 319,
+        "bottom": 281.38,
+        "width": 278,
+        "height": 120.38
+      },
+      "expression": {
+        "left": 58,
+        "top": 178,
+        "right": 302,
+        "bottom": 264.38,
+        "width": 244,
+        "height": 86.38
+      },
+      "expressionRole": "math",
+      "accessibleName": "Starting fraction: 2 over 3. New parts: 7 over 12.",
+      "hiddenVisualChildren": true,
+      "childCount": 4,
+      "transitionText": [],
+      "premiseLabels": [
+        "Starting fraction",
+        "New parts"
+      ],
+      "questionText": "Does this new fraction show the same amount as before?",
+      "question": {
+        "left": 63,
+        "top": 420.38,
+        "right": 297,
+        "bottom": 470.75,
+        "width": 234,
+        "height": 50.38
+      },
+      "document": {
+        "width": 360,
+        "height": 951,
+        "horizontalOverflow": false
+      },
+      "state": "premise-comparison",
+      "screenshot": "plan24-linear-context-premise-comparison-360x752.png"
+    }
+  ]
+}

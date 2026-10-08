@@ -217,7 +217,7 @@
     },
 {
       "id": "ROUTE-COND-4-REFLECT",
-      "behavior": "Condition 4 (bundle-4: premise check) renders a check-the-premise comparison frame with Yes/No buttons at reflect beat.",
+      "behavior": "Condition 4 (bundle-4: premise check) renders the premise comparison and preserves linear reflection replay context.",
       "configuration": "phase2-bundle-4",
       "startingSurface": "mounted-app-entry",
       "viewport": {"width":360,"height":740},
@@ -237,14 +237,17 @@
         {"step":11,"method":"fill","target":".app-visual-view input.control-numeric-input","value":"11","description":"Operate: enter sum 11"},
         {"step":12,"method":"click","target":".app-visual-view .control-submit-btn","description":"Operate: submit 11"},
         {"step":13,"method":"click","target":".app-visual-view .control-btn","description":"Resolve: acknowledge completed operation"},
-        {"step":14,"method":"assertNoSubdivisionMotion","container":".app-visual-view .premise-comparison","description":"Bundle 4 reflection inspection remains static"}
+        {"step":14,"method":"assertNoSubdivisionMotion","container":".app-visual-view .premise-comparison","description":"Bundle 4 reflection inspection remains static"},
+        {"step":15,"method":"click","target":".app-view-controls .app-secondary-button","description":"Switch to the linear access path at reflection"},
+        {"step":16,"method":"click","target":".app-support-controls .app-secondary-button >> nth=1","description":"Replay the last change while checking the premise"}
       ],
       "expect": {
-        "capture": {"target":".app-visual-view","type":"innerHTML"},
+        "capture": {"target":".app-linear-view","type":"innerHTML"},
         "assertions": [
-          {"type":"hasSelector","target":".app-visual-view .premise-comparison"},
-          {"type":"containsText","target":".app-visual-view","value":"Check this renaming:"},
-          {"type":"containsText","target":".app-visual-view","value":"Does the \"New parts\" bar show the same amount as the starting fraction?"}
+          {"type":"hasSelector","target":".app-linear-view .linear-premise-comparison[role=\"math\"]"},
+          {"type":"attributeEquals","target":".app-linear-view .linear-premise-comparison","attribute":"aria-label","value":"Starting fraction: 2 over 3. New parts: 7 over 12."},
+          {"type":"containsText","target":".app-support-notice[aria-live=\"polite\"]","value":"Take another look at the current bars and symbols."},
+          {"type":"notHasSelector","target":".app-linear-view .linear-transition-details"}
         ]
       },
       "negativeControl": {"targetRouteId":"ROUTE-COND-1-REFLECT","comparison":"notIdenticalCapture"}

@@ -1,6 +1,7 @@
 import { assertValidScene, RenderContractError } from './contract.js';
 import { STRINGS } from './strings.js';
 import { createButton, createNumericInput, createChoiceGroup } from './controls.js';
+import { createSymbolicFraction } from './symbolic.js';
 
 /**
  * Accessible Linear Alternative Renderer (Plan 08, Requirement 1, DECISION-004, DECISION-024)
@@ -57,7 +58,7 @@ export function createLinearPathRenderer({
     // Mathematical Context Section
     contextSectionEl = document.createElement('section');
     contextSectionEl.classList.add('linear-context-section');
-    contextSectionEl.setAttribute('aria-label', 'Current problem and quantities');
+    contextSectionEl.setAttribute('aria-label', 'Current fractions');
     rootEl.appendChild(contextSectionEl);
 
     // Active Beat Section
@@ -77,22 +78,6 @@ export function createLinearPathRenderer({
     const quantities = scene.meaning.quantities;
     const op = scene.meaning.operation;
 
-    const heading = document.createElement('h2');
-    heading.classList.add('linear-context-heading');
-    heading.textContent = 'Problem and Quantities';
-    contextSectionEl.appendChild(heading);
-
-    const problemDesc = document.createElement('p');
-    problemDesc.classList.add('linear-problem-statement');
-    const leftSource = `${quantities.left.sourceForm.numerator}/${quantities.left.sourceForm.denominator}`;
-    const rightSource = `${quantities.right.sourceForm.numerator}/${quantities.right.sourceForm.denominator}`;
-    const symbol = op.operation === 'add' ? '+' : '-';
-    problemDesc.textContent = `Problem: ${leftSource} ${symbol} ${rightSource}`;
-    contextSectionEl.appendChild(problemDesc);
-
-    const list = document.createElement('ul');
-    list.classList.add('linear-quantities-list');
-
     const isPremise = scene.meaning.currentTask?.beat === 'reflect'
       && scene.meaning.currentTask?.connectionForm === 'premise';
 
@@ -100,51 +85,84 @@ export function createLinearPathRenderer({
       const premiseCase = scene.meaning.premiseCase;
       const src = premiseCase.sourceForm;
       const pres = premiseCase.presentedForm;
-
-      const item1 = document.createElement('li');
-      item1.textContent = `Starting fraction: ${src.numerator} of ${src.denominator} equal parts in 1 whole.`;
-      list.appendChild(item1);
-
-      const item2 = document.createElement('li');
-      item2.textContent = `New parts: ${pres.numerator} of ${pres.denominator} equal parts in 1 whole.`;
-      list.appendChild(item2);
-    } else {
-      for (const side of ['left', 'right']) {
-        const item = document.createElement('li');
-        const beat = scene.meaning.currentTask?.beat;
-        const isReplaying = Boolean(scene.presentation?.isReplaying);
-        const isConversionBeat = beat === 'transform' || beat === 'operate' || isReplaying;
-        const isTransformed = isConversionBeat
-          && scene.meaning.transition
-          && scene.meaning.transition.changed?.includes(side);
-
-        if (isTransformed && scene.presentation.choreography === 'juxtaposed' && strings.transition?.linearJuxtaposed) {
-          const pre = scene.meaning.transition.pre[side];
-          const post = scene.meaning.transition.post[side];
-          const baseText = strings.transition.linearJuxtaposed(side, pre.numerator, pre.denominator, post.numerator, post.denominator);
-          item.textContent = isReplaying ? `${baseText} (replaying)` : baseText;
-          if (isReplaying) item.classList.add('replay-active', 'replay-highlight');
-        } else if (isTransformed && scene.presentation.choreography === 'sequential' && strings.transition?.linearSequential) {
-          const pre = scene.meaning.transition.pre[side];
-          const post = scene.meaning.transition.post[side];
-          const baseText = strings.transition.linearSequential(side, pre.numerator, pre.denominator, post.numerator, post.denominator);
-          item.textContent = isReplaying ? `${baseText} (replaying)` : baseText;
-          if (isReplaying) item.classList.add('replay-active', 'replay-highlight');
-        } else if (isTransformed && isReplaying && scene.presentation.choreography === 'in-place') {
-          const pre = scene.meaning.transition.pre[side];
-          item.textContent = typeof strings.transition?.replayingAria === 'function'
-            ? strings.transition.replayingAria(side, pre.numerator, pre.denominator)
-            : `${side === 'left' ? 'First' : 'Second'} fraction replaying: started with ${pre.numerator} of ${pre.denominator} equal parts in 1 whole.`;
-          item.classList.add('replay-active', 'replay-highlight');
-        } else {
-          const ord = side === 'left' ? 'First' : 'Second';
-          item.textContent = `${ord} fraction: ${quantities[side].currentForm.numerator} of ${quantities[side].currentForm.denominator} equal parts in 1 whole.`;
-        }
-        list.appendChild(item);
+      const comparison = document.createElement('div');
+      comparison.classList.add('linear-premise-comparison');
+      comparison.setAttribute('role', 'math');
+      comparison.setAttribute(
+        'aria-label',
+        `Starting fraction: ${src.numerator} over ${src.denominator}. New parts: ${pres.numerator} over ${pres.denominator}.`,
+      );
+      for (const [label, form] of [['Starting fraction', src], ['New parts', pres]]) {
+        const row = document.createElement('div');
+        row.classList.add('linear-premise-row');
+        row.setAttribute('aria-hidden', 'true');
+        const rowLabel = document.createElement('span');
+        rowLabel.classList.add('linear-premise-label');
+        rowLabel.textContent = label;
+        row.appendChild(rowLabel);
+        row.appendChild(createSymbolicFraction(form.numerator, form.denominator, { ariaHidden: true }));
+        comparison.appendChild(row);
       }
+      contextSectionEl.appendChild(comparison);
+      return;
     }
 
-    contextSectionEl.appendChild(list);
+    const left = quantities.left.currentForm;
+    const right = quantities.right.currentForm;
+    const symbol = op.operation === 'add' ? '+' : '−';
+    const operatorName = op.operation === 'add' ? 'plus' : 'minus';
+    const expression = document.createElement('div');
+    expression.classList.add('symbolic-expression', 'linear-context-expression');
+    expression.setAttribute('role', 'math');
+    expression.setAttribute(
+      'aria-label',
+      `${left.numerator} over ${left.denominator} ${operatorName} ${right.numerator} over ${right.denominator}`,
+    );
+    expression.appendChild(createSymbolicFraction(left.numerator, left.denominator, { ariaHidden: true }));
+    const operator = document.createElement('span');
+    operator.classList.add('symbolic-operator');
+    operator.setAttribute('aria-hidden', 'true');
+    operator.textContent = symbol;
+    expression.appendChild(operator);
+    expression.appendChild(createSymbolicFraction(right.numerator, right.denominator, { ariaHidden: true }));
+    contextSectionEl.appendChild(expression);
+
+    const beat = scene.meaning.currentTask?.beat;
+    const isReplaying = Boolean(scene.presentation?.isReplaying);
+    const isConversionBeat = beat === 'transform' || beat === 'operate' || isReplaying;
+    const transition = scene.meaning.transition;
+    const transitionDetails = document.createElement('ul');
+    transitionDetails.classList.add('linear-transition-details');
+
+    for (const side of ['left', 'right']) {
+      const isTransformed = isConversionBeat && transition?.changed?.includes(side);
+      if (!isTransformed) continue;
+
+      const item = document.createElement('li');
+      if (scene.presentation.choreography === 'juxtaposed' && strings.transition?.linearJuxtaposed) {
+        const pre = transition.pre[side];
+        const post = transition.post[side];
+        const baseText = strings.transition.linearJuxtaposed(side, pre.numerator, pre.denominator, post.numerator, post.denominator);
+        item.textContent = isReplaying ? `${baseText} (replaying)` : baseText;
+        if (isReplaying) item.classList.add('replay-active', 'replay-highlight');
+      } else if (scene.presentation.choreography === 'sequential' && strings.transition?.linearSequential) {
+        const pre = transition.pre[side];
+        const post = transition.post[side];
+        const baseText = strings.transition.linearSequential(side, pre.numerator, pre.denominator, post.numerator, post.denominator);
+        item.textContent = isReplaying ? `${baseText} (replaying)` : baseText;
+        if (isReplaying) item.classList.add('replay-active', 'replay-highlight');
+      } else if (isReplaying && scene.presentation.choreography === 'in-place') {
+        const pre = transition.pre[side];
+        item.textContent = typeof strings.transition?.replayingAria === 'function'
+          ? strings.transition.replayingAria(side, pre.numerator, pre.denominator)
+          : `${side === 'left' ? 'First' : 'Second'} fraction replaying: started with ${pre.numerator} of ${pre.denominator} equal parts in 1 whole.`;
+        item.classList.add('replay-active', 'replay-highlight');
+      } else {
+        continue;
+      }
+      transitionDetails.appendChild(item);
+    }
+    if (transitionDetails.children.length > 0) contextSectionEl.appendChild(transitionDetails);
   }
 
   function renderCompletedBeats(scene) {

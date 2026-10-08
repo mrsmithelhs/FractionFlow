@@ -296,7 +296,9 @@ describe('Plan 09 app shell and upstream display switcher', () => {
     root.querySelector('.app-view-controls .app-secondary-button').click();
     expect(root.querySelector('.app-visual-view').hasAttribute('hidden')).toBe(true);
     expect(root.querySelector('.app-linear-view').hasAttribute('hidden')).toBe(false);
-    expect(root.textContent).toContain('Problem: 2/3 + 1/4');
+    expect(root.querySelector('.app-linear-view .linear-context-expression')
+      .getAttribute('aria-label')).toBe('2 over 3 plus 1 over 4');
+    expect(root.textContent).not.toContain('Problem: 2/3 + 1/4');
     expect(app.getState()).toBe(before);
   });
 

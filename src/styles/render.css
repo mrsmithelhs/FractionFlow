@@ -405,7 +405,7 @@
   background-color: #f0f9ff;
 }
 
-.linear-quantities-list li.replay-highlight {
+.linear-transition-details li.replay-highlight {
   font-weight: 600;
   color: var(--ff-color-text);
   background-color: #f0f9ff;
@@ -806,20 +806,13 @@
   border-radius: 0.5rem;
 }
 
-.linear-context-heading {
-  font-size: 1rem;
-  font-weight: 600;
-  color: var(--ff-color-text-muted);
+.linear-context-expression {
+  align-self: center;
   margin: 0;
+  font-size: 1.5rem;
 }
 
-.linear-problem-statement {
-  font-size: 1.25rem;
-  font-weight: bold;
-  margin: 0;
-}
-
-.linear-quantities-list {
+.linear-transition-details {
   margin: 0;
   padding-left: 1.25rem;
   display: flex;
@@ -827,6 +820,25 @@
   gap: 0.375rem;
   font-size: 1rem;
   line-height: 1.4;
+}
+
+.linear-premise-comparison {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  width: 100%;
+  font-size: 1rem;
+}
+
+.linear-premise-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.linear-premise-label {
+  font-weight: 600;
 }
 
 /* Screen Reader Only Utility */

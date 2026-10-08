@@ -11,14 +11,18 @@ import { assertValidScene } from './contract.js';
  * - Integrated secondary view: Expresses current forms established by the learner.
  */
 
-function createFractionElement(numerator, denominator, ariaPrefix = '') {
+export function createSymbolicFraction(numerator, denominator, { ariaHidden = false, ariaPrefix = '' } = {}) {
   const fractionEl = document.createElement('span');
   fractionEl.classList.add('symbolic-fraction');
-  fractionEl.setAttribute('role', 'math');
-  fractionEl.setAttribute(
-    'aria-label',
-    ariaPrefix ? `${ariaPrefix} ${numerator} over ${denominator}` : `${numerator} over ${denominator}`,
-  );
+  if (ariaHidden) {
+    fractionEl.setAttribute('aria-hidden', 'true');
+  } else {
+    fractionEl.setAttribute('role', 'math');
+    fractionEl.setAttribute(
+      'aria-label',
+      ariaPrefix ? `${ariaPrefix} ${numerator} over ${denominator}` : `${numerator} over ${denominator}`,
+    );
+  }
 
   const numEl = document.createElement('span');
   numEl.classList.add('symbolic-numerator');
@@ -39,6 +43,10 @@ function createFractionElement(numerator, denominator, ariaPrefix = '') {
   fractionEl.appendChild(denEl);
 
   return fractionEl;
+}
+
+function createFractionElement(numerator, denominator, ariaPrefix = '') {
+  return createSymbolicFraction(numerator, denominator, { ariaPrefix });
 }
 
 function createOperatorElement(symbol, ariaLabel) {
