@@ -190,3 +190,26 @@ Technical acceptance includes the compact-context follow-up and preceding prompt
 repairs. Plan 24 remains delivered pending owner screen/agency acceptance. No
 push or deployment authorized. The six distinct states were personally reviewed
 before correction; the two affected states were reviewed again after correction.
+
+## Owner-discovered help toggle/recovery defects — repair required
+
+Date: 2026-10-07. Owner real-click testing found stale Close help text after
+closing, absent help after invalid denominator submission, and inert-looking
+toggles after submitting the same invalid denominator again. Technical acceptance
+does not cover these failures; Plan 24 remains delivered pending repair/acceptance.
+
+Source inspection identifies two app-local causes: close calls help placement
+without refreshing the label, and placement suppresses every strategy cue when
+lastRecovery exists while the open flag can remain true. Authorize bounded repair
+of the existing app-local toggle contract, with reproduction before mutation.
+Button text, aria-expanded/controls and actual cue visibility must agree; requested
+help must remain available after invalid input. Retain truthful recovery feedback,
+draft/focus and existing state/history/replay contracts. No new instructional
+mechanism or generic prose. If broader contracts are needed, stop at a gate.
+
+Require mounted-click regressions for open/close and invalid 11 submitted twice,
+both views, high-support toggle and reset/reentry. Check actual strategy visibility
+as well as label/ARIA, and demonstrate rejection of stale-label and recovery-
+suppression defects. Scope app and necessary presentation hooks/tests/routes/
+evidence; commit implementation then progress last. No status change, push or
+deployment authorized.
