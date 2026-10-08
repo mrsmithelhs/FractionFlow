@@ -39,3 +39,22 @@ scope. Update the progress report with the actual repair and validation. Do not
 redesign the UI or revise the definition/reducer/replay contracts. Commit scoped
 repair and report last; never change packet status, push or deploy. Owner review
 remains separate. Advisor consultation was not warranted for this prose-only record.
+
+## Repair 01 re-review — 2026-10-07
+
+Implementation e437933 and final report 499b037 resolve both requests. Cue formatting
+now receives the current projected source denominators. A mounted noncanonical
+test-only instance proves 2/3 replaces 3/4 without expanding the learner registry.
+Existing Plan 22 comparator constraint is restored; both Plan 24 route/control pairs
+now use standard motion and sameMotionMode:true. No reducer/definition/replay change.
+
+Independent re-review ran 64 app/scene/route-contract tests and four browser executions
+(two help routes and two same-mode controls), all passing. Browser run required narrow
+elevation for the documented Edge profile failure. Full 295-test/build/48-route
+results remain implementer evidence. Canonical visible wording did not change, so
+retaining prior screenshots is appropriate. Initial cue short-scroll limits, focused
+keyboard activation and emulated-touch/AT limits remain as previously recorded.
+
+Technical delivery accepted; orchestration sets Plan 24 delivered. Owner screen and
+agency acceptance remain pending. This first requested strategy cue does not close
+general denominator-discovery obligations or OQ-27. No push or deployment authorized.
