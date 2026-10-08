@@ -213,3 +213,26 @@ as well as label/ARIA, and demonstrate rejection of stale-label and recovery-
 suppression defects. Scope app and necessary presentation hooks/tests/routes/
 evidence; commit implementation then progress last. No status change, push or
 deployment authorized.
+
+## Help toggle/recovery repair re-review — 2026-10-07
+
+Implementation 0ac7c77 and final report d6d66b8 resolve the inspected app-local
+causes. Help placement now synchronizes text, expanded/controls attributes and
+cue mount from the same effective open state; recovery no longer suppresses the
+requested cue. Closing calls this synchronization directly. No mathematical,
+instructional-state, intent/history or replay changes were introduced.
+
+Independent verification passed 40 app-shell/route-contract tests and both new
+browser route closures, four executions each, plus lint/diff check. The mounted
+medium journey retains visible help after submitting 11 in visual and again in
+linear view, checks recovery and draft, closes correctly and verifies fresh
+retry/reentry. The high journey checks view migration, close and fresh reentry.
+The mounted app test additionally opens and closes help after one-sided recovery.
+Before repair, implementer failing-first checks rejected the stale close label
+and absent cue after 11; those historical failures were not independently rerun.
+
+Technical repair accepted. Full 303-test/build/50-execution results remain
+implementer evidence. No refreshed screenshots were produced for the simultaneous
+help/recovery state, and no actual assistive-technology use is claimed. Owner
+interaction and screen acceptance remain pending; Plan 24 stays delivered.
+No push or deployment authorized.
