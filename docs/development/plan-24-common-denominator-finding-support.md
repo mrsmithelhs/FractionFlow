@@ -1,7 +1,8 @@
 ---
 id: plan-24
 title: Common Denominator Finding Support
-status: delivered
+status: complete
+resolution: "Owner accepted repaired help toggle and messaging on 2026-10-07; technical reviews accepted compact task-local denominator strategy, selected-unit explanation, restrained context and recovery/reset repairs. General denominator discovery/OQ-27, Plan 25 conversion help and deployment remain separate."
 depends_on: [plan-13, plan-14, plan-22]
 gate: "Requirement 0: investigate current help placement and propose one bounded learner-driven denominator-finding mechanism; stop before source work. Technical and owner rendered-screen/agency acceptance; deployment separately authorized."
 summary: >-

@@ -236,3 +236,22 @@ implementer evidence. No refreshed screenshots were produced for the simultaneou
 help/recovery state, and no actual assistive-technology use is claimed. Owner
 interaction and screen acceptance remain pending; Plan 24 stays delivered.
 No push or deployment authorized.
+
+## Owner acceptance and closure — 2026-10-07
+
+Owner accepted the help status toggle and related messaging and authorized closing
+Plan 24. This follows acceptance of the repaired task/context presentation and
+technical review of all scoped repairs, most recently 0ac7c77 / d6d66b8.
+Orchestration closes the packet with no remaining in-scope blocker.
+
+Accepted scope is the gated compact requested strategy cue, optional selected-unit
+explanation, task-local placement, restrained visual/linear copy and repaired toggle/
+recovery/reset behavior. This does not claim a complete guided denominator-finding
+algorithm, independent learner discovery, efficacy or actual AT/device testing.
+The original mechanism instruction to suppress the cue during recovery is
+superseded by the explicitly approved owner-discovered repair: requested help
+remains available alongside truthful recovery.
+
+Plan 25 conversion help, general denominator discovery/OQ-27 and larger-denominator
+investigation remain separate follow-up obligations. Deployment remains separately
+authorized; no push or deployment is part of this closure.
