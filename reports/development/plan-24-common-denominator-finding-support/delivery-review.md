@@ -58,3 +58,34 @@ keyboard activation and emulated-touch/AT limits remain as previously recorded.
 Technical delivery accepted; orchestration sets Plan 24 delivered. Owner screen and
 agency acceptance remain pending. This first requested strategy cue does not close
 general denominator-discovery obligations or OQ-27. No push or deployment authorized.
+
+## Owner rejection of redundant copy — Repair 02
+
+Date: 2026-10-07. Owner identified two visible redundancies that orchestration
+missed in its screenshot review: decide repeats the identical question as heading
+and input label; transform repeats the renaming instruction above the equivalent-
+parts question. This violates the approved restraint objective. Prior technical
+acceptance did not satisfy owner acceptance; Repair 02 is required before closure.
+
+Authorize a bounded presentation repair in both visual/linear decide and transform
+states. Show one visible task question. For decide keep “Choose a common denominator
+for both fractions.” once; for transform keep the parameterized “How many parts out
+of 24 make the same amount as 2/3?” once, removing the separate Rename instruction.
+Retain an actual associated input label or fieldset legend; do not replace visible
+repetition with unnecessary hidden repeated prose or remove accessible naming.
+Preserve operand/target identification and meaningful active-prompt hooks; update
+route assertions to verify the real task question rather than retaining obsolete
+heading text to satisfy tests. No math, intent, schedule, replay or help-scope change.
+
+Scope: beat-container.js, linear-path.js, controls.js only if needed for a small
+label/legend association, render CSS if required, focused tests/routes, capture
+script/evidence and progress.md. No general UI rewrite. Refresh affected narrow
+screens, both support profiles/views, closed/open/recovery and transform 12/24
+states. Verify one visible instruction and appropriate control naming, all help/
+draft/focus/boundary/motion behaviors, and measure the resulting layout rather than
+reusing stale geometry. Orchestration must read the rendered copy as a learner
+and identify semantic repetition as well as exact repeated strings before accepting.
+
+Keep packet delivered pending repair and owner review. Commit scoped repair and
+report last; no status change, push or deployment. This record is the explicit
+bounded repair authorization; stop if it requires a broader behavioral mechanism.
