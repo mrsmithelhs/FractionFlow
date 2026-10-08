@@ -190,3 +190,112 @@ no advisor edits appeared.
 The advisor did not inspect source files, screenshots, or browser output. Its
 findings were independently checked against the mounted test, source, screenshots,
 and route results. No assistive-technology speech check is claimed.
+
+## Owner-discovered help-toggle and recovery repair — 2026-10-07
+
+### Summary and scope
+
+Reproduced and repaired the existing app-local denominator-help presentation
+contract. The app now derives the help button label, `aria-expanded`,
+`aria-controls`, and strategy-cue mount from one effective open state. A
+requested strategy remains visible beside truthful denominator recovery feedback,
+including after repeated invalid submissions and when the learner switches views.
+Opening and closing retain the mounted button focus behavior; retry and reentry
+start with a closed, unlabelled help cue. No mathematical, instructional-state,
+intent, history, replay, or packet-status behavior changed.
+
+Files changed:
+
+- `src/app/app.js`
+- `tests/app-shell.test.js`
+- `tests/route-contract.test.js`
+- `tests/routes/route-matrix.json`
+- this progress report
+
+### Reproduction and failing-first evidence
+
+The Plan 24 status preflight still reports `BLOCKED` because the packet is
+`delivered`. The owner/orchestrator's written authorization for this bounded
+follow-up explicitly permits the repair while retaining that delivered status.
+No packet status or delivery-review content was changed.
+
+Before source changes, real mounted Edge clicks reproduced the owner report:
+
+- Open help displayed “Close help”, `aria-expanded="true"`, and the visible
+  multiplication cue.
+- Submitting `11` retained the response and truthful recovery message, but the
+  cue disappeared and `aria-expanded` became false while the button still said
+  “Close help”. Switching to linear preserved this mismatch. Submitting `11`
+  again and clicking twice left the help control apparently inert.
+- The new app-shell assertion failed first on close: expected “Need help?”,
+  observed “Close help”. The mounted browser regression failed after the first
+  invalid `11`: expected expanded=true, observed false.
+
+This demonstrates both the stale-label and recovery-suppression defects against
+the unrepaired app. Playwright and Node resolved after the machine restart, but a
+normal-sandbox Edge launch still failed when Edge wrote its temporary browser
+profile (`error -5`). Narrowly elevated Edge launches succeeded; the focused
+browser routes and full matrix then ran in Microsoft Edge against the production
+build using real mounted clicks.
+
+### Validation
+
+- `npm test -- tests/app-shell.test.js` — 19/19 passed after repair.
+- `npm test` — 26 files, 303 tests passed.
+- `npm run build` — learner app and subtraction prototype production builds
+  passed.
+- `node scripts/dev/run-route-matrix.js --filter ROUTE-PLAN24-MEDIUM-HELP-RECOVERY-TOGGLE --quiet`
+  — 4/4 browser executions passed, including the negative-control closure.
+- `node scripts/dev/run-route-matrix.js --filter ROUTE-PLAN24-HIGH-HELP-VIEW-TOGGLE-RESET --quiet`
+  — 4/4 browser executions passed, including the negative-control closure.
+- `node scripts/dev/run-route-matrix.js --quiet` — 50/50 browser executions
+  across 48 route rows passed.
+- `node scripts/dev/plan-status.js lint` — no packet schema violations.
+- `git diff --check` — passed.
+
+The two new browser routes assert visible cue geometry and text alongside the
+label and ARIA relationship; the medium route also checks the retained `11`,
+truthful recovery, button focus after open/close, second invalid submission,
+retry, and fresh reentry. The high-support route checks ordinary view migration,
+close, retry, and reentry. Route-contract count expectations were updated from
+46 to 48 rows and from 48 to 50 browser executions. No screenshots were generated
+for this follow-up. Screen-reader speech and assistive-technology operation were
+not tested.
+
+### Advisor disposition
+
+Branch A ran on the implemented diff. Requested advisor model: `gpt-6-sol`,
+medium effort (Sol-class; not Astra). The advisor reported “GPT-6 class” but
+could not independently verify its exact runtime model or variant. Effective
+posture was instruction-read-only; structural read-only could not be verified
+from platform metadata. The primary remained sole writer. The immediate
+post-consultation `git status --short` showed only the four expected
+primary-owned source/test/route files modified and no advisor changes.
+
+- **No blocking defect — accepted.** The advisor found the effective open state
+  drives the label, ARIA attributes, and cue mount together, with no boundary
+  crossing. Independently checked by the focused app-shell test and both new
+  real-browser routes, then by the full suite and matrix. No additional change
+  was needed.
+- **Conditional hostless-`decide` placement concern — accepted as a structural
+  boundary, not a reachable defect in current renderers.** If a future active
+  `decide` render omitted `.active-beat-controls`, the defensive branch closes
+  the cue but leaves the button in its prior container. Independent source
+  inspection confirmed both visual and linear renderers create and append the
+  active controls container on the unresolved active-beat path. The episode
+  schedule places `decide` before transform/operate/resolve; only its final
+  `resolve` or optional `reflect` entry can mark the episode resolved. Both new
+  browser routes assert the mounted task-local control in their paths. No
+  scope-expanding fallback was added. Revisit this if the renderer/schedule
+  contract changes.
+
+Coarse consultation cost: one advisor round, roughly one minute. The review was
+instruction-read-only with post-hoc verification; it did not inspect screenshots
+or run browser tools.
+
+### Handoff
+
+Implementation and regression tests were committed as `0ac7c77`
+(`fix(app): synchronize denominator help toggle state`). The packet remains
+`delivered`; owner rendered-screen/agency acceptance remains separate. No push,
+deployment, or status change was performed. Ready for orchestrator review: **yes**.
