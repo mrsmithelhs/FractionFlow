@@ -1,5 +1,10 @@
 # Plan 25 — Requirement 0 Mechanism Proposal
 
+> **Delivery update (2026-10-07):** The original section below records the pre-source
+> mechanism gate. The orchestrator later approved the revised mechanism, and this
+> addendum records the completed implementation. Packet frontmatter/status remains
+> orchestrator-owned and unchanged.
+
 **Date:** 2026-10-07  
 **Packet status:** `in-progress` (unchanged)  
 **Stage:** Investigation complete; stopped before source implementation pending mechanism approval.
@@ -89,3 +94,51 @@ No scope is authorized for new families, denominator discovery, adaptive support
 The revised intent/history/revision contract has been proposed but is not approved. Other details remain candidates. I am stopped before source implementation, as required by Plan 25 Requirement 0.
 
 **Ready for orchestrator review:** yes.
+
+---
+
+## Implementation delivery
+
+### Overall summary
+
+Implemented requested, task-local equivalent-fraction help for the current transform in visual and linear views. The learner supplies a denominator multiplier, receives retryable local feedback for an incorrect value, then independently supplies the numerator through the existing conversion response. The helper does not show or enter the converted fraction, does not submit the conversion, and does not claim independent transfer. Generic help behavior remains unchanged for older episode definitions; fresh episodes use the registered revision-3 definition while registered revision-1/2 replay behavior and revision-2 path closure were preserved.
+
+Task-local help request and multiplier attempts are stored in scoped replayable support history. Exact correctness is classified through the existing math-layer `scaleFactorForDenominator` helper. Open/closed visibility and unsubmitted input remain app-local. The main numerator draft and focus survive view changes, while helper state resets at the specified episode/task boundaries. Plan 24 decide-help behavior remains task-local and does not accumulate generic help levels.
+
+### Files changed and artifacts produced
+
+- Interaction: `src/interaction/episode.js`, `episode-definition.js`, `classification.js`, `scene.js`, and `provenance.js`.
+- Presentation and app shell: `src/render/strings.js`, `beat-container.js`, `linear-path.js`, `controls.js`, and `src/app/app.js`.
+- Coverage: `tests/plan25-task-help.test.js`, updates to `tests/app-shell.test.js`, `tests/route-contract.test.js`, and additive routes in `tests/routes/route-matrix.json`.
+- Browser artifacts: `evidence/capture-rendered-witnesses.mjs`, `rendered-screen-measurements.json`, six screenshots for helper and incorrect-multiplier recovery at 360×740, 360×752, and 1280×800, plus the pre-mutation oracle verifier and its result JSON.
+- Source/evidence commit: `7863584 feat: add requested equivalent fraction help`.
+
+### Validation performed
+
+- `npm test -- --run` — **27 files and 310 tests passed**.
+- `npm run build` — application and subtraction-prototype production builds completed.
+- `node scripts/dev/plan-status.js lint` — passed.
+- `git diff --check` — passed; Git emitted only the repository's LF-to-CRLF working-copy warnings.
+- `node reports/development/plan-25-equivalent-fraction-conversion-help/evidence/verify-pre-mutation-oracles.mjs` — the captured results report exact full-state matches for revision-1 and revision-2 replay at targets 12 and 24, and exact closure matches for revision-2 cases 36, 72, eligible-but-unauthored nested 24, and missing-condition-data 12.
+- Browser route matrix — full matrix passed **52/52 browser executions across 50 route rows** before the final ARIA-target repair. After that repair, the focused Plan 25 requested/closed comparison passed **2/2 browser executions** and verifies the accepted cue exists at the `aria-controls` target. The first post-repair launch was blocked by Edge's sandboxed temporary-profile write; rerunning with the narrowly scoped approved execution succeeded.
+- Rendered witnesses were captured in Microsoft Edge via Playwright at 360×740, 360×752, and 1280×800. Measurements show the viewport width remains equal to document width; while the helper decision is active, the main numerator field is absent. A wrong entry retains `7`, displays concise local feedback, and still withholds the main numerator. These are headless desktop-browser viewport observations, not physical Chromebook or assistive-technology tests.
+
+### Advisor consultation and disposition
+
+**Branch A consultation ran** against the implemented behavioral surface, as required for code with behavior. Requested model: **Sol-class (`gpt-6-sol`), read-only, light or medium effort**. Observed model: the advisor reported **“GPT-6”** and could not confirm the exact `gpt-6-sol` identifier. This is a requested Sol-class consultation with model-identity verification limitation, not a claim that the exact requested model was confirmed.
+
+Effective posture: **instruction-read-only with post-hoc verification**. The advisor was given a bounded read-only critique and did not have structural read-only guarantees from platform metadata. The primary remained sole writer; the advisor was depth 1. The post-consultation repository status check showed no advisor-authored edits; the Plan 25 working changes and two independently authored orchestration review files were already present. No advisor edit was accepted or merged.
+
+- **Accepted P2 — stale `aria-controls` target after multiplier acceptance.** Advisor observed that the open Help button referenced a helper wrapper that was removed on acceptance, while the accepted cue had no ID. Independently verified against both renderer branches and app state: the button remained open and referenced a missing element in the accepted state. Fixed by assigning the same view-specific ID to the accepted cue. Added visual/linear app assertions and a browser-route assertion. The focused Plan 25 route pair passed after this repair.
+- **Rejected answer-leak concern — `commonUnit.scaleFactors`.** Advisor noted that the projection includes scale-factor facts and questioned whether they leak the expected factor. Inspection confirmed this projection behavior predates Plan 25 and is intentionally used by Plan 24's selected-unit explanation after decide help. The new transform helper does not render those projected factors before multiplier acceptance; it renders only the learner-entered accepted multiplier. No Plan 25 change was made for this concern.
+- No other evidence-backed introduced defect was reported.
+
+Consultation cost: one bounded advisor turn plus one disposition follow-up (roughly 5–10 minutes elapsed). The adapter/model did not expose a verifiable exact model identifier.
+
+### Owner rendered-review follow-up and remaining limits
+
+The existing accepted-factor cue remains `Multiply the top by 8, too.` (parameterized). A later orchestration review asked whether the procedural cue could be replaced by dynamic subdivision-meaning copy, for example, “Split each of the 3 parts into 8 equal parts.” This appears feasible without exposing the numerator or final fraction, but it has not been implemented or owner-accepted. Keep the current approved wording until the owner reviews rendered evidence and requests a bounded copy change.
+
+Physical Chromebook, assistive-technology, owner rendered-screen/agency acceptance, deployment, and packet completion/status were not performed by this implementation. No packet status or frontmatter was changed. Two unowned working-tree files were observed and left untouched: `reports/orchestration/next-wave-after-plan-24-claude-review.md` and `reports/orchestration/next-wave-after-plan-24-gemini-review.md`.
+
+**Ready for orchestrator technical review:** yes. **Ready for owner rendered-copy/agency acceptance:** pending the owner review noted above.
