@@ -36,7 +36,7 @@
       "childCount": 3,
       "transitionText": [],
       "premiseLabels": [],
-      "questionText": "How many parts out of 12 make the same amount as 2/3?",
+      "questionText": "Choose a common denominator for both fractions.",
       "question": {
         "left": 63,
         "top": 293.78,
@@ -47,11 +47,12 @@
       },
       "document": {
         "width": 360,
-        "height": 776,
+        "height": 752,
         "horizontalOverflow": false
       },
       "state": "ordinary-decide",
-      "screenshot": "plan24-linear-context-ordinary-decide-360x740.png"
+      "screenshot": "plan24-linear-context-ordinary-decide-360x740.png",
+      "taskBeat": "decide"
     },
     {
       "viewport": {
@@ -265,18 +266,18 @@
         "Starting fraction",
         "New parts"
       ],
-      "questionText": "Does this new fraction show the same amount as before?",
+      "questionText": "Does the \"New parts\" fraction show the same amount as the starting fraction?",
       "question": {
         "left": 63,
-        "top": 420.38,
+        "top": 323.38,
         "right": 297,
-        "bottom": 470.75,
+        "bottom": 424.13,
         "width": 234,
-        "height": 50.38
+        "height": 100.75
       },
       "document": {
         "width": 360,
-        "height": 951,
+        "height": 870,
         "horizontalOverflow": false
       },
       "state": "premise-comparison",
@@ -309,7 +310,7 @@
       "childCount": 3,
       "transitionText": [],
       "premiseLabels": [],
-      "questionText": "How many parts out of 12 make the same amount as 2/3?",
+      "questionText": "Choose a common denominator for both fractions.",
       "question": {
         "left": 63,
         "top": 293.78,
@@ -320,11 +321,12 @@
       },
       "document": {
         "width": 360,
-        "height": 776,
+        "height": 752,
         "horizontalOverflow": false
       },
       "state": "ordinary-decide",
-      "screenshot": "plan24-linear-context-ordinary-decide-360x752.png"
+      "screenshot": "plan24-linear-context-ordinary-decide-360x752.png",
+      "taskBeat": "decide"
     },
     {
       "viewport": {
@@ -538,18 +540,18 @@
         "Starting fraction",
         "New parts"
       ],
-      "questionText": "Does this new fraction show the same amount as before?",
+      "questionText": "Does the \"New parts\" fraction show the same amount as the starting fraction?",
       "question": {
         "left": 63,
-        "top": 420.38,
+        "top": 323.38,
         "right": 297,
-        "bottom": 470.75,
+        "bottom": 424.13,
         "width": 234,
-        "height": 50.38
+        "height": 100.75
       },
       "document": {
         "width": 360,
-        "height": 951,
+        "height": 870,
         "horizontalOverflow": false
       },
       "state": "premise-comparison",

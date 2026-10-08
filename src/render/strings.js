@@ -134,16 +134,13 @@ export const STRINGS = Object.freeze({
     premiseExpectedYes: 'Correct! The parts are smaller, but the total shaded amount is the same.',
 
     // Accessible linear path phrasing (DECISION-004, Condition 6)
-    premiseFramingLinear: (presented, source) => (
-      `Check this fraction: ${presented}. Does this fraction show the same amount as ${source}?`
-    ),
     matchingPromptLinear: (targetFraction) => (
       `Choose the fraction that shows the same amount as ${targetFraction}.`
     ),
     matchingOptionLabelLinear: (num, den) => (
       `Fraction ${num}/${den} shows a shaded amount`
     ),
-    premisePromptLinear: 'Does this new fraction show the same amount as before?',
+    premisePromptLinear: 'Does the "New parts" fraction show the same amount as the starting fraction?',
   }),
 
   controls: Object.freeze({

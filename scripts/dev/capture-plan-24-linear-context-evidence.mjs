@@ -20,7 +20,7 @@ function whole(value) {
   return { numerator: String(value), denominator: '1' };
 }
 
-async function begin({ height, conditionId = 'phase2-bundle-1' }) {
+async function begin({ height, conditionId = 'phase2-bundle-1', selectDenominator = true }) {
   const context = await browser.newContext({ viewport: { width: 360, height }, deviceScaleFactor: 1, reducedMotion: 'reduce' });
   const page = await context.newPage();
   await page.goto(baseUrl);
@@ -32,7 +32,9 @@ async function begin({ height, conditionId = 'phase2-bundle-1' }) {
   await page.locator('.app-view-toggle').click();
   await page.locator('.app-linear-view .control-btn').click();
   await page.locator('.app-linear-view .control-choice-btn >> nth=1').click();
-  await page.locator('.app-linear-view .control-choice-btn').filter({ hasText: /^12$/ }).click();
+  if (selectDenominator) {
+    await page.locator('.app-linear-view .control-choice-btn').filter({ hasText: /^12$/ }).click();
+  }
   return { context, page };
 }
 
@@ -51,7 +53,14 @@ async function toResolved(session) {
   await submitNumber(session.page, '#linear-operate-sum-input', 11);
 }
 
-async function capture(session, { height, stateName, expectedName, expectedVisibleText = null, expectedHiddenText = [] }) {
+async function capture(session, {
+  height,
+  stateName,
+  expectedName,
+  expectedQuestion = null,
+  expectedVisibleText = null,
+  expectedHiddenText = [],
+}) {
   const { page } = session;
   const result = await page.evaluate(() => {
     const rect = (element) => {
@@ -90,6 +99,18 @@ async function capture(session, { height, stateName, expectedName, expectedVisib
   result.screenshot = `plan24-linear-context-${stateName}-360x${height}.png`;
   const accessibleExpression = page.getByRole('math', { name: expectedName, exact: true });
   if (await accessibleExpression.count() !== 1) throw new Error(`${stateName}: expected one math expression named "${expectedName}"`);
+  if (expectedQuestion && result.questionText !== expectedQuestion) {
+    throw new Error(`${stateName}: expected active question "${expectedQuestion}", got "${result.questionText}"`);
+  }
+  if (stateName === 'ordinary-decide') {
+    const responseGroup = page.getByRole('group', { name: expectedQuestion, exact: true });
+    const candidateCount = await page.locator('.app-linear-view .active-beat-controls .control-choice-fieldset .control-choice-btn').count();
+    const transformInputCount = await page.locator('.app-linear-view input[id^="linear-transform"]').count();
+    if (await responseGroup.count() !== 1 || candidateCount < 2 || transformInputCount !== 0) {
+      throw new Error('ordinary-decide: capture did not stop on the denominator decision state');
+    }
+    result.taskBeat = 'decide';
+  }
   if (result.accessibleName !== expectedName || !result.hiddenVisualChildren || result.document.horizontalOverflow) {
     throw new Error(`${stateName}: accessible expression, hidden visual children, or viewport check failed: ${JSON.stringify(result)}`);
   }
@@ -106,11 +127,12 @@ async function capture(session, { height, stateName, expectedName, expectedVisib
 
 try {
   for (const height of [740, 752]) {
-    let session = await begin({ height });
+    let session = await begin({ height, selectDenominator: false });
     await capture(session, {
       height,
       stateName: 'ordinary-decide',
       expectedName: '2 over 3 plus 1 over 4',
+      expectedQuestion: 'Choose a common denominator for both fractions.',
       expectedHiddenText: ['Problem and Quantities', 'Problem:', 'First fraction:', 'Second fraction:'],
     });
     await session.context.close();
@@ -166,6 +188,7 @@ try {
       height,
       stateName: 'premise-comparison',
       expectedName: 'Starting fraction: 2 over 3. New parts: 7 over 12.',
+      expectedQuestion: 'Does the "New parts" fraction show the same amount as the starting fraction?',
       expectedHiddenText: ['Problem:', 'Problem and Quantities', 'First fraction:', 'Second fraction:'],
     });
     await session.context.close();

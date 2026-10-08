@@ -481,6 +481,41 @@ describe('Plan 09 app shell and upstream display switcher', () => {
     expect(app.getState().established.reflection.premiseCaseId).toBe('premise-rel-prime-12');
   });
 
+  it('uses one visible, associated question for a linear premise response', () => {
+    root.querySelector('.app-return-button').click();
+    root.querySelector('.app-gear-button').click();
+    root.querySelector('[data-condition-id="phase2-bundle-4"]').click();
+    root.querySelector('.app-practice-button').click();
+
+    app.dispatch({ type: 'acknowledge-encounter' });
+    app.dispatch({ type: 'submit-notice', matchesUnits: false });
+    app.dispatch({ type: 'propose-common-denominator', proposed: whole(12) });
+    app.dispatch({ type: 'submit-equivalent-form', proposed: fraction(8, 12) });
+    app.dispatch({ type: 'submit-equivalent-form', proposed: fraction(3, 12) });
+    app.dispatch({ type: 'submit-operation-result', proposed: fraction(11, 12) });
+    app.dispatch({ type: 'submit-resolution', proposed: fraction(11, 12) });
+
+    expect(root.querySelector('.app-visual-view .premise-framing').textContent)
+      .toBe('Check this renaming:');
+    expect(root.querySelector('.app-visual-view').textContent)
+      .toContain('Does the "New parts" bar show the same amount as the starting fraction?');
+
+    root.querySelector('.app-view-toggle').click();
+    const linearView = root.querySelector('.app-linear-view');
+    const responseGroup = linearView.querySelector('.active-beat-controls .control-choice-fieldset');
+    const legend = responseGroup.querySelector('.control-legend');
+    const prompts = linearView.querySelectorAll('.active-beat-prompt');
+    const question = 'Does the "New parts" fraction show the same amount as the starting fraction?';
+
+    expect(linearView.querySelector('.premise-framing')).toBeNull();
+    expect(linearView.querySelector('.active-beat-header .active-beat-prompt')).toBeNull();
+    expect(prompts).toHaveLength(1);
+    expect(prompts[0]).toBe(legend);
+    expect(legend.classList.contains('sr-only')).toBe(false);
+    expect(legend.textContent).toBe(question);
+    expect(legend.parentNode).toBe(responseGroup);
+  });
+
   it('makes replay real in the selected episode condition (Repair 06 Item 1)', () => {
     const replayButton = Array.from(root.querySelectorAll('.app-secondary-button'))
       .find((b) => b.textContent.includes('Replay'));

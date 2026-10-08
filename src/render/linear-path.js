@@ -658,18 +658,6 @@ export function createLinearPathRenderer({
           const isPremise = scene.meaning.currentTask.connectionForm === 'premise';
 
           if (isPremise) {
-            const premiseCase = scene.meaning.premiseCase;
-            const framingEl = document.createElement('p');
-            framingEl.classList.add('premise-framing');
-            if (premiseCase && typeof strings.reflect?.premiseFramingLinear === 'function') {
-              const pres = `${premiseCase.presentedForm.numerator}/${premiseCase.presentedForm.denominator}`;
-              const src = `${premiseCase.sourceForm.numerator}/${premiseCase.sourceForm.denominator}`;
-              framingEl.textContent = strings.reflect.premiseFramingLinear(pres, src);
-            } else {
-              framingEl.textContent = strings.reflect?.premiseFraming || 'Check this renaming:';
-            }
-            promptHeader.appendChild(framingEl);
-
             promptText.textContent = strings.reflect.premisePromptLinear || strings.reflect.premisePrompt;
             const options = [
               {
@@ -694,6 +682,9 @@ export function createLinearPathRenderer({
                 });
               },
             });
+            const questionLegend = choiceGroup.querySelector('.control-legend');
+            questionLegend.classList.remove('sr-only');
+            questionLegend.classList.add('active-beat-prompt');
             controlsContainer.appendChild(choiceGroup);
           } else {
             const left = scene.meaning.quantities.left;
@@ -744,7 +735,8 @@ export function createLinearPathRenderer({
     const helpMessage = lastHelp && lastHelp.beat === beat && beat !== 'decide'
       ? strings.app?.helpLevels?.[lastHelp.level]
       : null;
-    if (beat !== 'decide' && beat !== 'transform') {
+    const isLinearPremiseReflection = beat === 'reflect' && task.connectionForm === 'premise';
+    if (beat !== 'decide' && beat !== 'transform' && !isLinearPremiseReflection) {
       promptHeader.appendChild(promptText);
       activeBeatEl.appendChild(promptHeader);
     }

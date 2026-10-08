@@ -239,7 +239,11 @@
         {"step":13,"method":"click","target":".app-visual-view .control-btn","description":"Resolve: acknowledge completed operation"},
         {"step":14,"method":"assertNoSubdivisionMotion","container":".app-visual-view .premise-comparison","description":"Bundle 4 reflection inspection remains static"},
         {"step":15,"method":"click","target":".app-view-controls .app-secondary-button","description":"Switch to the linear access path at reflection"},
-        {"step":16,"method":"click","target":".app-support-controls .app-secondary-button >> nth=1","description":"Replay the last change while checking the premise"}
+        {"step":16,"method":"assert","assertions":[
+          {"type":"containsText","target":".app-linear-view .active-beat-controls .control-legend.active-beat-prompt","value":"Does the \"New parts\" fraction show the same amount as the starting fraction?"},
+          {"type":"notHasSelector","target":".app-linear-view .premise-framing"}
+        ],"description":"Verify one response-group premise question in linear view"},
+        {"step":17,"method":"click","target":".app-support-controls .app-secondary-button >> nth=1","description":"Replay the last change while checking the premise"}
       ],
       "expect": {
         "capture": {"target":".app-linear-view","type":"innerHTML"},
