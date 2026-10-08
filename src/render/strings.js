@@ -79,6 +79,9 @@ export const STRINGS = Object.freeze({
     scaleFactorPrompt: (mult) => (
       `Multiply the top and bottom by ${mult}.`
     ),
+    helpMultiplierInstruction: (sourceDen, targetDen) => (
+      `What multiplier turns ${sourceDen} parts into ${targetDen}?`
+    ),
     helpMultiplierPrompt: (sourceDen, targetDen) => `${sourceDen} × ? = ${targetDen}`,
     helpMultiplierAccepted: (multiplier) => `Multiply the top by ${multiplier}, too.`,
     helpMultiplierError: 'That number does not make the same size parts. Try again.',

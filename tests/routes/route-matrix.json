@@ -3281,7 +3281,10 @@
         {"step":4,"method":"click","target":".app-visual-view .control-choice-btn >> nth=1","description":"Choose 24 as the common denominator"},
         {"step":5,"method":"click","target":".app-visual-view .active-beat-controls .app-secondary-button","description":"Request local conversion help"},
         {"step":6,"method":"assert","assertions":[
-          {"type":"containsText","target":".app-visual-view .control-label.active-beat-prompt","value":"3 × ? = 24"},
+          {"type":"containsText","target":".app-visual-view .control-label.active-beat-prompt","value":"What multiplier turns 3 parts into 24?"},
+          {"type":"containsText","target":".app-visual-view .control-supporting-text","value":"3 × ? = 24"},
+          {"type":"attributeEquals","target":".app-visual-view .control-label.active-beat-prompt","attribute":"for","value":"transform-help-multiplier-left"},
+          {"type":"attributeEquals","target":".app-visual-view #transform-help-multiplier-left","attribute":"aria-describedby","value":"visual-transform-task-help-equation"},
           {"type":"notHasSelector","target":".app-visual-view #transform-num-input-left"},
           {"type":"notContainsText","target":".app-visual-view","value":"16/24"}
         ],"description":"Show one multiplier decision without the converted answer"},

@@ -539,7 +539,9 @@ export function createLinearPathRenderer({
           emptyNotice.setAttribute('role', 'alert');
           const multiplierInput = createNumericInput({
             id: `linear-transform-help-multiplier-${side}`,
-            label: strings.transform.helpMultiplierPrompt(sourceForm.denominator, targetDen),
+            label: strings.transform.helpMultiplierInstruction(sourceForm.denominator, targetDen),
+            supportingText: strings.transform.helpMultiplierPrompt(sourceForm.denominator, targetDen),
+            supportingTextId: 'linear-transform-task-help-equation',
             min: 0,
             max: Number(targetDen),
             strings,

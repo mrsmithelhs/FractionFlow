@@ -43,6 +43,8 @@ export function createButton({
 export function createNumericInput({
   label,
   id,
+  supportingText = null,
+  supportingTextId = null,
   min = 1,
   max = 999,
   onSubmit,
@@ -59,6 +61,15 @@ export function createNumericInput({
   labelEl.textContent = label;
   wrapper.appendChild(labelEl);
 
+  let supportingTextEl = null;
+  if (typeof supportingText === 'string' && supportingText.length > 0) {
+    supportingTextEl = document.createElement('p');
+    supportingTextEl.id = supportingTextId || `${id}-supporting-text`;
+    supportingTextEl.classList.add('control-supporting-text');
+    supportingTextEl.textContent = supportingText;
+    wrapper.appendChild(supportingTextEl);
+  }
+
   const inputGroup = document.createElement('div');
   inputGroup.classList.add('control-input-group');
 
@@ -70,6 +81,7 @@ export function createNumericInput({
   inputEl.min = String(min);
   inputEl.max = String(max);
   inputEl.setAttribute('inputmode', 'numeric');
+  if (supportingTextEl) inputEl.setAttribute('aria-describedby', supportingTextEl.id);
   inputGroup.appendChild(inputEl);
 
   const submitBtn = createButton({

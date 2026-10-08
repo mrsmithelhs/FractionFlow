@@ -478,7 +478,9 @@ export function createBeatContainer({
         if (showMultiplierStep) {
           const multiplierInput = createNumericInput({
             id: `transform-help-multiplier-${side}`,
-            label: strings.transform.helpMultiplierPrompt(sourceForm.denominator, targetDen),
+            label: strings.transform.helpMultiplierInstruction(sourceForm.denominator, targetDen),
+            supportingText: strings.transform.helpMultiplierPrompt(sourceForm.denominator, targetDen),
+            supportingTextId: 'visual-transform-task-help-equation',
             min: 0,
             max: Number(targetDen),
             strings,

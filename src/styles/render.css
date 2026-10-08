@@ -720,6 +720,12 @@
   font-size: 0.9375rem;
 }
 
+.control-supporting-text {
+  margin: 0;
+  color: var(--ff-color-text);
+  line-height: 1.4;
+}
+
 .control-label.active-beat-prompt,
 .control-legend.active-beat-prompt {
   display: block;

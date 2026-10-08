@@ -208,7 +208,11 @@ describe('Plan 09 app shell and upstream display switcher', () => {
     let multiplier = root.querySelector('.app-visual-view #transform-help-multiplier-left');
     expect(multiplier).not.toBeNull();
     expect(root.querySelector('.app-visual-view #transform-num-input-left')).toBeNull();
-    expect(root.querySelector('.app-visual-view .active-beat-prompt').textContent).toBe('3 × ? = 24');
+    const multiplierLabel = root.querySelector('.app-visual-view .active-beat-prompt');
+    expect(multiplierLabel.textContent).toBe('What multiplier turns 3 parts into 24?');
+    expect(multiplierLabel.getAttribute('for')).toBe('transform-help-multiplier-left');
+    expect(root.querySelector('.app-visual-view .control-supporting-text').textContent).toBe('3 × ? = 24');
+    expect(multiplier.getAttribute('aria-describedby')).toBe('visual-transform-task-help-equation');
     root.querySelector('.app-visual-view .control-submit-btn').click();
     expect(root.querySelector('.app-visual-view .recovery-feedback').textContent)
       .toBe('Enter a whole number to keep going.');
@@ -258,12 +262,39 @@ describe('Plan 09 app shell and upstream display switcher', () => {
     help = root.querySelector('.app-linear-view .active-beat-controls .app-secondary-button');
     help.click();
     const rightMultiplier = root.querySelector('.app-linear-view #linear-transform-help-multiplier-right');
-    expect(root.querySelector('.app-linear-view .active-beat-prompt').textContent).toBe('4 × ? = 24');
+    const rightMultiplierLabel = root.querySelector('.app-linear-view .active-beat-prompt');
+    expect(rightMultiplierLabel.textContent).toBe('What multiplier turns 4 parts into 24?');
+    expect(rightMultiplierLabel.getAttribute('for')).toBe('linear-transform-help-multiplier-right');
+    expect(root.querySelector('.app-linear-view .control-supporting-text').textContent).toBe('4 × ? = 24');
+    expect(rightMultiplier.getAttribute('aria-describedby')).toBe('linear-transform-task-help-equation');
     rightMultiplier.value = '6';
     root.querySelector('.app-linear-view .control-submit-btn').click();
     expect(root.querySelector('.app-linear-view .active-beat-help').textContent)
       .toBe('Multiply the top by 6, too.');
     expect(root.querySelector('.app-linear-view #linear-transform-num-input-right').value).toBe('');
+  });
+
+  it('formats the multiplier label and notation from both source and target denominators', () => {
+    app.dispatch({ type: 'acknowledge-encounter' });
+    app.dispatch({ type: 'submit-notice', matchesUnits: false });
+    app.dispatch({ type: 'propose-common-denominator', proposed: whole(12) });
+
+    root.querySelector('.app-visual-view .active-beat-controls .app-secondary-button').click();
+    expect(root.querySelector('.app-visual-view .active-beat-prompt').textContent)
+      .toBe('What multiplier turns 3 parts into 12?');
+    expect(root.querySelector('.app-visual-view .control-supporting-text').textContent)
+      .toBe('3 × ? = 12');
+
+    root.querySelector('.app-visual-view #transform-help-multiplier-left').value = '4';
+    root.querySelector('.app-visual-view .control-submit-btn').click();
+    root.querySelector('.app-visual-view #transform-num-input-left').value = '8';
+    root.querySelector('.app-visual-view .control-submit-btn').click();
+    root.querySelector('.app-view-toggle').click();
+    root.querySelector('.app-linear-view .active-beat-controls .app-secondary-button').click();
+    expect(root.querySelector('.app-linear-view .active-beat-prompt').textContent)
+      .toBe('What multiplier turns 4 parts into 12?');
+    expect(root.querySelector('.app-linear-view .control-supporting-text').textContent)
+      .toBe('4 × ? = 12');
   });
 
   it('keeps prior numerator recovery separate while the multiplier substep is active', () => {
@@ -276,7 +307,9 @@ describe('Plan 09 app shell and upstream display switcher', () => {
 
     const help = root.querySelector('.app-visual-view .active-beat-controls .app-secondary-button');
     help.click();
-    expect(root.querySelector('.app-visual-view .active-beat-prompt').textContent).toBe('3 × ? = 24');
+    expect(root.querySelector('.app-visual-view .active-beat-prompt').textContent)
+      .toBe('What multiplier turns 3 parts into 24?');
+    expect(root.querySelector('.app-visual-view .control-supporting-text').textContent).toBe('3 × ? = 24');
     expect(root.querySelector('.app-visual-view .recovery-feedback')).toBeNull();
     expect(app.getState().lastRecovery.classification.kind).toBe('incorrect-equivalent-numerator');
 

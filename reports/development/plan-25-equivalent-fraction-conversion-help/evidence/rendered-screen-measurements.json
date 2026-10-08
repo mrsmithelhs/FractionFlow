@@ -12,23 +12,23 @@
       "screenshot": "transform-helper-360x740.png",
       "document": {
         "width": 360,
-        "height": 856
+        "height": 911
       },
       "prompt": {
         "x": 63,
         "y": 405.78125,
         "width": 234,
-        "height": 25.1875
+        "height": 50.375
       },
       "helperInput": {
         "x": 63,
-        "y": 438.96875,
+        "y": 494.546875,
         "width": 96,
         "height": 47
       },
       "submitButton": {
         "x": 167,
-        "y": 440.46875,
+        "y": 496.046875,
         "width": 94.21875,
         "height": 44
       },
@@ -44,23 +44,23 @@
       "screenshot": "transform-helper-error-360x740.png",
       "document": {
         "width": 360,
-        "height": 966
+        "height": 1021
       },
       "prompt": {
         "x": 63,
         "y": 405.78125,
         "width": 234,
-        "height": 25.1875
+        "height": 50.375
       },
       "helperInput": {
         "x": 63,
-        "y": 438.96875,
+        "y": 494.546875,
         "width": 96,
         "height": 47
       },
       "error": {
         "x": 63,
-        "y": 516.96875,
+        "y": 572.546875,
         "width": 234,
         "height": 64
       },
@@ -77,23 +77,23 @@
       "screenshot": "transform-helper-360x752.png",
       "document": {
         "width": 360,
-        "height": 856
+        "height": 911
       },
       "prompt": {
         "x": 63,
         "y": 405.78125,
         "width": 234,
-        "height": 25.1875
+        "height": 50.375
       },
       "helperInput": {
         "x": 63,
-        "y": 438.96875,
+        "y": 494.546875,
         "width": 96,
         "height": 47
       },
       "submitButton": {
         "x": 167,
-        "y": 440.46875,
+        "y": 496.046875,
         "width": 94.21875,
         "height": 44
       },
@@ -109,23 +109,23 @@
       "screenshot": "transform-helper-error-360x752.png",
       "document": {
         "width": 360,
-        "height": 966
+        "height": 1021
       },
       "prompt": {
         "x": 63,
         "y": 405.78125,
         "width": 234,
-        "height": 25.1875
+        "height": 50.375
       },
       "helperInput": {
         "x": 63,
-        "y": 438.96875,
+        "y": 494.546875,
         "width": 96,
         "height": 47
       },
       "error": {
         "x": 63,
-        "y": 516.96875,
+        "y": 572.546875,
         "width": 234,
         "height": 64
       },
@@ -142,7 +142,7 @@
       "screenshot": "transform-helper-1280x800-wide.png",
       "document": {
         "width": 1280,
-        "height": 875
+        "height": 906
       },
       "prompt": {
         "x": 294,
@@ -152,13 +152,13 @@
       },
       "helperInput": {
         "x": 294,
-        "y": 497.359375,
+        "y": 527.75,
         "width": 96,
         "height": 47
       },
       "submitButton": {
         "x": 398,
-        "y": 498.859375,
+        "y": 529.25,
         "width": 94.21875,
         "height": 44
       },
@@ -174,7 +174,7 @@
       "screenshot": "transform-helper-error-1280x800-wide.png",
       "document": {
         "width": 1280,
-        "height": 964
+        "height": 995
       },
       "prompt": {
         "x": 294,
@@ -184,13 +184,13 @@
       },
       "helperInput": {
         "x": 294,
-        "y": 497.359375,
+        "y": 527.75,
         "width": 96,
         "height": 47
       },
       "error": {
         "x": 294,
-        "y": 575.359375,
+        "y": 605.75,
         "width": 692,
         "height": 43
       },
