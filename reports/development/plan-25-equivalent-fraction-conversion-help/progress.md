@@ -142,3 +142,20 @@ The existing accepted-factor cue remains `Multiply the top by 8, too.` (paramete
 Physical Chromebook, assistive-technology, owner rendered-screen/agency acceptance, deployment, and packet completion/status were not performed by this implementation. No packet status or frontmatter was changed. Two unowned working-tree files were observed and left untouched: `reports/orchestration/next-wave-after-plan-24-claude-review.md` and `reports/orchestration/next-wave-after-plan-24-gemini-review.md`.
 
 **Ready for orchestrator technical review:** yes. **Ready for owner rendered-copy/agency acceptance:** pending the owner review noted above.
+
+---
+
+## Owner-requested multiplier prompt update (2026-10-08)
+
+The owner selected **“What multiplier turns 3 parts into 24?”** as the short explanation for the helper equation. I sent the wording to **FF Orch 12+** and asked for implementation advice. The orchestrator recommended making the sentence the multiplier input's single associated visible label, then showing `3 × ? = 24` once beneath it as supporting notation. This avoids adding a separate heading above a second question and avoids a denominator-word vocabulary table.
+
+Implemented that advice in both visual and linear renderers. The label formats dynamically from the active source and target denominators, so the copy becomes “What multiplier turns 4 parts into 12?” for the other operand/target combination. The equation is a separate supporting-text element, referenced by the input's `aria-describedby`; the question label remains associated with the input through its `for` attribute. No math, instruction state, or conversion behavior changed.
+
+- `npm test -- --run` — **27 files and 311 tests passed**.
+- `npm run build` — application and subtraction-prototype production builds completed.
+- `node scripts/dev/plan-status.js lint` and `git diff --check` — passed.
+- Focused Plan 25 requested/closed browser route pair — **2/2 executions passed**; checks cover the exact sentence, equation, label/input association, `aria-describedby`, and answer withholding.
+- Refreshed headless Microsoft Edge screenshots and measurements at 360×740, 360×752, and 1280×800. Document width matched viewport width at each size. The narrow prompt wraps across two readable lines; the equation appears once below it, the main numerator input remains absent, and the wrong-multiplier witness retains `7` with local feedback. This does not establish physical Chromebook or assistive-technology behavior.
+- Copy, accessibility wiring, tests, route checks, and refreshed witnesses were committed as `99244b2 feat: clarify transform multiplier prompt`.
+
+The copy change is owner-authorized and implemented; **Plan 25's overall technical delivery review and rendered-screen/agency acceptance are still pending**. The earlier accepted-factor cue remains unchanged. Packet frontmatter/status remains orchestrator-owned and unchanged.
