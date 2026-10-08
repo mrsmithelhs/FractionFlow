@@ -497,13 +497,9 @@ export function createFractionFlowApp({
   function updateSupportControls() {
     const resolved = state.status === 'resolved';
     helpButton.disabled = resolved;
-    helpButton.setAttribute('aria-expanded', 'false');
     replayButton.disabled = resolved || state.beat === 'encounter';
     replayButton.setAttribute('aria-pressed', String(isReplaying));
     supportNotice.textContent = activityNotice;
-    helpButton.textContent = state.beat === 'decide' && decideHelpOpen
-      ? STRINGS.app.closeHelpButton
-      : STRINGS.app.helpButton;
   }
 
   function getVisibleDecideInput() {
@@ -526,6 +522,8 @@ export function createFractionFlowApp({
   function updateHelpPlacement(scene = currentScene) {
     if (!helpButton || !state) return;
     if (state.beat !== 'decide') {
+      decideHelpOpen = false;
+      helpButton.textContent = STRINGS.app.helpButton;
       helpButton.setAttribute('aria-expanded', 'false');
       helpButton.removeAttribute('aria-controls');
       if (helpCue.parentNode) helpCue.parentNode.removeChild(helpCue);
@@ -542,22 +540,32 @@ export function createFractionFlowApp({
     }
     const host = visualView ? visualHost : linearHost;
     const controls = host.querySelector('.active-beat-controls');
-    if (!controls) return;
+    if (!controls) {
+      decideHelpOpen = false;
+      helpButton.textContent = STRINGS.app.helpButton;
+      helpButton.setAttribute('aria-expanded', 'false');
+      helpButton.removeAttribute('aria-controls');
+      helpCue.textContent = '';
+      if (helpCue.parentNode) helpCue.parentNode.removeChild(helpCue);
+      return;
+    }
     if (helpButton.parentNode !== controls && helpButton.parentNode) {
       helpButton.parentNode.removeChild(helpButton);
     }
     controls.appendChild(helpButton);
-    const recovery = state.lastRecovery?.beat === 'decide'
-      ? state.lastRecovery.classification
-      : null;
     const sourceDenominators = scene?.meaning?.unitRelationship?.sourceDenominators;
-    const cue = recovery || !sourceDenominators
+    const cue = !sourceDenominators
       ? ''
       : STRINGS.decide.findingHelpCue(
         sourceDenominators.left,
         sourceDenominators.right,
       );
-    if (decideHelpOpen && cue) {
+    if (!cue) decideHelpOpen = false;
+    const isOpen = decideHelpOpen && Boolean(cue);
+    helpButton.textContent = isOpen
+      ? STRINGS.app.closeHelpButton
+      : STRINGS.app.helpButton;
+    if (isOpen) {
       if (helpCue.parentNode !== controls && helpCue.parentNode) helpCue.parentNode.removeChild(helpCue);
       helpButton.setAttribute('aria-controls', helpCue.getAttribute('id'));
       helpButton.setAttribute('aria-expanded', 'true');

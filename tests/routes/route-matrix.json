@@ -3143,6 +3143,128 @@
         {"type":"notHasSelector","target":".app-linear-view .active-denominator-help-cue"}
       ]},
       "negativeControl":{"targetRouteId":"ROUTE-SUPPORT-HIGH-DECIDE","comparison":"notIdenticalCapture","sameMotionMode":true}
+    },
+    {
+      "id": "ROUTE-PLAN24-MEDIUM-HELP-RECOVERY-TOGGLE",
+      "behavior": "Requested denominator help remains visibly and accessibly open alongside recovery after submitting 11 twice across visual and linear views; closing, retrying and re-entering synchronize all toggle signals.",
+      "configuration": "phase2-bundle-1",
+      "startingSurface": "mounted-app-entry",
+      "viewport": {"width":360,"height":740},
+      "motionMode": "standard-motion",
+      "witness": "browser",
+      "actions": [
+        {"step":1,"method":"click","target":".app-gear-button","description":"Open reviewer settings"},
+        {"step":2,"method":"click","target":"[data-support-id=\"medium-support\"]","description":"Select medium support"},
+        {"step":3,"method":"click","target":".app-practice-button","description":"Begin practice"},
+        {"step":4,"method":"click","target":".app-visual-view .control-btn","description":"Acknowledge encounter"},
+        {"step":5,"method":"click","target":".app-visual-view .control-choice-btn >> nth=1","description":"Notice different-sized parts"},
+        {"step":6,"method":"click","target":".app-visual-view .active-beat-controls .app-secondary-button","description":"Open the denominator strategy"},
+        {"step":7,"method":"assertFocused","target":".app-visual-view .active-beat-controls .app-secondary-button","description":"Verify opening help returns focus to its mounted control"},
+        {"step":8,"method":"assert","assertions":[
+          {"type":"containsText","target":".app-visual-view .active-beat-controls .app-secondary-button","value":"Close help"},
+          {"type":"activeElementEquals","target":"activeElement","value":"button.fraction-control.app-secondary-button"},
+          {"type":"attributeEquals","target":".app-visual-view .active-beat-controls .app-secondary-button","attribute":"aria-expanded","value":"true"},
+          {"type":"attributeEquals","target":".app-visual-view .active-beat-controls .app-secondary-button","attribute":"aria-controls","value":"fractionflow-decide-help-cue"},
+          {"type":"containsText","target":".app-visual-view .active-denominator-help-cue","value":"Try multiplying 3 by 4 to find one common denominator."},
+          {"type":"visibleGeometry","target":".app-visual-view .active-denominator-help-cue","minWidth":12,"minHeight":12}
+        ],"description":"Prove label, ARIA and visible cue describe the open state"},
+        {"step":9,"method":"fill","target":".app-visual-view input.control-numeric-input","value":"11","description":"Enter denominator 11"},
+        {"step":10,"method":"click","target":".app-visual-view .control-submit-btn","description":"Submit the first invalid 11"},
+        {"step":11,"method":"assert","assertions":[
+          {"type":"containsText","target":".app-visual-view .recovery-feedback","value":"11 is not a common denominator. Try another number."},
+          {"type":"inputValueEquals","target":".app-visual-view input.control-numeric-input","value":"11"},
+          {"type":"containsText","target":".app-visual-view .active-beat-controls .app-secondary-button","value":"Close help"},
+          {"type":"attributeEquals","target":".app-visual-view .active-beat-controls .app-secondary-button","attribute":"aria-expanded","value":"true"},
+          {"type":"attributeEquals","target":".app-visual-view .active-beat-controls .app-secondary-button","attribute":"aria-controls","value":"fractionflow-decide-help-cue"},
+          {"type":"visibleGeometry","target":".app-visual-view .active-denominator-help-cue","minWidth":12,"minHeight":12}
+        ],"description":"Keep requested help visible beside truthful recovery"},
+        {"step":12,"method":"click","target":".app-view-toggle","description":"Switch to linear while help remains open"},
+        {"step":13,"method":"assert","assertions":[
+          {"type":"containsText","target":".app-linear-view .active-beat-controls .app-secondary-button","value":"Close help"},
+          {"type":"attributeEquals","target":".app-linear-view .active-beat-controls .app-secondary-button","attribute":"aria-expanded","value":"true"},
+          {"type":"attributeEquals","target":".app-linear-view .active-beat-controls .app-secondary-button","attribute":"aria-controls","value":"fractionflow-decide-help-cue"},
+          {"type":"visibleGeometry","target":".app-linear-view .active-denominator-help-cue","minWidth":12,"minHeight":12},
+          {"type":"inputValueEquals","target":".app-linear-view input.control-numeric-input","value":"11"}
+        ],"description":"Verify the visible cue and retained draft moved to linear view"},
+        {"step":14,"method":"fill","target":".app-linear-view input.control-numeric-input","value":"11","description":"Enter denominator 11 again"},
+        {"step":15,"method":"click","target":".app-linear-view .control-submit-btn","description":"Submit the second invalid 11"},
+        {"step":16,"method":"assert","assertions":[
+          {"type":"containsText","target":".app-linear-view .recovery-feedback","value":"11 is not a common denominator. Try another number."},
+          {"type":"containsText","target":".app-linear-view .active-beat-controls .app-secondary-button","value":"Close help"},
+          {"type":"attributeEquals","target":".app-linear-view .active-beat-controls .app-secondary-button","attribute":"aria-expanded","value":"true"},
+          {"type":"visibleGeometry","target":".app-linear-view .active-denominator-help-cue","minWidth":12,"minHeight":12}
+        ],"description":"Verify repeated invalid input does not silence or strand the open help"},
+        {"step":17,"method":"click","target":".app-linear-view .active-beat-controls .app-secondary-button","description":"Close help with a mounted click"},
+        {"step":18,"method":"assert","assertions":[
+          {"type":"containsText","target":".app-linear-view .active-beat-controls .app-secondary-button","value":"Need help?"},
+          {"type":"attributeEquals","target":".app-linear-view .active-beat-controls .app-secondary-button","attribute":"aria-expanded","value":"false"},
+          {"type":"notHasSelector","target":".app-linear-view .active-denominator-help-cue"},
+          {"type":"activeElementEquals","target":"activeElement","value":"button.fraction-control.app-secondary-button"}
+        ],"description":"Verify close label, ARIA and cue visibility synchronize"},
+        {"step":19,"method":"click","target":".app-restart-button","description":"Reset the episode"},
+        {"step":20,"method":"assert","assertions":[
+          {"type":"containsText","target":".app-support-controls .app-secondary-button","value":"Need help?"},
+          {"type":"attributeEquals","target":".app-support-controls .app-secondary-button","attribute":"aria-expanded","value":"false"},
+          {"type":"notHasSelector","target":".app-visual-view .active-denominator-help-cue"},
+          {"type":"notHasSelector","target":".app-linear-view .active-denominator-help-cue"}
+        ],"description":"Verify reset clears the request, cue and ARIA state"},
+        {"step":21,"method":"click","target":".app-return-button","description":"Return to entry"},
+        {"step":22,"method":"click","target":".app-practice-button","description":"Re-enter a fresh episode"},
+        {"step":23,"method":"click","target":".app-linear-view .control-btn","description":"Acknowledge the fresh encounter in the retained access path"},
+        {"step":24,"method":"click","target":".app-linear-view .control-choice-btn >> nth=1","description":"Reach the fresh denominator decision"},
+        {"step":25,"method":"assert","assertions":[
+          {"type":"containsText","target":".app-linear-view .active-beat-controls .app-secondary-button","value":"Need help?"},
+          {"type":"attributeEquals","target":".app-linear-view .active-beat-controls .app-secondary-button","attribute":"aria-expanded","value":"false"},
+          {"type":"notHasSelector","target":".app-linear-view .active-denominator-help-cue"}
+        ],"description":"Verify re-entry starts with clean and synchronized help"}
+      ],
+      "expect":{"capture":{"target":".app-linear-view","type":"innerHTML"},"assertions":[
+        {"type":"containsText","target":".app-linear-view .active-beat-controls .app-secondary-button","value":"Need help?"},
+        {"type":"notHasSelector","target":".app-linear-view .active-denominator-help-cue"}
+      ]},
+      "negativeControl":{"targetRouteId":"ROUTE-PLAN24-MEDIUM-LOCAL-HELP","comparison":"notIdenticalCapture","sameMotionMode":true}
+    },
+    {
+      "id": "ROUTE-PLAN24-HIGH-HELP-VIEW-TOGGLE-RESET",
+      "behavior": "High-support ordinary denominator help stays synchronized while moved between visual and linear paths, closes by mounted click, and clears on retry and re-entry.",
+      "configuration": "phase2-bundle-1",
+      "startingSurface": "mounted-app-entry",
+      "viewport": {"width":360,"height":752},
+      "motionMode": "standard-motion",
+      "witness": "browser",
+      "actions": [
+        {"step":1,"method":"click","target":".app-practice-button","description":"Begin high-support practice"},
+        {"step":2,"method":"click","target":".app-visual-view .control-btn","description":"Acknowledge encounter"},
+        {"step":3,"method":"click","target":".app-visual-view .control-choice-btn >> nth=1","description":"Notice different-sized parts"},
+        {"step":4,"method":"click","target":".app-visual-view .active-beat-controls .app-secondary-button","description":"Open the denominator strategy"},
+        {"step":5,"method":"click","target":".app-view-toggle","description":"Move the open strategy to linear view"},
+        {"step":6,"method":"assert","assertions":[
+          {"type":"containsText","target":".app-linear-view .active-beat-controls .app-secondary-button","value":"Close help"},
+          {"type":"attributeEquals","target":".app-linear-view .active-beat-controls .app-secondary-button","attribute":"aria-expanded","value":"true"},
+          {"type":"visibleGeometry","target":".app-linear-view .active-denominator-help-cue","minWidth":12,"minHeight":12}
+        ],"description":"Verify high-support ordinary toggle remains visibly open"},
+        {"step":7,"method":"click","target":".app-linear-view .active-beat-controls .app-secondary-button","description":"Close with a mounted click"},
+        {"step":8,"method":"assert","assertions":[
+          {"type":"containsText","target":".app-linear-view .active-beat-controls .app-secondary-button","value":"Need help?"},
+          {"type":"attributeEquals","target":".app-linear-view .active-beat-controls .app-secondary-button","attribute":"aria-expanded","value":"false"},
+          {"type":"notHasSelector","target":".app-linear-view .active-denominator-help-cue"}
+        ],"description":"Verify the closed label matches collapsed help"},
+        {"step":9,"method":"click","target":".app-restart-button","description":"Retry the episode"},
+        {"step":10,"method":"click","target":".app-return-button","description":"Return to entry"},
+        {"step":11,"method":"click","target":".app-practice-button","description":"Re-enter practice"},
+        {"step":12,"method":"click","target":".app-linear-view .control-btn","description":"Acknowledge the new encounter in the retained access path"},
+        {"step":13,"method":"click","target":".app-linear-view .control-choice-btn >> nth=1","description":"Reach the new denominator decision"},
+        {"step":14,"method":"assert","assertions":[
+          {"type":"containsText","target":".app-linear-view .active-beat-controls .app-secondary-button","value":"Need help?"},
+          {"type":"attributeEquals","target":".app-linear-view .active-beat-controls .app-secondary-button","attribute":"aria-expanded","value":"false"},
+          {"type":"notHasSelector","target":".app-linear-view .active-denominator-help-cue"}
+        ],"description":"Verify a fresh decide state has no stale help request"}
+      ],
+      "expect":{"capture":{"target":".app-linear-view","type":"innerHTML"},"assertions":[
+        {"type":"containsText","target":".app-linear-view .active-beat-controls .app-secondary-button","value":"Need help?"},
+        {"type":"notHasSelector","target":".app-linear-view .active-denominator-help-cue"}
+      ]},
+      "negativeControl":{"targetRouteId":"ROUTE-PLAN24-HIGH-LINEAR-HELP","comparison":"notIdenticalCapture","sameMotionMode":true}
     }
 
   ]

@@ -105,6 +105,7 @@ describe('Plan 09 app shell and upstream display switcher', () => {
     expect(help.parentNode.classList.contains('active-beat-controls')).toBe(true);
     expect(help.getAttribute('aria-expanded')).toBe('false');
     help.click();
+    expect(document.activeElement).toBe(help);
     expect(app.getState().helpHistory.at(-1).beat).toBe('decide');
     expect(help.parentNode.classList.contains('active-beat-controls')).toBe(true);
     expect(root.querySelector('.active-denominator-help-cue').textContent)
@@ -121,9 +122,11 @@ describe('Plan 09 app shell and upstream display switcher', () => {
     expect(root.querySelector('.app-visual-view .active-denominator-help-cue')).not.toBeNull();
 
     help.click();
+    expect(document.activeElement).toBe(help);
     expect(root.querySelector('.active-denominator-help-cue')).toBe(null);
     expect(help.getAttribute('aria-expanded')).toBe('false');
     expect(help.hasAttribute('aria-controls')).toBe(false);
+    expect(help.textContent).toBe('Need help?');
     expect(input.value).toBe('8');
     input.focus();
     root.querySelector('.app-view-toggle').click();
@@ -136,6 +139,20 @@ describe('Plan 09 app shell and upstream display switcher', () => {
     expect(root.querySelector('.app-linear-view .recovery-feedback').textContent)
       .toBe('8 is a multiple of 4, but not 3. Try another number.');
     expect(root.querySelector('.active-denominator-help-cue')).toBe(null);
+
+    help.click();
+    expect(document.activeElement).toBe(help);
+    expect(help.textContent).toBe('Close help');
+    expect(help.getAttribute('aria-expanded')).toBe('true');
+    expect(help.getAttribute('aria-controls')).toBe('fractionflow-decide-help-cue');
+    expect(root.querySelector('.app-linear-view .active-denominator-help-cue').textContent)
+      .toBe('Try multiplying 3 by 4 to find one common denominator.');
+    expect(root.querySelector('.app-linear-view .recovery-feedback').textContent)
+      .toBe('8 is a multiple of 4, but not 3. Try another number.');
+    help.click();
+    expect(help.textContent).toBe('Need help?');
+    expect(help.getAttribute('aria-expanded')).toBe('false');
+    expect(help.hasAttribute('aria-controls')).toBe(false);
 
     app.dispatch({ type: 'propose-common-denominator', proposed: whole(10) });
     expect(root.querySelector('.app-linear-view .recovery-feedback').textContent)

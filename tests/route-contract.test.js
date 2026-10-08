@@ -104,9 +104,9 @@ describe('Plan 14 Reachable Behavior Route Contract & Matrix Schema', () => {
   });
 
   it('preserves learner and prototype routes while adding mounted high/medium support witnesses', () => {
-    expect(matrix.routes).toHaveLength(46);
+    expect(matrix.routes).toHaveLength(48);
     const learnerRoutes = matrix.routes.filter((route) => route.configuration !== 'plan15-subtraction-prototype');
-    expect(learnerRoutes).toHaveLength(44);
+    expect(learnerRoutes).toHaveLength(46);
     for (const route of learnerRoutes) {
       expect(route.startingSurface).toBe('mounted-app-entry');
       expect(route.viewport.width).toBe(route.id === 'ROUTE-PLAN22-36-PREMISE-LINEAR-REDUCED' ? 320 : 360);
@@ -115,6 +115,7 @@ describe('Plan 14 Reachable Behavior Route Contract & Matrix Schema', () => {
         'ROUTE-REPLAY-NEW-CONVERSION-COND-1',
         'ROUTE-REPLAY-REDUCED-COND-1',
         'ROUTE-PLAN24-HIGH-LINEAR-HELP',
+        'ROUTE-PLAN24-HIGH-HELP-VIEW-TOGGLE-RESET',
       ].includes(route.id) ? 752 : 740);
       expect(['standard-motion', 'reduced-motion']).toContain(route.motionMode);
       expect(route.witness).toBe('browser');
@@ -195,7 +196,7 @@ describe('Plan 14 Reachable Behavior Route Contract & Matrix Schema', () => {
 
   it('executes each prototype route in both motion modes and brings in its filtered negative control', () => {
     const executions = expandRouteExecutions(matrix.routes);
-    expect(executions).toHaveLength(48);
+    expect(executions).toHaveLength(50);
     expect(executions.filter((execution) => (
       execution.route.configuration === 'plan15-subtraction-prototype'
     ))).toHaveLength(4);
@@ -266,9 +267,9 @@ describe('Plan 14 Reachable Behavior Route Contract & Matrix Schema', () => {
   });
 
   it('preserves the Plan 11 route baseline and witnesses executed motion, interruption, Replay, static arms, and both support profiles', () => {
-    expect(matrix.routes).toHaveLength(46);
-    expect(matrix.routes.filter((route) => !route.id.startsWith('ROUTE-PLAN22-36-'))).toHaveLength(43);
-    expect(expandRouteExecutions(matrix.routes)).toHaveLength(48);
+    expect(matrix.routes).toHaveLength(48);
+    expect(matrix.routes.filter((route) => !route.id.startsWith('ROUTE-PLAN22-36-'))).toHaveLength(45);
+    expect(expandRouteExecutions(matrix.routes)).toHaveLength(50);
 
     const route = (id) => matrix.routes.find((candidate) => candidate.id === id);
     const primary = route('ROUTE-COND-1-TRANSFORM');
