@@ -152,3 +152,20 @@ accessible names and hidden child pieces. Report actual AT testing limits.
 
 Commit scoped work and progress report last. Technical and owner rendered-screen
 acceptance remain separate; no push or deployment is authorized.
+
+## Compact linear context review — bounded corrections
+
+Date: 2026-10-07. Direct inspection of all six distinct 360x740 captures from
+56af948 / 30832b3 confirms compact current notation and labelled premise rows.
+Exceptional transition/replay descriptions carry pre/post or replay information.
+Two defects prevent acceptance: the premise screen still asks the same question
+in a paragraph and bold group question, and the ordinary-decide capture actually
+shows transform-left after selecting denominator 12.
+
+Authorize removal of the redundant linear premise paragraph/question, retaining
+one associated choice-group question: Does the "New parts" fraction show the same
+amount as the starting fraction? Preserve the visual path and mathematical/state
+contracts. Correct the capture to stop at actual decide before choosing a unit,
+with current-task and exact-question assertions. Refresh affected evidence at
+both heights and validate the scoped change. Keep delivered status; implementation
+and report commits remain implementer-owned, no push/deployment authorized.
