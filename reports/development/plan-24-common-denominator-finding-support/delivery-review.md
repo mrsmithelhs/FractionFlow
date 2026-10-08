@@ -89,3 +89,33 @@ and identify semantic repetition as well as exact repeated strings before accept
 Keep packet delivered pending repair and owner review. Commit scoped repair and
 report last; no status change, push or deployment. This record is the explicit
 bounded repair authorization; stop if it requires a broader behavioral mechanism.
+
+## Repair 02 re-review — 2026-10-07
+
+Implementation d85cf7d and final report 6a795d5 resolve the requested duplication.
+Both renderers omit the separate decide/transform heading and use the single task
+question as the associated input label or visible choice-group legend. The
+parameterized transform question retains the source fraction and target unit.
+No math, intent, schedule, replay or help-scope change was introduced.
+
+Orchestration personally read six refreshed 360x740 screens: visual less-support
+help closed/open, one-sided recovery and transform with 24 parts; linear
+more-support help open; and linear less-support selected unit 12 with its optional
+proof open. These show one active task question. The help cue adds a strategy,
+recovery identifies why the attempted denominator fails, and the optional proof
+explains the accepted unit; none repeats the active question. The inspected open
+help cue fits in the viewport after the redundant heading is removed.
+
+Independent verification passed 33 focused app/render/provenance-replay tests,
+four browser executions (two help routes and their same-motion controls), packet
+lint and diff check. Browser execution again required narrow elevation for the
+documented temporary-profile limitation. The full 296-test/48-route results and
+52-state computed-accessible-name/geometry capture remain implementer evidence;
+orchestration did not independently repeat that entire capture. Native label and
+legend associations are retained; actual assistive-technology use remains untested.
+
+Technical re-review accepted. Plan 24 remains delivered pending owner rendered
+screen and agency acceptance. The earlier orchestration review missed semantic
+repetition; future screen review must explicitly read the question, heading,
+instruction and feedback together before accepting restraint. No push or
+deployment is authorized by this disposition.
