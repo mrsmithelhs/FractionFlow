@@ -94,3 +94,16 @@ and unowned edits untouched; no packet status change, push or deployment. Owner
 rendered-screen and agency acceptance remain separately gated. This review used
 source inspection and a bounded read-only explorer for legacy help semantics; it
 is not a higher-tier advisor consultation or claim of new browser verification.
+
+## Owner-directed multiplier question — 2026-10-08
+
+Owner directly instructed FF Impl 25 to add its preferred sentence, “What
+multiplier turns 3 parts into 24?”, parameterized by the active source/target
+denominators. Orchestration verified the instruction in the implementer chat.
+Use it as the single associated visible multiplier-input question, with the
+equation shown once below as supporting notation. Avoid an added heading or
+second question, duplicate accessible announcement or denominator-name bank.
+Existing action/state, accepted-factor cue and recovery remain unchanged.
+Refresh narrow rendered evidence and verify both views, dynamic numbers and
+computed input naming. This bounded copy authorization does not accept delivery
+or authorize status change, push or deployment.
