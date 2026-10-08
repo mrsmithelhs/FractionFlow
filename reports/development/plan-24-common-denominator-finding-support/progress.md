@@ -365,3 +365,72 @@ advisor did not edit files or run commands.
   rendered-screen/agency acceptance, packet status change, and deployment remain
   separate gates. This implementer did not edit packet frontmatter or review
   dispositions.
+
+---
+
+## Delivery Repair 01 (2026-10-07)
+
+Addressed the two bounded findings in `delivery-review.md` without changing
+instructional state, renderer mathematics, replay, or the learner family surface.
+
+- **Projected denominator copy:** `findingHelpCue` is now a string formatter
+  taking the left/right source denominators from the current projected scene.
+  The app uses its latest scene when placing the cue after a view switch. The
+  canonical 3-by-4 wording is unchanged. A mounted-app test supplies only a
+  test-local 1/2 + 1/3 curated instance and verifies 2-by-3 copy; scene tests
+  verify both canonical and noncanonical denominator projections. This fixture
+  is not reachable from the learner practice registry.
+- **Comparable route controls:** restored `sameMotionMode: true` to
+  `ROUTE-PLAN22-36-MATCHING-VISUAL`. Both Plan 24 routes now use
+  `standard-motion`, matching their support-profile decide comparators, and mark
+  `sameMotionMode: true`. A route-contract assertion checks all three route and
+  target pairs.
+- Existing screenshots were not regenerated because the canonical cue text and
+  rendered layout remain unchanged.
+
+### Repair advisor disposition
+
+**Branch A — read-only consultation ran.** Requested `gpt-6-sol`; the advisor
+self-reported GPT-6 Sol-class but could not verify the exact runtime variant. The
+review was limited to the inline code summary and diff; structural read-only was
+not verifiable, so the primary performed the required post-consultation status
+check. It showed only the six expected Repair 01 files, with no unexpected or
+advisor-authored changes. The primary was the sole writer.
+
+1. **Dynamic cue concern — accepted as repaired.** The advisor found the
+   projected-denominator formatter and mounted noncanonical app test
+   discriminating against fixed 3-by-4 copy. It noted the test would not alone
+   enforce the projection boundary after a future code change; the implementation
+   directly reads `scene.meaning.unitRelationship.sourceDenominators`, and scene
+   tests verify the noncanonical values enter projection.
+2. **Motion comparator concern — accepted as repaired.** The advisor confirmed
+   the Plan 22 comparator restoration and Plan 24 route/target motion alignment
+   described in the supplied diff. The route contract checks those pairs; the
+   reported full browser matrix passed. The advisor did not inspect or execute
+   the browser run.
+3. **Retained-scene concern — rejected for the reviewed call paths, with a
+   residual condition.** The advisor found that render refreshes the cached
+   projected scene, while view switching and opening help leave projected source
+   denominators unchanged. Revisit this assumption if a future action changes
+   the active problem or recovery state without rendering.
+
+Coarse repair consultation cost: one additional advisor turn, roughly one minute.
+The advisor did not access files, run commands, or make changes.
+
+### Repair verification and commit
+
+- `npm test` — **25 files and 295 tests passed**.
+- `npm run build` — **passed** for the learner app and subtraction prototype.
+- `node scripts/dev/run-route-matrix.js --filter ROUTE-PLAN24` — **4/4 passed**,
+  including both matched-motion support-profile comparison routes.
+- `node scripts/dev/run-route-matrix.js` — **48/48 passed** across 46 route rows,
+  including the restored Plan 22 comparator.
+- `node scripts/dev/plan-status.js lint` — **OK**;
+  `node scripts/dev/plan-status.js check plan-24` — **RUNNABLE**;
+  `git diff --check` — **clean**.
+- The ordinary Edge browser launch still cannot write its temporary sandbox
+  profile (`error = -5`); focused and full browser runs passed with the narrow
+  elevated local Edge path.
+- Repair commit: `e437933` — `Repair Plan 24 dynamic help cue and route controls`.
+  The progress report is being committed separately as the final scoped commit.
+  No push or packet-status change was made.
