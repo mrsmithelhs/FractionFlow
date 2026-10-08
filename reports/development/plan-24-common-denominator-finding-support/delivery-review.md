@@ -119,3 +119,36 @@ screen and agency acceptance. The earlier orchestration review missed semantic
 repetition; future screen review must explicitly read the question, heading,
 instruction and feedback together before accepting restraint. No push or
 deployment is authorized by this disposition.
+
+## Owner-requested compact linear context — mechanism approval
+
+Date: 2026-10-07. The owner requested replacing the ordinary linear-context
+heading, Problem prefix and operand bullets with a stacked fraction expression,
+and authorized using the Plan 24 implementer for this bounded follow-up.
+
+Approve the implementer's investigated mechanism: ordinary context uses one
+expression built from projected current forms, never stale source forms. Reuse
+only stacked-notation presentation helpers, not the full symbolic renderer with
+its result display. Give the expression one coherent accessible reading and hide
+its visual children from duplicate announcement. Do not add a result or reveal
+an answer earlier than the existing contract.
+
+For premise reflection, replace the generic operation context with compact
+Starting fraction / New parts rows using the exact projected premise forms.
+Retain transition/replay-specific information only where it communicates the
+before/after relationship, sequence or replay status that current notation alone
+cannot express. Do not retain ordinary operand descriptions alongside it or add
+new explanatory prose. Existing exceptional wording may remain for this bounded
+repair, but must be shown in rendered evidence for explicit restraint review.
+
+Authorized source scope: linear-path.js, a small reusable notation helper in
+symbolic.js, render.css, focused tests/routes and capture evidence. Preserve
+symbolic-renderer behavior, mathematics, instructional state, replay, focus and
+task capability boundaries. No new family, general renderer rewrite or status
+change. Plan 24's delivered status does not block this explicitly authorized
+follow-up. Capture ordinary, converted, transition/replay and premise states at
+360x740 and 360x752; measure card/task geometry and overflow and verify computed
+accessible names and hidden child pieces. Report actual AT testing limits.
+
+Commit scoped work and progress report last. Technical and owner rendered-screen
+acceptance remain separate; no push or deployment is authorized.
