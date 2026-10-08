@@ -101,6 +101,7 @@ export function createFractionFlowApp({
   let selectedSupportLevel = getDefaultSupportLevel();
   let selectedPracticeType = null;
   let state = null;
+  let currentScene = null;
   let visualView = true;
   let activityNotice = '';
   let decideHelpOpen = false;
@@ -522,7 +523,7 @@ export function createFractionFlowApp({
     if (input) input.value = commonDenominatorDraft;
   }
 
-  function updateHelpPlacement() {
+  function updateHelpPlacement(scene = currentScene) {
     if (!helpButton || !state) return;
     if (state.beat !== 'decide') {
       helpButton.setAttribute('aria-expanded', 'false');
@@ -549,7 +550,13 @@ export function createFractionFlowApp({
     const recovery = state.lastRecovery?.beat === 'decide'
       ? state.lastRecovery.classification
       : null;
-    const cue = recovery ? '' : STRINGS.decide.findingHelpCue;
+    const sourceDenominators = scene?.meaning?.unitRelationship?.sourceDenominators;
+    const cue = recovery || !sourceDenominators
+      ? ''
+      : STRINGS.decide.findingHelpCue(
+        sourceDenominators.left,
+        sourceDenominators.right,
+      );
     if (decideHelpOpen && cue) {
       if (helpCue.parentNode !== controls && helpCue.parentNode) helpCue.parentNode.removeChild(helpCue);
       helpButton.setAttribute('aria-controls', helpCue.getAttribute('id'));
@@ -579,6 +586,7 @@ export function createFractionFlowApp({
       presentationMode: mode,
       isReplaying,
     });
+    currentScene = scene;
 
     if (!visualRenderer) {
       visualRenderer = createBeatContainer({
@@ -607,7 +615,7 @@ export function createFractionFlowApp({
     updateSupportControls();
     updateViewVisibility();
     restoreDecideDraft();
-    updateHelpPlacement();
+    updateHelpPlacement(scene);
   }
 
   function dispatchAction(action) {

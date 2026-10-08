@@ -249,6 +249,22 @@ describe('Plan 14 Reachable Behavior Route Contract & Matrix Schema', () => {
     }
   });
 
+  it('compares Plan 22 boundaries and Plan 24 help witnesses under matching motion modes', () => {
+    const matchedControls = [
+      ['ROUTE-PLAN22-36-MATCHING-VISUAL', 'ROUTE-SUPPORT-MEDIUM-DECIDE'],
+      ['ROUTE-PLAN24-MEDIUM-LOCAL-HELP', 'ROUTE-SUPPORT-MEDIUM-DECIDE'],
+      ['ROUTE-PLAN24-HIGH-LINEAR-HELP', 'ROUTE-SUPPORT-HIGH-DECIDE'],
+    ];
+    for (const [routeId, targetId] of matchedControls) {
+      const route = matrix.routes.find((candidate) => candidate.id === routeId);
+      const target = matrix.routes.find((candidate) => candidate.id === targetId);
+      expect(route).toBeDefined();
+      expect(target).toBeDefined();
+      expect(route.negativeControl).toMatchObject({ targetRouteId: targetId, sameMotionMode: true });
+      expect(route.motionMode).toBe(target.motionMode);
+    }
+  });
+
   it('preserves the Plan 11 route baseline and witnesses executed motion, interruption, Replay, static arms, and both support profiles', () => {
     expect(matrix.routes).toHaveLength(46);
     expect(matrix.routes.filter((route) => !route.id.startsWith('ROUTE-PLAN22-36-'))).toHaveLength(43);

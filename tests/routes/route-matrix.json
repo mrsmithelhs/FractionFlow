@@ -2995,7 +2995,7 @@
         {"type":"attributeEquals","target":".fractionflow-app","attribute":"data-support-code","value":"medium support"},
         {"type":"notHasSelector","target":".app-visual-view .recovery-feedback"}
       ]},
-      "negativeControl":{"targetRouteId":"ROUTE-SUPPORT-MEDIUM-DECIDE","comparison":"notIdenticalCapture"}
+      "negativeControl":{"targetRouteId":"ROUTE-SUPPORT-MEDIUM-DECIDE","comparison":"notIdenticalCapture","sameMotionMode":true}
     },
     {
       "id": "ROUTE-PLAN22-36-PREMISE-LINEAR-REDUCED",
@@ -3071,7 +3071,7 @@
       "configuration": "phase2-bundle-1",
       "startingSurface": "mounted-app-entry",
       "viewport": {"width":360,"height":740},
-      "motionMode": "reduced-motion",
+      "motionMode": "standard-motion",
       "witness": "browser",
       "actions": [
         {"step":1,"method":"click","target":".app-gear-button","description":"Open reviewer settings"},
@@ -3102,7 +3102,7 @@
         {"type":"hasSelector","target":".app-linear-view .selected-unit-help"},
         {"type":"notContainsText","target":".app-linear-view .selected-unit-help","value":"16/24"}
       ]},
-      "negativeControl":{"targetRouteId":"ROUTE-SUPPORT-MEDIUM-DECIDE","comparison":"notIdenticalCapture"}
+      "negativeControl":{"targetRouteId":"ROUTE-SUPPORT-MEDIUM-DECIDE","comparison":"notIdenticalCapture","sameMotionMode":true}
     },
     {
       "id": "ROUTE-PLAN24-HIGH-LINEAR-HELP",
@@ -3110,7 +3110,7 @@
       "configuration": "phase2-bundle-1",
       "startingSurface": "mounted-app-entry",
       "viewport": {"width":360,"height":752},
-      "motionMode": "reduced-motion",
+      "motionMode": "standard-motion",
       "witness": "browser",
       "actions": [
         {"step":1,"method":"click","target":".app-practice-button","description":"Begin with high support"},
@@ -3126,7 +3126,7 @@
         {"type":"notContainsText","target":".app-linear-view .selected-unit-help","value":"8/12"},
         {"type":"notHasSelector","target":".app-linear-view .active-denominator-help-cue"}
       ]},
-      "negativeControl":{"targetRouteId":"ROUTE-SUPPORT-HIGH-DECIDE","comparison":"notIdenticalCapture"}
+      "negativeControl":{"targetRouteId":"ROUTE-SUPPORT-HIGH-DECIDE","comparison":"notIdenticalCapture","sameMotionMode":true}
     }
 
   ]

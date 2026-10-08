@@ -230,6 +230,8 @@ describe('Plan 06 semantic Scene Model', () => {
       { type: 'propose-common-denominator', proposed: whole(12) },
     );
     const decidedScene = projectScene(sceneInput(decided));
+    expect(decidedScene.meaning.unitRelationship.sourceDenominators)
+      .toEqual({ left: '3', right: '4' });
     expect(decidedScene.meaning.unitRelationship.commonUnit).toMatchObject({
       targetDenominator: '12',
       kind: 'valid-common-denominator',
@@ -241,6 +243,9 @@ describe('Plan 06 semantic Scene Model', () => {
     );
     expect(projectScene(sceneInput(alternateUnitState)).meaning.unitRelationship.commonUnit)
       .toMatchObject({ targetDenominator: '24', scaleFactors: { left: '8', right: '6' } });
+    const noncanonicalScene = projectScene(sceneInput(atDecide(outsideAuthoredCoverageInstance())));
+    expect(noncanonicalScene.meaning.unitRelationship.sourceDenominators)
+      .toEqual({ left: '2', right: '3' });
     expect(decidedScene.meaning.transition).toBeNull();
   });
 

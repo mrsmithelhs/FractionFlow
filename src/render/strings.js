@@ -45,7 +45,9 @@ export const STRINGS = Object.freeze({
 
   decide: Object.freeze({
     prompt: 'Choose a common denominator for both fractions.',
-    findingHelpCue: 'Try multiplying 3 by 4 to find one common denominator.',
+    findingHelpCue: (leftDenominator, rightDenominator) => (
+      `Try multiplying ${leftDenominator} by ${rightDenominator} to find one common denominator.`
+    ),
     invalidOneSidedDenominator: (proposed, multipleOf, notMultipleOf) => (
       `${proposed} is a multiple of ${multipleOf}, but not ${notMultipleOf}. Try another number.`
     ),

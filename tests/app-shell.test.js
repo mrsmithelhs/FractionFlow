@@ -1,6 +1,7 @@
 import { afterEach, beforeEach, describe, expect, it } from 'vitest';
 import { createFractionFlowApp } from '../src/app/app.js';
 import { REGISTERED_CONDITIONS } from '../src/app/conditions.js';
+import { buildCuratedProblem } from '../src/content/generator.js';
 import { setupMockDOM, teardownMockDOM } from './fixtures/mock-dom.js';
 
 function whole(value) {
@@ -152,6 +153,29 @@ describe('Plan 09 app shell and upstream display switcher', () => {
       'Why does 24 work?24 is 8 groups of 3 and 6 groups of 4, so both fractions can use twenty-fourths.',
     );
     expect(explanation.textContent).not.toContain('16/24');
+  });
+
+  it('formats denominator help from projected source denominators for a noncanonical test instance', () => {
+    app.destroy();
+    const instance = buildCuratedProblem({
+      fixture: { id: 'plan24-noncanonical-help-test', authoringRevision: 'plan24-test-v1' },
+      selector: 'relatively-prime-addition',
+      overlays: [],
+      profileId: 'curated-review',
+      candidate: {
+        left: fraction(1, 2),
+        right: fraction(1, 3),
+      },
+    });
+    app = createFractionFlowApp({ root, presentationMode: 'instant-test', instance });
+    app.mount();
+    root.querySelector('.app-practice-button').click();
+    app.dispatch({ type: 'acknowledge-encounter' });
+    app.dispatch({ type: 'submit-notice', matchesUnits: false });
+
+    root.querySelector('.app-visual-view .active-beat-controls .app-secondary-button').click();
+    expect(root.querySelector('.active-denominator-help-cue').textContent)
+      .toBe('Try multiplying 2 by 3 to find one common denominator.');
   });
 
   it('lets the same composed episode reach reflection and completion', () => {
