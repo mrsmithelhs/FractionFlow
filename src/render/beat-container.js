@@ -24,6 +24,7 @@ export function createBeatContainer({
   container,
   dispatchAction,
   strings = STRINGS,
+  isTaskHelpOpen = () => false,
 } = {}) {
   if (!container) {
     throw new Error('container element is required for beat container');
@@ -248,6 +249,13 @@ export function createBeatContainer({
     const beat = task.beat;
     const isReplaying = Boolean(scene.presentation?.isReplaying);
     const recovery = scene.meaning.status.recovery;
+    const activeTaskHelp = beat === 'transform'
+      && scene.meaning.taskHelp?.kind === 'equivalent-fraction'
+      ? scene.meaning.taskHelp
+      : null;
+    const showingMultiplierStep = Boolean(activeTaskHelp
+      && isTaskHelpOpen()
+      && activeTaskHelp.status !== 'accepted');
 
     // Condition B & Repair 07 Item 2: Scope re-render so active control subtree is not rebuilt on replay
     const token = JSON.stringify({
@@ -260,6 +268,8 @@ export function createBeatContainer({
       resolved: scene.meaning.status.episode === 'resolved',
       recoveryKind: recovery?.classification?.kind,
       recoveryTarget: recovery?.classification?.targetDenominator || recovery?.classification?.proposed,
+      taskHelp: beat === 'transform' ? scene.meaning.taskHelp : null,
+      taskHelpOpen: Boolean(isTaskHelpOpen()),
       helpLevel: beat === 'decide' ? null : scene.meaning.supportConsequence?.lastHelp?.level,
       helpBeat: beat === 'decide' ? null : scene.meaning.supportConsequence?.lastHelp?.beat,
       support: scene.meaning.support,
@@ -304,7 +314,7 @@ export function createBeatContainer({
 
     // Local recovery feedback (Quality doc §16, §63)
     let decideRecoveryEl = null;
-    if (recovery && recovery.beat === beat) {
+    if (recovery && recovery.beat === beat && !showingMultiplierStep) {
       const recoveryEl = document.createElement('div');
       recoveryEl.classList.add('active-beat-feedback', 'recovery-feedback');
       recoveryEl.setAttribute('role', 'alert');
@@ -461,26 +471,75 @@ export function createBeatContainer({
         }
         const targetDen = commonUnit.targetDenominator;
         const sourceForm = scene.meaning.quantities[side].sourceForm;
-
-        const numInput = createNumericInput({
-          id: `transform-num-input-${side}`,
-          label: strings.transform.equivalentNumeratorPrompt(sourceForm, targetDen),
-          min: 1,
-          max: Number(targetDen),
-          strings,
-          onSubmit: (val) => {
-            dispatchAction({
+        const taskHelp = activeTaskHelp;
+        const helpOpen = Boolean(isTaskHelpOpen());
+        const showMultiplierStep = Boolean(taskHelp && helpOpen
+          && taskHelp.status !== 'accepted');
+        if (showMultiplierStep) {
+          const multiplierInput = createNumericInput({
+            id: `transform-help-multiplier-${side}`,
+            label: strings.transform.helpMultiplierPrompt(sourceForm.denominator, targetDen),
+            min: 0,
+            max: Number(targetDen),
+            strings,
+            onSubmit: (val) => {
+              if (!/^-?\d+$/.test(String(val))) {
+                emptyNotice.textContent = strings.transform.helpMultiplierRequired;
+                if (!emptyNotice.isConnected) controlsContainer.appendChild(emptyNotice);
+                return;
+              }
+              dispatchAction({
+                type: 'submit-transform-help-multiplier',
+                proposed: { kind: 'fraction', numerator: String(val), denominator: '1' },
+              });
+            },
+            onEmptySubmit: () => {
+              emptyNotice.textContent = strings.transform.helpMultiplierRequired;
+              if (!emptyNotice.isConnected) controlsContainer.appendChild(emptyNotice);
+            },
+          });
+          multiplierInput.element.id = 'visual-transform-task-help';
+          multiplierInput.element.querySelector('.control-label').classList.add('active-beat-prompt');
+          const emptyNotice = document.createElement('p');
+          emptyNotice.classList.add('active-beat-feedback', 'recovery-feedback');
+          emptyNotice.setAttribute('role', 'alert');
+          multiplierInput.element.querySelector('input').addEventListener('input', () => {
+            if (emptyNotice.isConnected) emptyNotice.remove();
+          });
+          controlsContainer.appendChild(multiplierInput.element);
+          if (taskHelp.status === 'incorrect') {
+            const error = document.createElement('p');
+            error.classList.add('active-beat-feedback', 'recovery-feedback');
+            error.setAttribute('role', 'alert');
+            error.textContent = strings.transform.helpMultiplierError;
+            controlsContainer.appendChild(error);
+          }
+        } else {
+          if (taskHelp?.status === 'accepted' && helpOpen) {
+            const cue = document.createElement('p');
+            cue.id = 'visual-transform-task-help';
+            cue.classList.add('active-beat-help');
+            cue.textContent = strings.transform.helpMultiplierAccepted(taskHelp.acceptedMultiplier);
+            controlsContainer.appendChild(cue);
+          }
+          const numInput = createNumericInput({
+            id: `transform-num-input-${side}`,
+            label: strings.transform.equivalentNumeratorPrompt(sourceForm, targetDen),
+            min: 1,
+            max: Number(targetDen),
+            strings,
+            onSubmit: (val) => dispatchAction({
               type: 'submit-equivalent-form',
               proposed: {
                 kind: 'fraction',
                 numerator: val,
                 denominator: targetDen,
               },
-            });
-          },
-        });
-        numInput.element.querySelector('.control-label').classList.add('active-beat-prompt');
-        controlsContainer.appendChild(numInput.element);
+            }),
+          });
+          numInput.element.querySelector('.control-label').classList.add('active-beat-prompt');
+          controlsContainer.appendChild(numInput.element);
+        }
         break;
       }
 

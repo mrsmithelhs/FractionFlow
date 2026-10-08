@@ -48,6 +48,7 @@ function visibleFields(state) {
 
 function evidenceCategory(state) {
   if (state.nextResponseSupport === 'demonstrate') return 'supported-construction';
+  if (state.supportHistory.some((entry) => entry.type === 'task-help-request')) return 'supported-construction';
   if (state.expectedResponse?.evidenceCategory === 'prediction') return 'prediction';
   if (
     state.support.label === 'independent'

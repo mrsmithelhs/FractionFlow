@@ -79,8 +79,8 @@
         {"step":6,"method":"click","target":".app-visual-view .control-choice-btn >> nth=0","description":"Decide: choose common denominator 12"},
         {"step":7,"method":"fill","target":".app-visual-view input.control-numeric-input","value":"8","description":"Transform left: enter numerator 8"},
         {"step":8,"method":"clickAndObserveSubdivision","target":".app-visual-view .control-submit-btn","container":".app-visual-view .fraction-bar-container[data-side=\"left\"]","interruptReducedMotion":true,"description":"Observe the accepted conversion, interrupt it with reduced motion, then restore standard motion without replay"},
-        {"step":9,"method":"click","target":".app-support-controls button:has-text(\"Need help?\")","description":"Request help after the conversion is established"},
-        {"step":10,"method":"assertNoSubdivisionMotion","container":".app-visual-view .fraction-bar-container[data-side=\"left\"]","denominator":12,"description":"A later help render does not replay the established conversion"}
+        {"step":9,"method":"click","target":".app-visual-view .active-beat-controls button:has-text(\"Need help?\")","description":"Request task-local help for the next conversion after the first is established"},
+        {"step":10,"method":"assertNoSubdivisionMotion","container":".app-visual-view .fraction-bar-container[data-side=\"left\"]","denominator":12,"description":"Opening the next conversion's helper does not replay the established conversion"}
       ],
       "expect": {
         "capture": {"target":".app-visual-view .fraction-bar-container","type":"outerHTML"},
@@ -3265,7 +3265,74 @@
         {"type":"notHasSelector","target":".app-linear-view .active-denominator-help-cue"}
       ]},
       "negativeControl":{"targetRouteId":"ROUTE-PLAN24-HIGH-LINEAR-HELP","comparison":"notIdenticalCapture","sameMotionMode":true}
+    },
+    {
+      "id": "ROUTE-PLAN25-TRANSFORM-HELP-REQUESTED",
+      "behavior": "A learner can request a local equivalent-fraction step, correct a wrong multiplier, supply the exact multiplier, and still enter the numerator independently.",
+      "configuration": "phase2-bundle-1",
+      "startingSurface": "mounted-app-entry",
+      "viewport": {"width":360,"height":740},
+      "motionMode": "standard-motion",
+      "witness": "browser",
+      "actions": [
+        {"step":1,"method":"click","target":".app-practice-button","description":"Begin the fresh revision-3 episode"},
+        {"step":2,"method":"click","target":".app-visual-view .control-btn","description":"Acknowledge the expression"},
+        {"step":3,"method":"click","target":".app-visual-view .control-choice-btn >> nth=1","description":"Notice the different-sized parts"},
+        {"step":4,"method":"click","target":".app-visual-view .control-choice-btn >> nth=1","description":"Choose 24 as the common denominator"},
+        {"step":5,"method":"click","target":".app-visual-view .active-beat-controls .app-secondary-button","description":"Request local conversion help"},
+        {"step":6,"method":"assert","assertions":[
+          {"type":"containsText","target":".app-visual-view .control-label.active-beat-prompt","value":"3 × ? = 24"},
+          {"type":"notHasSelector","target":".app-visual-view #transform-num-input-left"},
+          {"type":"notContainsText","target":".app-visual-view","value":"16/24"}
+        ],"description":"Show one multiplier decision without the converted answer"},
+        {"step":7,"method":"fill","target":".app-visual-view #transform-help-multiplier-left","value":"7","description":"Try a wrong multiplier"},
+        {"step":8,"method":"click","target":".app-visual-view .control-submit-btn","description":"Submit the helper attempt"},
+        {"step":9,"method":"assert","assertions":[
+          {"type":"containsText","target":".app-visual-view .recovery-feedback","value":"That number does not make the same size parts. Try again."},
+          {"type":"inputValueEquals","target":".app-visual-view #transform-help-multiplier-left","value":"7"},
+          {"type":"notHasSelector","target":".app-visual-view #transform-num-input-left"}
+        ],"description":"Keep a usable helper retry and withhold the factor"},
+        {"step":10,"method":"fill","target":".app-visual-view #transform-help-multiplier-left","value":"8","description":"Supply the multiplier that makes 24 parts"},
+        {"step":11,"method":"pressKey","target":".app-visual-view #transform-help-multiplier-left","value":"Enter","description":"Submit the learner's multiplier by keyboard"},
+        {"step":12,"method":"assert","assertions":[
+          {"type":"containsText","target":".app-visual-view .active-beat-help","value":"Multiply the top by 8, too."},
+          {"type":"attributeEquals","target":".app-visual-view .active-beat-controls .app-secondary-button","attribute":"aria-controls","value":"visual-transform-task-help"},
+          {"type":"hasSelector","target":".app-visual-view #visual-transform-task-help"},
+          {"type":"hasSelector","target":".app-visual-view #transform-num-input-left"},
+          {"type":"inputValueEquals","target":".app-visual-view #transform-num-input-left","value":""},
+          {"type":"notContainsText","target":".app-visual-view","value":"16/24"}
+        ],"description":"Replace the substep with the cue and the original numerator decision"}
+      ],
+      "expect":{"capture":{"target":".app-visual-view","type":"innerHTML"},"assertions":[
+        {"type":"containsText","target":".app-visual-view .active-beat-help","value":"Multiply the top by 8, too."},
+        {"type":"notHasSelector","target":".app-visual-view #transform-help-multiplier-left"}
+      ]},
+      "negativeControl":{"targetRouteId":"ROUTE-PLAN25-TRANSFORM-HELP-CLOSED","comparison":"notIdenticalCapture","sameMotionMode":true}
+    },
+    {
+      "id": "ROUTE-PLAN25-TRANSFORM-HELP-CLOSED",
+      "behavior": "Without a request, the learner sees only the existing equivalent-numerator response and no helper cue.",
+      "configuration": "phase2-bundle-1",
+      "startingSurface": "mounted-app-entry",
+      "viewport": {"width":360,"height":740},
+      "motionMode": "standard-motion",
+      "witness": "browser",
+      "actions": [
+        {"step":1,"method":"click","target":".app-practice-button","description":"Begin the same fresh episode"},
+        {"step":2,"method":"click","target":".app-visual-view .control-btn","description":"Acknowledge the expression"},
+        {"step":3,"method":"click","target":".app-visual-view .control-choice-btn >> nth=1","description":"Notice the different-sized parts"},
+        {"step":4,"method":"click","target":".app-visual-view .control-choice-btn >> nth=1","description":"Choose 24 as the common denominator"},
+        {"step":5,"method":"assert","assertions":[
+          {"type":"hasSelector","target":".app-visual-view #transform-num-input-left"},
+          {"type":"notHasSelector","target":".app-visual-view #transform-help-multiplier-left"},
+          {"type":"notHasSelector","target":".app-visual-view .active-beat-help"}
+        ],"description":"Verify the unassisted numerator question remains available"}
+      ],
+      "expect":{"capture":{"target":".app-visual-view","type":"innerHTML"},"assertions":[
+        {"type":"hasSelector","target":".app-visual-view #transform-num-input-left"},
+        {"type":"notHasSelector","target":".app-visual-view #transform-help-multiplier-left"}
+      ]},
+      "negativeControl":{"targetRouteId":"ROUTE-PLAN25-TRANSFORM-HELP-REQUESTED","comparison":"notIdenticalCapture","sameMotionMode":true}
     }
-
   ]
 }

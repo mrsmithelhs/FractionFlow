@@ -260,7 +260,31 @@ function currentSupportConsequence(state) {
         beat: lastHelp.beat,
       }
       : null,
-    decideHelpRequested: state.helpHistory.some((entry) => entry.type === 'help' && entry.beat === 'decide'),
+    decideHelpRequested: state.helpHistory.some((entry) => entry.type === 'help' && entry.beat === 'decide')
+      || state.supportHistory.some((entry) => entry.type === 'task-help-request'
+        && entry.beat === 'decide'),
+  };
+}
+
+function currentTaskHelp(state) {
+  const scheduleEntry = currentScheduleEntry(state);
+  const request = state.supportHistory.find((entry) => (
+    entry.type === 'task-help-request'
+    && entry.scheduleEntryId === scheduleEntry?.id
+  ));
+  if (!request) return null;
+  const multiplier = state.supportHistory.findLast((entry) => (
+    entry.type === 'transform-help-multiplier'
+    && entry.scheduleEntryId === scheduleEntry.id
+  ));
+  if (request.beat === 'decide') return { kind: 'common-denominator', status: 'requested' };
+  return {
+    kind: 'equivalent-fraction',
+    status: multiplier?.classification ?? 'awaiting-multiplier',
+    side: scheduleEntry.side,
+    acceptedMultiplier: multiplier?.classification === 'accepted'
+      ? multiplier.proposed.numerator
+      : null,
   };
 }
 
@@ -705,6 +729,7 @@ function sceneMeaning(state, representationRole, capability) {
     capability,
     support: state.support,
     supportConsequence: currentSupportConsequence(state),
+    taskHelp: currentTaskHelp(state),
   };
 }
 

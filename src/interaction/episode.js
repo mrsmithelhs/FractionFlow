@@ -14,10 +14,10 @@ import {
   classifyPremiseResponse,
   classifyReflectionResponse,
   classifyResolutionResponse,
+  classifyTransformHelpMultiplier,
 } from './classification.js';
 import {
   EPISODE_BEATS,
-  EPISODE_DEFINITION_REVISION,
   PHASE2_ACTIVE_CONDITION,
   PHASE2_EPISODE_DEFINITION,
   getEpisodeDefinition,
@@ -312,6 +312,64 @@ function handleHelp(state, intent) {
   });
 }
 
+function currentTaskHelpEntries(state, scheduleEntry = currentScheduleEntry(state)) {
+  return state.supportHistory.filter((entry) => (
+    entry.type === 'task-help-request'
+    && entry.scheduleEntryId === scheduleEntry?.id
+  ));
+}
+
+function handleTaskHelpRequest(state, intent) {
+  const scheduleEntry = currentScheduleEntry(state);
+  if (currentTaskHelpEntries(state, scheduleEntry).length > 0) return state;
+  const next = appendIntent(state, intent);
+  return deepFreeze({
+    ...next,
+    supportHistory: [...next.supportHistory, {
+      type: 'task-help-request',
+      beat: state.beat,
+      schedulePosition: state.schedulePosition,
+      scheduleEntryId: scheduleEntry.id,
+      side: scheduleEntry.side ?? null,
+    }],
+  });
+}
+
+function handleTransformHelpMultiplier(state, intent) {
+  const scheduleEntry = currentScheduleEntry(state);
+  const requests = currentTaskHelpEntries(state, scheduleEntry);
+  if (requests.length === 0) {
+    throw new EpisodeIntentError('TASK_HELP_NOT_REQUESTED', 'transform help must be requested for this conversion first');
+  }
+  const latestAttempt = state.supportHistory.findLast((entry) => (
+    entry.type === 'transform-help-multiplier'
+    && entry.scheduleEntryId === scheduleEntry.id
+  ));
+  if (latestAttempt?.classification === 'accepted') {
+    throw new EpisodeIntentError('TASK_HELP_ALREADY_ACCEPTED', 'the multiplier for this conversion was already accepted');
+  }
+  const result = classifyTransformHelpMultiplier({
+    instance: state.content,
+    targetDenominator: state.established.commonDenominator.targetDenominator,
+    side: scheduleEntry.side,
+    proposed: intent.proposed,
+  });
+  const next = appendIntent(state, intent);
+  const event = {
+    type: 'transform-help-multiplier',
+    beat: 'transform',
+    schedulePosition: state.schedulePosition,
+    scheduleEntryId: scheduleEntry.id,
+    side: scheduleEntry.side,
+    proposed: intent.proposed,
+    classification: result.kind === 'helper-multiplier-accepted' ? 'accepted' : 'incorrect',
+  };
+  return deepFreeze({
+    ...next,
+    supportHistory: [...next.supportHistory, event],
+  });
+}
+
 function handleReplay(state, intent) {
   const entry = { type: 'replay', beat: state.beat };
   const next = appendIntent(state, intent);
@@ -352,7 +410,7 @@ function handleDecide(state, intent) {
   const classification = classifyCommonDenominatorResponse(state.content, intent.proposed);
   if (classification.kind === 'invalid-common-denominator') return recovery(state, intent, classification);
 
-  if (state.episodeDefinition.revision === EPISODE_DEFINITION_REVISION) {
+  if (['2', '3'].includes(state.episodeDefinition.revision)) {
     const taskPathClosure = evaluateTaskPathClosure({
       instance: state.content,
       targetDenominator: classification.targetDenominator,
@@ -536,6 +594,8 @@ const INTENT_KEYS = Object.freeze({
   'submit-resolution': ['type', 'proposed'],
   'submit-reflection': ['type', 'response'],
   'request-help': ['type'],
+  'request-task-help': ['type'],
+  'submit-transform-help-multiplier': ['type', 'proposed'],
   'request-replay': ['type'],
 });
 
@@ -620,6 +680,12 @@ function assertIntentShape(intent) {
   }
   if (intent.type === 'propose-common-denominator') assertWireFraction(intent.proposed, 'intent.proposed');
   if (intent.type === 'submit-equivalent-form') assertWireFraction(intent.proposed, 'intent.proposed');
+  if (intent.type === 'submit-transform-help-multiplier') {
+    assertWireFraction(intent.proposed, 'intent.proposed');
+    if (intent.proposed.denominator !== '1') {
+      throw new EpisodeIntentError('INVALID_INTENT_SHAPE', 'transform-help multiplier must be a whole fraction');
+    }
+  }
   if (intent.type === 'submit-operation-result') assertWireFraction(intent.proposed, 'intent.proposed');
   if (intent.type === 'submit-resolution') assertWireFraction(intent.proposed, 'intent.proposed');
   if (intent.type === 'submit-reflection'
@@ -662,6 +728,17 @@ function assertIntentAllowedAtBeat(state, intent) {
       'UNEXPECTED_INTENT',
       'submit-reflection is not enabled for this episode definition',
     );
+  }
+  if (['request-task-help', 'submit-transform-help-multiplier'].includes(intent.type)) {
+    if (state.episodeDefinition.revision !== '3') {
+      throw new EpisodeIntentError('UNEXPECTED_INTENT', `${intent.type} requires episode definition revision 3`);
+    }
+    if (intent.type === 'submit-transform-help-multiplier' && state.beat !== 'transform') {
+      throw new EpisodeIntentError('UNEXPECTED_INTENT', 'transform help multiplier is valid only during a transform');
+    }
+    if (intent.type === 'request-task-help' && !['decide', 'transform'].includes(state.beat)) {
+      throw new EpisodeIntentError('UNEXPECTED_INTENT', 'task help is available only for denominator choice or conversion');
+    }
   }
 }
 
@@ -723,6 +800,8 @@ export function applyIntent(state, rawIntent) {
   const intent = ensureIntent(rawIntent);
   assertIntentAllowedAtBeat(state, intent);
   if (intent.type === 'request-help') return handleHelp(state, intent);
+  if (intent.type === 'request-task-help') return handleTaskHelpRequest(state, intent);
+  if (intent.type === 'submit-transform-help-multiplier') return handleTransformHelpMultiplier(state, intent);
   if (intent.type === 'request-replay') return handleReplay(state, intent);
   if (intent.type === 'acknowledge-encounter') return handleEncounter(state, intent);
   if (intent.type === 'submit-notice') return handleNotice(state, intent);

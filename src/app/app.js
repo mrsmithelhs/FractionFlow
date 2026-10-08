@@ -105,8 +105,12 @@ export function createFractionFlowApp({
   let visualView = true;
   let activityNotice = '';
   let decideHelpOpen = false;
+  let transformHelpOpen = false;
   let commonDenominatorDraft = '';
+  let transformDrafts = { left: { multiplier: '', numerator: '' }, right: { multiplier: '', numerator: '' } };
+  let transformDraftScheduleEntryId = null;
   let preserveDecideInputFocusOnViewChange = false;
+  let preserveTransformInputFocusOnViewChange = false;
   let mounted = false;
   let visualRenderer = null;
   let linearRenderer = null;
@@ -310,20 +314,28 @@ export function createFractionFlowApp({
       className: 'app-secondary-button',
       onClick: () => {
         captureDecideDraft();
+        captureTransformDrafts();
         const preserveInputFocus = preserveDecideInputFocusOnViewChange
           || Boolean(getVisibleDecideInput()?.isConnected
             && getVisibleDecideInput() === document.activeElement);
+        const preserveTransformInputFocus = preserveTransformInputFocusOnViewChange
+          || Boolean(getVisibleTransformInput()?.isConnected
+            && getVisibleTransformInput() === document.activeElement);
         preserveDecideInputFocusOnViewChange = false;
+        preserveTransformInputFocusOnViewChange = false;
         visualView = !visualView;
         isReplaying = false;
         updateViewVisibility();
         restoreDecideDraft();
+        restoreTransformDrafts();
         updateHelpPlacement();
         if (preserveInputFocus) getVisibleDecideInput()?.focus();
+        if (preserveTransformInputFocus) getVisibleTransformInput()?.focus();
       },
     });
-    viewToggle.addEventListener('pointerdown', () => {
-      preserveDecideInputFocusOnViewChange = getVisibleDecideInput() === document.activeElement;
+  viewToggle.addEventListener('pointerdown', () => {
+    preserveDecideInputFocusOnViewChange = getVisibleDecideInput() === document.activeElement;
+    preserveTransformInputFocusOnViewChange = getVisibleTransformInput() === document.activeElement;
     });
     viewToggle.classList.add('app-view-toggle');
     viewToggle.setAttribute('aria-pressed', 'false');
@@ -347,6 +359,7 @@ export function createFractionFlowApp({
       className: 'app-secondary-button',
       onClick: () => {
         captureDecideDraft();
+        captureTransformDrafts();
         if (state?.beat === 'decide') {
           if (decideHelpOpen) {
             decideHelpOpen = false;
@@ -354,7 +367,14 @@ export function createFractionFlowApp({
             helpButton.focus();
           } else {
             decideHelpOpen = true;
-            dispatchAction({ type: 'request-help' });
+            dispatchAction({ type: 'request-task-help' });
+            helpButton.focus();
+          }
+        } else if (state?.beat === 'transform') {
+          transformHelpOpen = !transformHelpOpen;
+          if (transformHelpOpen) dispatchAction({ type: 'request-task-help' });
+          else {
+            render();
             helpButton.focus();
           }
         } else {
@@ -417,7 +437,10 @@ export function createFractionFlowApp({
     isReplaying = false;
     activityNotice = '';
     decideHelpOpen = false;
+    transformHelpOpen = false;
     commonDenominatorDraft = '';
+    transformDrafts = { left: { multiplier: '', numerator: '' }, right: { multiplier: '', numerator: '' } };
+    transformDraftScheduleEntryId = null;
     setHidden(entryPage, true);
     setHidden(appRoot.querySelector('.app-episode'), false);
     render();
@@ -436,7 +459,10 @@ export function createFractionFlowApp({
     isReplaying = false;
     activityNotice = '';
     decideHelpOpen = false;
+    transformHelpOpen = false;
     commonDenominatorDraft = '';
+    transformDrafts = { left: { multiplier: '', numerator: '' }, right: { multiplier: '', numerator: '' } };
+    transformDraftScheduleEntryId = null;
     updateHelpPlacement();
     closeDisplayMenu();
     setHidden(appRoot.querySelector('.app-episode'), true);
@@ -519,10 +545,45 @@ export function createFractionFlowApp({
     if (input) input.value = commonDenominatorDraft;
   }
 
+  function captureTransformDrafts() {
+    if (!state || state.beat !== 'transform') return;
+    const host = visualView ? visualHost : linearHost;
+    const side = currentScene?.meaning?.availableAction?.target ?? state.expectedResponse?.target;
+    if (side !== 'left' && side !== 'right') return;
+    const multiplier = host?.querySelector(`#${visualView ? 'transform' : 'linear-transform'}-help-multiplier-${side}`);
+    const numerator = host?.querySelector(`#${visualView ? 'transform' : 'linear-transform'}-num-input-${side}`);
+    if (multiplier) transformDrafts[side].multiplier = multiplier.value;
+    if (numerator) transformDrafts[side].numerator = numerator.value;
+  }
+
+  function getVisibleTransformInput() {
+    if (!state || state.beat !== 'transform') return null;
+    const host = visualView ? visualHost : linearHost;
+    const side = state.expectedResponse?.target;
+    if (transformHelpOpen) {
+      const taskHelp = currentScene?.meaning?.taskHelp;
+      if (taskHelp?.status !== 'accepted') {
+        return host?.querySelector(`#${visualView ? 'transform' : 'linear-transform'}-help-multiplier-${side}`) || null;
+      }
+    }
+    return host?.querySelector(`#${visualView ? 'transform' : 'linear-transform'}-num-input-${side}`) || null;
+  }
+
+  function restoreTransformDrafts() {
+    if (!state || state.beat !== 'transform') return;
+    const side = state.expectedResponse?.target;
+    const host = visualView ? visualHost : linearHost;
+    const multiplier = host?.querySelector(`#${visualView ? 'transform' : 'linear-transform'}-help-multiplier-${side}`);
+    const numerator = host?.querySelector(`#${visualView ? 'transform' : 'linear-transform'}-num-input-${side}`);
+    if (multiplier) multiplier.value = transformDrafts[side].multiplier;
+    if (numerator) numerator.value = transformDrafts[side].numerator;
+  }
+
   function updateHelpPlacement(scene = currentScene) {
     if (!helpButton || !state) return;
-    if (state.beat !== 'decide') {
+    if (state.beat !== 'decide' && state.beat !== 'transform') {
       decideHelpOpen = false;
+      transformHelpOpen = false;
       helpButton.textContent = STRINGS.app.helpButton;
       helpButton.setAttribute('aria-expanded', 'false');
       helpButton.removeAttribute('aria-controls');
@@ -553,6 +614,13 @@ export function createFractionFlowApp({
       helpButton.parentNode.removeChild(helpButton);
     }
     controls.appendChild(helpButton);
+    if (state.beat === 'transform') {
+      helpButton.textContent = transformHelpOpen ? STRINGS.app.closeHelpButton : STRINGS.app.helpButton;
+      helpButton.setAttribute('aria-expanded', String(transformHelpOpen));
+      if (transformHelpOpen) helpButton.setAttribute('aria-controls', `${visualView ? 'visual' : 'linear'}-transform-task-help`);
+      else helpButton.removeAttribute('aria-controls');
+      return;
+    }
     const sourceDenominators = scene?.meaning?.unitRelationship?.sourceDenominators;
     const cue = !sourceDenominators
       ? ''
@@ -583,9 +651,21 @@ export function createFractionFlowApp({
   function render() {
     if (!mounted || !state) return;
     captureDecideDraft();
+    captureTransformDrafts();
     if (state.beat !== 'decide') {
       decideHelpOpen = false;
       commonDenominatorDraft = '';
+    }
+    const activeScheduleEntryId = state.beatSchedule?.[state.schedulePosition]?.id ?? null;
+    if (state.beat === 'transform' && transformDraftScheduleEntryId !== null
+      && activeScheduleEntryId !== transformDraftScheduleEntryId) {
+      transformDrafts = { left: { multiplier: '', numerator: '' }, right: { multiplier: '', numerator: '' } };
+      transformHelpOpen = false;
+    }
+    if (state.beat === 'transform') {
+      transformDraftScheduleEntryId = activeScheduleEntryId;
+    } else {
+      transformDraftScheduleEntryId = null;
     }
     const mode = presentationModeFor({ override: presentationMode, motionQuery });
     const scene = resolveRenderableScene({
@@ -601,6 +681,7 @@ export function createFractionFlowApp({
         container: visualHost,
         dispatchAction,
         strings: APP_RENDER_STRINGS,
+        isTaskHelpOpen: () => transformHelpOpen,
       });
       visualRenderer.mount(scene);
     } else {
@@ -612,6 +693,7 @@ export function createFractionFlowApp({
         container: linearHost,
         dispatchAction,
         strings: APP_RENDER_STRINGS,
+        isTaskHelpOpen: () => transformHelpOpen,
       });
       linearRenderer.mount(scene);
     } else {
@@ -623,6 +705,7 @@ export function createFractionFlowApp({
     updateSupportControls();
     updateViewVisibility();
     restoreDecideDraft();
+    restoreTransformDrafts();
     updateHelpPlacement(scene);
   }
 
@@ -636,6 +719,7 @@ export function createFractionFlowApp({
 
     try {
       captureDecideDraft();
+      captureTransformDrafts();
       if (action.type === 'propose-common-denominator') commonDenominatorDraft = '';
       state = applyIntent(state, action);
       if (action.type === 'request-help') {
@@ -662,12 +746,14 @@ export function createFractionFlowApp({
         }
       }
       render();
+      if (action.type === 'submit-transform-help-multiplier') getVisibleTransformInput()?.focus();
     } catch (error) {
       isReplaying = false;
       activityNotice = action.type === 'request-replay'
         ? STRINGS.app.noReplayYet
         : STRINGS.app.tryAgain;
       render();
+      if (action.type === 'submit-transform-help-multiplier') getVisibleTransformInput()?.focus();
     }
   }
 

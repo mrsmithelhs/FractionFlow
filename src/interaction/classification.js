@@ -3,6 +3,7 @@ import {
   classifyOperationResponse as classifyMathOperationResponse,
   equalFractions,
   PATTERNS,
+  scaleFactorForDenominator,
   simplifyFraction,
   validateCommonDenominator,
   validateEquivalentFraction,
@@ -28,6 +29,9 @@ export const RECOVERY_KINDS = Object.freeze({
 export const CLASSIFICATION_RECOVERY_KINDS = Object.freeze(
   Object.values(RECOVERY_KINDS).sort(),
 );
+
+const TRANSFORM_HELP_MULTIPLIER_ACCEPTED = 'helper-multiplier-accepted';
+const TRANSFORM_HELP_MULTIPLIER_INCORRECT = 'helper-multiplier-incorrect';
 
 export function fractionFromWire(value, name) {
   try {
@@ -151,6 +155,21 @@ export function classifyConversionResponseForEpisode({ instance, targetDenominat
     targetDenominator: target.toString(),
     side,
     reasons: [],
+  };
+}
+
+export function classifyTransformHelpMultiplier({ instance, targetDenominator, side, proposed }) {
+  if (side !== 'left' && side !== 'right') throw new RangeError(`unsupported conversion side: ${String(side)}`);
+  const target = wholeStringToExact(targetDenominator, 'target denominator');
+  const source = fractionFromWire(instance.operands[side].initialForm, `${side} operand`);
+  const expected = scaleFactorForDenominator(source, target);
+  const supplied = wholeFromWire(proposed, 'proposed transform-help multiplier');
+  return {
+    kind: supplied === expected ? TRANSFORM_HELP_MULTIPLIER_ACCEPTED : TRANSFORM_HELP_MULTIPLIER_INCORRECT,
+    validity: supplied === expected ? 'valid' : 'invalid',
+    side,
+    targetDenominator: target.toString(),
+    proposed,
   };
 }
 

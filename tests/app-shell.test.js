@@ -48,7 +48,7 @@ describe('Plan 09 app shell and upstream display switcher', () => {
     expect(root.querySelectorAll('[aria-live="polite"]').length).toBe(1);
     expect(root.textContent).not.toContain('11/12');
     expect(root.textContent).not.toContain('D-02');
-    expect(app.getState().episodeDefinition.revision).toBe('2');
+    expect(app.getState().episodeDefinition.revision).toBe('3');
   });
 
   it('selects reviewer condition on the entry page and applies it to a fresh episode', () => {
@@ -106,7 +106,8 @@ describe('Plan 09 app shell and upstream display switcher', () => {
     expect(help.getAttribute('aria-expanded')).toBe('false');
     help.click();
     expect(document.activeElement).toBe(help);
-    expect(app.getState().helpHistory.at(-1).beat).toBe('decide');
+    expect(app.getState().supportHistory.at(-1).type).toBe('task-help-request');
+    expect(app.getState().supportHistory.at(-1).beat).toBe('decide');
     expect(help.parentNode.classList.contains('active-beat-controls')).toBe(true);
     expect(root.querySelector('.active-denominator-help-cue').textContent)
       .toBe('Try multiplying 3 by 4 to find one common denominator.');
@@ -193,6 +194,95 @@ describe('Plan 09 app shell and upstream display switcher', () => {
     root.querySelector('.app-visual-view .active-beat-controls .app-secondary-button').click();
     expect(root.querySelector('.active-denominator-help-cue').textContent)
       .toBe('Try multiplying 2 by 3 to find one common denominator.');
+  });
+
+  it('runs multiplier help beside each transform and keeps the numerator as the only conversion response', () => {
+    app.dispatch({ type: 'acknowledge-encounter' });
+    app.dispatch({ type: 'submit-notice', matchesUnits: false });
+    app.dispatch({ type: 'propose-common-denominator', proposed: whole(24) });
+    expect(app.getState().expectedResponse.target).toBe('left');
+
+    let help = root.querySelector('.app-visual-view .active-beat-controls .app-secondary-button');
+    help.click();
+    expect(app.getState().supportHistory.at(-1)).toMatchObject({ type: 'task-help-request', side: 'left' });
+    let multiplier = root.querySelector('.app-visual-view #transform-help-multiplier-left');
+    expect(multiplier).not.toBeNull();
+    expect(root.querySelector('.app-visual-view #transform-num-input-left')).toBeNull();
+    expect(root.querySelector('.app-visual-view .active-beat-prompt').textContent).toBe('3 × ? = 24');
+    root.querySelector('.app-visual-view .control-submit-btn').click();
+    expect(root.querySelector('.app-visual-view .recovery-feedback').textContent)
+      .toBe('Enter a whole number to keep going.');
+    multiplier.value = '2.5';
+    root.querySelector('.app-visual-view .control-submit-btn').click();
+    expect(root.querySelector('.app-visual-view .recovery-feedback').textContent)
+      .toBe('Enter a whole number to keep going.');
+    expect(app.getState().supportHistory).toHaveLength(1);
+    multiplier.value = '7';
+    multiplier.focus();
+    root.querySelector('.app-view-toggle').click();
+    multiplier = root.querySelector('.app-linear-view #linear-transform-help-multiplier-left');
+    expect(multiplier.value).toBe('7');
+    expect(multiplier._isFocused).toBe(true);
+    root.querySelector('.app-view-toggle').click();
+    multiplier = root.querySelector('.app-visual-view #transform-help-multiplier-left');
+    root.querySelector('.app-visual-view .control-submit-btn').click();
+    expect(root.querySelector('.app-visual-view .recovery-feedback').textContent)
+      .toBe('That number does not make the same size parts. Try again.');
+    multiplier = root.querySelector('.app-visual-view #transform-help-multiplier-left');
+    expect(multiplier.value).toBe('7');
+    multiplier.value = '8';
+    root.querySelector('.app-visual-view .control-submit-btn').click();
+    expect(root.querySelector('.app-visual-view .active-beat-help').textContent)
+      .toBe('Multiply the top by 8, too.');
+    let helpButton = root.querySelector('.app-visual-view .active-beat-controls .app-secondary-button');
+    expect(helpButton.getAttribute('aria-controls')).toBe('visual-transform-task-help');
+    expect(root.querySelector('#visual-transform-task-help')).not.toBeNull();
+    let numerator = root.querySelector('.app-visual-view #transform-num-input-left');
+    expect(numerator.value).toBe('');
+    numerator.value = '15';
+    numerator.focus();
+    root.querySelector('.app-view-toggle').click();
+    numerator = root.querySelector('.app-linear-view #linear-transform-num-input-left');
+    expect(numerator.value).toBe('15');
+    expect(numerator._isFocused).toBe(true);
+    expect(root.querySelector('.app-linear-view .active-beat-help').textContent)
+      .toBe('Multiply the top by 8, too.');
+    helpButton = root.querySelector('.app-linear-view .active-beat-controls .app-secondary-button');
+    expect(helpButton.getAttribute('aria-controls')).toBe('linear-transform-task-help');
+    expect(root.querySelector('#linear-transform-task-help')).not.toBeNull();
+    numerator.value = '16';
+    root.querySelector('.app-linear-view .control-submit-btn').click();
+    expect(app.getState().expectedResponse.target).toBe('right');
+    expect(root.querySelector('.app-linear-view #linear-transform-help-multiplier-right')).toBeNull();
+
+    help = root.querySelector('.app-linear-view .active-beat-controls .app-secondary-button');
+    help.click();
+    const rightMultiplier = root.querySelector('.app-linear-view #linear-transform-help-multiplier-right');
+    expect(root.querySelector('.app-linear-view .active-beat-prompt').textContent).toBe('4 × ? = 24');
+    rightMultiplier.value = '6';
+    root.querySelector('.app-linear-view .control-submit-btn').click();
+    expect(root.querySelector('.app-linear-view .active-beat-help').textContent)
+      .toBe('Multiply the top by 6, too.');
+    expect(root.querySelector('.app-linear-view #linear-transform-num-input-right').value).toBe('');
+  });
+
+  it('keeps prior numerator recovery separate while the multiplier substep is active', () => {
+    app.dispatch({ type: 'acknowledge-encounter' });
+    app.dispatch({ type: 'submit-notice', matchesUnits: false });
+    app.dispatch({ type: 'propose-common-denominator', proposed: whole(24) });
+    app.dispatch({ type: 'submit-equivalent-form', proposed: fraction(15, 24) });
+    expect(root.querySelector('.app-visual-view .recovery-feedback').textContent)
+      .toBe('Not the same amount yet. Try a different number of parts.');
+
+    const help = root.querySelector('.app-visual-view .active-beat-controls .app-secondary-button');
+    help.click();
+    expect(root.querySelector('.app-visual-view .active-beat-prompt').textContent).toBe('3 × ? = 24');
+    expect(root.querySelector('.app-visual-view .recovery-feedback')).toBeNull();
+    expect(app.getState().lastRecovery.classification.kind).toBe('incorrect-equivalent-numerator');
+
+    root.querySelector('.app-visual-view .active-beat-controls .app-secondary-button').click();
+    expect(root.querySelector('.app-visual-view .recovery-feedback').textContent)
+      .toBe('Not the same amount yet. Try a different number of parts.');
   });
 
   it('uses one visible associated question for decide and transform across profiles and views', () => {

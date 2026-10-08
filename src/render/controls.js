@@ -46,6 +46,7 @@ export function createNumericInput({
   min = 1,
   max = 999,
   onSubmit,
+  onEmptySubmit,
   buttonLabel = 'Submit',
   strings = STRINGS,
 } = {}) {
@@ -78,6 +79,8 @@ export function createNumericInput({
       const val = inputEl.value.trim();
       if (val && onSubmit) {
         onSubmit(val);
+      } else if (!val && onEmptySubmit) {
+        onEmptySubmit();
       }
     },
   });
@@ -90,6 +93,8 @@ export function createNumericInput({
       const val = inputEl.value.trim();
       if (val && onSubmit) {
         onSubmit(val);
+      } else if (!val && onEmptySubmit) {
+        onEmptySubmit();
       }
     }
   });

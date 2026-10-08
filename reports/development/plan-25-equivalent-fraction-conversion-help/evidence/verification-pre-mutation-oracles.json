@@ -1,0 +1,44 @@
+{
+  "purpose": "Post-implementation exact comparison against the pre-mutation Plan 25 legacy replay and revision-2 closure capture",
+  "baselineHead": "1ffe66f",
+  "completedReplayChecks": [
+    {
+      "revision": "1",
+      "denominator": "12",
+      "fullStateIdentical": true
+    },
+    {
+      "revision": "1",
+      "denominator": "24",
+      "fullStateIdentical": true
+    },
+    {
+      "revision": "2",
+      "denominator": "12",
+      "fullStateIdentical": true
+    },
+    {
+      "revision": "2",
+      "denominator": "24",
+      "fullStateIdentical": true
+    }
+  ],
+  "revision2ClosureChecks": [
+    {
+      "case": "36-outside-capability",
+      "fullStateOrClosureIdentical": true
+    },
+    {
+      "case": "72-outside-capability",
+      "fullStateOrClosureIdentical": true
+    },
+    {
+      "case": "eligible-unauthored-nested-24",
+      "fullStateOrClosureIdentical": true
+    },
+    {
+      "case": "authored-path-missing-condition-data-12",
+      "fullStateOrClosureIdentical": true
+    }
+  ]
+}
