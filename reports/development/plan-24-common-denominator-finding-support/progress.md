@@ -434,3 +434,116 @@ The advisor did not access files, run commands, or make changes.
 - Repair commit: `e437933` — `Repair Plan 24 dynamic help cue and route controls`.
   The progress report is being committed separately as the final scoped commit.
   No push or packet-status change was made.
+
+---
+
+## Delivery Repair 02 (2026-10-07; latest)
+
+The orchestrator's explicit bounded Repair 02 authorization is recorded in
+`delivery-review.md`. It asks for one visible task question at decide and
+transform, preserving actual accessible names, and refreshed cross-view,
+cross-profile evidence. `node scripts/dev/plan-status.js check plan-24` now returns
+`BLOCKED` because the packet is `delivered`; I proceeded only under that explicit
+repair authorization and left packet status and review dispositions unchanged.
+
+### Implemented behavior
+
+- Visual and linear renderers now present the decide prompt on the actual response
+  label (numeric input) or fieldset legend (candidate choices). The redundant
+  prompt heading is not mounted for decide.
+- At transform, the actionable equivalent-parts question is the input label and
+  the earlier separate “Rename the … fraction …” instruction is not mounted.
+  Other beats retain their heading prompts. Native input-label and
+  fieldset-legend relationships remain intact.
+- Added prompt typography for those labels/legends so they preserve the task
+  question's visual hierarchy. No math, instructional state, replay, help,
+  draft/focus, task-family, or motion logic changed.
+- Added a mounted app test covering high/medium support, visual/linear views, and
+  12/24. It checks exactly one prompt, actual label/legend association, and the
+  target-specific transform question. The route matrix checks the medium input
+  and high-support fieldset legend on Plan 24, and checks Plan 22's transform
+  label plus absence of the removed heading copy.
+
+### Rendered evidence
+
+The refreshed capture contains 52 screenshots/measurements across 360×740 and
+360×752, high and medium support, and visual and linear views. It includes help
+closed/open states (8 each), medium one-sided-8 recovery (4), transform states
+for 12 and 24 (16), and opened selected-unit explanations for 12 and 24 (16).
+The capture also checks Playwright-computed accessible names: `group` named by
+the visible legend for high-support choices and `spinbutton` named by the visible
+label for numeric responses. It records native label/legend association,
+question count, duplicate-header presence, and question/response/help/cue bounds.
+
+Automated capture checks found 0 horizontal-overflow states, 0 missing computed
+accessible names, 0 broken native question-response associations, 0 duplicate
+visible task questions, and 0 question/response/help/cue controls outside the
+viewport in the captured states. In the 360×740 medium visual open-help sample,
+the question, input, button, and cue occupy y=405.78–481.34, 489.34–536.34,
+552.34–596.34, and 612.34–699.52 respectively. No horizontal scrolling is
+needed. Representative refreshed screenshots were inspected visually; the
+question precedes its response and help, and the help cue/recovery remain within
+the task region. These exact-string and geometry checks do not by themselves
+establish that the wording is instructionally restrained or clear. The owner
+will make that rendered-copy judgment during the separately gated screen review.
+
+### Advisor consultation disposition
+
+**Branch A — Sol-class read-only consultation ran.** Requested Sol class, not
+Astra. The advisor self-reported Sol-class but could not verify its exact
+runtime variant. It reviewed the inline implementation and validation summary;
+it did not inspect repository files, browser output, screenshots, or assistive
+technology. Structural read-only could not be verified, so this was
+instruction-read-only with post-hoc verification. Immediately after its response,
+`git status --short` showed only the primary implementer's recognized Repair 02
+source, test, capture, and evidence changes (including the eight intentional
+removals of superseded screenshot filenames); no advisor or unexpected changes
+appeared. The primary was the sole writer.
+
+1. **Computed accessible-name test gap — accepted and repaired.** The advisor
+   correctly noted that native `label for` and `fieldset`/`legend` relationship
+   checks do not detect an overriding accessible name. The refreshed Playwright
+   capture now requires exactly one `spinbutton` or `group` with the exact visible
+   question as its computed accessible name in every captured state. This checks
+   browser accessibility computation; it is not a screen-reader test.
+2. **Heading landmark concern — rejected as a blocker.** Decide/transform
+   questions directly label their response controls, while other beats retain
+   their headings. A repository search found no `aria-labelledby` reference to
+   these active prompt/header classes. Actual assistive-technology navigation
+   was not tested.
+3. **Cross-plan regression concern — rejected on the supplied evidence.** The
+   rendering change is limited to decide/transform question placement in the two
+   renderers, while the Plan 22 route now checks its actual equivalent-parts
+   label and absence of the obsolete prompt. No math/state/replay changes were
+   made.
+
+No blocking finding remained. Coarse consultation cost: one advisor turn,
+approximately four minutes. The advisor's critique was limited to the inline
+artifact and does not constitute independent browser or screen-reader review.
+
+### Validation and current gates
+
+- `npm test` — **25 files and 296 tests passed**.
+- `npm run build` — **passed** for learner and subtraction-prototype builds.
+- `npm run test:routes -- --filter PLAN24` — **4/4 browser executions passed**.
+- `npm run test:routes` — **48/48 browser executions passed** across 46 route
+  rows, including Plan 22 boundary and transform routes.
+- `node scripts/dev/capture-plan-24-evidence.mjs` — **52 screenshot/measurement
+  states captured**, with the semantic, computed accessible-name, and viewport
+  geometry checks described above.
+- `node scripts/dev/plan-status.js lint` — **OK**; `git diff --check` — **no
+  whitespace errors** (only Git's LF-to-CRLF working-copy notices).
+- Ordinary test, build, and lint commands worked after the computer restart. The
+  ordinary Edge route/capture launch still failed creating its temporary profile
+  (`error = -5`); scoped local browser commands passed using the narrowly
+  elevated path. `.git/index.lock` was absent, but the read-only `git add
+  --refresh -- .` probe still returned `Permission denied`; scoped staging and
+  commit therefore require the repository's documented Git-metadata elevation.
+
+Implementation/evidence commit: `d85cf7d` — `Remove duplicate Plan 24 task
+prompts`. This progress report is committed separately as the final scoped
+commit. The packet remains `delivered`; technical re-review and owner inspection
+of representative rendered states remain outstanding. No push, deployment,
+packet-status change, or owner acceptance is claimed. No physical device, native
+keyboard, assistive technology, or learner study was used, and no efficacy or
+independent-discovery claim is made.
