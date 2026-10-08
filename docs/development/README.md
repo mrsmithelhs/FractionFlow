@@ -33,7 +33,7 @@ Packets are assigned to implementer agents. Each packet defines scope, required 
 | `plan-22` | Denominator Path Closure Repair | complete | Repair a reachable dead end introduced by numeric denominator entry: a valid denominator can lack authored reflection data or exceed bar capability while still advancing to conversion and reflection. Preserve mathematical validity, enforce representation eligibility, and guarantee an honest completable path. |
 | `plan-23` | Local Development Console | draft | Make Bootstrap's adopted dev-console-hub guidance usable in FractionFlow: an npm run dev:console menu for local server start/stop, tests, builds and packet visibility with safe Windows invocation and explicit mutation confirmations. |
 | `plan-24` | Common Denominator Finding Support | complete | Add compact task-local assistance for finding a common denominator and understanding a selected unit, preserving learner decisions, mathematical validity, answer withholding and the repaired task capability boundary. |
-| `plan-25` | Requested Equivalent Fraction Conversion Help | draft | Help a learner who knows the target denominator but needs assistance finding the equivalent numerator, through requested local steps that preserve amount, require learner contributions and avoid revealing the answer prematurely. |
+| `plan-25` | Requested Equivalent Fraction Conversion Help | in-progress | Help a learner who knows the target denominator but needs assistance finding the equivalent numerator, through requested local steps that preserve amount, require learner contributions and avoid revealing the answer prematurely. |
 <!-- plan-index:end -->
 
 ## Report Folders

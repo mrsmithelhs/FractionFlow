@@ -1,11 +1,9 @@
 ---
 id: plan-25
 title: Requested Equivalent Fraction Conversion Help
-status: draft
+status: in-progress
 depends_on: [plan-24]
 gate: "Requirement 0: investigate current transform help and propose compact learner-driven conversion substeps; stop before source work. Technical and owner rendered-screen/agency acceptance; deployment separately authorized."
-superseded_by: null
-resolution: null
 summary: >-
   Help a learner who knows the target denominator but needs assistance finding
   the equivalent numerator, through requested local steps that preserve amount,
