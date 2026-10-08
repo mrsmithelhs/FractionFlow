@@ -169,3 +169,24 @@ contracts. Correct the capture to stop at actual decide before choosing a unit,
 with current-task and exact-question assertions. Refresh affected evidence at
 both heights and validate the scoped change. Keep delivered status; implementation
 and report commits remain implementer-owned, no push/deployment authorized.
+
+## Compact context corrections accepted — 2026-10-07
+
+Implementation 1c62d23 and final report a3209ef resolve both bounded corrections.
+Orchestration personally inspected the refreshed ordinary-decide and premise
+screens at 360x740. Decide now shows the actual denominator choice, one stacked
+current expression and one question. Premise shows the two labelled fractions
+and one visible question as the native choice-group legend, without the former
+framing paragraph. The capture stops before denominator selection and checks
+the named decision group, candidates and absence of conversion inputs.
+
+Independent verification passed 46 app/linear-context/route-contract tests and
+the mounted condition-4 reflection/replay browser witness, plus packet lint and
+diff check. Browser execution used narrow elevation for the known Edge profile
+limitation. Full 303-test/build/48-browser results and both-height capture remain
+implementer evidence; actual assistive-technology use remains untested.
+
+Technical acceptance includes the compact-context follow-up and preceding prompt
+repairs. Plan 24 remains delivered pending owner screen/agency acceptance. No
+push or deployment authorized. The six distinct states were personally reviewed
+before correction; the two affected states were reviewed again after correction.
