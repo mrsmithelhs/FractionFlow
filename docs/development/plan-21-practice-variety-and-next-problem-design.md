@@ -1,7 +1,8 @@
 ---
 id: plan-21
 title: Practice Variety and Next-Problem Design
-status: delivered
+status: complete
+resolution: "Accepted investigation and independently checked content analysis; owner adopted the bounded contract as DECISION-041 on 2026-10-09. Plan 26 separately implements the authored set and Next; OQ-23 remains open pending reachable delivery and acceptance."
 depends_on: [plan-10, plan-12, plan-13, plan-14, plan-16]
 gate: "DECISION-035/040 adopt small learner goals and a vetted authored set with learner-triggered Next. Propose concrete mapping, selection, exhaustion and reset semantics for owner acceptance before implementation. This investigation can proceed before new families are delivered and does not activate content or close OQ-23."
 summary: >-
