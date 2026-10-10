@@ -47,7 +47,8 @@ motion geometry and the two-item content baseline; Plan 30 is independent.
 Read `AGENTS.md`, `docs/decision-log.md`, `docs/development/README.md`, the
 typography follow-up, and Plan 11/26 technical dispositions. Inspect
 `src/render/symbolic.js`, `src/render/fraction-bar.js`, `src/render/linear-path.js`,
-choice rendering hooks, `src/app/styles.css` and relevant structured scene
+choice rendering hooks, `src/styles/render.css` (fraction/renderer typography),
+`src/app/styles.css` (app chrome) and relevant structured scene
 forms/tests. Own only the necessary renderer/style and focused verification files
 identified at the mechanism gate, plus this packet's evidence/report folder.
 Preserve exact math → instructional state → presentation, raw learner-visible
@@ -61,6 +62,8 @@ Run preflight and capture a representative baseline. Propose a shared notation
 helper/variant and exact write paths. Each divider's width is the larger numeral's
 intrinsic width plus a small shared font-relative padding, independent of its host
 width. Preserve the outer bar-readout reserve; size only its inner notation.
+Inspect both ordinary and persistent bar-readout constructors and their lane
+sizing; preserving only the persistent layout does not establish all-mode geometry.
 Describe inline baseline/line-height/wrapping, button targets, structured scene
 inputs and coherent spoken names. If a needed form is absent from the scene,
 propose a minimal projection addition; never parse prompt prose to recover math.
@@ -84,7 +87,12 @@ conversion and Replay using existing document-coordinate assertions. Check both
 200% browser zoom or equivalent effective viewport with the method stated.
 Inspect matched bar-label and linear question/button screenshots for wrapping,
 line spacing and focus; exercise keyboard choices and reduced-motion routes.
-Retain legacy route rows/assertions. Run meaningful targeted tests, normal
+Stacked markup changes text serialization: preserve equivalent semantic assertions
+when slash-based text checks become unsuitable. No-future-answer checks must prove
+their inspected target exists and must detect leaked fraction values independently
+of slash notation; demonstrate rejection of a seeded leak. Retain legacy route
+coverage and invariant meaning rather than mechanically preserving obsolete text
+serialization. Run meaningful targeted tests, normal
 tests/build/routes, packet lint and diff check; broad visual proof comes from
 rendered evidence, not just DOM classes. Report physical-device/AT limits honestly.
 

@@ -28,9 +28,11 @@ causes. Vue single-file components are a candidate, not the predetermined answer
   repairs include evidence work as well as a production validation correction.
 - Plan 21 was an investigation/design dossier, not a source implementation;
   compare its effort by category rather than counting it as a markup rewrite.
-- This scoping pass also found an incorrect stylesheet path in the newly drafted
-  Plan 31 brief. The actual stylesheet is `src/app/styles.css`; corrected inline.
-  That is a documentation/routing failure attributable to orchestration, not
+- The initial scoping pass incorrectly redirected Plan 31 to `src/app/styles.css`.
+  Independent Claude review caught this: `src/app/main.js` imports both that chrome
+  stylesheet and `src/styles/render.css`, where fraction typography actually lives.
+  Root verified the imports and corrected Plan 31 to name both responsibilities.
+  This is a documentation/routing failure attributable to orchestration, not
   evidence that the source architecture alone causes navigation difficulty.
 
 ## Requested evidence
