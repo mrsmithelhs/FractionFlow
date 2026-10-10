@@ -8,9 +8,12 @@ Orchestrator-owned; update in place before thread boundaries. Anchor dates, neve
 This snapshot supersedes older status/next-action passages below, which retain
 dated history. Use `docs/development/README.md` for the authoritative board.
 Plans 01–16, 21, 22, 24 and 25 are complete; Plans 17–20, 23 and 29 are drafts.
-The owner initiated Plan 26 at `9b25ddd`; it is in-progress. Its execution mechanism
-was approved 2026-10-10 with bounded revision-aware authored data, transactional
-admission, focus/reset and evidence requirements. See its `mechanism-review.md`.
+The owner initiated Plan 26 at `9b25ddd`; it is delivered, pending Repair 01.
+Its execution mechanism was approved 2026-10-10; implementation/report arrived
+at `92e13db` / `aed852a`. See its `delivery-review.md` and `repair-01.md`:
+matching admission misses the renderers' choice-count/bar-range contract, and
+new-item browser participation/saved rendered evidence is incomplete. Root
+authorized that bounded repair under the owner's standing correction permission.
 FF Impl 26 is the authorized source writer; source work remains serialized.
 
 Plan 25 is technically and owner accepted after the open-help focus repair:
@@ -55,6 +58,9 @@ compact data additions plus broad validation, with later large-bank selection in
 view. See `content-authoring-and-scale-position.md` and the follow-up register.
 FF Impl 26 was asked to distinguish one-time lifecycle work from per-item authoring
 cost in its report; no extra fixtures/refactor or source scope change was requested.
+Owner then emphasized using the established deterministic math authority and
+automated contract checks instead of agent arithmetic. Apply that standard to
+content admission and scale work; retain independent math-core test guarantees.
 
 First revision 2026-09-18. Rewritten 2026-09-19 when the specification phase closed. **Rewritten again
 2026-09-29** at an orchestrator change: the prior revision stopped at `plan-09` Repair 01 on

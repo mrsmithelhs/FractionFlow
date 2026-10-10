@@ -1,7 +1,7 @@
 ---
 id: plan-26
 title: Vetted Addition Practice and Next Problem
-status: in-progress
+status: delivered
 depends_on: [plan-21, plan-25, plan-22]
 gate: "DECISION-041 adopts the bounded selection contract. Owner initiation and Requirement 0 execution mechanism approval precede source work. Technical and owner rendered-screen/agency acceptance remain separate from publication."
 summary: >-
