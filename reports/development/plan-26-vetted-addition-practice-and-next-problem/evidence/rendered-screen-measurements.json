@@ -70,7 +70,7 @@
         "height": 740,
         "devicePixelRatio": 1
       },
-      "stage": "wrong-answer-accepted-work-help-draft-and-replay-before-retry",
+      "stage": "first-item-dirty-retry-before-retry-replay-closed",
       "screenshot": "bundle-1-visual-high-standard-12-keyboard-360x740-before-retry.png",
       "document": {
         "width": 360,
@@ -569,7 +569,7 @@
         "height": 768,
         "devicePixelRatio": 1
       },
-      "stage": "wrong-answer-accepted-work-help-draft-and-replay-before-retry",
+      "stage": "first-item-dirty-retry-before-retry-replay-closed",
       "screenshot": "bundle-1-visual-high-standard-12-keyboard-1366x768-before-retry.png",
       "document": {
         "width": 1366,
@@ -1057,6 +1057,54 @@
     },
     {
       "journey": "bundle-2-linear-medium-reduced-6-touch",
+      "viewport": "360x740",
+      "stage": "open-settings-condition",
+      "action": "touchscreen.tap",
+      "target": ".app-gear-button",
+      "intendedTargetReceivedClick": true
+    },
+    {
+      "journey": "bundle-2-linear-medium-reduced-6-touch",
+      "viewport": "360x740",
+      "stage": "select-condition",
+      "action": "touchscreen.tap",
+      "target": "[data-condition-id=\"phase2-bundle-2\"]",
+      "intendedTargetReceivedClick": true
+    },
+    {
+      "journey": "bundle-2-linear-medium-reduced-6-touch",
+      "viewport": "360x740",
+      "stage": "open-settings-support",
+      "action": "touchscreen.tap",
+      "target": ".app-gear-button",
+      "intendedTargetReceivedClick": true
+    },
+    {
+      "journey": "bundle-2-linear-medium-reduced-6-touch",
+      "viewport": "360x740",
+      "stage": "select-support",
+      "action": "touchscreen.tap",
+      "target": "[data-support-id=\"medium-support\"]",
+      "intendedTargetReceivedClick": true
+    },
+    {
+      "journey": "bundle-2-linear-medium-reduced-6-touch",
+      "viewport": "360x740",
+      "stage": "enter-practice",
+      "action": "touchscreen.tap",
+      "target": ".app-practice-button",
+      "intendedTargetReceivedClick": true
+    },
+    {
+      "journey": "bundle-2-linear-medium-reduced-6-touch",
+      "viewport": "360x740",
+      "stage": "select-linear-view",
+      "action": "touchscreen.tap",
+      "target": ".app-view-toggle",
+      "intendedTargetReceivedClick": true
+    },
+    {
+      "journey": "bundle-2-linear-medium-reduced-6-touch",
       "condition": "phase2-bundle-2",
       "view": "linear",
       "support": "medium-support",
@@ -1126,6 +1174,102 @@
     },
     {
       "journey": "bundle-2-linear-medium-reduced-6-touch",
+      "viewport": "360x740",
+      "stage": "acknowledge-encounter",
+      "action": "touchscreen.tap",
+      "target": ".app-linear-view .control-btn",
+      "intendedTargetReceivedClick": true
+    },
+    {
+      "journey": "bundle-2-linear-medium-reduced-6-touch",
+      "viewport": "360x740",
+      "stage": "answer-initial-question",
+      "action": "touchscreen.tap",
+      "target": ".app-linear-view .control-choice-btn >> nth=1",
+      "intendedTargetReceivedClick": true
+    },
+    {
+      "journey": "bundle-2-linear-medium-reduced-6-touch",
+      "viewport": "360x740",
+      "stage": "enter-common-denominator-input-focus-before-automated-entry",
+      "action": "touchscreen.tap",
+      "target": "enter-common-denominator-input-focus-before-automated-entry",
+      "intendedTargetReceivedClick": true
+    },
+    {
+      "journey": "bundle-2-linear-medium-reduced-6-touch",
+      "viewport": "360x740",
+      "stage": "submit-common-denominator",
+      "action": "touchscreen.tap",
+      "target": ".app-linear-view .control-submit-btn",
+      "intendedTargetReceivedClick": true
+    },
+    {
+      "journey": "bundle-2-linear-medium-reduced-6-touch",
+      "viewport": "360x740",
+      "stage": "enter-answer-1-input-focus-before-automated-entry",
+      "action": "touchscreen.tap",
+      "target": "enter-answer-1-input-focus-before-automated-entry",
+      "intendedTargetReceivedClick": true
+    },
+    {
+      "journey": "bundle-2-linear-medium-reduced-6-touch",
+      "viewport": "360x740",
+      "stage": "submit-answer-1",
+      "action": "touchscreen.tap",
+      "target": ".app-linear-view .control-submit-btn",
+      "intendedTargetReceivedClick": true
+    },
+    {
+      "journey": "bundle-2-linear-medium-reduced-6-touch",
+      "viewport": "360x740",
+      "stage": "enter-answer-2-input-focus-before-automated-entry",
+      "action": "touchscreen.tap",
+      "target": "enter-answer-2-input-focus-before-automated-entry",
+      "intendedTargetReceivedClick": true
+    },
+    {
+      "journey": "bundle-2-linear-medium-reduced-6-touch",
+      "viewport": "360x740",
+      "stage": "submit-answer-2",
+      "action": "touchscreen.tap",
+      "target": ".app-linear-view .control-submit-btn",
+      "intendedTargetReceivedClick": true
+    },
+    {
+      "journey": "bundle-2-linear-medium-reduced-6-touch",
+      "viewport": "360x740",
+      "stage": "enter-answer-3-input-focus-before-automated-entry",
+      "action": "touchscreen.tap",
+      "target": "enter-answer-3-input-focus-before-automated-entry",
+      "intendedTargetReceivedClick": true
+    },
+    {
+      "journey": "bundle-2-linear-medium-reduced-6-touch",
+      "viewport": "360x740",
+      "stage": "submit-answer-3",
+      "action": "touchscreen.tap",
+      "target": ".app-linear-view .control-submit-btn",
+      "intendedTargetReceivedClick": true
+    },
+    {
+      "journey": "bundle-2-linear-medium-reduced-6-touch",
+      "viewport": "360x740",
+      "stage": "open-reflection",
+      "action": "touchscreen.tap",
+      "target": ".app-linear-view .control-btn",
+      "intendedTargetReceivedClick": true
+    },
+    {
+      "journey": "bundle-2-linear-medium-reduced-6-touch",
+      "viewport": "360x740",
+      "stage": "answer-final-reflection",
+      "action": "touchscreen.tap",
+      "target": ".app-linear-view .control-choice-btn >> nth=0",
+      "intendedTargetReceivedClick": true
+    },
+    {
+      "journey": "bundle-2-linear-medium-reduced-6-touch",
       "condition": "phase2-bundle-2",
       "view": "linear",
       "support": "medium-support",
@@ -1192,6 +1336,14 @@
         "You finished this problem."
       ],
       "bodyText": "Show the picture\nNext problem\nBack to start\n8\n12\n+\n3\n12\nYou finished this problem.\nShow previous steps (6 completed)\nResult: 11/12\nNeed help?\nReplay the last change\nTry this problem again\n\nYou finished this problem."
+    },
+    {
+      "journey": "bundle-2-linear-medium-reduced-6-touch",
+      "viewport": "360x740",
+      "stage": "next-to-second-item",
+      "action": "touchscreen.tap",
+      "target": ".app-next-button",
+      "intendedTargetReceivedClick": true
     },
     {
       "journey": "bundle-2-linear-medium-reduced-6-touch",
@@ -1270,6 +1422,367 @@
         "Look at these two fractions."
       ],
       "bodyText": "Show the picture\nBack to start\n1\n2\n+\n1\n3\nLook at these two fractions.\nNext\nNeed help?\nReplay the last change\nTry this problem again"
+    },
+    {
+      "journey": "bundle-2-linear-medium-reduced-6-touch",
+      "viewport": "360x740",
+      "stage": "second-item-dirty-retry-acknowledge-encounter",
+      "action": "touchscreen.tap",
+      "target": ".app-linear-view .control-btn",
+      "intendedTargetReceivedClick": true
+    },
+    {
+      "journey": "bundle-2-linear-medium-reduced-6-touch",
+      "viewport": "360x740",
+      "stage": "second-item-dirty-retry-wrong-notice-response",
+      "action": "touchscreen.tap",
+      "target": ".app-linear-view .control-choice-btn >> nth=0",
+      "intendedTargetReceivedClick": true
+    },
+    {
+      "journey": "bundle-2-linear-medium-reduced-6-touch",
+      "viewport": "360x740",
+      "stage": "second-item-dirty-retry-notice-recovery",
+      "action": "touchscreen.tap",
+      "target": ".app-linear-view .control-choice-btn >> nth=1",
+      "intendedTargetReceivedClick": true
+    },
+    {
+      "journey": "bundle-2-linear-medium-reduced-6-touch",
+      "viewport": "360x740",
+      "stage": "second-item-dirty-retry-enter-common-denominator-input-focus-before-automated-entry",
+      "action": "touchscreen.tap",
+      "target": "second-item-dirty-retry-enter-common-denominator-input-focus-before-automated-entry",
+      "intendedTargetReceivedClick": true
+    },
+    {
+      "journey": "bundle-2-linear-medium-reduced-6-touch",
+      "viewport": "360x740",
+      "stage": "second-item-dirty-retry-submit-common-denominator",
+      "action": "touchscreen.tap",
+      "target": ".app-linear-view .control-submit-btn",
+      "intendedTargetReceivedClick": true
+    },
+    {
+      "journey": "bundle-2-linear-medium-reduced-6-touch",
+      "viewport": "360x740",
+      "stage": "second-item-dirty-retry-open-left-task-help",
+      "action": "touchscreen.tap",
+      "target": ".app-linear-view .active-beat-controls .app-secondary-button",
+      "intendedTargetReceivedClick": true
+    },
+    {
+      "journey": "bundle-2-linear-medium-reduced-6-touch",
+      "viewport": "360x740",
+      "stage": "second-item-dirty-retry-left-task-help-multiplier-input-focus-before-automated-entry",
+      "action": "touchscreen.tap",
+      "target": "second-item-dirty-retry-left-task-help-multiplier-input-focus-before-automated-entry",
+      "intendedTargetReceivedClick": true
+    },
+    {
+      "journey": "bundle-2-linear-medium-reduced-6-touch",
+      "viewport": "360x740",
+      "stage": "second-item-dirty-retry-accept-left-task-help",
+      "action": "touchscreen.tap",
+      "target": ".app-linear-view .control-submit-btn",
+      "intendedTargetReceivedClick": true
+    },
+    {
+      "journey": "bundle-2-linear-medium-reduced-6-touch",
+      "viewport": "360x740",
+      "stage": "second-item-dirty-retry-incorrect-numerator-input-focus-before-automated-entry",
+      "action": "touchscreen.tap",
+      "target": "second-item-dirty-retry-incorrect-numerator-input-focus-before-automated-entry",
+      "intendedTargetReceivedClick": true
+    },
+    {
+      "journey": "bundle-2-linear-medium-reduced-6-touch",
+      "viewport": "360x740",
+      "stage": "second-item-dirty-retry-submit-incorrect-numerator",
+      "action": "touchscreen.tap",
+      "target": ".app-linear-view .control-submit-btn",
+      "intendedTargetReceivedClick": true
+    },
+    {
+      "journey": "bundle-2-linear-medium-reduced-6-touch",
+      "viewport": "360x740",
+      "stage": "second-item-dirty-retry-accepted-numerator-input-focus-before-automated-entry",
+      "action": "touchscreen.tap",
+      "target": "second-item-dirty-retry-accepted-numerator-input-focus-before-automated-entry",
+      "intendedTargetReceivedClick": true
+    },
+    {
+      "journey": "bundle-2-linear-medium-reduced-6-touch",
+      "viewport": "360x740",
+      "stage": "second-item-dirty-retry-submit-accepted-numerator",
+      "action": "touchscreen.tap",
+      "target": ".app-linear-view .control-submit-btn",
+      "intendedTargetReceivedClick": true
+    },
+    {
+      "journey": "bundle-2-linear-medium-reduced-6-touch",
+      "viewport": "360x740",
+      "stage": "second-item-dirty-retry-open-task-help",
+      "action": "touchscreen.tap",
+      "target": ".app-linear-view .active-beat-controls .app-secondary-button",
+      "intendedTargetReceivedClick": true
+    },
+    {
+      "journey": "bundle-2-linear-medium-reduced-6-touch",
+      "viewport": "360x740",
+      "stage": "second-item-dirty-retry-task-help-draft-input-focus-before-automated-entry",
+      "action": "touchscreen.tap",
+      "target": "second-item-dirty-retry-task-help-draft-input-focus-before-automated-entry",
+      "intendedTargetReceivedClick": true
+    },
+    {
+      "journey": "bundle-2-linear-medium-reduced-6-touch",
+      "viewport": "360x740",
+      "stage": "second-item-dirty-retry-activate-replay",
+      "action": "touchscreen.tap",
+      "target": "second-item-dirty-retry-activate-replay",
+      "intendedTargetReceivedClick": true
+    },
+    {
+      "journey": "bundle-2-linear-medium-reduced-6-touch",
+      "condition": "phase2-bundle-2",
+      "view": "linear",
+      "support": "medium-support",
+      "motion": "reduced",
+      "denominator": "6",
+      "touchContext": true,
+      "viewport": {
+        "width": 360,
+        "height": 740,
+        "devicePixelRatio": 1
+      },
+      "stage": "second-item-dirty-retry-before-retry-replay-active",
+      "screenshot": "bundle-2-linear-medium-reduced-6-touch-360x740-second-item-dirty-retry.png",
+      "document": {
+        "width": 360,
+        "height": 889,
+        "scrollY": 126,
+        "verticalScrollRange": 149
+      },
+      "question": {
+        "x": 63,
+        "y": 269.34375,
+        "top": 269.34375,
+        "bottom": 319.71875,
+        "width": 234,
+        "height": 50.375,
+        "visibleTop": 269.34375,
+        "visibleBottom": 319.71875
+      },
+      "controls": {
+        "x": 63,
+        "y": 269.34375,
+        "top": 269.34375,
+        "bottom": 465.109375,
+        "width": 234,
+        "height": 195.765625,
+        "visibleTop": 269.34375,
+        "visibleBottom": 465.109375
+      },
+      "viewToggle": {
+        "x": 164.09375,
+        "y": -101,
+        "top": -101,
+        "bottom": -57,
+        "width": 170.90625,
+        "height": 44,
+        "visibleTop": 0,
+        "visibleBottom": -57
+      },
+      "navNext": null,
+      "navNotice": null,
+      "fractionTrack": {
+        "x": 134.328125,
+        "y": 52,
+        "top": 52,
+        "bottom": 108.78125,
+        "width": 91.328125,
+        "height": 56.78125,
+        "visibleTop": 52,
+        "visibleBottom": 108.78125
+      },
+      "activeElement": "fraction-control app-secondary-button",
+      "visibleHeadings": [],
+      "bodyText": "Show the picture\nBack to start\n3\n6\n+\n1\n3\nFirst fraction: started as 1 of 2 equal parts, now renamed to 3 of 6 equal parts in 1 whole. (replaying)\nWhat multiplier turns 3 parts into 6?\n\n3 × ? = 6\n\nSubmit\nClose help\nShow previous steps (2 completed)\nCommon denominator: 6 — the smallest one.\nReplay the last change\nTry this problem again\n\nTake another look at the current bars and symbols."
+    },
+    {
+      "journey": "bundle-2-linear-medium-reduced-6-touch",
+      "viewport": "360x740",
+      "stage": "second-item-dirty-retry-retry",
+      "action": "touchscreen.tap",
+      "target": ".app-restart-button",
+      "intendedTargetReceivedClick": true
+    },
+    {
+      "journey": "bundle-2-linear-medium-reduced-6-touch",
+      "viewport": "360x740",
+      "stage": "first-tab-after-retry",
+      "activeElement": {
+        "tag": "BUTTON",
+        "className": "fraction-control app-secondary-button app-view-toggle"
+      }
+    },
+    {
+      "journey": "bundle-2-linear-medium-reduced-6-touch",
+      "condition": "phase2-bundle-2",
+      "view": "linear",
+      "support": "medium-support",
+      "motion": "reduced",
+      "denominator": "6",
+      "touchContext": true,
+      "viewport": {
+        "width": 360,
+        "height": 740,
+        "devicePixelRatio": 1
+      },
+      "stage": "second-item-clean-after-dirty-retry",
+      "screenshot": "bundle-2-linear-medium-reduced-6-touch-360x740-second-item-after-retry.png",
+      "document": {
+        "width": 360,
+        "height": 740,
+        "scrollY": 0,
+        "verticalScrollRange": 0
+      },
+      "question": {
+        "x": 63,
+        "y": 311.78125,
+        "top": 311.78125,
+        "bottom": 336.96875,
+        "width": 234,
+        "height": 25.1875,
+        "visibleTop": 311.78125,
+        "visibleBottom": 336.96875
+      },
+      "controls": {
+        "x": 63,
+        "y": 370.96875,
+        "top": 370.96875,
+        "bottom": 414.96875,
+        "width": 234,
+        "height": 44,
+        "visibleTop": 370.96875,
+        "visibleBottom": 414.96875
+      },
+      "viewToggle": {
+        "x": 164.09375,
+        "y": 25,
+        "top": 25,
+        "bottom": 69,
+        "width": 170.90625,
+        "height": 44,
+        "visibleTop": 25,
+        "visibleBottom": 69
+      },
+      "navNext": null,
+      "navNotice": null,
+      "fractionTrack": {
+        "x": 134.328125,
+        "y": 178,
+        "top": 178,
+        "bottom": 234.78125,
+        "width": 91.328125,
+        "height": 56.78125,
+        "visibleTop": 178,
+        "visibleBottom": 234.78125
+      },
+      "activeElement": "fraction-control app-secondary-button app-view-toggle",
+      "visibleHeadings": [
+        "Look at these two fractions."
+      ],
+      "bodyText": "Show the picture\nBack to start\n1\n2\n+\n1\n3\nLook at these two fractions.\nNext\nNeed help?\nReplay the last change\nTry this problem again"
+    },
+    {
+      "journey": "bundle-2-linear-medium-reduced-6-touch",
+      "viewport": "360x740",
+      "stage": "acknowledge-encounter",
+      "action": "touchscreen.tap",
+      "target": ".app-linear-view .control-btn",
+      "intendedTargetReceivedClick": true
+    },
+    {
+      "journey": "bundle-2-linear-medium-reduced-6-touch",
+      "viewport": "360x740",
+      "stage": "answer-initial-question",
+      "action": "touchscreen.tap",
+      "target": ".app-linear-view .control-choice-btn >> nth=1",
+      "intendedTargetReceivedClick": true
+    },
+    {
+      "journey": "bundle-2-linear-medium-reduced-6-touch",
+      "viewport": "360x740",
+      "stage": "enter-common-denominator-input-focus-before-automated-entry",
+      "action": "touchscreen.tap",
+      "target": "enter-common-denominator-input-focus-before-automated-entry",
+      "intendedTargetReceivedClick": true
+    },
+    {
+      "journey": "bundle-2-linear-medium-reduced-6-touch",
+      "viewport": "360x740",
+      "stage": "submit-common-denominator",
+      "action": "touchscreen.tap",
+      "target": ".app-linear-view .control-submit-btn",
+      "intendedTargetReceivedClick": true
+    },
+    {
+      "journey": "bundle-2-linear-medium-reduced-6-touch",
+      "viewport": "360x740",
+      "stage": "enter-answer-1-input-focus-before-automated-entry",
+      "action": "touchscreen.tap",
+      "target": "enter-answer-1-input-focus-before-automated-entry",
+      "intendedTargetReceivedClick": true
+    },
+    {
+      "journey": "bundle-2-linear-medium-reduced-6-touch",
+      "viewport": "360x740",
+      "stage": "submit-answer-1",
+      "action": "touchscreen.tap",
+      "target": ".app-linear-view .control-submit-btn",
+      "intendedTargetReceivedClick": true
+    },
+    {
+      "journey": "bundle-2-linear-medium-reduced-6-touch",
+      "viewport": "360x740",
+      "stage": "enter-answer-2-input-focus-before-automated-entry",
+      "action": "touchscreen.tap",
+      "target": "enter-answer-2-input-focus-before-automated-entry",
+      "intendedTargetReceivedClick": true
+    },
+    {
+      "journey": "bundle-2-linear-medium-reduced-6-touch",
+      "viewport": "360x740",
+      "stage": "submit-answer-2",
+      "action": "touchscreen.tap",
+      "target": ".app-linear-view .control-submit-btn",
+      "intendedTargetReceivedClick": true
+    },
+    {
+      "journey": "bundle-2-linear-medium-reduced-6-touch",
+      "viewport": "360x740",
+      "stage": "enter-answer-3-input-focus-before-automated-entry",
+      "action": "touchscreen.tap",
+      "target": "enter-answer-3-input-focus-before-automated-entry",
+      "intendedTargetReceivedClick": true
+    },
+    {
+      "journey": "bundle-2-linear-medium-reduced-6-touch",
+      "viewport": "360x740",
+      "stage": "submit-answer-3",
+      "action": "touchscreen.tap",
+      "target": ".app-linear-view .control-submit-btn",
+      "intendedTargetReceivedClick": true
+    },
+    {
+      "journey": "bundle-2-linear-medium-reduced-6-touch",
+      "viewport": "360x740",
+      "stage": "open-reflection",
+      "action": "touchscreen.tap",
+      "target": ".app-linear-view .control-btn",
+      "intendedTargetReceivedClick": true
     },
     {
       "journey": "bundle-2-linear-medium-reduced-6-touch",
@@ -1411,6 +1924,14 @@
     },
     {
       "journey": "bundle-2-linear-medium-reduced-6-touch",
+      "viewport": "360x740",
+      "stage": "answer-final-reflection",
+      "action": "touchscreen.tap",
+      "target": ".app-linear-view .control-choice-btn >> nth=1",
+      "intendedTargetReceivedClick": true
+    },
+    {
+      "journey": "bundle-2-linear-medium-reduced-6-touch",
       "condition": "phase2-bundle-2",
       "view": "linear",
       "support": "medium-support",
@@ -1477,6 +1998,78 @@
         "You finished this problem."
       ],
       "bodyText": "Show the picture\n\nYou’ve tried both problems.\n\nBack to start\n3\n6\n+\n2\n6\nYou finished this problem.\nShow previous steps (6 completed)\nResult: 5/6\nNeed help?\nReplay the last change\nTry this problem again"
+    },
+    {
+      "journey": "bundle-2-linear-medium-reduced-6-touch",
+      "viewport": "360x740",
+      "stage": "view-toggle-at-exhaustion",
+      "action": "touchscreen.tap",
+      "target": ".app-view-toggle",
+      "intendedTargetReceivedClick": true
+    },
+    {
+      "journey": "bundle-2-linear-medium-reduced-6-touch",
+      "viewport": "360x740",
+      "stage": "return-to-entry",
+      "action": "touchscreen.tap",
+      "target": ".app-return-button",
+      "intendedTargetReceivedClick": true
+    },
+    {
+      "journey": "bundle-2-linear-medium-reduced-6-touch",
+      "viewport": "360x740",
+      "stage": "re-enter-practice",
+      "action": "touchscreen.tap",
+      "target": ".app-practice-button",
+      "intendedTargetReceivedClick": true
+    },
+    {
+      "journey": "bundle-2-linear-medium-reduced-6-touch",
+      "viewport": "1366x768",
+      "stage": "open-settings-condition",
+      "action": "touchscreen.tap",
+      "target": ".app-gear-button",
+      "intendedTargetReceivedClick": true
+    },
+    {
+      "journey": "bundle-2-linear-medium-reduced-6-touch",
+      "viewport": "1366x768",
+      "stage": "select-condition",
+      "action": "touchscreen.tap",
+      "target": "[data-condition-id=\"phase2-bundle-2\"]",
+      "intendedTargetReceivedClick": true
+    },
+    {
+      "journey": "bundle-2-linear-medium-reduced-6-touch",
+      "viewport": "1366x768",
+      "stage": "open-settings-support",
+      "action": "touchscreen.tap",
+      "target": ".app-gear-button",
+      "intendedTargetReceivedClick": true
+    },
+    {
+      "journey": "bundle-2-linear-medium-reduced-6-touch",
+      "viewport": "1366x768",
+      "stage": "select-support",
+      "action": "touchscreen.tap",
+      "target": "[data-support-id=\"medium-support\"]",
+      "intendedTargetReceivedClick": true
+    },
+    {
+      "journey": "bundle-2-linear-medium-reduced-6-touch",
+      "viewport": "1366x768",
+      "stage": "enter-practice",
+      "action": "touchscreen.tap",
+      "target": ".app-practice-button",
+      "intendedTargetReceivedClick": true
+    },
+    {
+      "journey": "bundle-2-linear-medium-reduced-6-touch",
+      "viewport": "1366x768",
+      "stage": "select-linear-view",
+      "action": "touchscreen.tap",
+      "target": ".app-view-toggle",
+      "intendedTargetReceivedClick": true
     },
     {
       "journey": "bundle-2-linear-medium-reduced-6-touch",
@@ -1549,6 +2142,102 @@
     },
     {
       "journey": "bundle-2-linear-medium-reduced-6-touch",
+      "viewport": "1366x768",
+      "stage": "acknowledge-encounter",
+      "action": "touchscreen.tap",
+      "target": ".app-linear-view .control-btn",
+      "intendedTargetReceivedClick": true
+    },
+    {
+      "journey": "bundle-2-linear-medium-reduced-6-touch",
+      "viewport": "1366x768",
+      "stage": "answer-initial-question",
+      "action": "touchscreen.tap",
+      "target": ".app-linear-view .control-choice-btn >> nth=1",
+      "intendedTargetReceivedClick": true
+    },
+    {
+      "journey": "bundle-2-linear-medium-reduced-6-touch",
+      "viewport": "1366x768",
+      "stage": "enter-common-denominator-input-focus-before-automated-entry",
+      "action": "touchscreen.tap",
+      "target": "enter-common-denominator-input-focus-before-automated-entry",
+      "intendedTargetReceivedClick": true
+    },
+    {
+      "journey": "bundle-2-linear-medium-reduced-6-touch",
+      "viewport": "1366x768",
+      "stage": "submit-common-denominator",
+      "action": "touchscreen.tap",
+      "target": ".app-linear-view .control-submit-btn",
+      "intendedTargetReceivedClick": true
+    },
+    {
+      "journey": "bundle-2-linear-medium-reduced-6-touch",
+      "viewport": "1366x768",
+      "stage": "enter-answer-1-input-focus-before-automated-entry",
+      "action": "touchscreen.tap",
+      "target": "enter-answer-1-input-focus-before-automated-entry",
+      "intendedTargetReceivedClick": true
+    },
+    {
+      "journey": "bundle-2-linear-medium-reduced-6-touch",
+      "viewport": "1366x768",
+      "stage": "submit-answer-1",
+      "action": "touchscreen.tap",
+      "target": ".app-linear-view .control-submit-btn",
+      "intendedTargetReceivedClick": true
+    },
+    {
+      "journey": "bundle-2-linear-medium-reduced-6-touch",
+      "viewport": "1366x768",
+      "stage": "enter-answer-2-input-focus-before-automated-entry",
+      "action": "touchscreen.tap",
+      "target": "enter-answer-2-input-focus-before-automated-entry",
+      "intendedTargetReceivedClick": true
+    },
+    {
+      "journey": "bundle-2-linear-medium-reduced-6-touch",
+      "viewport": "1366x768",
+      "stage": "submit-answer-2",
+      "action": "touchscreen.tap",
+      "target": ".app-linear-view .control-submit-btn",
+      "intendedTargetReceivedClick": true
+    },
+    {
+      "journey": "bundle-2-linear-medium-reduced-6-touch",
+      "viewport": "1366x768",
+      "stage": "enter-answer-3-input-focus-before-automated-entry",
+      "action": "touchscreen.tap",
+      "target": "enter-answer-3-input-focus-before-automated-entry",
+      "intendedTargetReceivedClick": true
+    },
+    {
+      "journey": "bundle-2-linear-medium-reduced-6-touch",
+      "viewport": "1366x768",
+      "stage": "submit-answer-3",
+      "action": "touchscreen.tap",
+      "target": ".app-linear-view .control-submit-btn",
+      "intendedTargetReceivedClick": true
+    },
+    {
+      "journey": "bundle-2-linear-medium-reduced-6-touch",
+      "viewport": "1366x768",
+      "stage": "open-reflection",
+      "action": "touchscreen.tap",
+      "target": ".app-linear-view .control-btn",
+      "intendedTargetReceivedClick": true
+    },
+    {
+      "journey": "bundle-2-linear-medium-reduced-6-touch",
+      "viewport": "1366x768",
+      "stage": "answer-final-reflection",
+      "action": "touchscreen.tap",
+      "target": ".app-linear-view .control-choice-btn >> nth=0",
+      "intendedTargetReceivedClick": true
+    },
+    {
+      "journey": "bundle-2-linear-medium-reduced-6-touch",
       "condition": "phase2-bundle-2",
       "view": "linear",
       "support": "medium-support",
@@ -1615,6 +2304,14 @@
         "You finished this problem."
       ],
       "bodyText": "Show the picture\nNext problem\nBack to start\n8\n12\n+\n3\n12\nYou finished this problem.\nShow previous steps (6 completed)\nResult: 11/12\nNeed help?\nReplay the last change\nTry this problem again\n\nYou finished this problem."
+    },
+    {
+      "journey": "bundle-2-linear-medium-reduced-6-touch",
+      "viewport": "1366x768",
+      "stage": "next-to-second-item",
+      "action": "touchscreen.tap",
+      "target": ".app-next-button",
+      "intendedTargetReceivedClick": true
     },
     {
       "journey": "bundle-2-linear-medium-reduced-6-touch",
@@ -1693,6 +2390,367 @@
         "Look at these two fractions."
       ],
       "bodyText": "Show the picture\nBack to start\n1\n2\n+\n1\n3\nLook at these two fractions.\nNext\nNeed help?\nReplay the last change\nTry this problem again"
+    },
+    {
+      "journey": "bundle-2-linear-medium-reduced-6-touch",
+      "viewport": "1366x768",
+      "stage": "second-item-dirty-retry-acknowledge-encounter",
+      "action": "touchscreen.tap",
+      "target": ".app-linear-view .control-btn",
+      "intendedTargetReceivedClick": true
+    },
+    {
+      "journey": "bundle-2-linear-medium-reduced-6-touch",
+      "viewport": "1366x768",
+      "stage": "second-item-dirty-retry-wrong-notice-response",
+      "action": "touchscreen.tap",
+      "target": ".app-linear-view .control-choice-btn >> nth=0",
+      "intendedTargetReceivedClick": true
+    },
+    {
+      "journey": "bundle-2-linear-medium-reduced-6-touch",
+      "viewport": "1366x768",
+      "stage": "second-item-dirty-retry-notice-recovery",
+      "action": "touchscreen.tap",
+      "target": ".app-linear-view .control-choice-btn >> nth=1",
+      "intendedTargetReceivedClick": true
+    },
+    {
+      "journey": "bundle-2-linear-medium-reduced-6-touch",
+      "viewport": "1366x768",
+      "stage": "second-item-dirty-retry-enter-common-denominator-input-focus-before-automated-entry",
+      "action": "touchscreen.tap",
+      "target": "second-item-dirty-retry-enter-common-denominator-input-focus-before-automated-entry",
+      "intendedTargetReceivedClick": true
+    },
+    {
+      "journey": "bundle-2-linear-medium-reduced-6-touch",
+      "viewport": "1366x768",
+      "stage": "second-item-dirty-retry-submit-common-denominator",
+      "action": "touchscreen.tap",
+      "target": ".app-linear-view .control-submit-btn",
+      "intendedTargetReceivedClick": true
+    },
+    {
+      "journey": "bundle-2-linear-medium-reduced-6-touch",
+      "viewport": "1366x768",
+      "stage": "second-item-dirty-retry-open-left-task-help",
+      "action": "touchscreen.tap",
+      "target": ".app-linear-view .active-beat-controls .app-secondary-button",
+      "intendedTargetReceivedClick": true
+    },
+    {
+      "journey": "bundle-2-linear-medium-reduced-6-touch",
+      "viewport": "1366x768",
+      "stage": "second-item-dirty-retry-left-task-help-multiplier-input-focus-before-automated-entry",
+      "action": "touchscreen.tap",
+      "target": "second-item-dirty-retry-left-task-help-multiplier-input-focus-before-automated-entry",
+      "intendedTargetReceivedClick": true
+    },
+    {
+      "journey": "bundle-2-linear-medium-reduced-6-touch",
+      "viewport": "1366x768",
+      "stage": "second-item-dirty-retry-accept-left-task-help",
+      "action": "touchscreen.tap",
+      "target": ".app-linear-view .control-submit-btn",
+      "intendedTargetReceivedClick": true
+    },
+    {
+      "journey": "bundle-2-linear-medium-reduced-6-touch",
+      "viewport": "1366x768",
+      "stage": "second-item-dirty-retry-incorrect-numerator-input-focus-before-automated-entry",
+      "action": "touchscreen.tap",
+      "target": "second-item-dirty-retry-incorrect-numerator-input-focus-before-automated-entry",
+      "intendedTargetReceivedClick": true
+    },
+    {
+      "journey": "bundle-2-linear-medium-reduced-6-touch",
+      "viewport": "1366x768",
+      "stage": "second-item-dirty-retry-submit-incorrect-numerator",
+      "action": "touchscreen.tap",
+      "target": ".app-linear-view .control-submit-btn",
+      "intendedTargetReceivedClick": true
+    },
+    {
+      "journey": "bundle-2-linear-medium-reduced-6-touch",
+      "viewport": "1366x768",
+      "stage": "second-item-dirty-retry-accepted-numerator-input-focus-before-automated-entry",
+      "action": "touchscreen.tap",
+      "target": "second-item-dirty-retry-accepted-numerator-input-focus-before-automated-entry",
+      "intendedTargetReceivedClick": true
+    },
+    {
+      "journey": "bundle-2-linear-medium-reduced-6-touch",
+      "viewport": "1366x768",
+      "stage": "second-item-dirty-retry-submit-accepted-numerator",
+      "action": "touchscreen.tap",
+      "target": ".app-linear-view .control-submit-btn",
+      "intendedTargetReceivedClick": true
+    },
+    {
+      "journey": "bundle-2-linear-medium-reduced-6-touch",
+      "viewport": "1366x768",
+      "stage": "second-item-dirty-retry-open-task-help",
+      "action": "touchscreen.tap",
+      "target": ".app-linear-view .active-beat-controls .app-secondary-button",
+      "intendedTargetReceivedClick": true
+    },
+    {
+      "journey": "bundle-2-linear-medium-reduced-6-touch",
+      "viewport": "1366x768",
+      "stage": "second-item-dirty-retry-task-help-draft-input-focus-before-automated-entry",
+      "action": "touchscreen.tap",
+      "target": "second-item-dirty-retry-task-help-draft-input-focus-before-automated-entry",
+      "intendedTargetReceivedClick": true
+    },
+    {
+      "journey": "bundle-2-linear-medium-reduced-6-touch",
+      "viewport": "1366x768",
+      "stage": "second-item-dirty-retry-activate-replay",
+      "action": "touchscreen.tap",
+      "target": "second-item-dirty-retry-activate-replay",
+      "intendedTargetReceivedClick": true
+    },
+    {
+      "journey": "bundle-2-linear-medium-reduced-6-touch",
+      "condition": "phase2-bundle-2",
+      "view": "linear",
+      "support": "medium-support",
+      "motion": "reduced",
+      "denominator": "6",
+      "touchContext": true,
+      "viewport": {
+        "width": 1366,
+        "height": 768,
+        "devicePixelRatio": 1
+      },
+      "stage": "second-item-dirty-retry-before-retry-replay-active",
+      "screenshot": "bundle-2-linear-medium-reduced-6-touch-1366x768-second-item-dirty-retry.png",
+      "document": {
+        "width": 1366,
+        "height": 844,
+        "scrollY": 0,
+        "verticalScrollRange": 76
+      },
+      "question": {
+        "x": 337,
+        "y": 399.53125,
+        "top": 399.53125,
+        "bottom": 424.71875,
+        "width": 692,
+        "height": 25.1875,
+        "visibleTop": 399.53125,
+        "visibleBottom": 424.71875
+      },
+      "controls": {
+        "x": 337,
+        "y": 399.53125,
+        "top": 399.53125,
+        "bottom": 570.109375,
+        "width": 692,
+        "height": 170.578125,
+        "visibleTop": 399.53125,
+        "visibleBottom": 570.109375
+      },
+      "viewToggle": {
+        "x": 1023.09375,
+        "y": 73.96875,
+        "top": 73.96875,
+        "bottom": 117.96875,
+        "width": 170.90625,
+        "height": 44,
+        "visibleTop": 73.96875,
+        "visibleBottom": 117.96875
+      },
+      "navNext": null,
+      "navNotice": null,
+      "fractionTrack": {
+        "x": 637.328125,
+        "y": 226.96875,
+        "top": 226.96875,
+        "bottom": 283.75,
+        "width": 91.328125,
+        "height": 56.78125,
+        "visibleTop": 226.96875,
+        "visibleBottom": 283.75
+      },
+      "activeElement": "fraction-control app-secondary-button",
+      "visibleHeadings": [],
+      "bodyText": "Show the picture\nBack to start\n3\n6\n+\n1\n3\nFirst fraction: started as 1 of 2 equal parts, now renamed to 3 of 6 equal parts in 1 whole. (replaying)\nWhat multiplier turns 3 parts into 6?\n\n3 × ? = 6\n\nSubmit\nClose help\nShow previous steps (2 completed)\nCommon denominator: 6 — the smallest one.\nReplay the last change\nTry this problem again\n\nTake another look at the current bars and symbols."
+    },
+    {
+      "journey": "bundle-2-linear-medium-reduced-6-touch",
+      "viewport": "1366x768",
+      "stage": "second-item-dirty-retry-retry",
+      "action": "touchscreen.tap",
+      "target": ".app-restart-button",
+      "intendedTargetReceivedClick": true
+    },
+    {
+      "journey": "bundle-2-linear-medium-reduced-6-touch",
+      "viewport": "1366x768",
+      "stage": "first-tab-after-retry",
+      "activeElement": {
+        "tag": "BUTTON",
+        "className": "fraction-control app-secondary-button app-view-toggle"
+      }
+    },
+    {
+      "journey": "bundle-2-linear-medium-reduced-6-touch",
+      "condition": "phase2-bundle-2",
+      "view": "linear",
+      "support": "medium-support",
+      "motion": "reduced",
+      "denominator": "6",
+      "touchContext": true,
+      "viewport": {
+        "width": 1366,
+        "height": 768,
+        "devicePixelRatio": 1
+      },
+      "stage": "second-item-clean-after-dirty-retry",
+      "screenshot": "bundle-2-linear-medium-reduced-6-touch-1366x768-second-item-after-retry.png",
+      "document": {
+        "width": 1366,
+        "height": 768,
+        "scrollY": 0,
+        "verticalScrollRange": 0
+      },
+      "question": {
+        "x": 337,
+        "y": 360.75,
+        "top": 360.75,
+        "bottom": 385.9375,
+        "width": 692,
+        "height": 25.1875,
+        "visibleTop": 360.75,
+        "visibleBottom": 385.9375
+      },
+      "controls": {
+        "x": 337,
+        "y": 419.9375,
+        "top": 419.9375,
+        "bottom": 463.9375,
+        "width": 692,
+        "height": 44,
+        "visibleTop": 419.9375,
+        "visibleBottom": 463.9375
+      },
+      "viewToggle": {
+        "x": 1023.09375,
+        "y": 73.96875,
+        "top": 73.96875,
+        "bottom": 117.96875,
+        "width": 170.90625,
+        "height": 44,
+        "visibleTop": 73.96875,
+        "visibleBottom": 117.96875
+      },
+      "navNext": null,
+      "navNotice": null,
+      "fractionTrack": {
+        "x": 637.328125,
+        "y": 226.96875,
+        "top": 226.96875,
+        "bottom": 283.75,
+        "width": 91.328125,
+        "height": 56.78125,
+        "visibleTop": 226.96875,
+        "visibleBottom": 283.75
+      },
+      "activeElement": "fraction-control app-secondary-button app-view-toggle",
+      "visibleHeadings": [
+        "Look at these two fractions."
+      ],
+      "bodyText": "Show the picture\nBack to start\n1\n2\n+\n1\n3\nLook at these two fractions.\nNext\nNeed help?\nReplay the last change\nTry this problem again"
+    },
+    {
+      "journey": "bundle-2-linear-medium-reduced-6-touch",
+      "viewport": "1366x768",
+      "stage": "acknowledge-encounter",
+      "action": "touchscreen.tap",
+      "target": ".app-linear-view .control-btn",
+      "intendedTargetReceivedClick": true
+    },
+    {
+      "journey": "bundle-2-linear-medium-reduced-6-touch",
+      "viewport": "1366x768",
+      "stage": "answer-initial-question",
+      "action": "touchscreen.tap",
+      "target": ".app-linear-view .control-choice-btn >> nth=1",
+      "intendedTargetReceivedClick": true
+    },
+    {
+      "journey": "bundle-2-linear-medium-reduced-6-touch",
+      "viewport": "1366x768",
+      "stage": "enter-common-denominator-input-focus-before-automated-entry",
+      "action": "touchscreen.tap",
+      "target": "enter-common-denominator-input-focus-before-automated-entry",
+      "intendedTargetReceivedClick": true
+    },
+    {
+      "journey": "bundle-2-linear-medium-reduced-6-touch",
+      "viewport": "1366x768",
+      "stage": "submit-common-denominator",
+      "action": "touchscreen.tap",
+      "target": ".app-linear-view .control-submit-btn",
+      "intendedTargetReceivedClick": true
+    },
+    {
+      "journey": "bundle-2-linear-medium-reduced-6-touch",
+      "viewport": "1366x768",
+      "stage": "enter-answer-1-input-focus-before-automated-entry",
+      "action": "touchscreen.tap",
+      "target": "enter-answer-1-input-focus-before-automated-entry",
+      "intendedTargetReceivedClick": true
+    },
+    {
+      "journey": "bundle-2-linear-medium-reduced-6-touch",
+      "viewport": "1366x768",
+      "stage": "submit-answer-1",
+      "action": "touchscreen.tap",
+      "target": ".app-linear-view .control-submit-btn",
+      "intendedTargetReceivedClick": true
+    },
+    {
+      "journey": "bundle-2-linear-medium-reduced-6-touch",
+      "viewport": "1366x768",
+      "stage": "enter-answer-2-input-focus-before-automated-entry",
+      "action": "touchscreen.tap",
+      "target": "enter-answer-2-input-focus-before-automated-entry",
+      "intendedTargetReceivedClick": true
+    },
+    {
+      "journey": "bundle-2-linear-medium-reduced-6-touch",
+      "viewport": "1366x768",
+      "stage": "submit-answer-2",
+      "action": "touchscreen.tap",
+      "target": ".app-linear-view .control-submit-btn",
+      "intendedTargetReceivedClick": true
+    },
+    {
+      "journey": "bundle-2-linear-medium-reduced-6-touch",
+      "viewport": "1366x768",
+      "stage": "enter-answer-3-input-focus-before-automated-entry",
+      "action": "touchscreen.tap",
+      "target": "enter-answer-3-input-focus-before-automated-entry",
+      "intendedTargetReceivedClick": true
+    },
+    {
+      "journey": "bundle-2-linear-medium-reduced-6-touch",
+      "viewport": "1366x768",
+      "stage": "submit-answer-3",
+      "action": "touchscreen.tap",
+      "target": ".app-linear-view .control-submit-btn",
+      "intendedTargetReceivedClick": true
+    },
+    {
+      "journey": "bundle-2-linear-medium-reduced-6-touch",
+      "viewport": "1366x768",
+      "stage": "open-reflection",
+      "action": "touchscreen.tap",
+      "target": ".app-linear-view .control-btn",
+      "intendedTargetReceivedClick": true
     },
     {
       "journey": "bundle-2-linear-medium-reduced-6-touch",
@@ -1834,6 +2892,14 @@
     },
     {
       "journey": "bundle-2-linear-medium-reduced-6-touch",
+      "viewport": "1366x768",
+      "stage": "answer-final-reflection",
+      "action": "touchscreen.tap",
+      "target": ".app-linear-view .control-choice-btn >> nth=1",
+      "intendedTargetReceivedClick": true
+    },
+    {
+      "journey": "bundle-2-linear-medium-reduced-6-touch",
       "condition": "phase2-bundle-2",
       "view": "linear",
       "support": "medium-support",
@@ -1900,6 +2966,30 @@
         "You finished this problem."
       ],
       "bodyText": "Show the picture\n\nYou’ve tried both problems.\n\nBack to start\n3\n6\n+\n2\n6\nYou finished this problem.\nShow previous steps (6 completed)\nResult: 5/6\nNeed help?\nReplay the last change\nTry this problem again"
+    },
+    {
+      "journey": "bundle-2-linear-medium-reduced-6-touch",
+      "viewport": "1366x768",
+      "stage": "view-toggle-at-exhaustion",
+      "action": "touchscreen.tap",
+      "target": ".app-view-toggle",
+      "intendedTargetReceivedClick": true
+    },
+    {
+      "journey": "bundle-2-linear-medium-reduced-6-touch",
+      "viewport": "1366x768",
+      "stage": "return-to-entry",
+      "action": "touchscreen.tap",
+      "target": ".app-return-button",
+      "intendedTargetReceivedClick": true
+    },
+    {
+      "journey": "bundle-2-linear-medium-reduced-6-touch",
+      "viewport": "1366x768",
+      "stage": "re-enter-practice",
+      "action": "touchscreen.tap",
+      "target": ".app-practice-button",
+      "intendedTargetReceivedClick": true
     },
     {
       "journey": "bundle-3-visual-medium-standard-6",

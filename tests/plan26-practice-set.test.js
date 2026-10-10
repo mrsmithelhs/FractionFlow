@@ -233,11 +233,18 @@ describe('Plan 26 vetted addition practice set', () => {
     expect(app.getState().content.provenance.fixtureId)
       .toBe('curated-relatively-prime-addition-non-least');
 
+    const firstState = app.getState();
     finishCurrentEpisode(app, 12);
     expect(root.querySelector('.app-next-button').hasAttribute('hidden')).toBe(false);
     root.querySelector('.app-next-button').click();
 
     const secondState = app.getState();
+    expect(secondState).toEqual(createEpisode({
+      instance: secondInstance(),
+      episodeDefinition: firstState.episodeDefinition,
+      activeCondition: firstState.activeCondition,
+      support: firstState.support,
+    }));
     expect(secondState.status).toBe('active');
     expect(secondState.revision).toBe(0);
     expect(secondState.content.provenance.fixtureId)
@@ -290,6 +297,21 @@ describe('Plan 26 vetted addition practice set', () => {
     root.querySelector('.app-return-button').click();
     expect(document.activeElement).toBe(root.querySelector('.app-entry-title'));
     root.querySelector('.app-practice-button').click();
+    expect(app.getState()).toEqual(createEpisode({
+      instance: firstState.content,
+      episodeDefinition: firstState.episodeDefinition,
+      activeCondition: firstState.activeCondition,
+      support: firstState.support,
+    }));
+    expect(app.getState().content.operands).toEqual(firstState.content.operands);
+    expect(root.querySelector('.app-episode').textContent).toContain('Look at these two fractions.');
+    expect(root.querySelectorAll('input.control-numeric-input')).toHaveLength(0);
+    expect(root.querySelectorAll('.recovery-feedback')).toHaveLength(0);
+    expect(root.querySelector('#linear-transform-help-multiplier-right')).toBeNull();
+    expect([...root.querySelectorAll('.app-secondary-button')]
+      .find((button) => button.textContent === 'Replay the last change')
+      .getAttribute('aria-pressed')).toBe('false');
+    expect(document.activeElement).toBe(root.querySelector('.app-episode'));
     expect(app.getState().content.provenance.fixtureId)
       .toBe('curated-relatively-prime-addition-non-least');
     expect(app.getState().revision).toBe(0);
