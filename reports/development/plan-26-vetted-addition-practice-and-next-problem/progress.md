@@ -202,10 +202,12 @@ The new reproducible Edge script is
 across the four registered conditions and collectively covers both views,
 support profiles, standard/reduced motion, second-item denominators 6 and 12,
 and both premise outcomes. It includes a keyboard journey that tabs from the
-view control to Next before activating it with Enter, a
-touch-enabled context using actual non-drag `touchscreen.tap` for Next, Retry,
-return/re-entry, exhaustion and both corrupt-data refusal cases. Browser text
-entry is automated.
+view control to Next before activating it with Enter. The touch-enabled context
+uses an actual non-drag `touchscreen.tap` for Next; its lesson controls and
+return/re-entry use mouse clicks. Retry is exercised in the separate keyboard
+configuration, and refusal uses desktop mouse contexts. Browser text entry is
+automated. Root corrected this gesture description during Repair 01 re-review;
+a sequential touch journey remains part of the requested Repair 02 evidence.
 
 The runner writes only selected journey metadata and names filtered outputs
 separately. A refusal-only capture wrote its own file while the canonical
