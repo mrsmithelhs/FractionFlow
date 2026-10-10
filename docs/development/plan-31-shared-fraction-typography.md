@@ -47,7 +47,7 @@ motion geometry and the two-item content baseline; Plan 30 is independent.
 Read `AGENTS.md`, `docs/decision-log.md`, `docs/development/README.md`, the
 typography follow-up, and Plan 11/26 technical dispositions. Inspect
 `src/render/symbolic.js`, `src/render/fraction-bar.js`, `src/render/linear-path.js`,
-choice rendering hooks, `src/styles/render.css` and relevant structured scene
+choice rendering hooks, `src/app/styles.css` and relevant structured scene
 forms/tests. Own only the necessary renderer/style and focused verification files
 identified at the mechanism gate, plus this packet's evidence/report folder.
 Preserve exact math → instructional state → presentation, raw learner-visible
