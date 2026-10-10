@@ -1,11 +1,9 @@
 ---
 id: plan-30
 title: Compact Content Authoring Investigation
-status: draft
+status: in-progress
 depends_on: [plan-21, plan-26]
 gate: "Investigation only; owner/orchestrator acceptance of the proposed authoring and validation mechanism before production adoption."
-superseded_by: null
-resolution: null
 summary: >-
   Measure per-item authoring after the accepted Next lifecycle, compare compact
   explicit data with deterministic reviewed recipes, and demonstrate a bounded
@@ -51,6 +49,10 @@ Inspect the existing exact math core, content builder/generator, eligibility,
 authored-task-data validator, registered definitions, replay and practice-set
 composition. Use current exports and deterministic constraints; do not make
 rendering responsible for truth or reinterpret a historical identity.
+Read `reports/orchestration/maintainability-architecture-review-disposition.md`
+for accepted investigation leads: duplicated authoring-revision maps, distributed
+admission discovery and closure/renderer contract drift. Verify current facts;
+these are inputs to the comparison, not authorization to repair production code.
 
 ## Scope and work plan
 

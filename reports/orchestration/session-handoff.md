@@ -7,8 +7,17 @@ Orchestrator-owned; update in place before thread boundaries. Anchor dates, neve
 
 This snapshot supersedes older status/next-action passages below, which retain
 dated history. Use `docs/development/README.md` for the authoritative board.
-Plans 01–16, 21, 22, 24, 25 and 26 are complete; Plans 17–20, 23, 29, 30 and 31
-are drafts. The owner initiated Plan 26 at `9b25ddd` and accepted its output on
+Plans 01–16, 21, 22, 24, 25 and 26 are complete; Plans 17–20, 23, 29 and 31
+are drafts. Owner initiated Plan 30 on 2026-10-10; it is in-progress. See
+`plan-30-codex-implementer-handoff.md` for the report-only investigation and chat
+supervision brief. The owner will start the implementer; no FF Impl 30 thread
+has yet been resolved or messaged. Standing owner authorization permits Plan 30
+supervision once the intended thread exists; resolve it by exact title/identity.
+The non-Vue maintenance directions and revisit triggers are now explicit rows
+in the Phase 3 follow-up register, informed by the maintainability review disposition.
+They do not expand Plan 30's write scope or initiate other source work.
+
+The owner initiated Plan 26 at `9b25ddd` and accepted its output on
 2026-10-10. See its `owner-disposition.md`; OQ-23 is closed for the initial
 two-item authored-set contract. No push or deployment was authorized.
 Its execution mechanism was approved 2026-10-10; implementation/report arrived
@@ -27,7 +36,7 @@ suggestion is a separate presentation follow-up; no Plan 26 renderer expansion
 was authorized. FF Impl 26's assignment is closed; no next source writer is assigned.
 Source work remains serialized.
 
-Recommended next: draft Plan 30 investigates compact same-task authoring and
+Active next investigation: Plan 30 investigates compact same-task authoring and
 deterministic batch validation at the accepted-Next checkpoint; no production
 schema/refactor or extra live items. Then Plan 19's mechanism gate extends the
 existing goal to shared-factor addition. Its brief now explicitly covers resolved
