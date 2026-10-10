@@ -7,17 +7,20 @@ Orchestrator-owned; update in place before thread boundaries. Anchor dates, neve
 
 This snapshot supersedes older status/next-action passages below, which retain
 dated history. Use `docs/development/README.md` for the authoritative board.
-Plans 01–16, 21, 22, 24 and 25 are complete; Plans 17–20, 23, 26 and 29 are drafts.
-No source packet is initiated by the latest planning work.
+Plans 01–16, 21, 22, 24 and 25 are complete; Plans 17–20, 23 and 29 are drafts.
+The owner initiated Plan 26 at `9b25ddd`; it is in-progress. Its execution mechanism
+was approved 2026-10-10 with bounded revision-aware authored data, transactional
+admission, focus/reset and evidence requirements. See its `mechanism-review.md`.
+FF Impl 26 is the authorized source writer; source work remains serialized.
 
 Plan 25 is technically and owner accepted after the open-help focus repair:
 see its `delivery-review.md`; closure commit `82f4f75`. Plan 21's investigation
 and inline corrections were technically accepted at `8074ce8`; the owner then
 accepted the recommended bounded contract, recorded as DECISION-041. Plan 26
-is the new source handoff: canonical `2/3 + 1/4`, then authored/admitted
+is the source increment: canonical `2/3 + 1/4`, then authored/admitted
 `1/2 + 1/3`, completion-gated Next, explicit exhaustion, clean reset, retained
-settings/view and immutable replay identity. Requirement 0 still stops before
-source approval. Plans 18/19 depend on it for learner reach within the existing
+settings/view and immutable replay identity. Requirement 0 is approved within
+the recorded bounds; delivery/owner acceptance remain. Plans 18/19 depend on it for learner reach within the existing
 goal. OQ-23 remains open until reachable Next is delivered and accepted.
 
 Owner requested research into varied learner tasks with mathematical continuity.
@@ -35,9 +38,10 @@ adaptive/session policy, learner study or efficacy claim is approved. This does
 not expand or delay Plan 26. Larger-denominator and fuller denominator-discovery
 investigations remain separate obligations; Plan 24/25's bounded help is accepted.
 
-Source work remains one writer at a time. The owner authorized bidirectional
-communication with FF Impl 21 and FF Impl 25; both have stopped their scoped work.
-No new implementer thread, push or deployment is authorized by this snapshot.
+Source work remains one writer at a time. The actual owner message in FF Impl 26
+authorizes bidirectional proposals/results, corrections and clarifications with
+FF Orch 12+. FF Impl 21 and FF Impl 25 have stopped their scoped work. No other
+source writer, push or deployment is authorized by the Plan 26 mechanism approval.
 
 First revision 2026-09-18. Rewritten 2026-09-19 when the specification phase closed. **Rewritten again
 2026-09-29** at an orchestrator change: the prior revision stopped at `plan-09` Repair 01 on
