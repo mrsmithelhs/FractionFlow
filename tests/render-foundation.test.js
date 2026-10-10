@@ -136,15 +136,20 @@ describe('Renderer Foundation & Shared Boundary (Plan 07)', () => {
     const assertFutureFractionAbsent = (targetRoot, numerator, denominator) => {
       const activeBeat = targetRoot.querySelector('.active-beat-section');
       expect(activeBeat, 'future-answer inspection target must exist').not.toBeNull();
-      const structuredLeak = [...targetRoot.querySelectorAll('.symbolic-fraction')].some((fractionEl) => (
-        fractionEl.querySelector('.symbolic-numerator')?.textContent === numerator
+      const scanNodes = [];
+      const collectTree = (element) => {
+        scanNodes.push(element);
+        for (const child of element.children || []) collectTree(child);
+      };
+      collectTree(targetRoot);
+      const structuredLeak = scanNodes.some((fractionEl) => (
+        fractionEl.classList?.contains('symbolic-fraction')
+        && fractionEl.querySelector('.symbolic-numerator')?.textContent === numerator
         && fractionEl.querySelector('.symbolic-denominator')?.textContent === denominator
       ));
-      const scanNodes = [activeBeat, ...activeBeat.querySelectorAll('*')];
       const fractionPattern = new RegExp(`\\b${numerator}\\s*(?:/|over)\\s*${denominator}\\b`, 'i');
       const rawLeak = scanNodes.some((element) => fractionPattern.test(element.textContent || ''));
-      const accessibleNodes = scanNodes;
-      const accessibleLeak = accessibleNodes
+      const accessibleLeak = scanNodes
         .filter((element) => ['aria-label', 'aria-description', 'title']
           .some((name) => element.getAttribute(name) !== null))
         .some((element) => ['aria-label', 'aria-description', 'title'].some((name) => (
@@ -230,10 +235,22 @@ describe('Renderer Foundation & Shared Boundary (Plan 07)', () => {
     expect(() => assertFutureFractionAbsent(container, '11', '12')).toThrow(/Future fraction/);
     activePrompt.removeChild(seededLeak);
 
+    const completedBeatsSection = container.querySelector('.completed-beats-section');
+    expect(completedBeatsSection, 'completed sibling region must exist').not.toBeNull();
+    const siblingTextLeak = document.createElement('span');
+    siblingTextLeak.textContent = 'Final answer 11/12';
+    completedBeatsSection.appendChild(siblingTextLeak);
+    expect(() => assertFutureFractionAbsent(container, '11', '12')).toThrow(/Future fraction/);
+    completedBeatsSection.removeChild(siblingTextLeak);
+
     const activeBeat = container.querySelector('.active-beat-section');
     activeBeat.setAttribute('aria-label', 'Final answer 11 over 12');
     expect(() => assertFutureFractionAbsent(container, '11', '12')).toThrow(/Future fraction/);
     activeBeat.removeAttribute('aria-label');
+
+    completedBeatsSection.setAttribute('aria-label', 'Completed final answer 11 over 12');
+    expect(() => assertFutureFractionAbsent(container, '11', '12')).toThrow(/Future fraction/);
+    completedBeatsSection.removeAttribute('aria-label');
 
     // 6. Advance to Resolve beat
     episode = applyIntent(episode, {

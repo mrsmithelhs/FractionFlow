@@ -14,6 +14,7 @@ const baseUrl = `http://127.0.0.1:${server.address().port}/FractionFlow/`;
 const options = { headless: true, channel: 'msedge' };
 const browser = await chromium.launch(options);
 const captures = [];
+const sequenceWitnesses = [];
 const viewports = [
   { id: '360x740', width: 360, height: 740, zoomEquivalent: false },
   { id: '360x752', width: 360, height: 752, zoomEquivalent: false },
@@ -49,6 +50,85 @@ async function completeToReflection(page, denominator) {
     .waitFor({ state: 'visible' });
 }
 
+async function readTrackForms(page) {
+  return page.locator('.app-visual-view .fraction-bar-container').evaluateAll((containers) => (
+    containers.map((container) => {
+      const track = container.querySelector('.fraction-bar-track');
+      return {
+        side: container.getAttribute('data-side'),
+        numerator: track?.getAttribute('data-numerator') || '',
+        denominator: track?.getAttribute('data-denominator') || '',
+      };
+    })
+  ));
+}
+
+async function reachSecondItemThroughNext(page, firstItemSourceForms) {
+  const precedingForms = await readTrackForms(page);
+  const expectedPreceding = [
+    { side: 'left', numerator: '8', denominator: '12' },
+    { side: 'right', numerator: '3', denominator: '12' },
+  ];
+  if (JSON.stringify(precedingForms) !== JSON.stringify(expectedPreceding)) {
+    throw new Error(`Unexpected preceding item before Next: ${JSON.stringify(precedingForms)}`);
+  }
+
+  const nextSelector = '.app-next-button:not([hidden])';
+  if (await page.locator(nextSelector).count() !== 0) {
+    throw new Error('Next appeared before the first item reflection was completed.');
+  }
+  await page.locator('.app-linear-view .linear-matching-choice-btn').first().click();
+  const next = page.locator(nextSelector);
+  await next.waitFor({ state: 'visible' });
+  await next.press('Enter');
+  await page.waitForFunction(() => {
+    const tracks = [...document.querySelectorAll('.app-visual-view .fraction-bar-container')];
+    const forms = tracks.map((container) => {
+      const track = container.querySelector('.fraction-bar-track');
+      return [track?.getAttribute('data-numerator'), track?.getAttribute('data-denominator')];
+    });
+    return forms.length === 2
+      && forms[0][0] === '1' && forms[0][1] === '2'
+      && forms[1][0] === '1' && forms[1][1] === '3';
+  });
+  const sourceForms = await readTrackForms(page);
+  const focusRestoredToEpisode = await page.evaluate(() => (
+    document.activeElement?.matches('main.app-episode') === true
+  ));
+  if (!focusRestoredToEpisode) {
+    throw new Error('Next did not restore focus to the new episode.');
+  }
+  return {
+    sequencePosition: 2,
+    reachedBy: 'mounted Next button activated with Enter after first reflection completion',
+    firstItemSourceForms,
+    precedingForms,
+    nextAbsentBeforeReflectionCompletion: true,
+    nextVisibleAfterReflectionCompletion: true,
+    focusRestoredToEpisode,
+    sourceForms,
+  };
+}
+
+async function enterSecondItemPath(page, denominator) {
+  await page.locator('.app-view-toggle').click();
+  await page.locator('.app-visual-view .control-btn').waitFor({ state: 'visible' });
+  await page.locator('.app-visual-view .control-btn').click();
+  await page.locator('.app-visual-view .control-choice-btn').nth(1).click();
+  await page.locator('.app-visual-view .control-choice-btn')
+    .filter({ hasText: String(denominator) }).first().click();
+  const forms = denominator === 6
+    ? { left: '3', right: '2', result: '5' }
+    : { left: '6', right: '4', result: '10' };
+  for (const [side, value] of [['left', forms.left], ['right', forms.right]]) {
+    await page.locator(`.app-visual-view #transform-num-input-${side}`).waitFor({ state: 'visible' });
+    await page.locator(`.app-visual-view #transform-num-input-${side}`).fill(value);
+    await page.locator('.app-visual-view .control-submit-btn').click();
+  }
+  await page.locator('.app-visual-view #operate-sum-input').waitFor({ state: 'visible' });
+  return forms;
+}
+
 async function submitLeftConversion(page, denominator) {
   const value = denominator === 12 ? '8' : '16';
   await page.locator('.app-visual-view #transform-num-input-left').fill(value);
@@ -56,7 +136,7 @@ async function submitLeftConversion(page, denominator) {
   await page.locator('.app-visual-view #transform-num-input-right').waitFor({ state: 'visible' });
 }
 
-async function inspectAndCapture(page, { scenario, denominator, viewport, stage, ordinary }) {
+async function inspectAndCapture(page, { scenario, denominator, viewport, stage, ordinary, item, interaction }) {
   const measurement = await page.evaluate(({ scenarioId, targetDenominator, viewportId, stageName, ordinaryPath, zoom }) => {
     const rect = (element) => {
       if (!element) return null;
@@ -65,6 +145,15 @@ async function inspectAndCapture(page, { scenario, denominator, viewport, stage,
         .map((key) => [key, Math.round(box[key] * 100) / 100]));
     };
     const readouts = [...document.querySelectorAll('.fraction-bar-readout')];
+    const trackForms = [...document.querySelectorAll('.app-visual-view .fraction-bar-container')]
+      .map((container) => {
+        const track = container.querySelector('.fraction-bar-track');
+        return {
+          side: container.getAttribute('data-side'),
+          numerator: track?.getAttribute('data-numerator') || '',
+          denominator: track?.getAttribute('data-denominator') || '',
+        };
+      });
     const fractions = readouts.map((readout, index) => {
       const notation = readout.querySelector('.symbolic-fraction-compact');
       const numerator = notation?.querySelector('.symbolic-numerator');
@@ -72,6 +161,7 @@ async function inspectAndCapture(page, { scenario, denominator, viewport, stage,
       const divider = notation?.querySelector('.symbolic-bar');
       return {
         index,
+        side: readout.closest('.fraction-bar-container')?.getAttribute('data-side') || '',
         numerator: numerator?.textContent || '',
         denominator: denominator?.textContent || '',
         lane: rect(readout),
@@ -117,6 +207,7 @@ async function inspectAndCapture(page, { scenario, denominator, viewport, stage,
         horizontalOverflow: documentWidth > innerWidth,
       },
       ordinaryReadoutConstructor: ordinaryPath,
+      trackForms,
       readouts: fractions,
       widerHostProbe: wideMeasurement,
       question: {
@@ -124,12 +215,20 @@ async function inspectAndCapture(page, { scenario, denominator, viewport, stage,
         ariaHiddenVisual: prompt?.getAttribute('aria-hidden') === 'true',
         textSerialization: prompt?.textContent || '',
         notation: rect(prompt?.querySelector('.symbolic-fraction-compact')),
+        form: prompt?.querySelector('.symbolic-fraction-compact') ? {
+          numerator: prompt.querySelector('.symbolic-numerator')?.textContent || '',
+          denominator: prompt.querySelector('.symbolic-denominator')?.textContent || '',
+        } : null,
         legend: fieldset?.querySelector('.control-legend')?.textContent || '',
       },
       choices: choices.map((button) => ({
         name: button.getAttribute('aria-label'),
         box: rect(button),
         notation: rect(button.querySelector('.symbolic-fraction-compact')),
+        form: button.querySelector('.symbolic-fraction-compact') ? {
+          numerator: button.querySelector('.symbolic-numerator')?.textContent || '',
+          denominator: button.querySelector('.symbolic-denominator')?.textContent || '',
+        } : null,
         notationHidden: button.querySelector('.symbolic-fraction-compact')
           ?.getAttribute('aria-hidden') === 'true',
       })),
@@ -142,6 +241,8 @@ async function inspectAndCapture(page, { scenario, denominator, viewport, stage,
     ordinaryPath: ordinary,
     zoom: viewport.zoomEquivalent,
   });
+  if (item) measurement.item = item;
+  if (interaction) measurement.interaction = interaction;
 
   const visibleReadouts = measurement.readouts.filter((entry) => entry.visible);
   if ((stage === 'bar-transform'
@@ -162,6 +263,34 @@ async function inspectAndCapture(page, { scenario, denominator, viewport, stage,
       || measurement.choices.some((choice) => !choice.name?.includes('over')
         || !choice.notationHidden))) {
     throw new Error(`Structured question/button name check failed: ${JSON.stringify(measurement)}`);
+  }
+  if (item && stage === 'bar-transform') {
+    const displayedReadouts = visibleReadouts.map(({ side, numerator, denominator }) => ({
+      side,
+      numerator,
+      denominator,
+    }));
+    if (JSON.stringify(measurement.trackForms) !== JSON.stringify(item.expectedEquivalentForms)
+      || JSON.stringify(displayedReadouts) !== JSON.stringify(item.expectedEquivalentForms)) {
+      throw new Error(`Second-item displayed/tracked forms differ from the accepted path: ${JSON.stringify(measurement)}`);
+    }
+  }
+  if (item && stage === 'linear-reflection') {
+    const source = item.sourceForms[0];
+    const expectedLegend = `Choose the fraction that shows the same amount as ${source.numerator} over ${source.denominator}.`;
+    const choiceNamesAgreeWithForms = measurement.choices.every((choice) => {
+      const match = /^Fraction (\d+) over (\d+) shows a shaded amount$/.exec(choice.name || '');
+      return match
+        && match[1] === choice.form?.numerator
+        && match[2] === choice.form?.denominator;
+    });
+    if (measurement.question.form?.numerator !== source.numerator
+      || measurement.question.form?.denominator !== source.denominator
+      || measurement.question.legend !== expectedLegend
+      || measurement.choices.some((choice) => choice.form?.denominator !== String(denominator))
+      || !choiceNamesAgreeWithForms) {
+      throw new Error(`Second-item matching forms/names do not match the source/path: ${JSON.stringify(measurement)}`);
+    }
   }
   if (stage === 'linear-reflection') {
     const groupCount = await page.getByRole('group', { name: measurement.question.legend, exact: true }).count();
@@ -225,6 +354,105 @@ try {
     }
   }
 
+  for (const denominator of [6, 12]) {
+    for (const viewport of [viewports[0], viewports[2]]) {
+      const context = await browser.newContext({
+        viewport: { width: viewport.width, height: viewport.height },
+        deviceScaleFactor: 1,
+        reducedMotion: 'reduce',
+      });
+      const page = await context.newPage();
+      await startTransform(page, { conditionId: 'phase2-bundle-1', denominator: 12 });
+      const firstItemSourceForms = await readTrackForms(page);
+      const expectedFirstItemSourceForms = [
+        { side: 'left', numerator: '2', denominator: '3' },
+        { side: 'right', numerator: '1', denominator: '4' },
+      ];
+      if (JSON.stringify(firstItemSourceForms) !== JSON.stringify(expectedFirstItemSourceForms)) {
+        throw new Error(`Unexpected first item source forms: ${JSON.stringify(firstItemSourceForms)}`);
+      }
+      await submitLeftConversion(page, 12);
+      await completeToReflection(page, 12);
+      const transition = await reachSecondItemThroughNext(page, firstItemSourceForms);
+      sequenceWitnesses.push({ viewport: viewport.id, ...transition });
+
+      const forms = await enterSecondItemPath(page, denominator);
+      const item = {
+        identity: 'Plan 26 accepted second item reached through completion-gated Next',
+        sequencePosition: transition.sequencePosition,
+        reachedBy: transition.reachedBy,
+        sourceForms: transition.sourceForms,
+        selectedCommonDenominator: String(denominator),
+        expectedEquivalentForms: [
+          { side: 'left', numerator: forms.left, denominator: String(denominator) },
+          { side: 'right', numerator: forms.right, denominator: String(denominator) },
+        ],
+      };
+      const scenario = `second-item-unit-${denominator}`;
+      await inspectAndCapture(page, {
+        scenario,
+        denominator,
+        viewport,
+        stage: 'bar-transform',
+        ordinary: false,
+        item,
+      });
+
+      await page.locator('.app-visual-view #operate-sum-input').fill(forms.result);
+      await page.locator('.app-visual-view .control-submit-btn').click();
+      await page.locator('.app-visual-view .control-btn').click();
+      await page.locator('.app-view-toggle').click();
+      await page.locator('.app-linear-view .linear-matching-choice-btn')
+        .first().waitFor({ state: 'visible' });
+      await inspectAndCapture(page, {
+        scenario,
+        denominator,
+        viewport,
+        stage: 'linear-reflection',
+        ordinary: false,
+        item,
+      });
+
+      if (denominator === 12 && viewport.id === '360x740') {
+        const keyboardChoice = page.locator('.app-linear-view .linear-matching-choice-btn').last();
+        const keyboardName = await keyboardChoice.getAttribute('aria-label');
+        const originalKeyboardButton = await keyboardChoice.elementHandle();
+        await originalKeyboardButton.focus();
+        await originalKeyboardButton.press('Enter');
+        await page.locator('.app-linear-view .recovery-feedback').waitFor({ state: 'visible' });
+        const originalNodeConnected = await originalKeyboardButton.evaluate((button) => button.isConnected);
+        const focusAfterResponse = await page.evaluate(() => {
+          const active = document.activeElement;
+          return {
+            tagName: active?.tagName || null,
+            className: typeof active?.className === 'string' ? active.className : '',
+            ariaLabel: active?.getAttribute?.('aria-label') || null,
+          };
+        });
+        const recoveryVisible = await page.locator('.app-linear-view .recovery-feedback').isVisible();
+        if (!recoveryVisible) {
+          throw new Error('Second-item keyboard choice did not show recovery feedback after Enter.');
+        }
+        await inspectAndCapture(page, {
+          scenario,
+          denominator,
+          viewport,
+          stage: 'linear-keyboard-feedback',
+          ordinary: false,
+          item,
+          interaction: {
+            method: 'Enter',
+            choiceName: keyboardName,
+            originalNodeConnected,
+            focusAfterResponse,
+            recoveryVisible,
+          },
+        });
+      }
+      await context.close();
+    }
+  }
+
   for (const viewport of [viewports[0], viewports[2]]) {
     const context = await browser.newContext({
       viewport: { width: viewport.width, height: viewport.height },
@@ -258,6 +486,7 @@ const evidence = {
     'Reduced motion is selected in the browser context; physical Chromebook, native browser zoom UI, and physical touch hardware were not tested.',
   ],
   captures,
+  sequenceWitnesses,
 };
 await fs.writeFile(path.join(evidenceDir, 'measurements.json'), `${JSON.stringify(evidence, null, 2)}\n`);
 console.log(JSON.stringify({ evidenceDir, captures: captures.length, screenshots: captures.map((item) => item.screenshot) }, null, 2));

@@ -26,9 +26,22 @@
         "horizontalOverflow": false
       },
       "ordinaryReadoutConstructor": false,
+      "trackForms": [
+        {
+          "side": "left",
+          "numerator": "8",
+          "denominator": "12"
+        },
+        {
+          "side": "right",
+          "numerator": "1",
+          "denominator": "4"
+        }
+      ],
       "readouts": [
         {
           "index": 0,
+          "side": "left",
           "numerator": "8",
           "denominator": "12",
           "lane": {
@@ -86,6 +99,7 @@
         },
         {
           "index": 1,
+          "side": "right",
           "numerator": "1",
           "denominator": "4",
           "lane": {
@@ -179,6 +193,7 @@
         "ariaHiddenVisual": false,
         "textSerialization": "How many parts out of 12 make the same amount as 1/4?",
         "notation": null,
+        "form": null,
         "legend": ""
       },
       "choices": [],
@@ -199,9 +214,22 @@
         "horizontalOverflow": false
       },
       "ordinaryReadoutConstructor": false,
+      "trackForms": [
+        {
+          "side": "left",
+          "numerator": "8",
+          "denominator": "12"
+        },
+        {
+          "side": "right",
+          "numerator": "3",
+          "denominator": "12"
+        }
+      ],
       "readouts": [
         {
           "index": 0,
+          "side": "left",
           "numerator": "8",
           "denominator": "12",
           "lane": {
@@ -259,6 +287,7 @@
         },
         {
           "index": 1,
+          "side": "right",
           "numerator": "3",
           "denominator": "12",
           "lane": {
@@ -361,6 +390,10 @@
           "top": 350.16,
           "bottom": 393.75
         },
+        "form": {
+          "numerator": "2",
+          "denominator": "3"
+        },
         "legend": "Choose the fraction that shows the same amount as 2 over 3."
       },
       "choices": [
@@ -386,6 +419,10 @@
             "top": 438.75,
             "bottom": 477.94
           },
+          "form": {
+            "numerator": "8",
+            "denominator": "12"
+          },
           "notationHidden": true
         },
         {
@@ -409,6 +446,10 @@
             "right": 183.16,
             "top": 438.75,
             "bottom": 477.94
+          },
+          "form": {
+            "numerator": "7",
+            "denominator": "12"
           },
           "notationHidden": true
         },
@@ -434,6 +475,10 @@
             "top": 438.75,
             "bottom": 477.94
           },
+          "form": {
+            "numerator": "9",
+            "denominator": "12"
+          },
           "notationHidden": true
         }
       ],
@@ -454,9 +499,22 @@
         "horizontalOverflow": false
       },
       "ordinaryReadoutConstructor": false,
+      "trackForms": [
+        {
+          "side": "left",
+          "numerator": "8",
+          "denominator": "12"
+        },
+        {
+          "side": "right",
+          "numerator": "3",
+          "denominator": "12"
+        }
+      ],
       "readouts": [
         {
           "index": 0,
+          "side": "left",
           "numerator": "8",
           "denominator": "12",
           "lane": {
@@ -514,6 +572,7 @@
         },
         {
           "index": 1,
+          "side": "right",
           "numerator": "3",
           "denominator": "12",
           "lane": {
@@ -616,6 +675,10 @@
           "top": 451.16,
           "bottom": 494.75
         },
+        "form": {
+          "numerator": "2",
+          "denominator": "3"
+        },
         "legend": "Choose the fraction that shows the same amount as 2 over 3."
       },
       "choices": [
@@ -641,6 +704,10 @@
             "top": 539.75,
             "bottom": 578.94
           },
+          "form": {
+            "numerator": "8",
+            "denominator": "12"
+          },
           "notationHidden": true
         },
         {
@@ -665,6 +732,10 @@
             "top": 539.75,
             "bottom": 578.94
           },
+          "form": {
+            "numerator": "7",
+            "denominator": "12"
+          },
           "notationHidden": true
         },
         {
@@ -688,6 +759,10 @@
             "right": 259.73,
             "top": 539.75,
             "bottom": 578.94
+          },
+          "form": {
+            "numerator": "9",
+            "denominator": "12"
           },
           "notationHidden": true
         }
@@ -709,9 +784,22 @@
         "horizontalOverflow": false
       },
       "ordinaryReadoutConstructor": false,
+      "trackForms": [
+        {
+          "side": "left",
+          "numerator": "8",
+          "denominator": "12"
+        },
+        {
+          "side": "right",
+          "numerator": "1",
+          "denominator": "4"
+        }
+      ],
       "readouts": [
         {
           "index": 0,
+          "side": "left",
           "numerator": "8",
           "denominator": "12",
           "lane": {
@@ -769,6 +857,7 @@
         },
         {
           "index": 1,
+          "side": "right",
           "numerator": "1",
           "denominator": "4",
           "lane": {
@@ -862,6 +951,7 @@
         "ariaHiddenVisual": false,
         "textSerialization": "How many parts out of 12 make the same amount as 1/4?",
         "notation": null,
+        "form": null,
         "legend": ""
       },
       "choices": [],
@@ -882,9 +972,22 @@
         "horizontalOverflow": false
       },
       "ordinaryReadoutConstructor": false,
+      "trackForms": [
+        {
+          "side": "left",
+          "numerator": "8",
+          "denominator": "12"
+        },
+        {
+          "side": "right",
+          "numerator": "3",
+          "denominator": "12"
+        }
+      ],
       "readouts": [
         {
           "index": 0,
+          "side": "left",
           "numerator": "8",
           "denominator": "12",
           "lane": {
@@ -942,6 +1045,7 @@
         },
         {
           "index": 1,
+          "side": "right",
           "numerator": "3",
           "denominator": "12",
           "lane": {
@@ -1044,6 +1148,10 @@
           "top": 350.16,
           "bottom": 393.75
         },
+        "form": {
+          "numerator": "2",
+          "denominator": "3"
+        },
         "legend": "Choose the fraction that shows the same amount as 2 over 3."
       },
       "choices": [
@@ -1069,6 +1177,10 @@
             "top": 438.75,
             "bottom": 477.94
           },
+          "form": {
+            "numerator": "8",
+            "denominator": "12"
+          },
           "notationHidden": true
         },
         {
@@ -1093,6 +1205,10 @@
             "top": 438.75,
             "bottom": 477.94
           },
+          "form": {
+            "numerator": "7",
+            "denominator": "12"
+          },
           "notationHidden": true
         },
         {
@@ -1116,6 +1232,10 @@
             "right": 259.73,
             "top": 438.75,
             "bottom": 477.94
+          },
+          "form": {
+            "numerator": "9",
+            "denominator": "12"
           },
           "notationHidden": true
         }
@@ -1137,9 +1257,22 @@
         "horizontalOverflow": false
       },
       "ordinaryReadoutConstructor": false,
+      "trackForms": [
+        {
+          "side": "left",
+          "numerator": "8",
+          "denominator": "12"
+        },
+        {
+          "side": "right",
+          "numerator": "1",
+          "denominator": "4"
+        }
+      ],
       "readouts": [
         {
           "index": 0,
+          "side": "left",
           "numerator": "8",
           "denominator": "12",
           "lane": {
@@ -1197,6 +1330,7 @@
         },
         {
           "index": 1,
+          "side": "right",
           "numerator": "1",
           "denominator": "4",
           "lane": {
@@ -1290,6 +1424,7 @@
         "ariaHiddenVisual": false,
         "textSerialization": "How many parts out of 12 make the same amount as 1/4?",
         "notation": null,
+        "form": null,
         "legend": ""
       },
       "choices": [],
@@ -1310,9 +1445,22 @@
         "horizontalOverflow": false
       },
       "ordinaryReadoutConstructor": false,
+      "trackForms": [
+        {
+          "side": "left",
+          "numerator": "8",
+          "denominator": "12"
+        },
+        {
+          "side": "right",
+          "numerator": "3",
+          "denominator": "12"
+        }
+      ],
       "readouts": [
         {
           "index": 0,
+          "side": "left",
           "numerator": "8",
           "denominator": "12",
           "lane": {
@@ -1370,6 +1518,7 @@
         },
         {
           "index": 1,
+          "side": "right",
           "numerator": "3",
           "denominator": "12",
           "lane": {
@@ -1472,6 +1621,10 @@
           "top": 360.75,
           "bottom": 404.34
         },
+        "form": {
+          "numerator": "2",
+          "denominator": "3"
+        },
         "legend": "Choose the fraction that shows the same amount as 2 over 3."
       },
       "choices": [
@@ -1497,6 +1650,10 @@
             "top": 449.34,
             "bottom": 488.53
           },
+          "form": {
+            "numerator": "8",
+            "denominator": "12"
+          },
           "notationHidden": true
         },
         {
@@ -1521,6 +1678,10 @@
             "top": 449.34,
             "bottom": 488.53
           },
+          "form": {
+            "numerator": "7",
+            "denominator": "12"
+          },
           "notationHidden": true
         },
         {
@@ -1544,6 +1705,10 @@
             "right": 533.73,
             "top": 449.34,
             "bottom": 488.53
+          },
+          "form": {
+            "numerator": "9",
+            "denominator": "12"
           },
           "notationHidden": true
         }
@@ -1565,9 +1730,22 @@
         "horizontalOverflow": false
       },
       "ordinaryReadoutConstructor": false,
+      "trackForms": [
+        {
+          "side": "left",
+          "numerator": "8",
+          "denominator": "12"
+        },
+        {
+          "side": "right",
+          "numerator": "1",
+          "denominator": "4"
+        }
+      ],
       "readouts": [
         {
           "index": 0,
+          "side": "left",
           "numerator": "8",
           "denominator": "12",
           "lane": {
@@ -1625,6 +1803,7 @@
         },
         {
           "index": 1,
+          "side": "right",
           "numerator": "1",
           "denominator": "4",
           "lane": {
@@ -1718,6 +1897,7 @@
         "ariaHiddenVisual": false,
         "textSerialization": "How many parts out of 12 make the same amount as 1/4?",
         "notation": null,
+        "form": null,
         "legend": ""
       },
       "choices": [],
@@ -1738,9 +1918,22 @@
         "horizontalOverflow": false
       },
       "ordinaryReadoutConstructor": false,
+      "trackForms": [
+        {
+          "side": "left",
+          "numerator": "8",
+          "denominator": "12"
+        },
+        {
+          "side": "right",
+          "numerator": "3",
+          "denominator": "12"
+        }
+      ],
       "readouts": [
         {
           "index": 0,
+          "side": "left",
           "numerator": "8",
           "denominator": "12",
           "lane": {
@@ -1798,6 +1991,7 @@
         },
         {
           "index": 1,
+          "side": "right",
           "numerator": "3",
           "denominator": "12",
           "lane": {
@@ -1900,6 +2094,10 @@
           "top": 541.28,
           "bottom": 584.88
         },
+        "form": {
+          "numerator": "2",
+          "denominator": "3"
+        },
         "legend": "Choose the fraction that shows the same amount as 2 over 3."
       },
       "choices": [
@@ -1925,6 +2123,10 @@
             "top": 629.88,
             "bottom": 669.06
           },
+          "form": {
+            "numerator": "8",
+            "denominator": "12"
+          },
           "notationHidden": true
         },
         {
@@ -1948,6 +2150,10 @@
             "right": 106.58,
             "top": 703.06,
             "bottom": 742.25
+          },
+          "form": {
+            "numerator": "7",
+            "denominator": "12"
           },
           "notationHidden": true
         },
@@ -1973,6 +2179,10 @@
             "top": 776.25,
             "bottom": 815.44
           },
+          "form": {
+            "numerator": "9",
+            "denominator": "12"
+          },
           "notationHidden": true
         }
       ],
@@ -1993,9 +2203,22 @@
         "horizontalOverflow": false
       },
       "ordinaryReadoutConstructor": false,
+      "trackForms": [
+        {
+          "side": "left",
+          "numerator": "16",
+          "denominator": "24"
+        },
+        {
+          "side": "right",
+          "numerator": "1",
+          "denominator": "4"
+        }
+      ],
       "readouts": [
         {
           "index": 0,
+          "side": "left",
           "numerator": "16",
           "denominator": "24",
           "lane": {
@@ -2053,6 +2276,7 @@
         },
         {
           "index": 1,
+          "side": "right",
           "numerator": "1",
           "denominator": "4",
           "lane": {
@@ -2146,6 +2370,7 @@
         "ariaHiddenVisual": false,
         "textSerialization": "How many parts out of 24 make the same amount as 1/4?",
         "notation": null,
+        "form": null,
         "legend": ""
       },
       "choices": [],
@@ -2166,9 +2391,22 @@
         "horizontalOverflow": false
       },
       "ordinaryReadoutConstructor": false,
+      "trackForms": [
+        {
+          "side": "left",
+          "numerator": "16",
+          "denominator": "24"
+        },
+        {
+          "side": "right",
+          "numerator": "6",
+          "denominator": "24"
+        }
+      ],
       "readouts": [
         {
           "index": 0,
+          "side": "left",
           "numerator": "16",
           "denominator": "24",
           "lane": {
@@ -2226,6 +2464,7 @@
         },
         {
           "index": 1,
+          "side": "right",
           "numerator": "6",
           "denominator": "24",
           "lane": {
@@ -2328,6 +2567,10 @@
           "top": 350.16,
           "bottom": 393.75
         },
+        "form": {
+          "numerator": "2",
+          "denominator": "3"
+        },
         "legend": "Choose the fraction that shows the same amount as 2 over 3."
       },
       "choices": [
@@ -2353,6 +2596,10 @@
             "top": 438.75,
             "bottom": 477.94
           },
+          "form": {
+            "numerator": "15",
+            "denominator": "24"
+          },
           "notationHidden": true
         },
         {
@@ -2377,6 +2624,10 @@
             "top": 438.75,
             "bottom": 477.94
           },
+          "form": {
+            "numerator": "16",
+            "denominator": "24"
+          },
           "notationHidden": true
         },
         {
@@ -2400,6 +2651,10 @@
             "right": 259.73,
             "top": 438.75,
             "bottom": 477.94
+          },
+          "form": {
+            "numerator": "17",
+            "denominator": "24"
           },
           "notationHidden": true
         }
@@ -2421,9 +2676,22 @@
         "horizontalOverflow": false
       },
       "ordinaryReadoutConstructor": false,
+      "trackForms": [
+        {
+          "side": "left",
+          "numerator": "16",
+          "denominator": "24"
+        },
+        {
+          "side": "right",
+          "numerator": "1",
+          "denominator": "4"
+        }
+      ],
       "readouts": [
         {
           "index": 0,
+          "side": "left",
           "numerator": "16",
           "denominator": "24",
           "lane": {
@@ -2481,6 +2749,7 @@
         },
         {
           "index": 1,
+          "side": "right",
           "numerator": "1",
           "denominator": "4",
           "lane": {
@@ -2574,6 +2843,7 @@
         "ariaHiddenVisual": false,
         "textSerialization": "How many parts out of 24 make the same amount as 1/4?",
         "notation": null,
+        "form": null,
         "legend": ""
       },
       "choices": [],
@@ -2594,9 +2864,22 @@
         "horizontalOverflow": false
       },
       "ordinaryReadoutConstructor": false,
+      "trackForms": [
+        {
+          "side": "left",
+          "numerator": "16",
+          "denominator": "24"
+        },
+        {
+          "side": "right",
+          "numerator": "6",
+          "denominator": "24"
+        }
+      ],
       "readouts": [
         {
           "index": 0,
+          "side": "left",
           "numerator": "16",
           "denominator": "24",
           "lane": {
@@ -2654,6 +2937,7 @@
         },
         {
           "index": 1,
+          "side": "right",
           "numerator": "6",
           "denominator": "24",
           "lane": {
@@ -2756,6 +3040,10 @@
           "top": 350.16,
           "bottom": 393.75
         },
+        "form": {
+          "numerator": "2",
+          "denominator": "3"
+        },
         "legend": "Choose the fraction that shows the same amount as 2 over 3."
       },
       "choices": [
@@ -2781,6 +3069,10 @@
             "top": 438.75,
             "bottom": 477.94
           },
+          "form": {
+            "numerator": "15",
+            "denominator": "24"
+          },
           "notationHidden": true
         },
         {
@@ -2804,6 +3096,10 @@
             "right": 183.16,
             "top": 438.75,
             "bottom": 477.94
+          },
+          "form": {
+            "numerator": "16",
+            "denominator": "24"
           },
           "notationHidden": true
         },
@@ -2829,6 +3125,10 @@
             "top": 438.75,
             "bottom": 477.94
           },
+          "form": {
+            "numerator": "17",
+            "denominator": "24"
+          },
           "notationHidden": true
         }
       ],
@@ -2849,9 +3149,22 @@
         "horizontalOverflow": false
       },
       "ordinaryReadoutConstructor": false,
+      "trackForms": [
+        {
+          "side": "left",
+          "numerator": "16",
+          "denominator": "24"
+        },
+        {
+          "side": "right",
+          "numerator": "1",
+          "denominator": "4"
+        }
+      ],
       "readouts": [
         {
           "index": 0,
+          "side": "left",
           "numerator": "16",
           "denominator": "24",
           "lane": {
@@ -2909,6 +3222,7 @@
         },
         {
           "index": 1,
+          "side": "right",
           "numerator": "1",
           "denominator": "4",
           "lane": {
@@ -3002,6 +3316,7 @@
         "ariaHiddenVisual": false,
         "textSerialization": "How many parts out of 24 make the same amount as 1/4?",
         "notation": null,
+        "form": null,
         "legend": ""
       },
       "choices": [],
@@ -3022,9 +3337,22 @@
         "horizontalOverflow": false
       },
       "ordinaryReadoutConstructor": false,
+      "trackForms": [
+        {
+          "side": "left",
+          "numerator": "16",
+          "denominator": "24"
+        },
+        {
+          "side": "right",
+          "numerator": "6",
+          "denominator": "24"
+        }
+      ],
       "readouts": [
         {
           "index": 0,
+          "side": "left",
           "numerator": "16",
           "denominator": "24",
           "lane": {
@@ -3082,6 +3410,7 @@
         },
         {
           "index": 1,
+          "side": "right",
           "numerator": "6",
           "denominator": "24",
           "lane": {
@@ -3184,6 +3513,10 @@
           "top": 360.75,
           "bottom": 404.34
         },
+        "form": {
+          "numerator": "2",
+          "denominator": "3"
+        },
         "legend": "Choose the fraction that shows the same amount as 2 over 3."
       },
       "choices": [
@@ -3209,6 +3542,10 @@
             "top": 449.34,
             "bottom": 488.53
           },
+          "form": {
+            "numerator": "15",
+            "denominator": "24"
+          },
           "notationHidden": true
         },
         {
@@ -3232,6 +3569,10 @@
             "right": 457.16,
             "top": 449.34,
             "bottom": 488.53
+          },
+          "form": {
+            "numerator": "16",
+            "denominator": "24"
           },
           "notationHidden": true
         },
@@ -3257,6 +3598,10 @@
             "top": 449.34,
             "bottom": 488.53
           },
+          "form": {
+            "numerator": "17",
+            "denominator": "24"
+          },
           "notationHidden": true
         }
       ],
@@ -3277,9 +3622,22 @@
         "horizontalOverflow": false
       },
       "ordinaryReadoutConstructor": false,
+      "trackForms": [
+        {
+          "side": "left",
+          "numerator": "16",
+          "denominator": "24"
+        },
+        {
+          "side": "right",
+          "numerator": "1",
+          "denominator": "4"
+        }
+      ],
       "readouts": [
         {
           "index": 0,
+          "side": "left",
           "numerator": "16",
           "denominator": "24",
           "lane": {
@@ -3337,6 +3695,7 @@
         },
         {
           "index": 1,
+          "side": "right",
           "numerator": "1",
           "denominator": "4",
           "lane": {
@@ -3430,6 +3789,7 @@
         "ariaHiddenVisual": false,
         "textSerialization": "How many parts out of 24 make the same amount as 1/4?",
         "notation": null,
+        "form": null,
         "legend": ""
       },
       "choices": [],
@@ -3450,9 +3810,22 @@
         "horizontalOverflow": false
       },
       "ordinaryReadoutConstructor": false,
+      "trackForms": [
+        {
+          "side": "left",
+          "numerator": "16",
+          "denominator": "24"
+        },
+        {
+          "side": "right",
+          "numerator": "6",
+          "denominator": "24"
+        }
+      ],
       "readouts": [
         {
           "index": 0,
+          "side": "left",
           "numerator": "16",
           "denominator": "24",
           "lane": {
@@ -3510,6 +3883,7 @@
         },
         {
           "index": 1,
+          "side": "right",
           "numerator": "6",
           "denominator": "24",
           "lane": {
@@ -3612,6 +3986,10 @@
           "top": 541.28,
           "bottom": 584.88
         },
+        "form": {
+          "numerator": "2",
+          "denominator": "3"
+        },
         "legend": "Choose the fraction that shows the same amount as 2 over 3."
       },
       "choices": [
@@ -3637,6 +4015,10 @@
             "top": 629.88,
             "bottom": 669.06
           },
+          "form": {
+            "numerator": "15",
+            "denominator": "24"
+          },
           "notationHidden": true
         },
         {
@@ -3660,6 +4042,10 @@
             "right": 106.58,
             "top": 703.06,
             "bottom": 742.25
+          },
+          "form": {
+            "numerator": "16",
+            "denominator": "24"
           },
           "notationHidden": true
         },
@@ -3685,10 +4071,2472 @@
             "top": 776.25,
             "bottom": 815.44
           },
+          "form": {
+            "numerator": "17",
+            "denominator": "24"
+          },
           "notationHidden": true
         }
       ],
       "screenshot": "persistent-24-reduced-linear-reflection-180x370-200pct-equivalent.png"
+    },
+    {
+      "scenario": "second-item-unit-6",
+      "denominator": 6,
+      "viewport": {
+        "id": "360x740",
+        "width": 360,
+        "height": 740,
+        "zoomEquivalent": false
+      },
+      "layout": {
+        "documentWidth": 360,
+        "documentHeight": 921,
+        "horizontalOverflow": false
+      },
+      "ordinaryReadoutConstructor": false,
+      "trackForms": [
+        {
+          "side": "left",
+          "numerator": "3",
+          "denominator": "6"
+        },
+        {
+          "side": "right",
+          "numerator": "2",
+          "denominator": "6"
+        }
+      ],
+      "readouts": [
+        {
+          "index": 0,
+          "side": "left",
+          "numerator": "3",
+          "denominator": "6",
+          "lane": {
+            "x": 271,
+            "y": 166.7,
+            "width": 48,
+            "height": 32.59,
+            "left": 271,
+            "right": 319,
+            "top": 166.7,
+            "bottom": 199.3
+          },
+          "notation": {
+            "x": 289.55,
+            "y": 166.7,
+            "width": 10.89,
+            "height": 32.59,
+            "left": 289.55,
+            "right": 300.44,
+            "top": 166.7,
+            "bottom": 199.3
+          },
+          "numeratorBox": {
+            "x": 289.55,
+            "y": 166.7,
+            "width": 10.89,
+            "height": 14.3,
+            "left": 289.55,
+            "right": 300.44,
+            "top": 166.7,
+            "bottom": 181
+          },
+          "denominatorBox": {
+            "x": 289.55,
+            "y": 185,
+            "width": 10.89,
+            "height": 14.3,
+            "left": 289.55,
+            "right": 300.44,
+            "top": 185,
+            "bottom": 199.3
+          },
+          "divider": {
+            "x": 289.55,
+            "y": 182,
+            "width": 10.89,
+            "height": 2,
+            "left": 289.55,
+            "right": 300.44,
+            "top": 182,
+            "bottom": 184
+          },
+          "visible": true,
+          "ariaHidden": true
+        },
+        {
+          "index": 1,
+          "side": "right",
+          "numerator": "2",
+          "denominator": "6",
+          "lane": {
+            "x": 271,
+            "y": 230.7,
+            "width": 48,
+            "height": 32.59,
+            "left": 271,
+            "right": 319,
+            "top": 230.7,
+            "bottom": 263.3
+          },
+          "notation": {
+            "x": 289.55,
+            "y": 230.7,
+            "width": 10.89,
+            "height": 32.59,
+            "left": 289.55,
+            "right": 300.44,
+            "top": 230.7,
+            "bottom": 263.3
+          },
+          "numeratorBox": {
+            "x": 289.55,
+            "y": 230.7,
+            "width": 10.89,
+            "height": 14.3,
+            "left": 289.55,
+            "right": 300.44,
+            "top": 230.7,
+            "bottom": 245
+          },
+          "denominatorBox": {
+            "x": 289.55,
+            "y": 249,
+            "width": 10.89,
+            "height": 14.3,
+            "left": 289.55,
+            "right": 300.44,
+            "top": 249,
+            "bottom": 263.3
+          },
+          "divider": {
+            "x": 289.55,
+            "y": 246,
+            "width": 10.89,
+            "height": 2,
+            "left": 289.55,
+            "right": 300.44,
+            "top": 246,
+            "bottom": 248
+          },
+          "visible": true,
+          "ariaHidden": true
+        }
+      ],
+      "widerHostProbe": {
+        "host": {
+          "x": -10000,
+          "y": 3,
+          "width": 320,
+          "height": 32.59,
+          "left": -10000,
+          "right": -9680,
+          "top": 3,
+          "bottom": 35.59
+        },
+        "notation": {
+          "x": -9845.19,
+          "y": 3,
+          "width": 10.38,
+          "height": 32.59,
+          "left": -9845.19,
+          "right": -9834.81,
+          "top": 3,
+          "bottom": 35.59
+        },
+        "divider": {
+          "x": -9845.19,
+          "y": 18.3,
+          "width": 10.38,
+          "height": 2,
+          "left": -9845.19,
+          "right": -9834.81,
+          "top": 18.3,
+          "bottom": 20.3
+        }
+      },
+      "question": {
+        "visible": false,
+        "ariaHiddenVisual": false,
+        "textSerialization": "Add the shaded parts together.",
+        "notation": null,
+        "form": null,
+        "legend": ""
+      },
+      "choices": [],
+      "item": {
+        "identity": "Plan 26 accepted second item reached through completion-gated Next",
+        "sequencePosition": 2,
+        "reachedBy": "mounted Next button activated with Enter after first reflection completion",
+        "sourceForms": [
+          {
+            "side": "left",
+            "numerator": "1",
+            "denominator": "2"
+          },
+          {
+            "side": "right",
+            "numerator": "1",
+            "denominator": "3"
+          }
+        ],
+        "selectedCommonDenominator": "6",
+        "expectedEquivalentForms": [
+          {
+            "side": "left",
+            "numerator": "3",
+            "denominator": "6"
+          },
+          {
+            "side": "right",
+            "numerator": "2",
+            "denominator": "6"
+          }
+        ]
+      },
+      "screenshot": "second-item-unit-6-bar-transform-360x740.png"
+    },
+    {
+      "scenario": "second-item-unit-6",
+      "denominator": 6,
+      "viewport": {
+        "id": "360x740",
+        "width": 360,
+        "height": 740,
+        "zoomEquivalent": false
+      },
+      "layout": {
+        "documentWidth": 360,
+        "documentHeight": 833,
+        "horizontalOverflow": false
+      },
+      "ordinaryReadoutConstructor": false,
+      "trackForms": [
+        {
+          "side": "left",
+          "numerator": "3",
+          "denominator": "6"
+        },
+        {
+          "side": "right",
+          "numerator": "2",
+          "denominator": "6"
+        }
+      ],
+      "readouts": [
+        {
+          "index": 0,
+          "side": "left",
+          "numerator": "3",
+          "denominator": "6",
+          "lane": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0,
+            "left": 0,
+            "right": 0,
+            "top": 0,
+            "bottom": 0
+          },
+          "notation": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0,
+            "left": 0,
+            "right": 0,
+            "top": 0,
+            "bottom": 0
+          },
+          "numeratorBox": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0,
+            "left": 0,
+            "right": 0,
+            "top": 0,
+            "bottom": 0
+          },
+          "denominatorBox": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0,
+            "left": 0,
+            "right": 0,
+            "top": 0,
+            "bottom": 0
+          },
+          "divider": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0,
+            "left": 0,
+            "right": 0,
+            "top": 0,
+            "bottom": 0
+          },
+          "visible": false,
+          "ariaHidden": true
+        },
+        {
+          "index": 1,
+          "side": "right",
+          "numerator": "2",
+          "denominator": "6",
+          "lane": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0,
+            "left": 0,
+            "right": 0,
+            "top": 0,
+            "bottom": 0
+          },
+          "notation": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0,
+            "left": 0,
+            "right": 0,
+            "top": 0,
+            "bottom": 0
+          },
+          "numeratorBox": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0,
+            "left": 0,
+            "right": 0,
+            "top": 0,
+            "bottom": 0
+          },
+          "denominatorBox": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0,
+            "left": 0,
+            "right": 0,
+            "top": 0,
+            "bottom": 0
+          },
+          "divider": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0,
+            "left": 0,
+            "right": 0,
+            "top": 0,
+            "bottom": 0
+          },
+          "visible": false,
+          "ariaHidden": true
+        }
+      ],
+      "widerHostProbe": {
+        "host": {
+          "x": -10000,
+          "y": 3,
+          "width": 320,
+          "height": 32.59,
+          "left": -10000,
+          "right": -9680,
+          "top": 3,
+          "bottom": 35.59
+        },
+        "notation": {
+          "x": -9845.19,
+          "y": 3,
+          "width": 10.38,
+          "height": 32.59,
+          "left": -9845.19,
+          "right": -9834.81,
+          "top": 3,
+          "bottom": 35.59
+        },
+        "divider": {
+          "x": -9845.19,
+          "y": 18.3,
+          "width": 10.38,
+          "height": 2,
+          "left": -9845.19,
+          "right": -9834.81,
+          "top": 18.3,
+          "bottom": 20.3
+        }
+      },
+      "question": {
+        "visible": true,
+        "ariaHiddenVisual": true,
+        "textSerialization": "Choose the fraction that shows the same amount as 12.",
+        "notation": {
+          "x": 63,
+          "y": 362.16,
+          "width": 15.38,
+          "height": 43.59,
+          "left": 63,
+          "right": 78.38,
+          "top": 362.16,
+          "bottom": 405.75
+        },
+        "form": {
+          "numerator": "1",
+          "denominator": "2"
+        },
+        "legend": "Choose the fraction that shows the same amount as 1 over 2."
+      },
+      "choices": [
+        {
+          "name": "Fraction 2 over 6 shows a shaded amount",
+          "box": {
+            "x": 63,
+            "y": 439.75,
+            "width": 55.69,
+            "height": 61.19,
+            "left": 63,
+            "right": 118.69,
+            "top": 439.75,
+            "bottom": 500.94
+          },
+          "notation": {
+            "x": 84,
+            "y": 450.75,
+            "width": 13.69,
+            "height": 39.19,
+            "left": 84,
+            "right": 97.69,
+            "top": 450.75,
+            "bottom": 489.94
+          },
+          "form": {
+            "numerator": "2",
+            "denominator": "6"
+          },
+          "notationHidden": true
+        },
+        {
+          "name": "Fraction 3 over 6 shows a shaded amount",
+          "box": {
+            "x": 130.69,
+            "y": 439.75,
+            "width": 55.69,
+            "height": 61.19,
+            "left": 130.69,
+            "right": 186.38,
+            "top": 439.75,
+            "bottom": 500.94
+          },
+          "notation": {
+            "x": 151.69,
+            "y": 450.75,
+            "width": 13.69,
+            "height": 39.19,
+            "left": 151.69,
+            "right": 165.38,
+            "top": 450.75,
+            "bottom": 489.94
+          },
+          "form": {
+            "numerator": "3",
+            "denominator": "6"
+          },
+          "notationHidden": true
+        },
+        {
+          "name": "Fraction 4 over 6 shows a shaded amount",
+          "box": {
+            "x": 198.38,
+            "y": 439.75,
+            "width": 55.69,
+            "height": 61.19,
+            "left": 198.38,
+            "right": 254.06,
+            "top": 439.75,
+            "bottom": 500.94
+          },
+          "notation": {
+            "x": 219.38,
+            "y": 450.75,
+            "width": 13.69,
+            "height": 39.19,
+            "left": 219.38,
+            "right": 233.06,
+            "top": 450.75,
+            "bottom": 489.94
+          },
+          "form": {
+            "numerator": "4",
+            "denominator": "6"
+          },
+          "notationHidden": true
+        }
+      ],
+      "item": {
+        "identity": "Plan 26 accepted second item reached through completion-gated Next",
+        "sequencePosition": 2,
+        "reachedBy": "mounted Next button activated with Enter after first reflection completion",
+        "sourceForms": [
+          {
+            "side": "left",
+            "numerator": "1",
+            "denominator": "2"
+          },
+          {
+            "side": "right",
+            "numerator": "1",
+            "denominator": "3"
+          }
+        ],
+        "selectedCommonDenominator": "6",
+        "expectedEquivalentForms": [
+          {
+            "side": "left",
+            "numerator": "3",
+            "denominator": "6"
+          },
+          {
+            "side": "right",
+            "numerator": "2",
+            "denominator": "6"
+          }
+        ]
+      },
+      "screenshot": "second-item-unit-6-linear-reflection-360x740.png"
+    },
+    {
+      "scenario": "second-item-unit-6",
+      "denominator": 6,
+      "viewport": {
+        "id": "1366x768",
+        "width": 1366,
+        "height": 768,
+        "zoomEquivalent": false
+      },
+      "layout": {
+        "documentWidth": 1366,
+        "documentHeight": 886,
+        "horizontalOverflow": false
+      },
+      "ordinaryReadoutConstructor": false,
+      "trackForms": [
+        {
+          "side": "left",
+          "numerator": "3",
+          "denominator": "6"
+        },
+        {
+          "side": "right",
+          "numerator": "2",
+          "denominator": "6"
+        }
+      ],
+      "readouts": [
+        {
+          "index": 0,
+          "side": "left",
+          "numerator": "3",
+          "denominator": "6",
+          "lane": {
+            "x": 1003,
+            "y": 215.67,
+            "width": 48,
+            "height": 32.59,
+            "left": 1003,
+            "right": 1051,
+            "top": 215.67,
+            "bottom": 248.27
+          },
+          "notation": {
+            "x": 1021.55,
+            "y": 215.67,
+            "width": 10.89,
+            "height": 32.59,
+            "left": 1021.55,
+            "right": 1032.44,
+            "top": 215.67,
+            "bottom": 248.27
+          },
+          "numeratorBox": {
+            "x": 1021.55,
+            "y": 215.67,
+            "width": 10.89,
+            "height": 14.3,
+            "left": 1021.55,
+            "right": 1032.44,
+            "top": 215.67,
+            "bottom": 229.97
+          },
+          "denominatorBox": {
+            "x": 1021.55,
+            "y": 233.97,
+            "width": 10.89,
+            "height": 14.3,
+            "left": 1021.55,
+            "right": 1032.44,
+            "top": 233.97,
+            "bottom": 248.27
+          },
+          "divider": {
+            "x": 1021.55,
+            "y": 230.97,
+            "width": 10.89,
+            "height": 2,
+            "left": 1021.55,
+            "right": 1032.44,
+            "top": 230.97,
+            "bottom": 232.97
+          },
+          "visible": true,
+          "ariaHidden": true
+        },
+        {
+          "index": 1,
+          "side": "right",
+          "numerator": "2",
+          "denominator": "6",
+          "lane": {
+            "x": 1003,
+            "y": 279.67,
+            "width": 48,
+            "height": 32.59,
+            "left": 1003,
+            "right": 1051,
+            "top": 279.67,
+            "bottom": 312.27
+          },
+          "notation": {
+            "x": 1021.55,
+            "y": 279.67,
+            "width": 10.89,
+            "height": 32.59,
+            "left": 1021.55,
+            "right": 1032.44,
+            "top": 279.67,
+            "bottom": 312.27
+          },
+          "numeratorBox": {
+            "x": 1021.55,
+            "y": 279.67,
+            "width": 10.89,
+            "height": 14.3,
+            "left": 1021.55,
+            "right": 1032.44,
+            "top": 279.67,
+            "bottom": 293.97
+          },
+          "denominatorBox": {
+            "x": 1021.55,
+            "y": 297.97,
+            "width": 10.89,
+            "height": 14.3,
+            "left": 1021.55,
+            "right": 1032.44,
+            "top": 297.97,
+            "bottom": 312.27
+          },
+          "divider": {
+            "x": 1021.55,
+            "y": 294.97,
+            "width": 10.89,
+            "height": 2,
+            "left": 1021.55,
+            "right": 1032.44,
+            "top": 294.97,
+            "bottom": 296.97
+          },
+          "visible": true,
+          "ariaHidden": true
+        }
+      ],
+      "widerHostProbe": {
+        "host": {
+          "x": -10000,
+          "y": 3,
+          "width": 320,
+          "height": 32.59,
+          "left": -10000,
+          "right": -9680,
+          "top": 3,
+          "bottom": 35.59
+        },
+        "notation": {
+          "x": -9845.19,
+          "y": 3,
+          "width": 10.38,
+          "height": 32.59,
+          "left": -9845.19,
+          "right": -9834.81,
+          "top": 3,
+          "bottom": 35.59
+        },
+        "divider": {
+          "x": -9845.19,
+          "y": 18.3,
+          "width": 10.38,
+          "height": 2,
+          "left": -9845.19,
+          "right": -9834.81,
+          "top": 18.3,
+          "bottom": 20.3
+        }
+      },
+      "question": {
+        "visible": false,
+        "ariaHiddenVisual": false,
+        "textSerialization": "Add the shaded parts together.",
+        "notation": null,
+        "form": null,
+        "legend": ""
+      },
+      "choices": [],
+      "item": {
+        "identity": "Plan 26 accepted second item reached through completion-gated Next",
+        "sequencePosition": 2,
+        "reachedBy": "mounted Next button activated with Enter after first reflection completion",
+        "sourceForms": [
+          {
+            "side": "left",
+            "numerator": "1",
+            "denominator": "2"
+          },
+          {
+            "side": "right",
+            "numerator": "1",
+            "denominator": "3"
+          }
+        ],
+        "selectedCommonDenominator": "6",
+        "expectedEquivalentForms": [
+          {
+            "side": "left",
+            "numerator": "3",
+            "denominator": "6"
+          },
+          {
+            "side": "right",
+            "numerator": "2",
+            "denominator": "6"
+          }
+        ]
+      },
+      "screenshot": "second-item-unit-6-bar-transform-1366x768.png"
+    },
+    {
+      "scenario": "second-item-unit-6",
+      "denominator": 6,
+      "viewport": {
+        "id": "1366x768",
+        "width": 1366,
+        "height": 768,
+        "zoomEquivalent": false
+      },
+      "layout": {
+        "documentWidth": 1366,
+        "documentHeight": 773,
+        "horizontalOverflow": false
+      },
+      "ordinaryReadoutConstructor": false,
+      "trackForms": [
+        {
+          "side": "left",
+          "numerator": "3",
+          "denominator": "6"
+        },
+        {
+          "side": "right",
+          "numerator": "2",
+          "denominator": "6"
+        }
+      ],
+      "readouts": [
+        {
+          "index": 0,
+          "side": "left",
+          "numerator": "3",
+          "denominator": "6",
+          "lane": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0,
+            "left": 0,
+            "right": 0,
+            "top": 0,
+            "bottom": 0
+          },
+          "notation": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0,
+            "left": 0,
+            "right": 0,
+            "top": 0,
+            "bottom": 0
+          },
+          "numeratorBox": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0,
+            "left": 0,
+            "right": 0,
+            "top": 0,
+            "bottom": 0
+          },
+          "denominatorBox": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0,
+            "left": 0,
+            "right": 0,
+            "top": 0,
+            "bottom": 0
+          },
+          "divider": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0,
+            "left": 0,
+            "right": 0,
+            "top": 0,
+            "bottom": 0
+          },
+          "visible": false,
+          "ariaHidden": true
+        },
+        {
+          "index": 1,
+          "side": "right",
+          "numerator": "2",
+          "denominator": "6",
+          "lane": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0,
+            "left": 0,
+            "right": 0,
+            "top": 0,
+            "bottom": 0
+          },
+          "notation": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0,
+            "left": 0,
+            "right": 0,
+            "top": 0,
+            "bottom": 0
+          },
+          "numeratorBox": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0,
+            "left": 0,
+            "right": 0,
+            "top": 0,
+            "bottom": 0
+          },
+          "denominatorBox": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0,
+            "left": 0,
+            "right": 0,
+            "top": 0,
+            "bottom": 0
+          },
+          "divider": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0,
+            "left": 0,
+            "right": 0,
+            "top": 0,
+            "bottom": 0
+          },
+          "visible": false,
+          "ariaHidden": true
+        }
+      ],
+      "widerHostProbe": {
+        "host": {
+          "x": -10000,
+          "y": 3,
+          "width": 320,
+          "height": 32.59,
+          "left": -10000,
+          "right": -9680,
+          "top": 3,
+          "bottom": 35.59
+        },
+        "notation": {
+          "x": -9845.19,
+          "y": 3,
+          "width": 10.38,
+          "height": 32.59,
+          "left": -9845.19,
+          "right": -9834.81,
+          "top": 3,
+          "bottom": 35.59
+        },
+        "divider": {
+          "x": -9845.19,
+          "y": 18.3,
+          "width": 10.38,
+          "height": 2,
+          "left": -9845.19,
+          "right": -9834.81,
+          "top": 18.3,
+          "bottom": 20.3
+        }
+      },
+      "question": {
+        "visible": true,
+        "ariaHiddenVisual": true,
+        "textSerialization": "Choose the fraction that shows the same amount as 12.",
+        "notation": {
+          "x": 764.95,
+          "y": 360.75,
+          "width": 15.38,
+          "height": 43.59,
+          "left": 764.95,
+          "right": 780.33,
+          "top": 360.75,
+          "bottom": 404.34
+        },
+        "form": {
+          "numerator": "1",
+          "denominator": "2"
+        },
+        "legend": "Choose the fraction that shows the same amount as 1 over 2."
+      },
+      "choices": [
+        {
+          "name": "Fraction 2 over 6 shows a shaded amount",
+          "box": {
+            "x": 337,
+            "y": 438.34,
+            "width": 55.69,
+            "height": 61.19,
+            "left": 337,
+            "right": 392.69,
+            "top": 438.34,
+            "bottom": 499.53
+          },
+          "notation": {
+            "x": 358,
+            "y": 449.34,
+            "width": 13.69,
+            "height": 39.19,
+            "left": 358,
+            "right": 371.69,
+            "top": 449.34,
+            "bottom": 488.53
+          },
+          "form": {
+            "numerator": "2",
+            "denominator": "6"
+          },
+          "notationHidden": true
+        },
+        {
+          "name": "Fraction 3 over 6 shows a shaded amount",
+          "box": {
+            "x": 404.69,
+            "y": 438.34,
+            "width": 55.69,
+            "height": 61.19,
+            "left": 404.69,
+            "right": 460.38,
+            "top": 438.34,
+            "bottom": 499.53
+          },
+          "notation": {
+            "x": 425.69,
+            "y": 449.34,
+            "width": 13.69,
+            "height": 39.19,
+            "left": 425.69,
+            "right": 439.38,
+            "top": 449.34,
+            "bottom": 488.53
+          },
+          "form": {
+            "numerator": "3",
+            "denominator": "6"
+          },
+          "notationHidden": true
+        },
+        {
+          "name": "Fraction 4 over 6 shows a shaded amount",
+          "box": {
+            "x": 472.38,
+            "y": 438.34,
+            "width": 55.69,
+            "height": 61.19,
+            "left": 472.38,
+            "right": 528.06,
+            "top": 438.34,
+            "bottom": 499.53
+          },
+          "notation": {
+            "x": 493.38,
+            "y": 449.34,
+            "width": 13.69,
+            "height": 39.19,
+            "left": 493.38,
+            "right": 507.06,
+            "top": 449.34,
+            "bottom": 488.53
+          },
+          "form": {
+            "numerator": "4",
+            "denominator": "6"
+          },
+          "notationHidden": true
+        }
+      ],
+      "item": {
+        "identity": "Plan 26 accepted second item reached through completion-gated Next",
+        "sequencePosition": 2,
+        "reachedBy": "mounted Next button activated with Enter after first reflection completion",
+        "sourceForms": [
+          {
+            "side": "left",
+            "numerator": "1",
+            "denominator": "2"
+          },
+          {
+            "side": "right",
+            "numerator": "1",
+            "denominator": "3"
+          }
+        ],
+        "selectedCommonDenominator": "6",
+        "expectedEquivalentForms": [
+          {
+            "side": "left",
+            "numerator": "3",
+            "denominator": "6"
+          },
+          {
+            "side": "right",
+            "numerator": "2",
+            "denominator": "6"
+          }
+        ]
+      },
+      "screenshot": "second-item-unit-6-linear-reflection-1366x768.png"
+    },
+    {
+      "scenario": "second-item-unit-12",
+      "denominator": 12,
+      "viewport": {
+        "id": "360x740",
+        "width": 360,
+        "height": 740,
+        "zoomEquivalent": false
+      },
+      "layout": {
+        "documentWidth": 360,
+        "documentHeight": 921,
+        "horizontalOverflow": false
+      },
+      "ordinaryReadoutConstructor": false,
+      "trackForms": [
+        {
+          "side": "left",
+          "numerator": "6",
+          "denominator": "12"
+        },
+        {
+          "side": "right",
+          "numerator": "4",
+          "denominator": "12"
+        }
+      ],
+      "readouts": [
+        {
+          "index": 0,
+          "side": "left",
+          "numerator": "6",
+          "denominator": "12",
+          "lane": {
+            "x": 271,
+            "y": 166.7,
+            "width": 48,
+            "height": 32.59,
+            "left": 271,
+            "right": 319,
+            "top": 166.7,
+            "bottom": 199.3
+          },
+          "notation": {
+            "x": 286.05,
+            "y": 166.7,
+            "width": 17.89,
+            "height": 32.59,
+            "left": 286.05,
+            "right": 303.94,
+            "top": 166.7,
+            "bottom": 199.3
+          },
+          "numeratorBox": {
+            "x": 289.55,
+            "y": 166.7,
+            "width": 10.89,
+            "height": 14.3,
+            "left": 289.55,
+            "right": 300.44,
+            "top": 166.7,
+            "bottom": 181
+          },
+          "denominatorBox": {
+            "x": 286.05,
+            "y": 185,
+            "width": 17.89,
+            "height": 14.3,
+            "left": 286.05,
+            "right": 303.94,
+            "top": 185,
+            "bottom": 199.3
+          },
+          "divider": {
+            "x": 286.05,
+            "y": 182,
+            "width": 17.89,
+            "height": 2,
+            "left": 286.05,
+            "right": 303.94,
+            "top": 182,
+            "bottom": 184
+          },
+          "visible": true,
+          "ariaHidden": true
+        },
+        {
+          "index": 1,
+          "side": "right",
+          "numerator": "4",
+          "denominator": "12",
+          "lane": {
+            "x": 271,
+            "y": 230.7,
+            "width": 48,
+            "height": 32.59,
+            "left": 271,
+            "right": 319,
+            "top": 230.7,
+            "bottom": 263.3
+          },
+          "notation": {
+            "x": 286.05,
+            "y": 230.7,
+            "width": 17.89,
+            "height": 32.59,
+            "left": 286.05,
+            "right": 303.94,
+            "top": 230.7,
+            "bottom": 263.3
+          },
+          "numeratorBox": {
+            "x": 289.55,
+            "y": 230.7,
+            "width": 10.89,
+            "height": 14.3,
+            "left": 289.55,
+            "right": 300.44,
+            "top": 230.7,
+            "bottom": 245
+          },
+          "denominatorBox": {
+            "x": 286.05,
+            "y": 249,
+            "width": 17.89,
+            "height": 14.3,
+            "left": 286.05,
+            "right": 303.94,
+            "top": 249,
+            "bottom": 263.3
+          },
+          "divider": {
+            "x": 286.05,
+            "y": 246,
+            "width": 17.89,
+            "height": 2,
+            "left": 286.05,
+            "right": 303.94,
+            "top": 246,
+            "bottom": 248
+          },
+          "visible": true,
+          "ariaHidden": true
+        }
+      ],
+      "widerHostProbe": {
+        "host": {
+          "x": -10000,
+          "y": 3,
+          "width": 320,
+          "height": 32.59,
+          "left": -10000,
+          "right": -9680,
+          "top": 3,
+          "bottom": 35.59
+        },
+        "notation": {
+          "x": -9848.44,
+          "y": 3,
+          "width": 16.88,
+          "height": 32.59,
+          "left": -9848.44,
+          "right": -9831.56,
+          "top": 3,
+          "bottom": 35.59
+        },
+        "divider": {
+          "x": -9848.44,
+          "y": 18.3,
+          "width": 16.88,
+          "height": 2,
+          "left": -9848.44,
+          "right": -9831.56,
+          "top": 18.3,
+          "bottom": 20.3
+        }
+      },
+      "question": {
+        "visible": false,
+        "ariaHiddenVisual": false,
+        "textSerialization": "Add the shaded parts together.",
+        "notation": null,
+        "form": null,
+        "legend": ""
+      },
+      "choices": [],
+      "item": {
+        "identity": "Plan 26 accepted second item reached through completion-gated Next",
+        "sequencePosition": 2,
+        "reachedBy": "mounted Next button activated with Enter after first reflection completion",
+        "sourceForms": [
+          {
+            "side": "left",
+            "numerator": "1",
+            "denominator": "2"
+          },
+          {
+            "side": "right",
+            "numerator": "1",
+            "denominator": "3"
+          }
+        ],
+        "selectedCommonDenominator": "12",
+        "expectedEquivalentForms": [
+          {
+            "side": "left",
+            "numerator": "6",
+            "denominator": "12"
+          },
+          {
+            "side": "right",
+            "numerator": "4",
+            "denominator": "12"
+          }
+        ]
+      },
+      "screenshot": "second-item-unit-12-bar-transform-360x740.png"
+    },
+    {
+      "scenario": "second-item-unit-12",
+      "denominator": 12,
+      "viewport": {
+        "id": "360x740",
+        "width": 360,
+        "height": 740,
+        "zoomEquivalent": false
+      },
+      "layout": {
+        "documentWidth": 360,
+        "documentHeight": 833,
+        "horizontalOverflow": false
+      },
+      "ordinaryReadoutConstructor": false,
+      "trackForms": [
+        {
+          "side": "left",
+          "numerator": "6",
+          "denominator": "12"
+        },
+        {
+          "side": "right",
+          "numerator": "4",
+          "denominator": "12"
+        }
+      ],
+      "readouts": [
+        {
+          "index": 0,
+          "side": "left",
+          "numerator": "6",
+          "denominator": "12",
+          "lane": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0,
+            "left": 0,
+            "right": 0,
+            "top": 0,
+            "bottom": 0
+          },
+          "notation": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0,
+            "left": 0,
+            "right": 0,
+            "top": 0,
+            "bottom": 0
+          },
+          "numeratorBox": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0,
+            "left": 0,
+            "right": 0,
+            "top": 0,
+            "bottom": 0
+          },
+          "denominatorBox": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0,
+            "left": 0,
+            "right": 0,
+            "top": 0,
+            "bottom": 0
+          },
+          "divider": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0,
+            "left": 0,
+            "right": 0,
+            "top": 0,
+            "bottom": 0
+          },
+          "visible": false,
+          "ariaHidden": true
+        },
+        {
+          "index": 1,
+          "side": "right",
+          "numerator": "4",
+          "denominator": "12",
+          "lane": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0,
+            "left": 0,
+            "right": 0,
+            "top": 0,
+            "bottom": 0
+          },
+          "notation": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0,
+            "left": 0,
+            "right": 0,
+            "top": 0,
+            "bottom": 0
+          },
+          "numeratorBox": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0,
+            "left": 0,
+            "right": 0,
+            "top": 0,
+            "bottom": 0
+          },
+          "denominatorBox": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0,
+            "left": 0,
+            "right": 0,
+            "top": 0,
+            "bottom": 0
+          },
+          "divider": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0,
+            "left": 0,
+            "right": 0,
+            "top": 0,
+            "bottom": 0
+          },
+          "visible": false,
+          "ariaHidden": true
+        }
+      ],
+      "widerHostProbe": {
+        "host": {
+          "x": -10000,
+          "y": 3,
+          "width": 320,
+          "height": 32.59,
+          "left": -10000,
+          "right": -9680,
+          "top": 3,
+          "bottom": 35.59
+        },
+        "notation": {
+          "x": -9848.44,
+          "y": 3,
+          "width": 16.88,
+          "height": 32.59,
+          "left": -9848.44,
+          "right": -9831.56,
+          "top": 3,
+          "bottom": 35.59
+        },
+        "divider": {
+          "x": -9848.44,
+          "y": 18.3,
+          "width": 16.88,
+          "height": 2,
+          "left": -9848.44,
+          "right": -9831.56,
+          "top": 18.3,
+          "bottom": 20.3
+        }
+      },
+      "question": {
+        "visible": true,
+        "ariaHiddenVisual": true,
+        "textSerialization": "Choose the fraction that shows the same amount as 12.",
+        "notation": {
+          "x": 63,
+          "y": 362.16,
+          "width": 15.38,
+          "height": 43.59,
+          "left": 63,
+          "right": 78.38,
+          "top": 362.16,
+          "bottom": 405.75
+        },
+        "form": {
+          "numerator": "1",
+          "denominator": "2"
+        },
+        "legend": "Choose the fraction that shows the same amount as 1 over 2."
+      },
+      "choices": [
+        {
+          "name": "Fraction 5 over 12 shows a shaded amount",
+          "box": {
+            "x": 63,
+            "y": 439.75,
+            "width": 64.58,
+            "height": 61.19,
+            "left": 63,
+            "right": 127.58,
+            "top": 439.75,
+            "bottom": 500.94
+          },
+          "notation": {
+            "x": 84,
+            "y": 450.75,
+            "width": 22.58,
+            "height": 39.19,
+            "left": 84,
+            "right": 106.58,
+            "top": 450.75,
+            "bottom": 489.94
+          },
+          "form": {
+            "numerator": "5",
+            "denominator": "12"
+          },
+          "notationHidden": true
+        },
+        {
+          "name": "Fraction 6 over 12 shows a shaded amount",
+          "box": {
+            "x": 139.58,
+            "y": 439.75,
+            "width": 64.58,
+            "height": 61.19,
+            "left": 139.58,
+            "right": 204.16,
+            "top": 439.75,
+            "bottom": 500.94
+          },
+          "notation": {
+            "x": 160.58,
+            "y": 450.75,
+            "width": 22.58,
+            "height": 39.19,
+            "left": 160.58,
+            "right": 183.16,
+            "top": 450.75,
+            "bottom": 489.94
+          },
+          "form": {
+            "numerator": "6",
+            "denominator": "12"
+          },
+          "notationHidden": true
+        },
+        {
+          "name": "Fraction 7 over 12 shows a shaded amount",
+          "box": {
+            "x": 216.16,
+            "y": 439.75,
+            "width": 64.58,
+            "height": 61.19,
+            "left": 216.16,
+            "right": 280.73,
+            "top": 439.75,
+            "bottom": 500.94
+          },
+          "notation": {
+            "x": 237.16,
+            "y": 450.75,
+            "width": 22.58,
+            "height": 39.19,
+            "left": 237.16,
+            "right": 259.73,
+            "top": 450.75,
+            "bottom": 489.94
+          },
+          "form": {
+            "numerator": "7",
+            "denominator": "12"
+          },
+          "notationHidden": true
+        }
+      ],
+      "item": {
+        "identity": "Plan 26 accepted second item reached through completion-gated Next",
+        "sequencePosition": 2,
+        "reachedBy": "mounted Next button activated with Enter after first reflection completion",
+        "sourceForms": [
+          {
+            "side": "left",
+            "numerator": "1",
+            "denominator": "2"
+          },
+          {
+            "side": "right",
+            "numerator": "1",
+            "denominator": "3"
+          }
+        ],
+        "selectedCommonDenominator": "12",
+        "expectedEquivalentForms": [
+          {
+            "side": "left",
+            "numerator": "6",
+            "denominator": "12"
+          },
+          {
+            "side": "right",
+            "numerator": "4",
+            "denominator": "12"
+          }
+        ]
+      },
+      "screenshot": "second-item-unit-12-linear-reflection-360x740.png"
+    },
+    {
+      "scenario": "second-item-unit-12",
+      "denominator": 12,
+      "viewport": {
+        "id": "360x740",
+        "width": 360,
+        "height": 740,
+        "zoomEquivalent": false
+      },
+      "layout": {
+        "documentWidth": 360,
+        "documentHeight": 934,
+        "horizontalOverflow": false
+      },
+      "ordinaryReadoutConstructor": false,
+      "trackForms": [
+        {
+          "side": "left",
+          "numerator": "6",
+          "denominator": "12"
+        },
+        {
+          "side": "right",
+          "numerator": "4",
+          "denominator": "12"
+        }
+      ],
+      "readouts": [
+        {
+          "index": 0,
+          "side": "left",
+          "numerator": "6",
+          "denominator": "12",
+          "lane": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0,
+            "left": 0,
+            "right": 0,
+            "top": 0,
+            "bottom": 0
+          },
+          "notation": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0,
+            "left": 0,
+            "right": 0,
+            "top": 0,
+            "bottom": 0
+          },
+          "numeratorBox": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0,
+            "left": 0,
+            "right": 0,
+            "top": 0,
+            "bottom": 0
+          },
+          "denominatorBox": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0,
+            "left": 0,
+            "right": 0,
+            "top": 0,
+            "bottom": 0
+          },
+          "divider": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0,
+            "left": 0,
+            "right": 0,
+            "top": 0,
+            "bottom": 0
+          },
+          "visible": false,
+          "ariaHidden": true
+        },
+        {
+          "index": 1,
+          "side": "right",
+          "numerator": "4",
+          "denominator": "12",
+          "lane": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0,
+            "left": 0,
+            "right": 0,
+            "top": 0,
+            "bottom": 0
+          },
+          "notation": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0,
+            "left": 0,
+            "right": 0,
+            "top": 0,
+            "bottom": 0
+          },
+          "numeratorBox": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0,
+            "left": 0,
+            "right": 0,
+            "top": 0,
+            "bottom": 0
+          },
+          "denominatorBox": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0,
+            "left": 0,
+            "right": 0,
+            "top": 0,
+            "bottom": 0
+          },
+          "divider": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0,
+            "left": 0,
+            "right": 0,
+            "top": 0,
+            "bottom": 0
+          },
+          "visible": false,
+          "ariaHidden": true
+        }
+      ],
+      "widerHostProbe": {
+        "host": {
+          "x": -10000,
+          "y": 3,
+          "width": 320,
+          "height": 32.59,
+          "left": -10000,
+          "right": -9680,
+          "top": 3,
+          "bottom": 35.59
+        },
+        "notation": {
+          "x": -9848.44,
+          "y": 3,
+          "width": 16.88,
+          "height": 32.59,
+          "left": -9848.44,
+          "right": -9831.56,
+          "top": 3,
+          "bottom": 35.59
+        },
+        "divider": {
+          "x": -9848.44,
+          "y": 18.3,
+          "width": 16.88,
+          "height": 2,
+          "left": -9848.44,
+          "right": -9831.56,
+          "top": 18.3,
+          "bottom": 20.3
+        }
+      },
+      "question": {
+        "visible": true,
+        "ariaHiddenVisual": true,
+        "textSerialization": "Choose the fraction that shows the same amount as 12.",
+        "notation": {
+          "x": 63,
+          "y": 463.16,
+          "width": 15.38,
+          "height": 43.59,
+          "left": 63,
+          "right": 78.38,
+          "top": 463.16,
+          "bottom": 506.75
+        },
+        "form": {
+          "numerator": "1",
+          "denominator": "2"
+        },
+        "legend": "Choose the fraction that shows the same amount as 1 over 2."
+      },
+      "choices": [
+        {
+          "name": "Fraction 5 over 12 shows a shaded amount",
+          "box": {
+            "x": 63,
+            "y": 540.75,
+            "width": 64.58,
+            "height": 61.19,
+            "left": 63,
+            "right": 127.58,
+            "top": 540.75,
+            "bottom": 601.94
+          },
+          "notation": {
+            "x": 84,
+            "y": 551.75,
+            "width": 22.58,
+            "height": 39.19,
+            "left": 84,
+            "right": 106.58,
+            "top": 551.75,
+            "bottom": 590.94
+          },
+          "form": {
+            "numerator": "5",
+            "denominator": "12"
+          },
+          "notationHidden": true
+        },
+        {
+          "name": "Fraction 6 over 12 shows a shaded amount",
+          "box": {
+            "x": 139.58,
+            "y": 540.75,
+            "width": 64.58,
+            "height": 61.19,
+            "left": 139.58,
+            "right": 204.16,
+            "top": 540.75,
+            "bottom": 601.94
+          },
+          "notation": {
+            "x": 160.58,
+            "y": 551.75,
+            "width": 22.58,
+            "height": 39.19,
+            "left": 160.58,
+            "right": 183.16,
+            "top": 551.75,
+            "bottom": 590.94
+          },
+          "form": {
+            "numerator": "6",
+            "denominator": "12"
+          },
+          "notationHidden": true
+        },
+        {
+          "name": "Fraction 7 over 12 shows a shaded amount",
+          "box": {
+            "x": 216.16,
+            "y": 540.75,
+            "width": 64.58,
+            "height": 61.19,
+            "left": 216.16,
+            "right": 280.73,
+            "top": 540.75,
+            "bottom": 601.94
+          },
+          "notation": {
+            "x": 237.16,
+            "y": 551.75,
+            "width": 22.58,
+            "height": 39.19,
+            "left": 237.16,
+            "right": 259.73,
+            "top": 551.75,
+            "bottom": 590.94
+          },
+          "form": {
+            "numerator": "7",
+            "denominator": "12"
+          },
+          "notationHidden": true
+        }
+      ],
+      "item": {
+        "identity": "Plan 26 accepted second item reached through completion-gated Next",
+        "sequencePosition": 2,
+        "reachedBy": "mounted Next button activated with Enter after first reflection completion",
+        "sourceForms": [
+          {
+            "side": "left",
+            "numerator": "1",
+            "denominator": "2"
+          },
+          {
+            "side": "right",
+            "numerator": "1",
+            "denominator": "3"
+          }
+        ],
+        "selectedCommonDenominator": "12",
+        "expectedEquivalentForms": [
+          {
+            "side": "left",
+            "numerator": "6",
+            "denominator": "12"
+          },
+          {
+            "side": "right",
+            "numerator": "4",
+            "denominator": "12"
+          }
+        ]
+      },
+      "interaction": {
+        "method": "Enter",
+        "choiceName": "Fraction 7 over 12 shows a shaded amount",
+        "originalNodeConnected": false,
+        "focusAfterResponse": {
+          "tagName": "BODY",
+          "className": "",
+          "ariaLabel": null
+        },
+        "recoveryVisible": true
+      },
+      "screenshot": "second-item-unit-12-linear-keyboard-feedback-360x740.png"
+    },
+    {
+      "scenario": "second-item-unit-12",
+      "denominator": 12,
+      "viewport": {
+        "id": "1366x768",
+        "width": 1366,
+        "height": 768,
+        "zoomEquivalent": false
+      },
+      "layout": {
+        "documentWidth": 1366,
+        "documentHeight": 886,
+        "horizontalOverflow": false
+      },
+      "ordinaryReadoutConstructor": false,
+      "trackForms": [
+        {
+          "side": "left",
+          "numerator": "6",
+          "denominator": "12"
+        },
+        {
+          "side": "right",
+          "numerator": "4",
+          "denominator": "12"
+        }
+      ],
+      "readouts": [
+        {
+          "index": 0,
+          "side": "left",
+          "numerator": "6",
+          "denominator": "12",
+          "lane": {
+            "x": 1003,
+            "y": 215.67,
+            "width": 48,
+            "height": 32.59,
+            "left": 1003,
+            "right": 1051,
+            "top": 215.67,
+            "bottom": 248.27
+          },
+          "notation": {
+            "x": 1018.05,
+            "y": 215.67,
+            "width": 17.89,
+            "height": 32.59,
+            "left": 1018.05,
+            "right": 1035.94,
+            "top": 215.67,
+            "bottom": 248.27
+          },
+          "numeratorBox": {
+            "x": 1021.55,
+            "y": 215.67,
+            "width": 10.89,
+            "height": 14.3,
+            "left": 1021.55,
+            "right": 1032.44,
+            "top": 215.67,
+            "bottom": 229.97
+          },
+          "denominatorBox": {
+            "x": 1018.05,
+            "y": 233.97,
+            "width": 17.89,
+            "height": 14.3,
+            "left": 1018.05,
+            "right": 1035.94,
+            "top": 233.97,
+            "bottom": 248.27
+          },
+          "divider": {
+            "x": 1018.05,
+            "y": 230.97,
+            "width": 17.89,
+            "height": 2,
+            "left": 1018.05,
+            "right": 1035.94,
+            "top": 230.97,
+            "bottom": 232.97
+          },
+          "visible": true,
+          "ariaHidden": true
+        },
+        {
+          "index": 1,
+          "side": "right",
+          "numerator": "4",
+          "denominator": "12",
+          "lane": {
+            "x": 1003,
+            "y": 279.67,
+            "width": 48,
+            "height": 32.59,
+            "left": 1003,
+            "right": 1051,
+            "top": 279.67,
+            "bottom": 312.27
+          },
+          "notation": {
+            "x": 1018.05,
+            "y": 279.67,
+            "width": 17.89,
+            "height": 32.59,
+            "left": 1018.05,
+            "right": 1035.94,
+            "top": 279.67,
+            "bottom": 312.27
+          },
+          "numeratorBox": {
+            "x": 1021.55,
+            "y": 279.67,
+            "width": 10.89,
+            "height": 14.3,
+            "left": 1021.55,
+            "right": 1032.44,
+            "top": 279.67,
+            "bottom": 293.97
+          },
+          "denominatorBox": {
+            "x": 1018.05,
+            "y": 297.97,
+            "width": 17.89,
+            "height": 14.3,
+            "left": 1018.05,
+            "right": 1035.94,
+            "top": 297.97,
+            "bottom": 312.27
+          },
+          "divider": {
+            "x": 1018.05,
+            "y": 294.97,
+            "width": 17.89,
+            "height": 2,
+            "left": 1018.05,
+            "right": 1035.94,
+            "top": 294.97,
+            "bottom": 296.97
+          },
+          "visible": true,
+          "ariaHidden": true
+        }
+      ],
+      "widerHostProbe": {
+        "host": {
+          "x": -10000,
+          "y": 3,
+          "width": 320,
+          "height": 32.59,
+          "left": -10000,
+          "right": -9680,
+          "top": 3,
+          "bottom": 35.59
+        },
+        "notation": {
+          "x": -9848.44,
+          "y": 3,
+          "width": 16.88,
+          "height": 32.59,
+          "left": -9848.44,
+          "right": -9831.56,
+          "top": 3,
+          "bottom": 35.59
+        },
+        "divider": {
+          "x": -9848.44,
+          "y": 18.3,
+          "width": 16.88,
+          "height": 2,
+          "left": -9848.44,
+          "right": -9831.56,
+          "top": 18.3,
+          "bottom": 20.3
+        }
+      },
+      "question": {
+        "visible": false,
+        "ariaHiddenVisual": false,
+        "textSerialization": "Add the shaded parts together.",
+        "notation": null,
+        "form": null,
+        "legend": ""
+      },
+      "choices": [],
+      "item": {
+        "identity": "Plan 26 accepted second item reached through completion-gated Next",
+        "sequencePosition": 2,
+        "reachedBy": "mounted Next button activated with Enter after first reflection completion",
+        "sourceForms": [
+          {
+            "side": "left",
+            "numerator": "1",
+            "denominator": "2"
+          },
+          {
+            "side": "right",
+            "numerator": "1",
+            "denominator": "3"
+          }
+        ],
+        "selectedCommonDenominator": "12",
+        "expectedEquivalentForms": [
+          {
+            "side": "left",
+            "numerator": "6",
+            "denominator": "12"
+          },
+          {
+            "side": "right",
+            "numerator": "4",
+            "denominator": "12"
+          }
+        ]
+      },
+      "screenshot": "second-item-unit-12-bar-transform-1366x768.png"
+    },
+    {
+      "scenario": "second-item-unit-12",
+      "denominator": 12,
+      "viewport": {
+        "id": "1366x768",
+        "width": 1366,
+        "height": 768,
+        "zoomEquivalent": false
+      },
+      "layout": {
+        "documentWidth": 1366,
+        "documentHeight": 773,
+        "horizontalOverflow": false
+      },
+      "ordinaryReadoutConstructor": false,
+      "trackForms": [
+        {
+          "side": "left",
+          "numerator": "6",
+          "denominator": "12"
+        },
+        {
+          "side": "right",
+          "numerator": "4",
+          "denominator": "12"
+        }
+      ],
+      "readouts": [
+        {
+          "index": 0,
+          "side": "left",
+          "numerator": "6",
+          "denominator": "12",
+          "lane": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0,
+            "left": 0,
+            "right": 0,
+            "top": 0,
+            "bottom": 0
+          },
+          "notation": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0,
+            "left": 0,
+            "right": 0,
+            "top": 0,
+            "bottom": 0
+          },
+          "numeratorBox": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0,
+            "left": 0,
+            "right": 0,
+            "top": 0,
+            "bottom": 0
+          },
+          "denominatorBox": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0,
+            "left": 0,
+            "right": 0,
+            "top": 0,
+            "bottom": 0
+          },
+          "divider": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0,
+            "left": 0,
+            "right": 0,
+            "top": 0,
+            "bottom": 0
+          },
+          "visible": false,
+          "ariaHidden": true
+        },
+        {
+          "index": 1,
+          "side": "right",
+          "numerator": "4",
+          "denominator": "12",
+          "lane": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0,
+            "left": 0,
+            "right": 0,
+            "top": 0,
+            "bottom": 0
+          },
+          "notation": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0,
+            "left": 0,
+            "right": 0,
+            "top": 0,
+            "bottom": 0
+          },
+          "numeratorBox": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0,
+            "left": 0,
+            "right": 0,
+            "top": 0,
+            "bottom": 0
+          },
+          "denominatorBox": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0,
+            "left": 0,
+            "right": 0,
+            "top": 0,
+            "bottom": 0
+          },
+          "divider": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0,
+            "left": 0,
+            "right": 0,
+            "top": 0,
+            "bottom": 0
+          },
+          "visible": false,
+          "ariaHidden": true
+        }
+      ],
+      "widerHostProbe": {
+        "host": {
+          "x": -10000,
+          "y": 3,
+          "width": 320,
+          "height": 32.59,
+          "left": -10000,
+          "right": -9680,
+          "top": 3,
+          "bottom": 35.59
+        },
+        "notation": {
+          "x": -9848.44,
+          "y": 3,
+          "width": 16.88,
+          "height": 32.59,
+          "left": -9848.44,
+          "right": -9831.56,
+          "top": 3,
+          "bottom": 35.59
+        },
+        "divider": {
+          "x": -9848.44,
+          "y": 18.3,
+          "width": 16.88,
+          "height": 2,
+          "left": -9848.44,
+          "right": -9831.56,
+          "top": 18.3,
+          "bottom": 20.3
+        }
+      },
+      "question": {
+        "visible": true,
+        "ariaHiddenVisual": true,
+        "textSerialization": "Choose the fraction that shows the same amount as 12.",
+        "notation": {
+          "x": 764.95,
+          "y": 360.75,
+          "width": 15.38,
+          "height": 43.59,
+          "left": 764.95,
+          "right": 780.33,
+          "top": 360.75,
+          "bottom": 404.34
+        },
+        "form": {
+          "numerator": "1",
+          "denominator": "2"
+        },
+        "legend": "Choose the fraction that shows the same amount as 1 over 2."
+      },
+      "choices": [
+        {
+          "name": "Fraction 5 over 12 shows a shaded amount",
+          "box": {
+            "x": 337,
+            "y": 438.34,
+            "width": 64.58,
+            "height": 61.19,
+            "left": 337,
+            "right": 401.58,
+            "top": 438.34,
+            "bottom": 499.53
+          },
+          "notation": {
+            "x": 358,
+            "y": 449.34,
+            "width": 22.58,
+            "height": 39.19,
+            "left": 358,
+            "right": 380.58,
+            "top": 449.34,
+            "bottom": 488.53
+          },
+          "form": {
+            "numerator": "5",
+            "denominator": "12"
+          },
+          "notationHidden": true
+        },
+        {
+          "name": "Fraction 6 over 12 shows a shaded amount",
+          "box": {
+            "x": 413.58,
+            "y": 438.34,
+            "width": 64.58,
+            "height": 61.19,
+            "left": 413.58,
+            "right": 478.16,
+            "top": 438.34,
+            "bottom": 499.53
+          },
+          "notation": {
+            "x": 434.58,
+            "y": 449.34,
+            "width": 22.58,
+            "height": 39.19,
+            "left": 434.58,
+            "right": 457.16,
+            "top": 449.34,
+            "bottom": 488.53
+          },
+          "form": {
+            "numerator": "6",
+            "denominator": "12"
+          },
+          "notationHidden": true
+        },
+        {
+          "name": "Fraction 7 over 12 shows a shaded amount",
+          "box": {
+            "x": 490.16,
+            "y": 438.34,
+            "width": 64.58,
+            "height": 61.19,
+            "left": 490.16,
+            "right": 554.73,
+            "top": 438.34,
+            "bottom": 499.53
+          },
+          "notation": {
+            "x": 511.16,
+            "y": 449.34,
+            "width": 22.58,
+            "height": 39.19,
+            "left": 511.16,
+            "right": 533.73,
+            "top": 449.34,
+            "bottom": 488.53
+          },
+          "form": {
+            "numerator": "7",
+            "denominator": "12"
+          },
+          "notationHidden": true
+        }
+      ],
+      "item": {
+        "identity": "Plan 26 accepted second item reached through completion-gated Next",
+        "sequencePosition": 2,
+        "reachedBy": "mounted Next button activated with Enter after first reflection completion",
+        "sourceForms": [
+          {
+            "side": "left",
+            "numerator": "1",
+            "denominator": "2"
+          },
+          {
+            "side": "right",
+            "numerator": "1",
+            "denominator": "3"
+          }
+        ],
+        "selectedCommonDenominator": "12",
+        "expectedEquivalentForms": [
+          {
+            "side": "left",
+            "numerator": "6",
+            "denominator": "12"
+          },
+          {
+            "side": "right",
+            "numerator": "4",
+            "denominator": "12"
+          }
+        ]
+      },
+      "screenshot": "second-item-unit-12-linear-reflection-1366x768.png"
     },
     {
       "scenario": "ordinary-juxtaposed-12-standard",
@@ -3705,9 +6553,22 @@
         "horizontalOverflow": false
       },
       "ordinaryReadoutConstructor": true,
+      "trackForms": [
+        {
+          "side": "left",
+          "numerator": "",
+          "denominator": ""
+        },
+        {
+          "side": "right",
+          "numerator": "",
+          "denominator": ""
+        }
+      ],
       "readouts": [
         {
           "index": 0,
+          "side": "left",
           "numerator": "2",
           "denominator": "3",
           "lane": {
@@ -3765,6 +6626,7 @@
         },
         {
           "index": 1,
+          "side": "left",
           "numerator": "8",
           "denominator": "12",
           "lane": {
@@ -3822,6 +6684,7 @@
         },
         {
           "index": 2,
+          "side": "right",
           "numerator": "1",
           "denominator": "4",
           "lane": {
@@ -3915,6 +6778,7 @@
         "ariaHiddenVisual": false,
         "textSerialization": "How many parts out of 12 make the same amount as 1/4?",
         "notation": null,
+        "form": null,
         "legend": ""
       },
       "choices": [],
@@ -3935,9 +6799,22 @@
         "horizontalOverflow": false
       },
       "ordinaryReadoutConstructor": true,
+      "trackForms": [
+        {
+          "side": "left",
+          "numerator": "",
+          "denominator": ""
+        },
+        {
+          "side": "right",
+          "numerator": "",
+          "denominator": ""
+        }
+      ],
       "readouts": [
         {
           "index": 0,
+          "side": "left",
           "numerator": "2",
           "denominator": "3",
           "lane": {
@@ -3995,6 +6872,7 @@
         },
         {
           "index": 1,
+          "side": "left",
           "numerator": "8",
           "denominator": "12",
           "lane": {
@@ -4052,6 +6930,7 @@
         },
         {
           "index": 2,
+          "side": "right",
           "numerator": "1",
           "denominator": "4",
           "lane": {
@@ -4145,10 +7024,189 @@
         "ariaHiddenVisual": false,
         "textSerialization": "How many parts out of 12 make the same amount as 1/4?",
         "notation": null,
+        "form": null,
         "legend": ""
       },
       "choices": [],
       "screenshot": "ordinary-juxtaposed-12-standard-bar-transform-1366x768.png"
+    }
+  ],
+  "sequenceWitnesses": [
+    {
+      "viewport": "360x740",
+      "sequencePosition": 2,
+      "reachedBy": "mounted Next button activated with Enter after first reflection completion",
+      "firstItemSourceForms": [
+        {
+          "side": "left",
+          "numerator": "2",
+          "denominator": "3"
+        },
+        {
+          "side": "right",
+          "numerator": "1",
+          "denominator": "4"
+        }
+      ],
+      "precedingForms": [
+        {
+          "side": "left",
+          "numerator": "8",
+          "denominator": "12"
+        },
+        {
+          "side": "right",
+          "numerator": "3",
+          "denominator": "12"
+        }
+      ],
+      "nextAbsentBeforeReflectionCompletion": true,
+      "nextVisibleAfterReflectionCompletion": true,
+      "focusRestoredToEpisode": true,
+      "sourceForms": [
+        {
+          "side": "left",
+          "numerator": "1",
+          "denominator": "2"
+        },
+        {
+          "side": "right",
+          "numerator": "1",
+          "denominator": "3"
+        }
+      ]
+    },
+    {
+      "viewport": "1366x768",
+      "sequencePosition": 2,
+      "reachedBy": "mounted Next button activated with Enter after first reflection completion",
+      "firstItemSourceForms": [
+        {
+          "side": "left",
+          "numerator": "2",
+          "denominator": "3"
+        },
+        {
+          "side": "right",
+          "numerator": "1",
+          "denominator": "4"
+        }
+      ],
+      "precedingForms": [
+        {
+          "side": "left",
+          "numerator": "8",
+          "denominator": "12"
+        },
+        {
+          "side": "right",
+          "numerator": "3",
+          "denominator": "12"
+        }
+      ],
+      "nextAbsentBeforeReflectionCompletion": true,
+      "nextVisibleAfterReflectionCompletion": true,
+      "focusRestoredToEpisode": true,
+      "sourceForms": [
+        {
+          "side": "left",
+          "numerator": "1",
+          "denominator": "2"
+        },
+        {
+          "side": "right",
+          "numerator": "1",
+          "denominator": "3"
+        }
+      ]
+    },
+    {
+      "viewport": "360x740",
+      "sequencePosition": 2,
+      "reachedBy": "mounted Next button activated with Enter after first reflection completion",
+      "firstItemSourceForms": [
+        {
+          "side": "left",
+          "numerator": "2",
+          "denominator": "3"
+        },
+        {
+          "side": "right",
+          "numerator": "1",
+          "denominator": "4"
+        }
+      ],
+      "precedingForms": [
+        {
+          "side": "left",
+          "numerator": "8",
+          "denominator": "12"
+        },
+        {
+          "side": "right",
+          "numerator": "3",
+          "denominator": "12"
+        }
+      ],
+      "nextAbsentBeforeReflectionCompletion": true,
+      "nextVisibleAfterReflectionCompletion": true,
+      "focusRestoredToEpisode": true,
+      "sourceForms": [
+        {
+          "side": "left",
+          "numerator": "1",
+          "denominator": "2"
+        },
+        {
+          "side": "right",
+          "numerator": "1",
+          "denominator": "3"
+        }
+      ]
+    },
+    {
+      "viewport": "1366x768",
+      "sequencePosition": 2,
+      "reachedBy": "mounted Next button activated with Enter after first reflection completion",
+      "firstItemSourceForms": [
+        {
+          "side": "left",
+          "numerator": "2",
+          "denominator": "3"
+        },
+        {
+          "side": "right",
+          "numerator": "1",
+          "denominator": "4"
+        }
+      ],
+      "precedingForms": [
+        {
+          "side": "left",
+          "numerator": "8",
+          "denominator": "12"
+        },
+        {
+          "side": "right",
+          "numerator": "3",
+          "denominator": "12"
+        }
+      ],
+      "nextAbsentBeforeReflectionCompletion": true,
+      "nextVisibleAfterReflectionCompletion": true,
+      "focusRestoredToEpisode": true,
+      "sourceForms": [
+        {
+          "side": "left",
+          "numerator": "1",
+          "denominator": "2"
+        },
+        {
+          "side": "right",
+          "numerator": "1",
+          "denominator": "3"
+        }
+      ]
     }
   ]
 }
