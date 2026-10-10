@@ -49,6 +49,13 @@ permission. The owner directly confirmed “Authorize messaging FF Impl 26” he
 the approval message then succeeded. Record sender receipt separately from
 implementation completion; do not repeat the resolved permission loop.
 
+The owner subsequently directly authorized bidirectional Plan 26 communication
+until FF Impl 26's work is done. Owner also asks that same-task problems become
+compact data additions plus broad validation, with later large-bank selection in
+view. See `content-authoring-and-scale-position.md` and the follow-up register.
+FF Impl 26 was asked to distinguish one-time lifecycle work from per-item authoring
+cost in its report; no extra fixtures/refactor or source scope change was requested.
+
 First revision 2026-09-18. Rewritten 2026-09-19 when the specification phase closed. **Rewritten again
 2026-09-29** at an orchestrator change: the prior revision stopped at `plan-09` Repair 01 on
 2026-09-20, before Phase 2 closed, and patching it would have left a file describing a phase that no
