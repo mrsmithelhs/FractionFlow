@@ -1,0 +1,176 @@
+{
+  "purpose": "Plan 26 Repair 01 mounted two-item journeys across registered conditions, views, supports, motion modes, denominator paths, premise outcomes and touch context.",
+  "browser": "Microsoft Edge via Playwright; headless desktop browser.",
+  "viewportConfiguration": "CSS pixels; default browser zoom; devicePixelRatio recorded per capture.",
+  "filter": "refusal",
+  "limits": "Automated text entry; no native mobile keyboard, physical Chromebook/touch device, assistive technology, or learning-transfer evidence.",
+  "journeys": [],
+  "captures": [
+    {
+      "journey": "corrupt-two-choices-refusal",
+      "condition": "phase2-bundle-1",
+      "view": "visual",
+      "support": "high-support",
+      "motion": "standard",
+      "denominator": "6",
+      "viewport": {
+        "width": 360,
+        "height": 740,
+        "devicePixelRatio": 1
+      },
+      "stage": "second-item-admission-refusal",
+      "screenshot": "corrupt-two-choices-360x740-refusal.png",
+      "document": {
+        "width": 360,
+        "height": 859,
+        "scrollY": 12,
+        "verticalScrollRange": 119
+      },
+      "question": {
+        "x": 63,
+        "y": 475.09375,
+        "top": 475.09375,
+        "bottom": 500.28125,
+        "width": 234,
+        "height": 25.1875,
+        "visibleTop": 475.09375,
+        "visibleBottom": 500.28125
+      },
+      "controls": null,
+      "viewToggle": {
+        "x": 179.1875,
+        "y": 13,
+        "top": 13,
+        "bottom": 57,
+        "width": 155.8125,
+        "height": 44,
+        "visibleTop": 13,
+        "visibleBottom": 57
+      },
+      "navNext": {
+        "x": 42.234375,
+        "y": 127.375,
+        "top": 127.375,
+        "bottom": 171.375,
+        "width": 144.25,
+        "height": 44,
+        "visibleTop": 127.375,
+        "visibleBottom": 171.375
+      },
+      "navNotice": {
+        "x": 25,
+        "y": 73,
+        "top": 73,
+        "bottom": 117.78125,
+        "width": 310,
+        "height": 44.78125,
+        "visibleTop": 73,
+        "visibleBottom": 117.78125
+      },
+      "fractionTrack": {
+        "x": 41,
+        "y": 203.375,
+        "top": 203.375,
+        "bottom": 247.375,
+        "width": 218,
+        "height": 44,
+        "visibleTop": 203.375,
+        "visibleBottom": 247.375
+      },
+      "activeElement": "app-navigation-notice",
+      "visibleHeadings": [
+        "You finished this problem."
+      ],
+      "bodyText": "Read the steps\n\nThis problem is not ready. Try again or go back to start.\n\nNext problem\nBack to start\n8\n12\n3\n12\n8\n12\n+\n3\n12\n=\n11\n12\nYou finished this problem.\nShow previous steps (6 completed)\nResult: 11/12\nNeed help?\nReplay the last change\nTry this problem again\n\nYou finished this problem."
+    },
+    {
+      "journey": "corrupt-two-choices-refusal",
+      "viewport": "360x740",
+      "stage": "refusal-rerender-focus-retained",
+      "corruption": "two-choices"
+    },
+    {
+      "journey": "corrupt-out-of-whole-refusal",
+      "condition": "phase2-bundle-1",
+      "view": "visual",
+      "support": "high-support",
+      "motion": "standard",
+      "denominator": "6",
+      "viewport": {
+        "width": 1366,
+        "height": 768,
+        "devicePixelRatio": 1
+      },
+      "stage": "second-item-admission-refusal",
+      "screenshot": "corrupt-out-of-whole-1366x768-refusal.png",
+      "document": {
+        "width": 1366,
+        "height": 795,
+        "scrollY": 0,
+        "verticalScrollRange": 27
+      },
+      "question": {
+        "x": 337,
+        "y": 481.6875,
+        "top": 481.6875,
+        "bottom": 506.875,
+        "width": 692,
+        "height": 25.1875,
+        "visibleTop": 481.6875,
+        "visibleBottom": 506.875
+      },
+      "controls": null,
+      "viewToggle": {
+        "x": 1038.1875,
+        "y": 73.96875,
+        "top": 73.96875,
+        "bottom": 117.96875,
+        "width": 155.8125,
+        "height": 44,
+        "visibleTop": 73.96875,
+        "visibleBottom": 117.96875
+      },
+      "navNext": {
+        "x": 901.234375,
+        "y": 133.96875,
+        "top": 133.96875,
+        "bottom": 177.96875,
+        "width": 144.25,
+        "height": 44,
+        "visibleTop": 133.96875,
+        "visibleBottom": 177.96875
+      },
+      "navNotice": {
+        "x": 503.171875,
+        "y": 144.765625,
+        "top": 144.765625,
+        "bottom": 167.15625,
+        "width": 388.46875,
+        "height": 22.390625,
+        "visibleTop": 144.765625,
+        "visibleBottom": 167.15625
+      },
+      "fractionTrack": {
+        "x": 315,
+        "y": 209.96875,
+        "top": 209.96875,
+        "bottom": 253.96875,
+        "width": 676,
+        "height": 44,
+        "visibleTop": 209.96875,
+        "visibleBottom": 253.96875
+      },
+      "activeElement": "app-navigation-notice",
+      "visibleHeadings": [
+        "You finished this problem."
+      ],
+      "bodyText": "Read the steps\n\nThis problem is not ready. Try again or go back to start.\n\nNext problem\nBack to start\n8\n12\n3\n12\n8\n12\n+\n3\n12\n=\n11\n12\nYou finished this problem.\nShow previous steps (6 completed)\nResult: 11/12\nNeed help?\nReplay the last change\nTry this problem again\n\nYou finished this problem."
+    },
+    {
+      "journey": "corrupt-out-of-whole-refusal",
+      "viewport": "1366x768",
+      "stage": "refusal-rerender-focus-retained",
+      "corruption": "out-of-whole"
+    }
+  ]
+}

@@ -30,8 +30,8 @@ export function validateAuthoredPremiseCase(instance, premise, targetDenominator
 }
 
 export function validateAuthoredMatchingChoices(sourceForm, choices, targetDenominator) {
-  requireValid(Array.isArray(choices) && choices.length >= 2,
-    `missing matching choices for denominator ${targetDenominator}`);
+  requireValid(Array.isArray(choices) && choices.length >= 3,
+    `matching choices require at least three options for denominator ${targetDenominator}`);
   const choiceIds = new Set();
   let equivalentChoices = 0;
   for (const choice of choices) {
@@ -42,6 +42,14 @@ export function validateAuthoredMatchingChoices(sourceForm, choices, targetDenom
     requireValid(choice.form?.kind === 'fraction'
       && choice.form.denominator === targetDenominator,
     `matching choice form is invalid for denominator ${targetDenominator}`);
+    const numerator = Number(choice.form.numerator);
+    const denominator = Number(choice.form.denominator);
+    requireValid(Number.isSafeInteger(numerator)
+      && Number.isSafeInteger(denominator)
+      && numerator >= 0
+      && denominator > 0
+      && numerator <= denominator,
+    `matching choice form is outside the supported presentation range for ${targetDenominator}`);
     if (sameFraction(choice.form, sourceForm)) equivalentChoices += 1;
   }
   requireValid(equivalentChoices === 1,

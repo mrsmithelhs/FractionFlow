@@ -1,4 +1,21 @@
-import { afterEach, beforeEach, describe, expect, it } from 'vitest';
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
+
+const reflectionFault = vi.hoisted(() => ({ current: null }));
+
+vi.mock('../src/content/data/reflection-choices.js', async (importOriginal) => {
+  const actual = await importOriginal();
+  return {
+    ...actual,
+    reflectionChoicesForInstance(instance, denominator) {
+      const choices = actual.reflectionChoicesForInstance(instance, denominator);
+      if (reflectionFault.current && instance.provenance.fixtureId
+        === 'curated-relatively-prime-addition-one-half-one-third') {
+        return reflectionFault.current(choices);
+      }
+      return choices;
+    },
+  };
+});
 import {
   validateCuratedFixtures,
   validateAuthoredTaskData,
@@ -95,6 +112,7 @@ describe('Plan 26 vetted addition practice set', () => {
   });
 
   afterEach(() => {
+    reflectionFault.current = null;
     app?.destroy();
     teardownMockDOM();
   });
@@ -131,6 +149,43 @@ describe('Plan 26 vetted addition practice set', () => {
       { ...choices[1], form: fraction(4, 6) },
       choices[2],
     ], '6')).toThrow(/exactly one equivalent form/);
+
+    expect(() => validateAuthoredMatchingChoices(
+      instance.operands.left.initialForm,
+      choices.slice(0, 2),
+      '6',
+    )).toThrow(/at least three/);
+    expect(() => validateAuthoredMatchingChoices(instance.operands.left.initialForm, [
+      choices[0], choices[1], { ...choices[2], form: fraction(7, 6) },
+    ], '6')).toThrow(/presentation range/);
+
+    for (const invalidForm of [
+      fraction(-1, 6),
+      fraction(Number.MAX_SAFE_INTEGER + 1, 6),
+      fraction(1.5, 6),
+      fraction(1, 0),
+      fraction(1, Number.MAX_SAFE_INTEGER + 1),
+    ]) {
+      const targetDenominator = String(invalidForm.denominator);
+      expect(() => validateAuthoredMatchingChoices(instance.operands.left.initialForm, [
+        ...choices.slice(0, 2).map((choice) => ({
+          ...choice,
+          form: { ...choice.form, denominator: targetDenominator },
+        })),
+        { ...choices[2], form: invalidForm },
+      ], targetDenominator)).toThrow(/presentation range/);
+    }
+
+    for (const [source, boundaryChoice] of [
+      [fraction(0, 1), fraction(0, 6)],
+      [fraction(1, 1), fraction(6, 6)],
+    ]) {
+      expect(validateAuthoredMatchingChoices(source, [
+        { id: 'boundary', form: boundaryChoice },
+        { id: 'other-a', form: fraction(1, 6) },
+        { id: 'other-b', form: fraction(2, 6) },
+      ], '6')).toBe(true);
+    }
   });
 
   it('refuses missing routes and mismatched, missing, or unknown authored revisions', () => {
@@ -197,15 +252,24 @@ describe('Plan 26 vetted addition practice set', () => {
       .toBe('curated-relatively-prime-addition-one-half-one-third');
 
     app.dispatch({ type: 'acknowledge-encounter' });
+    app.dispatch({ type: 'submit-notice', matchesUnits: true });
     app.dispatch({ type: 'submit-notice', matchesUnits: false });
     app.dispatch({ type: 'propose-common-denominator', proposed: fraction(6, 1) });
     app.dispatch({ type: 'submit-equivalent-form', proposed: fraction(3, 6) });
     expect(app.getState().established.conversions.left).not.toBeNull();
+    app.dispatch({ type: 'submit-equivalent-form', proposed: fraction(3, 6) });
+    expect(app.getState().lastRecovery?.classification?.kind).toBe('incorrect-equivalent-numerator');
     root.querySelector('.app-linear-view .active-beat-controls .app-secondary-button').click();
     const multiplierDraft = root.querySelector('#linear-transform-help-multiplier-right');
     expect(multiplierDraft).not.toBeNull();
     multiplierDraft.value = '2';
     multiplierDraft.focus();
+    app.dispatch({ type: 'request-replay' });
+    const replayButton = [...root.querySelectorAll('.app-secondary-button')]
+      .find((button) => button.textContent === 'Replay the last change');
+    expect(replayButton.getAttribute('aria-pressed')).toBe('true');
+    app.dispatch({ type: 'request-replay' });
+    expect(app.getState().supportHistory.some((entry) => entry.type === 'task-help-request')).toBe(true);
     root.querySelector('.app-view-toggle').dispatchEvent({ type: 'pointerdown' });
     const expectedFresh = createEpisode({
       instance: secondState.content,
@@ -217,6 +281,10 @@ describe('Plan 26 vetted addition practice set', () => {
     expect(app.getState()).toEqual(expectedFresh);
     expect(document.activeElement).toBe(root.querySelector('.app-episode'));
     expect(root.querySelector('#linear-transform-help-multiplier-right')).toBeNull();
+    const resetReplayButton = [...root.querySelectorAll('.app-secondary-button')]
+      .find((button) => button.textContent === 'Replay the last change');
+    expect(resetReplayButton.getAttribute('aria-pressed')).toBe('false');
+    expect(root.querySelector('.app-navigation-notice').hasAttribute('hidden')).toBe(true);
     expect(root.querySelector('.app-linear-view').hasAttribute('hidden')).toBe(false);
 
     root.querySelector('.app-return-button').click();
@@ -305,5 +373,41 @@ describe('Plan 26 vetted addition practice set', () => {
     expect(root.querySelector('.app-next-button').disabled).toBe(false);
     expect(root.querySelector('.app-restart-button').disabled).toBe(false);
     expect(root.querySelector('.app-return-button').disabled).toBe(false);
+  });
+
+  it.each([
+    ['two choices', (choices) => choices.slice(0, 2)],
+    ['an out-of-whole distractor', (choices) => [
+      choices[0], choices[1], { ...choices[2], form: fraction(7, 6) },
+    ]],
+  ])('refuses a second-item matching-data fault (%s) before mounted Next replaces completed work', (_label, corrupt) => {
+    app = createFractionFlowApp({ root, presentationMode: 'instant-test' });
+    app.mount();
+    root.querySelector('.app-practice-button').click();
+    finishCurrentEpisode(app, 12);
+
+    const knownComplete = app.getState();
+    const knownReplay = app.getReplayEnvelope();
+    reflectionFault.current = corrupt;
+    root.querySelector('.app-next-button').click();
+
+    expect(app.getState()).toBe(knownComplete);
+    expect(app.getState().status).toBe('resolved');
+    expect(app.getReplayEnvelope()).toEqual(knownReplay);
+    expect(app.getState().content.provenance.fixtureId)
+      .toBe('curated-relatively-prime-addition-non-least');
+    const notice = root.querySelector('.app-navigation-notice');
+    expect(notice.textContent)
+      .toBe('This problem is not ready. Try again or go back to start.');
+    expect(document.activeElement).toBe(notice);
+    expect(root.querySelector('.app-restart-button').disabled).toBe(false);
+    expect(root.querySelector('.app-return-button').disabled).toBe(false);
+
+    reflectionFault.current = null;
+    root.querySelector('.app-next-button').click();
+    expect(app.getState().content.provenance.fixtureId)
+      .toBe('curated-relatively-prime-addition-one-half-one-third');
+    expect(app.getState().status).toBe('active');
+    expect(document.activeElement).toBe(root.querySelector('.app-episode'));
   });
 });
