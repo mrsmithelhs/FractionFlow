@@ -108,14 +108,11 @@ Findings and disposition:
    screen-reader announcement and heading-navigation behavior remain untested.
 3. **Leak detector evidence.** The advisor asked whether active-section
    attributes and whitespace were covered and whether text/attribute branches
-   had independent fail-first seeds. I verified the checker requires an
-   existing active section, recognizes structured fractions and slash/“over”
-   text, and now scans attributes on the active section as well as descendants
-   with whitespace-tolerant matching. The test now proves rejection of a
-   structured 11/12 leak and an `aria-label` leak seeded directly on the active
-   section. The raw-text branch is not separately seeded in this harness; it
-   remains a limitation of that specific test witness, not a claimed
-   independently proven path.
+   had independent fail-first seeds. Repair 01 restores whole-root and
+   descendant scanning for structured, raw-text, and accessible-attribute
+   branches; it keeps the active-section existence requirement and has separate
+   outside-active sibling seeds for raw text and `aria-label` leakage. See the
+   Repair 01 evidence section below for the focused suite result.
 4. **Route result qualification.** The advisor requested clear separation of
    the full run and the focused rerun. The commands above record the original
    selector mismatch and the subsequent 1/1 filtered route result. The
@@ -138,3 +135,82 @@ Findings and disposition:
 - Implementation and evidence commit: `4e1e8b11a54b3090a3933025a1a7fc37f6bff975`
 - Ready for orchestrator review: **yes**
 - Packet completion status: unchanged (`in-progress`).
+
+## Repair 01 execution — 2026-10-10
+
+The orchestrator authorized the bounded evidence repair while Plan 31 remained
+`delivered`. I changed only `tests/render-foundation.test.js` and files under
+this packet's `evidence/` directory so far; this progress report is the final
+owned path to commit. No product source, route matrix, other test, root review,
+handoff, or packet status was changed.
+
+### Answer-withholding guard
+
+The helper still requires an active beat, then scans the inspected root and all
+descendants for structured fractions, raw text, and accessible-label
+attributes. Existing active structured and active accessible-label leak seeds
+remain. Two independent fail-first seeds now place a raw `11/12` answer and an
+`aria-label` answer in a sibling completed-beats region outside the active
+section; each is rejected. The clean scene and each branch's existing checks
+remain passing.
+
+Command:
+
+```text
+npm exec vitest -- run tests/render-foundation.test.js tests/app-shell.test.js tests/render-strings.test.js tests/leakage-invariants.test.js
+```
+
+Result: 4 files passed, 51 tests passed. The subsequent full `npm test` run also
+passed all 28 files and 322 tests.
+
+### Second-item rendered evidence
+
+The capture starts with the current first item (`2/3 + 1/4`), completes its
+operation and reflection, verifies Next is withheld until reflection completion,
+then activates the mounted Next control with Enter. At 360×740 and 1366×768 the
+sequence witness reaches the current second item (`1/2 + 1/3`) and records focus
+on the episode landmark. The actual admitted denominator paths captured are
+sixths (`3/6 + 2/6`) and twelfths (`6/12 + 4/12`). For each path and viewport,
+the saved set includes a bar readout and a linear matching prompt/choice screen;
+the 12ths narrow path adds an Enter-activated recovery screen. Original packet
+captures remain present. There are 28 screenshots total, including nine
+second-item captures and four Next sequence witnesses.
+
+The evidence script compares the bar's rendered source forms and visible
+readout numerators/denominators with the expected equivalent forms. It checks
+the linear prompt's structured `1/2`, all structured choice forms, the exact
+group legend, and the complete accessible choice names. Measurements show the
+48px bar label lane remains fixed, every visible divider equals its wider
+padded numerator/denominator box (maximum measured difference 0px), and no
+captured layout has horizontal overflow. Narrow-screen content wraps and
+continues below the viewport. The wider 1366px host does not stretch the compact
+notation.
+
+Keyboard witness: Enter on the final 12ths choice produces visible recovery
+feedback. The clicked choice is replaced by the response render, and the
+document's active element is `BODY` afterward. The capture records this observed
+focus outcome instead of claiming the original node or focus survives. Keyboard
+activation is evidenced; post-response focus retention is not established by
+this Plan 31 repair and no source change was authorized for it.
+
+### Validation and disposition
+
+- `node --check reports/development/plan-31-shared-fraction-typography/evidence/capture-plan31-typography.mjs` — passed.
+- `node reports/development/plan-31-shared-fraction-typography/evidence/capture-plan31-typography.mjs` — Edge capture completed; 28 screenshots written and measurement JSON regenerated.
+- `npm test` — 28 files and 322 tests passed.
+- `node scripts/dev/plan-status.js lint` — passed; packet status unchanged.
+- `git diff --check` — passed (only expected CRLF conversion notices).
+
+The already committed `tests/route-contract.test.js` expectation and route matrix
+both include the intentional `linear-matching-choice-btn` class while retaining
+the connected first-choice focus assertion; no edit to that file was needed.
+The request for that test-file change was separately authorized by the
+orchestrator, but inspection showed it was already present and the full suite
+passes. No product defect was confirmed by this repair. Physical Chromebook,
+assistive technology, actual browser zoom UI, touch hardware, and post-response
+focus retention remain unverified. Owner rendered-screen/agency acceptance is
+still pending. Packet status remains `in-progress`/delivered as controlled by
+the orchestrator.
+
+Repair 01 implementation and evidence commit: `4ccf6a5`. This report must be
+committed last. Ready to return to the orchestrator for review: yes.
