@@ -3,6 +3,36 @@
 Living pointer document (see `docs/agent-starting-prompts/orchestrator-prompt.md` § "Session Handoff File").
 Orchestrator-owned; update in place before thread boundaries. Anchor dates, never countdowns.
 
+## Current snapshot — 2026-10-09
+
+This snapshot supersedes older status/next-action passages below, which retain
+dated history. Use `docs/development/README.md` for the authoritative board.
+Plans 01–16, 21, 22, 24 and 25 are complete; Plans 17–20, 23 and 26 are drafts.
+No source packet is initiated by the latest planning work.
+
+Plan 25 is technically and owner accepted after the open-help focus repair:
+see its `delivery-review.md`; closure commit `82f4f75`. Plan 21's investigation
+and inline corrections were technically accepted at `8074ce8`; the owner then
+accepted the recommended bounded contract, recorded as DECISION-041. Plan 26
+is the new source handoff: canonical `2/3 + 1/4`, then authored/admitted
+`1/2 + 1/3`, completion-gated Next, explicit exhaustion, clean reset, retained
+settings/view and immutable replay identity. Requirement 0 still stops before
+source approval. Plans 18/19 depend on it for learner reach within the existing
+goal. OQ-23 remains open until reachable Next is delivered and accepted.
+
+Owner requested research into varied learner tasks with mathematical continuity.
+Initial primary-source research is in
+`reports/orchestration/purposeful-episode-task-variation-research.md`.
+OQ-28 and the follow-up register retain a docs-only variant design checkpoint
+before focused-concept implementation or Phase 3 exit. No task-variant source,
+adaptive/session policy, learner study or efficacy claim is approved. This does
+not expand or delay Plan 26. Larger-denominator and fuller denominator-discovery
+investigations remain separate obligations; Plan 24/25's bounded help is accepted.
+
+Source work remains one writer at a time. The owner authorized bidirectional
+communication with FF Impl 21 and FF Impl 25; both have stopped their scoped work.
+No new implementer thread, push or deployment is authorized by this snapshot.
+
 First revision 2026-09-18. Rewritten 2026-09-19 when the specification phase closed. **Rewritten again
 2026-09-29** at an orchestrator change: the prior revision stopped at `plan-09` Repair 01 on
 2026-09-20, before Phase 2 closed, and patching it would have left a file describing a phase that no

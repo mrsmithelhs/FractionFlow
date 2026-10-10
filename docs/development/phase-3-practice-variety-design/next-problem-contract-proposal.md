@@ -2,6 +2,11 @@
 
 **Status:** Proposed for owner acceptance. DECISION-040 adopts learner-triggered Next; none of the detailed rules below are implemented or adopted by this dossier.
 
+**Later disposition, 2026-10-09:** DECISION-041 adopts the owner-reviewed bounded
+contract summarized in the Plan 21 delivery review. This file retains the original
+design proposal; detailed wiring and compatibility/refusal/focus mechanics require
+Plan 26's mechanism gate. It is not a record of implemented Next behavior.
+
 ## Identity carried by each selected item
 
 For an authored problem, identify the item by its stable content id/provenance (`fixtureId`, `authoringRevision`), exact ordered source forms, selector, overlays, and schema identity. Pair it with the registered episode-definition `id` and `revision`, plus the conditions/support profile that applies to that item. Content identity and instructional definition identity are distinct facts; one learner goal may point to several item records with different definitions.

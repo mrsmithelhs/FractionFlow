@@ -93,3 +93,12 @@ behavior is changed. No push or deployment occurred.
 Obtain the packet's owner contract disposition, record adopted choices, then close
 Plan 21 and draft the separately gated implementation packet. No further implementer
 repair is required for this investigation delivery.
+
+## Owner disposition — 2026-10-09
+
+The owner accepted the recommended contract. DECISION-041 records the adopted
+targeted goals, fixed first two candidates, completion-gated Next, exhaustion,
+fresh-state/configuration and immutable identity rules. The second candidate still
+requires authoring and full admission. Plan 21 may close as an accepted investigation;
+Plan 26 is the separately gated source handoff. This acceptance does not close
+OQ-23, activate new content or establish learning/engagement efficacy.

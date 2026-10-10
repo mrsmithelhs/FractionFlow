@@ -1075,3 +1075,40 @@ instructional/representation coverage in generated content.
 
 **Supersedes / related:** DECISION-029/035; Plan 21; OQ-23; Roadmap §30;
 `docs/development/phase-3-follow-up-obligations.md`.
+
+### DECISION-041 - Adopt the bounded authored-set and Next contract
+
+**Date:** 2026-10-09
+
+**Decision:** The owner accepted the Plan 21 delivery-review recommendation.
+Retain targeted learner goals with staged availability: today's “Add fractions
+with different denominators” will group nested/shared-factor variation when those
+paths are admitted; other goals appear only when their learner paths are admitted.
+The first fixed set is the
+existing `2/3 + 1/4`, then the proposed `1/2 + 1/3`. Approval permits authoring
+the second candidate; it is not yet admitted or learner-reachable.
+
+Offer learner-triggered “Next problem” only after actual episode completion,
+including reflection when enabled. Keep the existing return action as the
+mid-task exit. At exhaustion, give a short explicit message and return to practice
+choices; no silent wrap, automatic advance or generated fallback. Retry retains
+the item identity and starts fresh; Next selects a different vetted identity and
+starts fresh. Clear answers, drafts, help, recovery and replay work. Return/re-entry
+starts the goal's stable first item. Preserve the selected access view and reviewer
+settings unless explicitly changed; task applicability must not silently mutate
+those selections. Pin content, episode-definition revision and authored task-data
+identity so existing replay meaning remains reconstructable.
+
+Plan 26 drafts the bounded implementation and retains a pre-source mechanism gate
+for selection/admission wiring, compatibility/refusal handling, focus and replay.
+Plan 21's investigation is accepted; source activation, rendered/agency acceptance
+and publication remain separate. Two items prove the selection/reset increment,
+not Roadmap §30's content breadth. OQ-23 remains open until reachable behavior is
+delivered and accepted. Generated practice and purposeful task variants remain
+follow-up work.
+
+**Rationale:** A small authored set isolates Next and reset correctness while
+preserving learner control and established task semantics.
+
+**Supersedes / related:** Implements the detailed policy direction of
+DECISION-035/040; Plan 21 delivery review; Plan 26; OQ-23.

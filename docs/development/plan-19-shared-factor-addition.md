@@ -2,7 +2,7 @@
 id: plan-19
 title: Shared-Factor Addition
 status: draft
-depends_on: [plan-11, plan-12, plan-13, plan-14, plan-16, plan-22]
+depends_on: [plan-11, plan-12, plan-13, plan-14, plan-16, plan-22, plan-26]
 gate: "Requirement 0 mechanism confirmation before source work; technical and owner rendered-screen/agency acceptance; deployment separately authorized."
 superseded_by: null
 resolution: null
@@ -23,7 +23,7 @@ summary: >-
 - Packet type: feature
 - Mutation level: source / learner-facing local behavior
 - Approval gate: mechanism, technical and owner acceptance
-- Depends on: `plan-11`, `plan-12`, `plan-13`, `plan-14`, `plan-16`, `plan-22`
+- Depends on: `plan-11`, `plan-12`, `plan-13`, `plan-14`, `plan-16`, `plan-22`, `plan-26` (learner reach through the existing goal's authored set)
 - Expected artifacts: vetted family/definition/registry increment, authored data, tests, routes, screenshots and report
 
 ## Goal and why this packet exists

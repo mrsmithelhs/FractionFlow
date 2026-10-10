@@ -513,6 +513,12 @@ control alongside retry and return is a straightforward addition once there is s
 sequence), and on whether choosing it is the learner's or the reviewer's. Worth deciding alongside the
 `plan-10` reach assessment, which will say how many families exist to draw from.
 
+**Direction and contract adopted:** DECISION-040 selects an authored set and
+learner-triggered Next; DECISION-041 (2026-10-09) adopts the concrete bounded
+contract following accepted Plan 21 investigation. Draft Plan 26 implements the
+first two-item set. Reachable behavior and acceptance remain outstanding, so this
+question is not closed. Broader variety remains a separate obligation.
+
 ---
 
 ### OQ-24 — There is no mixed-number instructional strategy
@@ -671,3 +677,24 @@ adopted by raising this question.
 See `reports/orchestration/common-denominator-support-design-brief.md` and the
 Phase 3 follow-up obligations record. Revisit before claiming unaided denominator
 reasoning or completing the related focused concept episodes.
+
+### OQ-28 — Which learner responsibilities should vary across episodes?
+
+**Raised:** 2026-10-09, by the owner. A familiar episode grammar need not make
+every episode ask the same learner decisions. Principle 8 and Roadmap §28 already
+call for purposeful variation; the specific authored variants, prerequisites and
+progression have not been operationalized.
+
+**Needs:** a bounded design of construction, comparison, prediction and diagnosis
+tasks that preserves mathematical invariants, familiar controls, concise copy and
+meaningful learner contribution. Distinguish task variation from numeric variety,
+scaffold fading and representation changes. Specify what each task teaches and
+what could distinguish trained completion from independent transfer. Consider
+learner readiness and interest separately from performance. The initial literature
+review supports investigation, not a universal mix or an efficacy claim.
+
+See `reports/orchestration/purposeful-episode-task-variation-research.md` and the
+follow-up register. Begin docs-only design now; bring a small concrete proposal
+to owner review before a focused-concept implementation or Phase 3 exit. Do not
+broaden Plan 26, change a frozen episode schedule, activate adaptive sequencing or
+conduct learner observations through this question.
