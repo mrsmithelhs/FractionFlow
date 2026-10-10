@@ -40,9 +40,11 @@ No subtraction, new beats, mixed numbers, adaptive fading, arbitrary generation,
 session sequencing, persistence or deployment. The accepted baseline and Plan 22
 path-closure repair are dependencies; nested addition is not. Both operands need
 renaming for 12 and 24 here, so the nested schedule choice cannot block this work.
-DECISION-035 adopts the small learner-goal model. Plan 21 supplies concrete
-selection/reach details. If reaching this content requires its future implementation
-packet, record that dependency before source work; do not add a family button. Serialize source changes with other packets.
+DECISION-035 adopts the small learner-goal model. Accepted Plans 21/26 supply the
+fixed authored-set lifecycle. Extend that existing goal through its Next control;
+do not add a family button. Plan 30's compact-authoring investigation can inform
+the mechanism without making a general engine rewrite a prerequisite. Serialize
+source changes with other packets.
 
 ## Authority and contracts
 
@@ -69,8 +71,15 @@ connection/reflection truth. Inspect which denominators are eligible and which
 choice distractors remain renderable. Show wiring from registry through validated
 content to immutable configuration and scene; identify exact write paths.
 The current admission guard compares against the Phase 2 constant rather than the
-supplied definition. Specify bounded registered-selector validation without opening
-unreviewed families. Author and validate the fixture and per-path data; verify any
+resolved registered definition. Specify bounded validation against that registered
+definition's selector/operation, retaining its identity/semantic integrity check;
+do not trust arbitrary caller-supplied selectors or widen a historical definition.
+Current practice-set admission and episode construction use a practice-wide
+definition. Propose the bounded per-item definition resolution needed for this
+new family through creation, Next, Retry and replay. Name the new immutable fixture,
+task-data and registered-definition identities; preserve existing identities.
+Specify the authored set's new revision, item order/insertion point, first item,
+exhaustion point, refusal and settings/focus behavior. Author and validate the fixture and per-path data; verify any
 reuse against actual facts. Add valid-but-unauthored and out-of-capability numeric
 proposals to the coverage plan using the approved Plan 22 policy. Obtain mechanism
 approval before source changes.
@@ -86,7 +95,9 @@ both reassuring and non-reassuring premise outcomes where that condition applies
 
 ### Requirement 2 — Independent evidence
 
-Full mounted browser routes cover both units, high/medium support, wrong denominator,
+At least one mounted journey reaches this item through Next after completing the
+preceding set items; a direct injected fixture alone does not establish learner
+reach. Full mounted browser routes cover both units, high/medium support, wrong denominator,
 conversion and arithmetic recovery, help/Replay, authored reflection, retry and
 return/re-entry. Verify ordinary motion, reduced motion, keyboard, non-drag touch
 and linear completion. Add reciprocal observations and a seeded wrong scale-factor

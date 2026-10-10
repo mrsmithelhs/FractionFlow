@@ -1,7 +1,8 @@
 ---
 id: plan-26
 title: Vetted Addition Practice and Next Problem
-status: delivered
+status: complete
+resolution: "Technical delivery accepted after both bounded repairs; owner accepted rendered output on 2026-10-10. The fixed two-item Next/Retry/reset/replay contract is delivered; broader content variety and deployment remain separate."
 depends_on: [plan-21, plan-25, plan-22]
 gate: "DECISION-041 adopts the bounded selection contract. Owner initiation and Requirement 0 execution mechanism approval precede source work. Technical and owner rendered-screen/agency acceptance remain separate from publication."
 summary: >-

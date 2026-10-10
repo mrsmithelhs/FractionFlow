@@ -7,9 +7,10 @@ Orchestrator-owned; update in place before thread boundaries. Anchor dates, neve
 
 This snapshot supersedes older status/next-action passages below, which retain
 dated history. Use `docs/development/README.md` for the authoritative board.
-Plans 01–16, 21, 22, 24 and 25 are complete; Plans 17–20, 23 and 29 are drafts.
-The owner initiated Plan 26 at `9b25ddd`; it is delivered and technically accepted,
-pending owner rendered-screen/agency acceptance.
+Plans 01–16, 21, 22, 24, 25 and 26 are complete; Plans 17–20, 23, 29, 30 and 31
+are drafts. The owner initiated Plan 26 at `9b25ddd` and accepted its output on
+2026-10-10. See its `owner-disposition.md`; OQ-23 is closed for the initial
+two-item authored-set contract. No push or deployment was authorized.
 Its execution mechanism was approved 2026-10-10; implementation/report arrived
 at `92e13db` / `aed852a`. See its `delivery-review.md` and `repair-01.md`:
 matching admission misses the renderers' choice-count/bar-range contract, and
@@ -23,8 +24,21 @@ Repair 02 arrived at `7e9ed1e` / `628bab1`; `repair-02-review.md` accepts the
 technical delivery. Root reran five journeys/two sizes/refusals with 184 records
 and 100 confirmed taps plus 18 focused/replay tests. Owner's inline stacked-fraction
 suggestion is a separate presentation follow-up; no Plan 26 renderer expansion
-was authorized. FF Impl 26 should stop pending owner acceptance/new assignment.
-FF Impl 26 is the authorized source writer; source work remains serialized.
+was authorized. FF Impl 26's assignment is closed; no next source writer is assigned.
+Source work remains serialized.
+
+Recommended next: draft Plan 30 investigates compact same-task authoring and
+deterministic batch validation at the accepted-Next checkpoint; no production
+schema/refactor or extra live items. Then Plan 19's mechanism gate extends the
+existing goal to shared-factor addition. Its brief now explicitly covers resolved
+registered per-item definitions, set revision/order/exhaustion and actual Next
+reach. Keep the family order 19 → 17 → 20 → 18; Plan 30 does not require a general
+engine rewrite or introduce an artificial family dependency. Draft Plan 31 is
+independent bounded typography: intrinsic fraction lines within reserved bar
+readout lanes, structured inline notation and linear matching buttons. No source
+work is initiated by these drafts; owner initiation and named mechanism gates
+still apply. A read-only Plan 30 investigation may overlap a disjoint source
+packet, but source changes themselves remain single-writer.
 
 Plan 25 is technically and owner accepted after the open-help focus repair:
 see its `delivery-review.md`; closure commit `82f4f75`. Plan 21's investigation
@@ -32,9 +46,9 @@ and inline corrections were technically accepted at `8074ce8`; the owner then
 accepted the recommended bounded contract, recorded as DECISION-041. Plan 26
 is the source increment: canonical `2/3 + 1/4`, then authored/admitted
 `1/2 + 1/3`, completion-gated Next, explicit exhaustion, clean reset, retained
-settings/view and immutable replay identity. Requirement 0 is approved within
-the recorded bounds; delivery/owner acceptance remain. Plans 18/19 depend on it for learner reach within the existing
-goal. OQ-23 remains open until reachable Next is delivered and accepted.
+settings/view and immutable replay identity. Requirement 0 and delivery/owner
+acceptance are satisfied. Plans 18/19 depend on it for learner reach within the
+existing goal. OQ-23's bounded initial contract is closed; broader variety remains owed.
 
 Owner requested research into varied learner tasks with mathematical continuity.
 Initial primary-source research is in
@@ -63,7 +77,7 @@ the approval message then succeeded. Record sender receipt separately from
 implementation completion; do not repeat the resolved permission loop.
 
 The owner subsequently directly authorized bidirectional Plan 26 communication
-until FF Impl 26's work is done. Owner also asks that same-task problems become
+until FF Impl 26's work is done; that assignment is now closed. Owner also asks that same-task problems become
 compact data additions plus broad validation, with later large-bank selection in
 view. See `content-authoring-and-scale-position.md` and the follow-up register.
 FF Impl 26 was asked to distinguish one-time lifecycle work from per-item authoring

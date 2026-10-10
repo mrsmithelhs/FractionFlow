@@ -515,9 +515,12 @@ sequence), and on whether choosing it is the learner's or the reviewer's. Worth 
 
 **Direction and contract adopted:** DECISION-040 selects an authored set and
 learner-triggered Next; DECISION-041 (2026-10-09) adopts the concrete bounded
-contract following accepted Plan 21 investigation. Draft Plan 26 implements the
-first two-item set. Reachable behavior and acceptance remain outstanding, so this
-question is not closed. Broader variety remains a separate obligation.
+contract following accepted Plan 21 investigation. Plan 26 implements the first
+two-item set and was technically and owner accepted on 2026-10-10. Learner-triggered
+Next, current-item Retry, explicit exhaustion, reset and replay identity are
+verified; see its `owner-disposition.md` and `repair-02-review.md`.
+**Closed for this bounded contract, 2026-10-10.** Broader authored/generated
+variety remains a separate obligation in the Phase 3 follow-up register.
 
 ---
 
@@ -647,11 +650,11 @@ forgotten.
 - **OQ-20:** DECISION-038 amends DECISION-032 timing. The first crossing episode
   retains addends during calculation and shows the stack after the correct total
   is accepted. Plan 17 implementation/acceptance remains outstanding.
-- **OQ-23:** DECISION-035/040 decide the initial direction: small learner goals,
-  a vetted authored set and learner-triggered Next problem. Plan 21 still owes
-  concrete selection/exhaustion/focus/identity semantics and a source handoff.
-  Reachable Next behavior is not yet implemented; the question is not closed
-  merely by adopting the direction. Broader generated variety remains a follow-up.
+- **OQ-23 (updated 2026-10-10):** DECISION-035/040/041 and accepted Plans 21/26
+  establish the initial vetted authored set and learner-triggered Next contract.
+  Reachable two-item selection, exhaustion, focus, reset and replay identity are
+  accepted; the bounded question is closed. Broader generated variety remains a
+  follow-up rather than a claim established by this initial set.
 
 See `docs/development/phase-3-follow-up-obligations.md` for the staged work and
 revisit triggers; this update does not declare Phase 3 or its content-variety gate complete.
