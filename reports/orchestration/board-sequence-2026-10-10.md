@@ -7,8 +7,9 @@ This record supersedes older recommended-order passages, not historical evidence
 
 Plan 30 is complete: investigation accepted, with its one-item adoption proposal
 superseded by owner-approved drafting of a bounded batch proof. Plan 31 is
-in-progress; its implementer has not yet been resolved. Requirement 0 remains a
-source gate. Plan 32 is draft, not initiated or mechanism-approved.
+complete after owner screenshot acceptance and independent Repair 01 verification.
+FF Impl 31's assignment is closed. Plan 32 is ready/runnable, not initiated or
+mechanism-approved; see `plan-32-codex-implementer-handoff.md`.
 
 Recommended source sequence: **31 → 32 → 19 → 17 → 20 → 18**.
 Plan 32 depends on Plan 31 for serialization and the notation/evidence baseline;
@@ -18,8 +19,8 @@ chain. Recheck every older source packet against current code before initiation.
 
 | Packet | Purpose | Placement and remaining gate |
 |---|---|---|
-| 31 — Shared Fraction Typography | Intrinsic fraction lines and structured linear question/button notation | Current assignment; mechanism, technical and rendered-screen acceptance |
-| 32 — Compact Authored Problem Batch | Shared production authoring across a varied reviewed batch | Next source increment; policy/batch/mechanism approval before source |
+| 31 — Shared Fraction Typography | Intrinsic fraction lines and structured linear question/button notation | Complete; technical and owner acceptance satisfied |
+| 32 — Compact Authored Problem Batch | Shared production authoring across a varied reviewed batch | Ready next; owner initiation, then policy/batch/mechanism approval before source |
 | 19 — Shared-Factor Addition | New denominator relationship, retaining two conversions | After 32; extend accepted authoring and per-item definition/admission |
 | 17 — Crossing-One-Whole Addition | Truthful equal-unit multi-whole result stack | After 19; stack, answer withholding, capability and geometry gate |
 | 20 — Like-Denominator Addition and Notice Recovery | Zero-renaming episode and same-parts recovery | After 17; implied unit/effective operands, no fabricated conversions/reflection |

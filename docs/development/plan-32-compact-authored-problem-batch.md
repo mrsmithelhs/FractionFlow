@@ -1,11 +1,9 @@
 ---
 id: plan-32
 title: Compact Authored Problem Batch
-status: draft
+status: ready
 depends_on: [plan-30, plan-31, plan-26]
 gate: "Requirement 0 authoring, instructional-policy and batch confirmation before source work; technical and owner rendered-screen/agency acceptance; deployment separately authorized."
-superseded_by: null
-resolution: null
 summary: >-
   Adopt compact records and a small deterministic materializer for a varied
   reviewed batch within the current addition task, with complete headless

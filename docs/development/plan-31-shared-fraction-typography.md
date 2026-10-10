@@ -1,7 +1,8 @@
 ---
 id: plan-31
 title: Shared Fraction Typography
-status: delivered
+status: complete
+resolution: "Owner accepted rendered screenshots on 2026-10-10 after independently verified typography delivery and Repair 01; known keyboard response-remount and device/AT limits remain tracked; deployment separately authorized."
 depends_on: [plan-11, plan-26]
 gate: "Requirement 0 presentation mechanism confirmation before source work; technical and owner rendered-screen acceptance; deployment separately authorized."
 summary: >-

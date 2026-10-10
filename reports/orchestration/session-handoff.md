@@ -7,8 +7,9 @@ Orchestrator-owned; update in place before thread boundaries. Anchor dates, neve
 
 This snapshot supersedes older status/next-action passages below, which retain
 dated history. Use `docs/development/README.md` for the authoritative board.
-Plans 01–16, 21, 22, 24, 25, 26 and 30 are complete; Plans 17–20, 23, 29 and 32
-are drafts. Owner closed Plan 30 and initiated Plan 31 on 2026-10-10. See
+Plans 01–16, 21, 22, 24, 25, 26, 30 and 31 are complete; Plans 17–20, 23 and 29
+are drafts. Plan 32 is ready/runnable but not initiated. Owner accepted Plan 31's
+screenshots and authorized its closure on 2026-10-10. See
 `plan-30-codex-implementer-handoff.md` for the report-only investigation and chat
 supervision brief. FF Impl 30 is started, resolved and messaged at Codex thread
 `01a12714-772e-77b2-8cf6-635658228611`. The owner directly authorized bidirectional
@@ -16,12 +17,13 @@ Plan 30 supervision in this orchestration chat. Delivery commits are `136c988`
 and `1d58986`. Root reproduced the read-only experiment and technically accepted
 the investigation after inline reporting corrections; see its `delivery-review.md`.
 The implementer is stopped; see Plan 30's owner disposition. Production adoption
-is draft Plan 32, with a varied batch replacing the earlier one-item recommendation.
-Plan 31 is in-progress with `plan-31-codex-implementer-handoff.md`. FF Impl 31 is
+is ready Plan 32, with a varied batch replacing the earlier one-item recommendation.
+See `plan-32-codex-implementer-handoff.md`; policy/batch/mechanism approval is still
+required before source. FF Impl 31's assignment is now closed; its chat is
 resolved at `01a1274f-4ecf-7c23-90ec-ef8cc5709520`; the owner directly authorized
 bidirectional supervision here. Root source-checked Requirement 0 and approved the
 bounded shared compact-notation mechanism; see Plan 31's `mechanism-review.md`.
-Implementation/evidence arrived at `4e1e8b1` / report `f39aad0`; Plan 31 is delivered.
+Implementation/evidence arrived at `4e1e8b1` / report `f39aad0`.
 Root reran 72 focused tests and the linear focus route (1/1), inspected saved
 screens/metrics, and requires bounded test/evidence Repair 01. The leakage helper
 misses sibling raw/ARIA leaks, independently reproduced; captures omit the second
@@ -29,7 +31,8 @@ item. See Plan 31's `delivery-review.md` and `repair-01.md`. No blocking product
 source defect is confirmed. Repair 01 arrived at `4ccf6a5` / `ae910d8` and is
 technically accepted; see `repair-01-review.md`. Root reran 72 focused tests,
 independent sibling-leak rejection probes and all 28 Edge captures/four Next
-witnesses into ignored review output. Owner rendered-screen acceptance remains.
+witnesses into ignored review output. Owner rendered-screen acceptance is satisfied;
+see Plan 31's `owner-disposition.md`. No push or deployment is authorized.
 Incorrect linear matching via keyboard exposes response remount/focus-to-BODY;
 retain this observed limit for the shared response-ownership follow-up.
 See `board-sequence-2026-10-10.md` for current order

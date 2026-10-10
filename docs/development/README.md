@@ -37,8 +37,8 @@ Packets are assigned to implementer agents. Each packet defines scope, required 
 | `plan-26` | Vetted Addition Practice and Next Problem | complete | Author and admit one additional relatively-prime addition item, then implement a fixed two-item set with completion-gated learner-triggered Next, explicit exhaustion, fresh episode state, preserved settings and stable replay identity. |
 | `plan-29` | Purposeful Episode Task Variation Design | draft | Design up to three purposeful learner-task variants around one fraction concept, preserving mathematical invariants, familiar controls and concise copy. Specify prerequisites, learner contributions, recovery, assistance and replay boundaries, with separate evidence plans for learning, transfer and interest. |
 | `plan-30` | Compact Content Authoring Investigation | complete | Measure per-item authoring after the accepted Next lifecycle, compare compact explicit data with deterministic reviewed recipes, and demonstrate a bounded offline batch using existing exact math and admission contracts. |
-| `plan-31` | Shared Fraction Typography | delivered | Give bar readouts an intrinsically sized stacked fraction and reuse structured fraction notation in linear matching questions and buttons, preserving geometry, readable wrapping and coherent accessible names. |
-| `plan-32` | Compact Authored Problem Batch | draft | Adopt compact records and a small deterministic materializer for a varied reviewed batch within the current addition task, with complete headless admission/episode coverage and discriminating browser evidence. |
+| `plan-31` | Shared Fraction Typography | complete | Give bar readouts an intrinsically sized stacked fraction and reuse structured fraction notation in linear matching questions and buttons, preserving geometry, readable wrapping and coherent accessible names. |
+| `plan-32` | Compact Authored Problem Batch | ready | Adopt compact records and a small deterministic materializer for a varied reviewed batch within the current addition task, with complete headless admission/episode coverage and discriminating browser evidence. |
 <!-- plan-index:end -->
 
 ## Report Folders
