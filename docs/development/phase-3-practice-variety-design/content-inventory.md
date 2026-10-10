@@ -25,7 +25,7 @@ The Phase 1 golden set has seven addition fixtures. They pass curated constructi
 | `curated-nested-addition` | nested: `1/2 + 3/8` | `7/8`, proper, already simplified | 8; alternate 16 | Valid and bar-eligible; no premise/reflection table or episode admission. Candidate only. DECISION-037 applies if later admitted. |
 | `curated-shared-factor-addition` | shared factor: `1/6 + 3/8` | `13/24`, proper, already simplified | 24; alternate 48 | Valid; canonical 24 is bar-eligible, alternate 48 is not (`denominator-ceiling-exceeded`). No premise/reflection data or learner route. Candidate only. |
 | `curated-relatively-prime-addition-non-least` | relatively prime: `2/3 + 1/4` | `11/12`, proper, already simplified | LCD 12; authored alternate 24 | Content valid; both routes bar-eligible and have authored premise/reflection data. The sole currently registered and browser-witnessed practice item. |
-| `curated-simplify-first-state` | nested: `2/4 + 1/2` after reviewed simplify-first transition | raw `4/4`, exact 1 | 4; alternate 8 | Valid and bar-eligible, but a simplify-first instructional task is not approved. Excluded from this authored-set increment. |
+| `curated-simplify-first-state` | nested: `2/4 + 1/2`, with a reviewed simplify-first transition available | raw `4/4`, exact 1 | 4; alternate 8 | Valid and bar-eligible, but a simplify-first instructional task is not approved. The reviewed transition does not establish the current operand form. Excluded from this authored-set increment. |
 
 ## Conditional second item for owner review
 
