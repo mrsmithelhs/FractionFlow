@@ -35,6 +35,7 @@ Packets are assigned to implementer agents. Each packet defines scope, required 
 | `plan-24` | Common Denominator Finding Support | complete | Add compact task-local assistance for finding a common denominator and understanding a selected unit, preserving learner decisions, mathematical validity, answer withholding and the repaired task capability boundary. |
 | `plan-25` | Requested Equivalent Fraction Conversion Help | complete | Help a learner who knows the target denominator but needs assistance finding the equivalent numerator, through requested local steps that preserve amount, require learner contributions and avoid revealing the answer prematurely. |
 | `plan-26` | Vetted Addition Practice and Next Problem | draft | Author and admit one additional relatively-prime addition item, then implement a fixed two-item set with completion-gated learner-triggered Next, explicit exhaustion, fresh episode state, preserved settings and stable replay identity. |
+| `plan-29` | Purposeful Episode Task Variation Design | draft | Design up to three purposeful learner-task variants around one fraction concept, preserving mathematical invariants, familiar controls and concise copy. Specify prerequisites, learner contributions, recovery, assistance and replay boundaries, with separate evidence plans for learning, transfer and interest. |
 <!-- plan-index:end -->
 
 ## Report Folders

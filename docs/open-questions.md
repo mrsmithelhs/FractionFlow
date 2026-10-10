@@ -693,8 +693,9 @@ what could distinguish trained completion from independent transfer. Consider
 learner readiness and interest separately from performance. The initial literature
 review supports investigation, not a universal mix or an efficacy claim.
 
-See `reports/orchestration/purposeful-episode-task-variation-research.md` and the
-follow-up register. Begin docs-only design now; bring a small concrete proposal
+See `reports/orchestration/purposeful-episode-task-variation-research.md`, draft
+Plan 29 and the follow-up register. Plan 29 bounds the docs-only design after owner
+initiation; bring a small concrete proposal
 to owner review before a focused-concept implementation or Phase 3 exit. Do not
 broaden Plan 26, change a frozen episode schedule, activate adaptive sequencing or
 conduct learner observations through this question.

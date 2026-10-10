@@ -3,11 +3,11 @@
 Living pointer document (see `docs/agent-starting-prompts/orchestrator-prompt.md` § "Session Handoff File").
 Orchestrator-owned; update in place before thread boundaries. Anchor dates, never countdowns.
 
-## Current snapshot — 2026-10-09
+## Current snapshot — 2026-10-10
 
 This snapshot supersedes older status/next-action passages below, which retain
 dated history. Use `docs/development/README.md` for the authoritative board.
-Plans 01–16, 21, 22, 24 and 25 are complete; Plans 17–20, 23 and 26 are drafts.
+Plans 01–16, 21, 22, 24 and 25 are complete; Plans 17–20, 23, 26 and 29 are drafts.
 No source packet is initiated by the latest planning work.
 
 Plan 25 is technically and owner accepted after the open-help focus repair:
@@ -23,8 +23,14 @@ goal. OQ-23 remains open until reachable Next is delivered and accepted.
 Owner requested research into varied learner tasks with mathematical continuity.
 Initial primary-source research is in
 `reports/orchestration/purposeful-episode-task-variation-research.md`.
-OQ-28 and the follow-up register retain a docs-only variant design checkpoint
-before focused-concept implementation or Phase 3 exit. No task-variant source,
+Draft Plan 29 now bounds OQ-28's docs-only design: one concept, at most three
+task variants, current bar/symbolic language, concise prompts and explicit
+learner/evidence/identity contracts. It awaits owner initiation and final task
+disposition. The follow-up register retains a separate number-line design trigger
+at the Phase 3 bar-stability/§90 review, before Phase 4 activation. Preliminary
+source scoping is permitted; no number-line implementation is assigned.
+Plans 27/28 remain proposal labels for capacity/discovery investigations, not
+created packets; Plan 29 avoids reusing those names. No task-variant source,
 adaptive/session policy, learner study or efficacy claim is approved. This does
 not expand or delay Plan 26. Larger-denominator and fuller denominator-discovery
 investigations remain separate obligations; Plan 24/25's bounded help is accepted.
