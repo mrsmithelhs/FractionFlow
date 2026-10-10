@@ -52,8 +52,9 @@ the instructional model's representation-transfer, support, interleaving and
 transfer-beyond-training sections, Roadmap §§28–31 and §90, the follow-up register,
 and `reports/orchestration/purposeful-episode-task-variation-research.md`.
 Inspect current episode definition/schedule, scene, task help, provenance/replay,
-controls and both access views. Read accepted Plan 21/25 reviews and draft Plan 26
-as context; draft behavior is not implemented behavior.
+controls and both access views. Read accepted Plan 21/25/26 reviews as context;
+numeric content variety is implemented, while task-responsibility variants here
+remain proposals.
 
 Preserve exact math → instruction → presentation, frozen per-episode schedules,
 immutable definition/task-data identity, honest assistance, accessible participation,

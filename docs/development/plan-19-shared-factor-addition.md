@@ -2,7 +2,7 @@
 id: plan-19
 title: Shared-Factor Addition
 status: draft
-depends_on: [plan-11, plan-12, plan-13, plan-14, plan-16, plan-22, plan-26]
+depends_on: [plan-11, plan-12, plan-13, plan-14, plan-16, plan-22, plan-26, plan-32]
 gate: "Requirement 0 mechanism confirmation before source work; technical and owner rendered-screen/agency acceptance; deployment separately authorized."
 superseded_by: null
 resolution: null
@@ -23,7 +23,7 @@ summary: >-
 - Packet type: feature
 - Mutation level: source / learner-facing local behavior
 - Approval gate: mechanism, technical and owner acceptance
-- Depends on: `plan-11`, `plan-12`, `plan-13`, `plan-14`, `plan-16`, `plan-22`, `plan-26` (learner reach through the existing goal's authored set)
+- Depends on: `plan-11`, `plan-12`, `plan-13`, `plan-14`, `plan-16`, `plan-22`, `plan-26` (learner reach), `plan-32` (accepted compact authoring/admission baseline)
 - Expected artifacts: vetted family/definition/registry increment, authored data, tests, routes, screenshots and report
 
 ## Goal and why this packet exists
@@ -42,9 +42,11 @@ path-closure repair are dependencies; nested addition is not. Both operands need
 renaming for 12 and 24 here, so the nested schedule choice cannot block this work.
 DECISION-035 adopts the small learner-goal model. Accepted Plans 21/26 supply the
 fixed authored-set lifecycle. Extend that existing goal through its Next control;
-do not add a family button. Plan 30's compact-authoring investigation can inform
-the mechanism without making a general engine rewrite a prerequisite. Serialize
-source changes with other packets.
+do not add a family button. Recommended sequencing on 2026-10-10 places Plan 32's
+bounded batch adoption before this family expansion. Reuse its accepted compact
+authoring/admission mechanism where applicable; propose only the shared-factor
+policy/definition extension needed here. Plan 32 is not a general engine rewrite.
+Serialize source changes with other packets.
 
 ## Authority and contracts
 

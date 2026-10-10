@@ -2,7 +2,7 @@
 id: plan-20
 title: Like-Denominator Addition and Notice Recovery
 status: draft
-depends_on: [plan-11, plan-12, plan-13, plan-14, plan-16, plan-22]
+depends_on: [plan-11, plan-12, plan-13, plan-14, plan-16, plan-22, plan-26]
 gate: "Requirement 0 mechanism confirmation before source work; technical and owner rendered-screen/agency acceptance; deployment separately authorized."
 superseded_by: null
 resolution: null
@@ -23,7 +23,7 @@ summary: >-
 - Packet type: feature
 - Mutation level: source / learner-facing local behavior
 - Approval gate: mechanism, technical and owner screen/agency acceptance
-- Depends on: `plan-11`, `plan-12`, `plan-13`, `plan-14`, `plan-16`, `plan-22`
+- Depends on: `plan-11`, `plan-12`, `plan-13`, `plan-14`, `plan-16`, `plan-22`, `plan-26`
 - Expected artifacts: vetted practice/definition, same-parts recovery copy, tests, routes, browser evidence and report
 
 ## Goal and why this packet exists
@@ -40,9 +40,9 @@ No redundant denominator choice or conversions, new simplify beat, subtraction,
 mixed numbers, generated draws, adaptive support/session policy or deployment.
 The accepted precursors and Plan 22's closure repair are dependencies; no other
 new family is a technical prerequisite. Execute source work one writer at a time.
-DECISION-035 settles the learner-goal model; Plan 21 supplies concrete selection
-reach. Record a dependency on its follow-on implementation if needed; do not add
-a family taxonomy button. This packet does not require every family to share
+DECISION-035 settles the learner-goal model; accepted Plan 26 supplies actual Next
+reach. Reuse that lifecycle and version the extended set; do not add a family
+taxonomy button. This packet does not require every family to share
 the canonical episode's number of controls or visual differences between profiles.
 
 ## Authority and contracts

@@ -2,12 +2,12 @@
 id: plan-17
 title: Crossing-One-Whole Addition
 status: draft
-depends_on: [plan-11, plan-12, plan-13, plan-14, plan-16, plan-22]
+depends_on: [plan-11, plan-12, plan-13, plan-14, plan-16, plan-22, plan-26]
 gate: "Requirement 0: approve semantic stack projection, answer withholding, capability bounds, registry identity, and measured layout mechanism before source work. Technical and owner rendered-screen/agency acceptance before completion; deployment separately authorized."
 superseded_by: null
 resolution: null
 summary: >-
-  Deliver the first new Phase 3 practice: unlike-denominator addition whose sum
+  Deliver a vetted Phase 3 practice: unlike-denominator addition whose sum
   exceeds one, using the decided discrete multi-whole stack. Preserve unit size,
   learner-supplied totals, existing conditions, and accessible participation.
 ---
@@ -23,7 +23,7 @@ summary: >-
 - Packet type: feature
 - Mutation level: source / learner-facing local behavior
 - Approval gate: mechanism, technical delivery, and owner screen/agency acceptance
-- Depends on: `plan-11`, `plan-12`, `plan-13`, `plan-14`, `plan-16`, `plan-22`
+- Depends on: `plan-11`, `plan-12`, `plan-13`, `plan-14`, `plan-16`, `plan-22`, `plan-26`
 - Expected artifacts: bounded content/interaction/render/app changes, tests and browser evidence, packet progress report
 
 ## Goal
@@ -42,13 +42,11 @@ levels, adaptive policy, session sequencing, persistence, and deployment are exc
 ## Depends on
 
 The entry and support writers, route harness, frozen schedule, and actual motion
-must be accepted first. Plan 11 is delivered and technically accepted after Repair 02; owner acceptance is pending; drafting this
-packet does not authorize starting it while that dependency is incomplete. Plan 22 repairs
-the live numeric-denominator coverage/capability dead end before expansion and
-before a combined public release. DECISION-035 settles the small learner-goal policy; Plan 21 supplies concrete
-labels and content-selection reach. If reaching the fixture requires the future
-Next problem control, record that dependency at the mechanism gate instead of
-adding a family button or broadening this packet. Other family packets are not
+must be accepted first; Plans 11/22/26 are now complete. Plan 22 supplies accepted
+numeric-denominator coverage/capability behavior. DECISION-035 settles the small
+learner-goal policy; accepted Plan 26 supplies actual Next reach. Extend that
+existing goal and version its set, rather than adding a family button. Reuse the
+accepted authoring baseline available at initiation. Other family packets are not
 technical dependencies. Implement source packets one writer at a time.
 
 ## Why this packet exists

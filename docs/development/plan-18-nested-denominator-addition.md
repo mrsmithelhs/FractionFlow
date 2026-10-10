@@ -49,8 +49,8 @@ its relatively-prime crossing content already passes today's instruction guard.
 The adopted nested policy is recorded in
 `reports/orchestration/nested-addition-policy-decision-brief.md`, independently of
 source delivery. DECISION-037 records the focused task; DECISION-035 records the learner-goal
-model. Plan 21 must make content-selection reach concrete before a new surface;
-record a real dependency if that requires its future implementation packet.
+model. Accepted Plan 26 supplies actual Next reach; extend and version that
+existing set rather than inventing another selection implementation.
 No hard dependency on another new family is asserted. Serialize shared source work;
 like-denominator execution first is useful but is a preferred order, not a blocker.
 

@@ -1,11 +1,9 @@
 ---
 id: plan-31
 title: Shared Fraction Typography
-status: draft
+status: in-progress
 depends_on: [plan-11, plan-26]
 gate: "Requirement 0 presentation mechanism confirmation before source work; technical and owner rendered-screen acceptance; deployment separately authorized."
-superseded_by: null
-resolution: null
 summary: >-
   Give bar readouts an intrinsically sized stacked fraction and reuse structured
   fraction notation in linear matching questions and buttons, preserving geometry,

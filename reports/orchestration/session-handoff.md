@@ -7,15 +7,19 @@ Orchestrator-owned; update in place before thread boundaries. Anchor dates, neve
 
 This snapshot supersedes older status/next-action passages below, which retain
 dated history. Use `docs/development/README.md` for the authoritative board.
-Plans 01–16, 21, 22, 24, 25 and 26 are complete; Plans 17–20, 23, 29 and 31
-are drafts. Owner initiated Plan 30 on 2026-10-10; it is delivered. See
+Plans 01–16, 21, 22, 24, 25, 26 and 30 are complete; Plans 17–20, 23, 29 and 32
+are drafts. Owner closed Plan 30 and initiated Plan 31 on 2026-10-10. See
 `plan-30-codex-implementer-handoff.md` for the report-only investigation and chat
 supervision brief. FF Impl 30 is started, resolved and messaged at Codex thread
 `01a12714-772e-77b2-8cf6-635658228611`. The owner directly authorized bidirectional
 Plan 30 supervision in this orchestration chat. Delivery commits are `136c988`
 and `1d58986`. Root reproduced the read-only experiment and technically accepted
 the investigation after inline reporting corrections; see its `delivery-review.md`.
-The implementer is stopped. Production adoption remains separately gated.
+The implementer is stopped; see Plan 30's owner disposition. Production adoption
+is draft Plan 32, with a varied batch replacing the earlier one-item recommendation.
+Plan 31 is in-progress with `plan-31-codex-implementer-handoff.md`; no implementer
+thread has yet been resolved. See `board-sequence-2026-10-10.md` for current order
+31 → 32 → 19 → 17 → 20 → 18 and independent Plans 23/29 placement.
 The current report removes a machine account identifier, but earlier local commit
 `1d58986` retains it; address publication hygiene before a public push.
 The non-Vue maintenance directions and revisit triggers are now explicit rows
@@ -44,16 +48,16 @@ Source work remains serialized.
 Plan 30's delivered investigation supports compact same-task authoring and
 deterministic batch validation at the accepted-Next checkpoint. Its current
 bounded space admits 18 ordered candidates (nine operand-swap classes), not a
-large learner-ready bank. A separate owner-approved adoption increment would
-prove a small materializer with one reviewed item; no production schema/refactor
-or extra live items are authorized. Plan 19's mechanism gate extends the
+large learner-ready bank. Draft Plan 32 proposes compact production authoring
+across a varied reviewed batch; membership and mechanism remain gated.
+Plan 19's mechanism gate extends the
 existing goal to shared-factor addition. Its brief now explicitly covers resolved
 registered per-item definitions, set revision/order/exhaustion and actual Next
-reach. Keep the family order 19 → 17 → 20 → 18; Plan 30 does not require a general
-engine rewrite or introduce an artificial family dependency. Draft Plan 31 is
+reach and reuses Plan 32's accepted authoring baseline. Keep the family order
+19 → 17 → 20 → 18; no general engine rewrite is required. Active Plan 31 is
 independent bounded typography: intrinsic fraction lines within reserved bar
 readout lanes, structured inline notation and linear matching buttons. No source
-work is initiated by these drafts; owner initiation and named mechanism gates
+work is initiated by the remaining drafts; owner initiation and named mechanism gates
 still apply. A read-only Plan 30 investigation may overlap a disjoint source
 packet, but source changes themselves remain single-writer.
 

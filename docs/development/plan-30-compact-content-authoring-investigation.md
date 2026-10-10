@@ -1,7 +1,8 @@
 ---
 id: plan-30
 title: Compact Content Authoring Investigation
-status: delivered
+status: complete
+resolution: "Owner accepted the independently verified compact-authoring investigation on 2026-10-10; production adoption is separately scoped to a bounded batch packet, not a one-item proof."
 depends_on: [plan-21, plan-26]
 gate: "Investigation only; owner/orchestrator acceptance of the proposed authoring and validation mechanism before production adoption."
 summary: >-
