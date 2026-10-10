@@ -17,8 +17,11 @@ and `1d58986`. Root reproduced the read-only experiment and technically accepted
 the investigation after inline reporting corrections; see its `delivery-review.md`.
 The implementer is stopped; see Plan 30's owner disposition. Production adoption
 is draft Plan 32, with a varied batch replacing the earlier one-item recommendation.
-Plan 31 is in-progress with `plan-31-codex-implementer-handoff.md`; no implementer
-thread has yet been resolved. See `board-sequence-2026-10-10.md` for current order
+Plan 31 is in-progress with `plan-31-codex-implementer-handoff.md`. FF Impl 31 is
+resolved at `01a1274f-4ecf-7c23-90ec-ef8cc5709520`; the owner directly authorized
+bidirectional supervision here. Root sent the coordination brief; the implementer
+is inspecting before its Requirement 0 proposal, with no source approval yet.
+See `board-sequence-2026-10-10.md` for current order
 31 → 32 → 19 → 17 → 20 → 18 and independent Plans 23/29 placement.
 The current report removes a machine account identifier, but earlier local commit
 `1d58986` retains it; address publication hygiene before a public push.
