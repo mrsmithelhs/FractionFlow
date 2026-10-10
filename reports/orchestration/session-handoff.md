@@ -10,9 +10,10 @@ dated history. Use `docs/development/README.md` for the authoritative board.
 Plans 01–16, 21, 22, 24, 25 and 26 are complete; Plans 17–20, 23, 29 and 31
 are drafts. Owner initiated Plan 30 on 2026-10-10; it is in-progress. See
 `plan-30-codex-implementer-handoff.md` for the report-only investigation and chat
-supervision brief. The owner will start the implementer; no FF Impl 30 thread
-has yet been resolved or messaged. Standing owner authorization permits Plan 30
-supervision once the intended thread exists; resolve it by exact title/identity.
+supervision brief. FF Impl 30 is started, resolved and messaged at Codex thread
+`01a12714-772e-77b2-8cf6-635658228611`. The owner directly authorized bidirectional
+Plan 30 supervision in this orchestration chat. Its initial scope aligns; root
+sent bounded evidence clarifications. Reports/experiments are its sole write scope.
 The non-Vue maintenance directions and revisit triggers are now explicit rows
 in the Phase 3 follow-up register, informed by the maintainability review disposition.
 They do not expand Plan 30's write scope or initiate other source work.
