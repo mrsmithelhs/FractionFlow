@@ -2,10 +2,10 @@
 
 ## Disposition
 
-One bounded focus repair is required before closure. The interaction mechanism,
-legacy compatibility and reviewed learner copy otherwise have no confirmed blocker.
-Plan status is unchanged. The correction has been sent to FF Impl 25 under the
-owner's existing bidirectional communication authorization.
+Accepted after the bounded focus repair in `24b2297`, reported in `ab7612e`.
+The interaction mechanism, legacy compatibility, learner copy and repaired mounted
+focus behavior satisfy the applicable delivery gates. The initial finding and its
+independent reproduction are retained below; final repair evidence follows them.
 
 Owner authority was checked directly in the implementer chat: the owner said
 “I like the edit,” asked whether help was mandatory, received the correct optional-
@@ -14,7 +14,7 @@ agrees. This permits closure after technical repair; no additional owner decisio
 is needed for the focus correction. It does not authorize deployment or establish
 physical-device, assistive-technology or learner-observation evidence.
 
-## P2 — Opening requested help loses keyboard focus
+## P2 — Opening requested help loses keyboard focus (repaired)
 
 At `src/app/app.js:374–375`, opening transform help dispatches the scoped request
 without focusing its remounted response. The render-token change removes the active
@@ -62,7 +62,7 @@ checks support withholding; the literal checks alone do not prove it. Zero,
 noncanonical and stale-right-factor behavior were independently probed, rather
 than claimed as committed regression coverage. These are nonblocking coverage limits.
 
-## Limits and next action
+## Limits
 
 Browser observations use desktop Edge and emulated viewports; no physical Chromebook,
 native mobile keyboard, assistive-technology or learning-efficacy claim follows.
@@ -70,5 +70,32 @@ The requested advisor model was not independently attested. Existing approved
 accepted-factor copy remains; alternative subdivision copy is not a closure condition.
 No source was edited by orchestration, and no push or deployment was performed.
 
-Re-review the bounded focus repair, then close with a written packet resolution if
-it passes. Keep the owner acceptance and technical evidence distinct in that record.
+## Repair re-review and closure — 2026-10-09
+
+Reviewed the committed repair: only the transform-help opening branch adds a focus
+handoff to the connected current response after dispatch. Close-button behavior,
+copy, math, instructional state and unrelated renders remain unchanged. Existing
+visual requested-help evidence is strengthened and a linear focus route is added.
+
+- Independently reran the focused app-shell, task-help and route-contract suites:
+  3 files / 48 tests passed against the repaired source.
+- Independently exercised the repaired production build in real Edge with keyboard
+  activation and clicks: 16 operand cases spanning both operands, targets 12/24,
+  visual/linear views and standard/reduced motion. All 64 connected, visible,
+  active-element assertions passed through opening, incorrect-state reopening,
+  accepted-factor handoff and accepted-state reopening. Nonempty main and multiplier
+  drafts survived the transitions; multiplier acceptance did not submit conversion.
+- Independently completed two non-drag touch-context helper journeys, visual and
+  linear, with reduced motion. Values were filled after tapping inputs; this does
+  not establish native mobile-keyboard behavior or physical-device participation.
+- Implementer's repaired full suite/build/lint/diff evidence passes; full browser
+  matrix is 53/53 executions across 51 rows. Failing-first assertions rejected the
+  old focus behavior in mounted and real-browser checks before the fix.
+- Reviewed narrow requested/recovery screenshots and the 1280×800 requested screen
+  for actual visible copy and placement. The focus-only repair did not change them.
+
+No remaining blocking defect was found. Owner acceptance and conditional closure
+authority were independently verified from the direct human turns described above.
+Plan 25 may be marked complete with its written resolution. This accepts the bounded
+optional-help delivery, not alternative subdivision wording, new content, efficacy,
+physical-device/AT claims or publication. The existing coverage limits remain recorded.

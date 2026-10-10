@@ -1,7 +1,8 @@
 ---
 id: plan-25
 title: Requested Equivalent Fraction Conversion Help
-status: in-progress
+status: complete
+resolution: "Owner accepted the helper edit and authorized orchestrator closure. Technical delivery accepted on 2026-10-09 after focus repair 24b2297 and independent mounted-browser re-review; requested assistance remains optional, main conversion remains learner-submitted, and legacy replay is preserved. Physical-device and assistive-technology limits remain documented; deployment is separately authorized. See reports/development/plan-25-equivalent-fraction-conversion-help/delivery-review.md."
 depends_on: [plan-24]
 gate: "Requirement 0: investigate current transform help and propose compact learner-driven conversion substeps; stop before source work. Technical and owner rendered-screen/agency acceptance; deployment separately authorized."
 summary: >-
@@ -97,15 +98,15 @@ Investigate/propose → mechanism gate → bounded source implementation → dis
 unit/browser evidence and rendered review artifacts → tests/build/routes/lint/diff
 → behavioral advisor review/disposition → scoped commits and final report.
 
-- [ ] Required artifacts and `reports/development/plan-25-equivalent-fraction-conversion-help/progress.md` exist.
-- [ ] Both sides and 12/24 targets use correct dynamic relationships.
-- [ ] Wrong multiplier and wrong numerator produce usable local recovery.
-- [ ] Learner contribution, no premature answer disclosure, retained input and close/focus behavior are proven.
-- [ ] Assisted provenance and legacy replay compatibility match the approved mechanism.
-- [ ] Retry/return remove helper state; existing completion and motion routes remain valid.
-- [ ] Screenshots/measurements demonstrate local help placement and restrained copy.
-- [ ] Appropriate tests/build/routes, packet lint and diff check pass; no unrelated changes.
-- [ ] Mechanism gate honored, advisor disposition and evidence limits recorded.
+- [x] Required artifacts and `reports/development/plan-25-equivalent-fraction-conversion-help/progress.md` exist.
+- [x] Both sides and 12/24 targets use correct dynamic relationships.
+- [x] Wrong multiplier and wrong numerator produce usable local recovery.
+- [x] Learner contribution, no premature answer disclosure, retained input and close/focus behavior are proven.
+- [x] Assisted provenance and legacy replay compatibility match the approved mechanism.
+- [x] Retry/return remove helper state; existing completion and motion routes remain valid.
+- [x] Screenshots/measurements demonstrate local help placement and restrained copy.
+- [x] Appropriate tests/build/routes, packet lint and diff check pass; no unrelated changes.
+- [x] Mechanism gate honored, advisor disposition and evidence limits recorded.
 
 Implementer may not set status or edit owner/orchestrator dispositions. Stop on
 load-bearing policy or structural uncertainty. Stage explicit paths, never push,
