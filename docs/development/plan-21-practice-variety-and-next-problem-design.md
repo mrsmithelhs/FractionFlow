@@ -1,11 +1,9 @@
 ---
 id: plan-21
 title: Practice Variety and Next-Problem Design
-status: draft
+status: in-progress
 depends_on: [plan-10, plan-12, plan-13, plan-14, plan-16]
 gate: "DECISION-035/040 adopt small learner goals and a vetted authored set with learner-triggered Next. Propose concrete mapping, selection, exhaustion and reset semantics for owner acceptance before implementation. This investigation can proceed before new families are delivered and does not activate content or close OQ-23."
-superseded_by: null
-resolution: null
 summary: >-
   Prepare Roadmap section 30 and OQ-23: operationalize the adopted learner
   practice type, then inventory demonstrated and candidate content and a bounded authored-set selection policy
