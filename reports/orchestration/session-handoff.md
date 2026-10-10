@@ -8,7 +8,8 @@ Orchestrator-owned; update in place before thread boundaries. Anchor dates, neve
 This snapshot supersedes older status/next-action passages below, which retain
 dated history. Use `docs/development/README.md` for the authoritative board.
 Plans 01–16, 21, 22, 24 and 25 are complete; Plans 17–20, 23 and 29 are drafts.
-The owner initiated Plan 26 at `9b25ddd`; it is delivered, pending Repair 02.
+The owner initiated Plan 26 at `9b25ddd`; it is delivered and technically accepted,
+pending owner rendered-screen/agency acceptance.
 Its execution mechanism was approved 2026-10-10; implementation/report arrived
 at `92e13db` / `aed852a`. See its `delivery-review.md` and `repair-01.md`:
 matching admission misses the renderers' choice-count/bar-range contract, and
@@ -18,6 +19,11 @@ Repair 01 arrived at `ac0078a` / `0a0c9c3`: admission is accepted and root
 independently reran all five evidence journeys/two sizes plus refusal. See
 `repair-01-review.md` / `repair-02.md` for the remaining evidence-only touch,
 snapshot and dirty-second-item reset checks. No product source change is requested.
+Repair 02 arrived at `7e9ed1e` / `628bab1`; `repair-02-review.md` accepts the
+technical delivery. Root reran five journeys/two sizes/refusals with 184 records
+and 100 confirmed taps plus 18 focused/replay tests. Owner's inline stacked-fraction
+suggestion is a separate presentation follow-up; no Plan 26 renderer expansion
+was authorized. FF Impl 26 should stop pending owner acceptance/new assignment.
 FF Impl 26 is the authorized source writer; source work remains serialized.
 
 Plan 25 is technically and owner accepted after the open-help focus repair:
