@@ -10,7 +10,7 @@
 
 Completed the bounded investigation and reproducible offline experiment. The final sweep uses the complete `curated-review/1` relatively-prime addition candidate space under the existing representation limits. All 220 ordered candidates passed the existing exact/content validator, but only 18 ordered candidates (9 swap-equivalent cases) retain both required representation-eligible paths. Those 18 received experimental recipe-generated premise and matching data that passed the existing component checks on all 36 routes. The experiment does not register, app-admit, execute, or approve any of those candidates.
 
-The observed scale opportunity is data repetition: this experiment serialized 18 full-path explicit records in 26,434 bytes versus 5,634 bytes for compact item inputs plus one recipe description. The 78.7% byte reduction is not evidence of equivalent authoring time, pedagogical quality, or readiness. Selecting the intentionally incorrect premise route is itself an instructional policy; the experiment chose it by a stable hash solely to make a reviewable proposal. A human must approve or replace that choice and review the distractors before a follow-on implementation.
+The observed scale opportunity is data repetition: this experiment serialized abbreviated explicit fixture/path summaries in 26,434 bytes versus 5,634 bytes for compact item inputs plus one recipe description. The summaries omit full premise metadata and the description excludes executable recipe code. The 78.7% byte reduction is not a comparison of equivalent complete production records or evidence of equivalent authoring time, pedagogical quality, or readiness. Selecting the intentionally incorrect premise route is itself an instructional policy; the experiment chose it by a stable hash solely to make a reviewable proposal. A human must approve or replace that choice and review the distractors before a follow-on implementation.
 
 Plan 26's one-time set/Next/reset/focus/replay lifecycle is independent of each additional item's data. Existing math, representation, authored-data, path-closure, and app admission checks form distinct layers. A latent two-versus-three-choice contract mismatch and acceptance of repeated distractor forms under distinct IDs are documented. Current registered content passed the constituent pre-install checks used by app admission, but no proposed item was run through a mounted app or browser.
 
@@ -18,7 +18,7 @@ Plan 26's one-time set/Next/reset/focus/replay lifecycle is independent of each 
 
 - `investigation.md` — source-backed inventory, finite-space outcomes, explicit-versus-recipe comparison, human review boundary, validator gaps, smallest proposed adoption increment, and executed/proposed coverage split.
 - `experiment.mjs` — self-contained deterministic evidence runner using existing exported production mechanisms. Default `--verify` recomputes results and checks byte equality without rewriting the committed evidence. `--write-results` explicitly regenerates `results.json`.
-- `results.json` — exact candidate/path output, registered baseline checks, three paired explicit/compact examples, byte comparison, and corruption controls.
+- `results.json` — aggregate candidate/path counts, registered baseline checks, three paired explicit/compact examples, byte comparison, and corruption controls.
 - This progress report.
 
 Non-progress artifacts were committed in `136c988` (`docs: investigate Plan 30 compact authoring`).
@@ -73,7 +73,7 @@ The advisor made no filesystem changes. Immediately after consultation, `git sta
 
 ## Commit discipline and environment
 
-The initial harmless `git add --refresh -- .` probe failed with `.git/index.lock: Permission denied`. Read-only inspection confirmed the lock was absent and the effective identity was `bonfire\orion`. I used the repo-approved elevated commands with explicit paths to stage the three evidence artifacts and commit them. No lock was deleted, no ACL was changed, and no unowned path was staged. This `progress.md` is being committed separately as the final work commit.
+The initial harmless `git add --refresh -- .` probe failed with `.git/index.lock: Permission denied`. Read-only inspection confirmed the lock was absent and inspected the effective identity. I used the repo-approved elevated commands with explicit paths to stage the three evidence artifacts and commit them. No lock was deleted, no ACL was changed, and no unowned path was staged. This `progress.md` is being committed separately as the final work commit.
 
 ## Limits, follow-up, and review readiness
 

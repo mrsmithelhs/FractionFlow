@@ -8,12 +8,16 @@ Orchestrator-owned; update in place before thread boundaries. Anchor dates, neve
 This snapshot supersedes older status/next-action passages below, which retain
 dated history. Use `docs/development/README.md` for the authoritative board.
 Plans 01–16, 21, 22, 24, 25 and 26 are complete; Plans 17–20, 23, 29 and 31
-are drafts. Owner initiated Plan 30 on 2026-10-10; it is in-progress. See
+are drafts. Owner initiated Plan 30 on 2026-10-10; it is delivered. See
 `plan-30-codex-implementer-handoff.md` for the report-only investigation and chat
 supervision brief. FF Impl 30 is started, resolved and messaged at Codex thread
 `01a12714-772e-77b2-8cf6-635658228611`. The owner directly authorized bidirectional
-Plan 30 supervision in this orchestration chat. Its initial scope aligns; root
-sent bounded evidence clarifications. Reports/experiments are its sole write scope.
+Plan 30 supervision in this orchestration chat. Delivery commits are `136c988`
+and `1d58986`. Root reproduced the read-only experiment and technically accepted
+the investigation after inline reporting corrections; see its `delivery-review.md`.
+The implementer is stopped. Production adoption remains separately gated.
+The current report removes a machine account identifier, but earlier local commit
+`1d58986` retains it; address publication hygiene before a public push.
 The non-Vue maintenance directions and revisit triggers are now explicit rows
 in the Phase 3 follow-up register, informed by the maintainability review disposition.
 They do not expand Plan 30's write scope or initiate other source work.
@@ -37,9 +41,12 @@ suggestion is a separate presentation follow-up; no Plan 26 renderer expansion
 was authorized. FF Impl 26's assignment is closed; no next source writer is assigned.
 Source work remains serialized.
 
-Active next investigation: Plan 30 investigates compact same-task authoring and
-deterministic batch validation at the accepted-Next checkpoint; no production
-schema/refactor or extra live items. Then Plan 19's mechanism gate extends the
+Plan 30's delivered investigation supports compact same-task authoring and
+deterministic batch validation at the accepted-Next checkpoint. Its current
+bounded space admits 18 ordered candidates (nine operand-swap classes), not a
+large learner-ready bank. A separate owner-approved adoption increment would
+prove a small materializer with one reviewed item; no production schema/refactor
+or extra live items are authorized. Plan 19's mechanism gate extends the
 existing goal to shared-factor addition. Its brief now explicitly covers resolved
 registered per-item definitions, set revision/order/exhaustion and actual Next
 reach. Keep the family order 19 → 17 → 20 → 18; Plan 30 does not require a general

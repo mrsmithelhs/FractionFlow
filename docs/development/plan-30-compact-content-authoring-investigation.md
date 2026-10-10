@@ -1,7 +1,7 @@
 ---
 id: plan-30
 title: Compact Content Authoring Investigation
-status: in-progress
+status: delivered
 depends_on: [plan-21, plan-26]
 gate: "Investigation only; owner/orchestrator acceptance of the proposed authoring and validation mechanism before production adoption."
 summary: >-
