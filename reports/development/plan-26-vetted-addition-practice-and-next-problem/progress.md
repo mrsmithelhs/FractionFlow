@@ -158,3 +158,108 @@ Implementation and evidence are ready for FF Orch 12+ technical review and the
 separate owner rendered-screen/agency acceptance. This report does not assert
 independent transfer, physical-device or assistive-technology performance,
 publication readiness, or Plan 26 completion. No push or deploy occurred.
+
+## Repair 01 update — technical submission for re-review
+
+Date: 2026-10-10. This addendum records the bounded repair authorized in
+`repair-01.md`. The root-controlled packet status remains `delivered`; no status,
+owner decision, review disposition, publication or deployment was changed.
+DECISION-041 remains accepted, and no additional practice content or selection
+behavior was introduced.
+
+### Admission and transactional refusal
+
+`validateAuthoredMatchingChoices` now requires at least three choices and checks
+the supported fraction-bar range before mathematical equivalence: safe-integer
+numerator and denominator, numerator from zero through denominator, and positive
+denominator. This matches the existing visual renderer's contract while
+preserving exact wire/math validation, choice identity and the exactly-one-
+equivalent rule.
+
+Failing-first tests showed that two choices did not previously throw and that a
+mounted Next accepted the corrupt second item. The repaired tests cover both a
+two-choice fault and a 7/6 distractor. Before Next, they save the completed first
+episode and replay envelope; after refusal, both identities remain unchanged,
+the refusal notice receives focus, and Retry and return remain enabled. Clearing
+the test-only module fault permits a successful Next. No production fault flag
+or test data was added.
+
+Admission tests also reject a negative numerator, unsafe integer numerator or
+denominator, noninteger numerator, and a nonpositive denominator. They accept
+the inclusive presentation boundaries 0/6 and 6/6. The checks keep the exact
+fraction contract separate from the renderer's bounded fraction-bar range.
+
+The reset regression now accumulates a wrong notice response, accepted
+conversion work, an incorrect equivalent numerator, task-local help and a
+multiplier draft, and active Replay state. Retry is compared by full deep
+equality with an independently constructed fresh episode; the draft, recovery
+feedback and Replay state are cleared.
+
+### Browser evidence
+
+The new reproducible Edge script is
+`evidence/capture-plan26-repair-01.mjs`. It runs five representative journeys
+across the four registered conditions and collectively covers both views,
+support profiles, standard/reduced motion, second-item denominators 6 and 12,
+and both premise outcomes. It includes a keyboard journey that tabs from the
+view control to Next before activating it with Enter, a
+touch-enabled context using actual non-drag `touchscreen.tap` for Next, Retry,
+return/re-entry, exhaustion and both corrupt-data refusal cases. Browser text
+entry is automated.
+
+The runner writes only selected journey metadata and names filtered outputs
+separately. A refusal-only capture wrote its own file while the canonical
+five-journey measurement file remained unchanged.
+
+The refusal browser harness changes only the served JavaScript response in
+memory to simulate each corrupt authored record. It confirms that the completed
+reflection remains rendered, refusal copy is concise, focus moves to the notice,
+Retry and return remain available, and view/motion rerenders do not repeatedly
+steal focus. The separate mounted module-fault tests establish replay identity
+preservation and same-app recovery after the injected fault is cleared.
+
+The Edge run produced 64 screenshots and 78 measurement/focus records in
+`evidence/`. Captures record CSS viewport, default zoom context, device-pixel
+ratio, view, condition, support, motion, current scroll position, question and
+control boxes, navigation, expression, document overflow, and visible copy.
+Each journey is represented at 360x740 and 1366x768. Screens include the new
+item, reflection before response, completed/Next-ready first item, exhaustion,
+refusal and Retry's pre-reset work; additional records capture reflection
+controls at the initial and scrolled positions. Screens reviewed at both sizes
+show no duplicated lesson heading, exposed matching answer or spent Next state.
+The narrow reflection controls extend below the first viewport but become fully
+reachable by ordinary scrolling. All captures report zero horizontal overflow.
+
+The route matrix was not edited. Parsed rows excluding the three existing
+Plan 26 rows compare equal and in order to all 51 rows at `318c79f`.
+
+### Repair verification and limits
+
+- Focused Plan 26 suite: 10 tests passed, including both failing-first admission
+  cases, mounted faults, refusal and recovery.
+- Full suite: 28 test files and 321 tests passed.
+- `npm run build`: learner and subtraction-prototype builds passed.
+- Full Edge matrix: 56 executions passed across 54 route rows.
+- `node scripts/dev/plan-status.js lint`: passed.
+- `git diff --check`: passed.
+- Baseline comparison: all 51 pre-Plan 26 route rows equal `318c79f`.
+
+Edge viewport evidence is not physical Chromebook or mobile-device evidence.
+Automated text entry is not native mobile-keyboard evidence. No assistive-
+technology behavior, learning transfer, engagement or publication readiness is
+claimed. Owner rendered-screen/agency acceptance remains separate from this
+technical repair submission.
+
+### Advisor consultation disposition
+
+Repair 01 used a read-only higher-tier reviewer. The reviewer found no blocking
+source or mounted-test defect and identified a low-priority evidence-runner
+issue: a filtered run could write a partial journey list to the canonical
+measurement path. That correction is applied: filtered runs now record their
+filter and selected journeys in a separate filename, while a full run alone
+writes the canonical file. The reviewer also recommended tighter numeric-range
+cases and keyboard navigation that does not rely on Playwright's locator
+auto-focus; both were added. I reran the full suite, build, route matrix and
+full browser evidence after these corrections. The reviewer did not independently
+rerun those commands. The reviewer did not receive permission to edit files,
+change packet status, publish or deploy.
