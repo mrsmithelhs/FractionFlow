@@ -43,6 +43,12 @@ authorizes bidirectional proposals/results, corrections and clarifications with
 FF Orch 12+. FF Impl 21 and FF Impl 25 have stopped their scoped work. No other
 source writer, push or deployment is authorized by the Plan 26 mechanism approval.
 
+Harness delivery note, 2026-10-10: initial outbound approval attempts were rejected
+because read_thread owner authorization was not accepted as trusted sending-chat
+permission. The owner directly confirmed “Authorize messaging FF Impl 26” here;
+the approval message then succeeded. Record sender receipt separately from
+implementation completion; do not repeat the resolved permission loop.
+
 First revision 2026-09-18. Rewritten 2026-09-19 when the specification phase closed. **Rewritten again
 2026-09-29** at an orchestrator change: the prior revision stopped at `plan-09` Repair 01 on
 2026-09-20, before Phase 2 closed, and patching it would have left a file describing a phase that no

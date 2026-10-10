@@ -100,3 +100,13 @@ motion/Inspection Mode focus regressions. Keep counts and coverage limits explic
 Apply the inherited advisor declaration/disposition and scoped commit discipline;
 progress.md remains the implementer's final commit. Stop at delivery review and
 owner rendered/agency acceptance. No push or deployment.
+
+## Approval delivery — 2026-10-10
+
+Automatic approval review rejected two attempts to send this approval: it did not
+accept the owner's authorization retrieved from FF Impl 26 as trusted permission
+in the sending chat. Root stopped retries and requested direct confirmation here.
+The owner answered “Authorize messaging FF Impl 26.” The same-destination approval
+message then succeeded through send_message_to_thread. This confirms sender receipt,
+not completed implementation or independent receiver action. The implementation
+may proceed within this committed disposition; the source/acceptance limits remain.
