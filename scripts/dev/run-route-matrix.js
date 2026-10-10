@@ -1838,6 +1838,44 @@ async function verifyAssertions(page, assertions, routeId) {
   for (const assertion of assertions) {
     const { type, target, value, attribute } = assertion;
 
+    if (type === 'viewportLayout') {
+      const metrics = await page.evaluate((selectors) => {
+        const describe = (selector) => {
+          const element = selector ? document.querySelector(selector) : null;
+          if (!element) return null;
+          const box = element.getBoundingClientRect();
+          return {
+            x: Math.round(box.x * 100) / 100,
+            y: Math.round(box.y * 100) / 100,
+            width: Math.round(box.width * 100) / 100,
+            height: Math.round(box.height * 100) / 100,
+            visible: box.width > 0 && box.height > 0,
+          };
+        };
+        const root = document.documentElement;
+        return {
+          viewport: { width: window.innerWidth, height: window.innerHeight },
+          document: { width: root.scrollWidth, height: root.scrollHeight },
+          scroll: { x: window.scrollX, y: window.scrollY },
+          horizontalOverflow: root.scrollWidth > root.clientWidth,
+          verticalScrollRange: Math.max(0, root.scrollHeight - root.clientHeight),
+          elements: Object.fromEntries(Object.entries(selectors).map(([name, selector]) => (
+            [name, describe(selector)]
+          ))),
+        };
+      }, assertion.selectors || {});
+      if (assertion.requireNoHorizontalOverflow && metrics.horizontalOverflow) {
+        throw new Error(`Route "${routeId}" has horizontal document overflow: ${JSON.stringify(metrics)}`);
+      }
+      for (const [name, geometry] of Object.entries(metrics.elements)) {
+        if (assertion.requireVisibleElements && (!geometry || !geometry.visible)) {
+          throw new Error(`Route "${routeId}" is missing visible viewport element "${name}": ${JSON.stringify(metrics)}`);
+        }
+      }
+      console.log(`Viewport measure ${routeId}: ${JSON.stringify(metrics)}`);
+      continue;
+    }
+
     if (type === 'activeElementEquals') {
       const activeDesc = await page.evaluate(() => {
         const el = document.activeElement;

@@ -5,6 +5,7 @@ export * from './profiles.js';
 export * from './eligibility.js';
 export * from './data/reflection-choices.js';
 export * from './data/premise-checks.js';
+export * from './authored-task-data.js';
 export * from './generator.js';
 export * from './validation.js';
 export * from './curated.js';

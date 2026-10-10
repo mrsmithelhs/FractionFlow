@@ -38,6 +38,41 @@ export const REFLECTION_CHOICES_BY_FIXTURE = deepFreeze({
       },
     ],
   },
+  'curated-relatively-prime-addition-one-half-one-third': {
+    '6': [
+      {
+        id: 'match-a',
+        form: { kind: 'fraction', numerator: '2', denominator: '6' },
+      },
+      {
+        id: 'match-b',
+        form: { kind: 'fraction', numerator: '3', denominator: '6' },
+      },
+      {
+        id: 'match-c',
+        form: { kind: 'fraction', numerator: '4', denominator: '6' },
+      },
+    ],
+    '12': [
+      {
+        id: 'match-a',
+        form: { kind: 'fraction', numerator: '5', denominator: '12' },
+      },
+      {
+        id: 'match-b',
+        form: { kind: 'fraction', numerator: '6', denominator: '12' },
+      },
+      {
+        id: 'match-c',
+        form: { kind: 'fraction', numerator: '7', denominator: '12' },
+      },
+    ],
+  },
+});
+
+const AUTHORED_REVISIONS_BY_FIXTURE = deepFreeze({
+  'curated-relatively-prime-addition-non-least': 'plan03-fixtures-v1',
+  'curated-relatively-prime-addition-one-half-one-third': 'plan26-fixtures-v1',
 });
 
 /**
@@ -48,6 +83,8 @@ export const REFLECTION_CHOICES_BY_FIXTURE = deepFreeze({
  */
 export function reflectionChoicesForInstance(instance, establishedDenominator) {
   const fixtureId = instance?.provenance?.fixtureId;
+  const authoringRevision = instance?.provenance?.authoringRevision;
+  if (!fixtureId || AUTHORED_REVISIONS_BY_FIXTURE[fixtureId] !== authoringRevision) return null;
   const choicesByDenominator = REFLECTION_CHOICES_BY_FIXTURE[fixtureId];
   if (!choicesByDenominator) return null;
   return choicesByDenominator[String(establishedDenominator)] ?? null;

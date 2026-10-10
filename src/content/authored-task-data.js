@@ -1,0 +1,83 @@
+import { equalFractions } from '../math/fraction.js';
+import { wireToForm } from './schema.js';
+import { evaluateInstanceEligibility } from './eligibility.js';
+import { premiseCheckForInstance } from './data/premise-checks.js';
+import { reflectionChoicesForInstance } from './data/reflection-choices.js';
+
+function sameFraction(left, right) {
+  return equalFractions(wireToForm(left), wireToForm(right));
+}
+
+function requireValid(condition, message) {
+  if (!condition) throw new TypeError(message);
+}
+
+export function validateAuthoredPremiseCase(instance, premise, targetDenominator) {
+  requireValid(premise, `missing premise data for denominator ${targetDenominator}`);
+  requireValid(premise.fixtureId === instance.provenance.fixtureId
+    && premise.targetDenominator === targetDenominator,
+  `premise identity mismatch for denominator ${targetDenominator}`);
+  requireValid(sameFraction(premise.sourceForm, instance.operands.left.initialForm),
+    `premise source mismatch for denominator ${targetDenominator}`);
+  requireValid(premise.presentedForm?.denominator === targetDenominator,
+    `premise form denominator mismatch for ${targetDenominator}`);
+  const actuallyEquivalent = sameFraction(premise.sourceForm, premise.presentedForm);
+  const expectedResponse = actuallyEquivalent ? 'yes' : 'no';
+  requireValid(premise.isEquivalent === actuallyEquivalent
+    && premise.expectedResponse === expectedResponse,
+  `premise truth mismatch for denominator ${targetDenominator}`);
+  return expectedResponse;
+}
+
+export function validateAuthoredMatchingChoices(sourceForm, choices, targetDenominator) {
+  requireValid(Array.isArray(choices) && choices.length >= 2,
+    `missing matching choices for denominator ${targetDenominator}`);
+  const choiceIds = new Set();
+  let equivalentChoices = 0;
+  for (const choice of choices) {
+    requireValid(typeof choice.id === 'string' && choice.id.length > 0
+      && !choiceIds.has(choice.id),
+    `matching choice identity is invalid for denominator ${targetDenominator}`);
+    choiceIds.add(choice.id);
+    requireValid(choice.form?.kind === 'fraction'
+      && choice.form.denominator === targetDenominator,
+    `matching choice form is invalid for denominator ${targetDenominator}`);
+    if (sameFraction(choice.form, sourceForm)) equivalentChoices += 1;
+  }
+  requireValid(equivalentChoices === 1,
+    `matching choices must contain exactly one equivalent form for ${targetDenominator}`);
+  return true;
+}
+
+/**
+ * Validate the fully-authored premise and matching tasks for every admitted
+ * denominator path. This is an authoring/admission check, not scene logic.
+ */
+export function validateAuthoredTaskData(instance, expectedDenominators) {
+  requireValid(Array.isArray(expectedDenominators) && expectedDenominators.length > 0,
+    'authored task denominators must be a non-empty list');
+
+  const eligibility = evaluateInstanceEligibility(instance);
+  const eligiblePaths = [eligibility.paths.canonical, ...eligibility.paths.alternates]
+    .filter((path) => path.rendering === 'eligible')
+    .map((path) => path.targetDenominator);
+  requireValid(
+    JSON.stringify([...eligiblePaths].sort((a, b) => Number(a) - Number(b)))
+      === JSON.stringify([...expectedDenominators].sort((a, b) => Number(a) - Number(b))),
+    `eligible path identity mismatch for ${instance?.provenance?.fixtureId}`,
+  );
+
+  const sourceForm = instance.operands.left.initialForm;
+  const premiseAnswers = new Set();
+  for (const targetDenominator of expectedDenominators) {
+    const premise = premiseCheckForInstance(instance, targetDenominator);
+    premiseAnswers.add(validateAuthoredPremiseCase(instance, premise, targetDenominator));
+
+    const choices = reflectionChoicesForInstance(instance, targetDenominator);
+    validateAuthoredMatchingChoices(sourceForm, choices, targetDenominator);
+  }
+
+  requireValid(premiseAnswers.has('yes') && premiseAnswers.has('no'),
+    'authored premise paths must include both yes and no outcomes');
+  return true;
+}

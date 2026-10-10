@@ -3402,6 +3402,144 @@
         {"type":"notHasSelector","target":".app-visual-view #transform-help-multiplier-left"}
       ]},
       "negativeControl":{"targetRouteId":"ROUTE-PLAN25-TRANSFORM-HELP-REQUESTED","comparison":"notIdenticalCapture","sameMotionMode":true}
+    },
+    {
+      "id": "ROUTE-PLAN26-NEXT-WAITS-FOR-COMPLETION",
+      "behavior": "The fixed first item has no Next control while active, including after reaching reflection before the learner completes it.",
+      "configuration": "phase2-bundle-1",
+      "startingSurface": "mounted-app-entry",
+      "viewport": {"width":360,"height":740},
+      "motionMode": "standard-motion",
+      "witness": "browser",
+      "actions": [
+        {"step":1,"method":"click","target":".app-practice-button","description":"Start the first vetted item"},
+        {"step":2,"method":"click","target":".app-visual-view .control-btn","description":"Acknowledge the addition"},
+        {"step":3,"method":"click","target":".app-visual-view .control-choice-btn >> nth=1","description":"Notice different-sized parts"},
+        {"step":4,"method":"click","target":".app-visual-view .control-choice-btn >> nth=0","description":"Choose the first item's canonical twelfths"},
+        {"step":5,"method":"fill","target":".app-visual-view input.control-numeric-input","value":"8","description":"Rename the first fraction"},
+        {"step":6,"method":"click","target":".app-visual-view .control-submit-btn","description":"Accept the first rename"},
+        {"step":7,"method":"fill","target":".app-visual-view input.control-numeric-input","value":"3","description":"Rename the second fraction"},
+        {"step":8,"method":"click","target":".app-visual-view .control-submit-btn","description":"Accept the second rename"},
+        {"step":9,"method":"fill","target":".app-visual-view input.control-numeric-input","value":"11","description":"Add the renamed parts"},
+        {"step":10,"method":"click","target":".app-visual-view .control-submit-btn","description":"Submit the total"},
+        {"step":11,"method":"click","target":".app-visual-view .control-btn","description":"Continue to reflection"},
+        {"step":12,"method":"scrollIntoView","target":".app-return-button","description":"Use ordinary page scrolling to bring the recovery action into view"},
+        {"step":13,"method":"assert","assertions":[
+          {"type":"notHasSelector","target":".app-next-button:not([hidden])"},
+          {"type":"hasSelector","target":".app-visual-view .matching-choice-btn"},
+          {"type":"visibleGeometry","target":".app-visual-view .matching-choice-btn","minWidth":50,"minHeight":40},
+          {"type":"visibleGeometry","target":".app-return-button","minWidth":50,"minHeight":40}
+        ],"description":"Keep Next absent until reflection is completed"}
+      ],
+      "expect":{"capture":{"target":".app-visual-view","type":"innerHTML"},"assertions":[
+        {"type":"notHasSelector","target":".app-next-button:not([hidden])"},
+        {"type":"hasSelector","target":".app-visual-view .matching-choice-btn"},
+        {"type":"viewportLayout","requireNoHorizontalOverflow":true,"requireVisibleElements":true,"selectors":{
+          "question":".app-visual-view .active-beat-prompt",
+          "controls":".app-visual-view .active-beat-controls",
+          "fractionTrack":".app-visual-view .fraction-bar-track",
+          "viewToggle":".app-view-toggle"
+        }}
+      ]}
+    },
+    {
+      "id": "ROUTE-PLAN26-TWO-ITEMS-NEXT-EXHAUSTION-RETURN",
+      "behavior": "Mounted controls complete the first item, advance to different operand forms, finish the alternate twelfths path, focus exhaustion, return, and re-enter the stable first item.",
+      "configuration": "phase2-bundle-1",
+      "startingSurface": "mounted-app-entry",
+      "viewport": {"width":360,"height":740},
+      "motionMode": "standard-motion",
+      "witness": "browser",
+      "actions": [
+        {"step":1,"method":"click","target":".app-practice-button","description":"Start the first vetted item"},
+        {"step":2,"method":"click","target":".app-visual-view .control-btn","description":"Acknowledge the first addition"},
+        {"step":3,"method":"click","target":".app-visual-view .control-choice-btn >> nth=1","description":"Notice different-sized parts"},
+        {"step":4,"method":"click","target":".app-visual-view .control-choice-btn >> nth=0","description":"Choose twelfths for the first item"},
+        {"step":5,"method":"fill","target":".app-visual-view input.control-numeric-input","value":"8","description":"Rename the first fraction"},
+        {"step":6,"method":"click","target":".app-visual-view .control-submit-btn","description":"Accept the first rename"},
+        {"step":7,"method":"fill","target":".app-visual-view input.control-numeric-input","value":"3","description":"Rename the second fraction"},
+        {"step":8,"method":"click","target":".app-visual-view .control-submit-btn","description":"Accept the second rename"},
+        {"step":9,"method":"fill","target":".app-visual-view input.control-numeric-input","value":"11","description":"Add the renamed parts"},
+        {"step":10,"method":"click","target":".app-visual-view .control-submit-btn","description":"Submit the first total"},
+        {"step":11,"method":"click","target":".app-visual-view .control-btn","description":"Continue the first item to reflection"},
+        {"step":12,"method":"click","target":".app-visual-view .matching-choice-btn >> nth=0","description":"Complete the first item's reflection"},
+        {"step":13,"method":"assert","assertions":[
+          {"type":"hasSelector","target":".app-next-button:not([hidden])"}
+        ],"description":"Offer Next only after the first episode resolves"},
+        {"step":14,"method":"pressKey","target":".app-next-button","value":"Enter","description":"Activate the mounted Next problem control by keyboard"},
+        {"step":15,"method":"assert","assertions":[
+          {"type":"activeElementEquals","target":"activeElement","value":"main.app-episode"},
+          {"type":"attributeEquals","target":".app-visual-view .fraction-bar-container[data-side=\"left\"] .fraction-bar-track","attribute":"data-numerator","value":"1"},
+          {"type":"attributeEquals","target":".app-visual-view .fraction-bar-container[data-side=\"left\"] .fraction-bar-track","attribute":"data-denominator","value":"2"},
+          {"type":"attributeEquals","target":".app-visual-view .fraction-bar-container[data-side=\"right\"] .fraction-bar-track","attribute":"data-numerator","value":"1"},
+          {"type":"attributeEquals","target":".app-visual-view .fraction-bar-container[data-side=\"right\"] .fraction-bar-track","attribute":"data-denominator","value":"3"},
+          {"type":"notHasSelector","target":".app-next-button:not([hidden])"}
+        ],"description":"Verify the different fresh item and its focus target"},
+        {"step":16,"method":"click","target":".app-visual-view .control-btn","description":"Acknowledge the second addition"},
+        {"step":17,"method":"click","target":".app-visual-view .control-choice-btn >> nth=1","description":"Notice different-sized parts"},
+        {"step":18,"method":"click","target":".app-visual-view .control-choice-btn >> nth=1","description":"Choose the authored alternate twelfths path"},
+        {"step":19,"method":"fill","target":".app-visual-view input.control-numeric-input","value":"6","description":"Rename one half into twelfths"},
+        {"step":20,"method":"click","target":".app-visual-view .control-submit-btn","description":"Accept the first rename"},
+        {"step":21,"method":"fill","target":".app-visual-view input.control-numeric-input","value":"4","description":"Rename one third into twelfths"},
+        {"step":22,"method":"click","target":".app-visual-view .control-submit-btn","description":"Accept the second rename"},
+        {"step":23,"method":"fill","target":".app-visual-view input.control-numeric-input","value":"10","description":"Add the renamed parts"},
+        {"step":24,"method":"click","target":".app-visual-view .control-submit-btn","description":"Submit the second total"},
+        {"step":25,"method":"click","target":".app-visual-view .control-btn","description":"Continue the second item to reflection"},
+        {"step":26,"method":"click","target":".app-visual-view .matching-choice-btn >> nth=1","description":"Complete the second item's reflection"},
+        {"step":27,"method":"assert","assertions":[
+          {"type":"containsText","target":".app-navigation-notice","value":"You’ve tried both problems."},
+          {"type":"notHasSelector","target":".app-next-button:not([hidden])"},
+          {"type":"activeElementEquals","target":"activeElement","value":"p.app-navigation-notice"},
+          {"type":"hasSelector","target":".app-return-button:not([disabled])"}
+        ],"description":"Focus explicit exhaustion and keep return available"},
+        {"step":28,"method":"click","target":".app-return-button","description":"Return to practice choices"},
+        {"step":29,"method":"assert","assertions":[
+          {"type":"activeElementEquals","target":"activeElement","value":"h1.app-entry-title"}
+        ],"description":"Focus the practice-choice heading"},
+        {"step":30,"method":"click","target":".app-practice-button","description":"Re-enter the stable first item"},
+        {"step":31,"method":"assert","assertions":[
+          {"type":"attributeEquals","target":".app-visual-view .fraction-bar-container[data-side=\"left\"] .fraction-bar-track","attribute":"data-numerator","value":"2"},
+          {"type":"attributeEquals","target":".app-visual-view .fraction-bar-container[data-side=\"left\"] .fraction-bar-track","attribute":"data-denominator","value":"3"},
+          {"type":"attributeEquals","target":".app-visual-view .fraction-bar-container[data-side=\"right\"] .fraction-bar-track","attribute":"data-numerator","value":"1"},
+          {"type":"attributeEquals","target":".app-visual-view .fraction-bar-container[data-side=\"right\"] .fraction-bar-track","attribute":"data-denominator","value":"4"},
+          {"type":"activeElementEquals","target":"activeElement","value":"main.app-episode"}
+        ],"description":"Verify first-item identity and start focus after re-entry"}
+      ],
+      "expect":{"capture":{"target":".app-visual-view","type":"innerHTML"},"assertions":[
+        {"type":"attributeEquals","target":".app-visual-view .fraction-bar-container[data-side=\"left\"] .fraction-bar-track","attribute":"data-numerator","value":"2"},
+        {"type":"attributeEquals","target":".app-visual-view .fraction-bar-container[data-side=\"left\"] .fraction-bar-track","attribute":"data-denominator","value":"3"},
+        {"type":"attributeEquals","target":".app-visual-view .fraction-bar-container[data-side=\"right\"] .fraction-bar-track","attribute":"data-numerator","value":"1"},
+        {"type":"attributeEquals","target":".app-visual-view .fraction-bar-container[data-side=\"right\"] .fraction-bar-track","attribute":"data-denominator","value":"4"},
+        {"type":"notHasSelector","target":".app-next-button:not([hidden])"}
+      ]}
+    },
+    {
+      "id": "ROUTE-PLAN26-CHROMEBOOK-CSS-VIEWPORT",
+      "behavior": "The first vetted item keeps its fraction tracks, active task controls, and view switcher visibly sized at a representative Chromebook CSS viewport.",
+      "configuration": "phase2-bundle-1",
+      "startingSurface": "mounted-app-entry",
+      "viewport": {"width":1366,"height":768},
+      "motionMode": "standard-motion",
+      "witness": "browser",
+      "actions": [
+        {"step":1,"method":"click","target":".app-practice-button","description":"Start the first vetted item at the larger CSS viewport"},
+        {"step":2,"method":"assert","assertions":[
+          {"type":"activeElementEquals","target":"activeElement","value":"main.app-episode"},
+          {"type":"visibleGeometry","target":".app-visual-view .fraction-bar-track","minCount":2,"minWidth":80,"minHeight":40},
+          {"type":"visibleGeometry","target":".app-visual-view .active-beat-controls .control-btn","minWidth":50,"minHeight":40},
+          {"type":"visibleGeometry","target":".app-view-toggle","minWidth":40,"minHeight":40},
+          {"type":"viewportLayout","requireNoHorizontalOverflow":true,"requireVisibleElements":true,"selectors":{
+            "question":".app-visual-view .active-beat-prompt",
+            "controls":".app-visual-view .active-beat-controls",
+            "fractionTrack":".app-visual-view .fraction-bar-track",
+            "viewToggle":".app-view-toggle"
+          }}
+        ],"description":"Measure visible learner controls and fraction tracks at 1366 by 768 CSS pixels"}
+      ],
+      "expect":{"capture":{"target":".app-visual-view","type":"innerHTML"},"assertions":[
+        {"type":"visibleGeometry","target":".app-visual-view .fraction-bar-track","minCount":2,"minWidth":80,"minHeight":40},
+        {"type":"visibleGeometry","target":".app-view-toggle","minWidth":40,"minHeight":40}
+      ]}
     }
   ]
 }

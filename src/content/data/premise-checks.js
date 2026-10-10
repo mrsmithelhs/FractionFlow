@@ -31,6 +31,33 @@ export const PREMISE_CHECKS_BY_FIXTURE = deepFreeze({
       distractorType: null,
     },
   },
+  'curated-relatively-prime-addition-one-half-one-third': {
+    '6': {
+      id: 'premise-half-third-6',
+      fixtureId: 'curated-relatively-prime-addition-one-half-one-third',
+      targetDenominator: '6',
+      sourceForm: { kind: 'fraction', numerator: '1', denominator: '2' },
+      presentedForm: { kind: 'fraction', numerator: '2', denominator: '6' },
+      isEquivalent: false,
+      expectedResponse: 'no',
+      distractorType: 'off-by-one-numerator',
+    },
+    '12': {
+      id: 'premise-half-third-12',
+      fixtureId: 'curated-relatively-prime-addition-one-half-one-third',
+      targetDenominator: '12',
+      sourceForm: { kind: 'fraction', numerator: '1', denominator: '2' },
+      presentedForm: { kind: 'fraction', numerator: '6', denominator: '12' },
+      isEquivalent: true,
+      expectedResponse: 'yes',
+      distractorType: null,
+    },
+  },
+});
+
+const AUTHORED_REVISIONS_BY_FIXTURE = deepFreeze({
+  'curated-relatively-prime-addition-non-least': 'plan03-fixtures-v1',
+  'curated-relatively-prime-addition-one-half-one-third': 'plan26-fixtures-v1',
 });
 
 /**
@@ -39,6 +66,8 @@ export const PREMISE_CHECKS_BY_FIXTURE = deepFreeze({
  */
 export function premiseCheckForInstance(instance, establishedDenominator) {
   const fixtureId = instance?.provenance?.fixtureId;
+  const authoringRevision = instance?.provenance?.authoringRevision;
+  if (!fixtureId || AUTHORED_REVISIONS_BY_FIXTURE[fixtureId] !== authoringRevision) return null;
   const checksByDenominator = PREMISE_CHECKS_BY_FIXTURE[fixtureId];
   if (!checksByDenominator) return null;
   return checksByDenominator[String(establishedDenominator)] ?? null;

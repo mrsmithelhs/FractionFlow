@@ -1,10 +1,14 @@
 import { buildCuratedProblem } from '../content/generator.js';
 import { PHASE1_GOLDEN_CASES } from '../content/data/phase1-golden-cases.js';
+import { validateProblemInstance } from '../content/validation.js';
+import { validateAuthoredTaskData } from '../content/authored-task-data.js';
 import {
   applyIntent,
   createEpisode,
   createReplayEnvelope,
+  getEpisodeDefinition,
 } from '../interaction/index.js';
+import { evaluateTaskPathClosure } from '../interaction/path-closure.js';
 import {
   createBeatContainer,
   createButton,
@@ -17,7 +21,7 @@ import {
   getRegisteredCondition,
   REGISTERED_CONDITIONS,
 } from './conditions.js';
-import { getPracticeType, PRACTICE_TYPES } from './practice-types.js';
+import { PRACTICE_TYPES } from './practice-types.js';
 import {
   getDefaultSupportLevel,
   getRegisteredSupportLevel,
@@ -32,12 +36,14 @@ const APP_RENDER_STRINGS = Object.freeze({
   }),
 });
 
-function canonicalInstance(fixtureId = 'curated-relatively-prime-addition-non-least') {
+function canonicalInstance(item, conditions = REGISTERED_CONDITIONS) {
   const fixture = PHASE1_GOLDEN_CASES.find((candidate) => (
-    candidate.id === fixtureId
+    candidate.id === item?.fixtureId
+    && candidate.authoringRevision === item?.authoringRevision
   ));
-  if (!fixture) throw new Error(`practice fixture is missing: ${fixtureId}`);
-  return buildCuratedProblem({
+  if (!fixture) throw new Error(`practice fixture identity is unavailable: ${item?.fixtureId}@${item?.authoringRevision}`);
+  const definition = getEpisodeDefinition(item.episodeDefinitionId, item.episodeDefinitionRevision);
+  const instance = buildCuratedProblem({
     fixture,
     selector: fixture.selector,
     overlays: fixture.overlays,
@@ -48,6 +54,23 @@ function canonicalInstance(fixtureId = 'curated-relatively-prime-addition-non-le
       reviewedTransitions: fixture.reviewedTransitions ?? [],
     },
   });
+  const contentCheck = validateProblemInstance(instance);
+  if (!contentCheck.valid) throw new Error(`practice fixture failed content validation: ${item.fixtureId}`);
+  validateAuthoredTaskData(instance, item.targetDenominators);
+  for (const condition of conditions) {
+    for (const denominator of item.targetDenominators) {
+      const closure = evaluateTaskPathClosure({
+        instance,
+        targetDenominator: denominator,
+        episodeDefinition: definition,
+        activeCondition: condition.activeCondition,
+      });
+      if (!closure.available) {
+        throw new Error(`practice path is unavailable: ${item.fixtureId}/${denominator}/${condition.id}`);
+      }
+    }
+  }
+  return instance;
 }
 
 function makeElement(tagName, className = '') {
@@ -94,12 +117,14 @@ export function createFractionFlowApp({
   initialConditionId = getDefaultCondition().id,
   presentationMode = 'auto',
   instance: suppliedInstance = null,
+  practiceTypes = PRACTICE_TYPES,
 } = {}) {
   if (!root) throw new Error('app root element is required');
 
   let selectedCondition = getRegisteredCondition(initialConditionId);
   let selectedSupportLevel = getDefaultSupportLevel();
   let selectedPracticeType = null;
+  let activePracticeItemIndex = null;
   let state = null;
   let currentScene = null;
   let visualView = true;
@@ -131,6 +156,13 @@ export function createFractionFlowApp({
   let isReplaying = false;
   let entryPage;
   let entryTitle;
+  let nextProblemButton;
+  let navigationNotice;
+  let navigationRefusal = false;
+
+  function practiceTypeFor(id) {
+    return practiceTypes.find((practiceType) => practiceType.id === id) ?? null;
+  }
 
   function closeDisplayMenu() {
     if (!displayMenu || displayMenu.hasAttribute('hidden')) return;
@@ -275,7 +307,7 @@ export function createFractionFlowApp({
     entryPage.appendChild(entryHeader);
 
     const practiceList = makeElement('div', 'app-practice-list');
-    for (const practiceType of PRACTICE_TYPES) {
+    for (const practiceType of practiceTypes) {
       const practiceButton = createButton({
         label: practiceType.label,
         className: 'app-practice-button',
@@ -305,6 +337,19 @@ export function createFractionFlowApp({
       onClick: returnToEntry,
     });
     returnButton.classList.add('app-return-button');
+    navigationNotice = makeElement('p', 'app-navigation-notice');
+    navigationNotice.setAttribute('role', 'status');
+    navigationNotice.tabIndex = -1;
+    setHidden(navigationNotice, true);
+    episodeNavigation.appendChild(navigationNotice);
+    nextProblemButton = createButton({
+      label: STRINGS.app.nextProblemButton,
+      className: 'app-secondary-button',
+      onClick: advanceToNextItem,
+    });
+    nextProblemButton.classList.add('app-next-button');
+    setHidden(nextProblemButton, true);
+    episodeNavigation.appendChild(nextProblemButton);
     episodeNavigation.appendChild(returnButton);
 
     const viewControls = makeElement('div', 'app-view-controls');
@@ -393,9 +438,7 @@ export function createFractionFlowApp({
     const restartButton = createButton({
       label: STRINGS.app.restartButton,
       className: 'app-secondary-button',
-      onClick: () => {
-        if (selectedPracticeType) startPractice(selectedPracticeType, { focusEpisode: true });
-      },
+      onClick: retryCurrentItem,
     });
     restartButton.classList.add('app-restart-button');
     supportControls.appendChild(helpButton);
@@ -423,7 +466,7 @@ export function createFractionFlowApp({
     } catch {
       return null;
     }
-    return getPracticeType(id);
+    return practiceTypeFor(id);
   }
 
   function setPracticeFragment(id) {
@@ -432,40 +475,114 @@ export function createFractionFlowApp({
     }
   }
 
-  function startPractice(practiceType, { focusEpisode = false, updateFragment = false } = {}) {
-    if (!practiceType || !PRACTICE_TYPES.includes(practiceType)) return;
-    selectedPracticeType = practiceType;
-    const instance = suppliedInstance || canonicalInstance(practiceType.fixtureId);
-    state = createInitialState(instance, practiceType, selectedCondition, selectedSupportLevel);
+  function resetEpisodeUiState() {
     isReplaying = false;
     activityNotice = '';
+    navigationRefusal = false;
     decideHelpOpen = false;
     transformHelpOpen = false;
     commonDenominatorDraft = '';
     transformDrafts = { left: { multiplier: '', numerator: '' }, right: { multiplier: '', numerator: '' } };
     transformDraftScheduleEntryId = null;
+    preserveDecideInputFocusOnViewChange = false;
+    preserveTransformInputFocusOnViewChange = false;
+  }
+
+  function registeredItemEpisode(practiceType, index) {
+    const item = practiceType?.items?.[index];
+    if (!item) throw new Error(`practice item ${index} is not registered`);
+    if (item.episodeDefinitionId !== practiceType.episodeDefinition?.id
+      || item.episodeDefinitionRevision !== practiceType.episodeDefinition?.revision) {
+      throw new Error(`practice item definition identity is unsupported: ${item.id}`);
+    }
+    const instance = canonicalInstance(item);
+    const nextState = createInitialState(instance, practiceType, selectedCondition, selectedSupportLevel);
+    return { item, instance, state: nextState };
+  }
+
+  function installFreshEpisode(practiceType, itemIndex, candidateState, { focusEpisode, updateFragment = false } = {}) {
+    selectedPracticeType = practiceType;
+    activePracticeItemIndex = itemIndex;
+    state = candidateState;
+    resetEpisodeUiState();
     setHidden(entryPage, true);
     setHidden(appRoot.querySelector('.app-episode'), false);
     render();
-    if (focusEpisode) {
-      const episode = appRoot.querySelector('.app-episode');
-      if (episode?.isConnected && !episode.hasAttribute('hidden')) episode.focus();
-    }
+    if (focusEpisode) focusEpisodeLandmark();
     if (updateFragment) setPracticeFragment(practiceType.id);
+  }
+
+  function focusEpisodeLandmark() {
+    const episode = appRoot?.querySelector('.app-episode');
+    if (episode?.isConnected && !episode.hasAttribute('hidden')) episode.focus();
+  }
+
+  function focusNavigationNotice() {
+    if (navigationNotice?.isConnected && !navigationNotice.hasAttribute('hidden')) navigationNotice.focus();
+  }
+
+  function startPractice(practiceType, { focusEpisode = false, updateFragment = false } = {}) {
+    if (!practiceType || !practiceTypes.includes(practiceType)) return;
+    const injected = suppliedInstance !== null;
+    const prepared = injected
+      ? { state: createInitialState(suppliedInstance, practiceType, selectedCondition, selectedSupportLevel), itemIndex: null }
+      : { ...registeredItemEpisode(practiceType, 0), itemIndex: 0 };
+    installFreshEpisode(practiceType, prepared.itemIndex, prepared.state, { focusEpisode, updateFragment });
+  }
+
+  function retryCurrentItem() {
+    if (!selectedPracticeType) return;
+    let prepared;
+    try {
+      prepared = activePracticeItemIndex === null && suppliedInstance !== null
+        ? createInitialState(suppliedInstance, selectedPracticeType, selectedCondition, selectedSupportLevel)
+        : registeredItemEpisode(selectedPracticeType, activePracticeItemIndex ?? 0).state;
+    } catch {
+      navigationRefusal = true;
+      navigationNotice.textContent = STRINGS.app.nextProblemUnavailable;
+      setHidden(navigationNotice, false);
+      render();
+      focusNavigationNotice();
+      return;
+    }
+    installFreshEpisode(selectedPracticeType, activePracticeItemIndex, prepared, { focusEpisode: true });
+  }
+
+  function advanceToNextItem() {
+    if (state?.status !== 'resolved' || activePracticeItemIndex === null || !selectedPracticeType) return;
+    const nextIndex = activePracticeItemIndex + 1;
+    if (nextIndex >= selectedPracticeType.items.length) return;
+    let prepared;
+    try {
+      prepared = registeredItemEpisode(selectedPracticeType, nextIndex);
+    } catch {
+      navigationRefusal = true;
+      navigationNotice.textContent = STRINGS.app.nextProblemUnavailable;
+      setHidden(navigationNotice, false);
+      render();
+      focusNavigationNotice();
+      return;
+    }
+    installFreshEpisode(selectedPracticeType, nextIndex, prepared.state, { focusEpisode: true });
   }
 
   function returnToEntry() {
     if (selectedPracticeType && state) {
-      const instance = suppliedInstance || canonicalInstance(selectedPracticeType.fixtureId);
-      state = createInitialState(instance, selectedPracticeType, selectedCondition, selectedSupportLevel);
+      try {
+        const freshState = suppliedInstance !== null
+          ? createInitialState(suppliedInstance, selectedPracticeType, selectedCondition, selectedSupportLevel)
+          : registeredItemEpisode(selectedPracticeType, 0).state;
+        state = freshState;
+        activePracticeItemIndex = suppliedInstance === null ? 0 : null;
+      } catch {
+        // Keep the current known episode state available to Retry if the first
+        // authored item can no longer be reconstructed.
+      }
     }
-    isReplaying = false;
-    activityNotice = '';
-    decideHelpOpen = false;
-    transformHelpOpen = false;
-    commonDenominatorDraft = '';
-    transformDrafts = { left: { multiplier: '', numerator: '' }, right: { multiplier: '', numerator: '' } };
-    transformDraftScheduleEntryId = null;
+    resetEpisodeUiState();
+    navigationNotice.textContent = '';
+    setHidden(navigationNotice, true);
+    setHidden(nextProblemButton, true);
     updateHelpPlacement();
     closeDisplayMenu();
     setHidden(appRoot.querySelector('.app-episode'), true);
@@ -529,6 +646,25 @@ export function createFractionFlowApp({
     replayButton.disabled = resolved || state.beat === 'encounter';
     replayButton.setAttribute('aria-pressed', String(isReplaying));
     supportNotice.textContent = activityNotice;
+  }
+
+  function updateNavigation() {
+    const canNavigate = state?.status === 'resolved'
+      && activePracticeItemIndex !== null
+      && selectedPracticeType?.items?.length > 0;
+    const hasNext = canNavigate && activePracticeItemIndex < selectedPracticeType.items.length - 1;
+    const isExhausted = canNavigate && !hasNext;
+    setHidden(nextProblemButton, !hasNext);
+    if (navigationRefusal) {
+      navigationNotice.textContent = STRINGS.app.nextProblemUnavailable;
+      setHidden(navigationNotice, false);
+    } else if (isExhausted) {
+      navigationNotice.textContent = STRINGS.app.problemsExhausted;
+      setHidden(navigationNotice, false);
+    } else {
+      navigationNotice.textContent = '';
+      setHidden(navigationNotice, true);
+    }
   }
 
   function getVisibleDecideInput() {
@@ -706,6 +842,7 @@ export function createFractionFlowApp({
     updateConditionMetadata();
     updateSupportMetadata();
     updateSupportControls();
+    updateNavigation();
     updateViewVisibility();
     restoreDecideDraft();
     restoreTransformDrafts();
@@ -720,10 +857,12 @@ export function createFractionFlowApp({
       return;
     }
 
+    let focusExhaustion = false;
     try {
       captureDecideDraft();
       captureTransformDrafts();
       if (action.type === 'propose-common-denominator') commonDenominatorDraft = '';
+      const wasResolved = state.status === 'resolved';
       state = applyIntent(state, action);
       if (action.type === 'request-help') {
         isReplaying = false;
@@ -742,13 +881,22 @@ export function createFractionFlowApp({
         }
       } else {
         isReplaying = false;
-        if (state.status === 'resolved') {
+        const justResolved = !wasResolved && state.status === 'resolved';
+        const isLastVettedItem = activePracticeItemIndex !== null
+          && selectedPracticeType
+          && activePracticeItemIndex === selectedPracticeType.items.length - 1;
+        if (state.status === 'resolved' && activePracticeItemIndex !== null && isLastVettedItem) {
+          activityNotice = '';
+        } else if (state.status === 'resolved') {
           activityNotice = STRINGS.resolve.complete;
         } else {
           activityNotice = '';
         }
+        navigationRefusal = false;
+        focusExhaustion = justResolved && isLastVettedItem;
       }
       render();
+      if (focusExhaustion) focusNavigationNotice();
       if (action.type === 'submit-transform-help-multiplier') getVisibleTransformInput()?.focus();
     } catch (error) {
       isReplaying = false;

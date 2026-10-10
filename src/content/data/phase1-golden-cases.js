@@ -143,6 +143,21 @@ export const PHASE1_GOLDEN_CASES = deepFreeze([
     },
   },
   {
+    id: 'curated-relatively-prime-addition-one-half-one-third',
+    authoringRevision: 'plan26-fixtures-v1',
+    profileId: 'curated-review',
+    selector: 'relatively-prime-addition',
+    overlays: [],
+    left: { kind: 'fraction', numerator: '1', denominator: '2' },
+    right: { kind: 'fraction', numerator: '1', denominator: '3' },
+    expected: {
+      rawResult: { kind: 'fraction', numerator: '5', denominator: '6' },
+      exactResult: { kind: 'fraction', numerator: '5', denominator: '6' },
+      resultForm: 'proper',
+      alternateDenominator: '12',
+    },
+  },
+  {
     id: 'curated-relatively-prime-subtraction',
     authoringRevision: 'plan03-fixtures-v1',
     profileId: 'curated-review',
