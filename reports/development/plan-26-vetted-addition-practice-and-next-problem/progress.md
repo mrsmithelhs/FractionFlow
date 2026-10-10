@@ -202,12 +202,11 @@ The new reproducible Edge script is
 across the four registered conditions and collectively covers both views,
 support profiles, standard/reduced motion, second-item denominators 6 and 12,
 and both premise outcomes. It includes a keyboard journey that tabs from the
-view control to Next before activating it with Enter. The touch-enabled context
-uses an actual non-drag `touchscreen.tap` for Next; its lesson controls and
-return/re-entry use mouse clicks. Retry is exercised in the separate keyboard
-configuration, and refusal uses desktop mouse contexts. Browser text entry is
-automated. Root corrected this gesture description during Repair 01 re-review;
-a sequential touch journey remains part of the requested Repair 02 evidence.
+view control to Next before activating it with Enter. During Repair 01, the
+touch-enabled context used an actual non-drag `touchscreen.tap` for Next while
+its lesson controls and return/re-entry used mouse clicks; Retry was exercised
+in the separate keyboard configuration. Root identified that gap during Repair
+01 re-review. Repair 02 addresses it below. Browser text entry is automated.
 
 The runner writes only selected journey metadata and names filtered outputs
 separately. A refusal-only capture wrote its own file while the canonical
@@ -265,3 +264,77 @@ auto-focus; both were added. I reran the full suite, build, route matrix and
 full browser evidence after these corrections. The reviewer did not independently
 rerun those commands. The reviewer did not receive permission to edit files,
 change packet status, publish or deploy.
+
+## Repair 02 update — evidence-only submission for re-review
+
+Date: 2026-10-10. This addendum addresses the bounded gaps listed in
+`repair-01-review.md` and authorized in `repair-02.md`. The admission fix remains
+accepted. No product source, route row, packet status, owner decision, review
+disposition, publication or deployment changed.
+
+### Sequential touch journey
+
+The existing medium-support linear journey now uses Playwright touchscreen taps
+for settings, entry, encounter and lesson controls, final reflection answer,
+Next, Retry, the exhaustion view toggle, return and re-entry. Each target is
+scrolled into the CSS viewport, checked for visible bounds, and paired with a
+one-shot click-path observer that confirms the event reached that mounted
+target. Numeric fields are tapped, with click delivery confirmed, before
+automated text entry. This remains automated browser touch context, not
+physical-device or native-keyboard evidence.
+
+The full five-configuration/two-viewport Edge run recorded 100 confirmed touch
+actions. The touch journey includes a dirty Retry on the second item while
+Replay remains active: it records the incorrect notice response, accepted
+conversion help, an incorrect numerator followed by an accepted numerator, a
+right-side multiplier draft, and active Replay. After Retry, the browser checks
+the fresh second-item encounter and operands, absence of numeric/helper/recovery/
+Replay residue, retained condition/support/view settings, episode focus and the
+first Tab destination. It then completes the set, returns, and re-enters; checks
+confirm the original first-item operands, clean encounter UI, retained settings,
+view and focus.
+
+### Independent state and scroll evidence
+
+The mounted journey test now compares the Next state to an independently
+constructed `createEpisode` for `secondInstance()` using the original episode
+definition, condition and support. After return/re-entry it compares the full
+state to a newly constructed episode from the saved original first-item content
+and configuration, and checks original operand identity plus clean mounted UI.
+
+After each of the ten existing reflection scrolls, the browser evidence runner
+asserts that the full question and active-control bounding boxes have positive
+size and fit within the CSS viewport. It continues to record dimensions and
+horizontal overflow, without requiring page scroll to be zero.
+
+The refreshed canonical evidence contains 184 measurement/focus/action records
+and 68 screenshots across the same five configurations and two viewport sizes.
+All 100 touch records confirm the intended target received the click, and all
+ten post-scroll question/control checks passed. A touch-only filtered run wrote
+its 120 records to a separate filtered measurement file without replacing the
+canonical five-journey result.
+
+### Verification and advisor disposition
+
+- Focused Plan 26 suite: 10 tests passed, including full fresh-state comparisons
+  for Next, Retry and return/re-entry.
+- Full suite: 28 test files and 321 tests passed.
+- `npm run build`: learner and subtraction-prototype builds passed.
+- Full Edge matrix: 56 executions passed across 54 route rows.
+- Full Repair 02 Edge evidence: five journeys at two viewports; 184 records and
+  68 screenshots.
+- `node scripts/dev/plan-status.js lint` and `git diff --check`: passed.
+- Parsed route baseline check: all 51 pre-Plan-26 rows remain exactly equal and
+  ordered as at `318c79f`.
+
+A read-only higher-tier advisor reviewed the Repair 02 test/verifier diff and
+found no additional blocking gap after identifying two corrections: touch the
+final reflection response and require full question/control bounds within the
+viewport. Both are applied and the full evidence was refreshed. The advisor ran
+read-only `rg`, `Get-Content`, `git diff` and `git status` inspections only; it
+ran no tests, builds, route matrix, browser capture or mutation commands. The
+requested model was `gpt-6-astra`; the advisor self-identified as Codex based on
+GPT-6 and could not independently verify the exact deployed variant. The advisor
+did not edit files or change status. Owner rendered-screen/agency acceptance is
+separate. Physical touch devices, native keyboards, assistive technology,
+learning transfer and engagement remain untested.
