@@ -32,6 +32,12 @@ requirements. Reassess these obligations explicitly at the §31 exit gate.
 | First number-line task and bar-to-line bridge design | Prepare the bounded design packet at the Phase 3 bar-stability review (§31), using the representation checkpoint (§90), before Phase 4 source activation | Choose one distinct learning purpose, initially equivalence or magnitude, and one meaningful learner connection. Reuse exact fraction/scene foundations, but inspect the explicit capability refusal, missing line semantics and bar-specific composition. Specify line domain/benchmarks, learner response/recovery, accessible equivalent, preserved state/replay and honest geometry. No plug-in framework, forced conversion of every bar task, new representation switch or claim of transfer from animation alone. Preliminary source scoping may precede the gate; implementation remains separately approved. |
 | Meaningful reflection on other concept tasks | When designing focused concepts under §28 | Review the learning purpose and learner decision. DECISION-039's like-denominator omission is intentional, not an obligation to reinsert a conversion question. Add reflection only through an approved task with authored content. |
 
+Plan 31 Repair 01's independent browser review observed Enter on an incorrect
+linear matching choice showing recovery, replacing the button and leaving focus
+on BODY. Retain this concrete response-remount case for the shared transform/
+response-ownership pilot and keyboard recovery design. No Plan 31 product focus
+repair or broader focus rewrite is authorized by the typography acceptance.
+
 Family packets must use DECISION-035's small learner-goal model. Nested and
 shared-factor cases are variations within a suitable goal, not extra taxonomy
 buttons. Plans 18/19 now explicitly depend on Plan 26 for that learner reach;

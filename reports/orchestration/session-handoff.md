@@ -26,7 +26,12 @@ Root reran 72 focused tests and the linear focus route (1/1), inspected saved
 screens/metrics, and requires bounded test/evidence Repair 01. The leakage helper
 misses sibling raw/ARIA leaks, independently reproduced; captures omit the second
 item. See Plan 31's `delivery-review.md` and `repair-01.md`. No blocking product
-source defect is confirmed. Owner rendered-screen acceptance remains.
+source defect is confirmed. Repair 01 arrived at `4ccf6a5` / `ae910d8` and is
+technically accepted; see `repair-01-review.md`. Root reran 72 focused tests,
+independent sibling-leak rejection probes and all 28 Edge captures/four Next
+witnesses into ignored review output. Owner rendered-screen acceptance remains.
+Incorrect linear matching via keyboard exposes response remount/focus-to-BODY;
+retain this observed limit for the shared response-ownership follow-up.
 See `board-sequence-2026-10-10.md` for current order
 31 → 32 → 19 → 17 → 20 → 18 and independent Plans 23/29 placement.
 The current report removes a machine account identifier, but earlier local commit
