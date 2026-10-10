@@ -3281,6 +3281,7 @@
         {"step":4,"method":"click","target":".app-visual-view .control-choice-btn >> nth=1","description":"Choose 24 as the common denominator"},
         {"step":5,"method":"click","target":".app-visual-view .active-beat-controls .app-secondary-button","description":"Request local conversion help"},
         {"step":6,"method":"assert","assertions":[
+          {"type":"activeElementEquals","target":"activeElement","value":"input.fraction-control.control-numeric-input"},
           {"type":"containsText","target":".app-visual-view .control-label.active-beat-prompt","value":"What multiplier turns 3 parts into 24?"},
           {"type":"containsText","target":".app-visual-view .control-supporting-text","value":"3 × ? = 24"},
           {"type":"attributeEquals","target":".app-visual-view .control-label.active-beat-prompt","attribute":"for","value":"transform-help-multiplier-left"},
@@ -3291,24 +3292,89 @@
         {"step":7,"method":"fill","target":".app-visual-view #transform-help-multiplier-left","value":"7","description":"Try a wrong multiplier"},
         {"step":8,"method":"click","target":".app-visual-view .control-submit-btn","description":"Submit the helper attempt"},
         {"step":9,"method":"assert","assertions":[
+          {"type":"activeElementEquals","target":"activeElement","value":"input.fraction-control.control-numeric-input"},
           {"type":"containsText","target":".app-visual-view .recovery-feedback","value":"That number does not make the same size parts. Try again."},
           {"type":"inputValueEquals","target":".app-visual-view #transform-help-multiplier-left","value":"7"},
           {"type":"notHasSelector","target":".app-visual-view #transform-num-input-left"}
         ],"description":"Keep a usable helper retry and withhold the factor"},
-        {"step":10,"method":"fill","target":".app-visual-view #transform-help-multiplier-left","value":"8","description":"Supply the multiplier that makes 24 parts"},
-        {"step":11,"method":"pressKey","target":".app-visual-view #transform-help-multiplier-left","value":"Enter","description":"Submit the learner's multiplier by keyboard"},
+        {"step":10,"method":"click","target":".app-visual-view .active-beat-controls .app-secondary-button","description":"Close help with a real click"},
+        {"step":11,"method":"click","target":".app-visual-view .active-beat-controls .app-secondary-button","description":"Reopen the incorrect multiplier step with a real click"},
         {"step":12,"method":"assert","assertions":[
+          {"type":"activeElementEquals","target":"activeElement","value":"input.fraction-control.control-numeric-input"},
+          {"type":"inputValueEquals","target":".app-visual-view #transform-help-multiplier-left","value":"7"}
+        ],"description":"Restore focus to the requested response and preserve its draft"},
+        {"step":13,"method":"fill","target":".app-visual-view #transform-help-multiplier-left","value":"8","description":"Supply the multiplier that makes 24 parts"},
+        {"step":14,"method":"pressKey","target":".app-visual-view #transform-help-multiplier-left","value":"Enter","description":"Submit the learner's multiplier by keyboard"},
+        {"step":15,"method":"assert","assertions":[
           {"type":"containsText","target":".app-visual-view .active-beat-help","value":"Multiply the top by 8, too."},
           {"type":"attributeEquals","target":".app-visual-view .active-beat-controls .app-secondary-button","attribute":"aria-controls","value":"visual-transform-task-help"},
           {"type":"hasSelector","target":".app-visual-view #visual-transform-task-help"},
           {"type":"hasSelector","target":".app-visual-view #transform-num-input-left"},
           {"type":"inputValueEquals","target":".app-visual-view #transform-num-input-left","value":""},
+          {"type":"activeElementEquals","target":"activeElement","value":"input.fraction-control.control-numeric-input"},
           {"type":"notContainsText","target":".app-visual-view","value":"16/24"}
-        ],"description":"Replace the substep with the cue and the original numerator decision"}
+        ],"description":"Replace the substep with the cue and focus the original numerator decision"},
+        {"step":16,"method":"click","target":".app-visual-view .active-beat-controls .app-secondary-button","description":"Close accepted helper"},
+        {"step":17,"method":"pressKey","target":".app-visual-view .active-beat-controls .app-secondary-button","value":"Enter","description":"Reopen accepted helper with keyboard activation"},
+        {"step":18,"method":"assert","assertions":[
+          {"type":"activeElementEquals","target":"activeElement","value":"input.fraction-control.control-numeric-input"},
+          {"type":"hasSelector","target":".app-visual-view #transform-num-input-left"}
+        ],"description":"Focus the main conversion response when reopening accepted help"}
       ],
       "expect":{"capture":{"target":".app-visual-view","type":"innerHTML"},"assertions":[
         {"type":"containsText","target":".app-visual-view .active-beat-help","value":"Multiply the top by 8, too."},
         {"type":"notHasSelector","target":".app-visual-view #transform-help-multiplier-left"}
+      ]},
+      "negativeControl":{"targetRouteId":"ROUTE-PLAN25-TRANSFORM-HELP-CLOSED","comparison":"notIdenticalCapture","sameMotionMode":true}
+    },
+    {
+      "id": "ROUTE-PLAN25-TRANSFORM-HELP-LINEAR-FOCUS",
+      "behavior": "In the linear view, opening and reopening multiplier help restores focus to the multiplier response; after acceptance, reopening focuses the main numerator response.",
+      "configuration": "phase2-bundle-1",
+      "startingSurface": "mounted-app-entry",
+      "viewport": {"width":360,"height":740},
+      "motionMode": "standard-motion",
+      "witness": "browser",
+      "actions": [
+        {"step":1,"method":"click","target":".app-practice-button","description":"Begin a fresh revision-3 episode"},
+        {"step":2,"method":"click","target":".app-view-toggle","description":"Choose the linear view"},
+        {"step":3,"method":"click","target":".app-linear-view .control-btn","description":"Acknowledge the expression"},
+        {"step":4,"method":"click","target":".app-linear-view .control-choice-btn >> nth=1","description":"Notice the different-sized parts"},
+        {"step":5,"method":"click","target":".app-linear-view .control-choice-btn >> nth=1","description":"Choose 24 as the common denominator"},
+        {"step":6,"method":"pressKey","target":".app-linear-view .active-beat-controls .app-secondary-button","value":"Enter","description":"Open multiplier help with keyboard activation"},
+        {"step":7,"method":"assert","assertions":[
+          {"type":"activeElementEquals","target":"activeElement","value":"input.fraction-control.control-numeric-input"},
+          {"type":"hasSelector","target":".app-linear-view #linear-transform-help-multiplier-left"}
+        ],"description":"Focus the visible linear multiplier response"},
+        {"step":8,"method":"fill","target":".app-linear-view #linear-transform-help-multiplier-left","value":"7","description":"Try an incorrect multiplier"},
+        {"step":9,"method":"pressKey","target":".app-linear-view #linear-transform-help-multiplier-left","value":"Enter","description":"Submit the incorrect multiplier by keyboard"},
+        {"step":10,"method":"assert","assertions":[
+          {"type":"activeElementEquals","target":"activeElement","value":"input.fraction-control.control-numeric-input"},
+          {"type":"containsText","target":".app-linear-view .recovery-feedback","value":"That number does not make the same size parts. Try again."},
+          {"type":"inputValueEquals","target":".app-linear-view #linear-transform-help-multiplier-left","value":"7"}
+        ],"description":"Keep focus and the draft after incorrect helper recovery"},
+        {"step":11,"method":"click","target":".app-linear-view .active-beat-controls .app-secondary-button","description":"Close help with a real click"},
+        {"step":12,"method":"click","target":".app-linear-view .active-beat-controls .app-secondary-button","description":"Reopen the incorrect multiplier step with a real click"},
+        {"step":13,"method":"assert","assertions":[
+          {"type":"activeElementEquals","target":"activeElement","value":"input.fraction-control.control-numeric-input"},
+          {"type":"inputValueEquals","target":".app-linear-view #linear-transform-help-multiplier-left","value":"7"}
+        ],"description":"Return focus to the reopened response with its draft"},
+        {"step":14,"method":"fill","target":".app-linear-view #linear-transform-help-multiplier-left","value":"8","description":"Enter the correct multiplier"},
+        {"step":15,"method":"pressKey","target":".app-linear-view #linear-transform-help-multiplier-left","value":"Enter","description":"Accept the multiplier by keyboard"},
+        {"step":16,"method":"assert","assertions":[
+          {"type":"activeElementEquals","target":"activeElement","value":"input.fraction-control.control-numeric-input"},
+          {"type":"hasSelector","target":".app-linear-view #linear-transform-num-input-left"}
+        ],"description":"Focus the main numerator response after multiplier acceptance"},
+        {"step":17,"method":"click","target":".app-linear-view .active-beat-controls .app-secondary-button","description":"Close the accepted helper"},
+        {"step":18,"method":"click","target":".app-linear-view .active-beat-controls .app-secondary-button","description":"Reopen accepted help with a real click"},
+        {"step":19,"method":"assert","assertions":[
+          {"type":"activeElementEquals","target":"activeElement","value":"input.fraction-control.control-numeric-input"},
+          {"type":"hasSelector","target":".app-linear-view #linear-transform-num-input-left"}
+        ],"description":"Focus the main numerator response when reopening accepted help"}
+      ],
+      "expect":{"capture":{"target":".app-linear-view","type":"innerHTML"},"assertions":[
+        {"type":"hasSelector","target":".app-linear-view #linear-transform-num-input-left"},
+        {"type":"containsText","target":".app-linear-view .active-beat-help","value":"Multiply the top by 8, too."}
       ]},
       "negativeControl":{"targetRouteId":"ROUTE-PLAN25-TRANSFORM-HELP-CLOSED","comparison":"notIdenticalCapture","sameMotionMode":true}
     },

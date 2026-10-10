@@ -203,10 +203,14 @@ describe('Plan 09 app shell and upstream display switcher', () => {
     expect(app.getState().expectedResponse.target).toBe('left');
 
     let help = root.querySelector('.app-visual-view .active-beat-controls .app-secondary-button');
+    help.focus();
     help.click();
     expect(app.getState().supportHistory.at(-1)).toMatchObject({ type: 'task-help-request', side: 'left' });
     let multiplier = root.querySelector('.app-visual-view #transform-help-multiplier-left');
     expect(multiplier).not.toBeNull();
+    expect(document.activeElement).toBe(multiplier);
+    expect(multiplier.isConnected).toBe(true);
+    expect(root.querySelector('.app-visual-view').hasAttribute('hidden')).toBe(false);
     expect(root.querySelector('.app-visual-view #transform-num-input-left')).toBeNull();
     const multiplierLabel = root.querySelector('.app-visual-view .active-beat-prompt');
     expect(multiplierLabel.textContent).toBe('What multiplier turns 3 parts into 24?');
@@ -234,6 +238,16 @@ describe('Plan 09 app shell and upstream display switcher', () => {
       .toBe('That number does not make the same size parts. Try again.');
     multiplier = root.querySelector('.app-visual-view #transform-help-multiplier-left');
     expect(multiplier.value).toBe('7');
+    help = root.querySelector('.app-visual-view .active-beat-controls .app-secondary-button');
+    help.focus();
+    help.click();
+    help = root.querySelector('.app-visual-view .active-beat-controls .app-secondary-button');
+    help.focus();
+    help.click();
+    multiplier = root.querySelector('.app-visual-view #transform-help-multiplier-left');
+    expect(multiplier.value).toBe('7');
+    expect(document.activeElement).toBe(multiplier);
+    expect(multiplier.isConnected).toBe(true);
     multiplier.value = '8';
     root.querySelector('.app-visual-view .control-submit-btn').click();
     expect(root.querySelector('.app-visual-view .active-beat-help').textContent)
@@ -243,6 +257,14 @@ describe('Plan 09 app shell and upstream display switcher', () => {
     expect(root.querySelector('#visual-transform-task-help')).not.toBeNull();
     let numerator = root.querySelector('.app-visual-view #transform-num-input-left');
     expect(numerator.value).toBe('');
+    helpButton.focus();
+    helpButton.click();
+    helpButton = root.querySelector('.app-visual-view .active-beat-controls .app-secondary-button');
+    helpButton.focus();
+    helpButton.click();
+    numerator = root.querySelector('.app-visual-view #transform-num-input-left');
+    expect(document.activeElement).toBe(numerator);
+    expect(numerator.isConnected).toBe(true);
     numerator.value = '15';
     numerator.focus();
     root.querySelector('.app-view-toggle').click();
@@ -260,8 +282,12 @@ describe('Plan 09 app shell and upstream display switcher', () => {
     expect(root.querySelector('.app-linear-view #linear-transform-help-multiplier-right')).toBeNull();
 
     help = root.querySelector('.app-linear-view .active-beat-controls .app-secondary-button');
+    help.focus();
     help.click();
     const rightMultiplier = root.querySelector('.app-linear-view #linear-transform-help-multiplier-right');
+    expect(document.activeElement).toBe(rightMultiplier);
+    expect(rightMultiplier.isConnected).toBe(true);
+    expect(root.querySelector('.app-linear-view').hasAttribute('hidden')).toBe(false);
     const rightMultiplierLabel = root.querySelector('.app-linear-view .active-beat-prompt');
     expect(rightMultiplierLabel.textContent).toBe('What multiplier turns 4 parts into 24?');
     expect(rightMultiplierLabel.getAttribute('for')).toBe('linear-transform-help-multiplier-right');

@@ -372,8 +372,11 @@ export function createFractionFlowApp({
           }
         } else if (state?.beat === 'transform') {
           transformHelpOpen = !transformHelpOpen;
-          if (transformHelpOpen) dispatchAction({ type: 'request-task-help' });
-          else {
+          if (transformHelpOpen) {
+            dispatchAction({ type: 'request-task-help' });
+            const response = getVisibleTransformInput();
+            if (response?.isConnected) response.focus();
+          } else {
             render();
             helpButton.focus();
           }

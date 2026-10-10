@@ -104,9 +104,9 @@ describe('Plan 14 Reachable Behavior Route Contract & Matrix Schema', () => {
   });
 
   it('preserves learner and prototype routes while adding mounted high/medium support witnesses', () => {
-    expect(matrix.routes).toHaveLength(50);
+    expect(matrix.routes).toHaveLength(51);
     const learnerRoutes = matrix.routes.filter((route) => route.configuration !== 'plan15-subtraction-prototype');
-    expect(learnerRoutes).toHaveLength(48);
+    expect(learnerRoutes).toHaveLength(49);
     for (const route of learnerRoutes) {
       expect(route.startingSurface).toBe('mounted-app-entry');
       expect(route.viewport.width).toBe(route.id === 'ROUTE-PLAN22-36-PREMISE-LINEAR-REDUCED' ? 320 : 360);
@@ -196,7 +196,7 @@ describe('Plan 14 Reachable Behavior Route Contract & Matrix Schema', () => {
 
   it('executes each prototype route in both motion modes and brings in its filtered negative control', () => {
     const executions = expandRouteExecutions(matrix.routes);
-    expect(executions).toHaveLength(52);
+    expect(executions).toHaveLength(53);
     expect(executions.filter((execution) => (
       execution.route.configuration === 'plan15-subtraction-prototype'
     ))).toHaveLength(4);
@@ -267,11 +267,24 @@ describe('Plan 14 Reachable Behavior Route Contract & Matrix Schema', () => {
   });
 
   it('preserves the Plan 11 route baseline and witnesses executed motion, interruption, Replay, static arms, and both support profiles', () => {
-    expect(matrix.routes).toHaveLength(50);
-    expect(matrix.routes.filter((route) => !route.id.startsWith('ROUTE-PLAN22-36-'))).toHaveLength(47);
-    expect(expandRouteExecutions(matrix.routes)).toHaveLength(52);
+    expect(matrix.routes).toHaveLength(51);
+    expect(matrix.routes.filter((route) => !route.id.startsWith('ROUTE-PLAN22-36-'))).toHaveLength(48);
+    expect(expandRouteExecutions(matrix.routes)).toHaveLength(53);
 
     const route = (id) => matrix.routes.find((candidate) => candidate.id === id);
+    const linearHelpFocus = route('ROUTE-PLAN25-TRANSFORM-HELP-LINEAR-FOCUS');
+    expect(linearHelpFocus.actions.some((action) => (
+      action.method === 'pressKey'
+      && action.target === '.app-linear-view .active-beat-controls .app-secondary-button'
+      && action.value === 'Enter'
+    ))).toBe(true);
+    expect(linearHelpFocus.actions.some((action) => (
+      action.method === 'click'
+      && action.description === 'Reopen the incorrect multiplier step with a real click'
+    ))).toBe(true);
+    expect(linearHelpFocus.actions.some((action) => action.assertions?.some((assertion) => (
+      assertion.type === 'activeElementEquals'
+    )))).toBe(true);
     const primary = route('ROUTE-COND-1-TRANSFORM');
     expect(primary.actions.find((action) => action.method === 'clickAndObserveSubdivision')
       .interruptReducedMotion).toBe(true);
