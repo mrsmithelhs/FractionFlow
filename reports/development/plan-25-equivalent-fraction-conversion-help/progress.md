@@ -159,3 +159,28 @@ Implemented that advice in both visual and linear renderers. The label formats d
 - Copy, accessibility wiring, tests, route checks, and refreshed witnesses were committed as `99244b2 feat: clarify transform multiplier prompt`.
 
 The copy change is owner-authorized and implemented; **Plan 25's overall technical delivery review and rendered-screen/agency acceptance are still pending**. The earlier accepted-factor cue remains unchanged. Packet frontmatter/status remains orchestrator-owned and unchanged.
+
+---
+
+## Orchestrator focus finding repair (2026-10-09)
+
+During final delivery review, **FF Orch 12+** found a P2 focus defect: opening transform help dispatched the task-local request and remounted the response, but focus remained on `body`. This occurred on both visual and linear views. Reopening help after an incorrect multiplier had the same defect; accepted multiplier reopening should target the main numerator instead.
+
+Failing-first evidence was recorded before the source fix:
+
+- The mounted app-shell test invoked the Help click handler and expected `document.activeElement` to be the connected multiplier input; it observed `BODY` instead.
+- The real Edge route pair failed at the opening assertion in both the visual click path and linear keyboard path, each observing `body` instead of the input.
+
+Bounded repair: after the open dispatch and render complete, the app asks `getVisibleTransformInput()` for the response appropriate to current state, then focuses it when connected. That resolves to the multiplier for requested/incorrect helper states and the numerator after multiplier acceptance. Existing close-button focus and draft capture/restoration remain unchanged; there is no focus side effect on unrelated renders.
+
+Coverage added in `tests/app-shell.test.js`, `tests/routes/route-matrix.json`, and `tests/route-contract.test.js` proves connected active focus in both views after initial opening, incorrect recovery, closing/reopening with the incorrect draft retained, acceptance, and reopening accepted help. Browser routes use actual Playwright keyboard activation and clicks; mounted tests also assert the current visible host.
+
+- Failing-first mounted result: **1 focused app-shell test failed as expected**, with `BODY` instead of the multiplier input.
+- Failing-first browser result: **0/3 relevant executions passed**; visual click and linear keyboard opening both observed `body`.
+- `npm test -- --run` after repair — **27 files and 311 tests passed**.
+- `npm run build` — app and subtraction-prototype production builds completed.
+- `node scripts/dev/plan-status.js lint` and `git diff --check` — passed.
+- Full Edge route matrix after repair — **53/53 executions passed across 51 rows**. The new linear focus route adds one route row and one browser execution to the prior 52/50 matrix.
+- Focus repair and route/test evidence committed as `24b2297 fix: focus transform help response on open`.
+
+The orchestrator has been asked to re-review the repair. The owner authorized closure if the orchestrator agrees, but I did not change packet status; **Plan 25 remains open pending that re-review and the applicable rendered/agency gate decision**. No push or deployment occurred.
