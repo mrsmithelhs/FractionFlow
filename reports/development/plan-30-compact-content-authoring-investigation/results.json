@@ -1,0 +1,518 @@
+{
+  "experiment": "FractionFlow Plan 30 compact content authoring investigation",
+  "experimentVersion": "1",
+  "bounds": {
+    "selector": "relatively-prime-addition",
+    "overlays": [],
+    "profileId": "curated-review",
+    "enumeration": "entire inspectCandidateSpace eligibleCandidates array, stable source order",
+    "maxFractionBarDenominator": 30,
+    "maxScaleFactor": 12,
+    "taskRequirement": "two eligible common-unit paths with one yes and one no premise outcome"
+  },
+  "recipe": {
+    "id": "plan30-experimental-recipe-v1",
+    "premise": "for this experiment only, select one incorrect route by a stable hash of item identity; derive its off-by-one numerator and exact truth with the math core",
+    "matching": "derive the equivalent left-operand form exactly; use the nearest available distinct in-range numerators as distractors",
+    "correctChoicePosition": "derive a deterministic position from item identity and denominator, independent of enumeration order",
+    "responseIds": "stable experiment-only IDs from recipe revision, candidate identity, denominator and option slot"
+  },
+  "counts": {
+    "rawEligibleCandidatesEnumerated": 220,
+    "coreProblemValidationPass": 220,
+    "coreProblemValidationFail": 0,
+    "pathsConsidered": 440,
+    "representationEligiblePaths": 98,
+    "representationRefusedPaths": 342,
+    "experimentalItemsWithTwoEligiblePaths": 18,
+    "candidatesWithZeroEligiblePaths": 140,
+    "candidatesWithOneEligiblePath": 62,
+    "experimentalItemsRefusedForPathCoverage": 202,
+    "authoredRouteRecordsValidated": 36,
+    "premiseTruthPass": 36,
+    "matchingChoicePass": 36,
+    "uniqueOrderedProblems": 220,
+    "swapEquivalentClasses": 110,
+    "swapEquivalentOrderedPairs": 110,
+    "allEnumeratedCandidatesRefusedForFullTwoPathTaskRequirement": 202
+  },
+  "authoringStorageComparison": {
+    "itemsCompared": 18,
+    "pathRecordsCompared": 36,
+    "explicitJsonBytes": 26434,
+    "compactItemJsonBytes": 5057,
+    "recipeDefinitionJsonBytes": 577,
+    "compactIncludingOneRecipeDefinitionJsonBytes": 5634,
+    "explicitRouteFieldGroups": 36,
+    "compactItemInputGroups": 18,
+    "scope": "serialized JSON byte counts for this experiment only; not a measurement of human review time, source integration cost or learner value"
+  },
+  "existingRegisteredBaseline": {
+    "admittedItems": 2,
+    "items": [
+      {
+        "itemId": "two-thirds-plus-one-fourth",
+        "fixtureId": "curated-relatively-prime-addition-non-least",
+        "authoringRevision": "plan03-fixtures-v1",
+        "targetDenominators": [
+          "12",
+          "24"
+        ],
+        "problemId": "relatively-prime-addition__none__2__3__1__4",
+        "exactValidation": true,
+        "authoredTaskDataValidation": "pass",
+        "pathClosureCount": 8,
+        "pathClosures": [
+          {
+            "conditionId": "phase2-bundle-1",
+            "targetDenominator": "12",
+            "available": true,
+            "reason": null
+          },
+          {
+            "conditionId": "phase2-bundle-1",
+            "targetDenominator": "24",
+            "available": true,
+            "reason": null
+          },
+          {
+            "conditionId": "phase2-bundle-2",
+            "targetDenominator": "12",
+            "available": true,
+            "reason": null
+          },
+          {
+            "conditionId": "phase2-bundle-2",
+            "targetDenominator": "24",
+            "available": true,
+            "reason": null
+          },
+          {
+            "conditionId": "phase2-bundle-3",
+            "targetDenominator": "12",
+            "available": true,
+            "reason": null
+          },
+          {
+            "conditionId": "phase2-bundle-3",
+            "targetDenominator": "24",
+            "available": true,
+            "reason": null
+          },
+          {
+            "conditionId": "phase2-bundle-4",
+            "targetDenominator": "12",
+            "available": true,
+            "reason": null
+          },
+          {
+            "conditionId": "phase2-bundle-4",
+            "targetDenominator": "24",
+            "available": true,
+            "reason": null
+          }
+        ]
+      },
+      {
+        "itemId": "one-half-plus-one-third",
+        "fixtureId": "curated-relatively-prime-addition-one-half-one-third",
+        "authoringRevision": "plan26-fixtures-v1",
+        "targetDenominators": [
+          "6",
+          "12"
+        ],
+        "problemId": "relatively-prime-addition__none__1__2__1__3",
+        "exactValidation": true,
+        "authoredTaskDataValidation": "pass",
+        "pathClosureCount": 8,
+        "pathClosures": [
+          {
+            "conditionId": "phase2-bundle-1",
+            "targetDenominator": "6",
+            "available": true,
+            "reason": null
+          },
+          {
+            "conditionId": "phase2-bundle-1",
+            "targetDenominator": "12",
+            "available": true,
+            "reason": null
+          },
+          {
+            "conditionId": "phase2-bundle-2",
+            "targetDenominator": "6",
+            "available": true,
+            "reason": null
+          },
+          {
+            "conditionId": "phase2-bundle-2",
+            "targetDenominator": "12",
+            "available": true,
+            "reason": null
+          },
+          {
+            "conditionId": "phase2-bundle-3",
+            "targetDenominator": "6",
+            "available": true,
+            "reason": null
+          },
+          {
+            "conditionId": "phase2-bundle-3",
+            "targetDenominator": "12",
+            "available": true,
+            "reason": null
+          },
+          {
+            "conditionId": "phase2-bundle-4",
+            "targetDenominator": "6",
+            "available": true,
+            "reason": null
+          },
+          {
+            "conditionId": "phase2-bundle-4",
+            "targetDenominator": "12",
+            "available": true,
+            "reason": null
+          }
+        ]
+      }
+    ]
+  },
+  "corruptionControls": {
+    "wrongAuthoredTruth": {
+      "label": "wrong premise truth",
+      "rejected": true,
+      "message": "premise truth mismatch for denominator 12"
+    },
+    "duplicateChoiceIds": {
+      "label": "duplicate choice IDs",
+      "rejected": true,
+      "message": "matching choice identity is invalid for denominator 12"
+    },
+    "duplicateEquivalentAnswers": {
+      "label": "two equivalent answer forms",
+      "rejected": true,
+      "message": "matching choices must contain exactly one equivalent form for 12"
+    },
+    "repeatedNonEquivalentDistractorForm": {
+      "rejected": false,
+      "existingValidatorAccepted": true,
+      "gap": "distinct IDs with the same non-equivalent displayed form are not rejected by the current exactly-one-equivalent check"
+    },
+    "incompleteEligiblePathList": {
+      "label": "omitted eligible authored path",
+      "rejected": true,
+      "message": "eligible path identity mismatch for curated-relatively-prime-addition-non-least"
+    },
+    "missingAuthoredPathRecord": {
+      "label": "missing authored record for an eligible denominator",
+      "rejected": true,
+      "message": "missing premise data for denominator 12"
+    }
+  },
+  "proposedExplicitRecords": [
+    {
+      "fixtureId": "plan30-proposal-e184bf5ee2e3",
+      "authoringRevision": "plan30-experimental-recipe-v1",
+      "selector": "relatively-prime-addition",
+      "overlays": [],
+      "profileId": "curated-review",
+      "operands": {
+        "left": {
+          "kind": "fraction",
+          "numerator": "1",
+          "denominator": "2"
+        },
+        "right": {
+          "kind": "fraction",
+          "numerator": "1",
+          "denominator": "3"
+        }
+      },
+      "authoredPathRecords": [
+        {
+          "targetDenominator": "6",
+          "premiseId": "plan30-experimental-recipe-v1:plan30-proposal-e184bf5ee2e3:6:premise",
+          "premiseOutcome": "no",
+          "choices": [
+            {
+              "id": "plan30-experimental-recipe-v1:plan30-proposal-e184bf5ee2e3:6:choice-0",
+              "form": {
+                "kind": "fraction",
+                "numerator": "2",
+                "denominator": "6"
+              }
+            },
+            {
+              "id": "plan30-experimental-recipe-v1:plan30-proposal-e184bf5ee2e3:6:choice-1",
+              "form": {
+                "kind": "fraction",
+                "numerator": "4",
+                "denominator": "6"
+              }
+            },
+            {
+              "id": "plan30-experimental-recipe-v1:plan30-proposal-e184bf5ee2e3:6:choice-2",
+              "form": {
+                "kind": "fraction",
+                "numerator": "3",
+                "denominator": "6"
+              }
+            }
+          ]
+        },
+        {
+          "targetDenominator": "12",
+          "premiseId": "plan30-experimental-recipe-v1:plan30-proposal-e184bf5ee2e3:12:premise",
+          "premiseOutcome": "yes",
+          "choices": [
+            {
+              "id": "plan30-experimental-recipe-v1:plan30-proposal-e184bf5ee2e3:12:choice-0",
+              "form": {
+                "kind": "fraction",
+                "numerator": "5",
+                "denominator": "12"
+              }
+            },
+            {
+              "id": "plan30-experimental-recipe-v1:plan30-proposal-e184bf5ee2e3:12:choice-1",
+              "form": {
+                "kind": "fraction",
+                "numerator": "6",
+                "denominator": "12"
+              }
+            },
+            {
+              "id": "plan30-experimental-recipe-v1:plan30-proposal-e184bf5ee2e3:12:choice-2",
+              "form": {
+                "kind": "fraction",
+                "numerator": "7",
+                "denominator": "12"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "fixtureId": "plan30-proposal-14df9ca64f0c",
+      "authoringRevision": "plan30-experimental-recipe-v1",
+      "selector": "relatively-prime-addition",
+      "overlays": [],
+      "profileId": "curated-review",
+      "operands": {
+        "left": {
+          "kind": "fraction",
+          "numerator": "1",
+          "denominator": "2"
+        },
+        "right": {
+          "kind": "fraction",
+          "numerator": "1",
+          "denominator": "5"
+        }
+      },
+      "authoredPathRecords": [
+        {
+          "targetDenominator": "10",
+          "premiseId": "plan30-experimental-recipe-v1:plan30-proposal-14df9ca64f0c:10:premise",
+          "premiseOutcome": "no",
+          "choices": [
+            {
+              "id": "plan30-experimental-recipe-v1:plan30-proposal-14df9ca64f0c:10:choice-0",
+              "form": {
+                "kind": "fraction",
+                "numerator": "4",
+                "denominator": "10"
+              }
+            },
+            {
+              "id": "plan30-experimental-recipe-v1:plan30-proposal-14df9ca64f0c:10:choice-1",
+              "form": {
+                "kind": "fraction",
+                "numerator": "6",
+                "denominator": "10"
+              }
+            },
+            {
+              "id": "plan30-experimental-recipe-v1:plan30-proposal-14df9ca64f0c:10:choice-2",
+              "form": {
+                "kind": "fraction",
+                "numerator": "5",
+                "denominator": "10"
+              }
+            }
+          ]
+        },
+        {
+          "targetDenominator": "20",
+          "premiseId": "plan30-experimental-recipe-v1:plan30-proposal-14df9ca64f0c:20:premise",
+          "premiseOutcome": "yes",
+          "choices": [
+            {
+              "id": "plan30-experimental-recipe-v1:plan30-proposal-14df9ca64f0c:20:choice-0",
+              "form": {
+                "kind": "fraction",
+                "numerator": "10",
+                "denominator": "20"
+              }
+            },
+            {
+              "id": "plan30-experimental-recipe-v1:plan30-proposal-14df9ca64f0c:20:choice-1",
+              "form": {
+                "kind": "fraction",
+                "numerator": "9",
+                "denominator": "20"
+              }
+            },
+            {
+              "id": "plan30-experimental-recipe-v1:plan30-proposal-14df9ca64f0c:20:choice-2",
+              "form": {
+                "kind": "fraction",
+                "numerator": "11",
+                "denominator": "20"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "fixtureId": "plan30-proposal-e3c96406496a",
+      "authoringRevision": "plan30-experimental-recipe-v1",
+      "selector": "relatively-prime-addition",
+      "overlays": [],
+      "profileId": "curated-review",
+      "operands": {
+        "left": {
+          "kind": "fraction",
+          "numerator": "1",
+          "denominator": "2"
+        },
+        "right": {
+          "kind": "fraction",
+          "numerator": "2",
+          "denominator": "5"
+        }
+      },
+      "authoredPathRecords": [
+        {
+          "targetDenominator": "10",
+          "premiseId": "plan30-experimental-recipe-v1:plan30-proposal-e3c96406496a:10:premise",
+          "premiseOutcome": "yes",
+          "choices": [
+            {
+              "id": "plan30-experimental-recipe-v1:plan30-proposal-e3c96406496a:10:choice-0",
+              "form": {
+                "kind": "fraction",
+                "numerator": "5",
+                "denominator": "10"
+              }
+            },
+            {
+              "id": "plan30-experimental-recipe-v1:plan30-proposal-e3c96406496a:10:choice-1",
+              "form": {
+                "kind": "fraction",
+                "numerator": "4",
+                "denominator": "10"
+              }
+            },
+            {
+              "id": "plan30-experimental-recipe-v1:plan30-proposal-e3c96406496a:10:choice-2",
+              "form": {
+                "kind": "fraction",
+                "numerator": "6",
+                "denominator": "10"
+              }
+            }
+          ]
+        },
+        {
+          "targetDenominator": "20",
+          "premiseId": "plan30-experimental-recipe-v1:plan30-proposal-e3c96406496a:20:premise",
+          "premiseOutcome": "no",
+          "choices": [
+            {
+              "id": "plan30-experimental-recipe-v1:plan30-proposal-e3c96406496a:20:choice-0",
+              "form": {
+                "kind": "fraction",
+                "numerator": "9",
+                "denominator": "20"
+              }
+            },
+            {
+              "id": "plan30-experimental-recipe-v1:plan30-proposal-e3c96406496a:20:choice-1",
+              "form": {
+                "kind": "fraction",
+                "numerator": "10",
+                "denominator": "20"
+              }
+            },
+            {
+              "id": "plan30-experimental-recipe-v1:plan30-proposal-e3c96406496a:20:choice-2",
+              "form": {
+                "kind": "fraction",
+                "numerator": "11",
+                "denominator": "20"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "proposedCompactRecipeInputs": [
+    {
+      "fixtureId": "plan30-proposal-e184bf5ee2e3",
+      "authoringRevision": "plan30-experimental-recipe-v1",
+      "operands": {
+        "left": {
+          "kind": "fraction",
+          "numerator": "1",
+          "denominator": "2"
+        },
+        "right": {
+          "kind": "fraction",
+          "numerator": "1",
+          "denominator": "3"
+        }
+      },
+      "intentionallyIncorrectPremiseDenominator": "6"
+    },
+    {
+      "fixtureId": "plan30-proposal-14df9ca64f0c",
+      "authoringRevision": "plan30-experimental-recipe-v1",
+      "operands": {
+        "left": {
+          "kind": "fraction",
+          "numerator": "1",
+          "denominator": "2"
+        },
+        "right": {
+          "kind": "fraction",
+          "numerator": "1",
+          "denominator": "5"
+        }
+      },
+      "intentionallyIncorrectPremiseDenominator": "10"
+    },
+    {
+      "fixtureId": "plan30-proposal-e3c96406496a",
+      "authoringRevision": "plan30-experimental-recipe-v1",
+      "operands": {
+        "left": {
+          "kind": "fraction",
+          "numerator": "1",
+          "denominator": "2"
+        },
+        "right": {
+          "kind": "fraction",
+          "numerator": "2",
+          "denominator": "5"
+        }
+      },
+      "intentionallyIncorrectPremiseDenominator": "20"
+    }
+  ],
+  "note": "These are unregistered experiment identities. Component authored-data checks passed for each recipe-generated route; no new record was discoverable through production authored-data accessors or app admission."
+}
