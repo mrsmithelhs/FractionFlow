@@ -21,7 +21,12 @@ Plan 31 is in-progress with `plan-31-codex-implementer-handoff.md`. FF Impl 31 i
 resolved at `01a1274f-4ecf-7c23-90ec-ef8cc5709520`; the owner directly authorized
 bidirectional supervision here. Root source-checked Requirement 0 and approved the
 bounded shared compact-notation mechanism; see Plan 31's `mechanism-review.md`.
-Source work is authorized within that scope; owner rendered-screen acceptance remains.
+Implementation/evidence arrived at `4e1e8b1` / report `f39aad0`; Plan 31 is delivered.
+Root reran 72 focused tests and the linear focus route (1/1), inspected saved
+screens/metrics, and requires bounded test/evidence Repair 01. The leakage helper
+misses sibling raw/ARIA leaks, independently reproduced; captures omit the second
+item. See Plan 31's `delivery-review.md` and `repair-01.md`. No blocking product
+source defect is confirmed. Owner rendered-screen acceptance remains.
 See `board-sequence-2026-10-10.md` for current order
 31 → 32 → 19 → 17 → 20 → 18 and independent Plans 23/29 placement.
 The current report removes a machine account identifier, but earlier local commit

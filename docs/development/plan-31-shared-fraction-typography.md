@@ -1,7 +1,7 @@
 ---
 id: plan-31
 title: Shared Fraction Typography
-status: in-progress
+status: delivered
 depends_on: [plan-11, plan-26]
 gate: "Requirement 0 presentation mechanism confirmation before source work; technical and owner rendered-screen acceptance; deployment separately authorized."
 summary: >-
