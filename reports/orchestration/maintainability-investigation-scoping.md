@@ -68,8 +68,11 @@ files must be understood/edited, which responsibilities move, which defects coul
 still occur, and what a smallest reversible pilot would test. Distinguish measured
 evidence from predictions; total repair counts alone cannot identify a cause.
 
-No reviewer handoff, framework selection, dependency installation or production
-migration is authorized by this scoping note. Do not pause accepted packet work
+On 2026-10-10 the owner accepted this framing and authorized separate Claude and
+Gemini handoffs. See `maintainability-architecture-claude-handoff.md` and
+`maintainability-architecture-gemini-handoff.md` for their distinct delegation
+permissions and output scopes. Framework selection, dependency installation and
+production migration remain unapproved. Do not pause accepted packet work
 automatically; discuss whether the investigation changes sequencing after the
 retrospectives and independent reviews. This prose-only scoping does not warrant
 an advisor consultation.
