@@ -84,6 +84,9 @@ describe('Renderer Foundation & Shared Boundary (Plan 07)', () => {
     expect(root.querySelector('.fraction-bar-readout-divider')).toBeTruthy();
     expect(root.querySelector('.fraction-bar-readout-denominator').textContent).toBe('3');
     expect(root.querySelector('.fraction-bar-readout').getAttribute('aria-hidden')).toBe('true');
+    expect(root.querySelector('.fraction-bar-readout .symbolic-fraction-compact')).not.toBeNull();
+    expect(root.querySelector('.fraction-bar-readout .symbolic-numerator').textContent).toBe('2');
+    expect(root.querySelector('.fraction-bar-readout .symbolic-denominator').textContent).toBe('3');
 
     const segments = root.querySelectorAll('.fraction-bar-segment');
     expect(segments.length).toBe(3); // 2/3 has 3 segments
@@ -130,6 +133,28 @@ describe('Renderer Foundation & Shared Boundary (Plan 07)', () => {
       dispatchAction: (action) => actions.push(action),
     });
 
+    const assertFutureFractionAbsent = (targetRoot, numerator, denominator) => {
+      const activeBeat = targetRoot.querySelector('.active-beat-section');
+      expect(activeBeat, 'future-answer inspection target must exist').not.toBeNull();
+      const structuredLeak = [...targetRoot.querySelectorAll('.symbolic-fraction')].some((fractionEl) => (
+        fractionEl.querySelector('.symbolic-numerator')?.textContent === numerator
+        && fractionEl.querySelector('.symbolic-denominator')?.textContent === denominator
+      ));
+      const scanNodes = [activeBeat, ...activeBeat.querySelectorAll('*')];
+      const fractionPattern = new RegExp(`\\b${numerator}\\s*(?:/|over)\\s*${denominator}\\b`, 'i');
+      const rawLeak = scanNodes.some((element) => fractionPattern.test(element.textContent || ''));
+      const accessibleNodes = scanNodes;
+      const accessibleLeak = accessibleNodes
+        .filter((element) => ['aria-label', 'aria-description', 'title']
+          .some((name) => element.getAttribute(name) !== null))
+        .some((element) => ['aria-label', 'aria-description', 'title'].some((name) => (
+          fractionPattern.test((element.getAttribute(name) || '').replace(/\s+/g, ' ').trim())
+        )));
+      if (structuredLeak || rawLeak || accessibleLeak) {
+        throw new Error(`Future fraction ${numerator} over ${denominator} is exposed`);
+      }
+    };
+
     // 1. Encounter beat
     let scene = resolveRenderableScene({ state: episode });
     beatContainer.mount(scene);
@@ -139,7 +164,7 @@ describe('Renderer Foundation & Shared Boundary (Plan 07)', () => {
     expect(container.querySelector('#operate-sum-input')).toBeNull();
     expect(container.querySelector('.control-choice-fieldset')).toBeNull();
     expect(container.textContent).not.toContain('12'); // target denominator not in DOM
-    expect(container.textContent).not.toContain('11/12'); // final answer not in DOM
+    assertFutureFractionAbsent(container, '11', '12'); // final answer not in any notation form
 
     // 2. Advance to Notice beat
     episode = applyIntent(episode, { type: 'acknowledge-encounter' });
@@ -150,7 +175,7 @@ describe('Renderer Foundation & Shared Boundary (Plan 07)', () => {
     expect(container.textContent).toContain('Do these two fractions have the same size parts?');
     expect(container.querySelector('#transform-num-input-left')).toBeNull();
     expect(container.querySelector('#operate-sum-input')).toBeNull();
-    expect(container.textContent).not.toContain('11/12');
+    assertFutureFractionAbsent(container, '11', '12');
 
     // 3. Advance to Decide beat
     episode = applyIntent(episode, { type: 'submit-notice', matchesUnits: false });
@@ -161,7 +186,7 @@ describe('Renderer Foundation & Shared Boundary (Plan 07)', () => {
     expect(container.textContent).toContain('Choose a common denominator');
     expect(container.querySelector('#transform-num-input-left')).toBeNull();
     expect(container.querySelector('#operate-sum-input')).toBeNull();
-    expect(container.textContent).not.toContain('11/12');
+    assertFutureFractionAbsent(container, '11', '12');
 
     // 4. Advance to Transform beat
     episode = applyIntent(episode, { type: 'propose-common-denominator', proposed: whole(12) });
@@ -171,7 +196,7 @@ describe('Renderer Foundation & Shared Boundary (Plan 07)', () => {
     // Conversion input for left exists, but operation sum input DOES NOT EXIST
     expect(container.querySelector('#transform-num-input-left')).toBeTruthy();
     expect(container.querySelector('#operate-sum-input')).toBeNull();
-    expect(container.textContent).not.toContain('11/12');
+    assertFutureFractionAbsent(container, '11', '12');
 
     // 5. Complete conversions and advance to Operate beat
     episode = applyIntent(episode, {
@@ -188,6 +213,27 @@ describe('Renderer Foundation & Shared Boundary (Plan 07)', () => {
     // Operate sum input exists, but resolution continue button DOES NOT EXIST
     expect(container.querySelector('#operate-sum-input')).toBeTruthy();
     expect(container.textContent).not.toContain('Next Problem');
+    assertFutureFractionAbsent(container, '11', '12');
+
+    const activePrompt = container.querySelector('.active-beat-prompt');
+    const seededLeak = document.createElement('span');
+    seededLeak.classList.add('symbolic-fraction');
+    const seededNumerator = document.createElement('span');
+    seededNumerator.classList.add('symbolic-numerator');
+    seededNumerator.textContent = '11';
+    const seededDenominator = document.createElement('span');
+    seededDenominator.classList.add('symbolic-denominator');
+    seededDenominator.textContent = '12';
+    seededLeak.appendChild(seededNumerator);
+    seededLeak.appendChild(seededDenominator);
+    activePrompt.appendChild(seededLeak);
+    expect(() => assertFutureFractionAbsent(container, '11', '12')).toThrow(/Future fraction/);
+    activePrompt.removeChild(seededLeak);
+
+    const activeBeat = container.querySelector('.active-beat-section');
+    activeBeat.setAttribute('aria-label', 'Final answer 11 over 12');
+    expect(() => assertFutureFractionAbsent(container, '11', '12')).toThrow(/Future fraction/);
+    activeBeat.removeAttribute('aria-label');
 
     // 6. Advance to Resolve beat
     episode = applyIntent(episode, {

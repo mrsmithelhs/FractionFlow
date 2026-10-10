@@ -144,8 +144,12 @@ export const STRINGS = Object.freeze({
     matchingPromptLinear: (targetFraction) => (
       `Choose the fraction that shows the same amount as ${targetFraction}.`
     ),
+    matchingPromptLinearLead: 'Choose the fraction that shows the same amount as',
+    matchingPromptLinearAccessible: (num, den) => (
+      `Choose the fraction that shows the same amount as ${num} over ${den}.`
+    ),
     matchingOptionLabelLinear: (num, den) => (
-      `Fraction ${num}/${den} shows a shaded amount`
+      `Fraction ${num} over ${den} shows a shaded amount`
     ),
     premisePromptLinear: 'Does the "New parts" fraction show the same amount as the starting fraction?',
   }),

@@ -284,8 +284,8 @@
           {"type":"notHasSelector","target":".app-visual-view .fraction-bar-in-place-replay"},
           {"type":"attributeEquals","target":".app-support-controls .app-secondary-button:has-text(\"Replay\")","attribute":"aria-pressed","value":"false"},
           {"type":"hasSelector","target":".app-visual-view .fraction-bar-boundary"},
-          {"type":"containsText","target":".app-visual-view .fraction-bar-readout","value":"8"},
-          {"type":"containsText","target":".app-visual-view .fraction-bar-readout","value":"12"}
+          {"type":"containsText","target":".app-visual-view .fraction-bar-readout-numerator","value":"8"},
+          {"type":"containsText","target":".app-visual-view .fraction-bar-readout-denominator","value":"12"}
         ]
       },
       "negativeControl": {"targetRouteId":"ROUTE-REPLAY-COND-2","comparison":"notIdenticalCapture","sameMotionMode":true}
@@ -351,7 +351,7 @@
         {"step":13,"method":"fillWithKnownSelection","target":".app-visual-view #transform-num-input-right","value":"8","selectionStart":0,"selectionEnd":1,"description":"Enter a correct but unsubmitted right answer and select its full text for continuity evidence"},
         {"step":14,"method":"clickAndObserveReplayReveal","target":".app-visual-view .fraction-bar-toggle-btn","container":".app-visual-view .fraction-bar-container[data-side=\"left\"]","responseInput":".app-visual-view #transform-num-input-right","numerator":8,"denominator":12,"description":"Use the mounted Show new parts control and witness immediate endpoint, stable anchors, retained nonempty response and selection, and real-click focus"},
         {"step":15,"method":"restoreInputType","target":".app-visual-view #transform-num-input-right","value":"number","description":"Restore the production numeric input type after the browser-only text-selection witness"},
-        {"step":16,"method":"assert","assertions":[{"type":"containsText","target":".app-visual-view .fraction-bar-readout","value":"8"},{"type":"containsText","target":".app-visual-view .fraction-bar-readout","value":"12"},{"type":"attributeEquals","target":".app-support-controls .app-secondary-button:has-text(\"Replay\")","attribute":"aria-pressed","value":"false"}],"description":"Verify the reduced Replay endpoint and ordinary control state"},
+        {"step":16,"method":"assert","assertions":[{"type":"containsText","target":".app-visual-view .fraction-bar-readout-numerator","value":"8"},{"type":"containsText","target":".app-visual-view .fraction-bar-readout-denominator","value":"12"},{"type":"attributeEquals","target":".app-support-controls .app-secondary-button:has-text(\"Replay\")","attribute":"aria-pressed","value":"false"}],"description":"Verify the reduced Replay endpoint and ordinary control state"},
         {"step":17,"method":"click","target":".app-support-controls .app-secondary-button:has-text(\"Replay\")","description":"Hold the previous conversion again before new work"},
         {"step":18,"method":"assertNoSubdivisionMotion","container":".app-visual-view .fraction-bar-container[data-side=\"left\"]","denominator":3,"description":"Re-entering Replay does not animate restored old content"},
         {"step":19,"method":"fill","target":".app-visual-view #transform-num-input-right","value":"3","description":"Enter right equivalent numerator while Replay is active"},
@@ -1117,10 +1117,10 @@
           {"type":"attributeEquals","target":".app-visual-view .fraction-bar-container[data-side=\"right\"] .fraction-bar-track","attribute":"data-denominator","value":"24"},
           {"type":"hasSelector","target":".app-visual-view .fraction-bar-container[data-side=\"left\"] .fraction-bar-boundary"},
           {"type":"hasSelector","target":".app-visual-view .fraction-bar-container[data-side=\"right\"] .fraction-bar-boundary"},
-          {"type":"containsText","target":".app-visual-view .fraction-bar-container[data-side=\"left\"] .fraction-bar-readout","value":"16"},
-          {"type":"containsText","target":".app-visual-view .fraction-bar-container[data-side=\"left\"] .fraction-bar-readout","value":"24"},
-          {"type":"containsText","target":".app-visual-view .fraction-bar-container[data-side=\"right\"] .fraction-bar-readout","value":"6"},
-          {"type":"containsText","target":".app-visual-view .fraction-bar-container[data-side=\"right\"] .fraction-bar-readout","value":"24"}
+          {"type":"containsText","target":".app-visual-view .fraction-bar-container[data-side=\"left\"] .fraction-bar-readout-numerator","value":"16"},
+          {"type":"containsText","target":".app-visual-view .fraction-bar-container[data-side=\"left\"] .fraction-bar-readout-denominator","value":"24"},
+          {"type":"containsText","target":".app-visual-view .fraction-bar-container[data-side=\"right\"] .fraction-bar-readout-numerator","value":"6"},
+          {"type":"containsText","target":".app-visual-view .fraction-bar-container[data-side=\"right\"] .fraction-bar-readout-denominator","value":"24"}
         ]
       },
       "negativeControl": {"targetRouteId":"INITIAL-ENCOUNTER-BASELINE","comparison":"notIdenticalCapture"}
@@ -1222,7 +1222,7 @@
         "assertions": [
           {"type":"hasSelector","target":".app-linear-view .control-choice-btn"},
           {"type":"notHasSelector","target":".app-linear-view .app-done-looking-button"},
-          {"type":"activeElementEquals","target":"activeElement","value":"button.fraction-control.control-choice-btn.inspection-focus-return-target"},
+          {"type":"activeElementEquals","target":"activeElement","value":"button.fraction-control.control-choice-btn.linear-matching-choice-btn.inspection-focus-return-target"},
           {"type":"hasSelector","target":".app-linear-view .control-choice-btn.inspection-focus-return-target"}
         ]
       },
@@ -2198,10 +2198,10 @@
           {"type":"attributeEquals","target":".app-visual-view .fraction-bar-container[data-side=\"right\"] .fraction-bar-track","attribute":"data-denominator","value":"24"},
           {"type":"hasSelector","target":".app-visual-view .fraction-bar-container[data-side=\"left\"] .fraction-bar-boundary"},
           {"type":"hasSelector","target":".app-visual-view .fraction-bar-container[data-side=\"right\"] .fraction-bar-boundary"},
-          {"type":"containsText","target":".app-visual-view .fraction-bar-container[data-side=\"left\"] .fraction-bar-readout","value":"16"},
-          {"type":"containsText","target":".app-visual-view .fraction-bar-container[data-side=\"left\"] .fraction-bar-readout","value":"24"},
-          {"type":"containsText","target":".app-visual-view .fraction-bar-container[data-side=\"right\"] .fraction-bar-readout","value":"6"},
-          {"type":"containsText","target":".app-visual-view .fraction-bar-container[data-side=\"right\"] .fraction-bar-readout","value":"24"}
+          {"type":"containsText","target":".app-visual-view .fraction-bar-container[data-side=\"left\"] .fraction-bar-readout-numerator","value":"16"},
+          {"type":"containsText","target":".app-visual-view .fraction-bar-container[data-side=\"left\"] .fraction-bar-readout-denominator","value":"24"},
+          {"type":"containsText","target":".app-visual-view .fraction-bar-container[data-side=\"right\"] .fraction-bar-readout-numerator","value":"6"},
+          {"type":"containsText","target":".app-visual-view .fraction-bar-container[data-side=\"right\"] .fraction-bar-readout-denominator","value":"24"}
         ]
       },
       "negativeControl": {
@@ -2333,10 +2333,10 @@
           {"type":"attributeEquals","target":".app-visual-view .fraction-bar-container[data-side=\"right\"] .fraction-bar-track","attribute":"data-denominator","value":"24"},
           {"type":"hasSelector","target":".app-visual-view .fraction-bar-container[data-side=\"left\"] .fraction-bar-boundary"},
           {"type":"hasSelector","target":".app-visual-view .fraction-bar-container[data-side=\"right\"] .fraction-bar-boundary"},
-          {"type":"containsText","target":".app-visual-view .fraction-bar-container[data-side=\"left\"] .fraction-bar-readout","value":"16"},
-          {"type":"containsText","target":".app-visual-view .fraction-bar-container[data-side=\"left\"] .fraction-bar-readout","value":"24"},
-          {"type":"containsText","target":".app-visual-view .fraction-bar-container[data-side=\"right\"] .fraction-bar-readout","value":"6"},
-          {"type":"containsText","target":".app-visual-view .fraction-bar-container[data-side=\"right\"] .fraction-bar-readout","value":"24"}
+          {"type":"containsText","target":".app-visual-view .fraction-bar-container[data-side=\"left\"] .fraction-bar-readout-numerator","value":"16"},
+          {"type":"containsText","target":".app-visual-view .fraction-bar-container[data-side=\"left\"] .fraction-bar-readout-denominator","value":"24"},
+          {"type":"containsText","target":".app-visual-view .fraction-bar-container[data-side=\"right\"] .fraction-bar-readout-numerator","value":"6"},
+          {"type":"containsText","target":".app-visual-view .fraction-bar-container[data-side=\"right\"] .fraction-bar-readout-denominator","value":"24"}
         ]
       },
       "negativeControl": {

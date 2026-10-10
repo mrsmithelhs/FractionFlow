@@ -451,6 +451,27 @@ describe('Plan 09 app shell and upstream display switcher', () => {
         'Bar with 17 of 24 equal parts shaded',
       ]);
 
+    root.querySelector('.app-view-controls .app-secondary-button').click();
+    const linearView = root.querySelector('.app-linear-view');
+    const matchingQuestion = linearView.querySelector('.active-beat-prompt');
+    const matchingLegend = linearView.querySelector('.control-legend');
+    const linearChoices = [...linearView.querySelectorAll('.linear-matching-choice-btn')];
+    expect(matchingQuestion.getAttribute('aria-hidden')).toBe('true');
+    expect(matchingQuestion.querySelector('.symbolic-fraction-compact')).not.toBeNull();
+    expect(matchingQuestion.textContent).toBe('Choose the fraction that shows the same amount as 23.');
+    expect(matchingLegend.textContent).toBe('Choose the fraction that shows the same amount as 2 over 3.');
+    expect(linearChoices.map((choice) => choice.getAttribute('aria-label'))).toEqual([
+      'Fraction 15 over 24 shows a shaded amount',
+      'Fraction 16 over 24 shows a shaded amount',
+      'Fraction 17 over 24 shows a shaded amount',
+    ]);
+    expect(linearChoices.every((choice) => (
+      choice.tagName === 'BUTTON'
+      && choice.querySelector('.symbolic-fraction-compact')
+        ?.getAttribute('aria-hidden') === 'true'
+    ))).toBe(true);
+    root.querySelector('.app-view-controls .app-secondary-button').click();
+
     root.querySelectorAll('.matching-choice-btn')[0].click();
     expect(app.getState().status).toBe('active');
     root.querySelectorAll('.matching-choice-btn')[1].click();

@@ -11,9 +11,14 @@ import { assertValidScene } from './contract.js';
  * - Integrated secondary view: Expresses current forms established by the learner.
  */
 
-export function createSymbolicFraction(numerator, denominator, { ariaHidden = false, ariaPrefix = '' } = {}) {
+export function createSymbolicFraction(
+  numerator,
+  denominator,
+  { ariaHidden = false, ariaPrefix = '', variant = 'expression' } = {},
+) {
   const fractionEl = document.createElement('span');
   fractionEl.classList.add('symbolic-fraction');
+  if (variant === 'compact') fractionEl.classList.add('symbolic-fraction-compact');
   if (ariaHidden) {
     fractionEl.setAttribute('aria-hidden', 'true');
   } else {

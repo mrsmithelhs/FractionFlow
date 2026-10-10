@@ -1,5 +1,6 @@
 import { assertValidScene } from './contract.js';
 import { STRINGS } from './strings.js';
+import { createSymbolicFraction } from './symbolic.js';
 
 /**
  * Fraction Bar Renderer (DECISION-025, DECISION-011)
@@ -13,6 +14,20 @@ import { STRINGS } from './strings.js';
  * - Communicates equivalent subdivision smoothly in standard motion, or instantly in reduced motion.
  * - Pure: computes zero mathematics; reads quantities directly from scene.meaning.
  */
+
+function createReadoutFraction(numerator, denominator) {
+  const fractionEl = createSymbolicFraction(numerator, denominator, {
+    ariaHidden: true,
+    variant: 'compact',
+  });
+  fractionEl.querySelector('.symbolic-numerator')
+    .classList.add('fraction-bar-readout-numerator');
+  fractionEl.querySelector('.symbolic-bar')
+    .classList.add('fraction-bar-readout-divider');
+  fractionEl.querySelector('.symbolic-denominator')
+    .classList.add('fraction-bar-readout-denominator');
+  return fractionEl;
+}
 
 export function createTrackAndReadout({ numerator, denominator, isSubdivided = false, mode }) {
   const trackEl = document.createElement('div');
@@ -45,17 +60,7 @@ export function createTrackAndReadout({ numerator, denominator, isSubdivided = f
   const readoutEl = document.createElement('div');
   readoutEl.classList.add('fraction-bar-readout');
   readoutEl.setAttribute('aria-hidden', 'true');
-  const numeratorEl = document.createElement('span');
-  numeratorEl.classList.add('fraction-bar-readout-numerator');
-  numeratorEl.textContent = String(numerator);
-  const dividerEl = document.createElement('span');
-  dividerEl.classList.add('fraction-bar-readout-divider');
-  const denominatorEl = document.createElement('span');
-  denominatorEl.classList.add('fraction-bar-readout-denominator');
-  denominatorEl.textContent = String(denominator);
-  readoutEl.appendChild(numeratorEl);
-  readoutEl.appendChild(dividerEl);
-  readoutEl.appendChild(denominatorEl);
+  readoutEl.appendChild(createReadoutFraction(numerator, denominator));
 
   return { trackEl, readoutEl };
 }
@@ -98,15 +103,10 @@ function createPersistentTrackAndReadout({ numerator, denominator, mode }) {
   const readoutEl = document.createElement('div');
   readoutEl.classList.add('fraction-bar-readout');
   readoutEl.setAttribute('aria-hidden', 'true');
-  const numeratorEl = document.createElement('span');
-  numeratorEl.classList.add('fraction-bar-readout-numerator');
-  const dividerEl = document.createElement('span');
-  dividerEl.classList.add('fraction-bar-readout-divider');
-  const denominatorEl = document.createElement('span');
-  denominatorEl.classList.add('fraction-bar-readout-denominator');
-  readoutEl.appendChild(numeratorEl);
-  readoutEl.appendChild(dividerEl);
-  readoutEl.appendChild(denominatorEl);
+  const fractionEl = createReadoutFraction('', '');
+  const numeratorEl = fractionEl.querySelector('.symbolic-numerator');
+  const denominatorEl = fractionEl.querySelector('.symbolic-denominator');
+  readoutEl.appendChild(fractionEl);
 
   return {
     trackEl,

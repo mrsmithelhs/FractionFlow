@@ -528,7 +528,7 @@ describe('Plan 14 Reachable Behavior Route Contract & Matrix Schema', () => {
     expect(linearRoute.knownDefect).toBeUndefined();
     expect(linearRoute.expect.assertions).toContainEqual(expect.objectContaining({
       type: 'activeElementEquals',
-      value: 'button.fraction-control.control-choice-btn.inspection-focus-return-target',
+      value: 'button.fraction-control.control-choice-btn.linear-matching-choice-btn.inspection-focus-return-target',
     }));
   });
 

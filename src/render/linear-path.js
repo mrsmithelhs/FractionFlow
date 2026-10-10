@@ -744,10 +744,29 @@ export function createLinearPathRenderer({
             controlsContainer.appendChild(choiceGroup);
           } else {
             const left = scene.meaning.quantities.left;
-            const targetForm = `${left.sourceForm.numerator}/${left.sourceForm.denominator}`;
-            promptText.textContent = typeof strings.reflect.matchingPromptLinear === 'function'
-              ? strings.reflect.matchingPromptLinear(targetForm)
-              : strings.reflect.matchingPrompt(targetForm);
+            const targetForm = left.sourceForm;
+            const semanticQuestion = typeof strings.reflect.matchingPromptLinearAccessible === 'function'
+              ? strings.reflect.matchingPromptLinearAccessible(
+                targetForm.numerator,
+                targetForm.denominator,
+              )
+              : strings.reflect.matchingPromptLinear(
+                `${targetForm.numerator} over ${targetForm.denominator}`,
+              );
+            const questionLead = strings.reflect.matchingPromptLinearLead
+              || 'Choose the fraction that shows the same amount as';
+            promptText.setAttribute('aria-hidden', 'true');
+            const leadText = document.createElement('span');
+            leadText.textContent = `${questionLead} `;
+            promptText.appendChild(leadText);
+            promptText.appendChild(createSymbolicFraction(
+              targetForm.numerator,
+              targetForm.denominator,
+              { ariaHidden: true, variant: 'compact' },
+            ));
+            const punctuation = document.createElement('span');
+            punctuation.textContent = '.';
+            promptText.appendChild(punctuation);
 
             const choices = scene.meaning.reflectionChoices;
             if (!Array.isArray(choices) || choices.length < 3) {
@@ -757,7 +776,7 @@ export function createLinearPathRenderer({
               );
             }
             const options = choices.map((choice) => ({
-              label: `${choice.form.numerator}/${choice.form.denominator}`,
+              choice,
               value: choice.id,
               ariaLabel: strings.reflect.matchingOptionLabelLinear(
                 choice.form.numerator,
@@ -766,8 +785,23 @@ export function createLinearPathRenderer({
             }));
 
             const choiceGroup = createChoiceGroup({
-              legend: promptText.textContent,
+              legend: semanticQuestion,
               options,
+              renderOption: (option, onClick) => {
+                const button = createButton({
+                  label: '',
+                  ariaLabel: option.ariaLabel,
+                  className: 'control-choice-btn',
+                  onClick,
+                });
+                button.classList.add('linear-matching-choice-btn');
+                button.appendChild(createSymbolicFraction(
+                  option.choice.form.numerator,
+                  option.choice.form.denominator,
+                  { ariaHidden: true, variant: 'compact' },
+                ));
+                return button;
+              },
               onSelect: (val) => {
                 dispatchAction({
                   type: 'submit-reflection',

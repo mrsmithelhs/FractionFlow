@@ -214,6 +214,10 @@
   background-color: currentColor;
 }
 
+.fraction-bar-readout .symbolic-fraction-compact {
+  font-size: inherit;
+}
+
 /* Choreography Treatments (DECISION-019, DECISION-026) */
 .fraction-bar-container.choreography-juxtaposed,
 .fraction-bar-container.choreography-sequential {
@@ -489,6 +493,11 @@
   vertical-align: middle;
 }
 
+.symbolic-fraction-compact {
+  width: max-content;
+  max-width: 100%;
+}
+
 .symbolic-numerator,
 .symbolic-denominator {
   line-height: 1.1;
@@ -501,6 +510,16 @@
   height: 2px;
   background-color: var(--ff-color-text);
   margin: 1px 0;
+}
+
+.symbolic-fraction-compact .symbolic-numerator,
+.symbolic-fraction-compact .symbolic-denominator {
+  padding-inline: 0.15em;
+  white-space: nowrap;
+}
+
+.symbolic-fraction-compact .symbolic-bar {
+  width: 100%;
 }
 
 .symbolic-operator {
@@ -662,6 +681,11 @@
 
 .control-choice-btn:hover {
   background-color: var(--ff-btn-hover-bg);
+}
+
+.linear-matching-choice-btn {
+  min-width: var(--ff-min-target-size);
+  min-height: var(--ff-min-target-size);
 }
 
 .matching-choice-btn {

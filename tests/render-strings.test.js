@@ -66,6 +66,21 @@ describe('Learner Strings Catalog (src/render/strings.js)', () => {
     expect(Object.isFrozen(STRINGS.status)).toBe(true);
   });
 
+  it('keeps linear matching wording intact while exposing a structured spoken question', () => {
+    expect(STRINGS.reflect.matchingPromptLinearLead).toBe(
+      'Choose the fraction that shows the same amount as',
+    );
+    expect(STRINGS.reflect.matchingPromptLinearAccessible('2', '3')).toBe(
+      'Choose the fraction that shows the same amount as 2 over 3.',
+    );
+    expect(STRINGS.reflect.matchingPromptLinear('2/3')).toBe(
+      'Choose the fraction that shows the same amount as 2/3.',
+    );
+    expect(STRINGS.reflect.matchingOptionLabelLinear('16', '24')).toBe(
+      'Fraction 16 over 24 shows a shaded amount',
+    );
+  });
+
   it('contains zero specification or research apparatus vocabulary (Presentation Posture Part 2)', () => {
     const allEntries = extractAllStrings(STRINGS);
     expect(allEntries.length).toBeGreaterThan(20);
