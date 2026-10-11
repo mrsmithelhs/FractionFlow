@@ -101,6 +101,102 @@ Potential new records/materializer tests need to demonstrate every admitted item
 
 Source implementation is blocked pending explicit owner/orchestrator approval of: (1) the record/materializer and bounded admission/closure alignment; (2) premise and reflection instructional policy, including false-premise selection, distractor rationale/forms, and answer-position policy; and (3) proposed seven-item batch membership/exclusions and immutable set/replay versioning. The known `BODY` focus result should be reviewed against actual sampled behavior before any decision about a focus repair. No source changes have been made.
 
+## Requirement 0 addendum — concrete policy and identity proposal
+
+This is a concrete recommendation for owner review, not an adopted instructional policy, source authorization, or learner bank. The seven new items below and their per-route policies are suggestions. They have not been reviewed with learners or validated as effective instruction.
+
+### Candidate named rules
+
+**Premise rules:**
+
+- `P-EQUIVALENT`: display the exact left-operand conversion to the selected denominator. `equalFractions()` determines the expected “yes” response.
+- `P-ADJACENT-UNIT`: display the exact converted numerator minus one or plus one over the selected denominator. The signed offset is explicit per item/path. `equalFractions()` determines the expected “no” response. This is a near-miss check, not a claim about a measured learner misconception.
+
+The proposed incorrect route uses `P-ADJACENT-UNIT`; its sign is chosen opposite to the reflection adjacent distractor for that route, so the same near-miss form does not appear again as a reflection option. Each item gets one exact premise and one false premise. False premises occur at the least denominator on four items and the alternate denominator on three; the fixed sequence is least, alternate, alternate, least, alternate, least, least. Thus neither path type makes “yes” or “no” universal. The 4/3 split is the closest balance possible across seven items; it remains a fixed authored distribution, not a probability or random policy.
+
+**Reflection rules:**
+
+- `R-CORRECT`: exact conversion of the left operand to the target denominator.
+- `R-KEEP-NUMERATOR`: keep its original numerator while using the target denominator.
+- `R-ADJACENT-UNIT`: exact converted numerator minus one or plus one, with the sign explicitly authored per item/path.
+
+Each proposed path materializes exactly three options, all with the same denominator, pairwise distinct forms within the safe range, and exactly one exact equivalent answer. The current generic `validateAuthoredMatchingChoices()` contract is **at least three** options; this proposal leaves that general contract intact and makes **exactly three** the Plan 32 record/materialization policy. It does not add a correctness flag to rendered options.
+
+These near-miss and keep-numerator choices are review hypotheses. They may make the reflection task too easy, overly numeric, or repetitive; the set has no learner evidence to show otherwise. In particular, one-off errors are not asserted as common for this age group. The owner may reject these named rules or require different evidence before source work.
+
+### Exact ordered nine-item set and revisions
+
+The proposed set keeps the existing two entries first and unchanged, then adds one orientation of each of the seven other distinct eligible mathematical classes. Operand reversals remain in the inventory but are not additional sums in this set.
+
+| Order | Item ID | Fixture ID | Authoring revision | Task data revision | Inputs / targets |
+|---:|---|---|---|---|---|
+| 1 | `two-thirds-plus-one-fourth` | `curated-relatively-prime-addition-non-least` | `plan03-fixtures-v1` (preserve) | legacy authored rows (preserve) | 2/3 + 1/4; 12, 24 |
+| 2 | `one-half-plus-one-third` | `curated-relatively-prime-addition-one-half-one-third` | `plan26-fixtures-v1` (preserve) | legacy authored rows (preserve) | 1/2 + 1/3; 6, 12 |
+| 3 | `one-half-plus-one-fifth` | `curated-relatively-prime-addition-one-half-one-fifth` | `plan32-record-v1` | `plan32-task-data-v1` | 1/2 + 1/5; 10, 20 |
+| 4 | `one-half-plus-two-fifths` | `curated-relatively-prime-addition-one-half-two-fifths` | `plan32-record-v1` | `plan32-task-data-v1` | 1/2 + 2/5; 10, 20 |
+| 5 | `one-third-plus-one-fourth` | `curated-relatively-prime-addition-one-third-one-fourth` | `plan32-record-v1` | `plan32-task-data-v1` | 1/3 + 1/4; 12, 24 |
+| 6 | `one-third-plus-one-fifth` | `curated-relatively-prime-addition-one-third-one-fifth` | `plan32-record-v1` | `plan32-task-data-v1` | 1/3 + 1/5; 15, 30 |
+| 7 | `one-third-plus-two-fifths` | `curated-relatively-prime-addition-one-third-two-fifths` | `plan32-record-v1` | `plan32-task-data-v1` | 1/3 + 2/5; 15, 30 |
+| 8 | `two-thirds-plus-one-fifth` | `curated-relatively-prime-addition-two-thirds-one-fifth` | `plan32-record-v1` | `plan32-task-data-v1` | 2/3 + 1/5; 15, 30 |
+| 9 | `three-fifths-plus-one-third` | `curated-relatively-prime-addition-three-fifths-one-third` | `plan32-record-v1` | `plan32-task-data-v1` | 3/5 + 1/3; 15, 30 |
+
+Proposed set identity is `unlike-addition-vetted-set` revision `2`; revision `1` remains the immutable two-item set record. The episode definition stays `phase-2-unlike-proper-addition-reflection` revision `3`. The new records use recipe ID `plan32-reviewed-addition` revision `1`. Every `(fixtureId, authoringRevision)` must resolve permanently to that exact immutable input record, recipe revision, and task-data revision; the resolver must never substitute the latest recipe. Any changed instructional input or materialization policy gets a new item/authoring and task-data revision; any recipe implementation change gets a new recipe revision; any set membership or order change gets a new set revision. The seven new records must be explicitly resolvable by both app admission and curated replay reconstruction. Keep both existing fixture/revision pairs and all their materialized premise and reflection forms byte-for-byte in meaning.
+
+### Complete proposed new-item/path assignments
+
+The forms below were generated read-only from the current candidate builder and exact math layer (`convertToDenominator()` and `equalFractions()`). `E` is `P-EQUIVALENT`; `A−`/`A+` is `P-ADJACENT-UNIT`; `K` is `R-KEEP-NUMERATOR`; `C` is `R-CORRECT`; and `R−`/`R+` is `R-ADJACENT-UNIT`. Option order is left to right, slots are one-based. No row is numerically sorted. The expected premise response is the exact equivalence result, not an authored truth flag.
+
+| Item | Target | Premise policy, displayed form → expected response | Reflection options in displayed order (intent: form) | Correct slot |
+|---|---:|---|---|---:|
+| 1/2 + 1/5 | 10 (least) | A−: 4/10 → no | K: 1/10; R+: 6/10; C: 5/10 | 3 |
+| 1/2 + 1/5 | 20 (alternate) | E: 10/20 → yes | R−: 9/20; C: 10/20; K: 1/20 | 2 |
+| 1/2 + 2/5 | 10 (least) | E: 5/10 → yes | C: 5/10; K: 1/10; R−: 4/10 | 1 |
+| 1/2 + 2/5 | 20 (alternate) | A−: 9/20 → no | C: 10/20; R+: 11/20; K: 1/20 | 1 |
+| 1/3 + 1/4 | 12 (least) | E: 4/12 → yes | R−: 3/12; C: 4/12; K: 1/12 | 2 |
+| 1/3 + 1/4 | 24 (alternate) | A+: 9/24 → no | C: 8/24; K: 1/24; R−: 7/24 | 1 |
+| 1/3 + 1/5 | 15 (least) | A+: 6/15 → no | K: 1/15; C: 5/15; R−: 4/15 | 2 |
+| 1/3 + 1/5 | 30 (alternate) | E: 10/30 → yes | K: 1/30; R+: 11/30; C: 10/30 | 3 |
+| 1/3 + 2/5 | 15 (least) | E: 5/15 → yes | C: 5/15; K: 1/15; R+: 6/15 | 1 |
+| 1/3 + 2/5 | 30 (alternate) | A+: 11/30 → no | K: 1/30; C: 10/30; R−: 9/30 | 2 |
+| 2/3 + 1/5 | 15 (least) | A+: 11/15 → no | R−: 9/15; C: 10/15; K: 2/15 | 2 |
+| 2/3 + 1/5 | 30 (alternate) | E: 20/30 → yes | K: 2/30; R+: 21/30; C: 20/30 | 3 |
+| 3/5 + 1/3 | 15 (least) | A−: 8/15 → no | C: 9/15; K: 3/15; R+: 10/15 | 1 |
+| 3/5 + 1/3 | 30 (alternate) | E: 18/30 → yes | R−: 17/30; K: 3/30; C: 18/30 | 3 |
+
+The least-unit routes contain four “no” and three “yes” premise forms; alternate-unit routes contain three “no” and four “yes”. Correct reflection positions occur in slots 1/2/3 on 5/5/4 paths, respectively. The path assignment and option order are fixed data, not generated from hashes, candidate enumeration, numerical sorting, or learner performance. The checked candidate-level exact results are listed in the set table above. The exact outcome/control probe confirmed all 14 targets are currently eligible, all premise outcomes match `equalFractions()`, and each reflection row has three distinct safe forms with a non-monotonic numerator order. This is authoring-example verification only; it does not verify authored validator admission or learner presentation.
+
+For preservation, the current two items keep their present authored outputs and choice order, rather than being rematerialized under these proposed rules:
+
+| Existing item / target | Existing premise | Existing reflection choices; correct slot |
+|---|---|---|
+| 2/3 + 1/4, 12 | 7/12; no | 8/12, 7/12, 9/12; slot 2 |
+| 2/3 + 1/4, 24 | 16/24; yes | 15/24, 16/24, 17/24; slot 2 |
+| 1/2 + 1/3, 6 | 2/6; no | 2/6, 3/6, 4/6; slot 1 |
+| 1/2 + 1/3, 12 | 6/12; yes | 5/12, 6/12, 7/12; slot 2 |
+
+### Narrow data flow and admission alignment
+
+Proposed dependency direction, with no implementation authorized:
+
+```text
+immutable compact record literals ──> pure versioned materializer ──> shared authored-content catalog/resolver
+legacy fixture and raw premise/choice tables ─────────────────────────> shared authored-content catalog/resolver
+shared resolver ──> authored validator / path closure / scene lookup / app admission / replay reconstruction
+exact math and existing content builder ──> materializer and validators
+```
+
+Keep the compact record module data-only. The materializer may import that data plus the exact math/schema/content builder, but must not import the authored accessors or validator. One catalog resolver owns exact `(fixtureId, authoringRevision)` discovery and returns the fixture plus route task data; it may import legacy raw tables and materialized new records but must not import app, replay, scene, closure, or validators. Validators, path closure, scene, app, and replay consume the resolver; none is imported back into it. This gives app admission and historical replay the same exact identity lookup while avoiding a materializer↔accessor/validator cycle and duplicated revision maps.
+
+The existing validator requires **at least three** matching choices, not exactly three. The proposed Plan 32 materializer emits exactly three; the batch-specific check should enforce exactly three and all three distinct forms, while the generic validator can retain its existing minimum-three contract. Before mount, premise validation should also require a fraction wire form with safe integer numerator/denominator, denominator equal to the path target, and `0 ≤ numerator ≤ denominator`. Current premise validation verifies identity, source, denominator field and exact truth, but does not apply the matching renderer's safe-form/range guard; a false improper premise could pass truth validation and then fail presentation. Path closure should use the same complete authored-data admission result rather than its current weaker two-choice presence check. These are bounded consistency checks; they do not justify a schema framework.
+
+### Help closure for the proposed targets
+
+Read-only inspection found no additional numeric help ceiling for 10, 12, 15, 20, 24, or 30. Denominator-finding help uses the source denominators dynamically; selected-unit wording names 12/24 and falls back to readable “N equal parts” wording for the other targets. Conversion help derives its source denominator and target from the active schedule; `classifyTransformHelpMultiplier()` compares the response with exact `scaleFactorForDenominator()` output. Proposed scale factors top out at 10, within the current eligibility limit of 12, and denominators top out at the fraction-bar limit of 30. This is source inspection only, not evidence that help routes work on every new mounted item. After approval, exercise finding help, selected-unit help, and task-local conversion help on representative 10/20 and 15/30 routes, including the 30-part visual/linear displays, and retain full item/path closure.
+
+### Revised gate
+
+This addendum supplies a recommended but unapproved rule set, path-by-path outputs, answer slots, complete ordered set, version mapping, import direction, and help review. Source remains blocked until the owner/orchestrator explicitly approves or amends the named premise and distractor rules, all 14 new path assignments and option positions, the exact nine-item order and revisions, and the bounded resolver/admission changes. No source, tests, registry, app selection, packet status, or learner content was changed by this addendum.
+
 ## Advisor declaration
 
 This delivery is a proposal/report only and has no behavioral code, script, or schema artifact for a read-only advisor to critique; advisor consultation was not warranted for this docs-only Requirement 0 delivery. If the gate authorizes behavioral source work, reassess the current thread/provider capability and consult on the implemented diff before source delivery as required by the inherited advisor rule.
