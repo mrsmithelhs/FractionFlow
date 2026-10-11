@@ -150,3 +150,19 @@ Date: 2026-10-11. FF Orch 12+ authorized this bounded evidence repair in `repair
 - One read-only advisor consultation ran at Sol-class low effort. The initial review found two evidence defects: the right-side scan followed an extra response, and the help-return assertion was not exact. Both were corrected and recaptured. A focused read-only follow-up found no remaining concrete capture-script defects. No application defect was confirmed and no runtime source changed.
 
 The delivered capture script, evidence and this report are ready for FF Orch 12+ review. The known response remount may still leave focus on `BODY`; this evidence demonstrates a reachable keyboard recovery path only. Technical review and owner-rendered-screen/agency acceptance remain separate gates.
+
+## Repair 02 — mounted fact witness and Replay reveal
+
+Date: 2026-10-11. FF Orch 12+ authorized the bounded follow-up in `repair-02.md`. The prior Repair 01 observations remain in `evidence/measurements.json`; the additional single-journey run is separately saved as `evidence/measurements-matching-24-high-visual-touch-360x752-repair-02.json` so the earlier capture is preserved.
+
+- Added a mounted rendered-fact witness for the new item's left conversion at 24 parts. `convertToDenominator()` supplies the exact `4/24` oracle. The witness reads the visible symbolic numerator and denominator, checks the visible symbolic form's accessibility label, and reads the left fraction-bar track's rendered numerator/denominator data. The clean observation passes at `4/24`. A temporary DOM-only change to `.symbolic-numerator` text (`4` to `5`) makes the same witness fail at `5/24`, while the rendered track remains `4/24`; a `finally` block restores the displayed text, and a new witness call passes at `4/24`. The evidence records the exact field, before/corrupt values, observations, and clean/corrupt/restored outcomes. Existing wrong-scale-factor learner response recovery seeds remain separate and unchanged.
+- During active 24-part Replay in the touch journey, activated the mounted **Show new parts** control with a browser touch tap. After the transition settled, the symbolic fraction and left bar track both read `4/24`, matching the exact math oracle. The right conversion prompt remained mounted and the response draft stayed `2` before Replay, during Replay, and after Show new parts dismissed it. The Replay screen and settled Show new parts state are saved as separate screenshots and measurements; the prior reflection Inspection Mode label remains separate.
+- The filtered run reached the tenth item through its nine completion-gated Next transitions, recorded one target journey, two screenshots, and two measurements, and reported zero horizontal overflow. Its viewport was 360×752 CSS pixels with vertical scrolling. It did not replace the previously accepted full-set evidence or rerun the other three captures.
+
+### Repair 02 checks
+
+- `node --check scripts/dev/capture-plan-19-evidence.mjs` passed. `node scripts/dev/capture-plan-19-evidence.mjs --journey=matching-24-high-visual-touch-360x752` completed with the filtered journey and the two new observation states.
+- Focused Plan 19, Plan 32 compatibility, and replay tests passed: 21 tests across 3 files. Packet lint passed. A bounded JSON/artifact assertion verified the clean → corrupted rejection → restored pass sequence, the touch activation, oracle match, preserved question/draft, two measurements, and both screenshot files.
+- A read-only Sol-class, low-effort advisor follow-up reviewed the current script diff and filtered evidence; it found no remaining concrete defects. No runtime defect was confirmed and no application source changed.
+
+Plan 19 remains delivered. The additional evidence is ready for FF Orch 12+ technical disposition; owner acceptance and packet status remain separate gates.
