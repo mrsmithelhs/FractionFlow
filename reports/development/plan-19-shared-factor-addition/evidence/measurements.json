@@ -325,6 +325,527 @@
       "activeItemCount": 10
     }
   ],
+  "keyboardFocusObservations": [
+    {
+      "journey": "premise-12-medium-linear-keyboard-reduced-360x752",
+      "stage": "left-conversion",
+      "afterWrongResponse": {
+        "tagName": "BODY",
+        "id": "",
+        "className": "",
+        "role": null,
+        "isBody": true
+      },
+      "recoveryNavigation": {
+        "start": {
+          "tagName": "BODY",
+          "id": "",
+          "className": "",
+          "role": null,
+          "isBody": true
+        },
+        "tabs": 1,
+        "reached": {
+          "tagName": "INPUT",
+          "id": "linear-transform-num-input-left",
+          "className": "fraction-control control-numeric-input",
+          "role": null,
+          "isBody": false
+        },
+        "targetName": "numeric response"
+      },
+      "usedTabFromBody": true,
+      "recoveredResponseEntered": true
+    },
+    {
+      "journey": "premise-12-medium-linear-keyboard-reduced-360x752",
+      "stage": "right-conversion",
+      "afterWrongResponse": {
+        "tagName": "BODY",
+        "id": "",
+        "className": "",
+        "role": null,
+        "isBody": true
+      },
+      "recoveryNavigation": {
+        "start": {
+          "tagName": "BODY",
+          "id": "",
+          "className": "",
+          "role": null,
+          "isBody": true
+        },
+        "tabs": 1,
+        "reached": {
+          "tagName": "INPUT",
+          "id": "linear-transform-num-input-right",
+          "className": "fraction-control control-numeric-input",
+          "role": null,
+          "isBody": false
+        },
+        "targetName": "numeric response"
+      },
+      "usedTabFromBody": true,
+      "recoveredResponseEntered": true
+    }
+  ],
+  "mountedScaleFactorSeeds": [
+    {
+      "journey": "premise-12-medium-linear-keyboard-reduced-360x752",
+      "side": "left",
+      "exactScaleFactor": "2",
+      "rejectedNumerator": "3",
+      "rejected": true,
+      "recoveredWithExactMathOracle": true
+    },
+    {
+      "journey": "premise-12-medium-linear-keyboard-reduced-360x752",
+      "side": "right",
+      "exactScaleFactor": "3",
+      "rejectedNumerator": "4",
+      "rejected": true,
+      "recoveredWithExactMathOracle": true
+    },
+    {
+      "journey": "premise-24-medium-linear-pointer-chromebook",
+      "side": "left",
+      "exactScaleFactor": "4",
+      "rejectedNumerator": "5",
+      "rejected": true,
+      "recoveredWithExactMathOracle": true
+    },
+    {
+      "journey": "premise-24-medium-linear-pointer-chromebook",
+      "side": "right",
+      "exactScaleFactor": "6",
+      "rejectedNumerator": "7",
+      "rejected": true,
+      "recoveredWithExactMathOracle": true
+    }
+  ],
+  "withholdingScans": [
+    {
+      "journey": "matching-12-high-visual-pointer-360x740",
+      "stage": "negative-control-hidden-sibling-attribute",
+      "forbiddenForms": [
+        "5/12"
+      ],
+      "allowedForms": [],
+      "scannedElements": 145,
+      "hiddenOrInactiveElements": 103,
+      "structuralBoundaryAttributes": 8,
+      "symbolicFractionCount": 6,
+      "symbolicForms": [
+        "1/6",
+        "1/4",
+        "1/6",
+        "1/4",
+        "1/6",
+        "1/4"
+      ],
+      "leakedFormElements": [],
+      "leakedMetadata": [],
+      "leakedForms": [
+        "5/12"
+      ],
+      "leakedFormLocations": [
+        {
+          "candidate": "5/12",
+          "details": [
+            {
+              "tagName": "SPAN",
+              "id": "plan19-temporary-answer-leak-seed",
+              "className": "",
+              "hidden": true,
+              "text": "",
+              "attributes": [
+                [
+                  "aria-label",
+                  "temporary answer leak 5/12"
+                ]
+              ]
+            }
+          ]
+        }
+      ],
+      "passed": false
+    },
+    {
+      "journey": "matching-12-high-visual-pointer-360x740",
+      "stage": "before-left-conversion-response",
+      "forbiddenForms": [
+        "2/12",
+        "3/12",
+        "5/12"
+      ],
+      "allowedForms": [],
+      "scannedElements": 144,
+      "hiddenOrInactiveElements": 102,
+      "structuralBoundaryAttributes": 8,
+      "symbolicFractionCount": 6,
+      "symbolicForms": [
+        "1/6",
+        "1/4",
+        "1/6",
+        "1/4",
+        "1/6",
+        "1/4"
+      ],
+      "leakedFormElements": [],
+      "leakedMetadata": [],
+      "leakedForms": [],
+      "leakedFormLocations": [],
+      "passed": true
+    },
+    {
+      "journey": "matching-12-high-visual-pointer-360x740",
+      "stage": "before-right-conversion-response",
+      "forbiddenForms": [
+        "3/12",
+        "5/12"
+      ],
+      "allowedForms": [
+        "2/12"
+      ],
+      "scannedElements": 156,
+      "hiddenOrInactiveElements": 114,
+      "structuralBoundaryAttributes": 14,
+      "symbolicFractionCount": 6,
+      "symbolicForms": [
+        "2/12",
+        "1/4",
+        "2/12",
+        "1/4",
+        "2/12",
+        "1/4"
+      ],
+      "leakedFormElements": [],
+      "leakedMetadata": [],
+      "leakedForms": [],
+      "leakedFormLocations": [],
+      "passed": true
+    },
+    {
+      "journey": "matching-12-high-visual-pointer-360x740",
+      "stage": "before-operation-response",
+      "forbiddenForms": [
+        "5/12"
+      ],
+      "allowedForms": [
+        "2/12",
+        "3/12"
+      ],
+      "scannedElements": 180,
+      "hiddenOrInactiveElements": 134,
+      "structuralBoundaryAttributes": 22,
+      "symbolicFractionCount": 6,
+      "symbolicForms": [
+        "2/12",
+        "3/12",
+        "2/12",
+        "3/12",
+        "2/12",
+        "3/12"
+      ],
+      "leakedFormElements": [],
+      "leakedMetadata": [],
+      "leakedForms": [],
+      "leakedFormLocations": [],
+      "passed": true
+    },
+    {
+      "journey": "premise-12-medium-linear-keyboard-reduced-360x752",
+      "stage": "before-left-conversion-response",
+      "forbiddenForms": [
+        "2/12",
+        "3/12",
+        "5/12"
+      ],
+      "allowedForms": [],
+      "scannedElements": 144,
+      "hiddenOrInactiveElements": 114,
+      "structuralBoundaryAttributes": 8,
+      "symbolicFractionCount": 6,
+      "symbolicForms": [
+        "1/6",
+        "1/4",
+        "1/6",
+        "1/4",
+        "1/6",
+        "1/4"
+      ],
+      "leakedFormElements": [],
+      "leakedMetadata": [],
+      "leakedForms": [],
+      "leakedFormLocations": [],
+      "passed": true
+    },
+    {
+      "journey": "premise-12-medium-linear-keyboard-reduced-360x752",
+      "stage": "before-right-conversion-response",
+      "forbiddenForms": [
+        "3/12",
+        "5/12"
+      ],
+      "allowedForms": [
+        "2/12"
+      ],
+      "scannedElements": 156,
+      "hiddenOrInactiveElements": 126,
+      "structuralBoundaryAttributes": 14,
+      "symbolicFractionCount": 6,
+      "symbolicForms": [
+        "2/12",
+        "1/4",
+        "2/12",
+        "1/4",
+        "2/12",
+        "1/4"
+      ],
+      "leakedFormElements": [],
+      "leakedMetadata": [],
+      "leakedForms": [],
+      "leakedFormLocations": [],
+      "passed": true
+    },
+    {
+      "journey": "premise-12-medium-linear-keyboard-reduced-360x752",
+      "stage": "before-operation-response",
+      "forbiddenForms": [
+        "5/12"
+      ],
+      "allowedForms": [
+        "2/12",
+        "3/12"
+      ],
+      "scannedElements": 180,
+      "hiddenOrInactiveElements": 146,
+      "structuralBoundaryAttributes": 22,
+      "symbolicFractionCount": 6,
+      "symbolicForms": [
+        "2/12",
+        "3/12",
+        "2/12",
+        "3/12",
+        "2/12",
+        "3/12"
+      ],
+      "leakedFormElements": [],
+      "leakedMetadata": [],
+      "leakedForms": [],
+      "leakedFormLocations": [],
+      "passed": true
+    },
+    {
+      "journey": "matching-24-high-visual-touch-360x752",
+      "stage": "before-left-conversion-response",
+      "forbiddenForms": [
+        "4/24",
+        "6/24",
+        "10/24"
+      ],
+      "allowedForms": [],
+      "scannedElements": 144,
+      "hiddenOrInactiveElements": 102,
+      "structuralBoundaryAttributes": 8,
+      "symbolicFractionCount": 6,
+      "symbolicForms": [
+        "1/6",
+        "1/4",
+        "1/6",
+        "1/4",
+        "1/6",
+        "1/4"
+      ],
+      "leakedFormElements": [],
+      "leakedMetadata": [],
+      "leakedForms": [],
+      "leakedFormLocations": [],
+      "passed": true
+    },
+    {
+      "journey": "matching-24-high-visual-touch-360x752",
+      "stage": "before-right-conversion-response",
+      "forbiddenForms": [
+        "6/24",
+        "10/24"
+      ],
+      "allowedForms": [
+        "4/24"
+      ],
+      "scannedElements": 180,
+      "hiddenOrInactiveElements": 138,
+      "structuralBoundaryAttributes": 26,
+      "symbolicFractionCount": 6,
+      "symbolicForms": [
+        "4/24",
+        "1/4",
+        "4/24",
+        "1/4",
+        "4/24",
+        "1/4"
+      ],
+      "leakedFormElements": [],
+      "leakedMetadata": [],
+      "leakedForms": [],
+      "leakedFormLocations": [],
+      "passed": true
+    },
+    {
+      "journey": "matching-24-high-visual-touch-360x752",
+      "stage": "before-operation-response",
+      "forbiddenForms": [
+        "10/24"
+      ],
+      "allowedForms": [
+        "4/24",
+        "6/24"
+      ],
+      "scannedElements": 229,
+      "hiddenOrInactiveElements": 183,
+      "structuralBoundaryAttributes": 46,
+      "symbolicFractionCount": 6,
+      "symbolicForms": [
+        "4/24",
+        "6/24",
+        "4/24",
+        "6/24",
+        "4/24",
+        "6/24"
+      ],
+      "leakedFormElements": [],
+      "leakedMetadata": [],
+      "leakedForms": [],
+      "leakedFormLocations": [],
+      "passed": true
+    },
+    {
+      "journey": "premise-24-medium-linear-pointer-chromebook",
+      "stage": "before-left-conversion-response",
+      "forbiddenForms": [
+        "4/24",
+        "6/24",
+        "10/24"
+      ],
+      "allowedForms": [],
+      "scannedElements": 150,
+      "hiddenOrInactiveElements": 117,
+      "structuralBoundaryAttributes": 8,
+      "symbolicFractionCount": 6,
+      "symbolicForms": [
+        "1/6",
+        "1/4",
+        "1/6",
+        "1/4",
+        "1/6",
+        "1/4"
+      ],
+      "leakedFormElements": [],
+      "leakedMetadata": [],
+      "leakedForms": [],
+      "leakedFormLocations": [],
+      "passed": true
+    },
+    {
+      "journey": "premise-24-medium-linear-pointer-chromebook",
+      "stage": "conversion-help-task",
+      "passed": true,
+      "helpPrompt": "What multiplier turns 6 parts into 24?6 × ? = 24Submit",
+      "acceptedCue": "Multiply the top by 4, too.",
+      "responseValue": "4",
+      "computedMultiplier": "4",
+      "returnedTaskPrompt": "How many parts out of 24 make the same amount as 1/6?"
+    },
+    {
+      "journey": "premise-24-medium-linear-pointer-chromebook",
+      "stage": "before-right-conversion-response",
+      "forbiddenForms": [
+        "6/24",
+        "10/24"
+      ],
+      "allowedForms": [
+        "4/24"
+      ],
+      "scannedElements": 186,
+      "hiddenOrInactiveElements": 153,
+      "structuralBoundaryAttributes": 26,
+      "symbolicFractionCount": 6,
+      "symbolicForms": [
+        "4/24",
+        "1/4",
+        "4/24",
+        "1/4",
+        "4/24",
+        "1/4"
+      ],
+      "leakedFormElements": [],
+      "leakedMetadata": [],
+      "leakedForms": [],
+      "leakedFormLocations": [],
+      "passed": true
+    },
+    {
+      "journey": "premise-24-medium-linear-pointer-chromebook",
+      "stage": "before-operation-response",
+      "forbiddenForms": [
+        "10/24"
+      ],
+      "allowedForms": [
+        "4/24",
+        "6/24"
+      ],
+      "scannedElements": 234,
+      "hiddenOrInactiveElements": 197,
+      "structuralBoundaryAttributes": 46,
+      "symbolicFractionCount": 6,
+      "symbolicForms": [
+        "4/24",
+        "6/24",
+        "4/24",
+        "6/24",
+        "4/24",
+        "6/24"
+      ],
+      "leakedFormElements": [],
+      "leakedMetadata": [],
+      "leakedForms": [],
+      "leakedFormLocations": [],
+      "passed": true
+    }
+  ],
+  "withholdingNegativeControl": {
+    "journey": "matching-12-high-visual-pointer-360x740",
+    "seed": "temporary hidden sibling aria-label answer form",
+    "candidateForm": "5/12",
+    "detected": true,
+    "restored": true
+  },
+  "activeReplayObservations": [
+    {
+      "journey": "matching-24-high-visual-touch-360x752",
+      "stage": "right-conversion-response-before-submit",
+      "replayWasPressed": true,
+      "activeQuestion": "How many parts out of 24 make the same amount as 1/4?",
+      "responseControlVisible": true,
+      "fractionBarsVisible": true,
+      "activeInPlaceReplayVisible": true,
+      "reflectionInspectionModeVisible": false,
+      "draftBeforeReplay": "2",
+      "draftDuringReplay": "2",
+      "draftAfterDismissal": "2",
+      "questionRestoredAfterDismissal": true,
+      "measurementStage": "active-replay-right-conversion",
+      "screenshotStage": "active-replay-right-conversion"
+    }
+  ],
+  "reflectionInspectionObservations": [
+    {
+      "journey": "matching-24-high-visual-touch-360x752",
+      "stage": "resolved-reflection-inspection-mode",
+      "inspectionCardVisible": true,
+      "measurementStage": "reflection-inspection-mode"
+    }
+  ],
   "journeys": [
     {
       "name": "matching-12-high-visual-pointer-360x740",
@@ -566,8 +1087,17 @@
     },
     {
       "journey": "matching-24-high-visual-touch-360x752",
-      "stage": "replay-24-left-conversion",
-      "file": "evidence/matching-24-high-visual-touch-360x752-replay-24-left-conversion-360x752.png",
+      "stage": "active-replay-right-conversion",
+      "file": "evidence/matching-24-high-visual-touch-360x752-active-replay-right-conversion-360x752.png",
+      "viewport": {
+        "width": 360,
+        "height": 752
+      }
+    },
+    {
+      "journey": "matching-24-high-visual-touch-360x752",
+      "stage": "reflection-inspection-mode",
+      "file": "evidence/matching-24-high-visual-touch-360x752-reflection-inspection-mode-360x752.png",
       "viewport": {
         "width": 360,
         "height": 752
@@ -2223,6 +2753,108 @@
     },
     {
       "journey": "matching-24-high-visual-touch-360x752",
+      "stage": "active-replay-right-conversion",
+      "viewport": {
+        "width": 360,
+        "height": 752
+      },
+      "activeTask": {
+        "x": 41,
+        "y": 363.63,
+        "width": 278,
+        "height": 226.56,
+        "right": 319,
+        "bottom": 590.19
+      },
+      "prompt": {
+        "text": "How many parts out of 24 make the same amount as 1/4?",
+        "rect": {
+          "x": 63,
+          "y": 381.63,
+          "width": 234,
+          "height": 75.56,
+          "right": 297,
+          "bottom": 457.19
+        }
+      },
+      "fractionTracks": [
+        {
+          "x": 41,
+          "y": 85,
+          "width": 218,
+          "height": 44,
+          "right": 259,
+          "bottom": 129
+        },
+        {
+          "x": 41,
+          "y": 188.84,
+          "width": 218,
+          "height": 44,
+          "right": 259,
+          "bottom": 232.84
+        }
+      ],
+      "controls": [
+        {
+          "label": "How many parts out of 24 make the same amount as 1/4?",
+          "rect": {
+            "x": 63,
+            "y": 465.19,
+            "width": 96,
+            "height": 47,
+            "right": 159,
+            "bottom": 512.19
+          }
+        },
+        {
+          "label": "Submit",
+          "rect": {
+            "x": 167,
+            "y": 466.69,
+            "width": 94.22,
+            "height": 44,
+            "right": 261.22,
+            "bottom": 510.69
+          }
+        },
+        {
+          "label": "Need help?",
+          "rect": {
+            "x": 63,
+            "y": 528.19,
+            "width": 234,
+            "height": 44,
+            "right": 297,
+            "bottom": 572.19
+          }
+        }
+      ],
+      "scroll": {
+        "documentWidth": 360,
+        "documentHeight": 946,
+        "horizontalOverflow": false,
+        "verticalOverflow": true
+      },
+      "viewToggle": {
+        "x": 179.19,
+        "y": -51,
+        "width": 155.81,
+        "height": 44,
+        "right": 335,
+        "bottom": -7
+      },
+      "documentRoot": {
+        "x": 0,
+        "y": -76,
+        "width": 360,
+        "height": 945.97,
+        "right": 360,
+        "bottom": 869.97
+      }
+    },
+    {
+      "journey": "matching-24-high-visual-touch-360x752",
       "stage": "operate",
       "viewport": {
         "width": 360,
@@ -2390,6 +3022,94 @@
         "height": 968.84,
         "right": 360,
         "bottom": 853.84
+      }
+    },
+    {
+      "journey": "matching-24-high-visual-touch-360x752",
+      "stage": "reflection-inspection-mode",
+      "viewport": {
+        "width": 360,
+        "height": 752
+      },
+      "activeTask": {
+        "x": 41,
+        "y": 106.66,
+        "width": 278,
+        "height": 331.25,
+        "right": 319,
+        "bottom": 437.91
+      },
+      "prompt": {
+        "text": "Looking back at the last change:",
+        "rect": {
+          "x": 63,
+          "y": 139.59,
+          "width": 234,
+          "height": 50.38,
+          "right": 297,
+          "bottom": 189.97
+        }
+      },
+      "fractionTracks": [
+        {
+          "x": 41,
+          "y": -251,
+          "width": 218,
+          "height": 44,
+          "right": 259,
+          "bottom": -207
+        },
+        {
+          "x": 41,
+          "y": -147.16,
+          "width": 218,
+          "height": 44,
+          "right": 259,
+          "bottom": -103.16
+        },
+        {
+          "x": 80,
+          "y": 288.91,
+          "width": 144,
+          "height": 48,
+          "right": 224,
+          "bottom": 336.91
+        }
+      ],
+      "controls": [
+        {
+          "label": "Done looking",
+          "rect": {
+            "x": 80,
+            "y": 348.91,
+            "width": 141.33,
+            "height": 44,
+            "right": 221.33,
+            "bottom": 392.91
+          }
+        }
+      ],
+      "scroll": {
+        "documentWidth": 360,
+        "documentHeight": 1164,
+        "horizontalOverflow": false,
+        "verticalOverflow": true
+      },
+      "viewToggle": {
+        "x": 179.19,
+        "y": -387,
+        "width": 155.81,
+        "height": 44,
+        "right": 335,
+        "bottom": -343
+      },
+      "documentRoot": {
+        "x": 0,
+        "y": -412,
+        "width": 360,
+        "height": 1163.69,
+        "right": 360,
+        "bottom": 751.69
       }
     },
     {
@@ -3033,7 +3753,7 @@
   "exhaustionObserved": true,
   "aggregateGeometry": {
     "horizontalOverflowCount": 0,
-    "verticalOverflowCount": 20,
-    "screenshotCount": 25
+    "verticalOverflowCount": 22,
+    "screenshotCount": 26
   }
 }

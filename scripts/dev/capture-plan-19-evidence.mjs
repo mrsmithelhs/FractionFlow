@@ -11,6 +11,7 @@ import { resolveAuthoredContent, resolveCuratedFixture } from '../../src/content
 import { buildCuratedProblem } from '../../src/content/generator.js';
 import { convertToDenominator, addAtCommonDenominator, equalFractions, scaleFactorForDenominator } from '../../src/math/index.js';
 import { fractionToWire, wireToForm } from '../../src/content/schema.js';
+import { STRINGS } from '../../src/render/strings.js';
 
 const require = createRequire(import.meta.url);
 const { createStaticServer } = require('./run-route-matrix.js');
@@ -19,6 +20,7 @@ const outputDir = path.join(rootDir, 'reports/development/plan-19-shared-factor-
 const practiceType = PRACTICE_TYPES.find((entry) => entry.id === 'sum-under-one');
 const oldItems = practiceType.items.slice(0, 9);
 const newItem = practiceType.items[9];
+let currentJourney = 'unknown-journey';
 const plans = [
   { name: 'matching-12-high-visual-pointer-360x740', target: '12', condition: 'phase2-bundle-1', support: 'high', view: 'visual', action: 'pointer', motion: 'standard-motion', viewport: { width: 360, height: 740 } },
   { name: 'premise-12-medium-linear-keyboard-reduced-360x752', target: '12', condition: 'phase2-bundle-4', support: 'medium', view: 'linear', action: 'keyboard', motion: 'reduced-motion', viewport: { width: 360, height: 752 } },
@@ -32,6 +34,12 @@ const evidence = {
   registeredSet: { id: practiceType.setId, revision: practiceType.setRevision, itemCount: practiceType.items.length },
   actualNextReach: [],
   finalItemVerification: [],
+  keyboardFocusObservations: [],
+  mountedScaleFactorSeeds: [],
+  withholdingScans: [],
+  withholdingNegativeControl: null,
+  activeReplayObservations: [],
+  reflectionInspectionObservations: [],
   journeys: [],
   screenshots: [],
   measurements: [],
@@ -59,11 +67,36 @@ function instanceFor(item) {
   });
 }
 
-function actionFor(page, mode) {
+async function focusSnapshot(page) {
+  return page.evaluate(() => {
+    const active = document.activeElement;
+    return {
+      tagName: active?.tagName ?? null,
+      id: active?.id ?? '',
+      className: typeof active?.className === 'string' ? active.className : '',
+      role: active?.getAttribute?.('role') ?? null,
+      isBody: active === document.body,
+    };
+  });
+}
+
+async function tabTo(page, locator, journey, targetName) {
+  ensure(await locator.count() > 0 && await locator.isVisible(), `${journey}: keyboard target is missing or hidden: ${targetName}`);
+  const start = await focusSnapshot(page);
+  let tabs = 0;
+  while (!(await locator.evaluate((element) => document.activeElement === element))) {
+    ensure(tabs < 120, `${journey}: Tab navigation could not reach ${targetName} from ${JSON.stringify(start)}`);
+    await page.keyboard.press('Tab');
+    tabs += 1;
+  }
+  return { start, tabs, reached: await focusSnapshot(page), targetName };
+}
+
+function actionFor(page, mode, journey = currentJourney) {
   return async (locator) => {
     if (mode === 'keyboard') {
-      await locator.focus();
-      await locator.press('Enter');
+      await tabTo(page, locator, journey, 'activation target');
+      await page.keyboard.press('Enter');
     } else if (mode === 'touch') {
       await locator.tap();
     } else {
@@ -72,25 +105,35 @@ function actionFor(page, mode) {
   };
 }
 
-async function typeNumber(input, value, mode) {
+async function typeNumber(page, input, value, mode, journey) {
   if (mode === 'keyboard') {
-    await input.focus();
-    await input.press('Control+A');
-    await input.press('Backspace');
-    await input.pressSequentially(String(value));
+    const navigation = await tabTo(page, input, journey, 'numeric response');
+    await page.keyboard.press('Control+A');
+    await page.keyboard.press('Backspace');
+    await page.keyboard.type(String(value));
+    return navigation;
   } else {
     await input.fill(String(value));
+    return null;
   }
 }
 
-async function enterNumber(page, value, mode, view = 'visual') {
+async function enterNumber(page, value, mode, view = 'visual', journey = currentJourney) {
   const region = page.locator(`.app-${view}-view:not([hidden]) .active-beat-controls`);
   const input = region.locator('input.control-numeric-input').first();
-  await typeNumber(input, value, mode);
+  const inputNavigation = await typeNumber(page, input, value, mode, journey);
   const submit = region.locator('.control-submit-btn').first();
-  if (mode === 'keyboard') await submit.focus().then(() => submit.press('Enter'));
-  else if (mode === 'touch') await submit.tap();
+  let submitNavigation = null;
+  if (mode === 'keyboard') {
+    submitNavigation = await tabTo(page, submit, journey, 'numeric response submit');
+    await page.keyboard.press('Enter');
+  } else if (mode === 'touch') await submit.tap();
   else await submit.click();
+  return {
+    inputNavigation,
+    submitNavigation,
+    focusAfterSubmit: mode === 'keyboard' ? await focusSnapshot(page) : null,
+  };
 }
 
 async function chooseButton(page, name, mode, exact = true) {
@@ -150,6 +193,68 @@ async function saveScreenshot(page, plan, label) {
   evidence.screenshots.push({ journey: plan.name, stage: label, file: `evidence/${fileName}`, viewport: plan.viewport });
 }
 
+function recordKeyboardRecovery(plan, stage, wrongResponse, recoveredResponse) {
+  const afterWrong = wrongResponse.focusAfterSubmit;
+  const recoveryNavigation = recoveredResponse.inputNavigation;
+  const usedTabFromBody = Boolean(afterWrong?.isBody && recoveryNavigation?.tabs > 0);
+  if (afterWrong?.isBody) {
+    ensure(usedTabFromBody, `${plan.name}/${stage}: BODY focus after response was not recovered by Tab`);
+  }
+  evidence.keyboardFocusObservations.push({
+    journey: plan.name,
+    stage,
+    afterWrongResponse: afterWrong,
+    recoveryNavigation,
+    usedTabFromBody,
+    recoveredResponseEntered: true,
+  });
+}
+
+async function captureActiveConversionReplay(page, plan, draftValue) {
+  const viewRoot = `.app-${plan.view}-view:not([hidden])`;
+  const input = page.locator(`${viewRoot} .active-beat-controls input.control-numeric-input`).first();
+  await typeNumber(page, input, draftValue, plan.action, plan.name);
+  const before = await input.inputValue();
+  await chooseButton(page, 'Replay the last change', plan.action);
+  const replayButton = page.getByRole('button', { name: 'Replay the last change', exact: true }).first();
+  ensure(await replayButton.getAttribute('aria-pressed') === 'true', `${plan.name}: active conversion Replay did not turn on`);
+  const activeTask = page.locator(`${viewRoot} .active-beat-section`);
+  const prompt = (await activeTask.locator('.active-beat-prompt').textContent()).trim();
+  ensure(prompt.length > 0, `${plan.name}: active conversion Replay hid its question`);
+  ensure(await activeTask.locator('input.control-numeric-input').count() === 1, `${plan.name}: active conversion Replay hid its response control`);
+  ensure(await page.locator(`${viewRoot} .fraction-bar-track`).count() >= 2, `${plan.name}: active conversion Replay lost the fraction bars`);
+  ensure(await page.locator(`${viewRoot} .fraction-bar-in-place-replay`).count() > 0, `${plan.name}: active conversion Replay card is absent`);
+  ensure(await page.locator(`${viewRoot} .replay-inspection-card`).count() === 0, `${plan.name}: active conversion Replay was confused with reflection Inspection Mode`);
+  const draft = await page.locator(`${viewRoot} .active-beat-controls input.control-numeric-input`).first().inputValue();
+  ensure(draft === before && draft === String(draftValue), `${plan.name}: active conversion Replay did not retain its input draft`);
+  const measurement = await inspectLayout(page, plan, 'active-replay-right-conversion');
+  ensure(measurement.prompt.text === prompt && measurement.controls.length > 0 && measurement.fractionTracks.length >= 2,
+    `${plan.name}: active Replay measurement omitted task controls or fraction bars`);
+  await saveScreenshot(page, plan, 'active-replay-right-conversion');
+  await chooseButton(page, 'Replay the last change', plan.action);
+  ensure(await replayButton.getAttribute('aria-pressed') === 'false', `${plan.name}: active conversion Replay did not dismiss`);
+  ensure(await page.locator(`${viewRoot} .active-beat-prompt`).textContent().then((value) => value.trim()) === prompt,
+    `${plan.name}: conversion question did not return after Replay`);
+  const draftAfter = await page.locator(`${viewRoot} .active-beat-controls input.control-numeric-input`).first().inputValue();
+  ensure(draftAfter === draft, `${plan.name}: active conversion Replay dismissal discarded its draft`);
+  evidence.activeReplayObservations.push({
+    journey: plan.name,
+    stage: 'right-conversion-response-before-submit',
+    replayWasPressed: true,
+    activeQuestion: prompt,
+    responseControlVisible: true,
+    fractionBarsVisible: true,
+    activeInPlaceReplayVisible: true,
+    reflectionInspectionModeVisible: false,
+    draftBeforeReplay: before,
+    draftDuringReplay: draft,
+    draftAfterDismissal: draftAfter,
+    questionRestoredAfterDismissal: true,
+    measurementStage: measurement.stage,
+    screenshotStage: 'active-replay-right-conversion',
+  });
+}
+
 async function answerNotice(page, mode) {
   await chooseButton(page, 'No, different sizes', mode);
 }
@@ -173,6 +278,130 @@ function exactSteps(instance, target) {
     right: convertToDenominator(rightSource, denominator),
     result: addAtCommonDenominator(leftSource, rightSource, denominator),
   };
+}
+
+function formKey(form) {
+  return `${form.numerator}/${form.denominator}`;
+}
+
+async function scanUnearnedAnswers(page, plan, stage, forbiddenForms, allowedForms = []) {
+  const result = await page.evaluate(({ forbiddenForms: forbidden, allowedForms: allowed }) => {
+    const root = document.querySelector('.fractionflow-app');
+    if (!root) return { missingRoot: true, scannedElements: 0, leakedMetadata: [], leakedForms: [] };
+    const metadataPattern = /one-sixth-plus-one-fourth|correctPosition|expectedResponse|isEquivalent|R-CORRECT|R-KEEP-NUMERATOR|R-ADJACENT-UNIT/;
+    const allElements = [root, ...root.querySelectorAll('*')];
+    const leakedMetadata = [];
+    for (const element of allElements) {
+      const values = [element.textContent || '', ...[...element.attributes].map((attribute) => attribute.value)];
+      if (element instanceof HTMLInputElement || element instanceof HTMLTextAreaElement) values.push(element.value);
+      for (const value of values) {
+        const match = value.match(metadataPattern);
+        if (match) leakedMetadata.push({ token: match[0], tagName: element.tagName, id: element.id || '' });
+      }
+    }
+    const allowedSet = new Set(allowed);
+    const structuralAttributeNames = new Set(['data-boundary-key']);
+    const symbolicForms = [...root.querySelectorAll('.symbolic-fraction')].map((element) => {
+      const numerator = element.querySelector('.symbolic-numerator')?.textContent?.trim() ?? '';
+      const denominator = element.querySelector('.symbolic-denominator')?.textContent?.trim() ?? '';
+      return `${numerator}/${denominator}`;
+    });
+    const leakedForms = [];
+    const leakedFormLocations = [];
+    for (const candidate of forbidden) {
+      if (allowedSet.has(candidate)) continue;
+      const [numerator, denominator] = candidate.split('/');
+      const slashPattern = new RegExp(`(^|[^0-9])${numerator}\\s*[/⁄]\\s*${denominator}([^0-9]|$)`);
+      const wordsPattern = new RegExp(`(^|[^0-9])${numerator}\\s+of\\s+${denominator}([^0-9]|$)`, 'i');
+      const rawValues = allElements.flatMap((element) => [
+        element.textContent || '',
+        ...[...element.attributes].filter((attribute) => !structuralAttributeNames.has(attribute.name)).map((attribute) => attribute.value),
+        ...(element instanceof HTMLInputElement || element instanceof HTMLTextAreaElement ? [element.value] : []),
+      ]);
+      const exactSymbolicLeak = symbolicForms.includes(candidate);
+      const exactRawLeak = rawValues.some((value) => slashPattern.test(value) || wordsPattern.test(value));
+      if (exactRawLeak) {
+        const details = [];
+        for (const element of allElements) {
+          const texts = [element.textContent || '', ...[...element.attributes].filter((attribute) => !structuralAttributeNames.has(attribute.name)).map((attribute) => attribute.value)];
+          if (element instanceof HTMLInputElement || element instanceof HTMLTextAreaElement) texts.push(element.value);
+          if (texts.some((value) => slashPattern.test(value) || wordsPattern.test(value))) {
+            details.push({ tagName: element.tagName, id: element.id || '', className: typeof element.className === 'string' ? element.className : '', hidden: Boolean(element.closest('[hidden], [inert], [aria-hidden="true"]')), text: (element.textContent || '').trim().slice(0, 180), attributes: [...element.attributes].map((attribute) => [attribute.name, attribute.value]).filter(([, value]) => slashPattern.test(value) || wordsPattern.test(value)) });
+          }
+        }
+        leakedFormLocations.push({ candidate, details: details.slice(-8) });
+      }
+      if (exactSymbolicLeak || exactRawLeak) leakedForms.push(candidate);
+    }
+    const leakedFormElements = [...root.querySelectorAll('.symbolic-fraction')]
+      .filter((element) => forbidden.includes(`${element.querySelector('.symbolic-numerator')?.textContent?.trim() ?? ''}/${element.querySelector('.symbolic-denominator')?.textContent?.trim() ?? ''}`))
+      .map((element) => ({
+        className: element.className,
+        text: element.textContent?.trim(),
+        activeTask: Boolean(element.closest('.active-beat-section')),
+        hidden: Boolean(element.closest('[hidden], [inert], [aria-hidden="true"]')),
+        outerHTML: element.outerHTML,
+      }));
+    return {
+      missingRoot: false,
+      scannedElements: allElements.length,
+      hiddenOrInactiveElements: allElements.filter((element) => element.closest('[hidden], [inert], [aria-hidden="true"]')).length,
+      structuralBoundaryAttributes: allElements.reduce((count, element) => count + [...element.attributes].filter((attribute) => structuralAttributeNames.has(attribute.name)).length, 0),
+      symbolicFractionCount: symbolicForms.length,
+      symbolicForms,
+      leakedFormElements,
+      leakedMetadata,
+      leakedForms: [...new Set(leakedForms)],
+      leakedFormLocations,
+    };
+  }, { forbiddenForms, allowedForms });
+  ensure(!result.missingRoot, `${plan.name}/${stage}: mounted component root missing`);
+  const scan = {
+    journey: plan.name,
+    stage,
+    forbiddenForms,
+    allowedForms,
+    scannedElements: result.scannedElements,
+    hiddenOrInactiveElements: result.hiddenOrInactiveElements,
+    structuralBoundaryAttributes: result.structuralBoundaryAttributes,
+    symbolicFractionCount: result.symbolicFractionCount,
+    symbolicForms: result.symbolicForms,
+    leakedFormElements: result.leakedFormElements,
+    leakedMetadata: result.leakedMetadata,
+    leakedForms: result.leakedForms,
+    leakedFormLocations: result.leakedFormLocations,
+    passed: result.leakedMetadata.length === 0 && result.leakedForms.length === 0,
+  };
+  evidence.withholdingScans.push(scan);
+  return scan;
+}
+
+async function proveWithholdingGuardNonVacuous(page, plan, candidateForm) {
+  const seedId = 'plan19-temporary-answer-leak-seed';
+  await page.evaluate(({ seedId: id, candidate }) => {
+    const root = document.querySelector('.fractionflow-app');
+    const seed = document.createElement('span');
+    seed.id = id;
+    seed.hidden = true;
+    seed.setAttribute('aria-label', `temporary answer leak ${candidate}`);
+    root.appendChild(seed);
+  }, { seedId, candidate: candidateForm });
+  let detected = false;
+  try {
+    const scan = await scanUnearnedAnswers(page, plan, 'negative-control-hidden-sibling-attribute', [candidateForm]);
+    detected = !scan.passed && scan.leakedForms.includes(candidateForm);
+  } finally {
+    await page.evaluate((id) => document.getElementById(id)?.remove(), seedId);
+  }
+  ensure(detected, `${plan.name}: withholding scan did not detect temporary hidden sibling answer seed ${candidateForm}`);
+  evidence.withholdingNegativeControl = {
+    journey: plan.name,
+    seed: 'temporary hidden sibling aria-label answer form',
+    candidateForm,
+    detected: true,
+    restored: await page.locator(`#${seedId}`).count() === 0,
+  };
+  ensure(evidence.withholdingNegativeControl.restored, `${plan.name}: temporary answer seed was not restored`);
 }
 
 async function answerReflection(page, item, target, plan, wrongFirst = false) {
@@ -240,31 +469,93 @@ async function completeItem(page, item, target, plan, { collect = false, recover
   }
 
   const leftNumerator = step.left.numerator.toString();
-  if (recovery) {
-    await enterNumber(page, '1', mode, plan.view);
-    await page.locator(`${viewRoot} .active-beat-feedback[role="alert"]`).waitFor();
-    ensure(await page.locator(`${viewRoot} .active-beat-controls input.control-numeric-input`).count() === 1, `${plan.name}: wrong conversion advanced`);
+  const candidates = [step.left, step.right, step.result].map(formKey);
+  if (item === newItem) {
+    if (!evidence.withholdingNegativeControl) await proveWithholdingGuardNonVacuous(page, plan, formKey(step.result));
+    const beforeLeft = await scanUnearnedAnswers(page, plan, 'before-left-conversion-response', candidates);
+    ensure(beforeLeft.passed, `${plan.name}: unearned conversion or operation answer was mounted before left response`);
   }
   if (help) {
     await chooseButton(page, 'Need help?', mode);
     const multiplier = scaleFactorForDenominator(step.leftSource, BigInt(target)).toString();
-    await enterNumber(page, multiplier, mode, plan.view);
-    await page.locator('.visual-transform-task-help, .active-beat-help').first().waitFor().catch(() => {});
+    const helpTask = page.locator(`${viewRoot} .active-beat-controls [id$="-transform-task-help"]:visible`).first();
+    await helpTask.waitFor({ state: 'visible' });
+    const helpPrompt = (await helpTask.textContent()).trim();
+    ensure(helpPrompt.length > 0, `${plan.name}: conversion help task has no instructional content`);
+    ensure(await page.locator(`${viewRoot} .active-beat-controls input.control-numeric-input`).count() === 1, `${plan.name}: conversion help task has no response input`);
+    const helpResponse = await enterNumber(page, multiplier, mode, plan.view);
+    const acceptedHelp = page.locator(`${viewRoot} .active-beat-controls .active-beat-help:visible`).first();
+    await acceptedHelp.waitFor({ state: 'visible' });
+    const acceptedHelpText = (await acceptedHelp.textContent()).trim();
+    ensure(acceptedHelpText.length > 0, `${plan.name}: accepted conversion help cue is empty`);
+    ensure((await page.locator(`${viewRoot} .active-beat-controls input.control-numeric-input`).count()) === 1, `${plan.name}: conversion task did not return after help`);
+    const expectedConversionPrompt = STRINGS.transform.equivalentNumeratorPrompt(step.leftSource, target);
+    const returnedPrompt = (await page.locator(`${viewRoot} .active-beat-prompt`).textContent()).trim();
+    ensure(await helpTask.locator('input').count() === 0, `${plan.name}: multiplier response remained active after acceptance`);
+    ensure(returnedPrompt === expectedConversionPrompt, `${plan.name}: help acceptance did not return to the exact left conversion task`);
+    evidence.withholdingScans.push({ journey: plan.name, stage: 'conversion-help-task', passed: true, helpPrompt, acceptedCue: acceptedHelpText, responseValue: multiplier, computedMultiplier: multiplier, returnedTaskPrompt: returnedPrompt });
+    if (mode === 'keyboard') ensure(helpResponse.focusAfterSubmit?.isBody || helpResponse.focusAfterSubmit?.tagName === 'INPUT', `${plan.name}: unexpected focus state after help response`);
   }
-  await enterNumber(page, leftNumerator, mode, plan.view);
+  if (recovery) {
+    const leftSource = step.leftSource;
+    const leftScale = scaleFactorForDenominator(leftSource, BigInt(target));
+    const wrongLeft = (leftSource.numerator * (leftScale + 1n)).toString();
+    const wrongLeftResult = await enterNumber(page, wrongLeft, mode, plan.view);
+    await page.locator(`${viewRoot} .active-beat-feedback[role="alert"]`).waitFor();
+    ensure(await page.locator(`${viewRoot} .active-beat-controls input.control-numeric-input`).count() === 1, `${plan.name}: wrong left scale factor advanced`);
+    ensure(!equalFractions(wireToForm({ kind: 'fraction', numerator: wrongLeft, denominator: target }), leftSource), `${plan.name}: wrong left scale-factor seed unexpectedly matches exact source`);
+    const leftRecovery = await enterNumber(page, leftNumerator, mode, plan.view);
+    evidence.mountedScaleFactorSeeds.push({
+      journey: plan.name,
+      side: 'left',
+      exactScaleFactor: leftScale.toString(),
+      rejectedNumerator: wrongLeft,
+      rejected: true,
+      recoveredWithExactMathOracle: true,
+    });
+    if (mode === 'keyboard') recordKeyboardRecovery(plan, 'left-conversion', wrongLeftResult, leftRecovery);
+  }
+  if (!recovery) await enterNumber(page, leftNumerator, mode, plan.view);
   if (collect) {
     await inspectLayout(page, plan, 'transform-right');
     await saveScreenshot(page, plan, 'transform-right');
   }
-  if (replay) {
-    const draft = page.locator(`${viewRoot} .active-beat-controls input.control-numeric-input`).first();
-    await typeNumber(draft, '2', mode);
-    await chooseButton(page, 'Replay the last change', mode);
-    await chooseButton(page, 'Replay the last change', mode);
-    ensure((await page.locator(`${viewRoot} .active-beat-controls input.control-numeric-input`).first().inputValue()) === '2', `${plan.name}: Replay toggle discarded the active response draft`);
+  if (item === newItem) {
+    const beforeRight = await scanUnearnedAnswers(
+      page,
+      plan,
+      'before-right-conversion-response',
+      [formKey(step.right), formKey(step.result)],
+      [formKey(step.left)],
+    );
+    ensure(beforeRight.passed, `${plan.name}: unearned right conversion or operation answer was mounted before right response`);
   }
-  await enterNumber(page, step.right.numerator.toString(), mode, plan.view);
+  if (replay) await captureActiveConversionReplay(page, plan, '2');
+  if (recovery) {
+    const rightScale = scaleFactorForDenominator(step.rightSource, BigInt(target));
+    const wrongRight = (step.rightSource.numerator * (rightScale + 1n)).toString();
+    const wrongRightResult = await enterNumber(page, wrongRight, mode, plan.view);
+    await page.locator(`${viewRoot} .active-beat-feedback[role="alert"]`).waitFor();
+    ensure(await page.locator(`${viewRoot} .active-beat-controls input.control-numeric-input`).count() === 1, `${plan.name}: wrong right scale factor advanced`);
+    ensure(!equalFractions(wireToForm({ kind: 'fraction', numerator: wrongRight, denominator: target }), step.rightSource), `${plan.name}: wrong right scale-factor seed unexpectedly matches exact source`);
+    const rightRecovery = await enterNumber(page, step.right.numerator.toString(), mode, plan.view);
+    evidence.mountedScaleFactorSeeds.push({
+      journey: plan.name,
+      side: 'right',
+      exactScaleFactor: rightScale.toString(),
+      rejectedNumerator: wrongRight,
+      rejected: true,
+      recoveredWithExactMathOracle: true,
+    });
+    if (mode === 'keyboard') recordKeyboardRecovery(plan, 'right-conversion', wrongRightResult, rightRecovery);
+  } else {
+    await enterNumber(page, step.right.numerator.toString(), mode, plan.view);
+  }
   if (collect) await inspectLayout(page, plan, 'operate');
+  if (item === newItem) {
+    const operationWithholding = await scanUnearnedAnswers(page, plan, 'before-operation-response', [formKey(step.result)], [formKey(step.left), formKey(step.right)]);
+    ensure(operationWithholding.passed, `${plan.name}: unearned operation result was mounted before response: ${JSON.stringify(operationWithholding)}`);
+  }
   if (recovery) {
     const wrong = (step.result.numerator + 1n).toString();
     await enterNumber(page, wrong, mode, plan.view);
@@ -283,7 +574,11 @@ async function completeItem(page, item, target, plan, { collect = false, recover
   if (replay) {
     await chooseButton(page, 'Replay the last change', mode);
     await page.locator(`${viewRoot} .app-done-looking-button`).waitFor();
-    if (collect) await saveScreenshot(page, plan, 'replay-24-left-conversion');
+    if (collect) {
+      const inspection = await inspectLayout(page, plan, 'reflection-inspection-mode');
+      await saveScreenshot(page, plan, 'reflection-inspection-mode');
+      evidence.reflectionInspectionObservations.push({ journey: plan.name, stage: 'resolved-reflection-inspection-mode', inspectionCardVisible: true, measurementStage: inspection.stage });
+    }
     await chooseButton(page, 'Done looking', mode);
   }
   if (collect) {
@@ -346,6 +641,7 @@ async function reachNewItem(page, plan) {
 }
 
 async function runJourney(browser, baseUrl, plan) {
+  currentJourney = plan.name;
   const context = await browser.newContext({
     viewport: plan.viewport,
     hasTouch: plan.action === 'touch',
@@ -364,7 +660,7 @@ async function runJourney(browser, baseUrl, plan) {
     await actionFor(page, plan.action)(page.locator(`.app-${plan.view}-view:not([hidden]) .active-beat-controls .control-btn`).first());
     await answerNotice(page, plan.action);
     const draft = page.locator('.app-visual-view:not([hidden]) input.control-numeric-input, .app-linear-view:not([hidden]) input.control-numeric-input').first();
-    await typeNumber(draft, target, plan.action);
+    await typeNumber(page, draft, target, plan.action, plan.name);
     await chooseButton(page, 'Try this problem again', plan.action);
     ensure(await page.locator(`.app-${plan.view}-view:not([hidden]) .active-beat-controls .control-btn`).count() === 1, `${plan.name}: Retry did not reset the active item`);
     ensure(await page.locator('.app-visual-view:not([hidden]) input.control-numeric-input, .app-linear-view:not([hidden]) input.control-numeric-input').count() === 0, `${plan.name}: Retry retained a dirty response draft`);
@@ -378,7 +674,7 @@ async function runJourney(browser, baseUrl, plan) {
 
   const exerciseOptions = {
     collect: true,
-    recovery: plan.name.startsWith('premise-24'),
+    recovery: plan.name.startsWith('premise-'),
     help: plan.name.startsWith('premise-24'),
     replay: plan.name.startsWith('matching-24'),
     wrongPremise: plan.condition === 'phase2-bundle-4',
@@ -425,6 +721,7 @@ async function runJourney(browser, baseUrl, plan) {
 
 async function main() {
   await fs.mkdir(outputDir, { recursive: true });
+  await fs.rm(path.join(outputDir, 'matching-24-high-visual-touch-360x752-replay-24-left-conversion-360x752.png'), { force: true });
   const server = createStaticServer();
   await new Promise((resolve) => server.listen(0, '127.0.0.1', resolve));
   const baseUrl = `http://127.0.0.1:${server.address().port}/FractionFlow/`;
