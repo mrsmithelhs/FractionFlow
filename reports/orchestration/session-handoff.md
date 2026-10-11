@@ -14,7 +14,11 @@ and both starting prompts; prohibited role defaults must not bypass the limit.
 This snapshot supersedes older status/next-action passages below, which retain
 dated history. Use `docs/development/README.md` for the authoritative board.
 Plans 01–16, 21, 22, 24, 25, 26, 30 and 31 are complete; Plans 17–20, 23 and 29
-are drafts except Plan 19, which is ready for owner initiation. Plan 32 is complete
+are drafts except Plan 19, which is owner-initiated in-progress. FF Impl 19 is
+resolved at `01a12c75-1e17-7f03-b9fd-c3ce9a838a03`; the owner assignment in that
+chat explicitly authorizes bidirectional Plan 19 supervision. Kickoff received;
+Requirement 0 investigation only, with mechanism approval before source work.
+Plan 32 is complete
 after owner screen acceptance on 2026-10-11; see `owner-disposition.md`.
 Repair commits `08cb875` / `fe2b820`; see its
 `repair-01-review.md`. Root reran 24 focused tests, 56/56 browser executions,

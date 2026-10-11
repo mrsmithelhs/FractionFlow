@@ -10,7 +10,7 @@ superseded by owner-approved drafting of a bounded batch proof. Plan 31 is
 complete after owner screenshot acceptance and independent Repair 01 verification.
 FF Impl 31's assignment is closed. Updated 2026-10-11: Plan 32 is complete after
 owner screenshot acceptance and independent Repair 01 verification. FF Impl 32
-is stopped. Plan 19 is ready for owner initiation; its handoff is in the owner
+is stopped. Plan 19 is owner-initiated in-progress; its handoff is in the owner
 chat, not a separate durable prompt. The packet's mechanism gate remains.
 
 Recommended source sequence: **31 → 32 → 19 → 17 → 20 → 18**.
@@ -23,7 +23,7 @@ chain. Recheck every older source packet against current code before initiation.
 |---|---|---|
 | 31 — Shared Fraction Typography | Intrinsic fraction lines and structured linear question/button notation | Complete; technical and owner acceptance satisfied |
 | 32 — Compact Authored Problem Batch | Shared production authoring across a varied reviewed batch | Complete; technical and owner acceptance satisfied |
-| 19 — Shared-Factor Addition | New denominator relationship, retaining two conversions | Ready, not initiated; extend accepted authoring and per-item definition/admission after mechanism approval |
+| 19 — Shared-Factor Addition | New denominator relationship, retaining two conversions | In-progress, FF Impl 19 investigating Requirement 0; source awaits mechanism approval |
 | 17 — Crossing-One-Whole Addition | Truthful equal-unit multi-whole result stack | After 19; stack, answer withholding, capability and geometry gate |
 | 20 — Like-Denominator Addition and Notice Recovery | Zero-renaming episode and same-parts recovery | After 17; implied unit/effective operands, no fabricated conversions/reflection |
 | 18 — Nested-Denominator Addition | Identify and rename only the operand needing it, in both orders | After 20; execution of DECISION-037, not unrestricted alternative-unit choice |
