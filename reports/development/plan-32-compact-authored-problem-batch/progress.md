@@ -1,6 +1,43 @@
-# Plan 32 — Requirement 0 Proposal and Pre-source Report
+# Plan 32 — Progress and Delivery Report
 
-Date: 2026-10-10. Status: Requirement 0 delivered to orchestration; waiting at the mechanism, instructional-policy, and batch-membership gate. No production source, tests, registry, learner content, packet status, or browser evidence was changed or generated.
+Date: 2026-10-10. Plan status remains orchestration-owned (`in-progress`). Requirement 0 was approved in `mechanism-review.md`; the scoped Requirement 1-3 implementation and evidence below are delivered for orchestration review. No packet status change was made.
+
+## Requirement 1-3 implementation delivery
+
+The approved compact batch is registered as set revision 2: the two existing items remain first and unchanged, followed by the seven approved new mathematical items. New records pin their exact authoring, recipe, and task-data revisions. A shared deterministic materializer derives exact mathematical forms and outcomes while instructional premise/distractor policies remain explicit reviewed inputs. Exact catalog lookup is shared by admission, scene data, and replay; it has no latest-revision fallback. Admission and path closure now use the complete authored-data validator and the existing presentation bounds. Legacy premise and reflection rows were moved intact, and the existing replay identity reconstruction remains supported.
+
+Revision note: the packet's statement that set revision 1 remains an immutable two-item record describes historical authoring state, not a runtime set registry. Runtime admission now selects set revision 2; replay envelopes identify the individual fixture and authoring revision, not set membership. The old items still reconstruct from their preserved fixture/task identities, but the app does not retain a resolver for old set revision 1. No replay envelope schema or historical item meaning was changed.
+
+### Verified automated and browser evidence
+
+- `npm test`: **29 files, 327 tests passed**. The Plan 32 test covers the exact approved item order, all 18 admitted item/path pairs, exact outcomes and safe choice constraints, rejection controls, materialization order stability, and whole-episode completion under all 4 registered conditions and both support profiles. It reconstructs replay for each path under the first condition/support profile (18 replay reconstructions). This is deterministic headless state-machine coverage, not a browser sweep of every combination.
+- `npm run build`: learner and subtraction prototype builds both succeeded on the clean retry. The first attempt hit a transient `EPERM` creating ignored `dist/prototypes/subtraction`; closing the pre-existing preview process allowed the normal build to pass.
+- Browser route matrix: **56/56 executions passed across 54 route rows**, with zero known defects. `ROUTE-PLAN32-NEXT-REACHES-NEW-BATCH` proves the actual Next interaction reaches the first new item. The other broad route rows chiefly exercise established shared transitions and legacy fixtures; they do not amount to browser completion of every compact item/path.
+- The dedicated Playwright evidence capture completed all nine items and verified the exhaustion notice receives focus, Next is hidden, Back to start remains enabled, and re-entry begins at 2/3 + 1/4. It saved six mounted states at 360×740 and 1366×768: first new item, the 30-part 10/30 + 6/30 conversion, and exhaustion at each viewport. No horizontal overflow appeared. The 360px view had 64px vertical scroll on the first new item and 433px at the largest admitted path; screenshots are full-page captures and do not prove physical-device usability.
+- `node scripts/dev/plan-status.js lint`, `node scripts/dev/plan-status.js check plan-32`, and `git diff --check` passed. The manifest contains 9 ordered items and 18 admitted paths.
+
+### Browser sample boundaries and access findings
+
+The new mounted compact-item screenshots use high support, visual mode, and standard motion. They establish actual Next reach, the largest admitted visual subdivision, exhaustion, focus on the exhaustion notice, and return/re-entry. They do **not** establish compact-item browser use for medium support, linear view, both premise responses, reduced motion, keyboard or touch gestures, or compact-item local help/recovery/Replay/dirty Retry. Existing route witnesses exercise many of those shared behaviors on the preserved fixtures; the Plan 32 headless sweep covers every new item/path across condition and support configurations. Keep that distinction explicit when deciding learner acceptance. No physical Chromebook or assistive-technology testing was performed.
+
+The route run repeated the already documented Plan 31 observation that a linear response remount can leave focus on `BODY`; this delivery does not claim response-focus retention or include a global focus rewrite. The new exhaustion witness confirms the separate final-set notice focus. No new load-bearing access failure was exposed by the compact-item browser sample; it is bounded evidence, not a broad access validation.
+
+### Advisor consultation disposition
+
+One read-only Sol-class review of the implemented diff ran at the explicitly requested `gpt-6.1-sol`, medium-effort setting. The advisor did not independently verify its runtime model identifier (its self-report was only “GPT-6”); the requested configuration was Sol-class medium, and no Astra consultation was used. The advisor was bounded/read-only with no fan-out. The immediate post-consultation working-tree check showed only this task's existing edits; the primary remained the sole writer. Consultation effort was reported as approximately 10–15 minutes and 30 artifacts reviewed.
+
+| Finding | Disposition |
+|---|---|
+| P2: browser exhaustion was missing | **Addressed.** The dedicated capture now finishes all nine items at both viewport sizes and asserts the focused notice, hidden Next, enabled return, and stable re-entry item. |
+| P2: compact-item mounted coverage was narrow | **Partially addressed; residual accepted for orchestration review.** Actual Next reach, first new item, 30-part path, exhaustion and re-entry are mounted. The report above names unsupported compact-item browser combinations rather than claiming the legacy route suite proves them. |
+| P2: automated completion coverage was happy-path oriented | **Partially addressed.** The all-item/path sweep completes each path across every registered condition/support profile, while current fail-first tests reject bad premise truth, duplicate IDs/forms, out-of-range forms, bad answer positions, wrong revisions, and missing routes. Shared recovery/help/reset interactions remain evidenced primarily by existing legacy browser witnesses, not per-item compact data. |
+| P3: set revision 1 wording implied runtime history | **Clarified.** The revision note above distinguishes historical proposal/Git state from the runtime set registry and states what replay does and does not encode. |
+
+This is technical implementation evidence, not owner acceptance of the rendered screens, learner agency, readiness, or deployment. Plan status and any follow-on scope remain with the orchestrator/owner.
+
+## Requirement 0 proposal and pre-source record
+
+Date: 2026-10-10. This section records the initial proposal, which preceded the mechanism, instructional-policy, and batch-membership gate. Source work began only after the recorded approval; this section remains historical evidence.
 
 ## Preflight and scope
 
@@ -197,7 +234,7 @@ Read-only inspection found no additional numeric help ceiling for 10, 12, 15, 20
 
 This addendum supplies a recommended but unapproved rule set, path-by-path outputs, answer slots, complete ordered set, version mapping, import direction, and help review. Source remains blocked until the owner/orchestrator explicitly approves or amends the named premise and distractor rules, all 14 new path assignments and option positions, the exact nine-item order and revisions, and the bounded resolver/admission changes. No source, tests, registry, app selection, packet status, or learner content was changed by this addendum.
 
-## Advisor declaration
+## Requirement 0 advisor declaration
 
 This delivery is a proposal/report only and has no behavioral code, script, or schema artifact for a read-only advisor to critique; advisor consultation was not warranted for this docs-only Requirement 0 delivery. If the gate authorizes behavioral source work, reassess the current thread/provider capability and consult on the implemented diff before source delivery as required by the inherited advisor rule.
 
