@@ -2,6 +2,43 @@
 
 Date: 2026-10-10. Plan status remains orchestration-owned (`in-progress`). Requirement 0 was approved in `mechanism-review.md`; the scoped Requirement 1-3 implementation and evidence below are delivered for orchestration review. No packet status change was made.
 
+## Repair 01 delivery — 2026-10-11
+
+This section supersedes the initial delivery's narrower mounted-sample boundary. Repair 01 adds risk-selected compact-item journeys, a frozen pre-implementation record for both preserved items, and new geometry evidence. No runtime source, packet status, replay schema, or focus ownership was changed.
+
+### Compact-item browser sample map
+
+All four journeys used the mounted app, completed both preserved items through app controls, and reached the sampled compact item through actual Next. Expected exact forms and premise outcomes were derived from the authored catalog and exact math APIs. The browser run saved 360×740 screenshots at the live reflection prompt and recorded visible question/control bounds.
+
+| Journey | Route and support | Motion/view/gesture | Exact premise | Path detail and observation |
+|---|---|---|---|---|
+| `high-visual-10-false-premise` | 1/2 + 1/5 → 10; high support | Standard motion, visual, pointer | no → no | Scale factors 5/2. Exercised denominator-finding, selected-unit and task-local conversion help, incorrect conversion recovery, then Replay and Show new parts with a response draft present. Replay displayed the source 1/2 and the draft remained intact. |
+| `medium-linear-20-true-premise` | 1/2 + 1/5 → 20; medium support | Reduced motion, linear, keyboard | yes → yes | Scale factors 10/4. Dirty Retry returned to the same encounter with no response draft, completed beat, or recovery state. Wrong conversion recovery retained feedback; from BODY, one Tab reached the remounted input, where the correct response was typed and submitted with keyboard events. |
+| `touch-visual-30-operand-order-scale-10` | 3/5 + 1/3 → 30; high support | Standard motion, visual, browser touchscreen | yes → yes | Scale factors 6/10, including factor 10. App actions used non-drag touchscreen taps. Numeric entry used Playwright input filling, so this does not claim physical touch-keyboard behavior. |
+| `high-visual-15-operand-order` | 3/5 + 1/3 → 15; high support | Standard motion, visual, pointer | no → no | Scale factors 3/5. Provides the opposite authored premise outcome on the operand-order case. |
+
+For incorrect conversion attempts, the capture asserted the correct converted form was absent before submission, then required visible recovery feedback. On the 10-part pointer journey the rejected input node was replaced and focus was BODY. On the 20-part keyboard journey the rejected input node was replaced and focus was BODY; exactly one Tab reached `#linear-transform-num-input-left`, and the recovery feedback remained visible while correcting the answer. After the correct keyboard response was submitted, focus was again BODY. This establishes a reachable sampled recovery path, not focus retention. It did not require unrelated Tab traversal or reveal a focus trap. Preserve the known remount limitation for owner review; no global or local focus repair was authorized in this repair.
+
+Question/control bounds and maximum vertical scroll at 360×740 were: target 10 question (x=63, y=360.8, 234×75.6), controls (x=63, y=467.3, 234×114), scroll range 337px; target 20 question (x=63, y=323.4, 234×100.8), controls (x=63, y=323.4, 234×214.8), scroll range 130px; target 30 question (x=63, y=552.0, 234×75.6), controls (x=63, y=658.5, 234×114), scroll range 376px; target 15 question (x=63, y=512.8, 234×75.6), controls (x=63, y=619.3, 234×114), scroll range 337px. These positions are captured-page geometry, not a physical-device usability claim.
+
+The representative help/recovery/Replay/dirty-Retry details are captured on the 10/20 journeys; other samples target path variation and modality. The dedicated broader Playwright capture still completes all nine items with actual Next, checks exhaustion focus/hidden Next/enabled Back, and returns/re-enters at 2/3 + 1/4. It records question/control bounds at both 360×740 and 1366×768 for the first new item and the largest 30-part path. At 360px, those pages scroll vertically 64px and 433px respectively; screenshots are full-page. No horizontal overflow was measured. The capture directly exercises page controls, but no physical Chromebook, physical touchscreen, or assistive technology was tested.
+
+### Historical preservation and authoring-surface boundaries
+
+`evidence/legacy-baseline.json` records the pre-implementation two-item set and authored premise/choice outputs from baseline commit `ae3943a7586a22fca8f15ee37fe6b73b595c0961`. The Plan 32 automated test compares both preserved items and their task outputs with that frozen record; this is evidence only, not a runtime set-history registry or replay extension. The legacy 2/3 + 1/4 target-12 choices remain 8/12, 7/12, 9/12, with correct position **slot 1**. The test derives the correct choice with exact fraction equality and asserts that position.
+
+Recorded UTF-8 source-byte boundaries: at the baseline commit, the old two-item source files were `practice-types.js` 1,482 bytes, `premise-checks.js` 2,994 bytes, and `reflection-choices.js` 2,958 bytes. The seven new compact item records in `compact-addition-records.js` are 6,776 bytes. These boundaries cover different item counts and source responsibilities, so they do not support a compression or authoring-efficiency claim. The separate legacy task records are 3,720 bytes; the shared materializer is 9,976 bytes; the authored catalog is 3,309 bytes. The generated nine-item/18-path batch manifest is 52,450 bytes and includes derived data; it is not source-record size.
+
+### Repair validation and limitations
+
+- `npm test`: **29 files, 328 tests passed**, including the frozen legacy baseline comparison. This is broad automated coverage, not proof of compact-item learner readiness.
+- `npm run build`: learner and subtraction prototype builds both succeeded.
+- The four risk-selected browser journeys and the dedicated nine-item screenshots/geometry were captured successfully before the computer restart and remain as artifacts. After restart, `npm run test:routes` was attempted twice; both attempts failed before route execution because Playwright-launched Edge exited during startup (`Target page, context or browser has been closed`, with `crashpad` pipe and temporary site-list replacement errors). The earlier initial-delivery route run remains **56/56 executions across 54 rows**, but that prior result is not a post-restart rerun of the repair.
+- `node scripts/dev/plan-status.js lint`, `node scripts/dev/plan-status.js check plan-32`, and `git diff --check` passed; Git printed only line-ending normalization warnings for existing working-copy files.
+- Advisor disposition: no repeat Sol consultation for this bounded evidence/test-harness repair. It changes no runtime behavior or schema; the prior implementation already received a read-only Sol-class medium review. This repair is submitted for orchestrator-gate review.
+
+Plan 32 acceptance remains pending with the orchestrator/owner. This report does not change status, authorize deployment, or claim physical-device, assistive-technology, broad focus-retention, or learner-readiness evidence.
+
 ## Requirement 1-3 implementation delivery
 
 The approved compact batch is registered as set revision 2: the two existing items remain first and unchanged, followed by the seven approved new mathematical items. New records pin their exact authoring, recipe, and task-data revisions. A shared deterministic materializer derives exact mathematical forms and outcomes while instructional premise/distractor policies remain explicit reviewed inputs. Exact catalog lookup is shared by admission, scene data, and replay; it has no latest-revision fallback. Admission and path closure now use the complete authored-data validator and the existing presentation bounds. Legacy premise and reflection rows were moved intact, and the existing replay identity reconstruction remains supported.
@@ -206,7 +243,7 @@ For preservation, the current two items keep their present authored outputs and 
 
 | Existing item / target | Existing premise | Existing reflection choices; correct slot |
 |---|---|---|
-| 2/3 + 1/4, 12 | 7/12; no | 8/12, 7/12, 9/12; slot 2 |
+| 2/3 + 1/4, 12 | 7/12; no | 8/12, 7/12, 9/12; slot 1 |
 | 2/3 + 1/4, 24 | 16/24; yes | 15/24, 16/24, 17/24; slot 2 |
 | 1/2 + 1/3, 6 | 2/6; no | 2/6, 3/6, 4/6; slot 2 |
 | 1/2 + 1/3, 12 | 6/12; yes | 5/12, 6/12, 7/12; slot 2 |
