@@ -1,11 +1,9 @@
 ---
 id: plan-19
 title: Shared-Factor Addition
-status: draft
+status: ready
 depends_on: [plan-11, plan-12, plan-13, plan-14, plan-16, plan-22, plan-26, plan-32]
 gate: "Requirement 0 mechanism confirmation before source work; technical and owner rendered-screen/agency acceptance; deployment separately authorized."
-superseded_by: null
-resolution: null
 summary: >-
   Extend vetted unlike-denominator addition to a shared-factor pair, preserving
   least and non-least common-unit pathways and authored reflection/premise truth.
@@ -72,8 +70,11 @@ fixture, complete canonical/alternate paths, accepted final forms and authored
 connection/reflection truth. Inspect which denominators are eligible and which
 choice distractors remain renderable. Show wiring from registry through validated
 content to immutable configuration and scene; identify exact write paths.
-The current admission guard compares against the Phase 2 constant rather than the
-resolved registered definition. Specify bounded validation against that registered
+Recheck current code: Plan 32 app admission now resolves item fixture/revision
+through the catalog and looks up the item's registered definition for closure,
+while episode creation and practice-item compatibility still use a practice-wide
+definition. Inspect the episode's selector/operation guard rather than assuming
+the older app admission description remains current. Specify bounded validation against that registered
 definition's selector/operation, retaining its identity/semantic integrity check;
 do not trust arbitrary caller-supplied selectors or widen a historical definition.
 Current practice-set admission and episode construction use a practice-wide
@@ -85,6 +86,20 @@ exhaustion point, refusal and settings/focus behavior. Author and validate the f
 reuse against actual facts. Add valid-but-unauthored and out-of-capability numeric
 proposals to the coverage plan using the approved Plan 22 policy. Obtain mechanism
 approval before source changes.
+
+Plan 32 is owner accepted and complete as of 2026-10-11. Reuse its compact record,
+exact catalog and admission checks where applicable, but its materializer is
+explicitly restricted to relatively-prime addition. Propose a versioned extension
+for shared-factor inputs; do not relabel the existing recipe or broaden historical
+definition meanings. Preserve the nine-item set and propose its next revision.
+One new shared-factor item is a structural family proof, not a replacement for a
+later compact shared-factor batch. Expected paths, content facts and response
+oracles must come from deterministic math APIs, not manual arithmetic tables.
+
+Codex consultation limit: only Sol-class read-only subagents at low or medium
+effort. No Astra consultation without specific owner authorization. Avoid roles
+forcing higher effort; if the allowed configuration is unavailable, report the
+limitation and use orchestrator-gate-only review.
 
 ### Requirement 1 — Full vetted learner route
 

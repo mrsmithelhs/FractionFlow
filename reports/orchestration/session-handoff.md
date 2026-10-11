@@ -14,8 +14,9 @@ and both starting prompts; prohibited role defaults must not bypass the limit.
 This snapshot supersedes older status/next-action passages below, which retain
 dated history. Use `docs/development/README.md` for the authoritative board.
 Plans 01–16, 21, 22, 24, 25, 26, 30 and 31 are complete; Plans 17–20, 23 and 29
-are drafts. Plan 32 is technically accepted and delivered; owner rendered-screen
-and agency acceptance is pending. Repair commits `08cb875` / `fe2b820`; see its
+are drafts except Plan 19, which is ready for owner initiation. Plan 32 is complete
+after owner screen acceptance on 2026-10-11; see `owner-disposition.md`.
+Repair commits `08cb875` / `fe2b820`; see its
 `repair-01-review.md`. Root reran 24 focused tests, 56/56 browser executions,
 four compact risk journeys and six viewport captures into ignored output.
 Sandboxed Edge startup failed; approved execution succeeded without configuration

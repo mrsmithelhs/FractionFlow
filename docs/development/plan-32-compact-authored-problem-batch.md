@@ -1,7 +1,8 @@
 ---
 id: plan-32
 title: Compact Authored Problem Batch
-status: delivered
+status: complete
+resolution: "Owner accepted screenshots and closure on 2026-10-11 after independent Repair 01 verification; compact nine-item authoring/admission scope complete, with focus and physical-device limits retained and no deployment authorization."
 depends_on: [plan-30, plan-31, plan-26]
 gate: "Requirement 0 authoring, instructional-policy and batch confirmation before source work; technical and owner rendered-screen/agency acceptance; deployment separately authorized."
 summary: >-
