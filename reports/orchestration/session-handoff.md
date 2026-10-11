@@ -24,7 +24,11 @@ identities and definition semantics remain. Delivery `8809ccb` / `5d6afb5` recei
 root ran 31 focused tests and found no confirmed product defect. Evidence Repair 01
 is required for actual keyboard recovery, help assertions, pre-response answer
 withholding, mounted failure seeds and active Replay measurements. See its
-`delivery-review.md` and `repair-01.md`. Technical/owner gates still apply.
+`delivery-review.md` and `repair-01.md`. Repair 01 `6e81267` / `78e7b5e` improves
+keyboard/help/withholding/Replay evidence; bounded Repair 02 remains for an actual
+corrupted represented-fact seed and activation of mounted Show new parts in
+24-part Replay. See `repair-01-review.md` / `repair-02.md`. Technical/owner gates
+still apply.
 Plan 32 is complete
 after owner screen acceptance on 2026-10-11; see `owner-disposition.md`.
 Repair commits `08cb875` / `fe2b820`; see its
