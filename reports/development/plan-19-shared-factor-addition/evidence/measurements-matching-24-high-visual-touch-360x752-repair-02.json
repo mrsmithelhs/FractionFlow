@@ -1,0 +1,551 @@
+{
+  "captureDate": "2026-10-11",
+  "captureScope": "single journey: matching-24-high-visual-touch-360x752; other accepted evidence retained in measurements.json",
+  "browser": {
+    "engine": "Chromium via Playwright",
+    "channel": "msedge"
+  },
+  "registeredSet": {
+    "id": "unlike-addition-vetted-set",
+    "revision": "3",
+    "itemCount": 10
+  },
+  "actualNextReach": [
+    {
+      "journey": "matching-24-high-visual-touch-360x752",
+      "completed": "two-thirds-plus-one-fourth",
+      "reached": "one-half-plus-one-third",
+      "expectedLeft": "1/2",
+      "expectedRight": "1/3",
+      "activeElement": "app-episode"
+    },
+    {
+      "journey": "matching-24-high-visual-touch-360x752",
+      "completed": "one-half-plus-one-third",
+      "reached": "one-half-plus-one-fifth",
+      "expectedLeft": "1/2",
+      "expectedRight": "1/5",
+      "activeElement": "app-episode"
+    },
+    {
+      "journey": "matching-24-high-visual-touch-360x752",
+      "completed": "one-half-plus-one-fifth",
+      "reached": "one-half-plus-two-fifths",
+      "expectedLeft": "1/2",
+      "expectedRight": "2/5",
+      "activeElement": "app-episode"
+    },
+    {
+      "journey": "matching-24-high-visual-touch-360x752",
+      "completed": "one-half-plus-two-fifths",
+      "reached": "one-third-plus-one-fourth",
+      "expectedLeft": "1/3",
+      "expectedRight": "1/4",
+      "activeElement": "app-episode"
+    },
+    {
+      "journey": "matching-24-high-visual-touch-360x752",
+      "completed": "one-third-plus-one-fourth",
+      "reached": "one-third-plus-one-fifth",
+      "expectedLeft": "1/3",
+      "expectedRight": "1/5",
+      "activeElement": "app-episode"
+    },
+    {
+      "journey": "matching-24-high-visual-touch-360x752",
+      "completed": "one-third-plus-one-fifth",
+      "reached": "one-third-plus-two-fifths",
+      "expectedLeft": "1/3",
+      "expectedRight": "2/5",
+      "activeElement": "app-episode"
+    },
+    {
+      "journey": "matching-24-high-visual-touch-360x752",
+      "completed": "one-third-plus-two-fifths",
+      "reached": "two-thirds-plus-one-fifth",
+      "expectedLeft": "2/3",
+      "expectedRight": "1/5",
+      "activeElement": "app-episode"
+    },
+    {
+      "journey": "matching-24-high-visual-touch-360x752",
+      "completed": "two-thirds-plus-one-fifth",
+      "reached": "three-fifths-plus-one-third",
+      "expectedLeft": "3/5",
+      "expectedRight": "1/3",
+      "activeElement": "app-episode"
+    },
+    {
+      "journey": "matching-24-high-visual-touch-360x752",
+      "completed": "three-fifths-plus-one-third",
+      "reached": "one-sixth-plus-one-fourth",
+      "expectedLeft": "1/6",
+      "expectedRight": "1/4",
+      "activeElement": "app-episode"
+    }
+  ],
+  "finalItemVerification": [
+    {
+      "journey": "matching-24-high-visual-touch-360x752",
+      "reached": "one-sixth-plus-one-fourth",
+      "verified": true,
+      "activeItemCount": 10
+    }
+  ],
+  "keyboardFocusObservations": [],
+  "mountedScaleFactorSeeds": [],
+  "withholdingScans": [
+    {
+      "journey": "matching-24-high-visual-touch-360x752",
+      "stage": "negative-control-hidden-sibling-attribute",
+      "forbiddenForms": [
+        "10/24"
+      ],
+      "allowedForms": [],
+      "scannedElements": 145,
+      "hiddenOrInactiveElements": 103,
+      "structuralBoundaryAttributes": 8,
+      "symbolicFractionCount": 6,
+      "symbolicForms": [
+        "1/6",
+        "1/4",
+        "1/6",
+        "1/4",
+        "1/6",
+        "1/4"
+      ],
+      "leakedFormElements": [],
+      "leakedMetadata": [],
+      "leakedForms": [
+        "10/24"
+      ],
+      "leakedFormLocations": [
+        {
+          "candidate": "10/24",
+          "details": [
+            {
+              "tagName": "SPAN",
+              "id": "plan19-temporary-answer-leak-seed",
+              "className": "",
+              "hidden": true,
+              "text": "",
+              "attributes": [
+                [
+                  "aria-label",
+                  "temporary answer leak 10/24"
+                ]
+              ]
+            }
+          ]
+        }
+      ],
+      "passed": false
+    },
+    {
+      "journey": "matching-24-high-visual-touch-360x752",
+      "stage": "before-left-conversion-response",
+      "forbiddenForms": [
+        "4/24",
+        "6/24",
+        "10/24"
+      ],
+      "allowedForms": [],
+      "scannedElements": 144,
+      "hiddenOrInactiveElements": 102,
+      "structuralBoundaryAttributes": 8,
+      "symbolicFractionCount": 6,
+      "symbolicForms": [
+        "1/6",
+        "1/4",
+        "1/6",
+        "1/4",
+        "1/6",
+        "1/4"
+      ],
+      "leakedFormElements": [],
+      "leakedMetadata": [],
+      "leakedForms": [],
+      "leakedFormLocations": [],
+      "passed": true
+    },
+    {
+      "journey": "matching-24-high-visual-touch-360x752",
+      "stage": "before-right-conversion-response",
+      "forbiddenForms": [
+        "6/24",
+        "10/24"
+      ],
+      "allowedForms": [
+        "4/24"
+      ],
+      "scannedElements": 180,
+      "hiddenOrInactiveElements": 138,
+      "structuralBoundaryAttributes": 26,
+      "symbolicFractionCount": 6,
+      "symbolicForms": [
+        "4/24",
+        "1/4",
+        "4/24",
+        "1/4",
+        "4/24",
+        "1/4"
+      ],
+      "leakedFormElements": [],
+      "leakedMetadata": [],
+      "leakedForms": [],
+      "leakedFormLocations": [],
+      "passed": true
+    },
+    {
+      "journey": "matching-24-high-visual-touch-360x752",
+      "stage": "before-operation-response",
+      "forbiddenForms": [
+        "10/24"
+      ],
+      "allowedForms": [
+        "4/24",
+        "6/24"
+      ],
+      "scannedElements": 229,
+      "hiddenOrInactiveElements": 183,
+      "structuralBoundaryAttributes": 46,
+      "symbolicFractionCount": 6,
+      "symbolicForms": [
+        "4/24",
+        "6/24",
+        "4/24",
+        "6/24",
+        "4/24",
+        "6/24"
+      ],
+      "leakedFormElements": [],
+      "leakedMetadata": [],
+      "leakedForms": [],
+      "leakedFormLocations": [],
+      "passed": true
+    }
+  ],
+  "withholdingNegativeControl": {
+    "journey": "matching-24-high-visual-touch-360x752",
+    "seed": "temporary hidden sibling aria-label answer form",
+    "candidateForm": "10/24",
+    "detected": true,
+    "restored": true
+  },
+  "activeReplayObservations": [
+    {
+      "journey": "matching-24-high-visual-touch-360x752",
+      "stage": "right-conversion-response-before-submit",
+      "replayWasPressed": true,
+      "activeQuestion": "How many parts out of 24 make the same amount as 1/4?",
+      "responseControlVisible": true,
+      "fractionBarsVisible": true,
+      "activeInPlaceReplayVisible": true,
+      "showNewPartsActivatedByTouch": true,
+      "settledConversion": "4/24",
+      "exactMathOracle": "4/24",
+      "settledTrackForm": "4/24",
+      "reflectionInspectionModeVisible": false,
+      "draftBeforeReplay": "2",
+      "draftDuringReplay": "2",
+      "draftAfterDismissal": "2",
+      "questionRestoredAfterDismissal": true,
+      "measurementStage": "active-replay-right-conversion",
+      "screenshotStage": "active-replay-right-conversion",
+      "revealMeasurementStage": "active-replay-show-new-parts-settled",
+      "revealScreenshotStage": "active-replay-show-new-parts-settled"
+    }
+  ],
+  "renderedFactWitnesses": [
+    {
+      "journey": "matching-24-high-visual-touch-360x752",
+      "representation": "visible left symbolic numerator/denominator plus rendered fraction-bar track data",
+      "expectedFormFromExactMath": "4/24",
+      "corruption": {
+        "field": ".symbolic-numerator textContent",
+        "before": "4",
+        "temporaryValue": "5"
+      },
+      "cleanBefore": {
+        "passed": true,
+        "observedSymbolicForm": "4/24",
+        "observedTrackForm": "4/24"
+      },
+      "corrupted": {
+        "passed": false,
+        "observedSymbolicForm": "5/24",
+        "observedTrackForm": "4/24",
+        "witnessRejected": true
+      },
+      "restored": {
+        "passed": true,
+        "observedSymbolicForm": "4/24",
+        "observedTrackForm": "4/24"
+      }
+    }
+  ],
+  "reflectionInspectionObservations": [],
+  "journeys": [
+    {
+      "name": "matching-24-high-visual-touch-360x752",
+      "target": "24",
+      "condition": "phase2-bundle-1",
+      "support": "high",
+      "view": "visual",
+      "action": "touch",
+      "motion": "standard-motion",
+      "viewport": {
+        "width": 360,
+        "height": 752
+      },
+      "reachedViaNext": true,
+      "focusAfterNext": true,
+      "reducedMotionEvidence": {
+        "preference": false,
+        "reducedTracks": 0
+      },
+      "answerLeakScanPassed": true,
+      "horizontalOverflow": false,
+      "verticalScrollObserved": true,
+      "returnAndReentryPassed": true
+    }
+  ],
+  "screenshots": [
+    {
+      "journey": "matching-24-high-visual-touch-360x752",
+      "stage": "active-replay-right-conversion",
+      "file": "evidence/matching-24-high-visual-touch-360x752-active-replay-right-conversion-repair-02-360x752.png",
+      "viewport": {
+        "width": 360,
+        "height": 752
+      }
+    },
+    {
+      "journey": "matching-24-high-visual-touch-360x752",
+      "stage": "active-replay-show-new-parts-settled",
+      "file": "evidence/matching-24-high-visual-touch-360x752-active-replay-show-new-parts-settled-repair-02-360x752.png",
+      "viewport": {
+        "width": 360,
+        "height": 752
+      }
+    }
+  ],
+  "measurements": [
+    {
+      "journey": "matching-24-high-visual-touch-360x752",
+      "stage": "active-replay-right-conversion",
+      "viewport": {
+        "width": 360,
+        "height": 752
+      },
+      "activeTask": {
+        "x": 41,
+        "y": 363.63,
+        "width": 278,
+        "height": 226.56,
+        "right": 319,
+        "bottom": 590.19
+      },
+      "prompt": {
+        "text": "How many parts out of 24 make the same amount as 1/4?",
+        "rect": {
+          "x": 63,
+          "y": 381.63,
+          "width": 234,
+          "height": 75.56,
+          "right": 297,
+          "bottom": 457.19
+        }
+      },
+      "fractionTracks": [
+        {
+          "x": 41,
+          "y": 85,
+          "width": 218,
+          "height": 44,
+          "right": 259,
+          "bottom": 129
+        },
+        {
+          "x": 41,
+          "y": 188.84,
+          "width": 218,
+          "height": 44,
+          "right": 259,
+          "bottom": 232.84
+        }
+      ],
+      "controls": [
+        {
+          "label": "How many parts out of 24 make the same amount as 1/4?",
+          "rect": {
+            "x": 63,
+            "y": 465.19,
+            "width": 96,
+            "height": 47,
+            "right": 159,
+            "bottom": 512.19
+          }
+        },
+        {
+          "label": "Submit",
+          "rect": {
+            "x": 167,
+            "y": 466.69,
+            "width": 94.22,
+            "height": 44,
+            "right": 261.22,
+            "bottom": 510.69
+          }
+        },
+        {
+          "label": "Need help?",
+          "rect": {
+            "x": 63,
+            "y": 528.19,
+            "width": 234,
+            "height": 44,
+            "right": 297,
+            "bottom": 572.19
+          }
+        }
+      ],
+      "scroll": {
+        "documentWidth": 360,
+        "documentHeight": 946,
+        "horizontalOverflow": false,
+        "verticalOverflow": true
+      },
+      "viewToggle": {
+        "x": 179.19,
+        "y": -51,
+        "width": 155.81,
+        "height": 44,
+        "right": 335,
+        "bottom": -7
+      },
+      "documentRoot": {
+        "x": 0,
+        "y": -76,
+        "width": 360,
+        "height": 945.97,
+        "right": 360,
+        "bottom": 869.97
+      }
+    },
+    {
+      "journey": "matching-24-high-visual-touch-360x752",
+      "stage": "active-replay-show-new-parts-settled",
+      "viewport": {
+        "width": 360,
+        "height": 752
+      },
+      "activeTask": {
+        "x": 41,
+        "y": 364.63,
+        "width": 278,
+        "height": 226.56,
+        "right": 319,
+        "bottom": 591.19
+      },
+      "prompt": {
+        "text": "How many parts out of 24 make the same amount as 1/4?",
+        "rect": {
+          "x": 63,
+          "y": 382.63,
+          "width": 234,
+          "height": 75.56,
+          "right": 297,
+          "bottom": 458.19
+        }
+      },
+      "fractionTracks": [
+        {
+          "x": 41,
+          "y": 86,
+          "width": 218,
+          "height": 44,
+          "right": 259,
+          "bottom": 130
+        },
+        {
+          "x": 41,
+          "y": 189.84,
+          "width": 218,
+          "height": 44,
+          "right": 259,
+          "bottom": 233.84
+        }
+      ],
+      "controls": [
+        {
+          "label": "How many parts out of 24 make the same amount as 1/4?",
+          "rect": {
+            "x": 63,
+            "y": 466.19,
+            "width": 96,
+            "height": 47,
+            "right": 159,
+            "bottom": 513.19
+          }
+        },
+        {
+          "label": "Submit",
+          "rect": {
+            "x": 167,
+            "y": 467.69,
+            "width": 94.22,
+            "height": 44,
+            "right": 261.22,
+            "bottom": 511.69
+          }
+        },
+        {
+          "label": "Need help?",
+          "rect": {
+            "x": 63,
+            "y": 529.19,
+            "width": 234,
+            "height": 44,
+            "right": 297,
+            "bottom": 573.19
+          }
+        }
+      ],
+      "scroll": {
+        "documentWidth": 360,
+        "documentHeight": 946,
+        "horizontalOverflow": false,
+        "verticalOverflow": true
+      },
+      "viewToggle": {
+        "x": 179.19,
+        "y": -50,
+        "width": 155.81,
+        "height": 44,
+        "right": 335,
+        "bottom": -6
+      },
+      "documentRoot": {
+        "x": 0,
+        "y": -75,
+        "width": 360,
+        "height": 945.97,
+        "right": 360,
+        "bottom": 870.97
+      }
+    }
+  ],
+  "limitations": [
+    "Touch evidence uses Playwright browser touch events in a touch-enabled context; no physical touch device or native on-screen keyboard was used.",
+    "Keyboard evidence uses browser keyboard events; no assistive technology was tested.",
+    "The 1366 by 768 CSS viewport is a Chromebook-size layout sample, not a physical Chromebook test.",
+    "The known response input remount can move focus to BODY after a response; this capture records reachable recovery and does not establish continuous focus."
+  ],
+  "exhaustionObserved": true,
+  "aggregateGeometry": {
+    "horizontalOverflowCount": 0,
+    "verticalOverflowCount": 2,
+    "screenshotCount": 2
+  }
+}

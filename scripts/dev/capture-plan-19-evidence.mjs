@@ -21,6 +21,8 @@ const practiceType = PRACTICE_TYPES.find((entry) => entry.id === 'sum-under-one'
 const oldItems = practiceType.items.slice(0, 9);
 const newItem = practiceType.items[9];
 let currentJourney = 'unknown-journey';
+let screenshotSuffix = '';
+let selectedJourney = null;
 const plans = [
   { name: 'matching-12-high-visual-pointer-360x740', target: '12', condition: 'phase2-bundle-1', support: 'high', view: 'visual', action: 'pointer', motion: 'standard-motion', viewport: { width: 360, height: 740 } },
   { name: 'premise-12-medium-linear-keyboard-reduced-360x752', target: '12', condition: 'phase2-bundle-4', support: 'medium', view: 'linear', action: 'keyboard', motion: 'reduced-motion', viewport: { width: 360, height: 752 } },
@@ -30,6 +32,7 @@ const plans = [
 
 const evidence = {
   captureDate: new Date().toISOString().slice(0, 10),
+  captureScope: 'complete-plan-set',
   browser: null,
   registeredSet: { id: practiceType.setId, revision: practiceType.setRevision, itemCount: practiceType.items.length },
   actualNextReach: [],
@@ -39,6 +42,7 @@ const evidence = {
   withholdingScans: [],
   withholdingNegativeControl: null,
   activeReplayObservations: [],
+  renderedFactWitnesses: [],
   reflectionInspectionObservations: [],
   journeys: [],
   screenshots: [],
@@ -187,7 +191,7 @@ async function inspectLayout(page, plan, label) {
 }
 
 async function saveScreenshot(page, plan, label) {
-  const fileName = `${plan.name}-${label}-${plan.viewport.width}x${plan.viewport.height}.png`;
+  const fileName = `${plan.name}-${label}${screenshotSuffix}-${plan.viewport.width}x${plan.viewport.height}.png`;
   const file = path.join(outputDir, fileName);
   await page.screenshot({ path: file, fullPage: true, animations: 'disabled' });
   evidence.screenshots.push({ journey: plan.name, stage: label, file: `evidence/${fileName}`, viewport: plan.viewport });
@@ -210,7 +214,7 @@ function recordKeyboardRecovery(plan, stage, wrongResponse, recoveredResponse) {
   });
 }
 
-async function captureActiveConversionReplay(page, plan, draftValue) {
+async function captureActiveConversionReplay(page, plan, draftValue, expectedLeftConversion) {
   const viewRoot = `.app-${plan.view}-view:not([hidden])`;
   const input = page.locator(`${viewRoot} .active-beat-controls input.control-numeric-input`).first();
   await typeNumber(page, input, draftValue, plan.action, plan.name);
@@ -231,12 +235,29 @@ async function captureActiveConversionReplay(page, plan, draftValue) {
   ensure(measurement.prompt.text === prompt && measurement.controls.length > 0 && measurement.fractionTracks.length >= 2,
     `${plan.name}: active Replay measurement omitted task controls or fraction bars`);
   await saveScreenshot(page, plan, 'active-replay-right-conversion');
-  await chooseButton(page, 'Replay the last change', plan.action);
-  ensure(await replayButton.getAttribute('aria-pressed') === 'false', `${plan.name}: active conversion Replay did not dismiss`);
+  const revealButton = page.getByRole('button', { name: 'Show new parts', exact: true }).first();
+  ensure(await revealButton.isVisible(), `${plan.name}: active Replay has no mounted Show new parts control`);
+  await revealButton.tap();
+  await page.waitForFunction(() => [...document.querySelectorAll('.fraction-bar-track')]
+    .every((track) => track.getAnimations().every((animation) => ['finished', 'idle'].includes(animation.playState))), null, { timeout: 5000 });
+  ensure(await replayButton.getAttribute('aria-pressed') === 'false', `${plan.name}: Show new parts did not dismiss active conversion Replay`);
   ensure(await page.locator(`${viewRoot} .active-beat-prompt`).textContent().then((value) => value.trim()) === prompt,
-    `${plan.name}: conversion question did not return after Replay`);
+    `${plan.name}: conversion question did not remain after Show new parts`);
   const draftAfter = await page.locator(`${viewRoot} .active-beat-controls input.control-numeric-input`).first().inputValue();
-  ensure(draftAfter === draft, `${plan.name}: active conversion Replay dismissal discarded its draft`);
+  ensure(draftAfter === draft, `${plan.name}: Show new parts discarded the right-response draft`);
+  const revealedTrack = page.locator(`${viewRoot} .fraction-bar-container[data-side="left"] .fraction-bar-track`).first();
+  const revealedTrackNumerator = await revealedTrack.getAttribute('data-numerator');
+  const revealedTrackDenominator = await revealedTrack.getAttribute('data-denominator');
+  const revealedSymbolic = page.locator(`${viewRoot} .symbolic-container .symbolic-fraction`).first();
+  const revealedNumerator = (await revealedSymbolic.locator('.symbolic-numerator').textContent()).trim();
+  const revealedDenominator = (await revealedSymbolic.locator('.symbolic-denominator').textContent()).trim();
+  ensure(revealedTrackNumerator === expectedLeftConversion.numerator.toString()
+    && revealedTrackDenominator === expectedLeftConversion.denominator.toString()
+    && revealedNumerator === expectedLeftConversion.numerator.toString()
+    && revealedDenominator === expectedLeftConversion.denominator.toString(),
+  `${plan.name}: Show new parts did not reveal the exact math-derived left conversion`);
+  const revealMeasurement = await inspectLayout(page, plan, 'active-replay-show-new-parts-settled');
+  await saveScreenshot(page, plan, 'active-replay-show-new-parts-settled');
   evidence.activeReplayObservations.push({
     journey: plan.name,
     stage: 'right-conversion-response-before-submit',
@@ -245,6 +266,10 @@ async function captureActiveConversionReplay(page, plan, draftValue) {
     responseControlVisible: true,
     fractionBarsVisible: true,
     activeInPlaceReplayVisible: true,
+    showNewPartsActivatedByTouch: true,
+    settledConversion: `${revealedNumerator}/${revealedDenominator}`,
+    exactMathOracle: `${expectedLeftConversion.numerator}/${expectedLeftConversion.denominator}`,
+    settledTrackForm: `${revealedTrackNumerator}/${revealedTrackDenominator}`,
     reflectionInspectionModeVisible: false,
     draftBeforeReplay: before,
     draftDuringReplay: draft,
@@ -252,6 +277,68 @@ async function captureActiveConversionReplay(page, plan, draftValue) {
     questionRestoredAfterDismissal: true,
     measurementStage: measurement.stage,
     screenshotStage: 'active-replay-right-conversion',
+    revealMeasurementStage: revealMeasurement.stage,
+    revealScreenshotStage: 'active-replay-show-new-parts-settled',
+  });
+}
+
+async function readRenderedConversionWitness(page, plan, expectedForm) {
+  return page.evaluate(({ expectedNumerator, expectedDenominator, planName }) => {
+    const view = document.querySelector('.app-visual-view:not([hidden])');
+    const bar = view?.querySelector('.fraction-bar-container[data-side="left"] .fraction-bar-track');
+    const symbolic = view?.querySelector('.symbolic-container .symbolic-fraction');
+    const numerator = symbolic?.querySelector('.symbolic-numerator')?.textContent?.trim() ?? '';
+    const denominator = symbolic?.querySelector('.symbolic-denominator')?.textContent?.trim() ?? '';
+    const ariaLabel = symbolic?.getAttribute('aria-label') ?? '';
+    const trackNumerator = bar?.getAttribute('data-numerator') ?? '';
+    const trackDenominator = bar?.getAttribute('data-denominator') ?? '';
+    const expectedLabel = `${expectedNumerator} over ${expectedDenominator}`;
+    return {
+      journey: planName,
+      expectedForm: `${expectedNumerator}/${expectedDenominator}`,
+      visibleSymbolicForm: `${numerator}/${denominator}`,
+      visibleSymbolicAriaLabel: ariaLabel,
+      renderedBarTrackForm: `${trackNumerator}/${trackDenominator}`,
+      symbolicVisible: Boolean(symbolic?.getClientRects().length),
+      passed: Boolean(bar && symbolic?.getClientRects().length)
+        && numerator === expectedNumerator
+        && denominator === expectedDenominator
+        && ariaLabel === expectedLabel
+        && trackNumerator === expectedNumerator
+        && trackDenominator === expectedDenominator,
+    };
+  }, {
+    expectedNumerator: expectedForm.numerator.toString(),
+    expectedDenominator: expectedForm.denominator.toString(),
+    planName: plan.name,
+  });
+}
+
+async function proveRenderedConversionWitnessSensitive(page, plan, expectedForm) {
+  const witness = async () => readRenderedConversionWitness(page, plan, expectedForm);
+  const cleanBefore = await witness();
+  ensure(cleanBefore.passed, `${plan.name}: rendered conversion does not match exact math oracle: ${JSON.stringify(cleanBefore)}`);
+  const numerator = page.locator('.app-visual-view:not([hidden]) .symbolic-container .symbolic-fraction').first().locator('.symbolic-numerator');
+  const originalText = (await numerator.textContent()).trim();
+  const corruptText = (BigInt(expectedForm.numerator) + 1n).toString();
+  let corruptedObservation;
+  try {
+    await numerator.evaluate((element, value) => { element.textContent = value; }, corruptText);
+    corruptedObservation = await witness();
+    ensure(!corruptedObservation.passed, `${plan.name}: rendered-fact witness accepted a corrupt displayed numerator`);
+  } finally {
+    await numerator.evaluate((element, value) => { element.textContent = value; }, originalText);
+  }
+  const cleanAfter = await witness();
+  ensure(cleanAfter.passed, `${plan.name}: clean rendered conversion did not pass after restoring display: ${JSON.stringify(cleanAfter)}`);
+  evidence.renderedFactWitnesses.push({
+    journey: plan.name,
+    representation: 'visible left symbolic numerator/denominator plus rendered fraction-bar track data',
+    expectedFormFromExactMath: `${expectedForm.numerator}/${expectedForm.denominator}`,
+    corruption: { field: '.symbolic-numerator textContent', before: originalText, temporaryValue: corruptText },
+    cleanBefore: { passed: cleanBefore.passed, observedSymbolicForm: cleanBefore.visibleSymbolicForm, observedTrackForm: cleanBefore.renderedBarTrackForm },
+    corrupted: { passed: corruptedObservation.passed, observedSymbolicForm: corruptedObservation.visibleSymbolicForm, observedTrackForm: corruptedObservation.renderedBarTrackForm, witnessRejected: !corruptedObservation.passed },
+    restored: { passed: cleanAfter.passed, observedSymbolicForm: cleanAfter.visibleSymbolicForm, observedTrackForm: cleanAfter.renderedBarTrackForm },
   });
 }
 
@@ -530,7 +617,10 @@ async function completeItem(page, item, target, plan, { collect = false, recover
     );
     ensure(beforeRight.passed, `${plan.name}: unearned right conversion or operation answer was mounted before right response`);
   }
-  if (replay) await captureActiveConversionReplay(page, plan, '2');
+  if (replay) {
+    await proveRenderedConversionWitnessSensitive(page, plan, step.left);
+    await captureActiveConversionReplay(page, plan, '2', step.left);
+  }
   if (recovery) {
     const rightScale = scaleFactorForDenominator(step.rightSource, BigInt(target));
     const wrongRight = (step.rightSource.numerator * (rightScale + 1n)).toString();
@@ -640,7 +730,7 @@ async function reachNewItem(page, plan) {
   evidence.finalItemVerification.push({ journey: plan.name, reached: newItem.id, verified: true, activeItemCount: 10 });
 }
 
-async function runJourney(browser, baseUrl, plan) {
+async function runJourney(browser, baseUrl, plan, { collect = true } = {}) {
   currentJourney = plan.name;
   const context = await browser.newContext({
     viewport: plan.viewport,
@@ -673,7 +763,7 @@ async function runJourney(browser, baseUrl, plan) {
   evidence.journeys.push({ name: plan.name, target, condition: plan.condition, support: plan.support, view: plan.view, action: plan.action, motion: plan.motion, viewport: plan.viewport, reachedViaNext: true, focusAfterNext: startFocus, reducedMotionEvidence });
 
   const exerciseOptions = {
-    collect: true,
+    collect,
     recovery: plan.name.startsWith('premise-'),
     help: plan.name.startsWith('premise-24'),
     replay: plan.name.startsWith('matching-24'),
@@ -684,7 +774,7 @@ async function runJourney(browser, baseUrl, plan) {
   const exhaustionText = await page.locator('.app-navigation-notice').textContent();
   ensure(exhaustButtonCount === 0, `${plan.name}: final item still exposes Next`);
   if (exhaustionText?.includes('every problem')) evidence.exhaustionObserved = true;
-  await saveScreenshot(page, plan, 'exhaustion');
+  if (collect) await saveScreenshot(page, plan, 'exhaustion');
   const leakedAnswer = await page.evaluate(() => {
     const root = document.querySelector('.fractionflow-app');
     const forbidden = /one-sixth-plus-one-fourth|correctPosition|expectedResponse|isEquivalent|R-CORRECT|R-KEEP-NUMERATOR|R-ADJACENT-UNIT/;
@@ -720,6 +810,14 @@ async function runJourney(browser, baseUrl, plan) {
 }
 
 async function main() {
+  const journeyArg = process.argv.slice(2).find((argument) => argument.startsWith('--journey='));
+  selectedJourney = journeyArg ? journeyArg.slice('--journey='.length) : null;
+  const selectedPlans = selectedJourney ? plans.filter((plan) => plan.name === selectedJourney) : plans;
+  ensure(selectedPlans.length > 0, `unknown journey filter: ${selectedJourney}`);
+  if (selectedJourney) {
+    screenshotSuffix = '-repair-02';
+    evidence.captureScope = `single journey: ${selectedJourney}; other accepted evidence retained in measurements.json`;
+  }
   await fs.mkdir(outputDir, { recursive: true });
   await fs.rm(path.join(outputDir, 'matching-24-high-visual-touch-360x752-replay-24-left-conversion-360x752.png'), { force: true });
   const server = createStaticServer();
@@ -733,7 +831,7 @@ async function main() {
   try {
     browser = await chromium.launch(launch);
     evidence.browser = { engine: 'Chromium via Playwright', channel: launch.channel ?? 'bundled Chromium' };
-    for (const plan of plans) await runJourney(browser, baseUrl, plan);
+    for (const plan of selectedPlans) await runJourney(browser, baseUrl, plan, { collect: !selectedJourney });
   } finally {
     if (browser) await browser.close();
     server.close();
@@ -743,7 +841,8 @@ async function main() {
     verticalOverflowCount: evidence.measurements.filter((entry) => entry.scroll.verticalOverflow).length,
     screenshotCount: evidence.screenshots.length,
   };
-  const outputPath = path.join(outputDir, 'measurements.json');
+  const outputFilename = selectedJourney ? `measurements-${selectedJourney}-repair-02.json` : 'measurements.json';
+  const outputPath = path.join(outputDir, outputFilename);
   await fs.writeFile(outputPath, `${JSON.stringify(evidence, null, 2)}\n`);
   console.log(JSON.stringify({ outputPath, routeCount: evidence.journeys.length, nextWitnesses: evidence.actualNextReach.length, screenshotCount: evidence.screenshots.length, measurementCount: evidence.measurements.length, aggregateGeometry: evidence.aggregateGeometry }, null, 2));
 }
