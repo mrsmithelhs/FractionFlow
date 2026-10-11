@@ -77,6 +77,16 @@ Use three response tiers when review finds issues:
 Do not quietly make changes that require owner policy decisions, external behavior, source-material revisions, generated-output regeneration, or broad implementation testing. Route those through tier 2 or tier 3.
 <!-- bootstrap:review-response-tiers v1 end -->
 
+## Codex owner override — consultation cost
+
+Effective 2026-10-10, use only Sol-class subagents at low or medium reasoning effort;
+advisor consultations are read-only. No Astra-class consultation without a
+specific owner exception. State these limits explicitly in every Codex implementer
+handoff and apply them when supervising existing chats. Do not use a role or
+inherited configuration that forces higher effort or a prohibited model. If the
+allowed configuration is unavailable, review inline or use orchestrator-gate-only
+disposition; do not silently substitute. This overrides generic higher-tier advice.
+
 <!-- bootstrap:advisor-consultation v1 begin -->
 ## Advisor Consultation (expectations for reviewers)
 

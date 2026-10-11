@@ -162,6 +162,17 @@ and orchestrator starting prompts for the full behavioral contract and the requi
 disposition-record fields.
 <!-- bootstrap:advisor-consultation v1 end -->
 
+### Owner override — Codex consultation cost (2026-10-10)
+
+Codex implementer advisor consultations and Codex orchestrator subagents may use
+only Sol-class models at low or medium reasoning effort. All advisors remain
+read-only. No Astra-class consultation is authorized without a specific owner
+exception. Every Codex implementer handoff must state these limits explicitly.
+Do not select roles or inherited settings that force a prohibited model or higher
+effort. If the harness cannot honor the allowed configuration, report the limitation
+and use orchestrator-gate-only review; do not silently substitute. This owner rule
+overrides conflicting generic higher-tier guidance and prior handoff language.
+
 <!-- bootstrap:commit-discipline v2 begin -->
 ## Commit Discipline
 

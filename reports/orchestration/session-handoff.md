@@ -5,6 +5,12 @@ Orchestrator-owned; update in place before thread boundaries. Anchor dates, neve
 
 ## Current snapshot — 2026-10-10
 
+Owner cost override: Codex implementer advisor consultations and orchestrator
+subagents are restricted to Sol-class at low/medium effort; advisors read-only.
+No Astra consultation without specific owner authorization. State this in future
+Codex handoffs; FF Impl 32 was notified directly. See the owner override in AGENTS
+and both starting prompts; prohibited role defaults must not bypass the limit.
+
 This snapshot supersedes older status/next-action passages below, which retain
 dated history. Use `docs/development/README.md` for the authoritative board.
 Plans 01–16, 21, 22, 24, 25, 26, 30 and 31 are complete; Plans 17–20, 23 and 29

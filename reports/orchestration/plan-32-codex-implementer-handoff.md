@@ -33,7 +33,11 @@ Report whether your new evidence exposes any load-bearing access issue.
 
 Own only the files approved at the gate and this packet's evidence/report paths.
 You are not alone in the checkout: leave unowned edits untouched. All shared source
-work is single-writer. Apply inherited advisor declaration/disposition rules,
+work is single-writer. Owner consultation override (2026-10-10): only Sol-class
+read-only advisor subagents at low or medium reasoning effort; no Astra-class
+consultation without specific owner authorization. Avoid roles/settings forcing
+higher effort; if unavailable, declare orchestrator-gate-only review. Apply the
+remaining inherited advisor declaration/disposition rules,
 commit explicit paths and progress last. No new families, random selection,
 capacity expansion, new dependency, framework migration, status change, push,
 deployment or history rewrite. Report actual broad automated versus sampled

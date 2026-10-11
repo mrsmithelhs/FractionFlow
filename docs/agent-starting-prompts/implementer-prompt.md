@@ -46,6 +46,16 @@ Do not make repository changes until a concrete task or follow-up is assigned.
    - stop conditions.
 7. If ambiguity affects correctness or scope, ask. Otherwise proceed.
 
+## Codex owner override — consultation cost
+
+Effective 2026-10-10, Codex advisor consultations may use only Sol-class read-only
+subagents at low or medium reasoning effort. Astra-class consultation requires a
+specific owner exception. These limits override the generic higher-tier guidance
+below. Request the allowed model/effort explicitly; avoid roles that force high
+effort or inherited prohibited settings. If unavailable, declare the limitation
+and use orchestrator-gate-only review rather than substituting. Retain the normal
+bounded scope and requested/observed configuration disposition.
+
 <!-- bootstrap:advisor-consultation v1 begin -->
 ## Advisor Consultation (thread-level capability)
 
