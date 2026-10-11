@@ -14,7 +14,13 @@ and both starting prompts; prohibited role defaults must not bypass the limit.
 This snapshot supersedes older status/next-action passages below, which retain
 dated history. Use `docs/development/README.md` for the authoritative board.
 Plans 01–16, 21, 22, 24, 25, 26, 30 and 31 are complete; Plans 17–20, 23 and 29
-are drafts. Plan 32 is owner-initiated in-progress and runnable. FF Impl 32 is
+are drafts. Plan 32 is technically accepted and delivered; owner rendered-screen
+and agency acceptance is pending. Repair commits `08cb875` / `fe2b820`; see its
+`repair-01-review.md`. Root reran 24 focused tests, 56/56 browser executions,
+four compact risk journeys and six viewport captures into ignored output.
+Sandboxed Edge startup failed; approved execution succeeded without configuration
+changes. Wrong/correct conversion remount BODY focus persists; sampled keyboard
+recovery reaches the input in one Tab. FF Impl 32 is
 resolved at `01a128d8-1b76-71a1-bd43-3d5fedc1c4a3`; owner directly authorized
 bidirectional supervision here. Root sent the coordination brief; Requirement 0
 policy/batch/mechanism proposal was owner-approved on 2026-10-10. Source work is

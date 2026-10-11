@@ -37,7 +37,11 @@ requirements. Reassess these obligations explicitly at the §31 exit gate.
 Plan 31 Repair 01's independent browser review observed Enter on an incorrect
 linear matching choice showing recovery, replacing the button and leaving focus
 on BODY. Retain this concrete response-remount case for the shared transform/
-response-ownership pilot and keyboard recovery design. No Plan 31 product focus
+response-ownership pilot and keyboard recovery design. Plan 32 Repair 01 also
+reproduced wrong and correct numeric conversion submissions remounting to BODY
+on compact data; one Tab reached the replacement linear input after the wrong
+answer, with feedback retained. This demonstrates sampled recovery reachability,
+not focus continuity. Retain both response types for that pilot. No Plan 31 product focus
 repair or broader focus rewrite is authorized by the typography acceptance.
 
 Family packets must use DECISION-035's small learner-goal model. Nested and
