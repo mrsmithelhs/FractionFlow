@@ -62,3 +62,33 @@ rather than resolving to latest policy. These are addendum requirements, not
 source approval or a general schema redesign.
 
 This prose-only review did not warrant a separate advisor consultation.
+
+## Concrete addendum review — `c556575`
+
+The addendum resolves the missing proposal detail: seven new classes, ordered
+nine-item revision-2 set, explicit per-path premise offsets and reflection order,
+immutable task/recipe resolution, acyclic catalog direction and bounded admission.
+Root approves the technical mechanism in principle and recommends owner approval
+of membership and instructional policy. Source remains withheld until the owner
+accepts those load-bearing policy choices.
+
+Root parsed all 14 new rows and checked premise equivalence and exactly one correct
+choice at the proposed slot using existing `createFraction`/`equalFractions` APIs;
+no row mismatch was found. This is table consistency, not production admission,
+full closure, rendered usability or learner evidence. Root also checked the legacy
+table against current authored data: the half-plus-third sixths correct slot is 2,
+not 1. The transcription label was corrected inline; legacy product data is unchanged.
+
+Recommended instructional policy: exact versus explicitly signed one-part near-
+miss premises; reflection choices consisting of exact, unchanged numerator and
+one-part near miss. Each new item has one true/one false premise; least versus
+alternate unit does not universally determine the response. Correct slots are
+authored, distributed and not numerical sorting/hashes. Keep the evidence boundary:
+near-miss is a discrimination task, not a demonstrated misconception diagnosis.
+
+Technical implementation may proceed only after owner acceptance is recorded:
+preserve old identities/outputs, shared exact-version catalog for app/replay,
+data-only records and pure materialization, safe premise/matching display ranges,
+distinct forms, complete closure and exact-three new-batch policy. Existing generic
+minimum-three contract need not be narrowed. Require the proposed 30-part/help
+browser witnesses; no automatic capacity/renderer expansion is approved if they fail.

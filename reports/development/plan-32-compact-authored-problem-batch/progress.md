@@ -171,7 +171,7 @@ For preservation, the current two items keep their present authored outputs and 
 |---|---|---|
 | 2/3 + 1/4, 12 | 7/12; no | 8/12, 7/12, 9/12; slot 2 |
 | 2/3 + 1/4, 24 | 16/24; yes | 15/24, 16/24, 17/24; slot 2 |
-| 1/2 + 1/3, 6 | 2/6; no | 2/6, 3/6, 4/6; slot 1 |
+| 1/2 + 1/3, 6 | 2/6; no | 2/6, 3/6, 4/6; slot 2 |
 | 1/2 + 1/3, 12 | 6/12; yes | 5/12, 6/12, 7/12; slot 2 |
 
 ### Narrow data flow and admission alignment
