@@ -1,0 +1,105 @@
+{
+  "baselineCommit": "ae3943a7586a22fca8f15ee37fe6b73b595c0961",
+  "sourceFiles": [
+    "src/app/practice-types.js",
+    "src/content/data/premise-checks.js",
+    "src/content/data/reflection-choices.js"
+  ],
+  "practiceSet": {
+    "id": "sum-under-one",
+    "setId": "unlike-addition-vetted-set",
+    "setRevision": "1",
+    "episodeDefinitionId": "phase-2-unlike-proper-addition-reflection",
+    "episodeDefinitionRevision": "3",
+    "items": [
+      {
+        "id": "two-thirds-plus-one-fourth",
+        "fixtureId": "curated-relatively-prime-addition-non-least",
+        "authoringRevision": "plan03-fixtures-v1",
+        "episodeDefinitionId": "phase-2-unlike-proper-addition-reflection",
+        "episodeDefinitionRevision": "3",
+        "targetDenominators": ["12", "24"]
+      },
+      {
+        "id": "one-half-plus-one-third",
+        "fixtureId": "curated-relatively-prime-addition-one-half-one-third",
+        "authoringRevision": "plan26-fixtures-v1",
+        "episodeDefinitionId": "phase-2-unlike-proper-addition-reflection",
+        "episodeDefinitionRevision": "3",
+        "targetDenominators": ["6", "12"]
+      }
+    ]
+  },
+  "premiseChecks": {
+    "curated-relatively-prime-addition-non-least": {
+      "12": {
+        "id": "premise-rel-prime-12",
+        "fixtureId": "curated-relatively-prime-addition-non-least",
+        "targetDenominator": "12",
+        "sourceForm": { "kind": "fraction", "numerator": "2", "denominator": "3" },
+        "presentedForm": { "kind": "fraction", "numerator": "7", "denominator": "12" },
+        "isEquivalent": false,
+        "expectedResponse": "no",
+        "distractorType": "off-by-one-numerator"
+      },
+      "24": {
+        "id": "premise-rel-prime-24",
+        "fixtureId": "curated-relatively-prime-addition-non-least",
+        "targetDenominator": "24",
+        "sourceForm": { "kind": "fraction", "numerator": "2", "denominator": "3" },
+        "presentedForm": { "kind": "fraction", "numerator": "16", "denominator": "24" },
+        "isEquivalent": true,
+        "expectedResponse": "yes",
+        "distractorType": null
+      }
+    },
+    "curated-relatively-prime-addition-one-half-one-third": {
+      "6": {
+        "id": "premise-half-third-6",
+        "fixtureId": "curated-relatively-prime-addition-one-half-one-third",
+        "targetDenominator": "6",
+        "sourceForm": { "kind": "fraction", "numerator": "1", "denominator": "2" },
+        "presentedForm": { "kind": "fraction", "numerator": "2", "denominator": "6" },
+        "isEquivalent": false,
+        "expectedResponse": "no",
+        "distractorType": "off-by-one-numerator"
+      },
+      "12": {
+        "id": "premise-half-third-12",
+        "fixtureId": "curated-relatively-prime-addition-one-half-one-third",
+        "targetDenominator": "12",
+        "sourceForm": { "kind": "fraction", "numerator": "1", "denominator": "2" },
+        "presentedForm": { "kind": "fraction", "numerator": "6", "denominator": "12" },
+        "isEquivalent": true,
+        "expectedResponse": "yes",
+        "distractorType": null
+      }
+    }
+  },
+  "reflectionChoices": {
+    "curated-relatively-prime-addition-non-least": {
+      "12": [
+        { "id": "match-a", "form": { "kind": "fraction", "numerator": "8", "denominator": "12" } },
+        { "id": "match-b", "form": { "kind": "fraction", "numerator": "7", "denominator": "12" } },
+        { "id": "match-c", "form": { "kind": "fraction", "numerator": "9", "denominator": "12" } }
+      ],
+      "24": [
+        { "id": "match-b", "form": { "kind": "fraction", "numerator": "15", "denominator": "24" } },
+        { "id": "match-a", "form": { "kind": "fraction", "numerator": "16", "denominator": "24" } },
+        { "id": "match-c", "form": { "kind": "fraction", "numerator": "17", "denominator": "24" } }
+      ]
+    },
+    "curated-relatively-prime-addition-one-half-one-third": {
+      "6": [
+        { "id": "match-a", "form": { "kind": "fraction", "numerator": "2", "denominator": "6" } },
+        { "id": "match-b", "form": { "kind": "fraction", "numerator": "3", "denominator": "6" } },
+        { "id": "match-c", "form": { "kind": "fraction", "numerator": "4", "denominator": "6" } }
+      ],
+      "12": [
+        { "id": "match-a", "form": { "kind": "fraction", "numerator": "5", "denominator": "12" } },
+        { "id": "match-b", "form": { "kind": "fraction", "numerator": "6", "denominator": "12" } },
+        { "id": "match-c", "form": { "kind": "fraction", "numerator": "7", "denominator": "12" } }
+      ]
+    }
+  }
+}

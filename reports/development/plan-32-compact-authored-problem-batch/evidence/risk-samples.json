@@ -1,0 +1,426 @@
+{
+  "samples": [
+    {
+      "id": "high-visual-10-false-premise",
+      "itemId": "one-half-plus-one-fifth",
+      "fixtureId": "curated-relatively-prime-addition-one-half-one-fifth",
+      "authoringRevision": "plan32-record-v1",
+      "pathTarget": "10",
+      "operandForms": {
+        "left": {
+          "exactValue": {
+            "kind": "fraction",
+            "numerator": "1",
+            "denominator": "2"
+          },
+          "initialForm": {
+            "kind": "fraction",
+            "numerator": "1",
+            "denominator": "2"
+          },
+          "currentForm": {
+            "kind": "fraction",
+            "numerator": "1",
+            "denominator": "2"
+          },
+          "preferredFinalForm": {
+            "kind": "fraction",
+            "numerator": "1",
+            "denominator": "2"
+          },
+          "acceptedFormTransitions": []
+        },
+        "right": {
+          "exactValue": {
+            "kind": "fraction",
+            "numerator": "1",
+            "denominator": "5"
+          },
+          "initialForm": {
+            "kind": "fraction",
+            "numerator": "1",
+            "denominator": "5"
+          },
+          "currentForm": {
+            "kind": "fraction",
+            "numerator": "1",
+            "denominator": "5"
+          },
+          "preferredFinalForm": {
+            "kind": "fraction",
+            "numerator": "1",
+            "denominator": "5"
+          },
+          "acceptedFormTransitions": []
+        }
+      },
+      "exactPremiseOutcome": "no",
+      "observedPremiseResponse": "no",
+      "support": "high-support",
+      "view": "visual",
+      "motion": "no-preference",
+      "reducedMotionMatched": false,
+      "modality": "pointer",
+      "capture": "high-visual-10-false-premise-360x740.png",
+      "bounds": {
+        "viewport": {
+          "width": 360,
+          "height": 740
+        },
+        "document": {
+          "width": 360,
+          "height": 1077
+        },
+        "question": {
+          "x": 63,
+          "y": 360.78125,
+          "width": 234,
+          "height": 75.5625,
+          "visible": true
+        },
+        "controls": {
+          "x": 63,
+          "y": 467.28125,
+          "width": 234,
+          "height": 114,
+          "visible": true
+        },
+        "scrollY": 164
+      },
+      "verticalScrollRange": 337,
+      "denominatorHelp": "Try multiplying 2 by 5 to find one common denominator.",
+      "selectedUnitHelp": "Why does 10 work?",
+      "transformHelp": "Multiply the top by 5, too.",
+      "recoveryFeedback": "Not the same amount yet. Try a different number of parts.",
+      "recoveryFocus": {
+        "tagName": "BODY",
+        "className": "",
+        "id": ""
+      },
+      "inputNodeReplaced": true,
+      "replayNotice": "Starting parts: 1/2\nShow new parts",
+      "scaleFactors": {
+        "left": "5",
+        "right": "2"
+      },
+      "outcome": "completed through mounted app controls after actual Next from preserved items"
+    },
+    {
+      "id": "medium-linear-20-true-premise",
+      "itemId": "one-half-plus-one-fifth",
+      "fixtureId": "curated-relatively-prime-addition-one-half-one-fifth",
+      "authoringRevision": "plan32-record-v1",
+      "pathTarget": "20",
+      "operandForms": {
+        "left": {
+          "exactValue": {
+            "kind": "fraction",
+            "numerator": "1",
+            "denominator": "2"
+          },
+          "initialForm": {
+            "kind": "fraction",
+            "numerator": "1",
+            "denominator": "2"
+          },
+          "currentForm": {
+            "kind": "fraction",
+            "numerator": "1",
+            "denominator": "2"
+          },
+          "preferredFinalForm": {
+            "kind": "fraction",
+            "numerator": "1",
+            "denominator": "2"
+          },
+          "acceptedFormTransitions": []
+        },
+        "right": {
+          "exactValue": {
+            "kind": "fraction",
+            "numerator": "1",
+            "denominator": "5"
+          },
+          "initialForm": {
+            "kind": "fraction",
+            "numerator": "1",
+            "denominator": "5"
+          },
+          "currentForm": {
+            "kind": "fraction",
+            "numerator": "1",
+            "denominator": "5"
+          },
+          "preferredFinalForm": {
+            "kind": "fraction",
+            "numerator": "1",
+            "denominator": "5"
+          },
+          "acceptedFormTransitions": []
+        }
+      },
+      "exactPremiseOutcome": "yes",
+      "observedPremiseResponse": "yes",
+      "support": "medium-support",
+      "view": "linear",
+      "motion": "reduce",
+      "reducedMotionMatched": true,
+      "modality": "keyboard",
+      "capture": "medium-linear-20-true-premise-360x740.png",
+      "bounds": {
+        "viewport": {
+          "width": 360,
+          "height": 740
+        },
+        "document": {
+          "width": 360,
+          "height": 870
+        },
+        "question": {
+          "x": 63,
+          "y": 323.375,
+          "width": 234,
+          "height": 100.75,
+          "visible": true
+        },
+        "controls": {
+          "x": 63,
+          "y": 323.375,
+          "width": 234,
+          "height": 214.75,
+          "visible": true
+        },
+        "scrollY": 0
+      },
+      "verticalScrollRange": 130,
+      "recoveryFeedback": "Not the same amount yet. Try a different number of parts.",
+      "recoveryFocus": {
+        "tagName": "BODY",
+        "className": "",
+        "id": ""
+      },
+      "inputNodeReplaced": true,
+      "recoveryTabCount": 1,
+      "recoveryFocusPath": [
+        {
+          "tagName": "INPUT",
+          "className": "fraction-control control-numeric-input",
+          "id": "linear-transform-num-input-left",
+          "label": ""
+        }
+      ],
+      "recoveryInputReached": true,
+      "recoveryFeedbackStillAvailable": true,
+      "keyboardResponseFocus": {
+        "tagName": "BODY",
+        "className": "",
+        "id": ""
+      },
+      "dirtyRetryBaseline": {
+        "prompt": "Look at these two fractions.",
+        "labels": [
+          "Accessible step-by-step fraction lesson",
+          "Current fractions",
+          "1 over 2 plus 1 over 5",
+          "Previous steps"
+        ],
+        "hasDraft": 0,
+        "hasCompletedBeat": 0,
+        "hasRecovery": 0
+      },
+      "scaleFactors": {
+        "left": "10",
+        "right": "4"
+      },
+      "outcome": "completed through mounted app controls after actual Next from preserved items"
+    },
+    {
+      "id": "touch-visual-30-operand-order-scale-10",
+      "itemId": "three-fifths-plus-one-third",
+      "fixtureId": "curated-relatively-prime-addition-three-fifths-one-third",
+      "authoringRevision": "plan32-record-v1",
+      "pathTarget": "30",
+      "operandForms": {
+        "left": {
+          "exactValue": {
+            "kind": "fraction",
+            "numerator": "3",
+            "denominator": "5"
+          },
+          "initialForm": {
+            "kind": "fraction",
+            "numerator": "3",
+            "denominator": "5"
+          },
+          "currentForm": {
+            "kind": "fraction",
+            "numerator": "3",
+            "denominator": "5"
+          },
+          "preferredFinalForm": {
+            "kind": "fraction",
+            "numerator": "3",
+            "denominator": "5"
+          },
+          "acceptedFormTransitions": []
+        },
+        "right": {
+          "exactValue": {
+            "kind": "fraction",
+            "numerator": "1",
+            "denominator": "3"
+          },
+          "initialForm": {
+            "kind": "fraction",
+            "numerator": "1",
+            "denominator": "3"
+          },
+          "currentForm": {
+            "kind": "fraction",
+            "numerator": "1",
+            "denominator": "3"
+          },
+          "preferredFinalForm": {
+            "kind": "fraction",
+            "numerator": "1",
+            "denominator": "3"
+          },
+          "acceptedFormTransitions": []
+        }
+      },
+      "exactPremiseOutcome": "yes",
+      "observedPremiseResponse": "yes",
+      "support": "high-support",
+      "view": "visual",
+      "motion": "no-preference",
+      "reducedMotionMatched": false,
+      "modality": "touch",
+      "capture": "touch-visual-30-operand-order-scale-10-360x740.png",
+      "bounds": {
+        "viewport": {
+          "width": 360,
+          "height": 740
+        },
+        "document": {
+          "width": 360,
+          "height": 1116
+        },
+        "question": {
+          "x": 63,
+          "y": 551.96875,
+          "width": 234,
+          "height": 75.5625,
+          "visible": true
+        },
+        "controls": {
+          "x": 63,
+          "y": 658.46875,
+          "width": 234,
+          "height": 114,
+          "visible": true
+        },
+        "scrollY": 12
+      },
+      "verticalScrollRange": 376,
+      "scaleFactors": {
+        "left": "6",
+        "right": "10"
+      },
+      "outcome": "completed through mounted app controls after actual Next from preserved items"
+    },
+    {
+      "id": "high-visual-15-operand-order",
+      "itemId": "three-fifths-plus-one-third",
+      "fixtureId": "curated-relatively-prime-addition-three-fifths-one-third",
+      "authoringRevision": "plan32-record-v1",
+      "pathTarget": "15",
+      "operandForms": {
+        "left": {
+          "exactValue": {
+            "kind": "fraction",
+            "numerator": "3",
+            "denominator": "5"
+          },
+          "initialForm": {
+            "kind": "fraction",
+            "numerator": "3",
+            "denominator": "5"
+          },
+          "currentForm": {
+            "kind": "fraction",
+            "numerator": "3",
+            "denominator": "5"
+          },
+          "preferredFinalForm": {
+            "kind": "fraction",
+            "numerator": "3",
+            "denominator": "5"
+          },
+          "acceptedFormTransitions": []
+        },
+        "right": {
+          "exactValue": {
+            "kind": "fraction",
+            "numerator": "1",
+            "denominator": "3"
+          },
+          "initialForm": {
+            "kind": "fraction",
+            "numerator": "1",
+            "denominator": "3"
+          },
+          "currentForm": {
+            "kind": "fraction",
+            "numerator": "1",
+            "denominator": "3"
+          },
+          "preferredFinalForm": {
+            "kind": "fraction",
+            "numerator": "1",
+            "denominator": "3"
+          },
+          "acceptedFormTransitions": []
+        }
+      },
+      "exactPremiseOutcome": "no",
+      "observedPremiseResponse": "no",
+      "support": "high-support",
+      "view": "visual",
+      "motion": "no-preference",
+      "reducedMotionMatched": false,
+      "modality": "pointer",
+      "capture": "high-visual-15-operand-order-360x740.png",
+      "bounds": {
+        "viewport": {
+          "width": 360,
+          "height": 740
+        },
+        "document": {
+          "width": 360,
+          "height": 1077
+        },
+        "question": {
+          "x": 63,
+          "y": 512.78125,
+          "width": 234,
+          "height": 75.5625,
+          "visible": true
+        },
+        "controls": {
+          "x": 63,
+          "y": 619.28125,
+          "width": 234,
+          "height": 114,
+          "visible": true
+        },
+        "scrollY": 12
+      },
+      "verticalScrollRange": 337,
+      "scaleFactors": {
+        "left": "3",
+        "right": "5"
+      },
+      "outcome": "completed through mounted app controls after actual Next from preserved items"
+    }
+  ]
+}

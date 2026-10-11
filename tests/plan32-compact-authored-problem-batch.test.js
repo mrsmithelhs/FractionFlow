@@ -32,6 +32,7 @@ import { applyIntent, createEpisode } from '../src/interaction/episode.js';
 import { createReplayEnvelope, replayEpisode } from '../src/interaction/replay.js';
 import { PHASE2_REFLECTION_EPISODE_DEFINITION } from '../src/interaction/episode-definition.js';
 import { evaluateTaskPathClosure } from '../src/interaction/path-closure.js';
+import legacyBaseline from '../reports/development/plan-32-compact-authored-problem-batch/evidence/legacy-baseline.json';
 
 const approvedItemIds = [
   'two-thirds-plus-one-fourth',
@@ -106,6 +107,45 @@ describe('Plan 32 compact authored addition batch', () => {
     expect(practiceType.items.map((item) => item.id)).toEqual(approvedItemIds);
     expect(MATERIALIZED_PLAN32_ADDITIONS).toHaveLength(7);
     expect(new Set(MATERIALIZED_PLAN32_ADDITIONS.map((item) => item.fixtureId)).size).toBe(7);
+  });
+
+  it('matches both preserved items and authored outputs to the frozen pre-implementation baseline', () => {
+    const practiceType = PRACTICE_TYPES.find((entry) => entry.id === legacyBaseline.practiceSet.id);
+    expect(legacyBaseline.baselineCommit).toBe('ae3943a7586a22fca8f15ee37fe6b73b595c0961');
+    expect(practiceType.setRevision).toBe('2');
+    expect({
+      id: practiceType.id,
+      setId: practiceType.setId,
+      setRevision: legacyBaseline.practiceSet.setRevision,
+      episodeDefinitionId: practiceType.episodeDefinition.id,
+      episodeDefinitionRevision: practiceType.episodeDefinition.revision,
+      items: practiceType.items.slice(0, legacyBaseline.practiceSet.items.length).map((item) => ({
+        id: item.id,
+        fixtureId: item.fixtureId,
+        authoringRevision: item.authoringRevision,
+        episodeDefinitionId: item.episodeDefinitionId,
+        episodeDefinitionRevision: item.episodeDefinitionRevision,
+        targetDenominators: item.targetDenominators,
+      })),
+    }).toEqual(legacyBaseline.practiceSet);
+
+    for (const item of legacyBaseline.practiceSet.items) {
+      const authored = resolveAuthoredContent(item.fixtureId, item.authoringRevision);
+      expect(authored.premiseChecks).toEqual(legacyBaseline.premiseChecks[item.fixtureId]);
+      expect(authored.reflectionChoices).toEqual(legacyBaseline.reflectionChoices[item.fixtureId]);
+      const instance = buildInstance(item);
+      const source = wireToForm(instance.operands.left.initialForm);
+      for (const target of item.targetDenominators) {
+        const choices = authored.reflectionChoices[target];
+        const correctPosition = choices.findIndex((choice) => equalFractions(
+          wireToForm(choice.form), source,
+        )) + 1;
+        expect(correctPosition).toBeGreaterThan(0);
+        if (item.id === 'two-thirds-plus-one-fourth' && target === '12') {
+          expect(correctPosition).toBe(1);
+        }
+      }
+    }
   });
 
   it('materializes each exact eligible route with the approved policies and safe unique forms', () => {

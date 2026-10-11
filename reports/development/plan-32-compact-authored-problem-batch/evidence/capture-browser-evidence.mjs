@@ -57,11 +57,16 @@ try {
       const app = document.querySelector('.fractionflow-app');
       const surface = document.querySelector('.app-visual-view');
       const rect = surface.getBoundingClientRect();
+      const question = document.querySelector('.app-visual-view .active-beat-prompt')?.getBoundingClientRect();
+      const controls = document.querySelector('.app-visual-view .active-beat-controls')?.getBoundingClientRect();
+      const box = (value) => value ? { x: value.x, y: value.y, width: value.width, height: value.height } : null;
       return {
         viewport: { width: window.innerWidth, height: window.innerHeight },
         document: { scrollWidth: document.documentElement.scrollWidth, scrollHeight: document.documentElement.scrollHeight },
         app: { scrollWidth: app.scrollWidth, scrollHeight: app.scrollHeight },
         surface: { x: rect.x, y: rect.y, width: rect.width, height: rect.height },
+        question: box(question),
+        controls: box(controls),
       };
     });
     const screenshot = `plan32-new-item-${viewport.width}x${viewport.height}.png`;
@@ -92,11 +97,16 @@ try {
       const app = document.querySelector('.fractionflow-app');
       const surface = document.querySelector('.app-visual-view');
       const rect = surface.getBoundingClientRect();
+      const question = document.querySelector('.app-visual-view .active-beat-prompt')?.getBoundingClientRect();
+      const controls = document.querySelector('.app-visual-view .active-beat-controls')?.getBoundingClientRect();
+      const box = (value) => value ? { x: value.x, y: value.y, width: value.width, height: value.height } : null;
       return {
         viewport: { width: window.innerWidth, height: window.innerHeight },
         document: { scrollWidth: document.documentElement.scrollWidth, scrollHeight: document.documentElement.scrollHeight },
         app: { scrollWidth: app.scrollWidth, scrollHeight: app.scrollHeight },
         surface: { x: rect.x, y: rect.y, width: rect.width, height: rect.height },
+        question: box(question),
+        controls: box(controls),
       };
     });
 
