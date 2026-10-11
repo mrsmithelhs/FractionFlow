@@ -14,13 +14,17 @@ and both starting prompts; prohibited role defaults must not bypass the limit.
 This snapshot supersedes older status/next-action passages below, which retain
 dated history. Use `docs/development/README.md` for the authoritative board.
 Plans 01–16, 21, 22, 24, 25, 26, 30 and 31 are complete; Plans 17–20, 23 and 29
-are drafts except Plan 19, which is owner-initiated in-progress. FF Impl 19 is
+are drafts except Plan 19, which is delivered and under review. FF Impl 19 is
 resolved at `01a12c75-1e17-7f03-b9fd-c3ce9a838a03`; the owner assignment in that
 chat explicitly authorizes bidirectional Plan 19 supervision. Kickoff received;
 Requirement 0 proposal `854f770` is approved on 2026-10-11; see Plan 19's
 `mechanism-review.md`. Bounded source work is authorized. The tenth shared-factor
 item uses its own immutable recipe/definition and per-item lifecycle; old nine
-identities and definition semantics remain. Technical/owner gates still apply.
+identities and definition semantics remain. Delivery `8809ccb` / `5d6afb5` received;
+root ran 31 focused tests and found no confirmed product defect. Evidence Repair 01
+is required for actual keyboard recovery, help assertions, pre-response answer
+withholding, mounted failure seeds and active Replay measurements. See its
+`delivery-review.md` and `repair-01.md`. Technical/owner gates still apply.
 Plan 32 is complete
 after owner screen acceptance on 2026-10-11; see `owner-disposition.md`.
 Repair commits `08cb875` / `fe2b820`; see its
