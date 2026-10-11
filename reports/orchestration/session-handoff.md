@@ -27,8 +27,11 @@ withholding, mounted failure seeds and active Replay measurements. See its
 `delivery-review.md` and `repair-01.md`. Repair 01 `6e81267` / `78e7b5e` improves
 keyboard/help/withholding/Replay evidence; bounded Repair 02 remains for an actual
 corrupted represented-fact seed and activation of mounted Show new parts in
-24-part Replay. See `repair-01-review.md` / `repair-02.md`. Technical/owner gates
-still apply.
+24-part Replay. Repair 02 `05af3d8` / `97377b7` is technically accepted; see
+`repair-02-review.md`. Root independently passed 21 focused tests and three
+filtered browser journeys (touch Replay/seed, real keyboard recovery and pointer
+help), each with nine Next transitions to item ten. Owner screen/agency acceptance
+remains; status stays delivered. After closure the recommended next packet is 17.
 Plan 32 is complete
 after owner screen acceptance on 2026-10-11; see `owner-disposition.md`.
 Repair commits `08cb875` / `fe2b820`; see its
