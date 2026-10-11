@@ -44,4 +44,21 @@ Implementer may continue read-only inspection and edit its proposal/report to
 make these choices concrete. No source/tests/registry/bank activation is authorized.
 Owner will receive concrete recommendations for policy and membership approval.
 
+## Read-only contract audit follow-up
+
+Current help has no additional numeric ceiling for the proposed targets: source,
+unit and multiplier derive from state, and unit wording falls back generically.
+Existing eligibility remains target denominator at most 30 and scale factor at
+most 12. No new capacity policy is implied by this assessment; browser/task
+closure evidence remains required after approval.
+
+Clarify the current validator's at-least-three-choice contract versus the proposed
+exact-three batch policy. Explicitly align premise presentation-range admission
+as well as matching choices: truth validation alone can accept an improper false
+premise that the bar renderer refuses. Proposed recipes must reject unsafe/out-of-
+range display forms upstream. Also specify how each immutable fixture/authoring
+identity permanently resolves its exact task/recipe versions for historical replay,
+rather than resolving to latest policy. These are addendum requirements, not
+source approval or a general schema redesign.
+
 This prose-only review did not warrant a separate advisor consultation.
