@@ -1,5 +1,5 @@
 import { buildCuratedProblem } from '../content/generator.js';
-import { PHASE1_GOLDEN_CASES } from '../content/data/phase1-golden-cases.js';
+import { resolveAuthoredContent, resolveCuratedFixture } from '../content/authored-content-catalog.js';
 import { validateProblemInstance } from '../content/validation.js';
 import { validateAuthoredTaskData } from '../content/authored-task-data.js';
 import {
@@ -37,11 +37,13 @@ const APP_RENDER_STRINGS = Object.freeze({
 });
 
 function canonicalInstance(item, conditions = REGISTERED_CONDITIONS) {
-  const fixture = PHASE1_GOLDEN_CASES.find((candidate) => (
-    candidate.id === item?.fixtureId
-    && candidate.authoringRevision === item?.authoringRevision
-  ));
+  const fixture = resolveCuratedFixture(item?.fixtureId, item?.authoringRevision);
   if (!fixture) throw new Error(`practice fixture identity is unavailable: ${item?.fixtureId}@${item?.authoringRevision}`);
+  const authoredContent = resolveAuthoredContent(item.fixtureId, item.authoringRevision);
+  if (!authoredContent) throw new Error(`practice task data identity is unavailable: ${item?.fixtureId}@${item?.authoringRevision}`);
+  if (authoredContent.itemId && authoredContent.itemId !== item.id) {
+    throw new Error(`practice item identity does not match its authored record: ${item.id}`);
+  }
   const definition = getEpisodeDefinition(item.episodeDefinitionId, item.episodeDefinitionRevision);
   const instance = buildCuratedProblem({
     fixture,

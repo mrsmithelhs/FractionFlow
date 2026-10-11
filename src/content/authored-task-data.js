@@ -1,6 +1,6 @@
 import { equalFractions } from '../math/fraction.js';
 import { wireToForm } from './schema.js';
-import { evaluateInstanceEligibility } from './eligibility.js';
+import { evaluateInstanceEligibility, evaluateProposedPathEligibility } from './eligibility.js';
 import { premiseCheckForInstance } from './data/premise-checks.js';
 import { reflectionChoicesForInstance } from './data/reflection-choices.js';
 
@@ -19,14 +19,28 @@ export function validateAuthoredPremiseCase(instance, premise, targetDenominator
   `premise identity mismatch for denominator ${targetDenominator}`);
   requireValid(sameFraction(premise.sourceForm, instance.operands.left.initialForm),
     `premise source mismatch for denominator ${targetDenominator}`);
-  requireValid(premise.presentedForm?.denominator === targetDenominator,
-    `premise form denominator mismatch for ${targetDenominator}`);
+  validateSupportedForm(premise.presentedForm, targetDenominator,
+    `premise form is outside the supported presentation range for ${targetDenominator}`);
   const actuallyEquivalent = sameFraction(premise.sourceForm, premise.presentedForm);
   const expectedResponse = actuallyEquivalent ? 'yes' : 'no';
   requireValid(premise.isEquivalent === actuallyEquivalent
     && premise.expectedResponse === expectedResponse,
   `premise truth mismatch for denominator ${targetDenominator}`);
   return expectedResponse;
+}
+
+function validateSupportedForm(form, targetDenominator, message) {
+  const numerator = Number(form?.numerator);
+  const denominator = Number(form?.denominator);
+  requireValid(form?.kind === 'fraction'
+    && typeof form.numerator === 'string'
+    && typeof form.denominator === 'string'
+    && Number.isSafeInteger(numerator)
+    && Number.isSafeInteger(denominator)
+    && denominator === Number(targetDenominator)
+    && numerator >= 0
+    && numerator <= denominator,
+  message);
 }
 
 export function validateAuthoredMatchingChoices(sourceForm, choices, targetDenominator) {
@@ -51,9 +65,27 @@ export function validateAuthoredMatchingChoices(sourceForm, choices, targetDenom
       && numerator <= denominator,
     `matching choice form is outside the supported presentation range for ${targetDenominator}`);
     if (sameFraction(choice.form, sourceForm)) equivalentChoices += 1;
+    for (const previous of choices.slice(0, choices.indexOf(choice))) {
+      requireValid(!sameFraction(previous.form, choice.form),
+        `matching choices contain duplicate mathematical forms for denominator ${targetDenominator}`);
+    }
   }
   requireValid(equivalentChoices === 1,
     `matching choices must contain exactly one equivalent form for ${targetDenominator}`);
+  return true;
+}
+
+/** Validate one complete, eligible route before it is offered or mounted. */
+export function validateAuthoredPathTaskData(instance, targetDenominator) {
+  const path = evaluateProposedPathEligibility(instance, targetDenominator);
+  requireValid(path.mathematicalValidity === 'valid'
+    && path.rendering === 'eligible'
+    && path.authoredCoverage !== 'outside-authored-coverage',
+  `path is outside the authored presentation capability for ${targetDenominator}`);
+  const premise = premiseCheckForInstance(instance, targetDenominator);
+  validateAuthoredPremiseCase(instance, premise, targetDenominator);
+  const choices = reflectionChoicesForInstance(instance, targetDenominator);
+  validateAuthoredMatchingChoices(instance.operands.left.initialForm, choices, targetDenominator);
   return true;
 }
 
@@ -80,9 +112,11 @@ export function validateAuthoredTaskData(instance, expectedDenominators) {
   for (const targetDenominator of expectedDenominators) {
     const premise = premiseCheckForInstance(instance, targetDenominator);
     premiseAnswers.add(validateAuthoredPremiseCase(instance, premise, targetDenominator));
-
-    const choices = reflectionChoicesForInstance(instance, targetDenominator);
-    validateAuthoredMatchingChoices(sourceForm, choices, targetDenominator);
+    validateAuthoredMatchingChoices(
+      sourceForm,
+      reflectionChoicesForInstance(instance, targetDenominator),
+      targetDenominator,
+    );
   }
 
   requireValid(premiseAnswers.has('yes') && premiseAnswers.has('no'),

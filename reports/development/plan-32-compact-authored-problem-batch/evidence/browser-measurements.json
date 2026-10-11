@@ -1,0 +1,155 @@
+{
+  "route": "two preserved completions followed by actual Next to first compact authored item",
+  "measurements": [
+    {
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "screenshot": "plan32-new-item-360x740.png",
+      "visibleItem": "1/2 + 1/5",
+      "bounds": {
+        "viewport": {
+          "width": 360,
+          "height": 740
+        },
+        "document": {
+          "scrollWidth": 360,
+          "scrollHeight": 804
+        },
+        "app": {
+          "scrollWidth": 360,
+          "scrollHeight": 804
+        },
+        "surface": {
+          "x": 25,
+          "y": 133,
+          "width": 310,
+          "height": 461.84375
+        }
+      }
+    },
+    {
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "screenshot": "plan32-largest-admitted-unit-360x740.png",
+      "visibleItem": "10/30 + 6/30 after exact 1/3 + 1/5 conversion",
+      "scaleFactors": [
+        10,
+        6
+      ],
+      "bounds": {
+        "viewport": {
+          "width": 360,
+          "height": 740
+        },
+        "document": {
+          "scrollWidth": 360,
+          "scrollHeight": 1173
+        },
+        "app": {
+          "scrollWidth": 360,
+          "scrollHeight": 1173
+        },
+        "surface": {
+          "x": 25,
+          "y": 93,
+          "width": 310,
+          "height": 830.8125
+        }
+      }
+    },
+    {
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "screenshot": "plan32-set-exhaustion-360x740.png",
+      "visibleItem": "all nine items completed; notice focused, Next hidden, Back to start enabled",
+      "exhaustionNotice": "You’ve tried every problem in this set.",
+      "exhaustedNavigation": {
+        "focusedNotice": true,
+        "nextHidden": true,
+        "returnEnabled": true
+      },
+      "reentryItem": "2/3 + 1/4 after Back to start"
+    },
+    {
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "screenshot": "plan32-new-item-1366x768.png",
+      "visibleItem": "1/2 + 1/5",
+      "bounds": {
+        "viewport": {
+          "width": 1366,
+          "height": 768
+        },
+        "document": {
+          "scrollWidth": 1366,
+          "scrollHeight": 795
+        },
+        "app": {
+          "scrollWidth": 1366,
+          "scrollHeight": 795
+        },
+        "surface": {
+          "x": 172,
+          "y": 193.96875,
+          "width": 1022,
+          "height": 461.84375
+        }
+      }
+    },
+    {
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "screenshot": "plan32-largest-admitted-unit-1366x768.png",
+      "visibleItem": "10/30 + 6/30 after exact 1/3 + 1/5 conversion",
+      "scaleFactors": [
+        10,
+        6
+      ],
+      "bounds": {
+        "viewport": {
+          "width": 1366,
+          "height": 768
+        },
+        "document": {
+          "scrollWidth": 1366,
+          "scrollHeight": 939
+        },
+        "app": {
+          "scrollWidth": 1366,
+          "scrollHeight": 939
+        },
+        "surface": {
+          "x": 172,
+          "y": 193.96875,
+          "width": 1022,
+          "height": 605.625
+        }
+      }
+    },
+    {
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "screenshot": "plan32-set-exhaustion-1366x768.png",
+      "visibleItem": "all nine items completed; notice focused, Next hidden, Back to start enabled",
+      "exhaustionNotice": "You’ve tried every problem in this set.",
+      "exhaustedNavigation": {
+        "focusedNotice": true,
+        "nextHidden": true,
+        "returnEnabled": true
+      },
+      "reentryItem": "2/3 + 1/4 after Back to start"
+    }
+  ]
+}

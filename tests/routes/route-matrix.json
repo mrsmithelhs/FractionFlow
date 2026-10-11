@@ -3443,8 +3443,8 @@
       ]}
     },
     {
-      "id": "ROUTE-PLAN26-TWO-ITEMS-NEXT-EXHAUSTION-RETURN",
-      "behavior": "Mounted controls complete the first item, advance to different operand forms, finish the alternate twelfths path, focus exhaustion, return, and re-enter the stable first item.",
+      "id": "ROUTE-PLAN32-NEXT-REACHES-NEW-BATCH",
+      "behavior": "Mounted controls complete both preserved items, activate Next by keyboard to reach the first compact-record item, return, and re-enter the stable first item.",
       "configuration": "phase2-bundle-1",
       "startingSurface": "mounted-app-entry",
       "viewport": {"width":360,"height":740},
@@ -3487,17 +3487,24 @@
         {"step":25,"method":"click","target":".app-visual-view .control-btn","description":"Continue the second item to reflection"},
         {"step":26,"method":"click","target":".app-visual-view .matching-choice-btn >> nth=1","description":"Complete the second item's reflection"},
         {"step":27,"method":"assert","assertions":[
-          {"type":"containsText","target":".app-navigation-notice","value":"You’ve tried both problems."},
-          {"type":"notHasSelector","target":".app-next-button:not([hidden])"},
-          {"type":"activeElementEquals","target":"activeElement","value":"p.app-navigation-notice"},
-          {"type":"hasSelector","target":".app-return-button:not([disabled])"}
-        ],"description":"Focus explicit exhaustion and keep return available"},
-        {"step":28,"method":"click","target":".app-return-button","description":"Return to practice choices"},
+          {"type":"hasSelector","target":".app-next-button:not([hidden])"},
+          {"type":"notHasSelector","target":".app-navigation-notice:not([hidden])"}
+        ],"description":"Offer Next after the second preserved episode resolves"},
+        {"step":28,"method":"pressKey","target":".app-next-button","value":"Enter","description":"Reach the new compact-record item through mounted Next"},
         {"step":29,"method":"assert","assertions":[
+          {"type":"attributeEquals","target":".app-visual-view .fraction-bar-container[data-side=\"left\"] .fraction-bar-track","attribute":"data-numerator","value":"1"},
+          {"type":"attributeEquals","target":".app-visual-view .fraction-bar-container[data-side=\"left\"] .fraction-bar-track","attribute":"data-denominator","value":"2"},
+          {"type":"attributeEquals","target":".app-visual-view .fraction-bar-container[data-side=\"right\"] .fraction-bar-track","attribute":"data-numerator","value":"1"},
+          {"type":"attributeEquals","target":".app-visual-view .fraction-bar-container[data-side=\"right\"] .fraction-bar-track","attribute":"data-denominator","value":"5"},
+          {"type":"activeElementEquals","target":"activeElement","value":"main.app-episode"},
+          {"type":"notHasSelector","target":".app-next-button:not([hidden])"}
+        ],"description":"Verify the first new fixture forms and clean episode entry"},
+        {"step":30,"method":"click","target":".app-return-button","description":"Return to practice choices"},
+        {"step":31,"method":"assert","assertions":[
           {"type":"activeElementEquals","target":"activeElement","value":"h1.app-entry-title"}
         ],"description":"Focus the practice-choice heading"},
-        {"step":30,"method":"click","target":".app-practice-button","description":"Re-enter the stable first item"},
-        {"step":31,"method":"assert","assertions":[
+        {"step":32,"method":"click","target":".app-practice-button","description":"Re-enter the stable first item"},
+        {"step":33,"method":"assert","assertions":[
           {"type":"attributeEquals","target":".app-visual-view .fraction-bar-container[data-side=\"left\"] .fraction-bar-track","attribute":"data-numerator","value":"2"},
           {"type":"attributeEquals","target":".app-visual-view .fraction-bar-container[data-side=\"left\"] .fraction-bar-track","attribute":"data-denominator","value":"3"},
           {"type":"attributeEquals","target":".app-visual-view .fraction-bar-container[data-side=\"right\"] .fraction-bar-track","attribute":"data-numerator","value":"1"},

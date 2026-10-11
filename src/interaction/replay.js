@@ -1,5 +1,5 @@
 import { buildCuratedProblem, generateProblem } from '../content/generator.js';
-import { PHASE1_GOLDEN_CASES } from '../content/data/phase1-golden-cases.js';
+import { resolveCuratedFixture } from '../content/authored-content-catalog.js';
 import { validateProblemInstance } from '../content/validation.js';
 import { deepFreeze } from '../content/schema.js';
 import { applyIntent, createEpisode } from './episode.js';
@@ -185,10 +185,10 @@ function reconstructCurated(identity) {
   if (!reconstruction || reconstruction.kind !== 'curated') {
     throw new Error('curated replay identity is incomplete');
   }
-  const fixture = PHASE1_GOLDEN_CASES.find((candidate) => (
-    candidate.id === reconstruction.fixtureId
-    && candidate.authoringRevision === reconstruction.authoringRevision
-  ));
+  const fixture = resolveCuratedFixture(
+    reconstruction.fixtureId,
+    reconstruction.authoringRevision,
+  );
   if (!fixture) throw new Error('unknown curated replay fixture identity');
   const instance = buildCuratedProblem({
     fixture,

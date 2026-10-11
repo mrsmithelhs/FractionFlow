@@ -30,6 +30,8 @@ import { createFractionFlowApp } from '../src/app/app.js';
 import { PRACTICE_TYPES } from '../src/app/practice-types.js';
 import { REGISTERED_CONDITIONS } from '../src/app/conditions.js';
 import { PHASE2_REFLECTION_EPISODE_DEFINITION } from '../src/interaction/episode-definition.js';
+import { equalFractions } from '../src/math/fraction.js';
+import { wireToForm } from '../src/content/schema.js';
 import { setupMockDOM, teardownMockDOM } from './fixtures/mock-dom.js';
 
 function fraction(numerator, denominator) {
@@ -66,9 +68,9 @@ function finishCurrentEpisode(app, targetDenominator) {
   const state = app.getState();
   const response = state.activeCondition.connectionMaking === 'CM-01-P'
     ? premiseCheckForInstance(state.content, targetDenominator).expectedResponse
-    : (state.content.provenance.fixtureId === 'curated-relatively-prime-addition-one-half-one-third'
-      ? 'match-b'
-      : 'match-a');
+    : reflectionChoicesForInstance(state.content, targetDenominator).find((choice) => (
+      equalFractions(wireToForm(choice.form), wireToForm(state.content.operands.left.initialForm))
+    )).id;
   app.dispatch({ type: 'submit-reflection', response });
   expect(app.getState().status).toBe('resolved');
 }
@@ -148,7 +150,7 @@ describe('Plan 26 vetted addition practice set', () => {
       choices[0],
       { ...choices[1], form: fraction(4, 6) },
       choices[2],
-    ], '6')).toThrow(/exactly one equivalent form/);
+    ], '6')).toThrow(/duplicate mathematical forms|exactly one equivalent form/);
 
     expect(() => validateAuthoredMatchingChoices(
       instance.operands.left.initialForm,
@@ -324,12 +326,14 @@ describe('Plan 26 vetted addition practice set', () => {
     app = createFractionFlowApp({ root, presentationMode: 'instant-test' });
     app.mount();
     root.querySelector('.app-practice-button').click();
-    finishCurrentEpisode(app, 12);
-    root.querySelector('.app-next-button').click();
-    finishCurrentEpisode(app, 6);
+    const items = PRACTICE_TYPES[0].items;
+    for (let index = 0; index < items.length; index += 1) {
+      finishCurrentEpisode(app, items[index].targetDenominators[0]);
+      if (index < items.length - 1) root.querySelector('.app-next-button').click();
+    }
 
     const notice = root.querySelector('.app-navigation-notice');
-    expect(notice.textContent).toBe('You’ve tried both problems.');
+    expect(notice.textContent).toBe('You’ve tried every problem in this set.');
     expect(notice.hasAttribute('hidden')).toBe(false);
     expect(document.activeElement).toBe(notice);
     const viewToggle = root.querySelector('.app-view-toggle');
@@ -338,7 +342,7 @@ describe('Plan 26 vetted addition practice set', () => {
     expect(document.activeElement).toBe(viewToggle);
     expect(root.querySelector('.app-next-button').hasAttribute('hidden')).toBe(true);
     expect(root.querySelector('.app-return-button').disabled).toBe(false);
-    expect(root.textContent.match(/You’ve tried both problems\./g)).toHaveLength(1);
+    expect(root.textContent.match(/You’ve tried every problem in this set\./g)).toHaveLength(1);
   });
 
   it('keeps a supplied test instance outside the vetted set while Retry rebuilds that same instance', () => {
@@ -350,7 +354,7 @@ describe('Plan 26 vetted addition practice set', () => {
 
     expect(app.getState().status).toBe('resolved');
     expect(root.querySelector('.app-next-button').hasAttribute('hidden')).toBe(true);
-    expect(root.textContent).not.toContain('You’ve tried both problems.');
+    expect(root.textContent).not.toContain('You’ve tried every problem in this set.');
 
     root.querySelector('.app-restart-button').click();
     expect(app.getState()).toEqual(createEpisode({

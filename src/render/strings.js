@@ -266,7 +266,7 @@ export const STRINGS = Object.freeze({
     problemRestarted: 'The same problem is ready again.',
     restartButton: 'Try this problem again',
     nextProblemButton: 'Next problem',
-    problemsExhausted: 'You’ve tried both problems.',
+    problemsExhausted: 'You’ve tried every problem in this set.',
     nextProblemUnavailable: 'This problem is not ready. Try again or go back to start.',
     noReplayYet: 'Finish a change before replaying it.',
     doneLooking: 'Done looking',

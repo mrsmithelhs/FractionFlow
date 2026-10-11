@@ -1,6 +1,5 @@
 import { evaluateProposedPathEligibility } from '../content/eligibility.js';
-import { reflectionChoicesForInstance } from '../content/data/reflection-choices.js';
-import { premiseCheckForInstance } from '../content/data/premise-checks.js';
+import { validateAuthoredPathTaskData } from '../content/authored-task-data.js';
 
 /**
  * Check whether a mathematically valid common-unit choice has every path the
@@ -20,29 +19,15 @@ export function evaluateTaskPathClosure({
   let reflectionAvailable = true;
 
   if (reflectionApplicable) {
-    if (connectionMaking === 'CM-01-M') {
-      const choices = reflectionChoicesForInstance(instance, path.targetDenominator);
-      reflectionAvailable = Array.isArray(choices)
-        && choices.length >= 2
-        && choices.every((choice) => (
-          typeof choice?.id === 'string'
-          && choice.id.length > 0
-          && typeof choice.form?.numerator === 'string'
-          && choice.form?.denominator === path.targetDenominator
-        ));
-    } else if (connectionMaking === 'CM-01-P') {
-      const premise = premiseCheckForInstance(instance, path.targetDenominator);
-      reflectionAvailable = Boolean(
-        premise
-        && premise.fixtureId === instance?.provenance?.fixtureId
-        && premise.targetDenominator === path.targetDenominator
-        && premise.sourceForm?.numerator
-        && premise.sourceForm?.denominator
-        && premise.presentedForm?.numerator
-        && premise.presentedForm?.denominator === path.targetDenominator,
-      );
-    } else {
-      reflectionAvailable = false;
+    reflectionAvailable = ['CM-01-M', 'CM-01-P'].includes(connectionMaking)
+      && path.rendering === 'eligible'
+      && path.authoredCoverage !== 'outside-authored-coverage';
+    if (reflectionAvailable) {
+      try {
+        validateAuthoredPathTaskData(instance, path.targetDenominator);
+      } catch {
+        reflectionAvailable = false;
+      }
     }
   }
 

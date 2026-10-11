@@ -1,0 +1,1984 @@
+{
+  "schemaVersion": "fractionflow.plan32-batch-manifest/v1",
+  "scope": "approved static practice set and all admitted item/path content outcomes",
+  "practiceSet": {
+    "id": "unlike-addition-vetted-set",
+    "revision": "2"
+  },
+  "recipe": {
+    "id": "plan32-reviewed-addition",
+    "revision": "1"
+  },
+  "taskDataRevision": "plan32-task-data-v1",
+  "inventoryBoundary": {
+    "plan30VerifierArtifact": "reports/development/plan-30-compact-content-authoring-investigation/results.json",
+    "candidates": 220,
+    "eligiblePathRows": 98,
+    "refusedPathRows": 342,
+    "orderedCandidatesWithTwoEligiblePaths": 18,
+    "swapClasses": 9,
+    "selectedOrderedProblems": 9,
+    "admittedPathRows": 18,
+    "reversedOrientationsExcluded": 9
+  },
+  "authoringBytes": {
+    "boundary": "UTF-8 JSON.stringify byte counts for Plan 32 record data only. Both sides include the same item/fixture/revision/recipe/profile/selector/overlay/operand fields; compact side stores reviewed route rules, expanded side stores materialized premise and reflection forms. Both exclude fixture-builder runtime, exact result facts, app/set wrapper and whitespace.",
+    "compactRecords": 5531,
+    "equivalentExplicitRecords": 11907
+  },
+  "items": [
+    {
+      "order": 0,
+      "itemId": "two-thirds-plus-one-fourth",
+      "fixture": {
+        "id": "curated-relatively-prime-addition-non-least",
+        "authoringRevision": "plan03-fixtures-v1"
+      },
+      "taskData": {
+        "revision": "legacy-plan03-authored-data-v1",
+        "recipe": {
+          "id": "legacy-explicit-task-data",
+          "revision": "1"
+        }
+      },
+      "practiceSet": {
+        "id": "unlike-addition-vetted-set",
+        "revision": "2"
+      },
+      "operands": {
+        "left": {
+          "kind": "fraction",
+          "numerator": "2",
+          "denominator": "3"
+        },
+        "right": {
+          "kind": "fraction",
+          "numerator": "1",
+          "denominator": "4"
+        }
+      },
+      "exactResult": {
+        "kind": "fraction",
+        "numerator": "11",
+        "denominator": "12"
+      },
+      "rawResult": {
+        "kind": "fraction",
+        "numerator": "11",
+        "denominator": "12"
+      },
+      "canonicalDenominator": "12",
+      "paths": [
+        {
+          "targetDenominator": "12",
+          "pathKind": "canonical",
+          "scaleFactors": {
+            "left": "4",
+            "right": "3"
+          },
+          "eligibility": "eligible",
+          "closure": [
+            {
+              "conditionId": "phase2-bundle-1",
+              "available": true,
+              "reason": null
+            },
+            {
+              "conditionId": "phase2-bundle-2",
+              "available": true,
+              "reason": null
+            },
+            {
+              "conditionId": "phase2-bundle-3",
+              "available": true,
+              "reason": null
+            },
+            {
+              "conditionId": "phase2-bundle-4",
+              "available": true,
+              "reason": null
+            }
+          ],
+          "premise": {
+            "id": "premise-rel-prime-12",
+            "presentedForm": {
+              "kind": "fraction",
+              "numerator": "7",
+              "denominator": "12"
+            },
+            "expectedResponse": "no"
+          },
+          "reflection": {
+            "choices": [
+              {
+                "id": "match-a",
+                "form": {
+                  "kind": "fraction",
+                  "numerator": "8",
+                  "denominator": "12"
+                }
+              },
+              {
+                "id": "match-b",
+                "form": {
+                  "kind": "fraction",
+                  "numerator": "7",
+                  "denominator": "12"
+                }
+              },
+              {
+                "id": "match-c",
+                "form": {
+                  "kind": "fraction",
+                  "numerator": "9",
+                  "denominator": "12"
+                }
+              }
+            ],
+            "correctPosition": 1
+          },
+          "reviewedPolicy": null
+        },
+        {
+          "targetDenominator": "24",
+          "pathKind": "authored-alternate",
+          "scaleFactors": {
+            "left": "8",
+            "right": "6"
+          },
+          "eligibility": "eligible",
+          "closure": [
+            {
+              "conditionId": "phase2-bundle-1",
+              "available": true,
+              "reason": null
+            },
+            {
+              "conditionId": "phase2-bundle-2",
+              "available": true,
+              "reason": null
+            },
+            {
+              "conditionId": "phase2-bundle-3",
+              "available": true,
+              "reason": null
+            },
+            {
+              "conditionId": "phase2-bundle-4",
+              "available": true,
+              "reason": null
+            }
+          ],
+          "premise": {
+            "id": "premise-rel-prime-24",
+            "presentedForm": {
+              "kind": "fraction",
+              "numerator": "16",
+              "denominator": "24"
+            },
+            "expectedResponse": "yes"
+          },
+          "reflection": {
+            "choices": [
+              {
+                "id": "match-b",
+                "form": {
+                  "kind": "fraction",
+                  "numerator": "15",
+                  "denominator": "24"
+                }
+              },
+              {
+                "id": "match-a",
+                "form": {
+                  "kind": "fraction",
+                  "numerator": "16",
+                  "denominator": "24"
+                }
+              },
+              {
+                "id": "match-c",
+                "form": {
+                  "kind": "fraction",
+                  "numerator": "17",
+                  "denominator": "24"
+                }
+              }
+            ],
+            "correctPosition": 2
+          },
+          "reviewedPolicy": null
+        }
+      ],
+      "swappedOrientationExcludedFromSet": {
+        "left": {
+          "kind": "fraction",
+          "numerator": "1",
+          "denominator": "4"
+        },
+        "right": {
+          "kind": "fraction",
+          "numerator": "2",
+          "denominator": "3"
+        }
+      }
+    },
+    {
+      "order": 1,
+      "itemId": "one-half-plus-one-third",
+      "fixture": {
+        "id": "curated-relatively-prime-addition-one-half-one-third",
+        "authoringRevision": "plan26-fixtures-v1"
+      },
+      "taskData": {
+        "revision": "legacy-plan26-authored-data-v1",
+        "recipe": {
+          "id": "legacy-explicit-task-data",
+          "revision": "1"
+        }
+      },
+      "practiceSet": {
+        "id": "unlike-addition-vetted-set",
+        "revision": "2"
+      },
+      "operands": {
+        "left": {
+          "kind": "fraction",
+          "numerator": "1",
+          "denominator": "2"
+        },
+        "right": {
+          "kind": "fraction",
+          "numerator": "1",
+          "denominator": "3"
+        }
+      },
+      "exactResult": {
+        "kind": "fraction",
+        "numerator": "5",
+        "denominator": "6"
+      },
+      "rawResult": {
+        "kind": "fraction",
+        "numerator": "5",
+        "denominator": "6"
+      },
+      "canonicalDenominator": "6",
+      "paths": [
+        {
+          "targetDenominator": "6",
+          "pathKind": "canonical",
+          "scaleFactors": {
+            "left": "3",
+            "right": "2"
+          },
+          "eligibility": "eligible",
+          "closure": [
+            {
+              "conditionId": "phase2-bundle-1",
+              "available": true,
+              "reason": null
+            },
+            {
+              "conditionId": "phase2-bundle-2",
+              "available": true,
+              "reason": null
+            },
+            {
+              "conditionId": "phase2-bundle-3",
+              "available": true,
+              "reason": null
+            },
+            {
+              "conditionId": "phase2-bundle-4",
+              "available": true,
+              "reason": null
+            }
+          ],
+          "premise": {
+            "id": "premise-half-third-6",
+            "presentedForm": {
+              "kind": "fraction",
+              "numerator": "2",
+              "denominator": "6"
+            },
+            "expectedResponse": "no"
+          },
+          "reflection": {
+            "choices": [
+              {
+                "id": "match-a",
+                "form": {
+                  "kind": "fraction",
+                  "numerator": "2",
+                  "denominator": "6"
+                }
+              },
+              {
+                "id": "match-b",
+                "form": {
+                  "kind": "fraction",
+                  "numerator": "3",
+                  "denominator": "6"
+                }
+              },
+              {
+                "id": "match-c",
+                "form": {
+                  "kind": "fraction",
+                  "numerator": "4",
+                  "denominator": "6"
+                }
+              }
+            ],
+            "correctPosition": 2
+          },
+          "reviewedPolicy": null
+        },
+        {
+          "targetDenominator": "12",
+          "pathKind": "authored-alternate",
+          "scaleFactors": {
+            "left": "6",
+            "right": "4"
+          },
+          "eligibility": "eligible",
+          "closure": [
+            {
+              "conditionId": "phase2-bundle-1",
+              "available": true,
+              "reason": null
+            },
+            {
+              "conditionId": "phase2-bundle-2",
+              "available": true,
+              "reason": null
+            },
+            {
+              "conditionId": "phase2-bundle-3",
+              "available": true,
+              "reason": null
+            },
+            {
+              "conditionId": "phase2-bundle-4",
+              "available": true,
+              "reason": null
+            }
+          ],
+          "premise": {
+            "id": "premise-half-third-12",
+            "presentedForm": {
+              "kind": "fraction",
+              "numerator": "6",
+              "denominator": "12"
+            },
+            "expectedResponse": "yes"
+          },
+          "reflection": {
+            "choices": [
+              {
+                "id": "match-a",
+                "form": {
+                  "kind": "fraction",
+                  "numerator": "5",
+                  "denominator": "12"
+                }
+              },
+              {
+                "id": "match-b",
+                "form": {
+                  "kind": "fraction",
+                  "numerator": "6",
+                  "denominator": "12"
+                }
+              },
+              {
+                "id": "match-c",
+                "form": {
+                  "kind": "fraction",
+                  "numerator": "7",
+                  "denominator": "12"
+                }
+              }
+            ],
+            "correctPosition": 2
+          },
+          "reviewedPolicy": null
+        }
+      ],
+      "swappedOrientationExcludedFromSet": {
+        "left": {
+          "kind": "fraction",
+          "numerator": "1",
+          "denominator": "3"
+        },
+        "right": {
+          "kind": "fraction",
+          "numerator": "1",
+          "denominator": "2"
+        }
+      }
+    },
+    {
+      "order": 2,
+      "itemId": "one-half-plus-one-fifth",
+      "fixture": {
+        "id": "curated-relatively-prime-addition-one-half-one-fifth",
+        "authoringRevision": "plan32-record-v1"
+      },
+      "taskData": {
+        "revision": "plan32-task-data-v1",
+        "recipe": {
+          "id": "plan32-reviewed-addition",
+          "revision": "1"
+        }
+      },
+      "practiceSet": {
+        "id": "unlike-addition-vetted-set",
+        "revision": "2"
+      },
+      "operands": {
+        "left": {
+          "kind": "fraction",
+          "numerator": "1",
+          "denominator": "2"
+        },
+        "right": {
+          "kind": "fraction",
+          "numerator": "1",
+          "denominator": "5"
+        }
+      },
+      "exactResult": {
+        "kind": "fraction",
+        "numerator": "7",
+        "denominator": "10"
+      },
+      "rawResult": {
+        "kind": "fraction",
+        "numerator": "7",
+        "denominator": "10"
+      },
+      "canonicalDenominator": "10",
+      "paths": [
+        {
+          "targetDenominator": "10",
+          "pathKind": "canonical",
+          "scaleFactors": {
+            "left": "5",
+            "right": "2"
+          },
+          "eligibility": "eligible",
+          "closure": [
+            {
+              "conditionId": "phase2-bundle-1",
+              "available": true,
+              "reason": null
+            },
+            {
+              "conditionId": "phase2-bundle-2",
+              "available": true,
+              "reason": null
+            },
+            {
+              "conditionId": "phase2-bundle-3",
+              "available": true,
+              "reason": null
+            },
+            {
+              "conditionId": "phase2-bundle-4",
+              "available": true,
+              "reason": null
+            }
+          ],
+          "premise": {
+            "id": "premise-one-half-plus-one-fifth-10",
+            "presentedForm": {
+              "kind": "fraction",
+              "numerator": "4",
+              "denominator": "10"
+            },
+            "expectedResponse": "no"
+          },
+          "reflection": {
+            "choices": [
+              {
+                "id": "match-a",
+                "form": {
+                  "kind": "fraction",
+                  "numerator": "1",
+                  "denominator": "10"
+                }
+              },
+              {
+                "id": "match-b",
+                "form": {
+                  "kind": "fraction",
+                  "numerator": "6",
+                  "denominator": "10"
+                }
+              },
+              {
+                "id": "match-c",
+                "form": {
+                  "kind": "fraction",
+                  "numerator": "5",
+                  "denominator": "10"
+                }
+              }
+            ],
+            "correctPosition": 3
+          },
+          "reviewedPolicy": {
+            "premise": {
+              "rule": "P-ADJACENT-UNIT",
+              "offset": "-1"
+            },
+            "reflection": {
+              "order": [
+                "R-KEEP-NUMERATOR",
+                "R-ADJACENT-UNIT",
+                "R-CORRECT"
+              ],
+              "adjacentOffset": "1",
+              "correctPosition": 3
+            }
+          }
+        },
+        {
+          "targetDenominator": "20",
+          "pathKind": "authored-alternate",
+          "scaleFactors": {
+            "left": "10",
+            "right": "4"
+          },
+          "eligibility": "eligible",
+          "closure": [
+            {
+              "conditionId": "phase2-bundle-1",
+              "available": true,
+              "reason": null
+            },
+            {
+              "conditionId": "phase2-bundle-2",
+              "available": true,
+              "reason": null
+            },
+            {
+              "conditionId": "phase2-bundle-3",
+              "available": true,
+              "reason": null
+            },
+            {
+              "conditionId": "phase2-bundle-4",
+              "available": true,
+              "reason": null
+            }
+          ],
+          "premise": {
+            "id": "premise-one-half-plus-one-fifth-20",
+            "presentedForm": {
+              "kind": "fraction",
+              "numerator": "10",
+              "denominator": "20"
+            },
+            "expectedResponse": "yes"
+          },
+          "reflection": {
+            "choices": [
+              {
+                "id": "match-a",
+                "form": {
+                  "kind": "fraction",
+                  "numerator": "9",
+                  "denominator": "20"
+                }
+              },
+              {
+                "id": "match-b",
+                "form": {
+                  "kind": "fraction",
+                  "numerator": "10",
+                  "denominator": "20"
+                }
+              },
+              {
+                "id": "match-c",
+                "form": {
+                  "kind": "fraction",
+                  "numerator": "1",
+                  "denominator": "20"
+                }
+              }
+            ],
+            "correctPosition": 2
+          },
+          "reviewedPolicy": {
+            "premise": {
+              "rule": "P-EQUIVALENT"
+            },
+            "reflection": {
+              "order": [
+                "R-ADJACENT-UNIT",
+                "R-CORRECT",
+                "R-KEEP-NUMERATOR"
+              ],
+              "adjacentOffset": "-1",
+              "correctPosition": 2
+            }
+          }
+        }
+      ],
+      "swappedOrientationExcludedFromSet": {
+        "left": {
+          "kind": "fraction",
+          "numerator": "1",
+          "denominator": "5"
+        },
+        "right": {
+          "kind": "fraction",
+          "numerator": "1",
+          "denominator": "2"
+        }
+      }
+    },
+    {
+      "order": 3,
+      "itemId": "one-half-plus-two-fifths",
+      "fixture": {
+        "id": "curated-relatively-prime-addition-one-half-two-fifths",
+        "authoringRevision": "plan32-record-v1"
+      },
+      "taskData": {
+        "revision": "plan32-task-data-v1",
+        "recipe": {
+          "id": "plan32-reviewed-addition",
+          "revision": "1"
+        }
+      },
+      "practiceSet": {
+        "id": "unlike-addition-vetted-set",
+        "revision": "2"
+      },
+      "operands": {
+        "left": {
+          "kind": "fraction",
+          "numerator": "1",
+          "denominator": "2"
+        },
+        "right": {
+          "kind": "fraction",
+          "numerator": "2",
+          "denominator": "5"
+        }
+      },
+      "exactResult": {
+        "kind": "fraction",
+        "numerator": "9",
+        "denominator": "10"
+      },
+      "rawResult": {
+        "kind": "fraction",
+        "numerator": "9",
+        "denominator": "10"
+      },
+      "canonicalDenominator": "10",
+      "paths": [
+        {
+          "targetDenominator": "10",
+          "pathKind": "canonical",
+          "scaleFactors": {
+            "left": "5",
+            "right": "2"
+          },
+          "eligibility": "eligible",
+          "closure": [
+            {
+              "conditionId": "phase2-bundle-1",
+              "available": true,
+              "reason": null
+            },
+            {
+              "conditionId": "phase2-bundle-2",
+              "available": true,
+              "reason": null
+            },
+            {
+              "conditionId": "phase2-bundle-3",
+              "available": true,
+              "reason": null
+            },
+            {
+              "conditionId": "phase2-bundle-4",
+              "available": true,
+              "reason": null
+            }
+          ],
+          "premise": {
+            "id": "premise-one-half-plus-two-fifths-10",
+            "presentedForm": {
+              "kind": "fraction",
+              "numerator": "5",
+              "denominator": "10"
+            },
+            "expectedResponse": "yes"
+          },
+          "reflection": {
+            "choices": [
+              {
+                "id": "match-a",
+                "form": {
+                  "kind": "fraction",
+                  "numerator": "5",
+                  "denominator": "10"
+                }
+              },
+              {
+                "id": "match-b",
+                "form": {
+                  "kind": "fraction",
+                  "numerator": "1",
+                  "denominator": "10"
+                }
+              },
+              {
+                "id": "match-c",
+                "form": {
+                  "kind": "fraction",
+                  "numerator": "4",
+                  "denominator": "10"
+                }
+              }
+            ],
+            "correctPosition": 1
+          },
+          "reviewedPolicy": {
+            "premise": {
+              "rule": "P-EQUIVALENT"
+            },
+            "reflection": {
+              "order": [
+                "R-CORRECT",
+                "R-KEEP-NUMERATOR",
+                "R-ADJACENT-UNIT"
+              ],
+              "adjacentOffset": "-1",
+              "correctPosition": 1
+            }
+          }
+        },
+        {
+          "targetDenominator": "20",
+          "pathKind": "authored-alternate",
+          "scaleFactors": {
+            "left": "10",
+            "right": "4"
+          },
+          "eligibility": "eligible",
+          "closure": [
+            {
+              "conditionId": "phase2-bundle-1",
+              "available": true,
+              "reason": null
+            },
+            {
+              "conditionId": "phase2-bundle-2",
+              "available": true,
+              "reason": null
+            },
+            {
+              "conditionId": "phase2-bundle-3",
+              "available": true,
+              "reason": null
+            },
+            {
+              "conditionId": "phase2-bundle-4",
+              "available": true,
+              "reason": null
+            }
+          ],
+          "premise": {
+            "id": "premise-one-half-plus-two-fifths-20",
+            "presentedForm": {
+              "kind": "fraction",
+              "numerator": "9",
+              "denominator": "20"
+            },
+            "expectedResponse": "no"
+          },
+          "reflection": {
+            "choices": [
+              {
+                "id": "match-a",
+                "form": {
+                  "kind": "fraction",
+                  "numerator": "10",
+                  "denominator": "20"
+                }
+              },
+              {
+                "id": "match-b",
+                "form": {
+                  "kind": "fraction",
+                  "numerator": "11",
+                  "denominator": "20"
+                }
+              },
+              {
+                "id": "match-c",
+                "form": {
+                  "kind": "fraction",
+                  "numerator": "1",
+                  "denominator": "20"
+                }
+              }
+            ],
+            "correctPosition": 1
+          },
+          "reviewedPolicy": {
+            "premise": {
+              "rule": "P-ADJACENT-UNIT",
+              "offset": "-1"
+            },
+            "reflection": {
+              "order": [
+                "R-CORRECT",
+                "R-ADJACENT-UNIT",
+                "R-KEEP-NUMERATOR"
+              ],
+              "adjacentOffset": "1",
+              "correctPosition": 1
+            }
+          }
+        }
+      ],
+      "swappedOrientationExcludedFromSet": {
+        "left": {
+          "kind": "fraction",
+          "numerator": "2",
+          "denominator": "5"
+        },
+        "right": {
+          "kind": "fraction",
+          "numerator": "1",
+          "denominator": "2"
+        }
+      }
+    },
+    {
+      "order": 4,
+      "itemId": "one-third-plus-one-fourth",
+      "fixture": {
+        "id": "curated-relatively-prime-addition-one-third-one-fourth",
+        "authoringRevision": "plan32-record-v1"
+      },
+      "taskData": {
+        "revision": "plan32-task-data-v1",
+        "recipe": {
+          "id": "plan32-reviewed-addition",
+          "revision": "1"
+        }
+      },
+      "practiceSet": {
+        "id": "unlike-addition-vetted-set",
+        "revision": "2"
+      },
+      "operands": {
+        "left": {
+          "kind": "fraction",
+          "numerator": "1",
+          "denominator": "3"
+        },
+        "right": {
+          "kind": "fraction",
+          "numerator": "1",
+          "denominator": "4"
+        }
+      },
+      "exactResult": {
+        "kind": "fraction",
+        "numerator": "7",
+        "denominator": "12"
+      },
+      "rawResult": {
+        "kind": "fraction",
+        "numerator": "7",
+        "denominator": "12"
+      },
+      "canonicalDenominator": "12",
+      "paths": [
+        {
+          "targetDenominator": "12",
+          "pathKind": "canonical",
+          "scaleFactors": {
+            "left": "4",
+            "right": "3"
+          },
+          "eligibility": "eligible",
+          "closure": [
+            {
+              "conditionId": "phase2-bundle-1",
+              "available": true,
+              "reason": null
+            },
+            {
+              "conditionId": "phase2-bundle-2",
+              "available": true,
+              "reason": null
+            },
+            {
+              "conditionId": "phase2-bundle-3",
+              "available": true,
+              "reason": null
+            },
+            {
+              "conditionId": "phase2-bundle-4",
+              "available": true,
+              "reason": null
+            }
+          ],
+          "premise": {
+            "id": "premise-one-third-plus-one-fourth-12",
+            "presentedForm": {
+              "kind": "fraction",
+              "numerator": "4",
+              "denominator": "12"
+            },
+            "expectedResponse": "yes"
+          },
+          "reflection": {
+            "choices": [
+              {
+                "id": "match-a",
+                "form": {
+                  "kind": "fraction",
+                  "numerator": "3",
+                  "denominator": "12"
+                }
+              },
+              {
+                "id": "match-b",
+                "form": {
+                  "kind": "fraction",
+                  "numerator": "4",
+                  "denominator": "12"
+                }
+              },
+              {
+                "id": "match-c",
+                "form": {
+                  "kind": "fraction",
+                  "numerator": "1",
+                  "denominator": "12"
+                }
+              }
+            ],
+            "correctPosition": 2
+          },
+          "reviewedPolicy": {
+            "premise": {
+              "rule": "P-EQUIVALENT"
+            },
+            "reflection": {
+              "order": [
+                "R-ADJACENT-UNIT",
+                "R-CORRECT",
+                "R-KEEP-NUMERATOR"
+              ],
+              "adjacentOffset": "-1",
+              "correctPosition": 2
+            }
+          }
+        },
+        {
+          "targetDenominator": "24",
+          "pathKind": "authored-alternate",
+          "scaleFactors": {
+            "left": "8",
+            "right": "6"
+          },
+          "eligibility": "eligible",
+          "closure": [
+            {
+              "conditionId": "phase2-bundle-1",
+              "available": true,
+              "reason": null
+            },
+            {
+              "conditionId": "phase2-bundle-2",
+              "available": true,
+              "reason": null
+            },
+            {
+              "conditionId": "phase2-bundle-3",
+              "available": true,
+              "reason": null
+            },
+            {
+              "conditionId": "phase2-bundle-4",
+              "available": true,
+              "reason": null
+            }
+          ],
+          "premise": {
+            "id": "premise-one-third-plus-one-fourth-24",
+            "presentedForm": {
+              "kind": "fraction",
+              "numerator": "9",
+              "denominator": "24"
+            },
+            "expectedResponse": "no"
+          },
+          "reflection": {
+            "choices": [
+              {
+                "id": "match-a",
+                "form": {
+                  "kind": "fraction",
+                  "numerator": "8",
+                  "denominator": "24"
+                }
+              },
+              {
+                "id": "match-b",
+                "form": {
+                  "kind": "fraction",
+                  "numerator": "1",
+                  "denominator": "24"
+                }
+              },
+              {
+                "id": "match-c",
+                "form": {
+                  "kind": "fraction",
+                  "numerator": "7",
+                  "denominator": "24"
+                }
+              }
+            ],
+            "correctPosition": 1
+          },
+          "reviewedPolicy": {
+            "premise": {
+              "rule": "P-ADJACENT-UNIT",
+              "offset": "1"
+            },
+            "reflection": {
+              "order": [
+                "R-CORRECT",
+                "R-KEEP-NUMERATOR",
+                "R-ADJACENT-UNIT"
+              ],
+              "adjacentOffset": "-1",
+              "correctPosition": 1
+            }
+          }
+        }
+      ],
+      "swappedOrientationExcludedFromSet": {
+        "left": {
+          "kind": "fraction",
+          "numerator": "1",
+          "denominator": "4"
+        },
+        "right": {
+          "kind": "fraction",
+          "numerator": "1",
+          "denominator": "3"
+        }
+      }
+    },
+    {
+      "order": 5,
+      "itemId": "one-third-plus-one-fifth",
+      "fixture": {
+        "id": "curated-relatively-prime-addition-one-third-one-fifth",
+        "authoringRevision": "plan32-record-v1"
+      },
+      "taskData": {
+        "revision": "plan32-task-data-v1",
+        "recipe": {
+          "id": "plan32-reviewed-addition",
+          "revision": "1"
+        }
+      },
+      "practiceSet": {
+        "id": "unlike-addition-vetted-set",
+        "revision": "2"
+      },
+      "operands": {
+        "left": {
+          "kind": "fraction",
+          "numerator": "1",
+          "denominator": "3"
+        },
+        "right": {
+          "kind": "fraction",
+          "numerator": "1",
+          "denominator": "5"
+        }
+      },
+      "exactResult": {
+        "kind": "fraction",
+        "numerator": "8",
+        "denominator": "15"
+      },
+      "rawResult": {
+        "kind": "fraction",
+        "numerator": "8",
+        "denominator": "15"
+      },
+      "canonicalDenominator": "15",
+      "paths": [
+        {
+          "targetDenominator": "15",
+          "pathKind": "canonical",
+          "scaleFactors": {
+            "left": "5",
+            "right": "3"
+          },
+          "eligibility": "eligible",
+          "closure": [
+            {
+              "conditionId": "phase2-bundle-1",
+              "available": true,
+              "reason": null
+            },
+            {
+              "conditionId": "phase2-bundle-2",
+              "available": true,
+              "reason": null
+            },
+            {
+              "conditionId": "phase2-bundle-3",
+              "available": true,
+              "reason": null
+            },
+            {
+              "conditionId": "phase2-bundle-4",
+              "available": true,
+              "reason": null
+            }
+          ],
+          "premise": {
+            "id": "premise-one-third-plus-one-fifth-15",
+            "presentedForm": {
+              "kind": "fraction",
+              "numerator": "6",
+              "denominator": "15"
+            },
+            "expectedResponse": "no"
+          },
+          "reflection": {
+            "choices": [
+              {
+                "id": "match-a",
+                "form": {
+                  "kind": "fraction",
+                  "numerator": "1",
+                  "denominator": "15"
+                }
+              },
+              {
+                "id": "match-b",
+                "form": {
+                  "kind": "fraction",
+                  "numerator": "5",
+                  "denominator": "15"
+                }
+              },
+              {
+                "id": "match-c",
+                "form": {
+                  "kind": "fraction",
+                  "numerator": "4",
+                  "denominator": "15"
+                }
+              }
+            ],
+            "correctPosition": 2
+          },
+          "reviewedPolicy": {
+            "premise": {
+              "rule": "P-ADJACENT-UNIT",
+              "offset": "1"
+            },
+            "reflection": {
+              "order": [
+                "R-KEEP-NUMERATOR",
+                "R-CORRECT",
+                "R-ADJACENT-UNIT"
+              ],
+              "adjacentOffset": "-1",
+              "correctPosition": 2
+            }
+          }
+        },
+        {
+          "targetDenominator": "30",
+          "pathKind": "authored-alternate",
+          "scaleFactors": {
+            "left": "10",
+            "right": "6"
+          },
+          "eligibility": "eligible",
+          "closure": [
+            {
+              "conditionId": "phase2-bundle-1",
+              "available": true,
+              "reason": null
+            },
+            {
+              "conditionId": "phase2-bundle-2",
+              "available": true,
+              "reason": null
+            },
+            {
+              "conditionId": "phase2-bundle-3",
+              "available": true,
+              "reason": null
+            },
+            {
+              "conditionId": "phase2-bundle-4",
+              "available": true,
+              "reason": null
+            }
+          ],
+          "premise": {
+            "id": "premise-one-third-plus-one-fifth-30",
+            "presentedForm": {
+              "kind": "fraction",
+              "numerator": "10",
+              "denominator": "30"
+            },
+            "expectedResponse": "yes"
+          },
+          "reflection": {
+            "choices": [
+              {
+                "id": "match-a",
+                "form": {
+                  "kind": "fraction",
+                  "numerator": "1",
+                  "denominator": "30"
+                }
+              },
+              {
+                "id": "match-b",
+                "form": {
+                  "kind": "fraction",
+                  "numerator": "11",
+                  "denominator": "30"
+                }
+              },
+              {
+                "id": "match-c",
+                "form": {
+                  "kind": "fraction",
+                  "numerator": "10",
+                  "denominator": "30"
+                }
+              }
+            ],
+            "correctPosition": 3
+          },
+          "reviewedPolicy": {
+            "premise": {
+              "rule": "P-EQUIVALENT"
+            },
+            "reflection": {
+              "order": [
+                "R-KEEP-NUMERATOR",
+                "R-ADJACENT-UNIT",
+                "R-CORRECT"
+              ],
+              "adjacentOffset": "1",
+              "correctPosition": 3
+            }
+          }
+        }
+      ],
+      "swappedOrientationExcludedFromSet": {
+        "left": {
+          "kind": "fraction",
+          "numerator": "1",
+          "denominator": "5"
+        },
+        "right": {
+          "kind": "fraction",
+          "numerator": "1",
+          "denominator": "3"
+        }
+      }
+    },
+    {
+      "order": 6,
+      "itemId": "one-third-plus-two-fifths",
+      "fixture": {
+        "id": "curated-relatively-prime-addition-one-third-two-fifths",
+        "authoringRevision": "plan32-record-v1"
+      },
+      "taskData": {
+        "revision": "plan32-task-data-v1",
+        "recipe": {
+          "id": "plan32-reviewed-addition",
+          "revision": "1"
+        }
+      },
+      "practiceSet": {
+        "id": "unlike-addition-vetted-set",
+        "revision": "2"
+      },
+      "operands": {
+        "left": {
+          "kind": "fraction",
+          "numerator": "1",
+          "denominator": "3"
+        },
+        "right": {
+          "kind": "fraction",
+          "numerator": "2",
+          "denominator": "5"
+        }
+      },
+      "exactResult": {
+        "kind": "fraction",
+        "numerator": "11",
+        "denominator": "15"
+      },
+      "rawResult": {
+        "kind": "fraction",
+        "numerator": "11",
+        "denominator": "15"
+      },
+      "canonicalDenominator": "15",
+      "paths": [
+        {
+          "targetDenominator": "15",
+          "pathKind": "canonical",
+          "scaleFactors": {
+            "left": "5",
+            "right": "3"
+          },
+          "eligibility": "eligible",
+          "closure": [
+            {
+              "conditionId": "phase2-bundle-1",
+              "available": true,
+              "reason": null
+            },
+            {
+              "conditionId": "phase2-bundle-2",
+              "available": true,
+              "reason": null
+            },
+            {
+              "conditionId": "phase2-bundle-3",
+              "available": true,
+              "reason": null
+            },
+            {
+              "conditionId": "phase2-bundle-4",
+              "available": true,
+              "reason": null
+            }
+          ],
+          "premise": {
+            "id": "premise-one-third-plus-two-fifths-15",
+            "presentedForm": {
+              "kind": "fraction",
+              "numerator": "5",
+              "denominator": "15"
+            },
+            "expectedResponse": "yes"
+          },
+          "reflection": {
+            "choices": [
+              {
+                "id": "match-a",
+                "form": {
+                  "kind": "fraction",
+                  "numerator": "5",
+                  "denominator": "15"
+                }
+              },
+              {
+                "id": "match-b",
+                "form": {
+                  "kind": "fraction",
+                  "numerator": "1",
+                  "denominator": "15"
+                }
+              },
+              {
+                "id": "match-c",
+                "form": {
+                  "kind": "fraction",
+                  "numerator": "6",
+                  "denominator": "15"
+                }
+              }
+            ],
+            "correctPosition": 1
+          },
+          "reviewedPolicy": {
+            "premise": {
+              "rule": "P-EQUIVALENT"
+            },
+            "reflection": {
+              "order": [
+                "R-CORRECT",
+                "R-KEEP-NUMERATOR",
+                "R-ADJACENT-UNIT"
+              ],
+              "adjacentOffset": "1",
+              "correctPosition": 1
+            }
+          }
+        },
+        {
+          "targetDenominator": "30",
+          "pathKind": "authored-alternate",
+          "scaleFactors": {
+            "left": "10",
+            "right": "6"
+          },
+          "eligibility": "eligible",
+          "closure": [
+            {
+              "conditionId": "phase2-bundle-1",
+              "available": true,
+              "reason": null
+            },
+            {
+              "conditionId": "phase2-bundle-2",
+              "available": true,
+              "reason": null
+            },
+            {
+              "conditionId": "phase2-bundle-3",
+              "available": true,
+              "reason": null
+            },
+            {
+              "conditionId": "phase2-bundle-4",
+              "available": true,
+              "reason": null
+            }
+          ],
+          "premise": {
+            "id": "premise-one-third-plus-two-fifths-30",
+            "presentedForm": {
+              "kind": "fraction",
+              "numerator": "11",
+              "denominator": "30"
+            },
+            "expectedResponse": "no"
+          },
+          "reflection": {
+            "choices": [
+              {
+                "id": "match-a",
+                "form": {
+                  "kind": "fraction",
+                  "numerator": "1",
+                  "denominator": "30"
+                }
+              },
+              {
+                "id": "match-b",
+                "form": {
+                  "kind": "fraction",
+                  "numerator": "10",
+                  "denominator": "30"
+                }
+              },
+              {
+                "id": "match-c",
+                "form": {
+                  "kind": "fraction",
+                  "numerator": "9",
+                  "denominator": "30"
+                }
+              }
+            ],
+            "correctPosition": 2
+          },
+          "reviewedPolicy": {
+            "premise": {
+              "rule": "P-ADJACENT-UNIT",
+              "offset": "1"
+            },
+            "reflection": {
+              "order": [
+                "R-KEEP-NUMERATOR",
+                "R-CORRECT",
+                "R-ADJACENT-UNIT"
+              ],
+              "adjacentOffset": "-1",
+              "correctPosition": 2
+            }
+          }
+        }
+      ],
+      "swappedOrientationExcludedFromSet": {
+        "left": {
+          "kind": "fraction",
+          "numerator": "2",
+          "denominator": "5"
+        },
+        "right": {
+          "kind": "fraction",
+          "numerator": "1",
+          "denominator": "3"
+        }
+      }
+    },
+    {
+      "order": 7,
+      "itemId": "two-thirds-plus-one-fifth",
+      "fixture": {
+        "id": "curated-relatively-prime-addition-two-thirds-one-fifth",
+        "authoringRevision": "plan32-record-v1"
+      },
+      "taskData": {
+        "revision": "plan32-task-data-v1",
+        "recipe": {
+          "id": "plan32-reviewed-addition",
+          "revision": "1"
+        }
+      },
+      "practiceSet": {
+        "id": "unlike-addition-vetted-set",
+        "revision": "2"
+      },
+      "operands": {
+        "left": {
+          "kind": "fraction",
+          "numerator": "2",
+          "denominator": "3"
+        },
+        "right": {
+          "kind": "fraction",
+          "numerator": "1",
+          "denominator": "5"
+        }
+      },
+      "exactResult": {
+        "kind": "fraction",
+        "numerator": "13",
+        "denominator": "15"
+      },
+      "rawResult": {
+        "kind": "fraction",
+        "numerator": "13",
+        "denominator": "15"
+      },
+      "canonicalDenominator": "15",
+      "paths": [
+        {
+          "targetDenominator": "15",
+          "pathKind": "canonical",
+          "scaleFactors": {
+            "left": "5",
+            "right": "3"
+          },
+          "eligibility": "eligible",
+          "closure": [
+            {
+              "conditionId": "phase2-bundle-1",
+              "available": true,
+              "reason": null
+            },
+            {
+              "conditionId": "phase2-bundle-2",
+              "available": true,
+              "reason": null
+            },
+            {
+              "conditionId": "phase2-bundle-3",
+              "available": true,
+              "reason": null
+            },
+            {
+              "conditionId": "phase2-bundle-4",
+              "available": true,
+              "reason": null
+            }
+          ],
+          "premise": {
+            "id": "premise-two-thirds-plus-one-fifth-15",
+            "presentedForm": {
+              "kind": "fraction",
+              "numerator": "11",
+              "denominator": "15"
+            },
+            "expectedResponse": "no"
+          },
+          "reflection": {
+            "choices": [
+              {
+                "id": "match-a",
+                "form": {
+                  "kind": "fraction",
+                  "numerator": "9",
+                  "denominator": "15"
+                }
+              },
+              {
+                "id": "match-b",
+                "form": {
+                  "kind": "fraction",
+                  "numerator": "10",
+                  "denominator": "15"
+                }
+              },
+              {
+                "id": "match-c",
+                "form": {
+                  "kind": "fraction",
+                  "numerator": "2",
+                  "denominator": "15"
+                }
+              }
+            ],
+            "correctPosition": 2
+          },
+          "reviewedPolicy": {
+            "premise": {
+              "rule": "P-ADJACENT-UNIT",
+              "offset": "1"
+            },
+            "reflection": {
+              "order": [
+                "R-ADJACENT-UNIT",
+                "R-CORRECT",
+                "R-KEEP-NUMERATOR"
+              ],
+              "adjacentOffset": "-1",
+              "correctPosition": 2
+            }
+          }
+        },
+        {
+          "targetDenominator": "30",
+          "pathKind": "authored-alternate",
+          "scaleFactors": {
+            "left": "10",
+            "right": "6"
+          },
+          "eligibility": "eligible",
+          "closure": [
+            {
+              "conditionId": "phase2-bundle-1",
+              "available": true,
+              "reason": null
+            },
+            {
+              "conditionId": "phase2-bundle-2",
+              "available": true,
+              "reason": null
+            },
+            {
+              "conditionId": "phase2-bundle-3",
+              "available": true,
+              "reason": null
+            },
+            {
+              "conditionId": "phase2-bundle-4",
+              "available": true,
+              "reason": null
+            }
+          ],
+          "premise": {
+            "id": "premise-two-thirds-plus-one-fifth-30",
+            "presentedForm": {
+              "kind": "fraction",
+              "numerator": "20",
+              "denominator": "30"
+            },
+            "expectedResponse": "yes"
+          },
+          "reflection": {
+            "choices": [
+              {
+                "id": "match-a",
+                "form": {
+                  "kind": "fraction",
+                  "numerator": "2",
+                  "denominator": "30"
+                }
+              },
+              {
+                "id": "match-b",
+                "form": {
+                  "kind": "fraction",
+                  "numerator": "21",
+                  "denominator": "30"
+                }
+              },
+              {
+                "id": "match-c",
+                "form": {
+                  "kind": "fraction",
+                  "numerator": "20",
+                  "denominator": "30"
+                }
+              }
+            ],
+            "correctPosition": 3
+          },
+          "reviewedPolicy": {
+            "premise": {
+              "rule": "P-EQUIVALENT"
+            },
+            "reflection": {
+              "order": [
+                "R-KEEP-NUMERATOR",
+                "R-ADJACENT-UNIT",
+                "R-CORRECT"
+              ],
+              "adjacentOffset": "1",
+              "correctPosition": 3
+            }
+          }
+        }
+      ],
+      "swappedOrientationExcludedFromSet": {
+        "left": {
+          "kind": "fraction",
+          "numerator": "1",
+          "denominator": "5"
+        },
+        "right": {
+          "kind": "fraction",
+          "numerator": "2",
+          "denominator": "3"
+        }
+      }
+    },
+    {
+      "order": 8,
+      "itemId": "three-fifths-plus-one-third",
+      "fixture": {
+        "id": "curated-relatively-prime-addition-three-fifths-one-third",
+        "authoringRevision": "plan32-record-v1"
+      },
+      "taskData": {
+        "revision": "plan32-task-data-v1",
+        "recipe": {
+          "id": "plan32-reviewed-addition",
+          "revision": "1"
+        }
+      },
+      "practiceSet": {
+        "id": "unlike-addition-vetted-set",
+        "revision": "2"
+      },
+      "operands": {
+        "left": {
+          "kind": "fraction",
+          "numerator": "3",
+          "denominator": "5"
+        },
+        "right": {
+          "kind": "fraction",
+          "numerator": "1",
+          "denominator": "3"
+        }
+      },
+      "exactResult": {
+        "kind": "fraction",
+        "numerator": "14",
+        "denominator": "15"
+      },
+      "rawResult": {
+        "kind": "fraction",
+        "numerator": "14",
+        "denominator": "15"
+      },
+      "canonicalDenominator": "15",
+      "paths": [
+        {
+          "targetDenominator": "15",
+          "pathKind": "canonical",
+          "scaleFactors": {
+            "left": "3",
+            "right": "5"
+          },
+          "eligibility": "eligible",
+          "closure": [
+            {
+              "conditionId": "phase2-bundle-1",
+              "available": true,
+              "reason": null
+            },
+            {
+              "conditionId": "phase2-bundle-2",
+              "available": true,
+              "reason": null
+            },
+            {
+              "conditionId": "phase2-bundle-3",
+              "available": true,
+              "reason": null
+            },
+            {
+              "conditionId": "phase2-bundle-4",
+              "available": true,
+              "reason": null
+            }
+          ],
+          "premise": {
+            "id": "premise-three-fifths-plus-one-third-15",
+            "presentedForm": {
+              "kind": "fraction",
+              "numerator": "8",
+              "denominator": "15"
+            },
+            "expectedResponse": "no"
+          },
+          "reflection": {
+            "choices": [
+              {
+                "id": "match-a",
+                "form": {
+                  "kind": "fraction",
+                  "numerator": "9",
+                  "denominator": "15"
+                }
+              },
+              {
+                "id": "match-b",
+                "form": {
+                  "kind": "fraction",
+                  "numerator": "3",
+                  "denominator": "15"
+                }
+              },
+              {
+                "id": "match-c",
+                "form": {
+                  "kind": "fraction",
+                  "numerator": "10",
+                  "denominator": "15"
+                }
+              }
+            ],
+            "correctPosition": 1
+          },
+          "reviewedPolicy": {
+            "premise": {
+              "rule": "P-ADJACENT-UNIT",
+              "offset": "-1"
+            },
+            "reflection": {
+              "order": [
+                "R-CORRECT",
+                "R-KEEP-NUMERATOR",
+                "R-ADJACENT-UNIT"
+              ],
+              "adjacentOffset": "1",
+              "correctPosition": 1
+            }
+          }
+        },
+        {
+          "targetDenominator": "30",
+          "pathKind": "authored-alternate",
+          "scaleFactors": {
+            "left": "6",
+            "right": "10"
+          },
+          "eligibility": "eligible",
+          "closure": [
+            {
+              "conditionId": "phase2-bundle-1",
+              "available": true,
+              "reason": null
+            },
+            {
+              "conditionId": "phase2-bundle-2",
+              "available": true,
+              "reason": null
+            },
+            {
+              "conditionId": "phase2-bundle-3",
+              "available": true,
+              "reason": null
+            },
+            {
+              "conditionId": "phase2-bundle-4",
+              "available": true,
+              "reason": null
+            }
+          ],
+          "premise": {
+            "id": "premise-three-fifths-plus-one-third-30",
+            "presentedForm": {
+              "kind": "fraction",
+              "numerator": "18",
+              "denominator": "30"
+            },
+            "expectedResponse": "yes"
+          },
+          "reflection": {
+            "choices": [
+              {
+                "id": "match-a",
+                "form": {
+                  "kind": "fraction",
+                  "numerator": "17",
+                  "denominator": "30"
+                }
+              },
+              {
+                "id": "match-b",
+                "form": {
+                  "kind": "fraction",
+                  "numerator": "3",
+                  "denominator": "30"
+                }
+              },
+              {
+                "id": "match-c",
+                "form": {
+                  "kind": "fraction",
+                  "numerator": "18",
+                  "denominator": "30"
+                }
+              }
+            ],
+            "correctPosition": 3
+          },
+          "reviewedPolicy": {
+            "premise": {
+              "rule": "P-EQUIVALENT"
+            },
+            "reflection": {
+              "order": [
+                "R-ADJACENT-UNIT",
+                "R-KEEP-NUMERATOR",
+                "R-CORRECT"
+              ],
+              "adjacentOffset": "-1",
+              "correctPosition": 3
+            }
+          }
+        }
+      ],
+      "swappedOrientationExcludedFromSet": {
+        "left": {
+          "kind": "fraction",
+          "numerator": "1",
+          "denominator": "3"
+        },
+        "right": {
+          "kind": "fraction",
+          "numerator": "3",
+          "denominator": "5"
+        }
+      }
+    }
+  ]
+}
