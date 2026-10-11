@@ -3,7 +3,7 @@
 Owner dispositions through 2026-10-09, DECISION-035–041; design staging updated
 2026-10-10. These are planning obligations
 and review triggers, not implementation assignments or claims of delivered behavior.
-Plans 30/31 are owner accepted and complete. Plan 32 is ready, not initiated;
+Plans 30/31 are owner accepted and complete. Plan 32 is owner-initiated in-progress;
 Plans 17–20, 23 and 29 are drafts. Plan 32 production adoption remains gated.
 Plan 26 is technically and owner accepted and
 complete. Plans 21, 22, 24 and 25 are complete. Remaining mechanism and

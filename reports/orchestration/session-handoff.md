@@ -8,7 +8,11 @@ Orchestrator-owned; update in place before thread boundaries. Anchor dates, neve
 This snapshot supersedes older status/next-action passages below, which retain
 dated history. Use `docs/development/README.md` for the authoritative board.
 Plans 01–16, 21, 22, 24, 25, 26, 30 and 31 are complete; Plans 17–20, 23 and 29
-are drafts. Plan 32 is ready/runnable but not initiated. Owner accepted Plan 31's
+are drafts. Plan 32 is owner-initiated in-progress and runnable. FF Impl 32 is
+resolved at `01a128d8-1b76-71a1-bd43-3d5fedc1c4a3`; owner directly authorized
+bidirectional supervision here. Root sent the coordination brief; Requirement 0
+policy/batch/mechanism proposal is pending, with no source approval yet.
+Owner accepted Plan 31's
 screenshots and authorized its closure on 2026-10-10. See
 `plan-30-codex-implementer-handoff.md` for the report-only investigation and chat
 supervision brief. FF Impl 30 is started, resolved and messaged at Codex thread
@@ -17,7 +21,7 @@ Plan 30 supervision in this orchestration chat. Delivery commits are `136c988`
 and `1d58986`. Root reproduced the read-only experiment and technically accepted
 the investigation after inline reporting corrections; see its `delivery-review.md`.
 The implementer is stopped; see Plan 30's owner disposition. Production adoption
-is ready Plan 32, with a varied batch replacing the earlier one-item recommendation.
+is active Plan 32, with a varied batch replacing the earlier one-item recommendation.
 See `plan-32-codex-implementer-handoff.md`; policy/batch/mechanism approval is still
 required before source. FF Impl 31's assignment is now closed; its chat is
 resolved at `01a1274f-4ecf-7c23-90ec-ef8cc5709520`; the owner directly authorized

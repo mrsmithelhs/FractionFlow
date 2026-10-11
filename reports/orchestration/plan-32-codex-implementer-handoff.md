@@ -1,7 +1,9 @@
 # Plan 32 — Codex implementer handoff
 
-Prepared 2026-10-10. Plan 32 is ready, not yet initiated. Suggested chat title:
-**FF Impl 32**. Owner initiation is required; status is orchestration-owned.
+Prepared and owner-initiated 2026-10-10. Plan 32 is in-progress. Chat:
+**FF Impl 32**, `01a128d8-1b76-71a1-bd43-3d5fedc1c4a3`. The owner directly
+authorized bidirectional Plan 32 supervision in FF Orch 12+. Status remains
+orchestration-owned; source approval is still Requirement 0.
 
 Read `AGENTS.md`, `docs/agent-starting-prompts/implementer-prompt.md` and the
 complete packet `docs/development/plan-32-compact-authored-problem-batch.md`.

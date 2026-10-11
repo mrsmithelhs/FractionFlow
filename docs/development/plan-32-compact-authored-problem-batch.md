@@ -1,7 +1,7 @@
 ---
 id: plan-32
 title: Compact Authored Problem Batch
-status: ready
+status: in-progress
 depends_on: [plan-30, plan-31, plan-26]
 gate: "Requirement 0 authoring, instructional-policy and batch confirmation before source work; technical and owner rendered-screen/agency acceptance; deployment separately authorized."
 summary: >-
