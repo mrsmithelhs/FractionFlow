@@ -17,7 +17,10 @@ Plans 01–16, 21, 22, 24, 25, 26, 30 and 31 are complete; Plans 17–20, 23 and
 are drafts except Plan 19, which is owner-initiated in-progress. FF Impl 19 is
 resolved at `01a12c75-1e17-7f03-b9fd-c3ce9a838a03`; the owner assignment in that
 chat explicitly authorizes bidirectional Plan 19 supervision. Kickoff received;
-Requirement 0 investigation only, with mechanism approval before source work.
+Requirement 0 proposal `854f770` is approved on 2026-10-11; see Plan 19's
+`mechanism-review.md`. Bounded source work is authorized. The tenth shared-factor
+item uses its own immutable recipe/definition and per-item lifecycle; old nine
+identities and definition semantics remain. Technical/owner gates still apply.
 Plan 32 is complete
 after owner screen acceptance on 2026-10-11; see `owner-disposition.md`.
 Repair commits `08cb875` / `fe2b820`; see its
