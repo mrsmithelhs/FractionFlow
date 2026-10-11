@@ -1,0 +1,457 @@
+#!/usr/bin/env node
+
+import fs from 'node:fs/promises';
+import fsSync from 'node:fs';
+import path from 'node:path';
+import { createRequire } from 'node:module';
+import { fileURLToPath } from 'node:url';
+import { chromium } from 'playwright';
+import { PRACTICE_TYPES } from '../../src/app/practice-types.js';
+import { resolveAuthoredContent, resolveCuratedFixture } from '../../src/content/authored-content-catalog.js';
+import { buildCuratedProblem } from '../../src/content/generator.js';
+import { convertToDenominator, addAtCommonDenominator, equalFractions, scaleFactorForDenominator } from '../../src/math/index.js';
+import { fractionToWire, wireToForm } from '../../src/content/schema.js';
+
+const require = createRequire(import.meta.url);
+const { createStaticServer } = require('./run-route-matrix.js');
+const rootDir = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../..');
+const outputDir = path.join(rootDir, 'reports/development/plan-19-shared-factor-addition/evidence');
+const practiceType = PRACTICE_TYPES.find((entry) => entry.id === 'sum-under-one');
+const oldItems = practiceType.items.slice(0, 9);
+const newItem = practiceType.items[9];
+const plans = [
+  { name: 'matching-12-high-visual-pointer-360x740', target: '12', condition: 'phase2-bundle-1', support: 'high', view: 'visual', action: 'pointer', motion: 'standard-motion', viewport: { width: 360, height: 740 } },
+  { name: 'premise-12-medium-linear-keyboard-reduced-360x752', target: '12', condition: 'phase2-bundle-4', support: 'medium', view: 'linear', action: 'keyboard', motion: 'reduced-motion', viewport: { width: 360, height: 752 } },
+  { name: 'matching-24-high-visual-touch-360x752', target: '24', condition: 'phase2-bundle-1', support: 'high', view: 'visual', action: 'touch', motion: 'standard-motion', viewport: { width: 360, height: 752 } },
+  { name: 'premise-24-medium-linear-pointer-chromebook', target: '24', condition: 'phase2-bundle-4', support: 'medium', view: 'linear', action: 'pointer', motion: 'standard-motion', viewport: { width: 1366, height: 768 } },
+];
+
+const evidence = {
+  captureDate: new Date().toISOString().slice(0, 10),
+  browser: null,
+  registeredSet: { id: practiceType.setId, revision: practiceType.setRevision, itemCount: practiceType.items.length },
+  actualNextReach: [],
+  finalItemVerification: [],
+  journeys: [],
+  screenshots: [],
+  measurements: [],
+  limitations: [
+    'Touch evidence uses Playwright browser touch events in a touch-enabled context; no physical touch device or native on-screen keyboard was used.',
+    'Keyboard evidence uses browser keyboard events; no assistive technology was tested.',
+    'The 1366 by 768 CSS viewport is a Chromebook-size layout sample, not a physical Chromebook test.',
+    'The known response input remount can move focus to BODY after a response; this capture records reachable recovery and does not establish continuous focus.',
+  ],
+};
+
+function ensure(condition, message) {
+  if (!condition) throw new Error(message);
+}
+
+function instanceFor(item) {
+  const fixture = resolveCuratedFixture(item.fixtureId, item.authoringRevision);
+  ensure(fixture, `fixture not registered: ${item.fixtureId}@${item.authoringRevision}`);
+  return buildCuratedProblem({
+    fixture,
+    selector: fixture.selector,
+    overlays: fixture.overlays,
+    profileId: fixture.profileId,
+    candidate: { left: fixture.left, right: fixture.right, reviewedTransitions: fixture.reviewedTransitions ?? [] },
+  });
+}
+
+function actionFor(page, mode) {
+  return async (locator) => {
+    if (mode === 'keyboard') {
+      await locator.focus();
+      await locator.press('Enter');
+    } else if (mode === 'touch') {
+      await locator.tap();
+    } else {
+      await locator.click();
+    }
+  };
+}
+
+async function typeNumber(input, value, mode) {
+  if (mode === 'keyboard') {
+    await input.focus();
+    await input.press('Control+A');
+    await input.press('Backspace');
+    await input.pressSequentially(String(value));
+  } else {
+    await input.fill(String(value));
+  }
+}
+
+async function enterNumber(page, value, mode, view = 'visual') {
+  const region = page.locator(`.app-${view}-view:not([hidden]) .active-beat-controls`);
+  const input = region.locator('input.control-numeric-input').first();
+  await typeNumber(input, value, mode);
+  const submit = region.locator('.control-submit-btn').first();
+  if (mode === 'keyboard') await submit.focus().then(() => submit.press('Enter'));
+  else if (mode === 'touch') await submit.tap();
+  else await submit.click();
+}
+
+async function chooseButton(page, name, mode, exact = true) {
+  const button = page.getByRole('button', { name, exact }).filter({ visible: true }).first();
+  await actionFor(page, mode)(button);
+}
+
+async function selectProfile(page, plan) {
+  const act = actionFor(page, plan.action);
+  await act(page.locator('.app-gear-button'));
+  await act(page.locator(`[data-condition-id="${plan.condition}"]`));
+  await act(page.locator('.app-gear-button'));
+  await act(page.locator(`[data-support-id="${plan.support}-support"]`));
+  await act(page.locator('.app-practice-button'));
+  if (plan.view === 'linear') await act(page.locator('.app-view-toggle'));
+  ensure(await page.locator(`.app-${plan.view}-view`).isVisible(), `${plan.name}: requested view did not mount`);
+}
+
+async function inspectLayout(page, plan, label) {
+  const measurement = await page.evaluate(({ planName, stage }) => {
+    const round = (value) => Math.round(value * 100) / 100;
+    const rect = (element) => {
+      if (!element) return null;
+      const box = element.getBoundingClientRect();
+      return { x: round(box.x), y: round(box.y), width: round(box.width), height: round(box.height), right: round(box.right), bottom: round(box.bottom) };
+    };
+    const root = document.querySelector('.fractionflow-app');
+    const view = document.querySelector('.app-visual-view:not([hidden]), .app-linear-view:not([hidden])');
+    const active = view?.querySelector('.active-beat-section');
+    const controls = [...(active?.querySelectorAll('button,input') ?? [])].map((node) => ({
+      label: node.getAttribute('aria-label') || node.textContent?.trim() || node.labels?.[0]?.textContent?.trim() || '',
+      rect: rect(node),
+    }));
+    const width = Math.max(document.documentElement.scrollWidth, document.body.scrollWidth);
+    const height = Math.max(document.documentElement.scrollHeight, document.body.scrollHeight);
+    return {
+      journey: planName,
+      stage,
+      viewport: { width: innerWidth, height: innerHeight },
+      activeTask: rect(active),
+      prompt: { text: active?.querySelector('.active-beat-prompt')?.textContent?.trim() ?? '', rect: rect(active?.querySelector('.active-beat-prompt')) },
+      fractionTracks: [...(view?.querySelectorAll('.fraction-bar-track') ?? [])].map(rect),
+      controls,
+      scroll: { documentWidth: width, documentHeight: height, horizontalOverflow: width > innerWidth, verticalOverflow: height > innerHeight },
+      viewToggle: rect(document.querySelector('.app-view-toggle')),
+      documentRoot: rect(root),
+    };
+  }, { planName: plan.name, stage: label });
+  evidence.measurements.push(measurement);
+  return measurement;
+}
+
+async function saveScreenshot(page, plan, label) {
+  const fileName = `${plan.name}-${label}-${plan.viewport.width}x${plan.viewport.height}.png`;
+  const file = path.join(outputDir, fileName);
+  await page.screenshot({ path: file, fullPage: true, animations: 'disabled' });
+  evidence.screenshots.push({ journey: plan.name, stage: label, file: `evidence/${fileName}`, viewport: plan.viewport });
+}
+
+async function answerNotice(page, mode) {
+  await chooseButton(page, 'No, different sizes', mode);
+}
+
+async function chooseDenominator(page, item, target, support, mode, view) {
+  if (support === 'high') {
+    await chooseButton(page, `Common denominator ${target}`, mode);
+  } else {
+    await enterNumber(page, target, mode, view);
+  }
+}
+
+function exactSteps(instance, target) {
+  const denominator = BigInt(target);
+  const leftSource = wireToForm(instance.operands.left.initialForm);
+  const rightSource = wireToForm(instance.operands.right.initialForm);
+  return {
+    leftSource,
+    rightSource,
+    left: convertToDenominator(leftSource, denominator),
+    right: convertToDenominator(rightSource, denominator),
+    result: addAtCommonDenominator(leftSource, rightSource, denominator),
+  };
+}
+
+async function answerReflection(page, item, target, plan, wrongFirst = false) {
+  const authored = resolveAuthoredContent(item.fixtureId, item.authoringRevision);
+  const instance = instanceFor(item);
+  const expected = authored.premiseChecks[target].expectedResponse;
+  if (plan.condition === 'phase2-bundle-4') {
+    if (wrongFirst) {
+      const wrong = expected === 'yes' ? 'No, the amount changed' : 'Yes, it is the same amount';
+      await chooseButton(page, wrong, plan.action);
+      await page.locator(`.app-${plan.view}-view:not([hidden]) .active-beat-feedback[role="alert"]`).waitFor();
+      ensure(await page.locator('.app-next-button:not([hidden])').count() === 0, `${plan.name}: wrong premise response advanced`);
+    }
+    const label = expected === 'yes' ? 'Yes, it is the same amount' : 'No, the amount changed';
+    await chooseButton(page, label, plan.action);
+  } else {
+    const choices = authored.reflectionChoices[target];
+    const source = wireToForm(instance.operands.left.initialForm);
+    const correct = choices.find((choice) => equalFractions(wireToForm(choice.form), source));
+    ensure(correct, `${plan.name}: no exact reflection choice`);
+    const label = `Bar with ${correct.form.numerator} of ${correct.form.denominator} equal parts shaded`;
+    await chooseButton(page, label, plan.action);
+  }
+}
+
+async function completeItem(page, item, target, plan, { collect = false, recovery = false, help = false, replay = false, wrongPremise = false } = {}) {
+  const mode = plan.action;
+  const act = actionFor(page, mode);
+  const viewRoot = `.app-${plan.view}-view:not([hidden])`;
+  const instance = instanceFor(item);
+  const authored = resolveAuthoredContent(item.fixtureId, item.authoringRevision);
+  const step = exactSteps(instance, target);
+
+  if (collect) {
+    await inspectLayout(page, plan, 'encounter');
+    await saveScreenshot(page, plan, 'next-reached-item');
+  }
+  await act(page.locator('.app-visual-view:not([hidden]) .active-beat-controls .control-btn, .app-linear-view:not([hidden]) .active-beat-controls .control-btn').first());
+  await answerNotice(page, mode);
+  if (collect) {
+    await inspectLayout(page, plan, 'decide');
+    await saveScreenshot(page, plan, 'decide');
+  }
+
+  if (recovery) {
+    await enterNumber(page, '18', mode, plan.view);
+    const invalidText = (await page.locator(`${viewRoot} .active-beat-feedback`).textContent()) || '';
+    ensure(invalidText.includes('not a common denominator') || invalidText.includes('is a multiple of'), `${plan.name}: invalid denominator was not rejected`);
+    ensure(await page.locator(`${viewRoot} .active-beat-controls input.control-numeric-input`).count() === 1, `${plan.name}: invalid denominator advanced`);
+    await enterNumber(page, '36', mode, plan.view);
+    ensure((await page.locator(`${viewRoot} .active-beat-feedback`).textContent())?.includes('valid common denominator'), `${plan.name}: valid but unsupported denominator was not distinguished`);
+    ensure(await page.locator(`${viewRoot} .active-beat-controls input.control-numeric-input`).count() === 1, `${plan.name}: unsupported denominator advanced`);
+  }
+  if (help) {
+    await chooseButton(page, 'Need help?', mode);
+    const cue = page.locator('.active-denominator-help-cue');
+    await cue.waitFor();
+    ensure((await cue.textContent()).trim().length > 0, `${plan.name}: task-local denominator help missing`);
+    await chooseButton(page, 'Close help', mode);
+  }
+  await chooseDenominator(page, item, target, plan.support, mode, plan.view);
+  if (collect) {
+    await inspectLayout(page, plan, 'transform-left');
+    await saveScreenshot(page, plan, 'transform-left');
+  }
+
+  const leftNumerator = step.left.numerator.toString();
+  if (recovery) {
+    await enterNumber(page, '1', mode, plan.view);
+    await page.locator(`${viewRoot} .active-beat-feedback[role="alert"]`).waitFor();
+    ensure(await page.locator(`${viewRoot} .active-beat-controls input.control-numeric-input`).count() === 1, `${plan.name}: wrong conversion advanced`);
+  }
+  if (help) {
+    await chooseButton(page, 'Need help?', mode);
+    const multiplier = scaleFactorForDenominator(step.leftSource, BigInt(target)).toString();
+    await enterNumber(page, multiplier, mode, plan.view);
+    await page.locator('.visual-transform-task-help, .active-beat-help').first().waitFor().catch(() => {});
+  }
+  await enterNumber(page, leftNumerator, mode, plan.view);
+  if (collect) {
+    await inspectLayout(page, plan, 'transform-right');
+    await saveScreenshot(page, plan, 'transform-right');
+  }
+  if (replay) {
+    const draft = page.locator(`${viewRoot} .active-beat-controls input.control-numeric-input`).first();
+    await typeNumber(draft, '2', mode);
+    await chooseButton(page, 'Replay the last change', mode);
+    await chooseButton(page, 'Replay the last change', mode);
+    ensure((await page.locator(`${viewRoot} .active-beat-controls input.control-numeric-input`).first().inputValue()) === '2', `${plan.name}: Replay toggle discarded the active response draft`);
+  }
+  await enterNumber(page, step.right.numerator.toString(), mode, plan.view);
+  if (collect) await inspectLayout(page, plan, 'operate');
+  if (recovery) {
+    const wrong = (step.result.numerator + 1n).toString();
+    await enterNumber(page, wrong, mode, plan.view);
+    await page.locator(`${viewRoot} .active-beat-feedback[role="alert"]`).waitFor();
+    ensure(await page.locator(`${viewRoot} .active-beat-controls input.control-numeric-input`).count() === 1, `${plan.name}: wrong arithmetic advanced`);
+  }
+  await enterNumber(page, step.result.numerator.toString(), mode, plan.view);
+  if (collect) await inspectLayout(page, plan, 'resolve');
+  const resolveButton = page.locator(`.app-${plan.view}-view:not([hidden]) .active-beat-controls .control-btn`).first();
+  await resolveButton.waitFor({ timeout: 5000 }).catch(async () => {
+    const prompt = await page.locator('.active-beat-prompt').textContent().catch(() => 'missing prompt');
+    const body = await page.locator('.active-beat-section').innerText().catch(() => 'missing active beat');
+    throw new Error(`${plan.name}/${item.id}: no resolve button after exact result; prompt=${prompt}; active=${body}`);
+  });
+  await act(resolveButton);
+  if (replay) {
+    await chooseButton(page, 'Replay the last change', mode);
+    await page.locator(`${viewRoot} .app-done-looking-button`).waitFor();
+    if (collect) await saveScreenshot(page, plan, 'replay-24-left-conversion');
+    await chooseButton(page, 'Done looking', mode);
+  }
+  if (collect) {
+    await inspectLayout(page, plan, 'reflect');
+    await saveScreenshot(page, plan, 'reflect');
+  }
+  await answerReflection(page, item, target, plan, wrongPremise);
+  ensure(await page.locator('.app-next-button:not([hidden])').count() === 1 || item === newItem, `${plan.name}: completed existing item has no mounted Next`);
+}
+
+async function reachNewItem(page, plan) {
+  const act = actionFor(page, plan.action);
+  for (const prior of oldItems) {
+    const target = prior.targetDenominators[0];
+    await completeItem(page, prior, target, plan);
+    const next = page.locator('.app-next-button:not([hidden])');
+    await next.waitFor();
+    await act(next);
+    const current = practiceType.items[oldItems.indexOf(prior) + 1];
+    const expected = current ? instanceFor(current) : instanceFor(newItem);
+    const left = expected.operands.left.initialForm;
+    const right = expected.operands.right.initialForm;
+    const view = page.locator(`.app-${plan.view}-view`);
+    const visibleBars = await view.locator('.fraction-bar-container').count();
+    if (plan.view === 'visual') {
+      ensure(visibleBars >= 2, `${plan.name}: Next did not mount the next item's bars`);
+    } else {
+      const linearText = (await view.innerText()).replace(/\s+/g, ' ');
+      ensure(linearText.includes(`${left.numerator} ${left.denominator}`)
+        && linearText.includes(`${right.numerator} ${right.denominator}`),
+      `${plan.name}: Next did not mount the next item's linear fractions: ${linearText.slice(0, 220)}`);
+    }
+    evidence.actualNextReach.push({
+      journey: plan.name,
+      completed: prior.id,
+      reached: current?.id ?? newItem.id,
+      expectedLeft: `${left.numerator}/${left.denominator}`,
+      expectedRight: `${right.numerator}/${right.denominator}`,
+      activeElement: await page.evaluate(() => document.activeElement?.tagName === 'MAIN' ? document.activeElement.className : document.activeElement?.className),
+    });
+  }
+  const instance = instanceFor(newItem);
+  if (plan.view === 'visual') {
+    const leftTrack = page.locator(`.app-${plan.view}-view .fraction-bar-container[data-side="left"] .fraction-bar-track`);
+    const rightTrack = page.locator(`.app-${plan.view}-view .fraction-bar-container[data-side="right"] .fraction-bar-track`);
+    await leftTrack.waitFor();
+    ensure(await leftTrack.getAttribute('data-numerator') === instance.operands.left.initialForm.numerator, `${plan.name}: new left fixture not reached through Next`);
+    ensure(await leftTrack.getAttribute('data-denominator') === instance.operands.left.initialForm.denominator, `${plan.name}: new left denominator mismatch`);
+    ensure(await rightTrack.getAttribute('data-numerator') === instance.operands.right.initialForm.numerator, `${plan.name}: new right fixture not reached through Next`);
+    ensure(await rightTrack.getAttribute('data-denominator') === instance.operands.right.initialForm.denominator, `${plan.name}: new right denominator mismatch`);
+  } else {
+    const text = (await page.locator(`.app-${plan.view}-view`).innerText()).replace(/\s+/g, ' ');
+    const { numerator: leftNumerator, denominator: leftDenominator } = instance.operands.left.initialForm;
+    const { numerator: rightNumerator, denominator: rightDenominator } = instance.operands.right.initialForm;
+    ensure(text.includes(`${leftNumerator} ${leftDenominator}`)
+      && text.includes(`${rightNumerator} ${rightDenominator}`),
+    `${plan.name}: final Next did not mount the shared-factor linear fractions: ${text.slice(0, 220)}`);
+  }
+  evidence.finalItemVerification.push({ journey: plan.name, reached: newItem.id, verified: true, activeItemCount: 10 });
+}
+
+async function runJourney(browser, baseUrl, plan) {
+  const context = await browser.newContext({
+    viewport: plan.viewport,
+    hasTouch: plan.action === 'touch',
+    isMobile: plan.action === 'touch',
+    reducedMotion: plan.motion === 'reduced-motion' ? 'reduce' : 'no-preference',
+  });
+  const page = await context.newPage();
+  await page.goto(baseUrl);
+  await page.waitForSelector('.app-practice-button');
+  await selectProfile(page, plan);
+  await reachNewItem(page, plan);
+  const startFocus = await page.evaluate(() => document.activeElement?.classList?.contains('app-episode') ?? false);
+  const target = plan.target;
+
+  if (plan.support === 'medium') {
+    await actionFor(page, plan.action)(page.locator(`.app-${plan.view}-view:not([hidden]) .active-beat-controls .control-btn`).first());
+    await answerNotice(page, plan.action);
+    const draft = page.locator('.app-visual-view:not([hidden]) input.control-numeric-input, .app-linear-view:not([hidden]) input.control-numeric-input').first();
+    await typeNumber(draft, target, plan.action);
+    await chooseButton(page, 'Try this problem again', plan.action);
+    ensure(await page.locator(`.app-${plan.view}-view:not([hidden]) .active-beat-controls .control-btn`).count() === 1, `${plan.name}: Retry did not reset the active item`);
+    ensure(await page.locator('.app-visual-view:not([hidden]) input.control-numeric-input, .app-linear-view:not([hidden]) input.control-numeric-input').count() === 0, `${plan.name}: Retry retained a dirty response draft`);
+  }
+
+  const reducedMotionEvidence = await page.evaluate(() => ({
+    preference: matchMedia('(prefers-reduced-motion: reduce)').matches,
+    reducedTracks: document.querySelectorAll('.fraction-bar-track.reduced-motion').length,
+  }));
+  evidence.journeys.push({ name: plan.name, target, condition: plan.condition, support: plan.support, view: plan.view, action: plan.action, motion: plan.motion, viewport: plan.viewport, reachedViaNext: true, focusAfterNext: startFocus, reducedMotionEvidence });
+
+  const exerciseOptions = {
+    collect: true,
+    recovery: plan.name.startsWith('premise-24'),
+    help: plan.name.startsWith('premise-24'),
+    replay: plan.name.startsWith('matching-24'),
+    wrongPremise: plan.condition === 'phase2-bundle-4',
+  };
+  await completeItem(page, newItem, target, plan, exerciseOptions);
+  const exhaustButtonCount = await page.locator('.app-next-button:not([hidden])').count();
+  const exhaustionText = await page.locator('.app-navigation-notice').textContent();
+  ensure(exhaustButtonCount === 0, `${plan.name}: final item still exposes Next`);
+  if (exhaustionText?.includes('every problem')) evidence.exhaustionObserved = true;
+  await saveScreenshot(page, plan, 'exhaustion');
+  const leakedAnswer = await page.evaluate(() => {
+    const root = document.querySelector('.fractionflow-app');
+    const forbidden = /one-sixth-plus-one-fourth|correctPosition|expectedResponse|isEquivalent|R-CORRECT|R-KEEP-NUMERATOR|R-ADJACENT-UNIT/;
+    return [...root.querySelectorAll('*')].some((element) => {
+      const text = element.textContent || '';
+      const attrs = [...element.attributes].map((attribute) => attribute.value).join(' ');
+      return forbidden.test(text) || forbidden.test(attrs);
+    });
+  });
+  ensure(!leakedAnswer, `${plan.name}: authored correctness metadata leaked into mounted learner DOM`);
+  evidence.journeys.at(-1).answerLeakScanPassed = true;
+  evidence.journeys.at(-1).horizontalOverflow = evidence.measurements
+    .filter((measurement) => measurement.journey === plan.name)
+    .some((measurement) => measurement.scroll.horizontalOverflow);
+  evidence.journeys.at(-1).verticalScrollObserved = evidence.measurements
+    .filter((measurement) => measurement.journey === plan.name)
+    .some((measurement) => measurement.scroll.verticalOverflow);
+
+  await chooseButton(page, 'Back to start', plan.action);
+  ensure(await page.locator('.app-entry-title').isVisible(), `${plan.name}: return did not reach entry`);
+  await actionFor(page, plan.action)(page.locator('.app-practice-button'));
+  const first = instanceFor(oldItems[0]);
+  if (plan.view === 'visual') {
+    const reentryLeft = page.locator(`.app-${plan.view}-view .fraction-bar-container[data-side="left"] .fraction-bar-track`);
+    ensure(await reentryLeft.getAttribute('data-numerator') === first.operands.left.initialForm.numerator, `${plan.name}: re-entry did not restore first item`);
+  } else {
+    const text = (await page.locator(`.app-${plan.view}-view`).innerText()).replace(/\s+/g, ' ');
+    const { numerator, denominator } = first.operands.left.initialForm;
+    ensure(text.includes(`${numerator} ${denominator}`), `${plan.name}: linear re-entry did not restore the first item`);
+  }
+  evidence.journeys.at(-1).returnAndReentryPassed = true;
+  await context.close();
+}
+
+async function main() {
+  await fs.mkdir(outputDir, { recursive: true });
+  const server = createStaticServer();
+  await new Promise((resolve) => server.listen(0, '127.0.0.1', resolve));
+  const baseUrl = `http://127.0.0.1:${server.address().port}/FractionFlow/`;
+  const launch = { headless: true };
+  if (process.platform === 'win32' && fsSync.existsSync('C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe')) {
+    launch.channel = 'msedge';
+  }
+  let browser = null;
+  try {
+    browser = await chromium.launch(launch);
+    evidence.browser = { engine: 'Chromium via Playwright', channel: launch.channel ?? 'bundled Chromium' };
+    for (const plan of plans) await runJourney(browser, baseUrl, plan);
+  } finally {
+    if (browser) await browser.close();
+    server.close();
+  }
+  evidence.aggregateGeometry = {
+    horizontalOverflowCount: evidence.measurements.filter((entry) => entry.scroll.horizontalOverflow).length,
+    verticalOverflowCount: evidence.measurements.filter((entry) => entry.scroll.verticalOverflow).length,
+    screenshotCount: evidence.screenshots.length,
+  };
+  const outputPath = path.join(outputDir, 'measurements.json');
+  await fs.writeFile(outputPath, `${JSON.stringify(evidence, null, 2)}\n`);
+  console.log(JSON.stringify({ outputPath, routeCount: evidence.journeys.length, nextWitnesses: evidence.actualNextReach.length, screenshotCount: evidence.screenshots.length, measurementCount: evidence.measurements.length, aggregateGeometry: evidence.aggregateGeometry }, null, 2));
+}
+
+main().catch((error) => {
+  console.error(error.stack || error.message);
+  process.exitCode = 1;
+});

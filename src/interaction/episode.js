@@ -144,7 +144,7 @@ function assertDefinition(definition) {
   return registered;
 }
 
-function assertInstance(instance) {
+function assertInstance(instance, definition) {
   const validation = validateProblemInstance(instance);
   if (!validation.valid) {
     throw new EpisodeConstructionError(
@@ -153,8 +153,8 @@ function assertInstance(instance) {
       { errors: validation.errors, checks: validation.checks.filter((check) => !check.valid) },
     );
   }
-  if (instance.request.selector !== PHASE2_EPISODE_DEFINITION.selector
-    || instance.request.operation !== PHASE2_EPISODE_DEFINITION.operation) {
+  if (instance.request.selector !== definition.selector
+    || instance.request.operation !== definition.operation) {
     throw new EpisodeConstructionError('UNSUPPORTED_CONTENT_FAMILY', 'content instance is outside the Phase 2 episode family');
   }
   const eligibility = evaluateInstanceEligibility(instance);
@@ -748,8 +748,8 @@ export function createEpisode({
   support = DEFAULT_SUPPORT_CONFIGURATION,
   activeCondition = PHASE2_ACTIVE_CONDITION,
 } = {}) {
-  const content = assertInstance(instance);
   const definition = assertDefinition(episodeDefinition);
+  const content = assertInstance(instance, definition);
   const normalizedSupport = createSupportConfiguration(support);
   const normalizedCondition = validateActiveCondition(activeCondition);
   const beatSchedule = computeBeatSchedule(content, definition);

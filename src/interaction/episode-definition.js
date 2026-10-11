@@ -80,6 +80,14 @@ export const PHASE2_REFLECTION_EPISODE_DEFINITION = episodeDefinition(
   true,
 );
 
+export const SHARED_FACTOR_REFLECTION_EPISODE_DEFINITION = deepFreeze({
+  ...BASE_EPISODE_DEFINITION,
+  id: 'phase-2-shared-factor-addition-reflection',
+  revision: '3',
+  includeReflection: true,
+  selector: 'shared-factor-addition',
+});
+
 const EPISODE_DEFINITIONS = Object.freeze([
   LEGACY_PHASE2_EPISODE_DEFINITION,
   LEGACY_PHASE2_REFLECTION_EPISODE_DEFINITION,
@@ -87,6 +95,7 @@ const EPISODE_DEFINITIONS = Object.freeze([
   PREVIOUS_PHASE2_REFLECTION_EPISODE_DEFINITION,
   PHASE2_EPISODE_DEFINITION,
   PHASE2_REFLECTION_EPISODE_DEFINITION,
+  SHARED_FACTOR_REFLECTION_EPISODE_DEFINITION,
 ]);
 
 export function getEpisodeDefinition(id = EPISODE_DEFINITION_ID, revision = EPISODE_DEFINITION_REVISION) {

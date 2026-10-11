@@ -4,7 +4,10 @@ import {
   PREMISE_CHECKS_BY_FIXTURE as LEGACY_PREMISE_CHECKS,
   REFLECTION_CHOICES_BY_FIXTURE as LEGACY_REFLECTION_CHOICES,
 } from './data/legacy-authored-task-records.js';
-import { MATERIALIZED_PLAN32_ADDITIONS } from './authored-problem-materializer.js';
+import {
+  MATERIALIZED_PLAN19_ADDITIONS,
+  MATERIALIZED_PLAN32_ADDITIONS,
+} from './authored-problem-materializer.js';
 import { deepFreeze } from './schema.js';
 
 function identityKey(fixtureId, authoringRevision) {
@@ -12,6 +15,9 @@ function identityKey(fixtureId, authoringRevision) {
 }
 
 const plan32ByIdentity = new Map(MATERIALIZED_PLAN32_ADDITIONS.map((entry) => [
+  identityKey(entry.fixtureId, entry.authoringRevision), entry,
+]));
+const plan19ByIdentity = new Map(MATERIALIZED_PLAN19_ADDITIONS.map((entry) => [
   identityKey(entry.fixtureId, entry.authoringRevision), entry,
 ]));
 const legacyByIdentity = new Map(LEGACY_AUTHORED_IDENTITIES.map((entry) => [
@@ -25,6 +31,11 @@ for (const fixture of PHASE1_GOLDEN_CASES) {
   curatedFixturesByIdentity.set(key, fixture);
 }
 for (const item of MATERIALIZED_PLAN32_ADDITIONS) {
+  const key = identityKey(item.fixtureId, item.authoringRevision);
+  if (curatedFixturesByIdentity.has(key)) throw new TypeError(`duplicate curated fixture identity: ${key}`);
+  curatedFixturesByIdentity.set(key, item.fixture);
+}
+for (const item of MATERIALIZED_PLAN19_ADDITIONS) {
   const key = identityKey(item.fixtureId, item.authoringRevision);
   if (curatedFixturesByIdentity.has(key)) throw new TypeError(`duplicate curated fixture identity: ${key}`);
   curatedFixturesByIdentity.set(key, item.fixture);
@@ -46,6 +57,8 @@ export function resolveAuthoredContent(fixtureId, authoringRevision) {
   const key = identityKey(fixtureId, authoringRevision);
   const materialized = plan32ByIdentity.get(key);
   if (materialized) return materialized;
+  const sharedFactor = plan19ByIdentity.get(key);
+  if (sharedFactor) return sharedFactor;
   const legacy = legacyByIdentity.get(key);
   if (!legacy) return null;
   return deepFreeze({
@@ -75,4 +88,8 @@ export function reflectionChoicesForIdentity(fixtureId, authoringRevision, targe
 
 export function listPlan32MaterializedContent() {
   return MATERIALIZED_PLAN32_ADDITIONS;
+}
+
+export function listPlan19MaterializedContent() {
+  return MATERIALIZED_PLAN19_ADDITIONS;
 }

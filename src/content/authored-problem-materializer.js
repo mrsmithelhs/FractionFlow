@@ -7,17 +7,21 @@ import { buildCuratedProblem } from './generator.js';
 import { deepFreeze, fractionToWire, wireToForm } from './schema.js';
 import { evaluateInstanceEligibility } from './eligibility.js';
 import { COMPACT_ADDITION_RECORDS } from './data/compact-addition-records.js';
+import { SHARED_FACTOR_ADDITION_RECORDS } from './data/shared-factor-addition-records.js';
 
 export const PLAN32_RECIPE_ID = 'plan32-reviewed-addition';
 export const PLAN32_RECIPE_REVISION = '1';
 export const PLAN32_TASK_DATA_REVISION = 'plan32-task-data-v1';
+export const PLAN19_RECIPE_ID = 'plan19-reviewed-shared-factor-addition';
+export const PLAN19_RECIPE_REVISION = '1';
+export const PLAN19_TASK_DATA_REVISION = 'plan19-task-data-v1';
 
 const PREMISE_RULES = new Set(['P-EQUIVALENT', 'P-ADJACENT-UNIT']);
 const REFLECTION_RULES = new Set(['R-CORRECT', 'R-KEEP-NUMERATOR', 'R-ADJACENT-UNIT']);
 const CHOICE_IDS = Object.freeze(['match-a', 'match-b', 'match-c']);
 
 function requireValid(condition, message) {
-  if (!condition) throw new TypeError(`invalid Plan 32 compact record: ${message}`);
+  if (!condition) throw new TypeError(`invalid compact addition record: ${message}`);
 }
 
 function exactKeys(value, keys, name) {
@@ -61,18 +65,25 @@ function validateRecord(record) {
   for (const field of ['itemId', 'fixtureId', 'authoringRevision', 'taskDataRevision']) {
     requireValid(typeof record[field] === 'string' && record[field].length > 0, `${field} is required`);
   }
-  requireValid(record.authoringRevision === 'plan32-record-v1'
-    && record.taskDataRevision === PLAN32_TASK_DATA_REVISION,
-  'record and task-data revisions must be pinned');
   exactKeys(record.recipe, ['id', 'revision'], 'recipe');
-  requireValid(record.recipe.id === PLAN32_RECIPE_ID
-    && record.recipe.revision === PLAN32_RECIPE_REVISION,
-  'unknown recipe identity');
+  const plan32Recipe = record.recipe.id === PLAN32_RECIPE_ID
+    && record.recipe.revision === PLAN32_RECIPE_REVISION;
+  const plan19Recipe = record.recipe.id === PLAN19_RECIPE_ID
+    && record.recipe.revision === PLAN19_RECIPE_REVISION;
+  requireValid(plan32Recipe || plan19Recipe, 'unknown recipe identity');
+  const plan32 = plan32Recipe
+    && record.authoringRevision === 'plan32-record-v1'
+    && record.taskDataRevision === PLAN32_TASK_DATA_REVISION
+    && record.selector === 'relatively-prime-addition';
+  const plan19 = plan19Recipe
+    && record.authoringRevision === 'plan19-record-v1'
+    && record.taskDataRevision === PLAN19_TASK_DATA_REVISION
+    && record.selector === 'shared-factor-addition';
+  requireValid(plan32 || plan19, 'recipe, selector, and immutable revisions do not match an admitted recipe');
   requireValid(record.profileId === 'curated-review'
-    && record.selector === 'relatively-prime-addition'
     && Array.isArray(record.overlays)
     && record.overlays.length === 0,
-  'only overlay-free relatively-prime addition is supported');
+  'only overlay-free curated-review addition is supported');
   const left = validWireFraction(record.left, 'left operand');
   const right = validWireFraction(record.right, 'right operand');
   requireValid(Object.keys(record.paths).length > 0, 'at least one path is required');
@@ -208,12 +219,15 @@ function materializeOne(record) {
 }
 
 /** Materialize independently per record; input enumeration cannot affect outputs. */
-export function materializeCompactAdditionRecords(records = COMPACT_ADDITION_RECORDS) {
+function materializeRecords(records, expectedRecipe) {
   requireValid(Array.isArray(records), 'records must be an array');
   const itemIds = new Set();
   const fixtureKeys = new Set();
   return deepFreeze(records.map((record) => {
     validateRecord(record);
+    requireValid(record.recipe.id === expectedRecipe.id
+      && record.recipe.revision === expectedRecipe.revision,
+    'record does not belong to this recipe collection');
     const fixtureKey = `${record.fixtureId}@${record.authoringRevision}`;
     requireValid(!itemIds.has(record.itemId) && !fixtureKeys.has(fixtureKey), 'item and fixture identities must be unique');
     itemIds.add(record.itemId);
@@ -222,4 +236,19 @@ export function materializeCompactAdditionRecords(records = COMPACT_ADDITION_REC
   }));
 }
 
+export function materializeCompactAdditionRecords(records = COMPACT_ADDITION_RECORDS) {
+  return materializeRecords(records, {
+    id: PLAN32_RECIPE_ID,
+    revision: PLAN32_RECIPE_REVISION,
+  });
+}
+
+export function materializeSharedFactorAdditionRecords(records = SHARED_FACTOR_ADDITION_RECORDS) {
+  return materializeRecords(records, {
+    id: PLAN19_RECIPE_ID,
+    revision: PLAN19_RECIPE_REVISION,
+  });
+}
+
 export const MATERIALIZED_PLAN32_ADDITIONS = materializeCompactAdditionRecords();
+export const MATERIALIZED_PLAN19_ADDITIONS = materializeSharedFactorAdditionRecords();

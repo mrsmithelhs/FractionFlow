@@ -98,10 +98,10 @@ function presentationModeFor({ override, motionQuery }) {
   return motionQuery?.matches ? 'reduced-motion' : 'standard-motion';
 }
 
-function createInitialState(instance, practiceType, condition, supportLevel) {
+function createInitialState(instance, practiceType, condition, supportLevel, episodeDefinition = practiceType.episodeDefinition) {
   return createEpisode({
     instance,
-    episodeDefinition: practiceType.episodeDefinition,
+    episodeDefinition,
     activeCondition: condition.activeCondition,
     support: supportLevel.configuration,
   });
@@ -493,12 +493,9 @@ export function createFractionFlowApp({
   function registeredItemEpisode(practiceType, index) {
     const item = practiceType?.items?.[index];
     if (!item) throw new Error(`practice item ${index} is not registered`);
-    if (item.episodeDefinitionId !== practiceType.episodeDefinition?.id
-      || item.episodeDefinitionRevision !== practiceType.episodeDefinition?.revision) {
-      throw new Error(`practice item definition identity is unsupported: ${item.id}`);
-    }
+    const definition = getEpisodeDefinition(item.episodeDefinitionId, item.episodeDefinitionRevision);
     const instance = canonicalInstance(item);
-    const nextState = createInitialState(instance, practiceType, selectedCondition, selectedSupportLevel);
+    const nextState = createInitialState(instance, practiceType, selectedCondition, selectedSupportLevel, definition);
     return { item, instance, state: nextState };
   }
 

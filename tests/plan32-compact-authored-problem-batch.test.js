@@ -30,7 +30,7 @@ import {
 import { fractionToWire, wireToForm } from '../src/content/schema.js';
 import { applyIntent, createEpisode } from '../src/interaction/episode.js';
 import { createReplayEnvelope, replayEpisode } from '../src/interaction/replay.js';
-import { PHASE2_REFLECTION_EPISODE_DEFINITION } from '../src/interaction/episode-definition.js';
+import { getEpisodeDefinition, PHASE2_REFLECTION_EPISODE_DEFINITION } from '../src/interaction/episode-definition.js';
 import { evaluateTaskPathClosure } from '../src/interaction/path-closure.js';
 import legacyBaseline from '../reports/development/plan-32-compact-authored-problem-batch/evidence/legacy-baseline.json';
 
@@ -62,7 +62,7 @@ function buildInstance(item) {
   });
 }
 
-function completeExactEpisode(instance, targetDenominator, activeCondition, support) {
+function completeExactEpisode(instance, targetDenominator, activeCondition, support, episodeDefinition = PHASE2_REFLECTION_EPISODE_DEFINITION) {
   const left = wireToForm(instance.operands.left.initialForm);
   const right = wireToForm(instance.operands.right.initialForm);
   const target = BigInt(targetDenominator);
@@ -80,7 +80,7 @@ function completeExactEpisode(instance, targetDenominator, activeCondition, supp
   ];
   let state = createEpisode({
     instance,
-    episodeDefinition: PHASE2_REFLECTION_EPISODE_DEFINITION,
+    episodeDefinition,
     activeCondition,
     support,
   });
@@ -101,10 +101,12 @@ function completeExactEpisode(instance, targetDenominator, activeCondition, supp
 }
 
 describe('Plan 32 compact authored addition batch', () => {
-  it('registers only the approved ordered nine-item set at immutable set revision 2', () => {
+  it('preserves the approved nine-item Plan 32 history and appends Plan 19 in set revision 3', () => {
     const practiceType = PRACTICE_TYPES.find((entry) => entry.id === 'sum-under-one');
-    expect(practiceType).toMatchObject({ setId: 'unlike-addition-vetted-set', setRevision: '2' });
-    expect(practiceType.items.map((item) => item.id)).toEqual(approvedItemIds);
+    expect(practiceType).toMatchObject({ setId: 'unlike-addition-vetted-set', setRevision: '3' });
+    expect(practiceType.items.slice(0, 9).map((item) => item.id)).toEqual(approvedItemIds);
+    expect(practiceType.items).toHaveLength(10);
+    expect(practiceType.items[9].id).toBe('one-sixth-plus-one-fourth');
     expect(MATERIALIZED_PLAN32_ADDITIONS).toHaveLength(7);
     expect(new Set(MATERIALIZED_PLAN32_ADDITIONS.map((item) => item.fixtureId)).size).toBe(7);
   });
@@ -112,7 +114,6 @@ describe('Plan 32 compact authored addition batch', () => {
   it('matches both preserved items and authored outputs to the frozen pre-implementation baseline', () => {
     const practiceType = PRACTICE_TYPES.find((entry) => entry.id === legacyBaseline.practiceSet.id);
     expect(legacyBaseline.baselineCommit).toBe('ae3943a7586a22fca8f15ee37fe6b73b595c0961');
-    expect(practiceType.setRevision).toBe('2');
     expect({
       id: practiceType.id,
       setId: practiceType.setId,
@@ -281,6 +282,7 @@ describe('Plan 32 compact authored addition batch', () => {
               target,
               condition.activeCondition,
               support.configuration,
+              getEpisodeDefinition(item.episodeDefinitionId, item.episodeDefinitionRevision),
             );
             expect(completed.status).toBe('resolved');
             expect(completed.content.provenance.fixtureId).toBe(item.fixtureId);
