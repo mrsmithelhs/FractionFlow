@@ -47,6 +47,12 @@ approval section. Bounded source work is authorized for the new-definition-only
 stack, exact 12/24 policies, set revision 4 and the proposed mounting table. Legacy
 closure gating/projections/definitions/replay remain unchanged. Technical and
 owner rendered-screen/agency gates still apply; no push/deployment is authorized.
+Plan 17 delivery `67f3bf5` / `3148249` is received and status delivered. Root ran
+34 focused tests and independent browser/probes; Repair 01 is required for whole
+scale conservation (218px operate ->278px result), exact constructor operand binding,
+immutable verifier baseline, stacked/spoken leak sensitivity and genuine access/
+missing-state samples. See `delivery-review.md` / `repair-01.md`. No technical or
+owner acceptance yet. Bounded corrections are authorized within existing paths.
 Plan 32 is complete
 after owner screen acceptance on 2026-10-11; see `owner-disposition.md`.
 Repair commits `08cb875` / `fe2b820`; see its
