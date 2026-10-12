@@ -3,6 +3,7 @@ import {
   evaluateProposedPathEligibility,
 } from '../content/eligibility.js';
 import { validateProblemInstance } from '../content/validation.js';
+import { resolveAuthoredContent } from '../content/authored-content-catalog.js';
 import {
   deepFreeze,
 } from '../content/schema.js';
@@ -155,6 +156,17 @@ function assertInstance(instance, definition) {
     );
   }
   const identityContract = definition.contentContract ?? null;
+  const registeredCrossing = identityContract?.resultStackCapability === 'plan17-two-whole-stack-v1'
+    ? resolveAuthoredContent(identityContract.fixtureId, identityContract.authoringRevision)
+    : null;
+  const operandsMatchRegisteredCrossing = identityContract === null || (
+    registeredCrossing?.fixture?.left?.kind === instance.operands?.left?.initialForm?.kind
+    && registeredCrossing.fixture.left.numerator === instance.operands.left.initialForm.numerator
+    && registeredCrossing.fixture.left.denominator === instance.operands.left.initialForm.denominator
+    && registeredCrossing.fixture.right?.kind === instance.operands?.right?.initialForm?.kind
+    && registeredCrossing.fixture.right.numerator === instance.operands.right.initialForm.numerator
+    && registeredCrossing.fixture.right.denominator === instance.operands.right.initialForm.denominator
+  );
   const crossingContractMatches = identityContract === null || (
     instance.provenance?.fixtureId === identityContract.fixtureId
     && instance.provenance?.authoringRevision === identityContract.authoringRevision
@@ -163,6 +175,7 @@ function assertInstance(instance, definition) {
     && JSON.stringify(instance.request.overlays) === JSON.stringify(identityContract.overlays)
     && instance.classification?.result?.crossesWhole === identityContract.crossesWhole
     && identityContract.resultStackCapability === 'plan17-two-whole-stack-v1'
+    && operandsMatchRegisteredCrossing
     && instance.representationFacts?.wholeSpan?.lowerWhole === '1'
     && instance.representationFacts?.wholeSpan?.upperWhole === '2'
   );

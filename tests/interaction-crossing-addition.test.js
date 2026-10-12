@@ -85,6 +85,47 @@ describe('Plan 17 crossing addition instructional semantics', () => {
       instance,
       episodeDefinition: PHASE2_REFLECTION_EPISODE_DEFINITION,
     }).beat).toBe('encounter');
+
+    const fixture = resolveCuratedFixture(item.fixtureId, item.authoringRevision);
+    const substitutedOperands = buildCuratedProblem({
+      fixture,
+      selector: fixture.selector,
+      overlays: fixture.overlays,
+      profileId: fixture.profileId,
+      candidate: {
+        left: fixture.left,
+        right: { kind: 'fraction', numerator: '1', denominator: '2' },
+        reviewedTransitions: [],
+      },
+    });
+    expect(createEpisode({
+      instance: substitutedOperands,
+      episodeDefinition: PHASE2_REFLECTION_EPISODE_DEFINITION,
+    })).toBeDefined();
+  });
+
+  it('binds Plan 17 construction to the registered fixture operands before advancement', () => {
+    const fixture = resolveCuratedFixture(item.fixtureId, item.authoringRevision);
+    const substitutedOperands = buildCuratedProblem({
+      fixture,
+      selector: fixture.selector,
+      overlays: fixture.overlays,
+      profileId: fixture.profileId,
+      candidate: {
+        left: fixture.left,
+        right: { kind: 'fraction', numerator: '1', denominator: '2' },
+        reviewedTransitions: [],
+      },
+    });
+    expect(substitutedOperands.provenance.fixtureId).toBe(item.fixtureId);
+    expect(substitutedOperands.provenance.authoringRevision).toBe(item.authoringRevision);
+    expect(substitutedOperands.operands.right.initialForm).toEqual({
+      kind: 'fraction', numerator: '1', denominator: '2',
+    });
+    expect(() => createEpisode({
+      instance: substitutedOperands,
+      episodeDefinition: PLAN17_CROSSING_EPISODE_DEFINITION,
+    })).toThrow(expect.objectContaining({ code: 'UNSUPPORTED_CONTENT_FAMILY' }));
   });
 
   it.each(['12', '24'])('withholds the result through wrong answers and projects exact %s-unit stack after acceptance', (target) => {
