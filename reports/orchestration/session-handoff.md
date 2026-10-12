@@ -53,6 +53,12 @@ scale conservation (218px operate ->278px result), exact constructor operand bin
 immutable verifier baseline, stacked/spoken leak sensitivity and genuine access/
 missing-state samples. See `delivery-review.md` / `repair-01.md`. No technical or
 owner acceptance yet. Bounded corrections are authorized within existing paths.
+Plan 17 Repair 01 `10ab185` / `b44e679` passes root35 focused tests and committed
+artifact verifier; the independent current capture fails JSON serialization via
+a circular accepted-layout reference. Both-row conservation seed is still absent;
+canonical resolve copy repeats the answer. Bounded Repair 02 authorized, including
+only a short crossing resolve cue in strings; see `repair-01-review.md` and
+`repair-02.md`. Technical/owner acceptance remains pending.
 Plan 32 is complete
 after owner screen acceptance on 2026-10-11; see `owner-disposition.md`.
 Repair commits `08cb875` / `fe2b820`; see its
