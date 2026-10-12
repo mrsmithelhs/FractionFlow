@@ -1,0 +1,5921 @@
+{
+  "captureDate": "2026-10-11",
+  "setRevision": "4",
+  "baselineRouteMatrixSha256": "2252458a767a322b23946b701085958eafc2fb0f9c416d4a8c3ee4c6bafa8cbd",
+  "route": "learner practice goal -> completion-gated Next through ten existing items -> Plan 17 item 11",
+  "scenarios": [
+    {
+      "scenario": {
+        "id": "plan17-12-phase2-bundle-1-high-visual-740",
+        "target": "12",
+        "condition": "phase2-bundle-1",
+        "support": "high",
+        "view": "visual",
+        "height": 740,
+        "interaction": "touch",
+        "reducedMotion": false
+      },
+      "withhold": {
+        "stackCount": 0,
+        "forbiddenFormsInDomText": [],
+        "forbiddenFormsInVisibleText": [],
+        "forbiddenFormAttributes": [],
+        "structuralBoundaryExclusions": 2,
+        "hiddenLabels": [],
+        "liveRegions": [],
+        "formValues": []
+      },
+      "helpCopy": "Try multiplying 3 by 4 to find one common denominator.",
+      "recovery": "The denominator stays the same. Add only the top numbers.",
+      "hiddenLeakRejected": true,
+      "hiddenLeakDiagnostic": "plan17-12-phase2-bundle-1-high-visual-740 hidden sibling seed: result data leaked before a correct answer: {\"stackCount\":1,\"forbiddenFormsInDomText\":[\"17/12\"],\"forbiddenFormsInVisibleText\":[],\"forbiddenFormAttributes\":[{\"element\":\"div.linear-result-stack\",\"name\":\"aria-label\",\"value\":\"seeded result 17/12\"},{\"element\":\"div.linear-result-stack\",\"name\":\"data-answer\",\"value\":\"17/12\"}],\"structuralBoundaryExclusions\":2,\"hiddenLabels\":[\"seeded result 17/12  \"],\"liveRegions\":[],\"formValues\":[]}",
+      "tabRecovery": [],
+      "accepted": {
+        "id": "plan17-12-phase2-bundle-1-high-visual-740",
+        "target": "12",
+        "condition": "phase2-bundle-1",
+        "support": "high",
+        "view": "visual",
+        "height": 740,
+        "interaction": "touch",
+        "reducedMotion": false,
+        "stage": "accepted-total",
+        "targetDenominator": "12",
+        "viewport": {
+          "width": 360,
+          "height": 740
+        },
+        "question": {
+          "left": 63,
+          "top": 419.91,
+          "right": 297,
+          "bottom": 445.09,
+          "width": 234,
+          "height": 25.19
+        },
+        "controls": {
+          "left": 63,
+          "top": 476.03,
+          "right": 297,
+          "bottom": 520.03,
+          "width": 234,
+          "height": 44
+        },
+        "stack": {
+          "left": 41,
+          "top": 109,
+          "right": 319,
+          "bottom": 256.19,
+          "width": 278,
+          "height": 147.19
+        },
+        "rowBounds": [
+          {
+            "left": 41,
+            "top": 158.19,
+            "right": 319,
+            "bottom": 202.19,
+            "width": 278,
+            "height": 44
+          },
+          {
+            "left": 41,
+            "top": 212.19,
+            "right": 319,
+            "bottom": 256.19,
+            "width": 278,
+            "height": 44
+          }
+        ],
+        "trackBounds": [
+          {
+            "left": 41,
+            "top": 158.19,
+            "right": 319,
+            "bottom": 202.19,
+            "width": 278,
+            "height": 44
+          },
+          {
+            "left": 41,
+            "top": 212.19,
+            "right": 319,
+            "bottom": 256.19,
+            "width": 278,
+            "height": 44
+          }
+        ],
+        "segments": [
+          [
+            {
+              "width": 22.91,
+              "shaded": true
+            },
+            {
+              "width": 22.92,
+              "shaded": true
+            },
+            {
+              "width": 22.91,
+              "shaded": true
+            },
+            {
+              "width": 22.92,
+              "shaded": true
+            },
+            {
+              "width": 22.91,
+              "shaded": true
+            },
+            {
+              "width": 22.92,
+              "shaded": true
+            },
+            {
+              "width": 22.91,
+              "shaded": true
+            },
+            {
+              "width": 22.92,
+              "shaded": true
+            },
+            {
+              "width": 22.92,
+              "shaded": true
+            },
+            {
+              "width": 22.92,
+              "shaded": true
+            },
+            {
+              "width": 22.92,
+              "shaded": true
+            },
+            {
+              "width": 21.92,
+              "shaded": true
+            }
+          ],
+          [
+            {
+              "width": 22.91,
+              "shaded": true
+            },
+            {
+              "width": 22.92,
+              "shaded": true
+            },
+            {
+              "width": 22.91,
+              "shaded": true
+            },
+            {
+              "width": 22.92,
+              "shaded": true
+            },
+            {
+              "width": 22.91,
+              "shaded": true
+            },
+            {
+              "width": 22.92,
+              "shaded": false
+            },
+            {
+              "width": 22.91,
+              "shaded": false
+            },
+            {
+              "width": 22.92,
+              "shaded": false
+            },
+            {
+              "width": 22.92,
+              "shaded": false
+            },
+            {
+              "width": 22.92,
+              "shaded": false
+            },
+            {
+              "width": 22.92,
+              "shaded": false
+            },
+            {
+              "width": 21.92,
+              "shaded": false
+            }
+          ]
+        ],
+        "horizontalOverflow": false,
+        "scrollHeight": 904,
+        "scrollY": 52,
+        "scrollMax": 164,
+        "activeElement": "BODY",
+        "questionReachable": true,
+        "controlsReachable": true
+      },
+      "stackFact": {
+        "kind": "visual",
+        "label": "17 over 12. 2 equal-width wholes; the last whole has 5 of 12 equal parts shaded.",
+        "rows": [
+          {
+            "width": 278,
+            "unitCount": 12,
+            "shaded": 12
+          },
+          {
+            "width": 278,
+            "unitCount": 12,
+            "shaded": 5
+          }
+        ],
+        "raw": "17 over 12"
+      },
+      "falsification": {
+        "rejectsTruncatedRemainder": true,
+        "rejectsResizedSecondWhole": true,
+        "rejectsCorruptRenderedFact": true,
+        "restoredWitnessPasses": true
+      },
+      "reflection": {
+        "id": "plan17-12-phase2-bundle-1-high-visual-740",
+        "target": "12",
+        "condition": "phase2-bundle-1",
+        "support": "high",
+        "view": "visual",
+        "height": 740,
+        "interaction": "touch",
+        "reducedMotion": false,
+        "stage": "reflection",
+        "targetDenominator": "12",
+        "viewport": {
+          "width": 360,
+          "height": 740
+        },
+        "question": {
+          "left": 63,
+          "top": 370.91,
+          "right": 297,
+          "bottom": 421.28,
+          "width": 234,
+          "height": 50.38
+        },
+        "controls": {
+          "left": 63,
+          "top": 452.22,
+          "right": 297,
+          "bottom": 740.22,
+          "width": 234,
+          "height": 288
+        },
+        "stack": {
+          "left": 41,
+          "top": 60,
+          "right": 319,
+          "bottom": 207.19,
+          "width": 278,
+          "height": 147.19
+        },
+        "rowBounds": [
+          {
+            "left": 41,
+            "top": 109.19,
+            "right": 319,
+            "bottom": 153.19,
+            "width": 278,
+            "height": 44
+          },
+          {
+            "left": 41,
+            "top": 163.19,
+            "right": 319,
+            "bottom": 207.19,
+            "width": 278,
+            "height": 44
+          }
+        ],
+        "trackBounds": [
+          {
+            "left": 41,
+            "top": 109.19,
+            "right": 319,
+            "bottom": 153.19,
+            "width": 278,
+            "height": 44
+          },
+          {
+            "left": 41,
+            "top": 163.19,
+            "right": 319,
+            "bottom": 207.19,
+            "width": 278,
+            "height": 44
+          }
+        ],
+        "segments": [
+          [
+            {
+              "width": 22.91,
+              "shaded": true
+            },
+            {
+              "width": 22.92,
+              "shaded": true
+            },
+            {
+              "width": 22.91,
+              "shaded": true
+            },
+            {
+              "width": 22.92,
+              "shaded": true
+            },
+            {
+              "width": 22.91,
+              "shaded": true
+            },
+            {
+              "width": 22.92,
+              "shaded": true
+            },
+            {
+              "width": 22.91,
+              "shaded": true
+            },
+            {
+              "width": 22.92,
+              "shaded": true
+            },
+            {
+              "width": 22.92,
+              "shaded": true
+            },
+            {
+              "width": 22.92,
+              "shaded": true
+            },
+            {
+              "width": 22.92,
+              "shaded": true
+            },
+            {
+              "width": 21.92,
+              "shaded": true
+            }
+          ],
+          [
+            {
+              "width": 22.91,
+              "shaded": true
+            },
+            {
+              "width": 22.92,
+              "shaded": true
+            },
+            {
+              "width": 22.91,
+              "shaded": true
+            },
+            {
+              "width": 22.92,
+              "shaded": true
+            },
+            {
+              "width": 22.91,
+              "shaded": true
+            },
+            {
+              "width": 22.92,
+              "shaded": false
+            },
+            {
+              "width": 22.91,
+              "shaded": false
+            },
+            {
+              "width": 22.92,
+              "shaded": false
+            },
+            {
+              "width": 22.92,
+              "shaded": false
+            },
+            {
+              "width": 22.92,
+              "shaded": false
+            },
+            {
+              "width": 22.92,
+              "shaded": false
+            },
+            {
+              "width": 21.92,
+              "shaded": false
+            }
+          ]
+        ],
+        "horizontalOverflow": false,
+        "scrollHeight": 1173,
+        "scrollY": 101,
+        "scrollMax": 433,
+        "activeElement": "BODY",
+        "questionReachable": true,
+        "controlsReachable": true
+      },
+      "replay": {
+        "id": "plan17-12-phase2-bundle-1-high-visual-740",
+        "target": "12",
+        "condition": "phase2-bundle-1",
+        "support": "high",
+        "view": "visual",
+        "height": 740,
+        "interaction": "touch",
+        "reducedMotion": false,
+        "stage": "replay",
+        "targetDenominator": "12",
+        "viewport": {
+          "width": 360,
+          "height": 740
+        },
+        "question": {
+          "left": 63,
+          "top": 127.72,
+          "right": 297,
+          "bottom": 178.09,
+          "width": 234,
+          "height": 50.38
+        },
+        "controls": {
+          "left": 63,
+          "top": 209.03,
+          "right": 297,
+          "bottom": 408.03,
+          "width": 234,
+          "height": 199
+        },
+        "stack": null,
+        "rowBounds": [],
+        "trackBounds": [],
+        "segments": [],
+        "horizontalOverflow": false,
+        "scrollHeight": 937,
+        "scrollY": 197,
+        "scrollMax": 197,
+        "activeElement": "BUTTON",
+        "questionReachable": true,
+        "controlsReachable": true
+      },
+      "resetWithholding": {
+        "stackCount": 0,
+        "forbiddenFormsInDomText": [],
+        "forbiddenFormsInVisibleText": [],
+        "forbiddenFormAttributes": [],
+        "structuralBoundaryExclusions": 0,
+        "hiddenLabels": [],
+        "liveRegions": [],
+        "formValues": []
+      }
+    },
+    {
+      "scenario": {
+        "id": "plan17-12-phase2-bundle-1-medium-linear-752",
+        "target": "12",
+        "condition": "phase2-bundle-1",
+        "support": "medium",
+        "view": "linear",
+        "height": 752,
+        "interaction": "keyboard",
+        "reducedMotion": false
+      },
+      "withhold": {
+        "stackCount": 0,
+        "forbiddenFormsInDomText": [],
+        "forbiddenFormsInVisibleText": [],
+        "forbiddenFormAttributes": [],
+        "structuralBoundaryExclusions": 2,
+        "hiddenLabels": [],
+        "liveRegions": [],
+        "formValues": []
+      },
+      "helpCopy": "Try multiplying 3 by 4 to find one common denominator.",
+      "recovery": "The denominator stays the same. Add only the top numbers.",
+      "hiddenLeakRejected": true,
+      "hiddenLeakDiagnostic": "plan17-12-phase2-bundle-1-medium-linear-752 hidden sibling seed: result data leaked before a correct answer: {\"stackCount\":1,\"forbiddenFormsInDomText\":[\"17/12\"],\"forbiddenFormsInVisibleText\":[\"17/12\"],\"forbiddenFormAttributes\":[{\"element\":\"div.linear-result-stack\",\"name\":\"aria-label\",\"value\":\"seeded result 17/12\"},{\"element\":\"div.linear-result-stack\",\"name\":\"data-answer\",\"value\":\"17/12\"}],\"structuralBoundaryExclusions\":2,\"hiddenLabels\":[\"seeded result 17/12  \"],\"liveRegions\":[],\"formValues\":[]}",
+      "tabRecovery": [
+        "input#linear-operate-sum-input.fraction-control.control-numeric-input",
+        "button.fraction-control.control-submit-btn",
+        "summary.completed-beats-summary-toggle",
+        "button.fraction-control.app-secondary-button",
+        "button.fraction-control.app-secondary-button",
+        "button.fraction-control.app-secondary-button.app-restart-button",
+        "body.",
+        "button.fraction-control.app-secondary-button.app-view-toggle",
+        "button.fraction-control.app-secondary-button.app-return-button"
+      ],
+      "accepted": {
+        "id": "plan17-12-phase2-bundle-1-medium-linear-752",
+        "target": "12",
+        "condition": "phase2-bundle-1",
+        "support": "medium",
+        "view": "linear",
+        "height": 752,
+        "interaction": "keyboard",
+        "reducedMotion": false,
+        "stage": "accepted-total",
+        "targetDenominator": "12",
+        "viewport": {
+          "width": 360,
+          "height": 752
+        },
+        "question": {
+          "left": 63,
+          "top": 346.19,
+          "right": 297,
+          "bottom": 371.38,
+          "width": 234,
+          "height": 25.19
+        },
+        "controls": {
+          "left": 63,
+          "top": 405.38,
+          "right": 297,
+          "bottom": 449.38,
+          "width": 234,
+          "height": 44
+        },
+        "stack": {
+          "left": 58,
+          "top": 178,
+          "right": 302,
+          "bottom": 269.19,
+          "width": 244,
+          "height": 91.19
+        },
+        "rowBounds": [
+          {
+            "left": 58,
+            "top": 227.19,
+            "right": 302,
+            "bottom": 246.19,
+            "width": 244,
+            "height": 19
+          },
+          {
+            "left": 58,
+            "top": 250.19,
+            "right": 302,
+            "bottom": 269.19,
+            "width": 244,
+            "height": 19
+          }
+        ],
+        "trackBounds": [],
+        "segments": [],
+        "horizontalOverflow": false,
+        "scrollHeight": 781,
+        "scrollY": 0,
+        "scrollMax": 29,
+        "activeElement": "BODY",
+        "questionReachable": true,
+        "controlsReachable": true
+      },
+      "stackFact": {
+        "kind": "linear",
+        "label": "17 over 12. 2 wholes.",
+        "rows": [
+          "12 of 12 equal parts",
+          "5 of 12 equal parts"
+        ],
+        "raw": "17 over 12"
+      },
+      "falsification": {},
+      "reflection": {
+        "id": "plan17-12-phase2-bundle-1-medium-linear-752",
+        "target": "12",
+        "condition": "phase2-bundle-1",
+        "support": "medium",
+        "view": "linear",
+        "height": 752,
+        "interaction": "keyboard",
+        "reducedMotion": false,
+        "stage": "reflection",
+        "targetDenominator": "12",
+        "viewport": {
+          "width": 360,
+          "height": 752
+        },
+        "question": {
+          "left": 63,
+          "top": 346.19,
+          "right": 297,
+          "bottom": 440.16,
+          "width": 234,
+          "height": 93.97
+        },
+        "controls": {
+          "left": 63,
+          "top": 474.16,
+          "right": 297,
+          "bottom": 535.34,
+          "width": 234,
+          "height": 61.19
+        },
+        "stack": {
+          "left": 58,
+          "top": 178,
+          "right": 302,
+          "bottom": 269.19,
+          "width": 244,
+          "height": 91.19
+        },
+        "rowBounds": [
+          {
+            "left": 58,
+            "top": 227.19,
+            "right": 302,
+            "bottom": 246.19,
+            "width": 244,
+            "height": 19
+          },
+          {
+            "left": 58,
+            "top": 250.19,
+            "right": 302,
+            "bottom": 269.19,
+            "width": 244,
+            "height": 19
+          }
+        ],
+        "trackBounds": [],
+        "segments": [],
+        "horizontalOverflow": false,
+        "scrollHeight": 867,
+        "scrollY": 0,
+        "scrollMax": 115,
+        "activeElement": "BODY",
+        "questionReachable": true,
+        "controlsReachable": true
+      },
+      "replay": {
+        "id": "plan17-12-phase2-bundle-1-medium-linear-752",
+        "target": "12",
+        "condition": "phase2-bundle-1",
+        "support": "medium",
+        "view": "linear",
+        "height": 752,
+        "interaction": "keyboard",
+        "reducedMotion": false,
+        "stage": "replay",
+        "targetDenominator": "12",
+        "viewport": {
+          "width": 360,
+          "height": 752
+        },
+        "question": {
+          "left": 63,
+          "top": 219,
+          "right": 297,
+          "bottom": 269.38,
+          "width": 234,
+          "height": 50.38
+        },
+        "controls": {
+          "left": 63,
+          "top": 303.38,
+          "right": 297,
+          "bottom": 420.38,
+          "width": 234,
+          "height": 117
+        },
+        "stack": null,
+        "rowBounds": [],
+        "trackBounds": [],
+        "segments": [],
+        "horizontalOverflow": false,
+        "scrollHeight": 788,
+        "scrollY": 36,
+        "scrollMax": 36,
+        "activeElement": "BUTTON",
+        "questionReachable": true,
+        "controlsReachable": true
+      },
+      "resetWithholding": {
+        "stackCount": 0,
+        "forbiddenFormsInDomText": [],
+        "forbiddenFormsInVisibleText": [],
+        "forbiddenFormAttributes": [],
+        "structuralBoundaryExclusions": 0,
+        "hiddenLabels": [],
+        "liveRegions": [],
+        "formValues": []
+      }
+    },
+    {
+      "scenario": {
+        "id": "plan17-12-phase2-bundle-2-high-visual-740",
+        "target": "12",
+        "condition": "phase2-bundle-2",
+        "support": "high",
+        "view": "visual",
+        "height": 740,
+        "interaction": "pointer",
+        "reducedMotion": true
+      },
+      "withhold": {
+        "stackCount": 0,
+        "forbiddenFormsInDomText": [],
+        "forbiddenFormsInVisibleText": [],
+        "forbiddenFormAttributes": [],
+        "structuralBoundaryExclusions": 0,
+        "hiddenLabels": [],
+        "liveRegions": [],
+        "formValues": []
+      },
+      "helpCopy": "Try multiplying 3 by 4 to find one common denominator.",
+      "recovery": "The denominator stays the same. Add only the top numbers.",
+      "hiddenLeakRejected": true,
+      "hiddenLeakDiagnostic": "plan17-12-phase2-bundle-2-high-visual-740 hidden sibling seed: result data leaked before a correct answer: {\"stackCount\":1,\"forbiddenFormsInDomText\":[\"17/12\"],\"forbiddenFormsInVisibleText\":[],\"forbiddenFormAttributes\":[{\"element\":\"div.linear-result-stack\",\"name\":\"aria-label\",\"value\":\"seeded result 17/12\"},{\"element\":\"div.linear-result-stack\",\"name\":\"data-answer\",\"value\":\"17/12\"}],\"structuralBoundaryExclusions\":0,\"hiddenLabels\":[\"seeded result 17/12  \"],\"liveRegions\":[],\"formValues\":[]}",
+      "tabRecovery": [],
+      "accepted": {
+        "id": "plan17-12-phase2-bundle-2-high-visual-740",
+        "target": "12",
+        "condition": "phase2-bundle-2",
+        "support": "high",
+        "view": "visual",
+        "height": 740,
+        "interaction": "pointer",
+        "reducedMotion": true,
+        "stage": "accepted-total",
+        "targetDenominator": "12",
+        "viewport": {
+          "width": 360,
+          "height": 740
+        },
+        "question": {
+          "left": 63,
+          "top": 411.91,
+          "right": 297,
+          "bottom": 437.09,
+          "width": 234,
+          "height": 25.19
+        },
+        "controls": {
+          "left": 63,
+          "top": 468.03,
+          "right": 297,
+          "bottom": 512.03,
+          "width": 234,
+          "height": 44
+        },
+        "stack": {
+          "left": 41,
+          "top": 101,
+          "right": 319,
+          "bottom": 248.19,
+          "width": 278,
+          "height": 147.19
+        },
+        "rowBounds": [
+          {
+            "left": 41,
+            "top": 150.19,
+            "right": 319,
+            "bottom": 194.19,
+            "width": 278,
+            "height": 44
+          },
+          {
+            "left": 41,
+            "top": 204.19,
+            "right": 319,
+            "bottom": 248.19,
+            "width": 278,
+            "height": 44
+          }
+        ],
+        "trackBounds": [
+          {
+            "left": 41,
+            "top": 150.19,
+            "right": 319,
+            "bottom": 194.19,
+            "width": 278,
+            "height": 44
+          },
+          {
+            "left": 41,
+            "top": 204.19,
+            "right": 319,
+            "bottom": 248.19,
+            "width": 278,
+            "height": 44
+          }
+        ],
+        "segments": [
+          [
+            {
+              "width": 22.91,
+              "shaded": true
+            },
+            {
+              "width": 22.92,
+              "shaded": true
+            },
+            {
+              "width": 22.91,
+              "shaded": true
+            },
+            {
+              "width": 22.92,
+              "shaded": true
+            },
+            {
+              "width": 22.91,
+              "shaded": true
+            },
+            {
+              "width": 22.92,
+              "shaded": true
+            },
+            {
+              "width": 22.91,
+              "shaded": true
+            },
+            {
+              "width": 22.92,
+              "shaded": true
+            },
+            {
+              "width": 22.92,
+              "shaded": true
+            },
+            {
+              "width": 22.92,
+              "shaded": true
+            },
+            {
+              "width": 22.92,
+              "shaded": true
+            },
+            {
+              "width": 21.92,
+              "shaded": true
+            }
+          ],
+          [
+            {
+              "width": 22.91,
+              "shaded": true
+            },
+            {
+              "width": 22.92,
+              "shaded": true
+            },
+            {
+              "width": 22.91,
+              "shaded": true
+            },
+            {
+              "width": 22.92,
+              "shaded": true
+            },
+            {
+              "width": 22.91,
+              "shaded": true
+            },
+            {
+              "width": 22.92,
+              "shaded": false
+            },
+            {
+              "width": 22.91,
+              "shaded": false
+            },
+            {
+              "width": 22.92,
+              "shaded": false
+            },
+            {
+              "width": 22.92,
+              "shaded": false
+            },
+            {
+              "width": 22.92,
+              "shaded": false
+            },
+            {
+              "width": 22.92,
+              "shaded": false
+            },
+            {
+              "width": 21.92,
+              "shaded": false
+            }
+          ]
+        ],
+        "horizontalOverflow": false,
+        "scrollHeight": 904,
+        "scrollY": 60,
+        "scrollMax": 164,
+        "activeElement": "BODY",
+        "questionReachable": true,
+        "controlsReachable": true
+      },
+      "stackFact": {
+        "kind": "visual",
+        "label": "17 over 12. 2 equal-width wholes; the last whole has 5 of 12 equal parts shaded.",
+        "rows": [
+          {
+            "width": 278,
+            "unitCount": 12,
+            "shaded": 12
+          },
+          {
+            "width": 278,
+            "unitCount": 12,
+            "shaded": 5
+          }
+        ],
+        "raw": "17 over 12"
+      },
+      "falsification": {
+        "rejectsTruncatedRemainder": true,
+        "rejectsResizedSecondWhole": true,
+        "rejectsCorruptRenderedFact": true,
+        "restoredWitnessPasses": true
+      },
+      "reflection": {
+        "id": "plan17-12-phase2-bundle-2-high-visual-740",
+        "target": "12",
+        "condition": "phase2-bundle-2",
+        "support": "high",
+        "view": "visual",
+        "height": 740,
+        "interaction": "pointer",
+        "reducedMotion": true,
+        "stage": "reflection",
+        "targetDenominator": "12",
+        "viewport": {
+          "width": 360,
+          "height": 740
+        },
+        "question": {
+          "left": 63,
+          "top": 370.91,
+          "right": 297,
+          "bottom": 421.28,
+          "width": 234,
+          "height": 50.38
+        },
+        "controls": {
+          "left": 63,
+          "top": 452.22,
+          "right": 297,
+          "bottom": 740.22,
+          "width": 234,
+          "height": 288
+        },
+        "stack": {
+          "left": 41,
+          "top": 60,
+          "right": 319,
+          "bottom": 207.19,
+          "width": 278,
+          "height": 147.19
+        },
+        "rowBounds": [
+          {
+            "left": 41,
+            "top": 109.19,
+            "right": 319,
+            "bottom": 153.19,
+            "width": 278,
+            "height": 44
+          },
+          {
+            "left": 41,
+            "top": 163.19,
+            "right": 319,
+            "bottom": 207.19,
+            "width": 278,
+            "height": 44
+          }
+        ],
+        "trackBounds": [
+          {
+            "left": 41,
+            "top": 109.19,
+            "right": 319,
+            "bottom": 153.19,
+            "width": 278,
+            "height": 44
+          },
+          {
+            "left": 41,
+            "top": 163.19,
+            "right": 319,
+            "bottom": 207.19,
+            "width": 278,
+            "height": 44
+          }
+        ],
+        "segments": [
+          [
+            {
+              "width": 22.91,
+              "shaded": true
+            },
+            {
+              "width": 22.92,
+              "shaded": true
+            },
+            {
+              "width": 22.91,
+              "shaded": true
+            },
+            {
+              "width": 22.92,
+              "shaded": true
+            },
+            {
+              "width": 22.91,
+              "shaded": true
+            },
+            {
+              "width": 22.92,
+              "shaded": true
+            },
+            {
+              "width": 22.91,
+              "shaded": true
+            },
+            {
+              "width": 22.92,
+              "shaded": true
+            },
+            {
+              "width": 22.92,
+              "shaded": true
+            },
+            {
+              "width": 22.92,
+              "shaded": true
+            },
+            {
+              "width": 22.92,
+              "shaded": true
+            },
+            {
+              "width": 21.92,
+              "shaded": true
+            }
+          ],
+          [
+            {
+              "width": 22.91,
+              "shaded": true
+            },
+            {
+              "width": 22.92,
+              "shaded": true
+            },
+            {
+              "width": 22.91,
+              "shaded": true
+            },
+            {
+              "width": 22.92,
+              "shaded": true
+            },
+            {
+              "width": 22.91,
+              "shaded": true
+            },
+            {
+              "width": 22.92,
+              "shaded": false
+            },
+            {
+              "width": 22.91,
+              "shaded": false
+            },
+            {
+              "width": 22.92,
+              "shaded": false
+            },
+            {
+              "width": 22.92,
+              "shaded": false
+            },
+            {
+              "width": 22.92,
+              "shaded": false
+            },
+            {
+              "width": 22.92,
+              "shaded": false
+            },
+            {
+              "width": 21.92,
+              "shaded": false
+            }
+          ]
+        ],
+        "horizontalOverflow": false,
+        "scrollHeight": 1173,
+        "scrollY": 101,
+        "scrollMax": 433,
+        "activeElement": "BODY",
+        "questionReachable": true,
+        "controlsReachable": true
+      },
+      "replay": {
+        "id": "plan17-12-phase2-bundle-2-high-visual-740",
+        "target": "12",
+        "condition": "phase2-bundle-2",
+        "support": "high",
+        "view": "visual",
+        "height": 740,
+        "interaction": "pointer",
+        "reducedMotion": true,
+        "stage": "replay",
+        "targetDenominator": "12",
+        "viewport": {
+          "width": 360,
+          "height": 740
+        },
+        "question": {
+          "left": 63,
+          "top": 38.72,
+          "right": 297,
+          "bottom": 89.09,
+          "width": 234,
+          "height": 50.38
+        },
+        "controls": {
+          "left": 63,
+          "top": 120.03,
+          "right": 297,
+          "bottom": 411.03,
+          "width": 234,
+          "height": 291
+        },
+        "stack": null,
+        "rowBounds": [],
+        "trackBounds": [],
+        "segments": [],
+        "horizontalOverflow": false,
+        "scrollHeight": 1029,
+        "scrollY": 286,
+        "scrollMax": 289,
+        "activeElement": "BUTTON",
+        "questionReachable": true,
+        "controlsReachable": true
+      },
+      "resetWithholding": {
+        "stackCount": 0,
+        "forbiddenFormsInDomText": [],
+        "forbiddenFormsInVisibleText": [],
+        "forbiddenFormAttributes": [],
+        "structuralBoundaryExclusions": 0,
+        "hiddenLabels": [],
+        "liveRegions": [],
+        "formValues": []
+      }
+    },
+    {
+      "scenario": {
+        "id": "plan17-12-phase2-bundle-2-medium-linear-752",
+        "target": "12",
+        "condition": "phase2-bundle-2",
+        "support": "medium",
+        "view": "linear",
+        "height": 752,
+        "interaction": "pointer",
+        "reducedMotion": false
+      },
+      "withhold": {
+        "stackCount": 0,
+        "forbiddenFormsInDomText": [],
+        "forbiddenFormsInVisibleText": [],
+        "forbiddenFormAttributes": [],
+        "structuralBoundaryExclusions": 0,
+        "hiddenLabels": [],
+        "liveRegions": [],
+        "formValues": []
+      },
+      "helpCopy": "Try multiplying 3 by 4 to find one common denominator.",
+      "recovery": "The denominator stays the same. Add only the top numbers.",
+      "hiddenLeakRejected": true,
+      "hiddenLeakDiagnostic": "plan17-12-phase2-bundle-2-medium-linear-752 hidden sibling seed: result data leaked before a correct answer: {\"stackCount\":1,\"forbiddenFormsInDomText\":[\"17/12\"],\"forbiddenFormsInVisibleText\":[\"17/12\"],\"forbiddenFormAttributes\":[{\"element\":\"div.linear-result-stack\",\"name\":\"aria-label\",\"value\":\"seeded result 17/12\"},{\"element\":\"div.linear-result-stack\",\"name\":\"data-answer\",\"value\":\"17/12\"}],\"structuralBoundaryExclusions\":0,\"hiddenLabels\":[\"seeded result 17/12  \"],\"liveRegions\":[],\"formValues\":[]}",
+      "tabRecovery": [],
+      "accepted": {
+        "id": "plan17-12-phase2-bundle-2-medium-linear-752",
+        "target": "12",
+        "condition": "phase2-bundle-2",
+        "support": "medium",
+        "view": "linear",
+        "height": 752,
+        "interaction": "pointer",
+        "reducedMotion": false,
+        "stage": "accepted-total",
+        "targetDenominator": "12",
+        "viewport": {
+          "width": 360,
+          "height": 752
+        },
+        "question": {
+          "left": 63,
+          "top": 346.19,
+          "right": 297,
+          "bottom": 371.38,
+          "width": 234,
+          "height": 25.19
+        },
+        "controls": {
+          "left": 63,
+          "top": 405.38,
+          "right": 297,
+          "bottom": 449.38,
+          "width": 234,
+          "height": 44
+        },
+        "stack": {
+          "left": 58,
+          "top": 178,
+          "right": 302,
+          "bottom": 269.19,
+          "width": 244,
+          "height": 91.19
+        },
+        "rowBounds": [
+          {
+            "left": 58,
+            "top": 227.19,
+            "right": 302,
+            "bottom": 246.19,
+            "width": 244,
+            "height": 19
+          },
+          {
+            "left": 58,
+            "top": 250.19,
+            "right": 302,
+            "bottom": 269.19,
+            "width": 244,
+            "height": 19
+          }
+        ],
+        "trackBounds": [],
+        "segments": [],
+        "horizontalOverflow": false,
+        "scrollHeight": 781,
+        "scrollY": 0,
+        "scrollMax": 29,
+        "activeElement": "BODY",
+        "questionReachable": true,
+        "controlsReachable": true
+      },
+      "stackFact": {
+        "kind": "linear",
+        "label": "17 over 12. 2 wholes.",
+        "rows": [
+          "12 of 12 equal parts",
+          "5 of 12 equal parts"
+        ],
+        "raw": "17 over 12"
+      },
+      "falsification": {},
+      "reflection": {
+        "id": "plan17-12-phase2-bundle-2-medium-linear-752",
+        "target": "12",
+        "condition": "phase2-bundle-2",
+        "support": "medium",
+        "view": "linear",
+        "height": 752,
+        "interaction": "pointer",
+        "reducedMotion": false,
+        "stage": "reflection",
+        "targetDenominator": "12",
+        "viewport": {
+          "width": 360,
+          "height": 752
+        },
+        "question": {
+          "left": 63,
+          "top": 346.19,
+          "right": 297,
+          "bottom": 440.16,
+          "width": 234,
+          "height": 93.97
+        },
+        "controls": {
+          "left": 63,
+          "top": 474.16,
+          "right": 297,
+          "bottom": 535.34,
+          "width": 234,
+          "height": 61.19
+        },
+        "stack": {
+          "left": 58,
+          "top": 178,
+          "right": 302,
+          "bottom": 269.19,
+          "width": 244,
+          "height": 91.19
+        },
+        "rowBounds": [
+          {
+            "left": 58,
+            "top": 227.19,
+            "right": 302,
+            "bottom": 246.19,
+            "width": 244,
+            "height": 19
+          },
+          {
+            "left": 58,
+            "top": 250.19,
+            "right": 302,
+            "bottom": 269.19,
+            "width": 244,
+            "height": 19
+          }
+        ],
+        "trackBounds": [],
+        "segments": [],
+        "horizontalOverflow": false,
+        "scrollHeight": 867,
+        "scrollY": 0,
+        "scrollMax": 115,
+        "activeElement": "BODY",
+        "questionReachable": true,
+        "controlsReachable": true
+      },
+      "replay": {
+        "id": "plan17-12-phase2-bundle-2-medium-linear-752",
+        "target": "12",
+        "condition": "phase2-bundle-2",
+        "support": "medium",
+        "view": "linear",
+        "height": 752,
+        "interaction": "pointer",
+        "reducedMotion": false,
+        "stage": "replay",
+        "targetDenominator": "12",
+        "viewport": {
+          "width": 360,
+          "height": 752
+        },
+        "question": {
+          "left": 63,
+          "top": 218,
+          "right": 297,
+          "bottom": 268.38,
+          "width": 234,
+          "height": 50.38
+        },
+        "controls": {
+          "left": 63,
+          "top": 302.38,
+          "right": 297,
+          "bottom": 457.38,
+          "width": 234,
+          "height": 155
+        },
+        "stack": null,
+        "rowBounds": [],
+        "trackBounds": [],
+        "segments": [],
+        "horizontalOverflow": false,
+        "scrollHeight": 826,
+        "scrollY": 37,
+        "scrollMax": 74,
+        "activeElement": "BUTTON",
+        "questionReachable": true,
+        "controlsReachable": true
+      },
+      "resetWithholding": {
+        "stackCount": 0,
+        "forbiddenFormsInDomText": [],
+        "forbiddenFormsInVisibleText": [],
+        "forbiddenFormAttributes": [],
+        "structuralBoundaryExclusions": 0,
+        "hiddenLabels": [],
+        "liveRegions": [],
+        "formValues": []
+      }
+    },
+    {
+      "scenario": {
+        "id": "plan17-12-phase2-bundle-3-high-visual-740",
+        "target": "12",
+        "condition": "phase2-bundle-3",
+        "support": "high",
+        "view": "visual",
+        "height": 740,
+        "interaction": "pointer",
+        "reducedMotion": false
+      },
+      "withhold": {
+        "stackCount": 0,
+        "forbiddenFormsInDomText": [],
+        "forbiddenFormsInVisibleText": [],
+        "forbiddenFormAttributes": [],
+        "structuralBoundaryExclusions": 0,
+        "hiddenLabels": [],
+        "liveRegions": [],
+        "formValues": []
+      },
+      "helpCopy": "Try multiplying 3 by 4 to find one common denominator.",
+      "recovery": "The denominator stays the same. Add only the top numbers.",
+      "hiddenLeakRejected": true,
+      "hiddenLeakDiagnostic": "plan17-12-phase2-bundle-3-high-visual-740 hidden sibling seed: result data leaked before a correct answer: {\"stackCount\":1,\"forbiddenFormsInDomText\":[\"17/12\"],\"forbiddenFormsInVisibleText\":[],\"forbiddenFormAttributes\":[{\"element\":\"div.linear-result-stack\",\"name\":\"aria-label\",\"value\":\"seeded result 17/12\"},{\"element\":\"div.linear-result-stack\",\"name\":\"data-answer\",\"value\":\"17/12\"}],\"structuralBoundaryExclusions\":0,\"hiddenLabels\":[\"seeded result 17/12  \"],\"liveRegions\":[],\"formValues\":[]}",
+      "tabRecovery": [],
+      "accepted": {
+        "id": "plan17-12-phase2-bundle-3-high-visual-740",
+        "target": "12",
+        "condition": "phase2-bundle-3",
+        "support": "high",
+        "view": "visual",
+        "height": 740,
+        "interaction": "pointer",
+        "reducedMotion": false,
+        "stage": "accepted-total",
+        "targetDenominator": "12",
+        "viewport": {
+          "width": 360,
+          "height": 740
+        },
+        "question": {
+          "left": 63,
+          "top": 363.91,
+          "right": 297,
+          "bottom": 389.09,
+          "width": 234,
+          "height": 25.19
+        },
+        "controls": {
+          "left": 63,
+          "top": 420.03,
+          "right": 297,
+          "bottom": 464.03,
+          "width": 234,
+          "height": 44
+        },
+        "stack": {
+          "left": 41,
+          "top": 53,
+          "right": 319,
+          "bottom": 200.19,
+          "width": 278,
+          "height": 147.19
+        },
+        "rowBounds": [
+          {
+            "left": 41,
+            "top": 102.19,
+            "right": 319,
+            "bottom": 146.19,
+            "width": 278,
+            "height": 44
+          },
+          {
+            "left": 41,
+            "top": 156.19,
+            "right": 319,
+            "bottom": 200.19,
+            "width": 278,
+            "height": 44
+          }
+        ],
+        "trackBounds": [
+          {
+            "left": 41,
+            "top": 102.19,
+            "right": 319,
+            "bottom": 146.19,
+            "width": 278,
+            "height": 44
+          },
+          {
+            "left": 41,
+            "top": 156.19,
+            "right": 319,
+            "bottom": 200.19,
+            "width": 278,
+            "height": 44
+          }
+        ],
+        "segments": [
+          [
+            {
+              "width": 22.91,
+              "shaded": true
+            },
+            {
+              "width": 22.92,
+              "shaded": true
+            },
+            {
+              "width": 22.91,
+              "shaded": true
+            },
+            {
+              "width": 22.92,
+              "shaded": true
+            },
+            {
+              "width": 22.91,
+              "shaded": true
+            },
+            {
+              "width": 22.92,
+              "shaded": true
+            },
+            {
+              "width": 22.91,
+              "shaded": true
+            },
+            {
+              "width": 22.92,
+              "shaded": true
+            },
+            {
+              "width": 22.92,
+              "shaded": true
+            },
+            {
+              "width": 22.92,
+              "shaded": true
+            },
+            {
+              "width": 22.92,
+              "shaded": true
+            },
+            {
+              "width": 21.92,
+              "shaded": true
+            }
+          ],
+          [
+            {
+              "width": 22.91,
+              "shaded": true
+            },
+            {
+              "width": 22.92,
+              "shaded": true
+            },
+            {
+              "width": 22.91,
+              "shaded": true
+            },
+            {
+              "width": 22.92,
+              "shaded": true
+            },
+            {
+              "width": 22.91,
+              "shaded": true
+            },
+            {
+              "width": 22.92,
+              "shaded": false
+            },
+            {
+              "width": 22.91,
+              "shaded": false
+            },
+            {
+              "width": 22.92,
+              "shaded": false
+            },
+            {
+              "width": 22.92,
+              "shaded": false
+            },
+            {
+              "width": 22.92,
+              "shaded": false
+            },
+            {
+              "width": 22.92,
+              "shaded": false
+            },
+            {
+              "width": 21.92,
+              "shaded": false
+            }
+          ]
+        ],
+        "horizontalOverflow": false,
+        "scrollHeight": 904,
+        "scrollY": 108,
+        "scrollMax": 164,
+        "activeElement": "BODY",
+        "questionReachable": true,
+        "controlsReachable": true
+      },
+      "stackFact": {
+        "kind": "visual",
+        "label": "17 over 12. 2 equal-width wholes; the last whole has 5 of 12 equal parts shaded.",
+        "rows": [
+          {
+            "width": 278,
+            "unitCount": 12,
+            "shaded": 12
+          },
+          {
+            "width": 278,
+            "unitCount": 12,
+            "shaded": 5
+          }
+        ],
+        "raw": "17 over 12"
+      },
+      "falsification": {
+        "rejectsTruncatedRemainder": true,
+        "rejectsResizedSecondWhole": true,
+        "rejectsCorruptRenderedFact": true,
+        "restoredWitnessPasses": true
+      },
+      "reflection": {
+        "id": "plan17-12-phase2-bundle-3-high-visual-740",
+        "target": "12",
+        "condition": "phase2-bundle-3",
+        "support": "high",
+        "view": "visual",
+        "height": 740,
+        "interaction": "pointer",
+        "reducedMotion": false,
+        "stage": "reflection",
+        "targetDenominator": "12",
+        "viewport": {
+          "width": 360,
+          "height": 740
+        },
+        "question": {
+          "left": 63,
+          "top": 363.91,
+          "right": 297,
+          "bottom": 414.28,
+          "width": 234,
+          "height": 50.38
+        },
+        "controls": {
+          "left": 63,
+          "top": 445.22,
+          "right": 297,
+          "bottom": 733.22,
+          "width": 234,
+          "height": 288
+        },
+        "stack": {
+          "left": 41,
+          "top": 53,
+          "right": 319,
+          "bottom": 200.19,
+          "width": 278,
+          "height": 147.19
+        },
+        "rowBounds": [
+          {
+            "left": 41,
+            "top": 102.19,
+            "right": 319,
+            "bottom": 146.19,
+            "width": 278,
+            "height": 44
+          },
+          {
+            "left": 41,
+            "top": 156.19,
+            "right": 319,
+            "bottom": 200.19,
+            "width": 278,
+            "height": 44
+          }
+        ],
+        "trackBounds": [
+          {
+            "left": 41,
+            "top": 102.19,
+            "right": 319,
+            "bottom": 146.19,
+            "width": 278,
+            "height": 44
+          },
+          {
+            "left": 41,
+            "top": 156.19,
+            "right": 319,
+            "bottom": 200.19,
+            "width": 278,
+            "height": 44
+          }
+        ],
+        "segments": [
+          [
+            {
+              "width": 22.91,
+              "shaded": true
+            },
+            {
+              "width": 22.92,
+              "shaded": true
+            },
+            {
+              "width": 22.91,
+              "shaded": true
+            },
+            {
+              "width": 22.92,
+              "shaded": true
+            },
+            {
+              "width": 22.91,
+              "shaded": true
+            },
+            {
+              "width": 22.92,
+              "shaded": true
+            },
+            {
+              "width": 22.91,
+              "shaded": true
+            },
+            {
+              "width": 22.92,
+              "shaded": true
+            },
+            {
+              "width": 22.92,
+              "shaded": true
+            },
+            {
+              "width": 22.92,
+              "shaded": true
+            },
+            {
+              "width": 22.92,
+              "shaded": true
+            },
+            {
+              "width": 21.92,
+              "shaded": true
+            }
+          ],
+          [
+            {
+              "width": 22.91,
+              "shaded": true
+            },
+            {
+              "width": 22.92,
+              "shaded": true
+            },
+            {
+              "width": 22.91,
+              "shaded": true
+            },
+            {
+              "width": 22.92,
+              "shaded": true
+            },
+            {
+              "width": 22.91,
+              "shaded": true
+            },
+            {
+              "width": 22.92,
+              "shaded": false
+            },
+            {
+              "width": 22.91,
+              "shaded": false
+            },
+            {
+              "width": 22.92,
+              "shaded": false
+            },
+            {
+              "width": 22.92,
+              "shaded": false
+            },
+            {
+              "width": 22.92,
+              "shaded": false
+            },
+            {
+              "width": 22.92,
+              "shaded": false
+            },
+            {
+              "width": 21.92,
+              "shaded": false
+            }
+          ]
+        ],
+        "horizontalOverflow": false,
+        "scrollHeight": 1173,
+        "scrollY": 108,
+        "scrollMax": 433,
+        "activeElement": "BODY",
+        "questionReachable": true,
+        "controlsReachable": true
+      },
+      "replay": {
+        "id": "plan17-12-phase2-bundle-3-high-visual-740",
+        "target": "12",
+        "condition": "phase2-bundle-3",
+        "support": "high",
+        "view": "visual",
+        "height": 740,
+        "interaction": "pointer",
+        "reducedMotion": false,
+        "stage": "replay",
+        "targetDenominator": "12",
+        "viewport": {
+          "width": 360,
+          "height": 740
+        },
+        "question": {
+          "left": 63,
+          "top": 38.72,
+          "right": 297,
+          "bottom": 89.09,
+          "width": 234,
+          "height": 50.38
+        },
+        "controls": {
+          "left": 63,
+          "top": 120.03,
+          "right": 297,
+          "bottom": 459.03,
+          "width": 234,
+          "height": 339
+        },
+        "stack": null,
+        "rowBounds": [],
+        "trackBounds": [],
+        "segments": [],
+        "horizontalOverflow": false,
+        "scrollHeight": 1077,
+        "scrollY": 286,
+        "scrollMax": 337,
+        "activeElement": "BUTTON",
+        "questionReachable": true,
+        "controlsReachable": true
+      },
+      "resetWithholding": {
+        "stackCount": 0,
+        "forbiddenFormsInDomText": [],
+        "forbiddenFormsInVisibleText": [],
+        "forbiddenFormAttributes": [],
+        "structuralBoundaryExclusions": 0,
+        "hiddenLabels": [],
+        "liveRegions": [],
+        "formValues": []
+      }
+    },
+    {
+      "scenario": {
+        "id": "plan17-12-phase2-bundle-3-medium-linear-752",
+        "target": "12",
+        "condition": "phase2-bundle-3",
+        "support": "medium",
+        "view": "linear",
+        "height": 752,
+        "interaction": "pointer",
+        "reducedMotion": true
+      },
+      "withhold": {
+        "stackCount": 0,
+        "forbiddenFormsInDomText": [],
+        "forbiddenFormsInVisibleText": [],
+        "forbiddenFormAttributes": [],
+        "structuralBoundaryExclusions": 0,
+        "hiddenLabels": [],
+        "liveRegions": [],
+        "formValues": []
+      },
+      "helpCopy": "Try multiplying 3 by 4 to find one common denominator.",
+      "recovery": "The denominator stays the same. Add only the top numbers.",
+      "hiddenLeakRejected": true,
+      "hiddenLeakDiagnostic": "plan17-12-phase2-bundle-3-medium-linear-752 hidden sibling seed: result data leaked before a correct answer: {\"stackCount\":1,\"forbiddenFormsInDomText\":[\"17/12\"],\"forbiddenFormsInVisibleText\":[\"17/12\"],\"forbiddenFormAttributes\":[{\"element\":\"div.linear-result-stack\",\"name\":\"aria-label\",\"value\":\"seeded result 17/12\"},{\"element\":\"div.linear-result-stack\",\"name\":\"data-answer\",\"value\":\"17/12\"}],\"structuralBoundaryExclusions\":0,\"hiddenLabels\":[\"seeded result 17/12  \"],\"liveRegions\":[],\"formValues\":[]}",
+      "tabRecovery": [],
+      "accepted": {
+        "id": "plan17-12-phase2-bundle-3-medium-linear-752",
+        "target": "12",
+        "condition": "phase2-bundle-3",
+        "support": "medium",
+        "view": "linear",
+        "height": 752,
+        "interaction": "pointer",
+        "reducedMotion": true,
+        "stage": "accepted-total",
+        "targetDenominator": "12",
+        "viewport": {
+          "width": 360,
+          "height": 752
+        },
+        "question": {
+          "left": 63,
+          "top": 346.19,
+          "right": 297,
+          "bottom": 371.38,
+          "width": 234,
+          "height": 25.19
+        },
+        "controls": {
+          "left": 63,
+          "top": 405.38,
+          "right": 297,
+          "bottom": 449.38,
+          "width": 234,
+          "height": 44
+        },
+        "stack": {
+          "left": 58,
+          "top": 178,
+          "right": 302,
+          "bottom": 269.19,
+          "width": 244,
+          "height": 91.19
+        },
+        "rowBounds": [
+          {
+            "left": 58,
+            "top": 227.19,
+            "right": 302,
+            "bottom": 246.19,
+            "width": 244,
+            "height": 19
+          },
+          {
+            "left": 58,
+            "top": 250.19,
+            "right": 302,
+            "bottom": 269.19,
+            "width": 244,
+            "height": 19
+          }
+        ],
+        "trackBounds": [],
+        "segments": [],
+        "horizontalOverflow": false,
+        "scrollHeight": 781,
+        "scrollY": 0,
+        "scrollMax": 29,
+        "activeElement": "BODY",
+        "questionReachable": true,
+        "controlsReachable": true
+      },
+      "stackFact": {
+        "kind": "linear",
+        "label": "17 over 12. 2 wholes.",
+        "rows": [
+          "12 of 12 equal parts",
+          "5 of 12 equal parts"
+        ],
+        "raw": "17 over 12"
+      },
+      "falsification": {},
+      "reflection": {
+        "id": "plan17-12-phase2-bundle-3-medium-linear-752",
+        "target": "12",
+        "condition": "phase2-bundle-3",
+        "support": "medium",
+        "view": "linear",
+        "height": 752,
+        "interaction": "pointer",
+        "reducedMotion": true,
+        "stage": "reflection",
+        "targetDenominator": "12",
+        "viewport": {
+          "width": 360,
+          "height": 752
+        },
+        "question": {
+          "left": 63,
+          "top": 346.19,
+          "right": 297,
+          "bottom": 440.16,
+          "width": 234,
+          "height": 93.97
+        },
+        "controls": {
+          "left": 63,
+          "top": 474.16,
+          "right": 297,
+          "bottom": 535.34,
+          "width": 234,
+          "height": 61.19
+        },
+        "stack": {
+          "left": 58,
+          "top": 178,
+          "right": 302,
+          "bottom": 269.19,
+          "width": 244,
+          "height": 91.19
+        },
+        "rowBounds": [
+          {
+            "left": 58,
+            "top": 227.19,
+            "right": 302,
+            "bottom": 246.19,
+            "width": 244,
+            "height": 19
+          },
+          {
+            "left": 58,
+            "top": 250.19,
+            "right": 302,
+            "bottom": 269.19,
+            "width": 244,
+            "height": 19
+          }
+        ],
+        "trackBounds": [],
+        "segments": [],
+        "horizontalOverflow": false,
+        "scrollHeight": 867,
+        "scrollY": 0,
+        "scrollMax": 115,
+        "activeElement": "BODY",
+        "questionReachable": true,
+        "controlsReachable": true
+      },
+      "replay": {
+        "id": "plan17-12-phase2-bundle-3-medium-linear-752",
+        "target": "12",
+        "condition": "phase2-bundle-3",
+        "support": "medium",
+        "view": "linear",
+        "height": 752,
+        "interaction": "pointer",
+        "reducedMotion": true,
+        "stage": "replay",
+        "targetDenominator": "12",
+        "viewport": {
+          "width": 360,
+          "height": 752
+        },
+        "question": {
+          "left": 63,
+          "top": 218,
+          "right": 297,
+          "bottom": 268.38,
+          "width": 234,
+          "height": 50.38
+        },
+        "controls": {
+          "left": 63,
+          "top": 302.38,
+          "right": 297,
+          "bottom": 457.38,
+          "width": 234,
+          "height": 155
+        },
+        "stack": null,
+        "rowBounds": [],
+        "trackBounds": [],
+        "segments": [],
+        "horizontalOverflow": false,
+        "scrollHeight": 826,
+        "scrollY": 37,
+        "scrollMax": 74,
+        "activeElement": "BUTTON",
+        "questionReachable": true,
+        "controlsReachable": true
+      },
+      "resetWithholding": {
+        "stackCount": 0,
+        "forbiddenFormsInDomText": [],
+        "forbiddenFormsInVisibleText": [],
+        "forbiddenFormAttributes": [],
+        "structuralBoundaryExclusions": 0,
+        "hiddenLabels": [],
+        "liveRegions": [],
+        "formValues": []
+      }
+    },
+    {
+      "scenario": {
+        "id": "plan17-12-phase2-bundle-4-high-visual-740",
+        "target": "12",
+        "condition": "phase2-bundle-4",
+        "support": "high",
+        "view": "visual",
+        "height": 740,
+        "interaction": "pointer",
+        "reducedMotion": false
+      },
+      "withhold": {
+        "stackCount": 0,
+        "forbiddenFormsInDomText": [],
+        "forbiddenFormsInVisibleText": [],
+        "forbiddenFormAttributes": [],
+        "structuralBoundaryExclusions": 2,
+        "hiddenLabels": [],
+        "liveRegions": [],
+        "formValues": []
+      },
+      "helpCopy": "Try multiplying 3 by 4 to find one common denominator.",
+      "recovery": "The denominator stays the same. Add only the top numbers.",
+      "hiddenLeakRejected": true,
+      "hiddenLeakDiagnostic": "plan17-12-phase2-bundle-4-high-visual-740 hidden sibling seed: result data leaked before a correct answer: {\"stackCount\":1,\"forbiddenFormsInDomText\":[\"17/12\"],\"forbiddenFormsInVisibleText\":[],\"forbiddenFormAttributes\":[{\"element\":\"div.linear-result-stack\",\"name\":\"aria-label\",\"value\":\"seeded result 17/12\"},{\"element\":\"div.linear-result-stack\",\"name\":\"data-answer\",\"value\":\"17/12\"}],\"structuralBoundaryExclusions\":2,\"hiddenLabels\":[\"seeded result 17/12  \"],\"liveRegions\":[],\"formValues\":[]}",
+      "tabRecovery": [],
+      "accepted": {
+        "id": "plan17-12-phase2-bundle-4-high-visual-740",
+        "target": "12",
+        "condition": "phase2-bundle-4",
+        "support": "high",
+        "view": "visual",
+        "height": 740,
+        "interaction": "pointer",
+        "reducedMotion": false,
+        "stage": "accepted-total",
+        "targetDenominator": "12",
+        "viewport": {
+          "width": 360,
+          "height": 740
+        },
+        "question": {
+          "left": 63,
+          "top": 459.91,
+          "right": 297,
+          "bottom": 485.09,
+          "width": 234,
+          "height": 25.19
+        },
+        "controls": {
+          "left": 63,
+          "top": 516.03,
+          "right": 297,
+          "bottom": 560.03,
+          "width": 234,
+          "height": 44
+        },
+        "stack": {
+          "left": 41,
+          "top": 149,
+          "right": 319,
+          "bottom": 296.19,
+          "width": 278,
+          "height": 147.19
+        },
+        "rowBounds": [
+          {
+            "left": 41,
+            "top": 198.19,
+            "right": 319,
+            "bottom": 242.19,
+            "width": 278,
+            "height": 44
+          },
+          {
+            "left": 41,
+            "top": 252.19,
+            "right": 319,
+            "bottom": 296.19,
+            "width": 278,
+            "height": 44
+          }
+        ],
+        "trackBounds": [
+          {
+            "left": 41,
+            "top": 198.19,
+            "right": 319,
+            "bottom": 242.19,
+            "width": 278,
+            "height": 44
+          },
+          {
+            "left": 41,
+            "top": 252.19,
+            "right": 319,
+            "bottom": 296.19,
+            "width": 278,
+            "height": 44
+          }
+        ],
+        "segments": [
+          [
+            {
+              "width": 22.91,
+              "shaded": true
+            },
+            {
+              "width": 22.92,
+              "shaded": true
+            },
+            {
+              "width": 22.91,
+              "shaded": true
+            },
+            {
+              "width": 22.92,
+              "shaded": true
+            },
+            {
+              "width": 22.91,
+              "shaded": true
+            },
+            {
+              "width": 22.92,
+              "shaded": true
+            },
+            {
+              "width": 22.91,
+              "shaded": true
+            },
+            {
+              "width": 22.92,
+              "shaded": true
+            },
+            {
+              "width": 22.92,
+              "shaded": true
+            },
+            {
+              "width": 22.92,
+              "shaded": true
+            },
+            {
+              "width": 22.92,
+              "shaded": true
+            },
+            {
+              "width": 21.92,
+              "shaded": true
+            }
+          ],
+          [
+            {
+              "width": 22.91,
+              "shaded": true
+            },
+            {
+              "width": 22.92,
+              "shaded": true
+            },
+            {
+              "width": 22.91,
+              "shaded": true
+            },
+            {
+              "width": 22.92,
+              "shaded": true
+            },
+            {
+              "width": 22.91,
+              "shaded": true
+            },
+            {
+              "width": 22.92,
+              "shaded": false
+            },
+            {
+              "width": 22.91,
+              "shaded": false
+            },
+            {
+              "width": 22.92,
+              "shaded": false
+            },
+            {
+              "width": 22.92,
+              "shaded": false
+            },
+            {
+              "width": 22.92,
+              "shaded": false
+            },
+            {
+              "width": 22.92,
+              "shaded": false
+            },
+            {
+              "width": 21.92,
+              "shaded": false
+            }
+          ]
+        ],
+        "horizontalOverflow": false,
+        "scrollHeight": 904,
+        "scrollY": 12,
+        "scrollMax": 164,
+        "activeElement": "BODY",
+        "questionReachable": true,
+        "controlsReachable": true
+      },
+      "stackFact": {
+        "kind": "visual",
+        "label": "17 over 12. 2 equal-width wholes; the last whole has 5 of 12 equal parts shaded.",
+        "rows": [
+          {
+            "width": 278,
+            "unitCount": 12,
+            "shaded": 12
+          },
+          {
+            "width": 278,
+            "unitCount": 12,
+            "shaded": 5
+          }
+        ],
+        "raw": "17 over 12"
+      },
+      "falsification": {
+        "rejectsTruncatedRemainder": true,
+        "rejectsResizedSecondWhole": true,
+        "rejectsCorruptRenderedFact": true,
+        "restoredWitnessPasses": true
+      },
+      "reflection": {
+        "id": "plan17-12-phase2-bundle-4-high-visual-740",
+        "target": "12",
+        "condition": "phase2-bundle-4",
+        "support": "high",
+        "view": "visual",
+        "height": 740,
+        "interaction": "pointer",
+        "reducedMotion": false,
+        "stage": "reflection",
+        "targetDenominator": "12",
+        "viewport": {
+          "width": 360,
+          "height": 740
+        },
+        "question": {
+          "left": 63,
+          "top": 512.78,
+          "right": 297,
+          "bottom": 588.34,
+          "width": 234,
+          "height": 75.56
+        },
+        "controls": {
+          "left": 63,
+          "top": 619.28,
+          "right": 297,
+          "bottom": 733.28,
+          "width": 234,
+          "height": 114
+        },
+        "stack": null,
+        "rowBounds": [],
+        "trackBounds": [],
+        "segments": [],
+        "horizontalOverflow": false,
+        "scrollHeight": 1077,
+        "scrollY": 12,
+        "scrollMax": 337,
+        "activeElement": "BODY",
+        "questionReachable": true,
+        "controlsReachable": true
+      },
+      "replay": {
+        "id": "plan17-12-phase2-bundle-4-high-visual-740",
+        "target": "12",
+        "condition": "phase2-bundle-4",
+        "support": "high",
+        "view": "visual",
+        "height": 740,
+        "interaction": "pointer",
+        "reducedMotion": false,
+        "stage": "replay",
+        "targetDenominator": "12",
+        "viewport": {
+          "width": 360,
+          "height": 740
+        },
+        "question": {
+          "left": 63,
+          "top": 149.72,
+          "right": 297,
+          "bottom": 200.09,
+          "width": 234,
+          "height": 50.38
+        },
+        "controls": {
+          "left": 63,
+          "top": 231.03,
+          "right": 297,
+          "bottom": 430.03,
+          "width": 234,
+          "height": 199
+        },
+        "stack": null,
+        "rowBounds": [],
+        "trackBounds": [],
+        "segments": [],
+        "horizontalOverflow": false,
+        "scrollHeight": 937,
+        "scrollY": 175,
+        "scrollMax": 197,
+        "activeElement": "BUTTON",
+        "questionReachable": true,
+        "controlsReachable": true
+      },
+      "resetWithholding": {
+        "stackCount": 0,
+        "forbiddenFormsInDomText": [],
+        "forbiddenFormsInVisibleText": [],
+        "forbiddenFormAttributes": [],
+        "structuralBoundaryExclusions": 0,
+        "hiddenLabels": [],
+        "liveRegions": [],
+        "formValues": []
+      }
+    },
+    {
+      "scenario": {
+        "id": "plan17-12-phase2-bundle-4-medium-linear-752",
+        "target": "12",
+        "condition": "phase2-bundle-4",
+        "support": "medium",
+        "view": "linear",
+        "height": 752,
+        "interaction": "pointer",
+        "reducedMotion": false
+      },
+      "withhold": {
+        "stackCount": 0,
+        "forbiddenFormsInDomText": [],
+        "forbiddenFormsInVisibleText": [],
+        "forbiddenFormAttributes": [],
+        "structuralBoundaryExclusions": 2,
+        "hiddenLabels": [],
+        "liveRegions": [],
+        "formValues": []
+      },
+      "helpCopy": "Try multiplying 3 by 4 to find one common denominator.",
+      "recovery": "The denominator stays the same. Add only the top numbers.",
+      "hiddenLeakRejected": true,
+      "hiddenLeakDiagnostic": "plan17-12-phase2-bundle-4-medium-linear-752 hidden sibling seed: result data leaked before a correct answer: {\"stackCount\":1,\"forbiddenFormsInDomText\":[\"17/12\"],\"forbiddenFormsInVisibleText\":[\"17/12\"],\"forbiddenFormAttributes\":[{\"element\":\"div.linear-result-stack\",\"name\":\"aria-label\",\"value\":\"seeded result 17/12\"},{\"element\":\"div.linear-result-stack\",\"name\":\"data-answer\",\"value\":\"17/12\"}],\"structuralBoundaryExclusions\":2,\"hiddenLabels\":[\"seeded result 17/12  \"],\"liveRegions\":[],\"formValues\":[]}",
+      "tabRecovery": [],
+      "accepted": {
+        "id": "plan17-12-phase2-bundle-4-medium-linear-752",
+        "target": "12",
+        "condition": "phase2-bundle-4",
+        "support": "medium",
+        "view": "linear",
+        "height": 752,
+        "interaction": "pointer",
+        "reducedMotion": false,
+        "stage": "accepted-total",
+        "targetDenominator": "12",
+        "viewport": {
+          "width": 360,
+          "height": 752
+        },
+        "question": {
+          "left": 63,
+          "top": 346.19,
+          "right": 297,
+          "bottom": 371.38,
+          "width": 234,
+          "height": 25.19
+        },
+        "controls": {
+          "left": 63,
+          "top": 405.38,
+          "right": 297,
+          "bottom": 449.38,
+          "width": 234,
+          "height": 44
+        },
+        "stack": {
+          "left": 58,
+          "top": 178,
+          "right": 302,
+          "bottom": 269.19,
+          "width": 244,
+          "height": 91.19
+        },
+        "rowBounds": [
+          {
+            "left": 58,
+            "top": 227.19,
+            "right": 302,
+            "bottom": 246.19,
+            "width": 244,
+            "height": 19
+          },
+          {
+            "left": 58,
+            "top": 250.19,
+            "right": 302,
+            "bottom": 269.19,
+            "width": 244,
+            "height": 19
+          }
+        ],
+        "trackBounds": [],
+        "segments": [],
+        "horizontalOverflow": false,
+        "scrollHeight": 781,
+        "scrollY": 0,
+        "scrollMax": 29,
+        "activeElement": "BODY",
+        "questionReachable": true,
+        "controlsReachable": true
+      },
+      "stackFact": {
+        "kind": "linear",
+        "label": "17 over 12. 2 wholes.",
+        "rows": [
+          "12 of 12 equal parts",
+          "5 of 12 equal parts"
+        ],
+        "raw": "17 over 12"
+      },
+      "falsification": {},
+      "reflection": {
+        "id": "plan17-12-phase2-bundle-4-medium-linear-752",
+        "target": "12",
+        "condition": "phase2-bundle-4",
+        "support": "medium",
+        "view": "linear",
+        "height": 752,
+        "interaction": "pointer",
+        "reducedMotion": false,
+        "stage": "reflection",
+        "targetDenominator": "12",
+        "viewport": {
+          "width": 360,
+          "height": 752
+        },
+        "question": {
+          "left": 63,
+          "top": 323.38,
+          "right": 297,
+          "bottom": 424.13,
+          "width": 234,
+          "height": 100.75
+        },
+        "controls": {
+          "left": 63,
+          "top": 323.38,
+          "right": 297,
+          "bottom": 538.13,
+          "width": 234,
+          "height": 214.75
+        },
+        "stack": null,
+        "rowBounds": [],
+        "trackBounds": [],
+        "segments": [],
+        "horizontalOverflow": false,
+        "scrollHeight": 870,
+        "scrollY": 0,
+        "scrollMax": 118,
+        "activeElement": "BODY",
+        "questionReachable": true,
+        "controlsReachable": true
+      },
+      "replay": {
+        "id": "plan17-12-phase2-bundle-4-medium-linear-752",
+        "target": "12",
+        "condition": "phase2-bundle-4",
+        "support": "medium",
+        "view": "linear",
+        "height": 752,
+        "interaction": "pointer",
+        "reducedMotion": false,
+        "stage": "replay",
+        "targetDenominator": "12",
+        "viewport": {
+          "width": 360,
+          "height": 752
+        },
+        "question": null,
+        "controls": {
+          "left": 63,
+          "top": 237,
+          "right": 297,
+          "bottom": 354,
+          "width": 234,
+          "height": 117
+        },
+        "stack": null,
+        "rowBounds": [],
+        "trackBounds": [],
+        "segments": [],
+        "horizontalOverflow": false,
+        "scrollHeight": 752,
+        "scrollY": 0,
+        "scrollMax": 0,
+        "activeElement": "BUTTON",
+        "questionReachable": false,
+        "controlsReachable": true
+      },
+      "resetWithholding": {
+        "stackCount": 0,
+        "forbiddenFormsInDomText": [],
+        "forbiddenFormsInVisibleText": [],
+        "forbiddenFormAttributes": [],
+        "structuralBoundaryExclusions": 0,
+        "hiddenLabels": [],
+        "liveRegions": [],
+        "formValues": []
+      }
+    },
+    {
+      "scenario": {
+        "id": "plan17-24-phase2-bundle-1-high-visual-740",
+        "target": "24",
+        "condition": "phase2-bundle-1",
+        "support": "high",
+        "view": "visual",
+        "height": 740,
+        "interaction": "pointer",
+        "reducedMotion": true
+      },
+      "withhold": {
+        "stackCount": 0,
+        "forbiddenFormsInDomText": [],
+        "forbiddenFormsInVisibleText": [],
+        "forbiddenFormAttributes": [],
+        "structuralBoundaryExclusions": 0,
+        "hiddenLabels": [],
+        "liveRegions": [],
+        "formValues": []
+      },
+      "helpCopy": "Try multiplying 3 by 4 to find one common denominator.",
+      "recovery": "The denominator stays the same. Add only the top numbers.",
+      "hiddenLeakRejected": true,
+      "hiddenLeakDiagnostic": "plan17-24-phase2-bundle-1-high-visual-740 hidden sibling seed: result data leaked before a correct answer: {\"stackCount\":1,\"forbiddenFormsInDomText\":[\"34/24\"],\"forbiddenFormsInVisibleText\":[],\"forbiddenFormAttributes\":[{\"element\":\"div.linear-result-stack\",\"name\":\"aria-label\",\"value\":\"seeded result 34/24\"},{\"element\":\"div.linear-result-stack\",\"name\":\"data-answer\",\"value\":\"34/24\"}],\"structuralBoundaryExclusions\":0,\"hiddenLabels\":[\"seeded result 34/24  \"],\"liveRegions\":[],\"formValues\":[]}",
+      "tabRecovery": [],
+      "accepted": {
+        "id": "plan17-24-phase2-bundle-1-high-visual-740",
+        "target": "24",
+        "condition": "phase2-bundle-1",
+        "support": "high",
+        "view": "visual",
+        "height": 740,
+        "interaction": "pointer",
+        "reducedMotion": true,
+        "stage": "accepted-total",
+        "targetDenominator": "24",
+        "viewport": {
+          "width": 360,
+          "height": 740
+        },
+        "question": {
+          "left": 63,
+          "top": 459.09,
+          "right": 297,
+          "bottom": 509.47,
+          "width": 234,
+          "height": 50.38
+        },
+        "controls": {
+          "left": 63,
+          "top": 540.41,
+          "right": 297,
+          "bottom": 584.41,
+          "width": 234,
+          "height": 44
+        },
+        "stack": {
+          "left": 41,
+          "top": 109,
+          "right": 319,
+          "bottom": 256.19,
+          "width": 278,
+          "height": 147.19
+        },
+        "rowBounds": [
+          {
+            "left": 41,
+            "top": 158.19,
+            "right": 319,
+            "bottom": 202.19,
+            "width": 278,
+            "height": 44
+          },
+          {
+            "left": 41,
+            "top": 212.19,
+            "right": 319,
+            "bottom": 256.19,
+            "width": 278,
+            "height": 44
+          }
+        ],
+        "trackBounds": [
+          {
+            "left": 41,
+            "top": 158.19,
+            "right": 319,
+            "bottom": 202.19,
+            "width": 278,
+            "height": 44
+          },
+          {
+            "left": 41,
+            "top": 212.19,
+            "right": 319,
+            "bottom": 256.19,
+            "width": 278,
+            "height": 44
+          }
+        ],
+        "segments": [
+          [
+            {
+              "width": 11.45,
+              "shaded": true
+            },
+            {
+              "width": 11.47,
+              "shaded": true
+            },
+            {
+              "width": 11.45,
+              "shaded": true
+            },
+            {
+              "width": 11.47,
+              "shaded": true
+            },
+            {
+              "width": 11.45,
+              "shaded": true
+            },
+            {
+              "width": 11.47,
+              "shaded": true
+            },
+            {
+              "width": 11.45,
+              "shaded": true
+            },
+            {
+              "width": 11.47,
+              "shaded": true
+            },
+            {
+              "width": 11.45,
+              "shaded": true
+            },
+            {
+              "width": 11.47,
+              "shaded": true
+            },
+            {
+              "width": 11.45,
+              "shaded": true
+            },
+            {
+              "width": 11.47,
+              "shaded": true
+            },
+            {
+              "width": 11.45,
+              "shaded": true
+            },
+            {
+              "width": 11.47,
+              "shaded": true
+            },
+            {
+              "width": 11.45,
+              "shaded": true
+            },
+            {
+              "width": 11.47,
+              "shaded": true
+            },
+            {
+              "width": 11.45,
+              "shaded": true
+            },
+            {
+              "width": 11.45,
+              "shaded": true
+            },
+            {
+              "width": 11.45,
+              "shaded": true
+            },
+            {
+              "width": 11.45,
+              "shaded": true
+            },
+            {
+              "width": 11.45,
+              "shaded": true
+            },
+            {
+              "width": 11.45,
+              "shaded": true
+            },
+            {
+              "width": 11.45,
+              "shaded": true
+            },
+            {
+              "width": 10.45,
+              "shaded": true
+            }
+          ],
+          [
+            {
+              "width": 11.45,
+              "shaded": true
+            },
+            {
+              "width": 11.47,
+              "shaded": true
+            },
+            {
+              "width": 11.45,
+              "shaded": true
+            },
+            {
+              "width": 11.47,
+              "shaded": true
+            },
+            {
+              "width": 11.45,
+              "shaded": true
+            },
+            {
+              "width": 11.47,
+              "shaded": true
+            },
+            {
+              "width": 11.45,
+              "shaded": true
+            },
+            {
+              "width": 11.47,
+              "shaded": true
+            },
+            {
+              "width": 11.45,
+              "shaded": true
+            },
+            {
+              "width": 11.47,
+              "shaded": true
+            },
+            {
+              "width": 11.45,
+              "shaded": false
+            },
+            {
+              "width": 11.47,
+              "shaded": false
+            },
+            {
+              "width": 11.45,
+              "shaded": false
+            },
+            {
+              "width": 11.47,
+              "shaded": false
+            },
+            {
+              "width": 11.45,
+              "shaded": false
+            },
+            {
+              "width": 11.47,
+              "shaded": false
+            },
+            {
+              "width": 11.45,
+              "shaded": false
+            },
+            {
+              "width": 11.45,
+              "shaded": false
+            },
+            {
+              "width": 11.45,
+              "shaded": false
+            },
+            {
+              "width": 11.45,
+              "shaded": false
+            },
+            {
+              "width": 11.45,
+              "shaded": false
+            },
+            {
+              "width": 11.45,
+              "shaded": false
+            },
+            {
+              "width": 11.45,
+              "shaded": false
+            },
+            {
+              "width": 10.45,
+              "shaded": false
+            }
+          ]
+        ],
+        "horizontalOverflow": false,
+        "scrollHeight": 968,
+        "scrollY": 52,
+        "scrollMax": 228,
+        "activeElement": "BODY",
+        "questionReachable": true,
+        "controlsReachable": true
+      },
+      "stackFact": {
+        "kind": "visual",
+        "label": "34 over 24. 2 equal-width wholes; the last whole has 10 of 24 equal parts shaded.",
+        "rows": [
+          {
+            "width": 278,
+            "unitCount": 24,
+            "shaded": 24
+          },
+          {
+            "width": 278,
+            "unitCount": 24,
+            "shaded": 10
+          }
+        ],
+        "raw": "34 over 24"
+      },
+      "falsification": {
+        "rejectsTruncatedRemainder": true,
+        "rejectsResizedSecondWhole": true,
+        "rejectsCorruptRenderedFact": true,
+        "restoredWitnessPasses": true
+      },
+      "reflection": {
+        "id": "plan17-24-phase2-bundle-1-high-visual-740",
+        "target": "24",
+        "condition": "phase2-bundle-1",
+        "support": "high",
+        "view": "visual",
+        "height": 740,
+        "interaction": "pointer",
+        "reducedMotion": true,
+        "stage": "reflection",
+        "targetDenominator": "24",
+        "viewport": {
+          "width": 360,
+          "height": 740
+        },
+        "question": {
+          "left": 63,
+          "top": 371.09,
+          "right": 297,
+          "bottom": 421.47,
+          "width": 234,
+          "height": 50.38
+        },
+        "controls": {
+          "left": 63,
+          "top": 452.41,
+          "right": 297,
+          "bottom": 740.41,
+          "width": 234,
+          "height": 288
+        },
+        "stack": {
+          "left": 41,
+          "top": 21,
+          "right": 319,
+          "bottom": 168.19,
+          "width": 278,
+          "height": 147.19
+        },
+        "rowBounds": [
+          {
+            "left": 41,
+            "top": 70.19,
+            "right": 319,
+            "bottom": 114.19,
+            "width": 278,
+            "height": 44
+          },
+          {
+            "left": 41,
+            "top": 124.19,
+            "right": 319,
+            "bottom": 168.19,
+            "width": 278,
+            "height": 44
+          }
+        ],
+        "trackBounds": [
+          {
+            "left": 41,
+            "top": 70.19,
+            "right": 319,
+            "bottom": 114.19,
+            "width": 278,
+            "height": 44
+          },
+          {
+            "left": 41,
+            "top": 124.19,
+            "right": 319,
+            "bottom": 168.19,
+            "width": 278,
+            "height": 44
+          }
+        ],
+        "segments": [
+          [
+            {
+              "width": 11.45,
+              "shaded": true
+            },
+            {
+              "width": 11.47,
+              "shaded": true
+            },
+            {
+              "width": 11.45,
+              "shaded": true
+            },
+            {
+              "width": 11.47,
+              "shaded": true
+            },
+            {
+              "width": 11.45,
+              "shaded": true
+            },
+            {
+              "width": 11.47,
+              "shaded": true
+            },
+            {
+              "width": 11.45,
+              "shaded": true
+            },
+            {
+              "width": 11.47,
+              "shaded": true
+            },
+            {
+              "width": 11.45,
+              "shaded": true
+            },
+            {
+              "width": 11.47,
+              "shaded": true
+            },
+            {
+              "width": 11.45,
+              "shaded": true
+            },
+            {
+              "width": 11.47,
+              "shaded": true
+            },
+            {
+              "width": 11.45,
+              "shaded": true
+            },
+            {
+              "width": 11.47,
+              "shaded": true
+            },
+            {
+              "width": 11.45,
+              "shaded": true
+            },
+            {
+              "width": 11.47,
+              "shaded": true
+            },
+            {
+              "width": 11.45,
+              "shaded": true
+            },
+            {
+              "width": 11.45,
+              "shaded": true
+            },
+            {
+              "width": 11.45,
+              "shaded": true
+            },
+            {
+              "width": 11.45,
+              "shaded": true
+            },
+            {
+              "width": 11.45,
+              "shaded": true
+            },
+            {
+              "width": 11.45,
+              "shaded": true
+            },
+            {
+              "width": 11.45,
+              "shaded": true
+            },
+            {
+              "width": 10.45,
+              "shaded": true
+            }
+          ],
+          [
+            {
+              "width": 11.45,
+              "shaded": true
+            },
+            {
+              "width": 11.47,
+              "shaded": true
+            },
+            {
+              "width": 11.45,
+              "shaded": true
+            },
+            {
+              "width": 11.47,
+              "shaded": true
+            },
+            {
+              "width": 11.45,
+              "shaded": true
+            },
+            {
+              "width": 11.47,
+              "shaded": true
+            },
+            {
+              "width": 11.45,
+              "shaded": true
+            },
+            {
+              "width": 11.47,
+              "shaded": true
+            },
+            {
+              "width": 11.45,
+              "shaded": true
+            },
+            {
+              "width": 11.47,
+              "shaded": true
+            },
+            {
+              "width": 11.45,
+              "shaded": false
+            },
+            {
+              "width": 11.47,
+              "shaded": false
+            },
+            {
+              "width": 11.45,
+              "shaded": false
+            },
+            {
+              "width": 11.47,
+              "shaded": false
+            },
+            {
+              "width": 11.45,
+              "shaded": false
+            },
+            {
+              "width": 11.47,
+              "shaded": false
+            },
+            {
+              "width": 11.45,
+              "shaded": false
+            },
+            {
+              "width": 11.45,
+              "shaded": false
+            },
+            {
+              "width": 11.45,
+              "shaded": false
+            },
+            {
+              "width": 11.45,
+              "shaded": false
+            },
+            {
+              "width": 11.45,
+              "shaded": false
+            },
+            {
+              "width": 11.45,
+              "shaded": false
+            },
+            {
+              "width": 11.45,
+              "shaded": false
+            },
+            {
+              "width": 10.45,
+              "shaded": false
+            }
+          ]
+        ],
+        "horizontalOverflow": false,
+        "scrollHeight": 1212,
+        "scrollY": 140,
+        "scrollMax": 472,
+        "activeElement": "BODY",
+        "questionReachable": true,
+        "controlsReachable": true
+      },
+      "replay": {
+        "id": "plan17-24-phase2-bundle-1-high-visual-740",
+        "target": "24",
+        "condition": "phase2-bundle-1",
+        "support": "high",
+        "view": "visual",
+        "height": 740,
+        "interaction": "pointer",
+        "reducedMotion": true,
+        "stage": "replay",
+        "targetDenominator": "24",
+        "viewport": {
+          "width": 360,
+          "height": 740
+        },
+        "question": {
+          "left": 63,
+          "top": 127.91,
+          "right": 297,
+          "bottom": 178.28,
+          "width": 234,
+          "height": 50.38
+        },
+        "controls": {
+          "left": 63,
+          "top": 209.22,
+          "right": 297,
+          "bottom": 408.22,
+          "width": 234,
+          "height": 199
+        },
+        "stack": null,
+        "rowBounds": [],
+        "trackBounds": [],
+        "segments": [],
+        "horizontalOverflow": false,
+        "scrollHeight": 976,
+        "scrollY": 236,
+        "scrollMax": 236,
+        "activeElement": "BUTTON",
+        "questionReachable": true,
+        "controlsReachable": true
+      },
+      "resetWithholding": {
+        "stackCount": 0,
+        "forbiddenFormsInDomText": [],
+        "forbiddenFormsInVisibleText": [],
+        "forbiddenFormAttributes": [],
+        "structuralBoundaryExclusions": 0,
+        "hiddenLabels": [],
+        "liveRegions": [],
+        "formValues": []
+      }
+    },
+    {
+      "scenario": {
+        "id": "plan17-24-phase2-bundle-1-medium-linear-752",
+        "target": "24",
+        "condition": "phase2-bundle-1",
+        "support": "medium",
+        "view": "linear",
+        "height": 752,
+        "interaction": "pointer",
+        "reducedMotion": false
+      },
+      "withhold": {
+        "stackCount": 0,
+        "forbiddenFormsInDomText": [],
+        "forbiddenFormsInVisibleText": [],
+        "forbiddenFormAttributes": [],
+        "structuralBoundaryExclusions": 0,
+        "hiddenLabels": [],
+        "liveRegions": [],
+        "formValues": []
+      },
+      "helpCopy": "Try multiplying 3 by 4 to find one common denominator.",
+      "recovery": "The denominator stays the same. Add only the top numbers.",
+      "hiddenLeakRejected": true,
+      "hiddenLeakDiagnostic": "plan17-24-phase2-bundle-1-medium-linear-752 hidden sibling seed: result data leaked before a correct answer: {\"stackCount\":1,\"forbiddenFormsInDomText\":[\"34/24\"],\"forbiddenFormsInVisibleText\":[\"34/24\"],\"forbiddenFormAttributes\":[{\"element\":\"div.linear-result-stack\",\"name\":\"aria-label\",\"value\":\"seeded result 34/24\"},{\"element\":\"div.linear-result-stack\",\"name\":\"data-answer\",\"value\":\"34/24\"}],\"structuralBoundaryExclusions\":0,\"hiddenLabels\":[\"seeded result 34/24  \"],\"liveRegions\":[],\"formValues\":[]}",
+      "tabRecovery": [],
+      "accepted": {
+        "id": "plan17-24-phase2-bundle-1-medium-linear-752",
+        "target": "24",
+        "condition": "phase2-bundle-1",
+        "support": "medium",
+        "view": "linear",
+        "height": 752,
+        "interaction": "pointer",
+        "reducedMotion": false,
+        "stage": "accepted-total",
+        "targetDenominator": "24",
+        "viewport": {
+          "width": 360,
+          "height": 752
+        },
+        "question": {
+          "left": 63,
+          "top": 346.19,
+          "right": 297,
+          "bottom": 396.56,
+          "width": 234,
+          "height": 50.38
+        },
+        "controls": {
+          "left": 63,
+          "top": 430.56,
+          "right": 297,
+          "bottom": 474.56,
+          "width": 234,
+          "height": 44
+        },
+        "stack": {
+          "left": 58,
+          "top": 178,
+          "right": 302,
+          "bottom": 269.19,
+          "width": 244,
+          "height": 91.19
+        },
+        "rowBounds": [
+          {
+            "left": 58,
+            "top": 227.19,
+            "right": 302,
+            "bottom": 246.19,
+            "width": 244,
+            "height": 19
+          },
+          {
+            "left": 58,
+            "top": 250.19,
+            "right": 302,
+            "bottom": 269.19,
+            "width": 244,
+            "height": 19
+          }
+        ],
+        "trackBounds": [],
+        "segments": [],
+        "horizontalOverflow": false,
+        "scrollHeight": 806,
+        "scrollY": 0,
+        "scrollMax": 54,
+        "activeElement": "BODY",
+        "questionReachable": true,
+        "controlsReachable": true
+      },
+      "stackFact": {
+        "kind": "linear",
+        "label": "34 over 24. 2 wholes.",
+        "rows": [
+          "24 of 24 equal parts",
+          "10 of 24 equal parts"
+        ],
+        "raw": "34 over 24"
+      },
+      "falsification": {},
+      "reflection": {
+        "id": "plan17-24-phase2-bundle-1-medium-linear-752",
+        "target": "24",
+        "condition": "phase2-bundle-1",
+        "support": "medium",
+        "view": "linear",
+        "height": 752,
+        "interaction": "pointer",
+        "reducedMotion": false,
+        "stage": "reflection",
+        "targetDenominator": "24",
+        "viewport": {
+          "width": 360,
+          "height": 752
+        },
+        "question": {
+          "left": 63,
+          "top": 346.19,
+          "right": 297,
+          "bottom": 440.16,
+          "width": 234,
+          "height": 93.97
+        },
+        "controls": {
+          "left": 63,
+          "top": 474.16,
+          "right": 297,
+          "bottom": 535.34,
+          "width": 234,
+          "height": 61.19
+        },
+        "stack": {
+          "left": 58,
+          "top": 178,
+          "right": 302,
+          "bottom": 269.19,
+          "width": 244,
+          "height": 91.19
+        },
+        "rowBounds": [
+          {
+            "left": 58,
+            "top": 227.19,
+            "right": 302,
+            "bottom": 246.19,
+            "width": 244,
+            "height": 19
+          },
+          {
+            "left": 58,
+            "top": 250.19,
+            "right": 302,
+            "bottom": 269.19,
+            "width": 244,
+            "height": 19
+          }
+        ],
+        "trackBounds": [],
+        "segments": [],
+        "horizontalOverflow": false,
+        "scrollHeight": 867,
+        "scrollY": 0,
+        "scrollMax": 115,
+        "activeElement": "BODY",
+        "questionReachable": true,
+        "controlsReachable": true
+      },
+      "replay": {
+        "id": "plan17-24-phase2-bundle-1-medium-linear-752",
+        "target": "24",
+        "condition": "phase2-bundle-1",
+        "support": "medium",
+        "view": "linear",
+        "height": 752,
+        "interaction": "pointer",
+        "reducedMotion": false,
+        "stage": "replay",
+        "targetDenominator": "24",
+        "viewport": {
+          "width": 360,
+          "height": 752
+        },
+        "question": {
+          "left": 63,
+          "top": 219,
+          "right": 297,
+          "bottom": 269.38,
+          "width": 234,
+          "height": 50.38
+        },
+        "controls": {
+          "left": 63,
+          "top": 303.38,
+          "right": 297,
+          "bottom": 420.38,
+          "width": 234,
+          "height": 117
+        },
+        "stack": null,
+        "rowBounds": [],
+        "trackBounds": [],
+        "segments": [],
+        "horizontalOverflow": false,
+        "scrollHeight": 788,
+        "scrollY": 36,
+        "scrollMax": 36,
+        "activeElement": "BUTTON",
+        "questionReachable": true,
+        "controlsReachable": true
+      },
+      "resetWithholding": {
+        "stackCount": 0,
+        "forbiddenFormsInDomText": [],
+        "forbiddenFormsInVisibleText": [],
+        "forbiddenFormAttributes": [],
+        "structuralBoundaryExclusions": 0,
+        "hiddenLabels": [],
+        "liveRegions": [],
+        "formValues": []
+      }
+    },
+    {
+      "scenario": {
+        "id": "plan17-24-phase2-bundle-2-high-visual-740",
+        "target": "24",
+        "condition": "phase2-bundle-2",
+        "support": "high",
+        "view": "visual",
+        "height": 740,
+        "interaction": "pointer",
+        "reducedMotion": false
+      },
+      "withhold": {
+        "stackCount": 0,
+        "forbiddenFormsInDomText": [],
+        "forbiddenFormsInVisibleText": [],
+        "forbiddenFormAttributes": [],
+        "structuralBoundaryExclusions": 0,
+        "hiddenLabels": [],
+        "liveRegions": [],
+        "formValues": []
+      },
+      "helpCopy": "Try multiplying 3 by 4 to find one common denominator.",
+      "recovery": "The denominator stays the same. Add only the top numbers.",
+      "hiddenLeakRejected": true,
+      "hiddenLeakDiagnostic": "plan17-24-phase2-bundle-2-high-visual-740 hidden sibling seed: result data leaked before a correct answer: {\"stackCount\":1,\"forbiddenFormsInDomText\":[\"34/24\"],\"forbiddenFormsInVisibleText\":[],\"forbiddenFormAttributes\":[{\"element\":\"div.linear-result-stack\",\"name\":\"aria-label\",\"value\":\"seeded result 34/24\"},{\"element\":\"div.linear-result-stack\",\"name\":\"data-answer\",\"value\":\"34/24\"}],\"structuralBoundaryExclusions\":0,\"hiddenLabels\":[\"seeded result 34/24  \"],\"liveRegions\":[],\"formValues\":[]}",
+      "tabRecovery": [],
+      "accepted": {
+        "id": "plan17-24-phase2-bundle-2-high-visual-740",
+        "target": "24",
+        "condition": "phase2-bundle-2",
+        "support": "high",
+        "view": "visual",
+        "height": 740,
+        "interaction": "pointer",
+        "reducedMotion": false,
+        "stage": "accepted-total",
+        "targetDenominator": "24",
+        "viewport": {
+          "width": 360,
+          "height": 740
+        },
+        "question": {
+          "left": 63,
+          "top": 451.09,
+          "right": 297,
+          "bottom": 501.47,
+          "width": 234,
+          "height": 50.38
+        },
+        "controls": {
+          "left": 63,
+          "top": 532.41,
+          "right": 297,
+          "bottom": 576.41,
+          "width": 234,
+          "height": 44
+        },
+        "stack": {
+          "left": 41,
+          "top": 101,
+          "right": 319,
+          "bottom": 248.19,
+          "width": 278,
+          "height": 147.19
+        },
+        "rowBounds": [
+          {
+            "left": 41,
+            "top": 150.19,
+            "right": 319,
+            "bottom": 194.19,
+            "width": 278,
+            "height": 44
+          },
+          {
+            "left": 41,
+            "top": 204.19,
+            "right": 319,
+            "bottom": 248.19,
+            "width": 278,
+            "height": 44
+          }
+        ],
+        "trackBounds": [
+          {
+            "left": 41,
+            "top": 150.19,
+            "right": 319,
+            "bottom": 194.19,
+            "width": 278,
+            "height": 44
+          },
+          {
+            "left": 41,
+            "top": 204.19,
+            "right": 319,
+            "bottom": 248.19,
+            "width": 278,
+            "height": 44
+          }
+        ],
+        "segments": [
+          [
+            {
+              "width": 11.45,
+              "shaded": true
+            },
+            {
+              "width": 11.47,
+              "shaded": true
+            },
+            {
+              "width": 11.45,
+              "shaded": true
+            },
+            {
+              "width": 11.47,
+              "shaded": true
+            },
+            {
+              "width": 11.45,
+              "shaded": true
+            },
+            {
+              "width": 11.47,
+              "shaded": true
+            },
+            {
+              "width": 11.45,
+              "shaded": true
+            },
+            {
+              "width": 11.47,
+              "shaded": true
+            },
+            {
+              "width": 11.45,
+              "shaded": true
+            },
+            {
+              "width": 11.47,
+              "shaded": true
+            },
+            {
+              "width": 11.45,
+              "shaded": true
+            },
+            {
+              "width": 11.47,
+              "shaded": true
+            },
+            {
+              "width": 11.45,
+              "shaded": true
+            },
+            {
+              "width": 11.47,
+              "shaded": true
+            },
+            {
+              "width": 11.45,
+              "shaded": true
+            },
+            {
+              "width": 11.47,
+              "shaded": true
+            },
+            {
+              "width": 11.45,
+              "shaded": true
+            },
+            {
+              "width": 11.45,
+              "shaded": true
+            },
+            {
+              "width": 11.45,
+              "shaded": true
+            },
+            {
+              "width": 11.45,
+              "shaded": true
+            },
+            {
+              "width": 11.45,
+              "shaded": true
+            },
+            {
+              "width": 11.45,
+              "shaded": true
+            },
+            {
+              "width": 11.45,
+              "shaded": true
+            },
+            {
+              "width": 10.45,
+              "shaded": true
+            }
+          ],
+          [
+            {
+              "width": 11.45,
+              "shaded": true
+            },
+            {
+              "width": 11.47,
+              "shaded": true
+            },
+            {
+              "width": 11.45,
+              "shaded": true
+            },
+            {
+              "width": 11.47,
+              "shaded": true
+            },
+            {
+              "width": 11.45,
+              "shaded": true
+            },
+            {
+              "width": 11.47,
+              "shaded": true
+            },
+            {
+              "width": 11.45,
+              "shaded": true
+            },
+            {
+              "width": 11.47,
+              "shaded": true
+            },
+            {
+              "width": 11.45,
+              "shaded": true
+            },
+            {
+              "width": 11.47,
+              "shaded": true
+            },
+            {
+              "width": 11.45,
+              "shaded": false
+            },
+            {
+              "width": 11.47,
+              "shaded": false
+            },
+            {
+              "width": 11.45,
+              "shaded": false
+            },
+            {
+              "width": 11.47,
+              "shaded": false
+            },
+            {
+              "width": 11.45,
+              "shaded": false
+            },
+            {
+              "width": 11.47,
+              "shaded": false
+            },
+            {
+              "width": 11.45,
+              "shaded": false
+            },
+            {
+              "width": 11.45,
+              "shaded": false
+            },
+            {
+              "width": 11.45,
+              "shaded": false
+            },
+            {
+              "width": 11.45,
+              "shaded": false
+            },
+            {
+              "width": 11.45,
+              "shaded": false
+            },
+            {
+              "width": 11.45,
+              "shaded": false
+            },
+            {
+              "width": 11.45,
+              "shaded": false
+            },
+            {
+              "width": 10.45,
+              "shaded": false
+            }
+          ]
+        ],
+        "horizontalOverflow": false,
+        "scrollHeight": 968,
+        "scrollY": 60,
+        "scrollMax": 228,
+        "activeElement": "BODY",
+        "questionReachable": true,
+        "controlsReachable": true
+      },
+      "stackFact": {
+        "kind": "visual",
+        "label": "34 over 24. 2 equal-width wholes; the last whole has 10 of 24 equal parts shaded.",
+        "rows": [
+          {
+            "width": 278,
+            "unitCount": 24,
+            "shaded": 24
+          },
+          {
+            "width": 278,
+            "unitCount": 24,
+            "shaded": 10
+          }
+        ],
+        "raw": "34 over 24"
+      },
+      "falsification": {
+        "rejectsTruncatedRemainder": true,
+        "rejectsResizedSecondWhole": true,
+        "rejectsCorruptRenderedFact": true,
+        "restoredWitnessPasses": true
+      },
+      "reflection": {
+        "id": "plan17-24-phase2-bundle-2-high-visual-740",
+        "target": "24",
+        "condition": "phase2-bundle-2",
+        "support": "high",
+        "view": "visual",
+        "height": 740,
+        "interaction": "pointer",
+        "reducedMotion": false,
+        "stage": "reflection",
+        "targetDenominator": "24",
+        "viewport": {
+          "width": 360,
+          "height": 740
+        },
+        "question": {
+          "left": 63,
+          "top": 371.09,
+          "right": 297,
+          "bottom": 421.47,
+          "width": 234,
+          "height": 50.38
+        },
+        "controls": {
+          "left": 63,
+          "top": 452.41,
+          "right": 297,
+          "bottom": 740.41,
+          "width": 234,
+          "height": 288
+        },
+        "stack": {
+          "left": 41,
+          "top": 21,
+          "right": 319,
+          "bottom": 168.19,
+          "width": 278,
+          "height": 147.19
+        },
+        "rowBounds": [
+          {
+            "left": 41,
+            "top": 70.19,
+            "right": 319,
+            "bottom": 114.19,
+            "width": 278,
+            "height": 44
+          },
+          {
+            "left": 41,
+            "top": 124.19,
+            "right": 319,
+            "bottom": 168.19,
+            "width": 278,
+            "height": 44
+          }
+        ],
+        "trackBounds": [
+          {
+            "left": 41,
+            "top": 70.19,
+            "right": 319,
+            "bottom": 114.19,
+            "width": 278,
+            "height": 44
+          },
+          {
+            "left": 41,
+            "top": 124.19,
+            "right": 319,
+            "bottom": 168.19,
+            "width": 278,
+            "height": 44
+          }
+        ],
+        "segments": [
+          [
+            {
+              "width": 11.45,
+              "shaded": true
+            },
+            {
+              "width": 11.47,
+              "shaded": true
+            },
+            {
+              "width": 11.45,
+              "shaded": true
+            },
+            {
+              "width": 11.47,
+              "shaded": true
+            },
+            {
+              "width": 11.45,
+              "shaded": true
+            },
+            {
+              "width": 11.47,
+              "shaded": true
+            },
+            {
+              "width": 11.45,
+              "shaded": true
+            },
+            {
+              "width": 11.47,
+              "shaded": true
+            },
+            {
+              "width": 11.45,
+              "shaded": true
+            },
+            {
+              "width": 11.47,
+              "shaded": true
+            },
+            {
+              "width": 11.45,
+              "shaded": true
+            },
+            {
+              "width": 11.47,
+              "shaded": true
+            },
+            {
+              "width": 11.45,
+              "shaded": true
+            },
+            {
+              "width": 11.47,
+              "shaded": true
+            },
+            {
+              "width": 11.45,
+              "shaded": true
+            },
+            {
+              "width": 11.47,
+              "shaded": true
+            },
+            {
+              "width": 11.45,
+              "shaded": true
+            },
+            {
+              "width": 11.45,
+              "shaded": true
+            },
+            {
+              "width": 11.45,
+              "shaded": true
+            },
+            {
+              "width": 11.45,
+              "shaded": true
+            },
+            {
+              "width": 11.45,
+              "shaded": true
+            },
+            {
+              "width": 11.45,
+              "shaded": true
+            },
+            {
+              "width": 11.45,
+              "shaded": true
+            },
+            {
+              "width": 10.45,
+              "shaded": true
+            }
+          ],
+          [
+            {
+              "width": 11.45,
+              "shaded": true
+            },
+            {
+              "width": 11.47,
+              "shaded": true
+            },
+            {
+              "width": 11.45,
+              "shaded": true
+            },
+            {
+              "width": 11.47,
+              "shaded": true
+            },
+            {
+              "width": 11.45,
+              "shaded": true
+            },
+            {
+              "width": 11.47,
+              "shaded": true
+            },
+            {
+              "width": 11.45,
+              "shaded": true
+            },
+            {
+              "width": 11.47,
+              "shaded": true
+            },
+            {
+              "width": 11.45,
+              "shaded": true
+            },
+            {
+              "width": 11.47,
+              "shaded": true
+            },
+            {
+              "width": 11.45,
+              "shaded": false
+            },
+            {
+              "width": 11.47,
+              "shaded": false
+            },
+            {
+              "width": 11.45,
+              "shaded": false
+            },
+            {
+              "width": 11.47,
+              "shaded": false
+            },
+            {
+              "width": 11.45,
+              "shaded": false
+            },
+            {
+              "width": 11.47,
+              "shaded": false
+            },
+            {
+              "width": 11.45,
+              "shaded": false
+            },
+            {
+              "width": 11.45,
+              "shaded": false
+            },
+            {
+              "width": 11.45,
+              "shaded": false
+            },
+            {
+              "width": 11.45,
+              "shaded": false
+            },
+            {
+              "width": 11.45,
+              "shaded": false
+            },
+            {
+              "width": 11.45,
+              "shaded": false
+            },
+            {
+              "width": 11.45,
+              "shaded": false
+            },
+            {
+              "width": 10.45,
+              "shaded": false
+            }
+          ]
+        ],
+        "horizontalOverflow": false,
+        "scrollHeight": 1212,
+        "scrollY": 140,
+        "scrollMax": 472,
+        "activeElement": "BODY",
+        "questionReachable": true,
+        "controlsReachable": true
+      },
+      "replay": {
+        "id": "plan17-24-phase2-bundle-2-high-visual-740",
+        "target": "24",
+        "condition": "phase2-bundle-2",
+        "support": "high",
+        "view": "visual",
+        "height": 740,
+        "interaction": "pointer",
+        "reducedMotion": false,
+        "stage": "replay",
+        "targetDenominator": "24",
+        "viewport": {
+          "width": 360,
+          "height": 740
+        },
+        "question": {
+          "left": 63,
+          "top": 38.91,
+          "right": 297,
+          "bottom": 89.28,
+          "width": 234,
+          "height": 50.38
+        },
+        "controls": {
+          "left": 63,
+          "top": 120.22,
+          "right": 297,
+          "bottom": 411.22,
+          "width": 234,
+          "height": 291
+        },
+        "stack": null,
+        "rowBounds": [],
+        "trackBounds": [],
+        "segments": [],
+        "horizontalOverflow": false,
+        "scrollHeight": 1068,
+        "scrollY": 325,
+        "scrollMax": 328,
+        "activeElement": "BUTTON",
+        "questionReachable": true,
+        "controlsReachable": true
+      },
+      "resetWithholding": {
+        "stackCount": 0,
+        "forbiddenFormsInDomText": [],
+        "forbiddenFormsInVisibleText": [],
+        "forbiddenFormAttributes": [],
+        "structuralBoundaryExclusions": 0,
+        "hiddenLabels": [],
+        "liveRegions": [],
+        "formValues": []
+      }
+    },
+    {
+      "scenario": {
+        "id": "plan17-24-phase2-bundle-2-medium-linear-752",
+        "target": "24",
+        "condition": "phase2-bundle-2",
+        "support": "medium",
+        "view": "linear",
+        "height": 752,
+        "interaction": "pointer",
+        "reducedMotion": true
+      },
+      "withhold": {
+        "stackCount": 0,
+        "forbiddenFormsInDomText": [],
+        "forbiddenFormsInVisibleText": [],
+        "forbiddenFormAttributes": [],
+        "structuralBoundaryExclusions": 0,
+        "hiddenLabels": [],
+        "liveRegions": [],
+        "formValues": []
+      },
+      "helpCopy": "Try multiplying 3 by 4 to find one common denominator.",
+      "recovery": "The denominator stays the same. Add only the top numbers.",
+      "hiddenLeakRejected": true,
+      "hiddenLeakDiagnostic": "plan17-24-phase2-bundle-2-medium-linear-752 hidden sibling seed: result data leaked before a correct answer: {\"stackCount\":1,\"forbiddenFormsInDomText\":[\"34/24\"],\"forbiddenFormsInVisibleText\":[\"34/24\"],\"forbiddenFormAttributes\":[{\"element\":\"div.linear-result-stack\",\"name\":\"aria-label\",\"value\":\"seeded result 34/24\"},{\"element\":\"div.linear-result-stack\",\"name\":\"data-answer\",\"value\":\"34/24\"}],\"structuralBoundaryExclusions\":0,\"hiddenLabels\":[\"seeded result 34/24  \"],\"liveRegions\":[],\"formValues\":[]}",
+      "tabRecovery": [],
+      "accepted": {
+        "id": "plan17-24-phase2-bundle-2-medium-linear-752",
+        "target": "24",
+        "condition": "phase2-bundle-2",
+        "support": "medium",
+        "view": "linear",
+        "height": 752,
+        "interaction": "pointer",
+        "reducedMotion": true,
+        "stage": "accepted-total",
+        "targetDenominator": "24",
+        "viewport": {
+          "width": 360,
+          "height": 752
+        },
+        "question": {
+          "left": 63,
+          "top": 346.19,
+          "right": 297,
+          "bottom": 396.56,
+          "width": 234,
+          "height": 50.38
+        },
+        "controls": {
+          "left": 63,
+          "top": 430.56,
+          "right": 297,
+          "bottom": 474.56,
+          "width": 234,
+          "height": 44
+        },
+        "stack": {
+          "left": 58,
+          "top": 178,
+          "right": 302,
+          "bottom": 269.19,
+          "width": 244,
+          "height": 91.19
+        },
+        "rowBounds": [
+          {
+            "left": 58,
+            "top": 227.19,
+            "right": 302,
+            "bottom": 246.19,
+            "width": 244,
+            "height": 19
+          },
+          {
+            "left": 58,
+            "top": 250.19,
+            "right": 302,
+            "bottom": 269.19,
+            "width": 244,
+            "height": 19
+          }
+        ],
+        "trackBounds": [],
+        "segments": [],
+        "horizontalOverflow": false,
+        "scrollHeight": 806,
+        "scrollY": 0,
+        "scrollMax": 54,
+        "activeElement": "BODY",
+        "questionReachable": true,
+        "controlsReachable": true
+      },
+      "stackFact": {
+        "kind": "linear",
+        "label": "34 over 24. 2 wholes.",
+        "rows": [
+          "24 of 24 equal parts",
+          "10 of 24 equal parts"
+        ],
+        "raw": "34 over 24"
+      },
+      "falsification": {},
+      "reflection": {
+        "id": "plan17-24-phase2-bundle-2-medium-linear-752",
+        "target": "24",
+        "condition": "phase2-bundle-2",
+        "support": "medium",
+        "view": "linear",
+        "height": 752,
+        "interaction": "pointer",
+        "reducedMotion": true,
+        "stage": "reflection",
+        "targetDenominator": "24",
+        "viewport": {
+          "width": 360,
+          "height": 752
+        },
+        "question": {
+          "left": 63,
+          "top": 346.19,
+          "right": 297,
+          "bottom": 440.16,
+          "width": 234,
+          "height": 93.97
+        },
+        "controls": {
+          "left": 63,
+          "top": 474.16,
+          "right": 297,
+          "bottom": 535.34,
+          "width": 234,
+          "height": 61.19
+        },
+        "stack": {
+          "left": 58,
+          "top": 178,
+          "right": 302,
+          "bottom": 269.19,
+          "width": 244,
+          "height": 91.19
+        },
+        "rowBounds": [
+          {
+            "left": 58,
+            "top": 227.19,
+            "right": 302,
+            "bottom": 246.19,
+            "width": 244,
+            "height": 19
+          },
+          {
+            "left": 58,
+            "top": 250.19,
+            "right": 302,
+            "bottom": 269.19,
+            "width": 244,
+            "height": 19
+          }
+        ],
+        "trackBounds": [],
+        "segments": [],
+        "horizontalOverflow": false,
+        "scrollHeight": 867,
+        "scrollY": 0,
+        "scrollMax": 115,
+        "activeElement": "BODY",
+        "questionReachable": true,
+        "controlsReachable": true
+      },
+      "replay": {
+        "id": "plan17-24-phase2-bundle-2-medium-linear-752",
+        "target": "24",
+        "condition": "phase2-bundle-2",
+        "support": "medium",
+        "view": "linear",
+        "height": 752,
+        "interaction": "pointer",
+        "reducedMotion": true,
+        "stage": "replay",
+        "targetDenominator": "24",
+        "viewport": {
+          "width": 360,
+          "height": 752
+        },
+        "question": {
+          "left": 63,
+          "top": 218,
+          "right": 297,
+          "bottom": 268.38,
+          "width": 234,
+          "height": 50.38
+        },
+        "controls": {
+          "left": 63,
+          "top": 302.38,
+          "right": 297,
+          "bottom": 457.38,
+          "width": 234,
+          "height": 155
+        },
+        "stack": null,
+        "rowBounds": [],
+        "trackBounds": [],
+        "segments": [],
+        "horizontalOverflow": false,
+        "scrollHeight": 826,
+        "scrollY": 37,
+        "scrollMax": 74,
+        "activeElement": "BUTTON",
+        "questionReachable": true,
+        "controlsReachable": true
+      },
+      "resetWithholding": {
+        "stackCount": 0,
+        "forbiddenFormsInDomText": [],
+        "forbiddenFormsInVisibleText": [],
+        "forbiddenFormAttributes": [],
+        "structuralBoundaryExclusions": 0,
+        "hiddenLabels": [],
+        "liveRegions": [],
+        "formValues": []
+      }
+    },
+    {
+      "scenario": {
+        "id": "plan17-24-phase2-bundle-3-high-visual-740",
+        "target": "24",
+        "condition": "phase2-bundle-3",
+        "support": "high",
+        "view": "visual",
+        "height": 740,
+        "interaction": "pointer",
+        "reducedMotion": false
+      },
+      "withhold": {
+        "stackCount": 0,
+        "forbiddenFormsInDomText": [],
+        "forbiddenFormsInVisibleText": [],
+        "forbiddenFormAttributes": [],
+        "structuralBoundaryExclusions": 0,
+        "hiddenLabels": [],
+        "liveRegions": [],
+        "formValues": []
+      },
+      "helpCopy": "Try multiplying 3 by 4 to find one common denominator.",
+      "recovery": "The denominator stays the same. Add only the top numbers.",
+      "hiddenLeakRejected": true,
+      "hiddenLeakDiagnostic": "plan17-24-phase2-bundle-3-high-visual-740 hidden sibling seed: result data leaked before a correct answer: {\"stackCount\":1,\"forbiddenFormsInDomText\":[\"34/24\"],\"forbiddenFormsInVisibleText\":[],\"forbiddenFormAttributes\":[{\"element\":\"div.linear-result-stack\",\"name\":\"aria-label\",\"value\":\"seeded result 34/24\"},{\"element\":\"div.linear-result-stack\",\"name\":\"data-answer\",\"value\":\"34/24\"}],\"structuralBoundaryExclusions\":0,\"hiddenLabels\":[\"seeded result 34/24  \"],\"liveRegions\":[],\"formValues\":[]}",
+      "tabRecovery": [],
+      "accepted": {
+        "id": "plan17-24-phase2-bundle-3-high-visual-740",
+        "target": "24",
+        "condition": "phase2-bundle-3",
+        "support": "high",
+        "view": "visual",
+        "height": 740,
+        "interaction": "pointer",
+        "reducedMotion": false,
+        "stage": "accepted-total",
+        "targetDenominator": "24",
+        "viewport": {
+          "width": 360,
+          "height": 740
+        },
+        "question": {
+          "left": 63,
+          "top": 403.09,
+          "right": 297,
+          "bottom": 453.47,
+          "width": 234,
+          "height": 50.38
+        },
+        "controls": {
+          "left": 63,
+          "top": 484.41,
+          "right": 297,
+          "bottom": 528.41,
+          "width": 234,
+          "height": 44
+        },
+        "stack": {
+          "left": 41,
+          "top": 53,
+          "right": 319,
+          "bottom": 200.19,
+          "width": 278,
+          "height": 147.19
+        },
+        "rowBounds": [
+          {
+            "left": 41,
+            "top": 102.19,
+            "right": 319,
+            "bottom": 146.19,
+            "width": 278,
+            "height": 44
+          },
+          {
+            "left": 41,
+            "top": 156.19,
+            "right": 319,
+            "bottom": 200.19,
+            "width": 278,
+            "height": 44
+          }
+        ],
+        "trackBounds": [
+          {
+            "left": 41,
+            "top": 102.19,
+            "right": 319,
+            "bottom": 146.19,
+            "width": 278,
+            "height": 44
+          },
+          {
+            "left": 41,
+            "top": 156.19,
+            "right": 319,
+            "bottom": 200.19,
+            "width": 278,
+            "height": 44
+          }
+        ],
+        "segments": [
+          [
+            {
+              "width": 11.45,
+              "shaded": true
+            },
+            {
+              "width": 11.47,
+              "shaded": true
+            },
+            {
+              "width": 11.45,
+              "shaded": true
+            },
+            {
+              "width": 11.47,
+              "shaded": true
+            },
+            {
+              "width": 11.45,
+              "shaded": true
+            },
+            {
+              "width": 11.47,
+              "shaded": true
+            },
+            {
+              "width": 11.45,
+              "shaded": true
+            },
+            {
+              "width": 11.47,
+              "shaded": true
+            },
+            {
+              "width": 11.45,
+              "shaded": true
+            },
+            {
+              "width": 11.47,
+              "shaded": true
+            },
+            {
+              "width": 11.45,
+              "shaded": true
+            },
+            {
+              "width": 11.47,
+              "shaded": true
+            },
+            {
+              "width": 11.45,
+              "shaded": true
+            },
+            {
+              "width": 11.47,
+              "shaded": true
+            },
+            {
+              "width": 11.45,
+              "shaded": true
+            },
+            {
+              "width": 11.47,
+              "shaded": true
+            },
+            {
+              "width": 11.45,
+              "shaded": true
+            },
+            {
+              "width": 11.45,
+              "shaded": true
+            },
+            {
+              "width": 11.45,
+              "shaded": true
+            },
+            {
+              "width": 11.45,
+              "shaded": true
+            },
+            {
+              "width": 11.45,
+              "shaded": true
+            },
+            {
+              "width": 11.45,
+              "shaded": true
+            },
+            {
+              "width": 11.45,
+              "shaded": true
+            },
+            {
+              "width": 10.45,
+              "shaded": true
+            }
+          ],
+          [
+            {
+              "width": 11.45,
+              "shaded": true
+            },
+            {
+              "width": 11.47,
+              "shaded": true
+            },
+            {
+              "width": 11.45,
+              "shaded": true
+            },
+            {
+              "width": 11.47,
+              "shaded": true
+            },
+            {
+              "width": 11.45,
+              "shaded": true
+            },
+            {
+              "width": 11.47,
+              "shaded": true
+            },
+            {
+              "width": 11.45,
+              "shaded": true
+            },
+            {
+              "width": 11.47,
+              "shaded": true
+            },
+            {
+              "width": 11.45,
+              "shaded": true
+            },
+            {
+              "width": 11.47,
+              "shaded": true
+            },
+            {
+              "width": 11.45,
+              "shaded": false
+            },
+            {
+              "width": 11.47,
+              "shaded": false
+            },
+            {
+              "width": 11.45,
+              "shaded": false
+            },
+            {
+              "width": 11.47,
+              "shaded": false
+            },
+            {
+              "width": 11.45,
+              "shaded": false
+            },
+            {
+              "width": 11.47,
+              "shaded": false
+            },
+            {
+              "width": 11.45,
+              "shaded": false
+            },
+            {
+              "width": 11.45,
+              "shaded": false
+            },
+            {
+              "width": 11.45,
+              "shaded": false
+            },
+            {
+              "width": 11.45,
+              "shaded": false
+            },
+            {
+              "width": 11.45,
+              "shaded": false
+            },
+            {
+              "width": 11.45,
+              "shaded": false
+            },
+            {
+              "width": 11.45,
+              "shaded": false
+            },
+            {
+              "width": 10.45,
+              "shaded": false
+            }
+          ]
+        ],
+        "horizontalOverflow": false,
+        "scrollHeight": 968,
+        "scrollY": 108,
+        "scrollMax": 228,
+        "activeElement": "BODY",
+        "questionReachable": true,
+        "controlsReachable": true
+      },
+      "stackFact": {
+        "kind": "visual",
+        "label": "34 over 24. 2 equal-width wholes; the last whole has 10 of 24 equal parts shaded.",
+        "rows": [
+          {
+            "width": 278,
+            "unitCount": 24,
+            "shaded": 24
+          },
+          {
+            "width": 278,
+            "unitCount": 24,
+            "shaded": 10
+          }
+        ],
+        "raw": "34 over 24"
+      },
+      "falsification": {
+        "rejectsTruncatedRemainder": true,
+        "rejectsResizedSecondWhole": true,
+        "rejectsCorruptRenderedFact": true,
+        "restoredWitnessPasses": true
+      },
+      "reflection": {
+        "id": "plan17-24-phase2-bundle-3-high-visual-740",
+        "target": "24",
+        "condition": "phase2-bundle-3",
+        "support": "high",
+        "view": "visual",
+        "height": 740,
+        "interaction": "pointer",
+        "reducedMotion": false,
+        "stage": "reflection",
+        "targetDenominator": "24",
+        "viewport": {
+          "width": 360,
+          "height": 740
+        },
+        "question": {
+          "left": 63,
+          "top": 371.09,
+          "right": 297,
+          "bottom": 421.47,
+          "width": 234,
+          "height": 50.38
+        },
+        "controls": {
+          "left": 63,
+          "top": 452.41,
+          "right": 297,
+          "bottom": 740.41,
+          "width": 234,
+          "height": 288
+        },
+        "stack": {
+          "left": 41,
+          "top": 21,
+          "right": 319,
+          "bottom": 168.19,
+          "width": 278,
+          "height": 147.19
+        },
+        "rowBounds": [
+          {
+            "left": 41,
+            "top": 70.19,
+            "right": 319,
+            "bottom": 114.19,
+            "width": 278,
+            "height": 44
+          },
+          {
+            "left": 41,
+            "top": 124.19,
+            "right": 319,
+            "bottom": 168.19,
+            "width": 278,
+            "height": 44
+          }
+        ],
+        "trackBounds": [
+          {
+            "left": 41,
+            "top": 70.19,
+            "right": 319,
+            "bottom": 114.19,
+            "width": 278,
+            "height": 44
+          },
+          {
+            "left": 41,
+            "top": 124.19,
+            "right": 319,
+            "bottom": 168.19,
+            "width": 278,
+            "height": 44
+          }
+        ],
+        "segments": [
+          [
+            {
+              "width": 11.45,
+              "shaded": true
+            },
+            {
+              "width": 11.47,
+              "shaded": true
+            },
+            {
+              "width": 11.45,
+              "shaded": true
+            },
+            {
+              "width": 11.47,
+              "shaded": true
+            },
+            {
+              "width": 11.45,
+              "shaded": true
+            },
+            {
+              "width": 11.47,
+              "shaded": true
+            },
+            {
+              "width": 11.45,
+              "shaded": true
+            },
+            {
+              "width": 11.47,
+              "shaded": true
+            },
+            {
+              "width": 11.45,
+              "shaded": true
+            },
+            {
+              "width": 11.47,
+              "shaded": true
+            },
+            {
+              "width": 11.45,
+              "shaded": true
+            },
+            {
+              "width": 11.47,
+              "shaded": true
+            },
+            {
+              "width": 11.45,
+              "shaded": true
+            },
+            {
+              "width": 11.47,
+              "shaded": true
+            },
+            {
+              "width": 11.45,
+              "shaded": true
+            },
+            {
+              "width": 11.47,
+              "shaded": true
+            },
+            {
+              "width": 11.45,
+              "shaded": true
+            },
+            {
+              "width": 11.45,
+              "shaded": true
+            },
+            {
+              "width": 11.45,
+              "shaded": true
+            },
+            {
+              "width": 11.45,
+              "shaded": true
+            },
+            {
+              "width": 11.45,
+              "shaded": true
+            },
+            {
+              "width": 11.45,
+              "shaded": true
+            },
+            {
+              "width": 11.45,
+              "shaded": true
+            },
+            {
+              "width": 10.45,
+              "shaded": true
+            }
+          ],
+          [
+            {
+              "width": 11.45,
+              "shaded": true
+            },
+            {
+              "width": 11.47,
+              "shaded": true
+            },
+            {
+              "width": 11.45,
+              "shaded": true
+            },
+            {
+              "width": 11.47,
+              "shaded": true
+            },
+            {
+              "width": 11.45,
+              "shaded": true
+            },
+            {
+              "width": 11.47,
+              "shaded": true
+            },
+            {
+              "width": 11.45,
+              "shaded": true
+            },
+            {
+              "width": 11.47,
+              "shaded": true
+            },
+            {
+              "width": 11.45,
+              "shaded": true
+            },
+            {
+              "width": 11.47,
+              "shaded": true
+            },
+            {
+              "width": 11.45,
+              "shaded": false
+            },
+            {
+              "width": 11.47,
+              "shaded": false
+            },
+            {
+              "width": 11.45,
+              "shaded": false
+            },
+            {
+              "width": 11.47,
+              "shaded": false
+            },
+            {
+              "width": 11.45,
+              "shaded": false
+            },
+            {
+              "width": 11.47,
+              "shaded": false
+            },
+            {
+              "width": 11.45,
+              "shaded": false
+            },
+            {
+              "width": 11.45,
+              "shaded": false
+            },
+            {
+              "width": 11.45,
+              "shaded": false
+            },
+            {
+              "width": 11.45,
+              "shaded": false
+            },
+            {
+              "width": 11.45,
+              "shaded": false
+            },
+            {
+              "width": 11.45,
+              "shaded": false
+            },
+            {
+              "width": 11.45,
+              "shaded": false
+            },
+            {
+              "width": 10.45,
+              "shaded": false
+            }
+          ]
+        ],
+        "horizontalOverflow": false,
+        "scrollHeight": 1212,
+        "scrollY": 140,
+        "scrollMax": 472,
+        "activeElement": "BODY",
+        "questionReachable": true,
+        "controlsReachable": true
+      },
+      "replay": {
+        "id": "plan17-24-phase2-bundle-3-high-visual-740",
+        "target": "24",
+        "condition": "phase2-bundle-3",
+        "support": "high",
+        "view": "visual",
+        "height": 740,
+        "interaction": "pointer",
+        "reducedMotion": false,
+        "stage": "replay",
+        "targetDenominator": "24",
+        "viewport": {
+          "width": 360,
+          "height": 740
+        },
+        "question": {
+          "left": 63,
+          "top": 38.91,
+          "right": 297,
+          "bottom": 89.28,
+          "width": 234,
+          "height": 50.38
+        },
+        "controls": {
+          "left": 63,
+          "top": 120.22,
+          "right": 297,
+          "bottom": 459.22,
+          "width": 234,
+          "height": 339
+        },
+        "stack": null,
+        "rowBounds": [],
+        "trackBounds": [],
+        "segments": [],
+        "horizontalOverflow": false,
+        "scrollHeight": 1116,
+        "scrollY": 325,
+        "scrollMax": 376,
+        "activeElement": "BUTTON",
+        "questionReachable": true,
+        "controlsReachable": true
+      },
+      "resetWithholding": {
+        "stackCount": 0,
+        "forbiddenFormsInDomText": [],
+        "forbiddenFormsInVisibleText": [],
+        "forbiddenFormAttributes": [],
+        "structuralBoundaryExclusions": 0,
+        "hiddenLabels": [],
+        "liveRegions": [],
+        "formValues": []
+      }
+    },
+    {
+      "scenario": {
+        "id": "plan17-24-phase2-bundle-3-medium-linear-752",
+        "target": "24",
+        "condition": "phase2-bundle-3",
+        "support": "medium",
+        "view": "linear",
+        "height": 752,
+        "interaction": "pointer",
+        "reducedMotion": false
+      },
+      "withhold": {
+        "stackCount": 0,
+        "forbiddenFormsInDomText": [],
+        "forbiddenFormsInVisibleText": [],
+        "forbiddenFormAttributes": [],
+        "structuralBoundaryExclusions": 0,
+        "hiddenLabels": [],
+        "liveRegions": [],
+        "formValues": []
+      },
+      "helpCopy": "Try multiplying 3 by 4 to find one common denominator.",
+      "recovery": "The denominator stays the same. Add only the top numbers.",
+      "hiddenLeakRejected": true,
+      "hiddenLeakDiagnostic": "plan17-24-phase2-bundle-3-medium-linear-752 hidden sibling seed: result data leaked before a correct answer: {\"stackCount\":1,\"forbiddenFormsInDomText\":[\"34/24\"],\"forbiddenFormsInVisibleText\":[\"34/24\"],\"forbiddenFormAttributes\":[{\"element\":\"div.linear-result-stack\",\"name\":\"aria-label\",\"value\":\"seeded result 34/24\"},{\"element\":\"div.linear-result-stack\",\"name\":\"data-answer\",\"value\":\"34/24\"}],\"structuralBoundaryExclusions\":0,\"hiddenLabels\":[\"seeded result 34/24  \"],\"liveRegions\":[],\"formValues\":[]}",
+      "tabRecovery": [],
+      "accepted": {
+        "id": "plan17-24-phase2-bundle-3-medium-linear-752",
+        "target": "24",
+        "condition": "phase2-bundle-3",
+        "support": "medium",
+        "view": "linear",
+        "height": 752,
+        "interaction": "pointer",
+        "reducedMotion": false,
+        "stage": "accepted-total",
+        "targetDenominator": "24",
+        "viewport": {
+          "width": 360,
+          "height": 752
+        },
+        "question": {
+          "left": 63,
+          "top": 346.19,
+          "right": 297,
+          "bottom": 396.56,
+          "width": 234,
+          "height": 50.38
+        },
+        "controls": {
+          "left": 63,
+          "top": 430.56,
+          "right": 297,
+          "bottom": 474.56,
+          "width": 234,
+          "height": 44
+        },
+        "stack": {
+          "left": 58,
+          "top": 178,
+          "right": 302,
+          "bottom": 269.19,
+          "width": 244,
+          "height": 91.19
+        },
+        "rowBounds": [
+          {
+            "left": 58,
+            "top": 227.19,
+            "right": 302,
+            "bottom": 246.19,
+            "width": 244,
+            "height": 19
+          },
+          {
+            "left": 58,
+            "top": 250.19,
+            "right": 302,
+            "bottom": 269.19,
+            "width": 244,
+            "height": 19
+          }
+        ],
+        "trackBounds": [],
+        "segments": [],
+        "horizontalOverflow": false,
+        "scrollHeight": 806,
+        "scrollY": 0,
+        "scrollMax": 54,
+        "activeElement": "BODY",
+        "questionReachable": true,
+        "controlsReachable": true
+      },
+      "stackFact": {
+        "kind": "linear",
+        "label": "34 over 24. 2 wholes.",
+        "rows": [
+          "24 of 24 equal parts",
+          "10 of 24 equal parts"
+        ],
+        "raw": "34 over 24"
+      },
+      "falsification": {},
+      "reflection": {
+        "id": "plan17-24-phase2-bundle-3-medium-linear-752",
+        "target": "24",
+        "condition": "phase2-bundle-3",
+        "support": "medium",
+        "view": "linear",
+        "height": 752,
+        "interaction": "pointer",
+        "reducedMotion": false,
+        "stage": "reflection",
+        "targetDenominator": "24",
+        "viewport": {
+          "width": 360,
+          "height": 752
+        },
+        "question": {
+          "left": 63,
+          "top": 346.19,
+          "right": 297,
+          "bottom": 440.16,
+          "width": 234,
+          "height": 93.97
+        },
+        "controls": {
+          "left": 63,
+          "top": 474.16,
+          "right": 297,
+          "bottom": 535.34,
+          "width": 234,
+          "height": 61.19
+        },
+        "stack": {
+          "left": 58,
+          "top": 178,
+          "right": 302,
+          "bottom": 269.19,
+          "width": 244,
+          "height": 91.19
+        },
+        "rowBounds": [
+          {
+            "left": 58,
+            "top": 227.19,
+            "right": 302,
+            "bottom": 246.19,
+            "width": 244,
+            "height": 19
+          },
+          {
+            "left": 58,
+            "top": 250.19,
+            "right": 302,
+            "bottom": 269.19,
+            "width": 244,
+            "height": 19
+          }
+        ],
+        "trackBounds": [],
+        "segments": [],
+        "horizontalOverflow": false,
+        "scrollHeight": 867,
+        "scrollY": 0,
+        "scrollMax": 115,
+        "activeElement": "BODY",
+        "questionReachable": true,
+        "controlsReachable": true
+      },
+      "replay": {
+        "id": "plan17-24-phase2-bundle-3-medium-linear-752",
+        "target": "24",
+        "condition": "phase2-bundle-3",
+        "support": "medium",
+        "view": "linear",
+        "height": 752,
+        "interaction": "pointer",
+        "reducedMotion": false,
+        "stage": "replay",
+        "targetDenominator": "24",
+        "viewport": {
+          "width": 360,
+          "height": 752
+        },
+        "question": {
+          "left": 63,
+          "top": 218,
+          "right": 297,
+          "bottom": 268.38,
+          "width": 234,
+          "height": 50.38
+        },
+        "controls": {
+          "left": 63,
+          "top": 302.38,
+          "right": 297,
+          "bottom": 457.38,
+          "width": 234,
+          "height": 155
+        },
+        "stack": null,
+        "rowBounds": [],
+        "trackBounds": [],
+        "segments": [],
+        "horizontalOverflow": false,
+        "scrollHeight": 826,
+        "scrollY": 37,
+        "scrollMax": 74,
+        "activeElement": "BUTTON",
+        "questionReachable": true,
+        "controlsReachable": true
+      },
+      "resetWithholding": {
+        "stackCount": 0,
+        "forbiddenFormsInDomText": [],
+        "forbiddenFormsInVisibleText": [],
+        "forbiddenFormAttributes": [],
+        "structuralBoundaryExclusions": 0,
+        "hiddenLabels": [],
+        "liveRegions": [],
+        "formValues": []
+      }
+    },
+    {
+      "scenario": {
+        "id": "plan17-24-phase2-bundle-4-high-visual-740",
+        "target": "24",
+        "condition": "phase2-bundle-4",
+        "support": "high",
+        "view": "visual",
+        "height": 740,
+        "interaction": "pointer",
+        "reducedMotion": true
+      },
+      "withhold": {
+        "stackCount": 0,
+        "forbiddenFormsInDomText": [],
+        "forbiddenFormsInVisibleText": [],
+        "forbiddenFormAttributes": [],
+        "structuralBoundaryExclusions": 0,
+        "hiddenLabels": [],
+        "liveRegions": [],
+        "formValues": []
+      },
+      "helpCopy": "Try multiplying 3 by 4 to find one common denominator.",
+      "recovery": "The denominator stays the same. Add only the top numbers.",
+      "hiddenLeakRejected": true,
+      "hiddenLeakDiagnostic": "plan17-24-phase2-bundle-4-high-visual-740 hidden sibling seed: result data leaked before a correct answer: {\"stackCount\":1,\"forbiddenFormsInDomText\":[\"34/24\"],\"forbiddenFormsInVisibleText\":[],\"forbiddenFormAttributes\":[{\"element\":\"div.linear-result-stack\",\"name\":\"aria-label\",\"value\":\"seeded result 34/24\"},{\"element\":\"div.linear-result-stack\",\"name\":\"data-answer\",\"value\":\"34/24\"}],\"structuralBoundaryExclusions\":0,\"hiddenLabels\":[\"seeded result 34/24  \"],\"liveRegions\":[],\"formValues\":[]}",
+      "tabRecovery": [],
+      "accepted": {
+        "id": "plan17-24-phase2-bundle-4-high-visual-740",
+        "target": "24",
+        "condition": "phase2-bundle-4",
+        "support": "high",
+        "view": "visual",
+        "height": 740,
+        "interaction": "pointer",
+        "reducedMotion": true,
+        "stage": "accepted-total",
+        "targetDenominator": "24",
+        "viewport": {
+          "width": 360,
+          "height": 740
+        },
+        "question": {
+          "left": 63,
+          "top": 499.09,
+          "right": 297,
+          "bottom": 549.47,
+          "width": 234,
+          "height": 50.38
+        },
+        "controls": {
+          "left": 63,
+          "top": 580.41,
+          "right": 297,
+          "bottom": 624.41,
+          "width": 234,
+          "height": 44
+        },
+        "stack": {
+          "left": 41,
+          "top": 149,
+          "right": 319,
+          "bottom": 296.19,
+          "width": 278,
+          "height": 147.19
+        },
+        "rowBounds": [
+          {
+            "left": 41,
+            "top": 198.19,
+            "right": 319,
+            "bottom": 242.19,
+            "width": 278,
+            "height": 44
+          },
+          {
+            "left": 41,
+            "top": 252.19,
+            "right": 319,
+            "bottom": 296.19,
+            "width": 278,
+            "height": 44
+          }
+        ],
+        "trackBounds": [
+          {
+            "left": 41,
+            "top": 198.19,
+            "right": 319,
+            "bottom": 242.19,
+            "width": 278,
+            "height": 44
+          },
+          {
+            "left": 41,
+            "top": 252.19,
+            "right": 319,
+            "bottom": 296.19,
+            "width": 278,
+            "height": 44
+          }
+        ],
+        "segments": [
+          [
+            {
+              "width": 11.45,
+              "shaded": true
+            },
+            {
+              "width": 11.47,
+              "shaded": true
+            },
+            {
+              "width": 11.45,
+              "shaded": true
+            },
+            {
+              "width": 11.47,
+              "shaded": true
+            },
+            {
+              "width": 11.45,
+              "shaded": true
+            },
+            {
+              "width": 11.47,
+              "shaded": true
+            },
+            {
+              "width": 11.45,
+              "shaded": true
+            },
+            {
+              "width": 11.47,
+              "shaded": true
+            },
+            {
+              "width": 11.45,
+              "shaded": true
+            },
+            {
+              "width": 11.47,
+              "shaded": true
+            },
+            {
+              "width": 11.45,
+              "shaded": true
+            },
+            {
+              "width": 11.47,
+              "shaded": true
+            },
+            {
+              "width": 11.45,
+              "shaded": true
+            },
+            {
+              "width": 11.47,
+              "shaded": true
+            },
+            {
+              "width": 11.45,
+              "shaded": true
+            },
+            {
+              "width": 11.47,
+              "shaded": true
+            },
+            {
+              "width": 11.45,
+              "shaded": true
+            },
+            {
+              "width": 11.45,
+              "shaded": true
+            },
+            {
+              "width": 11.45,
+              "shaded": true
+            },
+            {
+              "width": 11.45,
+              "shaded": true
+            },
+            {
+              "width": 11.45,
+              "shaded": true
+            },
+            {
+              "width": 11.45,
+              "shaded": true
+            },
+            {
+              "width": 11.45,
+              "shaded": true
+            },
+            {
+              "width": 10.45,
+              "shaded": true
+            }
+          ],
+          [
+            {
+              "width": 11.45,
+              "shaded": true
+            },
+            {
+              "width": 11.47,
+              "shaded": true
+            },
+            {
+              "width": 11.45,
+              "shaded": true
+            },
+            {
+              "width": 11.47,
+              "shaded": true
+            },
+            {
+              "width": 11.45,
+              "shaded": true
+            },
+            {
+              "width": 11.47,
+              "shaded": true
+            },
+            {
+              "width": 11.45,
+              "shaded": true
+            },
+            {
+              "width": 11.47,
+              "shaded": true
+            },
+            {
+              "width": 11.45,
+              "shaded": true
+            },
+            {
+              "width": 11.47,
+              "shaded": true
+            },
+            {
+              "width": 11.45,
+              "shaded": false
+            },
+            {
+              "width": 11.47,
+              "shaded": false
+            },
+            {
+              "width": 11.45,
+              "shaded": false
+            },
+            {
+              "width": 11.47,
+              "shaded": false
+            },
+            {
+              "width": 11.45,
+              "shaded": false
+            },
+            {
+              "width": 11.47,
+              "shaded": false
+            },
+            {
+              "width": 11.45,
+              "shaded": false
+            },
+            {
+              "width": 11.45,
+              "shaded": false
+            },
+            {
+              "width": 11.45,
+              "shaded": false
+            },
+            {
+              "width": 11.45,
+              "shaded": false
+            },
+            {
+              "width": 11.45,
+              "shaded": false
+            },
+            {
+              "width": 11.45,
+              "shaded": false
+            },
+            {
+              "width": 11.45,
+              "shaded": false
+            },
+            {
+              "width": 10.45,
+              "shaded": false
+            }
+          ]
+        ],
+        "horizontalOverflow": false,
+        "scrollHeight": 968,
+        "scrollY": 12,
+        "scrollMax": 228,
+        "activeElement": "BODY",
+        "questionReachable": true,
+        "controlsReachable": true
+      },
+      "stackFact": {
+        "kind": "visual",
+        "label": "34 over 24. 2 equal-width wholes; the last whole has 10 of 24 equal parts shaded.",
+        "rows": [
+          {
+            "width": 278,
+            "unitCount": 24,
+            "shaded": 24
+          },
+          {
+            "width": 278,
+            "unitCount": 24,
+            "shaded": 10
+          }
+        ],
+        "raw": "34 over 24"
+      },
+      "falsification": {
+        "rejectsTruncatedRemainder": true,
+        "rejectsResizedSecondWhole": true,
+        "rejectsCorruptRenderedFact": true,
+        "restoredWitnessPasses": true
+      },
+      "reflection": {
+        "id": "plan17-24-phase2-bundle-4-high-visual-740",
+        "target": "24",
+        "condition": "phase2-bundle-4",
+        "support": "high",
+        "view": "visual",
+        "height": 740,
+        "interaction": "pointer",
+        "reducedMotion": true,
+        "stage": "reflection",
+        "targetDenominator": "24",
+        "viewport": {
+          "width": 360,
+          "height": 740
+        },
+        "question": {
+          "left": 63,
+          "top": 519.97,
+          "right": 297,
+          "bottom": 595.53,
+          "width": 234,
+          "height": 75.56
+        },
+        "controls": {
+          "left": 63,
+          "top": 626.47,
+          "right": 297,
+          "bottom": 740.47,
+          "width": 234,
+          "height": 114
+        },
+        "stack": null,
+        "rowBounds": [],
+        "trackBounds": [],
+        "segments": [],
+        "horizontalOverflow": false,
+        "scrollHeight": 1116,
+        "scrollY": 44,
+        "scrollMax": 376,
+        "activeElement": "BODY",
+        "questionReachable": true,
+        "controlsReachable": true
+      },
+      "replay": {
+        "id": "plan17-24-phase2-bundle-4-high-visual-740",
+        "target": "24",
+        "condition": "phase2-bundle-4",
+        "support": "high",
+        "view": "visual",
+        "height": 740,
+        "interaction": "pointer",
+        "reducedMotion": true,
+        "stage": "replay",
+        "targetDenominator": "24",
+        "viewport": {
+          "width": 360,
+          "height": 740
+        },
+        "question": {
+          "left": 63,
+          "top": 149.91,
+          "right": 297,
+          "bottom": 200.28,
+          "width": 234,
+          "height": 50.38
+        },
+        "controls": {
+          "left": 63,
+          "top": 231.22,
+          "right": 297,
+          "bottom": 430.22,
+          "width": 234,
+          "height": 199
+        },
+        "stack": null,
+        "rowBounds": [],
+        "trackBounds": [],
+        "segments": [],
+        "horizontalOverflow": false,
+        "scrollHeight": 976,
+        "scrollY": 214,
+        "scrollMax": 236,
+        "activeElement": "BUTTON",
+        "questionReachable": true,
+        "controlsReachable": true
+      },
+      "resetWithholding": {
+        "stackCount": 0,
+        "forbiddenFormsInDomText": [],
+        "forbiddenFormsInVisibleText": [],
+        "forbiddenFormAttributes": [],
+        "structuralBoundaryExclusions": 0,
+        "hiddenLabels": [],
+        "liveRegions": [],
+        "formValues": []
+      }
+    },
+    {
+      "scenario": {
+        "id": "plan17-24-phase2-bundle-4-medium-linear-752",
+        "target": "24",
+        "condition": "phase2-bundle-4",
+        "support": "medium",
+        "view": "linear",
+        "height": 752,
+        "interaction": "pointer",
+        "reducedMotion": false
+      },
+      "withhold": {
+        "stackCount": 0,
+        "forbiddenFormsInDomText": [],
+        "forbiddenFormsInVisibleText": [],
+        "forbiddenFormAttributes": [],
+        "structuralBoundaryExclusions": 0,
+        "hiddenLabels": [],
+        "liveRegions": [],
+        "formValues": []
+      },
+      "helpCopy": "Try multiplying 3 by 4 to find one common denominator.",
+      "recovery": "The denominator stays the same. Add only the top numbers.",
+      "hiddenLeakRejected": true,
+      "hiddenLeakDiagnostic": "plan17-24-phase2-bundle-4-medium-linear-752 hidden sibling seed: result data leaked before a correct answer: {\"stackCount\":1,\"forbiddenFormsInDomText\":[\"34/24\"],\"forbiddenFormsInVisibleText\":[\"34/24\"],\"forbiddenFormAttributes\":[{\"element\":\"div.linear-result-stack\",\"name\":\"aria-label\",\"value\":\"seeded result 34/24\"},{\"element\":\"div.linear-result-stack\",\"name\":\"data-answer\",\"value\":\"34/24\"}],\"structuralBoundaryExclusions\":0,\"hiddenLabels\":[\"seeded result 34/24  \"],\"liveRegions\":[],\"formValues\":[]}",
+      "tabRecovery": [],
+      "accepted": {
+        "id": "plan17-24-phase2-bundle-4-medium-linear-752",
+        "target": "24",
+        "condition": "phase2-bundle-4",
+        "support": "medium",
+        "view": "linear",
+        "height": 752,
+        "interaction": "pointer",
+        "reducedMotion": false,
+        "stage": "accepted-total",
+        "targetDenominator": "24",
+        "viewport": {
+          "width": 360,
+          "height": 752
+        },
+        "question": {
+          "left": 63,
+          "top": 346.19,
+          "right": 297,
+          "bottom": 396.56,
+          "width": 234,
+          "height": 50.38
+        },
+        "controls": {
+          "left": 63,
+          "top": 430.56,
+          "right": 297,
+          "bottom": 474.56,
+          "width": 234,
+          "height": 44
+        },
+        "stack": {
+          "left": 58,
+          "top": 178,
+          "right": 302,
+          "bottom": 269.19,
+          "width": 244,
+          "height": 91.19
+        },
+        "rowBounds": [
+          {
+            "left": 58,
+            "top": 227.19,
+            "right": 302,
+            "bottom": 246.19,
+            "width": 244,
+            "height": 19
+          },
+          {
+            "left": 58,
+            "top": 250.19,
+            "right": 302,
+            "bottom": 269.19,
+            "width": 244,
+            "height": 19
+          }
+        ],
+        "trackBounds": [],
+        "segments": [],
+        "horizontalOverflow": false,
+        "scrollHeight": 806,
+        "scrollY": 0,
+        "scrollMax": 54,
+        "activeElement": "BODY",
+        "questionReachable": true,
+        "controlsReachable": true
+      },
+      "stackFact": {
+        "kind": "linear",
+        "label": "34 over 24. 2 wholes.",
+        "rows": [
+          "24 of 24 equal parts",
+          "10 of 24 equal parts"
+        ],
+        "raw": "34 over 24"
+      },
+      "falsification": {},
+      "reflection": {
+        "id": "plan17-24-phase2-bundle-4-medium-linear-752",
+        "target": "24",
+        "condition": "phase2-bundle-4",
+        "support": "medium",
+        "view": "linear",
+        "height": 752,
+        "interaction": "pointer",
+        "reducedMotion": false,
+        "stage": "reflection",
+        "targetDenominator": "24",
+        "viewport": {
+          "width": 360,
+          "height": 752
+        },
+        "question": {
+          "left": 63,
+          "top": 323.38,
+          "right": 297,
+          "bottom": 424.13,
+          "width": 234,
+          "height": 100.75
+        },
+        "controls": {
+          "left": 63,
+          "top": 323.38,
+          "right": 297,
+          "bottom": 538.13,
+          "width": 234,
+          "height": 214.75
+        },
+        "stack": null,
+        "rowBounds": [],
+        "trackBounds": [],
+        "segments": [],
+        "horizontalOverflow": false,
+        "scrollHeight": 870,
+        "scrollY": 0,
+        "scrollMax": 118,
+        "activeElement": "BODY",
+        "questionReachable": true,
+        "controlsReachable": true
+      },
+      "replay": {
+        "id": "plan17-24-phase2-bundle-4-medium-linear-752",
+        "target": "24",
+        "condition": "phase2-bundle-4",
+        "support": "medium",
+        "view": "linear",
+        "height": 752,
+        "interaction": "pointer",
+        "reducedMotion": false,
+        "stage": "replay",
+        "targetDenominator": "24",
+        "viewport": {
+          "width": 360,
+          "height": 752
+        },
+        "question": null,
+        "controls": {
+          "left": 63,
+          "top": 237,
+          "right": 297,
+          "bottom": 354,
+          "width": 234,
+          "height": 117
+        },
+        "stack": null,
+        "rowBounds": [],
+        "trackBounds": [],
+        "segments": [],
+        "horizontalOverflow": false,
+        "scrollHeight": 752,
+        "scrollY": 0,
+        "scrollMax": 0,
+        "activeElement": "BUTTON",
+        "questionReachable": false,
+        "controlsReachable": true
+      },
+      "resetWithholding": {
+        "stackCount": 0,
+        "forbiddenFormsInDomText": [],
+        "forbiddenFormsInVisibleText": [],
+        "forbiddenFormAttributes": [],
+        "structuralBoundaryExclusions": 0,
+        "hiddenLabels": [],
+        "liveRegions": [],
+        "formValues": []
+      }
+    }
+  ],
+  "falsification": {}
+}

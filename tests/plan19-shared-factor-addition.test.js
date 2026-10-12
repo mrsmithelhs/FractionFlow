@@ -89,9 +89,9 @@ function completeEpisode(instance, target, condition, support) {
 }
 
 describe('Plan 19 shared-factor addition', () => {
-  it('appends the tenth item while preserving all nine Plan 32 item identities and order', () => {
-    expect(practiceType).toMatchObject({ setId: 'unlike-addition-vetted-set', setRevision: '3' });
-    expect(practiceType.items).toHaveLength(10);
+  it('preserves the ten-item prefix and appends the Plan 17 crossing item', () => {
+    expect(practiceType).toMatchObject({ setId: 'unlike-addition-vetted-set', setRevision: '4' });
+    expect(practiceType.items).toHaveLength(11);
     expect(practiceType.items.slice(0, 9).map((entry) => entry.id)).toEqual([
       'two-thirds-plus-one-fourth',
       'one-half-plus-one-third',
@@ -109,6 +109,14 @@ describe('Plan 19 shared-factor addition', () => {
       authoringRevision: 'plan19-record-v1',
       episodeDefinitionId: 'phase-2-shared-factor-addition-reflection',
       episodeDefinitionRevision: '3',
+      targetDenominators: ['12', '24'],
+    });
+    expect(practiceType.items[10]).toEqual({
+      id: 'two-thirds-plus-three-fourths',
+      fixtureId: 'curated-relatively-prime-addition-crossing-one-whole-two-thirds-three-fourths',
+      authoringRevision: 'plan17-record-v1',
+      episodeDefinitionId: 'phase-3-crossing-one-whole-addition-reflection',
+      episodeDefinitionRevision: '1',
       targetDenominators: ['12', '24'],
     });
     expect(PHASE2_REFLECTION_EPISODE_DEFINITION.selector).toBe('relatively-prime-addition');

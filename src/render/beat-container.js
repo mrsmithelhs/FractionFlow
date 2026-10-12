@@ -1,6 +1,6 @@
 import { assertValidScene, RenderContractError } from './contract.js';
 import { STRINGS } from './strings.js';
-import { createFractionBarRenderer, createTrackAndReadout } from './fraction-bar.js';
+import { createFractionBarRenderer, createMultiWholeStack, createTrackAndReadout } from './fraction-bar.js';
 import { createSymbolicRenderer } from './symbolic.js';
 import { createButton, createNumericInput, createChoiceGroup } from './controls.js';
 import { createVisualMatchingChoice } from './matching-choice.js';
@@ -910,8 +910,26 @@ export function createBeatContainer({
   }
 
   function renderVisualSection(scene) {
+    const operation = scene.meaning.operation;
+    const plan17Crossing = operation?.resultStack !== undefined;
+    const isResolved = scene.meaning.status.episode === 'resolved';
+    const isReflection = scene.meaning.currentTask?.beat === 'reflect';
+    const isInspection = isReflection && Boolean(scene.presentation?.isReplaying && scene.meaning.transition);
     const isPremise = scene.meaning.currentTask?.beat === 'reflect'
       && scene.meaning.currentTask?.connectionForm === 'premise';
+
+    if (plan17Crossing && isInspection) {
+      barsWrapper.replaceChildren();
+      return;
+    }
+
+    if (plan17Crossing && operation.resultStack
+      && (!isPremise || isResolved)) {
+      barsWrapper.replaceChildren(createMultiWholeStack(operation.resultStack, {
+        mode: scene.presentation.mode,
+      }));
+      return;
+    }
 
     if (isPremise && scene.meaning.premiseCase) {
       const premiseCase = scene.meaning.premiseCase;

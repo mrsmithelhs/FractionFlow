@@ -10,7 +10,7 @@ export const PRACTICE_TYPES = Object.freeze([
     label: 'Add fractions with different denominators',
     fixtureId: 'curated-relatively-prime-addition-non-least',
     setId: 'unlike-addition-vetted-set',
-    setRevision: '3',
+    setRevision: '4',
     items: Object.freeze([
       Object.freeze({
         id: 'two-thirds-plus-one-fourth',
@@ -90,6 +90,14 @@ export const PRACTICE_TYPES = Object.freeze([
         authoringRevision: 'plan19-record-v1',
         episodeDefinitionId: 'phase-2-shared-factor-addition-reflection',
         episodeDefinitionRevision: '3',
+        targetDenominators: Object.freeze(['12', '24']),
+      }),
+      Object.freeze({
+        id: 'two-thirds-plus-three-fourths',
+        fixtureId: 'curated-relatively-prime-addition-crossing-one-whole-two-thirds-three-fourths',
+        authoringRevision: 'plan17-record-v1',
+        episodeDefinitionId: 'phase-3-crossing-one-whole-addition-reflection',
+        episodeDefinitionRevision: '1',
         targetDenominators: Object.freeze(['12', '24']),
       }),
     ]),

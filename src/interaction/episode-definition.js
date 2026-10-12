@@ -88,6 +88,31 @@ export const SHARED_FACTOR_REFLECTION_EPISODE_DEFINITION = deepFreeze({
   selector: 'shared-factor-addition',
 });
 
+export const PLAN17_CROSSING_EPISODE_DEFINITION = deepFreeze({
+  ...BASE_EPISODE_DEFINITION,
+  id: 'phase-3-crossing-one-whole-addition-reflection',
+  revision: '1',
+  includeReflection: true,
+  promptIdentities: {
+    encounter: 'phase3.crossing.encounter',
+    notice: 'phase3.crossing.notice',
+    decide: 'phase3.crossing.decide-common-denominator',
+    transform: 'phase3.crossing.transform-equivalent-form',
+    operate: 'phase3.crossing.operate',
+    resolve: 'phase3.crossing.resolve',
+    reflect: 'phase3.crossing.reflect',
+  },
+  contentContract: {
+    fixtureId: 'curated-relatively-prime-addition-crossing-one-whole-two-thirds-three-fourths',
+    authoringRevision: 'plan17-record-v1',
+    selector: 'relatively-prime-addition',
+    operation: 'add',
+    overlays: ['crosses-one-whole'],
+    crossesWhole: true,
+    resultStackCapability: 'plan17-two-whole-stack-v1',
+  },
+});
+
 const EPISODE_DEFINITIONS = Object.freeze([
   LEGACY_PHASE2_EPISODE_DEFINITION,
   LEGACY_PHASE2_REFLECTION_EPISODE_DEFINITION,
@@ -96,6 +121,7 @@ const EPISODE_DEFINITIONS = Object.freeze([
   PHASE2_EPISODE_DEFINITION,
   PHASE2_REFLECTION_EPISODE_DEFINITION,
   SHARED_FACTOR_REFLECTION_EPISODE_DEFINITION,
+  PLAN17_CROSSING_EPISODE_DEFINITION,
 ]);
 
 export function getEpisodeDefinition(id = EPISODE_DEFINITION_ID, revision = EPISODE_DEFINITION_REVISION) {

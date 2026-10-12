@@ -3547,6 +3547,812 @@
         {"type":"visibleGeometry","target":".app-visual-view .fraction-bar-track","minCount":2,"minWidth":80,"minHeight":40},
         {"type":"visibleGeometry","target":".app-view-toggle","minWidth":40,"minHeight":40}
       ]}
+    },
+    {
+      "id": "ROUTE-PLAN17-APPENDED-ITEM-REACHABLE",
+      "behavior": "Complete the ten preserved items through mounted controls and completion-gated Next, then reach appended Plan 17 item 11 through the registered learner goal.",
+      "configuration": "phase2-bundle-1",
+      "startingSurface": "mounted-app-entry",
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "motionMode": "standard-motion",
+      "witness": "browser",
+      "actions": [
+        {
+          "step": 1,
+          "method": "click",
+          "target": ".app-practice-button",
+          "description": "Start the registered addition goal"
+        },
+        {
+          "step": 2,
+          "method": "click",
+          "target": ".app-visual-view .control-btn",
+          "description": "Acknowledge the displayed addition"
+        },
+        {
+          "step": 3,
+          "method": "click",
+          "target": ".app-visual-view .control-choice-btn >> nth=1",
+          "description": "Notice the different-sized parts"
+        },
+        {
+          "step": 4,
+          "method": "click",
+          "target": ".app-visual-view .control-choice-btn >> nth=0",
+          "description": "Choose the reviewed common denominator"
+        },
+        {
+          "step": 5,
+          "method": "fill",
+          "target": ".app-visual-view input.control-numeric-input",
+          "value": "8",
+          "description": "Enter the equivalent numerator for the left addend"
+        },
+        {
+          "step": 6,
+          "method": "click",
+          "target": ".app-visual-view .control-submit-btn",
+          "description": "Accept the left equivalent fraction"
+        },
+        {
+          "step": 7,
+          "method": "fill",
+          "target": ".app-visual-view input.control-numeric-input",
+          "value": "3",
+          "description": "Enter the equivalent numerator for the right addend"
+        },
+        {
+          "step": 8,
+          "method": "click",
+          "target": ".app-visual-view .control-submit-btn",
+          "description": "Accept the right equivalent fraction"
+        },
+        {
+          "step": 9,
+          "method": "fill",
+          "target": ".app-visual-view input.control-numeric-input",
+          "value": "11",
+          "description": "Enter the exact total"
+        },
+        {
+          "step": 10,
+          "method": "click",
+          "target": ".app-visual-view .control-submit-btn",
+          "description": "Submit the exact total"
+        },
+        {
+          "step": 11,
+          "method": "click",
+          "target": ".app-visual-view .control-btn",
+          "description": "Continue to the reflection"
+        },
+        {
+          "step": 12,
+          "method": "click",
+          "target": ".app-visual-view .matching-choice-btn[aria-label=\"Bar with 8 of 12 equal parts shaded\"]",
+          "description": "Choose the matching equivalent fraction"
+        },
+        {
+          "step": 13,
+          "method": "click",
+          "target": ".app-next-button",
+          "description": "Continue through the preserved set"
+        },
+        {
+          "step": 14,
+          "method": "click",
+          "target": ".app-visual-view .control-btn",
+          "description": "Acknowledge the displayed addition"
+        },
+        {
+          "step": 15,
+          "method": "click",
+          "target": ".app-visual-view .control-choice-btn >> nth=1",
+          "description": "Notice the different-sized parts"
+        },
+        {
+          "step": 16,
+          "method": "click",
+          "target": ".app-visual-view .control-choice-btn >> nth=0",
+          "description": "Choose the reviewed common denominator"
+        },
+        {
+          "step": 17,
+          "method": "fill",
+          "target": ".app-visual-view input.control-numeric-input",
+          "value": "3",
+          "description": "Enter the equivalent numerator for the left addend"
+        },
+        {
+          "step": 18,
+          "method": "click",
+          "target": ".app-visual-view .control-submit-btn",
+          "description": "Accept the left equivalent fraction"
+        },
+        {
+          "step": 19,
+          "method": "fill",
+          "target": ".app-visual-view input.control-numeric-input",
+          "value": "2",
+          "description": "Enter the equivalent numerator for the right addend"
+        },
+        {
+          "step": 20,
+          "method": "click",
+          "target": ".app-visual-view .control-submit-btn",
+          "description": "Accept the right equivalent fraction"
+        },
+        {
+          "step": 21,
+          "method": "fill",
+          "target": ".app-visual-view input.control-numeric-input",
+          "value": "5",
+          "description": "Enter the exact total"
+        },
+        {
+          "step": 22,
+          "method": "click",
+          "target": ".app-visual-view .control-submit-btn",
+          "description": "Submit the exact total"
+        },
+        {
+          "step": 23,
+          "method": "click",
+          "target": ".app-visual-view .control-btn",
+          "description": "Continue to the reflection"
+        },
+        {
+          "step": 24,
+          "method": "click",
+          "target": ".app-visual-view .matching-choice-btn[aria-label=\"Bar with 3 of 6 equal parts shaded\"]",
+          "description": "Choose the matching equivalent fraction"
+        },
+        {
+          "step": 25,
+          "method": "click",
+          "target": ".app-next-button",
+          "description": "Continue through the preserved set"
+        },
+        {
+          "step": 26,
+          "method": "click",
+          "target": ".app-visual-view .control-btn",
+          "description": "Acknowledge the displayed addition"
+        },
+        {
+          "step": 27,
+          "method": "click",
+          "target": ".app-visual-view .control-choice-btn >> nth=1",
+          "description": "Notice the different-sized parts"
+        },
+        {
+          "step": 28,
+          "method": "click",
+          "target": ".app-visual-view .control-choice-btn >> nth=0",
+          "description": "Choose the reviewed common denominator"
+        },
+        {
+          "step": 29,
+          "method": "fill",
+          "target": ".app-visual-view input.control-numeric-input",
+          "value": "5",
+          "description": "Enter the equivalent numerator for the left addend"
+        },
+        {
+          "step": 30,
+          "method": "click",
+          "target": ".app-visual-view .control-submit-btn",
+          "description": "Accept the left equivalent fraction"
+        },
+        {
+          "step": 31,
+          "method": "fill",
+          "target": ".app-visual-view input.control-numeric-input",
+          "value": "2",
+          "description": "Enter the equivalent numerator for the right addend"
+        },
+        {
+          "step": 32,
+          "method": "click",
+          "target": ".app-visual-view .control-submit-btn",
+          "description": "Accept the right equivalent fraction"
+        },
+        {
+          "step": 33,
+          "method": "fill",
+          "target": ".app-visual-view input.control-numeric-input",
+          "value": "7",
+          "description": "Enter the exact total"
+        },
+        {
+          "step": 34,
+          "method": "click",
+          "target": ".app-visual-view .control-submit-btn",
+          "description": "Submit the exact total"
+        },
+        {
+          "step": 35,
+          "method": "click",
+          "target": ".app-visual-view .control-btn",
+          "description": "Continue to the reflection"
+        },
+        {
+          "step": 36,
+          "method": "click",
+          "target": ".app-visual-view .matching-choice-btn[aria-label=\"Bar with 5 of 10 equal parts shaded\"]",
+          "description": "Choose the matching equivalent fraction"
+        },
+        {
+          "step": 37,
+          "method": "click",
+          "target": ".app-next-button",
+          "description": "Continue through the preserved set"
+        },
+        {
+          "step": 38,
+          "method": "click",
+          "target": ".app-visual-view .control-btn",
+          "description": "Acknowledge the displayed addition"
+        },
+        {
+          "step": 39,
+          "method": "click",
+          "target": ".app-visual-view .control-choice-btn >> nth=1",
+          "description": "Notice the different-sized parts"
+        },
+        {
+          "step": 40,
+          "method": "click",
+          "target": ".app-visual-view .control-choice-btn >> nth=0",
+          "description": "Choose the reviewed common denominator"
+        },
+        {
+          "step": 41,
+          "method": "fill",
+          "target": ".app-visual-view input.control-numeric-input",
+          "value": "5",
+          "description": "Enter the equivalent numerator for the left addend"
+        },
+        {
+          "step": 42,
+          "method": "click",
+          "target": ".app-visual-view .control-submit-btn",
+          "description": "Accept the left equivalent fraction"
+        },
+        {
+          "step": 43,
+          "method": "fill",
+          "target": ".app-visual-view input.control-numeric-input",
+          "value": "4",
+          "description": "Enter the equivalent numerator for the right addend"
+        },
+        {
+          "step": 44,
+          "method": "click",
+          "target": ".app-visual-view .control-submit-btn",
+          "description": "Accept the right equivalent fraction"
+        },
+        {
+          "step": 45,
+          "method": "fill",
+          "target": ".app-visual-view input.control-numeric-input",
+          "value": "9",
+          "description": "Enter the exact total"
+        },
+        {
+          "step": 46,
+          "method": "click",
+          "target": ".app-visual-view .control-submit-btn",
+          "description": "Submit the exact total"
+        },
+        {
+          "step": 47,
+          "method": "click",
+          "target": ".app-visual-view .control-btn",
+          "description": "Continue to the reflection"
+        },
+        {
+          "step": 48,
+          "method": "click",
+          "target": ".app-visual-view .matching-choice-btn[aria-label=\"Bar with 5 of 10 equal parts shaded\"]",
+          "description": "Choose the matching equivalent fraction"
+        },
+        {
+          "step": 49,
+          "method": "click",
+          "target": ".app-next-button",
+          "description": "Continue through the preserved set"
+        },
+        {
+          "step": 50,
+          "method": "click",
+          "target": ".app-visual-view .control-btn",
+          "description": "Acknowledge the displayed addition"
+        },
+        {
+          "step": 51,
+          "method": "click",
+          "target": ".app-visual-view .control-choice-btn >> nth=1",
+          "description": "Notice the different-sized parts"
+        },
+        {
+          "step": 52,
+          "method": "click",
+          "target": ".app-visual-view .control-choice-btn >> nth=0",
+          "description": "Choose the reviewed common denominator"
+        },
+        {
+          "step": 53,
+          "method": "fill",
+          "target": ".app-visual-view input.control-numeric-input",
+          "value": "4",
+          "description": "Enter the equivalent numerator for the left addend"
+        },
+        {
+          "step": 54,
+          "method": "click",
+          "target": ".app-visual-view .control-submit-btn",
+          "description": "Accept the left equivalent fraction"
+        },
+        {
+          "step": 55,
+          "method": "fill",
+          "target": ".app-visual-view input.control-numeric-input",
+          "value": "3",
+          "description": "Enter the equivalent numerator for the right addend"
+        },
+        {
+          "step": 56,
+          "method": "click",
+          "target": ".app-visual-view .control-submit-btn",
+          "description": "Accept the right equivalent fraction"
+        },
+        {
+          "step": 57,
+          "method": "fill",
+          "target": ".app-visual-view input.control-numeric-input",
+          "value": "7",
+          "description": "Enter the exact total"
+        },
+        {
+          "step": 58,
+          "method": "click",
+          "target": ".app-visual-view .control-submit-btn",
+          "description": "Submit the exact total"
+        },
+        {
+          "step": 59,
+          "method": "click",
+          "target": ".app-visual-view .control-btn",
+          "description": "Continue to the reflection"
+        },
+        {
+          "step": 60,
+          "method": "click",
+          "target": ".app-visual-view .matching-choice-btn[aria-label=\"Bar with 4 of 12 equal parts shaded\"]",
+          "description": "Choose the matching equivalent fraction"
+        },
+        {
+          "step": 61,
+          "method": "click",
+          "target": ".app-next-button",
+          "description": "Continue through the preserved set"
+        },
+        {
+          "step": 62,
+          "method": "click",
+          "target": ".app-visual-view .control-btn",
+          "description": "Acknowledge the displayed addition"
+        },
+        {
+          "step": 63,
+          "method": "click",
+          "target": ".app-visual-view .control-choice-btn >> nth=1",
+          "description": "Notice the different-sized parts"
+        },
+        {
+          "step": 64,
+          "method": "click",
+          "target": ".app-visual-view .control-choice-btn >> nth=0",
+          "description": "Choose the reviewed common denominator"
+        },
+        {
+          "step": 65,
+          "method": "fill",
+          "target": ".app-visual-view input.control-numeric-input",
+          "value": "5",
+          "description": "Enter the equivalent numerator for the left addend"
+        },
+        {
+          "step": 66,
+          "method": "click",
+          "target": ".app-visual-view .control-submit-btn",
+          "description": "Accept the left equivalent fraction"
+        },
+        {
+          "step": 67,
+          "method": "fill",
+          "target": ".app-visual-view input.control-numeric-input",
+          "value": "3",
+          "description": "Enter the equivalent numerator for the right addend"
+        },
+        {
+          "step": 68,
+          "method": "click",
+          "target": ".app-visual-view .control-submit-btn",
+          "description": "Accept the right equivalent fraction"
+        },
+        {
+          "step": 69,
+          "method": "fill",
+          "target": ".app-visual-view input.control-numeric-input",
+          "value": "8",
+          "description": "Enter the exact total"
+        },
+        {
+          "step": 70,
+          "method": "click",
+          "target": ".app-visual-view .control-submit-btn",
+          "description": "Submit the exact total"
+        },
+        {
+          "step": 71,
+          "method": "click",
+          "target": ".app-visual-view .control-btn",
+          "description": "Continue to the reflection"
+        },
+        {
+          "step": 72,
+          "method": "click",
+          "target": ".app-visual-view .matching-choice-btn[aria-label=\"Bar with 5 of 15 equal parts shaded\"]",
+          "description": "Choose the matching equivalent fraction"
+        },
+        {
+          "step": 73,
+          "method": "click",
+          "target": ".app-next-button",
+          "description": "Continue through the preserved set"
+        },
+        {
+          "step": 74,
+          "method": "click",
+          "target": ".app-visual-view .control-btn",
+          "description": "Acknowledge the displayed addition"
+        },
+        {
+          "step": 75,
+          "method": "click",
+          "target": ".app-visual-view .control-choice-btn >> nth=1",
+          "description": "Notice the different-sized parts"
+        },
+        {
+          "step": 76,
+          "method": "click",
+          "target": ".app-visual-view .control-choice-btn >> nth=0",
+          "description": "Choose the reviewed common denominator"
+        },
+        {
+          "step": 77,
+          "method": "fill",
+          "target": ".app-visual-view input.control-numeric-input",
+          "value": "5",
+          "description": "Enter the equivalent numerator for the left addend"
+        },
+        {
+          "step": 78,
+          "method": "click",
+          "target": ".app-visual-view .control-submit-btn",
+          "description": "Accept the left equivalent fraction"
+        },
+        {
+          "step": 79,
+          "method": "fill",
+          "target": ".app-visual-view input.control-numeric-input",
+          "value": "6",
+          "description": "Enter the equivalent numerator for the right addend"
+        },
+        {
+          "step": 80,
+          "method": "click",
+          "target": ".app-visual-view .control-submit-btn",
+          "description": "Accept the right equivalent fraction"
+        },
+        {
+          "step": 81,
+          "method": "fill",
+          "target": ".app-visual-view input.control-numeric-input",
+          "value": "11",
+          "description": "Enter the exact total"
+        },
+        {
+          "step": 82,
+          "method": "click",
+          "target": ".app-visual-view .control-submit-btn",
+          "description": "Submit the exact total"
+        },
+        {
+          "step": 83,
+          "method": "click",
+          "target": ".app-visual-view .control-btn",
+          "description": "Continue to the reflection"
+        },
+        {
+          "step": 84,
+          "method": "click",
+          "target": ".app-visual-view .matching-choice-btn[aria-label=\"Bar with 5 of 15 equal parts shaded\"]",
+          "description": "Choose the matching equivalent fraction"
+        },
+        {
+          "step": 85,
+          "method": "click",
+          "target": ".app-next-button",
+          "description": "Continue through the preserved set"
+        },
+        {
+          "step": 86,
+          "method": "click",
+          "target": ".app-visual-view .control-btn",
+          "description": "Acknowledge the displayed addition"
+        },
+        {
+          "step": 87,
+          "method": "click",
+          "target": ".app-visual-view .control-choice-btn >> nth=1",
+          "description": "Notice the different-sized parts"
+        },
+        {
+          "step": 88,
+          "method": "click",
+          "target": ".app-visual-view .control-choice-btn >> nth=0",
+          "description": "Choose the reviewed common denominator"
+        },
+        {
+          "step": 89,
+          "method": "fill",
+          "target": ".app-visual-view input.control-numeric-input",
+          "value": "10",
+          "description": "Enter the equivalent numerator for the left addend"
+        },
+        {
+          "step": 90,
+          "method": "click",
+          "target": ".app-visual-view .control-submit-btn",
+          "description": "Accept the left equivalent fraction"
+        },
+        {
+          "step": 91,
+          "method": "fill",
+          "target": ".app-visual-view input.control-numeric-input",
+          "value": "3",
+          "description": "Enter the equivalent numerator for the right addend"
+        },
+        {
+          "step": 92,
+          "method": "click",
+          "target": ".app-visual-view .control-submit-btn",
+          "description": "Accept the right equivalent fraction"
+        },
+        {
+          "step": 93,
+          "method": "fill",
+          "target": ".app-visual-view input.control-numeric-input",
+          "value": "13",
+          "description": "Enter the exact total"
+        },
+        {
+          "step": 94,
+          "method": "click",
+          "target": ".app-visual-view .control-submit-btn",
+          "description": "Submit the exact total"
+        },
+        {
+          "step": 95,
+          "method": "click",
+          "target": ".app-visual-view .control-btn",
+          "description": "Continue to the reflection"
+        },
+        {
+          "step": 96,
+          "method": "click",
+          "target": ".app-visual-view .matching-choice-btn[aria-label=\"Bar with 10 of 15 equal parts shaded\"]",
+          "description": "Choose the matching equivalent fraction"
+        },
+        {
+          "step": 97,
+          "method": "click",
+          "target": ".app-next-button",
+          "description": "Continue through the preserved set"
+        },
+        {
+          "step": 98,
+          "method": "click",
+          "target": ".app-visual-view .control-btn",
+          "description": "Acknowledge the displayed addition"
+        },
+        {
+          "step": 99,
+          "method": "click",
+          "target": ".app-visual-view .control-choice-btn >> nth=1",
+          "description": "Notice the different-sized parts"
+        },
+        {
+          "step": 100,
+          "method": "click",
+          "target": ".app-visual-view .control-choice-btn >> nth=0",
+          "description": "Choose the reviewed common denominator"
+        },
+        {
+          "step": 101,
+          "method": "fill",
+          "target": ".app-visual-view input.control-numeric-input",
+          "value": "9",
+          "description": "Enter the equivalent numerator for the left addend"
+        },
+        {
+          "step": 102,
+          "method": "click",
+          "target": ".app-visual-view .control-submit-btn",
+          "description": "Accept the left equivalent fraction"
+        },
+        {
+          "step": 103,
+          "method": "fill",
+          "target": ".app-visual-view input.control-numeric-input",
+          "value": "5",
+          "description": "Enter the equivalent numerator for the right addend"
+        },
+        {
+          "step": 104,
+          "method": "click",
+          "target": ".app-visual-view .control-submit-btn",
+          "description": "Accept the right equivalent fraction"
+        },
+        {
+          "step": 105,
+          "method": "fill",
+          "target": ".app-visual-view input.control-numeric-input",
+          "value": "14",
+          "description": "Enter the exact total"
+        },
+        {
+          "step": 106,
+          "method": "click",
+          "target": ".app-visual-view .control-submit-btn",
+          "description": "Submit the exact total"
+        },
+        {
+          "step": 107,
+          "method": "click",
+          "target": ".app-visual-view .control-btn",
+          "description": "Continue to the reflection"
+        },
+        {
+          "step": 108,
+          "method": "click",
+          "target": ".app-visual-view .matching-choice-btn[aria-label=\"Bar with 9 of 15 equal parts shaded\"]",
+          "description": "Choose the matching equivalent fraction"
+        },
+        {
+          "step": 109,
+          "method": "click",
+          "target": ".app-next-button",
+          "description": "Continue through the preserved set"
+        },
+        {
+          "step": 110,
+          "method": "click",
+          "target": ".app-visual-view .control-btn",
+          "description": "Acknowledge the displayed addition"
+        },
+        {
+          "step": 111,
+          "method": "click",
+          "target": ".app-visual-view .control-choice-btn >> nth=1",
+          "description": "Notice the different-sized parts"
+        },
+        {
+          "step": 112,
+          "method": "click",
+          "target": ".app-visual-view .control-choice-btn >> nth=0",
+          "description": "Choose the reviewed common denominator"
+        },
+        {
+          "step": 113,
+          "method": "fill",
+          "target": ".app-visual-view input.control-numeric-input",
+          "value": "2",
+          "description": "Enter the equivalent numerator for the left addend"
+        },
+        {
+          "step": 114,
+          "method": "click",
+          "target": ".app-visual-view .control-submit-btn",
+          "description": "Accept the left equivalent fraction"
+        },
+        {
+          "step": 115,
+          "method": "fill",
+          "target": ".app-visual-view input.control-numeric-input",
+          "value": "3",
+          "description": "Enter the equivalent numerator for the right addend"
+        },
+        {
+          "step": 116,
+          "method": "click",
+          "target": ".app-visual-view .control-submit-btn",
+          "description": "Accept the right equivalent fraction"
+        },
+        {
+          "step": 117,
+          "method": "fill",
+          "target": ".app-visual-view input.control-numeric-input",
+          "value": "5",
+          "description": "Enter the exact total"
+        },
+        {
+          "step": 118,
+          "method": "click",
+          "target": ".app-visual-view .control-submit-btn",
+          "description": "Submit the exact total"
+        },
+        {
+          "step": 119,
+          "method": "click",
+          "target": ".app-visual-view .control-btn",
+          "description": "Continue to the reflection"
+        },
+        {
+          "step": 120,
+          "method": "click",
+          "target": ".app-visual-view .matching-choice-btn[aria-label=\"Bar with 2 of 12 equal parts shaded\"]",
+          "description": "Choose the matching equivalent fraction"
+        },
+        {
+          "step": 121,
+          "method": "click",
+          "target": ".app-next-button",
+          "description": "Continue through the preserved set"
+        }
+      ],
+      "expect": {
+        "capture": {
+          "target": ".app-visual-view",
+          "type": "innerHTML"
+        },
+        "assertions": [
+          {
+            "type": "attributeEquals",
+            "target": ".app-visual-view .fraction-bar-container[data-side=\"left\"] .fraction-bar-track",
+            "attribute": "data-numerator",
+            "value": "2"
+          },
+          {
+            "type": "attributeEquals",
+            "target": ".app-visual-view .fraction-bar-container[data-side=\"left\"] .fraction-bar-track",
+            "attribute": "data-denominator",
+            "value": "3"
+          },
+          {
+            "type": "attributeEquals",
+            "target": ".app-visual-view .fraction-bar-container[data-side=\"right\"] .fraction-bar-track",
+            "attribute": "data-numerator",
+            "value": "3"
+          },
+          {
+            "type": "attributeEquals",
+            "target": ".app-visual-view .fraction-bar-container[data-side=\"right\"] .fraction-bar-track",
+            "attribute": "data-denominator",
+            "value": "4"
+          },
+          {
+            "type": "notHasSelector",
+            "target": ".app-next-button:not([hidden])"
+          }
+        ]
+      }
     }
   ]
 }

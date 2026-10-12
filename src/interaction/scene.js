@@ -2,6 +2,7 @@ import { deepFreeze } from '../content/schema.js';
 import { candidateDenominatorsForInstance } from '../content/eligibility.js';
 import { reflectionChoicesForInstance } from '../content/data/reflection-choices.js';
 import { premiseCheckForInstance } from '../content/data/premise-checks.js';
+import { crossingResultStackForIdentity } from '../content/authored-content-catalog.js';
 import { makeContentIdentity } from './provenance.js';
 import { validateActiveCondition } from './episode-definition.js';
 import { currentScheduleEntry } from './beat-schedule.js';
@@ -610,6 +611,7 @@ function operationMeaning(state) {
       resultWholeSpan: null,
       preferredFinalForm: null,
       simplifiedResult: null,
+      ...(isPlan17CrossingDefinition(state) ? { resultStack: null } : {}),
     };
   }
 
@@ -626,6 +628,59 @@ function operationMeaning(state) {
     resultWholeSpan: state.content.representationFacts.wholeSpan,
     preferredFinalForm: resolution?.proposed ?? (simplifiedResult || rawResult),
     simplifiedResult,
+    ...(isPlan17CrossingDefinition(state)
+      ? { resultStack: crossingResultStack(state, operation) }
+      : {}),
+  };
+}
+
+function isPlan17CrossingDefinition(state) {
+  return state.episodeDefinition?.id === 'phase-3-crossing-one-whole-addition-reflection'
+    && state.episodeDefinition?.revision === '1';
+}
+
+function invalidCrossingStack(message) {
+  throw new SceneProjectionError('UNRESOLVED_CAPABILITY', message);
+}
+
+function crossingResultStack(state, operation) {
+  if (!operation?.proposed) return null;
+
+  const rawResult = operation.proposed;
+  const target = state.established?.commonDenominator?.targetDenominator;
+  const span = state.content.representationFacts?.wholeSpan;
+  const provenance = state.content.provenance;
+  const validatedStack = crossingResultStackForIdentity(
+    provenance?.fixtureId,
+    provenance?.authoringRevision,
+    target,
+  );
+  if (rawResult.kind !== 'fraction'
+    || rawResult.denominator !== target
+    || !/^(0|[1-9][0-9]*)$/.test(rawResult.numerator)
+    || !/^[1-9][0-9]*$/.test(rawResult.denominator)
+    || !['12', '24'].includes(target)
+    || span?.lowerWhole !== '1'
+    || span?.upperWhole !== '2'
+    || !validatedStack) {
+    invalidCrossingStack('crossing result is outside the registered two-whole stack capability');
+  }
+  if (JSON.stringify(rawResult) !== JSON.stringify(validatedStack.rawResult)
+    || validatedStack.rows.length !== 2) {
+    invalidCrossingStack('crossing result does not match the validated authored path');
+  }
+
+  return {
+    kind: 'discrete-multi-whole',
+    displayForm: validatedStack.rawResult,
+    wholeSpan: span,
+    wholeCount: String(validatedStack.rows.length),
+    unitDenominator: target,
+    rows: validatedStack.rows.map((row, index) => ({
+      id: `whole-${index + 1}`,
+      shadedUnits: row.numerator,
+      unitCount: row.denominator,
+    })),
   };
 }
 

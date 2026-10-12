@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import fs from 'node:fs';
 import path from 'node:path';
+import { createHash } from 'node:crypto';
 import { createRequire } from 'node:module';
 import { fileURLToPath } from 'node:url';
 import { REGISTERED_CONDITIONS } from '../src/app/conditions.js';
@@ -16,6 +17,9 @@ const {
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const matrixPath = path.resolve(__dirname, 'routes/route-matrix.json');
+// Derived from the frozen, pre-Plan 17 54-row route matrix whose raw SHA-256 is
+// 2252458a767a322b23946b701085958eafc2fb0f9c416d4a8c3ee4c6bafa8cbd.
+const PRE_PLAN17_ROUTE_PREFIX_HASH = '861c315fa1cff3a3e3daa949c53c41a27d7bf27ba54a0981b02a5bd3f0e87650';
 
 describe('Plan 14 Reachable Behavior Route Contract & Matrix Schema', () => {
   const matrix = JSON.parse(fs.readFileSync(matrixPath, 'utf8'));
@@ -104,9 +108,9 @@ describe('Plan 14 Reachable Behavior Route Contract & Matrix Schema', () => {
   });
 
   it('preserves learner and prototype routes while adding mounted high/medium support witnesses', () => {
-    expect(matrix.routes).toHaveLength(54);
+    expect(matrix.routes).toHaveLength(55);
     const learnerRoutes = matrix.routes.filter((route) => route.configuration !== 'plan15-subtraction-prototype');
-    expect(learnerRoutes).toHaveLength(52);
+    expect(learnerRoutes).toHaveLength(53);
     for (const route of learnerRoutes) {
       expect(route.startingSurface).toBe('mounted-app-entry');
       expect(route.viewport.width).toBe(route.id === 'ROUTE-PLAN22-36-PREMISE-LINEAR-REDUCED'
@@ -197,9 +201,23 @@ describe('Plan 14 Reachable Behavior Route Contract & Matrix Schema', () => {
     }
   });
 
+  it('preserves the frozen 54-route prefix and appends the Plan 17 learner-reach route', () => {
+    const originalPrefix = matrix.routes.slice(0, 54);
+    const prefixHash = createHash('sha256').update(JSON.stringify(originalPrefix)).digest('hex');
+    expect(prefixHash).toBe(PRE_PLAN17_ROUTE_PREFIX_HASH);
+    const appended = matrix.routes[54];
+    expect(appended.id).toBe('ROUTE-PLAN17-APPENDED-ITEM-REACHABLE');
+    expect(appended.configuration).toBe('phase2-bundle-1');
+    expect(appended.actions).toHaveLength(121);
+    expect(appended.actions.at(-1)).toMatchObject({
+      method: 'click',
+      target: '.app-next-button',
+    });
+  });
+
   it('executes each prototype route in both motion modes and brings in its filtered negative control', () => {
     const executions = expandRouteExecutions(matrix.routes);
-    expect(executions).toHaveLength(56);
+    expect(executions).toHaveLength(57);
     expect(executions.filter((execution) => (
       execution.route.configuration === 'plan15-subtraction-prototype'
     ))).toHaveLength(4);
@@ -270,9 +288,9 @@ describe('Plan 14 Reachable Behavior Route Contract & Matrix Schema', () => {
   });
 
   it('preserves the Plan 11 route baseline and witnesses executed motion, interruption, Replay, static arms, and both support profiles', () => {
-    expect(matrix.routes).toHaveLength(54);
-    expect(matrix.routes.filter((route) => !route.id.startsWith('ROUTE-PLAN22-36-'))).toHaveLength(51);
-    expect(expandRouteExecutions(matrix.routes)).toHaveLength(56);
+    expect(matrix.routes).toHaveLength(55);
+    expect(matrix.routes.filter((route) => !route.id.startsWith('ROUTE-PLAN22-36-'))).toHaveLength(52);
+    expect(expandRouteExecutions(matrix.routes)).toHaveLength(57);
 
     const route = (id) => matrix.routes.find((candidate) => candidate.id === id);
     const linearHelpFocus = route('ROUTE-PLAN25-TRANSFORM-HELP-LINEAR-FOCUS');

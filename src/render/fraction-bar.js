@@ -65,6 +65,47 @@ export function createTrackAndReadout({ numerator, denominator, isSubdivided = f
   return { trackEl, readoutEl };
 }
 
+/** Paint only quantities already validated and projected by the instructional layer. */
+export function createMultiWholeStack(stack, { mode } = {}) {
+  if (!stack || stack.kind !== 'discrete-multi-whole' || !Array.isArray(stack.rows)) {
+    throw new TypeError('validated multi-whole stack is required');
+  }
+  const root = document.createElement('div');
+  root.classList.add('fraction-bar-multi-whole-stack');
+  const fraction = stack.displayForm;
+  const lastRow = stack.rows.at(-1);
+  root.setAttribute(
+    'role',
+    'img',
+  );
+  root.setAttribute(
+    'aria-label',
+    `${fraction.numerator} over ${fraction.denominator}. ${stack.wholeCount} equal-width wholes; the last whole has ${lastRow.shadedUnits} of ${lastRow.unitCount} equal parts shaded.`,
+  );
+
+  const readout = document.createElement('div');
+  readout.classList.add('fraction-bar-multi-whole-readout');
+  readout.setAttribute('aria-hidden', 'true');
+  readout.appendChild(createReadoutFraction(fraction.numerator, fraction.denominator));
+  root.appendChild(readout);
+
+  for (const row of stack.rows) {
+    const rowElement = document.createElement('div');
+    rowElement.classList.add('fraction-bar-multi-whole-row');
+    rowElement.setAttribute('data-whole-row', row.id);
+    rowElement.setAttribute('aria-hidden', 'true');
+    const painted = createTrackAndReadout({
+      numerator: Number(row.shadedUnits),
+      denominator: Number(row.unitCount),
+      mode,
+    });
+    painted.trackEl.classList.add('fraction-bar-multi-whole-track');
+    rowElement.appendChild(painted.trackEl);
+    root.appendChild(rowElement);
+  }
+  return root;
+}
+
 function greatestCommonDivisor(a, b) {
   let left = Math.abs(a);
   let right = Math.abs(b);

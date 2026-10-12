@@ -2,12 +2,14 @@ import {
   convertToDenominator,
   createFraction,
   equalFractions,
+  improperToMixed,
 } from '../math/index.js';
 import { buildCuratedProblem } from './generator.js';
 import { deepFreeze, fractionToWire, wireToForm } from './schema.js';
 import { evaluateInstanceEligibility } from './eligibility.js';
 import { COMPACT_ADDITION_RECORDS } from './data/compact-addition-records.js';
 import { SHARED_FACTOR_ADDITION_RECORDS } from './data/shared-factor-addition-records.js';
+import { CROSSING_ADDITION_RECORDS } from './data/crossing-addition-records.js';
 
 export const PLAN32_RECIPE_ID = 'plan32-reviewed-addition';
 export const PLAN32_RECIPE_REVISION = '1';
@@ -15,6 +17,9 @@ export const PLAN32_TASK_DATA_REVISION = 'plan32-task-data-v1';
 export const PLAN19_RECIPE_ID = 'plan19-reviewed-shared-factor-addition';
 export const PLAN19_RECIPE_REVISION = '1';
 export const PLAN19_TASK_DATA_REVISION = 'plan19-task-data-v1';
+export const PLAN17_RECIPE_ID = 'plan17-reviewed-crossing-addition';
+export const PLAN17_RECIPE_REVISION = '1';
+export const PLAN17_TASK_DATA_REVISION = 'plan17-task-data-v1';
 
 const PREMISE_RULES = new Set(['P-EQUIVALENT', 'P-ADJACENT-UNIT']);
 const REFLECTION_RULES = new Set(['R-CORRECT', 'R-KEEP-NUMERATOR', 'R-ADJACENT-UNIT']);
@@ -70,7 +75,9 @@ function validateRecord(record) {
     && record.recipe.revision === PLAN32_RECIPE_REVISION;
   const plan19Recipe = record.recipe.id === PLAN19_RECIPE_ID
     && record.recipe.revision === PLAN19_RECIPE_REVISION;
-  requireValid(plan32Recipe || plan19Recipe, 'unknown recipe identity');
+  const plan17Recipe = record.recipe.id === PLAN17_RECIPE_ID
+    && record.recipe.revision === PLAN17_RECIPE_REVISION;
+  requireValid(plan32Recipe || plan19Recipe || plan17Recipe, 'unknown recipe identity');
   const plan32 = plan32Recipe
     && record.authoringRevision === 'plan32-record-v1'
     && record.taskDataRevision === PLAN32_TASK_DATA_REVISION
@@ -79,11 +86,22 @@ function validateRecord(record) {
     && record.authoringRevision === 'plan19-record-v1'
     && record.taskDataRevision === PLAN19_TASK_DATA_REVISION
     && record.selector === 'shared-factor-addition';
-  requireValid(plan32 || plan19, 'recipe, selector, and immutable revisions do not match an admitted recipe');
-  requireValid(record.profileId === 'curated-review'
-    && Array.isArray(record.overlays)
-    && record.overlays.length === 0,
-  'only overlay-free curated-review addition is supported');
+  const plan17 = plan17Recipe
+    && record.authoringRevision === 'plan17-record-v1'
+    && record.taskDataRevision === PLAN17_TASK_DATA_REVISION
+    && record.selector === 'relatively-prime-addition'
+    && record.fixtureId === 'curated-relatively-prime-addition-crossing-one-whole-two-thirds-three-fourths'
+    && record.itemId === 'two-thirds-plus-three-fourths'
+    && record.left?.numerator === '2'
+    && record.left?.denominator === '3'
+    && record.right?.numerator === '3'
+    && record.right?.denominator === '4';
+  requireValid(plan32 || plan19 || plan17, 'recipe, selector, and immutable revisions do not match an admitted recipe');
+  const validOverlaySet = Array.isArray(record.overlays)
+    && ((plan17 && record.overlays.length === 1 && record.overlays[0] === 'crosses-one-whole')
+      || (!plan17 && record.overlays.length === 0));
+  requireValid(record.profileId === 'curated-review' && validOverlaySet,
+    'only reviewed curated-review addition overlay sets are supported');
   const left = validWireFraction(record.left, 'left operand');
   const right = validWireFraction(record.right, 'right operand');
   requireValid(Object.keys(record.paths).length > 0, 'at least one path is required');
@@ -173,6 +191,31 @@ function materializeChoices(path, left, target) {
   return deepFreeze(choices);
 }
 
+function materializeCrossingResultStack(left, right, target) {
+  const denominator = BigInt(target);
+  const leftAtTarget = convertToDenominator(left, denominator);
+  const rightAtTarget = convertToDenominator(right, denominator);
+  const rawNumerator = leftAtTarget.numerator + rightAtTarget.numerator;
+  const rawResult = createFraction(rawNumerator, denominator);
+  const mixed = improperToMixed(rawResult);
+  requireValid(mixed.whole === 1n && mixed.fraction.numerator > 0n,
+    `crossing result must occupy exactly two wholes at ${target}`);
+  const remainder = convertToDenominator(mixed.fraction, denominator);
+  const rawResultForm = {
+    kind: 'fraction',
+    numerator: rawNumerator.toString(),
+    denominator: target,
+  };
+  return deepFreeze({
+    targetDenominator: target,
+    rawResult: rawResultForm,
+    rows: [
+      { kind: 'fraction', numerator: target, denominator: target },
+      fractionToWire(createFraction(remainder.numerator, denominator)),
+    ],
+  });
+}
+
 function materializeOne(record) {
   const { left, right, targets } = validateRecord(record);
   const fixture = deepFreeze({
@@ -201,10 +244,14 @@ function materializeOne(record) {
 
   const premiseChecks = {};
   const reflectionChoices = {};
+  const resultStacks = {};
   for (const target of targets) {
     const path = record.paths[target];
     premiseChecks[target] = materializePremise(record, path, left, target);
     reflectionChoices[target] = materializeChoices(path, left, target);
+    if (record.recipe.id === PLAN17_RECIPE_ID) {
+      resultStacks[target] = materializeCrossingResultStack(left, right, target);
+    }
   }
   return deepFreeze({
     itemId: record.itemId,
@@ -215,6 +262,7 @@ function materializeOne(record) {
     fixture,
     premiseChecks,
     reflectionChoices,
+    ...(record.recipe.id === PLAN17_RECIPE_ID ? { resultStacks } : {}),
   });
 }
 
@@ -250,5 +298,13 @@ export function materializeSharedFactorAdditionRecords(records = SHARED_FACTOR_A
   });
 }
 
+export function materializeCrossingAdditionRecords(records = CROSSING_ADDITION_RECORDS) {
+  return materializeRecords(records, {
+    id: PLAN17_RECIPE_ID,
+    revision: PLAN17_RECIPE_REVISION,
+  });
+}
+
 export const MATERIALIZED_PLAN32_ADDITIONS = materializeCompactAdditionRecords();
 export const MATERIALIZED_PLAN19_ADDITIONS = materializeSharedFactorAdditionRecords();
+export const MATERIALIZED_PLAN17_ADDITIONS = materializeCrossingAdditionRecords();

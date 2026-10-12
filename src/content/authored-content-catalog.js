@@ -6,6 +6,7 @@ import {
 } from './data/legacy-authored-task-records.js';
 import {
   MATERIALIZED_PLAN19_ADDITIONS,
+  MATERIALIZED_PLAN17_ADDITIONS,
   MATERIALIZED_PLAN32_ADDITIONS,
 } from './authored-problem-materializer.js';
 import { deepFreeze } from './schema.js';
@@ -18,6 +19,9 @@ const plan32ByIdentity = new Map(MATERIALIZED_PLAN32_ADDITIONS.map((entry) => [
   identityKey(entry.fixtureId, entry.authoringRevision), entry,
 ]));
 const plan19ByIdentity = new Map(MATERIALIZED_PLAN19_ADDITIONS.map((entry) => [
+  identityKey(entry.fixtureId, entry.authoringRevision), entry,
+]));
+const plan17ByIdentity = new Map(MATERIALIZED_PLAN17_ADDITIONS.map((entry) => [
   identityKey(entry.fixtureId, entry.authoringRevision), entry,
 ]));
 const legacyByIdentity = new Map(LEGACY_AUTHORED_IDENTITIES.map((entry) => [
@@ -36,6 +40,11 @@ for (const item of MATERIALIZED_PLAN32_ADDITIONS) {
   curatedFixturesByIdentity.set(key, item.fixture);
 }
 for (const item of MATERIALIZED_PLAN19_ADDITIONS) {
+  const key = identityKey(item.fixtureId, item.authoringRevision);
+  if (curatedFixturesByIdentity.has(key)) throw new TypeError(`duplicate curated fixture identity: ${key}`);
+  curatedFixturesByIdentity.set(key, item.fixture);
+}
+for (const item of MATERIALIZED_PLAN17_ADDITIONS) {
   const key = identityKey(item.fixtureId, item.authoringRevision);
   if (curatedFixturesByIdentity.has(key)) throw new TypeError(`duplicate curated fixture identity: ${key}`);
   curatedFixturesByIdentity.set(key, item.fixture);
@@ -59,6 +68,8 @@ export function resolveAuthoredContent(fixtureId, authoringRevision) {
   if (materialized) return materialized;
   const sharedFactor = plan19ByIdentity.get(key);
   if (sharedFactor) return sharedFactor;
+  const crossing = plan17ByIdentity.get(key);
+  if (crossing) return crossing;
   const legacy = legacyByIdentity.get(key);
   if (!legacy) return null;
   return deepFreeze({
@@ -86,10 +97,19 @@ export function reflectionChoicesForIdentity(fixtureId, authoringRevision, targe
     ?.reflectionChoices?.[String(targetDenominator)] ?? null;
 }
 
+export function crossingResultStackForIdentity(fixtureId, authoringRevision, targetDenominator) {
+  return resolveAuthoredContent(fixtureId, authoringRevision)
+    ?.resultStacks?.[String(targetDenominator)] ?? null;
+}
+
 export function listPlan32MaterializedContent() {
   return MATERIALIZED_PLAN32_ADDITIONS;
 }
 
 export function listPlan19MaterializedContent() {
   return MATERIALIZED_PLAN19_ADDITIONS;
+}
+
+export function listPlan17MaterializedContent() {
+  return MATERIALIZED_PLAN17_ADDITIONS;
 }

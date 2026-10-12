@@ -101,12 +101,20 @@ function completeExactEpisode(instance, targetDenominator, activeCondition, supp
 }
 
 describe('Plan 32 compact authored addition batch', () => {
-  it('preserves the approved nine-item Plan 32 history and appends Plan 19 in set revision 3', () => {
+  it('preserves the approved Plan 32 and Plan 19 history before the Plan 17 append', () => {
     const practiceType = PRACTICE_TYPES.find((entry) => entry.id === 'sum-under-one');
-    expect(practiceType).toMatchObject({ setId: 'unlike-addition-vetted-set', setRevision: '3' });
+    expect(practiceType).toMatchObject({ setId: 'unlike-addition-vetted-set', setRevision: '4' });
+    expect(practiceType.items).toHaveLength(11);
     expect(practiceType.items.slice(0, 9).map((item) => item.id)).toEqual(approvedItemIds);
-    expect(practiceType.items).toHaveLength(10);
     expect(practiceType.items[9].id).toBe('one-sixth-plus-one-fourth');
+    expect(practiceType.items[10]).toEqual({
+      id: 'two-thirds-plus-three-fourths',
+      fixtureId: 'curated-relatively-prime-addition-crossing-one-whole-two-thirds-three-fourths',
+      authoringRevision: 'plan17-record-v1',
+      episodeDefinitionId: 'phase-3-crossing-one-whole-addition-reflection',
+      episodeDefinitionRevision: '1',
+      targetDenominators: ['12', '24'],
+    });
     expect(MATERIALIZED_PLAN32_ADDITIONS).toHaveLength(7);
     expect(new Set(MATERIALIZED_PLAN32_ADDITIONS.map((item) => item.fixtureId)).size).toBe(7);
   });

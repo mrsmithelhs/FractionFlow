@@ -20,6 +20,7 @@ import {
   EPISODE_BEATS,
   PHASE2_ACTIVE_CONDITION,
   PHASE2_EPISODE_DEFINITION,
+  PLAN17_CROSSING_EPISODE_DEFINITION,
   getEpisodeDefinition,
   validateActiveCondition,
 } from './episode-definition.js';
@@ -153,8 +154,21 @@ function assertInstance(instance, definition) {
       { errors: validation.errors, checks: validation.checks.filter((check) => !check.valid) },
     );
   }
+  const identityContract = definition.contentContract ?? null;
+  const crossingContractMatches = identityContract === null || (
+    instance.provenance?.fixtureId === identityContract.fixtureId
+    && instance.provenance?.authoringRevision === identityContract.authoringRevision
+    && instance.request.selector === identityContract.selector
+    && instance.request.operation === identityContract.operation
+    && JSON.stringify(instance.request.overlays) === JSON.stringify(identityContract.overlays)
+    && instance.classification?.result?.crossesWhole === identityContract.crossesWhole
+    && identityContract.resultStackCapability === 'plan17-two-whole-stack-v1'
+    && instance.representationFacts?.wholeSpan?.lowerWhole === '1'
+    && instance.representationFacts?.wholeSpan?.upperWhole === '2'
+  );
   if (instance.request.selector !== definition.selector
-    || instance.request.operation !== definition.operation) {
+    || instance.request.operation !== definition.operation
+    || !crossingContractMatches) {
     throw new EpisodeConstructionError('UNSUPPORTED_CONTENT_FAMILY', 'content instance is outside the Phase 2 episode family');
   }
   const eligibility = evaluateInstanceEligibility(instance);
@@ -410,7 +424,10 @@ function handleDecide(state, intent) {
   const classification = classifyCommonDenominatorResponse(state.content, intent.proposed);
   if (classification.kind === 'invalid-common-denominator') return recovery(state, intent, classification);
 
-  if (['2', '3'].includes(state.episodeDefinition.revision)) {
+  const usesHistoricalTaskClosure = ['2', '3'].includes(state.episodeDefinition.revision);
+  const usesPlan17TaskClosure = state.episodeDefinition.id === PLAN17_CROSSING_EPISODE_DEFINITION.id
+    && state.episodeDefinition.revision === PLAN17_CROSSING_EPISODE_DEFINITION.revision;
+  if (usesHistoricalTaskClosure || usesPlan17TaskClosure) {
     const taskPathClosure = evaluateTaskPathClosure({
       instance: state.content,
       targetDenominator: classification.targetDenominator,
@@ -730,7 +747,9 @@ function assertIntentAllowedAtBeat(state, intent) {
     );
   }
   if (['request-task-help', 'submit-transform-help-multiplier'].includes(intent.type)) {
-    if (state.episodeDefinition.revision !== '3') {
+    if (state.episodeDefinition.revision !== '3'
+      && !(state.episodeDefinition.id === PLAN17_CROSSING_EPISODE_DEFINITION.id
+        && state.episodeDefinition.revision === PLAN17_CROSSING_EPISODE_DEFINITION.revision)) {
       throw new EpisodeIntentError('UNEXPECTED_INTENT', `${intent.type} requires episode definition revision 3`);
     }
     if (intent.type === 'submit-transform-help-multiplier' && state.beat !== 'transform') {

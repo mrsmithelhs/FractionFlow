@@ -78,11 +78,17 @@ export function createLinearPathRenderer({
     contextSectionEl.replaceChildren();
     const quantities = scene.meaning.quantities;
     const op = scene.meaning.operation;
+    const plan17Crossing = op?.resultStack !== undefined;
+    const isResolved = scene.meaning.status.episode === 'resolved';
+    const isInspection = scene.meaning.currentTask?.beat === 'reflect'
+      && Boolean(scene.presentation?.isReplaying && scene.meaning.transition);
 
     const isPremise = scene.meaning.currentTask?.beat === 'reflect'
       && scene.meaning.currentTask?.connectionForm === 'premise';
 
-    if (isPremise && scene.meaning.premiseCase) {
+    if (plan17Crossing && isInspection) return;
+
+    if (isPremise && scene.meaning.premiseCase && (!plan17Crossing || !isResolved)) {
       const premiseCase = scene.meaning.premiseCase;
       const src = premiseCase.sourceForm;
       const pres = premiseCase.presentedForm;
@@ -105,6 +111,34 @@ export function createLinearPathRenderer({
         comparison.appendChild(row);
       }
       contextSectionEl.appendChild(comparison);
+      return;
+    }
+
+    if (plan17Crossing && op.resultStack) {
+      const stack = op.resultStack;
+      const result = document.createElement('div');
+      result.classList.add('linear-result-stack');
+      result.setAttribute('role', 'math');
+      result.setAttribute(
+        'aria-label',
+        `${stack.displayForm.numerator} over ${stack.displayForm.denominator}. ${stack.wholeCount} wholes.`,
+      );
+      const form = createSymbolicFraction(
+        stack.displayForm.numerator,
+        stack.displayForm.denominator,
+        { ariaHidden: true },
+      );
+      result.appendChild(form);
+      const rows = document.createElement('div');
+      rows.classList.add('linear-result-stack-rows');
+      for (const row of stack.rows) {
+        const rowText = document.createElement('p');
+        rowText.classList.add('linear-result-stack-row');
+        rowText.textContent = `${row.shadedUnits} of ${row.unitCount} equal parts`;
+        rows.appendChild(rowText);
+      }
+      result.appendChild(rows);
+      contextSectionEl.appendChild(result);
       return;
     }
 
