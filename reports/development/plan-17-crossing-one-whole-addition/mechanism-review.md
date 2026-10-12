@@ -101,3 +101,14 @@ and deployment remain separately gated. Advisor limits remain Sol-class read-onl
 low/medium only, with requested/observed identity and instruction-read-only status
 checks reported; use orchestrator-gate-only when the configuration cannot be honored.
 No consultation was warranted for this prose-only approval.
+
+## Bounded test-path amendment
+
+Date: 2026-10-11. Implementer requested approval before editing
+`tests/route-contract.test.js` after appending the new mounted reach route.
+Approved only for live matrix cardinalities (55 rows / 57 expanded executions)
+and an independent original-54-prefix / appended-route assertion. Preserve every
+existing route assertion and object. Compare against the committed pre-Plan17
+matrix matching the approved hash, not a self-derived modified prefix. This adds
+no runtime or harness scope. Record the amendment and affected validation in the
+progress report. Source work continues under the existing approval and owner gates.
