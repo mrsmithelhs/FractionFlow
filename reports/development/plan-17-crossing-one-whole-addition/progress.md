@@ -214,3 +214,71 @@ Owner rendered-screen/agency acceptance remains open; packet completion and
 deployment remain separately gated. Physical Chromebook behavior, native touch
 keyboard typing, assistive-technology behavior, and user-study agency were not
 tested.
+
+## Repair 02 — cycle-safe capture and canonical resolve cue
+
+Date: 2026-10-11 (America/New_York).
+Repair commit: `86b9d1e`.
+
+FF Orch 12+ authorized Repair 02 in `repair-02.md` after the Repair 01 review
+found a cyclic serialized witness and requested a stronger two-row scale
+falsification plus a concise Plan 17 resolve cue. This work used the existing
+approved renderer/test/evidence paths, with `src/render/strings.js` newly
+approved for the cue. No packet status or orchestrator disposition was changed.
+
+### Corrections
+
+- Capture measurements now serialize a finite layout snapshot rather than a
+  cyclic layout object that referenced its accepted parent. The exact full
+  capture completed and wrote all 32 scenarios.
+- At each detailed denominator witness, the mounted capture resizes both
+  accepted result rows equally to 60% (130.8px each). This preserves their
+  internal equality but the cross-state scale witness rejects the mismatch
+  against 218px settled conversion and operate tracks. The capture then restores
+  both rows to 218px and requires the clean cross-state witness to pass. The
+  existing one-row resize and truncated-remainder falsifications also reject.
+  This runs at both 12 and 24. The separate corrupted rendered-fact seed is
+  rejected and restored; it is distinct from wrong learner-answer rejection.
+- For the canonical 17/12 result, visual and linear resolve now use the concise
+  cue “That's right.” The 34/24 path retains its authored alternate-form notice
+  (“34/24 is correct! It can also be written as 17/12.”). Historic resolve
+  behavior remains on other registered definitions. A mounted app test and the
+  full capture assert both paths in both presentations.
+
+### Repair evidence and validation
+
+- `node .../capture-plan17-crossing-addition.mjs` completed the full 32-scenario
+  Edge run: both denominator paths, all four registered conditions, high and
+  medium support, 360×740 and 360×752 reference viewports, visual/linear views,
+  reciprocal presentation samples, reduced motion, touch, and real sequential
+  keyboard navigation. It captured 110 screenshots and recorded question and
+  control bounds plus actual scroll state. Vertical scrolling remains present;
+  the captured questions and controls are reachable, with no horizontal
+  overflow. Help-content assertions remain required per scenario.
+- The mounted witnesses reject a truncated second whole, a resized second whole,
+  and pre-answer result leakage, then pass after restoration. Wrong-answer
+  rejection remains a separate learner interaction. The previous evidence also
+  records recovery/help, Replay, reflection, and reset. No forced keyboard focus
+  is used.
+- `node .../verify-plan17-crossing-addition.mjs` passed after commit `86b9d1e`:
+  32 scenarios, 16
+  path/condition/support sets, 16 reciprocal samples, 110 screenshots, the two
+  denominator-specific cross-state scale witnesses, route-baseline comparison,
+  keyboard correction, and 12 mounted touch-control taps.
+- `npm test`: 34 files and 350 tests passed. The focused app/render tests passed
+  5/5, including the two denominator-specific resolve cues.
+- `npm run build`: learner application and subtraction prototype builds passed.
+  The initial unprivileged build was denied when creating the generated nested
+  `dist` output; the same build passed with managed Windows elevation.
+- `npm run test:routes`: 57/57 browser executions passed across 55 route rows,
+  including the appended Plan 17 route. The initial unprivileged Edge launch
+  could not write its temporary profile; the elevated rerun passed.
+- `node scripts/dev/plan-status.js lint` and `git diff --check` passed.
+  Advisor disposition remains orchestrator-gate-only: this thread could not
+  verify a Sol-class low/medium consultation configuration, and no advisor was
+  called.
+
+Repair 02 is delivered for technical review. Owner rendered-screen/agency
+acceptance remains open; packet completion and deployment remain separately
+gated. Physical Chromebook behavior, native touch keyboard typing,
+assistive-technology behavior, and learner-study agency were not tested.
