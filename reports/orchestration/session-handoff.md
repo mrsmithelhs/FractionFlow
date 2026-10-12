@@ -38,6 +38,10 @@ preflight is RUNNABLE. Its in-chat handoff preserves the separate Requirement 0
 mechanism gate. The packet was refreshed for the accepted compact authoring,
 per-item definition and ten-item baseline, real keyboard recovery and discriminating
 mounted evidence. No Plan 17 source implementation is approved yet.
+FF Impl 17 is resolved at `01a12d76-7765-7423-965f-1ea2f4bda45a`. The owner
+explicitly authorized bidirectional supervision in this chat; root sent the
+coordination brief and observed active Requirement 0 investigation. Proposals and
+delivery can return directly here, with owner decisions and named gates retained.
 Plan 32 is complete
 after owner screen acceptance on 2026-10-11; see `owner-disposition.md`.
 Repair commits `08cb875` / `fe2b820`; see its
