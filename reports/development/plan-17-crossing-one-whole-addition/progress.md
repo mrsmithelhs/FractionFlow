@@ -116,3 +116,101 @@ does not establish owner rendered-screen/agency acceptance or authorize packet
 completion, deployment, or broader lesson scope. The captured short-viewport
 vertical scroll is recorded as observed and was not treated as a defect because
 the actual question and controls remain reachable.
+
+## Repair 01 — conserved scale and evidence repair
+
+Date: 2026-10-11 (America/New_York)
+Repair commit: `10ab185`.
+
+FF Orch 12+ independently reproduced two product defects and three evidence
+gaps in `delivery-review.md`; `repair-01.md` authorized this bounded repair
+within the existing source/test/evidence paths. The status preflight now reports
+`BLOCKED: plan-17 has status "delivered"`. Repair 01 explicitly authorized the
+work despite that lifecycle state. No packet status or orchestrator disposition
+was changed.
+
+### Corrections
+
+- The accepted stack now reserves the same 3rem readout column and 0.75rem gap
+  used by operand tracks. This removes the measured 218px-to-278px change without
+  hard-coding a track width. At 360×740 the 12- and 24-unit detailed witnesses
+  measured 218px for both settled operand tracks, both operate tracks, and both
+  accepted result rows. Segment-width spread across those states was within the
+  1.1px browser-pixel-rounding allowance.
+- The Plan 17 episode constructor resolves the exact registered authored record
+  and compares both supplied initial operand forms with that fixture before it
+  constructs the schedule. A valid `2/3 + 1/2` instance bearing the pinned Plan
+  17 provenance now throws `UNSUPPORTED_CONTENT_FAMILY` at construction. A
+  focused regression proves the same candidate remains constructible under the
+  existing Phase 2 reflection definition.
+- Capture expectations for every prior item, path, row count, mixed form, and
+  reflection matching choice now come from `convertToDenominator()`,
+  `addAtCommonDenominator()`, `improperToMixed()`, and the authored catalog.
+  The script no longer duplicates fraction scaling/addition to act as its own
+  oracle.
+- The pre-answer guard now detects raw fraction strings, spoken improper and
+  mixed forms, and structured numerator/denominator markup. Three independent
+  mounted hidden-sibling seeds isolate a structured fraction, a spoken
+  `aria-label`, and a mixed-equivalent arbitrary `data-answer` attribute. Each
+  seed has no forbidden result-stack class and no companion raw text/ARIA/data
+  leak; each fails the same guard, is removed in `finally`, and is followed by a
+  passing clean check. Wrong learner-answer recovery remains a separate witness.
+- Keyboard evidence now uses sequential Tab, typing, and Enter for the sampled
+  Plan 17 interactions. After an incorrect total, focus was observed on `BODY`;
+  one sequential Tab reached the response input, and keyboard typing/Enter
+  submitted the correction. The scenario then completed, inspected Replay,
+  selected the reflection response, and reset. No forced focus, locator fill,
+  or locator click was used in that Plan 17 keyboard segment.
+- The touch scenario taps the mounted Plan 17 episode controls through reset
+  (12 control taps in the capture). Playwright supplies numeric field text after
+  the input is tapped; this does not establish native on-screen keyboard typing.
+- The route verifier reads the pre-implementation matrix from immutable commit
+  `76039520d9bfc1c8b2c4b102ca39975fc7a87466`, rather than `HEAD`. It separately
+  verifies the baseline file-byte SHA-256
+  `2252458a767a322b23946b701085958eafc2fb0f9c416d4a8c3ee4c6bafa8cbd` and
+  canonical JSON hash for the original 54 route objects
+  `861c315fa1cff3a3e3daa949c53c41a27d7bf27ba54a0981b02a5bd3f0e87650`.
+  Current original objects compare canonically equal. The complete current
+  matrix file bytes differ, as expected from the appended Plan 17 route; that
+  difference is recorded separately and is not reported as byte equality.
+
+### Repair evidence and validation
+
+- The browser capture now contains 32 scenarios: 16 target/condition/support
+  combinations across both 360×740 and 360×752 heights, plus 16 reciprocal
+  high-linear and medium-visual samples. Both denominator paths have targeted
+  rest, active-conversion Replay with a retained draft, “Show new parts”
+  dismissal, last-conversion immediate and settled addends, operate-before,
+  operate-after-wrong-answer, and accepted-result geometry. Help content is a
+  required assertion in every scenario.
+- Question and control bounds/reachability and actual scroll values are saved
+  for the targeted states. Maximum observed vertical scroll range is 423px in
+  these short viewports; the measured question and controls remain reachable.
+  No horizontal overflow was observed. This records normal vertical scrolling
+  without claiming an unscrolled viewport.
+- `node .../verify-plan17-crossing-addition.mjs` passed **after commit `10ab185`**:
+  32 scenarios, 16 reciprocal samples, immutable route baseline confirmed,
+  keyboard correction recorded, 12 touch control taps, two targeted conserved
+  scale/Replay samples, and 110 non-empty screenshots.
+- `npm test`: 34 files, 349 tests passed.
+- `npm run build`: learner app and subtraction prototype builds passed.
+- `npm run test:routes`: 57/57 browser executions passed across 55 rows,
+  including the preserved original route prefix and appended Plan 17 reach route.
+- `node scripts/dev/plan-status.js lint`: no violations. The read-only packet
+  check reports delivered and blocked for new work; the explicit Repair 01
+  authorization governed this bounded follow-up.
+- `git diff --check` and the staged diff check passed. The refreshed verifier
+  makes no historical-baseline claim from the current branch head.
+
+### Advisor and remaining gates
+
+Repair 01 used orchestrator-gate-only review. No additional advisor was invoked:
+this thread could not verify a Sol-class low/medium advisor configuration, and
+the authorized orchestrator supplied the concrete reproductions and exact
+repair bounds. No advisor read/write posture is claimed for this repair.
+
+Repair 01’s implementation and evidence are delivered for technical review.
+Owner rendered-screen/agency acceptance remains open; packet completion and
+deployment remain separately gated. Physical Chromebook behavior, native touch
+keyboard typing, assistive-technology behavior, and user-study agency were not
+tested.
