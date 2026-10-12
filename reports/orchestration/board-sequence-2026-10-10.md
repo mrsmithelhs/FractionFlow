@@ -10,8 +10,10 @@ superseded by owner-approved drafting of a bounded batch proof. Plan 31 is
 complete after owner screenshot acceptance and independent Repair 01 verification.
 FF Impl 31's assignment is closed. Updated 2026-10-11: Plan 32 is complete after
 owner screenshot acceptance and independent Repair 01 verification. FF Impl 32
-is stopped. Plan 19 is owner-initiated in-progress; its handoff is in the owner
-chat, not a separate durable prompt. The packet's mechanism gate remains.
+is stopped. Updated 2026-10-11: Plan 19 is complete after technical Repair 02
+verification and owner screen/agency acceptance. Plan 17 is owner-initiated
+in-progress; its handoff is in chat, not a separate durable prompt. Its pre-source
+mechanism gate remains.
 
 Recommended source sequence: **31 → 32 → 19 → 17 → 20 → 18**.
 Plan 32 depends on Plan 31 for serialization and the notation/evidence baseline;
@@ -23,8 +25,8 @@ chain. Recheck every older source packet against current code before initiation.
 |---|---|---|
 | 31 — Shared Fraction Typography | Intrinsic fraction lines and structured linear question/button notation | Complete; technical and owner acceptance satisfied |
 | 32 — Compact Authored Problem Batch | Shared production authoring across a varied reviewed batch | Complete; technical and owner acceptance satisfied |
-| 19 — Shared-Factor Addition | New denominator relationship, retaining two conversions | In-progress, FF Impl 19 investigating Requirement 0; source awaits mechanism approval |
-| 17 — Crossing-One-Whole Addition | Truthful equal-unit multi-whole result stack | After 19; stack, answer withholding, capability and geometry gate |
+| 19 — Shared-Factor Addition | New denominator relationship, retaining two conversions | Complete; technical and owner acceptance satisfied |
+| 17 — Crossing-One-Whole Addition | Truthful equal-unit multi-whole result stack | In-progress; stack, answer withholding, capability and geometry mechanism gate before source |
 | 20 — Like-Denominator Addition and Notice Recovery | Zero-renaming episode and same-parts recovery | After 17; implied unit/effective operands, no fabricated conversions/reflection |
 | 18 — Nested-Denominator Addition | Identify and rename only the operand needing it, in both orders | After 20; execution of DECISION-037, not unrestricted alternative-unit choice |
 | 23 — Local Development Console | Safe menu hub for local server lifecycle and commands | Independent tooling slot between source assignments; owner initiation and live start/stop acceptance |

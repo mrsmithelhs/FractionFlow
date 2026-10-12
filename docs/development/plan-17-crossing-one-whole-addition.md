@@ -1,11 +1,9 @@
 ---
 id: plan-17
 title: Crossing-One-Whole Addition
-status: draft
+status: in-progress
 depends_on: [plan-11, plan-12, plan-13, plan-14, plan-16, plan-22, plan-26]
 gate: "Requirement 0: approve semantic stack projection, answer withholding, capability bounds, registry identity, and measured layout mechanism before source work. Technical and owner rendered-screen/agency acceptance before completion; deployment separately authorized."
-superseded_by: null
-resolution: null
 summary: >-
   Deliver a vetted Phase 3 practice: unlike-denominator addition whose sum
   exceeds one, using the decided discrete multi-whole stack. Preserve unit size,
@@ -106,6 +104,13 @@ Do not reopen this policy choice; obtain approval of its execution mechanism.
 Return for approval before source edits. A prototype variable is not settled by
 this proposal. If an upstream math addition is necessary, return for scope review.
 
+Initiation refresh (2026-10-11): Plans 31/32/19 are accepted. Reuse their compact
+authored-content pipeline and per-item registered-definition lifecycle rather
+than duplicate fixture arithmetic or reopen historical definitions. Record the
+current ten-item/set-revision baseline at preflight. This packet's small content
+increment proves a new result representation and withholding contract, rather
+than another numeric variant alone.
+
 ### Requirement 1 — Truthful stack and learner responsibility
 
 Use equal-width wholes stacked vertically, with equal segment widths for the same
@@ -147,6 +152,12 @@ bounds, horizontal overflow, whole/segment widths and painted shaded counts.
 Observe the Plan 11 transition while addends remain mounted; measure the result
 stack after the accepted answer retires them. Cover high and
 medium support, keyboard, non-drag browser touch, linear path and reduced motion.
+Keyboard reach/recovery must use real Tab navigation rather than forced focus.
+Do not swallow missing-help assertions. Distinguish wrong learner-answer rejection
+from temporary corrupted-representation failure seeds; the latter must make the
+same mounted witness fail, then pass after restoration. Inspect answer withholding
+before response across the full mounted component, including hidden/inactive
+siblings and attributes, and prove the guard rejects a temporary answer-leak seed.
 Do not claim physical-device typing or assistive-technology evidence unless tested.
 Supply screenshots for owner review. Ordinary vertical scrolling is reported;
 hidden or unreachable controls and changing the whole's scale are defects.

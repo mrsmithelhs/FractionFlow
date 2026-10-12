@@ -14,7 +14,9 @@ and both starting prompts; prohibited role defaults must not bypass the limit.
 This snapshot supersedes older status/next-action passages below, which retain
 dated history. Use `docs/development/README.md` for the authoritative board.
 Plans 01–16, 21, 22, 24, 25, 26, 30 and 31 are complete; Plans 17–20, 23 and 29
-are drafts except Plan 19, which is delivered and under review. FF Impl 19 is
+are drafts except Plan 17, which is owner-initiated in-progress. Plan 19 is complete
+after owner screen/agency acceptance on 2026-10-11; see `owner-disposition.md`.
+Its implementer assignment is closed. FF Impl 19 is
 resolved at `01a12c75-1e17-7f03-b9fd-c3ce9a838a03`; the owner assignment in that
 chat explicitly authorizes bidirectional Plan 19 supervision. Kickoff received;
 Requirement 0 proposal `854f770` is approved on 2026-10-11; see Plan 19's
@@ -31,7 +33,11 @@ corrupted represented-fact seed and activation of mounted Show new parts in
 `repair-02-review.md`. Root independently passed 21 focused tests and three
 filtered browser journeys (touch Replay/seed, real keyboard recovery and pointer
 help), each with nine Next transitions to item ten. Owner screen/agency acceptance
-remains; status stays delivered. After closure the recommended next packet is 17.
+was subsequently satisfied; status is complete. Plan 17 is in-progress and its
+preflight is RUNNABLE. Its in-chat handoff preserves the separate Requirement 0
+mechanism gate. The packet was refreshed for the accepted compact authoring,
+per-item definition and ten-item baseline, real keyboard recovery and discriminating
+mounted evidence. No Plan 17 source implementation is approved yet.
 Plan 32 is complete
 after owner screen acceptance on 2026-10-11; see `owner-disposition.md`.
 Repair commits `08cb875` / `fe2b820`; see its
