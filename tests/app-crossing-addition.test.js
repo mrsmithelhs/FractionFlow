@@ -20,7 +20,7 @@ describe('Plan 17 mounted learner route', () => {
     teardownMockDOM();
   });
 
-  it('withholds the total in both mounted views until correct acceptance, then restores it after Inspection Mode', () => {
+  it.each(['12', '24'])('withholds the total in both mounted views until correct %s acceptance, then restores it after Inspection Mode', (target) => {
     document = setupMockDOM();
     root = document.createElement('div');
     document.body.appendChild(root);
@@ -49,10 +49,11 @@ describe('Plan 17 mounted learner route', () => {
     app.dispatch({ type: 'submit-notice', matchesUnits: false });
     app.dispatch({
       type: 'propose-common-denominator',
-      proposed: { kind: 'fraction', numerator: '12', denominator: '1' },
+      proposed: { kind: 'fraction', numerator: target, denominator: '1' },
     });
-    const left = convertToDenominator(wireToForm(instance.operands.left.initialForm), 12n);
-    const right = convertToDenominator(wireToForm(instance.operands.right.initialForm), 12n);
+    const denominator = BigInt(target);
+    const left = convertToDenominator(wireToForm(instance.operands.left.initialForm), denominator);
+    const right = convertToDenominator(wireToForm(instance.operands.right.initialForm), denominator);
     app.dispatch({ type: 'submit-equivalent-form', proposed: fractionToWire(left) });
     app.dispatch({ type: 'submit-equivalent-form', proposed: fractionToWire(right) });
 
@@ -60,9 +61,9 @@ describe('Plan 17 mounted learner route', () => {
       addAtCommonDenominator(
         wireToForm(instance.operands.left.initialForm),
         wireToForm(instance.operands.right.initialForm),
-        12n,
+        denominator,
       ),
-      12n,
+      denominator,
     );
     const assertWithheld = () => {
       const mounted = root.querySelector('.fractionflow-app');
@@ -74,7 +75,7 @@ describe('Plan 17 mounted learner route', () => {
     };
     assertWithheld();
 
-    app.dispatch({ type: 'submit-operation-result', proposed: { kind: 'fraction', numerator: '1', denominator: '12' } });
+    app.dispatch({ type: 'submit-operation-result', proposed: { kind: 'fraction', numerator: '1', denominator: target } });
     expect(app.getState().beat).toBe('operate');
     assertWithheld();
 
@@ -85,7 +86,11 @@ describe('Plan 17 mounted learner route', () => {
       .toBeTruthy();
     expect(root.querySelector('.app-linear-view .linear-result-stack')).toBeTruthy();
     expect(root.querySelector('.app-visual-view .fraction-bar-multi-whole-stack').getAttribute('aria-label'))
-      .toContain('17 over 12');
+      .toContain(`${total.numerator} over ${target}`);
+    expect(root.querySelector('.app-visual-view .active-beat-prompt').textContent)
+      .toBe(target === '12' ? "That's right." : '34/24 is correct! It can also be written as 17/12.');
+    expect(root.querySelector('.app-linear-view .active-beat-prompt').textContent)
+      .toBe(target === '12' ? "That's right." : '34/24 is correct! It can also be written as 17/12.');
 
     app.dispatch({ type: 'submit-resolution', proposed: fractionToWire(total) });
     expect(app.getState().beat).toBe('reflect');

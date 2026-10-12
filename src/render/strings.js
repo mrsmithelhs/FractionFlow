@@ -102,6 +102,7 @@ export const STRINGS = Object.freeze({
   resolve: Object.freeze({
     prompt: 'Here is your final answer.',
     summary: (num, den) => `The answer is ${num}/${den}.`,
+    crossingAcceptedCue: "That's right.",
     unsimplifiedNotice: (raw, simp) => (
       `${raw} is correct! It can also be written as ${simp}.`
     ),

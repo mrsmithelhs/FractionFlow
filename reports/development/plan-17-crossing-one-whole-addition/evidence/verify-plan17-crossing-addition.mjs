@@ -75,6 +75,11 @@ for (const item of data.scenarios) {
   require(recovery && recovery.trim().length > 0, `${scenario.id}: wrong learner answer lacked recovery`);
   require(accepted.rowBounds?.length === 2, `${scenario.id}: both whole rows are not measured after acceptance`);
   require(accepted.questionReachable && accepted.controlsReachable, `${scenario.id}: accepted question/control is unreachable`);
+  const expectedResolveCue = scenario.target === '12'
+    ? "That's right."
+    : '34/24 is correct! It can also be written as 17/12.';
+  require(accepted.resolveCue === expectedResolveCue,
+    `${scenario.id}: canonical crossing cue or alternate-form notice changed`);
   require(reflection && replay, `${scenario.id}: reflection or Replay stage is absent`);
   require(resetWithholding?.stackCount === 0, `${scenario.id}: reset retained the result stack`);
   require(item.withhold?.stackCount === 0
@@ -161,6 +166,7 @@ require(detailed.length === 2, `expected one targeted scale/Replay sample per de
 require(new Set(detailed.map((item) => item.scenario.target)).size === 2, 'targeted scale samples do not cover both denominators');
 for (const item of detailed) {
   const scale = item.accepted.scaleConservation;
+  const falsification = item.falsification;
   require(scale, `${item.scenario.id}: conserved-scale observations are absent`);
   require(scale.activeConversionReplay.replayControlVisible && scale.activeConversionReplay.draftValue,
     `${item.scenario.id}: active conversion Replay did not retain a draft`);
@@ -189,6 +195,18 @@ for (const item of detailed) {
     .flatMap((stage) => stage.tracks.flatMap((track) => track.segmentWidths));
   require(Math.max(...unitWidths) - Math.min(...unitWidths) <= 1.1,
     `${item.scenario.id}: segment scale is not conserved across instructional states`);
+  require(falsification?.rejectsBothRowsResizedEquallyAcrossStates === true,
+    `${item.scenario.id}: equal-row resize did not fail cross-state conservation`);
+  require(falsification.bothRowsSeedInternalWidths?.length === 2
+    && Math.abs(falsification.bothRowsSeedInternalWidths[0] - falsification.bothRowsSeedInternalWidths[1]) < 1,
+  `${item.scenario.id}: equal-row resize did not preserve internal row equality`);
+  require(typeof falsification.bothRowsSeedDiagnostic === 'string'
+    && falsification.bothRowsSeedDiagnostic.includes('whole scale changed'),
+  `${item.scenario.id}: equal-row seed did not fail the cross-state scale assertion`);
+  require(falsification.bothRowsCleanCrossStatePassesAfterRestore === true,
+    `${item.scenario.id}: restored rows did not pass cross-state conservation`);
+  require(falsification.bothRowsRestoredWidths?.every((width) => Math.abs(width - scale.accepted.tracks[0].width) < 1),
+    `${item.scenario.id}: restored row widths do not match the accepted scale`);
   const extraScreenshots = [
     'rest', 'conversion-replay', 'conversion-replay-dismissed', 'last-conversion-immediate',
     'last-conversion-settled', 'operate-before-answer', 'operate-after-wrong-answer',

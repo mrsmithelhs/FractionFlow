@@ -667,6 +667,8 @@ export function createLinearPathRenderer({
             `${raw.numerator}/${raw.denominator}`,
             `${pref.numerator}/${pref.denominator}`,
           );
+        } else if (pref && scene.meaning.operation.resultStack !== undefined) {
+          promptText.textContent = strings.resolve.crossingAcceptedCue;
         } else if (pref) {
           promptText.textContent = strings.resolve.summary(pref.numerator, pref.denominator);
         }

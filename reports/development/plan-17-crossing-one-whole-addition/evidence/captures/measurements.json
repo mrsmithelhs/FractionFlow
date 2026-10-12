@@ -936,9 +936,40 @@
             "runningAnimations": 0,
             "scrollHeight": 855,
             "scrollY": 115,
-            "horizontalOverflow": false
+            "horizontalOverflow": false,
+            "layout": {
+              "stage": "accepted-total",
+              "viewport": {
+                "width": 360,
+                "height": 740
+              },
+              "question": {
+                "left": 63,
+                "top": 307.72,
+                "right": 297,
+                "bottom": 332.91,
+                "width": 234,
+                "height": 25.19
+              },
+              "controls": {
+                "left": 63,
+                "top": 363.84,
+                "right": 297,
+                "bottom": 407.84,
+                "width": 234,
+                "height": 44
+              },
+              "scrollHeight": 855,
+              "scrollY": 115,
+              "scrollMax": 115,
+              "horizontalOverflow": false,
+              "questionReachable": true,
+              "controlsReachable": true,
+              "activeElement": "BODY"
+            }
           }
-        }
+        },
+        "resolveCue": "That's right."
       },
       "stackFact": {
         "kind": "visual",
@@ -960,6 +991,17 @@
       "falsification": {
         "rejectsTruncatedRemainder": true,
         "rejectsResizedSecondWhole": true,
+        "bothRowsSeedInternalWidths": [
+          130.8,
+          130.8
+        ],
+        "rejectsBothRowsResizedEquallyAcrossStates": true,
+        "bothRowsSeedDiagnostic": "plan17-12-phase2-bundle-1-high-visual-740: whole scale changed across settled conversion, operate, or accepted result (218, 218, 218, 218, 130.8, 130.8)",
+        "bothRowsCleanCrossStatePassesAfterRestore": true,
+        "bothRowsRestoredWidths": [
+          218,
+          218
+        ],
         "rejectsCorruptRenderedFact": true,
         "restoredWitnessPasses": true
       },
@@ -1389,7 +1431,8 @@
             "tabCount": 3,
             "target": "Try this problem again"
           }
-        ]
+        ],
+        "resolveCue": "That's right."
       },
       "stackFact": {
         "kind": "linear",
@@ -1632,7 +1675,8 @@
         "questionReachable": true,
         "controlsReachable": true,
         "operateRecoveryFocus": "<body>\n  <div id=\"app\"><div class=\"fractionflow-app\" data-condition-id=\"phase2-bundle-1\" data-display-code=\"D-01-A\" data",
-        "keyboardActions": []
+        "keyboardActions": [],
+        "resolveCue": "That's right."
       },
       "stackFact": {
         "kind": "linear",
@@ -1993,7 +2037,8 @@
         "questionReachable": true,
         "controlsReachable": true,
         "operateRecoveryFocus": "<body>\n  <div id=\"app\"><div class=\"fractionflow-app\" data-condition-id=\"phase2-bundle-1\" data-display-code=\"D-01-A\" data",
-        "keyboardActions": []
+        "keyboardActions": [],
+        "resolveCue": "That's right."
       },
       "stackFact": {
         "kind": "visual",
@@ -2485,7 +2530,8 @@
         "questionReachable": true,
         "controlsReachable": true,
         "operateRecoveryFocus": "<body>\n  <div id=\"app\"><div class=\"fractionflow-app\" data-condition-id=\"phase2-bundle-2\" data-display-code=\"D-01-B\" data",
-        "keyboardActions": []
+        "keyboardActions": [],
+        "resolveCue": "That's right."
       },
       "stackFact": {
         "kind": "visual",
@@ -2859,7 +2905,8 @@
         "questionReachable": true,
         "controlsReachable": true,
         "operateRecoveryFocus": "<body>\n  <div id=\"app\"><div class=\"fractionflow-app\" data-condition-id=\"phase2-bundle-2\" data-display-code=\"D-01-B\" data",
-        "keyboardActions": []
+        "keyboardActions": [],
+        "resolveCue": "That's right."
       },
       "stackFact": {
         "kind": "linear",
@@ -3102,7 +3149,8 @@
         "questionReachable": true,
         "controlsReachable": true,
         "operateRecoveryFocus": "<body>\n  <div id=\"app\"><div class=\"fractionflow-app\" data-condition-id=\"phase2-bundle-2\" data-display-code=\"D-01-B\" data",
-        "keyboardActions": []
+        "keyboardActions": [],
+        "resolveCue": "That's right."
       },
       "stackFact": {
         "kind": "linear",
@@ -3463,7 +3511,8 @@
         "questionReachable": true,
         "controlsReachable": true,
         "operateRecoveryFocus": "<body>\n  <div id=\"app\"><div class=\"fractionflow-app\" data-condition-id=\"phase2-bundle-2\" data-display-code=\"D-01-B\" data",
-        "keyboardActions": []
+        "keyboardActions": [],
+        "resolveCue": "That's right."
       },
       "stackFact": {
         "kind": "visual",
@@ -3955,7 +4004,8 @@
         "questionReachable": true,
         "controlsReachable": true,
         "operateRecoveryFocus": "<body>\n  <div id=\"app\"><div class=\"fractionflow-app\" data-condition-id=\"phase2-bundle-3\" data-display-code=\"D-01-B\" data",
-        "keyboardActions": []
+        "keyboardActions": [],
+        "resolveCue": "That's right."
       },
       "stackFact": {
         "kind": "visual",
@@ -4329,7 +4379,8 @@
         "questionReachable": true,
         "controlsReachable": true,
         "operateRecoveryFocus": "<body>\n  <div id=\"app\"><div class=\"fractionflow-app\" data-condition-id=\"phase2-bundle-3\" data-display-code=\"D-01-B\" data",
-        "keyboardActions": []
+        "keyboardActions": [],
+        "resolveCue": "That's right."
       },
       "stackFact": {
         "kind": "linear",
@@ -4572,7 +4623,8 @@
         "questionReachable": true,
         "controlsReachable": true,
         "operateRecoveryFocus": "<body>\n  <div id=\"app\"><div class=\"fractionflow-app\" data-condition-id=\"phase2-bundle-3\" data-display-code=\"D-01-B\" data",
-        "keyboardActions": []
+        "keyboardActions": [],
+        "resolveCue": "That's right."
       },
       "stackFact": {
         "kind": "linear",
@@ -4933,7 +4985,8 @@
         "questionReachable": true,
         "controlsReachable": true,
         "operateRecoveryFocus": "<body>\n  <div id=\"app\"><div class=\"fractionflow-app\" data-condition-id=\"phase2-bundle-3\" data-display-code=\"D-01-B\" data",
-        "keyboardActions": []
+        "keyboardActions": [],
+        "resolveCue": "That's right."
       },
       "stackFact": {
         "kind": "visual",
@@ -5425,7 +5478,8 @@
         "questionReachable": true,
         "controlsReachable": true,
         "operateRecoveryFocus": "<body>\n  <div id=\"app\"><div class=\"fractionflow-app\" data-condition-id=\"phase2-bundle-4\" data-display-code=\"D-01-A\" data",
-        "keyboardActions": []
+        "keyboardActions": [],
+        "resolveCue": "That's right."
       },
       "stackFact": {
         "kind": "visual",
@@ -5657,7 +5711,8 @@
         "questionReachable": true,
         "controlsReachable": true,
         "operateRecoveryFocus": "<body>\n  <div id=\"app\"><div class=\"fractionflow-app\" data-condition-id=\"phase2-bundle-4\" data-display-code=\"D-01-A\" data",
-        "keyboardActions": []
+        "keyboardActions": [],
+        "resolveCue": "That's right."
       },
       "stackFact": {
         "kind": "linear",
@@ -5869,7 +5924,8 @@
         "questionReachable": true,
         "controlsReachable": true,
         "operateRecoveryFocus": "<body>\n  <div id=\"app\"><div class=\"fractionflow-app\" data-condition-id=\"phase2-bundle-4\" data-display-code=\"D-01-A\" data",
-        "keyboardActions": []
+        "keyboardActions": [],
+        "resolveCue": "That's right."
       },
       "stackFact": {
         "kind": "linear",
@@ -6199,7 +6255,8 @@
         "questionReachable": true,
         "controlsReachable": true,
         "operateRecoveryFocus": "<body>\n  <div id=\"app\"><div class=\"fractionflow-app\" data-condition-id=\"phase2-bundle-4\" data-display-code=\"D-01-A\" data",
-        "keyboardActions": []
+        "keyboardActions": [],
+        "resolveCue": "That's right."
       },
       "stackFact": {
         "kind": "visual",
@@ -7415,9 +7472,40 @@
             "runningAnimations": 0,
             "scrollHeight": 919,
             "scrollY": 179,
-            "horizontalOverflow": false
+            "horizontalOverflow": false,
+            "layout": {
+              "stage": "accepted-total",
+              "viewport": {
+                "width": 360,
+                "height": 740
+              },
+              "question": {
+                "left": 63,
+                "top": 282.91,
+                "right": 297,
+                "bottom": 333.28,
+                "width": 234,
+                "height": 50.38
+              },
+              "controls": {
+                "left": 63,
+                "top": 364.22,
+                "right": 297,
+                "bottom": 408.22,
+                "width": 234,
+                "height": 44
+              },
+              "scrollHeight": 919,
+              "scrollY": 179,
+              "scrollMax": 179,
+              "horizontalOverflow": false,
+              "questionReachable": true,
+              "controlsReachable": true,
+              "activeElement": "BODY"
+            }
           }
-        }
+        },
+        "resolveCue": "34/24 is correct! It can also be written as 17/12."
       },
       "stackFact": {
         "kind": "visual",
@@ -7439,6 +7527,17 @@
       "falsification": {
         "rejectsTruncatedRemainder": true,
         "rejectsResizedSecondWhole": true,
+        "bothRowsSeedInternalWidths": [
+          130.8,
+          130.8
+        ],
+        "rejectsBothRowsResizedEquallyAcrossStates": true,
+        "bothRowsSeedDiagnostic": "plan17-24-phase2-bundle-1-high-visual-740: whole scale changed across settled conversion, operate, or accepted result (218, 218, 218, 218, 130.8, 130.8)",
+        "bothRowsCleanCrossStatePassesAfterRestore": true,
+        "bothRowsRestoredWidths": [
+          218,
+          218
+        ],
         "rejectsCorruptRenderedFact": true,
         "restoredWitnessPasses": true
       },
@@ -7887,7 +7986,8 @@
         "questionReachable": true,
         "controlsReachable": true,
         "operateRecoveryFocus": "<body>\n  <div id=\"app\"><div class=\"fractionflow-app\" data-condition-id=\"phase2-bundle-1\" data-display-code=\"D-01-A\" data",
-        "keyboardActions": []
+        "keyboardActions": [],
+        "resolveCue": "34/24 is correct! It can also be written as 17/12."
       },
       "stackFact": {
         "kind": "linear",
@@ -8130,7 +8230,8 @@
         "questionReachable": true,
         "controlsReachable": true,
         "operateRecoveryFocus": "<body>\n  <div id=\"app\"><div class=\"fractionflow-app\" data-condition-id=\"phase2-bundle-1\" data-display-code=\"D-01-A\" data",
-        "keyboardActions": []
+        "keyboardActions": [],
+        "resolveCue": "34/24 is correct! It can also be written as 17/12."
       },
       "stackFact": {
         "kind": "linear",
@@ -8587,7 +8688,8 @@
         "questionReachable": true,
         "controlsReachable": true,
         "operateRecoveryFocus": "<body>\n  <div id=\"app\"><div class=\"fractionflow-app\" data-condition-id=\"phase2-bundle-1\" data-display-code=\"D-01-A\" data",
-        "keyboardActions": []
+        "keyboardActions": [],
+        "resolveCue": "34/24 is correct! It can also be written as 17/12."
       },
       "stackFact": {
         "kind": "visual",
@@ -9271,7 +9373,8 @@
         "questionReachable": true,
         "controlsReachable": true,
         "operateRecoveryFocus": "<body>\n  <div id=\"app\"><div class=\"fractionflow-app\" data-condition-id=\"phase2-bundle-2\" data-display-code=\"D-01-B\" data",
-        "keyboardActions": []
+        "keyboardActions": [],
+        "resolveCue": "34/24 is correct! It can also be written as 17/12."
       },
       "stackFact": {
         "kind": "visual",
@@ -9741,7 +9844,8 @@
         "questionReachable": true,
         "controlsReachable": true,
         "operateRecoveryFocus": "<body>\n  <div id=\"app\"><div class=\"fractionflow-app\" data-condition-id=\"phase2-bundle-2\" data-display-code=\"D-01-B\" data",
-        "keyboardActions": []
+        "keyboardActions": [],
+        "resolveCue": "34/24 is correct! It can also be written as 17/12."
       },
       "stackFact": {
         "kind": "linear",
@@ -9984,7 +10088,8 @@
         "questionReachable": true,
         "controlsReachable": true,
         "operateRecoveryFocus": "<body>\n  <div id=\"app\"><div class=\"fractionflow-app\" data-condition-id=\"phase2-bundle-2\" data-display-code=\"D-01-B\" data",
-        "keyboardActions": []
+        "keyboardActions": [],
+        "resolveCue": "34/24 is correct! It can also be written as 17/12."
       },
       "stackFact": {
         "kind": "linear",
@@ -10441,7 +10546,8 @@
         "questionReachable": true,
         "controlsReachable": true,
         "operateRecoveryFocus": "<body>\n  <div id=\"app\"><div class=\"fractionflow-app\" data-condition-id=\"phase2-bundle-2\" data-display-code=\"D-01-B\" data",
-        "keyboardActions": []
+        "keyboardActions": [],
+        "resolveCue": "34/24 is correct! It can also be written as 17/12."
       },
       "stackFact": {
         "kind": "visual",
@@ -11125,7 +11231,8 @@
         "questionReachable": true,
         "controlsReachable": true,
         "operateRecoveryFocus": "<body>\n  <div id=\"app\"><div class=\"fractionflow-app\" data-condition-id=\"phase2-bundle-3\" data-display-code=\"D-01-B\" data",
-        "keyboardActions": []
+        "keyboardActions": [],
+        "resolveCue": "34/24 is correct! It can also be written as 17/12."
       },
       "stackFact": {
         "kind": "visual",
@@ -11595,7 +11702,8 @@
         "questionReachable": true,
         "controlsReachable": true,
         "operateRecoveryFocus": "<body>\n  <div id=\"app\"><div class=\"fractionflow-app\" data-condition-id=\"phase2-bundle-3\" data-display-code=\"D-01-B\" data",
-        "keyboardActions": []
+        "keyboardActions": [],
+        "resolveCue": "34/24 is correct! It can also be written as 17/12."
       },
       "stackFact": {
         "kind": "linear",
@@ -11838,7 +11946,8 @@
         "questionReachable": true,
         "controlsReachable": true,
         "operateRecoveryFocus": "<body>\n  <div id=\"app\"><div class=\"fractionflow-app\" data-condition-id=\"phase2-bundle-3\" data-display-code=\"D-01-B\" data",
-        "keyboardActions": []
+        "keyboardActions": [],
+        "resolveCue": "34/24 is correct! It can also be written as 17/12."
       },
       "stackFact": {
         "kind": "linear",
@@ -12295,7 +12404,8 @@
         "questionReachable": true,
         "controlsReachable": true,
         "operateRecoveryFocus": "<body>\n  <div id=\"app\"><div class=\"fractionflow-app\" data-condition-id=\"phase2-bundle-3\" data-display-code=\"D-01-B\" data",
-        "keyboardActions": []
+        "keyboardActions": [],
+        "resolveCue": "34/24 is correct! It can also be written as 17/12."
       },
       "stackFact": {
         "kind": "visual",
@@ -12979,7 +13089,8 @@
         "questionReachable": true,
         "controlsReachable": true,
         "operateRecoveryFocus": "<body>\n  <div id=\"app\"><div class=\"fractionflow-app\" data-condition-id=\"phase2-bundle-4\" data-display-code=\"D-01-A\" data",
-        "keyboardActions": []
+        "keyboardActions": [],
+        "resolveCue": "34/24 is correct! It can also be written as 17/12."
       },
       "stackFact": {
         "kind": "visual",
@@ -13211,7 +13322,8 @@
         "questionReachable": true,
         "controlsReachable": true,
         "operateRecoveryFocus": "<body>\n  <div id=\"app\"><div class=\"fractionflow-app\" data-condition-id=\"phase2-bundle-4\" data-display-code=\"D-01-A\" data",
-        "keyboardActions": []
+        "keyboardActions": [],
+        "resolveCue": "34/24 is correct! It can also be written as 17/12."
       },
       "stackFact": {
         "kind": "linear",
@@ -13423,7 +13535,8 @@
         "questionReachable": true,
         "controlsReachable": true,
         "operateRecoveryFocus": "<body>\n  <div id=\"app\"><div class=\"fractionflow-app\" data-condition-id=\"phase2-bundle-4\" data-display-code=\"D-01-A\" data",
-        "keyboardActions": []
+        "keyboardActions": [],
+        "resolveCue": "34/24 is correct! It can also be written as 17/12."
       },
       "stackFact": {
         "kind": "linear",
@@ -13849,7 +13962,8 @@
         "questionReachable": true,
         "controlsReachable": true,
         "operateRecoveryFocus": "<body>\n  <div id=\"app\"><div class=\"fractionflow-app\" data-condition-id=\"phase2-bundle-4\" data-display-code=\"D-01-A\" data",
-        "keyboardActions": []
+        "keyboardActions": [],
+        "resolveCue": "34/24 is correct! It can also be written as 17/12."
       },
       "stackFact": {
         "kind": "visual",

@@ -297,6 +297,22 @@ function assertScaleConservation(lastConversion, operate, result, scenarioId) {
     `${scenarioId}: unit segment scale changed across settled conversion, operate, or accepted result`);
 }
 
+function finiteLayoutSnapshot(layout) {
+  return {
+    stage: layout.stage,
+    viewport: { width: layout.viewport.width, height: layout.viewport.height },
+    question: layout.question ? { ...layout.question } : null,
+    controls: layout.controls ? { ...layout.controls } : null,
+    scrollHeight: layout.scrollHeight,
+    scrollY: layout.scrollY,
+    scrollMax: layout.scrollMax,
+    horizontalOverflow: layout.horizontalOverflow,
+    questionReachable: layout.questionReachable,
+    controlsReachable: layout.controlsReachable,
+    activeElement: layout.activeElement,
+  };
+}
+
 async function checkPreAnswerWithholding(page, target, scenarioId) {
   const view = page.locator('.app-visual-view');
   const { facts } = numerators(target);
@@ -411,7 +427,7 @@ async function mountedStackWitness(page, viewName, target) {
   return data;
 }
 
-async function runMountedFalsifications(page, scenario, target) {
+async function runMountedFalsifications(page, scenario, target, lastConversionSettled = null, operateReference = null) {
   if (scenario.view !== 'visual') return {};
   const result = {};
   const stack = page.locator('.app-visual-view .fraction-bar-multi-whole-stack').first();
@@ -431,6 +447,34 @@ async function runMountedFalsifications(page, scenario, target) {
   catch { result.rejectsResizedSecondWhole = true; }
   finally { await secondWhole.evaluate((element, width) => { element.style.width = width; }, oldWidth); }
   assert(result.rejectsResizedSecondWhole, `${scenario.id}: mounted witness accepted a resized second whole`);
+  if (scenario.detailed && lastConversionSettled && operateReference) {
+    const bothRows = page.locator('.app-visual-view .fraction-bar-multi-whole-row');
+    const originalWidths = await bothRows.evaluateAll((elements) => elements.map((element) => element.style.width));
+    await bothRows.evaluateAll((elements) => elements.forEach((element) => { element.style.width = '60%'; }));
+    try {
+      const resizedResult = await measureTrackScale(page, 'both-result-rows-resized-equally', target);
+      const rowWidths = resizedResult.tracks.map((track) => track.width);
+      assert(rowWidths.length === 2 && Math.abs(rowWidths[0] - rowWidths[1]) < 1,
+        `${scenario.id}: both-row scale seed did not preserve internal equality`);
+      result.bothRowsSeedInternalWidths = rowWidths;
+      try {
+        assertScaleConservation(lastConversionSettled, operateReference, resizedResult, scenario.id);
+      } catch (error) {
+        result.rejectsBothRowsResizedEquallyAcrossStates = true;
+        result.bothRowsSeedDiagnostic = error.message;
+      }
+      assert(result.rejectsBothRowsResizedEquallyAcrossStates,
+        `${scenario.id}: cross-state scale witness accepted equally resized result rows`);
+    } finally {
+      await bothRows.evaluateAll((elements, widths) => elements.forEach((element, index) => {
+        element.style.width = widths[index];
+      }), originalWidths);
+    }
+    const restoredScale = await measureTrackScale(page, 'both-result-rows-restored', target);
+    assertScaleConservation(lastConversionSettled, operateReference, restoredScale, scenario.id);
+    result.bothRowsCleanCrossStatePassesAfterRestore = true;
+    result.bothRowsRestoredWidths = restoredScale.tracks.map((track) => track.width);
+  }
   const secondTrack = restoredRows.nth(0).locator('.fraction-bar-multi-whole-track');
   const firstSegment = secondTrack.locator(':scope > *').first();
   await firstSegment.evaluate((element) => element.classList.remove('shaded'));
@@ -620,12 +664,25 @@ async function runScenario(browser, serverUrl, scenario) {
   assert(accepted.rowBounds.length === 2, `${scenario.id}: accepted result did not show both whole rows`);
   const acceptedScale = scenario.detailed ? await measureTrackScale(page, 'accepted-result-stack', denominator) : null;
   if (scenario.detailed) {
-    acceptedScale.layout = accepted;
+    acceptedScale.layout = finiteLayoutSnapshot(accepted);
     assertScaleConservation(lastConversionSettled, operateBeforeAnswer, acceptedScale, scenario.id);
     accepted.scaleConservation = { rest, activeConversionReplay, dismissedConversionReplay, lastConversionImmediate, lastConversionSettled, operateBeforeAnswer, operateAfterWrongAnswer, accepted: acceptedScale };
   }
   const stackFact = await mountedStackWitness(page, scenario.view, denominator);
-  const falsification = await runMountedFalsifications(page, scenario, denominator);
+  const falsification = await runMountedFalsifications(
+    page,
+    scenario,
+    denominator,
+    lastConversionSettled,
+    operateBeforeAnswer,
+  );
+  const resolveCue = (await view.locator('.active-beat-prompt').textContent())?.trim() || '';
+  const expectedResolveCue = denominator === '12'
+    ? "That's right."
+    : '34/24 is correct! It can also be written as 17/12.';
+  assert(resolveCue === expectedResolveCue,
+    `${scenario.id}: crossing resolve cue/alternate-form notice mismatch: ${resolveCue}`);
+  accepted.resolveCue = resolveCue;
   await fs.writeFile(path.join(evidenceDir, `${scenario.id}-accepted.png`), await page.screenshot());
 
   await activateLearnerControl(page, view.locator('.active-beat-controls .control-btn').first(), scenario.interaction, keyboardActions);
