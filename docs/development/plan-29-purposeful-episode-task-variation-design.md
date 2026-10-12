@@ -1,11 +1,9 @@
 ---
 id: plan-29
 title: Purposeful Episode Task Variation Design
-status: draft
+status: ready
 depends_on: [plan-21, plan-25]
 gate: "Owner initiation permits this bounded investigation/design only. Present the concrete task proposal for owner disposition before drafting or implementing its source follow-on. No task, schedule or representation is activated here."
-superseded_by: null
-resolution: null
 summary: >-
   Design up to three purposeful learner-task variants around one fraction concept,
   preserving mathematical invariants, familiar controls and concise copy. Specify
@@ -42,6 +40,17 @@ with one concept, preferably equivalence/amount preservation, and no more than
 three task variants. Construction, comparison and diagnosis/repair are candidates,
 not already approved tasks. A prediction variant may replace a candidate if its
 conceptual purpose is stronger; do not add every candidate to every episode.
+
+Owner priority update (2026-10-12): current full episodes are too long. Design
+shorter variants by replacing or omitting selected initial learner tasks where
+the concept permits, rather than layering additional tasks onto every episode.
+Separate essential mathematical validation from which learner responsibilities
+must be elicited in that particular variant. Provide concrete before/after
+episode outlines and justify retained agency/prerequisites; fewer clicks alone
+is not acceptance. Keep one concept and the existing maximum of three variants.
+The four crossing candidates in the follow-up register are a future menu, not
+four tasks to implement or append. No more than one crossing-specific move per
+individual episode; decomposition/number-line activation retains its later gate.
 
 ## Authority and contracts
 

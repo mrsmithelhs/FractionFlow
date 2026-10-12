@@ -11,9 +11,11 @@ complete after owner screenshot acceptance and independent Repair 01 verificatio
 FF Impl 31's assignment is closed. Updated 2026-10-11: Plan 32 is complete after
 owner screenshot acceptance and independent Repair 01 verification. FF Impl 32
 is stopped. Updated 2026-10-11: Plan 19 is complete after technical Repair 02
-verification and owner screen/agency acceptance. Plan 17 is owner-initiated
-in-progress; its handoff is in chat, not a separate durable prompt. Its pre-source
-mechanism gate remains.
+verification and owner screen/agency acceptance. Plan 17 is
+complete after independent Repair 02 verification and owner closure on 2026-10-12.
+Plans 20 and 29 are ready, not initiated. Owner episode-length concern brings
+Plan 29 design forward alongside the next source assignment; its brief now asks
+for shorter responsibility variants rather than additions to every full episode.
 
 Recommended source sequence: **31 → 32 → 19 → 17 → 20 → 18**.
 Plan 32 depends on Plan 31 for serialization and the notation/evidence baseline;
@@ -26,11 +28,11 @@ chain. Recheck every older source packet against current code before initiation.
 | 31 — Shared Fraction Typography | Intrinsic fraction lines and structured linear question/button notation | Complete; technical and owner acceptance satisfied |
 | 32 — Compact Authored Problem Batch | Shared production authoring across a varied reviewed batch | Complete; technical and owner acceptance satisfied |
 | 19 — Shared-Factor Addition | New denominator relationship, retaining two conversions | Complete; technical and owner acceptance satisfied |
-| 17 — Crossing-One-Whole Addition | Truthful equal-unit multi-whole result stack | In-progress; stack, answer withholding, capability and geometry mechanism gate before source |
-| 20 — Like-Denominator Addition and Notice Recovery | Zero-renaming episode and same-parts recovery | After 17; implied unit/effective operands, no fabricated conversions/reflection |
+| 17 — Crossing-One-Whole Addition | Truthful equal-unit multi-whole result stack | Complete; technical and owner acceptance satisfied |
+| 20 — Like-Denominator Addition and Notice Recovery | Zero-renaming episode and same-parts recovery | Ready; next source recommendation, mechanism gate before source |
 | 18 — Nested-Denominator Addition | Identify and rename only the operand needing it, in both orders | After 20; execution of DECISION-037, not unrestricted alternative-unit choice |
 | 23 — Local Development Console | Safe menu hub for local server lifecycle and commands | Independent tooling slot between source assignments; owner initiation and live start/stop acceptance |
-| 29 — Purposeful Episode Task Variation Design | Different learner responsibilities around one concept | Independent docs-only track, can overlap disjoint source work after owner initiation; before focused-concept source/Phase 3 exit |
+| 29 — Purposeful Episode Task Variation Design | Shorter variants with different learner responsibilities around one concept | Ready; prioritize design alongside Plan 20 or before further family expansion; owner initiation and final task-contract gate |
 
 All older drafts still serve roadmap objectives. They are not retired simply
 because later-numbered packets addressed discovered prerequisites. Plans 17/20

@@ -1,7 +1,8 @@
 ---
 id: plan-17
 title: Crossing-One-Whole Addition
-status: delivered
+status: complete
+resolution: "Owner accepted screenshots and closure on 2026-10-12 after independent Repair 02 technical verification; bounded crossing stack, withholding, admission and access accepted. Future pedagogical variants are separately tracked, with physical-device and AT limits retained."
 depends_on: [plan-11, plan-12, plan-13, plan-14, plan-16, plan-22, plan-26]
 gate: "Requirement 0: approve semantic stack projection, answer withholding, capability bounds, registry identity, and measured layout mechanism before source work. Technical and owner rendered-screen/agency acceptance before completion; deployment separately authorized."
 summary: >-

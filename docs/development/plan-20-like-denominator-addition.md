@@ -1,11 +1,9 @@
 ---
 id: plan-20
 title: Like-Denominator Addition and Notice Recovery
-status: draft
+status: ready
 depends_on: [plan-11, plan-12, plan-13, plan-14, plan-16, plan-22, plan-26]
 gate: "Requirement 0 mechanism confirmation before source work; technical and owner rendered-screen/agency acceptance; deployment separately authorized."
-superseded_by: null
-resolution: null
 summary: >-
   Make like-denominator addition reachable with the accepted zero-renaming
   schedule and authored same-sized-parts recovery. Resolve OQ-21 through an actual

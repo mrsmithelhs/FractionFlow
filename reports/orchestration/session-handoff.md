@@ -3,7 +3,17 @@
 Living pointer document (see `docs/agent-starting-prompts/orchestrator-prompt.md` § "Session Handoff File").
 Orchestrator-owned; update in place before thread boundaries. Anchor dates, never countdowns.
 
-## Current snapshot — 2026-10-10
+## Current snapshot — 2026-10-12
+
+Owner accepted Plan 17 and authorized closure on 2026-10-12; see its
+`owner-disposition.md` and final `repair-02-review.md`. Plan 17 is complete and
+FF Impl 17 is stopped. Plans 20 and 29 are ready/RUNNABLE, not initiated. Recommend
+Plan 20 as the next source task (short zero-renaming schedule) and bring Plan 29
+design forward to address owner-identified excessive episode length. Follow-up
+register now contains the four accepted crossing pedagogical candidates, with
+at most one per individual episode, preferably replacing another responsibility.
+No new beat, number-line/mixed-number activation, random task omission or adaptive
+policy is authorized. This snapshot supersedes prior lifecycle passages below.
 
 Owner cost override: Codex implementer advisor consultations and orchestrator
 subagents are restricted to Sol-class at low/medium effort; advisors read-only.
