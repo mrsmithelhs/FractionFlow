@@ -42,6 +42,11 @@ FF Impl 17 is resolved at `01a12d76-7765-7423-965f-1ea2f4bda45a`. The owner
 explicitly authorized bidirectional supervision in this chat; root sent the
 coordination brief and observed active Requirement 0 investigation. Proposals and
 delivery can return directly here, with owner decisions and named gates retained.
+Plan 17 refined proposal `76593c9` is approved; see its `mechanism-review.md` final
+approval section. Bounded source work is authorized for the new-definition-only
+stack, exact 12/24 policies, set revision 4 and the proposed mounting table. Legacy
+closure gating/projections/definitions/replay remain unchanged. Technical and
+owner rendered-screen/agency gates still apply; no push/deployment is authorized.
 Plan 32 is complete
 after owner screen acceptance on 2026-10-11; see `owner-disposition.md`.
 Repair commits `08cb875` / `fe2b820`; see its

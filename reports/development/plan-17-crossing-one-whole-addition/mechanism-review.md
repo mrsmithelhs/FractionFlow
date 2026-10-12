@@ -56,3 +56,48 @@ pre-answer mounted withholding and restored corruption seeds. Commit the refined
 proposal as your scoped Requirement 0 artifact and send it directly to FF Orch
 12+. Wait for explicit source approval. No source edits, status change, push or
 deployment is authorized by this review.
+
+## Refined mechanism approval
+
+Date: 2026-10-11. Reviewed refined proposal commit `76593c9`.
+Disposition: Requirement 0 satisfied; bounded source implementation approved.
+This section supersedes the pending disposition above without removing history.
+
+The refinement supplies the missing stack schema, exact authored policies,
+definition-specific canonical projection and state/mounting table. It adds live-set
+test maintenance and exact evidence paths, preserves historical snapshots and
+correctly locates the provider capability record. Root verified preflight RUNNABLE
+and route baseline SHA-256
+`2252458a767a322b23946b701085958eafc2fb0f9c416d4a8c3ee4c6bafa8cbd`.
+
+Approve the exact identities, set revision 4 with the ten-item prefix intact,
+12/24 premise/reflection policies and bounded two-row stack contract in that
+proposal. Approve all source/test/evidence paths in its exact write-scope section.
+The stack is a new-definition-only field, null before correct operation acceptance;
+legacy scene JSON, definitions, constructors and replay semantics remain intact.
+Existing exact APIs supply row quantities; no renderer quotient/remainder logic.
+
+Implement the mounting table as proposed: operate retains addends; resolve shows
+the accepted stack; matching retains that primary stack with existing authored
+choice controls; premise replaces it with the task comparison; conversion Replay
+and Inspection Mode temporarily replace the primary region and restore the
+appropriate task and draft. Existing matching choice graphics are response
+controls, not permission to accumulate addends, stack and premise comparison.
+Measure their actual layout and reachable controls as required by the packet.
+
+The path-closure extension must preserve historical closure gating exactly,
+including older revisions that previously did not use that gate, while adding
+the new exact crossing definition. Do not broaden legacy identity admission or
+apply a revision-string shortcut to unrelated definitions. Test frozen replay
+oracles and old scene projections against that behavior.
+
+Preserve the single-whole renderer guard, motion mechanism and focus contracts.
+No source outside the approved list, math API change, new family, new capacity,
+adaptive/random selection, status change, push or deployment is authorized.
+Report any confirmed integration defect requiring additional paths before editing.
+
+Source work may begin. Technical delivery, owner rendered-screen/agency acceptance
+and deployment remain separately gated. Advisor limits remain Sol-class read-only
+low/medium only, with requested/observed identity and instruction-read-only status
+checks reported; use orchestrator-gate-only when the configuration cannot be honored.
+No consultation was warranted for this prose-only approval.
