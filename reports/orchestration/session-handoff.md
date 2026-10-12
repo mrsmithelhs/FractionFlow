@@ -59,6 +59,13 @@ a circular accepted-layout reference. Both-row conservation seed is still absent
 canonical resolve copy repeats the answer. Bounded Repair 02 authorized, including
 only a short crossing resolve cue in strings; see `repair-01-review.md` and
 `repair-02.md`. Technical/owner acceptance remains pending.
+Plan 17 Repair 02 `86b9d1e` / `b60e4ed` is technically accepted; see
+`repair-02-review.md`. Root passed 36 focused tests, the final committed verifier
+and four selected final-script Edge captures into ignored output. Both-row scale
+seed rejects130.8px against218px and restores; capture serializes, keyboard/touch
+and reciprocal premise work, and redundant canonical resolve copy is shortened.
+Owner rendered-screen/agency acceptance is now the only completion gate; status
+remains delivered. Implementer source/evidence work is stopped pending that gate.
 Plan 32 is complete
 after owner screen acceptance on 2026-10-11; see `owner-disposition.md`.
 Repair commits `08cb875` / `fe2b820`; see its
