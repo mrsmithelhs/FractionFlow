@@ -33,6 +33,7 @@ chain. Recheck every older source packet against current code before initiation.
 | 18 — Nested-Denominator Addition | Identify and rename only the operand needing it, in both orders | After 20; execution of DECISION-037, not unrestricted alternative-unit choice |
 | 23 — Local Development Console | Safe menu hub for local server lifecycle and commands | Independent tooling slot between source assignments; owner initiation and live start/stop acceptance |
 | 29 — Purposeful Episode Task Variation Design | Shorter variants with different learner responsibilities around one concept | Ready; prioritize design alongside Plan 20 or before further family expansion; owner initiation and final task-contract gate |
+| 33 — About FractionFlow and Use Guide | Optional entry-linked description, use/support guidance and current privacy facts | Drafted at owner request 2026-10-14; small independent product-content slot between app-source assignments; concise copy/navigation/privacy gate |
 
 All older drafts still serve roadmap objectives. They are not retired simply
 because later-numbered packets addressed discovered prerequisites. Plans 17/20

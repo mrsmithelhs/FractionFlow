@@ -14,6 +14,12 @@ register now contains the four accepted crossing pedagogical candidates, with
 at most one per individual episode, preferably replacing another responsibility.
 No new beat, number-line/mixed-number activation, random task omission or adaptive
 policy is authorized. This snapshot supersedes prior lifecycle passages below.
+Owner requested an optional entry-linked About/use/privacy page on 2026-10-14.
+Plan 33 is drafted, not initiated. It preserves practice-first entry/focus,
+describes support as a lasting useful control without settling other reviewer
+settings, uses a few accessible static examples and accurate current answers/
+progress claims. Schedule between app-source assignments; no deployment or
+privacy-policy/storage change is authorized by drafting it.
 
 Owner cost override: Codex implementer advisor consultations and orchestrator
 subagents are restricted to Sol-class at low/medium effort; advisors read-only.

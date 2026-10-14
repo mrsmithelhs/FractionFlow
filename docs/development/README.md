@@ -39,6 +39,7 @@ Packets are assigned to implementer agents. Each packet defines scope, required 
 | `plan-30` | Compact Content Authoring Investigation | complete | Measure per-item authoring after the accepted Next lifecycle, compare compact explicit data with deterministic reviewed recipes, and demonstrate a bounded offline batch using existing exact math and admission contracts. |
 | `plan-31` | Shared Fraction Typography | complete | Give bar readouts an intrinsically sized stacked fraction and reuse structured fraction notation in linear matching questions and buttons, preserving geometry, readable wrapping and coherent accessible names. |
 | `plan-32` | Compact Authored Problem Batch | complete | Adopt compact records and a small deterministic materializer for a varied reviewed batch within the current addition task, with complete headless admission/episode coverage and discriminating browser evidence. |
+| `plan-33` | About FractionFlow and Use Guide | draft | Add a small About page reachable from the app entry, describing FractionFlow, how to practice, support choices and current answers/progress privacy behavior. Include a few accessible visual examples and keep the guide maintainable as the product changes without expanding the learner entry page. |
 <!-- plan-index:end -->
 
 ## Report Folders
