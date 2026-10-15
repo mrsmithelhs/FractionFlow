@@ -18,6 +18,18 @@ function contentIdentity(content) {
 }
 
 function visibleFields(state) {
+  const isPlan20 = state.episodeDefinition?.id === 'phase-3-like-denominator-addition'
+    && state.episodeDefinition?.revision === '1';
+  if (isPlan20 && state.beat === 'operate') {
+    return {
+      representationRole: state.established.route === 'symbolic-continuation'
+        ? 'symbolic'
+        : 'fraction-bar',
+      visible: ['source-forms', 'already-shared-unit', 'operation'],
+      supplied: state.nextResponseSupport === 'demonstrate' ? ['reviewed-demonstration'] : [],
+      hidden: ['learner-operation-result'],
+    };
+  }
   const fields = {
     encounter: ['source-forms', 'stable-whole', 'operation'],
     notice: ['source-forms', 'operand-denominators', 'unit-relationship'],

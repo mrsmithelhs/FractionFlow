@@ -8,6 +8,7 @@ import {
   MATERIALIZED_PLAN19_ADDITIONS,
   MATERIALIZED_PLAN17_ADDITIONS,
   MATERIALIZED_PLAN32_ADDITIONS,
+  MATERIALIZED_PLAN20_LIKE_DENOMINATOR_ADDITIONS,
 } from './authored-problem-materializer.js';
 import { deepFreeze } from './schema.js';
 
@@ -16,6 +17,9 @@ function identityKey(fixtureId, authoringRevision) {
 }
 
 const plan32ByIdentity = new Map(MATERIALIZED_PLAN32_ADDITIONS.map((entry) => [
+  identityKey(entry.fixtureId, entry.authoringRevision), entry,
+]));
+const plan20ByIdentity = new Map(MATERIALIZED_PLAN20_LIKE_DENOMINATOR_ADDITIONS.map((entry) => [
   identityKey(entry.fixtureId, entry.authoringRevision), entry,
 ]));
 const plan19ByIdentity = new Map(MATERIALIZED_PLAN19_ADDITIONS.map((entry) => [
@@ -35,6 +39,11 @@ for (const fixture of PHASE1_GOLDEN_CASES) {
   curatedFixturesByIdentity.set(key, fixture);
 }
 for (const item of MATERIALIZED_PLAN32_ADDITIONS) {
+  const key = identityKey(item.fixtureId, item.authoringRevision);
+  if (curatedFixturesByIdentity.has(key)) throw new TypeError(`duplicate curated fixture identity: ${key}`);
+  curatedFixturesByIdentity.set(key, item.fixture);
+}
+for (const item of MATERIALIZED_PLAN20_LIKE_DENOMINATOR_ADDITIONS) {
   const key = identityKey(item.fixtureId, item.authoringRevision);
   if (curatedFixturesByIdentity.has(key)) throw new TypeError(`duplicate curated fixture identity: ${key}`);
   curatedFixturesByIdentity.set(key, item.fixture);
@@ -66,6 +75,8 @@ export function resolveAuthoredContent(fixtureId, authoringRevision) {
   const key = identityKey(fixtureId, authoringRevision);
   const materialized = plan32ByIdentity.get(key);
   if (materialized) return materialized;
+  const plan20 = plan20ByIdentity.get(key);
+  if (plan20) return plan20;
   const sharedFactor = plan19ByIdentity.get(key);
   if (sharedFactor) return sharedFactor;
   const crossing = plan17ByIdentity.get(key);

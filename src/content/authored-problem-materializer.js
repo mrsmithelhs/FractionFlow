@@ -7,9 +7,11 @@ import {
 import { buildCuratedProblem } from './generator.js';
 import { deepFreeze, fractionToWire, wireToForm } from './schema.js';
 import { evaluateInstanceEligibility } from './eligibility.js';
+import { validateProblemInstance } from './validation.js';
 import { COMPACT_ADDITION_RECORDS } from './data/compact-addition-records.js';
 import { SHARED_FACTOR_ADDITION_RECORDS } from './data/shared-factor-addition-records.js';
 import { CROSSING_ADDITION_RECORDS } from './data/crossing-addition-records.js';
+import { PLAN20_LIKE_DENOMINATOR_ADDITION_RECORDS } from './data/plan20-like-denominator-addition-records.js';
 
 export const PLAN32_RECIPE_ID = 'plan32-reviewed-addition';
 export const PLAN32_RECIPE_REVISION = '1';
@@ -20,6 +22,9 @@ export const PLAN19_TASK_DATA_REVISION = 'plan19-task-data-v1';
 export const PLAN17_RECIPE_ID = 'plan17-reviewed-crossing-addition';
 export const PLAN17_RECIPE_REVISION = '1';
 export const PLAN17_TASK_DATA_REVISION = 'plan17-task-data-v1';
+export const PLAN20_RECIPE_ID = 'plan20-reviewed-like-denominator-addition';
+export const PLAN20_RECIPE_REVISION = '1';
+export const PLAN20_TASK_DATA_REVISION = 'plan20-task-data-v1';
 
 const PREMISE_RULES = new Set(['P-EQUIVALENT', 'P-ADJACENT-UNIT']);
 const REFLECTION_RULES = new Set(['R-CORRECT', 'R-KEEP-NUMERATOR', 'R-ADJACENT-UNIT']);
@@ -305,6 +310,74 @@ export function materializeCrossingAdditionRecords(records = CROSSING_ADDITION_R
   });
 }
 
+function materializePlan20LikeDenominatorAdditionRecords(records = PLAN20_LIKE_DENOMINATOR_ADDITION_RECORDS) {
+  requireValid(Array.isArray(records) && records.length > 0, 'Plan 20 records must be a non-empty array');
+  const itemIds = new Set();
+  const fixtureKeys = new Set();
+  return deepFreeze(records.map((record) => {
+    exactKeys(record, [
+      'itemId', 'fixtureId', 'authoringRevision', 'taskDataRevision', 'recipe',
+      'profileId', 'selector', 'overlays', 'left', 'right',
+    ], 'Plan 20 record');
+    const expectedIdentity = record.itemId === 'two-sevenths-plus-three-sevenths'
+      && record.fixtureId === 'curated-like-denominator-addition-two-sevenths-three-sevenths'
+      && record.authoringRevision === 'plan20-record-v1'
+      && record.taskDataRevision === PLAN20_TASK_DATA_REVISION
+      && record.recipe?.id === PLAN20_RECIPE_ID
+      && record.recipe?.revision === PLAN20_RECIPE_REVISION
+      && record.profileId === 'curated-review'
+      && record.selector === 'like-denominator-addition'
+      && Array.isArray(record.overlays)
+      && record.overlays.length === 0
+      && JSON.stringify(record.left) === JSON.stringify({ kind: 'fraction', numerator: '2', denominator: '7' })
+      && JSON.stringify(record.right) === JSON.stringify({ kind: 'fraction', numerator: '3', denominator: '7' });
+    requireValid(expectedIdentity, 'Plan 20 identity and reviewed operand forms must match the registered task');
+    const key = `${record.fixtureId}@${record.authoringRevision}`;
+    requireValid(!itemIds.has(record.itemId) && !fixtureKeys.has(key), 'Plan 20 identities must be unique');
+    itemIds.add(record.itemId);
+    fixtureKeys.add(key);
+
+    const fixture = deepFreeze({
+      id: record.fixtureId,
+      authoringRevision: record.authoringRevision,
+      profileId: record.profileId,
+      selector: record.selector,
+      overlays: record.overlays,
+      left: record.left,
+      right: record.right,
+    });
+    const instance = buildCuratedProblem({
+      fixture,
+      selector: record.selector,
+      overlays: record.overlays,
+      profileId: record.profileId,
+      candidate: { left: record.left, right: record.right, reviewedTransitions: [] },
+    });
+    const validity = validateProblemInstance(instance);
+    requireValid(validity.valid, 'Plan 20 fixture must pass exact content validation');
+    requireValid(instance.classification?.denominator?.relationship === 'same'
+      && instance.classification?.transformations?.canonicalRenaming?.left === false
+      && instance.classification?.transformations?.canonicalRenaming?.right === false,
+    'Plan 20 fixture must require no canonical renaming');
+    const eligibility = evaluateInstanceEligibility(instance);
+    requireValid(eligibility.paths.canonical?.targetDenominator === '7'
+      && eligibility.paths.canonical?.rendering === 'eligible',
+    'Plan 20 original unit must be fraction-bar eligible');
+
+    return deepFreeze({
+      itemId: record.itemId,
+      fixtureId: record.fixtureId,
+      authoringRevision: record.authoringRevision,
+      taskDataRevision: record.taskDataRevision,
+      recipe: record.recipe,
+      fixture,
+      premiseChecks: null,
+      reflectionChoices: null,
+    });
+  }));
+}
+
 export const MATERIALIZED_PLAN32_ADDITIONS = materializeCompactAdditionRecords();
 export const MATERIALIZED_PLAN19_ADDITIONS = materializeSharedFactorAdditionRecords();
 export const MATERIALIZED_PLAN17_ADDITIONS = materializeCrossingAdditionRecords();
+export const MATERIALIZED_PLAN20_LIKE_DENOMINATOR_ADDITIONS = materializePlan20LikeDenominatorAdditionRecords();

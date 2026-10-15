@@ -119,6 +119,94 @@ export function createNumericInput({
   };
 }
 
+/** One accessible response control for a numerator and denominator pair. */
+export function createFractionResponseInput({
+  numeratorId,
+  denominatorId,
+  strings = STRINGS,
+  onSubmit,
+  onEmptySubmit,
+  initialNumerator = '',
+  initialDenominator = '',
+} = {}) {
+  const wrapper = document.createElement('div');
+  wrapper.classList.add('control-fraction-response-wrapper');
+
+  const fields = document.createElement('div');
+  fields.classList.add('control-fraction-fields');
+
+  const makeField = (id, label) => {
+    const field = document.createElement('div');
+    field.classList.add('control-fraction-field');
+    const labelEl = document.createElement('label');
+    labelEl.classList.add('control-label');
+    labelEl.htmlFor = id;
+    labelEl.textContent = label;
+    field.appendChild(labelEl);
+
+    const input = document.createElement('input');
+    input.type = 'number';
+    input.id = id;
+    input.classList.add('fraction-control', 'control-numeric-input', 'control-fraction-input');
+    input.min = '1';
+    input.max = '999';
+    input.step = '1';
+    input.inputMode = 'numeric';
+    input.value = id === numeratorId ? initialNumerator : initialDenominator;
+    field.appendChild(input);
+    return { field, input };
+  };
+
+  const numerator = makeField(numeratorId, strings.operate.numeratorLabel);
+  const slash = document.createElement('span');
+  slash.classList.add('control-fraction-slash');
+  slash.setAttribute('aria-hidden', 'true');
+  slash.textContent = '/';
+  const denominator = makeField(denominatorId, strings.operate.denominatorLabel);
+  fields.append(numerator.field, slash, denominator.field);
+
+  const error = document.createElement('p');
+  error.classList.add('control-supporting-text', 'control-fraction-error');
+  error.setAttribute('role', 'alert');
+
+  const submit = () => {
+    const numeratorValue = numerator.input.value.trim();
+    const denominatorValue = denominator.input.value.trim();
+    const validInteger = (value) => /^[1-9][0-9]*$/.test(value);
+    if (!validInteger(numeratorValue) || !validInteger(denominatorValue)) {
+      error.textContent = strings.operate.fractionRequired;
+      if (onEmptySubmit) onEmptySubmit();
+      return;
+    }
+    error.textContent = '';
+    if (onSubmit) {
+      onSubmit({ kind: 'fraction', numerator: numeratorValue, denominator: denominatorValue });
+    }
+  };
+
+  const submitButton = createButton({
+    label: strings.controls.check,
+    className: 'control-submit-btn',
+    onClick: submit,
+  });
+  for (const input of [numerator.input, denominator.input]) {
+    input.addEventListener('input', () => { error.textContent = ''; });
+    input.addEventListener('keydown', (event) => {
+      if (event.key === 'Enter') {
+        event.preventDefault();
+        submit();
+      }
+    });
+  }
+
+  wrapper.append(fields, submitButton, error);
+  return {
+    element: wrapper,
+    focus: () => numerator.input.focus(),
+    clear: () => { numerator.input.value = ''; denominator.input.value = ''; },
+  };
+}
+
 export function createChoiceGroup({
   legend,
   name,

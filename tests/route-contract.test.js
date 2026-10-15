@@ -108,9 +108,9 @@ describe('Plan 14 Reachable Behavior Route Contract & Matrix Schema', () => {
   });
 
   it('preserves learner and prototype routes while adding mounted high/medium support witnesses', () => {
-    expect(matrix.routes).toHaveLength(55);
+    expect(matrix.routes).toHaveLength(57);
     const learnerRoutes = matrix.routes.filter((route) => route.configuration !== 'plan15-subtraction-prototype');
-    expect(learnerRoutes).toHaveLength(53);
+    expect(learnerRoutes).toHaveLength(55);
     for (const route of learnerRoutes) {
       expect(route.startingSurface).toBe('mounted-app-entry');
       expect(route.viewport.width).toBe(route.id === 'ROUTE-PLAN22-36-PREMISE-LINEAR-REDUCED'
@@ -122,6 +122,7 @@ describe('Plan 14 Reachable Behavior Route Contract & Matrix Schema', () => {
         'ROUTE-REPLAY-REDUCED-COND-1',
         'ROUTE-PLAN24-HIGH-LINEAR-HELP',
         'ROUTE-PLAN24-HIGH-HELP-VIEW-TOGGLE-RESET',
+        'ROUTE-PLAN20-LIKE-ADDITION-LINEAR',
       ].includes(route.id) ? 752
         : route.id === 'ROUTE-PLAN26-CHROMEBOOK-CSS-VIEWPORT' ? 768 : 740);
       expect(['standard-motion', 'reduced-motion']).toContain(route.motionMode);
@@ -215,9 +216,45 @@ describe('Plan 14 Reachable Behavior Route Contract & Matrix Schema', () => {
     });
   });
 
+  it('declares bounded visual and linear Plan 20 recovery, equivalent-answer, focus and absence witnesses', () => {
+    const visual = matrix.routes.find((route) => route.id === 'ROUTE-PLAN20-LIKE-ADDITION-VISUAL');
+    const linear = matrix.routes.find((route) => route.id === 'ROUTE-PLAN20-LIKE-ADDITION-LINEAR');
+    expect(visual).toBeDefined();
+    expect(linear).toBeDefined();
+    expect(visual.motionMode).toBe('reduced-motion');
+    expect(linear.motionMode).toBe('reduced-motion');
+    expect(visual.viewport).toEqual({ width: 360, height: 740 });
+    expect(linear.viewport).toEqual({ width: 360, height: 752 });
+    expect(visual.negativeControl).toMatchObject({ targetRouteId: linear.id, sameMotionMode: true });
+    expect(linear.negativeControl).toMatchObject({ targetRouteId: visual.id, sameMotionMode: true });
+
+    for (const [route, view, support] of [
+      [visual, 'visual', 'high-support'],
+      [linear, 'linear', 'medium-support'],
+    ]) {
+      const actions = route.actions;
+      const actionText = actions.map((action) => JSON.stringify(action)).join('\n');
+      expect(actions.some((action) => action.target === `[data-support-id="${support}"]`)).toBe(true);
+      expect(actions.some((action) => action.target === `[data-practice-type="like-denominator-addition"]`)).toBe(true);
+      expect(actionText).toContain(`.app-${view}-view .recovery-feedback`);
+      expect(actionText).toContain('Both bars have 7 equal parts. Those parts are the same size.');
+      expect(actionText).toContain('The denominator stays the same. Add only the top numbers.');
+      expect(actionText).toContain('10/14');
+      expect(actionText).toContain('#transform-num-input-left');
+      expect(actionText).toContain('.app-reflection');
+      expect(actions.some((action) => action.method === 'assertFocused' && action.target === '.app-episode')).toBe(true);
+      expect(actions.some((action) => action.method === 'pressKey')).toBe(view === 'visual');
+      expect(actions.some((action) => action.method === 'click'
+        && action.target === `.app-${view}-view .control-submit-btn`)).toBe(true);
+    }
+    expect(visual.actions.some((action) => action.method === 'click'
+      && action.target === '.app-return-button')).toBe(true);
+    expect(visual.actions.some((action) => action.description?.includes('Re-enter a fresh'))).toBe(true);
+  });
+
   it('executes each prototype route in both motion modes and brings in its filtered negative control', () => {
     const executions = expandRouteExecutions(matrix.routes);
-    expect(executions).toHaveLength(57);
+    expect(executions).toHaveLength(59);
     expect(executions.filter((execution) => (
       execution.route.configuration === 'plan15-subtraction-prototype'
     ))).toHaveLength(4);
@@ -288,9 +325,9 @@ describe('Plan 14 Reachable Behavior Route Contract & Matrix Schema', () => {
   });
 
   it('preserves the Plan 11 route baseline and witnesses executed motion, interruption, Replay, static arms, and both support profiles', () => {
-    expect(matrix.routes).toHaveLength(55);
-    expect(matrix.routes.filter((route) => !route.id.startsWith('ROUTE-PLAN22-36-'))).toHaveLength(52);
-    expect(expandRouteExecutions(matrix.routes)).toHaveLength(57);
+    expect(matrix.routes).toHaveLength(57);
+    expect(matrix.routes.filter((route) => !route.id.startsWith('ROUTE-PLAN22-36-'))).toHaveLength(54);
+    expect(expandRouteExecutions(matrix.routes)).toHaveLength(59);
 
     const route = (id) => matrix.routes.find((candidate) => candidate.id === id);
     const linearHelpFocus = route('ROUTE-PLAN25-TRANSFORM-HELP-LINEAR-FOCUS');

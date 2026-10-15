@@ -2,11 +2,13 @@ import { buildCuratedProblem } from '../content/generator.js';
 import { resolveAuthoredContent, resolveCuratedFixture } from '../content/authored-content-catalog.js';
 import { validateProblemInstance } from '../content/validation.js';
 import { validateAuthoredTaskData } from '../content/authored-task-data.js';
+import { evaluateInstanceEligibility } from '../content/eligibility.js';
 import {
   applyIntent,
   createEpisode,
   createReplayEnvelope,
   getEpisodeDefinition,
+  PLAN20_LIKE_DENOMINATOR_EPISODE_DEFINITION,
 } from '../interaction/index.js';
 import { evaluateTaskPathClosure } from '../interaction/path-closure.js';
 import {
@@ -58,6 +60,40 @@ function canonicalInstance(item, conditions = REGISTERED_CONDITIONS) {
   });
   const contentCheck = validateProblemInstance(instance);
   if (!contentCheck.valid) throw new Error(`practice fixture failed content validation: ${item.fixtureId}`);
+  if (definition.id === PLAN20_LIKE_DENOMINATOR_EPISODE_DEFINITION.id
+    && definition.revision === PLAN20_LIKE_DENOMINATOR_EPISODE_DEFINITION.revision) {
+    const contract = definition.contentContract;
+    const sameForm = (actual, expected) => actual?.kind === expected?.kind
+      && actual?.numerator === expected?.numerator
+      && actual?.denominator === expected?.denominator;
+    if (item.id !== contract.itemId
+      || item.fixtureId !== contract.fixtureId
+      || item.authoringRevision !== contract.authoringRevision
+      || item.taskDataRevision !== contract.taskDataRevision
+      || item.recipe?.id !== contract.recipe.id
+      || item.recipe?.revision !== contract.recipe.revision
+      || authoredContent.taskDataRevision !== contract.taskDataRevision
+      || authoredContent.recipe?.id !== contract.recipe.id
+      || authoredContent.recipe?.revision !== contract.recipe.revision
+      || instance.request.selector !== contract.selector
+      || instance.request.operation !== contract.operation
+      || JSON.stringify(instance.request.overlays) !== JSON.stringify(contract.overlays)
+      || !sameForm(instance.operands.left.initialForm, contract.left)
+      || !sameForm(instance.operands.right.initialForm, contract.right)
+      || instance.classification.denominator.relationship !== 'same'
+      || instance.classification.transformations.canonicalRenaming.left !== false
+      || instance.classification.transformations.canonicalRenaming.right !== false
+      || definition.includeReflection !== false) {
+      throw new Error('Plan 20 item does not match its exact registered content contract');
+    }
+    const eligibility = evaluateInstanceEligibility(instance);
+    if (eligibility.eligibility.fractionBar !== 'eligible'
+      || eligibility.paths.canonical.targetDenominator !== '7'
+      || eligibility.paths.canonical.rendering !== 'eligible') {
+      throw new Error('Plan 20 original shared unit is outside the reviewed fraction-bar capability');
+    }
+    return instance;
+  }
   validateAuthoredTaskData(instance, item.targetDenominators);
   for (const condition of conditions) {
     for (const denominator of item.targetDenominators) {
@@ -135,9 +171,11 @@ export function createFractionFlowApp({
   let transformHelpOpen = false;
   let commonDenominatorDraft = '';
   let transformDrafts = { left: { multiplier: '', numerator: '' }, right: { multiplier: '', numerator: '' } };
+  let operationDrafts = { numerator: '', denominator: '' };
   let transformDraftScheduleEntryId = null;
   let preserveDecideInputFocusOnViewChange = false;
   let preserveTransformInputFocusOnViewChange = false;
+  let preserveOperationInputFocusOnViewChange = false;
   let mounted = false;
   let visualRenderer = null;
   let linearRenderer = null;
@@ -309,19 +347,29 @@ export function createFractionFlowApp({
     entryPage.appendChild(entryHeader);
 
     const practiceList = makeElement('div', 'app-practice-list');
+    const followingPracticeButtons = [];
     for (const practiceType of practiceTypes) {
       const practiceButton = createButton({
         label: practiceType.label,
-        className: 'app-practice-button',
+        className: practiceType.id === 'sum-under-one'
+          ? 'app-practice-button'
+          : 'app-practice-choice',
         onClick: () => startPractice(practiceType, { focusEpisode: true, updateFragment: true }),
       });
+      if (practiceType.id === 'sum-under-one') practiceButton.classList.add('app-practice-choice');
       practiceButton.setAttribute('data-practice-type', practiceType.id);
-      practiceList.appendChild(practiceButton);
+      if (practiceType.id === 'sum-under-one') practiceList.appendChild(practiceButton);
+      else followingPracticeButtons.push(practiceButton);
     }
     entryPage.appendChild(practiceList);
-    // Keep the gear in the natural tab order after the practice button. CSS
-    // positions it at the upper right without changing keyboard order.
+    // Preserve the first-tab practice button, then put the reviewer gear next
+    // in keyboard order before exposing the additional practice goal.
     entryPage.appendChild(createDisplayMenu());
+    if (followingPracticeButtons.length > 0) {
+      const followingPracticeList = makeElement('div', 'app-practice-list');
+      for (const button of followingPracticeButtons) followingPracticeList.appendChild(button);
+      entryPage.appendChild(followingPracticeList);
+    }
     const creatorCredit = makeElement('small', 'app-creator-credit');
     creatorCredit.textContent = 'Created by an educator';
     entryPage.appendChild(creatorCredit);
@@ -362,27 +410,35 @@ export function createFractionFlowApp({
       onClick: () => {
         captureDecideDraft();
         captureTransformDrafts();
+        captureOperationDraft();
         const preserveInputFocus = preserveDecideInputFocusOnViewChange
           || Boolean(getVisibleDecideInput()?.isConnected
             && getVisibleDecideInput() === document.activeElement);
         const preserveTransformInputFocus = preserveTransformInputFocusOnViewChange
           || Boolean(getVisibleTransformInput()?.isConnected
             && getVisibleTransformInput() === document.activeElement);
+        const preserveOperationInputFocus = preserveOperationInputFocusOnViewChange
+          || Boolean(getVisibleOperationInput()?.isConnected
+            && getVisibleOperationInput() === document.activeElement);
         preserveDecideInputFocusOnViewChange = false;
         preserveTransformInputFocusOnViewChange = false;
+        preserveOperationInputFocusOnViewChange = false;
         visualView = !visualView;
         isReplaying = false;
         updateViewVisibility();
         restoreDecideDraft();
         restoreTransformDrafts();
+        restoreOperationDraft();
         updateHelpPlacement();
         if (preserveInputFocus) getVisibleDecideInput()?.focus();
         if (preserveTransformInputFocus) getVisibleTransformInput()?.focus();
+        if (preserveOperationInputFocus) getVisibleOperationInput()?.focus();
       },
     });
   viewToggle.addEventListener('pointerdown', () => {
     preserveDecideInputFocusOnViewChange = getVisibleDecideInput() === document.activeElement;
     preserveTransformInputFocusOnViewChange = getVisibleTransformInput() === document.activeElement;
+    preserveOperationInputFocusOnViewChange = getVisibleOperationInput() === document.activeElement;
     });
     viewToggle.classList.add('app-view-toggle');
     viewToggle.setAttribute('aria-pressed', 'false');
@@ -427,6 +483,13 @@ export function createFractionFlowApp({
             render();
             helpButton.focus();
           }
+        } else if (state?.episodeDefinition.id === PLAN20_LIKE_DENOMINATOR_EPISODE_DEFINITION.id
+          && state.beat === 'operate') {
+          activityNotice = activityNotice === STRINGS.operate.likeAdditionHelp
+            ? ''
+            : STRINGS.operate.likeAdditionHelp;
+          render();
+          helpButton.focus();
         } else {
           dispatchAction({ type: 'request-help' });
         }
@@ -485,9 +548,11 @@ export function createFractionFlowApp({
     transformHelpOpen = false;
     commonDenominatorDraft = '';
     transformDrafts = { left: { multiplier: '', numerator: '' }, right: { multiplier: '', numerator: '' } };
+    operationDrafts = { numerator: '', denominator: '' };
     transformDraftScheduleEntryId = null;
     preserveDecideInputFocusOnViewChange = false;
     preserveTransformInputFocusOnViewChange = false;
+    preserveOperationInputFocusOnViewChange = false;
   }
 
   function registeredItemEpisode(practiceType, index) {
@@ -641,16 +706,21 @@ export function createFractionFlowApp({
 
   function updateSupportControls() {
     const resolved = state.status === 'resolved';
+    const isPlan20 = state.episodeDefinition.id === PLAN20_LIKE_DENOMINATOR_EPISODE_DEFINITION.id;
     helpButton.disabled = resolved;
-    replayButton.disabled = resolved || state.beat === 'encounter';
+    replayButton.hidden = isPlan20;
+    replayButton.disabled = isPlan20 || resolved || state.beat === 'encounter';
     replayButton.setAttribute('aria-pressed', String(isReplaying));
     supportNotice.textContent = activityNotice;
   }
 
   function updateNavigation() {
+    const singlePlan20Item = selectedPracticeType?.id === 'like-denominator-addition'
+      && selectedPracticeType.items.length === 1;
     const canNavigate = state?.status === 'resolved'
       && activePracticeItemIndex !== null
-      && selectedPracticeType?.items?.length > 0;
+      && selectedPracticeType?.items?.length > 0
+      && !singlePlan20Item;
     const hasNext = canNavigate && activePracticeItemIndex < selectedPracticeType.items.length - 1;
     const isExhausted = canNavigate && !hasNext;
     setHidden(nextProblemButton, !hasNext);
@@ -707,6 +777,31 @@ export function createFractionFlowApp({
     return host?.querySelector(`#${visualView ? 'transform' : 'linear-transform'}-num-input-${side}`) || null;
   }
 
+  function getVisibleOperationInput() {
+    if (state?.beat !== 'operate'
+      || state.episodeDefinition.id !== PLAN20_LIKE_DENOMINATOR_EPISODE_DEFINITION.id) return null;
+    const host = visualView ? visualHost : linearHost;
+    return host?.querySelector('input.control-fraction-input') || null;
+  }
+
+  function captureOperationDraft() {
+    if (!getVisibleOperationInput()) return;
+    const host = visualView ? visualHost : linearHost;
+    operationDrafts = {
+      numerator: host?.querySelector(`#${visualView ? 'operate' : 'linear-operate'}-fraction-numerator-input`)?.value ?? '',
+      denominator: host?.querySelector(`#${visualView ? 'operate' : 'linear-operate'}-fraction-denominator-input`)?.value ?? '',
+    };
+  }
+
+  function restoreOperationDraft() {
+    if (!getVisibleOperationInput()) return;
+    const host = visualView ? visualHost : linearHost;
+    const numerator = host?.querySelector(`#${visualView ? 'operate' : 'linear-operate'}-fraction-numerator-input`);
+    const denominator = host?.querySelector(`#${visualView ? 'operate' : 'linear-operate'}-fraction-denominator-input`);
+    if (numerator) numerator.value = operationDrafts.numerator;
+    if (denominator) denominator.value = operationDrafts.denominator;
+  }
+
   function restoreTransformDrafts() {
     if (!state || state.beat !== 'transform') return;
     const side = state.expectedResponse?.target;
@@ -719,6 +814,30 @@ export function createFractionFlowApp({
 
   function updateHelpPlacement(scene = currentScene) {
     if (!helpButton || !state) return;
+    if (state.episodeDefinition.id === PLAN20_LIKE_DENOMINATOR_EPISODE_DEFINITION.id
+      && state.beat === 'operate') {
+      const host = visualView ? visualHost : linearHost;
+      const controls = host.querySelector('.active-beat-controls');
+      if (!controls) return;
+      if (helpButton.parentNode !== controls && helpButton.parentNode) {
+        helpButton.parentNode.removeChild(helpButton);
+      }
+      controls.appendChild(helpButton);
+      const isOpen = activityNotice === STRINGS.operate.likeAdditionHelp;
+      helpButton.hidden = false;
+      helpButton.textContent = isOpen ? STRINGS.app.closeHelpButton : STRINGS.app.helpButton;
+      helpButton.setAttribute('aria-expanded', String(isOpen));
+      if (isOpen) {
+        helpButton.setAttribute('aria-controls', helpCue.id);
+        helpCue.textContent = STRINGS.operate.likeAdditionHelp;
+        if (helpCue.parentNode !== controls) controls.appendChild(helpCue);
+      } else {
+        helpButton.removeAttribute('aria-controls');
+        helpCue.textContent = '';
+        if (helpCue.parentNode) helpCue.parentNode.removeChild(helpCue);
+      }
+      return;
+    }
     if (state.beat !== 'decide' && state.beat !== 'transform') {
       decideHelpOpen = false;
       transformHelpOpen = false;
@@ -727,6 +846,8 @@ export function createFractionFlowApp({
       helpButton.removeAttribute('aria-controls');
       if (helpCue.parentNode) helpCue.parentNode.removeChild(helpCue);
       const supportControls = appRoot.querySelector('.app-support-controls');
+      helpButton.hidden = state.episodeDefinition.id === PLAN20_LIKE_DENOMINATOR_EPISODE_DEFINITION.id
+        && state.beat !== 'operate';
       if (helpButton.parentNode !== supportControls) {
         if (helpButton.parentNode) helpButton.parentNode.removeChild(helpButton);
         supportControls.replaceChildren(
@@ -790,10 +911,12 @@ export function createFractionFlowApp({
     if (!mounted || !state) return;
     captureDecideDraft();
     captureTransformDrafts();
+    captureOperationDraft();
     if (state.beat !== 'decide') {
       decideHelpOpen = false;
       commonDenominatorDraft = '';
     }
+    if (state.beat !== 'operate') operationDrafts = { numerator: '', denominator: '' };
     const activeScheduleEntryId = state.beatSchedule?.[state.schedulePosition]?.id ?? null;
     if (state.beat === 'transform' && transformDraftScheduleEntryId !== null
       && activeScheduleEntryId !== transformDraftScheduleEntryId) {
@@ -845,6 +968,7 @@ export function createFractionFlowApp({
     updateViewVisibility();
     restoreDecideDraft();
     restoreTransformDrafts();
+    restoreOperationDraft();
     updateHelpPlacement(scene);
   }
 
@@ -857,18 +981,22 @@ export function createFractionFlowApp({
     }
 
     let focusExhaustion = false;
+    let focusSingleItemCompletion = false;
     try {
       captureDecideDraft();
       captureTransformDrafts();
+      captureOperationDraft();
       if (action.type === 'propose-common-denominator') commonDenominatorDraft = '';
       const wasResolved = state.status === 'resolved';
       state = applyIntent(state, action);
       if (action.type === 'request-help') {
         isReplaying = false;
         const help = state.helpHistory.at(-1);
-        activityNotice = help.beat === 'decide'
-          ? ''
-          : STRINGS.app.helpLevels[help.level] || STRINGS.app.helpLevels.orient;
+        activityNotice = state.episodeDefinition.id === PLAN20_LIKE_DENOMINATOR_EPISODE_DEFINITION.id
+          ? STRINGS.operate.likeAdditionHelp
+          : help.beat === 'decide'
+            ? ''
+            : STRINGS.app.helpLevels[help.level] || STRINGS.app.helpLevels.orient;
       } else if (action.type === 'request-replay') {
         const hasTransition = Boolean(state.established?.lastConversion);
         if (hasTransition) {
@@ -892,10 +1020,16 @@ export function createFractionFlowApp({
           activityNotice = '';
         }
         navigationRefusal = false;
-        focusExhaustion = justResolved && isLastVettedItem;
+        focusExhaustion = justResolved && isLastVettedItem
+          && selectedPracticeType.items.length > 1;
+        focusSingleItemCompletion = justResolved
+          && state.episodeDefinition.id === PLAN20_LIKE_DENOMINATOR_EPISODE_DEFINITION.id;
       }
       render();
       if (focusExhaustion) focusNavigationNotice();
+      if (focusSingleItemCompletion) focusEpisodeLandmark();
+      if (action.type === 'submit-operation-result'
+        && state.lastRecovery?.beat === 'operate') getVisibleOperationInput()?.focus();
       if (action.type === 'submit-transform-help-multiplier') getVisibleTransformInput()?.focus();
     } catch (error) {
       isReplaying = false;

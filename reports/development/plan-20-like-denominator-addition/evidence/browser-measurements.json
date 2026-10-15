@@ -1,0 +1,665 @@
+{
+  "plan": "plan-20",
+  "browser": "Chrome via Playwright",
+  "motion": "prefers-reduced-motion",
+  "entryScreens": [
+    {
+      "screenshot": "plan20-entry-360x740.png",
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "document": {
+        "scrollWidth": 360,
+        "scrollHeight": 740
+      },
+      "entryPage": {
+        "x": 12,
+        "y": 12,
+        "width": 336,
+        "height": 716
+      },
+      "practiceButtons": [
+        {
+          "id": "sum-under-one",
+          "label": "Add fractions with different denominators",
+          "disabled": false,
+          "box": {
+            "x": 12,
+            "y": 195.390625,
+            "width": 336,
+            "height": 64
+          }
+        },
+        {
+          "id": "like-denominator-addition",
+          "label": "Add fractions with the same denominator",
+          "disabled": false,
+          "box": {
+            "x": 12,
+            "y": 271.390625,
+            "width": 336,
+            "height": 64
+          }
+        }
+      ],
+      "gear": {
+        "x": 290.515625,
+        "y": 12,
+        "width": 57.484375,
+        "height": 44
+      }
+    },
+    {
+      "screenshot": "plan20-entry-360x752.png",
+      "viewport": {
+        "width": 360,
+        "height": 752
+      },
+      "document": {
+        "scrollWidth": 360,
+        "scrollHeight": 752
+      },
+      "entryPage": {
+        "x": 12,
+        "y": 12,
+        "width": 336,
+        "height": 728
+      },
+      "practiceButtons": [
+        {
+          "id": "sum-under-one",
+          "label": "Add fractions with different denominators",
+          "disabled": false,
+          "box": {
+            "x": 12,
+            "y": 195.390625,
+            "width": 336,
+            "height": 64
+          }
+        },
+        {
+          "id": "like-denominator-addition",
+          "label": "Add fractions with the same denominator",
+          "disabled": false,
+          "box": {
+            "x": 12,
+            "y": 271.390625,
+            "width": 336,
+            "height": 64
+          }
+        }
+      ],
+      "gear": {
+        "x": 290.515625,
+        "y": 12,
+        "width": 57.484375,
+        "height": 44
+      }
+    }
+  ],
+  "evidence": [
+    {
+      "label": "wrong notice recovery",
+      "screenshot": "plan20-visual-740-wrong-notice.png",
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "document": {
+        "scrollWidth": 360,
+        "scrollHeight": 878
+      },
+      "app": {
+        "x": 0,
+        "y": 0,
+        "width": 360,
+        "height": 877.625,
+        "scrollWidth": 360,
+        "scrollHeight": 878
+      },
+      "activePath": "visual",
+      "prompt": {
+        "x": 63,
+        "y": 512.71875,
+        "width": 234,
+        "height": 50.375
+      },
+      "feedback": {
+        "x": 63,
+        "y": 417.78125,
+        "width": 234,
+        "height": 64
+      },
+      "feedbackText": "Both bars have 7 equal parts. Those parts are the same size.",
+      "helpCueText": "",
+      "helpExpanded": "false",
+      "visibleText": "2\n7\n3\n7\n2\n7\n+\n3\n7\nBoth bars have 7 equal parts. Those parts are the same size.\nDo these two fractions have the same size parts?\nDo these two fractions have the same size parts?\nYes, same size\nNo, different sizes\nProblem established.",
+      "responseFields": [],
+      "submit": null,
+      "supportLevel": "high-support",
+      "conditionId": "phase2-bundle-1",
+      "hiddenConversionOrDecisionControls": 0,
+      "reflectionControls": 0
+    },
+    {
+      "label": "pre-response absence checks",
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "activePath": "visual",
+      "skippedControlsAbsent": true,
+      "answerAndUnlikeTaskTextAbsent": true,
+      "reflectionControls": 0
+    },
+    {
+      "label": "5/14 arithmetic recovery",
+      "screenshot": "plan20-visual-740-5-over-14-recovery.png",
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "document": {
+        "scrollWidth": 360,
+        "scrollHeight": 1060
+      },
+      "app": {
+        "x": 0,
+        "y": 0,
+        "width": 360,
+        "height": 1060.21875,
+        "scrollWidth": 360,
+        "scrollHeight": 1060
+      },
+      "activePath": "visual",
+      "prompt": {
+        "x": 63,
+        "y": 533.71875,
+        "width": 234,
+        "height": 50.375
+      },
+      "feedback": {
+        "x": 63,
+        "y": 417.78125,
+        "width": 234,
+        "height": 85
+      },
+      "feedbackText": "The denominator stays the same. Add only the top numbers.",
+      "helpCueText": "",
+      "helpExpanded": "false",
+      "visibleText": "2\n7\n3\n7\n2\n7\n+\n3\n7\nThe denominator stays the same. Add only the top numbers.\nAdd the shaded parts together.\nTop number\n/\nBottom number\nCheck\n\nNeed help?\nShow previous steps (1 completed)\nBoth fractions have 7 equal parts.",
+      "responseFields": [
+        {
+          "id": "operate-fraction-numerator-input",
+          "label": "Top number",
+          "inputMode": "numeric",
+          "min": "1",
+          "max": "999",
+          "box": {
+            "x": 63,
+            "y": 660.625,
+            "width": 96,
+            "height": 47
+          }
+        },
+        {
+          "id": "operate-fraction-denominator-input",
+          "label": "Bottom number",
+          "inputMode": "numeric",
+          "min": "1",
+          "max": "999",
+          "box": {
+            "x": 181.046875,
+            "y": 660.625,
+            "width": 96,
+            "height": 47
+          }
+        }
+      ],
+      "submit": {
+        "x": 63,
+        "y": 719.625,
+        "width": 88.03125,
+        "height": 44
+      },
+      "supportLevel": "high-support",
+      "conditionId": "phase2-bundle-1",
+      "hiddenConversionOrDecisionControls": 0,
+      "reflectionControls": 0
+    },
+    {
+      "label": "visible local operation help",
+      "screenshot": "plan20-visual-740-local-help.png",
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "document": {
+        "scrollWidth": 360,
+        "scrollHeight": 1141
+      },
+      "app": {
+        "x": 0,
+        "y": -320,
+        "width": 360,
+        "height": 1141,
+        "scrollWidth": 360,
+        "scrollHeight": 1141
+      },
+      "activePath": "visual",
+      "prompt": {
+        "x": 63,
+        "y": 213.71875,
+        "width": 234,
+        "height": 50.375
+      },
+      "feedback": {
+        "x": 63,
+        "y": 97.78125,
+        "width": 234,
+        "height": 85
+      },
+      "feedbackText": "The denominator stays the same. Add only the top numbers.",
+      "helpCueText": "Add the top numbers. Keep the same bottom number.",
+      "helpExpanded": "true",
+      "visibleText": "2\n7\n3\n7\n2\n7\n+\n3\n7\nThe denominator stays the same. Add only the top numbers.\nAdd the shaded parts together.\nTop number\n/\nBottom number\nCheck\n\nClose help\n\nAdd the top numbers. Keep the same bottom number.\n\nShow previous steps (1 completed)\nBoth fractions have 7 equal parts.",
+      "responseFields": [
+        {
+          "id": "operate-fraction-numerator-input",
+          "label": "Top number",
+          "inputMode": "numeric",
+          "min": "1",
+          "max": "999",
+          "box": {
+            "x": 63,
+            "y": 340.625,
+            "width": 96,
+            "height": 47
+          }
+        },
+        {
+          "id": "operate-fraction-denominator-input",
+          "label": "Bottom number",
+          "inputMode": "numeric",
+          "min": "1",
+          "max": "999",
+          "box": {
+            "x": 181.046875,
+            "y": 340.625,
+            "width": 96,
+            "height": 47
+          }
+        }
+      ],
+      "submit": {
+        "x": 63,
+        "y": 399.625,
+        "width": 88.03125,
+        "height": 44
+      },
+      "supportLevel": "high-support",
+      "conditionId": "phase2-bundle-1",
+      "hiddenConversionOrDecisionControls": 0,
+      "reflectionControls": 0
+    },
+    {
+      "label": "accepted equivalent unsimplified answer",
+      "screenshot": "plan20-visual-740-accepted-10-over-14.png",
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "document": {
+        "scrollWidth": 360,
+        "scrollHeight": 822
+      },
+      "app": {
+        "x": 0,
+        "y": -81,
+        "width": 360,
+        "height": 821.8125,
+        "scrollWidth": 360,
+        "scrollHeight": 822
+      },
+      "activePath": "visual",
+      "prompt": {
+        "x": 63,
+        "y": 390.90625,
+        "width": 234,
+        "height": 50.375
+      },
+      "feedback": null,
+      "feedbackText": "",
+      "helpCueText": "",
+      "helpExpanded": "false",
+      "visibleText": "2\n7\n3\n7\n2\n7\n+\n3\n7\n=\n10\n14\n=\n5\n7\nThat names the same amount.\nFinish\nShow previous steps (3 completed)\nSum: 10/14",
+      "responseFields": [],
+      "submit": null,
+      "supportLevel": "high-support",
+      "conditionId": "phase2-bundle-1",
+      "hiddenConversionOrDecisionControls": 0,
+      "reflectionControls": 0,
+      "keyboardCorrection": "Control+A, type 10, Tab to Submit, Enter"
+    },
+    {
+      "label": "finished single-item goal",
+      "screenshot": "plan20-visual-740-finished.png",
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "document": {
+        "scrollWidth": 360,
+        "scrollHeight": 740
+      },
+      "app": {
+        "x": 0,
+        "y": 0,
+        "width": 360,
+        "height": 740,
+        "scrollWidth": 360,
+        "scrollHeight": 740
+      },
+      "activePath": "visual",
+      "prompt": {
+        "x": 63,
+        "y": 471.90625,
+        "width": 234,
+        "height": 25.1875
+      },
+      "feedback": null,
+      "feedbackText": "",
+      "helpCueText": "",
+      "helpExpanded": "false",
+      "visibleText": "2\n7\n3\n7\n2\n7\n+\n3\n7\n=\n10\n14\n=\n5\n7\nYou finished this problem.\nShow previous steps (3 completed)\nSum: 10/14",
+      "responseFields": [],
+      "submit": null,
+      "supportLevel": "high-support",
+      "conditionId": "phase2-bundle-1",
+      "hiddenConversionOrDecisionControls": 0,
+      "reflectionControls": 0
+    },
+    {
+      "label": "wrong notice recovery",
+      "screenshot": "plan20-linear-752-wrong-notice.png",
+      "viewport": {
+        "width": 360,
+        "height": 752
+      },
+      "document": {
+        "scrollWidth": 360,
+        "scrollHeight": 760
+      },
+      "app": {
+        "x": 0,
+        "y": 0,
+        "width": 360,
+        "height": 759.75,
+        "scrollWidth": 360,
+        "scrollHeight": 760
+      },
+      "activePath": "linear",
+      "prompt": {
+        "x": 63,
+        "y": 391.78125,
+        "width": 234,
+        "height": 50.375
+      },
+      "feedback": {
+        "x": 63,
+        "y": 293.78125,
+        "width": 234,
+        "height": 64
+      },
+      "feedbackText": "Both bars have 7 equal parts. Those parts are the same size.",
+      "helpCueText": "",
+      "helpExpanded": "false",
+      "visibleText": "2\n7\n+\n3\n7\nBoth bars have 7 equal parts. Those parts are the same size.\nDo these two fractions have the same size parts?\nDo these two fractions have the same size parts?\nYes, same size\nNo, different sizes\nProblem established.",
+      "responseFields": [],
+      "submit": null,
+      "supportLevel": "medium-support",
+      "conditionId": "phase2-bundle-1",
+      "hiddenConversionOrDecisionControls": 0,
+      "reflectionControls": 0
+    },
+    {
+      "label": "pre-response absence checks",
+      "viewport": {
+        "width": 360,
+        "height": 752
+      },
+      "activePath": "linear",
+      "skippedControlsAbsent": true,
+      "answerAndUnlikeTaskTextAbsent": true,
+      "reflectionControls": 0
+    },
+    {
+      "label": "5/14 arithmetic recovery",
+      "screenshot": "plan20-linear-752-5-over-14-recovery.png",
+      "viewport": {
+        "width": 360,
+        "height": 752
+      },
+      "document": {
+        "scrollWidth": 360,
+        "scrollHeight": 942
+      },
+      "app": {
+        "x": 0,
+        "y": 0,
+        "width": 360,
+        "height": 942.34375,
+        "scrollWidth": 360,
+        "scrollHeight": 942
+      },
+      "activePath": "linear",
+      "prompt": {
+        "x": 63,
+        "y": 412.78125,
+        "width": 234,
+        "height": 50.375
+      },
+      "feedback": {
+        "x": 63,
+        "y": 293.78125,
+        "width": 234,
+        "height": 85
+      },
+      "feedbackText": "The denominator stays the same. Add only the top numbers.",
+      "helpCueText": "",
+      "helpExpanded": "false",
+      "visibleText": "2\n7\n+\n3\n7\nThe denominator stays the same. Add only the top numbers.\nAdd the shaded parts together.\nTop number\n/\nBottom number\nCheck\n\nNeed help?\nShow previous steps (1 completed)\nBoth fractions have 7 equal parts.",
+      "responseFields": [
+        {
+          "id": "linear-operate-fraction-numerator-input",
+          "label": "Top number",
+          "inputMode": "numeric",
+          "min": "1",
+          "max": "999",
+          "box": {
+            "x": 63,
+            "y": 542.75,
+            "width": 96,
+            "height": 47
+          }
+        },
+        {
+          "id": "linear-operate-fraction-denominator-input",
+          "label": "Bottom number",
+          "inputMode": "numeric",
+          "min": "1",
+          "max": "999",
+          "box": {
+            "x": 181.046875,
+            "y": 542.75,
+            "width": 96,
+            "height": 47
+          }
+        }
+      ],
+      "submit": {
+        "x": 63,
+        "y": 601.75,
+        "width": 88.03125,
+        "height": 44
+      },
+      "supportLevel": "medium-support",
+      "conditionId": "phase2-bundle-1",
+      "hiddenConversionOrDecisionControls": 0,
+      "reflectionControls": 0
+    },
+    {
+      "label": "visible local operation help",
+      "screenshot": "plan20-linear-752-local-help.png",
+      "viewport": {
+        "width": 360,
+        "height": 752
+      },
+      "document": {
+        "scrollWidth": 360,
+        "scrollHeight": 1023
+      },
+      "app": {
+        "x": 0,
+        "y": 0,
+        "width": 360,
+        "height": 1023.125,
+        "scrollWidth": 360,
+        "scrollHeight": 1023
+      },
+      "activePath": "linear",
+      "prompt": {
+        "x": 63,
+        "y": 412.78125,
+        "width": 234,
+        "height": 50.375
+      },
+      "feedback": {
+        "x": 63,
+        "y": 293.78125,
+        "width": 234,
+        "height": 85
+      },
+      "feedbackText": "The denominator stays the same. Add only the top numbers.",
+      "helpCueText": "Add the top numbers. Keep the same bottom number.",
+      "helpExpanded": "true",
+      "visibleText": "2\n7\n+\n3\n7\nThe denominator stays the same. Add only the top numbers.\nAdd the shaded parts together.\nTop number\n/\nBottom number\nCheck\n\nClose help\n\nAdd the top numbers. Keep the same bottom number.\n\nShow previous steps (1 completed)\nBoth fractions have 7 equal parts.",
+      "responseFields": [
+        {
+          "id": "linear-operate-fraction-numerator-input",
+          "label": "Top number",
+          "inputMode": "numeric",
+          "min": "1",
+          "max": "999",
+          "box": {
+            "x": 63,
+            "y": 542.75,
+            "width": 96,
+            "height": 47
+          }
+        },
+        {
+          "id": "linear-operate-fraction-denominator-input",
+          "label": "Bottom number",
+          "inputMode": "numeric",
+          "min": "1",
+          "max": "999",
+          "box": {
+            "x": 181.046875,
+            "y": 542.75,
+            "width": 96,
+            "height": 47
+          }
+        }
+      ],
+      "submit": {
+        "x": 63,
+        "y": 601.75,
+        "width": 88.03125,
+        "height": 44
+      },
+      "supportLevel": "medium-support",
+      "conditionId": "phase2-bundle-1",
+      "hiddenConversionOrDecisionControls": 0,
+      "reflectionControls": 0
+    },
+    {
+      "label": "accepted equivalent unsimplified answer",
+      "screenshot": "plan20-linear-752-accepted-10-over-14.png",
+      "viewport": {
+        "width": 360,
+        "height": 752
+      },
+      "document": {
+        "scrollWidth": 360,
+        "scrollHeight": 752
+      },
+      "app": {
+        "x": 0,
+        "y": 0,
+        "width": 360,
+        "height": 752,
+        "scrollWidth": 360,
+        "scrollHeight": 752
+      },
+      "activePath": "linear",
+      "prompt": {
+        "x": 63,
+        "y": 311.78125,
+        "width": 234,
+        "height": 50.375
+      },
+      "feedback": null,
+      "feedbackText": "",
+      "helpCueText": "",
+      "helpExpanded": "false",
+      "visibleText": "2\n7\n+\n3\n7\nThat names the same amount.\nFinish\nShow previous steps (3 completed)\nSum: 10/14",
+      "responseFields": [],
+      "submit": null,
+      "supportLevel": "medium-support",
+      "conditionId": "phase2-bundle-1",
+      "hiddenConversionOrDecisionControls": 0,
+      "reflectionControls": 0,
+      "keyboardCorrection": null
+    },
+    {
+      "label": "finished single-item goal",
+      "screenshot": "plan20-linear-752-finished.png",
+      "viewport": {
+        "width": 360,
+        "height": 752
+      },
+      "document": {
+        "scrollWidth": 360,
+        "scrollHeight": 752
+      },
+      "app": {
+        "x": 0,
+        "y": 0,
+        "width": 360,
+        "height": 752,
+        "scrollWidth": 360,
+        "scrollHeight": 752
+      },
+      "activePath": "linear",
+      "prompt": {
+        "x": 63,
+        "y": 311.78125,
+        "width": 234,
+        "height": 25.1875
+      },
+      "feedback": null,
+      "feedbackText": "",
+      "helpCueText": "",
+      "helpExpanded": "false",
+      "visibleText": "2\n7\n+\n3\n7\nYou finished this problem.\nShow previous steps (3 completed)\nSum: 10/14",
+      "responseFields": [],
+      "submit": null,
+      "supportLevel": "medium-support",
+      "conditionId": "phase2-bundle-1",
+      "hiddenConversionOrDecisionControls": 0,
+      "reflectionControls": 0
+    }
+  ]
+}

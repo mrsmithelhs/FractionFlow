@@ -21,6 +21,7 @@ import {
   EPISODE_BEATS,
   PHASE2_ACTIVE_CONDITION,
   PHASE2_EPISODE_DEFINITION,
+  PLAN20_LIKE_DENOMINATOR_EPISODE_DEFINITION,
   PLAN17_CROSSING_EPISODE_DEFINITION,
   getEpisodeDefinition,
   validateActiveCondition,
@@ -73,6 +74,34 @@ function responseForEntry(definition, entry) {
   if (beat === 'operate') return { ...common, responsibility: 'combine-like-units', inputKind: 'fraction' };
   if (beat === 'resolve') return { ...common, responsibility: 'settle-final-form', inputKind: 'fraction' };
   return { ...common, responsibility: 'inspect-invariant', inputKind: 'structured-choice' };
+}
+
+function isPlan20Definition(definition) {
+  return definition?.id === PLAN20_LIKE_DENOMINATOR_EPISODE_DEFINITION.id
+    && definition?.revision === PLAN20_LIKE_DENOMINATOR_EPISODE_DEFINITION.revision;
+}
+
+function sharedUnitFromValidatedContent(instance) {
+  const left = instance.operands.left.initialForm;
+  const right = instance.operands.right.initialForm;
+  if (left.denominator !== right.denominator
+    || instance.classification.denominator.relationship !== 'same') {
+    throw new EpisodeIntentError('INVALID_SHARED_UNIT', 'the registered task does not have one validated shared unit');
+  }
+  return {
+    kind: 'already-shared-unit',
+    targetDenominator: left.denominator,
+    source: 'validated-equal-original-denominators',
+    sourceForms: { left, right },
+  };
+}
+
+function targetDenominatorFor(state) {
+  const establishedUnit = state.established.sharedUnit ?? state.established.commonDenominator;
+  if (!establishedUnit?.targetDenominator) {
+    throw new EpisodeIntentError('MISSING_ESTABLISHED_UNIT', 'operation requires an established fraction unit');
+  }
+  return establishedUnit.targetDenominator;
 }
 
 function sameDefinitionValue(left, right) {
@@ -156,7 +185,13 @@ function assertInstance(instance, definition) {
     );
   }
   const identityContract = definition.contentContract ?? null;
+  const isPlan17Contract = identityContract?.resultStackCapability === 'plan17-two-whole-stack-v1';
+  const isPlan20Contract = definition.id === PLAN20_LIKE_DENOMINATOR_EPISODE_DEFINITION.id
+    && definition.revision === PLAN20_LIKE_DENOMINATOR_EPISODE_DEFINITION.revision;
   const registeredCrossing = identityContract?.resultStackCapability === 'plan17-two-whole-stack-v1'
+    ? resolveAuthoredContent(identityContract.fixtureId, identityContract.authoringRevision)
+    : null;
+  const registeredPlan20 = isPlan20Contract
     ? resolveAuthoredContent(identityContract.fixtureId, identityContract.authoringRevision)
     : null;
   const operandsMatchRegisteredCrossing = identityContract === null || (
@@ -167,7 +202,7 @@ function assertInstance(instance, definition) {
     && registeredCrossing.fixture.right.numerator === instance.operands.right.initialForm.numerator
     && registeredCrossing.fixture.right.denominator === instance.operands.right.initialForm.denominator
   );
-  const crossingContractMatches = identityContract === null || (
+  const crossingContractMatches = !isPlan17Contract || (
     instance.provenance?.fixtureId === identityContract.fixtureId
     && instance.provenance?.authoringRevision === identityContract.authoringRevision
     && instance.request.selector === identityContract.selector
@@ -179,9 +214,36 @@ function assertInstance(instance, definition) {
     && instance.representationFacts?.wholeSpan?.lowerWhole === '1'
     && instance.representationFacts?.wholeSpan?.upperWhole === '2'
   );
+  const formMatches = (actual, expected) => actual?.kind === expected?.kind
+    && actual?.numerator === expected?.numerator
+    && actual?.denominator === expected?.denominator;
+  const plan20ContractMatches = !isPlan20Contract || (
+    registeredPlan20?.itemId === identityContract.itemId
+    && registeredPlan20?.taskDataRevision === identityContract.taskDataRevision
+    && registeredPlan20?.recipe?.id === identityContract.recipe.id
+    && registeredPlan20?.recipe?.revision === identityContract.recipe.revision
+    && registeredPlan20?.fixture?.selector === identityContract.selector
+    && registeredPlan20?.fixture?.profileId === 'curated-review'
+    && registeredPlan20?.fixture?.overlays?.length === 0
+    && formMatches(registeredPlan20?.fixture?.left, identityContract.left)
+    && formMatches(registeredPlan20?.fixture?.right, identityContract.right)
+    && instance.provenance?.fixtureId === identityContract.fixtureId
+    && instance.provenance?.authoringRevision === identityContract.authoringRevision
+    && instance.request.selector === identityContract.selector
+    && instance.request.operation === identityContract.operation
+    && JSON.stringify(instance.request.overlays) === JSON.stringify(identityContract.overlays)
+    && formMatches(instance.operands?.left?.initialForm, identityContract.left)
+    && formMatches(instance.operands?.right?.initialForm, identityContract.right)
+    && instance.classification?.denominator?.relationship === 'same'
+    && instance.classification?.transformations?.canonicalRenaming?.left === false
+    && instance.classification?.transformations?.canonicalRenaming?.right === false
+    && definition.includeReflection === false
+  );
   if (instance.request.selector !== definition.selector
     || instance.request.operation !== definition.operation
-    || !crossingContractMatches) {
+    || !crossingContractMatches
+    || !plan20ContractMatches
+    || (identityContract !== null && !isPlan17Contract && !isPlan20Contract)) {
     throw new EpisodeConstructionError('UNSUPPORTED_CONTENT_FAMILY', 'content instance is outside the Phase 2 episode family');
   }
   const eligibility = evaluateInstanceEligibility(instance);
@@ -205,6 +267,9 @@ function stateSnapshot(state) {
     resolution: state.established.resolution,
     reflection: state.established.reflection,
     route: state.established.route,
+    ...(Object.prototype.hasOwnProperty.call(state.established, 'sharedUnit')
+      ? { sharedUnit: state.established.sharedUnit }
+      : {}),
   };
 }
 
@@ -428,7 +493,13 @@ function handleNotice(state, intent) {
   const next = advanceSchedule(state, established);
   return assessedSuccess(state, intent, classification, {
     ...next,
-    established: { ...next.established, notice: established },
+    established: {
+      ...next.established,
+      notice: established,
+      ...(isPlan20Definition(state.episodeDefinition)
+        ? { sharedUnit: sharedUnitFromValidatedContent(state.content) }
+        : {}),
+    },
   });
 }
 
@@ -514,12 +585,13 @@ function handleTransform(state, intent) {
 
 function handleOperate(state, intent) {
   if (intent.type !== 'submit-operation-result') return null;
-  const targetDenominator = state.established.commonDenominator.targetDenominator;
+  const targetDenominator = targetDenominatorFor(state);
+  const usesOriginalForms = isPlan20Definition(state.episodeDefinition);
   const classification = classifyOperationResponseForEpisode({
     instance: state.content,
     targetDenominator,
-    convertedLeft: state.established.conversions.left,
-    convertedRight: state.established.conversions.right,
+    convertedLeft: usesOriginalForms ? null : state.established.conversions.left,
+    convertedRight: usesOriginalForms ? null : state.established.conversions.right,
     proposed: intent.proposed,
   });
   if (classification.validity !== 'valid') return recovery(state, intent, classification);
@@ -538,7 +610,7 @@ function handleOperate(state, intent) {
 
 function handleResolve(state, intent) {
   if (intent.type !== 'submit-resolution') return null;
-  const targetDenominator = state.established.commonDenominator.targetDenominator;
+  const targetDenominator = targetDenominatorFor(state);
   const classification = classifyResolutionResponse({
     instance: state.content,
     targetDenominator,
@@ -807,6 +879,7 @@ export function createEpisode({
       resolution: null,
       reflection: null,
       route: 'fraction-bar',
+      ...(isPlan20Definition(definition) ? { sharedUnit: null } : {}),
     },
     completedBeats: [],
     pendingResponse: null,

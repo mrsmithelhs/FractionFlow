@@ -1,6 +1,11 @@
 import { assertValidScene, RenderContractError } from './contract.js';
 import { STRINGS } from './strings.js';
-import { createButton, createNumericInput, createChoiceGroup } from './controls.js';
+import {
+  createButton,
+  createFractionResponseInput,
+  createNumericInput,
+  createChoiceGroup,
+} from './controls.js';
 import { createSymbolicFraction } from './symbolic.js';
 
 /**
@@ -218,7 +223,11 @@ export function createLinearPathRenderer({
 
     // Notice
     if (schedulePosition > 1) {
-      milestones.push(strings.summaryLines.noticeDone);
+      const denominators = unitRel.sourceDenominators;
+      milestones.push(denominators.left === denominators.right
+        && typeof strings.summaryLines.noticeDoneSame === 'function'
+        ? strings.summaryLines.noticeDoneSame(denominators.left)
+        : strings.summaryLines.noticeDone);
     }
 
     // Decide
@@ -438,14 +447,13 @@ export function createLinearPathRenderer({
       } else if (recovery.classification.kind === 'incorrect-numerator-arithmetic') {
         recoveryEl.textContent = strings.operate.errorArithmetic;
       } else if (recovery.classification.kind === 'incorrect-notice') {
-        // In Phase 2, only unlike-denominator fixtures ship (expectedMatches is always false).
-        // A like-denominator mistake (learner answers "different" when denominators match) has no
-        // authored string yet and is deferred to Phase 3 like-denominator work.
         const leftDen = scene.meaning.quantities.left.unit.denominator;
         const rightDen = scene.meaning.quantities.right.unit.denominator;
-        recoveryEl.textContent = typeof strings.notice.feedbackSame === 'function'
-          ? strings.notice.feedbackSame(leftDen, rightDen)
-          : strings.notice.feedbackSame;
+        recoveryEl.textContent = recovery.classification.expectedMatches
+          ? strings.notice.feedbackDifferentWhenSame(leftDen)
+          : typeof strings.notice.feedbackSame === 'function'
+            ? strings.notice.feedbackSame(leftDen, rightDen)
+            : strings.notice.feedbackSame;
       } else if (recovery.classification.kind === 'incorrect-reflection') {
         if (task.connectionForm === 'premise') {
           const isYes = recovery.classification.response === 'yes';
@@ -637,6 +645,20 @@ export function createLinearPathRenderer({
         const commonDen = scene.meaning.quantities.left.currentForm.denominator;
         promptText.textContent = strings.operate.prompt;
 
+        if (scene.meaning.unitRelationship.commonUnit?.kind === 'already-shared-unit') {
+          const fractionInput = createFractionResponseInput({
+            numeratorId: 'linear-operate-fraction-numerator-input',
+            denominatorId: 'linear-operate-fraction-denominator-input',
+            strings,
+            onSubmit: (proposed) => dispatchAction({
+              type: 'submit-operation-result',
+              proposed,
+            }),
+          });
+          controlsContainer.appendChild(fractionInput.element);
+          break;
+        }
+
         const sumInput = createNumericInput({
           id: 'linear-operate-sum-input',
           label: strings.operate.inputLabel(commonDen),
@@ -661,20 +683,28 @@ export function createLinearPathRenderer({
       case 'resolve': {
         const raw = scene.meaning.operation.rawResult;
         const pref = scene.meaning.operation.simplifiedResult || raw;
+        const plan20 = scene.meaning.currentTask.promptId?.startsWith('phase3.like-addition.');
 
-        if (pref && raw && (pref.numerator !== raw.numerator || pref.denominator !== raw.denominator)) {
+        if (plan20 && pref && raw
+          && (pref.numerator !== raw.numerator || pref.denominator !== raw.denominator)) {
+          promptText.textContent = strings.resolve.likeAdditionEquivalentReady;
+        } else if (pref && raw && (pref.numerator !== raw.numerator || pref.denominator !== raw.denominator)) {
           promptText.textContent = strings.resolve.unsimplifiedNotice(
             `${raw.numerator}/${raw.denominator}`,
             `${pref.numerator}/${pref.denominator}`,
           );
         } else if (pref && scene.meaning.operation.resultStack !== undefined) {
           promptText.textContent = strings.resolve.crossingAcceptedCue;
+        } else if (plan20) {
+          promptText.textContent = strings.resolve.likeAdditionReady;
         } else if (pref) {
           promptText.textContent = strings.resolve.summary(pref.numerator, pref.denominator);
         }
 
         const nextBtn = createButton({
-          label: scene.meaning.currentTask.promptId?.includes('reflect')
+          label: plan20
+            ? strings.resolve.finishButton
+            : scene.meaning.currentTask.promptId?.includes('reflect')
             ? (strings.resolve.continueReflectionButton || strings.resolve.continueButton)
             : strings.resolve.continueButton,
           onClick: () => {

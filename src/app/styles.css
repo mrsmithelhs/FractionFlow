@@ -65,9 +65,14 @@ body,
 .app-practice-list {
   display: grid;
   justify-items: start;
+  row-gap: 0.75rem;
 }
 
-.app-practice-button {
+.app-practice-list ~ .app-practice-list {
+  margin-top: 0.75rem;
+}
+
+.app-practice-choice {
   min-width: min(100%, 20rem);
   min-height: 3.25rem;
   padding: 0.8rem 1.1rem;
@@ -80,7 +85,7 @@ body,
   cursor: pointer;
 }
 
-.app-practice-button:hover {
+.app-practice-choice:hover {
   background: #1e4d91;
 }
 
@@ -306,7 +311,7 @@ body,
     min-height: calc(100vh - 1.5rem);
   }
 
-  .app-practice-button {
+  .app-practice-choice {
     width: 100%;
   }
 }

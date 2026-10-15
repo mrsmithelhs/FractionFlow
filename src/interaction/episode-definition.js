@@ -88,6 +88,32 @@ export const SHARED_FACTOR_REFLECTION_EPISODE_DEFINITION = deepFreeze({
   selector: 'shared-factor-addition',
 });
 
+export const PLAN20_LIKE_DENOMINATOR_EPISODE_DEFINITION = deepFreeze({
+  ...BASE_EPISODE_DEFINITION,
+  id: 'phase-3-like-denominator-addition',
+  revision: '1',
+  includeReflection: false,
+  selector: 'like-denominator-addition',
+  promptIdentities: {
+    encounter: 'phase3.like-addition.encounter',
+    notice: 'phase3.like-addition.notice',
+    operate: 'phase3.like-addition.operate',
+    resolve: 'phase3.like-addition.resolve',
+  },
+  contentContract: {
+    itemId: 'two-sevenths-plus-three-sevenths',
+    fixtureId: 'curated-like-denominator-addition-two-sevenths-three-sevenths',
+    authoringRevision: 'plan20-record-v1',
+    taskDataRevision: 'plan20-task-data-v1',
+    recipe: { id: 'plan20-reviewed-like-denominator-addition', revision: '1' },
+    selector: 'like-denominator-addition',
+    operation: 'add',
+    overlays: [],
+    left: { kind: 'fraction', numerator: '2', denominator: '7' },
+    right: { kind: 'fraction', numerator: '3', denominator: '7' },
+  },
+});
+
 export const PLAN17_CROSSING_EPISODE_DEFINITION = deepFreeze({
   ...BASE_EPISODE_DEFINITION,
   id: 'phase-3-crossing-one-whole-addition-reflection',
@@ -121,6 +147,7 @@ const EPISODE_DEFINITIONS = Object.freeze([
   PHASE2_EPISODE_DEFINITION,
   PHASE2_REFLECTION_EPISODE_DEFINITION,
   SHARED_FACTOR_REFLECTION_EPISODE_DEFINITION,
+  PLAN20_LIKE_DENOMINATOR_EPISODE_DEFINITION,
   PLAN17_CROSSING_EPISODE_DEFINITION,
 ]);
 

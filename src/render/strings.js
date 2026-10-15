@@ -41,6 +41,9 @@ export const STRINGS = Object.freeze({
     feedbackSame: (leftDen, rightDen) => (
       `Look at the parts: one bar has ${leftDen} equal parts and one has ${rightDen} equal parts.`
     ),
+    feedbackDifferentWhenSame: (denominator) => (
+      `Both bars have ${denominator} equal parts. Those parts are the same size.`
+    ),
   }),
 
   decide: Object.freeze({
@@ -96,6 +99,10 @@ export const STRINGS = Object.freeze({
     prompt: 'Add the shaded parts together.',
     // Minor note: Natural phrasing for grade 2–3.
     inputLabel: (den) => `Total shaded parts out of ${den}:`,
+    numeratorLabel: 'Top number',
+    denominatorLabel: 'Bottom number',
+    fractionRequired: 'Enter a whole number above and below the line.',
+    likeAdditionHelp: 'Add the top numbers. Keep the same bottom number.',
     errorArithmetic: 'The denominator stays the same. Add only the top numbers.',
   }),
 
@@ -108,6 +115,9 @@ export const STRINGS = Object.freeze({
     ),
     continueButton: 'Next Problem',
     continueReflectionButton: 'Continue',
+    finishButton: 'Finish',
+    likeAdditionEquivalentReady: 'That names the same amount.',
+    likeAdditionReady: 'Your answer is ready.',
     complete: 'You finished this problem.',
   }),
 
@@ -201,6 +211,7 @@ export const STRINGS = Object.freeze({
   summaryLines: Object.freeze({
     encounterDone: 'Problem established.',
     noticeDone: 'Units do not match.',
+    noticeDoneSame: (denominator) => `Both fractions have ${denominator} equal parts.`,
     decideDone: (den, mathClassification) => {
       if (mathClassification === 'valid-least') {
         return STRINGS.decide.validLeast(den);

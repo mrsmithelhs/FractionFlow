@@ -1,4 +1,5 @@
 import { PHASE2_REFLECTION_EPISODE_DEFINITION } from '../interaction/episode-definition.js';
+import { PLAN20_LIKE_DENOMINATOR_EPISODE_DEFINITION } from '../interaction/episode-definition.js';
 
 /**
  * Learner-reachable practice types. A type is registered only when the app can
@@ -102,6 +103,24 @@ export const PRACTICE_TYPES = Object.freeze([
       }),
     ]),
     episodeDefinition: PHASE2_REFLECTION_EPISODE_DEFINITION,
+  }),
+  Object.freeze({
+    id: 'like-denominator-addition',
+    label: 'Add fractions with the same denominator',
+    setId: 'like-denominator-addition-vetted-set',
+    setRevision: '1',
+    items: Object.freeze([
+      Object.freeze({
+        id: 'two-sevenths-plus-three-sevenths',
+        fixtureId: 'curated-like-denominator-addition-two-sevenths-three-sevenths',
+        authoringRevision: 'plan20-record-v1',
+        taskDataRevision: 'plan20-task-data-v1',
+        recipe: Object.freeze({ id: 'plan20-reviewed-like-denominator-addition', revision: '1' }),
+        episodeDefinitionId: PLAN20_LIKE_DENOMINATOR_EPISODE_DEFINITION.id,
+        episodeDefinitionRevision: PLAN20_LIKE_DENOMINATOR_EPISODE_DEFINITION.revision,
+      }),
+    ]),
+    episodeDefinition: PLAN20_LIKE_DENOMINATOR_EPISODE_DEFINITION,
   }),
 ]);
 

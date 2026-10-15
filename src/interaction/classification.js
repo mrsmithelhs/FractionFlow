@@ -176,14 +176,18 @@ export function classifyTransformHelpMultiplier({ instance, targetDenominator, s
 export function classifyOperationResponseForEpisode({
   instance,
   targetDenominator,
-  convertedLeft,
-  convertedRight,
+  convertedLeft = null,
+  convertedRight = null,
   proposed,
 }) {
   const target = wholeStringToExact(targetDenominator, 'target denominator');
   const { left, right } = operands(instance);
-  const leftForm = fractionFromWire(convertedLeft, 'converted left operand');
-  const rightForm = fractionFromWire(convertedRight, 'converted right operand');
+  const leftForm = convertedLeft === null
+    ? left
+    : fractionFromWire(convertedLeft, 'converted left operand');
+  const rightForm = convertedRight === null
+    ? right
+    : fractionFromWire(convertedRight, 'converted right operand');
   const proposedResult = fractionFromWire(proposed, 'proposed operation result');
   const validation = validateOperationResult(
     proposedResult,

@@ -21,19 +21,34 @@ describe('Plan 12 entry page', () => {
     teardownMockDOM();
   });
 
-  it('opens on a restrained entry page with one runnable registry button and keyboard-reachable gear', () => {
+  it('opens on a restrained entry page with both staged registry goals and keyboard-reachable settings', () => {
     expect(root.querySelector('.app-entry-title').textContent).toBe('FractionFlow');
     expect(root.querySelector('.app-entry-line').textContent)
       .toBe('See how different-sized fraction parts fit together.');
-    expect(PRACTICE_TYPES).toHaveLength(1);
+    expect(PRACTICE_TYPES).toHaveLength(2);
     expect(root.querySelectorAll('.app-practice-button')).toHaveLength(1);
     expect(root.querySelector('.app-practice-button').textContent)
       .toBe('Add fractions with different denominators');
     expect(root.querySelector('.app-practice-button').disabled).toBe(false);
+    const entries = [...root.querySelectorAll('.app-practice-list [data-practice-type]')];
+    expect(entries.map((entry) => entry.getAttribute('data-practice-type')))
+      .toEqual(['sum-under-one', 'like-denominator-addition']);
+    expect(entries.every((entry) => entry.classList.contains('app-practice-choice'))).toBe(true);
+    expect(entries[1].textContent).toBe('Add fractions with the same denominator');
+    expect(entries[1].disabled).toBe(false);
     expect(root.querySelector('.app-creator-credit').textContent).toBe('Created by an educator');
     expect(root.querySelector('.app-episode').hasAttribute('hidden')).toBe(true);
     expect(root.querySelector('.app-display-menu').hasAttribute('hidden')).toBe(true);
     expect(root.querySelector('.app-entry-page .app-gear-button')).not.toBeNull();
+  });
+
+  it('reaches the new same-denominator episode from its separate entry goal', () => {
+    root.querySelector('[data-practice-type="like-denominator-addition"]').click();
+    expect(app.getState().beat).toBe('encounter');
+    expect(app.getState().episodeDefinition.id).toBe('phase-3-like-denominator-addition');
+    expect(app.getState().episodeDefinition.includeReflection).toBe(false);
+    expect(document.activeElement).toBe(root.querySelector('.app-episode'));
+    expect(root.querySelector('.app-entry-page').hasAttribute('hidden')).toBe(true);
   });
 
   it('begins the registered episode and returns focus to the entry page on return', () => {

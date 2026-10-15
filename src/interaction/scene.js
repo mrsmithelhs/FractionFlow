@@ -575,6 +575,29 @@ function candidateDenominatorsMeaning(state) {
 }
 
 function commonUnitMeaning(state) {
+  const sharedUnit = state.established?.sharedUnit;
+  if (sharedUnit) {
+    if (sharedUnit.kind !== 'already-shared-unit'
+      || sharedUnit.source !== 'validated-equal-original-denominators'
+      || !sharedUnit.targetDenominator
+      || sharedUnit.targetDenominator !== state.content.operands.left.initialForm.denominator
+      || sharedUnit.targetDenominator !== state.content.operands.right.initialForm.denominator) {
+      throw new SceneProjectionError(
+        'UNRESOLVED_CAPABILITY',
+        'already-shared unit must match both validated original denominators',
+      );
+    }
+    return {
+      kind: 'already-shared-unit',
+      source: sharedUnit.source,
+      targetDenominator: sharedUnit.targetDenominator,
+      validity: 'valid',
+      mathClassification: 'already-shared-unit',
+      rendering: 'eligible',
+      authoredCoverage: 'not-required',
+      scaleFactors: null,
+    };
+  }
   const commonDenominator = state.established?.commonDenominator;
   if (!commonDenominator) return null;
   const targetDenominator = commonDenominator.targetDenominator;
@@ -621,8 +644,12 @@ function operationMeaning(state) {
   return {
     operation: state.content.request.operation,
     currentForms: {
-      left: state.established.conversions.left,
-      right: state.established.conversions.right,
+      left: state.established.sharedUnit
+        ? state.content.operands.left.initialForm
+        : state.established.conversions.left,
+      right: state.established.sharedUnit
+        ? state.content.operands.right.initialForm
+        : state.established.conversions.right,
     },
     rawResult,
     resultWholeSpan: state.content.representationFacts.wholeSpan,
@@ -763,7 +790,8 @@ function sceneMeaning(state, representationRole, capability) {
       },
       candidateDenominators: candidateDenominatorsMeaning(state),
       commonUnit: commonUnitMeaning(state),
-      authoredCoverage: state.established?.commonDenominator?.authoredCoverage ?? null,
+      authoredCoverage: state.established?.commonDenominator?.authoredCoverage
+        ?? (state.established?.sharedUnit ? 'not-required' : null),
     },
     currentTask: taskMeaning(state),
     availableAction: state.expectedResponse
