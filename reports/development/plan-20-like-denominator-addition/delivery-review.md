@@ -77,3 +77,39 @@ identified the assistance-history defect; root independently checked the actual
 app branch and interaction intent handling. No fresh browser run or physical
 device/assistive-technology verification is claimed by this review. The broad
 357-test/59-execution results remain implementer-reported delivery evidence.
+
+## Repair 01 technical re-review
+
+Date: 2026-10-15. Candidate repair `37fd528`, report `27cd929`.
+Disposition: technically accepted; owner rendered-screen/agency acceptance pending.
+Plan 20 remains delivered. Repair authority was the orchestrator's explicit bounded
+instruction under the owner's existing supervision authorization; no new packet
+start or status change was authorized by the implementer.
+
+Root inspected all four source/test diffs and the revised capture/verifier. Local
+operate help now dispatches the existing task-help intent under exact Plan 20
+eligibility, records exposure in support history, projects the proper task-help
+kind and preserves it in subsequent response provenance/replay. Closing the cue
+does not remove exposure; reopening is idempotent. Reset clears history and stale
+mounted support copy. The regression tests exercise assisted versus unassisted
+responses, actual mounted controls, draft retention and replay reconstruction.
+
+Root independently ran four focused files: 46 tests passed. Root then copied the
+committed capture and verifier into ignored `dist/plan20-root-review/evidence/`,
+adjusting only the capture's relative script import for that output depth. The
+fresh Chrome browser run captured 12 workflow states, both entry layouts and
+fragment launch; the verifier passed on those freshly generated artifacts.
+The run rejected each of the three independent content/accessibility seeds and
+passed after restoration. Actual page keyboard correction/completion, unforced
+Finish focus, tapped-field touch-context entry and ordinary-scroll reachability
+passed. Root inspected fresh visual help and linear accepted-response screenshots.
+No route matrix changes were made by this repair (diff against `b25e481` empty).
+Packet lint and diff check passed; the tracked tree was clean before this note.
+
+The implementer reports full 359-test/build/59-route success through explicit
+Chrome after an Edge startup failure. Root did not rerun those full suites;
+the independent fresh browser capture and targeted tests above are the root's
+verification boundary. Physical-device typing, assistive technology, classroom
+readiness and learning outcomes remain unverified. Owner acceptance is the next
+gate; no completion, push, deployment or Plan 34 source initiation follows from
+technical acceptance alone.
