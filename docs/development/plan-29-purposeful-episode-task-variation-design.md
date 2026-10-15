@@ -1,7 +1,7 @@
 ---
 id: plan-29
 title: Purposeful Episode Task Variation Design
-status: ready
+status: in-progress
 depends_on: [plan-21, plan-25]
 gate: "Owner initiation permits this bounded investigation/design only. Present the concrete task proposal for owner disposition before drafting or implementing its source follow-on. No task, schedule or representation is activated here."
 summary: >-
