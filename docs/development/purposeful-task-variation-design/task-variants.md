@@ -4,6 +4,10 @@
 only; no content records, controls, schedules, routes, or browser captures are
 added by Plan 29.
 
+These standalone focused-task outlines are an optional use of the same two
+responsibilities. The primary integration proposal places them at transform
+entries inside full addition episodes; see the [scale and integration addendum](scale-and-integration-addendum.md).
+
 ## Shared concept and invariants
 
 The concept is amount preservation while changing to finer fractional units.
