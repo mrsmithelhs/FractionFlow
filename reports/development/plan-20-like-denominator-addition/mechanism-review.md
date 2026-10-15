@@ -83,3 +83,14 @@ applicable advisor disposition honestly; no Astra/high-effort substitution.
 
 Source may begin. Commit explicit scoped paths then progress report last; no
 packet status change, push or deployment. Return delivery directly to FF Orch 12+.
+
+## Bounded provenance-path amendment
+
+Date: 2026-10-15. Root observed an already-edited `src/interaction/provenance.js`
+outside the approved path list during shared-tree coordination. After inspecting
+its new-definition-only operate visible-fields branch, approve that path narrowly
+for truthful original-form/already-shared-unit provenance. Preserve all historical
+branches and record this amendment in progress. Root reminded the implementer
+that further paths require approval before editing; this is not blanket permission
+for additional provenance/schema changes. No rollback of this reviewed branch
+is requested.

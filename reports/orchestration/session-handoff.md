@@ -39,6 +39,13 @@ are approved. Equivalent10/14 remains correct; no fabricated conversions/reflect
 Historical semantics intact; scoped shared controls/CSS allowed only as needed.
 Plan 29 draft direction is supported with refinements requested in its
 `draft-review.md`; owner task-contract adoption remains separate.
+Plan 29 delivered dossier `10dbc9d` / report `e27ef22` is technically accepted;
+see its `delivery-review.md`. Status delivered, pending owner disposition of the
+two focused variants, fixed task grammar and proposed three-record target12 goal
+with authored Next mapping. No source-follow-on packet or runtime activation yet.
+Root verified local references and exact examples. Plan 20 remains the active
+source writer; a narrow provenance visible-fields path amendment is recorded in
+its mechanism review. Other concurrent source edits remain unstaged by root.
 
 Owner cost override: Codex implementer advisor consultations and orchestrator
 subagents are restricted to Sol-class at low/medium effort; advisors read-only.
