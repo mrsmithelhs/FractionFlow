@@ -94,3 +94,9 @@ branches and record this amendment in progress. Root reminded the implementer
 that further paths require approval before editing; this is not blanket permission
 for additional provenance/schema changes. No rollback of this reviewed branch
 is requested.
+
+Date: 2026-10-15. Additionally approve `tests/entry-page.test.js` only for live
+registry/entry cardinalities after the approved second goal. Preserve the original
+unlike identity/order/first-Tab contract and existing focus/reset/layout assertions;
+verify the new goal is reachable. Implementer requested this path before editing.
+No further test/runtime scope is implied; record the amendment and validation.
