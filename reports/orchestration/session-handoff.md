@@ -20,6 +20,11 @@ describes support as a lasting useful control without settling other reviewer
 settings, uses a few accessible static examples and accurate current answers/
 progress claims. Schedule between app-source assignments; no deployment or
 privacy-policy/storage change is authorized by drafting it.
+Owner initiated Plan 29 on 2026-10-15 and explicitly authorized bidirectional
+coordination. FF Impl 29 is resolved at `01a14191-07a1-7f61-a9e8-c7bbbaafbec3`;
+root sent the docs-only/shorter-episode brief and set the packet in-progress after
+RUNNABLE preflight. One concept, at most three variants, no runtime activation;
+final owner task-contract disposition remains separate. Plan 20 is still ready.
 
 Owner cost override: Codex implementer advisor consultations and orchestrator
 subagents are restricted to Sol-class at low/medium effort; advisors read-only.
