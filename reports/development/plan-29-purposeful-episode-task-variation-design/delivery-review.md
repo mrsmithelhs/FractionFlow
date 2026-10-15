@@ -86,3 +86,13 @@ committed checks are rerun for receipt. This is prose-only review, with no
 additional consultation or application test run warranted. The owner adoption
 recommendation is now the full-operation contract above, followed by a bounded
 source-packet draft; it is not activation of the earlier standalone-only goal.
+
+## Owner adoption and closure — 2026-10-15
+
+The owner explicitly approved the revised Plan 29 contract after discussing its
+bounded abstraction and scaling purpose. DECISION-042 records adoption of the
+full-operation alignment, including the narrow new-definition schedule extension.
+Plan 29 may close as completed design. Drafting a source follow-on is authorized;
+implementation still requires its own packet and mechanism approval. No source,
+sampler, numerical-bank expansion or measured efficacy is implied. This prose-only
+closure needs no advisor consultation or application test run.

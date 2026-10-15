@@ -1,7 +1,8 @@
 ---
 id: plan-29
 title: Purposeful Episode Task Variation Design
-status: delivered
+status: complete
+resolution: "Owner approved the revised full-operation variation contract on 2026-10-15 (DECISION-042); reusable compact construct and inspect/keep/repair patterns and narrow new-definition schedule extension adopted. Source follow-on drafting permitted; implementation and sampler remain separately gated."
 depends_on: [plan-21, plan-25]
 gate: "Owner initiation permits this bounded investigation/design only. Present the concrete task proposal for owner disposition before drafting or implementing its source follow-on. No task, schedule or representation is activated here."
 summary: >-

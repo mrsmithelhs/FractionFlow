@@ -1112,3 +1112,35 @@ preserving learner control and established task semantics.
 
 **Supersedes / related:** Implements the detailed policy direction of
 DECISION-035/040; Plan 21 delivery review; Plan 26; OQ-23.
+
+### DECISION-042 - Adopt reusable compact full-operation task patterns
+
+**Date:** 2026-10-15
+
+**Decision:** The owner approved the revised Plan 29 contract. Adopt construct
+and inspect/keep/repair as reusable full-operation patterns, with problem identity
+separate from versioned pattern identity. The first compact unlike-addition
+recipes retain encounter acknowledgment, each required transform, one operation
+answer and resolve navigation; supply the target denominator as context and omit
+separate notice, denominator choice and reflection. Do not attribute omitted or
+provided work to the learner. Preserve constructed, confirmed, repaired and
+provided provenance, exact validation, assistance and valid no-op handling.
+
+For new definitions only, extend DECISION-034 to derive the frozen schedule from
+validated problem plus an immutable authored pattern selected before responses.
+Legacy definitions, schedules, numerical bank and replay meaning remain intact.
+Unknown patterns fail closed. A bounded source follow-on must specify versioned
+set integration and prove both patterns across multiple existing problems with
+shared code. Initial assignments are fixed; constrained sampling is future work.
+
+Approval closes the design packet and permits drafting its source follow-on;
+source activation retains a mechanism gate. It does not authorize a universal
+engine, random/adaptive selection, new representations or learner tracking.
+Shorter schedules and reusable contracts do not establish learning or engagement
+benefits. Sequence-level conceptual coverage and learner evaluation remain later
+work. Standalone focused practice is optional, not the primary first integration.
+
+**Rationale:** Purposeful variation should shorten individual episodes and scale
+across a compact problem bank, without bespoke per-problem instructional code.
+
+**Related:** Plan 29 scale-and-integration addendum; DECISION-034/041; Roadmap §28.

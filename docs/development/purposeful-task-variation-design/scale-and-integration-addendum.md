@@ -1,8 +1,10 @@
 # Scale and Integration Addendum
 
-**Disposition:** Bounded Plan 29 owner-intent alignment proposal. The owner has
-not adopted these contracts. No source, schedule, content record, sampler, or
-runtime behavior is authorized here.
+**Disposition:** Owner adopted the revised full-operation contract on 2026-10-15.
+The proposal language below records the adopted design, including the narrow
+new-definition schedule extension. Source activation still requires a bounded
+follow-on packet and its mechanism gate. No sampler or runtime behavior is
+implemented by this design approval.
 
 **Relationship to the earlier proposal:** This addendum makes full-addition
 practice the primary use of the two task responsibilities. The earlier
