@@ -51,3 +51,28 @@ distinction, fixed episode schedule, access/provenance/reset and later phase gat
 After refinements, run docs reference/consistency/lint/diff checks, commit scoped
 dossier then progress report last and return final delivery directly. Plan 29
 remains in-progress pending receipt and technical/owner design review.
+
+## Revised draft disposition
+
+Date: 2026-10-15. Root read the revised three-file dossier. No remaining blocking
+issue was found against this design packet's objective. The no-op response is now
+normalized as unchanged/valid while preserving actual intent; wrong math remains
+distinct. Unknown target templates, finer-unit scope, separate gestures and
+unassisted-in-app terminology resolve the other requested refinements.
+
+The recommended one-goal, target12, three-record slice is concrete enough for
+owner disposition. The authored mapping fixes each task before construction;
+learner-triggered Next selects a fixed item rather than adapting from responses.
+This is a proposal to reuse lifecycle semantics, not approval of new Next grammar
+or task selection. One task per episode remains clear; construction and inspection
+are not chained into a mandatory longer episode.
+
+The repeated source/answer between proposed construction and repair records makes
+the first slice a capability/learning-support demonstration, not unfamiliar-item
+transfer evidence. Existing evidence boundaries cover this; do not describe that
+sequence as independent assessment. No extra bank or research expansion is needed.
+
+Proceed with local references/consistency/lint/diff validation, scoped dossier
+commit and progress report committed last. Then send final delivery for receipt
+and owner policy disposition. No source packet, runtime activation or owner
+adoption is authorized by this review.
