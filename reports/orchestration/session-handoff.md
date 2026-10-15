@@ -24,7 +24,14 @@ Owner initiated Plan 29 on 2026-10-15 and explicitly authorized bidirectional
 coordination. FF Impl 29 is resolved at `01a14191-07a1-7f61-a9e8-c7bbbaafbec3`;
 root sent the docs-only/shorter-episode brief and set the packet in-progress after
 RUNNABLE preflight. One concept, at most three variants, no runtime activation;
-final owner task-contract disposition remains separate. Plan 20 is still ready.
+final owner task-contract disposition remains separate.
+Owner initiated Plan 20 on 2026-10-15 and authorized bidirectional communication.
+FF Impl 20 is resolved at `01a14197-fe35-7291-870d-8737abca6482`; preflight passes
+and status is in-progress. Root sent the coordination brief. Plan 29's writer
+was notified to anchor source claims at a named commit; its dossier/report remain
+disjoint from Plan 20 source/tests/evidence. An early Plan 20 proposal arrived;
+root requested concrete identities/state/provenance, goal mapping, actual 5/14
+input evidence and exact paths before approval. No source approval is recorded.
 
 Owner cost override: Codex implementer advisor consultations and orchestrator
 subagents are restricted to Sol-class at low/medium effort; advisors read-only.

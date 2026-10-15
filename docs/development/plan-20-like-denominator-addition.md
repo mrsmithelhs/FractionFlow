@@ -1,7 +1,7 @@
 ---
 id: plan-20
 title: Like-Denominator Addition and Notice Recovery
-status: ready
+status: in-progress
 depends_on: [plan-11, plan-12, plan-13, plan-14, plan-16, plan-22, plan-26]
 gate: "Requirement 0 mechanism confirmation before source work; technical and owner rendered-screen/agency acceptance; deployment separately authorized."
 summary: >-

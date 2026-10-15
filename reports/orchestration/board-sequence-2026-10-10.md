@@ -13,7 +13,8 @@ owner screenshot acceptance and independent Repair 01 verification. FF Impl 32
 is stopped. Updated 2026-10-11: Plan 19 is complete after technical Repair 02
 verification and owner screen/agency acceptance. Plan 17 is
 complete after independent Repair 02 verification and owner closure on 2026-10-12.
-Plans 20 and 29 are ready, not initiated. Owner episode-length concern brings
+Plans 20 and 29 are owner-initiated in-progress as of 2026-10-15, with bidirectional
+supervision and disjoint source versus design-dossier write scopes. Episode-length concern brings
 Plan 29 design forward alongside the next source assignment; its brief now asks
 for shorter responsibility variants rather than additions to every full episode.
 
@@ -29,10 +30,10 @@ chain. Recheck every older source packet against current code before initiation.
 | 32 — Compact Authored Problem Batch | Shared production authoring across a varied reviewed batch | Complete; technical and owner acceptance satisfied |
 | 19 — Shared-Factor Addition | New denominator relationship, retaining two conversions | Complete; technical and owner acceptance satisfied |
 | 17 — Crossing-One-Whole Addition | Truthful equal-unit multi-whole result stack | Complete; technical and owner acceptance satisfied |
-| 20 — Like-Denominator Addition and Notice Recovery | Zero-renaming episode and same-parts recovery | Ready; next source recommendation, mechanism gate before source |
+| 20 — Like-Denominator Addition and Notice Recovery | Zero-renaming episode and same-parts recovery | In-progress, FF Impl 20; mechanism gate before source |
 | 18 — Nested-Denominator Addition | Identify and rename only the operand needing it, in both orders | After 20; execution of DECISION-037, not unrestricted alternative-unit choice |
 | 23 — Local Development Console | Safe menu hub for local server lifecycle and commands | Independent tooling slot between source assignments; owner initiation and live start/stop acceptance |
-| 29 — Purposeful Episode Task Variation Design | Shorter variants with different learner responsibilities around one concept | Ready; prioritize design alongside Plan 20 or before further family expansion; owner initiation and final task-contract gate |
+| 29 — Purposeful Episode Task Variation Design | Shorter variants with different learner responsibilities around one concept | In-progress, FF Impl 29 alongside Plan 20; docs-only, final owner task-contract gate |
 | 33 — About FractionFlow and Use Guide | Optional entry-linked description, use/support guidance and current privacy facts | Drafted at owner request 2026-10-14; small independent product-content slot between app-source assignments; concise copy/navigation/privacy gate |
 
 All older drafts still serve roadmap objectives. They are not retired simply
