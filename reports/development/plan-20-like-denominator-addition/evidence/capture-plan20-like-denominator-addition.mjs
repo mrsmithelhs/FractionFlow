@@ -134,12 +134,13 @@ try {
       ? '#operate-fraction-denominator-input'
       : '#linear-operate-fraction-denominator-input';
     const beforeAnswer = await page.locator('.fractionflow-app').evaluate((root) => {
-      const active = root.querySelector('.app-visual-view:not([hidden]), .app-linear-view:not([hidden])');
-      const accessibleLabels = [...(active?.querySelectorAll('[aria-label]') || [])]
+      const semanticSurfaces = [...root.querySelectorAll(
+        '.active-beat-prompt, .recovery-feedback, [aria-live], [role="math"], label, [aria-label]',
+      )]
         .filter((element) => element.getAttribute('aria-hidden') !== 'true')
-        .map((element) => element.getAttribute('aria-label'))
+        .map((element) => `${element.textContent || ''} ${element.getAttribute('aria-label') || ''}`)
         .join(' ');
-      return `${root.innerText} ${accessibleLabels}`;
+      return `${root.innerText} ${semanticSurfaces}`;
     });
     const leakMatch = beforeAnswer.match(/5\/7|10\/14|5\/14|common denominator|renam(?:e|ing)/i);
     if (leakMatch) {
@@ -207,12 +208,39 @@ try {
     await context.close();
   }
 
+  const fragmentContext = await browser.newContext({ viewport: { width: 360, height: 740 }, reducedMotion: 'reduce' });
+  const fragmentPage = await fragmentContext.newPage();
+  await fragmentPage.goto(`${baseUrl}#like-denominator-addition`);
+  await fragmentPage.waitForSelector('.app-episode:not([hidden])');
+  const fragmentPrompt = await fragmentPage.locator('.app-visual-view .active-beat-prompt').innerText();
+  if (!fragmentPrompt.includes('Look at these two fractions.')) {
+    throw new Error(`Plan 20 fragment launch did not start at encounter: ${fragmentPrompt}`);
+  }
+  const fragmentChecks = await fragmentPage.evaluate(() => ({
+    activeFragment: decodeURIComponent(location.hash.slice(1)),
+    visibleEntry: !document.querySelector('.app-entry-page').hasAttribute('hidden'),
+    hiddenSkippedControls: document.querySelectorAll(
+      '#decide-common-denominator-input, #transform-num-input-left, #transform-num-input-right, #operate-fraction-numerator-input, #linear-operate-fraction-numerator-input',
+    ).length,
+    reflectionControls: document.querySelectorAll('.app-reflection, .matching-choice-btn').length,
+  }));
+  const fragmentScreenshot = 'plan20-fragment-entry-360x740.png';
+  await fragmentPage.screenshot({ path: path.join(evidenceDir, fragmentScreenshot), fullPage: true });
+  const fragmentLaunch = {
+    urlFragment: 'like-denominator-addition',
+    screenshot: fragmentScreenshot,
+    viewport: { width: 360, height: 740 },
+    prompt: fragmentPrompt,
+    ...fragmentChecks,
+  };
+  await fragmentContext.close();
+
   writeFileSync(
     path.join(evidenceDir, 'browser-measurements.json'),
-    `${JSON.stringify({ plan: 'plan-20', browser: 'Chrome via Playwright', motion: 'prefers-reduced-motion', entryScreens, evidence }, null, 2)}\n`,
+    `${JSON.stringify({ plan: 'plan-20', browser: 'Chrome via Playwright', motion: 'prefers-reduced-motion', entryScreens, evidence, fragmentLaunch }, null, 2)}\n`,
     'utf8',
   );
-  console.log(`Captured ${evidence.length} mounted Plan 20 states across the required mobile viewport heights.`);
+  console.log(`Captured ${evidence.length} workflow states, both narrow entry layouts, and direct fragment launch evidence.`);
 } finally {
   await browser.close();
   server.close();

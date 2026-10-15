@@ -29,6 +29,16 @@ for (const [entry, height] of measurements.entryScreens?.map((row) => [row, row.
     errors.push(`${entry.screenshot} is missing`);
   }
 }
+const fragment = measurements.fragmentLaunch;
+requireEvidence(fragment?.activeFragment === 'like-denominator-addition', 'direct fragment launch must start the same-denominator goal');
+requireEvidence(fragment?.visibleEntry === false, 'fragment launch must bypass the entry screen into an active episode');
+requireEvidence(fragment?.hiddenSkippedControls === 0, 'fragment launch must not mount skipped response controls');
+requireEvidence(fragment?.reflectionControls === 0, 'fragment launch must not mount reflection controls');
+try {
+  requireEvidence(statSync(path.join(evidenceDir, fragment.screenshot)).size > 0, 'fragment launch screenshot must exist and be nonempty');
+} catch {
+  errors.push('fragment launch screenshot is missing');
+}
 for (const [key, pathName, height, support] of expected) {
   const rows = measurements.evidence.filter((row) => row.viewport?.height === height
     && (row.label === 'pre-response absence checks' || row.screenshot?.includes(key)));
@@ -46,6 +56,7 @@ for (const [key, pathName, height, support] of expected) {
     }
     requireEvidence(row.activePath === pathName, `${row.screenshot} must show the ${pathName} learner path`);
     requireEvidence(row.supportLevel === support, `${row.screenshot} must show the selected ${support} profile`);
+    requireEvidence(row.conditionId === 'phase2-bundle-1', `${row.screenshot} must preserve the route-declared condition`);
     requireEvidence(row.hiddenConversionOrDecisionControls === 0, `${row.screenshot} must have no mounted conversion or denominator decision controls`);
     requireEvidence(row.reflectionControls === 0, `${row.screenshot} must have no reflection controls`);
     requireEvidence(row.viewport?.width === 360 && row.viewport?.height === height, `${row.screenshot} must use 360x${height}`);
@@ -76,4 +87,4 @@ if (errors.length) {
   console.error(errors.map((error) => `FAIL: ${error}`).join('\n'));
   process.exit(1);
 }
-console.log('Plan 20 browser evidence verified: required screenshots, viewport bounds, support profiles, learner paths, recovery copy, numeric fields, skipped-control absence, no reflection and completion.');
+console.log('Plan 20 browser evidence verified: narrow entry layouts, direct fragment launch, declared support/condition profiles, both learner paths, recovery, numeric fields, skipped-control absence, no reflection and completion.');

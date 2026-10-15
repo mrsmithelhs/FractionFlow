@@ -661,5 +661,18 @@
       "hiddenConversionOrDecisionControls": 0,
       "reflectionControls": 0
     }
-  ]
+  ],
+  "fragmentLaunch": {
+    "urlFragment": "like-denominator-addition",
+    "screenshot": "plan20-fragment-entry-360x740.png",
+    "viewport": {
+      "width": 360,
+      "height": 740
+    },
+    "prompt": "Look at these two fractions.",
+    "activeFragment": "like-denominator-addition",
+    "visibleEntry": false,
+    "hiddenSkippedControls": 0,
+    "reflectionControls": 0
+  }
 }

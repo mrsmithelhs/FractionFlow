@@ -240,6 +240,7 @@ describe('Plan 14 Reachable Behavior Route Contract & Matrix Schema', () => {
       expect(actionText).toContain('Both bars have 7 equal parts. Those parts are the same size.');
       expect(actionText).toContain('The denominator stays the same. Add only the top numbers.');
       expect(actionText).toContain('10/14');
+      expect(actionText).toContain('#decide-common-denominator-input');
       expect(actionText).toContain('#transform-num-input-left');
       expect(actionText).toContain('.app-reflection');
       expect(actions.some((action) => action.method === 'assertFocused' && action.target === '.app-episode')).toBe(true);
