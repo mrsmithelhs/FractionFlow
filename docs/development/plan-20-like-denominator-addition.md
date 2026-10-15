@@ -1,7 +1,8 @@
 ---
 id: plan-20
 title: Like-Denominator Addition and Notice Recovery
-status: delivered
+status: complete
+resolution: "Owner accepted the rendered screens on 2026-10-15 after Repair 01 technical acceptance (37fd528/27cd929; review bcb6935). Like-denominator addition, truthful local-help provenance, exact response classification, fresh lifecycle and bounded access evidence accepted; no deployment or efficacy claim."
 depends_on: [plan-11, plan-12, plan-13, plan-14, plan-16, plan-22, plan-26]
 gate: "Requirement 0 mechanism confirmation before source work; technical and owner rendered-screen/agency acceptance; deployment separately authorized."
 summary: >-

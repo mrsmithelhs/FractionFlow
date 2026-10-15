@@ -1,11 +1,9 @@
 ---
 id: plan-34
 title: Reusable Task Patterns in Full Addition Episodes
-status: draft
+status: in-progress
 depends_on: [plan-20, plan-25, plan-26, plan-29, plan-32]
 gate: "Owner initiation; Requirement 0 approves versioned pattern/schedule, live-set integration, access/help/applicability and exact paths before source changes. Technical review and owner rendered-screen/agency acceptance before completion; deployment separate."
-superseded_by: null
-resolution: null
 summary: >-
   Implement two compact reusable full-addition patterns: construct equivalent
   operands, or inspect/keep/repair authored candidates before adding. Reuse
