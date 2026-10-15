@@ -32,42 +32,53 @@ operation rather than isolated as the only learner goal.
 The current canonical unlike-addend route for `2/3 + 1/4`, target denominator
 12, has the frozen shape `encounter → notice → decide → transform-left →
 transform-right → operate → resolve → reflect` when reflection is enabled.
-`notice`, `decide`, both required operand renamings, and the final operation
-result are learner responsibilities; reflection is required only by a
-reflection-enabled definition.
+Encounter acknowledgment, `notice`, `decide`, both required operand renamings,
+the `operate` response, the separate `resolve` response, and reflection when
+enabled are learner responsibilities.
 
-On this fixture, the current path asks the learner to choose `12`, enter the
-equivalent forms `8/12` and `3/12`, add their numerators, resolve `11/12`, and
-complete the definition's reflection when enabled.
+On this fixture, the current path asks the learner to acknowledge the displayed
+addends, answer the unit notice, choose `12`, enter `8/12` and `3/12`, submit an
+operation result, submit the final-form resolution separately, and complete the
+definition's reflection when enabled.
 
-The proposed compact recipes retain `encounter`, every transform entry required
-by the problem, `operate`, and `resolve`. They omit the learner `notice`,
-common-denominator `decide`, and separate `reflect` entries. The authored item
-supplies its target denominator, shown as context such as “Use twelfths”; that
-label is **display-only**, with no required acknowledgment. This deliberately
-does not assess denominator selection or an explicit verbal statement of the
-unit relationship. At each required transform entry, the construct pattern
-retains form generation while the inspect pattern replaces that response with
-candidate evaluation and (when needed) repair. Both retain the two
-equivalent-form responsibilities, their use in the sum, and the result response.
+The proposed compact recipes retain the required encounter acknowledgment,
+every transform entry required by the problem, `operate`, and `resolve`. They
+omit the learner `notice`, common-denominator `decide`, and separate `reflect`
+entries. The authored item supplies its target denominator, shown as context
+such as “Use twelfths”; that label is **display-only** and has no separate
+acknowledgment. The encounter acknowledgment is still mandatory. This recipe
+deliberately does not assess denominator selection or an explicit verbal
+statement of the unit relationship. At each required transform entry, the
+construct pattern retains form generation while the inspect pattern replaces
+that response with candidate evaluation and (when needed) repair.
+
+At `operate`, the learner submits the complete addition result once (for example
+`11/12` after the two accepted forms above), and exact math classifies that one
+submission. `resolve` then displays the accepted exact final form and finishes
+or offers continuation; it does not ask the learner to calculate or enter the
+sum again. Any finish/continue control is navigation, not another math response.
 
 | Episode responsibility | Construct pattern | Inspect/keep/repair pattern |
 |---|---|---|
-| Display-only context | Show `2/3 + 1/4` and “Use twelfths.” Do not request a notice or target-denominator choice. | Same. The supplied target is not itself a learner response. |
+| Encounter | Learner acknowledges the displayed addition once. This remains mandatory and is separate from unit notice. | Same. |
+| Display-only context | Show `2/3 + 1/4` and “Use twelfths.” Do not request a notice or target-denominator choice for this recipe. | Same. The supplied target is not itself a learner response or acknowledgment. |
 | Left transform entry | Learner constructs `2/3 = 8/12`. | Show an authored candidate. Example: keep `8/12` if exact validation confirms it; otherwise repair the numerator. Do not show validity before the action. |
 | Right transform entry | Learner constructs `1/4 = 3/12`. | Show an authored candidate. Example: `2/12` is false for `1/4`; learner changes the top to `3`. Keep/repair is one fixed task entry, although repair takes an action plus a numeric entry. |
-| Addition | Learner operates on the accepted forms: `8/12 + 3/12`. | Same; only the accepted, exactly validated forms reach the operation. |
-| Resolve | Learner supplies `11/12`. | Same. |
+| Addition (`operate`) | Learner submits the complete sum once from the accepted forms: `8/12 + 3/12 = 11/12`. This replaces the current separate operation-result plus resolution submissions. | Same; only the accepted, exactly validated forms reach the operation. |
+| Resolve | Show the accepted `11/12` and finish or offer continuation. No second calculation or numeric entry. | Same; resolve is not another keep/repair or sum response. |
 | Omitted | No separate notice, denominator-choice, or generic equivalence-reflection response in this compact recipe. | Same omissions; do not append a second “is it equivalent?” question after keep/repair. |
 
-Both recipes have five scheduled entries for this two-renaming problem. The
-current reflection-enabled route has eight. This is a reduction in scheduled
-responsibilities, not a claim that every learner will use fewer physical
-gestures: an inspection repair includes an action and a number entry. The
-remaining work is meaningful: construction generates both quantities the
-learner adds; inspection judges or repairs both quantities and then uses the
-accepted forms in the same addition. The compact recipe does not claim practice
-in choosing a common denominator or measured learning benefit.
+Both recipes have five scheduled entries for this two-renaming problem,
+including the required encounter acknowledgment and the non-response resolve
+view. The current reflection-enabled route has eight; without reflection, the
+current route has seven. The compact recipe's single `operate` submission
+replaces the current separate operation-result and resolution submissions. This
+is a reduction in scheduled responsibilities, not a claim that every learner
+will use fewer physical gestures: an inspection repair includes an action and a
+number entry. The remaining work is meaningful: construction generates both
+quantities the learner adds; inspection judges or repairs both quantities and
+then uses the accepted forms in the same addition. The compact recipe does not
+claim practice in choosing a common denominator or measured learning benefit.
 
 When a problem has a side already in the selected target unit, that operand is
 shown from the problem instance and used as given. It has no transform entry,
@@ -142,6 +153,11 @@ The explicit structural proposal is:
   versioned pattern. The two proposed compact patterns use the fixed template
   `encounter → transform entries for each problem-required renaming side →
   operate → resolve`, with no `notice`, `decide`, or `reflect` entry.
+- The compact recipe keeps the required `encounter` acknowledgment. Showing the
+  authored target denominator is display-only and requires no separate notice
+  or acknowledgment. `operate` accepts the one complete learner sum; `resolve`
+  projects that accepted exact result and completes/continues without a second
+  numeric response.
 - Freeze the resulting schedule before the first learner response. A response,
   retry recovery, help request, or display-view change cannot add, remove, reorder,
   or select a pattern. Reject unknown pattern IDs rather than falling back to the
@@ -166,9 +182,20 @@ The accepted forms reach the operation only after exact validation.
 For the first source increment, author a fixed mapping from each selected
 existing item identity/revision to one pattern ID/revision and any inspect
 candidate-data revision. The assignment is fixed before the schedule is built.
-Retry preserves that pair and resets episode work. Current learner-triggered
-Next retains DECISION-041's vetted-identity lifecycle; this addendum does not
-change Next into a random selector or add a generated fallback.
+One concrete proposed learner-facing mapping is canonical `2/3 + 1/4` to
+construct, Plan 26 `1/2 + 1/3` to inspect/keep/repair, and Plan 32 `1/3 + 1/4`
+to inspect/keep/repair. This is a proposal, not an adopted assignment. The
+pattern/instance matrix above is compatibility evidence across multiple pairs;
+it does not mean learners receive duplicate instances under all six
+combinations.
+
+Introducing these assignments requires an explicit versioned definition and
+practice-set association that references the existing numeric item identities;
+do not relabel those items or reinterpret their legacy definition/replay
+meaning. Keep the existing item set and replay available. Retry preserves the
+new item/pattern pair and resets episode work. Current learner-triggered Next
+retains DECISION-041's vetted-identity lifecycle; this addendum does not change
+Next into a random selector or add a generated fallback.
 
 Future constrained sampling is a separate policy proposal. A sampler could
 choose from a finite reviewed set of compatible `(problem identity, pattern
@@ -195,7 +222,7 @@ also separate; it does not fabricate a learner step.
 |---|---|---|
 | Construct pattern | Source operand and target unit come from the pinned problem item; expected equivalent form is withheld until acceptance. | Record the numerator actually entered, response entry, exact classification, recovery attempts and any requested help. Mark the accepted form learner-constructed. |
 | Inspect, valid candidate | Candidate comes from pinned authored task data and is shown as an unmarked stimulus. | Record the explicit `keep` action and that the candidate was learner-confirmed. The candidate's origin remains authored, not learner-created. |
-| Inspect, false candidate | False candidate comes from pinned authored task data and is shown without a validity cue. | Record the submitted action and any correction. If repaired, preserve the original candidate and mark the accepted form learner-repaired, with exact classification and help provenance. |
+| Inspect, false candidate | False candidate comes from pinned authored task data and is shown without a validity cue. | Record the submitted action and any correction. If repaired, preserve the original candidate and mark the accepted form learner-repaired, with exact classification and help provenance. If the learner keeps it, record the keep and failed classification; do not fabricate a repair. |
 | Operand already in target units | The original operand is supplied by the pinned problem item. | No construct, keep, or repair action is attributed to the learner. The form is used as provided after exact validation. |
 
 A valid candidate with a same-numerator `change-top` remains mathematically

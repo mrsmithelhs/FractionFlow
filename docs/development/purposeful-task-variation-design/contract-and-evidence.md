@@ -49,7 +49,7 @@ not been measured.
 | Assistance/provenance | Plan 25 ties help requests and multiplier attempts to an active transform schedule entry/side; help use is assisted participation. | Keep optional support independent from item/pattern selection. Any reuse needs an approved identity-aware adaptation bound to the active new-pattern entry. Report no requested app help only as unassisted-in-app, not independent. Preserve candidate origin and actual learner action: constructed, explicitly kept, repaired, or supplied with no learner response. |
 | Scene and answer withholding | Current scene projections and both renderer paths gate future beat values; current visual and linear paths consume the same projected state. | Define separate stimulus versus answer fields. Variant 2 intentionally presents the proposed candidate, but not its validity, expected action, or correction. In both variants do not project a hidden answer or completed target before response acceptance. |
 | Render/access | `src/render/beat-container.js` and `src/render/linear-path.js` handle the current beat vocabulary; existing parity coverage is for current task behavior. | Both paths need an explicit task-specific projection/control/recovery, labeled conditional numeric field, focus behavior and reset evidence. Bar units must preserve whole-scale; linear access remains a meaningful alternative. Do not claim physical device, assistive technology, or AT behavior from current emulated/browser evidence. |
-| Identity/replay | `src/interaction/replay.js` pins content reconstruction identity, definition ID/revision, support, condition and learner intents. DECISION-041 also requires authored task-data identity to be pinned. | Pin problem/item identity, selected pattern ID/revision, definition/recipe revision, target denominator and inspect-candidate task-data revision before construction. Preserve old replay meanings. Replay submitted construct/keep/repair action, candidate origin, exact classification, help and recovery. |
+| Identity/replay | `src/interaction/replay.js` pins content reconstruction identity, definition ID/revision, support, condition and learner intents. DECISION-041 also requires authored task-data identity to be pinned. | Pin problem/item identity, versioned pattern-set/assignment identity, selected pattern ID/revision, definition/recipe revision, target denominator and inspect-candidate task-data revision before construction. Preserve old replay meanings. Replay submitted construct/keep/repair action, candidate origin, exact classification, help and recovery. |
 | Retry/Next/selection | DECISION-041 fixes Retry/Next/reset/exhaustion behavior for the initial authored addition set. | Initial mapping from existing item identity to one pattern is fixed and authored before construction. Retry keeps the pair with clean episode state; current Next remains the vetted-identity lifecycle. A future constrained sampler is a separate policy that selects from compatible reviewed pairs and pins the result. It is not implemented or silently folded into Next. Future mastery-conditioned selection remains a separate research/owner gate, not universally prohibited by this proposal. |
 
 ## Optional standalone focused-task contracts
@@ -138,8 +138,11 @@ Please dispose of these policy proposals before a source packet is drafted:
 2. **Short full-operation recipe:** accept or revise the compact recipe that
    retains each required operand renaming, operation, and result, while omitting
    notice, denominator-choice, and separate reflection responses. The target
-   denominator is authored and displayed as context. State explicitly that this
-   recipe does not measure learner selection of a common denominator.
+   denominator is authored and displayed as context, with no target acknowledgment;
+   encounter acknowledgment remains mandatory. The learner submits the complete
+   sum once at `operate`; `resolve` displays the accepted form and finishes or
+   continues without a second numeric entry. State explicitly that this recipe
+   does not measure learner selection of a common denominator.
 3. **Structural amendment:** accept or revise the proposed narrow DECISION-034
    amendment: legacy definitions/replay retain the exact problem-derived
    schedule; only new definitions with a fixed, versioned authored pattern may
@@ -150,7 +153,10 @@ Please dispose of these policy proposals before a source packet is drafted:
    numeric content separate from the reusable patterns. A bounded source
    prototype should exercise both patterns across multiple existing instances
    without per-fixture code branches; inspect candidates are separately authored
-   task data and require exact validation.
+   task data and require exact validation. A proposed learner-facing first
+   mapping is canonical to construct, Plan 26 and Plan 32 to inspect; all other
+   pattern/item combinations in the matrix are compatibility evidence, not
+   duplicate learner items.
 5. **Response/provenance:** approve unmarked inspect stimuli, exact candidate
    truth, keep/repair action and recovery. Preserve constructed, learner-kept,
    learner-repaired, and item-provided form origins separately. Do not attribute

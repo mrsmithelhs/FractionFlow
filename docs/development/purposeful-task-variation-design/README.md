@@ -44,11 +44,14 @@ independent work.
 
 For the proposed compact full-operation recipes, the target denominator is
 supplied in the authored item and displayed as context, with no required
-acknowledgment. The recipes omit the notice, denominator-choice, and separate
-reflection entries while retaining each required renaming, the actual addition,
-and its result. The resulting practice does not assess denominator selection or
-explicit unit-noticing. These are new recipes that require structural disposition;
-they do not change any legacy addition schedule or alter DECISION-039.
+target acknowledgment. The encounter acknowledgment remains mandatory. The
+recipes omit the notice, denominator-choice, and separate reflection entries
+while retaining each required renaming and the actual addition. The learner
+submits the full sum once at `operate`; `resolve` displays the accepted result
+and finishes/continues without another number entry. The resulting practice does
+not assess denominator selection or explicit unit-noticing. These are new
+recipes that require structural disposition; they do not change any legacy
+addition schedule or alter DECISION-039.
 
 The earlier standalone focused tasks remain an optional use: they can practice
 one amount-preserving renaming without an operation. Their earlier target-12
@@ -78,10 +81,13 @@ admitted unlike-addition instances at target denominator 12: canonical
 patterns are compatible with all three; inspection requires newly authored,
 exactly checked candidate forms, not new numerical problem records. A focused
 source prototype should exercise each pattern across multiple existing item
-identities without fixture-specific source branches. Assign the learner-facing
-item-to-pattern mapping deterministically before each episode. This bounded
-slice demonstrates pattern reuse and guided practice, not efficacy, transfer,
-independence, or broad bank coverage.
+identities without fixture-specific source branches. One proposed fixed
+learner-facing mapping is canonical `2/3 + 1/4` to construct and Plan 26
+`1/2 + 1/3` plus Plan 32 `1/3 + 1/4` to inspect/keep/repair. The pattern/item
+matrix is compatibility evidence, not a recommendation to repeat each problem
+under both patterns. Assign each learner-facing item/pattern pair before the
+episode. This bounded slice demonstrates pattern reuse and guided practice, not
+efficacy, transfer, independence, or broad bank coverage.
 
 The earlier standalone three-record goal remains documented in the optional
 focused-task contracts in [contract-and-evidence.md](contract-and-evidence.md).
