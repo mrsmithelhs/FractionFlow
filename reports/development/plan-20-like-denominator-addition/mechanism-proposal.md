@@ -95,8 +95,13 @@ The operation classifier will accept the validated original operand forms for th
 definition and compare the learner's complete submitted fraction to the exact
 addition result through the existing math core. For the regular renamed route, it
 will continue to receive the learner-established target and submitted equivalent
-forms. `handleResolve` will validate against the same effective unit and the
-accepted operation result. Resolution then reaches `status: resolved` directly
+forms. Mathematical equivalence remains authoritative: for example, `10/14` is a
+valid equivalent result and must be accepted as unsimplified, while `5/14` is not
+equivalent and must remain in recovery. A denominator that differs from the
+established unit may be reflected in existing classification reasons, but it must
+not turn an equivalent amount into a wrong answer. `handleResolve` will validate
+against the same exact math result and accepted operation result. Resolution then
+reaches `status: resolved` directly
 because the definition omits reflection. The episode definition and fixture
 identities are replayed as usual; no replay-envelope or global schema migration is
 proposed. Tests will check definition mismatch, original-form identity, exported
