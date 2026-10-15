@@ -485,11 +485,13 @@ export function createFractionFlowApp({
           }
         } else if (state?.episodeDefinition.id === PLAN20_LIKE_DENOMINATOR_EPISODE_DEFINITION.id
           && state.beat === 'operate') {
-          activityNotice = activityNotice === STRINGS.operate.likeAdditionHelp
-            ? ''
-            : STRINGS.operate.likeAdditionHelp;
-          render();
-          helpButton.focus();
+          if (activityNotice === STRINGS.operate.likeAdditionHelp) {
+            activityNotice = '';
+            render();
+            helpButton.focus();
+          } else {
+            dispatchAction({ type: 'request-task-help' });
+          }
         } else {
           dispatchAction({ type: 'request-help' });
         }
@@ -644,6 +646,8 @@ export function createFractionFlowApp({
       }
     }
     resetEpisodeUiState();
+    supportNotice.textContent = '';
+    helpCue.textContent = '';
     navigationNotice.textContent = '';
     setHidden(navigationNotice, true);
     setHidden(nextProblemButton, true);
@@ -1006,6 +1010,12 @@ export function createFractionFlowApp({
           isReplaying = false;
           activityNotice = STRINGS.app.noReplayYet;
         }
+      } else if (action.type === 'request-task-help') {
+        isReplaying = false;
+        activityNotice = state.episodeDefinition.id === PLAN20_LIKE_DENOMINATOR_EPISODE_DEFINITION.id
+          && state.beat === 'operate'
+          ? STRINGS.operate.likeAdditionHelp
+          : '';
       } else {
         isReplaying = false;
         const justResolved = !wasResolved && state.status === 'resolved';
@@ -1028,6 +1038,9 @@ export function createFractionFlowApp({
       render();
       if (focusExhaustion) focusNavigationNotice();
       if (focusSingleItemCompletion) focusEpisodeLandmark();
+      if (action.type === 'request-task-help'
+        && state.episodeDefinition.id === PLAN20_LIKE_DENOMINATOR_EPISODE_DEFINITION.id
+        && state.beat === 'operate') helpButton.focus();
       if (action.type === 'submit-operation-result'
         && state.lastRecovery?.beat === 'operate') getVisibleOperationInput()?.focus();
       if (action.type === 'submit-transform-help-multiplier') getVisibleTransformInput()?.focus();

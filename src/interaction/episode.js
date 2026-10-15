@@ -832,15 +832,21 @@ function assertIntentAllowedAtBeat(state, intent) {
     );
   }
   if (['request-task-help', 'submit-transform-help-multiplier'].includes(intent.type)) {
+    const plan20OperationHelp = intent.type === 'request-task-help'
+      && isPlan20Definition(state.episodeDefinition)
+      && state.beat === 'operate';
     if (state.episodeDefinition.revision !== '3'
       && !(state.episodeDefinition.id === PLAN17_CROSSING_EPISODE_DEFINITION.id
-        && state.episodeDefinition.revision === PLAN17_CROSSING_EPISODE_DEFINITION.revision)) {
+        && state.episodeDefinition.revision === PLAN17_CROSSING_EPISODE_DEFINITION.revision)
+      && !plan20OperationHelp) {
       throw new EpisodeIntentError('UNEXPECTED_INTENT', `${intent.type} requires episode definition revision 3`);
     }
     if (intent.type === 'submit-transform-help-multiplier' && state.beat !== 'transform') {
       throw new EpisodeIntentError('UNEXPECTED_INTENT', 'transform help multiplier is valid only during a transform');
     }
-    if (intent.type === 'request-task-help' && !['decide', 'transform'].includes(state.beat)) {
+    if (intent.type === 'request-task-help'
+      && !['decide', 'transform'].includes(state.beat)
+      && !plan20OperationHelp) {
       throw new EpisodeIntentError('UNEXPECTED_INTENT', 'task help is available only for denominator choice or conversion');
     }
   }

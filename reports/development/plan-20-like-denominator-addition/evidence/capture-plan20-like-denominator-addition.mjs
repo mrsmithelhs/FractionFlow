@@ -13,7 +13,118 @@ await new Promise((resolve) => server.listen(0, '127.0.0.1', resolve));
 const baseUrl = `http://127.0.0.1:${server.address().port}/FractionFlow/`;
 const browser = await chromium.launch({ channel: 'chrome', headless: true });
 
+const FORBIDDEN_PRE_RESPONSE_COPY = /5\/7|10\/14|5\/14|common denominator|renam(?:e|ing)/i;
+
+async function assertNoPrematureContent(page, label) {
+  const scanned = await page.locator('.fractionflow-app').evaluate((root) => {
+    const elements = [...root.querySelectorAll('*')];
+    const text = root.textContent || '';
+    const accessible = elements.flatMap((element) => (
+      ['aria-label', 'aria-description', 'aria-roledescription', 'aria-valuetext', 'aria-placeholder', 'title', 'alt', 'placeholder']
+        .map((attribute) => element.getAttribute(attribute))
+        .filter(Boolean)
+    ));
+    const values = [...root.querySelectorAll('input, textarea, select')]
+      .map((element) => element.value)
+      .filter(Boolean);
+    return {
+      combined: `${text} ${accessible.join(' ')} ${values.join(' ')}`,
+      mountedTextElements: elements.filter((element) => [...element.childNodes]
+        .some((node) => node.nodeType === Node.TEXT_NODE && node.textContent.trim())).length,
+      accessibleTextAttributes: accessible.length,
+      nonemptyControlValues: values.length,
+    };
+  });
+  const leakMatch = scanned.combined.match(FORBIDDEN_PRE_RESPONSE_COPY);
+  if (leakMatch) {
+    const leakIndex = leakMatch.index;
+    throw new Error(`PRE_RESPONSE_ABSENCE_ASSERTION: ${label}: prohibited answer or skipped-task copy was present: ${scanned.combined.slice(Math.max(0, leakIndex - 120), leakIndex + 140)}`);
+  }
+  return {
+    passed: true,
+    mountedTextElements: scanned.mountedTextElements,
+    accessibleTextAttributes: scanned.accessibleTextAttributes,
+  };
+}
+
+async function verifyFailFirstAbsenceSeeds(page) {
+  const seeds = [
+    { kind: 'stale-conversion-content', text: 'Convert both fractions to a common denominator before adding.' },
+    { kind: 'unlike-denominator-recovery-copy', text: 'The denominators are different, so rename both fractions before adding.' },
+    { kind: 'accessible-label', text: 'Try 5/14 after converting the fractions.' },
+  ];
+  const rejected = [];
+  for (const seed of seeds) {
+    const id = `plan20-repair-seed-${seed.kind}`;
+    await page.locator('.fractionflow-app').evaluate((root, value) => {
+      const node = document.createElement(value.kind === 'accessible-label' ? 'button' : 'span');
+      node.id = value.id;
+      node.hidden = true;
+      if (value.kind === 'accessible-label') node.setAttribute('aria-label', value.text);
+      else node.textContent = value.text;
+      root.appendChild(node);
+    }, { ...seed, id });
+    let caughtAtIntendedAssertion = false;
+    try {
+      await assertNoPrematureContent(page, `${seed.kind} seed`);
+    } catch (error) {
+      caughtAtIntendedAssertion = error.message.startsWith('PRE_RESPONSE_ABSENCE_ASSERTION:');
+      if (!caughtAtIntendedAssertion) throw error;
+    } finally {
+      await page.locator(`#${id}`).evaluate((node) => node.remove());
+    }
+    if (!caughtAtIntendedAssertion) {
+      throw new Error(`failing-first ${seed.kind} seed was not rejected at the absence assertion`);
+    }
+    rejected.push({ kind: seed.kind, rejectedAt: 'pre-response absence assertion' });
+  }
+  const restored = await assertNoPrematureContent(page, 'restored clean app');
+  return { rejected, restoredCleanRun: restored.passed, ...restored };
+}
+
+async function measureOrdinaryScrollReachability(page) {
+  const targets = [
+    { name: 'question', selector: '.app-visual-view:not([hidden]) .active-beat-prompt, .app-linear-view:not([hidden]) .active-beat-prompt' },
+    { name: 'task-controls', selector: '.app-visual-view:not([hidden]) .active-beat-controls, .app-linear-view:not([hidden]) .active-beat-controls' },
+    { name: 'help-guidance', selector: '.app-visual-view:not([hidden]) .active-denominator-help-cue, .app-linear-view:not([hidden]) .active-denominator-help-cue' },
+    { name: 'return-control', selector: '.app-episode .app-return-button' },
+  ];
+  const results = [];
+  for (const target of targets) {
+    const locator = page.locator(target.selector).first();
+    if (await locator.count() === 0 || !await locator.isVisible()) continue;
+    await page.evaluate(() => window.scrollTo(0, 0));
+    const startY = await page.evaluate(() => window.scrollY);
+    for (let attempt = 0; attempt < 12; attempt += 1) {
+      const box = await locator.evaluate((element) => {
+        const rect = element.getBoundingClientRect();
+        return { top: rect.top, bottom: rect.bottom, height: rect.height };
+      });
+      if (box.height > 0 && box.top >= 0 && box.bottom <= page.viewportSize().height) break;
+      await page.mouse.move(Math.max(2, page.viewportSize().width - 12), Math.max(2, page.viewportSize().height - 12));
+      await page.mouse.wheel(0, Math.max(120, box.bottom - page.viewportSize().height + 60));
+      await page.waitForTimeout(30);
+    }
+    const result = await locator.evaluate((element) => {
+      const rect = element.getBoundingClientRect();
+      return {
+        top: rect.top,
+        bottom: rect.bottom,
+        height: rect.height,
+        viewportHeight: window.innerHeight,
+        scrollY: window.scrollY,
+        scrollHeight: document.documentElement.scrollHeight,
+      };
+    });
+    const reachable = result.height > 0 && result.top >= 0 && result.bottom <= result.viewportHeight;
+    if (!reachable) throw new Error(`ordinary-scroll reachability failed for ${target.name}: ${JSON.stringify(result)}`);
+    results.push({ name: target.name, startY, ...result, fullyVisibleAfterOrdinaryScroll: reachable, reachable });
+  }
+  return results;
+}
+
 async function capture(page, filename, label) {
+  const reachability = await measureOrdinaryScrollReachability(page);
   await page.screenshot({ path: path.join(evidenceDir, filename), fullPage: true });
   const data = await page.evaluate(() => {
     const box = (element) => {
@@ -26,6 +137,7 @@ async function capture(page, filename, label) {
     const operationFields = [...(active?.querySelectorAll('.control-fraction-input') || [])];
     return {
       viewport: { width: window.innerWidth, height: window.innerHeight },
+      scrollY: window.scrollY,
       document: { scrollWidth: document.documentElement.scrollWidth, scrollHeight: document.documentElement.scrollHeight },
       app: { x: app.getBoundingClientRect().x, y: app.getBoundingClientRect().y, width: app.getBoundingClientRect().width, height: app.getBoundingClientRect().height, scrollWidth: app.scrollWidth, scrollHeight: app.scrollHeight },
       activePath: active?.classList.contains('app-linear-view') ? 'linear' : 'visual',
@@ -52,7 +164,21 @@ async function capture(page, filename, label) {
       reflectionControls: [...document.querySelectorAll('.app-reflection, .matching-choice-btn')].length,
     };
   });
-  return { label, screenshot: filename, ...data };
+  return { label, screenshot: filename, reachability, ...data };
+}
+
+async function tabUntilFocused(page, locator, label, trace) {
+  for (let index = 0; index < 40; index += 1) {
+    await page.keyboard.press('Tab');
+    const active = await locator.evaluate((element) => document.activeElement === element);
+    const activeDescription = await page.evaluate(() => {
+      const element = document.activeElement;
+      return element ? `${element.tagName.toLowerCase()}${element.id ? `#${element.id}` : ''}.${[...element.classList].join('.')}` : 'none';
+    });
+    trace.push(activeDescription);
+    if (active) return;
+  }
+  throw new Error(`page keyboard navigation did not reach ${label}; focused sequence: ${trace.join(' -> ')}`);
 }
 
 async function begin(page, { support, linear }) {
@@ -133,32 +259,26 @@ try {
     const denominator = surface === '.app-visual-view'
       ? '#operate-fraction-denominator-input'
       : '#linear-operate-fraction-denominator-input';
-    const beforeAnswer = await page.locator('.fractionflow-app').evaluate((root) => {
-      const semanticSurfaces = [...root.querySelectorAll(
-        '.active-beat-prompt, .recovery-feedback, [aria-live], [role="math"], label, [aria-label]',
-      )]
-        .filter((element) => element.getAttribute('aria-hidden') !== 'true')
-        .map((element) => `${element.textContent || ''} ${element.getAttribute('aria-label') || ''}`)
-        .join(' ');
-      return `${root.innerText} ${semanticSurfaces}`;
-    });
-    const leakMatch = beforeAnswer.match(/5\/7|10\/14|5\/14|common denominator|renam(?:e|ing)/i);
-    if (leakMatch) {
-      const leakIndex = leakMatch.index;
-      throw new Error(`${run.key}: a final answer or skipped unlike-denominator task leaked before the learner response: ${beforeAnswer.slice(Math.max(0, leakIndex - 120), leakIndex + 140)}`);
-    }
+    const failFirstAbsence = await verifyFailFirstAbsenceSeeds(page);
     evidence.push({
       label: 'pre-response absence checks',
       viewport: { width: run.width, height: run.height },
       activePath: run.linear ? 'linear' : 'visual',
       skippedControlsAbsent: true,
       answerAndUnlikeTaskTextAbsent: true,
+      scanSurfaces: ['all mounted textContent including hidden descendants', 'aria-label', 'aria-description', 'aria-valuetext', 'title', 'alt', 'placeholder'],
+      absenceScan: failFirstAbsence,
       reflectionControls: await page.locator('.app-reflection, .matching-choice-btn').count(),
     });
     for (const input of [numerator, denominator]) {
       if (await page.locator(input).count() !== 1) throw new Error(`${run.key}: expected one mounted field ${input}`);
     }
+    const numericEntry = [];
+    await page.locator(numerator).tap();
+    numericEntry.push({ field: 'numerator', action: 'tap' });
     await page.locator(numerator).fill('5');
+    await page.locator(denominator).tap();
+    numericEntry.push({ field: 'denominator', action: 'tap' });
     await page.locator(denominator).fill('14');
     await activate(page.locator(`${surface} .control-submit-btn`));
     if (await page.locator(numerator).inputValue() !== '5'
@@ -169,7 +289,13 @@ try {
     if (arithmeticRecovery !== 'The denominator stays the same. Add only the top numbers.') {
       throw new Error(`${run.key}: unexpected arithmetic recovery: ${arithmeticRecovery}`);
     }
-    evidence.push(await capture(page, `plan20-${run.key}-5-over-14-recovery.png`, '5/14 arithmetic recovery'));
+    const arithmeticCapture = await capture(page, `plan20-${run.key}-5-over-14-recovery.png`, '5/14 arithmetic recovery');
+    arithmeticCapture.numericEntry = {
+      fieldActions: numericEntry,
+      textEntry: 'Playwright locator.fill after each field tap in touch context',
+      physicalDeviceTyping: 'not tested',
+    };
+    evidence.push(arithmeticCapture);
 
     await activate(page.locator(`${surface} .active-beat-controls .app-secondary-button`));
     const helpCue = await page.locator(`${surface} .active-denominator-help-cue`).innerText();
@@ -179,15 +305,39 @@ try {
     evidence.push(await capture(page, `plan20-${run.key}-local-help.png`, 'visible local operation help'));
     await activate(page.locator(`${surface} .active-beat-controls .app-secondary-button`));
 
+    let keyboardNavigation = null;
     if (run.linear) {
+      await page.locator(numerator).tap();
+      numericEntry.push({ field: 'numerator', action: 'tap', phase: 'before equivalent-response entry' });
       await page.locator(numerator).fill('10');
+      await page.locator(denominator).tap();
+      numericEntry.push({ field: 'denominator', action: 'tap', phase: 'before equivalent-response entry' });
       await page.locator(denominator).fill('14');
       await activate(page.locator(`${surface} .control-submit-btn`));
     } else {
-      await page.locator(numerator).press('Control+A');
-      await page.locator(numerator).pressSequentially('10');
-      await page.locator(denominator).press('Tab');
-      await page.locator(`${surface} .control-submit-btn`).press('Enter');
+      const keyboardTrace = [];
+      const helpButton = page.locator(`${surface} .active-beat-controls .app-secondary-button`);
+      const focusBeforeKeyboard = await page.evaluate(() => document.activeElement?.id || document.activeElement?.className || 'none');
+      if (!await helpButton.evaluate((element) => element === document.activeElement)) {
+        throw new Error(`${run.key}: help close did not leave focus on its control before keyboard correction (${focusBeforeKeyboard})`);
+      }
+      const numeratorField = page.locator(numerator);
+      await tabUntilFocused(page, numeratorField, 'numerator input', keyboardTrace);
+      await page.keyboard.press('Control+A');
+      await page.keyboard.type('10');
+      if (await numeratorField.inputValue() !== '10') throw new Error(`${run.key}: page keyboard did not correct the numerator`);
+      const denominatorField = page.locator(denominator);
+      await tabUntilFocused(page, denominatorField, 'denominator input', keyboardTrace);
+      if (await denominatorField.inputValue() !== '14') throw new Error(`${run.key}: keyboard correction changed the preserved denominator`);
+      const submitButton = page.locator(`${surface} .control-submit-btn`);
+      await tabUntilFocused(page, submitButton, 'Check button', keyboardTrace);
+      await page.keyboard.press('Enter');
+      keyboardNavigation = {
+        fromObservedFocus: focusBeforeKeyboard,
+        tabSequence: keyboardTrace,
+        correction: 'Control+A then page.keyboard.type("10")',
+        submit: 'Tab to Check then page.keyboard.press("Enter")',
+      };
     }
     await page.getByRole('button', { name: 'Finish', exact: true }).waitFor({ state: 'visible' });
     const resolveText = await page.locator(`${surface} .active-beat-prompt`).innerText();
@@ -198,13 +348,29 @@ try {
       throw new Error(`${run.key}: a reflection control appeared despite includeReflection=false`);
     }
     const acceptedCapture = await capture(page, `plan20-${run.key}-accepted-10-over-14.png`, 'accepted equivalent unsimplified answer');
-    acceptedCapture.keyboardCorrection = run.linear ? null : 'Control+A, type 10, Tab to Submit, Enter';
+    acceptedCapture.keyboardNavigation = keyboardNavigation;
+    acceptedCapture.numericEntry = run.linear ? {
+      fieldActions: numericEntry.slice(2),
+      textEntry: 'Playwright locator.fill after each field tap in touch context',
+      physicalDeviceTyping: 'not tested',
+    } : null;
     evidence.push(acceptedCapture);
-    await activate(page.getByRole('button', { name: 'Finish', exact: true }));
-    await page.locator('.app-episode').evaluate((element) => element === document.activeElement || element.focus());
+    const finishButton = page.getByRole('button', { name: 'Finish', exact: true });
+    let finishKeyboardTrace = [];
+    if (run.linear) {
+      await activate(finishButton);
+    } else {
+      await tabUntilFocused(page, finishButton, 'Finish button', finishKeyboardTrace);
+      await page.keyboard.press('Enter');
+    }
     evidence.push(await capture(page, `plan20-${run.key}-finished.png`, 'finished single-item goal'));
     const retainedFocus = await page.locator('.app-episode').evaluate((element) => element === document.activeElement);
     if (!retainedFocus) throw new Error(`${run.key}: Finish did not retain focus on the episode landmark`);
+    evidence.at(-1).finishFocus = {
+      action: run.linear ? 'touch-context tap on Finish' : 'page keyboard Tab navigation then Enter',
+      keyboardTabSequence: run.linear ? null : finishKeyboardTrace,
+      focusedEpisodeLandmarkAfterAction: retainedFocus,
+    };
     await context.close();
   }
 

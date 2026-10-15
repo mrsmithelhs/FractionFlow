@@ -102,10 +102,49 @@
     {
       "label": "wrong notice recovery",
       "screenshot": "plan20-visual-740-wrong-notice.png",
+      "reachability": [
+        {
+          "name": "question",
+          "startY": 0,
+          "top": 512.71875,
+          "bottom": 563.09375,
+          "height": 50.375,
+          "viewportHeight": 740,
+          "scrollY": 0,
+          "scrollHeight": 878,
+          "fullyVisibleAfterOrdinaryScroll": true,
+          "reachable": true
+        },
+        {
+          "name": "task-controls",
+          "startY": 0,
+          "top": 594.03125,
+          "bottom": 694.03125,
+          "height": 100,
+          "viewportHeight": 740,
+          "scrollY": 0,
+          "scrollHeight": 878,
+          "fullyVisibleAfterOrdinaryScroll": true,
+          "reachable": true
+        },
+        {
+          "name": "return-control",
+          "startY": 0,
+          "top": 85,
+          "bottom": 129,
+          "height": 44,
+          "viewportHeight": 740,
+          "scrollY": 0,
+          "scrollHeight": 878,
+          "fullyVisibleAfterOrdinaryScroll": true,
+          "reachable": true
+        }
+      ],
       "viewport": {
         "width": 360,
         "height": 740
       },
+      "scrollY": 0,
       "document": {
         "scrollWidth": 360,
         "scrollHeight": 878
@@ -151,15 +190,83 @@
       "activePath": "visual",
       "skippedControlsAbsent": true,
       "answerAndUnlikeTaskTextAbsent": true,
+      "scanSurfaces": [
+        "all mounted textContent including hidden descendants",
+        "aria-label",
+        "aria-description",
+        "aria-valuetext",
+        "title",
+        "alt",
+        "placeholder"
+      ],
+      "absenceScan": {
+        "rejected": [
+          {
+            "kind": "stale-conversion-content",
+            "rejectedAt": "pre-response absence assertion"
+          },
+          {
+            "kind": "unlike-denominator-recovery-copy",
+            "rejectedAt": "pre-response absence assertion"
+          },
+          {
+            "kind": "accessible-label",
+            "rejectedAt": "pre-response absence assertion"
+          }
+        ],
+        "restoredCleanRun": true,
+        "passed": true,
+        "mountedTextElements": 57,
+        "accessibleTextAttributes": 18
+      },
       "reflectionControls": 0
     },
     {
       "label": "5/14 arithmetic recovery",
       "screenshot": "plan20-visual-740-5-over-14-recovery.png",
+      "reachability": [
+        {
+          "name": "question",
+          "startY": 0,
+          "top": 533.71875,
+          "bottom": 584.09375,
+          "height": 50.375,
+          "viewportHeight": 740,
+          "scrollY": 0,
+          "scrollHeight": 1060,
+          "fullyVisibleAfterOrdinaryScroll": true,
+          "reachable": true
+        },
+        {
+          "name": "task-controls",
+          "startY": 0,
+          "top": 459.03125,
+          "bottom": 679.625,
+          "height": 220.59375,
+          "viewportHeight": 740,
+          "scrollY": 156,
+          "scrollHeight": 1060,
+          "fullyVisibleAfterOrdinaryScroll": true,
+          "reachable": true
+        },
+        {
+          "name": "return-control",
+          "startY": 0,
+          "top": 85,
+          "bottom": 129,
+          "height": 44,
+          "viewportHeight": 740,
+          "scrollY": 0,
+          "scrollHeight": 1060,
+          "fullyVisibleAfterOrdinaryScroll": true,
+          "reachable": true
+        }
+      ],
       "viewport": {
         "width": 360,
         "height": 740
       },
+      "scrollY": 0,
       "document": {
         "scrollWidth": 360,
         "scrollHeight": 1060
@@ -226,22 +333,87 @@
       "supportLevel": "high-support",
       "conditionId": "phase2-bundle-1",
       "hiddenConversionOrDecisionControls": 0,
-      "reflectionControls": 0
+      "reflectionControls": 0,
+      "numericEntry": {
+        "fieldActions": [
+          {
+            "field": "numerator",
+            "action": "tap"
+          },
+          {
+            "field": "denominator",
+            "action": "tap"
+          }
+        ],
+        "textEntry": "Playwright locator.fill after each field tap in touch context",
+        "physicalDeviceTyping": "not tested"
+      }
     },
     {
       "label": "visible local operation help",
       "screenshot": "plan20-visual-740-local-help.png",
+      "reachability": [
+        {
+          "name": "question",
+          "startY": 0,
+          "top": 533.71875,
+          "bottom": 584.09375,
+          "height": 50.375,
+          "viewportHeight": 740,
+          "scrollY": 0,
+          "scrollHeight": 1141,
+          "fullyVisibleAfterOrdinaryScroll": true,
+          "reachable": true
+        },
+        {
+          "name": "task-controls",
+          "startY": 0,
+          "top": 379.03125,
+          "bottom": 680.40625,
+          "height": 301.375,
+          "viewportHeight": 740,
+          "scrollY": 236,
+          "scrollHeight": 1141,
+          "fullyVisibleAfterOrdinaryScroll": true,
+          "reachable": true
+        },
+        {
+          "name": "help-guidance",
+          "startY": 0,
+          "top": 614.625,
+          "bottom": 679.40625,
+          "height": 64.78125,
+          "viewportHeight": 740,
+          "scrollY": 237,
+          "scrollHeight": 1141,
+          "fullyVisibleAfterOrdinaryScroll": true,
+          "reachable": true
+        },
+        {
+          "name": "return-control",
+          "startY": 0,
+          "top": 85,
+          "bottom": 129,
+          "height": 44,
+          "viewportHeight": 740,
+          "scrollY": 0,
+          "scrollHeight": 1141,
+          "fullyVisibleAfterOrdinaryScroll": true,
+          "reachable": true
+        }
+      ],
       "viewport": {
         "width": 360,
         "height": 740
       },
+      "scrollY": 0,
       "document": {
         "scrollWidth": 360,
         "scrollHeight": 1141
       },
       "app": {
         "x": 0,
-        "y": -320,
+        "y": 0,
         "width": 360,
         "height": 1141,
         "scrollWidth": 360,
@@ -250,13 +422,13 @@
       "activePath": "visual",
       "prompt": {
         "x": 63,
-        "y": 213.71875,
+        "y": 533.71875,
         "width": 234,
         "height": 50.375
       },
       "feedback": {
         "x": 63,
-        "y": 97.78125,
+        "y": 417.78125,
         "width": 234,
         "height": 85
       },
@@ -273,7 +445,7 @@
           "max": "999",
           "box": {
             "x": 63,
-            "y": 340.625,
+            "y": 660.625,
             "width": 96,
             "height": 47
           }
@@ -286,7 +458,7 @@
           "max": "999",
           "box": {
             "x": 181.046875,
-            "y": 340.625,
+            "y": 660.625,
             "width": 96,
             "height": 47
           }
@@ -294,7 +466,7 @@
       ],
       "submit": {
         "x": 63,
-        "y": 399.625,
+        "y": 719.625,
         "width": 88.03125,
         "height": 44
       },
@@ -306,17 +478,56 @@
     {
       "label": "accepted equivalent unsimplified answer",
       "screenshot": "plan20-visual-740-accepted-10-over-14.png",
+      "reachability": [
+        {
+          "name": "question",
+          "startY": 0,
+          "top": 471.90625,
+          "bottom": 522.28125,
+          "height": 50.375,
+          "viewportHeight": 740,
+          "scrollY": 0,
+          "scrollHeight": 822,
+          "fullyVisibleAfterOrdinaryScroll": true,
+          "reachable": true
+        },
+        {
+          "name": "task-controls",
+          "startY": 0,
+          "top": 553.21875,
+          "bottom": 597.21875,
+          "height": 44,
+          "viewportHeight": 740,
+          "scrollY": 0,
+          "scrollHeight": 822,
+          "fullyVisibleAfterOrdinaryScroll": true,
+          "reachable": true
+        },
+        {
+          "name": "return-control",
+          "startY": 0,
+          "top": 85,
+          "bottom": 129,
+          "height": 44,
+          "viewportHeight": 740,
+          "scrollY": 0,
+          "scrollHeight": 822,
+          "fullyVisibleAfterOrdinaryScroll": true,
+          "reachable": true
+        }
+      ],
       "viewport": {
         "width": 360,
         "height": 740
       },
+      "scrollY": 0,
       "document": {
         "scrollWidth": 360,
         "scrollHeight": 822
       },
       "app": {
         "x": 0,
-        "y": -81,
+        "y": 0,
         "width": 360,
         "height": 821.8125,
         "scrollWidth": 360,
@@ -325,7 +536,7 @@
       "activePath": "visual",
       "prompt": {
         "x": 63,
-        "y": 390.90625,
+        "y": 471.90625,
         "width": 234,
         "height": 50.375
       },
@@ -340,15 +551,57 @@
       "conditionId": "phase2-bundle-1",
       "hiddenConversionOrDecisionControls": 0,
       "reflectionControls": 0,
-      "keyboardCorrection": "Control+A, type 10, Tab to Submit, Enter"
+      "keyboardNavigation": {
+        "fromObservedFocus": "fraction-control app-secondary-button",
+        "tabSequence": [
+          "summary.completed-beats-summary-toggle",
+          "button.fraction-control.app-secondary-button.app-restart-button",
+          "body.",
+          "button.fraction-control.app-secondary-button.app-view-toggle",
+          "button.fraction-control.app-secondary-button.app-return-button",
+          "input#operate-fraction-numerator-input.fraction-control.control-numeric-input.control-fraction-input",
+          "input#operate-fraction-denominator-input.fraction-control.control-numeric-input.control-fraction-input",
+          "button.fraction-control.control-submit-btn"
+        ],
+        "correction": "Control+A then page.keyboard.type(\"10\")",
+        "submit": "Tab to Check then page.keyboard.press(\"Enter\")"
+      },
+      "numericEntry": null
     },
     {
       "label": "finished single-item goal",
       "screenshot": "plan20-visual-740-finished.png",
+      "reachability": [
+        {
+          "name": "question",
+          "startY": 0,
+          "top": 471.90625,
+          "bottom": 497.09375,
+          "height": 25.1875,
+          "viewportHeight": 740,
+          "scrollY": 0,
+          "scrollHeight": 740,
+          "fullyVisibleAfterOrdinaryScroll": true,
+          "reachable": true
+        },
+        {
+          "name": "return-control",
+          "startY": 0,
+          "top": 85,
+          "bottom": 129,
+          "height": 44,
+          "viewportHeight": 740,
+          "scrollY": 0,
+          "scrollHeight": 740,
+          "fullyVisibleAfterOrdinaryScroll": true,
+          "reachable": true
+        }
+      ],
       "viewport": {
         "width": 360,
         "height": 740
       },
+      "scrollY": 0,
       "document": {
         "scrollWidth": 360,
         "scrollHeight": 740
@@ -378,15 +631,61 @@
       "supportLevel": "high-support",
       "conditionId": "phase2-bundle-1",
       "hiddenConversionOrDecisionControls": 0,
-      "reflectionControls": 0
+      "reflectionControls": 0,
+      "finishFocus": {
+        "action": "page keyboard Tab navigation then Enter",
+        "keyboardTabSequence": [
+          "button.fraction-control.control-btn"
+        ],
+        "focusedEpisodeLandmarkAfterAction": true
+      }
     },
     {
       "label": "wrong notice recovery",
       "screenshot": "plan20-linear-752-wrong-notice.png",
+      "reachability": [
+        {
+          "name": "question",
+          "startY": 0,
+          "top": 391.78125,
+          "bottom": 442.15625,
+          "height": 50.375,
+          "viewportHeight": 752,
+          "scrollY": 0,
+          "scrollHeight": 760,
+          "fullyVisibleAfterOrdinaryScroll": true,
+          "reachable": true
+        },
+        {
+          "name": "task-controls",
+          "startY": 0,
+          "top": 476.15625,
+          "bottom": 576.15625,
+          "height": 100,
+          "viewportHeight": 752,
+          "scrollY": 0,
+          "scrollHeight": 760,
+          "fullyVisibleAfterOrdinaryScroll": true,
+          "reachable": true
+        },
+        {
+          "name": "return-control",
+          "startY": 0,
+          "top": 85,
+          "bottom": 129,
+          "height": 44,
+          "viewportHeight": 752,
+          "scrollY": 0,
+          "scrollHeight": 760,
+          "fullyVisibleAfterOrdinaryScroll": true,
+          "reachable": true
+        }
+      ],
       "viewport": {
         "width": 360,
         "height": 752
       },
+      "scrollY": 0,
       "document": {
         "scrollWidth": 360,
         "scrollHeight": 760
@@ -432,15 +731,83 @@
       "activePath": "linear",
       "skippedControlsAbsent": true,
       "answerAndUnlikeTaskTextAbsent": true,
+      "scanSurfaces": [
+        "all mounted textContent including hidden descendants",
+        "aria-label",
+        "aria-description",
+        "aria-valuetext",
+        "title",
+        "alt",
+        "placeholder"
+      ],
+      "absenceScan": {
+        "rejected": [
+          {
+            "kind": "stale-conversion-content",
+            "rejectedAt": "pre-response absence assertion"
+          },
+          {
+            "kind": "unlike-denominator-recovery-copy",
+            "rejectedAt": "pre-response absence assertion"
+          },
+          {
+            "kind": "accessible-label",
+            "rejectedAt": "pre-response absence assertion"
+          }
+        ],
+        "restoredCleanRun": true,
+        "passed": true,
+        "mountedTextElements": 57,
+        "accessibleTextAttributes": 18
+      },
       "reflectionControls": 0
     },
     {
       "label": "5/14 arithmetic recovery",
       "screenshot": "plan20-linear-752-5-over-14-recovery.png",
+      "reachability": [
+        {
+          "name": "question",
+          "startY": 0,
+          "top": 412.78125,
+          "bottom": 463.15625,
+          "height": 50.375,
+          "viewportHeight": 752,
+          "scrollY": 0,
+          "scrollHeight": 942,
+          "fullyVisibleAfterOrdinaryScroll": true,
+          "reachable": true
+        },
+        {
+          "name": "task-controls",
+          "startY": 0,
+          "top": 497.15625,
+          "bottom": 717.75,
+          "height": 220.59375,
+          "viewportHeight": 752,
+          "scrollY": 0,
+          "scrollHeight": 942,
+          "fullyVisibleAfterOrdinaryScroll": true,
+          "reachable": true
+        },
+        {
+          "name": "return-control",
+          "startY": 0,
+          "top": 85,
+          "bottom": 129,
+          "height": 44,
+          "viewportHeight": 752,
+          "scrollY": 0,
+          "scrollHeight": 942,
+          "fullyVisibleAfterOrdinaryScroll": true,
+          "reachable": true
+        }
+      ],
       "viewport": {
         "width": 360,
         "height": 752
       },
+      "scrollY": 0,
       "document": {
         "scrollWidth": 360,
         "scrollHeight": 942
@@ -507,15 +874,90 @@
       "supportLevel": "medium-support",
       "conditionId": "phase2-bundle-1",
       "hiddenConversionOrDecisionControls": 0,
-      "reflectionControls": 0
+      "reflectionControls": 0,
+      "numericEntry": {
+        "fieldActions": [
+          {
+            "field": "numerator",
+            "action": "tap"
+          },
+          {
+            "field": "denominator",
+            "action": "tap"
+          },
+          {
+            "field": "numerator",
+            "action": "tap",
+            "phase": "before equivalent-response entry"
+          },
+          {
+            "field": "denominator",
+            "action": "tap",
+            "phase": "before equivalent-response entry"
+          }
+        ],
+        "textEntry": "Playwright locator.fill after each field tap in touch context",
+        "physicalDeviceTyping": "not tested"
+      }
     },
     {
       "label": "visible local operation help",
       "screenshot": "plan20-linear-752-local-help.png",
+      "reachability": [
+        {
+          "name": "question",
+          "startY": 0,
+          "top": 412.78125,
+          "bottom": 463.15625,
+          "height": 50.375,
+          "viewportHeight": 752,
+          "scrollY": 0,
+          "scrollHeight": 1023,
+          "fullyVisibleAfterOrdinaryScroll": true,
+          "reachable": true
+        },
+        {
+          "name": "task-controls",
+          "startY": 0,
+          "top": 377.15625,
+          "bottom": 678.53125,
+          "height": 301.375,
+          "viewportHeight": 752,
+          "scrollY": 120,
+          "scrollHeight": 1023,
+          "fullyVisibleAfterOrdinaryScroll": true,
+          "reachable": true
+        },
+        {
+          "name": "help-guidance",
+          "startY": 0,
+          "top": 613.75,
+          "bottom": 678.53125,
+          "height": 64.78125,
+          "viewportHeight": 752,
+          "scrollY": 120,
+          "scrollHeight": 1023,
+          "fullyVisibleAfterOrdinaryScroll": true,
+          "reachable": true
+        },
+        {
+          "name": "return-control",
+          "startY": 0,
+          "top": 85,
+          "bottom": 129,
+          "height": 44,
+          "viewportHeight": 752,
+          "scrollY": 0,
+          "scrollHeight": 1023,
+          "fullyVisibleAfterOrdinaryScroll": true,
+          "reachable": true
+        }
+      ],
       "viewport": {
         "width": 360,
         "height": 752
       },
+      "scrollY": 0,
       "document": {
         "scrollWidth": 360,
         "scrollHeight": 1023
@@ -587,10 +1029,49 @@
     {
       "label": "accepted equivalent unsimplified answer",
       "screenshot": "plan20-linear-752-accepted-10-over-14.png",
+      "reachability": [
+        {
+          "name": "question",
+          "startY": 0,
+          "top": 311.78125,
+          "bottom": 362.15625,
+          "height": 50.375,
+          "viewportHeight": 752,
+          "scrollY": 0,
+          "scrollHeight": 752,
+          "fullyVisibleAfterOrdinaryScroll": true,
+          "reachable": true
+        },
+        {
+          "name": "task-controls",
+          "startY": 0,
+          "top": 396.15625,
+          "bottom": 440.15625,
+          "height": 44,
+          "viewportHeight": 752,
+          "scrollY": 0,
+          "scrollHeight": 752,
+          "fullyVisibleAfterOrdinaryScroll": true,
+          "reachable": true
+        },
+        {
+          "name": "return-control",
+          "startY": 0,
+          "top": 85,
+          "bottom": 129,
+          "height": 44,
+          "viewportHeight": 752,
+          "scrollY": 0,
+          "scrollHeight": 752,
+          "fullyVisibleAfterOrdinaryScroll": true,
+          "reachable": true
+        }
+      ],
       "viewport": {
         "width": 360,
         "height": 752
       },
+      "scrollY": 0,
       "document": {
         "scrollWidth": 360,
         "scrollHeight": 752
@@ -621,15 +1102,58 @@
       "conditionId": "phase2-bundle-1",
       "hiddenConversionOrDecisionControls": 0,
       "reflectionControls": 0,
-      "keyboardCorrection": null
+      "keyboardNavigation": null,
+      "numericEntry": {
+        "fieldActions": [
+          {
+            "field": "numerator",
+            "action": "tap",
+            "phase": "before equivalent-response entry"
+          },
+          {
+            "field": "denominator",
+            "action": "tap",
+            "phase": "before equivalent-response entry"
+          }
+        ],
+        "textEntry": "Playwright locator.fill after each field tap in touch context",
+        "physicalDeviceTyping": "not tested"
+      }
     },
     {
       "label": "finished single-item goal",
       "screenshot": "plan20-linear-752-finished.png",
+      "reachability": [
+        {
+          "name": "question",
+          "startY": 0,
+          "top": 311.78125,
+          "bottom": 336.96875,
+          "height": 25.1875,
+          "viewportHeight": 752,
+          "scrollY": 0,
+          "scrollHeight": 752,
+          "fullyVisibleAfterOrdinaryScroll": true,
+          "reachable": true
+        },
+        {
+          "name": "return-control",
+          "startY": 0,
+          "top": 85,
+          "bottom": 129,
+          "height": 44,
+          "viewportHeight": 752,
+          "scrollY": 0,
+          "scrollHeight": 752,
+          "fullyVisibleAfterOrdinaryScroll": true,
+          "reachable": true
+        }
+      ],
       "viewport": {
         "width": 360,
         "height": 752
       },
+      "scrollY": 0,
       "document": {
         "scrollWidth": 360,
         "scrollHeight": 752
@@ -659,7 +1183,12 @@
       "supportLevel": "medium-support",
       "conditionId": "phase2-bundle-1",
       "hiddenConversionOrDecisionControls": 0,
-      "reflectionControls": 0
+      "reflectionControls": 0,
+      "finishFocus": {
+        "action": "touch-context tap on Finish",
+        "keyboardTabSequence": null,
+        "focusedEpisodeLandmarkAfterAction": true
+      }
     }
   ],
   "fragmentLaunch": {

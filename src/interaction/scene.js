@@ -279,6 +279,11 @@ function currentTaskHelp(state) {
     && entry.scheduleEntryId === scheduleEntry.id
   ));
   if (request.beat === 'decide') return { kind: 'common-denominator', status: 'requested' };
+  if (request.beat === 'operate'
+    && state.episodeDefinition?.id === 'phase-3-like-denominator-addition'
+    && state.episodeDefinition?.revision === '1') {
+    return { kind: 'like-denominator-operation', status: 'requested' };
+  }
   return {
     kind: 'equivalent-fraction',
     status: multiplier?.classification ?? 'awaiting-multiplier',
