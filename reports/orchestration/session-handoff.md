@@ -32,6 +32,13 @@ was notified to anchor source claims at a named commit; its dossier/report remai
 disjoint from Plan 20 source/tests/evidence. An early Plan 20 proposal arrived;
 root requested concrete identities/state/provenance, goal mapping, actual 5/14
 input evidence and exact paths before approval. No source approval is recorded.
+Refined Plan 20 proposal `cf4ee81` is now source-approved; see its
+`mechanism-review.md`. New same-denominator goal, exact one-item identity,
+system-established sharedUnit after Notice and genuine two-field fraction response
+are approved. Equivalent10/14 remains correct; no fabricated conversions/reflection.
+Historical semantics intact; scoped shared controls/CSS allowed only as needed.
+Plan 29 draft direction is supported with refinements requested in its
+`draft-review.md`; owner task-contract adoption remains separate.
 
 Owner cost override: Codex implementer advisor consultations and orchestrator
 subagents are restricted to Sol-class at low/medium effort; advisors read-only.
