@@ -100,3 +100,13 @@ registry/entry cardinalities after the approved second goal. Preserve the origin
 unlike identity/order/first-Tab contract and existing focus/reset/layout assertions;
 verify the new goal is reachable. Implementer requested this path before editing.
 No further test/runtime scope is implied; record the amendment and validation.
+
+Date: 2026-10-15. Approve `src/app/styles.css` narrowly after the second entry
+made frozen `.app-practice-button` selectors ambiguous. Use one shared style
+class on both practice choices, retaining the old class as the original unlike
+goal's unique compatibility hook. Existing `data-practice-type` supplies explicit
+new-goal identity; avoid a transient 'new' class or growing goal-specific style
+rules. Preserve base/hover/narrow layout, first-Tab/order and both accessible
+entries. No frozen route-object or runner edit is approved. Report the intermediate
+failure and rerun full validation; this is shared presentation/selector maintenance,
+not permission to change instructional behavior.
