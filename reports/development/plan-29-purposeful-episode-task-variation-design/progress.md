@@ -144,3 +144,61 @@ left untouched and unstaged. At report preparation, the observed paths were:
 
 Yes. The dossier is committed at `10dbc9d` for technical receipt and owner
 policy disposition. No packet status field was changed, and no push was made.
+
+## Owner-directed full-operation alignment addendum (2026-10-15)
+
+After technical delivery review, the owner authorized a bounded documentation
+addendum to test whether the same construct and inspect/keep/repair
+responsibilities can support purposeful variation within full addition
+practice. The plan remained `delivered`; the addendum did not reopen the packet
+or authorize source, schema, selection, decision-log, or runtime work.
+
+The integrated proposal is in
+`docs/development/purposeful-task-variation-design/scale-and-integration-addendum.md`,
+with aligned references in its `README.md` and `contract-and-evidence.md`. It
+uses the existing canonical, Plan 26, and Plan 32 target-12 addition items to
+show pattern/item compatibility. The proposed first learner-facing mapping is
+canonical to construct and Plan 26 plus Plan 32 to inspect/keep/repair. This is
+a fixed-mapping proposal, not an adopted assignment; the six-pair matrix is
+compatibility evidence, not a recommendation to repeat all items under both
+patterns. A future constrained sampler remains a separate policy question.
+
+The orchestrator reviewed the first addendum commit, `46ddae4`, and requested
+final consistency refinements. The revised proposal now states that encounter
+acknowledgment remains mandatory while target-denominator context needs no
+separate acknowledgment; the learner submits the complete sum once at
+`operate`; and `resolve` displays the accepted exact result and finishes or
+continues without another numeric response. For a two-renaming item, the compact
+pattern has five schedule entries including encounter and resolve; the current
+reflection-enabled route has eight, or seven without reflection. The proposal
+also spells out a versioned definition/practice-set association to existing
+item identities and preserves legacy definitions and replay meanings.
+
+The narrowed structural proposal is new-definition-only: a registered new
+pattern may provide a fixed schedule for the selected item, while legacy
+problem-derived schedules remain unchanged. This is a proposed DECISION-034
+amendment, not an adopted decision. Authored inspect-candidate truth remains
+distinct from learner performance, and constructed, kept, repaired, and
+item-provided forms retain distinct provenance. A false candidate kept by the
+learner is recorded as failed classification without inventing a repair.
+
+The final consistency refinements were committed as `2fe254f` (`docs: clarify
+Plan 29 full-operation patterns`) after the addendum dossier commit `46ddae4`.
+The orchestrator review and owner-intent boundaries are recorded in
+`reports/development/plan-29-purposeful-episode-task-variation-design/alignment-addendum-direction.md`.
+No new Sol-class advisor consultation was warranted for this prose-only
+alignment; the owner-directed review was performed by the orchestrator. This
+does not change the earlier consultation disposition for the initial dossier.
+
+## Current validation and disposition
+
+- `node scripts/dev/plan-status.js lint` — `lint: OK (no violations)`.
+- `node scripts/dev/plan-status.js check 29` — reports `BLOCKED` because the
+  packet is already `delivered`; the addendum correctly leaves it delivered.
+- Local Markdown links in the addendum dossier resolve, and the scoped Git diff
+  check passes.
+- No application tests or browser checks were run: this is documentation-only
+  work, with no source or runtime changes.
+- Owner adoption of the full-operation pattern contract and any source follow-on
+  remain pending. No decision, packet status, or learner-facing behavior was
+  changed; no push was made.
