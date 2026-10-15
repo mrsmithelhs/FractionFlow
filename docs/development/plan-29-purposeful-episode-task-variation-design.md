@@ -52,6 +52,17 @@ The four crossing candidates in the follow-up register are a future menu, not
 four tasks to implement or append. No more than one crossing-specific move per
 individual episode; decomposition/number-line activation retains its later gate.
 
+Owner intent clarification (2026-10-15): variation must also support a growing
+bank of full arithmetic problems and eventual constrained random practice. A
+standalone-focused first slice alone is insufficient. A bounded design addendum
+must connect the same two amount-preservation responsibilities to shorter full-
+operation episode patterns, reusable compatibility constraints and future selection
+boundaries. Prefer currently admitted problem families as the first integration
+baseline; standalone tasks remain an option, not the sole answer to this objective.
+Propose any required amendment to DECISION-034's problem-only schedule derivation
+explicitly, retaining freeze-before-response and legacy identity/replay semantics.
+No source, canonical-decision edit, random selection or learner model is activated.
+
 ## Authority and contracts
 
 Read `AGENTS.md`, `docs/agent-starting-prompts/implementer-prompt.md`,
