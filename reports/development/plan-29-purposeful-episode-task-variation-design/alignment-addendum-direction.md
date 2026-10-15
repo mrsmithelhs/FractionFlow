@@ -46,3 +46,20 @@ load-bearing scope conflict before widening. Sol-class read-only low/medium only
 if consultation is warranted; this prose clarification does not mandate one.
 
 Root will review the addendum, then return a coherent owner adoption recommendation.
+
+## Addendum review
+
+Date: 2026-10-15. Root read committed addendum/cross-references `46ddae4`.
+The reusable two-pattern, three-existing-instance proposal now addresses the
+owner's intended within-operation variety. It explicitly proposes the required
+new-definition-only schedule extension, separates data growth from pattern code,
+accounts for both operands and distinguishes authored validity from learner
+adaptation. Exact API probes confirm the existing examples' target12 forms/results.
+
+Requested final consistency refinements before progress delivery: show the total
+submission at operate only, with resolve as inspection/continuation rather than
+another calculation; label any retained encounter acknowledgment as an actual
+response when comparing counts; recommend an explicit initial item-to-pattern
+mapping with versioned live-set integration. Existing identities/replay must not
+be silently reinterpreted. These do not widen scope or introduce a new research
+or owner gate. Adoption and source activation remain pending after final delivery.
