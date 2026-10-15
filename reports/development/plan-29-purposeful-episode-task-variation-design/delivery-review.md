@@ -47,3 +47,42 @@ No blocking design issue remains. Recommended owner disposition:
 If owner adopts the contract, record a decision and closure, then draft the source
 packet. Do not close or draft that packet solely from this technical review.
 No Plan 20 source files were staged or changed by orchestration for this review.
+
+## Full-operation alignment disposition
+
+Date: 2026-10-15. Addendum `46ddae4`, refinements `2fe254f`, report `6d5a018`.
+Disposition: revised design technically accepted for owner adoption review.
+This supersedes the standalone-first recommendation above, not its useful task
+contracts or evidence limits. Standalone practice is now an optional application.
+
+Root read the addendum and updated cross-references. It proposes two reusable
+full-addition patterns across three existing instances at target12, accounting
+for both renaming sides and constructed/confirmed/repaired/provided provenance.
+It explicitly removes notice, denominator choice and reflection from new compact
+definitions, while retaining encounter acknowledgment, transformations, operation
+and resolve. The owner must approve this new problem-plus-pattern schedule rule;
+legacy DECISION-034 definitions remain problem-derived and unchanged.
+
+Root corrected one factual description inline: existing resolve is a button
+continuation dispatching a validated resolution intent, not another numeric sum.
+Compact patterns retain one numeric operation answer; shortening comes from the
+three omitted responsibilities. Five vs eight counts scheduled entries, not
+guaranteed physical gestures, time or measured learning benefit.
+
+The fixed initial association is concrete: canonical construct, Plan26 inspect,
+Plan32 inspect, with both patterns exercised across multiple instances as reuse
+evidence. Retain the existing numerical bank and legacy replay; do not shrink it
+to these three examples or silently reinterpret old identities. The source
+mechanism must specify versioned live-set integration before activation.
+
+Future constrained sampling selects compatible problem/pattern pairs before
+construction and pins identities. Authored candidate truth may constrain the
+stimulus mix; mastery-conditioned selection remains a separate later gate. No
+sampler, framework, learner study, persistence or automatic task omission is
+implemented or approved here.
+
+Root previously verified examples through exact APIs; local references/lint and
+committed checks are rerun for receipt. This is prose-only review, with no
+additional consultation or application test run warranted. The owner adoption
+recommendation is now the full-operation contract above, followed by a bounded
+source-packet draft; it is not activation of the earlier standalone-only goal.

@@ -33,12 +33,13 @@ The current canonical unlike-addend route for `2/3 + 1/4`, target denominator
 12, has the frozen shape `encounter → notice → decide → transform-left →
 transform-right → operate → resolve → reflect` when reflection is enabled.
 Encounter acknowledgment, `notice`, `decide`, both required operand renamings,
-the `operate` response, the separate `resolve` response, and reflection when
-enabled are learner responsibilities.
+the numeric `operate` response, the `resolve` continuation, and reflection when
+enabled are learner actions. Resolve's button dispatches a resolution intent;
+it does not request another numeric sum.
 
 On this fixture, the current path asks the learner to acknowledge the displayed
 addends, answer the unit notice, choose `12`, enter `8/12` and `3/12`, submit an
-operation result, submit the final-form resolution separately, and complete the
+operation result, inspect/continue past the final form, and complete the
 definition's reflection when enabled.
 
 The proposed compact recipes retain the required encounter acknowledgment,
@@ -56,7 +57,9 @@ At `operate`, the learner submits the complete addition result once (for example
 `11/12` after the two accepted forms above), and exact math classifies that one
 submission. `resolve` then displays the accepted exact final form and finishes
 or offers continuation; it does not ask the learner to calculate or enter the
-sum again. Any finish/continue control is navigation, not another math response.
+sum again. This preserves the current one-numeric-answer behavior; it is not a
+new saving of a repeated calculation. A finish/continue control is a navigation
+action, even if its internal intent also validates the accepted form.
 
 | Episode responsibility | Construct pattern | Inspect/keep/repair pattern |
 |---|---|---|
@@ -64,15 +67,15 @@ sum again. Any finish/continue control is navigation, not another math response.
 | Display-only context | Show `2/3 + 1/4` and “Use twelfths.” Do not request a notice or target-denominator choice for this recipe. | Same. The supplied target is not itself a learner response or acknowledgment. |
 | Left transform entry | Learner constructs `2/3 = 8/12`. | Show an authored candidate. Example: keep `8/12` if exact validation confirms it; otherwise repair the numerator. Do not show validity before the action. |
 | Right transform entry | Learner constructs `1/4 = 3/12`. | Show an authored candidate. Example: `2/12` is false for `1/4`; learner changes the top to `3`. Keep/repair is one fixed task entry, although repair takes an action plus a numeric entry. |
-| Addition (`operate`) | Learner submits the complete sum once from the accepted forms: `8/12 + 3/12 = 11/12`. This replaces the current separate operation-result plus resolution submissions. | Same; only the accepted, exactly validated forms reach the operation. |
+| Addition (`operate`) | Learner submits the complete sum once from the accepted forms: `8/12 + 3/12 = 11/12`, as in the current operation input. | Same; only the accepted, exactly validated forms reach the operation. |
 | Resolve | Show the accepted `11/12` and finish or offer continuation. No second calculation or numeric entry. | Same; resolve is not another keep/repair or sum response. |
 | Omitted | No separate notice, denominator-choice, or generic equivalence-reflection response in this compact recipe. | Same omissions; do not append a second “is it equivalent?” question after keep/repair. |
 
 Both recipes have five scheduled entries for this two-renaming problem,
 including the required encounter acknowledgment and the non-response resolve
 view. The current reflection-enabled route has eight; without reflection, the
-current route has seven. The compact recipe's single `operate` submission
-replaces the current separate operation-result and resolution submissions. This
+current route has seven. The shortening comes from omitting notice, denominator
+choice and reflection, not a nonexistent second numeric sum entry. This
 is a reduction in scheduled responsibilities, not a claim that every learner
 will use fewer physical gestures: an inspection repair includes an action and a
 number entry. The remaining work is meaningful: construction generates both

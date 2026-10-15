@@ -46,6 +46,15 @@ with authored Next mapping. No source-follow-on packet or runtime activation yet
 Root verified local references and exact examples. Plan 20 remains the active
 source writer; a narrow provenance visible-fields path amendment is recorded in
 its mechanism review. Other concurrent source edits remain unstaged by root.
+Plan 29 owner clarified that scalable within-operation task variety is the aim,
+not merely standalone exercises. Authorized alignment addendum `46ddae4` /
+`2fe254f`, report `6d5a018`, is technically accepted for owner adoption review;
+see final `delivery-review.md` section. Two reusable compact patterns across
+existing additions are primary; proposed new-definition-only problem+pattern
+schedule derivation requires owner disposition. Retain the current numeric bank,
+legacy identities and deterministic fixed assignment; no randomization/source
+packet yet. Root corrected resolve wording: current UI has one numeric sum and
+a continuation, so the actual shortening is omitted notice/decide/reflection.
 
 Owner cost override: Codex implementer advisor consultations and orchestrator
 subagents are restricted to Sol-class at low/medium effort; advisors read-only.
