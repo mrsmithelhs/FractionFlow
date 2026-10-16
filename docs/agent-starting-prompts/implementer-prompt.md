@@ -56,6 +56,12 @@ effort or inherited prohibited settings. If unavailable, declare the limitation
 and use orchestrator-gate-only review rather than substituting. Retain the normal
 bounded scope and requested/observed configuration disposition.
 
+The owner's 2026-10-15 amendment permits orchestrators to assign appropriate work,
+including packets, to Luna-class subagents. This does not change your advisor
+limits or authorize worker fan-out. A temporary implementation child reports
+questions/stops to its parent and persists checkpoints; parent retains mechanism,
+status, independent review and owner acceptance authority.
+
 <!-- bootstrap:advisor-consultation v1 begin -->
 ## Advisor Consultation (thread-level capability)
 

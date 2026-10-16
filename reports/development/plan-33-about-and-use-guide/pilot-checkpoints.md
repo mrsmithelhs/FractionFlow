@@ -121,3 +121,19 @@ committed separately after implementation and review records. The one-plan pilot
 has reached its owner acceptance gate; no second plan, model substitution,
 Bootstrap write, push or deployment was performed. Parent retained the reserved
 shared-source window rather than silently starting Plan 34.
+
+## Checkpoint 4 — owner acceptance and local rule adoption
+
+Owner inspected the page on the local dev server and accepted closure, requesting
+an exact creator-credit correction (verified separately in owner-disposition.md).
+Owner noted that the copy remains somewhat cold/developer-oriented. Owner now
+permits appropriate Luna orchestration beyond this one-plan exception, with Sol
+read-only low/medium review retained; DECISION-043 and local agent instructions
+record that amendment. No second packet was launched by this acceptance.
+
+Parent sent BO Orch 44+ the outcome, coarse workflow observations, limits, copy
+feedback and machine-cache evidence under explicit owner communication authority.
+The tool returned a dispatch receipt; Bootstrap logging is not yet independently
+confirmed. No direct Bootstrap file writes. No Playwright installation or machine
+settings change was performed. Existing Playwright package is present; sandbox-
+redirected browser cache explains the missing default browser observation.

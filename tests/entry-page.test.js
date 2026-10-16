@@ -36,7 +36,7 @@ describe('Plan 12 entry page', () => {
     expect(entries.every((entry) => entry.classList.contains('app-practice-choice'))).toBe(true);
     expect(entries[1].textContent).toBe('Add fractions with the same denominator');
     expect(entries[1].disabled).toBe(false);
-    expect(root.querySelector('.app-creator-credit').textContent).toBe('Created by an educator');
+    expect(root.querySelector('.app-creator-credit').textContent).toBe('created with agentic support by Orion Smith, East Lansing HS');
     expect(root.querySelector('.app-episode').hasAttribute('hidden')).toBe(true);
     expect(root.querySelector('.app-display-menu').hasAttribute('hidden')).toBe(true);
     expect(root.querySelector('.app-entry-page .app-gear-button')).not.toBeNull();

@@ -375,7 +375,7 @@ export function createFractionFlowApp({
     aboutLink.textContent = 'About FractionFlow';
     entryPage.appendChild(aboutLink);
     const creatorCredit = makeElement('small', 'app-creator-credit');
-    creatorCredit.textContent = 'Created by an educator';
+    creatorCredit.textContent = 'created with agentic support by Orion Smith, East Lansing HS';
     entryPage.appendChild(creatorCredit);
     appRoot.appendChild(entryPage);
 

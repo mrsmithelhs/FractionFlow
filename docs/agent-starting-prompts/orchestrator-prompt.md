@@ -79,13 +79,20 @@ Do not quietly make changes that require owner policy decisions, external behavi
 
 ## Codex owner override — consultation cost
 
-Effective 2026-10-10, use only Sol-class subagents at low or medium reasoning effort;
-advisor consultations are read-only. No Astra-class consultation without a
-specific owner exception. State these limits explicitly in every Codex implementer
-handoff and apply them when supervising existing chats. Do not use a role or
-inherited configuration that forces higher effort or a prohibited model. If the
-allowed configuration is unavailable, review inline or use orchestrator-gate-only
-disposition; do not silently substitute. This overrides generic higher-tier advice.
+Amended by the owner on 2026-10-15: orchestrators may use Luna-class subagents for
+appropriate bounded purposes, including implementing packets. Use self-contained
+briefs, explicit write ownership, persisted checkpoints and existing gates; keep
+one implementation writer. Medium effort is the implementation default, with low
+effort appropriate for smaller tasks. Child fan-out needs its own authorization.
+
+Sol-class reviewers and all advisor consultations remain read-only at low/medium
+reasoning effort. No Astra-class consultation without a specific owner exception.
+State these limits explicitly in every Codex implementer handoff and apply them
+when supervising existing chats. Do not use a role or inherited configuration
+that forces prohibited effort/model settings. If the allowed configuration is
+unavailable, review inline or use orchestrator-gate-only disposition; do not
+silently substitute. This supersedes the earlier Sol-only orchestrator restriction
+and generic higher-tier advice; mechanism, owner and deployment gates still apply.
 
 <!-- bootstrap:advisor-consultation v1 begin -->
 ## Advisor Consultation (expectations for reviewers)

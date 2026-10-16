@@ -1144,3 +1144,24 @@ work. Standalone focused practice is optional, not the primary first integration
 across a compact problem bank, without bespoke per-problem instructional code.
 
 **Related:** Plan 29 scale-and-integration addendum; DECISION-034/041; Roadmap §28.
+
+### DECISION-043 - Permit bounded Luna orchestration with Sol review
+
+**Date:** 2026-10-15
+
+**Decision:** After inspecting Plan 33's one-plan Luna-subagent result, the owner
+amended the Sol-only orchestrator-subagent restriction. Orchestrators may use
+Luna-class subagents for appropriate purposes, including implementing packets.
+Keep explicit scope/ownership, self-contained briefs, persisted checkpoints,
+single-writer discipline and applicable mechanism/owner gates. Sol-class reviewers
+and all advisor consultations remain read-only at low/medium reasoning effort;
+no Astra consultation without a specific owner exception. Child fan-out is not
+implicitly authorized. Do not silently substitute models or roles.
+
+The pilot demonstrates a reviewable bounded delivery with active parent supervision,
+not quantified cost savings or suitability for every packet. Requested versus
+independently observable model identity and unavailable token/billing data remain
+explicit. No broader settings/fleet rollout or automatic next-packet launch follows.
+
+**Related:** AGENTS owner override; orchestrator/implementer prompts; Plan 33
+pilot checkpoints; Bootstrap Plan 49 (tracked by its own orchestrator).

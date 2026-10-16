@@ -162,16 +162,24 @@ and orchestrator starting prompts for the full behavioral contract and the requi
 disposition-record fields.
 <!-- bootstrap:advisor-consultation v1 end -->
 
-### Owner override — Codex consultation cost (2026-10-10)
+### Owner override — Codex delegation and consultation (amended 2026-10-15)
 
-Codex implementer advisor consultations and Codex orchestrator subagents may use
-only Sol-class models at low or medium reasoning effort. All advisors remain
-read-only. No Astra-class consultation is authorized without a specific owner
-exception. Every Codex implementer handoff must state these limits explicitly.
-Do not select roles or inherited settings that force a prohibited model or higher
-effort. If the harness cannot honor the allowed configuration, report the limitation
-and use orchestrator-gate-only review; do not silently substitute. This owner rule
-overrides conflicting generic higher-tier guidance and prior handoff language.
+Orchestrators may use Luna-class subagents for appropriate bounded purposes,
+including packet implementation, investigation and other delegated work. Use
+explicit ownership, a self-contained brief, applicable mechanism/owner gates and
+persisted checkpoints; keep writes single-threaded. Medium effort is the default
+for implementation; use low effort for smaller tasks where appropriate. A child
+does not gain fan-out authority merely because it is an implementation worker.
+
+Codex advisor consultations and Sol-class reviewer subagents remain read-only,
+at low or medium reasoning effort. No Astra-class consultation is authorized
+without a specific owner exception. Every Codex implementer handoff must state
+these limits explicitly. Do not select roles or inherited settings that force a
+prohibited model or effort. If the harness cannot honor the allowed configuration,
+report the limitation and use orchestrator-gate-only review; do not silently
+substitute. This owner amendment supersedes the earlier Sol-only orchestrator
+restriction and conflicting generic higher-tier guidance, not packet acceptance
+or deployment gates.
 
 <!-- bootstrap:commit-discipline v2 begin -->
 ## Commit Discipline
