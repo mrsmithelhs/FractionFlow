@@ -4433,6 +4433,1814 @@
       ],
       "expect": {"capture":{"target":".app-linear-view","type":"innerHTML"},"assertions":[{"type":"containsText","target":".app-linear-view .active-beat-prompt","value":"You finished this problem."},{"type":"notHasSelector","target":".app-linear-view #operate-fraction-numerator-input"},{"type":"notHasSelector","target":".app-linear-view .app-reflection"}]},
       "negativeControl":{"targetRouteId":"ROUTE-PLAN20-LIKE-ADDITION-VISUAL","comparison":"notIdenticalCapture","sameMotionMode":true}
+    },
+    {
+      "id": "ROUTE-PLAN34-CONSTRUCT-VISUAL-DEEP",
+      "behavior": "Use the shipped v5 default to construct both equivalents with optional typed help, add the total and finish without a second response.",
+      "configuration": "phase2-bundle-1",
+      "startingSurface": "mounted-app-entry",
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "motionMode": "standard-motion",
+      "witness": "browser",
+      "inputMode": "keyboard",
+      "actions": [
+        {
+          "method": "click",
+          "target": ".app-practice-button",
+          "description": "Start production v5",
+          "step": 1
+        },
+        {
+          "method": "assert",
+          "target": ".app-visual-view .active-beat-controls",
+          "assertions": [
+            {
+              "type": "containsText",
+              "target": ".app-visual-view .active-beat-controls",
+              "value": "Use twelfths."
+            },
+            {
+              "type": "notContainsText",
+              "target": ".app-visual-view .active-beat-controls",
+              "value": "11/12"
+            },
+            {
+              "type": "notHasSelector",
+              "target": ".app-visual-view #decide-common-denominator-input"
+            },
+            {
+              "type": "notHasSelector",
+              "target": ".app-visual-view .app-reflection"
+            }
+          ],
+          "description": "See supplied target and withhold skipped work",
+          "step": 2
+        },
+        {
+          "method": "screenshot",
+          "file": "reports/development/plan-34-reusable-full-addition-task-patterns/evidence/plan34-construct-encounter-360x740.png",
+          "caption": "Production v5 construct encounter at 360×740; target context and no answer shown.",
+          "description": "Production v5 construct encounter at 360×740; target context and no answer shown.",
+          "step": 3,
+          "measureLayout": true
+        },
+        {
+          "method": "click",
+          "target": ".app-visual-view .active-beat-controls .control-btn",
+          "description": "Acknowledge the displayed addition",
+          "step": 4
+        },
+        {
+          "method": "assert",
+          "target": ".app-visual-view .active-beat-controls",
+          "assertions": [
+            {
+              "type": "hasSelector",
+              "target": ".app-visual-view .active-beat-controls .app-secondary-button:not([hidden])"
+            },
+            {
+              "type": "notHasSelector",
+              "target": ".app-replay-button[aria-pressed=\"true\"]"
+            }
+          ],
+          "description": "Typed help is available and visible",
+          "step": 5
+        },
+        {
+          "method": "click",
+          "target": ".app-visual-view .active-beat-controls .app-secondary-button",
+          "description": "Open optional multiplier help",
+          "step": 6
+        },
+        {
+          "method": "assert",
+          "target": ".app-visual-view #visual-transform-task-help",
+          "assertions": [
+            {
+              "type": "hasSelector",
+              "target": ".app-visual-view #visual-transform-task-help input"
+            },
+            {
+              "type": "containsText",
+              "target": ".app-visual-view #visual-transform-task-help",
+              "value": "3 × ? = 12"
+            },
+            {
+              "type": "notContainsText",
+              "target": ".app-visual-view .active-beat-section",
+              "value": "8/12"
+            }
+          ],
+          "description": "Ask for multiplier without filling conversion",
+          "step": 7
+        },
+        {
+          "method": "screenshot",
+          "file": "reports/development/plan-34-reusable-full-addition-task-patterns/evidence/plan34-construct-help-360x740.png",
+          "caption": "Typed construct help requests the multiplier without supplying an equivalent fraction.",
+          "description": "Typed construct help requests the multiplier without supplying an equivalent fraction.",
+          "step": 8,
+          "measureLayout": true
+        },
+        {
+          "method": "fill",
+          "target": ".app-visual-view #visual-transform-task-help input",
+          "value": "3",
+          "description": "Try a wrong multiplier",
+          "step": 9
+        },
+        {
+          "method": "click",
+          "target": ".app-visual-view #visual-transform-task-help .control-submit-btn",
+          "description": "Submit wrong multiplier",
+          "step": 10
+        },
+        {
+          "method": "assert",
+          "target": ".app-visual-view .recovery-feedback",
+          "assertions": [
+            {
+              "type": "containsText",
+              "target": ".app-visual-view .recovery-feedback",
+              "value": "That number does not make the same size parts. Try again."
+            },
+            {
+              "type": "notContainsText",
+              "target": ".app-visual-view .active-beat-section",
+              "value": "8/12"
+            }
+          ],
+          "description": "Keep incorrect helper attempt local",
+          "step": 11
+        },
+        {
+          "method": "fill",
+          "target": ".app-visual-view #visual-transform-task-help input",
+          "value": "4",
+          "description": "Enter correct multiplier",
+          "step": 12
+        },
+        {
+          "method": "pressKey",
+          "target": ".app-visual-view #visual-transform-task-help input",
+          "value": "Enter",
+          "description": "Submit multiplier by keyboard",
+          "step": 13
+        },
+        {
+          "method": "assert",
+          "target": ".app-visual-view .active-beat-controls",
+          "assertions": [
+            {
+              "type": "containsText",
+              "target": ".app-visual-view .active-beat-controls",
+              "value": "Multiply the top by 4, too."
+            },
+            {
+              "type": "notContainsText",
+              "target": ".app-visual-view .active-beat-section",
+              "value": "8/12"
+            }
+          ],
+          "description": "Help accepts the multiplier but leaves conversion to learner",
+          "step": 14
+        },
+        {
+          "method": "fill",
+          "target": ".app-visual-view #transform-num-input-left",
+          "value": "8",
+          "description": "Enter left equivalent numerator",
+          "step": 15
+        },
+        {
+          "method": "pressKey",
+          "target": ".app-visual-view #transform-num-input-left",
+          "value": "Enter",
+          "description": "Submit left conversion by keyboard",
+          "step": 16
+        },
+        {
+          "method": "fill",
+          "target": ".app-visual-view #transform-num-input-right",
+          "value": "3",
+          "description": "Enter right equivalent numerator",
+          "step": 17
+        },
+        {
+          "method": "pressKey",
+          "target": ".app-visual-view #transform-num-input-right",
+          "value": "Enter",
+          "description": "Submit right conversion by keyboard",
+          "step": 18
+        },
+        {
+          "method": "fill",
+          "target": ".app-visual-view #operate-sum-input",
+          "value": "11",
+          "description": "Enter total",
+          "step": 19
+        },
+        {
+          "method": "pressKey",
+          "target": ".app-visual-view #operate-sum-input",
+          "value": "Enter",
+          "description": "Submit total by keyboard",
+          "step": 20
+        },
+        {
+          "method": "assert",
+          "target": ".app-visual-view .active-beat-prompt",
+          "assertions": [
+            {
+              "type": "containsText",
+              "target": ".app-visual-view .active-beat-prompt",
+              "value": "That's right."
+            },
+            {
+              "type": "notContainsText",
+              "target": ".app-visual-view .completed-beats-section",
+              "value": "Units do not match."
+            },
+            {
+              "type": "notContainsText",
+              "target": ".app-visual-view .completed-beats-section",
+              "value": "Common denominator:"
+            },
+            {
+              "type": "notHasSelector",
+              "target": ".app-visual-view .app-reflection"
+            }
+          ],
+          "description": "Show a single compact completion prompt",
+          "step": 21
+        },
+        {
+          "method": "screenshot",
+          "file": "reports/development/plan-34-reusable-full-addition-task-patterns/evidence/plan34-construct-resolve-360x740.png",
+          "caption": "Construct pattern reaches its total and navigation-only Finish at 360×740.",
+          "description": "Construct pattern reaches its total and navigation-only Finish at 360×740.",
+          "step": 22,
+          "settleAnimations": true,
+          "measureLayout": true
+        },
+        {
+          "method": "click",
+          "target": ".app-visual-view .active-beat-controls .control-btn",
+          "description": "Finish without another numeric response",
+          "step": 23
+        },
+        {
+          "method": "click",
+          "target": ".app-next-button",
+          "description": "Next reaches second authored identity",
+          "step": 24
+        },
+        {
+          "method": "assert",
+          "target": ".app-visual-view .active-beat-controls",
+          "assertions": [
+            {
+              "type": "containsText",
+              "target": ".app-visual-view .active-beat-controls",
+              "value": "Use twelfths."
+            },
+            {
+              "type": "notContainsText",
+              "target": ".app-visual-view .active-beat-controls",
+              "value": "5/12"
+            }
+          ],
+          "description": "Next reaches inspect context without exposing its proposal at encounter",
+          "step": 25
+        }
+      ],
+      "expect": {
+        "capture": {
+          "target": ".app-visual-view",
+          "type": "innerHTML"
+        },
+        "assertions": [
+          {
+            "type": "containsText",
+            "target": ".app-visual-view .active-beat-controls",
+            "value": "Use twelfths."
+          },
+          {
+            "type": "notHasSelector",
+            "target": ".app-visual-view .app-reflection"
+          }
+        ]
+      }
+    },
+    {
+      "id": "ROUTE-PLAN34-INSPECT-LINEAR-DEEP",
+      "behavior": "Complete the construct, inspect the second compact identity in linear view, preserve and repair a draft across view changes, then operate and Finish in linear view by touch and keyboard.",
+      "configuration": "phase2-bundle-2",
+      "startingSurface": "mounted-app-entry",
+      "viewport": {
+        "width": 360,
+        "height": 752
+      },
+      "motionMode": "reduced-motion",
+      "witness": "browser",
+      "inputMode": "touch",
+      "actions": [
+        {
+          "method": "click",
+          "target": ".app-gear-button",
+          "description": "Open settings for medium-support condition",
+          "step": 1
+        },
+        {
+          "method": "click",
+          "target": "[data-condition-id=\"phase2-bundle-2\"]",
+          "description": "Select static juxtaposed condition",
+          "step": 2
+        },
+        {
+          "method": "click",
+          "target": ".app-gear-button",
+          "description": "Reopen settings for support",
+          "step": 3
+        },
+        {
+          "method": "click",
+          "target": "[data-support-id=\"medium-support\"]",
+          "description": "Select medium support",
+          "step": 4
+        },
+        {
+          "method": "tap",
+          "target": ".app-practice-button",
+          "description": "Start production v5",
+          "step": 5
+        },
+        {
+          "method": "tap",
+          "target": ".app-visual-view .active-beat-controls .control-btn",
+          "description": "Acknowledge construct encounter",
+          "step": 6
+        },
+        {
+          "method": "tap",
+          "target": ".app-visual-view #transform-num-input-left",
+          "description": "Touch-focus Construct left equivalent",
+          "step": 7
+        },
+        {
+          "method": "assertFocused",
+          "target": ".app-visual-view #transform-num-input-left",
+          "description": "Verify touch focus before fill: Construct left equivalent",
+          "step": 8
+        },
+        {
+          "method": "fill",
+          "target": ".app-visual-view #transform-num-input-left",
+          "value": "8",
+          "description": "Construct left equivalent",
+          "step": 9
+        },
+        {
+          "method": "tap",
+          "target": ".app-visual-view #transform-num-input-left + .control-submit-btn",
+          "description": "Submit construct left",
+          "step": 10
+        },
+        {
+          "method": "tap",
+          "target": ".app-visual-view #transform-num-input-right",
+          "description": "Touch-focus Construct right equivalent",
+          "step": 11
+        },
+        {
+          "method": "assertFocused",
+          "target": ".app-visual-view #transform-num-input-right",
+          "description": "Verify touch focus before fill: Construct right equivalent",
+          "step": 12
+        },
+        {
+          "method": "fill",
+          "target": ".app-visual-view #transform-num-input-right",
+          "value": "3",
+          "description": "Construct right equivalent",
+          "step": 13
+        },
+        {
+          "method": "tap",
+          "target": ".app-visual-view #transform-num-input-right + .control-submit-btn",
+          "description": "Submit construct right",
+          "step": 14
+        },
+        {
+          "method": "tap",
+          "target": ".app-visual-view #operate-sum-input",
+          "description": "Touch-focus Enter construct total",
+          "step": 15
+        },
+        {
+          "method": "assertFocused",
+          "target": ".app-visual-view #operate-sum-input",
+          "description": "Verify touch focus before fill: Enter construct total",
+          "step": 16
+        },
+        {
+          "method": "fill",
+          "target": ".app-visual-view #operate-sum-input",
+          "value": "11",
+          "description": "Enter construct total",
+          "step": 17
+        },
+        {
+          "method": "tap",
+          "target": ".app-visual-view #operate-sum-input + .control-submit-btn",
+          "description": "Submit construct total",
+          "step": 18
+        },
+        {
+          "method": "tap",
+          "target": ".app-visual-view .active-beat-controls .control-btn",
+          "description": "Finish construct through navigation",
+          "step": 19
+        },
+        {
+          "method": "tap",
+          "target": ".app-next-button",
+          "description": "Advance to second identity by touch",
+          "step": 20
+        },
+        {
+          "method": "tap",
+          "target": ".app-view-toggle",
+          "description": "Choose linear surface by touch",
+          "step": 21
+        },
+        {
+          "method": "assert",
+          "target": ".app-linear-view .active-beat-controls",
+          "assertions": [
+            {
+              "type": "containsText",
+              "target": ".app-linear-view .active-beat-controls",
+              "value": "Use twelfths."
+            },
+            {
+              "type": "notContainsText",
+              "target": ".app-linear-view .active-beat-controls",
+              "value": "5/12"
+            },
+            {
+              "type": "notHasSelector",
+              "target": ".app-linear-view #linear-transform-num-input-left"
+            }
+          ],
+          "description": "Target shown but candidate withheld at encounter",
+          "step": 22
+        },
+        {
+          "method": "screenshot",
+          "file": "reports/development/plan-34-reusable-full-addition-task-patterns/evidence/plan34-inspect-encounter-linear-360x752.png",
+          "caption": "Second authored identity in the linear path at 360×752, before its candidate is shown.",
+          "description": "Second authored identity in the linear path at 360×752, before its candidate is shown.",
+          "step": 23,
+          "measureLayout": true
+        },
+        {
+          "method": "tap",
+          "target": ".app-linear-view .active-beat-controls .control-btn",
+          "description": "Acknowledge inspect encounter by touch",
+          "step": 24
+        },
+        {
+          "method": "assert",
+          "target": ".app-linear-view .active-beat-prompt",
+          "assertions": [
+            {
+              "type": "containsText",
+              "target": ".app-linear-view .active-beat-prompt",
+              "value": "Does this proposal show the same amount as the first fraction?"
+            },
+            {
+              "type": "hasSelector",
+              "target": ".app-linear-view .symbolic-fraction"
+            },
+            {
+              "type": "notContainsText",
+              "target": ".app-linear-view .active-beat-section",
+              "value": "6/12"
+            },
+            {
+              "target": ".app-linear-view .active-beat-section",
+              "value": "6/12",
+              "type": "notContainsAccessibleText"
+            }
+          ],
+          "description": "Ask a side-specific question and show stacked proposal",
+          "step": 25
+        },
+        {
+          "method": "screenshot",
+          "file": "reports/development/plan-34-reusable-full-addition-task-patterns/evidence/plan34-inspect-candidate-linear-360x752.png",
+          "caption": "Inspect shows a stacked proposal and withholds its validity and answer.",
+          "description": "Inspect shows a stacked proposal and withholds its validity and answer.",
+          "step": 26,
+          "measureLayout": true
+        },
+        {
+          "method": "tap",
+          "target": ".app-linear-view .active-beat-controls .app-secondary-button",
+          "description": "Open typed help by touch",
+          "step": 27
+        },
+        {
+          "method": "assert",
+          "target": ".app-linear-view .active-beat-controls",
+          "assertions": [
+            {
+              "type": "attributeEquals",
+              "target": ".app-linear-view .active-beat-controls .app-secondary-button",
+              "attribute": "aria-controls",
+              "value": "linear-transform-task-help"
+            },
+            {
+              "type": "containsText",
+              "target": ".app-linear-view #linear-transform-task-help",
+              "value": "The top and bottom must use the same multiplier"
+            },
+            {
+              "type": "notContainsText",
+              "target": ".app-linear-view .active-beat-section",
+              "value": "correct"
+            }
+          ],
+          "description": "Visible help is associated and non-answering",
+          "step": 28
+        },
+        {
+          "method": "tap",
+          "target": ".app-linear-view .active-beat-controls button.control-choice-btn >> nth=0",
+          "description": "Keep false authored proposal by touch",
+          "step": 29
+        },
+        {
+          "method": "assert",
+          "target": ".app-linear-view .recovery-feedback",
+          "assertions": [
+            {
+              "type": "containsText",
+              "target": ".app-linear-view .recovery-feedback",
+              "value": "Not quite."
+            }
+          ],
+          "description": "False proposal is rejected without changing original amount",
+          "step": 30
+        },
+        {
+          "method": "screenshot",
+          "file": "reports/development/plan-34-reusable-full-addition-task-patterns/evidence/plan34-inspect-false-keep-linear-360x752.png",
+          "caption": "False keep preserves one-half and causes no conservation animation.",
+          "description": "False keep preserves one-half and causes no conservation animation.",
+          "step": 31,
+          "measureLayout": true
+        },
+        {
+          "method": "pressKey",
+          "target": ".app-linear-view .inspect-change-button",
+          "value": "Enter",
+          "description": "Open Change top number by keyboard",
+          "step": 32
+        },
+        {
+          "method": "tap",
+          "target": ".app-linear-view #linear-transform-num-input-left",
+          "description": "Touch-focus Draft an invalid numerator",
+          "step": 33
+        },
+        {
+          "method": "assertFocused",
+          "target": ".app-linear-view #linear-transform-num-input-left",
+          "description": "Verify actual focus before fill: Draft an invalid numerator",
+          "step": 34
+        },
+        {
+          "method": "fill",
+          "target": ".app-linear-view #linear-transform-num-input-left",
+          "value": "7",
+          "description": "Draft an invalid numerator",
+          "step": 35
+        },
+        {
+          "method": "pressKey",
+          "target": ".app-linear-view #linear-transform-num-input-left",
+          "value": "Enter",
+          "description": "Submit invalid repair by keyboard",
+          "step": 36
+        },
+        {
+          "method": "assert",
+          "target": ".app-linear-view .recovery-feedback",
+          "assertions": [
+            {
+              "type": "containsText",
+              "target": ".app-linear-view .recovery-feedback",
+              "value": "Not quite."
+            }
+          ],
+          "description": "Invalid repair stays unaccepted",
+          "step": 37
+        },
+        {
+          "method": "tap",
+          "target": ".app-linear-view #linear-transform-num-input-left",
+          "description": "Touch-focus Correct repair and leave draft unsubmitted",
+          "step": 38
+        },
+        {
+          "method": "assertFocused",
+          "target": ".app-linear-view #linear-transform-num-input-left",
+          "description": "Verify actual focus before fill: Correct repair and leave draft unsubmitted",
+          "step": 39
+        },
+        {
+          "method": "fill",
+          "target": ".app-linear-view #linear-transform-num-input-left",
+          "value": "6",
+          "description": "Correct repair and leave draft unsubmitted",
+          "step": 40
+        },
+        {
+          "method": "tap",
+          "target": ".app-view-toggle",
+          "description": "Switch surface while repair has focus",
+          "step": 41
+        },
+        {
+          "method": "assertFocused",
+          "target": ".app-visual-view #transform-num-input-left",
+          "description": "Preserve actual input focus across view switch",
+          "step": 42
+        },
+        {
+          "method": "assert",
+          "target": ".app-visual-view #transform-num-input-left",
+          "assertions": [
+            {
+              "type": "inputValueEquals",
+              "target": ".app-visual-view #transform-num-input-left",
+              "value": "6"
+            }
+          ],
+          "description": "Preserve the entered repair draft",
+          "step": 43
+        },
+        {
+          "method": "click",
+          "target": ".app-visual-view .active-beat-controls .app-secondary-button",
+          "description": "Close help without discarding draft",
+          "step": 44
+        },
+        {
+          "method": "pressKey",
+          "target": ".app-visual-view .active-beat-controls .app-secondary-button",
+          "value": "Enter",
+          "description": "Reopen help from keyboard",
+          "step": 45
+        },
+        {
+          "method": "assert",
+          "target": ".app-visual-view .active-beat-controls",
+          "assertions": [
+            {
+              "type": "attributeEquals",
+              "target": ".app-visual-view .active-beat-controls .app-secondary-button",
+              "attribute": "aria-controls",
+              "value": "visual-transform-task-help"
+            },
+            {
+              "type": "inputValueEquals",
+              "target": ".app-visual-view #transform-num-input-left",
+              "value": "6"
+            }
+          ],
+          "description": "Help follows the repaired draft into visual view",
+          "step": 46
+        },
+        {
+          "method": "tap",
+          "target": ".app-view-toggle",
+          "description": "Return to linear view before accepted repair and operation",
+          "step": 47
+        },
+        {
+          "method": "assertFocused",
+          "target": ".app-linear-view #linear-transform-num-input-left",
+          "description": "Restore actual linear repair focus without harness focus repair",
+          "step": 48
+        },
+        {
+          "method": "assert",
+          "target": ".app-linear-view #linear-transform-num-input-left",
+          "assertions": [
+            {
+              "type": "inputValueEquals",
+              "target": ".app-linear-view #linear-transform-num-input-left",
+              "value": "6"
+            }
+          ],
+          "description": "Keep the unsubmitted left draft for the learner keyboard response",
+          "step": 49
+        },
+        {
+          "method": "pressKey",
+          "target": ".app-linear-view #linear-transform-num-input-left",
+          "value": "Enter",
+          "description": "Submit valid changed repair by keyboard",
+          "step": 50
+        },
+        {
+          "method": "assert",
+          "target": ".app-linear-view .active-beat-prompt",
+          "assertions": [
+            {
+              "type": "containsText",
+              "target": ".app-visual-view .active-beat-prompt",
+              "value": "second fraction"
+            }
+          ],
+          "description": "Valid repair advances to the authored right proposal",
+          "step": 51
+        },
+        {
+          "method": "click",
+          "target": ".app-linear-view .active-beat-controls .inspect-change-button",
+          "description": "Change the already-valid right top number",
+          "step": 52
+        },
+        {
+          "method": "tap",
+          "target": ".app-linear-view #linear-transform-num-input-right",
+          "description": "Touch-focus Submit unchanged right numerator",
+          "step": 53
+        },
+        {
+          "method": "assertFocused",
+          "target": ".app-linear-view #linear-transform-num-input-right",
+          "description": "Verify actual focus before fill: Submit unchanged right numerator",
+          "step": 54
+        },
+        {
+          "method": "fill",
+          "target": ".app-linear-view #linear-transform-num-input-right",
+          "value": "4",
+          "description": "Submit unchanged right numerator",
+          "step": 55
+        },
+        {
+          "method": "pressKey",
+          "target": ".app-linear-view #linear-transform-num-input-right",
+          "value": "Enter",
+          "description": "Confirm unchanged edit by keyboard",
+          "step": 56
+        },
+        {
+          "step": 57,
+          "method": "assert",
+          "target": ".app-linear-view .completed-beats-section",
+          "assertions": [
+            {
+              "type": "containsText",
+              "target": ".app-visual-view .completed-beats-section",
+              "value": "1/3 = 4/12"
+            },
+            {
+              "type": "containsText",
+              "target": ".app-visual-view .active-beat-prompt",
+              "value": "Add the shaded parts together."
+            }
+          ],
+          "description": "The unchanged edit is accepted as the authored right conversion"
+        },
+        {
+          "method": "assert",
+          "target": ".app-linear-view .active-beat-prompt",
+          "assertions": [
+            {
+              "type": "containsText",
+              "target": ".app-visual-view .active-beat-prompt",
+              "value": "Add the shaded parts together."
+            },
+            {
+              "type": "containsText",
+              "target": ".app-visual-view .completed-beats-section",
+              "value": "1/2 = 6/12"
+            },
+            {
+              "type": "containsText",
+              "target": ".app-visual-view .completed-beats-section",
+              "value": "1/3 = 4/12"
+            }
+          ],
+          "description": "Both conversions are accepted",
+          "step": 58
+        },
+        {
+          "method": "tap",
+          "target": ".app-linear-view #linear-operate-sum-input",
+          "description": "Touch-focus Enter sum",
+          "step": 59
+        },
+        {
+          "method": "assertFocused",
+          "target": ".app-linear-view #linear-operate-sum-input",
+          "description": "Verify actual focus before fill: Enter sum",
+          "step": 60
+        },
+        {
+          "method": "fill",
+          "target": ".app-linear-view #linear-operate-sum-input",
+          "value": "10",
+          "description": "Enter sum",
+          "step": 61
+        },
+        {
+          "method": "pressKey",
+          "target": ".app-linear-view #linear-operate-sum-input",
+          "value": "Enter",
+          "description": "Submit sum by keyboard",
+          "step": 62
+        },
+        {
+          "method": "assert",
+          "target": ".app-linear-view .completed-beats-section",
+          "assertions": [
+            {
+              "type": "containsText",
+              "target": ".app-visual-view .completed-beats-section",
+              "value": "Sum: 10/12"
+            },
+            {
+              "type": "notContainsText",
+              "target": ".app-visual-view .completed-beats-section",
+              "value": "Units do not match."
+            },
+            {
+              "type": "notContainsText",
+              "target": ".app-visual-view .completed-beats-section",
+              "value": "Common denominator:"
+            },
+            {
+              "type": "notHasSelector",
+              "target": ".app-visual-view .app-reflection"
+            },
+            {
+              "target": ".app-episode",
+              "value": "Units do not match.",
+              "type": "notContainsText"
+            },
+            {
+              "target": ".app-episode",
+              "value": "Units do not match.",
+              "type": "notContainsAccessibleText"
+            }
+          ],
+          "description": "At resolve, keep conversions and sum, omit skipped milestones",
+          "step": 63
+        },
+        {
+          "method": "screenshot",
+          "file": "reports/development/plan-34-reusable-full-addition-task-patterns/evidence/plan34-inspect-resolve-linear-360x752.png",
+          "caption": "Inspect resolve in linear view retains accepted conversions and has no omitted Notice/Decide summary.",
+          "description": "Inspect resolve in linear view retains accepted conversions and has no omitted Notice/Decide summary.",
+          "step": 64,
+          "settleAnimations": true,
+          "measureLayout": true
+        },
+        {
+          "method": "tap",
+          "target": ".app-linear-view .active-beat-controls .control-btn",
+          "description": "Finish compact inspect episode by touch",
+          "step": 65
+        },
+        {
+          "method": "assert",
+          "target": ".app-next-button",
+          "assertions": [
+            {
+              "type": "hasSelector",
+              "target": ".app-next-button:not([hidden])"
+            }
+          ],
+          "description": "Navigation appears after actual Finish",
+          "step": 66
+        }
+      ],
+      "expect": {
+        "capture": {
+          "target": ".app-linear-view",
+          "type": "innerHTML"
+        },
+        "assertions": [
+          {
+            "type": "containsText",
+            "target": ".app-visual-view .completed-beats-section",
+            "value": "Sum: 10/12"
+          },
+          {
+            "type": "notContainsText",
+            "target": ".app-visual-view .completed-beats-section",
+            "value": "Units do not match."
+          }
+        ]
+      }
+    },
+    {
+      "id": "ROUTE-PLAN34-THIRD-IDENTITY-WIDE",
+      "behavior": "Complete the first compact construct, traverse legacy v4 items 2 through 4, then inspect the third authored compact identity (bank position 5) at a wide viewport.",
+      "configuration": "phase2-bundle-3",
+      "startingSurface": "mounted-app-entry",
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "motionMode": "standard-motion",
+      "witness": "browser",
+      "inputMode": "mouse",
+      "actions": [
+        {
+          "method": "click",
+          "target": ".app-gear-button",
+          "description": "Open settings for wide static choreography",
+          "step": 1
+        },
+        {
+          "method": "click",
+          "target": "[data-condition-id=\"phase2-bundle-3\"]",
+          "description": "Select sequential static condition",
+          "step": 2
+        },
+        {
+          "method": "click",
+          "target": ".app-gear-button",
+          "description": "Reopen settings for support",
+          "step": 3
+        },
+        {
+          "method": "click",
+          "target": ".app-practice-button",
+          "description": "Start production v5",
+          "step": 4
+        },
+        {
+          "method": "click",
+          "target": ".app-visual-view .active-beat-controls .control-btn",
+          "description": "Acknowledge construct encounter",
+          "step": 5
+        },
+        {
+          "method": "fill",
+          "target": ".app-visual-view #transform-num-input-left",
+          "value": "8",
+          "description": "Construct left equivalent",
+          "step": 6
+        },
+        {
+          "method": "click",
+          "target": ".app-visual-view #transform-num-input-left + .control-submit-btn",
+          "description": "Submit construct left",
+          "step": 7
+        },
+        {
+          "method": "fill",
+          "target": ".app-visual-view #transform-num-input-right",
+          "value": "3",
+          "description": "Construct right equivalent",
+          "step": 8
+        },
+        {
+          "method": "click",
+          "target": ".app-visual-view #transform-num-input-right + .control-submit-btn",
+          "description": "Submit construct right",
+          "step": 9
+        },
+        {
+          "method": "fill",
+          "target": ".app-visual-view #operate-sum-input",
+          "value": "11",
+          "description": "Enter construct total",
+          "step": 10
+        },
+        {
+          "method": "click",
+          "target": ".app-visual-view #operate-sum-input + .control-submit-btn",
+          "description": "Submit construct total",
+          "step": 11
+        },
+        {
+          "step": 12,
+          "method": "screenshot",
+          "file": "reports/development/plan-34-reusable-full-addition-task-patterns/evidence/plan34-construct-visual-wide.png",
+          "caption": "The construct pattern after the learner establishes both twelfths and the sum.",
+          "description": "Capture the completed construct response before navigation.",
+          "settleAnimations": true,
+          "measureLayout": true
+        },
+        {
+          "method": "click",
+          "target": ".app-visual-view .active-beat-controls .control-btn",
+          "description": "Finish construct through navigation",
+          "step": 13
+        },
+        {
+          "method": "click",
+          "target": ".app-next-button",
+          "description": "Advance to second identity",
+          "step": 14
+        },
+        {
+          "method": "click",
+          "target": ".app-visual-view .active-beat-controls .control-btn",
+          "description": "Acknowledge second inspect encounter",
+          "step": 15
+        },
+        {
+          "method": "click",
+          "target": ".app-visual-view .active-beat-controls .inspect-change-button",
+          "description": "Change the false left proposal",
+          "step": 16
+        },
+        {
+          "method": "fill",
+          "target": ".app-visual-view #transform-num-input-left",
+          "value": "6",
+          "description": "Repair half to six twelfths",
+          "step": 17
+        },
+        {
+          "method": "click",
+          "target": ".app-visual-view #transform-num-input-left + .control-submit-btn",
+          "description": "Submit valid repair",
+          "step": 18
+        },
+        {
+          "method": "click",
+          "target": ".app-visual-view .active-beat-controls button.control-choice-btn >> nth=0",
+          "description": "Keep valid right candidate",
+          "step": 19
+        },
+        {
+          "method": "fill",
+          "target": ".app-visual-view #operate-sum-input",
+          "value": "10",
+          "description": "Enter second-item sum",
+          "step": 20
+        },
+        {
+          "method": "click",
+          "target": ".app-visual-view #operate-sum-input + .control-submit-btn",
+          "description": "Submit second-item sum",
+          "step": 21
+        },
+        {
+          "method": "click",
+          "target": ".app-visual-view .active-beat-controls .control-btn",
+          "description": "Finish second item",
+          "step": 22
+        },
+        {
+          "method": "click",
+          "target": ".app-next-button",
+          "description": "Advance from bank item two to bank item three",
+          "step": 23
+        },
+        {
+          "method": "click",
+          "target": ".app-visual-view .active-beat-controls .control-btn",
+          "description": "Bank item three: acknowledge encounter",
+          "step": 24
+        },
+        {
+          "method": "click",
+          "target": ".app-visual-view .active-beat-controls .control-choice-btn >> nth=1",
+          "description": "Bank item three: notice unlike denominators",
+          "step": 25
+        },
+        {
+          "method": "click",
+          "target": ".app-visual-view .active-beat-controls .control-choice-btn >> nth=0",
+          "description": "Bank item three: choose denominator ten",
+          "step": 26
+        },
+        {
+          "method": "fill",
+          "target": ".app-visual-view input.control-numeric-input",
+          "value": "5",
+          "description": "Bank item three: enter left exact conversion",
+          "step": 27
+        },
+        {
+          "method": "click",
+          "target": ".app-visual-view .control-submit-btn",
+          "description": "Bank item three: accept left conversion",
+          "step": 28
+        },
+        {
+          "method": "fill",
+          "target": ".app-visual-view input.control-numeric-input",
+          "value": "2",
+          "description": "Bank item three: enter right exact conversion",
+          "step": 29
+        },
+        {
+          "method": "click",
+          "target": ".app-visual-view .control-submit-btn",
+          "description": "Bank item three: accept right conversion",
+          "step": 30
+        },
+        {
+          "method": "fill",
+          "target": ".app-visual-view input.control-numeric-input",
+          "value": "7",
+          "description": "Bank item three: enter exact total",
+          "step": 31
+        },
+        {
+          "method": "click",
+          "target": ".app-visual-view .control-submit-btn",
+          "description": "Bank item three: submit total",
+          "step": 32
+        },
+        {
+          "method": "click",
+          "target": ".app-visual-view .active-beat-controls .control-btn",
+          "description": "Bank item three: continue to reflection",
+          "step": 33
+        },
+        {
+          "method": "clickEquivalentChoice",
+          "target": ".app-visual-view .matching-choice-btn",
+          "description": "Bank item three: finish the established reflection",
+          "step": 34,
+          "numerator": "1",
+          "denominator": "2"
+        },
+        {
+          "method": "pressKey",
+          "target": ".app-next-button",
+          "value": "Enter",
+          "description": "Bank item three: advance using the mounted Next control",
+          "step": 35
+        },
+        {
+          "method": "click",
+          "target": ".app-visual-view .active-beat-controls .control-btn",
+          "description": "Bank item four: acknowledge encounter",
+          "step": 36
+        },
+        {
+          "method": "click",
+          "target": ".app-visual-view .active-beat-controls .control-choice-btn >> nth=1",
+          "description": "Bank item four: notice unlike denominators",
+          "step": 37
+        },
+        {
+          "method": "click",
+          "target": ".app-visual-view .active-beat-controls .control-choice-btn >> nth=0",
+          "description": "Bank item four: choose denominator ten",
+          "step": 38
+        },
+        {
+          "method": "fill",
+          "target": ".app-visual-view input.control-numeric-input",
+          "value": "5",
+          "description": "Bank item four: enter left exact conversion",
+          "step": 39
+        },
+        {
+          "method": "click",
+          "target": ".app-visual-view .control-submit-btn",
+          "description": "Bank item four: accept left conversion",
+          "step": 40
+        },
+        {
+          "method": "fill",
+          "target": ".app-visual-view input.control-numeric-input",
+          "value": "4",
+          "description": "Bank item four: enter right exact conversion",
+          "step": 41
+        },
+        {
+          "method": "click",
+          "target": ".app-visual-view .control-submit-btn",
+          "description": "Bank item four: accept right conversion",
+          "step": 42
+        },
+        {
+          "method": "fill",
+          "target": ".app-visual-view input.control-numeric-input",
+          "value": "9",
+          "description": "Bank item four: enter exact total",
+          "step": 43
+        },
+        {
+          "method": "click",
+          "target": ".app-visual-view .control-submit-btn",
+          "description": "Bank item four: submit total",
+          "step": 44
+        },
+        {
+          "method": "click",
+          "target": ".app-visual-view .active-beat-controls .control-btn",
+          "description": "Bank item four: continue to reflection",
+          "step": 45
+        },
+        {
+          "method": "clickEquivalentChoice",
+          "target": ".app-visual-view .matching-choice-btn",
+          "description": "Bank item four: finish the established reflection",
+          "step": 46,
+          "numerator": "1",
+          "denominator": "2"
+        },
+        {
+          "method": "pressKey",
+          "target": ".app-next-button",
+          "value": "Enter",
+          "description": "Bank item four: advance using the mounted Next control",
+          "step": 47
+        },
+        {
+          "method": "assert",
+          "target": ".app-visual-view .active-beat-controls",
+          "assertions": [
+            {
+              "type": "containsAccessibleText",
+              "target": ".app-visual-view .symbolic-expression",
+              "value": "1 over 3"
+            },
+            {
+              "type": "containsAccessibleText",
+              "target": ".app-visual-view .symbolic-expression",
+              "value": "1 over 4"
+            },
+            {
+              "type": "notContainsAccessibleText",
+              "target": ".app-visual-view .active-beat-controls",
+              "value": "7 over 12"
+            }
+          ],
+          "description": "Reach third item without proposal at encounter",
+          "step": 48
+        },
+        {
+          "method": "screenshot",
+          "file": "reports/development/plan-34-reusable-full-addition-task-patterns/evidence/plan34-third-identity-wide-encounter.png",
+          "caption": "Third authored inspect identity at a wide CSS viewport before candidate display.",
+          "description": "Third authored inspect identity at a wide CSS viewport before candidate display.",
+          "step": 49,
+          "measureLayout": true
+        },
+        {
+          "method": "click",
+          "target": ".app-visual-view .active-beat-controls .control-btn",
+          "description": "Acknowledge third inspect encounter",
+          "step": 50
+        },
+        {
+          "method": "assert",
+          "target": ".app-visual-view .active-beat-prompt",
+          "assertions": [
+            {
+              "type": "containsText",
+              "target": ".app-visual-view .active-beat-prompt",
+              "value": "first fraction"
+            }
+          ],
+          "description": "Side-specific question refers to first source fraction",
+          "step": 51
+        },
+        {
+          "method": "click",
+          "target": ".app-visual-view .active-beat-controls button.control-choice-btn >> nth=0",
+          "description": "Keep valid four-twelfths left proposal",
+          "step": 52
+        },
+        {
+          "method": "assert",
+          "target": ".app-visual-view .active-beat-prompt",
+          "assertions": [
+            {
+              "type": "containsText",
+              "target": ".app-visual-view .active-beat-prompt",
+              "value": "second fraction"
+            }
+          ],
+          "description": "Valid left keep advances to second source fraction",
+          "step": 53
+        },
+        {
+          "method": "assert",
+          "target": ".app-visual-view .active-beat-controls",
+          "assertions": [
+            {
+              "type": "hasSelector",
+              "target": ".app-visual-view .symbolic-fraction"
+            },
+            {
+              "type": "notContainsText",
+              "target": ".app-visual-view .active-beat-section",
+              "value": "1/12"
+            }
+          ],
+          "description": "Show false seven-twelfths proposal as stacked fraction",
+          "step": 54
+        },
+        {
+          "method": "click",
+          "target": ".app-visual-view .active-beat-controls button.control-choice-btn >> nth=0",
+          "description": "Keep false right proposal to test recovery",
+          "step": 55
+        },
+        {
+          "method": "assert",
+          "target": ".app-visual-view .recovery-feedback",
+          "assertions": [
+            {
+              "type": "containsText",
+              "target": ".app-visual-view .recovery-feedback",
+              "value": "Not quite."
+            },
+            {
+              "type": "notContainsText",
+              "target": ".app-visual-view .completed-beats-section",
+              "value": "7/12"
+            },
+            {
+              "type": "notContainsAccessibleText",
+              "target": ".app-visual-view .completed-beats-section",
+              "value": "7 over 12"
+            }
+          ],
+          "description": "False stimulus is not a conversion or conserved pre-state",
+          "step": 56
+        },
+        {
+          "method": "assertNoSubdivisionMotion",
+          "container": ".app-visual-view .fraction-bar-container",
+          "expectBoundaries": false,
+          "description": "A false kept proposal produces no boundary or conservation animation.",
+          "step": 57
+        },
+        {
+          "method": "screenshot",
+          "file": "reports/development/plan-34-reusable-full-addition-task-patterns/evidence/plan34-third-identity-false-stimulus-wide.png",
+          "caption": "Third identity rejects false proposal without animating it as conserved.",
+          "description": "Third identity rejects false proposal without animating it as conserved.",
+          "step": 58,
+          "measureLayout": true
+        },
+        {
+          "method": "click",
+          "target": ".app-visual-view .active-beat-controls .inspect-change-button",
+          "description": "Change the false right proposal",
+          "step": 59
+        },
+        {
+          "method": "fill",
+          "target": ".app-visual-view #transform-num-input-right",
+          "value": "3",
+          "description": "Repair one-fourth to three twelfths",
+          "step": 60
+        },
+        {
+          "method": "pressKey",
+          "target": ".app-visual-view #transform-num-input-right",
+          "value": "Enter",
+          "description": "Submit right repair by keyboard",
+          "step": 61
+        },
+        {
+          "method": "fill",
+          "target": ".app-visual-view #operate-sum-input",
+          "value": "7",
+          "description": "Enter one-third plus one-fourth",
+          "step": 62
+        },
+        {
+          "method": "pressKey",
+          "target": ".app-visual-view #operate-sum-input",
+          "value": "Enter",
+          "description": "Submit compact total by keyboard",
+          "step": 63
+        },
+        {
+          "method": "assert",
+          "target": ".app-visual-view .completed-beats-section",
+          "assertions": [
+            {
+              "type": "containsText",
+              "target": ".app-visual-view .completed-beats-section",
+              "value": "Sum: 7/12"
+            },
+            {
+              "type": "notContainsText",
+              "target": ".app-visual-view .completed-beats-section",
+              "value": "Notice:"
+            },
+            {
+              "type": "notContainsText",
+              "target": ".app-visual-view .completed-beats-section",
+              "value": "Common denominator:"
+            }
+          ],
+          "description": "Complete the fifth identity in visual mode",
+          "step": 64
+        },
+        {
+          "method": "click",
+          "target": ".app-visual-view .active-beat-controls .control-btn",
+          "description": "Finish fifth identity in visual mode",
+          "step": 65
+        },
+        {
+          "method": "click",
+          "target": ".app-restart-button",
+          "description": "Retry the same fixed fifth identity",
+          "step": 66
+        },
+        {
+          "method": "assert",
+          "target": ".app-visual-view .symbolic-expression",
+          "assertions": [
+            {
+              "type": "containsAccessibleText",
+              "target": ".app-visual-view .symbolic-expression",
+              "value": "1 over 3"
+            },
+            {
+              "type": "containsAccessibleText",
+              "target": ".app-visual-view .symbolic-expression",
+              "value": "1 over 4"
+            },
+            {
+              "type": "notContainsText",
+              "target": ".app-visual-view .completed-beats-section",
+              "value": "Sum:"
+            }
+          ],
+          "description": "Retry clears accepted conversions and operation",
+          "step": 67
+        },
+        {
+          "method": "click",
+          "target": ".app-view-toggle",
+          "description": "Switch retried fifth item to linear view",
+          "step": 68
+        },
+        {
+          "method": "click",
+          "target": ".app-linear-view .active-beat-controls .control-btn",
+          "description": "Acknowledge linear encounter",
+          "step": 69
+        },
+        {
+          "method": "click",
+          "target": ".app-linear-view .active-beat-controls button.control-choice-btn >> nth=0",
+          "description": "Keep valid left four-twelfths proposal in linear view",
+          "step": 70
+        },
+        {
+          "method": "click",
+          "target": ".app-linear-view .active-beat-controls .inspect-change-button",
+          "description": "Change the false right proposal in linear view",
+          "step": 71
+        },
+        {
+          "method": "fill",
+          "target": ".app-linear-view #linear-transform-num-input-right",
+          "value": "3",
+          "description": "Repair right proposal in linear view",
+          "step": 72
+        },
+        {
+          "method": "pressKey",
+          "target": ".app-linear-view #linear-transform-num-input-right",
+          "value": "Enter",
+          "description": "Submit linear right repair by keyboard",
+          "step": 73
+        },
+        {
+          "method": "fill",
+          "target": ".app-linear-view #linear-operate-sum-input",
+          "value": "7",
+          "description": "Enter compact total in linear view",
+          "step": 74
+        },
+        {
+          "method": "pressKey",
+          "target": ".app-linear-view #linear-operate-sum-input",
+          "value": "Enter",
+          "description": "Submit linear operation by keyboard",
+          "step": 75
+        },
+        {
+          "method": "assert",
+          "target": ".app-linear-view .completed-beats-section",
+          "assertions": [
+            {
+              "type": "containsText",
+              "target": ".app-linear-view .completed-beats-section",
+              "value": "Sum: 7/12"
+            },
+            {
+              "type": "notHasSelector",
+              "target": ".app-linear-view .app-reflection",
+              "value": ""
+            }
+          ],
+          "description": "Complete fifth identity operation in linear view without reflection task",
+          "step": 76
+        },
+        {
+          "method": "screenshot",
+          "file": "reports/development/plan-34-reusable-full-addition-task-patterns/evidence/plan34-third-identity-linear-resolve-wide.png",
+          "caption": "The fifth compact identity resolves in the linear view after Retry and a fresh completion.",
+          "description": "Capture completed linear resolve before Finish.",
+          "settleAnimations": true,
+          "step": 77,
+          "measureLayout": true
+        },
+        {
+          "method": "click",
+          "target": ".app-linear-view .active-beat-controls .control-btn",
+          "description": "Finish fifth identity in linear view",
+          "step": 78
+        },
+        {
+          "method": "assert",
+          "target": ".app-next-button",
+          "assertions": [
+            {
+              "type": "hasSelector",
+              "target": ".app-next-button:not([hidden])"
+            }
+          ],
+          "description": "Linear Finish exposes navigation only",
+          "step": 79
+        },
+        {
+          "method": "assert",
+          "target": ".app-linear-view",
+          "assertions": [
+            {
+              "type": "viewportLayout",
+              "requireNoHorizontalOverflow": true,
+              "selectors": {
+                "view": ".app-linear-view",
+                "prompt": ".app-linear-view .active-beat-prompt",
+                "controls": ".app-linear-view .active-beat-controls"
+              }
+            }
+          ],
+          "description": "Wide surface has no horizontal overflow",
+          "step": 80
+        }
+      ],
+      "expect": {
+        "capture": {
+          "target": ".app-linear-view",
+          "type": "innerHTML"
+        },
+        "assertions": [
+          {
+            "type": "containsText",
+            "target": ".app-linear-view .completed-beats-section",
+            "value": "Sum: 7/12"
+          },
+          {
+            "type": "notContainsText",
+            "target": ".app-linear-view .completed-beats-section",
+            "value": "Notice:"
+          },
+          {
+            "type": "notContainsText",
+            "target": ".app-linear-view .completed-beats-section",
+            "value": "Common denominator:"
+          }
+        ]
+      }
+    },
+    {
+      "id": "ROUTE-PLAN34-RETRY-RETURN-REENTRY",
+      "behavior": "Retry and return from a compact inspect draft, then re-enter the production v5 set without stale task state.",
+      "configuration": "phase2-bundle-1",
+      "startingSurface": "mounted-app-entry",
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "motionMode": "reduced-motion",
+      "witness": "browser",
+      "inputMode": "keyboard",
+      "actions": [
+        {
+          "method": "click",
+          "target": ".app-practice-button",
+          "description": "Start production v5",
+          "step": 1
+        },
+        {
+          "method": "click",
+          "target": ".app-visual-view .active-beat-controls .control-btn",
+          "description": "Acknowledge construct encounter",
+          "step": 2
+        },
+        {
+          "method": "fill",
+          "target": ".app-visual-view #transform-num-input-left",
+          "value": "8",
+          "description": "Construct left equivalent",
+          "step": 3
+        },
+        {
+          "method": "click",
+          "target": ".app-visual-view #transform-num-input-left + .control-submit-btn",
+          "description": "Submit construct left",
+          "step": 4
+        },
+        {
+          "method": "fill",
+          "target": ".app-visual-view #transform-num-input-right",
+          "value": "3",
+          "description": "Construct right equivalent",
+          "step": 5
+        },
+        {
+          "method": "click",
+          "target": ".app-visual-view #transform-num-input-right + .control-submit-btn",
+          "description": "Submit construct right",
+          "step": 6
+        },
+        {
+          "method": "fill",
+          "target": ".app-visual-view #operate-sum-input",
+          "value": "11",
+          "description": "Enter construct total",
+          "step": 7
+        },
+        {
+          "method": "click",
+          "target": ".app-visual-view #operate-sum-input + .control-submit-btn",
+          "description": "Submit construct total",
+          "step": 8
+        },
+        {
+          "method": "click",
+          "target": ".app-visual-view .active-beat-controls .control-btn",
+          "description": "Finish construct through navigation",
+          "step": 9
+        },
+        {
+          "method": "click",
+          "target": ".app-next-button",
+          "description": "Advance to inspect second identity",
+          "step": 10
+        },
+        {
+          "method": "click",
+          "target": ".app-visual-view .active-beat-controls .control-btn",
+          "description": "Acknowledge inspect encounter",
+          "step": 11
+        },
+        {
+          "method": "click",
+          "target": ".app-visual-view .active-beat-controls .inspect-change-button",
+          "description": "Open local repair field",
+          "step": 12
+        },
+        {
+          "method": "fill",
+          "target": ".app-visual-view #transform-num-input-left",
+          "value": "6",
+          "description": "Create unsubmitted repair draft",
+          "step": 13
+        },
+        {
+          "method": "screenshot",
+          "file": "reports/development/plan-34-reusable-full-addition-task-patterns/evidence/plan34-inspect-retry-draft.png",
+          "caption": "Unsubmitted inspect repair draft immediately before retry.",
+          "description": "Unsubmitted inspect repair draft immediately before retry.",
+          "step": 14,
+          "measureLayout": true
+        },
+        {
+          "method": "click",
+          "target": ".app-restart-button",
+          "description": "Retry current item",
+          "step": 15
+        },
+        {
+          "method": "assert",
+          "target": ".app-visual-view .active-beat-controls",
+          "assertions": [
+            {
+              "type": "containsText",
+              "target": ".app-visual-view .active-beat-controls",
+              "value": "Use twelfths."
+            },
+            {
+              "type": "notContainsText",
+              "target": ".app-visual-view .active-beat-controls",
+              "value": "5/12"
+            },
+            {
+              "type": "notHasSelector",
+              "target": ".app-visual-view .recovery-feedback"
+            }
+          ],
+          "description": "Retry resets to encounter and withholds candidate",
+          "step": 16
+        },
+        {
+          "method": "click",
+          "target": ".app-return-button",
+          "description": "Return to entry",
+          "step": 17
+        },
+        {
+          "method": "assertFocused",
+          "target": ".app-entry-title",
+          "description": "Keep return focus on entry title",
+          "step": 18
+        },
+        {
+          "method": "click",
+          "target": ".app-practice-button",
+          "description": "Re-enter production v5 practice",
+          "step": 19
+        },
+        {
+          "method": "assert",
+          "target": ".app-visual-view .active-beat-controls",
+          "assertions": [
+            {
+              "type": "containsText",
+              "target": ".app-visual-view .active-beat-controls",
+              "value": "Use twelfths."
+            },
+            {
+              "type": "notHasSelector",
+              "target": ".app-visual-view .recovery-feedback"
+            },
+            {
+              "type": "notHasSelector",
+              "target": ".app-visual-view #transform-num-input-left"
+            }
+          ],
+          "description": "Fresh re-entry returns to construct encounter",
+          "step": 20
+        },
+        {
+          "method": "screenshot",
+          "file": "reports/development/plan-34-reusable-full-addition-task-patterns/evidence/plan34-fresh-reentry-360x740.png",
+          "caption": "Fresh production v5 encounter after return, with no stale inspect draft.",
+          "description": "Fresh production v5 encounter after return, with no stale inspect draft.",
+          "step": 21,
+          "measureLayout": true
+        },
+        {
+          "method": "assert",
+          "target": ".app-replay-button",
+          "assertions": [
+            {
+              "type": "attributeEquals",
+              "target": ".app-replay-button",
+              "attribute": "hidden",
+              "value": ""
+            }
+          ],
+          "description": "Compact replay remains unavailable",
+          "step": 22
+        }
+      ],
+      "expect": {
+        "capture": {
+          "target": ".app-visual-view .active-beat-section",
+          "type": "innerHTML"
+        },
+        "assertions": [
+          {
+            "type": "containsText",
+            "target": ".app-visual-view .active-beat-controls",
+            "value": "Use twelfths."
+          },
+          {
+            "type": "notHasSelector",
+            "target": ".app-visual-view .recovery-feedback"
+          }
+        ]
+      }
     }
   ]
 }

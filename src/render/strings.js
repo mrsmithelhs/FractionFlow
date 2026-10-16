@@ -26,7 +26,7 @@ function equivalentPartsPrompt(sourceForm, targetDenominator) {
 export const STRINGS = Object.freeze({
   encounter: Object.freeze({
     prompt: 'Look at these two fractions.',
-    compactTarget: 'Use twelfths as your target parts.',
+    compactTarget: 'Use twelfths.',
     barAriaLabel: (side, num, den) => (
       `${side === 'left' ? 'First' : 'Second'} fraction bar: ${num} of ${den} equal parts shaded in 1 whole.`
     ),
@@ -92,7 +92,7 @@ export const STRINGS = Object.freeze({
     helpMultiplierRequired: 'Enter a whole number to keep going.',
     // Minor note: Natural phrasing for grade 2–3 and clean screen-reader voicing.
     equivalentNumeratorPrompt: equivalentPartsPrompt,
-    inspectPrompt: 'Does this proposal show the same amount?',
+    inspectPrompt: (side) => `Does this proposal show the same amount as the ${side === 'left' ? 'first' : 'second'} fraction?`,
     inspectProposalLabel: 'Proposal:',
     changeTopPrompt: 'Change the top number:',
     changeTopButton: 'Change top number',
@@ -125,7 +125,7 @@ export const STRINGS = Object.freeze({
     likeAdditionEquivalentReady: 'That names the same amount.',
     likeAdditionReady: 'Your answer is ready.',
     complete: 'You finished this problem.',
-    compactReady: (numerator, denominator) => `Your total is ${numerator}/${denominator}.`,
+    compactReady: () => "That's right.",
   }),
 
   // Condition B: Satisfies DECISION-012 (visual matching with distractors)

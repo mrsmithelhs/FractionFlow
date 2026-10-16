@@ -20,12 +20,18 @@
 const http = require('node:http');
 const fs = require('node:fs');
 const path = require('node:path');
+const os = require('node:os');
+const { execFileSync } = require('node:child_process');
 const { pathToFileURL } = require('node:url');
 const { chromium } = require('playwright');
+let exactMathModulePromise = null;
 
 const rootDir = path.resolve(__dirname, '../..');
 const distDir = path.join(rootDir, 'dist');
 const matrixPath = path.join(rootDir, 'tests/routes/route-matrix.json');
+const plan34ContextMapPath = path.join(rootDir, 'tests/routes/plan34-context-map.json');
+const plan34HistoricalRootDir = path.join(os.tmpdir(), 'fractionflow-plan34-historical-entry');
+const plan34HistoricalBuilderPath = path.join(rootDir, 'scripts/dev/build-plan34-historical-fixture.mjs');
 const validMotionModes = new Set(['standard-motion', 'reduced-motion']);
 const seededPrototypeVisualDefects = Object.freeze({
   hidden: `#representation-visual .fraction-whole,
@@ -67,9 +73,29 @@ const motionWitnessSeeds = Object.freeze({
   'glow-suppressed': { routeId: 'ROUTE-REPLAY-NEW-CONVERSION-COND-1', step: 12, failure: 'new subdivision boundary did not show the post-arrival highlight' },
   'core-suppressed': { routeId: 'ROUTE-REPLAY-NEW-CONVERSION-COND-1', step: 12, failure: 'new subdivision boundary did not show the temporary dark core' },
 });
+const plan34WitnessSeeds = Object.freeze({
+  'answer-validity-leak': {
+    routeId: 'ROUTE-PLAN34-INSPECT-LINEAR-DEEP',
+    injectBeforeDescription: 'Ask a side-specific question and show stacked proposal',
+    selector: '.app-linear-view .active-beat-section',
+    text: '6/12',
+    failure: 'unexpectedly contains text "6/12"',
+  },
+  'omitted-task-remnant': {
+    routeId: 'ROUTE-PLAN34-INSPECT-LINEAR-DEEP',
+    injectBeforeDescription: 'At resolve, keep conversions and sum, omit skipped milestones',
+    selector: '.app-episode',
+    text: 'Notice: Units do not match.',
+    failure: 'unexpectedly contains text "Units do not match."',
+  },
+});
 const startingSurfaces = Object.freeze({
   'mounted-app-entry': Object.freeze({
     path: '',
+    readySelector: '.fractionflow-app',
+  }),
+  'plan34-historical-v4-entry': Object.freeze({
+    path: '__test__/plan34-historical/plan34-historical-entry.html',
     readySelector: '.fractionflow-app',
   }),
   'subtraction-takeaway-prototype': Object.freeze({
@@ -81,6 +107,17 @@ const startingSurfaces = Object.freeze({
     readySelector: '#subtraction-prototype[data-mode="comparison"]',
   }),
 });
+
+function readPlan34ContextMap() {
+  return JSON.parse(fs.readFileSync(plan34ContextMapPath, 'utf8'));
+}
+
+function resolveRouteContext(route, contextMap) {
+  const context = contextMap?.contexts?.[route.id] ?? null;
+  if (context === 'historical-v4') return { id: context, startingSurface: 'plan34-historical-v4-entry' };
+  if (context === 'production-default-v5') return { id: context, startingSurface: route.startingSurface };
+  return { id: route.startingSurface.startsWith('subtraction-') ? 'prototype' : null, startingSurface: route.startingSurface };
+}
 
 function resolveStartingSurface(surfaceId) {
   return startingSurfaces[surfaceId] || null;
@@ -131,11 +168,23 @@ const mimeTypes = {
   '.ico': 'image/x-icon',
 };
 
-function createStaticServer() {
+function createStaticServer({ historicalRootDir = null } = {}) {
   return http.createServer((req, res) => {
     let reqPath = req.url.split('?')[0].replace(/^\/FractionFlow/, '');
     if (!reqPath || reqPath === '/') reqPath = '/index.html';
-    const filePath = path.join(distDir, reqPath);
+    let filePath;
+    const historicalPrefix = '/__test__/plan34-historical/';
+    if (reqPath.startsWith(historicalPrefix) && historicalRootDir) {
+      filePath = path.resolve(historicalRootDir, path.normalize(reqPath.slice(historicalPrefix.length)));
+      const relativeToRoot = path.relative(path.resolve(historicalRootDir), filePath);
+      if (relativeToRoot.startsWith('..') || path.isAbsolute(relativeToRoot)) {
+        res.writeHead(400, { 'Content-Type': 'text/plain' });
+        res.end('Invalid historical fixture path');
+        return;
+      }
+    } else {
+      filePath = path.join(distDir, reqPath);
+    }
 
     if (!fs.existsSync(filePath)) {
       res.writeHead(404, { 'Content-Type': 'text/plain' });
@@ -152,7 +201,7 @@ function createStaticServer() {
 /**
  * Validate schema and static invariants before running browser tests.
  */
-async function validateMatrixIntegrity(matrix, registeredConditions) {
+async function validateMatrixIntegrity(matrix, registeredConditions, suppliedContextMap = null) {
   const errors = [];
 
   if (!matrix || !Array.isArray(matrix.routes) || matrix.routes.length === 0) {
@@ -160,10 +209,47 @@ async function validateMatrixIntegrity(matrix, registeredConditions) {
     return { valid: false, errors };
   }
 
+  let contextMap = suppliedContextMap;
+  try {
+    contextMap ??= readPlan34ContextMap();
+  } catch (error) {
+    errors.push(`Plan 34 route context map could not be loaded: ${error.message}`);
+  }
+  const routeContexts = contextMap?.contexts;
+  if (contextMap?.version !== 1 || !routeContexts || typeof routeContexts !== 'object' || Array.isArray(routeContexts)) {
+    errors.push('Plan 34 route context map must have version 1 and an explicit contexts object.');
+  } else {
+    const idsInMatrix = new Set(matrix.routes.map((route) => route.id));
+    const idsInMap = Object.keys(routeContexts);
+    const contextCounts = { 'historical-v4': 0, 'production-default-v5': 0 };
+    for (const route of matrix.routes) {
+      const context = routeContexts[route.id];
+      const isMountedApp = route.startingSurface === 'mounted-app-entry';
+      if (isMountedApp && !context) errors.push(`Route "${route.id}" has no explicit Plan 34 app context mapping.`);
+      if (!isMountedApp && context) errors.push(`Non-app route "${route.id}" must not be mapped as a Plan 34 app context.`);
+      if (context && !Object.hasOwn(contextCounts, context)) {
+        errors.push(`Route "${route.id}" has unknown Plan 34 app context "${context}".`);
+      } else if (context) {
+        contextCounts[context] += 1;
+      }
+      if (route.id.startsWith('ROUTE-PLAN34-') && context !== 'production-default-v5') {
+        errors.push(`New Plan 34 route "${route.id}" must exercise production-default-v5.`);
+      }
+    }
+    for (const routeId of idsInMap) {
+      if (!idsInMatrix.has(routeId)) errors.push(`Plan 34 context map contains unknown route id "${routeId}".`);
+    }
+    for (const [context, count] of Object.entries(contextCounts)) {
+      if (count === 0) errors.push(`Plan 34 route context "${context}" has no mapped route evidence.`);
+    }
+  }
+
   const routeIds = new Set();
   const configurationsCovered = new Set();
   const validActionMethods = new Set([
     'click',
+    'tap',
+    'clickEquivalentChoice',
     'fill',
     'fillWithKnownSelection',
     'restoreInputType',
@@ -179,6 +265,7 @@ async function validateMatrixIntegrity(matrix, registeredConditions) {
     'assertFreshBarLayout',
     'clickAndStartSubdivision',
     'assertNoSubdivisionMotion',
+    'screenshot',
     'dispatch-fallback',
   ]);
 
@@ -220,6 +307,12 @@ async function validateMatrixIntegrity(matrix, registeredConditions) {
     }
     if (!['browser', 'harness'].includes(route.witness)) {
       errors.push(`Route "${route.id}" has invalid witness "${route.witness}".`);
+    }
+    if (route.inputMode !== undefined && !['mouse', 'keyboard', 'touch'].includes(route.inputMode)) {
+      errors.push(`Route "${route.id}" has invalid inputMode "${route.inputMode}".`);
+    }
+    if (route.actions?.some((action) => action.method === 'tap') && route.inputMode !== 'touch') {
+      errors.push(`Route "${route.id}" uses browser touch without inputMode "touch".`);
     }
 
     // Rule 3: No skipped rows, no unexecutable narrative witnesses
@@ -263,6 +356,11 @@ async function validateMatrixIntegrity(matrix, registeredConditions) {
         || !Number.isInteger(action.numerator) || !Number.isInteger(action.denominator))) {
         errors.push(`Route "${route.id}" step ${action.step} document-position click requires a mounted target/container and integer endpoint.`);
       }
+      if (action.method === 'clickEquivalentChoice'
+        && (!action.target || !/^\d+$/.test(String(action.numerator))
+          || !/^\d+$/.test(String(action.denominator)) || String(action.denominator) === '0')) {
+        errors.push(`Route "${route.id}" step ${action.step} exact matching choice requires a target fraction with a positive denominator.`);
+      }
       if (action.method === 'assertFreshBarLayout' && (!action.container || !Number.isFinite(action.expectedHeight))) {
         errors.push(`Route "${route.id}" step ${action.step} fresh-bar layout assertion requires a container and expectedHeight.`);
       }
@@ -278,6 +376,16 @@ async function validateMatrixIntegrity(matrix, registeredConditions) {
       }
       if (action.method === 'restoreInputType' && !['number', 'text'].includes(action.value)) {
         errors.push(`Route "${route.id}" step ${action.step} input-type restoration supports only number or text.`);
+      }
+      if (action.method === 'screenshot'
+        && (typeof action.file !== 'string'
+          || !action.file.startsWith('reports/development/plan-34-reusable-full-addition-task-patterns/evidence/')
+          || action.file.includes('..') || typeof action.caption !== 'string' || !action.caption.trim())) {
+        errors.push(`Route "${route.id}" screenshot action must name a scoped evidence file and caption.`);
+      }
+      if (action.method === 'screenshot' && action.measureLayout !== undefined
+        && typeof action.measureLayout !== 'boolean') {
+        errors.push(`Route "${route.id}" screenshot measureLayout must be boolean when supplied.`);
       }
       if (action.method === 'clickAndObserveSubdivision' && action.interruptReducedMotion
         && route.motionMode !== 'standard-motion') {
@@ -1209,9 +1317,98 @@ async function observeSubdivision(page, action, routeId) {
 
 async function executeAction(page, action, routeId) {
   switch (action.method) {
+    case 'screenshot': {
+      if (action.settleAnimations) {
+        await page.evaluate(async (maxWaitMs) => {
+          const finite = document.getAnimations({ subtree: true }).filter((animation) => (
+            animation.effect?.getTiming().iterations !== Infinity && animation.playState !== 'finished'
+          ));
+          if (finite.length === 0) return;
+          await Promise.race([
+            Promise.allSettled(finite.map((animation) => animation.finished)),
+            new Promise((resolve) => setTimeout(resolve, maxWaitMs)),
+          ]);
+        }, 3000);
+      }
+      const screenshotPath = path.resolve(rootDir, action.file);
+      fs.mkdirSync(path.dirname(screenshotPath), { recursive: true });
+      await page.screenshot({ path: screenshotPath });
+      action.screenshotEvidence = { file: action.file, caption: action.caption, viewport: await page.evaluate(() => ({ width: innerWidth, height: innerHeight })) };
+      if (action.measureLayout) {
+        action.screenshotEvidence.layout = await page.evaluate(() => {
+          const activeView = [...document.querySelectorAll('.app-visual-view, .app-linear-view')]
+            .find((element) => {
+              const rect = element.getBoundingClientRect();
+              const style = getComputedStyle(element);
+              return rect.width > 0 && rect.height > 0 && style.display !== 'none' && style.visibility !== 'hidden';
+            });
+          const measure = (element) => {
+            if (!element) return null;
+            const rect = element.getBoundingClientRect();
+            const style = getComputedStyle(element);
+            return {
+              x: Math.round(rect.x * 100) / 100,
+              y: Math.round(rect.y * 100) / 100,
+              width: Math.round(rect.width * 100) / 100,
+              height: Math.round(rect.height * 100) / 100,
+              visible: rect.width > 0 && rect.height > 0
+                && style.display !== 'none' && style.visibility !== 'hidden',
+            };
+          };
+          const root = document.documentElement;
+          return {
+            viewport: { width: innerWidth, height: innerHeight },
+            document: { width: root.scrollWidth, height: root.scrollHeight },
+            horizontalOverflow: root.scrollWidth > root.clientWidth,
+            scroll: { x: scrollX, y: scrollY },
+            activeView: activeView?.className ?? null,
+            question: measure(activeView?.querySelector('.active-beat-prompt')),
+            controls: measure(activeView?.querySelector('.active-beat-controls')),
+          };
+        });
+      }
+      break;
+    }
+
     case 'click':
       await page.locator(action.target).click();
       break;
+
+    case 'tap': {
+      const target = page.locator(action.target);
+      await target.scrollIntoViewIfNeeded();
+      const box = await target.boundingBox();
+      if (!box) throw new Error(`Route "${routeId}" touch target "${action.target}" has no visible geometry.`);
+      const point = { x: box.x + box.width / 2, y: box.y + box.height / 2 };
+      const hit = await target.evaluate((element, coordinates) => {
+        const top = document.elementFromPoint(coordinates.x, coordinates.y);
+        return Boolean(top && (top === element || element.contains(top)));
+      }, point);
+      if (!hit) throw new Error(`Route "${routeId}" touch target "${action.target}" is obstructed at its center.`);
+      await page.touchscreen.tap(point.x, point.y);
+      break;
+    }
+
+    case 'clickEquivalentChoice': {
+      exactMathModulePromise ??= import(pathToFileURL(path.join(rootDir, 'src/math/fraction.js')).href);
+      const { createFraction, equalFractions } = await exactMathModulePromise;
+      const target = createFraction(Number(action.numerator), Number(action.denominator));
+      const choices = page.locator(action.target);
+      const count = await choices.count();
+      let selected = null;
+      for (let index = 0; index < count; index += 1) {
+        const label = await choices.nth(index).getAttribute('aria-label');
+        const match = label?.match(/(?:Bar with|Fraction)\s+(\d+)\s+(?:of|over)\s+(\d+)/i);
+        if (!match) throw new Error(`Route "${routeId}" matching option ${index} has no parseable authored fraction label.`);
+        if (equalFractions(createFraction(Number(match[1]), Number(match[2])), target)) {
+          if (selected !== null) throw new Error(`Route "${routeId}" matching target has more than one exact-equivalent choice.`);
+          selected = index;
+        }
+      }
+      if (selected === null) throw new Error(`Route "${routeId}" has no exact-equivalent matching choice for ${action.numerator}/${action.denominator}.`);
+      await choices.nth(selected).click();
+      break;
+    }
 
     case 'fill':
       await page.locator(action.target).fill(String(action.value));
@@ -2058,6 +2255,22 @@ async function verifyAssertions(page, assertions, routeId) {
         break;
       }
 
+      case 'notContainsAccessibleText': {
+        const snapshot = await locator.first().ariaSnapshot();
+        if (snapshot.includes(value)) {
+          throw new Error(`Route "${routeId}" assertion failed: accessible content unexpectedly contains text "${value}" in "${target}".`);
+        }
+        break;
+      }
+
+      case 'containsAccessibleText': {
+        const snapshot = await locator.first().ariaSnapshot();
+        if (!snapshot.includes(value)) {
+          throw new Error(`Route "${routeId}" assertion failed: accessible content in "${target}" does not contain text "${value}".`);
+        }
+        break;
+      }
+
       case 'attributeEquals': {
         const attrVal = await locator.first().getAttribute(attribute);
         if (attrVal !== value) {
@@ -2090,6 +2303,7 @@ async function runRouteMatrix(options = {}) {
     preferredChannel,
     seededVisualDefect = null,
     motionWitnessSeed = null,
+    plan34WitnessSeed = null,
   } = options;
 
   if (seededVisualDefect !== null && !Object.hasOwn(seededPrototypeVisualDefects, seededVisualDefect)) {
@@ -2098,6 +2312,9 @@ async function runRouteMatrix(options = {}) {
   if (motionWitnessSeed !== null && !Object.hasOwn(motionWitnessSeeds, motionWitnessSeed)) {
     throw new Error(`Unknown motion witness seed "${motionWitnessSeed}".`);
   }
+  if (plan34WitnessSeed !== null && !Object.hasOwn(plan34WitnessSeeds, plan34WitnessSeed)) {
+    throw new Error(`Unknown Plan 34 witness seed "${plan34WitnessSeed}".`);
+  }
 
   if (!fs.existsSync(distDir)) {
     throw new Error('Built distribution (dist/) not found. Run `npm run build` before running route matrix.');
@@ -2105,12 +2322,13 @@ async function runRouteMatrix(options = {}) {
 
   // Load matrix and registered conditions
   const matrix = JSON.parse(fs.readFileSync(matrixPath, 'utf8'));
+  const contextMap = readPlan34ContextMap();
   const conditionsUrl = pathToFileURL(path.join(rootDir, 'src/app/conditions.js')).href;
   const conditionsModule = await import(conditionsUrl);
   const registeredConditions = conditionsModule.REGISTERED_CONDITIONS;
 
   // Static integrity check
-  const integrity = await validateMatrixIntegrity(matrix, registeredConditions);
+  const integrity = await validateMatrixIntegrity(matrix, registeredConditions, contextMap);
   if (!integrity.valid) {
     for (const err of integrity.errors) {
       console.error(err);
@@ -2118,8 +2336,13 @@ async function runRouteMatrix(options = {}) {
     throw new Error(`Route matrix integrity validation failed with ${integrity.errors.length} error(s).`);
   }
 
+  execFileSync(process.execPath, [plan34HistoricalBuilderPath], { cwd: rootDir, stdio: verbose ? 'inherit' : 'ignore' });
+  if (!fs.existsSync(path.join(plan34HistoricalRootDir, 'plan34-historical-entry.html'))) {
+    throw new Error('Plan 34 historical fixture build did not produce its temporary entry HTML.');
+  }
+
   // Start local server
-  const server = createStaticServer();
+  const server = createStaticServer({ historicalRootDir: plan34HistoricalRootDir });
   await new Promise((resolve) => server.listen(0, '127.0.0.1', resolve));
   const port = server.address().port;
   const baseUrl = `http://127.0.0.1:${port}/FractionFlow/`;
@@ -2161,7 +2384,8 @@ async function runRouteMatrix(options = {}) {
     throw new Error(`Failed to capture initial baseline: ${err.message}`);
   }
 
-  const effectiveFilter = motionWitnessSeed ? motionWitnessSeeds[motionWitnessSeed].routeId : filter;
+  const effectiveFilter = motionWitnessSeed ? motionWitnessSeeds[motionWitnessSeed].routeId
+    : plan34WitnessSeed ? plan34WitnessSeeds[plan34WitnessSeed].routeId : filter;
   const routesToRun = selectRoutesForRun(matrix.routes, effectiveFilter);
   const routeExecutions = expandRouteExecutions(routesToRun);
 
@@ -2172,19 +2396,23 @@ async function runRouteMatrix(options = {}) {
   try {
     for (const execution of routeExecutions) {
       const { route, motionMode } = execution;
+      const routeContext = resolveRouteContext(route, contextMap);
       const resultId = route.id + ' [' + motionMode + ']';
       const startTime = Date.now();
       const contextOptions = {
         viewport: route.viewport,
         reducedMotion: motionMode === 'reduced-motion' ? 'reduce' : 'no-preference',
+        ...(route.inputMode === 'touch' ? { hasTouch: true } : {}),
       };
 
       const context = await browser.newContext(contextOptions);
       const page = await context.newPage();
       page.setDefaultTimeout(5000);
+      let activeRouteAction = null;
 
       try {
-        const startingSurface = resolveStartingSurface(route.startingSurface);
+        const startingSurface = resolveStartingSurface(routeContext.startingSurface);
+        if (!startingSurface) throw new Error(`Route "${route.id}" has no resolved starting surface for context "${routeContext.id}".`);
         const startUrl = new URL(startingSurface.path, baseUrl).toString();
         await page.goto(startUrl);
         await page.waitForSelector(startingSurface.readySelector);
@@ -2201,6 +2429,18 @@ async function runRouteMatrix(options = {}) {
 
         // Execute action sequence
         for (const action of route.actions) {
+          activeRouteAction = action;
+          if (plan34WitnessSeed && route.id === plan34WitnessSeeds[plan34WitnessSeed].routeId
+            && action.method === 'assert'
+            && action.description === plan34WitnessSeeds[plan34WitnessSeed].injectBeforeDescription) {
+            const seed = plan34WitnessSeeds[plan34WitnessSeed];
+            await page.locator(seed.selector).evaluate((element, value) => {
+              const seedNode = document.createElement('span');
+              seedNode.className = 'plan34-test-witness-seed';
+              seedNode.textContent = value;
+              element.appendChild(seedNode);
+            }, seed.text);
+          }
           const seededAction = motionWitnessSeed
             && route.id === motionWitnessSeeds[motionWitnessSeed].routeId
             && (motionWitnessSeeds[motionWitnessSeed].step === undefined
@@ -2221,29 +2461,34 @@ async function runRouteMatrix(options = {}) {
 
         const duration = Date.now() - startTime;
         if (route.knownDefect) {
-          routeResults.push({ id: resultId, routeId: route.id, motionMode, status: 'known-defect', duration, route });
+          routeResults.push({ id: resultId, routeId: route.id, context: routeContext.id, motionMode, status: 'known-defect', duration, route });
           if (verbose) {
             console.log(`  ⚠ ${resultId} (${duration}ms) [KNOWN DEFECT: ${route.knownDefect.id} - ${route.knownDefect.description}]`);
           }
         } else {
-          routeResults.push({ id: resultId, routeId: route.id, motionMode, status: 'pass', duration, route });
+          routeResults.push({ id: resultId, routeId: route.id, context: routeContext.id, motionMode, status: 'pass', duration, route });
           if (verbose) {
-            console.log(`  ✓ ${resultId} (${duration}ms)`);
+          console.log(`  ✓ ${resultId} (${duration}ms) [${routeContext.id || routeContext.startingSurface}]`);
           }
         }
       } catch (err) {
         const duration = Date.now() - startTime;
-        if (motionWitnessSeed && route.id === motionWitnessSeeds[motionWitnessSeed].routeId
+        if (activeRouteAction?.description) err.message = `${err.message} (route action: ${activeRouteAction.description})`;
+        if (plan34WitnessSeed && route.id === plan34WitnessSeeds[plan34WitnessSeed].routeId
+          && err.message.includes(plan34WitnessSeeds[plan34WitnessSeed].failure)) {
+          routeResults.push({ id: resultId, routeId: route.id, context: routeContext.id, motionMode, status: 'seed-detected', error: err.message, duration, route });
+          console.log(`  ✓ ${resultId} (${duration}ms) [intended assertion detected seed: ${plan34WitnessSeed}; ${err.message}]`);
+        } else if (motionWitnessSeed && route.id === motionWitnessSeeds[motionWitnessSeed].routeId
           && err.message.includes(motionWitnessSeeds[motionWitnessSeed].failure)) {
-          routeResults.push({ id: resultId, routeId: route.id, motionMode, status: 'seed-detected', error: err.message, duration, route });
+          routeResults.push({ id: resultId, routeId: route.id, context: resolveRouteContext(route, contextMap).id, motionMode, status: 'seed-detected', error: err.message, duration, route });
           console.log(`  ✓ ${resultId} (${duration}ms) [seed detected at intended assertion: ${motionWitnessSeed}; ${err.message}]`);
         } else if (route.knownDefect) {
           const cleanMsg = err.message.endsWith('.') ? err.message : `${err.message}.`;
           const defectErrMsg = `FATAL: Route "${route.id}" is marked with knownDefect "${route.knownDefect.id}", but stopped exhibiting the defect: ${cleanMsg} If this defect has been repaired, retire the "knownDefect" marker and invert the expectation assertion.`;
-          routeResults.push({ id: resultId, routeId: route.id, motionMode, status: 'fail', error: defectErrMsg, duration, route });
+          routeResults.push({ id: resultId, routeId: route.id, context: resolveRouteContext(route, contextMap).id, motionMode, status: 'fail', error: defectErrMsg, duration, route });
           console.error(`  ✗ ${resultId} (${duration}ms): ${defectErrMsg}`);
         } else {
-          routeResults.push({ id: resultId, routeId: route.id, motionMode, status: 'fail', error: err.message, duration, route });
+          routeResults.push({ id: resultId, routeId: route.id, context: resolveRouteContext(route, contextMap).id, motionMode, status: 'fail', error: err.message, duration, route });
           console.error(`  ✗ ${resultId} (${duration}ms): ${err.message}`);
         }
       } finally {
@@ -2305,6 +2550,24 @@ async function runRouteMatrix(options = {}) {
   if (motionWitnessSeed && (seedDetected !== 1 || failed !== 0 || routeResults.length !== 1)) {
     throw new Error(`Motion witness seed "${motionWitnessSeed}" did not produce exactly one intended failure; detected=${seedDetected}, failed=${failed}, executions=${routeResults.length}.`);
   }
+  if (plan34WitnessSeed && (seedDetected !== 1 || failed !== 0 || routeResults.length !== 1)) {
+    throw new Error(`Plan 34 witness seed "${plan34WitnessSeed}" did not produce exactly one intended failure; detected=${seedDetected}, failed=${failed}, executions=${routeResults.length}.`);
+  }
+
+  const completedPlan34RouteIds = new Set(routeResults
+    .filter((result) => result.routeId.startsWith('ROUTE-PLAN34-'))
+    .map((result) => result.routeId));
+  if (['ROUTE-PLAN34-CONSTRUCT-VISUAL-DEEP', 'ROUTE-PLAN34-INSPECT-LINEAR-DEEP',
+    'ROUTE-PLAN34-THIRD-IDENTITY-WIDE', 'ROUTE-PLAN34-RETRY-RETURN-REENTRY']
+    .every((routeId) => completedPlan34RouteIds.has(routeId))) {
+    const layoutEvidence = routeResults
+      .filter((result) => result.routeId.startsWith('ROUTE-PLAN34-'))
+      .flatMap((result) => result.route.actions
+        .filter((action) => action.method === 'screenshot' && action.screenshotEvidence?.layout)
+        .map((action) => ({ routeId: result.routeId, context: result.context, motionMode: result.motionMode, ...action.screenshotEvidence })));
+    const evidencePath = path.join(rootDir, 'reports/development/plan-34-reusable-full-addition-task-patterns/evidence/plan34-viewport-measurements.json');
+    fs.writeFileSync(evidencePath, `${JSON.stringify({ capturedAt: new Date().toISOString(), measurements: layoutEvidence }, null, 2)}\n`);
+  }
 
   return {
     total: routeResults.length,
@@ -2314,6 +2577,11 @@ async function runRouteMatrix(options = {}) {
     failed,
     seedDetected,
     results: routeResults,
+    contexts: routeResults.reduce((counts, result) => {
+      const key = result.context || 'prototype';
+      counts[key] = (counts[key] || 0) + 1;
+      return counts;
+    }, {}),
   };
 }
 
@@ -2322,6 +2590,7 @@ module.exports = {
   expandRouteExecutions,
   getRouteMotionModes,
   motionWitnessSeeds,
+  plan34WitnessSeeds,
   resolveStartingSurface,
   runRouteMatrix,
   selectRoutesForRun,
@@ -2334,6 +2603,7 @@ if (require.main === module) {
   let filter = null;
   let verbose = true;
   let motionWitnessSeed = null;
+  let plan34WitnessSeed = null;
 
   for (let i = 0; i < args.length; i++) {
     if (args[i] === '--filter' && args[i + 1]) {
@@ -2342,11 +2612,13 @@ if (require.main === module) {
       verbose = false;
     } else if (args[i] === '--motion-witness-seed' && args[i + 1]) {
       motionWitnessSeed = args[++i];
+    } else if (args[i] === '--plan34-witness-seed' && args[i + 1]) {
+      plan34WitnessSeed = args[++i];
     }
   }
 
   console.log('--- FractionFlow Reachable Behavior Route Contract Runner ---');
-  runRouteMatrix({ filter, verbose, motionWitnessSeed })
+  runRouteMatrix({ filter, verbose, motionWitnessSeed, plan34WitnessSeed })
     .then((summary) => {
       const parts = [`${summary.passed} passed`];
       if (summary.seedDetected > 0) parts.push(`${summary.seedDetected} intended seed failure${summary.seedDetected === 1 ? '' : 's'} detected`);

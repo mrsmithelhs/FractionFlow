@@ -52,7 +52,7 @@ describe('Plan 34 mounted production task patterns', () => {
       practiceSetId: active.setId, practiceSetRevision: '5',
     });
     expect(root.querySelector('.app-visual-view .active-beat-controls').textContent)
-      .toContain('Use twelfths as your target parts.');
+      .toContain('Use twelfths.');
     expect(root.querySelector('.app-visual-view .active-beat-controls').textContent)
       .not.toContain('11/12');
     expect(root.querySelector('.app-support-controls .app-secondary-button').hidden).toBe(true);
@@ -92,7 +92,7 @@ describe('Plan 34 mounted production task patterns', () => {
     expect(root.querySelector('.app-support-controls .app-secondary-button').hidden).toBe(true);
     linearOperation.parentNode.parentNode.querySelector('.control-submit-btn').click();
     expect(app.getState().beat).toBe('resolve');
-    expect(root.textContent).toContain('Your total is 11/12.');
+    expect(root.textContent).toContain("That's right.");
     expect(root.textContent).not.toContain('reflection');
     const finish = root.querySelector('.app-linear-view .active-beat-controls .control-btn');
     expect(finish.textContent).toBe('Finish');
@@ -111,13 +111,13 @@ describe('Plan 34 mounted production task patterns', () => {
     expect(app.getState().taskContext.patternId).toBe('full-addition.inspect-keep-repair');
     if (linear) root.querySelector('.app-view-toggle').click();
     expect(root.querySelector(linear ? '.app-linear-view .active-beat-controls' : '.app-visual-view .active-beat-controls').textContent)
-      .toContain('Use twelfths as your target parts.');
+      .toContain('Use twelfths.');
     app.dispatch({ type: 'acknowledge-encounter' });
 
     const host = () => root.querySelector(linear ? '.app-linear-view' : '.app-visual-view');
     const active = () => host().querySelector('.active-beat-section');
     let question = active().querySelector('.active-beat-header .active-beat-prompt');
-    expect(question.textContent).toBe('Does this proposal show the same amount?');
+    expect(question.textContent).toBe('Does this proposal show the same amount as the first fraction?');
     expect(active().querySelectorAll('.active-beat-header .active-beat-prompt')).toHaveLength(1);
     const proposal = active().querySelector('.symbolic-fraction');
     expect(proposal).not.toBeNull();

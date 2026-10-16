@@ -30,6 +30,28 @@ describe('Plan 14 Reachable Behavior Route Contract & Matrix Schema', () => {
     expect(result.errors).toEqual([]);
   });
 
+  it('requires explicit historical or production context for every mounted route and excludes prototypes', async () => {
+    const contextMap = JSON.parse(fs.readFileSync(path.resolve(__dirname, 'routes/plan34-context-map.json'), 'utf8'));
+    const clean = await validateMatrixIntegrity(matrix, REGISTERED_CONDITIONS, contextMap);
+    expect(clean.valid).toBe(true);
+    const missing = structuredClone(contextMap);
+    delete missing.contexts['ROUTE-PLAN34-INSPECT-LINEAR-DEEP'];
+    expect((await validateMatrixIntegrity(matrix, REGISTERED_CONDITIONS, missing)).errors.join('\n'))
+      .toContain('ROUTE-PLAN34-INSPECT-LINEAR-DEEP" has no explicit Plan 34 app context mapping');
+    const prototype = structuredClone(contextMap);
+    prototype.contexts['ROUTE-PROTOTYPE-SUBTRACTION-TAKEAWAY'] = 'historical-v4';
+    expect((await validateMatrixIntegrity(matrix, REGISTERED_CONDITIONS, prototype)).errors.join('\n'))
+      .toContain('Non-app route "ROUTE-PROTOTYPE-SUBTRACTION-TAKEAWAY" must not be mapped');
+    const unknown = structuredClone(contextMap);
+    unknown.contexts['ROUTE-DOES-NOT-EXIST'] = 'historical-v4';
+    expect((await validateMatrixIntegrity(matrix, REGISTERED_CONDITIONS, unknown)).errors.join('\n'))
+      .toContain('Plan 34 context map contains unknown route id "ROUTE-DOES-NOT-EXIST"');
+    const mislabeled = structuredClone(contextMap);
+    mislabeled.contexts['ROUTE-PLAN34-INSPECT-LINEAR-DEEP'] = 'historical-v4';
+    expect((await validateMatrixIntegrity(matrix, REGISTERED_CONDITIONS, mislabeled)).errors.join('\n'))
+      .toContain('New Plan 34 route "ROUTE-PLAN34-INSPECT-LINEAR-DEEP" must exercise production-default-v5');
+  });
+
   it('enforces Rule 1: fails if a registered condition has no declared route witness', async () => {
     const syntheticConditions = [
       ...REGISTERED_CONDITIONS,
@@ -108,8 +130,11 @@ describe('Plan 14 Reachable Behavior Route Contract & Matrix Schema', () => {
   });
 
   it('preserves learner and prototype routes while adding mounted high/medium support witnesses', () => {
-    expect(matrix.routes).toHaveLength(57);
-    const learnerRoutes = matrix.routes.filter((route) => route.configuration !== 'plan15-subtraction-prototype');
+    const baselineRoutes = matrix.routes.slice(0, 57);
+    expect(matrix.routes.length).toBeGreaterThanOrEqual(57);
+    expect(createHash('sha256').update(JSON.stringify(baselineRoutes)).digest('hex'))
+      .toBe('97ed8bc2e0461611fba8eb8691f00ce76bce7f6c49452ff74cf5ef0124b3358c');
+    const learnerRoutes = baselineRoutes.filter((route) => route.configuration !== 'plan15-subtraction-prototype');
     expect(learnerRoutes).toHaveLength(55);
     for (const route of learnerRoutes) {
       expect(route.startingSurface).toBe('mounted-app-entry');
@@ -255,7 +280,7 @@ describe('Plan 14 Reachable Behavior Route Contract & Matrix Schema', () => {
 
   it('executes each prototype route in both motion modes and brings in its filtered negative control', () => {
     const executions = expandRouteExecutions(matrix.routes);
-    expect(executions).toHaveLength(59);
+    expect(executions).toHaveLength(63);
     expect(executions.filter((execution) => (
       execution.route.configuration === 'plan15-subtraction-prototype'
     ))).toHaveLength(4);
@@ -326,9 +351,11 @@ describe('Plan 14 Reachable Behavior Route Contract & Matrix Schema', () => {
   });
 
   it('preserves the Plan 11 route baseline and witnesses executed motion, interruption, Replay, static arms, and both support profiles', () => {
-    expect(matrix.routes).toHaveLength(57);
-    expect(matrix.routes.filter((route) => !route.id.startsWith('ROUTE-PLAN22-36-'))).toHaveLength(54);
-    expect(expandRouteExecutions(matrix.routes)).toHaveLength(59);
+    const baselineRoutes = matrix.routes.slice(0, 57);
+    expect(createHash('sha256').update(JSON.stringify(baselineRoutes)).digest('hex'))
+      .toBe('97ed8bc2e0461611fba8eb8691f00ce76bce7f6c49452ff74cf5ef0124b3358c');
+    expect(baselineRoutes.filter((route) => !route.id.startsWith('ROUTE-PLAN22-36-'))).toHaveLength(54);
+    expect(expandRouteExecutions(baselineRoutes)).toHaveLength(59);
 
     const route = (id) => matrix.routes.find((candidate) => candidate.id === id);
     const linearHelpFocus = route('ROUTE-PLAN25-TRANSFORM-HELP-LINEAR-FOCUS');

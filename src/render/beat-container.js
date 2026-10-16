@@ -496,7 +496,7 @@ export function createBeatContainer({
         if (inspect) {
           const candidate = task.candidate;
           if (!candidate) throw new RenderContractError('MISSING_INSPECT_CANDIDATE', 'inspect transform requires the current authored proposal');
-          promptText.textContent = strings.transform.inspectPrompt;
+          promptText.textContent = strings.transform.inspectPrompt(side);
           const proposal = document.createElement('p');
           proposal.classList.add('active-beat-prompt-context');
           proposal.textContent = `${strings.transform.inspectProposalLabel} `;
@@ -524,11 +524,13 @@ export function createBeatContainer({
           });
           controlsContainer.appendChild(changeInput.element);
           } else {
-            controlsContainer.appendChild(createButton({
+            const changeButton = createButton({
               label: strings.transform.changeTopButton,
-              className: 'control-choice-btn inspect-change-button',
+              className: 'inspect-change-button',
               onClick: onInspectChangeOpen,
-            }));
+            });
+            changeButton.classList.add('control-choice-btn');
+            controlsContainer.appendChild(changeButton);
           }
           if (scene.meaning.taskHelp?.kind === 'inspect-comparison-invariant' && isTaskHelpOpen()) {
             const help = document.createElement('p');
