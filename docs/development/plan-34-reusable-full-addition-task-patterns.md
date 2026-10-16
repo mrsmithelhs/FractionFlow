@@ -205,6 +205,20 @@ controls reachable through ordinary scrolling, no horizontal overflow and concis
 rendered copy. Add a wider desktop sample for both patterns. Capture screenshots
 with captions indicating problem, pattern, state and input mode.
 
+Mechanism-review correction (2026-10-16): existing browser actions that require
+notice/decide/reflection cannot also describe the intentionally changed compact
+default. Preserve their actions/assertions as explicitly historical-definition
+witnesses, using a test-only entry fixture built from current source and the
+pinned set revision 4 through the existing app composition API. New rows must
+exercise the real production entry/set revision 5. Authorize a narrow, explicit
+route-context mapping and fixture-build/serve extension in the existing runner
+at Requirement 0; exact paths and context coverage still need parent approval.
+No test-detection behavior in product code, old compiled app snapshot, silent
+witness exclusion or claim that historical routes verify the current default.
+Keep test fixture output outside the shipped learner distribution. This corrects
+the packet's conflicting test-preservation requirement without changing the
+owner-approved task patterns or legacy compatibility obligations.
+
 Separate authored inspection stimulus from withheld answers. Check mounted text,
 hidden/accessible surfaces, summaries and relevant scene output for premature
 corrected forms, validity cues, operation result and omitted-task remnants. Seed
