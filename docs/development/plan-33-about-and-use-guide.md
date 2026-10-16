@@ -1,7 +1,8 @@
 ---
 id: plan-33
 title: About FractionFlow and Use Guide
-status: delivered
+status: complete
+resolution: "Owner inspected the local dev-server About page and accepted closure on 2026-10-15; exact creator footer correction verified at narrow/desktop sizes after technical acceptance. Guide may evolve with capabilities; no deployment, AT/device or efficacy claim."
 depends_on: [plan-12, plan-13, plan-31]
 gate: "Owner initiation; Requirement 0 approves concise copy, accurate privacy/settings claims, page navigation and exact paths before source work. Technical and owner rendered-page acceptance before completion; deployment separate."
 summary: >-
