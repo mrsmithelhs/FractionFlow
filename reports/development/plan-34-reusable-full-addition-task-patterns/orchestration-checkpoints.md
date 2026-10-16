@@ -87,3 +87,41 @@ with the Luna child. Parent review flagged identity lookup, authored association
 versus compatibility contexts, raw-form binding, and exact-math API use for the
 child's Stage A self-check. These are preliminary observations, not delivery
 findings. Rendered acceptance and deployment remain separate.
+
+## Owner-requested pause — 2026-10-16
+
+Owner requested a pause because the current five-hour usage window is low.
+Parent interrupted /root/plan34_luna_refinement; the tool returned previous_status
+running. Do not resume implementation or review until owner resumes.
+
+Last committed checkpoint: befe78c, verified Stage A foundation. Stage A repaired
+scene stimulus leakage, unchanged-confirmation attribution and construct help.
+Parent independently verified 11 focused tests after repair; child's full run was
+372 passing tests. Stage A Sol review is in stage-a-review.md. No owner rendered
+acceptance or deployment acceptance has been granted for Plan34.
+
+Stage B was authorized and is PARTIAL, UNCOMMITTED, NOT VALIDATED. Current modified
+paths: src/app/app.js; src/app/practice-types.js; src/interaction/episode.js;
+src/render/beat-container.js; src/render/controls.js; src/render/linear-path.js;
+src/render/strings.js; tests/app-shell.test.js; tests/entry-page.test.js;
+tests/plan26-practice-set.test.js; tests/plan32-compact-authored-problem-batch.test.js.
+These files are preserved in the working tree. No rollback or source commit was
+made on pause. The live v5 export may already be selected in this partial work;
+do not describe the partial UI as a validated delivery.
+
+Latest parent advice to child: remove duplicated inspection proposal/supporting
+text, use existing stacked-fraction helper, keep one active question and concise
+Change top number controls; compact finish must not inherit Continue to reflection.
+Preserve help/drafts and actual action attribution, false stimuli must not become
+conserved-animation pre-states. Historical unit tests may explicitly use pinned
+v4 while new mounted tests must prove real v5. Stage C fixture/routes/browser
+execution remains held until Stage B review. No Stage B focused mounted tests or
+browser evidence have yet been accepted by parent.
+
+On resume: inspect this working tree and implementation-checkpoints.md, explicitly
+resume the Luna actor (or cold-context Luna medium if recovery is necessary) with
+the persisted self-contained scope. Do not assume an actor is running from prior
+launch receipt. Continue Stage B, parent verification/Sol read-only low-medium
+review, then Stage C and technical delivery. Keep writes single-threaded; no fanout,
+Astra, dependency/settings changes, push or deployment. Owner rendered acceptance
+remains the final product gate; packet stays in-progress during this pause.
