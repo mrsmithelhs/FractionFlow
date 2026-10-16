@@ -71,4 +71,15 @@ No configuration edits are required to preserve this initial observation.
 
 Bootstrap was notified through the authorized native message route; its own
 report/recipe remains Bootstrap-owned. Source/tests/package locks and Plan 34
-files were not changed by this probe. This report is the sole FF write.
+files were not changed by this probe. This report is the sole committed FF write.
+
+## Post-probe contamination check
+
+The browser emitted a 366-byte untracked `debug.log` in the repository root.
+Its timestamp (13:19:53 UTC) and ANGLE/Vulkan messages match this launch. Parent
+moved that single known probe artifact into ignored `dist/` without deleting
+or modifying unrelated work. This runtime log was not committed. In a fresh
+process, both `PLAYWRIGHT_BROWSERS_PATH` and `DEBUG` overrides were absent, confirming
+the changes did not persist in that subsequent execution context. Git reported
+no tracked-source diff; the only remaining untracked files were the two existing
+Plan 34 child reports. This checks this run, not every possible browser side effect.
