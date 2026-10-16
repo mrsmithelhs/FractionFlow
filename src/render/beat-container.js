@@ -2,6 +2,7 @@ import { assertValidScene, RenderContractError } from './contract.js';
 import { STRINGS } from './strings.js';
 import { createFractionBarRenderer, createMultiWholeStack, createTrackAndReadout } from './fraction-bar.js';
 import { createSymbolicRenderer } from './symbolic.js';
+import { createSymbolicFraction } from './symbolic.js';
 import {
   createButton,
   createFractionResponseInput,
@@ -30,6 +31,8 @@ export function createBeatContainer({
   dispatchAction,
   strings = STRINGS,
   isTaskHelpOpen = () => false,
+  isInspectChangeOpen = () => false,
+  onInspectChangeOpen = () => {},
 } = {}) {
   if (!container) {
     throw new Error('container element is required for beat container');
@@ -120,6 +123,7 @@ export function createBeatContainer({
     const unitRel = scene.meaning.unitRelationship;
     const quantities = scene.meaning.quantities;
     const op = scene.meaning.operation;
+    const isCompactTask = Boolean(currentTask.patternId);
 
     const milestones = [];
 
@@ -129,7 +133,7 @@ export function createBeatContainer({
     }
 
     // Notice completed if past notice
-    if (schedulePosition > 1) {
+    if (!isCompactTask && schedulePosition > 1) {
       const denominators = unitRel.sourceDenominators;
       milestones.push(denominators.left === denominators.right
         && typeof strings.summaryLines.noticeDoneSame === 'function'
@@ -138,7 +142,7 @@ export function createBeatContainer({
     }
 
     // Decide completed if common unit is established and past decide
-    if (unitRel.commonUnit && schedulePosition > 2 && currentEntryId !== 'decide') {
+    if (!isCompactTask && unitRel.commonUnit && schedulePosition > 2 && currentEntryId !== 'decide') {
       milestones.push({
         text: strings.summaryLines.decideDone(
           unitRel.commonUnit.targetDenominator,
@@ -272,6 +276,7 @@ export function createBeatContainer({
       schedulePosition: task.schedulePosition,
       scheduleEntryId: task.scheduleEntryId,
       target: task.target,
+      targetDenominator: task.targetDenominator,
       promptId: task.promptId,
       connectionForm: task.connectionForm,
       resolved: scene.meaning.status.episode === 'resolved',
@@ -279,6 +284,8 @@ export function createBeatContainer({
       recoveryTarget: recovery?.classification?.targetDenominator || recovery?.classification?.proposed,
       taskHelp: beat === 'transform' ? scene.meaning.taskHelp : null,
       taskHelpOpen: Boolean(isTaskHelpOpen()),
+      inspectChangeOpen: Boolean(isInspectChangeOpen()),
+      candidate: beat === 'transform' ? task.candidate : null,
       helpLevel: beat === 'decide' ? null : scene.meaning.supportConsequence?.lastHelp?.level,
       helpBeat: beat === 'decide' ? null : scene.meaning.supportConsequence?.lastHelp?.beat,
       support: scene.meaning.support,
@@ -385,6 +392,12 @@ export function createBeatContainer({
     switch (beat) {
       case 'encounter': {
         promptText.textContent = strings.encounter.prompt;
+        if (task.patternId) {
+          const targetContext = document.createElement('p');
+          targetContext.classList.add('active-beat-prompt-context');
+          targetContext.textContent = strings.encounter.compactTarget;
+          controlsContainer.appendChild(targetContext);
+        }
         const continueBtn = createButton({
           label: strings.controls.next,
           onClick: () => dispatchAction({ type: 'acknowledge-encounter' }),
@@ -479,6 +492,53 @@ export function createBeatContainer({
         }
         const targetDen = commonUnit.targetDenominator;
         const sourceForm = scene.meaning.quantities[side].sourceForm;
+        const inspect = task.inputKind === 'inspect-candidate';
+        if (inspect) {
+          const candidate = task.candidate;
+          if (!candidate) throw new RenderContractError('MISSING_INSPECT_CANDIDATE', 'inspect transform requires the current authored proposal');
+          promptText.textContent = strings.transform.inspectPrompt;
+          const proposal = document.createElement('p');
+          proposal.classList.add('active-beat-prompt-context');
+          proposal.textContent = `${strings.transform.inspectProposalLabel} `;
+          proposal.appendChild(createSymbolicFraction(
+            candidate.numerator, candidate.denominator, { ariaPrefix: 'Proposal' },
+          ));
+          controlsContainer.appendChild(proposal);
+          const keep = createButton({
+            label: 'Keep',
+            ariaLabel: `Keep proposal ${candidate.numerator}/${candidate.denominator}`,
+            className: 'control-choice-btn',
+            onClick: () => dispatchAction({ type: 'keep-inspected-form' }),
+          });
+          controlsContainer.appendChild(keep);
+          if (isInspectChangeOpen()) {
+          const changeInput = createNumericInput({
+            id: `transform-num-input-${side}`,
+            label: strings.transform.changeTopPrompt,
+            min: 0,
+            max: Number(targetDen),
+            initialValue: candidate.numerator,
+            buttonLabel: strings.transform.changeTopButton,
+            strings,
+            onSubmit: (val) => dispatchAction({ type: 'repair-inspected-form', numerator: String(val) }),
+          });
+          controlsContainer.appendChild(changeInput.element);
+          } else {
+            controlsContainer.appendChild(createButton({
+              label: strings.transform.changeTopButton,
+              className: 'control-choice-btn inspect-change-button',
+              onClick: onInspectChangeOpen,
+            }));
+          }
+          if (scene.meaning.taskHelp?.kind === 'inspect-comparison-invariant' && isTaskHelpOpen()) {
+            const help = document.createElement('p');
+            help.id = 'visual-transform-task-help';
+            help.classList.add('active-beat-help');
+            help.textContent = strings.transform.inspectHelp;
+            controlsContainer.appendChild(help);
+          }
+          break;
+        }
         const taskHelp = activeTaskHelp;
         const helpOpen = Boolean(isTaskHelpOpen());
         const showMultiplierStep = Boolean(taskHelp && helpOpen
@@ -595,9 +655,12 @@ export function createBeatContainer({
       case 'resolve': {
         const raw = scene.meaning.operation.rawResult;
         const pref = scene.meaning.operation.simplifiedResult || raw;
+        const compact = scene.meaning.currentTask.patternId != null;
         const plan20 = scene.meaning.currentTask.promptId?.startsWith('phase3.like-addition.');
 
-        if (plan20 && pref && raw
+        if (compact && raw) {
+          promptText.textContent = strings.resolve.compactReady(pref.numerator, pref.denominator);
+        } else if (plan20 && pref && raw
           && (pref.numerator !== raw.numerator || pref.denominator !== raw.denominator)) {
           promptText.textContent = strings.resolve.likeAdditionEquivalentReady;
         } else if (pref && raw && (pref.numerator !== raw.numerator || pref.denominator !== raw.denominator)) {
@@ -614,16 +677,17 @@ export function createBeatContainer({
         }
 
         const nextBtn = createButton({
-          label: plan20
+          label: compact
+            ? strings.resolve.finishButton
+            : plan20
             ? strings.resolve.finishButton
             : scene.meaning.currentTask.promptId?.includes('reflect')
             ? (strings.resolve.continueReflectionButton || strings.resolve.continueButton)
             : strings.resolve.continueButton,
           onClick: () => {
-            dispatchAction({
-              type: 'submit-resolution',
-              proposed: raw,
-            });
+            dispatchAction(compact
+              ? { type: 'finish-compact-episode' }
+              : { type: 'submit-resolution', proposed: raw });
           },
         });
         controlsContainer.appendChild(nextBtn);
@@ -916,7 +980,7 @@ export function createBeatContainer({
     const helpMessage = lastHelp && lastHelp.beat === beat && beat !== 'decide'
       ? strings.app?.helpLevels?.[lastHelp.level]
       : null;
-    if (beat !== 'decide' && beat !== 'transform') {
+    if (beat !== 'decide' && (beat !== 'transform' || task.inputKind === 'inspect-candidate')) {
       promptHeader.appendChild(promptText);
       activeBeatEl.appendChild(promptHeader);
     }

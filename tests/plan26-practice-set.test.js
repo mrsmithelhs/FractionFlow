@@ -27,7 +27,7 @@ import { reflectionChoicesForInstance } from '../src/content/data/reflection-cho
 import { applyIntent, createEpisode } from '../src/interaction/episode.js';
 import { createReplayEnvelope, replayEpisode } from '../src/interaction/replay.js';
 import { createFractionFlowApp } from '../src/app/app.js';
-import { PRACTICE_TYPES } from '../src/app/practice-types.js';
+import { LEGACY_PRACTICE_TYPES_V4 as PRACTICE_TYPES } from '../src/app/practice-types.js';
 import { REGISTERED_CONDITIONS } from '../src/app/conditions.js';
 import { PHASE2_REFLECTION_EPISODE_DEFINITION } from '../src/interaction/episode-definition.js';
 import { equalFractions } from '../src/math/fraction.js';
@@ -224,6 +224,7 @@ describe('Plan 26 vetted addition practice set', () => {
   it('uses mounted Next, Retry, return, and re-entry controls with fresh item state and retained settings/view', () => {
     app = createFractionFlowApp({
       root,
+      practiceTypes: PRACTICE_TYPES,
       initialConditionId: 'phase2-bundle-4',
       presentationMode: 'instant-test',
     });
@@ -323,7 +324,7 @@ describe('Plan 26 vetted addition practice set', () => {
   });
 
   it('focuses exhaustion only on final completion and keeps return available without a Next control', () => {
-    app = createFractionFlowApp({ root, presentationMode: 'instant-test' });
+    app = createFractionFlowApp({ root, practiceTypes: PRACTICE_TYPES, presentationMode: 'instant-test' });
     app.mount();
     root.querySelector('.app-practice-button').click();
     const items = PRACTICE_TYPES[0].items;
@@ -347,7 +348,7 @@ describe('Plan 26 vetted addition practice set', () => {
 
   it('keeps a supplied test instance outside the vetted set while Retry rebuilds that same instance', () => {
     const instance = secondInstance();
-    app = createFractionFlowApp({ root, instance, presentationMode: 'instant-test' });
+    app = createFractionFlowApp({ root, practiceTypes: PRACTICE_TYPES, instance, presentationMode: 'instant-test' });
     app.mount();
     root.querySelector('.app-practice-button').click();
     finishCurrentEpisode(app, 6);
@@ -407,7 +408,7 @@ describe('Plan 26 vetted addition practice set', () => {
       choices[0], choices[1], { ...choices[2], form: fraction(7, 6) },
     ]],
   ])('refuses a second-item matching-data fault (%s) before mounted Next replaces completed work', (_label, corrupt) => {
-    app = createFractionFlowApp({ root, presentationMode: 'instant-test' });
+    app = createFractionFlowApp({ root, practiceTypes: PRACTICE_TYPES, presentationMode: 'instant-test' });
     app.mount();
     root.querySelector('.app-practice-button').click();
     finishCurrentEpisode(app, 12);

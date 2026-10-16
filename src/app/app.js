@@ -2,6 +2,7 @@ import { buildCuratedProblem } from '../content/generator.js';
 import { resolveAuthoredContent, resolveCuratedFixture } from '../content/authored-content-catalog.js';
 import { validateProblemInstance } from '../content/validation.js';
 import { validateAuthoredTaskData } from '../content/authored-task-data.js';
+import { resolvePlan34TaskContext, PLAN34_EPISODE_DEFINITION_ID } from '../content/full-addition-task-patterns.js';
 import { evaluateInstanceEligibility } from '../content/eligibility.js';
 import {
   applyIntent,
@@ -94,6 +95,15 @@ function canonicalInstance(item, conditions = REGISTERED_CONDITIONS) {
     }
     return instance;
   }
+  if (definition.id === PLAN34_EPISODE_DEFINITION_ID) {
+    const taskContext = resolvePlan34TaskContext(instance, item.patternId, item.patternRevision, item.targetDenominator);
+    if (taskContext.itemId !== item.id
+      || taskContext.practiceSetId !== 'unlike-addition-vetted-set'
+      || taskContext.practiceSetRevision !== '5') {
+      throw new Error('Plan 34 practice item does not match its fixed v5 task association');
+    }
+    return instance;
+  }
   validateAuthoredTaskData(instance, item.targetDenominators);
   for (const condition of conditions) {
     for (const denominator of item.targetDenominators) {
@@ -134,12 +144,21 @@ function presentationModeFor({ override, motionQuery }) {
   return motionQuery?.matches ? 'reduced-motion' : 'standard-motion';
 }
 
-function createInitialState(instance, practiceType, condition, supportLevel, episodeDefinition = practiceType.episodeDefinition) {
+function createInitialState(instance, practiceType, condition, supportLevel, episodeDefinition = practiceType.episodeDefinition, item = null) {
+  const taskContext = item?.patternId
+    ? resolvePlan34TaskContext(instance, item.patternId, item.patternRevision, item.targetDenominator)
+    : null;
+  if (taskContext && (taskContext.itemId !== item.id
+    || taskContext.practiceSetId !== practiceType.setId
+    || taskContext.practiceSetRevision !== practiceType.setRevision)) {
+    throw new Error('practice item does not match its validated Plan 34 association');
+  }
   return createEpisode({
     instance,
     episodeDefinition,
     activeCondition: condition.activeCondition,
     support: supportLevel.configuration,
+    taskContext,
   });
 }
 
@@ -169,6 +188,7 @@ export function createFractionFlowApp({
   let activityNotice = '';
   let decideHelpOpen = false;
   let transformHelpOpen = false;
+  let inspectChangeOpen = false;
   let commonDenominatorDraft = '';
   let transformDrafts = { left: { multiplier: '', numerator: '' }, right: { multiplier: '', numerator: '' } };
   let operationDrafts = { numerator: '', denominator: '' };
@@ -506,6 +526,7 @@ export function createFractionFlowApp({
       className: 'app-secondary-button',
       onClick: () => dispatchAction({ type: 'request-replay' }),
     });
+    replayButton.classList.add('app-replay-button');
     const restartButton = createButton({
       label: STRINGS.app.restartButton,
       className: 'app-secondary-button',
@@ -553,8 +574,12 @@ export function createFractionFlowApp({
     decideHelpOpen = false;
     transformHelpOpen = false;
     commonDenominatorDraft = '';
-    transformDrafts = { left: { multiplier: '', numerator: '' }, right: { multiplier: '', numerator: '' } };
+    transformDrafts = {
+      left: { multiplier: '', numerator: state?.taskContext?.candidates?.left?.numerator ?? '' },
+      right: { multiplier: '', numerator: state?.taskContext?.candidates?.right?.numerator ?? '' },
+    };
     operationDrafts = { numerator: '', denominator: '' };
+    inspectChangeOpen = false;
     transformDraftScheduleEntryId = null;
     preserveDecideInputFocusOnViewChange = false;
     preserveTransformInputFocusOnViewChange = false;
@@ -566,7 +591,7 @@ export function createFractionFlowApp({
     if (!item) throw new Error(`practice item ${index} is not registered`);
     const definition = getEpisodeDefinition(item.episodeDefinitionId, item.episodeDefinitionRevision);
     const instance = canonicalInstance(item);
-    const nextState = createInitialState(instance, practiceType, selectedCondition, selectedSupportLevel, definition);
+    const nextState = createInitialState(instance, practiceType, selectedCondition, selectedSupportLevel, definition, item);
     return { item, instance, state: nextState };
   }
 
@@ -715,9 +740,10 @@ export function createFractionFlowApp({
   function updateSupportControls() {
     const resolved = state.status === 'resolved';
     const isPlan20 = state.episodeDefinition.id === PLAN20_LIKE_DENOMINATOR_EPISODE_DEFINITION.id;
+    const isPlan34 = state.episodeDefinition.id === PLAN34_EPISODE_DEFINITION_ID;
     helpButton.disabled = resolved;
-    replayButton.hidden = isPlan20;
-    replayButton.disabled = isPlan20 || resolved || state.beat === 'encounter';
+    replayButton.hidden = isPlan20 || isPlan34;
+    replayButton.disabled = isPlan20 || isPlan34 || resolved || state.beat === 'encounter';
     replayButton.setAttribute('aria-pressed', String(isReplaying));
     supportNotice.textContent = activityNotice;
   }
@@ -778,6 +804,10 @@ export function createFractionFlowApp({
     const side = state.expectedResponse?.target;
     if (transformHelpOpen) {
       const taskHelp = currentScene?.meaning?.taskHelp;
+      if (taskHelp?.kind === 'inspect-comparison-invariant') {
+        return host?.querySelector(`#${visualView ? 'transform' : 'linear-transform'}-num-input-${side}`)
+          || host?.querySelector('.inspect-change-button') || null;
+      }
       if (taskHelp?.status !== 'accepted') {
         return host?.querySelector(`#${visualView ? 'transform' : 'linear-transform'}-help-multiplier-${side}`) || null;
       }
@@ -787,25 +817,30 @@ export function createFractionFlowApp({
 
   function getVisibleOperationInput() {
     if (state?.beat !== 'operate'
-      || state.episodeDefinition.id !== PLAN20_LIKE_DENOMINATOR_EPISODE_DEFINITION.id) return null;
+      || (state.episodeDefinition.id !== PLAN20_LIKE_DENOMINATOR_EPISODE_DEFINITION.id
+        && state.episodeDefinition.id !== PLAN34_EPISODE_DEFINITION_ID)) return null;
     const host = visualView ? visualHost : linearHost;
-    return host?.querySelector('input.control-fraction-input') || null;
+    return host?.querySelector(state.episodeDefinition.id === PLAN34_EPISODE_DEFINITION_ID
+      ? `#${visualView ? 'operate' : 'linear-operate'}-sum-input`
+      : 'input.control-fraction-input') || null;
   }
 
   function captureOperationDraft() {
     if (!getVisibleOperationInput()) return;
     const host = visualView ? visualHost : linearHost;
+    const prefix = visualView ? 'operate' : 'linear-operate';
     operationDrafts = {
-      numerator: host?.querySelector(`#${visualView ? 'operate' : 'linear-operate'}-fraction-numerator-input`)?.value ?? '',
-      denominator: host?.querySelector(`#${visualView ? 'operate' : 'linear-operate'}-fraction-denominator-input`)?.value ?? '',
+      numerator: host?.querySelector(`#${state.episodeDefinition.id === PLAN34_EPISODE_DEFINITION_ID ? prefix + '-sum-input' : prefix + '-fraction-numerator-input'}`)?.value ?? '',
+      denominator: host?.querySelector(`#${prefix}-fraction-denominator-input`)?.value ?? '',
     };
   }
 
   function restoreOperationDraft() {
     if (!getVisibleOperationInput()) return;
     const host = visualView ? visualHost : linearHost;
-    const numerator = host?.querySelector(`#${visualView ? 'operate' : 'linear-operate'}-fraction-numerator-input`);
-    const denominator = host?.querySelector(`#${visualView ? 'operate' : 'linear-operate'}-fraction-denominator-input`);
+    const prefix = visualView ? 'operate' : 'linear-operate';
+    const numerator = host?.querySelector(`#${state.episodeDefinition.id === PLAN34_EPISODE_DEFINITION_ID ? prefix + '-sum-input' : prefix + '-fraction-numerator-input'}`);
+    const denominator = host?.querySelector(`#${prefix}-fraction-denominator-input`);
     if (numerator) numerator.value = operationDrafts.numerator;
     if (denominator) denominator.value = operationDrafts.denominator;
   }
@@ -854,8 +889,9 @@ export function createFractionFlowApp({
       helpButton.removeAttribute('aria-controls');
       if (helpCue.parentNode) helpCue.parentNode.removeChild(helpCue);
       const supportControls = appRoot.querySelector('.app-support-controls');
-      helpButton.hidden = state.episodeDefinition.id === PLAN20_LIKE_DENOMINATOR_EPISODE_DEFINITION.id
-        && state.beat !== 'operate';
+      helpButton.hidden = state.episodeDefinition.id === PLAN34_EPISODE_DEFINITION_ID
+        || (state.episodeDefinition.id === PLAN20_LIKE_DENOMINATOR_EPISODE_DEFINITION.id
+          && state.beat !== 'operate');
       if (helpButton.parentNode !== supportControls) {
         if (helpButton.parentNode) helpButton.parentNode.removeChild(helpButton);
         supportControls.replaceChildren(
@@ -877,6 +913,7 @@ export function createFractionFlowApp({
       if (helpCue.parentNode) helpCue.parentNode.removeChild(helpCue);
       return;
     }
+    helpButton.hidden = false;
     if (helpButton.parentNode !== controls && helpButton.parentNode) {
       helpButton.parentNode.removeChild(helpButton);
     }
@@ -928,8 +965,12 @@ export function createFractionFlowApp({
     const activeScheduleEntryId = state.beatSchedule?.[state.schedulePosition]?.id ?? null;
     if (state.beat === 'transform' && transformDraftScheduleEntryId !== null
       && activeScheduleEntryId !== transformDraftScheduleEntryId) {
-      transformDrafts = { left: { multiplier: '', numerator: '' }, right: { multiplier: '', numerator: '' } };
+      transformDrafts = {
+        left: { multiplier: '', numerator: state.taskContext?.candidates?.left?.numerator ?? '' },
+        right: { multiplier: '', numerator: state.taskContext?.candidates?.right?.numerator ?? '' },
+      };
       transformHelpOpen = false;
+      inspectChangeOpen = false;
     }
     if (state.beat === 'transform') {
       transformDraftScheduleEntryId = activeScheduleEntryId;
@@ -951,6 +992,12 @@ export function createFractionFlowApp({
         dispatchAction,
         strings: APP_RENDER_STRINGS,
         isTaskHelpOpen: () => transformHelpOpen,
+        isInspectChangeOpen: () => inspectChangeOpen,
+        onInspectChangeOpen: () => {
+          inspectChangeOpen = true;
+          render();
+          getVisibleTransformInput()?.focus();
+        },
       });
       visualRenderer.mount(scene);
     } else {
@@ -963,6 +1010,12 @@ export function createFractionFlowApp({
         dispatchAction,
         strings: APP_RENDER_STRINGS,
         isTaskHelpOpen: () => transformHelpOpen,
+        isInspectChangeOpen: () => inspectChangeOpen,
+        onInspectChangeOpen: () => {
+          inspectChangeOpen = true;
+          render();
+          getVisibleTransformInput()?.focus();
+        },
       });
       linearRenderer.mount(scene);
     } else {

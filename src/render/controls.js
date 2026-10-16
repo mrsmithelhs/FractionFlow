@@ -50,6 +50,7 @@ export function createNumericInput({
   onSubmit,
   onEmptySubmit,
   buttonLabel = 'Submit',
+  initialValue = '',
   strings = STRINGS,
 } = {}) {
   const wrapper = document.createElement('div');
@@ -80,6 +81,7 @@ export function createNumericInput({
   inputEl.classList.add('fraction-control', 'control-numeric-input');
   inputEl.min = String(min);
   inputEl.max = String(max);
+  inputEl.value = String(initialValue);
   inputEl.setAttribute('inputmode', 'numeric');
   if (supportingTextEl) inputEl.setAttribute('aria-describedby', supportingTextEl.id);
   inputGroup.appendChild(inputEl);

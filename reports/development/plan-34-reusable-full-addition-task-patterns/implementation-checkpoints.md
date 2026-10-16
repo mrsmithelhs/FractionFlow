@@ -27,6 +27,30 @@
 
 Stage A implementation and focused validation are complete. Preserve the production v4 default until Stage B supplies app composition context and compact rendering. Do not proceed into Stage B or change packet status; parent inspection/review is the next gate. No push or deployment was performed.
 
+## Stage B implementation checkpoint
+
+- Resumed: 2026-10-16 22:53 UTC after the explicit usage pause; checkpoint: 2026-10-16 22:56 UTC.
+- Baseline foundation: Stage A commit `befe78c`; preserved Stage B edits resumed in place after pause `78b948a`. Authorization: parent-adopted Stage B gate. Stage C remains held.
+- Production app now defaults atomically to `PLAN34_PRACTICE_TYPES_V5`. Initial and registered-item episode creation bind task context to the authored item identity and fixed live v5 association. New compact renderer paths stay behind the compact definition/pattern projection; reducer and replay remain independent of the app registry.
+- Both render surfaces show one inspect prompt, one stacked authored proposal, explicit Keep / Change top number controls, and typed local help. Help is linked to its actual rendered explanation with `aria-controls`; opening it focuses the task response and closing returns focus to the help control. Inspect drafts survive a visual/linear switch, false keeps do not establish conversions, and compact replay is hidden and rejected by the reducer.
+- Compact construct encounter displays the authored target as the short context “Use twelfths as your target parts.” Compact encounter/operate hide the generic escalating help control; task help is visible when the transform step is active. Compact operation input drafts and focused input survive visual/linear switching. Construct completion uses a navigation-only Finish action and does not create a resolution or reflection response.
+- Mounted operate/resolve surfaces now derive completed summaries from actual scheduled tasks: compact episodes omit fabricated Notice and Decide milestones while retaining the accepted left/right conversions and sum. The production test verifies the active linear surface through Finish after switching from visual mode.
+- Historical mounted-app tests retain their original actions/assertions but now explicitly inject/import v4 registries: `tests/app-shell.test.js`, `tests/entry-page.test.js`, `tests/plan26-practice-set.test.js`, `tests/plan32-compact-authored-problem-batch.test.js`. Parent separately authorized the same narrow historical pin in `tests/plan19-shared-factor-addition.test.js`, whose v4 set-revision assertion would otherwise target the production v5 default. No expected legacy behavior was loosened.
+- Added production-default mounted coverage in `tests/plan34-rendered-task-patterns.test.js` for v5 mapping, target context, typed construct help, navigation finish, both inspect surfaces, no answer leakage, no replay, truthful keep/recovery, accessible help association, focus, and draft continuity.
+- Sol's two consolidated Stage B findings were repaired: compact completed-step summaries no longer infer skipped Notice/Decide work from schedule position, and `updateHelpPlacement` restores visibility when a compact transform step makes local help available. Mounted checks assert the rendered surface behavior, including visible help and accepted conversion summaries at operate/resolve.
+
+### Validation
+
+- Focused mounted/history set: `npm test -- tests/plan34-rendered-task-patterns.test.js tests/app-shell.test.js tests/entry-page.test.js tests/plan26-practice-set.test.js tests/plan32-compact-authored-problem-batch.test.js` — 5 files, 49 tests passed before the separately authorized Plan 19 historical pin.
+- Full suite after all Stage B changes: `npm test` — 39 files, 375 tests passed.
+- Repository whitespace validation: `git diff --check` — clean (only Git's line-ending normalization notices were emitted).
+- Frozen Stage A legacy replay oracle and reducer/replay tests remain unchanged and passed in the full suite. No runner, route, browser, or fixture-build changes were made. No packet status change, push, or deployment was performed.
+- Advisor disposition: orchestrator-gate-only; parent arranges authorized read-only Sol review after this stable artifact. Runtime model identity is not independently verified here.
+
+### Boundary
+
+Stage B is ready for parent inspection and the parent-arranged read-only review. Do not begin Stage C or change packet status until the parent opens that gate.
+
 ## Stage A consolidated repair round 1
 
 - Completed: 2026-10-16 15:15:37 UTC, before Stage B.

@@ -155,8 +155,7 @@ export const PLAN34_PRACTICE_TYPES_V5 = deepFreeze(LEGACY_PRACTICE_TYPES_V4.map(
   };
 }));
 
-// Stage B activates this registry in app composition after task-context wiring.
-export const PRACTICE_TYPES = LEGACY_PRACTICE_TYPES_V4;
+export const PRACTICE_TYPES = PLAN34_PRACTICE_TYPES_V5;
 
 export function getPracticeType(id) {
   return PRACTICE_TYPES.find((practiceType) => practiceType.id === id) ?? null;

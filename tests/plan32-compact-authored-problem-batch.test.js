@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { PRACTICE_TYPES } from '../src/app/practice-types.js';
+import { LEGACY_PRACTICE_TYPES_V4 as PRACTICE_TYPES } from '../src/app/practice-types.js';
 import { REGISTERED_CONDITIONS } from '../src/app/conditions.js';
 import { REGISTERED_SUPPORT_LEVELS } from '../src/app/support-levels.js';
 import {

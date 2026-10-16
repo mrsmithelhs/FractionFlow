@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { PRACTICE_TYPES } from '../src/app/practice-types.js';
+import { LEGACY_PRACTICE_TYPES_V4 } from '../src/app/practice-types.js';
 import { REGISTERED_CONDITIONS } from '../src/app/conditions.js';
 import { REGISTERED_SUPPORT_LEVELS } from '../src/app/support-levels.js';
 import {
@@ -37,7 +37,8 @@ import {
 import { evaluateTaskPathClosure } from '../src/interaction/path-closure.js';
 import { createReplayEnvelope, replayEpisode } from '../src/interaction/replay.js';
 
-const practiceType = PRACTICE_TYPES.find((entry) => entry.id === 'sum-under-one');
+const historicalPracticeTypeV4 = LEGACY_PRACTICE_TYPES_V4.find((entry) => entry.id === 'sum-under-one');
+const practiceType = historicalPracticeTypeV4;
 const item = practiceType.items.find((entry) => entry.id === 'one-sixth-plus-one-fourth');
 
 function buildInstance(targetItem = item) {

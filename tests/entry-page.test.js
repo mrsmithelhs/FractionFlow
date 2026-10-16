@@ -1,6 +1,6 @@
 import { afterEach, beforeEach, describe, expect, it } from 'vitest';
 import { createFractionFlowApp } from '../src/app/app.js';
-import { PRACTICE_TYPES } from '../src/app/practice-types.js';
+import { LEGACY_PRACTICE_TYPES_V4 as PRACTICE_TYPES } from '../src/app/practice-types.js';
 import { setupMockDOM, teardownMockDOM } from './fixtures/mock-dom.js';
 
 describe('Plan 12 entry page', () => {
@@ -12,7 +12,7 @@ describe('Plan 12 entry page', () => {
     document = setupMockDOM();
     root = document.createElement('div');
     document.body.appendChild(root);
-    app = createFractionFlowApp({ root, presentationMode: 'instant-test' });
+    app = createFractionFlowApp({ root, practiceTypes: PRACTICE_TYPES, presentationMode: 'instant-test' });
     app.mount();
   });
 

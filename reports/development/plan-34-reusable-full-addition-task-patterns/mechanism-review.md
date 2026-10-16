@@ -170,3 +170,30 @@ Do not hide failures by treating historical tests as live-default evidence.
 
 Stage C route/fixture/browser execution remains held for Stage B review. Source
 staging requires exact elevated Git metadata access; child made no ACL changes.
+
+## Stage B accepted; Stage C opened — 2026-10-16
+
+Parent inspected summary guards and visible-help reset after Sol findings, checked
+historical test diffs retain old actions/assertions, and independently ran full
+suite (375 tests / 39 files), learner/prototype builds and diff check successfully.
+StageB source is accepted for the next execution stage; this is not owner rendered
+acceptance. Five historical test contexts are explicitly pinnedv4 while new tests
+exercise productionv5.
+
+StageC now authorized within the exact approved paths: current-source historical
+entry fixture built outside shipped dist; explicit context mapping for all route
+IDs; narrow runner build/serve/select/report hooks; additional productiondefaultv5
+routes; browser measurements, screenshots and independent leak/remnant seeds.
+Retain every baseline route object's actions/assertions and distinguish historical
+witnesses from shipped-default coverage. Prototype routes stay prototype contexts.
+
+Required observed coverage: both patterns across multiple identities, both views,
+360x740/360x752 and wider samples, applicable support/condition choices, visible
+Help and toggles/drafts/focus, false keep/invalid repair/valid keep/unchanged edit,
+actual active-view Finish, Next/Retry/return/re-entry, keyboard and browser touch,
+reduced motion, no false-stimulus conservation animation, complete mounted and
+accessible content withholding and no omitted-task summaries/controls. Explain
+deep versus swept evidence; no physical-device or efficacy claim. Preserve original
+legacy oracle. No dependency/settings/push/deployment change. One Luna writer;
+Sol read-only low/medium review after stable artifact. Final report comes after
+scoped implementation/evidence commits, with packet acceptance still parent-owned.

@@ -915,6 +915,9 @@ function assertIntentAllowedAtBeat(state, intent) {
     );
   }
   const compact = state.episodeDefinition.id === PLAN34_EPISODE_DEFINITION_ID;
+  if (compact && intent.type === 'request-replay') {
+    throw new EpisodeIntentError('UNEXPECTED_INTENT', 'compact episodes do not expose legacy replay actions');
+  }
   if (['keep-inspected-form', 'repair-inspected-form'].includes(intent.type)
     && (!compact || state.taskContext.patternId !== FULL_ADDITION_INSPECT_PATTERN.id || state.beat !== 'transform')) {
     throw new EpisodeIntentError('UNEXPECTED_INTENT', `${intent.type} requires an inspect transform`);

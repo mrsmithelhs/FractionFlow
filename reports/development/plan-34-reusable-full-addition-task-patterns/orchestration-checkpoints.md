@@ -125,3 +125,11 @@ launch receipt. Continue Stage B, parent verification/Sol read-only low-medium
 review, then Stage C and technical delivery. Keep writes single-threaded; no fanout,
 Astra, dependency/settings changes, push or deployment. Owner rendered acceptance
 remains the final product gate; packet stays in-progress during this pause.
+
+## Owner resumed — 2026-10-16
+
+Owner said Resume. Parent verified Plan34 RUNNABLE and the eleven preserved partial
+Stage B paths, then explicitly resumed the interrupted Luna actor. Stage B scope
+and Stage C hold remain as recorded above. This revokes the usage pause only;
+owner rendered acceptance and deployment gates remain. No second implementer,
+model substitution or parallel source writer was introduced.

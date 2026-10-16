@@ -1,5 +1,6 @@
 import { afterEach, beforeEach, describe, expect, it } from 'vitest';
 import { createFractionFlowApp } from '../src/app/app.js';
+import { LEGACY_PRACTICE_TYPES_V4 } from '../src/app/practice-types.js';
 import { REGISTERED_CONDITIONS } from '../src/app/conditions.js';
 import { buildCuratedProblem } from '../src/content/generator.js';
 import { setupMockDOM, teardownMockDOM } from './fixtures/mock-dom.js';
@@ -21,7 +22,7 @@ describe('Plan 09 app shell and upstream display switcher', () => {
     document = setupMockDOM();
     root = document.createElement('div');
     document.body.appendChild(root);
-    app = createFractionFlowApp({ root, presentationMode: 'instant-test' });
+    app = createFractionFlowApp({ root, practiceTypes: LEGACY_PRACTICE_TYPES_V4, presentationMode: 'instant-test' });
     app.mount();
     root.querySelector('.app-practice-button').click();
   });
@@ -185,7 +186,7 @@ describe('Plan 09 app shell and upstream display switcher', () => {
         right: fraction(1, 3),
       },
     });
-    app = createFractionFlowApp({ root, presentationMode: 'instant-test', instance });
+    app = createFractionFlowApp({ root, practiceTypes: LEGACY_PRACTICE_TYPES_V4, presentationMode: 'instant-test', instance });
     app.mount();
     root.querySelector('.app-practice-button').click();
     app.dispatch({ type: 'acknowledge-encounter' });
@@ -510,7 +511,7 @@ describe('Plan 09 app shell and upstream display switcher', () => {
       return motionQuery;
     };
 
-    app = createFractionFlowApp({ root, presentationMode: 'auto' });
+    app = createFractionFlowApp({ root, practiceTypes: LEGACY_PRACTICE_TYPES_V4, presentationMode: 'auto' });
     app.mount();
     root.querySelector('.app-practice-button').click();
     expect(root.querySelector('.fraction-bar-track.reduced-motion')).toBe(null);
