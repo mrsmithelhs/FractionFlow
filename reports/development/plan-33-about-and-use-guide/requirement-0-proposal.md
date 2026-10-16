@@ -1,6 +1,6 @@
 # Plan 33 Requirement 0 — investigation and proposal
 
-Date: 2026-10-15 23:xx America/New_York (environment date; exact time not exposed in this report).
+Date: 2026-10-15 (America/New_York; exact proposal time was not recorded).
 
 ## Gate and baseline
 

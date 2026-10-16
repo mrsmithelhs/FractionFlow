@@ -54,3 +54,70 @@ role, `gpt-6-luna`, medium effort, cold context. This establishes accepted launc
 configuration and returned child identity, not independently observed model execution
 or billing. No substituted model/role. Initial brief is self-contained and assigns
 only the two proposal/checkpoint report paths; source stop and no-fan-out explicit.
+
+## Checkpoint 1 — parent mechanism approval and implementation
+
+Proposal/checkpoint persisted and committed at `40cab52` with parent mechanism
+approval. Same child continued; no second implementation launch. Parent resolved
+proposal questions using existing entry-only/current-feature requirements rather
+than requesting unnecessary owner approval. Selected flat static about.html with
+relative links and shorter copy; source window remains Plan 33 only.
+
+Initial child Git staging failed with protected metadata permission denial. Parent
+staged exact report paths with normal approved elevation; no ACL or sandbox changes.
+Early parent inspection of the in-progress evidence script identified Windows-path,
+keyboard, enlarged-text, vertical-fit and multi-navigation privacy observation gaps
+and relayed one consolidated note before delivery. No formal repair round consumed.
+Child then reported missing bundled Playwright browser executable; no download was
+attempted. Parent directed the already-tested installed Chrome channel. This is
+browser selection within the script, not model/settings substitution. Final success
+must still be observed. No extra agent/advisor has yet been launched for this pilot.
+
+## Checkpoint 2 — delivery review and observations
+
+The child paused stable source/evidence at observed 2026-10-16 03:34 UTC
+(2026-10-15 New York). Parent committed owned implementation/evidence at `0542549`.
+Requested one separate Sol-class read-only advisor (`gpt-6-sol`, medium/default,
+cold context); it found no blocking source defect. Parent independent tests/build
+and browser journey passed; see delivery-review.md. One consolidated evidence
+repair round was used; no replacement or second implementation launch.
+
+Parent observed the pilot's initiation at 23:25:40 New York and implementation
+commit at approximately 23:36:53, about eleven minutes of wall time, including
+proposal, verification and tool waits. Child checkpoint timestamps place its
+initial implementation/validation between 03:28 and 03:34 UTC. These are coarse
+wall-clock checkpoints, not measured model-active time or billing. First checkpoint
+and implementation return stayed within 30/90-minute bounds. Final report remains
+pending at this checkpoint. No owner wait was required during source work.
+
+Seven parent-to-child assignments/guidance messages covered initial investigation,
+receipt/scope reminder, mechanism continuation, preliminary evidence review,
+Chrome selection, consolidated repair and final-report continuation. Child and
+advisor returned artifact pointers instead of raw transcripts. Token/input/cache/
+thinking/billing data are not exposed; handoff size was not separately instrumented.
+No claim of model identity beyond requested configuration and accepted launch receipt.
+
+Observed management trade-off: parent relay worked without a durable implementer
+chat, and persisted proposal/checkpoints preserved the handoff at each gate. Parent
+also supplied mechanism simplification, copy refinement, browser-channel advice,
+Git commits and evidence corrections. Less owner chat traffic did not eliminate
+supervision or prove lower cost. Much of the work concerned the browser evidence
+script rather than product code. One bounded static page cannot establish fitness
+for Plan 34's larger instructional restructuring. Comparison with Plan 20 is
+only descriptive: its scope and repairs differ, so elapsed time or repair counts
+are not a matched performance comparison.
+
+No Bootstrap return/write is performed: owner explicitly prohibited it for this
+run. Required consultation findings/disposition are persisted here in FractionFlow.
+Owner may carry these local report pointers back. Rendered-page acceptance and
+separate deployment remain outstanding; no second pilot or settings rollout.
+
+## Checkpoint 3 — final child report received; owner gate
+
+Final child progress report received and reviewed. Parent set Plan 33 delivered,
+with technical acceptance recorded separately and rendered-page acceptance still
+pending. Child is stopped with no further source assignment. Final report is
+committed separately after implementation and review records. The one-plan pilot
+has reached its owner acceptance gate; no second plan, model substitution,
+Bootstrap write, push or deployment was performed. Parent retained the reserved
+shared-source window rather than silently starting Plan 34.

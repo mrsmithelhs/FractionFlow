@@ -1,7 +1,7 @@
 ---
 id: plan-33
 title: About FractionFlow and Use Guide
-status: in-progress
+status: delivered
 depends_on: [plan-12, plan-13, plan-31]
 gate: "Owner initiation; Requirement 0 approves concise copy, accurate privacy/settings claims, page navigation and exact paths before source work. Technical and owner rendered-page acceptance before completion; deployment separate."
 summary: >-
