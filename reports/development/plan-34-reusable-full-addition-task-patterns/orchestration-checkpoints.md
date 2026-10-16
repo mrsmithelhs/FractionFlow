@@ -44,3 +44,12 @@ Owner rendered-screen/agency acceptance remains separate from technical review.
 The supplied-target patterns omit denominator discovery intentionally. Future
 sampling, broader concept coverage, additional families/representations remain
 outside this packet. Independent editorial reports do not authorize UI rewrites.
+
+## Launch receipt
+
+Initial default-role cold-context `gpt-6-luna` medium request returned child
+`/root/plan34_luna`. Accepted request/child ID is availability evidence; execution
+model identity and billing are not independently exposed. The child is assigned
+Requirement 0 reports only and is stopped from source work until parent mechanism
+approval. Parent will arrange Sol read-only low/medium review against its persisted
+proposal, avoiding a generic consultation without an inspectable artifact.
