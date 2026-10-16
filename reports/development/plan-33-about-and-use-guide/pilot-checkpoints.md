@@ -46,3 +46,11 @@ binding: inspect current runtime/privacy/settings/navigation, write complete sho
 copy and mechanism with exact proposed paths, then stop before source changes.
 Child ID and launch receipt will be appended after dispatch. Owner rendered-page
 acceptance and deployment remain separate gates. No source change is approved here.
+
+## Launch receipt
+
+Dispatch returned child `/root/plan33_luna` for the explicitly requested default
+role, `gpt-6-luna`, medium effort, cold context. This establishes accepted launch
+configuration and returned child identity, not independently observed model execution
+or billing. No substituted model/role. Initial brief is self-contained and assigns
+only the two proposal/checkpoint report paths; source stop and no-fan-out explicit.
