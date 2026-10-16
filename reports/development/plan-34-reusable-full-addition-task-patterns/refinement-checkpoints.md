@@ -1,0 +1,10 @@
+# Plan 34 refinement checkpoints
+
+## Checkpoint 1 — mechanism refinement persisted
+
+Date: 2026-10-16 (America/New_York). Preflight returned `RUNNABLE: plan-34 is ready to implement`. Baseline at refinement start: `HEAD 5bd8b23225d0270e05906ae49c8947b9286dc01d`; `git status --short` returned no entries. Current source inspection confirmed `createFractionFlowApp({ practiceTypes })` in `src/app/app.js`, production wiring in `src/app/main.js`, revision-4 association baseline in `src/app/practice-types.js`, strict v1 replay keys in `src/interaction/replay.js`, and a `dist/`-only static server and existing route matrix containing multiple legacy condition/replay/recovery/focus/support routes that depend on the revision-4 default association.
+
+Persisted the focused mechanism refinement at `requirement-0-refinement.md`. It specifies the all-legacy-mounted-route/current-source temp context mapping and current-source temp build, a strict replay-v2 `taskContext` schema and identity validation, target-derived transform sides, typed inspect actions/help, navigation-only compact completion, exact paths, bounded implementation stages, and substantive evidence. Only the two child-owned refinement reports are changed in this checkpoint; no source, schema, tests, packet, route matrix, build output or fixture files were modified. No tests/build/browser routes ran because this is a pre-source design checkpoint. No advisor consultation ran in this child; the parent owns the separate Sol review flow. Requested model/runtime identity cannot be independently verified here.
+
+Genuine open implementation details for parent mechanism approval: where immutable revision-4 association data resides; final task-data/candidate IDs and revisions; exact help wording and navigation-intent spelling; and specific wide-sample route IDs/viewports. DECISION-042 outcomes and the parent-selected set/replay/help choices are treated as settled. Source gate remains STOP until the parent explicitly accepts exact wiring and paths. Packet status, acceptance, shipping, push and deployment remain outside this checkpoint.
+

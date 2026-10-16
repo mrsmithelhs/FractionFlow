@@ -1,6 +1,7 @@
 # Plan 34 initial mechanism review
 
-Date: 2026-10-16. Disposition: refinement required; source gate closed.
+Date: 2026-10-16. Initial disposition: refinement required. The staged source
+approval below supersedes that initial hold for its exact scope.
 
 The Luna proposal is persisted at `requirement-0-proposal.md`. Parent requested
 cold-context default-role `gpt-6-sol` medium read-only review. Advisor reported
@@ -64,3 +65,85 @@ not an undisclosed same-actor claim or permission for model substitution.
 After exact refined wiring and paths are reviewed, parent may approve source
 under the owner's existing Plan 34 authority. Rendered-screen/agency acceptance
 and deployment remain separate. No additional owner decision is currently needed.
+
+## Refined mechanism accepted — staged implementation approval
+
+Parent reviewed `requirement-0-refinement.md` and the actual app factory, source
+registry and runner. The owner explicitly authorized carrying the plan through
+implementation with Luna and Sol. The old refinement actor is currently completed,
+not running; parent resumes it explicitly rather than equating dispatch with work.
+
+Adopt the refinement's current-source historical fixture, explicit per-route
+context map, unshipped temporary fixture output, strict new replay v2, authored-
+target side derivation, typed inspect help and navigation-only compact completion.
+Use `finish-compact-episode` with exact `{type}` shape for that navigation. Keep
+legacy v1 and definition behavior unchanged. Existing frozen route actions and
+assertions remain historical tests; new rows must prove the actual shipped default.
+
+Architectural guard: interaction/replay must not import the app registry. Resolve
+pure authored task/association identities in content; app consumes them. Six-pair
+compatibility cases may construct explicitly non-learner test contexts, but must
+not falsely claim alternate assignments belong to the live set@5. Live set
+membership, immutable task identity and pattern compatibility are distinct checks.
+If an extra schema choice is needed, report it before widening the contract.
+
+### Approved exact source/test/evidence scope
+
+- `src/content/data/plan34-full-addition-task-records.js`.
+- `src/content/full-addition-task-patterns.js` (pure shared admission/identity
+  resolver if needed); `src/content/authored-problem-materializer.js`,
+  `src/content/authored-content-catalog.js`, `src/content/authored-task-data.js`,
+  `src/content/index.js` only as required to expose the validated records.
+- `src/interaction/episode-definition.js`, `beat-schedule.js`, `episode.js`,
+  `classification.js`, `scene.js`, `provenance.js`, `replay.js`, `index.js`.
+- `src/app/practice-types.js` (immutable historical registry plus active v5),
+  `src/app/app.js` (configuration, drafts, local controls and lifecycle).
+- `src/render/strings.js`, `controls.js`, `beat-container.js`, `linear-path.js`,
+  `fraction-bar.js`, `src/styles/render.css` only for scoped projected controls/
+  semantics; no renderer-computed truth or global motion/focus rewrite.
+- `tests/plan34-full-addition-task-patterns.test.js`,
+  `tests/interaction-plan34-task-patterns.test.js`,
+  `tests/plan34-rendered-task-patterns.test.js`,
+  `tests/fixtures/plan34-legacy-replay-oracle.json`.
+- `tests/fixtures/plan34-historical-entry.html`,
+  `tests/fixtures/plan34-historical-entry.js`,
+  `scripts/dev/build-plan34-historical-fixture.mjs`,
+  `tests/routes/plan34-context-map.json`, `tests/routes/route-matrix.json`
+  (new rows only), `scripts/dev/run-route-matrix.js` (bounded explicit context
+  build/serve/select/report hooks), `tests/route-contract.test.js` as needed for
+  strict context coverage rather than literal count preservation.
+- `reports/development/plan-34-reusable-full-addition-task-patterns/` child-owned
+  implementation checkpoints, capture/verifier/seed scripts, evidence and progress.
+  Parent mechanism/review/status records remain parent-owned.
+
+No package/dependency/configuration updates, new math algorithms, About rewrite,
+Bootstrap writes, tracking/storage, general task framework or new learner goal.
+Any additional path needs parent approval before editing. Exact stimulus record
+IDs and fixed helper naming within these boundaries are routine implementation.
+
+### Stage A — now authorized
+
+Before source mutation, capture initial and completed legacy envelopes plus
+expected semantic state from the current baseline. Implement pure data/admission,
+target-derived schedule, new-definition interaction/classification/provenance and
+strict replay v2; expose immutable v4 and v5 associations. Run meaningful focused
+tests for all six pairs, malformed inputs, exact classifications, assistance,
+navigation-only completion, reset and legacy/new replay. Do not yet edit DOM
+renderers, app composition, route runner/matrix or browser evidence. Persist a
+checkpoint and return for parent inspection before Stage B. One implementation
+writer. No unsupported latest-record fallback or fabricated learner history.
+
+### Stage B/C — approved design, execution held until Stage A review
+
+Stage B adds both learner surfaces and app wiring; Stage C adds historical fixture,
+explicit route context map, production-default browser journeys and required
+failure seeds/screens. Parent opens these execution stages after checking the
+previous artifact. No repeated owner approval is needed for routine work within
+this adopted scope. Ask the owner only for genuine product/pedagogical changes.
+
+Copy restraint: one active prompt, no heading repeating the question. Inspect
+asks whether the proposal shows the same amount with Keep / Change top number
+controls; help uses the same-factor principle without verdict/answer. Recovery
+is short and distinct from the prompt. Render validated stacked notation and
+coherent accessible labels. False stimuli never become mathematical pre-states
+for conservation animations. Owner rendered acceptance remains mandatory.

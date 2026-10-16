@@ -1,0 +1,61 @@
+# Plan 34 Requirement 0 — mechanism refinement
+
+Date: 2026-10-16 (America/New_York). This is a design refinement only. `node scripts/dev/plan-status.js check plan-34` returned `RUNNABLE: plan-34 is ready to implement`. At the start of this refinement, `HEAD` was `5bd8b23225d0270e05906ae49c8947b9286dc01d` and the working tree had no reported changes. No source, test, schema, build, packet, or generated fixture was changed. The parent owns the mechanism approval and source gate; this report does not authorize implementation.
+
+## Historical and current browser contexts
+
+DECISION-042 has settled the learner contract: set revision 5 retains the same 11 numeric item IDs and order, and maps the first item to construct and the second and fifth items (including `one-third-plus-one-fourth`) to inspect/keep/repair at target 12. Revision 4 and its associations remain immutable historical identities. The app already accepts `createFractionFlowApp({ practiceTypes })` in `src/app/app.js`; the normal entry constructs from `PRACTICE_TYPES` in `src/app/main.js`. This seam supports an explicit test entry built from current source without product test flags or an old application binary.
+
+Recommended exact additions after gate approval:
+
+- `tests/fixtures/plan34-historical-entry.html` and `tests/fixtures/plan34-historical-entry.js`: test-only entry importing current styles and `createFractionFlowApp`, injecting the immutable revision-4 practice-type definition, then mounting it. The frozen historical definition/data should be retained as an explicit source identity in `src/app/practice-types.js` (or a narrowly named historical practice-data module if parent prefers); it must contain the actual old 11-item associations, not a copied compiled bundle.
+- `scripts/dev/build-plan34-historical-fixture.mjs`: build that test entry using the current Vite/source graph into `path.join(os.tmpdir(), 'fractionflow-plan34-historical-entry')`. Do not write fixture output to `dist/`, the Vite public directory, or a committed directory.
+- `tests/routes/plan34-context-map.json`: explicit route-ID mapping only. Map every preexisting route-matrix row whose `startingSurface` is `mounted-app-entry` and whose behavior/actions depend on revision-4 sum-under-one associations to `historical-v4` (including both `ROUTE-TRAVERSAL-*` rows and the existing condition, replay, recovery, focus, support, help, Next/Retry and item-reachability witnesses). Keep prototype-only rows outside this map. Map each new Plan 34 compact journey ID explicitly to `production-default-v5`. Leave every legacy route ID, action and assertion unchanged. Do not silently classify unmatched legacy rows, or map unrelated prototype rows as historical app evidence.
+- `scripts/dev/run-route-matrix.js`: add a small optional route-context map loader, a `historical-v4` starting surface, and an exact `/__test__/plan34-historical/` static-root mapping to the temp build directory. Existing routes continue to start at production `dist/`; new Plan 34 routes must start at the normal production entry. The runner must fail closed for missing/unknown context mappings and never infer context from route text, assertions, test state, or DOM. This is a constrained dual-root serve extension, not a general fixture runner.
+
+Prevent vacuous claims with executable checks: a focused test asserts the historical fixture injects set `unlike-addition-vetted-set@4`, exactly the 11 old IDs/order, and revision-4 definitions for the three changed associations. Matrix validation requires every existing mounted-app legacy row to have an explicit historical mapping, rejects mappings for prototype-only routes, and requires each Plan 34 row to map to production-default. Historical route completion must still execute its original actions/assertions against the newly built current-source fixture; in particular, the traversal routes must still exercise notice, decide and reflection. New production rows must assert the compact prompt/schedule responsibilities and complete the actual default first item through the shipped entry. A run summary should report context per row. Missing either context, zero rows for a required context, unexpected context, or duplicate route IDs fails before browser execution. Thus passing old routes establishes historical regression only; passing new rows establishes current default behavior only. Do not accept a label or count in place of executed actions and assertions.
+
+## Replay and exact authored identity
+
+Keep `src/interaction/replay.js`'s exact-key replay-v1 decoder and envelope shape unchanged. New pattern episodes use a discriminated `fractionflow.episode-replay/v2` envelope with the existing common keys `contentIdentity`, `episodeDefinition`, `support`, `activeCondition`, and ordered `learnerIntents`, plus mandatory `taskContext`:
+
+```json
+{
+  "practiceSetId": "unlike-addition-vetted-set",
+  "practiceSetRevision": "5",
+  "itemId": "one-half-plus-one-third",
+  "fixtureId": "curated-relatively-prime-addition-one-half-one-third",
+  "authoringRevision": "plan26-fixtures-v1",
+  "definitionId": "phase-3-reusable-full-addition",
+  "definitionRevision": "1",
+  "patternId": "full-addition.inspect-keep-repair",
+  "patternRevision": "1",
+  "targetDenominator": "12",
+  "taskDataId": "plan34-full-addition-task-data",
+  "taskDataRevision": "1",
+  "stimulusId": "<immutable candidate-record id or null for construct>",
+  "stimulusRevision": "<record revision or null for construct>",
+  "candidates": {"left":{"numerator":"5","denominator":"12"},"right":{"numerator":"4","denominator":"12"}}
+}
+```
+
+For construct, the stimulus identity and candidates are explicitly `null`; for inspect, both candidate forms and the exact stimulus identity/revision are required. `learnerIntents` preserves submitted side/action/form order, including keep/change and retries. In `src/interaction/replay.js`, make dispatch by exact schema version, validate exact key sets/types, then resolve set/item, definition, pattern, task-data and candidate identity at the pinned revisions. Verify their association agrees on item/content identity, definition/pattern, target and task-data revision; verify inspect candidate wire forms equal the immutable authored record. Reject missing/extra keys, latest-version fallback, unknown/mismatched identities, target/candidate mismatch and unsupported pattern-definition pairs before replaying intents. Legacy v1 must still reconstruct revision-4 episodes with the existing decoder and semantics. Relevant implementation seams are `src/app/practice-types.js`, `src/content/authored-content-catalog.js`, `src/content/authored-problem-materializer.js`, `src/content/authored-task-data.js`, `src/interaction/episode-definition.js`, `src/interaction/episode.js`, `src/interaction/scene.js`, `src/interaction/provenance.js`, and `src/interaction/replay.js`.
+
+Required replay evidence: before any source edits, capture initial and completed v1 envelopes from current source as `tests/fixtures/plan34-legacy-replay-oracle.json`; replay both after the change and compare exact envelope identity/definition/intents plus semantic reconstructed states. Add v2 round trips for each pattern and tamper cases for every identity pin, candidate form, target, schema shape and intent ordering. Assert v1 rejects v2-only keys and v2 rejects absent task context; do not treat an equivalent-looking latest record as the pinned record.
+
+## Derivation, controls and completion
+
+The compact schedule builder in `src/interaction/beat-schedule.js` and state/response path in `src/interaction/episode.js` must use the authored `targetDenominator` to determine each required conversion side through exact conversion/classification semantics, then freeze encounter → required left/right transform entries → operate → resolve. Preserve order and omit a side only when exact math proves it is already represented at the authored target. Do not rely only on canonical-renaming flags. Reject unsupported sides/targets and zero-required-transform items. Keep `DECISION-042`'s fixed association; no per-item branches or learner pattern selection.
+
+For inspect, the active transform receives only its side's authored candidate. Typed controls record an explicit `keep` or `change-top` choice; keep submits one intent, while change-top preserves draft and submits the entered numerator on Check. The classification must distinguish valid keep, false keep, valid changed repair, valid unchanged edit, and invalid repair. False keep/invalid repair stay on the same entry and withhold validity/corrected values. Candidate values are authored proposals, not established equivalences: `src/render/fraction-bar.js` choreography and the two renderers must not animate a false proposal into an accepted amount or describe it as conserved.
+
+At inspect transform, the existing task-local help request should project typed, non-answering wording (same-top-and-bottom-factor principle and “compare this form” invitation) through the existing help panel/history path in `src/interaction/episode.js`, `src/interaction/scene.js`, `src/render/beat-container.js`, `src/render/linear-path.js`, and `src/render/strings.js`. It must not reveal whether to keep/change, validity, or a corrected numerator. Preserve repair draft across help open/close and retain help in history. Construct may keep its existing multiplier helper, but that support stays separate and never fills/accepts the numerator; do not make multiplier work mandatory. Resolve is a new-definition-only navigation completion intent (e.g. `finish-compact-episode` with exact `{type}` keys), accepted once after operation and credited only as navigation. It has no proposed fraction/response payload and must not create a second mathematical contribution, result, or learner form. Existing `submit-resolution` remains unchanged for v1/history.
+
+## Bounded implementation stages and evidence
+
+1. **Foundation and compatibility:** add immutable set/pattern/task-data identities, target-derived admission/schedule logic and strict v2 replay. Capture/run the v1 oracle first. Automated checks cover the six problem-pattern pairs using shared admission/interaction code, malformed associations/candidates, exact classifications, state freezing, and reset/replay.
+2. **Learner surface:** add typed inspect controls, truthful local recovery/help, and navigation-only resolve in both visual and linear renderers. Mounted tests verify accessible names, keyboard/focus, retained drafts, output withholding, no fabricated result, and parity.
+3. **Browser route fixture and proof:** build the v4 fixture into OS temp, add the explicit map and minimal dual-root server hook, retain the two original route rows unchanged, and add production-default v5 routes. Deep journeys: first-item visual construct at 360×740 and second-item linear inspect at 360×752. Swept journeys: third-item valid/false inspection across both views; one wide viewport per pattern. Include support/condition applicability, false keep, invalid/correct repair, valid unchanged edit, help draft preservation, Next/Retry/return/re-entry, reduced motion, and actual keyboard/touch interactions as a declared deep/swept matrix, not a Cartesian product. Capture screenshots/captions under `reports/development/plan-34-reusable-full-addition-task-patterns/evidence/`; these are review artifacts and are not learner assets. Add independent answer/validity-leak and omitted-task-remnant seeds, show each seed triggers its intended assertion, then rerun the clean route and preserve its evidence. Do not infer physical device or assistive technology behavior.
+
+A useful next gate is for the parent to accept/amend these exact source/test paths, the temp-root mapping, taskContext wire schema and help/resolve intent names. Until that explicit gate, source/test/build/route-map changes remain unauthorized. Open implementation details, not new product decisions: whether historical v4 association data is exported beside the live registry or held in a separate source module; exact immutable task-data and candidate record IDs/revisions; final concise inspect-help wording; and precise route IDs/viewport for the wide samples. Keep those resolved by the parent in the source authorization record.
+
