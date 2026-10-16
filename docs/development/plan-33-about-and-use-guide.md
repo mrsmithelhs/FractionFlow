@@ -1,11 +1,9 @@
 ---
 id: plan-33
 title: About FractionFlow and Use Guide
-status: draft
+status: in-progress
 depends_on: [plan-12, plan-13, plan-31]
 gate: "Owner initiation; Requirement 0 approves concise copy, accurate privacy/settings claims, page navigation and exact paths before source work. Technical and owner rendered-page acceptance before completion; deployment separate."
-superseded_by: null
-resolution: null
 summary: >-
   Add a small About page reachable from the app entry, describing FractionFlow,
   how to practice, support choices and current answers/progress privacy behavior.
