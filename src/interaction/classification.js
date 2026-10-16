@@ -158,6 +158,29 @@ export function classifyConversionResponseForEpisode({ instance, targetDenominat
   };
 }
 
+export function classifyInspectedCandidate({ instance, targetDenominator, side, candidate, action, proposed = null }) {
+  if (side !== 'left' && side !== 'right') throw new RangeError(`unsupported conversion side: ${String(side)}`);
+  const candidateValid = classifyConversionResponseForEpisode({
+    instance, targetDenominator, side, proposed: candidate,
+  }).kind === 'correct-equivalent-form';
+  if (action === 'keep') {
+    return candidateValid
+      ? { kind: 'valid-candidate-kept', validity: 'valid', action, side, proposed: candidate }
+      : { kind: 'false-candidate-kept', validity: 'invalid', action, side, continuation: 'local-recovery' };
+  }
+  if (action !== 'change-top' || !proposed) throw new TypeError('inspect action must be keep or change-top with a proposed form');
+  const result = classifyConversionResponseForEpisode({ instance, targetDenominator, side, proposed });
+  if (result.kind !== 'correct-equivalent-form') {
+    return { ...result, kind: 'inspection-repair-rejected', action, continuation: 'local-recovery' };
+  }
+  return {
+    ...result,
+    kind: proposed.numerator === candidate.numerator ? 'valid-unchanged-edit' : 'valid-inspection-repair',
+    action,
+    proposed,
+  };
+}
+
 export function classifyTransformHelpMultiplier({ instance, targetDenominator, side, proposed }) {
   if (side !== 'left' && side !== 'right') throw new RangeError(`unsupported conversion side: ${String(side)}`);
   const target = wholeStringToExact(targetDenominator, 'target denominator');

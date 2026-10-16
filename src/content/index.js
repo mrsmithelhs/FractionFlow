@@ -6,6 +6,8 @@ export * from './eligibility.js';
 export * from './data/reflection-choices.js';
 export * from './data/premise-checks.js';
 export * from './authored-task-data.js';
+export * from './data/plan34-full-addition-task-records.js';
+export * from './full-addition-task-patterns.js';
 export * from './authored-content-catalog.js';
 export * from './authored-problem-materializer.js';
 export * from './generator.js';

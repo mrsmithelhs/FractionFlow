@@ -8,6 +8,7 @@ import { makeContentIdentity } from './provenance.js';
 import { validateSupportConfiguration } from './support.js';
 
 export const REPLAY_SCHEMA_VERSION = 'fractionflow.episode-replay/v1';
+export const REPLAY_V2_SCHEMA_VERSION = 'fractionflow.episode-replay/v2';
 
 function sameJson(left, right) {
   return JSON.stringify(left) === JSON.stringify(right);
@@ -99,6 +100,7 @@ function assertContentIdentityShape(identity) {
 }
 
 function assertReplayEnvelopeShape(envelope) {
+  const v2 = envelope?.schemaVersion === REPLAY_V2_SCHEMA_VERSION;
   assertExactKeys(envelope, [
     'schemaVersion',
     'contentIdentity',
@@ -106,6 +108,7 @@ function assertReplayEnvelopeShape(envelope) {
     'support',
     'activeCondition',
     'learnerIntents',
+    ...(v2 ? ['taskContext'] : []),
   ], 'replay envelope');
   assertContentIdentityShape(envelope.contentIdentity);
   assertExactKeys(envelope.episodeDefinition, ['id', 'revision'], 'episodeDefinition');
@@ -118,6 +121,15 @@ function assertReplayEnvelopeShape(envelope) {
   const condition = validateActiveCondition(envelope.activeCondition);
   if (!sameJson(condition, envelope.activeCondition)) throw new TypeError('active condition is not canonical wire data');
   if (!Array.isArray(envelope.learnerIntents)) throw new TypeError('replay learner intents must be an array');
+  if (v2) {
+    if (!envelope.taskContext || typeof envelope.taskContext !== 'object' || Array.isArray(envelope.taskContext)) {
+      throw new TypeError('replay v2 requires an exact taskContext');
+    }
+    if (envelope.episodeDefinition.id !== 'phase-3-reusable-full-addition'
+      || envelope.episodeDefinition.revision !== '1') {
+      throw new TypeError('replay v2 is reserved for the compact full-addition definition');
+    }
+  }
 }
 
 function contentReconstructionIdentity(content) {
@@ -224,7 +236,7 @@ export function createReplayEnvelope(state) {
     throw new TypeError('state must be a Plan 05 episode state');
   }
   const envelope = {
-    schemaVersion: REPLAY_SCHEMA_VERSION,
+    schemaVersion: state.taskContext ? REPLAY_V2_SCHEMA_VERSION : REPLAY_SCHEMA_VERSION,
     contentIdentity: contentReconstructionIdentity(state.content),
     episodeDefinition: {
       id: state.episodeDefinition.id,
@@ -233,6 +245,7 @@ export function createReplayEnvelope(state) {
     support: state.support,
     activeCondition: state.activeCondition,
     learnerIntents: state.intentHistory,
+    ...(state.taskContext ? { taskContext: state.taskContext } : {}),
   };
   assertJsonSafe(envelope, 'replay envelope');
   return deepFreeze(envelope);
@@ -241,7 +254,7 @@ export function createReplayEnvelope(state) {
 export function replayEpisode(envelope) {
   assertJsonSafe(envelope, 'replay envelope');
   if (!envelope || typeof envelope !== 'object') throw new TypeError('replay envelope must be an object');
-  if (envelope?.schemaVersion !== REPLAY_SCHEMA_VERSION) {
+  if (![REPLAY_SCHEMA_VERSION, REPLAY_V2_SCHEMA_VERSION].includes(envelope?.schemaVersion)) {
     throw new Error('unsupported replay envelope version');
   }
   assertReplayEnvelopeShape(envelope);
@@ -255,6 +268,11 @@ export function replayEpisode(envelope) {
     episodeDefinition: definition,
     support: envelope.support,
     activeCondition: envelope.activeCondition,
+    ...(envelope.schemaVersion === REPLAY_V2_SCHEMA_VERSION ? {
+      taskContext: envelope.taskContext,
+      allowCompatibilityPair: envelope.taskContext.practiceSetId === null
+        && envelope.taskContext.practiceSetRevision === null,
+    } : {}),
   });
   for (const intent of envelope.learnerIntents) {
     state = applyIntent(state, intent);

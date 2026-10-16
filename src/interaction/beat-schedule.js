@@ -1,4 +1,5 @@
 import { deepFreeze } from '../content/schema.js';
+import { PLAN34_EPISODE_DEFINITION_ID, resolvePlan34TaskContext } from '../content/full-addition-task-patterns.js';
 
 function scheduleError(message) {
   const error = new TypeError(message);
@@ -10,7 +11,20 @@ function scheduleError(message) {
  * Derive the immutable traversal configuration for a validated problem.
  * This helper does not admit a problem family; createEpisode retains that gate.
  */
-export function computeBeatSchedule(instance, episodeDefinition) {
+export function computeBeatSchedule(instance, episodeDefinition, taskContext = null, { allowCompatibilityPair = false } = {}) {
+  if (episodeDefinition?.id === PLAN34_EPISODE_DEFINITION_ID
+    && episodeDefinition?.revision === '1') {
+    const context = resolvePlan34TaskContext(
+      instance, taskContext?.patternId, taskContext?.patternRevision, taskContext?.targetDenominator,
+      { allowCompatibilityPair },
+    );
+    return deepFreeze([
+      { id: 'encounter', kind: 'encounter' },
+      ...context.requiredSides.map((side) => ({ id: `transform-${side}`, kind: 'transform', side })),
+      { id: 'operate', kind: 'operate' },
+      { id: 'resolve', kind: 'resolve' },
+    ]);
+  }
   const renaming = instance?.classification?.transformations?.canonicalRenaming;
   if (!renaming || typeof renaming.left !== 'boolean' || typeof renaming.right !== 'boolean') {
     throw scheduleError('canonical renaming sides must be validated booleans');

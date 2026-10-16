@@ -10,6 +10,7 @@ import {
 import {
   classifyCommonDenominatorResponse,
   classifyConversionResponseForEpisode,
+  classifyInspectedCandidate,
   classifyNoticeResponse,
   classifyOperationResponseForEpisode,
   classifyPremiseResponse,
@@ -17,6 +18,12 @@ import {
   classifyResolutionResponse,
   classifyTransformHelpMultiplier,
 } from './classification.js';
+import {
+  FULL_ADDITION_CONSTRUCT_PATTERN,
+  FULL_ADDITION_INSPECT_PATTERN,
+  PLAN34_EPISODE_DEFINITION_ID,
+  validatePlan34TaskContext,
+} from '../content/full-addition-task-patterns.js';
 import {
   EPISODE_BEATS,
   PHASE2_ACTIVE_CONDITION,
@@ -52,7 +59,7 @@ export class EpisodeIntentError extends Error {
   }
 }
 
-function responseForEntry(definition, entry) {
+function responseForEntry(definition, entry, taskContext = null) {
   const beat = entry.kind;
   const common = {
     promptId: definition.promptIdentities[beat],
@@ -63,6 +70,19 @@ function responseForEntry(definition, entry) {
   if (beat === 'notice') return { ...common, responsibility: 'identify-unit-relationship', inputKind: 'unit-match-choice' };
   if (beat === 'decide') return { ...common, responsibility: 'choose-common-denominator', inputKind: 'whole-fraction' };
   if (beat === 'transform') {
+    if (definition.id === PLAN34_EPISODE_DEFINITION_ID) {
+      return {
+        ...common,
+        responsibility: taskContext.patternId === FULL_ADDITION_INSPECT_PATTERN.id
+          ? 'inspect-keep-or-repair-candidate'
+          : 'construct-equivalent-numerator',
+        inputKind: taskContext.patternId === FULL_ADDITION_INSPECT_PATTERN.id ? 'inspect-candidate' : 'numerator',
+        target: entry.side,
+        targetDenominator: taskContext.targetDenominator,
+        patternId: taskContext.patternId,
+        evidenceCategory: 'prediction',
+      };
+    }
     return {
       ...common,
       responsibility: 'construct-equivalent-form',
@@ -270,6 +290,13 @@ function stateSnapshot(state) {
     ...(Object.prototype.hasOwnProperty.call(state.established, 'sharedUnit')
       ? { sharedUnit: state.established.sharedUnit }
       : {}),
+    ...(state.episodeDefinition?.id === PLAN34_EPISODE_DEFINITION_ID
+      ? {
+        compactCompletion: state.established.compactCompletion ?? null,
+        conversionOrigins: state.established.conversionOrigins ?? {},
+        taskContext: state.taskContext,
+      }
+      : {}),
   };
 }
 
@@ -292,7 +319,7 @@ function advanceSchedule(state, established, { completeCurrent = true } = {}) {
     ...state,
     beat: nextEntry.kind,
     schedulePosition: nextPosition,
-    expectedResponse: responseForEntry(state.episodeDefinition, nextEntry),
+    expectedResponse: responseForEntry(state.episodeDefinition, nextEntry, state.taskContext),
     completedBeats: completed,
     revision: state.revision + 1,
     lastRecovery: null,
@@ -309,7 +336,9 @@ function resolvedState(state, established) {
   const beat = entry.kind;
   const establishedState = {
     ...state.established,
-    ...(beat === 'resolve' ? { resolution: established } : {}),
+    ...(beat === 'resolve' && state.episodeDefinition.id === PLAN34_EPISODE_DEFINITION_ID
+      ? { compactCompletion: established }
+      : beat === 'resolve' ? { resolution: established } : {}),
     ...(beat === 'reflect' ? { reflection: established } : {}),
   };
   return {
@@ -423,6 +452,10 @@ function handleTaskHelpRequest(state, intent) {
       schedulePosition: state.schedulePosition,
       scheduleEntryId: scheduleEntry.id,
       side: scheduleEntry.side ?? null,
+      ...(state.episodeDefinition.id === PLAN34_EPISODE_DEFINITION_ID
+        && state.taskContext.patternId === FULL_ADDITION_INSPECT_PATTERN.id
+        ? { helpKind: 'inspect-comparison-invariant' }
+        : {}),
     }],
   });
 }
@@ -475,7 +508,21 @@ function handleReplay(state, intent) {
 function handleEncounter(state, intent) {
   if (intent.type !== 'acknowledge-encounter') return null;
   const established = { acknowledged: true };
-  const next = advanceSchedule(state, established);
+  const compact = state.episodeDefinition.id === PLAN34_EPISODE_DEFINITION_ID;
+  const next = advanceSchedule(compact ? {
+    ...state,
+    established: {
+      ...state.established,
+      commonDenominator: {
+        kind: 'authored-target-context',
+        targetDenominator: state.taskContext.targetDenominator,
+        source: 'validated-authored-task-context',
+        validity: 'valid',
+        rendering: 'eligible',
+        authoredCoverage: 'authored',
+      },
+    },
+  } : state, established);
   return assessedSuccess(state, intent, { kind: 'encounter-acknowledged' }, {
     ...next,
     established: { ...next.established, encounter: established },
@@ -545,25 +592,44 @@ function handleDecide(state, intent) {
 }
 
 function handleTransform(state, intent) {
-  if (intent.type !== 'submit-equivalent-form') return null;
+  const compact = state.episodeDefinition.id === PLAN34_EPISODE_DEFINITION_ID;
+  if (!compact && intent.type !== 'submit-equivalent-form') return null;
+  if (compact && !['submit-equivalent-form', 'keep-inspected-form', 'repair-inspected-form'].includes(intent.type)) return null;
   const targetDenominator = state.established.commonDenominator.targetDenominator;
   const side = state.expectedResponse.target;
-  const classification = classifyConversionResponseForEpisode({
-    instance: state.content,
-    targetDenominator,
-    side,
-    proposed: intent.proposed,
-  });
-  if (classification.kind !== 'correct-equivalent-form') return recovery(state, intent, classification);
+  const inspect = compact && state.taskContext.patternId === FULL_ADDITION_INSPECT_PATTERN.id;
+  let proposed = intent.proposed;
+  let classification;
+  let origin = 'learner-constructed';
+  if (inspect) {
+    const candidate = state.taskContext.candidates[side];
+    if (intent.type === 'keep-inspected-form') {
+      proposed = candidate;
+      classification = classifyInspectedCandidate({ instance: state.content, targetDenominator, side, candidate, action: 'keep' });
+      origin = 'authored-then-confirmed';
+    } else if (intent.type === 'repair-inspected-form') {
+      proposed = { kind: 'fraction', numerator: intent.numerator, denominator: targetDenominator };
+      classification = classifyInspectedCandidate({ instance: state.content, targetDenominator, side, candidate, action: 'change-top', proposed });
+      origin = classification.kind === 'valid-unchanged-edit'
+        ? 'learner-confirmed-unchanged'
+        : 'learner-repaired';
+    } else {
+      throw new EpisodeIntentError('UNEXPECTED_INTENT', 'inspect transforms require keep or repair intents');
+    }
+    if (classification.validity !== 'valid') return recovery(state, intent, classification);
+  } else {
+    classification = classifyConversionResponseForEpisode({ instance: state.content, targetDenominator, side, proposed });
+    if (classification.kind !== 'correct-equivalent-form') return recovery(state, intent, classification);
+  }
   const establishedConversions = {
     ...state.established.conversions,
-    [side]: intent.proposed,
+    [side]: proposed,
   };
   const established = {
     side,
-    form: intent.proposed,
+    form: proposed,
     targetDenominator,
-    supportOrigin: state.nextResponseSupport ?? 'learner',
+    supportOrigin: state.nextResponseSupport ?? (compact ? origin : 'learner'),
   };
   const nextEntry = state.beatSchedule[state.schedulePosition + 1];
   const next = nextEntry?.kind === 'transform'
@@ -577,6 +643,9 @@ function handleTransform(state, intent) {
     established: {
       ...next.established,
       conversions: establishedConversions,
+      ...(compact ? {
+        conversionOrigins: { ...next.established.conversionOrigins, [side]: origin },
+      } : {}),
       lastConversion: established,
     },
     nextResponseSupport: null,
@@ -609,6 +678,10 @@ function handleOperate(state, intent) {
 }
 
 function handleResolve(state, intent) {
+  if (state.episodeDefinition.id === PLAN34_EPISODE_DEFINITION_ID) {
+    if (intent.type !== 'finish-compact-episode') return null;
+    return assessedSuccess(state, intent, { kind: 'compact-navigation-completed' }, resolvedState(state, { kind: 'navigation-completion' }));
+  }
   if (intent.type !== 'submit-resolution') return null;
   const targetDenominator = targetDenominatorFor(state);
   const classification = classifyResolutionResponse({
@@ -692,8 +765,11 @@ const INTENT_KEYS = Object.freeze({
   'submit-notice': ['type', 'matchesUnits'],
   'propose-common-denominator': ['type', 'proposed'],
   'submit-equivalent-form': ['type', 'proposed'],
+  'keep-inspected-form': ['type'],
+  'repair-inspected-form': ['type', 'numerator'],
   'submit-operation-result': ['type', 'proposed'],
   'submit-resolution': ['type', 'proposed'],
+  'finish-compact-episode': ['type'],
   'submit-reflection': ['type', 'response'],
   'request-help': ['type'],
   'request-task-help': ['type'],
@@ -706,8 +782,11 @@ const INTENT_BEATS = Object.freeze({
   'submit-notice': 'notice',
   'propose-common-denominator': 'decide',
   'submit-equivalent-form': 'transform',
+  'keep-inspected-form': 'transform',
+  'repair-inspected-form': 'transform',
   'submit-operation-result': 'operate',
   'submit-resolution': 'resolve',
+  'finish-compact-episode': 'resolve',
   'submit-reflection': 'reflect',
 });
 
@@ -782,6 +861,10 @@ function assertIntentShape(intent) {
   }
   if (intent.type === 'propose-common-denominator') assertWireFraction(intent.proposed, 'intent.proposed');
   if (intent.type === 'submit-equivalent-form') assertWireFraction(intent.proposed, 'intent.proposed');
+  if (intent.type === 'repair-inspected-form'
+    && (typeof intent.numerator !== 'string' || !/^(0|[1-9][0-9]*)$/.test(intent.numerator))) {
+    throw new EpisodeIntentError('INVALID_INTENT_SHAPE', 'repair numerator must be a nonnegative integer string');
+  }
   if (intent.type === 'submit-transform-help-multiplier') {
     assertWireFraction(intent.proposed, 'intent.proposed');
     if (intent.proposed.denominator !== '1') {
@@ -831,11 +914,32 @@ function assertIntentAllowedAtBeat(state, intent) {
       'submit-reflection is not enabled for this episode definition',
     );
   }
+  const compact = state.episodeDefinition.id === PLAN34_EPISODE_DEFINITION_ID;
+  if (['keep-inspected-form', 'repair-inspected-form'].includes(intent.type)
+    && (!compact || state.taskContext.patternId !== FULL_ADDITION_INSPECT_PATTERN.id || state.beat !== 'transform')) {
+    throw new EpisodeIntentError('UNEXPECTED_INTENT', `${intent.type} requires an inspect transform`);
+  }
+  if (intent.type === 'submit-equivalent-form' && compact
+    && state.taskContext.patternId !== FULL_ADDITION_CONSTRUCT_PATTERN.id) {
+    throw new EpisodeIntentError('UNEXPECTED_INTENT', 'inspect transforms require keep or repair intents');
+  }
+  if (intent.type === 'finish-compact-episode' && (!compact || state.beat !== 'resolve')) {
+    throw new EpisodeIntentError('UNEXPECTED_INTENT', 'compact finish is available only at compact resolve');
+  }
+  if (intent.type === 'submit-resolution' && compact) {
+    throw new EpisodeIntentError('UNEXPECTED_INTENT', 'compact resolve is navigation only');
+  }
   if (['request-task-help', 'submit-transform-help-multiplier'].includes(intent.type)) {
     const plan20OperationHelp = intent.type === 'request-task-help'
       && isPlan20Definition(state.episodeDefinition)
       && state.beat === 'operate';
+    const compactConstructMultiplierHelp = intent.type === 'submit-transform-help-multiplier'
+      && state.episodeDefinition.id === PLAN34_EPISODE_DEFINITION_ID
+      && state.taskContext.patternId === FULL_ADDITION_CONSTRUCT_PATTERN.id
+      && state.beat === 'transform';
     if (state.episodeDefinition.revision !== '3'
+      && !(state.episodeDefinition.id === PLAN34_EPISODE_DEFINITION_ID && intent.type === 'request-task-help')
+      && !compactConstructMultiplierHelp
       && !(state.episodeDefinition.id === PLAN17_CROSSING_EPISODE_DEFINITION.id
         && state.episodeDefinition.revision === PLAN17_CROSSING_EPISODE_DEFINITION.revision)
       && !plan20OperationHelp) {
@@ -857,12 +961,21 @@ export function createEpisode({
   episodeDefinition = PHASE2_EPISODE_DEFINITION,
   support = DEFAULT_SUPPORT_CONFIGURATION,
   activeCondition = PHASE2_ACTIVE_CONDITION,
+  taskContext = null,
+  allowCompatibilityPair = false,
 } = {}) {
   const definition = assertDefinition(episodeDefinition);
   const content = assertInstance(instance, definition);
   const normalizedSupport = createSupportConfiguration(support);
   const normalizedCondition = validateActiveCondition(activeCondition);
-  const beatSchedule = computeBeatSchedule(content, definition);
+  const isCompact = definition.id === PLAN34_EPISODE_DEFINITION_ID;
+  const normalizedTaskContext = isCompact
+    ? validatePlan34TaskContext(content, taskContext, { allowCompatibilityPair })
+    : null;
+  if (!isCompact && taskContext !== null) {
+    throw new EpisodeConstructionError('UNSUPPORTED_TASK_CONTEXT', 'task context is only supported by the compact full-addition definition');
+  }
+  const beatSchedule = computeBeatSchedule(content, definition, normalizedTaskContext, { allowCompatibilityPair });
   const firstEntry = beatSchedule[0];
   const initial = {
     schemaVersion: 'fractionflow.episode-state/v1',
@@ -870,12 +983,13 @@ export function createEpisode({
     revision: 0,
     content,
     episodeDefinition: definition,
+    ...(isCompact ? { taskContext: normalizedTaskContext } : {}),
     activeCondition: normalizedCondition,
     beatSchedule,
     schedulePosition: 0,
     support: normalizedSupport,
     beat: firstEntry.kind,
-    expectedResponse: responseForEntry(definition, firstEntry),
+    expectedResponse: responseForEntry(definition, firstEntry, normalizedTaskContext),
     established: {
       encounter: null,
       notice: null,
@@ -886,6 +1000,7 @@ export function createEpisode({
       reflection: null,
       route: 'fraction-bar',
       ...(isPlan20Definition(definition) ? { sharedUnit: null } : {}),
+      ...(isCompact ? { compactCompletion: null, conversionOrigins: {} } : {}),
     },
     completedBeats: [],
     pendingResponse: null,
@@ -917,9 +1032,9 @@ export function applyIntent(state, rawIntent) {
   if (intent.type === 'acknowledge-encounter') return handleEncounter(state, intent);
   if (intent.type === 'submit-notice') return handleNotice(state, intent);
   if (intent.type === 'propose-common-denominator') return handleDecide(state, intent);
-  if (intent.type === 'submit-equivalent-form') return handleTransform(state, intent);
+  if (['submit-equivalent-form', 'keep-inspected-form', 'repair-inspected-form'].includes(intent.type)) return handleTransform(state, intent);
   if (intent.type === 'submit-operation-result') return handleOperate(state, intent);
-  if (intent.type === 'submit-resolution') return handleResolve(state, intent);
+  if (intent.type === 'submit-resolution' || intent.type === 'finish-compact-episode') return handleResolve(state, intent);
   if (intent.type === 'submit-reflection') return handleReflect(state, intent);
   throw new EpisodeIntentError('UNEXPECTED_INTENT', `intent ${intent.type} is not valid at beat ${state.beat}`);
 }

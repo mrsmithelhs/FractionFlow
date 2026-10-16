@@ -139,6 +139,22 @@ export const PLAN17_CROSSING_EPISODE_DEFINITION = deepFreeze({
   },
 });
 
+export const PLAN34_FULL_ADDITION_EPISODE_DEFINITION = deepFreeze({
+  ...BASE_EPISODE_DEFINITION,
+  id: 'phase-3-reusable-full-addition',
+  revision: '1',
+  includeReflection: false,
+  promptIdentities: {
+    encounter: 'phase3.full-addition.encounter',
+    notice: 'phase3.full-addition.notice',
+    decide: 'phase3.full-addition.decide',
+    transform: 'phase3.full-addition.transform',
+    operate: 'phase3.full-addition.operate',
+    resolve: 'phase3.full-addition.resolve',
+    reflect: 'phase3.full-addition.reflect',
+  },
+});
+
 const EPISODE_DEFINITIONS = Object.freeze([
   LEGACY_PHASE2_EPISODE_DEFINITION,
   LEGACY_PHASE2_REFLECTION_EPISODE_DEFINITION,
@@ -149,6 +165,7 @@ const EPISODE_DEFINITIONS = Object.freeze([
   SHARED_FACTOR_REFLECTION_EPISODE_DEFINITION,
   PLAN20_LIKE_DENOMINATOR_EPISODE_DEFINITION,
   PLAN17_CROSSING_EPISODE_DEFINITION,
+  PLAN34_FULL_ADDITION_EPISODE_DEFINITION,
 ]);
 
 export function getEpisodeDefinition(id = EPISODE_DEFINITION_ID, revision = EPISODE_DEFINITION_REVISION) {

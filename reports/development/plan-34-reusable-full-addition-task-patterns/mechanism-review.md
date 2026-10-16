@@ -147,3 +147,26 @@ controls; help uses the same-factor principle without verdict/answer. Recovery
 is short and distinct from the prompt. Render validated stacked notation and
 coherent accessible labels. False stimuli never become mathematical pre-states
 for conservation animations. Owner rendered acceptance remains mandatory.
+
+## Stage A repair verified; Stage B opened (2026-10-16)
+
+Parent inspected the adopted fixes and independently reran both Plan34 focused
+files: 11 tests passed. Child's full run reports 372 tests; parent had independently
+run 370 before the two repair regressions were added. Frozen v1 oracle remains
+unchanged. Identity-only scene projection, truthful unchanged-confirmation origin,
+and usable typed construct help satisfy the foundation findings.
+
+Stage B is authorized: app taskContext/draft/lifecycle wiring, both render surfaces,
+concise prompts and controls, truthful stimulus/static rendering, production v5
+activation together, and focused mounted tests. Preserve false proposals as stimuli;
+never animate an invalid proposal as a conserved transformation.
+
+Additional exact test scope: tests/app-shell.test.js, tests/entry-page.test.js,
+tests/plan26-practice-set.test.js, tests/plan32-compact-authored-problem-batch.test.js
+may explicitly import/inject pinned LEGACY_PRACTICE_TYPES_V4 for existing historical
+expectations. Keep old actions/assertions substantive and clearly label their
+context. New Plan34 tests must prove the actual production default and v5 order.
+Do not hide failures by treating historical tests as live-default evidence.
+
+Stage C route/fixture/browser execution remains held for Stage B review. Source
+staging requires exact elevated Git metadata access; child made no ACL changes.

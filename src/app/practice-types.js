@@ -1,11 +1,13 @@
 import { PHASE2_REFLECTION_EPISODE_DEFINITION } from '../interaction/episode-definition.js';
 import { PLAN20_LIKE_DENOMINATOR_EPISODE_DEFINITION } from '../interaction/episode-definition.js';
+import { PLAN34_FULL_ADDITION_EPISODE_DEFINITION } from '../interaction/episode-definition.js';
+import { deepFreeze } from '../content/schema.js';
 
 /**
  * Learner-reachable practice types. A type is registered only when the app can
  * build and run its complete episode; future types belong here with content.
  */
-export const PRACTICE_TYPES = Object.freeze([
+export const LEGACY_PRACTICE_TYPES_V4 = Object.freeze([
   Object.freeze({
     id: 'sum-under-one',
     label: 'Add fractions with different denominators',
@@ -123,6 +125,38 @@ export const PRACTICE_TYPES = Object.freeze([
     episodeDefinition: PLAN20_LIKE_DENOMINATOR_EPISODE_DEFINITION,
   }),
 ]);
+
+const plan34PatternByItem = Object.freeze({
+  'two-thirds-plus-one-fourth': 'full-addition.construct-equivalent',
+  'one-half-plus-one-third': 'full-addition.inspect-keep-repair',
+  'one-third-plus-one-fourth': 'full-addition.inspect-keep-repair',
+});
+
+export const PLAN34_PRACTICE_TYPES_V5 = deepFreeze(LEGACY_PRACTICE_TYPES_V4.map((practiceType) => {
+  if (practiceType.id !== 'sum-under-one') return practiceType;
+  return {
+    ...practiceType,
+    setRevision: '5',
+    items: practiceType.items.map((item) => {
+      const patternId = plan34PatternByItem[item.id];
+      if (!patternId) return item;
+      return {
+        ...item,
+        episodeDefinitionId: PLAN34_FULL_ADDITION_EPISODE_DEFINITION.id,
+        episodeDefinitionRevision: PLAN34_FULL_ADDITION_EPISODE_DEFINITION.revision,
+        patternId,
+        patternRevision: '1',
+        targetDenominator: '12',
+        taskDataId: 'plan34-full-addition-task-data',
+        taskDataRevision: '1',
+      };
+    }),
+    episodeDefinition: PLAN34_FULL_ADDITION_EPISODE_DEFINITION,
+  };
+}));
+
+// Stage B activates this registry in app composition after task-context wiring.
+export const PRACTICE_TYPES = LEGACY_PRACTICE_TYPES_V4;
 
 export function getPracticeType(id) {
   return PRACTICE_TYPES.find((practiceType) => practiceType.id === id) ?? null;

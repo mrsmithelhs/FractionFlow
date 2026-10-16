@@ -18,6 +18,31 @@ function contentIdentity(content) {
 }
 
 function visibleFields(state) {
+  if (state.episodeDefinition?.id === 'phase-3-reusable-full-addition'
+    && state.episodeDefinition?.revision === '1') {
+    if (state.beat === 'transform') {
+      return {
+        representationRole: 'fraction-bar',
+        visible: state.taskContext.patternId === 'full-addition.inspect-keep-repair'
+          ? ['source-forms', 'authored-candidate', 'target-context']
+          : ['source-forms', 'target-context'],
+        supplied: [],
+        hidden: ['correct-conversion', 'other-candidate-validity', 'operation-result'],
+      };
+    }
+    if (state.beat === 'operate') return {
+      representationRole: 'symbolic', visible: ['accepted-conversions', 'operation', 'target-context'],
+      supplied: [], hidden: ['unsubmitted-operation-result'],
+    };
+    if (state.beat === 'resolve') return {
+      representationRole: 'symbolic', visible: ['operation-result', 'finish-navigation'],
+      supplied: [], hidden: [],
+    };
+    return {
+      representationRole: 'fraction-bar', visible: ['source-forms', 'target-context'],
+      supplied: [], hidden: ['candidate-validity', 'correct-conversion', 'operation-result'],
+    };
+  }
   const isPlan20 = state.episodeDefinition?.id === 'phase-3-like-denominator-addition'
     && state.episodeDefinition?.revision === '1';
   if (isPlan20 && state.beat === 'operate') {
@@ -85,6 +110,7 @@ export function createResponseProvenance({ state, intent, classification, nextSt
       id: state.episodeDefinition.id,
       revision: state.episodeDefinition.revision,
     },
+    ...(state.taskContext ? { taskContext: state.taskContext } : {}),
     activeCondition: state.activeCondition,
     support: state.support,
     beat: state.beat,

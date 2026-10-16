@@ -267,6 +267,28 @@ function currentSupportConsequence(state) {
   };
 }
 
+function sceneTaskIdentity(state) {
+  if (!state.taskContext) return null;
+  const context = state.taskContext;
+  return {
+    practiceSetId: context.practiceSetId,
+    practiceSetRevision: context.practiceSetRevision,
+    itemId: context.itemId,
+    fixtureId: context.fixtureId,
+    authoringRevision: context.authoringRevision,
+    definitionId: context.definitionId,
+    definitionRevision: context.definitionRevision,
+    patternId: context.patternId,
+    patternRevision: context.patternRevision,
+    targetDenominator: context.targetDenominator,
+    taskDataId: context.taskDataId,
+    taskDataRevision: context.taskDataRevision,
+    stimulusId: context.stimulusId,
+    stimulusRevision: context.stimulusRevision,
+    requiredSides: context.requiredSides,
+  };
+}
+
 function currentTaskHelp(state) {
   const scheduleEntry = currentScheduleEntry(state);
   const request = state.supportHistory.find((entry) => (
@@ -274,6 +296,9 @@ function currentTaskHelp(state) {
     && entry.scheduleEntryId === scheduleEntry?.id
   ));
   if (!request) return null;
+  if (request.helpKind === 'inspect-comparison-invariant') {
+    return { kind: 'inspect-comparison-invariant', status: 'requested', side: scheduleEntry.side };
+  }
   const multiplier = state.supportHistory.findLast((entry) => (
     entry.type === 'transform-help-multiplier'
     && entry.scheduleEntryId === scheduleEntry.id
@@ -307,6 +332,7 @@ function instructionalSourceContext(state) {
       id: state.episodeDefinition.id,
       revision: state.episodeDefinition.revision,
     },
+    ...(state.taskContext ? { taskContext: sceneTaskIdentity(state) } : {}),
     activeCondition: state.activeCondition,
     support: state.support,
     expectedResponse: state.expectedResponse,
@@ -557,6 +583,7 @@ function taskMeaning(state) {
       target: null,
       evidenceCategory: null,
       connectionForm,
+      ...(state.taskContext ? { patternId: state.taskContext.patternId, targetDenominator: state.taskContext.targetDenominator } : {}),
     };
   }
   return {
@@ -569,6 +596,11 @@ function taskMeaning(state) {
     target: expected.target ?? null,
     evidenceCategory: expected.evidenceCategory,
     connectionForm,
+    ...(state.taskContext ? {
+      patternId: state.taskContext.patternId,
+      targetDenominator: state.taskContext.targetDenominator,
+      candidate: expected.inputKind === 'inspect-candidate' ? state.taskContext.candidates[expected.target] : null,
+    } : {}),
   };
 }
 
@@ -605,6 +637,17 @@ function commonUnitMeaning(state) {
   }
   const commonDenominator = state.established?.commonDenominator;
   if (!commonDenominator) return null;
+  if (commonDenominator.kind === 'authored-target-context') {
+    return {
+      kind: commonDenominator.kind,
+      source: commonDenominator.source,
+      targetDenominator: commonDenominator.targetDenominator,
+      validity: 'valid',
+      rendering: 'eligible',
+      authoredCoverage: 'authored',
+      scaleFactors: null,
+    };
+  }
   const targetDenominator = commonDenominator.targetDenominator;
   const classification = state.content.classification;
   const canonicalFactors = classification?.denominator?.canonicalScaleFactors;

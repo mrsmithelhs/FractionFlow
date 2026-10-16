@@ -70,3 +70,20 @@ canonical default live association to a compact pattern can coexist honestly wit
 frozen legacy browser journeys expecting notice/decide/reflection. No runner
 modification, hidden test detection or witness exclusion is approved. Set/replay/
 inspect-help choices and exact paths remain pending this review. Source gate closed.
+
+## Checkpoint 2 — Stage A executing (2026-10-16)
+
+Owner explicitly authorized carrying Plan 34 through completion using the Luna
+implementer and Sol reviewers after challenging an inaccurate running claim.
+Parent verified native inventory and explicitly resumed the completed refinement
+actor for Stage A. The actor acknowledged actual execution, captured initial and
+completed legacy replay oracles before source mutation, and then began scoped
+foundation edits. This is execution evidence, not a model-identity attestation.
+
+The refined mechanism and staged source authorization are committed in 9e61a74.
+Parent keeps production on historical v4 until app and rendering can activate v5
+atomically. Stage B/C remain held for foundation review. No source writer competes
+with the Luna child. Parent review flagged identity lookup, authored association
+versus compatibility contexts, raw-form binding, and exact-math API use for the
+child's Stage A self-check. These are preliminary observations, not delivery
+findings. Rendered acceptance and deployment remain separate.
