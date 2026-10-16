@@ -1,0 +1,138 @@
+{
+  "plan": "plan-33",
+  "base": "/",
+  "pages": [
+    {
+      "surface": "entry",
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "title": "FractionFlow — Fraction practice",
+      "practiceLabels": [
+        "Add fractions with different denominators",
+        "Add fractions with the same denominator"
+      ],
+      "aboutHref": "./about.html",
+      "hiddenEpisodeCount": 1,
+      "document": {
+        "scrollWidth": 360,
+        "scrollHeight": 740,
+        "clientWidth": 360
+      },
+      "verticalFit": true
+    },
+    {
+      "surface": "keyboard-entry-about",
+      "firstTab": {
+        "text": "Add fractions with different denominators",
+        "practice": true
+      },
+      "aboutFocused": {
+        "text": "About FractionFlow",
+        "href": "./about.html"
+      }
+    },
+    {
+      "surface": "about",
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "title": "About FractionFlow",
+      "heading": "About FractionFlow",
+      "backHref": "./",
+      "figureCount": 1,
+      "episodeCount": 0,
+      "bodyText": "Back to practice\nAbout FractionFlow\n\nFractionFlow connects fraction pictures with calculation. Practice adding fractions with the same or different denominators.\n\nChoose a practice to begin. Use the picture or read the steps, enter your answers, and ask for help when you need it. Replay is available for supported changes. After completing a problem, choose Next problem when offered. Try this problem again starts the same problem fresh; Back to start returns to the practice choices.\n\nBefore practice, open the gear to choose More support or Less support. For different denominators, More support offers denominator suggestions; Less support asks you to enter one. In comparison checks, More support shows both bars; Less support describes the starting fraction in words. These choices change the support shown, not an ability score.\n\nThree of four equal parts are shaded: three quarters.\n3\n4\n\nFractionFlow doesn't track learners or save answers or progress between visits. Reloading starts fresh. Browsers and the website host may handle ordinary technical data when showing the site.",
+      "scroll": {
+        "width": 360,
+        "height": 980,
+        "clientWidth": 360,
+        "clientHeight": 740
+      },
+      "stackWidth": "21.1562px",
+      "figureName": "fraction-example"
+    },
+    {
+      "surface": "keyboard-return",
+      "firstTab": {
+        "text": "Back to practice",
+        "href": "./"
+      },
+      "pathname": "/"
+    },
+    {
+      "surface": "keyboard-return-first-tab",
+      "practice": true,
+      "label": "Add fractions with different denominators"
+    },
+    {
+      "surface": "about-enlarged-text",
+      "viewport": 360,
+      "width": 360,
+      "height": 2977,
+      "fractionWidth": 21.15625
+    },
+    {
+      "surface": "return-and-practice",
+      "firstTabAfterReturn": {
+        "text": "Add fractions with different denominators",
+        "practice": true
+      },
+      "fragment": "#sum-under-one"
+    },
+    {
+      "surface": "entry",
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "title": "FractionFlow — Fraction practice",
+      "practiceLabels": [
+        "Add fractions with different denominators",
+        "Add fractions with the same denominator"
+      ],
+      "aboutHref": "./about.html",
+      "hiddenEpisodeCount": 1,
+      "document": {
+        "scrollWidth": 1366,
+        "scrollHeight": 768,
+        "clientWidth": 1366
+      },
+      "verticalFit": true
+    },
+    {
+      "surface": "pointer-return",
+      "pathname": "/"
+    },
+    {
+      "surface": "about",
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "title": "About FractionFlow",
+      "heading": "About FractionFlow",
+      "backHref": "./",
+      "figureCount": 1,
+      "episodeCount": 0,
+      "bodyText": "Back to practice\nAbout FractionFlow\n\nFractionFlow connects fraction pictures with calculation. Practice adding fractions with the same or different denominators.\n\nChoose a practice to begin. Use the picture or read the steps, enter your answers, and ask for help when you need it. Replay is available for supported changes. After completing a problem, choose Next problem when offered. Try this problem again starts the same problem fresh; Back to start returns to the practice choices.\n\nBefore practice, open the gear to choose More support or Less support. For different denominators, More support offers denominator suggestions; Less support asks you to enter one. In comparison checks, More support shows both bars; Less support describes the starting fraction in words. These choices change the support shown, not an ability score.\n\nThree of four equal parts are shaded: three quarters.\n3\n4\n\nFractionFlow doesn't track learners or save answers or progress between visits. Reloading starts fresh. Browsers and the website host may handle ordinary technical data when showing the site.",
+      "scroll": {
+        "width": 1366,
+        "height": 768,
+        "clientWidth": 1366,
+        "clientHeight": 768
+      },
+      "stackWidth": "21.1562px",
+      "figureName": "fraction-example"
+    }
+  ],
+  "externalRequests": [],
+  "apiCalls": [],
+  "storageWrites": [],
+  "storageEntries": {
+    "localStorage": 0,
+    "sessionStorage": 0
+  }
+}

@@ -40,6 +40,12 @@ describe('Plan 12 entry page', () => {
     expect(root.querySelector('.app-episode').hasAttribute('hidden')).toBe(true);
     expect(root.querySelector('.app-display-menu').hasAttribute('hidden')).toBe(true);
     expect(root.querySelector('.app-entry-page .app-gear-button')).not.toBeNull();
+    expect(root.querySelector('.app-about-link').getAttribute('href')).toBe('./about.html');
+    const firstEntryLinks = [
+      ...root.querySelectorAll('.app-entry-page button'),
+      root.querySelector('.app-about-link'),
+    ];
+    expect(firstEntryLinks[0].getAttribute('data-practice-type')).toBe('sum-under-one');
   });
 
   it('reaches the new same-denominator episode from its separate entry goal', () => {

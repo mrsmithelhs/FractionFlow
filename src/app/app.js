@@ -370,6 +370,10 @@ export function createFractionFlowApp({
       for (const button of followingPracticeButtons) followingPracticeList.appendChild(button);
       entryPage.appendChild(followingPracticeList);
     }
+    const aboutLink = makeElement('a', 'app-about-link');
+    aboutLink.setAttribute('href', './about.html');
+    aboutLink.textContent = 'About FractionFlow';
+    entryPage.appendChild(aboutLink);
     const creatorCredit = makeElement('small', 'app-creator-credit');
     creatorCredit.textContent = 'Created by an educator';
     entryPage.appendChild(creatorCredit);

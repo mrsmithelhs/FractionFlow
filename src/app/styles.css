@@ -96,6 +96,13 @@ body,
   font-size: 0.85rem;
 }
 
+.app-about-link {
+  align-self: flex-start;
+  margin-top: 0.8rem;
+  color: var(--app-accent);
+  text-underline-offset: 0.18em;
+}
+
 .app-display-menu-wrap {
   position: relative;
 }

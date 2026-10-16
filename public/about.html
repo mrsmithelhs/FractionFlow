@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f5f7fb">
+  <title>About FractionFlow</title>
+  <style>
+    :root {
+      color-scheme: light;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      color: #14213d;
+      background: #f5f7fb;
+      font-synthesis: none;
+      text-rendering: optimizeLegibility;
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; min-height: 100vh; }
+    main {
+      width: min(100% - 2rem, 44rem);
+      margin: 0 auto;
+      padding: clamp(1.25rem, 5vw, 3rem) 0 3rem;
+      line-height: 1.6;
+    }
+    a { color: #275dad; text-underline-offset: 0.18em; }
+    a:focus-visible { outline: 3px solid #275dad; outline-offset: 4px; border-radius: 2px; }
+    .back { display: inline-block; margin-bottom: 1rem; }
+    h1 { margin: 0 0 1rem; font-size: clamp(1.9rem, 7vw, 2.7rem); line-height: 1.15; letter-spacing: -0.035em; }
+    p { max-width: 66ch; margin: 0 0 1rem; }
+    figure { width: fit-content; max-width: 100%; margin: 1.4rem 0 1.5rem; padding: 1rem; border: 1px solid #d7deea; border-radius: 0.75rem; background: #fff; }
+    .figure-row { display: flex; align-items: center; gap: 1rem; }
+    .bar { display: grid; grid-template-columns: repeat(4, 2.25rem); gap: 2px; padding: 2px; border: 2px solid #17457f; border-radius: 0.25rem; }
+    .part { width: 2.25rem; height: 2.5rem; background: #fff; }
+    .part.shaded { background: #3976bd; }
+    .fraction { display: inline-flex; flex-direction: column; align-items: stretch; text-align: center; line-height: 1.05; font-size: 1.35rem; font-variant-numeric: lining-nums; }
+    .fraction > span:first-child { border-bottom: 1px solid currentColor; padding: 0 0.22em 0.12em; }
+    .fraction > span:last-child { padding: 0.12em 0.22em 0; }
+    .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
+    @media (max-width: 24rem) {
+      .bar { grid-template-columns: repeat(4, 1.75rem); }
+      .part { width: 1.75rem; }
+    }
+    @media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; } }
+  </style>
+</head>
+<body>
+  <main>
+    <a class="back" href="./">Back to practice</a>
+    <h1>About FractionFlow</h1>
+    <p>FractionFlow connects fraction pictures with calculation. Practice adding fractions with the same or different denominators.</p>
+    <p>Choose a practice to begin. Use the picture or read the steps, enter your answers, and ask for help when you need it. Replay is available for supported changes. After completing a problem, choose Next problem when offered. Try this problem again starts the same problem fresh; Back to start returns to the practice choices.</p>
+    <p>Before practice, open the gear to choose More support or Less support. For different denominators, More support offers denominator suggestions; Less support asks you to enter one. In comparison checks, More support shows both bars; Less support describes the starting fraction in words. These choices change the support shown, not an ability score.</p>
+    <figure aria-labelledby="fraction-example">
+      <figcaption id="fraction-example" class="sr-only">Three of four equal parts are shaded: three quarters.</figcaption>
+      <div class="figure-row" aria-hidden="true">
+        <div class="bar"><span class="part shaded"></span><span class="part shaded"></span><span class="part shaded"></span><span class="part"></span></div>
+        <span class="fraction"><span>3</span><span>4</span></span>
+      </div>
+    </figure>
+    <p>FractionFlow doesn't track learners or save answers or progress between visits. Reloading starts fresh. Browsers and the website host may handle ordinary technical data when showing the site.</p>
+  </main>
+</body>
+</html>
