@@ -53,3 +53,20 @@ model identity and billing are not independently exposed. The child is assigned
 Requirement 0 reports only and is stopped from source work until parent mechanism
 approval. Parent will arrange Sol read-only low/medium review against its persisted
 proposal, avoiding a generic consultation without an inspectable artifact.
+
+## Checkpoint 1 — persisted proposal received for Sol review (2026-10-16)
+
+The Luna Requirement 0 proposal and child checkpoint are persisted, with no
+source changes. Current native live-agent inventory no longer exposes the original
+Luna child; no implementation actor is active. Persisted artifacts preserve the
+handoff rather than assuming temporary runtime context survives. No replacement
+implementation child has been launched. Parent will explicitly brief any approved
+continuation from the persisted contracts before source work.
+
+Parent requested a cold-context default-role `gpt-6-sol` medium read-only mechanism
+review, returned actor `/root/plan34_mechanism_sol`. It must check actual source,
+not merely accept the proposal. A specific gate question is how changing the
+canonical default live association to a compact pattern can coexist honestly with
+frozen legacy browser journeys expecting notice/decide/reflection. No runner
+modification, hidden test detection or witness exclusion is approved. Set/replay/
+inspect-help choices and exact paths remain pending this review. Source gate closed.
