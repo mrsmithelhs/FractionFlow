@@ -1,11 +1,9 @@
 ---
 id: plan-35
 title: Reusable Task-Recipe Admission and Varied Authored Batch
-status: draft
+status: in-progress
 depends_on: [plan-18, plan-32, plan-34]
 gate: "Requirement 0: approve bounded recipe/data/replay contracts, batch and historical-route treatment before source changes. Technical and owner rendered-screen/agency acceptance; deployment separate."
-superseded_by: null
-resolution: null
 summary: >-
   Turn the proven construct, inspect/keep/repair and focused one-renaming addition
   tasks into reusable authored recipes across varied target units and compact
