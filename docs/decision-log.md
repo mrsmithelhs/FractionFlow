@@ -1165,3 +1165,27 @@ explicit. No broader settings/fleet rollout or automatic next-packet launch foll
 
 **Related:** AGENTS owner override; orchestrator/implementer prompts; Plan 33
 pilot checkpoints; Bootstrap Plan 49 (tracked by its own orchestrator).
+
+### DECISION-044 - Shorten the focused nested-addition episode
+
+**Date:** 2026-10-17
+
+**Decision:** At Plan 18's renewed mechanism gate, the owner explicitly selected
+the five-step task: encounter, choose which fraction needs renaming to eighths,
+perform that one conversion, add, and finish. Omit the older packet's standalone
+Notice acknowledgment and final reflection. The side-selection question carries
+the useful denominator-comparison work. Prove both operand orders and keep the
+unchanged operand visible as provided original context, without fabricated work.
+
+DECISION-037's focused side-selection policy and DECISION-034's frozen schedule
+remain intact. Valid alternate units are outside the offered response grammar,
+not mathematical errors. New definition/replay identities and explicit set
+membership preserve older episode meanings. This authorizes the bounded Plan 18
+mechanism amendment and staged source work, not general denominator choice,
+random selection, adaptive support, deployment or final rendered acceptance.
+
+**Rationale:** Preserve a meaningful decision and the complete mathematical task
+without repeating checks in an already lengthy episode sequence. Learning and
+engagement effects remain unmeasured.
+
+**Related:** Plan 18 Requirement 0 proposal and mechanism review; DECISION-037/042.

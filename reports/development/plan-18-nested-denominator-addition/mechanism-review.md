@@ -52,3 +52,18 @@ staged source stops, and the two task-shape options. No product source/tests are
 authorized by this review. Parent retains mechanism approval, independent
 verification, status and acceptance records. Owner rendered/agency acceptance
 and deployment remain separate.
+
+## Owner disposition and Stage 1 authorization — 2026-10-17
+
+The owner answered the task-shape question: “Use the five-step episode
+(recommended).” DECISION-044 and the packet now record that amendment. The parent
+approves the revised proposal's five-step mechanism, strict v3 replay, immutable
+set@6 membership and unchanged-original projection, subject to staged verification.
+
+Authorize only Stage 1 pure foundation/oracles/tests from the revised proposal.
+Include `src/content/full-addition-task-patterns.js` for exact v5/v6 association
+validation; preserve its two-renaming scope and compatibility context behavior.
+Do not activate the app, edit renderers/routes, author unused reflection content
+or change old replay semantics in this stage. Capture old v2 oracles first.
+Stop for parent inspection before Stage 2. No additional owner task-shape answer
+is required unless investigation reveals a load-bearing change to this contract.

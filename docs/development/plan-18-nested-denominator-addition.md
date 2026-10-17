@@ -2,7 +2,7 @@
 id: plan-18
 title: Nested-Denominator Addition
 status: in-progress
-depends_on: [plan-11, plan-12, plan-13, plan-14, plan-16, plan-22, plan-26]
+depends_on: [plan-11, plan-12, plan-13, plan-14, plan-16, plan-22, plan-26, plan-34]
 gate: "DECISION-037 adopts the focused renaming task. Requirement 0 verifies that task and obtains execution mechanism approval before source work. Technical and owner rendered-screen/agency acceptance; deployment separately authorized."
 summary: >-
   Make nested-denominator addition learner-reachable, with one required canonical
@@ -109,10 +109,17 @@ If a structural amendment requires a separate packet, stop and propose that pack
 
 ### Requirement 1 — Approved reachable one-renaming flow
 
+Owner amendment, 2026-10-17 (DECISION-044): use the five-step episode
+`encounter → select-renaming-side → transform-required-side → operate → resolve`.
+The owner explicitly approved omitting standalone Notice and final reflection.
+The side-choice prompt names eighths and carries the denominator-comparison task;
+do not add a duplicate acknowledgment or a reflection record for this definition.
+This supersedes the older retention requirement, not legacy episode semantics.
+
 Implement only the selected policy. Both left-renaming and mirrored right-renaming
-cases must be proven; register only vetted, fully runnable content. Retain notice,
-the decision about which operand needs renaming, the needed conversion,
-operate, resolve and authored reflection. No redundant unchanged conversion.
+cases must be proven; register only vetted, fully runnable content. Retain the
+meaningful side decision, one learner conversion, operation and finish navigation.
+No redundant unchanged conversion.
 Keep high/medium support honest about the same mathematical task. Preserve legacy
 definitions/replay; new prompts and task semantics get explicit registered identity.
 
