@@ -18,6 +18,13 @@ function contentIdentity(content) {
 }
 
 function visibleFields(state) {
+  if (state.episodeDefinition?.id === 'phase-3-nested-renaming-addition'
+    && state.episodeDefinition?.revision === '1') {
+    if (state.beat === 'transform') return { representationRole: 'fraction-bar', visible: ['source-forms', 'selected-renaming-side', 'target-context'], supplied: [], hidden: ['correct-conversion', 'operation-result'] };
+    if (state.beat === 'operate') return { representationRole: 'symbolic', visible: ['constructed-conversion', 'validated-original-operand', 'operation', 'target-context'], supplied: [], hidden: ['unsubmitted-operation-result'] };
+    if (state.beat === 'resolve') return { representationRole: 'symbolic', visible: ['operation-result', 'finish-navigation'], supplied: [], hidden: [] };
+    return { representationRole: 'fraction-bar', visible: ['source-forms', 'target-context'], supplied: [], hidden: ['required-renaming-side', 'correct-conversion', 'operation-result'] };
+  }
   if (state.episodeDefinition?.id === 'phase-3-reusable-full-addition'
     && state.episodeDefinition?.revision === '1') {
     if (state.beat === 'transform') {

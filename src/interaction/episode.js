@@ -24,6 +24,7 @@ import {
   PLAN34_EPISODE_DEFINITION_ID,
   validatePlan34TaskContext,
 } from '../content/full-addition-task-patterns.js';
+import { PLAN18_NESTED_DEFINITION_ID, validatePlan18TaskContext } from '../content/nested-renaming-task.js';
 import {
   EPISODE_BEATS,
   PHASE2_ACTIVE_CONDITION,
@@ -68,7 +69,16 @@ function responseForEntry(definition, entry, taskContext = null) {
   };
   if (beat === 'encounter') return { ...common, responsibility: 'inspect-expression', inputKind: 'acknowledge' };
   if (beat === 'notice') return { ...common, responsibility: 'identify-unit-relationship', inputKind: 'unit-match-choice' };
-  if (beat === 'decide') return { ...common, responsibility: 'choose-common-denominator', inputKind: 'whole-fraction' };
+  if (beat === 'decide') return definition.id === PLAN18_NESTED_DEFINITION_ID
+    ? {
+      ...common,
+      responsibility: 'identify-renaming-side',
+      inputKind: 'side-choice',
+      question: 'Which fraction needs new parts to use eighths?',
+      choices: ['left', 'right'].map((side) => ({ side, form: taskContext.sourceForms[side] })),
+      targetDenominator: taskContext.targetDenominator,
+    }
+    : { ...common, responsibility: 'choose-common-denominator', inputKind: 'whole-fraction' };
   if (beat === 'transform') {
     if (definition.id === PLAN34_EPISODE_DEFINITION_ID) {
       return {
@@ -189,7 +199,8 @@ function assertDefinition(definition) {
       'episode definition semantics do not match its registered identity',
     );
   }
-  if (JSON.stringify(registered.beats) !== JSON.stringify(EPISODE_BEATS)) {
+  const approvedBeats = registered.id === PLAN18_NESTED_DEFINITION_ID ? ['encounter', 'decide', 'transform', 'operate', 'resolve'] : EPISODE_BEATS;
+  if (JSON.stringify(registered.beats) !== JSON.stringify(approvedBeats)) {
     throw new EpisodeConstructionError('INVALID_EPISODE_DEFINITION', 'registered episode beats do not match the approved grammar');
   }
   return registered;
@@ -208,6 +219,7 @@ function assertInstance(instance, definition) {
   const isPlan17Contract = identityContract?.resultStackCapability === 'plan17-two-whole-stack-v1';
   const isPlan20Contract = definition.id === PLAN20_LIKE_DENOMINATOR_EPISODE_DEFINITION.id
     && definition.revision === PLAN20_LIKE_DENOMINATOR_EPISODE_DEFINITION.revision;
+  const isPlan18 = definition.id === PLAN18_NESTED_DEFINITION_ID && definition.revision === '1';
   const registeredCrossing = identityContract?.resultStackCapability === 'plan17-two-whole-stack-v1'
     ? resolveAuthoredContent(identityContract.fixtureId, identityContract.authoringRevision)
     : null;
@@ -263,7 +275,9 @@ function assertInstance(instance, definition) {
     || instance.request.operation !== definition.operation
     || !crossingContractMatches
     || !plan20ContractMatches
-    || (identityContract !== null && !isPlan17Contract && !isPlan20Contract)) {
+    || (identityContract !== null && !isPlan17Contract && !isPlan20Contract)
+    || (isPlan18 && (instance.provenance?.authoringRevision !== 'plan18-record-v1'
+      || instance.classification?.transformations?.canonicalRenaming?.left === instance.classification?.transformations?.canonicalRenaming?.right))) {
     throw new EpisodeConstructionError('UNSUPPORTED_CONTENT_FAMILY', 'content instance is outside the Phase 2 episode family');
   }
   const eligibility = evaluateInstanceEligibility(instance);
@@ -297,6 +311,12 @@ function stateSnapshot(state) {
         taskContext: state.taskContext,
       }
       : {}),
+    ...(state.episodeDefinition?.id === PLAN18_NESTED_DEFINITION_ID ? {
+      nestedCompletion: state.established.nestedCompletion ?? null,
+      selectedRenamingSide: state.established.selectedRenamingSide ?? null,
+      conversionOrigins: state.established.conversionOrigins ?? {},
+      taskContext: state.taskContext,
+    } : {}),
   };
 }
 
@@ -338,6 +358,8 @@ function resolvedState(state, established) {
     ...state.established,
     ...(beat === 'resolve' && state.episodeDefinition.id === PLAN34_EPISODE_DEFINITION_ID
       ? { compactCompletion: established }
+      : beat === 'resolve' && state.episodeDefinition.id === PLAN18_NESTED_DEFINITION_ID
+        ? { nestedCompletion: established }
       : beat === 'resolve' ? { resolution: established } : {}),
     ...(beat === 'reflect' ? { reflection: established } : {}),
   };
@@ -509,7 +531,8 @@ function handleEncounter(state, intent) {
   if (intent.type !== 'acknowledge-encounter') return null;
   const established = { acknowledged: true };
   const compact = state.episodeDefinition.id === PLAN34_EPISODE_DEFINITION_ID;
-  const next = advanceSchedule(compact ? {
+  const nested = state.episodeDefinition.id === PLAN18_NESTED_DEFINITION_ID;
+  const next = advanceSchedule(compact || nested ? {
     ...state,
     established: {
       ...state.established,
@@ -551,6 +574,14 @@ function handleNotice(state, intent) {
 }
 
 function handleDecide(state, intent) {
+  if (state.episodeDefinition.id === PLAN18_NESTED_DEFINITION_ID) {
+    if (intent.type !== 'select-renaming-side') return null;
+    if (intent.side !== state.taskContext.requiredSide) return recovery(state, intent, { kind: 'side-choice-needs-retry', selectedSide: intent.side, targetDenominator: '8' });
+    const next = advanceSchedule(state, { side: intent.side, targetDenominator: '8', source: 'learner-selected-authored-renaming-side' });
+    return assessedSuccess(state, intent, { kind: 'correct-renaming-side', selectedSide: intent.side }, {
+      ...next, established: { ...next.established, selectedRenamingSide: intent.side },
+    });
+  }
   if (intent.type !== 'propose-common-denominator') return null;
   const classification = classifyCommonDenominatorResponse(state.content, intent.proposed);
   if (classification.kind === 'invalid-common-denominator') return recovery(state, intent, classification);
@@ -593,6 +624,7 @@ function handleDecide(state, intent) {
 
 function handleTransform(state, intent) {
   const compact = state.episodeDefinition.id === PLAN34_EPISODE_DEFINITION_ID;
+  const nested = state.episodeDefinition.id === PLAN18_NESTED_DEFINITION_ID;
   if (!compact && intent.type !== 'submit-equivalent-form') return null;
   if (compact && !['submit-equivalent-form', 'keep-inspected-form', 'repair-inspected-form'].includes(intent.type)) return null;
   const targetDenominator = state.established.commonDenominator.targetDenominator;
@@ -643,7 +675,7 @@ function handleTransform(state, intent) {
     established: {
       ...next.established,
       conversions: establishedConversions,
-      ...(compact ? {
+      ...(compact || nested ? {
         conversionOrigins: { ...next.established.conversionOrigins, [side]: origin },
       } : {}),
       lastConversion: established,
@@ -678,6 +710,10 @@ function handleOperate(state, intent) {
 }
 
 function handleResolve(state, intent) {
+  if (state.episodeDefinition.id === PLAN18_NESTED_DEFINITION_ID) {
+    if (intent.type !== 'finish-nested-episode') return null;
+    return assessedSuccess(state, intent, { kind: 'nested-navigation-completed' }, resolvedState(state, { kind: 'navigation-completion' }));
+  }
   if (state.episodeDefinition.id === PLAN34_EPISODE_DEFINITION_ID) {
     if (intent.type !== 'finish-compact-episode') return null;
     return assessedSuccess(state, intent, { kind: 'compact-navigation-completed' }, resolvedState(state, { kind: 'navigation-completion' }));
@@ -764,12 +800,14 @@ const INTENT_KEYS = Object.freeze({
   'acknowledge-encounter': ['type'],
   'submit-notice': ['type', 'matchesUnits'],
   'propose-common-denominator': ['type', 'proposed'],
+  'select-renaming-side': ['type', 'side'],
   'submit-equivalent-form': ['type', 'proposed'],
   'keep-inspected-form': ['type'],
   'repair-inspected-form': ['type', 'numerator'],
   'submit-operation-result': ['type', 'proposed'],
   'submit-resolution': ['type', 'proposed'],
   'finish-compact-episode': ['type'],
+  'finish-nested-episode': ['type'],
   'submit-reflection': ['type', 'response'],
   'request-help': ['type'],
   'request-task-help': ['type'],
@@ -781,12 +819,14 @@ const INTENT_BEATS = Object.freeze({
   'acknowledge-encounter': 'encounter',
   'submit-notice': 'notice',
   'propose-common-denominator': 'decide',
+  'select-renaming-side': 'decide',
   'submit-equivalent-form': 'transform',
   'keep-inspected-form': 'transform',
   'repair-inspected-form': 'transform',
   'submit-operation-result': 'operate',
   'submit-resolution': 'resolve',
   'finish-compact-episode': 'resolve',
+  'finish-nested-episode': 'resolve',
   'submit-reflection': 'reflect',
 });
 
@@ -859,6 +899,7 @@ function assertIntentShape(intent) {
   if (intent.type === 'submit-notice' && typeof intent.matchesUnits !== 'boolean') {
     throw new EpisodeIntentError('INVALID_INTENT_SHAPE', 'submit-notice.matchesUnits must be boolean');
   }
+  if (intent.type === 'select-renaming-side' && !['left', 'right'].includes(intent.side)) throw new EpisodeIntentError('INVALID_INTENT_SHAPE', 'side must be left or right');
   if (intent.type === 'propose-common-denominator') assertWireFraction(intent.proposed, 'intent.proposed');
   if (intent.type === 'submit-equivalent-form') assertWireFraction(intent.proposed, 'intent.proposed');
   if (intent.type === 'repair-inspected-form'
@@ -915,6 +956,15 @@ function assertIntentAllowedAtBeat(state, intent) {
     );
   }
   const compact = state.episodeDefinition.id === PLAN34_EPISODE_DEFINITION_ID;
+  const nested = state.episodeDefinition.id === PLAN18_NESTED_DEFINITION_ID;
+  if (nested && intent.type === 'propose-common-denominator' && state.beat === 'decide') {
+    throw new EpisodeIntentError('UNEXPECTED_INTENT', 'nested side choice does not accept a common-denominator proposal');
+  }
+  if (nested && intent.type === 'submit-resolution' && state.beat === 'resolve') {
+    throw new EpisodeIntentError('UNEXPECTED_INTENT', 'nested resolve is navigation only');
+  }
+  if (intent.type === 'select-renaming-side' && (!nested || state.beat !== 'decide')) throw new EpisodeIntentError('UNEXPECTED_INTENT', 'side choice is only available at the nested renaming decision');
+  if (intent.type === 'finish-nested-episode' && (!nested || state.beat !== 'resolve')) throw new EpisodeIntentError('UNEXPECTED_INTENT', 'nested finish is available only at nested resolve');
   if (compact && intent.type === 'request-replay') {
     throw new EpisodeIntentError('UNEXPECTED_INTENT', 'compact episodes do not expose legacy replay actions');
   }
@@ -940,9 +990,13 @@ function assertIntentAllowedAtBeat(state, intent) {
       && state.episodeDefinition.id === PLAN34_EPISODE_DEFINITION_ID
       && state.taskContext.patternId === FULL_ADDITION_CONSTRUCT_PATTERN.id
       && state.beat === 'transform';
+    const nestedTaskHelp = nested
+      && ((intent.type === 'request-task-help' && ['decide', 'transform'].includes(state.beat))
+        || (intent.type === 'submit-transform-help-multiplier' && state.beat === 'transform'));
     if (state.episodeDefinition.revision !== '3'
       && !(state.episodeDefinition.id === PLAN34_EPISODE_DEFINITION_ID && intent.type === 'request-task-help')
       && !compactConstructMultiplierHelp
+      && !nestedTaskHelp
       && !(state.episodeDefinition.id === PLAN17_CROSSING_EPISODE_DEFINITION.id
         && state.episodeDefinition.revision === PLAN17_CROSSING_EPISODE_DEFINITION.revision)
       && !plan20OperationHelp) {
@@ -972,10 +1026,11 @@ export function createEpisode({
   const normalizedSupport = createSupportConfiguration(support);
   const normalizedCondition = validateActiveCondition(activeCondition);
   const isCompact = definition.id === PLAN34_EPISODE_DEFINITION_ID;
+  const isNested = definition.id === PLAN18_NESTED_DEFINITION_ID;
   const normalizedTaskContext = isCompact
     ? validatePlan34TaskContext(content, taskContext, { allowCompatibilityPair })
-    : null;
-  if (!isCompact && taskContext !== null) {
+    : isNested ? validatePlan18TaskContext(content, taskContext) : null;
+  if (!isCompact && !isNested && taskContext !== null) {
     throw new EpisodeConstructionError('UNSUPPORTED_TASK_CONTEXT', 'task context is only supported by the compact full-addition definition');
   }
   const beatSchedule = computeBeatSchedule(content, definition, normalizedTaskContext, { allowCompatibilityPair });
@@ -986,7 +1041,7 @@ export function createEpisode({
     revision: 0,
     content,
     episodeDefinition: definition,
-    ...(isCompact ? { taskContext: normalizedTaskContext } : {}),
+    ...(isCompact || isNested ? { taskContext: normalizedTaskContext } : {}),
     activeCondition: normalizedCondition,
     beatSchedule,
     schedulePosition: 0,
@@ -1004,6 +1059,7 @@ export function createEpisode({
       route: 'fraction-bar',
       ...(isPlan20Definition(definition) ? { sharedUnit: null } : {}),
       ...(isCompact ? { compactCompletion: null, conversionOrigins: {} } : {}),
+      ...(isNested ? { nestedCompletion: null, selectedRenamingSide: null, conversionOrigins: {} } : {}),
     },
     completedBeats: [],
     pendingResponse: null,
@@ -1035,9 +1091,10 @@ export function applyIntent(state, rawIntent) {
   if (intent.type === 'acknowledge-encounter') return handleEncounter(state, intent);
   if (intent.type === 'submit-notice') return handleNotice(state, intent);
   if (intent.type === 'propose-common-denominator') return handleDecide(state, intent);
+  if (intent.type === 'select-renaming-side') return handleDecide(state, intent);
   if (['submit-equivalent-form', 'keep-inspected-form', 'repair-inspected-form'].includes(intent.type)) return handleTransform(state, intent);
   if (intent.type === 'submit-operation-result') return handleOperate(state, intent);
-  if (intent.type === 'submit-resolution' || intent.type === 'finish-compact-episode') return handleResolve(state, intent);
+  if (intent.type === 'submit-resolution' || intent.type === 'finish-compact-episode' || intent.type === 'finish-nested-episode') return handleResolve(state, intent);
   if (intent.type === 'submit-reflection') return handleReflect(state, intent);
   throw new EpisodeIntentError('UNEXPECTED_INTENT', `intent ${intent.type} is not valid at beat ${state.beat}`);
 }

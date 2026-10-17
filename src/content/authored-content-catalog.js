@@ -11,6 +11,8 @@ import {
   MATERIALIZED_PLAN20_LIKE_DENOMINATOR_ADDITIONS,
 } from './authored-problem-materializer.js';
 import { deepFreeze } from './schema.js';
+import { PLAN18_NESTED_ADDITION_RECORDS } from './data/plan18-nested-addition-records.js';
+import { buildCuratedProblem } from './generator.js';
 
 function identityKey(fixtureId, authoringRevision) {
   return `${fixtureId}@${authoringRevision}`;
@@ -28,6 +30,11 @@ const plan19ByIdentity = new Map(MATERIALIZED_PLAN19_ADDITIONS.map((entry) => [
 const plan17ByIdentity = new Map(MATERIALIZED_PLAN17_ADDITIONS.map((entry) => [
   identityKey(entry.fixtureId, entry.authoringRevision), entry,
 ]));
+const plan18ByIdentity = new Map(PLAN18_NESTED_ADDITION_RECORDS.map((record) => {
+  const fixture = deepFreeze({ id: record.fixtureId, authoringRevision: record.authoringRevision, profileId: 'curated-review', selector: 'nested-denominator-addition', overlays: [], left: record.sourceForms.left, right: record.sourceForms.right });
+  const content = buildCuratedProblem({ fixture, selector: fixture.selector, overlays: [], profileId: 'curated-review', candidate: { left: fixture.left, right: fixture.right, reviewedTransitions: [] } });
+  return [identityKey(record.fixtureId, record.authoringRevision), deepFreeze({ itemId: record.itemId, fixtureId: record.fixtureId, authoringRevision: record.authoringRevision, taskDataRevision: record.taskDataRevision, fixture, content })];
+}));
 const legacyByIdentity = new Map(LEGACY_AUTHORED_IDENTITIES.map((entry) => [
   identityKey(entry.fixtureId, entry.authoringRevision), entry,
 ]));
@@ -62,7 +69,8 @@ for (const item of MATERIALIZED_PLAN17_ADDITIONS) {
 /** Exact immutable lookup; this deliberately has no "latest revision" fallback. */
 export function resolveCuratedFixture(fixtureId, authoringRevision) {
   if (typeof fixtureId !== 'string' || typeof authoringRevision !== 'string') return null;
-  return curatedFixturesByIdentity.get(identityKey(fixtureId, authoringRevision)) ?? null;
+  const key = identityKey(fixtureId, authoringRevision);
+  return plan18ByIdentity.get(key)?.fixture ?? curatedFixturesByIdentity.get(key) ?? null;
 }
 
 /**
@@ -73,6 +81,8 @@ export function resolveCuratedFixture(fixtureId, authoringRevision) {
 export function resolveAuthoredContent(fixtureId, authoringRevision) {
   if (typeof fixtureId !== 'string' || typeof authoringRevision !== 'string') return null;
   const key = identityKey(fixtureId, authoringRevision);
+  const plan18 = plan18ByIdentity.get(key);
+  if (plan18) return plan18;
   const materialized = plan32ByIdentity.get(key);
   if (materialized) return materialized;
   const plan20 = plan20ByIdentity.get(key);

@@ -9,6 +9,7 @@ import { validateSupportConfiguration } from './support.js';
 
 export const REPLAY_SCHEMA_VERSION = 'fractionflow.episode-replay/v1';
 export const REPLAY_V2_SCHEMA_VERSION = 'fractionflow.episode-replay/v2';
+export const REPLAY_V3_SCHEMA_VERSION = 'fractionflow.episode-replay/v3';
 
 function sameJson(left, right) {
   return JSON.stringify(left) === JSON.stringify(right);
@@ -101,6 +102,7 @@ function assertContentIdentityShape(identity) {
 
 function assertReplayEnvelopeShape(envelope) {
   const v2 = envelope?.schemaVersion === REPLAY_V2_SCHEMA_VERSION;
+  const v3 = envelope?.schemaVersion === REPLAY_V3_SCHEMA_VERSION;
   assertExactKeys(envelope, [
     'schemaVersion',
     'contentIdentity',
@@ -108,7 +110,7 @@ function assertReplayEnvelopeShape(envelope) {
     'support',
     'activeCondition',
     'learnerIntents',
-    ...(v2 ? ['taskContext'] : []),
+    ...(v2 || v3 ? ['taskContext'] : []),
   ], 'replay envelope');
   assertContentIdentityShape(envelope.contentIdentity);
   assertExactKeys(envelope.episodeDefinition, ['id', 'revision'], 'episodeDefinition');
@@ -129,6 +131,14 @@ function assertReplayEnvelopeShape(envelope) {
       || envelope.episodeDefinition.revision !== '1') {
       throw new TypeError('replay v2 is reserved for the compact full-addition definition');
     }
+  }
+  if (v3) {
+    const c = envelope.taskContext;
+    assertExactKeys(c, ['practiceSetId', 'practiceSetRevision', 'itemId', 'fixtureId', 'authoringRevision', 'definitionId', 'definitionRevision', 'taskDataId', 'taskDataRevision', 'sourceForms', 'targetDenominator', 'requiredSide'], 'replay v3 taskContext');
+    if (envelope.episodeDefinition.id !== 'phase-3-nested-renaming-addition' || envelope.episodeDefinition.revision !== '1'
+      || c.practiceSetId !== 'unlike-addition-vetted-set' || c.practiceSetRevision !== '6'
+      || c.definitionId !== envelope.episodeDefinition.id || c.definitionRevision !== envelope.episodeDefinition.revision
+      || c.targetDenominator !== '8' || !['left', 'right'].includes(c.requiredSide)) throw new TypeError('replay v3 is reserved for exact Plan 18 nested-addition context');
   }
 }
 
@@ -236,7 +246,8 @@ export function createReplayEnvelope(state) {
     throw new TypeError('state must be a Plan 05 episode state');
   }
   const envelope = {
-    schemaVersion: state.taskContext ? REPLAY_V2_SCHEMA_VERSION : REPLAY_SCHEMA_VERSION,
+    schemaVersion: state.episodeDefinition.id === 'phase-3-nested-renaming-addition'
+      ? REPLAY_V3_SCHEMA_VERSION : state.taskContext ? REPLAY_V2_SCHEMA_VERSION : REPLAY_SCHEMA_VERSION,
     contentIdentity: contentReconstructionIdentity(state.content),
     episodeDefinition: {
       id: state.episodeDefinition.id,
@@ -254,7 +265,7 @@ export function createReplayEnvelope(state) {
 export function replayEpisode(envelope) {
   assertJsonSafe(envelope, 'replay envelope');
   if (!envelope || typeof envelope !== 'object') throw new TypeError('replay envelope must be an object');
-  if (![REPLAY_SCHEMA_VERSION, REPLAY_V2_SCHEMA_VERSION].includes(envelope?.schemaVersion)) {
+  if (![REPLAY_SCHEMA_VERSION, REPLAY_V2_SCHEMA_VERSION, REPLAY_V3_SCHEMA_VERSION].includes(envelope?.schemaVersion)) {
     throw new Error('unsupported replay envelope version');
   }
   assertReplayEnvelopeShape(envelope);
@@ -268,7 +279,7 @@ export function replayEpisode(envelope) {
     episodeDefinition: definition,
     support: envelope.support,
     activeCondition: envelope.activeCondition,
-    ...(envelope.schemaVersion === REPLAY_V2_SCHEMA_VERSION ? {
+    ...(envelope.schemaVersion === REPLAY_V2_SCHEMA_VERSION || envelope.schemaVersion === REPLAY_V3_SCHEMA_VERSION ? {
       taskContext: envelope.taskContext,
       allowCompatibilityPair: envelope.taskContext.practiceSetId === null
         && envelope.taskContext.practiceSetRevision === null,

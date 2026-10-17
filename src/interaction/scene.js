@@ -270,6 +270,13 @@ function currentSupportConsequence(state) {
 function sceneTaskIdentity(state) {
   if (!state.taskContext) return null;
   const context = state.taskContext;
+  if (state.episodeDefinition?.id === 'phase-3-nested-renaming-addition') return {
+    practiceSetId: context.practiceSetId, practiceSetRevision: context.practiceSetRevision,
+    itemId: context.itemId, fixtureId: context.fixtureId, authoringRevision: context.authoringRevision,
+    definitionId: context.definitionId, definitionRevision: context.definitionRevision,
+    targetDenominator: context.targetDenominator, taskDataId: context.taskDataId,
+    taskDataRevision: context.taskDataRevision, sourceForms: context.sourceForms,
+  };
   return {
     practiceSetId: context.practiceSetId,
     practiceSetRevision: context.practiceSetRevision,
@@ -303,6 +310,9 @@ function currentTaskHelp(state) {
     entry.type === 'transform-help-multiplier'
     && entry.scheduleEntryId === scheduleEntry.id
   ));
+  if (request.beat === 'decide' && state.episodeDefinition?.id === 'phase-3-nested-renaming-addition') {
+    return { kind: 'renaming-side-comparison', status: 'requested', targetDenominator: state.taskContext.targetDenominator };
+  }
   if (request.beat === 'decide') return { kind: 'common-denominator', status: 'requested' };
   if (request.beat === 'operate'
     && state.episodeDefinition?.id === 'phase-3-like-denominator-addition'
@@ -583,7 +593,9 @@ function taskMeaning(state) {
       target: null,
       evidenceCategory: null,
       connectionForm,
-      ...(state.taskContext ? { patternId: state.taskContext.patternId, targetDenominator: state.taskContext.targetDenominator } : {}),
+      ...(state.taskContext ? (state.episodeDefinition.id === 'phase-3-nested-renaming-addition'
+        ? { targetDenominator: state.taskContext.targetDenominator }
+        : { patternId: state.taskContext.patternId, targetDenominator: state.taskContext.targetDenominator }) : {}),
     };
   }
   return {
@@ -596,7 +608,10 @@ function taskMeaning(state) {
     target: expected.target ?? null,
     evidenceCategory: expected.evidenceCategory,
     connectionForm,
-    ...(state.taskContext ? {
+    ...(state.taskContext && state.episodeDefinition.id === 'phase-3-nested-renaming-addition' ? {
+      targetDenominator: state.taskContext.targetDenominator,
+      ...(state.beat === 'transform' || state.established.selectedRenamingSide ? { selectedSide: state.established.selectedRenamingSide } : {}),
+    } : state.taskContext ? {
       patternId: state.taskContext.patternId,
       targetDenominator: state.taskContext.targetDenominator,
       candidate: expected.inputKind === 'inspect-candidate' ? state.taskContext.candidates[expected.target] : null,
@@ -606,6 +621,8 @@ function taskMeaning(state) {
 
 function candidateDenominatorsMeaning(state) {
   if (state.beat !== 'decide') return null;
+  if (state.episodeDefinition?.id === 'phase-3-nested-renaming-addition'
+    && state.episodeDefinition?.revision === '1') return null;
   const supportLevel = state.support?.dimensions?.commonDenominator;
   if (supportLevel !== 'high support') return null;
   return candidateDenominatorsForInstance(state.content);
@@ -689,16 +706,22 @@ function operationMeaning(state) {
   const rawResult = operation?.proposed ?? null;
   const simplifiedResult = operation?.simplifiedResult ?? resolution?.simplifiedResult ?? null;
 
+  const preserveNestedOriginal = state.episodeDefinition?.id === 'phase-3-nested-renaming-addition'
+    && state.episodeDefinition?.revision === '1';
   return {
     operation: state.content.request.operation,
     currentForms: {
       left: state.established.sharedUnit
         ? state.content.operands.left.initialForm
-        : state.established.conversions.left,
+        : state.established.conversions.left ?? (preserveNestedOriginal ? state.content.operands.left.initialForm : null),
       right: state.established.sharedUnit
         ? state.content.operands.right.initialForm
-        : state.established.conversions.right,
+        : state.established.conversions.right ?? (preserveNestedOriginal ? state.content.operands.right.initialForm : null),
     },
+    ...(state.episodeDefinition.id === 'phase-3-nested-renaming-addition' ? { operandOrigins: {
+      left: { kind: state.established.conversions.left ? 'learner-converted' : 'validated-original', performed: Boolean(state.established.conversions.left) },
+      right: { kind: state.established.conversions.right ? 'learner-converted' : 'validated-original', performed: Boolean(state.established.conversions.right) },
+    } } : {}),
     rawResult,
     resultWholeSpan: state.content.representationFacts.wholeSpan,
     preferredFinalForm: resolution?.proposed ?? (simplifiedResult || rawResult),

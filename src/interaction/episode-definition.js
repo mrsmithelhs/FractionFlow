@@ -155,6 +155,22 @@ export const PLAN34_FULL_ADDITION_EPISODE_DEFINITION = deepFreeze({
   },
 });
 
+export const PLAN18_NESTED_ADDITION_EPISODE_DEFINITION = deepFreeze({
+  ...BASE_EPISODE_DEFINITION,
+  id: 'phase-3-nested-renaming-addition',
+  revision: '1',
+  includeReflection: false,
+  selector: 'nested-denominator-addition',
+  beats: Object.freeze(['encounter', 'decide', 'transform', 'operate', 'resolve']),
+  promptIdentities: {
+    encounter: 'phase3.nested-addition.encounter',
+    decide: 'phase3.nested-addition.select-renaming-side',
+    transform: 'phase3.nested-addition.transform-one-side',
+    operate: 'phase3.nested-addition.operate',
+    resolve: 'phase3.nested-addition.resolve',
+  },
+});
+
 const EPISODE_DEFINITIONS = Object.freeze([
   LEGACY_PHASE2_EPISODE_DEFINITION,
   LEGACY_PHASE2_REFLECTION_EPISODE_DEFINITION,
@@ -166,6 +182,7 @@ const EPISODE_DEFINITIONS = Object.freeze([
   PLAN20_LIKE_DENOMINATOR_EPISODE_DEFINITION,
   PLAN17_CROSSING_EPISODE_DEFINITION,
   PLAN34_FULL_ADDITION_EPISODE_DEFINITION,
+  PLAN18_NESTED_ADDITION_EPISODE_DEFINITION,
 ]);
 
 export function getEpisodeDefinition(id = EPISODE_DEFINITION_ID, revision = EPISODE_DEFINITION_REVISION) {

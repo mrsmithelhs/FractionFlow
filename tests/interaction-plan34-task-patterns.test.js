@@ -99,6 +99,14 @@ describe('Plan 34 compact episode reducer and replay', () => {
     expect(beforeRight.derivation.sourceContext.instructional.taskContext.itemId).toBe(items[1].itemId);
   });
 
+  it('admits its fixed records against selected set v5 or v6 membership without broadening patterns', () => {
+    const fixture = resolveCuratedFixture(items[0].fixtureId, items[0].revision);
+    const instance = buildCuratedProblem({ fixture, selector: fixture.selector, overlays: fixture.overlays, profileId: fixture.profileId, candidate: { left: fixture.left, right: fixture.right, reviewedTransitions: [] } });
+    expect(resolvePlan34TaskContext(instance, items[0].pattern.id, '1', '12', { practiceSetRevision: '5' }).practiceSetRevision).toBe('5');
+    expect(resolvePlan34TaskContext(instance, items[0].pattern.id, '1', '12', { practiceSetRevision: '6' }).practiceSetRevision).toBe('6');
+    expect(() => resolvePlan34TaskContext(instance, items[0].pattern.id, '1', '12', { practiceSetRevision: '4' })).toThrow(/revision 5 or 6/);
+  });
+
   it('runs compact construct multiplier help through wrong and correct proposals without autofilling', () => {
     let { state } = newState(items[0]);
     state = apply(state, { type: 'acknowledge-encounter' });
@@ -170,6 +178,17 @@ describe('Plan 34 compact episode reducer and replay', () => {
     expect(oracle.captureSelfCheck).toEqual({ initialReplayMatches: true, completedReplayMatches: true });
     for (const entry of [oracle.initial, oracle.completed]) {
       const replayed = replayEpisode(entry.envelope);
+      expect(episodeStateSnapshot(replayed)).toEqual(entry.expectedState);
+    }
+  });
+
+  it('preserves the captured v2 initial and completed envelopes and state snapshots', () => {
+    const oracle = JSON.parse(readFileSync(new URL('./fixtures/plan34-v2-replay-oracles.json', import.meta.url), 'utf8'));
+    expect(oracle.capturedUsingCurrentReplayV2).toBe(REPLAY_V2_SCHEMA_VERSION);
+    expect(oracle.selfCheck).toEqual({ caseCount: 4, allReplayMatches: true });
+    for (const entry of oracle.cases) {
+      const replayed = replayEpisode(entry.envelope);
+      expect(entry.envelope.schemaVersion).toBe(REPLAY_V2_SCHEMA_VERSION);
       expect(episodeStateSnapshot(replayed)).toEqual(entry.expectedState);
     }
   });

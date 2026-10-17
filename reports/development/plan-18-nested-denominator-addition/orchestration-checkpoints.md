@@ -40,3 +40,16 @@ child is stopped; no product source or tests changed. Resume from these artifact
 after the task-shape answer and explicit parent source authorization. Preserve
 the replay, set-membership, staged review and separate acceptance gates recorded
 in the proposal; do not treat the investigation as implementation delivery.
+
+## Owner task-shape answer and Stage 1 — 2026-10-17
+
+The owner selected the recommended five-step episode. Commit `601d076` records
+DECISION-044, the packet amendment and parent Stage 1 authorization. This
+supersedes the pending task-shape stop above. Luna resumed for pure foundation
+and tests only, with the app/render/browser stages still gated.
+
+Before replay mutation, the child captured four old Plan 34 v2 envelope/state
+oracles. The parent inspected their provenance and hashes and committed them in
+`abec1a3`. The existing v1 oracle hash matched its pre-edit record. These captures
+must not be regenerated to make a regression pass. Stage 1 remains subject to
+independent parent verification and a read-only Sol review before UI activation.

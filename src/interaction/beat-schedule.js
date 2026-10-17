@@ -1,5 +1,6 @@
 import { deepFreeze } from '../content/schema.js';
 import { PLAN34_EPISODE_DEFINITION_ID, resolvePlan34TaskContext } from '../content/full-addition-task-patterns.js';
+import { PLAN18_NESTED_DEFINITION_ID, resolvePlan18TaskContext } from '../content/nested-renaming-task.js';
 
 function scheduleError(message) {
   const error = new TypeError(message);
@@ -21,6 +22,16 @@ export function computeBeatSchedule(instance, episodeDefinition, taskContext = n
     return deepFreeze([
       { id: 'encounter', kind: 'encounter' },
       ...context.requiredSides.map((side) => ({ id: `transform-${side}`, kind: 'transform', side })),
+      { id: 'operate', kind: 'operate' },
+      { id: 'resolve', kind: 'resolve' },
+    ]);
+  }
+  if (episodeDefinition?.id === PLAN18_NESTED_DEFINITION_ID && episodeDefinition?.revision === '1') {
+    const context = resolvePlan18TaskContext(instance, { practiceSetId: taskContext?.practiceSetId, practiceSetRevision: taskContext?.practiceSetRevision });
+    return deepFreeze([
+      { id: 'encounter', kind: 'encounter' },
+      { id: 'select-renaming-side', kind: 'decide' },
+      { id: `transform-${context.requiredSide}`, kind: 'transform', side: context.requiredSide },
       { id: 'operate', kind: 'operate' },
       { id: 'resolve', kind: 'resolve' },
     ]);

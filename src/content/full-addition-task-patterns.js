@@ -1,6 +1,7 @@
 import { convertToDenominator, equalFractions } from '../math/index.js';
 import { deepFreeze } from './schema.js';
 import { PLAN34_FULL_ADDITION_TASK_RECORDS } from './data/plan34-full-addition-task-records.js';
+import { practiceSetHasItem } from './data/plan18-nested-addition-records.js';
 
 export const FULL_ADDITION_CONSTRUCT_PATTERN = deepFreeze({ id: 'full-addition.construct-equivalent', revision: '1' });
 export const FULL_ADDITION_INSPECT_PATTERN = deepFreeze({ id: 'full-addition.inspect-keep-repair', revision: '1' });
@@ -33,7 +34,7 @@ export function deriveRequiredConversionSides(instance, targetDenominator) {
   });
 }
 
-export function resolvePlan34TaskContext(instance, patternId, patternRevision, targetDenominator = '12', { allowCompatibilityPair = false } = {}) {
+export function resolvePlan34TaskContext(instance, patternId, patternRevision, targetDenominator = '12', { allowCompatibilityPair = false, practiceSetRevision = '5' } = {}) {
   const pattern = getPlan34Pattern(patternId, patternRevision);
   if (!pattern) throw taskError('unknown pattern identity');
   if (String(targetDenominator) !== '12') throw taskError('only the authored target 12 is supported');
@@ -47,6 +48,8 @@ export function resolvePlan34TaskContext(instance, patternId, patternRevision, t
   }
   if (!allowCompatibilityPair) {
     if (pattern.id !== record.livePatternId) throw taskError('pattern is incompatible with the fixed live association');
+    if (!['5', '6'].includes(String(practiceSetRevision))) throw taskError('Plan 34 live records require selected set revision 5 or 6');
+    if (!practiceSetHasItem('unlike-addition-vetted-set', String(practiceSetRevision), record.itemId)) throw taskError('item is not a member of the selected immutable practice set revision');
   }
   const sides = deriveRequiredConversionSides(instance, targetDenominator);
   if (sides.length !== 2) throw taskError('authored compact addition currently requires both converted operands');
@@ -61,7 +64,7 @@ export function resolvePlan34TaskContext(instance, patternId, patternRevision, t
   }
   return deepFreeze({
     practiceSetId: allowCompatibilityPair ? null : 'unlike-addition-vetted-set',
-    practiceSetRevision: allowCompatibilityPair ? null : '5',
+    practiceSetRevision: allowCompatibilityPair ? null : String(practiceSetRevision),
     itemId: record.itemId, fixtureId: record.fixtureId, authoringRevision: record.authoringRevision,
     definitionId: PLAN34_EPISODE_DEFINITION_ID, definitionRevision: PLAN34_EPISODE_DEFINITION_REVISION,
     patternId: pattern.id, patternRevision: pattern.revision, targetDenominator: String(targetDenominator),
@@ -75,7 +78,7 @@ export function resolvePlan34TaskContext(instance, patternId, patternRevision, t
 
 export function validatePlan34TaskContext(instance, context, { allowCompatibilityPair = false } = {}) {
   if (!context || typeof context !== 'object' || Array.isArray(context)) throw taskError('taskContext is required');
-  const expected = resolvePlan34TaskContext(instance, context.patternId, context.patternRevision, context.targetDenominator, { allowCompatibilityPair });
+  const expected = resolvePlan34TaskContext(instance, context.patternId, context.patternRevision, context.targetDenominator, { allowCompatibilityPair, practiceSetRevision: context.practiceSetRevision ?? '5' });
   for (const key of Object.keys(expected)) {
     if (JSON.stringify(context[key]) !== JSON.stringify(expected[key])) throw taskError(`${key} does not match the immutable authored association`);
   }
