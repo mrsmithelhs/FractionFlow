@@ -77,7 +77,7 @@ export const STRINGS = Object.freeze({
   }),
 
   nestedAddition: Object.freeze({
-    sideChoicePrompt: 'Which fraction needs new parts to use eighths?',
+    sideChoicePrompt: 'Which fraction needs a different denominator?',
     firstFraction: 'First fraction',
     secondFraction: 'Second fraction',
     wrongSide: 'Check which fraction is already in eighths. Choose the other one.',

@@ -91,3 +91,18 @@ The verified implementation/evidence checkpoints are commits `601d076`
 (mechanism), `abec1a3` (frozen replay oracles), `4af9556` (pure foundation),
 `24060e0` (mounted UI), and `c8623b3` (route evidence and delivery record).
 No push or deployment was performed, and no subsequent plan was started.
+
+## Owner wording repair — 2026-10-17
+
+After delivery review, the owner requested the simpler question:
+**“Which fraction needs a different denominator?”** The parent revised both
+views and instructional question metadata directly, with matching existing test
+and route text expectations. The explicit eighths cue remains in optional help
+and the later conversion question.
+
+The [repair record](copy-repair.md) documents 30 passing focused tests, both builds,
+and four Chrome wording checks across both orders/views. No new full-matrix run
+is claimed. The [refreshed visual choice screen](evidence/copy-repair-nested-one-half-plus-three-eighths-visual.png)
+and [mirrored linear choice screen](evidence/copy-repair-nested-three-eighths-plus-one-half-linear.png)
+show the current wording; the earlier screenshots preserve the original delivery.
+Status remains delivered, with owner acceptance and deployment separately gated.

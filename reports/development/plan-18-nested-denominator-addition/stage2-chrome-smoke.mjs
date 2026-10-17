@@ -22,7 +22,7 @@ try {
     if (view === 'linear') await page.locator('.app-view-toggle').click();
     const host = view === 'visual' ? '.app-visual-view' : '.app-linear-view';
     const fieldset = page.locator(`${host} fieldset`);
-    if (await fieldset.locator('legend').innerText() !== 'Which fraction needs new parts to use eighths?') throw new Error(`${item.id}/${view}/${height}: side-choice prompt mismatch`);
+    if (await fieldset.locator('legend').innerText() !== 'Which fraction needs a different denominator?') throw new Error(`${item.id}/${view}/${height}: side-choice prompt mismatch`);
     const helpButton = page.locator(`${host} .active-beat-controls .app-secondary-button`).first();
     await helpButton.click();
     const choiceBoxes = await page.locator(`${host} .nested-side-choice`).evaluateAll((buttons) => buttons.map((button) => {

@@ -112,7 +112,10 @@ If a structural amendment requires a separate packet, stop and propose that pack
 Owner amendment, 2026-10-17 (DECISION-044): use the five-step episode
 `encounter → select-renaming-side → transform-required-side → operate → resolve`.
 The owner explicitly approved omitting standalone Notice and final reflection.
-The side-choice prompt names eighths and carries the denominator-comparison task;
+Owner copy amendment, 2026-10-17: ask “Which fraction needs a different
+denominator?” without naming the target in the question. The side-choice prompt
+carries the denominator-comparison task; eighths remain explicit in requested
+help and the subsequent conversion question.
 do not add a duplicate acknowledgment or a reflection record for this definition.
 This supersedes the older retention requirement, not legacy episode semantics.
 

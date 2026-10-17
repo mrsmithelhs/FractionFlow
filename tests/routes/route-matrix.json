@@ -6295,7 +6295,7 @@
             {
               "type": "containsText",
               "target": ".app-visual-view .active-beat-prompt",
-              "value": "Which fraction needs new parts to use eighths?"
+              "value": "Which fraction needs a different denominator?"
             },
             {
               "type": "visibleGeometry",
@@ -6497,7 +6497,7 @@
             {
               "type": "containsText",
               "target": ".app-visual-view .active-beat-prompt",
-              "value": "Which fraction needs new parts to use eighths?"
+              "value": "Which fraction needs a different denominator?"
             }
           ],
           "step": 27
@@ -6702,7 +6702,7 @@
             {
               "type": "containsText",
               "target": ".app-linear-view .active-beat-prompt",
-              "value": "Which fraction needs new parts to use eighths?"
+              "value": "Which fraction needs a different denominator?"
             },
             {
               "type": "visibleGeometry",
@@ -6916,7 +6916,7 @@
             {
               "type": "containsText",
               "target": ".app-linear-view .active-beat-prompt",
-              "value": "Which fraction needs new parts to use eighths?"
+              "value": "Which fraction needs a different denominator?"
             }
           ],
           "step": 32

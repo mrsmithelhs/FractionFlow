@@ -1,0 +1,49 @@
+{
+  "scope": "Unshipped focused fixture; copy verification only, not new production reach evidence",
+  "results": [
+    {
+      "item": "nested-one-half-plus-three-eighths",
+      "view": "visual",
+      "question": "Which fraction needs a different denominator?",
+      "width": {
+        "viewport": 360,
+        "document": 360
+      },
+      "pageErrors": [],
+      "screenshot": "evidence/copy-repair-nested-one-half-plus-three-eighths-visual.png"
+    },
+    {
+      "item": "nested-one-half-plus-three-eighths",
+      "view": "linear",
+      "question": "Which fraction needs a different denominator?",
+      "width": {
+        "viewport": 360,
+        "document": 360
+      },
+      "pageErrors": [],
+      "screenshot": "evidence/copy-repair-nested-one-half-plus-three-eighths-linear.png"
+    },
+    {
+      "item": "nested-three-eighths-plus-one-half",
+      "view": "visual",
+      "question": "Which fraction needs a different denominator?",
+      "width": {
+        "viewport": 360,
+        "document": 360
+      },
+      "pageErrors": [],
+      "screenshot": "evidence/copy-repair-nested-three-eighths-plus-one-half-visual.png"
+    },
+    {
+      "item": "nested-three-eighths-plus-one-half",
+      "view": "linear",
+      "question": "Which fraction needs a different denominator?",
+      "width": {
+        "viewport": 360,
+        "document": 360
+      },
+      "pageErrors": [],
+      "screenshot": "evidence/copy-repair-nested-three-eighths-plus-one-half-linear.png"
+    }
+  ]
+}

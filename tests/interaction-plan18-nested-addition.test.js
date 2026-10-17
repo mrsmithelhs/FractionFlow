@@ -43,7 +43,7 @@ describe('Plan 18 nested-denominator episode', () => {
       expect(taskContext.requiredSide).toBe(side);
       expect(state.beatSchedule.map((entry) => entry.id)).toEqual(['encounter', 'select-renaming-side', `transform-${side}`, 'operate', 'resolve']);
       const choiceState = applyIntent(state, { type: 'acknowledge-encounter' });
-      expect(choiceState.expectedResponse.question).toBe('Which fraction needs new parts to use eighths?');
+      expect(choiceState.expectedResponse.question).toBe('Which fraction needs a different denominator?');
       expect(choiceState.expectedResponse.choices.map((choice) => choice.side)).toEqual(['left', 'right']);
       expect(choiceState.expectedResponse.choices[0].form).toEqual(state.content.operands.left.initialForm);
       const scene = projectScene({ state: choiceState, representationRole: 'fraction-bar', presentationMode: 'instant-test' });

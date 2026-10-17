@@ -20,7 +20,7 @@ describe('Plan 18 mounted nested addition', () => {
       const host = view === 'visual' ? '.app-visual-view' : '.app-linear-view';
       root.querySelector(`${host} .active-beat-controls button`).click();
       const choiceGroup = root.querySelector(`${host} .active-beat-controls fieldset`);
-      expect(choiceGroup.querySelector('legend').textContent).toBe('Which fraction needs new parts to use eighths?');
+      expect(choiceGroup.querySelector('legend').textContent).toBe('Which fraction needs a different denominator?');
       expect(choiceGroup.querySelectorAll('.nested-side-choice')).toHaveLength(2);
       expect(root.querySelectorAll(`${host} h2.active-beat-prompt`)).toHaveLength(0);
 

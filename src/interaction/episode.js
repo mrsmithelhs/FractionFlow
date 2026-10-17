@@ -74,7 +74,7 @@ function responseForEntry(definition, entry, taskContext = null) {
       ...common,
       responsibility: 'identify-renaming-side',
       inputKind: 'side-choice',
-      question: 'Which fraction needs new parts to use eighths?',
+      question: 'Which fraction needs a different denominator?',
       choices: ['left', 'right'].map((side) => ({ side, form: taskContext.sourceForms[side] })),
       targetDenominator: taskContext.targetDenominator,
     }
