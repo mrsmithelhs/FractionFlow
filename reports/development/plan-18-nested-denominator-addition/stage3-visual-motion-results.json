@@ -1,0 +1,4996 @@
+{
+  "fixture": "unshipped one-item subset of exact registered set@6 items; visible learner controls only",
+  "browserChannel": "chrome",
+  "selectedSupport": "medium-support through visible gear menu",
+  "claims": "presentation-mechanism sweep only; does not prove production entry-to-item reach",
+  "cases": [
+    {
+      "itemId": "nested-one-half-plus-three-eighths",
+      "side": "left",
+      "mode": "standard-motion",
+      "height": 740,
+      "supportProfile": "medium-support",
+      "beforeAccepted": {
+        "converted": {
+          "numerator": "1",
+          "denominator": "2",
+          "whole": {
+            "x": 41,
+            "y": 161,
+            "width": 218,
+            "height": 44
+          },
+          "fill": {
+            "x": 43,
+            "y": 163,
+            "width": 107,
+            "height": 40
+          },
+          "activeAnimations": 0,
+          "newBoundaries": 0,
+          "highlightedBoundaries": 0
+        },
+        "untouched": {
+          "numerator": "3",
+          "denominator": "8",
+          "whole": {
+            "x": 41,
+            "y": 225,
+            "width": 218,
+            "height": 44
+          },
+          "fill": {
+            "x": 43,
+            "y": 227,
+            "width": 80.25,
+            "height": 40
+          },
+          "activeAnimations": 0,
+          "newBoundaries": 0,
+          "highlightedBoundaries": 0
+        },
+        "viewport": {
+          "width": 360,
+          "height": 740,
+          "documentWidth": 360,
+          "scrollX": 0,
+          "scrollY": 0
+        }
+      },
+      "afterAccepted": {
+        "converted": {
+          "numerator": "4",
+          "denominator": "8",
+          "whole": {
+            "x": 41,
+            "y": 161,
+            "width": 218,
+            "height": 44
+          },
+          "fill": {
+            "x": 43,
+            "y": 163,
+            "width": 107,
+            "height": 40
+          },
+          "activeAnimations": 0,
+          "newBoundaries": 0,
+          "highlightedBoundaries": 0
+        },
+        "untouched": {
+          "numerator": "3",
+          "denominator": "8",
+          "whole": {
+            "x": 41,
+            "y": 225,
+            "width": 218,
+            "height": 44
+          },
+          "fill": {
+            "x": 43,
+            "y": 227,
+            "width": 80.25,
+            "height": 40
+          },
+          "activeAnimations": 0,
+          "newBoundaries": 0,
+          "highlightedBoundaries": 0
+        }
+      },
+      "transformObservation": {
+        "before": {
+          "whole": {
+            "x": 41,
+            "y": 161,
+            "width": 218,
+            "height": 44
+          },
+          "fill": {
+            "x": 43,
+            "y": 163,
+            "width": 107,
+            "height": 40
+          },
+          "documentWhole": {
+            "x": 41,
+            "y": 161,
+            "left": 41,
+            "top": 161,
+            "right": 259,
+            "bottom": 205,
+            "width": 218,
+            "height": 44
+          },
+          "documentFill": {
+            "x": 43,
+            "y": 163,
+            "left": 43,
+            "top": 163,
+            "right": 150,
+            "bottom": 203,
+            "width": 107,
+            "height": 40
+          },
+          "relativeWhole": {
+            "x": 0,
+            "y": 0,
+            "left": 41,
+            "top": 161,
+            "right": 259,
+            "bottom": 205,
+            "width": 218,
+            "height": 44
+          },
+          "relativeFill": {
+            "x": 2,
+            "y": 2,
+            "left": 43,
+            "top": 163,
+            "right": 150,
+            "bottom": 203,
+            "width": 107,
+            "height": 40
+          },
+          "layout": {
+            "question": {
+              "x": 63,
+              "y": 417.78125,
+              "left": 63,
+              "top": 417.78125,
+              "right": 297,
+              "bottom": 493.34375,
+              "width": 234,
+              "height": 75.5625
+            },
+            "controls": {
+              "x": 63,
+              "y": 417.78125,
+              "left": 63,
+              "top": 417.78125,
+              "right": 297,
+              "bottom": 608.34375,
+              "width": 234,
+              "height": 190.5625
+            },
+            "scrollX": 0,
+            "scrollY": 0,
+            "viewportWidth": 360,
+            "viewportHeight": 740
+          },
+          "boundaryCount": 1,
+          "boundaryGeometry": [
+            {
+              "key": "1/2",
+              "x": 108.5,
+              "y": 2,
+              "left": 149.5,
+              "top": 163,
+              "right": 150.5,
+              "bottom": 203,
+              "width": 1,
+              "height": 40,
+              "boxShadow": "none",
+              "backgroundColor": "rgb(255, 255, 255)"
+            }
+          ]
+        },
+        "intermediate": {
+          "progress": 0.08019230769230769,
+          "boundary": {
+            "x": 69.25,
+            "y": 163,
+            "left": 69.25,
+            "top": 163,
+            "right": 70.25,
+            "bottom": 190.1114959716797,
+            "width": 1,
+            "height": 27.111495971679688
+          },
+          "whole": {
+            "x": 41,
+            "y": 161,
+            "left": 41,
+            "top": 161,
+            "right": 259,
+            "bottom": 205,
+            "width": 218,
+            "height": 44
+          },
+          "fill": {
+            "x": 43,
+            "y": 163,
+            "left": 43,
+            "top": 163,
+            "right": 150,
+            "bottom": 203,
+            "width": 107,
+            "height": 40
+          },
+          "rootBox": {
+            "x": 41,
+            "y": 161,
+            "left": 41,
+            "top": 161,
+            "right": 319,
+            "bottom": 205,
+            "width": 278,
+            "height": 44
+          },
+          "relativeWhole": {
+            "x": 0,
+            "y": 0,
+            "left": 41,
+            "top": 161,
+            "right": 259,
+            "bottom": 205,
+            "width": 218,
+            "height": 44
+          },
+          "relativeFill": {
+            "x": 2,
+            "y": 2,
+            "left": 43,
+            "top": 163,
+            "right": 150,
+            "bottom": 203,
+            "width": 107,
+            "height": 40
+          },
+          "documentWhole": {
+            "x": 41,
+            "y": 161,
+            "left": 41,
+            "top": 161,
+            "right": 259,
+            "bottom": 205,
+            "width": 218,
+            "height": 44
+          },
+          "documentFill": {
+            "x": 43,
+            "y": 163,
+            "left": 43,
+            "top": 163,
+            "right": 150,
+            "bottom": 203,
+            "width": 107,
+            "height": 40
+          },
+          "layout": {
+            "question": {
+              "x": 63,
+              "y": 432.71875,
+              "left": 63,
+              "top": 432.71875,
+              "right": 297,
+              "bottom": 483.09375,
+              "width": 234,
+              "height": 50.375
+            },
+            "controls": {
+              "x": 63,
+              "y": 514.03125,
+              "left": 63,
+              "top": 514.03125,
+              "right": 297,
+              "bottom": 589.03125,
+              "width": 234,
+              "height": 75
+            },
+            "scrollX": 0,
+            "scrollY": 0,
+            "viewportWidth": 360,
+            "viewportHeight": 740
+          },
+          "interiorHeight": 40
+        },
+        "highlight": {
+          "whole": {
+            "x": 41,
+            "y": 161,
+            "left": 41,
+            "top": 161,
+            "right": 259,
+            "bottom": 205,
+            "width": 218,
+            "height": 44
+          },
+          "fill": {
+            "x": 43,
+            "y": 163,
+            "left": 43,
+            "top": 163,
+            "right": 150,
+            "bottom": 203,
+            "width": 107,
+            "height": 40
+          },
+          "documentWhole": {
+            "x": 41,
+            "y": 161,
+            "left": 41,
+            "top": 161,
+            "right": 259,
+            "bottom": 205,
+            "width": 218,
+            "height": 44
+          },
+          "documentFill": {
+            "x": 43,
+            "y": 163,
+            "left": 43,
+            "top": 163,
+            "right": 150,
+            "bottom": 203,
+            "width": 107,
+            "height": 40
+          },
+          "relativeWhole": {
+            "x": 0,
+            "y": 0,
+            "left": 41,
+            "top": 161,
+            "right": 259,
+            "bottom": 205,
+            "width": 218,
+            "height": 44
+          },
+          "relativeFill": {
+            "x": 2,
+            "y": 2,
+            "left": 43,
+            "top": 163,
+            "right": 150,
+            "bottom": 203,
+            "width": 107,
+            "height": 40
+          },
+          "interior": {
+            "x": 43,
+            "y": 163,
+            "left": 43,
+            "top": 163,
+            "right": 257,
+            "bottom": 203,
+            "width": 214,
+            "height": 40
+          },
+          "boundaryGeometry": [
+            {
+              "key": "1/8",
+              "connected": true,
+              "rect": {
+                "x": 69.25,
+                "y": 163,
+                "left": 69.25,
+                "top": 163,
+                "right": 70.25,
+                "bottom": 203,
+                "width": 1,
+                "height": 40
+              },
+              "boxShadow": "rgba(2, 132, 199, 0.48) 0px 0px 1.99963px 0.999813px",
+              "backgroundColor": "rgb(11, 16, 32)",
+              "expectedCenter": 69.75,
+              "centerDelta": 0,
+              "topDelta": 0,
+              "bottomDelta": 0,
+              "heightDelta": 0
+            },
+            {
+              "key": "1/4",
+              "connected": true,
+              "rect": {
+                "x": 96,
+                "y": 163,
+                "left": 96,
+                "top": 163,
+                "right": 97,
+                "bottom": 203,
+                "width": 1,
+                "height": 40
+              },
+              "boxShadow": "rgba(2, 132, 199, 0.48) 0px 0px 1.99963px 0.999813px",
+              "backgroundColor": "rgb(11, 16, 32)",
+              "expectedCenter": 96.5,
+              "centerDelta": 0,
+              "topDelta": 0,
+              "bottomDelta": 0,
+              "heightDelta": 0
+            },
+            {
+              "key": "3/8",
+              "connected": true,
+              "rect": {
+                "x": 122.75,
+                "y": 163,
+                "left": 122.75,
+                "top": 163,
+                "right": 123.75,
+                "bottom": 203,
+                "width": 1,
+                "height": 40
+              },
+              "boxShadow": "rgba(2, 132, 199, 0.48) 0px 0px 1.99963px 0.999813px",
+              "backgroundColor": "rgb(11, 16, 32)",
+              "expectedCenter": 123.25,
+              "centerDelta": 0,
+              "topDelta": 0,
+              "bottomDelta": 0,
+              "heightDelta": 0
+            },
+            {
+              "key": "5/8",
+              "connected": true,
+              "rect": {
+                "x": 176.25,
+                "y": 163,
+                "left": 176.25,
+                "top": 163,
+                "right": 177.25,
+                "bottom": 203,
+                "width": 1,
+                "height": 40
+              },
+              "boxShadow": "rgba(2, 132, 199, 0.48) 0px 0px 1.99963px 0.999813px",
+              "backgroundColor": "rgb(11, 16, 32)",
+              "expectedCenter": 176.75,
+              "centerDelta": 0,
+              "topDelta": 0,
+              "bottomDelta": 0,
+              "heightDelta": 0
+            },
+            {
+              "key": "3/4",
+              "connected": true,
+              "rect": {
+                "x": 203,
+                "y": 163,
+                "left": 203,
+                "top": 163,
+                "right": 204,
+                "bottom": 203,
+                "width": 1,
+                "height": 40
+              },
+              "boxShadow": "rgba(2, 132, 199, 0.48) 0px 0px 1.99963px 0.999813px",
+              "backgroundColor": "rgb(11, 16, 32)",
+              "expectedCenter": 203.5,
+              "centerDelta": 0,
+              "topDelta": 0,
+              "bottomDelta": 0,
+              "heightDelta": 0
+            },
+            {
+              "key": "7/8",
+              "connected": true,
+              "rect": {
+                "x": 229.75,
+                "y": 163,
+                "left": 229.75,
+                "top": 163,
+                "right": 230.75,
+                "bottom": 203,
+                "width": 1,
+                "height": 40
+              },
+              "boxShadow": "rgba(2, 132, 199, 0.48) 0px 0px 1.99963px 0.999813px",
+              "backgroundColor": "rgb(11, 16, 32)",
+              "expectedCenter": 230.25,
+              "centerDelta": 0,
+              "topDelta": 0,
+              "bottomDelta": 0,
+              "heightDelta": 0
+            }
+          ],
+          "oldBoundaries": [
+            {
+              "key": "1/2",
+              "boxShadow": "none",
+              "backgroundColor": "rgb(255, 255, 255)",
+              "activeAnimations": 0
+            }
+          ],
+          "taskLayout": {
+            "question": {
+              "x": 63,
+              "y": 432.71875,
+              "left": 63,
+              "top": 432.71875,
+              "right": 297,
+              "bottom": 483.09375,
+              "width": 234,
+              "height": 50.375
+            },
+            "controls": {
+              "x": 63,
+              "y": 514.03125,
+              "left": 63,
+              "top": 514.03125,
+              "right": 297,
+              "bottom": 589.03125,
+              "width": 234,
+              "height": 75
+            },
+            "scrollX": 0,
+            "scrollY": 0,
+            "viewportWidth": 360,
+            "viewportHeight": 740
+          },
+          "allNewBoundariesHighlighted": true,
+          "allNewBoundariesHaveDarkCore": true,
+          "oldBoundariesUnhighlighted": true,
+          "minimumCenterGap": 26.75,
+          "glowHalfOutset": 3.499443,
+          "edgeClearance": 26.75,
+          "glowFitsNarrowParts": true
+        },
+        "settled": {
+          "whole": {
+            "x": 41,
+            "y": 161,
+            "left": 41,
+            "top": 161,
+            "right": 259,
+            "bottom": 205,
+            "width": 218,
+            "height": 44
+          },
+          "fill": {
+            "x": 43,
+            "y": 163,
+            "left": 43,
+            "top": 163,
+            "right": 150,
+            "bottom": 203,
+            "width": 107,
+            "height": 40
+          },
+          "boundaryLayer": {
+            "x": 43,
+            "y": 163,
+            "left": 43,
+            "top": 163,
+            "right": 257,
+            "bottom": 203,
+            "width": 214,
+            "height": 40
+          },
+          "newBoundaryGeometry": [
+            {
+              "key": "1/8",
+              "connected": true,
+              "rect": {
+                "x": 69.25,
+                "y": 163,
+                "left": 69.25,
+                "top": 163,
+                "right": 70.25,
+                "bottom": 203,
+                "width": 1,
+                "height": 40
+              },
+              "expectedCenter": 69.75,
+              "centerDelta": 0,
+              "topDelta": 0,
+              "bottomDelta": 0,
+              "heightDelta": 0
+            },
+            {
+              "key": "1/4",
+              "connected": true,
+              "rect": {
+                "x": 96,
+                "y": 163,
+                "left": 96,
+                "top": 163,
+                "right": 97,
+                "bottom": 203,
+                "width": 1,
+                "height": 40
+              },
+              "expectedCenter": 96.5,
+              "centerDelta": 0,
+              "topDelta": 0,
+              "bottomDelta": 0,
+              "heightDelta": 0
+            },
+            {
+              "key": "3/8",
+              "connected": true,
+              "rect": {
+                "x": 122.75,
+                "y": 163,
+                "left": 122.75,
+                "top": 163,
+                "right": 123.75,
+                "bottom": 203,
+                "width": 1,
+                "height": 40
+              },
+              "expectedCenter": 123.25,
+              "centerDelta": 0,
+              "topDelta": 0,
+              "bottomDelta": 0,
+              "heightDelta": 0
+            },
+            {
+              "key": "5/8",
+              "connected": true,
+              "rect": {
+                "x": 176.25,
+                "y": 163,
+                "left": 176.25,
+                "top": 163,
+                "right": 177.25,
+                "bottom": 203,
+                "width": 1,
+                "height": 40
+              },
+              "expectedCenter": 176.75,
+              "centerDelta": 0,
+              "topDelta": 0,
+              "bottomDelta": 0,
+              "heightDelta": 0
+            },
+            {
+              "key": "3/4",
+              "connected": true,
+              "rect": {
+                "x": 203,
+                "y": 163,
+                "left": 203,
+                "top": 163,
+                "right": 204,
+                "bottom": 203,
+                "width": 1,
+                "height": 40
+              },
+              "expectedCenter": 203.5,
+              "centerDelta": 0,
+              "topDelta": 0,
+              "bottomDelta": 0,
+              "heightDelta": 0
+            },
+            {
+              "key": "7/8",
+              "connected": true,
+              "rect": {
+                "x": 229.75,
+                "y": 163,
+                "left": 229.75,
+                "top": 163,
+                "right": 230.75,
+                "bottom": 203,
+                "width": 1,
+                "height": 40
+              },
+              "expectedCenter": 230.25,
+              "centerDelta": 0,
+              "topDelta": 0,
+              "bottomDelta": 0,
+              "heightDelta": 0
+            }
+          ],
+          "newBoundaryPaint": [
+            {
+              "key": "1/8",
+              "boxShadow": "none",
+              "backgroundColor": "rgb(255, 255, 255)"
+            },
+            {
+              "key": "1/4",
+              "boxShadow": "none",
+              "backgroundColor": "rgb(255, 255, 255)"
+            },
+            {
+              "key": "3/8",
+              "boxShadow": "none",
+              "backgroundColor": "rgb(255, 255, 255)"
+            },
+            {
+              "key": "5/8",
+              "boxShadow": "none",
+              "backgroundColor": "rgb(255, 255, 255)"
+            },
+            {
+              "key": "3/4",
+              "boxShadow": "none",
+              "backgroundColor": "rgb(255, 255, 255)"
+            },
+            {
+              "key": "7/8",
+              "boxShadow": "none",
+              "backgroundColor": "rgb(255, 255, 255)"
+            }
+          ],
+          "normalPaintRestored": true,
+          "activeAnimations": 0,
+          "denominator": "8",
+          "numerator": "4"
+        },
+        "taskLayout": {
+          "before": {
+            "question": {
+              "x": 63,
+              "y": 417.78125,
+              "left": 63,
+              "top": 417.78125,
+              "right": 297,
+              "bottom": 493.34375,
+              "width": 234,
+              "height": 75.5625
+            },
+            "controls": {
+              "x": 63,
+              "y": 417.78125,
+              "left": 63,
+              "top": 417.78125,
+              "right": 297,
+              "bottom": 608.34375,
+              "width": 234,
+              "height": 190.5625
+            },
+            "scrollX": 0,
+            "scrollY": 0,
+            "viewportWidth": 360,
+            "viewportHeight": 740
+          },
+          "intermediate": {
+            "question": {
+              "x": 63,
+              "y": 432.71875,
+              "left": 63,
+              "top": 432.71875,
+              "right": 297,
+              "bottom": 483.09375,
+              "width": 234,
+              "height": 50.375
+            },
+            "controls": {
+              "x": 63,
+              "y": 514.03125,
+              "left": 63,
+              "top": 514.03125,
+              "right": 297,
+              "bottom": 589.03125,
+              "width": 234,
+              "height": 75
+            },
+            "scrollX": 0,
+            "scrollY": 0,
+            "viewportWidth": 360,
+            "viewportHeight": 740
+          },
+          "highlight": {
+            "question": {
+              "x": 63,
+              "y": 432.71875,
+              "left": 63,
+              "top": 432.71875,
+              "right": 297,
+              "bottom": 483.09375,
+              "width": 234,
+              "height": 50.375
+            },
+            "controls": {
+              "x": 63,
+              "y": 514.03125,
+              "left": 63,
+              "top": 514.03125,
+              "right": 297,
+              "bottom": 589.03125,
+              "width": 234,
+              "height": 75
+            },
+            "scrollX": 0,
+            "scrollY": 0,
+            "viewportWidth": 360,
+            "viewportHeight": 740
+          },
+          "settled": {
+            "question": {
+              "x": 63,
+              "y": 432.71875,
+              "left": 63,
+              "top": 432.71875,
+              "right": 297,
+              "bottom": 483.09375,
+              "width": 234,
+              "height": 50.375
+            },
+            "controls": {
+              "x": 63,
+              "y": 514.03125,
+              "left": 63,
+              "top": 514.03125,
+              "right": 297,
+              "bottom": 589.03125,
+              "width": 234,
+              "height": 75
+            },
+            "scrollX": 0,
+            "scrollY": 0,
+            "viewportWidth": 360,
+            "viewportHeight": 740
+          }
+        },
+        "questionAndControlsVisible": true,
+        "highlightBoundariesSpanGrid": true,
+        "highlightPaintVisible": true,
+        "highlightCoreVisible": true,
+        "oldBoundariesUnhighlighted": true,
+        "anchorDrift": {
+          "wholeIntermediate": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "fillIntermediate": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "wholeHighlight": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "fillHighlight": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "wholeSettled": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "fillSettled": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          }
+        },
+        "documentPositionDrift": {
+          "wholeIntermediate": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "fillIntermediate": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "wholeHighlight": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "fillHighlight": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "wholeSettled": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "fillSettled": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          }
+        },
+        "existingBoundaryCount": 1,
+        "newBoundaryCount": 6,
+        "newBoundariesSpanGrid": true,
+        "concurrentAnimations": 0,
+        "interrupted": null,
+        "restored": null,
+        "existingBoundaryDrifts": [
+          {
+            "key": "1/2",
+            "delta": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0
+            },
+            "paintUnchanged": true,
+            "corePaintUnchanged": true,
+            "activeAnimations": 0
+          }
+        ],
+        "existingBoundariesStable": true,
+        "stableAnchors": true,
+        "conservedDocumentPosition": true
+      },
+      "conversionWAAPICalls": [
+        {
+          "side": "left",
+          "targetClass": "fraction-bar-boundary fraction-bar-boundary-new"
+        },
+        {
+          "side": "left",
+          "targetClass": "fraction-bar-boundary fraction-bar-boundary-new"
+        },
+        {
+          "side": "left",
+          "targetClass": "fraction-bar-boundary fraction-bar-boundary-new"
+        },
+        {
+          "side": "left",
+          "targetClass": "fraction-bar-boundary fraction-bar-boundary-new"
+        },
+        {
+          "side": "left",
+          "targetClass": "fraction-bar-boundary fraction-bar-boundary-new"
+        },
+        {
+          "side": "left",
+          "targetClass": "fraction-bar-boundary fraction-bar-boundary-new"
+        }
+      ],
+      "replayMotion": {
+        "before": {
+          "whole": {
+            "x": 41,
+            "y": -20,
+            "width": 218,
+            "height": 44
+          },
+          "fill": {
+            "x": 43,
+            "y": -18,
+            "width": 107,
+            "height": 40
+          },
+          "documentWhole": {
+            "x": 41,
+            "y": 161,
+            "left": 41,
+            "top": -20,
+            "right": 259,
+            "bottom": 24,
+            "width": 218,
+            "height": 44
+          },
+          "documentFill": {
+            "x": 43,
+            "y": 163,
+            "left": 43,
+            "top": -18,
+            "right": 150,
+            "bottom": 22,
+            "width": 107,
+            "height": 40
+          },
+          "relativeWhole": {
+            "x": 0,
+            "y": 0,
+            "left": 41,
+            "top": -20,
+            "right": 259,
+            "bottom": 24,
+            "width": 218,
+            "height": 44
+          },
+          "relativeFill": {
+            "x": 2,
+            "y": 2,
+            "left": 43,
+            "top": -18,
+            "right": 150,
+            "bottom": 22,
+            "width": 107,
+            "height": 40
+          },
+          "layout": {
+            "question": {
+              "x": 63,
+              "y": 291.5625,
+              "left": 63,
+              "top": 291.5625,
+              "right": 297,
+              "bottom": 341.9375,
+              "width": 234,
+              "height": 50.375
+            },
+            "controls": {
+              "x": 63,
+              "y": 372.875,
+              "left": 63,
+              "top": 372.875,
+              "right": 297,
+              "bottom": 447.875,
+              "width": 234,
+              "height": 75
+            },
+            "scrollX": 0,
+            "scrollY": 181,
+            "viewportWidth": 360,
+            "viewportHeight": 740
+          },
+          "boundaryCount": 1,
+          "boundaryGeometry": [
+            {
+              "key": "1/2",
+              "x": 108.5,
+              "y": 2,
+              "left": 149.5,
+              "top": -18,
+              "right": 150.5,
+              "bottom": 22,
+              "width": 1,
+              "height": 40,
+              "boxShadow": "none",
+              "backgroundColor": "rgb(255, 255, 255)"
+            }
+          ]
+        },
+        "intermediate": {
+          "progress": 0.08019230769230754,
+          "boundary": {
+            "x": 69.25,
+            "y": -18,
+            "left": 69.25,
+            "top": -18,
+            "right": 70.25,
+            "bottom": 9.111499786376953,
+            "width": 1,
+            "height": 27.111499786376953
+          },
+          "whole": {
+            "x": 41,
+            "y": -20,
+            "left": 41,
+            "top": -20,
+            "right": 259,
+            "bottom": 24,
+            "width": 218,
+            "height": 44
+          },
+          "fill": {
+            "x": 43,
+            "y": -18,
+            "left": 43,
+            "top": -18,
+            "right": 150,
+            "bottom": 22,
+            "width": 107,
+            "height": 40
+          },
+          "rootBox": {
+            "x": 41,
+            "y": -20,
+            "left": 41,
+            "top": -20,
+            "right": 319,
+            "bottom": 63.84375,
+            "width": 278,
+            "height": 83.84375
+          },
+          "relativeWhole": {
+            "x": 0,
+            "y": 0,
+            "left": 41,
+            "top": -20,
+            "right": 259,
+            "bottom": 24,
+            "width": 218,
+            "height": 44
+          },
+          "relativeFill": {
+            "x": 2,
+            "y": 2,
+            "left": 43,
+            "top": -18,
+            "right": 150,
+            "bottom": 22,
+            "width": 107,
+            "height": 40
+          },
+          "documentWhole": {
+            "x": 41,
+            "y": 161,
+            "left": 41,
+            "top": -20,
+            "right": 259,
+            "bottom": 24,
+            "width": 218,
+            "height": 44
+          },
+          "documentFill": {
+            "x": 43,
+            "y": 163,
+            "left": 43,
+            "top": -18,
+            "right": 150,
+            "bottom": 22,
+            "width": 107,
+            "height": 40
+          },
+          "layout": {
+            "question": {
+              "x": 63,
+              "y": 291.5625,
+              "left": 63,
+              "top": 291.5625,
+              "right": 297,
+              "bottom": 341.9375,
+              "width": 234,
+              "height": 50.375
+            },
+            "controls": {
+              "x": 63,
+              "y": 372.875,
+              "left": 63,
+              "top": 372.875,
+              "right": 297,
+              "bottom": 447.875,
+              "width": 234,
+              "height": 75
+            },
+            "scrollX": 0,
+            "scrollY": 181,
+            "viewportWidth": 360,
+            "viewportHeight": 740
+          },
+          "interiorHeight": 40
+        },
+        "highlight": {
+          "whole": {
+            "x": 41,
+            "y": -20,
+            "left": 41,
+            "top": -20,
+            "right": 259,
+            "bottom": 24,
+            "width": 218,
+            "height": 44
+          },
+          "fill": {
+            "x": 43,
+            "y": -18,
+            "left": 43,
+            "top": -18,
+            "right": 150,
+            "bottom": 22,
+            "width": 107,
+            "height": 40
+          },
+          "documentWhole": {
+            "x": 41,
+            "y": 161,
+            "left": 41,
+            "top": -20,
+            "right": 259,
+            "bottom": 24,
+            "width": 218,
+            "height": 44
+          },
+          "documentFill": {
+            "x": 43,
+            "y": 163,
+            "left": 43,
+            "top": -18,
+            "right": 150,
+            "bottom": 22,
+            "width": 107,
+            "height": 40
+          },
+          "relativeWhole": {
+            "x": 0,
+            "y": 0,
+            "left": 41,
+            "top": -20,
+            "right": 259,
+            "bottom": 24,
+            "width": 218,
+            "height": 44
+          },
+          "relativeFill": {
+            "x": 2,
+            "y": 2,
+            "left": 43,
+            "top": -18,
+            "right": 150,
+            "bottom": 22,
+            "width": 107,
+            "height": 40
+          },
+          "interior": {
+            "x": 43,
+            "y": -18,
+            "left": 43,
+            "top": -18,
+            "right": 257,
+            "bottom": 22,
+            "width": 214,
+            "height": 40
+          },
+          "boundaryGeometry": [
+            {
+              "key": "1/8",
+              "connected": true,
+              "rect": {
+                "x": 69.25,
+                "y": -18,
+                "left": 69.25,
+                "top": -18,
+                "right": 70.25,
+                "bottom": 22,
+                "width": 1,
+                "height": 40
+              },
+              "boxShadow": "rgba(2, 132, 199, 0.475) 0px 0px 1.97639px 0.988197px",
+              "backgroundColor": "rgb(14, 19, 35)",
+              "expectedCenter": 69.75,
+              "centerDelta": 0,
+              "topDelta": 0,
+              "bottomDelta": 0,
+              "heightDelta": 0
+            },
+            {
+              "key": "1/4",
+              "connected": true,
+              "rect": {
+                "x": 96,
+                "y": -18,
+                "left": 96,
+                "top": -18,
+                "right": 97,
+                "bottom": 22,
+                "width": 1,
+                "height": 40
+              },
+              "boxShadow": "rgba(2, 132, 199, 0.475) 0px 0px 1.97639px 0.988197px",
+              "backgroundColor": "rgb(14, 19, 35)",
+              "expectedCenter": 96.5,
+              "centerDelta": 0,
+              "topDelta": 0,
+              "bottomDelta": 0,
+              "heightDelta": 0
+            },
+            {
+              "key": "3/8",
+              "connected": true,
+              "rect": {
+                "x": 122.75,
+                "y": -18,
+                "left": 122.75,
+                "top": -18,
+                "right": 123.75,
+                "bottom": 22,
+                "width": 1,
+                "height": 40
+              },
+              "boxShadow": "rgba(2, 132, 199, 0.475) 0px 0px 1.97639px 0.988197px",
+              "backgroundColor": "rgb(14, 19, 35)",
+              "expectedCenter": 123.25,
+              "centerDelta": 0,
+              "topDelta": 0,
+              "bottomDelta": 0,
+              "heightDelta": 0
+            },
+            {
+              "key": "5/8",
+              "connected": true,
+              "rect": {
+                "x": 176.25,
+                "y": -18,
+                "left": 176.25,
+                "top": -18,
+                "right": 177.25,
+                "bottom": 22,
+                "width": 1,
+                "height": 40
+              },
+              "boxShadow": "rgba(2, 132, 199, 0.475) 0px 0px 1.97639px 0.988197px",
+              "backgroundColor": "rgb(14, 19, 35)",
+              "expectedCenter": 176.75,
+              "centerDelta": 0,
+              "topDelta": 0,
+              "bottomDelta": 0,
+              "heightDelta": 0
+            },
+            {
+              "key": "3/4",
+              "connected": true,
+              "rect": {
+                "x": 203,
+                "y": -18,
+                "left": 203,
+                "top": -18,
+                "right": 204,
+                "bottom": 22,
+                "width": 1,
+                "height": 40
+              },
+              "boxShadow": "rgba(2, 132, 199, 0.475) 0px 0px 1.97639px 0.988197px",
+              "backgroundColor": "rgb(14, 19, 35)",
+              "expectedCenter": 203.5,
+              "centerDelta": 0,
+              "topDelta": 0,
+              "bottomDelta": 0,
+              "heightDelta": 0
+            },
+            {
+              "key": "7/8",
+              "connected": true,
+              "rect": {
+                "x": 229.75,
+                "y": -18,
+                "left": 229.75,
+                "top": -18,
+                "right": 230.75,
+                "bottom": 22,
+                "width": 1,
+                "height": 40
+              },
+              "boxShadow": "rgba(2, 132, 199, 0.475) 0px 0px 1.97639px 0.988197px",
+              "backgroundColor": "rgb(14, 19, 35)",
+              "expectedCenter": 230.25,
+              "centerDelta": 0,
+              "topDelta": 0,
+              "bottomDelta": 0,
+              "heightDelta": 0
+            }
+          ],
+          "oldBoundaries": [
+            {
+              "key": "1/2",
+              "boxShadow": "none",
+              "backgroundColor": "rgb(255, 255, 255)",
+              "activeAnimations": 0
+            }
+          ],
+          "taskLayout": {
+            "question": {
+              "x": 63,
+              "y": 291.5625,
+              "left": 63,
+              "top": 291.5625,
+              "right": 297,
+              "bottom": 341.9375,
+              "width": 234,
+              "height": 50.375
+            },
+            "controls": {
+              "x": 63,
+              "y": 372.875,
+              "left": 63,
+              "top": 372.875,
+              "right": 297,
+              "bottom": 447.875,
+              "width": 234,
+              "height": 75
+            },
+            "scrollX": 0,
+            "scrollY": 181,
+            "viewportWidth": 360,
+            "viewportHeight": 740
+          },
+          "allNewBoundariesHighlighted": true,
+          "allNewBoundariesHaveDarkCore": true,
+          "oldBoundariesUnhighlighted": true,
+          "minimumCenterGap": 26.75,
+          "glowHalfOutset": 3.4645870000000003,
+          "edgeClearance": 26.75,
+          "glowFitsNarrowParts": true
+        },
+        "settled": {
+          "whole": {
+            "x": 41,
+            "y": -20,
+            "left": 41,
+            "top": -20,
+            "right": 259,
+            "bottom": 24,
+            "width": 218,
+            "height": 44
+          },
+          "fill": {
+            "x": 43,
+            "y": -18,
+            "left": 43,
+            "top": -18,
+            "right": 150,
+            "bottom": 22,
+            "width": 107,
+            "height": 40
+          },
+          "boundaryLayer": {
+            "x": 43,
+            "y": -18,
+            "left": 43,
+            "top": -18,
+            "right": 257,
+            "bottom": 22,
+            "width": 214,
+            "height": 40
+          },
+          "newBoundaryGeometry": [
+            {
+              "key": "1/8",
+              "connected": true,
+              "rect": {
+                "x": 69.25,
+                "y": -18,
+                "left": 69.25,
+                "top": -18,
+                "right": 70.25,
+                "bottom": 22,
+                "width": 1,
+                "height": 40
+              },
+              "expectedCenter": 69.75,
+              "centerDelta": 0,
+              "topDelta": 0,
+              "bottomDelta": 0,
+              "heightDelta": 0
+            },
+            {
+              "key": "1/4",
+              "connected": true,
+              "rect": {
+                "x": 96,
+                "y": -18,
+                "left": 96,
+                "top": -18,
+                "right": 97,
+                "bottom": 22,
+                "width": 1,
+                "height": 40
+              },
+              "expectedCenter": 96.5,
+              "centerDelta": 0,
+              "topDelta": 0,
+              "bottomDelta": 0,
+              "heightDelta": 0
+            },
+            {
+              "key": "3/8",
+              "connected": true,
+              "rect": {
+                "x": 122.75,
+                "y": -18,
+                "left": 122.75,
+                "top": -18,
+                "right": 123.75,
+                "bottom": 22,
+                "width": 1,
+                "height": 40
+              },
+              "expectedCenter": 123.25,
+              "centerDelta": 0,
+              "topDelta": 0,
+              "bottomDelta": 0,
+              "heightDelta": 0
+            },
+            {
+              "key": "5/8",
+              "connected": true,
+              "rect": {
+                "x": 176.25,
+                "y": -18,
+                "left": 176.25,
+                "top": -18,
+                "right": 177.25,
+                "bottom": 22,
+                "width": 1,
+                "height": 40
+              },
+              "expectedCenter": 176.75,
+              "centerDelta": 0,
+              "topDelta": 0,
+              "bottomDelta": 0,
+              "heightDelta": 0
+            },
+            {
+              "key": "3/4",
+              "connected": true,
+              "rect": {
+                "x": 203,
+                "y": -18,
+                "left": 203,
+                "top": -18,
+                "right": 204,
+                "bottom": 22,
+                "width": 1,
+                "height": 40
+              },
+              "expectedCenter": 203.5,
+              "centerDelta": 0,
+              "topDelta": 0,
+              "bottomDelta": 0,
+              "heightDelta": 0
+            },
+            {
+              "key": "7/8",
+              "connected": true,
+              "rect": {
+                "x": 229.75,
+                "y": -18,
+                "left": 229.75,
+                "top": -18,
+                "right": 230.75,
+                "bottom": 22,
+                "width": 1,
+                "height": 40
+              },
+              "expectedCenter": 230.25,
+              "centerDelta": 0,
+              "topDelta": 0,
+              "bottomDelta": 0,
+              "heightDelta": 0
+            }
+          ],
+          "newBoundaryPaint": [
+            {
+              "key": "1/8",
+              "boxShadow": "none",
+              "backgroundColor": "rgb(255, 255, 255)"
+            },
+            {
+              "key": "1/4",
+              "boxShadow": "none",
+              "backgroundColor": "rgb(255, 255, 255)"
+            },
+            {
+              "key": "3/8",
+              "boxShadow": "none",
+              "backgroundColor": "rgb(255, 255, 255)"
+            },
+            {
+              "key": "5/8",
+              "boxShadow": "none",
+              "backgroundColor": "rgb(255, 255, 255)"
+            },
+            {
+              "key": "3/4",
+              "boxShadow": "none",
+              "backgroundColor": "rgb(255, 255, 255)"
+            },
+            {
+              "key": "7/8",
+              "boxShadow": "none",
+              "backgroundColor": "rgb(255, 255, 255)"
+            }
+          ],
+          "normalPaintRestored": true,
+          "activeAnimations": 0,
+          "denominator": "8",
+          "numerator": "4"
+        },
+        "taskLayout": {
+          "before": {
+            "question": {
+              "x": 63,
+              "y": 291.5625,
+              "left": 63,
+              "top": 291.5625,
+              "right": 297,
+              "bottom": 341.9375,
+              "width": 234,
+              "height": 50.375
+            },
+            "controls": {
+              "x": 63,
+              "y": 372.875,
+              "left": 63,
+              "top": 372.875,
+              "right": 297,
+              "bottom": 447.875,
+              "width": 234,
+              "height": 75
+            },
+            "scrollX": 0,
+            "scrollY": 181,
+            "viewportWidth": 360,
+            "viewportHeight": 740
+          },
+          "intermediate": {
+            "question": {
+              "x": 63,
+              "y": 291.5625,
+              "left": 63,
+              "top": 291.5625,
+              "right": 297,
+              "bottom": 341.9375,
+              "width": 234,
+              "height": 50.375
+            },
+            "controls": {
+              "x": 63,
+              "y": 372.875,
+              "left": 63,
+              "top": 372.875,
+              "right": 297,
+              "bottom": 447.875,
+              "width": 234,
+              "height": 75
+            },
+            "scrollX": 0,
+            "scrollY": 181,
+            "viewportWidth": 360,
+            "viewportHeight": 740
+          },
+          "highlight": {
+            "question": {
+              "x": 63,
+              "y": 291.5625,
+              "left": 63,
+              "top": 291.5625,
+              "right": 297,
+              "bottom": 341.9375,
+              "width": 234,
+              "height": 50.375
+            },
+            "controls": {
+              "x": 63,
+              "y": 372.875,
+              "left": 63,
+              "top": 372.875,
+              "right": 297,
+              "bottom": 447.875,
+              "width": 234,
+              "height": 75
+            },
+            "scrollX": 0,
+            "scrollY": 181,
+            "viewportWidth": 360,
+            "viewportHeight": 740
+          },
+          "settled": {
+            "question": {
+              "x": 63,
+              "y": 291.5625,
+              "left": 63,
+              "top": 291.5625,
+              "right": 297,
+              "bottom": 341.9375,
+              "width": 234,
+              "height": 50.375
+            },
+            "controls": {
+              "x": 63,
+              "y": 372.875,
+              "left": 63,
+              "top": 372.875,
+              "right": 297,
+              "bottom": 447.875,
+              "width": 234,
+              "height": 75
+            },
+            "scrollX": 0,
+            "scrollY": 181,
+            "viewportWidth": 360,
+            "viewportHeight": 740
+          }
+        },
+        "questionAndControlsVisible": true,
+        "highlightBoundariesSpanGrid": true,
+        "highlightPaintVisible": true,
+        "highlightCoreVisible": true,
+        "oldBoundariesUnhighlighted": true,
+        "anchorDrift": {
+          "wholeIntermediate": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "fillIntermediate": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "wholeHighlight": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "fillHighlight": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "wholeSettled": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "fillSettled": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          }
+        },
+        "documentPositionDrift": {
+          "wholeIntermediate": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "fillIntermediate": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "wholeHighlight": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "fillHighlight": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "wholeSettled": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "fillSettled": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          }
+        },
+        "existingBoundaryCount": 1,
+        "newBoundaryCount": 6,
+        "newBoundariesSpanGrid": true,
+        "concurrentAnimations": 0,
+        "interrupted": null,
+        "restored": null,
+        "existingBoundaryDrifts": [
+          {
+            "key": "1/2",
+            "delta": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0
+            },
+            "paintUnchanged": true,
+            "corePaintUnchanged": true,
+            "activeAnimations": 0
+          }
+        ],
+        "existingBoundariesStable": true,
+        "stableAnchors": true,
+        "conservedDocumentPosition": true
+      },
+      "replayWAAPICalls": [
+        {
+          "side": "left",
+          "targetClass": "fraction-bar-boundary fraction-bar-boundary-new"
+        },
+        {
+          "side": "left",
+          "targetClass": "fraction-bar-boundary fraction-bar-boundary-new"
+        },
+        {
+          "side": "left",
+          "targetClass": "fraction-bar-boundary fraction-bar-boundary-new"
+        },
+        {
+          "side": "left",
+          "targetClass": "fraction-bar-boundary fraction-bar-boundary-new"
+        },
+        {
+          "side": "left",
+          "targetClass": "fraction-bar-boundary fraction-bar-boundary-new"
+        },
+        {
+          "side": "left",
+          "targetClass": "fraction-bar-boundary fraction-bar-boundary-new"
+        }
+      ],
+      "wholeFillConservation": {
+        "accepted": {
+          "wholeIntermediate": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "fillIntermediate": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "wholeHighlight": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "fillHighlight": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "wholeSettled": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "fillSettled": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          }
+        },
+        "replay": {
+          "wholeIntermediate": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "fillIntermediate": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "wholeHighlight": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "fillHighlight": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "wholeSettled": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "fillSettled": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          }
+        }
+      },
+      "animationEvents": [
+        {
+          "type": "transitionrun",
+          "property": "background-color"
+        },
+        {
+          "type": "transitionrun",
+          "property": "background-color"
+        },
+        {
+          "type": "transitionrun",
+          "property": "border-top-color"
+        },
+        {
+          "type": "transitionrun",
+          "property": "background-color"
+        },
+        {
+          "type": "transitionrun",
+          "property": "border-bottom-color"
+        },
+        {
+          "type": "transitionrun",
+          "property": "border-left-color"
+        },
+        {
+          "type": "transitionrun",
+          "property": "border-right-color"
+        },
+        {
+          "type": "transitionrun",
+          "property": "border-top-color"
+        },
+        {
+          "type": "transitionrun",
+          "property": "background-color"
+        },
+        {
+          "type": "transitionrun",
+          "property": "border-bottom-color"
+        },
+        {
+          "type": "transitionrun",
+          "property": "border-left-color"
+        },
+        {
+          "type": "transitionrun",
+          "property": "border-right-color"
+        },
+        {
+          "type": "transitionrun",
+          "property": "border-top-color"
+        },
+        {
+          "type": "transitionrun",
+          "property": "border-bottom-color"
+        },
+        {
+          "type": "transitionrun",
+          "property": "border-left-color"
+        },
+        {
+          "type": "transitionrun",
+          "property": "border-right-color"
+        },
+        {
+          "type": "transitionrun",
+          "property": "border-top-color"
+        },
+        {
+          "type": "transitionrun",
+          "property": "background-color"
+        },
+        {
+          "type": "transitionrun",
+          "property": "border-bottom-color"
+        },
+        {
+          "type": "transitionrun",
+          "property": "border-left-color"
+        },
+        {
+          "type": "transitionrun",
+          "property": "border-right-color"
+        }
+      ],
+      "pageErrors": [],
+      "finalDocument": {
+        "width": 360,
+        "viewportWidth": 360
+      }
+    },
+    {
+      "itemId": "nested-three-eighths-plus-one-half",
+      "side": "right",
+      "mode": "standard-motion",
+      "height": 752,
+      "supportProfile": "medium-support",
+      "beforeAccepted": {
+        "converted": {
+          "numerator": "1",
+          "denominator": "2",
+          "whole": {
+            "x": 41,
+            "y": 225,
+            "width": 218,
+            "height": 44
+          },
+          "fill": {
+            "x": 43,
+            "y": 227,
+            "width": 107,
+            "height": 40
+          },
+          "activeAnimations": 0,
+          "newBoundaries": 0,
+          "highlightedBoundaries": 0
+        },
+        "untouched": {
+          "numerator": "3",
+          "denominator": "8",
+          "whole": {
+            "x": 41,
+            "y": 161,
+            "width": 218,
+            "height": 44
+          },
+          "fill": {
+            "x": 43,
+            "y": 163,
+            "width": 80.25,
+            "height": 40
+          },
+          "activeAnimations": 0,
+          "newBoundaries": 0,
+          "highlightedBoundaries": 0
+        },
+        "viewport": {
+          "width": 360,
+          "height": 752,
+          "documentWidth": 360,
+          "scrollX": 0,
+          "scrollY": 0
+        }
+      },
+      "afterAccepted": {
+        "converted": {
+          "numerator": "4",
+          "denominator": "8",
+          "whole": {
+            "x": 41,
+            "y": 225,
+            "width": 218,
+            "height": 44
+          },
+          "fill": {
+            "x": 43,
+            "y": 227,
+            "width": 107,
+            "height": 40
+          },
+          "activeAnimations": 0,
+          "newBoundaries": 0,
+          "highlightedBoundaries": 0
+        },
+        "untouched": {
+          "numerator": "3",
+          "denominator": "8",
+          "whole": {
+            "x": 41,
+            "y": 161,
+            "width": 218,
+            "height": 44
+          },
+          "fill": {
+            "x": 43,
+            "y": 163,
+            "width": 80.25,
+            "height": 40
+          },
+          "activeAnimations": 0,
+          "newBoundaries": 0,
+          "highlightedBoundaries": 0
+        }
+      },
+      "transformObservation": {
+        "before": {
+          "whole": {
+            "x": 41,
+            "y": 225,
+            "width": 218,
+            "height": 44
+          },
+          "fill": {
+            "x": 43,
+            "y": 227,
+            "width": 107,
+            "height": 40
+          },
+          "documentWhole": {
+            "x": 41,
+            "y": 225,
+            "left": 41,
+            "top": 225,
+            "right": 259,
+            "bottom": 269,
+            "width": 218,
+            "height": 44
+          },
+          "documentFill": {
+            "x": 43,
+            "y": 227,
+            "left": 43,
+            "top": 227,
+            "right": 150,
+            "bottom": 267,
+            "width": 107,
+            "height": 40
+          },
+          "relativeWhole": {
+            "x": 0,
+            "y": 0,
+            "left": 41,
+            "top": 225,
+            "right": 259,
+            "bottom": 269,
+            "width": 218,
+            "height": 44
+          },
+          "relativeFill": {
+            "x": 2,
+            "y": 2,
+            "left": 43,
+            "top": 227,
+            "right": 150,
+            "bottom": 267,
+            "width": 107,
+            "height": 40
+          },
+          "layout": {
+            "question": {
+              "x": 63,
+              "y": 417.78125,
+              "left": 63,
+              "top": 417.78125,
+              "right": 297,
+              "bottom": 493.34375,
+              "width": 234,
+              "height": 75.5625
+            },
+            "controls": {
+              "x": 63,
+              "y": 417.78125,
+              "left": 63,
+              "top": 417.78125,
+              "right": 297,
+              "bottom": 608.34375,
+              "width": 234,
+              "height": 190.5625
+            },
+            "scrollX": 0,
+            "scrollY": 0,
+            "viewportWidth": 360,
+            "viewportHeight": 752
+          },
+          "boundaryCount": 1,
+          "boundaryGeometry": [
+            {
+              "key": "1/2",
+              "x": 108.5,
+              "y": 2,
+              "left": 149.5,
+              "top": 227,
+              "right": 150.5,
+              "bottom": 267,
+              "width": 1,
+              "height": 40,
+              "boxShadow": "none",
+              "backgroundColor": "rgb(255, 255, 255)"
+            }
+          ]
+        },
+        "intermediate": {
+          "progress": 0.08019230769230776,
+          "boundary": {
+            "x": 69.25,
+            "y": 227,
+            "left": 69.25,
+            "top": 227,
+            "right": 70.25,
+            "bottom": 254.1114959716797,
+            "width": 1,
+            "height": 27.111495971679688
+          },
+          "whole": {
+            "x": 41,
+            "y": 225,
+            "left": 41,
+            "top": 225,
+            "right": 259,
+            "bottom": 269,
+            "width": 218,
+            "height": 44
+          },
+          "fill": {
+            "x": 43,
+            "y": 227,
+            "left": 43,
+            "top": 227,
+            "right": 150,
+            "bottom": 267,
+            "width": 107,
+            "height": 40
+          },
+          "rootBox": {
+            "x": 41,
+            "y": 225,
+            "left": 41,
+            "top": 225,
+            "right": 319,
+            "bottom": 269,
+            "width": 278,
+            "height": 44
+          },
+          "relativeWhole": {
+            "x": 0,
+            "y": 0,
+            "left": 41,
+            "top": 225,
+            "right": 259,
+            "bottom": 269,
+            "width": 218,
+            "height": 44
+          },
+          "relativeFill": {
+            "x": 2,
+            "y": 2,
+            "left": 43,
+            "top": 227,
+            "right": 150,
+            "bottom": 267,
+            "width": 107,
+            "height": 40
+          },
+          "documentWhole": {
+            "x": 41,
+            "y": 225,
+            "left": 41,
+            "top": 225,
+            "right": 259,
+            "bottom": 269,
+            "width": 218,
+            "height": 44
+          },
+          "documentFill": {
+            "x": 43,
+            "y": 227,
+            "left": 43,
+            "top": 227,
+            "right": 150,
+            "bottom": 267,
+            "width": 107,
+            "height": 40
+          },
+          "layout": {
+            "question": {
+              "x": 63,
+              "y": 432.71875,
+              "left": 63,
+              "top": 432.71875,
+              "right": 297,
+              "bottom": 483.09375,
+              "width": 234,
+              "height": 50.375
+            },
+            "controls": {
+              "x": 63,
+              "y": 514.03125,
+              "left": 63,
+              "top": 514.03125,
+              "right": 297,
+              "bottom": 589.03125,
+              "width": 234,
+              "height": 75
+            },
+            "scrollX": 0,
+            "scrollY": 0,
+            "viewportWidth": 360,
+            "viewportHeight": 752
+          },
+          "interiorHeight": 40
+        },
+        "highlight": {
+          "whole": {
+            "x": 41,
+            "y": 225,
+            "left": 41,
+            "top": 225,
+            "right": 259,
+            "bottom": 269,
+            "width": 218,
+            "height": 44
+          },
+          "fill": {
+            "x": 43,
+            "y": 227,
+            "left": 43,
+            "top": 227,
+            "right": 150,
+            "bottom": 267,
+            "width": 107,
+            "height": 40
+          },
+          "documentWhole": {
+            "x": 41,
+            "y": 225,
+            "left": 41,
+            "top": 225,
+            "right": 259,
+            "bottom": 269,
+            "width": 218,
+            "height": 44
+          },
+          "documentFill": {
+            "x": 43,
+            "y": 227,
+            "left": 43,
+            "top": 227,
+            "right": 150,
+            "bottom": 267,
+            "width": 107,
+            "height": 40
+          },
+          "relativeWhole": {
+            "x": 0,
+            "y": 0,
+            "left": 41,
+            "top": 225,
+            "right": 259,
+            "bottom": 269,
+            "width": 218,
+            "height": 44
+          },
+          "relativeFill": {
+            "x": 2,
+            "y": 2,
+            "left": 43,
+            "top": 227,
+            "right": 150,
+            "bottom": 267,
+            "width": 107,
+            "height": 40
+          },
+          "interior": {
+            "x": 43,
+            "y": 227,
+            "left": 43,
+            "top": 227,
+            "right": 257,
+            "bottom": 267,
+            "width": 214,
+            "height": 40
+          },
+          "boundaryGeometry": [
+            {
+              "key": "1/8",
+              "connected": true,
+              "rect": {
+                "x": 69.25,
+                "y": 227,
+                "left": 69.25,
+                "top": 227,
+                "right": 70.25,
+                "bottom": 267,
+                "width": 1,
+                "height": 40
+              },
+              "boxShadow": "rgba(2, 132, 199, 0.475) 0px 0px 1.97639px 0.988197px",
+              "backgroundColor": "rgb(14, 19, 35)",
+              "expectedCenter": 69.75,
+              "centerDelta": 0,
+              "topDelta": 0,
+              "bottomDelta": 0,
+              "heightDelta": 0
+            },
+            {
+              "key": "1/4",
+              "connected": true,
+              "rect": {
+                "x": 96,
+                "y": 227,
+                "left": 96,
+                "top": 227,
+                "right": 97,
+                "bottom": 267,
+                "width": 1,
+                "height": 40
+              },
+              "boxShadow": "rgba(2, 132, 199, 0.475) 0px 0px 1.97639px 0.988197px",
+              "backgroundColor": "rgb(14, 19, 35)",
+              "expectedCenter": 96.5,
+              "centerDelta": 0,
+              "topDelta": 0,
+              "bottomDelta": 0,
+              "heightDelta": 0
+            },
+            {
+              "key": "3/8",
+              "connected": true,
+              "rect": {
+                "x": 122.75,
+                "y": 227,
+                "left": 122.75,
+                "top": 227,
+                "right": 123.75,
+                "bottom": 267,
+                "width": 1,
+                "height": 40
+              },
+              "boxShadow": "rgba(2, 132, 199, 0.475) 0px 0px 1.97639px 0.988197px",
+              "backgroundColor": "rgb(14, 19, 35)",
+              "expectedCenter": 123.25,
+              "centerDelta": 0,
+              "topDelta": 0,
+              "bottomDelta": 0,
+              "heightDelta": 0
+            },
+            {
+              "key": "5/8",
+              "connected": true,
+              "rect": {
+                "x": 176.25,
+                "y": 227,
+                "left": 176.25,
+                "top": 227,
+                "right": 177.25,
+                "bottom": 267,
+                "width": 1,
+                "height": 40
+              },
+              "boxShadow": "rgba(2, 132, 199, 0.475) 0px 0px 1.97639px 0.988197px",
+              "backgroundColor": "rgb(14, 19, 35)",
+              "expectedCenter": 176.75,
+              "centerDelta": 0,
+              "topDelta": 0,
+              "bottomDelta": 0,
+              "heightDelta": 0
+            },
+            {
+              "key": "3/4",
+              "connected": true,
+              "rect": {
+                "x": 203,
+                "y": 227,
+                "left": 203,
+                "top": 227,
+                "right": 204,
+                "bottom": 267,
+                "width": 1,
+                "height": 40
+              },
+              "boxShadow": "rgba(2, 132, 199, 0.475) 0px 0px 1.97639px 0.988197px",
+              "backgroundColor": "rgb(14, 19, 35)",
+              "expectedCenter": 203.5,
+              "centerDelta": 0,
+              "topDelta": 0,
+              "bottomDelta": 0,
+              "heightDelta": 0
+            },
+            {
+              "key": "7/8",
+              "connected": true,
+              "rect": {
+                "x": 229.75,
+                "y": 227,
+                "left": 229.75,
+                "top": 227,
+                "right": 230.75,
+                "bottom": 267,
+                "width": 1,
+                "height": 40
+              },
+              "boxShadow": "rgba(2, 132, 199, 0.475) 0px 0px 1.97639px 0.988197px",
+              "backgroundColor": "rgb(14, 19, 35)",
+              "expectedCenter": 230.25,
+              "centerDelta": 0,
+              "topDelta": 0,
+              "bottomDelta": 0,
+              "heightDelta": 0
+            }
+          ],
+          "oldBoundaries": [
+            {
+              "key": "1/2",
+              "boxShadow": "none",
+              "backgroundColor": "rgb(255, 255, 255)",
+              "activeAnimations": 0
+            }
+          ],
+          "taskLayout": {
+            "question": {
+              "x": 63,
+              "y": 432.71875,
+              "left": 63,
+              "top": 432.71875,
+              "right": 297,
+              "bottom": 483.09375,
+              "width": 234,
+              "height": 50.375
+            },
+            "controls": {
+              "x": 63,
+              "y": 514.03125,
+              "left": 63,
+              "top": 514.03125,
+              "right": 297,
+              "bottom": 589.03125,
+              "width": 234,
+              "height": 75
+            },
+            "scrollX": 0,
+            "scrollY": 0,
+            "viewportWidth": 360,
+            "viewportHeight": 752
+          },
+          "allNewBoundariesHighlighted": true,
+          "allNewBoundariesHaveDarkCore": true,
+          "oldBoundariesUnhighlighted": true,
+          "minimumCenterGap": 26.75,
+          "glowHalfOutset": 3.4645870000000003,
+          "edgeClearance": 26.75,
+          "glowFitsNarrowParts": true
+        },
+        "settled": {
+          "whole": {
+            "x": 41,
+            "y": 225,
+            "left": 41,
+            "top": 225,
+            "right": 259,
+            "bottom": 269,
+            "width": 218,
+            "height": 44
+          },
+          "fill": {
+            "x": 43,
+            "y": 227,
+            "left": 43,
+            "top": 227,
+            "right": 150,
+            "bottom": 267,
+            "width": 107,
+            "height": 40
+          },
+          "boundaryLayer": {
+            "x": 43,
+            "y": 227,
+            "left": 43,
+            "top": 227,
+            "right": 257,
+            "bottom": 267,
+            "width": 214,
+            "height": 40
+          },
+          "newBoundaryGeometry": [
+            {
+              "key": "1/8",
+              "connected": true,
+              "rect": {
+                "x": 69.25,
+                "y": 227,
+                "left": 69.25,
+                "top": 227,
+                "right": 70.25,
+                "bottom": 267,
+                "width": 1,
+                "height": 40
+              },
+              "expectedCenter": 69.75,
+              "centerDelta": 0,
+              "topDelta": 0,
+              "bottomDelta": 0,
+              "heightDelta": 0
+            },
+            {
+              "key": "1/4",
+              "connected": true,
+              "rect": {
+                "x": 96,
+                "y": 227,
+                "left": 96,
+                "top": 227,
+                "right": 97,
+                "bottom": 267,
+                "width": 1,
+                "height": 40
+              },
+              "expectedCenter": 96.5,
+              "centerDelta": 0,
+              "topDelta": 0,
+              "bottomDelta": 0,
+              "heightDelta": 0
+            },
+            {
+              "key": "3/8",
+              "connected": true,
+              "rect": {
+                "x": 122.75,
+                "y": 227,
+                "left": 122.75,
+                "top": 227,
+                "right": 123.75,
+                "bottom": 267,
+                "width": 1,
+                "height": 40
+              },
+              "expectedCenter": 123.25,
+              "centerDelta": 0,
+              "topDelta": 0,
+              "bottomDelta": 0,
+              "heightDelta": 0
+            },
+            {
+              "key": "5/8",
+              "connected": true,
+              "rect": {
+                "x": 176.25,
+                "y": 227,
+                "left": 176.25,
+                "top": 227,
+                "right": 177.25,
+                "bottom": 267,
+                "width": 1,
+                "height": 40
+              },
+              "expectedCenter": 176.75,
+              "centerDelta": 0,
+              "topDelta": 0,
+              "bottomDelta": 0,
+              "heightDelta": 0
+            },
+            {
+              "key": "3/4",
+              "connected": true,
+              "rect": {
+                "x": 203,
+                "y": 227,
+                "left": 203,
+                "top": 227,
+                "right": 204,
+                "bottom": 267,
+                "width": 1,
+                "height": 40
+              },
+              "expectedCenter": 203.5,
+              "centerDelta": 0,
+              "topDelta": 0,
+              "bottomDelta": 0,
+              "heightDelta": 0
+            },
+            {
+              "key": "7/8",
+              "connected": true,
+              "rect": {
+                "x": 229.75,
+                "y": 227,
+                "left": 229.75,
+                "top": 227,
+                "right": 230.75,
+                "bottom": 267,
+                "width": 1,
+                "height": 40
+              },
+              "expectedCenter": 230.25,
+              "centerDelta": 0,
+              "topDelta": 0,
+              "bottomDelta": 0,
+              "heightDelta": 0
+            }
+          ],
+          "newBoundaryPaint": [
+            {
+              "key": "1/8",
+              "boxShadow": "none",
+              "backgroundColor": "rgb(255, 255, 255)"
+            },
+            {
+              "key": "1/4",
+              "boxShadow": "none",
+              "backgroundColor": "rgb(255, 255, 255)"
+            },
+            {
+              "key": "3/8",
+              "boxShadow": "none",
+              "backgroundColor": "rgb(255, 255, 255)"
+            },
+            {
+              "key": "5/8",
+              "boxShadow": "none",
+              "backgroundColor": "rgb(255, 255, 255)"
+            },
+            {
+              "key": "3/4",
+              "boxShadow": "none",
+              "backgroundColor": "rgb(255, 255, 255)"
+            },
+            {
+              "key": "7/8",
+              "boxShadow": "none",
+              "backgroundColor": "rgb(255, 255, 255)"
+            }
+          ],
+          "normalPaintRestored": true,
+          "activeAnimations": 0,
+          "denominator": "8",
+          "numerator": "4"
+        },
+        "taskLayout": {
+          "before": {
+            "question": {
+              "x": 63,
+              "y": 417.78125,
+              "left": 63,
+              "top": 417.78125,
+              "right": 297,
+              "bottom": 493.34375,
+              "width": 234,
+              "height": 75.5625
+            },
+            "controls": {
+              "x": 63,
+              "y": 417.78125,
+              "left": 63,
+              "top": 417.78125,
+              "right": 297,
+              "bottom": 608.34375,
+              "width": 234,
+              "height": 190.5625
+            },
+            "scrollX": 0,
+            "scrollY": 0,
+            "viewportWidth": 360,
+            "viewportHeight": 752
+          },
+          "intermediate": {
+            "question": {
+              "x": 63,
+              "y": 432.71875,
+              "left": 63,
+              "top": 432.71875,
+              "right": 297,
+              "bottom": 483.09375,
+              "width": 234,
+              "height": 50.375
+            },
+            "controls": {
+              "x": 63,
+              "y": 514.03125,
+              "left": 63,
+              "top": 514.03125,
+              "right": 297,
+              "bottom": 589.03125,
+              "width": 234,
+              "height": 75
+            },
+            "scrollX": 0,
+            "scrollY": 0,
+            "viewportWidth": 360,
+            "viewportHeight": 752
+          },
+          "highlight": {
+            "question": {
+              "x": 63,
+              "y": 432.71875,
+              "left": 63,
+              "top": 432.71875,
+              "right": 297,
+              "bottom": 483.09375,
+              "width": 234,
+              "height": 50.375
+            },
+            "controls": {
+              "x": 63,
+              "y": 514.03125,
+              "left": 63,
+              "top": 514.03125,
+              "right": 297,
+              "bottom": 589.03125,
+              "width": 234,
+              "height": 75
+            },
+            "scrollX": 0,
+            "scrollY": 0,
+            "viewportWidth": 360,
+            "viewportHeight": 752
+          },
+          "settled": {
+            "question": {
+              "x": 63,
+              "y": 432.71875,
+              "left": 63,
+              "top": 432.71875,
+              "right": 297,
+              "bottom": 483.09375,
+              "width": 234,
+              "height": 50.375
+            },
+            "controls": {
+              "x": 63,
+              "y": 514.03125,
+              "left": 63,
+              "top": 514.03125,
+              "right": 297,
+              "bottom": 589.03125,
+              "width": 234,
+              "height": 75
+            },
+            "scrollX": 0,
+            "scrollY": 0,
+            "viewportWidth": 360,
+            "viewportHeight": 752
+          }
+        },
+        "questionAndControlsVisible": true,
+        "highlightBoundariesSpanGrid": true,
+        "highlightPaintVisible": true,
+        "highlightCoreVisible": true,
+        "oldBoundariesUnhighlighted": true,
+        "anchorDrift": {
+          "wholeIntermediate": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "fillIntermediate": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "wholeHighlight": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "fillHighlight": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "wholeSettled": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "fillSettled": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          }
+        },
+        "documentPositionDrift": {
+          "wholeIntermediate": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "fillIntermediate": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "wholeHighlight": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "fillHighlight": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "wholeSettled": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "fillSettled": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          }
+        },
+        "existingBoundaryCount": 1,
+        "newBoundaryCount": 6,
+        "newBoundariesSpanGrid": true,
+        "concurrentAnimations": 0,
+        "interrupted": null,
+        "restored": null,
+        "existingBoundaryDrifts": [
+          {
+            "key": "1/2",
+            "delta": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0
+            },
+            "paintUnchanged": true,
+            "corePaintUnchanged": true,
+            "activeAnimations": 0
+          }
+        ],
+        "existingBoundariesStable": true,
+        "stableAnchors": true,
+        "conservedDocumentPosition": true
+      },
+      "conversionWAAPICalls": [
+        {
+          "side": "right",
+          "targetClass": "fraction-bar-boundary fraction-bar-boundary-new"
+        },
+        {
+          "side": "right",
+          "targetClass": "fraction-bar-boundary fraction-bar-boundary-new"
+        },
+        {
+          "side": "right",
+          "targetClass": "fraction-bar-boundary fraction-bar-boundary-new"
+        },
+        {
+          "side": "right",
+          "targetClass": "fraction-bar-boundary fraction-bar-boundary-new"
+        },
+        {
+          "side": "right",
+          "targetClass": "fraction-bar-boundary fraction-bar-boundary-new"
+        },
+        {
+          "side": "right",
+          "targetClass": "fraction-bar-boundary fraction-bar-boundary-new"
+        }
+      ],
+      "replayMotion": {
+        "before": {
+          "whole": {
+            "x": 41,
+            "y": 56,
+            "width": 218,
+            "height": 44
+          },
+          "fill": {
+            "x": 43,
+            "y": 58,
+            "width": 107,
+            "height": 40
+          },
+          "documentWhole": {
+            "x": 41,
+            "y": 225,
+            "left": 41,
+            "top": 56,
+            "right": 259,
+            "bottom": 100,
+            "width": 218,
+            "height": 44
+          },
+          "documentFill": {
+            "x": 43,
+            "y": 227,
+            "left": 43,
+            "top": 58,
+            "right": 150,
+            "bottom": 98,
+            "width": 107,
+            "height": 40
+          },
+          "relativeWhole": {
+            "x": 0,
+            "y": 0,
+            "left": 41,
+            "top": 56,
+            "right": 259,
+            "bottom": 100,
+            "width": 218,
+            "height": 44
+          },
+          "relativeFill": {
+            "x": 2,
+            "y": 2,
+            "left": 43,
+            "top": 58,
+            "right": 150,
+            "bottom": 98,
+            "width": 107,
+            "height": 40
+          },
+          "layout": {
+            "question": {
+              "x": 63,
+              "y": 303.5625,
+              "left": 63,
+              "top": 303.5625,
+              "right": 297,
+              "bottom": 353.9375,
+              "width": 234,
+              "height": 50.375
+            },
+            "controls": {
+              "x": 63,
+              "y": 384.875,
+              "left": 63,
+              "top": 384.875,
+              "right": 297,
+              "bottom": 459.875,
+              "width": 234,
+              "height": 75
+            },
+            "scrollX": 0,
+            "scrollY": 169,
+            "viewportWidth": 360,
+            "viewportHeight": 752
+          },
+          "boundaryCount": 1,
+          "boundaryGeometry": [
+            {
+              "key": "1/2",
+              "x": 108.5,
+              "y": 2,
+              "left": 149.5,
+              "top": 58,
+              "right": 150.5,
+              "bottom": 98,
+              "width": 1,
+              "height": 40,
+              "boxShadow": "none",
+              "backgroundColor": "rgb(255, 255, 255)"
+            }
+          ]
+        },
+        "intermediate": {
+          "progress": 0.08025641025641024,
+          "boundary": {
+            "x": 69.25,
+            "y": 58,
+            "left": 69.25,
+            "top": 58,
+            "right": 70.25,
+            "bottom": 85.12431335449219,
+            "width": 1,
+            "height": 27.124313354492188
+          },
+          "whole": {
+            "x": 41,
+            "y": 56,
+            "left": 41,
+            "top": 56,
+            "right": 259,
+            "bottom": 100,
+            "width": 218,
+            "height": 44
+          },
+          "fill": {
+            "x": 43,
+            "y": 58,
+            "left": 43,
+            "top": 58,
+            "right": 150,
+            "bottom": 98,
+            "width": 107,
+            "height": 40
+          },
+          "rootBox": {
+            "x": 41,
+            "y": 56,
+            "left": 41,
+            "top": 56,
+            "right": 319,
+            "bottom": 139.84375,
+            "width": 278,
+            "height": 83.84375
+          },
+          "relativeWhole": {
+            "x": 0,
+            "y": 0,
+            "left": 41,
+            "top": 56,
+            "right": 259,
+            "bottom": 100,
+            "width": 218,
+            "height": 44
+          },
+          "relativeFill": {
+            "x": 2,
+            "y": 2,
+            "left": 43,
+            "top": 58,
+            "right": 150,
+            "bottom": 98,
+            "width": 107,
+            "height": 40
+          },
+          "documentWhole": {
+            "x": 41,
+            "y": 225,
+            "left": 41,
+            "top": 56,
+            "right": 259,
+            "bottom": 100,
+            "width": 218,
+            "height": 44
+          },
+          "documentFill": {
+            "x": 43,
+            "y": 227,
+            "left": 43,
+            "top": 58,
+            "right": 150,
+            "bottom": 98,
+            "width": 107,
+            "height": 40
+          },
+          "layout": {
+            "question": {
+              "x": 63,
+              "y": 303.5625,
+              "left": 63,
+              "top": 303.5625,
+              "right": 297,
+              "bottom": 353.9375,
+              "width": 234,
+              "height": 50.375
+            },
+            "controls": {
+              "x": 63,
+              "y": 384.875,
+              "left": 63,
+              "top": 384.875,
+              "right": 297,
+              "bottom": 459.875,
+              "width": 234,
+              "height": 75
+            },
+            "scrollX": 0,
+            "scrollY": 169,
+            "viewportWidth": 360,
+            "viewportHeight": 752
+          },
+          "interiorHeight": 40
+        },
+        "highlight": {
+          "whole": {
+            "x": 41,
+            "y": 56,
+            "left": 41,
+            "top": 56,
+            "right": 259,
+            "bottom": 100,
+            "width": 218,
+            "height": 44
+          },
+          "fill": {
+            "x": 43,
+            "y": 58,
+            "left": 43,
+            "top": 58,
+            "right": 150,
+            "bottom": 98,
+            "width": 107,
+            "height": 40
+          },
+          "documentWhole": {
+            "x": 41,
+            "y": 225,
+            "left": 41,
+            "top": 56,
+            "right": 259,
+            "bottom": 100,
+            "width": 218,
+            "height": 44
+          },
+          "documentFill": {
+            "x": 43,
+            "y": 227,
+            "left": 43,
+            "top": 58,
+            "right": 150,
+            "bottom": 98,
+            "width": 107,
+            "height": 40
+          },
+          "relativeWhole": {
+            "x": 0,
+            "y": 0,
+            "left": 41,
+            "top": 56,
+            "right": 259,
+            "bottom": 100,
+            "width": 218,
+            "height": 44
+          },
+          "relativeFill": {
+            "x": 2,
+            "y": 2,
+            "left": 43,
+            "top": 58,
+            "right": 150,
+            "bottom": 98,
+            "width": 107,
+            "height": 40
+          },
+          "interior": {
+            "x": 43,
+            "y": 58,
+            "left": 43,
+            "top": 58,
+            "right": 257,
+            "bottom": 98,
+            "width": 214,
+            "height": 40
+          },
+          "boundaryGeometry": [
+            {
+              "key": "1/8",
+              "connected": true,
+              "rect": {
+                "x": 69.25,
+                "y": 58,
+                "left": 69.25,
+                "top": 58,
+                "right": 70.25,
+                "bottom": 98,
+                "width": 1,
+                "height": 40
+              },
+              "boxShadow": "rgba(2, 132, 199, 0.475) 0px 0px 1.97676px 0.98838px",
+              "backgroundColor": "rgb(14, 19, 35)",
+              "expectedCenter": 69.75,
+              "centerDelta": 0,
+              "topDelta": 0,
+              "bottomDelta": 0,
+              "heightDelta": 0
+            },
+            {
+              "key": "1/4",
+              "connected": true,
+              "rect": {
+                "x": 96,
+                "y": 58,
+                "left": 96,
+                "top": 58,
+                "right": 97,
+                "bottom": 98,
+                "width": 1,
+                "height": 40
+              },
+              "boxShadow": "rgba(2, 132, 199, 0.475) 0px 0px 1.97676px 0.98838px",
+              "backgroundColor": "rgb(14, 19, 35)",
+              "expectedCenter": 96.5,
+              "centerDelta": 0,
+              "topDelta": 0,
+              "bottomDelta": 0,
+              "heightDelta": 0
+            },
+            {
+              "key": "3/8",
+              "connected": true,
+              "rect": {
+                "x": 122.75,
+                "y": 58,
+                "left": 122.75,
+                "top": 58,
+                "right": 123.75,
+                "bottom": 98,
+                "width": 1,
+                "height": 40
+              },
+              "boxShadow": "rgba(2, 132, 199, 0.475) 0px 0px 1.97676px 0.98838px",
+              "backgroundColor": "rgb(14, 19, 35)",
+              "expectedCenter": 123.25,
+              "centerDelta": 0,
+              "topDelta": 0,
+              "bottomDelta": 0,
+              "heightDelta": 0
+            },
+            {
+              "key": "5/8",
+              "connected": true,
+              "rect": {
+                "x": 176.25,
+                "y": 58,
+                "left": 176.25,
+                "top": 58,
+                "right": 177.25,
+                "bottom": 98,
+                "width": 1,
+                "height": 40
+              },
+              "boxShadow": "rgba(2, 132, 199, 0.475) 0px 0px 1.97676px 0.98838px",
+              "backgroundColor": "rgb(14, 19, 35)",
+              "expectedCenter": 176.75,
+              "centerDelta": 0,
+              "topDelta": 0,
+              "bottomDelta": 0,
+              "heightDelta": 0
+            },
+            {
+              "key": "3/4",
+              "connected": true,
+              "rect": {
+                "x": 203,
+                "y": 58,
+                "left": 203,
+                "top": 58,
+                "right": 204,
+                "bottom": 98,
+                "width": 1,
+                "height": 40
+              },
+              "boxShadow": "rgba(2, 132, 199, 0.475) 0px 0px 1.97676px 0.98838px",
+              "backgroundColor": "rgb(14, 19, 35)",
+              "expectedCenter": 203.5,
+              "centerDelta": 0,
+              "topDelta": 0,
+              "bottomDelta": 0,
+              "heightDelta": 0
+            },
+            {
+              "key": "7/8",
+              "connected": true,
+              "rect": {
+                "x": 229.75,
+                "y": 58,
+                "left": 229.75,
+                "top": 58,
+                "right": 230.75,
+                "bottom": 98,
+                "width": 1,
+                "height": 40
+              },
+              "boxShadow": "rgba(2, 132, 199, 0.475) 0px 0px 1.97676px 0.98838px",
+              "backgroundColor": "rgb(14, 19, 35)",
+              "expectedCenter": 230.25,
+              "centerDelta": 0,
+              "topDelta": 0,
+              "bottomDelta": 0,
+              "heightDelta": 0
+            }
+          ],
+          "oldBoundaries": [
+            {
+              "key": "1/2",
+              "boxShadow": "none",
+              "backgroundColor": "rgb(255, 255, 255)",
+              "activeAnimations": 0
+            }
+          ],
+          "taskLayout": {
+            "question": {
+              "x": 63,
+              "y": 303.5625,
+              "left": 63,
+              "top": 303.5625,
+              "right": 297,
+              "bottom": 353.9375,
+              "width": 234,
+              "height": 50.375
+            },
+            "controls": {
+              "x": 63,
+              "y": 384.875,
+              "left": 63,
+              "top": 384.875,
+              "right": 297,
+              "bottom": 459.875,
+              "width": 234,
+              "height": 75
+            },
+            "scrollX": 0,
+            "scrollY": 169,
+            "viewportWidth": 360,
+            "viewportHeight": 752
+          },
+          "allNewBoundariesHighlighted": true,
+          "allNewBoundariesHaveDarkCore": true,
+          "oldBoundariesUnhighlighted": true,
+          "minimumCenterGap": 26.75,
+          "glowHalfOutset": 3.46514,
+          "edgeClearance": 26.75,
+          "glowFitsNarrowParts": true
+        },
+        "settled": {
+          "whole": {
+            "x": 41,
+            "y": 56,
+            "left": 41,
+            "top": 56,
+            "right": 259,
+            "bottom": 100,
+            "width": 218,
+            "height": 44
+          },
+          "fill": {
+            "x": 43,
+            "y": 58,
+            "left": 43,
+            "top": 58,
+            "right": 150,
+            "bottom": 98,
+            "width": 107,
+            "height": 40
+          },
+          "boundaryLayer": {
+            "x": 43,
+            "y": 58,
+            "left": 43,
+            "top": 58,
+            "right": 257,
+            "bottom": 98,
+            "width": 214,
+            "height": 40
+          },
+          "newBoundaryGeometry": [
+            {
+              "key": "1/8",
+              "connected": true,
+              "rect": {
+                "x": 69.25,
+                "y": 58,
+                "left": 69.25,
+                "top": 58,
+                "right": 70.25,
+                "bottom": 98,
+                "width": 1,
+                "height": 40
+              },
+              "expectedCenter": 69.75,
+              "centerDelta": 0,
+              "topDelta": 0,
+              "bottomDelta": 0,
+              "heightDelta": 0
+            },
+            {
+              "key": "1/4",
+              "connected": true,
+              "rect": {
+                "x": 96,
+                "y": 58,
+                "left": 96,
+                "top": 58,
+                "right": 97,
+                "bottom": 98,
+                "width": 1,
+                "height": 40
+              },
+              "expectedCenter": 96.5,
+              "centerDelta": 0,
+              "topDelta": 0,
+              "bottomDelta": 0,
+              "heightDelta": 0
+            },
+            {
+              "key": "3/8",
+              "connected": true,
+              "rect": {
+                "x": 122.75,
+                "y": 58,
+                "left": 122.75,
+                "top": 58,
+                "right": 123.75,
+                "bottom": 98,
+                "width": 1,
+                "height": 40
+              },
+              "expectedCenter": 123.25,
+              "centerDelta": 0,
+              "topDelta": 0,
+              "bottomDelta": 0,
+              "heightDelta": 0
+            },
+            {
+              "key": "5/8",
+              "connected": true,
+              "rect": {
+                "x": 176.25,
+                "y": 58,
+                "left": 176.25,
+                "top": 58,
+                "right": 177.25,
+                "bottom": 98,
+                "width": 1,
+                "height": 40
+              },
+              "expectedCenter": 176.75,
+              "centerDelta": 0,
+              "topDelta": 0,
+              "bottomDelta": 0,
+              "heightDelta": 0
+            },
+            {
+              "key": "3/4",
+              "connected": true,
+              "rect": {
+                "x": 203,
+                "y": 58,
+                "left": 203,
+                "top": 58,
+                "right": 204,
+                "bottom": 98,
+                "width": 1,
+                "height": 40
+              },
+              "expectedCenter": 203.5,
+              "centerDelta": 0,
+              "topDelta": 0,
+              "bottomDelta": 0,
+              "heightDelta": 0
+            },
+            {
+              "key": "7/8",
+              "connected": true,
+              "rect": {
+                "x": 229.75,
+                "y": 58,
+                "left": 229.75,
+                "top": 58,
+                "right": 230.75,
+                "bottom": 98,
+                "width": 1,
+                "height": 40
+              },
+              "expectedCenter": 230.25,
+              "centerDelta": 0,
+              "topDelta": 0,
+              "bottomDelta": 0,
+              "heightDelta": 0
+            }
+          ],
+          "newBoundaryPaint": [
+            {
+              "key": "1/8",
+              "boxShadow": "none",
+              "backgroundColor": "rgb(255, 255, 255)"
+            },
+            {
+              "key": "1/4",
+              "boxShadow": "none",
+              "backgroundColor": "rgb(255, 255, 255)"
+            },
+            {
+              "key": "3/8",
+              "boxShadow": "none",
+              "backgroundColor": "rgb(255, 255, 255)"
+            },
+            {
+              "key": "5/8",
+              "boxShadow": "none",
+              "backgroundColor": "rgb(255, 255, 255)"
+            },
+            {
+              "key": "3/4",
+              "boxShadow": "none",
+              "backgroundColor": "rgb(255, 255, 255)"
+            },
+            {
+              "key": "7/8",
+              "boxShadow": "none",
+              "backgroundColor": "rgb(255, 255, 255)"
+            }
+          ],
+          "normalPaintRestored": true,
+          "activeAnimations": 0,
+          "denominator": "8",
+          "numerator": "4"
+        },
+        "taskLayout": {
+          "before": {
+            "question": {
+              "x": 63,
+              "y": 303.5625,
+              "left": 63,
+              "top": 303.5625,
+              "right": 297,
+              "bottom": 353.9375,
+              "width": 234,
+              "height": 50.375
+            },
+            "controls": {
+              "x": 63,
+              "y": 384.875,
+              "left": 63,
+              "top": 384.875,
+              "right": 297,
+              "bottom": 459.875,
+              "width": 234,
+              "height": 75
+            },
+            "scrollX": 0,
+            "scrollY": 169,
+            "viewportWidth": 360,
+            "viewportHeight": 752
+          },
+          "intermediate": {
+            "question": {
+              "x": 63,
+              "y": 303.5625,
+              "left": 63,
+              "top": 303.5625,
+              "right": 297,
+              "bottom": 353.9375,
+              "width": 234,
+              "height": 50.375
+            },
+            "controls": {
+              "x": 63,
+              "y": 384.875,
+              "left": 63,
+              "top": 384.875,
+              "right": 297,
+              "bottom": 459.875,
+              "width": 234,
+              "height": 75
+            },
+            "scrollX": 0,
+            "scrollY": 169,
+            "viewportWidth": 360,
+            "viewportHeight": 752
+          },
+          "highlight": {
+            "question": {
+              "x": 63,
+              "y": 303.5625,
+              "left": 63,
+              "top": 303.5625,
+              "right": 297,
+              "bottom": 353.9375,
+              "width": 234,
+              "height": 50.375
+            },
+            "controls": {
+              "x": 63,
+              "y": 384.875,
+              "left": 63,
+              "top": 384.875,
+              "right": 297,
+              "bottom": 459.875,
+              "width": 234,
+              "height": 75
+            },
+            "scrollX": 0,
+            "scrollY": 169,
+            "viewportWidth": 360,
+            "viewportHeight": 752
+          },
+          "settled": {
+            "question": {
+              "x": 63,
+              "y": 303.5625,
+              "left": 63,
+              "top": 303.5625,
+              "right": 297,
+              "bottom": 353.9375,
+              "width": 234,
+              "height": 50.375
+            },
+            "controls": {
+              "x": 63,
+              "y": 384.875,
+              "left": 63,
+              "top": 384.875,
+              "right": 297,
+              "bottom": 459.875,
+              "width": 234,
+              "height": 75
+            },
+            "scrollX": 0,
+            "scrollY": 169,
+            "viewportWidth": 360,
+            "viewportHeight": 752
+          }
+        },
+        "questionAndControlsVisible": true,
+        "highlightBoundariesSpanGrid": true,
+        "highlightPaintVisible": true,
+        "highlightCoreVisible": true,
+        "oldBoundariesUnhighlighted": true,
+        "anchorDrift": {
+          "wholeIntermediate": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "fillIntermediate": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "wholeHighlight": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "fillHighlight": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "wholeSettled": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "fillSettled": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          }
+        },
+        "documentPositionDrift": {
+          "wholeIntermediate": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "fillIntermediate": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "wholeHighlight": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "fillHighlight": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "wholeSettled": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "fillSettled": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          }
+        },
+        "existingBoundaryCount": 1,
+        "newBoundaryCount": 6,
+        "newBoundariesSpanGrid": true,
+        "concurrentAnimations": 0,
+        "interrupted": null,
+        "restored": null,
+        "existingBoundaryDrifts": [
+          {
+            "key": "1/2",
+            "delta": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0
+            },
+            "paintUnchanged": true,
+            "corePaintUnchanged": true,
+            "activeAnimations": 0
+          }
+        ],
+        "existingBoundariesStable": true,
+        "stableAnchors": true,
+        "conservedDocumentPosition": true
+      },
+      "replayWAAPICalls": [
+        {
+          "side": "right",
+          "targetClass": "fraction-bar-boundary fraction-bar-boundary-new"
+        },
+        {
+          "side": "right",
+          "targetClass": "fraction-bar-boundary fraction-bar-boundary-new"
+        },
+        {
+          "side": "right",
+          "targetClass": "fraction-bar-boundary fraction-bar-boundary-new"
+        },
+        {
+          "side": "right",
+          "targetClass": "fraction-bar-boundary fraction-bar-boundary-new"
+        },
+        {
+          "side": "right",
+          "targetClass": "fraction-bar-boundary fraction-bar-boundary-new"
+        },
+        {
+          "side": "right",
+          "targetClass": "fraction-bar-boundary fraction-bar-boundary-new"
+        }
+      ],
+      "wholeFillConservation": {
+        "accepted": {
+          "wholeIntermediate": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "fillIntermediate": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "wholeHighlight": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "fillHighlight": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "wholeSettled": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "fillSettled": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          }
+        },
+        "replay": {
+          "wholeIntermediate": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "fillIntermediate": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "wholeHighlight": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "fillHighlight": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "wholeSettled": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "fillSettled": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          }
+        }
+      },
+      "animationEvents": [
+        {
+          "type": "transitionrun",
+          "property": "background-color"
+        },
+        {
+          "type": "transitionrun",
+          "property": "background-color"
+        },
+        {
+          "type": "transitionrun",
+          "property": "border-top-color"
+        },
+        {
+          "type": "transitionrun",
+          "property": "background-color"
+        },
+        {
+          "type": "transitionrun",
+          "property": "border-bottom-color"
+        },
+        {
+          "type": "transitionrun",
+          "property": "border-left-color"
+        },
+        {
+          "type": "transitionrun",
+          "property": "border-right-color"
+        },
+        {
+          "type": "transitionrun",
+          "property": "border-top-color"
+        },
+        {
+          "type": "transitionrun",
+          "property": "background-color"
+        },
+        {
+          "type": "transitionrun",
+          "property": "border-bottom-color"
+        },
+        {
+          "type": "transitionrun",
+          "property": "border-left-color"
+        },
+        {
+          "type": "transitionrun",
+          "property": "border-right-color"
+        },
+        {
+          "type": "transitionrun",
+          "property": "border-top-color"
+        },
+        {
+          "type": "transitionrun",
+          "property": "background-color"
+        },
+        {
+          "type": "transitionrun",
+          "property": "border-bottom-color"
+        },
+        {
+          "type": "transitionrun",
+          "property": "border-left-color"
+        },
+        {
+          "type": "transitionrun",
+          "property": "border-right-color"
+        },
+        {
+          "type": "transitionrun",
+          "property": "border-top-color"
+        },
+        {
+          "type": "transitionrun",
+          "property": "background-color"
+        },
+        {
+          "type": "transitionrun",
+          "property": "border-bottom-color"
+        },
+        {
+          "type": "transitionrun",
+          "property": "border-left-color"
+        },
+        {
+          "type": "transitionrun",
+          "property": "border-right-color"
+        },
+        {
+          "type": "transitionrun",
+          "property": "border-top-color"
+        },
+        {
+          "type": "transitionrun",
+          "property": "border-bottom-color"
+        },
+        {
+          "type": "transitionrun",
+          "property": "border-left-color"
+        },
+        {
+          "type": "transitionrun",
+          "property": "border-right-color"
+        },
+        {
+          "type": "transitionrun",
+          "property": "border-top-color"
+        },
+        {
+          "type": "transitionrun",
+          "property": "background-color"
+        },
+        {
+          "type": "transitionrun",
+          "property": "border-bottom-color"
+        },
+        {
+          "type": "transitionrun",
+          "property": "border-left-color"
+        },
+        {
+          "type": "transitionrun",
+          "property": "border-right-color"
+        }
+      ],
+      "pageErrors": [],
+      "finalDocument": {
+        "width": 360,
+        "viewportWidth": 360
+      }
+    },
+    {
+      "itemId": "nested-one-half-plus-three-eighths",
+      "side": "left",
+      "mode": "reduced-motion",
+      "height": 752,
+      "supportProfile": "medium-support",
+      "beforeAccepted": {
+        "converted": {
+          "numerator": "1",
+          "denominator": "2",
+          "whole": {
+            "x": 41,
+            "y": 161,
+            "width": 218,
+            "height": 44
+          },
+          "fill": {
+            "x": 43,
+            "y": 163,
+            "width": 107,
+            "height": 40
+          },
+          "activeAnimations": 0,
+          "newBoundaries": 0,
+          "highlightedBoundaries": 0
+        },
+        "untouched": {
+          "numerator": "3",
+          "denominator": "8",
+          "whole": {
+            "x": 41,
+            "y": 225,
+            "width": 218,
+            "height": 44
+          },
+          "fill": {
+            "x": 43,
+            "y": 227,
+            "width": 80.25,
+            "height": 40
+          },
+          "activeAnimations": 0,
+          "newBoundaries": 0,
+          "highlightedBoundaries": 0
+        },
+        "viewport": {
+          "width": 360,
+          "height": 752,
+          "documentWidth": 360,
+          "scrollX": 0,
+          "scrollY": 0
+        }
+      },
+      "afterAccepted": {
+        "converted": {
+          "numerator": "4",
+          "denominator": "8",
+          "whole": {
+            "x": 41,
+            "y": 161,
+            "width": 218,
+            "height": 44
+          },
+          "fill": {
+            "x": 43,
+            "y": 163,
+            "width": 107,
+            "height": 40
+          },
+          "activeAnimations": 0,
+          "newBoundaries": 0,
+          "highlightedBoundaries": 0
+        },
+        "untouched": {
+          "numerator": "3",
+          "denominator": "8",
+          "whole": {
+            "x": 41,
+            "y": 225,
+            "width": 218,
+            "height": 44
+          },
+          "fill": {
+            "x": 43,
+            "y": 227,
+            "width": 80.25,
+            "height": 40
+          },
+          "activeAnimations": 0,
+          "newBoundaries": 0,
+          "highlightedBoundaries": 0
+        }
+      },
+      "conversionWAAPICalls": [],
+      "replayEndpoint": {
+        "rootPreserved": true,
+        "trackPreserved": true,
+        "fillPreserved": true,
+        "boundaryLayerPreserved": true,
+        "oldBoundaryCount": 1,
+        "newBoundaryCount": 6,
+        "immediate": {
+          "boundaryGeometry": [
+            {
+              "key": "1/2",
+              "connected": true,
+              "heightDelta": 0,
+              "topDelta": 0,
+              "bottomDelta": 0,
+              "centerDelta": 0,
+              "boxShadow": "none",
+              "backgroundColor": "rgb(255, 255, 255)"
+            },
+            {
+              "key": "1/8",
+              "connected": true,
+              "heightDelta": 0,
+              "topDelta": 0,
+              "bottomDelta": 0,
+              "centerDelta": 0,
+              "boxShadow": "none",
+              "backgroundColor": "rgb(255, 255, 255)"
+            },
+            {
+              "key": "1/4",
+              "connected": true,
+              "heightDelta": 0,
+              "topDelta": 0,
+              "bottomDelta": 0,
+              "centerDelta": 0,
+              "boxShadow": "none",
+              "backgroundColor": "rgb(255, 255, 255)"
+            },
+            {
+              "key": "3/8",
+              "connected": true,
+              "heightDelta": 0,
+              "topDelta": 0,
+              "bottomDelta": 0,
+              "centerDelta": 0,
+              "boxShadow": "none",
+              "backgroundColor": "rgb(255, 255, 255)"
+            },
+            {
+              "key": "5/8",
+              "connected": true,
+              "heightDelta": 0,
+              "topDelta": 0,
+              "bottomDelta": 0,
+              "centerDelta": 0,
+              "boxShadow": "none",
+              "backgroundColor": "rgb(255, 255, 255)"
+            },
+            {
+              "key": "3/4",
+              "connected": true,
+              "heightDelta": 0,
+              "topDelta": 0,
+              "bottomDelta": 0,
+              "centerDelta": 0,
+              "boxShadow": "none",
+              "backgroundColor": "rgb(255, 255, 255)"
+            },
+            {
+              "key": "7/8",
+              "connected": true,
+              "heightDelta": 0,
+              "topDelta": 0,
+              "bottomDelta": 0,
+              "centerDelta": 0,
+              "boxShadow": "none",
+              "backgroundColor": "rgb(255, 255, 255)"
+            }
+          ],
+          "highlightedBoundaryCount": 0,
+          "anchorDrift": {
+            "track": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0
+            },
+            "fill": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0
+            },
+            "layer": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0
+            }
+          },
+          "oldBoundaryDrifts": [
+            {
+              "key": "1/2",
+              "delta": {
+                "x": 0,
+                "y": 0,
+                "width": 0,
+                "height": 0
+              }
+            }
+          ],
+          "runningAnimations": 0,
+          "numerator": "4",
+          "denominator": "8",
+          "inputValue": "7",
+          "selectionStart": 0,
+          "selectionEnd": 1,
+          "inputFocusedBeforeClick": false,
+          "controlFocusedDuringClick": true,
+          "activeElement": {
+            "tagName": "BODY",
+            "className": "",
+            "connected": true
+          }
+        },
+        "settled": {
+          "boundaryGeometry": [
+            {
+              "key": "1/2",
+              "connected": true,
+              "heightDelta": 0,
+              "topDelta": 0,
+              "bottomDelta": 0,
+              "centerDelta": 0,
+              "boxShadow": "none",
+              "backgroundColor": "rgb(255, 255, 255)"
+            },
+            {
+              "key": "1/8",
+              "connected": true,
+              "heightDelta": 0,
+              "topDelta": 0,
+              "bottomDelta": 0,
+              "centerDelta": 0,
+              "boxShadow": "none",
+              "backgroundColor": "rgb(255, 255, 255)"
+            },
+            {
+              "key": "1/4",
+              "connected": true,
+              "heightDelta": 0,
+              "topDelta": 0,
+              "bottomDelta": 0,
+              "centerDelta": 0,
+              "boxShadow": "none",
+              "backgroundColor": "rgb(255, 255, 255)"
+            },
+            {
+              "key": "3/8",
+              "connected": true,
+              "heightDelta": 0,
+              "topDelta": 0,
+              "bottomDelta": 0,
+              "centerDelta": 0,
+              "boxShadow": "none",
+              "backgroundColor": "rgb(255, 255, 255)"
+            },
+            {
+              "key": "5/8",
+              "connected": true,
+              "heightDelta": 0,
+              "topDelta": 0,
+              "bottomDelta": 0,
+              "centerDelta": 0,
+              "boxShadow": "none",
+              "backgroundColor": "rgb(255, 255, 255)"
+            },
+            {
+              "key": "3/4",
+              "connected": true,
+              "heightDelta": 0,
+              "topDelta": 0,
+              "bottomDelta": 0,
+              "centerDelta": 0,
+              "boxShadow": "none",
+              "backgroundColor": "rgb(255, 255, 255)"
+            },
+            {
+              "key": "7/8",
+              "connected": true,
+              "heightDelta": 0,
+              "topDelta": 0,
+              "bottomDelta": 0,
+              "centerDelta": 0,
+              "boxShadow": "none",
+              "backgroundColor": "rgb(255, 255, 255)"
+            }
+          ],
+          "highlightedBoundaryCount": 0,
+          "anchorDrift": {
+            "track": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0
+            },
+            "fill": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0
+            },
+            "layer": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0
+            }
+          },
+          "oldBoundaryDrifts": [
+            {
+              "key": "1/2",
+              "delta": {
+                "x": 0,
+                "y": 0,
+                "width": 0,
+                "height": 0
+              }
+            }
+          ],
+          "runningAnimations": 0,
+          "numerator": "4",
+          "denominator": "8",
+          "inputValue": "7",
+          "selectionStart": 0,
+          "selectionEnd": 1,
+          "inputFocusedBeforeClick": false,
+          "controlFocusedDuringClick": true,
+          "activeElement": {
+            "tagName": "BODY",
+            "className": "",
+            "connected": true
+          }
+        },
+        "boundaryGeometry": [
+          {
+            "key": "1/2",
+            "connected": true,
+            "heightDelta": 0,
+            "topDelta": 0,
+            "bottomDelta": 0,
+            "centerDelta": 0,
+            "boxShadow": "none",
+            "backgroundColor": "rgb(255, 255, 255)"
+          },
+          {
+            "key": "1/8",
+            "connected": true,
+            "heightDelta": 0,
+            "topDelta": 0,
+            "bottomDelta": 0,
+            "centerDelta": 0,
+            "boxShadow": "none",
+            "backgroundColor": "rgb(255, 255, 255)"
+          },
+          {
+            "key": "1/4",
+            "connected": true,
+            "heightDelta": 0,
+            "topDelta": 0,
+            "bottomDelta": 0,
+            "centerDelta": 0,
+            "boxShadow": "none",
+            "backgroundColor": "rgb(255, 255, 255)"
+          },
+          {
+            "key": "3/8",
+            "connected": true,
+            "heightDelta": 0,
+            "topDelta": 0,
+            "bottomDelta": 0,
+            "centerDelta": 0,
+            "boxShadow": "none",
+            "backgroundColor": "rgb(255, 255, 255)"
+          },
+          {
+            "key": "5/8",
+            "connected": true,
+            "heightDelta": 0,
+            "topDelta": 0,
+            "bottomDelta": 0,
+            "centerDelta": 0,
+            "boxShadow": "none",
+            "backgroundColor": "rgb(255, 255, 255)"
+          },
+          {
+            "key": "3/4",
+            "connected": true,
+            "heightDelta": 0,
+            "topDelta": 0,
+            "bottomDelta": 0,
+            "centerDelta": 0,
+            "boxShadow": "none",
+            "backgroundColor": "rgb(255, 255, 255)"
+          },
+          {
+            "key": "7/8",
+            "connected": true,
+            "heightDelta": 0,
+            "topDelta": 0,
+            "bottomDelta": 0,
+            "centerDelta": 0,
+            "boxShadow": "none",
+            "backgroundColor": "rgb(255, 255, 255)"
+          }
+        ],
+        "runningAnimations": 0,
+        "numerator": "4",
+        "denominator": "8",
+        "responseInputPreserved": true,
+        "inputFocusedBeforeClick": false,
+        "controlFocusedDuringClick": true,
+        "focusAfterClick": {
+          "tagName": "BODY",
+          "className": "",
+          "connected": true
+        },
+        "focusedElementRemainsConnected": true,
+        "inputValue": "7",
+        "selectionStart": 0,
+        "selectionEnd": 1
+      },
+      "replayWAAPICalls": [],
+      "inputAfterReplay": {
+        "value": "7",
+        "connected": true,
+        "sameNode": true
+      },
+      "wholeFillConservation": {
+        "accepted": {
+          "whole": {
+            "x": 0,
+            "y": 0
+          },
+          "fill": {
+            "x": 0,
+            "y": 0,
+            "width": 0
+          }
+        },
+        "replay": {
+          "track": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "fill": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "layer": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          }
+        }
+      },
+      "animationEvents": [],
+      "pageErrors": [],
+      "finalDocument": {
+        "width": 360,
+        "viewportWidth": 360
+      }
+    },
+    {
+      "itemId": "nested-three-eighths-plus-one-half",
+      "side": "right",
+      "mode": "reduced-motion",
+      "height": 740,
+      "supportProfile": "medium-support",
+      "beforeAccepted": {
+        "converted": {
+          "numerator": "1",
+          "denominator": "2",
+          "whole": {
+            "x": 41,
+            "y": 225,
+            "width": 218,
+            "height": 44
+          },
+          "fill": {
+            "x": 43,
+            "y": 227,
+            "width": 107,
+            "height": 40
+          },
+          "activeAnimations": 0,
+          "newBoundaries": 0,
+          "highlightedBoundaries": 0
+        },
+        "untouched": {
+          "numerator": "3",
+          "denominator": "8",
+          "whole": {
+            "x": 41,
+            "y": 161,
+            "width": 218,
+            "height": 44
+          },
+          "fill": {
+            "x": 43,
+            "y": 163,
+            "width": 80.25,
+            "height": 40
+          },
+          "activeAnimations": 0,
+          "newBoundaries": 0,
+          "highlightedBoundaries": 0
+        },
+        "viewport": {
+          "width": 360,
+          "height": 740,
+          "documentWidth": 360,
+          "scrollX": 0,
+          "scrollY": 0
+        }
+      },
+      "afterAccepted": {
+        "converted": {
+          "numerator": "4",
+          "denominator": "8",
+          "whole": {
+            "x": 41,
+            "y": 225,
+            "width": 218,
+            "height": 44
+          },
+          "fill": {
+            "x": 43,
+            "y": 227,
+            "width": 107,
+            "height": 40
+          },
+          "activeAnimations": 0,
+          "newBoundaries": 0,
+          "highlightedBoundaries": 0
+        },
+        "untouched": {
+          "numerator": "3",
+          "denominator": "8",
+          "whole": {
+            "x": 41,
+            "y": 161,
+            "width": 218,
+            "height": 44
+          },
+          "fill": {
+            "x": 43,
+            "y": 163,
+            "width": 80.25,
+            "height": 40
+          },
+          "activeAnimations": 0,
+          "newBoundaries": 0,
+          "highlightedBoundaries": 0
+        }
+      },
+      "conversionWAAPICalls": [],
+      "replayEndpoint": {
+        "rootPreserved": true,
+        "trackPreserved": true,
+        "fillPreserved": true,
+        "boundaryLayerPreserved": true,
+        "oldBoundaryCount": 1,
+        "newBoundaryCount": 6,
+        "immediate": {
+          "boundaryGeometry": [
+            {
+              "key": "1/2",
+              "connected": true,
+              "heightDelta": 0,
+              "topDelta": 0,
+              "bottomDelta": 0,
+              "centerDelta": 0,
+              "boxShadow": "none",
+              "backgroundColor": "rgb(255, 255, 255)"
+            },
+            {
+              "key": "1/8",
+              "connected": true,
+              "heightDelta": 0,
+              "topDelta": 0,
+              "bottomDelta": 0,
+              "centerDelta": 0,
+              "boxShadow": "none",
+              "backgroundColor": "rgb(255, 255, 255)"
+            },
+            {
+              "key": "1/4",
+              "connected": true,
+              "heightDelta": 0,
+              "topDelta": 0,
+              "bottomDelta": 0,
+              "centerDelta": 0,
+              "boxShadow": "none",
+              "backgroundColor": "rgb(255, 255, 255)"
+            },
+            {
+              "key": "3/8",
+              "connected": true,
+              "heightDelta": 0,
+              "topDelta": 0,
+              "bottomDelta": 0,
+              "centerDelta": 0,
+              "boxShadow": "none",
+              "backgroundColor": "rgb(255, 255, 255)"
+            },
+            {
+              "key": "5/8",
+              "connected": true,
+              "heightDelta": 0,
+              "topDelta": 0,
+              "bottomDelta": 0,
+              "centerDelta": 0,
+              "boxShadow": "none",
+              "backgroundColor": "rgb(255, 255, 255)"
+            },
+            {
+              "key": "3/4",
+              "connected": true,
+              "heightDelta": 0,
+              "topDelta": 0,
+              "bottomDelta": 0,
+              "centerDelta": 0,
+              "boxShadow": "none",
+              "backgroundColor": "rgb(255, 255, 255)"
+            },
+            {
+              "key": "7/8",
+              "connected": true,
+              "heightDelta": 0,
+              "topDelta": 0,
+              "bottomDelta": 0,
+              "centerDelta": 0,
+              "boxShadow": "none",
+              "backgroundColor": "rgb(255, 255, 255)"
+            }
+          ],
+          "highlightedBoundaryCount": 0,
+          "anchorDrift": {
+            "track": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0
+            },
+            "fill": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0
+            },
+            "layer": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0
+            }
+          },
+          "oldBoundaryDrifts": [
+            {
+              "key": "1/2",
+              "delta": {
+                "x": 0,
+                "y": 0,
+                "width": 0,
+                "height": 0
+              }
+            }
+          ],
+          "runningAnimations": 0,
+          "numerator": "4",
+          "denominator": "8",
+          "inputValue": "7",
+          "selectionStart": 0,
+          "selectionEnd": 1,
+          "inputFocusedBeforeClick": false,
+          "controlFocusedDuringClick": true,
+          "activeElement": {
+            "tagName": "BODY",
+            "className": "",
+            "connected": true
+          }
+        },
+        "settled": {
+          "boundaryGeometry": [
+            {
+              "key": "1/2",
+              "connected": true,
+              "heightDelta": 0,
+              "topDelta": 0,
+              "bottomDelta": 0,
+              "centerDelta": 0,
+              "boxShadow": "none",
+              "backgroundColor": "rgb(255, 255, 255)"
+            },
+            {
+              "key": "1/8",
+              "connected": true,
+              "heightDelta": 0,
+              "topDelta": 0,
+              "bottomDelta": 0,
+              "centerDelta": 0,
+              "boxShadow": "none",
+              "backgroundColor": "rgb(255, 255, 255)"
+            },
+            {
+              "key": "1/4",
+              "connected": true,
+              "heightDelta": 0,
+              "topDelta": 0,
+              "bottomDelta": 0,
+              "centerDelta": 0,
+              "boxShadow": "none",
+              "backgroundColor": "rgb(255, 255, 255)"
+            },
+            {
+              "key": "3/8",
+              "connected": true,
+              "heightDelta": 0,
+              "topDelta": 0,
+              "bottomDelta": 0,
+              "centerDelta": 0,
+              "boxShadow": "none",
+              "backgroundColor": "rgb(255, 255, 255)"
+            },
+            {
+              "key": "5/8",
+              "connected": true,
+              "heightDelta": 0,
+              "topDelta": 0,
+              "bottomDelta": 0,
+              "centerDelta": 0,
+              "boxShadow": "none",
+              "backgroundColor": "rgb(255, 255, 255)"
+            },
+            {
+              "key": "3/4",
+              "connected": true,
+              "heightDelta": 0,
+              "topDelta": 0,
+              "bottomDelta": 0,
+              "centerDelta": 0,
+              "boxShadow": "none",
+              "backgroundColor": "rgb(255, 255, 255)"
+            },
+            {
+              "key": "7/8",
+              "connected": true,
+              "heightDelta": 0,
+              "topDelta": 0,
+              "bottomDelta": 0,
+              "centerDelta": 0,
+              "boxShadow": "none",
+              "backgroundColor": "rgb(255, 255, 255)"
+            }
+          ],
+          "highlightedBoundaryCount": 0,
+          "anchorDrift": {
+            "track": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0
+            },
+            "fill": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0
+            },
+            "layer": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0
+            }
+          },
+          "oldBoundaryDrifts": [
+            {
+              "key": "1/2",
+              "delta": {
+                "x": 0,
+                "y": 0,
+                "width": 0,
+                "height": 0
+              }
+            }
+          ],
+          "runningAnimations": 0,
+          "numerator": "4",
+          "denominator": "8",
+          "inputValue": "7",
+          "selectionStart": 0,
+          "selectionEnd": 1,
+          "inputFocusedBeforeClick": false,
+          "controlFocusedDuringClick": true,
+          "activeElement": {
+            "tagName": "BODY",
+            "className": "",
+            "connected": true
+          }
+        },
+        "boundaryGeometry": [
+          {
+            "key": "1/2",
+            "connected": true,
+            "heightDelta": 0,
+            "topDelta": 0,
+            "bottomDelta": 0,
+            "centerDelta": 0,
+            "boxShadow": "none",
+            "backgroundColor": "rgb(255, 255, 255)"
+          },
+          {
+            "key": "1/8",
+            "connected": true,
+            "heightDelta": 0,
+            "topDelta": 0,
+            "bottomDelta": 0,
+            "centerDelta": 0,
+            "boxShadow": "none",
+            "backgroundColor": "rgb(255, 255, 255)"
+          },
+          {
+            "key": "1/4",
+            "connected": true,
+            "heightDelta": 0,
+            "topDelta": 0,
+            "bottomDelta": 0,
+            "centerDelta": 0,
+            "boxShadow": "none",
+            "backgroundColor": "rgb(255, 255, 255)"
+          },
+          {
+            "key": "3/8",
+            "connected": true,
+            "heightDelta": 0,
+            "topDelta": 0,
+            "bottomDelta": 0,
+            "centerDelta": 0,
+            "boxShadow": "none",
+            "backgroundColor": "rgb(255, 255, 255)"
+          },
+          {
+            "key": "5/8",
+            "connected": true,
+            "heightDelta": 0,
+            "topDelta": 0,
+            "bottomDelta": 0,
+            "centerDelta": 0,
+            "boxShadow": "none",
+            "backgroundColor": "rgb(255, 255, 255)"
+          },
+          {
+            "key": "3/4",
+            "connected": true,
+            "heightDelta": 0,
+            "topDelta": 0,
+            "bottomDelta": 0,
+            "centerDelta": 0,
+            "boxShadow": "none",
+            "backgroundColor": "rgb(255, 255, 255)"
+          },
+          {
+            "key": "7/8",
+            "connected": true,
+            "heightDelta": 0,
+            "topDelta": 0,
+            "bottomDelta": 0,
+            "centerDelta": 0,
+            "boxShadow": "none",
+            "backgroundColor": "rgb(255, 255, 255)"
+          }
+        ],
+        "runningAnimations": 0,
+        "numerator": "4",
+        "denominator": "8",
+        "responseInputPreserved": true,
+        "inputFocusedBeforeClick": false,
+        "controlFocusedDuringClick": true,
+        "focusAfterClick": {
+          "tagName": "BODY",
+          "className": "",
+          "connected": true
+        },
+        "focusedElementRemainsConnected": true,
+        "inputValue": "7",
+        "selectionStart": 0,
+        "selectionEnd": 1
+      },
+      "replayWAAPICalls": [],
+      "inputAfterReplay": {
+        "value": "7",
+        "connected": true,
+        "sameNode": true
+      },
+      "wholeFillConservation": {
+        "accepted": {
+          "whole": {
+            "x": 0,
+            "y": 0
+          },
+          "fill": {
+            "x": 0,
+            "y": 0,
+            "width": 0
+          }
+        },
+        "replay": {
+          "track": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "fill": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "layer": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          }
+        }
+      },
+      "animationEvents": [],
+      "pageErrors": [],
+      "finalDocument": {
+        "width": 360,
+        "viewportWidth": 360
+      }
+    }
+  ]
+}

@@ -1,0 +1,4 @@
+--- FractionFlow Reachable Behavior Route Contract Runner ---
+  ✓ ROUTE-PLAN18-PRODUCTION-HIGH-VISUAL-COMPLETE [standard-motion] (2827ms) [intended assertion detected seed: stale-denominator-control; Route "ROUTE-PLAN18-PRODUCTION-HIGH-VISUAL-COMPLETE" assertion failed: selector ".app-visual-view #decide-common-denominator-input" should not exist, but found 1. (route action: Confirm the nested task has no denominator-entry control)]
+
+Route Matrix Run Complete: 0 passed, 1 intended seed failure detected, 0 failed (1 route rows; 1 browser executions).

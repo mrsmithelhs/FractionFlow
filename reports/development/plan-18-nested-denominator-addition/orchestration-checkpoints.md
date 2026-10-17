@@ -53,3 +53,22 @@ oracles. The parent inspected their provenance and hashes and committed them in
 `abec1a3`. The existing v1 oracle hash matched its pre-edit record. These captures
 must not be regenerated to make a regression pass. Stage 1 remains subject to
 independent parent verification and a read-only Sol review before UI activation.
+
+## Delivery verification — 2026-10-17
+
+Stage 1 is committed in `4af9556`; Stage 2 in `24060e0`. The parent independently
+verified the pure profile/order combinations, eight mounted Chrome cases, final
+386-test suite, both builds, full 63-row/65-execution route matrix, two intended
+seed failures and four visual motion cases with direct WAAPI instrumentation.
+Stage review records preserve advisor claims, corrections, rejections and limits.
+No advisor pass substitutes for these parent checks.
+
+The child returned a narrower checkpoint instead of continuing the next stage
+on two occasions. Parent checked actual stopped/running state and reissued the
+explicit stage assignment rather than claiming work continued. Requested Luna
+medium and Sol medium were supplied; runtime identity and billing were not
+independently observable. No fan-out, model substitution or Astra was used.
+
+The current source is technically accepted for delivery, with owner rendered
+and agency acceptance pending. Final source/evidence commit precedes the child's
+progress-only final act. No push, deployment, Bootstrap write or second plan.

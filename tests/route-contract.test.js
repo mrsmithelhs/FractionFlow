@@ -10,6 +10,7 @@ const require = createRequire(import.meta.url);
 const {
   expandRouteExecutions,
   motionWitnessSeeds,
+  plan18WitnessSeeds,
   resolveStartingSurface,
   selectRoutesForRun,
   validateMatrixIntegrity,
@@ -49,7 +50,42 @@ describe('Plan 14 Reachable Behavior Route Contract & Matrix Schema', () => {
     const mislabeled = structuredClone(contextMap);
     mislabeled.contexts['ROUTE-PLAN34-INSPECT-LINEAR-DEEP'] = 'historical-v4';
     expect((await validateMatrixIntegrity(matrix, REGISTERED_CONDITIONS, mislabeled)).errors.join('\n'))
-      .toContain('New Plan 34 route "ROUTE-PLAN34-INSPECT-LINEAR-DEEP" must exercise production-default-v5');
+      .toContain('New Plan 34/18 route "ROUTE-PLAN34-INSPECT-LINEAR-DEEP" must exercise production-default-v6');
+  });
+
+  it('adds two v6 nested traversals without repurposing historical v4 routes', () => {
+    const nested = matrix.routes.filter((route) => route.id.startsWith('ROUTE-PLAN18-'));
+    const contexts = JSON.parse(fs.readFileSync(path.resolve(__dirname, 'routes/plan34-context-map.json'), 'utf8')).contexts;
+    expect(nested.map((route) => route.id)).toEqual([
+      'ROUTE-PLAN18-PRODUCTION-HIGH-VISUAL-COMPLETE',
+      'ROUTE-PLAN18-PRODUCTION-MEDIUM-LINEAR-REDUCED',
+    ]);
+    expect(nested.map((route) => contexts[route.id])).toEqual(['production-default-v6', 'production-default-v6']);
+    expect(contexts['ROUTE-PLAN17-APPENDED-ITEM-REACHABLE']).toBe('historical-v4');
+    expect(nested.map((route) => route.actions.find((action) => action.method === 'completePlan18RetainedPrefix')))
+      .toEqual([
+        expect.objectContaining({ view: 'visual', supportProfile: 'high-support' }),
+        expect.objectContaining({ view: 'linear', supportProfile: 'medium-support' }),
+      ]);
+    for (const route of nested) {
+      expect(route.actions.some((action) => action.method === 'dispatch-fallback')).toBe(false);
+      expect(route.actions.some((action) => action.description.includes('both nested operand orders'))).toBe(false);
+      expect(route.actions.some((action) => action.method === 'pressKey')).toBe(route.inputMode !== 'touch');
+    }
+    expect(plan18WitnessSeeds).toHaveProperty('wrong-transform-side');
+    expect(plan18WitnessSeeds).toHaveProperty('stale-denominator-control');
+    const high = nested[0];
+    const medium = nested[1];
+    expect(high.actions.some((action) => action.method === 'tap')).toBe(true);
+    expect(high.actions.some((action) => action.method === 'tap'
+      && action.target.includes('#transform-num-input-left + .control-submit-btn'))).toBe(true);
+    expect(high.actions.some((action) => action.method === 'assert'
+      && action.description.includes('untouched source eighths'))).toBe(true);
+    expect(high.actions.some((action) => action.method === 'screenshot' && action.requireNestedChoices)).toBe(true);
+    expect(medium.actions.some((action) => action.method === 'pressKey' && action.value === 'Enter')).toBe(true);
+    expect(medium.actions.some((action) => action.description.includes('incorrect equivalent numerator'))).toBe(true);
+    expect(medium.actions.some((action) => action.description.includes('Retry mirrored item'))).toBe(true);
+    expect(medium.actions.some((action) => action.method === 'assertNoSubdivisionMotion')).toBe(false);
   });
 
   it('enforces Rule 1: fails if a registered condition has no declared route witness', async () => {
@@ -280,7 +316,7 @@ describe('Plan 14 Reachable Behavior Route Contract & Matrix Schema', () => {
 
   it('executes each prototype route in both motion modes and brings in its filtered negative control', () => {
     const executions = expandRouteExecutions(matrix.routes);
-    expect(executions).toHaveLength(63);
+    expect(executions).toHaveLength(65);
     expect(executions.filter((execution) => (
       execution.route.configuration === 'plan15-subtraction-prototype'
     ))).toHaveLength(4);

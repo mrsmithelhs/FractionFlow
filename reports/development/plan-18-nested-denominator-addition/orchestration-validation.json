@@ -1,0 +1,64 @@
+{
+  "capturedAt": "2026-10-17T21:17:39.306Z",
+  "reviewer": "FractionFlow parent orchestrator",
+  "baseProductCommit": "24060e0",
+  "unitTests": {
+    "command": "npm test -- --run",
+    "files": 42,
+    "passed": 386,
+    "exitCode": 0
+  },
+  "build": {
+    "command": "npm run build",
+    "learner": "passed",
+    "subtractionPrototype": "passed",
+    "exitCode": 0
+  },
+  "routes": {
+    "command": "node scripts/dev/run-route-matrix.js --browser-channel chrome --quiet",
+    "rows": 63,
+    "executions": 65,
+    "passed": 65,
+    "failed": 0,
+    "contextCounts": {
+      "historical-v4": 49,
+      "production-default-v6": 12
+    },
+    "cleanReceipt": "evidence/route-matrix-results.json"
+  },
+  "motion": {
+    "command": "node reports/development/plan-18-nested-denominator-addition/stage3-visual-motion-smoke.mjs",
+    "cases": 4,
+    "exitCode": 0,
+    "standardConversionAndReplayCallsPerRequiredSide": 6,
+    "untouchedSideCalls": 0,
+    "reducedMotionCalls": 0
+  },
+  "seeds": [
+    {
+      "name": "wrong-transform-side",
+      "intendedAssertion": "Route \"ROUTE-PLAN18-PRODUCTION-HIGH-VISUAL-COMPLETE\" assertion failed: attribute \"data-numerator\" on \".app-visual-view .fraction-bar-container[data-side=\"right\"] .fraction-bar-track\" was \"4\", expected \"3\". (route action: Verify the untouched source eighths remains unchanged)"
+    },
+    {
+      "name": "stale-denominator-control",
+      "intendedAssertion": "Route \"ROUTE-PLAN18-PRODUCTION-HIGH-VISUAL-COMPLETE\" assertion failed: selector \".app-visual-view #decide-common-denominator-input\" should not exist, but found 1. (route action: Confirm the nested task has no denominator-entry control)"
+    }
+  ],
+  "protectedArtifactsRestored": [
+    "reports/development/plan-34-reusable-full-addition-task-patterns/evidence/plan34-construct-help-360x740.png",
+    "reports/development/plan-34-reusable-full-addition-task-patterns/evidence/plan34-inspect-retry-draft.png",
+    "reports/development/plan-34-reusable-full-addition-task-patterns/evidence/plan34-third-identity-false-stimulus-wide.png",
+    "reports/development/plan-34-reusable-full-addition-task-patterns/evidence/plan34-viewport-measurements.json"
+  ],
+  "scope": {
+    "preservedExecutableRoutePairs": 61,
+    "metadataOnlyOldRouteChanges": "production v5 labels corrected to v6; historical v4 unchanged",
+    "mechanicalFormatting": "baseline serialization retained; two routes appended"
+  },
+  "limits": [
+    "Deep routes cover high/visual/standard and medium/linear/reduced, not a full Cartesian matrix.",
+    "Additional visual medium-support motion sweep and high-support mounted view/viewport sweeps use an explicitly unshipped fixture.",
+    "Touch-context numeric values supplied by browser automation; no physical device or assistive technology test.",
+    "Owner rendered/agency acceptance and deployment remain separate."
+  ]
+}

@@ -1,0 +1,4 @@
+--- FractionFlow Reachable Behavior Route Contract Runner ---
+  ✓ ROUTE-PLAN18-PRODUCTION-HIGH-VISUAL-COMPLETE [standard-motion] (2929ms) [intended assertion detected seed: wrong-transform-side; Route "ROUTE-PLAN18-PRODUCTION-HIGH-VISUAL-COMPLETE" assertion failed: attribute "data-numerator" on ".app-visual-view .fraction-bar-container[data-side="right"] .fraction-bar-track" was "4", expected "3". (route action: Verify the untouched source eighths remains unchanged)]
+
+Route Matrix Run Complete: 0 passed, 1 intended seed failure detected, 0 failed (1 route rows; 1 browser executions).

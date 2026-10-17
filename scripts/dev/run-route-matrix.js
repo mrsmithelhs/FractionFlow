@@ -89,6 +89,22 @@ const plan34WitnessSeeds = Object.freeze({
     failure: 'unexpectedly contains text "Units do not match."',
   },
 });
+const plan18WitnessSeeds = Object.freeze({
+  'wrong-transform-side': {
+    routeId: 'ROUTE-PLAN18-PRODUCTION-HIGH-VISUAL-COMPLETE',
+    injectBeforeDescription: 'Verify the untouched source eighths remains unchanged',
+    selector: '.app-visual-view .fraction-bar-container[data-side="right"] .fraction-bar-track',
+    attribute: 'data-numerator',
+    value: '4',
+    failure: 'attribute "data-numerator" on',
+  },
+  'stale-denominator-control': {
+    routeId: 'ROUTE-PLAN18-PRODUCTION-HIGH-VISUAL-COMPLETE',
+    injectBeforeDescription: 'Confirm the nested task has no denominator-entry control',
+    selector: '.app-visual-view .active-beat-controls',
+    failure: 'should not exist, but found 1',
+  },
+});
 const startingSurfaces = Object.freeze({
   'mounted-app-entry': Object.freeze({
     path: '',
@@ -115,7 +131,7 @@ function readPlan34ContextMap() {
 function resolveRouteContext(route, contextMap) {
   const context = contextMap?.contexts?.[route.id] ?? null;
   if (context === 'historical-v4') return { id: context, startingSurface: 'plan34-historical-v4-entry' };
-  if (context === 'production-default-v5') return { id: context, startingSurface: route.startingSurface };
+  if (context === 'production-default-v6') return { id: context, startingSurface: route.startingSurface };
   return { id: route.startingSurface.startsWith('subtraction-') ? 'prototype' : null, startingSurface: route.startingSurface };
 }
 
@@ -221,7 +237,7 @@ async function validateMatrixIntegrity(matrix, registeredConditions, suppliedCon
   } else {
     const idsInMatrix = new Set(matrix.routes.map((route) => route.id));
     const idsInMap = Object.keys(routeContexts);
-    const contextCounts = { 'historical-v4': 0, 'production-default-v5': 0 };
+    const contextCounts = { 'historical-v4': 0, 'production-default-v6': 0 };
     for (const route of matrix.routes) {
       const context = routeContexts[route.id];
       const isMountedApp = route.startingSurface === 'mounted-app-entry';
@@ -232,8 +248,8 @@ async function validateMatrixIntegrity(matrix, registeredConditions, suppliedCon
       } else if (context) {
         contextCounts[context] += 1;
       }
-      if (route.id.startsWith('ROUTE-PLAN34-') && context !== 'production-default-v5') {
-        errors.push(`New Plan 34 route "${route.id}" must exercise production-default-v5.`);
+      if ((route.id.startsWith('ROUTE-PLAN34-') || route.id.startsWith('ROUTE-PLAN18-')) && context !== 'production-default-v6') {
+        errors.push(`New Plan 34/18 route "${route.id}" must exercise production-default-v6.`);
       }
     }
     for (const routeId of idsInMap) {
@@ -267,6 +283,7 @@ async function validateMatrixIntegrity(matrix, registeredConditions, suppliedCon
     'assertNoSubdivisionMotion',
     'screenshot',
     'dispatch-fallback',
+    'completePlan18RetainedPrefix',
   ]);
 
   for (const route of matrix.routes) {
@@ -379,13 +396,23 @@ async function validateMatrixIntegrity(matrix, registeredConditions, suppliedCon
       }
       if (action.method === 'screenshot'
         && (typeof action.file !== 'string'
-          || !action.file.startsWith('reports/development/plan-34-reusable-full-addition-task-patterns/evidence/')
+          || !(action.file.startsWith('reports/development/plan-34-reusable-full-addition-task-patterns/evidence/')
+            || action.file.startsWith('reports/development/plan-18-nested-denominator-addition/evidence/'))
           || action.file.includes('..') || typeof action.caption !== 'string' || !action.caption.trim())) {
         errors.push(`Route "${route.id}" screenshot action must name a scoped evidence file and caption.`);
       }
       if (action.method === 'screenshot' && action.measureLayout !== undefined
         && typeof action.measureLayout !== 'boolean') {
         errors.push(`Route "${route.id}" screenshot measureLayout must be boolean when supplied.`);
+      }
+      if (action.method === 'screenshot' && action.requireNestedChoices !== undefined
+        && typeof action.requireNestedChoices !== 'boolean') {
+        errors.push(`Route "${route.id}" screenshot requireNestedChoices must be boolean when supplied.`);
+      }
+      if (action.method === 'completePlan18RetainedPrefix'
+        && (!['visual', 'linear'].includes(action.view)
+          || !['high-support', 'medium-support'].includes(action.supportProfile))) {
+        errors.push(`Route "${route.id}" step ${action.step} Plan 18 retained-prefix action requires a registered view and support profile.`);
       }
       if (action.method === 'clickAndObserveSubdivision' && action.interruptReducedMotion
         && route.motionMode !== 'standard-motion') {
@@ -1313,10 +1340,24 @@ async function observeSubdivision(page, action, routeId) {
     })}`);
   }
   console.log(`  Motion witness ${evidenceId}: ${JSON.stringify(finalState)}`);
+  return finalState;
 }
 
 async function executeAction(page, action, routeId) {
   switch (action.method) {
+    case 'completePlan18RetainedPrefix': {
+      const { buildPlan18RetainedPrefixActions } = await import('./plan18-route-prefix.mjs');
+      const generated = buildPlan18RetainedPrefixActions({ view: action.view, supportProfile: action.supportProfile });
+      for (const generatedAction of generated) {
+        try {
+          await executeAction(page, generatedAction, routeId);
+        } catch (error) {
+          error.message = `${generatedAction.description}: ${error.message}`;
+          throw error;
+        }
+      }
+      break;
+    }
     case 'screenshot': {
       if (action.settleAnimations) {
         await page.evaluate(async (maxWaitMs) => {
@@ -1364,8 +1405,33 @@ async function executeAction(page, action, routeId) {
             activeView: activeView?.className ?? null,
             question: measure(activeView?.querySelector('.active-beat-prompt')),
             controls: measure(activeView?.querySelector('.active-beat-controls')),
+            nestedChoices: [...(activeView?.querySelectorAll('.nested-side-choice') || [])].map((button) => ({
+              button: measure(button),
+              fraction: measure(button.querySelector('.symbolic-fraction')),
+              fractionRule: measure(button.querySelector('.symbolic-bar')),
+            })),
           };
         });
+        if (routeId.startsWith('ROUTE-PLAN18-')) {
+          if (action.screenshotEvidence.layout.horizontalOverflow) {
+            throw new Error(`Plan 18 screenshot ${action.file} has horizontal document overflow.`);
+          }
+          const { question, controls, nestedChoices } = action.screenshotEvidence.layout;
+          if (!question?.visible || !controls?.visible) {
+            throw new Error(`Plan 18 screenshot ${action.file} does not capture visible question and controls.`);
+          }
+          const insideViewport = (box, viewport) => box.x >= 0 && box.y >= 0
+            && box.x + box.width <= viewport.width && box.y + box.height <= viewport.height;
+          const viewport = action.screenshotEvidence.layout.viewport;
+          if (!insideViewport(question, viewport) || !insideViewport(controls, viewport)) {
+            throw new Error(`Plan 18 screenshot ${action.file} has a question or control region outside the viewport: ${JSON.stringify({ question, controls, viewport })}`);
+          }
+          if (action.requireNestedChoices && (nestedChoices.length !== 2
+            || nestedChoices.some((choice) => !choice.button?.visible || !choice.fraction?.visible || !choice.fractionRule?.visible
+              || !insideViewport(choice.button, viewport) || !insideViewport(choice.fraction, viewport) || !insideViewport(choice.fractionRule, viewport)))) {
+            throw new Error(`Plan 18 screenshot ${action.file} lacks two visible stacked fraction choices and rules.`);
+          }
+        }
       }
       break;
     }
@@ -1405,7 +1471,7 @@ async function executeAction(page, action, routeId) {
           selected = index;
         }
       }
-      if (selected === null) throw new Error(`Route "${routeId}" has no exact-equivalent matching choice for ${action.numerator}/${action.denominator}.`);
+      if (selected === null) throw new Error(`Route "${routeId}" has no exact-equivalent matching choice for ${action.numerator}/${action.denominator}; observed labels: ${JSON.stringify(await choices.evaluateAll((elements) => elements.map((element) => element.getAttribute('aria-label'))))}.`);
       await choices.nth(selected).click();
       break;
     }
@@ -2304,6 +2370,7 @@ async function runRouteMatrix(options = {}) {
     seededVisualDefect = null,
     motionWitnessSeed = null,
     plan34WitnessSeed = null,
+    plan18WitnessSeed = null,
   } = options;
 
   if (seededVisualDefect !== null && !Object.hasOwn(seededPrototypeVisualDefects, seededVisualDefect)) {
@@ -2314,6 +2381,9 @@ async function runRouteMatrix(options = {}) {
   }
   if (plan34WitnessSeed !== null && !Object.hasOwn(plan34WitnessSeeds, plan34WitnessSeed)) {
     throw new Error(`Unknown Plan 34 witness seed "${plan34WitnessSeed}".`);
+  }
+  if (plan18WitnessSeed !== null && !Object.hasOwn(plan18WitnessSeeds, plan18WitnessSeed)) {
+    throw new Error(`Unknown Plan 18 witness seed "${plan18WitnessSeed}".`);
   }
 
   if (!fs.existsSync(distDir)) {
@@ -2385,7 +2455,8 @@ async function runRouteMatrix(options = {}) {
   }
 
   const effectiveFilter = motionWitnessSeed ? motionWitnessSeeds[motionWitnessSeed].routeId
-    : plan34WitnessSeed ? plan34WitnessSeeds[plan34WitnessSeed].routeId : filter;
+    : plan34WitnessSeed ? plan34WitnessSeeds[plan34WitnessSeed].routeId
+      : plan18WitnessSeed ? plan18WitnessSeeds[plan18WitnessSeed].routeId : filter;
   const routesToRun = selectRoutesForRun(matrix.routes, effectiveFilter);
   const routeExecutions = expandRouteExecutions(routesToRun);
 
@@ -2441,6 +2512,26 @@ async function runRouteMatrix(options = {}) {
               element.appendChild(seedNode);
             }, seed.text);
           }
+          if (plan18WitnessSeed && route.id === plan18WitnessSeeds[plan18WitnessSeed].routeId
+            && action.method === 'assert'
+            && action.description === plan18WitnessSeeds[plan18WitnessSeed].injectBeforeDescription) {
+            if (plan18WitnessSeed === 'wrong-transform-side') {
+              const seed = plan18WitnessSeeds[plan18WitnessSeed];
+              await page.locator(seed.selector).evaluate((element, seeded) => element.setAttribute(seeded.attribute, seeded.value), {
+                attribute: seed.attribute,
+                value: seed.value,
+              });
+            } else {
+              const seed = plan18WitnessSeeds[plan18WitnessSeed];
+              await page.locator(seed.selector).evaluate((element) => {
+                const input = document.createElement('input');
+                input.id = 'decide-common-denominator-input';
+                input.type = 'number';
+                input.setAttribute('aria-label', 'test-seeded stale denominator response');
+                element.appendChild(input);
+              });
+            }
+          }
           const seededAction = motionWitnessSeed
             && route.id === motionWitnessSeeds[motionWitnessSeed].routeId
             && (motionWitnessSeeds[motionWitnessSeed].step === undefined
@@ -2478,6 +2569,10 @@ async function runRouteMatrix(options = {}) {
           && err.message.includes(plan34WitnessSeeds[plan34WitnessSeed].failure)) {
           routeResults.push({ id: resultId, routeId: route.id, context: routeContext.id, motionMode, status: 'seed-detected', error: err.message, duration, route });
           console.log(`  ✓ ${resultId} (${duration}ms) [intended assertion detected seed: ${plan34WitnessSeed}; ${err.message}]`);
+        } else if (plan18WitnessSeed && route.id === plan18WitnessSeeds[plan18WitnessSeed].routeId
+          && err.message.includes(plan18WitnessSeeds[plan18WitnessSeed].failure)) {
+          routeResults.push({ id: resultId, routeId: route.id, context: routeContext.id, motionMode, status: 'seed-detected', error: err.message, duration, route });
+          console.log(`  ✓ ${resultId} (${duration}ms) [intended assertion detected seed: ${plan18WitnessSeed}; ${err.message}]`);
         } else if (motionWitnessSeed && route.id === motionWitnessSeeds[motionWitnessSeed].routeId
           && err.message.includes(motionWitnessSeeds[motionWitnessSeed].failure)) {
           routeResults.push({ id: resultId, routeId: route.id, context: resolveRouteContext(route, contextMap).id, motionMode, status: 'seed-detected', error: err.message, duration, route });
@@ -2553,6 +2648,27 @@ async function runRouteMatrix(options = {}) {
   if (plan34WitnessSeed && (seedDetected !== 1 || failed !== 0 || routeResults.length !== 1)) {
     throw new Error(`Plan 34 witness seed "${plan34WitnessSeed}" did not produce exactly one intended failure; detected=${seedDetected}, failed=${failed}, executions=${routeResults.length}.`);
   }
+  if (plan18WitnessSeed && (seedDetected !== 1 || failed !== 0 || routeResults.length !== 1)) {
+    throw new Error(`Plan 18 witness seed "${plan18WitnessSeed}" did not produce exactly one intended failure; detected=${seedDetected}, failed=${failed}, executions=${routeResults.length}.`);
+  }
+
+  if (routeResults.some((result) => result.routeId.startsWith('ROUTE-PLAN18-'))) {
+    const evidenceName = plan18WitnessSeed ? `plan18-seed-${plan18WitnessSeed}-receipt.json` : 'route-matrix-results.json';
+    const evidencePath = path.join(rootDir, 'reports/development/plan-18-nested-denominator-addition/evidence', evidenceName);
+    const plan18Results = routeResults.filter((result) => result.routeId.startsWith('ROUTE-PLAN18-'));
+    fs.writeFileSync(evidencePath, `${JSON.stringify({
+      capturedAt: new Date().toISOString(),
+      browserChannel: browserChannel || 'default chromium',
+      mode: plan18WitnessSeed ? `seed:${plan18WitnessSeed}` : 'clean',
+      results: plan18Results.map(({ routeId, context, motionMode, status, error, route }) => ({
+        routeId, context, motionMode, status, ...(error ? { error } : {}),
+        viewport: route.viewport,
+        inputMode: route.inputMode || 'pointer-click-and-keyboard',
+        screenshots: route.actions.filter((action) => action.method === 'screenshot')
+          .map(({ file, caption, screenshotEvidence }) => ({ file, caption, ...screenshotEvidence })),
+      })),
+    }, null, 2)}\n`);
+  }
 
   const completedPlan34RouteIds = new Set(routeResults
     .filter((result) => result.routeId.startsWith('ROUTE-PLAN34-'))
@@ -2587,10 +2703,13 @@ async function runRouteMatrix(options = {}) {
 
 module.exports = {
   createStaticServer,
+  executeAction,
   expandRouteExecutions,
   getRouteMotionModes,
   motionWitnessSeeds,
   plan34WitnessSeeds,
+  plan18WitnessSeeds,
+  observeSubdivision,
   resolveStartingSurface,
   runRouteMatrix,
   selectRoutesForRun,
@@ -2604,6 +2723,8 @@ if (require.main === module) {
   let verbose = true;
   let motionWitnessSeed = null;
   let plan34WitnessSeed = null;
+  let plan18WitnessSeed = null;
+  let preferredChannel = null;
 
   for (let i = 0; i < args.length; i++) {
     if (args[i] === '--filter' && args[i + 1]) {
@@ -2614,11 +2735,15 @@ if (require.main === module) {
       motionWitnessSeed = args[++i];
     } else if (args[i] === '--plan34-witness-seed' && args[i + 1]) {
       plan34WitnessSeed = args[++i];
+    } else if (args[i] === '--plan18-witness-seed' && args[i + 1]) {
+      plan18WitnessSeed = args[++i];
+    } else if (args[i] === '--browser-channel' && args[i + 1]) {
+      preferredChannel = args[++i];
     }
   }
 
   console.log('--- FractionFlow Reachable Behavior Route Contract Runner ---');
-  runRouteMatrix({ filter, verbose, motionWitnessSeed, plan34WitnessSeed })
+  runRouteMatrix({ filter, verbose, preferredChannel, motionWitnessSeed, plan34WitnessSeed, plan18WitnessSeed })
     .then((summary) => {
       const parts = [`${summary.passed} passed`];
       if (summary.seedDetected > 0) parts.push(`${summary.seedDetected} intended seed failure${summary.seedDetected === 1 ? '' : 's'} detected`);
@@ -2631,6 +2756,9 @@ if (require.main === module) {
         process.exit(1);
       } else if (motionWitnessSeed && summary.seedDetected !== 1) {
         console.error(`Motion witness seed "${motionWitnessSeed}" was not detected at its intended assertion.`);
+        process.exit(1);
+      } else if (plan18WitnessSeed && summary.seedDetected !== 1) {
+        console.error(`Plan 18 witness seed "${plan18WitnessSeed}" was not detected at its intended assertion.`);
         process.exit(1);
       } else {
         process.exit(0);

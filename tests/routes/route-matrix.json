@@ -4436,7 +4436,7 @@
     },
     {
       "id": "ROUTE-PLAN34-CONSTRUCT-VISUAL-DEEP",
-      "behavior": "Use the shipped v5 default to construct both equivalents with optional typed help, add the total and finish without a second response.",
+      "behavior": "Use the shipped v6 default to construct both equivalents with optional typed help, add the total and finish without a second response.",
       "configuration": "phase2-bundle-1",
       "startingSurface": "mounted-app-entry",
       "viewport": {
@@ -4450,7 +4450,7 @@
         {
           "method": "click",
           "target": ".app-practice-button",
-          "description": "Start production v5",
+          "description": "Start production v6",
           "step": 1
         },
         {
@@ -4482,8 +4482,8 @@
         {
           "method": "screenshot",
           "file": "reports/development/plan-34-reusable-full-addition-task-patterns/evidence/plan34-construct-encounter-360x740.png",
-          "caption": "Production v5 construct encounter at 360×740; target context and no answer shown.",
-          "description": "Production v5 construct encounter at 360×740; target context and no answer shown.",
+          "caption": "Production v6 construct encounter at 360×740; target context and no answer shown.",
+          "description": "Production v6 construct encounter at 360×740; target context and no answer shown.",
           "step": 3,
           "measureLayout": true
         },
@@ -4775,7 +4775,7 @@
         {
           "method": "tap",
           "target": ".app-practice-button",
-          "description": "Start production v5",
+          "description": "Start production v6",
           "step": 5
         },
         {
@@ -5389,7 +5389,7 @@
         {
           "method": "click",
           "target": ".app-practice-button",
-          "description": "Start production v5",
+          "description": "Start production v6",
           "step": 4
         },
         {
@@ -6033,7 +6033,7 @@
     },
     {
       "id": "ROUTE-PLAN34-RETRY-RETURN-REENTRY",
-      "behavior": "Retry and return from a compact inspect draft, then re-enter the production v5 set without stale task state.",
+      "behavior": "Retry and return from a compact inspect draft, then re-enter the production v6 set without stale task state.",
       "configuration": "phase2-bundle-1",
       "startingSurface": "mounted-app-entry",
       "viewport": {
@@ -6047,7 +6047,7 @@
         {
           "method": "click",
           "target": ".app-practice-button",
-          "description": "Start production v5",
+          "description": "Start production v6",
           "step": 1
         },
         {
@@ -6177,7 +6177,7 @@
         {
           "method": "click",
           "target": ".app-practice-button",
-          "description": "Re-enter production v5 practice",
+          "description": "Re-enter production v6 practice",
           "step": 19
         },
         {
@@ -6204,8 +6204,8 @@
         {
           "method": "screenshot",
           "file": "reports/development/plan-34-reusable-full-addition-task-patterns/evidence/plan34-fresh-reentry-360x740.png",
-          "caption": "Fresh production v5 encounter after return, with no stale inspect draft.",
-          "description": "Fresh production v5 encounter after return, with no stale inspect draft.",
+          "caption": "Fresh production v6 encounter after return, with no stale inspect draft.",
+          "description": "Fresh production v6 encounter after return, with no stale inspect draft.",
           "step": 21,
           "measureLayout": true
         },
@@ -6238,6 +6238,901 @@
           {
             "type": "notHasSelector",
             "target": ".app-visual-view .recovery-feedback"
+          }
+        ]
+      }
+    },
+    {
+      "id": "ROUTE-PLAN18-PRODUCTION-HIGH-VISUAL-COMPLETE",
+      "behavior": "Production set@6 traversal reaches the preserved eleven-item prefix, both nested operand orders, and set completion through learner controls.",
+      "configuration": "phase2-bundle-1",
+      "startingSurface": "mounted-app-entry",
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "motionMode": "standard-motion",
+      "witness": "browser",
+      "inputMode": "touch",
+      "actions": [
+        {
+          "method": "click",
+          "target": ".app-gear-button",
+          "description": "Open display settings",
+          "step": 1
+        },
+        {
+          "method": "click",
+          "target": "[data-condition-id=\"phase2-bundle-1\"]",
+          "description": "Select approved condition",
+          "step": 2
+        },
+        {
+          "method": "click",
+          "target": ".app-practice-button",
+          "description": "Start production set@6",
+          "step": 3
+        },
+        {
+          "method": "completePlan18RetainedPrefix",
+          "target": null,
+          "description": "Complete preserved first eleven through visible controls",
+          "view": "visual",
+          "supportProfile": "high-support",
+          "step": 4
+        },
+        {
+          "step": 5,
+          "method": "click",
+          "target": ".app-visual-view .active-beat-controls .control-btn",
+          "description": "Acknowledge nested encounter to reach target-unit side choice"
+        },
+        {
+          "method": "assert",
+          "target": ".app-visual-view",
+          "description": "Measure initial side choice and stacked controls",
+          "assertions": [
+            {
+              "type": "containsText",
+              "target": ".app-visual-view .active-beat-prompt",
+              "value": "Which fraction needs new parts to use eighths?"
+            },
+            {
+              "type": "visibleGeometry",
+              "target": ".app-visual-view .nested-side-choice",
+              "minCount": 2,
+              "minWidth": 40,
+              "minHeight": 40,
+              "requireVisibleCenterHit": true
+            },
+            {
+              "type": "notHasSelector",
+              "target": ".app-visual-view #decide-common-denominator-input"
+            }
+          ],
+          "step": 6
+        },
+        {
+          "method": "screenshot",
+          "target": null,
+          "description": "Capture side-choice state before selecting a side",
+          "file": "reports/development/plan-18-nested-denominator-addition/evidence/route-plan18-production-high-visual-complete-side-choice.png",
+          "caption": "Production set@6 nested side-choice state with stacked fraction controls.",
+          "measureLayout": true,
+          "step": 7,
+          "requireNestedChoices": true
+        },
+        {
+          "method": "tap",
+          "target": ".app-visual-view .nested-side-choice >> nth=1",
+          "description": "Touch-context select wrong side first",
+          "step": 8
+        },
+        {
+          "method": "assert",
+          "target": ".app-visual-view",
+          "description": "Wrong-side recovery stays local",
+          "assertions": [
+            {
+              "type": "containsText",
+              "target": ".app-visual-view .recovery-feedback",
+              "value": "Check which fraction is already in eighths."
+            }
+          ],
+          "step": 9
+        },
+        {
+          "method": "tap",
+          "target": ".app-visual-view .nested-side-choice >> nth=0",
+          "description": "Touch-context select required side",
+          "step": 10
+        },
+        {
+          "method": "assert",
+          "target": ".app-visual-view",
+          "description": "Confirm the nested task has no denominator-entry control",
+          "assertions": [
+            {
+              "type": "hasSelector",
+              "target": ".app-visual-view #transform-num-input-left"
+            },
+            {
+              "type": "notHasSelector",
+              "target": ".app-visual-view #transform-num-input-right"
+            },
+            {
+              "type": "notHasSelector",
+              "target": ".app-visual-view #decide-common-denominator-input"
+            }
+          ],
+          "step": 11
+        },
+        {
+          "method": "click",
+          "target": ".app-visual-view .active-beat-controls .app-secondary-button",
+          "description": "Open conversion multiplier help",
+          "step": 12
+        },
+        {
+          "method": "fill",
+          "target": ".app-visual-view #transform-help-multiplier-left",
+          "description": "Enter multiplier 4",
+          "value": "4",
+          "step": 13
+        },
+        {
+          "method": "click",
+          "target": ".app-visual-view #transform-help-multiplier-left + .control-submit-btn",
+          "description": "Submit multiplier help",
+          "step": 14
+        },
+        {
+          "method": "fill",
+          "target": ".app-visual-view #transform-num-input-left",
+          "description": "Enter the exact equivalent numerator 4",
+          "value": "4",
+          "step": 15
+        },
+        {
+          "method": "tap",
+          "target": ".app-visual-view #transform-num-input-left + .control-submit-btn",
+          "description": "Submit the one required conversion",
+          "step": 16
+        },
+        {
+          "method": "assert",
+          "target": ".app-visual-view",
+          "description": "Verify the untouched source eighths remains unchanged",
+          "assertions": [
+            {
+              "type": "attributeEquals",
+              "target": ".app-visual-view .fraction-bar-container[data-side=\"right\"] .fraction-bar-track",
+              "attribute": "data-numerator",
+              "value": "3"
+            },
+            {
+              "type": "attributeEquals",
+              "target": ".app-visual-view .fraction-bar-container[data-side=\"right\"] .fraction-bar-track",
+              "attribute": "data-denominator",
+              "value": "8"
+            }
+          ],
+          "step": 17
+        },
+        {
+          "method": "click",
+          "target": ".app-replay-button",
+          "description": "Replay only the accepted conversion",
+          "step": 18
+        },
+        {
+          "method": "screenshot",
+          "target": null,
+          "description": "Capture accepted conversion and Replay state",
+          "file": "reports/development/plan-18-nested-denominator-addition/evidence/route-plan18-production-high-visual-complete-conversion-replay.png",
+          "caption": "Accepted one-sided conversion with the unchanged eighths operand visible.",
+          "measureLayout": true,
+          "step": 19
+        },
+        {
+          "method": "click",
+          "target": ".app-replay-button",
+          "description": "End Replay and return to current operation",
+          "step": 20
+        },
+        {
+          "method": "fill",
+          "target": ".app-visual-view #operate-sum-input",
+          "description": "Enter exact sum 7/8",
+          "value": "7",
+          "step": 21
+        },
+        {
+          "method": "click",
+          "target": ".app-visual-view #operate-sum-input + .control-submit-btn",
+          "description": "Submit exact operation",
+          "step": 22
+        },
+        {
+          "method": "assert",
+          "target": ".app-visual-view",
+          "description": "Operation uses one converted side and original eighths",
+          "assertions": [
+            {
+              "type": "containsText",
+              "target": ".app-visual-view .completed-beats-section",
+              "value": "1/2 = 4/8"
+            },
+            {
+              "type": "notContainsText",
+              "target": ".app-visual-view .completed-beats-section",
+              "value": "3/8 = 6/16"
+            }
+          ],
+          "step": 23
+        },
+        {
+          "method": "click",
+          "target": ".app-visual-view .active-beat-controls .control-btn",
+          "description": "Finish nested episode",
+          "step": 24
+        },
+        {
+          "method": "click",
+          "target": ".app-next-button",
+          "description": "Advance to mirrored nested item",
+          "step": 25
+        },
+        {
+          "step": 26,
+          "method": "click",
+          "target": ".app-visual-view .active-beat-controls .control-btn",
+          "description": "Acknowledge mirrored nested encounter"
+        },
+        {
+          "method": "assert",
+          "target": ".app-visual-view",
+          "description": "Mirrored order has the same target question",
+          "assertions": [
+            {
+              "type": "containsText",
+              "target": ".app-visual-view .active-beat-prompt",
+              "value": "Which fraction needs new parts to use eighths?"
+            }
+          ],
+          "step": 27
+        },
+        {
+          "method": "tap",
+          "target": ".app-visual-view .nested-side-choice >> nth=0",
+          "description": "Touch-context choose already-eighths side as wrong response",
+          "step": 28
+        },
+        {
+          "method": "assert",
+          "target": ".app-visual-view",
+          "description": "Mirrored wrong-side recovery",
+          "assertions": [
+            {
+              "type": "containsText",
+              "target": ".app-visual-view .recovery-feedback",
+              "value": "Check which fraction is already in eighths."
+            }
+          ],
+          "step": 29
+        },
+        {
+          "method": "tap",
+          "target": ".app-visual-view .nested-side-choice >> nth=1",
+          "description": "Touch-context choose right side that needs renaming",
+          "step": 30
+        },
+        {
+          "method": "fill",
+          "target": ".app-visual-view #transform-num-input-right",
+          "description": "Enter right-side equivalent 4/8",
+          "value": "4",
+          "step": 31
+        },
+        {
+          "method": "tap",
+          "target": ".app-visual-view #transform-num-input-right + .control-submit-btn",
+          "description": "Submit mirrored conversion",
+          "step": 32
+        },
+        {
+          "method": "click",
+          "target": ".app-replay-button",
+          "description": "Replay mirrored accepted conversion",
+          "step": 33
+        },
+        {
+          "method": "click",
+          "target": ".app-replay-button",
+          "description": "Return to mirrored current operation",
+          "step": 34
+        },
+        {
+          "method": "fill",
+          "target": ".app-visual-view #operate-sum-input",
+          "description": "Enter mirrored exact sum 7/8",
+          "value": "7",
+          "step": 35
+        },
+        {
+          "method": "click",
+          "target": ".app-visual-view #operate-sum-input + .control-submit-btn",
+          "description": "Submit mirrored operation",
+          "step": 36
+        },
+        {
+          "method": "click",
+          "target": ".app-visual-view .active-beat-controls .control-btn",
+          "description": "Finish mirrored nested item",
+          "step": 37
+        },
+        {
+          "method": "assert",
+          "target": ".app-visual-view",
+          "description": "Set completion reaches its last-item notice",
+          "assertions": [
+            {
+              "type": "containsText",
+              "target": ".app-navigation-notice",
+              "value": "You’ve tried every problem in this set."
+            },
+            {
+              "type": "notHasSelector",
+              "target": ".app-next-button:not([hidden])"
+            }
+          ],
+          "step": 38
+        },
+        {
+          "method": "click",
+          "target": ".app-return-button",
+          "description": "Return from completed set",
+          "step": 39
+        },
+        {
+          "method": "click",
+          "target": ".app-practice-button",
+          "description": "Re-enter production set after completion",
+          "step": 40
+        },
+        {
+          "method": "assert",
+          "target": ".app-visual-view",
+          "description": "Re-entry starts at preserved first item",
+          "assertions": [
+            {
+              "type": "containsText",
+              "target": ".app-visual-view .active-beat-controls",
+              "value": "Use twelfths."
+            }
+          ],
+          "step": 41
+        }
+      ],
+      "expect": {
+        "capture": {
+          "target": ".app-visual-view .active-beat-controls",
+          "type": "innerHTML"
+        },
+        "assertions": [
+          {
+            "type": "containsText",
+            "target": ".app-visual-view .active-beat-controls",
+            "value": "Use twelfths."
+          },
+          {
+            "type": "hasSelector",
+            "target": ".app-next-button"
+          }
+        ]
+      }
+    },
+    {
+      "id": "ROUTE-PLAN18-PRODUCTION-MEDIUM-LINEAR-REDUCED",
+      "behavior": "Production set@6 traversal reaches the preserved eleven-item prefix, both nested operand orders, and set completion through learner controls.",
+      "configuration": "phase2-bundle-3",
+      "startingSurface": "mounted-app-entry",
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "motionMode": "reduced-motion",
+      "witness": "browser",
+      "actions": [
+        {
+          "method": "click",
+          "target": ".app-gear-button",
+          "description": "Open display settings",
+          "step": 1
+        },
+        {
+          "method": "click",
+          "target": "[data-condition-id=\"phase2-bundle-3\"]",
+          "description": "Select approved condition",
+          "step": 2
+        },
+        {
+          "method": "click",
+          "target": ".app-gear-button",
+          "description": "Open support settings",
+          "step": 3
+        },
+        {
+          "method": "click",
+          "target": "[data-support-id=\"medium-support\"]",
+          "description": "Select registered medium support",
+          "step": 4
+        },
+        {
+          "method": "click",
+          "target": ".app-practice-button",
+          "description": "Start production set@6",
+          "step": 5
+        },
+        {
+          "method": "click",
+          "target": ".app-view-toggle",
+          "description": "Switch to linear representation",
+          "step": 6
+        },
+        {
+          "method": "completePlan18RetainedPrefix",
+          "target": null,
+          "description": "Complete preserved first eleven through visible controls",
+          "view": "linear",
+          "supportProfile": "medium-support",
+          "step": 7
+        },
+        {
+          "step": 8,
+          "method": "click",
+          "target": ".app-linear-view .active-beat-controls .control-btn",
+          "description": "Acknowledge nested encounter to reach target-unit side choice"
+        },
+        {
+          "method": "assert",
+          "target": ".app-linear-view",
+          "description": "Measure initial side choice and stacked controls",
+          "assertions": [
+            {
+              "type": "containsText",
+              "target": ".app-linear-view .active-beat-prompt",
+              "value": "Which fraction needs new parts to use eighths?"
+            },
+            {
+              "type": "visibleGeometry",
+              "target": ".app-linear-view .nested-side-choice",
+              "minCount": 2,
+              "minWidth": 40,
+              "minHeight": 40,
+              "requireVisibleCenterHit": true
+            },
+            {
+              "type": "notHasSelector",
+              "target": ".app-linear-view #decide-common-denominator-input"
+            }
+          ],
+          "step": 9
+        },
+        {
+          "method": "screenshot",
+          "target": null,
+          "description": "Capture side-choice state before selecting a side",
+          "file": "reports/development/plan-18-nested-denominator-addition/evidence/route-plan18-production-medium-linear-reduced-side-choice.png",
+          "caption": "Production set@6 nested side-choice state with stacked fraction controls.",
+          "measureLayout": true,
+          "step": 10,
+          "requireNestedChoices": true
+        },
+        {
+          "method": "focus",
+          "target": ".app-linear-view .nested-side-choice >> nth=1",
+          "description": "Focus wrong side choice for keyboard activation",
+          "step": 11
+        },
+        {
+          "method": "pressKey",
+          "target": ".app-linear-view .nested-side-choice >> nth=1",
+          "description": "Activate wrong side choice with Enter",
+          "value": "Enter",
+          "step": 12
+        },
+        {
+          "method": "assert",
+          "target": ".app-linear-view",
+          "description": "Wrong-side recovery stays local",
+          "assertions": [
+            {
+              "type": "containsText",
+              "target": ".app-linear-view .recovery-feedback",
+              "value": "Check which fraction is already in eighths."
+            }
+          ],
+          "step": 13
+        },
+        {
+          "method": "focus",
+          "target": ".app-linear-view .nested-side-choice >> nth=0",
+          "description": "Focus correct side choice",
+          "step": 14
+        },
+        {
+          "method": "pressKey",
+          "target": ".app-linear-view .nested-side-choice >> nth=0",
+          "description": "Activate correct side choice with Enter",
+          "value": "Enter",
+          "step": 15
+        },
+        {
+          "method": "assert",
+          "target": ".app-linear-view",
+          "description": "Confirm the nested task has no denominator-entry control",
+          "assertions": [
+            {
+              "type": "hasSelector",
+              "target": ".app-linear-view #linear-transform-num-input-left"
+            },
+            {
+              "type": "notHasSelector",
+              "target": ".app-linear-view #linear-transform-num-input-right"
+            },
+            {
+              "type": "notHasSelector",
+              "target": ".app-linear-view #decide-common-denominator-input"
+            }
+          ],
+          "step": 16
+        },
+        {
+          "method": "click",
+          "target": ".app-linear-view .active-beat-controls .app-secondary-button",
+          "description": "Open conversion multiplier help",
+          "step": 17
+        },
+        {
+          "method": "fill",
+          "target": ".app-linear-view #linear-transform-help-multiplier-left",
+          "description": "Enter multiplier 4",
+          "value": "4",
+          "step": 18
+        },
+        {
+          "method": "click",
+          "target": ".app-linear-view #linear-transform-help-multiplier-left + .control-submit-btn",
+          "description": "Submit multiplier help",
+          "step": 19
+        },
+        {
+          "method": "fill",
+          "target": ".app-linear-view #linear-transform-num-input-left",
+          "description": "Enter the exact equivalent numerator 4",
+          "value": "4",
+          "step": 20
+        },
+        {
+          "method": "click",
+          "target": ".app-linear-view #linear-transform-num-input-left + .control-submit-btn",
+          "description": "Submit required conversion and measure new boundaries",
+          "step": 21
+        },
+        {
+          "method": "click",
+          "target": ".app-replay-button",
+          "description": "Replay only the accepted conversion",
+          "step": 22
+        },
+        {
+          "method": "screenshot",
+          "target": null,
+          "description": "Capture accepted conversion and Replay state",
+          "file": "reports/development/plan-18-nested-denominator-addition/evidence/route-plan18-production-medium-linear-reduced-conversion-replay.png",
+          "caption": "Accepted one-sided conversion with the unchanged eighths operand visible.",
+          "measureLayout": true,
+          "step": 23
+        },
+        {
+          "method": "click",
+          "target": ".app-replay-button",
+          "description": "End Replay and return to current operation",
+          "step": 24
+        },
+        {
+          "method": "assert",
+          "target": ".app-linear-view",
+          "description": "Reduced-motion endpoint is static",
+          "assertions": [
+            {
+              "type": "notHasSelector",
+              "target": ".app-linear-view .fraction-bar-boundary-new.is-animating"
+            },
+            {
+              "type": "attributeEquals",
+              "target": ".app-replay-button",
+              "attribute": "aria-pressed",
+              "value": "false"
+            }
+          ],
+          "step": 25
+        },
+        {
+          "method": "fill",
+          "target": ".app-linear-view #linear-operate-sum-input",
+          "description": "Enter exact sum 7/8",
+          "value": "7",
+          "step": 26
+        },
+        {
+          "method": "click",
+          "target": ".app-linear-view #linear-operate-sum-input + .control-submit-btn",
+          "description": "Submit exact operation",
+          "step": 27
+        },
+        {
+          "method": "assert",
+          "target": ".app-linear-view",
+          "description": "Operation uses one converted side and original eighths",
+          "assertions": [
+            {
+              "type": "containsText",
+              "target": ".app-linear-view .completed-beats-section",
+              "value": "1/2 = 4/8"
+            },
+            {
+              "type": "notContainsText",
+              "target": ".app-linear-view .completed-beats-section",
+              "value": "3/8 = 6/16"
+            }
+          ],
+          "step": 28
+        },
+        {
+          "method": "click",
+          "target": ".app-linear-view .active-beat-controls .control-btn",
+          "description": "Finish nested episode",
+          "step": 29
+        },
+        {
+          "method": "click",
+          "target": ".app-next-button",
+          "description": "Advance to mirrored nested item",
+          "step": 30
+        },
+        {
+          "step": 31,
+          "method": "click",
+          "target": ".app-linear-view .active-beat-controls .control-btn",
+          "description": "Acknowledge mirrored nested encounter"
+        },
+        {
+          "method": "assert",
+          "target": ".app-linear-view",
+          "description": "Mirrored order has the same target question",
+          "assertions": [
+            {
+              "type": "containsText",
+              "target": ".app-linear-view .active-beat-prompt",
+              "value": "Which fraction needs new parts to use eighths?"
+            }
+          ],
+          "step": 32
+        },
+        {
+          "method": "focus",
+          "target": ".app-linear-view .nested-side-choice >> nth=0",
+          "description": "Focus wrong side in mirrored item",
+          "step": 33
+        },
+        {
+          "method": "pressKey",
+          "target": ".app-linear-view .nested-side-choice >> nth=0",
+          "description": "Keyboard activate wrong side in mirrored item",
+          "value": "Enter",
+          "step": 34
+        },
+        {
+          "method": "assert",
+          "target": ".app-linear-view",
+          "description": "Mirrored wrong-side recovery",
+          "assertions": [
+            {
+              "type": "containsText",
+              "target": ".app-linear-view .recovery-feedback",
+              "value": "Check which fraction is already in eighths."
+            }
+          ],
+          "step": 35
+        },
+        {
+          "method": "focus",
+          "target": ".app-linear-view .nested-side-choice >> nth=1",
+          "description": "Focus correct right side in mirrored item",
+          "step": 36
+        },
+        {
+          "method": "pressKey",
+          "target": ".app-linear-view .nested-side-choice >> nth=1",
+          "description": "Keyboard activate right side in mirrored item",
+          "value": "Enter",
+          "step": 37
+        },
+        {
+          "method": "click",
+          "target": ".app-restart-button",
+          "description": "Retry mirrored item before conversion",
+          "step": 38
+        },
+        {
+          "method": "assert",
+          "target": ".app-linear-view",
+          "description": "Retry returns to encounter",
+          "assertions": [
+            {
+              "type": "notHasSelector",
+              "target": ".app-linear-view .nested-side-choice"
+            },
+            {
+              "type": "notHasSelector",
+              "target": ".app-linear-view #transform-num-input-right"
+            }
+          ],
+          "step": 39
+        },
+        {
+          "method": "click",
+          "target": ".app-linear-view .active-beat-controls .control-btn",
+          "description": "Acknowledge retried encounter",
+          "step": 40
+        },
+        {
+          "method": "assert",
+          "target": ".app-linear-view",
+          "description": "Retry restores side choice",
+          "assertions": [
+            {
+              "type": "hasSelector",
+              "target": ".app-linear-view .nested-side-choice"
+            }
+          ],
+          "step": 41
+        },
+        {
+          "method": "click",
+          "target": ".app-linear-view .nested-side-choice >> nth=1",
+          "description": "Select correct right side after retry",
+          "step": 42
+        },
+        {
+          "method": "fill",
+          "target": ".app-linear-view #linear-transform-num-input-right",
+          "value": "3",
+          "description": "Enter an incorrect equivalent numerator for local recovery",
+          "step": 43
+        },
+        {
+          "method": "click",
+          "target": ".app-linear-view #linear-transform-num-input-right + .control-submit-btn",
+          "description": "Submit the incorrect equivalent numerator",
+          "step": 44
+        },
+        {
+          "method": "assert",
+          "target": ".app-linear-view",
+          "description": "Wrong conversion response recovers without advancing the schedule",
+          "assertions": [
+            {
+              "type": "containsText",
+              "target": ".app-linear-view .recovery-feedback",
+              "value": "Not the same amount yet. Try a different number of parts."
+            }
+          ],
+          "step": 45
+        },
+        {
+          "method": "fill",
+          "target": ".app-linear-view #linear-transform-num-input-right",
+          "description": "Enter right-side equivalent 4/8",
+          "value": "4",
+          "step": 46
+        },
+        {
+          "method": "click",
+          "target": ".app-linear-view #linear-transform-num-input-right + .control-submit-btn",
+          "description": "Submit mirrored conversion",
+          "step": 47
+        },
+        {
+          "method": "click",
+          "target": ".app-replay-button",
+          "description": "Replay mirrored accepted conversion",
+          "step": 48
+        },
+        {
+          "method": "click",
+          "target": ".app-replay-button",
+          "description": "Return to mirrored current operation",
+          "step": 49
+        },
+        {
+          "method": "fill",
+          "target": ".app-linear-view #linear-operate-sum-input",
+          "description": "Enter mirrored exact sum 7/8",
+          "value": "7",
+          "step": 50
+        },
+        {
+          "method": "click",
+          "target": ".app-linear-view #linear-operate-sum-input + .control-submit-btn",
+          "description": "Submit mirrored operation",
+          "step": 51
+        },
+        {
+          "method": "click",
+          "target": ".app-linear-view .active-beat-controls .control-btn",
+          "description": "Finish mirrored nested item",
+          "step": 52
+        },
+        {
+          "method": "assert",
+          "target": ".app-linear-view",
+          "description": "Set completion reaches its last-item notice",
+          "assertions": [
+            {
+              "type": "containsText",
+              "target": ".app-navigation-notice",
+              "value": "You’ve tried every problem in this set."
+            },
+            {
+              "type": "notHasSelector",
+              "target": ".app-next-button:not([hidden])"
+            }
+          ],
+          "step": 53
+        },
+        {
+          "method": "click",
+          "target": ".app-return-button",
+          "description": "Return from completed set",
+          "step": 54
+        },
+        {
+          "method": "click",
+          "target": ".app-practice-button",
+          "description": "Re-enter production set after completion",
+          "step": 55
+        },
+        {
+          "method": "assert",
+          "target": ".app-linear-view",
+          "description": "Re-entry starts at preserved first item",
+          "assertions": [
+            {
+              "type": "containsText",
+              "target": ".app-linear-view .active-beat-controls",
+              "value": "Use twelfths."
+            }
+          ],
+          "step": 56
+        }
+      ],
+      "expect": {
+        "capture": {
+          "target": ".app-linear-view .active-beat-controls",
+          "type": "innerHTML"
+        },
+        "assertions": [
+          {
+            "type": "containsText",
+            "target": ".app-linear-view .active-beat-controls",
+            "value": "Use twelfths."
+          },
+          {
+            "type": "hasSelector",
+            "target": ".app-next-button"
           }
         ]
       }

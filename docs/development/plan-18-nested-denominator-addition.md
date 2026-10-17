@@ -1,7 +1,7 @@
 ---
 id: plan-18
 title: Nested-Denominator Addition
-status: in-progress
+status: delivered
 depends_on: [plan-11, plan-12, plan-13, plan-14, plan-16, plan-22, plan-26, plan-34]
 gate: "DECISION-037 adopts the focused renaming task. Requirement 0 verifies that task and obtains execution mechanism approval before source work. Technical and owner rendered-screen/agency acceptance; deployment separately authorized."
 summary: >-
@@ -21,7 +21,7 @@ summary: >-
 - Packet type: feature
 - Mutation level: source / learner-facing local behavior
 - Approval gate: verify adopted focused task; mechanism, technical and owner acceptance
-- Depends on: `plan-11`, `plan-12`, `plan-13`, `plan-14`, `plan-16`, `plan-22`, `plan-26` (learner reach through the existing goal's authored set)
+- Depends on: `plan-11`, `plan-12`, `plan-13`, `plan-14`, `plan-16`, `plan-22`, `plan-26`, `plan-34` (learner reach through the existing goal's authored set and the accepted compact task baseline)
 - Expected artifacts: execution of recorded owner task policy, approved bounded source work, tests, browser evidence and report
 
 ## Goal and why this packet exists

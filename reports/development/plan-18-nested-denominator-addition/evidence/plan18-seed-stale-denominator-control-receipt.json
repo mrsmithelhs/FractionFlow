@@ -1,0 +1,111 @@
+{
+  "capturedAt": "2026-10-17T21:15:08.714Z",
+  "browserChannel": "chrome",
+  "mode": "seed:stale-denominator-control",
+  "results": [
+    {
+      "routeId": "ROUTE-PLAN18-PRODUCTION-HIGH-VISUAL-COMPLETE",
+      "context": "production-default-v6",
+      "motionMode": "standard-motion",
+      "status": "seed-detected",
+      "error": "Route \"ROUTE-PLAN18-PRODUCTION-HIGH-VISUAL-COMPLETE\" assertion failed: selector \".app-visual-view #decide-common-denominator-input\" should not exist, but found 1. (route action: Confirm the nested task has no denominator-entry control)",
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "inputMode": "touch",
+      "screenshots": [
+        {
+          "file": "reports/development/plan-18-nested-denominator-addition/evidence/route-plan18-production-high-visual-complete-side-choice.png",
+          "caption": "Production set@6 nested side-choice state with stacked fraction controls.",
+          "viewport": {
+            "width": 360,
+            "height": 740
+          },
+          "layout": {
+            "viewport": {
+              "width": 360,
+              "height": 740
+            },
+            "document": {
+              "width": 360,
+              "height": 889
+            },
+            "horizontalOverflow": false,
+            "scroll": {
+              "x": 0,
+              "y": 10
+            },
+            "activeView": "app-visual-view",
+            "question": {
+              "x": 63,
+              "y": 407.78,
+              "width": 234,
+              "height": 50.38,
+              "visible": true
+            },
+            "controls": {
+              "x": 63,
+              "y": 407.78,
+              "width": 234,
+              "height": 287.13,
+              "visible": true
+            },
+            "nestedChoices": [
+              {
+                "button": {
+                  "x": 63,
+                  "y": 458.16,
+                  "width": 139.8,
+                  "height": 82.38,
+                  "visible": true
+                },
+                "fraction": {
+                  "x": 126.05,
+                  "y": 490.34,
+                  "width": 13.69,
+                  "height": 39.19,
+                  "visible": true
+                },
+                "fractionRule": {
+                  "x": 126.05,
+                  "y": 508.94,
+                  "width": 13.69,
+                  "height": 2,
+                  "visible": true
+                }
+              },
+              {
+                "button": {
+                  "x": 63,
+                  "y": 552.53,
+                  "width": 162.91,
+                  "height": 82.38,
+                  "visible": true
+                },
+                "fraction": {
+                  "x": 137.61,
+                  "y": 584.72,
+                  "width": 13.69,
+                  "height": 39.19,
+                  "visible": true
+                },
+                "fractionRule": {
+                  "x": 137.61,
+                  "y": 603.31,
+                  "width": 13.69,
+                  "height": 2,
+                  "visible": true
+                }
+              }
+            ]
+          }
+        },
+        {
+          "file": "reports/development/plan-18-nested-denominator-addition/evidence/route-plan18-production-high-visual-complete-conversion-replay.png",
+          "caption": "Accepted one-sided conversion with the unchanged eighths operand visible."
+        }
+      ]
+    }
+  ]
+}
