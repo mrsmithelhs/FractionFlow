@@ -1,0 +1,722 @@
+{
+  "oracleId": "plan34-v2-replay-baseline-before-plan18-replay-v3",
+  "capturedFromHead": "601d07602c08052a9c6ec7a0c2c698c7c7e104c7",
+  "capturedUsingCurrentReplayV2": "fractionflow.episode-replay/v2",
+  "v1OracleSha256AtCapture": "F8A238121F849A3DC9F701B362ED6CF2A6C35293FB197C2E08895D3EED9F1708",
+  "cases": [
+    {
+      "patternId": "full-addition.construct-equivalent",
+      "patternRevision": "1",
+      "itemId": "two-thirds-plus-one-fourth",
+      "phase": "initial",
+      "envelope": {
+        "schemaVersion": "fractionflow.episode-replay/v2",
+        "contentIdentity": {
+          "schemaVersion": "fractionflow.problem-instance/v1",
+          "id": "relatively-prime-addition__none__2__3__1__4",
+          "source": "curated",
+          "request": {
+            "selector": "relatively-prime-addition",
+            "operation": "add",
+            "overlays": [],
+            "profileId": "curated-review",
+            "profileVersion": "1"
+          },
+          "provenance": {
+            "kind": "curated",
+            "fixtureId": "curated-relatively-prime-addition-non-least",
+            "authoringRevision": "plan03-fixtures-v1"
+          },
+          "selector": "relatively-prime-addition",
+          "overlays": [],
+          "sourceForms": {
+            "left": {
+              "kind": "fraction",
+              "numerator": "2",
+              "denominator": "3"
+            },
+            "right": {
+              "kind": "fraction",
+              "numerator": "1",
+              "denominator": "4"
+            }
+          },
+          "reconstruction": {
+            "kind": "curated",
+            "request": {
+              "selector": "relatively-prime-addition",
+              "operation": "add",
+              "overlays": [],
+              "profileId": "curated-review",
+              "profileVersion": "1"
+            },
+            "fixtureId": "curated-relatively-prime-addition-non-least",
+            "authoringRevision": "plan03-fixtures-v1"
+          }
+        },
+        "episodeDefinition": {
+          "id": "phase-3-reusable-full-addition",
+          "revision": "1"
+        },
+        "support": {
+          "label": "high support",
+          "dimensions": {
+            "fractionBarModel": "high support",
+            "commonDenominator": "high support",
+            "equivalentNumerators": "high support",
+            "prediction": "high support",
+            "symbolicIntegration": "high support",
+            "helpAndReplay": "high support"
+          }
+        },
+        "activeCondition": {
+          "id": "phase2-bundle-1",
+          "revision": "1",
+          "display": "D-01-A",
+          "choreography": "D-02-M",
+          "promptCadence": "D-05-focused-key-beats",
+          "connectionMaking": "CM-01-M"
+        },
+        "learnerIntents": [],
+        "taskContext": {
+          "practiceSetId": "unlike-addition-vetted-set",
+          "practiceSetRevision": "5",
+          "itemId": "two-thirds-plus-one-fourth",
+          "fixtureId": "curated-relatively-prime-addition-non-least",
+          "authoringRevision": "plan03-fixtures-v1",
+          "definitionId": "phase-3-reusable-full-addition",
+          "definitionRevision": "1",
+          "patternId": "full-addition.construct-equivalent",
+          "patternRevision": "1",
+          "targetDenominator": "12",
+          "taskDataId": "plan34-full-addition-task-data",
+          "taskDataRevision": "1",
+          "stimulusId": null,
+          "stimulusRevision": null,
+          "candidates": null,
+          "requiredSides": [
+            "left",
+            "right"
+          ]
+        }
+      },
+      "expectedState": {
+        "encounter": null,
+        "notice": null,
+        "commonDenominator": null,
+        "conversions": {
+          "left": null,
+          "right": null
+        },
+        "operation": null,
+        "resolution": null,
+        "reflection": null,
+        "route": "fraction-bar",
+        "compactCompletion": null,
+        "conversionOrigins": {},
+        "taskContext": {
+          "practiceSetId": "unlike-addition-vetted-set",
+          "practiceSetRevision": "5",
+          "itemId": "two-thirds-plus-one-fourth",
+          "fixtureId": "curated-relatively-prime-addition-non-least",
+          "authoringRevision": "plan03-fixtures-v1",
+          "definitionId": "phase-3-reusable-full-addition",
+          "definitionRevision": "1",
+          "patternId": "full-addition.construct-equivalent",
+          "patternRevision": "1",
+          "targetDenominator": "12",
+          "taskDataId": "plan34-full-addition-task-data",
+          "taskDataRevision": "1",
+          "stimulusId": null,
+          "stimulusRevision": null,
+          "candidates": null,
+          "requiredSides": [
+            "left",
+            "right"
+          ]
+        }
+      }
+    },
+    {
+      "patternId": "full-addition.construct-equivalent",
+      "patternRevision": "1",
+      "itemId": "two-thirds-plus-one-fourth",
+      "phase": "completed",
+      "envelope": {
+        "schemaVersion": "fractionflow.episode-replay/v2",
+        "contentIdentity": {
+          "schemaVersion": "fractionflow.problem-instance/v1",
+          "id": "relatively-prime-addition__none__2__3__1__4",
+          "source": "curated",
+          "request": {
+            "selector": "relatively-prime-addition",
+            "operation": "add",
+            "overlays": [],
+            "profileId": "curated-review",
+            "profileVersion": "1"
+          },
+          "provenance": {
+            "kind": "curated",
+            "fixtureId": "curated-relatively-prime-addition-non-least",
+            "authoringRevision": "plan03-fixtures-v1"
+          },
+          "selector": "relatively-prime-addition",
+          "overlays": [],
+          "sourceForms": {
+            "left": {
+              "kind": "fraction",
+              "numerator": "2",
+              "denominator": "3"
+            },
+            "right": {
+              "kind": "fraction",
+              "numerator": "1",
+              "denominator": "4"
+            }
+          },
+          "reconstruction": {
+            "kind": "curated",
+            "request": {
+              "selector": "relatively-prime-addition",
+              "operation": "add",
+              "overlays": [],
+              "profileId": "curated-review",
+              "profileVersion": "1"
+            },
+            "fixtureId": "curated-relatively-prime-addition-non-least",
+            "authoringRevision": "plan03-fixtures-v1"
+          }
+        },
+        "episodeDefinition": {
+          "id": "phase-3-reusable-full-addition",
+          "revision": "1"
+        },
+        "support": {
+          "label": "high support",
+          "dimensions": {
+            "fractionBarModel": "high support",
+            "commonDenominator": "high support",
+            "equivalentNumerators": "high support",
+            "prediction": "high support",
+            "symbolicIntegration": "high support",
+            "helpAndReplay": "high support"
+          }
+        },
+        "activeCondition": {
+          "id": "phase2-bundle-1",
+          "revision": "1",
+          "display": "D-01-A",
+          "choreography": "D-02-M",
+          "promptCadence": "D-05-focused-key-beats",
+          "connectionMaking": "CM-01-M"
+        },
+        "learnerIntents": [
+          {
+            "type": "acknowledge-encounter"
+          },
+          {
+            "type": "submit-equivalent-form",
+            "proposed": {
+              "kind": "fraction",
+              "numerator": "8",
+              "denominator": "12"
+            }
+          },
+          {
+            "type": "submit-equivalent-form",
+            "proposed": {
+              "kind": "fraction",
+              "numerator": "3",
+              "denominator": "12"
+            }
+          },
+          {
+            "type": "submit-operation-result",
+            "proposed": {
+              "kind": "fraction",
+              "numerator": "11",
+              "denominator": "12"
+            }
+          },
+          {
+            "type": "finish-compact-episode"
+          }
+        ],
+        "taskContext": {
+          "practiceSetId": "unlike-addition-vetted-set",
+          "practiceSetRevision": "5",
+          "itemId": "two-thirds-plus-one-fourth",
+          "fixtureId": "curated-relatively-prime-addition-non-least",
+          "authoringRevision": "plan03-fixtures-v1",
+          "definitionId": "phase-3-reusable-full-addition",
+          "definitionRevision": "1",
+          "patternId": "full-addition.construct-equivalent",
+          "patternRevision": "1",
+          "targetDenominator": "12",
+          "taskDataId": "plan34-full-addition-task-data",
+          "taskDataRevision": "1",
+          "stimulusId": null,
+          "stimulusRevision": null,
+          "candidates": null,
+          "requiredSides": [
+            "left",
+            "right"
+          ]
+        }
+      },
+      "expectedState": {
+        "encounter": {
+          "acknowledged": true
+        },
+        "notice": null,
+        "commonDenominator": {
+          "kind": "authored-target-context",
+          "targetDenominator": "12",
+          "source": "validated-authored-task-context",
+          "validity": "valid",
+          "rendering": "eligible",
+          "authoredCoverage": "authored"
+        },
+        "conversions": {
+          "left": {
+            "kind": "fraction",
+            "numerator": "8",
+            "denominator": "12"
+          },
+          "right": {
+            "kind": "fraction",
+            "numerator": "3",
+            "denominator": "12"
+          }
+        },
+        "operation": {
+          "kind": "correct-simplified",
+          "validity": "valid",
+          "mathClassification": "correct-simplified",
+          "patterns": [],
+          "targetDenominator": "12",
+          "proposed": {
+            "kind": "fraction",
+            "numerator": "11",
+            "denominator": "12"
+          },
+          "simplifiedResult": {
+            "kind": "fraction",
+            "numerator": "11",
+            "denominator": "12"
+          },
+          "reasons": []
+        },
+        "resolution": null,
+        "reflection": null,
+        "route": "fraction-bar",
+        "compactCompletion": {
+          "kind": "navigation-completion"
+        },
+        "conversionOrigins": {
+          "left": "learner-constructed",
+          "right": "learner-constructed"
+        },
+        "taskContext": {
+          "practiceSetId": "unlike-addition-vetted-set",
+          "practiceSetRevision": "5",
+          "itemId": "two-thirds-plus-one-fourth",
+          "fixtureId": "curated-relatively-prime-addition-non-least",
+          "authoringRevision": "plan03-fixtures-v1",
+          "definitionId": "phase-3-reusable-full-addition",
+          "definitionRevision": "1",
+          "patternId": "full-addition.construct-equivalent",
+          "patternRevision": "1",
+          "targetDenominator": "12",
+          "taskDataId": "plan34-full-addition-task-data",
+          "taskDataRevision": "1",
+          "stimulusId": null,
+          "stimulusRevision": null,
+          "candidates": null,
+          "requiredSides": [
+            "left",
+            "right"
+          ]
+        }
+      }
+    },
+    {
+      "patternId": "full-addition.inspect-keep-repair",
+      "patternRevision": "1",
+      "itemId": "one-half-plus-one-third",
+      "phase": "initial",
+      "envelope": {
+        "schemaVersion": "fractionflow.episode-replay/v2",
+        "contentIdentity": {
+          "schemaVersion": "fractionflow.problem-instance/v1",
+          "id": "relatively-prime-addition__none__1__2__1__3",
+          "source": "curated",
+          "request": {
+            "selector": "relatively-prime-addition",
+            "operation": "add",
+            "overlays": [],
+            "profileId": "curated-review",
+            "profileVersion": "1"
+          },
+          "provenance": {
+            "kind": "curated",
+            "fixtureId": "curated-relatively-prime-addition-one-half-one-third",
+            "authoringRevision": "plan26-fixtures-v1"
+          },
+          "selector": "relatively-prime-addition",
+          "overlays": [],
+          "sourceForms": {
+            "left": {
+              "kind": "fraction",
+              "numerator": "1",
+              "denominator": "2"
+            },
+            "right": {
+              "kind": "fraction",
+              "numerator": "1",
+              "denominator": "3"
+            }
+          },
+          "reconstruction": {
+            "kind": "curated",
+            "request": {
+              "selector": "relatively-prime-addition",
+              "operation": "add",
+              "overlays": [],
+              "profileId": "curated-review",
+              "profileVersion": "1"
+            },
+            "fixtureId": "curated-relatively-prime-addition-one-half-one-third",
+            "authoringRevision": "plan26-fixtures-v1"
+          }
+        },
+        "episodeDefinition": {
+          "id": "phase-3-reusable-full-addition",
+          "revision": "1"
+        },
+        "support": {
+          "label": "high support",
+          "dimensions": {
+            "fractionBarModel": "high support",
+            "commonDenominator": "high support",
+            "equivalentNumerators": "high support",
+            "prediction": "high support",
+            "symbolicIntegration": "high support",
+            "helpAndReplay": "high support"
+          }
+        },
+        "activeCondition": {
+          "id": "phase2-bundle-1",
+          "revision": "1",
+          "display": "D-01-A",
+          "choreography": "D-02-M",
+          "promptCadence": "D-05-focused-key-beats",
+          "connectionMaking": "CM-01-M"
+        },
+        "learnerIntents": [],
+        "taskContext": {
+          "practiceSetId": "unlike-addition-vetted-set",
+          "practiceSetRevision": "5",
+          "itemId": "one-half-plus-one-third",
+          "fixtureId": "curated-relatively-prime-addition-one-half-one-third",
+          "authoringRevision": "plan26-fixtures-v1",
+          "definitionId": "phase-3-reusable-full-addition",
+          "definitionRevision": "1",
+          "patternId": "full-addition.inspect-keep-repair",
+          "patternRevision": "1",
+          "targetDenominator": "12",
+          "taskDataId": "plan34-full-addition-task-data",
+          "taskDataRevision": "1",
+          "stimulusId": "plan34-one-half-plus-one-third-inspect-candidate",
+          "stimulusRevision": "1",
+          "candidates": {
+            "left": {
+              "kind": "fraction",
+              "numerator": "5",
+              "denominator": "12"
+            },
+            "right": {
+              "kind": "fraction",
+              "numerator": "4",
+              "denominator": "12"
+            }
+          },
+          "requiredSides": [
+            "left",
+            "right"
+          ]
+        }
+      },
+      "expectedState": {
+        "encounter": null,
+        "notice": null,
+        "commonDenominator": null,
+        "conversions": {
+          "left": null,
+          "right": null
+        },
+        "operation": null,
+        "resolution": null,
+        "reflection": null,
+        "route": "fraction-bar",
+        "compactCompletion": null,
+        "conversionOrigins": {},
+        "taskContext": {
+          "practiceSetId": "unlike-addition-vetted-set",
+          "practiceSetRevision": "5",
+          "itemId": "one-half-plus-one-third",
+          "fixtureId": "curated-relatively-prime-addition-one-half-one-third",
+          "authoringRevision": "plan26-fixtures-v1",
+          "definitionId": "phase-3-reusable-full-addition",
+          "definitionRevision": "1",
+          "patternId": "full-addition.inspect-keep-repair",
+          "patternRevision": "1",
+          "targetDenominator": "12",
+          "taskDataId": "plan34-full-addition-task-data",
+          "taskDataRevision": "1",
+          "stimulusId": "plan34-one-half-plus-one-third-inspect-candidate",
+          "stimulusRevision": "1",
+          "candidates": {
+            "left": {
+              "kind": "fraction",
+              "numerator": "5",
+              "denominator": "12"
+            },
+            "right": {
+              "kind": "fraction",
+              "numerator": "4",
+              "denominator": "12"
+            }
+          },
+          "requiredSides": [
+            "left",
+            "right"
+          ]
+        }
+      }
+    },
+    {
+      "patternId": "full-addition.inspect-keep-repair",
+      "patternRevision": "1",
+      "itemId": "one-half-plus-one-third",
+      "phase": "completed",
+      "envelope": {
+        "schemaVersion": "fractionflow.episode-replay/v2",
+        "contentIdentity": {
+          "schemaVersion": "fractionflow.problem-instance/v1",
+          "id": "relatively-prime-addition__none__1__2__1__3",
+          "source": "curated",
+          "request": {
+            "selector": "relatively-prime-addition",
+            "operation": "add",
+            "overlays": [],
+            "profileId": "curated-review",
+            "profileVersion": "1"
+          },
+          "provenance": {
+            "kind": "curated",
+            "fixtureId": "curated-relatively-prime-addition-one-half-one-third",
+            "authoringRevision": "plan26-fixtures-v1"
+          },
+          "selector": "relatively-prime-addition",
+          "overlays": [],
+          "sourceForms": {
+            "left": {
+              "kind": "fraction",
+              "numerator": "1",
+              "denominator": "2"
+            },
+            "right": {
+              "kind": "fraction",
+              "numerator": "1",
+              "denominator": "3"
+            }
+          },
+          "reconstruction": {
+            "kind": "curated",
+            "request": {
+              "selector": "relatively-prime-addition",
+              "operation": "add",
+              "overlays": [],
+              "profileId": "curated-review",
+              "profileVersion": "1"
+            },
+            "fixtureId": "curated-relatively-prime-addition-one-half-one-third",
+            "authoringRevision": "plan26-fixtures-v1"
+          }
+        },
+        "episodeDefinition": {
+          "id": "phase-3-reusable-full-addition",
+          "revision": "1"
+        },
+        "support": {
+          "label": "high support",
+          "dimensions": {
+            "fractionBarModel": "high support",
+            "commonDenominator": "high support",
+            "equivalentNumerators": "high support",
+            "prediction": "high support",
+            "symbolicIntegration": "high support",
+            "helpAndReplay": "high support"
+          }
+        },
+        "activeCondition": {
+          "id": "phase2-bundle-1",
+          "revision": "1",
+          "display": "D-01-A",
+          "choreography": "D-02-M",
+          "promptCadence": "D-05-focused-key-beats",
+          "connectionMaking": "CM-01-M"
+        },
+        "learnerIntents": [
+          {
+            "type": "acknowledge-encounter"
+          },
+          {
+            "type": "repair-inspected-form",
+            "numerator": "6"
+          },
+          {
+            "type": "keep-inspected-form"
+          },
+          {
+            "type": "submit-operation-result",
+            "proposed": {
+              "kind": "fraction",
+              "numerator": "10",
+              "denominator": "12"
+            }
+          },
+          {
+            "type": "finish-compact-episode"
+          }
+        ],
+        "taskContext": {
+          "practiceSetId": "unlike-addition-vetted-set",
+          "practiceSetRevision": "5",
+          "itemId": "one-half-plus-one-third",
+          "fixtureId": "curated-relatively-prime-addition-one-half-one-third",
+          "authoringRevision": "plan26-fixtures-v1",
+          "definitionId": "phase-3-reusable-full-addition",
+          "definitionRevision": "1",
+          "patternId": "full-addition.inspect-keep-repair",
+          "patternRevision": "1",
+          "targetDenominator": "12",
+          "taskDataId": "plan34-full-addition-task-data",
+          "taskDataRevision": "1",
+          "stimulusId": "plan34-one-half-plus-one-third-inspect-candidate",
+          "stimulusRevision": "1",
+          "candidates": {
+            "left": {
+              "kind": "fraction",
+              "numerator": "5",
+              "denominator": "12"
+            },
+            "right": {
+              "kind": "fraction",
+              "numerator": "4",
+              "denominator": "12"
+            }
+          },
+          "requiredSides": [
+            "left",
+            "right"
+          ]
+        }
+      },
+      "expectedState": {
+        "encounter": {
+          "acknowledged": true
+        },
+        "notice": null,
+        "commonDenominator": {
+          "kind": "authored-target-context",
+          "targetDenominator": "12",
+          "source": "validated-authored-task-context",
+          "validity": "valid",
+          "rendering": "eligible",
+          "authoredCoverage": "authored"
+        },
+        "conversions": {
+          "left": {
+            "kind": "fraction",
+            "numerator": "6",
+            "denominator": "12"
+          },
+          "right": {
+            "kind": "fraction",
+            "numerator": "4",
+            "denominator": "12"
+          }
+        },
+        "operation": {
+          "kind": "correct-unsimplified",
+          "validity": "valid",
+          "mathClassification": "correct-unsimplified",
+          "patterns": [
+            "CORRECT_UNSIMPLIFIED_RESULT",
+            "EQUIVALENT_ALTERNATE_FORM"
+          ],
+          "targetDenominator": "12",
+          "proposed": {
+            "kind": "fraction",
+            "numerator": "10",
+            "denominator": "12"
+          },
+          "simplifiedResult": {
+            "kind": "fraction",
+            "numerator": "5",
+            "denominator": "6"
+          },
+          "reasons": []
+        },
+        "resolution": null,
+        "reflection": null,
+        "route": "fraction-bar",
+        "compactCompletion": {
+          "kind": "navigation-completion"
+        },
+        "conversionOrigins": {
+          "left": "learner-repaired",
+          "right": "authored-then-confirmed"
+        },
+        "taskContext": {
+          "practiceSetId": "unlike-addition-vetted-set",
+          "practiceSetRevision": "5",
+          "itemId": "one-half-plus-one-third",
+          "fixtureId": "curated-relatively-prime-addition-one-half-one-third",
+          "authoringRevision": "plan26-fixtures-v1",
+          "definitionId": "phase-3-reusable-full-addition",
+          "definitionRevision": "1",
+          "patternId": "full-addition.inspect-keep-repair",
+          "patternRevision": "1",
+          "targetDenominator": "12",
+          "taskDataId": "plan34-full-addition-task-data",
+          "taskDataRevision": "1",
+          "stimulusId": "plan34-one-half-plus-one-third-inspect-candidate",
+          "stimulusRevision": "1",
+          "candidates": {
+            "left": {
+              "kind": "fraction",
+              "numerator": "5",
+              "denominator": "12"
+            },
+            "right": {
+              "kind": "fraction",
+              "numerator": "4",
+              "denominator": "12"
+            }
+          },
+          "requiredSides": [
+            "left",
+            "right"
+          ]
+        }
+      }
+    }
+  ],
+  "selfCheck": {
+    "caseCount": 4,
+    "allReplayMatches": true
+  }
+}
