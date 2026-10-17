@@ -12,6 +12,7 @@ import {
 } from './authored-problem-materializer.js';
 import { deepFreeze } from './schema.js';
 import { PLAN18_NESTED_ADDITION_RECORDS } from './data/plan18-nested-addition-records.js';
+import { PLAN35_ADDITION_RECIPE_FIXTURES } from './data/plan35-addition-recipe-records.js';
 import { buildCuratedProblem } from './generator.js';
 
 function identityKey(fixtureId, authoringRevision) {
@@ -64,6 +65,11 @@ for (const item of MATERIALIZED_PLAN17_ADDITIONS) {
   const key = identityKey(item.fixtureId, item.authoringRevision);
   if (curatedFixturesByIdentity.has(key)) throw new TypeError(`duplicate curated fixture identity: ${key}`);
   curatedFixturesByIdentity.set(key, item.fixture);
+}
+for (const fixture of PLAN35_ADDITION_RECIPE_FIXTURES) {
+  const key = identityKey(fixture.id, fixture.authoringRevision);
+  if (curatedFixturesByIdentity.has(key)) throw new TypeError(`duplicate curated fixture identity: ${key}`);
+  curatedFixturesByIdentity.set(key, fixture);
 }
 
 /** Exact immutable lookup; this deliberately has no "latest revision" fallback. */

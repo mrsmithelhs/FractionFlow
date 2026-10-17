@@ -270,6 +270,24 @@ function currentSupportConsequence(state) {
 function sceneTaskIdentity(state) {
   if (!state.taskContext) return null;
   const context = state.taskContext;
+  if (state.episodeDefinition?.id === 'phase-3-reusable-addition-recipes') return {
+    practiceSetId: context.practiceSetId,
+    practiceSetRevision: context.practiceSetRevision,
+    itemId: context.itemId,
+    fixtureId: context.fixtureId,
+    authoringRevision: context.authoringRevision,
+    definitionId: context.definitionId,
+    definitionRevision: context.definitionRevision,
+    patternId: context.patternId,
+    patternRevision: context.patternRevision,
+    targetDenominator: context.targetDenominator,
+    taskDataId: context.taskDataId,
+    taskDataRevision: context.taskDataRevision,
+    stimulusId: context.stimulusId,
+    stimulusRevision: context.stimulusRevision,
+    ...(!['full-addition.identify-side-construct'].includes(context.patternId)
+      ? { requiredSides: context.requiredSides } : {}),
+  };
   if (state.episodeDefinition?.id === 'phase-3-nested-renaming-addition') return {
     practiceSetId: context.practiceSetId, practiceSetRevision: context.practiceSetRevision,
     itemId: context.itemId, fixtureId: context.fixtureId, authoringRevision: context.authoringRevision,
@@ -306,11 +324,24 @@ function currentTaskHelp(state) {
   if (request.helpKind === 'inspect-comparison-invariant') {
     return { kind: 'inspect-comparison-invariant', status: 'requested', side: scheduleEntry.side };
   }
+  if (request.helpKind === 'renaming-side-comparison') {
+    const multiplier = state.supportHistory.findLast((entry) => (
+      entry.type === 'transform-help-multiplier' && entry.scheduleEntryId === scheduleEntry?.id
+    ));
+    return {
+      kind: 'renaming-side-comparison',
+      status: multiplier?.classification ?? 'requested',
+      targetDenominator: state.taskContext.targetDenominator,
+      acceptedMultiplier: multiplier?.classification === 'accepted' ? multiplier.proposed.numerator : null,
+    };
+  }
   const multiplier = state.supportHistory.findLast((entry) => (
     entry.type === 'transform-help-multiplier'
     && entry.scheduleEntryId === scheduleEntry.id
   ));
-  if (request.beat === 'decide' && state.episodeDefinition?.id === 'phase-3-nested-renaming-addition') {
+  if (request.beat === 'decide' && (state.episodeDefinition?.id === 'phase-3-nested-renaming-addition'
+    || (state.episodeDefinition?.id === 'phase-3-reusable-addition-recipes'
+      && state.taskContext.patternId === 'full-addition.identify-side-construct'))) {
     return { kind: 'renaming-side-comparison', status: 'requested', targetDenominator: state.taskContext.targetDenominator };
   }
   if (request.beat === 'decide') return { kind: 'common-denominator', status: 'requested' };
@@ -623,6 +654,9 @@ function candidateDenominatorsMeaning(state) {
   if (state.beat !== 'decide') return null;
   if (state.episodeDefinition?.id === 'phase-3-nested-renaming-addition'
     && state.episodeDefinition?.revision === '1') return null;
+  if (state.episodeDefinition?.id === 'phase-3-reusable-addition-recipes'
+    && state.episodeDefinition?.revision === '1'
+    && state.taskContext.patternId === 'full-addition.identify-side-construct') return null;
   const supportLevel = state.support?.dimensions?.commonDenominator;
   if (supportLevel !== 'high support') return null;
   return candidateDenominatorsForInstance(state.content);
@@ -707,7 +741,9 @@ function operationMeaning(state) {
   const simplifiedResult = operation?.simplifiedResult ?? resolution?.simplifiedResult ?? null;
 
   const preserveNestedOriginal = state.episodeDefinition?.id === 'phase-3-nested-renaming-addition'
-    && state.episodeDefinition?.revision === '1';
+    && state.episodeDefinition?.revision === '1'
+    || (state.episodeDefinition?.id === 'phase-3-reusable-addition-recipes'
+      && state.taskContext.patternId === 'full-addition.identify-side-construct');
   return {
     operation: state.content.request.operation,
     currentForms: {
@@ -718,7 +754,9 @@ function operationMeaning(state) {
         ? state.content.operands.right.initialForm
         : state.established.conversions.right ?? (preserveNestedOriginal ? state.content.operands.right.initialForm : null),
     },
-    ...(state.episodeDefinition.id === 'phase-3-nested-renaming-addition' ? { operandOrigins: {
+    ...(['phase-3-nested-renaming-addition', 'phase-3-reusable-addition-recipes'].includes(state.episodeDefinition.id)
+      && (state.episodeDefinition.id !== 'phase-3-reusable-addition-recipes'
+        || state.taskContext.patternId === 'full-addition.identify-side-construct') ? { operandOrigins: {
       left: { kind: state.established.conversions.left ? 'learner-converted' : 'validated-original', performed: Boolean(state.established.conversions.left) },
       right: { kind: state.established.conversions.right ? 'learner-converted' : 'validated-original', performed: Boolean(state.established.conversions.right) },
     } } : {}),

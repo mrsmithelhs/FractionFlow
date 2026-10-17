@@ -28,3 +28,35 @@ rounds preserve and report before expanding. Verify actor state and actual outpu
 dispatch alone does not mean execution continues. Owner screen/agency acceptance
 and deployment stay separate. No push, dependency install, environment change,
 Bootstrap write or automatic execution of another packet is authorized.
+
+## Mechanism and pre-edit oracle checkpoint
+
+The Requirement 0 proposal and parent mechanism disposition are committed at
+`4597459`. Plans 36/37 are draft design-only packets, committed at `038e4d9`;
+neither is initiated. Their bounded Sol low review and disposition are recorded
+under reports/orchestration/plans-36-37-draft-review.md.
+
+Parent approved set@7 with the same 13-item numerical/behavior prefix, five
+explicit compact-task reassociations under new definition/v4, eight appended
+tasks and two later test-only hold-outs. Old v1/v2/v3 meanings stay strict;
+historical set@6 requires pinned page/data/helper as well as context metadata.
+
+Four initial/completed v3 full-state replay oracles for both operand orders were
+captured before product mutation. Parent independently replayed all four and
+committed the frozen artifacts at `678a185`. Existing v1/v2 files are unchanged.
+
+Stage A is dispatched to the same Luna medium child: pure content/admission,
+definition/schedule/state/scene/provenance/replay and focused checks, with no
+live app registry switch, render/browser-route edits or hold-out records. Parent
+will verify and obtain Sol read-only review before committing the foundation
+and authorizing the data-only extension stage. Dispatch is not delivery.
+
+## Stage A accepted after two consolidated repairs
+
+Parent/Sol review found and corrected beat-specific help, candidate bounds and
+closed recipe admission, then corrected data-only extension assumptions before
+freezing the foundation. See stage-a-review.md. Parent full-suite observation
+before repair was 394 passing tests; final focused observation is 45 passing
+tests. No source beyond the pure foundation, no hold-outs and no live app switch
+are included. The next bounded stage adds only the two declared data records and
+their exact test-only association data, then stops for actual diff verification.

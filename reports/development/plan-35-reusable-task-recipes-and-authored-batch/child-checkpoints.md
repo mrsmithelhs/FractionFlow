@@ -71,3 +71,98 @@ current source/test route ownership should be rechecked at the authorized next
 stage. The candidate cases are mathematical/API-validity probes only; authored
 task admission, candidate stimulus quality, geometry at all viewports, and
 rendered learner agency remain unverified.
+
+## Stage A pure foundation — 2026-10-17
+
+- Added a closed exact set/item/task-data association registry. Only live
+  set@7/task-data@1 is registered at this checkpoint; the registry API is
+  prepared for later exact test-only hold-out registration through data edits,
+  while null or unregistered set identities remain rejected.
+- Added the 13-item compact recipe data batch: the original 13 item identities
+  and order are retained, with the five Plan34/Plan18 compact-prefix
+  associations versioned to Plan35; the other eight remain on their existing
+  workflows. The eight appended recipe tasks follow the approved batch. No
+  hold-out records were added.
+- Added Plan35 recipe admission using the exact registered item, fixture,
+  source forms, selector, candidate, target and required sides, validated with
+  the existing exact math APIs and task eligibility/capacity rules. The
+  resolver supports only the three approved recipe families and does not
+  admit arbitrary fixtures or selectors.
+- Registered the Plan35 episode definition and immutable schedules, shared
+  compact episode/recovery/provenance/help/scene handling, and strict v4 replay
+  reconstruction. The Plan18 identify recipe retains its side-selection
+  responsibility, post-conversion history Replay and multiplier-help path.
+  Its pre-choice scene projection omits `requiredSides`, source forms and
+  candidate answers. V1/v2/v3 fixtures and the frozen pre-edit Plan18 v3
+  oracle remain unchanged.
+- Focused verification: `npx vitest run
+  tests/interaction-plan35-reusable-addition.test.js
+  tests/interaction-episode.test.js tests/interaction-provenance-replay.test.js
+  tests/interaction-plan34-task-patterns.test.js
+  tests/interaction-plan18-nested-addition.test.js` passed: 5 files, 44 tests.
+  The Plan35 sweep exercises every current registered item through high and
+  medium support, recovery/completion, replay reconstruction, and semantic
+  comparison of the five reassociated prefix items with their historical
+  Plan34/Plan18 task semantics.
+- Not run: hold-out replay after data-only registration, app/default-registry
+  wiring, mounted render or route matrix, browser/accessibility observation,
+  build, and full repository test suite. These remain outside Stage A.
+- This is an implementation checkpoint for parent/Sol review, not product
+  acceptance or Plan35 completion. No Git metadata was written; existing
+  `tmp-vite-out.log` and `tmp-vite-err.log` were left untouched.
+
+## Stage A consolidated repair round 1 — 2026-10-17
+
+- Restored beat-specific identify help: at `decide`, Plan35 matches Plan18's
+  renaming-side comparison; at `transform`, it returns the established
+  equivalent-fraction help with side, status and accepted multiplier. Tests
+  compare the projected help responsibilities/fields against the historical
+  Plan18 helper at both beats.
+- Added closed recipe identity/revision validation before task derivation.
+  Inspect candidate validation now requires `kind: fraction`, a canonical
+  nonnegative integer-string numerator, exact target denominator and numerator
+  no greater than that denominator. Malformed candidate forms produce the
+  typed task-context error rather than falling into `BigInt` parsing.
+- Kept episode admission bound to the exact registered item/fixture resolver;
+  the exported pure record validator supports negative authoring checks but
+  does not provide another episode admission path. Tests reject unknown recipe
+  IDs/revisions and malformed/out-of-domain candidates.
+- Removed duplicate numerical fixture definitions for the six new Plan35
+  fixtures: each task row is now the authoritative compact source-form record,
+  and its profile, selector and overlays generate the corresponding fixture
+  row. Existing prefix fixture bindings and all reviewed identities/forms are
+  unchanged. A data-only fixture addition now requires one numerical source
+  row plus the distinct task association(s) that reference it.
+- Strengthened the all-record high/medium sweep: each item now exercises
+  applicable wrong-side/conversion/inspect recovery and a wrong operation,
+  confirms the frozen schedule remains unchanged, completes correctly, and
+  asserts the expected constructed, confirmed, repaired or absent conversion
+  origins.
+- Focused verification after round 1: `npx vitest run
+  tests/interaction-plan35-reusable-addition.test.js
+  tests/interaction-episode.test.js tests/interaction-provenance-replay.test.js
+  tests/interaction-plan34-task-patterns.test.js
+  tests/interaction-plan18-nested-addition.test.js` passed: 5 files, 45 tests.
+  No hold-outs, app/default registry, mounted rendering, routes, dependencies,
+  settings or Git metadata were changed.
+
+## Stage A data-only readiness repair round 2 — 2026-10-17
+
+- Replaced live set@7's derived appended membership with the explicit eight
+  approved appended item IDs. Adding a separate registered test set later will
+  not expand or reorder the learner-facing 21-item live set.
+- Task-data mapping now preserves an authored `taskDataRevision` when present
+  and defaults to revision 1 only when absent. This enables later hold-out
+  associations to declare task-data@2 with data-only additions.
+- The generic test start helper now resolves the item's unique registered
+  association set and passes its exact ID/revision to task admission, rather
+  than assuming every registered task belongs to live set@7. Assertions for
+  live set size (21), preserved prefix/order (13), and live recipe totals
+  (3 construct / 4 inspect / 6 identify) filter explicitly to set@7, so
+  additional test-only task rows do not require changing those expectations.
+- Recipe admission now requires `targetDenominator` to be a canonical positive
+  integer string; a negative test passes numeric `12` and verifies rejection.
+- Focused verification after round 2: the same five authorized suites passed,
+  45 tests total. No hold-out records, app/render/routes, settings, dependency
+  changes or Git metadata were added. This is the second consolidated repair
+  checkpoint; stop for parent/Sol review and commit before further expansion.

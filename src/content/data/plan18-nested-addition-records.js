@@ -1,4 +1,5 @@
 import { deepFreeze } from '../schema.js';
+import { PLAN35_ADDITION_RECIPE_PRACTICE_SET } from './plan35-addition-recipe-records.js';
 
 export const PLAN18_NESTED_ADDITION_TASK_DATA_ID = 'plan18-nested-renaming-task-data';
 export const PLAN18_NESTED_ADDITION_TASK_DATA_REVISION = '1';
@@ -31,8 +32,9 @@ export const UNLIKE_ADDITION_PRACTICE_SET_V6 = deepFreeze({
   id: UNLIKE_ADDITION_PRACTICE_SET_V5.id, revision: '6',
   itemIds: [...UNLIKE_ADDITION_PRACTICE_SET_V5.itemIds, ...PLAN18_NESTED_ADDITION_RECORDS.map((record) => record.itemId)],
 });
+export const UNLIKE_ADDITION_PRACTICE_SET_V7 = PLAN35_ADDITION_RECIPE_PRACTICE_SET;
 
 export function practiceSetHasItem(setId, revision, itemId) {
-  const set = revision === '4' ? UNLIKE_ADDITION_PRACTICE_SET_V4 : revision === '5' ? UNLIKE_ADDITION_PRACTICE_SET_V5 : revision === '6' ? UNLIKE_ADDITION_PRACTICE_SET_V6 : null;
+  const set = revision === '4' ? UNLIKE_ADDITION_PRACTICE_SET_V4 : revision === '5' ? UNLIKE_ADDITION_PRACTICE_SET_V5 : revision === '6' ? UNLIKE_ADDITION_PRACTICE_SET_V6 : revision === '7' ? UNLIKE_ADDITION_PRACTICE_SET_V7 : null;
   return set?.id === setId && set.itemIds.includes(itemId);
 }

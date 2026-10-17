@@ -25,6 +25,7 @@ import {
   validatePlan34TaskContext,
 } from '../content/full-addition-task-patterns.js';
 import { PLAN18_NESTED_DEFINITION_ID, validatePlan18TaskContext } from '../content/nested-renaming-task.js';
+import { isPlan35AdditionRecipeDefinition, isPlan35IdentifyRecipe, validatePlan35AdditionRecipeContext } from '../content/plan35-addition-recipe-task.js';
 import {
   EPISODE_BEATS,
   PHASE2_ACTIVE_CONDITION,
@@ -70,6 +71,7 @@ function responseForEntry(definition, entry, taskContext = null) {
   if (beat === 'encounter') return { ...common, responsibility: 'inspect-expression', inputKind: 'acknowledge' };
   if (beat === 'notice') return { ...common, responsibility: 'identify-unit-relationship', inputKind: 'unit-match-choice' };
   if (beat === 'decide') return definition.id === PLAN18_NESTED_DEFINITION_ID
+    || (isPlan35AdditionRecipeDefinition(definition) && isPlan35IdentifyRecipe(taskContext))
     ? {
       ...common,
       responsibility: 'identify-renaming-side',
@@ -80,7 +82,7 @@ function responseForEntry(definition, entry, taskContext = null) {
     }
     : { ...common, responsibility: 'choose-common-denominator', inputKind: 'whole-fraction' };
   if (beat === 'transform') {
-    if (definition.id === PLAN34_EPISODE_DEFINITION_ID) {
+    if (definition.id === PLAN34_EPISODE_DEFINITION_ID || isPlan35AdditionRecipeDefinition(definition)) {
       return {
         ...common,
         responsibility: taskContext.patternId === FULL_ADDITION_INSPECT_PATTERN.id
@@ -199,7 +201,8 @@ function assertDefinition(definition) {
       'episode definition semantics do not match its registered identity',
     );
   }
-  const approvedBeats = registered.id === PLAN18_NESTED_DEFINITION_ID ? ['encounter', 'decide', 'transform', 'operate', 'resolve'] : EPISODE_BEATS;
+  const approvedBeats = [PLAN18_NESTED_DEFINITION_ID, 'phase-3-reusable-addition-recipes'].includes(registered.id)
+    ? ['encounter', 'decide', 'transform', 'operate', 'resolve'] : EPISODE_BEATS;
   if (JSON.stringify(registered.beats) !== JSON.stringify(approvedBeats)) {
     throw new EpisodeConstructionError('INVALID_EPISODE_DEFINITION', 'registered episode beats do not match the approved grammar');
   }
@@ -220,6 +223,7 @@ function assertInstance(instance, definition) {
   const isPlan20Contract = definition.id === PLAN20_LIKE_DENOMINATOR_EPISODE_DEFINITION.id
     && definition.revision === PLAN20_LIKE_DENOMINATOR_EPISODE_DEFINITION.revision;
   const isPlan18 = definition.id === PLAN18_NESTED_DEFINITION_ID && definition.revision === '1';
+  const isPlan35 = definition.id === 'phase-3-reusable-addition-recipes' && definition.revision === '1';
   const registeredCrossing = identityContract?.resultStackCapability === 'plan17-two-whole-stack-v1'
     ? resolveAuthoredContent(identityContract.fixtureId, identityContract.authoringRevision)
     : null;
@@ -271,7 +275,8 @@ function assertInstance(instance, definition) {
     && instance.classification?.transformations?.canonicalRenaming?.right === false
     && definition.includeReflection === false
   );
-  if (instance.request.selector !== definition.selector
+  if ((instance.request.selector !== definition.selector
+      && !(isPlan35 && ['relatively-prime-addition', 'nested-denominator-addition', 'shared-factor-addition'].includes(instance.request.selector)))
     || instance.request.operation !== definition.operation
     || !crossingContractMatches
     || !plan20ContractMatches
@@ -304,7 +309,7 @@ function stateSnapshot(state) {
     ...(Object.prototype.hasOwnProperty.call(state.established, 'sharedUnit')
       ? { sharedUnit: state.established.sharedUnit }
       : {}),
-    ...(state.episodeDefinition?.id === PLAN34_EPISODE_DEFINITION_ID
+    ...([PLAN34_EPISODE_DEFINITION_ID, 'phase-3-reusable-addition-recipes'].includes(state.episodeDefinition?.id)
       ? {
         compactCompletion: state.established.compactCompletion ?? null,
         conversionOrigins: state.established.conversionOrigins ?? {},
@@ -356,7 +361,7 @@ function resolvedState(state, established) {
   const beat = entry.kind;
   const establishedState = {
     ...state.established,
-    ...(beat === 'resolve' && state.episodeDefinition.id === PLAN34_EPISODE_DEFINITION_ID
+    ...(beat === 'resolve' && [PLAN34_EPISODE_DEFINITION_ID, 'phase-3-reusable-addition-recipes'].includes(state.episodeDefinition.id)
       ? { compactCompletion: established }
       : beat === 'resolve' && state.episodeDefinition.id === PLAN18_NESTED_DEFINITION_ID
         ? { nestedCompletion: established }
@@ -477,6 +482,11 @@ function handleTaskHelpRequest(state, intent) {
       ...(state.episodeDefinition.id === PLAN34_EPISODE_DEFINITION_ID
         && state.taskContext.patternId === FULL_ADDITION_INSPECT_PATTERN.id
         ? { helpKind: 'inspect-comparison-invariant' }
+       : {}),
+      ...(isPlan35AdditionRecipeDefinition(state.episodeDefinition)
+        && (state.taskContext.patternId === FULL_ADDITION_INSPECT_PATTERN.id
+          || (isPlan35IdentifyRecipe(state.taskContext) && state.beat === 'decide'))
+        ? { helpKind: state.taskContext.patternId === FULL_ADDITION_INSPECT_PATTERN.id ? 'inspect-comparison-invariant' : 'renaming-side-comparison' }
         : {}),
     }],
   });
@@ -530,7 +540,7 @@ function handleReplay(state, intent) {
 function handleEncounter(state, intent) {
   if (intent.type !== 'acknowledge-encounter') return null;
   const established = { acknowledged: true };
-  const compact = state.episodeDefinition.id === PLAN34_EPISODE_DEFINITION_ID;
+  const compact = [PLAN34_EPISODE_DEFINITION_ID, 'phase-3-reusable-addition-recipes'].includes(state.episodeDefinition.id);
   const nested = state.episodeDefinition.id === PLAN18_NESTED_DEFINITION_ID;
   const next = advanceSchedule(compact || nested ? {
     ...state,
@@ -574,10 +584,12 @@ function handleNotice(state, intent) {
 }
 
 function handleDecide(state, intent) {
-  if (state.episodeDefinition.id === PLAN18_NESTED_DEFINITION_ID) {
+  const identifyRecipe = isPlan35AdditionRecipeDefinition(state.episodeDefinition) && isPlan35IdentifyRecipe(state.taskContext);
+  if (state.episodeDefinition.id === PLAN18_NESTED_DEFINITION_ID || identifyRecipe) {
     if (intent.type !== 'select-renaming-side') return null;
-    if (intent.side !== state.taskContext.requiredSide) return recovery(state, intent, { kind: 'side-choice-needs-retry', selectedSide: intent.side, targetDenominator: '8' });
-    const next = advanceSchedule(state, { side: intent.side, targetDenominator: '8', source: 'learner-selected-authored-renaming-side' });
+    const requiredSide = identifyRecipe ? state.taskContext.requiredSides[0] : state.taskContext.requiredSide;
+    if (intent.side !== requiredSide) return recovery(state, intent, { kind: 'side-choice-needs-retry', selectedSide: intent.side, targetDenominator: state.taskContext.targetDenominator });
+    const next = advanceSchedule(state, { side: intent.side, targetDenominator: state.taskContext.targetDenominator, source: 'learner-selected-authored-renaming-side' });
     return assessedSuccess(state, intent, { kind: 'correct-renaming-side', selectedSide: intent.side }, {
       ...next, established: { ...next.established, selectedRenamingSide: intent.side },
     });
@@ -623,7 +635,7 @@ function handleDecide(state, intent) {
 }
 
 function handleTransform(state, intent) {
-  const compact = state.episodeDefinition.id === PLAN34_EPISODE_DEFINITION_ID;
+  const compact = [PLAN34_EPISODE_DEFINITION_ID, 'phase-3-reusable-addition-recipes'].includes(state.episodeDefinition.id);
   const nested = state.episodeDefinition.id === PLAN18_NESTED_DEFINITION_ID;
   if (!compact && intent.type !== 'submit-equivalent-form') return null;
   if (compact && !['submit-equivalent-form', 'keep-inspected-form', 'repair-inspected-form'].includes(intent.type)) return null;
@@ -714,7 +726,7 @@ function handleResolve(state, intent) {
     if (intent.type !== 'finish-nested-episode') return null;
     return assessedSuccess(state, intent, { kind: 'nested-navigation-completed' }, resolvedState(state, { kind: 'navigation-completion' }));
   }
-  if (state.episodeDefinition.id === PLAN34_EPISODE_DEFINITION_ID) {
+  if ([PLAN34_EPISODE_DEFINITION_ID, 'phase-3-reusable-addition-recipes'].includes(state.episodeDefinition.id)) {
     if (intent.type !== 'finish-compact-episode') return null;
     return assessedSuccess(state, intent, { kind: 'compact-navigation-completed' }, resolvedState(state, { kind: 'navigation-completion' }));
   }
@@ -955,17 +967,20 @@ function assertIntentAllowedAtBeat(state, intent) {
       'submit-reflection is not enabled for this episode definition',
     );
   }
-  const compact = state.episodeDefinition.id === PLAN34_EPISODE_DEFINITION_ID;
+  const compact = [PLAN34_EPISODE_DEFINITION_ID, 'phase-3-reusable-addition-recipes'].includes(state.episodeDefinition.id);
   const nested = state.episodeDefinition.id === PLAN18_NESTED_DEFINITION_ID;
-  if (nested && intent.type === 'propose-common-denominator' && state.beat === 'decide') {
+  const identify = isPlan35AdditionRecipeDefinition(state.episodeDefinition) && isPlan35IdentifyRecipe(state.taskContext);
+  if ((nested || identify) && intent.type === 'propose-common-denominator' && state.beat === 'decide') {
     throw new EpisodeIntentError('UNEXPECTED_INTENT', 'nested side choice does not accept a common-denominator proposal');
   }
   if (nested && intent.type === 'submit-resolution' && state.beat === 'resolve') {
     throw new EpisodeIntentError('UNEXPECTED_INTENT', 'nested resolve is navigation only');
   }
-  if (intent.type === 'select-renaming-side' && (!nested || state.beat !== 'decide')) throw new EpisodeIntentError('UNEXPECTED_INTENT', 'side choice is only available at the nested renaming decision');
+  if (intent.type === 'select-renaming-side' && (!(nested || identify) || state.beat !== 'decide')) throw new EpisodeIntentError('UNEXPECTED_INTENT', 'side choice is only available at an admitted side-identification decision');
   if (intent.type === 'finish-nested-episode' && (!nested || state.beat !== 'resolve')) throw new EpisodeIntentError('UNEXPECTED_INTENT', 'nested finish is available only at nested resolve');
-  if (compact && intent.type === 'request-replay') {
+  const plan35Identify = isPlan35AdditionRecipeDefinition(state.episodeDefinition) && isPlan35IdentifyRecipe(state.taskContext);
+  const plan35IdentifyHasConverted = plan35Identify && state.taskContext.requiredSides.some((side) => state.established.conversions[side] !== null);
+  if (compact && intent.type === 'request-replay' && !plan35IdentifyHasConverted) {
     throw new EpisodeIntentError('UNEXPECTED_INTENT', 'compact episodes do not expose legacy replay actions');
   }
   if (['keep-inspected-form', 'repair-inspected-form'].includes(intent.type)
@@ -973,7 +988,7 @@ function assertIntentAllowedAtBeat(state, intent) {
     throw new EpisodeIntentError('UNEXPECTED_INTENT', `${intent.type} requires an inspect transform`);
   }
   if (intent.type === 'submit-equivalent-form' && compact
-    && state.taskContext.patternId !== FULL_ADDITION_CONSTRUCT_PATTERN.id) {
+    && state.taskContext.patternId !== FULL_ADDITION_CONSTRUCT_PATTERN.id && !identify) {
     throw new EpisodeIntentError('UNEXPECTED_INTENT', 'inspect transforms require keep or repair intents');
   }
   if (intent.type === 'finish-compact-episode' && (!compact || state.beat !== 'resolve')) {
@@ -987,14 +1002,15 @@ function assertIntentAllowedAtBeat(state, intent) {
       && isPlan20Definition(state.episodeDefinition)
       && state.beat === 'operate';
     const compactConstructMultiplierHelp = intent.type === 'submit-transform-help-multiplier'
-      && state.episodeDefinition.id === PLAN34_EPISODE_DEFINITION_ID
+      && [PLAN34_EPISODE_DEFINITION_ID, 'phase-3-reusable-addition-recipes'].includes(state.episodeDefinition.id)
       && state.taskContext.patternId === FULL_ADDITION_CONSTRUCT_PATTERN.id
       && state.beat === 'transform';
-    const nestedTaskHelp = nested
-      && ((intent.type === 'request-task-help' && ['decide', 'transform'].includes(state.beat))
-        || (intent.type === 'submit-transform-help-multiplier' && state.beat === 'transform'));
+    const nestedTaskHelp = (nested && ((intent.type === 'request-task-help' && ['decide', 'transform'].includes(state.beat))
+      || (intent.type === 'submit-transform-help-multiplier' && state.beat === 'transform')))
+      || (identify && ((intent.type === 'request-task-help' && ['decide', 'transform'].includes(state.beat))
+        || (intent.type === 'submit-transform-help-multiplier' && state.beat === 'transform')));
     if (state.episodeDefinition.revision !== '3'
-      && !(state.episodeDefinition.id === PLAN34_EPISODE_DEFINITION_ID && intent.type === 'request-task-help')
+      && !([PLAN34_EPISODE_DEFINITION_ID, 'phase-3-reusable-addition-recipes'].includes(state.episodeDefinition.id) && intent.type === 'request-task-help')
       && !compactConstructMultiplierHelp
       && !nestedTaskHelp
       && !(state.episodeDefinition.id === PLAN17_CROSSING_EPISODE_DEFINITION.id
@@ -1025,10 +1041,12 @@ export function createEpisode({
   const content = assertInstance(instance, definition);
   const normalizedSupport = createSupportConfiguration(support);
   const normalizedCondition = validateActiveCondition(activeCondition);
-  const isCompact = definition.id === PLAN34_EPISODE_DEFINITION_ID;
+  const isCompact = [PLAN34_EPISODE_DEFINITION_ID, 'phase-3-reusable-addition-recipes'].includes(definition.id);
   const isNested = definition.id === PLAN18_NESTED_DEFINITION_ID;
   const normalizedTaskContext = isCompact
-    ? validatePlan34TaskContext(content, taskContext, { allowCompatibilityPair })
+    ? (isPlan35AdditionRecipeDefinition(definition)
+      ? validatePlan35AdditionRecipeContext(content, taskContext)
+      : validatePlan34TaskContext(content, taskContext, { allowCompatibilityPair }))
     : isNested ? validatePlan18TaskContext(content, taskContext) : null;
   if (!isCompact && !isNested && taskContext !== null) {
     throw new EpisodeConstructionError('UNSUPPORTED_TASK_CONTEXT', 'task context is only supported by the compact full-addition definition');

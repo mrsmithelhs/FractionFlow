@@ -171,6 +171,22 @@ export const PLAN18_NESTED_ADDITION_EPISODE_DEFINITION = deepFreeze({
   },
 });
 
+export const PLAN35_REUSABLE_ADDITION_RECIPES_EPISODE_DEFINITION = deepFreeze({
+  ...BASE_EPISODE_DEFINITION,
+  id: 'phase-3-reusable-addition-recipes',
+  revision: '1',
+  includeReflection: false,
+  selector: 'relatively-prime-addition',
+  beats: Object.freeze(['encounter', 'decide', 'transform', 'operate', 'resolve']),
+  promptIdentities: {
+    encounter: 'phase3.full-addition.encounter',
+    decide: 'phase3.full-addition.decide',
+    transform: 'phase3.full-addition.transform',
+    operate: 'phase3.full-addition.operate',
+    resolve: 'phase3.full-addition.resolve',
+  },
+});
+
 const EPISODE_DEFINITIONS = Object.freeze([
   LEGACY_PHASE2_EPISODE_DEFINITION,
   LEGACY_PHASE2_REFLECTION_EPISODE_DEFINITION,
@@ -183,6 +199,7 @@ const EPISODE_DEFINITIONS = Object.freeze([
   PLAN17_CROSSING_EPISODE_DEFINITION,
   PLAN34_FULL_ADDITION_EPISODE_DEFINITION,
   PLAN18_NESTED_ADDITION_EPISODE_DEFINITION,
+  PLAN35_REUSABLE_ADDITION_RECIPES_EPISODE_DEFINITION,
 ]);
 
 export function getEpisodeDefinition(id = EPISODE_DEFINITION_ID, revision = EPISODE_DEFINITION_REVISION) {

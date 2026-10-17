@@ -10,6 +10,8 @@ export * from './data/plan34-full-addition-task-records.js';
 export * from './data/plan18-nested-addition-records.js';
 export * from './nested-renaming-task.js';
 export * from './full-addition-task-patterns.js';
+export * from './data/plan35-addition-recipe-records.js';
+export * from './plan35-addition-recipe-task.js';
 export * from './authored-content-catalog.js';
 export * from './authored-problem-materializer.js';
 export * from './generator.js';
