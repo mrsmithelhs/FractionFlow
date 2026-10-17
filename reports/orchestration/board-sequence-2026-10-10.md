@@ -26,18 +26,21 @@ and follow-up register.
 The earlier source sequence through **31 → 32 → 19 → 17 → 20** is complete.
 Plans 29/33/34 and the subsequent Plan 18 increment are also complete. The owner
 approved Plan 18's shorter task under DECISION-044 and accepted its rendered copy.
-Recommended next: **Plan 35 — Reusable Task-Recipe Admission and Varied Authored
+Current source assignment: **Plan 35 — Reusable Task-Recipe Admission and Varied Authored
 Batch**, drafted at the owner's request on 2026-10-17. It addresses Plan 18's fixed
 target/two-record boundary alongside the accepted Plan 34 patterns and requires
-a data-only hold-out extension proof. Status is draft; no implementation is
-started. Reuse deterministic math; avoid another isolated one-problem increment.
+a data-only hold-out extension proof. Owner initiated it on 2026-10-17 with
+a supervised Luna medium child and Sol read-only low/medium review. Requirement 0
+is in flight; source changes remain mechanism-gated. Reuse deterministic math; avoid another isolated one-problem increment.
 
 The next wave must also address learner-facing subtraction, which remains at the
 accepted standalone-prototype stage pending an explicit initial representation
-disposition. Prepare the first number-line design at the Phase 3 bar-stability
-review; it remains a named follow-up, not an active implementation packet. Do not
+disposition. Draft Plan 36 now specifies the subtraction integration design, with like-denominator
+takeaway as a proposal rather than an adopted preference. Draft Plan 37 specifies
+the first number-line/bar bridge design. Both are uninitiated design packets;
+number-line source activation retains the Phase 3 bar-stability review. Do not
 declare Phase 3 complete from addition-family packet closure alone. Plan 23 is
-still the independent existing tooling option; no next packet is initiated here.
+still the independent existing tooling option. Only Plan 35 is initiated here.
 Plan 32 depends on Plan 31 for serialization and the notation/evidence baseline;
 Plan 19 depends on Plan 32 to reuse the adopted authoring/admission mechanism.
 The subsequent family order is preferred, not an invented technical dependency
@@ -55,12 +58,14 @@ chain. Recheck every older source packet against current code before initiation.
 | 29 — Purposeful Episode Task Variation Design | Shorter variants with different learner responsibilities around one concept | Complete; owner adopted the reusable full-operation contract |
 | 33 — About FractionFlow and Use Guide | Optional entry-linked description, use/support guidance and current privacy facts | Complete; owner accepted the current page, which may evolve |
 | 34 — Reusable Task Patterns in Full Addition Episodes | Compact construct and inspect/keep/repair assignments using existing problems | Complete; technical review and owner acceptance recorded 2026-10-17 |
-| 35 — Reusable Task-Recipe Admission and Varied Authored Batch | Generalize the three proven recipes across compact records and varied targets; prove data-only extension | Draft at owner request; recommended next source work; Requirement 0 and initiation remain gated |
+| 35 — Reusable Task-Recipe Admission and Varied Authored Batch | Generalize the three proven recipes across compact records and varied targets; prove data-only extension | In-progress by owner authorization; Luna Requirement 0 investigation, mechanism/batch gate before source |
+| 36 - Learner Subtraction Integration Design | First integrated subtraction task, concise flow and varied compact batch proposal | Draft; follows Plan 35 authoring baseline; owner task/representation adoption before a separate source packet |
+| 37 - First Number-Line Task and Bar-to-Line Bridge Design | One meaningful same-amount/location connection and accessible capability contract | Draft; preparatory design can use a pinned bar baseline; source activation requires representation/Phase 3 review and a separate packet |
 
 The older family packets completed their roadmap roles after later-numbered
 packets supplied discovered prerequisites. Their execution order was purposeful;
 packet numbering does not determine priority. Plan 23 remains useful independent
-tooling work. None of these closures initiates it or the proposed next wave.
+tooling work. Neither these closures nor the two design drafts initiates Plan 23, 36 or 37.
 
 ## Unused numbers 27 and 28
 

@@ -586,7 +586,10 @@ prototypes are missing. A bounded integration packet can propose a task-specific
 provisional choice for owner approval without asserting a universal winner or
 instructional efficacy. Like-denominator subtraction is the proposed first
 integration scope; broader subtraction-family scaling follows complete state,
-projection, recovery, access and replay evidence. No integration packet is started.
+projection, recovery, access and replay evidence. Draft Plan 36 now specifies the
+initial integration-design work; it is not initiated and authorizes no source.
+Takeaway for a remaining-amount task is a recommendation to review, not an adopted
+representation policy or a resolution of this question.
 
 ---
 
