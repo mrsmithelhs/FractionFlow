@@ -1,11 +1,9 @@
 ---
 id: plan-18
 title: Nested-Denominator Addition
-status: draft
+status: in-progress
 depends_on: [plan-11, plan-12, plan-13, plan-14, plan-16, plan-22, plan-26]
 gate: "DECISION-037 adopts the focused renaming task. Requirement 0 verifies that task and obtains execution mechanism approval before source work. Technical and owner rendered-screen/agency acceptance; deployment separately authorized."
-superseded_by: null
-resolution: null
 summary: >-
   Make nested-denominator addition learner-reachable, with one required canonical
   conversion and a meaningful decision about which fraction needs renaming.
@@ -72,6 +70,18 @@ the gate. Existing definition semantics and previous routes remain protected.
 ## Implementation Requirements
 
 ### Requirement 0 — Discriminating investigation and decision; stop
+
+Owner execution renewal, 2026-10-17: run this packet with a bounded Luna
+implementation child and parent-arranged Sol read-only low/medium review, using
+the accepted Plan 34 baseline. Investigate before source work. Compare the older
+Notice/side-selection/conversion/reflection arc below with a shorter arc that
+preserves the adopted meaningful side-selection task. Explain which steps earn
+their space; explicit mechanism approval and a recorded packet amendment must
+precede any change to those older retention requirements. No omission is approved
+by this paragraph alone. Reuse compact authoring, shared fraction notation and
+existing response/help boundaries rather than building a parallel framework.
+Plan 34 currently admits only its three two-renaming records; it is not proof
+that one-renaming state, provided operands or mirrored help/replay already work.
 
 Run preflight and verify DECISION-037 and the adopted disposition in the separate
 nested brief. The first task identifies which fraction needs renaming to the unit
