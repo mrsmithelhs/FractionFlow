@@ -1,7 +1,8 @@
 ---
 id: plan-18
 title: Nested-Denominator Addition
-status: delivered
+status: complete
+resolution: "Owner accepted the five-step nested-addition task and revised side-choice wording after independent technical verification. Both operand orders complete with one learner conversion and preserved provided context; reusable recipe and bounded target/content generalization follow-up recorded. Deployment remains separate."
 depends_on: [plan-11, plan-12, plan-13, plan-14, plan-16, plan-22, plan-26, plan-34]
 gate: "DECISION-037 adopts the focused renaming task. Requirement 0 verifies that task and obtains execution mechanism approval before source work. Technical and owner rendered-screen/agency acceptance; deployment separately authorized."
 summary: >-

@@ -18,13 +18,25 @@ implemented the accepted reusable compact task-pattern contract and is owner
 accepted and complete as of 2026-10-17, including the new-fraction copy/layout
 repair. These closures do not authorize deployment.
 
+Updated 2026-10-17: Plan 18 is now owner accepted and complete, including the
+five-step task and simpler side-choice wording. Its reusable one-renaming recipe
+and remaining target/content generalization boundary are recorded in the closure
+and follow-up register.
+
 The earlier source sequence through **31 → 32 → 19 → 17 → 20** is complete.
-Plans 29/33/34 also completed before the next family increment. Recommended next:
-**Plan 18**, after refreshing its mechanism brief against the accepted Plan 34
-baseline. Its older required Notice/reflection steps need explicit review for
-purpose and episode length; do not silently remove them or copy them into source
-without considering the newer task contract. The adopted side-identification
-task remains DECISION-037. Plan 18 is still draft, not initiated.
+Plans 29/33/34 and the subsequent Plan 18 increment are also complete. The owner
+approved Plan 18's shorter task under DECISION-044 and accepted its rendered copy.
+Recommended next source proposal: **reusable task-recipe admission and a varied
+authored batch**, addressing Plan 18's fixed target/two-record boundary alongside
+the accepted Plan 34 patterns. This is a recommendation, not a drafted or started
+packet. Reuse deterministic math; avoid another isolated one-problem increment.
+
+The next wave must also address learner-facing subtraction, which remains at the
+accepted standalone-prototype stage pending an explicit initial representation
+disposition. Prepare the first number-line design at the Phase 3 bar-stability
+review; it remains a named follow-up, not an active implementation packet. Do not
+declare Phase 3 complete from addition-family packet closure alone. Plan 23 is
+still the independent existing tooling option; no next packet is initiated here.
 Plan 32 depends on Plan 31 for serialization and the notation/evidence baseline;
 Plan 19 depends on Plan 32 to reuse the adopted authoring/admission mechanism.
 The subsequent family order is preferred, not an invented technical dependency
@@ -37,17 +49,16 @@ chain. Recheck every older source packet against current code before initiation.
 | 19 — Shared-Factor Addition | New denominator relationship, retaining two conversions | Complete; technical and owner acceptance satisfied |
 | 17 — Crossing-One-Whole Addition | Truthful equal-unit multi-whole result stack | Complete; technical and owner acceptance satisfied |
 | 20 — Like-Denominator Addition and Notice Recovery | Zero-renaming episode and same-parts recovery | Complete; technical and owner acceptance satisfied |
-| 18 — Nested-Denominator Addition | Identify and rename only the operand needing it, in both orders | Recommended next; draft refresh and mechanism gate against Plan 34; not unrestricted alternative-unit choice |
+| 18 — Nested-Denominator Addition | Identify and rename only the operand needing it, in both orders | Complete; owner accepted the shorter task and revised question; broader target/content admission and general unit choice remain follow-up |
 | 23 — Local Development Console | Safe menu hub for local server lifecycle and commands | Independent tooling slot between source assignments; owner initiation and live start/stop acceptance |
 | 29 — Purposeful Episode Task Variation Design | Shorter variants with different learner responsibilities around one concept | Complete; owner adopted the reusable full-operation contract |
 | 33 — About FractionFlow and Use Guide | Optional entry-linked description, use/support guidance and current privacy facts | Complete; owner accepted the current page, which may evolve |
 | 34 — Reusable Task Patterns in Full Addition Episodes | Compact construct and inspect/keep/repair assignments using existing problems | Complete; technical review and owner acceptance recorded 2026-10-17 |
 
-All older drafts still serve roadmap objectives. They are not retired simply
-because later-numbered packets addressed discovered prerequisites. Plans 17/20
-now explicitly depend on accepted Plan 26 for Next reach; stale Plan 11 pending-
-acceptance and Plan 26 unimplemented passages were corrected. These edits do not
-initiate the older packets or constitute a fresh source-level audit of their mechanisms.
+The older family packets completed their roadmap roles after later-numbered
+packets supplied discovered prerequisites. Their execution order was purposeful;
+packet numbering does not determine priority. Plan 23 remains useful independent
+tooling work. None of these closures initiates it or the proposed next wave.
 
 ## Unused numbers 27 and 28
 
