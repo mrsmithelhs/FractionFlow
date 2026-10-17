@@ -4920,7 +4920,7 @@
             {
               "type": "containsText",
               "target": ".app-linear-view .active-beat-prompt",
-              "value": "Does this proposal show the same amount as the first fraction?"
+              "value": "Does this new fraction show the same amount as the first fraction?"
             },
             {
               "type": "hasSelector",

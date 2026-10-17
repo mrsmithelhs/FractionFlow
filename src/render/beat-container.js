@@ -497,16 +497,12 @@ export function createBeatContainer({
           const candidate = task.candidate;
           if (!candidate) throw new RenderContractError('MISSING_INSPECT_CANDIDATE', 'inspect transform requires the current authored proposal');
           promptText.textContent = strings.transform.inspectPrompt(side);
-          const proposal = document.createElement('p');
-          proposal.classList.add('active-beat-prompt-context');
-          proposal.textContent = `${strings.transform.inspectProposalLabel} `;
-          proposal.appendChild(createSymbolicFraction(
-            candidate.numerator, candidate.denominator, { ariaPrefix: 'Proposal' },
+          controlsContainer.appendChild(createSymbolicFraction(
+            candidate.numerator, candidate.denominator, { ariaPrefix: 'New fraction', variant: 'compact' },
           ));
-          controlsContainer.appendChild(proposal);
           const keep = createButton({
             label: 'Keep',
-            ariaLabel: `Keep proposal ${candidate.numerator}/${candidate.denominator}`,
+            ariaLabel: `Keep new fraction ${candidate.numerator} over ${candidate.denominator}`,
             className: 'control-choice-btn',
             onClick: () => dispatchAction({ type: 'keep-inspected-form' }),
           });

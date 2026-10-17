@@ -1,0 +1,166 @@
+{
+  "capturedAt": "2026-10-17T15:01:15.722Z",
+  "browser": "installed Chrome via Playwright",
+  "measurements": [
+    {
+      "view": "linear",
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "question": "Does this new fraction show the same amount as the first fraction?",
+      "questionBounds": {
+        "x": 63,
+        "y": 311.8,
+        "width": 234,
+        "height": 75.6
+      },
+      "fractionBounds": {
+        "x": 63,
+        "y": 421.3,
+        "width": 22,
+        "height": 39.2
+      },
+      "fractionRuleBounds": {
+        "x": 63,
+        "y": 439.9,
+        "width": 22,
+        "height": 2
+      },
+      "keepBounds": {
+        "x": 63,
+        "y": 476.5,
+        "width": 234,
+        "height": 44
+      },
+      "fractionAccessibleName": "New fraction 5 over 12",
+      "keepAccessibleName": "Keep new fraction 5 over 12",
+      "fractionDirectlyInControls": true,
+      "visibleProposalText": false,
+      "document": {
+        "width": 360,
+        "height": 824
+      }
+    },
+    {
+      "view": "visual",
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "question": "Does this new fraction show the same amount as the first fraction?",
+      "questionBounds": {
+        "x": 63,
+        "y": 440.7,
+        "width": 234,
+        "height": 75.6
+      },
+      "fractionBounds": {
+        "x": 63,
+        "y": 547.2,
+        "width": 22,
+        "height": 39.2
+      },
+      "fractionRuleBounds": {
+        "x": 63,
+        "y": 565.8,
+        "width": 22,
+        "height": 2
+      },
+      "keepBounds": {
+        "x": 63,
+        "y": 602.4,
+        "width": 234,
+        "height": 44
+      },
+      "fractionAccessibleName": "New fraction 5 over 12",
+      "keepAccessibleName": "Keep new fraction 5 over 12",
+      "fractionDirectlyInControls": true,
+      "visibleProposalText": false,
+      "document": {
+        "width": 360,
+        "height": 950
+      }
+    },
+    {
+      "view": "linear",
+      "viewport": {
+        "width": 360,
+        "height": 752
+      },
+      "question": "Does this new fraction show the same amount as the first fraction?",
+      "questionBounds": {
+        "x": 63,
+        "y": 311.8,
+        "width": 234,
+        "height": 75.6
+      },
+      "fractionBounds": {
+        "x": 63,
+        "y": 421.3,
+        "width": 22,
+        "height": 39.2
+      },
+      "fractionRuleBounds": {
+        "x": 63,
+        "y": 439.9,
+        "width": 22,
+        "height": 2
+      },
+      "keepBounds": {
+        "x": 63,
+        "y": 476.5,
+        "width": 234,
+        "height": 44
+      },
+      "fractionAccessibleName": "New fraction 5 over 12",
+      "keepAccessibleName": "Keep new fraction 5 over 12",
+      "fractionDirectlyInControls": true,
+      "visibleProposalText": false,
+      "document": {
+        "width": 360,
+        "height": 824
+      }
+    },
+    {
+      "view": "visual",
+      "viewport": {
+        "width": 360,
+        "height": 752
+      },
+      "question": "Does this new fraction show the same amount as the first fraction?",
+      "questionBounds": {
+        "x": 63,
+        "y": 440.7,
+        "width": 234,
+        "height": 75.6
+      },
+      "fractionBounds": {
+        "x": 63,
+        "y": 547.2,
+        "width": 22,
+        "height": 39.2
+      },
+      "fractionRuleBounds": {
+        "x": 63,
+        "y": 565.8,
+        "width": 22,
+        "height": 2
+      },
+      "keepBounds": {
+        "x": 63,
+        "y": 602.4,
+        "width": 234,
+        "height": 44
+      },
+      "fractionAccessibleName": "New fraction 5 over 12",
+      "keepAccessibleName": "Keep new fraction 5 over 12",
+      "fractionDirectlyInControls": true,
+      "visibleProposalText": false,
+      "document": {
+        "width": 360,
+        "height": 950
+      }
+    }
+  ]
+}

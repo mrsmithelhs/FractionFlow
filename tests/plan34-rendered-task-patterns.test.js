@@ -117,11 +117,19 @@ describe('Plan 34 mounted production task patterns', () => {
     const host = () => root.querySelector(linear ? '.app-linear-view' : '.app-visual-view');
     const active = () => host().querySelector('.active-beat-section');
     let question = active().querySelector('.active-beat-header .active-beat-prompt');
-    expect(question.textContent).toBe('Does this proposal show the same amount as the first fraction?');
+    expect(question.textContent).toBe('Does this new fraction show the same amount as the first fraction?');
     expect(active().querySelectorAll('.active-beat-header .active-beat-prompt')).toHaveLength(1);
-    const proposal = active().querySelector('.symbolic-fraction');
-    expect(proposal).not.toBeNull();
-    expect(proposal.querySelector('.symbolic-numerator').textContent).toBe('5');
+    const newFraction = active().querySelector('.symbolic-fraction');
+    expect(newFraction).not.toBeNull();
+    expect(newFraction.querySelector('.symbolic-numerator').textContent).toBe('5');
+    expect(newFraction.getAttribute('aria-label')).toBe('New fraction 5 over 12');
+    expect(active().querySelector('.active-beat-controls').textContent).not.toContain('Proposal');
+    const taskControls = active().querySelector('.active-beat-controls');
+    const keepButton = [...taskControls.querySelectorAll('button')]
+      .find((button) => button.getAttribute('aria-label') === 'Keep new fraction 5 over 12');
+    expect(keepButton).not.toBeUndefined();
+    expect(taskControls.children.indexOf(newFraction))
+      .toBeLessThan(taskControls.children.indexOf(keepButton));
     expect(active().textContent).not.toContain('6/12');
     expect(root.querySelector('.app-replay-button').hidden).toBe(true);
 

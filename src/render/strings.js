@@ -92,8 +92,7 @@ export const STRINGS = Object.freeze({
     helpMultiplierRequired: 'Enter a whole number to keep going.',
     // Minor note: Natural phrasing for grade 2–3 and clean screen-reader voicing.
     equivalentNumeratorPrompt: equivalentPartsPrompt,
-    inspectPrompt: (side) => `Does this proposal show the same amount as the ${side === 'left' ? 'first' : 'second'} fraction?`,
-    inspectProposalLabel: 'Proposal:',
+    inspectPrompt: (side) => `Does this new fraction show the same amount as the ${side === 'left' ? 'first' : 'second'} fraction?`,
     changeTopPrompt: 'Change the top number:',
     changeTopButton: 'Change top number',
     inspectHelp: 'The top and bottom must use the same multiplier to keep the amount.',
