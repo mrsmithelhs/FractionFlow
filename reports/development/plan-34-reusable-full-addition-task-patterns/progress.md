@@ -1,6 +1,6 @@
 # Plan 34 implementation progress
 
-**Status:** Technical delivery accepted by the orchestrator; owner rendered-page and agency acceptance remain pending. This report does not declare packet completion or deployment readiness.
+**Status:** Complete. The owner accepted the delivered work and wording/layout repair on 2026-10-17 and instructed the orchestrator to complete Plan 34. See [owner-acceptance.md](owner-acceptance.md). Deployment remains separately gated.
 
 **Implementation commits:** `befe78c` foundation; `28a5636` app and rendering; `ec75871` browser integration, repairs and evidence. The progress report is committed after these implementation/evidence changes.
 
@@ -35,7 +35,7 @@ Consultation ran through parent-arranged, default-role `gpt-6-sol` medium read-o
 
 All adopted Sol findings were addressed within scope: scene leakage, unchanged-confirmation provenance, usable construct help, rendered help visibility, omitted-task summaries, and route-depth/view completion gaps. Parent browser verification additionally found and verified repair of the class-token exception. No broader task engine, one-side content, physical-device, assistive-technology, or learning-efficacy claim is made. Browser automation does not establish those outcomes.
 
-Parent technical review is accepted. Owner rendered acceptance and the separate deployment gate remain pending. The implementer did not change packet status; the orchestrator records delivery separately. Nothing was pushed or deployed.
+At technical delivery, parent review was accepted and owner rendered acceptance remained pending. The owner subsequently accepted the work as recorded below. The implementer did not change packet status. Nothing was pushed or deployed.
 
 ## Owner-directed terminology and layout repair — 2026-10-17
 
@@ -45,3 +45,11 @@ and reused intrinsic compact fraction sizing. Parent source/browser verification
 passed; details and refreshed screenshots are in [copy-layout-repair.md](copy-layout-repair.md).
 Implementation/evidence commit: `4f067c7`. This does not close the owner rendered
 acceptance or deployment gates. Plan34 remains delivered.
+
+## Owner closure — 2026-10-17
+
+The owner instructed “Complete Plan 34.” This accepts the delivered task patterns
+and the subsequent new-fraction wording/layout repair. The orchestrator set the
+packet complete with a written resolution and regenerated the board. Earlier
+pending-acceptance statements describe the prior delivery checkpoints. Deployment
+is still separately gated; no push, deployment or next-packet initiation followed.

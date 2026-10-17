@@ -1,7 +1,8 @@
 ---
 id: plan-34
 title: Reusable Task Patterns in Full Addition Episodes
-status: delivered
+status: complete
+resolution: "Owner accepted the delivered reusable full-addition task patterns and the new-fraction wording/layout repair on 2026-10-17. Technical review verified the scoped implementation, compatibility and browser evidence. Deployment remains separately gated."
 depends_on: [plan-20, plan-25, plan-26, plan-29, plan-32]
 gate: "Owner initiation; Requirement 0 approves versioned pattern/schedule, live-set integration, access/help/applicability and exact paths before source changes. Technical review and owner rendered-screen/agency acceptance before completion; deployment separate."
 summary: >-
