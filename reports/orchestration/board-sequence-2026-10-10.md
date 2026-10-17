@@ -26,10 +26,11 @@ and follow-up register.
 The earlier source sequence through **31 → 32 → 19 → 17 → 20** is complete.
 Plans 29/33/34 and the subsequent Plan 18 increment are also complete. The owner
 approved Plan 18's shorter task under DECISION-044 and accepted its rendered copy.
-Recommended next source proposal: **reusable task-recipe admission and a varied
-authored batch**, addressing Plan 18's fixed target/two-record boundary alongside
-the accepted Plan 34 patterns. This is a recommendation, not a drafted or started
-packet. Reuse deterministic math; avoid another isolated one-problem increment.
+Recommended next: **Plan 35 — Reusable Task-Recipe Admission and Varied Authored
+Batch**, drafted at the owner's request on 2026-10-17. It addresses Plan 18's fixed
+target/two-record boundary alongside the accepted Plan 34 patterns and requires
+a data-only hold-out extension proof. Status is draft; no implementation is
+started. Reuse deterministic math; avoid another isolated one-problem increment.
 
 The next wave must also address learner-facing subtraction, which remains at the
 accepted standalone-prototype stage pending an explicit initial representation
@@ -54,6 +55,7 @@ chain. Recheck every older source packet against current code before initiation.
 | 29 — Purposeful Episode Task Variation Design | Shorter variants with different learner responsibilities around one concept | Complete; owner adopted the reusable full-operation contract |
 | 33 — About FractionFlow and Use Guide | Optional entry-linked description, use/support guidance and current privacy facts | Complete; owner accepted the current page, which may evolve |
 | 34 — Reusable Task Patterns in Full Addition Episodes | Compact construct and inspect/keep/repair assignments using existing problems | Complete; technical review and owner acceptance recorded 2026-10-17 |
+| 35 — Reusable Task-Recipe Admission and Varied Authored Batch | Generalize the three proven recipes across compact records and varied targets; prove data-only extension | Draft at owner request; recommended next source work; Requirement 0 and initiation remain gated |
 
 The older family packets completed their roadmap roles after later-numbered
 packets supplied discovered prerequisites. Their execution order was purposeful;
