@@ -36,3 +36,12 @@ Consultation ran through parent-arranged, default-role `gpt-6-sol` medium read-o
 All adopted Sol findings were addressed within scope: scene leakage, unchanged-confirmation provenance, usable construct help, rendered help visibility, omitted-task summaries, and route-depth/view completion gaps. Parent browser verification additionally found and verified repair of the class-token exception. No broader task engine, one-side content, physical-device, assistive-technology, or learning-efficacy claim is made. Browser automation does not establish those outcomes.
 
 Parent technical review is accepted. Owner rendered acceptance and the separate deployment gate remain pending. The implementer did not change packet status; the orchestrator records delivery separately. Nothing was pushed or deployed.
+
+## Owner-directed terminology and layout repair — 2026-10-17
+
+The owner approved “new fraction” and removal of the separate “Proposal:” label.
+A bounded Luna implementation changed visible and accessible copy in both views
+and reused intrinsic compact fraction sizing. Parent source/browser verification
+passed; details and refreshed screenshots are in [copy-layout-repair.md](copy-layout-repair.md).
+Implementation/evidence commit: `4f067c7`. This does not close the owner rendered
+acceptance or deployment gates. Plan34 remains delivered.
