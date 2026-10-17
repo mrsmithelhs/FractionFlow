@@ -26,3 +26,17 @@ minutes per bounded assignment, excluding owner waits. After two consolidated
 repair rounds, preserve state and report before expanding work. A dispatch receipt
 is not evidence the actor remains active; verify execution through runtime state
 and persisted output. No next packet is initiated by this assignment.
+
+## Requirement 0 checkpoint — 2026-10-17
+
+Luna completed the investigation and one consolidated report refinement. Sol
+medium completed a read-only mechanism review. The parent independently reran
+the corrected two-order probe; packet lint and diff check pass. See the proposal,
+probe/results, child checkpoint and mechanism-review.md in this directory.
+
+The owner has been asked whether to amend the older mandatory Notice/reflection
+requirements to the recommended five-step task. That answer is pending. The Luna
+child is stopped; no product source or tests changed. Resume from these artifacts
+after the task-shape answer and explicit parent source authorization. Preserve
+the replay, set-membership, staged review and separate acceptance gates recorded
+in the proposal; do not treat the investigation as implementation delivery.

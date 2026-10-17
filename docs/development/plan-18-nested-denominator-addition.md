@@ -96,9 +96,11 @@ focused task's agency, prompts, replay identity and fixed schedule;
 obtain mechanism approval before source changes. Orchestrator mechanism approval
 alone does not authorize narrowing alternate pathways or amending DECISION-034.
 Explicitly name reducer/classification prerequisites for operate/resolve: distinguish
-the unchanged original operand from a learner-performed conversion. Current code
-unconditionally parses two conversion records. Generalize effective operand forms
-without fabricated responses/provenance. Reflection subject and prompts across
+the unchanged original operand from a learner-performed conversion. Requirement 0
+confirmed that operation classification already falls back to the original operand
+when a conversion is absent; operation scene projection still needs the corresponding
+provided form. Preserve effective operand forms without fabricated responses/provenance.
+Reflection subject and prompts across
 instruction, scene, visual and linear paths must follow the actual task/converted
 side rather than always `conversions.left`. Author and validate the fixture and
 applicable path-specific premise/reflection data. Prove accepted-definition pure

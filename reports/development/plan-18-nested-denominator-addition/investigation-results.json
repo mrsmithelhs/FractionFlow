@@ -1,0 +1,430 @@
+{
+  "operandOrders": [
+    {
+      "fixtureId": "curated-nested-addition",
+      "authoringRevision": "plan03-fixtures-v1",
+      "forms": {
+        "left": {
+          "kind": "fraction",
+          "numerator": "1",
+          "denominator": "2"
+        },
+        "right": {
+          "kind": "fraction",
+          "numerator": "3",
+          "denominator": "8"
+        }
+      },
+      "relationship": "nested",
+      "canonicalRenaming": {
+        "left": true,
+        "right": false,
+        "targetDenominator": "8"
+      },
+      "currentLegacySchedule": [
+        {
+          "id": "encounter",
+          "kind": "encounter"
+        },
+        {
+          "id": "notice",
+          "kind": "notice"
+        },
+        {
+          "id": "decide",
+          "kind": "decide"
+        },
+        {
+          "id": "transform-left",
+          "kind": "transform",
+          "side": "left"
+        },
+        {
+          "id": "operate",
+          "kind": "operate"
+        },
+        {
+          "id": "resolve",
+          "kind": "resolve"
+        },
+        {
+          "id": "reflect",
+          "kind": "reflect"
+        }
+      ],
+      "currentAdmissionAttempts": [
+        {
+          "support": "high support",
+          "result": "refused",
+          "code": "UNSUPPORTED_CONTENT_FAMILY",
+          "message": "content instance is outside the Phase 2 episode family"
+        },
+        {
+          "support": "medium support",
+          "result": "refused",
+          "code": "UNSUPPORTED_CONTENT_FAMILY",
+          "message": "content instance is outside the Phase 2 episode family"
+        }
+      ],
+      "targets": [
+        {
+          "target": "8",
+          "commonDenominator": {
+            "validity": "valid",
+            "efficiency": "least",
+            "classification": "valid-least",
+            "proposedDenominator": "8",
+            "leastCommonDenominator": "8",
+            "scaleFactors": {
+              "left": "4",
+              "right": "1"
+            },
+            "reasons": []
+          },
+          "converted": {
+            "left": {
+              "numerator": "4",
+              "denominator": "8"
+            },
+            "right": {
+              "numerator": "3",
+              "denominator": "8"
+            }
+          },
+          "eligibility": {
+            "profile": {
+              "id": "curated-review",
+              "version": "1"
+            },
+            "limits": {
+              "maxDenominator": "30",
+              "maxScaleFactor": "12"
+            },
+            "pathKind": "proposed",
+            "mathematicalValidity": "valid",
+            "mathClassification": "valid-least",
+            "rendering": "eligible",
+            "targetDenominator": "8",
+            "scaleFactors": {
+              "left": "4",
+              "right": "1"
+            },
+            "leastCommonDenominator": "8",
+            "reasons": [],
+            "authoredCoverage": "canonical",
+            "continuation": "episode-definition"
+          }
+        },
+        {
+          "target": "16",
+          "commonDenominator": {
+            "validity": "valid",
+            "efficiency": "non-least",
+            "classification": "valid-non-least",
+            "proposedDenominator": "16",
+            "leastCommonDenominator": "8",
+            "scaleFactors": {
+              "left": "8",
+              "right": "2"
+            },
+            "reasons": []
+          },
+          "converted": {
+            "left": {
+              "numerator": "8",
+              "denominator": "16"
+            },
+            "right": {
+              "numerator": "6",
+              "denominator": "16"
+            }
+          },
+          "eligibility": {
+            "profile": {
+              "id": "curated-review",
+              "version": "1"
+            },
+            "limits": {
+              "maxDenominator": "30",
+              "maxScaleFactor": "12"
+            },
+            "pathKind": "proposed",
+            "mathematicalValidity": "valid",
+            "mathClassification": "valid-non-least",
+            "rendering": "eligible",
+            "targetDenominator": "16",
+            "scaleFactors": {
+              "left": "8",
+              "right": "2"
+            },
+            "leastCommonDenominator": "8",
+            "reasons": [],
+            "authoredCoverage": "authored-alternate",
+            "continuation": "episode-definition"
+          }
+        },
+        {
+          "target": "24",
+          "commonDenominator": {
+            "validity": "valid",
+            "efficiency": "non-least",
+            "classification": "valid-non-least",
+            "proposedDenominator": "24",
+            "leastCommonDenominator": "8",
+            "scaleFactors": {
+              "left": "12",
+              "right": "3"
+            },
+            "reasons": []
+          },
+          "converted": {
+            "left": {
+              "numerator": "12",
+              "denominator": "24"
+            },
+            "right": {
+              "numerator": "9",
+              "denominator": "24"
+            }
+          },
+          "eligibility": {
+            "profile": {
+              "id": "curated-review",
+              "version": "1"
+            },
+            "limits": {
+              "maxDenominator": "30",
+              "maxScaleFactor": "12"
+            },
+            "pathKind": "proposed",
+            "mathematicalValidity": "valid",
+            "mathClassification": "valid-non-least",
+            "rendering": "eligible",
+            "targetDenominator": "24",
+            "scaleFactors": {
+              "left": "12",
+              "right": "3"
+            },
+            "leastCommonDenominator": "8",
+            "reasons": [],
+            "authoredCoverage": "outside-authored-coverage",
+            "continuation": "episode-definition"
+          }
+        }
+      ]
+    },
+    {
+      "fixtureId": "curated-nested-addition-mirrored",
+      "authoringRevision": "plan03-fixtures-v1",
+      "forms": {
+        "left": {
+          "kind": "fraction",
+          "numerator": "3",
+          "denominator": "8"
+        },
+        "right": {
+          "kind": "fraction",
+          "numerator": "1",
+          "denominator": "2"
+        }
+      },
+      "relationship": "nested",
+      "canonicalRenaming": {
+        "left": false,
+        "right": true,
+        "targetDenominator": "8"
+      },
+      "currentLegacySchedule": [
+        {
+          "id": "encounter",
+          "kind": "encounter"
+        },
+        {
+          "id": "notice",
+          "kind": "notice"
+        },
+        {
+          "id": "decide",
+          "kind": "decide"
+        },
+        {
+          "id": "transform-right",
+          "kind": "transform",
+          "side": "right"
+        },
+        {
+          "id": "operate",
+          "kind": "operate"
+        },
+        {
+          "id": "resolve",
+          "kind": "resolve"
+        },
+        {
+          "id": "reflect",
+          "kind": "reflect"
+        }
+      ],
+      "currentAdmissionAttempts": [
+        {
+          "support": "high support",
+          "result": "refused",
+          "code": "UNSUPPORTED_CONTENT_FAMILY",
+          "message": "content instance is outside the Phase 2 episode family"
+        },
+        {
+          "support": "medium support",
+          "result": "refused",
+          "code": "UNSUPPORTED_CONTENT_FAMILY",
+          "message": "content instance is outside the Phase 2 episode family"
+        }
+      ],
+      "targets": [
+        {
+          "target": "8",
+          "commonDenominator": {
+            "validity": "valid",
+            "efficiency": "least",
+            "classification": "valid-least",
+            "proposedDenominator": "8",
+            "leastCommonDenominator": "8",
+            "scaleFactors": {
+              "left": "1",
+              "right": "4"
+            },
+            "reasons": []
+          },
+          "converted": {
+            "left": {
+              "numerator": "3",
+              "denominator": "8"
+            },
+            "right": {
+              "numerator": "4",
+              "denominator": "8"
+            }
+          },
+          "eligibility": {
+            "profile": {
+              "id": "curated-review",
+              "version": "1"
+            },
+            "limits": {
+              "maxDenominator": "30",
+              "maxScaleFactor": "12"
+            },
+            "pathKind": "proposed",
+            "mathematicalValidity": "valid",
+            "mathClassification": "valid-least",
+            "rendering": "eligible",
+            "targetDenominator": "8",
+            "scaleFactors": {
+              "left": "1",
+              "right": "4"
+            },
+            "leastCommonDenominator": "8",
+            "reasons": [],
+            "authoredCoverage": "canonical",
+            "continuation": "episode-definition"
+          }
+        },
+        {
+          "target": "16",
+          "commonDenominator": {
+            "validity": "valid",
+            "efficiency": "non-least",
+            "classification": "valid-non-least",
+            "proposedDenominator": "16",
+            "leastCommonDenominator": "8",
+            "scaleFactors": {
+              "left": "2",
+              "right": "8"
+            },
+            "reasons": []
+          },
+          "converted": {
+            "left": {
+              "numerator": "6",
+              "denominator": "16"
+            },
+            "right": {
+              "numerator": "8",
+              "denominator": "16"
+            }
+          },
+          "eligibility": {
+            "profile": {
+              "id": "curated-review",
+              "version": "1"
+            },
+            "limits": {
+              "maxDenominator": "30",
+              "maxScaleFactor": "12"
+            },
+            "pathKind": "proposed",
+            "mathematicalValidity": "valid",
+            "mathClassification": "valid-non-least",
+            "rendering": "eligible",
+            "targetDenominator": "16",
+            "scaleFactors": {
+              "left": "2",
+              "right": "8"
+            },
+            "leastCommonDenominator": "8",
+            "reasons": [],
+            "authoredCoverage": "authored-alternate",
+            "continuation": "episode-definition"
+          }
+        },
+        {
+          "target": "24",
+          "commonDenominator": {
+            "validity": "valid",
+            "efficiency": "non-least",
+            "classification": "valid-non-least",
+            "proposedDenominator": "24",
+            "leastCommonDenominator": "8",
+            "scaleFactors": {
+              "left": "3",
+              "right": "12"
+            },
+            "reasons": []
+          },
+          "converted": {
+            "left": {
+              "numerator": "9",
+              "denominator": "24"
+            },
+            "right": {
+              "numerator": "12",
+              "denominator": "24"
+            }
+          },
+          "eligibility": {
+            "profile": {
+              "id": "curated-review",
+              "version": "1"
+            },
+            "limits": {
+              "maxDenominator": "30",
+              "maxScaleFactor": "12"
+            },
+            "pathKind": "proposed",
+            "mathematicalValidity": "valid",
+            "mathClassification": "valid-non-least",
+            "rendering": "eligible",
+            "targetDenominator": "24",
+            "scaleFactors": {
+              "left": "3",
+              "right": "12"
+            },
+            "leastCommonDenominator": "8",
+            "reasons": [],
+            "authoredCoverage": "outside-authored-coverage",
+            "continuation": "episode-definition"
+          }
+        }
+      ]
+    }
+  ]
+}
