@@ -76,6 +76,14 @@ export const STRINGS = Object.freeze({
     ),
   }),
 
+  nestedAddition: Object.freeze({
+    sideChoicePrompt: 'Which fraction needs new parts to use eighths?',
+    firstFraction: 'First fraction',
+    secondFraction: 'Second fraction',
+    wrongSide: 'Check which fraction is already in eighths. Choose the other one.',
+    sideChoiceHelp: 'Compare each bottom number with 8. A fraction already in eighths does not need new parts.',
+  }),
+
   transform: Object.freeze({
     prompt: (side, den) => (
       `Rename the ${side === 'left' ? 'first' : 'second'} fraction with ${den} equal parts.`

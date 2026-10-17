@@ -1,6 +1,7 @@
 import { PHASE2_REFLECTION_EPISODE_DEFINITION } from '../interaction/episode-definition.js';
 import { PLAN20_LIKE_DENOMINATOR_EPISODE_DEFINITION } from '../interaction/episode-definition.js';
 import { PLAN34_FULL_ADDITION_EPISODE_DEFINITION } from '../interaction/episode-definition.js';
+import { PLAN18_NESTED_ADDITION_EPISODE_DEFINITION } from '../interaction/episode-definition.js';
 import { deepFreeze } from '../content/schema.js';
 
 /**
@@ -155,7 +156,16 @@ export const PLAN34_PRACTICE_TYPES_V5 = deepFreeze(LEGACY_PRACTICE_TYPES_V4.map(
   };
 }));
 
-export const PRACTICE_TYPES = PLAN34_PRACTICE_TYPES_V5;
+const PLAN18_NESTED_ITEMS_V6 = deepFreeze([
+  { id: 'nested-one-half-plus-three-eighths', fixtureId: 'curated-nested-addition-one-half-three-eighths', authoringRevision: 'plan18-record-v1', episodeDefinitionId: PLAN18_NESTED_ADDITION_EPISODE_DEFINITION.id, episodeDefinitionRevision: PLAN18_NESTED_ADDITION_EPISODE_DEFINITION.revision, taskDataId: 'plan18-nested-renaming-task-data', taskDataRevision: '1', targetDenominator: '8' },
+  { id: 'nested-three-eighths-plus-one-half', fixtureId: 'curated-nested-addition-three-eighths-one-half', authoringRevision: 'plan18-record-v1', episodeDefinitionId: PLAN18_NESTED_ADDITION_EPISODE_DEFINITION.id, episodeDefinitionRevision: PLAN18_NESTED_ADDITION_EPISODE_DEFINITION.revision, taskDataId: 'plan18-nested-renaming-task-data', taskDataRevision: '1', targetDenominator: '8' },
+]);
+
+export const PLAN18_PRACTICE_TYPES_V6 = deepFreeze(PLAN34_PRACTICE_TYPES_V5.map((practiceType) => practiceType.id !== 'sum-under-one'
+  ? practiceType
+  : { ...practiceType, setRevision: '6', items: [...practiceType.items, ...PLAN18_NESTED_ITEMS_V6] }));
+
+export const PRACTICE_TYPES = PLAN18_PRACTICE_TYPES_V6;
 
 export function getPracticeType(id) {
   return PRACTICE_TYPES.find((practiceType) => practiceType.id === id) ?? null;

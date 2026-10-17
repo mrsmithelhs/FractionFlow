@@ -736,6 +736,16 @@
   background-color: var(--ff-btn-hover-bg);
 }
 
+.nested-side-choice {
+  min-height: 3rem;
+  min-width: min(7.5rem, 42vw);
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.2rem;
+}
+
 .linear-matching-choice-btn {
   min-width: var(--ff-min-target-size);
   min-height: var(--ff-min-target-size);

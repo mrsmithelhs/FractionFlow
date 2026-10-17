@@ -3,6 +3,7 @@ import { resolveAuthoredContent, resolveCuratedFixture } from '../content/author
 import { validateProblemInstance } from '../content/validation.js';
 import { validateAuthoredTaskData } from '../content/authored-task-data.js';
 import { resolvePlan34TaskContext, PLAN34_EPISODE_DEFINITION_ID } from '../content/full-addition-task-patterns.js';
+import { resolvePlan18TaskContext, PLAN18_NESTED_DEFINITION_ID } from '../content/nested-renaming-task.js';
 import { evaluateInstanceEligibility } from '../content/eligibility.js';
 import {
   applyIntent,
@@ -39,7 +40,7 @@ const APP_RENDER_STRINGS = Object.freeze({
   }),
 });
 
-function canonicalInstance(item, conditions = REGISTERED_CONDITIONS) {
+function canonicalInstance(item, conditions = REGISTERED_CONDITIONS, practiceType = null) {
   const fixture = resolveCuratedFixture(item?.fixtureId, item?.authoringRevision);
   if (!fixture) throw new Error(`practice fixture identity is unavailable: ${item?.fixtureId}@${item?.authoringRevision}`);
   const authoredContent = resolveAuthoredContent(item.fixtureId, item.authoringRevision);
@@ -96,12 +97,22 @@ function canonicalInstance(item, conditions = REGISTERED_CONDITIONS) {
     return instance;
   }
   if (definition.id === PLAN34_EPISODE_DEFINITION_ID) {
-    const taskContext = resolvePlan34TaskContext(instance, item.patternId, item.patternRevision, item.targetDenominator);
+    const taskContext = resolvePlan34TaskContext(instance, item.patternId, item.patternRevision, item.targetDenominator, { practiceSetRevision: practiceType?.setRevision ?? '5' });
     if (taskContext.itemId !== item.id
-      || taskContext.practiceSetId !== 'unlike-addition-vetted-set'
-      || taskContext.practiceSetRevision !== '5') {
-      throw new Error('Plan 34 practice item does not match its fixed v5 task association');
+      || taskContext.practiceSetId !== practiceType?.setId
+      || taskContext.practiceSetRevision !== practiceType?.setRevision) {
+      throw new Error('Plan 34 practice item does not match its selected-set task association');
     }
+    return instance;
+  }
+  if (definition.id === PLAN18_NESTED_DEFINITION_ID) {
+    const taskContext = resolvePlan18TaskContext(instance, { practiceSetId: practiceType?.setId, practiceSetRevision: practiceType?.setRevision });
+    if (taskContext.itemId !== item.id
+      || taskContext.fixtureId !== item.fixtureId
+      || taskContext.authoringRevision !== item.authoringRevision
+      || taskContext.taskDataId !== item.taskDataId
+      || taskContext.taskDataRevision !== item.taskDataRevision
+      || taskContext.targetDenominator !== item.targetDenominator) throw new Error('Plan 18 practice item does not match its exact set@6 association');
     return instance;
   }
   validateAuthoredTaskData(instance, item.targetDenominators);
@@ -137,6 +148,16 @@ function setHidden(element, hidden) {
   else element.removeAttribute('hidden');
 }
 
+function isVisibleControlInHost(control, host) {
+  if (!control?.isConnected || !host || host.hidden) return false;
+  let node = control;
+  while (node && node !== host) {
+    if (node.hidden) return false;
+    node = node.parentNode;
+  }
+  return node === host;
+}
+
 function presentationModeFor({ override, motionQuery }) {
   if (override === 'standard-motion' || override === 'reduced-motion' || override === 'instant-test') {
     return override;
@@ -146,8 +167,10 @@ function presentationModeFor({ override, motionQuery }) {
 
 function createInitialState(instance, practiceType, condition, supportLevel, episodeDefinition = practiceType.episodeDefinition, item = null) {
   const taskContext = item?.patternId
-    ? resolvePlan34TaskContext(instance, item.patternId, item.patternRevision, item.targetDenominator)
-    : null;
+    ? resolvePlan34TaskContext(instance, item.patternId, item.patternRevision, item.targetDenominator, { practiceSetRevision: practiceType.setRevision })
+    : item?.episodeDefinitionId === PLAN18_NESTED_DEFINITION_ID
+      ? resolvePlan18TaskContext(instance, { practiceSetId: practiceType.setId, practiceSetRevision: practiceType.setRevision })
+      : null;
   if (taskContext && (taskContext.itemId !== item.id
     || taskContext.practiceSetId !== practiceType.setId
     || taskContext.practiceSetRevision !== practiceType.setRevision)) {
@@ -590,7 +613,7 @@ export function createFractionFlowApp({
     const item = practiceType?.items?.[index];
     if (!item) throw new Error(`practice item ${index} is not registered`);
     const definition = getEpisodeDefinition(item.episodeDefinitionId, item.episodeDefinitionRevision);
-    const instance = canonicalInstance(item);
+    const instance = canonicalInstance(item, REGISTERED_CONDITIONS, practiceType);
     const nextState = createInitialState(instance, practiceType, selectedCondition, selectedSupportLevel, definition, item);
     return { item, instance, state: nextState };
   }
@@ -741,9 +764,11 @@ export function createFractionFlowApp({
     const resolved = state.status === 'resolved';
     const isPlan20 = state.episodeDefinition.id === PLAN20_LIKE_DENOMINATOR_EPISODE_DEFINITION.id;
     const isPlan34 = state.episodeDefinition.id === PLAN34_EPISODE_DEFINITION_ID;
+    const isPlan18 = state.episodeDefinition.id === PLAN18_NESTED_DEFINITION_ID;
     helpButton.disabled = resolved;
-    replayButton.hidden = isPlan20 || isPlan34;
-    replayButton.disabled = isPlan20 || isPlan34 || resolved || state.beat === 'encounter';
+    const hasConversion = Boolean(state.established?.lastConversion);
+    replayButton.hidden = isPlan20 || isPlan34 || (isPlan18 && !hasConversion);
+    replayButton.disabled = isPlan20 || isPlan34 || resolved || state.beat === 'encounter' || (isPlan18 && !hasConversion);
     replayButton.setAttribute('aria-pressed', String(isReplaying));
     supportNotice.textContent = activityNotice;
   }
@@ -818,9 +843,10 @@ export function createFractionFlowApp({
   function getVisibleOperationInput() {
     if (state?.beat !== 'operate'
       || (state.episodeDefinition.id !== PLAN20_LIKE_DENOMINATOR_EPISODE_DEFINITION.id
-        && state.episodeDefinition.id !== PLAN34_EPISODE_DEFINITION_ID)) return null;
+        && state.episodeDefinition.id !== PLAN34_EPISODE_DEFINITION_ID
+        && state.episodeDefinition.id !== PLAN18_NESTED_DEFINITION_ID)) return null;
     const host = visualView ? visualHost : linearHost;
-    return host?.querySelector(state.episodeDefinition.id === PLAN34_EPISODE_DEFINITION_ID
+    return host?.querySelector([PLAN34_EPISODE_DEFINITION_ID, PLAN18_NESTED_DEFINITION_ID].includes(state.episodeDefinition.id)
       ? `#${visualView ? 'operate' : 'linear-operate'}-sum-input`
       : 'input.control-fraction-input') || null;
   }
@@ -830,7 +856,7 @@ export function createFractionFlowApp({
     const host = visualView ? visualHost : linearHost;
     const prefix = visualView ? 'operate' : 'linear-operate';
     operationDrafts = {
-      numerator: host?.querySelector(`#${state.episodeDefinition.id === PLAN34_EPISODE_DEFINITION_ID ? prefix + '-sum-input' : prefix + '-fraction-numerator-input'}`)?.value ?? '',
+      numerator: host?.querySelector(`#${[PLAN34_EPISODE_DEFINITION_ID, PLAN18_NESTED_DEFINITION_ID].includes(state.episodeDefinition.id) ? prefix + '-sum-input' : prefix + '-fraction-numerator-input'}`)?.value ?? '',
       denominator: host?.querySelector(`#${prefix}-fraction-denominator-input`)?.value ?? '',
     };
   }
@@ -839,7 +865,7 @@ export function createFractionFlowApp({
     if (!getVisibleOperationInput()) return;
     const host = visualView ? visualHost : linearHost;
     const prefix = visualView ? 'operate' : 'linear-operate';
-    const numerator = host?.querySelector(`#${state.episodeDefinition.id === PLAN34_EPISODE_DEFINITION_ID ? prefix + '-sum-input' : prefix + '-fraction-numerator-input'}`);
+    const numerator = host?.querySelector(`#${[PLAN34_EPISODE_DEFINITION_ID, PLAN18_NESTED_DEFINITION_ID].includes(state.episodeDefinition.id) ? prefix + '-sum-input' : prefix + '-fraction-numerator-input'}`);
     const denominator = host?.querySelector(`#${prefix}-fraction-denominator-input`);
     if (numerator) numerator.value = operationDrafts.numerator;
     if (denominator) denominator.value = operationDrafts.denominator;
@@ -926,7 +952,10 @@ export function createFractionFlowApp({
       return;
     }
     const sourceDenominators = scene?.meaning?.unitRelationship?.sourceDenominators;
-    const cue = !sourceDenominators
+    const nestedHelp = scene?.meaning?.taskHelp?.kind === 'renaming-side-comparison';
+    const cue = nestedHelp
+      ? STRINGS.nestedAddition.sideChoiceHelp
+      : !sourceDenominators
       ? ''
       : STRINGS.decide.findingHelpCue(
         sourceDenominators.left,
@@ -1101,6 +1130,16 @@ export function createFractionFlowApp({
       if (action.type === 'submit-operation-result'
         && state.lastRecovery?.beat === 'operate') getVisibleOperationInput()?.focus();
       if (action.type === 'submit-transform-help-multiplier') getVisibleTransformInput()?.focus();
+      if (action.type === 'select-renaming-side') {
+        const host = visualView ? visualHost : linearHost;
+        if (state.beat === 'decide' && state.lastRecovery?.classification?.kind === 'side-choice-needs-retry') {
+          const retryChoice = host?.querySelector('.active-beat-section .nested-side-choice');
+          if (isVisibleControlInHost(retryChoice, host)) retryChoice.focus();
+        } else if (state.beat === 'transform') {
+          const conversionInput = getVisibleTransformInput();
+          if (isVisibleControlInHost(conversionInput, host)) conversionInput.focus();
+        }
+      }
     } catch (error) {
       isReplaying = false;
       activityNotice = action.type === 'request-replay'

@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Plan 18 unshipped mounted smoke fixture</title>
+</head>
+<body>
+  <div id="smoke-root"></div>
+  <script type="module">
+    import '../../../src/app/styles.css';
+    import '../../../src/styles/render.css';
+    import { createFractionFlowApp } from '../../../src/app/app.js';
+    import { PRACTICE_TYPES } from '../../../src/app/practice-types.js';
+
+    const registered = PRACTICE_TYPES[0];
+    const selected = new URLSearchParams(location.search).get('item');
+    const items = registered.items.filter((item) => item.id === selected);
+    if (items.length !== 1) throw new Error('Choose one exact registered Plan 18 item with ?item=...');
+    const practiceType = Object.freeze({ ...registered, items: Object.freeze(items) });
+    window.plan18SmokeApp = createFractionFlowApp({
+      root: document.querySelector('#smoke-root'),
+      practiceTypes: [practiceType],
+      presentationMode: 'standard-motion',
+    }).mount();
+  </script>
+</body>
+</html>

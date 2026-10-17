@@ -1,0 +1,310 @@
+{
+  "fixture": "unshipped one-item subset of the exact registered set@6 item, navigated through visible app controls",
+  "channel": "chrome",
+  "cases": [
+    {
+      "itemId": "nested-one-half-plus-three-eighths",
+      "view": "visual",
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "sideChoiceButtonBoxes": [
+        {
+          "width": 139.796875,
+          "height": 82.375,
+          "left": 63,
+          "right": 202.796875
+        },
+        {
+          "width": 162.90625,
+          "height": 82.375,
+          "left": 63,
+          "right": 225.90625
+        }
+      ],
+      "document": {
+        "viewportWidth": 360,
+        "documentWidth": 360,
+        "documentHeight": 921
+      },
+      "wrongChoiceFocus": {
+        "tag": "BUTTON",
+        "classes": "fraction-control nested-side-choice control-choice-btn"
+      },
+      "correctChoiceFocus": {
+        "tag": "INPUT",
+        "id": "transform-num-input-left"
+      },
+      "replayActivated": true,
+      "finishedSummary": "Show previous steps (3 completed)Problem established.First fraction: 1/2 = 4/8Sum: 7/8Result: 7/8",
+      "pageErrors": []
+    },
+    {
+      "itemId": "nested-one-half-plus-three-eighths",
+      "view": "visual",
+      "viewport": {
+        "width": 360,
+        "height": 752
+      },
+      "sideChoiceButtonBoxes": [
+        {
+          "width": 139.796875,
+          "height": 82.375,
+          "left": 63,
+          "right": 202.796875
+        },
+        {
+          "width": 162.90625,
+          "height": 82.375,
+          "left": 63,
+          "right": 225.90625
+        }
+      ],
+      "document": {
+        "viewportWidth": 360,
+        "documentWidth": 360,
+        "documentHeight": 921
+      },
+      "wrongChoiceFocus": {
+        "tag": "BUTTON",
+        "classes": "fraction-control nested-side-choice control-choice-btn"
+      },
+      "correctChoiceFocus": {
+        "tag": "INPUT",
+        "id": "transform-num-input-left"
+      },
+      "replayActivated": true,
+      "finishedSummary": "Show previous steps (3 completed)Problem established.First fraction: 1/2 = 4/8Sum: 7/8Result: 7/8",
+      "pageErrors": []
+    },
+    {
+      "itemId": "nested-one-half-plus-three-eighths",
+      "view": "linear",
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "sideChoiceButtonBoxes": [
+        {
+          "width": 139.796875,
+          "height": 82.375,
+          "left": 63,
+          "right": 202.796875
+        },
+        {
+          "width": 162.90625,
+          "height": 82.375,
+          "left": 63,
+          "right": 225.90625
+        }
+      ],
+      "document": {
+        "viewportWidth": 360,
+        "documentWidth": 360,
+        "documentHeight": 803
+      },
+      "wrongChoiceFocus": {
+        "tag": "BUTTON",
+        "classes": "fraction-control nested-side-choice control-choice-btn"
+      },
+      "correctChoiceFocus": {
+        "tag": "INPUT",
+        "id": "linear-transform-num-input-left"
+      },
+      "replayActivated": true,
+      "finishedSummary": "Show previous steps (3 completed)Problem established.First fraction: 1/2 = 4/8Sum: 7/8Result: 7/8",
+      "pageErrors": []
+    },
+    {
+      "itemId": "nested-one-half-plus-three-eighths",
+      "view": "linear",
+      "viewport": {
+        "width": 360,
+        "height": 752
+      },
+      "sideChoiceButtonBoxes": [
+        {
+          "width": 139.796875,
+          "height": 82.375,
+          "left": 63,
+          "right": 202.796875
+        },
+        {
+          "width": 162.90625,
+          "height": 82.375,
+          "left": 63,
+          "right": 225.90625
+        }
+      ],
+      "document": {
+        "viewportWidth": 360,
+        "documentWidth": 360,
+        "documentHeight": 803
+      },
+      "wrongChoiceFocus": {
+        "tag": "BUTTON",
+        "classes": "fraction-control nested-side-choice control-choice-btn"
+      },
+      "correctChoiceFocus": {
+        "tag": "INPUT",
+        "id": "linear-transform-num-input-left"
+      },
+      "replayActivated": true,
+      "finishedSummary": "Show previous steps (3 completed)Problem established.First fraction: 1/2 = 4/8Sum: 7/8Result: 7/8",
+      "pageErrors": []
+    },
+    {
+      "itemId": "nested-three-eighths-plus-one-half",
+      "view": "visual",
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "sideChoiceButtonBoxes": [
+        {
+          "width": 139.796875,
+          "height": 82.375,
+          "left": 63,
+          "right": 202.796875
+        },
+        {
+          "width": 162.90625,
+          "height": 82.375,
+          "left": 63,
+          "right": 225.90625
+        }
+      ],
+      "document": {
+        "viewportWidth": 360,
+        "documentWidth": 360,
+        "documentHeight": 921
+      },
+      "wrongChoiceFocus": {
+        "tag": "BUTTON",
+        "classes": "fraction-control nested-side-choice control-choice-btn"
+      },
+      "correctChoiceFocus": {
+        "tag": "INPUT",
+        "id": "transform-num-input-right"
+      },
+      "replayActivated": true,
+      "finishedSummary": "Show previous steps (3 completed)Problem established.Second fraction: 1/2 = 4/8Sum: 7/8Result: 7/8",
+      "pageErrors": []
+    },
+    {
+      "itemId": "nested-three-eighths-plus-one-half",
+      "view": "visual",
+      "viewport": {
+        "width": 360,
+        "height": 752
+      },
+      "sideChoiceButtonBoxes": [
+        {
+          "width": 139.796875,
+          "height": 82.375,
+          "left": 63,
+          "right": 202.796875
+        },
+        {
+          "width": 162.90625,
+          "height": 82.375,
+          "left": 63,
+          "right": 225.90625
+        }
+      ],
+      "document": {
+        "viewportWidth": 360,
+        "documentWidth": 360,
+        "documentHeight": 921
+      },
+      "wrongChoiceFocus": {
+        "tag": "BUTTON",
+        "classes": "fraction-control nested-side-choice control-choice-btn"
+      },
+      "correctChoiceFocus": {
+        "tag": "INPUT",
+        "id": "transform-num-input-right"
+      },
+      "replayActivated": true,
+      "finishedSummary": "Show previous steps (3 completed)Problem established.Second fraction: 1/2 = 4/8Sum: 7/8Result: 7/8",
+      "pageErrors": []
+    },
+    {
+      "itemId": "nested-three-eighths-plus-one-half",
+      "view": "linear",
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "sideChoiceButtonBoxes": [
+        {
+          "width": 139.796875,
+          "height": 82.375,
+          "left": 63,
+          "right": 202.796875
+        },
+        {
+          "width": 162.90625,
+          "height": 82.375,
+          "left": 63,
+          "right": 225.90625
+        }
+      ],
+      "document": {
+        "viewportWidth": 360,
+        "documentWidth": 360,
+        "documentHeight": 803
+      },
+      "wrongChoiceFocus": {
+        "tag": "BUTTON",
+        "classes": "fraction-control nested-side-choice control-choice-btn"
+      },
+      "correctChoiceFocus": {
+        "tag": "INPUT",
+        "id": "linear-transform-num-input-right"
+      },
+      "replayActivated": true,
+      "finishedSummary": "Show previous steps (3 completed)Problem established.Second fraction: 1/2 = 4/8Sum: 7/8Result: 7/8",
+      "pageErrors": []
+    },
+    {
+      "itemId": "nested-three-eighths-plus-one-half",
+      "view": "linear",
+      "viewport": {
+        "width": 360,
+        "height": 752
+      },
+      "sideChoiceButtonBoxes": [
+        {
+          "width": 139.796875,
+          "height": 82.375,
+          "left": 63,
+          "right": 202.796875
+        },
+        {
+          "width": 162.90625,
+          "height": 82.375,
+          "left": 63,
+          "right": 225.90625
+        }
+      ],
+      "document": {
+        "viewportWidth": 360,
+        "documentWidth": 360,
+        "documentHeight": 803
+      },
+      "wrongChoiceFocus": {
+        "tag": "BUTTON",
+        "classes": "fraction-control nested-side-choice control-choice-btn"
+      },
+      "correctChoiceFocus": {
+        "tag": "INPUT",
+        "id": "linear-transform-num-input-right"
+      },
+      "replayActivated": true,
+      "finishedSummary": "Show previous steps (3 completed)Problem established.Second fraction: 1/2 = 4/8Sum: 7/8Result: 7/8",
+      "pageErrors": []
+    }
+  ]
+}

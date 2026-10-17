@@ -34,12 +34,16 @@ describe('Plan 34 mounted production task patterns', () => {
     teardownMockDOM();
   });
 
-  it('activates v5 in the production app and completes construct with typed help and navigation-only finish', () => {
+  it('activates v6 in the production app while preserving v5 Plan 34 associations and completes construct', () => {
     const v4 = LEGACY_PRACTICE_TYPES_V4[0];
     const active = PRACTICE_TYPES[0];
-    expect(active.setRevision).toBe('5');
-    expect(active.items.map((item) => item.id)).toEqual(v4.items.map((item) => item.id));
-    expect(active.items.map((item) => item.patternId ?? null)).toEqual([
+    expect(active.setRevision).toBe('6');
+    expect(active.items.slice(0, 11).map((item) => item.id)).toEqual(v4.items.map((item) => item.id));
+    expect(active.items.slice(11).map((item) => item.id)).toEqual([
+      'nested-one-half-plus-three-eighths',
+      'nested-three-eighths-plus-one-half',
+    ]);
+    expect(active.items.slice(0, 11).map((item) => item.patternId ?? null)).toEqual([
       'full-addition.construct-equivalent',
       'full-addition.inspect-keep-repair',
       null, null,
@@ -49,7 +53,7 @@ describe('Plan 34 mounted production task patterns', () => {
     expect(app.getState().episodeDefinition.revision).toBe('1');
     expect(app.getState().taskContext).toMatchObject({
       itemId: 'two-thirds-plus-one-fourth', targetDenominator: '12',
-      practiceSetId: active.setId, practiceSetRevision: '5',
+      practiceSetId: active.setId, practiceSetRevision: '6',
     });
     expect(root.querySelector('.app-visual-view .active-beat-controls').textContent)
       .toContain('Use twelfths.');

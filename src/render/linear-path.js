@@ -216,6 +216,9 @@ export function createLinearPathRenderer({
     const quantities = scene.meaning.quantities;
     const op = scene.meaning.operation;
     const isCompactTask = Boolean(currentTask.patternId);
+    const nestedContext = scene.derivation?.sourceContext?.instructional?.taskContext;
+    const isNestedTask = nestedContext?.definitionId === 'phase-3-nested-renaming-addition'
+      && nestedContext.definitionRevision === '1';
 
     const milestones = [];
 
@@ -225,7 +228,7 @@ export function createLinearPathRenderer({
     }
 
     // Notice
-    if (!isCompactTask && schedulePosition > 1) {
+    if (!isCompactTask && !isNestedTask && schedulePosition > 1) {
       const denominators = unitRel.sourceDenominators;
       milestones.push(denominators.left === denominators.right
         && typeof strings.summaryLines.noticeDoneSame === 'function'
@@ -234,7 +237,7 @@ export function createLinearPathRenderer({
     }
 
     // Decide
-    if (!isCompactTask && unitRel.commonUnit && schedulePosition > 2 && currentEntryId !== 'decide') {
+    if (!isNestedTask && !isCompactTask && unitRel.commonUnit && schedulePosition > 2 && currentEntryId !== 'decide') {
       milestones.push({
         text: strings.summaryLines.decideDone(
           unitRel.commonUnit.targetDenominator,
@@ -271,7 +274,7 @@ export function createLinearPathRenderer({
     }
 
     // Resolve
-    if (currentEntryId === 'reflect' && (op.preferredFinalForm || op.rawResult)) {
+    if ((currentEntryId === 'reflect' || (isNestedTask && currentEntryId === 'resolve')) && (op.preferredFinalForm || op.rawResult)) {
       const finalForm = op.preferredFinalForm || op.rawResult;
       milestones.push(strings.summaryLines.resolveDone(
         `${finalForm.numerator}/${finalForm.denominator}`,
@@ -450,6 +453,8 @@ export function createLinearPathRenderer({
         recoveryEl.textContent = strings.transform.errorScaleFactor;
       } else if (recovery.classification.kind === 'incorrect-equivalent-numerator') {
         recoveryEl.textContent = strings.transform.errorNumerator;
+      } else if (recovery.classification.kind === 'side-choice-needs-retry') {
+        recoveryEl.textContent = strings.nestedAddition.wrongSide;
       } else if (recovery.classification.kind === 'incorrect-numerator-arithmetic') {
         recoveryEl.textContent = strings.operate.errorArithmetic;
       } else if (recovery.classification.kind === 'incorrect-notice') {
@@ -518,6 +523,28 @@ export function createLinearPathRenderer({
       }
 
       case 'decide': {
+        if (task.inputKind === 'side-choice') {
+          const options = ['left', 'right'].map((side) => {
+            const quantity = scene.meaning.quantities[side];
+            return { side, form: quantity.sourceForm, value: side };
+          });
+          const choiceGroup = createChoiceGroup({
+            legend: strings.nestedAddition.sideChoicePrompt,
+            options,
+            onSelect: (side) => dispatchAction({ type: 'select-renaming-side', side }),
+            renderOption: (option, onClick) => {
+              const button = createButton({ label: option.side === 'left' ? strings.nestedAddition.firstFraction : strings.nestedAddition.secondFraction, ariaLabel: `${option.side === 'left' ? strings.nestedAddition.firstFraction : strings.nestedAddition.secondFraction}, ${option.form.numerator} over ${option.form.denominator}`, className: 'nested-side-choice', onClick });
+              button.classList.add('control-choice-btn');
+              button.appendChild(createSymbolicFraction(option.form.numerator, option.form.denominator, { ariaHidden: true, variant: 'compact' }));
+              return button;
+            },
+          });
+          const legend = choiceGroup.querySelector('.control-legend');
+          legend.classList.remove('sr-only');
+          legend.classList.add('active-beat-prompt');
+          controlsContainer.appendChild(choiceGroup);
+          break;
+        }
         const candidates = scene.meaning.unitRelationship.candidateDenominators;
 
         if (Array.isArray(candidates) && candidates.length >= 2) {
@@ -741,6 +768,9 @@ export function createLinearPathRenderer({
         const raw = scene.meaning.operation.rawResult;
         const pref = scene.meaning.operation.simplifiedResult || raw;
         const compact = scene.meaning.currentTask.patternId != null;
+        const nestedContext = scene.derivation?.sourceContext?.instructional?.taskContext;
+        const nested = nestedContext?.definitionId === 'phase-3-nested-renaming-addition'
+          && nestedContext.definitionRevision === '1';
         const plan20 = scene.meaning.currentTask.promptId?.startsWith('phase3.like-addition.');
 
         if (compact && raw) {
@@ -762,7 +792,7 @@ export function createLinearPathRenderer({
         }
 
         const nextBtn = createButton({
-          label: compact
+          label: compact || nested
             ? strings.resolve.finishButton
             : plan20
             ? strings.resolve.finishButton
@@ -772,6 +802,8 @@ export function createLinearPathRenderer({
           onClick: () => {
             dispatchAction(compact
               ? { type: 'finish-compact-episode' }
+              : nested
+              ? { type: 'finish-nested-episode' }
               : { type: 'submit-resolution', proposed: raw });
           },
         });

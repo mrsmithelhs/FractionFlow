@@ -74,6 +74,16 @@ describe('Plan 18 nested-denominator episode', () => {
     expect(wrongConversion.lastRecovery.classification.kind).not.toBe('correct-equivalent-form');
     state = wrongConversion;
     state = applyIntent(state, { type: 'submit-equivalent-form', proposed: { kind: 'fraction', numerator: converted.numerator.toString(), denominator: '8' } });
+    // Replay is a history-only action once the learner has made the conversion.
+    // It must preserve the accepted side and the untouched eighths operand.
+    const other = side === 'left' ? 'right' : 'left';
+    const acceptedConversion = state;
+    state = applyIntent(state, { type: 'request-replay' });
+    expect(state.taskContext.requiredSide).toBe(taskContext.requiredSide);
+    expect(state.established.conversions[side]).toEqual(acceptedConversion.established.conversions[side]);
+    expect(state.established.conversions[other]).toBeNull();
+    expect(state.content.operands[other].initialForm).toEqual(acceptedConversion.content.operands[other].initialForm);
+    expect(replayEpisode(createReplayEnvelope(state))).toEqual(state);
     const result = expectedSum(state.content);
     state = applyIntent(state, { type: 'submit-operation-result', proposed: result });
     const requiredSideBeforeReplay = state.taskContext.requiredSide;
@@ -81,7 +91,6 @@ describe('Plan 18 nested-denominator episode', () => {
     expect(state.taskContext.requiredSide).toBe(requiredSideBeforeReplay);
     expect(replayEpisode(createReplayEnvelope(state))).toEqual(state);
     const scene = projectScene({ state, representationRole: 'symbolic', presentationMode: 'instant-test' });
-    const other = side === 'left' ? 'right' : 'left';
     expect(state.established.conversions[other]).toBeNull();
     expect(scene.meaning.operation.currentForms[other]).toEqual(state.content.operands[other].initialForm);
     expect(scene.meaning.operation.operandOrigins[other]).toEqual({ kind: 'validated-original', performed: false });
