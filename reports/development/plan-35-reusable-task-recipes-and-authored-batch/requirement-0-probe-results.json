@@ -1,0 +1,474 @@
+{
+  "source": "src/math exact APIs",
+  "rows": [
+    {
+      "recipe": "construct",
+      "target": "12",
+      "source": {
+        "left": "2/3",
+        "right": "1/4"
+      },
+      "scales": {
+        "left": "4",
+        "right": "3"
+      },
+      "requiredSides": [
+        "left",
+        "right"
+      ],
+      "targetForms": {
+        "left": "8/12",
+        "right": "3/12"
+      },
+      "rawResult": "11/12",
+      "simplifiedResult": "11/12",
+      "lcd": "12",
+      "mathValidity": "valid",
+      "operationValidity": "valid",
+      "denominatorWithinCurrentBarLimit": true,
+      "scaleFactorsWithinCurrentBarLimit": true,
+      "candidates": null
+    },
+    {
+      "recipe": "construct",
+      "target": "10",
+      "source": {
+        "left": "1/2",
+        "right": "1/5"
+      },
+      "scales": {
+        "left": "5",
+        "right": "2"
+      },
+      "requiredSides": [
+        "left",
+        "right"
+      ],
+      "targetForms": {
+        "left": "5/10",
+        "right": "2/10"
+      },
+      "rawResult": "7/10",
+      "simplifiedResult": "7/10",
+      "lcd": "10",
+      "mathValidity": "valid",
+      "operationValidity": "valid",
+      "denominatorWithinCurrentBarLimit": true,
+      "scaleFactorsWithinCurrentBarLimit": true,
+      "candidates": null
+    },
+    {
+      "recipe": "construct",
+      "target": "30",
+      "source": {
+        "left": "3/5",
+        "right": "1/3"
+      },
+      "scales": {
+        "left": "6",
+        "right": "10"
+      },
+      "requiredSides": [
+        "left",
+        "right"
+      ],
+      "targetForms": {
+        "left": "18/30",
+        "right": "10/30"
+      },
+      "rawResult": "28/30",
+      "simplifiedResult": "14/15",
+      "lcd": "15",
+      "mathValidity": "valid",
+      "operationValidity": "valid",
+      "denominatorWithinCurrentBarLimit": true,
+      "scaleFactorsWithinCurrentBarLimit": true,
+      "candidates": null
+    },
+    {
+      "recipe": "inspect prefix",
+      "target": "12",
+      "source": {
+        "left": "1/2",
+        "right": "1/3"
+      },
+      "scales": {
+        "left": "6",
+        "right": "4"
+      },
+      "requiredSides": [
+        "left",
+        "right"
+      ],
+      "targetForms": {
+        "left": "6/12",
+        "right": "4/12"
+      },
+      "rawResult": "10/12",
+      "simplifiedResult": "5/6",
+      "lcd": "6",
+      "mathValidity": "valid",
+      "operationValidity": "valid",
+      "denominatorWithinCurrentBarLimit": true,
+      "scaleFactorsWithinCurrentBarLimit": true,
+      "candidates": {
+        "left": {
+          "form": "5/12",
+          "exactEquivalent": false,
+          "correction": "6"
+        },
+        "right": {
+          "form": "4/12",
+          "exactEquivalent": true,
+          "correction": "4"
+        }
+      }
+    },
+    {
+      "recipe": "inspect prefix",
+      "target": "12",
+      "source": {
+        "left": "1/3",
+        "right": "1/4"
+      },
+      "scales": {
+        "left": "4",
+        "right": "3"
+      },
+      "requiredSides": [
+        "left",
+        "right"
+      ],
+      "targetForms": {
+        "left": "4/12",
+        "right": "3/12"
+      },
+      "rawResult": "7/12",
+      "simplifiedResult": "7/12",
+      "lcd": "12",
+      "mathValidity": "valid",
+      "operationValidity": "valid",
+      "denominatorWithinCurrentBarLimit": true,
+      "scaleFactorsWithinCurrentBarLimit": true,
+      "candidates": {
+        "left": {
+          "form": "4/12",
+          "exactEquivalent": true,
+          "correction": "4"
+        },
+        "right": {
+          "form": "7/12",
+          "exactEquivalent": false,
+          "correction": "3"
+        }
+      }
+    },
+    {
+      "recipe": "inspect",
+      "target": "24",
+      "source": {
+        "left": "1/3",
+        "right": "1/8"
+      },
+      "scales": {
+        "left": "8",
+        "right": "3"
+      },
+      "requiredSides": [
+        "left",
+        "right"
+      ],
+      "targetForms": {
+        "left": "8/24",
+        "right": "3/24"
+      },
+      "rawResult": "11/24",
+      "simplifiedResult": "11/24",
+      "lcd": "24",
+      "mathValidity": "valid",
+      "operationValidity": "valid",
+      "denominatorWithinCurrentBarLimit": true,
+      "scaleFactorsWithinCurrentBarLimit": true,
+      "candidates": {
+        "left": {
+          "form": "5/24",
+          "exactEquivalent": false,
+          "correction": "8"
+        },
+        "right": {
+          "form": "3/24",
+          "exactEquivalent": true,
+          "correction": "3"
+        }
+      }
+    },
+    {
+      "recipe": "inspect",
+      "target": "30",
+      "source": {
+        "left": "1/5",
+        "right": "1/3"
+      },
+      "scales": {
+        "left": "6",
+        "right": "10"
+      },
+      "requiredSides": [
+        "left",
+        "right"
+      ],
+      "targetForms": {
+        "left": "6/30",
+        "right": "10/30"
+      },
+      "rawResult": "16/30",
+      "simplifiedResult": "8/15",
+      "lcd": "15",
+      "mathValidity": "valid",
+      "operationValidity": "valid",
+      "denominatorWithinCurrentBarLimit": true,
+      "scaleFactorsWithinCurrentBarLimit": true,
+      "candidates": {
+        "left": {
+          "form": "6/30",
+          "exactEquivalent": true,
+          "correction": "6"
+        },
+        "right": {
+          "form": "11/30",
+          "exactEquivalent": false,
+          "correction": "10"
+        }
+      }
+    },
+    {
+      "recipe": "identify-side prefix",
+      "target": "8",
+      "source": {
+        "left": "1/2",
+        "right": "3/8"
+      },
+      "scales": {
+        "left": "4",
+        "right": "1"
+      },
+      "requiredSides": [
+        "left"
+      ],
+      "targetForms": {
+        "left": "4/8",
+        "right": "3/8"
+      },
+      "rawResult": "7/8",
+      "simplifiedResult": "7/8",
+      "lcd": "8",
+      "mathValidity": "valid",
+      "operationValidity": "valid",
+      "denominatorWithinCurrentBarLimit": true,
+      "scaleFactorsWithinCurrentBarLimit": true,
+      "candidates": null
+    },
+    {
+      "recipe": "identify-side prefix",
+      "target": "8",
+      "source": {
+        "left": "3/8",
+        "right": "1/2"
+      },
+      "scales": {
+        "left": "1",
+        "right": "4"
+      },
+      "requiredSides": [
+        "right"
+      ],
+      "targetForms": {
+        "left": "3/8",
+        "right": "4/8"
+      },
+      "rawResult": "7/8",
+      "simplifiedResult": "7/8",
+      "lcd": "8",
+      "mathValidity": "valid",
+      "operationValidity": "valid",
+      "denominatorWithinCurrentBarLimit": true,
+      "scaleFactorsWithinCurrentBarLimit": true,
+      "candidates": null
+    },
+    {
+      "recipe": "identify-side",
+      "target": "10",
+      "source": {
+        "left": "1/2",
+        "right": "3/10"
+      },
+      "scales": {
+        "left": "5",
+        "right": "1"
+      },
+      "requiredSides": [
+        "left"
+      ],
+      "targetForms": {
+        "left": "5/10",
+        "right": "3/10"
+      },
+      "rawResult": "8/10",
+      "simplifiedResult": "4/5",
+      "lcd": "10",
+      "mathValidity": "valid",
+      "operationValidity": "valid",
+      "denominatorWithinCurrentBarLimit": true,
+      "scaleFactorsWithinCurrentBarLimit": true,
+      "candidates": null
+    },
+    {
+      "recipe": "identify-side",
+      "target": "10",
+      "source": {
+        "left": "3/10",
+        "right": "1/2"
+      },
+      "scales": {
+        "left": "1",
+        "right": "5"
+      },
+      "requiredSides": [
+        "right"
+      ],
+      "targetForms": {
+        "left": "3/10",
+        "right": "5/10"
+      },
+      "rawResult": "8/10",
+      "simplifiedResult": "4/5",
+      "lcd": "10",
+      "mathValidity": "valid",
+      "operationValidity": "valid",
+      "denominatorWithinCurrentBarLimit": true,
+      "scaleFactorsWithinCurrentBarLimit": true,
+      "candidates": null
+    },
+    {
+      "recipe": "identify-side",
+      "target": "12",
+      "source": {
+        "left": "1/3",
+        "right": "5/12"
+      },
+      "scales": {
+        "left": "4",
+        "right": "1"
+      },
+      "requiredSides": [
+        "left"
+      ],
+      "targetForms": {
+        "left": "4/12",
+        "right": "5/12"
+      },
+      "rawResult": "9/12",
+      "simplifiedResult": "3/4",
+      "lcd": "12",
+      "mathValidity": "valid",
+      "operationValidity": "valid",
+      "denominatorWithinCurrentBarLimit": true,
+      "scaleFactorsWithinCurrentBarLimit": true,
+      "candidates": null
+    },
+    {
+      "recipe": "identify-side",
+      "target": "12",
+      "source": {
+        "left": "5/12",
+        "right": "1/3"
+      },
+      "scales": {
+        "left": "1",
+        "right": "4"
+      },
+      "requiredSides": [
+        "right"
+      ],
+      "targetForms": {
+        "left": "5/12",
+        "right": "4/12"
+      },
+      "rawResult": "9/12",
+      "simplifiedResult": "3/4",
+      "lcd": "12",
+      "mathValidity": "valid",
+      "operationValidity": "valid",
+      "denominatorWithinCurrentBarLimit": true,
+      "scaleFactorsWithinCurrentBarLimit": true,
+      "candidates": null
+    },
+    {
+      "recipe": "construct data-only holdout",
+      "target": "30",
+      "source": {
+        "left": "1/5",
+        "right": "1/6"
+      },
+      "scales": {
+        "left": "6",
+        "right": "5"
+      },
+      "requiredSides": [
+        "left",
+        "right"
+      ],
+      "targetForms": {
+        "left": "6/30",
+        "right": "5/30"
+      },
+      "rawResult": "11/30",
+      "simplifiedResult": "11/30",
+      "lcd": "30",
+      "mathValidity": "valid",
+      "operationValidity": "valid",
+      "denominatorWithinCurrentBarLimit": true,
+      "scaleFactorsWithinCurrentBarLimit": true,
+      "candidates": null
+    },
+    {
+      "recipe": "inspect data-only holdout",
+      "target": "20",
+      "source": {
+        "left": "1/2",
+        "right": "1/5"
+      },
+      "scales": {
+        "left": "10",
+        "right": "4"
+      },
+      "requiredSides": [
+        "left",
+        "right"
+      ],
+      "targetForms": {
+        "left": "10/20",
+        "right": "4/20"
+      },
+      "rawResult": "14/20",
+      "simplifiedResult": "7/10",
+      "lcd": "10",
+      "mathValidity": "valid",
+      "operationValidity": "valid",
+      "denominatorWithinCurrentBarLimit": true,
+      "scaleFactorsWithinCurrentBarLimit": true,
+      "candidates": {
+        "left": {
+          "form": "9/20",
+          "exactEquivalent": false,
+          "correction": "10"
+        },
+        "right": {
+          "form": "4/20",
+          "exactEquivalent": true,
+          "correction": "4"
+        }
+      }
+    }
+  ]
+}
