@@ -1,0 +1,4590 @@
+{
+  "oracleId": "plan18-v3-replay-baseline-before-plan35",
+  "capturedFromHead": "459745954d6b342237083e13a13bcac18a074c7b",
+  "capturedUsingCurrentReplayV3": "fractionflow.episode-replay/v3",
+  "support": "high support",
+  "cases": [
+    {
+      "itemId": "nested-one-half-plus-three-eighths",
+      "fixtureId": "curated-nested-addition-one-half-three-eighths",
+      "requiredSide": "left",
+      "phase": "initial",
+      "envelope": {
+        "schemaVersion": "fractionflow.episode-replay/v3",
+        "contentIdentity": {
+          "schemaVersion": "fractionflow.problem-instance/v1",
+          "id": "nested-denominator-addition__none__1__2__3__8",
+          "source": "curated",
+          "request": {
+            "selector": "nested-denominator-addition",
+            "operation": "add",
+            "overlays": [],
+            "profileId": "curated-review",
+            "profileVersion": "1"
+          },
+          "provenance": {
+            "kind": "curated",
+            "fixtureId": "curated-nested-addition-one-half-three-eighths",
+            "authoringRevision": "plan18-record-v1"
+          },
+          "selector": "nested-denominator-addition",
+          "overlays": [],
+          "sourceForms": {
+            "left": {
+              "kind": "fraction",
+              "numerator": "1",
+              "denominator": "2"
+            },
+            "right": {
+              "kind": "fraction",
+              "numerator": "3",
+              "denominator": "8"
+            }
+          },
+          "reconstruction": {
+            "kind": "curated",
+            "request": {
+              "selector": "nested-denominator-addition",
+              "operation": "add",
+              "overlays": [],
+              "profileId": "curated-review",
+              "profileVersion": "1"
+            },
+            "fixtureId": "curated-nested-addition-one-half-three-eighths",
+            "authoringRevision": "plan18-record-v1"
+          }
+        },
+        "episodeDefinition": {
+          "id": "phase-3-nested-renaming-addition",
+          "revision": "1"
+        },
+        "support": {
+          "label": "high support",
+          "dimensions": {
+            "fractionBarModel": "high support",
+            "commonDenominator": "high support",
+            "equivalentNumerators": "high support",
+            "prediction": "high support",
+            "symbolicIntegration": "high support",
+            "helpAndReplay": "high support"
+          }
+        },
+        "activeCondition": {
+          "id": "phase2-bundle-1",
+          "revision": "1",
+          "display": "D-01-A",
+          "choreography": "D-02-M",
+          "promptCadence": "D-05-focused-key-beats",
+          "connectionMaking": "CM-01-M"
+        },
+        "learnerIntents": [],
+        "taskContext": {
+          "practiceSetId": "unlike-addition-vetted-set",
+          "practiceSetRevision": "6",
+          "itemId": "nested-one-half-plus-three-eighths",
+          "fixtureId": "curated-nested-addition-one-half-three-eighths",
+          "authoringRevision": "plan18-record-v1",
+          "definitionId": "phase-3-nested-renaming-addition",
+          "definitionRevision": "1",
+          "taskDataId": "plan18-nested-renaming-task-data",
+          "taskDataRevision": "1",
+          "sourceForms": {
+            "left": {
+              "kind": "fraction",
+              "numerator": "1",
+              "denominator": "2"
+            },
+            "right": {
+              "kind": "fraction",
+              "numerator": "3",
+              "denominator": "8"
+            }
+          },
+          "targetDenominator": "8",
+          "requiredSide": "left"
+        }
+      },
+      "expectedState": {
+        "schemaVersion": "fractionflow.episode-state/v1",
+        "status": "active",
+        "revision": 0,
+        "content": {
+          "schemaVersion": "fractionflow.problem-instance/v1",
+          "id": "nested-denominator-addition__none__1__2__3__8",
+          "source": "curated",
+          "request": {
+            "selector": "nested-denominator-addition",
+            "operation": "add",
+            "overlays": [],
+            "profileId": "curated-review",
+            "profileVersion": "1"
+          },
+          "provenance": {
+            "kind": "curated",
+            "fixtureId": "curated-nested-addition-one-half-three-eighths",
+            "authoringRevision": "plan18-record-v1"
+          },
+          "operands": {
+            "left": {
+              "exactValue": {
+                "kind": "fraction",
+                "numerator": "1",
+                "denominator": "2"
+              },
+              "initialForm": {
+                "kind": "fraction",
+                "numerator": "1",
+                "denominator": "2"
+              },
+              "currentForm": {
+                "kind": "fraction",
+                "numerator": "1",
+                "denominator": "2"
+              },
+              "preferredFinalForm": {
+                "kind": "fraction",
+                "numerator": "1",
+                "denominator": "2"
+              },
+              "acceptedFormTransitions": []
+            },
+            "right": {
+              "exactValue": {
+                "kind": "fraction",
+                "numerator": "3",
+                "denominator": "8"
+              },
+              "initialForm": {
+                "kind": "fraction",
+                "numerator": "3",
+                "denominator": "8"
+              },
+              "currentForm": {
+                "kind": "fraction",
+                "numerator": "3",
+                "denominator": "8"
+              },
+              "preferredFinalForm": {
+                "kind": "fraction",
+                "numerator": "3",
+                "denominator": "8"
+              },
+              "acceptedFormTransitions": []
+            }
+          },
+          "resultState": {
+            "exactResult": {
+              "kind": "fraction",
+              "numerator": "7",
+              "denominator": "8"
+            },
+            "canonicalRawResultForm": {
+              "kind": "fraction",
+              "numerator": "7",
+              "denominator": "8"
+            },
+            "currentForm": {
+              "kind": "fraction",
+              "numerator": "7",
+              "denominator": "8"
+            },
+            "preferredFinalForm": {
+              "kind": "fraction",
+              "numerator": "7",
+              "denominator": "8"
+            }
+          },
+          "canonicalPath": {
+            "id": "canonical-lcd",
+            "kind": "lcd",
+            "status": "canonical",
+            "startingState": "initial",
+            "targetDenominator": "8",
+            "scaleFactors": {
+              "left": "4",
+              "right": "1"
+            },
+            "transformations": [
+              {
+                "type": "equivalent-renaming",
+                "target": "left",
+                "fromForm": {
+                  "kind": "fraction",
+                  "numerator": "1",
+                  "denominator": "2"
+                },
+                "toForm": {
+                  "kind": "fraction",
+                  "numerator": "4",
+                  "denominator": "8"
+                },
+                "scaleFactor": "4",
+                "preservesExactValue": true,
+                "validation": "valid"
+              }
+            ],
+            "operation": {
+              "type": "operation",
+              "operation": "add",
+              "left": {
+                "kind": "fraction",
+                "numerator": "4",
+                "denominator": "8"
+              },
+              "right": {
+                "kind": "fraction",
+                "numerator": "3",
+                "denominator": "8"
+              },
+              "rawResult": {
+                "kind": "fraction",
+                "numerator": "7",
+                "denominator": "8"
+              }
+            },
+            "finalResult": {
+              "rawForm": {
+                "kind": "fraction",
+                "numerator": "7",
+                "denominator": "8"
+              },
+              "preferredFinalForm": {
+                "kind": "fraction",
+                "numerator": "7",
+                "denominator": "8"
+              }
+            }
+          },
+          "alternatePaths": [
+            {
+              "id": "alternate-non-least-common-denominator",
+              "kind": "non-least-common-denominator",
+              "status": "alternate-valid",
+              "startingState": "initial",
+              "targetDenominator": "16",
+              "scaleFactors": {
+                "left": "8",
+                "right": "2"
+              },
+              "transformations": [
+                {
+                  "type": "equivalent-renaming",
+                  "target": "left",
+                  "fromForm": {
+                    "kind": "fraction",
+                    "numerator": "1",
+                    "denominator": "2"
+                  },
+                  "toForm": {
+                    "kind": "fraction",
+                    "numerator": "8",
+                    "denominator": "16"
+                  },
+                  "scaleFactor": "8",
+                  "preservesExactValue": true,
+                  "validation": "valid"
+                },
+                {
+                  "type": "equivalent-renaming",
+                  "target": "right",
+                  "fromForm": {
+                    "kind": "fraction",
+                    "numerator": "3",
+                    "denominator": "8"
+                  },
+                  "toForm": {
+                    "kind": "fraction",
+                    "numerator": "6",
+                    "denominator": "16"
+                  },
+                  "scaleFactor": "2",
+                  "preservesExactValue": true,
+                  "validation": "valid"
+                }
+              ],
+              "operation": {
+                "type": "operation",
+                "operation": "add",
+                "left": {
+                  "kind": "fraction",
+                  "numerator": "8",
+                  "denominator": "16"
+                },
+                "right": {
+                  "kind": "fraction",
+                  "numerator": "6",
+                  "denominator": "16"
+                },
+                "rawResult": {
+                  "kind": "fraction",
+                  "numerator": "14",
+                  "denominator": "16"
+                }
+              },
+              "finalResult": {
+                "rawForm": {
+                  "kind": "fraction",
+                  "numerator": "14",
+                  "denominator": "16"
+                },
+                "preferredFinalForm": {
+                  "kind": "fraction",
+                  "numerator": "7",
+                  "denominator": "8"
+                }
+              }
+            }
+          ],
+          "classification": {
+            "family": {
+              "structuralSelector": "nested-denominator-addition",
+              "overlays": [],
+              "stateSnapshot": "initial"
+            },
+            "denominator": {
+              "relationship": "nested",
+              "leastCommonDenominator": "8",
+              "canonicalScaleFactors": {
+                "left": "4",
+                "right": "1"
+              },
+              "alternateCommonDenominators": [
+                "16"
+              ]
+            },
+            "transformations": {
+              "canonicalRenaming": {
+                "left": true,
+                "right": false,
+                "targetDenominator": "8"
+              },
+              "canonical": [
+                {
+                  "type": "equivalent-renaming",
+                  "target": "left",
+                  "fromForm": {
+                    "kind": "fraction",
+                    "numerator": "1",
+                    "denominator": "2"
+                  },
+                  "toForm": {
+                    "kind": "fraction",
+                    "numerator": "4",
+                    "denominator": "8"
+                  },
+                  "scaleFactor": "4",
+                  "preservesExactValue": true,
+                  "validation": "valid"
+                }
+              ],
+              "alternates": [
+                [
+                  {
+                    "type": "equivalent-renaming",
+                    "target": "left",
+                    "fromForm": {
+                      "kind": "fraction",
+                      "numerator": "1",
+                      "denominator": "2"
+                    },
+                    "toForm": {
+                      "kind": "fraction",
+                      "numerator": "8",
+                      "denominator": "16"
+                    },
+                    "scaleFactor": "8",
+                    "preservesExactValue": true,
+                    "validation": "valid"
+                  },
+                  {
+                    "type": "equivalent-renaming",
+                    "target": "right",
+                    "fromForm": {
+                      "kind": "fraction",
+                      "numerator": "3",
+                      "denominator": "8"
+                    },
+                    "toForm": {
+                      "kind": "fraction",
+                      "numerator": "6",
+                      "denominator": "16"
+                    },
+                    "scaleFactor": "2",
+                    "preservesExactValue": true,
+                    "validation": "valid"
+                  }
+                ]
+              ]
+            },
+            "result": {
+              "exactResult": {
+                "kind": "fraction",
+                "numerator": "7",
+                "denominator": "8"
+              },
+              "canonicalRawResultForm": {
+                "kind": "fraction",
+                "numerator": "7",
+                "denominator": "8"
+              },
+              "preferredFinalForm": {
+                "kind": "fraction",
+                "numerator": "7",
+                "denominator": "8"
+              },
+              "resultForm": "proper",
+              "simplificationStatus": "already-simplified",
+              "isWholeValued": false,
+              "crossesWhole": false
+            },
+            "regrouping": {
+              "type": "none",
+              "required": false
+            },
+            "magnitude": {
+              "benchmarkRegion": "between-half-and-1",
+              "lowerWhole": "0",
+              "upperWhole": "1",
+              "relativeToZero": 1,
+              "relativeToOne": -1,
+              "relativeToTwo": -1
+            }
+          },
+          "representationFacts": {
+            "operandDenominators": {
+              "left": "2",
+              "right": "8"
+            },
+            "canonicalDenominator": "8",
+            "resultDenominator": "8",
+            "wholeSpan": {
+              "lowerWhole": "0",
+              "upperWhole": "1"
+            },
+            "subdivisionCounts": {
+              "left": "2",
+              "right": "8",
+              "canonical": "8"
+            },
+            "eligibility": {
+              "fractionBar": "eligible",
+              "numberLine": "not-in-phase-2",
+              "symbolic": "eligible"
+            },
+            "alternateRepresentationRecommendation": "none"
+          },
+          "reviewMetadata": {
+            "scaleFactors": {
+              "left": "4",
+              "right": "1"
+            },
+            "magnitudeRange": {
+              "lowerWhole": "0",
+              "upperWhole": "1",
+              "benchmarkRegion": "between-half-and-1"
+            },
+            "intendedTargetConcept": "nested-denominator-addition",
+            "likelyAlternateValidPaths": [
+              "non-least-common-denominator"
+            ],
+            "authoredCoverageNote": "Canonical LCD path is preferred; valid alternate paths remain mathematical alternatives.",
+            "synthetic": true
+          }
+        },
+        "episodeDefinition": {
+          "operation": "add",
+          "selector": "nested-denominator-addition",
+          "beats": [
+            "encounter",
+            "decide",
+            "transform",
+            "operate",
+            "resolve"
+          ],
+          "includeReflection": false,
+          "promptIdentities": {
+            "encounter": "phase3.nested-addition.encounter",
+            "decide": "phase3.nested-addition.select-renaming-side",
+            "transform": "phase3.nested-addition.transform-one-side",
+            "operate": "phase3.nested-addition.operate",
+            "resolve": "phase3.nested-addition.resolve"
+          },
+          "id": "phase-3-nested-renaming-addition",
+          "revision": "1"
+        },
+        "taskContext": {
+          "practiceSetId": "unlike-addition-vetted-set",
+          "practiceSetRevision": "6",
+          "itemId": "nested-one-half-plus-three-eighths",
+          "fixtureId": "curated-nested-addition-one-half-three-eighths",
+          "authoringRevision": "plan18-record-v1",
+          "definitionId": "phase-3-nested-renaming-addition",
+          "definitionRevision": "1",
+          "taskDataId": "plan18-nested-renaming-task-data",
+          "taskDataRevision": "1",
+          "sourceForms": {
+            "left": {
+              "kind": "fraction",
+              "numerator": "1",
+              "denominator": "2"
+            },
+            "right": {
+              "kind": "fraction",
+              "numerator": "3",
+              "denominator": "8"
+            }
+          },
+          "targetDenominator": "8",
+          "requiredSide": "left"
+        },
+        "activeCondition": {
+          "id": "phase2-bundle-1",
+          "revision": "1",
+          "display": "D-01-A",
+          "choreography": "D-02-M",
+          "promptCadence": "D-05-focused-key-beats",
+          "connectionMaking": "CM-01-M"
+        },
+        "beatSchedule": [
+          {
+            "id": "encounter",
+            "kind": "encounter"
+          },
+          {
+            "id": "select-renaming-side",
+            "kind": "decide"
+          },
+          {
+            "id": "transform-left",
+            "kind": "transform",
+            "side": "left"
+          },
+          {
+            "id": "operate",
+            "kind": "operate"
+          },
+          {
+            "id": "resolve",
+            "kind": "resolve"
+          }
+        ],
+        "schedulePosition": 0,
+        "support": {
+          "label": "high support",
+          "dimensions": {
+            "fractionBarModel": "high support",
+            "commonDenominator": "high support",
+            "equivalentNumerators": "high support",
+            "prediction": "high support",
+            "symbolicIntegration": "high support",
+            "helpAndReplay": "high support"
+          }
+        },
+        "beat": "encounter",
+        "expectedResponse": {
+          "promptId": "phase3.nested-addition.encounter",
+          "beat": "encounter",
+          "evidenceCategory": "supported-construction",
+          "responsibility": "inspect-expression",
+          "inputKind": "acknowledge"
+        },
+        "established": {
+          "encounter": null,
+          "notice": null,
+          "commonDenominator": null,
+          "conversions": {
+            "left": null,
+            "right": null
+          },
+          "operation": null,
+          "resolution": null,
+          "reflection": null,
+          "route": "fraction-bar",
+          "nestedCompletion": null,
+          "selectedRenamingSide": null,
+          "conversionOrigins": {}
+        },
+        "completedBeats": [],
+        "pendingResponse": null,
+        "nextResponseSupport": null,
+        "helpHistory": [],
+        "replayHistory": [],
+        "retryHistory": [],
+        "supportHistory": [],
+        "intentHistory": [],
+        "responseProvenance": [],
+        "lastRecovery": null
+      }
+    },
+    {
+      "itemId": "nested-one-half-plus-three-eighths",
+      "fixtureId": "curated-nested-addition-one-half-three-eighths",
+      "requiredSide": "left",
+      "phase": "completed",
+      "envelope": {
+        "schemaVersion": "fractionflow.episode-replay/v3",
+        "contentIdentity": {
+          "schemaVersion": "fractionflow.problem-instance/v1",
+          "id": "nested-denominator-addition__none__1__2__3__8",
+          "source": "curated",
+          "request": {
+            "selector": "nested-denominator-addition",
+            "operation": "add",
+            "overlays": [],
+            "profileId": "curated-review",
+            "profileVersion": "1"
+          },
+          "provenance": {
+            "kind": "curated",
+            "fixtureId": "curated-nested-addition-one-half-three-eighths",
+            "authoringRevision": "plan18-record-v1"
+          },
+          "selector": "nested-denominator-addition",
+          "overlays": [],
+          "sourceForms": {
+            "left": {
+              "kind": "fraction",
+              "numerator": "1",
+              "denominator": "2"
+            },
+            "right": {
+              "kind": "fraction",
+              "numerator": "3",
+              "denominator": "8"
+            }
+          },
+          "reconstruction": {
+            "kind": "curated",
+            "request": {
+              "selector": "nested-denominator-addition",
+              "operation": "add",
+              "overlays": [],
+              "profileId": "curated-review",
+              "profileVersion": "1"
+            },
+            "fixtureId": "curated-nested-addition-one-half-three-eighths",
+            "authoringRevision": "plan18-record-v1"
+          }
+        },
+        "episodeDefinition": {
+          "id": "phase-3-nested-renaming-addition",
+          "revision": "1"
+        },
+        "support": {
+          "label": "high support",
+          "dimensions": {
+            "fractionBarModel": "high support",
+            "commonDenominator": "high support",
+            "equivalentNumerators": "high support",
+            "prediction": "high support",
+            "symbolicIntegration": "high support",
+            "helpAndReplay": "high support"
+          }
+        },
+        "activeCondition": {
+          "id": "phase2-bundle-1",
+          "revision": "1",
+          "display": "D-01-A",
+          "choreography": "D-02-M",
+          "promptCadence": "D-05-focused-key-beats",
+          "connectionMaking": "CM-01-M"
+        },
+        "learnerIntents": [
+          {
+            "type": "acknowledge-encounter"
+          },
+          {
+            "type": "select-renaming-side",
+            "side": "left"
+          },
+          {
+            "type": "submit-equivalent-form",
+            "proposed": {
+              "kind": "fraction",
+              "numerator": "4",
+              "denominator": "8"
+            }
+          },
+          {
+            "type": "submit-operation-result",
+            "proposed": {
+              "kind": "fraction",
+              "numerator": "7",
+              "denominator": "8"
+            }
+          },
+          {
+            "type": "finish-nested-episode"
+          }
+        ],
+        "taskContext": {
+          "practiceSetId": "unlike-addition-vetted-set",
+          "practiceSetRevision": "6",
+          "itemId": "nested-one-half-plus-three-eighths",
+          "fixtureId": "curated-nested-addition-one-half-three-eighths",
+          "authoringRevision": "plan18-record-v1",
+          "definitionId": "phase-3-nested-renaming-addition",
+          "definitionRevision": "1",
+          "taskDataId": "plan18-nested-renaming-task-data",
+          "taskDataRevision": "1",
+          "sourceForms": {
+            "left": {
+              "kind": "fraction",
+              "numerator": "1",
+              "denominator": "2"
+            },
+            "right": {
+              "kind": "fraction",
+              "numerator": "3",
+              "denominator": "8"
+            }
+          },
+          "targetDenominator": "8",
+          "requiredSide": "left"
+        }
+      },
+      "expectedState": {
+        "schemaVersion": "fractionflow.episode-state/v1",
+        "status": "resolved",
+        "revision": 5,
+        "content": {
+          "schemaVersion": "fractionflow.problem-instance/v1",
+          "id": "nested-denominator-addition__none__1__2__3__8",
+          "source": "curated",
+          "request": {
+            "selector": "nested-denominator-addition",
+            "operation": "add",
+            "overlays": [],
+            "profileId": "curated-review",
+            "profileVersion": "1"
+          },
+          "provenance": {
+            "kind": "curated",
+            "fixtureId": "curated-nested-addition-one-half-three-eighths",
+            "authoringRevision": "plan18-record-v1"
+          },
+          "operands": {
+            "left": {
+              "exactValue": {
+                "kind": "fraction",
+                "numerator": "1",
+                "denominator": "2"
+              },
+              "initialForm": {
+                "kind": "fraction",
+                "numerator": "1",
+                "denominator": "2"
+              },
+              "currentForm": {
+                "kind": "fraction",
+                "numerator": "1",
+                "denominator": "2"
+              },
+              "preferredFinalForm": {
+                "kind": "fraction",
+                "numerator": "1",
+                "denominator": "2"
+              },
+              "acceptedFormTransitions": []
+            },
+            "right": {
+              "exactValue": {
+                "kind": "fraction",
+                "numerator": "3",
+                "denominator": "8"
+              },
+              "initialForm": {
+                "kind": "fraction",
+                "numerator": "3",
+                "denominator": "8"
+              },
+              "currentForm": {
+                "kind": "fraction",
+                "numerator": "3",
+                "denominator": "8"
+              },
+              "preferredFinalForm": {
+                "kind": "fraction",
+                "numerator": "3",
+                "denominator": "8"
+              },
+              "acceptedFormTransitions": []
+            }
+          },
+          "resultState": {
+            "exactResult": {
+              "kind": "fraction",
+              "numerator": "7",
+              "denominator": "8"
+            },
+            "canonicalRawResultForm": {
+              "kind": "fraction",
+              "numerator": "7",
+              "denominator": "8"
+            },
+            "currentForm": {
+              "kind": "fraction",
+              "numerator": "7",
+              "denominator": "8"
+            },
+            "preferredFinalForm": {
+              "kind": "fraction",
+              "numerator": "7",
+              "denominator": "8"
+            }
+          },
+          "canonicalPath": {
+            "id": "canonical-lcd",
+            "kind": "lcd",
+            "status": "canonical",
+            "startingState": "initial",
+            "targetDenominator": "8",
+            "scaleFactors": {
+              "left": "4",
+              "right": "1"
+            },
+            "transformations": [
+              {
+                "type": "equivalent-renaming",
+                "target": "left",
+                "fromForm": {
+                  "kind": "fraction",
+                  "numerator": "1",
+                  "denominator": "2"
+                },
+                "toForm": {
+                  "kind": "fraction",
+                  "numerator": "4",
+                  "denominator": "8"
+                },
+                "scaleFactor": "4",
+                "preservesExactValue": true,
+                "validation": "valid"
+              }
+            ],
+            "operation": {
+              "type": "operation",
+              "operation": "add",
+              "left": {
+                "kind": "fraction",
+                "numerator": "4",
+                "denominator": "8"
+              },
+              "right": {
+                "kind": "fraction",
+                "numerator": "3",
+                "denominator": "8"
+              },
+              "rawResult": {
+                "kind": "fraction",
+                "numerator": "7",
+                "denominator": "8"
+              }
+            },
+            "finalResult": {
+              "rawForm": {
+                "kind": "fraction",
+                "numerator": "7",
+                "denominator": "8"
+              },
+              "preferredFinalForm": {
+                "kind": "fraction",
+                "numerator": "7",
+                "denominator": "8"
+              }
+            }
+          },
+          "alternatePaths": [
+            {
+              "id": "alternate-non-least-common-denominator",
+              "kind": "non-least-common-denominator",
+              "status": "alternate-valid",
+              "startingState": "initial",
+              "targetDenominator": "16",
+              "scaleFactors": {
+                "left": "8",
+                "right": "2"
+              },
+              "transformations": [
+                {
+                  "type": "equivalent-renaming",
+                  "target": "left",
+                  "fromForm": {
+                    "kind": "fraction",
+                    "numerator": "1",
+                    "denominator": "2"
+                  },
+                  "toForm": {
+                    "kind": "fraction",
+                    "numerator": "8",
+                    "denominator": "16"
+                  },
+                  "scaleFactor": "8",
+                  "preservesExactValue": true,
+                  "validation": "valid"
+                },
+                {
+                  "type": "equivalent-renaming",
+                  "target": "right",
+                  "fromForm": {
+                    "kind": "fraction",
+                    "numerator": "3",
+                    "denominator": "8"
+                  },
+                  "toForm": {
+                    "kind": "fraction",
+                    "numerator": "6",
+                    "denominator": "16"
+                  },
+                  "scaleFactor": "2",
+                  "preservesExactValue": true,
+                  "validation": "valid"
+                }
+              ],
+              "operation": {
+                "type": "operation",
+                "operation": "add",
+                "left": {
+                  "kind": "fraction",
+                  "numerator": "8",
+                  "denominator": "16"
+                },
+                "right": {
+                  "kind": "fraction",
+                  "numerator": "6",
+                  "denominator": "16"
+                },
+                "rawResult": {
+                  "kind": "fraction",
+                  "numerator": "14",
+                  "denominator": "16"
+                }
+              },
+              "finalResult": {
+                "rawForm": {
+                  "kind": "fraction",
+                  "numerator": "14",
+                  "denominator": "16"
+                },
+                "preferredFinalForm": {
+                  "kind": "fraction",
+                  "numerator": "7",
+                  "denominator": "8"
+                }
+              }
+            }
+          ],
+          "classification": {
+            "family": {
+              "structuralSelector": "nested-denominator-addition",
+              "overlays": [],
+              "stateSnapshot": "initial"
+            },
+            "denominator": {
+              "relationship": "nested",
+              "leastCommonDenominator": "8",
+              "canonicalScaleFactors": {
+                "left": "4",
+                "right": "1"
+              },
+              "alternateCommonDenominators": [
+                "16"
+              ]
+            },
+            "transformations": {
+              "canonicalRenaming": {
+                "left": true,
+                "right": false,
+                "targetDenominator": "8"
+              },
+              "canonical": [
+                {
+                  "type": "equivalent-renaming",
+                  "target": "left",
+                  "fromForm": {
+                    "kind": "fraction",
+                    "numerator": "1",
+                    "denominator": "2"
+                  },
+                  "toForm": {
+                    "kind": "fraction",
+                    "numerator": "4",
+                    "denominator": "8"
+                  },
+                  "scaleFactor": "4",
+                  "preservesExactValue": true,
+                  "validation": "valid"
+                }
+              ],
+              "alternates": [
+                [
+                  {
+                    "type": "equivalent-renaming",
+                    "target": "left",
+                    "fromForm": {
+                      "kind": "fraction",
+                      "numerator": "1",
+                      "denominator": "2"
+                    },
+                    "toForm": {
+                      "kind": "fraction",
+                      "numerator": "8",
+                      "denominator": "16"
+                    },
+                    "scaleFactor": "8",
+                    "preservesExactValue": true,
+                    "validation": "valid"
+                  },
+                  {
+                    "type": "equivalent-renaming",
+                    "target": "right",
+                    "fromForm": {
+                      "kind": "fraction",
+                      "numerator": "3",
+                      "denominator": "8"
+                    },
+                    "toForm": {
+                      "kind": "fraction",
+                      "numerator": "6",
+                      "denominator": "16"
+                    },
+                    "scaleFactor": "2",
+                    "preservesExactValue": true,
+                    "validation": "valid"
+                  }
+                ]
+              ]
+            },
+            "result": {
+              "exactResult": {
+                "kind": "fraction",
+                "numerator": "7",
+                "denominator": "8"
+              },
+              "canonicalRawResultForm": {
+                "kind": "fraction",
+                "numerator": "7",
+                "denominator": "8"
+              },
+              "preferredFinalForm": {
+                "kind": "fraction",
+                "numerator": "7",
+                "denominator": "8"
+              },
+              "resultForm": "proper",
+              "simplificationStatus": "already-simplified",
+              "isWholeValued": false,
+              "crossesWhole": false
+            },
+            "regrouping": {
+              "type": "none",
+              "required": false
+            },
+            "magnitude": {
+              "benchmarkRegion": "between-half-and-1",
+              "lowerWhole": "0",
+              "upperWhole": "1",
+              "relativeToZero": 1,
+              "relativeToOne": -1,
+              "relativeToTwo": -1
+            }
+          },
+          "representationFacts": {
+            "operandDenominators": {
+              "left": "2",
+              "right": "8"
+            },
+            "canonicalDenominator": "8",
+            "resultDenominator": "8",
+            "wholeSpan": {
+              "lowerWhole": "0",
+              "upperWhole": "1"
+            },
+            "subdivisionCounts": {
+              "left": "2",
+              "right": "8",
+              "canonical": "8"
+            },
+            "eligibility": {
+              "fractionBar": "eligible",
+              "numberLine": "not-in-phase-2",
+              "symbolic": "eligible"
+            },
+            "alternateRepresentationRecommendation": "none"
+          },
+          "reviewMetadata": {
+            "scaleFactors": {
+              "left": "4",
+              "right": "1"
+            },
+            "magnitudeRange": {
+              "lowerWhole": "0",
+              "upperWhole": "1",
+              "benchmarkRegion": "between-half-and-1"
+            },
+            "intendedTargetConcept": "nested-denominator-addition",
+            "likelyAlternateValidPaths": [
+              "non-least-common-denominator"
+            ],
+            "authoredCoverageNote": "Canonical LCD path is preferred; valid alternate paths remain mathematical alternatives.",
+            "synthetic": true
+          }
+        },
+        "episodeDefinition": {
+          "operation": "add",
+          "selector": "nested-denominator-addition",
+          "beats": [
+            "encounter",
+            "decide",
+            "transform",
+            "operate",
+            "resolve"
+          ],
+          "includeReflection": false,
+          "promptIdentities": {
+            "encounter": "phase3.nested-addition.encounter",
+            "decide": "phase3.nested-addition.select-renaming-side",
+            "transform": "phase3.nested-addition.transform-one-side",
+            "operate": "phase3.nested-addition.operate",
+            "resolve": "phase3.nested-addition.resolve"
+          },
+          "id": "phase-3-nested-renaming-addition",
+          "revision": "1"
+        },
+        "taskContext": {
+          "practiceSetId": "unlike-addition-vetted-set",
+          "practiceSetRevision": "6",
+          "itemId": "nested-one-half-plus-three-eighths",
+          "fixtureId": "curated-nested-addition-one-half-three-eighths",
+          "authoringRevision": "plan18-record-v1",
+          "definitionId": "phase-3-nested-renaming-addition",
+          "definitionRevision": "1",
+          "taskDataId": "plan18-nested-renaming-task-data",
+          "taskDataRevision": "1",
+          "sourceForms": {
+            "left": {
+              "kind": "fraction",
+              "numerator": "1",
+              "denominator": "2"
+            },
+            "right": {
+              "kind": "fraction",
+              "numerator": "3",
+              "denominator": "8"
+            }
+          },
+          "targetDenominator": "8",
+          "requiredSide": "left"
+        },
+        "activeCondition": {
+          "id": "phase2-bundle-1",
+          "revision": "1",
+          "display": "D-01-A",
+          "choreography": "D-02-M",
+          "promptCadence": "D-05-focused-key-beats",
+          "connectionMaking": "CM-01-M"
+        },
+        "beatSchedule": [
+          {
+            "id": "encounter",
+            "kind": "encounter"
+          },
+          {
+            "id": "select-renaming-side",
+            "kind": "decide"
+          },
+          {
+            "id": "transform-left",
+            "kind": "transform",
+            "side": "left"
+          },
+          {
+            "id": "operate",
+            "kind": "operate"
+          },
+          {
+            "id": "resolve",
+            "kind": "resolve"
+          }
+        ],
+        "schedulePosition": 4,
+        "support": {
+          "label": "high support",
+          "dimensions": {
+            "fractionBarModel": "high support",
+            "commonDenominator": "high support",
+            "equivalentNumerators": "high support",
+            "prediction": "high support",
+            "symbolicIntegration": "high support",
+            "helpAndReplay": "high support"
+          }
+        },
+        "beat": "resolve",
+        "expectedResponse": null,
+        "established": {
+          "encounter": {
+            "acknowledged": true
+          },
+          "notice": null,
+          "commonDenominator": {
+            "kind": "authored-target-context",
+            "targetDenominator": "8",
+            "source": "validated-authored-task-context",
+            "validity": "valid",
+            "rendering": "eligible",
+            "authoredCoverage": "authored"
+          },
+          "conversions": {
+            "left": {
+              "kind": "fraction",
+              "numerator": "4",
+              "denominator": "8"
+            },
+            "right": null
+          },
+          "operation": {
+            "kind": "correct-simplified",
+            "validity": "valid",
+            "mathClassification": "correct-simplified",
+            "patterns": [],
+            "targetDenominator": "8",
+            "proposed": {
+              "kind": "fraction",
+              "numerator": "7",
+              "denominator": "8"
+            },
+            "simplifiedResult": {
+              "kind": "fraction",
+              "numerator": "7",
+              "denominator": "8"
+            },
+            "reasons": []
+          },
+          "resolution": null,
+          "reflection": null,
+          "route": "fraction-bar",
+          "nestedCompletion": {
+            "kind": "navigation-completion"
+          },
+          "selectedRenamingSide": "left",
+          "conversionOrigins": {
+            "left": "learner-constructed"
+          },
+          "lastConversion": {
+            "side": "left",
+            "form": {
+              "kind": "fraction",
+              "numerator": "4",
+              "denominator": "8"
+            },
+            "targetDenominator": "8",
+            "supportOrigin": "learner"
+          }
+        },
+        "completedBeats": [
+          {
+            "beat": "encounter",
+            "established": {
+              "acknowledged": true
+            },
+            "schedulePosition": 0,
+            "scheduleEntryId": "encounter"
+          },
+          {
+            "beat": "decide",
+            "established": {
+              "side": "left",
+              "targetDenominator": "8",
+              "source": "learner-selected-authored-renaming-side"
+            },
+            "schedulePosition": 1,
+            "scheduleEntryId": "select-renaming-side"
+          },
+          {
+            "beat": "transform",
+            "established": {
+              "left": {
+                "kind": "fraction",
+                "numerator": "4",
+                "denominator": "8"
+              },
+              "right": null
+            },
+            "schedulePosition": 2,
+            "scheduleEntryId": "transform-left"
+          },
+          {
+            "beat": "operate",
+            "established": {
+              "kind": "correct-simplified",
+              "validity": "valid",
+              "mathClassification": "correct-simplified",
+              "patterns": [],
+              "targetDenominator": "8",
+              "proposed": {
+                "kind": "fraction",
+                "numerator": "7",
+                "denominator": "8"
+              },
+              "simplifiedResult": {
+                "kind": "fraction",
+                "numerator": "7",
+                "denominator": "8"
+              },
+              "reasons": []
+            },
+            "schedulePosition": 3,
+            "scheduleEntryId": "operate"
+          },
+          {
+            "beat": "resolve",
+            "established": {
+              "kind": "navigation-completion"
+            },
+            "schedulePosition": 4,
+            "scheduleEntryId": "resolve"
+          }
+        ],
+        "pendingResponse": null,
+        "nextResponseSupport": null,
+        "helpHistory": [],
+        "replayHistory": [],
+        "retryHistory": [],
+        "supportHistory": [],
+        "intentHistory": [
+          {
+            "type": "acknowledge-encounter"
+          },
+          {
+            "type": "select-renaming-side",
+            "side": "left"
+          },
+          {
+            "type": "submit-equivalent-form",
+            "proposed": {
+              "kind": "fraction",
+              "numerator": "4",
+              "denominator": "8"
+            }
+          },
+          {
+            "type": "submit-operation-result",
+            "proposed": {
+              "kind": "fraction",
+              "numerator": "7",
+              "denominator": "8"
+            }
+          },
+          {
+            "type": "finish-nested-episode"
+          }
+        ],
+        "responseProvenance": [
+          {
+            "schemaVersion": "fractionflow.response-provenance/v1",
+            "responseIndex": 0,
+            "contentIdentity": {
+              "schemaVersion": "fractionflow.problem-instance/v1",
+              "id": "nested-denominator-addition__none__1__2__3__8",
+              "source": "curated",
+              "request": {
+                "selector": "nested-denominator-addition",
+                "operation": "add",
+                "overlays": [],
+                "profileId": "curated-review",
+                "profileVersion": "1"
+              },
+              "provenance": {
+                "kind": "curated",
+                "fixtureId": "curated-nested-addition-one-half-three-eighths",
+                "authoringRevision": "plan18-record-v1"
+              },
+              "selector": "nested-denominator-addition",
+              "overlays": [],
+              "sourceForms": {
+                "left": {
+                  "kind": "fraction",
+                  "numerator": "1",
+                  "denominator": "2"
+                },
+                "right": {
+                  "kind": "fraction",
+                  "numerator": "3",
+                  "denominator": "8"
+                }
+              }
+            },
+            "episodeDefinition": {
+              "id": "phase-3-nested-renaming-addition",
+              "revision": "1"
+            },
+            "taskContext": {
+              "practiceSetId": "unlike-addition-vetted-set",
+              "practiceSetRevision": "6",
+              "itemId": "nested-one-half-plus-three-eighths",
+              "fixtureId": "curated-nested-addition-one-half-three-eighths",
+              "authoringRevision": "plan18-record-v1",
+              "definitionId": "phase-3-nested-renaming-addition",
+              "definitionRevision": "1",
+              "taskDataId": "plan18-nested-renaming-task-data",
+              "taskDataRevision": "1",
+              "sourceForms": {
+                "left": {
+                  "kind": "fraction",
+                  "numerator": "1",
+                  "denominator": "2"
+                },
+                "right": {
+                  "kind": "fraction",
+                  "numerator": "3",
+                  "denominator": "8"
+                }
+              },
+              "targetDenominator": "8",
+              "requiredSide": "left"
+            },
+            "activeCondition": {
+              "id": "phase2-bundle-1",
+              "revision": "1",
+              "display": "D-01-A",
+              "choreography": "D-02-M",
+              "promptCadence": "D-05-focused-key-beats",
+              "connectionMaking": "CM-01-M"
+            },
+            "support": {
+              "label": "high support",
+              "dimensions": {
+                "fractionBarModel": "high support",
+                "commonDenominator": "high support",
+                "equivalentNumerators": "high support",
+                "prediction": "high support",
+                "symbolicIntegration": "high support",
+                "helpAndReplay": "high support"
+              }
+            },
+            "beat": "encounter",
+            "schedulePosition": 0,
+            "scheduleEntryId": "encounter",
+            "expectedResponse": {
+              "promptId": "phase3.nested-addition.encounter",
+              "beat": "encounter",
+              "evidenceCategory": "supported-construction",
+              "responsibility": "inspect-expression",
+              "inputKind": "acknowledge"
+            },
+            "visibility": {
+              "representationRole": "fraction-bar",
+              "visible": [
+                "source-forms",
+                "target-context"
+              ],
+              "supplied": [],
+              "hidden": [
+                "required-renaming-side",
+                "correct-conversion",
+                "operation-result"
+              ]
+            },
+            "prompt": {
+              "promptId": "phase3.nested-addition.encounter",
+              "promptDensity": "D-05-focused-key-beats",
+              "predictionOpportunity": false,
+              "connectionMakingDemand": "CM-01-M"
+            },
+            "helpHistory": [],
+            "replayHistory": [],
+            "retryHistory": [],
+            "supportActions": [],
+            "learnerAction": {
+              "type": "acknowledge-encounter"
+            },
+            "classification": {
+              "kind": "encounter-acknowledged"
+            },
+            "evidenceCategory": "supported-construction",
+            "resultingState": {
+              "status": "active",
+              "beat": "decide",
+              "schedulePosition": 1,
+              "scheduleEntryId": "select-renaming-side",
+              "established": {
+                "encounter": {
+                  "acknowledged": true
+                },
+                "notice": null,
+                "commonDenominator": {
+                  "kind": "authored-target-context",
+                  "targetDenominator": "8",
+                  "source": "validated-authored-task-context",
+                  "validity": "valid",
+                  "rendering": "eligible",
+                  "authoredCoverage": "authored"
+                },
+                "conversions": {
+                  "left": null,
+                  "right": null
+                },
+                "operation": null,
+                "resolution": null,
+                "reflection": null,
+                "route": "fraction-bar",
+                "nestedCompletion": null,
+                "selectedRenamingSide": null,
+                "conversionOrigins": {}
+              },
+              "revision": 1
+            }
+          },
+          {
+            "schemaVersion": "fractionflow.response-provenance/v1",
+            "responseIndex": 1,
+            "contentIdentity": {
+              "schemaVersion": "fractionflow.problem-instance/v1",
+              "id": "nested-denominator-addition__none__1__2__3__8",
+              "source": "curated",
+              "request": {
+                "selector": "nested-denominator-addition",
+                "operation": "add",
+                "overlays": [],
+                "profileId": "curated-review",
+                "profileVersion": "1"
+              },
+              "provenance": {
+                "kind": "curated",
+                "fixtureId": "curated-nested-addition-one-half-three-eighths",
+                "authoringRevision": "plan18-record-v1"
+              },
+              "selector": "nested-denominator-addition",
+              "overlays": [],
+              "sourceForms": {
+                "left": {
+                  "kind": "fraction",
+                  "numerator": "1",
+                  "denominator": "2"
+                },
+                "right": {
+                  "kind": "fraction",
+                  "numerator": "3",
+                  "denominator": "8"
+                }
+              }
+            },
+            "episodeDefinition": {
+              "id": "phase-3-nested-renaming-addition",
+              "revision": "1"
+            },
+            "taskContext": {
+              "practiceSetId": "unlike-addition-vetted-set",
+              "practiceSetRevision": "6",
+              "itemId": "nested-one-half-plus-three-eighths",
+              "fixtureId": "curated-nested-addition-one-half-three-eighths",
+              "authoringRevision": "plan18-record-v1",
+              "definitionId": "phase-3-nested-renaming-addition",
+              "definitionRevision": "1",
+              "taskDataId": "plan18-nested-renaming-task-data",
+              "taskDataRevision": "1",
+              "sourceForms": {
+                "left": {
+                  "kind": "fraction",
+                  "numerator": "1",
+                  "denominator": "2"
+                },
+                "right": {
+                  "kind": "fraction",
+                  "numerator": "3",
+                  "denominator": "8"
+                }
+              },
+              "targetDenominator": "8",
+              "requiredSide": "left"
+            },
+            "activeCondition": {
+              "id": "phase2-bundle-1",
+              "revision": "1",
+              "display": "D-01-A",
+              "choreography": "D-02-M",
+              "promptCadence": "D-05-focused-key-beats",
+              "connectionMaking": "CM-01-M"
+            },
+            "support": {
+              "label": "high support",
+              "dimensions": {
+                "fractionBarModel": "high support",
+                "commonDenominator": "high support",
+                "equivalentNumerators": "high support",
+                "prediction": "high support",
+                "symbolicIntegration": "high support",
+                "helpAndReplay": "high support"
+              }
+            },
+            "beat": "decide",
+            "schedulePosition": 1,
+            "scheduleEntryId": "select-renaming-side",
+            "expectedResponse": {
+              "promptId": "phase3.nested-addition.select-renaming-side",
+              "beat": "decide",
+              "evidenceCategory": "supported-construction",
+              "responsibility": "identify-renaming-side",
+              "inputKind": "side-choice",
+              "question": "Which fraction needs a different denominator?",
+              "choices": [
+                {
+                  "side": "left",
+                  "form": {
+                    "kind": "fraction",
+                    "numerator": "1",
+                    "denominator": "2"
+                  }
+                },
+                {
+                  "side": "right",
+                  "form": {
+                    "kind": "fraction",
+                    "numerator": "3",
+                    "denominator": "8"
+                  }
+                }
+              ],
+              "targetDenominator": "8"
+            },
+            "visibility": {
+              "representationRole": "fraction-bar",
+              "visible": [
+                "source-forms",
+                "target-context"
+              ],
+              "supplied": [],
+              "hidden": [
+                "required-renaming-side",
+                "correct-conversion",
+                "operation-result"
+              ]
+            },
+            "prompt": {
+              "promptId": "phase3.nested-addition.select-renaming-side",
+              "promptDensity": "D-05-focused-key-beats",
+              "predictionOpportunity": false,
+              "connectionMakingDemand": "CM-01-M"
+            },
+            "helpHistory": [],
+            "replayHistory": [],
+            "retryHistory": [],
+            "supportActions": [],
+            "learnerAction": {
+              "type": "select-renaming-side",
+              "side": "left"
+            },
+            "classification": {
+              "kind": "correct-renaming-side",
+              "selectedSide": "left"
+            },
+            "evidenceCategory": "supported-construction",
+            "resultingState": {
+              "status": "active",
+              "beat": "transform",
+              "schedulePosition": 2,
+              "scheduleEntryId": "transform-left",
+              "established": {
+                "encounter": {
+                  "acknowledged": true
+                },
+                "notice": null,
+                "commonDenominator": {
+                  "kind": "authored-target-context",
+                  "targetDenominator": "8",
+                  "source": "validated-authored-task-context",
+                  "validity": "valid",
+                  "rendering": "eligible",
+                  "authoredCoverage": "authored"
+                },
+                "conversions": {
+                  "left": null,
+                  "right": null
+                },
+                "operation": null,
+                "resolution": null,
+                "reflection": null,
+                "route": "fraction-bar",
+                "nestedCompletion": null,
+                "selectedRenamingSide": "left",
+                "conversionOrigins": {}
+              },
+              "revision": 2
+            }
+          },
+          {
+            "schemaVersion": "fractionflow.response-provenance/v1",
+            "responseIndex": 2,
+            "contentIdentity": {
+              "schemaVersion": "fractionflow.problem-instance/v1",
+              "id": "nested-denominator-addition__none__1__2__3__8",
+              "source": "curated",
+              "request": {
+                "selector": "nested-denominator-addition",
+                "operation": "add",
+                "overlays": [],
+                "profileId": "curated-review",
+                "profileVersion": "1"
+              },
+              "provenance": {
+                "kind": "curated",
+                "fixtureId": "curated-nested-addition-one-half-three-eighths",
+                "authoringRevision": "plan18-record-v1"
+              },
+              "selector": "nested-denominator-addition",
+              "overlays": [],
+              "sourceForms": {
+                "left": {
+                  "kind": "fraction",
+                  "numerator": "1",
+                  "denominator": "2"
+                },
+                "right": {
+                  "kind": "fraction",
+                  "numerator": "3",
+                  "denominator": "8"
+                }
+              }
+            },
+            "episodeDefinition": {
+              "id": "phase-3-nested-renaming-addition",
+              "revision": "1"
+            },
+            "taskContext": {
+              "practiceSetId": "unlike-addition-vetted-set",
+              "practiceSetRevision": "6",
+              "itemId": "nested-one-half-plus-three-eighths",
+              "fixtureId": "curated-nested-addition-one-half-three-eighths",
+              "authoringRevision": "plan18-record-v1",
+              "definitionId": "phase-3-nested-renaming-addition",
+              "definitionRevision": "1",
+              "taskDataId": "plan18-nested-renaming-task-data",
+              "taskDataRevision": "1",
+              "sourceForms": {
+                "left": {
+                  "kind": "fraction",
+                  "numerator": "1",
+                  "denominator": "2"
+                },
+                "right": {
+                  "kind": "fraction",
+                  "numerator": "3",
+                  "denominator": "8"
+                }
+              },
+              "targetDenominator": "8",
+              "requiredSide": "left"
+            },
+            "activeCondition": {
+              "id": "phase2-bundle-1",
+              "revision": "1",
+              "display": "D-01-A",
+              "choreography": "D-02-M",
+              "promptCadence": "D-05-focused-key-beats",
+              "connectionMaking": "CM-01-M"
+            },
+            "support": {
+              "label": "high support",
+              "dimensions": {
+                "fractionBarModel": "high support",
+                "commonDenominator": "high support",
+                "equivalentNumerators": "high support",
+                "prediction": "high support",
+                "symbolicIntegration": "high support",
+                "helpAndReplay": "high support"
+              }
+            },
+            "beat": "transform",
+            "schedulePosition": 2,
+            "scheduleEntryId": "transform-left",
+            "expectedResponse": {
+              "promptId": "phase3.nested-addition.transform-one-side",
+              "beat": "transform",
+              "evidenceCategory": "prediction",
+              "responsibility": "construct-equivalent-form",
+              "inputKind": "fraction",
+              "target": "left"
+            },
+            "visibility": {
+              "representationRole": "fraction-bar",
+              "visible": [
+                "source-forms",
+                "selected-renaming-side",
+                "target-context"
+              ],
+              "supplied": [],
+              "hidden": [
+                "correct-conversion",
+                "operation-result"
+              ]
+            },
+            "prompt": {
+              "promptId": "phase3.nested-addition.transform-one-side",
+              "promptDensity": "D-05-focused-key-beats",
+              "predictionOpportunity": true,
+              "connectionMakingDemand": "CM-01-M"
+            },
+            "helpHistory": [],
+            "replayHistory": [],
+            "retryHistory": [],
+            "supportActions": [],
+            "learnerAction": {
+              "type": "submit-equivalent-form",
+              "proposed": {
+                "kind": "fraction",
+                "numerator": "4",
+                "denominator": "8"
+              }
+            },
+            "classification": {
+              "kind": "correct-equivalent-form",
+              "validity": "valid",
+              "mathClassification": "valid-equivalent-fraction",
+              "patterns": [],
+              "targetDenominator": "8",
+              "side": "left",
+              "reasons": []
+            },
+            "evidenceCategory": "prediction",
+            "resultingState": {
+              "status": "active",
+              "beat": "operate",
+              "schedulePosition": 3,
+              "scheduleEntryId": "operate",
+              "established": {
+                "encounter": {
+                  "acknowledged": true
+                },
+                "notice": null,
+                "commonDenominator": {
+                  "kind": "authored-target-context",
+                  "targetDenominator": "8",
+                  "source": "validated-authored-task-context",
+                  "validity": "valid",
+                  "rendering": "eligible",
+                  "authoredCoverage": "authored"
+                },
+                "conversions": {
+                  "left": {
+                    "kind": "fraction",
+                    "numerator": "4",
+                    "denominator": "8"
+                  },
+                  "right": null
+                },
+                "operation": null,
+                "resolution": null,
+                "reflection": null,
+                "route": "fraction-bar",
+                "nestedCompletion": null,
+                "selectedRenamingSide": "left",
+                "conversionOrigins": {
+                  "left": "learner-constructed"
+                },
+                "lastConversion": {
+                  "side": "left",
+                  "form": {
+                    "kind": "fraction",
+                    "numerator": "4",
+                    "denominator": "8"
+                  },
+                  "targetDenominator": "8",
+                  "supportOrigin": "learner"
+                }
+              },
+              "revision": 3
+            }
+          },
+          {
+            "schemaVersion": "fractionflow.response-provenance/v1",
+            "responseIndex": 3,
+            "contentIdentity": {
+              "schemaVersion": "fractionflow.problem-instance/v1",
+              "id": "nested-denominator-addition__none__1__2__3__8",
+              "source": "curated",
+              "request": {
+                "selector": "nested-denominator-addition",
+                "operation": "add",
+                "overlays": [],
+                "profileId": "curated-review",
+                "profileVersion": "1"
+              },
+              "provenance": {
+                "kind": "curated",
+                "fixtureId": "curated-nested-addition-one-half-three-eighths",
+                "authoringRevision": "plan18-record-v1"
+              },
+              "selector": "nested-denominator-addition",
+              "overlays": [],
+              "sourceForms": {
+                "left": {
+                  "kind": "fraction",
+                  "numerator": "1",
+                  "denominator": "2"
+                },
+                "right": {
+                  "kind": "fraction",
+                  "numerator": "3",
+                  "denominator": "8"
+                }
+              }
+            },
+            "episodeDefinition": {
+              "id": "phase-3-nested-renaming-addition",
+              "revision": "1"
+            },
+            "taskContext": {
+              "practiceSetId": "unlike-addition-vetted-set",
+              "practiceSetRevision": "6",
+              "itemId": "nested-one-half-plus-three-eighths",
+              "fixtureId": "curated-nested-addition-one-half-three-eighths",
+              "authoringRevision": "plan18-record-v1",
+              "definitionId": "phase-3-nested-renaming-addition",
+              "definitionRevision": "1",
+              "taskDataId": "plan18-nested-renaming-task-data",
+              "taskDataRevision": "1",
+              "sourceForms": {
+                "left": {
+                  "kind": "fraction",
+                  "numerator": "1",
+                  "denominator": "2"
+                },
+                "right": {
+                  "kind": "fraction",
+                  "numerator": "3",
+                  "denominator": "8"
+                }
+              },
+              "targetDenominator": "8",
+              "requiredSide": "left"
+            },
+            "activeCondition": {
+              "id": "phase2-bundle-1",
+              "revision": "1",
+              "display": "D-01-A",
+              "choreography": "D-02-M",
+              "promptCadence": "D-05-focused-key-beats",
+              "connectionMaking": "CM-01-M"
+            },
+            "support": {
+              "label": "high support",
+              "dimensions": {
+                "fractionBarModel": "high support",
+                "commonDenominator": "high support",
+                "equivalentNumerators": "high support",
+                "prediction": "high support",
+                "symbolicIntegration": "high support",
+                "helpAndReplay": "high support"
+              }
+            },
+            "beat": "operate",
+            "schedulePosition": 3,
+            "scheduleEntryId": "operate",
+            "expectedResponse": {
+              "promptId": "phase3.nested-addition.operate",
+              "beat": "operate",
+              "evidenceCategory": "supported-construction",
+              "responsibility": "combine-like-units",
+              "inputKind": "fraction"
+            },
+            "visibility": {
+              "representationRole": "symbolic",
+              "visible": [
+                "constructed-conversion",
+                "validated-original-operand",
+                "operation",
+                "target-context"
+              ],
+              "supplied": [],
+              "hidden": [
+                "unsubmitted-operation-result"
+              ]
+            },
+            "prompt": {
+              "promptId": "phase3.nested-addition.operate",
+              "promptDensity": "D-05-focused-key-beats",
+              "predictionOpportunity": false,
+              "connectionMakingDemand": "CM-01-M"
+            },
+            "helpHistory": [],
+            "replayHistory": [],
+            "retryHistory": [],
+            "supportActions": [],
+            "learnerAction": {
+              "type": "submit-operation-result",
+              "proposed": {
+                "kind": "fraction",
+                "numerator": "7",
+                "denominator": "8"
+              }
+            },
+            "classification": {
+              "kind": "correct-simplified",
+              "validity": "valid",
+              "mathClassification": "correct-simplified",
+              "patterns": [],
+              "targetDenominator": "8",
+              "proposed": {
+                "kind": "fraction",
+                "numerator": "7",
+                "denominator": "8"
+              },
+              "simplifiedResult": {
+                "kind": "fraction",
+                "numerator": "7",
+                "denominator": "8"
+              },
+              "reasons": []
+            },
+            "evidenceCategory": "supported-construction",
+            "resultingState": {
+              "status": "active",
+              "beat": "resolve",
+              "schedulePosition": 4,
+              "scheduleEntryId": "resolve",
+              "established": {
+                "encounter": {
+                  "acknowledged": true
+                },
+                "notice": null,
+                "commonDenominator": {
+                  "kind": "authored-target-context",
+                  "targetDenominator": "8",
+                  "source": "validated-authored-task-context",
+                  "validity": "valid",
+                  "rendering": "eligible",
+                  "authoredCoverage": "authored"
+                },
+                "conversions": {
+                  "left": {
+                    "kind": "fraction",
+                    "numerator": "4",
+                    "denominator": "8"
+                  },
+                  "right": null
+                },
+                "operation": {
+                  "kind": "correct-simplified",
+                  "validity": "valid",
+                  "mathClassification": "correct-simplified",
+                  "patterns": [],
+                  "targetDenominator": "8",
+                  "proposed": {
+                    "kind": "fraction",
+                    "numerator": "7",
+                    "denominator": "8"
+                  },
+                  "simplifiedResult": {
+                    "kind": "fraction",
+                    "numerator": "7",
+                    "denominator": "8"
+                  },
+                  "reasons": []
+                },
+                "resolution": null,
+                "reflection": null,
+                "route": "fraction-bar",
+                "nestedCompletion": null,
+                "selectedRenamingSide": "left",
+                "conversionOrigins": {
+                  "left": "learner-constructed"
+                },
+                "lastConversion": {
+                  "side": "left",
+                  "form": {
+                    "kind": "fraction",
+                    "numerator": "4",
+                    "denominator": "8"
+                  },
+                  "targetDenominator": "8",
+                  "supportOrigin": "learner"
+                }
+              },
+              "revision": 4
+            }
+          },
+          {
+            "schemaVersion": "fractionflow.response-provenance/v1",
+            "responseIndex": 4,
+            "contentIdentity": {
+              "schemaVersion": "fractionflow.problem-instance/v1",
+              "id": "nested-denominator-addition__none__1__2__3__8",
+              "source": "curated",
+              "request": {
+                "selector": "nested-denominator-addition",
+                "operation": "add",
+                "overlays": [],
+                "profileId": "curated-review",
+                "profileVersion": "1"
+              },
+              "provenance": {
+                "kind": "curated",
+                "fixtureId": "curated-nested-addition-one-half-three-eighths",
+                "authoringRevision": "plan18-record-v1"
+              },
+              "selector": "nested-denominator-addition",
+              "overlays": [],
+              "sourceForms": {
+                "left": {
+                  "kind": "fraction",
+                  "numerator": "1",
+                  "denominator": "2"
+                },
+                "right": {
+                  "kind": "fraction",
+                  "numerator": "3",
+                  "denominator": "8"
+                }
+              }
+            },
+            "episodeDefinition": {
+              "id": "phase-3-nested-renaming-addition",
+              "revision": "1"
+            },
+            "taskContext": {
+              "practiceSetId": "unlike-addition-vetted-set",
+              "practiceSetRevision": "6",
+              "itemId": "nested-one-half-plus-three-eighths",
+              "fixtureId": "curated-nested-addition-one-half-three-eighths",
+              "authoringRevision": "plan18-record-v1",
+              "definitionId": "phase-3-nested-renaming-addition",
+              "definitionRevision": "1",
+              "taskDataId": "plan18-nested-renaming-task-data",
+              "taskDataRevision": "1",
+              "sourceForms": {
+                "left": {
+                  "kind": "fraction",
+                  "numerator": "1",
+                  "denominator": "2"
+                },
+                "right": {
+                  "kind": "fraction",
+                  "numerator": "3",
+                  "denominator": "8"
+                }
+              },
+              "targetDenominator": "8",
+              "requiredSide": "left"
+            },
+            "activeCondition": {
+              "id": "phase2-bundle-1",
+              "revision": "1",
+              "display": "D-01-A",
+              "choreography": "D-02-M",
+              "promptCadence": "D-05-focused-key-beats",
+              "connectionMaking": "CM-01-M"
+            },
+            "support": {
+              "label": "high support",
+              "dimensions": {
+                "fractionBarModel": "high support",
+                "commonDenominator": "high support",
+                "equivalentNumerators": "high support",
+                "prediction": "high support",
+                "symbolicIntegration": "high support",
+                "helpAndReplay": "high support"
+              }
+            },
+            "beat": "resolve",
+            "schedulePosition": 4,
+            "scheduleEntryId": "resolve",
+            "expectedResponse": {
+              "promptId": "phase3.nested-addition.resolve",
+              "beat": "resolve",
+              "evidenceCategory": "supported-construction",
+              "responsibility": "settle-final-form",
+              "inputKind": "fraction"
+            },
+            "visibility": {
+              "representationRole": "symbolic",
+              "visible": [
+                "operation-result",
+                "finish-navigation"
+              ],
+              "supplied": [],
+              "hidden": []
+            },
+            "prompt": {
+              "promptId": "phase3.nested-addition.resolve",
+              "promptDensity": "D-05-focused-key-beats",
+              "predictionOpportunity": false,
+              "connectionMakingDemand": "CM-01-M"
+            },
+            "helpHistory": [],
+            "replayHistory": [],
+            "retryHistory": [],
+            "supportActions": [],
+            "learnerAction": {
+              "type": "finish-nested-episode"
+            },
+            "classification": {
+              "kind": "nested-navigation-completed"
+            },
+            "evidenceCategory": "supported-construction",
+            "resultingState": {
+              "status": "resolved",
+              "beat": "resolve",
+              "schedulePosition": 4,
+              "scheduleEntryId": "resolve",
+              "established": {
+                "encounter": {
+                  "acknowledged": true
+                },
+                "notice": null,
+                "commonDenominator": {
+                  "kind": "authored-target-context",
+                  "targetDenominator": "8",
+                  "source": "validated-authored-task-context",
+                  "validity": "valid",
+                  "rendering": "eligible",
+                  "authoredCoverage": "authored"
+                },
+                "conversions": {
+                  "left": {
+                    "kind": "fraction",
+                    "numerator": "4",
+                    "denominator": "8"
+                  },
+                  "right": null
+                },
+                "operation": {
+                  "kind": "correct-simplified",
+                  "validity": "valid",
+                  "mathClassification": "correct-simplified",
+                  "patterns": [],
+                  "targetDenominator": "8",
+                  "proposed": {
+                    "kind": "fraction",
+                    "numerator": "7",
+                    "denominator": "8"
+                  },
+                  "simplifiedResult": {
+                    "kind": "fraction",
+                    "numerator": "7",
+                    "denominator": "8"
+                  },
+                  "reasons": []
+                },
+                "resolution": null,
+                "reflection": null,
+                "route": "fraction-bar",
+                "nestedCompletion": {
+                  "kind": "navigation-completion"
+                },
+                "selectedRenamingSide": "left",
+                "conversionOrigins": {
+                  "left": "learner-constructed"
+                },
+                "lastConversion": {
+                  "side": "left",
+                  "form": {
+                    "kind": "fraction",
+                    "numerator": "4",
+                    "denominator": "8"
+                  },
+                  "targetDenominator": "8",
+                  "supportOrigin": "learner"
+                }
+              },
+              "revision": 5
+            }
+          }
+        ],
+        "lastRecovery": null
+      }
+    },
+    {
+      "itemId": "nested-three-eighths-plus-one-half",
+      "fixtureId": "curated-nested-addition-three-eighths-one-half",
+      "requiredSide": "right",
+      "phase": "initial",
+      "envelope": {
+        "schemaVersion": "fractionflow.episode-replay/v3",
+        "contentIdentity": {
+          "schemaVersion": "fractionflow.problem-instance/v1",
+          "id": "nested-denominator-addition__none__3__8__1__2",
+          "source": "curated",
+          "request": {
+            "selector": "nested-denominator-addition",
+            "operation": "add",
+            "overlays": [],
+            "profileId": "curated-review",
+            "profileVersion": "1"
+          },
+          "provenance": {
+            "kind": "curated",
+            "fixtureId": "curated-nested-addition-three-eighths-one-half",
+            "authoringRevision": "plan18-record-v1"
+          },
+          "selector": "nested-denominator-addition",
+          "overlays": [],
+          "sourceForms": {
+            "left": {
+              "kind": "fraction",
+              "numerator": "3",
+              "denominator": "8"
+            },
+            "right": {
+              "kind": "fraction",
+              "numerator": "1",
+              "denominator": "2"
+            }
+          },
+          "reconstruction": {
+            "kind": "curated",
+            "request": {
+              "selector": "nested-denominator-addition",
+              "operation": "add",
+              "overlays": [],
+              "profileId": "curated-review",
+              "profileVersion": "1"
+            },
+            "fixtureId": "curated-nested-addition-three-eighths-one-half",
+            "authoringRevision": "plan18-record-v1"
+          }
+        },
+        "episodeDefinition": {
+          "id": "phase-3-nested-renaming-addition",
+          "revision": "1"
+        },
+        "support": {
+          "label": "high support",
+          "dimensions": {
+            "fractionBarModel": "high support",
+            "commonDenominator": "high support",
+            "equivalentNumerators": "high support",
+            "prediction": "high support",
+            "symbolicIntegration": "high support",
+            "helpAndReplay": "high support"
+          }
+        },
+        "activeCondition": {
+          "id": "phase2-bundle-1",
+          "revision": "1",
+          "display": "D-01-A",
+          "choreography": "D-02-M",
+          "promptCadence": "D-05-focused-key-beats",
+          "connectionMaking": "CM-01-M"
+        },
+        "learnerIntents": [],
+        "taskContext": {
+          "practiceSetId": "unlike-addition-vetted-set",
+          "practiceSetRevision": "6",
+          "itemId": "nested-three-eighths-plus-one-half",
+          "fixtureId": "curated-nested-addition-three-eighths-one-half",
+          "authoringRevision": "plan18-record-v1",
+          "definitionId": "phase-3-nested-renaming-addition",
+          "definitionRevision": "1",
+          "taskDataId": "plan18-nested-renaming-task-data",
+          "taskDataRevision": "1",
+          "sourceForms": {
+            "left": {
+              "kind": "fraction",
+              "numerator": "3",
+              "denominator": "8"
+            },
+            "right": {
+              "kind": "fraction",
+              "numerator": "1",
+              "denominator": "2"
+            }
+          },
+          "targetDenominator": "8",
+          "requiredSide": "right"
+        }
+      },
+      "expectedState": {
+        "schemaVersion": "fractionflow.episode-state/v1",
+        "status": "active",
+        "revision": 0,
+        "content": {
+          "schemaVersion": "fractionflow.problem-instance/v1",
+          "id": "nested-denominator-addition__none__3__8__1__2",
+          "source": "curated",
+          "request": {
+            "selector": "nested-denominator-addition",
+            "operation": "add",
+            "overlays": [],
+            "profileId": "curated-review",
+            "profileVersion": "1"
+          },
+          "provenance": {
+            "kind": "curated",
+            "fixtureId": "curated-nested-addition-three-eighths-one-half",
+            "authoringRevision": "plan18-record-v1"
+          },
+          "operands": {
+            "left": {
+              "exactValue": {
+                "kind": "fraction",
+                "numerator": "3",
+                "denominator": "8"
+              },
+              "initialForm": {
+                "kind": "fraction",
+                "numerator": "3",
+                "denominator": "8"
+              },
+              "currentForm": {
+                "kind": "fraction",
+                "numerator": "3",
+                "denominator": "8"
+              },
+              "preferredFinalForm": {
+                "kind": "fraction",
+                "numerator": "3",
+                "denominator": "8"
+              },
+              "acceptedFormTransitions": []
+            },
+            "right": {
+              "exactValue": {
+                "kind": "fraction",
+                "numerator": "1",
+                "denominator": "2"
+              },
+              "initialForm": {
+                "kind": "fraction",
+                "numerator": "1",
+                "denominator": "2"
+              },
+              "currentForm": {
+                "kind": "fraction",
+                "numerator": "1",
+                "denominator": "2"
+              },
+              "preferredFinalForm": {
+                "kind": "fraction",
+                "numerator": "1",
+                "denominator": "2"
+              },
+              "acceptedFormTransitions": []
+            }
+          },
+          "resultState": {
+            "exactResult": {
+              "kind": "fraction",
+              "numerator": "7",
+              "denominator": "8"
+            },
+            "canonicalRawResultForm": {
+              "kind": "fraction",
+              "numerator": "7",
+              "denominator": "8"
+            },
+            "currentForm": {
+              "kind": "fraction",
+              "numerator": "7",
+              "denominator": "8"
+            },
+            "preferredFinalForm": {
+              "kind": "fraction",
+              "numerator": "7",
+              "denominator": "8"
+            }
+          },
+          "canonicalPath": {
+            "id": "canonical-lcd",
+            "kind": "lcd",
+            "status": "canonical",
+            "startingState": "initial",
+            "targetDenominator": "8",
+            "scaleFactors": {
+              "left": "1",
+              "right": "4"
+            },
+            "transformations": [
+              {
+                "type": "equivalent-renaming",
+                "target": "right",
+                "fromForm": {
+                  "kind": "fraction",
+                  "numerator": "1",
+                  "denominator": "2"
+                },
+                "toForm": {
+                  "kind": "fraction",
+                  "numerator": "4",
+                  "denominator": "8"
+                },
+                "scaleFactor": "4",
+                "preservesExactValue": true,
+                "validation": "valid"
+              }
+            ],
+            "operation": {
+              "type": "operation",
+              "operation": "add",
+              "left": {
+                "kind": "fraction",
+                "numerator": "3",
+                "denominator": "8"
+              },
+              "right": {
+                "kind": "fraction",
+                "numerator": "4",
+                "denominator": "8"
+              },
+              "rawResult": {
+                "kind": "fraction",
+                "numerator": "7",
+                "denominator": "8"
+              }
+            },
+            "finalResult": {
+              "rawForm": {
+                "kind": "fraction",
+                "numerator": "7",
+                "denominator": "8"
+              },
+              "preferredFinalForm": {
+                "kind": "fraction",
+                "numerator": "7",
+                "denominator": "8"
+              }
+            }
+          },
+          "alternatePaths": [
+            {
+              "id": "alternate-non-least-common-denominator",
+              "kind": "non-least-common-denominator",
+              "status": "alternate-valid",
+              "startingState": "initial",
+              "targetDenominator": "16",
+              "scaleFactors": {
+                "left": "2",
+                "right": "8"
+              },
+              "transformations": [
+                {
+                  "type": "equivalent-renaming",
+                  "target": "left",
+                  "fromForm": {
+                    "kind": "fraction",
+                    "numerator": "3",
+                    "denominator": "8"
+                  },
+                  "toForm": {
+                    "kind": "fraction",
+                    "numerator": "6",
+                    "denominator": "16"
+                  },
+                  "scaleFactor": "2",
+                  "preservesExactValue": true,
+                  "validation": "valid"
+                },
+                {
+                  "type": "equivalent-renaming",
+                  "target": "right",
+                  "fromForm": {
+                    "kind": "fraction",
+                    "numerator": "1",
+                    "denominator": "2"
+                  },
+                  "toForm": {
+                    "kind": "fraction",
+                    "numerator": "8",
+                    "denominator": "16"
+                  },
+                  "scaleFactor": "8",
+                  "preservesExactValue": true,
+                  "validation": "valid"
+                }
+              ],
+              "operation": {
+                "type": "operation",
+                "operation": "add",
+                "left": {
+                  "kind": "fraction",
+                  "numerator": "6",
+                  "denominator": "16"
+                },
+                "right": {
+                  "kind": "fraction",
+                  "numerator": "8",
+                  "denominator": "16"
+                },
+                "rawResult": {
+                  "kind": "fraction",
+                  "numerator": "14",
+                  "denominator": "16"
+                }
+              },
+              "finalResult": {
+                "rawForm": {
+                  "kind": "fraction",
+                  "numerator": "14",
+                  "denominator": "16"
+                },
+                "preferredFinalForm": {
+                  "kind": "fraction",
+                  "numerator": "7",
+                  "denominator": "8"
+                }
+              }
+            }
+          ],
+          "classification": {
+            "family": {
+              "structuralSelector": "nested-denominator-addition",
+              "overlays": [],
+              "stateSnapshot": "initial"
+            },
+            "denominator": {
+              "relationship": "nested",
+              "leastCommonDenominator": "8",
+              "canonicalScaleFactors": {
+                "left": "1",
+                "right": "4"
+              },
+              "alternateCommonDenominators": [
+                "16"
+              ]
+            },
+            "transformations": {
+              "canonicalRenaming": {
+                "left": false,
+                "right": true,
+                "targetDenominator": "8"
+              },
+              "canonical": [
+                {
+                  "type": "equivalent-renaming",
+                  "target": "right",
+                  "fromForm": {
+                    "kind": "fraction",
+                    "numerator": "1",
+                    "denominator": "2"
+                  },
+                  "toForm": {
+                    "kind": "fraction",
+                    "numerator": "4",
+                    "denominator": "8"
+                  },
+                  "scaleFactor": "4",
+                  "preservesExactValue": true,
+                  "validation": "valid"
+                }
+              ],
+              "alternates": [
+                [
+                  {
+                    "type": "equivalent-renaming",
+                    "target": "left",
+                    "fromForm": {
+                      "kind": "fraction",
+                      "numerator": "3",
+                      "denominator": "8"
+                    },
+                    "toForm": {
+                      "kind": "fraction",
+                      "numerator": "6",
+                      "denominator": "16"
+                    },
+                    "scaleFactor": "2",
+                    "preservesExactValue": true,
+                    "validation": "valid"
+                  },
+                  {
+                    "type": "equivalent-renaming",
+                    "target": "right",
+                    "fromForm": {
+                      "kind": "fraction",
+                      "numerator": "1",
+                      "denominator": "2"
+                    },
+                    "toForm": {
+                      "kind": "fraction",
+                      "numerator": "8",
+                      "denominator": "16"
+                    },
+                    "scaleFactor": "8",
+                    "preservesExactValue": true,
+                    "validation": "valid"
+                  }
+                ]
+              ]
+            },
+            "result": {
+              "exactResult": {
+                "kind": "fraction",
+                "numerator": "7",
+                "denominator": "8"
+              },
+              "canonicalRawResultForm": {
+                "kind": "fraction",
+                "numerator": "7",
+                "denominator": "8"
+              },
+              "preferredFinalForm": {
+                "kind": "fraction",
+                "numerator": "7",
+                "denominator": "8"
+              },
+              "resultForm": "proper",
+              "simplificationStatus": "already-simplified",
+              "isWholeValued": false,
+              "crossesWhole": false
+            },
+            "regrouping": {
+              "type": "none",
+              "required": false
+            },
+            "magnitude": {
+              "benchmarkRegion": "between-half-and-1",
+              "lowerWhole": "0",
+              "upperWhole": "1",
+              "relativeToZero": 1,
+              "relativeToOne": -1,
+              "relativeToTwo": -1
+            }
+          },
+          "representationFacts": {
+            "operandDenominators": {
+              "left": "8",
+              "right": "2"
+            },
+            "canonicalDenominator": "8",
+            "resultDenominator": "8",
+            "wholeSpan": {
+              "lowerWhole": "0",
+              "upperWhole": "1"
+            },
+            "subdivisionCounts": {
+              "left": "8",
+              "right": "2",
+              "canonical": "8"
+            },
+            "eligibility": {
+              "fractionBar": "eligible",
+              "numberLine": "not-in-phase-2",
+              "symbolic": "eligible"
+            },
+            "alternateRepresentationRecommendation": "none"
+          },
+          "reviewMetadata": {
+            "scaleFactors": {
+              "left": "1",
+              "right": "4"
+            },
+            "magnitudeRange": {
+              "lowerWhole": "0",
+              "upperWhole": "1",
+              "benchmarkRegion": "between-half-and-1"
+            },
+            "intendedTargetConcept": "nested-denominator-addition",
+            "likelyAlternateValidPaths": [
+              "non-least-common-denominator"
+            ],
+            "authoredCoverageNote": "Canonical LCD path is preferred; valid alternate paths remain mathematical alternatives.",
+            "synthetic": true
+          }
+        },
+        "episodeDefinition": {
+          "operation": "add",
+          "selector": "nested-denominator-addition",
+          "beats": [
+            "encounter",
+            "decide",
+            "transform",
+            "operate",
+            "resolve"
+          ],
+          "includeReflection": false,
+          "promptIdentities": {
+            "encounter": "phase3.nested-addition.encounter",
+            "decide": "phase3.nested-addition.select-renaming-side",
+            "transform": "phase3.nested-addition.transform-one-side",
+            "operate": "phase3.nested-addition.operate",
+            "resolve": "phase3.nested-addition.resolve"
+          },
+          "id": "phase-3-nested-renaming-addition",
+          "revision": "1"
+        },
+        "taskContext": {
+          "practiceSetId": "unlike-addition-vetted-set",
+          "practiceSetRevision": "6",
+          "itemId": "nested-three-eighths-plus-one-half",
+          "fixtureId": "curated-nested-addition-three-eighths-one-half",
+          "authoringRevision": "plan18-record-v1",
+          "definitionId": "phase-3-nested-renaming-addition",
+          "definitionRevision": "1",
+          "taskDataId": "plan18-nested-renaming-task-data",
+          "taskDataRevision": "1",
+          "sourceForms": {
+            "left": {
+              "kind": "fraction",
+              "numerator": "3",
+              "denominator": "8"
+            },
+            "right": {
+              "kind": "fraction",
+              "numerator": "1",
+              "denominator": "2"
+            }
+          },
+          "targetDenominator": "8",
+          "requiredSide": "right"
+        },
+        "activeCondition": {
+          "id": "phase2-bundle-1",
+          "revision": "1",
+          "display": "D-01-A",
+          "choreography": "D-02-M",
+          "promptCadence": "D-05-focused-key-beats",
+          "connectionMaking": "CM-01-M"
+        },
+        "beatSchedule": [
+          {
+            "id": "encounter",
+            "kind": "encounter"
+          },
+          {
+            "id": "select-renaming-side",
+            "kind": "decide"
+          },
+          {
+            "id": "transform-right",
+            "kind": "transform",
+            "side": "right"
+          },
+          {
+            "id": "operate",
+            "kind": "operate"
+          },
+          {
+            "id": "resolve",
+            "kind": "resolve"
+          }
+        ],
+        "schedulePosition": 0,
+        "support": {
+          "label": "high support",
+          "dimensions": {
+            "fractionBarModel": "high support",
+            "commonDenominator": "high support",
+            "equivalentNumerators": "high support",
+            "prediction": "high support",
+            "symbolicIntegration": "high support",
+            "helpAndReplay": "high support"
+          }
+        },
+        "beat": "encounter",
+        "expectedResponse": {
+          "promptId": "phase3.nested-addition.encounter",
+          "beat": "encounter",
+          "evidenceCategory": "supported-construction",
+          "responsibility": "inspect-expression",
+          "inputKind": "acknowledge"
+        },
+        "established": {
+          "encounter": null,
+          "notice": null,
+          "commonDenominator": null,
+          "conversions": {
+            "left": null,
+            "right": null
+          },
+          "operation": null,
+          "resolution": null,
+          "reflection": null,
+          "route": "fraction-bar",
+          "nestedCompletion": null,
+          "selectedRenamingSide": null,
+          "conversionOrigins": {}
+        },
+        "completedBeats": [],
+        "pendingResponse": null,
+        "nextResponseSupport": null,
+        "helpHistory": [],
+        "replayHistory": [],
+        "retryHistory": [],
+        "supportHistory": [],
+        "intentHistory": [],
+        "responseProvenance": [],
+        "lastRecovery": null
+      }
+    },
+    {
+      "itemId": "nested-three-eighths-plus-one-half",
+      "fixtureId": "curated-nested-addition-three-eighths-one-half",
+      "requiredSide": "right",
+      "phase": "completed",
+      "envelope": {
+        "schemaVersion": "fractionflow.episode-replay/v3",
+        "contentIdentity": {
+          "schemaVersion": "fractionflow.problem-instance/v1",
+          "id": "nested-denominator-addition__none__3__8__1__2",
+          "source": "curated",
+          "request": {
+            "selector": "nested-denominator-addition",
+            "operation": "add",
+            "overlays": [],
+            "profileId": "curated-review",
+            "profileVersion": "1"
+          },
+          "provenance": {
+            "kind": "curated",
+            "fixtureId": "curated-nested-addition-three-eighths-one-half",
+            "authoringRevision": "plan18-record-v1"
+          },
+          "selector": "nested-denominator-addition",
+          "overlays": [],
+          "sourceForms": {
+            "left": {
+              "kind": "fraction",
+              "numerator": "3",
+              "denominator": "8"
+            },
+            "right": {
+              "kind": "fraction",
+              "numerator": "1",
+              "denominator": "2"
+            }
+          },
+          "reconstruction": {
+            "kind": "curated",
+            "request": {
+              "selector": "nested-denominator-addition",
+              "operation": "add",
+              "overlays": [],
+              "profileId": "curated-review",
+              "profileVersion": "1"
+            },
+            "fixtureId": "curated-nested-addition-three-eighths-one-half",
+            "authoringRevision": "plan18-record-v1"
+          }
+        },
+        "episodeDefinition": {
+          "id": "phase-3-nested-renaming-addition",
+          "revision": "1"
+        },
+        "support": {
+          "label": "high support",
+          "dimensions": {
+            "fractionBarModel": "high support",
+            "commonDenominator": "high support",
+            "equivalentNumerators": "high support",
+            "prediction": "high support",
+            "symbolicIntegration": "high support",
+            "helpAndReplay": "high support"
+          }
+        },
+        "activeCondition": {
+          "id": "phase2-bundle-1",
+          "revision": "1",
+          "display": "D-01-A",
+          "choreography": "D-02-M",
+          "promptCadence": "D-05-focused-key-beats",
+          "connectionMaking": "CM-01-M"
+        },
+        "learnerIntents": [
+          {
+            "type": "acknowledge-encounter"
+          },
+          {
+            "type": "select-renaming-side",
+            "side": "right"
+          },
+          {
+            "type": "submit-equivalent-form",
+            "proposed": {
+              "kind": "fraction",
+              "numerator": "4",
+              "denominator": "8"
+            }
+          },
+          {
+            "type": "submit-operation-result",
+            "proposed": {
+              "kind": "fraction",
+              "numerator": "7",
+              "denominator": "8"
+            }
+          },
+          {
+            "type": "finish-nested-episode"
+          }
+        ],
+        "taskContext": {
+          "practiceSetId": "unlike-addition-vetted-set",
+          "practiceSetRevision": "6",
+          "itemId": "nested-three-eighths-plus-one-half",
+          "fixtureId": "curated-nested-addition-three-eighths-one-half",
+          "authoringRevision": "plan18-record-v1",
+          "definitionId": "phase-3-nested-renaming-addition",
+          "definitionRevision": "1",
+          "taskDataId": "plan18-nested-renaming-task-data",
+          "taskDataRevision": "1",
+          "sourceForms": {
+            "left": {
+              "kind": "fraction",
+              "numerator": "3",
+              "denominator": "8"
+            },
+            "right": {
+              "kind": "fraction",
+              "numerator": "1",
+              "denominator": "2"
+            }
+          },
+          "targetDenominator": "8",
+          "requiredSide": "right"
+        }
+      },
+      "expectedState": {
+        "schemaVersion": "fractionflow.episode-state/v1",
+        "status": "resolved",
+        "revision": 5,
+        "content": {
+          "schemaVersion": "fractionflow.problem-instance/v1",
+          "id": "nested-denominator-addition__none__3__8__1__2",
+          "source": "curated",
+          "request": {
+            "selector": "nested-denominator-addition",
+            "operation": "add",
+            "overlays": [],
+            "profileId": "curated-review",
+            "profileVersion": "1"
+          },
+          "provenance": {
+            "kind": "curated",
+            "fixtureId": "curated-nested-addition-three-eighths-one-half",
+            "authoringRevision": "plan18-record-v1"
+          },
+          "operands": {
+            "left": {
+              "exactValue": {
+                "kind": "fraction",
+                "numerator": "3",
+                "denominator": "8"
+              },
+              "initialForm": {
+                "kind": "fraction",
+                "numerator": "3",
+                "denominator": "8"
+              },
+              "currentForm": {
+                "kind": "fraction",
+                "numerator": "3",
+                "denominator": "8"
+              },
+              "preferredFinalForm": {
+                "kind": "fraction",
+                "numerator": "3",
+                "denominator": "8"
+              },
+              "acceptedFormTransitions": []
+            },
+            "right": {
+              "exactValue": {
+                "kind": "fraction",
+                "numerator": "1",
+                "denominator": "2"
+              },
+              "initialForm": {
+                "kind": "fraction",
+                "numerator": "1",
+                "denominator": "2"
+              },
+              "currentForm": {
+                "kind": "fraction",
+                "numerator": "1",
+                "denominator": "2"
+              },
+              "preferredFinalForm": {
+                "kind": "fraction",
+                "numerator": "1",
+                "denominator": "2"
+              },
+              "acceptedFormTransitions": []
+            }
+          },
+          "resultState": {
+            "exactResult": {
+              "kind": "fraction",
+              "numerator": "7",
+              "denominator": "8"
+            },
+            "canonicalRawResultForm": {
+              "kind": "fraction",
+              "numerator": "7",
+              "denominator": "8"
+            },
+            "currentForm": {
+              "kind": "fraction",
+              "numerator": "7",
+              "denominator": "8"
+            },
+            "preferredFinalForm": {
+              "kind": "fraction",
+              "numerator": "7",
+              "denominator": "8"
+            }
+          },
+          "canonicalPath": {
+            "id": "canonical-lcd",
+            "kind": "lcd",
+            "status": "canonical",
+            "startingState": "initial",
+            "targetDenominator": "8",
+            "scaleFactors": {
+              "left": "1",
+              "right": "4"
+            },
+            "transformations": [
+              {
+                "type": "equivalent-renaming",
+                "target": "right",
+                "fromForm": {
+                  "kind": "fraction",
+                  "numerator": "1",
+                  "denominator": "2"
+                },
+                "toForm": {
+                  "kind": "fraction",
+                  "numerator": "4",
+                  "denominator": "8"
+                },
+                "scaleFactor": "4",
+                "preservesExactValue": true,
+                "validation": "valid"
+              }
+            ],
+            "operation": {
+              "type": "operation",
+              "operation": "add",
+              "left": {
+                "kind": "fraction",
+                "numerator": "3",
+                "denominator": "8"
+              },
+              "right": {
+                "kind": "fraction",
+                "numerator": "4",
+                "denominator": "8"
+              },
+              "rawResult": {
+                "kind": "fraction",
+                "numerator": "7",
+                "denominator": "8"
+              }
+            },
+            "finalResult": {
+              "rawForm": {
+                "kind": "fraction",
+                "numerator": "7",
+                "denominator": "8"
+              },
+              "preferredFinalForm": {
+                "kind": "fraction",
+                "numerator": "7",
+                "denominator": "8"
+              }
+            }
+          },
+          "alternatePaths": [
+            {
+              "id": "alternate-non-least-common-denominator",
+              "kind": "non-least-common-denominator",
+              "status": "alternate-valid",
+              "startingState": "initial",
+              "targetDenominator": "16",
+              "scaleFactors": {
+                "left": "2",
+                "right": "8"
+              },
+              "transformations": [
+                {
+                  "type": "equivalent-renaming",
+                  "target": "left",
+                  "fromForm": {
+                    "kind": "fraction",
+                    "numerator": "3",
+                    "denominator": "8"
+                  },
+                  "toForm": {
+                    "kind": "fraction",
+                    "numerator": "6",
+                    "denominator": "16"
+                  },
+                  "scaleFactor": "2",
+                  "preservesExactValue": true,
+                  "validation": "valid"
+                },
+                {
+                  "type": "equivalent-renaming",
+                  "target": "right",
+                  "fromForm": {
+                    "kind": "fraction",
+                    "numerator": "1",
+                    "denominator": "2"
+                  },
+                  "toForm": {
+                    "kind": "fraction",
+                    "numerator": "8",
+                    "denominator": "16"
+                  },
+                  "scaleFactor": "8",
+                  "preservesExactValue": true,
+                  "validation": "valid"
+                }
+              ],
+              "operation": {
+                "type": "operation",
+                "operation": "add",
+                "left": {
+                  "kind": "fraction",
+                  "numerator": "6",
+                  "denominator": "16"
+                },
+                "right": {
+                  "kind": "fraction",
+                  "numerator": "8",
+                  "denominator": "16"
+                },
+                "rawResult": {
+                  "kind": "fraction",
+                  "numerator": "14",
+                  "denominator": "16"
+                }
+              },
+              "finalResult": {
+                "rawForm": {
+                  "kind": "fraction",
+                  "numerator": "14",
+                  "denominator": "16"
+                },
+                "preferredFinalForm": {
+                  "kind": "fraction",
+                  "numerator": "7",
+                  "denominator": "8"
+                }
+              }
+            }
+          ],
+          "classification": {
+            "family": {
+              "structuralSelector": "nested-denominator-addition",
+              "overlays": [],
+              "stateSnapshot": "initial"
+            },
+            "denominator": {
+              "relationship": "nested",
+              "leastCommonDenominator": "8",
+              "canonicalScaleFactors": {
+                "left": "1",
+                "right": "4"
+              },
+              "alternateCommonDenominators": [
+                "16"
+              ]
+            },
+            "transformations": {
+              "canonicalRenaming": {
+                "left": false,
+                "right": true,
+                "targetDenominator": "8"
+              },
+              "canonical": [
+                {
+                  "type": "equivalent-renaming",
+                  "target": "right",
+                  "fromForm": {
+                    "kind": "fraction",
+                    "numerator": "1",
+                    "denominator": "2"
+                  },
+                  "toForm": {
+                    "kind": "fraction",
+                    "numerator": "4",
+                    "denominator": "8"
+                  },
+                  "scaleFactor": "4",
+                  "preservesExactValue": true,
+                  "validation": "valid"
+                }
+              ],
+              "alternates": [
+                [
+                  {
+                    "type": "equivalent-renaming",
+                    "target": "left",
+                    "fromForm": {
+                      "kind": "fraction",
+                      "numerator": "3",
+                      "denominator": "8"
+                    },
+                    "toForm": {
+                      "kind": "fraction",
+                      "numerator": "6",
+                      "denominator": "16"
+                    },
+                    "scaleFactor": "2",
+                    "preservesExactValue": true,
+                    "validation": "valid"
+                  },
+                  {
+                    "type": "equivalent-renaming",
+                    "target": "right",
+                    "fromForm": {
+                      "kind": "fraction",
+                      "numerator": "1",
+                      "denominator": "2"
+                    },
+                    "toForm": {
+                      "kind": "fraction",
+                      "numerator": "8",
+                      "denominator": "16"
+                    },
+                    "scaleFactor": "8",
+                    "preservesExactValue": true,
+                    "validation": "valid"
+                  }
+                ]
+              ]
+            },
+            "result": {
+              "exactResult": {
+                "kind": "fraction",
+                "numerator": "7",
+                "denominator": "8"
+              },
+              "canonicalRawResultForm": {
+                "kind": "fraction",
+                "numerator": "7",
+                "denominator": "8"
+              },
+              "preferredFinalForm": {
+                "kind": "fraction",
+                "numerator": "7",
+                "denominator": "8"
+              },
+              "resultForm": "proper",
+              "simplificationStatus": "already-simplified",
+              "isWholeValued": false,
+              "crossesWhole": false
+            },
+            "regrouping": {
+              "type": "none",
+              "required": false
+            },
+            "magnitude": {
+              "benchmarkRegion": "between-half-and-1",
+              "lowerWhole": "0",
+              "upperWhole": "1",
+              "relativeToZero": 1,
+              "relativeToOne": -1,
+              "relativeToTwo": -1
+            }
+          },
+          "representationFacts": {
+            "operandDenominators": {
+              "left": "8",
+              "right": "2"
+            },
+            "canonicalDenominator": "8",
+            "resultDenominator": "8",
+            "wholeSpan": {
+              "lowerWhole": "0",
+              "upperWhole": "1"
+            },
+            "subdivisionCounts": {
+              "left": "8",
+              "right": "2",
+              "canonical": "8"
+            },
+            "eligibility": {
+              "fractionBar": "eligible",
+              "numberLine": "not-in-phase-2",
+              "symbolic": "eligible"
+            },
+            "alternateRepresentationRecommendation": "none"
+          },
+          "reviewMetadata": {
+            "scaleFactors": {
+              "left": "1",
+              "right": "4"
+            },
+            "magnitudeRange": {
+              "lowerWhole": "0",
+              "upperWhole": "1",
+              "benchmarkRegion": "between-half-and-1"
+            },
+            "intendedTargetConcept": "nested-denominator-addition",
+            "likelyAlternateValidPaths": [
+              "non-least-common-denominator"
+            ],
+            "authoredCoverageNote": "Canonical LCD path is preferred; valid alternate paths remain mathematical alternatives.",
+            "synthetic": true
+          }
+        },
+        "episodeDefinition": {
+          "operation": "add",
+          "selector": "nested-denominator-addition",
+          "beats": [
+            "encounter",
+            "decide",
+            "transform",
+            "operate",
+            "resolve"
+          ],
+          "includeReflection": false,
+          "promptIdentities": {
+            "encounter": "phase3.nested-addition.encounter",
+            "decide": "phase3.nested-addition.select-renaming-side",
+            "transform": "phase3.nested-addition.transform-one-side",
+            "operate": "phase3.nested-addition.operate",
+            "resolve": "phase3.nested-addition.resolve"
+          },
+          "id": "phase-3-nested-renaming-addition",
+          "revision": "1"
+        },
+        "taskContext": {
+          "practiceSetId": "unlike-addition-vetted-set",
+          "practiceSetRevision": "6",
+          "itemId": "nested-three-eighths-plus-one-half",
+          "fixtureId": "curated-nested-addition-three-eighths-one-half",
+          "authoringRevision": "plan18-record-v1",
+          "definitionId": "phase-3-nested-renaming-addition",
+          "definitionRevision": "1",
+          "taskDataId": "plan18-nested-renaming-task-data",
+          "taskDataRevision": "1",
+          "sourceForms": {
+            "left": {
+              "kind": "fraction",
+              "numerator": "3",
+              "denominator": "8"
+            },
+            "right": {
+              "kind": "fraction",
+              "numerator": "1",
+              "denominator": "2"
+            }
+          },
+          "targetDenominator": "8",
+          "requiredSide": "right"
+        },
+        "activeCondition": {
+          "id": "phase2-bundle-1",
+          "revision": "1",
+          "display": "D-01-A",
+          "choreography": "D-02-M",
+          "promptCadence": "D-05-focused-key-beats",
+          "connectionMaking": "CM-01-M"
+        },
+        "beatSchedule": [
+          {
+            "id": "encounter",
+            "kind": "encounter"
+          },
+          {
+            "id": "select-renaming-side",
+            "kind": "decide"
+          },
+          {
+            "id": "transform-right",
+            "kind": "transform",
+            "side": "right"
+          },
+          {
+            "id": "operate",
+            "kind": "operate"
+          },
+          {
+            "id": "resolve",
+            "kind": "resolve"
+          }
+        ],
+        "schedulePosition": 4,
+        "support": {
+          "label": "high support",
+          "dimensions": {
+            "fractionBarModel": "high support",
+            "commonDenominator": "high support",
+            "equivalentNumerators": "high support",
+            "prediction": "high support",
+            "symbolicIntegration": "high support",
+            "helpAndReplay": "high support"
+          }
+        },
+        "beat": "resolve",
+        "expectedResponse": null,
+        "established": {
+          "encounter": {
+            "acknowledged": true
+          },
+          "notice": null,
+          "commonDenominator": {
+            "kind": "authored-target-context",
+            "targetDenominator": "8",
+            "source": "validated-authored-task-context",
+            "validity": "valid",
+            "rendering": "eligible",
+            "authoredCoverage": "authored"
+          },
+          "conversions": {
+            "left": null,
+            "right": {
+              "kind": "fraction",
+              "numerator": "4",
+              "denominator": "8"
+            }
+          },
+          "operation": {
+            "kind": "correct-simplified",
+            "validity": "valid",
+            "mathClassification": "correct-simplified",
+            "patterns": [],
+            "targetDenominator": "8",
+            "proposed": {
+              "kind": "fraction",
+              "numerator": "7",
+              "denominator": "8"
+            },
+            "simplifiedResult": {
+              "kind": "fraction",
+              "numerator": "7",
+              "denominator": "8"
+            },
+            "reasons": []
+          },
+          "resolution": null,
+          "reflection": null,
+          "route": "fraction-bar",
+          "nestedCompletion": {
+            "kind": "navigation-completion"
+          },
+          "selectedRenamingSide": "right",
+          "conversionOrigins": {
+            "right": "learner-constructed"
+          },
+          "lastConversion": {
+            "side": "right",
+            "form": {
+              "kind": "fraction",
+              "numerator": "4",
+              "denominator": "8"
+            },
+            "targetDenominator": "8",
+            "supportOrigin": "learner"
+          }
+        },
+        "completedBeats": [
+          {
+            "beat": "encounter",
+            "established": {
+              "acknowledged": true
+            },
+            "schedulePosition": 0,
+            "scheduleEntryId": "encounter"
+          },
+          {
+            "beat": "decide",
+            "established": {
+              "side": "right",
+              "targetDenominator": "8",
+              "source": "learner-selected-authored-renaming-side"
+            },
+            "schedulePosition": 1,
+            "scheduleEntryId": "select-renaming-side"
+          },
+          {
+            "beat": "transform",
+            "established": {
+              "left": null,
+              "right": {
+                "kind": "fraction",
+                "numerator": "4",
+                "denominator": "8"
+              }
+            },
+            "schedulePosition": 2,
+            "scheduleEntryId": "transform-right"
+          },
+          {
+            "beat": "operate",
+            "established": {
+              "kind": "correct-simplified",
+              "validity": "valid",
+              "mathClassification": "correct-simplified",
+              "patterns": [],
+              "targetDenominator": "8",
+              "proposed": {
+                "kind": "fraction",
+                "numerator": "7",
+                "denominator": "8"
+              },
+              "simplifiedResult": {
+                "kind": "fraction",
+                "numerator": "7",
+                "denominator": "8"
+              },
+              "reasons": []
+            },
+            "schedulePosition": 3,
+            "scheduleEntryId": "operate"
+          },
+          {
+            "beat": "resolve",
+            "established": {
+              "kind": "navigation-completion"
+            },
+            "schedulePosition": 4,
+            "scheduleEntryId": "resolve"
+          }
+        ],
+        "pendingResponse": null,
+        "nextResponseSupport": null,
+        "helpHistory": [],
+        "replayHistory": [],
+        "retryHistory": [],
+        "supportHistory": [],
+        "intentHistory": [
+          {
+            "type": "acknowledge-encounter"
+          },
+          {
+            "type": "select-renaming-side",
+            "side": "right"
+          },
+          {
+            "type": "submit-equivalent-form",
+            "proposed": {
+              "kind": "fraction",
+              "numerator": "4",
+              "denominator": "8"
+            }
+          },
+          {
+            "type": "submit-operation-result",
+            "proposed": {
+              "kind": "fraction",
+              "numerator": "7",
+              "denominator": "8"
+            }
+          },
+          {
+            "type": "finish-nested-episode"
+          }
+        ],
+        "responseProvenance": [
+          {
+            "schemaVersion": "fractionflow.response-provenance/v1",
+            "responseIndex": 0,
+            "contentIdentity": {
+              "schemaVersion": "fractionflow.problem-instance/v1",
+              "id": "nested-denominator-addition__none__3__8__1__2",
+              "source": "curated",
+              "request": {
+                "selector": "nested-denominator-addition",
+                "operation": "add",
+                "overlays": [],
+                "profileId": "curated-review",
+                "profileVersion": "1"
+              },
+              "provenance": {
+                "kind": "curated",
+                "fixtureId": "curated-nested-addition-three-eighths-one-half",
+                "authoringRevision": "plan18-record-v1"
+              },
+              "selector": "nested-denominator-addition",
+              "overlays": [],
+              "sourceForms": {
+                "left": {
+                  "kind": "fraction",
+                  "numerator": "3",
+                  "denominator": "8"
+                },
+                "right": {
+                  "kind": "fraction",
+                  "numerator": "1",
+                  "denominator": "2"
+                }
+              }
+            },
+            "episodeDefinition": {
+              "id": "phase-3-nested-renaming-addition",
+              "revision": "1"
+            },
+            "taskContext": {
+              "practiceSetId": "unlike-addition-vetted-set",
+              "practiceSetRevision": "6",
+              "itemId": "nested-three-eighths-plus-one-half",
+              "fixtureId": "curated-nested-addition-three-eighths-one-half",
+              "authoringRevision": "plan18-record-v1",
+              "definitionId": "phase-3-nested-renaming-addition",
+              "definitionRevision": "1",
+              "taskDataId": "plan18-nested-renaming-task-data",
+              "taskDataRevision": "1",
+              "sourceForms": {
+                "left": {
+                  "kind": "fraction",
+                  "numerator": "3",
+                  "denominator": "8"
+                },
+                "right": {
+                  "kind": "fraction",
+                  "numerator": "1",
+                  "denominator": "2"
+                }
+              },
+              "targetDenominator": "8",
+              "requiredSide": "right"
+            },
+            "activeCondition": {
+              "id": "phase2-bundle-1",
+              "revision": "1",
+              "display": "D-01-A",
+              "choreography": "D-02-M",
+              "promptCadence": "D-05-focused-key-beats",
+              "connectionMaking": "CM-01-M"
+            },
+            "support": {
+              "label": "high support",
+              "dimensions": {
+                "fractionBarModel": "high support",
+                "commonDenominator": "high support",
+                "equivalentNumerators": "high support",
+                "prediction": "high support",
+                "symbolicIntegration": "high support",
+                "helpAndReplay": "high support"
+              }
+            },
+            "beat": "encounter",
+            "schedulePosition": 0,
+            "scheduleEntryId": "encounter",
+            "expectedResponse": {
+              "promptId": "phase3.nested-addition.encounter",
+              "beat": "encounter",
+              "evidenceCategory": "supported-construction",
+              "responsibility": "inspect-expression",
+              "inputKind": "acknowledge"
+            },
+            "visibility": {
+              "representationRole": "fraction-bar",
+              "visible": [
+                "source-forms",
+                "target-context"
+              ],
+              "supplied": [],
+              "hidden": [
+                "required-renaming-side",
+                "correct-conversion",
+                "operation-result"
+              ]
+            },
+            "prompt": {
+              "promptId": "phase3.nested-addition.encounter",
+              "promptDensity": "D-05-focused-key-beats",
+              "predictionOpportunity": false,
+              "connectionMakingDemand": "CM-01-M"
+            },
+            "helpHistory": [],
+            "replayHistory": [],
+            "retryHistory": [],
+            "supportActions": [],
+            "learnerAction": {
+              "type": "acknowledge-encounter"
+            },
+            "classification": {
+              "kind": "encounter-acknowledged"
+            },
+            "evidenceCategory": "supported-construction",
+            "resultingState": {
+              "status": "active",
+              "beat": "decide",
+              "schedulePosition": 1,
+              "scheduleEntryId": "select-renaming-side",
+              "established": {
+                "encounter": {
+                  "acknowledged": true
+                },
+                "notice": null,
+                "commonDenominator": {
+                  "kind": "authored-target-context",
+                  "targetDenominator": "8",
+                  "source": "validated-authored-task-context",
+                  "validity": "valid",
+                  "rendering": "eligible",
+                  "authoredCoverage": "authored"
+                },
+                "conversions": {
+                  "left": null,
+                  "right": null
+                },
+                "operation": null,
+                "resolution": null,
+                "reflection": null,
+                "route": "fraction-bar",
+                "nestedCompletion": null,
+                "selectedRenamingSide": null,
+                "conversionOrigins": {}
+              },
+              "revision": 1
+            }
+          },
+          {
+            "schemaVersion": "fractionflow.response-provenance/v1",
+            "responseIndex": 1,
+            "contentIdentity": {
+              "schemaVersion": "fractionflow.problem-instance/v1",
+              "id": "nested-denominator-addition__none__3__8__1__2",
+              "source": "curated",
+              "request": {
+                "selector": "nested-denominator-addition",
+                "operation": "add",
+                "overlays": [],
+                "profileId": "curated-review",
+                "profileVersion": "1"
+              },
+              "provenance": {
+                "kind": "curated",
+                "fixtureId": "curated-nested-addition-three-eighths-one-half",
+                "authoringRevision": "plan18-record-v1"
+              },
+              "selector": "nested-denominator-addition",
+              "overlays": [],
+              "sourceForms": {
+                "left": {
+                  "kind": "fraction",
+                  "numerator": "3",
+                  "denominator": "8"
+                },
+                "right": {
+                  "kind": "fraction",
+                  "numerator": "1",
+                  "denominator": "2"
+                }
+              }
+            },
+            "episodeDefinition": {
+              "id": "phase-3-nested-renaming-addition",
+              "revision": "1"
+            },
+            "taskContext": {
+              "practiceSetId": "unlike-addition-vetted-set",
+              "practiceSetRevision": "6",
+              "itemId": "nested-three-eighths-plus-one-half",
+              "fixtureId": "curated-nested-addition-three-eighths-one-half",
+              "authoringRevision": "plan18-record-v1",
+              "definitionId": "phase-3-nested-renaming-addition",
+              "definitionRevision": "1",
+              "taskDataId": "plan18-nested-renaming-task-data",
+              "taskDataRevision": "1",
+              "sourceForms": {
+                "left": {
+                  "kind": "fraction",
+                  "numerator": "3",
+                  "denominator": "8"
+                },
+                "right": {
+                  "kind": "fraction",
+                  "numerator": "1",
+                  "denominator": "2"
+                }
+              },
+              "targetDenominator": "8",
+              "requiredSide": "right"
+            },
+            "activeCondition": {
+              "id": "phase2-bundle-1",
+              "revision": "1",
+              "display": "D-01-A",
+              "choreography": "D-02-M",
+              "promptCadence": "D-05-focused-key-beats",
+              "connectionMaking": "CM-01-M"
+            },
+            "support": {
+              "label": "high support",
+              "dimensions": {
+                "fractionBarModel": "high support",
+                "commonDenominator": "high support",
+                "equivalentNumerators": "high support",
+                "prediction": "high support",
+                "symbolicIntegration": "high support",
+                "helpAndReplay": "high support"
+              }
+            },
+            "beat": "decide",
+            "schedulePosition": 1,
+            "scheduleEntryId": "select-renaming-side",
+            "expectedResponse": {
+              "promptId": "phase3.nested-addition.select-renaming-side",
+              "beat": "decide",
+              "evidenceCategory": "supported-construction",
+              "responsibility": "identify-renaming-side",
+              "inputKind": "side-choice",
+              "question": "Which fraction needs a different denominator?",
+              "choices": [
+                {
+                  "side": "left",
+                  "form": {
+                    "kind": "fraction",
+                    "numerator": "3",
+                    "denominator": "8"
+                  }
+                },
+                {
+                  "side": "right",
+                  "form": {
+                    "kind": "fraction",
+                    "numerator": "1",
+                    "denominator": "2"
+                  }
+                }
+              ],
+              "targetDenominator": "8"
+            },
+            "visibility": {
+              "representationRole": "fraction-bar",
+              "visible": [
+                "source-forms",
+                "target-context"
+              ],
+              "supplied": [],
+              "hidden": [
+                "required-renaming-side",
+                "correct-conversion",
+                "operation-result"
+              ]
+            },
+            "prompt": {
+              "promptId": "phase3.nested-addition.select-renaming-side",
+              "promptDensity": "D-05-focused-key-beats",
+              "predictionOpportunity": false,
+              "connectionMakingDemand": "CM-01-M"
+            },
+            "helpHistory": [],
+            "replayHistory": [],
+            "retryHistory": [],
+            "supportActions": [],
+            "learnerAction": {
+              "type": "select-renaming-side",
+              "side": "right"
+            },
+            "classification": {
+              "kind": "correct-renaming-side",
+              "selectedSide": "right"
+            },
+            "evidenceCategory": "supported-construction",
+            "resultingState": {
+              "status": "active",
+              "beat": "transform",
+              "schedulePosition": 2,
+              "scheduleEntryId": "transform-right",
+              "established": {
+                "encounter": {
+                  "acknowledged": true
+                },
+                "notice": null,
+                "commonDenominator": {
+                  "kind": "authored-target-context",
+                  "targetDenominator": "8",
+                  "source": "validated-authored-task-context",
+                  "validity": "valid",
+                  "rendering": "eligible",
+                  "authoredCoverage": "authored"
+                },
+                "conversions": {
+                  "left": null,
+                  "right": null
+                },
+                "operation": null,
+                "resolution": null,
+                "reflection": null,
+                "route": "fraction-bar",
+                "nestedCompletion": null,
+                "selectedRenamingSide": "right",
+                "conversionOrigins": {}
+              },
+              "revision": 2
+            }
+          },
+          {
+            "schemaVersion": "fractionflow.response-provenance/v1",
+            "responseIndex": 2,
+            "contentIdentity": {
+              "schemaVersion": "fractionflow.problem-instance/v1",
+              "id": "nested-denominator-addition__none__3__8__1__2",
+              "source": "curated",
+              "request": {
+                "selector": "nested-denominator-addition",
+                "operation": "add",
+                "overlays": [],
+                "profileId": "curated-review",
+                "profileVersion": "1"
+              },
+              "provenance": {
+                "kind": "curated",
+                "fixtureId": "curated-nested-addition-three-eighths-one-half",
+                "authoringRevision": "plan18-record-v1"
+              },
+              "selector": "nested-denominator-addition",
+              "overlays": [],
+              "sourceForms": {
+                "left": {
+                  "kind": "fraction",
+                  "numerator": "3",
+                  "denominator": "8"
+                },
+                "right": {
+                  "kind": "fraction",
+                  "numerator": "1",
+                  "denominator": "2"
+                }
+              }
+            },
+            "episodeDefinition": {
+              "id": "phase-3-nested-renaming-addition",
+              "revision": "1"
+            },
+            "taskContext": {
+              "practiceSetId": "unlike-addition-vetted-set",
+              "practiceSetRevision": "6",
+              "itemId": "nested-three-eighths-plus-one-half",
+              "fixtureId": "curated-nested-addition-three-eighths-one-half",
+              "authoringRevision": "plan18-record-v1",
+              "definitionId": "phase-3-nested-renaming-addition",
+              "definitionRevision": "1",
+              "taskDataId": "plan18-nested-renaming-task-data",
+              "taskDataRevision": "1",
+              "sourceForms": {
+                "left": {
+                  "kind": "fraction",
+                  "numerator": "3",
+                  "denominator": "8"
+                },
+                "right": {
+                  "kind": "fraction",
+                  "numerator": "1",
+                  "denominator": "2"
+                }
+              },
+              "targetDenominator": "8",
+              "requiredSide": "right"
+            },
+            "activeCondition": {
+              "id": "phase2-bundle-1",
+              "revision": "1",
+              "display": "D-01-A",
+              "choreography": "D-02-M",
+              "promptCadence": "D-05-focused-key-beats",
+              "connectionMaking": "CM-01-M"
+            },
+            "support": {
+              "label": "high support",
+              "dimensions": {
+                "fractionBarModel": "high support",
+                "commonDenominator": "high support",
+                "equivalentNumerators": "high support",
+                "prediction": "high support",
+                "symbolicIntegration": "high support",
+                "helpAndReplay": "high support"
+              }
+            },
+            "beat": "transform",
+            "schedulePosition": 2,
+            "scheduleEntryId": "transform-right",
+            "expectedResponse": {
+              "promptId": "phase3.nested-addition.transform-one-side",
+              "beat": "transform",
+              "evidenceCategory": "prediction",
+              "responsibility": "construct-equivalent-form",
+              "inputKind": "fraction",
+              "target": "right"
+            },
+            "visibility": {
+              "representationRole": "fraction-bar",
+              "visible": [
+                "source-forms",
+                "selected-renaming-side",
+                "target-context"
+              ],
+              "supplied": [],
+              "hidden": [
+                "correct-conversion",
+                "operation-result"
+              ]
+            },
+            "prompt": {
+              "promptId": "phase3.nested-addition.transform-one-side",
+              "promptDensity": "D-05-focused-key-beats",
+              "predictionOpportunity": true,
+              "connectionMakingDemand": "CM-01-M"
+            },
+            "helpHistory": [],
+            "replayHistory": [],
+            "retryHistory": [],
+            "supportActions": [],
+            "learnerAction": {
+              "type": "submit-equivalent-form",
+              "proposed": {
+                "kind": "fraction",
+                "numerator": "4",
+                "denominator": "8"
+              }
+            },
+            "classification": {
+              "kind": "correct-equivalent-form",
+              "validity": "valid",
+              "mathClassification": "valid-equivalent-fraction",
+              "patterns": [],
+              "targetDenominator": "8",
+              "side": "right",
+              "reasons": []
+            },
+            "evidenceCategory": "prediction",
+            "resultingState": {
+              "status": "active",
+              "beat": "operate",
+              "schedulePosition": 3,
+              "scheduleEntryId": "operate",
+              "established": {
+                "encounter": {
+                  "acknowledged": true
+                },
+                "notice": null,
+                "commonDenominator": {
+                  "kind": "authored-target-context",
+                  "targetDenominator": "8",
+                  "source": "validated-authored-task-context",
+                  "validity": "valid",
+                  "rendering": "eligible",
+                  "authoredCoverage": "authored"
+                },
+                "conversions": {
+                  "left": null,
+                  "right": {
+                    "kind": "fraction",
+                    "numerator": "4",
+                    "denominator": "8"
+                  }
+                },
+                "operation": null,
+                "resolution": null,
+                "reflection": null,
+                "route": "fraction-bar",
+                "nestedCompletion": null,
+                "selectedRenamingSide": "right",
+                "conversionOrigins": {
+                  "right": "learner-constructed"
+                },
+                "lastConversion": {
+                  "side": "right",
+                  "form": {
+                    "kind": "fraction",
+                    "numerator": "4",
+                    "denominator": "8"
+                  },
+                  "targetDenominator": "8",
+                  "supportOrigin": "learner"
+                }
+              },
+              "revision": 3
+            }
+          },
+          {
+            "schemaVersion": "fractionflow.response-provenance/v1",
+            "responseIndex": 3,
+            "contentIdentity": {
+              "schemaVersion": "fractionflow.problem-instance/v1",
+              "id": "nested-denominator-addition__none__3__8__1__2",
+              "source": "curated",
+              "request": {
+                "selector": "nested-denominator-addition",
+                "operation": "add",
+                "overlays": [],
+                "profileId": "curated-review",
+                "profileVersion": "1"
+              },
+              "provenance": {
+                "kind": "curated",
+                "fixtureId": "curated-nested-addition-three-eighths-one-half",
+                "authoringRevision": "plan18-record-v1"
+              },
+              "selector": "nested-denominator-addition",
+              "overlays": [],
+              "sourceForms": {
+                "left": {
+                  "kind": "fraction",
+                  "numerator": "3",
+                  "denominator": "8"
+                },
+                "right": {
+                  "kind": "fraction",
+                  "numerator": "1",
+                  "denominator": "2"
+                }
+              }
+            },
+            "episodeDefinition": {
+              "id": "phase-3-nested-renaming-addition",
+              "revision": "1"
+            },
+            "taskContext": {
+              "practiceSetId": "unlike-addition-vetted-set",
+              "practiceSetRevision": "6",
+              "itemId": "nested-three-eighths-plus-one-half",
+              "fixtureId": "curated-nested-addition-three-eighths-one-half",
+              "authoringRevision": "plan18-record-v1",
+              "definitionId": "phase-3-nested-renaming-addition",
+              "definitionRevision": "1",
+              "taskDataId": "plan18-nested-renaming-task-data",
+              "taskDataRevision": "1",
+              "sourceForms": {
+                "left": {
+                  "kind": "fraction",
+                  "numerator": "3",
+                  "denominator": "8"
+                },
+                "right": {
+                  "kind": "fraction",
+                  "numerator": "1",
+                  "denominator": "2"
+                }
+              },
+              "targetDenominator": "8",
+              "requiredSide": "right"
+            },
+            "activeCondition": {
+              "id": "phase2-bundle-1",
+              "revision": "1",
+              "display": "D-01-A",
+              "choreography": "D-02-M",
+              "promptCadence": "D-05-focused-key-beats",
+              "connectionMaking": "CM-01-M"
+            },
+            "support": {
+              "label": "high support",
+              "dimensions": {
+                "fractionBarModel": "high support",
+                "commonDenominator": "high support",
+                "equivalentNumerators": "high support",
+                "prediction": "high support",
+                "symbolicIntegration": "high support",
+                "helpAndReplay": "high support"
+              }
+            },
+            "beat": "operate",
+            "schedulePosition": 3,
+            "scheduleEntryId": "operate",
+            "expectedResponse": {
+              "promptId": "phase3.nested-addition.operate",
+              "beat": "operate",
+              "evidenceCategory": "supported-construction",
+              "responsibility": "combine-like-units",
+              "inputKind": "fraction"
+            },
+            "visibility": {
+              "representationRole": "symbolic",
+              "visible": [
+                "constructed-conversion",
+                "validated-original-operand",
+                "operation",
+                "target-context"
+              ],
+              "supplied": [],
+              "hidden": [
+                "unsubmitted-operation-result"
+              ]
+            },
+            "prompt": {
+              "promptId": "phase3.nested-addition.operate",
+              "promptDensity": "D-05-focused-key-beats",
+              "predictionOpportunity": false,
+              "connectionMakingDemand": "CM-01-M"
+            },
+            "helpHistory": [],
+            "replayHistory": [],
+            "retryHistory": [],
+            "supportActions": [],
+            "learnerAction": {
+              "type": "submit-operation-result",
+              "proposed": {
+                "kind": "fraction",
+                "numerator": "7",
+                "denominator": "8"
+              }
+            },
+            "classification": {
+              "kind": "correct-simplified",
+              "validity": "valid",
+              "mathClassification": "correct-simplified",
+              "patterns": [],
+              "targetDenominator": "8",
+              "proposed": {
+                "kind": "fraction",
+                "numerator": "7",
+                "denominator": "8"
+              },
+              "simplifiedResult": {
+                "kind": "fraction",
+                "numerator": "7",
+                "denominator": "8"
+              },
+              "reasons": []
+            },
+            "evidenceCategory": "supported-construction",
+            "resultingState": {
+              "status": "active",
+              "beat": "resolve",
+              "schedulePosition": 4,
+              "scheduleEntryId": "resolve",
+              "established": {
+                "encounter": {
+                  "acknowledged": true
+                },
+                "notice": null,
+                "commonDenominator": {
+                  "kind": "authored-target-context",
+                  "targetDenominator": "8",
+                  "source": "validated-authored-task-context",
+                  "validity": "valid",
+                  "rendering": "eligible",
+                  "authoredCoverage": "authored"
+                },
+                "conversions": {
+                  "left": null,
+                  "right": {
+                    "kind": "fraction",
+                    "numerator": "4",
+                    "denominator": "8"
+                  }
+                },
+                "operation": {
+                  "kind": "correct-simplified",
+                  "validity": "valid",
+                  "mathClassification": "correct-simplified",
+                  "patterns": [],
+                  "targetDenominator": "8",
+                  "proposed": {
+                    "kind": "fraction",
+                    "numerator": "7",
+                    "denominator": "8"
+                  },
+                  "simplifiedResult": {
+                    "kind": "fraction",
+                    "numerator": "7",
+                    "denominator": "8"
+                  },
+                  "reasons": []
+                },
+                "resolution": null,
+                "reflection": null,
+                "route": "fraction-bar",
+                "nestedCompletion": null,
+                "selectedRenamingSide": "right",
+                "conversionOrigins": {
+                  "right": "learner-constructed"
+                },
+                "lastConversion": {
+                  "side": "right",
+                  "form": {
+                    "kind": "fraction",
+                    "numerator": "4",
+                    "denominator": "8"
+                  },
+                  "targetDenominator": "8",
+                  "supportOrigin": "learner"
+                }
+              },
+              "revision": 4
+            }
+          },
+          {
+            "schemaVersion": "fractionflow.response-provenance/v1",
+            "responseIndex": 4,
+            "contentIdentity": {
+              "schemaVersion": "fractionflow.problem-instance/v1",
+              "id": "nested-denominator-addition__none__3__8__1__2",
+              "source": "curated",
+              "request": {
+                "selector": "nested-denominator-addition",
+                "operation": "add",
+                "overlays": [],
+                "profileId": "curated-review",
+                "profileVersion": "1"
+              },
+              "provenance": {
+                "kind": "curated",
+                "fixtureId": "curated-nested-addition-three-eighths-one-half",
+                "authoringRevision": "plan18-record-v1"
+              },
+              "selector": "nested-denominator-addition",
+              "overlays": [],
+              "sourceForms": {
+                "left": {
+                  "kind": "fraction",
+                  "numerator": "3",
+                  "denominator": "8"
+                },
+                "right": {
+                  "kind": "fraction",
+                  "numerator": "1",
+                  "denominator": "2"
+                }
+              }
+            },
+            "episodeDefinition": {
+              "id": "phase-3-nested-renaming-addition",
+              "revision": "1"
+            },
+            "taskContext": {
+              "practiceSetId": "unlike-addition-vetted-set",
+              "practiceSetRevision": "6",
+              "itemId": "nested-three-eighths-plus-one-half",
+              "fixtureId": "curated-nested-addition-three-eighths-one-half",
+              "authoringRevision": "plan18-record-v1",
+              "definitionId": "phase-3-nested-renaming-addition",
+              "definitionRevision": "1",
+              "taskDataId": "plan18-nested-renaming-task-data",
+              "taskDataRevision": "1",
+              "sourceForms": {
+                "left": {
+                  "kind": "fraction",
+                  "numerator": "3",
+                  "denominator": "8"
+                },
+                "right": {
+                  "kind": "fraction",
+                  "numerator": "1",
+                  "denominator": "2"
+                }
+              },
+              "targetDenominator": "8",
+              "requiredSide": "right"
+            },
+            "activeCondition": {
+              "id": "phase2-bundle-1",
+              "revision": "1",
+              "display": "D-01-A",
+              "choreography": "D-02-M",
+              "promptCadence": "D-05-focused-key-beats",
+              "connectionMaking": "CM-01-M"
+            },
+            "support": {
+              "label": "high support",
+              "dimensions": {
+                "fractionBarModel": "high support",
+                "commonDenominator": "high support",
+                "equivalentNumerators": "high support",
+                "prediction": "high support",
+                "symbolicIntegration": "high support",
+                "helpAndReplay": "high support"
+              }
+            },
+            "beat": "resolve",
+            "schedulePosition": 4,
+            "scheduleEntryId": "resolve",
+            "expectedResponse": {
+              "promptId": "phase3.nested-addition.resolve",
+              "beat": "resolve",
+              "evidenceCategory": "supported-construction",
+              "responsibility": "settle-final-form",
+              "inputKind": "fraction"
+            },
+            "visibility": {
+              "representationRole": "symbolic",
+              "visible": [
+                "operation-result",
+                "finish-navigation"
+              ],
+              "supplied": [],
+              "hidden": []
+            },
+            "prompt": {
+              "promptId": "phase3.nested-addition.resolve",
+              "promptDensity": "D-05-focused-key-beats",
+              "predictionOpportunity": false,
+              "connectionMakingDemand": "CM-01-M"
+            },
+            "helpHistory": [],
+            "replayHistory": [],
+            "retryHistory": [],
+            "supportActions": [],
+            "learnerAction": {
+              "type": "finish-nested-episode"
+            },
+            "classification": {
+              "kind": "nested-navigation-completed"
+            },
+            "evidenceCategory": "supported-construction",
+            "resultingState": {
+              "status": "resolved",
+              "beat": "resolve",
+              "schedulePosition": 4,
+              "scheduleEntryId": "resolve",
+              "established": {
+                "encounter": {
+                  "acknowledged": true
+                },
+                "notice": null,
+                "commonDenominator": {
+                  "kind": "authored-target-context",
+                  "targetDenominator": "8",
+                  "source": "validated-authored-task-context",
+                  "validity": "valid",
+                  "rendering": "eligible",
+                  "authoredCoverage": "authored"
+                },
+                "conversions": {
+                  "left": null,
+                  "right": {
+                    "kind": "fraction",
+                    "numerator": "4",
+                    "denominator": "8"
+                  }
+                },
+                "operation": {
+                  "kind": "correct-simplified",
+                  "validity": "valid",
+                  "mathClassification": "correct-simplified",
+                  "patterns": [],
+                  "targetDenominator": "8",
+                  "proposed": {
+                    "kind": "fraction",
+                    "numerator": "7",
+                    "denominator": "8"
+                  },
+                  "simplifiedResult": {
+                    "kind": "fraction",
+                    "numerator": "7",
+                    "denominator": "8"
+                  },
+                  "reasons": []
+                },
+                "resolution": null,
+                "reflection": null,
+                "route": "fraction-bar",
+                "nestedCompletion": {
+                  "kind": "navigation-completion"
+                },
+                "selectedRenamingSide": "right",
+                "conversionOrigins": {
+                  "right": "learner-constructed"
+                },
+                "lastConversion": {
+                  "side": "right",
+                  "form": {
+                    "kind": "fraction",
+                    "numerator": "4",
+                    "denominator": "8"
+                  },
+                  "targetDenominator": "8",
+                  "supportOrigin": "learner"
+                }
+              },
+              "revision": 5
+            }
+          }
+        ],
+        "lastRecovery": null
+      }
+    }
+  ],
+  "selfCheck": {
+    "caseCount": 4,
+    "allReplayMatches": true
+  }
+}

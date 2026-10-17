@@ -51,8 +51,20 @@
 - Parent selected the two named explicit test-only hold-outs and the strict
   exact-membership/reconstruction model. They remain for a later data-only
   checkpoint after foundation review.
-- The remaining action is the parent mechanism gate. No source/test work is
-  authorized by this proposal or by the parent refinements alone.
+- At the end of R0, work stopped at the parent mechanism gate. Parent later
+  approved and committed that gate before this oracle-only assignment.
+
+## Pre-edit Plan 18 v3 oracle capture — 2026-10-17
+
+- After parent mechanism approval at `459745954d6b342237083e13a13bcac18a074c7b`,
+  captured the existing Plan 18 v3 initial and completed replay envelopes and
+  full expected states for both operand orders.
+- Reproducible capture: `capture-plan18-v3-oracles.mjs`. Its four-case
+  round-trip self-check returned `allReplayMatches: true`. The artifact records
+  the captured source HEAD and remains the pre-foundation baseline.
+- Persisted `tests/fixtures/plan18-v3-replay-oracles.json`. Existing v1/v2
+  fixtures were not edited. No product source or test code was changed and no
+  suite/build/browser check was run. Stop for parent verification and commit.
 
 Uncertainty: the exact catalog path for a new curated fixture revision and the
 current source/test route ownership should be rechecked at the authorized next
