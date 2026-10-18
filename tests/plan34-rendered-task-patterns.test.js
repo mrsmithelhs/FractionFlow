@@ -1,6 +1,6 @@
 import { afterEach, beforeEach, describe, expect, it } from 'vitest';
 import { createFractionFlowApp } from '../src/app/app.js';
-import { LEGACY_PRACTICE_TYPES_V4, PRACTICE_TYPES } from '../src/app/practice-types.js';
+import { LEGACY_PRACTICE_TYPES_V4, PLAN34_PRACTICE_TYPES_V5 } from '../src/app/practice-types.js';
 import { setupMockDOM, teardownMockDOM } from './fixtures/mock-dom.js';
 
 function fraction(numerator, denominator) {
@@ -15,7 +15,7 @@ function finishFirstConstruct(app) {
   app.dispatch({ type: 'finish-compact-episode' });
 }
 
-describe('Plan 34 mounted production task patterns', () => {
+describe('Plan 34 pinned historical task patterns', () => {
   let document;
   let root;
   let app;
@@ -24,7 +24,7 @@ describe('Plan 34 mounted production task patterns', () => {
     document = setupMockDOM();
     root = document.createElement('div');
     document.body.appendChild(root);
-    app = createFractionFlowApp({ root, presentationMode: 'instant-test' });
+    app = createFractionFlowApp({ root, practiceTypes: PLAN34_PRACTICE_TYPES_V5, presentationMode: 'instant-test' });
     app.mount();
     root.querySelector('.app-practice-button').click();
   });
@@ -34,15 +34,12 @@ describe('Plan 34 mounted production task patterns', () => {
     teardownMockDOM();
   });
 
-  it('activates v6 in the production app while preserving v5 Plan 34 associations and completes construct', () => {
+  it('preserves v5 Plan 34 associations and completes its historical construct task', () => {
     const v4 = LEGACY_PRACTICE_TYPES_V4[0];
-    const active = PRACTICE_TYPES[0];
-    expect(active.setRevision).toBe('6');
+    const active = PLAN34_PRACTICE_TYPES_V5[0];
+    expect(active.setRevision).toBe('5');
     expect(active.items.slice(0, 11).map((item) => item.id)).toEqual(v4.items.map((item) => item.id));
-    expect(active.items.slice(11).map((item) => item.id)).toEqual([
-      'nested-one-half-plus-three-eighths',
-      'nested-three-eighths-plus-one-half',
-    ]);
+    expect(active.items.slice(11)).toEqual([]);
     expect(active.items.slice(0, 11).map((item) => item.patternId ?? null)).toEqual([
       'full-addition.construct-equivalent',
       'full-addition.inspect-keep-repair',
@@ -53,7 +50,7 @@ describe('Plan 34 mounted production task patterns', () => {
     expect(app.getState().episodeDefinition.revision).toBe('1');
     expect(app.getState().taskContext).toMatchObject({
       itemId: 'two-thirds-plus-one-fourth', targetDenominator: '12',
-      practiceSetId: active.setId, practiceSetRevision: '6',
+      practiceSetId: active.setId, practiceSetRevision: '5',
     });
     expect(root.querySelector('.app-visual-view .active-beat-controls').textContent)
       .toContain('Use twelfths.');

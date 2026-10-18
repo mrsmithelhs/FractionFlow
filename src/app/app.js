@@ -4,6 +4,8 @@ import { validateProblemInstance } from '../content/validation.js';
 import { validateAuthoredTaskData } from '../content/authored-task-data.js';
 import { resolvePlan34TaskContext, PLAN34_EPISODE_DEFINITION_ID } from '../content/full-addition-task-patterns.js';
 import { resolvePlan18TaskContext, PLAN18_NESTED_DEFINITION_ID } from '../content/nested-renaming-task.js';
+import { resolvePlan35AdditionRecipeContext } from '../content/plan35-addition-recipe-task.js';
+import { PLAN35_RECIPE_DEFINITION_ID, PLAN35_RECIPE_IDS } from '../content/data/plan35-addition-recipe-records.js';
 import { evaluateInstanceEligibility } from '../content/eligibility.js';
 import {
   applyIntent,
@@ -45,10 +47,11 @@ function canonicalInstance(item, conditions = REGISTERED_CONDITIONS, practiceTyp
   if (!fixture) throw new Error(`practice fixture identity is unavailable: ${item?.fixtureId}@${item?.authoringRevision}`);
   const authoredContent = resolveAuthoredContent(item.fixtureId, item.authoringRevision);
   if (!authoredContent) throw new Error(`practice task data identity is unavailable: ${item?.fixtureId}@${item?.authoringRevision}`);
-  if (authoredContent.itemId && authoredContent.itemId !== item.id) {
+  const definition = getEpisodeDefinition(item.episodeDefinitionId, item.episodeDefinitionRevision);
+  if (authoredContent.itemId && authoredContent.itemId !== item.id
+    && definition.id !== PLAN35_RECIPE_DEFINITION_ID) {
     throw new Error(`practice item identity does not match its authored record: ${item.id}`);
   }
-  const definition = getEpisodeDefinition(item.episodeDefinitionId, item.episodeDefinitionRevision);
   const instance = buildCuratedProblem({
     fixture,
     selector: fixture.selector,
@@ -62,6 +65,24 @@ function canonicalInstance(item, conditions = REGISTERED_CONDITIONS, practiceTyp
   });
   const contentCheck = validateProblemInstance(instance);
   if (!contentCheck.valid) throw new Error(`practice fixture failed content validation: ${item.fixtureId}`);
+  if (definition.id === PLAN35_RECIPE_DEFINITION_ID) {
+    const taskContext = resolvePlan35AdditionRecipeContext(instance, item.id, {
+      practiceSetId: practiceType?.setId,
+      practiceSetRevision: practiceType?.setRevision,
+    });
+    if (taskContext.fixtureId !== item.fixtureId
+      || taskContext.authoringRevision !== item.authoringRevision
+      || taskContext.definitionId !== item.episodeDefinitionId
+      || taskContext.definitionRevision !== item.episodeDefinitionRevision
+      || taskContext.patternId !== item.patternId
+      || taskContext.patternRevision !== item.patternRevision
+      || taskContext.targetDenominator !== item.targetDenominator
+      || taskContext.taskDataId !== item.taskDataId
+      || taskContext.taskDataRevision !== item.taskDataRevision) {
+      throw new Error('Plan 35 practice item does not match its exact registered recipe association');
+    }
+    return instance;
+  }
   if (definition.id === PLAN20_LIKE_DENOMINATOR_EPISODE_DEFINITION.id
     && definition.revision === PLAN20_LIKE_DENOMINATOR_EPISODE_DEFINITION.revision) {
     const contract = definition.contentContract;
@@ -166,7 +187,12 @@ function presentationModeFor({ override, motionQuery }) {
 }
 
 function createInitialState(instance, practiceType, condition, supportLevel, episodeDefinition = practiceType.episodeDefinition, item = null) {
-  const taskContext = item?.patternId
+  const taskContext = episodeDefinition?.id === PLAN35_RECIPE_DEFINITION_ID && item
+    ? resolvePlan35AdditionRecipeContext(instance, item.id, {
+      practiceSetId: practiceType.setId,
+      practiceSetRevision: practiceType.setRevision,
+    })
+    : item?.patternId
     ? resolvePlan34TaskContext(instance, item.patternId, item.patternRevision, item.targetDenominator, { practiceSetRevision: practiceType.setRevision })
     : item?.episodeDefinitionId === PLAN18_NESTED_DEFINITION_ID
       ? resolvePlan18TaskContext(instance, { practiceSetId: practiceType.setId, practiceSetRevision: practiceType.setRevision })
@@ -174,7 +200,7 @@ function createInitialState(instance, practiceType, condition, supportLevel, epi
   if (taskContext && (taskContext.itemId !== item.id
     || taskContext.practiceSetId !== practiceType.setId
     || taskContext.practiceSetRevision !== practiceType.setRevision)) {
-    throw new Error('practice item does not match its validated Plan 34 association');
+    throw new Error('practice item does not match its validated task association');
   }
   return createEpisode({
     instance,
@@ -765,10 +791,15 @@ export function createFractionFlowApp({
     const isPlan20 = state.episodeDefinition.id === PLAN20_LIKE_DENOMINATOR_EPISODE_DEFINITION.id;
     const isPlan34 = state.episodeDefinition.id === PLAN34_EPISODE_DEFINITION_ID;
     const isPlan18 = state.episodeDefinition.id === PLAN18_NESTED_DEFINITION_ID;
+    const isPlan35Identify = state.episodeDefinition.id === PLAN35_RECIPE_DEFINITION_ID
+      && state.taskContext?.patternId === PLAN35_RECIPE_IDS.identify;
     helpButton.disabled = resolved;
     const hasConversion = Boolean(state.established?.lastConversion);
-    replayButton.hidden = isPlan20 || isPlan34 || (isPlan18 && !hasConversion);
-    replayButton.disabled = isPlan20 || isPlan34 || resolved || state.beat === 'encounter' || (isPlan18 && !hasConversion);
+    replayButton.hidden = isPlan20 || isPlan34 || ((isPlan18 || isPlan35Identify) && !hasConversion)
+      || (state.episodeDefinition.id === PLAN35_RECIPE_DEFINITION_ID && !isPlan35Identify);
+    replayButton.disabled = isPlan20 || isPlan34 || resolved || state.beat === 'encounter'
+      || ((isPlan18 || isPlan35Identify) && !hasConversion)
+      || (state.episodeDefinition.id === PLAN35_RECIPE_DEFINITION_ID && !isPlan35Identify);
     replayButton.setAttribute('aria-pressed', String(isReplaying));
     supportNotice.textContent = activityNotice;
   }
@@ -844,9 +875,10 @@ export function createFractionFlowApp({
     if (state?.beat !== 'operate'
       || (state.episodeDefinition.id !== PLAN20_LIKE_DENOMINATOR_EPISODE_DEFINITION.id
         && state.episodeDefinition.id !== PLAN34_EPISODE_DEFINITION_ID
-        && state.episodeDefinition.id !== PLAN18_NESTED_DEFINITION_ID)) return null;
+        && state.episodeDefinition.id !== PLAN18_NESTED_DEFINITION_ID
+        && state.episodeDefinition.id !== PLAN35_RECIPE_DEFINITION_ID)) return null;
     const host = visualView ? visualHost : linearHost;
-    return host?.querySelector([PLAN34_EPISODE_DEFINITION_ID, PLAN18_NESTED_DEFINITION_ID].includes(state.episodeDefinition.id)
+    return host?.querySelector([PLAN34_EPISODE_DEFINITION_ID, PLAN18_NESTED_DEFINITION_ID, PLAN35_RECIPE_DEFINITION_ID].includes(state.episodeDefinition.id)
       ? `#${visualView ? 'operate' : 'linear-operate'}-sum-input`
       : 'input.control-fraction-input') || null;
   }
@@ -856,7 +888,7 @@ export function createFractionFlowApp({
     const host = visualView ? visualHost : linearHost;
     const prefix = visualView ? 'operate' : 'linear-operate';
     operationDrafts = {
-      numerator: host?.querySelector(`#${[PLAN34_EPISODE_DEFINITION_ID, PLAN18_NESTED_DEFINITION_ID].includes(state.episodeDefinition.id) ? prefix + '-sum-input' : prefix + '-fraction-numerator-input'}`)?.value ?? '',
+      numerator: host?.querySelector(`#${[PLAN34_EPISODE_DEFINITION_ID, PLAN18_NESTED_DEFINITION_ID, PLAN35_RECIPE_DEFINITION_ID].includes(state.episodeDefinition.id) ? prefix + '-sum-input' : prefix + '-fraction-numerator-input'}`)?.value ?? '',
       denominator: host?.querySelector(`#${prefix}-fraction-denominator-input`)?.value ?? '',
     };
   }
@@ -865,7 +897,7 @@ export function createFractionFlowApp({
     if (!getVisibleOperationInput()) return;
     const host = visualView ? visualHost : linearHost;
     const prefix = visualView ? 'operate' : 'linear-operate';
-    const numerator = host?.querySelector(`#${[PLAN34_EPISODE_DEFINITION_ID, PLAN18_NESTED_DEFINITION_ID].includes(state.episodeDefinition.id) ? prefix + '-sum-input' : prefix + '-fraction-numerator-input'}`);
+    const numerator = host?.querySelector(`#${[PLAN34_EPISODE_DEFINITION_ID, PLAN18_NESTED_DEFINITION_ID, PLAN35_RECIPE_DEFINITION_ID].includes(state.episodeDefinition.id) ? prefix + '-sum-input' : prefix + '-fraction-numerator-input'}`);
     const denominator = host?.querySelector(`#${prefix}-fraction-denominator-input`);
     if (numerator) numerator.value = operationDrafts.numerator;
     if (denominator) denominator.value = operationDrafts.denominator;
@@ -954,7 +986,7 @@ export function createFractionFlowApp({
     const sourceDenominators = scene?.meaning?.unitRelationship?.sourceDenominators;
     const nestedHelp = scene?.meaning?.taskHelp?.kind === 'renaming-side-comparison';
     const cue = nestedHelp
-      ? STRINGS.nestedAddition.sideChoiceHelp
+      ? STRINGS.nestedAddition.sideChoiceHelp(scene?.meaning?.taskHelp?.targetDenominator ?? '8')
       : !sourceDenominators
       ? ''
       : STRINGS.decide.findingHelpCue(

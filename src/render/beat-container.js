@@ -365,7 +365,7 @@ export function createBeatContainer({
       } else if (recovery.classification.kind === 'incorrect-equivalent-numerator') {
         recoveryEl.textContent = strings.transform.errorNumerator;
       } else if (recovery.classification.kind === 'side-choice-needs-retry') {
-        recoveryEl.textContent = strings.nestedAddition.wrongSide;
+        recoveryEl.textContent = strings.nestedAddition.wrongSide(task.targetDenominator ?? '8');
       } else if (recovery.classification.kind === 'incorrect-numerator-arithmetic') {
         recoveryEl.textContent = strings.operate.errorArithmetic;
       } else if (recovery.classification.kind === 'incorrect-notice') {
@@ -397,10 +397,10 @@ export function createBeatContainer({
     switch (beat) {
       case 'encounter': {
         promptText.textContent = strings.encounter.prompt;
-        if (task.patternId) {
+        if (task.patternId && task.patternId !== 'full-addition.identify-side-construct') {
           const targetContext = document.createElement('p');
           targetContext.classList.add('active-beat-prompt-context');
-          targetContext.textContent = strings.encounter.compactTarget;
+          targetContext.textContent = strings.encounter.compactTarget(task.targetDenominator);
           controlsContainer.appendChild(targetContext);
         }
         const continueBtn = createButton({

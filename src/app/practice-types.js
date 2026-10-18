@@ -1,7 +1,11 @@
-import { PHASE2_REFLECTION_EPISODE_DEFINITION } from '../interaction/episode-definition.js';
-import { PLAN20_LIKE_DENOMINATOR_EPISODE_DEFINITION } from '../interaction/episode-definition.js';
-import { PLAN34_FULL_ADDITION_EPISODE_DEFINITION } from '../interaction/episode-definition.js';
-import { PLAN18_NESTED_ADDITION_EPISODE_DEFINITION } from '../interaction/episode-definition.js';
+import {
+  PHASE2_REFLECTION_EPISODE_DEFINITION,
+  PLAN20_LIKE_DENOMINATOR_EPISODE_DEFINITION,
+  PLAN34_FULL_ADDITION_EPISODE_DEFINITION,
+  PLAN18_NESTED_ADDITION_EPISODE_DEFINITION,
+  PLAN35_REUSABLE_ADDITION_RECIPES_EPISODE_DEFINITION,
+} from '../interaction/episode-definition.js';
+import { PLAN35_ADDITION_RECIPE_PRACTICE_SET, PLAN35_ADDITION_RECIPE_RECORDS } from '../content/data/plan35-addition-recipe-records.js';
 import { deepFreeze } from '../content/schema.js';
 
 /**
@@ -165,7 +169,39 @@ export const PLAN18_PRACTICE_TYPES_V6 = deepFreeze(PLAN34_PRACTICE_TYPES_V5.map(
   ? practiceType
   : { ...practiceType, setRevision: '6', items: [...practiceType.items, ...PLAN18_NESTED_ITEMS_V6] }));
 
-export const PRACTICE_TYPES = PLAN18_PRACTICE_TYPES_V6;
+const plan35RecordByItemId = new Map(PLAN35_ADDITION_RECIPE_RECORDS.map((record) => [record.itemId, record]));
+const historicalItemById = new Map(PLAN18_PRACTICE_TYPES_V6.flatMap((practiceType) => practiceType.items.map((item) => [item.id, item])));
+const plan35LiveItems = PLAN35_ADDITION_RECIPE_PRACTICE_SET.itemIds.map((itemId) => {
+  const record = plan35RecordByItemId.get(itemId);
+  if (!record) {
+    const historical = historicalItemById.get(itemId);
+    if (!historical) throw new TypeError(`Plan 35 live practice item has no exact task record: ${itemId}`);
+    return historical;
+  }
+  return {
+    id: record.itemId,
+    fixtureId: record.fixtureId,
+    authoringRevision: record.authoringRevision,
+    episodeDefinitionId: record.definitionId,
+    episodeDefinitionRevision: record.definitionRevision,
+    patternId: record.recipeId,
+    patternRevision: record.patternRevision,
+    targetDenominator: record.targetDenominator,
+    taskDataId: record.taskDataId,
+    taskDataRevision: record.taskDataRevision,
+  };
+});
+
+export const PLAN35_PRACTICE_TYPES_V7 = deepFreeze(PLAN18_PRACTICE_TYPES_V6.map((practiceType) => practiceType.id !== 'sum-under-one'
+  ? practiceType
+  : {
+    ...practiceType,
+    setRevision: PLAN35_ADDITION_RECIPE_PRACTICE_SET.revision,
+    items: plan35LiveItems,
+    episodeDefinition: PLAN35_REUSABLE_ADDITION_RECIPES_EPISODE_DEFINITION,
+  }));
+
+export const PRACTICE_TYPES = PLAN35_PRACTICE_TYPES_V7;
 
 export function getPracticeType(id) {
   return PRACTICE_TYPES.find((practiceType) => practiceType.id === id) ?? null;

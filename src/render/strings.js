@@ -26,7 +26,9 @@ function equivalentPartsPrompt(sourceForm, targetDenominator) {
 export const STRINGS = Object.freeze({
   encounter: Object.freeze({
     prompt: 'Look at these two fractions.',
-    compactTarget: 'Use twelfths.',
+    compactTarget: (denominator = '12') => denominator === '12'
+      ? 'Use twelfths.'
+      : `Use ${denominator} equal parts.`,
     barAriaLabel: (side, num, den) => (
       `${side === 'left' ? 'First' : 'Second'} fraction bar: ${num} of ${den} equal parts shaded in 1 whole.`
     ),
@@ -80,8 +82,12 @@ export const STRINGS = Object.freeze({
     sideChoicePrompt: 'Which fraction needs a different denominator?',
     firstFraction: 'First fraction',
     secondFraction: 'Second fraction',
-    wrongSide: 'Check which fraction is already in eighths. Choose the other one.',
-    sideChoiceHelp: 'Compare each bottom number with 8. A fraction already in eighths does not need new parts.',
+    wrongSide: (target = '8') => target === '8'
+      ? 'Check which fraction is already in eighths. Choose the other one.'
+      : `Check which fraction already has ${target} equal parts. Choose the other one.`,
+    sideChoiceHelp: (target = '8') => target === '8'
+      ? 'Compare each bottom number with 8. A fraction already in eighths does not need new parts.'
+      : `Compare each bottom number with ${target}. A fraction already has ${target} equal parts and does not need new parts.`,
   }),
 
   transform: Object.freeze({

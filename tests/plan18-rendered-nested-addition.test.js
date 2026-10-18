@@ -1,6 +1,6 @@
 import { afterEach, describe, expect, it } from 'vitest';
 import { createFractionFlowApp } from '../src/app/app.js';
-import { PRACTICE_TYPES } from '../src/app/practice-types.js';
+import { PLAN18_PRACTICE_TYPES_V6 } from '../src/app/practice-types.js';
 import { setupMockDOM, teardownMockDOM } from './fixtures/mock-dom.js';
 
 describe('Plan 18 mounted nested addition', () => {
@@ -10,7 +10,7 @@ describe('Plan 18 mounted nested addition', () => {
     const document = setupMockDOM();
     const root = document.createElement('div');
     document.body.appendChild(root);
-    const productionType = PRACTICE_TYPES[0];
+    const productionType = PLAN18_PRACTICE_TYPES_V6[0];
     for (const item of productionType.items.slice(11)) for (const view of ['visual', 'linear']) {
       const focusedType = Object.freeze({ ...productionType, items: Object.freeze([item]) });
       const app = createFractionFlowApp({ root, practiceTypes: [focusedType], presentationMode: 'instant-test' });

@@ -12,7 +12,7 @@ import {
 } from './authored-problem-materializer.js';
 import { deepFreeze } from './schema.js';
 import { PLAN18_NESTED_ADDITION_RECORDS } from './data/plan18-nested-addition-records.js';
-import { PLAN35_ADDITION_RECIPE_FIXTURES } from './data/plan35-addition-recipe-records.js';
+import { PLAN35_ADDITION_RECIPE_FIXTURES, PLAN35_ADDITION_RECIPE_RECORDS } from './data/plan35-addition-recipe-records.js';
 import { buildCuratedProblem } from './generator.js';
 
 function identityKey(fixtureId, authoringRevision) {
@@ -71,6 +71,21 @@ for (const fixture of PLAN35_ADDITION_RECIPE_FIXTURES) {
   if (curatedFixturesByIdentity.has(key)) throw new TypeError(`duplicate curated fixture identity: ${key}`);
   curatedFixturesByIdentity.set(key, fixture);
 }
+const plan35RecipeContentByIdentity = new Map(PLAN35_ADDITION_RECIPE_RECORDS
+  .filter((record) => record.fixtureProfileId)
+  .map((record) => {
+  const key = identityKey(record.fixtureId, record.authoringRevision);
+  const fixture = curatedFixturesByIdentity.get(key);
+  return [key, deepFreeze({
+    itemId: record.itemId,
+    fixtureId: record.fixtureId,
+    authoringRevision: record.authoringRevision,
+    taskDataId: record.taskDataId,
+    taskDataRevision: record.taskDataRevision,
+    recipe: { id: record.recipeId, revision: record.patternRevision },
+    fixture,
+  })];
+  }));
 
 /** Exact immutable lookup; this deliberately has no "latest revision" fallback. */
 export function resolveCuratedFixture(fixtureId, authoringRevision) {
@@ -95,6 +110,8 @@ export function resolveAuthoredContent(fixtureId, authoringRevision) {
   if (plan20) return plan20;
   const sharedFactor = plan19ByIdentity.get(key);
   if (sharedFactor) return sharedFactor;
+  const plan35 = plan35RecipeContentByIdentity.get(key);
+  if (plan35) return plan35;
   const crossing = plan17ByIdentity.get(key);
   if (crossing) return crossing;
   const legacy = legacyByIdentity.get(key);

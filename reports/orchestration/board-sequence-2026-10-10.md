@@ -30,8 +30,11 @@ Current source assignment: **Plan 35 — Reusable Task-Recipe Admission and Vari
 Batch**, drafted at the owner's request on 2026-10-17. It addresses Plan 18's fixed
 target/two-record boundary alongside the accepted Plan 34 patterns and requires
 a data-only hold-out extension proof. Owner initiated it on 2026-10-17 with
-a supervised Luna medium child and Sol read-only low/medium review. Requirement 0
-is in flight; source changes remain mechanism-gated. Reuse deterministic math; avoid another isolated one-problem increment.
+a supervised Luna medium child and Sol read-only low/medium review. The mechanism
+is approved, the pure foundation is committed, and two declared held-outs passed
+the unchanged generic checks through data-only additions. Mounted wiring is in
+flight; browser evidence and owner acceptance remain. Reuse deterministic math;
+avoid another isolated one-problem increment.
 
 The next wave must also address learner-facing subtraction, which remains at the
 accepted standalone-prototype stage pending an explicit initial representation
@@ -58,7 +61,7 @@ chain. Recheck every older source packet against current code before initiation.
 | 29 — Purposeful Episode Task Variation Design | Shorter variants with different learner responsibilities around one concept | Complete; owner adopted the reusable full-operation contract |
 | 33 — About FractionFlow and Use Guide | Optional entry-linked description, use/support guidance and current privacy facts | Complete; owner accepted the current page, which may evolve |
 | 34 — Reusable Task Patterns in Full Addition Episodes | Compact construct and inspect/keep/repair assignments using existing problems | Complete; technical review and owner acceptance recorded 2026-10-17 |
-| 35 — Reusable Task-Recipe Admission and Varied Authored Batch | Generalize the three proven recipes across compact records and varied targets; prove data-only extension | In-progress by owner authorization; Luna Requirement 0 investigation, mechanism/batch gate before source |
+| 35 — Reusable Task-Recipe Admission and Varied Authored Batch | Generalize the three proven recipes across compact records and varied targets; prove data-only extension | In-progress; mechanism/foundation/data-only checkpoints committed, mounted wiring under supervision; browser and owner gates remain |
 | 36 - Learner Subtraction Integration Design | First integrated subtraction task, concise flow and varied compact batch proposal | Draft; follows Plan 35 authoring baseline; owner task/representation adoption before a separate source packet |
 | 37 - First Number-Line Task and Bar-to-Line Bridge Design | One meaningful same-amount/location connection and accessible capability contract | Draft; preparatory design can use a pinned bar baseline; source activation requires representation/Phase 3 review and a separate packet |
 

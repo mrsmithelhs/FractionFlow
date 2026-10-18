@@ -184,3 +184,58 @@ rendered learner agency remain unverified.
   change-class boundary, and limits are recorded in
   `stage-b-data-only-holdouts.md`. Stop for parent diff verification and commit;
   no mounted wiring is authorized at this checkpoint.
+
+## Stage C1 mounted wiring — 2026-10-17
+
+- Made set@7 the active `sum-under-one` practice type with 21 fixed items and
+  Plan35 definition/context only for its 13 registered recipe tasks. The eight
+  legacy prefix workflows remain on their previous definitions. The exported
+  `PLAN18_PRACTICE_TYPES_V6` remains the exact 13-item set@6 historical fixture;
+  new active practice items are derived from the live association data, never
+  from the test-only hold-out set.
+- Added exact authored-content catalog entries for newly materialized recipe
+  fixtures and app-side exact Plan35 association resolution. The app rejects a
+  live item whose definition, recipe, target, task data, fixture or set binding
+  disagrees with the closed data resolver.
+- Connected existing shared compact rendering to Plan35's side-choice and
+  operation controls. Side-choice help and wrong-side recovery use the
+  validated target denominator while the question stays target-free. Replay is
+  hidden for construct/inspect and available to identify only after conversion.
+  Operation focus/drafts use the existing compact controls. No per-item UI
+  branches were added.
+- Added `tests/plan35-mounted-recipes.test.js`: six mounted mock-DOM journeys
+  cover construct at 10/30, inspect at 24/30 and identify at 10/12. They span
+  visual/linear views and actual high/medium settings; exercise task help,
+  applicable wrong-side/candidate/conversion/operation recoveries, completion,
+  Next, fresh-state reset, focus, identify Replay and untouched-operand
+  membership. The test also verifies live set@7 has 21 items, 13 recipe
+  associations, and neither hold-out is reachable. Historical Plan18/34 tests
+  now explicitly mount their preserved v6/v5 exported practice sets.
+- Focused mounted verification passed: 5 files / 35 tests for Plan35, Plan18,
+  Plan34 and app shell. Additional app/navigation/regression verification
+  passed: 4 files / 26 tests for Plan26 practice navigation, crossing addition,
+  and entry page. No route matrix, browser, build or broad full-suite run was
+  performed; those belong to C2 after parent checkpoint.
+- C1 source/test paths: `src/app/practice-types.js`, `src/app/app.js`,
+  `src/content/authored-content-catalog.js`, shared `src/render/strings.js`,
+  `src/render/beat-container.js`, `src/render/linear-path.js`, and
+  `tests/plan35-mounted-recipes.test.js`, plus historical fixture test updates
+  in `tests/app-plan18-practice-set.test.js`,
+  `tests/plan18-rendered-nested-addition.test.js`, and
+  `tests/plan34-rendered-task-patterns.test.js`.
+- Stop for parent/Sol review and commit before C2. Mock-DOM evidence does not
+  establish native browser layout, viewport reach, motion or assistive
+  technology behavior. No route runner/matrix or root Vite log was changed.
+
+### C1 target-copy correction — 2026-10-17
+
+- Parameterized the encounter target cue from the validated task denominator:
+  construct and inspect now say `Use N equal parts.` (retaining historical
+  `Use twelfths.` at target 12), while identify-side tasks omit this additional
+  cue. This avoids a false twelfths instruction on targets 10/24/30 and
+  preserves the Plan18 identify question flow.
+- Added mounted assertions for construct/inspect target cues at targets 10,
+  24 and 30, and for no target cue on identify at targets 10/12.
+- Reran the authorized focused app/render regression command: 9 files, 61 tests
+  passed. `git diff --check` is clean. No route matrix, browser, build or full
+  suite run was performed; stop for parent/Sol review before C2.
