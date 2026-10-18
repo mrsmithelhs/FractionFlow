@@ -1,0 +1,479 @@
+{
+  "probeDate": "2026-10-18",
+  "status": "SUCCESS",
+  "recordCount": 8,
+  "records": [
+    {
+      "itemId": "takeaway-8-5-minus-2",
+      "fixtureId": "curated-plan36-takeaway-8-5-minus-2",
+      "sourceOperands": {
+        "left": "5/8",
+        "right": "2/8"
+      },
+      "wireForms": {
+        "left": {
+          "kind": "fraction",
+          "numerator": "5",
+          "denominator": "8"
+        },
+        "right": {
+          "kind": "fraction",
+          "numerator": "2",
+          "denominator": "8"
+        }
+      },
+      "exactDerived": {
+        "rawDifference": {
+          "kind": "fraction",
+          "numerator": "3",
+          "denominator": "8"
+        },
+        "simplifiedDifference": {
+          "kind": "fraction",
+          "numerator": "3",
+          "denominator": "8"
+        },
+        "isReducible": false,
+        "isZero": false
+      },
+      "cellPartitionVerification": {
+        "totalCells": 8,
+        "startingCount": 5,
+        "removedCount": 2,
+        "remainingCount": 3,
+        "outsideCount": 3,
+        "conservesWhole": true
+      },
+      "equivalentAcceptedForms": [
+        {
+          "kind": "fraction",
+          "numerator": "3",
+          "denominator": "8"
+        },
+        {
+          "kind": "fraction",
+          "numerator": "3",
+          "denominator": "8"
+        }
+      ],
+      "role": "moderate positive remainder"
+    },
+    {
+      "itemId": "takeaway-12-8-minus-3",
+      "fixtureId": "curated-plan36-takeaway-12-8-minus-3",
+      "sourceOperands": {
+        "left": "8/12",
+        "right": "3/12"
+      },
+      "wireForms": {
+        "left": {
+          "kind": "fraction",
+          "numerator": "8",
+          "denominator": "12"
+        },
+        "right": {
+          "kind": "fraction",
+          "numerator": "3",
+          "denominator": "12"
+        }
+      },
+      "exactDerived": {
+        "rawDifference": {
+          "kind": "fraction",
+          "numerator": "5",
+          "denominator": "12"
+        },
+        "simplifiedDifference": {
+          "kind": "fraction",
+          "numerator": "5",
+          "denominator": "12"
+        },
+        "isReducible": false,
+        "isZero": false
+      },
+      "cellPartitionVerification": {
+        "totalCells": 12,
+        "startingCount": 8,
+        "removedCount": 3,
+        "remainingCount": 5,
+        "outsideCount": 4,
+        "conservesWhole": true
+      },
+      "equivalentAcceptedForms": [
+        {
+          "kind": "fraction",
+          "numerator": "5",
+          "denominator": "12"
+        },
+        {
+          "kind": "fraction",
+          "numerator": "5",
+          "denominator": "12"
+        }
+      ],
+      "role": "positive irreducible raw difference"
+    },
+    {
+      "itemId": "takeaway-10-7-minus-3",
+      "fixtureId": "curated-plan36-takeaway-10-7-minus-3",
+      "sourceOperands": {
+        "left": "7/10",
+        "right": "3/10"
+      },
+      "wireForms": {
+        "left": {
+          "kind": "fraction",
+          "numerator": "7",
+          "denominator": "10"
+        },
+        "right": {
+          "kind": "fraction",
+          "numerator": "3",
+          "denominator": "10"
+        }
+      },
+      "exactDerived": {
+        "rawDifference": {
+          "kind": "fraction",
+          "numerator": "4",
+          "denominator": "10"
+        },
+        "simplifiedDifference": {
+          "kind": "fraction",
+          "numerator": "2",
+          "denominator": "5"
+        },
+        "isReducible": true,
+        "isZero": false
+      },
+      "cellPartitionVerification": {
+        "totalCells": 10,
+        "startingCount": 7,
+        "removedCount": 3,
+        "remainingCount": 4,
+        "outsideCount": 3,
+        "conservesWhole": true
+      },
+      "equivalentAcceptedForms": [
+        {
+          "kind": "fraction",
+          "numerator": "4",
+          "denominator": "10"
+        },
+        {
+          "kind": "fraction",
+          "numerator": "2",
+          "denominator": "5"
+        }
+      ],
+      "role": "positive reducible raw difference"
+    },
+    {
+      "itemId": "takeaway-11-9-minus-4",
+      "fixtureId": "curated-plan36-takeaway-11-9-minus-4",
+      "sourceOperands": {
+        "left": "9/11",
+        "right": "4/11"
+      },
+      "wireForms": {
+        "left": {
+          "kind": "fraction",
+          "numerator": "9",
+          "denominator": "11"
+        },
+        "right": {
+          "kind": "fraction",
+          "numerator": "4",
+          "denominator": "11"
+        }
+      },
+      "exactDerived": {
+        "rawDifference": {
+          "kind": "fraction",
+          "numerator": "5",
+          "denominator": "11"
+        },
+        "simplifiedDifference": {
+          "kind": "fraction",
+          "numerator": "5",
+          "denominator": "11"
+        },
+        "isReducible": false,
+        "isZero": false
+      },
+      "cellPartitionVerification": {
+        "totalCells": 11,
+        "startingCount": 9,
+        "removedCount": 4,
+        "remainingCount": 5,
+        "outsideCount": 2,
+        "conservesWhole": true
+      },
+      "equivalentAcceptedForms": [
+        {
+          "kind": "fraction",
+          "numerator": "5",
+          "denominator": "11"
+        },
+        {
+          "kind": "fraction",
+          "numerator": "5",
+          "denominator": "11"
+        }
+      ],
+      "role": "positive irreducible raw difference"
+    },
+    {
+      "itemId": "takeaway-9-6-minus-1",
+      "fixtureId": "curated-plan36-takeaway-9-6-minus-1",
+      "sourceOperands": {
+        "left": "6/9",
+        "right": "1/9"
+      },
+      "wireForms": {
+        "left": {
+          "kind": "fraction",
+          "numerator": "6",
+          "denominator": "9"
+        },
+        "right": {
+          "kind": "fraction",
+          "numerator": "1",
+          "denominator": "9"
+        }
+      },
+      "exactDerived": {
+        "rawDifference": {
+          "kind": "fraction",
+          "numerator": "5",
+          "denominator": "9"
+        },
+        "simplifiedDifference": {
+          "kind": "fraction",
+          "numerator": "5",
+          "denominator": "9"
+        },
+        "isReducible": false,
+        "isZero": false
+      },
+      "cellPartitionVerification": {
+        "totalCells": 9,
+        "startingCount": 6,
+        "removedCount": 1,
+        "remainingCount": 5,
+        "outsideCount": 3,
+        "conservesWhole": true
+      },
+      "equivalentAcceptedForms": [
+        {
+          "kind": "fraction",
+          "numerator": "5",
+          "denominator": "9"
+        },
+        {
+          "kind": "fraction",
+          "numerator": "5",
+          "denominator": "9"
+        }
+      ],
+      "role": "large positive remainder"
+    },
+    {
+      "itemId": "takeaway-9-6-minus-6",
+      "fixtureId": "curated-plan36-takeaway-9-6-minus-6",
+      "sourceOperands": {
+        "left": "6/9",
+        "right": "6/9"
+      },
+      "wireForms": {
+        "left": {
+          "kind": "fraction",
+          "numerator": "6",
+          "denominator": "9"
+        },
+        "right": {
+          "kind": "fraction",
+          "numerator": "6",
+          "denominator": "9"
+        }
+      },
+      "exactDerived": {
+        "rawDifference": {
+          "kind": "fraction",
+          "numerator": "0",
+          "denominator": "9"
+        },
+        "simplifiedDifference": {
+          "kind": "fraction",
+          "numerator": "0",
+          "denominator": "1"
+        },
+        "isReducible": true,
+        "isZero": true
+      },
+      "cellPartitionVerification": {
+        "totalCells": 9,
+        "startingCount": 6,
+        "removedCount": 6,
+        "remainingCount": 0,
+        "outsideCount": 3,
+        "conservesWhole": true
+      },
+      "equivalentAcceptedForms": [
+        {
+          "kind": "fraction",
+          "numerator": "0",
+          "denominator": "9"
+        },
+        {
+          "kind": "fraction",
+          "numerator": "0",
+          "denominator": "1"
+        }
+      ],
+      "role": "equal-operands zero boundary"
+    },
+    {
+      "itemId": "takeaway-6-5-minus-4",
+      "fixtureId": "curated-plan36-takeaway-6-5-minus-4",
+      "sourceOperands": {
+        "left": "5/6",
+        "right": "4/6"
+      },
+      "wireForms": {
+        "left": {
+          "kind": "fraction",
+          "numerator": "5",
+          "denominator": "6"
+        },
+        "right": {
+          "kind": "fraction",
+          "numerator": "4",
+          "denominator": "6"
+        }
+      },
+      "exactDerived": {
+        "rawDifference": {
+          "kind": "fraction",
+          "numerator": "1",
+          "denominator": "6"
+        },
+        "simplifiedDifference": {
+          "kind": "fraction",
+          "numerator": "1",
+          "denominator": "6"
+        },
+        "isReducible": false,
+        "isZero": false
+      },
+      "cellPartitionVerification": {
+        "totalCells": 6,
+        "startingCount": 5,
+        "removedCount": 4,
+        "remainingCount": 1,
+        "outsideCount": 1,
+        "conservesWhole": true
+      },
+      "equivalentAcceptedForms": [
+        {
+          "kind": "fraction",
+          "numerator": "1",
+          "denominator": "6"
+        },
+        {
+          "kind": "fraction",
+          "numerator": "1",
+          "denominator": "6"
+        }
+      ],
+      "role": "one-part positive remainder"
+    },
+    {
+      "itemId": "takeaway-8-7-minus-1",
+      "fixtureId": "curated-plan36-takeaway-8-7-minus-1",
+      "sourceOperands": {
+        "left": "7/8",
+        "right": "1/8"
+      },
+      "wireForms": {
+        "left": {
+          "kind": "fraction",
+          "numerator": "7",
+          "denominator": "8"
+        },
+        "right": {
+          "kind": "fraction",
+          "numerator": "1",
+          "denominator": "8"
+        }
+      },
+      "exactDerived": {
+        "rawDifference": {
+          "kind": "fraction",
+          "numerator": "6",
+          "denominator": "8"
+        },
+        "simplifiedDifference": {
+          "kind": "fraction",
+          "numerator": "3",
+          "denominator": "4"
+        },
+        "isReducible": true,
+        "isZero": false
+      },
+      "cellPartitionVerification": {
+        "totalCells": 8,
+        "startingCount": 7,
+        "removedCount": 1,
+        "remainingCount": 6,
+        "outsideCount": 1,
+        "conservesWhole": true
+      },
+      "equivalentAcceptedForms": [
+        {
+          "kind": "fraction",
+          "numerator": "6",
+          "denominator": "8"
+        },
+        {
+          "kind": "fraction",
+          "numerator": "3",
+          "denominator": "4"
+        }
+      ],
+      "role": "near-whole positive remainder"
+    }
+  ],
+  "boundaryProbes": [
+    {
+      "leftNumerator": "2",
+      "rightNumerator": "5",
+      "denominator": "8",
+      "expectRefusal": "negative result"
+    },
+    {
+      "leftNumerator": "9",
+      "rightNumerator": "2",
+      "denominator": "8",
+      "expectRefusal": "improper left operand"
+    },
+    {
+      "leftNumerator": "5",
+      "rightNumerator": "8",
+      "denominator": "8",
+      "expectRefusal": "improper right operand"
+    },
+    {
+      "leftNumerator": "5",
+      "rightNumerator": "0",
+      "denominator": "8",
+      "expectRefusal": "zero subtrahend"
+    },
+    {
+      "leftNumerator": "0",
+      "rightNumerator": "0",
+      "denominator": "8",
+      "expectRefusal": "zero minuend"
+    }
+  ]
+}
