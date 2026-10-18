@@ -3,7 +3,34 @@
 Living pointer document (see `docs/agent-starting-prompts/orchestrator-prompt.md` § "Session Handoff File").
 Orchestrator-owned; update in place before thread boundaries. Anchor dates, never countdowns.
 
-## Current snapshot — 2026-10-12
+## Current snapshot — 2026-10-17
+
+Plan 35 is delivered after completed technical review; owner rendered-page and
+agency acceptance remain pending. Source foundation 46790ad, data-only hold-out proof 110493e, mounted
+wiring 201235e and native browser/evidence checkpoint 45019d1 are committed.
+The live immutable set@7 has21 items, retaining the accepted13-item numerical
+prefix and adding8 items through three reusable recipes. Two further test-only
+records proved data-only extension with unchanged generic tests. Exact arithmetic
+derives answers; authored inspection stimuli remain separate from answer truth.
+Replay v1-v3 and historical set@6 stay pinned; generalized recipes use strictv4.
+
+Parent independently passed402 unit tests, both builds, current-root native
+prefix smoke, focused native evidence and route-object preservation. Full Chrome
+matrix receipt passes67 executions/65 rows; all original63 route objects remain
+deep-equal. Final Sol low read-only review found no remaining evidence blocker.
+See reports/development/plan-35-reusable-task-recipes-and-authored-batch/,
+especially stage-c2-review.md and progress.md. Owner rendered-screen
+and agency acceptance remain pending; no completion or deployment is inferred.
+
+Plans36 (subtraction integration design) and37 (first number-line/bar bridge
+design) are committed draft packets, not initiated. Plan36 waits for Plan35
+closure; both are design-only with separate product implementation gates.
+No other plan is started. Use current packet frontmatter and its reports for
+Plans18/20/29/33/34, whose older lifecycle passages below are historical.
+Two pre-existing untracked root Vite logs are outside scope. Nothing was pushed
+or deployed. This snapshot supersedes the older status passages below.
+
+## Historical snapshot — 2026-10-12
 
 Owner accepted Plan 17 and authorized closure on 2026-10-12; see its
 `owner-disposition.md` and final `repair-02-review.md`. Plan 17 is complete and

@@ -1,7 +1,7 @@
 ---
 id: plan-35
 title: Reusable Task-Recipe Admission and Varied Authored Batch
-status: in-progress
+status: delivered
 depends_on: [plan-18, plan-32, plan-34]
 gate: "Requirement 0: approve bounded recipe/data/replay contracts, batch and historical-route treatment before source changes. Technical and owner rendered-screen/agency acceptance; deployment separate."
 summary: >-
@@ -204,13 +204,18 @@ runs regenerate them; store current evidence in this packet's folder.
 Investigate → mechanism/batch gate → shared authoring/state checkpoint → data-only
 hold-out proof → mounted/browser evidence → independent review → progress report.
 
-- [ ] Approved recipe, compatibility and batch contract recorded before source.
-- [ ] Three recipes work across varied targets without per-problem behavioral code.
-- [ ] Hold-out data-only diff and all-item completion/replay evidence exist.
-- [ ] Historical reconstruction and route contexts remain truthful and protected.
-- [ ] Access, help, recovery, motion and concise rendered copy verified as claimed.
-- [ ] Required report exists at reports/development/plan-35-reusable-task-recipes-and-authored-batch/progress.md.
-- [ ] No unrelated files changed; owner, mechanism and deployment gates honored.
+- [x] Approved recipe, compatibility and batch contract recorded before source.
+- [x] Three recipes work across varied targets without per-problem behavioral code.
+- [x] Hold-out data-only diff and all-item completion/replay evidence exist.
+- [x] Historical reconstruction and route contexts remain truthful and protected.
+- [x] Access, help, recovery, motion and concise rendered copy verified as claimed.
+- [x] Required report exists at reports/development/plan-35-reusable-task-recipes-and-authored-batch/progress.md.
+- [x] No unrelated files changed; owner, mechanism and deployment gates honored.
+
+Technical delivery accepted by orchestration on2026-10-17. Owner rendered-page
+and agency acceptance remains pending; these technical checks do not close the
+packet or authorize deployment. See the progress report and stage reviews for
+coverage, findings, repairs and explicit observation limits.
 
 ## Authority, stop conditions and reporting
 
