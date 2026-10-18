@@ -18,6 +18,33 @@ function contentIdentity(content) {
 }
 
 function visibleFields(state) {
+  if (state.episodeDefinition?.id === 'phase-3-like-denominator-takeaway-subtraction'
+    && state.episodeDefinition?.revision === '1') {
+    if (state.beat === 'encounter') {
+      return {
+        representationRole: 'fraction-bar',
+        visible: ['source-forms', 'stable-whole', 'operation', 'grouped-removal-action'],
+        supplied: [],
+        hidden: ['marked-removal', 'operation-result'],
+      };
+    }
+    if (state.beat === 'operate') {
+      return {
+        representationRole: 'fraction-bar',
+        visible: ['source-forms', 'stable-whole', 'operation', 'marked-removal', 'remaining-partition'],
+        supplied: [],
+        hidden: ['operation-result'],
+      };
+    }
+    if (state.beat === 'resolve') {
+      return {
+        representationRole: 'fraction-bar',
+        visible: ['source-forms', 'stable-whole', 'operation', 'marked-removal', 'remaining-partition', 'operation-result', 'finish-navigation'],
+        supplied: [],
+        hidden: [],
+      };
+    }
+  }
   if (state.episodeDefinition?.id === 'phase-3-reusable-addition-recipes'
     && state.episodeDefinition?.revision === '1') {
     if (state.beat === 'transform') return {

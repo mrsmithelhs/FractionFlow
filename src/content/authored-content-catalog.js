@@ -9,6 +9,7 @@ import {
   MATERIALIZED_PLAN17_ADDITIONS,
   MATERIALIZED_PLAN32_ADDITIONS,
   MATERIALIZED_PLAN20_LIKE_DENOMINATOR_ADDITIONS,
+  MATERIALIZED_PLAN36_SUBTRACTIONS,
 } from './authored-problem-materializer.js';
 import { deepFreeze } from './schema.js';
 import { PLAN18_NESTED_ADDITION_RECORDS } from './data/plan18-nested-addition-records.js';
@@ -36,6 +37,9 @@ const plan18ByIdentity = new Map(PLAN18_NESTED_ADDITION_RECORDS.map((record) => 
   const content = buildCuratedProblem({ fixture, selector: fixture.selector, overlays: [], profileId: 'curated-review', candidate: { left: fixture.left, right: fixture.right, reviewedTransitions: [] } });
   return [identityKey(record.fixtureId, record.authoringRevision), deepFreeze({ itemId: record.itemId, fixtureId: record.fixtureId, authoringRevision: record.authoringRevision, taskDataRevision: record.taskDataRevision, fixture, content })];
 }));
+const plan36ByIdentity = new Map(MATERIALIZED_PLAN36_SUBTRACTIONS.map((entry) => [
+  identityKey(entry.fixtureId, entry.authoringRevision), entry,
+]));
 const legacyByIdentity = new Map(LEGACY_AUTHORED_IDENTITIES.map((entry) => [
   identityKey(entry.fixtureId, entry.authoringRevision), entry,
 ]));
@@ -70,6 +74,11 @@ for (const fixture of PLAN35_ADDITION_RECIPE_FIXTURES) {
   const key = identityKey(fixture.id, fixture.authoringRevision);
   if (curatedFixturesByIdentity.has(key)) throw new TypeError(`duplicate curated fixture identity: ${key}`);
   curatedFixturesByIdentity.set(key, fixture);
+}
+for (const item of MATERIALIZED_PLAN36_SUBTRACTIONS) {
+  const key = identityKey(item.fixtureId, item.authoringRevision);
+  if (curatedFixturesByIdentity.has(key)) throw new TypeError(`duplicate curated fixture identity: ${key}`);
+  curatedFixturesByIdentity.set(key, item.fixture);
 }
 const plan35RecipeContentByIdentity = new Map(PLAN35_ADDITION_RECIPE_RECORDS
   .filter((record) => record.fixtureProfileId)
@@ -114,6 +123,8 @@ export function resolveAuthoredContent(fixtureId, authoringRevision) {
   if (plan35) return plan35;
   const crossing = plan17ByIdentity.get(key);
   if (crossing) return crossing;
+  const plan36 = plan36ByIdentity.get(key);
+  if (plan36) return plan36;
   const legacy = legacyByIdentity.get(key);
   if (!legacy) return null;
   return deepFreeze({
@@ -156,4 +167,8 @@ export function listPlan19MaterializedContent() {
 
 export function listPlan17MaterializedContent() {
   return MATERIALIZED_PLAN17_ADDITIONS;
+}
+
+export function listPlan36MaterializedContent() {
+  return MATERIALIZED_PLAN36_SUBTRACTIONS;
 }

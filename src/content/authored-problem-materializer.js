@@ -12,6 +12,16 @@ import { COMPACT_ADDITION_RECORDS } from './data/compact-addition-records.js';
 import { SHARED_FACTOR_ADDITION_RECORDS } from './data/shared-factor-addition-records.js';
 import { CROSSING_ADDITION_RECORDS } from './data/crossing-addition-records.js';
 import { PLAN20_LIKE_DENOMINATOR_ADDITION_RECORDS } from './data/plan20-like-denominator-addition-records.js';
+import {
+  PLAN36_SUBTRACTION_AUTHORING_REVISION,
+  PLAN36_SUBTRACTION_PROFILE_ID,
+  PLAN36_SUBTRACTION_RECIPE_ID,
+  PLAN36_SUBTRACTION_RECIPE_REVISION,
+  PLAN36_SUBTRACTION_RECORDS,
+  PLAN36_SUBTRACTION_SELECTOR,
+  PLAN36_SUBTRACTION_TASK_DATA_ID,
+  PLAN36_SUBTRACTION_TASK_DATA_REVISION,
+} from './data/plan36-like-denominator-subtraction-records.js';
 
 export const PLAN32_RECIPE_ID = 'plan32-reviewed-addition';
 export const PLAN32_RECIPE_REVISION = '1';
@@ -25,6 +35,9 @@ export const PLAN17_TASK_DATA_REVISION = 'plan17-task-data-v1';
 export const PLAN20_RECIPE_ID = 'plan20-reviewed-like-denominator-addition';
 export const PLAN20_RECIPE_REVISION = '1';
 export const PLAN20_TASK_DATA_REVISION = 'plan20-task-data-v1';
+export const PLAN36_RECIPE_ID = PLAN36_SUBTRACTION_RECIPE_ID;
+export const PLAN36_RECIPE_REVISION = PLAN36_SUBTRACTION_RECIPE_REVISION;
+export const PLAN36_TASK_DATA_REVISION = PLAN36_SUBTRACTION_TASK_DATA_REVISION;
 
 const PREMISE_RULES = new Set(['P-EQUIVALENT', 'P-ADJACENT-UNIT']);
 const REFLECTION_RULES = new Set(['R-CORRECT', 'R-KEEP-NUMERATOR', 'R-ADJACENT-UNIT']);
@@ -381,3 +394,68 @@ export const MATERIALIZED_PLAN32_ADDITIONS = materializeCompactAdditionRecords()
 export const MATERIALIZED_PLAN19_ADDITIONS = materializeSharedFactorAdditionRecords();
 export const MATERIALIZED_PLAN17_ADDITIONS = materializeCrossingAdditionRecords();
 export const MATERIALIZED_PLAN20_LIKE_DENOMINATOR_ADDITIONS = materializePlan20LikeDenominatorAdditionRecords();
+
+export function materializePlan36LikeDenominatorSubtractionRecords(records = PLAN36_SUBTRACTION_RECORDS) {
+  requireValid(Array.isArray(records) && records.length === 8, 'Plan 36 records must be an array of 8 records');
+  const itemIds = new Set();
+  const fixtureKeys = new Set();
+  return deepFreeze(records.map((record) => {
+    exactKeys(record, [
+      'itemId', 'fixtureId', 'authoringRevision', 'taskData', 'recipe',
+      'leftNumerator', 'rightNumerator', 'denominator',
+    ], 'Plan 36 record');
+    requireValid(record.authoringRevision === PLAN36_SUBTRACTION_AUTHORING_REVISION, 'Plan 36 authoring revision must be plan36-record-v1');
+    requireValid(record.recipe?.id === PLAN36_SUBTRACTION_RECIPE_ID && record.recipe?.revision === PLAN36_SUBTRACTION_RECIPE_REVISION, 'Plan 36 recipe must match registered identity');
+    requireValid(record.taskData?.id === PLAN36_SUBTRACTION_TASK_DATA_ID && record.taskData?.revision === PLAN36_SUBTRACTION_TASK_DATA_REVISION, 'Plan 36 task data must match registered identity');
+    const key = `${record.fixtureId}@${record.authoringRevision}`;
+    requireValid(!itemIds.has(record.itemId) && !fixtureKeys.has(key), 'Plan 36 identities must be unique');
+    itemIds.add(record.itemId);
+    fixtureKeys.add(key);
+
+    const left = { kind: 'fraction', numerator: record.leftNumerator, denominator: record.denominator };
+    const right = { kind: 'fraction', numerator: record.rightNumerator, denominator: record.denominator };
+    const fixture = deepFreeze({
+      id: record.fixtureId,
+      authoringRevision: record.authoringRevision,
+      profileId: PLAN36_SUBTRACTION_PROFILE_ID,
+      selector: PLAN36_SUBTRACTION_SELECTOR,
+      overlays: Object.freeze([]),
+      left,
+      right,
+    });
+    const instance = buildCuratedProblem({
+      fixture,
+      selector: PLAN36_SUBTRACTION_SELECTOR,
+      overlays: [],
+      profileId: PLAN36_SUBTRACTION_PROFILE_ID,
+      candidate: { left, right, reviewedTransitions: [] },
+    });
+    const validity = validateProblemInstance(instance);
+    requireValid(validity.valid, `Plan 36 fixture ${record.itemId} must pass exact content validation`);
+    requireValid(instance.classification?.denominator?.relationship === 'same'
+      && instance.classification?.transformations?.canonicalRenaming?.left === false
+      && instance.classification?.transformations?.canonicalRenaming?.right === false,
+    'Plan 36 fixture must require no canonical renaming');
+    const eligibility = evaluateInstanceEligibility(instance);
+    requireValid(eligibility.paths.canonical?.rendering === 'eligible',
+      'Plan 36 original unit must be fraction-bar eligible');
+
+    return deepFreeze({
+      itemId: record.itemId,
+      fixtureId: record.fixtureId,
+      authoringRevision: record.authoringRevision,
+      taskDataRevision: record.taskData.revision,
+      recipe: record.recipe,
+      fixture,
+      instance,
+      premiseChecks: null,
+      reflectionChoices: null,
+    });
+  }));
+}
+
+export const MATERIALIZED_PLAN36_SUBTRACTIONS = materializePlan36LikeDenominatorSubtractionRecords();
+
+export function listPlan36MaterializedContent() {
+  return MATERIALIZED_PLAN36_SUBTRACTIONS;
+}

@@ -33,6 +33,21 @@ export const PROFILE_DEFINITIONS = deepFreeze({
     maxAlternateScaleFactor: 24n,
     maxAttempts: 4096,
   },
+  'plan36-subtraction-review': {
+    id: 'plan36-subtraction-review',
+    version: '1',
+    denominatorPool: Object.freeze([2n, 3n, 4n, 5n, 6n, 7n, 8n, 9n, 10n, 11n, 12n]),
+    properOperands: true,
+    simplestOperands: false,
+    allowZeroOperands: false,
+    positiveResult: false,
+    resultUpperBound: { numerator: 2n, denominator: 1n, relation: 'less-than' },
+    defaultSimplificationStatus: 'any',
+    defaultCrossesWhole: false,
+    maxCanonicalScaleFactor: 12n,
+    maxAlternateScaleFactor: 24n,
+    maxAttempts: 4096,
+  },
 });
 
 export function getProfile(profileId = 'phase1-dev-default') {

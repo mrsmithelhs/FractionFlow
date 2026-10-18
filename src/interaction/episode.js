@@ -26,12 +26,16 @@ import {
 } from '../content/full-addition-task-patterns.js';
 import { PLAN18_NESTED_DEFINITION_ID, validatePlan18TaskContext } from '../content/nested-renaming-task.js';
 import { isPlan35AdditionRecipeDefinition, isPlan35IdentifyRecipe, validatePlan35AdditionRecipeContext } from '../content/plan35-addition-recipe-task.js';
+import { isPlan36SubtractionDefinition, validatePlan36LikeDenominatorSubtractionContext } from '../content/plan36-like-denominator-takeaway-task.js';
+import { validateOperationResult } from '../math/index.js';
+import { fractionFromWire } from './classification.js';
 import {
   EPISODE_BEATS,
   PHASE2_ACTIVE_CONDITION,
   PHASE2_EPISODE_DEFINITION,
   PLAN20_LIKE_DENOMINATOR_EPISODE_DEFINITION,
   PLAN17_CROSSING_EPISODE_DEFINITION,
+  PLAN36_LIKE_DENOMINATOR_SUBTRACTION_EPISODE_DEFINITION,
   getEpisodeDefinition,
   validateActiveCondition,
 } from './episode-definition.js';
@@ -68,6 +72,31 @@ function responseForEntry(definition, entry, taskContext = null) {
     beat,
     evidenceCategory: 'supported-construction',
   };
+  if (isPlan36SubtractionDefinition(definition)) {
+    if (beat === 'encounter') {
+      return {
+        ...common,
+        responsibility: 'mark-subtrahend-amount-for-inspection',
+        inputKind: 'grouped-removal-action',
+        question: 'How much is left?',
+      };
+    }
+    if (beat === 'operate') {
+      return {
+        ...common,
+        responsibility: 'supply-amount-left',
+        inputKind: 'fraction',
+        question: 'How much is left?',
+      };
+    }
+    if (beat === 'resolve') {
+      return {
+        ...common,
+        responsibility: 'settle-final-form',
+        inputKind: 'fraction',
+      };
+    }
+  }
   if (beat === 'encounter') return { ...common, responsibility: 'inspect-expression', inputKind: 'acknowledge' };
   if (beat === 'notice') return { ...common, responsibility: 'identify-unit-relationship', inputKind: 'unit-match-choice' };
   if (beat === 'decide') return definition.id === PLAN18_NESTED_DEFINITION_ID
@@ -201,8 +230,11 @@ function assertDefinition(definition) {
       'episode definition semantics do not match its registered identity',
     );
   }
-  const approvedBeats = [PLAN18_NESTED_DEFINITION_ID, 'phase-3-reusable-addition-recipes'].includes(registered.id)
-    ? ['encounter', 'decide', 'transform', 'operate', 'resolve'] : EPISODE_BEATS;
+  const approvedBeats = registered.id === PLAN36_LIKE_DENOMINATOR_SUBTRACTION_EPISODE_DEFINITION.id
+    ? ['encounter', 'operate', 'resolve']
+    : [PLAN18_NESTED_DEFINITION_ID, 'phase-3-reusable-addition-recipes'].includes(registered.id)
+      ? ['encounter', 'decide', 'transform', 'operate', 'resolve']
+      : EPISODE_BEATS;
   if (JSON.stringify(registered.beats) !== JSON.stringify(approvedBeats)) {
     throw new EpisodeConstructionError('INVALID_EPISODE_DEFINITION', 'registered episode beats do not match the approved grammar');
   }
@@ -219,6 +251,7 @@ function assertInstance(instance, definition) {
     );
   }
   const identityContract = definition.contentContract ?? null;
+  const isPlan36 = isPlan36SubtractionDefinition(definition);
   const isPlan17Contract = identityContract?.resultStackCapability === 'plan17-two-whole-stack-v1';
   const isPlan20Contract = definition.id === PLAN20_LIKE_DENOMINATOR_EPISODE_DEFINITION.id
     && definition.revision === PLAN20_LIKE_DENOMINATOR_EPISODE_DEFINITION.revision;
@@ -282,7 +315,9 @@ function assertInstance(instance, definition) {
     || !plan20ContractMatches
     || (identityContract !== null && !isPlan17Contract && !isPlan20Contract)
     || (isPlan18 && (instance.provenance?.authoringRevision !== 'plan18-record-v1'
-      || instance.classification?.transformations?.canonicalRenaming?.left === instance.classification?.transformations?.canonicalRenaming?.right))) {
+      || instance.classification?.transformations?.canonicalRenaming?.left === instance.classification?.transformations?.canonicalRenaming?.right))
+    || (isPlan36 && (instance.provenance?.authoringRevision !== 'plan36-record-v1'
+      || instance.classification?.denominator?.relationship !== 'same'))) {
     throw new EpisodeConstructionError('UNSUPPORTED_CONTENT_FAMILY', 'content instance is outside the Phase 2 episode family');
   }
   const eligibility = evaluateInstanceEligibility(instance);
@@ -322,6 +357,11 @@ function stateSnapshot(state) {
       conversionOrigins: state.established.conversionOrigins ?? {},
       taskContext: state.taskContext,
     } : {}),
+    ...(isPlan36SubtractionDefinition(state.episodeDefinition) ? {
+      subtractionRemoval: state.established.subtractionRemoval ?? 'unmarked',
+      compactCompletion: state.established.compactCompletion ?? null,
+      taskContext: state.taskContext,
+    } : {}),
   };
 }
 
@@ -359,9 +399,10 @@ function resolvedState(state, established) {
     throw new EpisodeIntentError('INVALID_BEAT_SCHEDULE', 'only the final scheduled beat can resolve the episode');
   }
   const beat = entry.kind;
+  const isPlan36 = isPlan36SubtractionDefinition(state.episodeDefinition);
   const establishedState = {
     ...state.established,
-    ...(beat === 'resolve' && [PLAN34_EPISODE_DEFINITION_ID, 'phase-3-reusable-addition-recipes'].includes(state.episodeDefinition.id)
+    ...(beat === 'resolve' && ([PLAN34_EPISODE_DEFINITION_ID, 'phase-3-reusable-addition-recipes'].includes(state.episodeDefinition.id) || isPlan36)
       ? { compactCompletion: established }
       : beat === 'resolve' && state.episodeDefinition.id === PLAN18_NESTED_DEFINITION_ID
         ? { nestedCompletion: established }
@@ -471,6 +512,7 @@ function handleTaskHelpRequest(state, intent) {
   const scheduleEntry = currentScheduleEntry(state);
   if (currentTaskHelpEntries(state, scheduleEntry).length > 0) return state;
   const next = appendIntent(state, intent);
+  const isPlan36 = isPlan36SubtractionDefinition(state.episodeDefinition);
   return deepFreeze({
     ...next,
     supportHistory: [...next.supportHistory, {
@@ -479,6 +521,9 @@ function handleTaskHelpRequest(state, intent) {
       schedulePosition: state.schedulePosition,
       scheduleEntryId: scheduleEntry.id,
       side: scheduleEntry.side ?? null,
+      ...(isPlan36 && state.beat === 'operate'
+        ? { helpKind: 'like-denominator-takeaway' }
+        : {}),
       ...(state.episodeDefinition.id === PLAN34_EPISODE_DEFINITION_ID
         && state.taskContext.patternId === FULL_ADDITION_INSPECT_PATTERN.id
         ? { helpKind: 'inspect-comparison-invariant' }
@@ -534,6 +579,24 @@ function handleReplay(state, intent) {
     ...next,
     replayHistory: [...next.replayHistory, entry],
     supportHistory: [...next.supportHistory, entry],
+  });
+}
+
+function handleMarkSubtrahendAmount(state, intent) {
+  if (intent.type !== 'mark-subtrahend-amount') return null;
+  const establishedEncounter = { acknowledged: true };
+  const next = advanceSchedule(state, establishedEncounter);
+  const classification = {
+    kind: 'grouped-removal-triggered',
+    actionRole: 'grouped-removal-triggered',
+  };
+  return assessedSuccess(state, intent, classification, {
+    ...next,
+    established: {
+      ...next.established,
+      encounter: establishedEncounter,
+      subtractionRemoval: 'marked',
+    },
   });
 }
 
@@ -721,7 +784,49 @@ function handleOperate(state, intent) {
   });
 }
 
+function handleSubmitSubtractionResult(state, intent) {
+  if (intent.type !== 'submit-subtraction-result') return null;
+  const left = fractionFromWire(state.taskContext.sourceForms.left);
+  const right = fractionFromWire(state.taskContext.sourceForms.right);
+  const proposed = fractionFromWire(intent.proposed);
+  const validation = validateOperationResult(proposed, left, right, 'subtract');
+
+  if (validation.validity !== 'valid') {
+    const recoveryClassification = {
+      kind: 'incorrect-subtraction-result',
+      validity: 'invalid',
+      mathClassification: validation.classification,
+      proposed: intent.proposed,
+    };
+    return recovery(state, intent, recoveryClassification);
+  }
+
+  const successClassification = {
+    kind: 'learner-supplied-result',
+    actionRole: 'learner-supplied-result',
+    validity: 'valid',
+    mathClassification: validation.classification,
+    proposed: intent.proposed,
+  };
+  const established = {
+    ...successClassification,
+    proposed: intent.proposed,
+    submittedForm: intent.proposed,
+    targetDenominator: state.taskContext.sourceForms.left.denominator,
+  };
+  const next = advanceSchedule(state, established);
+  return assessedSuccess(state, intent, successClassification, {
+    ...next,
+    established: { ...next.established, operation: established },
+    nextResponseSupport: null,
+  });
+}
+
 function handleResolve(state, intent) {
+  if (isPlan36SubtractionDefinition(state.episodeDefinition)) {
+    if (intent.type !== 'finish-compact-episode') return null;
+    return assessedSuccess(state, intent, { kind: 'compact-navigation-completed' }, resolvedState(state, { kind: 'navigation-completion' }));
+  }
   if (state.episodeDefinition.id === PLAN18_NESTED_DEFINITION_ID) {
     if (intent.type !== 'finish-nested-episode') return null;
     return assessedSuccess(state, intent, { kind: 'nested-navigation-completed' }, resolvedState(state, { kind: 'navigation-completion' }));
@@ -809,6 +914,7 @@ function handleReflect(state, intent) {
 }
 
 const INTENT_KEYS = Object.freeze({
+  'mark-subtrahend-amount': ['type'],
   'acknowledge-encounter': ['type'],
   'submit-notice': ['type', 'matchesUnits'],
   'propose-common-denominator': ['type', 'proposed'],
@@ -816,6 +922,7 @@ const INTENT_KEYS = Object.freeze({
   'submit-equivalent-form': ['type', 'proposed'],
   'keep-inspected-form': ['type'],
   'repair-inspected-form': ['type', 'numerator'],
+  'submit-subtraction-result': ['type', 'proposed'],
   'submit-operation-result': ['type', 'proposed'],
   'submit-resolution': ['type', 'proposed'],
   'finish-compact-episode': ['type'],
@@ -828,6 +935,7 @@ const INTENT_KEYS = Object.freeze({
 });
 
 const INTENT_BEATS = Object.freeze({
+  'mark-subtrahend-amount': 'encounter',
   'acknowledge-encounter': 'encounter',
   'submit-notice': 'notice',
   'propose-common-denominator': 'decide',
@@ -835,6 +943,7 @@ const INTENT_BEATS = Object.freeze({
   'submit-equivalent-form': 'transform',
   'keep-inspected-form': 'transform',
   'repair-inspected-form': 'transform',
+  'submit-subtraction-result': 'operate',
   'submit-operation-result': 'operate',
   'submit-resolution': 'resolve',
   'finish-compact-episode': 'resolve',
@@ -924,6 +1033,7 @@ function assertIntentShape(intent) {
       throw new EpisodeIntentError('INVALID_INTENT_SHAPE', 'transform-help multiplier must be a whole fraction');
     }
   }
+  if (intent.type === 'submit-subtraction-result') assertWireFraction(intent.proposed, 'intent.proposed');
   if (intent.type === 'submit-operation-result') assertWireFraction(intent.proposed, 'intent.proposed');
   if (intent.type === 'submit-resolution') assertWireFraction(intent.proposed, 'intent.proposed');
   if (intent.type === 'submit-reflection'
@@ -970,6 +1080,34 @@ function assertIntentAllowedAtBeat(state, intent) {
   const compact = [PLAN34_EPISODE_DEFINITION_ID, 'phase-3-reusable-addition-recipes'].includes(state.episodeDefinition.id);
   const nested = state.episodeDefinition.id === PLAN18_NESTED_DEFINITION_ID;
   const identify = isPlan35AdditionRecipeDefinition(state.episodeDefinition) && isPlan35IdentifyRecipe(state.taskContext);
+  const isPlan36 = isPlan36SubtractionDefinition(state.episodeDefinition);
+  if (isPlan36) {
+    if (intent.type === 'acknowledge-encounter') {
+      throw new EpisodeIntentError('UNEXPECTED_INTENT', 'like-denominator subtraction does not use acknowledge-encounter');
+    }
+    if (intent.type === 'submit-operation-result') {
+      throw new EpisodeIntentError('UNEXPECTED_INTENT', 'like-denominator subtraction uses submit-subtraction-result');
+    }
+    if (intent.type === 'request-replay') {
+      throw new EpisodeIntentError('UNEXPECTED_INTENT', 'Plan 36 subtraction does not expose legacy replay actions');
+    }
+    if (intent.type === 'submit-resolution') {
+      throw new EpisodeIntentError('UNEXPECTED_INTENT', 'compact resolve is navigation only');
+    }
+  }
+  if (intent.type === 'mark-subtrahend-amount') {
+    if (!isPlan36 || state.beat !== 'encounter' || state.established.subtractionRemoval === 'marked') {
+      throw new EpisodeIntentError('UNEXPECTED_INTENT', 'mark-subtrahend-amount is only allowed at encounter in like-denominator subtraction');
+    }
+  }
+  if (intent.type === 'submit-subtraction-result') {
+    if (!isPlan36 || state.beat !== 'operate') {
+      throw new EpisodeIntentError('UNEXPECTED_INTENT', 'submit-subtraction-result is only valid at operate in like-denominator subtraction');
+    }
+    if (state.established.subtractionRemoval !== 'marked') {
+      throw new EpisodeIntentError('UNEXPECTED_INTENT', 'submit-subtraction-result requires subtrahend amount to be marked first');
+    }
+  }
   if ((nested || identify) && intent.type === 'propose-common-denominator' && state.beat === 'decide') {
     throw new EpisodeIntentError('UNEXPECTED_INTENT', 'nested side choice does not accept a common-denominator proposal');
   }
@@ -991,7 +1129,7 @@ function assertIntentAllowedAtBeat(state, intent) {
     && state.taskContext.patternId !== FULL_ADDITION_CONSTRUCT_PATTERN.id && !identify) {
     throw new EpisodeIntentError('UNEXPECTED_INTENT', 'inspect transforms require keep or repair intents');
   }
-  if (intent.type === 'finish-compact-episode' && (!compact || state.beat !== 'resolve')) {
+  if (intent.type === 'finish-compact-episode' && ((!compact && !isPlan36) || state.beat !== 'resolve')) {
     throw new EpisodeIntentError('UNEXPECTED_INTENT', 'compact finish is available only at compact resolve');
   }
   if (intent.type === 'submit-resolution' && compact) {
@@ -1000,6 +1138,9 @@ function assertIntentAllowedAtBeat(state, intent) {
   if (['request-task-help', 'submit-transform-help-multiplier'].includes(intent.type)) {
     const plan20OperationHelp = intent.type === 'request-task-help'
       && isPlan20Definition(state.episodeDefinition)
+      && state.beat === 'operate';
+    const plan36OperateHelp = intent.type === 'request-task-help'
+      && isPlan36
       && state.beat === 'operate';
     const compactConstructMultiplierHelp = intent.type === 'submit-transform-help-multiplier'
       && [PLAN34_EPISODE_DEFINITION_ID, 'phase-3-reusable-addition-recipes'].includes(state.episodeDefinition.id)
@@ -1015,7 +1156,8 @@ function assertIntentAllowedAtBeat(state, intent) {
       && !nestedTaskHelp
       && !(state.episodeDefinition.id === PLAN17_CROSSING_EPISODE_DEFINITION.id
         && state.episodeDefinition.revision === PLAN17_CROSSING_EPISODE_DEFINITION.revision)
-      && !plan20OperationHelp) {
+      && !plan20OperationHelp
+      && !plan36OperateHelp) {
       throw new EpisodeIntentError('UNEXPECTED_INTENT', `${intent.type} requires episode definition revision 3`);
     }
     if (intent.type === 'submit-transform-help-multiplier' && state.beat !== 'transform') {
@@ -1023,7 +1165,8 @@ function assertIntentAllowedAtBeat(state, intent) {
     }
     if (intent.type === 'request-task-help'
       && !['decide', 'transform'].includes(state.beat)
-      && !plan20OperationHelp) {
+      && !plan20OperationHelp
+      && !plan36OperateHelp) {
       throw new EpisodeIntentError('UNEXPECTED_INTENT', 'task help is available only for denominator choice or conversion');
     }
   }
@@ -1043,12 +1186,17 @@ export function createEpisode({
   const normalizedCondition = validateActiveCondition(activeCondition);
   const isCompact = [PLAN34_EPISODE_DEFINITION_ID, 'phase-3-reusable-addition-recipes'].includes(definition.id);
   const isNested = definition.id === PLAN18_NESTED_DEFINITION_ID;
+  const isPlan36 = isPlan36SubtractionDefinition(definition);
   const normalizedTaskContext = isCompact
     ? (isPlan35AdditionRecipeDefinition(definition)
       ? validatePlan35AdditionRecipeContext(content, taskContext)
       : validatePlan34TaskContext(content, taskContext, { allowCompatibilityPair }))
-    : isNested ? validatePlan18TaskContext(content, taskContext) : null;
-  if (!isCompact && !isNested && taskContext !== null) {
+    : isNested
+      ? validatePlan18TaskContext(content, taskContext)
+      : isPlan36
+        ? validatePlan36LikeDenominatorSubtractionContext(content, taskContext)
+        : null;
+  if (!isCompact && !isNested && !isPlan36 && taskContext !== null) {
     throw new EpisodeConstructionError('UNSUPPORTED_TASK_CONTEXT', 'task context is only supported by the compact full-addition definition');
   }
   const beatSchedule = computeBeatSchedule(content, definition, normalizedTaskContext, { allowCompatibilityPair });
@@ -1059,7 +1207,7 @@ export function createEpisode({
     revision: 0,
     content,
     episodeDefinition: definition,
-    ...(isCompact || isNested ? { taskContext: normalizedTaskContext } : {}),
+    ...(isCompact || isNested || isPlan36 ? { taskContext: normalizedTaskContext } : {}),
     activeCondition: normalizedCondition,
     beatSchedule,
     schedulePosition: 0,
@@ -1078,6 +1226,7 @@ export function createEpisode({
       ...(isPlan20Definition(definition) ? { sharedUnit: null } : {}),
       ...(isCompact ? { compactCompletion: null, conversionOrigins: {} } : {}),
       ...(isNested ? { nestedCompletion: null, selectedRenamingSide: null, conversionOrigins: {} } : {}),
+      ...(isPlan36 ? { subtractionRemoval: 'unmarked', compactCompletion: null } : {}),
     },
     completedBeats: [],
     pendingResponse: null,
@@ -1106,11 +1255,13 @@ export function applyIntent(state, rawIntent) {
   if (intent.type === 'request-task-help') return handleTaskHelpRequest(state, intent);
   if (intent.type === 'submit-transform-help-multiplier') return handleTransformHelpMultiplier(state, intent);
   if (intent.type === 'request-replay') return handleReplay(state, intent);
+  if (intent.type === 'mark-subtrahend-amount') return handleMarkSubtrahendAmount(state, intent);
   if (intent.type === 'acknowledge-encounter') return handleEncounter(state, intent);
   if (intent.type === 'submit-notice') return handleNotice(state, intent);
   if (intent.type === 'propose-common-denominator') return handleDecide(state, intent);
   if (intent.type === 'select-renaming-side') return handleDecide(state, intent);
   if (['submit-equivalent-form', 'keep-inspected-form', 'repair-inspected-form'].includes(intent.type)) return handleTransform(state, intent);
+  if (intent.type === 'submit-subtraction-result') return handleSubmitSubtractionResult(state, intent);
   if (intent.type === 'submit-operation-result') return handleOperate(state, intent);
   if (intent.type === 'submit-resolution' || intent.type === 'finish-compact-episode' || intent.type === 'finish-nested-episode') return handleResolve(state, intent);
   if (intent.type === 'submit-reflection') return handleReflect(state, intent);

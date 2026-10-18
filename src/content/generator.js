@@ -176,7 +176,8 @@ function profileRejectionReasons(facts, request) {
   const expectedSimplification = requiresReducible
     ? 'reducible'
     : profile.defaultSimplificationStatus;
-  if (facts.resultClassification.simplificationStatus !== expectedSimplification) {
+  if (expectedSimplification !== 'any'
+    && facts.resultClassification.simplificationStatus !== expectedSimplification) {
     reasons.push('result-simplification-target-mismatch');
   }
   if (facts.resultClassification.crossesWhole !== (requiresCrossing || profile.defaultCrossesWhole)) {

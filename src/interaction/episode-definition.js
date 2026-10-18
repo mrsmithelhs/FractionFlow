@@ -187,6 +187,21 @@ export const PLAN35_REUSABLE_ADDITION_RECIPES_EPISODE_DEFINITION = deepFreeze({
   },
 });
 
+export const PLAN36_LIKE_DENOMINATOR_SUBTRACTION_EPISODE_DEFINITION = deepFreeze({
+  ...BASE_EPISODE_DEFINITION,
+  id: 'phase-3-like-denominator-takeaway-subtraction',
+  revision: '1',
+  operation: 'subtract',
+  selector: 'like-denominator-subtraction',
+  beats: Object.freeze(['encounter', 'operate', 'resolve']),
+  includeReflection: false,
+  promptIdentities: {
+    encounter: 'phase3.like-subtraction.encounter',
+    operate: 'phase3.like-subtraction.operate',
+    resolve: 'phase3.like-subtraction.resolve',
+  },
+});
+
 const EPISODE_DEFINITIONS = Object.freeze([
   LEGACY_PHASE2_EPISODE_DEFINITION,
   LEGACY_PHASE2_REFLECTION_EPISODE_DEFINITION,
@@ -200,6 +215,7 @@ const EPISODE_DEFINITIONS = Object.freeze([
   PLAN34_FULL_ADDITION_EPISODE_DEFINITION,
   PLAN18_NESTED_ADDITION_EPISODE_DEFINITION,
   PLAN35_REUSABLE_ADDITION_RECIPES_EPISODE_DEFINITION,
+  PLAN36_LIKE_DENOMINATOR_SUBTRACTION_EPISODE_DEFINITION,
 ]);
 
 export function getEpisodeDefinition(id = EPISODE_DEFINITION_ID, revision = EPISODE_DEFINITION_REVISION) {

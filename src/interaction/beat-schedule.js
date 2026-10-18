@@ -2,6 +2,7 @@ import { deepFreeze } from '../content/schema.js';
 import { PLAN34_EPISODE_DEFINITION_ID, resolvePlan34TaskContext } from '../content/full-addition-task-patterns.js';
 import { PLAN18_NESTED_DEFINITION_ID, resolvePlan18TaskContext } from '../content/nested-renaming-task.js';
 import { isPlan35AdditionRecipeDefinition, isPlan35IdentifyRecipe, validatePlan35AdditionRecipeContext } from '../content/plan35-addition-recipe-task.js';
+import { isPlan36SubtractionDefinition, validatePlan36LikeDenominatorSubtractionContext } from '../content/plan36-like-denominator-takeaway-task.js';
 
 function scheduleError(message) {
   const error = new TypeError(message);
@@ -43,6 +44,14 @@ export function computeBeatSchedule(instance, episodeDefinition, taskContext = n
       { id: 'encounter', kind: 'encounter' },
       ...(isPlan35IdentifyRecipe(context) ? [{ id: 'select-renaming-side', kind: 'decide' }] : []),
       ...context.requiredSides.map((side) => ({ id: `transform-${side}`, kind: 'transform', side })),
+      { id: 'operate', kind: 'operate' },
+      { id: 'resolve', kind: 'resolve' },
+    ]);
+  }
+  if (isPlan36SubtractionDefinition(episodeDefinition)) {
+    validatePlan36LikeDenominatorSubtractionContext(instance, taskContext);
+    return deepFreeze([
+      { id: 'encounter', kind: 'encounter' },
       { id: 'operate', kind: 'operate' },
       { id: 'resolve', kind: 'resolve' },
     ]);

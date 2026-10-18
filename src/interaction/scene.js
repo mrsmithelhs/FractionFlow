@@ -295,6 +295,14 @@ function sceneTaskIdentity(state) {
     targetDenominator: context.targetDenominator, taskDataId: context.taskDataId,
     taskDataRevision: context.taskDataRevision, sourceForms: context.sourceForms,
   };
+  if (state.episodeDefinition?.id === 'phase-3-like-denominator-takeaway-subtraction') return {
+    practiceSetId: context.practiceSetId, practiceSetRevision: context.practiceSetRevision,
+    itemId: context.itemId, fixtureId: context.fixtureId, authoringRevision: context.authoringRevision,
+    definitionId: context.definitionId, definitionRevision: context.definitionRevision,
+    recipeId: context.recipeId, recipeRevision: context.recipeRevision,
+    taskDataId: context.taskDataId, taskDataRevision: context.taskDataRevision,
+    sourceForms: context.sourceForms,
+  };
   return {
     practiceSetId: context.practiceSetId,
     practiceSetRevision: context.practiceSetRevision,
@@ -321,6 +329,10 @@ function currentTaskHelp(state) {
     && entry.scheduleEntryId === scheduleEntry?.id
   ));
   if (!request) return null;
+  if (request.helpKind === 'like-denominator-takeaway'
+    || (request.beat === 'operate' && state.episodeDefinition?.id === 'phase-3-like-denominator-takeaway-subtraction')) {
+    return { kind: 'like-denominator-takeaway', status: 'requested' };
+  }
   if (request.helpKind === 'inspect-comparison-invariant') {
     return { kind: 'inspect-comparison-invariant', status: 'requested', side: scheduleEntry.side };
   }
@@ -624,7 +636,11 @@ function taskMeaning(state) {
       target: null,
       evidenceCategory: null,
       connectionForm,
-      ...(state.taskContext ? (state.episodeDefinition.id === 'phase-3-nested-renaming-addition'
+      ...(state.episodeDefinition?.id === 'phase-3-like-denominator-takeaway-subtraction' && state.taskContext ? {
+        recipeId: state.taskContext.recipeId,
+        recipeRevision: state.taskContext.recipeRevision,
+        itemId: state.taskContext.itemId,
+      } : state.taskContext ? (state.episodeDefinition.id === 'phase-3-nested-renaming-addition'
         ? { targetDenominator: state.taskContext.targetDenominator }
         : { patternId: state.taskContext.patternId, targetDenominator: state.taskContext.targetDenominator }) : {}),
     };
@@ -639,7 +655,11 @@ function taskMeaning(state) {
     target: expected.target ?? null,
     evidenceCategory: expected.evidenceCategory,
     connectionForm,
-    ...(state.taskContext && state.episodeDefinition.id === 'phase-3-nested-renaming-addition' ? {
+    ...(state.episodeDefinition?.id === 'phase-3-like-denominator-takeaway-subtraction' && state.taskContext ? {
+      recipeId: state.taskContext.recipeId,
+      recipeRevision: state.taskContext.recipeRevision,
+      itemId: state.taskContext.itemId,
+    } : state.taskContext && state.episodeDefinition.id === 'phase-3-nested-renaming-addition' ? {
       targetDenominator: state.taskContext.targetDenominator,
       ...(state.beat === 'transform' || state.established.selectedRenamingSide ? { selectedSide: state.established.selectedRenamingSide } : {}),
     } : state.taskContext ? {
@@ -723,6 +743,22 @@ function commonUnitMeaning(state) {
 }
 
 function operationMeaning(state) {
+  if (state.episodeDefinition?.id === 'phase-3-like-denominator-takeaway-subtraction') {
+    const isResolved = state.beat === 'resolve' && state.established?.operation;
+    const acceptedForm = isResolved ? state.established.operation.submittedForm : null;
+    return {
+      operation: 'subtract',
+      currentForms: {
+        left: state.content.operands.left.initialForm,
+        right: state.content.operands.right.initialForm,
+      },
+      rawResult: isResolved ? state.established.operation.proposed : null,
+      resultWholeSpan: isResolved ? state.content.representationFacts.wholeSpan : null,
+      preferredFinalForm: acceptedForm,
+      simplifiedResult: null,
+      acceptedResponseForm: acceptedForm,
+    };
+  }
   const operation = state.established?.operation;
   const resolution = state.established?.resolution;
   if (!operation && !resolution) {
@@ -866,6 +902,51 @@ function transitionMeaning(state) {
   };
 }
 
+function takeawayMeaning(state) {
+  const isPlan36 = state.episodeDefinition?.id === 'phase-3-like-denominator-takeaway-subtraction'
+    && state.episodeDefinition?.revision === '1';
+  if (!isPlan36) return null;
+
+  const sourceForms = state.taskContext?.sourceForms ?? {
+    left: state.content.operands.left.initialForm,
+    right: state.content.operands.right.initialForm,
+  };
+  const den = Number(sourceForms.left.denominator);
+  const leftNum = Number(sourceForms.left.numerator);
+  const rightNum = Number(sourceForms.right.numerator);
+  const isMarked = state.established?.subtractionRemoval === 'marked';
+  const removalStatus = isMarked ? 'marked' : 'unmarked';
+
+  const cells = Array.from({ length: den }, (_, index) => {
+    let role;
+    if (!isMarked) {
+      role = index < leftNum ? 'starting' : 'outside-start';
+    } else {
+      if (index < leftNum - rightNum) {
+        role = 'remaining';
+      } else if (index < leftNum) {
+        role = 'removed';
+      } else {
+        role = 'outside-start';
+      }
+    }
+    return { index, role };
+  });
+
+  const acceptedResponseForm = state.beat === 'resolve' && state.established?.operation?.submittedForm
+    ? state.established.operation.submittedForm
+    : null;
+
+  return {
+    operation: 'subtract',
+    wholePartitionCount: den,
+    sourceForms,
+    removalStatus,
+    cells,
+    acceptedResponseForm,
+  };
+}
+
 function sceneMeaning(state, representationRole, capability) {
   const left = quantityScene(state, 'left');
   const right = quantityScene(state, 'right');
@@ -917,6 +998,7 @@ function sceneMeaning(state, representationRole, capability) {
       recovery,
     },
     operation: operationMeaning(state),
+    takeaway: takeawayMeaning(state),
     transition: transitionMeaning(state),
     capability,
     support: state.support,

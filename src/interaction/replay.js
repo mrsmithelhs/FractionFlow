@@ -11,6 +11,7 @@ export const REPLAY_SCHEMA_VERSION = 'fractionflow.episode-replay/v1';
 export const REPLAY_V2_SCHEMA_VERSION = 'fractionflow.episode-replay/v2';
 export const REPLAY_V3_SCHEMA_VERSION = 'fractionflow.episode-replay/v3';
 export const REPLAY_V4_SCHEMA_VERSION = 'fractionflow.episode-replay/v4';
+export const REPLAY_V5_SCHEMA_VERSION = 'fractionflow.episode-replay/v5';
 
 function sameJson(left, right) {
   return JSON.stringify(left) === JSON.stringify(right);
@@ -105,6 +106,7 @@ function assertReplayEnvelopeShape(envelope) {
   const v2 = envelope?.schemaVersion === REPLAY_V2_SCHEMA_VERSION;
   const v3 = envelope?.schemaVersion === REPLAY_V3_SCHEMA_VERSION;
   const v4 = envelope?.schemaVersion === REPLAY_V4_SCHEMA_VERSION;
+  const v5 = envelope?.schemaVersion === REPLAY_V5_SCHEMA_VERSION;
   assertExactKeys(envelope, [
     'schemaVersion',
     'contentIdentity',
@@ -112,7 +114,7 @@ function assertReplayEnvelopeShape(envelope) {
     'support',
     'activeCondition',
     'learnerIntents',
-    ...(v2 || v3 || v4 ? ['taskContext'] : []),
+    ...(v2 || v3 || v4 || v5 ? ['taskContext'] : []),
   ], 'replay envelope');
   assertContentIdentityShape(envelope.contentIdentity);
   assertExactKeys(envelope.episodeDefinition, ['id', 'revision'], 'episodeDefinition');
@@ -148,6 +150,38 @@ function assertReplayEnvelopeShape(envelope) {
     if (envelope.episodeDefinition.id !== 'phase-3-reusable-addition-recipes' || envelope.episodeDefinition.revision !== '1'
       || c.definitionId !== envelope.episodeDefinition.id || c.definitionRevision !== envelope.episodeDefinition.revision) {
       throw new TypeError('replay v4 is reserved for exact Plan 35 recipe context');
+    }
+  }
+  if (v5) {
+    const c = envelope.taskContext;
+    assertExactKeys(c, [
+      'practiceSetId', 'practiceSetRevision', 'itemId', 'fixtureId', 'authoringRevision',
+      'definitionId', 'definitionRevision', 'recipeId', 'recipeRevision',
+      'taskDataId', 'taskDataRevision', 'sourceForms',
+    ], 'replay v5 taskContext');
+    if (envelope.episodeDefinition.id !== 'phase-3-like-denominator-takeaway-subtraction'
+      || envelope.episodeDefinition.revision !== '1'
+      || c.definitionId !== envelope.episodeDefinition.id
+      || c.definitionRevision !== envelope.episodeDefinition.revision
+      || c.recipeId !== 'plan36.like-denominator-takeaway'
+      || c.recipeRevision !== '1'
+      || c.taskDataId !== 'plan36-like-denominator-takeaway'
+      || c.taskDataRevision !== '1'
+      || c.practiceSetId !== 'like-denominator-subtraction-vetted-set'
+      || c.practiceSetRevision !== '1'
+      || c.authoringRevision !== 'plan36-record-v1') {
+      throw new TypeError('replay v5 is reserved for exact Plan 36 subtraction context');
+    }
+    const allowedIntentTypes = new Set([
+      'mark-subtrahend-amount',
+      'request-task-help',
+      'submit-subtraction-result',
+      'finish-compact-episode',
+    ]);
+    for (const intent of envelope.learnerIntents) {
+      if (!isPlainRecord(intent) || !allowedIntentTypes.has(intent.type)) {
+        throw new TypeError(`replay v5 does not permit intent type: ${intent?.type}`);
+      }
     }
   }
 }
@@ -256,11 +290,13 @@ export function createReplayEnvelope(state) {
     throw new TypeError('state must be a Plan 05 episode state');
   }
   const envelope = {
-    schemaVersion: state.episodeDefinition.id === 'phase-3-nested-renaming-addition'
-      ? REPLAY_V3_SCHEMA_VERSION
-      : state.episodeDefinition.id === 'phase-3-reusable-addition-recipes'
-        ? REPLAY_V4_SCHEMA_VERSION
-        : state.taskContext ? REPLAY_V2_SCHEMA_VERSION : REPLAY_SCHEMA_VERSION,
+    schemaVersion: state.episodeDefinition.id === 'phase-3-like-denominator-takeaway-subtraction'
+      ? REPLAY_V5_SCHEMA_VERSION
+      : state.episodeDefinition.id === 'phase-3-nested-renaming-addition'
+        ? REPLAY_V3_SCHEMA_VERSION
+        : state.episodeDefinition.id === 'phase-3-reusable-addition-recipes'
+          ? REPLAY_V4_SCHEMA_VERSION
+          : state.taskContext ? REPLAY_V2_SCHEMA_VERSION : REPLAY_SCHEMA_VERSION,
     contentIdentity: contentReconstructionIdentity(state.content),
     episodeDefinition: {
       id: state.episodeDefinition.id,
@@ -278,7 +314,7 @@ export function createReplayEnvelope(state) {
 export function replayEpisode(envelope) {
   assertJsonSafe(envelope, 'replay envelope');
   if (!envelope || typeof envelope !== 'object') throw new TypeError('replay envelope must be an object');
-  if (![REPLAY_SCHEMA_VERSION, REPLAY_V2_SCHEMA_VERSION, REPLAY_V3_SCHEMA_VERSION, REPLAY_V4_SCHEMA_VERSION].includes(envelope?.schemaVersion)) {
+  if (![REPLAY_SCHEMA_VERSION, REPLAY_V2_SCHEMA_VERSION, REPLAY_V3_SCHEMA_VERSION, REPLAY_V4_SCHEMA_VERSION, REPLAY_V5_SCHEMA_VERSION].includes(envelope?.schemaVersion)) {
     throw new Error('unsupported replay envelope version');
   }
   assertReplayEnvelopeShape(envelope);
@@ -292,9 +328,13 @@ export function replayEpisode(envelope) {
     episodeDefinition: definition,
     support: envelope.support,
     activeCondition: envelope.activeCondition,
-    ...(envelope.schemaVersion === REPLAY_V2_SCHEMA_VERSION || envelope.schemaVersion === REPLAY_V3_SCHEMA_VERSION || envelope.schemaVersion === REPLAY_V4_SCHEMA_VERSION ? {
+    ...(envelope.schemaVersion === REPLAY_V2_SCHEMA_VERSION
+      || envelope.schemaVersion === REPLAY_V3_SCHEMA_VERSION
+      || envelope.schemaVersion === REPLAY_V4_SCHEMA_VERSION
+      || envelope.schemaVersion === REPLAY_V5_SCHEMA_VERSION ? {
       taskContext: envelope.taskContext,
       allowCompatibilityPair: envelope.schemaVersion !== REPLAY_V4_SCHEMA_VERSION
+        && envelope.schemaVersion !== REPLAY_V5_SCHEMA_VERSION
         && envelope.taskContext.practiceSetId === null
         && envelope.taskContext.practiceSetRevision === null,
     } : {}),
