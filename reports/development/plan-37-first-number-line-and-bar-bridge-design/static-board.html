@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Plan 37 — First Number-Line & Bar Bridge Static Probe</title>
+  <style>
+    :root {
+      --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      --bg-color: #f8fafc;
+      --card-bg: #ffffff;
+      --text-main: #1e293b;
+      --text-muted: #64748b;
+      --border-color: #cbd5e1;
+      --primary-color: #2563eb;
+      --primary-hover: #1d4ed8;
+      --bar-shaded: #3b82f6;
+      --bar-unshaded: #f1f5f9;
+      --line-track: #475569;
+      --benchmark-color: #0f172a;
+      --focus-ring: #0284c7;
+      --error-bg: #fffbeb;
+      --error-border: #f59e0b;
+      --error-text: #b45309;
+      --success-bg: #f0fdf4;
+      --success-border: #22c55e;
+      --success-text: #15803d;
+      --target-guide: #10b981;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: var(--font-family);
+      background: var(--bg-color);
+      color: var(--text-main);
+      padding: 16px;
+      line-height: 1.5;
+    }
+
+    .container {
+      max-width: 680px;
+      margin: 0 auto;
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 24px 20px;
+      box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+    }
+
+    /* Interactive probe controls */
+    .probe-controls {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 20px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--border-color);
+      background: #f1f5f9;
+      padding: 12px;
+      border-radius: 8px;
+    }
+    .probe-controls label {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text-main);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .probe-controls select, .probe-controls button {
+      padding: 6px 12px;
+      border-radius: 6px;
+      border: 1px solid var(--border-color);
+      font-size: 0.85rem;
+      background: #ffffff;
+      cursor: pointer;
+    }
+
+    /* Prompt header */
+    .prompt-header {
+      margin-bottom: 20px;
+    }
+    .prompt-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--text-main);
+    }
+    .prompt-sub {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      margin-top: 4px;
+    }
+
+    /* Bridge Canvas Box */
+    .bridge-stage {
+      position: relative;
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      padding: 24px 16px 32px 16px;
+      margin-bottom: 20px;
+      user-select: none;
+    }
+
+    .representation-label {
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+    }
+
+    /* Geometric Alignments: Identical Start x0 and End x1 */
+    .aligned-track-container {
+      position: relative;
+      width: 100%;
+      height: 48px;
+    }
+
+    /* Fraction Bar */
+    .fraction-bar {
+      display: flex;
+      width: 100%;
+      height: 44px;
+      border: 2px solid #1e293b;
+      border-radius: 6px;
+      overflow: hidden;
+      background: var(--bar-unshaded);
+    }
+    .bar-cell {
+      flex: 1;
+      border-right: 1px dashed #94a3b8;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #334155;
+    }
+    .bar-cell:last-child { border-right: none; }
+    .bar-cell.shaded {
+      background: var(--bar-shaded);
+      color: #ffffff;
+    }
+
+    /* Vertical spacer & Alignment Guide */
+    .bridge-middle-gap {
+      position: relative;
+      height: 36px;
+    }
+    .alignment-guide {
+      position: absolute;
+      top: -12px;
+      bottom: -12px;
+      width: 2px;
+      border-left: 2px dashed var(--target-guide);
+      display: none;
+      z-index: 5;
+    }
+    .alignment-guide::after {
+      content: "Same Amount";
+      position: absolute;
+      top: 50%;
+      left: 6px;
+      transform: translateY(-50%);
+      font-size: 0.75rem;
+      font-weight: 700;
+      background: #ecfdf5;
+      color: #065f46;
+      padding: 2px 6px;
+      border-radius: 4px;
+      border: 1px solid #a7f3d0;
+      white-space: nowrap;
+    }
+
+    /* Number Line Area */
+    .number-line-stage {
+      position: relative;
+      width: 100%;
+      height: 60px;
+    }
+    .line-track {
+      position: absolute;
+      top: 24px;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: var(--line-track);
+      border-radius: 2px;
+    }
+
+    /* Benchmark Ticks */
+    .benchmark-tick {
+      position: absolute;
+      top: 14px;
+      width: 3px;
+      height: 24px;
+      background: var(--benchmark-color);
+      transform: translateX(-50%);
+    }
+    .benchmark-label {
+      position: absolute;
+      top: 42px;
+      transform: translateX(-50%);
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--benchmark-color);
+    }
+
+    /* High Support Partition Ticks */
+    .subdivision-tick {
+      position: absolute;
+      top: 18px;
+      width: 1.5px;
+      height: 16px;
+      background: #94a3b8;
+      transform: translateX(-50%);
+    }
+
+    /* Candidate Ticks / Buttons (44x44px Hit Target) */
+    .candidate-marker-btn {
+      position: absolute;
+      top: 4px;
+      transform: translateX(-50%);
+      width: 44px;
+      height: 44px;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 10;
+      border-radius: 50%;
+    }
+    .candidate-marker-btn:focus-visible {
+      outline: 3px solid var(--focus-ring);
+      outline-offset: 2px;
+    }
+    .pin-dot {
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: #ffffff;
+      border: 3px solid #64748b;
+      transition: transform 0.15s ease, border-color 0.15s ease;
+    }
+    .candidate-marker-btn:hover .pin-dot {
+      border-color: var(--primary-color);
+      transform: scale(1.2);
+    }
+    .candidate-marker-btn.selected .pin-dot {
+      background: var(--primary-color);
+      border-color: var(--primary-color);
+      box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.2);
+    }
+    .candidate-marker-btn.confirmed-correct .pin-dot {
+      background: var(--target-guide);
+      border-color: var(--target-guide);
+      box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.25);
+    }
+    .candidate-marker-btn.confirmed-error .pin-dot {
+      background: #ef4444;
+      border-color: #ef4444;
+      box-shadow: 0 0 0 4px rgba(239, 68, 68, 0.2);
+    }
+
+    /* Action bar & Two-Step Buttons */
+    .action-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-top: 16px;
+    }
+    .preview-box {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: #334155;
+      background: #f8fafc;
+      padding: 10px 14px;
+      border-radius: 6px;
+      border: 1px solid var(--border-color);
+      flex: 1;
+    }
+    .btn-confirm {
+      padding: 12px 24px;
+      font-size: 1rem;
+      font-weight: 600;
+      color: #ffffff;
+      background: var(--primary-color);
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      min-width: 140px;
+      min-height: 48px;
+    }
+    .btn-confirm:hover:not(:disabled) {
+      background: var(--primary-hover);
+    }
+    .btn-confirm:disabled {
+      background: #94a3b8;
+      cursor: not-allowed;
+      opacity: 0.7;
+    }
+
+    /* Feedback / Recovery Banner */
+    .feedback-banner {
+      margin-top: 16px;
+      padding: 14px 16px;
+      border-radius: 8px;
+      font-size: 0.95rem;
+      display: none;
+    }
+    .feedback-banner.error {
+      display: block;
+      background: var(--error-bg);
+      border: 1px solid var(--error-border);
+      color: var(--error-text);
+    }
+    .feedback-banner.success {
+      display: block;
+      background: var(--success-bg);
+      border: 1px solid var(--success-border);
+      color: var(--success-text);
+    }
+
+    /* 360px viewport simulation frame */
+    .sim-360 {
+      max-width: 360px !important;
+      padding: 14px 12px !important;
+    }
+
+    /* Reduced Motion */
+    @media (prefers-reduced-motion: reduce) {
+      * { transition: none !important; animation: none !important; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="container" id="appFrame">
+
+  <!-- Interactive Inspector Controls -->
+  <div class="probe-controls" role="region" aria-label="Probe Test Configurations">
+    <label>
+      Support Level:
+      <select id="supportSelect" onchange="applyConfig()">
+        <option value="high">High Support (Guided, Full Ticks)</option>
+        <option value="medium">Medium Support (Prompted, Sparse)</option>
+      </select>
+    </label>
+    <label>
+      Item Sample:
+      <select id="itemSelect" onchange="applyConfig()">
+        <option value="3_4">Item 03: 3/4 (b=4, > 1/2)</option>
+        <option value="1_4">Item 02: 1/4 (b=4, < 1/2)</option>
+        <option value="1_2">Item 01: 1/2 (b=2, = 1/2)</option>
+        <option value="3_8">Item 05: 3/8 (b=8, near 1/2)</option>
+      </select>
+    </label>
+    <label>
+      Viewport Width:
+      <select id="viewportSelect" onchange="applyViewport()">
+        <option value="desktop">Responsive (Default / Desktop)</option>
+        <option value="mobile360">Narrow Mobile (360px)</option>
+      </select>
+    </label>
+    <button type="button" onclick="resetState()">Reset Probe</button>
+  </div>
+
+  <!-- Main Prompt Header -->
+  <div class="prompt-header">
+    <h1 class="prompt-title">Where is this same amount on the number line?</h1>
+    <p class="prompt-sub">Look at the shaded length of the bar, then choose the identical point on the line.</p>
+  </div>
+
+  <!-- Stage Box with Strictly Aligned Track Geometry -->
+  <div class="bridge-stage" id="stageBox">
+
+    <div class="representation-label">Reference Fraction Bar</div>
+    <div class="aligned-track-container">
+      <div class="fraction-bar" id="fractionBar" aria-hidden="true">
+        <!-- Rendered dynamically -->
+      </div>
+    </div>
+
+    <!-- Vertical Gap & Alignment Guide -->
+    <div class="bridge-middle-gap">
+      <div class="alignment-guide" id="alignmentGuide"></div>
+    </div>
+
+    <div class="representation-label">Number Line (0 to 1)</div>
+    <div class="aligned-track-container number-line-stage">
+      <div class="line-track"></div>
+
+      <!-- Benchmarks: 0, 1/2, 1 -->
+      <div class="benchmark-tick" style="left: 0%;"></div>
+      <div class="benchmark-label" style="left: 0%;">0</div>
+
+      <div class="benchmark-tick" style="left: 50%;"></div>
+      <div class="benchmark-label" style="left: 50%;">1/2</div>
+
+      <div class="benchmark-tick" style="left: 100%;"></div>
+      <div class="benchmark-label" style="left: 100%;">1</div>
+
+      <!-- Candidate buttons container -->
+      <div id="ticksContainer">
+        <!-- Rendered dynamically -->
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Action Bar: Two-Step Confirmation -->
+  <div class="action-bar">
+    <div class="preview-box" id="previewReadout" aria-live="polite">
+      Selected: None. Choose a point on the line.
+    </div>
+    <button class="btn-confirm" id="btnConfirm" disabled onclick="submitResponse()">Check Position</button>
+  </div>
+
+  <!-- Feedback / Recovery Banner -->
+  <div class="feedback-banner" id="feedbackBanner" role="status" aria-live="assertive"></div>
+
+</div>
+
+<script>
+  const ITEMS = {
+    '3_4': {
+      num: 3, den: 4, label: '3/4',
+      candidatesHigh: [
+        { num: 0, den: 4, desc: 'at 0 (start of line)' },
+        { num: 1, den: 4, desc: '1 of 4 equal steps (halfway to 1/2)' },
+        { num: 2, den: 4, desc: '2 of 4 equal steps (at 1/2)' },
+        { num: 3, den: 4, desc: '3 of 4 equal steps (between 1/2 and 1)' },
+        { num: 4, den: 4, desc: 'at 1 (end of line)' }
+      ],
+      candidatesMed: [
+        { num: 1, den: 4, desc: 'Candidate A: halfway between 0 and 1/2' },
+        { num: 2, den: 4, desc: 'Candidate B: exactly at 1/2' },
+        { num: 3, den: 4, desc: 'Candidate C: between 1/2 and 1' }
+      ]
+    },
+    '1_4': {
+      num: 1, den: 4, label: '1/4',
+      candidatesHigh: [
+        { num: 0, den: 4, desc: 'at 0' },
+        { num: 1, den: 4, desc: '1 of 4 steps (between 0 and 1/2)' },
+        { num: 2, den: 4, desc: '2 of 4 steps (at 1/2)' },
+        { num: 3, den: 4, desc: '3 of 4 steps (between 1/2 and 1)' },
+        { num: 4, den: 4, desc: 'at 1' }
+      ],
+      candidatesMed: [
+        { num: 1, den: 4, desc: 'Candidate A: between 0 and 1/2' },
+        { num: 2, den: 4, desc: 'Candidate B: at 1/2' },
+        { num: 3, den: 4, desc: 'Candidate C: between 1/2 and 1' }
+      ]
+    },
+    '1_2': {
+      num: 1, den: 2, label: '1/2',
+      candidatesHigh: [
+        { num: 0, den: 2, desc: 'at 0' },
+        { num: 1, den: 2, desc: '1 of 2 equal steps (at 1/2)' },
+        { num: 2, den: 2, desc: 'at 1' }
+      ],
+      candidatesMed: [
+        { num: 1, den: 4, desc: 'Candidate A: below 1/2' },
+        { num: 1, den: 2, desc: 'Candidate B: exactly at 1/2' },
+        { num: 3, den: 4, desc: 'Candidate C: above 1/2' }
+      ]
+    },
+    '3_8': {
+      num: 3, den: 8, label: '3/8',
+      candidatesHigh: [
+        { num: 0, den: 8, desc: 'at 0' },
+        { num: 1, den: 8, desc: 'step 1 of 8' },
+        { num: 2, den: 8, desc: 'step 2 of 8 (quarter)' },
+        { num: 3, den: 8, desc: 'step 3 of 8 (just left of 1/2)' },
+        { num: 4, den: 8, desc: 'step 4 of 8 (at 1/2)' },
+        { num: 5, den: 8, desc: 'step 5 of 8 (just right of 1/2)' },
+        { num: 6, den: 8, desc: 'step 6 of 8' },
+        { num: 7, den: 8, desc: 'step 7 of 8' },
+        { num: 8, den: 8, desc: 'at 1' }
+      ],
+      candidatesMed: [
+        { num: 2, den: 8, desc: 'Candidate A: at 1/4' },
+        { num: 3, den: 8, desc: 'Candidate B: between 1/4 and 1/2' },
+        { num: 4, den: 8, desc: 'Candidate C: at 1/2' },
+        { num: 5, den: 8, desc: 'Candidate D: between 1/2 and 3/4' }
+      ]
+    }
+  };
+
+  let selectedPoint = null;
+  let isConfirmed = false;
+
+  function applyConfig() {
+    resetState();
+  }
+
+  function applyViewport() {
+    const mode = document.getElementById('viewportSelect').value;
+    const frame = document.getElementById('appFrame');
+    if (mode === 'mobile360') {
+      frame.classList.add('sim-360');
+    } else {
+      frame.classList.remove('sim-360');
+    }
+  }
+
+  function resetState() {
+    selectedPoint = null;
+    isConfirmed = false;
+    document.getElementById('alignmentGuide').style.display = 'none';
+    const feedback = document.getElementById('feedbackBanner');
+    feedback.className = 'feedback-banner';
+    feedback.style.display = 'none';
+    feedback.textContent = '';
+    document.getElementById('previewReadout').textContent = 'Selected: None. Choose a point on the line.';
+    document.getElementById('btnConfirm').disabled = true;
+    renderBoard();
+  }
+
+  function renderBoard() {
+    const itemKey = document.getElementById('itemSelect').value;
+    const support = document.getElementById('supportSelect').value;
+    const item = ITEMS[itemKey];
+
+    // 1. Render Fraction Bar
+    const bar = document.getElementById('fractionBar');
+    bar.innerHTML = '';
+    for (let i = 0; i < item.den; i++) {
+      const cell = document.createElement('div');
+      cell.className = 'bar-cell' + (i < item.num ? ' shaded' : '');
+      cell.textContent = `${i + 1}/${item.den}`;
+      bar.appendChild(cell);
+    }
+
+    // 2. Render Number Line Candidates
+    const container = document.getElementById('ticksContainer');
+    container.innerHTML = '';
+
+    const candidates = support === 'high' ? item.candidatesHigh : item.candidatesMed;
+
+    candidates.forEach((cand, idx) => {
+      const pct = (cand.num / cand.den) * 100;
+
+      // In high support, render intermediate subdivision ticks
+      if (support === 'high' && cand.num > 0 && cand.num < cand.den && pct !== 50) {
+        const tick = document.createElement('div');
+        tick.className = 'subdivision-tick';
+        tick.style.left = `${pct}%`;
+        container.appendChild(tick);
+      }
+
+      // Render interactive button with 44x44px touch hitbox
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'candidate-marker-btn';
+      btn.style.left = `${pct}%`;
+      btn.setAttribute('aria-label', cand.desc);
+
+      const dot = document.createElement('span');
+      dot.className = 'pin-dot';
+      btn.appendChild(dot);
+
+      btn.onclick = () => selectCandidate(cand, btn);
+      container.appendChild(btn);
+    });
+  }
+
+  function selectCandidate(cand, btnEl) {
+    if (isConfirmed) return;
+    selectedPoint = cand;
+    document.querySelectorAll('.candidate-marker-btn').forEach(b => b.classList.remove('selected'));
+    btnEl.classList.add('selected');
+
+    document.getElementById('previewReadout').textContent = `Previewing: ${cand.desc}`;
+    document.getElementById('btnConfirm').disabled = false;
+  }
+
+  function submitResponse() {
+    if (!selectedPoint) return;
+    const itemKey = document.getElementById('itemSelect').value;
+    const item = ITEMS[itemKey];
+    const isCorrect = (selectedPoint.num * item.den === item.num * selectedPoint.den);
+
+    const feedback = document.getElementById('feedbackBanner');
+    const selectedBtn = document.querySelector('.candidate-marker-btn.selected');
+
+    if (isCorrect) {
+      isConfirmed = true;
+      selectedBtn.classList.remove('selected');
+      selectedBtn.classList.add('confirmed-correct');
+      document.getElementById('btnConfirm').disabled = true;
+
+      // Position alignment guide exactly at fraction percentage
+      const pct = (item.num / item.den) * 100;
+      const guide = document.getElementById('alignmentGuide');
+      guide.style.left = `${pct}%`;
+      guide.style.display = 'block';
+
+      feedback.className = 'feedback-banner success';
+      feedback.textContent = `Correct! Length in the shaded bar (${item.label}) equals the point location on the number line.`;
+    } else {
+      selectedBtn.classList.add('confirmed-error');
+      feedback.className = 'feedback-banner error';
+
+      const selVal = selectedPoint.num / selectedPoint.den;
+      const tgtVal = item.num / item.den;
+
+      if (selVal < tgtVal) {
+        feedback.textContent = (selVal <= 0.5 && tgtVal > 0.5)
+          ? "This point is at or below 1/2, but the bar is more than 1/2 full. Look at the length of the bar."
+          : "This point is too close to 0. Look at the length of the shaded bar.";
+      } else {
+        feedback.textContent = (selVal >= 0.5 && tgtVal < 0.5)
+          ? "This point is at or above 1/2, but the bar is less than 1/2 full. Look at the length of the bar."
+          : "This point is too close to 1. Look at the length of the shaded bar.";
+      }
+    }
+  }
+
+  // Initial mount
+  renderBoard();
+</script>
+
+</body>
+</html>

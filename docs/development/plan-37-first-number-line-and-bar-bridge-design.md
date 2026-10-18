@@ -1,11 +1,9 @@
 ---
 id: plan-37
 title: First Number-Line Task and Bar-to-Line Bridge Design
-status: draft
+status: in-progress
 depends_on: [plan-18, plan-29, plan-34]
 gate: "Design acceptance only. Phase 3 bar-stability/representation review and a separate approved implementation packet remain required before number-line source activation."
-superseded_by: null
-resolution: null
 summary: >-
   Design one meaningful bar-to-number-line connection around locating the same
   fraction amount. Specify exact unit/domain, learner action, recovery, accessible
