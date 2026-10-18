@@ -1,11 +1,9 @@
 ---
 id: plan-38
 title: Like-Denominator Takeaway Subtraction Batch
-status: ready
+status: in-progress
 depends_on: [plan-15, plan-35, plan-36]
 gate: "Requirement 0: approve exact wiring, admission/replay and evidence mechanism before source. Staged technical review, owner rendered-page/agency acceptance and separate deployment gate."
-superseded_by: null
-resolution: null
 summary: >-
   Integrate the adopted takeaway task as one learner-reachable goal with eight
   compact same-denominator subtraction records. Preserve the stable whole,
