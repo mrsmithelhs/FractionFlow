@@ -5,6 +5,21 @@ Orchestrator-owned; update in place before thread boundaries. Anchor dates, neve
 
 ## Current snapshot — 2026-10-17
 
+### Owner update — 2026-10-18
+
+Owner accepted Plan35 rendered samples and explicitly authorized closure and
+Plan36 supervised execution. Plan35 is complete with written resolution and
+owner-acceptance.md; deployment remains separate. Plan36 is in-progress and
+RUNNABLE after initiation (initial draft-status preflight correctly blocked
+before the owner-authorized status change; no implementation occurred then).
+Cold-context default-role Luna medium child /root/plan36_luna is assigned only
+Requirement0 source/evidence inventory and rival-design investigation, then
+must stop for parent scope confirmation before detailed design. Parent retains
+owner decisions, independent review, statuses and Git. Only the Plan36 report
+folder is child-writable; no source/tests or product activation. Sol low/medium
+read-only review will be parent-arranged; no Astra or child fan-out. Plan37 stays
+draft/uninitiated. The paragraphs below record earlier delivery checkpoints.
+
 Plan 35 is delivered after completed technical review; owner rendered-page and
 agency acceptance remain pending. Source foundation 46790ad, data-only hold-out proof 110493e, mounted
 wiring 201235e and native browser/evidence checkpoint 45019d1 are committed.

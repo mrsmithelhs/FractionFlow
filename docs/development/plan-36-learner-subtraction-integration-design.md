@@ -1,11 +1,9 @@
 ---
 id: plan-36
 title: Learner Subtraction Integration Design
-status: draft
+status: in-progress
 depends_on: [plan-15, plan-29, plan-35]
 gate: "Design acceptance and explicit initial subtraction task/representation disposition. No learner-app source implementation or deployment in this packet."
-superseded_by: null
-resolution: null
 summary: >-
   Specify a concise first learner-facing subtraction recipe and varied compact
   like-denominator batch, using accepted prototype evidence and shared authoring.

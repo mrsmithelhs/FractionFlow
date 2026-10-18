@@ -98,3 +98,10 @@ The final report is committed after delivery records and packet-status handling.
 - [Inspect target30 in labeled zoom-equivalent viewport](plan35-inspect-30-zoom-emulation.png).
 
 Parent has recorded Plan35 as delivered after technical review. Owner rendered-screen/agency acceptance and deployment approval remain separate and pending. Plans 36 and 37 remain design drafts only; this work does not authorize or claim their implementation. No push, deployment, Bootstrap operation or dependency/settings change occurred. Parent owns final status and commit handling.
+
+## Owner closure — 2026-10-18
+
+The owner subsequently accepted the screenshots and explicitly instructed closure.
+See owner-acceptance.md. Plan35 is complete; earlier pending-owner language records
+the prior delivery checkpoint. Plan36's design-only execution is now separately
+authorized. Deployment remains a separate gate; no push or deployment occurred.

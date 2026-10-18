@@ -1,7 +1,8 @@
 ---
 id: plan-35
 title: Reusable Task-Recipe Admission and Varied Authored Batch
-status: delivered
+status: complete
+resolution: "Owner accepted rendered samples and explicitly authorized closure after independent technical review. Three reusable addition recipes,21-item fixed set,data-only hold-out proof and strict historical replay/route preservation verified within the admitted domain; no broader content,efficacy or deployment approval inferred."
 depends_on: [plan-18, plan-32, plan-34]
 gate: "Requirement 0: approve bounded recipe/data/replay contracts, batch and historical-route treatment before source changes. Technical and owner rendered-screen/agency acceptance; deployment separate."
 summary: >-
