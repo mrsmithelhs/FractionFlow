@@ -31,3 +31,17 @@ C1 is accepted for a scoped commit and native-browser/route evidence stage.
 There is no delivered or owner acceptance claim. C2 must pin historical set@6
 page/data/helper consistently, separately traverse current set@7, demonstrate
 meaningful target/help/recovery/focus/motion behavior and measure actual bounds.
+
+## Independent native prefix smoke
+
+After C1 commit, parent ran parent-native-smoke.mjs against a same-process Vite
+server/current root using native Chrome. Construct and subsequent inspect tasks
+completed through mounted controls, including wrong numerator, recovery, repair,
+keep, Finish and Next; no state injection or fixture was used. No page errors or
+horizontal overflow occurred at 360x740; the final document height was 790px.
+The first probe expected the wrong recovery phrase; parent corrected its assertion
+to the existing `Not quite.` feedback and reran successfully. HMR was disabled in
+the probe after an unrelated fixture write triggered Vite page reload. No product
+change resulted. The later C2 rerun replaces parent-native-smoke-results.json;
+the 790px value here records the original C1 observation. New targets, complete
+bank reach, native motion and access combinations remain C2 evidence obligations.

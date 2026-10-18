@@ -1,0 +1,780 @@
+{
+  "entry": "unshipped Vite fixture filtered from live set@7 associations; not the production default root",
+  "browser": "native Chrome channel via Playwright; same-process Vite server with HMR disabled",
+  "journeys": [
+    {
+      "itemId": "plan35-construct-half-fifth-10",
+      "action": "transform help scroll",
+      "before": {
+        "y": 12,
+        "height": 792
+      },
+      "after": {
+        "y": 13,
+        "height": 792
+      },
+      "helpBounds": {
+        "x": 63,
+        "y": 551.34375,
+        "width": 234,
+        "height": 44
+      },
+      "evidence": "question and task-local multiplier-help control fully visible after ordinary vertical scroll"
+    },
+    {
+      "itemId": "plan35-construct-half-fifth-10",
+      "recipe": "construct",
+      "target": "10",
+      "view": "visual",
+      "support": "high",
+      "help": "opened, closed, requested multiplier; wrong multiplier and numerator recovered; Enter submitted a wrong numerator"
+    },
+    {
+      "itemId": "plan35-construct-three-fifths-third-30",
+      "recipe": "construct",
+      "target": "30",
+      "view": "visual",
+      "support": "high"
+    },
+    {
+      "itemId": "plan35-inspect-third-eighth-24",
+      "recipe": "inspect",
+      "target": "24",
+      "view": "visual",
+      "support": "high",
+      "valid": "right candidate kept",
+      "false": "left candidate repaired after incorrect answer"
+    },
+    {
+      "itemId": "plan35-inspect-fifth-third-30",
+      "action": "inspect response scroll",
+      "before": {
+        "y": 12,
+        "height": 942
+      },
+      "after": {
+        "y": 18,
+        "height": 942
+      },
+      "evidence": "question and all active response controls visible after ordinary vertical scroll"
+    },
+    {
+      "itemId": "plan35-inspect-fifth-third-30",
+      "action": "zoom-equivalent response scroll",
+      "after": {
+        "y": 131,
+        "viewportHeight": 614,
+        "documentHeight": 964
+      },
+      "evidence": "question and full response controls visible in final capture after ordinary vertical scroll"
+    },
+    {
+      "itemId": "plan35-inspect-fifth-third-30",
+      "recipe": "inspect",
+      "target": "30",
+      "view": "visual",
+      "support": "high",
+      "valid": "left candidate kept",
+      "false": "right candidate repaired after incorrect answer"
+    },
+    {
+      "itemId": "plan35-inspect-fifth-third-30",
+      "action": "restart",
+      "evidence": "mounted restart returns to the selected task encounter"
+    },
+    {
+      "itemId": "plan35-identify-half-three-tenths-10",
+      "recipe": "identify",
+      "target": "10",
+      "requiredSide": "left",
+      "view": "linear",
+      "support": "medium",
+      "touchChoice": "tap",
+      "replay": "after conversion only",
+      "replayDraftEvidence": {
+        "sameNode": true,
+        "value": "7"
+      }
+    },
+    {
+      "itemId": "plan35-identify-three-tenths-half-10",
+      "recipe": "identify",
+      "target": "10",
+      "requiredSide": "right",
+      "view": "linear",
+      "support": "medium",
+      "touchChoice": "tap",
+      "replay": "after conversion only"
+    },
+    {
+      "itemId": "plan35-identify-third-five-twelfths-12",
+      "recipe": "identify",
+      "target": "12",
+      "requiredSide": "left",
+      "view": "linear",
+      "support": "medium",
+      "touchChoice": "tap",
+      "replay": "after conversion only"
+    },
+    {
+      "itemId": "plan35-identify-five-twelfths-third-12",
+      "recipe": "identify",
+      "target": "12",
+      "requiredSide": "right",
+      "view": "linear",
+      "support": "medium",
+      "touchChoice": "tap",
+      "replay": "after conversion only"
+    },
+    {
+      "itemId": "plan35-construct-three-fifths-third-30",
+      "action": "reduced-motion matched conversion",
+      "view": "visual",
+      "support": "high",
+      "evidence": "same target-30 numerator draft reaches identical immediate endpoint with no boundary WAAPI"
+    },
+    {
+      "itemId": "plan35-inspect-third-eighth-24",
+      "recipe": "inspect",
+      "target": "24",
+      "view": "linear",
+      "support": "medium",
+      "inputMethod": "Tab traversal + Enter activation + keyboard.type numerator; no pointer clicks or locator.focus()",
+      "keyboardTabs": [
+        {
+          "control": "support settings",
+          "tabs": 2
+        },
+        {
+          "control": "medium support",
+          "tabs": 6
+        },
+        {
+          "control": "start practice",
+          "tabs": 3
+        },
+        {
+          "control": "linear view",
+          "tabs": 1
+        },
+        {
+          "control": "inspect encounter",
+          "tabs": 2
+        },
+        {
+          "control": "change top number",
+          "tabs": 2
+        },
+        {
+          "control": "repair top number",
+          "tabs": 8
+        },
+        {
+          "control": "keep equivalent candidate",
+          "tabs": 1
+        },
+        {
+          "control": "enter exact sum and submit",
+          "tabs": 1
+        },
+        {
+          "control": "finish inspect task",
+          "tabs": 1
+        }
+      ],
+      "outcome": "task completed; gated Next appeared"
+    }
+  ],
+  "measurements": [
+    {
+      "label": "sample entry 360x740, high support, visual, construct 10",
+      "cssViewport": {
+        "width": 360,
+        "height": 740
+      },
+      "visualViewport": {
+        "width": 360,
+        "height": 740,
+        "scale": 1
+      },
+      "document": {
+        "width": 360,
+        "height": 766,
+        "horizontalOverflow": false
+      },
+      "scroll": {
+        "x": 0,
+        "y": 12
+      },
+      "question": {
+        "x": 63,
+        "y": 420.71875,
+        "right": 297,
+        "bottom": 445.90625,
+        "width": 234,
+        "height": 25.1875,
+        "viewportIntersection": 5893.875,
+        "fullyWithinViewport": true
+      },
+      "controls": {
+        "x": 63,
+        "y": 476.84375,
+        "right": 297,
+        "bottom": 589.84375,
+        "width": 234,
+        "height": 113,
+        "viewportIntersection": 26442,
+        "fullyWithinViewport": true
+      },
+      "headings": [
+        "Look at these two fractions."
+      ],
+      "promptCount": 1,
+      "visibleText": "Read the steps\nBack to start\n1\n2\n1\n5\n1\n2\n+\n1\n5\nLook at these two fractions.\n\nUse 10 equal parts.\n\nNext\nTry this problem again"
+    },
+    {
+      "label": "construct target10 transform after scrolling local help/response controls into view, 360x740",
+      "cssViewport": {
+        "width": 360,
+        "height": 740
+      },
+      "visualViewport": {
+        "width": 360,
+        "height": 740,
+        "scale": 1
+      },
+      "document": {
+        "width": 360,
+        "height": 792,
+        "horizontalOverflow": false
+      },
+      "scroll": {
+        "x": 0,
+        "y": 13
+      },
+      "question": {
+        "x": 63,
+        "y": 404.78125,
+        "right": 297,
+        "bottom": 480.34375,
+        "width": 234,
+        "height": 75.5625,
+        "viewportIntersection": 17681.625,
+        "fullyWithinViewport": true
+      },
+      "controls": {
+        "x": 63,
+        "y": 404.78125,
+        "right": 297,
+        "bottom": 595.34375,
+        "width": 234,
+        "height": 190.5625,
+        "viewportIntersection": 44591.625,
+        "fullyWithinViewport": true
+      },
+      "headings": [],
+      "promptCount": 1,
+      "visibleText": "Read the steps\nBack to start\n1\n2\n1\n5\n1\n2\n+\n1\n5\nHow many parts out of 10 make the same amount as 1/2?\nSubmit\nNeed help?\nProblem established.\nTry this problem again"
+    },
+    {
+      "label": "inspect target30 before response, high support, visual, 360x740",
+      "cssViewport": {
+        "width": 360,
+        "height": 740
+      },
+      "visualViewport": {
+        "width": 360,
+        "height": 740,
+        "scale": 1
+      },
+      "document": {
+        "width": 360,
+        "height": 942,
+        "horizontalOverflow": false
+      },
+      "scroll": {
+        "x": 0,
+        "y": 12
+      },
+      "question": {
+        "x": 63,
+        "y": 420.71875,
+        "right": 297,
+        "bottom": 496.28125,
+        "width": 234,
+        "height": 75.5625,
+        "viewportIntersection": 17681.625,
+        "fullyWithinViewport": true
+      },
+      "controls": {
+        "x": 63,
+        "y": 527.21875,
+        "right": 297,
+        "bottom": 746.40625,
+        "width": 234,
+        "height": 219.1875,
+        "viewportIntersection": 49790.8125,
+        "fullyWithinViewport": false
+      },
+      "headings": [
+        "Does this new fraction show the same amount as the first fraction?"
+      ],
+      "promptCount": 1,
+      "visibleText": "Read the steps\nBack to start\n1\n5\n1\n3\n1\n5\n+\n1\n3\nDoes this new fraction show the same amount as the first fraction?\n6\n30\nKeep\nChange top number\nNeed help?\nProblem established.\nTry this problem again"
+    },
+    {
+      "label": "inspect target30 after scrolling response controls into view, 360x740",
+      "cssViewport": {
+        "width": 360,
+        "height": 740
+      },
+      "visualViewport": {
+        "width": 360,
+        "height": 740,
+        "scale": 1
+      },
+      "document": {
+        "width": 360,
+        "height": 942,
+        "horizontalOverflow": false
+      },
+      "scroll": {
+        "x": 0,
+        "y": 19
+      },
+      "question": {
+        "x": 63,
+        "y": 413.71875,
+        "right": 297,
+        "bottom": 489.28125,
+        "width": 234,
+        "height": 75.5625,
+        "viewportIntersection": 17681.625,
+        "fullyWithinViewport": true
+      },
+      "controls": {
+        "x": 63,
+        "y": 520.21875,
+        "right": 297,
+        "bottom": 739.40625,
+        "width": 234,
+        "height": 219.1875,
+        "viewportIntersection": 51289.875,
+        "fullyWithinViewport": true
+      },
+      "headings": [
+        "Does this new fraction show the same amount as the first fraction?"
+      ],
+      "promptCount": 1,
+      "visibleText": "Read the steps\nBack to start\n1\n5\n1\n3\n1\n5\n+\n1\n3\nDoes this new fraction show the same amount as the first fraction?\n6\n30\nKeep\nChange top number\nNeed help?\nProblem established.\nTry this problem again"
+    },
+    {
+      "label": "inspect target30 before response, 360x752 CSS viewport",
+      "cssViewport": {
+        "width": 360,
+        "height": 752
+      },
+      "visualViewport": {
+        "width": 360,
+        "height": 752,
+        "scale": 1
+      },
+      "document": {
+        "width": 360,
+        "height": 942,
+        "horizontalOverflow": false
+      },
+      "scroll": {
+        "x": 0,
+        "y": 19
+      },
+      "question": {
+        "x": 63,
+        "y": 413.71875,
+        "right": 297,
+        "bottom": 489.28125,
+        "width": 234,
+        "height": 75.5625,
+        "viewportIntersection": 17681.625,
+        "fullyWithinViewport": true
+      },
+      "controls": {
+        "x": 63,
+        "y": 520.21875,
+        "right": 297,
+        "bottom": 739.40625,
+        "width": 234,
+        "height": 219.1875,
+        "viewportIntersection": 51289.875,
+        "fullyWithinViewport": true
+      },
+      "headings": [
+        "Does this new fraction show the same amount as the first fraction?"
+      ],
+      "promptCount": 1,
+      "visibleText": "Read the steps\nBack to start\n1\n5\n1\n3\n1\n5\n+\n1\n3\nDoes this new fraction show the same amount as the first fraction?\n6\n30\nKeep\nChange top number\nNeed help?\nProblem established.\nTry this problem again"
+    },
+    {
+      "label": "inspect target30 before response, 1366x768 CSS viewport",
+      "cssViewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "visualViewport": {
+        "width": 1366,
+        "height": 768,
+        "scale": 1
+      },
+      "document": {
+        "width": 1366,
+        "height": 990,
+        "horizontalOverflow": false
+      },
+      "scroll": {
+        "x": 0,
+        "y": 19
+      },
+      "question": {
+        "x": 337,
+        "y": 462.6875,
+        "right": 1029,
+        "bottom": 487.875,
+        "width": 692,
+        "height": 25.1875,
+        "viewportIntersection": 17429.75,
+        "fullyWithinViewport": true
+      },
+      "controls": {
+        "x": 337,
+        "y": 518.8125,
+        "right": 1029,
+        "bottom": 738,
+        "width": 692,
+        "height": 219.1875,
+        "viewportIntersection": 151677.75,
+        "fullyWithinViewport": true
+      },
+      "headings": [
+        "Does this new fraction show the same amount as the first fraction?"
+      ],
+      "promptCount": 1,
+      "visibleText": "Read the steps\nBack to start\n1\n5\n1\n3\n1\n5\n+\n1\n3\nDoes this new fraction show the same amount as the first fraction?\n6\n30\nKeep\nChange top number\nNeed help?\nProblem established.\nTry this problem again"
+    },
+    {
+      "label": "inspect target30 after scrolling response controls into view, 125% zoom-equivalent viewport/DPR emulation: 1093x614 CSS at DPR1.25",
+      "cssViewport": {
+        "width": 1093,
+        "height": 614
+      },
+      "visualViewport": {
+        "width": 1093,
+        "height": 614,
+        "scale": 1
+      },
+      "document": {
+        "width": 1093,
+        "height": 964,
+        "horizontalOverflow": false
+      },
+      "scroll": {
+        "x": 0,
+        "y": 131
+      },
+      "question": {
+        "x": 200.5,
+        "y": 337.8125,
+        "right": 892.5,
+        "bottom": 363,
+        "width": 692,
+        "height": 25.1875,
+        "viewportIntersection": 17429.75,
+        "fullyWithinViewport": true
+      },
+      "controls": {
+        "x": 200.5,
+        "y": 393.9375,
+        "right": 892.5,
+        "bottom": 613.125,
+        "width": 692,
+        "height": 219.1875,
+        "viewportIntersection": 151677.75,
+        "fullyWithinViewport": true
+      },
+      "headings": [
+        "Does this new fraction show the same amount as the first fraction?"
+      ],
+      "promptCount": 1,
+      "visibleText": "Read the steps\nBack to start\n1\n5\n1\n3\n1\n5\n+\n1\n3\nDoes this new fraction show the same amount as the first fraction?\n6\n30\nKeep\nChange top number\nNeed help?\nProblem established.\nTry this problem again"
+    }
+  ],
+  "seeds": [
+    {
+      "kind": "seeded answer leak",
+      "itemId": "plan35-inspect-third-eighth-24",
+      "expectedLeak": "8/24",
+      "intendedAssertion": "correct candidate/equivalent is absent from visible and accessible episode content before response",
+      "detectedAtIntendedAssertion": true,
+      "failure": "correct candidate/equivalent 8/24 is withheld from visible and accessible episode content\n\n'8/24' !== null\n"
+    },
+    {
+      "kind": "clean copy receipt",
+      "itemId": "plan35-inspect-third-eighth-24",
+      "renderedText": "Read the steps\nBack to start\n1\n3\n1\n8\n1\n3\n+\n1\n8\nDoes this new fraction show the same amount as the first fraction?\n5\n24\nKeep\nChange top number\nNeed help?\nProblem established.\nTry this problem again",
+      "accessibleLabels": [
+        "Read the steps",
+        "Episode navigation",
+        "Picture and symbols",
+        "Fraction bar models",
+        "First fraction bar: 1 of 3 equal parts shaded in 1 whole.",
+        "Second fraction bar: 1 of 8 equal parts shaded in 1 whole.",
+        "Symbolic notation",
+        "1 over 3",
+        "plus",
+        "1 over 8",
+        "New fraction 5 over 24",
+        "Keep new fraction 5 over 24",
+        "Previous steps"
+      ],
+      "withheld": true,
+      "testedVariants": [
+        "8/24",
+        "8 / 24",
+        "8 over 24",
+        "8 24"
+      ]
+    }
+  ],
+  "motionEvidence": [
+    {
+      "itemId": "plan35-construct-three-fifths-third-30",
+      "target": "30",
+      "side": "left",
+      "before": {
+        "changed": {
+          "whole": {
+            "x": 41,
+            "y": 161,
+            "width": 218,
+            "height": 44
+          },
+          "fill": {
+            "x": 43,
+            "y": 163,
+            "width": 128.390625,
+            "height": 40
+          }
+        },
+        "unchanged": {
+          "whole": {
+            "x": 41,
+            "y": 225,
+            "width": 218,
+            "height": 44
+          },
+          "fill": {
+            "x": 43,
+            "y": 227,
+            "width": 71.328125,
+            "height": 40
+          },
+          "boundaryCount": 2
+        },
+        "scrollX": 0,
+        "scrollY": 12
+      },
+      "observed": {
+        "animationCount": 25,
+        "partial": {
+          "progress": 0.004487179487179491,
+          "boundaryHeight": 1.8772430419921875,
+          "interiorHeight": 40,
+          "whole": {
+            "x": 41,
+            "y": 161,
+            "width": 218,
+            "height": 44
+          },
+          "fill": {
+            "x": 43,
+            "y": 163,
+            "width": 128.390625,
+            "height": 40
+          },
+          "untouchedOperand": {
+            "whole": {
+              "x": 41,
+              "y": 225,
+              "width": 218,
+              "height": 44
+            },
+            "fill": {
+              "x": 43,
+              "y": 227,
+              "width": 71.328125,
+              "height": 40
+            },
+            "boundaryCount": 2
+          },
+          "keyframes": [
+            {
+              "offset": 0,
+              "easing": "cubic-bezier(0.2, 0.75, 0.25, 1)",
+              "composite": "auto",
+              "backgroundColor": "var(--ff-bar-subdivide-line)",
+              "transform": "scaleY(0)",
+              "boxShadow": "none",
+              "computedOffset": 0
+            },
+            {
+              "offset": 0.358974358974359,
+              "easing": "ease-out",
+              "composite": "auto",
+              "backgroundColor": "var(--ff-bar-subdivide-line)",
+              "transform": "scaleY(1)",
+              "boxShadow": "none",
+              "computedOffset": 0.358974358974359
+            },
+            {
+              "offset": 0.41025641025641024,
+              "easing": "ease-out",
+              "composite": "auto",
+              "backgroundColor": "var(--ff-bar-boundary-core)",
+              "transform": "scaleY(1)",
+              "boxShadow": "0 0 2px 1px var(--ff-bar-boundary-glow)",
+              "computedOffset": 0.41025641025641024
+            },
+            {
+              "offset": 1,
+              "easing": "linear",
+              "composite": "auto",
+              "backgroundColor": "var(--ff-bar-subdivide-line)",
+              "transform": "scaleY(1)",
+              "boxShadow": "none",
+              "computedOffset": 1
+            }
+          ],
+          "timing": {
+            "duration": 1560,
+            "fill": "both"
+          }
+        },
+        "highlight": {
+          "progress": 0.41435897435897434,
+          "boundaryHeight": 40,
+          "interiorHeight": 40,
+          "whole": {
+            "x": 41,
+            "y": 161,
+            "width": 218,
+            "height": 44
+          },
+          "fill": {
+            "x": 43,
+            "y": 163,
+            "width": 128.390625,
+            "height": 40
+          },
+          "untouchedOperand": {
+            "whole": {
+              "x": 41,
+              "y": 225,
+              "width": 218,
+              "height": 44
+            },
+            "fill": {
+              "x": 43,
+              "y": 227,
+              "width": 71.328125,
+              "height": 40
+            },
+            "boundaryCount": 2
+          },
+          "boxShadow": "rgba(2, 132, 199, 0.475) 0px 0px 1.97639px 0.988197px",
+          "backgroundColor": "rgb(14, 19, 35)"
+        },
+        "settled": {
+          "boundaryHeight": 40,
+          "interiorHeight": 40,
+          "untouchedOperand": {
+            "whole": {
+              "x": 41,
+              "y": 225,
+              "width": 218,
+              "height": 44
+            },
+            "fill": {
+              "x": 43,
+              "y": 227,
+              "width": 71.328125,
+              "height": 40
+            },
+            "boundaryCount": 2
+          },
+          "boxShadow": "none",
+          "backgroundColor": "rgb(255, 255, 255)",
+          "runningAnimations": 0,
+          "whole": {
+            "x": 41,
+            "y": 161,
+            "width": 218,
+            "height": 44
+          },
+          "fill": {
+            "x": 43,
+            "y": 163,
+            "width": 128.390625,
+            "height": 40
+          }
+        },
+        "documentPosition": {
+          "scrollX": 0,
+          "scrollY": 12
+        },
+        "numerator": "18",
+        "denominator": "30"
+      },
+      "changedAndUnchangedOperandsConserved": true
+    },
+    {
+      "itemId": "plan35-construct-three-fifths-third-30",
+      "target": "30",
+      "side": "left",
+      "reducedMotion": true,
+      "sharedPreSubmitDraft": "18",
+      "endpoint": {
+        "numerator": "18",
+        "denominator": "30",
+        "activeAnimations": 0
+      },
+      "boundaryAnimationCalls": 0
+    }
+  ],
+  "pageErrors": [],
+  "failedResponses": [
+    {
+      "status": 404,
+      "url": "http://127.0.0.1:5173/favicon.ico",
+      "resourceType": "Other",
+      "source": "Chrome CDP Network.responseReceived"
+    }
+  ],
+  "failedRequests": [],
+  "consoleErrors": [
+    {
+      "text": "Failed to load resource: the server responded with a status of 404 (Not Found)",
+      "location": {
+        "url": "http://127.0.0.1:5173/favicon.ico",
+        "line": 0,
+        "column": 0,
+        "lineNumber": 0,
+        "columnNumber": 0
+      }
+    }
+  ],
+  "limits": [
+    "Focused sample covers eight recipe tasks, not the full live set; separate production-default route rows traverse all 21.",
+    "1366x768 is a Chromebook-sized CSS viewport emulation, not physical Chromebook hardware.",
+    "The 1093x614 CSS viewport at DPR1.25 is a 125%-zoom-equivalent viewport/DPR emulation, not browser zoom or physical hardware; no assistive-technology claim.",
+    "Touch-context uses Playwright touch tap on registered nested choices; no drag gesture is involved."
+  ]
+}

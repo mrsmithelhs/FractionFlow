@@ -1,0 +1,551 @@
+{
+  "capturedAt": "2026-10-18T02:51:21.563Z",
+  "measurements": [
+    {
+      "routeId": "ROUTE-PLAN34-CONSTRUCT-VISUAL-DEEP",
+      "context": "production-default-v7",
+      "motionMode": "standard-motion",
+      "file": "reports/development/plan-34-reusable-full-addition-task-patterns/evidence/plan34-construct-encounter-360x740.png",
+      "caption": "Production v6 construct encounter at 360×740; target context and no answer shown.",
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "layout": {
+        "viewport": {
+          "width": 360,
+          "height": 740
+        },
+        "document": {
+          "width": 360,
+          "height": 766
+        },
+        "horizontalOverflow": false,
+        "scroll": {
+          "x": 0,
+          "y": 12
+        },
+        "activeView": "app-visual-view",
+        "question": {
+          "x": 63,
+          "y": 420.72,
+          "width": 234,
+          "height": 25.19,
+          "visible": true
+        },
+        "controls": {
+          "x": 63,
+          "y": 476.84,
+          "width": 234,
+          "height": 113,
+          "visible": true
+        },
+        "nestedChoices": []
+      }
+    },
+    {
+      "routeId": "ROUTE-PLAN34-CONSTRUCT-VISUAL-DEEP",
+      "context": "production-default-v7",
+      "motionMode": "standard-motion",
+      "file": "reports/development/plan-34-reusable-full-addition-task-patterns/evidence/plan34-construct-help-360x740.png",
+      "caption": "Typed construct help requests the multiplier without supplying an equivalent fraction.",
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "layout": {
+        "viewport": {
+          "width": 360,
+          "height": 740
+        },
+        "document": {
+          "width": 360,
+          "height": 797
+        },
+        "horizontalOverflow": false,
+        "scroll": {
+          "x": 0,
+          "y": 12
+        },
+        "activeView": "app-visual-view",
+        "question": {
+          "x": 63,
+          "y": 405.78,
+          "width": 234,
+          "height": 50.38,
+          "visible": true
+        },
+        "controls": {
+          "x": 63,
+          "y": 405.78,
+          "width": 234,
+          "height": 195.77,
+          "visible": true
+        },
+        "nestedChoices": []
+      }
+    },
+    {
+      "routeId": "ROUTE-PLAN34-CONSTRUCT-VISUAL-DEEP",
+      "context": "production-default-v7",
+      "motionMode": "standard-motion",
+      "file": "reports/development/plan-34-reusable-full-addition-task-patterns/evidence/plan34-construct-resolve-360x740.png",
+      "caption": "Construct pattern reaches its total and navigation-only Finish at 360×740.",
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "layout": {
+        "viewport": {
+          "width": 360,
+          "height": 740
+        },
+        "document": {
+          "width": 360,
+          "height": 757
+        },
+        "horizontalOverflow": false,
+        "scroll": {
+          "x": 0,
+          "y": 12
+        },
+        "activeView": "app-visual-view",
+        "question": {
+          "x": 63,
+          "y": 420.72,
+          "width": 234,
+          "height": 25.19,
+          "visible": true
+        },
+        "controls": {
+          "x": 63,
+          "y": 476.84,
+          "width": 234,
+          "height": 44,
+          "visible": true
+        },
+        "nestedChoices": []
+      }
+    },
+    {
+      "routeId": "ROUTE-PLAN34-INSPECT-LINEAR-DEEP",
+      "context": "production-default-v7",
+      "motionMode": "reduced-motion",
+      "file": "reports/development/plan-34-reusable-full-addition-task-patterns/evidence/plan34-inspect-encounter-linear-360x752.png",
+      "caption": "Second authored identity in the linear path at 360×752, before its candidate is shown.",
+      "viewport": {
+        "width": 360,
+        "height": 752
+      },
+      "layout": {
+        "viewport": {
+          "width": 360,
+          "height": 752
+        },
+        "document": {
+          "width": 360,
+          "height": 752
+        },
+        "horizontalOverflow": false,
+        "scroll": {
+          "x": 0,
+          "y": 0
+        },
+        "activeView": "app-linear-view",
+        "question": {
+          "x": 63,
+          "y": 311.78,
+          "width": 234,
+          "height": 25.19,
+          "visible": true
+        },
+        "controls": {
+          "x": 63,
+          "y": 370.97,
+          "width": 234,
+          "height": 113,
+          "visible": true
+        },
+        "nestedChoices": []
+      }
+    },
+    {
+      "routeId": "ROUTE-PLAN34-INSPECT-LINEAR-DEEP",
+      "context": "production-default-v7",
+      "motionMode": "reduced-motion",
+      "file": "reports/development/plan-34-reusable-full-addition-task-patterns/evidence/plan34-inspect-candidate-linear-360x752.png",
+      "caption": "Inspect shows a stacked proposal and withholds its validity and answer.",
+      "viewport": {
+        "width": 360,
+        "height": 752
+      },
+      "layout": {
+        "viewport": {
+          "width": 360,
+          "height": 752
+        },
+        "document": {
+          "width": 360,
+          "height": 824
+        },
+        "horizontalOverflow": false,
+        "scroll": {
+          "x": 0,
+          "y": 0
+        },
+        "activeView": "app-linear-view",
+        "question": {
+          "x": 63,
+          "y": 311.78,
+          "width": 234,
+          "height": 75.56,
+          "visible": true
+        },
+        "controls": {
+          "x": 63,
+          "y": 421.34,
+          "width": 234,
+          "height": 219.19,
+          "visible": true
+        },
+        "nestedChoices": []
+      }
+    },
+    {
+      "routeId": "ROUTE-PLAN34-INSPECT-LINEAR-DEEP",
+      "context": "production-default-v7",
+      "motionMode": "reduced-motion",
+      "file": "reports/development/plan-34-reusable-full-addition-task-patterns/evidence/plan34-inspect-false-keep-linear-360x752.png",
+      "caption": "False keep preserves one-half and causes no conservation animation.",
+      "viewport": {
+        "width": 360,
+        "height": 752
+      },
+      "layout": {
+        "viewport": {
+          "width": 360,
+          "height": 752
+        },
+        "document": {
+          "width": 360,
+          "height": 986
+        },
+        "horizontalOverflow": false,
+        "scroll": {
+          "x": 0,
+          "y": 0
+        },
+        "activeView": "app-linear-view",
+        "question": {
+          "x": 63,
+          "y": 370.78,
+          "width": 234,
+          "height": 75.56,
+          "visible": true
+        },
+        "controls": {
+          "x": 63,
+          "y": 480.34,
+          "width": 234,
+          "height": 322.36,
+          "visible": true
+        },
+        "nestedChoices": []
+      }
+    },
+    {
+      "routeId": "ROUTE-PLAN34-INSPECT-LINEAR-DEEP",
+      "context": "production-default-v7",
+      "motionMode": "reduced-motion",
+      "file": "reports/development/plan-34-reusable-full-addition-task-patterns/evidence/plan34-inspect-resolve-linear-360x752.png",
+      "caption": "Inspect resolve in linear view retains accepted conversions and has no omitted Notice/Decide summary.",
+      "viewport": {
+        "width": 360,
+        "height": 752
+      },
+      "layout": {
+        "viewport": {
+          "width": 360,
+          "height": 752
+        },
+        "document": {
+          "width": 360,
+          "height": 752
+        },
+        "horizontalOverflow": false,
+        "scroll": {
+          "x": 0,
+          "y": 0
+        },
+        "activeView": "app-linear-view",
+        "question": {
+          "x": 63,
+          "y": 311.78,
+          "width": 234,
+          "height": 25.19,
+          "visible": true
+        },
+        "controls": {
+          "x": 63,
+          "y": 370.97,
+          "width": 234,
+          "height": 44,
+          "visible": true
+        },
+        "nestedChoices": []
+      }
+    },
+    {
+      "routeId": "ROUTE-PLAN34-THIRD-IDENTITY-WIDE",
+      "context": "production-default-v7",
+      "motionMode": "standard-motion",
+      "file": "reports/development/plan-34-reusable-full-addition-task-patterns/evidence/plan34-construct-visual-wide.png",
+      "caption": "The construct pattern after the learner establishes both twelfths and the sum.",
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "layout": {
+        "viewport": {
+          "width": 1366,
+          "height": 768
+        },
+        "document": {
+          "width": 1366,
+          "height": 863
+        },
+        "horizontalOverflow": false,
+        "scroll": {
+          "x": 0,
+          "y": 41
+        },
+        "activeView": "app-visual-view",
+        "question": {
+          "x": 337,
+          "y": 448.69,
+          "width": 692,
+          "height": 25.19,
+          "visible": true
+        },
+        "controls": {
+          "x": 337,
+          "y": 504.81,
+          "width": 692,
+          "height": 44,
+          "visible": true
+        },
+        "nestedChoices": []
+      }
+    },
+    {
+      "routeId": "ROUTE-PLAN34-THIRD-IDENTITY-WIDE",
+      "context": "production-default-v7",
+      "motionMode": "standard-motion",
+      "file": "reports/development/plan-34-reusable-full-addition-task-patterns/evidence/plan34-third-identity-wide-encounter.png",
+      "caption": "Third authored inspect identity at a wide CSS viewport before candidate display.",
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "layout": {
+        "viewport": {
+          "width": 1366,
+          "height": 768
+        },
+        "document": {
+          "width": 1366,
+          "height": 872
+        },
+        "horizontalOverflow": false,
+        "scroll": {
+          "x": 0,
+          "y": 41
+        },
+        "activeView": "app-visual-view",
+        "question": {
+          "x": 337,
+          "y": 448.69,
+          "width": 692,
+          "height": 25.19,
+          "visible": true
+        },
+        "controls": {
+          "x": 337,
+          "y": 504.81,
+          "width": 692,
+          "height": 113,
+          "visible": true
+        },
+        "nestedChoices": []
+      }
+    },
+    {
+      "routeId": "ROUTE-PLAN34-THIRD-IDENTITY-WIDE",
+      "context": "production-default-v7",
+      "motionMode": "standard-motion",
+      "file": "reports/development/plan-34-reusable-full-addition-task-patterns/evidence/plan34-third-identity-false-stimulus-wide.png",
+      "caption": "Third identity rejects false proposal without animating it as conserved.",
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "layout": {
+        "viewport": {
+          "width": 1366,
+          "height": 768
+        },
+        "document": {
+          "width": 1366,
+          "height": 1219
+        },
+        "horizontalOverflow": false,
+        "scroll": {
+          "x": 0,
+          "y": 41
+        },
+        "activeView": "app-visual-view",
+        "question": {
+          "x": 337,
+          "y": 669.69,
+          "width": 692,
+          "height": 25.19,
+          "visible": true
+        },
+        "controls": {
+          "x": 337,
+          "y": 725.81,
+          "width": 692,
+          "height": 219.19,
+          "visible": true
+        },
+        "nestedChoices": []
+      }
+    },
+    {
+      "routeId": "ROUTE-PLAN34-THIRD-IDENTITY-WIDE",
+      "context": "production-default-v7",
+      "motionMode": "standard-motion",
+      "file": "reports/development/plan-34-reusable-full-addition-task-patterns/evidence/plan34-third-identity-linear-resolve-wide.png",
+      "caption": "The fifth compact identity resolves in the linear view after Retry and a fresh completion.",
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "layout": {
+        "viewport": {
+          "width": 1366,
+          "height": 768
+        },
+        "document": {
+          "width": 1366,
+          "height": 768
+        },
+        "horizontalOverflow": false,
+        "scroll": {
+          "x": 0,
+          "y": 0
+        },
+        "activeView": "app-linear-view",
+        "question": {
+          "x": 337,
+          "y": 360.75,
+          "width": 692,
+          "height": 25.19,
+          "visible": true
+        },
+        "controls": {
+          "x": 337,
+          "y": 419.94,
+          "width": 692,
+          "height": 44,
+          "visible": true
+        },
+        "nestedChoices": []
+      }
+    },
+    {
+      "routeId": "ROUTE-PLAN34-RETRY-RETURN-REENTRY",
+      "context": "production-default-v7",
+      "motionMode": "reduced-motion",
+      "file": "reports/development/plan-34-reusable-full-addition-task-patterns/evidence/plan34-inspect-retry-draft.png",
+      "caption": "Unsubmitted inspect repair draft immediately before retry.",
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "layout": {
+        "viewport": {
+          "width": 360,
+          "height": 740
+        },
+        "document": {
+          "width": 360,
+          "height": 982
+        },
+        "horizontalOverflow": false,
+        "scroll": {
+          "x": 0,
+          "y": 12
+        },
+        "activeView": "app-visual-view",
+        "question": {
+          "x": 63,
+          "y": 420.72,
+          "width": 234,
+          "height": 75.56,
+          "visible": true
+        },
+        "controls": {
+          "x": 63,
+          "y": 527.22,
+          "width": 234,
+          "height": 259.19,
+          "visible": true
+        },
+        "nestedChoices": []
+      }
+    },
+    {
+      "routeId": "ROUTE-PLAN34-RETRY-RETURN-REENTRY",
+      "context": "production-default-v7",
+      "motionMode": "reduced-motion",
+      "file": "reports/development/plan-34-reusable-full-addition-task-patterns/evidence/plan34-fresh-reentry-360x740.png",
+      "caption": "Fresh production v6 encounter after return, with no stale inspect draft.",
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "layout": {
+        "viewport": {
+          "width": 360,
+          "height": 740
+        },
+        "document": {
+          "width": 360,
+          "height": 766
+        },
+        "horizontalOverflow": false,
+        "scroll": {
+          "x": 0,
+          "y": 12
+        },
+        "activeView": "app-visual-view",
+        "question": {
+          "x": 63,
+          "y": 420.72,
+          "width": 234,
+          "height": 25.19,
+          "visible": true
+        },
+        "controls": {
+          "x": 63,
+          "y": 476.84,
+          "width": 234,
+          "height": 113,
+          "visible": true
+        },
+        "nestedChoices": []
+      }
+    }
+  ]
+}

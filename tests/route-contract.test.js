@@ -50,17 +50,17 @@ describe('Plan 14 Reachable Behavior Route Contract & Matrix Schema', () => {
     const mislabeled = structuredClone(contextMap);
     mislabeled.contexts['ROUTE-PLAN34-INSPECT-LINEAR-DEEP'] = 'historical-v4';
     expect((await validateMatrixIntegrity(matrix, REGISTERED_CONDITIONS, mislabeled)).errors.join('\n'))
-      .toContain('New Plan 34/18 route "ROUTE-PLAN34-INSPECT-LINEAR-DEEP" must exercise production-default-v6');
+      .toContain('Current Plan 34/35 route "ROUTE-PLAN34-INSPECT-LINEAR-DEEP" must exercise production-default-v7');
   });
 
-  it('adds two v6 nested traversals without repurposing historical v4 routes', () => {
+  it('pins two v6 nested traversals while separately proving current v7 full-set reach', () => {
     const nested = matrix.routes.filter((route) => route.id.startsWith('ROUTE-PLAN18-'));
     const contexts = JSON.parse(fs.readFileSync(path.resolve(__dirname, 'routes/plan34-context-map.json'), 'utf8')).contexts;
     expect(nested.map((route) => route.id)).toEqual([
       'ROUTE-PLAN18-PRODUCTION-HIGH-VISUAL-COMPLETE',
       'ROUTE-PLAN18-PRODUCTION-MEDIUM-LINEAR-REDUCED',
     ]);
-    expect(nested.map((route) => contexts[route.id])).toEqual(['production-default-v6', 'production-default-v6']);
+    expect(nested.map((route) => contexts[route.id])).toEqual(['historical-v6', 'historical-v6']);
     expect(contexts['ROUTE-PLAN17-APPENDED-ITEM-REACHABLE']).toBe('historical-v4');
     expect(nested.map((route) => route.actions.find((action) => action.method === 'completePlan18RetainedPrefix')))
       .toEqual([
@@ -86,6 +86,19 @@ describe('Plan 14 Reachable Behavior Route Contract & Matrix Schema', () => {
     expect(medium.actions.some((action) => action.description.includes('incorrect equivalent numerator'))).toBe(true);
     expect(medium.actions.some((action) => action.description.includes('Retry mirrored item'))).toBe(true);
     expect(medium.actions.some((action) => action.method === 'assertNoSubdivisionMotion')).toBe(false);
+
+    const current = matrix.routes.filter((route) => route.id.startsWith('ROUTE-PLAN35-CURRENT-'));
+    expect(current.map((route) => route.id)).toEqual([
+      'ROUTE-PLAN35-CURRENT-HIGH-VISUAL-ALL-21',
+      'ROUTE-PLAN35-CURRENT-MEDIUM-LINEAR-ALL-21',
+    ]);
+    expect(current.map((route) => contexts[route.id])).toEqual(['production-default-v7', 'production-default-v7']);
+    expect(current.map((route) => route.actions.find((action) => action.method === 'completePlan35LiveSet')))
+      .toEqual([
+        expect.objectContaining({ view: 'visual', supportProfile: 'high-support' }),
+        expect.objectContaining({ view: 'linear', supportProfile: 'medium-support' }),
+      ]);
+    expect(current.every((route) => route.actions.some((action) => action.method === 'completePlan35LiveSet'))).toBe(true);
   });
 
   it('enforces Rule 1: fails if a registered condition has no declared route witness', async () => {
@@ -316,7 +329,7 @@ describe('Plan 14 Reachable Behavior Route Contract & Matrix Schema', () => {
 
   it('executes each prototype route in both motion modes and brings in its filtered negative control', () => {
     const executions = expandRouteExecutions(matrix.routes);
-    expect(executions).toHaveLength(65);
+    expect(executions).toHaveLength(67);
     expect(executions.filter((execution) => (
       execution.route.configuration === 'plan15-subtraction-prototype'
     ))).toHaveLength(4);
@@ -578,6 +591,10 @@ describe('Plan 14 Reachable Behavior Route Contract & Matrix Schema', () => {
     expect(resolveStartingSurface('subtraction-comparison-prototype')).toEqual({
       path: 'prototypes/subtraction/index.html?mode=comparison&fixture=0',
       readySelector: '#subtraction-prototype[data-mode="comparison"]',
+    });
+    expect(resolveStartingSurface('plan18-historical-v6-entry')).toEqual({
+      path: '__test__/plan18-historical/plan18-historical-entry.html',
+      readySelector: '.fractionflow-app',
     });
     expect(resolveStartingSurface('unknown-surface')).toBeNull();
 

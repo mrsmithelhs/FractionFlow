@@ -103,3 +103,23 @@ no behavior/test changes. The data-only proof and reports are committed at
 registry/app/render wiring and focused tests. Stop before route/browser evidence
 for parent review. Parent retains packet/status/docs, Git and advisor ownership.
 No other packet is initiated.
+
+## C1 committed and C2 native review checkpoint - 2026-10-17
+
+C1 mounted wiring is committed at 201235e. C2 preserves all original 63 route
+objects and pins the two old Plan18 journeys to historical set@6. Two new current
+set@7 journeys each traverse all 21 live items. The child's full native Chrome
+matrix passed 67 executions / 65 rows, with receipts under this packet. Parent
+independently reran 402 unit tests, both builds, packet lint, route-object deep
+comparison and a native current-root two-task smoke after a narrow Help parity
+repair. That repair hides generic Help outside construct/inspect active work,
+matching the accepted Plan34 behavior; identify-side behavior remains unchanged.
+
+One consolidated focused-evidence repair remains with the Luna child: observe
+actual partial/highlighted/settled target30 motion and unchanged operand geometry,
+use the same answer-withholding assertion for seeded failure and clean pass,
+and distinguish matched reduced-motion endpoint evidence from actual same-node
+draft continuity. Sol low read-only review confirmed the first two evidence gaps
+and withdrew an earlier pre-existing injected-instance finding. Parent owns
+final review/status/Git/report disposition. Plan35 is still in-progress, no owner
+rendered acceptance is inferred, and Plans36/37 remain uninitiated drafts.

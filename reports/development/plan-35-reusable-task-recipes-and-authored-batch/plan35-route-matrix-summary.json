@@ -1,0 +1,488 @@
+{
+  "capturedAt": "2026-10-18T02:53:07.223Z",
+  "browserChannel": "chrome",
+  "mode": "clean",
+  "routeRows": 65,
+  "browserExecutions": 67,
+  "passed": 67,
+  "knownDefects": 0,
+  "failed": 0,
+  "seedDetected": 0,
+  "contexts": {
+    "historical-v4": 49,
+    "production-default-v7": 12,
+    "prototype": 4,
+    "historical-v6": 2
+  },
+  "results": [
+    {
+      "id": "ROUTE-TRAVERSAL-VISUAL-NO-DISPATCH [standard-motion]",
+      "routeId": "ROUTE-TRAVERSAL-VISUAL-NO-DISPATCH",
+      "context": "historical-v4",
+      "motionMode": "standard-motion",
+      "status": "pass"
+    },
+    {
+      "id": "ROUTE-TRAVERSAL-LINEAR-NO-DISPATCH [standard-motion]",
+      "routeId": "ROUTE-TRAVERSAL-LINEAR-NO-DISPATCH",
+      "context": "historical-v4",
+      "motionMode": "standard-motion",
+      "status": "pass"
+    },
+    {
+      "id": "ROUTE-COND-1-TRANSFORM [standard-motion]",
+      "routeId": "ROUTE-COND-1-TRANSFORM",
+      "context": "historical-v4",
+      "motionMode": "standard-motion",
+      "status": "pass"
+    },
+    {
+      "id": "ROUTE-COND-2-TRANSFORM [standard-motion]",
+      "routeId": "ROUTE-COND-2-TRANSFORM",
+      "context": "historical-v4",
+      "motionMode": "standard-motion",
+      "status": "pass"
+    },
+    {
+      "id": "ROUTE-COND-3-TRANSFORM [standard-motion]",
+      "routeId": "ROUTE-COND-3-TRANSFORM",
+      "context": "historical-v4",
+      "motionMode": "standard-motion",
+      "status": "pass"
+    },
+    {
+      "id": "ROUTE-COND-4-TRANSFORM-SAME [standard-motion]",
+      "routeId": "ROUTE-COND-4-TRANSFORM-SAME",
+      "context": "historical-v4",
+      "motionMode": "standard-motion",
+      "status": "pass"
+    },
+    {
+      "id": "ROUTE-COND-1-REFLECT [standard-motion]",
+      "routeId": "ROUTE-COND-1-REFLECT",
+      "context": "historical-v4",
+      "motionMode": "standard-motion",
+      "status": "pass"
+    },
+    {
+      "id": "ROUTE-COND-4-REFLECT [standard-motion]",
+      "routeId": "ROUTE-COND-4-REFLECT",
+      "context": "historical-v4",
+      "motionMode": "standard-motion",
+      "status": "pass"
+    },
+    {
+      "id": "ROUTE-REPLAY-COND-1 [standard-motion]",
+      "routeId": "ROUTE-REPLAY-COND-1",
+      "context": "historical-v4",
+      "motionMode": "standard-motion",
+      "status": "pass"
+    },
+    {
+      "id": "ROUTE-REPLAY-NEW-CONVERSION-COND-1 [standard-motion]",
+      "routeId": "ROUTE-REPLAY-NEW-CONVERSION-COND-1",
+      "context": "historical-v4",
+      "motionMode": "standard-motion",
+      "status": "pass"
+    },
+    {
+      "id": "ROUTE-REPLAY-REDUCED-COND-1 [reduced-motion]",
+      "routeId": "ROUTE-REPLAY-REDUCED-COND-1",
+      "context": "historical-v4",
+      "motionMode": "reduced-motion",
+      "status": "pass"
+    },
+    {
+      "id": "ROUTE-REPLAY-COND-2 [standard-motion]",
+      "routeId": "ROUTE-REPLAY-COND-2",
+      "context": "historical-v4",
+      "motionMode": "standard-motion",
+      "status": "pass"
+    },
+    {
+      "id": "ROUTE-REPLAY-COND-3 [standard-motion]",
+      "routeId": "ROUTE-REPLAY-COND-3",
+      "context": "historical-v4",
+      "motionMode": "standard-motion",
+      "status": "pass"
+    },
+    {
+      "id": "ROUTE-RECOVERY-TRANSFORM [standard-motion]",
+      "routeId": "ROUTE-RECOVERY-TRANSFORM",
+      "context": "historical-v4",
+      "motionMode": "standard-motion",
+      "status": "pass"
+    },
+    {
+      "id": "ROUTE-RECOVERY-OPERATE [standard-motion]",
+      "routeId": "ROUTE-RECOVERY-OPERATE",
+      "context": "historical-v4",
+      "motionMode": "standard-motion",
+      "status": "pass"
+    },
+    {
+      "id": "ROUTE-PREMISE-12-FALSE-NO [standard-motion]",
+      "routeId": "ROUTE-PREMISE-12-FALSE-NO",
+      "context": "historical-v4",
+      "motionMode": "standard-motion",
+      "status": "pass"
+    },
+    {
+      "id": "ROUTE-PREMISE-12-FALSE-YES [standard-motion]",
+      "routeId": "ROUTE-PREMISE-12-FALSE-YES",
+      "context": "historical-v4",
+      "motionMode": "standard-motion",
+      "status": "pass"
+    },
+    {
+      "id": "ROUTE-PREMISE-24-TRUE-YES [standard-motion]",
+      "routeId": "ROUTE-PREMISE-24-TRUE-YES",
+      "context": "historical-v4",
+      "motionMode": "standard-motion",
+      "status": "pass"
+    },
+    {
+      "id": "ROUTE-PREMISE-24-TRUE-NO [standard-motion]",
+      "routeId": "ROUTE-PREMISE-24-TRUE-NO",
+      "context": "historical-v4",
+      "motionMode": "standard-motion",
+      "status": "pass"
+    },
+    {
+      "id": "ROUTE-REDUCED-MOTION [reduced-motion]",
+      "routeId": "ROUTE-REDUCED-MOTION",
+      "context": "historical-v4",
+      "motionMode": "reduced-motion",
+      "status": "pass"
+    },
+    {
+      "id": "ROUTE-FOCUS-REPLAY-INTERACTIVE [standard-motion]",
+      "routeId": "ROUTE-FOCUS-REPLAY-INTERACTIVE",
+      "context": "historical-v4",
+      "motionMode": "standard-motion",
+      "status": "pass"
+    },
+    {
+      "id": "ROUTE-FOCUS-INSPECTION-RESTORE [standard-motion]",
+      "routeId": "ROUTE-FOCUS-INSPECTION-RESTORE",
+      "context": "historical-v4",
+      "motionMode": "standard-motion",
+      "status": "pass"
+    },
+    {
+      "id": "ROUTE-FOCUS-INSPECTION-RESTORE-LINEAR [standard-motion]",
+      "routeId": "ROUTE-FOCUS-INSPECTION-RESTORE-LINEAR",
+      "context": "historical-v4",
+      "motionMode": "standard-motion",
+      "status": "pass"
+    },
+    {
+      "id": "ROUTE-ENTRY-FIRST-TAB [standard-motion]",
+      "routeId": "ROUTE-ENTRY-FIRST-TAB",
+      "context": "production-default-v7",
+      "motionMode": "standard-motion",
+      "status": "pass"
+    },
+    {
+      "id": "ROUTE-ENTRY-GEAR-TAB [standard-motion]",
+      "routeId": "ROUTE-ENTRY-GEAR-TAB",
+      "context": "production-default-v7",
+      "motionMode": "standard-motion",
+      "status": "pass"
+    },
+    {
+      "id": "ROUTE-ENTRY-BEGIN-RETURN-FOCUS [standard-motion]",
+      "routeId": "ROUTE-ENTRY-BEGIN-RETURN-FOCUS",
+      "context": "production-default-v7",
+      "motionMode": "standard-motion",
+      "status": "pass"
+    },
+    {
+      "id": "ROUTE-RETRY-RESET-STATE [standard-motion]",
+      "routeId": "ROUTE-RETRY-RESET-STATE",
+      "context": "historical-v4",
+      "motionMode": "standard-motion",
+      "status": "pass"
+    },
+    {
+      "id": "ROUTE-RETURN-REENTER-RESET-STATE [standard-motion]",
+      "routeId": "ROUTE-RETURN-REENTER-RESET-STATE",
+      "context": "historical-v4",
+      "motionMode": "standard-motion",
+      "status": "pass"
+    },
+    {
+      "id": "ROUTE-ENTRY-BEGIN-FIRST-TAB-EPISODE [standard-motion]",
+      "routeId": "ROUTE-ENTRY-BEGIN-FIRST-TAB-EPISODE",
+      "context": "production-default-v7",
+      "motionMode": "standard-motion",
+      "status": "pass"
+    },
+    {
+      "id": "ROUTE-PROTOTYPE-SUBTRACTION-TAKEAWAY [standard-motion]",
+      "routeId": "ROUTE-PROTOTYPE-SUBTRACTION-TAKEAWAY",
+      "context": "prototype",
+      "motionMode": "standard-motion",
+      "status": "pass"
+    },
+    {
+      "id": "ROUTE-PROTOTYPE-SUBTRACTION-TAKEAWAY [reduced-motion]",
+      "routeId": "ROUTE-PROTOTYPE-SUBTRACTION-TAKEAWAY",
+      "context": "prototype",
+      "motionMode": "reduced-motion",
+      "status": "pass"
+    },
+    {
+      "id": "ROUTE-PROTOTYPE-SUBTRACTION-COMPARISON [standard-motion]",
+      "routeId": "ROUTE-PROTOTYPE-SUBTRACTION-COMPARISON",
+      "context": "prototype",
+      "motionMode": "standard-motion",
+      "status": "pass"
+    },
+    {
+      "id": "ROUTE-PROTOTYPE-SUBTRACTION-COMPARISON [reduced-motion]",
+      "routeId": "ROUTE-PROTOTYPE-SUBTRACTION-COMPARISON",
+      "context": "prototype",
+      "motionMode": "reduced-motion",
+      "status": "pass"
+    },
+    {
+      "id": "ROUTE-PREMISE-MEDIUM-12-FALSE-NO [standard-motion]",
+      "routeId": "ROUTE-PREMISE-MEDIUM-12-FALSE-NO",
+      "context": "historical-v4",
+      "motionMode": "standard-motion",
+      "status": "pass"
+    },
+    {
+      "id": "ROUTE-PREMISE-MEDIUM-12-FALSE-YES [standard-motion]",
+      "routeId": "ROUTE-PREMISE-MEDIUM-12-FALSE-YES",
+      "context": "historical-v4",
+      "motionMode": "standard-motion",
+      "status": "pass"
+    },
+    {
+      "id": "ROUTE-PREMISE-MEDIUM-24-TRUE-YES [standard-motion]",
+      "routeId": "ROUTE-PREMISE-MEDIUM-24-TRUE-YES",
+      "context": "historical-v4",
+      "motionMode": "standard-motion",
+      "status": "pass"
+    },
+    {
+      "id": "ROUTE-PREMISE-MEDIUM-24-TRUE-NO [standard-motion]",
+      "routeId": "ROUTE-PREMISE-MEDIUM-24-TRUE-NO",
+      "context": "historical-v4",
+      "motionMode": "standard-motion",
+      "status": "pass"
+    },
+    {
+      "id": "ROUTE-SUPPORT-HIGH-DECIDE [standard-motion]",
+      "routeId": "ROUTE-SUPPORT-HIGH-DECIDE",
+      "context": "historical-v4",
+      "motionMode": "standard-motion",
+      "status": "pass"
+    },
+    {
+      "id": "ROUTE-SUPPORT-MEDIUM-DECIDE [standard-motion]",
+      "routeId": "ROUTE-SUPPORT-MEDIUM-DECIDE",
+      "context": "historical-v4",
+      "motionMode": "standard-motion",
+      "status": "pass"
+    },
+    {
+      "id": "ROUTE-SUPPORT-HIGH-PREMISE-12 [standard-motion]",
+      "routeId": "ROUTE-SUPPORT-HIGH-PREMISE-12",
+      "context": "historical-v4",
+      "motionMode": "standard-motion",
+      "status": "pass"
+    },
+    {
+      "id": "ROUTE-SUPPORT-MEDIUM-PREMISE-12 [standard-motion]",
+      "routeId": "ROUTE-SUPPORT-MEDIUM-PREMISE-12",
+      "context": "historical-v4",
+      "motionMode": "standard-motion",
+      "status": "pass"
+    },
+    {
+      "id": "ROUTE-SUPPORT-HIGH-PREMISE-24 [standard-motion]",
+      "routeId": "ROUTE-SUPPORT-HIGH-PREMISE-24",
+      "context": "historical-v4",
+      "motionMode": "standard-motion",
+      "status": "pass"
+    },
+    {
+      "id": "ROUTE-SUPPORT-MEDIUM-PREMISE-24 [standard-motion]",
+      "routeId": "ROUTE-SUPPORT-MEDIUM-PREMISE-24",
+      "context": "historical-v4",
+      "motionMode": "standard-motion",
+      "status": "pass"
+    },
+    {
+      "id": "ROUTE-PLAN22-36-MATCHING-VISUAL [standard-motion]",
+      "routeId": "ROUTE-PLAN22-36-MATCHING-VISUAL",
+      "context": "historical-v4",
+      "motionMode": "standard-motion",
+      "status": "pass"
+    },
+    {
+      "id": "ROUTE-PLAN22-36-PREMISE-LINEAR-REDUCED [reduced-motion]",
+      "routeId": "ROUTE-PLAN22-36-PREMISE-LINEAR-REDUCED",
+      "context": "historical-v4",
+      "motionMode": "reduced-motion",
+      "status": "pass"
+    },
+    {
+      "id": "ROUTE-PLAN22-36-RETRY-RETURN [standard-motion]",
+      "routeId": "ROUTE-PLAN22-36-RETRY-RETURN",
+      "context": "historical-v4",
+      "motionMode": "standard-motion",
+      "status": "pass"
+    },
+    {
+      "id": "ROUTE-PLAN24-MEDIUM-LOCAL-HELP [standard-motion]",
+      "routeId": "ROUTE-PLAN24-MEDIUM-LOCAL-HELP",
+      "context": "historical-v4",
+      "motionMode": "standard-motion",
+      "status": "pass"
+    },
+    {
+      "id": "ROUTE-PLAN24-HIGH-LINEAR-HELP [standard-motion]",
+      "routeId": "ROUTE-PLAN24-HIGH-LINEAR-HELP",
+      "context": "historical-v4",
+      "motionMode": "standard-motion",
+      "status": "pass"
+    },
+    {
+      "id": "ROUTE-PLAN24-MEDIUM-HELP-RECOVERY-TOGGLE [standard-motion]",
+      "routeId": "ROUTE-PLAN24-MEDIUM-HELP-RECOVERY-TOGGLE",
+      "context": "historical-v4",
+      "motionMode": "standard-motion",
+      "status": "pass"
+    },
+    {
+      "id": "ROUTE-PLAN24-HIGH-HELP-VIEW-TOGGLE-RESET [standard-motion]",
+      "routeId": "ROUTE-PLAN24-HIGH-HELP-VIEW-TOGGLE-RESET",
+      "context": "historical-v4",
+      "motionMode": "standard-motion",
+      "status": "pass"
+    },
+    {
+      "id": "ROUTE-PLAN25-TRANSFORM-HELP-REQUESTED [standard-motion]",
+      "routeId": "ROUTE-PLAN25-TRANSFORM-HELP-REQUESTED",
+      "context": "historical-v4",
+      "motionMode": "standard-motion",
+      "status": "pass"
+    },
+    {
+      "id": "ROUTE-PLAN25-TRANSFORM-HELP-LINEAR-FOCUS [standard-motion]",
+      "routeId": "ROUTE-PLAN25-TRANSFORM-HELP-LINEAR-FOCUS",
+      "context": "historical-v4",
+      "motionMode": "standard-motion",
+      "status": "pass"
+    },
+    {
+      "id": "ROUTE-PLAN25-TRANSFORM-HELP-CLOSED [standard-motion]",
+      "routeId": "ROUTE-PLAN25-TRANSFORM-HELP-CLOSED",
+      "context": "historical-v4",
+      "motionMode": "standard-motion",
+      "status": "pass"
+    },
+    {
+      "id": "ROUTE-PLAN26-NEXT-WAITS-FOR-COMPLETION [standard-motion]",
+      "routeId": "ROUTE-PLAN26-NEXT-WAITS-FOR-COMPLETION",
+      "context": "historical-v4",
+      "motionMode": "standard-motion",
+      "status": "pass"
+    },
+    {
+      "id": "ROUTE-PLAN32-NEXT-REACHES-NEW-BATCH [standard-motion]",
+      "routeId": "ROUTE-PLAN32-NEXT-REACHES-NEW-BATCH",
+      "context": "historical-v4",
+      "motionMode": "standard-motion",
+      "status": "pass"
+    },
+    {
+      "id": "ROUTE-PLAN26-CHROMEBOOK-CSS-VIEWPORT [standard-motion]",
+      "routeId": "ROUTE-PLAN26-CHROMEBOOK-CSS-VIEWPORT",
+      "context": "historical-v4",
+      "motionMode": "standard-motion",
+      "status": "pass"
+    },
+    {
+      "id": "ROUTE-PLAN17-APPENDED-ITEM-REACHABLE [standard-motion]",
+      "routeId": "ROUTE-PLAN17-APPENDED-ITEM-REACHABLE",
+      "context": "historical-v4",
+      "motionMode": "standard-motion",
+      "status": "pass"
+    },
+    {
+      "id": "ROUTE-PLAN20-LIKE-ADDITION-VISUAL [reduced-motion]",
+      "routeId": "ROUTE-PLAN20-LIKE-ADDITION-VISUAL",
+      "context": "production-default-v7",
+      "motionMode": "reduced-motion",
+      "status": "pass"
+    },
+    {
+      "id": "ROUTE-PLAN20-LIKE-ADDITION-LINEAR [reduced-motion]",
+      "routeId": "ROUTE-PLAN20-LIKE-ADDITION-LINEAR",
+      "context": "production-default-v7",
+      "motionMode": "reduced-motion",
+      "status": "pass"
+    },
+    {
+      "id": "ROUTE-PLAN34-CONSTRUCT-VISUAL-DEEP [standard-motion]",
+      "routeId": "ROUTE-PLAN34-CONSTRUCT-VISUAL-DEEP",
+      "context": "production-default-v7",
+      "motionMode": "standard-motion",
+      "status": "pass"
+    },
+    {
+      "id": "ROUTE-PLAN34-INSPECT-LINEAR-DEEP [reduced-motion]",
+      "routeId": "ROUTE-PLAN34-INSPECT-LINEAR-DEEP",
+      "context": "production-default-v7",
+      "motionMode": "reduced-motion",
+      "status": "pass"
+    },
+    {
+      "id": "ROUTE-PLAN34-THIRD-IDENTITY-WIDE [standard-motion]",
+      "routeId": "ROUTE-PLAN34-THIRD-IDENTITY-WIDE",
+      "context": "production-default-v7",
+      "motionMode": "standard-motion",
+      "status": "pass"
+    },
+    {
+      "id": "ROUTE-PLAN34-RETRY-RETURN-REENTRY [reduced-motion]",
+      "routeId": "ROUTE-PLAN34-RETRY-RETURN-REENTRY",
+      "context": "production-default-v7",
+      "motionMode": "reduced-motion",
+      "status": "pass"
+    },
+    {
+      "id": "ROUTE-PLAN18-PRODUCTION-HIGH-VISUAL-COMPLETE [standard-motion]",
+      "routeId": "ROUTE-PLAN18-PRODUCTION-HIGH-VISUAL-COMPLETE",
+      "context": "historical-v6",
+      "motionMode": "standard-motion",
+      "status": "pass"
+    },
+    {
+      "id": "ROUTE-PLAN18-PRODUCTION-MEDIUM-LINEAR-REDUCED [reduced-motion]",
+      "routeId": "ROUTE-PLAN18-PRODUCTION-MEDIUM-LINEAR-REDUCED",
+      "context": "historical-v6",
+      "motionMode": "reduced-motion",
+      "status": "pass"
+    },
+    {
+      "id": "ROUTE-PLAN35-CURRENT-HIGH-VISUAL-ALL-21 [standard-motion]",
+      "routeId": "ROUTE-PLAN35-CURRENT-HIGH-VISUAL-ALL-21",
+      "context": "production-default-v7",
+      "motionMode": "standard-motion",
+      "status": "pass"
+    },
+    {
+      "id": "ROUTE-PLAN35-CURRENT-MEDIUM-LINEAR-ALL-21 [reduced-motion]",
+      "routeId": "ROUTE-PLAN35-CURRENT-MEDIUM-LINEAR-ALL-21",
+      "context": "production-default-v7",
+      "motionMode": "reduced-motion",
+      "status": "pass"
+    }
+  ]
+}

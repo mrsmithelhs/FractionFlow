@@ -239,3 +239,76 @@ rendered learner agency remain unverified.
 - Reran the authorized focused app/render regression command: 9 files, 61 tests
   passed. `git diff --check` is clean. No route matrix, browser, build or full
   suite run was performed; stop for parent/Sol review before C2.
+
+## Stage C2 native browser and route evidence — 2026-10-18
+
+- Pinned the historical Plan18 route helper to explicit `PLAN18_PRACTICE_TYPES_V6`
+  and added a set@6 fixture/page/builder for historical journeys. The active
+  set@7 journeys use explicit v7. Parent's preservation check confirms all 63
+  old route objects, including their actions and assertions, remain deeply
+  equal to baseline `201235e`; exactly two v7 deep-route rows were appended.
+- Full native Chrome route matrix passed twice after the mounted help parity
+  repair: 65 route rows / 67 browser executions, zero failures. The saved
+  `plan35-route-matrix-summary.json` records 49 historical-v4, 2 historical-v6,
+  12 current-v7 and 4 prototype executions. The two current-v7 journeys each
+  traverse all 21 registered items through mounted controls, then verify
+  exhaustion, return and re-entry; one is high/visual/standard motion and the
+  other medium/linear/reduced motion. This full-set reach evidence is separate
+  from the focused sample sweep.
+- Native focused Chrome sample covers eight registered task identities across construct,
+  inspect and identify at targets 10, 12, 24 and 30, both identify required
+  sides, high/medium support, visual/linear paths, touch taps, wrong-response
+  recovery, help, Replay visibility, and restart. A separate complete linear
+  inspect@24/medium task uses Tab traversal, Enter activation and keyboard text
+  entry only, without pointer clicks or programmatic focus jumps.
+- Construct@10 verifies the task-local multiplier help stays separate from
+  the numerator: a wrong multiplier 1 is rejected, correct multiplier 5 is
+  accepted, then a wrong numerator recovers before completion. Identify@10
+  verifies Replay remains unavailable before conversion and appears after one
+  accepted conversion; a draft value survives two Replay toggles on the same
+  mounted operation input node.
+- A target-30 left conversion captures the same new boundary at partial reveal,
+  full-height highlight and settled normal paint. The changed left bar and
+  untouched right operand whole/fill document coordinates remain stable, and
+  the right boundary set is unchanged. A matched reduced-motion run starts
+  with the same submitted numerator (18), reaches 18/30 immediately and invokes
+  no boundary WAAPI. The captured intermediate boundary is 1.90px of a 40px
+  track; highlight is 40px and settle has no running animation.
+- The answer-withholding seed and clean receipt call the same assertion over
+  visible episode text plus visible accessible labels. Injected `8/24` causes
+  the intended assertion failure; removing only that seed produces a passing
+  clean receipt. The optional static-page favicon request returns 404 at
+  `/favicon.ico` (`resourceType: Other`); Chrome CDP records no failed app
+  assets and there are no page errors.
+- Layout measurements cover 360x740, 360x752, 1366x768 and a labeled
+  125%-equivalent viewport/DPR emulation of 1093x614 at DPR 1.25. Screenshots
+  and final measurements are captured after ordinary vertical scrolling when
+  needed; active question and response controls must fit within 0.5px tolerance.
+  No horizontal document overflow was measured. The transform-help screenshot
+  shows the local help entry button closed, not an open help panel. The wide
+  and zoom-equivalent measurements are CSS/DPR emulations, not physical device
+  or browser-zoom claims.
+- A narrow authorized app repair extends the existing compact-help visibility
+  rule to generalized Plan35 construct/inspect beats outside decide/transform;
+  identify's prior help placement and task-local transform help remain intact.
+  Browser assertions cover construct encounter/operate/resolve and inspect
+  operate/resolve. The full 44-file / 402-test suite, both production builds,
+  63 focused tests, packet lint and route contract tests passed after the repair.
+- Reproducible evidence lives in `capture-plan35-focused-browser-evidence.mjs`,
+  `plan35-focused-browser-results.json`, the three `plan35-*.png` screenshots,
+  `plan35-route-matrix-summary.json`, and the historical-v6 fixture/page/builder.
+  The route runner now emits the compact full-matrix summary when Plan35 rows
+  execute. It does not change the route assertions.
+- Full route runs rewrote only known historical Plan18/Plan34 generated
+  evidence. Plan18 route results and Plan34 viewport measurements were restored
+  from the preserved pre-C2 snapshots; five affected historical screenshots
+  were restored from their committed blobs. Those old report paths are clean.
+  A `git restore --worktree` attempt was blocked by sandbox permission on
+  `.git/index.lock`; exact generated screenshots were restored by read-only
+  `git show HEAD:<path>` plus writes to those five named files. No Git metadata
+  was written.
+- Focused/report-only evidence repair after the final full route run was
+  re-executed and passed; the broad route matrix was not repeated for those
+  report-only refinements. Stop here for parent/Sol review and commit. No push,
+  deployment, Bootstrap operation, dependency change or root Vite log write was
+  performed.

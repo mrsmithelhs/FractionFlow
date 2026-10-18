@@ -1,0 +1,18 @@
+{
+  "entry": "current Vite root, no injected state or fixture",
+  "browser": "native Chrome via Playwright",
+  "observations": [
+    "Current root construct: accepted 8/12 + 3/12, sum 11/12, Finish and Next visible.",
+    "Current root Next reaches inspection: repaired 5/12 to 6/12 after wrong 0, kept 4/12, accepted raw 10/12 and finished."
+  ],
+  "errors": [],
+  "dimensions": {
+    "viewport": {
+      "width": 360,
+      "height": 740
+    },
+    "documentWidth": 360,
+    "documentHeight": 740
+  },
+  "limits": "Two prefix tasks only; no full-bank, new-target, motion or physical-device claim."
+}

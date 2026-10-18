@@ -1,4 +1,4 @@
-import { PRACTICE_TYPES } from '../../src/app/practice-types.js';
+import { PLAN18_PRACTICE_TYPES_V6 } from '../../src/app/practice-types.js';
 import { resolveAuthoredContent, resolveCuratedFixture } from '../../src/content/authored-content-catalog.js';
 import { addAtCommonDenominator, createFraction, convertToDenominator, equalFractions } from '../../src/math/index.js';
 import { PLAN34_FULL_ADDITION_TASK_RECORDS } from '../../src/content/data/plan34-full-addition-task-records.js';
@@ -29,7 +29,7 @@ function formsFor(item, fixture, denominator) {
 export function buildPlan18RetainedPrefixActions({ view, supportProfile }) {
   if (!['visual', 'linear'].includes(view)) throw new TypeError('Plan18 prefix view must be visual or linear');
   if (!['high-support', 'medium-support'].includes(supportProfile)) throw new TypeError('Plan18 prefix support must be registered');
-  const type = PRACTICE_TYPES.find((entry) => entry.id === 'sum-under-one');
+  const type = PLAN18_PRACTICE_TYPES_V6.find((entry) => entry.id === 'sum-under-one');
   if (type?.setId !== 'unlike-addition-vetted-set' || type?.setRevision !== '6' || type.items.length !== 13) {
     throw new Error('Plan18 prefix requires the exact registered set@6 with two appended items');
   }

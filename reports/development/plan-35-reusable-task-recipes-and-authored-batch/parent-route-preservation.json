@@ -1,0 +1,15 @@
+{
+  "baselineCommit": "201235e",
+  "retainedRouteRows": 63,
+  "currentRouteRows": 65,
+  "retainedRowsDeepEqualIncludingActionsAndExpectations": true,
+  "oldMatrixSha256": "357a3412150e64f0dc26371b47258679a55827824d2a1302e3935e8bff13a0ac",
+  "currentMatrixSha256": "d9331b0472e44e3eca96a509d31cfafe6bff174224b6bd086a034383e8a7117b",
+  "historicalHelperPins": "PLAN18_PRACTICE_TYPES_V6",
+  "currentHelperPins": "PLAN35_PRACTICE_TYPES_V7",
+  "addedRoutes": [
+    "ROUTE-PLAN35-CURRENT-HIGH-VISUAL-ALL-21",
+    "ROUTE-PLAN35-CURRENT-MEDIUM-LINEAR-ALL-21"
+  ],
+  "limits": "Structural preservation check; browser execution and current-vs-historical context correctness need separate evidence."
+}

@@ -32,6 +32,8 @@ const matrixPath = path.join(rootDir, 'tests/routes/route-matrix.json');
 const plan34ContextMapPath = path.join(rootDir, 'tests/routes/plan34-context-map.json');
 const plan34HistoricalRootDir = path.join(os.tmpdir(), 'fractionflow-plan34-historical-entry');
 const plan34HistoricalBuilderPath = path.join(rootDir, 'scripts/dev/build-plan34-historical-fixture.mjs');
+const plan18HistoricalRootDir = path.join(os.tmpdir(), 'fractionflow-plan18-historical-entry');
+const plan18HistoricalBuilderPath = path.join(rootDir, 'scripts/dev/build-plan18-historical-fixture.mjs');
 const validMotionModes = new Set(['standard-motion', 'reduced-motion']);
 const seededPrototypeVisualDefects = Object.freeze({
   hidden: `#representation-visual .fraction-whole,
@@ -114,6 +116,10 @@ const startingSurfaces = Object.freeze({
     path: '__test__/plan34-historical/plan34-historical-entry.html',
     readySelector: '.fractionflow-app',
   }),
+  'plan18-historical-v6-entry': Object.freeze({
+    path: '__test__/plan18-historical/plan18-historical-entry.html',
+    readySelector: '.fractionflow-app',
+  }),
   'subtraction-takeaway-prototype': Object.freeze({
     path: 'prototypes/subtraction/index.html?mode=takeaway&fixture=0',
     readySelector: '#subtraction-prototype[data-mode="takeaway"]',
@@ -131,7 +137,8 @@ function readPlan34ContextMap() {
 function resolveRouteContext(route, contextMap) {
   const context = contextMap?.contexts?.[route.id] ?? null;
   if (context === 'historical-v4') return { id: context, startingSurface: 'plan34-historical-v4-entry' };
-  if (context === 'production-default-v6') return { id: context, startingSurface: route.startingSurface };
+  if (context === 'historical-v6') return { id: context, startingSurface: 'plan18-historical-v6-entry' };
+  if (context === 'production-default-v7') return { id: context, startingSurface: route.startingSurface };
   return { id: route.startingSurface.startsWith('subtraction-') ? 'prototype' : null, startingSurface: route.startingSurface };
 }
 
@@ -184,15 +191,19 @@ const mimeTypes = {
   '.ico': 'image/x-icon',
 };
 
-function createStaticServer({ historicalRootDir = null } = {}) {
+function createStaticServer({ historicalRootDir = null, plan18HistoricalRootDir = null } = {}) {
   return http.createServer((req, res) => {
     let reqPath = req.url.split('?')[0].replace(/^\/FractionFlow/, '');
     if (!reqPath || reqPath === '/') reqPath = '/index.html';
     let filePath;
     const historicalPrefix = '/__test__/plan34-historical/';
-    if (reqPath.startsWith(historicalPrefix) && historicalRootDir) {
-      filePath = path.resolve(historicalRootDir, path.normalize(reqPath.slice(historicalPrefix.length)));
-      const relativeToRoot = path.relative(path.resolve(historicalRootDir), filePath);
+    const plan18Prefix = '/__test__/plan18-historical/';
+    const fixtureRoot = reqPath.startsWith(historicalPrefix) ? historicalRootDir
+      : reqPath.startsWith(plan18Prefix) ? plan18HistoricalRootDir : null;
+    const fixturePrefix = reqPath.startsWith(historicalPrefix) ? historicalPrefix : plan18Prefix;
+    if (fixtureRoot) {
+      filePath = path.resolve(fixtureRoot, path.normalize(reqPath.slice(fixturePrefix.length)));
+      const relativeToRoot = path.relative(path.resolve(fixtureRoot), filePath);
       if (relativeToRoot.startsWith('..') || path.isAbsolute(relativeToRoot)) {
         res.writeHead(400, { 'Content-Type': 'text/plain' });
         res.end('Invalid historical fixture path');
@@ -237,7 +248,7 @@ async function validateMatrixIntegrity(matrix, registeredConditions, suppliedCon
   } else {
     const idsInMatrix = new Set(matrix.routes.map((route) => route.id));
     const idsInMap = Object.keys(routeContexts);
-    const contextCounts = { 'historical-v4': 0, 'production-default-v6': 0 };
+    const contextCounts = { 'historical-v4': 0, 'historical-v6': 0, 'production-default-v7': 0 };
     for (const route of matrix.routes) {
       const context = routeContexts[route.id];
       const isMountedApp = route.startingSurface === 'mounted-app-entry';
@@ -248,8 +259,11 @@ async function validateMatrixIntegrity(matrix, registeredConditions, suppliedCon
       } else if (context) {
         contextCounts[context] += 1;
       }
-      if ((route.id.startsWith('ROUTE-PLAN34-') || route.id.startsWith('ROUTE-PLAN18-')) && context !== 'production-default-v6') {
-        errors.push(`New Plan 34/18 route "${route.id}" must exercise production-default-v6.`);
+      if (route.id.startsWith('ROUTE-PLAN18-') && context !== 'historical-v6') {
+        errors.push(`Historical Plan 18 route "${route.id}" must exercise its pinned historical-v6 fixture.`);
+      }
+      if ((route.id.startsWith('ROUTE-PLAN34-') || route.id.startsWith('ROUTE-PLAN35-')) && context !== 'production-default-v7') {
+        errors.push(`Current Plan 34/35 route "${route.id}" must exercise production-default-v7.`);
       }
     }
     for (const routeId of idsInMap) {
@@ -284,6 +298,7 @@ async function validateMatrixIntegrity(matrix, registeredConditions, suppliedCon
     'screenshot',
     'dispatch-fallback',
     'completePlan18RetainedPrefix',
+    'completePlan35LiveSet',
   ]);
 
   for (const route of matrix.routes) {
@@ -413,6 +428,11 @@ async function validateMatrixIntegrity(matrix, registeredConditions, suppliedCon
         && (!['visual', 'linear'].includes(action.view)
           || !['high-support', 'medium-support'].includes(action.supportProfile))) {
         errors.push(`Route "${route.id}" step ${action.step} Plan 18 retained-prefix action requires a registered view and support profile.`);
+      }
+      if (action.method === 'completePlan35LiveSet'
+        && (!['visual', 'linear'].includes(action.view)
+          || !['high-support', 'medium-support'].includes(action.supportProfile))) {
+        errors.push(`Route "${route.id}" step ${action.step} Plan 35 live-set action requires a registered view and support profile.`);
       }
       if (action.method === 'clickAndObserveSubdivision' && action.interruptReducedMotion
         && route.motionMode !== 'standard-motion') {
@@ -1348,6 +1368,19 @@ async function executeAction(page, action, routeId) {
     case 'completePlan18RetainedPrefix': {
       const { buildPlan18RetainedPrefixActions } = await import('./plan18-route-prefix.mjs');
       const generated = buildPlan18RetainedPrefixActions({ view: action.view, supportProfile: action.supportProfile });
+      for (const generatedAction of generated) {
+        try {
+          await executeAction(page, generatedAction, routeId);
+        } catch (error) {
+          error.message = `${generatedAction.description}: ${error.message}`;
+          throw error;
+        }
+      }
+      break;
+    }
+    case 'completePlan35LiveSet': {
+      const { buildPlan35LiveSetActions } = await import('./plan35-route-live-set.mjs');
+      const generated = buildPlan35LiveSetActions({ view: action.view, supportProfile: action.supportProfile });
       for (const generatedAction of generated) {
         try {
           await executeAction(page, generatedAction, routeId);
@@ -2407,12 +2440,16 @@ async function runRouteMatrix(options = {}) {
   }
 
   execFileSync(process.execPath, [plan34HistoricalBuilderPath], { cwd: rootDir, stdio: verbose ? 'inherit' : 'ignore' });
+  execFileSync(process.execPath, [plan18HistoricalBuilderPath], { cwd: rootDir, stdio: verbose ? 'inherit' : 'ignore' });
   if (!fs.existsSync(path.join(plan34HistoricalRootDir, 'plan34-historical-entry.html'))) {
     throw new Error('Plan 34 historical fixture build did not produce its temporary entry HTML.');
   }
+  if (!fs.existsSync(path.join(plan18HistoricalRootDir, 'plan18-historical-entry.html'))) {
+    throw new Error('Plan 18 historical fixture build did not produce its temporary entry HTML.');
+  }
 
   // Start local server
-  const server = createStaticServer({ historicalRootDir: plan34HistoricalRootDir });
+  const server = createStaticServer({ historicalRootDir: plan34HistoricalRootDir, plan18HistoricalRootDir });
   await new Promise((resolve) => server.listen(0, '127.0.0.1', resolve));
   const port = server.address().port;
   const baseUrl = `http://127.0.0.1:${port}/FractionFlow/`;
@@ -2683,6 +2720,29 @@ async function runRouteMatrix(options = {}) {
         .map((action) => ({ routeId: result.routeId, context: result.context, motionMode: result.motionMode, ...action.screenshotEvidence })));
     const evidencePath = path.join(rootDir, 'reports/development/plan-34-reusable-full-addition-task-patterns/evidence/plan34-viewport-measurements.json');
     fs.writeFileSync(evidencePath, `${JSON.stringify({ capturedAt: new Date().toISOString(), measurements: layoutEvidence }, null, 2)}\n`);
+  }
+
+  if (routeResults.some((result) => result.routeId.startsWith('ROUTE-PLAN35-'))) {
+    const evidencePath = path.join(rootDir, 'reports/development/plan-35-reusable-task-recipes-and-authored-batch/plan35-route-matrix-summary.json');
+    fs.writeFileSync(evidencePath, `${JSON.stringify({
+      capturedAt: new Date().toISOString(),
+      browserChannel: browserChannel || 'default chromium',
+      mode: plan18WitnessSeed || motionWitnessSeed || plan34WitnessSeed ? 'seeded' : 'clean',
+      routeRows: routesToRun.length,
+      browserExecutions: routeResults.length,
+      passed,
+      knownDefects,
+      failed,
+      seedDetected,
+      contexts: routeResults.reduce((counts, result) => {
+        const key = result.context || 'prototype';
+        counts[key] = (counts[key] || 0) + 1;
+        return counts;
+      }, {}),
+      results: routeResults.map(({ id, routeId, context, motionMode, status, error }) => ({
+        id, routeId, context, motionMode, status, ...(error ? { error } : {}),
+      })),
+    }, null, 2)}\n`);
   }
 
   return {

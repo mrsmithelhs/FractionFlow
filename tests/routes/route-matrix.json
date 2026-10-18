@@ -7137,5 +7137,48 @@
         ]
       }
     }
+    ,{
+      "id": "ROUTE-PLAN35-CURRENT-HIGH-VISUAL-ALL-21",
+      "behavior": "Traverse the exact live set@7 through mounted visual controls, gated Next, exhaustion, return and re-entry.",
+      "configuration": "phase2-bundle-1",
+      "startingSurface": "mounted-app-entry",
+      "viewport": {"width":360,"height":740},
+      "motionMode": "standard-motion",
+      "witness": "browser",
+      "actions": [
+        {"step":1,"method":"click","target":".app-gear-button","description":"Open display settings"},
+        {"step":2,"method":"click","target":"[data-condition-id=\"phase2-bundle-1\"]","description":"Select approved high-support condition"},
+        {"step":3,"method":"click","target":".app-gear-button","description":"Open support settings"},
+        {"step":4,"method":"click","target":"[data-support-id=\"high-support\"]","description":"Select registered high support"},
+        {"step":5,"method":"click","target":".app-practice-button","description":"Start current default set@7"},
+        {"step":6,"method":"completePlan35LiveSet","view":"visual","supportProfile":"high-support","description":"Complete every current set item with visible mounted controls"}
+      ],
+      "expect": {"capture":{"target":".app-episode","type":"innerHTML"},"assertions":[
+        {"type":"containsText","target":".active-beat-prompt-context","value":"Use twelfths."},
+        {"type":"hasSelector","target":".app-episode"}
+      ]}
+    },
+    {
+      "id": "ROUTE-PLAN35-CURRENT-MEDIUM-LINEAR-ALL-21",
+      "behavior": "Traverse the exact live set@7 through the accessible linear path with medium support, keyboard-submitted responses, gated Next, exhaustion and re-entry.",
+      "configuration": "phase2-bundle-3",
+      "startingSurface": "mounted-app-entry",
+      "viewport": {"width":360,"height":752},
+      "motionMode": "reduced-motion",
+      "witness": "browser",
+      "actions": [
+        {"step":1,"method":"click","target":".app-gear-button","description":"Open display settings"},
+        {"step":2,"method":"click","target":"[data-condition-id=\"phase2-bundle-3\"]","description":"Select registered medium-support condition"},
+        {"step":3,"method":"click","target":".app-gear-button","description":"Open support settings"},
+        {"step":4,"method":"click","target":"[data-support-id=\"medium-support\"]","description":"Select medium support"},
+        {"step":5,"method":"click","target":".app-practice-button","description":"Start current default set@7"},
+        {"step":6,"method":"click","target":".app-view-controls .app-secondary-button","description":"Use the linear access path"},
+        {"step":7,"method":"completePlan35LiveSet","view":"linear","supportProfile":"medium-support","description":"Complete every current set item with visible mounted controls"}
+      ],
+      "expect": {"capture":{"target":".app-episode","type":"innerHTML"},"assertions":[
+        {"type":"containsText","target":".active-beat-prompt-context","value":"Use twelfths."},
+        {"type":"hasSelector","target":".app-linear-view"}
+      ]}
+    }
   ]
 }

@@ -947,7 +947,10 @@ export function createFractionFlowApp({
       helpButton.removeAttribute('aria-controls');
       if (helpCue.parentNode) helpCue.parentNode.removeChild(helpCue);
       const supportControls = appRoot.querySelector('.app-support-controls');
+      const isPlan35NonIdentify = state.episodeDefinition.id === PLAN35_RECIPE_DEFINITION_ID
+        && state.taskContext?.patternId !== PLAN35_RECIPE_IDS.identify;
       helpButton.hidden = state.episodeDefinition.id === PLAN34_EPISODE_DEFINITION_ID
+        || isPlan35NonIdentify
         || (state.episodeDefinition.id === PLAN20_LIKE_DENOMINATOR_EPISODE_DEFINITION.id
           && state.beat !== 'operate');
       if (helpButton.parentNode !== supportControls) {
