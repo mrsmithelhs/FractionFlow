@@ -42,11 +42,11 @@ The episode uses an immutable 3-beat sequence:
 |  [Number Line: [0, 1]]                                                 |
 |  x0                                                                 x1 |
 |  |---------+----------|---------+----------|---------+----------|------|
-|  0                    1/4                 1/2                  3/4     1
-|  |                                                              |      |
-|  +-- [Tick A]            +-- [Tick B]      +-- [Tick C]   [Tick D]     |
+|  0                                        1/2                          1
+|  |                    |                    |                    |      |
+|  +-- [Tick 0]         +-- [Tick 1]         +-- [Tick 2]  [Tick 3]      |
 |                                                                        |
-|  [ Preview: Tick D (3/4 of track) ]               [ Check Position ]   |
+|  [ Preview: Point at step 3 of 4 equal steps ]    [ Check Position ]   |
 +========================================================================+
 ```
 
@@ -154,10 +154,11 @@ Candidate points $\{p_1, p_2, \dots, p_k\}$ are ordered from left to right along
   - `"Candidate D: just right of 1/2"`
   - `"Candidate E: closer to 1 than to 1/2"`
 
-*Example for target $3/8$ with distractors $1/4$ and $5/8$:*
-- Candidate 1 ($1/4$): `"Candidate 1: halfway between 0 and 1/2"`
-- Candidate 2 ($3/8$): `"Candidate 2: between 1/4 and 1/2 (closer to 1/2)"` (Target)
-- Candidate 3 ($5/8$): `"Candidate 3: between 1/2 and 1 (closer to 1/2)"`
+*Example for target $3/8$ with distractors $2/8$ and $5/8$ on an 8-step underlying metric:*
+- Candidate A ($2/8$): `"Candidate A: 2 of 8 equal steps from 0 to 1 (halfway between 0 and 1/2)"`
+- Candidate B ($3/8$): `"Candidate B: 3 of 8 equal steps from 0 to 1 (between 0 and 1/2, closer to 1/2)"` (Target)
+- Candidate C ($4/8$): `"Candidate C: 4 of 8 equal steps from 0 to 1 (exactly at 1/2)"`
+- Candidate D ($5/8$): `"Candidate D: 5 of 8 equal steps from 0 to 1 (between 1/2 and 1, closer to 1/2)"`
 
 ### Keyboard Traversal Rules
 - `Tab` / `Shift+Tab`: Moves focus between the candidate selection region, `Help` button, and `Check Position` / `Next` button.

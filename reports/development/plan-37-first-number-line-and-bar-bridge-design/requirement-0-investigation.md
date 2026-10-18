@@ -81,9 +81,9 @@ We recommend advancing **Candidate A: Same-Amount Placement (Bar-to-Number-Line 
 ### Accessible Participation Parity
 - **Non-Drag Keyboard & Touch:** Learner can navigate candidate positions using `ArrowLeft` / `ArrowRight` (or `Tab` across explicit candidate buttons) and confirm with `Enter` / `Space`. Touch targets maintain a minimum 44×44px hit area.
 - **Linear / Screen-Reader Parity:** Screen-reader users must not be given a coarse 3-bucket quiz (which cannot distinguish two candidates on the same side of $1/2$) nor have the fraction string $a/b$ announced prematurely. Instead, each selectable candidate is announced with its exact structural step position and benchmark relationship:
-  - High support ($b$ partitions): e.g., `"Tick 2 of 4 equal steps from 0 to 1 (at one-half)"`, `"Tick 1 of 4 equal steps from 0 to 1 (halfway between 0 and one-half)"`.
-  - Medium support (discrete candidates): e.g., `"Candidate A: 1 quarter of the distance from 0 to 1 (closer to 0 than to one-half)"`, `"Candidate B: 3 eighths of the distance (just left of one-half)"`.
-  This preserves the genuine location/distance decision without leaking the symbolic answer $a/b$.
+  - High support ($b$ partitions): e.g., `"Point at step 2 of 4 equal steps from 0 to 1 (exactly at 1/2)"`, `"Point at step 1 of 4 equal steps from 0 to 1 (between 0 and 1/2)"`.
+  - Medium support (discrete candidates): e.g., `"Candidate A: 2 of 8 equal steps from 0 to 1 (closer to 0 than to 1/2)"`, `"Candidate B: 3 of 8 equal steps from 0 to 1 (just left of 1/2)"`.
+  This preserves the genuine location/distance decision without leaking the symbolic fraction answer $a/b$.
 
 ---
 

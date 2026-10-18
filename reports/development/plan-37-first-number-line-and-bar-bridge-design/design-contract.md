@@ -97,68 +97,67 @@ To maintain calm, error-free child touch participation without mis-taps:
 
 ## 3. Curated 8-Item Bridge Seed Table
 
-The curated seed table provides systematic coverage across magnitudes ($< 1/2$, $= 1/2$, $> 1/2$), unit and non-unit fractions, and both high and medium support.
+The curated seed table provides systematic coverage across magnitudes ($< 1/2$, $= 1/2$, $> 1/2$), unit and non-unit fractions, unreduced-bar equivalence, and both high and medium support. All target coordinates and diagnostic distractors are **exact rational wire fractions** (`{ kind: 'fraction', numerator, denominator }`) evaluated via `equalFractions` / `compareFractions` in `src/math/fraction.js`—never floating-point decimal approximations.
 
-| Item ID | Target Fraction | Shown Bar ($a/b$) | Domain & Support | Benchmarks | Target Coord | Diagnostic Distractors | Recovery Cue | Rationale |
-|---|---|---|---|---|---|---|---|---|
-| `bridge-01-half-2` | $1/2$ | $b=2$, 1 shaded | $[0, 1]$, High | $0, 1/2, 1$ | $0.500$ ($1/2$) | $0/2$ ($0.0$), $2/2$ ($1.0$) | *"This point is at an endpoint. The bar is half full. Look at the 1/2 benchmark."* | Canonical baseline: establishes the center anchor of the line. |
-| `bridge-02-fourth-4` | $1/4$ | $b=4$, 1 shaded | $[0, 1]$, High | $0, 1/2, 1$ | $0.250$ ($1/4$) | $2/4$ ($0.5$, at half), $3/4$ ($0.75$, above half) | *"This point is at or above 1/2, but the bar is less than 1/2."* | Unit fraction strictly below $1/2$; tests distinguishing $1/4$ from $1/2$. |
-| `bridge-03-three-fourths-4` | $3/4$ | $b=4$, 3 shaded | $[0, 1]$, High | $0, 1/2, 1$ | $0.750$ ($3/4$) | $1/4$ ($0.25$, below half), $2/4$ ($0.5$, at half) | *"This point is at or below 1/2, but the bar is more than 1/2."* | Non-unit fraction strictly above $1/2$; symmetric counterpart to Item 02. |
-| `bridge-04-two-thirds-3` | $2/3$ | $b=3$, 2 shaded | $[0, 1]$, High | $0, 1/2, 1$ | $0.667$ ($2/3$) | $1/3$ ($0.333$, below half), $1/2$ ($0.500$, benchmark) | *"This point is below 1/2, but 2 out of 3 parts is more than half of the bar."* | Odd denominator; tests placement above $1/2$ where $1/2$ is not a partition line. |
-| `bridge-05-three-eighths-8` | $3/8$ | $b=8$, 3 shaded | $[0, 1]$, High | $0, 1/2, 1$ | $0.375$ ($3/8$) | $1/4$ ($0.25$, too low), $4/8$ ($0.5$, at half), $5/8$ ($0.625$, above half) | *"This point is at or above 1/2, but 3 of 8 parts is just under half."* | Denominator 8 near half; exercises 360px touch resolution and near-half discrimination. |
-| `bridge-06-five-eighths-8` | $5/8$ | $b=8$, 5 shaded | $[0, 1]$, High | $0, 1/2, 1$ | $0.625$ ($5/8$) | $3/8$ ($0.375$, below half), $4/8$ ($0.5$, at half), $6/8$ ($0.75$, too high) | *"This point is at or below 1/2, but 5 of 8 parts is just over half."* | Symmetric counterpart to $3/8$; distinguishes $5/8$ from $3/8$ and $1/2$. |
-| `bridge-07-one-third-med` | $1/3$ | $b=3$, 1 shaded | $[0, 1]$, Medium | $0, 1/2, 1$ | $0.333$ ($1/3$) | $p_1=0.15$ (too close to 0), $p_3=0.50$ (half), $p_4=0.75$ (above half) | *"1 out of 3 parts is less than half the bar, but not near zero."* | Medium support (sparse benchmarks): requires magnitude estimation without tick grid. |
-| `bridge-08-five-sixths-med` | $5/6$ | $b=6$, 5 shaded | $[0, 1]$, Medium | $0, 1/2, 1$ | $0.833$ ($5/6$) | $p_1=0.33$ (below half), $p_2=0.50$ (half), $p_3=0.67$ (too low) | *"The bar is almost completely full. Look for a location close to 1."* | Medium support near-one boundary: tests magnitude estimation near upper whole. |
+| Item ID | Shown Bar ($a/b$) | Domain & Support | Benchmarks | Exact Target Position | Exact Diagnostic Distractors | Recovery Cue | Rationale |
+|---|---|---|---|---|---|---|---|
+| `bridge-01-half-2` | $1/2$ ($b=2$, 1 shaded) | $[0, 1]$, High | $0, 1/2, 1$ | $1/2$ | $0/2$, $2/2$ | *"This point is at an endpoint. The bar is half full. Look at the 1/2 benchmark."* | Canonical baseline: establishes the center anchor of the line. |
+| `bridge-02-fourth-4` | $1/4$ ($b=4$, 1 shaded) | $[0, 1]$, High | $0, 1/2, 1$ | $1/4$ | $2/4$ (at $1/2$), $3/4$ (above $1/2$) | *"This point is at or above 1/2, but the bar is less than 1/2."* | Unit fraction strictly below $1/2$; tests distinguishing $1/4$ from $1/2$. |
+| `bridge-03-three-fourths-4` | $3/4$ ($b=4$, 3 shaded) | $[0, 1]$, High | $0, 1/2, 1$ | $3/4$ | $1/4$ (below $1/2$), $2/4$ (at $1/2$) | *"This point is at or below 1/2, but the bar is more than 1/2."* | Non-unit fraction strictly above $1/2$; symmetric counterpart to Item 02. |
+| `bridge-04-two-thirds-3` | $2/3$ ($b=3$, 2 shaded) | $[0, 1]$, High | $0, 1/2, 1$ | $2/3$ | $1/3$ (below $1/2$), $3/3$ (at $1$) | *"This point is below 1/2, but 2 out of 3 parts is more than half of the bar."* | Odd denominator; tests placement above $1/2$ where $1/2$ is not a partition line. |
+| `bridge-05-two-fourths-half` | $2/4$ ($b=4$, 2 shaded) | $[0, 1]$, High | $0, 1/2, 1$ | $2/4$ ($= 1/2$) | $1/4$ (below $1/2$), $3/4$ (above $1/2$) | *"Look at the 1/2 benchmark: 2 out of 4 equal parts fills exactly half the bar."* | Unreduced bar form mapped to the $1/2$ benchmark location (`equalFractions(2/4, 1/2)`). |
+| `bridge-06-three-eighths-8` | $3/8$ ($b=8$, 3 shaded) | $[0, 1]$, High | $0, 1/2, 1$ | $3/8$ | $2/8$ (quarter), $4/8$ (at $1/2$), $5/8$ (above $1/2$) | *"This point is at or above 1/2, but 3 of 8 parts is just under half."* | Denominator 8 near half; exercises 360px staggered/stepper touch resolution and near-half discrimination. |
+| `bridge-07-one-third-med` | $1/3$ ($b=3$, 1 shaded) | $[0, 1]$, Medium | $0, 1/2, 1$ | $1/3$ | $1/6$ (closer to $0$), $1/2$ (at half), $2/3$ (above half) | *"1 out of 3 parts is less than half the bar, but not near zero."* | Medium support (sparse benchmarks + discrete exact candidates): requires magnitude estimation without full tick grid. |
+| `bridge-08-five-sixths-med` | $5/6$ ($b=6$, 5 shaded) | $[0, 1]$, Medium | $0, 1/2, 1$ | $5/6$ | $2/6$ (below half), $3/6$ (at half), $4/6$ (too low) | *"The bar is almost completely full. Look for a location close to 1."* | Medium support near-one boundary: tests magnitude estimation near upper whole using exact sixths candidates. |
 
 ---
 
 ## 4. Instructional State and Scene Model Integration
 
 ### Scene Model Additions (`src/interaction/scene.js`)
-Currently, `'number-line'` triggers a hardcoded refusal. When activated by an approved implementation packet, the Scene Model projects:
+Currently, `'number-line'` triggers a hardcoded refusal. When activated by an approved implementation packet, the Scene Model projects `meaning.numberLine` while strictly **withholding the target coordinate** before `resolve` (`established.locatedPosition` is `null` during `encounter` and `locate`, and unconfirmed preview selection remains app-local UI draft state just like numeric input drafts):
 
 ```javascript
-// Projected scene snippet for number-line bridge
+// Projected scene snippet for number-line bridge (at locate vs. resolve)
 {
   schemaVersion: 'fractionflow.scene/v1',
   kind: 'scene',
   meaning: {
-    representationRole: 'number-line-bridge',
+    representationRole: 'number-line',
     condition: state.activeCondition,
     quantities: {
-      reference: {
+      left: {
         sourceForm: { kind: 'fraction', numerator: '3', denominator: '4' },
+        currentForm: { kind: 'fraction', numerator: '3', denominator: '4' },
         unit: { denominator: '4' },
         count: { numerator: '3' },
-        wholeSpan: { lowerWhole: '0', upperWhole: '1' }
+        whole: { kind: 'stable-unit-whole', id: 'left-stable-whole', extent: { lowerWhole: '0', upperWhole: '1' } }
       }
     },
     currentTask: {
-      taskKind: 'bar-to-line-same-amount',
-      targetFraction: { kind: 'fraction', numerator: '3', denominator: '4' },
-      supportLevel: 'high-support', // or 'medium-support'
-      promptId: 'prompt.bridge.same-amount'
+      beat: state.beat, // 'encounter' | 'locate' | 'resolve'
+      responsibility: state.beat === 'resolve' ? 'settle-final-form' : 'locate-same-amount-on-line',
+      inputKind: state.beat === 'resolve' ? 'finish-navigation' : 'line-position-choice',
+      promptId: 'phase4.bridge.same-amount'
     },
     numberLine: {
-      domain: { start: '0', end: '1' },
+      domain: { lowerWhole: '0', upperWhole: '1' },
+      densityMode: state.support.dimensions.fractionBarModel === 'high support' ? 'partitioned' : 'sparse-benchmarks',
       benchmarks: [
-        { label: '0', value: { numerator: '0', denominator: '1' }, position: '0' },
-        { label: '1/2', value: { numerator: '1', denominator: '2' }, position: '1/2' },
-        { label: '1', value: { numerator: '1', denominator: '1' }, position: '1' }
+        { label: '0', form: { kind: 'fraction', numerator: '0', denominator: '1' } },
+        { label: '1/2', form: { kind: 'fraction', numerator: '1', denominator: '2' } },
+        { label: '1', form: { kind: 'fraction', numerator: '1', denominator: '1' } }
       ],
-      partitionTicks: [
-        { index: 0, fraction: { numerator: '0', denominator: '4' } },
-        { index: 1, fraction: { numerator: '1', denominator: '4' } },
-        { index: 2, fraction: { numerator: '2', denominator: '4' } },
-        { index: 3, fraction: { numerator: '3', denominator: '4' } },
-        { index: 4, fraction: { numerator: '4', denominator: '4' } }
+      candidatePositions: [
+        { id: 'pos-0', form: { kind: 'fraction', numerator: '0', denominator: '4' }, stepIndex: 0, totalSteps: 4, benchmarkRelation: 'exact-zero' },
+        { id: 'pos-1', form: { kind: 'fraction', numerator: '1', denominator: '4' }, stepIndex: 1, totalSteps: 4, benchmarkRelation: 'between-0-and-half' },
+        { id: 'pos-2', form: { kind: 'fraction', numerator: '2', denominator: '4' }, stepIndex: 2, totalSteps: 4, benchmarkRelation: 'exact-half' },
+        { id: 'pos-3', form: { kind: 'fraction', numerator: '3', denominator: '4' }, stepIndex: 3, totalSteps: 4, benchmarkRelation: 'between-half-and-1' },
+        { id: 'pos-4', form: { kind: 'fraction', numerator: '4', denominator: '4' }, stepIndex: 4, totalSteps: 4, benchmarkRelation: 'exact-one' }
       ],
-      selectedPoint: state.pendingResponse?.selectedPoint ?? null,
-      alignmentGuideVisible: state.status === 'completed'
-    },
-    availableAction: {
-      type: 'select-position',
-      confirmEnabled: Boolean(state.pendingResponse?.selectedPoint)
+      // Strictly null before resolve so the scene never leaks which candidate is correct:
+      acceptedPosition: state.beat === 'resolve' ? state.established.locatedPosition : null,
+      alignmentGuideVisible: state.beat === 'resolve'
     }
   }
 }
@@ -170,16 +169,16 @@ Currently, `'number-line'` triggers a hardcoded refusal. When activated by an ap
 
 ### Concurrency & Versioning Posture
 - Plan 38 is actively introducing `fractionflow.episode-replay/v5` for takeaway subtraction.
-- Historical replay schemas `v1` (Plan 05), `v2` (Plan 20), `v3` (Plan 26), `v4` (Plan 35), and `v5` (Plan 38) remain strictly immutable.
-- The number-line bridge interaction defines its own versioned task pattern identifier:
-  $$\text{patternId: } \texttt{"bridge.bar-to-line-same-amount.v1"}$$
-- When serialized into replay envelopes, it uses a dedicated envelope version:
-  $$\text{schemaVersion: } \texttt{"fractionflow.episode-replay/v6"}$$
-  This avoids collision with Plan 38's subtraction records.
+- Historical replay schemas `v1` (Plan 05), `v2` (Plan 34), `v3` (Plan 18), `v4` (Plan 35), and `v5` (Plan 38) remain strictly immutable.
+- The number-line bridge interaction defines its own versioned recipe and episode definition identities:
+  $$\text{recipeId: } \texttt{"plan37.bar-to-line-same-amount"} \quad (\text{revision: } \texttt{"1"})$$
+  $$\text{definitionId: } \texttt{"phase-4-bar-to-line-same-amount"} \quad (\text{revision: } \texttt{"1"})$$
+- When serialized into replay envelopes by a future approved implementation packet, it uses the next sequential replay schema version (e.g., `fractionflow.episode-replay/v6` or the next version after all Phase 3 packets complete), avoiding any schema collision with Plan 38.
 
 ### Replay Data Invariants
-1. **Deterministic Reconstruction:** Replay reconstructs the identical visual and accessible scene from `{ problemId, seed, intents }`.
-2. **Recorded Intent Grammar:**
-   - `{ type: 'preview-candidate', point: { numerator: '3', denominator: '4' }, timestamp: ... }`
-   - `{ type: 'confirm-position', point: { numerator: '3', denominator: '4' }, timestamp: ... }`
-3. **No UI Ephemera in Replay:** Hover states, focus outlines, and unconfirmed button touches are not persisted. Only confirmed instructional actions enter the immutable log.
+1. **Canonical Envelope Keys:** Matches existing `src/interaction/replay.js` structure: `{ schemaVersion, contentIdentity, episodeDefinition, support, activeCondition, learnerIntents, taskContext }` with zero timestamps or non-deterministic fields.
+2. **Submitted Instructional Intents Only:**
+   - `{ type: 'submit-line-position', proposed: { kind: 'fraction', numerator: '3', denominator: '4' } }`
+   - `{ type: 'request-task-help' }`
+   - `{ type: 'finish-compact-episode' }`
+3. **No UI Ephemera in Replay:** Unconfirmed candidate previews, hover states, focus outlines, and help-panel open/close toggles remain app-local UI draft state and are never written into `learnerIntents`.

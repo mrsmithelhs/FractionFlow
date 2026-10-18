@@ -109,11 +109,25 @@ To guarantee that future implementation tests are non-vacuous, the test harness 
 
 ---
 
-## 5. Enforcement of Roadmap Phase Gates (§31 and §90)
+## 5. Retained Follow-Up Obligations, Observation Guide, and Phase Gates (§31 and §90)
 
-Plan 37 delivers a rigorous, reviewable design dossier. It adheres to all project roadmap gates:
+### 5.1 Retained Open Obligations (Not Discharged by Plan 37)
+1. **Multi-Whole Stack-to-Line Magnitude Bridge ($[0, 2]$):**
+   - Retained on `docs/development/phase-3-follow-up-obligations.md`. A $[0, 1]$ first bridge task does not discharge crossing-one-whole transfer ($a/b > 1$ across `0`, `1`, `2`). Revisit only after the $[0, 1]$ line contract is implemented and validated.
+2. **Larger-Denominator ($b > 8$) Line-Density Investigation:**
+   - Because direct $1/b$ tick spacing at $360\text{px}$ drops to $31.2\text{px}$ ($b=10$) and $26.0\text{px}$ ($b=12$), this initial bridge bounds full-partitioned tasks to $b \in \{2, 3, 4, 6, 8\}$. Extending number-line tasks to $b \in \{10, 12\}$ or finer subdivisions remains a separate future investigation.
+
+### 5.2 Observation Guide for a Possible Future Authorized Learner Study
+Static rendering and automated DOM tests cannot prove conceptual transfer. If the owner separately authorizes a future learner observation study (with zero PII or analytics stored in this repository), observe:
+1. **Length-to-Distance Connection vs. Blind Slot Counting:** Does the learner reference the right edge of the shaded bar and the $1/2$ benchmark, or do they count tick marks from $0$ while ignoring the bar's spatial extent (especially on unreduced items like $2/4$ or sparse-benchmark items)?
+2. **Benchmark Anchoring on Odd Denominators ($b=3$):** On $1/3$ and $2/3$ (where $1/2$ does not fall on a partition tick), does the $1/2$ benchmark help learners place $2/3$ above half and $1/3$ below half, or does the extra tick at $1/2$ cause "extra-part" counting confusion (misreading 3rds + the $1/2$ tick as 4ths)?
+3. **Two-Step Selection Ergonomics:** On $360\text{px}$ touch screens and keyboard navigation, do learners smoothly preview and confirm without accidental submissions or target collisions at $b=8$?
+
+### 5.3 Enforcement of Roadmap Phase Gates (§31 and §90) and Owner Decisions
 1. **No Premature Activation:** Plan 37 does not flip representation flags, register runtime goals, or modify production code.
-2. **Phase 3 Bar-Stability Gate (§31):** Phase 3 exit requires confirming that fraction-bar interactions are coherent across both addition and subtraction. Plan 38 (subtraction batch) must complete, and the bar model must be proven stable, before number lines are introduced.
-3. **Number-Line Checkpoint (§90):** §90 asks: *"What specific learning problem will the number line solve? Can the transition be made perceptually clear? Will number-line work reduce dependence on part-whole imagery?"*
-   - This dossier directly answers §90: the learning problem solved is connecting amount in a divided whole to location as a number; the transition is made perceptually clear via aligned endpoints and persistent vertical juxtaposition; dependence on part-whole imagery is reduced by anchoring to continuous magnitude and the $1/2$ benchmark.
-4. **Owner Authorization Gate:** Source implementation remains separately gated behind owner design adoption.
+2. **Phase 3 Bar-Stability Gate (§31):** Phase 3 exit requires confirming that fraction-bar interactions are coherent across both addition and subtraction (Plan 38 + unlike-denominator bar subtraction) before Phase 4 number-line source implementation begins.
+3. **Number-Line Checkpoint (§90):** Answers §90 by anchoring the first number-line task to connecting bar length on $[0, 1]$ with coordinate distance from $0$ using `0`, `1/2`, and `1` benchmarks.
+4. **Owner Adoption Decisions Required Before Source Packet Creation:**
+   - Adopt **Candidate A (Same-Amount Placement on a $[0, 1]$ Bar-to-Line Bridge)** with persistent vertical bar-above-line coexistence and two-step selection (`select` $\to$ `Check Position`).
+   - Adopt the **support-dependent density policy** (High Support: full $1/b$ ticks for $b \in \{2, 3, 4, 6, 8\}$ with staggered/stepper hit targets at $b=8$; Medium Support: sparse `0`, `1/2`, `1` benchmarks with discrete exact candidates).
+   - Choose between the **2-packet serial implementation split** (Packet 1: pure content/state/scene/replay; Packet 2: renderers/app/routes) or a **single staged packet** with internal checkpoints, sequenced after Phase 3 bar subtraction and the §31/§90 gate review.
