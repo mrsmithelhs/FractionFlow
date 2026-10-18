@@ -45,3 +45,11 @@ Parent commit anchors: `85b0a7b` closes owner-accepted Plan35 and initiates Plan
 dossier and delivered status. Packet lint and staged diff checks passed. The only
 remaining unowned workspace files are the two pre-existing root Vite logs; they
 were not changed or committed. This progress report is committed last.
+
+## Owner adoption — 2026-10-18
+
+The owner adopted the task and explicitly instructed closure and creation of the
+batch implementation packet. See owner-acceptance.md and DECISION-045. This
+supersedes pending-adoption statements above. Plan36 is complete as design;
+Plan38 is ready but unstarted. No product behavior, deployment or efficacy
+acceptance follows from design closure.

@@ -1189,3 +1189,37 @@ without repeating checks in an already lengthy episode sequence. Learning and
 engagement effects remain unmeasured.
 
 **Related:** Plan 18 Requirement 0 proposal and mechanism review; DECISION-037/042.
+
+### DECISION-045 - Adopt the first takeaway subtraction task and varied batch
+
+**Date:** 2026-10-18
+
+**Decision:** The owner adopted Plan36's reviewed task and instructed closure
+and creation of a batch implementation packet. Begin learner subtraction with
+same-denominator takeaway on one stable whole: encounter/Take away as one grouped
+operation action, supply the remaining fraction, finish. No repeated per-part
+clicks, extra acknowledgment, Notice/reflection or learner Replay. The action
+triggers inspection; it does not demonstrate selection/understanding of a count.
+
+Adopt the eight operand-defined records and goal **Subtract fractions with the
+same denominator**. Positive proper source operands may retain unreduced authored
+forms; left is at least right, so equal operands/zero is included and negatives
+are excluded. Accept any exact-equivalent response and display the learner's
+accepted form. Withhold numeric result labels before acceptance, including zero;
+retain whole/partition/removal marks. No automatic equivalence line afterward.
+Requested assistance is concise and view-appropriate, with identical behavior
+under the existing high/medium support profiles rather than an invented difference.
+
+Plan36's exact identities, strict v5 context/intent proposal, app-local drafts
+and bounded source/validation map guide Plan38. Its Requirement0 must confirm
+actual wiring before source; existing v1-v4 and addition behavior remain protected.
+This adopts a task-specific representation for remaining amount, not a universal
+takeaway/comparison winner, efficacy claim, source delivery or deployment approval.
+Comparison/difference and broader subtraction families remain follow-up work.
+
+**Rationale:** Start subtraction with a clear operation meaning and short learner
+responsibility while scaling a compact varied batch through exact algorithms.
+The zero case is a natural boundary of this recipe, not a new lesson by default.
+
+**Related:** Plan36 owner-acceptance.md, design-contract.md and dossier-review.md;
+Plan38; OQ-25; DECISION-040/041/042.

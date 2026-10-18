@@ -1,7 +1,8 @@
 ---
 id: plan-36
 title: Learner Subtraction Integration Design
-status: delivered
+status: complete
+resolution: "Owner adopted the reviewed takeaway task,grouped action and equivalent-fraction response,eight-item batch including zero,and same-denominator subtraction goal. Design accepted; Plan38 is the separate unstarted implementation packet. No universal representation,efficacy or deployment approval inferred."
 depends_on: [plan-15, plan-29, plan-35]
 gate: "Design acceptance and explicit initial subtraction task/representation disposition. No learner-app source implementation or deployment in this packet."
 summary: >-

@@ -580,17 +580,16 @@ should be scoped as one.
 
 **Current staging, 2026-10-18:** Plan 15 built both learner-operable prototypes;
 their technical repairs and both rendered screens are owner accepted. No learner
-observations or representation preference were established. This question remains
-open for the initial learner-app task/representation disposition, not because the
-prototypes are missing. A bounded integration packet can propose a task-specific,
-provisional choice for owner approval without asserting a universal winner or
-instructional efficacy. Like-denominator subtraction is the proposed first
-integration scope; broader subtraction-family scaling follows complete state,
-projection, recovery, access and replay evidence. Plan36 delivered its initial
-integration-design dossier on2026-10-18, pending owner task/representation,
-flow and zero-boundary adoption; no product source is authorized by that delivery.
-Takeaway for a remaining-amount task is a recommendation to review, not an adopted
-representation policy or a resolution of this question.
+observations or universal representation preference were established. The owner
+has now adopted Plan36's task-specific takeaway design for like-denominator
+remaining-amount subtraction, including grouped action, equivalent answers and
+the zero boundary (DECISION-045). The initial-task choice is dispositioned;
+broader comparison/difference and subtraction-family representation questions
+remain open. This is not a declaration of comparative efficacy. Plan38 is ready
+but unstarted for the eight-item batch, with a pre-source mechanism gate and
+independent technical/rendered acceptance. Broader scaling still follows complete
+state, projection, recovery, access and replay evidence; no source was changed by
+design adoption.
 
 ---
 
