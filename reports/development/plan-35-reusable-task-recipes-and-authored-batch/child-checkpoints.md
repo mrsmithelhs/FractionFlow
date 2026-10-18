@@ -166,3 +166,21 @@ rendered learner agency remain unverified.
   45 tests total. No hold-out records, app/render/routes, settings, dependency
   changes or Git metadata were added. This is the second consolidated repair
   checkpoint; stop for parent/Sol review and commit before further expansion.
+
+## Stage B data-only hold-outs — 2026-10-17
+
+- Against accepted foundation `46790ad`, changed only
+  `src/content/data/plan35-addition-recipe-records.js`: added the approved
+  construct `1/5 + 1/6` at target 30 and inspect `1/2 + 1/5` at target 20,
+  each with task-data@2 and exact membership in test-only
+  `plan35-data-only-holdouts@1`.
+- The live set remains 21 items and 13 live recipe records. The complete data
+  registry now contains 15 records (13 live, 2 hold-out); the hold-out set
+  contains only its two explicit IDs. No test or behavior changes were needed.
+- Existing generic high/medium completion, recovery, and replay checks passed
+  unchanged: five focused suites, 45 tests. A registry probe confirmed exact
+  live/hold-out membership and task-data revision 2 for both held-out records.
+- Full diff description, exact source diff statistics, verification command,
+  change-class boundary, and limits are recorded in
+  `stage-b-data-only-holdouts.md`. Stop for parent diff verification and commit;
+  no mounted wiring is authorized at this checkpoint.

@@ -74,6 +74,19 @@ const records = [
     fixtureProfileId: 'curated-review', fixtureSelector: 'nested-denominator-addition', fixtureOverlays: ['reducible-result'],
     sourceForms: { left: fraction('5', '12'), right: fraction('1', '3') }, recipeId: PLAN35_RECIPE_IDS.identify, targetDenominator: '12', requiredSide: 'right',
   },
+  {
+    itemId: 'plan35-holdout-construct-fifth-sixth-30', fixtureId: 'curated-plan35-holdout-one-fifth-one-sixth-construct', authoringRevision: 'plan35-record-v1',
+    fixtureProfileId: 'curated-review', fixtureSelector: 'relatively-prime-addition', fixtureOverlays: [],
+    sourceForms: { left: fraction('1', '5'), right: fraction('1', '6') }, recipeId: PLAN35_RECIPE_IDS.construct, targetDenominator: '30',
+    taskDataRevision: '2',
+  },
+  {
+    itemId: 'plan35-holdout-inspect-half-fifth-20', fixtureId: 'curated-plan35-holdout-half-fifth-inspect', authoringRevision: 'plan35-record-v1',
+    fixtureProfileId: 'curated-review', fixtureSelector: 'relatively-prime-addition', fixtureOverlays: [],
+    sourceForms: { left: fraction('1', '2'), right: fraction('1', '5') }, recipeId: PLAN35_RECIPE_IDS.inspect, targetDenominator: '20',
+    taskDataRevision: '2', stimulusId: 'plan35-stim-holdout-half-fifth-20', stimulusRevision: '1',
+    candidates: { left: fraction('9', '20'), right: fraction('4', '20') },
+  },
 ];
 
 export const PLAN35_ADDITION_RECIPE_RECORDS = deepFreeze(records.map((record) => ({
@@ -111,7 +124,17 @@ export const PLAN35_ADDITION_RECIPE_PRACTICE_SET = deepFreeze({
   ],
 });
 
-export const PLAN35_RECIPE_ASSOCIATION_SETS = deepFreeze([PLAN35_ADDITION_RECIPE_PRACTICE_SET]);
+export const PLAN35_DATA_ONLY_HOLDOUT_SET = deepFreeze({
+  id: 'plan35-data-only-holdouts', revision: '1', itemIds: [
+    'plan35-holdout-construct-fifth-sixth-30',
+    'plan35-holdout-inspect-half-fifth-20',
+  ],
+});
+
+export const PLAN35_RECIPE_ASSOCIATION_SETS = deepFreeze([
+  PLAN35_ADDITION_RECIPE_PRACTICE_SET,
+  PLAN35_DATA_ONLY_HOLDOUT_SET,
+]);
 
 export function resolvePlan35RecipeAssociationSet(setId, revision, itemId) {
   return PLAN35_RECIPE_ASSOCIATION_SETS.find((set) => set.id === setId
