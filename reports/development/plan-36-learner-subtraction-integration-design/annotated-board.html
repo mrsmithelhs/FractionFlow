@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Proposed FractionFlow subtraction flow board</title>
+  <style>
+    :root { color-scheme: light; font-family: system-ui, sans-serif; color: #17324d; background: #f4f7f9; }
+    body { margin: 0; padding: 16px; }
+    main { max-width: 760px; margin: 0 auto; }
+    h1 { font-size: 1.35rem; margin: 0 0 .3rem; }
+    .notice { background: #fff5dc; border-left: 4px solid #9b6711; padding: .7rem; margin: .7rem 0 1rem; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 290px), 1fr)); gap: 12px; }
+    figure { margin: 0; border: 1px solid #b9c8d4; border-radius: 12px; background: white; padding: 14px; }
+    figcaption { font-weight: 700; margin-bottom: 10px; }
+    .equation { display: flex; align-items: center; gap: 10px; font-size: 1.35rem; margin: 10px 0; }
+    .frac { display: inline-grid; grid-template-rows: auto auto auto; justify-items: center; min-width: 1.4em; line-height: 1.15; font-size: 1em; font-variant-numeric: tabular-nums; }
+    .frac .rule { width: 100%; border-top: 2px solid currentColor; }
+    .prompt { margin: 10px 0; font-size: 1rem; }
+    svg { width: 100%; height: auto; display: block; }
+    .bar-outline { fill: none; stroke: #37566f; stroke-width: 2; }
+    .filled { fill: #6caed0; }
+    .empty { fill: #fff; }
+    .removed { fill: url(#hatch); }
+    .boundary { stroke: #37566f; stroke-width: 2; }
+    .legend { font-size: .9rem; margin: .5rem 0 0; }
+    .action { display: inline-block; margin-top: 7px; border: 2px solid #315b77; border-radius: 8px; padding: 8px 10px; color: #17324d; font-weight: 650; }
+    .answer { display: inline-flex; align-items: center; gap: 10px; margin: 8px 0; }
+    .answer .frac { min-width: 2.2em; min-height: 2.3em; border: 1px solid #748b9c; border-radius: 5px; padding: 3px 5px; }
+    .field-label { font-size: .85rem; }
+    footer { margin-top: 14px; font-size: .9rem; }
+    @media (max-width: 380px) { body { padding: 10px; } figure { padding: 11px; } }
+  </style>
+</head>
+<body>
+<main>
+  <h1>Takeaway / find what remains</h1>
+  <p class="notice"><strong>Proposed, unbuilt layout.</strong> These are authored static frames, not runtime behavior or measured evidence that the screen fits 360px, a Chromebook, or enlarged text.</p>
+  <svg aria-hidden="true" width="0" height="0" style="position:absolute">
+    <defs>
+      <pattern id="hatch" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(35)">
+        <rect width="8" height="8" fill="#f4d698"></rect>
+        <line x1="0" y1="0" x2="0" y2="8" stroke="#704513" stroke-width="3"></line>
+      </pattern>
+    </defs>
+  </svg>
+  <div class="grid">
+    <figure>
+      <figcaption>1. Initial amount and operation action</figcaption>
+      <div class="equation" aria-label="five eighths minus two eighths">
+        <span class="frac"><span>5</span><span class="rule"></span><span>8</span></span>
+        <span aria-hidden="true">−</span>
+        <span class="frac"><span>2</span><span class="rule"></span><span>8</span></span>
+      </div>
+      <svg viewBox="0 0 320 52" role="img" aria-label="One whole divided into eight equal parts; the first five parts show the starting amount.">
+        <rect class="filled" x="0" y="0" width="200" height="48"></rect>
+        <rect class="empty" x="200" y="0" width="120" height="48"></rect>
+        <rect class="bar-outline" x="1" y="1" width="318" height="46"></rect>
+        <path class="boundary" d="M40 1V47 M80 1V47 M120 1V47 M160 1V47 M200 1V47 M240 1V47 M280 1V47"></path>
+      </svg>
+      <p class="prompt">How much is left?</p>
+      <span class="action">Take away</span>
+      <p class="legend">The action marks the shown 2/8 together. It is not a count-selection response.</p>
+    </figure>
+    <figure>
+      <figcaption>2. Marked amount remains inspectable</figcaption>
+      <div class="equation" aria-label="five eighths minus two eighths">
+        <span class="frac"><span>5</span><span class="rule"></span><span>8</span></span>
+        <span aria-hidden="true">−</span>
+        <span class="frac"><span>2</span><span class="rule"></span><span>8</span></span>
+      </div>
+      <svg viewBox="0 0 320 52" role="img" aria-label="The same whole and five-part starting amount; two starting parts have a diagonal removed mark, and the other three remain unmarked.">
+        <rect class="filled" x="0" y="0" width="120" height="48"></rect>
+        <rect class="removed" x="120" y="0" width="80" height="48"></rect>
+        <rect class="empty" x="200" y="0" width="120" height="48"></rect>
+        <rect class="bar-outline" x="1" y="1" width="318" height="46"></rect>
+        <path class="boundary" d="M40 1V47 M80 1V47 M120 1V47 M160 1V47 M200 1V47 M240 1V47 M280 1V47"></path>
+      </svg>
+      <p class="prompt">The whole and all eight partitions stay visible.</p>
+      <p class="legend">The unmarked starting parts can be counted as the intended work. No numeric answer label is shown.</p>
+    </figure>
+    <figure>
+      <figcaption>3. Learner supplies an equivalent fraction</figcaption>
+      <div class="equation" aria-label="five eighths minus two eighths equals amount left">
+        <span class="frac"><span>5</span><span class="rule"></span><span>8</span></span>
+        <span aria-hidden="true">−</span>
+        <span class="frac"><span>2</span><span class="rule"></span><span>8</span></span>
+        <span aria-hidden="true">=</span>
+        <span>Amount left</span>
+      </div>
+      <svg viewBox="0 0 320 52" role="img" aria-label="The same marked bar remains while the learner answers.">
+        <rect class="filled" x="0" y="0" width="120" height="48"></rect>
+        <rect class="removed" x="120" y="0" width="80" height="48"></rect>
+        <rect class="empty" x="200" y="0" width="120" height="48"></rect>
+        <rect class="bar-outline" x="1" y="1" width="318" height="46"></rect>
+        <path class="boundary" d="M40 1V47 M80 1V47 M120 1V47 M160 1V47 M200 1V47 M240 1V47 M280 1V47"></path>
+      </svg>
+      <div class="answer" aria-label="blank fraction response fields">
+        <span class="frac"><span>&nbsp;</span><span class="rule"></span><span>&nbsp;</span></span>
+        <span class="field-label">Numerator of amount left<br>Denominator of amount left</span>
+      </div>
+      <p class="legend">The response can be any exact equivalent fraction; 8 is a model partition, not a required denominator.<br><strong>Requested-help preview (shown only when requested):</strong> Count only the shaded parts without removal marks.</p>
+    </figure>
+  </div>
+  <footer>Zero proposal: before a correct response, mark every starting part and keep every partition visible without displaying “0 left” or a numeric zero. After acceptance, show the learner's exact submitted equivalent form. Layout, fit, access and learning effects remain unverified.</footer>
+</main>
+</body>
+</html>

@@ -1,0 +1,295 @@
+{
+  "method": "subtractAtCommonDenominator + simplifyFraction + validateOperationResult",
+  "authoredOperands": [
+    {
+      "id": "takeaway-8-5-minus-2",
+      "numerator": 5,
+      "removed": 2,
+      "denominator": 8,
+      "role": "moderate positive remainder"
+    },
+    {
+      "id": "takeaway-12-8-minus-3",
+      "numerator": 8,
+      "removed": 3,
+      "denominator": 12,
+      "role": "positive irreducible raw difference"
+    },
+    {
+      "id": "takeaway-10-7-minus-3",
+      "numerator": 7,
+      "removed": 3,
+      "denominator": 10,
+      "role": "positive reducible raw difference"
+    },
+    {
+      "id": "takeaway-11-9-minus-4",
+      "numerator": 9,
+      "removed": 4,
+      "denominator": 11,
+      "role": "positive irreducible raw difference"
+    },
+    {
+      "id": "takeaway-9-6-minus-1",
+      "numerator": 6,
+      "removed": 1,
+      "denominator": 9,
+      "role": "large positive remainder"
+    },
+    {
+      "id": "takeaway-9-6-minus-6",
+      "numerator": 6,
+      "removed": 6,
+      "denominator": 9,
+      "role": "equal-operands zero boundary"
+    },
+    {
+      "id": "takeaway-6-5-minus-4",
+      "numerator": 5,
+      "removed": 4,
+      "denominator": 6,
+      "role": "one-part positive remainder"
+    },
+    {
+      "id": "takeaway-8-7-minus-1",
+      "numerator": 7,
+      "removed": 1,
+      "denominator": 8,
+      "role": "near-whole positive remainder"
+    }
+  ],
+  "cases": [
+    {
+      "id": "takeaway-8-5-minus-2",
+      "role": "moderate positive remainder",
+      "operands": {
+        "left": {
+          "numerator": "5",
+          "denominator": "8"
+        },
+        "right": {
+          "numerator": "2",
+          "denominator": "8"
+        }
+      },
+      "derived": {
+        "rawDifference": {
+          "numerator": "3",
+          "denominator": "8"
+        },
+        "simplifiedDifference": {
+          "numerator": "3",
+          "denominator": "8"
+        }
+      },
+      "checks": {
+        "rawClassification": "correct-simplified",
+        "simplifiedClassification": "correct-simplified",
+        "bothExact": true
+      }
+    },
+    {
+      "id": "takeaway-12-8-minus-3",
+      "role": "positive irreducible raw difference",
+      "operands": {
+        "left": {
+          "numerator": "8",
+          "denominator": "12"
+        },
+        "right": {
+          "numerator": "3",
+          "denominator": "12"
+        }
+      },
+      "derived": {
+        "rawDifference": {
+          "numerator": "5",
+          "denominator": "12"
+        },
+        "simplifiedDifference": {
+          "numerator": "5",
+          "denominator": "12"
+        }
+      },
+      "checks": {
+        "rawClassification": "correct-simplified",
+        "simplifiedClassification": "correct-simplified",
+        "bothExact": true
+      }
+    },
+    {
+      "id": "takeaway-10-7-minus-3",
+      "role": "positive reducible raw difference",
+      "operands": {
+        "left": {
+          "numerator": "7",
+          "denominator": "10"
+        },
+        "right": {
+          "numerator": "3",
+          "denominator": "10"
+        }
+      },
+      "derived": {
+        "rawDifference": {
+          "numerator": "4",
+          "denominator": "10"
+        },
+        "simplifiedDifference": {
+          "numerator": "2",
+          "denominator": "5"
+        }
+      },
+      "checks": {
+        "rawClassification": "correct-unsimplified",
+        "simplifiedClassification": "correct-simplified",
+        "bothExact": true
+      }
+    },
+    {
+      "id": "takeaway-11-9-minus-4",
+      "role": "positive irreducible raw difference",
+      "operands": {
+        "left": {
+          "numerator": "9",
+          "denominator": "11"
+        },
+        "right": {
+          "numerator": "4",
+          "denominator": "11"
+        }
+      },
+      "derived": {
+        "rawDifference": {
+          "numerator": "5",
+          "denominator": "11"
+        },
+        "simplifiedDifference": {
+          "numerator": "5",
+          "denominator": "11"
+        }
+      },
+      "checks": {
+        "rawClassification": "correct-simplified",
+        "simplifiedClassification": "correct-simplified",
+        "bothExact": true
+      }
+    },
+    {
+      "id": "takeaway-9-6-minus-1",
+      "role": "large positive remainder",
+      "operands": {
+        "left": {
+          "numerator": "6",
+          "denominator": "9"
+        },
+        "right": {
+          "numerator": "1",
+          "denominator": "9"
+        }
+      },
+      "derived": {
+        "rawDifference": {
+          "numerator": "5",
+          "denominator": "9"
+        },
+        "simplifiedDifference": {
+          "numerator": "5",
+          "denominator": "9"
+        }
+      },
+      "checks": {
+        "rawClassification": "correct-simplified",
+        "simplifiedClassification": "correct-simplified",
+        "bothExact": true
+      }
+    },
+    {
+      "id": "takeaway-9-6-minus-6",
+      "role": "equal-operands zero boundary",
+      "operands": {
+        "left": {
+          "numerator": "6",
+          "denominator": "9"
+        },
+        "right": {
+          "numerator": "6",
+          "denominator": "9"
+        }
+      },
+      "derived": {
+        "rawDifference": {
+          "numerator": "0",
+          "denominator": "9"
+        },
+        "simplifiedDifference": {
+          "numerator": "0",
+          "denominator": "1"
+        }
+      },
+      "checks": {
+        "rawClassification": "correct-unsimplified",
+        "simplifiedClassification": "correct-simplified",
+        "bothExact": true
+      }
+    },
+    {
+      "id": "takeaway-6-5-minus-4",
+      "role": "one-part positive remainder",
+      "operands": {
+        "left": {
+          "numerator": "5",
+          "denominator": "6"
+        },
+        "right": {
+          "numerator": "4",
+          "denominator": "6"
+        }
+      },
+      "derived": {
+        "rawDifference": {
+          "numerator": "1",
+          "denominator": "6"
+        },
+        "simplifiedDifference": {
+          "numerator": "1",
+          "denominator": "6"
+        }
+      },
+      "checks": {
+        "rawClassification": "correct-simplified",
+        "simplifiedClassification": "correct-simplified",
+        "bothExact": true
+      }
+    },
+    {
+      "id": "takeaway-8-7-minus-1",
+      "role": "near-whole positive remainder",
+      "operands": {
+        "left": {
+          "numerator": "7",
+          "denominator": "8"
+        },
+        "right": {
+          "numerator": "1",
+          "denominator": "8"
+        }
+      },
+      "derived": {
+        "rawDifference": {
+          "numerator": "6",
+          "denominator": "8"
+        },
+        "simplifiedDifference": {
+          "numerator": "3",
+          "denominator": "4"
+        }
+      },
+      "checks": {
+        "rawClassification": "correct-unsimplified",
+        "simplifiedClassification": "correct-simplified",
+        "bothExact": true
+      }
+    }
+  ]
+}

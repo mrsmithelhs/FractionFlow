@@ -1,7 +1,7 @@
 ---
 id: plan-36
 title: Learner Subtraction Integration Design
-status: in-progress
+status: delivered
 depends_on: [plan-15, plan-29, plan-35]
 gate: "Design acceptance and explicit initial subtraction task/representation disposition. No learner-app source implementation or deployment in this packet."
 summary: >-
@@ -153,12 +153,16 @@ Persist the dossier in this packet's report folder, with sources and uncertainty
 beside each conclusion. Conclude only what the evidence discriminates; if rival
 fits remain, name the next test rather than manufacture a winner.
 
-- [ ] Source inventory and rival/falsifier table identify the actual missing capability.
-- [ ] Initial task, representation and result-domain recommendation are explicit.
-- [ ] Concise visual/linear flow, local help/recovery and participation are specified.
-- [ ] Varied data batch and bounded implementation/replay map are reviewable.
-- [ ] Required progress.md records evidence, decisions still needed and limits.
-- [ ] No unrelated files, product changes or acceptance/status claims.
+- [x] Source inventory and rival/falsifier table identify the actual missing capability.
+- [x] Initial task, representation and result-domain recommendation are explicit.
+- [x] Concise visual/linear flow, local help/recovery and participation are specified.
+- [x] Varied data batch and bounded implementation/replay map are reviewable.
+- [x] Required progress.md records evidence, decisions still needed and limits.
+- [x] No unrelated files, product changes or acceptance/status claims.
+
+Technical design delivery accepted by orchestration on2026-10-18; owner adoption
+of the proposed task, flow, zero/equivalent-response policy and goal placement
+remains pending. OQ-25 is open and no product source work is authorized.
 
 Implementers report and stop; they do not set completion status, edit parent
 dispositions or declare done/ready to ship. Follow inherited advisor declaration

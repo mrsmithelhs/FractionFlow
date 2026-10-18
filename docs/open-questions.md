@@ -586,8 +586,9 @@ prototypes are missing. A bounded integration packet can propose a task-specific
 provisional choice for owner approval without asserting a universal winner or
 instructional efficacy. Like-denominator subtraction is the proposed first
 integration scope; broader subtraction-family scaling follows complete state,
-projection, recovery, access and replay evidence. Plan36 is now in-progress for
-the initial integration-design work; its execution authorizes no product source.
+projection, recovery, access and replay evidence. Plan36 delivered its initial
+integration-design dossier on2026-10-18, pending owner task/representation,
+flow and zero-boundary adoption; no product source is authorized by that delivery.
 Takeaway for a remaining-amount task is a recommendation to review, not an adopted
 representation policy or a resolution of this question.
 
