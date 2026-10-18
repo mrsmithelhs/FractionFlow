@@ -221,6 +221,11 @@ describe('Plan 38 like-denominator subtraction interaction foundation', () => {
     expect(simplifiedAttempt.status).toBe('active');
     expect(simplifiedAttempt.beat).toBe('resolve');
     expect(simplifiedAttempt.established.operation.mathClassification).toBe('correct-simplified');
+    expect(simplifiedAttempt.established.operation.rawResultForm).toEqual({
+      kind: 'fraction',
+      numerator: '4',
+      denominator: '10',
+    });
     expect(simplifiedAttempt.established.operation.submittedForm).toEqual({
       kind: 'fraction',
       numerator: '2',
@@ -236,6 +241,11 @@ describe('Plan 38 like-denominator subtraction interaction foundation', () => {
       proposed: { kind: 'fraction', numerator: '3', denominator: '4' },
     });
     expect(nearWholeSimplified.established.operation.mathClassification).toBe('correct-simplified');
+    expect(nearWholeSimplified.established.operation.rawResultForm).toEqual({
+      kind: 'fraction',
+      numerator: '6',
+      denominator: '8',
+    });
     expect(nearWholeSimplified.established.operation.submittedForm).toEqual({
       kind: 'fraction',
       numerator: '3',
@@ -252,6 +262,11 @@ describe('Plan 38 like-denominator subtraction interaction foundation', () => {
       proposed: { kind: 'fraction', numerator: '0', denominator: '9' },
     });
     expect(zeroRaw.established.operation.mathClassification).toBe('correct-unsimplified');
+    expect(zeroRaw.established.operation.rawResultForm).toEqual({
+      kind: 'fraction',
+      numerator: '0',
+      denominator: '9',
+    });
     expect(zeroRaw.established.operation.submittedForm).toEqual({
       kind: 'fraction',
       numerator: '0',
@@ -263,6 +278,11 @@ describe('Plan 38 like-denominator subtraction interaction foundation', () => {
       proposed: { kind: 'fraction', numerator: '0', denominator: '1' },
     });
     expect(zeroSimplified.established.operation.mathClassification).toBe('correct-simplified');
+    expect(zeroSimplified.established.operation.rawResultForm).toEqual({
+      kind: 'fraction',
+      numerator: '0',
+      denominator: '9',
+    });
     expect(zeroSimplified.established.operation.submittedForm).toEqual({
       kind: 'fraction',
       numerator: '0',
@@ -276,6 +296,10 @@ describe('Plan 38 like-denominator subtraction interaction foundation', () => {
 
     // Help at encounter is not permitted
     expect(() => applyIntent(state, { type: 'request-task-help' }))
+      .toThrowError(EpisodeIntentError);
+
+    // Legacy request-help rejected on Plan 36 episodes
+    expect(() => applyIntent(state, { type: 'request-help' }))
       .toThrowError(EpisodeIntentError);
 
     // Help at operate is permitted and recorded

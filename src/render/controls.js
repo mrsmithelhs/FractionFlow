@@ -130,14 +130,26 @@ export function createFractionResponseInput({
   onEmptySubmit,
   initialNumerator = '',
   initialDenominator = '',
+  groupLabel = null,
+  numeratorLabel = null,
+  denominatorLabel = null,
+  allowZeroNumerator = false,
 } = {}) {
-  const wrapper = document.createElement('div');
+  const wrapper = groupLabel ? document.createElement('fieldset') : document.createElement('div');
   wrapper.classList.add('control-fraction-response-wrapper');
+  if (groupLabel) {
+    wrapper.setAttribute('role', 'group');
+    wrapper.setAttribute('aria-label', groupLabel);
+    const legendEl = document.createElement('legend');
+    legendEl.classList.add('control-legend', 'sr-only');
+    legendEl.textContent = groupLabel;
+    wrapper.appendChild(legendEl);
+  }
 
   const fields = document.createElement('div');
   fields.classList.add('control-fraction-fields');
 
-  const makeField = (id, label) => {
+  const makeField = (id, label, minVal = '1') => {
     const field = document.createElement('div');
     field.classList.add('control-fraction-field');
     const labelEl = document.createElement('label');
@@ -150,7 +162,7 @@ export function createFractionResponseInput({
     input.type = 'number';
     input.id = id;
     input.classList.add('fraction-control', 'control-numeric-input', 'control-fraction-input');
-    input.min = '1';
+    input.min = minVal;
     input.max = '999';
     input.step = '1';
     input.inputMode = 'numeric';
@@ -159,13 +171,23 @@ export function createFractionResponseInput({
     return { field, input };
   };
 
-  const numerator = makeField(numeratorId, strings.operate.numeratorLabel);
+  const numerator = makeField(
+    numeratorId,
+    numeratorLabel || strings.operate.numeratorLabel,
+    allowZeroNumerator ? '0' : '1',
+  );
   const slash = document.createElement('span');
   slash.classList.add('control-fraction-slash');
   slash.setAttribute('aria-hidden', 'true');
   slash.textContent = '/';
-  const denominator = makeField(denominatorId, strings.operate.denominatorLabel);
-  fields.append(numerator.field, slash, denominator.field);
+  const denominator = makeField(
+    denominatorId,
+    denominatorLabel || strings.operate.denominatorLabel,
+    '1',
+  );
+  fields.appendChild(numerator.field);
+  fields.appendChild(slash);
+  fields.appendChild(denominator.field);
 
   const error = document.createElement('p');
   error.classList.add('control-supporting-text', 'control-fraction-error');
@@ -174,8 +196,11 @@ export function createFractionResponseInput({
   const submit = () => {
     const numeratorValue = numerator.input.value.trim();
     const denominatorValue = denominator.input.value.trim();
-    const validInteger = (value) => /^[1-9][0-9]*$/.test(value);
-    if (!validInteger(numeratorValue) || !validInteger(denominatorValue)) {
+    const validNumerator = (value) => (allowZeroNumerator
+      ? /^(0|[1-9][0-9]*)$/.test(value)
+      : /^[1-9][0-9]*$/.test(value));
+    const validDenominator = (value) => /^[1-9][0-9]*$/.test(value);
+    if (!validNumerator(numeratorValue) || !validDenominator(denominatorValue)) {
       error.textContent = strings.operate.fractionRequired;
       if (onEmptySubmit) onEmptySubmit();
       return;
@@ -201,7 +226,9 @@ export function createFractionResponseInput({
     });
   }
 
-  wrapper.append(fields, submitButton, error);
+  wrapper.appendChild(fields);
+  wrapper.appendChild(submitButton);
+  wrapper.appendChild(error);
   return {
     element: wrapper,
     focus: () => numerator.input.focus(),

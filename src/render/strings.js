@@ -141,6 +141,19 @@ export const STRINGS = Object.freeze({
     compactReady: () => "That's right.",
   }),
 
+  subtraction: Object.freeze({
+    takeAwayButton: 'Take away',
+    howMuchLeft: 'How much is left?',
+    amountLeftGroup: 'Amount left',
+    numeratorLabel: 'Numerator of amount left',
+    denominatorLabel: 'Denominator of amount left',
+    thatAmountLeft: 'That amount is left.',
+    errorRecovery: 'Check the parts left. Try again.',
+    visualHelp: 'Count only the shaded parts without removal marks.',
+    linearHelp: 'The second fraction is the amount taken away. Use the starting amount to work out what remains.',
+  }),
+
+
   // Condition B: Satisfies DECISION-012 (visual matching with distractors)
   // AND DECISION-026 (check-the-premise cases where the reassuring answer is not correct).
   reflect: Object.freeze({

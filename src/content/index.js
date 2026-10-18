@@ -14,7 +14,10 @@ export * from './data/plan35-addition-recipe-records.js';
 export * from './plan35-addition-recipe-task.js';
 export * from './authored-content-catalog.js';
 export * from './authored-problem-materializer.js';
+export * from './data/plan36-like-denominator-subtraction-records.js';
+export * from './plan36-like-denominator-takeaway-task.js';
 export * from './generator.js';
 export * from './validation.js';
 export * from './curated.js';
 export * from './bulk-validation.js';
+

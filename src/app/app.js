@@ -6,6 +6,10 @@ import { resolvePlan34TaskContext, PLAN34_EPISODE_DEFINITION_ID } from '../conte
 import { resolvePlan18TaskContext, PLAN18_NESTED_DEFINITION_ID } from '../content/nested-renaming-task.js';
 import { resolvePlan35AdditionRecipeContext } from '../content/plan35-addition-recipe-task.js';
 import { PLAN35_RECIPE_DEFINITION_ID, PLAN35_RECIPE_IDS } from '../content/data/plan35-addition-recipe-records.js';
+import {
+  isPlan36SubtractionDefinition,
+  resolvePlan36LikeDenominatorSubtractionContext,
+} from '../content/plan36-like-denominator-takeaway-task.js';
 import { evaluateInstanceEligibility } from '../content/eligibility.js';
 import {
   applyIntent,
@@ -80,6 +84,23 @@ function canonicalInstance(item, conditions = REGISTERED_CONDITIONS, practiceTyp
       || taskContext.taskDataId !== item.taskDataId
       || taskContext.taskDataRevision !== item.taskDataRevision) {
       throw new Error('Plan 35 practice item does not match its exact registered recipe association');
+    }
+    return instance;
+  }
+  if (isPlan36SubtractionDefinition(definition)) {
+    const taskContext = resolvePlan36LikeDenominatorSubtractionContext(instance, item.id, {
+      practiceSetId: practiceType?.setId,
+      practiceSetRevision: practiceType?.setRevision,
+    });
+    if (taskContext.fixtureId !== item.fixtureId
+      || taskContext.authoringRevision !== item.authoringRevision
+      || taskContext.definitionId !== item.episodeDefinitionId
+      || taskContext.definitionRevision !== item.episodeDefinitionRevision
+      || taskContext.recipeId !== item.recipe?.id
+      || taskContext.recipeRevision !== item.recipe?.revision
+      || taskContext.taskDataId !== item.taskData?.id
+      || taskContext.taskDataRevision !== item.taskData?.revision) {
+      throw new Error('Plan 36 practice item does not match its exact registered subtraction association');
     }
     return instance;
   }
@@ -187,7 +208,12 @@ function presentationModeFor({ override, motionQuery }) {
 }
 
 function createInitialState(instance, practiceType, condition, supportLevel, episodeDefinition = practiceType.episodeDefinition, item = null) {
-  const taskContext = episodeDefinition?.id === PLAN35_RECIPE_DEFINITION_ID && item
+  const taskContext = isPlan36SubtractionDefinition(episodeDefinition) && item
+    ? resolvePlan36LikeDenominatorSubtractionContext(instance, item.id, {
+      practiceSetId: practiceType.setId,
+      practiceSetRevision: practiceType.setRevision,
+    })
+    : episodeDefinition?.id === PLAN35_RECIPE_DEFINITION_ID && item
     ? resolvePlan35AdditionRecipeContext(instance, item.id, {
       practiceSetId: practiceType.setId,
       practiceSetRevision: practiceType.setRevision,
@@ -237,6 +263,7 @@ export function createFractionFlowApp({
   let activityNotice = '';
   let decideHelpOpen = false;
   let transformHelpOpen = false;
+  let subtractionHelpOpen = false;
   let inspectChangeOpen = false;
   let commonDenominatorDraft = '';
   let transformDrafts = { left: { multiplier: '', numerator: '' }, right: { multiplier: '', numerator: '' } };
@@ -493,6 +520,10 @@ export function createFractionFlowApp({
         const preserveOperationInputFocus = preserveOperationInputFocusOnViewChange
           || Boolean(getVisibleOperationInput()?.isConnected
             && getVisibleOperationInput() === document.activeElement);
+        const preserveTakeawayFocus = isPlan36SubtractionDefinition(state?.episodeDefinition)
+          && state?.beat === 'encounter'
+          && (document.activeElement?.classList?.contains('control-action-btn')
+            || document.activeElement?.textContent === 'Take away');
         preserveDecideInputFocusOnViewChange = false;
         preserveTransformInputFocusOnViewChange = false;
         preserveOperationInputFocusOnViewChange = false;
@@ -506,6 +537,10 @@ export function createFractionFlowApp({
         if (preserveInputFocus) getVisibleDecideInput()?.focus();
         if (preserveTransformInputFocus) getVisibleTransformInput()?.focus();
         if (preserveOperationInputFocus) getVisibleOperationInput()?.focus();
+        if (preserveTakeawayFocus) {
+          const host = visualView ? visualHost : linearHost;
+          host?.querySelector('.active-beat-controls button')?.focus();
+        }
       },
     });
   viewToggle.addEventListener('pointerdown', () => {
@@ -536,6 +571,7 @@ export function createFractionFlowApp({
       onClick: () => {
         captureDecideDraft();
         captureTransformDrafts();
+        captureOperationDraft();
         if (state?.beat === 'decide') {
           if (decideHelpOpen) {
             decideHelpOpen = false;
@@ -564,6 +600,15 @@ export function createFractionFlowApp({
             helpButton.focus();
           } else {
             dispatchAction({ type: 'request-task-help' });
+          }
+        } else if (isPlan36SubtractionDefinition(state?.episodeDefinition) && state.beat === 'operate') {
+          subtractionHelpOpen = !subtractionHelpOpen;
+          if (subtractionHelpOpen) {
+            dispatchAction({ type: 'request-task-help' });
+            helpButton.focus();
+          } else {
+            render();
+            helpButton.focus();
           }
         } else {
           dispatchAction({ type: 'request-help' });
@@ -622,6 +667,7 @@ export function createFractionFlowApp({
     navigationRefusal = false;
     decideHelpOpen = false;
     transformHelpOpen = false;
+    subtractionHelpOpen = false;
     commonDenominatorDraft = '';
     transformDrafts = {
       left: { multiplier: '', numerator: state?.taskContext?.candidates?.left?.numerator ?? '' },
@@ -652,7 +698,16 @@ export function createFractionFlowApp({
     setHidden(entryPage, true);
     setHidden(appRoot.querySelector('.app-episode'), false);
     render();
-    if (focusEpisode) focusEpisodeLandmark();
+    if (focusEpisode) {
+      if (isPlan36SubtractionDefinition(state?.episodeDefinition) && state?.beat === 'encounter') {
+        const host = visualView ? visualHost : linearHost;
+        const takeAwayBtn = host?.querySelector('.active-beat-controls button');
+        if (takeAwayBtn) takeAwayBtn.focus();
+        else focusEpisodeLandmark();
+      } else {
+        focusEpisodeLandmark();
+      }
+    }
     if (updateFragment) setPracticeFragment(practiceType.id);
   }
 
@@ -793,11 +848,12 @@ export function createFractionFlowApp({
     const isPlan18 = state.episodeDefinition.id === PLAN18_NESTED_DEFINITION_ID;
     const isPlan35Identify = state.episodeDefinition.id === PLAN35_RECIPE_DEFINITION_ID
       && state.taskContext?.patternId === PLAN35_RECIPE_IDS.identify;
+    const isPlan36 = isPlan36SubtractionDefinition(state.episodeDefinition);
     helpButton.disabled = resolved;
     const hasConversion = Boolean(state.established?.lastConversion);
-    replayButton.hidden = isPlan20 || isPlan34 || ((isPlan18 || isPlan35Identify) && !hasConversion)
+    replayButton.hidden = isPlan20 || isPlan34 || isPlan36 || ((isPlan18 || isPlan35Identify) && !hasConversion)
       || (state.episodeDefinition.id === PLAN35_RECIPE_DEFINITION_ID && !isPlan35Identify);
-    replayButton.disabled = isPlan20 || isPlan34 || resolved || state.beat === 'encounter'
+    replayButton.disabled = isPlan20 || isPlan34 || isPlan36 || resolved || state.beat === 'encounter'
       || ((isPlan18 || isPlan35Identify) && !hasConversion)
       || (state.episodeDefinition.id === PLAN35_RECIPE_DEFINITION_ID && !isPlan35Identify);
     replayButton.setAttribute('aria-pressed', String(isReplaying));
@@ -876,8 +932,12 @@ export function createFractionFlowApp({
       || (state.episodeDefinition.id !== PLAN20_LIKE_DENOMINATOR_EPISODE_DEFINITION.id
         && state.episodeDefinition.id !== PLAN34_EPISODE_DEFINITION_ID
         && state.episodeDefinition.id !== PLAN18_NESTED_DEFINITION_ID
-        && state.episodeDefinition.id !== PLAN35_RECIPE_DEFINITION_ID)) return null;
+        && state.episodeDefinition.id !== PLAN35_RECIPE_DEFINITION_ID
+        && !isPlan36SubtractionDefinition(state.episodeDefinition))) return null;
     const host = visualView ? visualHost : linearHost;
+    if (isPlan36SubtractionDefinition(state.episodeDefinition)) {
+      return host?.querySelector(`#${visualView ? 'operate' : 'linear-operate'}-fraction-numerator-input`) || null;
+    }
     return host?.querySelector([PLAN34_EPISODE_DEFINITION_ID, PLAN18_NESTED_DEFINITION_ID, PLAN35_RECIPE_DEFINITION_ID].includes(state.episodeDefinition.id)
       ? `#${visualView ? 'operate' : 'linear-operate'}-sum-input`
       : 'input.control-fraction-input') || null;
@@ -915,6 +975,25 @@ export function createFractionFlowApp({
 
   function updateHelpPlacement(scene = currentScene) {
     if (!helpButton || !state) return;
+    const isPlan36 = isPlan36SubtractionDefinition(state.episodeDefinition);
+    if (isPlan36 && state.beat === 'operate') {
+      const host = visualView ? visualHost : linearHost;
+      const controls = host.querySelector('.active-beat-controls');
+      if (!controls) return;
+      if (helpButton.parentNode !== controls && helpButton.parentNode) {
+        helpButton.parentNode.removeChild(helpButton);
+      }
+      controls.appendChild(helpButton);
+      helpButton.hidden = false;
+      helpButton.textContent = subtractionHelpOpen ? STRINGS.app.closeHelpButton : STRINGS.app.helpButton;
+      helpButton.setAttribute('aria-expanded', String(subtractionHelpOpen));
+      if (subtractionHelpOpen) {
+        helpButton.setAttribute('aria-controls', `${visualView ? 'visual' : 'linear'}-subtraction-task-help`);
+      } else {
+        helpButton.removeAttribute('aria-controls');
+      }
+      return;
+    }
     if (state.episodeDefinition.id === PLAN20_LIKE_DENOMINATOR_EPISODE_DEFINITION.id
       && state.beat === 'operate') {
       const host = visualView ? visualHost : linearHost;
@@ -942,6 +1021,7 @@ export function createFractionFlowApp({
     if (state.beat !== 'decide' && state.beat !== 'transform') {
       decideHelpOpen = false;
       transformHelpOpen = false;
+      subtractionHelpOpen = false;
       helpButton.textContent = STRINGS.app.helpButton;
       helpButton.setAttribute('aria-expanded', 'false');
       helpButton.removeAttribute('aria-controls');
@@ -952,7 +1032,8 @@ export function createFractionFlowApp({
       helpButton.hidden = state.episodeDefinition.id === PLAN34_EPISODE_DEFINITION_ID
         || isPlan35NonIdentify
         || (state.episodeDefinition.id === PLAN20_LIKE_DENOMINATOR_EPISODE_DEFINITION.id
-          && state.beat !== 'operate');
+          && state.beat !== 'operate')
+        || (isPlan36 && state.beat !== 'operate');
       if (helpButton.parentNode !== supportControls) {
         if (helpButton.parentNode) helpButton.parentNode.removeChild(helpButton);
         supportControls.replaceChildren(
@@ -1025,7 +1106,10 @@ export function createFractionFlowApp({
       decideHelpOpen = false;
       commonDenominatorDraft = '';
     }
-    if (state.beat !== 'operate') operationDrafts = { numerator: '', denominator: '' };
+    if (state.beat !== 'operate') {
+      operationDrafts = { numerator: '', denominator: '' };
+      subtractionHelpOpen = false;
+    }
     const activeScheduleEntryId = state.beatSchedule?.[state.schedulePosition]?.id ?? null;
     if (state.beat === 'transform' && transformDraftScheduleEntryId !== null
       && activeScheduleEntryId !== transformDraftScheduleEntryId) {
@@ -1055,7 +1139,7 @@ export function createFractionFlowApp({
         container: visualHost,
         dispatchAction,
         strings: APP_RENDER_STRINGS,
-        isTaskHelpOpen: () => transformHelpOpen,
+        isTaskHelpOpen: () => transformHelpOpen || subtractionHelpOpen,
         isInspectChangeOpen: () => inspectChangeOpen,
         onInspectChangeOpen: () => {
           inspectChangeOpen = true;
@@ -1073,7 +1157,7 @@ export function createFractionFlowApp({
         container: linearHost,
         dispatchAction,
         strings: APP_RENDER_STRINGS,
-        isTaskHelpOpen: () => transformHelpOpen,
+        isTaskHelpOpen: () => transformHelpOpen || subtractionHelpOpen,
         isInspectChangeOpen: () => inspectChangeOpen,
         onInspectChangeOpen: () => {
           inspectChangeOpen = true;
@@ -1162,6 +1246,24 @@ export function createFractionFlowApp({
       if (action.type === 'request-task-help'
         && state.episodeDefinition.id === PLAN20_LIKE_DENOMINATOR_EPISODE_DEFINITION.id
         && state.beat === 'operate') helpButton.focus();
+      if (action.type === 'request-task-help'
+        && isPlan36SubtractionDefinition(state.episodeDefinition)
+        && state.beat === 'operate') helpButton.focus();
+      if (action.type === 'mark-subtrahend-amount') getVisibleOperationInput()?.focus();
+      if (action.type === 'submit-subtraction-result') {
+        if (state.beat === 'resolve') {
+          const host = visualView ? visualHost : linearHost;
+          const finishBtn = host?.querySelector('.active-beat-controls button');
+          if (finishBtn) finishBtn.focus();
+        } else if (state.lastRecovery?.beat === 'operate') {
+          getVisibleOperationInput()?.focus();
+        }
+      }
+      if (action.type === 'finish-compact-episode') {
+        if (nextProblemButton && !nextProblemButton.hasAttribute('hidden')) {
+          nextProblemButton.focus();
+        }
+      }
       if (action.type === 'submit-operation-result'
         && state.lastRecovery?.beat === 'operate') getVisibleOperationInput()?.focus();
       if (action.type === 'submit-transform-help-multiplier') getVisibleTransformInput()?.focus();

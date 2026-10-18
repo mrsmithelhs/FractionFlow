@@ -807,10 +807,13 @@ function handleSubmitSubtractionResult(state, intent) {
     validity: 'valid',
     mathClassification: validation.classification,
     proposed: intent.proposed,
+    rawResultForm: state.content.resultState.canonicalRawResultForm,
+    submittedForm: intent.proposed,
   };
   const established = {
     ...successClassification,
     proposed: intent.proposed,
+    rawResultForm: state.content.resultState.canonicalRawResultForm,
     submittedForm: intent.proposed,
     targetDenominator: state.taskContext.sourceForms.left.denominator,
   };
@@ -1087,6 +1090,9 @@ function assertIntentAllowedAtBeat(state, intent) {
     }
     if (intent.type === 'submit-operation-result') {
       throw new EpisodeIntentError('UNEXPECTED_INTENT', 'like-denominator subtraction uses submit-subtraction-result');
+    }
+    if (intent.type === 'request-help') {
+      throw new EpisodeIntentError('UNEXPECTED_INTENT', 'Plan 36 subtraction does not use legacy request-help');
     }
     if (intent.type === 'request-replay') {
       throw new EpisodeIntentError('UNEXPECTED_INTENT', 'Plan 36 subtraction does not expose legacy replay actions');

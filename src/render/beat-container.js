@@ -1,6 +1,6 @@
 import { assertValidScene, RenderContractError } from './contract.js';
 import { STRINGS } from './strings.js';
-import { createFractionBarRenderer, createMultiWholeStack, createTrackAndReadout } from './fraction-bar.js';
+import { createFractionBarRenderer, createMultiWholeStack, createTakeawayBar, createTrackAndReadout } from './fraction-bar.js';
 import { createSymbolicRenderer } from './symbolic.js';
 import { createSymbolicFraction } from './symbolic.js';
 import {
@@ -117,6 +117,46 @@ export function createBeatContainer({
 
   function renderCompletedBeats(scene) {
     completedBeatsEl.replaceChildren();
+    if (scene.meaning.takeaway) {
+      const schedulePosition = scene.meaning.currentTask.schedulePosition;
+      const milestones = [];
+      if (schedulePosition > 0) {
+        milestones.push(strings.summaryLines.encounterDone || 'Problem established.');
+      }
+      if (schedulePosition > 1 && scene.meaning.takeaway.acceptedResponseForm) {
+        const form = scene.meaning.takeaway.acceptedResponseForm;
+        milestones.push(`Difference: ${form.numerator}/${form.denominator}`);
+      }
+      if (milestones.length === 0) return;
+      if (milestones.length === 1) {
+        const summary = document.createElement('div');
+        summary.classList.add('completed-beat-summary');
+        appendMilestoneSummary(summary, milestones[0], scene.meaning.quantities);
+        completedBeatsEl.appendChild(summary);
+        return;
+      }
+      const details = document.createElement('details');
+      details.classList.add('completed-beats-history');
+      const toggle = document.createElement('summary');
+      toggle.classList.add('completed-beats-summary-toggle');
+      const olderCount = milestones.length - 1;
+      toggle.textContent = typeof strings.summaryLines.summaryDisclosureLabel === 'function'
+        ? strings.summaryLines.summaryDisclosureLabel(olderCount)
+        : `Show previous steps (${olderCount} completed)`;
+      details.appendChild(toggle);
+      for (let i = 0; i < olderCount; i += 1) {
+        const summary = document.createElement('div');
+        summary.classList.add('completed-beat-summary');
+        appendMilestoneSummary(summary, milestones[i], scene.meaning.quantities);
+        details.appendChild(summary);
+      }
+      completedBeatsEl.appendChild(details);
+      const latestSummary = document.createElement('div');
+      latestSummary.classList.add('completed-beat-summary', 'completed-beat-summary-latest');
+      appendMilestoneSummary(latestSummary, milestones.at(-1), scene.meaning.quantities);
+      completedBeatsEl.appendChild(latestSummary);
+      return;
+    }
     const currentTask = scene.meaning.currentTask;
     const currentEntryId = currentTask.scheduleEntryId;
     const schedulePosition = currentTask.schedulePosition;
@@ -296,6 +336,8 @@ export function createBeatContainer({
       candidateDenominators: scene.meaning.unitRelationship?.candidateDenominators,
       isInspection: beat === 'reflect' && isReplaying && Boolean(scene.meaning.transition),
       premiseCaseId: scene.meaning.premiseCase?.id,
+      takeawayRemoval: scene.meaning.takeaway?.removalStatus,
+      takeawayHelpOpen: Boolean(scene.meaning.takeaway && isTaskHelpOpen()),
     });
 
     if (activeBeatRenderToken === token) {
@@ -385,6 +427,8 @@ export function createBeatContainer({
         } else {
           recoveryEl.textContent = strings.reflect.matchingDistractor;
         }
+      } else if (recovery.classification.kind === 'incorrect-subtraction-result') {
+        recoveryEl.textContent = strings.subtraction.errorRecovery;
       } else if (recovery.classification.kind === 'invalid-reflection-choice') {
         recoveryEl.textContent = strings.reflect.invalidChoice || strings.status.stepIncorrect;
       } else {
@@ -396,6 +440,16 @@ export function createBeatContainer({
 
     switch (beat) {
       case 'encounter': {
+        if (scene.meaning.takeaway) {
+          promptText.textContent = strings.subtraction.howMuchLeft;
+          const takeAwayBtn = createButton({
+            label: strings.subtraction.takeAwayButton,
+            className: 'control-action-btn',
+            onClick: () => dispatchAction({ type: 'mark-subtrahend-amount' }),
+          });
+          controlsContainer.appendChild(takeAwayBtn);
+          break;
+        }
         promptText.textContent = strings.encounter.prompt;
         if (task.patternId && task.patternId !== 'full-addition.identify-side-construct') {
           const targetContext = document.createElement('p');
@@ -639,6 +693,34 @@ export function createBeatContainer({
       }
 
       case 'operate': {
+        if (scene.meaning.takeaway) {
+          promptText.textContent = strings.subtraction.howMuchLeft;
+          if (isTaskHelpOpen()) {
+            const help = document.createElement('p');
+            help.id = 'visual-subtraction-task-help';
+            help.classList.add('active-beat-help');
+            help.textContent = strings.subtraction.visualHelp;
+            controlsContainer.appendChild(help);
+          }
+          const fractionInput = createFractionResponseInput({
+            numeratorId: 'operate-fraction-numerator-input',
+            denominatorId: 'operate-fraction-denominator-input',
+            groupLabel: strings.subtraction.amountLeftGroup,
+            numeratorLabel: strings.subtraction.numeratorLabel,
+            denominatorLabel: strings.subtraction.denominatorLabel,
+            allowZeroNumerator: true,
+            initialNumerator: recovery?.classification?.proposed?.numerator ?? '',
+            initialDenominator: recovery?.classification?.proposed?.denominator ?? '',
+            strings,
+            onSubmit: (proposed) => dispatchAction({
+              type: 'submit-subtraction-result',
+              proposed,
+            }),
+          });
+          controlsContainer.appendChild(fractionInput.element);
+          break;
+        }
+
         const commonDen = scene.meaning.quantities.left.currentForm.denominator;
         promptText.textContent = strings.operate.prompt;
 
@@ -678,6 +760,17 @@ export function createBeatContainer({
       }
 
       case 'resolve': {
+        if (scene.meaning.takeaway) {
+          promptText.textContent = strings.subtraction.thatAmountLeft;
+          const finishBtn = createButton({
+            label: strings.resolve.finishButton,
+            className: 'control-action-btn',
+            onClick: () => dispatchAction({ type: 'finish-compact-episode' }),
+          });
+          controlsContainer.appendChild(finishBtn);
+          break;
+        }
+
         const raw = scene.meaning.operation.rawResult;
         const pref = scene.meaning.operation.simplifiedResult || raw;
         const compact = scene.meaning.currentTask.patternId != null;
@@ -1143,6 +1236,10 @@ export function createBeatContainer({
 
       comparisonEl.appendChild(wrapper);
       barsWrapper.appendChild(comparisonEl);
+    } else if (scene.meaning.takeaway) {
+      const mode = scene.presentation?.presentationMode;
+      const takeawayBar = createTakeawayBar(scene.meaning.takeaway, { mode });
+      barsWrapper.replaceChildren(takeawayBar);
     } else {
       if (!barsWrapper.contains(leftBarBox)) {
         barsWrapper.replaceChildren(leftBarBox, rightBarBox);

@@ -842,7 +842,44 @@
   flex-direction: column;
   align-items: flex-start;
   gap: 0.75rem;
+  border: none;
+  margin: 0;
+  padding: 0;
+  min-width: 0;
 }
+
+/* Subtraction Takeaway Bar & Segments */
+.fraction-bar-takeaway-container {
+  width: 100%;
+}
+
+.fraction-bar-takeaway-track {
+  width: 100%;
+  display: flex;
+  height: 2.75rem;
+  border: 2px solid var(--ff-bar-border);
+  border-radius: 0.375rem;
+  overflow: hidden;
+  background-color: var(--ff-bar-unshaded);
+}
+
+.fraction-bar-segment.removed,
+.fraction-bar-segment.is-removed {
+  position: relative;
+  background-color: #fff3d6;
+  background-image: repeating-linear-gradient(
+    135deg,
+    #8c5c1b 0,
+    #8c5c1b 2px,
+    #fff3d6 2px,
+    #fff3d6 7px
+  );
+}
+
+.fraction-bar-takeaway-track .fraction-bar-segment {
+  transition: none !important;
+}
+
 
 .control-fraction-fields {
   display: grid;

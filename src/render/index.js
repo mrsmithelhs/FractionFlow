@@ -12,12 +12,14 @@ export {
   resolveRenderableScene,
   assertValidScene,
 } from './contract.js';
-export { createFractionBarRenderer } from './fraction-bar.js';
+export { createFractionBarRenderer, createTakeawayBar } from './fraction-bar.js';
 export { createSymbolicRenderer } from './symbolic.js';
 export {
   createButton,
   createNumericInput,
+  createFractionResponseInput,
   createChoiceGroup,
 } from './controls.js';
 export { createBeatContainer } from './beat-container.js';
 export { createLinearPathRenderer } from './linear-path.js';
+

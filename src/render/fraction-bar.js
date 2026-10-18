@@ -726,3 +726,51 @@ export function createFractionBarRenderer({
     },
   };
 }
+
+export function createTakeawayBar(takeawayMeaning, { mode } = {}) {
+  const container = document.createElement('div');
+  container.classList.add('fraction-bar-container', 'fraction-bar-takeaway-container');
+  container.setAttribute('role', 'img');
+
+  const trackEl = document.createElement('div');
+  trackEl.classList.add('fraction-bar-track', 'fraction-bar-takeaway-track');
+  if (mode === 'reduced-motion') {
+    trackEl.classList.add('reduced-motion');
+  }
+  trackEl.setAttribute('role', 'img');
+
+  const den = takeawayMeaning.wholePartitionCount;
+  const sourceLeft = takeawayMeaning.sourceForms.left;
+  const sourceRight = takeawayMeaning.sourceForms.right;
+  const leftNum = Number(sourceLeft.numerator);
+  const rightNum = Number(sourceRight.numerator);
+  const isMarked = takeawayMeaning.removalStatus === 'marked';
+
+  const ariaLabel = isMarked
+    ? `Fraction bar: ${leftNum} of ${den} equal parts started, ${rightNum} marked for removal.`
+    : `Fraction bar: ${leftNum} of ${den} equal parts shaded in 1 whole.`;
+  trackEl.setAttribute('aria-label', ariaLabel);
+  container.setAttribute('aria-label', ariaLabel);
+
+  for (const cell of takeawayMeaning.cells) {
+    const segmentEl = document.createElement('div');
+    segmentEl.classList.add('fraction-bar-segment');
+    segmentEl.setAttribute('aria-hidden', 'true');
+
+    if (cell.role === 'starting') {
+      segmentEl.classList.add('shaded', 'starting');
+    } else if (cell.role === 'remaining') {
+      segmentEl.classList.add('shaded', 'remaining');
+    } else if (cell.role === 'removed') {
+      segmentEl.classList.add('shaded', 'removed', 'is-removed');
+    } else {
+      segmentEl.classList.add('unshaded', 'outside-start');
+    }
+
+    trackEl.appendChild(segmentEl);
+  }
+
+  container.appendChild(trackEl);
+  return container;
+}
+

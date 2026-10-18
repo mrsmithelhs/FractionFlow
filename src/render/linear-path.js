@@ -90,10 +90,41 @@ export function createLinearPathRenderer({
     const isInspection = scene.meaning.currentTask?.beat === 'reflect'
       && Boolean(scene.presentation?.isReplaying && scene.meaning.transition);
 
-    const isPremise = scene.meaning.currentTask?.beat === 'reflect'
-      && scene.meaning.currentTask?.connectionForm === 'premise';
+    if (scene.meaning.takeaway) {
+      const sourceForms = scene.meaning.takeaway.sourceForms;
+      const left = sourceForms.left;
+      const right = sourceForms.right;
+      const expression = document.createElement('div');
+      expression.classList.add('symbolic-expression', 'linear-context-expression');
+      expression.setAttribute('role', 'math');
+      const accepted = scene.meaning.takeaway.acceptedResponseForm;
+      const ariaLabel = accepted
+        ? `${left.numerator} over ${left.denominator} minus ${right.numerator} over ${right.denominator} equals ${accepted.numerator} over ${accepted.denominator}`
+        : `${left.numerator} over ${left.denominator} minus ${right.numerator} over ${right.denominator}`;
+      expression.setAttribute('aria-label', ariaLabel);
+      expression.appendChild(createSymbolicFraction(left.numerator, left.denominator, { ariaHidden: true }));
+      const opEl = document.createElement('span');
+      opEl.classList.add('symbolic-operator');
+      opEl.setAttribute('aria-hidden', 'true');
+      opEl.textContent = '−';
+      expression.appendChild(opEl);
+      expression.appendChild(createSymbolicFraction(right.numerator, right.denominator, { ariaHidden: true }));
+      if (accepted) {
+        const eqEl = document.createElement('span');
+        eqEl.classList.add('symbolic-operator');
+        eqEl.setAttribute('aria-hidden', 'true');
+        eqEl.textContent = '=';
+        expression.appendChild(eqEl);
+        expression.appendChild(createSymbolicFraction(accepted.numerator, accepted.denominator, { ariaHidden: true }));
+      }
+      contextSectionEl.appendChild(expression);
+      return;
+    }
 
     if (plan17Crossing && isInspection) return;
+
+    const isPremise = scene.meaning.currentTask?.beat === 'reflect'
+      && scene.meaning.currentTask?.connectionForm === 'premise';
 
     if (isPremise && scene.meaning.premiseCase && (!plan17Crossing || !isResolved)) {
       const premiseCase = scene.meaning.premiseCase;
@@ -209,6 +240,46 @@ export function createLinearPathRenderer({
 
   function renderCompletedBeats(scene) {
     completedBeatsEl.replaceChildren();
+    if (scene.meaning.takeaway) {
+      const schedulePosition = scene.meaning.currentTask.schedulePosition;
+      const milestones = [];
+      if (schedulePosition > 0) {
+        milestones.push(strings.summaryLines.encounterDone || 'Problem established.');
+      }
+      if (schedulePosition > 1 && scene.meaning.takeaway.acceptedResponseForm) {
+        const form = scene.meaning.takeaway.acceptedResponseForm;
+        milestones.push(`Difference: ${form.numerator}/${form.denominator}`);
+      }
+      if (milestones.length === 0) return;
+      if (milestones.length === 1) {
+        const summary = document.createElement('div');
+        summary.classList.add('completed-beat-summary');
+        appendMilestoneSummary(summary, milestones[0], scene.meaning.quantities);
+        completedBeatsEl.appendChild(summary);
+        return;
+      }
+      const details = document.createElement('details');
+      details.classList.add('completed-beats-history');
+      const toggle = document.createElement('summary');
+      toggle.classList.add('completed-beats-summary-toggle');
+      const olderCount = milestones.length - 1;
+      toggle.textContent = typeof strings.summaryLines.summaryDisclosureLabel === 'function'
+        ? strings.summaryLines.summaryDisclosureLabel(olderCount)
+        : `Show previous steps (${olderCount} completed)`;
+      details.appendChild(toggle);
+      for (let i = 0; i < olderCount; i += 1) {
+        const summary = document.createElement('div');
+        summary.classList.add('completed-beat-summary');
+        appendMilestoneSummary(summary, milestones[i], scene.meaning.quantities);
+        details.appendChild(summary);
+      }
+      completedBeatsEl.appendChild(details);
+      const latestSummary = document.createElement('div');
+      latestSummary.classList.add('completed-beat-summary', 'completed-beat-summary-latest');
+      appendMilestoneSummary(latestSummary, milestones.at(-1), scene.meaning.quantities);
+      completedBeatsEl.appendChild(latestSummary);
+      return;
+    }
     const currentTask = scene.meaning.currentTask;
     const currentEntryId = currentTask.scheduleEntryId;
     const schedulePosition = currentTask.schedulePosition;
@@ -385,6 +456,8 @@ export function createLinearPathRenderer({
       candidateDenominators: scene.meaning.unitRelationship?.candidateDenominators,
       isInspection: beat === 'reflect' && isReplaying && Boolean(scene.meaning.transition),
       premiseCaseId: scene.meaning.premiseCase?.id,
+      takeawayRemoval: scene.meaning.takeaway?.removalStatus,
+      takeawayHelpOpen: Boolean(scene.meaning.takeaway && isTaskHelpOpen()),
     });
 
     if (activeBeatRenderToken === token) {
@@ -475,6 +548,8 @@ export function createLinearPathRenderer({
           recoveryEl.textContent = strings.reflect.matchingDistractorLinear
             || strings.reflect.matchingDistractor;
         }
+      } else if (recovery.classification.kind === 'incorrect-subtraction-result') {
+        recoveryEl.textContent = strings.subtraction.errorRecovery;
       } else if (recovery.classification.kind === 'invalid-reflection-choice') {
         recoveryEl.textContent = strings.reflect.invalidChoiceLinear
           || strings.reflect.invalidChoice
@@ -488,6 +563,16 @@ export function createLinearPathRenderer({
 
     switch (beat) {
       case 'encounter': {
+        if (scene.meaning.takeaway) {
+          promptText.textContent = strings.subtraction.howMuchLeft;
+          const takeAwayBtn = createButton({
+            label: strings.subtraction.takeAwayButton,
+            className: 'control-action-btn',
+            onClick: () => dispatchAction({ type: 'mark-subtrahend-amount' }),
+          });
+          controlsContainer.appendChild(takeAwayBtn);
+          break;
+        }
         promptText.textContent = strings.encounter.prompt;
         if (task.patternId && task.patternId !== 'full-addition.identify-side-construct') {
           const targetContext = document.createElement('p');
@@ -726,6 +811,34 @@ export function createLinearPathRenderer({
       }
 
       case 'operate': {
+        if (scene.meaning.takeaway) {
+          promptText.textContent = strings.subtraction.howMuchLeft;
+          if (isTaskHelpOpen()) {
+            const help = document.createElement('p');
+            help.id = 'linear-subtraction-task-help';
+            help.classList.add('active-beat-help');
+            help.textContent = strings.subtraction.linearHelp;
+            controlsContainer.appendChild(help);
+          }
+          const fractionInput = createFractionResponseInput({
+            numeratorId: 'linear-operate-fraction-numerator-input',
+            denominatorId: 'linear-operate-fraction-denominator-input',
+            groupLabel: strings.subtraction.amountLeftGroup,
+            numeratorLabel: strings.subtraction.numeratorLabel,
+            denominatorLabel: strings.subtraction.denominatorLabel,
+            allowZeroNumerator: true,
+            initialNumerator: recovery?.classification?.proposed?.numerator ?? '',
+            initialDenominator: recovery?.classification?.proposed?.denominator ?? '',
+            strings,
+            onSubmit: (proposed) => dispatchAction({
+              type: 'submit-subtraction-result',
+              proposed,
+            }),
+          });
+          controlsContainer.appendChild(fractionInput.element);
+          break;
+        }
+
         const commonDen = scene.meaning.quantities.left.currentForm.denominator;
         promptText.textContent = strings.operate.prompt;
 
@@ -765,6 +878,17 @@ export function createLinearPathRenderer({
       }
 
       case 'resolve': {
+        if (scene.meaning.takeaway) {
+          promptText.textContent = strings.subtraction.thatAmountLeft;
+          const finishBtn = createButton({
+            label: strings.resolve.finishButton,
+            className: 'control-action-btn',
+            onClick: () => dispatchAction({ type: 'finish-compact-episode' }),
+          });
+          controlsContainer.appendChild(finishBtn);
+          break;
+        }
+
         const raw = scene.meaning.operation.rawResult;
         const pref = scene.meaning.operation.simplifiedResult || raw;
         const compact = scene.meaning.currentTask.patternId != null;

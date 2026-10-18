@@ -4,8 +4,14 @@ import {
   PLAN34_FULL_ADDITION_EPISODE_DEFINITION,
   PLAN18_NESTED_ADDITION_EPISODE_DEFINITION,
   PLAN35_REUSABLE_ADDITION_RECIPES_EPISODE_DEFINITION,
+  PLAN36_LIKE_DENOMINATOR_SUBTRACTION_EPISODE_DEFINITION,
 } from '../interaction/episode-definition.js';
 import { PLAN35_ADDITION_RECIPE_PRACTICE_SET, PLAN35_ADDITION_RECIPE_RECORDS } from '../content/data/plan35-addition-recipe-records.js';
+import {
+  PLAN36_SUBTRACTION_PRACTICE_SET_ID,
+  PLAN36_SUBTRACTION_PRACTICE_SET_REVISION,
+  PLAN36_SUBTRACTION_RECORDS,
+} from '../content/data/plan36-like-denominator-subtraction-records.js';
 import { deepFreeze } from '../content/schema.js';
 
 /**
@@ -201,7 +207,39 @@ export const PLAN35_PRACTICE_TYPES_V7 = deepFreeze(PLAN18_PRACTICE_TYPES_V6.map(
     episodeDefinition: PLAN35_REUSABLE_ADDITION_RECIPES_EPISODE_DEFINITION,
   }));
 
-export const PRACTICE_TYPES = PLAN35_PRACTICE_TYPES_V7;
+export const PLAN36_SUBTRACTION_PRACTICE_TYPE = deepFreeze({
+  id: 'like-denominator-subtraction',
+  label: 'Subtract fractions with the same denominator',
+  setId: PLAN36_SUBTRACTION_PRACTICE_SET_ID,
+  setRevision: PLAN36_SUBTRACTION_PRACTICE_SET_REVISION,
+  items: PLAN36_SUBTRACTION_RECORDS.map((record) => ({
+    id: record.itemId,
+    fixtureId: record.fixtureId,
+    authoringRevision: record.authoringRevision,
+    episodeDefinitionId: PLAN36_LIKE_DENOMINATOR_SUBTRACTION_EPISODE_DEFINITION.id,
+    episodeDefinitionRevision: PLAN36_LIKE_DENOMINATOR_SUBTRACTION_EPISODE_DEFINITION.revision,
+    recipe: {
+      id: record.recipe.id,
+      revision: record.recipe.revision,
+    },
+    taskData: {
+      id: record.taskData.id,
+      revision: record.taskData.revision,
+    },
+    taskDataRevision: record.taskData.revision,
+    leftNumerator: record.leftNumerator,
+    rightNumerator: record.rightNumerator,
+    denominator: record.denominator,
+  })),
+  episodeDefinition: PLAN36_LIKE_DENOMINATOR_SUBTRACTION_EPISODE_DEFINITION,
+});
+
+export const PLAN38_PRACTICE_TYPES_V8 = deepFreeze([
+  ...PLAN35_PRACTICE_TYPES_V7,
+  PLAN36_SUBTRACTION_PRACTICE_TYPE,
+]);
+
+export const PRACTICE_TYPES = PLAN38_PRACTICE_TYPES_V8;
 
 export function getPracticeType(id) {
   return PRACTICE_TYPES.find((practiceType) => practiceType.id === id) ?? null;
