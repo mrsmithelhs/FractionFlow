@@ -65,9 +65,9 @@ buttons. Plans 18/19 now explicitly depend on Plan 26 for that learner reach;
 do not invent taxonomy buttons or count reviewer-only fragment launch as delivery.
 Reviewer-only addressing can provide specific inspection routes.
 
-Draft Plan 36 now owns a proposed first learner-subtraction integration design,
+Plan36, initiated by the owner on2026-10-18, owns the first learner-subtraction integration design,
 including a varied like-denominator batch and initial task-specific representation
-disposition. It is not initiated; OQ-25 remains open and source work needs a
+disposition. OQ-25 remains open and source work needs a
 separately approved implementation packet. Draft Plan 37 similarly records the
 number-line design obligation without activating that representation.
 

@@ -578,7 +578,7 @@ subtraction, so this is not a corner case — it is half the phase.
 first question in the project where the honest answer is a prototype rather than a decision, and it
 should be scoped as one.
 
-**Current staging, 2026-10-17:** Plan 15 built both learner-operable prototypes;
+**Current staging, 2026-10-18:** Plan 15 built both learner-operable prototypes;
 their technical repairs and both rendered screens are owner accepted. No learner
 observations or representation preference were established. This question remains
 open for the initial learner-app task/representation disposition, not because the
@@ -586,8 +586,8 @@ prototypes are missing. A bounded integration packet can propose a task-specific
 provisional choice for owner approval without asserting a universal winner or
 instructional efficacy. Like-denominator subtraction is the proposed first
 integration scope; broader subtraction-family scaling follows complete state,
-projection, recovery, access and replay evidence. Draft Plan 36 now specifies the
-initial integration-design work; it is not initiated and authorizes no source.
+projection, recovery, access and replay evidence. Plan36 is now in-progress for
+the initial integration-design work; its execution authorizes no product source.
 Takeaway for a remaining-amount task is a recommendation to review, not an adopted
 representation policy or a resolution of this question.
 
