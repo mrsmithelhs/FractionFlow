@@ -1,0 +1,615 @@
+{
+  "probeDate": "2026-10-19",
+  "baselineCommit": "c4b070ec1291f8633044e8274e0287e28ffaaf39",
+  "coverageSummary": {
+    "batchItemCount": 9,
+    "holdoutItemCount": 2,
+    "refusalCaseCount": 5,
+    "distinctTargetDenominatorsPerRecipe": {
+      "unlike-subtraction.construct-equivalent": [
+        "10",
+        "20",
+        "24"
+      ],
+      "unlike-subtraction.inspect-keep-repair": [
+        "12",
+        "20",
+        "30"
+      ],
+      "unlike-subtraction.identify-side-construct": [
+        "6",
+        "8",
+        "12"
+      ]
+    },
+    "recipesRepresented": [
+      "unlike-subtraction.construct-equivalent",
+      "unlike-subtraction.inspect-keep-repair",
+      "unlike-subtraction.identify-side-construct"
+    ],
+    "allBatchItemsAdmittedUnderCuratedReview": true,
+    "allBatchItemsEligibleForRepresentation": true,
+    "allHoldoutsAdmittedAndEligible": true,
+    "allRefusalCasesRefused": true
+  },
+  "batchResults": [
+    {
+      "itemId": "plan40-construct-half-fifth-10",
+      "recipeId": "unlike-subtraction.construct-equivalent",
+      "selector": "relatively-prime-subtraction",
+      "overlays": [],
+      "profileId": "curated-review",
+      "left": {
+        "kind": "fraction",
+        "numerator": "1",
+        "denominator": "2"
+      },
+      "right": {
+        "kind": "fraction",
+        "numerator": "1",
+        "denominator": "5"
+      },
+      "targetDenominator": "10",
+      "leftAtTarget": {
+        "numerator": "5",
+        "denominator": "10"
+      },
+      "rightAtTarget": {
+        "numerator": "2",
+        "denominator": "10"
+      },
+      "rawDifference": {
+        "numerator": "3",
+        "denominator": "10"
+      },
+      "differenceSimplified": {
+        "numerator": "3",
+        "denominator": "10"
+      },
+      "isReducible": false,
+      "candidateEvaluationReasons": [],
+      "representationEligibility": "eligible",
+      "inspectStimulusStatus": null,
+      "identifySideStatus": null,
+      "role": "Relatively prime subtraction with irreducible difference (target 10)"
+    },
+    {
+      "itemId": "plan40-construct-three-fourths-two-fifths-20",
+      "recipeId": "unlike-subtraction.construct-equivalent",
+      "selector": "relatively-prime-subtraction",
+      "overlays": [],
+      "profileId": "curated-review",
+      "left": {
+        "kind": "fraction",
+        "numerator": "3",
+        "denominator": "4"
+      },
+      "right": {
+        "kind": "fraction",
+        "numerator": "2",
+        "denominator": "5"
+      },
+      "targetDenominator": "20",
+      "leftAtTarget": {
+        "numerator": "15",
+        "denominator": "20"
+      },
+      "rightAtTarget": {
+        "numerator": "8",
+        "denominator": "20"
+      },
+      "rawDifference": {
+        "numerator": "7",
+        "denominator": "20"
+      },
+      "differenceSimplified": {
+        "numerator": "7",
+        "denominator": "20"
+      },
+      "isReducible": false,
+      "candidateEvaluationReasons": [],
+      "representationEligibility": "eligible",
+      "inspectStimulusStatus": null,
+      "identifySideStatus": null,
+      "role": "Relatively prime subtraction with irreducible difference, reusing Plan 03 golden fixture (target 20)"
+    },
+    {
+      "itemId": "plan40-construct-five-sixths-three-eighths-24",
+      "recipeId": "unlike-subtraction.construct-equivalent",
+      "selector": "shared-factor-subtraction",
+      "overlays": [],
+      "profileId": "curated-review",
+      "left": {
+        "kind": "fraction",
+        "numerator": "5",
+        "denominator": "6"
+      },
+      "right": {
+        "kind": "fraction",
+        "numerator": "3",
+        "denominator": "8"
+      },
+      "targetDenominator": "24",
+      "leftAtTarget": {
+        "numerator": "20",
+        "denominator": "24"
+      },
+      "rightAtTarget": {
+        "numerator": "9",
+        "denominator": "24"
+      },
+      "rawDifference": {
+        "numerator": "11",
+        "denominator": "24"
+      },
+      "differenceSimplified": {
+        "numerator": "11",
+        "denominator": "24"
+      },
+      "isReducible": false,
+      "candidateEvaluationReasons": [],
+      "representationEligibility": "eligible",
+      "inspectStimulusStatus": null,
+      "identifySideStatus": null,
+      "role": "Shared factor subtraction with irreducible difference, reusing Plan 03 golden fixture (target 24)"
+    },
+    {
+      "itemId": "plan40-inspect-two-thirds-one-fourth-12",
+      "recipeId": "unlike-subtraction.inspect-keep-repair",
+      "selector": "relatively-prime-subtraction",
+      "overlays": [],
+      "profileId": "curated-review",
+      "left": {
+        "kind": "fraction",
+        "numerator": "2",
+        "denominator": "3"
+      },
+      "right": {
+        "kind": "fraction",
+        "numerator": "1",
+        "denominator": "4"
+      },
+      "targetDenominator": "12",
+      "leftAtTarget": {
+        "numerator": "8",
+        "denominator": "12"
+      },
+      "rightAtTarget": {
+        "numerator": "3",
+        "denominator": "12"
+      },
+      "rawDifference": {
+        "numerator": "5",
+        "denominator": "12"
+      },
+      "differenceSimplified": {
+        "numerator": "5",
+        "denominator": "12"
+      },
+      "isReducible": false,
+      "candidateEvaluationReasons": [],
+      "representationEligibility": "eligible",
+      "inspectStimulusStatus": {
+        "validCount": 1,
+        "invalidSide": "left",
+        "leftCandidate": {
+          "form": {
+            "kind": "fraction",
+            "numerator": "5",
+            "denominator": "12"
+          },
+          "valid": false
+        },
+        "rightCandidate": {
+          "form": {
+            "kind": "fraction",
+            "numerator": "3",
+            "denominator": "12"
+          },
+          "valid": true
+        }
+      },
+      "identifySideStatus": null,
+      "role": "Relatively prime inspect recipe with left invalid candidate (target 12)"
+    },
+    {
+      "itemId": "plan40-inspect-seven-tenths-one-fourth-20",
+      "recipeId": "unlike-subtraction.inspect-keep-repair",
+      "selector": "shared-factor-subtraction",
+      "overlays": [],
+      "profileId": "curated-review",
+      "left": {
+        "kind": "fraction",
+        "numerator": "7",
+        "denominator": "10"
+      },
+      "right": {
+        "kind": "fraction",
+        "numerator": "1",
+        "denominator": "4"
+      },
+      "targetDenominator": "20",
+      "leftAtTarget": {
+        "numerator": "14",
+        "denominator": "20"
+      },
+      "rightAtTarget": {
+        "numerator": "5",
+        "denominator": "20"
+      },
+      "rawDifference": {
+        "numerator": "9",
+        "denominator": "20"
+      },
+      "differenceSimplified": {
+        "numerator": "9",
+        "denominator": "20"
+      },
+      "isReducible": false,
+      "candidateEvaluationReasons": [],
+      "representationEligibility": "eligible",
+      "inspectStimulusStatus": {
+        "validCount": 1,
+        "invalidSide": "right",
+        "leftCandidate": {
+          "form": {
+            "kind": "fraction",
+            "numerator": "14",
+            "denominator": "20"
+          },
+          "valid": true
+        },
+        "rightCandidate": {
+          "form": {
+            "kind": "fraction",
+            "numerator": "7",
+            "denominator": "20"
+          },
+          "valid": false
+        }
+      },
+      "identifySideStatus": null,
+      "role": "Shared factor inspect recipe with right invalid candidate (target 20)"
+    },
+    {
+      "itemId": "plan40-inspect-five-sixths-seven-tenths-30",
+      "recipeId": "unlike-subtraction.inspect-keep-repair",
+      "selector": "shared-factor-subtraction",
+      "overlays": [
+        "reducible-result"
+      ],
+      "profileId": "curated-review",
+      "left": {
+        "kind": "fraction",
+        "numerator": "5",
+        "denominator": "6"
+      },
+      "right": {
+        "kind": "fraction",
+        "numerator": "7",
+        "denominator": "10"
+      },
+      "targetDenominator": "30",
+      "leftAtTarget": {
+        "numerator": "25",
+        "denominator": "30"
+      },
+      "rightAtTarget": {
+        "numerator": "21",
+        "denominator": "30"
+      },
+      "rawDifference": {
+        "numerator": "4",
+        "denominator": "30"
+      },
+      "differenceSimplified": {
+        "numerator": "2",
+        "denominator": "15"
+      },
+      "isReducible": true,
+      "candidateEvaluationReasons": [],
+      "representationEligibility": "eligible",
+      "inspectStimulusStatus": {
+        "validCount": 1,
+        "invalidSide": "left",
+        "leftCandidate": {
+          "form": {
+            "kind": "fraction",
+            "numerator": "22",
+            "denominator": "30"
+          },
+          "valid": false
+        },
+        "rightCandidate": {
+          "form": {
+            "kind": "fraction",
+            "numerator": "21",
+            "denominator": "30"
+          },
+          "valid": true
+        }
+      },
+      "identifySideStatus": null,
+      "role": "Shared factor inspect recipe with reducible difference and left invalid candidate (target 30)"
+    },
+    {
+      "itemId": "plan40-identify-five-sixths-one-third-6",
+      "recipeId": "unlike-subtraction.identify-side-construct",
+      "selector": "nested-denominator-subtraction",
+      "overlays": [
+        "reducible-result"
+      ],
+      "profileId": "curated-review",
+      "left": {
+        "kind": "fraction",
+        "numerator": "5",
+        "denominator": "6"
+      },
+      "right": {
+        "kind": "fraction",
+        "numerator": "1",
+        "denominator": "3"
+      },
+      "targetDenominator": "6",
+      "leftAtTarget": {
+        "numerator": "5",
+        "denominator": "6"
+      },
+      "rightAtTarget": {
+        "numerator": "2",
+        "denominator": "6"
+      },
+      "rawDifference": {
+        "numerator": "3",
+        "denominator": "6"
+      },
+      "differenceSimplified": {
+        "numerator": "1",
+        "denominator": "2"
+      },
+      "isReducible": true,
+      "candidateEvaluationReasons": [],
+      "representationEligibility": "eligible",
+      "inspectStimulusStatus": null,
+      "identifySideStatus": {
+        "requiredSide": "right",
+        "untouchedDenominator": "6"
+      },
+      "role": "Nested subtraction with right side renaming and reducible difference, reusing Plan 03 golden fixture (target 6)"
+    },
+    {
+      "itemId": "plan40-identify-one-half-one-eighth-8",
+      "recipeId": "unlike-subtraction.identify-side-construct",
+      "selector": "nested-denominator-subtraction",
+      "overlays": [],
+      "profileId": "curated-review",
+      "left": {
+        "kind": "fraction",
+        "numerator": "1",
+        "denominator": "2"
+      },
+      "right": {
+        "kind": "fraction",
+        "numerator": "1",
+        "denominator": "8"
+      },
+      "targetDenominator": "8",
+      "leftAtTarget": {
+        "numerator": "4",
+        "denominator": "8"
+      },
+      "rightAtTarget": {
+        "numerator": "1",
+        "denominator": "8"
+      },
+      "rawDifference": {
+        "numerator": "3",
+        "denominator": "8"
+      },
+      "differenceSimplified": {
+        "numerator": "3",
+        "denominator": "8"
+      },
+      "isReducible": false,
+      "candidateEvaluationReasons": [],
+      "representationEligibility": "eligible",
+      "inspectStimulusStatus": null,
+      "identifySideStatus": {
+        "requiredSide": "left",
+        "untouchedDenominator": "8"
+      },
+      "role": "Nested subtraction with left side renaming and irreducible difference (target 8)"
+    },
+    {
+      "itemId": "plan40-identify-two-thirds-five-twelfths-12",
+      "recipeId": "unlike-subtraction.identify-side-construct",
+      "selector": "nested-denominator-subtraction",
+      "overlays": [
+        "reducible-result"
+      ],
+      "profileId": "curated-review",
+      "left": {
+        "kind": "fraction",
+        "numerator": "2",
+        "denominator": "3"
+      },
+      "right": {
+        "kind": "fraction",
+        "numerator": "5",
+        "denominator": "12"
+      },
+      "targetDenominator": "12",
+      "leftAtTarget": {
+        "numerator": "8",
+        "denominator": "12"
+      },
+      "rightAtTarget": {
+        "numerator": "5",
+        "denominator": "12"
+      },
+      "rawDifference": {
+        "numerator": "3",
+        "denominator": "12"
+      },
+      "differenceSimplified": {
+        "numerator": "1",
+        "denominator": "4"
+      },
+      "isReducible": true,
+      "candidateEvaluationReasons": [],
+      "representationEligibility": "eligible",
+      "inspectStimulusStatus": null,
+      "identifySideStatus": {
+        "requiredSide": "left",
+        "untouchedDenominator": "12"
+      },
+      "role": "Nested subtraction with left side renaming and reducible difference (target 12)"
+    }
+  ],
+  "holdoutResults": [
+    {
+      "itemId": "plan40-holdout-construct-three-fifths-one-half-10",
+      "recipeId": "unlike-subtraction.construct-equivalent",
+      "selector": "relatively-prime-subtraction",
+      "overlays": [],
+      "profileId": "curated-review",
+      "left": {
+        "kind": "fraction",
+        "numerator": "3",
+        "denominator": "5"
+      },
+      "right": {
+        "kind": "fraction",
+        "numerator": "1",
+        "denominator": "2"
+      },
+      "targetDenominator": "10",
+      "leftAtTarget": {
+        "numerator": "6",
+        "denominator": "10"
+      },
+      "rightAtTarget": {
+        "numerator": "5",
+        "denominator": "10"
+      },
+      "rawDifference": {
+        "numerator": "1",
+        "denominator": "10"
+      },
+      "differenceSimplified": {
+        "numerator": "1",
+        "denominator": "10"
+      },
+      "isReducible": false,
+      "candidateEvaluationReasons": [],
+      "representationEligibility": "eligible",
+      "inspectStimulusStatus": null,
+      "identifySideStatus": null,
+      "role": "Data-only holdout: construct recipe with relatively prime subtraction (target 10)"
+    },
+    {
+      "itemId": "plan40-holdout-inspect-three-fourths-one-sixth-12",
+      "recipeId": "unlike-subtraction.inspect-keep-repair",
+      "selector": "shared-factor-subtraction",
+      "overlays": [],
+      "profileId": "curated-review",
+      "left": {
+        "kind": "fraction",
+        "numerator": "3",
+        "denominator": "4"
+      },
+      "right": {
+        "kind": "fraction",
+        "numerator": "1",
+        "denominator": "6"
+      },
+      "targetDenominator": "12",
+      "leftAtTarget": {
+        "numerator": "9",
+        "denominator": "12"
+      },
+      "rightAtTarget": {
+        "numerator": "2",
+        "denominator": "12"
+      },
+      "rawDifference": {
+        "numerator": "7",
+        "denominator": "12"
+      },
+      "differenceSimplified": {
+        "numerator": "7",
+        "denominator": "12"
+      },
+      "isReducible": false,
+      "candidateEvaluationReasons": [],
+      "representationEligibility": "eligible",
+      "inspectStimulusStatus": {
+        "validCount": 1,
+        "invalidSide": "right",
+        "leftCandidate": {
+          "form": {
+            "kind": "fraction",
+            "numerator": "9",
+            "denominator": "12"
+          },
+          "valid": true
+        },
+        "rightCandidate": {
+          "form": {
+            "kind": "fraction",
+            "numerator": "5",
+            "denominator": "12"
+          },
+          "valid": false
+        }
+      },
+      "identifySideStatus": null,
+      "role": "Data-only holdout: inspect recipe with shared factor subtraction and right invalid candidate (target 12)"
+    }
+  ],
+  "refusalResults": [
+    {
+      "id": "refusal-negative-difference",
+      "reasons": [
+        "negative-result"
+      ],
+      "matched": true,
+      "status": "REFUSED_AS_EXPECTED",
+      "description": "Subtrahend exceeds minuend resulting in negative difference"
+    },
+    {
+      "id": "refusal-equal-operands-zero-in-curated-review",
+      "reasons": [
+        "result-not-positive",
+        "result-simplification-target-mismatch"
+      ],
+      "matched": true,
+      "status": "REFUSED_AS_EXPECTED",
+      "description": "Equal value operands with zero difference rejected by curated-review positiveResult requirement"
+    },
+    {
+      "id": "refusal-invalid-common-denominator",
+      "validity": "invalid",
+      "reasons": [
+        "not-divisible-by-left-denominator"
+      ],
+      "status": "REFUSED_AS_EXPECTED",
+      "description": "Target denominator 15 is not divisible by left denominator 2"
+    },
+    {
+      "id": "refusal-ceiling-exceeded",
+      "rendering": "ineligible",
+      "reasons": [
+        "denominator-ceiling-exceeded"
+      ],
+      "status": "REFUSED_AS_EXPECTED",
+      "description": "Target denominator 36 exceeds Phase 2 fraction bar limit of 30"
+    },
+    {
+      "id": "refusal-inspect-all-valid-candidates",
+      "validCandidateCount": 2,
+      "status": "REFUSED_AS_EXPECTED",
+      "description": "Inspect candidate stimulus with two valid forms rejected"
+    }
+  ]
+}
