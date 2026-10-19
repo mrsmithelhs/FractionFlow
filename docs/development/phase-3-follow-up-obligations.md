@@ -1,10 +1,10 @@
 # Phase 3 follow-up obligations
 
-Owner dispositions include DECISION-035–042; current closure staging updated
-2026-10-17. These are planning obligations
+Owner dispositions include DECISION-035–046; current closure staging updated
+2026-10-18. These are planning obligations
 and review triggers, not implementation assignments or claims of delivered behavior.
-Plans 30/31/32, 19 and 17 are owner accepted and complete. Plans 20, 29, 33 and 34
-are also owner accepted and complete. Plan 18 is owner accepted and complete,
+Plans 30/31/32, 19 and 17 are owner accepted and complete. Plans 20, 29, 33, 34,
+35, 36, 37 and 38 are also owner accepted and complete. Plan 18 is owner accepted and complete,
 including the simpler side-choice question; Plan 23 remains draft. Plan 32's accepted production
 authoring does not authorize further family expansion or deployment.
 Plan 26 is technically and owner accepted and
@@ -17,7 +17,7 @@ requirements. Reassess these obligations explicitly at the §31 exit gate.
 
 | Follow-up | Revisit trigger | Required boundary |
 |---|---|---|
-| Reuse the focused one-renaming task across a broader compact problem bank | Plan 18 owner closure, 2026-10-17; Plan 35 is the owner-initiated source follow-on | Recognize encounter, side identification, one construction, operation and finish as a reusable instructional recipe. Both operand orders share its code today, but admission and target wording/validation are bounded to two records and target 8. Parameterize unit/side context from validated authored data and test varied targets before broader admission; preserve the unchanged operand as provided context, exact math and immutable replay. Coordinate with Plan 34 construct/inspect authoring without a universal engine or per-problem renderer branches. Plan 35 is in-progress with a supervised child; its mechanism gate remains. Closure is not random/adaptive practice activation. |
+| Reuse the focused one-renaming task across a broader compact problem bank | Fulfilled for the initial 21-item compact batch by Plan 35 (complete 2026-10-18); revisit before random/adaptive bank activation | Recognize encounter, side identification, one construction, operation and finish as a reusable instructional recipe. Parameterize unit/side context from validated authored data and test varied targets before broader admission; preserve the unchanged operand as provided context, exact math and immutable replay. Coordinate with Plan 34 construct/inspect authoring without a universal engine or per-problem renderer branches. Closure is not random/adaptive practice activation. |
 | Fraction multiplication and division as a possible later product extension | Owner interest recorded 2026-10-17; research/design after prioritizing current addition/subtraction and representation obligations | Founding math/content model section 1 already permits future extensions, but the current exact-math API, content families and instructional episodes implement addition/subtraction. Investigate learner conceptions, operation meanings, prerequisites, useful models, accessible participation and conceptual links to symbolic procedures; keep evidence and design hypotheses distinct. Reuse fraction values, notation and validation boundaries where suitable; do not assume the addition renaming workflow or current bars communicate multiplication/division. Any activation needs an explicit scope decision and separate exact-core/content/instruction/representation packets. No new operations or learner study are authorized here. |
 | Shorter episodes through purposeful replacement/omission of selected initial responsibilities | Owner priority 2026-10-12; Plan 29 design before further accumulation of episode tasks | Current episodes are judged too long. Identify which learner tasks are essential to each concept and which can vary, replace another task or be absent in a defined variant. Preserve mathematical validity, meaningful learner contribution, assistance, access, authored coverage and deterministic per-episode schedules. Propose concrete shorter episode outlines; do not merely add options to the current full sequence. No random omission, mastery policy or runtime change is authorized. |
 | Magnitude prediction for crossing and non-crossing sums | Plan 29 candidate; review together with matched outcomes and concept prerequisites | Ask whether a sum is below/equal/above one without exposing its exact total. Vary outcomes so the episode family does not supply the answer. A selected prediction may replace another responsibility; never add all four crossing candidates to an episode. No automatic new beat is approved. |
@@ -39,7 +39,7 @@ requirements. Reassess these obligations explicitly at the §31 exit gate.
 | Learner-triggered Next problem implementation | Fulfilled by Plan 26, technically and owner accepted 2026-10-10 after Repair 02; OQ-23 closed for the initial contract | The fixed two-item increment is accepted. Retry keeps identity; Next changes it and starts fresh; exhaustion is explicit. No automatic advance, session dose or persistence. Broader variety remains owed. |
 | Consistent stacked fraction notation in bar labels, prompts and matching-choice buttons | Owner usability suggestions 2026-10-10; Plan 31 is owner accepted/complete for current presentation work; mixed-number readability remains owed before mixed-number tasks | Reuse `createSymbolicFraction` and choice rendering hooks. Size each fraction line to the wider numeral plus a small shared font-relative padding, using intrinsic CSS sizing rather than its host's available width. Current bar labels reserve 3rem and their divider spans that lane; preserve the outer reserve for whole/fill/Replay geometry while sizing the inner notation to its content. Start with bar labels, linear matching buttons and the source fraction in its question; use a compact inline variant, preserve word wrapping and readable line spacing, group future mixed numbers as one whole-plus-fraction unit, and keep coherent spoken names. Consume validated forms instead of parsing prose or computing math in rendering. Check one/two-digit numerals, 360px and enlarged-text/zoom layouts, plus unchanged bar anchors through motion/Replay. This is optional current-task polish and a future mixed-number readability obligation, not a Plan 26 source assignment. |
 | Purposeful variation in learner responsibilities, with familiar grammar and mathematical invariants | Plan 29 design and Plan 34's bounded full-addition implementation are owner accepted; revisit when extending patterns/content and before Phase 3 exit | Current construct and inspect/keep/repair assignments preserve a fixed versioned schedule and familiar controls. Broader responsibility variation, prerequisites, response/recovery, answer withholding, assistance and immutable replay remain design obligations. Learning/transfer and sustained engagement require separate evidence; no random beats, automatic adaptation or learner study is authorized by these closures. |
-| First number-line task and bar-to-line bridge design | Draft Plan 37 records the bounded design; not initiated. Implementation retains Phase 3 bar-stability (§31) and representation (§90) review | Choose one distinct learning purpose, initially equivalence or magnitude, and one meaningful learner connection. Reuse exact fraction/scene foundations, but inspect the explicit capability refusal, missing line semantics and bar-specific composition. Specify line domain/benchmarks, learner response/recovery, accessible equivalent, preserved state/replay and honest geometry. No plug-in framework, forced conversion of every bar task, new representation switch or claim of transfer from animation alone. Preparatory design may use a pinned accepted baseline before the phase gate; implementation remains separately approved. |
+| First number-line task and bar-to-line bridge design | Plan 37 design owner-adopted and complete 2026-10-18 (DECISION-046); Plan 39 is the ready implementation packet | Choose one distinct learning purpose, initially equivalence or magnitude, and one meaningful learner connection. Reuse exact fraction/scene foundations, but inspect the explicit capability refusal, missing line semantics and bar-specific composition. Specify line domain/benchmarks, learner response/recovery, accessible equivalent, preserved state/replay and honest geometry. No plug-in framework, forced conversion of every bar task, new representation switch or claim of transfer from animation alone. Implementation in Plan 39 retains Requirement 0 mechanism and §31/§90 review gates. |
 | Meaningful reflection on other concept tasks | When designing focused concepts under §28 | Review the learning purpose and learner decision. DECISION-039's like-denominator omission is intentional, not an obligation to reinsert a conversion question. Add reflection only through an approved task with authored content. |
 | Deliberately unreduced starting operands and simplify-first versus direct common-unit strategy choice | Owner idea recorded 2026-10-10; design after nested/shared-factor paths and with focused simplification/strategy tasks before claiming broad Phase 3 variety | The founding math/content model §52 already reserves unreduced operands for deliberate strategy flexibility. Example `1/4 + 8/12` permits retaining twelfths and renaming only `1/4`, or explicitly simplifying `8/12` to `2/3` first. Preserve original forms, learner-established current forms, exact value and transformation provenance. Validate common-unit choices and schedule/task consequences against the current forms, not silently reduced inputs. Treat both valid strategies as legitimate unless a clearly stated task specifically practices simplification. Investigate branch/replay/help/reflection closure and concise learner choice; no forced extra screen, per-problem source branch, new Plan 32 item or automatic global reduction is authorized. |
 
@@ -65,17 +65,17 @@ buttons. Plans 18/19 now explicitly depend on Plan 26 for that learner reach;
 do not invent taxonomy buttons or count reviewer-only fragment launch as delivery.
 Reviewer-only addressing can provide specific inspection routes.
 
-Plan36 is owner-adopted and complete as of2026-10-18 (DECISION-045). Its first
-like-denominator takeaway task, eight-item batch and zero/equivalent-answer policy
-are assigned to ready but unstarted Plan38, which retains a pre-source mechanism
-gate. OQ-25's initial-task choice is dispositioned; comparison/difference and
-broader subtraction representation work remain open without a universal winner.
-Plan37 remains a draft number-line design obligation with no representation activation.
+Plan 36 (DECISION-045) and Plan 38 are owner-accepted and complete as of 2026-10-18,
+delivering the 8-item like-denominator takeaway subtraction batch in production.
+OQ-25's initial-task choice is dispositioned; comparison/difference and unlike-denominator
+subtraction representation work remain open without a universal winner.
+Plan 37 (DECISION-046) is owner-adopted and complete as of 2026-10-18; ready Plan 39
+is scoped to implement the 8-item `0`-to-`1` bar-to-line bridge batch behind a
+Requirement 0 mechanism and §31/§90 checkpoint gate.
 
 Existing later work remains on the roadmap: active simplification and focused
-concepts (§§27–28), subtraction after an owner representation disposition (OQ-25),
-number-line bridges after the fraction-bar exit gate (§31/§90), and a mixed-number
-instructional strategy before Phase 5 (§91/OQ-24, DECISION-033). Adaptive fading,
-session composition and local progress retain their later phase boundaries.
-No learner observations, representation winner, deployment or new phase is authorized
-by this follow-up record.
+concepts (§§27–28), unlike-denominator subtraction, multi-whole stack-to-line
+magnitude bridges (`[0, 2]`), and a mixed-number instructional strategy before
+Phase 5 (§91/OQ-24, DECISION-033). Adaptive fading, session composition and local
+progress retain their later phase boundaries. No learner observations, representation
+winner, deployment or new phase is authorized by this follow-up record.
