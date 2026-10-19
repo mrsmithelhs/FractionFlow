@@ -68,15 +68,17 @@ Reviewer-only addressing can provide specific inspection routes.
 Plan 36 (DECISION-045) and Plan 38 are owner-accepted and complete as of 2026-10-18,
 delivering the 8-item like-denominator takeaway subtraction batch in production.
 OQ-25's initial-task choice is dispositioned; comparison/difference and unlike-denominator
-subtraction representation work remain open without a universal winner.
+subtraction representation work remain open without a universal winner. Ready Plan 40
+is scoped to deliver the compact unlike-denominator subtraction batch across
+nested, shared-factor, and relatively-prime subtraction (reusing Plan 35's three
+renaming recipes and Plan 38's takeaway operation) along with the Roadmap §31 / §90
+Phase 3 exit assessment.
 Plan 37 (DECISION-046) is owner-adopted and complete as of 2026-10-18; drafted Plan 39
-specifies the 8-item `0`-to-`1` bar-to-line bridge batch behind the owner-selected
-Option A sequence (unlike-denominator subtraction on bars + §31/§90 disposition before
-activating Phase 4 number-line source code, unless explicitly reordered by the owner)
-and a Requirement 0 mechanism gate.
+depends on Plan 40 under the owner-confirmed Option A sequence and specifies the
+8-item `0`-to-`1` bar-to-line bridge batch behind a Requirement 0 mechanism gate.
 
 Existing later work remains on the roadmap: active simplification and focused
-concepts (§§27–28), unlike-denominator subtraction, multi-whole stack-to-line
+concepts (§§27–28), comparison/difference subtraction models, multi-whole stack-to-line
 magnitude bridges (`[0, 2]`), and a mixed-number instructional strategy before
 Phase 5 (§91/OQ-24, DECISION-033). Adaptive fading, session composition and local
 progress retain their later phase boundaries. No learner observations, representation

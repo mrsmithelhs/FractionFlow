@@ -2,8 +2,8 @@
 id: plan-39
 title: First Number-Line Locate and Bar-to-Line Bridge Batch
 status: draft
-depends_on: [plan-35, plan-37, plan-38]
-gate: "Owner sequencing gate (Option A: unlike-denominator subtraction + §31/§90 disposition precede Phase 4 activation unless owner explicitly reorders). Requirement 0: confirm §31/§90 readiness and approve exact wiring, admission, next sequential replay schema, and evidence mechanism before source. Staged technical review, owner rendered-page/agency acceptance and separate deployment gate."
+depends_on: [plan-35, plan-37, plan-38, plan-40]
+gate: "Owner sequencing gate (Option A: Plan 40 unlike-denominator subtraction + §31/§90 disposition precede Phase 4 activation). Requirement 0: confirm §31/§90 readiness and approve exact wiring, admission, next sequential replay schema, and evidence mechanism before source. Staged technical review, owner rendered-page/agency acceptance and separate deployment gate."
 superseded_by: null
 resolution: null
 summary: >-

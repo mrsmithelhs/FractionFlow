@@ -33,21 +33,19 @@ no silent substitution.
     - Checkpoint 2 (Stages 4–5: visual takeaway bar with hatched removal segments, linear path, app integration, 37 unit/rendered tests): `241964a`.
     - Checkpoint 3 (Stage 6: 8 browser routes -> 73 route rows / 75 executions, 5 `--plan38-witness-seed` falsification seeds, 11 responsive/zoom captures): `2db8a69`.
     - Owner screenshot review copy refinements (removed `.linear-takeaway-unit-context`, non-visual linear removal status `"${rightNum}/${den} is taken away from ${leftNum}/${den}."` during `operate` only, and context-specific resolve prompt `"${num}/${den} is left."`) + closure: `d140bd8`, plus tightened `withinViewport` and `action-as-answer` witness verification.
-- **Draft packets on the board:**
+- **Ready / Draft packets on the board:**
+  - **`plan-40` (`ready`):** Unlike-Denominator Subtraction Recipes and Curated Batch (Option A Phase 3 completion + Roadmap §31/§90 exit disposition; depends on `plan-35` and `plan-38`).
+  - **`plan-39` (`draft`, `blocked` on `plan-40`):** First Number-Line Locate and Bar-to-Line Bridge Batch (implements `DECISION-046` / `plan-37` after `plan-40`).
   - **`plan-23` (`draft`):** Local Development Console (`npm run dev:console`).
-  - **`plan-39` (`draft`):** First Number-Line Locate and Bar-to-Line Bridge Batch (implements `DECISION-046` / `plan-37`).
 
 ## Owner sequencing decision (Option A) and next-step gate
 
-During the `plan-37` / `plan-38` run, the orchestrator presented two phase-transition options:
-- **Option A (chosen by owner):** After `plan-38` (like-denominator subtraction) and `plan-37` (number-line design), run **one** compact Phase 3 packet for **unlike-denominator subtraction on bars** (reusing `plan-35`'s renaming recipes + `plan-38`'s takeaway operation) alongside a concise Roadmap §31 / §90 gate disposition, then begin Phase 4 number-line implementation (`plan-39`).
-- **Option B:** Jump straight from `plan-37` design to Phase 4 `0`-to-`1` number-line implementation (`plan-39`) and carry unlike-denominator subtraction in parallel or immediately after.
+The owner confirmed **Option A**:
+- Run **`plan-40`** (Unlike-Denominator Subtraction Recipes and Curated Batch on fraction bars, reusing `plan-35`'s `construct`, `inspect-keep-repair`, and `identify-side` recipes + `plan-38`'s takeaway operation, plus the Roadmap §31 / §90 Phase 3 exit disposition) first.
+- Once `plan-40` is accepted and closed, promote **`plan-39`** (`0`-to-`1` bar-to-line bridge batch) to `ready` to begin Phase 4 number-line implementation.
 
-The owner explicitly selected **Option A**. (`plan-39` was drafted at the owner's request so the number-line implementation specification is ready on the board, and is held at `status: draft` so it does not bypass the Option A sequence unless the owner explicitly chooses to run `plan-39` first.)
-
-**Immediate next question for the owner:**
-1. Proceed with **Option A** as selected: draft and run the compact **unlike-denominator subtraction on bars** packet (plus the §31/§90 gate disposition), then promote `plan-39` to `ready`; **or**
-2. Explicitly reorder to promote and run **`plan-39`** (the `0`-to-`1` bar-to-line bridge batch) first.
+**Immediate next step:**
+- Launch `plan-40` Requirement 0 (pre-source mechanism proposal, batch/admission probe, and `plan38-v5-replay-oracles.json` freeze) or review the implementer's Requirement 0 proposal when ready.
 
 ## Review discipline reminders
 
