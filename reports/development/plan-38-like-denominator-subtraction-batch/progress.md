@@ -85,22 +85,22 @@ Five independent falsification seeds were added to `scripts/dev/run-route-matrix
 | `clipped-takeaway-bar` | Applies `clip-path: inset(100%) !important` to `.fraction-bar-takeaway-track` | `visible geometry assertion failed for ".app-visual-view .fraction-bar-takeaway-track"` | `0` | `intended assertion detected seed: clipped-takeaway-bar; Route "ROUTE-PLAN38-DEEP-SAMPLE-ZERO-DIFFERENCE" visible geometry assertion failed for ".app-visual-view .fraction-bar-takeaway-track"` |
 | `premature-answer-leak` | Injects premature answer label `"0/9 is left."` before learner submission | `selector ".app-visual-view .active-beat-prompt" unexpectedly contains text "0/9 is left."` | `0` | `intended assertion detected seed: premature-answer-leak; Route "ROUTE-PLAN38-DEEP-SAMPLE-ZERO-DIFFERENCE" assertion failed: selector ".app-visual-view .active-beat-prompt" unexpectedly contains text "0/9 is left."` |
 | `addition-semantics` | Injects addition operator `+` into the active beat section | `selector ".app-visual-view .active-beat-section" unexpectedly contains text "+"` | `0` | `intended assertion detected seed: addition-semantics; Route "ROUTE-PLAN38-DEEP-SAMPLE-ZERO-DIFFERENCE" assertion failed: selector ".app-visual-view .active-beat-section" unexpectedly contains text "+"` |
-| `action-as-answer` | Replaces question with completion prompt before learner fraction entry | `selector ".app-visual-view .active-beat-prompt" does not contain text "How much is left?"` | `0` | `intended assertion detected seed: action-as-answer; Route "ROUTE-PLAN38-DEEP-SAMPLE-ZERO-DIFFERENCE" assertion failed: selector ".app-visual-view .active-beat-prompt" does not contain text "How much is left?"` |
+| `action-as-answer` | Bypasses learner fraction entry after `Take away` by replacing `.active-beat-controls` with a premature `Finish` button (removing `#operate-fraction-numerator-input`) | `selector "#operate-fraction-numerator-input" not found.` | `0` | `intended assertion detected seed: action-as-answer; Route "ROUTE-PLAN38-DEEP-SAMPLE-ZERO-DIFFERENCE" assertion failed: selector "#operate-fraction-numerator-input" not found.` |
 
 ---
 
 ## 5. Responsive Viewport Measurements & Screenshot Evidence
 
-Layout measurements were captured using `scripts/dev/capture-plan38-subtraction-evidence.mjs` and verified against zero horizontal overflow (`horizontalOverflow: false`) and element visibility constraints:
+Layout measurements were captured using `scripts/dev/capture-plan38-subtraction-evidence.mjs` and verified against zero horizontal overflow (`horizontalOverflow: false`), positive element boxes (`visible: true`), and full viewport containment (`withinViewport: true` and `intersectsViewport: true`):
 
-| Viewport | Mode / Configuration | Measured Document Size | Horizontal Overflow | Prompt Visible | Controls Visible | Captured Evidence Files |
+| Viewport | Mode / Configuration | Measured Document Size | Horizontal Overflow | Prompt Within Viewport | Controls Within Viewport | Captured Evidence Files |
 |---|---|---|---|---|---|---|
 | **360x740** | Visual view, standard motion | 360 x 740 px | `false` | `true` | `true` | `encounter-360x740.png`<br>`operate-hatch-360x740.png`<br>`help-360x740.png`<br>`resolve-360x740.png` |
 | **360x752** | Linear view, reduced motion | 360 x 752 px | `false` | `true` | `true` | `linear-encounter-360x752.png`<br>`linear-operate-360x752.png`<br>`linear-help-360x752.png`<br>`linear-resolve-360x752.png` |
 | **1366x768** | Visual wide, desktop Chromebook | 1366 x 768 px | `false` | `true` | `true` | `wide-encounter-1366x768.png`<br>`wide-operate-1366x768.png` |
 | **1093x614 @ DPR 1.25** | 125% zoom emulation | 1093 x 614 px | `false` | `true` | `true` | `zoom-operate-1093x614-dpr125.png` |
 
-All measurements and bounding box geometries are persisted in `reports/development/plan-38-like-denominator-subtraction-batch/evidence/plan38-viewport-measurements.json`.
+All measurements (`visible`, `intersectsViewport`, `withinViewport`) and bounding box geometries are persisted in `reports/development/plan-38-like-denominator-subtraction-batch/evidence/plan38-viewport-measurements.json`.
 
 ---
 

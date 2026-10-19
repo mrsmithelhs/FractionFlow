@@ -146,7 +146,7 @@ const plan38WitnessSeeds = Object.freeze({
     routeId: 'ROUTE-PLAN38-DEEP-SAMPLE-ZERO-DIFFERENCE',
     injectBeforeDescription: 'Plan 38: assert visible hatch and non-leakage at operate',
     mutation: 'action-as-answer',
-    failure: 'selector ".app-visual-view .active-beat-prompt" does not contain text "How much is left?"',
+    failure: 'selector "#operate-fraction-numerator-input" not found.',
   },
 });
 const startingSurfaces = Object.freeze({
@@ -2654,8 +2654,8 @@ async function runRouteMatrix(options = {}) {
                 el.appendChild(span);
               });
             } else if (seed.mutation === 'action-as-answer') {
-              await page.locator('.app-visual-view .active-beat-prompt').evaluate((el) => {
-                el.textContent = 'Action complete. Click Finish to continue.';
+              await page.locator('.app-visual-view .active-beat-controls').evaluate((el) => {
+                el.innerHTML = '<button type="button" class="control-btn">Finish</button>';
               });
             }
           }

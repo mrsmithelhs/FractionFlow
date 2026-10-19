@@ -1228,8 +1228,8 @@ Plan38; OQ-25; DECISION-040/041/042.
 
 **Date:** 2026-10-18
 
-**Decision:** The owner adopted Plan 37's reviewed design dossier (`design-contract.md`,
-`annotated-flow.md`, `rival-and-falsifier-table.md`, `implementation-and-validation.md`,
+**Decision:** The owner adopted Plan 37's reviewed design dossier (`requirement-0-investigation.md`,
+`design-contract.md`, `annotated-flow.md`, `implementation-and-validation.md`,
 and `dossier-review.md`) and authorized closing `plan-37`.
 
 The first number-line task (`bridge.bar-to-line-same-amount.v1`) connects a fraction's

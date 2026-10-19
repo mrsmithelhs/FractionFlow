@@ -1,24 +1,32 @@
 {
-  "capturedAt": "2026-10-19T01:11:54.046Z",
+  "capturedAt": "2026-10-19T02:50:07.817Z",
   "measurements": [
     {
-      "label": "encounter-360x740",
+      "routeId": "ROUTE-PLAN38-RESPONSIVE-VIEWPORTS",
+      "context": "production-default-v7",
+      "motionMode": "standard-motion",
+      "file": "reports/development/plan-38-like-denominator-subtraction-batch/evidence/encounter-360x740.png",
+      "caption": "Subtraction initial encounter at 360x740",
       "viewport": {
         "width": 360,
         "height": 740
       },
-      "document": {
-        "width": 360,
-        "height": 740
-      },
-      "scroll": {
-        "x": 0,
-        "y": 0
-      },
-      "horizontalOverflow": false,
-      "verticalScrollRange": 0,
-      "elements": {
-        "prompt": {
+      "layout": {
+        "viewport": {
+          "width": 360,
+          "height": 740
+        },
+        "document": {
+          "width": 360,
+          "height": 740
+        },
+        "horizontalOverflow": false,
+        "scroll": {
+          "x": 0,
+          "y": 0
+        },
+        "activeView": "app-visual-view",
+        "question": {
           "x": 63,
           "y": 372.72,
           "width": 234,
@@ -32,40 +40,35 @@
           "height": 44,
           "visible": true
         },
-        "episode": {
-          "x": 12,
-          "y": 12,
-          "width": 336,
-          "height": 612.84,
-          "visible": true
-        },
-        "takeawayContainer": {
-          "x": 41,
-          "y": 161,
-          "width": 278,
-          "height": 48,
-          "visible": true
-        }
+        "nestedChoices": []
       }
     },
     {
-      "label": "operate-hatch-360x740",
+      "routeId": "ROUTE-PLAN38-RESPONSIVE-VIEWPORTS",
+      "context": "production-default-v7",
+      "motionMode": "standard-motion",
+      "file": "reports/development/plan-38-like-denominator-subtraction-batch/evidence/operate-hatch-360x740.png",
+      "caption": "Subtraction operate beat with removal hatch marks at 360x740",
       "viewport": {
         "width": 360,
         "height": 740
       },
-      "document": {
-        "width": 360,
-        "height": 853
-      },
-      "scroll": {
-        "x": 0,
-        "y": 0
-      },
-      "horizontalOverflow": false,
-      "verticalScrollRange": 113,
-      "elements": {
-        "prompt": {
+      "layout": {
+        "viewport": {
+          "width": 360,
+          "height": 740
+        },
+        "document": {
+          "width": 360,
+          "height": 853
+        },
+        "horizontalOverflow": false,
+        "scroll": {
+          "x": 0,
+          "y": 0
+        },
+        "activeView": "app-visual-view",
+        "question": {
           "x": 63,
           "y": 372.72,
           "width": 234,
@@ -79,40 +82,35 @@
           "height": 240.59,
           "visible": true
         },
-        "episode": {
-          "x": 12,
-          "y": 12,
-          "width": 336,
-          "height": 829.03,
-          "visible": true
-        },
-        "takeawayContainer": {
-          "x": 41,
-          "y": 161,
-          "width": 278,
-          "height": 48,
-          "visible": true
-        }
+        "nestedChoices": []
       }
     },
     {
-      "label": "help-360x740",
+      "routeId": "ROUTE-PLAN38-RESPONSIVE-VIEWPORTS",
+      "context": "production-default-v7",
+      "motionMode": "standard-motion",
+      "file": "reports/development/plan-38-like-denominator-subtraction-batch/evidence/help-360x740.png",
+      "caption": "Subtraction operate beat with help cue at 360x740",
       "viewport": {
         "width": 360,
         "height": 740
       },
-      "document": {
-        "width": 360,
-        "height": 934
-      },
-      "scroll": {
-        "x": 0,
-        "y": 10
-      },
-      "horizontalOverflow": false,
-      "verticalScrollRange": 194,
-      "elements": {
-        "prompt": {
+      "layout": {
+        "viewport": {
+          "width": 360,
+          "height": 740
+        },
+        "document": {
+          "width": 360,
+          "height": 934
+        },
+        "horizontalOverflow": false,
+        "scroll": {
+          "x": 0,
+          "y": 10
+        },
+        "activeView": "app-visual-view",
+        "question": {
           "x": 63,
           "y": 362.72,
           "width": 234,
@@ -126,40 +124,35 @@
           "height": 321.38,
           "visible": true
         },
-        "episode": {
-          "x": 12,
-          "y": 2,
-          "width": 336,
-          "height": 909.81,
-          "visible": true
-        },
-        "takeawayContainer": {
-          "x": 41,
-          "y": 151,
-          "width": 278,
-          "height": 48,
-          "visible": true
-        }
+        "nestedChoices": []
       }
     },
     {
-      "label": "resolve-360x740",
+      "routeId": "ROUTE-PLAN38-RESPONSIVE-VIEWPORTS",
+      "context": "production-default-v7",
+      "motionMode": "standard-motion",
+      "file": "reports/development/plan-38-like-denominator-subtraction-batch/evidence/resolve-360x740.png",
+      "caption": "Subtraction resolve beat at 360x740",
       "viewport": {
         "width": 360,
         "height": 740
       },
-      "document": {
-        "width": 360,
-        "height": 740
-      },
-      "scroll": {
-        "x": 0,
-        "y": 0
-      },
-      "horizontalOverflow": false,
-      "verticalScrollRange": 0,
-      "elements": {
-        "prompt": {
+      "layout": {
+        "viewport": {
+          "width": 360,
+          "height": 740
+        },
+        "document": {
+          "width": 360,
+          "height": 740
+        },
+        "horizontalOverflow": false,
+        "scroll": {
+          "x": 0,
+          "y": 0
+        },
+        "activeView": "app-visual-view",
+        "question": {
           "x": 63,
           "y": 372.72,
           "width": 234,
@@ -173,349 +166,7 @@
           "height": 44,
           "visible": true
         },
-        "episode": {
-          "x": 12,
-          "y": 12,
-          "width": 336,
-          "height": 673.44,
-          "visible": true
-        },
-        "takeawayContainer": {
-          "x": 41,
-          "y": 161,
-          "width": 278,
-          "height": 48,
-          "visible": true
-        }
-      }
-    },
-    {
-      "label": "linear-encounter-360x752",
-      "viewport": {
-        "width": 360,
-        "height": 752
-      },
-      "document": {
-        "width": 360,
-        "height": 752
-      },
-      "scroll": {
-        "x": 0,
-        "y": 0
-      },
-      "horizontalOverflow": false,
-      "verticalScrollRange": 0,
-      "elements": {
-        "prompt": {
-          "x": 63,
-          "y": 311.78,
-          "width": 234,
-          "height": 25.19,
-          "visible": true
-        },
-        "controls": {
-          "x": 63,
-          "y": 370.97,
-          "width": 234,
-          "height": 44,
-          "visible": true
-        },
-        "episode": {
-          "x": 12,
-          "y": 12,
-          "width": 336,
-          "height": 554.97,
-          "visible": true
-        },
-        "takeawayContainer": {
-          "x": 134.33,
-          "y": 178,
-          "width": 91.33,
-          "height": 56.78,
-          "visible": true
-        }
-      }
-    },
-    {
-      "label": "linear-operate-360x752",
-      "viewport": {
-        "width": 360,
-        "height": 752
-      },
-      "document": {
-        "width": 360,
-        "height": 830
-      },
-      "scroll": {
-        "x": 0,
-        "y": 0
-      },
-      "horizontalOverflow": false,
-      "verticalScrollRange": 78,
-      "elements": {
-        "prompt": {
-          "x": 63,
-          "y": 346.17,
-          "width": 234,
-          "height": 25.19,
-          "visible": true
-        },
-        "controls": {
-          "x": 63,
-          "y": 405.36,
-          "width": 234,
-          "height": 240.59,
-          "visible": true
-        },
-        "episode": {
-          "x": 12,
-          "y": 12,
-          "width": 336,
-          "height": 805.55,
-          "visible": true
-        },
-        "takeawayContainer": {
-          "x": 134.33,
-          "y": 178,
-          "width": 91.33,
-          "height": 56.78,
-          "visible": true
-        }
-      }
-    },
-    {
-      "label": "linear-help-360x752",
-      "viewport": {
-        "width": 360,
-        "height": 752
-      },
-      "document": {
-        "width": 360,
-        "height": 955
-      },
-      "scroll": {
-        "x": 0,
-        "y": 20
-      },
-      "horizontalOverflow": false,
-      "verticalScrollRange": 203,
-      "elements": {
-        "prompt": {
-          "x": 63,
-          "y": 326.17,
-          "width": 234,
-          "height": 25.19,
-          "visible": true
-        },
-        "controls": {
-          "x": 63,
-          "y": 385.36,
-          "width": 234,
-          "height": 366.16,
-          "visible": true
-        },
-        "episode": {
-          "x": 12,
-          "y": -8,
-          "width": 336,
-          "height": 931.11,
-          "visible": true
-        },
-        "takeawayContainer": {
-          "x": 134.33,
-          "y": 158,
-          "width": 91.33,
-          "height": 56.78,
-          "visible": true
-        }
-      }
-    },
-    {
-      "label": "linear-resolve-360x752",
-      "viewport": {
-        "width": 360,
-        "height": 752
-      },
-      "document": {
-        "width": 360,
-        "height": 752
-      },
-      "scroll": {
-        "x": 0,
-        "y": 0
-      },
-      "horizontalOverflow": false,
-      "verticalScrollRange": 0,
-      "elements": {
-        "prompt": {
-          "x": 63,
-          "y": 311.78,
-          "width": 234,
-          "height": 25.19,
-          "visible": true
-        },
-        "controls": {
-          "x": 63,
-          "y": 370.97,
-          "width": 234,
-          "height": 44,
-          "visible": true
-        },
-        "episode": {
-          "x": 12,
-          "y": 12,
-          "width": 336,
-          "height": 615.56,
-          "visible": true
-        },
-        "takeawayContainer": {
-          "x": 99.33,
-          "y": 178,
-          "width": 161.33,
-          "height": 56.78,
-          "visible": true
-        }
-      }
-    },
-    {
-      "label": "wide-encounter-1366x768",
-      "viewport": {
-        "width": 1366,
-        "height": 768
-      },
-      "document": {
-        "width": 1366,
-        "height": 768
-      },
-      "scroll": {
-        "x": 0,
-        "y": 0
-      },
-      "horizontalOverflow": false,
-      "verticalScrollRange": 0,
-      "elements": {
-        "prompt": {
-          "x": 337,
-          "y": 421.69,
-          "width": 692,
-          "height": 25.19,
-          "visible": true
-        },
-        "controls": {
-          "x": 337,
-          "y": 477.81,
-          "width": 692,
-          "height": 44,
-          "visible": true
-        },
-        "episode": {
-          "x": 139,
-          "y": 40.97,
-          "width": 1088,
-          "height": 652.84,
-          "visible": true
-        },
-        "takeawayContainer": {
-          "x": 315,
-          "y": 209.97,
-          "width": 736,
-          "height": 48,
-          "visible": true
-        }
-      }
-    },
-    {
-      "label": "wide-operate-1366x768",
-      "viewport": {
-        "width": 1366,
-        "height": 768
-      },
-      "document": {
-        "width": 1366,
-        "height": 951
-      },
-      "scroll": {
-        "x": 0,
-        "y": 0
-      },
-      "horizontalOverflow": false,
-      "verticalScrollRange": 183,
-      "elements": {
-        "prompt": {
-          "x": 337,
-          "y": 421.69,
-          "width": 692,
-          "height": 25.19,
-          "visible": true
-        },
-        "controls": {
-          "x": 337,
-          "y": 477.81,
-          "width": 692,
-          "height": 240.59,
-          "visible": true
-        },
-        "episode": {
-          "x": 139,
-          "y": 40.97,
-          "width": 1088,
-          "height": 869.03,
-          "visible": true
-        },
-        "takeawayContainer": {
-          "x": 315,
-          "y": 209.97,
-          "width": 736,
-          "height": 48,
-          "visible": true
-        }
-      }
-    },
-    {
-      "label": "zoom-operate-1093x614-dpr125",
-      "viewport": {
-        "width": 1093,
-        "height": 614
-      },
-      "document": {
-        "width": 1093,
-        "height": 925
-      },
-      "scroll": {
-        "x": 0,
-        "y": 0
-      },
-      "horizontalOverflow": false,
-      "verticalScrollRange": 311,
-      "elements": {
-        "prompt": {
-          "x": 200.5,
-          "y": 408.81,
-          "width": 692,
-          "height": 25.19,
-          "visible": true
-        },
-        "controls": {
-          "x": 200.5,
-          "y": 464.94,
-          "width": 692,
-          "height": 240.59,
-          "visible": true
-        },
-        "episode": {
-          "x": 32.78,
-          "y": 32.78,
-          "width": 1027.44,
-          "height": 859.66,
-          "visible": true
-        },
-        "takeawayContainer": {
-          "x": 178.5,
-          "y": 197.09,
-          "width": 736,
-          "height": 48,
-          "visible": true
-        }
+        "nestedChoices": []
       }
     }
   ]

@@ -2,7 +2,7 @@
 
 Owner instruction: "Plan 37 proposal approved, you can complete Plan 37."
 
-The owner adopts `design-contract.md`, `annotated-flow.md`, `rival-and-falsifier-table.md`, and `implementation-and-validation.md` with `dossier-review.md` dispositions:
+The owner adopts `requirement-0-investigation.md`, `design-contract.md`, `annotated-flow.md`, and `implementation-and-validation.md` with `dossier-review.md` dispositions:
 
 - **First number-line task (`bridge.bar-to-line-same-amount.v1`):** Same-Amount Placement on a $[0, 1]$ Bar-to-Line Bridge (`encounter → locate → resolve`).
 - **Persistent vertical coexistence & geometry:** The reference fraction bar $[0, 1]$ remains persistently visible directly above the $[0, 1]$ number line with strictly identical horizontal start $x_0$ and end $x_1$ coordinates, so part-whole extent and linear position can be compared directly.

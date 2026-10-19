@@ -41,12 +41,16 @@ async function measureLayout(page, label) {
       const el = findVisible(selector);
       if (!el) return null;
       const r = el.getBoundingClientRect();
+      const intersectsViewport = r.bottom > 0 && r.right > 0 && r.top < window.innerHeight && r.left < window.innerWidth;
+      const withinViewport = r.top >= 0 && r.left >= 0 && r.bottom <= window.innerHeight && r.right <= window.innerWidth;
       return {
         x: Math.round(r.x * 100) / 100,
         y: Math.round(r.y * 100) / 100,
         width: Math.round(r.width * 100) / 100,
         height: Math.round(r.height * 100) / 100,
         visible: true,
+        intersectsViewport,
+        withinViewport,
       };
     };
 
@@ -66,8 +70,14 @@ async function measureLayout(page, label) {
   });
 
   assert.equal(data.horizontalOverflow, false, `${label}: zero horizontal overflow`);
-  assert.ok(data.elements.prompt && data.elements.prompt.visible, `${label}: prompt visible`);
-  assert.ok(data.elements.controls && data.elements.controls.visible, `${label}: controls visible`);
+  assert.ok(
+    data.elements.prompt && data.elements.prompt.visible && data.elements.prompt.withinViewport,
+    `${label}: prompt visible within viewport`,
+  );
+  assert.ok(
+    data.elements.controls && data.elements.controls.visible && data.elements.controls.withinViewport,
+    `${label}: controls visible within viewport`,
+  );
   return { label, ...data };
 }
 

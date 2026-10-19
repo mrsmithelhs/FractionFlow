@@ -178,7 +178,7 @@ Currently, `'number-line'` triggers a hardcoded refusal. When activated by an ap
 ### Replay Data Invariants
 1. **Canonical Envelope Keys:** Matches existing `src/interaction/replay.js` structure: `{ schemaVersion, contentIdentity, episodeDefinition, support, activeCondition, learnerIntents, taskContext }` with zero timestamps or non-deterministic fields.
 2. **Submitted Instructional Intents Only:**
-   - `{ type: 'submit-line-position', proposed: { kind: 'fraction', numerator: '3', denominator: '4' } }`
+   - `{ type: 'propose-number-line-location', proposed: { kind: 'fraction', numerator: '3', denominator: '4' } }`
    - `{ type: 'request-task-help' }`
    - `{ type: 'finish-compact-episode' }`
 3. **No UI Ephemera in Replay:** Unconfirmed candidate previews, hover states, focus outlines, and help-panel open/close toggles remain app-local UI draft state and are never written into `learnerIntents`.
