@@ -32,14 +32,10 @@ export function buildPlan38SubtractionSetActions({ view, supportProfile } = {}) 
       description: `Plan38 ${itemNum}: acknowledge takeaway encounter (${record.itemId})`,
     }));
 
-    // 2. Linear view unit context and removal status assertions
+    // 2. Linear view removal status assertion
     if (view === 'linear') {
-      actions.push(action('assertText', `${host} .linear-takeaway-unit-context`, {
-        value: `One whole, ${den} equal parts`,
-        description: `Plan38 ${itemNum}: assert linear unit context`,
-      }));
       actions.push(action('assertText', `${host} .linear-takeaway-removal-status`, {
-        value: `The amount ${record.rightNumerator}/${den} is marked as removed from the starting amount.`,
+        value: `${record.rightNumerator}/${den} is taken away from ${record.leftNumerator}/${den}.`,
         description: `Plan38 ${itemNum}: assert linear removal status`,
       }));
     }

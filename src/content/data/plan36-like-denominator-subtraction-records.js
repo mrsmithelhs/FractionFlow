@@ -84,7 +84,7 @@ export const PLAN36_SUBTRACTION_TASK_DATA = deepFreeze({
     visualHelp: 'Count only the shaded parts without removal marks.',
     linearHelp: 'The second fraction is the amount taken away. Use the starting amount to work out what remains.',
     recoveryFeedback: 'Check the parts left. Try again.',
-    correctFeedback: 'That amount is left.',
+    correctFeedback: '{difference} is left.',
   }),
 });
 

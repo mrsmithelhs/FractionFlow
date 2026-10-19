@@ -761,7 +761,12 @@ export function createBeatContainer({
 
       case 'resolve': {
         if (scene.meaning.takeaway) {
-          promptText.textContent = strings.subtraction.thatAmountLeft;
+          const accepted = scene.meaning.takeaway.acceptedResponseForm
+            || scene.meaning.operation?.acceptedResponseForm
+            || scene.meaning.operation?.rawResult;
+          promptText.textContent = typeof strings.subtraction.thatAmountLeft === 'function'
+            ? strings.subtraction.thatAmountLeft(accepted.numerator, accepted.denominator)
+            : `${accepted.numerator}/${accepted.denominator} is left.`;
           const finishBtn = createButton({
             label: strings.resolve.finishButton,
             className: 'control-action-btn',

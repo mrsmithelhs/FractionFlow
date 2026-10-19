@@ -1,7 +1,8 @@
 ---
 id: plan-38
 title: Like-Denominator Takeaway Subtraction Batch
-status: in-progress
+status: complete
+resolution: "Implemented and verified the 8-item like-denominator takeaway subtraction practice set (DECISION-045 / Plan 36 contract) across pure content/episode/replay-v5/scene foundation, visual and linear renderers, app entry and navigation, 8 browser route rows (73 rows / 75 executions passing), 5 falsification seeds, and 11 responsive/zoom viewport captures, including owner-approved resolve and linear copy refinements."
 depends_on: [plan-15, plan-35, plan-36]
 gate: "Requirement 0: approve exact wiring, admission/replay and evidence mechanism before source. Staged technical review, owner rendered-page/agency acceptance and separate deployment gate."
 summary: >-

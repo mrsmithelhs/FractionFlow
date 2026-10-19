@@ -134,7 +134,7 @@ const plan38WitnessSeeds = Object.freeze({
     routeId: 'ROUTE-PLAN38-DEEP-SAMPLE-ZERO-DIFFERENCE',
     injectBeforeDescription: 'Plan 38: assert visible hatch and non-leakage at operate',
     mutation: 'leak-answer',
-    failure: 'unexpectedly contains text "That amount is left."',
+    failure: 'unexpectedly contains text "0/9 is left."',
   },
   'addition-semantics': {
     routeId: 'ROUTE-PLAN38-DEEP-SAMPLE-ZERO-DIFFERENCE',
@@ -2644,7 +2644,7 @@ async function runRouteMatrix(options = {}) {
             } else if (seed.mutation === 'leak-answer') {
               await page.locator('.app-visual-view .active-beat-prompt').evaluate((el) => {
                 const span = document.createElement('span');
-                span.textContent = ' That amount is left.';
+                span.textContent = ' 0/9 is left.';
                 el.appendChild(span);
               });
             } else if (seed.mutation === 'addition-semantics') {

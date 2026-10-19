@@ -147,12 +147,11 @@ export const STRINGS = Object.freeze({
     amountLeftGroup: 'Amount left',
     numeratorLabel: 'Numerator of amount left',
     denominatorLabel: 'Denominator of amount left',
-    thatAmountLeft: 'That amount is left.',
+    thatAmountLeft: (num, den) => `${num}/${den} is left.`,
     errorRecovery: 'Check the parts left. Try again.',
     visualHelp: 'Count only the shaded parts without removal marks.',
     linearHelp: 'The second fraction is the amount taken away. Use the starting amount to work out what remains.',
-    unitContext: (wholePartitionCount) => `One whole, ${wholePartitionCount} equal parts`,
-    removalStatus: (rightNum, den) => `The amount ${rightNum}/${den} is marked as removed from the starting amount.`,
+    removalStatus: (rightNum, leftNum, den) => `${rightNum}/${den} is taken away from ${leftNum}/${den}.`,
   }),
 
 

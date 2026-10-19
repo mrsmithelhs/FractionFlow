@@ -119,19 +119,12 @@ export function createLinearPathRenderer({
       }
       contextSectionEl.appendChild(expression);
 
-      const unitContextEl = document.createElement('p');
-      unitContextEl.classList.add('linear-takeaway-unit-context');
-      unitContextEl.textContent = strings.subtraction?.unitContext
-        ? strings.subtraction.unitContext(scene.meaning.takeaway.wholePartitionCount)
-        : `One whole, ${scene.meaning.takeaway.wholePartitionCount} equal parts`;
-      contextSectionEl.appendChild(unitContextEl);
-
-      if (scene.meaning.takeaway.removalStatus === 'marked') {
+      if (scene.meaning.takeaway.removalStatus === 'marked' && !accepted) {
         const removalStatusEl = document.createElement('p');
         removalStatusEl.classList.add('linear-takeaway-removal-status');
-        removalStatusEl.textContent = strings.subtraction?.removalStatus
-          ? strings.subtraction.removalStatus(right.numerator, right.denominator)
-          : `The amount ${right.numerator}/${right.denominator} is marked as removed from the starting amount.`;
+        removalStatusEl.textContent = typeof strings.subtraction?.removalStatus === 'function'
+          ? strings.subtraction.removalStatus(right.numerator, left.numerator, right.denominator)
+          : `${right.numerator}/${right.denominator} is taken away from ${left.numerator}/${left.denominator}.`;
         contextSectionEl.appendChild(removalStatusEl);
       }
       return;
@@ -895,7 +888,12 @@ export function createLinearPathRenderer({
 
       case 'resolve': {
         if (scene.meaning.takeaway) {
-          promptText.textContent = strings.subtraction.thatAmountLeft;
+          const accepted = scene.meaning.takeaway.acceptedResponseForm
+            || scene.meaning.operation?.acceptedResponseForm
+            || scene.meaning.operation?.rawResult;
+          promptText.textContent = typeof strings.subtraction.thatAmountLeft === 'function'
+            ? strings.subtraction.thatAmountLeft(accepted.numerator, accepted.denominator)
+            : `${accepted.numerator}/${accepted.denominator} is left.`;
           const finishBtn = createButton({
             label: strings.resolve.finishButton,
             className: 'control-action-btn',

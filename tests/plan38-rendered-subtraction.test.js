@@ -125,9 +125,7 @@ describe('Plan 38 rendered like-denominator subtraction batch', () => {
               }
             }
           } else {
-            const unitCtx = host.querySelector('.linear-takeaway-unit-context');
-            expect(unitCtx).not.toBeNull();
-            expect(unitCtx.textContent).toBe(`One whole, ${den} equal parts`);
+            expect(host.querySelector('.linear-takeaway-unit-context')).toBeNull();
             expect(host.querySelector('.linear-takeaway-removal-status')).toBeNull();
           }
 
@@ -165,21 +163,19 @@ describe('Plan 38 rendered like-denominator subtraction batch', () => {
               }
             }
           } else {
-            const unitCtx = host.querySelector('.linear-takeaway-unit-context');
-            expect(unitCtx).not.toBeNull();
-            expect(unitCtx.textContent).toBe(`One whole, ${den} equal parts`);
+            expect(host.querySelector('.linear-takeaway-unit-context')).toBeNull();
             const removalStatus = host.querySelector('.linear-takeaway-removal-status');
             expect(removalStatus).not.toBeNull();
             expect(removalStatus.textContent).toBe(
-              `The amount ${rightNum}/${den} is marked as removed from the starting amount.`,
+              `${rightNum}/${den} is taken away from ${leftNum}/${den}.`,
             );
-            expect(removalStatus.textContent).not.toContain(String(diffNum));
+            expect(removalStatus.textContent).not.toContain(`${diffNum}/${den}`);
           }
 
           // Pre-resolution leakage check at operate
           const operateHtml = host.innerHTML;
           expect(operateHtml).not.toContain(`Difference:`);
-          expect(operateHtml).not.toContain(`That amount is left.`);
+          expect(operateHtml).not.toContain(`${diffNum}/${den} is left.`);
 
           // 3. Test Wrong Answer Submission and Recovery
           const checkBtn = host.querySelector('.control-submit-btn');
@@ -288,17 +284,11 @@ describe('Plan 38 rendered like-denominator subtraction batch', () => {
 
           expect(app.getState().beat).toBe('resolve');
           const prompt = host.querySelector('.active-beat-prompt');
-          expect(prompt.textContent).toBe('That amount is left.');
+          expect(prompt.textContent).toBe(`${diffNum}/${den} is left.`);
 
           if (view === 'linear') {
-            const unitCtx = host.querySelector('.linear-takeaway-unit-context');
-            expect(unitCtx).not.toBeNull();
-            expect(unitCtx.textContent).toBe(`One whole, ${den} equal parts`);
-            const removalStatus = host.querySelector('.linear-takeaway-removal-status');
-            expect(removalStatus).not.toBeNull();
-            expect(removalStatus.textContent).toBe(
-              `The amount ${rightNum}/${den} is marked as removed from the starting amount.`,
-            );
+            expect(host.querySelector('.linear-takeaway-unit-context')).toBeNull();
+            expect(host.querySelector('.linear-takeaway-removal-status')).toBeNull();
           }
 
           const finishBtn = host.querySelector('.active-beat-controls button');
