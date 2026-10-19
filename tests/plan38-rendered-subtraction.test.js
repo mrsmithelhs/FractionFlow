@@ -124,6 +124,11 @@ describe('Plan 38 rendered like-denominator subtraction batch', () => {
                 expect(segments[i].classList.contains('outside-start')).toBe(true);
               }
             }
+          } else {
+            const unitCtx = host.querySelector('.linear-takeaway-unit-context');
+            expect(unitCtx).not.toBeNull();
+            expect(unitCtx.textContent).toBe(`One whole, ${den} equal parts`);
+            expect(host.querySelector('.linear-takeaway-removal-status')).toBeNull();
           }
 
           // Inputs must not be mounted yet
@@ -159,6 +164,16 @@ describe('Plan 38 rendered like-denominator subtraction batch', () => {
                 expect(segments[i].classList.contains('outside-start')).toBe(true);
               }
             }
+          } else {
+            const unitCtx = host.querySelector('.linear-takeaway-unit-context');
+            expect(unitCtx).not.toBeNull();
+            expect(unitCtx.textContent).toBe(`One whole, ${den} equal parts`);
+            const removalStatus = host.querySelector('.linear-takeaway-removal-status');
+            expect(removalStatus).not.toBeNull();
+            expect(removalStatus.textContent).toBe(
+              `The amount ${rightNum}/${den} is marked as removed from the starting amount.`,
+            );
+            expect(removalStatus.textContent).not.toContain(String(diffNum));
           }
 
           // Pre-resolution leakage check at operate
@@ -186,19 +201,33 @@ describe('Plan 38 rendered like-denominator subtraction batch', () => {
           expect(host.querySelector(numInputId).value).toBe('99');
           expect(host.querySelector(denInputId).value).toBe(String(den));
 
-          // 4. Test Task Help Toggle
+          // 4. Test Task Help Toggle & Repeated Identical Wrong Answer
           const helpBtn = host.querySelector('.app-secondary-button');
           expect(helpBtn).not.toBeNull();
           expect(helpBtn.textContent).toBe('Need help?');
           expect(helpBtn.getAttribute('aria-expanded')).toBe('false');
 
-          // Open help
+          const helpCueId = view === 'visual' ? '#visual-subtraction-task-help' : '#linear-subtraction-task-help';
+
+          // Step 1: Open help
           helpBtn.click();
           expect(helpBtn.textContent).toBe('Close help');
           expect(helpBtn.getAttribute('aria-expanded')).toBe('true');
           expect(document.activeElement).toBe(helpBtn);
+          expect(host.querySelector(helpCueId)).not.toBeNull();
 
-          const helpCueId = view === 'visual' ? '#visual-subtraction-task-help' : '#linear-subtraction-task-help';
+          // Step 2: Close help
+          helpBtn.click();
+          expect(helpBtn.textContent).toBe('Need help?');
+          expect(helpBtn.getAttribute('aria-expanded')).toBe('false');
+          expect(host.querySelector(helpCueId)).toBeNull();
+          expect(document.activeElement).toBe(helpBtn);
+
+          // Step 3: Reopen help
+          helpBtn.click();
+          expect(helpBtn.textContent).toBe('Close help');
+          expect(helpBtn.getAttribute('aria-expanded')).toBe('true');
+          expect(document.activeElement).toBe(helpBtn);
           const helpCue = host.querySelector(helpCueId);
           expect(helpCue).not.toBeNull();
           if (view === 'visual') {
@@ -207,21 +236,48 @@ describe('Plan 38 rendered like-denominator subtraction batch', () => {
             expect(helpCue.textContent).toBe('The second fraction is the amount taken away. Use the starting amount to work out what remains.');
           }
 
-          // Submit another wrong answer while help is open
+          // Step 4: Submit wrong answer while help is open
           const numInputDuringHelp = host.querySelector(numInputId);
           numInputDuringHelp.value = '98';
           host.querySelector('.control-submit-btn').click();
 
           // Help remains open across wrong submission!
           expect(host.querySelector(helpCueId)).not.toBeNull();
-          expect(host.querySelector('.app-secondary-button').getAttribute('aria-expanded')).toBe('true');
+          expect(helpBtn.getAttribute('aria-expanded')).toBe('true');
+          expect(host.querySelector('.recovery-feedback')).not.toBeNull();
+          expect(host.querySelector('.recovery-feedback').textContent).toBe('Check the parts left. Try again.');
           expect(document.activeElement).toBe(host.querySelector(numInputId));
+          expect(host.querySelector(numInputId).value).toBe('98');
 
-          // Close help
-          host.querySelector('.app-secondary-button').click();
+          // Step 5: Repeat the SAME identical wrong answer while help is open
+          host.querySelector('.control-submit-btn').click();
+          expect(host.querySelector(helpCueId)).not.toBeNull();
+          expect(helpBtn.getAttribute('aria-expanded')).toBe('true');
+          expect(host.querySelector('.recovery-feedback')).not.toBeNull();
+          expect(host.querySelector('.recovery-feedback').textContent).toBe('Check the parts left. Try again.');
+          expect(document.activeElement).toBe(host.querySelector(numInputId));
+          expect(host.querySelector(numInputId).value).toBe('98');
+
+          // Step 6: Close help (verify recovery feedback and draft remain)
+          helpBtn.click();
           expect(host.querySelector(helpCueId)).toBeNull();
-          expect(host.querySelector('.app-secondary-button').getAttribute('aria-expanded')).toBe('false');
-          expect(document.activeElement).toBe(host.querySelector('.app-secondary-button'));
+          expect(helpBtn.getAttribute('aria-expanded')).toBe('false');
+          expect(helpBtn.textContent).toBe('Need help?');
+          expect(host.querySelector('.recovery-feedback')).not.toBeNull();
+          expect(host.querySelector('.recovery-feedback').textContent).toBe('Check the parts left. Try again.');
+          expect(host.querySelector(numInputId).value).toBe('98');
+          expect(host.querySelector(denInputId).value).toBe(String(den));
+          expect(document.activeElement).toBe(helpBtn);
+
+          // Step 7: Reopen help (verify recovery feedback and help cue are visible, aria-expanded matches)
+          helpBtn.click();
+          expect(host.querySelector(helpCueId)).not.toBeNull();
+          expect(helpBtn.getAttribute('aria-expanded')).toBe('true');
+          expect(helpBtn.textContent).toBe('Close help');
+          expect(host.querySelector('.recovery-feedback')).not.toBeNull();
+          expect(host.querySelector('.recovery-feedback').textContent).toBe('Check the parts left. Try again.');
+          expect(host.querySelector(numInputId).value).toBe('98');
+          expect(document.activeElement).toBe(helpBtn);
 
           // 5. Test Correct Answer Submission -> Resolve Beat
           const finalNumInput = host.querySelector(numInputId);
@@ -233,6 +289,17 @@ describe('Plan 38 rendered like-denominator subtraction batch', () => {
           expect(app.getState().beat).toBe('resolve');
           const prompt = host.querySelector('.active-beat-prompt');
           expect(prompt.textContent).toBe('That amount is left.');
+
+          if (view === 'linear') {
+            const unitCtx = host.querySelector('.linear-takeaway-unit-context');
+            expect(unitCtx).not.toBeNull();
+            expect(unitCtx.textContent).toBe(`One whole, ${den} equal parts`);
+            const removalStatus = host.querySelector('.linear-takeaway-removal-status');
+            expect(removalStatus).not.toBeNull();
+            expect(removalStatus.textContent).toBe(
+              `The amount ${rightNum}/${den} is marked as removed from the starting amount.`,
+            );
+          }
 
           const finishBtn = host.querySelector('.active-beat-controls button');
           expect(finishBtn).not.toBeNull();

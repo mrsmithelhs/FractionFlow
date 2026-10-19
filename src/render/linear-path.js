@@ -118,6 +118,22 @@ export function createLinearPathRenderer({
         expression.appendChild(createSymbolicFraction(accepted.numerator, accepted.denominator, { ariaHidden: true }));
       }
       contextSectionEl.appendChild(expression);
+
+      const unitContextEl = document.createElement('p');
+      unitContextEl.classList.add('linear-takeaway-unit-context');
+      unitContextEl.textContent = strings.subtraction?.unitContext
+        ? strings.subtraction.unitContext(scene.meaning.takeaway.wholePartitionCount)
+        : `One whole, ${scene.meaning.takeaway.wholePartitionCount} equal parts`;
+      contextSectionEl.appendChild(unitContextEl);
+
+      if (scene.meaning.takeaway.removalStatus === 'marked') {
+        const removalStatusEl = document.createElement('p');
+        removalStatusEl.classList.add('linear-takeaway-removal-status');
+        removalStatusEl.textContent = strings.subtraction?.removalStatus
+          ? strings.subtraction.removalStatus(right.numerator, right.denominator)
+          : `The amount ${right.numerator}/${right.denominator} is marked as removed from the starting amount.`;
+        contextSectionEl.appendChild(removalStatusEl);
+      }
       return;
     }
 

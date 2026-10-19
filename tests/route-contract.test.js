@@ -11,6 +11,7 @@ const {
   expandRouteExecutions,
   motionWitnessSeeds,
   plan18WitnessSeeds,
+  plan38WitnessSeeds,
   resolveStartingSurface,
   selectRoutesForRun,
   validateMatrixIntegrity,
@@ -50,7 +51,7 @@ describe('Plan 14 Reachable Behavior Route Contract & Matrix Schema', () => {
     const mislabeled = structuredClone(contextMap);
     mislabeled.contexts['ROUTE-PLAN34-INSPECT-LINEAR-DEEP'] = 'historical-v4';
     expect((await validateMatrixIntegrity(matrix, REGISTERED_CONDITIONS, mislabeled)).errors.join('\n'))
-      .toContain('Current Plan 34/35 route "ROUTE-PLAN34-INSPECT-LINEAR-DEEP" must exercise production-default-v7');
+      .toContain('Current Plan 34/35/38 route "ROUTE-PLAN34-INSPECT-LINEAR-DEEP" must exercise production-default-v7');
   });
 
   it('pins two v6 nested traversals while separately proving current v7 full-set reach', () => {
@@ -99,6 +100,33 @@ describe('Plan 14 Reachable Behavior Route Contract & Matrix Schema', () => {
         expect.objectContaining({ view: 'linear', supportProfile: 'medium-support' }),
       ]);
     expect(current.every((route) => route.actions.some((action) => action.method === 'completePlan35LiveSet'))).toBe(true);
+  });
+
+  it('declares 8 Plan 38 like-denominator subtraction routes and 5 falsification seeds', () => {
+    const plan38Routes = matrix.routes.filter((route) => route.id.startsWith('ROUTE-PLAN38-'));
+    const contexts = JSON.parse(fs.readFileSync(path.resolve(__dirname, 'routes/plan34-context-map.json'), 'utf8')).contexts;
+    expect(plan38Routes.map((route) => route.id)).toEqual([
+      'ROUTE-PLAN38-SUBTRACTION-HIGH-VISUAL-ALL-8',
+      'ROUTE-PLAN38-SUBTRACTION-MEDIUM-LINEAR-ALL-8',
+      'ROUTE-PLAN38-DEEP-SAMPLE-ZERO-DIFFERENCE',
+      'ROUTE-PLAN38-DEEP-SAMPLE-REDUCIBLE-DIFFERENCE',
+      'ROUTE-PLAN38-HELP-TOGGLE-REPEATED-ERROR',
+      'ROUTE-PLAN38-VIEW-TOGGLE-DRAFT-PRESERVATION',
+      'ROUTE-PLAN38-REDUCED-MOTION-NO-ANIMATION',
+      'ROUTE-PLAN38-RESPONSIVE-VIEWPORTS',
+    ]);
+    expect(plan38Routes.map((route) => contexts[route.id])).toEqual(
+      Array(8).fill('production-default-v7')
+    );
+    const setRoutes = plan38Routes.filter((route) => route.actions.some((action) => action.method === 'completePlan38SubtractionSet'));
+    expect(setRoutes).toHaveLength(2);
+    expect(Object.keys(plan38WitnessSeeds).sort()).toEqual([
+      'action-as-answer',
+      'addition-semantics',
+      'clipped-takeaway-bar',
+      'erased-removal-marks',
+      'premature-answer-leak',
+    ]);
   });
 
   it('enforces Rule 1: fails if a registered condition has no declared route witness', async () => {
@@ -329,7 +357,7 @@ describe('Plan 14 Reachable Behavior Route Contract & Matrix Schema', () => {
 
   it('executes each prototype route in both motion modes and brings in its filtered negative control', () => {
     const executions = expandRouteExecutions(matrix.routes);
-    expect(executions).toHaveLength(67);
+    expect(executions).toHaveLength(75);
     expect(executions.filter((execution) => (
       execution.route.configuration === 'plan15-subtraction-prototype'
     ))).toHaveLength(4);

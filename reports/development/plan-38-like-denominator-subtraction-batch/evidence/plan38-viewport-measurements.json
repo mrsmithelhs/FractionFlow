@@ -1,0 +1,173 @@
+{
+  "capturedAt": "2026-10-19T00:49:20.744Z",
+  "measurements": [
+    {
+      "routeId": "ROUTE-PLAN38-RESPONSIVE-VIEWPORTS",
+      "context": "production-default-v7",
+      "motionMode": "standard-motion",
+      "file": "reports/development/plan-38-like-denominator-subtraction-batch/evidence/encounter-360x740.png",
+      "caption": "Subtraction initial encounter at 360x740",
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "layout": {
+        "viewport": {
+          "width": 360,
+          "height": 740
+        },
+        "document": {
+          "width": 360,
+          "height": 740
+        },
+        "horizontalOverflow": false,
+        "scroll": {
+          "x": 0,
+          "y": 0
+        },
+        "activeView": "app-visual-view",
+        "question": {
+          "x": 63,
+          "y": 372.72,
+          "width": 234,
+          "height": 25.19,
+          "visible": true
+        },
+        "controls": {
+          "x": 63,
+          "y": 428.84,
+          "width": 234,
+          "height": 44,
+          "visible": true
+        },
+        "nestedChoices": []
+      }
+    },
+    {
+      "routeId": "ROUTE-PLAN38-RESPONSIVE-VIEWPORTS",
+      "context": "production-default-v7",
+      "motionMode": "standard-motion",
+      "file": "reports/development/plan-38-like-denominator-subtraction-batch/evidence/operate-hatch-360x740.png",
+      "caption": "Subtraction operate beat with removal hatch marks at 360x740",
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "layout": {
+        "viewport": {
+          "width": 360,
+          "height": 740
+        },
+        "document": {
+          "width": 360,
+          "height": 853
+        },
+        "horizontalOverflow": false,
+        "scroll": {
+          "x": 0,
+          "y": 0
+        },
+        "activeView": "app-visual-view",
+        "question": {
+          "x": 63,
+          "y": 372.72,
+          "width": 234,
+          "height": 25.19,
+          "visible": true
+        },
+        "controls": {
+          "x": 63,
+          "y": 428.84,
+          "width": 234,
+          "height": 240.59,
+          "visible": true
+        },
+        "nestedChoices": []
+      }
+    },
+    {
+      "routeId": "ROUTE-PLAN38-RESPONSIVE-VIEWPORTS",
+      "context": "production-default-v7",
+      "motionMode": "standard-motion",
+      "file": "reports/development/plan-38-like-denominator-subtraction-batch/evidence/help-360x740.png",
+      "caption": "Subtraction operate beat with help cue at 360x740",
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "layout": {
+        "viewport": {
+          "width": 360,
+          "height": 740
+        },
+        "document": {
+          "width": 360,
+          "height": 934
+        },
+        "horizontalOverflow": false,
+        "scroll": {
+          "x": 0,
+          "y": 10
+        },
+        "activeView": "app-visual-view",
+        "question": {
+          "x": 63,
+          "y": 362.72,
+          "width": 234,
+          "height": 25.19,
+          "visible": true
+        },
+        "controls": {
+          "x": 63,
+          "y": 418.84,
+          "width": 234,
+          "height": 321.38,
+          "visible": true
+        },
+        "nestedChoices": []
+      }
+    },
+    {
+      "routeId": "ROUTE-PLAN38-RESPONSIVE-VIEWPORTS",
+      "context": "production-default-v7",
+      "motionMode": "standard-motion",
+      "file": "reports/development/plan-38-like-denominator-subtraction-batch/evidence/resolve-360x740.png",
+      "caption": "Subtraction resolve beat at 360x740",
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "layout": {
+        "viewport": {
+          "width": 360,
+          "height": 740
+        },
+        "document": {
+          "width": 360,
+          "height": 740
+        },
+        "horizontalOverflow": false,
+        "scroll": {
+          "x": 0,
+          "y": 0
+        },
+        "activeView": "app-visual-view",
+        "question": {
+          "x": 63,
+          "y": 372.72,
+          "width": 234,
+          "height": 25.19,
+          "visible": true
+        },
+        "controls": {
+          "x": 63,
+          "y": 428.84,
+          "width": 234,
+          "height": 44,
+          "visible": true
+        },
+        "nestedChoices": []
+      }
+    }
+  ]
+}

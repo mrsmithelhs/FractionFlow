@@ -850,6 +850,7 @@
 
 /* Subtraction Takeaway Bar & Segments */
 .fraction-bar-takeaway-container {
+  display: block;
   width: 100%;
 }
 
@@ -978,6 +979,15 @@
   align-self: center;
   margin: 0;
   font-size: 1.5rem;
+}
+
+.linear-takeaway-unit-context,
+.linear-takeaway-removal-status {
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.4;
+  color: var(--ff-color-text);
+  text-align: center;
 }
 
 .linear-transition-details {

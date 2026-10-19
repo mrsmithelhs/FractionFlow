@@ -7179,6 +7179,390 @@
         {"type":"containsText","target":".active-beat-prompt-context","value":"Use twelfths."},
         {"type":"hasSelector","target":".app-linear-view"}
       ]}
+    },
+    {
+      "id": "ROUTE-PLAN38-SUBTRACTION-HIGH-VISUAL-ALL-8",
+      "behavior": "Traverse the full 8-item like-denominator subtraction practice set in visual view under high support (standard motion), witnessing Take away, correct operate submission, resolve Finish, gated Next, final exhaustion, return to entry and re-entry.",
+      "configuration": "phase2-bundle-1",
+      "startingSurface": "mounted-app-entry",
+      "viewport": {"width": 360, "height": 740},
+      "motionMode": "standard-motion",
+      "witness": "browser",
+      "actions": [
+        {"step": 1, "method": "click", "target": "[data-practice-type=\"like-denominator-subtraction\"]", "description": "Select like-denominator subtraction practice"},
+        {"step": 2, "method": "completePlan38SubtractionSet", "view": "visual", "supportProfile": "high-support", "description": "Complete all 8 subtraction items with visual controls, return, and re-entry"}
+      ],
+      "expect": {
+        "capture": {"target": ".app-episode", "type": "innerHTML"},
+        "assertions": [
+          {"type": "containsText", "target": ".active-beat-controls button", "value": "Take away"},
+          {"type": "hasSelector", "target": ".app-episode"}
+        ]
+      }
+    },
+    {
+      "id": "ROUTE-PLAN38-SUBTRACTION-MEDIUM-LINEAR-ALL-8",
+      "behavior": "Traverse the full 8-item like-denominator subtraction practice set in accessible linear path under medium support (reduced motion), witnessing Take away, linear unit context, removal status, correct operate submission, resolve Finish, gated Next, final exhaustion, return to entry and re-entry.",
+      "configuration": "phase2-bundle-3",
+      "startingSurface": "mounted-app-entry",
+      "viewport": {"width": 360, "height": 752},
+      "motionMode": "reduced-motion",
+      "witness": "browser",
+      "actions": [
+        {"step": 1, "method": "click", "target": "[data-practice-type=\"like-denominator-subtraction\"]", "description": "Select like-denominator subtraction practice"},
+        {"step": 2, "method": "click", "target": ".app-view-controls .app-secondary-button", "description": "Switch to accessible linear path"},
+        {"step": 3, "method": "completePlan38SubtractionSet", "view": "linear", "supportProfile": "medium-support", "description": "Complete all 8 subtraction items with linear controls, return, and re-entry"}
+      ],
+      "expect": {
+        "capture": {"target": ".app-episode", "type": "innerHTML"},
+        "assertions": [
+          {"type": "containsText", "target": ".active-beat-controls button", "value": "Take away"},
+          {"type": "hasSelector", "target": ".app-linear-view"}
+        ]
+      }
+    },
+    {
+      "id": "ROUTE-PLAN38-DEEP-SAMPLE-ZERO-DIFFERENCE",
+      "behavior": "Witness zero difference subtraction item takeaway-9-6-minus-6 (6/9 - 6/9 = 0/9) in visual view with computed paint, visible hatch geometry, center hit tests, pre-resolution leakage checks, and zero result submission.",
+      "configuration": "phase2-bundle-1",
+      "startingSurface": "mounted-app-entry",
+      "viewport": {"width": 360, "height": 740},
+      "motionMode": "standard-motion",
+      "witness": "browser",
+      "actions": [
+        {"step": 1, "method": "click", "target": "[data-practice-type=\"like-denominator-subtraction\"]", "description": "Select like-denominator subtraction practice"},
+        {"step": 2, "method": "click", "target": ".app-visual-view .active-beat-controls button", "description": "Item 1: Take away"},
+        {"step": 3, "method": "fill", "target": ".app-visual-view #operate-fraction-numerator-input", "value": "3", "description": "Item 1: fill numerator"},
+        {"step": 4, "method": "fill", "target": ".app-visual-view #operate-fraction-denominator-input", "value": "8", "description": "Item 1: fill denominator"},
+        {"step": 5, "method": "click", "target": ".app-visual-view .control-submit-btn", "description": "Item 1: submit"},
+        {"step": 6, "method": "click", "target": ".app-visual-view .active-beat-controls button", "description": "Item 1: finish"},
+        {"step": 7, "method": "click", "target": ".app-next-button", "description": "Advance to item 2"},
+        {"step": 8, "method": "click", "target": ".app-visual-view .active-beat-controls button", "description": "Item 2: Take away"},
+        {"step": 9, "method": "fill", "target": ".app-visual-view #operate-fraction-numerator-input", "value": "5", "description": "Item 2: fill numerator"},
+        {"step": 10, "method": "fill", "target": ".app-visual-view #operate-fraction-denominator-input", "value": "12", "description": "Item 2: fill denominator"},
+        {"step": 11, "method": "click", "target": ".app-visual-view .control-submit-btn", "description": "Item 2: submit"},
+        {"step": 12, "method": "click", "target": ".app-visual-view .active-beat-controls button", "description": "Item 2: finish"},
+        {"step": 13, "method": "click", "target": ".app-next-button", "description": "Advance to item 3"},
+        {"step": 14, "method": "click", "target": ".app-visual-view .active-beat-controls button", "description": "Item 3: Take away"},
+        {"step": 15, "method": "fill", "target": ".app-visual-view #operate-fraction-numerator-input", "value": "4", "description": "Item 3: fill numerator"},
+        {"step": 16, "method": "fill", "target": ".app-visual-view #operate-fraction-denominator-input", "value": "10", "description": "Item 3: fill denominator"},
+        {"step": 17, "method": "click", "target": ".app-visual-view .control-submit-btn", "description": "Item 3: submit"},
+        {"step": 18, "method": "click", "target": ".app-visual-view .active-beat-controls button", "description": "Item 3: finish"},
+        {"step": 19, "method": "click", "target": ".app-next-button", "description": "Advance to item 4"},
+        {"step": 20, "method": "click", "target": ".app-visual-view .active-beat-controls button", "description": "Item 4: Take away"},
+        {"step": 21, "method": "fill", "target": ".app-visual-view #operate-fraction-numerator-input", "value": "5", "description": "Item 4: fill numerator"},
+        {"step": 22, "method": "fill", "target": ".app-visual-view #operate-fraction-denominator-input", "value": "11", "description": "Item 4: fill denominator"},
+        {"step": 23, "method": "click", "target": ".app-visual-view .control-submit-btn", "description": "Item 4: submit"},
+        {"step": 24, "method": "click", "target": ".app-visual-view .active-beat-controls button", "description": "Item 4: finish"},
+        {"step": 25, "method": "click", "target": ".app-next-button", "description": "Advance to item 5"},
+        {"step": 26, "method": "click", "target": ".app-visual-view .active-beat-controls button", "description": "Item 5: Take away"},
+        {"step": 27, "method": "fill", "target": ".app-visual-view #operate-fraction-numerator-input", "value": "5", "description": "Item 5: fill numerator"},
+        {"step": 28, "method": "fill", "target": ".app-visual-view #operate-fraction-denominator-input", "value": "9", "description": "Item 5: fill denominator"},
+        {"step": 29, "method": "click", "target": ".app-visual-view .control-submit-btn", "description": "Item 5: submit"},
+        {"step": 30, "method": "click", "target": ".app-visual-view .active-beat-controls button", "description": "Item 5: finish"},
+        {"step": 31, "method": "click", "target": ".app-next-button", "description": "Advance to item 6: takeaway-9-6-minus-6"},
+        {
+          "step": 32,
+          "method": "assert",
+          "target": ".app-visual-view",
+          "description": "Item 6 encounter: verify withholding of remainder before action",
+          "assertions": [
+            {"type": "containsText", "target": ".active-beat-controls button", "value": "Take away"},
+            {"type": "notContainsText", "target": ".app-episode", "value": "That amount is left."},
+            {"type": "notContainsText", "target": ".app-episode", "value": "+"},
+            {"type": "hasSelector", "target": ".app-visual-view .fraction-bar-takeaway-container"}
+          ]
+        },
+        {"step": 33, "method": "click", "target": ".app-visual-view .active-beat-controls button", "description": "Item 6: click Take away"},
+        {
+          "step": 34,
+          "method": "assert",
+          "target": ".app-visual-view",
+          "description": "Plan 38: assert visible hatch and non-leakage at operate",
+          "assertions": [
+            {"type": "containsText", "target": ".app-visual-view .active-beat-prompt", "value": "How much is left?"},
+            {"type": "hasSelector", "target": "#operate-fraction-numerator-input"},
+            {"type": "hasSelector", "target": "#operate-fraction-denominator-input"},
+            {"type": "notContainsText", "target": ".app-visual-view .active-beat-prompt", "value": "That amount is left."},
+            {"type": "notContainsText", "target": ".app-visual-view .active-beat-section", "value": "+"},
+            {"type": "notContainsText", "target": ".app-visual-view .active-beat-section", "value": "Sum:"},
+            {"type": "visibleGeometry", "target": ".app-visual-view .fraction-bar-takeaway-track", "minCount": 1, "minWidth": 50, "minHeight": 20, "requireVisibleCenterHit": true},
+            {"type": "visibleGeometry", "target": ".app-visual-view .fraction-bar-segment.removed", "minCount": 6, "minWidth": 10, "minHeight": 20, "backgroundImageIncludes": "repeating-linear-gradient", "requireVisibleCenterHit": true}
+          ]
+        },
+        {"step": 35, "method": "fill", "target": ".app-visual-view #operate-fraction-numerator-input", "value": "0", "description": "Item 6: enter zero difference numerator 0"},
+        {"step": 36, "method": "fill", "target": ".app-visual-view #operate-fraction-denominator-input", "value": "9", "description": "Item 6: enter denominator 9"},
+        {"step": 37, "method": "click", "target": ".app-visual-view .control-submit-btn", "description": "Item 6: submit zero result"}
+      ],
+      "expect": {
+        "capture": {"target": ".app-visual-view", "type": "innerHTML"},
+        "assertions": [
+          {"type": "containsText", "target": ".app-visual-view .active-beat-prompt", "value": "That amount is left."},
+          {"type": "containsText", "target": ".app-visual-view .active-beat-controls button", "value": "Finish"},
+          {"type": "containsText", "target": ".app-visual-view .symbolic-expression", "value": "0"},
+          {"type": "containsText", "target": ".app-visual-view .symbolic-expression", "value": "9"}
+        ]
+      }
+    },
+    {
+      "id": "ROUTE-PLAN38-DEEP-SAMPLE-REDUCIBLE-DIFFERENCE",
+      "behavior": "Witness reducible difference subtraction item takeaway-10-7-minus-3 (7/10 - 3/10 = 4/10 or 2/5) in linear view with unit context, non-answer-bearing removal status, and submission of simplified equivalent 2/5.",
+      "configuration": "phase2-bundle-3",
+      "startingSurface": "mounted-app-entry",
+      "viewport": {"width": 360, "height": 740},
+      "motionMode": "standard-motion",
+      "witness": "browser",
+      "actions": [
+        {"step": 1, "method": "click", "target": "[data-practice-type=\"like-denominator-subtraction\"]", "description": "Select like-denominator subtraction practice"},
+        {"step": 2, "method": "click", "target": ".app-view-controls .app-secondary-button", "description": "Switch to linear view"},
+        {"step": 3, "method": "click", "target": ".app-linear-view .active-beat-controls button", "description": "Item 1: Take away"},
+        {"step": 4, "method": "fill", "target": ".app-linear-view #linear-operate-fraction-numerator-input", "value": "3", "description": "Item 1: fill num"},
+        {"step": 5, "method": "fill", "target": ".app-linear-view #linear-operate-fraction-denominator-input", "value": "8", "description": "Item 1: fill den"},
+        {"step": 6, "method": "click", "target": ".app-linear-view .control-submit-btn", "description": "Item 1: submit"},
+        {"step": 7, "method": "click", "target": ".app-linear-view .active-beat-controls button", "description": "Item 1: finish"},
+        {"step": 8, "method": "click", "target": ".app-next-button", "description": "Advance to item 2"},
+        {"step": 9, "method": "click", "target": ".app-linear-view .active-beat-controls button", "description": "Item 2: Take away"},
+        {"step": 10, "method": "fill", "target": ".app-linear-view #linear-operate-fraction-numerator-input", "value": "5", "description": "Item 2: fill num"},
+        {"step": 11, "method": "fill", "target": ".app-linear-view #linear-operate-fraction-denominator-input", "value": "12", "description": "Item 2: fill den"},
+        {"step": 12, "method": "click", "target": ".app-linear-view .control-submit-btn", "description": "Item 2: submit"},
+        {"step": 13, "method": "click", "target": ".app-linear-view .active-beat-controls button", "description": "Item 2: finish"},
+        {"step": 14, "method": "click", "target": ".app-next-button", "description": "Advance to item 3: takeaway-10-7-minus-3"},
+        {
+          "step": 15,
+          "method": "assert",
+          "target": ".app-linear-view",
+          "description": "Item 3 encounter: unit context present, removal status absent",
+          "assertions": [
+            {"type": "containsText", "target": ".app-linear-view .linear-takeaway-unit-context", "value": "One whole, 10 equal parts"},
+            {"type": "notHasSelector", "target": ".app-linear-view .linear-takeaway-removal-status"}
+          ]
+        },
+        {"step": 16, "method": "click", "target": ".app-linear-view .active-beat-controls button", "description": "Item 3: Take away"},
+        {
+          "step": 17,
+          "method": "assert",
+          "target": ".app-linear-view",
+          "description": "Item 3 operate: unit context and removal status present without leaking answer",
+          "assertions": [
+            {"type": "containsText", "target": ".app-linear-view .linear-takeaway-unit-context", "value": "One whole, 10 equal parts"},
+            {"type": "containsText", "target": ".app-linear-view .linear-takeaway-removal-status", "value": "The amount 3/10 is marked as removed from the starting amount."},
+            {"type": "notContainsText", "target": ".app-linear-view .linear-takeaway-removal-status", "value": "4/10"},
+            {"type": "notContainsText", "target": ".app-linear-view .linear-takeaway-removal-status", "value": "2/5"}
+          ]
+        },
+        {"step": 18, "method": "fill", "target": ".app-linear-view #linear-operate-fraction-numerator-input", "value": "2", "description": "Item 3: submit simplified numerator 2"},
+        {"step": 19, "method": "fill", "target": ".app-linear-view #linear-operate-fraction-denominator-input", "value": "5", "description": "Item 3: submit simplified denominator 5"},
+        {"step": 20, "method": "click", "target": ".app-linear-view .control-submit-btn", "description": "Item 3: submit equivalent fraction"}
+      ],
+      "expect": {
+        "capture": {"target": ".app-linear-view", "type": "innerHTML"},
+        "assertions": [
+          {"type": "containsText", "target": ".app-linear-view .active-beat-prompt", "value": "That amount is left."},
+          {"type": "containsText", "target": ".app-linear-view .active-beat-controls button", "value": "Finish"},
+          {"type": "containsText", "target": ".app-linear-view .symbolic-expression", "value": "2"},
+          {"type": "containsText", "target": ".app-linear-view .symbolic-expression", "value": "5"}
+        ]
+      }
+    },
+    {
+      "id": "ROUTE-PLAN38-HELP-TOGGLE-REPEATED-ERROR",
+      "behavior": "Witness full help toggle, repeated identical wrong answer recovery, and correct completion in visual view.",
+      "configuration": "phase2-bundle-1",
+      "startingSurface": "mounted-app-entry",
+      "viewport": {"width": 360, "height": 740},
+      "motionMode": "standard-motion",
+      "witness": "browser",
+      "actions": [
+        {"step": 1, "method": "click", "target": "[data-practice-type=\"like-denominator-subtraction\"]", "description": "Select like-denominator subtraction practice"},
+        {"step": 2, "method": "click", "target": ".app-visual-view .active-beat-controls button", "description": "Click Take away"},
+        {"step": 3, "method": "click", "target": ".app-visual-view .app-secondary-button", "description": "Open help"},
+        {
+          "step": 4,
+          "method": "assert",
+          "target": ".app-visual-view",
+          "description": "Assert help cue visible",
+          "assertions": [
+            {"type": "hasSelector", "target": "#visual-subtraction-task-help"},
+            {"type": "containsText", "target": ".app-visual-view .app-secondary-button", "value": "Close help"}
+          ]
+        },
+        {"step": 5, "method": "click", "target": ".app-visual-view .app-secondary-button", "description": "Close help"},
+        {
+          "step": 6,
+          "method": "assert",
+          "target": ".app-visual-view",
+          "description": "Assert help cue hidden",
+          "assertions": [
+            {"type": "notHasSelector", "target": "#visual-subtraction-task-help"},
+            {"type": "containsText", "target": ".app-visual-view .app-secondary-button", "value": "Need help?"}
+          ]
+        },
+        {"step": 7, "method": "click", "target": ".app-visual-view .app-secondary-button", "description": "Reopen help"},
+        {"step": 8, "method": "fill", "target": ".app-visual-view #operate-fraction-numerator-input", "value": "98", "description": "Enter wrong numerator 98"},
+        {"step": 9, "method": "fill", "target": ".app-visual-view #operate-fraction-denominator-input", "value": "8", "description": "Enter denominator 8"},
+        {"step": 10, "method": "click", "target": ".app-visual-view .control-submit-btn", "description": "Submit wrong answer while help is open"},
+        {
+          "step": 11,
+          "method": "assert",
+          "target": ".app-visual-view",
+          "description": "Assert help remains open and recovery feedback displayed",
+          "assertions": [
+            {"type": "hasSelector", "target": "#visual-subtraction-task-help"},
+            {"type": "containsText", "target": ".app-visual-view .recovery-feedback", "value": "Check the parts left. Try again."}
+          ]
+        },
+        {"step": 12, "method": "click", "target": ".app-visual-view .control-submit-btn", "description": "Submit identical wrong answer while help is open"},
+        {
+          "step": 13,
+          "method": "assert",
+          "target": ".app-visual-view",
+          "description": "Assert help still open and recovery feedback still displayed",
+          "assertions": [
+            {"type": "hasSelector", "target": "#visual-subtraction-task-help"},
+            {"type": "containsText", "target": ".app-visual-view .recovery-feedback", "value": "Check the parts left. Try again."}
+          ]
+        },
+        {"step": 14, "method": "click", "target": ".app-visual-view .app-secondary-button", "description": "Close help after errors"},
+        {
+          "step": 15,
+          "method": "assert",
+          "target": ".app-visual-view",
+          "description": "Assert recovery feedback and draft remain after help close",
+          "assertions": [
+            {"type": "notHasSelector", "target": "#visual-subtraction-task-help"},
+            {"type": "containsText", "target": ".app-visual-view .recovery-feedback", "value": "Check the parts left. Try again."}
+          ]
+        },
+        {"step": 16, "method": "click", "target": ".app-visual-view .app-secondary-button", "description": "Reopen help"},
+        {"step": 17, "method": "fill", "target": ".app-visual-view #operate-fraction-numerator-input", "value": "3", "description": "Enter correct numerator 3"},
+        {"step": 18, "method": "click", "target": ".app-visual-view .control-submit-btn", "description": "Submit correct answer"}
+      ],
+      "expect": {
+        "capture": {"target": ".app-visual-view", "type": "innerHTML"},
+        "assertions": [
+          {"type": "containsText", "target": ".app-visual-view .active-beat-prompt", "value": "That amount is left."},
+          {"type": "containsText", "target": ".app-visual-view .active-beat-controls button", "value": "Finish"}
+        ]
+      }
+    },
+    {
+      "id": "ROUTE-PLAN38-VIEW-TOGGLE-DRAFT-PRESERVATION",
+      "behavior": "Witness draft preservation and focus across visual and linear view switching during subtraction operate beat.",
+      "configuration": "phase2-bundle-1",
+      "startingSurface": "mounted-app-entry",
+      "viewport": {"width": 360, "height": 740},
+      "motionMode": "standard-motion",
+      "witness": "browser",
+      "actions": [
+        {"step": 1, "method": "click", "target": "[data-practice-type=\"like-denominator-subtraction\"]", "description": "Select like-denominator subtraction practice"},
+        {"step": 2, "method": "click", "target": ".app-visual-view .active-beat-controls button", "description": "Click Take away"},
+        {"step": 3, "method": "fill", "target": ".app-visual-view #operate-fraction-numerator-input", "value": "3", "description": "Enter draft numerator 3 in visual view"},
+        {"step": 4, "method": "fill", "target": ".app-visual-view #operate-fraction-denominator-input", "value": "8", "description": "Enter draft denominator 8 in visual view"},
+        {"step": 5, "method": "click", "target": ".app-view-controls .app-secondary-button", "description": "Switch to linear view"},
+        {
+          "step": 6,
+          "method": "assert",
+          "target": ".app-linear-view",
+          "description": "Assert draft values preserved in linear view",
+          "assertions": [
+            {"type": "hasSelector", "target": "#linear-operate-fraction-numerator-input"}
+          ]
+        },
+        {"step": 7, "method": "fill", "target": ".app-linear-view #linear-operate-fraction-numerator-input", "value": "1", "description": "Update draft numerator to 1 in linear view"},
+        {"step": 8, "method": "fill", "target": ".app-linear-view #linear-operate-fraction-denominator-input", "value": "4", "description": "Update draft denominator to 4 in linear view"},
+        {"step": 9, "method": "click", "target": ".app-view-controls .app-secondary-button", "description": "Switch back to visual view"}
+      ],
+      "expect": {
+        "capture": {"target": ".app-visual-view #operate-fraction-numerator-input", "type": "inputValue"},
+        "assertions": [
+          {"type": "hasSelector", "target": "#operate-fraction-numerator-input"}
+        ]
+      }
+    },
+    {
+      "id": "ROUTE-PLAN38-REDUCED-MOTION-NO-ANIMATION",
+      "behavior": "Witness that subtraction takeaway marking executes with no active animations under reduced motion.",
+      "configuration": "phase2-bundle-1",
+      "startingSurface": "mounted-app-entry",
+      "viewport": {"width": 360, "height": 740},
+      "motionMode": "reduced-motion",
+      "witness": "browser",
+      "actions": [
+        {"step": 1, "method": "click", "target": "[data-practice-type=\"like-denominator-subtraction\"]", "description": "Select like-denominator subtraction practice"},
+        {"step": 2, "method": "click", "target": ".app-visual-view .active-beat-controls button", "description": "Click Take away under reduced motion"},
+        {"step": 3, "method": "fill", "target": ".app-visual-view #operate-fraction-numerator-input", "value": "3", "description": "Fill numerator"},
+        {"step": 4, "method": "fill", "target": ".app-visual-view #operate-fraction-denominator-input", "value": "8", "description": "Fill denominator"},
+        {"step": 5, "method": "click", "target": ".app-visual-view .control-submit-btn", "description": "Submit"}
+      ],
+      "expect": {
+        "capture": {"target": ".app-visual-view", "type": "innerHTML"},
+        "assertions": [
+          {"type": "containsText", "target": ".app-visual-view .active-beat-prompt", "value": "That amount is left."}
+        ]
+      }
+    },
+    {
+      "id": "ROUTE-PLAN38-RESPONSIVE-VIEWPORTS",
+      "behavior": "Measure responsive layout, controls, feedback and captures across 360x740, 360x752, and 1366x768 viewports with zero horizontal overflow.",
+      "configuration": "phase2-bundle-1",
+      "startingSurface": "mounted-app-entry",
+      "viewport": {"width": 360, "height": 740},
+      "motionMode": "standard-motion",
+      "witness": "browser",
+      "actions": [
+        {"step": 1, "method": "click", "target": "[data-practice-type=\"like-denominator-subtraction\"]", "description": "Enter subtraction practice"},
+        {
+          "step": 2,
+          "method": "screenshot",
+          "file": "reports/development/plan-38-like-denominator-subtraction-batch/evidence/encounter-360x740.png",
+          "caption": "Subtraction initial encounter at 360x740",
+          "measureLayout": true,
+          "description": "Capture encounter screen"
+        },
+        {"step": 3, "method": "click", "target": ".app-visual-view .active-beat-controls button", "description": "Click Take away"},
+        {
+          "step": 4,
+          "method": "screenshot",
+          "file": "reports/development/plan-38-like-denominator-subtraction-batch/evidence/operate-hatch-360x740.png",
+          "caption": "Subtraction operate beat with removal hatch marks at 360x740",
+          "measureLayout": true,
+          "description": "Capture operate hatch screen"
+        },
+        {"step": 5, "method": "click", "target": ".app-visual-view .app-secondary-button", "description": "Open task help"},
+        {
+          "step": 6,
+          "method": "screenshot",
+          "file": "reports/development/plan-38-like-denominator-subtraction-batch/evidence/help-360x740.png",
+          "caption": "Subtraction operate beat with help cue at 360x740",
+          "measureLayout": true,
+          "description": "Capture help screen"
+        },
+        {"step": 7, "method": "fill", "target": ".app-visual-view #operate-fraction-numerator-input", "value": "3", "description": "Fill correct numerator"},
+        {"step": 8, "method": "fill", "target": ".app-visual-view #operate-fraction-denominator-input", "value": "8", "description": "Fill correct denominator"},
+        {"step": 9, "method": "click", "target": ".app-visual-view .control-submit-btn", "description": "Submit"},
+        {
+          "step": 10,
+          "method": "screenshot",
+          "file": "reports/development/plan-38-like-denominator-subtraction-batch/evidence/resolve-360x740.png",
+          "caption": "Subtraction resolve beat at 360x740",
+          "measureLayout": true,
+          "description": "Capture resolve screen"
+        }
+      ],
+      "expect": {
+        "capture": {"target": ".app-visual-view", "type": "innerHTML"},
+        "assertions": [
+          {
+            "type": "viewportLayout",
+            "requireNoHorizontalOverflow": true,
+            "requireVisibleElements": true,
+            "selectors": {
+              "prompt": ".active-beat-prompt",
+              "finishButton": ".active-beat-controls button"
+            }
+          }
+        ]
+      }
     }
   ]
 }

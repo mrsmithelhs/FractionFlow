@@ -63,6 +63,14 @@
     "ROUTE-PLAN18-PRODUCTION-HIGH-VISUAL-COMPLETE": "historical-v6",
     "ROUTE-PLAN18-PRODUCTION-MEDIUM-LINEAR-REDUCED": "historical-v6",
     "ROUTE-PLAN35-CURRENT-HIGH-VISUAL-ALL-21": "production-default-v7",
-    "ROUTE-PLAN35-CURRENT-MEDIUM-LINEAR-ALL-21": "production-default-v7"
+    "ROUTE-PLAN35-CURRENT-MEDIUM-LINEAR-ALL-21": "production-default-v7",
+    "ROUTE-PLAN38-SUBTRACTION-HIGH-VISUAL-ALL-8": "production-default-v7",
+    "ROUTE-PLAN38-SUBTRACTION-MEDIUM-LINEAR-ALL-8": "production-default-v7",
+    "ROUTE-PLAN38-DEEP-SAMPLE-ZERO-DIFFERENCE": "production-default-v7",
+    "ROUTE-PLAN38-DEEP-SAMPLE-REDUCIBLE-DIFFERENCE": "production-default-v7",
+    "ROUTE-PLAN38-HELP-TOGGLE-REPEATED-ERROR": "production-default-v7",
+    "ROUTE-PLAN38-VIEW-TOGGLE-DRAFT-PRESERVATION": "production-default-v7",
+    "ROUTE-PLAN38-REDUCED-MOTION-NO-ANIMATION": "production-default-v7",
+    "ROUTE-PLAN38-RESPONSIVE-VIEWPORTS": "production-default-v7"
   }
 }

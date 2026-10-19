@@ -737,7 +737,6 @@ export function createTakeawayBar(takeawayMeaning, { mode } = {}) {
   if (mode === 'reduced-motion') {
     trackEl.classList.add('reduced-motion');
   }
-  trackEl.setAttribute('role', 'img');
 
   const den = takeawayMeaning.wholePartitionCount;
   const sourceLeft = takeawayMeaning.sourceForms.left;
@@ -749,7 +748,6 @@ export function createTakeawayBar(takeawayMeaning, { mode } = {}) {
   const ariaLabel = isMarked
     ? `Fraction bar: ${leftNum} of ${den} equal parts started, ${rightNum} marked for removal.`
     : `Fraction bar: ${leftNum} of ${den} equal parts shaded in 1 whole.`;
-  trackEl.setAttribute('aria-label', ariaLabel);
   container.setAttribute('aria-label', ariaLabel);
 
   for (const cell of takeawayMeaning.cells) {
