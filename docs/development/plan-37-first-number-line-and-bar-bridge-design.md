@@ -1,7 +1,8 @@
 ---
 id: plan-37
 title: First Number-Line Task and Bar-to-Line Bridge Design
-status: in-progress
+status: complete
+resolution: "Owner adopted the reviewed 0-to-1 bar-to-line same-amount bridge design (bridge.bar-to-line-same-amount.v1), persistent vertical bar-above-line geometry, two-step select/confirm grammar, support-dependent density (b in {2,3,4,6,8}), and 8 exact rational seed items. Design accepted; Phase 3 bar-stability exit (§31), representation checkpoint (§90), multi-whole [0,2] transfer, and b>8 density remain explicit gates/follow-ups before Phase 4 source activation."
 depends_on: [plan-18, plan-29, plan-34]
 gate: "Design acceptance only. Phase 3 bar-stability/representation review and a separate approved implementation packet remain required before number-line source activation."
 summary: >-

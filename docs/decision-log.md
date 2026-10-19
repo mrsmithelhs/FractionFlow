@@ -1223,3 +1223,38 @@ The zero case is a natural boundary of this recipe, not a new lesson by default.
 
 **Related:** Plan36 owner-acceptance.md, design-contract.md and dossier-review.md;
 Plan38; OQ-25; DECISION-040/041/042.
+
+### DECISION-046 - Adopt the first 0-to-1 bar-to-number-line bridge task design
+
+**Date:** 2026-10-18
+
+**Decision:** The owner adopted Plan 37's reviewed design dossier (`design-contract.md`,
+`annotated-flow.md`, `rival-and-falsifier-table.md`, `implementation-and-validation.md`,
+and `dossier-review.md`) and authorized closing `plan-37`.
+
+The first number-line task (`bridge.bar-to-line-same-amount.v1`) connects a fraction's
+part-whole bar amount to its location on a `[0, 1]` number line via `encounter → locate → resolve`:
+- The reference fraction bar `[0, 1]` remains persistently visible directly above the `[0, 1]`
+  number line with strictly aligned horizontal start (`x0`) and end (`x1`) coordinates.
+- Learner selection uses a two-step preview/confirm grammar (`select` preview → `Check Position`
+  confirm dispatching `propose-number-line-location` with an exact wire fraction), avoiding drag
+  or precision-pointer requirements.
+- High Support displays full `1/b` ticks for `b in {2, 3, 4, 6, 8}` with emphasized `0`, `1/2`, `1`
+  benchmarks and staggered `44x44px` hit targets at `b = 8`; Medium Support displays sparse `0`,
+  `1/2`, `1` benchmarks with discrete exact candidates (`>= 50px` spacing).
+- The eight vetted `[0, 1]` seed items (`bridge-01-half-2` through `bridge-08-five-sixths-med`,
+  including unreduced bar `2/4` mapped to `1/2`) use exact rational wire fractions and leak no
+  target answer in scene projection or accessible step descriptions prior to `resolve`.
+
+This decision adopts the design specification only. Phase 3 bar-stability completion (Roadmap §31)
+and the representation checkpoint (§90) remain explicit prerequisites before activating Phase 4
+number-line source code. The multi-whole `[0, 2]` stack-to-line magnitude transfer obligation and
+larger-denominator (`b > 8`) line-density investigation remain open follow-up obligations.
+
+**Rationale:** Give the number line a genuine instructional role (connecting part-whole area to
+linear magnitude on a shared `[0, 1]` unit) with honest 360px touch geometry and full linear
+accessibility, without prematurely declaring Phase 3 complete.
+
+**Related:** Plan 37 `owner-acceptance.md`, `design-contract.md`, `dossier-review.md`; Roadmap §§31–37,
+71, 90; DECISION-010/011/025.
+

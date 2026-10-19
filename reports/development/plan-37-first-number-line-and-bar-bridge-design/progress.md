@@ -115,3 +115,10 @@ All writes were strictly confined to the packet's assigned report folder:
 ## 8. Ready for Orchestrator Review
 
 **Yes.** All deliverables for Plan 37 (Requirements 0, 1, 2, 3, 4, 5, and reporting) are complete, validated, and ready for orchestrator verification. Frontmatter status remains untouched per implementer guardrails.
+
+---
+
+## 9. Owner Adoption — 2026-10-18
+
+The owner approved the Plan 37 proposal and instructed completion of `plan-37`. See `owner-acceptance.md`, `dossier-review.md`, and `DECISION-046`. `plan-37` is complete as design; Phase 3 bar-stability exit (Roadmap §31), representation checkpoint (§90), multi-whole $[0, 2]$ stack-to-line transfer, and $b > 8$ line-density investigation remain explicit gates and open follow-up obligations before Phase 4 source activation.
+
