@@ -222,9 +222,7 @@ describe('Plan 40 Replay v6 and backwards compatibility suite (Stage 2)', () => 
     for (const oracleCase of oracleDocument.cases) {
       expect(oracleCase.envelope.schemaVersion).toBe(REPLAY_V5_SCHEMA_VERSION);
       const replayed = replayEpisode(oracleCase.envelope);
-      expect(replayed.status).toBe(oracleCase.expectedState.status);
-      expect(replayed.beat).toBe(oracleCase.expectedState.beat);
-      expect(replayed.revision).toBe(oracleCase.expectedState.revision);
+      expect(JSON.parse(JSON.stringify(replayed))).toEqual(oracleCase.expectedState);
 
       const envelope = createReplayEnvelope(replayed);
       expect(envelope.schemaVersion).toBe(REPLAY_V5_SCHEMA_VERSION);
@@ -245,9 +243,7 @@ describe('Plan 40 Replay v6 and backwards compatibility suite (Stage 2)', () => 
     for (const oracleCase of oracleDocument.cases) {
       expect(oracleCase.envelope.schemaVersion).toBe(REPLAY_V4_SCHEMA_VERSION);
       const replayed = replayEpisode(oracleCase.envelope);
-      expect(replayed.status).toBe(oracleCase.expectedState.status);
-      expect(replayed.beat).toBe(oracleCase.expectedState.beat);
-      expect(replayed.revision).toBe(oracleCase.expectedState.revision);
+      expect(JSON.parse(JSON.stringify(replayed))).toEqual(oracleCase.expectedState);
 
       const envelope = createReplayEnvelope(replayed);
       expect(envelope.schemaVersion).toBe(REPLAY_V4_SCHEMA_VERSION);

@@ -13283,7 +13283,12 @@
             {
               "type": "notContainsText",
               "target": ".app-visual-view .active-beat-prompt",
-              "value": "3/10 is left."
+              "value": "3/10"
+            },
+            {
+              "type": "notContainsText",
+              "target": ".app-visual-view .active-beat-section",
+              "value": "3/10"
             },
             {
               "type": "notContainsText",
@@ -13294,11 +13299,6 @@
               "type": "notContainsText",
               "target": ".app-visual-view .active-beat-section",
               "value": "Sum:"
-            },
-            {
-              "type": "notContainsText",
-              "target": ".app-visual-view .active-beat-section",
-              "value": "Difference:"
             },
             {
               "type": "visibleGeometry",
@@ -13371,7 +13371,7 @@
     },
     {
       "id": "ROUTE-PLAN40-DEEP-SAMPLE-INSPECT-REPAIR",
-      "behavior": "Witness inspect recipe candidate repair and keep actions on item 4 (2/3 - 1/4 = 8/12 - 3/12 = 5/12) in desktop viewport, confirming takeaway bar transition and difference submission.",
+      "behavior": "Witness inspect recipe candidate repair and keep actions on item 4, advancing through item 5 to largest target 30 case on item 6 (5/6 - 7/10 = 25/30 - 21/30 = 4/30) in desktop 1366x768 viewport, capturing takeaway removal hatch layout and difference submission.",
       "configuration": "phase2-bundle-1",
       "startingSurface": "mounted-app-entry",
       "viewport": {
@@ -13667,6 +13667,178 @@
           "method": "click",
           "target": ".app-visual-view .control-submit-btn",
           "description": "Item 4: submit difference"
+        },
+        {
+          "step": 41,
+          "method": "click",
+          "target": ".app-visual-view .active-beat-controls button",
+          "description": "Item 4: finish"
+        },
+        {
+          "step": 42,
+          "method": "click",
+          "target": ".app-next-button",
+          "description": "Advance to item 5"
+        },
+        {
+          "step": 43,
+          "method": "click",
+          "target": ".app-visual-view .active-beat-controls button",
+          "description": "Item 5 encounter"
+        },
+        {
+          "step": 44,
+          "method": "click",
+          "target": ".app-visual-view .active-beat-controls button[aria-label=\"Keep new fraction 14 over 20\"]",
+          "description": "Item 5: keep left candidate 14/20"
+        },
+        {
+          "step": 45,
+          "method": "click",
+          "target": ".app-visual-view .inspect-change-button",
+          "description": "Item 5: repair right candidate 7/20"
+        },
+        {
+          "step": 46,
+          "method": "fill",
+          "target": ".app-visual-view #transform-num-input-right",
+          "value": "5",
+          "description": "Item 5: enter corrected right numerator 5"
+        },
+        {
+          "step": 47,
+          "method": "click",
+          "target": ".app-visual-view .control-submit-btn",
+          "description": "Item 5: submit right repair"
+        },
+        {
+          "step": 48,
+          "method": "fill",
+          "target": ".app-visual-view #operate-fraction-numerator-input",
+          "value": "9",
+          "description": "Item 5: enter difference numerator 9"
+        },
+        {
+          "step": 49,
+          "method": "fill",
+          "target": ".app-visual-view #operate-fraction-denominator-input",
+          "value": "20",
+          "description": "Item 5: enter denominator 20"
+        },
+        {
+          "step": 50,
+          "method": "click",
+          "target": ".app-visual-view .control-submit-btn",
+          "description": "Item 5: submit difference"
+        },
+        {
+          "step": 51,
+          "method": "click",
+          "target": ".app-visual-view .active-beat-controls button",
+          "description": "Item 5: finish"
+        },
+        {
+          "step": 52,
+          "method": "click",
+          "target": ".app-next-button",
+          "description": "Advance to item 6: largest target 30 case"
+        },
+        {
+          "step": 53,
+          "method": "click",
+          "target": ".app-visual-view .active-beat-controls button",
+          "description": "Item 6 encounter"
+        },
+        {
+          "step": 54,
+          "method": "click",
+          "target": ".app-visual-view .inspect-change-button",
+          "description": "Item 6: repair left candidate 22/30"
+        },
+        {
+          "step": 55,
+          "method": "fill",
+          "target": ".app-visual-view #transform-num-input-left",
+          "value": "25",
+          "description": "Item 6: enter corrected left numerator 25"
+        },
+        {
+          "step": 56,
+          "method": "click",
+          "target": ".app-visual-view .control-submit-btn",
+          "description": "Item 6: submit left repair"
+        },
+        {
+          "step": 57,
+          "method": "click",
+          "target": ".app-visual-view .active-beat-controls button[aria-label=\"Keep new fraction 21 over 30\"]",
+          "description": "Item 6: keep valid right candidate 21/30"
+        },
+        {
+          "step": 58,
+          "method": "screenshot",
+          "file": "reports/development/plan-40-unlike-denominator-subtraction-batch/evidence/operate-hatch-largest-target30-1366x768.png",
+          "caption": "Unlike subtraction operate beat with largest admitted target 30 removal hatch marks at 1366x768",
+          "measureLayout": true,
+          "description": "Item 6: capture largest target 30 removal hatch layout in desktop viewport"
+        },
+        {
+          "step": 59,
+          "method": "assert",
+          "target": ".app-visual-view",
+          "description": "Item 6: assert visible hatch and takeaway geometry for 30 parts",
+          "assertions": [
+            {
+              "type": "containsText",
+              "target": ".app-visual-view .active-beat-prompt",
+              "value": "How much is left?"
+            },
+            {
+              "type": "hasSelector",
+              "target": "#operate-fraction-numerator-input"
+            },
+            {
+              "type": "hasSelector",
+              "target": "#operate-fraction-denominator-input"
+            },
+            {
+              "type": "visibleGeometry",
+              "target": ".app-visual-view .fraction-bar-takeaway-track",
+              "minCount": 1,
+              "minWidth": 50,
+              "minHeight": 20,
+              "requireVisibleCenterHit": true
+            },
+            {
+              "type": "visibleGeometry",
+              "target": ".app-visual-view .fraction-bar-segment.removed",
+              "minCount": 21,
+              "minWidth": 5,
+              "minHeight": 20,
+              "backgroundImageIncludes": "repeating-linear-gradient",
+              "requireVisibleCenterHit": true
+            }
+          ]
+        },
+        {
+          "step": 60,
+          "method": "fill",
+          "target": ".app-visual-view #operate-fraction-numerator-input",
+          "value": "4",
+          "description": "Item 6: enter difference numerator 4"
+        },
+        {
+          "step": 61,
+          "method": "fill",
+          "target": ".app-visual-view #operate-fraction-denominator-input",
+          "value": "30",
+          "description": "Item 6: enter denominator 30"
+        },
+        {
+          "step": 62,
+          "method": "click",
+          "target": ".app-visual-view .control-submit-btn",
+          "description": "Item 6: submit difference"
         }
       ],
       "expect": {
@@ -13678,7 +13850,7 @@
           {
             "type": "containsText",
             "target": ".app-visual-view .active-beat-prompt",
-            "value": "5/12 is left."
+            "value": "4/30 is left."
           },
           {
             "type": "containsText",
@@ -14326,11 +14498,17 @@
           "step": 14,
           "method": "assert",
           "target": ".app-linear-view",
-          "description": "Assert draft values preserved in linear view",
+          "description": "Assert draft numerator and denominator values preserved in linear view",
           "assertions": [
             {
-              "type": "hasSelector",
-              "target": "#linear-operate-fraction-numerator-input"
+              "type": "inputValueEquals",
+              "target": "#linear-operate-fraction-numerator-input",
+              "value": "3"
+            },
+            {
+              "type": "inputValueEquals",
+              "target": "#linear-operate-fraction-denominator-input",
+              "value": "10"
             }
           ]
         },
@@ -14344,11 +14522,17 @@
           "step": 16,
           "method": "assert",
           "target": ".app-visual-view",
-          "description": "Assert draft values preserved in visual view",
+          "description": "Assert draft numerator and denominator values preserved in visual view",
           "assertions": [
             {
-              "type": "hasSelector",
-              "target": "#operate-fraction-numerator-input"
+              "type": "inputValueEquals",
+              "target": "#operate-fraction-numerator-input",
+              "value": "3"
+            },
+            {
+              "type": "inputValueEquals",
+              "target": "#operate-fraction-denominator-input",
+              "value": "10"
             }
           ]
         },
@@ -14362,7 +14546,7 @@
           "step": 18,
           "method": "assert",
           "target": ".app-visual-view",
-          "description": "Assert subtraction help visible",
+          "description": "Assert subtraction help open: visible panel, label and aria-expanded",
           "assertions": [
             {
               "type": "hasSelector",
@@ -14372,6 +14556,12 @@
               "type": "containsText",
               "target": ".app-visual-view .app-secondary-button",
               "value": "Close help"
+            },
+            {
+              "type": "attributeEquals",
+              "target": ".app-visual-view .app-secondary-button",
+              "attribute": "aria-expanded",
+              "value": "true"
             }
           ]
         },
@@ -14385,7 +14575,7 @@
           "step": 20,
           "method": "assert",
           "target": ".app-visual-view",
-          "description": "Assert subtraction help hidden",
+          "description": "Assert subtraction help closed: hidden panel, label and aria-expanded",
           "assertions": [
             {
               "type": "notHasSelector",
@@ -14395,58 +14585,200 @@
               "type": "containsText",
               "target": ".app-visual-view .app-secondary-button",
               "value": "Need help?"
+            },
+            {
+              "type": "attributeEquals",
+              "target": ".app-visual-view .app-secondary-button",
+              "attribute": "aria-expanded",
+              "value": "false"
             }
           ]
         },
         {
           "step": 21,
+          "method": "click",
+          "target": ".app-visual-view .app-secondary-button",
+          "description": "Reopen subtraction help"
+        },
+        {
+          "step": 22,
+          "method": "assert",
+          "target": ".app-visual-view",
+          "description": "Assert subtraction help reopened before wrong submission",
+          "assertions": [
+            {
+              "type": "hasSelector",
+              "target": "#visual-subtraction-task-help"
+            },
+            {
+              "type": "containsText",
+              "target": ".app-visual-view .app-secondary-button",
+              "value": "Close help"
+            },
+            {
+              "type": "attributeEquals",
+              "target": ".app-visual-view .app-secondary-button",
+              "attribute": "aria-expanded",
+              "value": "true"
+            }
+          ]
+        },
+        {
+          "step": 23,
           "method": "fill",
           "target": ".app-visual-view #operate-fraction-numerator-input",
           "value": "99",
           "description": "Enter wrong numerator 99"
         },
         {
-          "step": 22,
+          "step": 24,
           "method": "fill",
           "target": ".app-visual-view #operate-fraction-denominator-input",
           "value": "10",
           "description": "Enter denominator 10"
         },
         {
-          "step": 23,
+          "step": 25,
           "method": "click",
           "target": ".app-visual-view .control-submit-btn",
           "description": "Submit wrong answer"
         },
         {
-          "step": 24,
+          "step": 26,
           "method": "assert",
           "target": ".app-visual-view",
-          "description": "Assert recovery feedback displayed",
+          "description": "Assert recovery feedback displayed and help remains open after wrong submission",
           "assertions": [
             {
               "type": "containsText",
               "target": ".app-visual-view .recovery-feedback",
               "value": "Check the parts left. Try again."
+            },
+            {
+              "type": "hasSelector",
+              "target": "#visual-subtraction-task-help"
+            },
+            {
+              "type": "containsText",
+              "target": ".app-visual-view .app-secondary-button",
+              "value": "Close help"
+            },
+            {
+              "type": "attributeEquals",
+              "target": ".app-visual-view .app-secondary-button",
+              "attribute": "aria-expanded",
+              "value": "true"
             }
           ]
         },
         {
-          "step": 25,
+          "step": 27,
+          "method": "click",
+          "target": ".app-visual-view .control-submit-btn",
+          "description": "Submit same wrong answer again"
+        },
+        {
+          "step": 28,
+          "method": "assert",
+          "target": ".app-visual-view",
+          "description": "Assert recovery feedback and help agreement after repeated wrong submission",
+          "assertions": [
+            {
+              "type": "containsText",
+              "target": ".app-visual-view .recovery-feedback",
+              "value": "Check the parts left. Try again."
+            },
+            {
+              "type": "hasSelector",
+              "target": "#visual-subtraction-task-help"
+            },
+            {
+              "type": "containsText",
+              "target": ".app-visual-view .app-secondary-button",
+              "value": "Close help"
+            },
+            {
+              "type": "attributeEquals",
+              "target": ".app-visual-view .app-secondary-button",
+              "attribute": "aria-expanded",
+              "value": "true"
+            }
+          ]
+        },
+        {
+          "step": 29,
+          "method": "click",
+          "target": ".app-visual-view .app-secondary-button",
+          "description": "Close help after recovery"
+        },
+        {
+          "step": 30,
+          "method": "assert",
+          "target": ".app-visual-view",
+          "description": "Assert help closed after recovery",
+          "assertions": [
+            {
+              "type": "notHasSelector",
+              "target": "#visual-subtraction-task-help"
+            },
+            {
+              "type": "containsText",
+              "target": ".app-visual-view .app-secondary-button",
+              "value": "Need help?"
+            },
+            {
+              "type": "attributeEquals",
+              "target": ".app-visual-view .app-secondary-button",
+              "attribute": "aria-expanded",
+              "value": "false"
+            }
+          ]
+        },
+        {
+          "step": 31,
+          "method": "click",
+          "target": ".app-visual-view .app-secondary-button",
+          "description": "Reopen help after recovery"
+        },
+        {
+          "step": 32,
+          "method": "assert",
+          "target": ".app-visual-view",
+          "description": "Assert help reopened after recovery",
+          "assertions": [
+            {
+              "type": "hasSelector",
+              "target": "#visual-subtraction-task-help"
+            },
+            {
+              "type": "containsText",
+              "target": ".app-visual-view .app-secondary-button",
+              "value": "Close help"
+            },
+            {
+              "type": "attributeEquals",
+              "target": ".app-visual-view .app-secondary-button",
+              "attribute": "aria-expanded",
+              "value": "true"
+            }
+          ]
+        },
+        {
+          "step": 33,
           "method": "fill",
           "target": ".app-visual-view #operate-fraction-numerator-input",
           "value": "3",
           "description": "Enter correct numerator 3"
         },
         {
-          "step": 26,
+          "step": 34,
           "method": "fill",
           "target": ".app-visual-view #operate-fraction-denominator-input",
           "value": "10",
           "description": "Enter denominator 10"
         },
         {
-          "step": 27,
+          "step": 35,
           "method": "click",
           "target": ".app-visual-view .control-submit-btn",
           "description": "Submit correct answer"
@@ -14621,6 +14953,7 @@
         "width": 1093,
         "height": 614
       },
+      "deviceScaleFactor": 1.25,
       "motionMode": "standard-motion",
       "witness": "browser",
       "actions": [
@@ -14681,6 +15014,14 @@
           "method": "click",
           "target": ".app-visual-view .control-submit-btn",
           "description": "Submit"
+        },
+        {
+          "step": 10,
+          "method": "screenshot",
+          "file": "reports/development/plan-40-unlike-denominator-subtraction-batch/evidence/chromebook-1093x614.png",
+          "caption": "Unlike subtraction resolved equation in Chromebook CSS viewport 1093x614 @ DPR 1.25",
+          "measureLayout": true,
+          "description": "Capture resolved subtraction state at Chromebook scaled viewport"
         }
       ],
       "expect": {

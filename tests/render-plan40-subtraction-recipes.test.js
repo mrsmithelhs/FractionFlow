@@ -3,11 +3,15 @@ import { setupMockDOM, teardownMockDOM } from './fixtures/mock-dom.js';
 import { resolveCuratedFixture } from '../src/content/authored-content-catalog.js';
 import { buildCuratedProblem } from '../src/content/generator.js';
 import {
+  PLAN40_DATA_ONLY_HOLDOUTS,
+  PLAN40_DATA_ONLY_HOLDOUTS_ID,
+  PLAN40_DATA_ONLY_HOLDOUTS_REVISION,
   PLAN40_RECIPE_IDS,
   PLAN40_SUBTRACTION_RECIPE_PRACTICE_SET_ID,
   PLAN40_SUBTRACTION_RECIPE_PRACTICE_SET_REVISION,
   PLAN40_VETTED_BATCH,
 } from '../src/content/data/plan40-reusable-subtraction-recipes-records.js';
+import { PLAN40_UNLIKE_SUBTRACTION_PRACTICE_TYPE } from '../src/app/practice-types.js';
 import { resolvePlan40SubtractionRecipeContext } from '../src/content/plan40-reusable-subtraction-recipes.js';
 import { applyIntent, createEpisode } from '../src/interaction/episode.js';
 import { PLAN40_REUSABLE_SUBTRACTION_RECIPES_EPISODE_DEFINITION } from '../src/interaction/episode-definition.js';
@@ -32,11 +36,14 @@ function instanceFor(record) {
   });
 }
 
-function startEpisode(record, support = HIGH_SUPPORT_CONFIGURATION) {
+function startEpisode(record, support = HIGH_SUPPORT_CONFIGURATION, practiceSetId = null, practiceSetRevision = null) {
+  const isHoldout = record.itemId?.includes('holdout');
+  const setId = practiceSetId ?? (isHoldout ? PLAN40_DATA_ONLY_HOLDOUTS_ID : PLAN40_SUBTRACTION_RECIPE_PRACTICE_SET_ID);
+  const setRev = practiceSetRevision ?? (isHoldout ? PLAN40_DATA_ONLY_HOLDOUTS_REVISION : PLAN40_SUBTRACTION_RECIPE_PRACTICE_SET_REVISION);
   const instance = instanceFor(record);
   const taskContext = resolvePlan40SubtractionRecipeContext(instance, record.itemId, {
-    practiceSetId: PLAN40_SUBTRACTION_RECIPE_PRACTICE_SET_ID,
-    practiceSetRevision: PLAN40_SUBTRACTION_RECIPE_PRACTICE_SET_REVISION,
+    practiceSetId: setId,
+    practiceSetRevision: setRev,
   });
   return createEpisode({
     instance,
@@ -162,6 +169,17 @@ describe('Plan 40 rendered subtraction recipes', () => {
         const submitBtn = container.querySelector('.control-submit-btn');
         expect(submitBtn).not.toBeNull();
 
+        // Accessible grouping and concise visible labels with complete accessible names
+        const fieldset = container.querySelector('fieldset.control-fraction-response-wrapper');
+        expect(fieldset).not.toBeNull();
+        expect(fieldset.getAttribute('aria-label')).toBe(STRINGS.subtraction.amountLeftGroup);
+        const labels = [...container.querySelectorAll('.control-label')].map((el) => el.textContent.trim());
+        expect(labels).toEqual(['Numerator', 'Denominator']);
+        const numInp = container.querySelector(container === visualContainer ? '#operate-fraction-numerator-input' : '#linear-operate-fraction-numerator-input');
+        const denInp = container.querySelector(container === visualContainer ? '#operate-fraction-denominator-input' : '#linear-operate-fraction-denominator-input');
+        expect(numInp.getAttribute('aria-label')).toBe(STRINGS.subtraction.numeratorAriaLabel);
+        expect(denInp.getAttribute('aria-label')).toBe(STRINGS.subtraction.denominatorAriaLabel);
+
         // Check completed beats history
         const completedSection = container.querySelector('.completed-beats-section');
         const historyText = completedSection.textContent;
@@ -210,7 +228,7 @@ describe('Plan 40 rendered subtraction recipes', () => {
   });
 
   describe('Resolve beat rendering & history disclosure', () => {
-    it('renders Difference summary, history disclosure toggle, and That is right button', () => {
+    it('renders resolved equation and is-left prompt while omitting redundant Difference milestone in history', () => {
       const record = PLAN40_VETTED_BATCH.find((r) => r.itemId === 'plan40-construct-half-fifth-10');
       let state = startEpisode(record);
       state = applyIntent(state, { type: 'acknowledge-encounter' });
@@ -227,18 +245,23 @@ describe('Plan 40 rendered subtraction recipes', () => {
         const completedSection = container.querySelector('.completed-beats-section');
         expect(completedSection).not.toBeNull();
 
-        // Disclosure toggle exists with count of previous steps (3 completed)
+        // Previous steps disclosure contains earlier steps, but strictly omits redundant Difference milestone
+        expect(completedSection.textContent).not.toContain('Difference:');
+        expect(completedSection.textContent).toContain('Problem established.');
+        expect(completedSection.textContent).toContain('First fraction: 1/2 = 5/10');
+        expect(completedSection.textContent).toContain('Second fraction: 1/5 = 2/10');
+
         const details = completedSection.querySelector('details.completed-beats-history');
         expect(details).not.toBeNull();
         const summary = details.querySelector('summary.completed-beats-summary-toggle');
-        expect(summary.textContent).toBe('Show previous steps (3 completed)');
+        // 3 milestones total (Problem established + 2 transforms) -> 2 older steps behind toggle
+        expect(summary.textContent).toBe('Show previous steps (2 completed)');
 
-        // Latest milestone is the Difference
-        const latest = completedSection.querySelector('.completed-beat-summary-latest');
-        expect(latest).not.toBeNull();
-        expect(latest.textContent).toContain('Difference: 3/10');
+        // Resolve prompt displays accepted form
+        const prompt = container.querySelector('.active-beat-prompt');
+        expect(prompt.textContent).toBe('3/10 is left.');
 
-        // Resolve prompt and finish button
+        // Finish button is present
         const finishBtn = container.querySelector('.active-beat-controls button');
         expect(finishBtn).not.toBeNull();
         expect(finishBtn.textContent).toBe(STRINGS.resolve.finishButton);
@@ -249,6 +272,125 @@ describe('Plan 40 rendered subtraction recipes', () => {
       finishBtn.click();
       expect(dispatched).toHaveLength(1);
       expect(dispatched[0]).toEqual({ type: 'finish-compact-episode' });
+    });
+  });
+
+  describe('Data-only holdouts rendering suite (Option B coverage)', () => {
+    it('renders construct holdout across visual and linear renderers through full journey', () => {
+      const holdout = PLAN40_DATA_ONLY_HOLDOUTS.find(
+        (r) => r.itemId === 'plan40-holdout-construct-three-fifths-one-half-10',
+      );
+      expect(holdout).toBeDefined();
+      expect(holdout.recipeId).toBe(PLAN40_RECIPE_IDS.construct);
+
+      // Verify holdout is outside vetted practice type
+      expect(PLAN40_UNLIKE_SUBTRACTION_PRACTICE_TYPE.items.some((i) => i.id === holdout.itemId)).toBe(false);
+
+      // 1. Encounter
+      let state = startEpisode(holdout);
+      let scene = resolveRenderableScene({ state, presentationMode: 'instant-test' });
+      let { visualContainer, linearContainer } = mountRenderers(scene);
+
+      for (const container of [visualContainer, linearContainer]) {
+        expect(container.querySelector('.active-beat-prompt').textContent).toBe(STRINGS.encounter.prompt);
+        expect(container.querySelector('.active-beat-controls button').textContent).toBe(STRINGS.controls.next);
+      }
+      expect(visualContainer.querySelector('.fraction-bar-takeaway-track')).toBeNull();
+
+      // 2. Transform left: 3/5 -> 6/10
+      state = applyIntent(state, { type: 'acknowledge-encounter' });
+      state = applyIntent(state, { type: 'submit-equivalent-form', proposed: wireFraction('6', '10') });
+
+      // 3. Transform right: 1/2 -> 5/10
+      state = applyIntent(state, { type: 'submit-equivalent-form', proposed: wireFraction('5', '10') });
+      expect(state.beat).toBe('operate');
+
+      // 4. Operate
+      scene = resolveRenderableScene({ state, presentationMode: 'instant-test' });
+      ({ visualContainer, linearContainer } = mountRenderers(scene));
+
+      // Visual: Single-whole takeaway bar with 10 segments (1 remaining, 5 removed, 4 outside-start)
+      const track = visualContainer.querySelector('.fraction-bar-takeaway-track');
+      expect(track).not.toBeNull();
+      const segments = track.querySelectorAll('.fraction-bar-segment');
+      expect(segments).toHaveLength(10);
+      expect(track.querySelectorAll('.fraction-bar-segment.removed')).toHaveLength(5);
+
+      // Linear: removal status
+      const removalStatus = linearContainer.querySelector('.linear-takeaway-removal-status');
+      expect(removalStatus).not.toBeNull();
+      expect(removalStatus.textContent).toBe('5/10 is taken away from 6/10.');
+
+      // Response inputs: concise visible labels and complete accessible names
+      for (const container of [visualContainer, linearContainer]) {
+        const labels = [...container.querySelectorAll('.control-label')].map((el) => el.textContent.trim());
+        expect(labels).toEqual(['Numerator', 'Denominator']);
+      }
+
+      // 5. Submit operate: 1/10
+      state = applyIntent(state, { type: 'submit-subtraction-result', proposed: wireFraction('1', '10') });
+      expect(state.beat).toBe('resolve');
+
+      // 6. Resolve
+      scene = resolveRenderableScene({ state, presentationMode: 'instant-test' });
+      ({ visualContainer, linearContainer } = mountRenderers(scene));
+
+      for (const container of [visualContainer, linearContainer]) {
+        expect(container.querySelector('.active-beat-prompt').textContent).toBe('1/10 is left.');
+        expect(container.querySelector('.completed-beats-section').textContent).not.toContain('Difference:');
+      }
+    });
+
+    it('renders inspect holdout across visual and linear renderers through full journey', () => {
+      const holdout = PLAN40_DATA_ONLY_HOLDOUTS.find(
+        (r) => r.itemId === 'plan40-holdout-inspect-three-fourths-one-sixth-12',
+      );
+      expect(holdout).toBeDefined();
+      expect(holdout.recipeId).toBe(PLAN40_RECIPE_IDS.inspect);
+
+      // 1. Encounter
+      let state = startEpisode(holdout);
+      state = applyIntent(state, { type: 'acknowledge-encounter' });
+      expect(state.beat).toBe('transform');
+
+      // 2. Transform inspect: keep left (9/12)
+      state = applyIntent(state, { type: 'keep-inspected-form' });
+
+      // 3. Transform inspect: repair right (5/12 -> 2/12)
+      let scene = resolveRenderableScene({ state, presentationMode: 'instant-test' });
+      let { visualContainer } = mountRenderers(scene, () => {}, () => true);
+      const repairBtn = visualContainer.querySelector('.inspect-change-button');
+      expect(repairBtn).not.toBeNull();
+
+      state = applyIntent(state, { type: 'repair-inspected-form', numerator: '2' });
+      expect(state.beat).toBe('operate');
+
+      // 4. Operate
+      scene = resolveRenderableScene({ state, presentationMode: 'instant-test' });
+      let { visualContainer: visOp, linearContainer: linOp } = mountRenderers(scene);
+
+      // Visual: Single-whole takeaway bar with 12 segments (7 remaining, 2 removed, 3 outside-start)
+      const track = visOp.querySelector('.fraction-bar-takeaway-track');
+      expect(track).not.toBeNull();
+      expect(track.querySelectorAll('.fraction-bar-segment.removed')).toHaveLength(2);
+
+      // Linear removal status
+      expect(linOp.querySelector('.linear-takeaway-removal-status').textContent).toBe(
+        '2/12 is taken away from 9/12.',
+      );
+
+      // 5. Submit operate: 7/12
+      state = applyIntent(state, { type: 'submit-subtraction-result', proposed: wireFraction('7', '12') });
+      expect(state.beat).toBe('resolve');
+
+      // 6. Resolve
+      scene = resolveRenderableScene({ state, presentationMode: 'instant-test' });
+      let { visualContainer: visRes, linearContainer: linRes } = mountRenderers(scene);
+
+      for (const container of [visRes, linRes]) {
+        expect(container.querySelector('.active-beat-prompt').textContent).toBe('7/12 is left.');
+        expect(container.querySelector('.completed-beats-section').textContent).not.toContain('Difference:');
+      }
     });
   });
 });

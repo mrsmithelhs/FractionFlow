@@ -67,6 +67,14 @@ function appendPlan40Recipe(actions, { item, record, fixture, view, index }) {
   // 4. Operate beat
   append('fill', input('operate-fraction-numerator-input'), `Plan40 ${index + 1}: enter exact difference numerator`, { value: String(difference.numerator) });
   append('fill', input('operate-fraction-denominator-input'), `Plan40 ${index + 1}: enter exact difference denominator`, { value: String(difference.denominator) });
+  if (view === 'linear' && index === 0) {
+    actions.push(action('screenshot', null, {
+      file: 'reports/development/plan-40-unlike-denominator-subtraction-batch/evidence/linear-operate-360x752.png',
+      caption: 'Unlike subtraction item 1 linear operate beat at 360x752',
+      measureLayout: true,
+      description: 'Plan40 1: capture linear operate layout at 360x752',
+    }));
+  }
   submit(`Plan40 ${index + 1}: submit exact difference result`);
 
   // 5. Resolve beat
@@ -118,9 +126,18 @@ export function buildPlan40SubtractionSetActions({ view, supportProfile }) {
     }));
   }
   const host = view === 'visual' ? '.app-visual-view' : '.app-linear-view';
-  actions.push(action('assertText', `${host} .active-beat-controls button`, {
-    value: 'Next',
-    description: 'Re-entry begins from first item with Next button ready',
+  actions.push(action('assert', host, {
+    assertions: [
+      { type: 'containsText', target: `${host} .active-beat-controls button`, value: 'Next' },
+      { type: 'containsText', target: `${host} .active-beat-prompt`, value: 'Look at these two fractions.' },
+      { type: 'containsText', target: `${host} .symbolic-expression`, value: '1' },
+      { type: 'containsText', target: `${host} .symbolic-expression`, value: '2' },
+      { type: 'containsText', target: `${host} .symbolic-expression`, value: '5' },
+      { type: 'notHasSelector', target: `${host} .recovery-feedback` },
+      { type: 'notHasSelector', target: `${host} [id$="-subtraction-task-help"]` },
+      { type: 'notHasSelector', target: `${host} input` },
+    ],
+    description: 'Re-entry resets to fresh item 1 identity (1/2 - 1/5) with cleared draft, help, and recovery',
   }));
 
   return actions;

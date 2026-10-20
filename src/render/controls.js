@@ -133,6 +133,8 @@ export function createFractionResponseInput({
   groupLabel = null,
   numeratorLabel = null,
   denominatorLabel = null,
+  numeratorAriaLabel = null,
+  denominatorAriaLabel = null,
   allowZeroNumerator = false,
 } = {}) {
   const wrapper = groupLabel ? document.createElement('fieldset') : document.createElement('div');
@@ -149,7 +151,7 @@ export function createFractionResponseInput({
   const fields = document.createElement('div');
   fields.classList.add('control-fraction-fields');
 
-  const makeField = (id, label, minVal = '1') => {
+  const makeField = (id, label, minVal = '1', ariaLabel = null) => {
     const field = document.createElement('div');
     field.classList.add('control-fraction-field');
     const labelEl = document.createElement('label');
@@ -167,6 +169,9 @@ export function createFractionResponseInput({
     input.step = '1';
     input.inputMode = 'numeric';
     input.value = id === numeratorId ? initialNumerator : initialDenominator;
+    if (ariaLabel) {
+      input.setAttribute('aria-label', ariaLabel);
+    }
     field.appendChild(input);
     return { field, input };
   };
@@ -175,6 +180,7 @@ export function createFractionResponseInput({
     numeratorId,
     numeratorLabel || strings.operate.numeratorLabel,
     allowZeroNumerator ? '0' : '1',
+    numeratorAriaLabel,
   );
   const slash = document.createElement('span');
   slash.classList.add('control-fraction-slash');
@@ -184,6 +190,7 @@ export function createFractionResponseInput({
     denominatorId,
     denominatorLabel || strings.operate.denominatorLabel,
     '1',
+    denominatorAriaLabel,
   );
   fields.appendChild(numerator.field);
   fields.appendChild(slash);

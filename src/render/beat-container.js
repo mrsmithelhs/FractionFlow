@@ -139,10 +139,6 @@ export function createBeatContainer({
           ));
         }
       }
-      if (schedulePosition > 1 && scene.meaning.takeaway.acceptedResponseForm) {
-        const form = scene.meaning.takeaway.acceptedResponseForm;
-        milestones.push(`Difference: ${form.numerator}/${form.denominator}`);
-      }
       if (milestones.length === 0) return;
       if (milestones.length === 1) {
         const summary = document.createElement('div');
@@ -724,6 +720,8 @@ export function createBeatContainer({
             groupLabel: strings.subtraction.amountLeftGroup,
             numeratorLabel: strings.subtraction.numeratorLabel,
             denominatorLabel: strings.subtraction.denominatorLabel,
+            numeratorAriaLabel: strings.subtraction.numeratorAriaLabel,
+            denominatorAriaLabel: strings.subtraction.denominatorAriaLabel,
             allowZeroNumerator: true,
             initialNumerator: recovery?.classification?.proposed?.numerator ?? '',
             initialDenominator: recovery?.classification?.proposed?.denominator ?? '',

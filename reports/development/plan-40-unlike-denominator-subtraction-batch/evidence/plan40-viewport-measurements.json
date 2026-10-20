@@ -1,6 +1,112 @@
 {
-  "capturedAt": "2026-10-20T03:04:17.784Z",
+  "capturedAt": "2026-10-20T14:06:22.946Z",
   "measurements": [
+    {
+      "routeId": "ROUTE-PLAN40-UNLIKE-SUBTRACTION-MEDIUM-LINEAR-ALL",
+      "context": "production-default-v7",
+      "motionMode": "reduced-motion",
+      "file": "reports/development/plan-40-unlike-denominator-subtraction-batch/evidence/linear-operate-360x752.png",
+      "caption": "Unlike subtraction item 1 linear operate beat at 360x752",
+      "viewport": {
+        "width": 360,
+        "height": 752
+      },
+      "layout": {
+        "viewport": {
+          "width": 360,
+          "height": 752
+        },
+        "dpr": 1,
+        "roundingTolerancePx": 1,
+        "document": {
+          "width": 360,
+          "height": 871
+        },
+        "horizontalOverflow": false,
+        "horizontalOverflowPx": 0,
+        "scroll": {
+          "x": 0,
+          "y": 0
+        },
+        "activeView": "app-linear-view",
+        "question": {
+          "x": 63,
+          "y": 346.17,
+          "width": 234,
+          "height": 25.19,
+          "visible": true,
+          "horizontallyContained": true,
+          "verticallyContained": true,
+          "withinViewport": true,
+          "intersectsViewport": true
+        },
+        "controls": {
+          "x": 63,
+          "y": 405.36,
+          "width": 234,
+          "height": 240.59,
+          "visible": true,
+          "horizontallyContained": true,
+          "verticallyContained": true,
+          "withinViewport": true,
+          "intersectsViewport": true
+        },
+        "nestedChoices": []
+      }
+    },
+    {
+      "routeId": "ROUTE-PLAN40-DEEP-SAMPLE-INSPECT-REPAIR",
+      "context": "production-default-v7",
+      "motionMode": "standard-motion",
+      "file": "reports/development/plan-40-unlike-denominator-subtraction-batch/evidence/operate-hatch-largest-target30-1366x768.png",
+      "caption": "Unlike subtraction operate beat with largest admitted target 30 removal hatch marks at 1366x768",
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "layout": {
+        "viewport": {
+          "width": 1366,
+          "height": 768
+        },
+        "dpr": 1,
+        "roundingTolerancePx": 1,
+        "document": {
+          "width": 1366,
+          "height": 992
+        },
+        "horizontalOverflow": false,
+        "horizontalOverflowPx": 0,
+        "scroll": {
+          "x": 0,
+          "y": 41
+        },
+        "activeView": "app-visual-view",
+        "question": {
+          "x": 337,
+          "y": 380.69,
+          "width": 692,
+          "height": 25.19,
+          "visible": true,
+          "horizontallyContained": true,
+          "verticallyContained": true,
+          "withinViewport": true,
+          "intersectsViewport": true
+        },
+        "controls": {
+          "x": 337,
+          "y": 436.81,
+          "width": 692,
+          "height": 240.59,
+          "visible": true,
+          "horizontallyContained": true,
+          "verticallyContained": true,
+          "withinViewport": true,
+          "intersectsViewport": true
+        },
+        "nestedChoices": []
+      }
+    },
     {
       "routeId": "ROUTE-PLAN40-RESPONSIVE-VIEWPORTS",
       "context": "production-default-v7",
@@ -16,11 +122,14 @@
           "width": 360,
           "height": 740
         },
+        "dpr": 1,
+        "roundingTolerancePx": 1,
         "document": {
           "width": 360,
           "height": 766
         },
         "horizontalOverflow": false,
+        "horizontalOverflowPx": 0,
         "scroll": {
           "x": 0,
           "y": 12
@@ -31,14 +140,22 @@
           "y": 420.72,
           "width": 234,
           "height": 25.19,
-          "visible": true
+          "visible": true,
+          "horizontallyContained": true,
+          "verticallyContained": true,
+          "withinViewport": true,
+          "intersectsViewport": true
         },
         "controls": {
           "x": 63,
           "y": 476.84,
           "width": 234,
           "height": 113,
-          "visible": true
+          "visible": true,
+          "horizontallyContained": true,
+          "verticallyContained": true,
+          "withinViewport": true,
+          "intersectsViewport": true
         },
         "nestedChoices": []
       }
@@ -58,11 +175,14 @@
           "width": 360,
           "height": 740
         },
+        "dpr": 1,
+        "roundingTolerancePx": 1,
         "document": {
           "width": 360,
           "height": 792
         },
         "horizontalOverflow": false,
+        "horizontalOverflowPx": 0,
         "scroll": {
           "x": 0,
           "y": 12
@@ -73,14 +193,22 @@
           "y": 405.78,
           "width": 234,
           "height": 75.56,
-          "visible": true
+          "visible": true,
+          "horizontallyContained": true,
+          "verticallyContained": true,
+          "withinViewport": true,
+          "intersectsViewport": true
         },
         "controls": {
           "x": 63,
           "y": 405.78,
           "width": 234,
           "height": 190.56,
-          "visible": true
+          "visible": true,
+          "horizontallyContained": true,
+          "verticallyContained": true,
+          "withinViewport": true,
+          "intersectsViewport": true
         },
         "nestedChoices": []
       }
@@ -100,11 +228,14 @@
           "width": 360,
           "height": 740
         },
+        "dpr": 1,
+        "roundingTolerancePx": 1,
         "document": {
           "width": 360,
           "height": 894
         },
         "horizontalOverflow": false,
+        "horizontalOverflowPx": 0,
         "scroll": {
           "x": 0,
           "y": 12
@@ -115,14 +246,22 @@
           "y": 360.72,
           "width": 234,
           "height": 25.19,
-          "visible": true
+          "visible": true,
+          "horizontallyContained": true,
+          "verticallyContained": true,
+          "withinViewport": true,
+          "intersectsViewport": true
         },
         "controls": {
           "x": 63,
           "y": 416.84,
           "width": 234,
           "height": 240.59,
-          "visible": true
+          "visible": true,
+          "horizontallyContained": true,
+          "verticallyContained": true,
+          "withinViewport": true,
+          "intersectsViewport": true
         },
         "nestedChoices": []
       }
@@ -142,11 +281,14 @@
           "width": 360,
           "height": 740
         },
+        "dpr": 1,
+        "roundingTolerancePx": 1,
         "document": {
           "width": 360,
           "height": 975
         },
         "horizontalOverflow": false,
+        "horizontalOverflowPx": 0,
         "scroll": {
           "x": 0,
           "y": 12
@@ -157,14 +299,22 @@
           "y": 360.72,
           "width": 234,
           "height": 25.19,
-          "visible": true
+          "visible": true,
+          "horizontallyContained": true,
+          "verticallyContained": true,
+          "withinViewport": true,
+          "intersectsViewport": true
         },
         "controls": {
           "x": 63,
           "y": 416.84,
           "width": 234,
           "height": 321.38,
-          "visible": true
+          "visible": true,
+          "horizontallyContained": true,
+          "verticallyContained": true,
+          "withinViewport": true,
+          "intersectsViewport": true
         },
         "nestedChoices": []
       }
@@ -184,11 +334,14 @@
           "width": 360,
           "height": 740
         },
+        "dpr": 1,
+        "roundingTolerancePx": 1,
         "document": {
           "width": 360,
           "height": 740
         },
         "horizontalOverflow": false,
+        "horizontalOverflowPx": 0,
         "scroll": {
           "x": 0,
           "y": 0
@@ -199,14 +352,75 @@
           "y": 372.72,
           "width": 234,
           "height": 25.19,
-          "visible": true
+          "visible": true,
+          "horizontallyContained": true,
+          "verticallyContained": true,
+          "withinViewport": true,
+          "intersectsViewport": true
         },
         "controls": {
           "x": 63,
           "y": 428.84,
           "width": 234,
           "height": 44,
-          "visible": true
+          "visible": true,
+          "horizontallyContained": true,
+          "verticallyContained": true,
+          "withinViewport": true,
+          "intersectsViewport": true
+        },
+        "nestedChoices": []
+      }
+    },
+    {
+      "routeId": "ROUTE-PLAN40-CHROMEBOOK-SCALED-VIEWPORT",
+      "context": "production-default-v7",
+      "motionMode": "standard-motion",
+      "file": "reports/development/plan-40-unlike-denominator-subtraction-batch/evidence/chromebook-1093x614.png",
+      "caption": "Unlike subtraction resolved equation in Chromebook CSS viewport 1093x614 @ DPR 1.25",
+      "viewport": {
+        "width": 1093,
+        "height": 614
+      },
+      "layout": {
+        "viewport": {
+          "width": 1093,
+          "height": 614
+        },
+        "dpr": 1.25,
+        "roundingTolerancePx": 1,
+        "document": {
+          "width": 1093,
+          "height": 770
+        },
+        "horizontalOverflow": false,
+        "horizontalOverflowPx": 0,
+        "scroll": {
+          "x": 0,
+          "y": 33
+        },
+        "activeView": "app-visual-view",
+        "question": {
+          "x": 200.5,
+          "y": 375.81,
+          "width": 692,
+          "height": 25.19,
+          "visible": true,
+          "horizontallyContained": true,
+          "verticallyContained": true,
+          "withinViewport": true,
+          "intersectsViewport": true
+        },
+        "controls": {
+          "x": 200.5,
+          "y": 431.94,
+          "width": 692,
+          "height": 44,
+          "visible": true,
+          "horizontallyContained": true,
+          "verticallyContained": true,
+          "withinViewport": true,
+          "intersectsViewport": true
         },
         "nestedChoices": []
       }

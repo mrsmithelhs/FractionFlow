@@ -1,0 +1,24 @@
+{
+  "capturedAt": "2026-10-20T14:03:12.474Z",
+  "browserChannel": "msedge",
+  "mode": "seed:erased-takeaway-hatch-after-transform",
+  "routeRows": 1,
+  "browserExecutions": 1,
+  "passed": 0,
+  "knownDefects": 0,
+  "failed": 0,
+  "seedDetected": 1,
+  "contexts": {
+    "production-default-v7": 1
+  },
+  "results": [
+    {
+      "id": "ROUTE-PLAN40-DEEP-SAMPLE-CONSTRUCT-OPERATE [standard-motion]",
+      "routeId": "ROUTE-PLAN40-DEEP-SAMPLE-CONSTRUCT-OPERATE",
+      "context": "production-default-v7",
+      "motionMode": "standard-motion",
+      "status": "seed-detected",
+      "error": "Route \"ROUTE-PLAN40-DEEP-SAMPLE-CONSTRUCT-OPERATE\" visible geometry assertion failed for \".app-visual-view .fraction-bar-segment.removed\": found 2, expected at least 2 visible items of 10x20px with background image containing \"repeating-linear-gradient\" with a visible center hit; 2 were hidden, clipped, unpainted, undersized, or missing required paint. (route action: Plan 40: assert visible hatch and non-leakage at operate)"
+    }
+  ]
+}

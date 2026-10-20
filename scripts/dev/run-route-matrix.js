@@ -171,8 +171,8 @@ const plan40WitnessSeeds = Object.freeze({
   'premature-difference-leak': {
     routeId: 'ROUTE-PLAN40-DEEP-SAMPLE-CONSTRUCT-OPERATE',
     injectBeforeDescription: 'Plan 40: assert visible hatch and non-leakage at operate',
-    mutation: 'difference-leak',
-    failure: 'unexpectedly contains text "Difference:"',
+    mutation: 'premature-result-leak',
+    failure: 'unexpectedly contains text "3/10"',
   },
   'missing-operate-fraction-inputs': {
     routeId: 'ROUTE-PLAN40-DEEP-SAMPLE-CONSTRUCT-OPERATE',
@@ -424,6 +424,9 @@ async function validateMatrixIntegrity(matrix, registeredConditions, suppliedCon
     }
     if (route.actions?.some((action) => action.method === 'tap') && route.inputMode !== 'touch') {
       errors.push(`Route "${route.id}" uses browser touch without inputMode "touch".`);
+    }
+    if (route.deviceScaleFactor !== undefined && (typeof route.deviceScaleFactor !== 'number' || route.deviceScaleFactor <= 0)) {
+      errors.push(`Route "${route.id}" has invalid deviceScaleFactor.`);
     }
 
     // Rule 3: No skipped rows, no unexecutable narrative witnesses
@@ -1498,6 +1501,7 @@ async function executeAction(page, action, routeId) {
     case 'completePlan40SubtractionSet': {
       const { buildPlan40SubtractionSetActions } = await import('./plan40-route-subtraction.mjs');
       const generated = buildPlan40SubtractionSetActions({ view: action.view, supportProfile: action.supportProfile });
+      action.generatedActions = generated;
       for (const generatedAction of generated) {
         try {
           await executeAction(page, generatedAction, routeId);
@@ -1533,10 +1537,15 @@ async function executeAction(page, action, routeId) {
               const style = getComputedStyle(element);
               return rect.width > 0 && rect.height > 0 && style.display !== 'none' && style.visibility !== 'hidden';
             });
+          const TOLERANCE_PX = 1.0;
           const measure = (element) => {
             if (!element) return null;
             const rect = element.getBoundingClientRect();
             const style = getComputedStyle(element);
+            const horizontallyContained = rect.x >= -TOLERANCE_PX && (rect.x + rect.width) <= (window.innerWidth + TOLERANCE_PX);
+            const verticallyContained = rect.y >= -TOLERANCE_PX && (rect.y + rect.height) <= (window.innerHeight + TOLERANCE_PX);
+            const intersectsViewport = (rect.x + rect.width) >= -TOLERANCE_PX && rect.x <= (window.innerWidth + TOLERANCE_PX)
+              && (rect.y + rect.height) >= -TOLERANCE_PX && rect.y <= (window.innerHeight + TOLERANCE_PX);
             return {
               x: Math.round(rect.x * 100) / 100,
               y: Math.round(rect.y * 100) / 100,
@@ -1544,13 +1553,21 @@ async function executeAction(page, action, routeId) {
               height: Math.round(rect.height * 100) / 100,
               visible: rect.width > 0 && rect.height > 0
                 && style.display !== 'none' && style.visibility !== 'hidden',
+              horizontallyContained,
+              verticallyContained,
+              withinViewport: horizontallyContained && verticallyContained,
+              intersectsViewport,
             };
           };
           const root = document.documentElement;
+          const horizontalOverflowPx = Math.max(0, root.scrollWidth - root.clientWidth);
           return {
             viewport: { width: innerWidth, height: innerHeight },
+            dpr: window.devicePixelRatio,
+            roundingTolerancePx: TOLERANCE_PX,
             document: { width: root.scrollWidth, height: root.scrollHeight },
-            horizontalOverflow: root.scrollWidth > root.clientWidth,
+            horizontalOverflow: horizontalOverflowPx > TOLERANCE_PX,
+            horizontalOverflowPx: Math.round(horizontalOverflowPx * 100) / 100,
             scroll: { x: scrollX, y: scrollY },
             activeView: activeView?.className ?? null,
             question: measure(activeView?.querySelector('.active-beat-prompt')),
@@ -1580,6 +1597,22 @@ async function executeAction(page, action, routeId) {
             || nestedChoices.some((choice) => !choice.button?.visible || !choice.fraction?.visible || !choice.fractionRule?.visible
               || !insideViewport(choice.button, viewport) || !insideViewport(choice.fraction, viewport) || !insideViewport(choice.fractionRule, viewport)))) {
             throw new Error(`Plan 18 screenshot ${action.file} lacks two visible stacked fraction choices and rules.`);
+          }
+        }
+        if (routeId.startsWith('ROUTE-PLAN40-')) {
+          const { layout } = action.screenshotEvidence;
+          if (layout.horizontalOverflowPx > 1.0) {
+            throw new Error(`Plan 40 screenshot ${action.file} has horizontal document overflow: ${layout.horizontalOverflowPx}px (scrollWidth=${layout.document.width}, clientWidth=${layout.viewport.width}).`);
+          }
+          const { question, controls } = layout;
+          if (!question?.visible || !controls?.visible) {
+            throw new Error(`Plan 40 screenshot ${action.file} does not capture visible question and controls.`);
+          }
+          if (!question.horizontallyContained || !controls.horizontallyContained) {
+            throw new Error(`Plan 40 screenshot ${action.file} has question or controls exceeding horizontal viewport bounds.`);
+          }
+          if (!question.intersectsViewport || !controls.intersectsViewport) {
+            throw new Error(`Plan 40 screenshot ${action.file} has question or controls not intersecting viewport.`);
           }
         }
       }
@@ -2638,6 +2671,7 @@ async function runRouteMatrix(options = {}) {
         viewport: route.viewport,
         reducedMotion: motionMode === 'reduced-motion' ? 'reduce' : 'no-preference',
         ...(route.inputMode === 'touch' ? { hasTouch: true } : {}),
+        ...(route.deviceScaleFactor !== undefined ? { deviceScaleFactor: route.deviceScaleFactor } : {}),
       };
 
       const context = await browser.newContext(contextOptions);
@@ -2730,10 +2764,11 @@ async function runRouteMatrix(options = {}) {
                 span.textContent = ' + ';
                 el.appendChild(span);
               });
-            } else if (seed.mutation === 'difference-leak') {
+            } else if (seed.mutation === 'premature-result-leak' || seed.mutation === 'difference-leak') {
               await page.locator('.app-visual-view .active-beat-prompt').evaluate((el) => {
                 const span = document.createElement('span');
-                span.textContent = ' Difference: 3/10';
+                span.className = 'premature-result-leak-test';
+                span.textContent = ' 3/10';
                 el.appendChild(span);
               });
             } else if (seed.mutation === 'missing-inputs') {
@@ -2869,6 +2904,9 @@ async function runRouteMatrix(options = {}) {
   if (plan18WitnessSeed && (seedDetected !== 1 || failed !== 0 || routeResults.length !== 1)) {
     throw new Error(`Plan 18 witness seed "${plan18WitnessSeed}" did not produce exactly one intended failure; detected=${seedDetected}, failed=${failed}, executions=${routeResults.length}.`);
   }
+  if (plan40WitnessSeed && (seedDetected !== 1 || failed !== 0 || routeResults.length !== 1)) {
+    throw new Error(`Plan 40 witness seed "${plan40WitnessSeed}" did not produce exactly one intended failure; detected=${seedDetected}, failed=${failed}, executions=${routeResults.length}.`);
+  }
 
   if (routeResults.some((result) => result.routeId.startsWith('ROUTE-PLAN18-'))) {
     const evidenceName = plan18WitnessSeed ? `plan18-seed-${plan18WitnessSeed}-receipt.json` : 'route-matrix-results.json';
@@ -2960,38 +2998,69 @@ async function runRouteMatrix(options = {}) {
   }
 
   if (routeResults.some((result) => result.routeId.startsWith('ROUTE-PLAN40-'))) {
-    const layoutEvidence = routeResults
-      .filter((result) => result.routeId.startsWith('ROUTE-PLAN40-'))
-      .flatMap((result) => result.route.actions
-        .filter((action) => action.method === 'screenshot' && action.screenshotEvidence?.layout)
-        .map((action) => ({ routeId: result.routeId, context: result.context, motionMode: result.motionMode, ...action.screenshotEvidence })));
-    if (layoutEvidence.length > 0) {
-      const layoutPath = path.join(rootDir, 'reports/development/plan-40-unlike-denominator-subtraction-batch/evidence/plan40-viewport-measurements.json');
-      fs.mkdirSync(path.dirname(layoutPath), { recursive: true });
-      fs.writeFileSync(layoutPath, `${JSON.stringify({ capturedAt: new Date().toISOString(), measurements: layoutEvidence }, null, 2)}\n`);
-    }
+    if (!plan40WitnessSeed) {
+      const layoutEvidence = routeResults
+        .filter((result) => result.routeId.startsWith('ROUTE-PLAN40-'))
+        .flatMap((result) => {
+          const direct = result.route.actions
+            .filter((action) => action.method === 'screenshot' && action.screenshotEvidence?.layout)
+            .map((action) => ({ routeId: result.routeId, context: result.context, motionMode: result.motionMode, ...action.screenshotEvidence }));
+          const generated = result.route.actions
+            .flatMap((action) => (action.generatedActions || [])
+              .filter((gen) => gen.method === 'screenshot' && gen.screenshotEvidence?.layout)
+              .map((gen) => ({ routeId: result.routeId, context: result.context, motionMode: result.motionMode, ...gen.screenshotEvidence })));
+          return [...direct, ...generated];
+        });
+      if (layoutEvidence.length > 0) {
+        const layoutPath = path.join(rootDir, 'reports/development/plan-40-unlike-denominator-subtraction-batch/evidence/plan40-viewport-measurements.json');
+        fs.mkdirSync(path.dirname(layoutPath), { recursive: true });
+        fs.writeFileSync(layoutPath, `${JSON.stringify({ capturedAt: new Date().toISOString(), measurements: layoutEvidence }, null, 2)}\n`);
+      }
 
-    const evidencePath = path.join(rootDir, 'reports/development/plan-40-unlike-denominator-subtraction-batch/evidence/plan40-route-matrix-summary.json');
-    fs.mkdirSync(path.dirname(evidencePath), { recursive: true });
-    fs.writeFileSync(evidencePath, `${JSON.stringify({
-      capturedAt: new Date().toISOString(),
-      browserChannel: browserChannel || 'default chromium',
-      mode: plan40WitnessSeed ? `seed:${plan40WitnessSeed}` : 'clean',
-      routeRows: routesToRun.length,
-      browserExecutions: routeResults.length,
-      passed,
-      knownDefects,
-      failed,
-      seedDetected,
-      contexts: routeResults.reduce((counts, result) => {
-        const key = result.context || 'prototype';
-        counts[key] = (counts[key] || 0) + 1;
-        return counts;
-      }, {}),
-      results: routeResults.map(({ id, routeId, context, motionMode, status, error }) => ({
-        id, routeId, context, motionMode, status, ...(error ? { error } : {}),
-      })),
-    }, null, 2)}\n`);
+      const evidencePath = path.join(rootDir, 'reports/development/plan-40-unlike-denominator-subtraction-batch/evidence/plan40-route-matrix-summary.json');
+      fs.mkdirSync(path.dirname(evidencePath), { recursive: true });
+      fs.writeFileSync(evidencePath, `${JSON.stringify({
+        capturedAt: new Date().toISOString(),
+        browserChannel: browserChannel || 'default chromium',
+        mode: 'clean',
+        routeRows: routesToRun.length,
+        browserExecutions: routeResults.length,
+        passed,
+        knownDefects,
+        failed,
+        seedDetected,
+        contexts: routeResults.reduce((counts, result) => {
+          const key = result.context || 'prototype';
+          counts[key] = (counts[key] || 0) + 1;
+          return counts;
+        }, {}),
+        results: routeResults.map(({ id, routeId, context, motionMode, status, error }) => ({
+          id, routeId, context, motionMode, status, ...(error ? { error } : {}),
+        })),
+      }, null, 2)}\n`);
+    } else {
+      const seedReceiptPath = path.join(rootDir, `reports/development/plan-40-unlike-denominator-subtraction-batch/evidence/plan40-seed-${plan40WitnessSeed}-summary.json`);
+      fs.mkdirSync(path.dirname(seedReceiptPath), { recursive: true });
+      fs.writeFileSync(seedReceiptPath, `${JSON.stringify({
+        capturedAt: new Date().toISOString(),
+        browserChannel: browserChannel || 'default chromium',
+        mode: `seed:${plan40WitnessSeed}`,
+        routeRows: routesToRun.length,
+        browserExecutions: routeResults.length,
+        passed,
+        knownDefects,
+        failed,
+        seedDetected,
+        contexts: routeResults.reduce((counts, result) => {
+          const key = result.context || 'prototype';
+          counts[key] = (counts[key] || 0) + 1;
+          return counts;
+        }, {}),
+        results: routeResults.map(({ id, routeId, context, motionMode, status, error }) => ({
+          id, routeId, context, motionMode, status, ...(error ? { error } : {}),
+        })),
+      }, null, 2)}\n`);
+    }
   }
 
   return {
@@ -3080,8 +3149,8 @@ if (require.main === module) {
       } else if (plan38WitnessSeed && summary.seedDetected !== 1) {
         console.error(`Plan 38 witness seed "${plan38WitnessSeed}" was not detected at its intended assertion.`);
         process.exit(1);
-      } else if (plan40WitnessSeed && summary.seedDetected !== 1) {
-        console.error(`Plan 40 witness seed "${plan40WitnessSeed}" was not detected at its intended assertion.`);
+      } else if (plan40WitnessSeed && (summary.seedDetected !== 1 || summary.failed !== 0 || summary.total !== 1)) {
+        console.error(`Plan 40 witness seed "${plan40WitnessSeed}" did not produce exactly one intended failure (detected=${summary.seedDetected}, failed=${summary.failed}, total=${summary.total}).`);
         process.exit(1);
       } else {
         process.exit(0);
