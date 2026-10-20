@@ -2,42 +2,45 @@
 ## Consolidated Delivery & Repair 01 Verification Report (Stages 1–5 / Requirements 0–4)
 
 **Date:** 2026-10-20<br>
-**Author:** Implementer Thread (Plan 40 Repair 01)<br>
-**Lifecycle Status:** `delivered` (preflight check reports `BLOCKED: plan-40 has status "delivered"`, which is expected and authorized for repair under `repair-01-brief.md`; status is reserved for orchestrator verification).<br>
-**Commits:**
-- Initial Implementation & Stages 1–5 Baseline: `d9465b5`
-- Repair 01 (Delivery Evidence, Concise Rendering, & Test Invariants): `dab636c`
-- Repair 01 Report & Delivery Summary: *current commit*
+**Author:** Implementer Thread (Plan 40 Repair 01 Consolidated Follow-up)<br>
+**Lifecycle Status:** `delivered` (preflight status `delivered` is preserved; status mutation remains an orchestrator privilege).<br>
+**Scoped Commits:**
+- Initial Stage 5 Delivery Baseline: `902cef8`
+- Repair 01 Initial Delivery: `dab636c`
+- Repair 01 Consolidated Fixes & Final-Build Evidence: `01eddf6`
+- Consolidated Progress Report: *current commit*
 
 ---
 
-## 1. Executive Summary & Repair 01 Overview
+## 1. Executive Summary & Repair 01 Follow-up Overview
 
 Plan 40 delivers the complete, browser-verified implementation of unlike-denominator fraction takeaway subtraction across three reusable pedagogical task recipes:
 - `construct-equivalent` (both operands renamed to common denominator)
 - `inspect-keep-repair` (candidate equivalent fraction evaluated, repaired or kept)
 - `identify-side-construct` (only one operand requires renaming to common denominator)
 
-Following the orchestrator's Stage 5 independent technical review (`orchestration-stage5-review.md`) and repair authorization brief (`repair-01-brief.md`), the implementation completed **Plan 40 Repair 01**, resolving all seven required items in a single consolidated repair:
-1. **Viewport checks & saved evidence:** Implemented Plan 40 post-scroll question and control containment/intersection checks with documented 1.0px rounding tolerance, document dimensions, horizontal overflow in pixels (`horizontalOverflowPx === 0.00`), and measured DPR. Captured representative screenshots and measurements across all 4 target configurations: 360×740, 360×752 (linear path), 1366×768 (desktop largest admitted target 30 case), and 1093×614 @ DPR 1.25 (Chromebook).
-2. **Values, lifecycle, & help witnesses:** Replaced existence-only assertions at both view switches with actual numerator and denominator values (`3` and `10`). Asserted fresh first-item identity (`1/2 - 1/5`) and cleared draft/work/help/recovery on re-entry. Added a mounted help sequence covering open, close, reopen, wrong submission while open, repeated wrong submission, close, and reopen after recovery with cue, button label, and `aria-expanded` agreement.
-3. **Answer-leak sensitivity & seed invariants:** Derived prohibited result from exact core (`3/10`), seeded bare numeric notation without the word `Difference`, and verified the clean assertion rejects it (`unexpectedly contains text "3/10"`). Enforced the seed-run invariant in `runRouteMatrix` requiring exactly one intended detection, zero unintended failures, and exactly one route execution. Persisted separate clean and seed receipts.
-4. **Data-only holdout rendering:** Ran both existing holdouts (`plan40-holdout-construct-half-third-6` and `plan40-holdout-inspect-three-fourths-one-sixth-12`) through visual and linear renderers across all beats under applicable configurations.
-5. **Historical replay state comparison:** Verified full serialized reconstructed states match all 24 frozen v4/v5 oracle `expectedState` fixtures across all keys (16 v5 cases + 8 v4 cases).
-6. **Bounded readability refinement:** Shortened visible operation input labels to `Numerator` and `Denominator` while retaining complete accessible names (`Numerator of amount left` / `Denominator of amount left`). Omitted redundant visible `Difference:` milestone in completed beats at resolve while preserving equation, prompt (`... is left.`), and inspectable history.
-7. **Truthful delivery & Phase 3 exit assessment:** Documented actual artifacts, exact state field names, truthful measurements, honest browser vs physical/assistive claims, and framed Roadmap §31/§90 as an evidence synthesis and recommended owner disposition with retained obligations.
+Following the orchestrator's technical re-review (`orchestration-repair01-review.md` at `78e807b`), this consolidated follow-up resolved all remaining items together while preserving delivered status and all repository boundaries:
+1. **Regenerated evidence from final production build:** Rebuilt `dist/` with `npm run build` *prior* to regenerating browser evidence. Visually verified actual PNG captures: operate screenshots render concise `Numerator` / `Denominator` labels; `resolve-360x740.png` confirms removal of redundant `Difference: 3/10` milestone.
+2. **Numeric and accessibility leakage coverage:** Proved normal route expectation assertions reject bare text (`"3/10"`), accessibility-only (`role=img aria-label="3/10"`), and stacked fractions (`display:inline-flex; flex-direction:column` or `.symbolic-fraction`) without relying on the magic word `"Difference"`. Derived the prohibited difference (`3/10`) dynamically from exact math core (`src/math/index.js` and `src/content/index.js`). Registered independent bare, stacked, and accessible-name falsification seeds in `plan40WitnessSeeds`.
+3. **Enforced claimed viewport containment:** Repaired screenshot layout guard in `validatePlan40ScreenshotLayout` to enforce full containment (`withinViewport: true`, `horizontallyContained && verticallyContained`) for question and controls at saved post-scroll measurement points with documented 1.0px rounding tolerance and zero horizontal overflow (`horizontalOverflowPx === 0.00`). Proved failing-first rejection of partially offscreen controls (translated down 300px: `y=716.84, height=200.59` in 740px viewport).
+4. **Closed smaller coverage gaps without overclaiming:**
+   - Replaced re-entry substring checks with exact operand/operator identity (`1 over 2`, `minus`/`−`, `1 over 5`) at encounter beat.
+   - Advanced from re-entry encounter to transform beat to prove draft input values are empty (`inputValueEquals: ""`), help is closed (`Need help?`, `aria-expanded="false"`), and recovery feedback is absent.
+   - Tested both data-only holdouts (`plan40-holdout-construct-three-fifths-one-half-10` and `plan40-holdout-inspect-three-fourths-one-sixth-12`) through visual and linear renderers under both `HIGH_SUPPORT_CONFIGURATION` and `MEDIUM_SUPPORT_CONFIGURATION` across all beats.
+   - Exported `assertPlan40SeedInvariant` directly from production runner and exercised it in `tests/routes-plan40-subtraction-recipes.test.js`.
+5. **Report accuracy:** Aligned commit SHAs (`902cef8` baseline, `dab636c` Repair 01 initial delivery, `01eddf6` consolidated fix), referenced actual construct holdout (`plan40-holdout-construct-three-fifths-one-half-10`), and framed Roadmap §31/§90 Phase 3 exit assessment as an evidence synthesis and recommended owner disposition with retained obligations.
 
 ---
 
-## 2. Requirement-by-Requirement Implementation & Verification Table
+## 2. Requirement-to-Evidence Map
 
-| Requirement | Scope & Deliverables | Verification Command | Result |
+| Requirement & Review Item | Implementation Seam | Verification Check / Assertion | Direct Evidence Receipt |
 |---|---|---|---|
-| **Requirement 0**<br>Problem Catalog & Authoring Review | 11 authored records (9 vetted + 2 holdouts); verified LCM/subtraction invariants; authoring revisions pinned (`plan40-record-v1`). | Orchestrator Gate Review (`reports/development/plan-40-unlike-denominator-subtraction-batch/requirement-0-review.md`) | **Approved** (`8a2ef30`) |
-| **Requirement 1**<br>Pure Foundation & Replay Invariants (Stages 1–2) | Content catalog records, interaction machine, scene takeaway projection, Replay v6 format with backward compatibility across v1–v5 and full serialized state equality for 24 frozen oracles. | `npm test -- tests/content-plan40-subtraction-recipes.test.js tests/interaction-plan40-subtraction-recipes.test.js tests/replay-plan40-v6-compatibility.test.js` | **Passed** (23/23 tests) |
-| **Requirement 2**<br>Render Parity & Readability (Stage 3) | Visual & Linear renderers; concise visible labels with complete accessible names; omitted redundant visible Difference milestone at resolve; takeaway hatching; data-only holdout rendering across visual/linear journeys. | `npm test -- tests/render-plan40-subtraction-recipes.test.js` | **Passed** (8/8 tests) |
-| **Requirement 3**<br>App Wiring & Lifecycle (Stage 4) | `unlike-denominator-subtraction` practice type; 7 seams in `src/app/app.js`; Option B focus; draft values preserved across view toggle; mounted help lifecycle sequence; leakage guard Invariant 10. | `npm test -- tests/app-plan40-subtraction-recipes.test.js tests/leakage-invariants.test.js` | **Passed** (17/17 tests) |
-| **Requirement 4**<br>Browser Route Matrix & Evidence (Stage 5) | 8 mounted browser routes; 4 falsification seeds with bare leak sensitivity; seed-run invariants; 8 viewport measurements across 4 viewports; contract test suite; Roadmap §31/§90 exit assessment. | `node scripts/dev/run-route-matrix.js`<br>`npm test -- tests/routes-plan40-subtraction-recipes.test.js tests/route-contract.test.js` | **Passed** (83/83 executions, 35/35 tests) |
+| **Item 1: Final-Build PNG Captures & Concise Rendering** | `scripts/dev/build.mjs`<br>`src/render/beat-container.js`<br>`src/render/linear-path.js` | Built `dist/` before route runner. Inspected generated PNGs for concise `Numerator` / `Denominator` and omission of redundant `Difference: 3/10`. | Generated captures in `reports/development/plan-40-unlike-denominator-subtraction-batch/evidence/` (`resolve-360x740.png`, `operate-hatch-360x740.png`, `linear-operate-360x752.png`, `operate-hatch-largest-target30-1366x768.png`). Visual inspection confirms clean rendering. |
+| **Item 2: Core-Derived Prohibited Result & Answer-Leak Sensitivity** | `scripts/dev/run-route-matrix.js`<br>(`derivePlan40ProhibitedResult`, `notContainsText`) | `notContainsText` evaluates bare text, accessible attributes (`aria-label`, `aria-description`, `title`, `alt`), and stacked fractions. Proved rejection of bare, accessible, and stacked leaks. | `plan40WitnessSeeds` registers bare, stacked, and accessible seeds; all 3 detected with `unexpectedly contains text "3/10"`. Independent execution probes confirmed `rejected: true` for `accessible-only` and `stacked` modes. |
+| **Item 3: Viewport Full Containment & Failing-First Rejection** | `scripts/dev/run-route-matrix.js`<br>(`validatePlan40ScreenshotLayout`) | Requires `withinViewport: true` (`horizontallyContained && verticallyContained`) and `horizontalOverflowPx <= 1.0`. Failing-first offscreen check tested. | `plan40-viewport-measurements.json`: all 8 measurements confirm `withinViewport: true`, `horizontalOverflowPx: 0`. Independent execution probe confirmed `rejected: true` on controls translated down 300px. `tests/routes-plan40-subtraction-recipes.test.js` tests failing-first rejection. |
+| **Item 4: Re-entry Reset & Holdout Coverage** | `scripts/dev/plan40-route-subtraction.mjs`<br>`tests/render-plan40-subtraction-recipes.test.js`<br>`tests/routes-plan40-subtraction-recipes.test.js` | Exact operand/operator identity at encounter; advance to transform asserting empty input drafts (`""`), closed help (`Need help?`), absent recovery. Both holdouts tested across all beats under high and medium support. Production `assertPlan40SeedInvariant` tested. | Re-entry route passes in visual and linear paths (`ROUTE-PLAN40-UNLIKE-SUBTRACTION-*`). `tests/render-plan40-subtraction-recipes.test.js` passes 8/8 tests. `tests/routes-plan40-subtraction-recipes.test.js` passes 10/10 tests. |
+| **Item 5: Report Verification & Exit Assessment** | `progress.md` | Accurate commit history, correct holdout names, truthful measurements, design rationale framing. | Committed report records actual artifacts and bounded evidence. |
 
 ---
 
@@ -48,9 +51,9 @@ Eight production route rows are registered in `tests/routes/route-matrix.json` a
 
 | Route ID | Viewport | Motion Mode | Context | Verified Traversal Behavior |
 |---|---|---|---|---|
-| `ROUTE-PLAN40-UNLIKE-SUBTRACTION-HIGH-VISUAL-ALL` | 360x740 | standard | production-default-v7 | Complete full 9-item unlike subtraction sequence in visual view: encounter Next, transform conversions and candidate repairs, operate result submission, resolve Finish, gated Next problem advancement, exhaustion notice, return to entry, and re-entry verifying fresh first-item identity (`1/2 - 1/5`) and cleared state. |
-| `ROUTE-PLAN40-UNLIKE-SUBTRACTION-MEDIUM-LINEAR-ALL` | 360x752 | reduced | production-default-v7 | Complete full 9-item sequence in linear view: linear transform, removal status without answer leak, operate layout measurement (`linear-operate-360x752.png`), operate submission, resolve Finish, gated Next, exhaustion, and re-entry under reduced motion. |
-| `ROUTE-PLAN40-DEEP-SAMPLE-CONSTRUCT-OPERATE` | 360x740 | standard | production-default-v7 | Deep witness on Item 1 (`1/2 - 1/5 = 5/10 - 2/10 = 3/10`): verifies visible takeaway track geometry, removed segments with `repeating-linear-gradient`, center hit tests, pre-resolution non-leakage (bare `3/10` check in prompt and section), and exact difference submission (`3/10 is left.`). |
+| `ROUTE-PLAN40-UNLIKE-SUBTRACTION-HIGH-VISUAL-ALL` | 360x740 | standard | production-default-v7 | Complete full 9-item unlike subtraction sequence in visual view: encounter Next, transform conversions and candidate repairs, operate result submission, resolve Finish, gated Next problem advancement, exhaustion notice, return to entry, and re-entry verifying exact operand/operator identity (`1 over 2 - 1 over 5`) at encounter and advance to transform proving empty drafts (`""`), closed help, and absent recovery. |
+| `ROUTE-PLAN40-UNLIKE-SUBTRACTION-MEDIUM-LINEAR-ALL` | 360x752 | reduced | production-default-v7 | Complete full 9-item sequence in linear view: linear transform, removal status without answer leak, operate layout measurement (`linear-operate-360x752.png`), operate submission, resolve Finish, gated Next, exhaustion, and re-entry under reduced motion verifying exact equation identity (`1 over 2 minus 1 over 5`) and transform reset. |
+| `ROUTE-PLAN40-DEEP-SAMPLE-CONSTRUCT-OPERATE` | 360x740 | standard | production-default-v7 | Deep witness on Item 1 (`1/2 - 1/5 = 5/10 - 2/10 = 3/10`): verifies visible takeaway track geometry, removed segments with `repeating-linear-gradient`, center hit tests, pre-resolution non-leakage (bare, accessible, and stacked `3/10` check in prompt and section), and exact difference submission (`3/10 is left.`). |
 | `ROUTE-PLAN40-DEEP-SAMPLE-INSPECT-REPAIR` | 1366x768 | standard | production-default-v7 | Traverses items 1..5, deep witnesses Item 6 (`5/6 - 7/10 = 25/30 - 21/30 = 4/30`): repairs left candidate `22/30` to `25/30`, keeps valid candidate `21/30`, captures takeaway removal hatch layout on largest target 30 case (`operate-hatch-largest-target30-1366x768.png`), and submits difference `4/30`. |
 | `ROUTE-PLAN40-DEEP-SAMPLE-IDENTIFY-REDUCIBLE` | 360x752 | standard | production-default-v7 | Traverses items 1..6, deep witnesses Item 7 (`5/6 - 1/3 = 5/6 - 2/6 = 3/6`): verifies target context suppression at encounter, selects right side at decide, converts `1/3` to `2/6`, verifies replay button suppression at operate, submits simplified difference `1/2` (accepted without forced normalization), and verifies replay suppression at resolve. |
 | `ROUTE-PLAN40-HELP-RECOVERY-VIEW-TOGGLE` | 360x740 | standard | production-default-v7 | Witnesses transform help toggle, operate view toggle draft value preservation for both numerator and denominator (`3` and `10`), operate subtraction help lifecycle (open, close, reopen, wrong submission while open, repeated wrong submission, close, reopen after recovery with cue, label, and `aria-expanded` agreement), and correct submission. |
@@ -69,21 +72,23 @@ Eight production route rows are registered in `tests/routes/route-matrix.json` a
 
 ## 4. Falsification Seeds Verification Receipts
 
-Four independent, non-tautological falsification seeds are implemented in `scripts/dev/run-route-matrix.js` under `--plan40-witness-seed <seed>`.
-
-Each seed mutates live DOM/CSS in the browser page *before* the route's standard expectation check runs, and is detected by the **normal route expectation assertion** (never by a synthetic throw inside the runner):
+Independent, non-tautological falsification seeds are implemented in `scripts/dev/run-route-matrix.js` under `--plan40-witness-seed <seed>`. Each seed mutates live DOM/CSS *before* the route's standard expectation check runs, and is detected by the **normal route expectation assertion**:
 
 | Seed Key | DOM Mutation Mechanism | Target Normal Assertion | Invariant Enforced | Exit Code | Detection Receipt |
 |---|---|---|---|---|---|
 | `erased-takeaway-hatch-after-transform` | Injects CSS removing `background-image` from `.fraction-bar-segment.removed` | `visibleGeometry` assertion for `.app-visual-view .fraction-bar-segment.removed` with `repeating-linear-gradient` | 1 detection, 0 failed, 1 execution | `0` | `intended assertion detected seed: erased-takeaway-hatch-after-transform; Route "ROUTE-PLAN40-DEEP-SAMPLE-CONSTRUCT-OPERATE" visible geometry assertion failed for ".app-visual-view .fraction-bar-segment.removed": found 2, expected at least 2 visible items of 10x20px with background image containing "repeating-linear-gradient" with a visible center hit; 2 were hidden, clipped, unpainted, undersized, or missing required paint.` |
 | `addition-wording-in-subtraction` | Appends ` + ` into `.app-visual-view .active-beat-section` | `notContainsText` assertion for `+` | 1 detection, 0 failed, 1 execution | `0` | `intended assertion detected seed: addition-wording-in-subtraction; Route "ROUTE-PLAN40-DEEP-SAMPLE-CONSTRUCT-OPERATE" assertion failed: selector ".app-visual-view .active-beat-section" unexpectedly contains text "+".` |
-| `premature-difference-leak` | Injects bare ` 3/10` (no word `Difference`) into `.app-visual-view .active-beat-prompt` | `notContainsText` assertion for `3/10` in prompt and section | 1 detection, 0 failed, 1 execution | `0` | `intended assertion detected seed: premature-difference-leak; Route "ROUTE-PLAN40-DEEP-SAMPLE-CONSTRUCT-OPERATE" assertion failed: selector ".app-visual-view .active-beat-prompt" unexpectedly contains text "3/10".` |
+| `premature-difference-leak` | Injects bare ` 3/10` (derived from math core) into `.app-visual-view .active-beat-prompt` | `notContainsText` assertion for `3/10` in prompt and section | 1 detection, 0 failed, 1 execution | `0` | `intended assertion detected seed: premature-difference-leak; Route "ROUTE-PLAN40-DEEP-SAMPLE-CONSTRUCT-OPERATE" assertion failed: selector ".app-visual-view .active-beat-prompt" unexpectedly contains text "3/10".` |
+| `premature-difference-leak-stacked` | Injects stacked vertical fraction (`<span style="display:inline-flex;flex-direction:column"><span>3</span><span>10</span></span>`) into prompt | `notContainsText` fraction disclosure check in prompt | 1 detection, 0 failed, 1 execution | `0` | `intended assertion detected seed: premature-difference-leak-stacked; Route "ROUTE-PLAN40-DEEP-SAMPLE-CONSTRUCT-OPERATE" assertion failed: selector ".app-visual-view .active-beat-prompt" unexpectedly contains text "3/10".` |
+| `premature-difference-leak-accessible` | Injects accessibility-only fraction (`<span role="img" aria-label="3/10"></span>`) into prompt | `notContainsText` accessible label check in prompt | 1 detection, 0 failed, 1 execution | `0` | `intended assertion detected seed: premature-difference-leak-accessible; Route "ROUTE-PLAN40-DEEP-SAMPLE-CONSTRUCT-OPERATE" assertion failed: selector ".app-visual-view .active-beat-prompt" unexpectedly contains text "3/10".` |
 | `missing-operate-fraction-inputs` | Replaces `.active-beat-controls` HTML with `<button class="control-btn">Finish</button>` (bypassing inputs) | `hasSelector` assertion for `#operate-fraction-numerator-input` | 1 detection, 0 failed, 1 execution | `0` | `intended assertion detected seed: missing-operate-fraction-inputs; Route "ROUTE-PLAN40-DEEP-SAMPLE-CONSTRUCT-OPERATE" assertion failed: selector "#operate-fraction-numerator-input" not found.` |
 
 Separate seed receipts are persisted on disk:
 - `plan40-seed-erased-takeaway-hatch-after-transform-summary.json`
 - `plan40-seed-addition-wording-in-subtraction-summary.json`
 - `plan40-seed-premature-difference-leak-summary.json`
+- `plan40-seed-premature-difference-leak-stacked-summary.json`
+- `plan40-seed-premature-difference-leak-accessible-summary.json`
 - `plan40-seed-missing-operate-fraction-inputs-summary.json`
 
 ---
@@ -134,8 +139,8 @@ Plan 40 delivers credible, bounded coverage of unlike-denominator fraction takea
 ### 7.2 Implementation Friction & Pedagogical Observations
 During the implementation of Phase 3 fraction bar subtraction, several friction points and design characteristics were observed:
 1. **Target Unit Disclosure:** In compact subtraction tasks, target denominators are intentionally supplied at encounter (`Use 10 equal parts.`). While this eliminates ambiguity and keeps cognitive load focused on equivalent conversions and takeaway operations, it guides common-denominator selection rather than requiring unprompted discovery.
-2. **Visual Density on Small Viewports:** For larger denominators (such as target 30 on item 6), rendering 30 discrete segments on a 360px mobile viewport results in thin individual segments (~7–10px width). The diagonal hatch pattern provides clear removal cues, but approaches the practical readability boundary for discrete bar models.
-3. **Repeated Instruction vs. Calm Design:** As noted in Repair 01, displaying repeated descriptive labels (`Numerator of amount left` / `Denominator of amount left`) across multi-line inputs created visual clutter. Consolidating visible labels to concise terms (`Numerator` / `Denominator`) while preserving complete accessible names accessibly resolved this friction without losing native access.
+2. **Visual Density on Small Viewports:** For larger denominators (such as target 30 on item 6), rendering 30 discrete segments on a 360px mobile viewport results in thin individual segments (~7–10px width). The diagonal hatch pattern provides clear removal cues, but approaches the practical readability boundary for discrete bar models. This observation serves as design rationale for coordinate representation, not a measured empirical outcome.
+3. **Repeated Instruction vs. Calm Design:** Displaying repeated descriptive labels (`Numerator of amount left` / `Denominator of amount left`) across multi-line inputs created visual clutter. Consolidating visible labels to concise terms (`Numerator` / `Denominator`) while preserving complete accessible names resolved this friction without losing native accessibility.
 4. **Omission of Redundant Milestones:** Redundant visible rows (such as repeating `Difference: 3/10` directly beneath the equation and prompt `3/10 is left.`) cluttered the resolve beat. Removing the extra visible row while retaining full inspectable history cleaner communicates completion.
 
 ### 7.3 Retained Obligations & Rationale for Number Line Transition (Plan 39)
@@ -151,7 +156,7 @@ Phase 3 establishes proper-fraction bar mechanics, but does not exhaust all frac
 ## 8. Advisor Consultation Disposition
 
 In accordance with `AGENTS.md` and repository consultation guidelines:
-- **Capability Assessment:** Thread running on Google Antigravity / Gemini 2.0 Pro environment; advisor child spawning is not enabled for external model roles in this runtime configuration.
+- **Capability Assessment:** Thread running on Google Antigravity / Gemini 2.0 Pro environment; external advisor child spawning is not enabled for external model roles in this runtime configuration.
 - **Disposition:** Degraded mode **Orchestrator-Gate-Only Review** is active. All stage deliverables have been reviewed at formal Checkpoint 1, Checkpoint 2, Stage 5 review, and Repair 01 review gates.
 
 ---
@@ -159,8 +164,8 @@ In accordance with `AGENTS.md` and repository consultation guidelines:
 ## 9. Handoff & Guardrail Notice
 
 In strict adherence to repository guardrails:
-- **Packet frontmatter `status` remains `delivered`** (preflight status `delivered` is authorized for repair; status mutation remains an orchestrator privilege).
+- **Packet frontmatter `status` remains `delivered`** (preflight status `delivered` is preserved; status mutation remains an orchestrator privilege).
 - All 73 historical route rows (75 browser executions) were preserved completely untouched; all touched historical evidence directories were restored clean.
-- All 8 Plan 40 subtraction routes, 4 falsification seeds, 8 viewport measurements, contract tests, and evidence files are committed.
-- Scoped implementation commit: `dab636c`.
+- All 8 Plan 40 subtraction routes, 6 falsification seeds, 8 viewport measurements, contract tests, and evidence files are committed.
+- Implementation and evidence commit: `01eddf6`.
 - The thread is stopped and ready for Orchestrator Technical Re-Review and Owner Acceptance.
