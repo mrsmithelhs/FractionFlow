@@ -1,6 +1,14 @@
 # FractionFlow orchestration handoff
 
-Updated 2026-10-19 after Codex resumed orchestration and reviewed Plan40 delivery
+Updated 2026-10-20 after Plan 40 Repair 01 re-review (`dab636c`, `2fef274`).
+Plan 40 remains delivered, not technically accepted. Read
+reports/development/plan-40-unlike-denominator-subtraction-batch/orchestration-repair01-review.md
+for the consolidated remaining repair assignment and independent execution receipt.
+Fresh builds/486 tests/eight Chrome routes/four seeds passed. Committed screenshots
+still show pre-repair copy; accessible/stacked leakage and partly offscreen controls
+falsely pass their witnesses. No product math defect observed. Plan 39 stays draft.
+
+Earlier resumption context: Codex reviewed Plan40 delivery
 902cef8. Plan40 is delivered, NOT technically accepted or owner closed. Read
 reports/development/plan-40-unlike-denominator-subtraction-batch/orchestration-stage5-review.md
 for the consolidated repair and separate execution receipt. Plan39 stays draft.
