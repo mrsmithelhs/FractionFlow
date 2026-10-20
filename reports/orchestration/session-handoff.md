@@ -1,9 +1,9 @@
 # FractionFlow orchestration handoff
 
-Updated 2026-10-18 after owner acceptance and closure of `plan-37` (`DECISION-046`)
-and `plan-38` (`DECISION-045` implementation), plus drafting of `plan-39`. Read
-current packet frontmatter and actual artifacts when their state differs from this
-dated snapshot.
+Updated 2026-10-19 while `plan-40` Stage 5 (Requirement 4: final browser route matrix,
+falsification seeds, viewport evidence, and delivery report) is in flight with the
+implementer. Read current packet frontmatter and actual git artifacts when their state
+differs from this dated snapshot.
 
 ## Assignment and authority
 
@@ -20,36 +20,43 @@ Codex work, Luna bounded children and Sol read-only low/medium review are author
 no Astra without an explicit owner exception, no implementation-child fan-out, and
 no silent substitution.
 
-## Live boundary and completed work in this session
+## Live boundary and completed work
 
-- **Completed packets (`2026-10-18`):**
-  - **`plan-37` (`complete`, `DECISION-046`):** First Number-Line Task and Bar-to-Line Bridge Design.
-    - Requirement 0 investigation & rival/falsifier table: `19290c5`, updated at `34da631`.
-    - Design dossier (`requirement-0-investigation.md`, `annotated-flow.md`, `design-contract.md`, `implementation-and-validation.md`): `34da631`.
-    - Orchestrator review (`dossier-review.md`) & owner adoption (`owner-acceptance.md`, `DECISION-046`): `835fb58`.
-  - **`plan-38` (`complete`, `DECISION-045` batch implementation):** First Learner Like-Denominator Takeaway Subtraction Batch.
-    - Requirement 0 proposal, probe, & `plan35-v4-replay-oracles.json` freeze: `b1f1b77`, `4c85b8a`.
-    - Checkpoint 1 (Stages 1–3: 8 curated records, `like-denominator-subtraction-profile`, episode/scene, `fractionflow.episode-replay/v5`): `98c61e3`.
-    - Checkpoint 2 (Stages 4–5: visual takeaway bar with hatched removal segments, linear path, app integration, 37 unit/rendered tests): `241964a`.
-    - Checkpoint 3 (Stage 6: 8 browser routes -> 73 route rows / 75 executions, 5 `--plan38-witness-seed` falsification seeds, 11 responsive/zoom captures): `2db8a69`.
-    - Owner screenshot review copy refinements (removed `.linear-takeaway-unit-context`, non-visual linear removal status `"${rightNum}/${den} is taken away from ${leftNum}/${den}."` during `operate` only, and context-specific resolve prompt `"${num}/${den} is left."`) + closure: `d140bd8`, plus tightened `withinViewport` and `action-as-answer` witness verification.
-- **Ready / Draft packets on the board:**
-  - **`plan-40` (`ready`):** Unlike-Denominator Subtraction Recipes and Curated Batch (Option A Phase 3 completion + Roadmap §31/§90 exit disposition; depends on `plan-35` and `plan-38`).
-  - **`plan-39` (`draft`, `blocked` on `plan-40`):** First Number-Line Locate and Bar-to-Line Bridge Batch (implements `DECISION-046` / `plan-37` after `plan-40`).
+- **Recently completed packets (`2026-10-18`):**
+  - **`plan-37` (`complete`, `DECISION-046`):** First Number-Line Task and Bar-to-Line Bridge Design (`835fb58`).
+  - **`plan-38` (`complete`, `DECISION-045` batch implementation):** Like-Denominator Takeaway Subtraction Batch (`d140bd8`, witness/viewport verification tightened at `7ffb64b`).
+- **Active packet in flight (`2026-10-19`):**
+  - **`plan-40` (`in-progress`):** Unlike-Denominator Subtraction Recipes and Curated Batch (`docs/development/plan-40-unlike-denominator-subtraction-batch.md`).
+    - **Requirement 0 (Approved):** Proposal, admission probe, and `tests/fixtures/plan38-v5-replay-oracles.json` committed by implementer at `81014f3`; orchestrator review & Guardrails A–D recorded in `reports/development/plan-40-unlike-denominator-subtraction-batch/requirement-0-review.md` (`8a2ef30`).
+    - **Checkpoint 1 / Stages 1–2 (Approved):** 9 curated items (`unlike-subtraction-vetted-set@1`) + 2 data-only holdouts (`plan40-data-only-holdouts@1`), 17-key `taskContext` validator, `phase-3-reusable-subtraction-recipes@1` episode/schedule, Option B direct transition from `transform` to `operate` (`subtractionRemoval: 'marked'`), `scene.meaning.takeaway` (`null` during `encounter`/`decide`/`transform`, active at `operate`/`resolve`), `fractionflow.episode-replay/v6`, and 23 pure unit/replay tests committed at `4eba2d2`; orchestrator review & Stage 3–4 wiring checklist recorded in `reports/development/plan-40-unlike-denominator-subtraction-batch/checkpoint-1-review.md` (`953de43`).
+    - **Checkpoint 2 / Stages 3–4 (Approved):** Visual & linear renderer updates (`src/render/beat-container.js`, `src/render/linear-path.js`), `PLAN40_UNLIKE_SUBTRACTION_PRACTICE_TYPE` (`id: 'unlike-denominator-subtraction'`, `"Subtract fractions with different denominators"`) in `PLAN40_PRACTICE_TYPES_V9`, all 7 `src/app/app.js` integration seams, and 23 render/app/leakage tests (`475/475` total repo unit tests passing) committed at `4ceb507`; orchestrator review & Stage 5 guidance recorded in `reports/development/plan-40-unlike-denominator-subtraction-batch/checkpoint-2-review.md` (`d41bf37`).
+    - **Stage 5 / Requirement 4 (Currently In Flight with Implementer):** Handed off to implementer following `checkpoint-2-review.md` (`d41bf37`). Scope in flight:
+      1. Register `plan40-unlike-subtraction` in `tests/routes/plan34-context-map.json`, append `ROUTE-PLAN40-*` routes to `tests/routes/route-matrix.json` (preserving all existing 73 route rows / 75 executions), and add `tests/routes-plan40-subtraction-recipes.test.js`.
+      2. Implement the 4 `--plan40-witness-seed <seed>` falsification seeds in `scripts/dev/run-route-matrix.js` (`erased-takeaway-hatch-after-transform`, `addition-wording-in-subtraction`, `premature-difference-leak`, `missing-operate-fraction-inputs`) under the strict non-tautology rule (each seed mutates live DOM/CSS before the route assertion and is caught by the standard route assertion).
+      3. Capture representative screenshots, `plan40-viewport-measurements.json` (`withinViewport: true`, `horizontalOverflowPx === 0`), and `plan40-route-matrix-summary.json` under `reports/development/plan-40-unlike-denominator-subtraction-batch/evidence/`, and restore any touched historical evidence files (`plan-18`, `plan-34`, `plan-35`, `plan-38`, `docs/routes/evidence/`).
+      4. Author `reports/development/plan-40-unlike-denominator-subtraction-batch/progress.md` including the **Roadmap §31 / §90 Phase 3 Exit Assessment** section.
+- **Draft packets on the board:**
+  - **`plan-39` (`draft`, `blocked` on `plan-40`):** First Number-Line Locate and Bar-to-Line Bridge Batch (implements `DECISION-046` / `plan-37` after `plan-40` completes under Option A).
   - **`plan-23` (`draft`):** Local Development Console (`npm run dev:console`).
+- **Phase 4 Exploratory Design & Review Records (`2026-10-19`):**
+  - Owner and orchestrator explored Phase 4 fraction magnitude comparison (`<`, `=`, `>`) and its bridge to comparison/difference subtraction (`|a - b|`).
+  - Independent reviews were recorded in `reports/orchestration/magnitude-comparison-review-claude.md` (`f383a96`) and `reports/orchestration/magnitude-comparison-review-codex.md` (`7927636`).
+  - The synthesized, review-hardened Phase 4 planning notes are recorded in `docs/development/phase-4-magnitude-comparison-notes.md` (`953de43`) and linked from `docs/development/phase-3-follow-up-obligations.md`.
 
-## Owner sequencing decision (Option A) and next-step gate
+## Immediate next steps when the `plan-40` implementer returns
 
-The owner confirmed **Option A**:
-- Run **`plan-40`** (Unlike-Denominator Subtraction Recipes and Curated Batch on fraction bars, reusing `plan-35`'s `construct`, `inspect-keep-repair`, and `identify-side` recipes + `plan-38`'s takeaway operation, plus the Roadmap §31 / §90 Phase 3 exit disposition) first.
-- Once `plan-40` is accepted and closed, promote **`plan-39`** (`0`-to-`1` bar-to-line bridge batch) to `ready` to begin Phase 4 number-line implementation.
-
-**Immediate next step:**
-- Launch `plan-40` Requirement 0 (pre-source mechanism proposal, batch/admission probe, and `plan38-v5-replay-oracles.json` freeze) or review the implementer's Requirement 0 proposal when ready.
+1. **Mark `plan-40` as `delivered`:** Run `node scripts/dev/plan-status.js set 40 delivered` when the implementer reports Stage 5 completion.
+2. **Verify Stage 5 artifacts against the objective:**
+   - Inspect `git status` and the implementer's commit to ensure no historical evidence files (`docs/routes/evidence/`, `plan-18`, `plan-34`, `plan-35`, `plan-38`) were left modified.
+   - Verify `scripts/dev/run-route-matrix.js` to confirm all 4 `--plan40-witness-seed` seeds are non-tautological DOM/CSS mutations caught by real route assertions and that `plan40WitnessSeed` enforces `seedDetected === 1 && failed === 0 && routeResults.length === 1`.
+   - Inspect `reports/development/plan-40-unlike-denominator-subtraction-batch/evidence/plan40-viewport-measurements.json`, `plan40-route-matrix-summary.json`, and the captured screenshots (`360x740`, `360x752`, `1366x768`, `1093x614 @ DPR 1.25`) to confirm `withinViewport: true` and `horizontalOverflowPx === 0`.
+   - Review `reports/development/plan-40-unlike-denominator-subtraction-batch/progress.md` and its Roadmap §31 / §90 Phase 3 Exit Assessment.
+3. **Owner Acceptance & Option A Transition to `plan-39`:**
+   - Present the Stage 5 verification, representative screenshots, and Roadmap §31 / §90 Phase 3 exit summary to the owner.
+   - Upon owner acceptance, close `plan-40` (`node scripts/dev/plan-status.js set 40 complete --resolution "..."`) and promote `plan-39` from `draft` to `ready` (`node scripts/dev/plan-status.js set 39 ready`) per the owner's Option A sequence.
 
 ## Review discipline reminders
 
 - **Preserve owner decision continuity:** Never silently reinterpret an owner-selected sequence across turns; if proposing a change of order, state the prior decision explicitly and ask the owner to choose.
-- **Verify against artifacts and exact witnesses:** Ensure viewport scripts assert `withinViewport` (not just positive box dimensions) and falsification seeds mutate the specific mechanism under test (e.g., removing fraction-entry controls for `action-as-answer`, not just changing prompt text).
-- **Restore historical evidence touched by full route runs:** Running `node scripts/dev/run-route-matrix.js` rewrites screenshot/measurement files for earlier routes (`plan-18`, `plan-34`, `plan-35`). Always restore untouched historical evidence directories before committing.
-
+- **Verify against artifacts and exact witnesses:** Ensure viewport scripts assert `withinViewport: true` (not just positive box dimensions) and falsification seeds mutate the live mechanism under test rather than throwing synthetically inside an assertion helper.
+- **Restore historical evidence touched by full route runs:** Running `node scripts/dev/run-route-matrix.js` rewrites screenshot/measurement files for earlier routes (`plan-18`, `plan-34`, `plan-35`, `plan-38`). Always verify untouched historical evidence directories are clean before committing.
