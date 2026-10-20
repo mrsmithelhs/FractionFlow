@@ -1,0 +1,140 @@
+{
+  "baseline": "902cef87869f33ec717aa03fd1ca37abed40119d",
+  "runs": [
+    {
+      "mode": "clean-plan40",
+      "routeCount": 8,
+      "total": 8,
+      "passed": 8,
+      "failed": 0,
+      "seedDetected": 0,
+      "results": [
+        {
+          "routeId": "ROUTE-PLAN40-UNLIKE-SUBTRACTION-HIGH-VISUAL-ALL",
+          "status": "pass"
+        },
+        {
+          "routeId": "ROUTE-PLAN40-UNLIKE-SUBTRACTION-MEDIUM-LINEAR-ALL",
+          "status": "pass"
+        },
+        {
+          "routeId": "ROUTE-PLAN40-DEEP-SAMPLE-CONSTRUCT-OPERATE",
+          "status": "pass"
+        },
+        {
+          "routeId": "ROUTE-PLAN40-DEEP-SAMPLE-INSPECT-REPAIR",
+          "status": "pass"
+        },
+        {
+          "routeId": "ROUTE-PLAN40-DEEP-SAMPLE-IDENTIFY-REDUCIBLE",
+          "status": "pass"
+        },
+        {
+          "routeId": "ROUTE-PLAN40-HELP-RECOVERY-VIEW-TOGGLE",
+          "status": "pass"
+        },
+        {
+          "routeId": "ROUTE-PLAN40-RESPONSIVE-VIEWPORTS",
+          "status": "pass"
+        },
+        {
+          "routeId": "ROUTE-PLAN40-CHROMEBOOK-SCALED-VIEWPORT",
+          "status": "pass"
+        }
+      ]
+    },
+    {
+      "mode": "erased-takeaway-hatch-after-transform",
+      "routeCount": 1,
+      "total": 1,
+      "passed": 0,
+      "failed": 0,
+      "seedDetected": 1,
+      "results": [
+        {
+          "routeId": "ROUTE-PLAN40-DEEP-SAMPLE-CONSTRUCT-OPERATE",
+          "status": "seed-detected",
+          "error": "Route \"ROUTE-PLAN40-DEEP-SAMPLE-CONSTRUCT-OPERATE\" visible geometry assertion failed for \".app-visual-view .fraction-bar-segment.removed\": found 2, expected at least 2 visible items of 10x20px with background image containing \"repeating-linear-gradient\" with a visible center hit; 2 were hidden, clipped, unpainted, undersized, or missing required paint. (route action: Plan 40: assert visible hatch and non-leakage at operate)"
+        }
+      ]
+    },
+    {
+      "mode": "addition-wording-in-subtraction",
+      "routeCount": 1,
+      "total": 1,
+      "passed": 0,
+      "failed": 0,
+      "seedDetected": 1,
+      "results": [
+        {
+          "routeId": "ROUTE-PLAN40-DEEP-SAMPLE-CONSTRUCT-OPERATE",
+          "status": "seed-detected",
+          "error": "Route \"ROUTE-PLAN40-DEEP-SAMPLE-CONSTRUCT-OPERATE\" assertion failed: selector \".app-visual-view .active-beat-section\" unexpectedly contains text \"+\". (route action: Plan 40: assert visible hatch and non-leakage at operate)"
+        }
+      ]
+    },
+    {
+      "mode": "premature-difference-leak",
+      "routeCount": 1,
+      "total": 1,
+      "passed": 0,
+      "failed": 0,
+      "seedDetected": 1,
+      "results": [
+        {
+          "routeId": "ROUTE-PLAN40-DEEP-SAMPLE-CONSTRUCT-OPERATE",
+          "status": "seed-detected",
+          "error": "Route \"ROUTE-PLAN40-DEEP-SAMPLE-CONSTRUCT-OPERATE\" assertion failed: selector \".app-visual-view .active-beat-section\" unexpectedly contains text \"Difference:\". (route action: Plan 40: assert visible hatch and non-leakage at operate)"
+        }
+      ]
+    },
+    {
+      "mode": "missing-operate-fraction-inputs",
+      "routeCount": 1,
+      "total": 1,
+      "passed": 0,
+      "failed": 0,
+      "seedDetected": 1,
+      "results": [
+        {
+          "routeId": "ROUTE-PLAN40-DEEP-SAMPLE-CONSTRUCT-OPERATE",
+          "status": "seed-detected",
+          "error": "Route \"ROUTE-PLAN40-DEEP-SAMPLE-CONSTRUCT-OPERATE\" assertion failed: selector \"#operate-fraction-numerator-input\" not found. (route action: Plan 40: assert visible hatch and non-leakage at operate)"
+        }
+      ]
+    }
+  ],
+  "draftProbe": [
+    {
+      "afterStep": 13,
+      "values": [
+        "3",
+        "10"
+      ],
+      "expected": [
+        "3",
+        "10"
+      ],
+      "preserved": true
+    },
+    {
+      "afterStep": 15,
+      "values": [
+        "3",
+        "10"
+      ],
+      "expected": [
+        "3",
+        "10"
+      ],
+      "preserved": true
+    }
+  ],
+  "limits": "Focused Chrome rerun of 8 new routes and four seeds; historical full matrix is implementer evidence. Existing tracked captures/receipts restored byte-for-byte.",
+  "restoredTrackedArtifacts": [
+    "reports/development/plan-40-unlike-denominator-subtraction-batch/evidence/operate-hatch-360x740.png",
+    "reports/development/plan-40-unlike-denominator-subtraction-batch/evidence/plan40-route-matrix-summary.json",
+    "reports/development/plan-40-unlike-denominator-subtraction-batch/evidence/plan40-viewport-measurements.json",
+    "reports/development/plan-40-unlike-denominator-subtraction-batch/evidence/transform-360x740.png"
+  ]
+}

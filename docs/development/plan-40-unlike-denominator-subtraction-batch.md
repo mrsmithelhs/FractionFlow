@@ -1,7 +1,7 @@
 ---
 id: plan-40
 title: Unlike-Denominator Subtraction Recipes and Curated Batch
-status: in-progress
+status: delivered
 depends_on: [plan-35, plan-38]
 gate: "Requirement 0: approve exact renaming-to-takeaway operate transition, recipe/record schema, 8-to-10 item batch + holdouts, and replay v6 contract before source changes. Staged technical review, owner rendered-page/agency acceptance, and Roadmap §31/§90 Phase 3 exit disposition."
 summary: >-
