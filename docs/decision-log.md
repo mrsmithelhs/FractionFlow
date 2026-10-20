@@ -1258,3 +1258,30 @@ accessibility, without prematurely declaring Phase 3 complete.
 **Related:** Plan 37 `owner-acceptance.md`, `design-contract.md`, `dossier-review.md`; Roadmap §§31–37,
 71, 90; DECISION-010/011/025.
 
+### DECISION-047 - Investigate maintainability at the Phase 3 boundary before Plan 39
+
+**Date:** 2026-10-20
+
+**Status:** Owner approved sequencing and investigation; no refactor approved.
+
+The owner accepted a bounded maintainability investigation between Plan 40
+acceptance/closure plus the Roadmap §31/§90 checkpoint and Plan 39 implementation.
+Plan 41 examines response lifecycle ownership, practice admission and representation
+integration, comparing focused vanilla extraction with a fair component/template
+alternative on the same seam. It must recommend one justified first slice or no
+change and define a measurable follow-up edit. Vue remains an option, not an
+adopted dependency. No source changes or framework experiment are authorized.
+
+The resulting sequence is Plan 40 closure/checkpoint → Plan 41 investigation and
+owner disposition → separately approved prerequisite refactor, if justified →
+Plan 39. Drafting Plan 41 may occur while Plan 40 is repaired; execution waits.
+Any prerequisite refactor needs its own packet and an explicit Plan 39 dependency.
+The adopted Plan 37 task and separate rendered/deployment gates remain in force.
+
+**Rationale:** Evaluate observed cross-file lifecycle protocols and duplicated
+response wiring before adding representations. File size and test totals alone
+cannot establish maintenance benefit; evidence workflow defects must be separated
+from source-organization causes.
+
+**Related:** Plan 41; Plan 39; maintainability-architecture-review-disposition.md.
+

@@ -1,5 +1,11 @@
 # FractionFlow orchestration handoff
 
+Owner sequence amendment 2026-10-20 (DECISION-047): Plan 41 has been drafted as a
+report-only maintainability investigation. After Plan 40 closure/Phase 3 checkpoint,
+run Plan 41, obtain owner disposition, then complete any separately authorized
+prerequisite refactor before Plan 39. Plan 39 now explicitly depends on Plan 41.
+Neither investigation execution nor refactor/source work has started.
+
 Updated 2026-10-20 after Plan 40 Repair 01 re-review (`dab636c`, `2fef274`).
 Plan 40 remains delivered, not technically accepted. Read
 reports/development/plan-40-unlike-denominator-subtraction-batch/orchestration-repair01-review.md
@@ -54,7 +60,8 @@ no silent substitution.
       3. Capture representative screenshots, `plan40-viewport-measurements.json` (`withinViewport: true`, `horizontalOverflowPx === 0`), and `plan40-route-matrix-summary.json` under `reports/development/plan-40-unlike-denominator-subtraction-batch/evidence/`, and restore any touched historical evidence files (`plan-18`, `plan-34`, `plan-35`, `plan-38`, `docs/routes/evidence/`).
       4. Author `reports/development/plan-40-unlike-denominator-subtraction-batch/progress.md` including the **Roadmap §31 / §90 Phase 3 Exit Assessment** section.
 - **Draft packets on the board:**
-  - **`plan-39` (`draft`, `blocked` on `plan-40`):** First Number-Line Locate and Bar-to-Line Bridge Batch (implements `DECISION-046` / `plan-37` after `plan-40` completes under Option A).
+  - **`plan-41` (`draft`, blocked on `plan-40`):** Phase-boundary maintainability investigation; report-only, then owner disposition and a separate source packet if justified.
+  - **`plan-39` (`draft`, blocked on `plan-40` and `plan-41`):** First Number-Line Locate and Bar-to-Line Bridge Batch; follows the adopted investigation/refactor disposition (DECISION-047).
   - **`plan-23` (`draft`):** Local Development Console (`npm run dev:console`).
 - **Phase 4 Exploratory Design & Review Records (`2026-10-19`):**
   - Owner and orchestrator explored Phase 4 fraction magnitude comparison (`<`, `=`, `>`) and its bridge to comparison/difference subtraction (`|a - b|`).
@@ -75,7 +82,10 @@ no silent substitution.
      obligations and unmeasured learner/physical-device/AT outcomes.
 3. **Owner Acceptance & Option A Transition to `plan-39`:**
    - Present the Stage 5 verification, representative screenshots, and Roadmap §31 / §90 Phase 3 exit summary to the owner.
-   - Upon owner acceptance, close `plan-40` (`node scripts/dev/plan-status.js set 40 complete --resolution "..."`) and promote `plan-39` from `draft` to `ready` (`node scripts/dev/plan-status.js set 39 ready`) per the owner's Option A sequence.
+   - Upon owner acceptance and explicit checkpoint disposition, close Plan 40.
+     Promote Plan 41 for investigation next. Do not promote Plan 39 automatically:
+     first obtain Plan 41 disposition and complete any adopted prerequisite
+     refactor under its own approved packet (DECISION-047).
 
 ## Review discipline reminders
 

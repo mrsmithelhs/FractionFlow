@@ -2,8 +2,8 @@
 id: plan-39
 title: First Number-Line Locate and Bar-to-Line Bridge Batch
 status: draft
-depends_on: [plan-35, plan-37, plan-38, plan-40]
-gate: "Owner sequencing gate (Option A: Plan 40 unlike-denominator subtraction + §31/§90 disposition precede Phase 4 activation). Requirement 0: confirm §31/§90 readiness and approve exact wiring, admission, next sequential replay schema, and evidence mechanism before source. Staged technical review, owner rendered-page/agency acceptance and separate deployment gate."
+depends_on: [plan-35, plan-37, plan-38, plan-40, plan-41]
+gate: "Owner sequencing gate: Plan 40 + §31/§90 disposition, then Plan 41 investigation disposition and any separately adopted prerequisite refactor, precede Phase 4 activation (DECISION-047). Requirement 0: confirm readiness and approve exact wiring, admission, next sequential replay schema, and evidence mechanism before source. Staged technical review, owner rendered-page/agency acceptance and separate deployment gate."
 superseded_by: null
 resolution: null
 summary: >-
@@ -29,6 +29,12 @@ summary: >-
 - Expected artifacts: admitted eight-item bridge set, episode/scene/next-replay-schema path, SVG/DOM number-line and accessible linear renderers, browser route/seed evidence, and progress report
 
 ## Goal, dependencies and reason
+
+Owner sequencing amendment (2026-10-20, DECISION-047): after Plan 40 closure and
+the Phase 3 checkpoint, first complete and dispose Plan 41's maintainability
+investigation. Any adopted prerequisite source refactor needs its own approved
+packet and must finish before this packet starts; add that dependency when named.
+Plan 41 closure alone does not silently authorize number-line implementation.
 
 Implement `DECISION-046` and the adopted [Plan 37 design dossier](../../reports/development/plan-37-first-number-line-and-bar-bridge-design/owner-acceptance.md). FractionFlow's fraction-bar grammar now spans unlike-denominator addition (`plan-32`, `plan-34`, `plan-35`), like-denominator addition (`plan-20`), crossing one whole (`plan-17`), and like-denominator takeaway subtraction (`plan-38`). Under the owner-selected **Option A** sequence, Phase 3 bar-stability completion (unlike-denominator subtraction on bars plus a concise Roadmap §31 / §90 disposition) precedes activating Phase 4 number-line source code unless the owner explicitly chooses to reorder. Once activated, this packet addresses the foundational Phase 4 question (§§31–34, §90): connecting the **length of one shaded fraction bar** to the **coordinate distance from `0` on a `0`-to-`1` number line** using stable benchmarks (`0`, `1/2`, `1`).
 
