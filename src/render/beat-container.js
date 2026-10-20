@@ -123,6 +123,22 @@ export function createBeatContainer({
       if (schedulePosition > 0) {
         milestones.push(strings.summaryLines.encounterDone || 'Problem established.');
       }
+      if (Boolean(scene.meaning.currentTask.patternId)) {
+        const quantities = scene.meaning.quantities;
+        const changedSides = ['left', 'right'].filter((side) => {
+          const quantity = quantities[side];
+          return quantity.sourceForm.numerator !== quantity.currentForm.numerator
+            || quantity.sourceForm.denominator !== quantity.currentForm.denominator;
+        });
+        for (const side of changedSides) {
+          const quantity = quantities[side];
+          milestones.push(strings.summaryLines.transformDone(
+            side,
+            `${quantity.sourceForm.numerator}/${quantity.sourceForm.denominator}`,
+            `${quantity.currentForm.numerator}/${quantity.currentForm.denominator}`,
+          ));
+        }
+      }
       if (schedulePosition > 1 && scene.meaning.takeaway.acceptedResponseForm) {
         const form = scene.meaning.takeaway.acceptedResponseForm;
         milestones.push(`Difference: ${form.numerator}/${form.denominator}`);
@@ -451,7 +467,7 @@ export function createBeatContainer({
           break;
         }
         promptText.textContent = strings.encounter.prompt;
-        if (task.patternId && task.patternId !== 'full-addition.identify-side-construct') {
+        if (task.patternId && !['full-addition.identify-side-construct', 'unlike-subtraction.identify-side-construct', 'full-subtraction.identify-side-construct'].includes(task.patternId)) {
           const targetContext = document.createElement('p');
           targetContext.classList.add('active-beat-prompt-context');
           targetContext.textContent = strings.encounter.compactTarget(task.targetDenominator);

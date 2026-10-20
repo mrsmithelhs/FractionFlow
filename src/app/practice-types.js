@@ -5,6 +5,7 @@ import {
   PLAN18_NESTED_ADDITION_EPISODE_DEFINITION,
   PLAN35_REUSABLE_ADDITION_RECIPES_EPISODE_DEFINITION,
   PLAN36_LIKE_DENOMINATOR_SUBTRACTION_EPISODE_DEFINITION,
+  PLAN40_REUSABLE_SUBTRACTION_RECIPES_EPISODE_DEFINITION,
 } from '../interaction/episode-definition.js';
 import { PLAN35_ADDITION_RECIPE_PRACTICE_SET, PLAN35_ADDITION_RECIPE_RECORDS } from '../content/data/plan35-addition-recipe-records.js';
 import {
@@ -12,6 +13,10 @@ import {
   PLAN36_SUBTRACTION_PRACTICE_SET_REVISION,
   PLAN36_SUBTRACTION_RECORDS,
 } from '../content/data/plan36-like-denominator-subtraction-records.js';
+import {
+  PLAN40_SUBTRACTION_RECIPE_PRACTICE_SET,
+  PLAN40_SUBTRACTION_RECIPE_RECORDS,
+} from '../content/data/plan40-reusable-subtraction-recipes-records.js';
 import { deepFreeze } from '../content/schema.js';
 
 /**
@@ -239,7 +244,41 @@ export const PLAN38_PRACTICE_TYPES_V8 = deepFreeze([
   PLAN36_SUBTRACTION_PRACTICE_TYPE,
 ]);
 
-export const PRACTICE_TYPES = PLAN38_PRACTICE_TYPES_V8;
+const plan40RecordByItemId = new Map(PLAN40_SUBTRACTION_RECIPE_RECORDS.map((record) => [record.itemId, record]));
+const plan40LiveItems = PLAN40_SUBTRACTION_RECIPE_PRACTICE_SET.itemIds.map((itemId) => {
+  const record = plan40RecordByItemId.get(itemId);
+  if (!record) {
+    throw new TypeError(`Plan 40 live practice item has no exact task record: ${itemId}`);
+  }
+  return {
+    id: record.itemId,
+    fixtureId: record.fixtureId,
+    authoringRevision: record.authoringRevision,
+    episodeDefinitionId: record.definitionId,
+    episodeDefinitionRevision: record.definitionRevision,
+    patternId: record.recipeId,
+    patternRevision: record.patternRevision,
+    targetDenominator: record.targetDenominator,
+    taskDataId: record.taskDataId,
+    taskDataRevision: record.taskDataRevision,
+  };
+});
+
+export const PLAN40_UNLIKE_SUBTRACTION_PRACTICE_TYPE = deepFreeze({
+  id: 'unlike-denominator-subtraction',
+  label: 'Subtract fractions with different denominators',
+  setId: PLAN40_SUBTRACTION_RECIPE_PRACTICE_SET.id,
+  setRevision: PLAN40_SUBTRACTION_RECIPE_PRACTICE_SET.revision,
+  items: plan40LiveItems,
+  episodeDefinition: PLAN40_REUSABLE_SUBTRACTION_RECIPES_EPISODE_DEFINITION,
+});
+
+export const PLAN40_PRACTICE_TYPES_V9 = deepFreeze([
+  ...PLAN38_PRACTICE_TYPES_V8,
+  PLAN40_UNLIKE_SUBTRACTION_PRACTICE_TYPE,
+]);
+
+export const PRACTICE_TYPES = PLAN40_PRACTICE_TYPES_V9;
 
 export function getPracticeType(id) {
   return PRACTICE_TYPES.find((practiceType) => practiceType.id === id) ?? null;

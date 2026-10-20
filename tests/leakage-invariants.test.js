@@ -4,7 +4,17 @@ import { createEpisode, applyIntent } from '../src/interaction/episode.js';
 import {
   LEGACY_PHASE2_EPISODE_DEFINITION,
   PHASE2_REFLECTION_EPISODE_DEFINITION,
+  PLAN40_REUSABLE_SUBTRACTION_RECIPES_EPISODE_DEFINITION,
 } from '../src/interaction/episode-definition.js';
+import { resolveCuratedFixture } from '../src/content/authored-content-catalog.js';
+import { buildCuratedProblem } from '../src/content/generator.js';
+import {
+  PLAN40_RECIPE_IDS,
+  PLAN40_SUBTRACTION_RECIPE_PRACTICE_SET_ID,
+  PLAN40_SUBTRACTION_RECIPE_PRACTICE_SET_REVISION,
+  PLAN40_VETTED_BATCH,
+} from '../src/content/data/plan40-reusable-subtraction-recipes-records.js';
+import { resolvePlan40SubtractionRecipeContext } from '../src/content/plan40-reusable-subtraction-recipes.js';
 import { validateCuratedFixtures } from '../src/content/index.js';
 import { resolveRenderableScene } from '../src/render/contract.js';
 import { createBeatContainer } from '../src/render/beat-container.js';
@@ -598,5 +608,112 @@ describe('Scaffold-Leakage Invariants Suite & Failing-First Verifications (Plan 
         throw new Error('Scaffold Leak [Invariant 9]: Capability refusal incorrectly marked as invalid');
       }
     }).toThrow(/Invariant 9/);
+  });
+
+  // --- Invariant 10: Plan 40 Subtraction Non-Leakage (Encounter suppression & Takeaway isolation) ---
+  function assertPlan40IdentifyEncounterNoLeak(visualBox, linearBox) {
+    for (const box of [visualBox, linearBox]) {
+      const targetContext = box.querySelector('.active-beat-prompt-context')?.textContent || '';
+      if (/equal parts|twelfths|sixths|eighths/i.test(targetContext)) {
+        throw new Error(`Scaffold Leak [Invariant 10]: Encounter leaks target denominator for identify recipe: "${targetContext}"`);
+      }
+      const prompt = box.querySelector('.active-beat-prompt')?.textContent || '';
+      if (/\b(6|8|12)\b/.test(prompt)) {
+        throw new Error(`Scaffold Leak [Invariant 10]: Encounter prompt leaks target denominator: "${prompt}"`);
+      }
+    }
+  }
+
+  function assertPlan40OperateNoDifferenceLeak(visualBox, linearBox, diffForm) {
+    for (const box of [visualBox, linearBox]) {
+      const text = box.textContent || '';
+      if (text.includes(`Difference: ${diffForm}`) || text.includes(`Difference:`)) {
+        throw new Error(`Scaffold Leak [Invariant 10]: Pre-resolve beat leaks difference summary: "${text}"`);
+      }
+      if (text.includes(`${diffForm} is left`)) {
+        throw new Error(`Scaffold Leak [Invariant 10]: Pre-resolve beat leaks answer statement: "${text}"`);
+      }
+      const removalStatus = box.querySelector('.linear-takeaway-removal-status')?.textContent || '';
+      if (removalStatus.includes(diffForm)) {
+        throw new Error(`Scaffold Leak [Invariant 10]: Linear removal status leaks difference result: "${removalStatus}"`);
+      }
+    }
+  }
+
+  it('Invariant 10 (Plan 40 Subtraction Non-Leakage): suppresses target context for identify-side-construct at encounter and isolates difference before resolve, fail-first verified', () => {
+    // 1. Encounter suppression for identify-side-construct
+    const identifyRecord = PLAN40_VETTED_BATCH.find((r) => r.recipeId === PLAN40_RECIPE_IDS.identify);
+    const fixture = resolveCuratedFixture(identifyRecord.fixtureId, identifyRecord.authoringRevision);
+    const instance = buildCuratedProblem({
+      fixture,
+      selector: fixture.selector,
+      overlays: fixture.overlays,
+      profileId: fixture.profileId,
+      candidate: { left: fixture.left, right: fixture.right, reviewedTransitions: [] },
+    });
+    const taskContext = resolvePlan40SubtractionRecipeContext(instance, identifyRecord.itemId, {
+      practiceSetId: PLAN40_SUBTRACTION_RECIPE_PRACTICE_SET_ID,
+      practiceSetRevision: PLAN40_SUBTRACTION_RECIPE_PRACTICE_SET_REVISION,
+    });
+    let identifyEpisode = createEpisode({
+      instance,
+      episodeDefinition: PLAN40_REUSABLE_SUBTRACTION_RECIPES_EPISODE_DEFINITION,
+      taskContext,
+    });
+
+    const identifyScene = resolveRenderableScene({ state: identifyEpisode });
+    const { visualBox: vEncounter, linearBox: lEncounter } = mountBoth(identifyScene);
+
+    // Verified compliant
+    expect(() => assertPlan40IdentifyEncounterNoLeak(vEncounter, lEncounter)).not.toThrow();
+
+    // Failing-first: catch violation if target denominator context is leaked
+    const leakingEncounter = doc.createElement('div');
+    const leakedContext = doc.createElement('p');
+    leakedContext.classList.add('active-beat-prompt-context');
+    leakedContext.textContent = 'Use 6 equal parts.';
+    leakingEncounter.appendChild(leakedContext);
+    expect(() => assertPlan40IdentifyEncounterNoLeak(leakingEncounter, lEncounter)).toThrow(/Invariant 10/);
+
+    // 2. Takeaway meaning isolation before operate
+    expect(identifyScene.meaning.takeaway).toBeNull();
+
+    // 3. Operate beat difference non-leakage
+    const constructRecord = PLAN40_VETTED_BATCH.find((r) => r.itemId === 'plan40-construct-half-fifth-10');
+    const cFixture = resolveCuratedFixture(constructRecord.fixtureId, constructRecord.authoringRevision);
+    const cInstance = buildCuratedProblem({
+      fixture: cFixture,
+      selector: cFixture.selector,
+      overlays: cFixture.overlays,
+      profileId: cFixture.profileId,
+      candidate: { left: cFixture.left, right: cFixture.right, reviewedTransitions: [] },
+    });
+    const cTaskContext = resolvePlan40SubtractionRecipeContext(cInstance, constructRecord.itemId, {
+      practiceSetId: PLAN40_SUBTRACTION_RECIPE_PRACTICE_SET_ID,
+      practiceSetRevision: PLAN40_SUBTRACTION_RECIPE_PRACTICE_SET_REVISION,
+    });
+    let cEpisode = createEpisode({
+      instance: cInstance,
+      episodeDefinition: PLAN40_REUSABLE_SUBTRACTION_RECIPES_EPISODE_DEFINITION,
+      taskContext: cTaskContext,
+    });
+    cEpisode = applyIntent(cEpisode, { type: 'acknowledge-encounter' });
+    cEpisode = applyIntent(cEpisode, { type: 'submit-equivalent-form', proposed: { kind: 'fraction', numerator: '5', denominator: '10' } });
+    cEpisode = applyIntent(cEpisode, { type: 'submit-equivalent-form', proposed: { kind: 'fraction', numerator: '2', denominator: '10' } });
+    expect(cEpisode.beat).toBe('operate');
+
+    const operateScene = resolveRenderableScene({ state: cEpisode });
+    const { visualBox: vOperate, linearBox: lOperate } = mountBoth(operateScene);
+
+    // Verified compliant: 3/10 is not leaked before submission
+    expect(() => assertPlan40OperateNoDifferenceLeak(vOperate, lOperate, '3/10')).not.toThrow();
+
+    // Failing-first: catch violation if linear status leaks difference
+    const leakingOperate = doc.createElement('div');
+    const leakedStatus = doc.createElement('p');
+    leakedStatus.classList.add('linear-takeaway-removal-status');
+    leakedStatus.textContent = '2/10 is taken away from 5/10. Difference: 3/10';
+    leakingOperate.appendChild(leakedStatus);
+    expect(() => assertPlan40OperateNoDifferenceLeak(vOperate, leakingOperate, '3/10')).toThrow(/Invariant 10/);
   });
 });

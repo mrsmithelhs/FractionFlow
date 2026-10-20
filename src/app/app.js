@@ -10,6 +10,11 @@ import {
   isPlan36SubtractionDefinition,
   resolvePlan36LikeDenominatorSubtractionContext,
 } from '../content/plan36-like-denominator-takeaway-task.js';
+import {
+  isPlan40SubtractionRecipeDefinition,
+  isPlan40IdentifyRecipe,
+  resolvePlan40SubtractionRecipeContext,
+} from '../content/plan40-reusable-subtraction-recipes.js';
 import { evaluateInstanceEligibility } from '../content/eligibility.js';
 import {
   applyIntent,
@@ -53,7 +58,8 @@ function canonicalInstance(item, conditions = REGISTERED_CONDITIONS, practiceTyp
   if (!authoredContent) throw new Error(`practice task data identity is unavailable: ${item?.fixtureId}@${item?.authoringRevision}`);
   const definition = getEpisodeDefinition(item.episodeDefinitionId, item.episodeDefinitionRevision);
   if (authoredContent.itemId && authoredContent.itemId !== item.id
-    && definition.id !== PLAN35_RECIPE_DEFINITION_ID) {
+    && definition.id !== PLAN35_RECIPE_DEFINITION_ID
+    && !isPlan40SubtractionRecipeDefinition(definition)) {
     throw new Error(`practice item identity does not match its authored record: ${item.id}`);
   }
   const instance = buildCuratedProblem({
@@ -101,6 +107,24 @@ function canonicalInstance(item, conditions = REGISTERED_CONDITIONS, practiceTyp
       || taskContext.taskDataId !== item.taskData?.id
       || taskContext.taskDataRevision !== item.taskData?.revision) {
       throw new Error('Plan 36 practice item does not match its exact registered subtraction association');
+    }
+    return instance;
+  }
+  if (isPlan40SubtractionRecipeDefinition(definition)) {
+    const taskContext = resolvePlan40SubtractionRecipeContext(instance, item.id, {
+      practiceSetId: practiceType?.setId,
+      practiceSetRevision: practiceType?.setRevision,
+    });
+    if (taskContext.fixtureId !== item.fixtureId
+      || taskContext.authoringRevision !== item.authoringRevision
+      || taskContext.definitionId !== item.episodeDefinitionId
+      || taskContext.definitionRevision !== item.episodeDefinitionRevision
+      || taskContext.patternId !== item.patternId
+      || taskContext.patternRevision !== item.patternRevision
+      || taskContext.targetDenominator !== item.targetDenominator
+      || taskContext.taskDataId !== item.taskDataId
+      || taskContext.taskDataRevision !== item.taskDataRevision) {
+      throw new Error('Plan 40 practice item does not match its exact registered recipe association');
     }
     return instance;
   }
@@ -208,7 +232,12 @@ function presentationModeFor({ override, motionQuery }) {
 }
 
 function createInitialState(instance, practiceType, condition, supportLevel, episodeDefinition = practiceType.episodeDefinition, item = null) {
-  const taskContext = isPlan36SubtractionDefinition(episodeDefinition) && item
+  const taskContext = isPlan40SubtractionRecipeDefinition(episodeDefinition) && item
+    ? resolvePlan40SubtractionRecipeContext(instance, item.id, {
+      practiceSetId: practiceType.setId,
+      practiceSetRevision: practiceType.setRevision,
+    })
+    : isPlan36SubtractionDefinition(episodeDefinition) && item
     ? resolvePlan36LikeDenominatorSubtractionContext(instance, item.id, {
       practiceSetId: practiceType.setId,
       practiceSetRevision: practiceType.setRevision,
@@ -601,7 +630,7 @@ export function createFractionFlowApp({
           } else {
             dispatchAction({ type: 'request-task-help' });
           }
-        } else if (isPlan36SubtractionDefinition(state?.episodeDefinition) && state.beat === 'operate') {
+        } else if ((isPlan36SubtractionDefinition(state?.episodeDefinition) || isPlan40SubtractionRecipeDefinition(state?.episodeDefinition)) && state.beat === 'operate') {
           subtractionHelpOpen = !subtractionHelpOpen;
           if (subtractionHelpOpen) {
             dispatchAction({ type: 'request-task-help' });
@@ -849,11 +878,17 @@ export function createFractionFlowApp({
     const isPlan35Identify = state.episodeDefinition.id === PLAN35_RECIPE_DEFINITION_ID
       && state.taskContext?.patternId === PLAN35_RECIPE_IDS.identify;
     const isPlan36 = isPlan36SubtractionDefinition(state.episodeDefinition);
+    const isPlan40 = isPlan40SubtractionRecipeDefinition(state.episodeDefinition);
+    const isPlan40Identify = isPlan40 && isPlan40IdentifyRecipe(state.taskContext);
     helpButton.disabled = resolved;
     const hasConversion = Boolean(state.established?.lastConversion);
-    replayButton.hidden = isPlan20 || isPlan34 || isPlan36 || ((isPlan18 || isPlan35Identify) && !hasConversion)
+    const isPlan40NonIdentify = isPlan40 && !isPlan40Identify;
+    const isPlan40IdentifySuppressed = isPlan40Identify && (!hasConversion || ['operate', 'resolve'].includes(state.beat));
+    replayButton.hidden = isPlan20 || isPlan34 || isPlan36 || isPlan40NonIdentify || isPlan40IdentifySuppressed
+      || ((isPlan18 || isPlan35Identify) && !hasConversion)
       || (state.episodeDefinition.id === PLAN35_RECIPE_DEFINITION_ID && !isPlan35Identify);
     replayButton.disabled = isPlan20 || isPlan34 || isPlan36 || resolved || state.beat === 'encounter'
+      || isPlan40NonIdentify || isPlan40IdentifySuppressed
       || ((isPlan18 || isPlan35Identify) && !hasConversion)
       || (state.episodeDefinition.id === PLAN35_RECIPE_DEFINITION_ID && !isPlan35Identify);
     replayButton.setAttribute('aria-pressed', String(isReplaying));
@@ -933,9 +968,10 @@ export function createFractionFlowApp({
         && state.episodeDefinition.id !== PLAN34_EPISODE_DEFINITION_ID
         && state.episodeDefinition.id !== PLAN18_NESTED_DEFINITION_ID
         && state.episodeDefinition.id !== PLAN35_RECIPE_DEFINITION_ID
-        && !isPlan36SubtractionDefinition(state.episodeDefinition))) return null;
+        && !isPlan36SubtractionDefinition(state.episodeDefinition)
+        && !isPlan40SubtractionRecipeDefinition(state.episodeDefinition))) return null;
     const host = visualView ? visualHost : linearHost;
-    if (isPlan36SubtractionDefinition(state.episodeDefinition)) {
+    if (isPlan36SubtractionDefinition(state.episodeDefinition) || isPlan40SubtractionRecipeDefinition(state.episodeDefinition)) {
       return host?.querySelector(`#${visualView ? 'operate' : 'linear-operate'}-fraction-numerator-input`) || null;
     }
     return host?.querySelector([PLAN34_EPISODE_DEFINITION_ID, PLAN18_NESTED_DEFINITION_ID, PLAN35_RECIPE_DEFINITION_ID].includes(state.episodeDefinition.id)
@@ -976,7 +1012,8 @@ export function createFractionFlowApp({
   function updateHelpPlacement(scene = currentScene) {
     if (!helpButton || !state) return;
     const isPlan36 = isPlan36SubtractionDefinition(state.episodeDefinition);
-    if (isPlan36 && state.beat === 'operate') {
+    const isPlan40 = isPlan40SubtractionRecipeDefinition(state.episodeDefinition);
+    if ((isPlan36 || isPlan40) && state.beat === 'operate') {
       const host = visualView ? visualHost : linearHost;
       const controls = host.querySelector('.active-beat-controls');
       if (!controls) return;
@@ -1031,6 +1068,7 @@ export function createFractionFlowApp({
         && state.taskContext?.patternId !== PLAN35_RECIPE_IDS.identify;
       helpButton.hidden = state.episodeDefinition.id === PLAN34_EPISODE_DEFINITION_ID
         || isPlan35NonIdentify
+        || isPlan40
         || (state.episodeDefinition.id === PLAN20_LIKE_DENOMINATOR_EPISODE_DEFINITION.id
           && state.beat !== 'operate')
         || (isPlan36 && state.beat !== 'operate');
@@ -1247,9 +1285,14 @@ export function createFractionFlowApp({
         && state.episodeDefinition.id === PLAN20_LIKE_DENOMINATOR_EPISODE_DEFINITION.id
         && state.beat === 'operate') helpButton.focus();
       if (action.type === 'request-task-help'
-        && isPlan36SubtractionDefinition(state.episodeDefinition)
+        && (isPlan36SubtractionDefinition(state.episodeDefinition) || isPlan40SubtractionRecipeDefinition(state.episodeDefinition))
         && state.beat === 'operate') helpButton.focus();
       if (action.type === 'mark-subtrahend-amount') getVisibleOperationInput()?.focus();
+      if (['submit-equivalent-form', 'keep-inspected-form', 'repair-inspected-form'].includes(action.type)
+        && isPlan40SubtractionRecipeDefinition(state.episodeDefinition)
+        && state.beat === 'operate') {
+        getVisibleOperationInput()?.focus();
+      }
       if (action.type === 'submit-subtraction-result') {
         if (state.beat === 'resolve') {
           const host = visualView ? visualHost : linearHost;
