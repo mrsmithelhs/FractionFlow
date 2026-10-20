@@ -1,11 +1,9 @@
 ---
 id: plan-40
 title: Unlike-Denominator Subtraction Recipes and Curated Batch
-status: ready
+status: in-progress
 depends_on: [plan-35, plan-38]
 gate: "Requirement 0: approve exact renaming-to-takeaway operate transition, recipe/record schema, 8-to-10 item batch + holdouts, and replay v6 contract before source changes. Staged technical review, owner rendered-page/agency acceptance, and Roadmap §31/§90 Phase 3 exit disposition."
-superseded_by: null
-resolution: null
 summary: >-
   Complete Phase 3 proper-fraction bar coverage by combining Plan 35's three
   reusable renaming recipes (construct, inspect/keep/repair, and identify-side)
