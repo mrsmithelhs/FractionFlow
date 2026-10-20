@@ -8,9 +8,12 @@ import { PLAN40_SUBTRACTION_RECIPE_PRACTICE_SET } from '../src/content/data/plan
 
 const require = createRequire(import.meta.url);
 const {
+  assertPlan40SeedInvariant,
+  derivePlan40ProhibitedResult,
   expandRouteExecutions,
   plan40WitnessSeeds,
   validateMatrixIntegrity,
+  validatePlan40ScreenshotLayout,
 } = require('../scripts/dev/run-route-matrix.js');
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -67,12 +70,15 @@ describe('Plan 40 Reachable Behavior Route Contract & Subtraction Recipes Matrix
     );
   });
 
-  it('registers all 4 required Plan 40 falsification seeds targeting operate beat assertions', () => {
+  it('registers all required Plan 40 falsification seeds targeting operate beat assertions', () => {
     expect(Object.keys(plan40WitnessSeeds).sort()).toEqual([
       'addition-wording-in-subtraction',
       'erased-takeaway-hatch-after-transform',
       'missing-operate-fraction-inputs',
       'premature-difference-leak',
+      'premature-difference-leak-accessible',
+      'premature-difference-leak-bare',
+      'premature-difference-leak-stacked',
     ]);
 
     for (const [seedName, seed] of Object.entries(plan40WitnessSeeds)) {
@@ -81,22 +87,81 @@ describe('Plan 40 Reachable Behavior Route Contract & Subtraction Recipes Matrix
       expect(seed.failure).toBeTruthy();
     }
 
-    // Item 3: Answer-leak sensitivity derives prohibited result (3/10) without magic word "Difference"
-    expect(plan40WitnessSeeds['premature-difference-leak'].failure).toBe('unexpectedly contains text "3/10"');
-    expect(plan40WitnessSeeds['premature-difference-leak'].failure).not.toContain('Difference');
+    // Answer-leak sensitivity derives prohibited result (3/10) without magic word "Difference"
+    for (const seedName of [
+      'premature-difference-leak',
+      'premature-difference-leak-bare',
+      'premature-difference-leak-stacked',
+      'premature-difference-leak-accessible',
+    ]) {
+      expect(plan40WitnessSeeds[seedName].failure).toBe('unexpectedly contains text "3/10"');
+      expect(plan40WitnessSeeds[seedName].failure).not.toContain('Difference');
+    }
   });
 
-  it('enforces seed-run invariant: exactly 1 intended detection, 0 unintended failures, 1 route execution', () => {
-    const checkInvariant = ({ seedDetected, failed, total }) => {
-      if (seedDetected !== 1 || failed !== 0 || total !== 1) {
-        throw new Error(`Plan 40 witness seed "test-seed" did not produce exactly one intended failure; detected=${seedDetected}, failed=${failed}, executions=${total}.`);
-      }
+  it('enforces seed-run invariant: exactly 1 intended detection, 0 unintended failures, 1 route execution via production guard', () => {
+    expect(() => assertPlan40SeedInvariant({ seedDetected: 1, failed: 0, total: 1 }, 'test-seed')).not.toThrow();
+    expect(() => assertPlan40SeedInvariant({ seedDetected: 0, failed: 0, total: 1 }, 'test-seed')).toThrow(
+      /did not produce exactly one intended failure/,
+    );
+    expect(() => assertPlan40SeedInvariant({ seedDetected: 1, failed: 1, total: 1 }, 'test-seed')).toThrow(
+      /did not produce exactly one intended failure/,
+    );
+    expect(() => assertPlan40SeedInvariant({ seedDetected: 1, failed: 0, total: 2 }, 'test-seed')).toThrow(
+      /did not produce exactly one intended failure/,
+    );
+  });
+
+  it('enforces screenshot viewport containment: accepts within-viewport layout and rejects partially offscreen controls', () => {
+    const cleanLayout = {
+      viewport: { width: 360, height: 740 },
+      document: { width: 360, height: 766 },
+      horizontalOverflowPx: 0,
+      question: {
+        x: 63,
+        y: 360,
+        width: 234,
+        height: 25,
+        visible: true,
+        horizontallyContained: true,
+        verticallyContained: true,
+        withinViewport: true,
+        intersectsViewport: true,
+      },
+      controls: {
+        x: 63,
+        y: 416,
+        width: 234,
+        height: 240,
+        visible: true,
+        horizontallyContained: true,
+        verticallyContained: true,
+        withinViewport: true,
+        intersectsViewport: true,
+      },
     };
 
-    expect(() => checkInvariant({ seedDetected: 1, failed: 0, total: 1 })).not.toThrow();
-    expect(() => checkInvariant({ seedDetected: 0, failed: 0, total: 1 })).toThrow(/did not produce exactly one intended failure/);
-    expect(() => checkInvariant({ seedDetected: 1, failed: 1, total: 1 })).toThrow(/did not produce exactly one intended failure/);
-    expect(() => checkInvariant({ seedDetected: 1, failed: 0, total: 2 })).toThrow(/did not produce exactly one intended failure/);
+    expect(() => validatePlan40ScreenshotLayout(cleanLayout, 'clean.png')).not.toThrow();
+
+    // Partially offscreen controls (translated down 300px: bounds y=716.84, height=200.59 in 740px viewport)
+    const offscreenLayout = {
+      ...cleanLayout,
+      controls: {
+        x: 63,
+        y: 716.84,
+        width: 234,
+        height: 200.59,
+        visible: true,
+        horizontallyContained: true,
+        verticallyContained: false,
+        withinViewport: false,
+        intersectsViewport: true,
+      },
+    };
+
+    expect(() => validatePlan40ScreenshotLayout(offscreenLayout, 'offscreen.png')).toThrow(
+      /has question or controls outside the viewport/,
+    );
   });
 
   it('declares screenshots and layout measurement across all 4 required viewport configurations', () => {
@@ -134,24 +199,61 @@ describe('Plan 40 Reachable Behavior Route Contract & Subtraction Recipes Matrix
   it('asserts fresh first-item identity and cleared state on re-entry in subtraction set helper', async () => {
     const { buildPlan40SubtractionSetActions } = await import('../scripts/dev/plan40-route-subtraction.mjs');
     const actions = buildPlan40SubtractionSetActions({ view: 'visual', supportProfile: 'high-support' });
-    const reEntryAction = actions.find(
+    const reEntryEncounter = actions.find(
       (a) => a.description && a.description.includes('Re-entry resets to fresh item 1 identity'),
     );
-    expect(reEntryAction).toBeDefined();
-    expect(reEntryAction.method).toBe('assert');
-    const assertionValues = reEntryAction.assertions.map((a) => a.value).filter(Boolean);
-    expect(assertionValues).toContain('Next');
-    expect(assertionValues).toContain('Look at these two fractions.');
-    expect(assertionValues).toContain('1');
-    expect(assertionValues).toContain('2');
-    expect(assertionValues).toContain('5');
+    expect(reEntryEncounter).toBeDefined();
+    expect(reEntryEncounter.method).toBe('assert');
+    const encounterValues = reEntryEncounter.assertions.map((a) => a.value).filter(Boolean);
+    expect(encounterValues).toContain('Next');
+    expect(encounterValues).toContain('Look at these two fractions.');
+    expect(encounterValues).toContain('1 over 2');
+    expect(encounterValues).toContain('minus');
+    expect(encounterValues).toContain('−');
+    expect(encounterValues).toContain('1 over 5');
 
-    const notHasSelectors = reEntryAction.assertions
+    const notHasSelectors = reEntryEncounter.assertions
       .filter((a) => a.type === 'notHasSelector')
       .map((a) => a.target);
     expect(notHasSelectors.some((sel) => sel.includes('recovery-feedback'))).toBe(true);
     expect(notHasSelectors.some((sel) => sel.includes('-subtraction-task-help'))).toBe(true);
     expect(notHasSelectors.some((sel) => sel.includes('input'))).toBe(true);
+
+    const reEntryTransform = actions.find(
+      (a) => a.description && a.description.includes('Verify transform beat has empty input drafts'),
+    );
+    expect(reEntryTransform).toBeDefined();
+    expect(reEntryTransform.method).toBe('assert');
+    expect(reEntryTransform.assertions).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({ type: 'inputValueEquals', target: '.app-visual-view #transform-num-input-left', value: '' }),
+        expect.objectContaining({ type: 'attributeEquals', target: '.app-visual-view .active-beat-controls .app-secondary-button', attribute: 'aria-expanded', value: 'false' }),
+        expect.objectContaining({ type: 'containsText', target: '.app-visual-view .active-beat-controls .app-secondary-button', value: 'Need help?' }),
+        expect.objectContaining({ type: 'notHasSelector', target: '.app-visual-view .recovery-feedback' }),
+        expect.objectContaining({ type: 'notHasSelector', target: '.app-visual-view #transform-num-input-right' }),
+      ]),
+    );
+
+    // Linear path re-entry assertion check
+    const linearActions = buildPlan40SubtractionSetActions({ view: 'linear', supportProfile: 'medium-support' });
+    const linearEncounter = linearActions.find(
+      (a) => a.description && a.description.includes('Re-entry resets to fresh item 1 identity'),
+    );
+    expect(linearEncounter.assertions).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({ type: 'attributeEquals', target: '.app-linear-view .symbolic-expression', attribute: 'aria-label', value: '1 over 2 minus 1 over 5' }),
+      ]),
+    );
+    const linearTransform = linearActions.find(
+      (a) => a.description && a.description.includes('Verify transform beat has empty input drafts'),
+    );
+    expect(linearTransform.assertions).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({ type: 'inputValueEquals', target: '.app-linear-view #linear-transform-num-input-left', value: '' }),
+        expect.objectContaining({ type: 'attributeEquals', target: '.app-linear-view .active-beat-controls .app-secondary-button', attribute: 'aria-expanded', value: 'false' }),
+        expect.objectContaining({ type: 'containsText', target: '.app-linear-view .active-beat-controls .app-secondary-button', value: 'Need help?' }),
+      ]),
+    );
   });
 
   it('preserves existing 73 route rows and expands to 83 total browser executions', () => {

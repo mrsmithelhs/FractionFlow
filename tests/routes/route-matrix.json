@@ -13152,7 +13152,7 @@
           {
             "type": "containsText",
             "target": ".active-beat-controls button",
-            "value": "Next"
+            "value": "Submit"
           },
           {
             "type": "hasSelector",
@@ -13202,7 +13202,7 @@
           {
             "type": "containsText",
             "target": ".active-beat-controls button",
-            "value": "Next"
+            "value": "Submit"
           },
           {
             "type": "hasSelector",

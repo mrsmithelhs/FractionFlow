@@ -171,7 +171,25 @@ const plan40WitnessSeeds = Object.freeze({
   'premature-difference-leak': {
     routeId: 'ROUTE-PLAN40-DEEP-SAMPLE-CONSTRUCT-OPERATE',
     injectBeforeDescription: 'Plan 40: assert visible hatch and non-leakage at operate',
-    mutation: 'premature-result-leak',
+    mutation: 'premature-result-leak-bare',
+    failure: 'unexpectedly contains text "3/10"',
+  },
+  'premature-difference-leak-bare': {
+    routeId: 'ROUTE-PLAN40-DEEP-SAMPLE-CONSTRUCT-OPERATE',
+    injectBeforeDescription: 'Plan 40: assert visible hatch and non-leakage at operate',
+    mutation: 'premature-result-leak-bare',
+    failure: 'unexpectedly contains text "3/10"',
+  },
+  'premature-difference-leak-stacked': {
+    routeId: 'ROUTE-PLAN40-DEEP-SAMPLE-CONSTRUCT-OPERATE',
+    injectBeforeDescription: 'Plan 40: assert visible hatch and non-leakage at operate',
+    mutation: 'premature-result-leak-stacked',
+    failure: 'unexpectedly contains text "3/10"',
+  },
+  'premature-difference-leak-accessible': {
+    routeId: 'ROUTE-PLAN40-DEEP-SAMPLE-CONSTRUCT-OPERATE',
+    injectBeforeDescription: 'Plan 40: assert visible hatch and non-leakage at operate',
+    mutation: 'premature-result-leak-accessible',
     failure: 'unexpectedly contains text "3/10"',
   },
   'missing-operate-fraction-inputs': {
@@ -203,6 +221,51 @@ const startingSurfaces = Object.freeze({
     readySelector: '#subtraction-prototype[data-mode="comparison"]',
   }),
 });
+
+async function derivePlan40ProhibitedResult(itemId = 'plan40-construct-half-fifth-10') {
+  const [math, content] = await Promise.all([
+    import(pathToFileURL(path.join(rootDir, 'src/math/index.js')).href),
+    import(pathToFileURL(path.join(rootDir, 'src/content/index.js')).href),
+  ]);
+  const record = content.PLAN40_SUBTRACTION_RECIPE_RECORDS.find((r) => r.itemId === itemId);
+  if (!record) throw new Error(`Plan 40 record "${itemId}" not found`);
+  const left = math.createFraction(Number(record.sourceForms.left.numerator), Number(record.sourceForms.left.denominator));
+  const right = math.createFraction(Number(record.sourceForms.right.numerator), Number(record.sourceForms.right.denominator));
+  const targetD = Number(record.targetDenominator);
+  const diff = math.subtractAtCommonDenominator(
+    math.convertToDenominator(left, targetD),
+    math.convertToDenominator(right, targetD),
+    targetD,
+  );
+  return {
+    numerator: String(diff.numerator),
+    denominator: String(diff.denominator),
+    fractionText: `${diff.numerator}/${diff.denominator}`,
+  };
+}
+
+function validatePlan40ScreenshotLayout(layout, file = 'unspecified.png') {
+  if (layout.horizontalOverflowPx > 1.0) {
+    throw new Error(`Plan 40 screenshot ${file} has horizontal document overflow: ${layout.horizontalOverflowPx}px (scrollWidth=${layout.document.width}, clientWidth=${layout.viewport.width}).`);
+  }
+  const { question, controls } = layout;
+  if (!question?.visible || !controls?.visible) {
+    throw new Error(`Plan 40 screenshot ${file} does not capture visible question and controls.`);
+  }
+  if (!question.horizontallyContained || !controls.horizontallyContained) {
+    throw new Error(`Plan 40 screenshot ${file} has question or controls exceeding horizontal viewport bounds.`);
+  }
+  if (!question.withinViewport || !controls.withinViewport) {
+    throw new Error(`Plan 40 screenshot ${file} has question or controls outside the viewport (question: withinViewport=${question.withinViewport}, controls: withinViewport=${controls.withinViewport}).`);
+  }
+}
+
+function assertPlan40SeedInvariant(summary, seedName = 'test-seed') {
+  const { seedDetected, failed, total } = summary;
+  if (seedDetected !== 1 || failed !== 0 || total !== 1) {
+    throw new Error(`Plan 40 witness seed "${seedName}" did not produce exactly one intended failure; detected=${seedDetected}, failed=${failed}, executions=${total}.`);
+  }
+}
 
 function readPlan34ContextMap() {
   return JSON.parse(fs.readFileSync(plan34ContextMapPath, 'utf8'));
@@ -1600,20 +1663,7 @@ async function executeAction(page, action, routeId) {
           }
         }
         if (routeId.startsWith('ROUTE-PLAN40-')) {
-          const { layout } = action.screenshotEvidence;
-          if (layout.horizontalOverflowPx > 1.0) {
-            throw new Error(`Plan 40 screenshot ${action.file} has horizontal document overflow: ${layout.horizontalOverflowPx}px (scrollWidth=${layout.document.width}, clientWidth=${layout.viewport.width}).`);
-          }
-          const { question, controls } = layout;
-          if (!question?.visible || !controls?.visible) {
-            throw new Error(`Plan 40 screenshot ${action.file} does not capture visible question and controls.`);
-          }
-          if (!question.horizontallyContained || !controls.horizontallyContained) {
-            throw new Error(`Plan 40 screenshot ${action.file} has question or controls exceeding horizontal viewport bounds.`);
-          }
-          if (!question.intersectsViewport || !controls.intersectsViewport) {
-            throw new Error(`Plan 40 screenshot ${action.file} has question or controls not intersecting viewport.`);
-          }
+          validatePlan40ScreenshotLayout(action.screenshotEvidence.layout, action.file);
         }
       }
       break;
@@ -2501,6 +2551,61 @@ async function verifyAssertions(page, assertions, routeId) {
         if (text && text.includes(value)) {
           throw new Error(`Route "${routeId}" assertion failed: selector "${target}" unexpectedly contains text "${value}".`);
         }
+        const fractionMatch = typeof value === 'string' && value.match(/^(\d+)\s*\/\s*(\d+)$/);
+        if (fractionMatch) {
+          const num = fractionMatch[1];
+          const den = fractionMatch[2];
+          const disclosed = await locator.first().evaluate((root, { num, den, rawValue }) => {
+            const normalizedText = (root.textContent || '').replace(/\s+/g, ' ');
+            if (normalizedText.includes(rawValue) || normalizedText.includes(`${num} / ${den}`)) {
+              return true;
+            }
+            const allElements = [root, ...root.querySelectorAll('*')];
+            const fractionLabelRegex = new RegExp(`(?:\\b|^)${num}\\s*(?:\\/|over|of)\\s*${den}(?:\\b|$)`, 'i');
+            for (const el of allElements) {
+              const ariaLabel = el.getAttribute('aria-label') || '';
+              if (fractionLabelRegex.test(ariaLabel) || ariaLabel.includes(rawValue)) {
+                return true;
+              }
+              const title = el.getAttribute('title') || '';
+              if (fractionLabelRegex.test(title) || title.includes(rawValue)) {
+                return true;
+              }
+              const alt = el.getAttribute('alt') || '';
+              if (fractionLabelRegex.test(alt) || alt.includes(rawValue)) {
+                return true;
+              }
+              const ariaDesc = el.getAttribute('aria-description') || '';
+              if (fractionLabelRegex.test(ariaDesc) || ariaDesc.includes(rawValue)) {
+                return true;
+              }
+              if (el.classList.contains('symbolic-fraction')) {
+                const numEl = el.querySelector('.symbolic-numerator');
+                const denEl = el.querySelector('.symbolic-denominator');
+                if (numEl && denEl && numEl.textContent.trim() === String(num) && denEl.textContent.trim() === String(den)) {
+                  return true;
+                }
+              }
+              const style = window.getComputedStyle(el);
+              const isColumn = style.flexDirection === 'column' || style.flexDirection === 'column-reverse';
+              if (isColumn || el.childElementCount === 2) {
+                const children = Array.from(el.children).filter((c) => c.textContent.trim() !== '');
+                if (children.length === 2) {
+                  const topText = children[0].textContent.trim();
+                  const bottomText = children[1].textContent.trim();
+                  if (topText === String(num) && bottomText === String(den)) {
+                    return true;
+                  }
+                }
+              }
+            }
+            return false;
+          }, { num, den, rawValue: value });
+
+          if (disclosed) {
+            throw new Error(`Route "${routeId}" assertion failed: selector "${target}" unexpectedly contains text "${value}".`);
+          }
+        }
         break;
       }
 
@@ -2764,13 +2869,22 @@ async function runRouteMatrix(options = {}) {
                 span.textContent = ' + ';
                 el.appendChild(span);
               });
-            } else if (seed.mutation === 'premature-result-leak' || seed.mutation === 'difference-leak') {
-              await page.locator('.app-visual-view .active-beat-prompt').evaluate((el) => {
+            } else if (seed.mutation?.startsWith('premature-result-leak') || seed.mutation === 'difference-leak') {
+              const derived = await derivePlan40ProhibitedResult('plan40-construct-half-fifth-10');
+              const { numerator, denominator, fractionText } = derived;
+              await page.locator('.app-visual-view .active-beat-prompt').evaluate((el, { mutation, numerator, denominator, fractionText }) => {
                 const span = document.createElement('span');
                 span.className = 'premature-result-leak-test';
-                span.textContent = ' 3/10';
+                if (mutation === 'premature-result-leak-stacked') {
+                  span.innerHTML = `<span style="display:inline-flex;flex-direction:column"><span>${numerator}</span><span style="border-top:1px solid">${denominator}</span></span>`;
+                } else if (mutation === 'premature-result-leak-accessible') {
+                  span.setAttribute('role', 'img');
+                  span.setAttribute('aria-label', fractionText);
+                } else {
+                  span.textContent = ` ${fractionText}`;
+                }
                 el.appendChild(span);
-              });
+              }, { mutation: seed.mutation, numerator, denominator, fractionText });
             } else if (seed.mutation === 'missing-inputs') {
               await page.locator('.app-visual-view .active-beat-controls').evaluate((el) => {
                 el.innerHTML = '<button type="button" class="control-btn">Finish</button>';
@@ -2904,8 +3018,8 @@ async function runRouteMatrix(options = {}) {
   if (plan18WitnessSeed && (seedDetected !== 1 || failed !== 0 || routeResults.length !== 1)) {
     throw new Error(`Plan 18 witness seed "${plan18WitnessSeed}" did not produce exactly one intended failure; detected=${seedDetected}, failed=${failed}, executions=${routeResults.length}.`);
   }
-  if (plan40WitnessSeed && (seedDetected !== 1 || failed !== 0 || routeResults.length !== 1)) {
-    throw new Error(`Plan 40 witness seed "${plan40WitnessSeed}" did not produce exactly one intended failure; detected=${seedDetected}, failed=${failed}, executions=${routeResults.length}.`);
+  if (plan40WitnessSeed) {
+    assertPlan40SeedInvariant({ seedDetected, failed, total: routeResults.length }, plan40WitnessSeed);
   }
 
   if (routeResults.some((result) => result.routeId.startsWith('ROUTE-PLAN18-'))) {
@@ -3080,7 +3194,9 @@ async function runRouteMatrix(options = {}) {
 }
 
 module.exports = {
+  assertPlan40SeedInvariant,
   createStaticServer,
+  derivePlan40ProhibitedResult,
   executeAction,
   expandRouteExecutions,
   getRouteMotionModes,
@@ -3094,6 +3210,8 @@ module.exports = {
   runRouteMatrix,
   selectRoutesForRun,
   validateMatrixIntegrity,
+  validatePlan40ScreenshotLayout,
+  verifyAssertions,
 };
 
 // CLI entry point

@@ -120,24 +120,56 @@ export function buildPlan40SubtractionSetActions({ view, supportProfile }) {
   actions.push(action('click', '[data-practice-type="unlike-denominator-subtraction"]', {
     description: 'Re-enter unlike-subtraction practice set',
   }));
-  if (view === 'linear') {
-    actions.push(action('click', '.app-view-controls .app-secondary-button', {
-      description: 'Switch to linear path on re-entry',
-    }));
-  }
   const host = view === 'visual' ? '.app-visual-view' : '.app-linear-view';
+  const leftInputId = view === 'linear' ? 'linear-transform-num-input-left' : 'transform-num-input-left';
+  const rightInputId = view === 'linear' ? 'linear-transform-num-input-right' : 'transform-num-input-right';
+
+  const encounterAssertions = [
+    { type: 'containsText', target: `${host} .active-beat-controls button`, value: 'Next' },
+    { type: 'containsText', target: `${host} .active-beat-prompt`, value: 'Look at these two fractions.' },
+    { type: 'notHasSelector', target: `${host} .recovery-feedback` },
+    { type: 'notHasSelector', target: `${host} [id$="-subtraction-task-help"]` },
+    { type: 'notHasSelector', target: `${host} input` },
+  ];
+
+  if (view === 'visual') {
+    encounterAssertions.push(
+      { type: 'attributeEquals', target: `${host} .symbolic-expression .symbolic-fraction:first-child`, attribute: 'aria-label', value: '1 over 2' },
+      { type: 'attributeEquals', target: `${host} .symbolic-expression .symbolic-operator`, attribute: 'aria-label', value: 'minus' },
+      { type: 'containsText', target: `${host} .symbolic-expression .symbolic-operator`, value: '−' },
+      { type: 'attributeEquals', target: `${host} .symbolic-expression .symbolic-fraction:last-child`, attribute: 'aria-label', value: '1 over 5' },
+    );
+  } else {
+    encounterAssertions.push(
+      { type: 'attributeEquals', target: `${host} .symbolic-expression`, attribute: 'aria-label', value: '1 over 2 minus 1 over 5' },
+      { type: 'containsText', target: `${host} .symbolic-expression .symbolic-fraction:first-child .symbolic-numerator`, value: '1' },
+      { type: 'containsText', target: `${host} .symbolic-expression .symbolic-fraction:first-child .symbolic-denominator`, value: '2' },
+      { type: 'containsText', target: `${host} .symbolic-expression .symbolic-operator`, value: '−' },
+      { type: 'containsText', target: `${host} .symbolic-expression .symbolic-fraction:last-child .symbolic-numerator`, value: '1' },
+      { type: 'containsText', target: `${host} .symbolic-expression .symbolic-fraction:last-child .symbolic-denominator`, value: '5' },
+    );
+  }
+
+  // 1. Assert encounter beat state with exact operand/operator identity
+  actions.push(action('assert', host, {
+    assertions: encounterAssertions,
+    description: 'Re-entry resets to fresh item 1 identity (1/2 - 1/5) with exact operand/operator identity at encounter',
+  }));
+
+  // 2. Advance to transform beat to prove draft/work/help/recovery reset
+  actions.push(action('click', `${host} .active-beat-controls button`, {
+    description: 'Advance from re-entry encounter to transform beat',
+  }));
+
   actions.push(action('assert', host, {
     assertions: [
-      { type: 'containsText', target: `${host} .active-beat-controls button`, value: 'Next' },
-      { type: 'containsText', target: `${host} .active-beat-prompt`, value: 'Look at these two fractions.' },
-      { type: 'containsText', target: `${host} .symbolic-expression`, value: '1' },
-      { type: 'containsText', target: `${host} .symbolic-expression`, value: '2' },
-      { type: 'containsText', target: `${host} .symbolic-expression`, value: '5' },
+      { type: 'inputValueEquals', target: `${host} #${leftInputId}`, value: '' },
+      { type: 'attributeEquals', target: `${host} .active-beat-controls .app-secondary-button`, attribute: 'aria-expanded', value: 'false' },
+      { type: 'containsText', target: `${host} .active-beat-controls .app-secondary-button`, value: 'Need help?' },
       { type: 'notHasSelector', target: `${host} .recovery-feedback` },
-      { type: 'notHasSelector', target: `${host} [id$="-subtraction-task-help"]` },
-      { type: 'notHasSelector', target: `${host} input` },
+      { type: 'notHasSelector', target: `${host} #${rightInputId}` },
     ],
-    description: 'Re-entry resets to fresh item 1 identity (1/2 - 1/5) with cleared draft, help, and recovery',
+    description: 'Verify transform beat has empty input drafts, closed help, and absent recovery feedback on re-entry',
   }));
 
   return actions;

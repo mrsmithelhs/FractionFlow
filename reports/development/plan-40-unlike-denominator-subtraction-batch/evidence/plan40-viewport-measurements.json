@@ -1,5 +1,5 @@
 {
-  "capturedAt": "2026-10-20T14:06:22.946Z",
+  "capturedAt": "2026-10-20T21:53:05.109Z",
   "measurements": [
     {
       "routeId": "ROUTE-PLAN40-UNLIKE-SUBTRACTION-MEDIUM-LINEAR-ALL",
@@ -20,7 +20,7 @@
         "roundingTolerancePx": 1,
         "document": {
           "width": 360,
-          "height": 871
+          "height": 831
         },
         "horizontalOverflow": false,
         "horizontalOverflowPx": 0,
@@ -44,7 +44,7 @@
           "x": 63,
           "y": 405.36,
           "width": 234,
-          "height": 240.59,
+          "height": 200.59,
           "visible": true,
           "horizontallyContained": true,
           "verticallyContained": true,
@@ -73,7 +73,7 @@
         "roundingTolerancePx": 1,
         "document": {
           "width": 1366,
-          "height": 992
+          "height": 952
         },
         "horizontalOverflow": false,
         "horizontalOverflowPx": 0,
@@ -97,7 +97,7 @@
           "x": 337,
           "y": 436.81,
           "width": 692,
-          "height": 240.59,
+          "height": 200.59,
           "visible": true,
           "horizontallyContained": true,
           "verticallyContained": true,
@@ -232,7 +232,7 @@
         "roundingTolerancePx": 1,
         "document": {
           "width": 360,
-          "height": 894
+          "height": 854
         },
         "horizontalOverflow": false,
         "horizontalOverflowPx": 0,
@@ -256,7 +256,7 @@
           "x": 63,
           "y": 416.84,
           "width": 234,
-          "height": 240.59,
+          "height": 200.59,
           "visible": true,
           "horizontallyContained": true,
           "verticallyContained": true,
@@ -285,7 +285,7 @@
         "roundingTolerancePx": 1,
         "document": {
           "width": 360,
-          "height": 975
+          "height": 935
         },
         "horizontalOverflow": false,
         "horizontalOverflowPx": 0,
@@ -309,7 +309,7 @@
           "x": 63,
           "y": 416.84,
           "width": 234,
-          "height": 321.38,
+          "height": 281.38,
           "visible": true,
           "horizontallyContained": true,
           "verticallyContained": true,
