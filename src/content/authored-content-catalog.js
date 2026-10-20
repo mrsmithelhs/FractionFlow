@@ -14,6 +14,7 @@ import {
 import { deepFreeze } from './schema.js';
 import { PLAN18_NESTED_ADDITION_RECORDS } from './data/plan18-nested-addition-records.js';
 import { PLAN35_ADDITION_RECIPE_FIXTURES, PLAN35_ADDITION_RECIPE_RECORDS } from './data/plan35-addition-recipe-records.js';
+import { PLAN40_SUBTRACTION_RECIPE_FIXTURES, PLAN40_SUBTRACTION_RECIPE_RECORDS } from './data/plan40-reusable-subtraction-recipes-records.js';
 import { buildCuratedProblem } from './generator.js';
 
 function identityKey(fixtureId, authoringRevision) {
@@ -75,6 +76,11 @@ for (const fixture of PLAN35_ADDITION_RECIPE_FIXTURES) {
   if (curatedFixturesByIdentity.has(key)) throw new TypeError(`duplicate curated fixture identity: ${key}`);
   curatedFixturesByIdentity.set(key, fixture);
 }
+for (const fixture of PLAN40_SUBTRACTION_RECIPE_FIXTURES) {
+  const key = identityKey(fixture.id, fixture.authoringRevision);
+  if (curatedFixturesByIdentity.has(key)) throw new TypeError(`duplicate curated fixture identity: ${key}`);
+  curatedFixturesByIdentity.set(key, fixture);
+}
 for (const item of MATERIALIZED_PLAN36_SUBTRACTIONS) {
   const key = identityKey(item.fixtureId, item.authoringRevision);
   if (curatedFixturesByIdentity.has(key)) throw new TypeError(`duplicate curated fixture identity: ${key}`);
@@ -94,6 +100,20 @@ const plan35RecipeContentByIdentity = new Map(PLAN35_ADDITION_RECIPE_RECORDS
     recipe: { id: record.recipeId, revision: record.patternRevision },
     fixture,
   })];
+  }));
+const plan40RecipeContentByIdentity = new Map(PLAN40_SUBTRACTION_RECIPE_RECORDS
+  .map((record) => {
+    const key = identityKey(record.fixtureId, record.authoringRevision);
+    const fixture = curatedFixturesByIdentity.get(key);
+    return [key, deepFreeze({
+      itemId: record.itemId,
+      fixtureId: record.fixtureId,
+      authoringRevision: record.authoringRevision,
+      taskDataId: record.taskDataId,
+      taskDataRevision: record.taskDataRevision,
+      recipe: { id: record.recipeId, revision: record.patternRevision },
+      fixture,
+    })];
   }));
 
 /** Exact immutable lookup; this deliberately has no "latest revision" fallback. */
@@ -125,6 +145,8 @@ export function resolveAuthoredContent(fixtureId, authoringRevision) {
   if (crossing) return crossing;
   const plan36 = plan36ByIdentity.get(key);
   if (plan36) return plan36;
+  const plan40 = plan40RecipeContentByIdentity.get(key);
+  if (plan40) return plan40;
   const legacy = legacyByIdentity.get(key);
   if (!legacy) return null;
   return deepFreeze({

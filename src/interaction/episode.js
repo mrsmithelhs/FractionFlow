@@ -27,7 +27,12 @@ import {
 import { PLAN18_NESTED_DEFINITION_ID, validatePlan18TaskContext } from '../content/nested-renaming-task.js';
 import { isPlan35AdditionRecipeDefinition, isPlan35IdentifyRecipe, validatePlan35AdditionRecipeContext } from '../content/plan35-addition-recipe-task.js';
 import { isPlan36SubtractionDefinition, validatePlan36LikeDenominatorSubtractionContext } from '../content/plan36-like-denominator-takeaway-task.js';
-import { validateOperationResult } from '../math/index.js';
+import {
+  isPlan40SubtractionRecipeDefinition,
+  isPlan40IdentifyRecipe,
+  validatePlan40SubtractionRecipeContext,
+} from '../content/plan40-reusable-subtraction-recipes.js';
+import { subtractAtCommonDenominator, validateOperationResult } from '../math/index.js';
 import { fractionFromWire } from './classification.js';
 import {
   EPISODE_BEATS,
@@ -101,6 +106,7 @@ function responseForEntry(definition, entry, taskContext = null) {
   if (beat === 'notice') return { ...common, responsibility: 'identify-unit-relationship', inputKind: 'unit-match-choice' };
   if (beat === 'decide') return definition.id === PLAN18_NESTED_DEFINITION_ID
     || (isPlan35AdditionRecipeDefinition(definition) && isPlan35IdentifyRecipe(taskContext))
+    || (isPlan40SubtractionRecipeDefinition(definition) && isPlan40IdentifyRecipe(taskContext))
     ? {
       ...common,
       responsibility: 'identify-renaming-side',
@@ -111,13 +117,17 @@ function responseForEntry(definition, entry, taskContext = null) {
     }
     : { ...common, responsibility: 'choose-common-denominator', inputKind: 'whole-fraction' };
   if (beat === 'transform') {
-    if (definition.id === PLAN34_EPISODE_DEFINITION_ID || isPlan35AdditionRecipeDefinition(definition)) {
+    if (definition.id === PLAN34_EPISODE_DEFINITION_ID
+      || isPlan35AdditionRecipeDefinition(definition)
+      || isPlan40SubtractionRecipeDefinition(definition)) {
+      const isInspect = taskContext.patternId === FULL_ADDITION_INSPECT_PATTERN.id
+        || ['unlike-subtraction.inspect-keep-repair', 'unlike-subtraction.inspect-candidate', 'full-subtraction.inspect-keep-repair'].includes(taskContext.patternId);
       return {
         ...common,
-        responsibility: taskContext.patternId === FULL_ADDITION_INSPECT_PATTERN.id
+        responsibility: isInspect
           ? 'inspect-keep-or-repair-candidate'
           : 'construct-equivalent-numerator',
-        inputKind: taskContext.patternId === FULL_ADDITION_INSPECT_PATTERN.id ? 'inspect-candidate' : 'numerator',
+        inputKind: isInspect ? 'inspect-candidate' : 'numerator',
         target: entry.side,
         targetDenominator: taskContext.targetDenominator,
         patternId: taskContext.patternId,
@@ -132,7 +142,17 @@ function responseForEntry(definition, entry, taskContext = null) {
       evidenceCategory: 'prediction',
     };
   }
-  if (beat === 'operate') return { ...common, responsibility: 'combine-like-units', inputKind: 'fraction' };
+  if (beat === 'operate') {
+    if (isPlan40SubtractionRecipeDefinition(definition)) {
+      return {
+        ...common,
+        responsibility: 'supply-amount-left',
+        inputKind: 'fraction-response',
+        question: 'How much is left?',
+      };
+    }
+    return { ...common, responsibility: 'combine-like-units', inputKind: 'fraction' };
+  }
   if (beat === 'resolve') return { ...common, responsibility: 'settle-final-form', inputKind: 'fraction' };
   return { ...common, responsibility: 'inspect-invariant', inputKind: 'structured-choice' };
 }
@@ -232,7 +252,7 @@ function assertDefinition(definition) {
   }
   const approvedBeats = registered.id === PLAN36_LIKE_DENOMINATOR_SUBTRACTION_EPISODE_DEFINITION.id
     ? ['encounter', 'operate', 'resolve']
-    : [PLAN18_NESTED_DEFINITION_ID, 'phase-3-reusable-addition-recipes'].includes(registered.id)
+    : [PLAN18_NESTED_DEFINITION_ID, 'phase-3-reusable-addition-recipes', 'phase-3-reusable-subtraction-recipes'].includes(registered.id)
       ? ['encounter', 'decide', 'transform', 'operate', 'resolve']
       : EPISODE_BEATS;
   if (JSON.stringify(registered.beats) !== JSON.stringify(approvedBeats)) {
@@ -257,6 +277,7 @@ function assertInstance(instance, definition) {
     && definition.revision === PLAN20_LIKE_DENOMINATOR_EPISODE_DEFINITION.revision;
   const isPlan18 = definition.id === PLAN18_NESTED_DEFINITION_ID && definition.revision === '1';
   const isPlan35 = definition.id === 'phase-3-reusable-addition-recipes' && definition.revision === '1';
+  const isPlan40 = isPlan40SubtractionRecipeDefinition(definition);
   const registeredCrossing = identityContract?.resultStackCapability === 'plan17-two-whole-stack-v1'
     ? resolveAuthoredContent(identityContract.fixtureId, identityContract.authoringRevision)
     : null;
@@ -309,7 +330,8 @@ function assertInstance(instance, definition) {
     && definition.includeReflection === false
   );
   if ((instance.request.selector !== definition.selector
-      && !(isPlan35 && ['relatively-prime-addition', 'nested-denominator-addition', 'shared-factor-addition'].includes(instance.request.selector)))
+      && !(isPlan35 && ['relatively-prime-addition', 'nested-denominator-addition', 'shared-factor-addition'].includes(instance.request.selector))
+      && !(isPlan40 && ['relatively-prime-subtraction', 'nested-denominator-subtraction', 'shared-factor-subtraction'].includes(instance.request.selector)))
     || instance.request.operation !== definition.operation
     || !crossingContractMatches
     || !plan20ContractMatches
@@ -348,6 +370,15 @@ function stateSnapshot(state) {
       ? {
         compactCompletion: state.established.compactCompletion ?? null,
         conversionOrigins: state.established.conversionOrigins ?? {},
+        taskContext: state.taskContext,
+      }
+      : {}),
+    ...(state.episodeDefinition?.id === 'phase-3-reusable-subtraction-recipes'
+      ? {
+        compactCompletion: state.established.compactCompletion ?? null,
+        conversionOrigins: state.established.conversionOrigins ?? {},
+        subtractionRemoval: state.established.subtractionRemoval ?? 'unmarked',
+        selectedRenamingSide: state.established.selectedRenamingSide ?? null,
         taskContext: state.taskContext,
       }
       : {}),
@@ -402,7 +433,7 @@ function resolvedState(state, established) {
   const isPlan36 = isPlan36SubtractionDefinition(state.episodeDefinition);
   const establishedState = {
     ...state.established,
-    ...(beat === 'resolve' && ([PLAN34_EPISODE_DEFINITION_ID, 'phase-3-reusable-addition-recipes'].includes(state.episodeDefinition.id) || isPlan36)
+    ...(beat === 'resolve' && ([PLAN34_EPISODE_DEFINITION_ID, 'phase-3-reusable-addition-recipes', 'phase-3-reusable-subtraction-recipes'].includes(state.episodeDefinition.id) || isPlan36)
       ? { compactCompletion: established }
       : beat === 'resolve' && state.episodeDefinition.id === PLAN18_NESTED_DEFINITION_ID
         ? { nestedCompletion: established }
@@ -521,7 +552,7 @@ function handleTaskHelpRequest(state, intent) {
       schedulePosition: state.schedulePosition,
       scheduleEntryId: scheduleEntry.id,
       side: scheduleEntry.side ?? null,
-      ...(isPlan36 && state.beat === 'operate'
+      ...((isPlan36 || state.episodeDefinition?.id === 'phase-3-reusable-subtraction-recipes') && state.beat === 'operate'
         ? { helpKind: 'like-denominator-takeaway' }
         : {}),
       ...(state.episodeDefinition.id === PLAN34_EPISODE_DEFINITION_ID
@@ -532,6 +563,11 @@ function handleTaskHelpRequest(state, intent) {
         && (state.taskContext.patternId === FULL_ADDITION_INSPECT_PATTERN.id
           || (isPlan35IdentifyRecipe(state.taskContext) && state.beat === 'decide'))
         ? { helpKind: state.taskContext.patternId === FULL_ADDITION_INSPECT_PATTERN.id ? 'inspect-comparison-invariant' : 'renaming-side-comparison' }
+        : {}),
+      ...(state.episodeDefinition.id === 'phase-3-reusable-subtraction-recipes'
+        && (['unlike-subtraction.inspect-keep-repair', 'unlike-subtraction.inspect-candidate', 'full-subtraction.inspect-keep-repair'].includes(state.taskContext.patternId)
+          || (isPlan40IdentifyRecipe(state.taskContext) && state.beat === 'decide'))
+        ? { helpKind: ['unlike-subtraction.inspect-keep-repair', 'unlike-subtraction.inspect-candidate', 'full-subtraction.inspect-keep-repair'].includes(state.taskContext.patternId) ? 'inspect-comparison-invariant' : 'renaming-side-comparison' }
         : {}),
     }],
   });
@@ -603,7 +639,7 @@ function handleMarkSubtrahendAmount(state, intent) {
 function handleEncounter(state, intent) {
   if (intent.type !== 'acknowledge-encounter') return null;
   const established = { acknowledged: true };
-  const compact = [PLAN34_EPISODE_DEFINITION_ID, 'phase-3-reusable-addition-recipes'].includes(state.episodeDefinition.id);
+  const compact = [PLAN34_EPISODE_DEFINITION_ID, 'phase-3-reusable-addition-recipes', 'phase-3-reusable-subtraction-recipes'].includes(state.episodeDefinition.id);
   const nested = state.episodeDefinition.id === PLAN18_NESTED_DEFINITION_ID;
   const next = advanceSchedule(compact || nested ? {
     ...state,
@@ -647,7 +683,8 @@ function handleNotice(state, intent) {
 }
 
 function handleDecide(state, intent) {
-  const identifyRecipe = isPlan35AdditionRecipeDefinition(state.episodeDefinition) && isPlan35IdentifyRecipe(state.taskContext);
+  const identifyRecipe = (isPlan35AdditionRecipeDefinition(state.episodeDefinition) && isPlan35IdentifyRecipe(state.taskContext))
+    || (isPlan40SubtractionRecipeDefinition(state.episodeDefinition) && isPlan40IdentifyRecipe(state.taskContext));
   if (state.episodeDefinition.id === PLAN18_NESTED_DEFINITION_ID || identifyRecipe) {
     if (intent.type !== 'select-renaming-side') return null;
     const requiredSide = identifyRecipe ? state.taskContext.requiredSides[0] : state.taskContext.requiredSide;
@@ -698,13 +735,14 @@ function handleDecide(state, intent) {
 }
 
 function handleTransform(state, intent) {
-  const compact = [PLAN34_EPISODE_DEFINITION_ID, 'phase-3-reusable-addition-recipes'].includes(state.episodeDefinition.id);
+  const compact = [PLAN34_EPISODE_DEFINITION_ID, 'phase-3-reusable-addition-recipes', 'phase-3-reusable-subtraction-recipes'].includes(state.episodeDefinition.id);
   const nested = state.episodeDefinition.id === PLAN18_NESTED_DEFINITION_ID;
   if (!compact && intent.type !== 'submit-equivalent-form') return null;
   if (compact && !['submit-equivalent-form', 'keep-inspected-form', 'repair-inspected-form'].includes(intent.type)) return null;
   const targetDenominator = state.established.commonDenominator.targetDenominator;
   const side = state.expectedResponse.target;
-  const inspect = compact && state.taskContext.patternId === FULL_ADDITION_INSPECT_PATTERN.id;
+  const inspect = compact && (state.taskContext.patternId === FULL_ADDITION_INSPECT_PATTERN.id
+    || ['unlike-subtraction.inspect-keep-repair', 'unlike-subtraction.inspect-candidate', 'full-subtraction.inspect-keep-repair'].includes(state.taskContext.patternId));
   let proposed = intent.proposed;
   let classification;
   let origin = 'learner-constructed';
@@ -738,7 +776,9 @@ function handleTransform(state, intent) {
     targetDenominator,
     supportOrigin: state.nextResponseSupport ?? (compact ? origin : 'learner'),
   };
+  const isPlan40 = state.episodeDefinition.id === 'phase-3-reusable-subtraction-recipes';
   const nextEntry = state.beatSchedule[state.schedulePosition + 1];
+  const advancingToOperate = nextEntry?.kind === 'operate';
   const next = nextEntry?.kind === 'transform'
     ? advanceSchedule({
       ...state,
@@ -753,6 +793,7 @@ function handleTransform(state, intent) {
       ...(compact || nested ? {
         conversionOrigins: { ...next.established.conversionOrigins, [side]: origin },
       } : {}),
+      ...(isPlan40 && advancingToOperate ? { subtractionRemoval: 'marked' } : {}),
       lastConversion: established,
     },
     nextResponseSupport: null,
@@ -801,21 +842,36 @@ function handleSubmitSubtractionResult(state, intent) {
     return recovery(state, intent, recoveryClassification);
   }
 
+  const isPlan40 = state.episodeDefinition?.id === 'phase-3-reusable-subtraction-recipes';
+  const targetDenominator = isPlan40
+    ? state.established.commonDenominator.targetDenominator
+    : state.taskContext.sourceForms.left.denominator;
+  const rawDifference = isPlan40
+    ? subtractAtCommonDenominator(left, right, BigInt(targetDenominator))
+    : null;
+  const rawResultForm = isPlan40
+    ? {
+      kind: 'fraction',
+      numerator: String(rawDifference.numerator),
+      denominator: String(rawDifference.denominator),
+    }
+    : state.content.resultState.canonicalRawResultForm;
+
   const successClassification = {
     kind: 'learner-supplied-result',
     actionRole: 'learner-supplied-result',
     validity: 'valid',
     mathClassification: validation.classification,
     proposed: intent.proposed,
-    rawResultForm: state.content.resultState.canonicalRawResultForm,
+    rawResultForm,
     submittedForm: intent.proposed,
   };
   const established = {
     ...successClassification,
     proposed: intent.proposed,
-    rawResultForm: state.content.resultState.canonicalRawResultForm,
+    rawResultForm,
     submittedForm: intent.proposed,
-    targetDenominator: state.taskContext.sourceForms.left.denominator,
+    targetDenominator,
   };
   const next = advanceSchedule(state, established);
   return assessedSuccess(state, intent, successClassification, {
@@ -834,7 +890,7 @@ function handleResolve(state, intent) {
     if (intent.type !== 'finish-nested-episode') return null;
     return assessedSuccess(state, intent, { kind: 'nested-navigation-completed' }, resolvedState(state, { kind: 'navigation-completion' }));
   }
-  if ([PLAN34_EPISODE_DEFINITION_ID, 'phase-3-reusable-addition-recipes'].includes(state.episodeDefinition.id)) {
+  if ([PLAN34_EPISODE_DEFINITION_ID, 'phase-3-reusable-addition-recipes', 'phase-3-reusable-subtraction-recipes'].includes(state.episodeDefinition.id)) {
     if (intent.type !== 'finish-compact-episode') return null;
     return assessedSuccess(state, intent, { kind: 'compact-navigation-completed' }, resolvedState(state, { kind: 'navigation-completion' }));
   }
@@ -1080,10 +1136,15 @@ function assertIntentAllowedAtBeat(state, intent) {
       'submit-reflection is not enabled for this episode definition',
     );
   }
-  const compact = [PLAN34_EPISODE_DEFINITION_ID, 'phase-3-reusable-addition-recipes'].includes(state.episodeDefinition.id);
+  const compact = [PLAN34_EPISODE_DEFINITION_ID, 'phase-3-reusable-addition-recipes', 'phase-3-reusable-subtraction-recipes'].includes(state.episodeDefinition.id);
   const nested = state.episodeDefinition.id === PLAN18_NESTED_DEFINITION_ID;
-  const identify = isPlan35AdditionRecipeDefinition(state.episodeDefinition) && isPlan35IdentifyRecipe(state.taskContext);
+  const isPlan35 = isPlan35AdditionRecipeDefinition(state.episodeDefinition);
   const isPlan36 = isPlan36SubtractionDefinition(state.episodeDefinition);
+  const isPlan40 = isPlan40SubtractionRecipeDefinition(state.episodeDefinition);
+  const identify = (isPlan35 && isPlan35IdentifyRecipe(state.taskContext))
+    || (isPlan40 && isPlan40IdentifyRecipe(state.taskContext));
+  const isInspect = compact && (state.taskContext.patternId === FULL_ADDITION_INSPECT_PATTERN.id
+    || ['unlike-subtraction.inspect-keep-repair', 'unlike-subtraction.inspect-candidate', 'full-subtraction.inspect-keep-repair'].includes(state.taskContext.patternId));
   if (isPlan36) {
     if (intent.type === 'acknowledge-encounter') {
       throw new EpisodeIntentError('UNEXPECTED_INTENT', 'like-denominator subtraction does not use acknowledge-encounter');
@@ -1101,14 +1162,19 @@ function assertIntentAllowedAtBeat(state, intent) {
       throw new EpisodeIntentError('UNEXPECTED_INTENT', 'compact resolve is navigation only');
     }
   }
+  if (isPlan40) {
+    if (intent.type === 'submit-operation-result') {
+      throw new EpisodeIntentError('UNEXPECTED_INTENT', 'reusable subtraction uses submit-subtraction-result');
+    }
+  }
   if (intent.type === 'mark-subtrahend-amount') {
     if (!isPlan36 || state.beat !== 'encounter' || state.established.subtractionRemoval === 'marked') {
       throw new EpisodeIntentError('UNEXPECTED_INTENT', 'mark-subtrahend-amount is only allowed at encounter in like-denominator subtraction');
     }
   }
   if (intent.type === 'submit-subtraction-result') {
-    if (!isPlan36 || state.beat !== 'operate') {
-      throw new EpisodeIntentError('UNEXPECTED_INTENT', 'submit-subtraction-result is only valid at operate in like-denominator subtraction');
+    if ((!isPlan36 && !isPlan40) || state.beat !== 'operate') {
+      throw new EpisodeIntentError('UNEXPECTED_INTENT', 'submit-subtraction-result is only valid at operate in subtraction episodes');
     }
     if (state.established.subtractionRemoval !== 'marked') {
       throw new EpisodeIntentError('UNEXPECTED_INTENT', 'submit-subtraction-result requires subtrahend amount to be marked first');
@@ -1122,17 +1188,16 @@ function assertIntentAllowedAtBeat(state, intent) {
   }
   if (intent.type === 'select-renaming-side' && (!(nested || identify) || state.beat !== 'decide')) throw new EpisodeIntentError('UNEXPECTED_INTENT', 'side choice is only available at an admitted side-identification decision');
   if (intent.type === 'finish-nested-episode' && (!nested || state.beat !== 'resolve')) throw new EpisodeIntentError('UNEXPECTED_INTENT', 'nested finish is available only at nested resolve');
-  const plan35Identify = isPlan35AdditionRecipeDefinition(state.episodeDefinition) && isPlan35IdentifyRecipe(state.taskContext);
-  const plan35IdentifyHasConverted = plan35Identify && state.taskContext.requiredSides.some((side) => state.established.conversions[side] !== null);
-  if (compact && intent.type === 'request-replay' && !plan35IdentifyHasConverted) {
+  const identifyHasConverted = identify && state.taskContext.requiredSides.some((side) => state.established.conversions[side] !== null);
+  if (compact && intent.type === 'request-replay' && !identifyHasConverted) {
     throw new EpisodeIntentError('UNEXPECTED_INTENT', 'compact episodes do not expose legacy replay actions');
   }
   if (['keep-inspected-form', 'repair-inspected-form'].includes(intent.type)
-    && (!compact || state.taskContext.patternId !== FULL_ADDITION_INSPECT_PATTERN.id || state.beat !== 'transform')) {
+    && (!compact || !isInspect || state.beat !== 'transform')) {
     throw new EpisodeIntentError('UNEXPECTED_INTENT', `${intent.type} requires an inspect transform`);
   }
   if (intent.type === 'submit-equivalent-form' && compact
-    && state.taskContext.patternId !== FULL_ADDITION_CONSTRUCT_PATTERN.id && !identify) {
+    && isInspect && !identify) {
     throw new EpisodeIntentError('UNEXPECTED_INTENT', 'inspect transforms require keep or repair intents');
   }
   if (intent.type === 'finish-compact-episode' && ((!compact && !isPlan36) || state.beat !== 'resolve')) {
@@ -1148,22 +1213,26 @@ function assertIntentAllowedAtBeat(state, intent) {
     const plan36OperateHelp = intent.type === 'request-task-help'
       && isPlan36
       && state.beat === 'operate';
+    const plan40OperateHelp = intent.type === 'request-task-help'
+      && isPlan40
+      && state.beat === 'operate';
     const compactConstructMultiplierHelp = intent.type === 'submit-transform-help-multiplier'
-      && [PLAN34_EPISODE_DEFINITION_ID, 'phase-3-reusable-addition-recipes'].includes(state.episodeDefinition.id)
-      && state.taskContext.patternId === FULL_ADDITION_CONSTRUCT_PATTERN.id
+      && [PLAN34_EPISODE_DEFINITION_ID, 'phase-3-reusable-addition-recipes', 'phase-3-reusable-subtraction-recipes'].includes(state.episodeDefinition.id)
+      && (state.taskContext.patternId === FULL_ADDITION_CONSTRUCT_PATTERN.id || ['unlike-subtraction.construct-equivalent', 'full-subtraction.construct-equivalent'].includes(state.taskContext.patternId))
       && state.beat === 'transform';
     const nestedTaskHelp = (nested && ((intent.type === 'request-task-help' && ['decide', 'transform'].includes(state.beat))
       || (intent.type === 'submit-transform-help-multiplier' && state.beat === 'transform')))
       || (identify && ((intent.type === 'request-task-help' && ['decide', 'transform'].includes(state.beat))
         || (intent.type === 'submit-transform-help-multiplier' && state.beat === 'transform')));
     if (state.episodeDefinition.revision !== '3'
-      && !([PLAN34_EPISODE_DEFINITION_ID, 'phase-3-reusable-addition-recipes'].includes(state.episodeDefinition.id) && intent.type === 'request-task-help')
+      && !([PLAN34_EPISODE_DEFINITION_ID, 'phase-3-reusable-addition-recipes', 'phase-3-reusable-subtraction-recipes'].includes(state.episodeDefinition.id) && intent.type === 'request-task-help')
       && !compactConstructMultiplierHelp
       && !nestedTaskHelp
       && !(state.episodeDefinition.id === PLAN17_CROSSING_EPISODE_DEFINITION.id
         && state.episodeDefinition.revision === PLAN17_CROSSING_EPISODE_DEFINITION.revision)
       && !plan20OperationHelp
-      && !plan36OperateHelp) {
+      && !plan36OperateHelp
+      && !plan40OperateHelp) {
       throw new EpisodeIntentError('UNEXPECTED_INTENT', `${intent.type} requires episode definition revision 3`);
     }
     if (intent.type === 'submit-transform-help-multiplier' && state.beat !== 'transform') {
@@ -1172,7 +1241,8 @@ function assertIntentAllowedAtBeat(state, intent) {
     if (intent.type === 'request-task-help'
       && !['decide', 'transform'].includes(state.beat)
       && !plan20OperationHelp
-      && !plan36OperateHelp) {
+      && !plan36OperateHelp
+      && !plan40OperateHelp) {
       throw new EpisodeIntentError('UNEXPECTED_INTENT', 'task help is available only for denominator choice or conversion');
     }
   }
@@ -1190,13 +1260,16 @@ export function createEpisode({
   const content = assertInstance(instance, definition);
   const normalizedSupport = createSupportConfiguration(support);
   const normalizedCondition = validateActiveCondition(activeCondition);
-  const isCompact = [PLAN34_EPISODE_DEFINITION_ID, 'phase-3-reusable-addition-recipes'].includes(definition.id);
+  const isCompact = [PLAN34_EPISODE_DEFINITION_ID, 'phase-3-reusable-addition-recipes', 'phase-3-reusable-subtraction-recipes'].includes(definition.id);
   const isNested = definition.id === PLAN18_NESTED_DEFINITION_ID;
   const isPlan36 = isPlan36SubtractionDefinition(definition);
+  const isPlan40 = isPlan40SubtractionRecipeDefinition(definition);
   const normalizedTaskContext = isCompact
-    ? (isPlan35AdditionRecipeDefinition(definition)
-      ? validatePlan35AdditionRecipeContext(content, taskContext)
-      : validatePlan34TaskContext(content, taskContext, { allowCompatibilityPair }))
+    ? (isPlan40
+      ? validatePlan40SubtractionRecipeContext(content, taskContext)
+      : isPlan35AdditionRecipeDefinition(definition)
+        ? validatePlan35AdditionRecipeContext(content, taskContext)
+        : validatePlan34TaskContext(content, taskContext, { allowCompatibilityPair }))
     : isNested
       ? validatePlan18TaskContext(content, taskContext)
       : isPlan36
@@ -1233,6 +1306,7 @@ export function createEpisode({
       ...(isCompact ? { compactCompletion: null, conversionOrigins: {} } : {}),
       ...(isNested ? { nestedCompletion: null, selectedRenamingSide: null, conversionOrigins: {} } : {}),
       ...(isPlan36 ? { subtractionRemoval: 'unmarked', compactCompletion: null } : {}),
+      ...(isPlan40 ? { subtractionRemoval: 'unmarked', selectedRenamingSide: null } : {}),
     },
     completedBeats: [],
     pendingResponse: null,

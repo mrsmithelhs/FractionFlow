@@ -270,7 +270,8 @@ function currentSupportConsequence(state) {
 function sceneTaskIdentity(state) {
   if (!state.taskContext) return null;
   const context = state.taskContext;
-  if (state.episodeDefinition?.id === 'phase-3-reusable-addition-recipes') return {
+  if (state.episodeDefinition?.id === 'phase-3-reusable-addition-recipes'
+    || state.episodeDefinition?.id === 'phase-3-reusable-subtraction-recipes') return {
     practiceSetId: context.practiceSetId,
     practiceSetRevision: context.practiceSetRevision,
     itemId: context.itemId,
@@ -285,7 +286,7 @@ function sceneTaskIdentity(state) {
     taskDataRevision: context.taskDataRevision,
     stimulusId: context.stimulusId,
     stimulusRevision: context.stimulusRevision,
-    ...(!['full-addition.identify-side-construct'].includes(context.patternId)
+    ...(!['full-addition.identify-side-construct', 'unlike-subtraction.identify-side-construct', 'full-subtraction.identify-side-construct'].includes(context.patternId)
       ? { requiredSides: context.requiredSides } : {}),
   };
   if (state.episodeDefinition?.id === 'phase-3-nested-renaming-addition') return {
@@ -330,7 +331,7 @@ function currentTaskHelp(state) {
   ));
   if (!request) return null;
   if (request.helpKind === 'like-denominator-takeaway'
-    || (request.beat === 'operate' && state.episodeDefinition?.id === 'phase-3-like-denominator-takeaway-subtraction')) {
+    || (request.beat === 'operate' && ['phase-3-like-denominator-takeaway-subtraction', 'phase-3-reusable-subtraction-recipes'].includes(state.episodeDefinition?.id))) {
     return { kind: 'like-denominator-takeaway', status: 'requested' };
   }
   if (request.helpKind === 'inspect-comparison-invariant') {
@@ -353,7 +354,9 @@ function currentTaskHelp(state) {
   ));
   if (request.beat === 'decide' && (state.episodeDefinition?.id === 'phase-3-nested-renaming-addition'
     || (state.episodeDefinition?.id === 'phase-3-reusable-addition-recipes'
-      && state.taskContext.patternId === 'full-addition.identify-side-construct'))) {
+      && state.taskContext.patternId === 'full-addition.identify-side-construct')
+    || (state.episodeDefinition?.id === 'phase-3-reusable-subtraction-recipes'
+      && ['unlike-subtraction.identify-side-construct', 'full-subtraction.identify-side-construct'].includes(state.taskContext?.patternId)))) {
     return { kind: 'renaming-side-comparison', status: 'requested', targetDenominator: state.taskContext.targetDenominator };
   }
   if (request.beat === 'decide') return { kind: 'common-denominator', status: 'requested' };
@@ -642,7 +645,14 @@ function taskMeaning(state) {
         itemId: state.taskContext.itemId,
       } : state.taskContext ? (state.episodeDefinition.id === 'phase-3-nested-renaming-addition'
         ? { targetDenominator: state.taskContext.targetDenominator }
-        : { patternId: state.taskContext.patternId, targetDenominator: state.taskContext.targetDenominator }) : {}),
+        : {
+            patternId: state.taskContext.patternId,
+            targetDenominator: state.taskContext.targetDenominator,
+            ...(['full-addition.identify-side-construct', 'unlike-subtraction.identify-side-construct', 'full-subtraction.identify-side-construct'].includes(state.taskContext.patternId)
+              && (state.beat === 'transform' || state.established?.selectedRenamingSide)
+              ? { selectedSide: state.established.selectedRenamingSide }
+              : {}),
+          }) : {}),
     };
   }
   return {
@@ -665,6 +675,10 @@ function taskMeaning(state) {
     } : state.taskContext ? {
       patternId: state.taskContext.patternId,
       targetDenominator: state.taskContext.targetDenominator,
+      ...(['full-addition.identify-side-construct', 'unlike-subtraction.identify-side-construct', 'full-subtraction.identify-side-construct'].includes(state.taskContext.patternId)
+        && (state.beat === 'transform' || state.established?.selectedRenamingSide)
+        ? { selectedSide: state.established.selectedRenamingSide }
+        : {}),
       candidate: expected.inputKind === 'inspect-candidate' ? state.taskContext.candidates[expected.target] : null,
     } : {}),
   };
@@ -677,6 +691,9 @@ function candidateDenominatorsMeaning(state) {
   if (state.episodeDefinition?.id === 'phase-3-reusable-addition-recipes'
     && state.episodeDefinition?.revision === '1'
     && state.taskContext.patternId === 'full-addition.identify-side-construct') return null;
+  if (state.episodeDefinition?.id === 'phase-3-reusable-subtraction-recipes'
+    && state.episodeDefinition?.revision === '1'
+    && ['unlike-subtraction.identify-side-construct', 'full-subtraction.identify-side-construct'].includes(state.taskContext?.patternId)) return null;
   const supportLevel = state.support?.dimensions?.commonDenominator;
   if (supportLevel !== 'high support') return null;
   return candidateDenominatorsForInstance(state.content);
@@ -759,9 +776,10 @@ function operationMeaning(state) {
       acceptedResponseForm: acceptedForm,
     };
   }
+  const isPlan40 = state.episodeDefinition?.id === 'phase-3-reusable-subtraction-recipes';
   const operation = state.established?.operation;
   const resolution = state.established?.resolution;
-  if (!operation && !resolution) {
+  if (!operation && !resolution && !(isPlan40 && state.beat === 'operate')) {
     return {
       operation: state.content.request.operation,
       currentForms: null,
@@ -770,16 +788,19 @@ function operationMeaning(state) {
       preferredFinalForm: null,
       simplifiedResult: null,
       ...(isPlan17CrossingDefinition(state) ? { resultStack: null } : {}),
+      ...(isPlan40 ? { acceptedResponseForm: null } : {}),
     };
   }
 
   const rawResult = operation?.proposed ?? null;
   const simplifiedResult = operation?.simplifiedResult ?? resolution?.simplifiedResult ?? null;
 
-  const preserveNestedOriginal = state.episodeDefinition?.id === 'phase-3-nested-renaming-addition'
-    && state.episodeDefinition?.revision === '1'
+  const preserveNestedOriginal = (state.episodeDefinition?.id === 'phase-3-nested-renaming-addition'
+    && state.episodeDefinition?.revision === '1')
     || (state.episodeDefinition?.id === 'phase-3-reusable-addition-recipes'
-      && state.taskContext.patternId === 'full-addition.identify-side-construct');
+      && state.taskContext.patternId === 'full-addition.identify-side-construct')
+    || (isPlan40
+      && ['unlike-subtraction.identify-side-construct', 'full-subtraction.identify-side-construct'].includes(state.taskContext?.patternId));
   return {
     operation: state.content.request.operation,
     currentForms: {
@@ -790,9 +811,9 @@ function operationMeaning(state) {
         ? state.content.operands.right.initialForm
         : state.established.conversions.right ?? (preserveNestedOriginal ? state.content.operands.right.initialForm : null),
     },
-    ...(['phase-3-nested-renaming-addition', 'phase-3-reusable-addition-recipes'].includes(state.episodeDefinition.id)
-      && (state.episodeDefinition.id !== 'phase-3-reusable-addition-recipes'
-        || state.taskContext.patternId === 'full-addition.identify-side-construct') ? { operandOrigins: {
+    ...(['phase-3-nested-renaming-addition', 'phase-3-reusable-addition-recipes', 'phase-3-reusable-subtraction-recipes'].includes(state.episodeDefinition.id)
+      && (state.episodeDefinition.id === 'phase-3-nested-renaming-addition'
+        || ['full-addition.identify-side-construct', 'unlike-subtraction.identify-side-construct', 'full-subtraction.identify-side-construct'].includes(state.taskContext?.patternId)) ? { operandOrigins: {
       left: { kind: state.established.conversions.left ? 'learner-converted' : 'validated-original', performed: Boolean(state.established.conversions.left) },
       right: { kind: state.established.conversions.right ? 'learner-converted' : 'validated-original', performed: Boolean(state.established.conversions.right) },
     } } : {}),
@@ -802,6 +823,9 @@ function operationMeaning(state) {
     simplifiedResult,
     ...(isPlan17CrossingDefinition(state)
       ? { resultStack: crossingResultStack(state, operation) }
+      : {}),
+    ...(isPlan40
+      ? { acceptedResponseForm: state.beat === 'resolve' && operation?.submittedForm ? operation.submittedForm : null }
       : {}),
   };
 }
@@ -905,12 +929,23 @@ function transitionMeaning(state) {
 function takeawayMeaning(state) {
   const isPlan36 = state.episodeDefinition?.id === 'phase-3-like-denominator-takeaway-subtraction'
     && state.episodeDefinition?.revision === '1';
-  if (!isPlan36) return null;
+  const isPlan40 = state.episodeDefinition?.id === 'phase-3-reusable-subtraction-recipes'
+    && state.episodeDefinition?.revision === '1';
+  if (!isPlan36 && !isPlan40) return null;
 
-  const sourceForms = state.taskContext?.sourceForms ?? {
-    left: state.content.operands.left.initialForm,
-    right: state.content.operands.right.initialForm,
-  };
+  if (isPlan40 && ['encounter', 'decide', 'transform'].includes(state.beat)) {
+    return null;
+  }
+
+  const sourceForms = isPlan40
+    ? {
+      left: wireFormFor(state, 'left'),
+      right: wireFormFor(state, 'right'),
+    }
+    : (state.taskContext?.sourceForms ?? {
+      left: state.content.operands.left.initialForm,
+      right: state.content.operands.right.initialForm,
+    });
   const den = Number(sourceForms.left.denominator);
   const leftNum = Number(sourceForms.left.numerator);
   const rightNum = Number(sourceForms.right.numerator);

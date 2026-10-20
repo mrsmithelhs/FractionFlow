@@ -18,6 +18,35 @@ function contentIdentity(content) {
 }
 
 function visibleFields(state) {
+  if (state.episodeDefinition?.id === 'phase-3-reusable-subtraction-recipes'
+    && state.episodeDefinition?.revision === '1') {
+    if (state.beat === 'transform') return {
+      representationRole: 'fraction-bar',
+      visible: ['unlike-subtraction.inspect-keep-repair', 'unlike-subtraction.inspect-candidate', 'full-subtraction.inspect-keep-repair'].includes(state.taskContext.patternId)
+        ? ['source-forms', 'authored-candidate', 'target-context']
+        : ['source-forms', 'target-context'],
+      supplied: [],
+      hidden: ['correct-conversion', 'other-candidate-validity', 'operation-result'],
+    };
+    if (state.beat === 'operate') return {
+      representationRole: 'fraction-bar',
+      visible: ['source-forms', 'stable-whole', 'operation', 'marked-removal', 'remaining-partition', 'target-context'],
+      supplied: [],
+      hidden: ['operation-result'],
+    };
+    if (state.beat === 'resolve') return {
+      representationRole: 'fraction-bar',
+      visible: ['source-forms', 'stable-whole', 'operation', 'marked-removal', 'remaining-partition', 'operation-result', 'finish-navigation'],
+      supplied: [],
+      hidden: [],
+    };
+    return {
+      representationRole: 'fraction-bar',
+      visible: ['source-forms', 'target-context'],
+      supplied: [],
+      hidden: ['required-renaming-side', 'correct-conversion', 'operation-result'],
+    };
+  }
   if (state.episodeDefinition?.id === 'phase-3-like-denominator-takeaway-subtraction'
     && state.episodeDefinition?.revision === '1') {
     if (state.beat === 'encounter') {

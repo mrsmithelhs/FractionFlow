@@ -16,6 +16,8 @@ export * from './authored-content-catalog.js';
 export * from './authored-problem-materializer.js';
 export * from './data/plan36-like-denominator-subtraction-records.js';
 export * from './plan36-like-denominator-takeaway-task.js';
+export * from './data/plan40-reusable-subtraction-recipes-records.js';
+export * from './plan40-reusable-subtraction-recipes.js';
 export * from './generator.js';
 export * from './validation.js';
 export * from './curated.js';

@@ -3,6 +3,7 @@ import { PLAN34_EPISODE_DEFINITION_ID, resolvePlan34TaskContext } from '../conte
 import { PLAN18_NESTED_DEFINITION_ID, resolvePlan18TaskContext } from '../content/nested-renaming-task.js';
 import { isPlan35AdditionRecipeDefinition, isPlan35IdentifyRecipe, validatePlan35AdditionRecipeContext } from '../content/plan35-addition-recipe-task.js';
 import { isPlan36SubtractionDefinition, validatePlan36LikeDenominatorSubtractionContext } from '../content/plan36-like-denominator-takeaway-task.js';
+import { isPlan40SubtractionRecipeDefinition, isPlan40IdentifyRecipe, validatePlan40SubtractionRecipeContext } from '../content/plan40-reusable-subtraction-recipes.js';
 
 function scheduleError(message) {
   const error = new TypeError(message);
@@ -52,6 +53,16 @@ export function computeBeatSchedule(instance, episodeDefinition, taskContext = n
     validatePlan36LikeDenominatorSubtractionContext(instance, taskContext);
     return deepFreeze([
       { id: 'encounter', kind: 'encounter' },
+      { id: 'operate', kind: 'operate' },
+      { id: 'resolve', kind: 'resolve' },
+    ]);
+  }
+  if (isPlan40SubtractionRecipeDefinition(episodeDefinition)) {
+    const context = validatePlan40SubtractionRecipeContext(instance, taskContext);
+    return deepFreeze([
+      { id: 'encounter', kind: 'encounter' },
+      ...(isPlan40IdentifyRecipe(context) ? [{ id: 'select-renaming-side', kind: 'decide' }] : []),
+      ...context.requiredSides.map((side) => ({ id: `transform-${side}`, kind: 'transform', side })),
       { id: 'operate', kind: 'operate' },
       { id: 'resolve', kind: 'resolve' },
     ]);
