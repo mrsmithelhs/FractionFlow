@@ -71,6 +71,31 @@
     "ROUTE-PLAN38-HELP-TOGGLE-REPEATED-ERROR": "production-default-v7",
     "ROUTE-PLAN38-VIEW-TOGGLE-DRAFT-PRESERVATION": "production-default-v7",
     "ROUTE-PLAN38-REDUCED-MOTION-NO-ANIMATION": "production-default-v7",
-    "ROUTE-PLAN38-RESPONSIVE-VIEWPORTS": "production-default-v7"
+    "ROUTE-PLAN38-RESPONSIVE-VIEWPORTS": "production-default-v7",
+    "ROUTE-PLAN40-UNLIKE-SUBTRACTION-HIGH-VISUAL-ALL": "production-default-v7",
+    "ROUTE-PLAN40-UNLIKE-SUBTRACTION-MEDIUM-LINEAR-ALL": "production-default-v7",
+    "ROUTE-PLAN40-DEEP-SAMPLE-CONSTRUCT-OPERATE": "production-default-v7",
+    "ROUTE-PLAN40-DEEP-SAMPLE-INSPECT-REPAIR": "production-default-v7",
+    "ROUTE-PLAN40-DEEP-SAMPLE-IDENTIFY-REDUCIBLE": "production-default-v7",
+    "ROUTE-PLAN40-HELP-RECOVERY-VIEW-TOGGLE": "production-default-v7",
+    "ROUTE-PLAN40-RESPONSIVE-VIEWPORTS": "production-default-v7",
+    "ROUTE-PLAN40-CHROMEBOOK-SCALED-VIEWPORT": "production-default-v7"
+  },
+  "plan40-unlike-subtraction": {
+    "practiceSetId": "unlike-subtraction-vetted-set",
+    "practiceSetRevision": "1",
+    "episodeDefinitionId": "phase-3-reusable-subtraction-recipes",
+    "episodeDefinitionRevision": "1",
+    "itemIds": [
+      "plan40-construct-half-fifth-10",
+      "plan40-construct-three-fourths-two-fifths-20",
+      "plan40-construct-five-sixths-three-eighths-24",
+      "plan40-inspect-two-thirds-one-fourth-12",
+      "plan40-inspect-seven-tenths-one-fourth-20",
+      "plan40-inspect-five-sixths-seven-tenths-30",
+      "plan40-identify-five-sixths-one-third-6",
+      "plan40-identify-one-half-one-eighth-8",
+      "plan40-identify-two-thirds-five-twelfths-12"
+    ]
   }
 }

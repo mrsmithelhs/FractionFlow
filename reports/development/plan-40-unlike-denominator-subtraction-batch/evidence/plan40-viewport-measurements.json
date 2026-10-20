@@ -1,0 +1,215 @@
+{
+  "capturedAt": "2026-10-20T03:04:17.784Z",
+  "measurements": [
+    {
+      "routeId": "ROUTE-PLAN40-RESPONSIVE-VIEWPORTS",
+      "context": "production-default-v7",
+      "motionMode": "standard-motion",
+      "file": "reports/development/plan-40-unlike-denominator-subtraction-batch/evidence/encounter-360x740.png",
+      "caption": "Unlike subtraction initial encounter at 360x740",
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "layout": {
+        "viewport": {
+          "width": 360,
+          "height": 740
+        },
+        "document": {
+          "width": 360,
+          "height": 766
+        },
+        "horizontalOverflow": false,
+        "scroll": {
+          "x": 0,
+          "y": 12
+        },
+        "activeView": "app-visual-view",
+        "question": {
+          "x": 63,
+          "y": 420.72,
+          "width": 234,
+          "height": 25.19,
+          "visible": true
+        },
+        "controls": {
+          "x": 63,
+          "y": 476.84,
+          "width": 234,
+          "height": 113,
+          "visible": true
+        },
+        "nestedChoices": []
+      }
+    },
+    {
+      "routeId": "ROUTE-PLAN40-RESPONSIVE-VIEWPORTS",
+      "context": "production-default-v7",
+      "motionMode": "standard-motion",
+      "file": "reports/development/plan-40-unlike-denominator-subtraction-batch/evidence/transform-360x740.png",
+      "caption": "Unlike subtraction transform beat at 360x740",
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "layout": {
+        "viewport": {
+          "width": 360,
+          "height": 740
+        },
+        "document": {
+          "width": 360,
+          "height": 792
+        },
+        "horizontalOverflow": false,
+        "scroll": {
+          "x": 0,
+          "y": 12
+        },
+        "activeView": "app-visual-view",
+        "question": {
+          "x": 63,
+          "y": 405.78,
+          "width": 234,
+          "height": 75.56,
+          "visible": true
+        },
+        "controls": {
+          "x": 63,
+          "y": 405.78,
+          "width": 234,
+          "height": 190.56,
+          "visible": true
+        },
+        "nestedChoices": []
+      }
+    },
+    {
+      "routeId": "ROUTE-PLAN40-RESPONSIVE-VIEWPORTS",
+      "context": "production-default-v7",
+      "motionMode": "standard-motion",
+      "file": "reports/development/plan-40-unlike-denominator-subtraction-batch/evidence/operate-hatch-360x740.png",
+      "caption": "Unlike subtraction operate beat with removal hatch marks at 360x740",
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "layout": {
+        "viewport": {
+          "width": 360,
+          "height": 740
+        },
+        "document": {
+          "width": 360,
+          "height": 894
+        },
+        "horizontalOverflow": false,
+        "scroll": {
+          "x": 0,
+          "y": 12
+        },
+        "activeView": "app-visual-view",
+        "question": {
+          "x": 63,
+          "y": 360.72,
+          "width": 234,
+          "height": 25.19,
+          "visible": true
+        },
+        "controls": {
+          "x": 63,
+          "y": 416.84,
+          "width": 234,
+          "height": 240.59,
+          "visible": true
+        },
+        "nestedChoices": []
+      }
+    },
+    {
+      "routeId": "ROUTE-PLAN40-RESPONSIVE-VIEWPORTS",
+      "context": "production-default-v7",
+      "motionMode": "standard-motion",
+      "file": "reports/development/plan-40-unlike-denominator-subtraction-batch/evidence/help-360x740.png",
+      "caption": "Unlike subtraction operate beat with help cue at 360x740",
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "layout": {
+        "viewport": {
+          "width": 360,
+          "height": 740
+        },
+        "document": {
+          "width": 360,
+          "height": 975
+        },
+        "horizontalOverflow": false,
+        "scroll": {
+          "x": 0,
+          "y": 12
+        },
+        "activeView": "app-visual-view",
+        "question": {
+          "x": 63,
+          "y": 360.72,
+          "width": 234,
+          "height": 25.19,
+          "visible": true
+        },
+        "controls": {
+          "x": 63,
+          "y": 416.84,
+          "width": 234,
+          "height": 321.38,
+          "visible": true
+        },
+        "nestedChoices": []
+      }
+    },
+    {
+      "routeId": "ROUTE-PLAN40-RESPONSIVE-VIEWPORTS",
+      "context": "production-default-v7",
+      "motionMode": "standard-motion",
+      "file": "reports/development/plan-40-unlike-denominator-subtraction-batch/evidence/resolve-360x740.png",
+      "caption": "Unlike subtraction resolve beat at 360x740",
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "layout": {
+        "viewport": {
+          "width": 360,
+          "height": 740
+        },
+        "document": {
+          "width": 360,
+          "height": 740
+        },
+        "horizontalOverflow": false,
+        "scroll": {
+          "x": 0,
+          "y": 0
+        },
+        "activeView": "app-visual-view",
+        "question": {
+          "x": 63,
+          "y": 372.72,
+          "width": 234,
+          "height": 25.19,
+          "visible": true
+        },
+        "controls": {
+          "x": 63,
+          "y": 428.84,
+          "width": 234,
+          "height": 44,
+          "visible": true
+        },
+        "nestedChoices": []
+      }
+    }
+  ]
+}
