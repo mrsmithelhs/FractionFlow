@@ -125,6 +125,8 @@ describe('Plan 14 Reachable Behavior Route Contract & Matrix Schema', () => {
       'addition-semantics',
       'clipped-takeaway-bar',
       'erased-removal-marks',
+      'operation-draft-loss',
+      'operation-wrong-focus',
       'premature-answer-leak',
     ]);
   });

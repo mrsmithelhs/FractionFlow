@@ -1,4 +1,4 @@
-import { readFileSync } from 'node:fs';
+import { readdirSync, readFileSync } from 'node:fs';
 import { describe, it, expect, beforeEach, afterEach } from 'vitest';
 import { setupMockDOM, teardownMockDOM } from './fixtures/mock-dom.js';
 import { createFractionBarRenderer } from '../src/render/fraction-bar.js';
@@ -456,17 +456,11 @@ describe('Renderer Purity & Determinism by Construction (Requirement 2, Conditio
   });
 
   it('statically verifies module isolation: render modules never import from math/content or call arithmetic functions', () => {
-    const renderFiles = [
-      'contract.js',
-      'strings.js',
-      'fraction-bar.js',
-      'symbolic.js',
-      'controls.js',
-      'matching-choice.js',
-      'beat-container.js',
-      'linear-path.js',
-      'index.js',
-    ];
+    // Inventory source modules from disk so a new renderer module is covered
+    // without a second hand-maintained filename list.
+    const renderFiles = readdirSync(new URL('../src/render/', import.meta.url))
+      .filter((file) => file.endsWith('.js'));
+    expect(renderFiles.length).toBeGreaterThan(0);
 
     for (const file of renderFiles) {
       const source = readFileSync(new URL(`../src/render/${file}`, import.meta.url), 'utf8');

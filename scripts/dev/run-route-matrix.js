@@ -108,6 +108,18 @@ const plan18WitnessSeeds = Object.freeze({
   },
 });
 const plan38WitnessSeeds = Object.freeze({
+  'operation-draft-loss': {
+    routeId: 'ROUTE-PLAN38-VIEW-TOGGLE-DRAFT-PRESERVATION',
+    injectBeforeDescription: 'Switch to linear view by pointer',
+    mutation: 'erase-operation-draft',
+    failure: 'input value on "#linear-operate-fraction-denominator-input" was "", expected "8"',
+  },
+  'operation-wrong-focus': {
+    routeId: 'ROUTE-PLAN38-VIEW-TOGGLE-DRAFT-PRESERVATION',
+    injectBeforeDescription: 'Switch to linear view by pointer',
+    mutation: 'focus-denominator-after-view-switch',
+    failure: 'expected ".app-linear-view #linear-operate-fraction-numerator-input" to have focus',
+  },
   'erased-removal-marks': {
     routeId: 'ROUTE-PLAN38-DEEP-SAMPLE-ZERO-DIFFERENCE',
     injectBeforeDescription: 'Plan 38: assert visible hatch and non-leakage at operate',
@@ -2840,6 +2852,22 @@ async function runRouteMatrix(options = {}) {
             const seed = plan38WitnessSeeds[plan38WitnessSeed];
             if (seed.style) {
               await page.addStyleTag({ content: seed.style });
+            } else if (seed.mutation === 'erase-operation-draft') {
+              await page.locator('.app-view-controls .app-secondary-button').evaluate((toggle) => {
+                toggle.addEventListener('click', () => {
+                  const denominator = document.querySelector('.app-linear-view #linear-operate-fraction-denominator-input');
+                  if (!denominator) throw new Error('Plan 38 draft-loss seed could not find the newly mounted denominator.');
+                  denominator.value = '';
+                }, { once: true });
+              });
+            } else if (seed.mutation === 'focus-denominator-after-view-switch') {
+              await page.locator('.app-view-controls .app-secondary-button').evaluate((toggle) => {
+                toggle.addEventListener('click', () => {
+                  const denominator = document.querySelector('.app-linear-view #linear-operate-fraction-denominator-input');
+                  if (!denominator) throw new Error('Plan 38 wrong-focus seed could not find the newly mounted denominator.');
+                  denominator.focus();
+                }, { once: true });
+              });
             } else if (seed.mutation === 'leak-answer') {
               await page.locator('.app-visual-view .active-beat-prompt').evaluate((el) => {
                 const span = document.createElement('span');

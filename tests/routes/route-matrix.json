@@ -12908,40 +12908,89 @@
         {
           "step": 5,
           "method": "click",
-          "target": ".app-view-controls .app-secondary-button",
-          "description": "Switch to linear view"
+          "target": ".app-visual-view #operate-fraction-numerator-input",
+          "description": "Click the primary numerator before the pointer view switch"
         },
         {
           "step": 6,
+          "method": "click",
+          "target": ".app-view-controls .app-secondary-button",
+          "description": "Switch to linear view by pointer"
+        },
+        {
+          "step": 7,
           "method": "assert",
           "target": ".app-linear-view",
-          "description": "Assert draft values preserved in linear view",
+          "description": "Assert both raw draft values and primary-field focus after pointer view switch",
           "assertions": [
             {
-              "type": "hasSelector",
-              "target": "#linear-operate-fraction-numerator-input"
+              "type": "inputValueEquals",
+              "target": "#linear-operate-fraction-numerator-input",
+              "value": "3"
+            },
+            {
+              "type": "inputValueEquals",
+              "target": "#linear-operate-fraction-denominator-input",
+              "value": "8"
             }
           ]
         },
         {
-          "step": 7,
+          "step": 8,
+          "method": "assertFocused",
+          "target": ".app-linear-view #linear-operate-fraction-numerator-input",
+          "description": "Assert pointer-driven focus preservation targets the primary numerator"
+        },
+        {
+          "step": 9,
           "method": "fill",
           "target": ".app-linear-view #linear-operate-fraction-numerator-input",
           "value": "1",
           "description": "Update draft numerator to 1 in linear view"
         },
         {
-          "step": 8,
+          "step": 10,
           "method": "fill",
           "target": ".app-linear-view #linear-operate-fraction-denominator-input",
           "value": "4",
           "description": "Update draft denominator to 4 in linear view"
         },
         {
-          "step": 9,
-          "method": "click",
+          "step": 11,
+          "method": "focus",
           "target": ".app-view-controls .app-secondary-button",
-          "description": "Switch back to visual view"
+          "description": "Move to the toggle for a keyboard view switch"
+        },
+        {
+          "step": 12,
+          "method": "pressKey",
+          "target": ".app-view-controls .app-secondary-button",
+          "value": "Enter",
+          "description": "Switch back to visual view by keyboard"
+        },
+        {
+          "step": 13,
+          "method": "assert",
+          "target": ".app-visual-view",
+          "description": "Assert both updated raw values and toggle focus after keyboard view switch",
+          "assertions": [
+            {
+              "type": "inputValueEquals",
+              "target": "#operate-fraction-numerator-input",
+              "value": "1"
+            },
+            {
+              "type": "inputValueEquals",
+              "target": "#operate-fraction-denominator-input",
+              "value": "4"
+            }
+          ]
+        },
+        {
+          "step": 14,
+          "method": "assertFocused",
+          "target": ".app-view-controls .app-secondary-button",
+          "description": "Assert keyboard activation leaves focus on the view toggle"
         }
       ],
       "expect": {
@@ -12951,8 +13000,14 @@
         },
         "assertions": [
           {
-            "type": "hasSelector",
-            "target": "#operate-fraction-numerator-input"
+            "type": "inputValueEquals",
+            "target": "#operate-fraction-numerator-input",
+            "value": "1"
+          },
+          {
+            "type": "inputValueEquals",
+            "target": "#operate-fraction-denominator-input",
+            "value": "4"
           }
         ]
       }
