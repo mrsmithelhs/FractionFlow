@@ -1,135 +1,115 @@
 # FractionFlow orchestration handoff
 
-Updated 2026-10-21. Read current packet board and git status before acting.
-This replaces the accumulated historical pending-state notes; earlier reviews
-remain in their packet report directories and Git history.
+Updated 2026-10-21. Read AGENTS.md, the orchestrator starting prompt, current
+packet board and git status before acting. Earlier checkpoint states are in Git
+and each packet's reports; this document records the current state.
 
-LATEST OWNER DISPOSITION: Plan 42 is accepted and complete; see its
-owner-acceptance.md. MAINT-42-A is discharged with efficiency/readability limits
-retained. Owner authorized Plan 39 execution with the same supervised Luna-medium
-implementation / Sol-low-or-medium instruction-read-only review arrangement.
-Plan 39 is now in-progress and RUNNABLE. Its Requirement 0 stops before source,
-then Checkpoints 1 and 2 remain. Parent owns all gates, status and acceptance;
-no push/deployment. The baseline can reuse final Plan 42 checks only after
-verifying unchanged source/tests/dependency/runner inputs. Older pending-closure
-and no-Plan-39-authorization statements below are superseded by this paragraph.
+## Owner direction and board
 
-Plan 39 active checkpoint: Luna-medium child /root/plan39_luna completed R0 at
-`e5f3d0b`, refined at `a163574` after parent and Sol-medium instruction-read-only
-review. Mechanism approved `c629997`; Stages 1–3 only are now authorized. Child
-must stop at Checkpoint 1 before app/render/styles edits. Proposal is a unary
-bridge instance/content identity, exact bridge-only v7 context, offered-wire
-candidate membership, endpoint-inclusive high candidates and task-local preview
-handle. Benchmark/proximity truth is projected upstream; no renderer math truth.
-Frozen v6 initial/help/recovery/completed oracles were saved before source and
-parent independently deep-compared all four; preserve existing v1-v5 bytes.
-MAINT-42-B initial fit assessment accepted task-local adaptation, reopen on actual
-contract conflict; MAINT-42-C remains. Parent owns gates/status and source review.
+The owner accepted and closed Plan 42, then authorized this orchestrator to run
+Plan 39 with supervised Luna-medium implementation and Sol read-only low/medium
+advisors. Plan 42 is complete; Plan 39 is in-progress and RUNNABLE. No push,
+deployment, additional plan or automatic owner acceptance is authorized.
 
-Plan 39 Checkpoint 1 update: Stages1–3 source is `11a4f17`, test/report repair
-`2552022`; parent approval `3271e8e`. Child full501tests/bothbuilds passed;
-parent19affectedtests and independent74offeredproposals/16contexts passed.
-Sol-medium instruction-read-only review found no blocking source issue, one
-coverage/report mismatch corrected before approval. Luna /root/plan39_luna is
-now implementing Stages4–5 app/render/styles with bounded mounted Chrome probe.
-Must stop at Checkpoint2 before route matrix changes/finalcaptures. Parent must
-inspect actual >=44px nonoverlapping/hittable targets, source/line endpoints and
-accepted shade connector, preview/help/recovery/focus/reset, all viewportbounds
-and scrolling, concise/nonleakingcopy. No route matrix/fullroute run yet. Parent
-owns reviewrecords/status; child commits its scopedsource+checkpoint artifacts.
+Plans 40 and 41 are complete. The bounded Phase 3 checkpoint and maintainability
+prerequisites are satisfied. Plan 39 implements the adopted Plan 37 same-amount
+bar-to-line bridge on [0,1], eight fixed items, high/medium support, preview then
+explicit Check, exact math, accessible linear participation and non-drag controls.
 
-Mid-Stage4 steering (not a delivered defect): partial renderer used getPreview/
-setPreview callbacks and cross-view synchronizePreview instead of approved
-read/write opaque candidate-id handle; visual dots were passive with a radio
-grid below. Parent directed correction before evidence: current region owns
-read/write/fresh controls/contextvalidation, app opaque descriptor+capture/restore,
-no cross-renderer synchronization; visual direct spatial targets or approved
-stepper, native radio group for linear. Do not approve a substitute text quiz.
-Also clarified Number(n)/Number(d) for pixels/percent is permitted drawing math;
-renderer must not compute correctness/recovery/benchmark truth or import math.
-No interaction scene extension is needed just to duplicate a coordinate.
+## Active Plan 39 run — Checkpoint 2 repair
 
-## Current run
+Parent is /root. Implementation child /root/plan39_luna is active on Repair 01.
+Use collaboration tools to supervise; no separate durable implementer chat.
+Advisor /root/plan39_sol_mechanism is idle after instruction-read-only reviews.
+Requested Sol medium; runtime identity is not independently verified. No Astra,
+child fan-out, model substitution or new advisors without a concrete need.
 
-The owner directed this chat to execute Plan 42 carefully using supervised Luna
-implementation and occasional Sol read-only low/medium advisors. Plan 42 is
-delivered and technically accepted, awaiting owner acceptance/closure. Mechanism approval: `246f770`; guarded A: `d7936a7`, accepted at
-`6d455e7`; extraction `cad9144`, corrected final source B: `436e54a`.
-No source changes after B. No Plan 39, push or deployment authorized.
+Current submitted UI source is ad913ce. Checkpoint 2 is NOT accepted. Parent
+inspected actual mobile PNGs and Sol inspected source/probe. Passing 503 tests
+and builds did not establish the UI or browser criteria. The consolidated repair
+is committed at 0c5422f:
+reports/development/plan-39-number-line-locate-and-bar-bridge-batch/repair-01-brief.md
 
-The parent approved each gate. One Sol-medium read-only review found two guard
-contract issues (wrong scheduled-task property and disconnected-host semantics);
-both were corrected together and independently checked. Full final B unit suite:
-496 tests; both builds passed. Parent passed initial 494 tests and corrected 23
-focused tests, then three current-build Chrome routes with real mounted values
-and pointer/keyboard focus assertions. Physical-device/AT evidence is absent.
+Findings to repair together:
 
-Two cold Luna-medium maintenance workers ran serially with the same F1 brief in
-isolated worktrees. Their source patches were NOT merged. Parent verified both,
-archived reports/patches/probes/receipts in Plan 42 evaluation/, and removed the
-evaluation worktrees. Main report archive commit: `b0137a1`. Locality improved
-four render source files to three; total agent efficiency and owner markup
-readability remain inconclusive. Both workers initially overscoped association
-and needed parent correction. See maintenance-evaluation.md, not raw counts alone.
+- Visual choices are a separate Step0…8 grid below passive dots, not the adopted
+  spatial targets or stepper. Prefer the approved discrete visual stepper;
+  retain native radios for the linear path.
+- The custom fraction rule stretches across the card. Reuse createSymbolicFraction.
+  SVG bars/benchmark labels shrink illegibly at360. Keep readable CSS dimensions,
+  compact layout and both aligned endpoints/continuous resolve connector.
+- Prompt and full controls fail required viewport containment. Ordinary scrolling
+  is allowed, but assert both at one documented common task viewport position.
+- A stale captured track node causes NotFoundError on repeated/restored preview.
+- Help aria-controls IDs do not match the paragraph IDs; Continue loses focus.
+- The bounded browser probe has no assertions. checkStillRequired is false in
+  all eight saved cases because it inspects the hidden visual view after switching
+  to linear. Successful execution is not a pass.
 
-Production child /root/plan42_luna completed final evidence: full final B Chrome
-matrix 83/83, five targeted intended-seed failures with no unexpected failures,
-matched A/B captures, parity-evidence.md and ownership-map reconciliation.
-Evidence commit is `5d07ebe`; child progress-last commit is `af0a551`.
-Parent recorded delivered status and passed packet lint and diff checks.
-The baseline learner-only full-matrix attempt failed four prototype routes due
-to the missing prototype build; do not repeat it. Record setup failure honestly.
-Historical outputs were restored byte-for-byte. Baseline A native worktree was
-verified clean and removed after evidence archival. Only main remains registered.
+Repair scope: narrow app/render/style/tests and report-local evidence. No upstream
+content/math/replay changes without a reproduced, reported conflict. Preserve the
+failed checkpoint evidence as history; save repaired receipts separately. Require
+repeated selection/view switches/actual Check, wrong submission/help/reset/focus,
+real viewport/DPR and enforcing geometry/containment assertions, plus two small
+failing-first probes. Source/evidence commit, checkpoint report last, then STOP.
+No Stage 6 route changes until parent re-review. Owner rendered/agency acceptance
+and deployment remain separate.
 
-Parent-owned independent-browser-review.json and orchestration-final-review.md
-record current checks. The latter accepts technical delivery, not owner closure.
-All nine fresh capture measurement objects agree A/B; eight PNG hashes match.
-One desktop visual single-input pair differs in bytes near existing motion but
-shows no visible layout change on parent inspection. Mobile scrolling persists.
-Do not claim all controls fit initial viewport or broad settled-pixel parity.
+## Accepted upstream baseline and evidence
 
-## Remaining orchestration steps
+- d98a722: Plan 42 owner closure and Plan 39 initiation.
+- e5f3d0b: original Requirement 0; a163574: refined unary mechanism and pre-source
+  frozen v6 initial/help/recovery/completed envelopes with complete states.
+- c629997: mechanism approval. Include high partition endpoints k=0…b. Odd thirds
+  have a separate nonselectable half benchmark. Sparse spoken labels are distinct
+  structural/benchmark descriptions, never literal target-fraction matching.
+- 11a4f17: Stages 1–3 source. 2552022: bounded test/report repair. 3271e8e:
+  Checkpoint 1 approval. Child passed 501 tests and both builds; parent passed
+  19 affected tests and independently exercised all 74 offered proposals across
+  16 item/support combinations, all four recovery categories and accepted replay.
 
-1. Obtain owner acceptance of the technical refactor and bounded evaluation result;
-   do not close Plan 42 automatically. No need another full suite absent changes.
-2. On acceptance, record MAINT-42-A disposition and close with written resolution.
-3. Recommend Plan 39 for a separate owner dispatch, beginning with its mechanism
-   gate and MAINT-42-B preview-fit assessment. Do not start it automatically.
+The bridge is genuinely unary, with a separate validated instance/content identity,
+registry reconstruction and bridge-only replay v7. Old binary paths and v1–v6
+replay remain preserved. Existing frozen fixture bytes are unchanged. Do not
+regenerate the pre-source v6 oracle. New round trips are not historical proof.
 
-## Sequence and boundaries
+App owns opaque preview storage/reset/focus timing. The current region owns
+read/write of candidate-id drafts, current controls and submission; renderers own
+mounting/invalidation. Validate item/candidate-set/support/locate context. No
+cross-renderer synchronization or forced arithmetic draft. Pixel ratios from
+validated wire forms are allowed drawing geometry; renderers must not decide
+correctness, recovery or benchmark truth or import math for those decisions.
 
-Plan 40 is complete: owner accepted current screens and bounded Phase 3 checkpoint.
-Plan 41 is complete: refined investigation adopted under DECISION-048.
-Plan 42 precedes Plan 39. Plan 39 remains draft; no automatic launch on technical
-refactor delivery. Plan 23 local console is still a separate draft.
+## Next orchestration actions
 
-MAINT-42-A: pilot ownership/parity/evaluation disposition at acceptance.
-MAINT-42-B: assess unconfirmed preview fit at Plan 39 Requirement 0; no forced
-fraction-shaped draft contract. MAINT-42-C: after Plan 39 technical delivery,
-before closure, reassess decide/transform ownership and duplicated remount tokens;
-revisit admission/shared harness only on actual demonstrated cost. Vue/template
-readability remains unresolved, not automatically funded or rejected.
+1. Await Luna Repair 01 report. Inspect actual PNGs, assertions and source, then
+   independently run a bounded mounted sample. Reuse Sol only for an unresolved
+   substantive concern, not another broad review of mechanical corrections.
+2. Accept Checkpoint 2 only when the actual task, lifecycle and enforcing evidence
+   satisfy the brief. Then authorize Stage 6 route additions and five real seeds.
+3. Final source requires full tests, both builds, full browser matrix, historical
+   evidence restoration, frozen replay proof, screenshots and progress last.
+4. Record technical delivery and MAINT-42-C reassessment, then ask owner to accept
+   the new feature. Do not close Plan 39 or deploy automatically.
 
-Read docs/development/phase-3-follow-up-obligations.md for preserved pedagogical
-and scale obligations. Number-line design was adopted in Plan 37/DECISION-046;
-Plan 39 has separate mechanism and staged gates. Phase 4 magnitude comparison
-research/design notes are in docs/development/phase-4-magnitude-comparison-notes.md;
-they do not authorize implementation.
+## Retained obligations and operating discipline
 
-## Working discipline
+MAINT-42-A is discharged with Plan 42 owner acceptance. Its isolated F1 exercise
+showed four render-source edit files becoming three, not proven total token/time
+savings or settled markup readability; neither F1 patch was merged. MAINT-42-B
+accepted a small task-local preview adaptation at Plan 39's mechanism gate;
+reopen on actual contract conflict. MAINT-42-C is due before Plan 39 closure:
+reassess decide/transform ownership, duplicated remount tokens, and actual admission
+or shared-harness cost. No automatic framework or broad refactor is approved.
 
-Read AGENTS.md and orchestrator starting prompt. Keep math -> instructional state
--> presentation; exact math/content/interaction/replay are untouched by Plan 42.
-Luna bounded children are authorized; Sol advisors read-only low/medium; no Astra,
-child fan-out, model substitution or durable implementer chat without authority.
-One source writer at a time, cold self-contained briefs, parent-held gates.
-Never confuse tests passing with behavior, instruction-read-only review with
-independent execution, temporary F1 screens with product, or local acceptance
-with deployment. Do not infer timing/billing from cumulative agent counters.
+Read phase-3-follow-up-obligations.md for pedagogical/scale work. Phase 4 magnitude
+comparison notes remain design/research, not source authorization. Plan 23 local
+console remains separate. Preserve owner-selected sequencing.
 
-Git metadata may require narrow elevation. Stage explicit owned paths, never
-remove an index lock or alter ACLs. Historical route runs generate old report
-images/JSON: snapshot and restore only known generated outputs. Do not blanket
-checkout reports or kill unrelated processes. Machine-local companion locations
-belong in ignored .env, not committed documents.
+Keep one source writer; parent review/docs paths are separate. Stage explicit
+owned paths. Git metadata may need narrow elevation; never delete locks or alter
+ACLs. No blanket checkout of reports: route runs rewrite historical PNG/JSON
+outputs, so snapshot and restore only known generated artifacts byte-for-byte.
+Existing Playwright and explicit Chrome work; do not install dependencies or kill
+unrelated processes. The previous baseline/evaluation worktrees were removed.
+Browser emulation does not establish physical-device or assistive-technology use.
