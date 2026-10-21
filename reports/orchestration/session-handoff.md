@@ -1,5 +1,13 @@
 # FractionFlow orchestration handoff
 
+Plan 42 drafted at owner request: `plan-42-operate-response-ownership-pilot.md`.
+It consolidates prerequisite guard repair, reviewed baseline A, bounded vanilla
+operate extraction B and isolated F1 maintenance evaluation. Draft only, no source
+dispatch/approval. Plan 41 remains delivered pending adoption; Plan 39 now depends
+on the named draft Plan 42 as the proposed prerequisite. Do not infer source
+authorization from packet creation. Recovery stays shell-owned; F1 is experimental
+only and not production copy. Vue/admission/remount/general framework work deferred.
+
 Latest Plan 41 disposition: investigation delivered at `ddf081c`, reviewed in
 reports/development/plan-41-phase-boundary-maintainability-investigation/orchestration-review.md.
 Owner directly approved its scope. Recommend one staged source packet: targeted
