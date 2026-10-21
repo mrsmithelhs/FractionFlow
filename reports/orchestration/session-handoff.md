@@ -1,5 +1,13 @@
 # FractionFlow orchestration handoff
 
+Latest owner disposition 2026-10-20: owner accepted current Plan 40 screens and
+directed closure; Plan 40 is COMPLETE with bounded Phase 3 checkpoint recorded in
+reports/development/plan-40-unlike-denominator-subtraction-batch/owner-acceptance.md.
+Plan 41 is READY and checks RUNNABLE, awaiting investigator dispatch and Requirement
+0 scope confirmation. No investigator has been started by this chat. Plan 39 stays
+draft under DECISION-047. All earlier pending-acceptance statements below are
+historical. No refactor, push or deployment authorized.
+
 Current disposition 2026-10-20: Plan 40 final consolidated repair (`01eddf6`,
 `da1a453`) is TECHNICALLY ACCEPTED, pending owner screen/agency acceptance and
 explicit bounded Phase 3 checkpoint adoption. Read

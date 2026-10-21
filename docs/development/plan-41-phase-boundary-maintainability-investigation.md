@@ -1,11 +1,9 @@
 ---
 id: plan-41
 title: Phase-Boundary Maintainability and Response Ownership Investigation
-status: draft
+status: ready
 depends_on: [plan-40]
 gate: "Investigation only after Plan 40 closure and owner Phase 3 checkpoint. Owner adoption of findings and a separately approved source packet are required for any refactor or framework experiment. Plan 39 activation waits for the investigation disposition and any adopted prerequisite refactor."
-superseded_by: null
-resolution: null
 summary: >-
   Investigate response lifecycle ownership, practice admission and representation
   integration at the Phase 3 boundary. Trace representative maintenance changes,

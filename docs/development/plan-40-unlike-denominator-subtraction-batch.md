@@ -1,7 +1,8 @@
 ---
 id: plan-40
 title: Unlike-Denominator Subtraction Recipes and Curated Batch
-status: delivered
+status: complete
+resolution: "Owner accepted current rendered screens and authorized closure after independent technical acceptance of consolidated repair (01eddf6, da1a453). Bounded Phase 3 proper-fraction bar checkpoint adopted; retained learning, representation, device and accessibility obligations remain open. DECISION-047 sequences Plan 41 before Plan 39. No push or deployment authorized."
 depends_on: [plan-35, plan-38]
 gate: "Requirement 0: approve exact renaming-to-takeaway operate transition, recipe/record schema, 8-to-10 item batch + holdouts, and replay v6 contract before source changes. Staged technical review, owner rendered-page/agency acceptance, and Roadmap §31/§90 Phase 3 exit disposition."
 summary: >-
