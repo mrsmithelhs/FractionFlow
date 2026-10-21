@@ -26,6 +26,18 @@ parent independently deep-compared all four; preserve existing v1-v5 bytes.
 MAINT-42-B initial fit assessment accepted task-local adaptation, reopen on actual
 contract conflict; MAINT-42-C remains. Parent owns gates/status and source review.
 
+Plan 39 Checkpoint 1 update: Stages1–3 source is `11a4f17`, test/report repair
+`2552022`; parent approval `3271e8e`. Child full501tests/bothbuilds passed;
+parent19affectedtests and independent74offeredproposals/16contexts passed.
+Sol-medium instruction-read-only review found no blocking source issue, one
+coverage/report mismatch corrected before approval. Luna /root/plan39_luna is
+now implementing Stages4–5 app/render/styles with bounded mounted Chrome probe.
+Must stop at Checkpoint2 before route matrix changes/finalcaptures. Parent must
+inspect actual >=44px nonoverlapping/hittable targets, source/line endpoints and
+accepted shade connector, preview/help/recovery/focus/reset, all viewportbounds
+and scrolling, concise/nonleakingcopy. No route matrix/fullroute run yet. Parent
+owns reviewrecords/status; child commits its scopedsource+checkpoint artifacts.
+
 ## Current run
 
 The owner directed this chat to execute Plan 42 carefully using supervised Luna
