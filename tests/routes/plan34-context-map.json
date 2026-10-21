@@ -79,7 +79,17 @@
     "ROUTE-PLAN40-DEEP-SAMPLE-IDENTIFY-REDUCIBLE": "production-default-v7",
     "ROUTE-PLAN40-HELP-RECOVERY-VIEW-TOGGLE": "production-default-v7",
     "ROUTE-PLAN40-RESPONSIVE-VIEWPORTS": "production-default-v7",
-    "ROUTE-PLAN40-CHROMEBOOK-SCALED-VIEWPORT": "production-default-v7"
+    "ROUTE-PLAN40-CHROMEBOOK-SCALED-VIEWPORT": "production-default-v7",
+    "ROUTE-PLAN39-BRIDGE-VISUAL-ALL-8": "production-default-v7",
+    "ROUTE-PLAN39-BRIDGE-LINEAR-ALL-8": "production-default-v7",
+    "ROUTE-PLAN39-DEEP-SAMPLE-UNREDUCED-TWO-FOURTHS": "production-default-v7",
+    "ROUTE-PLAN39-DEEP-SAMPLE-ODD-THIRDS-B3": "production-default-v7",
+    "ROUTE-PLAN39-DEEP-SAMPLE-HIGH-EIGHTHS-B8": "production-default-v7",
+    "ROUTE-PLAN39-DEEP-SAMPLE-MEDIUM-07-08": "production-default-v7",
+    "ROUTE-PLAN39-RECOVERY-HELP-PREVIEW": "production-default-v7",
+    "ROUTE-PLAN39-RESPONSIVE-360X752": "production-default-v7",
+    "ROUTE-PLAN39-RESPONSIVE-1366X768": "production-default-v7",
+    "ROUTE-PLAN39-RESPONSIVE-1093X614-DPR125": "production-default-v7"
   },
   "plan40-unlike-subtraction": {
     "practiceSetId": "unlike-subtraction-vetted-set",

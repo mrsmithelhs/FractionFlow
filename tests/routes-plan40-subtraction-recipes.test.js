@@ -256,9 +256,9 @@ describe('Plan 40 Reachable Behavior Route Contract & Subtraction Recipes Matrix
     );
   });
 
-  it('preserves existing 73 route rows and expands to 83 total browser executions', () => {
-    expect(matrix.routes).toHaveLength(81);
+  it('declares 91 route rows and 93 total browser executions for the expanded matrix', () => {
+    expect(matrix.routes).toHaveLength(91);
     const executions = expandRouteExecutions(matrix.routes);
-    expect(executions).toHaveLength(83);
+    expect(executions).toHaveLength(93);
   });
 });

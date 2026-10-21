@@ -161,6 +161,13 @@ const plan38WitnessSeeds = Object.freeze({
     failure: 'selector "#operate-fraction-numerator-input" not found.',
   },
 });
+const plan39WitnessSeeds = Object.freeze({
+  'misaligned-endpoints': { routeId: 'ROUTE-PLAN39-DEEP-SAMPLE-HIGH-EIGHTHS-B8', failure: 'Plan39 endpoint alignment assertion failed' },
+  'premature-target-leak': { routeId: 'ROUTE-PLAN39-DEEP-SAMPLE-HIGH-EIGHTHS-B8', failure: 'Plan39 pre-submit target leakage assertion failed' },
+  'undersized-touch-target': { routeId: 'ROUTE-PLAN39-DEEP-SAMPLE-HIGH-EIGHTHS-B8', failure: 'Plan39 touch target assertion failed' },
+  'single-tap-auto-submit': { routeId: 'ROUTE-PLAN39-DEEP-SAMPLE-HIGH-EIGHTHS-B8', failure: 'Plan39 preview-before-submit assertion failed' },
+  'coarse-bucket-sr-collapse': { routeId: 'ROUTE-PLAN39-DEEP-SAMPLE-HIGH-EIGHTHS-B8', failure: 'Plan39 linear candidate descriptions assertion failed' },
+});
 const plan40WitnessSeeds = Object.freeze({
   'erased-takeaway-hatch-after-transform': {
     routeId: 'ROUTE-PLAN40-DEEP-SAMPLE-CONSTRUCT-OPERATE',
@@ -411,8 +418,8 @@ async function validateMatrixIntegrity(matrix, registeredConditions, suppliedCon
       if (route.id.startsWith('ROUTE-PLAN18-') && context !== 'historical-v6') {
         errors.push(`Historical Plan 18 route "${route.id}" must exercise its pinned historical-v6 fixture.`);
       }
-      if ((route.id.startsWith('ROUTE-PLAN34-') || route.id.startsWith('ROUTE-PLAN35-') || route.id.startsWith('ROUTE-PLAN38-')) && context !== 'production-default-v7') {
-        errors.push(`Current Plan 34/35/38 route "${route.id}" must exercise production-default-v7.`);
+      if ((route.id.startsWith('ROUTE-PLAN34-') || route.id.startsWith('ROUTE-PLAN35-') || route.id.startsWith('ROUTE-PLAN38-') || route.id.startsWith('ROUTE-PLAN39-')) && context !== 'production-default-v7') {
+        errors.push(`Current Plan 34/35/38/39 route "${route.id}" must exercise production-default-v7.`);
       }
       if (route.id.startsWith('ROUTE-PLAN40-') && context !== 'production-default-v7') {
         errors.push(`Current Plan 40 route "${route.id}" must exercise production-default-v7.`);
@@ -453,6 +460,9 @@ async function validateMatrixIntegrity(matrix, registeredConditions, suppliedCon
     'completePlan35LiveSet',
     'completePlan38SubtractionSet',
     'completePlan40SubtractionSet',
+    'completePlan39BridgeSet',
+    'completePlan39BridgeRecovery',
+    'plan39Witness',
   ]);
 
   for (const route of matrix.routes) {
@@ -571,7 +581,8 @@ async function validateMatrixIntegrity(matrix, registeredConditions, suppliedCon
           || !(action.file.startsWith('reports/development/plan-34-reusable-full-addition-task-patterns/evidence/')
             || action.file.startsWith('reports/development/plan-18-nested-denominator-addition/evidence/')
             || action.file.startsWith('reports/development/plan-38-like-denominator-subtraction-batch/evidence/')
-            || action.file.startsWith('reports/development/plan-40-unlike-denominator-subtraction-batch/evidence/'))
+            || action.file.startsWith('reports/development/plan-40-unlike-denominator-subtraction-batch/evidence/')
+            || action.file.startsWith('reports/development/plan-39-number-line-locate-and-bar-bridge-batch/evidence/'))
           || action.file.includes('..') || typeof action.caption !== 'string' || !action.caption.trim())) {
         errors.push(`Route "${route.id}" screenshot action must name a scoped evidence file and caption.`);
       }
@@ -634,6 +645,10 @@ async function validateMatrixIntegrity(matrix, registeredConditions, suppliedCon
             errors.push(`FATAL (Condition A): Route "${route.id}" step ${action.step} fast-forward must specify "witnessRouteId".`);
           }
         }
+      }
+      if (['completePlan39BridgeSet', 'completePlan39BridgeRecovery'].includes(action.method)
+        && (!['visual', 'linear'].includes(action.view) || !['high-support', 'medium-support'].includes(action.supportProfile))) {
+        errors.push(`Route "${route.id}" step ${action.step} Plan 39 action requires a registered view and support profile.`);
       }
     }
   }
@@ -1534,6 +1549,42 @@ async function observeSubdivision(page, action, routeId) {
 
 async function executeAction(page, action, routeId) {
   switch (action.method) {
+    case 'completePlan39BridgeSet': {
+      const { buildPlan39BridgeActions } = await import('./plan39-route-bridge.mjs');
+      const generated = buildPlan39BridgeActions({ ...action, inputMode: action.inputMode || 'mouse' });
+      action.generatedActions = generated;
+      for (const generatedAction of generated) {
+        try { await executeAction(page, generatedAction, routeId); }
+        catch (error) { error.message = `${generatedAction.description}: ${error.message}`; throw error; }
+      }
+      break;
+    }
+    case 'completePlan39BridgeRecovery': {
+      const { buildPlan39RecoveryActions } = await import('./plan39-route-bridge.mjs');
+      const generated = buildPlan39RecoveryActions({ ...action, inputMode: action.inputMode || 'mouse' });
+      action.generatedActions = generated;
+      for (const generatedAction of generated) {
+        try { await executeAction(page, generatedAction, routeId); }
+        catch (error) { error.message = `${generatedAction.description}: ${error.message}`; throw error; }
+      }
+      break;
+    }
+    case 'plan39Witness': {
+      if (action.seed === 'single-tap-auto-submit') {
+        await page.locator('.app-visual-view .plan39-stepper-next').evaluate((next) => {
+          next.addEventListener('click', () => document.querySelector('.app-visual-view .plan39-check-position')?.click(), { once: true });
+        });
+        await page.locator('.app-visual-view .plan39-stepper-next').click();
+      }
+      else if (action.seed === 'misaligned-endpoints') await page.addStyleTag({ content: '.app-visual-view .plan39-axis-frame { transform: translateX(5px) !important; }' });
+      else if (action.seed === 'premature-target-leak') await page.locator('.app-visual-view .plan39-candidate-point').first().evaluate((el) => el.setAttribute('data-correct', 'true'));
+      else if (action.seed === 'undersized-touch-target') await page.addStyleTag({ content: '.app-visual-view .plan39-stepper-move { width: 20px !important; min-width: 20px !important; height: 20px !important; min-height: 20px !important; }' });
+      else if (action.seed === 'coarse-bucket-sr-collapse') {
+        await page.locator('.app-view-controls .app-secondary-button').click();
+        await page.locator('.app-linear-view .plan39-candidate').evaluateAll((labels) => labels.forEach((label) => { const text = label.querySelector('span'); const radio=label.querySelector('input'); if (text) text.textContent = 'A point between the benchmarks'; if (radio) radio.setAttribute('aria-label', 'A point between the benchmarks'); }));
+      }
+      break;
+    }
     case 'completePlan18RetainedPrefix': {
       const { buildPlan18RetainedPrefixActions } = await import('./plan18-route-prefix.mjs');
       const generated = buildPlan18RetainedPrefixActions({ view: action.view, supportProfile: action.supportProfile });
@@ -2346,6 +2397,125 @@ async function verifyAssertions(page, assertions, routeId) {
   for (const assertion of assertions) {
     const { type, target, value, attribute } = assertion;
 
+    if (type === 'plan39LocateContract') {
+      const result = await page.evaluate(() => {
+        const host = [...document.querySelectorAll('.app-visual-view, .app-linear-view')].find((element) => getComputedStyle(element).display !== 'none');
+        const locate = host?.querySelector('.plan39-check-position');
+        const root = host?.querySelector('.plan39-number-line');
+        const source = root?.querySelector('.plan39-bar-track');
+        const axis = root?.querySelector('.plan39-axis-frame');
+        const prompt = host?.querySelector('.active-beat-prompt');
+        const controls = host?.querySelector('.plan39-controls');
+        prompt?.scrollIntoView({ block: 'start' });
+        const candidates = root?.querySelectorAll('.plan39-candidate-point');
+        const radios = root?.querySelectorAll('input[type="radio"]');
+        const targets = [...(host?.querySelectorAll('.plan39-stepper-move, .plan39-candidate, .plan39-check-position, .plan39-continue') || [])];
+        const rect = (element) => { const r = element.getBoundingClientRect(); return { left:r.left, right:r.right, top:r.top, bottom:r.bottom, width:r.width, height:r.height }; };
+        const sourceBox = source && rect(source), axisBox = axis && rect(axis);
+        const labels = [...(radios || [])].map((radio) => radio.getAttribute('aria-label') || '');
+        const overlaps = targets.some((a, i) => targets.slice(i + 1).some((b) => {
+          const x = rect(a), y = rect(b);
+          return Math.min(x.right,y.right) - Math.max(x.left,y.left) > 0.5
+            && Math.min(x.bottom,y.bottom) - Math.max(x.top,y.top) > 0.5;
+        }));
+        const undersized = targets.some((element) => { const r=rect(element); return r.width < 44 || r.height < 44; });
+        const hitMiss = targets.some((element) => { const r=rect(element); const hit=document.elementFromPoint(r.left+r.width/2,r.top+r.height/2); return !hit || !(hit===element || element.contains(hit) || hit.contains(element)); });
+        const accepted = root?.querySelector('.plan39-accepted-point, .plan39-accepted-connector');
+        const boxesFit = [prompt, controls].every((element) => { if(!element) return false; const r=rect(element); return r.top >= 0 && r.bottom <= innerHeight; });
+        const accessibleLeak = [...(root?.querySelectorAll('button, input, label, [role="radio"]') || [])].some((element) => /correct candidate|target candidate|answer is/i.test(`${element.getAttribute('aria-label') || ''} ${element.getAttribute('aria-description') || ''}`));
+        return {
+          viewport: { width: innerWidth, height: innerHeight, dpr: devicePixelRatio },
+          beat: locate ? 'locate' : accepted ? 'resolved' : 'other',
+          status: locate ? 'locate' : accepted ? 'resolved' : 'other',
+          leak: Boolean(root?.matches('[data-correct="true"], [data-target="true"]') || root?.querySelector('[data-correct="true"], [data-target="true"], [data-answer="true"]') || accessibleLeak),
+          feedback: Boolean(root?.querySelector('.plan39-feedback')),
+          sourceBox, axisBox, aligned: !host?.classList.contains('app-visual-view') || Boolean(sourceBox && axisBox && Math.abs(sourceBox.left-axisBox.left)<=1 && Math.abs(sourceBox.right-axisBox.right)<=1),
+          targetCount: targets.length, undersized, overlaps, hitMiss, boxesFit,
+          radioCount: radios?.length || 0, candidateCount: candidates?.length || 0,
+          labels, distinctLabels: labels.length === 0 || new Set(labels).size === labels.length,
+          selected: root?.querySelector('.plan39-stepper-status[data-candidate-id], input[type="radio"]:checked')?.getAttribute('data-candidate-id') || null,
+          checkEnabled: Boolean(locate && !locate.disabled),
+          accepted: Boolean(accepted),
+          scroll: { x: scrollX, y: scrollY },
+          targets: targets.map((element) => ({ name: element.className || element.type || element.tagName.toLowerCase(), ...rect(element) })),
+          promptBox: prompt ? rect(prompt) : null,
+          controlsBox: controls ? rect(controls) : null,
+        };
+      });
+      assertion.measurements = result;
+      if (result.status !== 'locate' || result.feedback || result.accepted || !result.selected || !result.checkEnabled) throw new Error(`Plan39 preview-before-submit assertion failed: ${JSON.stringify(result)}`);
+      if (result.leak) throw new Error(`Plan39 pre-submit target leakage assertion failed: ${JSON.stringify(result)}`);
+      if (!result.aligned) throw new Error(`Plan39 endpoint alignment assertion failed: ${JSON.stringify(result)}`);
+      if (result.undersized || result.overlaps || result.hitMiss || !result.boxesFit) throw new Error(`Plan39 touch target assertion failed: ${JSON.stringify(result)}`);
+      if (!result.distinctLabels) throw new Error(`Plan39 linear candidate descriptions assertion failed: ${JSON.stringify(result)}`);
+      continue;
+    }
+    if (type === 'plan39ResolveConnector') {
+      const result = await page.evaluate(() => {
+        const host = [...document.querySelectorAll('.app-visual-view')].find((element) => getComputedStyle(element).display !== 'none');
+        const stack = host?.querySelector('.plan39-representation-stack');
+        const bar = stack?.querySelector('.plan39-bar-track');
+        const shadedParts = [...(stack?.querySelectorAll('.plan39-bar-part-shaded') || [])];
+        const shadedEdge = shadedParts.at(-1);
+        const point = stack?.querySelector('.plan39-accepted-point');
+        const overlay = stack?.querySelector('.plan39-connector-overlay');
+        const line = overlay?.querySelector('.plan39-accepted-connector');
+        const matrix = overlay?.getScreenCTM();
+        const endpoint = (x, y) => {
+          if (!matrix || !overlay?.createSVGPoint) return null;
+          const p = overlay.createSVGPoint(); p.x = Number(x); p.y = Number(y);
+          const screen = p.matrixTransform(matrix); return { x: screen.x, y: screen.y };
+        };
+        if (!bar || !shadedEdge || !point || !line) return { present: false, hasBar: Boolean(bar), hasShadedEdge: Boolean(shadedEdge), hasAcceptedPoint: Boolean(point), hasOverlay: Boolean(overlay), hasLine: Boolean(line), hostFound: Boolean(host), stackFound: Boolean(stack) };
+        const shadedRect = shadedEdge.getBoundingClientRect(), pointRect = point.getBoundingClientRect();
+        const start = endpoint(line.getAttribute('x1'), line.getAttribute('y1'));
+        const end = endpoint(line.getAttribute('x2'), line.getAttribute('y2'));
+        const expectedStart = { x: shadedRect.right, y: shadedRect.bottom };
+        const expectedEnd = { x: pointRect.left + pointRect.width / 2, y: pointRect.top + pointRect.height / 2 };
+        const delta = (actual, expected) => actual ? Math.hypot(actual.x - expected.x, actual.y - expected.y) : Infinity;
+        return { present: true, start, end, expectedStart, expectedEnd, startError: delta(start, expectedStart), endError: delta(end, expectedEnd), viewport: { width: innerWidth, height: innerHeight, dpr: devicePixelRatio }, scroll: { x: scrollX, y: scrollY } };
+      });
+      assertion.measurements = result;
+      if (!result.present || result.startError > 2 || result.endError > 2 || result.end.y <= result.start.y) {
+        throw new Error(`Plan39 resolved connector did not span source shaded edge to accepted point: ${JSON.stringify(result)}`);
+      }
+      continue;
+    }
+    if (type === 'plan39SourceForm') {
+      const actual = await page.evaluate(() => ({
+        numerator: document.querySelector('.plan39-source-fraction .symbolic-numerator')?.textContent?.trim(),
+        denominator: document.querySelector('.plan39-source-fraction .symbolic-denominator')?.textContent?.trim(),
+      }));
+      if (actual.numerator !== String(assertion.numerator) || actual.denominator !== String(assertion.denominator)) {
+        throw new Error(`Plan39 source form assertion failed: expected ${assertion.numerator}/${assertion.denominator}, got ${actual.numerator}/${actual.denominator}.`);
+      }
+      continue;
+    }
+    if (type === 'plan39PreviewId') {
+      const selected = await page.evaluate(() => {
+        const active = [...document.querySelectorAll('.app-visual-view, .app-linear-view')].find((element) => getComputedStyle(element).display !== 'none');
+        return active?.querySelector('.plan39-stepper-status[data-candidate-id], input[type="radio"]:checked')?.getAttribute('data-candidate-id') || null;
+      });
+      if (selected !== value) throw new Error(`Plan39 pending preview was not preserved: expected ${value}, got ${selected}.`);
+      continue;
+    }
+    if (type === 'plan39OddThirds') {
+      const actual = await page.evaluate(() => {
+        const track = document.querySelector('.plan39-axis-frame');
+        const trackBox = track?.getBoundingClientRect();
+        const points = [...(document.querySelectorAll('.app-visual-view .plan39-candidate-point') || [])];
+        const centers = points.map((point) => {
+          const r = point.getBoundingClientRect();
+          return trackBox?.width ? (r.left + r.width / 2 - trackBox.left) / trackBox.width : null;
+        });
+        return { count: points.length, centers };
+      });
+      if (actual.count !== 4 || actual.centers.some((center) => center !== null && Math.abs(center - 0.5) < 0.01)) {
+        throw new Error(`Plan39 odd-thirds candidate assertion failed; midpoint benchmark must remain nonselectable: ${JSON.stringify(actual)}`);
+      }
+      continue;
+    }
+
     if (type === 'viewportLayout') {
       const metrics = await page.evaluate((selectors) => {
         const describe = (selector) => {
@@ -2673,6 +2843,7 @@ async function runRouteMatrix(options = {}) {
     plan18WitnessSeed = null,
     plan38WitnessSeed = null,
     plan40WitnessSeed = null,
+    plan39WitnessSeed = null,
   } = options;
 
   if (seededVisualDefect !== null && !Object.hasOwn(seededPrototypeVisualDefects, seededVisualDefect)) {
@@ -2693,6 +2864,7 @@ async function runRouteMatrix(options = {}) {
   if (plan40WitnessSeed !== null && !Object.hasOwn(plan40WitnessSeeds, plan40WitnessSeed)) {
     throw new Error(`Unknown Plan 40 witness seed "${plan40WitnessSeed}".`);
   }
+  if (plan39WitnessSeed !== null && !Object.hasOwn(plan39WitnessSeeds, plan39WitnessSeed)) throw new Error(`Unknown Plan 39 witness seed "${plan39WitnessSeed}".`);
 
   if (!fs.existsSync(distDir)) {
     throw new Error('Built distribution (dist/) not found. Run `npm run build` before running route matrix.');
@@ -2770,7 +2942,8 @@ async function runRouteMatrix(options = {}) {
     : plan34WitnessSeed ? plan34WitnessSeeds[plan34WitnessSeed].routeId
       : plan18WitnessSeed ? plan18WitnessSeeds[plan18WitnessSeed].routeId
         : plan38WitnessSeed ? plan38WitnessSeeds[plan38WitnessSeed].routeId
-          : plan40WitnessSeed ? plan40WitnessSeeds[plan40WitnessSeed].routeId : filter;
+          : plan40WitnessSeed ? plan40WitnessSeeds[plan40WitnessSeed].routeId
+            : plan39WitnessSeed ? plan39WitnessSeeds[plan39WitnessSeed].routeId : filter;
   const routesToRun = selectRoutesForRun(matrix.routes, effectiveFilter);
   const routeExecutions = expandRouteExecutions(routesToRun);
 
@@ -2925,7 +3098,12 @@ async function runRouteMatrix(options = {}) {
               || action.step === motionWitnessSeeds[motionWitnessSeed].step)
             && action.method === 'clickAndObserveSubdivision'
             ? { ...action, motionWitnessSeed }
+            : plan39WitnessSeed && route.id === plan39WitnessSeeds[plan39WitnessSeed].routeId && action.method === 'plan39Witness'
+              ? { ...action, seed: plan39WitnessSeed }
             : action;
+          if (['completePlan39BridgeSet', 'completePlan39BridgeRecovery'].includes(seededAction.method)) {
+            seededAction.inputMode = route.inputMode || 'mouse';
+          }
           await executeAction(page, seededAction, route.id);
         }
 
@@ -2968,6 +3146,10 @@ async function runRouteMatrix(options = {}) {
           && err.message.includes(plan40WitnessSeeds[plan40WitnessSeed].failure)) {
           routeResults.push({ id: resultId, routeId: route.id, context: routeContext.id, motionMode, status: 'seed-detected', error: err.message, duration, route });
           console.log(`  ✓ ${resultId} (${duration}ms) [intended assertion detected seed: ${plan40WitnessSeed}; ${err.message}]`);
+        } else if (plan39WitnessSeed && route.id === plan39WitnessSeeds[plan39WitnessSeed].routeId
+          && err.message.includes(plan39WitnessSeeds[plan39WitnessSeed].failure)) {
+          routeResults.push({ id: resultId, routeId: route.id, context: routeContext.id, motionMode, status: 'seed-detected', error: err.message, duration, route });
+          console.log(`  ✓ ${resultId} (${duration}ms) [intended assertion detected seed: ${plan39WitnessSeed}; ${err.message}]`);
         } else if (motionWitnessSeed && route.id === motionWitnessSeeds[motionWitnessSeed].routeId
           && err.message.includes(motionWitnessSeeds[motionWitnessSeed].failure)) {
           routeResults.push({ id: resultId, routeId: route.id, context: resolveRouteContext(route, contextMap).id, motionMode, status: 'seed-detected', error: err.message, duration, route });
@@ -3205,6 +3387,57 @@ async function runRouteMatrix(options = {}) {
     }
   }
 
+  if (routeResults.some((result) => result.routeId.startsWith('ROUTE-PLAN39-'))) {
+    const plan39EvidenceRoot = path.join(rootDir, 'reports/development/plan-39-number-line-locate-and-bar-bridge-batch/evidence');
+    fs.mkdirSync(plan39EvidenceRoot, { recursive: true });
+    const routeDetails = routeResults.map((result) => {
+      const actions = (result.route?.actions || []).flatMap((action) => [action, ...(action.generatedActions || [])]);
+      return {
+        id: result.id,
+        routeId: result.routeId,
+        context: result.context,
+        motionMode: result.motionMode,
+        status: result.status,
+        ...(result.error ? { error: result.error } : {}),
+        geometryChecks: actions.flatMap((action) => (action.assertions || [])
+          .filter((assertion) => ['plan39LocateContract', 'plan39ResolveConnector'].includes(assertion.type) && assertion.measurements)
+          .map((assertion) => ({ description: action.description, ...assertion.measurements }))),
+        screenshots: actions.filter((action) => action.method === 'screenshot' && action.screenshotEvidence)
+          .map(({ screenshotEvidence }) => screenshotEvidence),
+      };
+    });
+    if (!filter && !plan39WitnessSeed) {
+      fs.writeFileSync(path.join(plan39EvidenceRoot, 'plan39-route-matrix-summary.json'), `${JSON.stringify({
+        capturedAt: new Date().toISOString(),
+        browserChannel: browserChannel || 'default chromium',
+        mode: 'clean',
+        baseline: { routeRows: 81, browserExecutions: 83, preserved: true },
+        appendedRouteRows: matrix.routes.filter((route) => route.id.startsWith('ROUTE-PLAN39-')).length,
+        routeRows: routesToRun.length,
+        browserExecutions: routeResults.length,
+        passed, failed, seedDetected,
+        results: routeDetails.map(({ geometryChecks, screenshots, ...result }) => result),
+      }, null, 2)}\n`);
+      fs.writeFileSync(path.join(plan39EvidenceRoot, 'plan39-viewport-measurements.json'), `${JSON.stringify({
+        capturedAt: new Date().toISOString(),
+        measurements: routeDetails.flatMap((result) => result.geometryChecks.map((measurement) => ({ routeId: result.routeId, context: result.context, motionMode: result.motionMode, ...measurement }))),
+        screenshots: routeDetails.flatMap((result) => result.screenshots.map((screenshot) => ({ routeId: result.routeId, context: result.context, motionMode: result.motionMode, ...screenshot }))),
+      }, null, 2)}\n`);
+    }
+    if (plan39WitnessSeed) {
+      fs.writeFileSync(path.join(plan39EvidenceRoot, `plan39-seed-${plan39WitnessSeed}-receipt.json`), `${JSON.stringify({
+        capturedAt: new Date().toISOString(),
+        browserChannel: browserChannel || 'default chromium',
+        seed: plan39WitnessSeed,
+        intendedFailure: plan39WitnessSeeds[plan39WitnessSeed].failure,
+        routeRows: routesToRun.length,
+        browserExecutions: routeResults.length,
+        passed, failed, seedDetected,
+        results: routeDetails,
+      }, null, 2)}\n`);
+    }
+  }
+
   return {
     total: routeResults.length,
     routeCount: routesToRun.length,
@@ -3233,6 +3466,7 @@ module.exports = {
   plan18WitnessSeeds,
   plan38WitnessSeeds,
   plan40WitnessSeeds,
+  plan39WitnessSeeds,
   observeSubdivision,
   resolveStartingSurface,
   runRouteMatrix,
@@ -3252,6 +3486,7 @@ if (require.main === module) {
   let plan18WitnessSeed = null;
   let plan38WitnessSeed = null;
   let plan40WitnessSeed = null;
+  let plan39WitnessSeed = null;
   let preferredChannel = null;
 
   for (let i = 0; i < args.length; i++) {
@@ -3269,13 +3504,15 @@ if (require.main === module) {
       plan38WitnessSeed = args[++i];
     } else if (args[i] === '--plan40-witness-seed' && args[i + 1]) {
       plan40WitnessSeed = args[++i];
+    } else if (args[i] === '--plan39-witness-seed' && args[i + 1]) {
+      plan39WitnessSeed = args[++i];
     } else if (args[i] === '--browser-channel' && args[i + 1]) {
       preferredChannel = args[++i];
     }
   }
 
   console.log('--- FractionFlow Reachable Behavior Route Contract Runner ---');
-  runRouteMatrix({ filter, verbose, preferredChannel, motionWitnessSeed, plan34WitnessSeed, plan18WitnessSeed, plan38WitnessSeed, plan40WitnessSeed })
+  runRouteMatrix({ filter, verbose, preferredChannel, motionWitnessSeed, plan34WitnessSeed, plan18WitnessSeed, plan38WitnessSeed, plan40WitnessSeed, plan39WitnessSeed })
     .then((summary) => {
       const parts = [`${summary.passed} passed`];
       if (summary.seedDetected > 0) parts.push(`${summary.seedDetected} intended seed failure${summary.seedDetected === 1 ? '' : 's'} detected`);
@@ -3297,6 +3534,9 @@ if (require.main === module) {
         process.exit(1);
       } else if (plan40WitnessSeed && (summary.seedDetected !== 1 || summary.failed !== 0 || summary.total !== 1)) {
         console.error(`Plan 40 witness seed "${plan40WitnessSeed}" did not produce exactly one intended failure (detected=${summary.seedDetected}, failed=${summary.failed}, total=${summary.total}).`);
+        process.exit(1);
+      } else if (plan39WitnessSeed && (summary.seedDetected !== 1 || summary.failed !== 0 || summary.total !== 1)) {
+        console.error(`Plan 39 witness seed "${plan39WitnessSeed}" did not produce exactly one intended failure (detected=${summary.seedDetected}, failed=${summary.failed}, total=${summary.total}).`);
         process.exit(1);
       } else {
         process.exit(0);

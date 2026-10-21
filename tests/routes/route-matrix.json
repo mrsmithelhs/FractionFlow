@@ -15096,6 +15096,668 @@
           }
         ]
       }
+    },
+    {
+      "id": "ROUTE-PLAN39-BRIDGE-VISUAL-ALL-8",
+      "behavior": "Full eight-item high-support visual traversal using touchscreen stepper and task controls, with gated Next, exhaustion and return/re-entry.",
+      "configuration": "phase2-bundle-1",
+      "startingSurface": "mounted-app-entry",
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "motionMode": "standard-motion",
+      "witness": "browser",
+      "actions": [
+        {
+          "method": "tap",
+          "target": ".app-gear-button",
+          "description": "Open display settings"
+        },
+        {
+          "method": "tap",
+          "target": "[data-support-id=\"high-support\"]",
+          "description": "Select high-support"
+        },
+        {
+          "method": "tap",
+          "target": "[data-practice-type=\"bar-to-line-same-amount\"]",
+          "description": "Start Place fractions on a number line"
+        },
+        {
+          "method": "completePlan39BridgeSet",
+          "inputMode": "touch",
+          "view": "visual",
+          "supportProfile": "high-support",
+          "returnReentry": true,
+          "description": "Mounted visual traversal"
+        },
+        {
+          "method": "assert",
+          "target": ".app-episode",
+          "description": "Plan39 layout and accessibility contract",
+          "assertions": [
+            {
+              "type": "viewportLayout",
+              "requireNoHorizontalOverflow": true,
+              "requireVisibleElements": true,
+              "selectors": {
+                "prompt": ".app-visual-view:not([hidden]) .active-beat-prompt",
+                "controls": ".app-visual-view:not([hidden]) .plan39-controls"
+              }
+            }
+          ]
+        }
+      ],
+      "expect": {
+        "capture": {
+          "target": ".app-episode",
+          "type": "innerHTML"
+        },
+        "assertions": [
+          {
+            "type": "hasSelector",
+            "target": ".app-episode"
+          }
+        ]
+      },
+      "inputMode": "touch"
+    },
+    {
+      "id": "ROUTE-PLAN39-BRIDGE-LINEAR-ALL-8",
+      "behavior": "Full eight-item medium-support traversal using keyboard radio selection and Enter activation of task controls under reduced motion, with gating, exhaustion and return/re-entry.",
+      "configuration": "phase2-bundle-3",
+      "startingSurface": "mounted-app-entry",
+      "viewport": {
+        "width": 360,
+        "height": 752
+      },
+      "motionMode": "reduced-motion",
+      "witness": "browser",
+      "actions": [
+        {
+          "method": "click",
+          "target": ".app-gear-button",
+          "description": "Open display settings"
+        },
+        {
+          "method": "click",
+          "target": "[data-support-id=\"medium-support\"]",
+          "description": "Select medium-support"
+        },
+        {
+          "method": "click",
+          "target": "[data-practice-type=\"bar-to-line-same-amount\"]",
+          "description": "Start Place fractions on a number line"
+        },
+        {
+          "method": "click",
+          "target": ".app-view-controls .app-secondary-button",
+          "description": "Switch to native linear path"
+        },
+        {
+          "method": "completePlan39BridgeSet",
+          "inputMode": "keyboard",
+          "view": "linear",
+          "supportProfile": "medium-support",
+          "returnReentry": true,
+          "description": "Mounted linear traversal"
+        },
+        {
+          "method": "assert",
+          "target": ".app-episode",
+          "description": "Plan39 layout and accessibility contract",
+          "assertions": [
+            {
+              "type": "viewportLayout",
+              "requireNoHorizontalOverflow": true,
+              "requireVisibleElements": true,
+              "selectors": {
+                "prompt": ".app-linear-view .active-beat-prompt",
+                "controls": ".app-linear-view .plan39-controls"
+              }
+            }
+          ]
+        }
+      ],
+      "expect": {
+        "capture": {
+          "target": ".app-episode",
+          "type": "innerHTML"
+        },
+        "assertions": [
+          {
+            "type": "hasSelector",
+            "target": ".app-episode"
+          }
+        ]
+      },
+      "inputMode": "keyboard"
+    },
+    {
+      "id": "ROUTE-PLAN39-DEEP-SAMPLE-UNREDUCED-TWO-FOURTHS",
+      "behavior": "Deep sample: unreduced 2/4 source resolves to equivalent half.",
+      "configuration": "phase2-bundle-1",
+      "startingSurface": "mounted-app-entry",
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "motionMode": "standard-motion",
+      "witness": "browser",
+      "actions": [
+        {
+          "method": "click",
+          "target": ".app-gear-button",
+          "description": "Open display settings"
+        },
+        {
+          "method": "click",
+          "target": "[data-support-id=\"medium-support\"]",
+          "description": "Select medium-support"
+        },
+        {
+          "method": "click",
+          "target": "[data-practice-type=\"bar-to-line-same-amount\"]",
+          "description": "Start Place fractions on a number line"
+        },
+        {
+          "method": "completePlan39BridgeSet",
+          "view": "visual",
+          "supportProfile": "medium-support",
+          "startAt": 4,
+          "endAt": 4,
+          "stopBeforeCheck": true,
+          "description": "Mounted visual traversal"
+        },
+        {
+          "step": 99,
+          "method": "assert",
+          "target": ".app-visual-view",
+          "description": "Assert exact unreduced source form remains visible",
+          "assertions": [
+            {
+              "type": "plan39SourceForm",
+              "numerator": "2",
+              "denominator": "4"
+            }
+          ]
+        }
+      ],
+      "expect": {
+        "capture": {
+          "target": ".app-episode",
+          "type": "innerHTML"
+        },
+        "assertions": [
+          {
+            "type": "hasSelector",
+            "target": ".app-episode"
+          }
+        ]
+      }
+    },
+    {
+      "id": "ROUTE-PLAN39-DEEP-SAMPLE-ODD-THIRDS-B3",
+      "behavior": "Deep sample: high-support odd thirds omit the nonselectable 1/2 midpoint candidate.",
+      "configuration": "phase2-bundle-1",
+      "startingSurface": "mounted-app-entry",
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "motionMode": "standard-motion",
+      "witness": "browser",
+      "actions": [
+        {
+          "method": "click",
+          "target": ".app-gear-button",
+          "description": "Open display settings"
+        },
+        {
+          "method": "click",
+          "target": "[data-support-id=\"high-support\"]",
+          "description": "Select high-support"
+        },
+        {
+          "method": "click",
+          "target": "[data-practice-type=\"bar-to-line-same-amount\"]",
+          "description": "Start Place fractions on a number line"
+        },
+        {
+          "method": "completePlan39BridgeSet",
+          "view": "visual",
+          "supportProfile": "high-support",
+          "startAt": 3,
+          "endAt": 3,
+          "stopBeforeCheck": true,
+          "description": "Mounted visual traversal"
+        },
+        {
+          "step": 99,
+          "method": "assert",
+          "target": ".app-visual-view",
+          "description": "Assert half benchmark is not an offered selectable point",
+          "assertions": [
+            {
+              "type": "plan39OddThirds"
+            }
+          ]
+        }
+      ],
+      "expect": {
+        "capture": {
+          "target": ".app-episode",
+          "type": "innerHTML"
+        },
+        "assertions": [
+          {
+            "type": "hasSelector",
+            "target": ".app-episode"
+          }
+        ]
+      }
+    },
+    {
+      "id": "ROUTE-PLAN39-DEEP-SAMPLE-HIGH-EIGHTHS-B8",
+      "behavior": "Deep sample: all nine b=8 positions and explicit preview remain visible at mobile width; witness-seed locus.",
+      "configuration": "phase2-bundle-1",
+      "startingSurface": "mounted-app-entry",
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "motionMode": "standard-motion",
+      "witness": "browser",
+      "actions": [
+        {
+          "method": "click",
+          "target": ".app-gear-button",
+          "description": "Open display settings"
+        },
+        {
+          "method": "click",
+          "target": "[data-support-id=\"high-support\"]",
+          "description": "Select high-support"
+        },
+        {
+          "method": "click",
+          "target": "[data-practice-type=\"bar-to-line-same-amount\"]",
+          "description": "Start Place fractions on a number line"
+        },
+        {
+          "method": "completePlan39BridgeSet",
+          "view": "visual",
+          "supportProfile": "high-support",
+          "startAt": 5,
+          "endAt": 5,
+          "stopBeforeCheck": true,
+          "description": "Reach mounted locate preview"
+        },
+        {
+          "method": "plan39Witness",
+          "target": "",
+          "description": "Inject Plan39 false witness or run clean"
+        },
+        {
+          "method": "assert",
+          "target": ".app-visual-view",
+          "description": "Enforce ordinary Plan39 locate contract",
+          "assertions": [
+            {
+              "type": "plan39LocateContract"
+            }
+          ]
+        },
+        {
+          "method": "screenshot",
+          "target": "",
+          "file": "reports/development/plan-39-number-line-locate-and-bar-bridge-batch/evidence/high-eighths-360x740.png",
+          "caption": "Plan39 high-support eighths locate state at 360x740",
+          "measureLayout": true,
+          "description": "Capture common-scroll mobile eighths state"
+        }
+      ],
+      "expect": {
+        "capture": {
+          "target": ".app-episode",
+          "type": "innerHTML"
+        },
+        "assertions": [
+          {
+            "type": "hasSelector",
+            "target": ".app-episode"
+          }
+        ]
+      }
+    },
+    {
+      "id": "ROUTE-PLAN39-DEEP-SAMPLE-MEDIUM-07-08",
+      "behavior": "Deep samples: medium sparse linear navigation on records 07 and 08.",
+      "configuration": "phase2-bundle-1",
+      "startingSurface": "mounted-app-entry",
+      "viewport": {
+        "width": 360,
+        "height": 752
+      },
+      "motionMode": "standard-motion",
+      "witness": "browser",
+      "actions": [
+        {
+          "method": "click",
+          "target": ".app-gear-button",
+          "description": "Open display settings"
+        },
+        {
+          "method": "click",
+          "target": "[data-support-id=\"medium-support\"]",
+          "description": "Select medium-support"
+        },
+        {
+          "method": "click",
+          "target": "[data-practice-type=\"bar-to-line-same-amount\"]",
+          "description": "Start Place fractions on a number line"
+        },
+        {
+          "method": "click",
+          "target": ".app-view-controls .app-secondary-button",
+          "description": "Switch to native linear path"
+        },
+        {
+          "method": "completePlan39BridgeSet",
+          "view": "linear",
+          "supportProfile": "medium-support",
+          "startAt": 6,
+          "endAt": 7,
+          "stopBeforeCheck": true,
+          "description": "Mounted linear traversal"
+        }
+      ],
+      "expect": {
+        "capture": {
+          "target": ".app-episode",
+          "type": "innerHTML"
+        },
+        "assertions": [
+          {
+            "type": "hasSelector",
+            "target": ".app-episode"
+          }
+        ]
+      },
+      "inputMode": "keyboard"
+    },
+    {
+      "id": "ROUTE-PLAN39-RECOVERY-HELP-PREVIEW",
+      "behavior": "All four directional recovery categories using touchscreen task controls, local help, view-switch preservation and corrected offered responses.",
+      "configuration": "phase2-bundle-1",
+      "startingSurface": "mounted-app-entry",
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "motionMode": "standard-motion",
+      "witness": "browser",
+      "actions": [
+        {
+          "method": "tap",
+          "target": ".app-gear-button",
+          "description": "Open display settings"
+        },
+        {
+          "method": "tap",
+          "target": "[data-support-id=\"medium-support\"]",
+          "description": "Select medium-support"
+        },
+        {
+          "method": "tap",
+          "target": "[data-practice-type=\"bar-to-line-same-amount\"]",
+          "description": "Start Place fractions on a number line"
+        },
+        {
+          "method": "completePlan39BridgeRecovery",
+          "inputMode": "touch",
+          "view": "visual",
+          "supportProfile": "medium-support",
+          "description": "Traverse endpoint, same-side, wrong-side recovery and return to correct response"
+        }
+      ],
+      "expect": {
+        "capture": {
+          "target": ".app-episode",
+          "type": "innerHTML"
+        },
+        "assertions": [
+          {
+            "type": "hasSelector",
+            "target": ".app-episode"
+          }
+        ]
+      },
+      "inputMode": "touch"
+    },
+    {
+      "id": "ROUTE-PLAN39-RESPONSIVE-360X752",
+      "behavior": "Responsive stepper geometry in 360x752 viewport.",
+      "configuration": "phase2-bundle-1",
+      "startingSurface": "mounted-app-entry",
+      "viewport": {
+        "width": 360,
+        "height": 752
+      },
+      "motionMode": "standard-motion",
+      "witness": "browser",
+      "actions": [
+        {
+          "method": "click",
+          "target": ".app-gear-button",
+          "description": "Open display settings"
+        },
+        {
+          "method": "click",
+          "target": "[data-support-id=\"high-support\"]",
+          "description": "Select high-support"
+        },
+        {
+          "method": "click",
+          "target": "[data-practice-type=\"bar-to-line-same-amount\"]",
+          "description": "Start Place fractions on a number line"
+        },
+        {
+          "method": "completePlan39BridgeSet",
+          "view": "visual",
+          "supportProfile": "high-support",
+          "startAt": 5,
+          "endAt": 5,
+          "stopBeforeCheck": true,
+          "description": "Reach mounted locate preview"
+        },
+        {
+          "method": "assert",
+          "target": ".app-episode",
+          "description": "Plan39 layout and accessibility contract",
+          "assertions": [
+            {
+              "type": "viewportLayout",
+              "requireNoHorizontalOverflow": true,
+              "requireVisibleElements": true,
+              "selectors": {
+                "prompt": ".app-visual-view:not([hidden]) .active-beat-prompt",
+                "controls": ".app-visual-view:not([hidden]) .plan39-controls"
+              }
+            }
+          ]
+        },
+        {
+          "method": "screenshot",
+          "target": "",
+          "file": "reports/development/plan-39-number-line-locate-and-bar-bridge-batch/evidence/high-eighths-360x752.png",
+          "caption": "Plan39 eighths at 360x752",
+          "measureLayout": true,
+          "description": "Capture 360x752 eighths locate"
+        }
+      ],
+      "expect": {
+        "capture": {
+          "target": ".app-episode",
+          "type": "innerHTML"
+        },
+        "assertions": [
+          {
+            "type": "hasSelector",
+            "target": ".app-episode"
+          }
+        ]
+      }
+    },
+    {
+      "id": "ROUTE-PLAN39-RESPONSIVE-1366X768",
+      "behavior": "Responsive stepper geometry at 1366x768.",
+      "configuration": "phase2-bundle-1",
+      "startingSurface": "mounted-app-entry",
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "motionMode": "standard-motion",
+      "witness": "browser",
+      "actions": [
+        {
+          "method": "click",
+          "target": ".app-gear-button",
+          "description": "Open display settings"
+        },
+        {
+          "method": "click",
+          "target": "[data-support-id=\"high-support\"]",
+          "description": "Select high-support"
+        },
+        {
+          "method": "click",
+          "target": "[data-practice-type=\"bar-to-line-same-amount\"]",
+          "description": "Start Place fractions on a number line"
+        },
+        {
+          "method": "completePlan39BridgeSet",
+          "view": "visual",
+          "supportProfile": "high-support",
+          "startAt": 5,
+          "endAt": 5,
+          "stopBeforeCheck": true,
+          "description": "Reach mounted locate preview"
+        },
+        {
+          "method": "assert",
+          "target": ".app-episode",
+          "description": "Plan39 layout and accessibility contract",
+          "assertions": [
+            {
+              "type": "viewportLayout",
+              "requireNoHorizontalOverflow": true,
+              "requireVisibleElements": true,
+              "selectors": {
+                "prompt": ".app-visual-view:not([hidden]) .active-beat-prompt",
+                "controls": ".app-visual-view:not([hidden]) .plan39-controls"
+              }
+            }
+          ]
+        },
+        {
+          "method": "screenshot",
+          "target": "",
+          "file": "reports/development/plan-39-number-line-locate-and-bar-bridge-batch/evidence/high-eighths-1366x768.png",
+          "caption": "Plan39 eighths at 1366x768",
+          "measureLayout": true,
+          "description": "Capture 1366x768 eighths locate"
+        }
+      ],
+      "expect": {
+        "capture": {
+          "target": ".app-episode",
+          "type": "innerHTML"
+        },
+        "assertions": [
+          {
+            "type": "hasSelector",
+            "target": ".app-episode"
+          }
+        ]
+      }
+    },
+    {
+      "id": "ROUTE-PLAN39-RESPONSIVE-1093X614-DPR125",
+      "behavior": "Responsive stepper geometry at Chromebook CSS viewport 1093x614, device scale 1.25.",
+      "configuration": "phase2-bundle-1",
+      "startingSurface": "mounted-app-entry",
+      "viewport": {
+        "width": 1093,
+        "height": 614
+      },
+      "motionMode": "standard-motion",
+      "witness": "browser",
+      "actions": [
+        {
+          "method": "click",
+          "target": ".app-gear-button",
+          "description": "Open display settings"
+        },
+        {
+          "method": "click",
+          "target": "[data-support-id=\"high-support\"]",
+          "description": "Select high-support"
+        },
+        {
+          "method": "click",
+          "target": "[data-practice-type=\"bar-to-line-same-amount\"]",
+          "description": "Start Place fractions on a number line"
+        },
+        {
+          "method": "completePlan39BridgeSet",
+          "view": "visual",
+          "supportProfile": "high-support",
+          "startAt": 5,
+          "endAt": 5,
+          "stopBeforeCheck": true,
+          "description": "Reach mounted locate preview"
+        },
+        {
+          "method": "assert",
+          "target": ".app-episode",
+          "description": "Plan39 layout and accessibility contract",
+          "assertions": [
+            {
+              "type": "viewportLayout",
+              "requireNoHorizontalOverflow": true,
+              "requireVisibleElements": true,
+              "selectors": {
+                "prompt": ".app-visual-view:not([hidden]) .active-beat-prompt",
+                "controls": ".app-visual-view:not([hidden]) .plan39-controls"
+              }
+            }
+          ]
+        },
+        {
+          "method": "screenshot",
+          "target": "",
+          "file": "reports/development/plan-39-number-line-locate-and-bar-bridge-batch/evidence/high-eighths-1093x614-dpr125.png",
+          "caption": "Plan39 eighths at 1093x614 DPR1.25",
+          "measureLayout": true,
+          "description": "Capture scaled Chromebook eighths locate"
+        }
+      ],
+      "expect": {
+        "capture": {
+          "target": ".app-episode",
+          "type": "innerHTML"
+        },
+        "assertions": [
+          {
+            "type": "hasSelector",
+            "target": ".app-episode"
+          }
+        ]
+      },
+      "deviceScaleFactor": 1.25
     }
   ]
 }
