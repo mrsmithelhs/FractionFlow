@@ -1,5 +1,17 @@
 # FractionFlow orchestration handoff
 
+Current disposition 2026-10-20: Plan 40 final consolidated repair (`01eddf6`,
+`da1a453`) is TECHNICALLY ACCEPTED, pending owner screen/agency acceptance and
+explicit bounded Phase 3 checkpoint adoption. Read
+reports/development/plan-40-unlike-denominator-subtraction-batch/orchestration-final-review.md
+and its independent final execution receipt. Parent passed 487 tests, both builds,
+eight Chrome routes, six distinct seeds and all three previously false-passing
+browser probes now reject their defects. Current submitted PNGs show repaired UI.
+No remaining repair is assigned. Earlier repair-pending entries below are history
+superseded by this disposition. Packet stays delivered; no push/deploy authorized.
+On owner acceptance/checkpoint: close Plan 40 and promote Plan 41 to its research
+scope gate. Plan 39 stays draft under DECISION-047.
+
 Owner sequence amendment 2026-10-20 (DECISION-047): Plan 41 has been drafted as a
 report-only maintainability investigation. After Plan 40 closure/Phase 3 checkpoint,
 run Plan 41, obtain owner disposition, then complete any separately authorized

@@ -1,0 +1,124 @@
+{
+  "baseline": "da1a453c0cc6e888ace3ac61b734f081a214a0df",
+  "runs": [
+    {
+      "mode": "clean-plan40",
+      "total": 8,
+      "passed": 8,
+      "failed": 0,
+      "seedDetected": 0
+    },
+    {
+      "mode": "erased-takeaway-hatch-after-transform",
+      "total": 1,
+      "passed": 0,
+      "failed": 0,
+      "seedDetected": 1
+    },
+    {
+      "mode": "addition-wording-in-subtraction",
+      "total": 1,
+      "passed": 0,
+      "failed": 0,
+      "seedDetected": 1
+    },
+    {
+      "mode": "premature-difference-leak",
+      "total": 1,
+      "passed": 0,
+      "failed": 0,
+      "seedDetected": 1
+    },
+    {
+      "mode": "premature-difference-leak-stacked",
+      "total": 1,
+      "passed": 0,
+      "failed": 0,
+      "seedDetected": 1
+    },
+    {
+      "mode": "premature-difference-leak-accessible",
+      "total": 1,
+      "passed": 0,
+      "failed": 0,
+      "seedDetected": 1
+    },
+    {
+      "mode": "missing-operate-fraction-inputs",
+      "total": 1,
+      "passed": 0,
+      "failed": 0,
+      "seedDetected": 1
+    }
+  ],
+  "probes": [
+    {
+      "mode": "accessible-only",
+      "rejected": true,
+      "error": "Route \"ROUTE-PLAN40-DEEP-SAMPLE-CONSTRUCT-OPERATE\" assertion failed: selector \".app-visual-view .active-beat-prompt\" unexpectedly contains text \"3/10\"."
+    },
+    {
+      "mode": "stacked",
+      "rejected": true,
+      "error": "Route \"ROUTE-PLAN40-DEEP-SAMPLE-CONSTRUCT-OPERATE\" assertion failed: selector \".app-visual-view .active-beat-prompt\" unexpectedly contains text \"3/10\"."
+    },
+    {
+      "mode": "partially-offscreen-controls",
+      "rejected": true,
+      "error": "Plan 40 screenshot reports/development/plan-40-unlike-denominator-subtraction-batch/evidence/repair01-review-partial-controls.png has question or controls outside the viewport (question: withinViewport=true, controls: withinViewport=false).",
+      "layout": {
+        "viewport": {
+          "width": 360,
+          "height": 740
+        },
+        "dpr": 1,
+        "roundingTolerancePx": 1,
+        "document": {
+          "width": 360,
+          "height": 929
+        },
+        "horizontalOverflow": false,
+        "horizontalOverflowPx": 0,
+        "scroll": {
+          "x": 0,
+          "y": 12
+        },
+        "activeView": "app-visual-view",
+        "question": {
+          "x": 63,
+          "y": 360.72,
+          "width": 234,
+          "height": 25.19,
+          "visible": true,
+          "horizontallyContained": true,
+          "verticallyContained": true,
+          "withinViewport": true,
+          "intersectsViewport": true
+        },
+        "controls": {
+          "x": 63,
+          "y": 716.84,
+          "width": 234,
+          "height": 200.59,
+          "visible": true,
+          "horizontallyContained": true,
+          "verticallyContained": false,
+          "withinViewport": false,
+          "intersectsViewport": true
+        },
+        "nestedChoices": []
+      }
+    }
+  ],
+  "changedCaptureBytes": [
+    "reports/development/plan-40-unlike-denominator-subtraction-batch/evidence/linear-operate-360x752.png",
+    "reports/development/plan-40-unlike-denominator-subtraction-batch/evidence/operate-hatch-360x740.png",
+    "reports/development/plan-40-unlike-denominator-subtraction-batch/evidence/operate-hatch-largest-target30-1366x768.png",
+    "reports/development/plan-40-unlike-denominator-subtraction-batch/evidence/transform-360x740.png"
+  ],
+  "limits": "Focused native Chrome, freshly built dist. Committed evidence restored byte-for-byte. Full historical matrix remains implementer evidence.",
+  "currentVisibleLabels": [
+    "Numerator",
+    "Denominator"
+  ]
+}
