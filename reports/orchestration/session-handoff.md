@@ -1,5 +1,13 @@
 # FractionFlow orchestration handoff
 
+Latest Plan 41 disposition: investigation delivered at `ddf081c`, reviewed in
+reports/development/plan-41-phase-boundary-maintainability-investigation/orchestration-review.md.
+Owner directly approved its scope. Recommend one staged source packet: targeted
+guards → baseline → vanilla operate-region slice → evaluation → Plan 39, with
+refined recovery ownership and fair comparison. Owner adoption/source packet
+approval pending; no source work or Plan 39 launch authorized. Plan 41 is delivered,
+not complete; older ready/awaiting-dispatch entries below are historical.
+
 Latest owner disposition 2026-10-20: owner accepted current Plan 40 screens and
 directed closure; Plan 40 is COMPLETE with bounded Phase 3 checkpoint recorded in
 reports/development/plan-40-unlike-denominator-subtraction-batch/owner-acceptance.md.
