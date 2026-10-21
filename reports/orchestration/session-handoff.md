@@ -14,6 +14,18 @@ no push/deployment. The baseline can reuse final Plan 42 checks only after
 verifying unchanged source/tests/dependency/runner inputs. Older pending-closure
 and no-Plan-39-authorization statements below are superseded by this paragraph.
 
+Plan 39 active checkpoint: Luna-medium child /root/plan39_luna completed R0 at
+`e5f3d0b`, refined at `a163574` after parent and Sol-medium instruction-read-only
+review. Mechanism approved `c629997`; Stages 1–3 only are now authorized. Child
+must stop at Checkpoint 1 before app/render/styles edits. Proposal is a unary
+bridge instance/content identity, exact bridge-only v7 context, offered-wire
+candidate membership, endpoint-inclusive high candidates and task-local preview
+handle. Benchmark/proximity truth is projected upstream; no renderer math truth.
+Frozen v6 initial/help/recovery/completed oracles were saved before source and
+parent independently deep-compared all four; preserve existing v1-v5 bytes.
+MAINT-42-B initial fit assessment accepted task-local adaptation, reopen on actual
+contract conflict; MAINT-42-C remains. Parent owns gates/status and source review.
+
 ## Current run
 
 The owner directed this chat to execute Plan 42 carefully using supervised Luna

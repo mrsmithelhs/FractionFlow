@@ -73,6 +73,13 @@ Both arms needed correction of an initial scope error. See Plan 42's
 parity disposition. The owner accepted and closed Plan 42 on 2026-10-21;
 MAINT-42-A is discharged with these limits retained. MAINT-42-B/C remain open.
 
+MAINT-42-B initial mechanism disposition (2026-10-21): Plan 39 proposal
+`a163574` and approval `c629997` adopt a small task-local preview handle with
+opaque app storage, item/candidate-set/support/locate identity and renderer-owned
+invalidation. No arithmetic-shaped draft is imposed and no general framework is
+approved. This satisfies the initial fit review; reopen if mounted implementation
+requires competing owners or broader special cases. MAINT-42-C remains open.
+
 Plan 31 Repair 01's independent browser review observed Enter on an incorrect
 linear matching choice showing recovery, replacing the button and leaving focus
 on BODY. Retain this concrete response-remount case for the shared transform/
