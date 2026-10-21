@@ -1,0 +1,42 @@
+{
+  "browser": "Chrome channel via Playwright",
+  "inputMode": "mouse/DOM fill",
+  "viewport": {
+    "width": 360,
+    "height": 780
+  },
+  "reducedMotion": true,
+  "views": [
+    {
+      "view": "visual",
+      "label": "Your answer",
+      "submit": "Check answer",
+      "alertId": "control-fraction-error-11",
+      "malformedRepeated": true,
+      "unrelatedTokensPreserved": true,
+      "clearOnInput": true,
+      "validSubmitCleanup": true
+    },
+    {
+      "view": "linear",
+      "label": "Your answer",
+      "submit": "Check answer",
+      "alertId": "control-fraction-error-6",
+      "malformedRepeated": true,
+      "unrelatedTokensPreserved": true,
+      "clearOnInput": true,
+      "validSubmitCleanup": true
+    }
+  ],
+  "draftAndReset": true,
+  "recoveryFeedbackUnchanged": true,
+  "viewportResult": {
+    "width": 360,
+    "scrollWidth": 360,
+    "motion": true
+  },
+  "limitations": [
+    "Mouse/DOM-fill browser input only; no physical touch or assistive technology validation.",
+    "Valid answer traversed actual mounted local controls; no episode state was injected."
+  ]
+}

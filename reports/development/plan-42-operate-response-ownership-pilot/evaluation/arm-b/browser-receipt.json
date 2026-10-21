@@ -1,0 +1,104 @@
+{
+  "browser": "Chrome channel, headless Chromium via Playwright",
+  "viewport": {
+    "width": 360,
+    "height": 740
+  },
+  "inputMode": "Playwright pointer and fill (touch emulation not enabled)",
+  "assertions": [
+    {
+      "name": "built static server serves registered app",
+      "pass": true
+    },
+    {
+      "name": "visual: learner-facing group and check copy",
+      "pass": true
+    },
+    {
+      "name": "visual: malformed local alert associated to both fields",
+      "pass": true,
+      "alertId": "control-fraction-error-1"
+    },
+    {
+      "name": "visual: repeated invalid submit keeps unique alert and one token",
+      "pass": true
+    },
+    {
+      "name": "visual: input clears alert association and retains other descriptions",
+      "pass": true
+    },
+    {
+      "name": "visual: valid submit clears local error association",
+      "pass": true
+    },
+    {
+      "name": "visual: operation drafts preserved across view switch",
+      "pass": true
+    },
+    {
+      "name": "visual: help/recovery copy remains mounted",
+      "pass": true
+    },
+    {
+      "name": "visual: 360px no horizontal overflow and reduced motion preference",
+      "pass": true,
+      "measure": {
+        "width": 360,
+        "scrollWidth": 360,
+        "reduced": true,
+        "visibleInputs": 2
+      }
+    },
+    {
+      "name": "visual: restart resets to the registered initial encounter",
+      "pass": true
+    },
+    {
+      "name": "linear: learner-facing group and check copy",
+      "pass": true
+    },
+    {
+      "name": "linear: malformed local alert associated to both fields",
+      "pass": true,
+      "alertId": "control-fraction-error-2"
+    },
+    {
+      "name": "linear: repeated invalid submit keeps unique alert and one token",
+      "pass": true
+    },
+    {
+      "name": "linear: input clears alert association and retains other descriptions",
+      "pass": true
+    },
+    {
+      "name": "linear: valid submit clears local error association",
+      "pass": true
+    },
+    {
+      "name": "linear: operation drafts preserved across view switch",
+      "pass": true
+    },
+    {
+      "name": "linear: help/recovery copy remains mounted",
+      "pass": true
+    },
+    {
+      "name": "linear: 360px no horizontal overflow and reduced motion preference",
+      "pass": true,
+      "measure": {
+        "width": 360,
+        "scrollWidth": 360,
+        "reduced": true,
+        "visibleInputs": 2
+      }
+    },
+    {
+      "name": "linear: restart resets to the registered initial encounter",
+      "pass": true
+    }
+  ],
+  "screenshots": [
+    "node_modules\\.plan42-eval-b\\reports\\development\\plan-42-maintenance-arm\\visual-operate-help.png",
+    "node_modules\\.plan42-eval-b\\reports\\development\\plan-42-maintenance-arm\\linear-operate-help.png"
+  ]
+}

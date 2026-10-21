@@ -1,0 +1,99 @@
+diff --git a/src/render/controls.js b/src/render/controls.js
+index 3a72f88..b2a5776 100644
+--- a/src/render/controls.js
++++ b/src/render/controls.js
+@@ -122,6 +122,8 @@ export function createNumericInput({
+ }
+ 
+ /** One accessible response control for a numerator and denominator pair. */
++let fractionResponseErrorSequence = 0;
++
+ export function createFractionResponseInput({
+   numeratorId,
+   denominatorId,
+@@ -136,6 +138,8 @@ export function createFractionResponseInput({
+   numeratorAriaLabel = null,
+   denominatorAriaLabel = null,
+   allowZeroNumerator = false,
++  buttonLabel = strings.controls.check,
++  associateErrorDescription = false,
+ } = {}) {
+   const wrapper = groupLabel ? document.createElement('fieldset') : document.createElement('div');
+   wrapper.classList.add('control-fraction-response-wrapper');
+@@ -199,6 +203,21 @@ export function createFractionResponseInput({
+   const error = document.createElement('p');
+   error.classList.add('control-supporting-text', 'control-fraction-error');
+   error.setAttribute('role', 'alert');
++  if (associateErrorDescription) {
++    error.id = `control-fraction-error-${++fractionResponseErrorSequence}`;
++  }
++
++  const setError = (message) => {
++    error.textContent = message;
++    if (!associateErrorDescription) return;
++    for (const input of [numerator.input, denominator.input]) {
++      const ids = (input.getAttribute('aria-describedby') || '').split(/\s+/).filter(Boolean);
++      const retained = ids.filter((id) => id !== error.id);
++      if (message) retained.push(error.id);
++      if (retained.length) input.setAttribute('aria-describedby', [...new Set(retained)].join(' '));
++      else input.removeAttribute('aria-describedby');
++    }
++  };
+ 
+   const submit = () => {
+     const numeratorValue = numerator.input.value.trim();
+@@ -208,23 +227,23 @@ export function createFractionResponseInput({
+       : /^[1-9][0-9]*$/.test(value));
+     const validDenominator = (value) => /^[1-9][0-9]*$/.test(value);
+     if (!validNumerator(numeratorValue) || !validDenominator(denominatorValue)) {
+-      error.textContent = strings.operate.fractionRequired;
++      setError(strings.operate.fractionRequired);
+       if (onEmptySubmit) onEmptySubmit();
+       return;
+     }
+-    error.textContent = '';
++    setError('');
+     if (onSubmit) {
+       onSubmit({ kind: 'fraction', numerator: numeratorValue, denominator: denominatorValue });
+     }
+   };
+ 
+   const submitButton = createButton({
+-    label: strings.controls.check,
++    label: buttonLabel,
+     className: 'control-submit-btn',
+     onClick: submit,
+   });
+   for (const input of [numerator.input, denominator.input]) {
+-    input.addEventListener('input', () => { error.textContent = ''; });
++    input.addEventListener('input', () => { setError(''); });
+     input.addEventListener('keydown', (event) => {
+       if (event.key === 'Enter') {
+         event.preventDefault();
+diff --git a/src/render/operate-response.js b/src/render/operate-response.js
+index 9b60553..90634f9 100644
+--- a/src/render/operate-response.js
++++ b/src/render/operate-response.js
+@@ -72,6 +72,8 @@ export function createOperateResponse({
+       denominatorId,
+       ...(isTakeaway ? {
+         groupLabel: strings.subtraction.amountLeftGroup,
++        buttonLabel: strings.subtraction.checkAnswer,
++        associateErrorDescription: true,
+         numeratorLabel: strings.subtraction.numeratorLabel,
+         denominatorLabel: strings.subtraction.denominatorLabel,
+         numeratorAriaLabel: strings.subtraction.numeratorAriaLabel,
+diff --git a/src/render/strings.js b/src/render/strings.js
+index 522e7f7..89b3008 100644
+--- a/src/render/strings.js
++++ b/src/render/strings.js
+@@ -144,7 +144,8 @@ export const STRINGS = Object.freeze({
+   subtraction: Object.freeze({
+     takeAwayButton: 'Take away',
+     howMuchLeft: 'How much is left?',
+-    amountLeftGroup: 'Amount left',
++    amountLeftGroup: 'Your answer',
++    checkAnswer: 'Check answer',
+     numeratorLabel: 'Numerator',
+     denominatorLabel: 'Denominator',
+     numeratorAriaLabel: 'Numerator of amount left',

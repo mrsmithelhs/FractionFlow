@@ -1,0 +1,171 @@
+diff --git a/src/render/beat-container.js b/src/render/beat-container.js
+index 54bdbec..6007c13 100644
+--- a/src/render/beat-container.js
++++ b/src/render/beat-container.js
+@@ -723,6 +723,8 @@ export function createBeatContainer({
+             numeratorAriaLabel: strings.subtraction.numeratorAriaLabel,
+             denominatorAriaLabel: strings.subtraction.denominatorAriaLabel,
+             allowZeroNumerator: true,
++            buttonLabel: strings.controls.checkAnswer,
++            associateValidationError: true,
+             initialNumerator: recovery?.classification?.proposed?.numerator ?? '',
+             initialDenominator: recovery?.classification?.proposed?.denominator ?? '',
+             strings,
+diff --git a/src/render/controls.js b/src/render/controls.js
+index 3a72f88..a5181cc 100644
+--- a/src/render/controls.js
++++ b/src/render/controls.js
+@@ -121,6 +121,8 @@ export function createNumericInput({
+   };
+ }
+ 
++let fractionResponseInputSequence = 0;
++
+ /** One accessible response control for a numerator and denominator pair. */
+ export function createFractionResponseInput({
+   numeratorId,
+@@ -136,6 +138,8 @@ export function createFractionResponseInput({
+   numeratorAriaLabel = null,
+   denominatorAriaLabel = null,
+   allowZeroNumerator = false,
++  buttonLabel = strings.controls.check,
++  associateValidationError = false,
+ } = {}) {
+   const wrapper = groupLabel ? document.createElement('fieldset') : document.createElement('div');
+   wrapper.classList.add('control-fraction-response-wrapper');
+@@ -199,6 +203,27 @@ export function createFractionResponseInput({
+   const error = document.createElement('p');
+   error.classList.add('control-supporting-text', 'control-fraction-error');
+   error.setAttribute('role', 'alert');
++  if (associateValidationError) {
++    error.id = `control-fraction-error-${++fractionResponseInputSequence}`;
++  }
++
++  const updateErrorDescription = (input, include) => {
++    const tokens = (input.getAttribute('aria-describedby') || '').split(/\s+/).filter(Boolean);
++    const nextTokens = include
++      ? (tokens.includes(error.id) ? tokens : [...tokens, error.id])
++      : tokens.filter((token) => token !== error.id);
++    if (nextTokens.length) input.setAttribute('aria-describedby', nextTokens.join(' '));
++    else input.removeAttribute('aria-describedby');
++  };
++  const setError = (message) => {
++    error.textContent = message;
++    const active = Boolean(message);
++    if (associateValidationError) {
++      for (const input of [numerator.input, denominator.input]) {
++        updateErrorDescription(input, active);
++      }
++    }
++  };
+ 
+   const submit = () => {
+     const numeratorValue = numerator.input.value.trim();
+@@ -208,23 +233,23 @@ export function createFractionResponseInput({
+       : /^[1-9][0-9]*$/.test(value));
+     const validDenominator = (value) => /^[1-9][0-9]*$/.test(value);
+     if (!validNumerator(numeratorValue) || !validDenominator(denominatorValue)) {
+-      error.textContent = strings.operate.fractionRequired;
++      setError(strings.operate.fractionRequired);
+       if (onEmptySubmit) onEmptySubmit();
+       return;
+     }
+-    error.textContent = '';
++    setError('');
+     if (onSubmit) {
+       onSubmit({ kind: 'fraction', numerator: numeratorValue, denominator: denominatorValue });
+     }
+   };
+ 
+   const submitButton = createButton({
+-    label: strings.controls.check,
++    label: buttonLabel,
+     className: 'control-submit-btn',
+     onClick: submit,
+   });
+   for (const input of [numerator.input, denominator.input]) {
+-    input.addEventListener('input', () => { error.textContent = ''; });
++    input.addEventListener('input', () => setError(''));
+     input.addEventListener('keydown', (event) => {
+       if (event.key === 'Enter') {
+         event.preventDefault();
+diff --git a/src/render/linear-path.js b/src/render/linear-path.js
+index 52d195e..b255c90 100644
+--- a/src/render/linear-path.js
++++ b/src/render/linear-path.js
+@@ -850,6 +850,8 @@ export function createLinearPathRenderer({
+             numeratorAriaLabel: strings.subtraction.numeratorAriaLabel,
+             denominatorAriaLabel: strings.subtraction.denominatorAriaLabel,
+             allowZeroNumerator: true,
++            buttonLabel: strings.controls.checkAnswer,
++            associateValidationError: true,
+             initialNumerator: recovery?.classification?.proposed?.numerator ?? '',
+             initialDenominator: recovery?.classification?.proposed?.denominator ?? '',
+             strings,
+diff --git a/src/render/strings.js b/src/render/strings.js
+index 522e7f7..428472b 100644
+--- a/src/render/strings.js
++++ b/src/render/strings.js
+@@ -144,7 +144,7 @@ export const STRINGS = Object.freeze({
+   subtraction: Object.freeze({
+     takeAwayButton: 'Take away',
+     howMuchLeft: 'How much is left?',
+-    amountLeftGroup: 'Amount left',
++    amountLeftGroup: 'Your answer',
+     numeratorLabel: 'Numerator',
+     denominatorLabel: 'Denominator',
+     numeratorAriaLabel: 'Numerator of amount left',
+@@ -203,6 +203,7 @@ export const STRINGS = Object.freeze({
+ 
+   controls: Object.freeze({
+     check: 'Check',
++    checkAnswer: 'Check answer',
+     help: 'Need help?',
+     tryAgain: 'Try Again',
+     next: 'Next',
+diff --git a/tests/render-foundation.test.js b/tests/render-foundation.test.js
+index f824395..0171124 100644
+--- a/tests/render-foundation.test.js
++++ b/tests/render-foundation.test.js
+@@ -3,7 +3,12 @@ import { setupMockDOM, teardownMockDOM } from './fixtures/mock-dom.js';
+ import { resolveRenderableScene } from '../src/render/contract.js';
+ import { createBeatContainer } from '../src/render/beat-container.js';
+ import { createFractionBarRenderer } from '../src/render/fraction-bar.js';
+-import { createButton, createNumericInput, createChoiceGroup } from '../src/render/controls.js';
++import {
++  createButton,
++  createNumericInput,
++  createChoiceGroup,
++  createFractionResponseInput,
++} from '../src/render/controls.js';
+ import { createEpisode, applyIntent } from '../src/interaction/episode.js';
+ import { LEGACY_PHASE2_EPISODE_DEFINITION } from '../src/interaction/episode-definition.js';
+ import { validateCuratedFixtures } from '../src/content/index.js';
+@@ -31,6 +36,27 @@ describe('Renderer Foundation & Shared Boundary (Plan 07)', () => {
+     return createEpisode({ instance, episodeDefinition: LEGACY_PHASE2_EPISODE_DEFINITION });
+   }
+ 
++  it('keeps validation-alert description association off for non-takeaway fraction responses', () => {
++    const host = doc.createElement('div');
++    const response = createFractionResponseInput({
++      numeratorId: 'ordinary-fraction-numerator',
++      denominatorId: 'ordinary-fraction-denominator',
++    });
++    host.appendChild(response.element);
++    const numerator = host.querySelector('#ordinary-fraction-numerator');
++    const denominator = host.querySelector('#ordinary-fraction-denominator');
++    const alert = host.querySelector('.control-fraction-error');
++    numerator.setAttribute('aria-describedby', 'numerator-help');
++    denominator.setAttribute('aria-describedby', 'denominator-help');
++
++    host.querySelector('.control-submit-btn').click();
++
++    expect(alert.textContent).toBeTruthy();
++    expect(alert.getAttribute('id')).toBeNull();
++    expect(numerator.getAttribute('aria-describedby')).toBe('numerator-help');
++    expect(denominator.getAttribute('aria-describedby')).toBe('denominator-help');
++  });
++
+   it('condition D: resolveRenderableScene performs data-driven role switch from refusal continuation', () => {
+     // Start episode and advance to decide beat
+     let episode = canonicalEpisode();

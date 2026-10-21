@@ -1,0 +1,81 @@
+{
+  "date": "2026-10-21",
+  "requestedModel": "gpt-6-luna",
+  "reasoningEffort": "medium",
+  "coldContext": true,
+  "serialWriters": true,
+  "limits": "One run per arm plus one scope correction; model runtime identity and billed usage not independently verified. Text root prefixes normalized; assertions/source diffs and PNG bytes preserved. Probes reproduce at their original report path in their isolated F1 commit, not against production main.",
+  "arms": [
+    {
+      "arm": "a",
+      "baseline": "d7936a71bbbb099fb9394a727bbac1d751e79afa",
+      "commit": "c1f076019610cfd19f91f594dc3a3ee85fa799ac",
+      "sourceReportPath": "reports/development/plan-42-maintenance-arm",
+      "sourceFiles": [
+        "src/render/beat-container.js",
+        "src/render/controls.js",
+        "src/render/linear-path.js",
+        "src/render/strings.js"
+      ],
+      "files": [
+        {
+          "file": "evidence/browser-receipt.json",
+          "sha256": "e6daca6cac375bc4ac3670e9bcd3f01fcf4d6121e5fb1496caf380a6fac03cd4"
+        },
+        {
+          "file": "evidence/linear-valid.png",
+          "sha256": "cdedade3a45aa06ecd29314f89a23a6331749c6a1d8ea8a76ea3a89bb09e9693"
+        },
+        {
+          "file": "evidence/probe.mjs",
+          "sha256": "011057d9a88296cc7ceff193b1af50fe38246fc3d45f4bbbc55f5697f53317a5"
+        },
+        {
+          "file": "evidence/visual-invalid.png",
+          "sha256": "ddf2eab641fceb9a397a3bc20169682a823703365890f6e70cb9d5b0412ac7b2"
+        },
+        {
+          "file": "report.md",
+          "sha256": "acf8ef785f60ed8b647b10374d8c53473d49a6de39b17da0c9238214a1faea67"
+        }
+      ]
+    },
+    {
+      "arm": "b",
+      "baseline": "436e54a0ed58ff8437a22e61815c2c3da098954d",
+      "commit": "675ea1a825e64edbb67fd575a7375b5607a48d18",
+      "sourceReportPath": "reports/development/plan-42-maintenance-arm",
+      "sourceFiles": [
+        "src/render/controls.js",
+        "src/render/operate-response.js",
+        "src/render/strings.js"
+      ],
+      "files": [
+        {
+          "file": "browser-probe.mjs",
+          "sha256": "fb298a68f0468e744c7bf367feb13751e2c086c15bf47f8e64510368e911f4fd"
+        },
+        {
+          "file": "browser-receipt.json",
+          "sha256": "375f90891e3aca9bcebc47b0c1f4a220cefae984bf616cae4a934508b1b28a64"
+        },
+        {
+          "file": "evaluation-report.md",
+          "sha256": "45bd94fc51b89dffd7f5b5506e6f597b78c14e16d47d2d150e078a11482bc9ce"
+        },
+        {
+          "file": "linear-operate-help.png",
+          "sha256": "450446aa8c68088e464eebc25eec84fedb6625a58488a2ac4aa4b0d363be73a2"
+        },
+        {
+          "file": "negative-control.mjs",
+          "sha256": "237282cb345f2a67926241c96fecb890f5e427965074f95c15e985bbfa33dee0"
+        },
+        {
+          "file": "visual-operate-help.png",
+          "sha256": "bb63a759a9d0dfee88730bff6ecf39fde18350a67d3ccb9c288a438a528166cc"
+        }
+      ]
+    }
+  ]
+}
