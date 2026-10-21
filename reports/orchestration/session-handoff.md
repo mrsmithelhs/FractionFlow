@@ -38,6 +38,17 @@ accepted shade connector, preview/help/recovery/focus/reset, all viewportbounds
 and scrolling, concise/nonleakingcopy. No route matrix/fullroute run yet. Parent
 owns reviewrecords/status; child commits its scopedsource+checkpoint artifacts.
 
+Mid-Stage4 steering (not a delivered defect): partial renderer used getPreview/
+setPreview callbacks and cross-view synchronizePreview instead of approved
+read/write opaque candidate-id handle; visual dots were passive with a radio
+grid below. Parent directed correction before evidence: current region owns
+read/write/fresh controls/contextvalidation, app opaque descriptor+capture/restore,
+no cross-renderer synchronization; visual direct spatial targets or approved
+stepper, native radio group for linear. Do not approve a substitute text quiz.
+Also clarified Number(n)/Number(d) for pixels/percent is permitted drawing math;
+renderer must not compute correctness/recovery/benchmark truth or import math.
+No interaction scene extension is needed just to duplicate a coordinate.
+
 ## Current run
 
 The owner directed this chat to execute Plan 42 carefully using supervised Luna
