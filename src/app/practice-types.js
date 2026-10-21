@@ -6,6 +6,7 @@ import {
   PLAN35_REUSABLE_ADDITION_RECIPES_EPISODE_DEFINITION,
   PLAN36_LIKE_DENOMINATOR_SUBTRACTION_EPISODE_DEFINITION,
   PLAN40_REUSABLE_SUBTRACTION_RECIPES_EPISODE_DEFINITION,
+  PLAN37_BAR_TO_LINE_BRIDGE_EPISODE_DEFINITION,
 } from '../interaction/episode-definition.js';
 import { PLAN35_ADDITION_RECIPE_PRACTICE_SET, PLAN35_ADDITION_RECIPE_RECORDS } from '../content/data/plan35-addition-recipe-records.js';
 import {
@@ -18,6 +19,7 @@ import {
   PLAN40_SUBTRACTION_RECIPE_RECORDS,
 } from '../content/data/plan40-reusable-subtraction-recipes-records.js';
 import { deepFreeze } from '../content/schema.js';
+import { PLAN37_BAR_TO_LINE_BRIDGE_PRACTICE_SET, PLAN37_BAR_TO_LINE_BRIDGE_RECORDS } from '../content/data/plan37-bar-to-line-bridge-records.js';
 
 /**
  * Learner-reachable practice types. A type is registered only when the app can
@@ -278,7 +280,25 @@ export const PLAN40_PRACTICE_TYPES_V9 = deepFreeze([
   PLAN40_UNLIKE_SUBTRACTION_PRACTICE_TYPE,
 ]);
 
-export const PRACTICE_TYPES = PLAN40_PRACTICE_TYPES_V9;
+export const PLAN39_BAR_TO_LINE_PRACTICE_TYPE = deepFreeze({
+  id: 'place-fractions-on-number-line',
+  label: 'Place fractions on a number line',
+  setId: PLAN37_BAR_TO_LINE_BRIDGE_PRACTICE_SET.id,
+  setRevision: PLAN37_BAR_TO_LINE_BRIDGE_PRACTICE_SET.revision,
+  items: PLAN37_BAR_TO_LINE_BRIDGE_RECORDS.map((record) => ({
+    id: record.itemId,
+    fixtureId: record.fixtureId,
+    authoringRevision: record.authoringRevision,
+    episodeDefinitionId: PLAN37_BAR_TO_LINE_BRIDGE_EPISODE_DEFINITION.id,
+    episodeDefinitionRevision: PLAN37_BAR_TO_LINE_BRIDGE_EPISODE_DEFINITION.revision,
+  })),
+  episodeDefinition: PLAN37_BAR_TO_LINE_BRIDGE_EPISODE_DEFINITION,
+});
+
+export const PRACTICE_TYPES = deepFreeze([
+  ...PLAN40_PRACTICE_TYPES_V9,
+  PLAN39_BAR_TO_LINE_PRACTICE_TYPE,
+]);
 
 export function getPracticeType(id) {
   return PRACTICE_TYPES.find((practiceType) => practiceType.id === id) ?? null;

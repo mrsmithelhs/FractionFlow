@@ -1,0 +1,2114 @@
+{
+  "chrome": "155.0.8059.81",
+  "generatedAt": "2026-10-21T10:49:12.200Z",
+  "results": [
+    {
+      "dimensions": {
+        "width": 360,
+        "height": 740,
+        "deviceScaleFactor": 1,
+        "hasTouch": true,
+        "reducedMotion": "reduce"
+      },
+      "scenario": {
+        "itemIndex": 5,
+        "supportMode": "partitioned",
+        "label": "high-b8"
+      },
+      "locateVisual": {
+        "label": "high-b8-360x740-dpr1-visual",
+        "supportMode": "partitioned",
+        "viewport": {
+          "width": 360,
+          "height": 740,
+          "dpr": 1
+        },
+        "document": {
+          "scrollY": 225,
+          "scrollHeight": 965,
+          "clientHeight": 740
+        },
+        "prompt": {
+          "x": 25,
+          "y": 145,
+          "width": 310,
+          "height": 49.25,
+          "withinViewport": true
+        },
+        "controls": {
+          "x": 27,
+          "y": 439.859375,
+          "width": 310,
+          "height": 382,
+          "withinViewport": false
+        },
+        "candidateTargets": [
+          {
+            "text": "Step 0 of 8",
+            "x": 36,
+            "y": 468.859375,
+            "width": 138,
+            "height": 44,
+            "centerHit": true,
+            "centerHitTag": "BUTTON"
+          },
+          {
+            "text": "Step 1 of 8",
+            "x": 190,
+            "y": 468.859375,
+            "width": 138,
+            "height": 44,
+            "centerHit": true,
+            "centerHitTag": "BUTTON"
+          },
+          {
+            "text": "Step 2 of 8",
+            "x": 36,
+            "y": 528.859375,
+            "width": 138,
+            "height": 44,
+            "centerHit": true,
+            "centerHitTag": "BUTTON"
+          },
+          {
+            "text": "Step 3 of 8",
+            "x": 190,
+            "y": 528.859375,
+            "width": 138,
+            "height": 44,
+            "centerHit": true,
+            "centerHitTag": "BUTTON"
+          },
+          {
+            "text": "Step 4 of 8",
+            "x": 36,
+            "y": 588.859375,
+            "width": 138,
+            "height": 44,
+            "centerHit": true,
+            "centerHitTag": "BUTTON"
+          },
+          {
+            "text": "Step 5 of 8",
+            "x": 190,
+            "y": 588.859375,
+            "width": 138,
+            "height": 44,
+            "centerHit": true,
+            "centerHitTag": "BUTTON"
+          },
+          {
+            "text": "Step 6 of 8",
+            "x": 36,
+            "y": 648.859375,
+            "width": 138,
+            "height": 44,
+            "centerHit": true,
+            "centerHitTag": "BUTTON"
+          },
+          {
+            "text": "Step 7 of 8",
+            "x": 190,
+            "y": 648.859375,
+            "width": 138,
+            "height": 44,
+            "centerHit": true,
+            "centerHitTag": "BUTTON"
+          },
+          {
+            "text": "Step 8 of 8",
+            "x": 36,
+            "y": 708.859375,
+            "width": 138,
+            "height": 44,
+            "centerHit": true,
+            "centerHitTag": "BUTTON"
+          }
+        ],
+        "pairwiseOverlaps": [],
+        "candidateGrid": {
+          "display": "grid",
+          "columns": "repeat(2, minmax(0px, 1fr))"
+        },
+        "allTargetsAtLeast44": true,
+        "allCentersHitLabels": true,
+        "endpoints": {
+          "barStart": 46.31295394897461,
+          "barEnd": 313.6870422363281,
+          "lineStart": 46.28265380859375,
+          "lineEnd": 313.71734619140625,
+          "barBounds": {
+            "x": 34,
+            "width": 292
+          },
+          "trackBounds": {
+            "x": 34,
+            "width": 292
+          }
+        },
+        "episodeWidth": 336
+      },
+      "locateLinear": {
+        "label": "high-b8-360x740-dpr1-linear",
+        "supportMode": "partitioned",
+        "viewport": {
+          "width": 360,
+          "height": 740,
+          "dpr": 1
+        },
+        "document": {
+          "scrollY": 339,
+          "scrollHeight": 1079,
+          "clientHeight": 740
+        },
+        "prompt": {
+          "x": 25,
+          "y": 145,
+          "width": 310,
+          "height": 49.25,
+          "withinViewport": true
+        },
+        "controls": {
+          "x": 27,
+          "y": 495.609375,
+          "width": 310,
+          "height": 439.96875,
+          "withinViewport": false
+        },
+        "candidateTargets": [
+          {
+            "text": "Step 0 of 8",
+            "x": 36,
+            "y": 524.609375,
+            "width": 138,
+            "height": 55.59375,
+            "centerHit": true,
+            "centerHitTag": "SPAN"
+          },
+          {
+            "text": "Step 1 of 8",
+            "x": 190,
+            "y": 524.609375,
+            "width": 138,
+            "height": 55.59375,
+            "centerHit": true,
+            "centerHitTag": "SPAN"
+          },
+          {
+            "text": "Step 2 of 8",
+            "x": 36,
+            "y": 596.203125,
+            "width": 138,
+            "height": 55.59375,
+            "centerHit": true,
+            "centerHitTag": "SPAN"
+          },
+          {
+            "text": "Step 3 of 8",
+            "x": 190,
+            "y": 596.203125,
+            "width": 138,
+            "height": 55.59375,
+            "centerHit": true,
+            "centerHitTag": "SPAN"
+          },
+          {
+            "text": "Step 4 of 8",
+            "x": 36,
+            "y": 667.796875,
+            "width": 138,
+            "height": 55.59375,
+            "centerHit": true,
+            "centerHitTag": "SPAN"
+          },
+          {
+            "text": "Step 5 of 8",
+            "x": 190,
+            "y": 667.796875,
+            "width": 138,
+            "height": 55.59375,
+            "centerHit": true,
+            "centerHitTag": "SPAN"
+          },
+          {
+            "text": "Step 6 of 8",
+            "x": 36,
+            "y": 739.390625,
+            "width": 138,
+            "height": 55.59375,
+            "centerHit": true,
+            "centerHitTag": "SPAN"
+          },
+          {
+            "text": "Step 7 of 8",
+            "x": 190,
+            "y": 739.390625,
+            "width": 138,
+            "height": 55.59375,
+            "centerHit": true,
+            "centerHitTag": "SPAN"
+          },
+          {
+            "text": "Step 8 of 8",
+            "x": 36,
+            "y": 810.984375,
+            "width": 138,
+            "height": 55.59375,
+            "centerHit": true,
+            "centerHitTag": "SPAN"
+          }
+        ],
+        "pairwiseOverlaps": [],
+        "candidateGrid": {
+          "display": "grid",
+          "columns": "repeat(2, minmax(0px, 1fr))"
+        },
+        "allTargetsAtLeast44": true,
+        "allCentersHitLabels": true,
+        "endpoints": null,
+        "episodeWidth": 336
+      },
+      "resolveVisual": {
+        "label": "high-b8-360x740-dpr1-resolve-visual",
+        "supportMode": "partitioned",
+        "viewport": {
+          "width": 360,
+          "height": 740,
+          "dpr": 1
+        },
+        "document": {
+          "scrollY": 0,
+          "scrollHeight": 740,
+          "clientHeight": 740
+        },
+        "prompt": {
+          "x": 25,
+          "y": 145,
+          "width": 310,
+          "height": 49.25,
+          "withinViewport": true
+        },
+        "controls": {
+          "x": 25,
+          "y": 439.859375,
+          "width": 310,
+          "height": 0,
+          "withinViewport": true
+        },
+        "candidateTargets": [],
+        "pairwiseOverlaps": [],
+        "candidateGrid": null,
+        "allTargetsAtLeast44": true,
+        "allCentersHitLabels": true,
+        "endpoints": {
+          "barStart": 46.31295394897461,
+          "barEnd": 313.6870422363281,
+          "lineStart": 46.28265380859375,
+          "lineEnd": 313.71734619140625,
+          "barBounds": {
+            "x": 34,
+            "width": 292
+          },
+          "trackBounds": {
+            "x": 34,
+            "width": 292
+          }
+        },
+        "episodeWidth": 336
+      },
+      "keyboardSelected": 1,
+      "visualTapPreview": 1,
+      "checkStillRequired": false,
+      "finishedNavigation": {
+        "spentFinishCount": 0,
+        "nextVisible": true,
+        "noticeVisible": false,
+        "noticeText": "",
+        "heading": "The same amount is on the number line."
+      },
+      "acceptedAlignment": {
+        "connectorToSourceShadeEndDelta": 0,
+        "connectorToPointDelta": 0,
+        "connectorScreenLength": 85.29870639044911
+      },
+      "screenshot": "results\\high-b8-360x740-dpr1-resolve.png"
+    },
+    {
+      "dimensions": {
+        "width": 360,
+        "height": 740,
+        "deviceScaleFactor": 1,
+        "hasTouch": true,
+        "reducedMotion": "reduce"
+      },
+      "scenario": {
+        "itemIndex": 3,
+        "supportMode": "partitioned",
+        "label": "high-odd-thirds"
+      },
+      "locateVisual": {
+        "label": "high-odd-thirds-360x740-dpr1-visual",
+        "supportMode": "partitioned",
+        "viewport": {
+          "width": 360,
+          "height": 740,
+          "dpr": 1
+        },
+        "document": {
+          "scrollY": 45,
+          "scrollHeight": 785,
+          "clientHeight": 740
+        },
+        "prompt": {
+          "x": 25,
+          "y": 145,
+          "width": 310,
+          "height": 49.25,
+          "withinViewport": true
+        },
+        "controls": {
+          "x": 27,
+          "y": 439.859375,
+          "width": 310,
+          "height": 202,
+          "withinViewport": true
+        },
+        "candidateTargets": [
+          {
+            "text": "Step 0 of 3",
+            "x": 36,
+            "y": 468.859375,
+            "width": 138,
+            "height": 44,
+            "centerHit": true,
+            "centerHitTag": "BUTTON"
+          },
+          {
+            "text": "Step 1 of 3",
+            "x": 190,
+            "y": 468.859375,
+            "width": 138,
+            "height": 44,
+            "centerHit": true,
+            "centerHitTag": "BUTTON"
+          },
+          {
+            "text": "Step 2 of 3",
+            "x": 36,
+            "y": 528.859375,
+            "width": 138,
+            "height": 44,
+            "centerHit": true,
+            "centerHitTag": "BUTTON"
+          },
+          {
+            "text": "Step 3 of 3",
+            "x": 190,
+            "y": 528.859375,
+            "width": 138,
+            "height": 44,
+            "centerHit": true,
+            "centerHitTag": "BUTTON"
+          }
+        ],
+        "pairwiseOverlaps": [],
+        "candidateGrid": {
+          "display": "grid",
+          "columns": "repeat(2, minmax(0px, 1fr))"
+        },
+        "allTargetsAtLeast44": true,
+        "allCentersHitLabels": true,
+        "endpoints": {
+          "barStart": 46.31295394897461,
+          "barEnd": 313.6870422363281,
+          "lineStart": 46.28265380859375,
+          "lineEnd": 313.71734619140625,
+          "barBounds": {
+            "x": 34,
+            "width": 292
+          },
+          "trackBounds": {
+            "x": 34,
+            "width": 292
+          }
+        },
+        "episodeWidth": 336
+      },
+      "locateLinear": {
+        "label": "high-odd-thirds-360x740-dpr1-linear",
+        "supportMode": "partitioned",
+        "viewport": {
+          "width": 360,
+          "height": 740,
+          "dpr": 1
+        },
+        "document": {
+          "scrollY": 124,
+          "scrollHeight": 864,
+          "clientHeight": 740
+        },
+        "prompt": {
+          "x": 25,
+          "y": 120,
+          "width": 310,
+          "height": 49.25,
+          "withinViewport": true
+        },
+        "controls": {
+          "x": 27,
+          "y": 470.609375,
+          "width": 310,
+          "height": 225.1875,
+          "withinViewport": true
+        },
+        "candidateTargets": [
+          {
+            "text": "Step 0 of 3",
+            "x": 36,
+            "y": 524.609375,
+            "width": 138,
+            "height": 55.59375,
+            "centerHit": true,
+            "centerHitTag": "SPAN"
+          },
+          {
+            "text": "Step 1 of 3",
+            "x": 190,
+            "y": 524.609375,
+            "width": 138,
+            "height": 55.59375,
+            "centerHit": true,
+            "centerHitTag": "SPAN"
+          },
+          {
+            "text": "Step 2 of 3",
+            "x": 36,
+            "y": 596.203125,
+            "width": 138,
+            "height": 55.59375,
+            "centerHit": true,
+            "centerHitTag": "SPAN"
+          },
+          {
+            "text": "Step 3 of 3",
+            "x": 190,
+            "y": 596.203125,
+            "width": 138,
+            "height": 55.59375,
+            "centerHit": true,
+            "centerHitTag": "SPAN"
+          }
+        ],
+        "pairwiseOverlaps": [],
+        "candidateGrid": {
+          "display": "grid",
+          "columns": "repeat(2, minmax(0px, 1fr))"
+        },
+        "allTargetsAtLeast44": true,
+        "allCentersHitLabels": true,
+        "endpoints": null,
+        "episodeWidth": 336
+      },
+      "resolveVisual": {
+        "label": "high-odd-thirds-360x740-dpr1-resolve-visual",
+        "supportMode": "partitioned",
+        "viewport": {
+          "width": 360,
+          "height": 740,
+          "dpr": 1
+        },
+        "document": {
+          "scrollY": 0,
+          "scrollHeight": 740,
+          "clientHeight": 740
+        },
+        "prompt": {
+          "x": 25,
+          "y": 145,
+          "width": 310,
+          "height": 49.25,
+          "withinViewport": true
+        },
+        "controls": {
+          "x": 25,
+          "y": 439.859375,
+          "width": 310,
+          "height": 0,
+          "withinViewport": true
+        },
+        "candidateTargets": [],
+        "pairwiseOverlaps": [],
+        "candidateGrid": null,
+        "allTargetsAtLeast44": true,
+        "allCentersHitLabels": true,
+        "endpoints": {
+          "barStart": 46.31295394897461,
+          "barEnd": 313.6870422363281,
+          "lineStart": 46.28265380859375,
+          "lineEnd": 313.71734619140625,
+          "barBounds": {
+            "x": 34,
+            "width": 292
+          },
+          "trackBounds": {
+            "x": 34,
+            "width": 292
+          }
+        },
+        "episodeWidth": 336
+      },
+      "keyboardSelected": 1,
+      "visualTapPreview": 1,
+      "checkStillRequired": false,
+      "finishedNavigation": {
+        "spentFinishCount": 0,
+        "nextVisible": true,
+        "noticeVisible": false,
+        "noticeText": "",
+        "heading": "The same amount is on the number line."
+      },
+      "acceptedAlignment": {
+        "connectorToSourceShadeEndDelta": 0,
+        "connectorToPointDelta": 0,
+        "connectorScreenLength": 85.29870665280109
+      },
+      "screenshot": "results\\high-odd-thirds-360x740-dpr1-resolve.png"
+    },
+    {
+      "dimensions": {
+        "width": 360,
+        "height": 740,
+        "deviceScaleFactor": 1,
+        "hasTouch": true,
+        "reducedMotion": "reduce"
+      },
+      "scenario": {
+        "itemIndex": 6,
+        "supportMode": "sparse-benchmarks",
+        "label": "medium-item07"
+      },
+      "locateVisual": {
+        "label": "medium-item07-360x740-dpr1-visual",
+        "supportMode": "sparse-benchmarks",
+        "viewport": {
+          "width": 360,
+          "height": 740,
+          "dpr": 1
+        },
+        "document": {
+          "scrollY": 170,
+          "scrollHeight": 910,
+          "clientHeight": 740
+        },
+        "prompt": {
+          "x": 25,
+          "y": 145,
+          "width": 310,
+          "height": 49.25,
+          "withinViewport": true
+        },
+        "controls": {
+          "x": 27,
+          "y": 439.859375,
+          "width": 310,
+          "height": 326.1875,
+          "withinViewport": false
+        },
+        "candidateTargets": [
+          {
+            "text": "Offered point A: between zero and one half, closer to zero.",
+            "x": 36,
+            "y": 468.859375,
+            "width": 138,
+            "height": 116.59375,
+            "centerHit": true,
+            "centerHitTag": "BUTTON"
+          },
+          {
+            "text": "Offered point B: between zero and one half, closer to one half.",
+            "x": 190,
+            "y": 468.859375,
+            "width": 138,
+            "height": 116.59375,
+            "centerHit": true,
+            "centerHitTag": "BUTTON"
+          },
+          {
+            "text": "Offered point C: at one half.",
+            "x": 36,
+            "y": 601.453125,
+            "width": 138,
+            "height": 95.59375,
+            "centerHit": true,
+            "centerHitTag": "BUTTON"
+          },
+          {
+            "text": "Offered point D: between one half and one, closer to one half.",
+            "x": 190,
+            "y": 601.453125,
+            "width": 138,
+            "height": 95.59375,
+            "centerHit": true,
+            "centerHitTag": "BUTTON"
+          }
+        ],
+        "pairwiseOverlaps": [],
+        "candidateGrid": {
+          "display": "grid",
+          "columns": "repeat(2, minmax(0px, 1fr))"
+        },
+        "allTargetsAtLeast44": true,
+        "allCentersHitLabels": true,
+        "endpoints": {
+          "barStart": 46.31295394897461,
+          "barEnd": 313.6870422363281,
+          "lineStart": 46.28265380859375,
+          "lineEnd": 313.71734619140625,
+          "barBounds": {
+            "x": 34,
+            "width": 292
+          },
+          "trackBounds": {
+            "x": 34,
+            "width": 292
+          }
+        },
+        "episodeWidth": 336
+      },
+      "locateLinear": {
+        "label": "medium-item07-360x740-dpr1-linear",
+        "supportMode": "sparse-benchmarks",
+        "viewport": {
+          "width": 360,
+          "height": 740,
+          "dpr": 1
+        },
+        "document": {
+          "scrollY": 228,
+          "scrollHeight": 968,
+          "clientHeight": 740
+        },
+        "prompt": {
+          "x": 25,
+          "y": 145,
+          "width": 310,
+          "height": 49.25,
+          "withinViewport": true
+        },
+        "controls": {
+          "x": 27,
+          "y": 495.609375,
+          "width": 310,
+          "height": 329.0625,
+          "withinViewport": false
+        },
+        "candidateTargets": [
+          {
+            "text": "Offered point A: between zero and one half, closer to zero.",
+            "x": 36,
+            "y": 524.609375,
+            "width": 138,
+            "height": 107.53125,
+            "centerHit": true,
+            "centerHitTag": "SPAN"
+          },
+          {
+            "text": "Offered point B: between zero and one half, closer to one half.",
+            "x": 190,
+            "y": 524.609375,
+            "width": 138,
+            "height": 107.53125,
+            "centerHit": true,
+            "centerHitTag": "SPAN"
+          },
+          {
+            "text": "Offered point C: at one half.",
+            "x": 36,
+            "y": 648.140625,
+            "width": 138,
+            "height": 107.53125,
+            "centerHit": true,
+            "centerHitTag": "SPAN"
+          },
+          {
+            "text": "Offered point D: between one half and one, closer to one half.",
+            "x": 190,
+            "y": 648.140625,
+            "width": 138,
+            "height": 107.53125,
+            "centerHit": true,
+            "centerHitTag": "SPAN"
+          }
+        ],
+        "pairwiseOverlaps": [],
+        "candidateGrid": {
+          "display": "grid",
+          "columns": "repeat(2, minmax(0px, 1fr))"
+        },
+        "allTargetsAtLeast44": true,
+        "allCentersHitLabels": true,
+        "endpoints": null,
+        "episodeWidth": 336
+      },
+      "resolveVisual": {
+        "label": "medium-item07-360x740-dpr1-resolve-visual",
+        "supportMode": "sparse-benchmarks",
+        "viewport": {
+          "width": 360,
+          "height": 740,
+          "dpr": 1
+        },
+        "document": {
+          "scrollY": 0,
+          "scrollHeight": 740,
+          "clientHeight": 740
+        },
+        "prompt": {
+          "x": 25,
+          "y": 145,
+          "width": 310,
+          "height": 49.25,
+          "withinViewport": true
+        },
+        "controls": {
+          "x": 25,
+          "y": 439.859375,
+          "width": 310,
+          "height": 0,
+          "withinViewport": true
+        },
+        "candidateTargets": [],
+        "pairwiseOverlaps": [],
+        "candidateGrid": null,
+        "allTargetsAtLeast44": true,
+        "allCentersHitLabels": true,
+        "endpoints": {
+          "barStart": 46.31295394897461,
+          "barEnd": 313.6870422363281,
+          "lineStart": 46.28265380859375,
+          "lineEnd": 313.71734619140625,
+          "barBounds": {
+            "x": 34,
+            "width": 292
+          },
+          "trackBounds": {
+            "x": 34,
+            "width": 292
+          }
+        },
+        "episodeWidth": 336
+      },
+      "keyboardSelected": 1,
+      "visualTapPreview": 1,
+      "checkStillRequired": false,
+      "finishedNavigation": {
+        "spentFinishCount": 0,
+        "nextVisible": true,
+        "noticeVisible": false,
+        "noticeText": "",
+        "heading": "The same amount is on the number line."
+      },
+      "acceptedAlignment": {
+        "connectorToSourceShadeEndDelta": 0,
+        "connectorToPointDelta": 0,
+        "connectorScreenLength": 85.29870665280109
+      },
+      "screenshot": "results\\medium-item07-360x740-dpr1-resolve.png"
+    },
+    {
+      "dimensions": {
+        "width": 360,
+        "height": 740,
+        "deviceScaleFactor": 1,
+        "hasTouch": true,
+        "reducedMotion": "reduce"
+      },
+      "scenario": {
+        "itemIndex": 7,
+        "supportMode": "sparse-benchmarks",
+        "label": "medium-item08"
+      },
+      "locateVisual": {
+        "label": "medium-item08-360x740-dpr1-visual",
+        "supportMode": "sparse-benchmarks",
+        "viewport": {
+          "width": 360,
+          "height": 740,
+          "dpr": 1
+        },
+        "document": {
+          "scrollY": 170,
+          "scrollHeight": 910,
+          "clientHeight": 740
+        },
+        "prompt": {
+          "x": 25,
+          "y": 145,
+          "width": 310,
+          "height": 49.25,
+          "withinViewport": true
+        },
+        "controls": {
+          "x": 27,
+          "y": 439.859375,
+          "width": 310,
+          "height": 326.1875,
+          "withinViewport": false
+        },
+        "candidateTargets": [
+          {
+            "text": "Offered point A: between zero and one half, closer to one half.",
+            "x": 36,
+            "y": 468.859375,
+            "width": 138,
+            "height": 116.59375,
+            "centerHit": true,
+            "centerHitTag": "BUTTON"
+          },
+          {
+            "text": "Offered point B: at one half.",
+            "x": 190,
+            "y": 468.859375,
+            "width": 138,
+            "height": 116.59375,
+            "centerHit": true,
+            "centerHitTag": "BUTTON"
+          },
+          {
+            "text": "Offered point C: between one half and one, closer to one half.",
+            "x": 36,
+            "y": 601.453125,
+            "width": 138,
+            "height": 95.59375,
+            "centerHit": true,
+            "centerHitTag": "BUTTON"
+          },
+          {
+            "text": "Offered point D: between one half and one, closer to one.",
+            "x": 190,
+            "y": 601.453125,
+            "width": 138,
+            "height": 95.59375,
+            "centerHit": true,
+            "centerHitTag": "BUTTON"
+          }
+        ],
+        "pairwiseOverlaps": [],
+        "candidateGrid": {
+          "display": "grid",
+          "columns": "repeat(2, minmax(0px, 1fr))"
+        },
+        "allTargetsAtLeast44": true,
+        "allCentersHitLabels": true,
+        "endpoints": {
+          "barStart": 46.31295394897461,
+          "barEnd": 313.6870422363281,
+          "lineStart": 46.28265380859375,
+          "lineEnd": 313.71734619140625,
+          "barBounds": {
+            "x": 34,
+            "width": 292
+          },
+          "trackBounds": {
+            "x": 34,
+            "width": 292
+          }
+        },
+        "episodeWidth": 336
+      },
+      "locateLinear": {
+        "label": "medium-item08-360x740-dpr1-linear",
+        "supportMode": "sparse-benchmarks",
+        "viewport": {
+          "width": 360,
+          "height": 740,
+          "dpr": 1
+        },
+        "document": {
+          "scrollY": 228,
+          "scrollHeight": 968,
+          "clientHeight": 740
+        },
+        "prompt": {
+          "x": 25,
+          "y": 145,
+          "width": 310,
+          "height": 49.25,
+          "withinViewport": true
+        },
+        "controls": {
+          "x": 27,
+          "y": 495.609375,
+          "width": 310,
+          "height": 329.0625,
+          "withinViewport": false
+        },
+        "candidateTargets": [
+          {
+            "text": "Offered point A: between zero and one half, closer to one half.",
+            "x": 36,
+            "y": 524.609375,
+            "width": 138,
+            "height": 107.53125,
+            "centerHit": true,
+            "centerHitTag": "SPAN"
+          },
+          {
+            "text": "Offered point B: at one half.",
+            "x": 190,
+            "y": 524.609375,
+            "width": 138,
+            "height": 107.53125,
+            "centerHit": true,
+            "centerHitTag": "SPAN"
+          },
+          {
+            "text": "Offered point C: between one half and one, closer to one half.",
+            "x": 36,
+            "y": 648.140625,
+            "width": 138,
+            "height": 107.53125,
+            "centerHit": true,
+            "centerHitTag": "SPAN"
+          },
+          {
+            "text": "Offered point D: between one half and one, closer to one.",
+            "x": 190,
+            "y": 648.140625,
+            "width": 138,
+            "height": 107.53125,
+            "centerHit": true,
+            "centerHitTag": "SPAN"
+          }
+        ],
+        "pairwiseOverlaps": [],
+        "candidateGrid": {
+          "display": "grid",
+          "columns": "repeat(2, minmax(0px, 1fr))"
+        },
+        "allTargetsAtLeast44": true,
+        "allCentersHitLabels": true,
+        "endpoints": null,
+        "episodeWidth": 336
+      },
+      "resolveVisual": {
+        "label": "medium-item08-360x740-dpr1-resolve-visual",
+        "supportMode": "sparse-benchmarks",
+        "viewport": {
+          "width": 360,
+          "height": 740,
+          "dpr": 1
+        },
+        "document": {
+          "scrollY": 0,
+          "scrollHeight": 740,
+          "clientHeight": 740
+        },
+        "prompt": {
+          "x": 25,
+          "y": 176.984375,
+          "width": 310,
+          "height": 49.25,
+          "withinViewport": true
+        },
+        "controls": {
+          "x": 25,
+          "y": 471.84375,
+          "width": 310,
+          "height": 0,
+          "withinViewport": true
+        },
+        "candidateTargets": [],
+        "pairwiseOverlaps": [],
+        "candidateGrid": null,
+        "allTargetsAtLeast44": true,
+        "allCentersHitLabels": true,
+        "endpoints": {
+          "barStart": 46.31295394897461,
+          "barEnd": 313.6870422363281,
+          "lineStart": 46.28265380859375,
+          "lineEnd": 313.71734619140625,
+          "barBounds": {
+            "x": 34,
+            "width": 292
+          },
+          "trackBounds": {
+            "x": 34,
+            "width": 292
+          }
+        },
+        "episodeWidth": 336
+      },
+      "keyboardSelected": 1,
+      "visualTapPreview": 1,
+      "checkStillRequired": false,
+      "finishedNavigation": {
+        "spentFinishCount": 0,
+        "nextVisible": false,
+        "noticeVisible": true,
+        "noticeText": "You’ve tried every problem in this set.",
+        "heading": "The same amount is on the number line."
+      },
+      "acceptedAlignment": {
+        "connectorToSourceShadeEndDelta": 0,
+        "connectorToPointDelta": 0,
+        "connectorScreenLength": 85.29870844714186
+      },
+      "screenshot": "results\\medium-item08-360x740-dpr1-resolve.png"
+    },
+    {
+      "dimensions": {
+        "width": 1093,
+        "height": 614,
+        "deviceScaleFactor": 1.25,
+        "hasTouch": false,
+        "reducedMotion": "reduce"
+      },
+      "scenario": {
+        "itemIndex": 5,
+        "supportMode": "partitioned",
+        "label": "high-b8"
+      },
+      "locateVisual": {
+        "label": "high-b8-1093x614-dpr1.25-visual",
+        "supportMode": "partitioned",
+        "viewport": {
+          "width": 1093,
+          "height": 614,
+          "dpr": 1.25
+        },
+        "document": {
+          "scrollY": 554,
+          "scrollHeight": 1168,
+          "clientHeight": 614
+        },
+        "prompt": {
+          "x": 61.09375,
+          "y": -34.90625,
+          "width": 970.8125,
+          "height": 24.625,
+          "withinViewport": false
+        },
+        "controls": {
+          "x": 63.09375,
+          "y": 444.15625,
+          "width": 970.8125,
+          "height": 382,
+          "withinViewport": false
+        },
+        "candidateTargets": [
+          {
+            "text": "Step 0 of 8",
+            "x": 72.09375,
+            "y": 689.15625,
+            "width": 468.40625,
+            "height": 44,
+            "centerHit": true,
+            "centerHitTag": "BUTTON"
+          },
+          {
+            "text": "Step 1 of 8",
+            "x": 556.5,
+            "y": 689.15625,
+            "width": 468.40625,
+            "height": 44,
+            "centerHit": true,
+            "centerHitTag": "BUTTON"
+          },
+          {
+            "text": "Step 2 of 8",
+            "x": 72.09375,
+            "y": 749.15625,
+            "width": 468.40625,
+            "height": 44,
+            "centerHit": true,
+            "centerHitTag": "BUTTON"
+          },
+          {
+            "text": "Step 3 of 8",
+            "x": 556.5,
+            "y": 749.15625,
+            "width": 468.40625,
+            "height": 44,
+            "centerHit": true,
+            "centerHitTag": "BUTTON"
+          },
+          {
+            "text": "Step 4 of 8",
+            "x": 72.09375,
+            "y": 809.15625,
+            "width": 468.40625,
+            "height": 44,
+            "centerHit": true,
+            "centerHitTag": "BUTTON"
+          },
+          {
+            "text": "Step 5 of 8",
+            "x": 556.5,
+            "y": 809.15625,
+            "width": 468.40625,
+            "height": 44,
+            "centerHit": true,
+            "centerHitTag": "BUTTON"
+          },
+          {
+            "text": "Step 6 of 8",
+            "x": 72.09375,
+            "y": 869.15625,
+            "width": 468.40625,
+            "height": 44,
+            "centerHit": true,
+            "centerHitTag": "BUTTON"
+          },
+          {
+            "text": "Step 7 of 8",
+            "x": 556.5,
+            "y": 869.15625,
+            "width": 468.40625,
+            "height": 44,
+            "centerHit": true,
+            "centerHitTag": "BUTTON"
+          },
+          {
+            "text": "Step 8 of 8",
+            "x": 72.09375,
+            "y": 929.15625,
+            "width": 468.40625,
+            "height": 44,
+            "centerHit": true,
+            "centerHitTag": "BUTTON"
+          }
+        ],
+        "pairwiseOverlaps": [],
+        "candidateGrid": {
+          "display": "grid",
+          "columns": "repeat(2, minmax(0px, 1fr))"
+        },
+        "allTargetsAtLeast44": true,
+        "allCentersHitLabels": true,
+        "endpoints": {
+          "barStart": 110.12432098388672,
+          "barEnd": 982.8756713867188,
+          "lineStart": 110.12956237792969,
+          "lineEnd": 982.8704223632812,
+          "barBounds": {
+            "x": 70.09375,
+            "width": 952.8125
+          },
+          "trackBounds": {
+            "x": 70.09375,
+            "width": 952.8125
+          }
+        },
+        "episodeWidth": 1027.4375
+      },
+      "locateLinear": {
+        "label": "high-b8-1093x614-dpr1.25-linear",
+        "supportMode": "partitioned",
+        "viewport": {
+          "width": 1093,
+          "height": 614,
+          "dpr": 1.25
+        },
+        "document": {
+          "scrollY": 417,
+          "scrollHeight": 1031,
+          "clientHeight": 614
+        },
+        "prompt": {
+          "x": 61.09375,
+          "y": 181.09375,
+          "width": 970.8125,
+          "height": 24.625,
+          "withinViewport": true
+        },
+        "controls": {
+          "x": 63.09375,
+          "y": 465.078125,
+          "width": 970.8125,
+          "height": 439.96875,
+          "withinViewport": false
+        },
+        "candidateTargets": [
+          {
+            "text": "Step 0 of 8",
+            "x": 72.09375,
+            "y": 494.078125,
+            "width": 468.40625,
+            "height": 55.59375,
+            "centerHit": true,
+            "centerHitTag": "LABEL"
+          },
+          {
+            "text": "Step 1 of 8",
+            "x": 556.5,
+            "y": 494.078125,
+            "width": 468.40625,
+            "height": 55.59375,
+            "centerHit": true,
+            "centerHitTag": "LABEL"
+          },
+          {
+            "text": "Step 2 of 8",
+            "x": 72.09375,
+            "y": 565.671875,
+            "width": 468.40625,
+            "height": 55.59375,
+            "centerHit": true,
+            "centerHitTag": "LABEL"
+          },
+          {
+            "text": "Step 3 of 8",
+            "x": 556.5,
+            "y": 565.671875,
+            "width": 468.40625,
+            "height": 55.59375,
+            "centerHit": true,
+            "centerHitTag": "LABEL"
+          },
+          {
+            "text": "Step 4 of 8",
+            "x": 72.09375,
+            "y": 637.265625,
+            "width": 468.40625,
+            "height": 55.59375,
+            "centerHit": true,
+            "centerHitTag": "LABEL"
+          },
+          {
+            "text": "Step 5 of 8",
+            "x": 556.5,
+            "y": 637.265625,
+            "width": 468.40625,
+            "height": 55.59375,
+            "centerHit": true,
+            "centerHitTag": "LABEL"
+          },
+          {
+            "text": "Step 6 of 8",
+            "x": 72.09375,
+            "y": 708.859375,
+            "width": 468.40625,
+            "height": 55.59375,
+            "centerHit": true,
+            "centerHitTag": "LABEL"
+          },
+          {
+            "text": "Step 7 of 8",
+            "x": 556.5,
+            "y": 708.859375,
+            "width": 468.40625,
+            "height": 55.59375,
+            "centerHit": true,
+            "centerHitTag": "LABEL"
+          },
+          {
+            "text": "Step 8 of 8",
+            "x": 72.09375,
+            "y": 780.453125,
+            "width": 468.40625,
+            "height": 55.59375,
+            "centerHit": true,
+            "centerHitTag": "LABEL"
+          }
+        ],
+        "pairwiseOverlaps": [],
+        "candidateGrid": {
+          "display": "grid",
+          "columns": "repeat(2, minmax(0px, 1fr))"
+        },
+        "allTargetsAtLeast44": true,
+        "allCentersHitLabels": true,
+        "endpoints": null,
+        "episodeWidth": 1027.4375
+      },
+      "resolveVisual": {
+        "label": "high-b8-1093x614-dpr1.25-resolve-visual",
+        "supportMode": "partitioned",
+        "viewport": {
+          "width": 1093,
+          "height": 614,
+          "dpr": 1.25
+        },
+        "document": {
+          "scrollY": 0,
+          "scrollHeight": 786,
+          "clientHeight": 614
+        },
+        "prompt": {
+          "x": 61.09375,
+          "y": 181.09375,
+          "width": 970.8125,
+          "height": 24.625,
+          "withinViewport": true
+        },
+        "controls": {
+          "x": 61.09375,
+          "y": 660.15625,
+          "width": 970.8125,
+          "height": 0,
+          "withinViewport": false
+        },
+        "candidateTargets": [],
+        "pairwiseOverlaps": [],
+        "candidateGrid": null,
+        "allTargetsAtLeast44": true,
+        "allCentersHitLabels": true,
+        "endpoints": {
+          "barStart": 110.12432098388672,
+          "barEnd": 982.8756713867188,
+          "lineStart": 110.12956237792969,
+          "lineEnd": 982.8704223632812,
+          "barBounds": {
+            "x": 70.09375,
+            "width": 952.8125
+          },
+          "trackBounds": {
+            "x": 70.09375,
+            "width": 952.8125
+          }
+        },
+        "episodeWidth": 1027.4375
+      },
+      "keyboardSelected": 1,
+      "visualTapPreview": 0,
+      "checkStillRequired": false,
+      "finishedNavigation": {
+        "spentFinishCount": 0,
+        "nextVisible": true,
+        "noticeVisible": false,
+        "noticeText": "",
+        "heading": "The same amount is on the number line."
+      },
+      "acceptedAlignment": {
+        "connectorToSourceShadeEndDelta": 0,
+        "connectorToPointDelta": 0,
+        "connectorScreenLength": 166.5823364309499
+      },
+      "screenshot": "results\\high-b8-1093x614-dpr1.25-resolve.png"
+    },
+    {
+      "dimensions": {
+        "width": 1093,
+        "height": 614,
+        "deviceScaleFactor": 1.25,
+        "hasTouch": false,
+        "reducedMotion": "reduce"
+      },
+      "scenario": {
+        "itemIndex": 3,
+        "supportMode": "partitioned",
+        "label": "high-odd-thirds"
+      },
+      "locateVisual": {
+        "label": "high-odd-thirds-1093x614-dpr1.25-visual",
+        "supportMode": "partitioned",
+        "viewport": {
+          "width": 1093,
+          "height": 614,
+          "dpr": 1.25
+        },
+        "document": {
+          "scrollY": 374,
+          "scrollHeight": 988,
+          "clientHeight": 614
+        },
+        "prompt": {
+          "x": 61.09375,
+          "y": -34.90625,
+          "width": 970.8125,
+          "height": 24.625,
+          "withinViewport": false
+        },
+        "controls": {
+          "x": 63.09375,
+          "y": 444.15625,
+          "width": 970.8125,
+          "height": 202,
+          "withinViewport": false
+        },
+        "candidateTargets": [
+          {
+            "text": "Step 0 of 3",
+            "x": 72.09375,
+            "y": 689.15625,
+            "width": 468.40625,
+            "height": 44,
+            "centerHit": true,
+            "centerHitTag": "BUTTON"
+          },
+          {
+            "text": "Step 1 of 3",
+            "x": 556.5,
+            "y": 689.15625,
+            "width": 468.40625,
+            "height": 44,
+            "centerHit": true,
+            "centerHitTag": "BUTTON"
+          },
+          {
+            "text": "Step 2 of 3",
+            "x": 72.09375,
+            "y": 749.15625,
+            "width": 468.40625,
+            "height": 44,
+            "centerHit": true,
+            "centerHitTag": "BUTTON"
+          },
+          {
+            "text": "Step 3 of 3",
+            "x": 556.5,
+            "y": 749.15625,
+            "width": 468.40625,
+            "height": 44,
+            "centerHit": true,
+            "centerHitTag": "BUTTON"
+          }
+        ],
+        "pairwiseOverlaps": [],
+        "candidateGrid": {
+          "display": "grid",
+          "columns": "repeat(2, minmax(0px, 1fr))"
+        },
+        "allTargetsAtLeast44": true,
+        "allCentersHitLabels": true,
+        "endpoints": {
+          "barStart": 110.12432098388672,
+          "barEnd": 982.8756713867188,
+          "lineStart": 110.12956237792969,
+          "lineEnd": 982.8704223632812,
+          "barBounds": {
+            "x": 70.09375,
+            "width": 952.8125
+          },
+          "trackBounds": {
+            "x": 70.09375,
+            "width": 952.8125
+          }
+        },
+        "episodeWidth": 1027.4375
+      },
+      "locateLinear": {
+        "label": "high-odd-thirds-1093x614-dpr1.25-linear",
+        "supportMode": "partitioned",
+        "viewport": {
+          "width": 1093,
+          "height": 614,
+          "dpr": 1.25
+        },
+        "document": {
+          "scrollY": 202,
+          "scrollHeight": 816,
+          "clientHeight": 614
+        },
+        "prompt": {
+          "x": 61.09375,
+          "y": 181.09375,
+          "width": 970.8125,
+          "height": 24.625,
+          "withinViewport": true
+        },
+        "controls": {
+          "x": 63.09375,
+          "y": 465.078125,
+          "width": 970.8125,
+          "height": 225.1875,
+          "withinViewport": false
+        },
+        "candidateTargets": [
+          {
+            "text": "Step 0 of 3",
+            "x": 72.09375,
+            "y": 494.078125,
+            "width": 468.40625,
+            "height": 55.59375,
+            "centerHit": true,
+            "centerHitTag": "LABEL"
+          },
+          {
+            "text": "Step 1 of 3",
+            "x": 556.5,
+            "y": 494.078125,
+            "width": 468.40625,
+            "height": 55.59375,
+            "centerHit": true,
+            "centerHitTag": "LABEL"
+          },
+          {
+            "text": "Step 2 of 3",
+            "x": 72.09375,
+            "y": 565.671875,
+            "width": 468.40625,
+            "height": 55.59375,
+            "centerHit": true,
+            "centerHitTag": "LABEL"
+          },
+          {
+            "text": "Step 3 of 3",
+            "x": 556.5,
+            "y": 565.671875,
+            "width": 468.40625,
+            "height": 55.59375,
+            "centerHit": true,
+            "centerHitTag": "LABEL"
+          }
+        ],
+        "pairwiseOverlaps": [],
+        "candidateGrid": {
+          "display": "grid",
+          "columns": "repeat(2, minmax(0px, 1fr))"
+        },
+        "allTargetsAtLeast44": true,
+        "allCentersHitLabels": true,
+        "endpoints": null,
+        "episodeWidth": 1027.4375
+      },
+      "resolveVisual": {
+        "label": "high-odd-thirds-1093x614-dpr1.25-resolve-visual",
+        "supportMode": "partitioned",
+        "viewport": {
+          "width": 1093,
+          "height": 614,
+          "dpr": 1.25
+        },
+        "document": {
+          "scrollY": 0,
+          "scrollHeight": 786,
+          "clientHeight": 614
+        },
+        "prompt": {
+          "x": 61.09375,
+          "y": 181.09375,
+          "width": 970.8125,
+          "height": 24.625,
+          "withinViewport": true
+        },
+        "controls": {
+          "x": 61.09375,
+          "y": 660.15625,
+          "width": 970.8125,
+          "height": 0,
+          "withinViewport": false
+        },
+        "candidateTargets": [],
+        "pairwiseOverlaps": [],
+        "candidateGrid": null,
+        "allTargetsAtLeast44": true,
+        "allCentersHitLabels": true,
+        "endpoints": {
+          "barStart": 110.12432098388672,
+          "barEnd": 982.8756713867188,
+          "lineStart": 110.12956237792969,
+          "lineEnd": 982.8704223632812,
+          "barBounds": {
+            "x": 70.09375,
+            "width": 952.8125
+          },
+          "trackBounds": {
+            "x": 70.09375,
+            "width": 952.8125
+          }
+        },
+        "episodeWidth": 1027.4375
+      },
+      "keyboardSelected": 1,
+      "visualTapPreview": 0,
+      "checkStillRequired": false,
+      "finishedNavigation": {
+        "spentFinishCount": 0,
+        "nextVisible": true,
+        "noticeVisible": false,
+        "noticeText": "",
+        "heading": "The same amount is on the number line."
+      },
+      "acceptedAlignment": {
+        "connectorToSourceShadeEndDelta": 0,
+        "connectorToPointDelta": 0,
+        "connectorScreenLength": 166.58233643454759
+      },
+      "screenshot": "results\\high-odd-thirds-1093x614-dpr1.25-resolve.png"
+    },
+    {
+      "dimensions": {
+        "width": 1093,
+        "height": 614,
+        "deviceScaleFactor": 1.25,
+        "hasTouch": false,
+        "reducedMotion": "reduce"
+      },
+      "scenario": {
+        "itemIndex": 6,
+        "supportMode": "sparse-benchmarks",
+        "label": "medium-item07"
+      },
+      "locateVisual": {
+        "label": "medium-item07-1093x614-dpr1.25-visual",
+        "supportMode": "sparse-benchmarks",
+        "viewport": {
+          "width": 1093,
+          "height": 614,
+          "dpr": 1.25
+        },
+        "document": {
+          "scrollY": 374,
+          "scrollHeight": 988,
+          "clientHeight": 614
+        },
+        "prompt": {
+          "x": 61.09375,
+          "y": -34.90625,
+          "width": 970.8125,
+          "height": 24.625,
+          "withinViewport": false
+        },
+        "controls": {
+          "x": 63.09375,
+          "y": 444.15625,
+          "width": 970.8125,
+          "height": 202,
+          "withinViewport": false
+        },
+        "candidateTargets": [
+          {
+            "text": "Offered point A: between zero and one half, closer to zero.",
+            "x": 72.09375,
+            "y": 689.15625,
+            "width": 468.40625,
+            "height": 44,
+            "centerHit": true,
+            "centerHitTag": "BUTTON"
+          },
+          {
+            "text": "Offered point B: between zero and one half, closer to one half.",
+            "x": 556.5,
+            "y": 689.15625,
+            "width": 468.40625,
+            "height": 44,
+            "centerHit": true,
+            "centerHitTag": "BUTTON"
+          },
+          {
+            "text": "Offered point C: at one half.",
+            "x": 72.09375,
+            "y": 749.15625,
+            "width": 468.40625,
+            "height": 44,
+            "centerHit": true,
+            "centerHitTag": "BUTTON"
+          },
+          {
+            "text": "Offered point D: between one half and one, closer to one half.",
+            "x": 556.5,
+            "y": 749.15625,
+            "width": 468.40625,
+            "height": 44,
+            "centerHit": true,
+            "centerHitTag": "BUTTON"
+          }
+        ],
+        "pairwiseOverlaps": [],
+        "candidateGrid": {
+          "display": "grid",
+          "columns": "repeat(2, minmax(0px, 1fr))"
+        },
+        "allTargetsAtLeast44": true,
+        "allCentersHitLabels": true,
+        "endpoints": {
+          "barStart": 110.12432098388672,
+          "barEnd": 982.8756713867188,
+          "lineStart": 110.12956237792969,
+          "lineEnd": 982.8704223632812,
+          "barBounds": {
+            "x": 70.09375,
+            "width": 952.8125
+          },
+          "trackBounds": {
+            "x": 70.09375,
+            "width": 952.8125
+          }
+        },
+        "episodeWidth": 1027.4375
+      },
+      "locateLinear": {
+        "label": "medium-item07-1093x614-dpr1.25-linear",
+        "supportMode": "sparse-benchmarks",
+        "viewport": {
+          "width": 1093,
+          "height": 614,
+          "dpr": 1.25
+        },
+        "document": {
+          "scrollY": 202,
+          "scrollHeight": 816,
+          "clientHeight": 614
+        },
+        "prompt": {
+          "x": 61.09375,
+          "y": 181.09375,
+          "width": 970.8125,
+          "height": 24.625,
+          "withinViewport": true
+        },
+        "controls": {
+          "x": 63.09375,
+          "y": 465.078125,
+          "width": 970.8125,
+          "height": 225.1875,
+          "withinViewport": false
+        },
+        "candidateTargets": [
+          {
+            "text": "Offered point A: between zero and one half, closer to zero.",
+            "x": 72.09375,
+            "y": 494.078125,
+            "width": 468.40625,
+            "height": 55.59375,
+            "centerHit": true,
+            "centerHitTag": "SPAN"
+          },
+          {
+            "text": "Offered point B: between zero and one half, closer to one half.",
+            "x": 556.5,
+            "y": 494.078125,
+            "width": 468.40625,
+            "height": 55.59375,
+            "centerHit": true,
+            "centerHitTag": "SPAN"
+          },
+          {
+            "text": "Offered point C: at one half.",
+            "x": 72.09375,
+            "y": 565.671875,
+            "width": 468.40625,
+            "height": 55.59375,
+            "centerHit": true,
+            "centerHitTag": "LABEL"
+          },
+          {
+            "text": "Offered point D: between one half and one, closer to one half.",
+            "x": 556.5,
+            "y": 565.671875,
+            "width": 468.40625,
+            "height": 55.59375,
+            "centerHit": true,
+            "centerHitTag": "SPAN"
+          }
+        ],
+        "pairwiseOverlaps": [],
+        "candidateGrid": {
+          "display": "grid",
+          "columns": "repeat(2, minmax(0px, 1fr))"
+        },
+        "allTargetsAtLeast44": true,
+        "allCentersHitLabels": true,
+        "endpoints": null,
+        "episodeWidth": 1027.4375
+      },
+      "resolveVisual": {
+        "label": "medium-item07-1093x614-dpr1.25-resolve-visual",
+        "supportMode": "sparse-benchmarks",
+        "viewport": {
+          "width": 1093,
+          "height": 614,
+          "dpr": 1.25
+        },
+        "document": {
+          "scrollY": 0,
+          "scrollHeight": 786,
+          "clientHeight": 614
+        },
+        "prompt": {
+          "x": 61.09375,
+          "y": 181.09375,
+          "width": 970.8125,
+          "height": 24.625,
+          "withinViewport": true
+        },
+        "controls": {
+          "x": 61.09375,
+          "y": 660.15625,
+          "width": 970.8125,
+          "height": 0,
+          "withinViewport": false
+        },
+        "candidateTargets": [],
+        "pairwiseOverlaps": [],
+        "candidateGrid": null,
+        "allTargetsAtLeast44": true,
+        "allCentersHitLabels": true,
+        "endpoints": {
+          "barStart": 110.12432098388672,
+          "barEnd": 982.8756713867188,
+          "lineStart": 110.12956237792969,
+          "lineEnd": 982.8704223632812,
+          "barBounds": {
+            "x": 70.09375,
+            "width": 952.8125
+          },
+          "trackBounds": {
+            "x": 70.09375,
+            "width": 952.8125
+          }
+        },
+        "episodeWidth": 1027.4375
+      },
+      "keyboardSelected": 1,
+      "visualTapPreview": 0,
+      "checkStillRequired": false,
+      "finishedNavigation": {
+        "spentFinishCount": 0,
+        "nextVisible": true,
+        "noticeVisible": false,
+        "noticeText": "",
+        "heading": "The same amount is on the number line."
+      },
+      "acceptedAlignment": {
+        "connectorToSourceShadeEndDelta": 0,
+        "connectorToPointDelta": 0,
+        "connectorScreenLength": 166.58233643518489
+      },
+      "screenshot": "results\\medium-item07-1093x614-dpr1.25-resolve.png"
+    },
+    {
+      "dimensions": {
+        "width": 1093,
+        "height": 614,
+        "deviceScaleFactor": 1.25,
+        "hasTouch": false,
+        "reducedMotion": "reduce"
+      },
+      "scenario": {
+        "itemIndex": 7,
+        "supportMode": "sparse-benchmarks",
+        "label": "medium-item08"
+      },
+      "locateVisual": {
+        "label": "medium-item08-1093x614-dpr1.25-visual",
+        "supportMode": "sparse-benchmarks",
+        "viewport": {
+          "width": 1093,
+          "height": 614,
+          "dpr": 1.25
+        },
+        "document": {
+          "scrollY": 374,
+          "scrollHeight": 988,
+          "clientHeight": 614
+        },
+        "prompt": {
+          "x": 61.09375,
+          "y": -34.90625,
+          "width": 970.8125,
+          "height": 24.625,
+          "withinViewport": false
+        },
+        "controls": {
+          "x": 63.09375,
+          "y": 444.15625,
+          "width": 970.8125,
+          "height": 202,
+          "withinViewport": false
+        },
+        "candidateTargets": [
+          {
+            "text": "Offered point A: between zero and one half, closer to one half.",
+            "x": 72.09375,
+            "y": 689.15625,
+            "width": 468.40625,
+            "height": 44,
+            "centerHit": true,
+            "centerHitTag": "BUTTON"
+          },
+          {
+            "text": "Offered point B: at one half.",
+            "x": 556.5,
+            "y": 689.15625,
+            "width": 468.40625,
+            "height": 44,
+            "centerHit": true,
+            "centerHitTag": "BUTTON"
+          },
+          {
+            "text": "Offered point C: between one half and one, closer to one half.",
+            "x": 72.09375,
+            "y": 749.15625,
+            "width": 468.40625,
+            "height": 44,
+            "centerHit": true,
+            "centerHitTag": "BUTTON"
+          },
+          {
+            "text": "Offered point D: between one half and one, closer to one.",
+            "x": 556.5,
+            "y": 749.15625,
+            "width": 468.40625,
+            "height": 44,
+            "centerHit": true,
+            "centerHitTag": "BUTTON"
+          }
+        ],
+        "pairwiseOverlaps": [],
+        "candidateGrid": {
+          "display": "grid",
+          "columns": "repeat(2, minmax(0px, 1fr))"
+        },
+        "allTargetsAtLeast44": true,
+        "allCentersHitLabels": true,
+        "endpoints": {
+          "barStart": 110.12432098388672,
+          "barEnd": 982.8756713867188,
+          "lineStart": 110.12956237792969,
+          "lineEnd": 982.8704223632812,
+          "barBounds": {
+            "x": 70.09375,
+            "width": 952.8125
+          },
+          "trackBounds": {
+            "x": 70.09375,
+            "width": 952.8125
+          }
+        },
+        "episodeWidth": 1027.4375
+      },
+      "locateLinear": {
+        "label": "medium-item08-1093x614-dpr1.25-linear",
+        "supportMode": "sparse-benchmarks",
+        "viewport": {
+          "width": 1093,
+          "height": 614,
+          "dpr": 1.25
+        },
+        "document": {
+          "scrollY": 202,
+          "scrollHeight": 816,
+          "clientHeight": 614
+        },
+        "prompt": {
+          "x": 61.09375,
+          "y": 181.09375,
+          "width": 970.8125,
+          "height": 24.625,
+          "withinViewport": true
+        },
+        "controls": {
+          "x": 63.09375,
+          "y": 465.078125,
+          "width": 970.8125,
+          "height": 225.1875,
+          "withinViewport": false
+        },
+        "candidateTargets": [
+          {
+            "text": "Offered point A: between zero and one half, closer to one half.",
+            "x": 72.09375,
+            "y": 494.078125,
+            "width": 468.40625,
+            "height": 55.59375,
+            "centerHit": true,
+            "centerHitTag": "SPAN"
+          },
+          {
+            "text": "Offered point B: at one half.",
+            "x": 556.5,
+            "y": 494.078125,
+            "width": 468.40625,
+            "height": 55.59375,
+            "centerHit": true,
+            "centerHitTag": "LABEL"
+          },
+          {
+            "text": "Offered point C: between one half and one, closer to one half.",
+            "x": 72.09375,
+            "y": 565.671875,
+            "width": 468.40625,
+            "height": 55.59375,
+            "centerHit": true,
+            "centerHitTag": "SPAN"
+          },
+          {
+            "text": "Offered point D: between one half and one, closer to one.",
+            "x": 556.5,
+            "y": 565.671875,
+            "width": 468.40625,
+            "height": 55.59375,
+            "centerHit": true,
+            "centerHitTag": "SPAN"
+          }
+        ],
+        "pairwiseOverlaps": [],
+        "candidateGrid": {
+          "display": "grid",
+          "columns": "repeat(2, minmax(0px, 1fr))"
+        },
+        "allTargetsAtLeast44": true,
+        "allCentersHitLabels": true,
+        "endpoints": null,
+        "episodeWidth": 1027.4375
+      },
+      "resolveVisual": {
+        "label": "medium-item08-1093x614-dpr1.25-resolve-visual",
+        "supportMode": "sparse-benchmarks",
+        "viewport": {
+          "width": 1093,
+          "height": 614,
+          "dpr": 1.25
+        },
+        "document": {
+          "scrollY": 0,
+          "scrollHeight": 786,
+          "clientHeight": 614
+        },
+        "prompt": {
+          "x": 61.09375,
+          "y": 181.09375,
+          "width": 970.8125,
+          "height": 24.625,
+          "withinViewport": true
+        },
+        "controls": {
+          "x": 61.09375,
+          "y": 660.15625,
+          "width": 970.8125,
+          "height": 0,
+          "withinViewport": false
+        },
+        "candidateTargets": [],
+        "pairwiseOverlaps": [],
+        "candidateGrid": null,
+        "allTargetsAtLeast44": true,
+        "allCentersHitLabels": true,
+        "endpoints": {
+          "barStart": 110.12432098388672,
+          "barEnd": 982.8756713867188,
+          "lineStart": 110.12956237792969,
+          "lineEnd": 982.8704223632812,
+          "barBounds": {
+            "x": 70.09375,
+            "width": 952.8125
+          },
+          "trackBounds": {
+            "x": 70.09375,
+            "width": 952.8125
+          }
+        },
+        "episodeWidth": 1027.4375
+      },
+      "keyboardSelected": 1,
+      "visualTapPreview": 0,
+      "checkStillRequired": false,
+      "finishedNavigation": {
+        "spentFinishCount": 0,
+        "nextVisible": false,
+        "noticeVisible": true,
+        "noticeText": "You’ve tried every problem in this set.",
+        "heading": "The same amount is on the number line."
+      },
+      "acceptedAlignment": {
+        "connectorToSourceShadeEndDelta": 0,
+        "connectorToPointDelta": 0,
+        "connectorScreenLength": 166.58233646339593
+      },
+      "screenshot": "results\\medium-item08-1093x614-dpr1.25-resolve.png"
+    }
+  ]
+}

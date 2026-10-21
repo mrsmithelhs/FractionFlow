@@ -1,5 +1,5 @@
 import { buildCuratedProblem } from '../content/generator.js';
-import { resolveAuthoredContent, resolveCuratedFixture } from '../content/authored-content-catalog.js';
+import { resolveAuthoredContent, resolveCuratedFixture, resolvePlan37BarToLineBridgeInstance } from '../content/authored-content-catalog.js';
 import { validateProblemInstance } from '../content/validation.js';
 import { validateAuthoredTaskData } from '../content/authored-task-data.js';
 import { resolvePlan34TaskContext, PLAN34_EPISODE_DEFINITION_ID } from '../content/full-addition-task-patterns.js';
@@ -16,6 +16,7 @@ import {
   resolvePlan40SubtractionRecipeContext,
 } from '../content/plan40-reusable-subtraction-recipes.js';
 import { evaluateInstanceEligibility } from '../content/eligibility.js';
+import { isPlan37BarToLineBridgeDefinition, resolvePlan37BarToLineBridgeContext } from '../content/plan37-bar-to-line-bridge-task.js';
 import {
   applyIntent,
   createEpisode,
@@ -28,6 +29,7 @@ import {
   createBeatContainer,
   createButton,
   createLinearPathRenderer,
+  createNumberLineLocateRenderer,
   STRINGS,
 } from '../render/index.js';
 import { resolveRenderableScene } from '../render/contract.js';
@@ -52,11 +54,16 @@ const APP_RENDER_STRINGS = Object.freeze({
 });
 
 function canonicalInstance(item, conditions = REGISTERED_CONDITIONS, practiceType = null) {
+  const definition = getEpisodeDefinition(item.episodeDefinitionId, item.episodeDefinitionRevision);
+  if (isPlan37BarToLineBridgeDefinition(definition)) {
+    const bridge = resolvePlan37BarToLineBridgeInstance(item.id, item.authoringRevision);
+    if (!bridge || bridge.provenance.fixtureId !== item.fixtureId) throw new Error(`practice bridge item is not registered: ${item.id}`);
+    return bridge;
+  }
   const fixture = resolveCuratedFixture(item?.fixtureId, item?.authoringRevision);
   if (!fixture) throw new Error(`practice fixture identity is unavailable: ${item?.fixtureId}@${item?.authoringRevision}`);
   const authoredContent = resolveAuthoredContent(item.fixtureId, item.authoringRevision);
   if (!authoredContent) throw new Error(`practice task data identity is unavailable: ${item?.fixtureId}@${item?.authoringRevision}`);
-  const definition = getEpisodeDefinition(item.episodeDefinitionId, item.episodeDefinitionRevision);
   if (authoredContent.itemId && authoredContent.itemId !== item.id
     && definition.id !== PLAN35_RECIPE_DEFINITION_ID
     && !isPlan40SubtractionRecipeDefinition(definition)) {
@@ -232,7 +239,13 @@ function presentationModeFor({ override, motionQuery }) {
 }
 
 function createInitialState(instance, practiceType, condition, supportLevel, episodeDefinition = practiceType.episodeDefinition, item = null) {
-  const taskContext = isPlan40SubtractionRecipeDefinition(episodeDefinition) && item
+  const taskContext = isPlan37BarToLineBridgeDefinition(episodeDefinition) && item
+    ? resolvePlan37BarToLineBridgeContext(instance, item.id, {
+      practiceSetId: practiceType.setId,
+      practiceSetRevision: practiceType.setRevision,
+      supportMode: supportLevel.configuration.dimensions.fractionBarModel === 'high support' ? 'partitioned' : 'sparse-benchmarks',
+    })
+    : isPlan40SubtractionRecipeDefinition(episodeDefinition) && item
     ? resolvePlan40SubtractionRecipeContext(instance, item.id, {
       practiceSetId: practiceType.setId,
       practiceSetRevision: practiceType.setRevision,
@@ -304,6 +317,10 @@ export function createFractionFlowApp({
   let mounted = false;
   let visualRenderer = null;
   let linearRenderer = null;
+  let visualNumberLineRenderer = null;
+  let linearNumberLineRenderer = null;
+  let numberLineDraft = null;
+  let numberLineHelpOpen = false;
   let motionQuery = null;
   let motionListener = null;
   let documentClickListener = null;
@@ -556,12 +573,15 @@ export function createFractionFlowApp({
         preserveDecideInputFocusOnViewChange = false;
         preserveTransformInputFocusOnViewChange = false;
         preserveOperationInputFocusOnViewChange = false;
+        saveNumberLineDraft();
         visualView = !visualView;
         isReplaying = false;
         updateViewVisibility();
+        (visualView ? visualNumberLineRenderer : linearNumberLineRenderer)?.refreshGeometry();
         restoreDecideDraft();
         restoreTransformDrafts();
         restoreOperationDraft();
+        restoreNumberLineDraft();
         updateHelpPlacement();
         if (preserveInputFocus) getVisibleDecideInput()?.focus();
         if (preserveTransformInputFocus) getVisibleTransformInput()?.focus();
@@ -609,6 +629,14 @@ export function createFractionFlowApp({
           } else {
             decideHelpOpen = true;
             dispatchAction({ type: 'request-task-help' });
+            helpButton.focus();
+          }
+        } else if (isPlan37BarToLineBridgeDefinition(state?.episodeDefinition) && state?.beat === 'locate') {
+          numberLineHelpOpen = !numberLineHelpOpen;
+          if (numberLineHelpOpen && !state.established.help.locate) {
+            dispatchAction({ type: 'request-task-help' });
+          } else {
+            render();
             helpButton.focus();
           }
         } else if (state?.beat === 'transform') {
@@ -708,6 +736,25 @@ export function createFractionFlowApp({
     preserveDecideInputFocusOnViewChange = false;
     preserveTransformInputFocusOnViewChange = false;
     preserveOperationInputFocusOnViewChange = false;
+    numberLineDraft = null;
+    numberLineHelpOpen = false;
+  }
+
+  function setNumberLineDraft(handle) {
+    numberLineDraft = handle ? { contextKey: handle.contextKey, candidateId: handle.candidateId } : null;
+  }
+
+  function saveNumberLineDraft() {
+    const renderer = visualView ? visualNumberLineRenderer : linearNumberLineRenderer;
+    if (!renderer) return;
+    const handle = renderer.readPreview();
+    if (handle) setNumberLineDraft(handle);
+  }
+
+  function restoreNumberLineDraft() {
+    const renderer = visualView ? visualNumberLineRenderer : linearNumberLineRenderer;
+    if (!renderer || !numberLineDraft) return;
+    if (!renderer.writePreview(numberLineDraft)) numberLineDraft = null;
   }
 
   function registeredItemEpisode(practiceType, index) {
@@ -873,6 +920,7 @@ export function createFractionFlowApp({
   function updateSupportControls() {
     const resolved = state.status === 'resolved';
     const isPlan20 = state.episodeDefinition.id === PLAN20_LIKE_DENOMINATOR_EPISODE_DEFINITION.id;
+    const isPlan39Bridge = isPlan37BarToLineBridgeDefinition(state.episodeDefinition);
     const isPlan34 = state.episodeDefinition.id === PLAN34_EPISODE_DEFINITION_ID;
     const isPlan18 = state.episodeDefinition.id === PLAN18_NESTED_DEFINITION_ID;
     const isPlan35Identify = state.episodeDefinition.id === PLAN35_RECIPE_DEFINITION_ID
@@ -884,10 +932,10 @@ export function createFractionFlowApp({
     const hasConversion = Boolean(state.established?.lastConversion);
     const isPlan40NonIdentify = isPlan40 && !isPlan40Identify;
     const isPlan40IdentifySuppressed = isPlan40Identify && (!hasConversion || ['operate', 'resolve'].includes(state.beat));
-    replayButton.hidden = isPlan20 || isPlan34 || isPlan36 || isPlan40NonIdentify || isPlan40IdentifySuppressed
+    replayButton.hidden = isPlan20 || isPlan34 || isPlan36 || isPlan39Bridge || isPlan40NonIdentify || isPlan40IdentifySuppressed
       || ((isPlan18 || isPlan35Identify) && !hasConversion)
       || (state.episodeDefinition.id === PLAN35_RECIPE_DEFINITION_ID && !isPlan35Identify);
-    replayButton.disabled = isPlan20 || isPlan34 || isPlan36 || resolved || state.beat === 'encounter'
+    replayButton.disabled = isPlan20 || isPlan34 || isPlan36 || isPlan39Bridge || resolved || state.beat === 'encounter'
       || isPlan40NonIdentify || isPlan40IdentifySuppressed
       || ((isPlan18 || isPlan35Identify) && !hasConversion)
       || (state.episodeDefinition.id === PLAN35_RECIPE_DEFINITION_ID && !isPlan35Identify);
@@ -998,6 +1046,20 @@ export function createFractionFlowApp({
 
   function updateHelpPlacement(scene = currentScene) {
     if (!helpButton || !state) return;
+    if (isPlan37BarToLineBridgeDefinition(state.episodeDefinition)) {
+      const supportControls = appRoot.querySelector('.app-support-controls');
+      if (helpButton.parentNode !== supportControls) {
+        if (helpButton.parentNode) helpButton.parentNode.removeChild(helpButton);
+        supportControls.prepend(helpButton);
+      }
+      const available = state.beat === 'locate' && state.status !== 'resolved';
+      helpButton.hidden = !available;
+      helpButton.textContent = numberLineHelpOpen ? STRINGS.app.closeHelpButton : STRINGS.app.helpButton;
+      helpButton.setAttribute('aria-expanded', String(numberLineHelpOpen));
+      if (numberLineHelpOpen) helpButton.setAttribute('aria-controls', `${visualView ? 'visual' : 'linear'}-plan39-help`);
+      else helpButton.removeAttribute('aria-controls');
+      return;
+    }
     const isPlan36 = isPlan36SubtractionDefinition(state.episodeDefinition);
     const isPlan40 = isPlan40SubtractionRecipeDefinition(state.episodeDefinition);
     if ((isPlan36 || isPlan40) && state.beat === 'operate') {
@@ -1153,11 +1215,53 @@ export function createFractionFlowApp({
     const mode = presentationModeFor({ override: presentationMode, motionQuery });
     const scene = resolveRenderableScene({
       state,
-      initialRole: 'fraction-bar',
+      initialRole: isPlan37BarToLineBridgeDefinition(state.episodeDefinition) ? 'number-line' : 'fraction-bar',
       presentationMode: mode,
       isReplaying,
     });
     currentScene = scene;
+
+    if (isPlan37BarToLineBridgeDefinition(state.episodeDefinition)) {
+      visualRenderer?.destroy();
+      linearRenderer?.destroy();
+      visualRenderer = null;
+      linearRenderer = null;
+      if (!visualNumberLineRenderer) {
+        visualNumberLineRenderer = createNumberLineLocateRenderer({
+          container: visualHost,
+          view: 'visual',
+          strings: APP_RENDER_STRINGS,
+          dispatchAction,
+          onPreviewChange: setNumberLineDraft,
+          getHelpOpen: () => numberLineHelpOpen,
+        });
+        visualNumberLineRenderer.mount(scene);
+      } else visualNumberLineRenderer.update(scene);
+      if (!linearNumberLineRenderer) {
+        linearNumberLineRenderer = createNumberLineLocateRenderer({
+          container: linearHost,
+          view: 'linear',
+          strings: APP_RENDER_STRINGS,
+          dispatchAction,
+          onPreviewChange: setNumberLineDraft,
+          getHelpOpen: () => numberLineHelpOpen,
+        });
+        linearNumberLineRenderer.mount(scene);
+      } else linearNumberLineRenderer.update(scene);
+      updateConditionMetadata();
+      updateSupportMetadata();
+      updateSupportControls();
+      updateNavigation();
+      updateViewVisibility();
+      (visualView ? visualNumberLineRenderer : linearNumberLineRenderer)?.refreshGeometry();
+      restoreNumberLineDraft();
+      updateHelpPlacement(scene);
+      return;
+    }
+    visualNumberLineRenderer?.destroy();
+    linearNumberLineRenderer?.destroy();
+    visualNumberLineRenderer = null;
+    linearNumberLineRenderer = null;
 
     if (!visualRenderer) {
       visualRenderer = createBeatContainer({
@@ -1271,6 +1375,11 @@ export function createFractionFlowApp({
       if (action.type === 'request-task-help'
         && state.episodeDefinition.id === PLAN20_LIKE_DENOMINATOR_EPISODE_DEFINITION.id
         && state.beat === 'operate') helpButton.focus();
+      if (action.type === 'propose-number-line-location') {
+        const renderer = visualView ? visualNumberLineRenderer : linearNumberLineRenderer;
+        const focusTarget = state.beat === 'resolve' ? 'finish' : 'candidate';
+        renderer?.focusControl(focusTarget);
+      }
       if (action.type === 'request-task-help'
         && (isPlan36SubtractionDefinition(state.episodeDefinition) || isPlan40SubtractionRecipeDefinition(state.episodeDefinition))
         && state.beat === 'operate') helpButton.focus();
@@ -1313,6 +1422,10 @@ export function createFractionFlowApp({
         ? STRINGS.app.noReplayYet
         : STRINGS.app.tryAgain;
       render();
+      if (action.type === 'propose-number-line-location') {
+        const renderer = visualView ? visualNumberLineRenderer : linearNumberLineRenderer;
+        renderer?.focusControl('candidate');
+      }
       if (action.type === 'submit-transform-help-multiplier') getVisibleTransformInput()?.focus();
     }
   }
@@ -1357,10 +1470,16 @@ export function createFractionFlowApp({
       }
       visualRenderer?.destroy();
       linearRenderer?.destroy();
+      visualNumberLineRenderer?.destroy();
+      linearNumberLineRenderer?.destroy();
+      numberLineDraft = null;
+      numberLineHelpOpen = false;
       root.replaceChildren();
       mounted = false;
       visualRenderer = null;
       linearRenderer = null;
+      visualNumberLineRenderer = null;
+      linearNumberLineRenderer = null;
     },
     getState() {
       return state;

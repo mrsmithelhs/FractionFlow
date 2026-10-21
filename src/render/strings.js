@@ -24,6 +24,30 @@ function equivalentPartsPrompt(sourceForm, targetDenominator) {
 }
 
 export const STRINGS = Object.freeze({
+  plan39: Object.freeze({
+    prompt: 'Place the same amount on the number line.',
+      resolvedPrompt: 'The same amount is on the number line.',
+    sourceBar: 'Amount in the bar',
+    sourceBarDescription: (n, d) => `A bar from zero to one, split into ${d} equal parts, with ${n} parts shaded.`,
+    numberLine: 'Number line from zero to one',
+    trackDescription: 'The line starts at zero, marks one half in the middle, and ends at one.',
+    regionLabel: 'Place a fraction on the number line',
+    candidateLegend: 'Choose a point to preview',
+    checkPosition: 'Check position',
+    continue: 'Continue',
+    finish: 'Finish',
+    zero: '0',
+    half: '1/2',
+    one: '1',
+    stepChoice: (numerator, denominator) => `Step ${numerator} of ${denominator}`,
+    help: 'Compare the shaded part of the bar with the space from zero to one.',
+    recovery: (kind) => ({
+      'at-endpoint': 'That point is at an end. Try again.',
+      'wrong-side-of-half': 'Check which side of one half this amount is on.',
+      'too-low-same-side': 'That point is too close to zero. Try again.',
+      'too-high-same-side': 'That point is too close to one. Try again.',
+    })[kind] || 'Try another point.',
+  }),
   encounter: Object.freeze({
     prompt: 'Look at these two fractions.',
     compactTarget: (denominator = '12') => denominator === '12'
