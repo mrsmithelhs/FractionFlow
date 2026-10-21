@@ -15,6 +15,12 @@ import { deepFreeze } from './schema.js';
 import { PLAN18_NESTED_ADDITION_RECORDS } from './data/plan18-nested-addition-records.js';
 import { PLAN35_ADDITION_RECIPE_FIXTURES, PLAN35_ADDITION_RECIPE_RECORDS } from './data/plan35-addition-recipe-records.js';
 import { PLAN40_SUBTRACTION_RECIPE_FIXTURES, PLAN40_SUBTRACTION_RECIPE_RECORDS } from './data/plan40-reusable-subtraction-recipes-records.js';
+import {
+  PLAN37_BAR_TO_LINE_BRIDGE_RECORDS,
+} from './data/plan37-bar-to-line-bridge-records.js';
+import {
+  materializePlan37BarToLineBridgeInstance,
+} from './plan37-bar-to-line-bridge-task.js';
 import { buildCuratedProblem } from './generator.js';
 
 function identityKey(fixtureId, authoringRevision) {
@@ -162,6 +168,15 @@ export function resolveAuthoredContentForInstance(instance) {
     instance?.provenance?.fixtureId,
     instance?.provenance?.authoringRevision,
   );
+}
+
+/** Unary catalog sibling for the adopted Plan 37 bridge records. */
+export function resolvePlan37BarToLineBridgeInstance(itemId, authoringRevision) {
+  const matches = PLAN37_BAR_TO_LINE_BRIDGE_RECORDS.filter((record) => (
+    record.itemId === itemId && record.authoringRevision === authoringRevision
+  ));
+  if (matches.length !== 1) return null;
+  return materializePlan37BarToLineBridgeInstance(matches[0]);
 }
 
 export function premiseCheckForIdentity(fixtureId, authoringRevision, targetDenominator) {

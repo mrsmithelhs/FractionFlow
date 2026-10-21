@@ -7,6 +7,7 @@ import {
   wireToFraction,
 } from './schema.js';
 import { getProfile } from './profiles.js';
+import { validatePlan37BarToLineBridgeInstance } from './plan37-bar-to-line-bridge-task.js';
 
 export const REPRESENTATION_ELIGIBILITY = Object.freeze({
   ELIGIBLE: 'eligible',
@@ -120,6 +121,20 @@ export function evaluatePathEligibility({ left, right, targetDenominator, pathKi
  * instance. Profile identity is deliberately read from the instance.
  */
 export function evaluateInstanceEligibility(instance) {
+  if (instance?.schemaVersion === 'fractionflow.bridge-instance/v1') {
+    const bridge = validatePlan37BarToLineBridgeInstance(instance);
+    return deepFreeze({
+      profile: 'curated-review',
+      limits: { domain: '[0,1]', maximumPartitionDenominator: '8' },
+      eligibility: {
+        fractionBar: REPRESENTATION_ELIGIBILITY.ELIGIBLE,
+        numberLine: REPRESENTATION_ELIGIBILITY.ELIGIBLE,
+        symbolic: REPRESENTATION_ELIGIBILITY.ELIGIBLE,
+      },
+      alternateRepresentationRecommendation: 'none',
+      bridge: { itemId: bridge.provenance.itemId, sourceForm: bridge.sourceForm },
+    });
+  }
   const profile = instanceProfile(instance);
   const { left, right } = instanceOperands(instance);
   const canonicalTarget = pathTarget(instance.canonicalPath, 'canonical');

@@ -33,7 +33,14 @@ import {
   validatePlan40SubtractionRecipeContext,
 } from '../content/plan40-reusable-subtraction-recipes.js';
 import { subtractAtCommonDenominator, validateOperationResult } from '../math/index.js';
+import { benchmarkFraction, classifyMagnitude, compareFractions, createFraction, equalFractions } from '../math/index.js';
 import { fractionFromWire } from './classification.js';
+import {
+  isPlan37BarToLineBridgeDefinition,
+  plan37SourceFraction,
+  validatePlan37BarToLineBridgeContext,
+  validatePlan37BarToLineBridgeInstance,
+} from '../content/plan37-bar-to-line-bridge-task.js';
 import {
   EPISODE_BEATS,
   PHASE2_ACTIVE_CONDITION,
@@ -77,6 +84,11 @@ function responseForEntry(definition, entry, taskContext = null) {
     beat,
     evidenceCategory: 'supported-construction',
   };
+  if (isPlan37BarToLineBridgeDefinition(definition)) {
+    if (beat === 'encounter') return { ...common, responsibility: 'inspect-reference-bar', inputKind: 'acknowledge-bridge-encounter' };
+    if (beat === 'locate') return { ...common, responsibility: 'place-source-amount-on-number-line', inputKind: 'number-line-position', responseId: 'propose-number-line-location' };
+    if (beat === 'resolve') return { ...common, responsibility: 'confirm-number-line-location', inputKind: 'finish-navigation' };
+  }
   if (isPlan36SubtractionDefinition(definition)) {
     if (beat === 'encounter') {
       return {
@@ -250,7 +262,9 @@ function assertDefinition(definition) {
       'episode definition semantics do not match its registered identity',
     );
   }
-  const approvedBeats = registered.id === PLAN36_LIKE_DENOMINATOR_SUBTRACTION_EPISODE_DEFINITION.id
+  const approvedBeats = isPlan37BarToLineBridgeDefinition(registered)
+    ? ['encounter', 'locate', 'resolve']
+    : registered.id === PLAN36_LIKE_DENOMINATOR_SUBTRACTION_EPISODE_DEFINITION.id
     ? ['encounter', 'operate', 'resolve']
     : [PLAN18_NESTED_DEFINITION_ID, 'phase-3-reusable-addition-recipes', 'phase-3-reusable-subtraction-recipes'].includes(registered.id)
       ? ['encounter', 'decide', 'transform', 'operate', 'resolve']
@@ -262,6 +276,13 @@ function assertDefinition(definition) {
 }
 
 function assertInstance(instance, definition) {
+  if (isPlan37BarToLineBridgeDefinition(definition)) {
+    try {
+      return validatePlan37BarToLineBridgeInstance(instance);
+    } catch (error) {
+      throw new EpisodeConstructionError('INVALID_CONTENT_INSTANCE', error.message);
+    }
+  }
   const validation = validateProblemInstance(instance);
   if (!validation.valid) {
     throw new EpisodeConstructionError(
@@ -991,6 +1012,8 @@ const INTENT_KEYS = Object.freeze({
   'request-task-help': ['type'],
   'submit-transform-help-multiplier': ['type', 'proposed'],
   'request-replay': ['type'],
+  'acknowledge-bridge-encounter': ['type'],
+  'propose-number-line-location': ['type', 'proposed'],
 });
 
 const INTENT_BEATS = Object.freeze({
@@ -1095,6 +1118,7 @@ function assertIntentShape(intent) {
   if (intent.type === 'submit-subtraction-result') assertWireFraction(intent.proposed, 'intent.proposed');
   if (intent.type === 'submit-operation-result') assertWireFraction(intent.proposed, 'intent.proposed');
   if (intent.type === 'submit-resolution') assertWireFraction(intent.proposed, 'intent.proposed');
+  if (intent.type === 'propose-number-line-location') assertWireFraction(intent.proposed, 'intent.proposed');
   if (intent.type === 'submit-reflection'
     && (typeof intent.response !== 'string' || intent.response.length === 0)) {
     throw new EpisodeIntentError('INVALID_REFLECTION_RESPONSE', 'reflection response must be a stable choice identity');
@@ -1248,6 +1272,114 @@ function assertIntentAllowedAtBeat(state, intent) {
   }
 }
 
+function bridgeCandidates(state) {
+  if (state.taskContext.supportMode === 'sparse-benchmarks') return state.taskContext.sparseCandidates;
+  const denominator = BigInt(state.taskContext.partitionDenominator);
+  return Array.from({ length: Number(denominator) + 1 }, (_, stepIndex) => ({
+    id: `partition-${stepIndex}-of-${denominator}`,
+    form: { kind: 'fraction', numerator: String(stepIndex), denominator: String(denominator) },
+  }));
+}
+
+function bridgeModeFromSupport(support) {
+  const level = support?.dimensions?.fractionBarModel;
+  if (level === 'high support') return 'partitioned';
+  if (level === 'medium support') return 'sparse-benchmarks';
+  throw new EpisodeConstructionError('UNSUPPORTED_BRIDGE_SUPPORT', 'Plan 39 supports high or medium support only');
+}
+
+function classifyBridgeRecovery(proposed, target) {
+  const proposedMagnitude = classifyMagnitude(proposed);
+  const targetMagnitude = classifyMagnitude(target);
+  let kind;
+  if (equalFractions(proposed, benchmarkFraction('zero'))
+    || equalFractions(proposed, benchmarkFraction('one'))) {
+    kind = 'at-endpoint';
+  } else if ((proposedMagnitude.relativeToHalf === 0) !== (targetMagnitude.relativeToHalf === 0)
+    || Math.sign(proposedMagnitude.relativeToHalf) !== Math.sign(targetMagnitude.relativeToHalf)) {
+    kind = 'wrong-side-of-half';
+  } else {
+    kind = compareFractions(proposed, target) < 0 ? 'too-low-same-side' : 'too-high-same-side';
+  }
+  return {
+    kind,
+    proposed: { kind: 'fraction', numerator: proposed.numerator.toString(), denominator: proposed.denominator.toString() },
+    proposedRegion: proposedMagnitude.benchmarkRegion,
+    targetRegion: targetMagnitude.benchmarkRegion,
+    comparison: compareFractions(proposed, target),
+  };
+}
+
+function applyPlan37BridgeIntent(state, intent) {
+  const expectedBeat = {
+    'acknowledge-bridge-encounter': 'encounter',
+    'propose-number-line-location': 'locate',
+    'request-task-help': 'locate',
+    'finish-compact-episode': 'resolve',
+  }[intent.type];
+  if (!expectedBeat || state.beat !== expectedBeat) {
+    throw new EpisodeIntentError('UNEXPECTED_INTENT', `${intent.type} is not valid at beat ${state.beat}`);
+  }
+  if (intent.type === 'request-task-help' && state.established.help.locate) return state;
+  if (intent.type === 'request-task-help') {
+    const next = appendIntent(state, intent);
+    const classification = { kind: 'task-help-requested', validity: 'valid', helpKind: 'number-line-location' };
+    const withHelp = {
+      ...next,
+      established: { ...next.established, help: { ...next.established.help, locate: true } },
+      supportHistory: [...next.supportHistory, {
+        type: 'task-help-request', beat: 'locate', schedulePosition: state.schedulePosition,
+        scheduleEntryId: 'locate', side: null, helpKind: 'number-line-location',
+      }],
+    };
+    const provenance = createResponseProvenance({ state, intent, classification, nextState: withHelp });
+    return deepFreeze({ ...withHelp, responseProvenance: [...state.responseProvenance, provenance] });
+  }
+  if (intent.type === 'acknowledge-bridge-encounter') {
+    const next = advanceSchedule(state, { kind: 'bridge-encounter-acknowledged', validity: 'valid' });
+    return assessedSuccess(state, intent, { kind: 'bridge-encounter-acknowledged', validity: 'valid' }, next);
+  }
+  if (intent.type === 'propose-number-line-location') {
+    const wire = intent.proposed;
+    if (!wire || wire.kind !== 'fraction' || typeof wire.numerator !== 'string'
+      || !/^(0|[1-9][0-9]*)$/.test(wire.numerator)
+      || typeof wire.denominator !== 'string' || !/^[1-9][0-9]*$/.test(wire.denominator)) {
+      throw new EpisodeIntentError('INVALID_NUMBER_LINE_CANDIDATE', 'proposal must be a canonical exact wire fraction');
+    }
+    let proposed;
+    try {
+      proposed = createFraction(BigInt(wire.numerator), BigInt(wire.denominator));
+    } catch {
+      throw new EpisodeIntentError('INVALID_NUMBER_LINE_CANDIDATE', 'proposal is outside the exact fraction domain');
+    }
+    const offered = bridgeCandidates(state).filter((candidate) => (
+      candidate.form.numerator === wire.numerator && candidate.form.denominator === wire.denominator
+    ));
+    if (offered.length !== 1) {
+      throw new EpisodeIntentError('UNOFFERED_NUMBER_LINE_CANDIDATE', 'proposal must exactly match one candidate offered in the active support mode');
+    }
+    const target = plan37SourceFraction(state.content);
+    if (!equalFractions(proposed, target)) {
+      return recovery(state, intent, classifyBridgeRecovery(proposed, target));
+    }
+    const acceptedPosition = { kind: 'fraction', numerator: wire.numerator, denominator: wire.denominator };
+    const next = advanceSchedule(state, {
+      kind: 'accepted-number-line-location',
+      proposed: acceptedPosition,
+      acceptedPosition,
+    });
+    next.established = {
+      ...next.established,
+      numberLineLocation: { acceptedPosition },
+    };
+    return assessedSuccess(state, intent, {
+      kind: 'correct-number-line-location', validity: 'valid', proposed: acceptedPosition,
+    }, next);
+  }
+  const next = resolvedState(state, { kind: 'navigation-completion' });
+  return assessedSuccess(state, intent, { kind: 'navigation-completion', validity: 'valid' }, next);
+}
+
 export function createEpisode({
   instance,
   episodeDefinition = PHASE2_EPISODE_DEFINITION,
@@ -1264,6 +1396,8 @@ export function createEpisode({
   const isNested = definition.id === PLAN18_NESTED_DEFINITION_ID;
   const isPlan36 = isPlan36SubtractionDefinition(definition);
   const isPlan40 = isPlan40SubtractionRecipeDefinition(definition);
+  const isPlan37Bridge = isPlan37BarToLineBridgeDefinition(definition);
+  const bridgeMode = isPlan37Bridge ? bridgeModeFromSupport(normalizedSupport) : null;
   const normalizedTaskContext = isCompact
     ? (isPlan40
       ? validatePlan40SubtractionRecipeContext(content, taskContext)
@@ -1274,8 +1408,10 @@ export function createEpisode({
       ? validatePlan18TaskContext(content, taskContext)
       : isPlan36
         ? validatePlan36LikeDenominatorSubtractionContext(content, taskContext)
-        : null;
-  if (!isCompact && !isNested && !isPlan36 && taskContext !== null) {
+        : isPlan37Bridge
+          ? validatePlan37BarToLineBridgeContext(content, taskContext, bridgeMode)
+          : null;
+  if (!isCompact && !isNested && !isPlan36 && !isPlan37Bridge && taskContext !== null) {
     throw new EpisodeConstructionError('UNSUPPORTED_TASK_CONTEXT', 'task context is only supported by the compact full-addition definition');
   }
   const beatSchedule = computeBeatSchedule(content, definition, normalizedTaskContext, { allowCompatibilityPair });
@@ -1286,7 +1422,7 @@ export function createEpisode({
     revision: 0,
     content,
     episodeDefinition: definition,
-    ...(isCompact || isNested || isPlan36 ? { taskContext: normalizedTaskContext } : {}),
+    ...(isCompact || isNested || isPlan36 || isPlan37Bridge ? { taskContext: normalizedTaskContext } : {}),
     activeCondition: normalizedCondition,
     beatSchedule,
     schedulePosition: 0,
@@ -1307,6 +1443,7 @@ export function createEpisode({
       ...(isNested ? { nestedCompletion: null, selectedRenamingSide: null, conversionOrigins: {} } : {}),
       ...(isPlan36 ? { subtractionRemoval: 'unmarked', compactCompletion: null } : {}),
       ...(isPlan40 ? { subtractionRemoval: 'unmarked', selectedRenamingSide: null } : {}),
+      ...(isPlan37Bridge ? { numberLineLocation: null, help: { locate: false } } : {}),
     },
     completedBeats: [],
     pendingResponse: null,
@@ -1330,6 +1467,9 @@ export function applyIntent(state, rawIntent) {
     throw new EpisodeIntentError('EPISODE_RESOLVED', 'resolved episodes do not accept more instructional intents');
   }
   const intent = ensureIntent(rawIntent);
+  if (isPlan37BarToLineBridgeDefinition(state.episodeDefinition)) {
+    return applyPlan37BridgeIntent(state, intent);
+  }
   assertIntentAllowedAtBeat(state, intent);
   if (intent.type === 'request-help') return handleHelp(state, intent);
   if (intent.type === 'request-task-help') return handleTaskHelpRequest(state, intent);

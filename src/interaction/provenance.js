@@ -2,6 +2,25 @@ import { deepFreeze } from '../content/schema.js';
 import { currentScheduleEntry } from './beat-schedule.js';
 
 function contentIdentity(content) {
+  if (content?.schemaVersion === 'fractionflow.bridge-instance/v1') {
+    return {
+      schemaVersion: 'fractionflow.bridge-content-identity/v1',
+      id: content.id,
+      source: 'curated',
+      provenance: content.provenance,
+      sourceForm: content.sourceForm,
+      reconstruction: {
+        kind: 'plan37-bar-to-line-bridge',
+        practiceSetId: 'bar-to-line-same-amount-vetted-set',
+        practiceSetRevision: '1',
+        itemId: content.provenance.itemId,
+        fixtureId: content.provenance.fixtureId,
+        authoringRevision: content.provenance.authoringRevision,
+        taskDataId: 'plan37-bar-to-line-same-amount',
+        taskDataRevision: '1',
+      },
+    };
+  }
   return {
     schemaVersion: content.schemaVersion,
     id: content.id,
@@ -18,6 +37,17 @@ function contentIdentity(content) {
 }
 
 function visibleFields(state) {
+  if (state.episodeDefinition?.id === 'phase-4-bar-to-line-same-amount'
+    && state.episodeDefinition?.revision === '1') {
+    return {
+      representationRole: 'number-line',
+      visible: state.beat === 'resolve'
+        ? ['source-form', 'accepted-number-line-location', 'alignment-guide']
+        : ['source-form', 'number-line-candidates', 'benchmarks'],
+      supplied: [],
+      hidden: state.beat === 'resolve' ? [] : ['accepted-number-line-location', 'correct-candidate-identity'],
+    };
+  }
   if (state.episodeDefinition?.id === 'phase-3-reusable-subtraction-recipes'
     && state.episodeDefinition?.revision === '1') {
     if (state.beat === 'transform') return {

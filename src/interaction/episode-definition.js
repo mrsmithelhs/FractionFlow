@@ -219,6 +219,19 @@ export const PLAN40_REUSABLE_SUBTRACTION_RECIPES_EPISODE_DEFINITION = deepFreeze
   },
 });
 
+export const PLAN37_BAR_TO_LINE_BRIDGE_EPISODE_DEFINITION = deepFreeze({
+  id: 'phase-4-bar-to-line-same-amount',
+  revision: '1',
+  family: 'bar-to-line-same-amount',
+  beats: Object.freeze(['encounter', 'locate', 'resolve']),
+  includeReflection: false,
+  promptIdentities: {
+    encounter: 'phase4.bridge.encounter',
+    locate: 'phase4.bridge.locate',
+    resolve: 'phase4.bridge.resolve',
+  },
+});
+
 const EPISODE_DEFINITIONS = Object.freeze([
   LEGACY_PHASE2_EPISODE_DEFINITION,
   LEGACY_PHASE2_REFLECTION_EPISODE_DEFINITION,
@@ -234,6 +247,7 @@ const EPISODE_DEFINITIONS = Object.freeze([
   PLAN35_REUSABLE_ADDITION_RECIPES_EPISODE_DEFINITION,
   PLAN36_LIKE_DENOMINATOR_SUBTRACTION_EPISODE_DEFINITION,
   PLAN40_REUSABLE_SUBTRACTION_RECIPES_EPISODE_DEFINITION,
+  PLAN37_BAR_TO_LINE_BRIDGE_EPISODE_DEFINITION,
 ]);
 
 export function getEpisodeDefinition(id = EPISODE_DEFINITION_ID, revision = EPISODE_DEFINITION_REVISION) {

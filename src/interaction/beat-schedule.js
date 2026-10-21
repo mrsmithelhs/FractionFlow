@@ -4,6 +4,7 @@ import { PLAN18_NESTED_DEFINITION_ID, resolvePlan18TaskContext } from '../conten
 import { isPlan35AdditionRecipeDefinition, isPlan35IdentifyRecipe, validatePlan35AdditionRecipeContext } from '../content/plan35-addition-recipe-task.js';
 import { isPlan36SubtractionDefinition, validatePlan36LikeDenominatorSubtractionContext } from '../content/plan36-like-denominator-takeaway-task.js';
 import { isPlan40SubtractionRecipeDefinition, isPlan40IdentifyRecipe, validatePlan40SubtractionRecipeContext } from '../content/plan40-reusable-subtraction-recipes.js';
+import { isPlan37BarToLineBridgeDefinition, validatePlan37BarToLineBridgeContext } from '../content/plan37-bar-to-line-bridge-task.js';
 
 function scheduleError(message) {
   const error = new TypeError(message);
@@ -16,6 +17,14 @@ function scheduleError(message) {
  * This helper does not admit a problem family; createEpisode retains that gate.
  */
 export function computeBeatSchedule(instance, episodeDefinition, taskContext = null, { allowCompatibilityPair = false } = {}) {
+  if (isPlan37BarToLineBridgeDefinition(episodeDefinition)) {
+    validatePlan37BarToLineBridgeContext(instance, taskContext, taskContext?.supportMode);
+    return deepFreeze([
+      { id: 'encounter', kind: 'encounter' },
+      { id: 'locate', kind: 'locate' },
+      { id: 'resolve', kind: 'resolve' },
+    ]);
+  }
   if (episodeDefinition?.id === PLAN34_EPISODE_DEFINITION_ID
     && episodeDefinition?.revision === '1') {
     const context = resolvePlan34TaskContext(

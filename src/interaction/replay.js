@@ -1,6 +1,13 @@
 import { buildCuratedProblem, generateProblem } from '../content/generator.js';
 import { resolveCuratedFixture } from '../content/authored-content-catalog.js';
 import { validateProblemInstance } from '../content/validation.js';
+import { resolvePlan37BarToLineBridgeInstance } from '../content/authored-content-catalog.js';
+import {
+  EXACT_PLAN37_BAR_TO_LINE_CONTEXT_KEYS,
+  isPlan37BarToLineBridgeDefinition,
+  validatePlan37BarToLineBridgeContext,
+  validatePlan37BarToLineBridgeInstance,
+} from '../content/plan37-bar-to-line-bridge-task.js';
 import { deepFreeze } from '../content/schema.js';
 import { applyIntent, createEpisode } from './episode.js';
 import { getEpisodeDefinition, validateActiveCondition } from './episode-definition.js';
@@ -13,6 +20,7 @@ export const REPLAY_V3_SCHEMA_VERSION = 'fractionflow.episode-replay/v3';
 export const REPLAY_V4_SCHEMA_VERSION = 'fractionflow.episode-replay/v4';
 export const REPLAY_V5_SCHEMA_VERSION = 'fractionflow.episode-replay/v5';
 export const REPLAY_V6_SCHEMA_VERSION = 'fractionflow.episode-replay/v6';
+export const REPLAY_V7_SCHEMA_VERSION = 'fractionflow.episode-replay/v7';
 
 function sameJson(left, right) {
   return JSON.stringify(left) === JSON.stringify(right);
@@ -79,6 +87,15 @@ function assertRequestShape(request, name) {
 }
 
 function assertContentIdentityShape(identity) {
+  if (identity?.schemaVersion === 'fractionflow.bridge-content-identity/v1') {
+    assertExactKeys(identity, ['schemaVersion', 'id', 'source', 'provenance', 'sourceForm', 'reconstruction'], 'bridge contentIdentity');
+    if (identity.source !== 'curated' || typeof identity.id !== 'string') throw new TypeError('bridge contentIdentity has invalid identity fields');
+    assertExactKeys(identity.provenance, ['fixtureId', 'authoringRevision', 'itemId'], 'bridge contentIdentity.provenance');
+    assertExactKeys(identity.sourceForm, ['kind', 'numerator', 'denominator'], 'bridge contentIdentity.sourceForm');
+    assertExactKeys(identity.reconstruction, ['kind', 'practiceSetId', 'practiceSetRevision', 'itemId', 'fixtureId', 'authoringRevision', 'taskDataId', 'taskDataRevision'], 'bridge contentIdentity.reconstruction');
+    assertWireData(identity, 'bridge contentIdentity');
+    return;
+  }
   assertExactKeys(identity, [
     'schemaVersion',
     'id',
@@ -109,6 +126,7 @@ function assertReplayEnvelopeShape(envelope) {
   const v4 = envelope?.schemaVersion === REPLAY_V4_SCHEMA_VERSION;
   const v5 = envelope?.schemaVersion === REPLAY_V5_SCHEMA_VERSION;
   const v6 = envelope?.schemaVersion === REPLAY_V6_SCHEMA_VERSION;
+  const v7 = envelope?.schemaVersion === REPLAY_V7_SCHEMA_VERSION;
   assertExactKeys(envelope, [
     'schemaVersion',
     'contentIdentity',
@@ -116,7 +134,7 @@ function assertReplayEnvelopeShape(envelope) {
     'support',
     'activeCondition',
     'learnerIntents',
-    ...(v2 || v3 || v4 || v5 || v6 ? ['taskContext'] : []),
+    ...(v2 || v3 || v4 || v5 || v6 || v7 ? ['taskContext'] : []),
   ], 'replay envelope');
   assertContentIdentityShape(envelope.contentIdentity);
   assertExactKeys(envelope.episodeDefinition, ['id', 'revision'], 'episodeDefinition');
@@ -219,10 +237,34 @@ function assertReplayEnvelopeShape(envelope) {
       }
     }
   }
+  if (v7) {
+    const context = envelope.taskContext;
+    assertExactKeys(context, EXACT_PLAN37_BAR_TO_LINE_CONTEXT_KEYS, 'replay v7 taskContext');
+    if (envelope.episodeDefinition.id !== 'phase-4-bar-to-line-same-amount'
+      || envelope.episodeDefinition.revision !== '1'
+      || context.definitionId !== envelope.episodeDefinition.id
+      || context.definitionRevision !== envelope.episodeDefinition.revision) {
+      throw new TypeError('replay v7 is reserved for exact Plan 39 bridge context');
+    }
+    if (!['acknowledge-bridge-encounter', 'propose-number-line-location', 'request-task-help', 'finish-compact-episode']
+      .includes(envelope.learnerIntents[0]?.type) && envelope.learnerIntents.length > 0) {
+      throw new TypeError('replay v7 does not permit this learner intent');
+    }
+    const allowedIntentTypes = new Set([
+      'acknowledge-bridge-encounter', 'propose-number-line-location',
+      'request-task-help', 'finish-compact-episode',
+    ]);
+    for (const intent of envelope.learnerIntents) {
+      if (!isPlainRecord(intent) || !allowedIntentTypes.has(intent.type)) {
+        throw new TypeError(`replay v7 does not permit intent type: ${intent?.type}`);
+      }
+    }
+  }
 }
 
 function contentReconstructionIdentity(content) {
   const identity = makeContentIdentity(content);
+  if (content?.schemaVersion === 'fractionflow.bridge-instance/v1') return identity;
   if (content.source === 'generated') {
     return {
       ...identity,
@@ -313,8 +355,22 @@ function reconstructCurated(identity) {
   return instance;
 }
 
+function reconstructPlan37BarToLineBridge(identity) {
+  const reconstruction = identity.reconstruction;
+  if (!reconstruction || reconstruction.kind !== 'plan37-bar-to-line-bridge') {
+    throw new Error('Plan 39 bridge replay identity is incomplete');
+  }
+  const instance = resolvePlan37BarToLineBridgeInstance(reconstruction.itemId, reconstruction.authoringRevision);
+  if (!instance) throw new Error('unknown Plan 39 bridge replay identity');
+  validatePlan37BarToLineBridgeInstance(instance);
+  const expected = makeContentIdentity(instance);
+  if (!sameJson(expected, identity)) throw new Error('Plan 39 bridge replay identity does not match authoritative registry');
+  return instance;
+}
+
 function reconstructContent(identity) {
   if (!identity || typeof identity !== 'object') throw new Error('replay content identity is required');
+  if (identity.schemaVersion === 'fractionflow.bridge-content-identity/v1') return reconstructPlan37BarToLineBridge(identity);
   if (identity.source === 'generated') return reconstructGenerated(identity);
   if (identity.source === 'curated') return reconstructCurated(identity);
   throw new Error(`unknown replay content source: ${String(identity.source)}`);
@@ -325,7 +381,9 @@ export function createReplayEnvelope(state) {
     throw new TypeError('state must be a Plan 05 episode state');
   }
   const envelope = {
-    schemaVersion: state.episodeDefinition.id === 'phase-3-reusable-subtraction-recipes'
+    schemaVersion: isPlan37BarToLineBridgeDefinition(state.episodeDefinition)
+      ? REPLAY_V7_SCHEMA_VERSION
+      : state.episodeDefinition.id === 'phase-3-reusable-subtraction-recipes'
       ? REPLAY_V6_SCHEMA_VERSION
       : state.episodeDefinition.id === 'phase-3-like-denominator-takeaway-subtraction'
         ? REPLAY_V5_SCHEMA_VERSION
@@ -351,7 +409,7 @@ export function createReplayEnvelope(state) {
 export function replayEpisode(envelope) {
   assertJsonSafe(envelope, 'replay envelope');
   if (!envelope || typeof envelope !== 'object') throw new TypeError('replay envelope must be an object');
-  if (![REPLAY_SCHEMA_VERSION, REPLAY_V2_SCHEMA_VERSION, REPLAY_V3_SCHEMA_VERSION, REPLAY_V4_SCHEMA_VERSION, REPLAY_V5_SCHEMA_VERSION, REPLAY_V6_SCHEMA_VERSION].includes(envelope?.schemaVersion)) {
+  if (![REPLAY_SCHEMA_VERSION, REPLAY_V2_SCHEMA_VERSION, REPLAY_V3_SCHEMA_VERSION, REPLAY_V4_SCHEMA_VERSION, REPLAY_V5_SCHEMA_VERSION, REPLAY_V6_SCHEMA_VERSION, REPLAY_V7_SCHEMA_VERSION].includes(envelope?.schemaVersion)) {
     throw new Error('unsupported replay envelope version');
   }
   assertReplayEnvelopeShape(envelope);
@@ -360,6 +418,16 @@ export function replayEpisode(envelope) {
     envelope.episodeDefinition?.id,
     envelope.episodeDefinition?.revision,
   );
+  if (isPlan37BarToLineBridgeDefinition(definition) !== (envelope.schemaVersion === REPLAY_V7_SCHEMA_VERSION)) {
+    throw new Error('Plan 39 bridge episodes require replay v7 and v7 is bridge-only');
+  }
+  if (envelope.schemaVersion === REPLAY_V7_SCHEMA_VERSION) {
+    const expectedMode = envelope.support?.dimensions?.fractionBarModel === 'high support'
+      ? 'partitioned'
+      : envelope.support?.dimensions?.fractionBarModel === 'medium support'
+        ? 'sparse-benchmarks' : null;
+    validatePlan37BarToLineBridgeContext(content, envelope.taskContext, expectedMode);
+  }
   let state = createEpisode({
     instance: content,
     episodeDefinition: definition,
@@ -369,7 +437,8 @@ export function replayEpisode(envelope) {
       || envelope.schemaVersion === REPLAY_V3_SCHEMA_VERSION
       || envelope.schemaVersion === REPLAY_V4_SCHEMA_VERSION
       || envelope.schemaVersion === REPLAY_V5_SCHEMA_VERSION
-      || envelope.schemaVersion === REPLAY_V6_SCHEMA_VERSION ? {
+      || envelope.schemaVersion === REPLAY_V6_SCHEMA_VERSION
+      || envelope.schemaVersion === REPLAY_V7_SCHEMA_VERSION ? {
       taskContext: envelope.taskContext,
       allowCompatibilityPair: envelope.schemaVersion !== REPLAY_V4_SCHEMA_VERSION
         && envelope.schemaVersion !== REPLAY_V5_SCHEMA_VERSION

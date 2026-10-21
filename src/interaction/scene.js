@@ -6,6 +6,11 @@ import { crossingResultStackForIdentity } from '../content/authored-content-cata
 import { makeContentIdentity } from './provenance.js';
 import { validateActiveCondition } from './episode-definition.js';
 import { currentScheduleEntry } from './beat-schedule.js';
+import {
+  classifyPlan37BenchmarkRelation,
+  isPlan37BarToLineBridgeDefinition,
+  validatePlan37BarToLineBridgeInstance,
+} from '../content/plan37-bar-to-line-bridge-task.js';
 
 export const SCENE_SCHEMA_VERSION = 'fractionflow.scene/v1';
 export const EPISODE_STATE_SCHEMA_VERSION = 'fractionflow.episode-state/v1';
@@ -270,6 +275,20 @@ function currentSupportConsequence(state) {
 function sceneTaskIdentity(state) {
   if (!state.taskContext) return null;
   const context = state.taskContext;
+  if (isPlan37BarToLineBridgeDefinition(state.episodeDefinition)) return {
+    practiceSetId: context.practiceSetId,
+    practiceSetRevision: context.practiceSetRevision,
+    itemId: context.itemId,
+    fixtureId: context.fixtureId,
+    authoringRevision: context.authoringRevision,
+    definitionId: context.definitionId,
+    definitionRevision: context.definitionRevision,
+    taskDataId: context.taskDataId,
+    taskDataRevision: context.taskDataRevision,
+    recipeId: context.recipeId,
+    recipeRevision: context.recipeRevision,
+    supportMode: context.supportMode,
+  };
   if (state.episodeDefinition?.id === 'phase-3-reusable-addition-recipes'
     || state.episodeDefinition?.id === 'phase-3-reusable-subtraction-recipes') return {
     practiceSetId: context.practiceSetId,
@@ -330,6 +349,7 @@ function currentTaskHelp(state) {
     && entry.scheduleEntryId === scheduleEntry?.id
   ));
   if (!request) return null;
+  if (request.helpKind === 'number-line-location') return { kind: 'number-line-location', status: 'requested' };
   if (request.helpKind === 'like-denominator-takeaway'
     || (request.beat === 'operate' && ['phase-3-like-denominator-takeaway-subtraction', 'phase-3-reusable-subtraction-recipes'].includes(state.episodeDefinition?.id))) {
     return { kind: 'like-denominator-takeaway', status: 'requested' };
@@ -401,6 +421,13 @@ function instructionalSourceContext(state) {
 
 function contentProjectionSource(state) {
   const facts = state.content.representationFacts;
+  if (state.content.schemaVersion === 'fractionflow.bridge-instance/v1') {
+    return {
+      sourceForm: state.content.sourceForm,
+      eligibility: facts.eligibility,
+      alternateRepresentationRecommendation: facts.alternateRepresentationRecommendation,
+    };
+  }
   const resultEstablished = Boolean(
     state.established?.operation || state.established?.resolution,
   );
@@ -522,6 +549,10 @@ function capabilityFor(state, role, derivation) {
   const path = pathSummary(state);
 
   if (role === 'number-line') {
+    if (isPlan37BarToLineBridgeDefinition(state.episodeDefinition)
+      && instanceVerdict === 'eligible') {
+      return { instance: instanceVerdict, activePath: null, authoredCoverage: null, continuation: null };
+    }
     if (instanceVerdict !== 'not-in-phase-2') {
       throw new SceneProjectionError(
         'INCONSISTENT_CAPABILITY',
@@ -628,6 +659,22 @@ function taskMeaning(state) {
   const connectionForm = state.beat === 'reflect'
     ? (state.activeCondition?.connectionMaking === 'CM-01-P' ? 'premise' : 'matching')
     : null;
+  if (isPlan37BarToLineBridgeDefinition(state.episodeDefinition)) {
+    return {
+      beat: state.beat,
+      schedulePosition: state.schedulePosition,
+      scheduleEntryId: scheduleEntry.id,
+      responsibility: expected?.responsibility ?? null,
+      promptId: expected?.promptId ?? null,
+      inputKind: expected?.inputKind ?? null,
+      target: null,
+      evidenceCategory: expected?.evidenceCategory ?? 'supported-construction',
+      connectionForm: null,
+      itemId: state.taskContext.itemId,
+      recipeId: state.taskContext.recipeId,
+      recipeRevision: state.taskContext.recipeRevision,
+    };
+  }
   if (!expected) {
     return {
       beat: state.beat,
@@ -760,6 +807,7 @@ function commonUnitMeaning(state) {
 }
 
 function operationMeaning(state) {
+  if (isPlan37BarToLineBridgeDefinition(state.episodeDefinition)) return null;
   if (state.episodeDefinition?.id === 'phase-3-like-denominator-takeaway-subtraction') {
     const isResolved = state.beat === 'resolve' && state.established?.operation;
     const acceptedForm = isResolved ? state.established.operation.submittedForm : null;
@@ -983,8 +1031,9 @@ function takeawayMeaning(state) {
 }
 
 function sceneMeaning(state, representationRole, capability) {
-  const left = quantityScene(state, 'left');
-  const right = quantityScene(state, 'right');
+  const isPlan37Bridge = isPlan37BarToLineBridgeDefinition(state.episodeDefinition);
+  const left = isPlan37Bridge ? null : quantityScene(state, 'left');
+  const right = isPlan37Bridge ? null : quantityScene(state, 'right');
   const recovery = state.lastRecovery
     ? {
       beat: state.lastRecovery.beat,
@@ -1007,8 +1056,17 @@ function sceneMeaning(state, representationRole, capability) {
         state.established?.commonDenominator?.targetDenominator,
       )
       : null,
-    quantities: { left, right },
-    unitRelationship: {
+    quantities: isPlan37Bridge ? {
+      source: {
+        id: 'source',
+        sourceForm: state.content.sourceForm,
+        currentForm: state.content.sourceForm,
+        unit: { denominator: state.content.sourceForm.denominator },
+        count: { numerator: state.content.sourceForm.numerator },
+        whole: { kind: 'stable-unit-whole', id: 'source-stable-whole', extent: { lowerWhole: '0', upperWhole: '1' } },
+      },
+    } : { left, right },
+    unitRelationship: isPlan37Bridge ? null : {
       sourceDenominators: {
         left: left.unit.denominator,
         right: right.unit.denominator,
@@ -1033,13 +1091,78 @@ function sceneMeaning(state, representationRole, capability) {
       recovery,
     },
     operation: operationMeaning(state),
-    takeaway: takeawayMeaning(state),
-    transition: transitionMeaning(state),
+    takeaway: isPlan37Bridge ? null : takeawayMeaning(state),
+    transition: isPlan37Bridge ? null : transitionMeaning(state),
     capability,
     support: state.support,
     supportConsequence: currentSupportConsequence(state),
     taskHelp: currentTaskHelp(state),
+    ...(isPlan37Bridge ? { numberLine: plan37NumberLineMeaning(state) } : {}),
   };
+}
+
+function plan37NumberLineMeaning(state) {
+  const instance = validatePlan37BarToLineBridgeInstance(state.content);
+  const context = state.taskContext;
+  const partitioned = context.supportMode === 'partitioned';
+  const benchmark = (label, form, selectable = false) => ({
+    label,
+    form,
+    benchmarkRelation: classifyPlan37BenchmarkRelation(form),
+    selectable,
+  });
+  const benchmarks = [
+    benchmark('0', { kind: 'fraction', numerator: '0', denominator: '1' }),
+    benchmark('1/2', { kind: 'fraction', numerator: '1', denominator: '2' }, false),
+    benchmark('1', { kind: 'fraction', numerator: '1', denominator: '1' }),
+  ];
+  const candidatePositions = partitioned
+    ? Array.from({ length: Number(context.partitionDenominator) + 1 }, (_, stepIndex) => {
+      const form = { kind: 'fraction', numerator: String(stepIndex), denominator: context.partitionDenominator };
+      return {
+        id: `partition-${stepIndex}-of-${context.partitionDenominator}`,
+        form,
+        stepIndex,
+        totalSteps: Number(context.partitionDenominator),
+        benchmarkRelation: classifyPlan37BenchmarkRelation(form),
+      };
+    })
+    : context.sparseCandidates.map((candidate, index) => ({
+      id: candidate.id,
+      form: candidate.form,
+      stepIndex: index + 1,
+      totalSteps: context.sparseCandidates.length,
+      benchmarkRelation: classifyPlan37BenchmarkRelation(candidate.form),
+      description: `Offered point ${String.fromCharCode(65 + index)}: ${benchmarkDescription(classifyPlan37BenchmarkRelation(candidate.form))}.`,
+    }));
+  const oddThirds = partitioned && context.partitionDenominator === '3';
+  if (oddThirds) benchmarks[1] = { ...benchmarks[1], selectable: false, kind: 'visual-reference-anchor' };
+  const accepted = state.beat === 'resolve'
+    ? state.established.numberLineLocation?.acceptedPosition ?? null
+    : null;
+  return {
+    domain: { lowerWhole: '0', upperWhole: '1' },
+    densityMode: context.supportMode,
+    benchmarks,
+    candidatePositions,
+    acceptedPosition: accepted,
+    alignmentGuideVisible: state.beat === 'resolve',
+  };
+}
+
+function benchmarkDescription(relation) {
+  const descriptions = {
+    'exact-zero': 'at zero',
+    'exact-half': 'at one half',
+    'exact-one': 'at one',
+    'between-0-and-half/closer-to-zero': 'between zero and one half, closer to zero',
+    'between-0-and-half/closer-to-half': 'between zero and one half, closer to one half',
+    'between-0-and-half/midway': 'between zero and one half, halfway between them',
+    'between-half-and-1/closer-to-half': 'between one half and one, closer to one half',
+    'between-half-and-1/closer-to-one': 'between one half and one, closer to one',
+    'between-half-and-1/midway': 'between one half and one, halfway between them',
+  };
+  return descriptions[relation] ?? 'between zero and one';
 }
 
 function assertNoSceneHistory(scene) {
