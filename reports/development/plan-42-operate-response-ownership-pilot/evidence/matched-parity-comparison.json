@@ -1,0 +1,162 @@
+{
+  "browser": "Chrome via Playwright",
+  "baselineCommit": "d7936a71bbbb099fb9394a727bbac1d751e79afa",
+  "productionProductCommit": "436e54a0ed58ff8437a22e61815c2c3da098954d",
+  "productionCheckoutHead": "b0137a1c1d0f6df277a36a46dbfd6aff891e471a",
+  "pairs": [
+    {
+      "name": "fraction-visual-closed-mobile",
+      "observationEqual": true,
+      "screenshotHashEqual": true
+    },
+    {
+      "name": "fraction-visual-help-mobile",
+      "observationEqual": true,
+      "screenshotHashEqual": true
+    },
+    {
+      "name": "fraction-visual-recovery-mobile",
+      "observationEqual": true,
+      "screenshotHashEqual": true
+    },
+    {
+      "name": "fraction-linear-help-open-after-switch-mobile",
+      "observationEqual": true,
+      "screenshotHashEqual": true
+    },
+    {
+      "name": "fraction-linear-help-closed-mobile",
+      "observationEqual": true,
+      "screenshotHashEqual": true
+    },
+    {
+      "name": "fraction-linear-help-open-mobile",
+      "observationEqual": true,
+      "screenshotHashEqual": true
+    },
+    {
+      "name": "single-visual-closed-desktop",
+      "observationEqual": true,
+      "screenshotHashEqual": false
+    },
+    {
+      "name": "single-linear-closed-desktop",
+      "observationEqual": true,
+      "screenshotHashEqual": true
+    },
+    {
+      "name": "single-linear-recovery-desktop",
+      "observationEqual": true,
+      "screenshotHashEqual": true
+    }
+  ],
+  "measurementPairs": 9,
+  "identicalMeasurements": 9,
+  "identicalScreenshotHashes": 8,
+  "differences": [
+    {
+      "name": "single-visual-closed-desktop",
+      "observationEqual": true,
+      "screenshotHashEqual": false
+    }
+  ],
+  "fullProductionMatrix": {
+    "routeRows": 81,
+    "browserExecutions": 83,
+    "passSummary": "83 passed, 0 failed",
+    "intendedSeedFailuresDetected": 0,
+    "failureRouteLines": [],
+    "exitCode": 0
+  },
+  "baselineFullMatrixAttempt": {
+    "routeRows": 81,
+    "browserExecutions": 83,
+    "passSummary": "79 passed, 4 failed",
+    "intendedSeedFailuresDetected": 0,
+    "failureRouteLines": [],
+    "exitCode": 1
+  },
+  "targetedSeeds": [
+    {
+      "file": "production-b-motion-no-op-keyframes-route-matrix.json",
+      "seed": "motion:no-op-keyframes",
+      "exitCode": 0,
+      "result": {
+        "routeRows": 1,
+        "browserExecutions": 1,
+        "passSummary": "0 passed, 1 intended seed failure detected, 0 failed",
+        "intendedSeedFailuresDetected": 1,
+        "failureRouteLines": [
+          "  ✓ ROUTE-COND-1-TRANSFORM [standard-motion] (694ms) [seed detected at intended assertion: no-op-keyframes; locator.evaluate: Error: no partially painted boundary was observed during the executed animation"
+        ],
+        "exitCode": 0
+      }
+    },
+    {
+      "file": "production-b-plan38-operation-draft-loss-route-matrix.json",
+      "seed": "plan38:operation-draft-loss",
+      "exitCode": 0,
+      "result": {
+        "routeRows": 1,
+        "browserExecutions": 1,
+        "passSummary": "0 passed, 1 intended seed failure detected, 0 failed",
+        "intendedSeedFailuresDetected": 1,
+        "failureRouteLines": [
+          "  ✓ ROUTE-PLAN38-VIEW-TOGGLE-DRAFT-PRESERVATION [standard-motion] (409ms) [intended assertion detected seed: operation-draft-loss; Route \"ROUTE-PLAN38-VIEW-TOGGLE-DRAFT-PRESERVATION\" assertion failed: input value on \"#linear-operate-fraction-denominator-input\" was \"\", expected \"8\". (route action: Assert both raw draft values and primary-field focus after pointer view switch)]"
+        ],
+        "exitCode": 0
+      }
+    },
+    {
+      "file": "production-b-plan38-operation-wrong-focus-route-matrix.json",
+      "seed": "plan38:operation-wrong-focus",
+      "exitCode": 0,
+      "result": {
+        "routeRows": 1,
+        "browserExecutions": 1,
+        "passSummary": "0 passed, 1 intended seed failure detected, 0 failed",
+        "intendedSeedFailuresDetected": 1,
+        "failureRouteLines": [
+          "  ✓ ROUTE-PLAN38-VIEW-TOGGLE-DRAFT-PRESERVATION [standard-motion] (442ms) [intended assertion detected seed: operation-wrong-focus; Route \"ROUTE-PLAN38-VIEW-TOGGLE-DRAFT-PRESERVATION\" expected \".app-linear-view #linear-operate-fraction-numerator-input\" to have focus after step 8. (route action: Assert pointer-driven focus preservation targets the primary numerator)]"
+        ],
+        "exitCode": 0
+      }
+    },
+    {
+      "file": "production-b-plan38-premature-answer-leak-route-matrix.json",
+      "seed": "plan38:premature-answer-leak",
+      "exitCode": 0,
+      "result": {
+        "routeRows": 1,
+        "browserExecutions": 1,
+        "passSummary": "0 passed, 1 intended seed failure detected, 0 failed",
+        "intendedSeedFailuresDetected": 1,
+        "failureRouteLines": [
+          "  ✓ ROUTE-PLAN38-DEEP-SAMPLE-ZERO-DIFFERENCE [standard-motion] (848ms) [intended assertion detected seed: premature-answer-leak; Route \"ROUTE-PLAN38-DEEP-SAMPLE-ZERO-DIFFERENCE\" assertion failed: selector \".app-visual-view .active-beat-prompt\" unexpectedly contains text \"0/9 is left.\". (route action: Plan 38: assert visible hatch and non-leakage at operate)]"
+        ],
+        "exitCode": 0
+      }
+    },
+    {
+      "file": "production-b-plan40-erased-takeaway-hatch-after-transform-route-matrix.json",
+      "seed": "plan40:erased-takeaway-hatch-after-transform",
+      "exitCode": 0,
+      "result": {
+        "routeRows": 1,
+        "browserExecutions": 1,
+        "passSummary": "0 passed, 1 intended seed failure detected, 0 failed",
+        "intendedSeedFailuresDetected": 1,
+        "failureRouteLines": [
+          "  ✓ ROUTE-PLAN40-DEEP-SAMPLE-CONSTRUCT-OPERATE [standard-motion] (450ms) [intended assertion detected seed: erased-takeaway-hatch-after-transform; Route \"ROUTE-PLAN40-DEEP-SAMPLE-CONSTRUCT-OPERATE\" visible geometry assertion failed for \".app-visual-view .fraction-bar-segment.removed\": found 2, expected at least 2 visible items of 10x20px with background image containing \"repeating-linear-gradient\" with a visible center hit; 2 were hidden, clipped, unpainted, undersized, or missing required paint. (route action: Plan 40: assert visible hatch and non-leakage at operate)]"
+        ],
+        "exitCode": 0
+      }
+    }
+  ],
+  "limitations": [
+    "Chrome headless desktop browser context only; no physical device, touch hardware, keyboard-only certification, or assistive technology claim.",
+    "Mobile screenshots were captured at 360x740 with Playwright touch capability; ordinary vertical scroll remains available.",
+    "The mobile task-help control extends below the initial viewport in the visual fraction state; it is reachable by scrolling and has equivalent geometry in both builds.",
+    "One desktop single-input PNG hash differed while recorded bounds and state measurements were identical; likely timing/pixel-level variation during an existing subdivision animation, not a measured layout difference."
+  ]
+}

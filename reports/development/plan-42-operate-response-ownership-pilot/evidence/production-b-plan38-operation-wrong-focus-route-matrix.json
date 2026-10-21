@@ -1,0 +1,422 @@
+{
+  "label": "production-b",
+  "seed": "plan38:operation-wrong-focus",
+  "commit": "b0137a1c1d0f6df277a36a46dbfd6aff891e471a",
+  "browserChannel": "chrome",
+  "command": "node scripts/dev/run-route-matrix.js --browser-channel chrome --quiet --plan38-witness-seed operation-wrong-focus",
+  "routeRows": 81,
+  "expectedBrowserExecutions": 83,
+  "exitCode": 0,
+  "signal": null,
+  "stdoutTail": "--- FractionFlow Reachable Behavior Route Contract Runner ---\n  ✓ ROUTE-PLAN38-VIEW-TOGGLE-DRAFT-PRESERVATION [standard-motion] (442ms) [intended assertion detected seed: operation-wrong-focus; Route \"ROUTE-PLAN38-VIEW-TOGGLE-DRAFT-PRESERVATION\" expected \".app-linear-view #linear-operate-fraction-numerator-input\" to have focus after step 8. (route action: Assert pointer-driven focus preservation targets the primary numerator)]\n\nRoute Matrix Run Complete: 0 passed, 1 intended seed failure detected, 0 failed (1 route rows; 1 browser executions).\n",
+  "stderr": "",
+  "matrixResult": {
+    "routeRows": 1,
+    "browserExecutions": 1,
+    "passSummary": "0 passed, 1 intended seed failure detected, 0 failed",
+    "intendedSeedFailuresDetected": 1,
+    "failureRouteLines": [
+      "  ✓ ROUTE-PLAN38-VIEW-TOGGLE-DRAFT-PRESERVATION [standard-motion] (442ms) [intended assertion detected seed: operation-wrong-focus; Route \"ROUTE-PLAN38-VIEW-TOGGLE-DRAFT-PRESERVATION\" expected \".app-linear-view #linear-operate-fraction-numerator-input\" to have focus after step 8. (route action: Assert pointer-driven focus preservation targets the primary numerator)]"
+    ],
+    "exitCode": 0
+  },
+  "screenshots": [],
+  "historicalOutputRestoration": [
+    {
+      "path": "reports/development/plan-34-reusable-full-addition-task-patterns/evidence/plan34-construct-encounter-360x740.png",
+      "sha256Before": "fa209dc94e08e47f8fedc37e9c1d22c0f17e9102574435f291a63f06f05c19fb",
+      "sha256After": "fa209dc94e08e47f8fedc37e9c1d22c0f17e9102574435f291a63f06f05c19fb",
+      "byteExact": true
+    },
+    {
+      "path": "reports/development/plan-34-reusable-full-addition-task-patterns/evidence/plan34-construct-help-360x740.png",
+      "sha256Before": "d6e76c757297305783661ccaef68c9925e244934f1cb2d4e9cbcc19f6dbd807f",
+      "sha256After": "d6e76c757297305783661ccaef68c9925e244934f1cb2d4e9cbcc19f6dbd807f",
+      "byteExact": true
+    },
+    {
+      "path": "reports/development/plan-34-reusable-full-addition-task-patterns/evidence/plan34-construct-resolve-360x740.png",
+      "sha256Before": "7547c87444b5fc12c50bc7a34bb01e0fa2895d0b0c8911fc8aec8649a2599b2e",
+      "sha256After": "7547c87444b5fc12c50bc7a34bb01e0fa2895d0b0c8911fc8aec8649a2599b2e",
+      "byteExact": true
+    },
+    {
+      "path": "reports/development/plan-34-reusable-full-addition-task-patterns/evidence/plan34-inspect-encounter-linear-360x752.png",
+      "sha256Before": "ab7adebe578f4a8ae0b420c6ab2ac304de5ee56b8d8eb7923608deb8548d6f01",
+      "sha256After": "ab7adebe578f4a8ae0b420c6ab2ac304de5ee56b8d8eb7923608deb8548d6f01",
+      "byteExact": true
+    },
+    {
+      "path": "reports/development/plan-34-reusable-full-addition-task-patterns/evidence/plan34-inspect-candidate-linear-360x752.png",
+      "sha256Before": "a7bdbe79fff1022415146b547ca966958ee338a318034a6b4cb08d5daf607e79",
+      "sha256After": "a7bdbe79fff1022415146b547ca966958ee338a318034a6b4cb08d5daf607e79",
+      "byteExact": true
+    },
+    {
+      "path": "reports/development/plan-34-reusable-full-addition-task-patterns/evidence/plan34-inspect-false-keep-linear-360x752.png",
+      "sha256Before": "c2c7fe58ff5e771306a9dd0efc6ff312188d4481160ac5485a840f700e8d3474",
+      "sha256After": "c2c7fe58ff5e771306a9dd0efc6ff312188d4481160ac5485a840f700e8d3474",
+      "byteExact": true
+    },
+    {
+      "path": "reports/development/plan-34-reusable-full-addition-task-patterns/evidence/plan34-inspect-resolve-linear-360x752.png",
+      "sha256Before": "51c078c21122c4fa342a1cb07fbfa89b159b960dd18eceae4aff90a53ded945c",
+      "sha256After": "51c078c21122c4fa342a1cb07fbfa89b159b960dd18eceae4aff90a53ded945c",
+      "byteExact": true
+    },
+    {
+      "path": "reports/development/plan-34-reusable-full-addition-task-patterns/evidence/plan34-construct-visual-wide.png",
+      "sha256Before": "ee37806d65480238332f029cd9408548d4bcd6a4b5429cb0108e0b612e986fd8",
+      "sha256After": "ee37806d65480238332f029cd9408548d4bcd6a4b5429cb0108e0b612e986fd8",
+      "byteExact": true
+    },
+    {
+      "path": "reports/development/plan-34-reusable-full-addition-task-patterns/evidence/plan34-third-identity-wide-encounter.png",
+      "sha256Before": "44ff17e39c8ebdade2b8934c41f366bedc2cfb196767cafd9b9e53a3e1c90d95",
+      "sha256After": "44ff17e39c8ebdade2b8934c41f366bedc2cfb196767cafd9b9e53a3e1c90d95",
+      "byteExact": true
+    },
+    {
+      "path": "reports/development/plan-34-reusable-full-addition-task-patterns/evidence/plan34-third-identity-false-stimulus-wide.png",
+      "sha256Before": "9a647652a9e61a2f62a3153668a400ab75838eb71af4121d310452d670584e71",
+      "sha256After": "9a647652a9e61a2f62a3153668a400ab75838eb71af4121d310452d670584e71",
+      "byteExact": true
+    },
+    {
+      "path": "reports/development/plan-34-reusable-full-addition-task-patterns/evidence/plan34-third-identity-linear-resolve-wide.png",
+      "sha256Before": "376d77f4de4c53c262911a2ef3f644e800c4b63e90b4b7638d0020d575350dea",
+      "sha256After": "376d77f4de4c53c262911a2ef3f644e800c4b63e90b4b7638d0020d575350dea",
+      "byteExact": true
+    },
+    {
+      "path": "reports/development/plan-34-reusable-full-addition-task-patterns/evidence/plan34-inspect-retry-draft.png",
+      "sha256Before": "18bcbd0d7e1cc72c1a399a248f5b19702e132a4ff7a73baba8bc00e983678463",
+      "sha256After": "18bcbd0d7e1cc72c1a399a248f5b19702e132a4ff7a73baba8bc00e983678463",
+      "byteExact": true
+    },
+    {
+      "path": "reports/development/plan-34-reusable-full-addition-task-patterns/evidence/plan34-fresh-reentry-360x740.png",
+      "sha256Before": "fa209dc94e08e47f8fedc37e9c1d22c0f17e9102574435f291a63f06f05c19fb",
+      "sha256After": "fa209dc94e08e47f8fedc37e9c1d22c0f17e9102574435f291a63f06f05c19fb",
+      "byteExact": true
+    },
+    {
+      "path": "reports/development/plan-18-nested-denominator-addition/evidence/route-plan18-production-high-visual-complete-side-choice.png",
+      "sha256Before": "1a4ebddc8f6fad227d77cb50dff2a283dc057213065bd441b3c7f37f4a0e1f30",
+      "sha256After": "1a4ebddc8f6fad227d77cb50dff2a283dc057213065bd441b3c7f37f4a0e1f30",
+      "byteExact": true
+    },
+    {
+      "path": "reports/development/plan-18-nested-denominator-addition/evidence/route-plan18-production-high-visual-complete-conversion-replay.png",
+      "sha256Before": "398448c8edf9c46c5308d653d18642b7c269d4d6dc80b5e42a664c3d2217e06d",
+      "sha256After": "398448c8edf9c46c5308d653d18642b7c269d4d6dc80b5e42a664c3d2217e06d",
+      "byteExact": true
+    },
+    {
+      "path": "reports/development/plan-18-nested-denominator-addition/evidence/route-plan18-production-medium-linear-reduced-side-choice.png",
+      "sha256Before": "4d39856eeeacc9e1e53d1ff912bb80f59bb8a87090a13059204d3fdcc16d547d",
+      "sha256After": "4d39856eeeacc9e1e53d1ff912bb80f59bb8a87090a13059204d3fdcc16d547d",
+      "byteExact": true
+    },
+    {
+      "path": "reports/development/plan-18-nested-denominator-addition/evidence/route-plan18-production-medium-linear-reduced-conversion-replay.png",
+      "sha256Before": "be7b2dc69c4194d4f8ff116796fd38267556fe484e07ab041c9a9cb9ecd4c01f",
+      "sha256After": "be7b2dc69c4194d4f8ff116796fd38267556fe484e07ab041c9a9cb9ecd4c01f",
+      "byteExact": true
+    },
+    {
+      "path": "reports/development/plan-38-like-denominator-subtraction-batch/evidence/encounter-360x740.png",
+      "sha256Before": "47d42a7a6fc810dfb141c18683f5e57c1720b7f65db9a4269bd98b4381c0c074",
+      "sha256After": "47d42a7a6fc810dfb141c18683f5e57c1720b7f65db9a4269bd98b4381c0c074",
+      "byteExact": true
+    },
+    {
+      "path": "reports/development/plan-38-like-denominator-subtraction-batch/evidence/operate-hatch-360x740.png",
+      "sha256Before": "53717b2bcbc2da211a0c61a9ffa1db8d66fe28ab302212e4943c2e4e0858202f",
+      "sha256After": "53717b2bcbc2da211a0c61a9ffa1db8d66fe28ab302212e4943c2e4e0858202f",
+      "byteExact": true
+    },
+    {
+      "path": "reports/development/plan-38-like-denominator-subtraction-batch/evidence/help-360x740.png",
+      "sha256Before": "e51fbcd87f42ade9a2b42e918d396f724a1e4f6f87b7a6fc23c521c997712a02",
+      "sha256After": "e51fbcd87f42ade9a2b42e918d396f724a1e4f6f87b7a6fc23c521c997712a02",
+      "byteExact": true
+    },
+    {
+      "path": "reports/development/plan-38-like-denominator-subtraction-batch/evidence/resolve-360x740.png",
+      "sha256Before": "dfc1758f60ded02d97c241f0db010066b56fe6c536440c68e2124fa48cdfd5fd",
+      "sha256After": "dfc1758f60ded02d97c241f0db010066b56fe6c536440c68e2124fa48cdfd5fd",
+      "byteExact": true
+    },
+    {
+      "path": "reports/development/plan-40-unlike-denominator-subtraction-batch/evidence/operate-hatch-largest-target30-1366x768.png",
+      "sha256Before": "dce6bfbc3f6c3875867b961d6dc0051e259636c821101c824626d4cd7f476975",
+      "sha256After": "dce6bfbc3f6c3875867b961d6dc0051e259636c821101c824626d4cd7f476975",
+      "byteExact": true
+    },
+    {
+      "path": "reports/development/plan-40-unlike-denominator-subtraction-batch/evidence/encounter-360x740.png",
+      "sha256Before": "9c8f248160c92bf71974f14577e020042864d721bef729a9e203c512bdc72cb4",
+      "sha256After": "9c8f248160c92bf71974f14577e020042864d721bef729a9e203c512bdc72cb4",
+      "byteExact": true
+    },
+    {
+      "path": "reports/development/plan-40-unlike-denominator-subtraction-batch/evidence/transform-360x740.png",
+      "sha256Before": "f072b02206610109a1fa693cf409c306d6e30294b0ced6773478463244cc4be1",
+      "sha256After": "f072b02206610109a1fa693cf409c306d6e30294b0ced6773478463244cc4be1",
+      "byteExact": true
+    },
+    {
+      "path": "reports/development/plan-40-unlike-denominator-subtraction-batch/evidence/operate-hatch-360x740.png",
+      "sha256Before": "764fee55b2d0c2eba94591b7a65d12d2ed91292dd15b9f0f507ea3983ca9ae36",
+      "sha256After": "764fee55b2d0c2eba94591b7a65d12d2ed91292dd15b9f0f507ea3983ca9ae36",
+      "byteExact": true
+    },
+    {
+      "path": "reports/development/plan-40-unlike-denominator-subtraction-batch/evidence/help-360x740.png",
+      "sha256Before": "f22266483eab45012817879cf9d08b740d765b5fdbd19688e3b8e1f328119ea8",
+      "sha256After": "f22266483eab45012817879cf9d08b740d765b5fdbd19688e3b8e1f328119ea8",
+      "byteExact": true
+    },
+    {
+      "path": "reports/development/plan-40-unlike-denominator-subtraction-batch/evidence/resolve-360x740.png",
+      "sha256Before": "18eef3b767380ee66bff89bb4dffb3b29c1f5f925aabe897ea3cf609d0fe749e",
+      "sha256After": "18eef3b767380ee66bff89bb4dffb3b29c1f5f925aabe897ea3cf609d0fe749e",
+      "byteExact": true
+    },
+    {
+      "path": "reports/development/plan-40-unlike-denominator-subtraction-batch/evidence/chromebook-1093x614.png",
+      "sha256Before": "5aaf3b435f71b4479ade027fe2ae4c34600f6493cc3b7da996d5871510d9a140",
+      "sha256After": "5aaf3b435f71b4479ade027fe2ae4c34600f6493cc3b7da996d5871510d9a140",
+      "byteExact": true
+    },
+    {
+      "path": "reports/development/plan-18-nested-denominator-addition/evidence/copy-repair-nested-one-half-plus-three-eighths-linear.png",
+      "sha256Before": "7c24d83214c91212791fd6ca3836fd748ce26915b19a1e7bc10497c080a5bfbb",
+      "sha256After": "7c24d83214c91212791fd6ca3836fd748ce26915b19a1e7bc10497c080a5bfbb",
+      "byteExact": true
+    },
+    {
+      "path": "reports/development/plan-18-nested-denominator-addition/evidence/copy-repair-nested-one-half-plus-three-eighths-visual.png",
+      "sha256Before": "2b81431c79bbea43d57108437d41fafb81b5f6459c559c2a0ddc10f6d1793d11",
+      "sha256After": "2b81431c79bbea43d57108437d41fafb81b5f6459c559c2a0ddc10f6d1793d11",
+      "byteExact": true
+    },
+    {
+      "path": "reports/development/plan-18-nested-denominator-addition/evidence/copy-repair-nested-three-eighths-plus-one-half-linear.png",
+      "sha256Before": "705ed798e844cff8a7e19afff67b5a9f1f7b9f267c15235f667b9831d8fc3793",
+      "sha256After": "705ed798e844cff8a7e19afff67b5a9f1f7b9f267c15235f667b9831d8fc3793",
+      "byteExact": true
+    },
+    {
+      "path": "reports/development/plan-18-nested-denominator-addition/evidence/copy-repair-nested-three-eighths-plus-one-half-visual.png",
+      "sha256Before": "b0c0bfebe50c8d03dee06a4f383e84362ae1f7e668b165b0ae23ead220a1c9ce",
+      "sha256After": "b0c0bfebe50c8d03dee06a4f383e84362ae1f7e668b165b0ae23ead220a1c9ce",
+      "byteExact": true
+    },
+    {
+      "path": "reports/development/plan-18-nested-denominator-addition/evidence/plan18-seed-stale-denominator-control-receipt.json",
+      "sha256Before": "b2427b48142463b14ea99fc103a7f2298315f5e73b535576cdaf12e4f433ebfe",
+      "sha256After": "b2427b48142463b14ea99fc103a7f2298315f5e73b535576cdaf12e4f433ebfe",
+      "byteExact": true
+    },
+    {
+      "path": "reports/development/plan-18-nested-denominator-addition/evidence/plan18-seed-wrong-transform-side-receipt.json",
+      "sha256Before": "32cb50609cf2980b388e0e8ddbb84c737570df6d6989102b54332bb86b776c20",
+      "sha256After": "32cb50609cf2980b388e0e8ddbb84c737570df6d6989102b54332bb86b776c20",
+      "byteExact": true
+    },
+    {
+      "path": "reports/development/plan-18-nested-denominator-addition/evidence/route-matrix-results.json",
+      "sha256Before": "68e7f56d1b9c820cdbe5a83c831527de937deb71c4d5d42a42c8189bcbc4af0b",
+      "sha256After": "68e7f56d1b9c820cdbe5a83c831527de937deb71c4d5d42a42c8189bcbc4af0b",
+      "byteExact": true
+    },
+    {
+      "path": "reports/development/plan-18-nested-denominator-addition/evidence/stage3-nested-one-half-plus-three-eighths-reduced-replay-752.png",
+      "sha256Before": "6b4e3fb6d73d93f1738709962f3e4b083a4ac3d9d4cd17a51086158919d803e0",
+      "sha256After": "6b4e3fb6d73d93f1738709962f3e4b083a4ac3d9d4cd17a51086158919d803e0",
+      "byteExact": true
+    },
+    {
+      "path": "reports/development/plan-18-nested-denominator-addition/evidence/stage3-nested-one-half-plus-three-eighths-standard-replay-740.png",
+      "sha256Before": "961bf13a374ef5dfcd29600cf702f8ef37486d81af1bdf53743df66bb2ed10ad",
+      "sha256After": "961bf13a374ef5dfcd29600cf702f8ef37486d81af1bdf53743df66bb2ed10ad",
+      "byteExact": true
+    },
+    {
+      "path": "reports/development/plan-18-nested-denominator-addition/evidence/stage3-nested-three-eighths-plus-one-half-reduced-replay-740.png",
+      "sha256Before": "9b4541c6ae4ae1f9eab669f7a037c6bc699c3ca2cc065dffa1a3583b516b9738",
+      "sha256After": "9b4541c6ae4ae1f9eab669f7a037c6bc699c3ca2cc065dffa1a3583b516b9738",
+      "byteExact": true
+    },
+    {
+      "path": "reports/development/plan-18-nested-denominator-addition/evidence/stage3-nested-three-eighths-plus-one-half-standard-replay-752.png",
+      "sha256Before": "2ab28f898f8e5c641c91a033bd947de3fcec71b0ef3d194d3bfcdca085c307ab",
+      "sha256After": "2ab28f898f8e5c641c91a033bd947de3fcec71b0ef3d194d3bfcdca085c307ab",
+      "byteExact": true
+    },
+    {
+      "path": "reports/development/plan-34-reusable-full-addition-task-patterns/evidence/orchestration-inspect-first.png",
+      "sha256Before": "93760f3bafe90d62a3fbdc618defcc9598a924a4950dd129768445575cd7e030",
+      "sha256After": "93760f3bafe90d62a3fbdc618defcc9598a924a4950dd129768445575cd7e030",
+      "byteExact": true
+    },
+    {
+      "path": "reports/development/plan-34-reusable-full-addition-task-patterns/evidence/orchestration-keyboard-repair-verified.png",
+      "sha256Before": "153925bad5d82f8f4d8d8bfeffd7d117aaff4f9754c5822b6b9d57e2a3507d4a",
+      "sha256After": "153925bad5d82f8f4d8d8bfeffd7d117aaff4f9754c5822b6b9d57e2a3507d4a",
+      "byteExact": true
+    },
+    {
+      "path": "reports/development/plan-34-reusable-full-addition-task-patterns/evidence/plan34-copy-repair-linear-360x740.png",
+      "sha256Before": "83d5d5569e54fad7243d9611936d8cb3457a40e77e5b26b748906b5eef9a0e5f",
+      "sha256After": "83d5d5569e54fad7243d9611936d8cb3457a40e77e5b26b748906b5eef9a0e5f",
+      "byteExact": true
+    },
+    {
+      "path": "reports/development/plan-34-reusable-full-addition-task-patterns/evidence/plan34-copy-repair-linear-360x752.png",
+      "sha256Before": "abedb0cc263e58d405b4cc68562ee1ef289bb657d96a51f35689ce8687f6d862",
+      "sha256After": "abedb0cc263e58d405b4cc68562ee1ef289bb657d96a51f35689ce8687f6d862",
+      "byteExact": true
+    },
+    {
+      "path": "reports/development/plan-34-reusable-full-addition-task-patterns/evidence/plan34-copy-repair-measurements.json",
+      "sha256Before": "67d054e9ae8d8d93df6f1d738371f423148d25512205534f3a252d0d1ecfc955",
+      "sha256After": "67d054e9ae8d8d93df6f1d738371f423148d25512205534f3a252d0d1ecfc955",
+      "byteExact": true
+    },
+    {
+      "path": "reports/development/plan-34-reusable-full-addition-task-patterns/evidence/plan34-copy-repair-visual-360x740.png",
+      "sha256Before": "a101503257f3a1da84feff5f9a81e9fb405299a25987deacb4aa6a95a2fb1a49",
+      "sha256After": "a101503257f3a1da84feff5f9a81e9fb405299a25987deacb4aa6a95a2fb1a49",
+      "byteExact": true
+    },
+    {
+      "path": "reports/development/plan-34-reusable-full-addition-task-patterns/evidence/plan34-copy-repair-visual-360x752.png",
+      "sha256Before": "a101503257f3a1da84feff5f9a81e9fb405299a25987deacb4aa6a95a2fb1a49",
+      "sha256After": "a101503257f3a1da84feff5f9a81e9fb405299a25987deacb4aa6a95a2fb1a49",
+      "byteExact": true
+    },
+    {
+      "path": "reports/development/plan-34-reusable-full-addition-task-patterns/evidence/plan34-viewport-measurements.json",
+      "sha256Before": "23bfd1a68850ec21191f70269afbfab6d0fbfa6a23d97a485ecbbd02591a0f37",
+      "sha256After": "23bfd1a68850ec21191f70269afbfab6d0fbfa6a23d97a485ecbbd02591a0f37",
+      "byteExact": true
+    },
+    {
+      "path": "reports/development/plan-38-like-denominator-subtraction-batch/evidence/linear-encounter-360x752.png",
+      "sha256Before": "74781f366b07a96cabff0abe918771f2ad46f3fee41508b12b624d4a679c6e1e",
+      "sha256After": "74781f366b07a96cabff0abe918771f2ad46f3fee41508b12b624d4a679c6e1e",
+      "byteExact": true
+    },
+    {
+      "path": "reports/development/plan-38-like-denominator-subtraction-batch/evidence/linear-help-360x752.png",
+      "sha256Before": "f2566699a4a15e91b3cb04a209f85bd5a9a1958cc7412f785a00f48e061affdf",
+      "sha256After": "f2566699a4a15e91b3cb04a209f85bd5a9a1958cc7412f785a00f48e061affdf",
+      "byteExact": true
+    },
+    {
+      "path": "reports/development/plan-38-like-denominator-subtraction-batch/evidence/linear-operate-360x752.png",
+      "sha256Before": "27c7f2b6128debfc2c993ad0265ad8e3598a8c3bfd955c974bb1d7e9bc6946dd",
+      "sha256After": "27c7f2b6128debfc2c993ad0265ad8e3598a8c3bfd955c974bb1d7e9bc6946dd",
+      "byteExact": true
+    },
+    {
+      "path": "reports/development/plan-38-like-denominator-subtraction-batch/evidence/linear-resolve-360x752.png",
+      "sha256Before": "3c89a83cfca0db473424ee806589b1e3e73cc0a484ce4f43a89625c3b220ca99",
+      "sha256After": "3c89a83cfca0db473424ee806589b1e3e73cc0a484ce4f43a89625c3b220ca99",
+      "byteExact": true
+    },
+    {
+      "path": "reports/development/plan-38-like-denominator-subtraction-batch/evidence/plan38-route-matrix-summary.json",
+      "sha256Before": "568dd3de127f20123407cb12d9e722b8da8132a6c312a8d5501d3060c5e0624f",
+      "sha256After": "568dd3de127f20123407cb12d9e722b8da8132a6c312a8d5501d3060c5e0624f",
+      "byteExact": true
+    },
+    {
+      "path": "reports/development/plan-38-like-denominator-subtraction-batch/evidence/plan38-viewport-measurements.json",
+      "sha256Before": "f6b2cc5d02d4bf9ddc9393eaca83e94ad79d6f6e4e554c576072fb6642f1473a",
+      "sha256After": "f6b2cc5d02d4bf9ddc9393eaca83e94ad79d6f6e4e554c576072fb6642f1473a",
+      "byteExact": true
+    },
+    {
+      "path": "reports/development/plan-38-like-denominator-subtraction-batch/evidence/wide-encounter-1366x768.png",
+      "sha256Before": "79fffe4717b317665510f14d5c2dedb90a59307555ac399a550385ec34c470c7",
+      "sha256After": "79fffe4717b317665510f14d5c2dedb90a59307555ac399a550385ec34c470c7",
+      "byteExact": true
+    },
+    {
+      "path": "reports/development/plan-38-like-denominator-subtraction-batch/evidence/wide-operate-1366x768.png",
+      "sha256Before": "90a5c9071213b74c6a26838f0c53de2533287399cff79a20dfed85ec2becbdc0",
+      "sha256After": "90a5c9071213b74c6a26838f0c53de2533287399cff79a20dfed85ec2becbdc0",
+      "byteExact": true
+    },
+    {
+      "path": "reports/development/plan-38-like-denominator-subtraction-batch/evidence/zoom-operate-1093x614-dpr125.png",
+      "sha256Before": "5b2b17df46f94461c9c6bf96affb370fc808617c0b925827f2b9e71ddeef2fe3",
+      "sha256After": "5b2b17df46f94461c9c6bf96affb370fc808617c0b925827f2b9e71ddeef2fe3",
+      "byteExact": true
+    },
+    {
+      "path": "reports/development/plan-40-unlike-denominator-subtraction-batch/evidence/linear-operate-360x752.png",
+      "sha256Before": "6d04bf893ae7232573bb175497175084c4ee5f308d294cc1309b9dfe2ff3117e",
+      "sha256After": "6d04bf893ae7232573bb175497175084c4ee5f308d294cc1309b9dfe2ff3117e",
+      "byteExact": true
+    },
+    {
+      "path": "reports/development/plan-40-unlike-denominator-subtraction-batch/evidence/plan40-route-matrix-summary.json",
+      "sha256Before": "df0fc363349807db7f3592bd7a0eb22fb89d24abe0d8b0e518116e1b8ec3a320",
+      "sha256After": "df0fc363349807db7f3592bd7a0eb22fb89d24abe0d8b0e518116e1b8ec3a320",
+      "byteExact": true
+    },
+    {
+      "path": "reports/development/plan-40-unlike-denominator-subtraction-batch/evidence/plan40-seed-addition-wording-in-subtraction-summary.json",
+      "sha256Before": "32b3148dfba19cb1c72353237af080f3f148a5490b377e5fe92ca7bb217e5526",
+      "sha256After": "32b3148dfba19cb1c72353237af080f3f148a5490b377e5fe92ca7bb217e5526",
+      "byteExact": true
+    },
+    {
+      "path": "reports/development/plan-40-unlike-denominator-subtraction-batch/evidence/plan40-seed-erased-takeaway-hatch-after-transform-summary.json",
+      "sha256Before": "d278eaf9f3f23e853d1f8162045a02ffea844683cd2551b2aa58a18962615483",
+      "sha256After": "d278eaf9f3f23e853d1f8162045a02ffea844683cd2551b2aa58a18962615483",
+      "byteExact": true
+    },
+    {
+      "path": "reports/development/plan-40-unlike-denominator-subtraction-batch/evidence/plan40-seed-missing-operate-fraction-inputs-summary.json",
+      "sha256Before": "210f85b906a50de728d22b3868b3109961ad6cfaef27b7302eb2033ed88b96ee",
+      "sha256After": "210f85b906a50de728d22b3868b3109961ad6cfaef27b7302eb2033ed88b96ee",
+      "byteExact": true
+    },
+    {
+      "path": "reports/development/plan-40-unlike-denominator-subtraction-batch/evidence/plan40-seed-premature-difference-leak-accessible-summary.json",
+      "sha256Before": "7ede37d82e82f9bd224c3fbbe6b0c76fc90f52aadca6c2f18e1cf41410a9a0b3",
+      "sha256After": "7ede37d82e82f9bd224c3fbbe6b0c76fc90f52aadca6c2f18e1cf41410a9a0b3",
+      "byteExact": true
+    },
+    {
+      "path": "reports/development/plan-40-unlike-denominator-subtraction-batch/evidence/plan40-seed-premature-difference-leak-stacked-summary.json",
+      "sha256Before": "fff300b6932cc93f370669220f86c04e4c071eda4a1703f73c4b9184bcbcebea",
+      "sha256After": "fff300b6932cc93f370669220f86c04e4c071eda4a1703f73c4b9184bcbcebea",
+      "byteExact": true
+    },
+    {
+      "path": "reports/development/plan-40-unlike-denominator-subtraction-batch/evidence/plan40-seed-premature-difference-leak-summary.json",
+      "sha256Before": "0f8cfcfd2bcac864dba2f5c7113bfa2bcc9d77a64ec0d724619139b09b9ed3ff",
+      "sha256After": "0f8cfcfd2bcac864dba2f5c7113bfa2bcc9d77a64ec0d724619139b09b9ed3ff",
+      "byteExact": true
+    },
+    {
+      "path": "reports/development/plan-40-unlike-denominator-subtraction-batch/evidence/plan40-viewport-measurements.json",
+      "sha256Before": "2ef7ce1c1d6047fb31d39210b3c19e8ea0d4874ee29377cdf750a79b63082ffc",
+      "sha256After": "2ef7ce1c1d6047fb31d39210b3c19e8ea0d4874ee29377cdf750a79b63082ffc",
+      "byteExact": true
+    },
+    {
+      "path": "reports/development/plan-35-reusable-task-recipes-and-authored-batch/plan35-route-matrix-summary.json",
+      "sha256Before": "a687198338aa3bae3945472c6d4a65d4fd0a68620743b1d69b80ec35025e6bf6",
+      "sha256After": "a687198338aa3bae3945472c6d4a65d4fd0a68620743b1d69b80ec35025e6bf6",
+      "byteExact": true
+    }
+  ]
+}

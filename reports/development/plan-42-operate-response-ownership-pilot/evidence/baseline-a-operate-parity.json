@@ -1,0 +1,783 @@
+{
+  "label": "baseline-a",
+  "browser": "Chrome via Playwright",
+  "commit": "d7936a71bbbb099fb9394a727bbac1d751e79afa",
+  "productSource": "guarded pre-extraction baseline A d7936a7",
+  "interaction": "registered route prefix plus Playwright pointer clicks and numeric input fills",
+  "captures": [
+    {
+      "name": "fraction-visual-closed-mobile",
+      "sha256": "2cd0e868909a7fedd22273a1866676df9e15781cde0de985fed3bd609c7e5fc5",
+      "bytes": 19774,
+      "observation": {
+        "viewport": {
+          "width": 360,
+          "height": 740
+        },
+        "dpr": 1,
+        "document": {
+          "width": 360,
+          "height": 813
+        },
+        "scroll": {
+          "x": 0,
+          "y": 0
+        },
+        "horizontalOverflowPx": 0,
+        "view": "app-visual-view",
+        "controls": {
+          "x": 63,
+          "y": 428.84,
+          "width": 234,
+          "height": 200.59,
+          "visible": true
+        },
+        "directChildren": [
+          {
+            "tag": "FIELDSET",
+            "id": "",
+            "className": "control-fraction-response-wrapper",
+            "box": {
+              "x": 63,
+              "y": 428.84,
+              "width": 234,
+              "height": 140.59,
+              "visible": true
+            }
+          },
+          {
+            "tag": "BUTTON",
+            "id": "",
+            "className": "fraction-control app-secondary-button",
+            "box": {
+              "x": 63,
+              "y": 585.44,
+              "width": 234,
+              "height": 44,
+              "visible": true
+            }
+          }
+        ],
+        "inputs": [
+          {
+            "id": "operate-fraction-numerator-input",
+            "value": "",
+            "focused": true,
+            "box": {
+              "x": 63,
+              "y": 454.44,
+              "width": 96,
+              "height": 47,
+              "visible": true
+            }
+          },
+          {
+            "id": "operate-fraction-denominator-input",
+            "value": "",
+            "focused": false,
+            "box": {
+              "x": 181.05,
+              "y": 454.44,
+              "width": 96,
+              "height": 47,
+              "visible": true
+            }
+          }
+        ],
+        "helpVisible": false,
+        "recoveryText": null,
+        "activeTag": "INPUT",
+        "activeId": "operate-fraction-numerator-input",
+        "inputMode": [
+          "numeric",
+          "numeric"
+        ]
+      }
+    },
+    {
+      "name": "fraction-visual-help-mobile",
+      "sha256": "5dfaa122ff469688283136edb4dd62f8c221029897cddf0aaee06e8e1c0de96e",
+      "bytes": 19218,
+      "observation": {
+        "viewport": {
+          "width": 360,
+          "height": 740
+        },
+        "dpr": 1,
+        "document": {
+          "width": 360,
+          "height": 894
+        },
+        "scroll": {
+          "x": 0,
+          "y": 0
+        },
+        "horizontalOverflowPx": 0,
+        "view": "app-visual-view",
+        "controls": {
+          "x": 63,
+          "y": 428.84,
+          "width": 234,
+          "height": 281.38,
+          "visible": true
+        },
+        "directChildren": [
+          {
+            "tag": "P",
+            "id": "visual-subtraction-task-help",
+            "className": "active-beat-help",
+            "box": {
+              "x": 63,
+              "y": 428.84,
+              "width": 234,
+              "height": 64.78,
+              "visible": true
+            }
+          },
+          {
+            "tag": "FIELDSET",
+            "id": "",
+            "className": "control-fraction-response-wrapper",
+            "box": {
+              "x": 63,
+              "y": 509.63,
+              "width": 234,
+              "height": 140.59,
+              "visible": true
+            }
+          },
+          {
+            "tag": "BUTTON",
+            "id": "",
+            "className": "fraction-control app-secondary-button",
+            "box": {
+              "x": 63,
+              "y": 666.22,
+              "width": 234,
+              "height": 44,
+              "visible": true
+            }
+          }
+        ],
+        "inputs": [
+          {
+            "id": "operate-fraction-numerator-input",
+            "value": "",
+            "focused": false,
+            "box": {
+              "x": 63,
+              "y": 535.22,
+              "width": 96,
+              "height": 47,
+              "visible": true
+            }
+          },
+          {
+            "id": "operate-fraction-denominator-input",
+            "value": "",
+            "focused": false,
+            "box": {
+              "x": 181.05,
+              "y": 535.22,
+              "width": 96,
+              "height": 47,
+              "visible": true
+            }
+          }
+        ],
+        "helpVisible": true,
+        "recoveryText": null,
+        "activeTag": "BUTTON",
+        "activeId": null,
+        "inputMode": [
+          "numeric",
+          "numeric"
+        ]
+      }
+    },
+    {
+      "name": "fraction-visual-recovery-mobile",
+      "sha256": "8143969bfa2b484d602329821cdd99905ec78b1221400476c19307f95669c2f3",
+      "bytes": 21933,
+      "observation": {
+        "viewport": {
+          "width": 360,
+          "height": 740
+        },
+        "dpr": 1,
+        "document": {
+          "width": 360,
+          "height": 953
+        },
+        "scroll": {
+          "x": 0,
+          "y": 0
+        },
+        "horizontalOverflowPx": 0,
+        "view": "app-visual-view",
+        "controls": {
+          "x": 63,
+          "y": 487.84,
+          "width": 234,
+          "height": 281.38,
+          "visible": true
+        },
+        "directChildren": [
+          {
+            "tag": "P",
+            "id": "visual-subtraction-task-help",
+            "className": "active-beat-help",
+            "box": {
+              "x": 63,
+              "y": 487.84,
+              "width": 234,
+              "height": 64.78,
+              "visible": true
+            }
+          },
+          {
+            "tag": "FIELDSET",
+            "id": "",
+            "className": "control-fraction-response-wrapper",
+            "box": {
+              "x": 63,
+              "y": 568.63,
+              "width": 234,
+              "height": 140.59,
+              "visible": true
+            }
+          },
+          {
+            "tag": "BUTTON",
+            "id": "",
+            "className": "fraction-control app-secondary-button",
+            "box": {
+              "x": 63,
+              "y": 725.22,
+              "width": 234,
+              "height": 44,
+              "visible": true
+            }
+          }
+        ],
+        "inputs": [
+          {
+            "id": "operate-fraction-numerator-input",
+            "value": "98",
+            "focused": true,
+            "box": {
+              "x": 63,
+              "y": 594.22,
+              "width": 96,
+              "height": 47,
+              "visible": true
+            }
+          },
+          {
+            "id": "operate-fraction-denominator-input",
+            "value": "8",
+            "focused": false,
+            "box": {
+              "x": 181.05,
+              "y": 594.22,
+              "width": 96,
+              "height": 47,
+              "visible": true
+            }
+          }
+        ],
+        "helpVisible": true,
+        "recoveryText": "Check the parts left. Try again.",
+        "activeTag": "INPUT",
+        "activeId": "operate-fraction-numerator-input",
+        "inputMode": [
+          "numeric",
+          "numeric"
+        ]
+      }
+    },
+    {
+      "name": "fraction-linear-help-open-after-switch-mobile",
+      "sha256": "2ac91cdff02ab137bc9aa55ce2ef0775dc61c26b537d7730a82584ff98ee3081",
+      "bytes": 24268,
+      "observation": {
+        "viewport": {
+          "width": 360,
+          "height": 740
+        },
+        "dpr": 1,
+        "document": {
+          "width": 360,
+          "height": 974
+        },
+        "scroll": {
+          "x": 0,
+          "y": 0
+        },
+        "horizontalOverflowPx": 0,
+        "view": "app-linear-view",
+        "controls": {
+          "x": 63,
+          "y": 464.36,
+          "width": 234,
+          "height": 326.16,
+          "visible": true
+        },
+        "directChildren": [
+          {
+            "tag": "P",
+            "id": "linear-subtraction-task-help",
+            "className": "active-beat-help",
+            "box": {
+              "x": 63,
+              "y": 464.36,
+              "width": 234,
+              "height": 109.56,
+              "visible": true
+            }
+          },
+          {
+            "tag": "FIELDSET",
+            "id": "",
+            "className": "control-fraction-response-wrapper",
+            "box": {
+              "x": 63,
+              "y": 589.92,
+              "width": 234,
+              "height": 140.59,
+              "visible": true
+            }
+          },
+          {
+            "tag": "BUTTON",
+            "id": "",
+            "className": "fraction-control app-secondary-button",
+            "box": {
+              "x": 63,
+              "y": 746.52,
+              "width": 234,
+              "height": 44,
+              "visible": true
+            }
+          }
+        ],
+        "inputs": [
+          {
+            "id": "linear-operate-fraction-numerator-input",
+            "value": "98",
+            "focused": true,
+            "box": {
+              "x": 63,
+              "y": 615.52,
+              "width": 96,
+              "height": 47,
+              "visible": true
+            }
+          },
+          {
+            "id": "linear-operate-fraction-denominator-input",
+            "value": "8",
+            "focused": false,
+            "box": {
+              "x": 181.05,
+              "y": 615.52,
+              "width": 96,
+              "height": 47,
+              "visible": true
+            }
+          }
+        ],
+        "helpVisible": true,
+        "recoveryText": "Check the parts left. Try again.",
+        "activeTag": "INPUT",
+        "activeId": "linear-operate-fraction-numerator-input",
+        "inputMode": [
+          "numeric",
+          "numeric"
+        ]
+      }
+    },
+    {
+      "name": "fraction-linear-help-closed-mobile",
+      "sha256": "248cbc880221dd921c41df199d1690c092301e55f0d896a4fd7904d2ca8ca24e",
+      "bytes": 21241,
+      "observation": {
+        "viewport": {
+          "width": 360,
+          "height": 740
+        },
+        "dpr": 1,
+        "document": {
+          "width": 360,
+          "height": 849
+        },
+        "scroll": {
+          "x": 0,
+          "y": 109
+        },
+        "horizontalOverflowPx": 0,
+        "view": "app-linear-view",
+        "controls": {
+          "x": 63,
+          "y": 355.36,
+          "width": 234,
+          "height": 200.59,
+          "visible": true
+        },
+        "directChildren": [
+          {
+            "tag": "FIELDSET",
+            "id": "",
+            "className": "control-fraction-response-wrapper",
+            "box": {
+              "x": 63,
+              "y": 355.36,
+              "width": 234,
+              "height": 140.59,
+              "visible": true
+            }
+          },
+          {
+            "tag": "BUTTON",
+            "id": "",
+            "className": "fraction-control app-secondary-button",
+            "box": {
+              "x": 63,
+              "y": 511.95,
+              "width": 234,
+              "height": 44,
+              "visible": true
+            }
+          }
+        ],
+        "inputs": [
+          {
+            "id": "linear-operate-fraction-numerator-input",
+            "value": "98",
+            "focused": false,
+            "box": {
+              "x": 63,
+              "y": 380.95,
+              "width": 96,
+              "height": 47,
+              "visible": true
+            }
+          },
+          {
+            "id": "linear-operate-fraction-denominator-input",
+            "value": "8",
+            "focused": false,
+            "box": {
+              "x": 181.05,
+              "y": 380.95,
+              "width": 96,
+              "height": 47,
+              "visible": true
+            }
+          }
+        ],
+        "helpVisible": false,
+        "recoveryText": "Check the parts left. Try again.",
+        "activeTag": "BUTTON",
+        "activeId": null,
+        "inputMode": [
+          "numeric",
+          "numeric"
+        ]
+      }
+    },
+    {
+      "name": "fraction-linear-help-open-mobile",
+      "sha256": "b5041755632499b1e437a56ab945f98653b5df2f2a50ac676266da16fd263211",
+      "bytes": 21427,
+      "observation": {
+        "viewport": {
+          "width": 360,
+          "height": 740
+        },
+        "dpr": 1,
+        "document": {
+          "width": 360,
+          "height": 974
+        },
+        "scroll": {
+          "x": 0,
+          "y": 109
+        },
+        "horizontalOverflowPx": 0,
+        "view": "app-linear-view",
+        "controls": {
+          "x": 63,
+          "y": 355.36,
+          "width": 234,
+          "height": 326.16,
+          "visible": true
+        },
+        "directChildren": [
+          {
+            "tag": "P",
+            "id": "linear-subtraction-task-help",
+            "className": "active-beat-help",
+            "box": {
+              "x": 63,
+              "y": 355.36,
+              "width": 234,
+              "height": 109.56,
+              "visible": true
+            }
+          },
+          {
+            "tag": "FIELDSET",
+            "id": "",
+            "className": "control-fraction-response-wrapper",
+            "box": {
+              "x": 63,
+              "y": 480.92,
+              "width": 234,
+              "height": 140.59,
+              "visible": true
+            }
+          },
+          {
+            "tag": "BUTTON",
+            "id": "",
+            "className": "fraction-control app-secondary-button",
+            "box": {
+              "x": 63,
+              "y": 637.52,
+              "width": 234,
+              "height": 44,
+              "visible": true
+            }
+          }
+        ],
+        "inputs": [
+          {
+            "id": "linear-operate-fraction-numerator-input",
+            "value": "98",
+            "focused": false,
+            "box": {
+              "x": 63,
+              "y": 506.52,
+              "width": 96,
+              "height": 47,
+              "visible": true
+            }
+          },
+          {
+            "id": "linear-operate-fraction-denominator-input",
+            "value": "8",
+            "focused": false,
+            "box": {
+              "x": 181.05,
+              "y": 506.52,
+              "width": 96,
+              "height": 47,
+              "visible": true
+            }
+          }
+        ],
+        "helpVisible": true,
+        "recoveryText": "Check the parts left. Try again.",
+        "activeTag": "BUTTON",
+        "activeId": null,
+        "inputMode": [
+          "numeric",
+          "numeric"
+        ]
+      }
+    },
+    {
+      "name": "single-visual-closed-desktop",
+      "sha256": "00b92a646bb54f96f5aa028b89935e1c2081630746b437bbae825dc1b0ced465",
+      "bytes": 30454,
+      "observation": {
+        "viewport": {
+          "width": 1366,
+          "height": 768
+        },
+        "dpr": 1,
+        "document": {
+          "width": 1366,
+          "height": 886
+        },
+        "scroll": {
+          "x": 0,
+          "y": 41
+        },
+        "horizontalOverflowPx": 0,
+        "view": "app-visual-view",
+        "controls": {
+          "x": 337,
+          "y": 496.81,
+          "width": 692,
+          "height": 75,
+          "visible": true
+        },
+        "directChildren": [
+          {
+            "tag": "DIV",
+            "id": "",
+            "className": "control-numeric-wrapper",
+            "box": {
+              "x": 337,
+              "y": 496.81,
+              "width": 692,
+              "height": 75,
+              "visible": true
+            }
+          }
+        ],
+        "inputs": [
+          {
+            "id": "operate-sum-input",
+            "value": "",
+            "focused": false,
+            "box": {
+              "x": 337,
+              "y": 524.81,
+              "width": 96,
+              "height": 47,
+              "visible": true
+            }
+          }
+        ],
+        "helpVisible": false,
+        "recoveryText": null,
+        "activeTag": "BODY",
+        "activeId": null,
+        "inputMode": [
+          "numeric"
+        ]
+      }
+    },
+    {
+      "name": "single-linear-closed-desktop",
+      "sha256": "f0e39befbe3b7888bdca3ac5dfb29372c552bebdccdc841f6662efd0685c72a5",
+      "bytes": 30709,
+      "observation": {
+        "viewport": {
+          "width": 1366,
+          "height": 768
+        },
+        "dpr": 1,
+        "document": {
+          "width": 1366,
+          "height": 769
+        },
+        "scroll": {
+          "x": 0,
+          "y": 1
+        },
+        "horizontalOverflowPx": 0,
+        "view": "app-linear-view",
+        "controls": {
+          "x": 337,
+          "y": 418.94,
+          "width": 692,
+          "height": 75,
+          "visible": true
+        },
+        "directChildren": [
+          {
+            "tag": "DIV",
+            "id": "",
+            "className": "control-numeric-wrapper",
+            "box": {
+              "x": 337,
+              "y": 418.94,
+              "width": 692,
+              "height": 75,
+              "visible": true
+            }
+          }
+        ],
+        "inputs": [
+          {
+            "id": "linear-operate-sum-input",
+            "value": "",
+            "focused": false,
+            "box": {
+              "x": 337,
+              "y": 446.94,
+              "width": 96,
+              "height": 47,
+              "visible": true
+            }
+          }
+        ],
+        "helpVisible": false,
+        "recoveryText": null,
+        "activeTag": "BUTTON",
+        "activeId": null,
+        "inputMode": [
+          "numeric"
+        ]
+      }
+    },
+    {
+      "name": "single-linear-recovery-desktop",
+      "sha256": "18d415d8c36977f2641744a21b05d641379c73c7909c9607a1aa72a740614289",
+      "bytes": 33950,
+      "observation": {
+        "viewport": {
+          "width": 1366,
+          "height": 768
+        },
+        "dpr": 1,
+        "document": {
+          "width": 1366,
+          "height": 828
+        },
+        "scroll": {
+          "x": 0,
+          "y": 1
+        },
+        "horizontalOverflowPx": 0,
+        "view": "app-linear-view",
+        "controls": {
+          "x": 337,
+          "y": 477.94,
+          "width": 692,
+          "height": 75,
+          "visible": true
+        },
+        "directChildren": [
+          {
+            "tag": "DIV",
+            "id": "",
+            "className": "control-numeric-wrapper",
+            "box": {
+              "x": 337,
+              "y": 477.94,
+              "width": 692,
+              "height": 75,
+              "visible": true
+            }
+          }
+        ],
+        "inputs": [
+          {
+            "id": "linear-operate-sum-input",
+            "value": "999",
+            "focused": true,
+            "box": {
+              "x": 337,
+              "y": 505.94,
+              "width": 96,
+              "height": 47,
+              "visible": true
+            }
+          }
+        ],
+        "helpVisible": false,
+        "recoveryText": "The denominator stays the same. Add only the top numbers.",
+        "activeTag": "INPUT",
+        "activeId": "linear-operate-sum-input",
+        "inputMode": [
+          "numeric"
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,231 @@
+{
+  "label": "baseline-a",
+  "commit": "d7936a71bbbb099fb9394a727bbac1d751e79afa",
+  "browserChannel": "chrome",
+  "command": "node scripts/dev/run-route-matrix.js --browser-channel chrome --quiet",
+  "routeRows": 81,
+  "expectedBrowserExecutions": 83,
+  "exitCode": 1,
+  "signal": null,
+  "stderr": "  ✗ ROUTE-PROTOTYPE-SUBTRACTION-TAKEAWAY [standard-motion] (5143ms): page.waitForSelector: Timeout 5000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#subtraction-prototype[data-mode=\"takeaway\"]') to be visible\u001b[22m\n\n  ✗ ROUTE-PROTOTYPE-SUBTRACTION-TAKEAWAY [reduced-motion] (5143ms): page.waitForSelector: Timeout 5000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#subtraction-prototype[data-mode=\"takeaway\"]') to be visible\u001b[22m\n\n  ✗ ROUTE-PROTOTYPE-SUBTRACTION-COMPARISON [standard-motion] (5138ms): page.waitForSelector: Timeout 5000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#subtraction-prototype[data-mode=\"comparison\"]') to be visible\u001b[22m\n\n  ✗ ROUTE-PROTOTYPE-SUBTRACTION-COMPARISON [reduced-motion] (5133ms): page.waitForSelector: Timeout 5000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#subtraction-prototype[data-mode=\"comparison\"]') to be visible\u001b[22m\n\n",
+  "screenshots": [],
+  "historicalOutputRestoration": [
+    {
+      "path": "reports/development/plan-34-reusable-full-addition-task-patterns/evidence/plan34-construct-encounter-360x740.png",
+      "sha256Before": "fa209dc94e08e47f8fedc37e9c1d22c0f17e9102574435f291a63f06f05c19fb",
+      "sha256After": "fa209dc94e08e47f8fedc37e9c1d22c0f17e9102574435f291a63f06f05c19fb",
+      "byteExact": true
+    },
+    {
+      "path": "reports/development/plan-34-reusable-full-addition-task-patterns/evidence/plan34-construct-help-360x740.png",
+      "sha256Before": "d6e76c757297305783661ccaef68c9925e244934f1cb2d4e9cbcc19f6dbd807f",
+      "sha256After": "d6e76c757297305783661ccaef68c9925e244934f1cb2d4e9cbcc19f6dbd807f",
+      "byteExact": true
+    },
+    {
+      "path": "reports/development/plan-34-reusable-full-addition-task-patterns/evidence/plan34-construct-resolve-360x740.png",
+      "sha256Before": "7547c87444b5fc12c50bc7a34bb01e0fa2895d0b0c8911fc8aec8649a2599b2e",
+      "sha256After": "7547c87444b5fc12c50bc7a34bb01e0fa2895d0b0c8911fc8aec8649a2599b2e",
+      "byteExact": true
+    },
+    {
+      "path": "reports/development/plan-34-reusable-full-addition-task-patterns/evidence/plan34-inspect-encounter-linear-360x752.png",
+      "sha256Before": "ab7adebe578f4a8ae0b420c6ab2ac304de5ee56b8d8eb7923608deb8548d6f01",
+      "sha256After": "ab7adebe578f4a8ae0b420c6ab2ac304de5ee56b8d8eb7923608deb8548d6f01",
+      "byteExact": true
+    },
+    {
+      "path": "reports/development/plan-34-reusable-full-addition-task-patterns/evidence/plan34-inspect-candidate-linear-360x752.png",
+      "sha256Before": "a7bdbe79fff1022415146b547ca966958ee338a318034a6b4cb08d5daf607e79",
+      "sha256After": "a7bdbe79fff1022415146b547ca966958ee338a318034a6b4cb08d5daf607e79",
+      "byteExact": true
+    },
+    {
+      "path": "reports/development/plan-34-reusable-full-addition-task-patterns/evidence/plan34-inspect-false-keep-linear-360x752.png",
+      "sha256Before": "c2c7fe58ff5e771306a9dd0efc6ff312188d4481160ac5485a840f700e8d3474",
+      "sha256After": "c2c7fe58ff5e771306a9dd0efc6ff312188d4481160ac5485a840f700e8d3474",
+      "byteExact": true
+    },
+    {
+      "path": "reports/development/plan-34-reusable-full-addition-task-patterns/evidence/plan34-inspect-resolve-linear-360x752.png",
+      "sha256Before": "51c078c21122c4fa342a1cb07fbfa89b159b960dd18eceae4aff90a53ded945c",
+      "sha256After": "51c078c21122c4fa342a1cb07fbfa89b159b960dd18eceae4aff90a53ded945c",
+      "byteExact": true
+    },
+    {
+      "path": "reports/development/plan-34-reusable-full-addition-task-patterns/evidence/plan34-construct-visual-wide.png",
+      "sha256Before": "ee37806d65480238332f029cd9408548d4bcd6a4b5429cb0108e0b612e986fd8",
+      "sha256After": "ee37806d65480238332f029cd9408548d4bcd6a4b5429cb0108e0b612e986fd8",
+      "byteExact": true
+    },
+    {
+      "path": "reports/development/plan-34-reusable-full-addition-task-patterns/evidence/plan34-third-identity-wide-encounter.png",
+      "sha256Before": "44ff17e39c8ebdade2b8934c41f366bedc2cfb196767cafd9b9e53a3e1c90d95",
+      "sha256After": "44ff17e39c8ebdade2b8934c41f366bedc2cfb196767cafd9b9e53a3e1c90d95",
+      "byteExact": true
+    },
+    {
+      "path": "reports/development/plan-34-reusable-full-addition-task-patterns/evidence/plan34-third-identity-false-stimulus-wide.png",
+      "sha256Before": "9a647652a9e61a2f62a3153668a400ab75838eb71af4121d310452d670584e71",
+      "sha256After": "9a647652a9e61a2f62a3153668a400ab75838eb71af4121d310452d670584e71",
+      "byteExact": true
+    },
+    {
+      "path": "reports/development/plan-34-reusable-full-addition-task-patterns/evidence/plan34-third-identity-linear-resolve-wide.png",
+      "sha256Before": "376d77f4de4c53c262911a2ef3f644e800c4b63e90b4b7638d0020d575350dea",
+      "sha256After": "376d77f4de4c53c262911a2ef3f644e800c4b63e90b4b7638d0020d575350dea",
+      "byteExact": true
+    },
+    {
+      "path": "reports/development/plan-34-reusable-full-addition-task-patterns/evidence/plan34-inspect-retry-draft.png",
+      "sha256Before": "18bcbd0d7e1cc72c1a399a248f5b19702e132a4ff7a73baba8bc00e983678463",
+      "sha256After": "18bcbd0d7e1cc72c1a399a248f5b19702e132a4ff7a73baba8bc00e983678463",
+      "byteExact": true
+    },
+    {
+      "path": "reports/development/plan-34-reusable-full-addition-task-patterns/evidence/plan34-fresh-reentry-360x740.png",
+      "sha256Before": "fa209dc94e08e47f8fedc37e9c1d22c0f17e9102574435f291a63f06f05c19fb",
+      "sha256After": "fa209dc94e08e47f8fedc37e9c1d22c0f17e9102574435f291a63f06f05c19fb",
+      "byteExact": true
+    },
+    {
+      "path": "reports/development/plan-18-nested-denominator-addition/evidence/route-plan18-production-high-visual-complete-side-choice.png",
+      "sha256Before": "1a4ebddc8f6fad227d77cb50dff2a283dc057213065bd441b3c7f37f4a0e1f30",
+      "sha256After": "1a4ebddc8f6fad227d77cb50dff2a283dc057213065bd441b3c7f37f4a0e1f30",
+      "byteExact": true
+    },
+    {
+      "path": "reports/development/plan-18-nested-denominator-addition/evidence/route-plan18-production-high-visual-complete-conversion-replay.png",
+      "sha256Before": "398448c8edf9c46c5308d653d18642b7c269d4d6dc80b5e42a664c3d2217e06d",
+      "sha256After": "398448c8edf9c46c5308d653d18642b7c269d4d6dc80b5e42a664c3d2217e06d",
+      "byteExact": true
+    },
+    {
+      "path": "reports/development/plan-18-nested-denominator-addition/evidence/route-plan18-production-medium-linear-reduced-side-choice.png",
+      "sha256Before": "4d39856eeeacc9e1e53d1ff912bb80f59bb8a87090a13059204d3fdcc16d547d",
+      "sha256After": "4d39856eeeacc9e1e53d1ff912bb80f59bb8a87090a13059204d3fdcc16d547d",
+      "byteExact": true
+    },
+    {
+      "path": "reports/development/plan-18-nested-denominator-addition/evidence/route-plan18-production-medium-linear-reduced-conversion-replay.png",
+      "sha256Before": "be7b2dc69c4194d4f8ff116796fd38267556fe484e07ab041c9a9cb9ecd4c01f",
+      "sha256After": "be7b2dc69c4194d4f8ff116796fd38267556fe484e07ab041c9a9cb9ecd4c01f",
+      "byteExact": true
+    },
+    {
+      "path": "reports/development/plan-38-like-denominator-subtraction-batch/evidence/encounter-360x740.png",
+      "sha256Before": "47d42a7a6fc810dfb141c18683f5e57c1720b7f65db9a4269bd98b4381c0c074",
+      "sha256After": "47d42a7a6fc810dfb141c18683f5e57c1720b7f65db9a4269bd98b4381c0c074",
+      "byteExact": true
+    },
+    {
+      "path": "reports/development/plan-38-like-denominator-subtraction-batch/evidence/operate-hatch-360x740.png",
+      "sha256Before": "53717b2bcbc2da211a0c61a9ffa1db8d66fe28ab302212e4943c2e4e0858202f",
+      "sha256After": "53717b2bcbc2da211a0c61a9ffa1db8d66fe28ab302212e4943c2e4e0858202f",
+      "byteExact": true
+    },
+    {
+      "path": "reports/development/plan-38-like-denominator-subtraction-batch/evidence/help-360x740.png",
+      "sha256Before": "e51fbcd87f42ade9a2b42e918d396f724a1e4f6f87b7a6fc23c521c997712a02",
+      "sha256After": "e51fbcd87f42ade9a2b42e918d396f724a1e4f6f87b7a6fc23c521c997712a02",
+      "byteExact": true
+    },
+    {
+      "path": "reports/development/plan-38-like-denominator-subtraction-batch/evidence/resolve-360x740.png",
+      "sha256Before": "dfc1758f60ded02d97c241f0db010066b56fe6c536440c68e2124fa48cdfd5fd",
+      "sha256After": "dfc1758f60ded02d97c241f0db010066b56fe6c536440c68e2124fa48cdfd5fd",
+      "byteExact": true
+    },
+    {
+      "path": "reports/development/plan-40-unlike-denominator-subtraction-batch/evidence/operate-hatch-largest-target30-1366x768.png",
+      "sha256Before": "dce6bfbc3f6c3875867b961d6dc0051e259636c821101c824626d4cd7f476975",
+      "sha256After": "dce6bfbc3f6c3875867b961d6dc0051e259636c821101c824626d4cd7f476975",
+      "byteExact": true
+    },
+    {
+      "path": "reports/development/plan-40-unlike-denominator-subtraction-batch/evidence/encounter-360x740.png",
+      "sha256Before": "9c8f248160c92bf71974f14577e020042864d721bef729a9e203c512bdc72cb4",
+      "sha256After": "9c8f248160c92bf71974f14577e020042864d721bef729a9e203c512bdc72cb4",
+      "byteExact": true
+    },
+    {
+      "path": "reports/development/plan-40-unlike-denominator-subtraction-batch/evidence/transform-360x740.png",
+      "sha256Before": "f072b02206610109a1fa693cf409c306d6e30294b0ced6773478463244cc4be1",
+      "sha256After": "f072b02206610109a1fa693cf409c306d6e30294b0ced6773478463244cc4be1",
+      "byteExact": true
+    },
+    {
+      "path": "reports/development/plan-40-unlike-denominator-subtraction-batch/evidence/operate-hatch-360x740.png",
+      "sha256Before": "764fee55b2d0c2eba94591b7a65d12d2ed91292dd15b9f0f507ea3983ca9ae36",
+      "sha256After": "764fee55b2d0c2eba94591b7a65d12d2ed91292dd15b9f0f507ea3983ca9ae36",
+      "byteExact": true
+    },
+    {
+      "path": "reports/development/plan-40-unlike-denominator-subtraction-batch/evidence/help-360x740.png",
+      "sha256Before": "f22266483eab45012817879cf9d08b740d765b5fdbd19688e3b8e1f328119ea8",
+      "sha256After": "f22266483eab45012817879cf9d08b740d765b5fdbd19688e3b8e1f328119ea8",
+      "byteExact": true
+    },
+    {
+      "path": "reports/development/plan-40-unlike-denominator-subtraction-batch/evidence/resolve-360x740.png",
+      "sha256Before": "18eef3b767380ee66bff89bb4dffb3b29c1f5f925aabe897ea3cf609d0fe749e",
+      "sha256After": "18eef3b767380ee66bff89bb4dffb3b29c1f5f925aabe897ea3cf609d0fe749e",
+      "byteExact": true
+    },
+    {
+      "path": "reports/development/plan-40-unlike-denominator-subtraction-batch/evidence/chromebook-1093x614.png",
+      "sha256Before": "5aaf3b435f71b4479ade027fe2ae4c34600f6493cc3b7da996d5871510d9a140",
+      "sha256After": "5aaf3b435f71b4479ade027fe2ae4c34600f6493cc3b7da996d5871510d9a140",
+      "byteExact": true
+    },
+    {
+      "path": "reports/development/plan-34-reusable-full-addition-task-patterns/evidence/plan34-viewport-measurements.json",
+      "sha256Before": "23bfd1a68850ec21191f70269afbfab6d0fbfa6a23d97a485ecbbd02591a0f37",
+      "sha256After": "23bfd1a68850ec21191f70269afbfab6d0fbfa6a23d97a485ecbbd02591a0f37",
+      "byteExact": true
+    },
+    {
+      "path": "reports/development/plan-35-reusable-task-recipes-and-authored-batch/plan35-route-matrix-summary.json",
+      "sha256Before": "a687198338aa3bae3945472c6d4a65d4fd0a68620743b1d69b80ec35025e6bf6",
+      "sha256After": "a687198338aa3bae3945472c6d4a65d4fd0a68620743b1d69b80ec35025e6bf6",
+      "byteExact": true
+    },
+    {
+      "path": "reports/development/plan-38-like-denominator-subtraction-batch/evidence/plan38-viewport-measurements.json",
+      "sha256Before": "f6b2cc5d02d4bf9ddc9393eaca83e94ad79d6f6e4e554c576072fb6642f1473a",
+      "sha256After": "f6b2cc5d02d4bf9ddc9393eaca83e94ad79d6f6e4e554c576072fb6642f1473a",
+      "byteExact": true
+    },
+    {
+      "path": "reports/development/plan-38-like-denominator-subtraction-batch/plan38-route-matrix-summary.json",
+      "wasAbsent": true,
+      "restoredAbsent": true
+    },
+    {
+      "path": "reports/development/plan-40-unlike-denominator-subtraction-batch/evidence/plan40-viewport-measurements.json",
+      "sha256Before": "045c0ae45c30dfdf86ef2242ce926f2334cae3752e30d182d1f2caf5d611f026",
+      "sha256After": "045c0ae45c30dfdf86ef2242ce926f2334cae3752e30d182d1f2caf5d611f026",
+      "byteExact": true
+    },
+    {
+      "path": "reports/development/plan-40-unlike-denominator-subtraction-batch/plan40-route-matrix-summary.json",
+      "wasAbsent": true,
+      "restoredAbsent": true
+    },
+    {
+      "path": "reports/development/plan-18-nested-denominator-addition/evidence/route-matrix-results.json",
+      "sha256Before": "68e7f56d1b9c820cdbe5a83c831527de937deb71c4d5d42a42c8189bcbc4af0b",
+      "sha256After": "68e7f56d1b9c820cdbe5a83c831527de937deb71c4d5d42a42c8189bcbc4af0b",
+      "byteExact": true
+    }
+  ],
+  "stdoutTail": ",\"height\":44,\"visible\":true}}}\nViewport measure ROUTE-PLAN34-THIRD-IDENTITY-WIDE: {\"viewport\":{\"width\":1366,\"height\":768},\"document\":{\"width\":1366,\"height\":768},\"scroll\":{\"x\":0,\"y\":0},\"horizontalOverflow\":false,\"verticalScrollRange\":0,\"elements\":{\"view\":{\"x\":172,\"y\":193.97,\"width\":1022,\"height\":344.56,\"visible\":true},\"prompt\":{\"x\":337,\"y\":360.75,\"width\":692,\"height\":25.19,\"visible\":true},\"controls\":null}}\nViewport measure ROUTE-PLAN38-RESPONSIVE-VIEWPORTS: {\"viewport\":{\"width\":360,\"height\":740},\"document\":{\"width\":360,\"height\":740},\"scroll\":{\"x\":0,\"y\":0},\"horizontalOverflow\":false,\"verticalScrollRange\":0,\"elements\":{\"prompt\":{\"x\":63,\"y\":372.72,\"width\":234,\"height\":25.19,\"visible\":true},\"finishButton\":{\"x\":63,\"y\":428.84,\"width\":234,\"height\":44,\"visible\":true}}}\nViewport measure ROUTE-PLAN40-RESPONSIVE-VIEWPORTS: {\"viewport\":{\"width\":360,\"height\":740},\"document\":{\"width\":360,\"height\":740},\"scroll\":{\"x\":0,\"y\":0},\"horizontalOverflow\":false,\"verticalScrollRange\":0,\"elements\":{\"prompt\":{\"x\":63,\"y\":372.72,\"width\":234,\"height\":25.19,\"visible\":true},\"finishButton\":{\"x\":63,\"y\":428.84,\"width\":234,\"height\":44,\"visible\":true}}}\nViewport measure ROUTE-PLAN40-CHROMEBOOK-SCALED-VIEWPORT: {\"viewport\":{\"width\":1093,\"height\":614},\"document\":{\"width\":1093,\"height\":770},\"scroll\":{\"x\":0,\"y\":33},\"horizontalOverflow\":false,\"verticalScrollRange\":156,\"elements\":{\"prompt\":{\"x\":200.5,\"y\":375.81,\"width\":692,\"height\":25.19,\"visible\":true},\"finishButton\":{\"x\":200.5,\"y\":431.94,\"width\":692,\"height\":44,\"visible\":true}}}\n\nRoute Matrix Run Complete: 79 passed, 4 failed (81 route rows; 83 browser executions).\n",
+  "matrixResult": {
+    "routeRows": 81,
+    "browserExecutions": 83,
+    "passSummary": "79 passed, 4 failed",
+    "intendedSeedFailuresDetected": 0,
+    "failureRouteLines": [],
+    "exitCode": 1
+  }
+}

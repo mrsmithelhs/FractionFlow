@@ -1,0 +1,15 @@
+{
+  "baselineA": {
+    "commit": "d7936a71bbbb099fb9394a727bbac1d751e79afa",
+    "command": "npm run build:learner",
+    "exitCode": 0,
+    "result": "Learner static build succeeded before matched captures."
+  },
+  "productionB": {
+    "sourceCommit": "436e54a0ed58ff8437a22e61815c2c3da098954d",
+    "checkoutHead": "b0137a1c1d0f6df277a36a46dbfd6aff891e471a",
+    "command": "npm run build",
+    "exitCode": 0,
+    "result": "Learner and subtraction prototype static builds succeeded before matched captures and the full Chrome matrix."
+  }
+}
