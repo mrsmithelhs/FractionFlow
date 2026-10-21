@@ -115,9 +115,9 @@ export function createOperateResponse({
     kind,
     isTakeaway,
     commonDenominator,
-    schedulePosition: scene.meaning.task?.schedulePosition ?? null,
-    scheduleEntryId: scene.meaning.task?.scheduleEntryId ?? null,
-    promptId: scene.meaning.task?.promptId ?? null,
+    schedulePosition: scene.meaning.currentTask?.schedulePosition ?? null,
+    scheduleEntryId: scene.meaning.currentTask?.scheduleEntryId ?? null,
+    promptId: scene.meaning.currentTask?.promptId ?? null,
   });
 
   let active = true;
@@ -125,9 +125,10 @@ export function createOperateResponse({
   function currentControls() {
     if (!active) return null;
 
-    if (!controlElement.isConnected
-      || !controlsRoot.isConnected
-      || !activeBeatRoot.isConnected
+    if (!activeBeatRoot.isConnected) return null;
+
+    if (!controlsRoot.isConnected
+      || !controlElement.isConnected
       || !controlsRoot.contains(controlElement)
       || !activeBeatRoot.contains(controlsRoot)) {
       throw new Error('Mounted operate response controls are detached from their current renderer roots.');

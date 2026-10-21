@@ -12,7 +12,7 @@ describe('operate response ownership region', () => {
 
   afterEach(() => teardownMockDOM());
 
-  function mount({ prefix, mode, helpOpen = false }) {
+  function mount({ prefix, mode, helpOpen = false, currentTask = {} }) {
     const activeBeatRoot = doc.createElement('section');
     const controlsRoot = doc.createElement('div');
     activeBeatRoot.appendChild(controlsRoot);
@@ -20,6 +20,7 @@ describe('operate response ownership region', () => {
     const actions = [];
     const scene = {
       meaning: {
+        currentTask,
         takeaway: mode === 'takeaway' ? { removalStatus: 'complete' } : null,
         quantities: { left: { currentForm: { denominator: '5' } } },
         unitRelationship: {
@@ -97,12 +98,39 @@ describe('operate response ownership region', () => {
       region.activeBeatRoot.removeAttribute('hidden');
       expect(region.handle.primaryInput()).toBe(numerator);
 
+      doc.body.removeChild(region.activeBeatRoot);
+      expect(region.handle.readDraft()).toBeNull();
+      expect(region.handle.writeDraft(null)).toBe(false);
+      expect(region.handle.focusPrimary()).toBe(false);
+      doc.body.appendChild(region.activeBeatRoot);
+      expect(region.handle.primaryInput()).toBe(numerator);
+
       denominator.parentNode.removeChild(denominator);
       expect(() => region.handle.readDraft()).toThrow(/missing its current numerator or denominator/);
       region.invalidate();
       expect(region.handle.readDraft()).toBeNull();
       expect(region.handle.writeDraft(null)).toBe(false);
       expect(region.handle.focusPrimary()).toBe(false);
+    });
+
+    it(`rejects same-form drafts from a different scheduled response context for ${prefix}`, () => {
+      const original = mount({
+        prefix,
+        mode: 'takeaway',
+        currentTask: { schedulePosition: 2, scheduleEntryId: 'entry-a', promptId: 'prompt-a' },
+      });
+      original.handle.writeDraft({ ...original.handle.readDraft(), numerator: '3', denominator: '5' });
+      const captured = original.handle.readDraft();
+
+      for (const currentTask of [
+        { schedulePosition: 3, scheduleEntryId: 'entry-b', promptId: 'prompt-a' },
+        { schedulePosition: 2, scheduleEntryId: 'entry-a', promptId: 'prompt-b' },
+      ]) {
+        const other = mount({ prefix, mode: 'takeaway', currentTask });
+        const before = other.handle.readDraft();
+        expect(other.handle.writeDraft(captured)).toBe(false);
+        expect(other.handle.readDraft()).toEqual(before);
+      }
     });
   }
 });
