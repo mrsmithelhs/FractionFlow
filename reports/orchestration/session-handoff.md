@@ -1,152 +1,90 @@
 # FractionFlow orchestration handoff
 
-Active Plan 42 supervised run: Requirement 0 approved at `246f770`; guarded A is
-`d7936a7`, accepted at `6d455e7`. Luna extraction `cad9144` received a Sol-medium
-read-only review; two guard-contract corrections landed at final B `436e54a`.
-Parent passed initial 494 tests and corrected 23 affected tests; child full suite
-496 and both builds pass. Review/evaluation authorization is `5a8dade`.
-Production child `/root/plan42_luna` is paused. Fresh Luna-medium evaluator
-`/root/plan42_eval_a` is running isolated temporary F1 in the baseline checkout
-`node_modules/.plan42-eval-a`; refactored checkout `.plan42-eval-b` exists but no
-worker dispatched yet. Dispatch arms serially with identical committed worker
-brief; never merge F1. Main broad parity/browser report work remains afterward.
-Parent retains gates/advisors/evaluation/status. No Plan 39/push/deploy/closure.
+Updated 2026-10-21. Read current packet board and git status before acting.
+This replaces the accumulated historical pending-state notes; earlier reviews
+remain in their packet report directories and Git history.
 
-Current owner directive (DECISION-048): Plan 41's refined investigation direction
-is adopted and closed. Plan 42 is strengthened and in-progress for owner dispatch;
-no implementer started by this chat. Begin at Requirement 0 and stop before
-source/guards for mechanism approval. Another review stop follows guarded baseline.
-Ownership map, removed app knowledge and separate source/harness cost evidence are
-required; MAINT-42-A/B/C record pilot acceptance, Plan 39 preview-fit and post-line
-deferred ownership reviews. Plan 39 remains draft/blocked. Broader cleanup, Vue,
-production F1, push/deploy remain unauthorized. Older draft/adoption-pending entries
-below are superseded.
+## Current run
 
-Plan 42 drafted at owner request: `plan-42-operate-response-ownership-pilot.md`.
-It consolidates prerequisite guard repair, reviewed baseline A, bounded vanilla
-operate extraction B and isolated F1 maintenance evaluation. Draft only, no source
-dispatch/approval. Plan 41 remains delivered pending adoption; Plan 39 now depends
-on the named draft Plan 42 as the proposed prerequisite. Do not infer source
-authorization from packet creation. Recovery stays shell-owned; F1 is experimental
-only and not production copy. Vue/admission/remount/general framework work deferred.
+The owner directed this chat to execute Plan 42 carefully using supervised Luna
+implementation and occasional Sol read-only low/medium advisors. Plan 42 is
+delivered and technically accepted, awaiting owner acceptance/closure. Mechanism approval: `246f770`; guarded A: `d7936a7`, accepted at
+`6d455e7`; extraction `cad9144`, corrected final source B: `436e54a`.
+No source changes after B. No Plan 39, push or deployment authorized.
 
-Latest Plan 41 disposition: investigation delivered at `ddf081c`, reviewed in
-reports/development/plan-41-phase-boundary-maintainability-investigation/orchestration-review.md.
-Owner directly approved its scope. Recommend one staged source packet: targeted
-guards → baseline → vanilla operate-region slice → evaluation → Plan 39, with
-refined recovery ownership and fair comparison. Owner adoption/source packet
-approval pending; no source work or Plan 39 launch authorized. Plan 41 is delivered,
-not complete; older ready/awaiting-dispatch entries below are historical.
+The parent approved each gate. One Sol-medium read-only review found two guard
+contract issues (wrong scheduled-task property and disconnected-host semantics);
+both were corrected together and independently checked. Full final B unit suite:
+496 tests; both builds passed. Parent passed initial 494 tests and corrected 23
+focused tests, then three current-build Chrome routes with real mounted values
+and pointer/keyboard focus assertions. Physical-device/AT evidence is absent.
 
-Latest owner disposition 2026-10-20: owner accepted current Plan 40 screens and
-directed closure; Plan 40 is COMPLETE with bounded Phase 3 checkpoint recorded in
-reports/development/plan-40-unlike-denominator-subtraction-batch/owner-acceptance.md.
-Plan 41 is READY and checks RUNNABLE, awaiting investigator dispatch and Requirement
-0 scope confirmation. No investigator has been started by this chat. Plan 39 stays
-draft under DECISION-047. All earlier pending-acceptance statements below are
-historical. No refactor, push or deployment authorized.
+Two cold Luna-medium maintenance workers ran serially with the same F1 brief in
+isolated worktrees. Their source patches were NOT merged. Parent verified both,
+archived reports/patches/probes/receipts in Plan 42 evaluation/, and removed the
+evaluation worktrees. Main report archive commit: `b0137a1`. Locality improved
+four render source files to three; total agent efficiency and owner markup
+readability remain inconclusive. Both workers initially overscoped association
+and needed parent correction. See maintenance-evaluation.md, not raw counts alone.
 
-Current disposition 2026-10-20: Plan 40 final consolidated repair (`01eddf6`,
-`da1a453`) is TECHNICALLY ACCEPTED, pending owner screen/agency acceptance and
-explicit bounded Phase 3 checkpoint adoption. Read
-reports/development/plan-40-unlike-denominator-subtraction-batch/orchestration-final-review.md
-and its independent final execution receipt. Parent passed 487 tests, both builds,
-eight Chrome routes, six distinct seeds and all three previously false-passing
-browser probes now reject their defects. Current submitted PNGs show repaired UI.
-No remaining repair is assigned. Earlier repair-pending entries below are history
-superseded by this disposition. Packet stays delivered; no push/deploy authorized.
-On owner acceptance/checkpoint: close Plan 40 and promote Plan 41 to its research
-scope gate. Plan 39 stays draft under DECISION-047.
+Production child /root/plan42_luna completed final evidence: full final B Chrome
+matrix 83/83, five targeted intended-seed failures with no unexpected failures,
+matched A/B captures, parity-evidence.md and ownership-map reconciliation.
+Evidence commit is `5d07ebe`; child progress-last commit is `af0a551`.
+Parent recorded delivered status and passed packet lint and diff checks.
+The baseline learner-only full-matrix attempt failed four prototype routes due
+to the missing prototype build; do not repeat it. Record setup failure honestly.
+Historical outputs were restored byte-for-byte. Baseline A native worktree was
+verified clean and removed after evidence archival. Only main remains registered.
 
-Owner sequence amendment 2026-10-20 (DECISION-047): Plan 41 has been drafted as a
-report-only maintainability investigation. After Plan 40 closure/Phase 3 checkpoint,
-run Plan 41, obtain owner disposition, then complete any separately authorized
-prerequisite refactor before Plan 39. Plan 39 now explicitly depends on Plan 41.
-Neither investigation execution nor refactor/source work has started.
+Parent-owned independent-browser-review.json and orchestration-final-review.md
+record current checks. The latter accepts technical delivery, not owner closure.
+All nine fresh capture measurement objects agree A/B; eight PNG hashes match.
+One desktop visual single-input pair differs in bytes near existing motion but
+shows no visible layout change on parent inspection. Mobile scrolling persists.
+Do not claim all controls fit initial viewport or broad settled-pixel parity.
 
-Updated 2026-10-20 after Plan 40 Repair 01 re-review (`dab636c`, `2fef274`).
-Plan 40 remains delivered, not technically accepted. Read
-reports/development/plan-40-unlike-denominator-subtraction-batch/orchestration-repair01-review.md
-for the consolidated remaining repair assignment and independent execution receipt.
-Fresh builds/486 tests/eight Chrome routes/four seeds passed. Committed screenshots
-still show pre-repair copy; accessible/stacked leakage and partly offscreen controls
-falsely pass their witnesses. No product math defect observed. Plan 39 stays draft.
+## Remaining orchestration steps
 
-Earlier resumption context: Codex reviewed Plan40 delivery
-902cef8. Plan40 is delivered, NOT technically accepted or owner closed. Read
-reports/development/plan-40-unlike-denominator-subtraction-batch/orchestration-stage5-review.md
-for the consolidated repair and separate execution receipt. Plan39 stays draft.
+1. Obtain owner acceptance of the technical refactor and bounded evaluation result;
+   do not close Plan 42 automatically. No need another full suite absent changes.
+2. On acceptance, record MAINT-42-A disposition and close with written resolution.
+3. Recommend Plan 39 for a separate owner dispatch, beginning with its mechanism
+   gate and MAINT-42-B preview-fit assessment. Do not start it automatically.
 
-Parent independently passed481 tests, both builds, all8 new Chrome routes and4
-seed runs, sampled actual draft values across views, and deep-compared all24 frozen
-v4/v5 states. Old captures/receipts were restored byte-for-byte after execution.
-Required repair: real multi-viewport containment/DPR receipts, value/reset/help
-assertions, numeric/accessibility leak sensitivity, holdout render coverage,
-full-state frozen-oracle assertions and honest delivery/phase-exit reporting.
-Visible long response labels and redundant Difference milestone also merit the
-bounded copy refinement recorded in the review. No product source was changed.
-No implementer repair assignment has yet been dispatched by the resumed chat.
+## Sequence and boundaries
 
-## Assignment and authority
+Plan 40 is complete: owner accepted current screens and bounded Phase 3 checkpoint.
+Plan 41 is complete: refined investigation adopted under DECISION-048.
+Plan 42 precedes Plan 39. Plan 39 remains draft; no automatic launch on technical
+refactor delivery. Plan 23 local console is still a separate draft.
 
-The owner owns pedagogical/policy decisions, sequencing choices, rendered-page/agency
-acceptance, and deployment approval. The orchestrator owns mechanism review, bounded
-repair direction, independent verification, packet status, and acceptance records.
-Nothing in this handoff authorizes pushing to GitHub, deploying to Pages, or
-changing owner-selected packet sequencing without an explicit owner instruction.
+MAINT-42-A: pilot ownership/parity/evaluation disposition at acceptance.
+MAINT-42-B: assess unconfirmed preview fit at Plan 39 Requirement 0; no forced
+fraction-shaped draft contract. MAINT-42-C: after Plan 39 technical delivery,
+before closure, reassess decide/transform ownership and duplicated remount tokens;
+revisit admission/shared harness only on actual demonstrated cost. Vue/template
+readability remains unresolved, not automatically funded or rejected.
 
-Start with `AGENTS.md`, `docs/agent-starting-prompts/orchestrator-prompt.md`,
-`docs/development/README.md`, `docs/decision-log.md`, and `docs/development/phase-3-follow-up-obligations.md`.
-Follow actual provider capabilities and `advisor-capable-providers.json`. For any
-Codex work, Luna bounded children and Sol read-only low/medium review are authorized;
-no Astra without an explicit owner exception, no implementation-child fan-out, and
-no silent substitution.
+Read docs/development/phase-3-follow-up-obligations.md for preserved pedagogical
+and scale obligations. Number-line design was adopted in Plan 37/DECISION-046;
+Plan 39 has separate mechanism and staged gates. Phase 4 magnitude comparison
+research/design notes are in docs/development/phase-4-magnitude-comparison-notes.md;
+they do not authorize implementation.
 
-## Live boundary and completed work
+## Working discipline
 
-- **Recently completed packets (`2026-10-18`):**
-  - **`plan-37` (`complete`, `DECISION-046`):** First Number-Line Task and Bar-to-Line Bridge Design (`835fb58`).
-  - **`plan-38` (`complete`, `DECISION-045` batch implementation):** Like-Denominator Takeaway Subtraction Batch (`d140bd8`, witness/viewport verification tightened at `7ffb64b`).
-- **Active packet in flight (`2026-10-19`):**
-  - **`plan-40` (`delivered`, repair pending):** Unlike-Denominator Subtraction Recipes and Curated Batch (`docs/development/plan-40-unlike-denominator-subtraction-batch.md`).
-    - **Requirement 0 (Approved):** Proposal, admission probe, and `tests/fixtures/plan38-v5-replay-oracles.json` committed by implementer at `81014f3`; orchestrator review & Guardrails A–D recorded in `reports/development/plan-40-unlike-denominator-subtraction-batch/requirement-0-review.md` (`8a2ef30`).
-    - **Checkpoint 1 / Stages 1–2 (Approved):** 9 curated items (`unlike-subtraction-vetted-set@1`) + 2 data-only holdouts (`plan40-data-only-holdouts@1`), 17-key `taskContext` validator, `phase-3-reusable-subtraction-recipes@1` episode/schedule, Option B direct transition from `transform` to `operate` (`subtractionRemoval: 'marked'`), `scene.meaning.takeaway` (`null` during `encounter`/`decide`/`transform`, active at `operate`/`resolve`), `fractionflow.episode-replay/v6`, and 23 pure unit/replay tests committed at `4eba2d2`; orchestrator review & Stage 3–4 wiring checklist recorded in `reports/development/plan-40-unlike-denominator-subtraction-batch/checkpoint-1-review.md` (`953de43`).
-    - **Checkpoint 2 / Stages 3–4 (Approved):** Visual & linear renderer updates (`src/render/beat-container.js`, `src/render/linear-path.js`), `PLAN40_UNLIKE_SUBTRACTION_PRACTICE_TYPE` (`id: 'unlike-denominator-subtraction'`, `"Subtract fractions with different denominators"`) in `PLAN40_PRACTICE_TYPES_V9`, all 7 `src/app/app.js` integration seams, and 23 render/app/leakage tests (`475/475` total repo unit tests passing) committed at `4ceb507`; orchestrator review & Stage 5 guidance recorded in `reports/development/plan-40-unlike-denominator-subtraction-batch/checkpoint-2-review.md` (`d41bf37`).
-    - **Stage 5 / Requirement 4 (Reported at902cef8; independently reviewed):** Original assignment followed `checkpoint-2-review.md` (`d41bf37`). The following requirements remain acceptance references; see the newer review above for unmet evidence:
-      1. Register `plan40-unlike-subtraction` in `tests/routes/plan34-context-map.json`, append `ROUTE-PLAN40-*` routes to `tests/routes/route-matrix.json` (preserving all existing 73 route rows / 75 executions), and add `tests/routes-plan40-subtraction-recipes.test.js`.
-      2. Implement the 4 `--plan40-witness-seed <seed>` falsification seeds in `scripts/dev/run-route-matrix.js` (`erased-takeaway-hatch-after-transform`, `addition-wording-in-subtraction`, `premature-difference-leak`, `missing-operate-fraction-inputs`) under the strict non-tautology rule (each seed mutates live DOM/CSS before the route assertion and is caught by the standard route assertion).
-      3. Capture representative screenshots, `plan40-viewport-measurements.json` (`withinViewport: true`, `horizontalOverflowPx === 0`), and `plan40-route-matrix-summary.json` under `reports/development/plan-40-unlike-denominator-subtraction-batch/evidence/`, and restore any touched historical evidence files (`plan-18`, `plan-34`, `plan-35`, `plan-38`, `docs/routes/evidence/`).
-      4. Author `reports/development/plan-40-unlike-denominator-subtraction-batch/progress.md` including the **Roadmap §31 / §90 Phase 3 Exit Assessment** section.
-- **Draft packets on the board:**
-  - **`plan-41` (`draft`, blocked on `plan-40`):** Phase-boundary maintainability investigation; report-only, then owner disposition and a separate source packet if justified.
-  - **`plan-39` (`draft`, blocked on `plan-40` and `plan-41`):** First Number-Line Locate and Bar-to-Line Bridge Batch; follows the adopted investigation/refactor disposition (DECISION-047).
-  - **`plan-23` (`draft`):** Local Development Console (`npm run dev:console`).
-- **Phase 4 Exploratory Design & Review Records (`2026-10-19`):**
-  - Owner and orchestrator explored Phase 4 fraction magnitude comparison (`<`, `=`, `>`) and its bridge to comparison/difference subtraction (`|a - b|`).
-  - Independent reviews were recorded in `reports/orchestration/magnitude-comparison-review-claude.md` (`f383a96`) and `reports/orchestration/magnitude-comparison-review-codex.md` (`7927636`).
-  - The synthesized, review-hardened Phase 4 planning notes are recorded in `docs/development/phase-4-magnitude-comparison-notes.md` (`953de43`) and linked from `docs/development/phase-3-follow-up-obligations.md`.
+Read AGENTS.md and orchestrator starting prompt. Keep math -> instructional state
+-> presentation; exact math/content/interaction/replay are untouched by Plan 42.
+Luna bounded children are authorized; Sol advisors read-only low/medium; no Astra,
+child fan-out, model substitution or durable implementer chat without authority.
+One source writer at a time, cold self-contained briefs, parent-held gates.
+Never confuse tests passing with behavior, instruction-read-only review with
+independent execution, temporary F1 screens with product, or local acceptance
+with deployment. Do not infer timing/billing from cumulative agent counters.
 
-## Immediate next steps after resumed review
-
-1. **Plan40 is already delivered.** Use the single consolidated repair in
-   orchestration-stage5-review.md; keep source/math changes limited to any actual
-   defect reproduced by stronger assertions. Implementer must not set completion.
-2. **Verify Stage 5 artifacts against the objective:**
-   - Inspect `git status` and the implementer's commit to ensure no historical evidence files (`docs/routes/evidence/`, `plan-18`, `plan-34`, `plan-35`, `plan-38`) were left modified.
-   - Verify `scripts/dev/run-route-matrix.js` to confirm all 4 `--plan40-witness-seed` seeds are non-tautological DOM/CSS mutations caught by real route assertions and that `plan40WitnessSeed` enforces `seedDetected === 1 && failed === 0 && routeResults.length === 1`.
-   - Inspect `reports/development/plan-40-unlike-denominator-subtraction-batch/evidence/plan40-viewport-measurements.json`, `plan40-route-matrix-summary.json`, and the captured screenshots (`360x740`, `360x752`, `1366x768`, `1093x614 @ DPR 1.25`) to confirm `withinViewport: true` and `horizontalOverflowPx === 0`.
-   - Correct progress.md's unsupported accessibility, replay and broad Phase3
-     clearance claims. Separate accepted proper-fraction scope from retained
-     obligations and unmeasured learner/physical-device/AT outcomes.
-3. **Owner Acceptance & Option A Transition to `plan-39`:**
-   - Present the Stage 5 verification, representative screenshots, and Roadmap §31 / §90 Phase 3 exit summary to the owner.
-   - Upon owner acceptance and explicit checkpoint disposition, close Plan 40.
-     Promote Plan 41 for investigation next. Do not promote Plan 39 automatically:
-     first obtain Plan 41 disposition and complete any adopted prerequisite
-     refactor under its own approved packet (DECISION-047).
-
-## Review discipline reminders
-
-- **Preserve owner decision continuity:** Never silently reinterpret an owner-selected sequence across turns; if proposing a change of order, state the prior decision explicitly and ask the owner to choose.
-- **Verify against artifacts and exact witnesses:** Ensure viewport scripts assert `withinViewport: true` (not just positive box dimensions) and falsification seeds mutate the live mechanism under test rather than throwing synthetically inside an assertion helper.
-- **Restore historical evidence touched by full route runs:** Running `node scripts/dev/run-route-matrix.js` rewrites screenshot/measurement files for earlier routes (`plan-18`, `plan-34`, `plan-35`, `plan-38`). Always verify untouched historical evidence directories are clean before committing.
+Git metadata may require narrow elevation. Stage explicit owned paths, never
+remove an index lock or alter ACLs. Historical route runs generate old report
+images/JSON: snapshot and restore only known generated outputs. Do not blanket
+checkout reports or kill unrelated processes. Machine-local companion locations
+belong in ignored .env, not committed documents.

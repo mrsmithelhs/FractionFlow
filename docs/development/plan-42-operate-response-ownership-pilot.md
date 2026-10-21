@@ -1,7 +1,7 @@
 ---
 id: plan-42
 title: Operate Response Ownership Pilot and Maintenance Evaluation
-status: in-progress
+status: delivered
 depends_on: [plan-40, plan-41]
 gate: "Owner adopted refined Plan 41 direction and strengthened packet (DECISION-048). Requirement 0: approve exact region ownership, handles, guard repairs and isolated evaluation mechanism before source. Review repaired baseline before extraction. Technical parity, ownership/removed-knowledge checks, maintenance evaluation and owner acceptance precede closure; no Plan 39 activation or deployment."
 summary: >-

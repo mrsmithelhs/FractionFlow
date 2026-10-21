@@ -1,0 +1,13 @@
+{
+  "date": "2026-10-21",
+  "sourceBaseline": "436e54a0ed58ff8437a22e61815c2c3da098954d",
+  "reviewer": "parent orchestrator",
+  "browser": "headless Chrome through Playwright",
+  "method": "Existing createStaticServer, executeAction and verifyAssertions against the current learner build; no screenshot or historical evidence writes",
+  "results": [
+    { "route": "ROUTE-PLAN20-LIKE-ADDITION-VISUAL", "actions": 28, "passed": true },
+    { "route": "ROUTE-PLAN20-LIKE-ADDITION-LINEAR", "actions": 26, "passed": true, "context": "360px, touch enabled and reduced-motion preference" },
+    { "route": "ROUTE-PLAN38-VIEW-TOGGLE-DRAFT-PRESERVATION", "actions": 14, "passed": true }
+  ],
+  "limits": "Reused existing route assertions, including mounted raw values and deliberate pointer/keyboard focus assertions. This is an independent sampled execution, not an independently designed exhaustive test or physical-device/assistive-technology evidence. One initial attempt used a nonexistent linear-touch route id and skipped it; the actual linear route was then executed successfully."
+}
