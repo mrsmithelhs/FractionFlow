@@ -1,0 +1,27 @@
+{
+  "status": "historical-probe-authoring-failure",
+  "classification": "the probe's post-return success path used the prior high-support candidate index in medium support; no product defect was indicated by this attempt",
+  "supersededBy": "agency-journey-results.json, the final passing mounted journey",
+  "currentStep": "submit wrong endpoint and exercise recovery/help",
+  "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\n0 !== 1\n\n    at file:///C:/AI/FractionFlow/reports/development/plan-39-number-line-locate-and-bar-bridge-batch/evidence/checkpoint-2/repair-01/agency-journey-probe.mjs:128:10",
+  "diagnostics": {
+    "url": "http://127.0.0.1:59036/FractionFlow/#bar-to-line-same-amount",
+    "viewport": {
+      "innerWidth": 360,
+      "innerHeight": 740,
+      "devicePixelRatio": 1
+    },
+    "visibleView": "visual",
+    "prompt": "Place the same amount on the number line.",
+    "visualCandidateId": null,
+    "linearCheckedCandidateId": null,
+    "feedback": [
+      "Check which side of one half this amount is on.",
+      "Check which side of one half this amount is on."
+    ],
+    "acceptedPointCount": 0,
+    "activeElement": "<button type=\"button\" class=\"fraction-control plan39-stepper-next plan39-stepper-move\">Move right →</button>",
+    "scrollY": 0
+  },
+  "browserErrors": []
+}

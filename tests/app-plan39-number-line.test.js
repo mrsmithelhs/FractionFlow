@@ -54,6 +54,33 @@ describe('Plan 39 app wiring', () => {
     app.destroy();
   });
 
+  it('moves focus to the remaining stepper control when a move reaches either endpoint', () => {
+    const document = setupMockDOM();
+    const root = document.createElement('div');
+    document.body.appendChild(root);
+    const app = createFractionFlowApp({ root, presentationMode: 'instant-test' }).mount();
+    root.querySelector('[data-practice-type="bar-to-line-same-amount"]').click();
+    root.querySelector('.app-visual-view .plan39-continue').click();
+    const previous = root.querySelector('.app-visual-view .plan39-stepper-previous');
+    const next = root.querySelector('.app-visual-view .plan39-stepper-next');
+    expect(root.querySelector('.app-visual-view .plan39-stepper-status').getAttribute('data-candidate-id')).toBeNull();
+    expect(document.activeElement).toBe(next);
+
+    next.click();
+    next.click();
+    next.click();
+    expect(next.disabled).toBe(true);
+    expect(document.activeElement).toBe(previous);
+    expect(app.getState().beat).toBe('locate');
+
+    previous.click();
+    previous.click();
+    expect(previous.disabled).toBe(true);
+    expect(document.activeElement).toBe(next);
+    expect(app.getState().beat).toBe('locate');
+    app.destroy();
+  });
+
   it('keeps help and recovery scoped to the active view, then clears both on reset and return', () => {
     const document = setupMockDOM();
     const root = document.createElement('div');

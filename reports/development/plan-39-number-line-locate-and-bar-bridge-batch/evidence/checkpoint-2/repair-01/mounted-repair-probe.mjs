@@ -1,6 +1,7 @@
 import assert from 'node:assert/strict';
 import { chromium } from 'playwright';
 import { createRequire } from 'node:module';
+import { writeFile } from 'node:fs/promises';
 
 const require = createRequire(import.meta.url);
 const { createStaticServer } = require('../../../../../../scripts/dev/run-route-matrix.js');
@@ -10,8 +11,10 @@ const { port } = server.address();
 const browser = await chromium.launch({ channel: 'chrome', headless: true });
 const page = await browser.newPage({ viewport: { width: 360, height: 740 }, deviceScaleFactor: 1 });
 const errors = [];
+let currentStep = 'startup';
 page.on('pageerror', (error) => errors.push(error.message));
 try {
+  currentStep = 'open locate and measure controls';
   await page.goto(`http://127.0.0.1:${port}/FractionFlow/#bar-to-line-same-amount`, { waitUntil: 'domcontentloaded' });
   await page.locator('.app-visual-view .plan39-number-line').waitFor();
   await page.locator('.app-visual-view .plan39-continue').click();
@@ -68,12 +71,14 @@ try {
     assert.equal(await page.locator('.app-visual-view .plan39-accepted-point').count(), 0, 'selection alone must not accept a point');
     assert.equal((await page.locator('.app-visual-view .active-beat-prompt').textContent()).trim(), 'Place the same amount on the number line.');
   };
+  currentStep = 'failing-first early Check assertion';
   await page.evaluate(() => { const button = document.querySelector('.app-visual-view .plan39-check-position'); button.disabled = false; });
   try {
     assert.equal(await check.isDisabled(), true, 'Check must stay disabled until learner selection');
   } catch (error) { failingFirst.push({ probe: 'bypass-check-state', rejected: true, message: error.message }); }
   assert.equal(failingFirst.length, 1, 'the normal preselection assertion must reject bypassed Check state');
   await page.evaluate(() => { const button = document.querySelector('.app-visual-view .plan39-check-position'); button.disabled = true; });
+  currentStep = 'failing-first selection auto-submit assertion';
   await page.evaluate(() => {
     const next = document.querySelector('.app-visual-view .plan39-stepper-next');
     const checkButton = document.querySelector('.app-visual-view .plan39-check-position');
@@ -94,11 +99,13 @@ try {
   assert.equal(await page.locator('.app-visual-view .plan39-feedback').count(), 0, 'preview must not grade');
   await locate.screenshot({ path: 'reports/development/plan-39-number-line-locate-and-bar-bridge-batch/evidence/checkpoint-2/repair-01/locate-360.png' });
   const selected = await preview.getAttribute('data-candidate-id');
+  currentStep = 'failing-first undersized stepper target assertion';
   await page.evaluate(() => { const button = document.querySelector('.app-visual-view .plan39-stepper-next'); button.style.transform = 'scale(0.5)'; });
   try {
     await assertControlContract();
   } catch (error) { failingFirst.push({ probe: 'undersized-stepper-target', rejected: true, message: error.message }); }
   assert.equal(failingFirst.length, 3, 'normal assertions must reject early Check, selection auto-submit, and undersized target seeds');
+  currentStep = 'clean preview and explicit Check';
   await page.evaluate(() => { const button = document.querySelector('.app-visual-view .plan39-stepper-next'); button.style.transform = ''; });
   await assertControlContract();
   await page.locator('.app-visual-view .plan39-check-position').click();
@@ -121,10 +128,28 @@ try {
   assert(Math.abs(connector.lineSource.x - connector.shadeTarget.x) <= 1 && Math.abs(connector.lineSource.y - connector.shadeTarget.y) <= 1, 'connector must begin at the bar shaded edge');
   assert(Math.abs(connector.lineTarget.x - connector.acceptedPoint.x) <= 1 && Math.abs(connector.lineTarget.y - connector.acceptedPoint.y) <= 1, `connector must end at the accepted point: ${JSON.stringify(connector)}`);
   assert(Math.abs(connector.shadeTarget.x - connector.acceptedPoint.x) <= 1, 'source shade end and accepted point must align at this exact half task');
+  currentStep = 'complete resolved episode';
   await page.locator('.app-visual-view .plan39-finish').click();
   assert.equal(await page.locator('.app-visual-view .plan39-finish').count(), 0, 'resolved episodes must not retain spent Finish control');
   assert(errors.length === 0, `browser page errors: ${errors.join('; ')}`);
   console.log(JSON.stringify({ viewport: page.viewportSize(), selected, measured, connector, failingFirst, browserErrors: errors }, null, 2));
+} catch (error) {
+  let diagnostics = null;
+  try {
+    diagnostics = await page.evaluate(() => ({
+      url: location.href,
+      viewport: { innerWidth, innerHeight, devicePixelRatio },
+      prompt: document.querySelector('.app-visual-view .active-beat-prompt')?.textContent ?? null,
+      candidateId: document.querySelector('.app-visual-view .plan39-stepper-status')?.getAttribute('data-candidate-id') ?? null,
+      checkDisabled: document.querySelector('.app-visual-view .plan39-check-position')?.disabled ?? null,
+      feedback: document.querySelector('.app-visual-view .plan39-feedback')?.textContent ?? null,
+      acceptedPointCount: document.querySelectorAll('.app-visual-view .plan39-accepted-point').length,
+      activeElement: document.activeElement?.outerHTML?.slice(0, 500) ?? null,
+      scrollY,
+    }));
+  } catch (diagnosticError) { diagnostics = { diagnosticError: diagnosticError.message }; }
+  await writeFile('reports/development/plan-39-number-line-locate-and-bar-bridge-batch/evidence/checkpoint-2/repair-01/mounted-repair-failure.json', `${JSON.stringify({ status: 'failed', currentStep, error: error.stack ?? error.message, diagnostics, browserErrors: errors }, null, 2)}\n`);
+  throw error;
 } finally {
   await browser.close();
   await new Promise((resolve) => server.close(resolve));

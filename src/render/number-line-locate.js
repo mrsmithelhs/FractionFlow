@@ -226,10 +226,12 @@ function makeVisualStepper(scene, strings, { previewHandle, onPreviewChange, key
   previous.addEventListener('click', () => {
     const targetIndex = selectedIndex < 0 ? candidates.length - 1 : selectedIndex - 1;
     updateSelection(targetIndex);
+    if (previous.disabled) next.focus();
   });
   next.addEventListener('click', () => {
     const targetIndex = selectedIndex < 0 ? 0 : selectedIndex + 1;
     updateSelection(targetIndex);
+    if (next.disabled) previous.focus();
   });
   if (selectedIndex >= 0) updateSelection(selectedIndex, false);
   else {

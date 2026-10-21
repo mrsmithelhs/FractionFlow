@@ -1,0 +1,19 @@
+{
+  "status": "historical-failing-observation",
+  "scenario": "visual A-to-B preview, switch to linear and back, then move to distinct endpoint C before Check",
+  "viewport": {
+    "innerWidth": 360,
+    "innerHeight": 740,
+    "devicePixelRatio": 1
+  },
+  "failedAssertion": "visual: focus must remain on a connected, meaningful control after remount",
+  "observedState": {
+    "candidateId": "partition-2-of-2",
+    "activeElement": "body",
+    "feedback": [],
+    "acceptedPointCount": 0,
+    "browserErrors": []
+  },
+  "classification": "reproduced stepper endpoint focus defect; repaired by moving focus to the still-enabled opposite movement control",
+  "supersededBy": "the endpoint focus regression in tests/app-plan39-number-line.test.js and the passing agency-journey-results.json"
+}

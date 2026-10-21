@@ -1,0 +1,27 @@
+{
+  "status": "passed",
+  "viewport": {
+    "width": 360,
+    "height": 740
+  },
+  "initialFocus": true,
+  "candidateJourney": {
+    "a": "candidate-a",
+    "b": "candidate-b",
+    "c": "candidate-c",
+    "remounts": [
+      "visual-to-linear",
+      "linear-to-visual"
+    ],
+    "submittedViaRealCheck": true,
+    "noGradeBeforeCheck": true,
+    "meaningfulFocusAfterRemount": true
+  },
+  "wrongRecoveryRepeat": true,
+  "helpIds": [
+    "visual-plan39-help",
+    "linear-plan39-help"
+  ],
+  "resetReturnNext": true,
+  "errors": []
+}

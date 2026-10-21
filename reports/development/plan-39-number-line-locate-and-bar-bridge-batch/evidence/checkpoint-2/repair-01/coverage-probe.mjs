@@ -11,6 +11,8 @@ await new Promise((resolve) => server.listen(0, '127.0.0.1', resolve));
 const { port } = server.address();
 const browser = await chromium.launch({ channel: 'chrome', headless: true });
 const failures = [];
+const results = [];
+let currentScenario = 'startup';
 const sameAmount = (a, b) => BigInt(a.numerator) * BigInt(b.denominator) === BigInt(b.numerator) * BigInt(a.denominator);
 
 async function launchScenario({ width, height, dpr, support, targetIndex }) {
@@ -154,14 +156,26 @@ try {
     { support: 'medium', targetIndex: 6 },
     { support: 'medium', targetIndex: 7 },
   ];
-  const results = [];
   for (const target of targets) for (const viewport of [{ width: 360, height: 740, dpr: 1 }, { width: 1093, height: 614, dpr: 1.25 }]) {
+    currentScenario = `${target.support}-record-${target.targetIndex + 1}-${viewport.width}x${viewport.height}-dpr${viewport.dpr}`;
     results.push(await launchScenario({ ...target, ...viewport }));
   }
   assert.equal(failures.length, 0, `browser page errors: ${failures.join('; ')}`);
   const report = { results, failures, browser: 'Chrome channel, headless', reducedMotion: true };
   await writeFile('reports/development/plan-39-number-line-locate-and-bar-bridge-batch/evidence/checkpoint-2/repair-01/coverage-results.json', `${JSON.stringify(report, null, 2)}\n`);
   console.log(JSON.stringify({ scenarios: results.map(({ scenario }) => scenario), failures }, null, 2));
+} catch (error) {
+  const failureReport = {
+    status: 'failed',
+    currentScenario,
+    error: error.stack ?? error.message,
+    completedResults: results,
+    browserErrors: failures,
+    browser: 'Chrome channel, headless',
+    reducedMotion: true,
+  };
+  await writeFile('reports/development/plan-39-number-line-locate-and-bar-bridge-batch/evidence/checkpoint-2/repair-01/coverage-failure.json', `${JSON.stringify(failureReport, null, 2)}\n`);
+  throw error;
 } finally {
   await browser.close();
   await new Promise((resolve) => server.close(resolve));

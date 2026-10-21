@@ -26,9 +26,12 @@ does not duplicate the source fraction or repeat an already completed request.
 
 ## Verification performed on final source
 
-- `npm test`: 56 test files, 504 tests passed.
+- `npm test`: 56 test files, 505 tests passed after the endpoint-focus regression
+  was added. The focused Plan 39 pair also passed: 2 files, 9 tests.
 - `npm run build:learner`: passed; Vite emitted the learner production bundle.
 - `npm run build:prototype`: passed; Vite emitted the subtraction prototype.
+  The first attempt returned the previously observed Windows `EPERM` while
+  creating its output folder; the immediate standalone retry passed.
 - `mounted-repair-probe.mjs`: passed in mounted Chrome at 360×740, DPR 1. It
   measured prompt and full controls in one viewport at scrollY 0; the source
   bar and axis endpoints both measured x=41..319; the half shade edge, connector
@@ -45,11 +48,31 @@ does not duplicate the source fraction or repeat an already completed request.
   line/bar endpoint alignment, readable distinct candidate descriptions,
   keyboard radio navigation, and no spent Finish after completion. It also
   checks source/accepted connector geometry, including medium 5/6.
-- `agency-journey-probe.mjs`: passed mounted Continue focus; wrong-endpoint
-  recovery and connected focus; help open/close/reopen and correct
-  `aria-controls` targets through view changes; repeated recovery; retry reset;
-  return/re-entry reset; accepted Check and Next to a fresh encounter. No browser
-  errors were observed.
+- `agency-journey-probe.mjs`: passed a mounted A→B→visual-to-linear→linear-to-
+  visual→C→real Check journey. Each candidate is distinct; the pending B choice
+  is restored in both remounted views, focus remains on the connected view
+  toggle during those remounts, and there is no feedback or accepted point
+  before Check. C is accepted only when the real Check control is activated.
+  The same run passed Continue focus; wrong-endpoint recovery and connected
+  focus; help open/close/reopen and correct `aria-controls` targets through view
+  changes; repeated recovery; retry reset; return/re-entry reset; and Next to a
+  fresh encounter. No browser errors were observed. The machine-readable latest
+  successful result is `evidence/checkpoint-2/repair-01/agency-journey-results.json`.
+
+The new A→B→view-switch→C path exposed one real focus defect at a stepper
+endpoint: after the next button moved to the final candidate and became
+disabled, browser focus fell to `body`. The visual stepper now moves focus to
+the still-enabled opposite control when either movement reaches an endpoint.
+The original mounted observation is preserved in
+`evidence/checkpoint-2/repair-01/agency-journey-endpoint-focus-failure.json`;
+the focused app test covers both endpoint directions, and the final mounted
+journey verifies the lower-endpoint handoff. The
+initial endpoint screenshot state remains unselected; this change affects focus
+only after a move reaches a boundary. An intermediate revision of the probe
+also failed after re-entry because it reused the high-support answer index in a
+medium-support path; that probe-authoring failure is preserved separately in
+`evidence/checkpoint-2/repair-01/agency-journey-failure.json` and is superseded
+by `agency-journey-results.json`. It did not indicate a product defect.
 
 The report-local probes, their JSON results, and representative screenshots are
 in `evidence/checkpoint-2/repair-01/`. This includes actual viewport captures
@@ -60,8 +83,13 @@ evidence, not assistive-technology or physical-device verification.
 
 The broad combined `npm run build` command had previously encountered a
 Windows `EPERM` while creating the prototype output directory in the same
-combined invocation. Each required build target was rerun independently on
-the final source and passed as recorded above. No dependency was installed.
+combined invocation. The final learner build passed and the prototype build
+passed on immediate standalone retry after the same transient `EPERM`. No
+dependency was installed. Both coverage and mounted probes now save a separate
+report-local JSON failure receipt containing the failed scenario/step, error,
+accumulated browser diagnostics, and partial results, then rethrow; a failed
+rerun cannot be mistaken for the older success output. The latest successful
+coverage JSON is refreshed only after all eight contexts pass.
 
 ## Scope and remaining gate
 
