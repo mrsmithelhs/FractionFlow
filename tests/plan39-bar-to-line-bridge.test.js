@@ -80,6 +80,7 @@ describe('Plan 39 bar-to-line bridge content and interaction', () => {
         expect(initialEnvelope.schemaVersion).toBe(REPLAY_V7_SCHEMA_VERSION);
         expect(replayEpisode(initialEnvelope)).toEqual(initial);
         const encountered = applyIntent(initial, { type: 'acknowledge-bridge-encounter' });
+        expect(replayEpisode(createReplayEnvelope(encountered))).toEqual(encountered);
         const locateState = applyIntent(encountered, { type: 'request-task-help' });
         expect(replayEpisode(createReplayEnvelope(locateState))).toEqual(locateState);
         const locateScene = projectScene({ state: locateState, representationRole: 'number-line', presentationMode: 'instant-test' });
@@ -87,13 +88,12 @@ describe('Plan 39 bar-to-line bridge content and interaction', () => {
         expect(locateScene.meaning.numberLine.alignmentGuideVisible).toBe(false);
         expect(locateScene.meaning.currentTask.target).toBeNull();
         expect(JSON.stringify(locateScene)).not.toContain('correct-number-line-location');
-        const matching = (support === high
-          ? locateScene.meaning.numberLine.candidatePositions
-          : locateScene.meaning.numberLine.candidatePositions)
+        const matching = locateScene.meaning.numberLine.candidatePositions
           .find((candidate) => BigInt(candidate.form.numerator) * BigInt(record.sourceForm.denominator)
             === BigInt(record.sourceForm.numerator) * BigInt(candidate.form.denominator));
         expect(matching).toBeDefined();
         const located = applyIntent(locateState, { type: 'propose-number-line-location', proposed: matching.form });
+        expect(replayEpisode(createReplayEnvelope(located))).toEqual(located);
         const resolveScene = projectScene({ state: located, representationRole: 'number-line', presentationMode: 'instant-test' });
         expect(resolveScene.meaning.numberLine.acceptedPosition).toEqual(record.sourceForm);
         expect(resolveScene.meaning.numberLine.alignmentGuideVisible).toBe(true);
@@ -101,6 +101,30 @@ describe('Plan 39 bar-to-line bridge content and interaction', () => {
         expect(replayEpisode(createReplayEnvelope(completed))).toEqual(completed);
       }
     }
+    const wrongRecord = PLAN37_BAR_TO_LINE_BRIDGE_RECORDS[1];
+    const { state: beforeWrong } = start(wrongRecord, medium);
+    const beforeLocate = applyIntent(beforeWrong, { type: 'acknowledge-bridge-encounter' });
+    const wrong = applyIntent(beforeLocate, {
+      type: 'propose-number-line-location',
+      proposed: { kind: 'fraction', numerator: '3', denominator: '8' },
+    });
+    expect(wrong.lastRecovery.classification.kind).toBe('too-high-same-side');
+    const recoveryScene = projectScene({ state: wrong, representationRole: 'number-line', presentationMode: 'instant-test' });
+    expect(recoveryScene.meaning.numberLine.acceptedPosition).toBeNull();
+    expect(recoveryScene.meaning.numberLine.alignmentGuideVisible).toBe(false);
+    expect(replayEpisode(createReplayEnvelope(wrong))).toEqual(wrong);
+    const helped = applyIntent(wrong, { type: 'request-task-help' });
+    expect(replayEpisode(createReplayEnvelope(helped))).toEqual(helped);
+    const corrected = applyIntent(helped, {
+      type: 'propose-number-line-location',
+      proposed: { kind: 'fraction', numerator: '1', denominator: '4' },
+    });
+    expect(replayEpisode(createReplayEnvelope(corrected))).toEqual(corrected);
+    expect(projectScene({ state: corrected, representationRole: 'number-line', presentationMode: 'instant-test' }).meaning.numberLine.acceptedPosition)
+      .toEqual(wrongRecord.sourceForm);
+    const recoveryCompleted = applyIntent(corrected, { type: 'finish-compact-episode' });
+    expect(replayEpisode(createReplayEnvelope(recoveryCompleted))).toEqual(recoveryCompleted);
+
     const sample = createReplayEnvelope(locate(PLAN37_BAR_TO_LINE_BRIDGE_RECORDS[0]).state);
     expect(() => replayEpisode({ ...sample, extra: true })).toThrow(/unsupported shape/);
     expect(() => replayEpisode({ ...sample, taskContext: { ...sample.taskContext, extra: true } })).toThrow(/unsupported shape/);
@@ -110,5 +134,7 @@ describe('Plan 39 bar-to-line bridge content and interaction', () => {
       expect(replayEpisode(snapshot.envelope)).toEqual(snapshot.fullState);
       expect(() => replayEpisode({ ...snapshot.envelope, schemaVersion: REPLAY_V7_SCHEMA_VERSION })).toThrow();
     }
+    const bridgeSample = createReplayEnvelope(start(PLAN37_BAR_TO_LINE_BRIDGE_RECORDS[0]).state);
+    expect(() => replayEpisode({ ...bridgeSample, schemaVersion: 'fractionflow.episode-replay/v6' })).toThrow();
   });
 });

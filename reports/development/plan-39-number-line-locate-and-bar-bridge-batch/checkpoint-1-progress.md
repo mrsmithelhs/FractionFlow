@@ -1,7 +1,7 @@
 # Plan 39 Checkpoint 1: Stages 1–3
 
 Date: 2026-10-21  
-Implementation commit: see commit history for the scoped Checkpoint 1 commit
+Implementation commit: `11a4f178fa13912489a7c3cffdbbee88fa6dd331`
 
 ## Scope completed
 
@@ -11,7 +11,8 @@ The authored medium set for `bridge-02-fourth-4` includes `3/8`, making too-high
 
 ## Verification
 
-- `npm test -- --run tests/plan39-bar-to-line-bridge.test.js tests/replay-plan40-v6-compatibility.test.js`: 2 files / 11 tests passed. Coverage includes all eight records in both support modes, unique sparse descriptions, endpoint-inclusive candidate lists, the nonselectable third-half anchor, exact task-context rejection, offered-form admission/source preservation, all four recovery classes, idempotent locate help, initial/locate/help/accepted/completed v7 round trips for all 16 item/support combinations, v7 tampering rejection, and full-state replay against all four frozen v6 snapshots.
+- `npm test -- --run tests/plan39-bar-to-line-bridge.test.js tests/replay-plan40-v6-compatibility.test.js`: 2 files / 11 tests passed at the original checkpoint. Coverage includes all eight records in both support modes, unique sparse descriptions, endpoint-inclusive candidate lists, the nonselectable third-half anchor, exact task-context rejection, offered-form admission/source preservation, all four recovery classes, and idempotent locate help.
+- The final focused test file explicitly replays initial, encounter, locate/help, accepted resolve, and completed states across all 16 item/support combinations. A representative offered wrong answer is projected without accepted-position/alignment cues, full-state replayed, followed by help and a corrected proposal through accepted/completed replay. It also verifies bridge v6 labeling is rejected. These are test/report-only follow-up assertions; the source behavior is unchanged.
 - `npm test`: 55 files / 501 tests passed after final source/test changes.
 - `npm run build`: learner and subtraction-prototype production builds succeeded.
 - The frozen v6 oracle artifact `evidence/v6-baseline-oracles.json` and its generator were not modified. Existing v1–v5 fixture files were not modified. Existing Plan 40 v6 compatibility tests remain green.
