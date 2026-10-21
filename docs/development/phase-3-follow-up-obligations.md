@@ -80,6 +80,16 @@ invalidation. No arithmetic-shaped draft is imposed and no general framework is
 approved. This satisfies the initial fit review; reopen if mounted implementation
 requires competing owners or broader special cases. MAINT-42-C remains open.
 
+MAINT-42-B/C disposition (2026-10-21): the mounted Plan 39 preview/remount
+journey confirms the task-local opaque-handle fit. The review obligations are
+discharged with the limits and revisit triggers in
+`reports/development/plan-39-number-line-locate-and-bar-bridge-batch/maintainability-checkpoint.md`.
+Recommend bounded transform-response ownership work before another substantial
+conversion/help feature. Revisit decide/remount-token extraction on coordinated
+old-renderer changes or observed drift, and active-view/geometry/failure-receipt
+tooling before another representation verifier. No new implementation is
+authorized by this disposition; broader readability/framework value remains open.
+
 Plan 31 Repair 01's independent browser review observed Enter on an incorrect
 linear matching choice showing recovery, replacing the button and leaving focus
 on BODY. Retain this concrete response-remount case for the shared transform/
