@@ -50,6 +50,20 @@ and the [2025 IES toolkit Module 3](https://ies.ed.gov/ncee/rel/fractions-grade-
 These are starting sources for a future bounded investigation, not a completed
 FractionFlow research review or evidence that its present models teach those operations.
 
+## Maintainability checkpoints adopted with Plan 42 (DECISION-048)
+
+These are explicit review obligations, not approval to expand Plan 42's source scope.
+
+| ID / trigger | Required disposition |
+|---|---|
+| MAINT-42-A — Plan 42 acceptance | Verify actual module ownership and removal of app selector/family knowledge, parity and the isolated follow-up edit. Separate source-edit improvement from harness/evidence cost. Record unresolved owner markup readability; vanilla success does not settle Vue/template value. |
+| MAINT-42-B — Plan 39 Requirement 0 | Assess whether the response-region pattern fits unconfirmed candidate preview. Permit evidence-backed task-local adaptation; escalate forced arithmetic drafts, growing special cases or competing owners before implementing. No general representation framework is implied. |
+| MAINT-42-C — Plan 39 technical delivery, before closure | Reassess decide/transform ownership and remount-token duplication using both pilots. Recommend a bounded packet, reject, or defer with reason and revisit trigger. Revisit admission and shared-harness contention if actual number-line work shows cost. Preserve replay/version boundaries. |
+
+Orchestrator records each disposition; future implementers supply evidence. A
+passing Plan 42 suite does not close these later obligations or establish general
+agent-efficiency gains. Broader extraction or framework work needs a new packet.
+
 Plan 31 Repair 01's independent browser review observed Enter on an incorrect
 linear matching choice showing recovery, replacing the button and leaving focus
 on BODY. Retain this concrete response-remount case for the shared transform/

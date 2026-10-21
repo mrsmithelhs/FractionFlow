@@ -1,11 +1,9 @@
 ---
 id: plan-42
 title: Operate Response Ownership Pilot and Maintenance Evaluation
-status: draft
+status: in-progress
 depends_on: [plan-40, plan-41]
-gate: "Owner adoption of the refined Plan 41 direction and this packet before dispatch. Requirement 0: approve exact region ownership, handles, guard repairs and isolated evaluation mechanism before source. Review repaired baseline before extraction. Technical parity, maintenance evaluation and owner acceptance precede closure; no Plan 39 activation or deployment."
-superseded_by: null
-resolution: null
+gate: "Owner adopted refined Plan 41 direction and strengthened packet (DECISION-048). Requirement 0: approve exact region ownership, handles, guard repairs and isolated evaluation mechanism before source. Review repaired baseline before extraction. Technical parity, ownership/removed-knowledge checks, maintenance evaluation and owner acceptance precede closure; no Plan 39 activation or deployment."
 summary: >-
   Strengthen the specific operation-response guards, then consolidate duplicated
   visual/linear operate controls behind a small explicit handle while keeping
@@ -25,7 +23,7 @@ summary: >-
 - Mutation level: source, focused tests/harness and local report evidence
 - Approval gate: owner adoption; Requirement 0 mechanism; guarded baseline checkpoint; final acceptance
 - Depends on: accepted Plan 40 baseline and owner-adopted Plan 41 disposition
-- Expected artifacts: mechanism proposal, guard checkpoint, shared response region, parity evidence, maintenance evaluation and progress report
+- Expected artifacts: mechanism proposal, guard checkpoint, shared response region, ownership map, parity evidence, maintenance evaluation and progress report
 
 ## Goal, reason and sequence
 
@@ -35,15 +33,16 @@ operate blocks in the visual/linear renderers and a competing app selection
 procedure. No current learner defect on this seam was established. This pilot
 tests whether explicit ownership makes subsequent editing clearer and safer.
 
-Recommended sequence: Plan 41 disposition → this packet's guard stage and reviewed
+Owner-adopted sequence (DECISION-048): Plan 41 disposition → this packet's guard stage and reviewed
 baseline → extraction → parity and maintenance evaluation → Plan 39. These are
-stages of one packet, not separate prerequisite cleanup projects. Drafting this
-packet does not close Plan 41 or authorize implementation. Plan 39 stays draft.
+stages of one packet, not separate prerequisite cleanup projects. The owner
+authorized initiation of this strengthened packet; Requirement 0 still stops
+before source or guard changes. Plan 39 stays draft.
 
 ## Required references and protected decisions
 
 Read `AGENTS.md`, `docs/agent-starting-prompts/implementer-prompt.md`,
-`docs/decision-log.md` (DECISION-047), `docs/development/README.md`, packet creation
+`docs/decision-log.md` (DECISION-047/048), `docs/development/README.md`, packet creation
 guidance and the founding architecture, interaction grammar and quality docs.
 Read Plan 41's `investigation.md`, `recommended-source-slice.md`, and especially
 `orchestration-review.md` under its report directory. The orchestration review
@@ -77,6 +76,23 @@ the operate branch. Do not relocate the paragraph as an incidental extraction.
 Help-button placement remains app-owned. Pass explicit presentation information
 where needed rather than discovering state through another renderer.
 
+Produce `ownership-map.md` at the mechanism gate and reconcile it with final code.
+Name actual modules/symbols, authoritative state, permitted calls and lifecycle
+boundaries for every row. This is an editing guide, not a second specification:
+
+| Responsibility | Required boundary |
+|---|---|
+| Draft values | App owns preservation/reset policy and storage; region reads/writes only its current controls. |
+| Response construction and submission | Region selects the control form from existing scene facts and emits existing raw intents; no answer evaluation. |
+| Help | App owns open state and button placement; region renders its applicable paragraph from supplied presentation state. |
+| Errors | Existing instructional state supplies recovery; shell renders it. Document any explicit error identity passed to the response region. |
+| Focus | App decides when/why; region provides valid current targets and any approved focus operation. |
+| Remount/disposal | Renderer owns mounting and handle invalidation; app reacquires the current handle. No cross-renderer synchronization. |
+
+Missing required controls must produce observable guard/test failures. An absent
+region outside operate is legitimate; do not confuse that with a broken mounted
+region. Do not introduce broad exceptions to hide missing handles or stale DOM.
+
 Likely source sites: `src/render/operate-response.js` (proposed), both beat
 renderers, `src/render/index.js`, operation draft/focus access in `src/app/app.js`,
 and narrowly needed existing control helpers. Confirm paths before editing.
@@ -103,6 +119,11 @@ and tree ownership. Read actual callers and affected tests. Propose:
    behavior merely because a `focusPrimary` method exists.
 4. Specific guard repairs, failing-first probes, baseline and extraction commits,
    final-build browser evidence and isolated comparison mechanism.
+5. A before/after knowledge inventory: name app selectors, control-form/definition
+   branches and duplicated wiring that will disappear, along with any new
+   coupling introduced. Identify which family knowledge stays elsewhere for
+   legitimate instructional reasons. The new region must not simply import
+   content or reproduce the app's definition-id lists.
 
 Write `mechanism-proposal.md` and stop for orchestrator approval before source or
 test/harness changes. If the slice needs broader recovery/lifecycle changes,
@@ -134,6 +155,14 @@ draft/focus lookup to them. Reuse existing controls. Maintain fresh handle acces
 through render/remount, view switch, help, errors, retry, Next and re-entry.
 Remove replaced operation selection lists; do not leave two competing production
 procedures behind an unexercised fallback. Keep other regions unchanged.
+
+Acceptance requires removed knowledge, not just moved code: migrated app draft/
+focus access no longer depends on operation-control ids, DOM shape or task-family
+lists to select the response form. The region uses existing scene facts rather
+than a replacement family registry. Keep selectors inside the owning region when
+needed; other regions' selectors are outside this slice. Reconcile the ownership
+map and knowledge inventory against actual call sites and imports. No ambiguous
+dual owner may remain for the migrated responsibilities.
 
 Test both fraction and single-number forms, both views and relevant profiles,
 drafts, submission and stale/disconnected handles. Tests must fail when required
@@ -179,11 +208,42 @@ behavior in each arm. Invite owner reading of the region/call sites: where label
 are set, how drafts survive switches, and who decides focus after a wrong answer.
 That is a useful observation, not a timed exam or mandatory owner task.
 
+Separate source-edit cost from guard maintenance, browser startup/builds, evidence
+capture/restoration and review/rework. Note repeated context discovery or shared
+harness navigation even when the source edit becomes simpler. An overall agent
+efficiency claim needs evidence beyond fewer production edit sites; report
+unavailable timing/token data as unavailable, never reconstruct billing from
+reported cumulative agent-token counters.
+
 Parity regression blocks acceptance. A single extra file opened does not. Assess
 observations against removal of duplicated responsibility; allow useful, negative
 or inconclusive results. No automatic Vue comparison, broad migration or approval
 of Plan 39 follows. If isolated evaluation is unavailable, report the limitation
 and stop for disposition rather than substitute the familiar writer's impression.
+
+## Deferred-work checkpoints — explicit follow-through, no added source scope
+
+Track these in `docs/development/phase-3-follow-up-obligations.md`; the implementer
+reports evidence and recommendations, while the orchestrator updates dispositions.
+
+- **MAINT-42-A, at Plan 42 acceptance:** review removed knowledge, ownership,
+  parity, F1 evidence and remaining markup readability. Distinguish improvement
+  from inconclusive results; a successful vanilla pilot does not settle the
+  template/Vue question. No automatic framework experiment.
+- **MAINT-42-B, at Plan 39 Requirement 0:** explicitly assess whether the region
+  pattern accommodates unconfirmed candidate preview without arithmetic-shaped
+  draft assumptions. Classify reuse, small task-local adaptation or a contract
+  conflict. Stop for orchestrator disposition if numerous special cases or
+  competing owners are required; do not force the fit or redesign all regions.
+- **MAINT-42-C, after Plan 39 technical delivery and before its closure:** reassess
+  decide/transform ownership and remount-token duplication using Plan 42 plus
+  number-line evidence. Recommend a bounded next packet, defer with an explicit
+  reason/revisit trigger, or reject. Also revisit admission and shared-harness
+  contention if Plan 39 demonstrates actual cost. These obligations cannot be
+  silently discharged because this packet passed its tests.
+
+These checkpoints are assessments, not additional extraction requirements for
+Plan 42 and not automatic source approval for later regions.
 
 ## Validation and delivery
 
@@ -194,6 +254,10 @@ and stop for disposition rather than substitute the familiar writer's impression
 - [ ] Relevant existing visual/leak/motion seeds pass their clean and seeded checks.
 - [ ] Frozen full-state replay comparisons pass without regenerating fixtures.
 - [ ] Matched screenshots/measurements and separate maintenance-arm evidence exist.
+- [ ] Final ownership map and removed-knowledge inventory match callers/imports;
+  migrated responsibilities have explicit owners and no competing lookup fallback.
+- [ ] Source-edit versus evidence/harness costs are separated; later ownership,
+  number-line generalization and readability checkpoints have explicit records.
 - [ ] `node scripts/dev/plan-status.js lint` and `git diff --check` pass.
 - [ ] No unrelated changes, production F1, dependency, source-version migration or push.
 

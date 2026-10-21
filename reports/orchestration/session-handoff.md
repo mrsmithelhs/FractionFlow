@@ -1,5 +1,15 @@
 # FractionFlow orchestration handoff
 
+Current owner directive (DECISION-048): Plan 41's refined investigation direction
+is adopted and closed. Plan 42 is strengthened and in-progress for owner dispatch;
+no implementer started by this chat. Begin at Requirement 0 and stop before
+source/guards for mechanism approval. Another review stop follows guarded baseline.
+Ownership map, removed app knowledge and separate source/harness cost evidence are
+required; MAINT-42-A/B/C record pilot acceptance, Plan 39 preview-fit and post-line
+deferred ownership reviews. Plan 39 remains draft/blocked. Broader cleanup, Vue,
+production F1, push/deploy remain unauthorized. Older draft/adoption-pending entries
+below are superseded.
+
 Plan 42 drafted at owner request: `plan-42-operate-response-ownership-pilot.md`.
 It consolidates prerequisite guard repair, reviewed baseline A, bounded vanilla
 operate extraction B and isolated F1 maintenance evaluation. Draft only, no source

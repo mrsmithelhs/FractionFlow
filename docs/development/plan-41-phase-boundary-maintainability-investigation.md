@@ -1,7 +1,8 @@
 ---
 id: plan-41
 title: Phase-Boundary Maintainability and Response Ownership Investigation
-status: delivered
+status: complete
+resolution: "Owner adopted the refined bounded operate-response investigation direction by authorizing strengthened Plan 42 initiation (DECISION-048). Reports and orchestration disposition accepted; predicted maintenance benefits remain to be tested. No wider refactor, framework adoption or deployment authorized."
 depends_on: [plan-40]
 gate: "Investigation only after Plan 40 closure and owner Phase 3 checkpoint. Owner adoption of findings and a separately approved source packet are required for any refactor or framework experiment. Plan 39 activation waits for the investigation disposition and any adopted prerequisite refactor."
 summary: >-

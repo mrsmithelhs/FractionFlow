@@ -42,6 +42,14 @@ and mechanism approval; this dependency records the proposed sequence without
 authorizing source work. Its handle is a candidate pattern, not a required
 numerator/denominator schema for the locate preview.
 
+DECISION-048 / MAINT-42-B: Requirement 0 must explicitly assess response ownership
+and preview-state fit against the accepted Plan 42 interface. Reuse or adapt the
+minimal pattern from evidence; stop for disposition if it requires forced
+arithmetic-shaped drafts, many special cases or competing owners. At technical
+delivery, before closure, provide the MAINT-42-C reassessment of decide/transform
+ownership and remount tokens, with admission/harness observations if material.
+No additional refactor is silently authorized by these review obligations.
+
 Implement `DECISION-046` and the adopted [Plan 37 design dossier](../../reports/development/plan-37-first-number-line-and-bar-bridge-design/owner-acceptance.md). FractionFlow's fraction-bar grammar now spans unlike-denominator addition (`plan-32`, `plan-34`, `plan-35`), like-denominator addition (`plan-20`), crossing one whole (`plan-17`), and like-denominator takeaway subtraction (`plan-38`). Under the owner-selected **Option A** sequence, Phase 3 bar-stability completion (unlike-denominator subtraction on bars plus a concise Roadmap §31 / §90 disposition) precedes activating Phase 4 number-line source code unless the owner explicitly chooses to reorder. Once activated, this packet addresses the foundational Phase 4 question (§§31–34, §90): connecting the **length of one shaded fraction bar** to the **coordinate distance from `0` on a `0`-to-`1` number line** using stable benchmarks (`0`, `1/2`, `1`).
 
 - `plan-35` supplies the compact authored-record materialization, catalog registration, and versioned replay compatibility patterns.

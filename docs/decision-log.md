@@ -1285,3 +1285,30 @@ from source-organization causes.
 
 **Related:** Plan 41; Plan 39; maintainability-architecture-review-disposition.md.
 
+### DECISION-048 - Adopt the refined Plan 41 findings and initiate strengthened Plan 42
+
+**Date:** 2026-10-20
+
+**Status:** Owner approved bounded pilot initiation; mechanism and acceptance gates remain.
+
+The owner directed strengthening Plan 42 with the orchestrator's ownership,
+removed-knowledge, generalization and deferred-review criteria, then marking it
+in-progress for owner dispatch. This adopts the refined Plan 41 disposition:
+targeted guards → reviewed baseline → vanilla operate-response ownership slice →
+parity and isolated maintenance evaluation → Plan 39. Plan 41 is closed as an
+accepted investigation, not proof the refactor's predicted benefits exist.
+
+The app retains authoritative drafts and focus timing, the region owns current
+response controls and raw intent wiring, and the shell retains recovery rendering.
+Production behavior stays unchanged; F1 copy/error association is isolated to
+evaluation arms. Requirement 0 stops before source, with another checkpoint after
+guard baseline. No Vue/dependency, admission, remount or other-region extraction.
+
+MAINT-42-A/B/C explicitly require pilot acceptance review, preview-pattern fit at
+Plan 39's mechanism gate, and post-number-line reassessment of deferred ownership
+and remount work. Framework readability and evidence/harness costs remain separate
+questions. No claim of universal scaling or measured agent-efficiency benefit.
+New source scope and deployment remain separately gated.
+
+**Related:** Plan 41 orchestration review; Plan 42; Plan 39; phase-3-follow-up-obligations.md.
+
