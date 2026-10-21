@@ -7,6 +7,7 @@ import {
   createChoiceGroup,
 } from './controls.js';
 import { createSymbolicFraction } from './symbolic.js';
+import { createOperateResponse } from './operate-response.js';
 
 /**
  * Accessible Linear Alternative Renderer (Plan 08, Requirement 1, DECISION-004, DECISION-024)
@@ -41,6 +42,7 @@ export function createLinearPathRenderer({
   let completedBeatsEl = null;
   let activeBeatEl = null;
   let activeBeatRenderToken = null;
+  let activeOperateResponse = null;
 
   function isElementVisible(el) {
     let curr = el;
@@ -479,11 +481,18 @@ export function createLinearPathRenderer({
       premiseCaseId: scene.meaning.premiseCase?.id,
       takeawayRemoval: scene.meaning.takeaway?.removalStatus,
       takeawayHelpOpen: Boolean(scene.meaning.takeaway && isTaskHelpOpen()),
+      operationResponseContext: beat === 'operate' ? [
+        Boolean(scene.meaning.takeaway),
+        scene.meaning.unitRelationship.commonUnit?.kind,
+        scene.meaning.quantities.left.currentForm.denominator,
+      ] : null,
     });
 
     if (activeBeatRenderToken === token) {
       return;
     }
+    activeOperateResponse?.invalidate();
+    activeOperateResponse = null;
     activeBeatRenderToken = token;
 
     const isInspection = beat === 'reflect' && isReplaying && Boolean(scene.meaning.transition);
@@ -832,71 +841,21 @@ export function createLinearPathRenderer({
       }
 
       case 'operate': {
-        if (scene.meaning.takeaway) {
-          promptText.textContent = strings.subtraction.howMuchLeft;
-          if (isTaskHelpOpen()) {
-            const help = document.createElement('p');
-            help.id = 'linear-subtraction-task-help';
-            help.classList.add('active-beat-help');
-            help.textContent = strings.subtraction.linearHelp;
-            controlsContainer.appendChild(help);
-          }
-          const fractionInput = createFractionResponseInput({
-            numeratorId: 'linear-operate-fraction-numerator-input',
-            denominatorId: 'linear-operate-fraction-denominator-input',
-            groupLabel: strings.subtraction.amountLeftGroup,
-            numeratorLabel: strings.subtraction.numeratorLabel,
-            denominatorLabel: strings.subtraction.denominatorLabel,
-            numeratorAriaLabel: strings.subtraction.numeratorAriaLabel,
-            denominatorAriaLabel: strings.subtraction.denominatorAriaLabel,
-            allowZeroNumerator: true,
-            initialNumerator: recovery?.classification?.proposed?.numerator ?? '',
-            initialDenominator: recovery?.classification?.proposed?.denominator ?? '',
-            strings,
-            onSubmit: (proposed) => dispatchAction({
-              type: 'submit-subtraction-result',
-              proposed,
-            }),
-          });
-          controlsContainer.appendChild(fractionInput.element);
-          break;
-        }
-
-        const commonDen = scene.meaning.quantities.left.currentForm.denominator;
-        promptText.textContent = strings.operate.prompt;
-
-        if (scene.meaning.unitRelationship.commonUnit?.kind === 'already-shared-unit') {
-          const fractionInput = createFractionResponseInput({
-            numeratorId: 'linear-operate-fraction-numerator-input',
-            denominatorId: 'linear-operate-fraction-denominator-input',
-            strings,
-            onSubmit: (proposed) => dispatchAction({
-              type: 'submit-operation-result',
-              proposed,
-            }),
-          });
-          controlsContainer.appendChild(fractionInput.element);
-          break;
-        }
-
-        const sumInput = createNumericInput({
-          id: 'linear-operate-sum-input',
-          label: strings.operate.inputLabel(commonDen),
-          min: 1,
-          max: 999,
+        activeOperateResponse = createOperateResponse({
+          scene,
           strings,
-          onSubmit: (val) => {
-            dispatchAction({
-              type: 'submit-operation-result',
-              proposed: {
-                kind: 'fraction',
-                numerator: val,
-                denominator: commonDen,
-              },
-            });
-          },
+          inputPrefix: 'linear-operate',
+          taskHelpId: 'linear-subtraction-task-help',
+          taskHelpText: strings.subtraction.linearHelp,
+          helpOpen: isTaskHelpOpen(),
+          activeBeatRoot: activeBeatEl,
+          controlsRoot: controlsContainer,
+          dispatchAction,
         });
-        controlsContainer.appendChild(sumInput.element);
+        promptText.textContent = scene.meaning.takeaway
+          ? strings.subtraction.howMuchLeft
+          : strings.operate.prompt;
+        activeOperateResponse.elements.forEach((element) => controlsContainer.appendChild(element));
         break;
       }
 
@@ -1180,6 +1139,8 @@ export function createLinearPathRenderer({
       return this;
     },
     destroy() {
+      activeOperateResponse?.invalidate();
+      activeOperateResponse = null;
       if (rootEl && rootEl.parentNode) {
         rootEl.parentNode.removeChild(rootEl);
       }
@@ -1188,6 +1149,9 @@ export function createLinearPathRenderer({
     },
     getElement() {
       return rootEl;
+    },
+    getResponseRegion(beat) {
+      return beat === 'operate' ? activeOperateResponse?.handle ?? null : null;
     },
   };
 }

@@ -10,6 +10,7 @@ import {
   createChoiceGroup,
 } from './controls.js';
 import { createVisualMatchingChoice } from './matching-choice.js';
+import { createOperateResponse } from './operate-response.js';
 
 /**
  * Beat-Gated Mounting Container (DECISION-014, Reconciliation Finding R6, DECISION-021)
@@ -54,6 +55,7 @@ export function createBeatContainer({
   let rightBarRenderer = null;
   let symbolicRenderer = null;
   let activeBeatRenderToken = null;
+  let activeOperateResponse = null;
 
   function isElementVisible(el) {
     let curr = el;
@@ -350,11 +352,18 @@ export function createBeatContainer({
       premiseCaseId: scene.meaning.premiseCase?.id,
       takeawayRemoval: scene.meaning.takeaway?.removalStatus,
       takeawayHelpOpen: Boolean(scene.meaning.takeaway && isTaskHelpOpen()),
+      operationResponseContext: beat === 'operate' ? [
+        Boolean(scene.meaning.takeaway),
+        scene.meaning.unitRelationship.commonUnit?.kind,
+        scene.meaning.quantities.left.currentForm.denominator,
+      ] : null,
     });
 
     if (activeBeatRenderToken === token) {
       return;
     }
+    activeOperateResponse?.invalidate();
+    activeOperateResponse = null;
     activeBeatRenderToken = token;
 
     const isInspection = beat === 'reflect' && isReplaying && Boolean(scene.meaning.transition);
@@ -705,71 +714,21 @@ export function createBeatContainer({
       }
 
       case 'operate': {
-        if (scene.meaning.takeaway) {
-          promptText.textContent = strings.subtraction.howMuchLeft;
-          if (isTaskHelpOpen()) {
-            const help = document.createElement('p');
-            help.id = 'visual-subtraction-task-help';
-            help.classList.add('active-beat-help');
-            help.textContent = strings.subtraction.visualHelp;
-            controlsContainer.appendChild(help);
-          }
-          const fractionInput = createFractionResponseInput({
-            numeratorId: 'operate-fraction-numerator-input',
-            denominatorId: 'operate-fraction-denominator-input',
-            groupLabel: strings.subtraction.amountLeftGroup,
-            numeratorLabel: strings.subtraction.numeratorLabel,
-            denominatorLabel: strings.subtraction.denominatorLabel,
-            numeratorAriaLabel: strings.subtraction.numeratorAriaLabel,
-            denominatorAriaLabel: strings.subtraction.denominatorAriaLabel,
-            allowZeroNumerator: true,
-            initialNumerator: recovery?.classification?.proposed?.numerator ?? '',
-            initialDenominator: recovery?.classification?.proposed?.denominator ?? '',
-            strings,
-            onSubmit: (proposed) => dispatchAction({
-              type: 'submit-subtraction-result',
-              proposed,
-            }),
-          });
-          controlsContainer.appendChild(fractionInput.element);
-          break;
-        }
-
-        const commonDen = scene.meaning.quantities.left.currentForm.denominator;
-        promptText.textContent = strings.operate.prompt;
-
-        if (scene.meaning.unitRelationship.commonUnit?.kind === 'already-shared-unit') {
-          const fractionInput = createFractionResponseInput({
-            numeratorId: 'operate-fraction-numerator-input',
-            denominatorId: 'operate-fraction-denominator-input',
-            strings,
-            onSubmit: (proposed) => dispatchAction({
-              type: 'submit-operation-result',
-              proposed,
-            }),
-          });
-          controlsContainer.appendChild(fractionInput.element);
-          break;
-        }
-
-        const sumInput = createNumericInput({
-          id: 'operate-sum-input',
-          label: strings.operate.inputLabel(commonDen),
-          min: 1,
-          max: 999,
+        activeOperateResponse = createOperateResponse({
+          scene,
           strings,
-          onSubmit: (val) => {
-            dispatchAction({
-              type: 'submit-operation-result',
-              proposed: {
-                kind: 'fraction',
-                numerator: val,
-                denominator: commonDen,
-              },
-            });
-          },
+          inputPrefix: 'operate',
+          taskHelpId: 'visual-subtraction-task-help',
+          taskHelpText: strings.subtraction.visualHelp,
+          helpOpen: isTaskHelpOpen(),
+          activeBeatRoot: activeBeatEl,
+          controlsRoot: controlsContainer,
+          dispatchAction,
         });
-        controlsContainer.appendChild(sumInput.element);
+        promptText.textContent = scene.meaning.takeaway
+          ? strings.subtraction.howMuchLeft
+          : strings.operate.prompt;
+        activeOperateResponse.elements.forEach((element) => controlsContainer.appendChild(element));
         break;
       }
 
@@ -1291,6 +1250,8 @@ export function createBeatContainer({
       return this;
     },
     destroy() {
+      activeOperateResponse?.invalidate();
+      activeOperateResponse = null;
       if (leftBarRenderer) leftBarRenderer.destroy();
       if (rightBarRenderer) rightBarRenderer.destroy();
       if (symbolicRenderer) symbolicRenderer.destroy();
@@ -1302,6 +1263,9 @@ export function createBeatContainer({
     },
     getElement() {
       return rootEl;
+    },
+    getResponseRegion(beat) {
+      return beat === 'operate' ? activeOperateResponse?.handle ?? null : null;
     },
   };
 }

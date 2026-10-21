@@ -279,6 +279,75 @@ describe('Plan 40 rendered subtraction recipes', () => {
   });
 
   describe('Data-only holdouts rendering suite (Option B coverage)', () => {
+    it('exposes a stable operate handle until replacement, then invalidates it in both renderers', () => {
+      const holdout = PLAN40_DATA_ONLY_HOLDOUTS.find(
+        (r) => r.itemId === 'plan40-holdout-construct-three-fifths-one-half-10',
+      );
+      let state = startEpisode(holdout);
+      const visualContainer = doc.createElement('div');
+      const linearContainer = doc.createElement('div');
+      doc.body.appendChild(visualContainer);
+      doc.body.appendChild(linearContainer);
+      let helpOpen = false;
+      const visual = createBeatContainer({
+        container: visualContainer,
+        dispatchAction: () => {},
+        isTaskHelpOpen: () => helpOpen,
+      });
+      const linear = createLinearPathRenderer({
+        container: linearContainer,
+        dispatchAction: () => {},
+        isTaskHelpOpen: () => helpOpen,
+      });
+      let mounted = false;
+      const updateBoth = () => {
+        const scene = resolveRenderableScene({ state, presentationMode: 'instant-test' });
+        if (mounted) {
+          visual.update(scene);
+          linear.update(scene);
+        } else {
+          visual.mount(scene);
+          linear.mount(scene);
+          mounted = true;
+        }
+      };
+      updateBoth();
+      state = applyIntent(state, { type: 'acknowledge-encounter' });
+      state = applyIntent(state, { type: 'submit-equivalent-form', proposed: wireFraction('6', '10') });
+      state = applyIntent(state, { type: 'submit-equivalent-form', proposed: wireFraction('5', '10') });
+      updateBoth();
+
+      for (const renderer of [visual, linear]) {
+        const handle = renderer.getResponseRegion('operate');
+        expect(handle.kind).toBe('fraction');
+        expect(renderer.getResponseRegion('decide')).toBeNull();
+        expect(handle.readDraft()).toMatchObject({ kind: 'fraction', numerator: '', denominator: '' });
+        renderer.update(resolveRenderableScene({ state, presentationMode: 'instant-test' }));
+        expect(renderer.getResponseRegion('operate')).toBe(handle);
+      }
+      const visualDraft = visual.getResponseRegion('operate').readDraft();
+      expect(linear.getResponseRegion('operate').writeDraft(visualDraft)).toBe(true);
+      expect(linear.getResponseRegion('operate').readDraft()).toEqual(visualDraft);
+
+      const oldVisual = visual.getResponseRegion('operate');
+      const oldLinear = linear.getResponseRegion('operate');
+      helpOpen = true;
+      updateBoth();
+      expect(visual.getResponseRegion('operate')).not.toBe(oldVisual);
+      expect(linear.getResponseRegion('operate')).not.toBe(oldLinear);
+      expect(oldVisual.readDraft()).toBeNull();
+      expect(oldLinear.readDraft()).toBeNull();
+      expect(visualContainer.querySelector('#visual-subtraction-task-help')).not.toBeNull();
+      expect(linearContainer.querySelector('#linear-subtraction-task-help')).not.toBeNull();
+
+      const finalVisual = visual.getResponseRegion('operate');
+      const finalLinear = linear.getResponseRegion('operate');
+      visual.destroy();
+      linear.destroy();
+      expect(finalVisual.readDraft()).toBeNull();
+      expect(finalLinear.readDraft()).toBeNull();
+    });
+
     it('renders construct holdout across visual and linear renderers through full journey under high and medium support', () => {
       const holdout = PLAN40_DATA_ONLY_HOLDOUTS.find(
         (r) => r.itemId === 'plan40-holdout-construct-three-fifths-one-half-10',

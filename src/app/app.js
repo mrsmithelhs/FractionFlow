@@ -296,7 +296,7 @@ export function createFractionFlowApp({
   let inspectChangeOpen = false;
   let commonDenominatorDraft = '';
   let transformDrafts = { left: { multiplier: '', numerator: '' }, right: { multiplier: '', numerator: '' } };
-  let operationDrafts = { numerator: '', denominator: '' };
+  let operationDrafts = null;
   let transformDraftScheduleEntryId = null;
   let preserveDecideInputFocusOnViewChange = false;
   let preserveTransformInputFocusOnViewChange = false;
@@ -565,7 +565,7 @@ export function createFractionFlowApp({
         updateHelpPlacement();
         if (preserveInputFocus) getVisibleDecideInput()?.focus();
         if (preserveTransformInputFocus) getVisibleTransformInput()?.focus();
-        if (preserveOperationInputFocus) getVisibleOperationInput()?.focus();
+        if (preserveOperationInputFocus) focusOperationInput();
         if (preserveTakeawayFocus) {
           const host = visualView ? visualHost : linearHost;
           host?.querySelector('.active-beat-controls button')?.focus();
@@ -702,7 +702,7 @@ export function createFractionFlowApp({
       left: { multiplier: '', numerator: state?.taskContext?.candidates?.left?.numerator ?? '' },
       right: { multiplier: '', numerator: state?.taskContext?.candidates?.right?.numerator ?? '' },
     };
-    operationDrafts = { numerator: '', denominator: '' };
+    operationDrafts = null;
     inspectChangeOpen = false;
     transformDraftScheduleEntryId = null;
     preserveDecideInputFocusOnViewChange = false;
@@ -963,40 +963,27 @@ export function createFractionFlowApp({
   }
 
   function getVisibleOperationInput() {
-    if (state?.beat !== 'operate'
-      || (state.episodeDefinition.id !== PLAN20_LIKE_DENOMINATOR_EPISODE_DEFINITION.id
-        && state.episodeDefinition.id !== PLAN34_EPISODE_DEFINITION_ID
-        && state.episodeDefinition.id !== PLAN18_NESTED_DEFINITION_ID
-        && state.episodeDefinition.id !== PLAN35_RECIPE_DEFINITION_ID
-        && !isPlan36SubtractionDefinition(state.episodeDefinition)
-        && !isPlan40SubtractionRecipeDefinition(state.episodeDefinition))) return null;
-    const host = visualView ? visualHost : linearHost;
-    if (isPlan36SubtractionDefinition(state.episodeDefinition) || isPlan40SubtractionRecipeDefinition(state.episodeDefinition)) {
-      return host?.querySelector(`#${visualView ? 'operate' : 'linear-operate'}-fraction-numerator-input`) || null;
-    }
-    return host?.querySelector([PLAN34_EPISODE_DEFINITION_ID, PLAN18_NESTED_DEFINITION_ID, PLAN35_RECIPE_DEFINITION_ID].includes(state.episodeDefinition.id)
-      ? `#${visualView ? 'operate' : 'linear-operate'}-sum-input`
-      : 'input.control-fraction-input') || null;
+    if (state?.beat !== 'operate') return null;
+    const renderer = visualView ? visualRenderer : linearRenderer;
+    return renderer?.getResponseRegion('operate')?.primaryInput() ?? null;
+  }
+
+  function focusOperationInput() {
+    if (state?.beat !== 'operate') return false;
+    const renderer = visualView ? visualRenderer : linearRenderer;
+    return renderer?.getResponseRegion('operate')?.focusPrimary() ?? false;
   }
 
   function captureOperationDraft() {
-    if (!getVisibleOperationInput()) return;
-    const host = visualView ? visualHost : linearHost;
-    const prefix = visualView ? 'operate' : 'linear-operate';
-    operationDrafts = {
-      numerator: host?.querySelector(`#${[PLAN34_EPISODE_DEFINITION_ID, PLAN18_NESTED_DEFINITION_ID, PLAN35_RECIPE_DEFINITION_ID].includes(state.episodeDefinition.id) ? prefix + '-sum-input' : prefix + '-fraction-numerator-input'}`)?.value ?? '',
-      denominator: host?.querySelector(`#${prefix}-fraction-denominator-input`)?.value ?? '',
-    };
+    const renderer = visualView ? visualRenderer : linearRenderer;
+    const draft = renderer?.getResponseRegion('operate')?.readDraft() ?? null;
+    if (draft !== null) operationDrafts = draft;
   }
 
   function restoreOperationDraft() {
-    if (!getVisibleOperationInput()) return;
-    const host = visualView ? visualHost : linearHost;
-    const prefix = visualView ? 'operate' : 'linear-operate';
-    const numerator = host?.querySelector(`#${[PLAN34_EPISODE_DEFINITION_ID, PLAN18_NESTED_DEFINITION_ID, PLAN35_RECIPE_DEFINITION_ID].includes(state.episodeDefinition.id) ? prefix + '-sum-input' : prefix + '-fraction-numerator-input'}`);
-    const denominator = host?.querySelector(`#${prefix}-fraction-denominator-input`);
-    if (numerator) numerator.value = operationDrafts.numerator;
-    if (denominator) denominator.value = operationDrafts.denominator;
+    if (state?.beat !== 'operate') return;
+    const renderer = visualView ? visualRenderer : linearRenderer;
+    renderer?.getResponseRegion('operate')?.writeDraft(operationDrafts);
   }
 
   function restoreTransformDrafts() {
@@ -1145,7 +1132,7 @@ export function createFractionFlowApp({
       commonDenominatorDraft = '';
     }
     if (state.beat !== 'operate') {
-      operationDrafts = { numerator: '', denominator: '' };
+      operationDrafts = null;
       subtractionHelpOpen = false;
     }
     const activeScheduleEntryId = state.beatSchedule?.[state.schedulePosition]?.id ?? null;
@@ -1287,11 +1274,11 @@ export function createFractionFlowApp({
       if (action.type === 'request-task-help'
         && (isPlan36SubtractionDefinition(state.episodeDefinition) || isPlan40SubtractionRecipeDefinition(state.episodeDefinition))
         && state.beat === 'operate') helpButton.focus();
-      if (action.type === 'mark-subtrahend-amount') getVisibleOperationInput()?.focus();
+      if (action.type === 'mark-subtrahend-amount') focusOperationInput();
       if (['submit-equivalent-form', 'keep-inspected-form', 'repair-inspected-form'].includes(action.type)
         && isPlan40SubtractionRecipeDefinition(state.episodeDefinition)
         && state.beat === 'operate') {
-        getVisibleOperationInput()?.focus();
+        focusOperationInput();
       }
       if (action.type === 'submit-subtraction-result') {
         if (state.beat === 'resolve') {
@@ -1299,7 +1286,7 @@ export function createFractionFlowApp({
           const finishBtn = host?.querySelector('.active-beat-controls button');
           if (finishBtn) finishBtn.focus();
         } else if (state.lastRecovery?.beat === 'operate') {
-          getVisibleOperationInput()?.focus();
+          focusOperationInput();
         }
       }
       if (action.type === 'finish-compact-episode') {
@@ -1308,7 +1295,7 @@ export function createFractionFlowApp({
         }
       }
       if (action.type === 'submit-operation-result'
-        && state.lastRecovery?.beat === 'operate') getVisibleOperationInput()?.focus();
+        && state.lastRecovery?.beat === 'operate') focusOperationInput();
       if (action.type === 'submit-transform-help-multiplier') getVisibleTransformInput()?.focus();
       if (action.type === 'select-renaming-side') {
         const host = visualView ? visualHost : linearHost;

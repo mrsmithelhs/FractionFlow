@@ -22,4 +22,5 @@ export {
 } from './controls.js';
 export { createBeatContainer } from './beat-container.js';
 export { createLinearPathRenderer } from './linear-path.js';
+export { createOperateResponse } from './operate-response.js';
 
