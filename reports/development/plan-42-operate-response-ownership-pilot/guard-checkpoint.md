@@ -1,9 +1,13 @@
 # Plan 42 guarded baseline A checkpoint
 
-Date: 2026-10-20  
-Plan preflight: `node scripts/dev/plan-status.js check 42` → `RUNNABLE: plan-42 is ready to implement`.  
-Approved mechanism: `requirement-0-review.md` (parent-approved Requirement 0; Sol-medium read-only review).  
-Pre-guard source baseline: `246f770b40ddc8ede74b94f634e4a4d38b809485`.  
+Date: 2026-10-20
+
+Plan preflight: `node scripts/dev/plan-status.js check 42` → `RUNNABLE: plan-42 is ready to implement`.
+
+Approved mechanism: `requirement-0-review.md` (parent-approved Requirement 0; Sol-medium read-only review).
+
+Pre-guard source baseline: `246f770b40ddc8ede74b94f634e4a4d38b809485`.
+
 Guard commit / baseline A: `d7936a71bbbb099fb9394a727bbac1d751e79afa` (`test: strengthen Plan 38 operate draft focus guard`).
 
 ## Changes in baseline A
