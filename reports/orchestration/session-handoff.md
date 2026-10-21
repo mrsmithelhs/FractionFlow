@@ -1,5 +1,17 @@
 # FractionFlow orchestration handoff
 
+Active Plan 42 supervised run: Requirement 0 approved at `246f770`; guarded A is
+`d7936a7`, accepted at `6d455e7`. Luna extraction `cad9144` received a Sol-medium
+read-only review; two guard-contract corrections landed at final B `436e54a`.
+Parent passed initial 494 tests and corrected 23 affected tests; child full suite
+496 and both builds pass. Review/evaluation authorization is `5a8dade`.
+Production child `/root/plan42_luna` is paused. Fresh Luna-medium evaluator
+`/root/plan42_eval_a` is running isolated temporary F1 in the baseline checkout
+`node_modules/.plan42-eval-a`; refactored checkout `.plan42-eval-b` exists but no
+worker dispatched yet. Dispatch arms serially with identical committed worker
+brief; never merge F1. Main broad parity/browser report work remains afterward.
+Parent retains gates/advisors/evaluation/status. No Plan 39/push/deploy/closure.
+
 Current owner directive (DECISION-048): Plan 41's refined investigation direction
 is adopted and closed. Plan 42 is strengthened and in-progress for owner dispatch;
 no implementer started by this chat. Begin at Requirement 0 and stop before
