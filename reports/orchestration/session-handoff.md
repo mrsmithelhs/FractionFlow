@@ -4,7 +4,27 @@ Updated 2026-10-21. Read AGENTS.md, the orchestrator starting prompt, current
 packet board and git status before acting. Earlier checkpoint states are in Git
 and each packet's reports; this document records the current state.
 
-## Owner-requested pause — latest checkpoint
+## Resumed — current checkpoint
+
+Owner resumed on 2026-10-21. The pause account below is historical. Repair 01
+plus the final endpoint-focus/evidence amendment is committed at `712883d`.
+Parent approved Checkpoint 2 in `8a1958c` after independently passing both the
+eight-context coverage and amended mounted agency journeys. Full final-source
+suite: child reports 505 tests and both builds passed (prototype needed one
+transient EPERM retry). The Sol-low review's two evidence findings were accepted
+and repaired; the exact new journey also reproduced and repaired the endpoint
+focus drop to body. Failed receipts remain explicitly historical.
+
+Luna `/root/plan39_luna` is now authorized for Stage 6: appended route/context
+rows, normal assertions plus five real falsification seeds, required viewport
+captures and final validation/report. Preserve all baseline 81 rows/83 executions
+and context mappings, frozen historical replay fixtures/oracle, and byte-exactly
+restore only known generated historical evidence. No new framework/dependencies,
+fan-out, packet status, push, deployment or additional plan. Parent will inspect
+the new route/seed code and independently verify final behavior, then record
+MAINT-42-C and delivery. Owner rendered/agency acceptance remains required.
+
+## Owner-requested pause — historical checkpoint
 
 Owner paused work for usage on 2026-10-21. Do not resume until requested.
 Luna stopped; no processes are running and the working tree was clean at pause.
