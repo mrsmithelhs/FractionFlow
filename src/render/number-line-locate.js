@@ -1,5 +1,6 @@
 import { assertValidScene } from './contract.js';
 import { createButton } from './controls.js';
+import { createSymbolicFraction } from './symbolic.js';
 
 const SVG_NS = 'http://www.w3.org/2000/svg';
 
@@ -28,54 +29,42 @@ function previewKey(scene) {
   });
 }
 
+function ratio(form) {
+  return Number(form.numerator) / Number(form.denominator);
+}
+
 function makeBar(scene, strings, view) {
-  const quantity = scene.meaning.quantities.source;
-  const numerator = Number(quantity.sourceForm.numerator);
-  const denominator = Number(quantity.sourceForm.denominator);
+  const form = scene.meaning.quantities.source.sourceForm;
+  const numerator = Number(form.numerator);
+  const denominator = Number(form.denominator);
   const figure = document.createElement('figure');
   figure.className = 'plan39-source-figure';
-  const label = document.createElement('figcaption');
-  label.textContent = strings.plan39.sourceBar;
-  figure.appendChild(label);
-  const fractionText = document.createElement('span');
-  fractionText.className = 'plan39-source-fraction';
-  fractionText.setAttribute('aria-label', `${quantity.sourceForm.numerator} over ${quantity.sourceForm.denominator}`);
-  const numeratorText = document.createElement('span');
-  numeratorText.setAttribute('aria-hidden', 'true');
-  numeratorText.textContent = quantity.sourceForm.numerator;
-  const denominatorText = document.createElement('span');
-  denominatorText.setAttribute('aria-hidden', 'true');
-  denominatorText.textContent = quantity.sourceForm.denominator;
-  fractionText.appendChild(numeratorText);
-  fractionText.appendChild(denominatorText);
-  figure.appendChild(fractionText);
+  const fraction = createSymbolicFraction(form.numerator, form.denominator, { variant: 'compact' });
+  fraction.classList.add('plan39-source-fraction');
+  figure.appendChild(fraction);
 
   if (view === 'linear') {
     const description = document.createElement('p');
+    description.className = 'plan39-linear-source-description';
     description.textContent = strings.plan39.sourceBarDescription(numerator, denominator);
     figure.appendChild(description);
     return figure;
   }
 
-  const svg = svgElement('svg', { viewBox: '0 0 1000 138', role: 'img', 'aria-label': strings.plan39.sourceBarDescription(numerator, denominator) });
-  const x0 = 42;
-  const x1 = 958;
-  const y = 46;
-  const height = 48;
-  svg.appendChild(svgElement('rect', { x: x0, y, width: x1 - x0, height, class: 'plan39-bar-outline' }));
+  const visual = document.createElement('div');
+  visual.className = 'plan39-bar-visual';
+  visual.setAttribute('role', 'img');
+  visual.setAttribute('aria-label', strings.plan39.sourceBarDescription(numerator, denominator));
+  const frame = document.createElement('div');
+  frame.className = 'plan39-unit-frame plan39-bar-track';
+  frame.style.setProperty('--partition-count', denominator);
   for (let index = 0; index < denominator; index += 1) {
-    const width = (x1 - x0) / denominator;
-    svg.appendChild(svgElement('rect', {
-      x: x0 + index * width,
-      y,
-      width,
-      height,
-      class: index < numerator ? 'plan39-bar-part plan39-bar-part-shaded' : 'plan39-bar-part',
-    }));
+    const segment = document.createElement('span');
+    segment.className = index < numerator ? 'plan39-bar-part plan39-bar-part-shaded' : 'plan39-bar-part';
+    frame.appendChild(segment);
   }
-  svg.appendChild(svgElement('line', { x1: x0, y1: y + height + 2, x2: x0, y2: 122, class: 'plan39-endpoint-extension' }));
-  svg.appendChild(svgElement('line', { x1, y1: y + height + 2, x2: x1, y2: 122, class: 'plan39-endpoint-extension' }));
-  figure.appendChild(svg);
+  visual.appendChild(frame);
+  figure.appendChild(visual);
   return figure;
 }
 
@@ -83,9 +72,6 @@ function makeTrack(scene, strings, selectedCandidateId, view) {
   const model = scene.meaning.numberLine;
   const figure = document.createElement('figure');
   figure.className = 'plan39-track-figure';
-  const caption = document.createElement('figcaption');
-  caption.textContent = strings.plan39.numberLine;
-  figure.appendChild(caption);
   if (view === 'linear') {
     const description = document.createElement('p');
     description.className = 'plan39-track-description';
@@ -93,59 +79,75 @@ function makeTrack(scene, strings, selectedCandidateId, view) {
     figure.appendChild(description);
     return figure;
   }
-  const svg = svgElement('svg', { viewBox: '0 0 1000 178', role: 'img', 'aria-label': strings.plan39.trackDescription });
-  const x0 = 42;
-  const x1 = 958;
-  const y = 79;
-  svg.appendChild(svgElement('line', { x1: x0, y1: y, x2: x1, y2: y, class: 'plan39-track' }));
+
+  const frame = document.createElement('div');
+  frame.className = 'plan39-unit-frame plan39-axis-frame';
+  frame.setAttribute('role', 'img');
+  frame.setAttribute('aria-label', strings.plan39.trackDescription);
+  const line = document.createElement('span');
+  line.className = 'plan39-axis-line';
+  frame.appendChild(line);
   for (const benchmark of model.benchmarks) {
-    const value = Number(benchmark.form.numerator) / Number(benchmark.form.denominator);
-    const x = x0 + (x1 - x0) * value;
-    svg.appendChild(svgElement('line', { x1: x, y1: y - 12, x2: x, y2: y + 12, class: 'plan39-benchmark-tick' }));
-    const text = svgElement('text', { x, y: y + 39, 'text-anchor': value === 0 ? 'start' : value === 1 ? 'end' : 'middle', class: 'plan39-benchmark-label' });
-    text.textContent = benchmark.label === '0' ? strings.plan39.zero : benchmark.label === '1' ? strings.plan39.one : strings.plan39.half;
-    svg.appendChild(text);
+    const value = ratio(benchmark.form);
+    const tick = document.createElement('span');
+    tick.className = 'plan39-benchmark-tick';
+    tick.style.left = `${value * 100}%`;
+    frame.appendChild(tick);
+    const label = document.createElement('span');
+    label.className = 'plan39-benchmark-label';
+    if (benchmark.label === '0') label.classList.add('plan39-benchmark-label-start');
+    if (benchmark.label === '1') label.classList.add('plan39-benchmark-label-end');
+    label.style.left = `${value * 100}%`;
+    label.textContent = benchmark.label === '0' ? strings.plan39.zero
+      : benchmark.label === '1' ? strings.plan39.one : strings.plan39.half;
+    frame.appendChild(label);
   }
   for (const candidate of model.candidatePositions) {
-    const position = Number(candidate.form.numerator) / Number(candidate.form.denominator);
-    const x = x0 + (x1 - x0) * position;
-    svg.appendChild(svgElement('circle', {
-      cx: x,
-      cy: y,
-      r: 7,
-      class: candidate.id === selectedCandidateId ? 'plan39-candidate-point plan39-candidate-point-preview' : 'plan39-candidate-point',
-      'data-candidate-id': candidate.id,
-    }));
+    const point = document.createElement('span');
+    point.className = 'plan39-candidate-point';
+    point.style.left = `${ratio(candidate.form) * 100}%`;
+    point.setAttribute('data-candidate-id', candidate.id);
+    frame.appendChild(point);
+  }
+  if (selectedCandidateId) {
+    const selected = model.candidatePositions.find(({ id }) => id === selectedCandidateId);
+    if (selected) {
+      const marker = document.createElement('span');
+      marker.className = 'plan39-preview-marker';
+      marker.style.left = `${ratio(selected.form) * 100}%`;
+      marker.setAttribute('data-candidate-id', selected.id);
+      marker.setAttribute('aria-hidden', 'true');
+      frame.appendChild(marker);
+    }
   }
   if (model.acceptedPosition) {
-    const position = Number(model.acceptedPosition.numerator) / Number(model.acceptedPosition.denominator);
-    const x = x0 + (x1 - x0) * position;
-    svg.appendChild(svgElement('circle', { cx: x, cy: y, r: 10, class: 'plan39-accepted-point' }));
+    const point = document.createElement('span');
+    point.className = 'plan39-accepted-point';
+    point.style.left = `${ratio(model.acceptedPosition) * 100}%`;
+    point.setAttribute('data-accepted-position', 'true');
+    frame.appendChild(point);
   }
-  figure.appendChild(svg);
+  figure.appendChild(frame);
   return figure;
 }
 
 function makeAcceptedConnectorOverlay(scene, stack) {
   const accepted = scene.meaning.numberLine.acceptedPosition;
   if (!accepted) return null;
-  const barSvg = stack.querySelector('.plan39-source-figure svg');
-  const trackSvg = stack.querySelector('.plan39-track-figure svg');
-  if (!barSvg || !trackSvg || typeof stack.getBoundingClientRect !== 'function'
-    || typeof barSvg.createSVGPoint !== 'function' || typeof trackSvg.createSVGPoint !== 'function') return null;
+  const bar = stack.querySelector('.plan39-bar-track');
+  const frame = stack.querySelector('.plan39-axis-frame');
+  const axis = frame?.querySelector('.plan39-axis-line');
+  if (!bar || !frame || !axis || typeof stack.getBoundingClientRect !== 'function') return null;
   const stackRect = stack.getBoundingClientRect();
-  if (!stackRect.width || !stackRect.height) return null;
+  const barRect = bar.getBoundingClientRect();
+  const frameRect = frame.getBoundingClientRect();
+  const axisRect = axis.getBoundingClientRect();
+  if (!stackRect.width || !stackRect.height || !barRect.width || !frameRect.width) return null;
   const sourceForm = scene.meaning.quantities.source.sourceForm;
-  const sourceX = 42 + (958 - 42) * Number(sourceForm.numerator) / Number(sourceForm.denominator);
-  const targetX = 42 + (958 - 42) * Number(accepted.numerator) / Number(accepted.denominator);
-  const screenPoint = (svg, x, y) => {
-    const point = svg.createSVGPoint();
-    point.x = x;
-    point.y = y;
-    return point.matrixTransform(svg.getScreenCTM());
-  };
-  const source = screenPoint(barSvg, sourceX, 94);
-  const target = screenPoint(trackSvg, targetX, 79);
+  const sourceX = barRect.left + bar.clientLeft + bar.clientWidth * ratio(sourceForm);
+  const targetX = frameRect.left + frameRect.width * ratio(accepted);
+  const sourceY = barRect.bottom;
+  const targetY = axisRect.top + axisRect.height / 2;
   const overlay = svgElement('svg', {
     class: 'plan39-connector-overlay',
     viewBox: `0 0 ${stackRect.width} ${stackRect.height}`,
@@ -153,73 +155,101 @@ function makeAcceptedConnectorOverlay(scene, stack) {
     focusable: 'false',
   });
   overlay.appendChild(svgElement('line', {
-    x1: source.x - stackRect.left,
-    y1: source.y - stackRect.top,
-    x2: target.x - stackRect.left,
-    y2: target.y - stackRect.top,
+    x1: sourceX - stackRect.left,
+    y1: sourceY - stackRect.top,
+    x2: targetX - stackRect.left,
+    y2: targetY - stackRect.top,
     class: 'plan39-accepted-connector',
   }));
   return overlay;
 }
 
-function makeCandidateFieldset(scene, strings, { previewHandle, onPreviewChange, key, view, updateTrack }) {
-  const model = scene.meaning.numberLine;
+function makeLinearChoices(scene, strings, { previewHandle, onPreviewChange, key }) {
   const fieldset = document.createElement('fieldset');
-  fieldset.className = `plan39-candidates plan39-candidates-${view}`;
+  fieldset.className = 'plan39-candidates plan39-candidates-linear';
   const legend = document.createElement('legend');
   legend.textContent = strings.plan39.candidateLegend;
   fieldset.appendChild(legend);
-  const current = previewHandle?.contextKey === key ? previewHandle : null;
-  model.candidatePositions.forEach((candidate, index) => {
-    const labelText = model.densityMode === 'partitioned'
-      ? strings.plan39.stepChoice(candidate.form.numerator, candidate.form.denominator)
+  scene.meaning.numberLine.candidatePositions.forEach((candidate) => {
+    const labelText = scene.meaning.numberLine.densityMode === 'partitioned'
+      ? strings.plan39.stepChoice(candidate.stepIndex, candidate.totalSteps)
       : candidate.description;
-    if (view === 'visual') {
-      const option = document.createElement('button');
-      option.type = 'button';
-      option.className = 'plan39-candidate plan39-candidate-option';
-      option.textContent = labelText;
-      option.setAttribute('data-candidate-id', candidate.id);
-      option.setAttribute('aria-pressed', String(current?.candidateId === candidate.id));
-      option.addEventListener('click', () => {
-        const handle = { contextKey: key, candidateId: candidate.id };
-        onPreviewChange(handle);
-        for (const button of fieldset.querySelectorAll('.plan39-candidate-option')) {
-          button.setAttribute('aria-pressed', String(button === option));
-        }
-        updateTrack(candidate.id);
-        check.disabled = false;
-      });
-      fieldset.appendChild(option);
-    } else {
-      const label = document.createElement('label');
-      label.className = 'plan39-candidate';
-      const radio = document.createElement('input');
-      radio.type = 'radio';
-      radio.name = `plan39-location-${view}-${key}`;
-      radio.value = candidate.id;
-      radio.setAttribute('data-candidate-id', candidate.id);
-      radio.setAttribute('aria-label', labelText);
-      radio.checked = current?.candidateId === candidate.id;
-      radio.addEventListener('change', () => {
-        if (!radio.checked) return;
-        onPreviewChange({ contextKey: key, candidateId: candidate.id });
-        check.disabled = false;
-      });
-      label.appendChild(radio);
-      const visibleLabel = document.createElement('span');
-      visibleLabel.textContent = labelText;
-      label.appendChild(visibleLabel);
-      fieldset.appendChild(label);
-    }
+    const label = document.createElement('label');
+    label.className = 'plan39-candidate';
+    const radio = document.createElement('input');
+    radio.type = 'radio';
+    radio.name = `plan39-location-${key}`;
+    radio.value = candidate.id;
+    radio.setAttribute('data-candidate-id', candidate.id);
+    radio.setAttribute('aria-label', labelText);
+    radio.checked = previewHandle?.candidateId === candidate.id;
+    radio.addEventListener('change', () => {
+      if (radio.checked) onPreviewChange({ contextKey: key, candidateId: candidate.id });
+    });
+    label.appendChild(radio);
+    const visible = document.createElement('span');
+    visible.textContent = labelText;
+    label.appendChild(visible);
+    fieldset.appendChild(label);
   });
-  const check = createButton({
-    label: strings.plan39.checkPosition,
-    className: 'plan39-check-position',
-    disabled: !current,
-  });
-  fieldset.appendChild(check);
   return fieldset;
+}
+
+function makeVisualStepper(scene, strings, { previewHandle, onPreviewChange, key, updateTrack }) {
+  const candidates = scene.meaning.numberLine.candidatePositions;
+  let selectedIndex = previewHandle ? candidates.findIndex(({ id }) => id === previewHandle.candidateId) : -1;
+  const group = document.createElement('div');
+  group.className = 'plan39-stepper';
+  group.setAttribute('role', 'group');
+  group.setAttribute('aria-label', strings.plan39.stepperLabel);
+  const status = document.createElement('output');
+  status.className = 'plan39-stepper-status';
+  status.setAttribute('aria-live', 'polite');
+  const previous = createButton({ label: strings.plan39.previousPoint, className: 'plan39-stepper-previous' });
+  previous.classList.add('plan39-stepper-move');
+  const next = createButton({ label: strings.plan39.nextPoint, className: 'plan39-stepper-next' });
+  next.classList.add('plan39-stepper-move');
+
+  function updateSelection(nextIndex, notify = true) {
+    selectedIndex = nextIndex;
+    const selected = candidates[selectedIndex];
+    if (notify) onPreviewChange({ contextKey: key, candidateId: selected.id });
+    status.setAttribute('data-candidate-id', selected.id);
+    status.textContent = scene.meaning.numberLine.densityMode === 'partitioned'
+      ? strings.plan39.previewPartitionStep(selected.stepIndex, selected.totalSteps)
+      : strings.plan39.previewSparsePoint(selectedIndex);
+    previous.disabled = selectedIndex === 0;
+    next.disabled = selectedIndex === candidates.length - 1;
+    updateTrack(selected.id);
+  }
+
+  previous.addEventListener('click', () => {
+    const targetIndex = selectedIndex < 0 ? candidates.length - 1 : selectedIndex - 1;
+    updateSelection(targetIndex);
+  });
+  next.addEventListener('click', () => {
+    const targetIndex = selectedIndex < 0 ? 0 : selectedIndex + 1;
+    updateSelection(targetIndex);
+  });
+  if (selectedIndex >= 0) updateSelection(selectedIndex, false);
+  else {
+    status.textContent = strings.plan39.noPreview;
+    previous.disabled = false;
+    next.disabled = false;
+  }
+  group.appendChild(previous);
+  group.appendChild(status);
+  group.appendChild(next);
+  return {
+    element: group,
+    readCandidateId: () => status.getAttribute('data-candidate-id'),
+    writeCandidateId(candidateId) {
+      const index = candidates.findIndex(({ id }) => id === candidateId);
+      if (index < 0) return false;
+      updateSelection(index, false);
+      return true;
+    },
+  };
 }
 
 export function createNumberLineLocateRenderer({
@@ -234,6 +264,7 @@ export function createNumberLineLocateRenderer({
   if (!dispatchAction || typeof dispatchAction !== 'function') throw new TypeError('dispatchAction is required');
   let root = null;
   let activeControls = null;
+  let activeStepper = null;
   let currentKey = null;
   let currentScene = null;
   let previewHandle = null;
@@ -248,9 +279,18 @@ export function createNumberLineLocateRenderer({
     if (!activeControls?.isConnected || !root.contains(activeControls)) throw new Error('Visible Plan 39 region is missing its current controls');
     if (currentScene?.meaning.currentTask.beat !== 'locate') return null;
     const candidateId = view === 'visual'
-      ? activeControls.querySelector('.plan39-candidate-option[aria-pressed="true"]')?.getAttribute('data-candidate-id') ?? null
+      ? activeStepper?.readCandidateId() ?? null
       : Array.from(activeControls.querySelectorAll('input')).find((input) => input.type === 'radio' && input.checked)?.getAttribute('data-candidate-id') ?? null;
     return candidateId ? { contextKey: currentKey, candidateId } : null;
+  }
+
+  function refreshGeometry() {
+    const stack = root?.querySelector('.plan39-representation-stack');
+    if (!stack) return;
+    const previous = stack.querySelector('.plan39-connector-overlay');
+    if (previous) stack.removeChild(previous);
+    const connector = makeAcceptedConnectorOverlay(currentScene, stack);
+    if (connector) stack.appendChild(connector);
   }
 
   function update(scene) {
@@ -261,20 +301,19 @@ export function createNumberLineLocateRenderer({
     if (currentKey !== nextKey || scene.meaning.currentTask.beat !== 'locate') previewHandle = null;
     currentScene = scene;
     currentKey = nextKey;
+    activeStepper = null;
     root.replaceChildren();
     const heading = document.createElement('h2');
     heading.className = 'active-beat-prompt';
-    heading.textContent = scene.meaning.status.episode === 'resolved'
-      ? strings.plan39.resolvedPrompt
-      : strings.plan39.prompt;
+    heading.textContent = scene.meaning.status.episode === 'resolved' ? strings.plan39.resolvedPrompt : strings.plan39.prompt;
     root.appendChild(heading);
     const stack = document.createElement('div');
     stack.className = 'plan39-representation-stack';
     stack.appendChild(makeBar(scene, strings, view));
-    const track = makeTrack(scene, strings, previewHandle?.contextKey === currentKey ? previewHandle.candidateId : null, view);
-    stack.appendChild(track);
+    stack.appendChild(makeTrack(scene, strings, previewHandle?.contextKey === currentKey ? previewHandle.candidateId : null, view));
     root.appendChild(stack);
     refreshGeometry();
+
     if (scene.meaning.status.recovery?.beat === 'locate') {
       const feedback = document.createElement('p');
       feedback.className = 'plan39-feedback';
@@ -282,32 +321,63 @@ export function createNumberLineLocateRenderer({
       feedback.textContent = strings.plan39.recovery(scene.meaning.status.recovery.classification.kind);
       root.appendChild(feedback);
     }
+
     if (scene.meaning.currentTask.beat === 'encounter') {
       activeControls = document.createElement('div');
       activeControls.className = 'active-beat-controls plan39-controls';
-      activeControls.appendChild(createButton({ label: strings.plan39.continue, className: 'plan39-continue', onClick: () => dispatchAction({ type: 'acknowledge-bridge-encounter' }) }));
+      activeControls.appendChild(createButton({
+        label: strings.plan39.continue,
+        className: 'plan39-continue',
+        onClick: () => dispatchAction({ type: 'acknowledge-bridge-encounter' }),
+      }));
     } else if (scene.meaning.currentTask.beat === 'locate') {
-      activeControls = makeCandidateFieldset(scene, strings, {
-        previewHandle: previewHandle?.contextKey === currentKey ? previewHandle : null,
-        onPreviewChange: (handle) => { previewHandle = handle; onPreviewChange(handle); },
-        key: currentKey,
-        view,
-        updateTrack: (candidateId) => {
-          const next = makeTrack(scene, strings, candidateId, view);
-          replaceNode(stack, track, next);
-        },
+      activeControls = document.createElement('div');
+      activeControls.className = 'active-beat-controls plan39-controls';
+      const stackForUpdate = stack;
+      let checkButton = null;
+      const savePreview = (handle) => {
+        previewHandle = handle;
+        onPreviewChange(handle);
+        if (handle && checkButton) checkButton.disabled = false;
+      };
+      const updateTrack = (candidateId) => {
+        const currentTrack = stackForUpdate.querySelector('.plan39-track-figure');
+        if (!currentTrack) throw new Error('Visible Plan 39 track is missing during preview update');
+        replaceNode(stackForUpdate, currentTrack, makeTrack(currentScene, strings, candidateId, view));
+        refreshGeometry();
+      };
+      if (view === 'visual') {
+        activeStepper = makeVisualStepper(scene, strings, {
+          previewHandle: previewHandle?.contextKey === currentKey ? previewHandle : null,
+          onPreviewChange: savePreview,
+          key: currentKey,
+          updateTrack,
+        });
+        activeControls.appendChild(activeStepper.element);
+      } else {
+        const choices = makeLinearChoices(scene, strings, {
+          previewHandle: previewHandle?.contextKey === currentKey ? previewHandle : null,
+          onPreviewChange: savePreview,
+          key: currentKey,
+        });
+        choices.classList.add('active-beat-controls');
+        activeControls.appendChild(choices);
+      }
+      const check = createButton({
+        label: strings.plan39.checkPosition,
+        className: 'plan39-check-position',
+        disabled: !previewHandle,
       });
-      activeControls.classList.add('active-beat-controls');
-      activeControls.addEventListener('click', (event) => {
-        if (event.target.closest?.('.plan39-check-position')) {
-          const preview = readCurrentPreview();
-          if (!preview || preview.contextKey !== currentKey) return;
-          const candidate = currentScene.meaning.numberLine.candidatePositions.find(({ id }) => id === preview.candidateId);
-          if (!candidate) return;
-          previewHandle = null;
-          onPreviewChange(null);
-          dispatchAction({ type: 'propose-number-line-location', proposed: candidate.form });
-        }
+      checkButton = check;
+      activeControls.appendChild(check);
+      check.addEventListener('click', () => {
+        const preview = readCurrentPreview();
+        if (!preview || preview.contextKey !== currentKey) return;
+        const candidate = currentScene.meaning.numberLine.candidatePositions.find(({ id }) => id === preview.candidateId);
+        if (!candidate) return;
+        previewHandle = null;
+        onPreviewChange(null);
+        dispatchAction({ type: 'propose-number-line-location', proposed: candidate.form });
       });
     } else if (scene.meaning.currentTask.beat === 'resolve' && scene.meaning.status.episode !== 'resolved') {
       activeControls = document.createElement('div');
@@ -320,20 +390,11 @@ export function createNumberLineLocateRenderer({
     root.appendChild(activeControls);
     if (getHelpOpen() && scene.meaning.currentTask.beat === 'locate') {
       const help = document.createElement('p');
-      help.id = `plan39-help-${view}`;
+      help.id = `${view}-plan39-help`;
       help.className = 'plan39-help';
       help.textContent = strings.plan39.help;
       root.appendChild(help);
     }
-  }
-
-  function refreshGeometry() {
-    const stack = root?.querySelector('.plan39-representation-stack');
-    if (!stack) return;
-    const previous = stack.querySelector('.plan39-connector-overlay');
-    if (previous) stack.removeChild(previous);
-    const connector = makeAcceptedConnectorOverlay(currentScene, stack);
-    if (connector) stack.appendChild(connector);
   }
 
   return {
@@ -351,6 +412,7 @@ export function createNumberLineLocateRenderer({
       if (root?.parentNode) root.parentNode.removeChild(root);
       root = null;
       activeControls = null;
+      activeStepper = null;
       currentScene = null;
       currentKey = null;
       previewHandle = null;
@@ -369,13 +431,16 @@ export function createNumberLineLocateRenderer({
       if (!handle || handle.contextKey !== currentKey || currentScene?.meaning.currentTask.beat !== 'locate') return false;
       const candidate = currentScene.meaning.numberLine.candidatePositions.find(({ id }) => id === handle.candidateId);
       if (!candidate) return false;
-      previewHandle = { contextKey: currentKey, candidateId: candidate.id };
       if (view === 'visual') {
-        for (const button of activeControls.querySelectorAll('.plan39-candidate-option')) button.setAttribute('aria-pressed', String(button.getAttribute('data-candidate-id') === candidate.id));
-        const stack = root.querySelector('.plan39-representation-stack');
-        replaceNode(stack, stack.querySelector('.plan39-track-figure'), makeTrack(currentScene, strings, candidate.id, view));
+        if (!activeStepper?.writeCandidateId(candidate.id)) return false;
+        previewHandle = { contextKey: currentKey, candidateId: candidate.id };
       } else {
-        for (const input of activeControls.querySelectorAll('input')) if (input.type === 'radio') input.checked = input.getAttribute('data-candidate-id') === candidate.id;
+        const input = Array.from(activeControls.querySelectorAll('input')).find((item) => item.type === 'radio' && item.getAttribute('data-candidate-id') === candidate.id);
+        if (!input) return false;
+        input.checked = true;
+        previewHandle = { contextKey: currentKey, candidateId: candidate.id };
+        const check = activeControls.querySelector('.plan39-check-position');
+        if (check) check.disabled = false;
       }
       const check = activeControls.querySelector('.plan39-check-position');
       if (check) check.disabled = false;
@@ -385,7 +450,7 @@ export function createNumberLineLocateRenderer({
       if (!root?.isConnected || !activeControls?.isConnected || !root.contains(activeControls)) return false;
       const selector = kind === 'check' ? '.plan39-check-position'
         : kind === 'finish' ? '.plan39-finish'
-          : kind === 'candidate' ? (view === 'visual' ? '.plan39-candidate-option' : '[type="radio"]') : '.plan39-continue';
+          : kind === 'candidate' ? (view === 'visual' ? '.plan39-stepper-next' : '[type="radio"]') : '.plan39-continue';
       const control = activeControls.querySelector(selector);
       if (!control?.isConnected || !activeControls.contains(control)) return false;
       control.focus();

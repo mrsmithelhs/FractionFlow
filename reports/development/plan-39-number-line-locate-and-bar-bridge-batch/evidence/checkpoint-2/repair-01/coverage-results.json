@@ -1,0 +1,735 @@
+{
+  "results": [
+    {
+      "scenario": "high-bridge-06-three-eighths-8-360x740-dpr1",
+      "expectedCount": 9,
+      "visualBounds": {
+        "prompt": {
+          "x": 25,
+          "y": 145,
+          "width": 310,
+          "height": 41.96875
+        },
+        "controls": {
+          "x": 25,
+          "y": 335.078125,
+          "width": 310,
+          "height": 124
+        },
+        "scrollY": 0
+      },
+      "linearBounds": {
+        "prompt": {
+          "x": 25,
+          "y": 145,
+          "width": 310,
+          "height": 41.96875
+        },
+        "controls": {
+          "x": 25,
+          "y": 340.65625,
+          "width": 310,
+          "height": 358.875
+        },
+        "scrollY": 0
+      },
+      "visualMetrics": {
+        "bar": {
+          "left": 41,
+          "right": 319,
+          "top": 244.703125,
+          "bottom": 276.703125
+        },
+        "axis": {
+          "left": 41,
+          "right": 319,
+          "centerY": 296.578125
+        },
+        "shadedStart": 41,
+        "shadedEnd": 145.25,
+        "pointEnds": [
+          41,
+          319
+        ],
+        "pointCount": 9,
+        "frame": {
+          "left": 41,
+          "right": 319
+        }
+      },
+      "connector": {
+        "source": {
+          "x": 145.25,
+          "y": 276.703125
+        },
+        "target": {
+          "x": 145.25,
+          "y": 296.578125
+        },
+        "shade": {
+          "x": 145.25,
+          "y": 276.703125
+        },
+        "point": {
+          "x": 145.25,
+          "y": 296.578125
+        },
+        "svg": {
+          "x": 25,
+          "y": 192.5625,
+          "width": 310,
+          "height": 136.921875,
+          "top": 192.5625,
+          "right": 335,
+          "bottom": 329.484375,
+          "left": 25
+        }
+      },
+      "runtimeViewport": {
+        "innerWidth": 360,
+        "innerHeight": 740,
+        "devicePixelRatio": 1
+      }
+    },
+    {
+      "scenario": "high-bridge-06-three-eighths-8-1093x614-dpr1.25",
+      "expectedCount": 9,
+      "visualBounds": {
+        "prompt": {
+          "x": 210.5,
+          "y": 181.09375,
+          "width": 672,
+          "height": 20.984375
+        },
+        "controls": {
+          "x": 210.5,
+          "y": 367.765625,
+          "width": 672,
+          "height": 104
+        },
+        "scrollY": 0
+      },
+      "linearBounds": {
+        "prompt": {
+          "x": 210.5,
+          "y": 103.09375,
+          "width": 672,
+          "height": 20.984375
+        },
+        "controls": {
+          "x": 210.5,
+          "y": 246.5625,
+          "width": 672,
+          "height": 367
+        },
+        "scrollY": 78
+      },
+      "visualMetrics": {
+        "bar": {
+          "left": 230.5,
+          "right": 862.5,
+          "top": 263.015625,
+          "bottom": 300.609375
+        },
+        "axis": {
+          "left": 230.5,
+          "right": 862.5,
+          "centerY": 322.875
+        },
+        "shadedStart": 230.5,
+        "shadedEnd": 467.5,
+        "pointEnds": [
+          230.5,
+          862.5
+        ],
+        "pointCount": 9,
+        "frame": {
+          "left": 230.5,
+          "right": 862.5
+        }
+      },
+      "connector": {
+        "source": {
+          "x": 467.5,
+          "y": 300.609375
+        },
+        "target": {
+          "x": 467.5,
+          "y": 322.875
+        },
+        "shade": {
+          "x": 467.5,
+          "y": 300.609375
+        },
+        "point": {
+          "x": 467.5,
+          "y": 322.875
+        },
+        "svg": {
+          "x": 210.5,
+          "y": 210.875,
+          "width": 672,
+          "height": 148.09375,
+          "top": 210.875,
+          "right": 882.5,
+          "bottom": 358.96875,
+          "left": 210.5
+        }
+      },
+      "runtimeViewport": {
+        "innerWidth": 1093,
+        "innerHeight": 614,
+        "devicePixelRatio": 1.25
+      }
+    },
+    {
+      "scenario": "high-bridge-04-two-thirds-3-360x740-dpr1",
+      "expectedCount": 4,
+      "visualBounds": {
+        "prompt": {
+          "x": 25,
+          "y": 145,
+          "width": 310,
+          "height": 41.96875
+        },
+        "controls": {
+          "x": 25,
+          "y": 335.078125,
+          "width": 310,
+          "height": 124
+        },
+        "scrollY": 0
+      },
+      "linearBounds": {
+        "prompt": {
+          "x": 25,
+          "y": 145,
+          "width": 310,
+          "height": 41.96875
+        },
+        "controls": {
+          "x": 25,
+          "y": 340.65625,
+          "width": 310,
+          "height": 189.75
+        },
+        "scrollY": 0
+      },
+      "visualMetrics": {
+        "bar": {
+          "left": 41,
+          "right": 319,
+          "top": 244.703125,
+          "bottom": 276.703125
+        },
+        "axis": {
+          "left": 41,
+          "right": 319,
+          "centerY": 296.578125
+        },
+        "shadedStart": 41,
+        "shadedEnd": 226.328125,
+        "pointEnds": [
+          41,
+          319
+        ],
+        "pointCount": 4,
+        "frame": {
+          "left": 41,
+          "right": 319
+        }
+      },
+      "connector": {
+        "source": {
+          "x": 226.33333333333331,
+          "y": 276.703125
+        },
+        "target": {
+          "x": 226.33333333333331,
+          "y": 296.578125
+        },
+        "shade": {
+          "x": 226.328125,
+          "y": 276.703125
+        },
+        "point": {
+          "x": 226.328125,
+          "y": 296.578125
+        },
+        "svg": {
+          "x": 25,
+          "y": 192.5625,
+          "width": 310,
+          "height": 136.921875,
+          "top": 192.5625,
+          "right": 335,
+          "bottom": 329.484375,
+          "left": 25
+        }
+      },
+      "runtimeViewport": {
+        "innerWidth": 360,
+        "innerHeight": 740,
+        "devicePixelRatio": 1
+      }
+    },
+    {
+      "scenario": "high-bridge-04-two-thirds-3-1093x614-dpr1.25",
+      "expectedCount": 4,
+      "visualBounds": {
+        "prompt": {
+          "x": 210.5,
+          "y": 181.09375,
+          "width": 672,
+          "height": 20.984375
+        },
+        "controls": {
+          "x": 210.5,
+          "y": 367.765625,
+          "width": 672,
+          "height": 104
+        },
+        "scrollY": 0
+      },
+      "linearBounds": {
+        "prompt": {
+          "x": 210.5,
+          "y": 181.09375,
+          "width": 672,
+          "height": 20.984375
+        },
+        "controls": {
+          "x": 210.5,
+          "y": 324.5625,
+          "width": 672,
+          "height": 193
+        },
+        "scrollY": 0
+      },
+      "visualMetrics": {
+        "bar": {
+          "left": 230.5,
+          "right": 862.5,
+          "top": 263.015625,
+          "bottom": 300.609375
+        },
+        "axis": {
+          "left": 230.5,
+          "right": 862.5,
+          "centerY": 322.875
+        },
+        "shadedStart": 230.5,
+        "shadedEnd": 651.828125,
+        "pointEnds": [
+          230.5,
+          862.5
+        ],
+        "pointCount": 4,
+        "frame": {
+          "left": 230.5,
+          "right": 862.5
+        }
+      },
+      "connector": {
+        "source": {
+          "x": 651.8333333333333,
+          "y": 300.609375
+        },
+        "target": {
+          "x": 651.8333333333333,
+          "y": 322.875
+        },
+        "shade": {
+          "x": 651.828125,
+          "y": 300.609375
+        },
+        "point": {
+          "x": 651.828125,
+          "y": 322.875
+        },
+        "svg": {
+          "x": 210.5,
+          "y": 210.875,
+          "width": 672,
+          "height": 148.09375,
+          "top": 210.875,
+          "right": 882.5,
+          "bottom": 358.96875,
+          "left": 210.5
+        }
+      },
+      "runtimeViewport": {
+        "innerWidth": 1093,
+        "innerHeight": 614,
+        "devicePixelRatio": 1.25
+      }
+    },
+    {
+      "scenario": "medium-bridge-07-one-third-med-360x740-dpr1",
+      "expectedCount": 4,
+      "visualBounds": {
+        "prompt": {
+          "x": 25,
+          "y": 145,
+          "width": 310,
+          "height": 41.96875
+        },
+        "controls": {
+          "x": 25,
+          "y": 335.078125,
+          "width": 310,
+          "height": 124
+        },
+        "scrollY": 0
+      },
+      "linearBounds": {
+        "prompt": {
+          "x": 25,
+          "y": 145,
+          "width": 310,
+          "height": 41.96875
+        },
+        "controls": {
+          "x": 25,
+          "y": 340.65625,
+          "width": 310,
+          "height": 234.25
+        },
+        "scrollY": 0
+      },
+      "visualMetrics": {
+        "bar": {
+          "left": 41,
+          "right": 319,
+          "top": 244.703125,
+          "bottom": 276.703125
+        },
+        "axis": {
+          "left": 41,
+          "right": 319,
+          "centerY": 296.578125
+        },
+        "shadedStart": 41,
+        "shadedEnd": 133.65625,
+        "pointEnds": [
+          87.328125,
+          226.328125
+        ],
+        "pointCount": 4,
+        "frame": {
+          "left": 41,
+          "right": 319
+        }
+      },
+      "connector": {
+        "source": {
+          "x": 133.66666666666666,
+          "y": 276.703125
+        },
+        "target": {
+          "x": 133.66666666666666,
+          "y": 296.578125
+        },
+        "shade": {
+          "x": 133.65625,
+          "y": 276.703125
+        },
+        "point": {
+          "x": 133.65625,
+          "y": 296.578125
+        },
+        "svg": {
+          "x": 25,
+          "y": 192.5625,
+          "width": 310,
+          "height": 136.921875,
+          "top": 192.5625,
+          "right": 335,
+          "bottom": 329.484375,
+          "left": 25
+        }
+      },
+      "runtimeViewport": {
+        "innerWidth": 360,
+        "innerHeight": 740,
+        "devicePixelRatio": 1
+      }
+    },
+    {
+      "scenario": "medium-bridge-07-one-third-med-1093x614-dpr1.25",
+      "expectedCount": 4,
+      "visualBounds": {
+        "prompt": {
+          "x": 210.5,
+          "y": 181.09375,
+          "width": 672,
+          "height": 20.984375
+        },
+        "controls": {
+          "x": 210.5,
+          "y": 367.765625,
+          "width": 672,
+          "height": 104
+        },
+        "scrollY": 0
+      },
+      "linearBounds": {
+        "prompt": {
+          "x": 210.5,
+          "y": 181.09375,
+          "width": 672,
+          "height": 20.984375
+        },
+        "controls": {
+          "x": 210.5,
+          "y": 324.5625,
+          "width": 672,
+          "height": 193
+        },
+        "scrollY": 0
+      },
+      "visualMetrics": {
+        "bar": {
+          "left": 230.5,
+          "right": 862.5,
+          "top": 263.015625,
+          "bottom": 300.609375
+        },
+        "axis": {
+          "left": 230.5,
+          "right": 862.5,
+          "centerY": 322.875
+        },
+        "shadedStart": 230.5,
+        "shadedEnd": 441.15625,
+        "pointEnds": [
+          335.828125,
+          651.828125
+        ],
+        "pointCount": 4,
+        "frame": {
+          "left": 230.5,
+          "right": 862.5
+        }
+      },
+      "connector": {
+        "source": {
+          "x": 441.16666666666663,
+          "y": 300.609375
+        },
+        "target": {
+          "x": 441.16666666666663,
+          "y": 322.875
+        },
+        "shade": {
+          "x": 441.15625,
+          "y": 300.609375
+        },
+        "point": {
+          "x": 441.15625,
+          "y": 322.875
+        },
+        "svg": {
+          "x": 210.5,
+          "y": 210.875,
+          "width": 672,
+          "height": 148.09375,
+          "top": 210.875,
+          "right": 882.5,
+          "bottom": 358.96875,
+          "left": 210.5
+        }
+      },
+      "runtimeViewport": {
+        "innerWidth": 1093,
+        "innerHeight": 614,
+        "devicePixelRatio": 1.25
+      }
+    },
+    {
+      "scenario": "medium-bridge-08-five-sixths-med-360x740-dpr1",
+      "expectedCount": 4,
+      "visualBounds": {
+        "prompt": {
+          "x": 25,
+          "y": 145,
+          "width": 310,
+          "height": 41.96875
+        },
+        "controls": {
+          "x": 25,
+          "y": 335.078125,
+          "width": 310,
+          "height": 124
+        },
+        "scrollY": 0
+      },
+      "linearBounds": {
+        "prompt": {
+          "x": 25,
+          "y": 145,
+          "width": 310,
+          "height": 41.96875
+        },
+        "controls": {
+          "x": 25,
+          "y": 340.65625,
+          "width": 310,
+          "height": 234.25
+        },
+        "scrollY": 0
+      },
+      "visualMetrics": {
+        "bar": {
+          "left": 41,
+          "right": 319,
+          "top": 244.703125,
+          "bottom": 276.703125
+        },
+        "axis": {
+          "left": 41,
+          "right": 319,
+          "centerY": 296.578125
+        },
+        "shadedStart": 41,
+        "shadedEnd": 272.65625,
+        "pointEnds": [
+          133.65625,
+          272.65625
+        ],
+        "pointCount": 4,
+        "frame": {
+          "left": 41,
+          "right": 319
+        }
+      },
+      "connector": {
+        "source": {
+          "x": 272.6666666666667,
+          "y": 276.703125
+        },
+        "target": {
+          "x": 272.6666666666667,
+          "y": 296.578125
+        },
+        "shade": {
+          "x": 272.65625,
+          "y": 276.703125
+        },
+        "point": {
+          "x": 272.65625,
+          "y": 296.578125
+        },
+        "svg": {
+          "x": 25,
+          "y": 192.5625,
+          "width": 310,
+          "height": 136.921875,
+          "top": 192.5625,
+          "right": 335,
+          "bottom": 329.484375,
+          "left": 25
+        }
+      },
+      "runtimeViewport": {
+        "innerWidth": 360,
+        "innerHeight": 740,
+        "devicePixelRatio": 1
+      }
+    },
+    {
+      "scenario": "medium-bridge-08-five-sixths-med-1093x614-dpr1.25",
+      "expectedCount": 4,
+      "visualBounds": {
+        "prompt": {
+          "x": 210.5,
+          "y": 181.09375,
+          "width": 672,
+          "height": 20.984375
+        },
+        "controls": {
+          "x": 210.5,
+          "y": 367.765625,
+          "width": 672,
+          "height": 104
+        },
+        "scrollY": 0
+      },
+      "linearBounds": {
+        "prompt": {
+          "x": 210.5,
+          "y": 181.09375,
+          "width": 672,
+          "height": 20.984375
+        },
+        "controls": {
+          "x": 210.5,
+          "y": 324.5625,
+          "width": 672,
+          "height": 193
+        },
+        "scrollY": 0
+      },
+      "visualMetrics": {
+        "bar": {
+          "left": 230.5,
+          "right": 862.5,
+          "top": 263.015625,
+          "bottom": 300.609375
+        },
+        "axis": {
+          "left": 230.5,
+          "right": 862.5,
+          "centerY": 322.875
+        },
+        "shadedStart": 230.5,
+        "shadedEnd": 757.15625,
+        "pointEnds": [
+          441.15625,
+          757.15625
+        ],
+        "pointCount": 4,
+        "frame": {
+          "left": 230.5,
+          "right": 862.5
+        }
+      },
+      "connector": {
+        "source": {
+          "x": 757.1666666666667,
+          "y": 300.609375
+        },
+        "target": {
+          "x": 757.1666666666667,
+          "y": 322.875
+        },
+        "shade": {
+          "x": 757.15625,
+          "y": 300.609375
+        },
+        "point": {
+          "x": 757.15625,
+          "y": 322.875
+        },
+        "svg": {
+          "x": 210.5,
+          "y": 210.875,
+          "width": 672,
+          "height": 148.09375,
+          "top": 210.875,
+          "right": 882.5,
+          "bottom": 358.96875,
+          "left": 210.5
+        }
+      },
+      "runtimeViewport": {
+        "innerWidth": 1093,
+        "innerHeight": 614,
+        "devicePixelRatio": 1.25
+      }
+    }
+  ],
+  "failures": [],
+  "browser": "Chrome channel, headless",
+  "reducedMotion": true
+}

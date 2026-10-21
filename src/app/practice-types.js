@@ -281,7 +281,7 @@ export const PLAN40_PRACTICE_TYPES_V9 = deepFreeze([
 ]);
 
 export const PLAN39_BAR_TO_LINE_PRACTICE_TYPE = deepFreeze({
-  id: 'place-fractions-on-number-line',
+  id: 'bar-to-line-same-amount',
   label: 'Place fractions on a number line',
   setId: PLAN37_BAR_TO_LINE_BRIDGE_PRACTICE_SET.id,
   setRevision: PLAN37_BAR_TO_LINE_BRIDGE_PRACTICE_SET.revision,

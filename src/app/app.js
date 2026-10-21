@@ -1375,6 +1375,10 @@ export function createFractionFlowApp({
       if (action.type === 'request-task-help'
         && state.episodeDefinition.id === PLAN20_LIKE_DENOMINATOR_EPISODE_DEFINITION.id
         && state.beat === 'operate') helpButton.focus();
+      if (action.type === 'acknowledge-bridge-encounter') {
+        const renderer = visualView ? visualNumberLineRenderer : linearNumberLineRenderer;
+        renderer?.focusControl('candidate');
+      }
       if (action.type === 'propose-number-line-location') {
         const renderer = visualView ? visualNumberLineRenderer : linearNumberLineRenderer;
         const focusTarget = state.beat === 'resolve' ? 'finish' : 'candidate';
