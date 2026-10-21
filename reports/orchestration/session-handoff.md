@@ -4,6 +4,16 @@ Updated 2026-10-21. Read current packet board and git status before acting.
 This replaces the accumulated historical pending-state notes; earlier reviews
 remain in their packet report directories and Git history.
 
+LATEST OWNER DISPOSITION: Plan 42 is accepted and complete; see its
+owner-acceptance.md. MAINT-42-A is discharged with efficiency/readability limits
+retained. Owner authorized Plan 39 execution with the same supervised Luna-medium
+implementation / Sol-low-or-medium instruction-read-only review arrangement.
+Plan 39 is now in-progress and RUNNABLE. Its Requirement 0 stops before source,
+then Checkpoints 1 and 2 remain. Parent owns all gates, status and acceptance;
+no push/deployment. The baseline can reuse final Plan 42 checks only after
+verifying unchanged source/tests/dependency/runner inputs. Older pending-closure
+and no-Plan-39-authorization statements below are superseded by this paragraph.
+
 ## Current run
 
 The owner directed this chat to execute Plan 42 carefully using supervised Luna

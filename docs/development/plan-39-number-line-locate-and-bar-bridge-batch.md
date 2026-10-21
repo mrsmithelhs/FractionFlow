@@ -1,11 +1,9 @@
 ---
 id: plan-39
 title: First Number-Line Locate and Bar-to-Line Bridge Batch
-status: draft
+status: in-progress
 depends_on: [plan-35, plan-37, plan-38, plan-40, plan-41, plan-42]
 gate: "Owner sequencing gate: Plan 40 + §31/§90 disposition, then Plan 41 investigation disposition and any separately adopted prerequisite refactor, precede Phase 4 activation (DECISION-047). Requirement 0: confirm readiness and approve exact wiring, admission, next sequential replay schema, and evidence mechanism before source. Staged technical review, owner rendered-page/agency acceptance and separate deployment gate."
-superseded_by: null
-resolution: null
 summary: >-
   Implement the adopted Plan 37 (DECISION-046) 0-to-1 bar-to-number-line bridge
   task as one learner-reachable goal with eight curated records across high and
@@ -36,11 +34,12 @@ investigation. Any adopted prerequisite source refactor needs its own approved
 packet and must finish before this packet starts; add that dependency when named.
 Plan 41 closure alone does not silently authorize number-line implementation.
 
-Plan 42 now names the proposed prerequisite operate-response pilot, including its
-guard stage and maintenance evaluation. It remains draft pending owner adoption
-and mechanism approval; this dependency records the proposed sequence without
-authorizing source work. Its handle is a candidate pattern, not a required
-numerator/denominator schema for the locate preview.
+Plan 42's prerequisite operate-response pilot, guard stage and maintenance
+evaluation are owner accepted and complete (2026-10-21). The owner authorized
+Plan 39 execution with supervised Luna implementation and Sol read-only review.
+Its Requirement 0 and both staged review stops remain mandatory. The accepted
+handle is a candidate pattern, not a required numerator/denominator schema for
+the locate preview.
 
 DECISION-048 / MAINT-42-B: Requirement 0 must explicitly assess response ownership
 and preview-state fit against the accepted Plan 42 interface. Reuse or adapt the
@@ -56,7 +55,10 @@ Implement `DECISION-046` and the adopted [Plan 37 design dossier](../../reports/
 - `plan-37` supplies the owner-accepted instructional, geometric, accessibility, and eight-item seed contract (`DECISION-046`).
 - `plan-38` supplies the current like-denominator subtraction baseline (`production-default-v7` routes and `fractionflow.episode-replay/v5`).
 
-This packet remains `status: draft` until the Option A Phase 3 prerequisite (or an explicit owner reordering decision) is satisfied. When promoted to `ready`, it delivers all eight curated bridge records through shared mechanisms without per-item behavioral branches or arithmetic regressions.
+The Option A prerequisites and Plan 41/42 dispositions are satisfied. This packet
+may now run under its staged gates, delivering all eight curated bridge records
+through shared mechanisms without per-item behavioral branches or arithmetic
+regressions.
 
 ## Authority and required reading
 
@@ -104,7 +106,14 @@ Inspect actual source and tests before proposing mechanisms; historical reports 
 Before modifying any file under `src/`, run preflight and produce `reports/development/plan-39-number-line-locate-and-bar-bridge-batch/requirement-0-proposal.md` (plus a deterministic probe script/receipt if helpful):
 
 1. **Preflight & Baseline Verification:**
-   - Run `node scripts/dev/plan-status.js check plan-39`, `node scripts/dev/plan-status.js lint`, `npm test`, `npm run build`, and `npm run test:routes`.
+   - Run `node scripts/dev/plan-status.js check plan-39` and packet lint.
+     Reuse Plan 42's final 496-test, both-build and 81-row/83-execution Chrome
+     baseline receipts if source, tests, dependency inputs and runner remain
+     unchanged at this gate; explicitly verify the diff and cite exact commits.
+     Otherwise run the affected baseline checks (`npm test`, `npm run build`,
+     `npm run test:routes -- --browser-channel chrome`). Do not repeat broad
+     checks solely because report/status records changed. Final Plan 39 source
+     still requires its own complete validation.
    - Record the exact git commit SHA, unit test count, route-matrix baseline, and highest existing replay schema version (`vN`, proposing `v(N+1)` for this packet).
    - Confirm that the Roadmap §31 / §90 prerequisite is satisfied in `docs/decision-log.md` before proposing source changes.
 2. **Exact Wiring & Contract Proposal:**

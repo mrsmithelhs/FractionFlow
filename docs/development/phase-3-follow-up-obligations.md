@@ -70,7 +70,8 @@ same-edit exercise reduced render-source edits from four files to three, but
 does not establish total time/token savings or settle owner markup readability.
 Both arms needed correction of an initial scope error. See Plan 42's
 `maintenance-evaluation.md` and `orchestration-final-review.md` for the current
-parity disposition. Owner acceptance remains pending; MAINT-42-B/C remain open.
+parity disposition. The owner accepted and closed Plan 42 on 2026-10-21;
+MAINT-42-A is discharged with these limits retained. MAINT-42-B/C remain open.
 
 Plan 31 Repair 01's independent browser review observed Enter on an incorrect
 linear matching choice showing recovery, replacing the button and leaving focus
