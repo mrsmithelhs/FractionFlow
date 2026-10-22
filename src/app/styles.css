@@ -432,7 +432,7 @@ body,
 }
 
 .plan39-candidate-point.is-drop-preview {
-  box-shadow: 0 0 0 6px rgb(71 85 105 / 28%);
+  box-shadow: 0 0 0 5px #fff, 0 0 0 8px #334155;
 }
 
 .plan39-grab-cue {

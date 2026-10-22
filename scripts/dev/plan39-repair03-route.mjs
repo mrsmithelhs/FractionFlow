@@ -42,7 +42,10 @@ async function dragToOfferedPoint(page, targetId, grip, seed = null) {
     const halfBand = Math.max(22, bounds.height / 2);
     const rings = [...element.querySelectorAll('.plan39-candidate-point.is-drop-preview')]
       .map((point) => point.getAttribute('data-candidate-id'));
-    return { anchor, axisY, halfBand, bounds: { left: bounds.left, right: bounds.right }, nearestId: nearest?.id ?? null, rings, points };
+    const ringStyle = rings.length === 1
+      ? getComputedStyle(element.querySelector('.plan39-candidate-point.is-drop-preview')).boxShadow
+      : '';
+    return { anchor, axisY, halfBand, bounds: { left: bounds.left, right: bounds.right }, nearestId: nearest?.id ?? null, rings, ringStyle, points };
   });
 
   const inBand = observed.anchor.x >= observed.bounds.left && observed.anchor.x <= observed.bounds.right
@@ -63,6 +66,7 @@ async function dragToOfferedPoint(page, targetId, grip, seed = null) {
   let assertionError = null;
   try {
     assert.deepEqual(observed.rings, [observed.nearestId], mismatchFailure);
+  assert.match(observed.ringStyle, /rgb\(255, 255, 255\).*5px.*rgb\(51, 65, 85\).*8px/, 'Repair03 live target ring has a light separator and solid dark neutral outline');
   } catch (error) {
     assertionError = error;
   }
@@ -81,7 +85,7 @@ async function dragToOfferedPoint(page, targetId, grip, seed = null) {
   const remainingRings = await frame.locator('.plan39-candidate-point.is-drop-preview').count();
   assert.equal(selectedId, observed.nearestId, 'Repair03 release must select the same offered point as its live ring');
   assert.equal(remainingRings, 0, 'Repair03 release clears the transient ring');
-  return { grip, targetId, anchor: observed.anchor, axisY: observed.axisY, nearestId: observed.nearestId, selectedId, ringsBeforeRelease: observed.rings };
+  return { grip, targetId, anchor: observed.anchor, axisY: observed.axisY, nearestId: observed.nearestId, selectedId, ringsBeforeRelease: observed.rings, ringStyle: observed.ringStyle };
 }
 
 export async function runPlan39Repair03AnchorWitness(page, { seed = null } = {}) {
