@@ -25,7 +25,12 @@ final matrix. Parent then runs blind walkthroughs, resolves findings, and uses
 ONE consolidated Sol-low review before independent and final validation.
 
 Sol cost limit: target ONE consolidated Sol review for Repair 02, a second only
-for a substantial remaining issue. Zero Sol calls used in this repair so far.
+for a substantial remaining issue. ONE Sol LOW call has now completed. It found
+false Place at 0/1 labels for sparse sets without endpoints; parent also confirmed
+181px pending-token drift after a 360→800px resize. Same Luna writer is fixing
+both plus a disclosed late route range typo. Final tests/builds/unfiltered matrix
+and five old plus five new seeds are authorized after those bounded fixes. No
+second Sol call is planned. See repair-02-consolidated-review.md for disposition.
 Do routine verification in parent, not repeated Sol draft consultations.
 Source checkpoint 0d0708d and corrected initial endpoint controls e7a80f1 are
 committed. The writer is now preparing route/context changes and focused checks,
