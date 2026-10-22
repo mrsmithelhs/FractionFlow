@@ -13,3 +13,5 @@ Focused verification completed:
 - Screenshots and machine-readable results are in `evidence/repair02-current/`.
 
 The full 91-row route matrix and fresh independent browser walkthroughs have not been run in this implementer checkpoint; they remain for the orchestrator's next gate. No advisor consultation was run; this is owner-directed, orchestrator-gate-only review for this checkpoint. No packet status, route-matrix mapping, or parent-owned handoff record was changed here.
+
+After the two owner-run walkthroughs, the visual steppers received one bounded revision-2-only copy fix. While the token is unplaced, the left and right controls now say “Place at 1” and “Place at 0”; after either places the token, they change to “Move left” and “Move right.” Revision 1 retains its historical labels. The focused app test checks the initial labels and the Chrome smoke clicks the left control to confirm it places at the last offered endpoint, then confirms Retry returns to unplaced state. The focused 11-test command, learner build, and updated bounded Chrome smoke all passed after this fix; broad route validation remains with the orchestrator.

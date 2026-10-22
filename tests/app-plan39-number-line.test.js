@@ -27,6 +27,8 @@ describe('Plan 39 Repair 02 app wiring', () => {
     expect(root.querySelectorAll('.plan39-preview-marker')).toHaveLength(0);
     expect(root.querySelector('.app-visual-view .active-beat-prompt').textContent).toBe('Place this fraction on the number line.');
     expect(root.querySelector('.app-linear-view .active-beat-prompt').textContent).toBe('Choose a location.');
+    expect(root.querySelector('.app-visual-view .plan39-stepper-previous').textContent).toBe('← Place at 1');
+    expect(root.querySelector('.app-visual-view .plan39-stepper-next').textContent).toBe('Place at 0 →');
     app.destroy();
   });
 
@@ -34,6 +36,8 @@ describe('Plan 39 Repair 02 app wiring', () => {
     const { root, app } = startApp();
     const next = root.querySelector('.app-visual-view .plan39-stepper-next');
     next.click(); // 0 of 2: offered endpoint, deliberately incorrect
+    expect(next.textContent).toBe('Move right →');
+    expect(root.querySelector('.app-visual-view .plan39-stepper-previous').textContent).toBe('← Move left');
     expect(root.querySelector('.app-visual-view .plan39-check-position').disabled).toBe(false);
     expect(root.querySelector('.app-visual-view .plan39-accepted-point')).toBeNull();
     const help = root.querySelector('.app-support-controls button');

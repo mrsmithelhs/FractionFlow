@@ -34,6 +34,7 @@ try {
       tray: rect('.app-visual-view .plan39-token-tray'),
       frame: rect('.app-visual-view .plan39-axis-frame'),
       stepperButtons: [...document.querySelectorAll('.app-visual-view .plan39-stepper-move')].map((el) => { const r=el.getBoundingClientRect(); return { width:r.width,height:r.height }; }),
+      initialStepperLabels: [...document.querySelectorAll('.app-visual-view .plan39-stepper-move')].map((el) => el.textContent.trim()),
       tokenTouchAction: getComputedStyle(token).touchAction,
       trackTouchAction: getComputedStyle(frame).touchAction,
     };
@@ -41,10 +42,19 @@ try {
   assert(initial.frame.height >= 44, 'track drop band must be at least 44px tall');
   assert(initial.token.width >= 44 && initial.token.height >= 44, 'token handle must be at least 44px');
   assert(initial.stepperButtons.every(({ width, height }) => width >= 44 && height >= 44), 'visual keyboard step controls must be at least 44px');
+  assert.deepEqual(initial.initialStepperLabels, ['← Place at 1', 'Place at 0 →'], 'unplaced controls must name the endpoint they place at');
   assert.equal(initial.tokenTouchAction, 'none');
   assert.equal(initial.trackTouchAction, 'pan-y');
   await page.screenshot({ path: path.join(outputDir, 'repair02-initial-360x740.png'), fullPage: true });
   evidence.checks.push({ name: 'initial placement state', passed: true, measurements: initial, dom: { hiddenAndVisibleBars: 0, sourceTokens: 2 } });
+
+  await visual.locator('.plan39-stepper-previous').click();
+  assert.equal(await visual.locator('.plan39-repair-token').getAttribute('data-candidate-id'), initial.points.at(-1).id, 'initial left control places at 1');
+  assert.equal(await visual.locator('.plan39-stepper-previous').textContent(), '← Move left', 'placed controls change to movement labels');
+  await page.locator('.app-restart-button').click();
+  await visual.locator('.plan39-repair-token').waitFor();
+  assert.equal(await visual.locator('.plan39-repair-token').getAttribute('data-candidate-id'), null, 'Retry restores the unplaced state');
+  evidence.checks.push({ name: 'initial left control places at 1, then changes to Move left; Retry clears placement', passed: true });
 
   const token = visual.locator('.plan39-repair-token');
   let tokenBox = await token.boundingBox();

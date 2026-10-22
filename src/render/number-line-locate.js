@@ -253,13 +253,21 @@ function makeVisualStepper(scene, strings, { previewHandle, onPreviewChange, key
   const status = document.createElement('output');
   status.className = 'plan39-stepper-status';
   status.setAttribute('aria-live', 'polite');
-  const previous = createButton({ label: strings.plan39.previousPoint, className: 'plan39-stepper-previous' });
+  const previous = createButton({
+    label: repair02 && selectedIndex < 0 ? strings.plan39Repair02.placeAtOne : strings.plan39.previousPoint,
+    className: 'plan39-stepper-previous',
+  });
   previous.classList.add('plan39-stepper-move');
-  const next = createButton({ label: strings.plan39.nextPoint, className: 'plan39-stepper-next' });
+  const next = createButton({
+    label: repair02 && selectedIndex < 0 ? strings.plan39Repair02.placeAtZero : strings.plan39.nextPoint,
+    className: 'plan39-stepper-next',
+  });
   next.classList.add('plan39-stepper-move');
 
   function updateSelection(nextIndex, notify = true) {
     selectedIndex = nextIndex;
+    previous.textContent = strings.plan39.previousPoint;
+    next.textContent = strings.plan39.nextPoint;
     const selected = candidates[selectedIndex];
     if (notify) onPreviewChange({ contextKey: key, candidateId: selected.id });
     status.setAttribute('data-candidate-id', selected.id);
@@ -303,6 +311,8 @@ function makeVisualStepper(scene, strings, { previewHandle, onPreviewChange, key
     },
     clearSelection() {
       selectedIndex = -1;
+      previous.textContent = repair02 ? strings.plan39Repair02.placeAtOne : strings.plan39.previousPoint;
+      next.textContent = repair02 ? strings.plan39Repair02.placeAtZero : strings.plan39.nextPoint;
       status.removeAttribute('data-candidate-id');
       status.textContent = repair02 ? strings.plan39Repair02.noSelection : strings.plan39.noPreview;
       previous.disabled = false;

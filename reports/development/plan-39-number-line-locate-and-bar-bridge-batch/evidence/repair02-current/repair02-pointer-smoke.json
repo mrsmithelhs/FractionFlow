@@ -67,6 +67,10 @@
             "height": 64
           }
         ],
+        "initialStepperLabels": [
+          "← Place at 1",
+          "Place at 0 →"
+        ],
         "tokenTouchAction": "none",
         "trackTouchAction": "pan-y"
       },
@@ -74,6 +78,10 @@
         "hiddenAndVisibleBars": 0,
         "sourceTokens": 2
       }
+    },
+    {
+      "name": "initial left control places at 1, then changes to Move left; Retry clears placement",
+      "passed": true
     },
     {
       "name": "off-band drag restores unplaced token",
