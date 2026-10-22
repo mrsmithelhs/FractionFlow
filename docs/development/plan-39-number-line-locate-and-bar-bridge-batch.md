@@ -1,18 +1,39 @@
 ---
 id: plan-39
 title: First Number-Line Locate and Bar-to-Line Bridge Batch
-status: delivered
+status: in-progress
 depends_on: [plan-35, plan-37, plan-38, plan-40, plan-41, plan-42]
 gate: "Owner sequencing gate: Plan 40 + §31/§90 disposition, then Plan 41 investigation disposition and any separately adopted prerequisite refactor, precede Phase 4 activation (DECISION-047). Requirement 0: confirm readiness and approve exact wiring, admission, next sequential replay schema, and evidence mechanism before source. Staged technical review, owner rendered-page/agency acceptance and separate deployment gate."
 summary: >-
   Implement the adopted Plan 37 (DECISION-046) 0-to-1 bar-to-number-line bridge
   task as one learner-reachable goal with eight curated records across high and
-  medium support. Preserve exact rational evaluation, persistent bar-above-line
-  endpoint alignment, two-step preview/confirm selection, 44x44px touch targets
+  medium support. Owner Repair 02 replaces persistent pre-answer bar/encounter
+  with actionable symbolic-to-line placement, post-acceptance bar explanation,
+  direct pointer/touch placement, precise linear locations and explicit Check.
+  Preserve exact rational evaluation, 44x44px touch targets
   at 360px, directional recovery, non-leaking screen-reader step descriptions,
   and historical replay compatibility.
 ---
 # Plan 39: First Number-Line Locate and Bar-to-Line Bridge Batch
+
+## Owner Repair 02 amendment (2026-10-21)
+
+The owner rejected the delivered learner task after local use and approved the
+repair direction in `reports/development/plan-39-number-line-locate-and-bar-bridge-batch/owner-review-repair-02-proposal.md`.
+The owner now authorizes supervised Repair 02 execution, including bounded fresh
+browser-only Luna walkthroughs. This amendment supersedes conflicting original
+persistent-bar, encounter-acknowledgment and vague-description requirements below;
+those sections document the original implementation contract. Keep the eight-item
+scope, exact math, keyboard/non-drag alternatives, explicit confirmation, replay
+compatibility and owner acceptance/deployment gates. The implementer must first
+investigate and propose exact schedule/version/replay, pointer cancellation/snap,
+linear scale/description and evidence changes, then stop for parent mechanism
+approval before source. No hidden auto-acknowledgment workaround.
+
+Target one consolidated Sol read-only low/medium review for this repair; a second
+is reserved for a substantial remaining issue. No Astra, implementation-child
+fan-out, push or deployment. Browser walkthroughs are fresh-context usability
+observations, not evidence of real children or assistive-technology behavior.
 
 ## Packet Metadata
 

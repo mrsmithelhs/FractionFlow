@@ -181,6 +181,12 @@ substitute. This owner amendment supersedes the earlier Sol-only orchestrator
 restriction and conflicting generic higher-tier guidance, not packet acceptance
 or deployment gates.
 
+Owner cost direction (2026-10-21): target one consolidated Sol review per plan or
+repair, with a second only for a substantial remaining issue. Do routine follow-up
+verification in the orchestrator; do not repeatedly call Sol for incremental
+drafts or mechanical repairs. Use bounded Luna browser walkthroughs for fresh
+rendered-page observations, without treating them as actual learner evidence.
+
 <!-- bootstrap:commit-discipline v2 begin -->
 ## Commit Discipline
 

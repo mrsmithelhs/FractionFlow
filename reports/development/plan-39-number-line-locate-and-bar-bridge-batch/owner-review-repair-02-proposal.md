@@ -6,6 +6,13 @@ supersedes any implication that technical delivery establishes learner usefulnes
 It records owner feedback and an orchestrator proposal; the detailed replacement
 mechanism is not yet approved. No source changes or new implementation run here.
 
+Owner adoption (2026-10-21): owner approved the repair direction and authorized
+execution with Luna implementation plus fresh browser walkthrough reviewers.
+Plan reopened in-progress; exact mechanism investigation is now assigned to
+`/root/plan39_repair02_luna`, with a parent stop before source. Target one
+consolidated Sol read-only low/medium review, second only for a substantial
+remaining issue. See `docs/workflows/browser-walkthrough-review.md` for the pilot.
+
 ## Owner findings
 
 - Encounter repeats the request but provides only Continue. Merge it with actual

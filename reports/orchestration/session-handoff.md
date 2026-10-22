@@ -6,6 +6,29 @@ pause records remain in Git and the packet reports.
 
 ## Current board and owner direction
 
+Current assignment: owner authorized Repair 02 with Luna implementation and fresh
+browser-only walkthroughs. Plan 39 reopened in-progress and RUNNABLE. Writer is
+`/root/plan39_repair02_luna` (Luna medium, cold context, no fan-out). Proposal
+`6d78531` was reviewed by parent and needs investigation-only refinement before
+source approval: preserve preview/help through view switches; cancel restores
+pre-gesture placement; show the source fraction once; compute exact16-context
+scales now (no speculative12 cap); freeze actual pre-source v7 states, not
+nonexistent v8 baseline; concise precise resolution copy; explicit old-route
+context/revision disposition. Parent sent those directions; source is not yet
+authorized. Preserve all old arithmetic/replay meaning.
+
+Sol cost limit: target ONE consolidated Sol review for Repair 02, a second only
+for a substantial remaining issue. Zero Sol calls used in this repair so far.
+Do routine verification in parent, not repeated Sol draft consultations.
+New workflow: docs/workflows/browser-walkthrough-review.md. Fresh reviewer
+`/root/walkthrough_mouse` (Luna medium) completed tool capability check ONLY on a
+new blank in-app tab: screenshots and coordinate mouse/drag/keyboard APIs exist.
+Subagent visible-tab request was unsupported; hidden dedicated tab worked.
+Browser-only restriction is instructional, not tool-enforced. No product browsing
+or source was inspected. After build, supply only URL/minimal task/mouse constraint;
+no known defects or implementation report. New cold keyboard reviewer separately.
+Bound each to one episode/30 interactions/10 observations; report real limitations.
+
 Latest owner review (2026-10-21): Plan 39 was NOT accepted after local use.
 The initial Continue screen is redundant, aligned shaded bar gives away the
 location, linear options/result lack precise mathematical meaning, and actual
