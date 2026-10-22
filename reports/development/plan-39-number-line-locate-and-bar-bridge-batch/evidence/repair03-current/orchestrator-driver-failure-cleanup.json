@@ -1,0 +1,16 @@
+{
+  "capturedAt": "2026-10-22T21:15:18.545Z",
+  "method": "Deterministic in-process dependency stubs, not live browser failure evidence",
+  "cases": [
+    {
+      "failure": "newPage",
+      "closeCalls": 1,
+      "passed": true
+    },
+    {
+      "failure": "initialJournalWrite",
+      "closeCalls": 1,
+      "passed": true
+    }
+  ]
+}

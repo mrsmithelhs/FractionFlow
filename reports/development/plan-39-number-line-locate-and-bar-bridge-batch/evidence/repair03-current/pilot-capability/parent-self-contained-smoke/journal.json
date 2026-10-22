@@ -1,0 +1,49 @@
+{
+  "startedAt": "2026-10-22T21:04:12.753Z",
+  "browserVersion": "155.0.8059.81",
+  "requestedViewport": {
+    "width": 420,
+    "height": 300
+  },
+  "mode": "mouse",
+  "url": "http://127.0.0.1:57192/FractionFlow/",
+  "maxActions": 24,
+  "maxCaptures": 28,
+  "interface": "Screenshots and coordinate/key actions only; other tool access remains instruction-restricted",
+  "actions": [
+    {
+      "type": "click",
+      "x": 10,
+      "y": 10,
+      "note": "Harmless entry margin click",
+      "at": "2026-10-22T21:04:30.540Z",
+      "status": "executed"
+    }
+  ],
+  "captures": [
+    {
+      "file": "screen-01.png",
+      "note": "Command-tool session ready",
+      "at": "2026-10-22T21:04:12.902Z",
+      "afterAction": 0,
+      "sha256": "b4fb1931464306b9b776802dcdb759a1f46db64bb044f71f3985a64db6e3c5f3"
+    },
+    {
+      "file": "screen-02.png",
+      "note": "Open supplied local site",
+      "at": "2026-10-22T21:04:24.052Z",
+      "afterAction": 0,
+      "sha256": "18c1321cf50114f9d917e941e1908314459929255caf1c6c78ee7e9ded27d80e"
+    },
+    {
+      "file": "screen-03.png",
+      "note": "Harmless entry margin click",
+      "at": "2026-10-22T21:04:30.562Z",
+      "afterAction": 1,
+      "sha256": "18c1321cf50114f9d917e941e1908314459929255caf1c6c78ee7e9ded27d80e"
+    }
+  ],
+  "pageErrors": [],
+  "finishedAt": "2026-10-22T21:04:30.563Z",
+  "closeNote": "Self-contained server, browser navigation, screenshot and input smoke passed"
+}

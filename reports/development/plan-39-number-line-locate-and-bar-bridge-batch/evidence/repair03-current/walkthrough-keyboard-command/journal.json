@@ -1,0 +1,237 @@
+{
+  "startedAt": "2026-10-22T21:06:36.406Z",
+  "browserVersion": "155.0.8059.81",
+  "requestedViewport": {
+    "width": 360,
+    "height": 740
+  },
+  "mode": "keyboard",
+  "url": "http://127.0.0.1:50813/FractionFlow/",
+  "maxActions": 24,
+  "maxCaptures": 28,
+  "interface": "Screenshots and coordinate/key actions only; other tool access remains instruction-restricted",
+  "actions": [
+    {
+      "type": "key",
+      "key": "Tab",
+      "note": "Move focus through the visible menu",
+      "at": "2026-10-22T21:06:49.213Z",
+      "status": "executed"
+    },
+    {
+      "type": "key",
+      "key": "Tab",
+      "note": "Continue through the visible practice choices",
+      "at": "2026-10-22T21:06:54.675Z",
+      "status": "executed"
+    },
+    {
+      "type": "key",
+      "key": "Tab",
+      "note": "Continue forward from the settings control",
+      "at": "2026-10-22T21:06:59.031Z",
+      "status": "executed"
+    },
+    {
+      "type": "key",
+      "key": "Tab",
+      "note": "Continue to the next visible practice choice",
+      "at": "2026-10-22T21:07:03.427Z",
+      "status": "executed"
+    },
+    {
+      "type": "key",
+      "key": "Tab",
+      "note": "Continue to the next visible practice choice",
+      "at": "2026-10-22T21:07:07.759Z",
+      "status": "executed"
+    },
+    {
+      "type": "key",
+      "key": "Tab",
+      "note": "Move focus to the number-line practice choice",
+      "at": "2026-10-22T21:07:11.846Z",
+      "status": "executed"
+    },
+    {
+      "type": "key",
+      "key": "Enter",
+      "note": "Open number-line practice",
+      "at": "2026-10-22T21:07:15.620Z",
+      "status": "executed"
+    },
+    {
+      "type": "key",
+      "key": "Tab",
+      "note": "Find the next focused control on the number-line problem",
+      "at": "2026-10-22T21:07:20.556Z",
+      "status": "executed"
+    },
+    {
+      "type": "key",
+      "key": "Enter",
+      "note": "Read the on-screen steps before trying the problem",
+      "at": "2026-10-22T21:07:25.142Z",
+      "status": "executed"
+    },
+    {
+      "type": "key",
+      "key": "Tab",
+      "note": "Continue to the location choices",
+      "at": "2026-10-22T21:07:29.489Z",
+      "status": "executed"
+    },
+    {
+      "type": "key",
+      "key": "Tab",
+      "note": "Continue keyboard focus through the choices",
+      "at": "2026-10-22T21:07:33.847Z",
+      "status": "executed"
+    },
+    {
+      "type": "key",
+      "key": "ArrowRight",
+      "note": "Move within the number-line locations to the half-way point",
+      "at": "2026-10-22T21:07:38.253Z",
+      "status": "executed"
+    },
+    {
+      "type": "key",
+      "key": "Tab",
+      "note": "Move from the selected half-way location to Check",
+      "at": "2026-10-22T21:07:42.742Z",
+      "status": "executed"
+    },
+    {
+      "type": "key",
+      "key": "Enter",
+      "note": "Check the selected half-way location",
+      "at": "2026-10-22T21:07:46.758Z",
+      "status": "executed"
+    },
+    {
+      "type": "key",
+      "key": "Enter",
+      "note": "Finish the accepted first problem",
+      "at": "2026-10-22T21:07:53.697Z",
+      "status": "executed"
+    }
+  ],
+  "captures": [
+    {
+      "file": "screen-01.png",
+      "note": "Command-tool session ready",
+      "at": "2026-10-22T21:06:36.626Z",
+      "afterAction": 0,
+      "sha256": "ad7b5c48288a8cc01d94306c8bd6326e4c597846296879740e945b05ba9610fe"
+    },
+    {
+      "file": "screen-02.png",
+      "note": "Move focus through the visible menu",
+      "at": "2026-10-22T21:06:49.254Z",
+      "afterAction": 1,
+      "sha256": "4227ea947bec0b17d3fe61070c3a5dec0d8b7506183fa2062d484708e256586d"
+    },
+    {
+      "file": "screen-03.png",
+      "note": "Continue through the visible practice choices",
+      "at": "2026-10-22T21:06:54.704Z",
+      "afterAction": 2,
+      "sha256": "e811ada34e64ec2519eeb60013edf65981a43346fc7f4ec27e31620f18cd18f2"
+    },
+    {
+      "file": "screen-04.png",
+      "note": "Continue forward from the settings control",
+      "at": "2026-10-22T21:06:59.062Z",
+      "afterAction": 3,
+      "sha256": "c1c3e95cb272b9f99dbbd5f2c4bb5140eef94687a9d5a51c949394c9befc7a43"
+    },
+    {
+      "file": "screen-05.png",
+      "note": "Continue to the next visible practice choice",
+      "at": "2026-10-22T21:07:03.455Z",
+      "afterAction": 4,
+      "sha256": "a57ae0d62417bf3ba8d3ff5116897dd92244aee2afe7c7af4079221050b58a13"
+    },
+    {
+      "file": "screen-06.png",
+      "note": "Continue to the next visible practice choice",
+      "at": "2026-10-22T21:07:07.792Z",
+      "afterAction": 5,
+      "sha256": "9d76cfde2b40959d292fd29b2d0d597bd619fd224016f8f7ecae39fda02a3fac"
+    },
+    {
+      "file": "screen-07.png",
+      "note": "Move focus to the number-line practice choice",
+      "at": "2026-10-22T21:07:11.878Z",
+      "afterAction": 6,
+      "sha256": "0d2e2e1c80d15df00c05257647fbaec0ce32a0ac5129d1f2a96f7584a82ede60"
+    },
+    {
+      "file": "screen-08.png",
+      "note": "Open number-line practice",
+      "at": "2026-10-22T21:07:15.817Z",
+      "afterAction": 7,
+      "sha256": "a20915833729636f37c57b6b8a4b5cd73e43f0468593d99247573a3b46970f75"
+    },
+    {
+      "file": "screen-09.png",
+      "note": "Find the next focused control on the number-line problem",
+      "at": "2026-10-22T21:07:20.585Z",
+      "afterAction": 8,
+      "sha256": "0a571b5bc83a1548e80ffa03a8f1689957a69d4f452c87b70843f9058289c8cc"
+    },
+    {
+      "file": "screen-10.png",
+      "note": "Read the on-screen steps before trying the problem",
+      "at": "2026-10-22T21:07:25.191Z",
+      "afterAction": 9,
+      "sha256": "9a85b44a6254fe2b3b38bf4225a01ebfc9ad9b3205e64d0c616f51b23a1de7f2"
+    },
+    {
+      "file": "screen-11.png",
+      "note": "Continue to the location choices",
+      "at": "2026-10-22T21:07:29.517Z",
+      "afterAction": 10,
+      "sha256": "7dc126527fd83ceec0dca2df35e619b9ef35899c8b6f83a82cde80488ff56574"
+    },
+    {
+      "file": "screen-12.png",
+      "note": "Continue keyboard focus through the choices",
+      "at": "2026-10-22T21:07:33.875Z",
+      "afterAction": 11,
+      "sha256": "6fed9e9d9ae874ab9d2d0159e960cc17e00309f20b1918f3a580ffea76959441"
+    },
+    {
+      "file": "screen-13.png",
+      "note": "Move within the number-line locations to the half-way point",
+      "at": "2026-10-22T21:07:38.283Z",
+      "afterAction": 12,
+      "sha256": "3ae859b9a112601e7372a10ffd8c2dc546ac1d18cd480a29bbf96e57ed0f67ab"
+    },
+    {
+      "file": "screen-14.png",
+      "note": "Move from the selected half-way location to Check",
+      "at": "2026-10-22T21:07:42.771Z",
+      "afterAction": 13,
+      "sha256": "44eb2daef15a2be940cd6722bae541e16058bdfec45ac1501789f9f1e734c25a"
+    },
+    {
+      "file": "screen-15.png",
+      "note": "Check the selected half-way location",
+      "at": "2026-10-22T21:07:46.794Z",
+      "afterAction": 14,
+      "sha256": "d0c5bcb98d0ea7e9f565ae86a4d8b98754cc4a38112de7d48cfe22f37ea1200a"
+    },
+    {
+      "file": "screen-16.png",
+      "note": "Finish the accepted first problem",
+      "at": "2026-10-22T21:07:53.730Z",
+      "afterAction": 15,
+      "sha256": "29b9581dba9c6f5da232b3aea6e7cfef78641706f99f6107627f63d3e7a00b1d"
+    }
+  ],
+  "pageErrors": [],
+  "finishedAt": "2026-10-22T21:08:00.314Z",
+  "closeNote": "First number-line problem finished; closing keyboard walkthrough"
+}

@@ -1,0 +1,48 @@
+{
+  "startedAt": "2026-10-22T20:59:48.869Z",
+  "browserVersion": "155.0.8059.81",
+  "requestedViewport": {
+    "width": 360,
+    "height": 740
+  },
+  "mode": "keyboard",
+  "url": "http://127.0.0.1:52003/FractionFlow/",
+  "maxActions": 30,
+  "maxCaptures": 34,
+  "interface": "Screenshots and coordinate/key actions only; other tool access remains instruction-restricted",
+  "actions": [
+    {
+      "type": "key",
+      "key": "Tab",
+      "note": "Blank keyboard input capability",
+      "at": "2026-10-22T20:59:50.664Z",
+      "status": "executed"
+    }
+  ],
+  "captures": [
+    {
+      "file": "screen-01.png",
+      "note": "Blank keyboard capability",
+      "at": "2026-10-22T20:59:49.016Z",
+      "afterAction": 0,
+      "sha256": "57b1f82a136820f296e2bcfd6b24d4223138f608a9d621c35a097933542556e0"
+    },
+    {
+      "file": "screen-02.png",
+      "note": "Blank keyboard input capability",
+      "at": "2026-10-22T20:59:50.685Z",
+      "afterAction": 1,
+      "sha256": "57b1f82a136820f296e2bcfd6b24d4223138f608a9d621c35a097933542556e0"
+    },
+    {
+      "file": "screen-03.png",
+      "note": "Cross-turn handle check",
+      "at": "2026-10-22T21:01:32.792Z",
+      "afterAction": 1,
+      "sha256": "57b1f82a136820f296e2bcfd6b24d4223138f608a9d621c35a097933542556e0"
+    }
+  ],
+  "pageErrors": [],
+  "finishedAt": "2026-10-22T21:01:36.466Z",
+  "closeNote": "Site open failed: net::ERR_NETWORK_ACCESS_DENIED at http://127.0.0.1:52003/FractionFlow/"
+}

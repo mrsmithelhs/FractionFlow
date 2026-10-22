@@ -1,0 +1,26 @@
+{
+  "startedAt": "2026-10-22T21:10:44.334Z",
+  "browserVersion": "155.0.8059.81",
+  "requestedViewport": {
+    "width": 420,
+    "height": 300
+  },
+  "mode": "mouse",
+  "url": "http://127.0.0.1:56762/FractionFlow/",
+  "maxActions": 24,
+  "maxCaptures": 28,
+  "interface": "Screenshots and coordinate/key actions only; other tool access remains instruction-restricted",
+  "actions": [],
+  "captures": [
+    {
+      "file": "screen-01.png",
+      "note": "Command-tool session ready",
+      "at": "2026-10-22T21:10:44.526Z",
+      "afterAction": 0,
+      "sha256": "18c1321cf50114f9d917e941e1908314459929255caf1c6c78ee7e9ded27d80e"
+    }
+  ],
+  "pageErrors": [],
+  "finishedAt": "2026-10-22T21:10:56.274Z",
+  "closeNote": "Verify complete browser/server/TTY shutdown"
+}

@@ -1,0 +1,49 @@
+{
+  "startedAt": "2026-10-22T20:58:13.231Z",
+  "browserVersion": "155.0.8059.81",
+  "requestedViewport": {
+    "width": 1093,
+    "height": 614
+  },
+  "mode": "mouse",
+  "url": "http://127.0.0.1:52003/FractionFlow/",
+  "maxActions": 24,
+  "maxCaptures": 28,
+  "interface": "Screenshots and coordinate/key actions only; other tool access remains instruction-restricted",
+  "actions": [
+    {
+      "type": "click",
+      "x": 20,
+      "y": 20,
+      "note": "Blank input capability",
+      "at": "2026-10-22T20:58:15.119Z",
+      "status": "executed"
+    }
+  ],
+  "captures": [
+    {
+      "file": "screen-01.png",
+      "note": "Blank capability check",
+      "at": "2026-10-22T20:58:13.405Z",
+      "afterAction": 0,
+      "sha256": "d889300534b5ed17ebfc541753ea6bc981457ef6712fba8834dbd50248341e25"
+    },
+    {
+      "file": "screen-02.png",
+      "note": "Blank input capability",
+      "at": "2026-10-22T20:58:15.150Z",
+      "afterAction": 1,
+      "sha256": "d889300534b5ed17ebfc541753ea6bc981457ef6712fba8834dbd50248341e25"
+    },
+    {
+      "file": "screen-03.png",
+      "note": "Cross-turn handle check",
+      "at": "2026-10-22T21:01:21.489Z",
+      "afterAction": 1,
+      "sha256": "d889300534b5ed17ebfc541753ea6bc981457ef6712fba8834dbd50248341e25"
+    }
+  ],
+  "pageErrors": [],
+  "finishedAt": "2026-10-22T21:01:26.540Z",
+  "closeNote": "openSite failed: net::ERR_NETWORK_ACCESS_DENIED at http://127.0.0.1:52003/FractionFlow/"
+}

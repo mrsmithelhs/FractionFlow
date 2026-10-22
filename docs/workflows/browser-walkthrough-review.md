@@ -90,3 +90,32 @@ were known, but actual runtime identity, token usage and cost were not exposed.
 Detailed observations and parent disposition are in the Plan 39 Repair 02
 walkthrough reports. This pilot does not establish learner efficacy or justify
 making additional expensive advisor calls routine.
+
+## Repair 03 pilot checkpoint
+
+The fixed driver and command wrapper in scripts/dev/visual-walkthrough-*.cjs are
+a local prototype. Both Luna reviewers saved/displayed images and retained their
+persistent-JavaScript handles across turns, but that runtime's Chrome could not
+open localhost. A command-tool trial with a separate server also timed out.
+The tested working path made one command process own both the existing built-app
+static server and its Playwright controller. No package, browser installation or
+sandbox setting was changed. Do not assume another harness needs the same setup.
+
+The reviewer sends only bounded coordinate/key JSON actions to its owned stdin
+session, then views the returned PNG file. The same model chooses actions from
+images; no other model translates or replays them. The interface emits no DOM or
+accessibility snapshot. Other tool access remains restricted by instruction.
+Mouse and keyboard trials completed one episode; screenshots and action journals
+are in the Plan 39 Repair 03 evidence directory. Touch-drag participation was
+tested independently by the parent, not through this tap-only pilot interface.
+
+Earlier wrappers lingered after reporting browser closure; each child cleaned only
+its own process. Parent could not address child-owned exec session IDs. The final
+wrapper closes resources, flushes its receipt and exits explicitly; a fresh parent
+trial verified exit 0. Always verify process termination, not merely closed:true.
+Retain blocked/failed trials separately from successful walkthroughs. No claim of
+global tool isolation, real learner behavior or cross-provider portability follows.
+
+Before reuse, read walkthroughs/repair03-pilot-log.md under the Plan 39 report.
+A later independently authorized implementer-chat/cross-harness trial is recorded
+in phase-3-follow-up-obligations.md. Bootstrap distribution is future work.

@@ -1,0 +1,42 @@
+{
+  "startedAt": "2026-10-22T20:57:08.540Z",
+  "browserVersion": "155.0.8059.81",
+  "requestedViewport": {
+    "width": 420,
+    "height": 240
+  },
+  "mode": "mouse",
+  "url": "http://127.0.0.1:52003/FractionFlow/",
+  "maxActions": 24,
+  "maxCaptures": 28,
+  "interface": "Screenshots and coordinate/key actions only; other tool access remains instruction-restricted",
+  "actions": [
+    {
+      "type": "click",
+      "x": 20,
+      "y": 20,
+      "note": "One harmless blank-page input",
+      "at": "2026-10-22T20:57:08.674Z",
+      "status": "executed"
+    }
+  ],
+  "captures": [
+    {
+      "file": "screen-01.png",
+      "note": "Blank capability check",
+      "at": "2026-10-22T20:57:08.671Z",
+      "afterAction": 0,
+      "sha256": "ff2f92ce7009a17d7c15eae1d988fcced9c27adaea96aa817f45cafd43a2e04e"
+    },
+    {
+      "file": "screen-02.png",
+      "note": "One harmless blank-page input",
+      "at": "2026-10-22T20:57:08.697Z",
+      "afterAction": 1,
+      "sha256": "ff2f92ce7009a17d7c15eae1d988fcced9c27adaea96aa817f45cafd43a2e04e"
+    }
+  ],
+  "pageErrors": [],
+  "finishedAt": "2026-10-22T20:57:08.698Z",
+  "closeNote": "Parent driver save/display/input smoke passed"
+}

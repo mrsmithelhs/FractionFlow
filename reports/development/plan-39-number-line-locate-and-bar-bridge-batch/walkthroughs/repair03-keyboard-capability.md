@@ -1,0 +1,5 @@
+# Repair 03 keyboard walkthrough capability check
+
+Capability-only check, 2026-10-22. The supplied visual walkthrough driver initialized for the requested URL in keyboard mode at 360 × 740, with `startAtBlank: true`. The blank-state snapshot was saved to `reports/development/plan-39-number-line-locate-and-bar-bridge-batch/evidence/repair03-current/walkthrough-keyboard/screen-01.png` and displayed. One `Tab` action on the blank page returned successfully; its screenshot was saved to `.../walkthrough-keyboard/screen-02.png` and displayed.
+
+Both displayed captures are blank white screens. This verifies that the driver accepted one keyboard action and saved/displayed captures. The images do not show a focus indicator or any visible effect from `Tab`, so they do not establish focus movement, keyboard accessibility, or product behavior. No product walkthrough was started. Actual browser identity and model/usage information were not exposed by this check. This is visual keyboard-driver capability evidence only, not screen-reader or learner evidence.

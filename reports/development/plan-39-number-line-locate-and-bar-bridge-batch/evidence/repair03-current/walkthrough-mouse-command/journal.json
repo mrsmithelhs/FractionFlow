@@ -1,0 +1,162 @@
+{
+  "startedAt": "2026-10-22T21:06:23.819Z",
+  "browserVersion": "155.0.8059.81",
+  "requestedViewport": {
+    "width": 1093,
+    "height": 614
+  },
+  "mode": "mouse",
+  "url": "http://127.0.0.1:63004/FractionFlow/",
+  "maxActions": 24,
+  "maxCaptures": 28,
+  "interface": "Screenshots and coordinate/key actions only; other tool access remains instruction-restricted",
+  "actions": [
+    {
+      "type": "click",
+      "x": 163,
+      "y": 487,
+      "note": "Choose visible number-line practice",
+      "at": "2026-10-22T21:06:36.566Z",
+      "status": "executed"
+    },
+    {
+      "type": "down",
+      "x": 546,
+      "y": 233,
+      "note": "Begin dragging visible 1/2 tile",
+      "at": "2026-10-22T21:06:41.947Z",
+      "status": "executed"
+    },
+    {
+      "type": "move",
+      "x": 547,
+      "y": 279,
+      "note": "Move 1/2 tile over center tick",
+      "at": "2026-10-22T21:06:45.872Z",
+      "status": "executed"
+    },
+    {
+      "type": "up",
+      "x": 547,
+      "y": 279,
+      "note": "Drop tile on visible center location",
+      "at": "2026-10-22T21:06:50.464Z",
+      "status": "executed"
+    },
+    {
+      "type": "down",
+      "x": 547,
+      "y": 279,
+      "note": "Begin repositioning already placed tile",
+      "at": "2026-10-22T21:06:58.031Z",
+      "status": "executed"
+    },
+    {
+      "type": "move",
+      "x": 705,
+      "y": 279,
+      "note": "Move placed tile toward three-quarter position",
+      "at": "2026-10-22T21:07:02.602Z",
+      "status": "executed"
+    },
+    {
+      "type": "up",
+      "x": 705,
+      "y": 279,
+      "note": "Drop repositioned tile to the right",
+      "at": "2026-10-22T21:07:06.855Z",
+      "status": "executed"
+    },
+    {
+      "type": "click",
+      "x": 548,
+      "y": 407,
+      "note": "Check the currently selected half location",
+      "at": "2026-10-22T21:07:15.957Z",
+      "status": "executed"
+    },
+    {
+      "type": "click",
+      "x": 546,
+      "y": 452,
+      "note": "Finish the first number-line episode",
+      "at": "2026-10-22T21:07:20.710Z",
+      "status": "executed"
+    }
+  ],
+  "captures": [
+    {
+      "file": "screen-01.png",
+      "note": "Command-tool session ready",
+      "at": "2026-10-22T21:06:24.027Z",
+      "afterAction": 0,
+      "sha256": "28cfac9cbef29c043cefa294c9ae11098dd94c05744a8d15159ca8a58f3dd9b4"
+    },
+    {
+      "file": "screen-02.png",
+      "note": "Choose visible number-line practice",
+      "at": "2026-10-22T21:06:36.789Z",
+      "afterAction": 1,
+      "sha256": "505d68cbf59c277dc379b691283bb2ffad88272b25967210bae5081ec4e50712"
+    },
+    {
+      "file": "screen-03.png",
+      "note": "Begin dragging visible 1/2 tile",
+      "at": "2026-10-22T21:06:41.986Z",
+      "afterAction": 2,
+      "sha256": "55a9b6d20ce9072875eed9fdb545999b088c4b66b4e8cd759a4cba4c3b38f0c0"
+    },
+    {
+      "file": "screen-04.png",
+      "note": "Move 1/2 tile over center tick",
+      "at": "2026-10-22T21:06:45.973Z",
+      "afterAction": 3,
+      "sha256": "e576a241e7dc9c66787cf2542ac9abdae3281e8827e5c42fe060eb43397eb124"
+    },
+    {
+      "file": "screen-05.png",
+      "note": "Drop tile on visible center location",
+      "at": "2026-10-22T21:06:50.504Z",
+      "afterAction": 4,
+      "sha256": "e4660f4d0074a0cfaad80c23f9f8e820ed07268f82043b7e57a0800aea2c338d"
+    },
+    {
+      "file": "screen-06.png",
+      "note": "Begin repositioning already placed tile",
+      "at": "2026-10-22T21:06:58.068Z",
+      "afterAction": 5,
+      "sha256": "d02d49519b3788a622ab248e69b90e5fb2d3e6953fb109eec8bd23b2807291e0"
+    },
+    {
+      "file": "screen-07.png",
+      "note": "Move placed tile toward three-quarter position",
+      "at": "2026-10-22T21:07:02.683Z",
+      "afterAction": 6,
+      "sha256": "72b7e171d0962a1243e3896bede52108bf9c7eac771230ed9e05dea08d69a117"
+    },
+    {
+      "file": "screen-08.png",
+      "note": "Drop repositioned tile to the right",
+      "at": "2026-10-22T21:07:06.893Z",
+      "afterAction": 7,
+      "sha256": "d02d49519b3788a622ab248e69b90e5fb2d3e6953fb109eec8bd23b2807291e0"
+    },
+    {
+      "file": "screen-09.png",
+      "note": "Check the currently selected half location",
+      "at": "2026-10-22T21:07:16.004Z",
+      "afterAction": 8,
+      "sha256": "ebe49f912b02b80b42a6af687bfed9b47ef3332b2b8beb61b4cdf321311d6321"
+    },
+    {
+      "file": "screen-10.png",
+      "note": "Finish the first number-line episode",
+      "at": "2026-10-22T21:07:20.744Z",
+      "afterAction": 9,
+      "sha256": "57cf1a4659a761e30f501e3df1903fb21cb71b0cc4825931686beeab71ac4ce7"
+    }
+  ],
+  "pageErrors": [],
+  "finishedAt": "2026-10-22T21:07:25.777Z",
+  "closeNote": "First problem finished; stopping before Next problem"
+}

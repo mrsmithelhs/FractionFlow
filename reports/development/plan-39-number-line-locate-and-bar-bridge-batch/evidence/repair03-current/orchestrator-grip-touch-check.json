@@ -1,0 +1,25 @@
+{
+  "capturedAt": "2026-10-22T21:13:07.672Z",
+  "method": "Independent parent installed-Chrome mouse/CDP touch, no application state dispatch",
+  "checks": [
+    {
+      "name": "No tile jump after centre-grip movement",
+      "passed": true
+    },
+    {
+      "name": "Natural horizontal reposition from placed centre grip; live ring matches drop",
+      "passed": true,
+      "paint": "rgb(255, 255, 255) 0px 0px 0px 5px, rgb(51, 65, 85) 0px 0px 0px 8px"
+    },
+    {
+      "name": "Off-centre touch grip repositions to offered wrong endpoint without submitting",
+      "passed": true
+    },
+    {
+      "name": "Outside vertical band clears ring and restores prior placement",
+      "passed": true
+    }
+  ],
+  "pageErrors": [],
+  "passed": true
+}

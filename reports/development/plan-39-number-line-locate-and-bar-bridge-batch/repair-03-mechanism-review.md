@@ -6,7 +6,7 @@ Plan 39 was reopened and checks RUNNABLE. This is bounded source authority, not
 rendered acceptance or deployment.
 
 - Preserve pointer-to-bottom-centre offset and use the same visible anchor for
-  movement, live eligibility and release. The axis-centred band is at least44px
+  movement, live eligibility and release. The axis-centred band is at least 44px
   high, checks both axes, and offers nearest projected candidate with lower tie.
   The live ring must identify exactly the release result; no correctness lookup.
 - Retain intentional out-of-band rejection and prior-placement restoration, but
