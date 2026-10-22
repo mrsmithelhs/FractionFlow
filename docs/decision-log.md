@@ -1312,3 +1312,32 @@ New source scope and deployment remain separately gated.
 
 **Related:** Plan 41 orchestration review; Plan 42; Plan 39; phase-3-follow-up-obligations.md.
 
+### DECISION-049 - Repair the number-line task before owner acceptance
+
+**Date:** 2026-10-21
+
+**Status:** Owner approved Repair 02; technical and rendered acceptance pending.
+
+After using the local Plan 39 task, the owner rejected the redundant opening
+step, the aligned bar that disclosed the location, vague linear choices and the
+absence of direct pointer placement. The owner authorized a supervised Luna
+repair and a bounded browser walkthrough pilot. The replacement task begins
+with the fraction and an unplaced token; placement remains a draft until Check.
+The accepted result may then show the aligned bar and its mathematical relation
+to the chosen location. Exact selectable locations come from instructional state,
+with precise linear options, movement buttons and direct pointer/touch input.
+
+The orchestrator approved definition revision 2 / replay v8 for that changed
+instructional contract, retaining revision 1 / v7 and frozen historical replay
+evidence. Eight existing content records remain unchanged. Multiple-fraction
+placement and alternate source representations remain future design work.
+
+The owner also directed a cost limit: aim for one consolidated Sol read-only
+review per plan or review, with a second only for a substantial unresolved issue.
+Browser walkthrough observations complement deterministic checks and owner
+judgment; model walkthroughs establish neither learner efficacy nor physical-
+device or assistive-technology behavior. Deployment remains separately gated.
+
+**Related:** Plan 39 Repair 02 mechanism proposal and review; browser-walkthrough-review.md;
+Plan 39 owner-review-repair-02-proposal.md; AGENTS.md owner consultation limits.
+

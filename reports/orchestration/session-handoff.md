@@ -10,42 +10,51 @@ Current assignment: owner authorized Repair 02 with Luna implementation and fres
 browser-only walkthroughs. Plan 39 reopened in-progress and RUNNABLE. Writer is
 `/root/plan39_repair02_luna` (Luna medium, cold context, no fan-out). Refined
 proposal `ef52d0b`, baseline `9253c83` and parent source approval `f029155` are
-committed. Parent independently replayed/hashed all12 actual pre-source v7
-snapshots. Definition v2/replay v8 approved, oldv1/v7 preserved; maxscale8 exact
-across16contexts. Only old10Plan39 context mappings may migrate explicitly to a
-historical revision1 fixture; all91oldrow/actionobjects and other mappings retain
-meaning. Newv8rows use currentcontext. Token allows vertical drag fromtray with
-touch-actionnone scopedhandle, track/page pans; both-axis44px hitband; tieslower;
-cancellation restorespriorplacement. Keepsteppers/native radios and pending
-choice/help throughviews. Sourcewriter is now implementing; must STOP after
-focused tests/bothbuilds/realpointer smoke at reviewable checkpoint before broad
-final matrix. Parent then runs blindwalkthroughs, resolvesfindings, and ONE Sol-low
-consolidated review, followedby independent/final validation.
+committed. Parent independently replayed and hash-checked all 12 pre-source v7
+snapshots. Definition revision 2 and replay v8 are approved; old revision 1 and v7
+remain preserved. The maximum scale is exactly 8 across all 16 contexts. Only the
+ten old Plan 39 context mappings may migrate explicitly to a historical revision-1
+fixture; all 91 old route/action objects and other mappings retain their meaning.
+New v8 rows use the current context. The token allows vertical dragging from its
+tray, with touch-action:none scoped to its handle; the surrounding page can pan.
+Drop tests use both axes of a 44px-high band; ties choose the lower location and
+cancellation restores prior placement. Retain movement buttons, native radios,
+and pending choice/help across views. The writer must STOP after focused tests,
+both builds and a real pointer smoke at a reviewable checkpoint, before the broad
+final matrix. Parent then runs blind walkthroughs, resolves findings, and uses
+ONE consolidated Sol-low review before independent and final validation.
 
 Sol cost limit: target ONE consolidated Sol review for Repair 02, a second only
 for a substantial remaining issue. Zero Sol calls used in this repair so far.
 Do routine verification in parent, not repeated Sol draft consultations.
-New workflow: docs/workflows/browser-walkthrough-review.md. Fresh reviewer
-`/root/walkthrough_mouse` (Luna medium) completed tool capability check ONLY on a
-new blank in-app tab: screenshots and coordinate mouse/drag/keyboard APIs exist.
-Subagent visible-tab request was unsupported; hidden dedicated tab worked.
-Browser-only restriction is instructional, not tool-enforced. No product browsing
-or source was inspected. After build, supply only URL/minimal task/mouse constraint;
-no known defects or implementation report. New cold keyboard reviewer separately.
-Bound each to one episode/30 interactions/10 observations; report real limitations.
+Source checkpoint 0d0708d and corrected initial endpoint controls e7a80f1 are
+committed. The writer is now preparing route/context changes and focused checks,
+and must stop before the broad matrix for the consolidated review. Parent has
+independently checked all 12 frozen v7 and four older v6 full-state replays and all
+74 offered revision-2 answers across 16 item/support contexts.
+
+New workflow: docs/workflows/browser-walkthrough-review.md. Cold Luna mouse and
+keyboard walkthroughs ran in separate hidden in-app tabs. Mouse completed one
+episode using movement buttons; keyboard reached an accepted answer in 14 key
+actions but did not activate Finish. Their initial-action finding led to explicit
+Place at 0 / Place at 1 controls, followed by Move left / Move right. Neither run
+independently established direct dragging. An assisted follow-up lost its browser
+tab handle and stopped without interactions. Reports are under the Plan 39
+walkthroughs directory. Browser-only restrictions were instructional; the harness
+automatically exposed accessibility metadata, so strict screenshot-only isolation
+was not achieved. No real learner, screen-reader or physical-device claims follow.
 
 Latest owner review (2026-10-21): Plan 39 was NOT accepted after local use.
 The initial Continue screen is redundant, aligned shaded bar gives away the
 location, linear options/result lack precise mathematical meaning, and actual
 pointer/finger placement is needed. Read Plan 39 report
 `owner-review-repair-02-proposal.md` for feedback and the proposed bounded repair.
-No source changes or child launch were made for that proposal. Approve the
-replacement instructional mechanism before implementing, including revision/replay
-disposition. Keep Plan 39 delivered awaiting repair. Three-fraction placement and
+That proposal and its refined mechanism were subsequently approved and source
+work authorized as recorded above. Three-fraction placement and
 circle-source variation are follow-up design work, not this repair's source scope.
 
-Plan 42 is complete, owner accepted. Plan 39 is technically accepted and delivered,
-awaiting owner rendered-page/agency acceptance. No push, deployment, additional
+Plan 42 is complete, owner accepted. Plan 39 Repair 02 remains in progress,
+awaiting final technical review and owner rendered-page/agency acceptance. No push, deployment, additional
 plan or automatic owner acceptance is authorized. Plans 40 and 41 are complete;
 the bounded Phase 3 and maintainability prerequisites were satisfied.
 
