@@ -1,0 +1,43 @@
+{
+  "capturedAt": "2026-10-22T02:08:40.219Z",
+  "browser": "155.0.8059.81",
+  "method": "Installed Chrome, CDP touch events; browser emulation, not physical device",
+  "checks": [
+    {
+      "name": "actual touch drag chooses pending half without submitting",
+      "passed": true
+    },
+    {
+      "name": "touch cancellation restores prior placement",
+      "passed": true
+    },
+    {
+      "name": "pending resize 360 to 800",
+      "passed": true,
+      "tokenCenter": 400,
+      "expected": 400,
+      "drift": 0
+    },
+    {
+      "name": "resize interrupts touch drag and restores prior choice",
+      "passed": true,
+      "tokenCenter": 260,
+      "expected": 260,
+      "drift": 0
+    },
+    {
+      "name": "return and re-entry clear accepted and pending state",
+      "passed": true
+    }
+  ],
+  "pointerTypes": [
+    "touch",
+    "touch",
+    "touch",
+    "mouse",
+    "mouse",
+    "mouse"
+  ],
+  "pageErrors": [],
+  "passed": true
+}

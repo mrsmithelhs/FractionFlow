@@ -65,3 +65,28 @@ pedagogical question, tool limitation or unsupported speculation. Concrete defec
 may become deterministic regression cases. Owner keeps pedagogical/acceptance
 authority. One consolidated Sol review is the cost target for the whole repair;
 walkthrough findings do not automatically trigger another Sol call.
+
+## Repair 02 pilot findings
+
+The mouse and keyboard Luna runs produced one actionable initial-control finding.
+The mouse run completed one problem with movement buttons; the keyboard run
+reached accepted feedback through Tab, arrow keys and Check, without activating
+Finish. Neither independently demonstrated direct-gesture discovery. Keep that
+scope distinct from deterministic mouse/touch gesture checks.
+
+The harness automatically supplied accessibility metadata when binding a tab, so
+strict screenshot-only isolation was not achieved. Record such exposure even if
+the reviewer says it did not use the metadata. A visual-only instruction is not
+a tool-enforced boundary. Screenshot export was not established; inline images
+were observed, while the parent persisted the mouse report from returned text.
+Confirm available export tools before promising local screenshot artifacts.
+
+A follow-up turn lost the previous tab handle and stopped before interaction.
+Prefer a single bounded run within a stable browser session. If that session is
+lost, report it; any new run must be labelled as a restart or assisted follow-up,
+not silently combined with the original observation. Requested model settings
+were known, but actual runtime identity, token usage and cost were not exposed.
+
+Detailed observations and parent disposition are in the Plan 39 Repair 02
+walkthrough reports. This pilot does not establish learner efficacy or justify
+making additional expensive advisor calls routine.
