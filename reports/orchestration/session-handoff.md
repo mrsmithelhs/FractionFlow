@@ -6,6 +6,16 @@ pause records remain in Git and the packet reports.
 
 ## Current board and owner direction
 
+Latest owner review (2026-10-21): Plan 39 was NOT accepted after local use.
+The initial Continue screen is redundant, aligned shaded bar gives away the
+location, linear options/result lack precise mathematical meaning, and actual
+pointer/finger placement is needed. Read Plan 39 report
+`owner-review-repair-02-proposal.md` for feedback and the proposed bounded repair.
+No source changes or child launch were made for that proposal. Approve the
+replacement instructional mechanism before implementing, including revision/replay
+disposition. Keep Plan 39 delivered awaiting repair. Three-fraction placement and
+circle-source variation are follow-up design work, not this repair's source scope.
+
 Plan 42 is complete, owner accepted. Plan 39 is technically accepted and delivered,
 awaiting owner rendered-page/agency acceptance. No push, deployment, additional
 plan or automatic owner acceptance is authorized. Plans 40 and 41 are complete;
