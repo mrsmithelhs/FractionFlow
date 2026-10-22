@@ -1,76 +1,71 @@
 # FractionFlow orchestration handoff
 
 Updated 2026-10-21. Read AGENTS.md, the orchestrator starting prompt, packet board
-and git status before acting. This is the current checkpoint; earlier stages and
-pause records remain in Git and the packet reports.
+and git status before acting. Current direction below supersedes older delivery
+and pause records retained later in this file.
 
 ## Current board and owner direction
 
-Current assignment: owner authorized Repair 02 with Luna implementation and fresh
-browser-only walkthroughs. Plan 39 reopened in-progress and RUNNABLE. Writer is
-`/root/plan39_repair02_luna` (Luna medium, cold context, no fan-out). Refined
-proposal `ef52d0b`, baseline `9253c83` and parent source approval `f029155` are
-committed. Parent independently replayed and hash-checked all 12 pre-source v7
-snapshots. Definition revision 2 and replay v8 are approved; old revision 1 and v7
-remain preserved. The maximum scale is exactly 8 across all 16 contexts. Only the
-ten old Plan 39 context mappings may migrate explicitly to a historical revision-1
-fixture; all 91 old route/action objects and other mappings retain their meaning.
-New v8 rows use the current context. The token allows vertical dragging from its
-tray, with touch-action:none scoped to its handle; the surrounding page can pan.
-Drop tests use both axes of a 44px-high band; ties choose the lower location and
-cancellation restores prior placement. Retain movement buttons, native radios,
-and pending choice/help across views. The writer must STOP after focused tests,
-both builds and a real pointer smoke at a reviewable checkpoint, before the broad
-final matrix. Parent then runs blind walkthroughs, resolves findings, and uses
-ONE consolidated Sol-low review before independent and final validation.
+Plan 39 Repair 02 is technically accepted and DELIVERED, awaiting owner rendered-
+page and agency acceptance. Do not close it, push, deploy or start another packet
+without applicable owner direction. Plans 40, 41 and 42 are complete and accepted.
 
-Sol cost limit: target ONE consolidated Sol review for Repair 02, a second only
-for a substantial remaining issue. ONE Sol LOW call has now completed. It found
-false Place at 0/1 labels for sparse sets without endpoints; parent also confirmed
-181px pending-token drift after a 360→800px resize. Same Luna writer is fixing
-both plus a disclosed late route range typo. Final tests/builds/unfiltered matrix
-and five old plus five new seeds are authorized after those bounded fixes. No
-second Sol call is planned. See repair-02-consolidated-review.md for disposition.
-Do routine verification in parent, not repeated Sol draft consultations.
-Source checkpoint 0d0708d and corrected initial endpoint controls e7a80f1 are
-committed. The writer is now preparing route/context changes and focused checks,
-and must stop before the broad matrix for the consolidated review. Parent has
-independently checked all 12 frozen v7 and four older v6 full-state replays and all
-74 offered revision-2 answers across 16 item/support contexts.
+The owner rejected the original number-line task after local use. Repair 02 now
+starts directly at locate: one unplaced stacked fraction, an unshaded line and
+explicit Check. No bar in either DOM view before acceptance; the result then shows
+the aligned bar/connector and exact unit relationship. Mouse/touch drag and tap
+snap to nearest OFFERED point, ties lower, with a two-axis 44px hit band. Cancel,
+outside release and resize interruption restore prior placement. Initial buttons
+say Place leftmost/rightmost, then Move left/right, accurately covering sparse
+sets without endpoints. Native linear radios give precise derived descriptions.
+Pending choice/help survive view changes; Retry/Return/Next clear them.
 
-New workflow: docs/workflows/browser-walkthrough-review.md. Cold Luna mouse and
-keyboard walkthroughs ran in separate hidden in-app tabs. Mouse completed one
-episode using movement buttons; keyboard reached an accepted answer in 14 key
-actions but did not activate Finish. Their initial-action finding led to explicit
-Place at 0 / Place at 1 controls, followed by Move left / Move right. Neither run
-independently established direct dragging. An assisted follow-up lost its browser
-tab handle and stopped without interactions. Reports are under the Plan 39
-walkthroughs directory. Browser-only restrictions were instructional; the harness
-automatically exposed accessibility metadata, so strict screenshot-only isolation
-was not achieved. No real learner, screen-reader or physical-device claims follow.
+Definition revision 2 pairs with replay v8; old revision 1/v7 and all eight records
+remain preserved. Original 91 route/action objects are unchanged. Exactly ten old
+Plan39 mappings use the explicit historical v1 fixture; other mappings retain
+their meaning. Seven current v8 rows are appended. No randomization, larger limits,
+multiple-token task or alternate source representation was added.
 
-Latest owner review (2026-10-21): Plan 39 was NOT accepted after local use.
-The initial Continue screen is redundant, aligned shaded bar gives away the
-location, linear options/result lack precise mathematical meaning, and actual
-pointer/finger placement is needed. Read Plan 39 report
-`owner-review-repair-02-proposal.md` for feedback and the proposed bounded repair.
-That proposal and its refined mechanism were subsequently approved and source
-work authorized as recorded above. Three-fraction placement and
-circle-source variation are follow-up design work, not this repair's source scope.
+Final implementation/evidence aab12c3, implementer report last f323293. Source
+checkpoints 0d0708d/e7a80f1 and prior gates remain in Git. Read Plan39 reports:
+repair-02-progress.md, repair-02-orchestration-review.md and the consolidated review.
+Final unit suite: 511 tests. Sequential npm run build passes learner/prototype.
+Final unfiltered Chrome matrix: 98 rows / 100 passing executions, no failures.
+Five old and five new seeds each detected at ordinary assertions. Current v8
+measurements cover four viewports, including actual DPR 1.25 at 1093×614. Historical
+evidence is unchanged in Git; seven text working copies have only checkout EOL
+normalization relative to blobs, and all binary evidence is unchanged.
 
-Plan 42 is complete, owner accepted. Plan 39 Repair 02 remains in progress,
-awaiting final technical review and owner rendered-page/agency acceptance. No push, deployment, additional
-plan or automatic owner acceptance is authorized. Plans 40 and 41 are complete;
-the bounded Phase 3 and maintainability prerequisites were satisfied.
+Parent independently checked 12 v7 + 4 v6 full states, all 74 offered v2 answer/replay
+results, real CDP touch drag/cancel, resize with 0px corrected drift, interruption,
+Return/re-entry and actual 3/4 initial/pending/accepted screenshots. These are browser
+emulation checks, not physical-device, assistive-technology or learner evidence.
+Final clean, filtered and seed receipts are isolated in evidence/repair02-current.
+A first 96/100 build-order failure receipt is separately retained; sequential build
+and the final clean run resolved it. DPR-field and resize-witness timing errors
+were corrected before the final full run. No dependencies were added.
 
-The owner authorized supervised Luna-medium implementation and Sol read-only
-low/medium advisors. No Astra, implementation-child fan-out, model substitution
-or separate durable implementer chat. Parent owns gates/status/acceptance and
-independent verification. Implementation child /root/plan39_luna is stopped.
-Parent-run advisors /root/plan39_sol_mechanism and /root/plan39_sol_repair_review
-are done. Requested runtime model identities were not independently observable.
+Cost discipline: EXACTLY ONE Sol LOW read-only call for Repair 02. It found the
+sparse-label defect and raised resize; parent reproduced resize and later caught
+the DPR fixture mismatch. Routine fixes and verification stayed with Luna/parent.
+Aim for one consolidated Sol call per plan/review, at most two for a substantial
+unresolved issue. No Astra, implementation-child fan-out or model substitution.
+The Luna writer and both walkthrough reviewers are stopped/completed. Requested
+runtime model identities and actual token/cost use were not independently exposed.
 
-## Plan 39 delivery
+New bounded workflow: docs/workflows/browser-walkthrough-review.md. Two cold Luna
+runs used separate hidden browser tabs. Mouse completed one problem using buttons;
+keyboard reached accepted feedback in 14 keys but did not activate Finish. No direct-
+gesture discovery was established. Automatic accessibility metadata exposure
+prevented strict screenshot-only isolation. Screenshot export was not established;
+a follow-up lost its tab handle and stopped before interaction. See walkthroughs/
+reports and disposition. Do not inflate these into learner/AT/physical-device claims.
+
+Parent temporary review server 52000 was gracefully closed (session 86540 exit 0).
+The owner's dev server was not stopped. Three-fraction placement, alternate source
+visuals and wider denominator/density work remain separate follow-up design work.
+
+## Historical Plan 39 revision-1 delivery
 
 Scope: fixed eight-item bar-to-line same-amount bridge on [0,1], not number-line
 arithmetic or random generation. Learner entry label is “Place fractions on a

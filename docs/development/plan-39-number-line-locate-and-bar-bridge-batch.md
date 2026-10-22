@@ -1,7 +1,7 @@
 ---
 id: plan-39
 title: First Number-Line Locate and Bar-to-Line Bridge Batch
-status: in-progress
+status: delivered
 depends_on: [plan-35, plan-37, plan-38, plan-40, plan-41, plan-42]
 gate: "Owner sequencing gate: Plan 40 + §31/§90 disposition, then Plan 41 investigation disposition and any separately adopted prerequisite refactor, precede Phase 4 activation (DECISION-047). Requirement 0: confirm readiness and approve exact wiring, admission, next sequential replay schema, and evidence mechanism before source. Staged technical review, owner rendered-page/agency acceptance and separate deployment gate."
 summary: >-
