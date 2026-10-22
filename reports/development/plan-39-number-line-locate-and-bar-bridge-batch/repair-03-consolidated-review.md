@@ -42,3 +42,24 @@ writer will complete required tests, sequential build, full browser matrix and
 isolated seed evidence after the bounded fix. Owner rendered acceptance and
 deployment remain separate. No extra plan, durable implementer chat, Bootstrap
 write, dependency or push is authorized.
+
+## Follow-up verification
+
+The central cancellation fix cleared Escape's ring in the parent's rebuilt-app
+check. A second independent test exposed a distinct wide-window case: resizing
+1093 to 1000 pixels left the frame at 632 pixels and its ring lit. Observing only
+the frame therefore missed a real viewport resize. The parent recorded both
+measurements in orchestrator-wide-resize-before-fix.json and directed the same
+writer to add lifecycle-managed window-resize cancellation and a wide regression
+case. No second Sol consultation was used.
+
+After the lifecycle-managed window resize fix and rebuild, parent independently
+verified four real-browser cancellation sequences: Escape and viewport resize at
+360 and 1093 pixels. Each began with one lit ring, ended with zero, and restored
+the same prior placement. The wide resize kept the frame at 632 pixels; the
+narrow resize changed it from 278 to 310 pixels. Receipt:
+evidence/repair03-current/orchestrator-cancel-after-fix.json. The original 98 route
+objects also compare deeply equal against the pre-repair baseline, with one new
+row appended. No math, content or instructional source changed. Final delivery
+was subsequently accepted technically after the writer's final validation,
+historical restoration and parent artifact check. See repair-03-orchestration-review.md.

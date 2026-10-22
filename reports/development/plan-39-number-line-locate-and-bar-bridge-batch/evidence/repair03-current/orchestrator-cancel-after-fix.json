@@ -1,0 +1,46 @@
+{
+  "capturedAt": "2026-10-22T21:22:00.452Z",
+  "source": "independent orchestrator real mouse and viewport actions against rebuilt distribution",
+  "results": [
+    {
+      "viewportWidth": 360,
+      "kind": "Escape",
+      "before": 1,
+      "after": 0,
+      "prior": "candidate-a",
+      "selected": "candidate-a",
+      "widthBefore": 278,
+      "widthAfter": 278
+    },
+    {
+      "viewportWidth": 360,
+      "kind": "resize",
+      "before": 1,
+      "after": 0,
+      "prior": "candidate-a",
+      "selected": "candidate-a",
+      "widthBefore": 278,
+      "widthAfter": 310
+    },
+    {
+      "viewportWidth": 1093,
+      "kind": "Escape",
+      "before": 1,
+      "after": 0,
+      "prior": "candidate-a",
+      "selected": "candidate-a",
+      "widthBefore": 632,
+      "widthAfter": 632
+    },
+    {
+      "viewportWidth": 1093,
+      "kind": "resize",
+      "before": 1,
+      "after": 0,
+      "prior": "candidate-a",
+      "selected": "candidate-a",
+      "widthBefore": 632,
+      "widthAfter": 632
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "capturedAt": "2026-10-22T21:22:45.269Z",
+  "results": [
+    {
+      "reducedMotion": "no-preference",
+      "animation": "plan39-grab-cue",
+      "ariaHidden": "true",
+      "stoppedOnInteraction": true
+    },
+    {
+      "reducedMotion": "reduce",
+      "animation": "none",
+      "ariaHidden": "true",
+      "stoppedOnInteraction": true
+    }
+  ]
+}

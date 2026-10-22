@@ -1,25 +1,45 @@
 # FractionFlow orchestration handoff
 
-Updated 2026-10-21. Read AGENTS.md, the orchestrator starting prompt, packet board
+Updated 2026-10-22. Read AGENTS.md, the orchestrator starting prompt, packet board
 and git status before acting. Current direction below supersedes older delivery
 and pause records retained later in this file.
 
 ## Current board and owner direction
 
-Owner direction 2026-10-22: execute Repair 03 with Luna implementation and limited
-Sol points, continue screenshot/browser pilot, and record a later independent
-implementer/cross-harness trial as a follow-up. Plan 39 is reopened IN-PROGRESS and
-RUNNABLE. Writer /root/plan39_repair03_luna (Luna medium, default role, no fan-out)
-committed mechanism 83ed7f3. Parent source approval is repair-03-mechanism-review.md.
-Preserve grip offset and bottom-centre anchor, shared neutral ring/release resolver,
-axis-centred acceptance band, cancellation/restoration, one decorative hand cue
-on first visible visual unplaced task and static reduced-motion equivalent. No
-instructional/replay/definition changes. Writer stops after focused tests, sequential
-build and pointer smoke. Parent then runs pilot walkthroughs and ONE Sol LOW review
-before broad final validation. Zero Sol calls used for Repair 03 so far. Parent
-owns driver/pilot/workflow/status records; source writes stay serialized.
-No Bootstrap write, new durable implementer chat, next plan, push or deployment.
-See phase-3-follow-up-obligations.md for the future portability/independent-thread trial.
+Repair 03 current checkpoint (2026-10-22): technically accepted; Plan 39 is
+DELIVERED pending owner rendered-page/agency acceptance. Do not close, push or
+deploy without the applicable owner gate. Final implementation/evidence commit
+91763f3; final writer progress commit ce4f22e. Parent independently verified final
+receipts, prior route/context preservation and historical evidence restoration.
+All 11 seeded cases were detected as intended with zero unexpected failures; the
+temporary snapshot was removed. Parent packet lint and diff checks passed.
+
+Luna-medium default-role writer /root/plan39_repair03_luna owns product/harness.
+One cold Sol LOW read-only consultation ran; no second was used. Its ring-cleanup
+finding was repaired. Parent then reproduced wide viewport resizing without a
+frame resize and directed a lifecycle-managed window-resize cancellation fix.
+Parent independently verified Escape/resize at narrow and wide widths afterward.
+The final clean Chrome receipt passed 99 rows/101 executions with zero failures
+and zero seed detections. Full unit run: 56 files/511 tests. Original 98 route/action
+objects and prior context entries compare unchanged; no math/content/instructional
+source changed. Read repair-03-orchestration-review.md and repair-03-progress.md
+under the Plan 39 report for final disposition and exact receipt paths.
+
+Repair 03's screenshot pilot had two blocked persistent-runtime localhost trials,
+then successful screenshot-driven Luna mouse and keyboard command-driver trials.
+The working command process hosts its own existing built-app static server.
+Mouse: 9 actions / 10 captures; keyboard: 15 actions / 16 captures. Parent independently
+tested CDP touch dragging; the pilot driver supports touch taps only. Earlier
+wrapper cleanup needed child-owned Ctrl-C; final parent smoke verified exit 0.
+Read walkthroughs/repair03-pilot-log.md before reuse. No global isolation, actual
+learner, physical-device, assistive-technology or cross-provider claim is made.
+
+Owner wants a later separately authorized independent implementer-chat trial with
+walkthrough-child authority, eventually other harnesses and possible Bootstrap
+distribution. This is recorded in phase-3-follow-up-obligations.md. No additional
+plan/chat, Bootstrap write, installation, push or deployment was started here.
+
+## Earlier checkpoints (superseded by the current direction above)
 
 Owner review 2026-10-22: Repair 02 is not yet accepted. Parent reproduced failed
 horizontal repositioning from the centre of an already placed token: the pointer
