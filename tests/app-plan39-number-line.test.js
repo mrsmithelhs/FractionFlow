@@ -32,6 +32,12 @@ describe('Plan 39 Repair 02 app wiring', () => {
     expect(root.querySelectorAll('.plan39-preview-marker')).toHaveLength(0);
     expect(root.querySelector('.app-visual-view .active-beat-prompt').textContent).toBe('Place this fraction on the number line.');
     expect(root.querySelector('.app-linear-view .active-beat-prompt').textContent).toBe('Choose a location.');
+    const visualCue = root.querySelector('.app-visual-view .plan39-grab-cue');
+    const linearCue = root.querySelector('.app-linear-view .plan39-grab-cue');
+    expect(visualCue.getAttribute('aria-hidden')).toBe('true');
+    expect(root.querySelector('.app-visual-view .plan39-repair-token').classList.contains('has-grab-cue')).toBe(true);
+    expect(root.querySelector('.app-linear-view .plan39-repair-token').classList.contains('has-grab-cue')).toBe(false);
+    expect(linearCue.getAttribute('aria-hidden')).toBe('true');
     expect(root.querySelector('.app-visual-view .plan39-stepper-previous').textContent).toBe('← Place leftmost');
     expect(root.querySelector('.app-visual-view .plan39-stepper-next').textContent).toBe('Place rightmost →');
     app.destroy();

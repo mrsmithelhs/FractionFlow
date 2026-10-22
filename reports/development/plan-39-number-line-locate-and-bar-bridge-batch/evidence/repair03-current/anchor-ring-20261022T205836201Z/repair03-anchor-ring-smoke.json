@@ -1,0 +1,87 @@
+{
+  "browser": "installed Chrome via Playwright channel",
+  "viewport": {
+    "width": 360,
+    "height": 740
+  },
+  "checks": [
+    {
+      "name": "visible-only one-shot cue and natural horizontal drags",
+      "passed": true,
+      "centerGrip": {
+        "grip": "center",
+        "initialId": "partition-0-of-2",
+        "targetRatio": 0.5,
+        "anchor": {
+          "x": 180,
+          "y": 237.859375
+        },
+        "points": [
+          {
+            "id": "partition-0-of-2",
+            "x": 41
+          },
+          {
+            "id": "partition-1-of-2",
+            "x": 180
+          },
+          {
+            "id": "partition-2-of-2",
+            "x": 319
+          }
+        ],
+        "expectedId": "partition-1-of-2",
+        "rings": [
+          "partition-1-of-2"
+        ],
+        "pointerX": 180,
+        "releasedId": "partition-1-of-2"
+      },
+      "edgeGrip": {
+        "grip": "edge",
+        "initialId": "partition-1-of-2",
+        "targetRatio": 1,
+        "anchor": {
+          "x": 319,
+          "y": 237.859375
+        },
+        "points": [
+          {
+            "id": "partition-0-of-2",
+            "x": 41
+          },
+          {
+            "id": "partition-1-of-2",
+            "x": 180
+          },
+          {
+            "id": "partition-2-of-2",
+            "x": 319
+          }
+        ],
+        "expectedId": "partition-2-of-2",
+        "rings": [
+          "partition-2-of-2"
+        ],
+        "pointerX": 339,
+        "releasedId": "partition-2-of-2"
+      }
+    },
+    {
+      "name": "ordinary assertion detects deliberately mismatched ring",
+      "passed": true,
+      "defectWitness": {
+        "expectedId": "partition-1-of-2",
+        "wrongId": "partition-0-of-2",
+        "ringId": "partition-0-of-2"
+      }
+    },
+    {
+      "name": "reduced-motion static cue",
+      "passed": true,
+      "animationName": "none"
+    }
+  ],
+  "pageErrors": [],
+  "outcome": "PASS"
+}

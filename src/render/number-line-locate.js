@@ -49,6 +49,11 @@ function makeRepairToken(scene, strings) {
   fraction.classList.add('plan39-source-fraction');
   const tray = document.createElement('div');
   tray.className = 'plan39-token-tray';
+  const cue = document.createElement('span');
+  cue.className = 'plan39-grab-cue';
+  cue.setAttribute('aria-hidden', 'true');
+  cue.textContent = '☝';
+  token.appendChild(cue);
   token.appendChild(fraction);
   tray.appendChild(token);
   return tray;
@@ -346,6 +351,34 @@ export function createNumberLineLocateRenderer({
   let escapeListenerBound = false;
   let resizeObserver = null;
   let observedFrame = null;
+  let grabCueShown = false;
+  let grabCueActive = false;
+
+  function visibleRoot() {
+    if (!root?.isConnected) return false;
+    for (let ancestor = root; ancestor; ancestor = ancestor.parentNode) {
+      if (ancestor.hasAttribute?.('hidden')) return false;
+    }
+    return true;
+  }
+
+  function stopGrabCue() {
+    if (!grabCueActive) return;
+    grabCueActive = false;
+    root?.querySelector('.plan39-repair-token')?.classList.remove('has-grab-cue');
+    document.removeEventListener('pointerdown', stopGrabCue, true);
+    document.removeEventListener('keydown', stopGrabCue, true);
+  }
+
+  function maybeStartGrabCue(token) {
+    if (view !== 'visual' || grabCueShown || !visibleRoot() || token?.classList.contains('is-placed')) return;
+    grabCueShown = true;
+    grabCueActive = true;
+    token.classList.add('has-grab-cue');
+    token.addEventListener('animationend', stopGrabCue, { once: true });
+    document.addEventListener('pointerdown', stopGrabCue, true);
+    document.addEventListener('keydown', stopGrabCue, true);
+  }
 
   function syncResizeObservation() {
     if (!isRepair02(currentScene)) {
@@ -380,6 +413,7 @@ export function createNumberLineLocateRenderer({
   }
 
   function onDocumentKeyDown(event) {
+    stopGrabCue();
     if (event.key !== 'Escape' || !tokenPointerState) return;
     event.preventDefault();
     cancelActiveTokenGesture();
@@ -432,8 +466,16 @@ export function createNumberLineLocateRenderer({
     setTokenPlacement(candidateId);
   }
 
-  function nearestCandidateAtX(frame, clientX) {
+  function resolveCandidateAtAnchor(frame, anchorX, anchorY) {
     const rect = frame.getBoundingClientRect();
+    const axis = frame.querySelector('.plan39-axis-line');
+    const axisRect = axis?.getBoundingClientRect() ?? rect;
+    const axisY = axisRect.top + axisRect.height / 2;
+    const halfBand = Math.max(22, rect.height / 2);
+    const ring = frame.querySelector('.plan39-candidate-point.is-drop-preview');
+    ring?.classList.remove('is-drop-preview');
+    if (anchorX < rect.left || anchorX > rect.right
+      || anchorY < axisY - halfBand || anchorY > axisY + halfBand) return null;
     return currentScene.meaning.numberLine.candidatePositions
       .map((candidate, index) => ({
         candidate,
@@ -441,11 +483,16 @@ export function createNumberLineLocateRenderer({
         centerX: rect.left + rect.width * ratio(candidate.form),
       }))
       .sort((left, right) => {
-        const distanceDifference = Math.abs(left.centerX - clientX) - Math.abs(right.centerX - clientX);
-        const tieTolerance = Number.EPSILON * Math.max(1, Math.abs(left.centerX), Math.abs(right.centerX), Math.abs(clientX)) * 8;
+        const distanceDifference = Math.abs(left.centerX - anchorX) - Math.abs(right.centerX - anchorX);
+        const tieTolerance = Number.EPSILON * Math.max(1, Math.abs(left.centerX), Math.abs(right.centerX), Math.abs(anchorX)) * 8;
         if (Math.abs(distanceDifference) > tieTolerance) return distanceDifference;
         return left.centerX - right.centerX || left.index - right.index;
       })[0]?.candidate ?? null;
+  }
+
+  function showDropPreview(frame, candidate) {
+    frame.querySelector('.plan39-candidate-point.is-drop-preview')?.classList.remove('is-drop-preview');
+    if (candidate) frame.querySelector(`.plan39-candidate-point[data-candidate-id="${candidate.id}"]`)?.classList.add('is-drop-preview');
   }
 
   function bindTokenDrag(stack, savePreview) {
@@ -454,9 +501,13 @@ export function createNumberLineLocateRenderer({
     token.setAttribute('data-pointer-bound', 'true');
     token.addEventListener('pointerdown', (event) => {
       if (!event.isPrimary || (event.button !== undefined && event.button !== 0)) return;
+      stopGrabCue();
       event.stopPropagation();
       const frame = stack.querySelector('.plan39-axis-frame');
       if (!frame) return;
+      const tokenRect = token.getBoundingClientRect();
+      const anchorX = tokenRect.left + tokenRect.width / 2;
+      const anchorY = tokenRect.bottom;
       tokenPointerState = {
         pointerId: event.pointerId,
         startX: event.clientX,
@@ -464,6 +515,8 @@ export function createNumberLineLocateRenderer({
         candidateId: previewHandle?.candidateId ?? null,
         token,
         frame,
+        grabOffsetX: event.clientX - anchorX,
+        grabOffsetY: event.clientY - anchorY,
         dragging: false,
       };
       try { token.setPointerCapture(event.pointerId); } catch { tokenPointerState = null; }
@@ -476,16 +529,20 @@ export function createNumberLineLocateRenderer({
       if (!active.dragging && Math.hypot(dx, dy) < 6) return;
       active.dragging = true;
       token.classList.add('is-dragging');
+      const anchorX = event.clientX - active.grabOffsetX;
+      const anchorY = event.clientY - active.grabOffsetY;
       token.style.position = 'fixed';
       token.style.left = '0px';
       token.style.top = '0px';
-      token.style.transform = `translate3d(${event.clientX}px, ${event.clientY}px, 0) translate(-50%, -50%)`;
+      token.style.transform = `translate3d(${anchorX}px, ${anchorY}px, 0) translate(-50%, -100%)`;
       token.style.zIndex = '1000';
+      showDropPreview(active.frame, resolveCandidateAtAnchor(active.frame, anchorX, anchorY));
     });
     const cancel = (event) => {
       const active = tokenPointerState;
       if (!active || (event.pointerId !== undefined && active.pointerId !== event.pointerId)) return;
       tokenPointerState = null;
+      showDropPreview(active.frame, null);
       restoreTokenAfterGesture(token, active.candidateId);
     };
     token.addEventListener('pointercancel', cancel);
@@ -495,10 +552,10 @@ export function createNumberLineLocateRenderer({
       if (!active || active.pointerId !== event.pointerId) return;
       tokenPointerState = null;
       let selected = null;
-      const rect = active.frame.getBoundingClientRect();
-      const withinBand = event.clientX >= rect.left && event.clientX <= rect.right
-        && event.clientY >= rect.top && event.clientY <= rect.bottom;
-      if (active.dragging && withinBand) selected = nearestCandidateAtX(active.frame, event.clientX);
+      const anchorX = event.clientX - active.grabOffsetX;
+      const anchorY = event.clientY - active.grabOffsetY;
+      if (active.dragging) selected = resolveCandidateAtAnchor(active.frame, anchorX, anchorY);
+      showDropPreview(active.frame, null);
       restoreTokenAfterGesture(token, selected?.id ?? active.candidateId);
       if (selected) savePreview({ contextKey: currentKey, candidateId: selected.id });
     });
@@ -514,6 +571,7 @@ export function createNumberLineLocateRenderer({
     let gesture = null;
     frame.addEventListener('pointerdown', (event) => {
       if (!event.isPrimary || (event.button !== undefined && event.button !== 0)) return;
+      stopGrabCue();
       gesture = { pointerId: event.pointerId, startX: event.clientX, startY: event.clientY, moved: false };
     });
     frame.addEventListener('pointermove', (event) => {
@@ -534,7 +592,9 @@ export function createNumberLineLocateRenderer({
       const withinBand = event.clientX >= rect.left && event.clientX <= rect.right
         && event.clientY >= rect.top && event.clientY <= rect.bottom;
       if (started.moved || !withinBand) return;
-      const candidate = nearestCandidateAtX(frame, event.clientX);
+      const axis = frame.querySelector('.plan39-axis-line');
+      const axisRect = axis?.getBoundingClientRect() ?? rect;
+      const candidate = resolveCandidateAtAnchor(frame, event.clientX, axisRect.top + axisRect.height / 2);
       if (candidate) savePreview({ contextKey: currentKey, candidateId: candidate.id });
     });
   }
@@ -594,6 +654,9 @@ export function createNumberLineLocateRenderer({
       stack.appendChild(makeTrack(scene, strings, previewHandle?.contextKey === currentKey ? previewHandle.candidateId : null, view));
     }
     root.appendChild(stack);
+    if (repair02 && !accepted && scene.meaning.currentTask.beat === 'locate') {
+      maybeStartGrabCue(stack.querySelector('.plan39-repair-token'));
+    }
     refreshGeometry();
     if (accepted) root.appendChild(makeRepairResolution(scene, strings));
     if (repair02 && !accepted) {
@@ -722,6 +785,7 @@ export function createNumberLineLocateRenderer({
         document.removeEventListener('keydown', onDocumentKeyDown);
         escapeListenerBound = false;
       }
+      stopGrabCue();
       if (root?.parentNode) root.parentNode.removeChild(root);
       root = null;
       activeControls = null;
