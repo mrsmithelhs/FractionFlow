@@ -254,12 +254,12 @@ function makeVisualStepper(scene, strings, { previewHandle, onPreviewChange, key
   status.className = 'plan39-stepper-status';
   status.setAttribute('aria-live', 'polite');
   const previous = createButton({
-    label: repair02 && selectedIndex < 0 ? strings.plan39Repair02.placeAtOne : strings.plan39.previousPoint,
+    label: repair02 && selectedIndex < 0 ? strings.plan39Repair02.placeAtZero : strings.plan39.previousPoint,
     className: 'plan39-stepper-previous',
   });
   previous.classList.add('plan39-stepper-move');
   const next = createButton({
-    label: repair02 && selectedIndex < 0 ? strings.plan39Repair02.placeAtZero : strings.plan39.nextPoint,
+    label: repair02 && selectedIndex < 0 ? strings.plan39Repair02.placeAtOne : strings.plan39.nextPoint,
     className: 'plan39-stepper-next',
   });
   next.classList.add('plan39-stepper-move');
@@ -282,12 +282,16 @@ function makeVisualStepper(scene, strings, { previewHandle, onPreviewChange, key
   }
 
   previous.addEventListener('click', () => {
-    const targetIndex = selectedIndex < 0 ? candidates.length - 1 : selectedIndex - 1;
+    const targetIndex = selectedIndex < 0
+      ? repair02 ? 0 : candidates.length - 1
+      : selectedIndex - 1;
     updateSelection(targetIndex);
     if (previous.disabled) next.focus();
   });
   next.addEventListener('click', () => {
-    const targetIndex = selectedIndex < 0 ? 0 : selectedIndex + 1;
+    const targetIndex = selectedIndex < 0
+      ? repair02 ? candidates.length - 1 : 0
+      : selectedIndex + 1;
     updateSelection(targetIndex);
     if (next.disabled) previous.focus();
   });
@@ -311,8 +315,8 @@ function makeVisualStepper(scene, strings, { previewHandle, onPreviewChange, key
     },
     clearSelection() {
       selectedIndex = -1;
-      previous.textContent = repair02 ? strings.plan39Repair02.placeAtOne : strings.plan39.previousPoint;
-      next.textContent = repair02 ? strings.plan39Repair02.placeAtZero : strings.plan39.nextPoint;
+      previous.textContent = repair02 ? strings.plan39Repair02.placeAtZero : strings.plan39.previousPoint;
+      next.textContent = repair02 ? strings.plan39Repair02.placeAtOne : strings.plan39.nextPoint;
       status.removeAttribute('data-candidate-id');
       status.textContent = repair02 ? strings.plan39Repair02.noSelection : strings.plan39.noPreview;
       previous.disabled = false;

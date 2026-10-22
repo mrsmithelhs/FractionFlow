@@ -27,15 +27,15 @@ describe('Plan 39 Repair 02 app wiring', () => {
     expect(root.querySelectorAll('.plan39-preview-marker')).toHaveLength(0);
     expect(root.querySelector('.app-visual-view .active-beat-prompt').textContent).toBe('Place this fraction on the number line.');
     expect(root.querySelector('.app-linear-view .active-beat-prompt').textContent).toBe('Choose a location.');
-    expect(root.querySelector('.app-visual-view .plan39-stepper-previous').textContent).toBe('← Place at 1');
-    expect(root.querySelector('.app-visual-view .plan39-stepper-next').textContent).toBe('Place at 0 →');
+    expect(root.querySelector('.app-visual-view .plan39-stepper-previous').textContent).toBe('← Place at 0');
+    expect(root.querySelector('.app-visual-view .plan39-stepper-next').textContent).toBe('Place at 1 →');
     app.destroy();
   });
 
   it('keeps a pending choice and open help through view changes, then checks only on explicit action', () => {
     const { root, app } = startApp();
     const next = root.querySelector('.app-visual-view .plan39-stepper-next');
-    next.click(); // 0 of 2: offered endpoint, deliberately incorrect
+    next.click(); // place at 1: offered endpoint, deliberately incorrect
     expect(next.textContent).toBe('Move right →');
     expect(root.querySelector('.app-visual-view .plan39-stepper-previous').textContent).toBe('← Move left');
     expect(root.querySelector('.app-visual-view .plan39-check-position').disabled).toBe(false);
@@ -45,7 +45,7 @@ describe('Plan 39 Repair 02 app wiring', () => {
     expect(root.querySelector('#visual-plan39-help')).not.toBeNull();
     root.querySelector('.app-view-toggle').click();
     const radio = Array.from(root.querySelector('.app-linear-view').querySelectorAll('input'))
-      .find((input) => input.getAttribute('data-candidate-id') === 'partition-0-of-2');
+      .find((input) => input.getAttribute('data-candidate-id') === 'partition-2-of-2');
     expect(radio.checked).toBe(true);
     expect(root.querySelector('#linear-plan39-help')).not.toBeNull();
     expect(root.querySelectorAll('.plan39-bar-track')).toHaveLength(0);
@@ -59,8 +59,8 @@ describe('Plan 39 Repair 02 app wiring', () => {
   it('offers keyboard steppers and native radios, then reveals the aligned bar only after a correct check', () => {
     const { root, app } = startApp();
     const next = root.querySelector('.app-visual-view .plan39-stepper-next');
-    next.click(); // 0 of 2
-    next.click(); // 1 of 2
+    next.click(); // place at 1
+    root.querySelector('.app-visual-view .plan39-stepper-previous').click(); // move to 1 of 2
     expect(root.querySelector('.app-visual-view .plan39-stepper-status').textContent).toMatch(/1 of 2 equal steps/);
     root.querySelector('.app-visual-view .plan39-check-position').click();
     expect(app.getState().beat).toBe('resolve');

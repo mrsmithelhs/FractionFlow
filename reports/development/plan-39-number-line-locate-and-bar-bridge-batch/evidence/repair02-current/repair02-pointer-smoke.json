@@ -68,8 +68,8 @@
           }
         ],
         "initialStepperLabels": [
-          "← Place at 1",
-          "Place at 0 →"
+          "← Place at 0",
+          "Place at 1 →"
         ],
         "tokenTouchAction": "none",
         "trackTouchAction": "pan-y"
@@ -80,7 +80,7 @@
       }
     },
     {
-      "name": "initial left control places at 1, then changes to Move left; Retry clears placement",
+      "name": "initial left/right controls place at 0/1, then change to Move labels; Retry clears placement",
       "passed": true
     },
     {

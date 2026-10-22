@@ -37,8 +37,8 @@ export const STRINGS = Object.freeze({
     noSelection: 'No location chosen',
     previousPoint: '← Move left',
     nextPoint: 'Move right →',
-    placeAtZero: 'Place at 0 →',
-    placeAtOne: '← Place at 1',
+    placeAtZero: '← Place at 0',
+    placeAtOne: 'Place at 1 →',
     help: 'Count equal steps from 0.',
     recovery: (kind) => ({
       'at-endpoint': 'That point is at an end. Try again.',
