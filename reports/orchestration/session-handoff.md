@@ -6,6 +6,17 @@ and pause records retained later in this file.
 
 ## Current board and owner direction
 
+Owner review 2026-10-22: Repair 02 is not yet accepted. Parent reproduced failed
+horizontal repositioning from the centre of an already placed token: the pointer
+was 5.3125px above the invisible acceptance band. Owner requests a nearest-target
+highlight and suggests a brief drag gesture cue. Read Plan39 report
+owner-review-repair-03-proposal.md (5ef250f): propose one consistent drag anchor,
+preserved grab offset and matching neutral live snap highlight. Source is unchanged;
+Repair 03 mechanism/source approval remains pending. No new advisor calls or
+subagent launches occurred. Playwright 1.63.0 is locally installed; a screenshot/
+coordinate-only owned-session driver is proposed for a future walkthrough pilot,
+not installed or capability-verified yet.
+
 Plan 39 Repair 02 is technically accepted and DELIVERED, awaiting owner rendered-
 page and agency acceptance. Do not close it, push, deploy or start another packet
 without applicable owner direction. Plans 40, 41 and 42 are complete and accepted.
