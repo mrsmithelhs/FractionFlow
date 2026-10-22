@@ -6,6 +6,21 @@ and pause records retained later in this file.
 
 ## Current board and owner direction
 
+Owner direction 2026-10-22: execute Repair 03 with Luna implementation and limited
+Sol points, continue screenshot/browser pilot, and record a later independent
+implementer/cross-harness trial as a follow-up. Plan 39 is reopened IN-PROGRESS and
+RUNNABLE. Writer /root/plan39_repair03_luna (Luna medium, default role, no fan-out)
+committed mechanism 83ed7f3. Parent source approval is repair-03-mechanism-review.md.
+Preserve grip offset and bottom-centre anchor, shared neutral ring/release resolver,
+axis-centred acceptance band, cancellation/restoration, one decorative hand cue
+on first visible visual unplaced task and static reduced-motion equivalent. No
+instructional/replay/definition changes. Writer stops after focused tests, sequential
+build and pointer smoke. Parent then runs pilot walkthroughs and ONE Sol LOW review
+before broad final validation. Zero Sol calls used for Repair 03 so far. Parent
+owns driver/pilot/workflow/status records; source writes stay serialized.
+No Bootstrap write, new durable implementer chat, next plan, push or deployment.
+See phase-3-follow-up-obligations.md for the future portability/independent-thread trial.
+
 Owner review 2026-10-22: Repair 02 is not yet accepted. Parent reproduced failed
 horizontal repositioning from the centre of an already placed token: the pointer
 was 5.3125px above the invisible acceptance band. Owner requests a nearest-target

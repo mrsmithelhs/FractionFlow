@@ -1,7 +1,7 @@
 ---
 id: plan-39
 title: First Number-Line Locate and Bar-to-Line Bridge Batch
-status: delivered
+status: in-progress
 depends_on: [plan-35, plan-37, plan-38, plan-40, plan-41, plan-42]
 gate: "Owner sequencing gate: Plan 40 + §31/§90 disposition, then Plan 41 investigation disposition and any separately adopted prerequisite refactor, precede Phase 4 activation (DECISION-047). Requirement 0: confirm readiness and approve exact wiring, admission, next sequential replay schema, and evidence mechanism before source. Staged technical review, owner rendered-page/agency acceptance and separate deployment gate."
 summary: >-
@@ -15,6 +15,32 @@ summary: >-
   and historical replay compatibility.
 ---
 # Plan 39: First Number-Line Locate and Bar-to-Line Bridge Batch
+
+## Owner Repair 03 amendment (2026-10-22)
+
+The owner authorizes supervised Repair 03 following
+`reports/development/plan-39-number-line-locate-and-bar-bridge-batch/owner-review-repair-03-proposal.md`:
+repair natural repositioning with a preserved grab offset and consistent visible
+placement anchor, add a neutral live nearest-offered-target highlight that agrees
+with release, and provide a bounded initial grabbing cue without moving the answer.
+Retain explicit Check, exact upstream mathematics, historical revision/replay
+meaning, keyboard/non-drag alternatives and cancel/resize/view/reset behavior.
+No definition or replay revision change is intended for this presentation repair.
+The Luna implementer first proposes exact anchor/band/cue lifecycle and regression
+evidence, then stops for orchestrator approval before source work.
+
+Continue the Luna browser walkthrough pilot with a capability check and persisted
+success/failure evidence. Prefer one owned browser for actions and screenshots;
+do not silently replay another browser's actions or inspect DOM/source as a visual
+review substitute. A small fixed Playwright screenshot/input driver may be piloted
+using existing dependencies. Keep it separate from product source. Record tool
+restrictions and actual tested capabilities. No Bootstrap write, distribution,
+new durable chat or second plan is authorized by this repair. A future independent
+implementer-thread/cross-harness trial is a follow-up obligation, not this launch.
+
+Use one consolidated Sol read-only LOW review, with a second only for a substantial
+remaining issue. No Astra or implementation-child fan-out. Source writes remain
+single-threaded. Owner rendered acceptance and deployment remain separate gates.
 
 ## Owner Repair 02 amendment (2026-10-21)
 
