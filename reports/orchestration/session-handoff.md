@@ -8,14 +8,19 @@ pause records remain in Git and the packet reports.
 
 Current assignment: owner authorized Repair 02 with Luna implementation and fresh
 browser-only walkthroughs. Plan 39 reopened in-progress and RUNNABLE. Writer is
-`/root/plan39_repair02_luna` (Luna medium, cold context, no fan-out). Proposal
-`6d78531` was reviewed by parent and needs investigation-only refinement before
-source approval: preserve preview/help through view switches; cancel restores
-pre-gesture placement; show the source fraction once; compute exact16-context
-scales now (no speculative12 cap); freeze actual pre-source v7 states, not
-nonexistent v8 baseline; concise precise resolution copy; explicit old-route
-context/revision disposition. Parent sent those directions; source is not yet
-authorized. Preserve all old arithmetic/replay meaning.
+`/root/plan39_repair02_luna` (Luna medium, cold context, no fan-out). Refined
+proposal `ef52d0b`, baseline `9253c83` and parent source approval `f029155` are
+committed. Parent independently replayed/hashed all12 actual pre-source v7
+snapshots. Definition v2/replay v8 approved, oldv1/v7 preserved; maxscale8 exact
+across16contexts. Only old10Plan39 context mappings may migrate explicitly to a
+historical revision1 fixture; all91oldrow/actionobjects and other mappings retain
+meaning. Newv8rows use currentcontext. Token allows vertical drag fromtray with
+touch-actionnone scopedhandle, track/page pans; both-axis44px hitband; tieslower;
+cancellation restorespriorplacement. Keepsteppers/native radios and pending
+choice/help throughviews. Sourcewriter is now implementing; must STOP after
+focused tests/bothbuilds/realpointer smoke at reviewable checkpoint before broad
+final matrix. Parent then runs blindwalkthroughs, resolvesfindings, and ONE Sol-low
+consolidated review, followedby independent/final validation.
 
 Sol cost limit: target ONE consolidated Sol review for Repair 02, a second only
 for a substantial remaining issue. Zero Sol calls used in this repair so far.
