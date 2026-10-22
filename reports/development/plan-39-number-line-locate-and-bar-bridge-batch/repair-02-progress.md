@@ -1,0 +1,15 @@
+# Plan 39 Repair 02 — Built checkpoint
+
+Repair 02 is implemented as definition revision 2 and replay v8. Definition v1 and replay v7 remain available for the historical route context. The production practice entry uses revision 2 and goes directly to location; all eight registered source records remain in use.
+
+Revision 2 projects exact selectable coordinates from the existing partition and sparse candidate data. The regression test derives both support modes for all eight records (16 contexts), verifies unique exact integer locations, and observes a maximum required subdivision of 8. The visual view begins with one movable stacked fraction in a reserved tray and an unshaded number line; the linear view begins with “Choose a location,” precise offered choices, and no source-bar/line preview text. A pending choice has neutral selection styling. Pointer drag, line tap, keyboard steppers, and native linear radios only set a preview; explicit Check dispatches the answer. Check reveals the aligned bar and connector only after acceptance. Pending choice and help survive view changes; Retry clears them.
+
+Focused verification completed:
+
+- `npm test -- --run tests/plan39-bar-to-line-bridge.test.js tests/app-plan39-number-line.test.js` — 11 tests passed. This covers the unchanged v1/v7 replay oracle, revision-2 direct schedule and exact scale bounds, replay-v8 pairing, app entry without Continue, no pre-check bar, explicit correct/incorrect checking, help and preview retention, and reset.
+- `npm run build:learner` — passed.
+- `npm run build:prototype` — passed.
+- `evidence/repair02-current/repair02-pointer-smoke.mjs` — passed in installed Chrome via the existing static route-matrix server, at 360×740. The receipt verifies 44px minimum drag/drop and stepper targets, `touch-action:none` on the token with `pan-y` on the track, no pre-check bar in either view, off-band restoration, stable lower-position tie snapping, Escape restoration, neutral pending paint, track-tap selection after redraw, incorrect-check recovery, keyboard radio and Check operation, and accepted shade/point alignment within 1 CSS pixel. Browser errors: none. The in-process server was closed by the script.
+- Screenshots and machine-readable results are in `evidence/repair02-current/`.
+
+The full 91-row route matrix and fresh independent browser walkthroughs have not been run in this implementer checkpoint; they remain for the orchestrator's next gate. No advisor consultation was run; this is owner-directed, orchestrator-gate-only review for this checkpoint. No packet status, route-matrix mapping, or parent-owned handoff record was changed here.

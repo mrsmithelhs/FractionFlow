@@ -16,7 +16,7 @@ import {
   resolvePlan40SubtractionRecipeContext,
 } from '../content/plan40-reusable-subtraction-recipes.js';
 import { evaluateInstanceEligibility } from '../content/eligibility.js';
-import { isPlan37BarToLineBridgeDefinition, resolvePlan37BarToLineBridgeContext } from '../content/plan37-bar-to-line-bridge-task.js';
+import { isPlan37BarToLineBridgeTaskDefinition, resolvePlan37BarToLineBridgeContext } from '../content/plan37-bar-to-line-bridge-task.js';
 import {
   applyIntent,
   createEpisode,
@@ -55,7 +55,7 @@ const APP_RENDER_STRINGS = Object.freeze({
 
 function canonicalInstance(item, conditions = REGISTERED_CONDITIONS, practiceType = null) {
   const definition = getEpisodeDefinition(item.episodeDefinitionId, item.episodeDefinitionRevision);
-  if (isPlan37BarToLineBridgeDefinition(definition)) {
+  if (isPlan37BarToLineBridgeTaskDefinition(definition)) {
     const bridge = resolvePlan37BarToLineBridgeInstance(item.id, item.authoringRevision);
     if (!bridge || bridge.provenance.fixtureId !== item.fixtureId) throw new Error(`practice bridge item is not registered: ${item.id}`);
     return bridge;
@@ -239,10 +239,11 @@ function presentationModeFor({ override, motionQuery }) {
 }
 
 function createInitialState(instance, practiceType, condition, supportLevel, episodeDefinition = practiceType.episodeDefinition, item = null) {
-  const taskContext = isPlan37BarToLineBridgeDefinition(episodeDefinition) && item
+  const taskContext = isPlan37BarToLineBridgeTaskDefinition(episodeDefinition) && item
     ? resolvePlan37BarToLineBridgeContext(instance, item.id, {
       practiceSetId: practiceType.setId,
       practiceSetRevision: practiceType.setRevision,
+      definitionRevision: episodeDefinition.revision,
       supportMode: supportLevel.configuration.dimensions.fractionBarModel === 'high support' ? 'partitioned' : 'sparse-benchmarks',
     })
     : isPlan40SubtractionRecipeDefinition(episodeDefinition) && item
@@ -631,7 +632,7 @@ export function createFractionFlowApp({
             dispatchAction({ type: 'request-task-help' });
             helpButton.focus();
           }
-        } else if (isPlan37BarToLineBridgeDefinition(state?.episodeDefinition) && state?.beat === 'locate') {
+        } else if (isPlan37BarToLineBridgeTaskDefinition(state?.episodeDefinition) && state?.beat === 'locate') {
           numberLineHelpOpen = !numberLineHelpOpen;
           if (numberLineHelpOpen && !state.established.help.locate) {
             dispatchAction({ type: 'request-task-help' });
@@ -738,6 +739,8 @@ export function createFractionFlowApp({
     preserveOperationInputFocusOnViewChange = false;
     numberLineDraft = null;
     numberLineHelpOpen = false;
+    visualNumberLineRenderer?.clearPreview();
+    linearNumberLineRenderer?.clearPreview();
   }
 
   function setNumberLineDraft(handle) {
@@ -920,7 +923,7 @@ export function createFractionFlowApp({
   function updateSupportControls() {
     const resolved = state.status === 'resolved';
     const isPlan20 = state.episodeDefinition.id === PLAN20_LIKE_DENOMINATOR_EPISODE_DEFINITION.id;
-    const isPlan39Bridge = isPlan37BarToLineBridgeDefinition(state.episodeDefinition);
+    const isPlan39Bridge = isPlan37BarToLineBridgeTaskDefinition(state.episodeDefinition);
     const isPlan34 = state.episodeDefinition.id === PLAN34_EPISODE_DEFINITION_ID;
     const isPlan18 = state.episodeDefinition.id === PLAN18_NESTED_DEFINITION_ID;
     const isPlan35Identify = state.episodeDefinition.id === PLAN35_RECIPE_DEFINITION_ID
@@ -1046,7 +1049,7 @@ export function createFractionFlowApp({
 
   function updateHelpPlacement(scene = currentScene) {
     if (!helpButton || !state) return;
-    if (isPlan37BarToLineBridgeDefinition(state.episodeDefinition)) {
+    if (isPlan37BarToLineBridgeTaskDefinition(state.episodeDefinition)) {
       const supportControls = appRoot.querySelector('.app-support-controls');
       if (helpButton.parentNode !== supportControls) {
         if (helpButton.parentNode) helpButton.parentNode.removeChild(helpButton);
@@ -1215,13 +1218,13 @@ export function createFractionFlowApp({
     const mode = presentationModeFor({ override: presentationMode, motionQuery });
     const scene = resolveRenderableScene({
       state,
-      initialRole: isPlan37BarToLineBridgeDefinition(state.episodeDefinition) ? 'number-line' : 'fraction-bar',
+      initialRole: isPlan37BarToLineBridgeTaskDefinition(state.episodeDefinition) ? 'number-line' : 'fraction-bar',
       presentationMode: mode,
       isReplaying,
     });
     currentScene = scene;
 
-    if (isPlan37BarToLineBridgeDefinition(state.episodeDefinition)) {
+    if (isPlan37BarToLineBridgeTaskDefinition(state.episodeDefinition)) {
       visualRenderer?.destroy();
       linearRenderer?.destroy();
       visualRenderer = null;

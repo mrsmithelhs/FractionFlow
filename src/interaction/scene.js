@@ -8,7 +8,8 @@ import { validateActiveCondition } from './episode-definition.js';
 import { currentScheduleEntry } from './beat-schedule.js';
 import {
   classifyPlan37BenchmarkRelation,
-  isPlan37BarToLineBridgeDefinition,
+  isPlan37BarToLineBridgeTaskDefinition,
+  plan37ExactLocationScale,
   validatePlan37BarToLineBridgeInstance,
 } from '../content/plan37-bar-to-line-bridge-task.js';
 
@@ -275,7 +276,7 @@ function currentSupportConsequence(state) {
 function sceneTaskIdentity(state) {
   if (!state.taskContext) return null;
   const context = state.taskContext;
-  if (isPlan37BarToLineBridgeDefinition(state.episodeDefinition)) return {
+  if (isPlan37BarToLineBridgeTaskDefinition(state.episodeDefinition)) return {
     practiceSetId: context.practiceSetId,
     practiceSetRevision: context.practiceSetRevision,
     itemId: context.itemId,
@@ -549,7 +550,7 @@ function capabilityFor(state, role, derivation) {
   const path = pathSummary(state);
 
   if (role === 'number-line') {
-    if (isPlan37BarToLineBridgeDefinition(state.episodeDefinition)
+    if (isPlan37BarToLineBridgeTaskDefinition(state.episodeDefinition)
       && instanceVerdict === 'eligible') {
       return { instance: instanceVerdict, activePath: null, authoredCoverage: null, continuation: null };
     }
@@ -659,7 +660,7 @@ function taskMeaning(state) {
   const connectionForm = state.beat === 'reflect'
     ? (state.activeCondition?.connectionMaking === 'CM-01-P' ? 'premise' : 'matching')
     : null;
-  if (isPlan37BarToLineBridgeDefinition(state.episodeDefinition)) {
+  if (isPlan37BarToLineBridgeTaskDefinition(state.episodeDefinition)) {
     return {
       beat: state.beat,
       schedulePosition: state.schedulePosition,
@@ -671,6 +672,7 @@ function taskMeaning(state) {
       evidenceCategory: expected?.evidenceCategory ?? 'supported-construction',
       connectionForm: null,
       itemId: state.taskContext.itemId,
+      ...(state.episodeDefinition.revision === '2' ? { definitionRevision: state.episodeDefinition.revision } : {}),
       recipeId: state.taskContext.recipeId,
       recipeRevision: state.taskContext.recipeRevision,
     };
@@ -807,7 +809,7 @@ function commonUnitMeaning(state) {
 }
 
 function operationMeaning(state) {
-  if (isPlan37BarToLineBridgeDefinition(state.episodeDefinition)) return null;
+  if (isPlan37BarToLineBridgeTaskDefinition(state.episodeDefinition)) return null;
   if (state.episodeDefinition?.id === 'phase-3-like-denominator-takeaway-subtraction') {
     const isResolved = state.beat === 'resolve' && state.established?.operation;
     const acceptedForm = isResolved ? state.established.operation.submittedForm : null;
@@ -1031,7 +1033,7 @@ function takeawayMeaning(state) {
 }
 
 function sceneMeaning(state, representationRole, capability) {
-  const isPlan37Bridge = isPlan37BarToLineBridgeDefinition(state.episodeDefinition);
+  const isPlan37Bridge = isPlan37BarToLineBridgeTaskDefinition(state.episodeDefinition);
   const left = isPlan37Bridge ? null : quantityScene(state, 'left');
   const right = isPlan37Bridge ? null : quantityScene(state, 'right');
   const recovery = state.lastRecovery
@@ -1105,6 +1107,37 @@ function plan37NumberLineMeaning(state) {
   const instance = validatePlan37BarToLineBridgeInstance(state.content);
   const context = state.taskContext;
   const partitioned = context.supportMode === 'partitioned';
+  if (state.episodeDefinition.revision === '2') {
+    const exactScale = plan37ExactLocationScale(context);
+    const benchmarks = [
+      { label: '0', form: { kind: 'fraction', numerator: '0', denominator: '1' }, benchmarkRelation: 'exact-zero', selectable: false },
+      { label: '1/2', form: { kind: 'fraction', numerator: '1', denominator: '2' }, benchmarkRelation: 'exact-half', selectable: false },
+      { label: '1', form: { kind: 'fraction', numerator: '1', denominator: '1' }, benchmarkRelation: 'exact-one', selectable: false },
+    ];
+    if (partitioned && BigInt(context.partitionDenominator) % 2n !== 0n) {
+      benchmarks[1] = { ...benchmarks[1], kind: 'visual-reference-anchor' };
+    }
+    const accepted = state.beat === 'resolve'
+      ? state.established.numberLineLocation?.acceptedPosition ?? null
+      : null;
+    const acceptedCandidate = accepted
+      ? exactScale.positions.find(({ form }) => form.numerator === accepted.numerator && form.denominator === accepted.denominator)
+      : null;
+    const acceptedLocationDescription = acceptedCandidate
+      ? `${acceptedCandidate.unitsFromZero} of ${acceptedCandidate.totalUnits} equal steps from 0 is ${accepted.numerator}/${accepted.denominator}.`
+      : null;
+    return {
+      domain: { lowerWhole: '0', upperWhole: '1' },
+      densityMode: context.supportMode,
+      totalUnits: exactScale.totalUnits,
+      scaleDescription: exactScale.scaleDescription,
+      benchmarks,
+      candidatePositions: exactScale.positions,
+      acceptedPosition: accepted,
+      acceptedLocationDescription,
+      alignmentGuideVisible: state.beat === 'resolve',
+    };
+  }
   const benchmark = (label, form, selectable = false) => ({
     label,
     form,

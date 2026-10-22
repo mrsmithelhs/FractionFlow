@@ -23,6 +23,7 @@ function previewKey(scene) {
   const numberLine = scene.meaning.numberLine;
   return JSON.stringify({
     itemId: task.itemId,
+    definitionRevision: task.definitionRevision,
     candidateSet: numberLine.candidatePositions.map(({ id, form }) => [id, form]),
     supportMode: numberLine.densityMode,
     scheduleEntryId: scene.meaning.currentTask.scheduleEntryId,
@@ -31,6 +32,43 @@ function previewKey(scene) {
 
 function ratio(form) {
   return Number(form.numerator) / Number(form.denominator);
+}
+
+function isRepair02(scene) {
+  return scene.meaning.currentTask?.definitionRevision === '2';
+}
+
+function makeRepairToken(scene, strings) {
+  const form = scene.meaning.quantities.source.sourceForm;
+  const token = document.createElement('figure');
+  token.className = 'plan39-source-figure plan39-repair-token';
+  token.setAttribute('role', 'img');
+  token.setAttribute('aria-label', strings.plan39Repair02.tokenNotPlaced(form.numerator, form.denominator));
+  token.setAttribute('data-plan39-source-token', 'true');
+  const fraction = createSymbolicFraction(form.numerator, form.denominator, { ariaHidden: true, variant: 'compact' });
+  fraction.classList.add('plan39-source-fraction');
+  const tray = document.createElement('div');
+  tray.className = 'plan39-token-tray';
+  token.appendChild(fraction);
+  tray.appendChild(token);
+  return tray;
+}
+
+function makeRepairResolution(scene, strings) {
+  const result = document.createElement('p');
+  result.className = 'plan39-resolution-description';
+  result.textContent = scene.meaning.numberLine.acceptedLocationDescription;
+  return result;
+}
+
+function makeRepairAcceptedSource(scene) {
+  const form = scene.meaning.quantities.source.sourceForm;
+  const figure = document.createElement('figure');
+  figure.className = 'plan39-source-figure';
+  const fraction = createSymbolicFraction(form.numerator, form.denominator, { variant: 'compact' });
+  fraction.classList.add('plan39-source-fraction');
+  figure.appendChild(fraction);
+  return figure;
 }
 
 function makeBar(scene, strings, view) {
@@ -70,20 +108,22 @@ function makeBar(scene, strings, view) {
 
 function makeTrack(scene, strings, selectedCandidateId, view) {
   const model = scene.meaning.numberLine;
+  const repair02 = isRepair02(scene);
   const figure = document.createElement('figure');
   figure.className = 'plan39-track-figure';
   if (view === 'linear') {
     const description = document.createElement('p');
     description.className = 'plan39-track-description';
-    description.textContent = strings.plan39.trackDescription;
+    description.textContent = repair02 ? model.scaleDescription : strings.plan39.trackDescription;
     figure.appendChild(description);
     return figure;
   }
 
   const frame = document.createElement('div');
   frame.className = 'plan39-unit-frame plan39-axis-frame';
-  frame.setAttribute('role', 'img');
-  frame.setAttribute('aria-label', strings.plan39.trackDescription);
+  frame.setAttribute('role', repair02 ? 'group' : 'img');
+  frame.setAttribute('aria-label', repair02 ? `${strings.plan39Repair02.trackTapLabel}. ${model.scaleDescription}` : strings.plan39.trackDescription);
+  if (repair02) frame.setAttribute('data-plan39-track-hit-band', 'true');
   const line = document.createElement('span');
   line.className = 'plan39-axis-line';
   frame.appendChild(line);
@@ -107,13 +147,17 @@ function makeTrack(scene, strings, selectedCandidateId, view) {
     point.className = 'plan39-candidate-point';
     point.style.left = `${ratio(candidate.form) * 100}%`;
     point.setAttribute('data-candidate-id', candidate.id);
+    if (repair02) {
+      point.setAttribute('role', 'img');
+      point.setAttribute('aria-label', candidate.description);
+    }
     frame.appendChild(point);
   }
-  if (selectedCandidateId) {
+  if (selectedCandidateId && !repair02) {
     const selected = model.candidatePositions.find(({ id }) => id === selectedCandidateId);
     if (selected) {
       const marker = document.createElement('span');
-      marker.className = 'plan39-preview-marker';
+      marker.className = repair02 ? 'plan39-pending-marker' : 'plan39-preview-marker';
       marker.style.left = `${ratio(selected.form) * 100}%`;
       marker.setAttribute('data-candidate-id', selected.id);
       marker.setAttribute('aria-hidden', 'true');
@@ -165,14 +209,17 @@ function makeAcceptedConnectorOverlay(scene, stack) {
 }
 
 function makeLinearChoices(scene, strings, { previewHandle, onPreviewChange, key }) {
+  const repair02 = isRepair02(scene);
   const fieldset = document.createElement('fieldset');
   fieldset.className = 'plan39-candidates plan39-candidates-linear';
   const legend = document.createElement('legend');
-  legend.textContent = strings.plan39.candidateLegend;
+  legend.textContent = repair02 ? strings.plan39Repair02.optionLegend : strings.plan39.candidateLegend;
   fieldset.appendChild(legend);
   scene.meaning.numberLine.candidatePositions.forEach((candidate) => {
-    const labelText = scene.meaning.numberLine.densityMode === 'partitioned'
-      ? strings.plan39.stepChoice(candidate.stepIndex, candidate.totalSteps)
+    const labelText = repair02
+      ? candidate.description
+      : scene.meaning.numberLine.densityMode === 'partitioned'
+        ? strings.plan39.stepChoice(candidate.stepIndex, candidate.totalSteps)
       : candidate.description;
     const label = document.createElement('label');
     label.className = 'plan39-candidate';
@@ -196,6 +243,7 @@ function makeLinearChoices(scene, strings, { previewHandle, onPreviewChange, key
 }
 
 function makeVisualStepper(scene, strings, { previewHandle, onPreviewChange, key, updateTrack }) {
+  const repair02 = isRepair02(scene);
   const candidates = scene.meaning.numberLine.candidatePositions;
   let selectedIndex = previewHandle ? candidates.findIndex(({ id }) => id === previewHandle.candidateId) : -1;
   const group = document.createElement('div');
@@ -215,7 +263,9 @@ function makeVisualStepper(scene, strings, { previewHandle, onPreviewChange, key
     const selected = candidates[selectedIndex];
     if (notify) onPreviewChange({ contextKey: key, candidateId: selected.id });
     status.setAttribute('data-candidate-id', selected.id);
-    status.textContent = scene.meaning.numberLine.densityMode === 'partitioned'
+    status.textContent = repair02
+      ? selected.description
+      : scene.meaning.numberLine.densityMode === 'partitioned'
       ? strings.plan39.previewPartitionStep(selected.stepIndex, selected.totalSteps)
       : strings.plan39.previewSparsePoint(selectedIndex);
     previous.disabled = selectedIndex === 0;
@@ -235,7 +285,7 @@ function makeVisualStepper(scene, strings, { previewHandle, onPreviewChange, key
   });
   if (selectedIndex >= 0) updateSelection(selectedIndex, false);
   else {
-    status.textContent = strings.plan39.noPreview;
+    status.textContent = repair02 ? strings.plan39Repair02.noSelection : strings.plan39.noPreview;
     previous.disabled = false;
     next.disabled = false;
   }
@@ -250,6 +300,14 @@ function makeVisualStepper(scene, strings, { previewHandle, onPreviewChange, key
       if (index < 0) return false;
       updateSelection(index, false);
       return true;
+    },
+    clearSelection() {
+      selectedIndex = -1;
+      status.removeAttribute('data-candidate-id');
+      status.textContent = repair02 ? strings.plan39Repair02.noSelection : strings.plan39.noPreview;
+      previous.disabled = false;
+      next.disabled = false;
+      updateTrack(null);
     },
   };
 }
@@ -270,6 +328,176 @@ export function createNumberLineLocateRenderer({
   let currentKey = null;
   let currentScene = null;
   let previewHandle = null;
+  let tokenPointerState = null;
+  let escapeListenerBound = false;
+
+  function cancelActiveTokenGesture() {
+    const active = tokenPointerState;
+    if (!active) return;
+    tokenPointerState = null;
+    try { active.token.releasePointerCapture?.(active.pointerId); } catch { /* capture may already be gone */ }
+    restoreTokenAfterGesture(active.token, active.candidateId);
+  }
+
+  function onDocumentKeyDown(event) {
+    if (event.key !== 'Escape' || !tokenPointerState) return;
+    event.preventDefault();
+    cancelActiveTokenGesture();
+  }
+
+  function setTokenPlacement(candidateId) {
+    const token = root?.querySelector('.plan39-repair-token');
+    const stack = root?.querySelector('.plan39-representation-stack');
+    const frame = stack?.querySelector('.plan39-axis-frame');
+    if (!token || !stack || !frame || !candidateId || !isRepair02(currentScene)) {
+      if (token) {
+        token.classList.remove('is-placed', 'is-dragging');
+        token.style.position = '';
+        token.style.left = '';
+        token.style.top = '';
+        token.style.transform = '';
+        token.style.zIndex = '';
+        token.removeAttribute('data-candidate-id');
+        const form = currentScene?.meaning.quantities.source.sourceForm;
+        if (form) token.setAttribute('aria-label', strings.plan39Repair02.tokenNotPlaced(form.numerator, form.denominator));
+      }
+      return;
+    }
+    if (typeof stack.getBoundingClientRect !== 'function' || typeof frame.getBoundingClientRect !== 'function') return;
+    const candidate = currentScene.meaning.numberLine.candidatePositions.find(({ id }) => id === candidateId);
+    if (!candidate) return;
+    const stackRect = stack.getBoundingClientRect();
+    const frameRect = frame.getBoundingClientRect();
+    const axis = frame.querySelector('.plan39-axis-line');
+    const axisRect = axis?.getBoundingClientRect() ?? frameRect;
+    token.classList.add('is-placed');
+    token.classList.remove('is-dragging');
+    token.style.position = 'absolute';
+    token.style.left = `${frameRect.left - stackRect.left + frameRect.width * ratio(candidate.form)}px`;
+    token.style.top = `${axisRect.top - stackRect.top + axisRect.height / 2}px`;
+    token.style.transform = 'translate(-50%, -100%)';
+    token.style.zIndex = '3';
+    token.setAttribute('data-candidate-id', candidateId);
+    const form = currentScene.meaning.quantities.source.sourceForm;
+    token.setAttribute('aria-label', strings.plan39Repair02.tokenPlaced(form.numerator, form.denominator, candidate.description));
+  }
+
+  function restoreTokenAfterGesture(token, candidateId) {
+    token.classList.remove('is-dragging');
+    token.style.position = '';
+    token.style.left = '';
+    token.style.top = '';
+    token.style.transform = '';
+    token.style.zIndex = '';
+    setTokenPlacement(candidateId);
+  }
+
+  function nearestCandidateAtX(frame, clientX) {
+    const rect = frame.getBoundingClientRect();
+    return currentScene.meaning.numberLine.candidatePositions
+      .map((candidate, index) => ({
+        candidate,
+        index,
+        centerX: rect.left + rect.width * ratio(candidate.form),
+      }))
+      .sort((left, right) => {
+        const distanceDifference = Math.abs(left.centerX - clientX) - Math.abs(right.centerX - clientX);
+        const tieTolerance = Number.EPSILON * Math.max(1, Math.abs(left.centerX), Math.abs(right.centerX), Math.abs(clientX)) * 8;
+        if (Math.abs(distanceDifference) > tieTolerance) return distanceDifference;
+        return left.centerX - right.centerX || left.index - right.index;
+      })[0]?.candidate ?? null;
+  }
+
+  function bindTokenDrag(stack, savePreview) {
+    const token = stack.querySelector('.plan39-repair-token');
+    if (!token || token.getAttribute('data-pointer-bound') === 'true') return;
+    token.setAttribute('data-pointer-bound', 'true');
+    token.addEventListener('pointerdown', (event) => {
+      if (!event.isPrimary || (event.button !== undefined && event.button !== 0)) return;
+      event.stopPropagation();
+      const frame = stack.querySelector('.plan39-axis-frame');
+      if (!frame) return;
+      tokenPointerState = {
+        pointerId: event.pointerId,
+        startX: event.clientX,
+        startY: event.clientY,
+        candidateId: previewHandle?.candidateId ?? null,
+        token,
+        frame,
+        dragging: false,
+      };
+      try { token.setPointerCapture(event.pointerId); } catch { tokenPointerState = null; }
+    });
+    token.addEventListener('pointermove', (event) => {
+      const active = tokenPointerState;
+      if (!active || active.pointerId !== event.pointerId) return;
+      const dx = event.clientX - active.startX;
+      const dy = event.clientY - active.startY;
+      if (!active.dragging && Math.hypot(dx, dy) < 6) return;
+      active.dragging = true;
+      token.classList.add('is-dragging');
+      token.style.position = 'fixed';
+      token.style.left = '0px';
+      token.style.top = '0px';
+      token.style.transform = `translate3d(${event.clientX}px, ${event.clientY}px, 0) translate(-50%, -50%)`;
+      token.style.zIndex = '1000';
+    });
+    const cancel = (event) => {
+      const active = tokenPointerState;
+      if (!active || (event.pointerId !== undefined && active.pointerId !== event.pointerId)) return;
+      tokenPointerState = null;
+      restoreTokenAfterGesture(token, active.candidateId);
+    };
+    token.addEventListener('pointercancel', cancel);
+    token.addEventListener('lostpointercapture', cancel);
+    token.addEventListener('pointerup', (event) => {
+      const active = tokenPointerState;
+      if (!active || active.pointerId !== event.pointerId) return;
+      tokenPointerState = null;
+      let selected = null;
+      const rect = active.frame.getBoundingClientRect();
+      const withinBand = event.clientX >= rect.left && event.clientX <= rect.right
+        && event.clientY >= rect.top && event.clientY <= rect.bottom;
+      if (active.dragging && withinBand) selected = nearestCandidateAtX(active.frame, event.clientX);
+      restoreTokenAfterGesture(token, selected?.id ?? active.candidateId);
+      if (selected) savePreview({ contextKey: currentKey, candidateId: selected.id });
+    });
+    if (!escapeListenerBound) {
+      document.addEventListener('keydown', onDocumentKeyDown);
+      escapeListenerBound = true;
+    }
+  }
+
+  function bindTrackTap(frame, savePreview) {
+    if (!frame || frame.getAttribute('data-pointer-tap-bound') === 'true') return;
+    frame.setAttribute('data-pointer-tap-bound', 'true');
+    let gesture = null;
+    frame.addEventListener('pointerdown', (event) => {
+      if (!event.isPrimary || (event.button !== undefined && event.button !== 0)) return;
+      gesture = { pointerId: event.pointerId, startX: event.clientX, startY: event.clientY, moved: false };
+    });
+    frame.addEventListener('pointermove', (event) => {
+      if (!gesture || gesture.pointerId !== event.pointerId) return;
+      const dx = event.clientX - gesture.startX;
+      const dy = event.clientY - gesture.startY;
+      if (Math.hypot(dx, dy) > 6 || (Math.abs(dy) >= 8 && Math.abs(dy) >= 1.25 * Math.abs(dx))) gesture.moved = true;
+    });
+    const clearGesture = (event) => {
+      if (gesture && (event.pointerId === undefined || gesture.pointerId === event.pointerId)) gesture = null;
+    };
+    frame.addEventListener('pointercancel', clearGesture);
+    frame.addEventListener('pointerup', (event) => {
+      if (!gesture || gesture.pointerId !== event.pointerId) return;
+      const started = gesture;
+      gesture = null;
+      const rect = frame.getBoundingClientRect();
+      const withinBand = event.clientX >= rect.left && event.clientX <= rect.right
+        && event.clientY >= rect.top && event.clientY <= rect.bottom;
+      if (started.moved || !withinBand) return;
+      const candidate = nearestCandidateAtX(frame, event.clientX);
+      if (candidate) savePreview({ contextKey: currentKey, candidateId: candidate.id });
+    });
+  }
 
   function readCurrentPreview() {
     if (!root?.isConnected) return null;
@@ -300,6 +528,7 @@ export function createNumberLineLocateRenderer({
     if (!scene.meaning.numberLine || scene.meaning.currentTask?.beat === undefined) throw new TypeError('Plan 39 number-line scene is required');
     if (scene.meaning.representationRole !== 'number-line') throw new TypeError('Plan 39 scene must be projected for the number-line representation role');
     const nextKey = previewKey(scene);
+    cancelActiveTokenGesture();
     if (currentKey !== nextKey || scene.meaning.currentTask.beat !== 'locate') previewHandle = null;
     currentScene = scene;
     currentKey = nextKey;
@@ -307,20 +536,37 @@ export function createNumberLineLocateRenderer({
     root.replaceChildren();
     const heading = document.createElement('h2');
     heading.className = 'active-beat-prompt';
-    heading.textContent = scene.meaning.status.episode === 'resolved' ? strings.plan39.resolvedPrompt : strings.plan39.prompt;
+    const repair02 = isRepair02(scene);
+    const accepted = repair02 && (scene.meaning.currentTask.beat === 'resolve' || scene.meaning.status.episode === 'resolved');
+    heading.textContent = repair02
+      ? accepted ? strings.plan39Repair02.resolvedPrompt : view === 'linear' ? strings.plan39Repair02.linearPrompt : strings.plan39Repair02.visualPrompt
+      : scene.meaning.status.episode === 'resolved' ? strings.plan39.resolvedPrompt : strings.plan39.prompt;
     root.appendChild(heading);
     const stack = document.createElement('div');
     stack.className = 'plan39-representation-stack';
-    stack.appendChild(makeBar(scene, strings, view));
-    stack.appendChild(makeTrack(scene, strings, previewHandle?.contextKey === currentKey ? previewHandle.candidateId : null, view));
+    if (repair02 && !accepted) {
+      stack.appendChild(makeRepairToken(scene, strings));
+      stack.appendChild(makeTrack(scene, strings, previewHandle?.contextKey === currentKey ? previewHandle.candidateId : null, view));
+    } else if (repair02 && view === 'linear') {
+      stack.appendChild(makeRepairAcceptedSource(scene));
+    } else {
+      stack.appendChild(makeBar(scene, strings, view));
+      stack.appendChild(makeTrack(scene, strings, previewHandle?.contextKey === currentKey ? previewHandle.candidateId : null, view));
+    }
     root.appendChild(stack);
     refreshGeometry();
+    if (accepted) root.appendChild(makeRepairResolution(scene, strings));
+    if (repair02 && !accepted) {
+      setTokenPlacement(previewHandle?.contextKey === currentKey ? previewHandle.candidateId : null);
+    }
 
     if (scene.meaning.status.recovery?.beat === 'locate') {
       const feedback = document.createElement('p');
       feedback.className = 'plan39-feedback';
       feedback.setAttribute('role', 'alert');
-      feedback.textContent = strings.plan39.recovery(scene.meaning.status.recovery.classification.kind);
+      feedback.textContent = repair02
+        ? strings.plan39Repair02.recovery(scene.meaning.status.recovery.classification.kind)
+        : strings.plan39.recovery(scene.meaning.status.recovery.classification.kind);
       root.appendChild(feedback);
     }
 
@@ -341,13 +587,27 @@ export function createNumberLineLocateRenderer({
         previewHandle = handle;
         onPreviewChange(handle);
         if (handle && checkButton) checkButton.disabled = false;
+        if (repair02) setTokenPlacement(handle?.candidateId ?? null);
+      };
+      const savePreviewHandle = (handle) => {
+        previewHandle = handle;
+        onPreviewChange(handle);
+        if (handle && checkButton) checkButton.disabled = false;
+        if (repair02) setTokenPlacement(handle?.candidateId ?? null);
+        if (view === 'visual' && activeStepper) activeStepper.writeCandidateId(handle?.candidateId);
+        else updateTrack(handle?.candidateId ?? null);
       };
       const updateTrack = (candidateId) => {
         const currentTrack = stackForUpdate.querySelector('.plan39-track-figure');
         if (!currentTrack) throw new Error('Visible Plan 39 track is missing during preview update');
         replaceNode(stackForUpdate, currentTrack, makeTrack(currentScene, strings, candidateId, view));
+        if (repair02 && view === 'visual') bindTrackTap(stackForUpdate.querySelector('.plan39-axis-frame'), savePreviewHandle);
         refreshGeometry();
       };
+      if (repair02) {
+        bindTokenDrag(stackForUpdate, savePreviewHandle);
+        if (view === 'visual') bindTrackTap(stackForUpdate.querySelector('.plan39-axis-frame'), savePreviewHandle);
+      }
       if (view === 'visual') {
         activeStepper = makeVisualStepper(scene, strings, {
           previewHandle: previewHandle?.contextKey === currentKey ? previewHandle : null,
@@ -366,7 +626,7 @@ export function createNumberLineLocateRenderer({
         activeControls.appendChild(choices);
       }
       const check = createButton({
-        label: strings.plan39.checkPosition,
+        label: repair02 ? strings.plan39Repair02.checkPosition : strings.plan39.checkPosition,
         className: 'plan39-check-position',
         disabled: !previewHandle,
       });
@@ -379,6 +639,7 @@ export function createNumberLineLocateRenderer({
         if (!candidate) return;
         previewHandle = null;
         onPreviewChange(null);
+        if (repair02) setTokenPlacement(null);
         dispatchAction({ type: 'propose-number-line-location', proposed: candidate.form });
       });
     } else if (scene.meaning.currentTask.beat === 'resolve' && scene.meaning.status.episode !== 'resolved') {
@@ -394,7 +655,7 @@ export function createNumberLineLocateRenderer({
       const help = document.createElement('p');
       help.id = `${view}-plan39-help`;
       help.className = 'plan39-help';
-      help.textContent = strings.plan39.help;
+      help.textContent = repair02 ? strings.plan39Repair02.help : strings.plan39.help;
       root.appendChild(help);
     }
   }
@@ -411,6 +672,11 @@ export function createNumberLineLocateRenderer({
     update,
     refreshGeometry,
     destroy() {
+      cancelActiveTokenGesture();
+      if (escapeListenerBound) {
+        document.removeEventListener('keydown', onDocumentKeyDown);
+        escapeListenerBound = false;
+      }
       if (root?.parentNode) root.parentNode.removeChild(root);
       root = null;
       activeControls = null;
@@ -444,8 +710,23 @@ export function createNumberLineLocateRenderer({
         const check = activeControls.querySelector('.plan39-check-position');
         if (check) check.disabled = false;
       }
+      if (isRepair02(currentScene)) setTokenPlacement(candidate.id);
       const check = activeControls.querySelector('.plan39-check-position');
       if (check) check.disabled = false;
+      return true;
+    },
+    clearPreview() {
+      previewHandle = null;
+      onPreviewChange(null);
+      if (activeStepper) activeStepper.clearSelection();
+      else {
+        for (const input of activeControls?.querySelectorAll('input') ?? []) {
+          if (input.type === 'radio') input.checked = false;
+        }
+      }
+      const check = activeControls?.querySelector('.plan39-check-position');
+      if (check) check.disabled = true;
+      if (isRepair02(currentScene)) setTokenPlacement(null);
       return true;
     },
     focusControl(kind) {

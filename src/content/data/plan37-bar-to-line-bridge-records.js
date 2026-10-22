@@ -14,6 +14,7 @@ export const PLAN37_BAR_TO_LINE_BRIDGE_PRACTICE_SET_ID = 'bar-to-line-same-amoun
 export const PLAN37_BAR_TO_LINE_BRIDGE_PRACTICE_SET_REVISION = '1';
 export const PLAN37_BAR_TO_LINE_BRIDGE_DEFINITION_ID = 'phase-4-bar-to-line-same-amount';
 export const PLAN37_BAR_TO_LINE_BRIDGE_DEFINITION_REVISION = '1';
+export const PLAN37_BAR_TO_LINE_BRIDGE_REPAIR_DEFINITION_REVISION = '2';
 
 export const PLAN37_BAR_TO_LINE_BRIDGE_RECORDS = deepFreeze([
   { itemId: 'bridge-01-half-2', fixtureId: 'curated-plan37-bridge-01-half-2', authoringRevision: PLAN37_BAR_TO_LINE_BRIDGE_AUTHORING_REVISION, taskDataId: PLAN37_BAR_TO_LINE_BRIDGE_TASK_DATA_ID, taskDataRevision: PLAN37_BAR_TO_LINE_BRIDGE_TASK_DATA_REVISION, recipe: { id: PLAN37_BAR_TO_LINE_BRIDGE_RECIPE_ID, revision: '1' }, sourceForm: f(1, 2), partitionDenominator: '2', sparseCandidates: [c('a', 0, 1), c('b', 1, 4), c('c', 1, 2), c('d', 1, 1)] },

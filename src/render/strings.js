@@ -24,6 +24,27 @@ function equivalentPartsPrompt(sourceForm, targetDenominator) {
 }
 
 export const STRINGS = Object.freeze({
+  plan39Repair02: Object.freeze({
+    visualPrompt: 'Place this fraction on the number line.',
+    linearPrompt: 'Choose a location.',
+    resolvedPrompt: 'That’s right.',
+    regionLabel: 'Place a fraction on a number line',
+    tokenNotPlaced: (n, d) => `${n}/${d}, not placed`,
+    tokenPlaced: (n, d, description) => `${n}/${d}, placed at ${description}`,
+    trackTapLabel: 'Number line placement area',
+    optionLegend: 'Locations',
+    checkPosition: 'Check',
+    noSelection: 'No location chosen',
+    previousPoint: '← Move left',
+    nextPoint: 'Move right →',
+    help: 'Count equal steps from 0.',
+    recovery: (kind) => ({
+      'at-endpoint': 'That point is at an end. Try again.',
+      'wrong-side-of-half': 'Check which side of one half this amount is on.',
+      'too-low-same-side': 'That point is too close to zero. Try again.',
+      'too-high-same-side': 'That point is too close to one. Try again.',
+    })[kind] || 'Try another point.',
+  }),
   plan39: Object.freeze({
     prompt: 'Place the same amount on the number line.',
       resolvedPrompt: 'The same amount is on the number line.',

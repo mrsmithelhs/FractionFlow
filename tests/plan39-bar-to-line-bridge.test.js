@@ -1,12 +1,12 @@
 import { describe, expect, it } from 'vitest';
 import { readFileSync } from 'node:fs';
 import { PLAN37_BAR_TO_LINE_BRIDGE_RECORDS } from '../src/content/data/plan37-bar-to-line-bridge-records.js';
-import { resolvePlan37BarToLineBridgeInstance, resolvePlan37BarToLineBridgeContext, validatePlan37BarToLineBridgeContext } from '../src/content/plan37-bar-to-line-bridge-task.js';
+import { resolvePlan37BarToLineBridgeInstance, resolvePlan37BarToLineBridgeContext, validatePlan37BarToLineBridgeContext, plan37ExactLocationScale } from '../src/content/plan37-bar-to-line-bridge-task.js';
 import { applyIntent, createEpisode } from '../src/interaction/episode.js';
-import { PLAN37_BAR_TO_LINE_BRIDGE_EPISODE_DEFINITION } from '../src/interaction/episode-definition.js';
+import { PLAN37_BAR_TO_LINE_BRIDGE_EPISODE_DEFINITION, PLAN37_BAR_TO_LINE_BRIDGE_REPAIR_EPISODE_DEFINITION } from '../src/interaction/episode-definition.js';
 import { HIGH_SUPPORT_CONFIGURATION, MEDIUM_SUPPORT_CONFIGURATION } from '../src/interaction/support.js';
 import { projectScene } from '../src/interaction/scene.js';
-import { createReplayEnvelope, replayEpisode, REPLAY_V7_SCHEMA_VERSION } from '../src/interaction/replay.js';
+import { createReplayEnvelope, replayEpisode, REPLAY_V7_SCHEMA_VERSION, REPLAY_V8_SCHEMA_VERSION } from '../src/interaction/replay.js';
 
 const high = HIGH_SUPPORT_CONFIGURATION;
 const medium = MEDIUM_SUPPORT_CONFIGURATION;
@@ -24,6 +24,42 @@ function locate(record, support = high) {
 }
 
 describe('Plan 39 bar-to-line bridge content and interaction', () => {
+  it('keeps v1 historical and registers the revision-2 direct-location definition', () => {
+    expect(PLAN37_BAR_TO_LINE_BRIDGE_EPISODE_DEFINITION.revision).toBe('1');
+    expect(PLAN37_BAR_TO_LINE_BRIDGE_REPAIR_EPISODE_DEFINITION.revision).toBe('2');
+    expect(PLAN37_BAR_TO_LINE_BRIDGE_REPAIR_EPISODE_DEFINITION.beats).toEqual(['locate', 'resolve']);
+    let maximumScale = 0;
+    for (const record of PLAN37_BAR_TO_LINE_BRIDGE_RECORDS) {
+      const instance = resolvePlan37BarToLineBridgeInstance(record.itemId);
+      for (const supportMode of ['partitioned', 'sparse-benchmarks']) {
+        const context = resolvePlan37BarToLineBridgeContext(instance, record.itemId, { definitionRevision: '2', supportMode });
+        const scale = plan37ExactLocationScale(context);
+        maximumScale = Math.max(maximumScale, Number(scale.totalUnits));
+        expect(new Set(scale.positions.map(({ unitsFromZero }) => unitsFromZero)).size).toBe(scale.positions.length);
+        expect(scale.positions.some(({ form }) => form.numerator === record.sourceForm.numerator && form.denominator === record.sourceForm.denominator)).toBe(true);
+      }
+    }
+    expect(maximumScale).toBe(8);
+  });
+
+  it('uses replay v8 for the revision-2 context and does not reinterpret v7', () => {
+    const record = PLAN37_BAR_TO_LINE_BRIDGE_RECORDS[0];
+    const instance = resolvePlan37BarToLineBridgeInstance(record.itemId);
+    const taskContext = resolvePlan37BarToLineBridgeContext(instance, record.itemId, { definitionRevision: '2', supportMode: 'partitioned' });
+    const state = createEpisode({
+      instance,
+      taskContext,
+      support: high,
+      episodeDefinition: PLAN37_BAR_TO_LINE_BRIDGE_REPAIR_EPISODE_DEFINITION,
+    });
+    const envelope = createReplayEnvelope(state);
+    expect(envelope.schemaVersion).toBe(REPLAY_V8_SCHEMA_VERSION);
+    expect(envelope.episodeDefinition.revision).toBe('2');
+    expect(replayEpisode(envelope)).toMatchObject({ beat: 'locate', episodeDefinition: { revision: '2' } });
+    const forgedV7 = { ...envelope, schemaVersion: REPLAY_V7_SCHEMA_VERSION };
+    expect(() => replayEpisode(forgedV7)).toThrow();
+  });
+
   it('admits exactly the eight registered unary records in both support modes', () => {
     expect(PLAN37_BAR_TO_LINE_BRIDGE_RECORDS).toHaveLength(8);
     for (const record of PLAN37_BAR_TO_LINE_BRIDGE_RECORDS) {

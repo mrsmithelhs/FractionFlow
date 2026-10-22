@@ -7,6 +7,7 @@ import {
   PLAN36_LIKE_DENOMINATOR_SUBTRACTION_EPISODE_DEFINITION,
   PLAN40_REUSABLE_SUBTRACTION_RECIPES_EPISODE_DEFINITION,
   PLAN37_BAR_TO_LINE_BRIDGE_EPISODE_DEFINITION,
+  PLAN37_BAR_TO_LINE_BRIDGE_REPAIR_EPISODE_DEFINITION,
 } from '../interaction/episode-definition.js';
 import { PLAN35_ADDITION_RECIPE_PRACTICE_SET, PLAN35_ADDITION_RECIPE_RECORDS } from '../content/data/plan35-addition-recipe-records.js';
 import {
@@ -280,20 +281,25 @@ export const PLAN40_PRACTICE_TYPES_V9 = deepFreeze([
   PLAN40_UNLIKE_SUBTRACTION_PRACTICE_TYPE,
 ]);
 
-export const PLAN39_BAR_TO_LINE_PRACTICE_TYPE = deepFreeze({
-  id: 'bar-to-line-same-amount',
-  label: 'Place fractions on a number line',
-  setId: PLAN37_BAR_TO_LINE_BRIDGE_PRACTICE_SET.id,
-  setRevision: PLAN37_BAR_TO_LINE_BRIDGE_PRACTICE_SET.revision,
-  items: PLAN37_BAR_TO_LINE_BRIDGE_RECORDS.map((record) => ({
-    id: record.itemId,
-    fixtureId: record.fixtureId,
-    authoringRevision: record.authoringRevision,
-    episodeDefinitionId: PLAN37_BAR_TO_LINE_BRIDGE_EPISODE_DEFINITION.id,
-    episodeDefinitionRevision: PLAN37_BAR_TO_LINE_BRIDGE_EPISODE_DEFINITION.revision,
-  })),
-  episodeDefinition: PLAN37_BAR_TO_LINE_BRIDGE_EPISODE_DEFINITION,
-});
+function plan39PracticeType(episodeDefinition) {
+  return deepFreeze({
+    id: 'bar-to-line-same-amount',
+    label: 'Place fractions on a number line',
+    setId: PLAN37_BAR_TO_LINE_BRIDGE_PRACTICE_SET.id,
+    setRevision: PLAN37_BAR_TO_LINE_BRIDGE_PRACTICE_SET.revision,
+    items: PLAN37_BAR_TO_LINE_BRIDGE_RECORDS.map((record) => ({
+      id: record.itemId,
+      fixtureId: record.fixtureId,
+      authoringRevision: record.authoringRevision,
+      episodeDefinitionId: episodeDefinition.id,
+      episodeDefinitionRevision: episodeDefinition.revision,
+    })),
+    episodeDefinition,
+  });
+}
+
+export const PLAN39_BAR_TO_LINE_V1_HISTORICAL_PRACTICE_TYPE = plan39PracticeType(PLAN37_BAR_TO_LINE_BRIDGE_EPISODE_DEFINITION);
+export const PLAN39_BAR_TO_LINE_PRACTICE_TYPE = plan39PracticeType(PLAN37_BAR_TO_LINE_BRIDGE_REPAIR_EPISODE_DEFINITION);
 
 export const PRACTICE_TYPES = deepFreeze([
   ...PLAN40_PRACTICE_TYPES_V9,

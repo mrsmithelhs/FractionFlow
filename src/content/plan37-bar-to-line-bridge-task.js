@@ -4,6 +4,7 @@ import {
   compareFractions,
   createFraction,
   equalFractions,
+  leastCommonDenominator,
   subtractFractions,
 } from '../math/index.js';
 import { deepFreeze, fractionToWire } from './schema.js';
@@ -15,6 +16,7 @@ import {
   PLAN37_BAR_TO_LINE_BRIDGE_PRACTICE_SET_REVISION,
   PLAN37_BAR_TO_LINE_BRIDGE_RECIPE_ID,
   PLAN37_BAR_TO_LINE_BRIDGE_RECIPE_REVISION,
+  PLAN37_BAR_TO_LINE_BRIDGE_REPAIR_DEFINITION_REVISION,
   PLAN37_BAR_TO_LINE_BRIDGE_RECORDS,
   PLAN37_BAR_TO_LINE_BRIDGE_TASK_DATA_ID,
   PLAN37_BAR_TO_LINE_BRIDGE_TASK_DATA_REVISION,
@@ -177,13 +179,15 @@ export function resolvePlan37BarToLineBridgeInstance(itemId, authoringRevision =
 export function resolvePlan37BarToLineBridgeContext(instance, itemId, {
   practiceSetId = PLAN37_BAR_TO_LINE_BRIDGE_PRACTICE_SET_ID,
   practiceSetRevision = PLAN37_BAR_TO_LINE_BRIDGE_PRACTICE_SET_REVISION,
+  definitionRevision = PLAN37_BAR_TO_LINE_BRIDGE_DEFINITION_REVISION,
   supportMode = 'partitioned',
 } = {}) {
   const content = validatePlan37BarToLineBridgeInstance(instance);
   const record = recordFor(itemId, content.provenance.fixtureId, content.provenance.authoringRevision);
   if (!record || !['partitioned', 'sparse-benchmarks'].includes(supportMode)
     || practiceSetId !== PLAN37_BAR_TO_LINE_BRIDGE_PRACTICE_SET_ID
-    || String(practiceSetRevision) !== PLAN37_BAR_TO_LINE_BRIDGE_PRACTICE_SET_REVISION) {
+    || String(practiceSetRevision) !== PLAN37_BAR_TO_LINE_BRIDGE_PRACTICE_SET_REVISION
+    || ![PLAN37_BAR_TO_LINE_BRIDGE_DEFINITION_REVISION, PLAN37_BAR_TO_LINE_BRIDGE_REPAIR_DEFINITION_REVISION].includes(String(definitionRevision))) {
     throw new TypeError('exact bridge set membership and support mode are required');
   }
   const context = {
@@ -193,7 +197,7 @@ export function resolvePlan37BarToLineBridgeContext(instance, itemId, {
     fixtureId: record.fixtureId,
     authoringRevision: record.authoringRevision,
     definitionId: PLAN37_BAR_TO_LINE_BRIDGE_DEFINITION_ID,
-    definitionRevision: PLAN37_BAR_TO_LINE_BRIDGE_DEFINITION_REVISION,
+    definitionRevision: String(definitionRevision),
     taskDataId: record.taskDataId,
     taskDataRevision: record.taskDataRevision,
     recipeId: record.recipe.id,
@@ -214,6 +218,7 @@ export function validatePlan37BarToLineBridgeContext(instance, context, expected
   const expected = resolvePlan37BarToLineBridgeContext(instance, context.itemId, {
     practiceSetId: context.practiceSetId,
     practiceSetRevision: context.practiceSetRevision,
+    definitionRevision: context.definitionRevision,
     supportMode: expectedSupportMode,
   });
   if (!same(context, expected)) throw new TypeError('bridge task context does not match authoritative registry');
@@ -223,6 +228,57 @@ export function validatePlan37BarToLineBridgeContext(instance, context, expected
 export function isPlan37BarToLineBridgeDefinition(definition) {
   return definition?.id === PLAN37_BAR_TO_LINE_BRIDGE_DEFINITION_ID
     && definition?.revision === PLAN37_BAR_TO_LINE_BRIDGE_DEFINITION_REVISION;
+}
+
+export function isPlan37BarToLineBridgeRepairDefinition(definition) {
+  return definition?.id === PLAN37_BAR_TO_LINE_BRIDGE_DEFINITION_ID
+    && definition?.revision === PLAN37_BAR_TO_LINE_BRIDGE_REPAIR_DEFINITION_REVISION;
+}
+
+export function isPlan37BarToLineBridgeTaskDefinition(definition) {
+  return isPlan37BarToLineBridgeDefinition(definition) || isPlan37BarToLineBridgeRepairDefinition(definition);
+}
+
+export function plan37ExactLocationScale(context) {
+  if (!context || !SUPPORT_MODES.includes(context.supportMode)) throw new TypeError('validated Plan 39 support context is required');
+  const candidateForms = context.supportMode === 'partitioned'
+    ? Array.from({ length: Number(context.partitionDenominator) + 1 }, (_, stepIndex) => ({
+      id: `partition-${stepIndex}-of-${context.partitionDenominator}`,
+      form: { kind: 'fraction', numerator: String(stepIndex), denominator: context.partitionDenominator },
+    }))
+    : context.sparseCandidates;
+  const scale = context.supportMode === 'partitioned'
+    ? BigInt(context.partitionDenominator)
+    : leastCommonDenominator(...candidateForms.map(({ form }) => BigInt(form.denominator)));
+  if (scale < 1n || scale > 8n) throw new RangeError('Plan 39 exact location scale exceeds the registered maximum of 8');
+  const positions = candidateForms.map((candidate, index) => {
+    const denominator = BigInt(candidate.form.denominator);
+    if (scale % denominator !== 0n) throw new RangeError('Plan 39 exact location scale does not represent an offered candidate');
+    const unitsFromZero = BigInt(candidate.form.numerator) * (scale / denominator);
+    if (unitsFromZero < 0n || unitsFromZero > scale) throw new RangeError('Plan 39 candidate is outside the unit interval');
+    const letter = String.fromCharCode(65 + index);
+    return {
+      id: candidate.id,
+      form: candidate.form,
+      stepIndex: context.supportMode === 'partitioned' ? index : index + 1,
+      totalSteps: context.supportMode === 'partitioned' ? Number(context.partitionDenominator) : candidateForms.length,
+      unitsFromZero: unitsFromZero.toString(),
+      totalUnits: scale.toString(),
+      letter,
+      description: context.supportMode === 'partitioned'
+        ? `Step ${unitsFromZero} of ${scale} equal steps from 0`
+        : `${letter}: ${unitsFromZero} of ${scale} equal steps from 0`,
+      benchmarkRelation: classifyPlan37BenchmarkRelation(candidate.form),
+    };
+  });
+  if (new Set(positions.map(({ unitsFromZero }) => unitsFromZero)).size !== positions.length) {
+    throw new RangeError('Plan 39 exact offered locations must be unique');
+  }
+  return deepFreeze({
+    totalUnits: scale.toString(),
+    scaleDescription: `0 to 1 has ${scale} equal steps.`,
+    positions,
+  });
 }
 
 export function plan37SourceFraction(instance) {

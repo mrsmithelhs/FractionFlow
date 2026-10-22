@@ -5,6 +5,7 @@ import { resolvePlan37BarToLineBridgeInstance } from '../content/authored-conten
 import {
   EXACT_PLAN37_BAR_TO_LINE_CONTEXT_KEYS,
   isPlan37BarToLineBridgeDefinition,
+  isPlan37BarToLineBridgeRepairDefinition,
   validatePlan37BarToLineBridgeContext,
   validatePlan37BarToLineBridgeInstance,
 } from '../content/plan37-bar-to-line-bridge-task.js';
@@ -21,6 +22,7 @@ export const REPLAY_V4_SCHEMA_VERSION = 'fractionflow.episode-replay/v4';
 export const REPLAY_V5_SCHEMA_VERSION = 'fractionflow.episode-replay/v5';
 export const REPLAY_V6_SCHEMA_VERSION = 'fractionflow.episode-replay/v6';
 export const REPLAY_V7_SCHEMA_VERSION = 'fractionflow.episode-replay/v7';
+export const REPLAY_V8_SCHEMA_VERSION = 'fractionflow.episode-replay/v8';
 
 function sameJson(left, right) {
   return JSON.stringify(left) === JSON.stringify(right);
@@ -127,6 +129,7 @@ function assertReplayEnvelopeShape(envelope) {
   const v5 = envelope?.schemaVersion === REPLAY_V5_SCHEMA_VERSION;
   const v6 = envelope?.schemaVersion === REPLAY_V6_SCHEMA_VERSION;
   const v7 = envelope?.schemaVersion === REPLAY_V7_SCHEMA_VERSION;
+  const v8 = envelope?.schemaVersion === REPLAY_V8_SCHEMA_VERSION;
   assertExactKeys(envelope, [
     'schemaVersion',
     'contentIdentity',
@@ -134,7 +137,7 @@ function assertReplayEnvelopeShape(envelope) {
     'support',
     'activeCondition',
     'learnerIntents',
-    ...(v2 || v3 || v4 || v5 || v6 || v7 ? ['taskContext'] : []),
+    ...(v2 || v3 || v4 || v5 || v6 || v7 || v8 ? ['taskContext'] : []),
   ], 'replay envelope');
   assertContentIdentityShape(envelope.contentIdentity);
   assertExactKeys(envelope.episodeDefinition, ['id', 'revision'], 'episodeDefinition');
@@ -260,6 +263,26 @@ function assertReplayEnvelopeShape(envelope) {
       }
     }
   }
+  if (v8) {
+    const context = envelope.taskContext;
+    assertExactKeys(context, EXACT_PLAN37_BAR_TO_LINE_CONTEXT_KEYS, 'replay v8 taskContext');
+    if (envelope.episodeDefinition.id !== 'phase-4-bar-to-line-same-amount'
+      || envelope.episodeDefinition.revision !== '2'
+      || context.definitionId !== envelope.episodeDefinition.id
+      || context.definitionRevision !== envelope.episodeDefinition.revision) {
+      throw new TypeError('replay v8 is reserved for exact Plan 39 Repair 02 bridge context');
+    }
+    const allowedIntentTypes = new Set([
+      'propose-number-line-location',
+      'request-task-help',
+      'finish-compact-episode',
+    ]);
+    for (const intent of envelope.learnerIntents) {
+      if (!isPlainRecord(intent) || !allowedIntentTypes.has(intent.type)) {
+        throw new TypeError(`replay v8 does not permit intent type: ${intent?.type}`);
+      }
+    }
+  }
 }
 
 function contentReconstructionIdentity(content) {
@@ -381,8 +404,10 @@ export function createReplayEnvelope(state) {
     throw new TypeError('state must be a Plan 05 episode state');
   }
   const envelope = {
-    schemaVersion: isPlan37BarToLineBridgeDefinition(state.episodeDefinition)
-      ? REPLAY_V7_SCHEMA_VERSION
+    schemaVersion: isPlan37BarToLineBridgeRepairDefinition(state.episodeDefinition)
+      ? REPLAY_V8_SCHEMA_VERSION
+      : isPlan37BarToLineBridgeDefinition(state.episodeDefinition)
+        ? REPLAY_V7_SCHEMA_VERSION
       : state.episodeDefinition.id === 'phase-3-reusable-subtraction-recipes'
       ? REPLAY_V6_SCHEMA_VERSION
       : state.episodeDefinition.id === 'phase-3-like-denominator-takeaway-subtraction'
@@ -409,7 +434,7 @@ export function createReplayEnvelope(state) {
 export function replayEpisode(envelope) {
   assertJsonSafe(envelope, 'replay envelope');
   if (!envelope || typeof envelope !== 'object') throw new TypeError('replay envelope must be an object');
-  if (![REPLAY_SCHEMA_VERSION, REPLAY_V2_SCHEMA_VERSION, REPLAY_V3_SCHEMA_VERSION, REPLAY_V4_SCHEMA_VERSION, REPLAY_V5_SCHEMA_VERSION, REPLAY_V6_SCHEMA_VERSION, REPLAY_V7_SCHEMA_VERSION].includes(envelope?.schemaVersion)) {
+  if (![REPLAY_SCHEMA_VERSION, REPLAY_V2_SCHEMA_VERSION, REPLAY_V3_SCHEMA_VERSION, REPLAY_V4_SCHEMA_VERSION, REPLAY_V5_SCHEMA_VERSION, REPLAY_V6_SCHEMA_VERSION, REPLAY_V7_SCHEMA_VERSION, REPLAY_V8_SCHEMA_VERSION].includes(envelope?.schemaVersion)) {
     throw new Error('unsupported replay envelope version');
   }
   assertReplayEnvelopeShape(envelope);
@@ -418,10 +443,13 @@ export function replayEpisode(envelope) {
     envelope.episodeDefinition?.id,
     envelope.episodeDefinition?.revision,
   );
-  if (isPlan37BarToLineBridgeDefinition(definition) !== (envelope.schemaVersion === REPLAY_V7_SCHEMA_VERSION)) {
+  if ((isPlan37BarToLineBridgeDefinition(definition) && envelope.schemaVersion !== REPLAY_V7_SCHEMA_VERSION)
+    || (isPlan37BarToLineBridgeRepairDefinition(definition) && envelope.schemaVersion !== REPLAY_V8_SCHEMA_VERSION)
+    || (![isPlan37BarToLineBridgeDefinition(definition), isPlan37BarToLineBridgeRepairDefinition(definition)].some(Boolean)
+      && [REPLAY_V7_SCHEMA_VERSION, REPLAY_V8_SCHEMA_VERSION].includes(envelope.schemaVersion))) {
     throw new Error('Plan 39 bridge episodes require replay v7 and v7 is bridge-only');
   }
-  if (envelope.schemaVersion === REPLAY_V7_SCHEMA_VERSION) {
+  if (envelope.schemaVersion === REPLAY_V7_SCHEMA_VERSION || envelope.schemaVersion === REPLAY_V8_SCHEMA_VERSION) {
     const expectedMode = envelope.support?.dimensions?.fractionBarModel === 'high support'
       ? 'partitioned'
       : envelope.support?.dimensions?.fractionBarModel === 'medium support'
@@ -438,7 +466,8 @@ export function replayEpisode(envelope) {
       || envelope.schemaVersion === REPLAY_V4_SCHEMA_VERSION
       || envelope.schemaVersion === REPLAY_V5_SCHEMA_VERSION
       || envelope.schemaVersion === REPLAY_V6_SCHEMA_VERSION
-      || envelope.schemaVersion === REPLAY_V7_SCHEMA_VERSION ? {
+      || envelope.schemaVersion === REPLAY_V7_SCHEMA_VERSION
+      || envelope.schemaVersion === REPLAY_V8_SCHEMA_VERSION ? {
       taskContext: envelope.taskContext,
       allowCompatibilityPair: envelope.schemaVersion !== REPLAY_V4_SCHEMA_VERSION
         && envelope.schemaVersion !== REPLAY_V5_SCHEMA_VERSION

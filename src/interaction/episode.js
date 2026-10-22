@@ -36,7 +36,7 @@ import { subtractAtCommonDenominator, validateOperationResult } from '../math/in
 import { benchmarkFraction, classifyMagnitude, compareFractions, createFraction, equalFractions } from '../math/index.js';
 import { fractionFromWire } from './classification.js';
 import {
-  isPlan37BarToLineBridgeDefinition,
+  isPlan37BarToLineBridgeTaskDefinition,
   plan37SourceFraction,
   validatePlan37BarToLineBridgeContext,
   validatePlan37BarToLineBridgeInstance,
@@ -84,7 +84,7 @@ function responseForEntry(definition, entry, taskContext = null) {
     beat,
     evidenceCategory: 'supported-construction',
   };
-  if (isPlan37BarToLineBridgeDefinition(definition)) {
+  if (isPlan37BarToLineBridgeTaskDefinition(definition)) {
     if (beat === 'encounter') return { ...common, responsibility: 'inspect-reference-bar', inputKind: 'acknowledge-bridge-encounter' };
     if (beat === 'locate') return { ...common, responsibility: 'place-source-amount-on-number-line', inputKind: 'number-line-position', responseId: 'propose-number-line-location' };
     if (beat === 'resolve') return { ...common, responsibility: 'confirm-number-line-location', inputKind: 'finish-navigation' };
@@ -262,8 +262,8 @@ function assertDefinition(definition) {
       'episode definition semantics do not match its registered identity',
     );
   }
-  const approvedBeats = isPlan37BarToLineBridgeDefinition(registered)
-    ? ['encounter', 'locate', 'resolve']
+  const approvedBeats = isPlan37BarToLineBridgeTaskDefinition(registered)
+    ? (registered.revision === '2' ? ['locate', 'resolve'] : ['encounter', 'locate', 'resolve'])
     : registered.id === PLAN36_LIKE_DENOMINATOR_SUBTRACTION_EPISODE_DEFINITION.id
     ? ['encounter', 'operate', 'resolve']
     : [PLAN18_NESTED_DEFINITION_ID, 'phase-3-reusable-addition-recipes', 'phase-3-reusable-subtraction-recipes'].includes(registered.id)
@@ -276,7 +276,7 @@ function assertDefinition(definition) {
 }
 
 function assertInstance(instance, definition) {
-  if (isPlan37BarToLineBridgeDefinition(definition)) {
+  if (isPlan37BarToLineBridgeTaskDefinition(definition)) {
     try {
       return validatePlan37BarToLineBridgeInstance(instance);
     } catch (error) {
@@ -1396,7 +1396,7 @@ export function createEpisode({
   const isNested = definition.id === PLAN18_NESTED_DEFINITION_ID;
   const isPlan36 = isPlan36SubtractionDefinition(definition);
   const isPlan40 = isPlan40SubtractionRecipeDefinition(definition);
-  const isPlan37Bridge = isPlan37BarToLineBridgeDefinition(definition);
+  const isPlan37Bridge = isPlan37BarToLineBridgeTaskDefinition(definition);
   const bridgeMode = isPlan37Bridge ? bridgeModeFromSupport(normalizedSupport) : null;
   const normalizedTaskContext = isCompact
     ? (isPlan40
@@ -1467,7 +1467,7 @@ export function applyIntent(state, rawIntent) {
     throw new EpisodeIntentError('EPISODE_RESOLVED', 'resolved episodes do not accept more instructional intents');
   }
   const intent = ensureIntent(rawIntent);
-  if (isPlan37BarToLineBridgeDefinition(state.episodeDefinition)) {
+  if (isPlan37BarToLineBridgeTaskDefinition(state.episodeDefinition)) {
     return applyPlan37BridgeIntent(state, intent);
   }
   assertIntentAllowedAtBeat(state, intent);
