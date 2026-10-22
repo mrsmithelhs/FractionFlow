@@ -1,0 +1,90 @@
+{
+  "capturedAt": "2026-10-22T02:20:25.704Z",
+  "browserChannel": "chrome",
+  "mode": "filtered",
+  "routeRows": 1,
+  "browserExecutions": 1,
+  "passed": 1,
+  "failed": 0,
+  "seedDetected": 0,
+  "results": [
+    {
+      "id": "ROUTE-PLAN39-REPAIR02-EIGHTHS-1093X614-DPR125 [standard-motion]",
+      "routeId": "ROUTE-PLAN39-REPAIR02-EIGHTHS-1093X614-DPR125",
+      "context": "production-default-v8",
+      "motionMode": "standard-motion",
+      "status": "pass",
+      "geometryChecks": [],
+      "repair02Evidence": [
+        {
+          "itemId": "bridge-06-three-eighths-8",
+          "source": {
+            "kind": "fraction",
+            "numerator": "3",
+            "denominator": "8"
+          },
+          "selectedId": "partition-3-of-8",
+          "pendingLabel": "3/8, placed at Step 3 of 8 equal steps from 0",
+          "barsAtInitial": 0,
+          "barsAfterCheck": 1,
+          "geometry": {
+            "viewport": {
+              "width": 1093,
+              "height": 614,
+              "dpr": 1.25
+            },
+            "prompt": {
+              "x": 210.5,
+              "y": 181.09375,
+              "width": 672,
+              "height": 20.984375,
+              "top": 181.09375,
+              "bottom": 202.078125
+            },
+            "controls": {
+              "x": 210.5,
+              "y": 324.4375,
+              "width": 672,
+              "height": 104,
+              "top": 324.4375,
+              "bottom": 428.4375
+            },
+            "targets": [
+              {
+                "x": 210.5,
+                "y": 324.4375,
+                "width": 187.890625,
+                "height": 44,
+                "top": 324.4375,
+                "bottom": 368.4375
+              },
+              {
+                "x": 694.59375,
+                "y": 324.4375,
+                "width": 187.90625,
+                "height": 44,
+                "top": 324.4375,
+                "bottom": 368.4375
+              },
+              {
+                "x": 210.5,
+                "y": 384.4375,
+                "width": 672,
+                "height": 44,
+                "top": 384.4375,
+                "bottom": 428.4375
+              }
+            ],
+            "minimumTargetWidth": 187.890625,
+            "minimumTargetHeight": 44,
+            "linearOptionLabels": [],
+            "linearOptionLabelsDistinct": true,
+            "horizontalOverflow": 0
+          },
+          "resizedAlignment": null
+        }
+      ],
+      "screenshots": []
+    }
+  ]
+}

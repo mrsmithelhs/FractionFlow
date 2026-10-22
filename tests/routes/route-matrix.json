@@ -15758,6 +15758,456 @@
         ]
       },
       "deviceScaleFactor": 1.25
+    },
+    {
+      "id": "ROUTE-PLAN39-REPAIR02-DRAG-ALL-8",
+      "behavior": "Current Plan 39 Repair02 drag-all-8 journey",
+      "configuration": "phase2-bundle-1",
+      "startingSurface": "mounted-app-entry",
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "motionMode": "standard-motion",
+      "witness": "browser",
+      "inputMode": "mouse",
+      "actions": [
+        {
+          "method": "click",
+          "target": ".app-gear-button",
+          "description": "Open display settings"
+        },
+        {
+          "method": "click",
+          "target": "[data-support-id=\"high-support\"]",
+          "description": "Select support mode"
+        },
+        {
+          "method": "click",
+          "target": "[data-practice-type=\"bar-to-line-same-amount\"]",
+          "description": "Start the location task"
+        },
+        {
+          "method": "completePlan39Repair02Set",
+          "view": "visual",
+          "supportProfile": "high-support",
+          "interaction": "drag",
+          "pointerKind": "mouse",
+          "startAt": 0,
+          "endAt": 7,
+          "description": "Complete the selected current Repair02 journey",
+          "resizeCheck": {
+            "width": 800,
+            "height": 740
+          }
+        },
+        {
+          "method": "assert",
+          "target": ".app-episode",
+          "description": "Verify mounted Plan39 Repair02 task remains reachable",
+          "assertions": [
+            {
+              "type": "hasSelector",
+              "target": ".app-episode"
+            }
+          ]
+        }
+      ],
+      "expect": {
+        "capture": {
+          "target": ".app-episode",
+          "type": "innerHTML"
+        },
+        "assertions": [
+          {
+            "type": "hasSelector",
+            "target": ".app-episode"
+          }
+        ]
+      }
+    },
+    {
+      "id": "ROUTE-PLAN39-REPAIR02-TOUCH-TAP-ALL-8",
+      "behavior": "Current Plan 39 Repair02 touch-tap-all-8 journey",
+      "configuration": "phase2-bundle-1",
+      "startingSurface": "mounted-app-entry",
+      "viewport": {
+        "width": 360,
+        "height": 752
+      },
+      "motionMode": "standard-motion",
+      "witness": "browser",
+      "inputMode": "touch",
+      "actions": [
+        {
+          "method": "click",
+          "target": ".app-gear-button",
+          "description": "Open display settings"
+        },
+        {
+          "method": "click",
+          "target": "[data-support-id=\"high-support\"]",
+          "description": "Select support mode"
+        },
+        {
+          "method": "click",
+          "target": "[data-practice-type=\"bar-to-line-same-amount\"]",
+          "description": "Start the location task"
+        },
+        {
+          "method": "completePlan39Repair02Set",
+          "view": "visual",
+          "supportProfile": "high-support",
+          "interaction": "tap",
+          "pointerKind": "touch",
+          "startAt": 0,
+          "endAt": 7,
+          "description": "Complete the selected current Repair02 journey"
+        },
+        {
+          "method": "assert",
+          "target": ".app-episode",
+          "description": "Verify mounted Plan39 Repair02 task remains reachable",
+          "assertions": [
+            {
+              "type": "hasSelector",
+              "target": ".app-episode"
+            }
+          ]
+        }
+      ],
+      "expect": {
+        "capture": {
+          "target": ".app-episode",
+          "type": "innerHTML"
+        },
+        "assertions": [
+          {
+            "type": "hasSelector",
+            "target": ".app-episode"
+          }
+        ]
+      }
+    },
+    {
+      "id": "ROUTE-PLAN39-REPAIR02-KEYBOARD-ALL-8",
+      "behavior": "Current Plan 39 Repair02 keyboard-all-8 journey",
+      "configuration": "phase2-bundle-1",
+      "startingSurface": "mounted-app-entry",
+      "viewport": {
+        "width": 360,
+        "height": 752
+      },
+      "motionMode": "standard-motion",
+      "witness": "browser",
+      "inputMode": "mouse",
+      "actions": [
+        {
+          "method": "click",
+          "target": ".app-gear-button",
+          "description": "Open display settings"
+        },
+        {
+          "method": "click",
+          "target": "[data-support-id=\"medium-support\"]",
+          "description": "Select support mode"
+        },
+        {
+          "method": "click",
+          "target": "[data-practice-type=\"bar-to-line-same-amount\"]",
+          "description": "Start the location task"
+        },
+        {
+          "method": "click",
+          "target": ".app-view-controls .app-secondary-button",
+          "description": "Choose the linear view"
+        },
+        {
+          "method": "completePlan39Repair02Set",
+          "view": "linear",
+          "supportProfile": "medium-support",
+          "interaction": "keyboard",
+          "pointerKind": "mouse",
+          "startAt": 0,
+          "endAt": 7,
+          "description": "Complete the selected current Repair02 journey"
+        },
+        {
+          "method": "assert",
+          "target": ".app-episode",
+          "description": "Verify mounted Plan39 Repair02 task remains reachable",
+          "assertions": [
+            {
+              "type": "hasSelector",
+              "target": ".app-episode"
+            }
+          ]
+        }
+      ],
+      "expect": {
+        "capture": {
+          "target": ".app-episode",
+          "type": "innerHTML"
+        },
+        "assertions": [
+          {
+            "type": "hasSelector",
+            "target": ".app-episode"
+          }
+        ]
+      }
+    },
+    {
+      "id": "ROUTE-PLAN39-REPAIR02-BOUNDARIES",
+      "behavior": "Current Plan 39 Repair02 boundaries journey",
+      "configuration": "phase2-bundle-1",
+      "startingSurface": "mounted-app-entry",
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "motionMode": "standard-motion",
+      "witness": "browser",
+      "inputMode": "mouse",
+      "actions": [
+        {
+          "method": "click",
+          "target": ".app-gear-button",
+          "description": "Open display settings"
+        },
+        {
+          "method": "click",
+          "target": "[data-support-id=\"high-support\"]",
+          "description": "Select support mode"
+        },
+        {
+          "method": "click",
+          "target": "[data-practice-type=\"bar-to-line-same-amount\"]",
+          "description": "Start the location task"
+        },
+        {
+          "method": "plan39Repair02Boundary",
+          "description": "Verify gesture cancellation, placement preview and reset"
+        },
+        {
+          "method": "assert",
+          "target": ".app-episode",
+          "description": "Verify mounted Plan39 Repair02 task remains reachable",
+          "assertions": [
+            {
+              "type": "hasSelector",
+              "target": ".app-episode"
+            }
+          ]
+        }
+      ],
+      "expect": {
+        "capture": {
+          "target": ".app-episode",
+          "type": "innerHTML"
+        },
+        "assertions": [
+          {
+            "type": "hasSelector",
+            "target": ".app-episode"
+          }
+        ]
+      }
+    },
+    {
+      "id": "ROUTE-PLAN39-REPAIR02-ODD-THIRDS-360X740",
+      "behavior": "Current Plan 39 Repair02 odd-thirds-360x740 journey",
+      "configuration": "phase2-bundle-1",
+      "startingSurface": "mounted-app-entry",
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "motionMode": "standard-motion",
+      "witness": "browser",
+      "inputMode": "mouse",
+      "actions": [
+        {
+          "method": "click",
+          "target": ".app-gear-button",
+          "description": "Open display settings"
+        },
+        {
+          "method": "click",
+          "target": "[data-support-id=\"high-support\"]",
+          "description": "Select support mode"
+        },
+        {
+          "method": "click",
+          "target": "[data-practice-type=\"bar-to-line-same-amount\"]",
+          "description": "Start the location task"
+        },
+        {
+          "method": "completePlan39Repair02Set",
+          "view": "visual",
+          "supportProfile": "high-support",
+          "interaction": "drag",
+          "pointerKind": "mouse",
+          "startAt": 6,
+          "endAt": 6,
+          "description": "Complete the selected current Repair02 journey"
+        },
+        {
+          "method": "assert",
+          "target": ".app-episode",
+          "description": "Verify mounted Plan39 Repair02 task remains reachable",
+          "assertions": [
+            {
+              "type": "hasSelector",
+              "target": ".app-episode"
+            }
+          ]
+        }
+      ],
+      "expect": {
+        "capture": {
+          "target": ".app-episode",
+          "type": "innerHTML"
+        },
+        "assertions": [
+          {
+            "type": "hasSelector",
+            "target": ".app-episode"
+          }
+        ]
+      }
+    },
+    {
+      "id": "ROUTE-PLAN39-REPAIR02-MEDIUM-1366X768",
+      "behavior": "Current Plan 39 Repair02 medium-1366x768 journey",
+      "configuration": "phase2-bundle-1",
+      "startingSurface": "mounted-app-entry",
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "motionMode": "standard-motion",
+      "witness": "browser",
+      "inputMode": "mouse",
+      "actions": [
+        {
+          "method": "click",
+          "target": ".app-gear-button",
+          "description": "Open display settings"
+        },
+        {
+          "method": "click",
+          "target": "[data-support-id=\"medium-support\"]",
+          "description": "Select support mode"
+        },
+        {
+          "method": "click",
+          "target": "[data-practice-type=\"bar-to-line-same-amount\"]",
+          "description": "Start the location task"
+        },
+        {
+          "method": "completePlan39Repair02Set",
+          "view": "visual",
+          "supportProfile": "medium-support",
+          "interaction": "drag",
+          "pointerKind": "mouse",
+          "startAt": 6,
+          "endAt": 6,
+          "description": "Complete the selected current Repair02 journey",
+          "stepperEndpointCheck": true
+        },
+        {
+          "method": "assert",
+          "target": ".app-episode",
+          "description": "Verify mounted Plan39 Repair02 task remains reachable",
+          "assertions": [
+            {
+              "type": "hasSelector",
+              "target": ".app-episode"
+            }
+          ]
+        }
+      ],
+      "expect": {
+        "capture": {
+          "target": ".app-episode",
+          "type": "innerHTML"
+        },
+        "assertions": [
+          {
+            "type": "hasSelector",
+            "target": ".app-episode"
+          }
+        ]
+      }
+    },
+    {
+      "id": "ROUTE-PLAN39-REPAIR02-EIGHTHS-1093X614-DPR125",
+      "behavior": "Current Plan 39 Repair02 eighths-1093x614-dpr125 journey",
+      "configuration": "phase2-bundle-1",
+      "startingSurface": "mounted-app-entry",
+      "viewport": {
+        "width": 1093,
+        "height": 614
+      },
+      "deviceScaleFactor": 1.25,
+      "motionMode": "standard-motion",
+      "witness": "browser",
+      "inputMode": "mouse",
+      "actions": [
+        {
+          "method": "click",
+          "target": ".app-gear-button",
+          "description": "Open display settings"
+        },
+        {
+          "method": "click",
+          "target": "[data-support-id=\"high-support\"]",
+          "description": "Select support mode"
+        },
+        {
+          "method": "click",
+          "target": "[data-practice-type=\"bar-to-line-same-amount\"]",
+          "description": "Start the location task"
+        },
+        {
+          "method": "completePlan39Repair02Set",
+          "view": "visual",
+          "supportProfile": "high-support",
+          "interaction": "drag",
+          "pointerKind": "mouse",
+          "startAt": 5,
+          "endAt": 5,
+          "description": "Complete the selected current Repair02 journey"
+        },
+        {
+          "method": "assert",
+          "target": ".app-episode",
+          "description": "Verify mounted Plan39 Repair02 task remains reachable",
+          "assertions": [
+            {
+              "type": "hasSelector",
+              "target": ".app-episode"
+            }
+          ]
+        }
+      ],
+      "expect": {
+        "capture": {
+          "target": ".app-episode",
+          "type": "innerHTML"
+        },
+        "assertions": [
+          {
+            "type": "hasSelector",
+            "target": ".app-episode"
+          },
+          {
+            "type": "viewportLayout",
+            "expectedDeviceScaleFactor": 1.25
+          }
+        ]
+      }
     }
   ]
 }

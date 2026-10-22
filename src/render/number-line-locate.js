@@ -254,20 +254,20 @@ function makeVisualStepper(scene, strings, { previewHandle, onPreviewChange, key
   status.className = 'plan39-stepper-status';
   status.setAttribute('aria-live', 'polite');
   const previous = createButton({
-    label: repair02 && selectedIndex < 0 ? strings.plan39Repair02.placeAtZero : strings.plan39.previousPoint,
+    label: repair02 && selectedIndex < 0 ? strings.plan39Repair02.placeLeftmost : strings.plan39.previousPoint,
     className: 'plan39-stepper-previous',
   });
   previous.classList.add('plan39-stepper-move');
   const next = createButton({
-    label: repair02 && selectedIndex < 0 ? strings.plan39Repair02.placeAtOne : strings.plan39.nextPoint,
+    label: repair02 && selectedIndex < 0 ? strings.plan39Repair02.placeRightmost : strings.plan39.nextPoint,
     className: 'plan39-stepper-next',
   });
   next.classList.add('plan39-stepper-move');
 
   function updateSelection(nextIndex, notify = true) {
     selectedIndex = nextIndex;
-    previous.textContent = strings.plan39.previousPoint;
-    next.textContent = strings.plan39.nextPoint;
+      previous.textContent = strings.plan39.previousPoint;
+      next.textContent = strings.plan39.nextPoint;
     const selected = candidates[selectedIndex];
     if (notify) onPreviewChange({ contextKey: key, candidateId: selected.id });
     status.setAttribute('data-candidate-id', selected.id);
@@ -315,8 +315,8 @@ function makeVisualStepper(scene, strings, { previewHandle, onPreviewChange, key
     },
     clearSelection() {
       selectedIndex = -1;
-      previous.textContent = repair02 ? strings.plan39Repair02.placeAtZero : strings.plan39.previousPoint;
-      next.textContent = repair02 ? strings.plan39Repair02.placeAtOne : strings.plan39.nextPoint;
+      previous.textContent = repair02 ? strings.plan39Repair02.placeLeftmost : strings.plan39.previousPoint;
+      next.textContent = repair02 ? strings.plan39Repair02.placeRightmost : strings.plan39.nextPoint;
       status.removeAttribute('data-candidate-id');
       status.textContent = repair02 ? strings.plan39Repair02.noSelection : strings.plan39.noPreview;
       previous.disabled = false;
@@ -344,6 +344,32 @@ export function createNumberLineLocateRenderer({
   let previewHandle = null;
   let tokenPointerState = null;
   let escapeListenerBound = false;
+  let resizeObserver = null;
+  let observedFrame = null;
+
+  function syncResizeObservation() {
+    if (!isRepair02(currentScene)) {
+      resizeObserver?.disconnect();
+      observedFrame = null;
+      return;
+    }
+    if (typeof ResizeObserver === 'undefined') return;
+    const frame = root?.querySelector('.plan39-axis-frame');
+    if (frame === observedFrame) return;
+    resizeObserver?.disconnect();
+    observedFrame = frame;
+    if (!resizeObserver) {
+      resizeObserver = new ResizeObserver(() => {
+        if (!root?.isConnected || !currentScene) return;
+        if (tokenPointerState) cancelActiveTokenGesture();
+        const selectedId = currentScene.meaning.currentTask.beat === 'locate'
+          && previewHandle?.contextKey === currentKey ? previewHandle.candidateId : null;
+        if (isRepair02(currentScene)) setTokenPlacement(selectedId);
+        refreshGeometry();
+      });
+    }
+    if (frame) resizeObserver.observe(frame);
+  }
 
   function cancelActiveTokenGesture() {
     const active = tokenPointerState;
@@ -617,6 +643,7 @@ export function createNumberLineLocateRenderer({
         replaceNode(stackForUpdate, currentTrack, makeTrack(currentScene, strings, candidateId, view));
         if (repair02 && view === 'visual') bindTrackTap(stackForUpdate.querySelector('.plan39-axis-frame'), savePreviewHandle);
         refreshGeometry();
+        syncResizeObservation();
       };
       if (repair02) {
         bindTokenDrag(stackForUpdate, savePreviewHandle);
@@ -672,6 +699,7 @@ export function createNumberLineLocateRenderer({
       help.textContent = repair02 ? strings.plan39Repair02.help : strings.plan39.help;
       root.appendChild(help);
     }
+    syncResizeObservation();
   }
 
   return {
@@ -687,6 +715,9 @@ export function createNumberLineLocateRenderer({
     refreshGeometry,
     destroy() {
       cancelActiveTokenGesture();
+      resizeObserver?.disconnect();
+      resizeObserver = null;
+      observedFrame = null;
       if (escapeListenerBound) {
         document.removeEventListener('keydown', onDocumentKeyDown);
         escapeListenerBound = false;

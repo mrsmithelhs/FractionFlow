@@ -2,12 +2,17 @@ import { afterEach, describe, expect, it } from 'vitest';
 import { PRACTICE_TYPES, PLAN39_BAR_TO_LINE_PRACTICE_TYPE } from '../src/app/practice-types.js';
 import { createFractionFlowApp } from '../src/app/app.js';
 import { setupMockDOM, teardownMockDOM } from './fixtures/mock-dom.js';
+import { PLAN37_BAR_TO_LINE_BRIDGE_RECORDS } from '../src/content/data/plan37-bar-to-line-bridge-records.js';
 
-function startApp() {
+function startApp({ supportId = 'high-support' } = {}) {
   const document = setupMockDOM();
   const root = document.createElement('div');
   document.body.appendChild(root);
   const app = createFractionFlowApp({ root, presentationMode: 'instant-test' }).mount();
+  if (supportId !== 'high-support') {
+    root.querySelector('.app-gear-button').click();
+    root.querySelector(`[data-support-id="${supportId}"]`).click();
+  }
   root.querySelector('[data-practice-type="bar-to-line-same-amount"]').click();
   return { document, root, app };
 }
@@ -27,8 +32,59 @@ describe('Plan 39 Repair 02 app wiring', () => {
     expect(root.querySelectorAll('.plan39-preview-marker')).toHaveLength(0);
     expect(root.querySelector('.app-visual-view .active-beat-prompt').textContent).toBe('Place this fraction on the number line.');
     expect(root.querySelector('.app-linear-view .active-beat-prompt').textContent).toBe('Choose a location.');
-    expect(root.querySelector('.app-visual-view .plan39-stepper-previous').textContent).toBe('← Place at 0');
-    expect(root.querySelector('.app-visual-view .plan39-stepper-next').textContent).toBe('Place at 1 →');
+    expect(root.querySelector('.app-visual-view .plan39-stepper-previous').textContent).toBe('← Place leftmost');
+    expect(root.querySelector('.app-visual-view .plan39-stepper-next').textContent).toBe('Place rightmost →');
+    app.destroy();
+  });
+
+  it('names and selects the first and last offered sparse points on bridge items 2 and 7', () => {
+    const { root, app } = startApp({ supportId: 'medium-support' });
+    function completeCorrectItem(recordIndex) {
+      const record = PLAN37_BAR_TO_LINE_BRIDGE_RECORDS[recordIndex];
+      const wanted = record.sparseCandidates.find(({ form }) =>
+        BigInt(form.numerator) * BigInt(record.sourceForm.denominator)
+          === BigInt(record.sourceForm.numerator) * BigInt(form.denominator));
+      const offered = Array.from(root.querySelectorAll('.app-visual-view .plan39-candidate-point'))
+        .map((point) => point.getAttribute('data-candidate-id'));
+      const wantedIndex = offered.indexOf(wanted.id);
+      root.querySelector('.app-visual-view .plan39-stepper-next').click();
+      for (let index = offered.length - 1; index > wantedIndex; index -= 1) {
+        root.querySelector('.app-visual-view .plan39-stepper-previous').click();
+      }
+      expect(root.querySelector('.app-visual-view .plan39-stepper-status').getAttribute('data-candidate-id')).toBe(wanted.id);
+      root.querySelector('.app-visual-view .plan39-check-position').click();
+      root.querySelector('.app-visual-view .plan39-finish').click();
+      root.querySelector('.app-next-button').click();
+    }
+    function assertSparseEndpoints(recordIndex) {
+      const offered = Array.from(root.querySelectorAll('.app-visual-view .plan39-candidate-point'))
+        .map((point) => point.getAttribute('data-candidate-id'));
+      const record = PLAN37_BAR_TO_LINE_BRIDGE_RECORDS[recordIndex];
+      const first = record.sparseCandidates[0].id;
+      const last = record.sparseCandidates.at(-1).id;
+      const hasZero = record.sparseCandidates.some(({ form }) => form.numerator === '0');
+      const hasOne = record.sparseCandidates.some(({ form }) => form.numerator === form.denominator);
+      expect([hasZero, hasOne]).not.toEqual([true, true]);
+      if (recordIndex === 1) expect(record.sparseCandidates.at(-1).form).toMatchObject({ numerator: '1', denominator: '2' });
+      if (recordIndex === 6) {
+        expect(record.sparseCandidates[0].form).toMatchObject({ numerator: '1', denominator: '6' });
+        expect(record.sparseCandidates.at(-1).form).toMatchObject({ numerator: '2', denominator: '3' });
+      }
+      expect(offered).toEqual(record.sparseCandidates.map(({ id }) => id));
+      expect(root.querySelector('.app-visual-view .plan39-stepper-previous').textContent).toBe('← Place leftmost');
+      expect(root.querySelector('.app-visual-view .plan39-stepper-next').textContent).toBe('Place rightmost →');
+      root.querySelector('.app-visual-view .plan39-stepper-previous').click();
+      expect(root.querySelector('.app-visual-view .plan39-stepper-status').getAttribute('data-candidate-id')).toBe(first);
+      root.querySelector('.app-restart-button').click();
+      root.querySelector('.app-visual-view .plan39-stepper-next').click();
+      expect(root.querySelector('.app-visual-view .plan39-stepper-status').getAttribute('data-candidate-id')).toBe(last);
+      root.querySelector('.app-restart-button').click();
+    }
+    completeCorrectItem(0);
+    assertSparseEndpoints(1);
+    completeCorrectItem(1);
+    for (let recordIndex = 2; recordIndex < 6; recordIndex += 1) completeCorrectItem(recordIndex);
+    assertSparseEndpoints(6);
     app.destroy();
   });
 

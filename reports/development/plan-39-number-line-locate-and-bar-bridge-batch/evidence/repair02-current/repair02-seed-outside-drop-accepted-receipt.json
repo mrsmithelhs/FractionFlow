@@ -1,0 +1,23 @@
+{
+  "capturedAt": "2026-10-22T02:24:36.613Z",
+  "browserChannel": "chrome",
+  "mode": "seed:outside-drop-accepted",
+  "routeRows": 1,
+  "browserExecutions": 1,
+  "passed": 0,
+  "failed": 0,
+  "seedDetected": 1,
+  "results": [
+    {
+      "id": "ROUTE-PLAN39-REPAIR02-BOUNDARIES [standard-motion]",
+      "routeId": "ROUTE-PLAN39-REPAIR02-BOUNDARIES",
+      "context": "production-default-v8",
+      "motionMode": "standard-motion",
+      "status": "seed-detected",
+      "error": "Plan39 Repair02 outside-drop assertion failed (route action: Verify gesture cancellation, placement preview and reset)",
+      "geometryChecks": [],
+      "repair02Evidence": [],
+      "screenshots": []
+    }
+  ]
+}

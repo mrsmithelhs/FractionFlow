@@ -1114,7 +1114,7 @@ function plan37NumberLineMeaning(state) {
       { label: '1/2', form: { kind: 'fraction', numerator: '1', denominator: '2' }, benchmarkRelation: 'exact-half', selectable: false },
       { label: '1', form: { kind: 'fraction', numerator: '1', denominator: '1' }, benchmarkRelation: 'exact-one', selectable: false },
     ];
-    if (partitioned && BigInt(context.partitionDenominator) % 2n !== 0n) {
+    if (partitioned && !exactScale.partitionHasHalfPoint) {
       benchmarks[1] = { ...benchmarks[1], kind: 'visual-reference-anchor' };
     }
     const accepted = state.beat === 'resolve'

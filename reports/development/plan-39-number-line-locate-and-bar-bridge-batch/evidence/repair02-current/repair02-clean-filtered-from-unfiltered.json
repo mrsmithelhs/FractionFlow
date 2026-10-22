@@ -1,0 +1,2066 @@
+{
+  "capturedAt": "2026-10-22T02:22:56.255Z",
+  "browserChannel": "chrome",
+  "mode": "clean-filtered-subset-derived-from-final-unfiltered-matrix",
+  "sourceReceipt": "repair02-final-unfiltered-route-summary.json",
+  "routeRows": 7,
+  "browserExecutions": 7,
+  "passed": 7,
+  "failed": 0,
+  "results": [
+    {
+      "id": "ROUTE-PLAN39-REPAIR02-DRAG-ALL-8 [standard-motion]",
+      "routeId": "ROUTE-PLAN39-REPAIR02-DRAG-ALL-8",
+      "context": "production-default-v8",
+      "motionMode": "standard-motion",
+      "status": "pass",
+      "repair02Evidence": [
+        {
+          "itemId": "bridge-01-half-2",
+          "source": {
+            "kind": "fraction",
+            "numerator": "1",
+            "denominator": "2"
+          },
+          "selectedId": "partition-1-of-2",
+          "pendingLabel": "1/2, placed at Step 1 of 2 equal steps from 0",
+          "barsAtInitial": 0,
+          "barsAfterCheck": 1,
+          "geometry": {
+            "viewport": {
+              "width": 360,
+              "height": 740,
+              "dpr": 1
+            },
+            "prompt": {
+              "x": 25,
+              "y": 145,
+              "width": 310,
+              "height": 20.984375,
+              "top": 145,
+              "bottom": 165.984375
+            },
+            "controls": {
+              "x": 25,
+              "y": 276.359375,
+              "width": 310,
+              "height": 124,
+              "top": 276.359375,
+              "bottom": 400.359375
+            },
+            "targets": [
+              {
+                "x": 25,
+                "y": 276.359375,
+                "width": 112,
+                "height": 64,
+                "top": 276.359375,
+                "bottom": 340.359375
+              },
+              {
+                "x": 223,
+                "y": 276.359375,
+                "width": 112,
+                "height": 64,
+                "top": 276.359375,
+                "bottom": 340.359375
+              },
+              {
+                "x": 25,
+                "y": 356.359375,
+                "width": 310,
+                "height": 44,
+                "top": 356.359375,
+                "bottom": 400.359375
+              }
+            ],
+            "minimumTargetWidth": 112,
+            "minimumTargetHeight": 44,
+            "linearOptionLabels": [],
+            "linearOptionLabelsDistinct": true,
+            "horizontalOverflow": 0
+          },
+          "resizedAlignment": {
+            "tokenCenterX": 400,
+            "pointCenterX": 400,
+            "errorPx": 0
+          }
+        },
+        {
+          "itemId": "bridge-02-fourth-4",
+          "source": {
+            "kind": "fraction",
+            "numerator": "1",
+            "denominator": "4"
+          },
+          "selectedId": "partition-1-of-4",
+          "pendingLabel": "1/4, placed at Step 1 of 4 equal steps from 0",
+          "barsAtInitial": 0,
+          "barsAfterCheck": 1,
+          "geometry": {
+            "viewport": {
+              "width": 360,
+              "height": 740,
+              "dpr": 1
+            },
+            "prompt": {
+              "x": 25,
+              "y": 145,
+              "width": 310,
+              "height": 20.984375,
+              "top": 145,
+              "bottom": 165.984375
+            },
+            "controls": {
+              "x": 25,
+              "y": 276.359375,
+              "width": 310,
+              "height": 124,
+              "top": 276.359375,
+              "bottom": 400.359375
+            },
+            "targets": [
+              {
+                "x": 25,
+                "y": 276.359375,
+                "width": 112,
+                "height": 64,
+                "top": 276.359375,
+                "bottom": 340.359375
+              },
+              {
+                "x": 223,
+                "y": 276.359375,
+                "width": 112,
+                "height": 64,
+                "top": 276.359375,
+                "bottom": 340.359375
+              },
+              {
+                "x": 25,
+                "y": 356.359375,
+                "width": 310,
+                "height": 44,
+                "top": 356.359375,
+                "bottom": 400.359375
+              }
+            ],
+            "minimumTargetWidth": 112,
+            "minimumTargetHeight": 44,
+            "linearOptionLabels": [],
+            "linearOptionLabelsDistinct": true,
+            "horizontalOverflow": 0
+          },
+          "resizedAlignment": null
+        },
+        {
+          "itemId": "bridge-03-three-fourths-4",
+          "source": {
+            "kind": "fraction",
+            "numerator": "3",
+            "denominator": "4"
+          },
+          "selectedId": "partition-3-of-4",
+          "pendingLabel": "3/4, placed at Step 3 of 4 equal steps from 0",
+          "barsAtInitial": 0,
+          "barsAfterCheck": 1,
+          "geometry": {
+            "viewport": {
+              "width": 360,
+              "height": 740,
+              "dpr": 1
+            },
+            "prompt": {
+              "x": 25,
+              "y": 145,
+              "width": 310,
+              "height": 20.984375,
+              "top": 145,
+              "bottom": 165.984375
+            },
+            "controls": {
+              "x": 25,
+              "y": 276.359375,
+              "width": 310,
+              "height": 124,
+              "top": 276.359375,
+              "bottom": 400.359375
+            },
+            "targets": [
+              {
+                "x": 25,
+                "y": 276.359375,
+                "width": 112,
+                "height": 64,
+                "top": 276.359375,
+                "bottom": 340.359375
+              },
+              {
+                "x": 223,
+                "y": 276.359375,
+                "width": 112,
+                "height": 64,
+                "top": 276.359375,
+                "bottom": 340.359375
+              },
+              {
+                "x": 25,
+                "y": 356.359375,
+                "width": 310,
+                "height": 44,
+                "top": 356.359375,
+                "bottom": 400.359375
+              }
+            ],
+            "minimumTargetWidth": 112,
+            "minimumTargetHeight": 44,
+            "linearOptionLabels": [],
+            "linearOptionLabelsDistinct": true,
+            "horizontalOverflow": 0
+          },
+          "resizedAlignment": null
+        },
+        {
+          "itemId": "bridge-04-two-thirds-3",
+          "source": {
+            "kind": "fraction",
+            "numerator": "2",
+            "denominator": "3"
+          },
+          "selectedId": "partition-2-of-3",
+          "pendingLabel": "2/3, placed at Step 2 of 3 equal steps from 0",
+          "barsAtInitial": 0,
+          "barsAfterCheck": 1,
+          "geometry": {
+            "viewport": {
+              "width": 360,
+              "height": 740,
+              "dpr": 1
+            },
+            "prompt": {
+              "x": 25,
+              "y": 145,
+              "width": 310,
+              "height": 20.984375,
+              "top": 145,
+              "bottom": 165.984375
+            },
+            "controls": {
+              "x": 25,
+              "y": 276.359375,
+              "width": 310,
+              "height": 124,
+              "top": 276.359375,
+              "bottom": 400.359375
+            },
+            "targets": [
+              {
+                "x": 25,
+                "y": 276.359375,
+                "width": 112,
+                "height": 64,
+                "top": 276.359375,
+                "bottom": 340.359375
+              },
+              {
+                "x": 223,
+                "y": 276.359375,
+                "width": 112,
+                "height": 64,
+                "top": 276.359375,
+                "bottom": 340.359375
+              },
+              {
+                "x": 25,
+                "y": 356.359375,
+                "width": 310,
+                "height": 44,
+                "top": 356.359375,
+                "bottom": 400.359375
+              }
+            ],
+            "minimumTargetWidth": 112,
+            "minimumTargetHeight": 44,
+            "linearOptionLabels": [],
+            "linearOptionLabelsDistinct": true,
+            "horizontalOverflow": 0
+          },
+          "resizedAlignment": null
+        },
+        {
+          "itemId": "bridge-05-two-fourths-half",
+          "source": {
+            "kind": "fraction",
+            "numerator": "2",
+            "denominator": "4"
+          },
+          "selectedId": "partition-2-of-4",
+          "pendingLabel": "2/4, placed at Step 2 of 4 equal steps from 0",
+          "barsAtInitial": 0,
+          "barsAfterCheck": 1,
+          "geometry": {
+            "viewport": {
+              "width": 360,
+              "height": 740,
+              "dpr": 1
+            },
+            "prompt": {
+              "x": 25,
+              "y": 145,
+              "width": 310,
+              "height": 20.984375,
+              "top": 145,
+              "bottom": 165.984375
+            },
+            "controls": {
+              "x": 25,
+              "y": 276.359375,
+              "width": 310,
+              "height": 124,
+              "top": 276.359375,
+              "bottom": 400.359375
+            },
+            "targets": [
+              {
+                "x": 25,
+                "y": 276.359375,
+                "width": 112,
+                "height": 64,
+                "top": 276.359375,
+                "bottom": 340.359375
+              },
+              {
+                "x": 223,
+                "y": 276.359375,
+                "width": 112,
+                "height": 64,
+                "top": 276.359375,
+                "bottom": 340.359375
+              },
+              {
+                "x": 25,
+                "y": 356.359375,
+                "width": 310,
+                "height": 44,
+                "top": 356.359375,
+                "bottom": 400.359375
+              }
+            ],
+            "minimumTargetWidth": 112,
+            "minimumTargetHeight": 44,
+            "linearOptionLabels": [],
+            "linearOptionLabelsDistinct": true,
+            "horizontalOverflow": 0
+          },
+          "resizedAlignment": null
+        },
+        {
+          "itemId": "bridge-06-three-eighths-8",
+          "source": {
+            "kind": "fraction",
+            "numerator": "3",
+            "denominator": "8"
+          },
+          "selectedId": "partition-3-of-8",
+          "pendingLabel": "3/8, placed at Step 3 of 8 equal steps from 0",
+          "barsAtInitial": 0,
+          "barsAfterCheck": 1,
+          "geometry": {
+            "viewport": {
+              "width": 360,
+              "height": 740,
+              "dpr": 1
+            },
+            "prompt": {
+              "x": 25,
+              "y": 145,
+              "width": 310,
+              "height": 20.984375,
+              "top": 145,
+              "bottom": 165.984375
+            },
+            "controls": {
+              "x": 25,
+              "y": 276.359375,
+              "width": 310,
+              "height": 124,
+              "top": 276.359375,
+              "bottom": 400.359375
+            },
+            "targets": [
+              {
+                "x": 25,
+                "y": 276.359375,
+                "width": 112,
+                "height": 64,
+                "top": 276.359375,
+                "bottom": 340.359375
+              },
+              {
+                "x": 223,
+                "y": 276.359375,
+                "width": 112,
+                "height": 64,
+                "top": 276.359375,
+                "bottom": 340.359375
+              },
+              {
+                "x": 25,
+                "y": 356.359375,
+                "width": 310,
+                "height": 44,
+                "top": 356.359375,
+                "bottom": 400.359375
+              }
+            ],
+            "minimumTargetWidth": 112,
+            "minimumTargetHeight": 44,
+            "linearOptionLabels": [],
+            "linearOptionLabelsDistinct": true,
+            "horizontalOverflow": 0
+          },
+          "resizedAlignment": null
+        },
+        {
+          "itemId": "bridge-07-one-third-med",
+          "source": {
+            "kind": "fraction",
+            "numerator": "1",
+            "denominator": "3"
+          },
+          "selectedId": "partition-1-of-3",
+          "pendingLabel": "1/3, placed at Step 1 of 3 equal steps from 0",
+          "barsAtInitial": 0,
+          "barsAfterCheck": 1,
+          "geometry": {
+            "viewport": {
+              "width": 360,
+              "height": 740,
+              "dpr": 1
+            },
+            "prompt": {
+              "x": 25,
+              "y": 145,
+              "width": 310,
+              "height": 20.984375,
+              "top": 145,
+              "bottom": 165.984375
+            },
+            "controls": {
+              "x": 25,
+              "y": 276.359375,
+              "width": 310,
+              "height": 124,
+              "top": 276.359375,
+              "bottom": 400.359375
+            },
+            "targets": [
+              {
+                "x": 25,
+                "y": 276.359375,
+                "width": 112,
+                "height": 64,
+                "top": 276.359375,
+                "bottom": 340.359375
+              },
+              {
+                "x": 223,
+                "y": 276.359375,
+                "width": 112,
+                "height": 64,
+                "top": 276.359375,
+                "bottom": 340.359375
+              },
+              {
+                "x": 25,
+                "y": 356.359375,
+                "width": 310,
+                "height": 44,
+                "top": 356.359375,
+                "bottom": 400.359375
+              }
+            ],
+            "minimumTargetWidth": 112,
+            "minimumTargetHeight": 44,
+            "linearOptionLabels": [],
+            "linearOptionLabelsDistinct": true,
+            "horizontalOverflow": 0
+          },
+          "resizedAlignment": null
+        },
+        {
+          "itemId": "bridge-08-five-sixths-med",
+          "source": {
+            "kind": "fraction",
+            "numerator": "5",
+            "denominator": "6"
+          },
+          "selectedId": "partition-5-of-6",
+          "pendingLabel": "5/6, placed at Step 5 of 6 equal steps from 0",
+          "barsAtInitial": 0,
+          "barsAfterCheck": 1,
+          "geometry": {
+            "viewport": {
+              "width": 360,
+              "height": 740,
+              "dpr": 1
+            },
+            "prompt": {
+              "x": 25,
+              "y": 145,
+              "width": 310,
+              "height": 20.984375,
+              "top": 145,
+              "bottom": 165.984375
+            },
+            "controls": {
+              "x": 25,
+              "y": 276.359375,
+              "width": 310,
+              "height": 124,
+              "top": 276.359375,
+              "bottom": 400.359375
+            },
+            "targets": [
+              {
+                "x": 25,
+                "y": 276.359375,
+                "width": 112,
+                "height": 64,
+                "top": 276.359375,
+                "bottom": 340.359375
+              },
+              {
+                "x": 223,
+                "y": 276.359375,
+                "width": 112,
+                "height": 64,
+                "top": 276.359375,
+                "bottom": 340.359375
+              },
+              {
+                "x": 25,
+                "y": 356.359375,
+                "width": 310,
+                "height": 44,
+                "top": 356.359375,
+                "bottom": 400.359375
+              }
+            ],
+            "minimumTargetWidth": 112,
+            "minimumTargetHeight": 44,
+            "linearOptionLabels": [],
+            "linearOptionLabelsDistinct": true,
+            "horizontalOverflow": 0
+          },
+          "resizedAlignment": null
+        }
+      ]
+    },
+    {
+      "id": "ROUTE-PLAN39-REPAIR02-TOUCH-TAP-ALL-8 [standard-motion]",
+      "routeId": "ROUTE-PLAN39-REPAIR02-TOUCH-TAP-ALL-8",
+      "context": "production-default-v8",
+      "motionMode": "standard-motion",
+      "status": "pass",
+      "repair02Evidence": [
+        {
+          "itemId": "bridge-01-half-2",
+          "source": {
+            "kind": "fraction",
+            "numerator": "1",
+            "denominator": "2"
+          },
+          "selectedId": "partition-1-of-2",
+          "pendingLabel": "1/2, placed at Step 1 of 2 equal steps from 0",
+          "barsAtInitial": 0,
+          "barsAfterCheck": 1,
+          "geometry": {
+            "viewport": {
+              "width": 360,
+              "height": 752,
+              "dpr": 1
+            },
+            "prompt": {
+              "x": 25,
+              "y": 145,
+              "width": 310,
+              "height": 20.984375,
+              "top": 145,
+              "bottom": 165.984375
+            },
+            "controls": {
+              "x": 25,
+              "y": 276.359375,
+              "width": 310,
+              "height": 124,
+              "top": 276.359375,
+              "bottom": 400.359375
+            },
+            "targets": [
+              {
+                "x": 25,
+                "y": 276.359375,
+                "width": 112,
+                "height": 64,
+                "top": 276.359375,
+                "bottom": 340.359375
+              },
+              {
+                "x": 223,
+                "y": 276.359375,
+                "width": 112,
+                "height": 64,
+                "top": 276.359375,
+                "bottom": 340.359375
+              },
+              {
+                "x": 25,
+                "y": 356.359375,
+                "width": 310,
+                "height": 44,
+                "top": 356.359375,
+                "bottom": 400.359375
+              }
+            ],
+            "minimumTargetWidth": 112,
+            "minimumTargetHeight": 44,
+            "linearOptionLabels": [],
+            "linearOptionLabelsDistinct": true,
+            "horizontalOverflow": 0
+          },
+          "resizedAlignment": null
+        },
+        {
+          "itemId": "bridge-02-fourth-4",
+          "source": {
+            "kind": "fraction",
+            "numerator": "1",
+            "denominator": "4"
+          },
+          "selectedId": "partition-1-of-4",
+          "pendingLabel": "1/4, placed at Step 1 of 4 equal steps from 0",
+          "barsAtInitial": 0,
+          "barsAfterCheck": 1,
+          "geometry": {
+            "viewport": {
+              "width": 360,
+              "height": 752,
+              "dpr": 1
+            },
+            "prompt": {
+              "x": 25,
+              "y": 145,
+              "width": 310,
+              "height": 20.984375,
+              "top": 145,
+              "bottom": 165.984375
+            },
+            "controls": {
+              "x": 25,
+              "y": 276.359375,
+              "width": 310,
+              "height": 124,
+              "top": 276.359375,
+              "bottom": 400.359375
+            },
+            "targets": [
+              {
+                "x": 25,
+                "y": 276.359375,
+                "width": 112,
+                "height": 64,
+                "top": 276.359375,
+                "bottom": 340.359375
+              },
+              {
+                "x": 223,
+                "y": 276.359375,
+                "width": 112,
+                "height": 64,
+                "top": 276.359375,
+                "bottom": 340.359375
+              },
+              {
+                "x": 25,
+                "y": 356.359375,
+                "width": 310,
+                "height": 44,
+                "top": 356.359375,
+                "bottom": 400.359375
+              }
+            ],
+            "minimumTargetWidth": 112,
+            "minimumTargetHeight": 44,
+            "linearOptionLabels": [],
+            "linearOptionLabelsDistinct": true,
+            "horizontalOverflow": 0
+          },
+          "resizedAlignment": null
+        },
+        {
+          "itemId": "bridge-03-three-fourths-4",
+          "source": {
+            "kind": "fraction",
+            "numerator": "3",
+            "denominator": "4"
+          },
+          "selectedId": "partition-3-of-4",
+          "pendingLabel": "3/4, placed at Step 3 of 4 equal steps from 0",
+          "barsAtInitial": 0,
+          "barsAfterCheck": 1,
+          "geometry": {
+            "viewport": {
+              "width": 360,
+              "height": 752,
+              "dpr": 1
+            },
+            "prompt": {
+              "x": 25,
+              "y": 145,
+              "width": 310,
+              "height": 20.984375,
+              "top": 145,
+              "bottom": 165.984375
+            },
+            "controls": {
+              "x": 25,
+              "y": 276.359375,
+              "width": 310,
+              "height": 124,
+              "top": 276.359375,
+              "bottom": 400.359375
+            },
+            "targets": [
+              {
+                "x": 25,
+                "y": 276.359375,
+                "width": 112,
+                "height": 64,
+                "top": 276.359375,
+                "bottom": 340.359375
+              },
+              {
+                "x": 223,
+                "y": 276.359375,
+                "width": 112,
+                "height": 64,
+                "top": 276.359375,
+                "bottom": 340.359375
+              },
+              {
+                "x": 25,
+                "y": 356.359375,
+                "width": 310,
+                "height": 44,
+                "top": 356.359375,
+                "bottom": 400.359375
+              }
+            ],
+            "minimumTargetWidth": 112,
+            "minimumTargetHeight": 44,
+            "linearOptionLabels": [],
+            "linearOptionLabelsDistinct": true,
+            "horizontalOverflow": 0
+          },
+          "resizedAlignment": null
+        },
+        {
+          "itemId": "bridge-04-two-thirds-3",
+          "source": {
+            "kind": "fraction",
+            "numerator": "2",
+            "denominator": "3"
+          },
+          "selectedId": "partition-2-of-3",
+          "pendingLabel": "2/3, placed at Step 2 of 3 equal steps from 0",
+          "barsAtInitial": 0,
+          "barsAfterCheck": 1,
+          "geometry": {
+            "viewport": {
+              "width": 360,
+              "height": 752,
+              "dpr": 1
+            },
+            "prompt": {
+              "x": 25,
+              "y": 145,
+              "width": 310,
+              "height": 20.984375,
+              "top": 145,
+              "bottom": 165.984375
+            },
+            "controls": {
+              "x": 25,
+              "y": 276.359375,
+              "width": 310,
+              "height": 124,
+              "top": 276.359375,
+              "bottom": 400.359375
+            },
+            "targets": [
+              {
+                "x": 25,
+                "y": 276.359375,
+                "width": 112,
+                "height": 64,
+                "top": 276.359375,
+                "bottom": 340.359375
+              },
+              {
+                "x": 223,
+                "y": 276.359375,
+                "width": 112,
+                "height": 64,
+                "top": 276.359375,
+                "bottom": 340.359375
+              },
+              {
+                "x": 25,
+                "y": 356.359375,
+                "width": 310,
+                "height": 44,
+                "top": 356.359375,
+                "bottom": 400.359375
+              }
+            ],
+            "minimumTargetWidth": 112,
+            "minimumTargetHeight": 44,
+            "linearOptionLabels": [],
+            "linearOptionLabelsDistinct": true,
+            "horizontalOverflow": 0
+          },
+          "resizedAlignment": null
+        },
+        {
+          "itemId": "bridge-05-two-fourths-half",
+          "source": {
+            "kind": "fraction",
+            "numerator": "2",
+            "denominator": "4"
+          },
+          "selectedId": "partition-2-of-4",
+          "pendingLabel": "2/4, placed at Step 2 of 4 equal steps from 0",
+          "barsAtInitial": 0,
+          "barsAfterCheck": 1,
+          "geometry": {
+            "viewport": {
+              "width": 360,
+              "height": 752,
+              "dpr": 1
+            },
+            "prompt": {
+              "x": 25,
+              "y": 145,
+              "width": 310,
+              "height": 20.984375,
+              "top": 145,
+              "bottom": 165.984375
+            },
+            "controls": {
+              "x": 25,
+              "y": 276.359375,
+              "width": 310,
+              "height": 124,
+              "top": 276.359375,
+              "bottom": 400.359375
+            },
+            "targets": [
+              {
+                "x": 25,
+                "y": 276.359375,
+                "width": 112,
+                "height": 64,
+                "top": 276.359375,
+                "bottom": 340.359375
+              },
+              {
+                "x": 223,
+                "y": 276.359375,
+                "width": 112,
+                "height": 64,
+                "top": 276.359375,
+                "bottom": 340.359375
+              },
+              {
+                "x": 25,
+                "y": 356.359375,
+                "width": 310,
+                "height": 44,
+                "top": 356.359375,
+                "bottom": 400.359375
+              }
+            ],
+            "minimumTargetWidth": 112,
+            "minimumTargetHeight": 44,
+            "linearOptionLabels": [],
+            "linearOptionLabelsDistinct": true,
+            "horizontalOverflow": 0
+          },
+          "resizedAlignment": null
+        },
+        {
+          "itemId": "bridge-06-three-eighths-8",
+          "source": {
+            "kind": "fraction",
+            "numerator": "3",
+            "denominator": "8"
+          },
+          "selectedId": "partition-3-of-8",
+          "pendingLabel": "3/8, placed at Step 3 of 8 equal steps from 0",
+          "barsAtInitial": 0,
+          "barsAfterCheck": 1,
+          "geometry": {
+            "viewport": {
+              "width": 360,
+              "height": 752,
+              "dpr": 1
+            },
+            "prompt": {
+              "x": 25,
+              "y": 145,
+              "width": 310,
+              "height": 20.984375,
+              "top": 145,
+              "bottom": 165.984375
+            },
+            "controls": {
+              "x": 25,
+              "y": 276.359375,
+              "width": 310,
+              "height": 124,
+              "top": 276.359375,
+              "bottom": 400.359375
+            },
+            "targets": [
+              {
+                "x": 25,
+                "y": 276.359375,
+                "width": 112,
+                "height": 64,
+                "top": 276.359375,
+                "bottom": 340.359375
+              },
+              {
+                "x": 223,
+                "y": 276.359375,
+                "width": 112,
+                "height": 64,
+                "top": 276.359375,
+                "bottom": 340.359375
+              },
+              {
+                "x": 25,
+                "y": 356.359375,
+                "width": 310,
+                "height": 44,
+                "top": 356.359375,
+                "bottom": 400.359375
+              }
+            ],
+            "minimumTargetWidth": 112,
+            "minimumTargetHeight": 44,
+            "linearOptionLabels": [],
+            "linearOptionLabelsDistinct": true,
+            "horizontalOverflow": 0
+          },
+          "resizedAlignment": null
+        },
+        {
+          "itemId": "bridge-07-one-third-med",
+          "source": {
+            "kind": "fraction",
+            "numerator": "1",
+            "denominator": "3"
+          },
+          "selectedId": "partition-1-of-3",
+          "pendingLabel": "1/3, placed at Step 1 of 3 equal steps from 0",
+          "barsAtInitial": 0,
+          "barsAfterCheck": 1,
+          "geometry": {
+            "viewport": {
+              "width": 360,
+              "height": 752,
+              "dpr": 1
+            },
+            "prompt": {
+              "x": 25,
+              "y": 145,
+              "width": 310,
+              "height": 20.984375,
+              "top": 145,
+              "bottom": 165.984375
+            },
+            "controls": {
+              "x": 25,
+              "y": 276.359375,
+              "width": 310,
+              "height": 124,
+              "top": 276.359375,
+              "bottom": 400.359375
+            },
+            "targets": [
+              {
+                "x": 25,
+                "y": 276.359375,
+                "width": 112,
+                "height": 64,
+                "top": 276.359375,
+                "bottom": 340.359375
+              },
+              {
+                "x": 223,
+                "y": 276.359375,
+                "width": 112,
+                "height": 64,
+                "top": 276.359375,
+                "bottom": 340.359375
+              },
+              {
+                "x": 25,
+                "y": 356.359375,
+                "width": 310,
+                "height": 44,
+                "top": 356.359375,
+                "bottom": 400.359375
+              }
+            ],
+            "minimumTargetWidth": 112,
+            "minimumTargetHeight": 44,
+            "linearOptionLabels": [],
+            "linearOptionLabelsDistinct": true,
+            "horizontalOverflow": 0
+          },
+          "resizedAlignment": null
+        },
+        {
+          "itemId": "bridge-08-five-sixths-med",
+          "source": {
+            "kind": "fraction",
+            "numerator": "5",
+            "denominator": "6"
+          },
+          "selectedId": "partition-5-of-6",
+          "pendingLabel": "5/6, placed at Step 5 of 6 equal steps from 0",
+          "barsAtInitial": 0,
+          "barsAfterCheck": 1,
+          "geometry": {
+            "viewport": {
+              "width": 360,
+              "height": 752,
+              "dpr": 1
+            },
+            "prompt": {
+              "x": 25,
+              "y": 145,
+              "width": 310,
+              "height": 20.984375,
+              "top": 145,
+              "bottom": 165.984375
+            },
+            "controls": {
+              "x": 25,
+              "y": 276.359375,
+              "width": 310,
+              "height": 124,
+              "top": 276.359375,
+              "bottom": 400.359375
+            },
+            "targets": [
+              {
+                "x": 25,
+                "y": 276.359375,
+                "width": 112,
+                "height": 64,
+                "top": 276.359375,
+                "bottom": 340.359375
+              },
+              {
+                "x": 223,
+                "y": 276.359375,
+                "width": 112,
+                "height": 64,
+                "top": 276.359375,
+                "bottom": 340.359375
+              },
+              {
+                "x": 25,
+                "y": 356.359375,
+                "width": 310,
+                "height": 44,
+                "top": 356.359375,
+                "bottom": 400.359375
+              }
+            ],
+            "minimumTargetWidth": 112,
+            "minimumTargetHeight": 44,
+            "linearOptionLabels": [],
+            "linearOptionLabelsDistinct": true,
+            "horizontalOverflow": 0
+          },
+          "resizedAlignment": null
+        }
+      ]
+    },
+    {
+      "id": "ROUTE-PLAN39-REPAIR02-KEYBOARD-ALL-8 [standard-motion]",
+      "routeId": "ROUTE-PLAN39-REPAIR02-KEYBOARD-ALL-8",
+      "context": "production-default-v8",
+      "motionMode": "standard-motion",
+      "status": "pass",
+      "repair02Evidence": [
+        {
+          "itemId": "bridge-01-half-2",
+          "source": {
+            "kind": "fraction",
+            "numerator": "1",
+            "denominator": "2"
+          },
+          "selectedId": "candidate-c",
+          "pendingLabel": "1/2, not placed",
+          "barsAtInitial": 0,
+          "barsAfterCheck": 1,
+          "geometry": {
+            "viewport": {
+              "width": 360,
+              "height": 752,
+              "dpr": 1
+            },
+            "prompt": {
+              "x": 25,
+              "y": 145,
+              "width": 310,
+              "height": 20.984375,
+              "top": 145,
+              "bottom": 165.984375
+            },
+            "controls": {
+              "x": 25,
+              "y": 251.546875,
+              "width": 310,
+              "height": 189.75,
+              "top": 251.546875,
+              "bottom": 441.296875
+            },
+            "targets": [
+              {
+                "x": 27,
+                "y": 272.546875,
+                "width": 153,
+                "height": 52.375,
+                "top": 272.546875,
+                "bottom": 324.921875
+              },
+              {
+                "x": 184,
+                "y": 272.546875,
+                "width": 153,
+                "height": 52.375,
+                "top": 272.546875,
+                "bottom": 324.921875
+              },
+              {
+                "x": 27,
+                "y": 328.921875,
+                "width": 153,
+                "height": 52.375,
+                "top": 328.921875,
+                "bottom": 381.296875
+              },
+              {
+                "x": 184,
+                "y": 328.921875,
+                "width": 153,
+                "height": 52.375,
+                "top": 328.921875,
+                "bottom": 381.296875
+              },
+              {
+                "x": 25,
+                "y": 397.296875,
+                "width": 310,
+                "height": 44,
+                "top": 397.296875,
+                "bottom": 441.296875
+              }
+            ],
+            "minimumTargetWidth": 153,
+            "minimumTargetHeight": 44,
+            "linearOptionLabels": [
+              "A: 0 of 4 equal steps from 0",
+              "B: 1 of 4 equal steps from 0",
+              "C: 2 of 4 equal steps from 0",
+              "D: 4 of 4 equal steps from 0"
+            ],
+            "linearOptionLabelsDistinct": true,
+            "horizontalOverflow": 0
+          },
+          "resizedAlignment": null
+        },
+        {
+          "itemId": "bridge-02-fourth-4",
+          "source": {
+            "kind": "fraction",
+            "numerator": "1",
+            "denominator": "4"
+          },
+          "selectedId": "candidate-b",
+          "pendingLabel": "1/4, not placed",
+          "barsAtInitial": 0,
+          "barsAfterCheck": 1,
+          "geometry": {
+            "viewport": {
+              "width": 360,
+              "height": 752,
+              "dpr": 1
+            },
+            "prompt": {
+              "x": 25,
+              "y": 145,
+              "width": 310,
+              "height": 20.984375,
+              "top": 145,
+              "bottom": 165.984375
+            },
+            "controls": {
+              "x": 25,
+              "y": 251.546875,
+              "width": 310,
+              "height": 189.75,
+              "top": 251.546875,
+              "bottom": 441.296875
+            },
+            "targets": [
+              {
+                "x": 27,
+                "y": 272.546875,
+                "width": 153,
+                "height": 52.375,
+                "top": 272.546875,
+                "bottom": 324.921875
+              },
+              {
+                "x": 184,
+                "y": 272.546875,
+                "width": 153,
+                "height": 52.375,
+                "top": 272.546875,
+                "bottom": 324.921875
+              },
+              {
+                "x": 27,
+                "y": 328.921875,
+                "width": 153,
+                "height": 52.375,
+                "top": 328.921875,
+                "bottom": 381.296875
+              },
+              {
+                "x": 184,
+                "y": 328.921875,
+                "width": 153,
+                "height": 52.375,
+                "top": 328.921875,
+                "bottom": 381.296875
+              },
+              {
+                "x": 25,
+                "y": 397.296875,
+                "width": 310,
+                "height": 44,
+                "top": 397.296875,
+                "bottom": 441.296875
+              }
+            ],
+            "minimumTargetWidth": 153,
+            "minimumTargetHeight": 44,
+            "linearOptionLabels": [
+              "A: 0 of 8 equal steps from 0",
+              "B: 2 of 8 equal steps from 0",
+              "C: 3 of 8 equal steps from 0",
+              "D: 4 of 8 equal steps from 0"
+            ],
+            "linearOptionLabelsDistinct": true,
+            "horizontalOverflow": 0
+          },
+          "resizedAlignment": null
+        },
+        {
+          "itemId": "bridge-03-three-fourths-4",
+          "source": {
+            "kind": "fraction",
+            "numerator": "3",
+            "denominator": "4"
+          },
+          "selectedId": "candidate-c",
+          "pendingLabel": "3/4, not placed",
+          "barsAtInitial": 0,
+          "barsAfterCheck": 1,
+          "geometry": {
+            "viewport": {
+              "width": 360,
+              "height": 752,
+              "dpr": 1
+            },
+            "prompt": {
+              "x": 25,
+              "y": 145,
+              "width": 310,
+              "height": 20.984375,
+              "top": 145,
+              "bottom": 165.984375
+            },
+            "controls": {
+              "x": 25,
+              "y": 251.546875,
+              "width": 310,
+              "height": 189.75,
+              "top": 251.546875,
+              "bottom": 441.296875
+            },
+            "targets": [
+              {
+                "x": 27,
+                "y": 272.546875,
+                "width": 153,
+                "height": 52.375,
+                "top": 272.546875,
+                "bottom": 324.921875
+              },
+              {
+                "x": 184,
+                "y": 272.546875,
+                "width": 153,
+                "height": 52.375,
+                "top": 272.546875,
+                "bottom": 324.921875
+              },
+              {
+                "x": 27,
+                "y": 328.921875,
+                "width": 153,
+                "height": 52.375,
+                "top": 328.921875,
+                "bottom": 381.296875
+              },
+              {
+                "x": 184,
+                "y": 328.921875,
+                "width": 153,
+                "height": 52.375,
+                "top": 328.921875,
+                "bottom": 381.296875
+              },
+              {
+                "x": 25,
+                "y": 397.296875,
+                "width": 310,
+                "height": 44,
+                "top": 397.296875,
+                "bottom": 441.296875
+              }
+            ],
+            "minimumTargetWidth": 153,
+            "minimumTargetHeight": 44,
+            "linearOptionLabels": [
+              "A: 1 of 4 equal steps from 0",
+              "B: 2 of 4 equal steps from 0",
+              "C: 3 of 4 equal steps from 0",
+              "D: 4 of 4 equal steps from 0"
+            ],
+            "linearOptionLabelsDistinct": true,
+            "horizontalOverflow": 0
+          },
+          "resizedAlignment": null
+        },
+        {
+          "itemId": "bridge-04-two-thirds-3",
+          "source": {
+            "kind": "fraction",
+            "numerator": "2",
+            "denominator": "3"
+          },
+          "selectedId": "candidate-d",
+          "pendingLabel": "2/3, not placed",
+          "barsAtInitial": 0,
+          "barsAfterCheck": 1,
+          "geometry": {
+            "viewport": {
+              "width": 360,
+              "height": 752,
+              "dpr": 1
+            },
+            "prompt": {
+              "x": 25,
+              "y": 145,
+              "width": 310,
+              "height": 20.984375,
+              "top": 145,
+              "bottom": 165.984375
+            },
+            "controls": {
+              "x": 25,
+              "y": 251.546875,
+              "width": 310,
+              "height": 189.75,
+              "top": 251.546875,
+              "bottom": 441.296875
+            },
+            "targets": [
+              {
+                "x": 27,
+                "y": 272.546875,
+                "width": 153,
+                "height": 52.375,
+                "top": 272.546875,
+                "bottom": 324.921875
+              },
+              {
+                "x": 184,
+                "y": 272.546875,
+                "width": 153,
+                "height": 52.375,
+                "top": 272.546875,
+                "bottom": 324.921875
+              },
+              {
+                "x": 27,
+                "y": 328.921875,
+                "width": 153,
+                "height": 52.375,
+                "top": 328.921875,
+                "bottom": 381.296875
+              },
+              {
+                "x": 184,
+                "y": 328.921875,
+                "width": 153,
+                "height": 52.375,
+                "top": 328.921875,
+                "bottom": 381.296875
+              },
+              {
+                "x": 25,
+                "y": 397.296875,
+                "width": 310,
+                "height": 44,
+                "top": 397.296875,
+                "bottom": 441.296875
+              }
+            ],
+            "minimumTargetWidth": 153,
+            "minimumTargetHeight": 44,
+            "linearOptionLabels": [
+              "A: 0 of 6 equal steps from 0",
+              "B: 2 of 6 equal steps from 0",
+              "C: 3 of 6 equal steps from 0",
+              "D: 4 of 6 equal steps from 0"
+            ],
+            "linearOptionLabelsDistinct": true,
+            "horizontalOverflow": 0
+          },
+          "resizedAlignment": null
+        },
+        {
+          "itemId": "bridge-05-two-fourths-half",
+          "source": {
+            "kind": "fraction",
+            "numerator": "2",
+            "denominator": "4"
+          },
+          "selectedId": "candidate-b",
+          "pendingLabel": "2/4, not placed",
+          "barsAtInitial": 0,
+          "barsAfterCheck": 1,
+          "geometry": {
+            "viewport": {
+              "width": 360,
+              "height": 752,
+              "dpr": 1
+            },
+            "prompt": {
+              "x": 25,
+              "y": 145,
+              "width": 310,
+              "height": 20.984375,
+              "top": 145,
+              "bottom": 165.984375
+            },
+            "controls": {
+              "x": 25,
+              "y": 251.546875,
+              "width": 310,
+              "height": 189.75,
+              "top": 251.546875,
+              "bottom": 441.296875
+            },
+            "targets": [
+              {
+                "x": 27,
+                "y": 272.546875,
+                "width": 153,
+                "height": 52.375,
+                "top": 272.546875,
+                "bottom": 324.921875
+              },
+              {
+                "x": 184,
+                "y": 272.546875,
+                "width": 153,
+                "height": 52.375,
+                "top": 272.546875,
+                "bottom": 324.921875
+              },
+              {
+                "x": 27,
+                "y": 328.921875,
+                "width": 153,
+                "height": 52.375,
+                "top": 328.921875,
+                "bottom": 381.296875
+              },
+              {
+                "x": 184,
+                "y": 328.921875,
+                "width": 153,
+                "height": 52.375,
+                "top": 328.921875,
+                "bottom": 381.296875
+              },
+              {
+                "x": 25,
+                "y": 397.296875,
+                "width": 310,
+                "height": 44,
+                "top": 397.296875,
+                "bottom": 441.296875
+              }
+            ],
+            "minimumTargetWidth": 153,
+            "minimumTargetHeight": 44,
+            "linearOptionLabels": [
+              "A: 1 of 4 equal steps from 0",
+              "B: 2 of 4 equal steps from 0",
+              "C: 3 of 4 equal steps from 0",
+              "D: 4 of 4 equal steps from 0"
+            ],
+            "linearOptionLabelsDistinct": true,
+            "horizontalOverflow": 0
+          },
+          "resizedAlignment": null
+        },
+        {
+          "itemId": "bridge-06-three-eighths-8",
+          "source": {
+            "kind": "fraction",
+            "numerator": "3",
+            "denominator": "8"
+          },
+          "selectedId": "candidate-c",
+          "pendingLabel": "3/8, not placed",
+          "barsAtInitial": 0,
+          "barsAfterCheck": 1,
+          "geometry": {
+            "viewport": {
+              "width": 360,
+              "height": 752,
+              "dpr": 1
+            },
+            "prompt": {
+              "x": 25,
+              "y": 145,
+              "width": 310,
+              "height": 20.984375,
+              "top": 145,
+              "bottom": 165.984375
+            },
+            "controls": {
+              "x": 25,
+              "y": 251.546875,
+              "width": 310,
+              "height": 189.75,
+              "top": 251.546875,
+              "bottom": 441.296875
+            },
+            "targets": [
+              {
+                "x": 27,
+                "y": 272.546875,
+                "width": 153,
+                "height": 52.375,
+                "top": 272.546875,
+                "bottom": 324.921875
+              },
+              {
+                "x": 184,
+                "y": 272.546875,
+                "width": 153,
+                "height": 52.375,
+                "top": 272.546875,
+                "bottom": 324.921875
+              },
+              {
+                "x": 27,
+                "y": 328.921875,
+                "width": 153,
+                "height": 52.375,
+                "top": 328.921875,
+                "bottom": 381.296875
+              },
+              {
+                "x": 184,
+                "y": 328.921875,
+                "width": 153,
+                "height": 52.375,
+                "top": 328.921875,
+                "bottom": 381.296875
+              },
+              {
+                "x": 25,
+                "y": 397.296875,
+                "width": 310,
+                "height": 44,
+                "top": 397.296875,
+                "bottom": 441.296875
+              }
+            ],
+            "minimumTargetWidth": 153,
+            "minimumTargetHeight": 44,
+            "linearOptionLabels": [
+              "A: 1 of 8 equal steps from 0",
+              "B: 2 of 8 equal steps from 0",
+              "C: 3 of 8 equal steps from 0",
+              "D: 4 of 8 equal steps from 0"
+            ],
+            "linearOptionLabelsDistinct": true,
+            "horizontalOverflow": 0
+          },
+          "resizedAlignment": null
+        },
+        {
+          "itemId": "bridge-07-one-third-med",
+          "source": {
+            "kind": "fraction",
+            "numerator": "1",
+            "denominator": "3"
+          },
+          "selectedId": "candidate-b",
+          "pendingLabel": "1/3, not placed",
+          "barsAtInitial": 0,
+          "barsAfterCheck": 1,
+          "geometry": {
+            "viewport": {
+              "width": 360,
+              "height": 752,
+              "dpr": 1
+            },
+            "prompt": {
+              "x": 25,
+              "y": 145,
+              "width": 310,
+              "height": 20.984375,
+              "top": 145,
+              "bottom": 165.984375
+            },
+            "controls": {
+              "x": 25,
+              "y": 251.546875,
+              "width": 310,
+              "height": 189.75,
+              "top": 251.546875,
+              "bottom": 441.296875
+            },
+            "targets": [
+              {
+                "x": 27,
+                "y": 272.546875,
+                "width": 153,
+                "height": 52.375,
+                "top": 272.546875,
+                "bottom": 324.921875
+              },
+              {
+                "x": 184,
+                "y": 272.546875,
+                "width": 153,
+                "height": 52.375,
+                "top": 272.546875,
+                "bottom": 324.921875
+              },
+              {
+                "x": 27,
+                "y": 328.921875,
+                "width": 153,
+                "height": 52.375,
+                "top": 328.921875,
+                "bottom": 381.296875
+              },
+              {
+                "x": 184,
+                "y": 328.921875,
+                "width": 153,
+                "height": 52.375,
+                "top": 328.921875,
+                "bottom": 381.296875
+              },
+              {
+                "x": 25,
+                "y": 397.296875,
+                "width": 310,
+                "height": 44,
+                "top": 397.296875,
+                "bottom": 441.296875
+              }
+            ],
+            "minimumTargetWidth": 153,
+            "minimumTargetHeight": 44,
+            "linearOptionLabels": [
+              "A: 1 of 6 equal steps from 0",
+              "B: 2 of 6 equal steps from 0",
+              "C: 3 of 6 equal steps from 0",
+              "D: 4 of 6 equal steps from 0"
+            ],
+            "linearOptionLabelsDistinct": true,
+            "horizontalOverflow": 0
+          },
+          "resizedAlignment": null
+        },
+        {
+          "itemId": "bridge-08-five-sixths-med",
+          "source": {
+            "kind": "fraction",
+            "numerator": "5",
+            "denominator": "6"
+          },
+          "selectedId": "candidate-d",
+          "pendingLabel": "5/6, not placed",
+          "barsAtInitial": 0,
+          "barsAfterCheck": 1,
+          "geometry": {
+            "viewport": {
+              "width": 360,
+              "height": 752,
+              "dpr": 1
+            },
+            "prompt": {
+              "x": 25,
+              "y": 145,
+              "width": 310,
+              "height": 20.984375,
+              "top": 145,
+              "bottom": 165.984375
+            },
+            "controls": {
+              "x": 25,
+              "y": 251.546875,
+              "width": 310,
+              "height": 189.75,
+              "top": 251.546875,
+              "bottom": 441.296875
+            },
+            "targets": [
+              {
+                "x": 27,
+                "y": 272.546875,
+                "width": 153,
+                "height": 52.375,
+                "top": 272.546875,
+                "bottom": 324.921875
+              },
+              {
+                "x": 184,
+                "y": 272.546875,
+                "width": 153,
+                "height": 52.375,
+                "top": 272.546875,
+                "bottom": 324.921875
+              },
+              {
+                "x": 27,
+                "y": 328.921875,
+                "width": 153,
+                "height": 52.375,
+                "top": 328.921875,
+                "bottom": 381.296875
+              },
+              {
+                "x": 184,
+                "y": 328.921875,
+                "width": 153,
+                "height": 52.375,
+                "top": 328.921875,
+                "bottom": 381.296875
+              },
+              {
+                "x": 25,
+                "y": 397.296875,
+                "width": 310,
+                "height": 44,
+                "top": 397.296875,
+                "bottom": 441.296875
+              }
+            ],
+            "minimumTargetWidth": 153,
+            "minimumTargetHeight": 44,
+            "linearOptionLabels": [
+              "A: 2 of 6 equal steps from 0",
+              "B: 3 of 6 equal steps from 0",
+              "C: 4 of 6 equal steps from 0",
+              "D: 5 of 6 equal steps from 0"
+            ],
+            "linearOptionLabelsDistinct": true,
+            "horizontalOverflow": 0
+          },
+          "resizedAlignment": null
+        }
+      ]
+    },
+    {
+      "id": "ROUTE-PLAN39-REPAIR02-BOUNDARIES [standard-motion]",
+      "routeId": "ROUTE-PLAN39-REPAIR02-BOUNDARIES",
+      "context": "production-default-v8",
+      "motionMode": "standard-motion",
+      "status": "pass",
+      "repair02Evidence": [
+        {
+          "sourceToken": "1/2, not placed",
+          "priorPlacement": null,
+          "selected": "partition-0-of-2",
+          "nearestPoint": {
+            "id": "partition-0-of-2",
+            "ratio": 0
+          },
+          "pointCount": 3
+        }
+      ]
+    },
+    {
+      "id": "ROUTE-PLAN39-REPAIR02-ODD-THIRDS-360X740 [standard-motion]",
+      "routeId": "ROUTE-PLAN39-REPAIR02-ODD-THIRDS-360X740",
+      "context": "production-default-v8",
+      "motionMode": "standard-motion",
+      "status": "pass",
+      "repair02Evidence": [
+        {
+          "itemId": "bridge-07-one-third-med",
+          "source": {
+            "kind": "fraction",
+            "numerator": "1",
+            "denominator": "3"
+          },
+          "selectedId": "partition-1-of-3",
+          "pendingLabel": "1/3, placed at Step 1 of 3 equal steps from 0",
+          "barsAtInitial": 0,
+          "barsAfterCheck": 1,
+          "geometry": {
+            "viewport": {
+              "width": 360,
+              "height": 740,
+              "dpr": 1
+            },
+            "prompt": {
+              "x": 25,
+              "y": 145,
+              "width": 310,
+              "height": 20.984375,
+              "top": 145,
+              "bottom": 165.984375
+            },
+            "controls": {
+              "x": 25,
+              "y": 276.359375,
+              "width": 310,
+              "height": 124,
+              "top": 276.359375,
+              "bottom": 400.359375
+            },
+            "targets": [
+              {
+                "x": 25,
+                "y": 276.359375,
+                "width": 112,
+                "height": 64,
+                "top": 276.359375,
+                "bottom": 340.359375
+              },
+              {
+                "x": 223,
+                "y": 276.359375,
+                "width": 112,
+                "height": 64,
+                "top": 276.359375,
+                "bottom": 340.359375
+              },
+              {
+                "x": 25,
+                "y": 356.359375,
+                "width": 310,
+                "height": 44,
+                "top": 356.359375,
+                "bottom": 400.359375
+              }
+            ],
+            "minimumTargetWidth": 112,
+            "minimumTargetHeight": 44,
+            "linearOptionLabels": [],
+            "linearOptionLabelsDistinct": true,
+            "horizontalOverflow": 0
+          },
+          "resizedAlignment": null
+        }
+      ]
+    },
+    {
+      "id": "ROUTE-PLAN39-REPAIR02-MEDIUM-1366X768 [standard-motion]",
+      "routeId": "ROUTE-PLAN39-REPAIR02-MEDIUM-1366X768",
+      "context": "production-default-v8",
+      "motionMode": "standard-motion",
+      "status": "pass",
+      "repair02Evidence": [
+        {
+          "itemId": "bridge-07-one-third-med",
+          "source": {
+            "kind": "fraction",
+            "numerator": "1",
+            "denominator": "3"
+          },
+          "selectedId": "candidate-b",
+          "pendingLabel": "1/3, placed at B: 2 of 6 equal steps from 0",
+          "barsAtInitial": 0,
+          "barsAfterCheck": 1,
+          "geometry": {
+            "viewport": {
+              "width": 1366,
+              "height": 768,
+              "dpr": 1
+            },
+            "prompt": {
+              "x": 347,
+              "y": 193.96875,
+              "width": 672,
+              "height": 20.984375,
+              "top": 193.96875,
+              "bottom": 214.953125
+            },
+            "controls": {
+              "x": 347,
+              "y": 337.3125,
+              "width": 672,
+              "height": 104,
+              "top": 337.3125,
+              "bottom": 441.3125
+            },
+            "targets": [
+              {
+                "x": 347,
+                "y": 337.3125,
+                "width": 187.890625,
+                "height": 44,
+                "top": 337.3125,
+                "bottom": 381.3125
+              },
+              {
+                "x": 831.09375,
+                "y": 337.3125,
+                "width": 187.90625,
+                "height": 44,
+                "top": 337.3125,
+                "bottom": 381.3125
+              },
+              {
+                "x": 347,
+                "y": 397.3125,
+                "width": 672,
+                "height": 44,
+                "top": 397.3125,
+                "bottom": 441.3125
+              }
+            ],
+            "minimumTargetWidth": 187.890625,
+            "minimumTargetHeight": 44,
+            "linearOptionLabels": [],
+            "linearOptionLabelsDistinct": true,
+            "horizontalOverflow": 0
+          },
+          "resizedAlignment": null
+        }
+      ]
+    },
+    {
+      "id": "ROUTE-PLAN39-REPAIR02-EIGHTHS-1093X614-DPR125 [standard-motion]",
+      "routeId": "ROUTE-PLAN39-REPAIR02-EIGHTHS-1093X614-DPR125",
+      "context": "production-default-v8",
+      "motionMode": "standard-motion",
+      "status": "pass",
+      "repair02Evidence": [
+        {
+          "itemId": "bridge-06-three-eighths-8",
+          "source": {
+            "kind": "fraction",
+            "numerator": "3",
+            "denominator": "8"
+          },
+          "selectedId": "partition-3-of-8",
+          "pendingLabel": "3/8, placed at Step 3 of 8 equal steps from 0",
+          "barsAtInitial": 0,
+          "barsAfterCheck": 1,
+          "geometry": {
+            "viewport": {
+              "width": 1093,
+              "height": 614,
+              "dpr": 1.25
+            },
+            "prompt": {
+              "x": 210.5,
+              "y": 181.09375,
+              "width": 672,
+              "height": 20.984375,
+              "top": 181.09375,
+              "bottom": 202.078125
+            },
+            "controls": {
+              "x": 210.5,
+              "y": 324.4375,
+              "width": 672,
+              "height": 104,
+              "top": 324.4375,
+              "bottom": 428.4375
+            },
+            "targets": [
+              {
+                "x": 210.5,
+                "y": 324.4375,
+                "width": 187.890625,
+                "height": 44,
+                "top": 324.4375,
+                "bottom": 368.4375
+              },
+              {
+                "x": 694.59375,
+                "y": 324.4375,
+                "width": 187.90625,
+                "height": 44,
+                "top": 324.4375,
+                "bottom": 368.4375
+              },
+              {
+                "x": 210.5,
+                "y": 384.4375,
+                "width": 672,
+                "height": 44,
+                "top": 384.4375,
+                "bottom": 428.4375
+              }
+            ],
+            "minimumTargetWidth": 187.890625,
+            "minimumTargetHeight": 44,
+            "linearOptionLabels": [],
+            "linearOptionLabelsDistinct": true,
+            "horizontalOverflow": 0
+          },
+          "resizedAlignment": null
+        }
+      ]
+    }
+  ]
+}\n

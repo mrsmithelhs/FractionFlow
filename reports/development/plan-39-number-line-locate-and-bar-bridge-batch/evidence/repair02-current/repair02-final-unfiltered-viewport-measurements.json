@@ -1,0 +1,6437 @@
+{
+  "capturedAt": "2026-10-22T02:22:56.257Z",
+  "measurements": [
+    {
+      "routeId": "ROUTE-PLAN39-BRIDGE-VISUAL-ALL-8",
+      "context": "historical-plan39-v7",
+      "motionMode": "standard-motion",
+      "revision": "historical-route-geometry",
+      "description": "Plan39 bridge-01-half-2: preview without grading, recovery, or resolve controls",
+      "viewport": {
+        "width": 360,
+        "height": 740,
+        "dpr": 1
+      },
+      "beat": "locate",
+      "status": "locate",
+      "leak": false,
+      "feedback": false,
+      "sourceBox": {
+        "left": 41,
+        "right": 319,
+        "top": 244.703125,
+        "bottom": 276.703125,
+        "width": 278,
+        "height": 32
+      },
+      "axisBox": {
+        "left": 41,
+        "right": 319,
+        "top": 279.890625,
+        "bottom": 327.890625,
+        "width": 278,
+        "height": 48
+      },
+      "aligned": true,
+      "targetCount": 3,
+      "undersized": false,
+      "overlaps": false,
+      "hitMiss": false,
+      "boxesFit": true,
+      "radioCount": 0,
+      "candidateCount": 3,
+      "labels": [],
+      "distinctLabels": true,
+      "selected": "partition-1-of-2",
+      "checkEnabled": true,
+      "accepted": false,
+      "scroll": {
+        "x": 0,
+        "y": 0
+      },
+      "targets": [
+        {
+          "name": "fraction-control plan39-stepper-previous plan39-stepper-move",
+          "left": 25,
+          "right": 137,
+          "top": 335.078125,
+          "bottom": 399.078125,
+          "width": 112,
+          "height": 64
+        },
+        {
+          "name": "fraction-control plan39-stepper-next plan39-stepper-move",
+          "left": 223,
+          "right": 335,
+          "top": 335.078125,
+          "bottom": 399.078125,
+          "width": 112,
+          "height": 64
+        },
+        {
+          "name": "fraction-control plan39-check-position",
+          "left": 25,
+          "right": 335,
+          "top": 415.078125,
+          "bottom": 459.078125,
+          "width": 310,
+          "height": 44
+        }
+      ],
+      "promptBox": {
+        "left": 25,
+        "right": 335,
+        "top": 145,
+        "bottom": 186.96875,
+        "width": 310,
+        "height": 41.96875
+      },
+      "controlsBox": {
+        "left": 25,
+        "right": 335,
+        "top": 335.078125,
+        "bottom": 459.078125,
+        "width": 310,
+        "height": 124
+      }
+    },
+    {
+      "routeId": "ROUTE-PLAN39-BRIDGE-VISUAL-ALL-8",
+      "context": "historical-plan39-v7",
+      "motionMode": "standard-motion",
+      "revision": "historical-route-geometry",
+      "description": "Plan39 bridge-01-half-2: source-to-point connector geometry",
+      "present": true,
+      "start": {
+        "x": 180,
+        "y": 276.703125
+      },
+      "end": {
+        "x": 180,
+        "y": 296.578125
+      },
+      "expectedStart": {
+        "x": 180,
+        "y": 276.703125
+      },
+      "expectedEnd": {
+        "x": 180,
+        "y": 296.578125
+      },
+      "startError": 0,
+      "endError": 0,
+      "viewport": {
+        "width": 360,
+        "height": 740,
+        "dpr": 1
+      },
+      "scroll": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "routeId": "ROUTE-PLAN39-BRIDGE-VISUAL-ALL-8",
+      "context": "historical-plan39-v7",
+      "motionMode": "standard-motion",
+      "revision": "historical-route-geometry",
+      "description": "Plan39 bridge-02-fourth-4: preview without grading, recovery, or resolve controls",
+      "viewport": {
+        "width": 360,
+        "height": 740,
+        "dpr": 1
+      },
+      "beat": "locate",
+      "status": "locate",
+      "leak": false,
+      "feedback": false,
+      "sourceBox": {
+        "left": 41,
+        "right": 319,
+        "top": 244.703125,
+        "bottom": 276.703125,
+        "width": 278,
+        "height": 32
+      },
+      "axisBox": {
+        "left": 41,
+        "right": 319,
+        "top": 279.890625,
+        "bottom": 327.890625,
+        "width": 278,
+        "height": 48
+      },
+      "aligned": true,
+      "targetCount": 3,
+      "undersized": false,
+      "overlaps": false,
+      "hitMiss": false,
+      "boxesFit": true,
+      "radioCount": 0,
+      "candidateCount": 5,
+      "labels": [],
+      "distinctLabels": true,
+      "selected": "partition-1-of-4",
+      "checkEnabled": true,
+      "accepted": false,
+      "scroll": {
+        "x": 0,
+        "y": 0
+      },
+      "targets": [
+        {
+          "name": "fraction-control plan39-stepper-previous plan39-stepper-move",
+          "left": 25,
+          "right": 137,
+          "top": 335.078125,
+          "bottom": 399.078125,
+          "width": 112,
+          "height": 64
+        },
+        {
+          "name": "fraction-control plan39-stepper-next plan39-stepper-move",
+          "left": 223,
+          "right": 335,
+          "top": 335.078125,
+          "bottom": 399.078125,
+          "width": 112,
+          "height": 64
+        },
+        {
+          "name": "fraction-control plan39-check-position",
+          "left": 25,
+          "right": 335,
+          "top": 415.078125,
+          "bottom": 459.078125,
+          "width": 310,
+          "height": 44
+        }
+      ],
+      "promptBox": {
+        "left": 25,
+        "right": 335,
+        "top": 145,
+        "bottom": 186.96875,
+        "width": 310,
+        "height": 41.96875
+      },
+      "controlsBox": {
+        "left": 25,
+        "right": 335,
+        "top": 335.078125,
+        "bottom": 459.078125,
+        "width": 310,
+        "height": 124
+      }
+    },
+    {
+      "routeId": "ROUTE-PLAN39-BRIDGE-VISUAL-ALL-8",
+      "context": "historical-plan39-v7",
+      "motionMode": "standard-motion",
+      "revision": "historical-route-geometry",
+      "description": "Plan39 bridge-02-fourth-4: source-to-point connector geometry",
+      "present": true,
+      "start": {
+        "x": 110.5,
+        "y": 276.703125
+      },
+      "end": {
+        "x": 110.5,
+        "y": 296.578125
+      },
+      "expectedStart": {
+        "x": 110.5,
+        "y": 276.703125
+      },
+      "expectedEnd": {
+        "x": 110.5,
+        "y": 296.578125
+      },
+      "startError": 0,
+      "endError": 0,
+      "viewport": {
+        "width": 360,
+        "height": 740,
+        "dpr": 1
+      },
+      "scroll": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "routeId": "ROUTE-PLAN39-BRIDGE-VISUAL-ALL-8",
+      "context": "historical-plan39-v7",
+      "motionMode": "standard-motion",
+      "revision": "historical-route-geometry",
+      "description": "Plan39 bridge-03-three-fourths-4: preview without grading, recovery, or resolve controls",
+      "viewport": {
+        "width": 360,
+        "height": 740,
+        "dpr": 1
+      },
+      "beat": "locate",
+      "status": "locate",
+      "leak": false,
+      "feedback": false,
+      "sourceBox": {
+        "left": 41,
+        "right": 319,
+        "top": 244.703125,
+        "bottom": 276.703125,
+        "width": 278,
+        "height": 32
+      },
+      "axisBox": {
+        "left": 41,
+        "right": 319,
+        "top": 279.890625,
+        "bottom": 327.890625,
+        "width": 278,
+        "height": 48
+      },
+      "aligned": true,
+      "targetCount": 3,
+      "undersized": false,
+      "overlaps": false,
+      "hitMiss": false,
+      "boxesFit": true,
+      "radioCount": 0,
+      "candidateCount": 5,
+      "labels": [],
+      "distinctLabels": true,
+      "selected": "partition-3-of-4",
+      "checkEnabled": true,
+      "accepted": false,
+      "scroll": {
+        "x": 0,
+        "y": 0
+      },
+      "targets": [
+        {
+          "name": "fraction-control plan39-stepper-previous plan39-stepper-move",
+          "left": 25,
+          "right": 137,
+          "top": 335.078125,
+          "bottom": 399.078125,
+          "width": 112,
+          "height": 64
+        },
+        {
+          "name": "fraction-control plan39-stepper-next plan39-stepper-move",
+          "left": 223,
+          "right": 335,
+          "top": 335.078125,
+          "bottom": 399.078125,
+          "width": 112,
+          "height": 64
+        },
+        {
+          "name": "fraction-control plan39-check-position",
+          "left": 25,
+          "right": 335,
+          "top": 415.078125,
+          "bottom": 459.078125,
+          "width": 310,
+          "height": 44
+        }
+      ],
+      "promptBox": {
+        "left": 25,
+        "right": 335,
+        "top": 145,
+        "bottom": 186.96875,
+        "width": 310,
+        "height": 41.96875
+      },
+      "controlsBox": {
+        "left": 25,
+        "right": 335,
+        "top": 335.078125,
+        "bottom": 459.078125,
+        "width": 310,
+        "height": 124
+      }
+    },
+    {
+      "routeId": "ROUTE-PLAN39-BRIDGE-VISUAL-ALL-8",
+      "context": "historical-plan39-v7",
+      "motionMode": "standard-motion",
+      "revision": "historical-route-geometry",
+      "description": "Plan39 bridge-03-three-fourths-4: source-to-point connector geometry",
+      "present": true,
+      "start": {
+        "x": 249.5,
+        "y": 276.703125
+      },
+      "end": {
+        "x": 249.5,
+        "y": 296.578125
+      },
+      "expectedStart": {
+        "x": 249.5,
+        "y": 276.703125
+      },
+      "expectedEnd": {
+        "x": 249.5,
+        "y": 296.578125
+      },
+      "startError": 0,
+      "endError": 0,
+      "viewport": {
+        "width": 360,
+        "height": 740,
+        "dpr": 1
+      },
+      "scroll": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "routeId": "ROUTE-PLAN39-BRIDGE-VISUAL-ALL-8",
+      "context": "historical-plan39-v7",
+      "motionMode": "standard-motion",
+      "revision": "historical-route-geometry",
+      "description": "Plan39 bridge-04-two-thirds-3: preview without grading, recovery, or resolve controls",
+      "viewport": {
+        "width": 360,
+        "height": 740,
+        "dpr": 1
+      },
+      "beat": "locate",
+      "status": "locate",
+      "leak": false,
+      "feedback": false,
+      "sourceBox": {
+        "left": 41,
+        "right": 319,
+        "top": 244.703125,
+        "bottom": 276.703125,
+        "width": 278,
+        "height": 32
+      },
+      "axisBox": {
+        "left": 41,
+        "right": 319,
+        "top": 279.890625,
+        "bottom": 327.890625,
+        "width": 278,
+        "height": 48
+      },
+      "aligned": true,
+      "targetCount": 3,
+      "undersized": false,
+      "overlaps": false,
+      "hitMiss": false,
+      "boxesFit": true,
+      "radioCount": 0,
+      "candidateCount": 4,
+      "labels": [],
+      "distinctLabels": true,
+      "selected": "partition-2-of-3",
+      "checkEnabled": true,
+      "accepted": false,
+      "scroll": {
+        "x": 0,
+        "y": 0
+      },
+      "targets": [
+        {
+          "name": "fraction-control plan39-stepper-previous plan39-stepper-move",
+          "left": 25,
+          "right": 137,
+          "top": 335.078125,
+          "bottom": 399.078125,
+          "width": 112,
+          "height": 64
+        },
+        {
+          "name": "fraction-control plan39-stepper-next plan39-stepper-move",
+          "left": 223,
+          "right": 335,
+          "top": 335.078125,
+          "bottom": 399.078125,
+          "width": 112,
+          "height": 64
+        },
+        {
+          "name": "fraction-control plan39-check-position",
+          "left": 25,
+          "right": 335,
+          "top": 415.078125,
+          "bottom": 459.078125,
+          "width": 310,
+          "height": 44
+        }
+      ],
+      "promptBox": {
+        "left": 25,
+        "right": 335,
+        "top": 145,
+        "bottom": 186.96875,
+        "width": 310,
+        "height": 41.96875
+      },
+      "controlsBox": {
+        "left": 25,
+        "right": 335,
+        "top": 335.078125,
+        "bottom": 459.078125,
+        "width": 310,
+        "height": 124
+      }
+    },
+    {
+      "routeId": "ROUTE-PLAN39-BRIDGE-VISUAL-ALL-8",
+      "context": "historical-plan39-v7",
+      "motionMode": "standard-motion",
+      "revision": "historical-route-geometry",
+      "description": "Plan39 bridge-04-two-thirds-3: source-to-point connector geometry",
+      "present": true,
+      "start": {
+        "x": 226.3333282470703,
+        "y": 276.703125
+      },
+      "end": {
+        "x": 226.3333282470703,
+        "y": 296.578125
+      },
+      "expectedStart": {
+        "x": 226.328125,
+        "y": 276.703125
+      },
+      "expectedEnd": {
+        "x": 226.328125,
+        "y": 296.578125
+      },
+      "startError": 0.0052032470703125,
+      "endError": 0.0052032470703125,
+      "viewport": {
+        "width": 360,
+        "height": 740,
+        "dpr": 1
+      },
+      "scroll": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "routeId": "ROUTE-PLAN39-BRIDGE-VISUAL-ALL-8",
+      "context": "historical-plan39-v7",
+      "motionMode": "standard-motion",
+      "revision": "historical-route-geometry",
+      "description": "Plan39 bridge-05-two-fourths-half: preview without grading, recovery, or resolve controls",
+      "viewport": {
+        "width": 360,
+        "height": 740,
+        "dpr": 1
+      },
+      "beat": "locate",
+      "status": "locate",
+      "leak": false,
+      "feedback": false,
+      "sourceBox": {
+        "left": 41,
+        "right": 319,
+        "top": 244.703125,
+        "bottom": 276.703125,
+        "width": 278,
+        "height": 32
+      },
+      "axisBox": {
+        "left": 41,
+        "right": 319,
+        "top": 279.890625,
+        "bottom": 327.890625,
+        "width": 278,
+        "height": 48
+      },
+      "aligned": true,
+      "targetCount": 3,
+      "undersized": false,
+      "overlaps": false,
+      "hitMiss": false,
+      "boxesFit": true,
+      "radioCount": 0,
+      "candidateCount": 5,
+      "labels": [],
+      "distinctLabels": true,
+      "selected": "partition-2-of-4",
+      "checkEnabled": true,
+      "accepted": false,
+      "scroll": {
+        "x": 0,
+        "y": 0
+      },
+      "targets": [
+        {
+          "name": "fraction-control plan39-stepper-previous plan39-stepper-move",
+          "left": 25,
+          "right": 137,
+          "top": 335.078125,
+          "bottom": 399.078125,
+          "width": 112,
+          "height": 64
+        },
+        {
+          "name": "fraction-control plan39-stepper-next plan39-stepper-move",
+          "left": 223,
+          "right": 335,
+          "top": 335.078125,
+          "bottom": 399.078125,
+          "width": 112,
+          "height": 64
+        },
+        {
+          "name": "fraction-control plan39-check-position",
+          "left": 25,
+          "right": 335,
+          "top": 415.078125,
+          "bottom": 459.078125,
+          "width": 310,
+          "height": 44
+        }
+      ],
+      "promptBox": {
+        "left": 25,
+        "right": 335,
+        "top": 145,
+        "bottom": 186.96875,
+        "width": 310,
+        "height": 41.96875
+      },
+      "controlsBox": {
+        "left": 25,
+        "right": 335,
+        "top": 335.078125,
+        "bottom": 459.078125,
+        "width": 310,
+        "height": 124
+      }
+    },
+    {
+      "routeId": "ROUTE-PLAN39-BRIDGE-VISUAL-ALL-8",
+      "context": "historical-plan39-v7",
+      "motionMode": "standard-motion",
+      "revision": "historical-route-geometry",
+      "description": "Plan39 bridge-05-two-fourths-half: source-to-point connector geometry",
+      "present": true,
+      "start": {
+        "x": 180,
+        "y": 276.703125
+      },
+      "end": {
+        "x": 180,
+        "y": 296.578125
+      },
+      "expectedStart": {
+        "x": 180,
+        "y": 276.703125
+      },
+      "expectedEnd": {
+        "x": 180,
+        "y": 296.578125
+      },
+      "startError": 0,
+      "endError": 0,
+      "viewport": {
+        "width": 360,
+        "height": 740,
+        "dpr": 1
+      },
+      "scroll": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "routeId": "ROUTE-PLAN39-BRIDGE-VISUAL-ALL-8",
+      "context": "historical-plan39-v7",
+      "motionMode": "standard-motion",
+      "revision": "historical-route-geometry",
+      "description": "Plan39 bridge-06-three-eighths-8: preview without grading, recovery, or resolve controls",
+      "viewport": {
+        "width": 360,
+        "height": 740,
+        "dpr": 1
+      },
+      "beat": "locate",
+      "status": "locate",
+      "leak": false,
+      "feedback": false,
+      "sourceBox": {
+        "left": 41,
+        "right": 319,
+        "top": 244.703125,
+        "bottom": 276.703125,
+        "width": 278,
+        "height": 32
+      },
+      "axisBox": {
+        "left": 41,
+        "right": 319,
+        "top": 279.890625,
+        "bottom": 327.890625,
+        "width": 278,
+        "height": 48
+      },
+      "aligned": true,
+      "targetCount": 3,
+      "undersized": false,
+      "overlaps": false,
+      "hitMiss": false,
+      "boxesFit": true,
+      "radioCount": 0,
+      "candidateCount": 9,
+      "labels": [],
+      "distinctLabels": true,
+      "selected": "partition-3-of-8",
+      "checkEnabled": true,
+      "accepted": false,
+      "scroll": {
+        "x": 0,
+        "y": 0
+      },
+      "targets": [
+        {
+          "name": "fraction-control plan39-stepper-previous plan39-stepper-move",
+          "left": 25,
+          "right": 137,
+          "top": 335.078125,
+          "bottom": 399.078125,
+          "width": 112,
+          "height": 64
+        },
+        {
+          "name": "fraction-control plan39-stepper-next plan39-stepper-move",
+          "left": 223,
+          "right": 335,
+          "top": 335.078125,
+          "bottom": 399.078125,
+          "width": 112,
+          "height": 64
+        },
+        {
+          "name": "fraction-control plan39-check-position",
+          "left": 25,
+          "right": 335,
+          "top": 415.078125,
+          "bottom": 459.078125,
+          "width": 310,
+          "height": 44
+        }
+      ],
+      "promptBox": {
+        "left": 25,
+        "right": 335,
+        "top": 145,
+        "bottom": 186.96875,
+        "width": 310,
+        "height": 41.96875
+      },
+      "controlsBox": {
+        "left": 25,
+        "right": 335,
+        "top": 335.078125,
+        "bottom": 459.078125,
+        "width": 310,
+        "height": 124
+      }
+    },
+    {
+      "routeId": "ROUTE-PLAN39-BRIDGE-VISUAL-ALL-8",
+      "context": "historical-plan39-v7",
+      "motionMode": "standard-motion",
+      "revision": "historical-route-geometry",
+      "description": "Plan39 bridge-06-three-eighths-8: source-to-point connector geometry",
+      "present": true,
+      "start": {
+        "x": 145.25,
+        "y": 276.703125
+      },
+      "end": {
+        "x": 145.25,
+        "y": 296.578125
+      },
+      "expectedStart": {
+        "x": 145.25,
+        "y": 276.703125
+      },
+      "expectedEnd": {
+        "x": 145.25,
+        "y": 296.578125
+      },
+      "startError": 0,
+      "endError": 0,
+      "viewport": {
+        "width": 360,
+        "height": 740,
+        "dpr": 1
+      },
+      "scroll": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "routeId": "ROUTE-PLAN39-BRIDGE-VISUAL-ALL-8",
+      "context": "historical-plan39-v7",
+      "motionMode": "standard-motion",
+      "revision": "historical-route-geometry",
+      "description": "Plan39 bridge-07-one-third-med: preview without grading, recovery, or resolve controls",
+      "viewport": {
+        "width": 360,
+        "height": 740,
+        "dpr": 1
+      },
+      "beat": "locate",
+      "status": "locate",
+      "leak": false,
+      "feedback": false,
+      "sourceBox": {
+        "left": 41,
+        "right": 319,
+        "top": 244.703125,
+        "bottom": 276.703125,
+        "width": 278,
+        "height": 32
+      },
+      "axisBox": {
+        "left": 41,
+        "right": 319,
+        "top": 279.890625,
+        "bottom": 327.890625,
+        "width": 278,
+        "height": 48
+      },
+      "aligned": true,
+      "targetCount": 3,
+      "undersized": false,
+      "overlaps": false,
+      "hitMiss": false,
+      "boxesFit": true,
+      "radioCount": 0,
+      "candidateCount": 4,
+      "labels": [],
+      "distinctLabels": true,
+      "selected": "partition-1-of-3",
+      "checkEnabled": true,
+      "accepted": false,
+      "scroll": {
+        "x": 0,
+        "y": 0
+      },
+      "targets": [
+        {
+          "name": "fraction-control plan39-stepper-previous plan39-stepper-move",
+          "left": 25,
+          "right": 137,
+          "top": 335.078125,
+          "bottom": 399.078125,
+          "width": 112,
+          "height": 64
+        },
+        {
+          "name": "fraction-control plan39-stepper-next plan39-stepper-move",
+          "left": 223,
+          "right": 335,
+          "top": 335.078125,
+          "bottom": 399.078125,
+          "width": 112,
+          "height": 64
+        },
+        {
+          "name": "fraction-control plan39-check-position",
+          "left": 25,
+          "right": 335,
+          "top": 415.078125,
+          "bottom": 459.078125,
+          "width": 310,
+          "height": 44
+        }
+      ],
+      "promptBox": {
+        "left": 25,
+        "right": 335,
+        "top": 145,
+        "bottom": 186.96875,
+        "width": 310,
+        "height": 41.96875
+      },
+      "controlsBox": {
+        "left": 25,
+        "right": 335,
+        "top": 335.078125,
+        "bottom": 459.078125,
+        "width": 310,
+        "height": 124
+      }
+    },
+    {
+      "routeId": "ROUTE-PLAN39-BRIDGE-VISUAL-ALL-8",
+      "context": "historical-plan39-v7",
+      "motionMode": "standard-motion",
+      "revision": "historical-route-geometry",
+      "description": "Plan39 bridge-07-one-third-med: source-to-point connector geometry",
+      "present": true,
+      "start": {
+        "x": 133.66665649414062,
+        "y": 276.703125
+      },
+      "end": {
+        "x": 133.66665649414062,
+        "y": 296.578125
+      },
+      "expectedStart": {
+        "x": 133.65625,
+        "y": 276.703125
+      },
+      "expectedEnd": {
+        "x": 133.65625,
+        "y": 296.578125
+      },
+      "startError": 0.010406494140625,
+      "endError": 0.010406494140625,
+      "viewport": {
+        "width": 360,
+        "height": 740,
+        "dpr": 1
+      },
+      "scroll": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "routeId": "ROUTE-PLAN39-BRIDGE-VISUAL-ALL-8",
+      "context": "historical-plan39-v7",
+      "motionMode": "standard-motion",
+      "revision": "historical-route-geometry",
+      "description": "Plan39 bridge-08-five-sixths-med: preview without grading, recovery, or resolve controls",
+      "viewport": {
+        "width": 360,
+        "height": 740,
+        "dpr": 1
+      },
+      "beat": "locate",
+      "status": "locate",
+      "leak": false,
+      "feedback": false,
+      "sourceBox": {
+        "left": 41,
+        "right": 319,
+        "top": 244.703125,
+        "bottom": 276.703125,
+        "width": 278,
+        "height": 32
+      },
+      "axisBox": {
+        "left": 41,
+        "right": 319,
+        "top": 279.890625,
+        "bottom": 327.890625,
+        "width": 278,
+        "height": 48
+      },
+      "aligned": true,
+      "targetCount": 3,
+      "undersized": false,
+      "overlaps": false,
+      "hitMiss": false,
+      "boxesFit": true,
+      "radioCount": 0,
+      "candidateCount": 7,
+      "labels": [],
+      "distinctLabels": true,
+      "selected": "partition-5-of-6",
+      "checkEnabled": true,
+      "accepted": false,
+      "scroll": {
+        "x": 0,
+        "y": 0
+      },
+      "targets": [
+        {
+          "name": "fraction-control plan39-stepper-previous plan39-stepper-move",
+          "left": 25,
+          "right": 137,
+          "top": 335.078125,
+          "bottom": 399.078125,
+          "width": 112,
+          "height": 64
+        },
+        {
+          "name": "fraction-control plan39-stepper-next plan39-stepper-move",
+          "left": 223,
+          "right": 335,
+          "top": 335.078125,
+          "bottom": 399.078125,
+          "width": 112,
+          "height": 64
+        },
+        {
+          "name": "fraction-control plan39-check-position",
+          "left": 25,
+          "right": 335,
+          "top": 415.078125,
+          "bottom": 459.078125,
+          "width": 310,
+          "height": 44
+        }
+      ],
+      "promptBox": {
+        "left": 25,
+        "right": 335,
+        "top": 145,
+        "bottom": 186.96875,
+        "width": 310,
+        "height": 41.96875
+      },
+      "controlsBox": {
+        "left": 25,
+        "right": 335,
+        "top": 335.078125,
+        "bottom": 459.078125,
+        "width": 310,
+        "height": 124
+      }
+    },
+    {
+      "routeId": "ROUTE-PLAN39-BRIDGE-VISUAL-ALL-8",
+      "context": "historical-plan39-v7",
+      "motionMode": "standard-motion",
+      "revision": "historical-route-geometry",
+      "description": "Plan39 bridge-08-five-sixths-med: source-to-point connector geometry",
+      "present": true,
+      "start": {
+        "x": 272.66668701171875,
+        "y": 276.703125
+      },
+      "end": {
+        "x": 272.66668701171875,
+        "y": 296.578125
+      },
+      "expectedStart": {
+        "x": 272.65625,
+        "y": 276.703125
+      },
+      "expectedEnd": {
+        "x": 272.65625,
+        "y": 296.578125
+      },
+      "startError": 0.01043701171875,
+      "endError": 0.01043701171875,
+      "viewport": {
+        "width": 360,
+        "height": 740,
+        "dpr": 1
+      },
+      "scroll": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "routeId": "ROUTE-PLAN39-BRIDGE-LINEAR-ALL-8",
+      "context": "historical-plan39-v7",
+      "motionMode": "reduced-motion",
+      "revision": "historical-route-geometry",
+      "description": "Plan39 bridge-01-half-2: preview without grading, recovery, or resolve controls",
+      "viewport": {
+        "width": 360,
+        "height": 752,
+        "dpr": 1
+      },
+      "beat": "locate",
+      "status": "locate",
+      "leak": false,
+      "feedback": false,
+      "sourceBox": null,
+      "axisBox": null,
+      "aligned": true,
+      "targetCount": 5,
+      "undersized": false,
+      "overlaps": false,
+      "hitMiss": false,
+      "boxesFit": true,
+      "radioCount": 4,
+      "candidateCount": 0,
+      "labels": [
+        "Offered point A: at zero.",
+        "Offered point B: between zero and one half, halfway between them.",
+        "Offered point C: at one half.",
+        "Offered point D: at one."
+      ],
+      "distinctLabels": true,
+      "selected": "candidate-c",
+      "checkEnabled": true,
+      "accepted": false,
+      "scroll": {
+        "x": 0,
+        "y": 0
+      },
+      "targets": [
+        {
+          "name": "plan39-candidate",
+          "left": 27,
+          "right": 180,
+          "top": 361.65625,
+          "bottom": 436.28125,
+          "width": 153,
+          "height": 74.625
+        },
+        {
+          "name": "plan39-candidate",
+          "left": 184,
+          "right": 337,
+          "top": 361.65625,
+          "bottom": 436.28125,
+          "width": 153,
+          "height": 74.625
+        },
+        {
+          "name": "plan39-candidate",
+          "left": 27,
+          "right": 180,
+          "top": 440.28125,
+          "bottom": 492.65625,
+          "width": 153,
+          "height": 52.375
+        },
+        {
+          "name": "plan39-candidate",
+          "left": 184,
+          "right": 337,
+          "top": 440.28125,
+          "bottom": 492.65625,
+          "width": 153,
+          "height": 52.375
+        },
+        {
+          "name": "fraction-control plan39-check-position",
+          "left": 25,
+          "right": 335,
+          "top": 508.65625,
+          "bottom": 552.65625,
+          "width": 310,
+          "height": 44
+        }
+      ],
+      "promptBox": {
+        "left": 25,
+        "right": 335,
+        "top": 145,
+        "bottom": 186.96875,
+        "width": 310,
+        "height": 41.96875
+      },
+      "controlsBox": {
+        "left": 25,
+        "right": 335,
+        "top": 340.65625,
+        "bottom": 552.65625,
+        "width": 310,
+        "height": 212
+      }
+    },
+    {
+      "routeId": "ROUTE-PLAN39-BRIDGE-LINEAR-ALL-8",
+      "context": "historical-plan39-v7",
+      "motionMode": "reduced-motion",
+      "revision": "historical-route-geometry",
+      "description": "Plan39 bridge-02-fourth-4: preview without grading, recovery, or resolve controls",
+      "viewport": {
+        "width": 360,
+        "height": 752,
+        "dpr": 1
+      },
+      "beat": "locate",
+      "status": "locate",
+      "leak": false,
+      "feedback": false,
+      "sourceBox": null,
+      "axisBox": null,
+      "aligned": true,
+      "targetCount": 5,
+      "undersized": false,
+      "overlaps": false,
+      "hitMiss": false,
+      "boxesFit": true,
+      "radioCount": 4,
+      "candidateCount": 0,
+      "labels": [
+        "Offered point A: at zero.",
+        "Offered point B: between zero and one half, halfway between them.",
+        "Offered point C: between zero and one half, closer to one half.",
+        "Offered point D: at one half."
+      ],
+      "distinctLabels": true,
+      "selected": "candidate-b",
+      "checkEnabled": true,
+      "accepted": false,
+      "scroll": {
+        "x": 0,
+        "y": 0
+      },
+      "targets": [
+        {
+          "name": "plan39-candidate",
+          "left": 27,
+          "right": 180,
+          "top": 361.65625,
+          "bottom": 436.28125,
+          "width": 153,
+          "height": 74.625
+        },
+        {
+          "name": "plan39-candidate",
+          "left": 184,
+          "right": 337,
+          "top": 361.65625,
+          "bottom": 436.28125,
+          "width": 153,
+          "height": 74.625
+        },
+        {
+          "name": "plan39-candidate",
+          "left": 27,
+          "right": 180,
+          "top": 440.28125,
+          "bottom": 514.90625,
+          "width": 153,
+          "height": 74.625
+        },
+        {
+          "name": "plan39-candidate",
+          "left": 184,
+          "right": 337,
+          "top": 440.28125,
+          "bottom": 514.90625,
+          "width": 153,
+          "height": 74.625
+        },
+        {
+          "name": "fraction-control plan39-check-position",
+          "left": 25,
+          "right": 335,
+          "top": 530.90625,
+          "bottom": 574.90625,
+          "width": 310,
+          "height": 44
+        }
+      ],
+      "promptBox": {
+        "left": 25,
+        "right": 335,
+        "top": 145,
+        "bottom": 186.96875,
+        "width": 310,
+        "height": 41.96875
+      },
+      "controlsBox": {
+        "left": 25,
+        "right": 335,
+        "top": 340.65625,
+        "bottom": 574.90625,
+        "width": 310,
+        "height": 234.25
+      }
+    },
+    {
+      "routeId": "ROUTE-PLAN39-BRIDGE-LINEAR-ALL-8",
+      "context": "historical-plan39-v7",
+      "motionMode": "reduced-motion",
+      "revision": "historical-route-geometry",
+      "description": "Plan39 bridge-03-three-fourths-4: preview without grading, recovery, or resolve controls",
+      "viewport": {
+        "width": 360,
+        "height": 752,
+        "dpr": 1
+      },
+      "beat": "locate",
+      "status": "locate",
+      "leak": false,
+      "feedback": false,
+      "sourceBox": null,
+      "axisBox": null,
+      "aligned": true,
+      "targetCount": 5,
+      "undersized": false,
+      "overlaps": false,
+      "hitMiss": false,
+      "boxesFit": true,
+      "radioCount": 4,
+      "candidateCount": 0,
+      "labels": [
+        "Offered point A: between zero and one half, halfway between them.",
+        "Offered point B: at one half.",
+        "Offered point C: between one half and one, halfway between them.",
+        "Offered point D: at one."
+      ],
+      "distinctLabels": true,
+      "selected": "candidate-c",
+      "checkEnabled": true,
+      "accepted": false,
+      "scroll": {
+        "x": 0,
+        "y": 0
+      },
+      "targets": [
+        {
+          "name": "plan39-candidate",
+          "left": 27,
+          "right": 180,
+          "top": 361.65625,
+          "bottom": 436.28125,
+          "width": 153,
+          "height": 74.625
+        },
+        {
+          "name": "plan39-candidate",
+          "left": 184,
+          "right": 337,
+          "top": 361.65625,
+          "bottom": 436.28125,
+          "width": 153,
+          "height": 74.625
+        },
+        {
+          "name": "plan39-candidate",
+          "left": 27,
+          "right": 180,
+          "top": 440.28125,
+          "bottom": 514.90625,
+          "width": 153,
+          "height": 74.625
+        },
+        {
+          "name": "plan39-candidate",
+          "left": 184,
+          "right": 337,
+          "top": 440.28125,
+          "bottom": 514.90625,
+          "width": 153,
+          "height": 74.625
+        },
+        {
+          "name": "fraction-control plan39-check-position",
+          "left": 25,
+          "right": 335,
+          "top": 530.90625,
+          "bottom": 574.90625,
+          "width": 310,
+          "height": 44
+        }
+      ],
+      "promptBox": {
+        "left": 25,
+        "right": 335,
+        "top": 145,
+        "bottom": 186.96875,
+        "width": 310,
+        "height": 41.96875
+      },
+      "controlsBox": {
+        "left": 25,
+        "right": 335,
+        "top": 340.65625,
+        "bottom": 574.90625,
+        "width": 310,
+        "height": 234.25
+      }
+    },
+    {
+      "routeId": "ROUTE-PLAN39-BRIDGE-LINEAR-ALL-8",
+      "context": "historical-plan39-v7",
+      "motionMode": "reduced-motion",
+      "revision": "historical-route-geometry",
+      "description": "Plan39 bridge-04-two-thirds-3: preview without grading, recovery, or resolve controls",
+      "viewport": {
+        "width": 360,
+        "height": 752,
+        "dpr": 1
+      },
+      "beat": "locate",
+      "status": "locate",
+      "leak": false,
+      "feedback": false,
+      "sourceBox": null,
+      "axisBox": null,
+      "aligned": true,
+      "targetCount": 5,
+      "undersized": false,
+      "overlaps": false,
+      "hitMiss": false,
+      "boxesFit": true,
+      "radioCount": 4,
+      "candidateCount": 0,
+      "labels": [
+        "Offered point A: at zero.",
+        "Offered point B: between zero and one half, closer to one half.",
+        "Offered point C: at one half.",
+        "Offered point D: between one half and one, closer to one half."
+      ],
+      "distinctLabels": true,
+      "selected": "candidate-d",
+      "checkEnabled": true,
+      "accepted": false,
+      "scroll": {
+        "x": 0,
+        "y": 0
+      },
+      "targets": [
+        {
+          "name": "plan39-candidate",
+          "left": 27,
+          "right": 180,
+          "top": 361.65625,
+          "bottom": 436.28125,
+          "width": 153,
+          "height": 74.625
+        },
+        {
+          "name": "plan39-candidate",
+          "left": 184,
+          "right": 337,
+          "top": 361.65625,
+          "bottom": 436.28125,
+          "width": 153,
+          "height": 74.625
+        },
+        {
+          "name": "plan39-candidate",
+          "left": 27,
+          "right": 180,
+          "top": 440.28125,
+          "bottom": 514.90625,
+          "width": 153,
+          "height": 74.625
+        },
+        {
+          "name": "plan39-candidate",
+          "left": 184,
+          "right": 337,
+          "top": 440.28125,
+          "bottom": 514.90625,
+          "width": 153,
+          "height": 74.625
+        },
+        {
+          "name": "fraction-control plan39-check-position",
+          "left": 25,
+          "right": 335,
+          "top": 530.90625,
+          "bottom": 574.90625,
+          "width": 310,
+          "height": 44
+        }
+      ],
+      "promptBox": {
+        "left": 25,
+        "right": 335,
+        "top": 145,
+        "bottom": 186.96875,
+        "width": 310,
+        "height": 41.96875
+      },
+      "controlsBox": {
+        "left": 25,
+        "right": 335,
+        "top": 340.65625,
+        "bottom": 574.90625,
+        "width": 310,
+        "height": 234.25
+      }
+    },
+    {
+      "routeId": "ROUTE-PLAN39-BRIDGE-LINEAR-ALL-8",
+      "context": "historical-plan39-v7",
+      "motionMode": "reduced-motion",
+      "revision": "historical-route-geometry",
+      "description": "Plan39 bridge-05-two-fourths-half: preview without grading, recovery, or resolve controls",
+      "viewport": {
+        "width": 360,
+        "height": 752,
+        "dpr": 1
+      },
+      "beat": "locate",
+      "status": "locate",
+      "leak": false,
+      "feedback": false,
+      "sourceBox": null,
+      "axisBox": null,
+      "aligned": true,
+      "targetCount": 5,
+      "undersized": false,
+      "overlaps": false,
+      "hitMiss": false,
+      "boxesFit": true,
+      "radioCount": 4,
+      "candidateCount": 0,
+      "labels": [
+        "Offered point A: between zero and one half, halfway between them.",
+        "Offered point B: at one half.",
+        "Offered point C: between one half and one, halfway between them.",
+        "Offered point D: at one."
+      ],
+      "distinctLabels": true,
+      "selected": "candidate-b",
+      "checkEnabled": true,
+      "accepted": false,
+      "scroll": {
+        "x": 0,
+        "y": 0
+      },
+      "targets": [
+        {
+          "name": "plan39-candidate",
+          "left": 27,
+          "right": 180,
+          "top": 361.65625,
+          "bottom": 436.28125,
+          "width": 153,
+          "height": 74.625
+        },
+        {
+          "name": "plan39-candidate",
+          "left": 184,
+          "right": 337,
+          "top": 361.65625,
+          "bottom": 436.28125,
+          "width": 153,
+          "height": 74.625
+        },
+        {
+          "name": "plan39-candidate",
+          "left": 27,
+          "right": 180,
+          "top": 440.28125,
+          "bottom": 514.90625,
+          "width": 153,
+          "height": 74.625
+        },
+        {
+          "name": "plan39-candidate",
+          "left": 184,
+          "right": 337,
+          "top": 440.28125,
+          "bottom": 514.90625,
+          "width": 153,
+          "height": 74.625
+        },
+        {
+          "name": "fraction-control plan39-check-position",
+          "left": 25,
+          "right": 335,
+          "top": 530.90625,
+          "bottom": 574.90625,
+          "width": 310,
+          "height": 44
+        }
+      ],
+      "promptBox": {
+        "left": 25,
+        "right": 335,
+        "top": 145,
+        "bottom": 186.96875,
+        "width": 310,
+        "height": 41.96875
+      },
+      "controlsBox": {
+        "left": 25,
+        "right": 335,
+        "top": 340.65625,
+        "bottom": 574.90625,
+        "width": 310,
+        "height": 234.25
+      }
+    },
+    {
+      "routeId": "ROUTE-PLAN39-BRIDGE-LINEAR-ALL-8",
+      "context": "historical-plan39-v7",
+      "motionMode": "reduced-motion",
+      "revision": "historical-route-geometry",
+      "description": "Plan39 bridge-06-three-eighths-8: preview without grading, recovery, or resolve controls",
+      "viewport": {
+        "width": 360,
+        "height": 752,
+        "dpr": 1
+      },
+      "beat": "locate",
+      "status": "locate",
+      "leak": false,
+      "feedback": false,
+      "sourceBox": null,
+      "axisBox": null,
+      "aligned": true,
+      "targetCount": 5,
+      "undersized": false,
+      "overlaps": false,
+      "hitMiss": false,
+      "boxesFit": true,
+      "radioCount": 4,
+      "candidateCount": 0,
+      "labels": [
+        "Offered point A: between zero and one half, closer to zero.",
+        "Offered point B: between zero and one half, halfway between them.",
+        "Offered point C: between zero and one half, closer to one half.",
+        "Offered point D: at one half."
+      ],
+      "distinctLabels": true,
+      "selected": "candidate-c",
+      "checkEnabled": true,
+      "accepted": false,
+      "scroll": {
+        "x": 0,
+        "y": 0
+      },
+      "targets": [
+        {
+          "name": "plan39-candidate",
+          "left": 27,
+          "right": 180,
+          "top": 361.65625,
+          "bottom": 436.28125,
+          "width": 153,
+          "height": 74.625
+        },
+        {
+          "name": "plan39-candidate",
+          "left": 184,
+          "right": 337,
+          "top": 361.65625,
+          "bottom": 436.28125,
+          "width": 153,
+          "height": 74.625
+        },
+        {
+          "name": "plan39-candidate",
+          "left": 27,
+          "right": 180,
+          "top": 440.28125,
+          "bottom": 514.90625,
+          "width": 153,
+          "height": 74.625
+        },
+        {
+          "name": "plan39-candidate",
+          "left": 184,
+          "right": 337,
+          "top": 440.28125,
+          "bottom": 514.90625,
+          "width": 153,
+          "height": 74.625
+        },
+        {
+          "name": "fraction-control plan39-check-position",
+          "left": 25,
+          "right": 335,
+          "top": 530.90625,
+          "bottom": 574.90625,
+          "width": 310,
+          "height": 44
+        }
+      ],
+      "promptBox": {
+        "left": 25,
+        "right": 335,
+        "top": 145,
+        "bottom": 186.96875,
+        "width": 310,
+        "height": 41.96875
+      },
+      "controlsBox": {
+        "left": 25,
+        "right": 335,
+        "top": 340.65625,
+        "bottom": 574.90625,
+        "width": 310,
+        "height": 234.25
+      }
+    },
+    {
+      "routeId": "ROUTE-PLAN39-BRIDGE-LINEAR-ALL-8",
+      "context": "historical-plan39-v7",
+      "motionMode": "reduced-motion",
+      "revision": "historical-route-geometry",
+      "description": "Plan39 bridge-07-one-third-med: preview without grading, recovery, or resolve controls",
+      "viewport": {
+        "width": 360,
+        "height": 752,
+        "dpr": 1
+      },
+      "beat": "locate",
+      "status": "locate",
+      "leak": false,
+      "feedback": false,
+      "sourceBox": null,
+      "axisBox": null,
+      "aligned": true,
+      "targetCount": 5,
+      "undersized": false,
+      "overlaps": false,
+      "hitMiss": false,
+      "boxesFit": true,
+      "radioCount": 4,
+      "candidateCount": 0,
+      "labels": [
+        "Offered point A: between zero and one half, closer to zero.",
+        "Offered point B: between zero and one half, closer to one half.",
+        "Offered point C: at one half.",
+        "Offered point D: between one half and one, closer to one half."
+      ],
+      "distinctLabels": true,
+      "selected": "candidate-b",
+      "checkEnabled": true,
+      "accepted": false,
+      "scroll": {
+        "x": 0,
+        "y": 0
+      },
+      "targets": [
+        {
+          "name": "plan39-candidate",
+          "left": 27,
+          "right": 180,
+          "top": 361.65625,
+          "bottom": 436.28125,
+          "width": 153,
+          "height": 74.625
+        },
+        {
+          "name": "plan39-candidate",
+          "left": 184,
+          "right": 337,
+          "top": 361.65625,
+          "bottom": 436.28125,
+          "width": 153,
+          "height": 74.625
+        },
+        {
+          "name": "plan39-candidate",
+          "left": 27,
+          "right": 180,
+          "top": 440.28125,
+          "bottom": 514.90625,
+          "width": 153,
+          "height": 74.625
+        },
+        {
+          "name": "plan39-candidate",
+          "left": 184,
+          "right": 337,
+          "top": 440.28125,
+          "bottom": 514.90625,
+          "width": 153,
+          "height": 74.625
+        },
+        {
+          "name": "fraction-control plan39-check-position",
+          "left": 25,
+          "right": 335,
+          "top": 530.90625,
+          "bottom": 574.90625,
+          "width": 310,
+          "height": 44
+        }
+      ],
+      "promptBox": {
+        "left": 25,
+        "right": 335,
+        "top": 145,
+        "bottom": 186.96875,
+        "width": 310,
+        "height": 41.96875
+      },
+      "controlsBox": {
+        "left": 25,
+        "right": 335,
+        "top": 340.65625,
+        "bottom": 574.90625,
+        "width": 310,
+        "height": 234.25
+      }
+    },
+    {
+      "routeId": "ROUTE-PLAN39-BRIDGE-LINEAR-ALL-8",
+      "context": "historical-plan39-v7",
+      "motionMode": "reduced-motion",
+      "revision": "historical-route-geometry",
+      "description": "Plan39 bridge-08-five-sixths-med: preview without grading, recovery, or resolve controls",
+      "viewport": {
+        "width": 360,
+        "height": 752,
+        "dpr": 1
+      },
+      "beat": "locate",
+      "status": "locate",
+      "leak": false,
+      "feedback": false,
+      "sourceBox": null,
+      "axisBox": null,
+      "aligned": true,
+      "targetCount": 5,
+      "undersized": false,
+      "overlaps": false,
+      "hitMiss": false,
+      "boxesFit": true,
+      "radioCount": 4,
+      "candidateCount": 0,
+      "labels": [
+        "Offered point A: between zero and one half, closer to one half.",
+        "Offered point B: at one half.",
+        "Offered point C: between one half and one, closer to one half.",
+        "Offered point D: between one half and one, closer to one."
+      ],
+      "distinctLabels": true,
+      "selected": "candidate-d",
+      "checkEnabled": true,
+      "accepted": false,
+      "scroll": {
+        "x": 0,
+        "y": 0
+      },
+      "targets": [
+        {
+          "name": "plan39-candidate",
+          "left": 27,
+          "right": 180,
+          "top": 361.65625,
+          "bottom": 436.28125,
+          "width": 153,
+          "height": 74.625
+        },
+        {
+          "name": "plan39-candidate",
+          "left": 184,
+          "right": 337,
+          "top": 361.65625,
+          "bottom": 436.28125,
+          "width": 153,
+          "height": 74.625
+        },
+        {
+          "name": "plan39-candidate",
+          "left": 27,
+          "right": 180,
+          "top": 440.28125,
+          "bottom": 514.90625,
+          "width": 153,
+          "height": 74.625
+        },
+        {
+          "name": "plan39-candidate",
+          "left": 184,
+          "right": 337,
+          "top": 440.28125,
+          "bottom": 514.90625,
+          "width": 153,
+          "height": 74.625
+        },
+        {
+          "name": "fraction-control plan39-check-position",
+          "left": 25,
+          "right": 335,
+          "top": 530.90625,
+          "bottom": 574.90625,
+          "width": 310,
+          "height": 44
+        }
+      ],
+      "promptBox": {
+        "left": 25,
+        "right": 335,
+        "top": 145,
+        "bottom": 186.96875,
+        "width": 310,
+        "height": 41.96875
+      },
+      "controlsBox": {
+        "left": 25,
+        "right": 335,
+        "top": 340.65625,
+        "bottom": 574.90625,
+        "width": 310,
+        "height": 234.25
+      }
+    },
+    {
+      "routeId": "ROUTE-PLAN39-DEEP-SAMPLE-UNREDUCED-TWO-FOURTHS",
+      "context": "historical-plan39-v7",
+      "motionMode": "standard-motion",
+      "revision": "historical-route-geometry",
+      "description": "Plan39 bridge-05-two-fourths-half: preview without grading, recovery, or resolve controls",
+      "viewport": {
+        "width": 360,
+        "height": 740,
+        "dpr": 1
+      },
+      "beat": "locate",
+      "status": "locate",
+      "leak": false,
+      "feedback": false,
+      "sourceBox": {
+        "left": 41,
+        "right": 319,
+        "top": 244.703125,
+        "bottom": 276.703125,
+        "width": 278,
+        "height": 32
+      },
+      "axisBox": {
+        "left": 41,
+        "right": 319,
+        "top": 279.890625,
+        "bottom": 327.890625,
+        "width": 278,
+        "height": 48
+      },
+      "aligned": true,
+      "targetCount": 3,
+      "undersized": false,
+      "overlaps": false,
+      "hitMiss": false,
+      "boxesFit": true,
+      "radioCount": 0,
+      "candidateCount": 4,
+      "labels": [],
+      "distinctLabels": true,
+      "selected": "candidate-b",
+      "checkEnabled": true,
+      "accepted": false,
+      "scroll": {
+        "x": 0,
+        "y": 0
+      },
+      "targets": [
+        {
+          "name": "fraction-control plan39-stepper-previous plan39-stepper-move",
+          "left": 25,
+          "right": 137,
+          "top": 335.078125,
+          "bottom": 399.078125,
+          "width": 112,
+          "height": 64
+        },
+        {
+          "name": "fraction-control plan39-stepper-next plan39-stepper-move",
+          "left": 223,
+          "right": 335,
+          "top": 335.078125,
+          "bottom": 399.078125,
+          "width": 112,
+          "height": 64
+        },
+        {
+          "name": "fraction-control plan39-check-position",
+          "left": 25,
+          "right": 335,
+          "top": 415.078125,
+          "bottom": 459.078125,
+          "width": 310,
+          "height": 44
+        }
+      ],
+      "promptBox": {
+        "left": 25,
+        "right": 335,
+        "top": 145,
+        "bottom": 186.96875,
+        "width": 310,
+        "height": 41.96875
+      },
+      "controlsBox": {
+        "left": 25,
+        "right": 335,
+        "top": 335.078125,
+        "bottom": 459.078125,
+        "width": 310,
+        "height": 124
+      }
+    },
+    {
+      "routeId": "ROUTE-PLAN39-DEEP-SAMPLE-ODD-THIRDS-B3",
+      "context": "historical-plan39-v7",
+      "motionMode": "standard-motion",
+      "revision": "historical-route-geometry",
+      "description": "Plan39 bridge-04-two-thirds-3: preview without grading, recovery, or resolve controls",
+      "viewport": {
+        "width": 360,
+        "height": 740,
+        "dpr": 1
+      },
+      "beat": "locate",
+      "status": "locate",
+      "leak": false,
+      "feedback": false,
+      "sourceBox": {
+        "left": 41,
+        "right": 319,
+        "top": 244.703125,
+        "bottom": 276.703125,
+        "width": 278,
+        "height": 32
+      },
+      "axisBox": {
+        "left": 41,
+        "right": 319,
+        "top": 279.890625,
+        "bottom": 327.890625,
+        "width": 278,
+        "height": 48
+      },
+      "aligned": true,
+      "targetCount": 3,
+      "undersized": false,
+      "overlaps": false,
+      "hitMiss": false,
+      "boxesFit": true,
+      "radioCount": 0,
+      "candidateCount": 4,
+      "labels": [],
+      "distinctLabels": true,
+      "selected": "partition-2-of-3",
+      "checkEnabled": true,
+      "accepted": false,
+      "scroll": {
+        "x": 0,
+        "y": 0
+      },
+      "targets": [
+        {
+          "name": "fraction-control plan39-stepper-previous plan39-stepper-move",
+          "left": 25,
+          "right": 137,
+          "top": 335.078125,
+          "bottom": 399.078125,
+          "width": 112,
+          "height": 64
+        },
+        {
+          "name": "fraction-control plan39-stepper-next plan39-stepper-move",
+          "left": 223,
+          "right": 335,
+          "top": 335.078125,
+          "bottom": 399.078125,
+          "width": 112,
+          "height": 64
+        },
+        {
+          "name": "fraction-control plan39-check-position",
+          "left": 25,
+          "right": 335,
+          "top": 415.078125,
+          "bottom": 459.078125,
+          "width": 310,
+          "height": 44
+        }
+      ],
+      "promptBox": {
+        "left": 25,
+        "right": 335,
+        "top": 145,
+        "bottom": 186.96875,
+        "width": 310,
+        "height": 41.96875
+      },
+      "controlsBox": {
+        "left": 25,
+        "right": 335,
+        "top": 335.078125,
+        "bottom": 459.078125,
+        "width": 310,
+        "height": 124
+      }
+    },
+    {
+      "routeId": "ROUTE-PLAN39-DEEP-SAMPLE-HIGH-EIGHTHS-B8",
+      "context": "historical-plan39-v7",
+      "motionMode": "standard-motion",
+      "revision": "historical-route-geometry",
+      "description": "Plan39 bridge-06-three-eighths-8: preview without grading, recovery, or resolve controls",
+      "viewport": {
+        "width": 360,
+        "height": 740,
+        "dpr": 1
+      },
+      "beat": "locate",
+      "status": "locate",
+      "leak": false,
+      "feedback": false,
+      "sourceBox": {
+        "left": 41,
+        "right": 319,
+        "top": 244.703125,
+        "bottom": 276.703125,
+        "width": 278,
+        "height": 32
+      },
+      "axisBox": {
+        "left": 41,
+        "right": 319,
+        "top": 279.890625,
+        "bottom": 327.890625,
+        "width": 278,
+        "height": 48
+      },
+      "aligned": true,
+      "targetCount": 3,
+      "undersized": false,
+      "overlaps": false,
+      "hitMiss": false,
+      "boxesFit": true,
+      "radioCount": 0,
+      "candidateCount": 9,
+      "labels": [],
+      "distinctLabels": true,
+      "selected": "partition-3-of-8",
+      "checkEnabled": true,
+      "accepted": false,
+      "scroll": {
+        "x": 0,
+        "y": 0
+      },
+      "targets": [
+        {
+          "name": "fraction-control plan39-stepper-previous plan39-stepper-move",
+          "left": 25,
+          "right": 137,
+          "top": 335.078125,
+          "bottom": 399.078125,
+          "width": 112,
+          "height": 64
+        },
+        {
+          "name": "fraction-control plan39-stepper-next plan39-stepper-move",
+          "left": 223,
+          "right": 335,
+          "top": 335.078125,
+          "bottom": 399.078125,
+          "width": 112,
+          "height": 64
+        },
+        {
+          "name": "fraction-control plan39-check-position",
+          "left": 25,
+          "right": 335,
+          "top": 415.078125,
+          "bottom": 459.078125,
+          "width": 310,
+          "height": 44
+        }
+      ],
+      "promptBox": {
+        "left": 25,
+        "right": 335,
+        "top": 145,
+        "bottom": 186.96875,
+        "width": 310,
+        "height": 41.96875
+      },
+      "controlsBox": {
+        "left": 25,
+        "right": 335,
+        "top": 335.078125,
+        "bottom": 459.078125,
+        "width": 310,
+        "height": 124
+      }
+    },
+    {
+      "routeId": "ROUTE-PLAN39-DEEP-SAMPLE-HIGH-EIGHTHS-B8",
+      "context": "historical-plan39-v7",
+      "motionMode": "standard-motion",
+      "revision": "historical-route-geometry",
+      "description": "Enforce ordinary Plan39 locate contract",
+      "viewport": {
+        "width": 360,
+        "height": 740,
+        "dpr": 1
+      },
+      "beat": "locate",
+      "status": "locate",
+      "leak": false,
+      "feedback": false,
+      "sourceBox": {
+        "left": 41,
+        "right": 319,
+        "top": 244.703125,
+        "bottom": 276.703125,
+        "width": 278,
+        "height": 32
+      },
+      "axisBox": {
+        "left": 41,
+        "right": 319,
+        "top": 279.890625,
+        "bottom": 327.890625,
+        "width": 278,
+        "height": 48
+      },
+      "aligned": true,
+      "targetCount": 3,
+      "undersized": false,
+      "overlaps": false,
+      "hitMiss": false,
+      "boxesFit": true,
+      "radioCount": 0,
+      "candidateCount": 9,
+      "labels": [],
+      "distinctLabels": true,
+      "selected": "partition-3-of-8",
+      "checkEnabled": true,
+      "accepted": false,
+      "scroll": {
+        "x": 0,
+        "y": 0
+      },
+      "targets": [
+        {
+          "name": "fraction-control plan39-stepper-previous plan39-stepper-move",
+          "left": 25,
+          "right": 137,
+          "top": 335.078125,
+          "bottom": 399.078125,
+          "width": 112,
+          "height": 64
+        },
+        {
+          "name": "fraction-control plan39-stepper-next plan39-stepper-move",
+          "left": 223,
+          "right": 335,
+          "top": 335.078125,
+          "bottom": 399.078125,
+          "width": 112,
+          "height": 64
+        },
+        {
+          "name": "fraction-control plan39-check-position",
+          "left": 25,
+          "right": 335,
+          "top": 415.078125,
+          "bottom": 459.078125,
+          "width": 310,
+          "height": 44
+        }
+      ],
+      "promptBox": {
+        "left": 25,
+        "right": 335,
+        "top": 145,
+        "bottom": 186.96875,
+        "width": 310,
+        "height": 41.96875
+      },
+      "controlsBox": {
+        "left": 25,
+        "right": 335,
+        "top": 335.078125,
+        "bottom": 459.078125,
+        "width": 310,
+        "height": 124
+      }
+    },
+    {
+      "routeId": "ROUTE-PLAN39-DEEP-SAMPLE-MEDIUM-07-08",
+      "context": "historical-plan39-v7",
+      "motionMode": "standard-motion",
+      "revision": "historical-route-geometry",
+      "description": "Plan39 bridge-07-one-third-med: preview without grading, recovery, or resolve controls",
+      "viewport": {
+        "width": 360,
+        "height": 752,
+        "dpr": 1
+      },
+      "beat": "locate",
+      "status": "locate",
+      "leak": false,
+      "feedback": false,
+      "sourceBox": null,
+      "axisBox": null,
+      "aligned": true,
+      "targetCount": 5,
+      "undersized": false,
+      "overlaps": false,
+      "hitMiss": false,
+      "boxesFit": true,
+      "radioCount": 4,
+      "candidateCount": 0,
+      "labels": [
+        "Offered point A: between zero and one half, closer to zero.",
+        "Offered point B: between zero and one half, closer to one half.",
+        "Offered point C: at one half.",
+        "Offered point D: between one half and one, closer to one half."
+      ],
+      "distinctLabels": true,
+      "selected": "candidate-b",
+      "checkEnabled": true,
+      "accepted": false,
+      "scroll": {
+        "x": 0,
+        "y": 0
+      },
+      "targets": [
+        {
+          "name": "plan39-candidate",
+          "left": 27,
+          "right": 180,
+          "top": 361.65625,
+          "bottom": 436.28125,
+          "width": 153,
+          "height": 74.625
+        },
+        {
+          "name": "plan39-candidate",
+          "left": 184,
+          "right": 337,
+          "top": 361.65625,
+          "bottom": 436.28125,
+          "width": 153,
+          "height": 74.625
+        },
+        {
+          "name": "plan39-candidate",
+          "left": 27,
+          "right": 180,
+          "top": 440.28125,
+          "bottom": 514.90625,
+          "width": 153,
+          "height": 74.625
+        },
+        {
+          "name": "plan39-candidate",
+          "left": 184,
+          "right": 337,
+          "top": 440.28125,
+          "bottom": 514.90625,
+          "width": 153,
+          "height": 74.625
+        },
+        {
+          "name": "fraction-control plan39-check-position",
+          "left": 25,
+          "right": 335,
+          "top": 530.90625,
+          "bottom": 574.90625,
+          "width": 310,
+          "height": 44
+        }
+      ],
+      "promptBox": {
+        "left": 25,
+        "right": 335,
+        "top": 145,
+        "bottom": 186.96875,
+        "width": 310,
+        "height": 41.96875
+      },
+      "controlsBox": {
+        "left": 25,
+        "right": 335,
+        "top": 340.65625,
+        "bottom": 574.90625,
+        "width": 310,
+        "height": 234.25
+      }
+    },
+    {
+      "routeId": "ROUTE-PLAN39-DEEP-SAMPLE-MEDIUM-07-08",
+      "context": "historical-plan39-v7",
+      "motionMode": "standard-motion",
+      "revision": "historical-route-geometry",
+      "description": "Plan39 bridge-08-five-sixths-med: preview without grading, recovery, or resolve controls",
+      "viewport": {
+        "width": 360,
+        "height": 752,
+        "dpr": 1
+      },
+      "beat": "locate",
+      "status": "locate",
+      "leak": false,
+      "feedback": false,
+      "sourceBox": null,
+      "axisBox": null,
+      "aligned": true,
+      "targetCount": 5,
+      "undersized": false,
+      "overlaps": false,
+      "hitMiss": false,
+      "boxesFit": true,
+      "radioCount": 4,
+      "candidateCount": 0,
+      "labels": [
+        "Offered point A: between zero and one half, closer to one half.",
+        "Offered point B: at one half.",
+        "Offered point C: between one half and one, closer to one half.",
+        "Offered point D: between one half and one, closer to one."
+      ],
+      "distinctLabels": true,
+      "selected": "candidate-d",
+      "checkEnabled": true,
+      "accepted": false,
+      "scroll": {
+        "x": 0,
+        "y": 0
+      },
+      "targets": [
+        {
+          "name": "plan39-candidate",
+          "left": 27,
+          "right": 180,
+          "top": 361.65625,
+          "bottom": 436.28125,
+          "width": 153,
+          "height": 74.625
+        },
+        {
+          "name": "plan39-candidate",
+          "left": 184,
+          "right": 337,
+          "top": 361.65625,
+          "bottom": 436.28125,
+          "width": 153,
+          "height": 74.625
+        },
+        {
+          "name": "plan39-candidate",
+          "left": 27,
+          "right": 180,
+          "top": 440.28125,
+          "bottom": 514.90625,
+          "width": 153,
+          "height": 74.625
+        },
+        {
+          "name": "plan39-candidate",
+          "left": 184,
+          "right": 337,
+          "top": 440.28125,
+          "bottom": 514.90625,
+          "width": 153,
+          "height": 74.625
+        },
+        {
+          "name": "fraction-control plan39-check-position",
+          "left": 25,
+          "right": 335,
+          "top": 530.90625,
+          "bottom": 574.90625,
+          "width": 310,
+          "height": 44
+        }
+      ],
+      "promptBox": {
+        "left": 25,
+        "right": 335,
+        "top": 145,
+        "bottom": 186.96875,
+        "width": 310,
+        "height": 41.96875
+      },
+      "controlsBox": {
+        "left": 25,
+        "right": 335,
+        "top": 340.65625,
+        "bottom": 574.90625,
+        "width": 310,
+        "height": 234.25
+      }
+    },
+    {
+      "routeId": "ROUTE-PLAN39-RESPONSIVE-360X752",
+      "context": "historical-plan39-v7",
+      "motionMode": "standard-motion",
+      "revision": "historical-route-geometry",
+      "description": "Plan39 bridge-06-three-eighths-8: preview without grading, recovery, or resolve controls",
+      "viewport": {
+        "width": 360,
+        "height": 752,
+        "dpr": 1
+      },
+      "beat": "locate",
+      "status": "locate",
+      "leak": false,
+      "feedback": false,
+      "sourceBox": {
+        "left": 41,
+        "right": 319,
+        "top": 244.703125,
+        "bottom": 276.703125,
+        "width": 278,
+        "height": 32
+      },
+      "axisBox": {
+        "left": 41,
+        "right": 319,
+        "top": 279.890625,
+        "bottom": 327.890625,
+        "width": 278,
+        "height": 48
+      },
+      "aligned": true,
+      "targetCount": 3,
+      "undersized": false,
+      "overlaps": false,
+      "hitMiss": false,
+      "boxesFit": true,
+      "radioCount": 0,
+      "candidateCount": 9,
+      "labels": [],
+      "distinctLabels": true,
+      "selected": "partition-3-of-8",
+      "checkEnabled": true,
+      "accepted": false,
+      "scroll": {
+        "x": 0,
+        "y": 0
+      },
+      "targets": [
+        {
+          "name": "fraction-control plan39-stepper-previous plan39-stepper-move",
+          "left": 25,
+          "right": 137,
+          "top": 335.078125,
+          "bottom": 399.078125,
+          "width": 112,
+          "height": 64
+        },
+        {
+          "name": "fraction-control plan39-stepper-next plan39-stepper-move",
+          "left": 223,
+          "right": 335,
+          "top": 335.078125,
+          "bottom": 399.078125,
+          "width": 112,
+          "height": 64
+        },
+        {
+          "name": "fraction-control plan39-check-position",
+          "left": 25,
+          "right": 335,
+          "top": 415.078125,
+          "bottom": 459.078125,
+          "width": 310,
+          "height": 44
+        }
+      ],
+      "promptBox": {
+        "left": 25,
+        "right": 335,
+        "top": 145,
+        "bottom": 186.96875,
+        "width": 310,
+        "height": 41.96875
+      },
+      "controlsBox": {
+        "left": 25,
+        "right": 335,
+        "top": 335.078125,
+        "bottom": 459.078125,
+        "width": 310,
+        "height": 124
+      }
+    },
+    {
+      "routeId": "ROUTE-PLAN39-RESPONSIVE-1366X768",
+      "context": "historical-plan39-v7",
+      "motionMode": "standard-motion",
+      "revision": "historical-route-geometry",
+      "description": "Plan39 bridge-06-three-eighths-8: preview without grading, recovery, or resolve controls",
+      "viewport": {
+        "width": 1366,
+        "height": 768,
+        "dpr": 1
+      },
+      "beat": "locate",
+      "status": "locate",
+      "leak": false,
+      "feedback": false,
+      "sourceBox": {
+        "left": 367,
+        "right": 999,
+        "top": 275.890625,
+        "bottom": 313.484375,
+        "width": 632,
+        "height": 37.59375
+      },
+      "axisBox": {
+        "left": 367,
+        "right": 999,
+        "top": 319.0625,
+        "bottom": 370.25,
+        "width": 632,
+        "height": 51.1875
+      },
+      "aligned": true,
+      "targetCount": 3,
+      "undersized": false,
+      "overlaps": false,
+      "hitMiss": false,
+      "boxesFit": true,
+      "radioCount": 0,
+      "candidateCount": 9,
+      "labels": [],
+      "distinctLabels": true,
+      "selected": "partition-3-of-8",
+      "checkEnabled": true,
+      "accepted": false,
+      "scroll": {
+        "x": 0,
+        "y": 0
+      },
+      "targets": [
+        {
+          "name": "fraction-control plan39-stepper-previous plan39-stepper-move",
+          "left": 347,
+          "right": 534.890625,
+          "top": 380.640625,
+          "bottom": 424.640625,
+          "width": 187.890625,
+          "height": 44
+        },
+        {
+          "name": "fraction-control plan39-stepper-next plan39-stepper-move",
+          "left": 831.09375,
+          "right": 1019,
+          "top": 380.640625,
+          "bottom": 424.640625,
+          "width": 187.90625,
+          "height": 44
+        },
+        {
+          "name": "fraction-control plan39-check-position",
+          "left": 347,
+          "right": 1019,
+          "top": 440.640625,
+          "bottom": 484.640625,
+          "width": 672,
+          "height": 44
+        }
+      ],
+      "promptBox": {
+        "left": 347,
+        "right": 1019,
+        "top": 193.96875,
+        "bottom": 214.953125,
+        "width": 672,
+        "height": 20.984375
+      },
+      "controlsBox": {
+        "left": 347,
+        "right": 1019,
+        "top": 380.640625,
+        "bottom": 484.640625,
+        "width": 672,
+        "height": 104
+      }
+    },
+    {
+      "routeId": "ROUTE-PLAN39-RESPONSIVE-1093X614-DPR125",
+      "context": "historical-plan39-v7",
+      "motionMode": "standard-motion",
+      "revision": "historical-route-geometry",
+      "description": "Plan39 bridge-06-three-eighths-8: preview without grading, recovery, or resolve controls",
+      "viewport": {
+        "width": 1093,
+        "height": 614,
+        "dpr": 1.25
+      },
+      "beat": "locate",
+      "status": "locate",
+      "leak": false,
+      "feedback": false,
+      "sourceBox": {
+        "left": 230.5,
+        "right": 862.5,
+        "top": 263.015625,
+        "bottom": 300.609375,
+        "width": 632,
+        "height": 37.59375
+      },
+      "axisBox": {
+        "left": 230.5,
+        "right": 862.5,
+        "top": 306.1875,
+        "bottom": 357.375,
+        "width": 632,
+        "height": 51.1875
+      },
+      "aligned": true,
+      "targetCount": 3,
+      "undersized": false,
+      "overlaps": false,
+      "hitMiss": false,
+      "boxesFit": true,
+      "radioCount": 0,
+      "candidateCount": 9,
+      "labels": [],
+      "distinctLabels": true,
+      "selected": "partition-3-of-8",
+      "checkEnabled": true,
+      "accepted": false,
+      "scroll": {
+        "x": 0,
+        "y": 0
+      },
+      "targets": [
+        {
+          "name": "fraction-control plan39-stepper-previous plan39-stepper-move",
+          "left": 210.5,
+          "right": 398.390625,
+          "top": 367.765625,
+          "bottom": 411.765625,
+          "width": 187.890625,
+          "height": 44
+        },
+        {
+          "name": "fraction-control plan39-stepper-next plan39-stepper-move",
+          "left": 694.59375,
+          "right": 882.5,
+          "top": 367.765625,
+          "bottom": 411.765625,
+          "width": 187.90625,
+          "height": 44
+        },
+        {
+          "name": "fraction-control plan39-check-position",
+          "left": 210.5,
+          "right": 882.5,
+          "top": 427.765625,
+          "bottom": 471.765625,
+          "width": 672,
+          "height": 44
+        }
+      ],
+      "promptBox": {
+        "left": 210.5,
+        "right": 882.5,
+        "top": 181.09375,
+        "bottom": 202.078125,
+        "width": 672,
+        "height": 20.984375
+      },
+      "controlsBox": {
+        "left": 210.5,
+        "right": 882.5,
+        "top": 367.765625,
+        "bottom": 471.765625,
+        "width": 672,
+        "height": 104
+      }
+    },
+    {
+      "routeId": "ROUTE-PLAN39-REPAIR02-DRAG-ALL-8",
+      "context": "production-default-v8",
+      "motionMode": "standard-motion",
+      "revision": "production-default-v8",
+      "itemId": "bridge-01-half-2",
+      "selectedId": "partition-1-of-2",
+      "viewport": {
+        "width": 360,
+        "height": 740,
+        "dpr": 1
+      },
+      "prompt": {
+        "x": 25,
+        "y": 145,
+        "width": 310,
+        "height": 20.984375,
+        "top": 145,
+        "bottom": 165.984375
+      },
+      "controls": {
+        "x": 25,
+        "y": 276.359375,
+        "width": 310,
+        "height": 124,
+        "top": 276.359375,
+        "bottom": 400.359375
+      },
+      "targets": [
+        {
+          "x": 25,
+          "y": 276.359375,
+          "width": 112,
+          "height": 64,
+          "top": 276.359375,
+          "bottom": 340.359375
+        },
+        {
+          "x": 223,
+          "y": 276.359375,
+          "width": 112,
+          "height": 64,
+          "top": 276.359375,
+          "bottom": 340.359375
+        },
+        {
+          "x": 25,
+          "y": 356.359375,
+          "width": 310,
+          "height": 44,
+          "top": 356.359375,
+          "bottom": 400.359375
+        }
+      ],
+      "minimumTargetWidth": 112,
+      "minimumTargetHeight": 44,
+      "linearOptionLabels": [],
+      "linearOptionLabelsDistinct": true,
+      "horizontalOverflow": 0,
+      "resizedAlignment": {
+        "tokenCenterX": 400,
+        "pointCenterX": 400,
+        "errorPx": 0
+      }
+    },
+    {
+      "routeId": "ROUTE-PLAN39-REPAIR02-DRAG-ALL-8",
+      "context": "production-default-v8",
+      "motionMode": "standard-motion",
+      "revision": "production-default-v8",
+      "itemId": "bridge-02-fourth-4",
+      "selectedId": "partition-1-of-4",
+      "viewport": {
+        "width": 360,
+        "height": 740,
+        "dpr": 1
+      },
+      "prompt": {
+        "x": 25,
+        "y": 145,
+        "width": 310,
+        "height": 20.984375,
+        "top": 145,
+        "bottom": 165.984375
+      },
+      "controls": {
+        "x": 25,
+        "y": 276.359375,
+        "width": 310,
+        "height": 124,
+        "top": 276.359375,
+        "bottom": 400.359375
+      },
+      "targets": [
+        {
+          "x": 25,
+          "y": 276.359375,
+          "width": 112,
+          "height": 64,
+          "top": 276.359375,
+          "bottom": 340.359375
+        },
+        {
+          "x": 223,
+          "y": 276.359375,
+          "width": 112,
+          "height": 64,
+          "top": 276.359375,
+          "bottom": 340.359375
+        },
+        {
+          "x": 25,
+          "y": 356.359375,
+          "width": 310,
+          "height": 44,
+          "top": 356.359375,
+          "bottom": 400.359375
+        }
+      ],
+      "minimumTargetWidth": 112,
+      "minimumTargetHeight": 44,
+      "linearOptionLabels": [],
+      "linearOptionLabelsDistinct": true,
+      "horizontalOverflow": 0,
+      "resizedAlignment": null
+    },
+    {
+      "routeId": "ROUTE-PLAN39-REPAIR02-DRAG-ALL-8",
+      "context": "production-default-v8",
+      "motionMode": "standard-motion",
+      "revision": "production-default-v8",
+      "itemId": "bridge-03-three-fourths-4",
+      "selectedId": "partition-3-of-4",
+      "viewport": {
+        "width": 360,
+        "height": 740,
+        "dpr": 1
+      },
+      "prompt": {
+        "x": 25,
+        "y": 145,
+        "width": 310,
+        "height": 20.984375,
+        "top": 145,
+        "bottom": 165.984375
+      },
+      "controls": {
+        "x": 25,
+        "y": 276.359375,
+        "width": 310,
+        "height": 124,
+        "top": 276.359375,
+        "bottom": 400.359375
+      },
+      "targets": [
+        {
+          "x": 25,
+          "y": 276.359375,
+          "width": 112,
+          "height": 64,
+          "top": 276.359375,
+          "bottom": 340.359375
+        },
+        {
+          "x": 223,
+          "y": 276.359375,
+          "width": 112,
+          "height": 64,
+          "top": 276.359375,
+          "bottom": 340.359375
+        },
+        {
+          "x": 25,
+          "y": 356.359375,
+          "width": 310,
+          "height": 44,
+          "top": 356.359375,
+          "bottom": 400.359375
+        }
+      ],
+      "minimumTargetWidth": 112,
+      "minimumTargetHeight": 44,
+      "linearOptionLabels": [],
+      "linearOptionLabelsDistinct": true,
+      "horizontalOverflow": 0,
+      "resizedAlignment": null
+    },
+    {
+      "routeId": "ROUTE-PLAN39-REPAIR02-DRAG-ALL-8",
+      "context": "production-default-v8",
+      "motionMode": "standard-motion",
+      "revision": "production-default-v8",
+      "itemId": "bridge-04-two-thirds-3",
+      "selectedId": "partition-2-of-3",
+      "viewport": {
+        "width": 360,
+        "height": 740,
+        "dpr": 1
+      },
+      "prompt": {
+        "x": 25,
+        "y": 145,
+        "width": 310,
+        "height": 20.984375,
+        "top": 145,
+        "bottom": 165.984375
+      },
+      "controls": {
+        "x": 25,
+        "y": 276.359375,
+        "width": 310,
+        "height": 124,
+        "top": 276.359375,
+        "bottom": 400.359375
+      },
+      "targets": [
+        {
+          "x": 25,
+          "y": 276.359375,
+          "width": 112,
+          "height": 64,
+          "top": 276.359375,
+          "bottom": 340.359375
+        },
+        {
+          "x": 223,
+          "y": 276.359375,
+          "width": 112,
+          "height": 64,
+          "top": 276.359375,
+          "bottom": 340.359375
+        },
+        {
+          "x": 25,
+          "y": 356.359375,
+          "width": 310,
+          "height": 44,
+          "top": 356.359375,
+          "bottom": 400.359375
+        }
+      ],
+      "minimumTargetWidth": 112,
+      "minimumTargetHeight": 44,
+      "linearOptionLabels": [],
+      "linearOptionLabelsDistinct": true,
+      "horizontalOverflow": 0,
+      "resizedAlignment": null
+    },
+    {
+      "routeId": "ROUTE-PLAN39-REPAIR02-DRAG-ALL-8",
+      "context": "production-default-v8",
+      "motionMode": "standard-motion",
+      "revision": "production-default-v8",
+      "itemId": "bridge-05-two-fourths-half",
+      "selectedId": "partition-2-of-4",
+      "viewport": {
+        "width": 360,
+        "height": 740,
+        "dpr": 1
+      },
+      "prompt": {
+        "x": 25,
+        "y": 145,
+        "width": 310,
+        "height": 20.984375,
+        "top": 145,
+        "bottom": 165.984375
+      },
+      "controls": {
+        "x": 25,
+        "y": 276.359375,
+        "width": 310,
+        "height": 124,
+        "top": 276.359375,
+        "bottom": 400.359375
+      },
+      "targets": [
+        {
+          "x": 25,
+          "y": 276.359375,
+          "width": 112,
+          "height": 64,
+          "top": 276.359375,
+          "bottom": 340.359375
+        },
+        {
+          "x": 223,
+          "y": 276.359375,
+          "width": 112,
+          "height": 64,
+          "top": 276.359375,
+          "bottom": 340.359375
+        },
+        {
+          "x": 25,
+          "y": 356.359375,
+          "width": 310,
+          "height": 44,
+          "top": 356.359375,
+          "bottom": 400.359375
+        }
+      ],
+      "minimumTargetWidth": 112,
+      "minimumTargetHeight": 44,
+      "linearOptionLabels": [],
+      "linearOptionLabelsDistinct": true,
+      "horizontalOverflow": 0,
+      "resizedAlignment": null
+    },
+    {
+      "routeId": "ROUTE-PLAN39-REPAIR02-DRAG-ALL-8",
+      "context": "production-default-v8",
+      "motionMode": "standard-motion",
+      "revision": "production-default-v8",
+      "itemId": "bridge-06-three-eighths-8",
+      "selectedId": "partition-3-of-8",
+      "viewport": {
+        "width": 360,
+        "height": 740,
+        "dpr": 1
+      },
+      "prompt": {
+        "x": 25,
+        "y": 145,
+        "width": 310,
+        "height": 20.984375,
+        "top": 145,
+        "bottom": 165.984375
+      },
+      "controls": {
+        "x": 25,
+        "y": 276.359375,
+        "width": 310,
+        "height": 124,
+        "top": 276.359375,
+        "bottom": 400.359375
+      },
+      "targets": [
+        {
+          "x": 25,
+          "y": 276.359375,
+          "width": 112,
+          "height": 64,
+          "top": 276.359375,
+          "bottom": 340.359375
+        },
+        {
+          "x": 223,
+          "y": 276.359375,
+          "width": 112,
+          "height": 64,
+          "top": 276.359375,
+          "bottom": 340.359375
+        },
+        {
+          "x": 25,
+          "y": 356.359375,
+          "width": 310,
+          "height": 44,
+          "top": 356.359375,
+          "bottom": 400.359375
+        }
+      ],
+      "minimumTargetWidth": 112,
+      "minimumTargetHeight": 44,
+      "linearOptionLabels": [],
+      "linearOptionLabelsDistinct": true,
+      "horizontalOverflow": 0,
+      "resizedAlignment": null
+    },
+    {
+      "routeId": "ROUTE-PLAN39-REPAIR02-DRAG-ALL-8",
+      "context": "production-default-v8",
+      "motionMode": "standard-motion",
+      "revision": "production-default-v8",
+      "itemId": "bridge-07-one-third-med",
+      "selectedId": "partition-1-of-3",
+      "viewport": {
+        "width": 360,
+        "height": 740,
+        "dpr": 1
+      },
+      "prompt": {
+        "x": 25,
+        "y": 145,
+        "width": 310,
+        "height": 20.984375,
+        "top": 145,
+        "bottom": 165.984375
+      },
+      "controls": {
+        "x": 25,
+        "y": 276.359375,
+        "width": 310,
+        "height": 124,
+        "top": 276.359375,
+        "bottom": 400.359375
+      },
+      "targets": [
+        {
+          "x": 25,
+          "y": 276.359375,
+          "width": 112,
+          "height": 64,
+          "top": 276.359375,
+          "bottom": 340.359375
+        },
+        {
+          "x": 223,
+          "y": 276.359375,
+          "width": 112,
+          "height": 64,
+          "top": 276.359375,
+          "bottom": 340.359375
+        },
+        {
+          "x": 25,
+          "y": 356.359375,
+          "width": 310,
+          "height": 44,
+          "top": 356.359375,
+          "bottom": 400.359375
+        }
+      ],
+      "minimumTargetWidth": 112,
+      "minimumTargetHeight": 44,
+      "linearOptionLabels": [],
+      "linearOptionLabelsDistinct": true,
+      "horizontalOverflow": 0,
+      "resizedAlignment": null
+    },
+    {
+      "routeId": "ROUTE-PLAN39-REPAIR02-DRAG-ALL-8",
+      "context": "production-default-v8",
+      "motionMode": "standard-motion",
+      "revision": "production-default-v8",
+      "itemId": "bridge-08-five-sixths-med",
+      "selectedId": "partition-5-of-6",
+      "viewport": {
+        "width": 360,
+        "height": 740,
+        "dpr": 1
+      },
+      "prompt": {
+        "x": 25,
+        "y": 145,
+        "width": 310,
+        "height": 20.984375,
+        "top": 145,
+        "bottom": 165.984375
+      },
+      "controls": {
+        "x": 25,
+        "y": 276.359375,
+        "width": 310,
+        "height": 124,
+        "top": 276.359375,
+        "bottom": 400.359375
+      },
+      "targets": [
+        {
+          "x": 25,
+          "y": 276.359375,
+          "width": 112,
+          "height": 64,
+          "top": 276.359375,
+          "bottom": 340.359375
+        },
+        {
+          "x": 223,
+          "y": 276.359375,
+          "width": 112,
+          "height": 64,
+          "top": 276.359375,
+          "bottom": 340.359375
+        },
+        {
+          "x": 25,
+          "y": 356.359375,
+          "width": 310,
+          "height": 44,
+          "top": 356.359375,
+          "bottom": 400.359375
+        }
+      ],
+      "minimumTargetWidth": 112,
+      "minimumTargetHeight": 44,
+      "linearOptionLabels": [],
+      "linearOptionLabelsDistinct": true,
+      "horizontalOverflow": 0,
+      "resizedAlignment": null
+    },
+    {
+      "routeId": "ROUTE-PLAN39-REPAIR02-TOUCH-TAP-ALL-8",
+      "context": "production-default-v8",
+      "motionMode": "standard-motion",
+      "revision": "production-default-v8",
+      "itemId": "bridge-01-half-2",
+      "selectedId": "partition-1-of-2",
+      "viewport": {
+        "width": 360,
+        "height": 752,
+        "dpr": 1
+      },
+      "prompt": {
+        "x": 25,
+        "y": 145,
+        "width": 310,
+        "height": 20.984375,
+        "top": 145,
+        "bottom": 165.984375
+      },
+      "controls": {
+        "x": 25,
+        "y": 276.359375,
+        "width": 310,
+        "height": 124,
+        "top": 276.359375,
+        "bottom": 400.359375
+      },
+      "targets": [
+        {
+          "x": 25,
+          "y": 276.359375,
+          "width": 112,
+          "height": 64,
+          "top": 276.359375,
+          "bottom": 340.359375
+        },
+        {
+          "x": 223,
+          "y": 276.359375,
+          "width": 112,
+          "height": 64,
+          "top": 276.359375,
+          "bottom": 340.359375
+        },
+        {
+          "x": 25,
+          "y": 356.359375,
+          "width": 310,
+          "height": 44,
+          "top": 356.359375,
+          "bottom": 400.359375
+        }
+      ],
+      "minimumTargetWidth": 112,
+      "minimumTargetHeight": 44,
+      "linearOptionLabels": [],
+      "linearOptionLabelsDistinct": true,
+      "horizontalOverflow": 0,
+      "resizedAlignment": null
+    },
+    {
+      "routeId": "ROUTE-PLAN39-REPAIR02-TOUCH-TAP-ALL-8",
+      "context": "production-default-v8",
+      "motionMode": "standard-motion",
+      "revision": "production-default-v8",
+      "itemId": "bridge-02-fourth-4",
+      "selectedId": "partition-1-of-4",
+      "viewport": {
+        "width": 360,
+        "height": 752,
+        "dpr": 1
+      },
+      "prompt": {
+        "x": 25,
+        "y": 145,
+        "width": 310,
+        "height": 20.984375,
+        "top": 145,
+        "bottom": 165.984375
+      },
+      "controls": {
+        "x": 25,
+        "y": 276.359375,
+        "width": 310,
+        "height": 124,
+        "top": 276.359375,
+        "bottom": 400.359375
+      },
+      "targets": [
+        {
+          "x": 25,
+          "y": 276.359375,
+          "width": 112,
+          "height": 64,
+          "top": 276.359375,
+          "bottom": 340.359375
+        },
+        {
+          "x": 223,
+          "y": 276.359375,
+          "width": 112,
+          "height": 64,
+          "top": 276.359375,
+          "bottom": 340.359375
+        },
+        {
+          "x": 25,
+          "y": 356.359375,
+          "width": 310,
+          "height": 44,
+          "top": 356.359375,
+          "bottom": 400.359375
+        }
+      ],
+      "minimumTargetWidth": 112,
+      "minimumTargetHeight": 44,
+      "linearOptionLabels": [],
+      "linearOptionLabelsDistinct": true,
+      "horizontalOverflow": 0,
+      "resizedAlignment": null
+    },
+    {
+      "routeId": "ROUTE-PLAN39-REPAIR02-TOUCH-TAP-ALL-8",
+      "context": "production-default-v8",
+      "motionMode": "standard-motion",
+      "revision": "production-default-v8",
+      "itemId": "bridge-03-three-fourths-4",
+      "selectedId": "partition-3-of-4",
+      "viewport": {
+        "width": 360,
+        "height": 752,
+        "dpr": 1
+      },
+      "prompt": {
+        "x": 25,
+        "y": 145,
+        "width": 310,
+        "height": 20.984375,
+        "top": 145,
+        "bottom": 165.984375
+      },
+      "controls": {
+        "x": 25,
+        "y": 276.359375,
+        "width": 310,
+        "height": 124,
+        "top": 276.359375,
+        "bottom": 400.359375
+      },
+      "targets": [
+        {
+          "x": 25,
+          "y": 276.359375,
+          "width": 112,
+          "height": 64,
+          "top": 276.359375,
+          "bottom": 340.359375
+        },
+        {
+          "x": 223,
+          "y": 276.359375,
+          "width": 112,
+          "height": 64,
+          "top": 276.359375,
+          "bottom": 340.359375
+        },
+        {
+          "x": 25,
+          "y": 356.359375,
+          "width": 310,
+          "height": 44,
+          "top": 356.359375,
+          "bottom": 400.359375
+        }
+      ],
+      "minimumTargetWidth": 112,
+      "minimumTargetHeight": 44,
+      "linearOptionLabels": [],
+      "linearOptionLabelsDistinct": true,
+      "horizontalOverflow": 0,
+      "resizedAlignment": null
+    },
+    {
+      "routeId": "ROUTE-PLAN39-REPAIR02-TOUCH-TAP-ALL-8",
+      "context": "production-default-v8",
+      "motionMode": "standard-motion",
+      "revision": "production-default-v8",
+      "itemId": "bridge-04-two-thirds-3",
+      "selectedId": "partition-2-of-3",
+      "viewport": {
+        "width": 360,
+        "height": 752,
+        "dpr": 1
+      },
+      "prompt": {
+        "x": 25,
+        "y": 145,
+        "width": 310,
+        "height": 20.984375,
+        "top": 145,
+        "bottom": 165.984375
+      },
+      "controls": {
+        "x": 25,
+        "y": 276.359375,
+        "width": 310,
+        "height": 124,
+        "top": 276.359375,
+        "bottom": 400.359375
+      },
+      "targets": [
+        {
+          "x": 25,
+          "y": 276.359375,
+          "width": 112,
+          "height": 64,
+          "top": 276.359375,
+          "bottom": 340.359375
+        },
+        {
+          "x": 223,
+          "y": 276.359375,
+          "width": 112,
+          "height": 64,
+          "top": 276.359375,
+          "bottom": 340.359375
+        },
+        {
+          "x": 25,
+          "y": 356.359375,
+          "width": 310,
+          "height": 44,
+          "top": 356.359375,
+          "bottom": 400.359375
+        }
+      ],
+      "minimumTargetWidth": 112,
+      "minimumTargetHeight": 44,
+      "linearOptionLabels": [],
+      "linearOptionLabelsDistinct": true,
+      "horizontalOverflow": 0,
+      "resizedAlignment": null
+    },
+    {
+      "routeId": "ROUTE-PLAN39-REPAIR02-TOUCH-TAP-ALL-8",
+      "context": "production-default-v8",
+      "motionMode": "standard-motion",
+      "revision": "production-default-v8",
+      "itemId": "bridge-05-two-fourths-half",
+      "selectedId": "partition-2-of-4",
+      "viewport": {
+        "width": 360,
+        "height": 752,
+        "dpr": 1
+      },
+      "prompt": {
+        "x": 25,
+        "y": 145,
+        "width": 310,
+        "height": 20.984375,
+        "top": 145,
+        "bottom": 165.984375
+      },
+      "controls": {
+        "x": 25,
+        "y": 276.359375,
+        "width": 310,
+        "height": 124,
+        "top": 276.359375,
+        "bottom": 400.359375
+      },
+      "targets": [
+        {
+          "x": 25,
+          "y": 276.359375,
+          "width": 112,
+          "height": 64,
+          "top": 276.359375,
+          "bottom": 340.359375
+        },
+        {
+          "x": 223,
+          "y": 276.359375,
+          "width": 112,
+          "height": 64,
+          "top": 276.359375,
+          "bottom": 340.359375
+        },
+        {
+          "x": 25,
+          "y": 356.359375,
+          "width": 310,
+          "height": 44,
+          "top": 356.359375,
+          "bottom": 400.359375
+        }
+      ],
+      "minimumTargetWidth": 112,
+      "minimumTargetHeight": 44,
+      "linearOptionLabels": [],
+      "linearOptionLabelsDistinct": true,
+      "horizontalOverflow": 0,
+      "resizedAlignment": null
+    },
+    {
+      "routeId": "ROUTE-PLAN39-REPAIR02-TOUCH-TAP-ALL-8",
+      "context": "production-default-v8",
+      "motionMode": "standard-motion",
+      "revision": "production-default-v8",
+      "itemId": "bridge-06-three-eighths-8",
+      "selectedId": "partition-3-of-8",
+      "viewport": {
+        "width": 360,
+        "height": 752,
+        "dpr": 1
+      },
+      "prompt": {
+        "x": 25,
+        "y": 145,
+        "width": 310,
+        "height": 20.984375,
+        "top": 145,
+        "bottom": 165.984375
+      },
+      "controls": {
+        "x": 25,
+        "y": 276.359375,
+        "width": 310,
+        "height": 124,
+        "top": 276.359375,
+        "bottom": 400.359375
+      },
+      "targets": [
+        {
+          "x": 25,
+          "y": 276.359375,
+          "width": 112,
+          "height": 64,
+          "top": 276.359375,
+          "bottom": 340.359375
+        },
+        {
+          "x": 223,
+          "y": 276.359375,
+          "width": 112,
+          "height": 64,
+          "top": 276.359375,
+          "bottom": 340.359375
+        },
+        {
+          "x": 25,
+          "y": 356.359375,
+          "width": 310,
+          "height": 44,
+          "top": 356.359375,
+          "bottom": 400.359375
+        }
+      ],
+      "minimumTargetWidth": 112,
+      "minimumTargetHeight": 44,
+      "linearOptionLabels": [],
+      "linearOptionLabelsDistinct": true,
+      "horizontalOverflow": 0,
+      "resizedAlignment": null
+    },
+    {
+      "routeId": "ROUTE-PLAN39-REPAIR02-TOUCH-TAP-ALL-8",
+      "context": "production-default-v8",
+      "motionMode": "standard-motion",
+      "revision": "production-default-v8",
+      "itemId": "bridge-07-one-third-med",
+      "selectedId": "partition-1-of-3",
+      "viewport": {
+        "width": 360,
+        "height": 752,
+        "dpr": 1
+      },
+      "prompt": {
+        "x": 25,
+        "y": 145,
+        "width": 310,
+        "height": 20.984375,
+        "top": 145,
+        "bottom": 165.984375
+      },
+      "controls": {
+        "x": 25,
+        "y": 276.359375,
+        "width": 310,
+        "height": 124,
+        "top": 276.359375,
+        "bottom": 400.359375
+      },
+      "targets": [
+        {
+          "x": 25,
+          "y": 276.359375,
+          "width": 112,
+          "height": 64,
+          "top": 276.359375,
+          "bottom": 340.359375
+        },
+        {
+          "x": 223,
+          "y": 276.359375,
+          "width": 112,
+          "height": 64,
+          "top": 276.359375,
+          "bottom": 340.359375
+        },
+        {
+          "x": 25,
+          "y": 356.359375,
+          "width": 310,
+          "height": 44,
+          "top": 356.359375,
+          "bottom": 400.359375
+        }
+      ],
+      "minimumTargetWidth": 112,
+      "minimumTargetHeight": 44,
+      "linearOptionLabels": [],
+      "linearOptionLabelsDistinct": true,
+      "horizontalOverflow": 0,
+      "resizedAlignment": null
+    },
+    {
+      "routeId": "ROUTE-PLAN39-REPAIR02-TOUCH-TAP-ALL-8",
+      "context": "production-default-v8",
+      "motionMode": "standard-motion",
+      "revision": "production-default-v8",
+      "itemId": "bridge-08-five-sixths-med",
+      "selectedId": "partition-5-of-6",
+      "viewport": {
+        "width": 360,
+        "height": 752,
+        "dpr": 1
+      },
+      "prompt": {
+        "x": 25,
+        "y": 145,
+        "width": 310,
+        "height": 20.984375,
+        "top": 145,
+        "bottom": 165.984375
+      },
+      "controls": {
+        "x": 25,
+        "y": 276.359375,
+        "width": 310,
+        "height": 124,
+        "top": 276.359375,
+        "bottom": 400.359375
+      },
+      "targets": [
+        {
+          "x": 25,
+          "y": 276.359375,
+          "width": 112,
+          "height": 64,
+          "top": 276.359375,
+          "bottom": 340.359375
+        },
+        {
+          "x": 223,
+          "y": 276.359375,
+          "width": 112,
+          "height": 64,
+          "top": 276.359375,
+          "bottom": 340.359375
+        },
+        {
+          "x": 25,
+          "y": 356.359375,
+          "width": 310,
+          "height": 44,
+          "top": 356.359375,
+          "bottom": 400.359375
+        }
+      ],
+      "minimumTargetWidth": 112,
+      "minimumTargetHeight": 44,
+      "linearOptionLabels": [],
+      "linearOptionLabelsDistinct": true,
+      "horizontalOverflow": 0,
+      "resizedAlignment": null
+    },
+    {
+      "routeId": "ROUTE-PLAN39-REPAIR02-KEYBOARD-ALL-8",
+      "context": "production-default-v8",
+      "motionMode": "standard-motion",
+      "revision": "production-default-v8",
+      "itemId": "bridge-01-half-2",
+      "selectedId": "candidate-c",
+      "viewport": {
+        "width": 360,
+        "height": 752,
+        "dpr": 1
+      },
+      "prompt": {
+        "x": 25,
+        "y": 145,
+        "width": 310,
+        "height": 20.984375,
+        "top": 145,
+        "bottom": 165.984375
+      },
+      "controls": {
+        "x": 25,
+        "y": 251.546875,
+        "width": 310,
+        "height": 189.75,
+        "top": 251.546875,
+        "bottom": 441.296875
+      },
+      "targets": [
+        {
+          "x": 27,
+          "y": 272.546875,
+          "width": 153,
+          "height": 52.375,
+          "top": 272.546875,
+          "bottom": 324.921875
+        },
+        {
+          "x": 184,
+          "y": 272.546875,
+          "width": 153,
+          "height": 52.375,
+          "top": 272.546875,
+          "bottom": 324.921875
+        },
+        {
+          "x": 27,
+          "y": 328.921875,
+          "width": 153,
+          "height": 52.375,
+          "top": 328.921875,
+          "bottom": 381.296875
+        },
+        {
+          "x": 184,
+          "y": 328.921875,
+          "width": 153,
+          "height": 52.375,
+          "top": 328.921875,
+          "bottom": 381.296875
+        },
+        {
+          "x": 25,
+          "y": 397.296875,
+          "width": 310,
+          "height": 44,
+          "top": 397.296875,
+          "bottom": 441.296875
+        }
+      ],
+      "minimumTargetWidth": 153,
+      "minimumTargetHeight": 44,
+      "linearOptionLabels": [
+        "A: 0 of 4 equal steps from 0",
+        "B: 1 of 4 equal steps from 0",
+        "C: 2 of 4 equal steps from 0",
+        "D: 4 of 4 equal steps from 0"
+      ],
+      "linearOptionLabelsDistinct": true,
+      "horizontalOverflow": 0,
+      "resizedAlignment": null
+    },
+    {
+      "routeId": "ROUTE-PLAN39-REPAIR02-KEYBOARD-ALL-8",
+      "context": "production-default-v8",
+      "motionMode": "standard-motion",
+      "revision": "production-default-v8",
+      "itemId": "bridge-02-fourth-4",
+      "selectedId": "candidate-b",
+      "viewport": {
+        "width": 360,
+        "height": 752,
+        "dpr": 1
+      },
+      "prompt": {
+        "x": 25,
+        "y": 145,
+        "width": 310,
+        "height": 20.984375,
+        "top": 145,
+        "bottom": 165.984375
+      },
+      "controls": {
+        "x": 25,
+        "y": 251.546875,
+        "width": 310,
+        "height": 189.75,
+        "top": 251.546875,
+        "bottom": 441.296875
+      },
+      "targets": [
+        {
+          "x": 27,
+          "y": 272.546875,
+          "width": 153,
+          "height": 52.375,
+          "top": 272.546875,
+          "bottom": 324.921875
+        },
+        {
+          "x": 184,
+          "y": 272.546875,
+          "width": 153,
+          "height": 52.375,
+          "top": 272.546875,
+          "bottom": 324.921875
+        },
+        {
+          "x": 27,
+          "y": 328.921875,
+          "width": 153,
+          "height": 52.375,
+          "top": 328.921875,
+          "bottom": 381.296875
+        },
+        {
+          "x": 184,
+          "y": 328.921875,
+          "width": 153,
+          "height": 52.375,
+          "top": 328.921875,
+          "bottom": 381.296875
+        },
+        {
+          "x": 25,
+          "y": 397.296875,
+          "width": 310,
+          "height": 44,
+          "top": 397.296875,
+          "bottom": 441.296875
+        }
+      ],
+      "minimumTargetWidth": 153,
+      "minimumTargetHeight": 44,
+      "linearOptionLabels": [
+        "A: 0 of 8 equal steps from 0",
+        "B: 2 of 8 equal steps from 0",
+        "C: 3 of 8 equal steps from 0",
+        "D: 4 of 8 equal steps from 0"
+      ],
+      "linearOptionLabelsDistinct": true,
+      "horizontalOverflow": 0,
+      "resizedAlignment": null
+    },
+    {
+      "routeId": "ROUTE-PLAN39-REPAIR02-KEYBOARD-ALL-8",
+      "context": "production-default-v8",
+      "motionMode": "standard-motion",
+      "revision": "production-default-v8",
+      "itemId": "bridge-03-three-fourths-4",
+      "selectedId": "candidate-c",
+      "viewport": {
+        "width": 360,
+        "height": 752,
+        "dpr": 1
+      },
+      "prompt": {
+        "x": 25,
+        "y": 145,
+        "width": 310,
+        "height": 20.984375,
+        "top": 145,
+        "bottom": 165.984375
+      },
+      "controls": {
+        "x": 25,
+        "y": 251.546875,
+        "width": 310,
+        "height": 189.75,
+        "top": 251.546875,
+        "bottom": 441.296875
+      },
+      "targets": [
+        {
+          "x": 27,
+          "y": 272.546875,
+          "width": 153,
+          "height": 52.375,
+          "top": 272.546875,
+          "bottom": 324.921875
+        },
+        {
+          "x": 184,
+          "y": 272.546875,
+          "width": 153,
+          "height": 52.375,
+          "top": 272.546875,
+          "bottom": 324.921875
+        },
+        {
+          "x": 27,
+          "y": 328.921875,
+          "width": 153,
+          "height": 52.375,
+          "top": 328.921875,
+          "bottom": 381.296875
+        },
+        {
+          "x": 184,
+          "y": 328.921875,
+          "width": 153,
+          "height": 52.375,
+          "top": 328.921875,
+          "bottom": 381.296875
+        },
+        {
+          "x": 25,
+          "y": 397.296875,
+          "width": 310,
+          "height": 44,
+          "top": 397.296875,
+          "bottom": 441.296875
+        }
+      ],
+      "minimumTargetWidth": 153,
+      "minimumTargetHeight": 44,
+      "linearOptionLabels": [
+        "A: 1 of 4 equal steps from 0",
+        "B: 2 of 4 equal steps from 0",
+        "C: 3 of 4 equal steps from 0",
+        "D: 4 of 4 equal steps from 0"
+      ],
+      "linearOptionLabelsDistinct": true,
+      "horizontalOverflow": 0,
+      "resizedAlignment": null
+    },
+    {
+      "routeId": "ROUTE-PLAN39-REPAIR02-KEYBOARD-ALL-8",
+      "context": "production-default-v8",
+      "motionMode": "standard-motion",
+      "revision": "production-default-v8",
+      "itemId": "bridge-04-two-thirds-3",
+      "selectedId": "candidate-d",
+      "viewport": {
+        "width": 360,
+        "height": 752,
+        "dpr": 1
+      },
+      "prompt": {
+        "x": 25,
+        "y": 145,
+        "width": 310,
+        "height": 20.984375,
+        "top": 145,
+        "bottom": 165.984375
+      },
+      "controls": {
+        "x": 25,
+        "y": 251.546875,
+        "width": 310,
+        "height": 189.75,
+        "top": 251.546875,
+        "bottom": 441.296875
+      },
+      "targets": [
+        {
+          "x": 27,
+          "y": 272.546875,
+          "width": 153,
+          "height": 52.375,
+          "top": 272.546875,
+          "bottom": 324.921875
+        },
+        {
+          "x": 184,
+          "y": 272.546875,
+          "width": 153,
+          "height": 52.375,
+          "top": 272.546875,
+          "bottom": 324.921875
+        },
+        {
+          "x": 27,
+          "y": 328.921875,
+          "width": 153,
+          "height": 52.375,
+          "top": 328.921875,
+          "bottom": 381.296875
+        },
+        {
+          "x": 184,
+          "y": 328.921875,
+          "width": 153,
+          "height": 52.375,
+          "top": 328.921875,
+          "bottom": 381.296875
+        },
+        {
+          "x": 25,
+          "y": 397.296875,
+          "width": 310,
+          "height": 44,
+          "top": 397.296875,
+          "bottom": 441.296875
+        }
+      ],
+      "minimumTargetWidth": 153,
+      "minimumTargetHeight": 44,
+      "linearOptionLabels": [
+        "A: 0 of 6 equal steps from 0",
+        "B: 2 of 6 equal steps from 0",
+        "C: 3 of 6 equal steps from 0",
+        "D: 4 of 6 equal steps from 0"
+      ],
+      "linearOptionLabelsDistinct": true,
+      "horizontalOverflow": 0,
+      "resizedAlignment": null
+    },
+    {
+      "routeId": "ROUTE-PLAN39-REPAIR02-KEYBOARD-ALL-8",
+      "context": "production-default-v8",
+      "motionMode": "standard-motion",
+      "revision": "production-default-v8",
+      "itemId": "bridge-05-two-fourths-half",
+      "selectedId": "candidate-b",
+      "viewport": {
+        "width": 360,
+        "height": 752,
+        "dpr": 1
+      },
+      "prompt": {
+        "x": 25,
+        "y": 145,
+        "width": 310,
+        "height": 20.984375,
+        "top": 145,
+        "bottom": 165.984375
+      },
+      "controls": {
+        "x": 25,
+        "y": 251.546875,
+        "width": 310,
+        "height": 189.75,
+        "top": 251.546875,
+        "bottom": 441.296875
+      },
+      "targets": [
+        {
+          "x": 27,
+          "y": 272.546875,
+          "width": 153,
+          "height": 52.375,
+          "top": 272.546875,
+          "bottom": 324.921875
+        },
+        {
+          "x": 184,
+          "y": 272.546875,
+          "width": 153,
+          "height": 52.375,
+          "top": 272.546875,
+          "bottom": 324.921875
+        },
+        {
+          "x": 27,
+          "y": 328.921875,
+          "width": 153,
+          "height": 52.375,
+          "top": 328.921875,
+          "bottom": 381.296875
+        },
+        {
+          "x": 184,
+          "y": 328.921875,
+          "width": 153,
+          "height": 52.375,
+          "top": 328.921875,
+          "bottom": 381.296875
+        },
+        {
+          "x": 25,
+          "y": 397.296875,
+          "width": 310,
+          "height": 44,
+          "top": 397.296875,
+          "bottom": 441.296875
+        }
+      ],
+      "minimumTargetWidth": 153,
+      "minimumTargetHeight": 44,
+      "linearOptionLabels": [
+        "A: 1 of 4 equal steps from 0",
+        "B: 2 of 4 equal steps from 0",
+        "C: 3 of 4 equal steps from 0",
+        "D: 4 of 4 equal steps from 0"
+      ],
+      "linearOptionLabelsDistinct": true,
+      "horizontalOverflow": 0,
+      "resizedAlignment": null
+    },
+    {
+      "routeId": "ROUTE-PLAN39-REPAIR02-KEYBOARD-ALL-8",
+      "context": "production-default-v8",
+      "motionMode": "standard-motion",
+      "revision": "production-default-v8",
+      "itemId": "bridge-06-three-eighths-8",
+      "selectedId": "candidate-c",
+      "viewport": {
+        "width": 360,
+        "height": 752,
+        "dpr": 1
+      },
+      "prompt": {
+        "x": 25,
+        "y": 145,
+        "width": 310,
+        "height": 20.984375,
+        "top": 145,
+        "bottom": 165.984375
+      },
+      "controls": {
+        "x": 25,
+        "y": 251.546875,
+        "width": 310,
+        "height": 189.75,
+        "top": 251.546875,
+        "bottom": 441.296875
+      },
+      "targets": [
+        {
+          "x": 27,
+          "y": 272.546875,
+          "width": 153,
+          "height": 52.375,
+          "top": 272.546875,
+          "bottom": 324.921875
+        },
+        {
+          "x": 184,
+          "y": 272.546875,
+          "width": 153,
+          "height": 52.375,
+          "top": 272.546875,
+          "bottom": 324.921875
+        },
+        {
+          "x": 27,
+          "y": 328.921875,
+          "width": 153,
+          "height": 52.375,
+          "top": 328.921875,
+          "bottom": 381.296875
+        },
+        {
+          "x": 184,
+          "y": 328.921875,
+          "width": 153,
+          "height": 52.375,
+          "top": 328.921875,
+          "bottom": 381.296875
+        },
+        {
+          "x": 25,
+          "y": 397.296875,
+          "width": 310,
+          "height": 44,
+          "top": 397.296875,
+          "bottom": 441.296875
+        }
+      ],
+      "minimumTargetWidth": 153,
+      "minimumTargetHeight": 44,
+      "linearOptionLabels": [
+        "A: 1 of 8 equal steps from 0",
+        "B: 2 of 8 equal steps from 0",
+        "C: 3 of 8 equal steps from 0",
+        "D: 4 of 8 equal steps from 0"
+      ],
+      "linearOptionLabelsDistinct": true,
+      "horizontalOverflow": 0,
+      "resizedAlignment": null
+    },
+    {
+      "routeId": "ROUTE-PLAN39-REPAIR02-KEYBOARD-ALL-8",
+      "context": "production-default-v8",
+      "motionMode": "standard-motion",
+      "revision": "production-default-v8",
+      "itemId": "bridge-07-one-third-med",
+      "selectedId": "candidate-b",
+      "viewport": {
+        "width": 360,
+        "height": 752,
+        "dpr": 1
+      },
+      "prompt": {
+        "x": 25,
+        "y": 145,
+        "width": 310,
+        "height": 20.984375,
+        "top": 145,
+        "bottom": 165.984375
+      },
+      "controls": {
+        "x": 25,
+        "y": 251.546875,
+        "width": 310,
+        "height": 189.75,
+        "top": 251.546875,
+        "bottom": 441.296875
+      },
+      "targets": [
+        {
+          "x": 27,
+          "y": 272.546875,
+          "width": 153,
+          "height": 52.375,
+          "top": 272.546875,
+          "bottom": 324.921875
+        },
+        {
+          "x": 184,
+          "y": 272.546875,
+          "width": 153,
+          "height": 52.375,
+          "top": 272.546875,
+          "bottom": 324.921875
+        },
+        {
+          "x": 27,
+          "y": 328.921875,
+          "width": 153,
+          "height": 52.375,
+          "top": 328.921875,
+          "bottom": 381.296875
+        },
+        {
+          "x": 184,
+          "y": 328.921875,
+          "width": 153,
+          "height": 52.375,
+          "top": 328.921875,
+          "bottom": 381.296875
+        },
+        {
+          "x": 25,
+          "y": 397.296875,
+          "width": 310,
+          "height": 44,
+          "top": 397.296875,
+          "bottom": 441.296875
+        }
+      ],
+      "minimumTargetWidth": 153,
+      "minimumTargetHeight": 44,
+      "linearOptionLabels": [
+        "A: 1 of 6 equal steps from 0",
+        "B: 2 of 6 equal steps from 0",
+        "C: 3 of 6 equal steps from 0",
+        "D: 4 of 6 equal steps from 0"
+      ],
+      "linearOptionLabelsDistinct": true,
+      "horizontalOverflow": 0,
+      "resizedAlignment": null
+    },
+    {
+      "routeId": "ROUTE-PLAN39-REPAIR02-KEYBOARD-ALL-8",
+      "context": "production-default-v8",
+      "motionMode": "standard-motion",
+      "revision": "production-default-v8",
+      "itemId": "bridge-08-five-sixths-med",
+      "selectedId": "candidate-d",
+      "viewport": {
+        "width": 360,
+        "height": 752,
+        "dpr": 1
+      },
+      "prompt": {
+        "x": 25,
+        "y": 145,
+        "width": 310,
+        "height": 20.984375,
+        "top": 145,
+        "bottom": 165.984375
+      },
+      "controls": {
+        "x": 25,
+        "y": 251.546875,
+        "width": 310,
+        "height": 189.75,
+        "top": 251.546875,
+        "bottom": 441.296875
+      },
+      "targets": [
+        {
+          "x": 27,
+          "y": 272.546875,
+          "width": 153,
+          "height": 52.375,
+          "top": 272.546875,
+          "bottom": 324.921875
+        },
+        {
+          "x": 184,
+          "y": 272.546875,
+          "width": 153,
+          "height": 52.375,
+          "top": 272.546875,
+          "bottom": 324.921875
+        },
+        {
+          "x": 27,
+          "y": 328.921875,
+          "width": 153,
+          "height": 52.375,
+          "top": 328.921875,
+          "bottom": 381.296875
+        },
+        {
+          "x": 184,
+          "y": 328.921875,
+          "width": 153,
+          "height": 52.375,
+          "top": 328.921875,
+          "bottom": 381.296875
+        },
+        {
+          "x": 25,
+          "y": 397.296875,
+          "width": 310,
+          "height": 44,
+          "top": 397.296875,
+          "bottom": 441.296875
+        }
+      ],
+      "minimumTargetWidth": 153,
+      "minimumTargetHeight": 44,
+      "linearOptionLabels": [
+        "A: 2 of 6 equal steps from 0",
+        "B: 3 of 6 equal steps from 0",
+        "C: 4 of 6 equal steps from 0",
+        "D: 5 of 6 equal steps from 0"
+      ],
+      "linearOptionLabelsDistinct": true,
+      "horizontalOverflow": 0,
+      "resizedAlignment": null
+    },
+    {
+      "routeId": "ROUTE-PLAN39-REPAIR02-ODD-THIRDS-360X740",
+      "context": "production-default-v8",
+      "motionMode": "standard-motion",
+      "revision": "production-default-v8",
+      "itemId": "bridge-07-one-third-med",
+      "selectedId": "partition-1-of-3",
+      "viewport": {
+        "width": 360,
+        "height": 740,
+        "dpr": 1
+      },
+      "prompt": {
+        "x": 25,
+        "y": 145,
+        "width": 310,
+        "height": 20.984375,
+        "top": 145,
+        "bottom": 165.984375
+      },
+      "controls": {
+        "x": 25,
+        "y": 276.359375,
+        "width": 310,
+        "height": 124,
+        "top": 276.359375,
+        "bottom": 400.359375
+      },
+      "targets": [
+        {
+          "x": 25,
+          "y": 276.359375,
+          "width": 112,
+          "height": 64,
+          "top": 276.359375,
+          "bottom": 340.359375
+        },
+        {
+          "x": 223,
+          "y": 276.359375,
+          "width": 112,
+          "height": 64,
+          "top": 276.359375,
+          "bottom": 340.359375
+        },
+        {
+          "x": 25,
+          "y": 356.359375,
+          "width": 310,
+          "height": 44,
+          "top": 356.359375,
+          "bottom": 400.359375
+        }
+      ],
+      "minimumTargetWidth": 112,
+      "minimumTargetHeight": 44,
+      "linearOptionLabels": [],
+      "linearOptionLabelsDistinct": true,
+      "horizontalOverflow": 0,
+      "resizedAlignment": null
+    },
+    {
+      "routeId": "ROUTE-PLAN39-REPAIR02-MEDIUM-1366X768",
+      "context": "production-default-v8",
+      "motionMode": "standard-motion",
+      "revision": "production-default-v8",
+      "itemId": "bridge-07-one-third-med",
+      "selectedId": "candidate-b",
+      "viewport": {
+        "width": 1366,
+        "height": 768,
+        "dpr": 1
+      },
+      "prompt": {
+        "x": 347,
+        "y": 193.96875,
+        "width": 672,
+        "height": 20.984375,
+        "top": 193.96875,
+        "bottom": 214.953125
+      },
+      "controls": {
+        "x": 347,
+        "y": 337.3125,
+        "width": 672,
+        "height": 104,
+        "top": 337.3125,
+        "bottom": 441.3125
+      },
+      "targets": [
+        {
+          "x": 347,
+          "y": 337.3125,
+          "width": 187.890625,
+          "height": 44,
+          "top": 337.3125,
+          "bottom": 381.3125
+        },
+        {
+          "x": 831.09375,
+          "y": 337.3125,
+          "width": 187.90625,
+          "height": 44,
+          "top": 337.3125,
+          "bottom": 381.3125
+        },
+        {
+          "x": 347,
+          "y": 397.3125,
+          "width": 672,
+          "height": 44,
+          "top": 397.3125,
+          "bottom": 441.3125
+        }
+      ],
+      "minimumTargetWidth": 187.890625,
+      "minimumTargetHeight": 44,
+      "linearOptionLabels": [],
+      "linearOptionLabelsDistinct": true,
+      "horizontalOverflow": 0,
+      "resizedAlignment": null
+    },
+    {
+      "routeId": "ROUTE-PLAN39-REPAIR02-EIGHTHS-1093X614-DPR125",
+      "context": "production-default-v8",
+      "motionMode": "standard-motion",
+      "revision": "production-default-v8",
+      "itemId": "bridge-06-three-eighths-8",
+      "selectedId": "partition-3-of-8",
+      "viewport": {
+        "width": 1093,
+        "height": 614,
+        "dpr": 1.25
+      },
+      "prompt": {
+        "x": 210.5,
+        "y": 181.09375,
+        "width": 672,
+        "height": 20.984375,
+        "top": 181.09375,
+        "bottom": 202.078125
+      },
+      "controls": {
+        "x": 210.5,
+        "y": 324.4375,
+        "width": 672,
+        "height": 104,
+        "top": 324.4375,
+        "bottom": 428.4375
+      },
+      "targets": [
+        {
+          "x": 210.5,
+          "y": 324.4375,
+          "width": 187.890625,
+          "height": 44,
+          "top": 324.4375,
+          "bottom": 368.4375
+        },
+        {
+          "x": 694.59375,
+          "y": 324.4375,
+          "width": 187.90625,
+          "height": 44,
+          "top": 324.4375,
+          "bottom": 368.4375
+        },
+        {
+          "x": 210.5,
+          "y": 384.4375,
+          "width": 672,
+          "height": 44,
+          "top": 384.4375,
+          "bottom": 428.4375
+        }
+      ],
+      "minimumTargetWidth": 187.890625,
+      "minimumTargetHeight": 44,
+      "linearOptionLabels": [],
+      "linearOptionLabelsDistinct": true,
+      "horizontalOverflow": 0,
+      "resizedAlignment": null
+    }
+  ],
+  "screenshots": [
+    {
+      "routeId": "ROUTE-PLAN34-CONSTRUCT-VISUAL-DEEP",
+      "context": "production-default-v7",
+      "motionMode": "standard-motion",
+      "file": "reports/development/plan-34-reusable-full-addition-task-patterns/evidence/plan34-construct-encounter-360x740.png",
+      "caption": "Production v6 construct encounter at 360×740; target context and no answer shown.",
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "layout": {
+        "viewport": {
+          "width": 360,
+          "height": 740
+        },
+        "dpr": 1,
+        "roundingTolerancePx": 1,
+        "document": {
+          "width": 360,
+          "height": 766
+        },
+        "horizontalOverflow": false,
+        "horizontalOverflowPx": 0,
+        "scroll": {
+          "x": 0,
+          "y": 12
+        },
+        "activeView": "app-visual-view",
+        "question": {
+          "x": 63,
+          "y": 420.72,
+          "width": 234,
+          "height": 25.19,
+          "visible": true,
+          "horizontallyContained": true,
+          "verticallyContained": true,
+          "withinViewport": true,
+          "intersectsViewport": true
+        },
+        "controls": {
+          "x": 63,
+          "y": 476.84,
+          "width": 234,
+          "height": 113,
+          "visible": true,
+          "horizontallyContained": true,
+          "verticallyContained": true,
+          "withinViewport": true,
+          "intersectsViewport": true
+        },
+        "nestedChoices": []
+      }
+    },
+    {
+      "routeId": "ROUTE-PLAN34-CONSTRUCT-VISUAL-DEEP",
+      "context": "production-default-v7",
+      "motionMode": "standard-motion",
+      "file": "reports/development/plan-34-reusable-full-addition-task-patterns/evidence/plan34-construct-help-360x740.png",
+      "caption": "Typed construct help requests the multiplier without supplying an equivalent fraction.",
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "layout": {
+        "viewport": {
+          "width": 360,
+          "height": 740
+        },
+        "dpr": 1,
+        "roundingTolerancePx": 1,
+        "document": {
+          "width": 360,
+          "height": 797
+        },
+        "horizontalOverflow": false,
+        "horizontalOverflowPx": 0,
+        "scroll": {
+          "x": 0,
+          "y": 12
+        },
+        "activeView": "app-visual-view",
+        "question": {
+          "x": 63,
+          "y": 405.78,
+          "width": 234,
+          "height": 50.38,
+          "visible": true,
+          "horizontallyContained": true,
+          "verticallyContained": true,
+          "withinViewport": true,
+          "intersectsViewport": true
+        },
+        "controls": {
+          "x": 63,
+          "y": 405.78,
+          "width": 234,
+          "height": 195.77,
+          "visible": true,
+          "horizontallyContained": true,
+          "verticallyContained": true,
+          "withinViewport": true,
+          "intersectsViewport": true
+        },
+        "nestedChoices": []
+      }
+    },
+    {
+      "routeId": "ROUTE-PLAN34-CONSTRUCT-VISUAL-DEEP",
+      "context": "production-default-v7",
+      "motionMode": "standard-motion",
+      "file": "reports/development/plan-34-reusable-full-addition-task-patterns/evidence/plan34-construct-resolve-360x740.png",
+      "caption": "Construct pattern reaches its total and navigation-only Finish at 360×740.",
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "layout": {
+        "viewport": {
+          "width": 360,
+          "height": 740
+        },
+        "dpr": 1,
+        "roundingTolerancePx": 1,
+        "document": {
+          "width": 360,
+          "height": 757
+        },
+        "horizontalOverflow": false,
+        "horizontalOverflowPx": 0,
+        "scroll": {
+          "x": 0,
+          "y": 12
+        },
+        "activeView": "app-visual-view",
+        "question": {
+          "x": 63,
+          "y": 420.72,
+          "width": 234,
+          "height": 25.19,
+          "visible": true,
+          "horizontallyContained": true,
+          "verticallyContained": true,
+          "withinViewport": true,
+          "intersectsViewport": true
+        },
+        "controls": {
+          "x": 63,
+          "y": 476.84,
+          "width": 234,
+          "height": 44,
+          "visible": true,
+          "horizontallyContained": true,
+          "verticallyContained": true,
+          "withinViewport": true,
+          "intersectsViewport": true
+        },
+        "nestedChoices": []
+      }
+    },
+    {
+      "routeId": "ROUTE-PLAN34-INSPECT-LINEAR-DEEP",
+      "context": "production-default-v7",
+      "motionMode": "reduced-motion",
+      "file": "reports/development/plan-34-reusable-full-addition-task-patterns/evidence/plan34-inspect-encounter-linear-360x752.png",
+      "caption": "Second authored identity in the linear path at 360×752, before its candidate is shown.",
+      "viewport": {
+        "width": 360,
+        "height": 752
+      },
+      "layout": {
+        "viewport": {
+          "width": 360,
+          "height": 752
+        },
+        "dpr": 1,
+        "roundingTolerancePx": 1,
+        "document": {
+          "width": 360,
+          "height": 752
+        },
+        "horizontalOverflow": false,
+        "horizontalOverflowPx": 0,
+        "scroll": {
+          "x": 0,
+          "y": 0
+        },
+        "activeView": "app-linear-view",
+        "question": {
+          "x": 63,
+          "y": 311.78,
+          "width": 234,
+          "height": 25.19,
+          "visible": true,
+          "horizontallyContained": true,
+          "verticallyContained": true,
+          "withinViewport": true,
+          "intersectsViewport": true
+        },
+        "controls": {
+          "x": 63,
+          "y": 370.97,
+          "width": 234,
+          "height": 113,
+          "visible": true,
+          "horizontallyContained": true,
+          "verticallyContained": true,
+          "withinViewport": true,
+          "intersectsViewport": true
+        },
+        "nestedChoices": []
+      }
+    },
+    {
+      "routeId": "ROUTE-PLAN34-INSPECT-LINEAR-DEEP",
+      "context": "production-default-v7",
+      "motionMode": "reduced-motion",
+      "file": "reports/development/plan-34-reusable-full-addition-task-patterns/evidence/plan34-inspect-candidate-linear-360x752.png",
+      "caption": "Inspect shows a stacked proposal and withholds its validity and answer.",
+      "viewport": {
+        "width": 360,
+        "height": 752
+      },
+      "layout": {
+        "viewport": {
+          "width": 360,
+          "height": 752
+        },
+        "dpr": 1,
+        "roundingTolerancePx": 1,
+        "document": {
+          "width": 360,
+          "height": 824
+        },
+        "horizontalOverflow": false,
+        "horizontalOverflowPx": 0,
+        "scroll": {
+          "x": 0,
+          "y": 0
+        },
+        "activeView": "app-linear-view",
+        "question": {
+          "x": 63,
+          "y": 311.78,
+          "width": 234,
+          "height": 75.56,
+          "visible": true,
+          "horizontallyContained": true,
+          "verticallyContained": true,
+          "withinViewport": true,
+          "intersectsViewport": true
+        },
+        "controls": {
+          "x": 63,
+          "y": 421.34,
+          "width": 234,
+          "height": 219.19,
+          "visible": true,
+          "horizontallyContained": true,
+          "verticallyContained": true,
+          "withinViewport": true,
+          "intersectsViewport": true
+        },
+        "nestedChoices": []
+      }
+    },
+    {
+      "routeId": "ROUTE-PLAN34-INSPECT-LINEAR-DEEP",
+      "context": "production-default-v7",
+      "motionMode": "reduced-motion",
+      "file": "reports/development/plan-34-reusable-full-addition-task-patterns/evidence/plan34-inspect-false-keep-linear-360x752.png",
+      "caption": "False keep preserves one-half and causes no conservation animation.",
+      "viewport": {
+        "width": 360,
+        "height": 752
+      },
+      "layout": {
+        "viewport": {
+          "width": 360,
+          "height": 752
+        },
+        "dpr": 1,
+        "roundingTolerancePx": 1,
+        "document": {
+          "width": 360,
+          "height": 986
+        },
+        "horizontalOverflow": false,
+        "horizontalOverflowPx": 0,
+        "scroll": {
+          "x": 0,
+          "y": 0
+        },
+        "activeView": "app-linear-view",
+        "question": {
+          "x": 63,
+          "y": 370.78,
+          "width": 234,
+          "height": 75.56,
+          "visible": true,
+          "horizontallyContained": true,
+          "verticallyContained": true,
+          "withinViewport": true,
+          "intersectsViewport": true
+        },
+        "controls": {
+          "x": 63,
+          "y": 480.34,
+          "width": 234,
+          "height": 322.36,
+          "visible": true,
+          "horizontallyContained": true,
+          "verticallyContained": false,
+          "withinViewport": false,
+          "intersectsViewport": true
+        },
+        "nestedChoices": []
+      }
+    },
+    {
+      "routeId": "ROUTE-PLAN34-INSPECT-LINEAR-DEEP",
+      "context": "production-default-v7",
+      "motionMode": "reduced-motion",
+      "file": "reports/development/plan-34-reusable-full-addition-task-patterns/evidence/plan34-inspect-resolve-linear-360x752.png",
+      "caption": "Inspect resolve in linear view retains accepted conversions and has no omitted Notice/Decide summary.",
+      "viewport": {
+        "width": 360,
+        "height": 752
+      },
+      "layout": {
+        "viewport": {
+          "width": 360,
+          "height": 752
+        },
+        "dpr": 1,
+        "roundingTolerancePx": 1,
+        "document": {
+          "width": 360,
+          "height": 752
+        },
+        "horizontalOverflow": false,
+        "horizontalOverflowPx": 0,
+        "scroll": {
+          "x": 0,
+          "y": 0
+        },
+        "activeView": "app-linear-view",
+        "question": {
+          "x": 63,
+          "y": 311.78,
+          "width": 234,
+          "height": 25.19,
+          "visible": true,
+          "horizontallyContained": true,
+          "verticallyContained": true,
+          "withinViewport": true,
+          "intersectsViewport": true
+        },
+        "controls": {
+          "x": 63,
+          "y": 370.97,
+          "width": 234,
+          "height": 44,
+          "visible": true,
+          "horizontallyContained": true,
+          "verticallyContained": true,
+          "withinViewport": true,
+          "intersectsViewport": true
+        },
+        "nestedChoices": []
+      }
+    },
+    {
+      "routeId": "ROUTE-PLAN34-THIRD-IDENTITY-WIDE",
+      "context": "production-default-v7",
+      "motionMode": "standard-motion",
+      "file": "reports/development/plan-34-reusable-full-addition-task-patterns/evidence/plan34-construct-visual-wide.png",
+      "caption": "The construct pattern after the learner establishes both twelfths and the sum.",
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "layout": {
+        "viewport": {
+          "width": 1366,
+          "height": 768
+        },
+        "dpr": 1,
+        "roundingTolerancePx": 1,
+        "document": {
+          "width": 1366,
+          "height": 863
+        },
+        "horizontalOverflow": false,
+        "horizontalOverflowPx": 0,
+        "scroll": {
+          "x": 0,
+          "y": 41
+        },
+        "activeView": "app-visual-view",
+        "question": {
+          "x": 337,
+          "y": 448.69,
+          "width": 692,
+          "height": 25.19,
+          "visible": true,
+          "horizontallyContained": true,
+          "verticallyContained": true,
+          "withinViewport": true,
+          "intersectsViewport": true
+        },
+        "controls": {
+          "x": 337,
+          "y": 504.81,
+          "width": 692,
+          "height": 44,
+          "visible": true,
+          "horizontallyContained": true,
+          "verticallyContained": true,
+          "withinViewport": true,
+          "intersectsViewport": true
+        },
+        "nestedChoices": []
+      }
+    },
+    {
+      "routeId": "ROUTE-PLAN34-THIRD-IDENTITY-WIDE",
+      "context": "production-default-v7",
+      "motionMode": "standard-motion",
+      "file": "reports/development/plan-34-reusable-full-addition-task-patterns/evidence/plan34-third-identity-wide-encounter.png",
+      "caption": "Third authored inspect identity at a wide CSS viewport before candidate display.",
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "layout": {
+        "viewport": {
+          "width": 1366,
+          "height": 768
+        },
+        "dpr": 1,
+        "roundingTolerancePx": 1,
+        "document": {
+          "width": 1366,
+          "height": 872
+        },
+        "horizontalOverflow": false,
+        "horizontalOverflowPx": 0,
+        "scroll": {
+          "x": 0,
+          "y": 41
+        },
+        "activeView": "app-visual-view",
+        "question": {
+          "x": 337,
+          "y": 448.69,
+          "width": 692,
+          "height": 25.19,
+          "visible": true,
+          "horizontallyContained": true,
+          "verticallyContained": true,
+          "withinViewport": true,
+          "intersectsViewport": true
+        },
+        "controls": {
+          "x": 337,
+          "y": 504.81,
+          "width": 692,
+          "height": 113,
+          "visible": true,
+          "horizontallyContained": true,
+          "verticallyContained": true,
+          "withinViewport": true,
+          "intersectsViewport": true
+        },
+        "nestedChoices": []
+      }
+    },
+    {
+      "routeId": "ROUTE-PLAN34-THIRD-IDENTITY-WIDE",
+      "context": "production-default-v7",
+      "motionMode": "standard-motion",
+      "file": "reports/development/plan-34-reusable-full-addition-task-patterns/evidence/plan34-third-identity-false-stimulus-wide.png",
+      "caption": "Third identity rejects false proposal without animating it as conserved.",
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "layout": {
+        "viewport": {
+          "width": 1366,
+          "height": 768
+        },
+        "dpr": 1,
+        "roundingTolerancePx": 1,
+        "document": {
+          "width": 1366,
+          "height": 1219
+        },
+        "horizontalOverflow": false,
+        "horizontalOverflowPx": 0,
+        "scroll": {
+          "x": 0,
+          "y": 41
+        },
+        "activeView": "app-visual-view",
+        "question": {
+          "x": 337,
+          "y": 669.69,
+          "width": 692,
+          "height": 25.19,
+          "visible": true,
+          "horizontallyContained": true,
+          "verticallyContained": true,
+          "withinViewport": true,
+          "intersectsViewport": true
+        },
+        "controls": {
+          "x": 337,
+          "y": 725.81,
+          "width": 692,
+          "height": 219.19,
+          "visible": true,
+          "horizontallyContained": true,
+          "verticallyContained": false,
+          "withinViewport": false,
+          "intersectsViewport": true
+        },
+        "nestedChoices": []
+      }
+    },
+    {
+      "routeId": "ROUTE-PLAN34-THIRD-IDENTITY-WIDE",
+      "context": "production-default-v7",
+      "motionMode": "standard-motion",
+      "file": "reports/development/plan-34-reusable-full-addition-task-patterns/evidence/plan34-third-identity-linear-resolve-wide.png",
+      "caption": "The fifth compact identity resolves in the linear view after Retry and a fresh completion.",
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "layout": {
+        "viewport": {
+          "width": 1366,
+          "height": 768
+        },
+        "dpr": 1,
+        "roundingTolerancePx": 1,
+        "document": {
+          "width": 1366,
+          "height": 768
+        },
+        "horizontalOverflow": false,
+        "horizontalOverflowPx": 0,
+        "scroll": {
+          "x": 0,
+          "y": 0
+        },
+        "activeView": "app-linear-view",
+        "question": {
+          "x": 337,
+          "y": 360.75,
+          "width": 692,
+          "height": 25.19,
+          "visible": true,
+          "horizontallyContained": true,
+          "verticallyContained": true,
+          "withinViewport": true,
+          "intersectsViewport": true
+        },
+        "controls": {
+          "x": 337,
+          "y": 419.94,
+          "width": 692,
+          "height": 44,
+          "visible": true,
+          "horizontallyContained": true,
+          "verticallyContained": true,
+          "withinViewport": true,
+          "intersectsViewport": true
+        },
+        "nestedChoices": []
+      }
+    },
+    {
+      "routeId": "ROUTE-PLAN34-RETRY-RETURN-REENTRY",
+      "context": "production-default-v7",
+      "motionMode": "reduced-motion",
+      "file": "reports/development/plan-34-reusable-full-addition-task-patterns/evidence/plan34-inspect-retry-draft.png",
+      "caption": "Unsubmitted inspect repair draft immediately before retry.",
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "layout": {
+        "viewport": {
+          "width": 360,
+          "height": 740
+        },
+        "dpr": 1,
+        "roundingTolerancePx": 1,
+        "document": {
+          "width": 360,
+          "height": 982
+        },
+        "horizontalOverflow": false,
+        "horizontalOverflowPx": 0,
+        "scroll": {
+          "x": 0,
+          "y": 12
+        },
+        "activeView": "app-visual-view",
+        "question": {
+          "x": 63,
+          "y": 420.72,
+          "width": 234,
+          "height": 75.56,
+          "visible": true,
+          "horizontallyContained": true,
+          "verticallyContained": true,
+          "withinViewport": true,
+          "intersectsViewport": true
+        },
+        "controls": {
+          "x": 63,
+          "y": 527.22,
+          "width": 234,
+          "height": 259.19,
+          "visible": true,
+          "horizontallyContained": true,
+          "verticallyContained": false,
+          "withinViewport": false,
+          "intersectsViewport": true
+        },
+        "nestedChoices": []
+      }
+    },
+    {
+      "routeId": "ROUTE-PLAN34-RETRY-RETURN-REENTRY",
+      "context": "production-default-v7",
+      "motionMode": "reduced-motion",
+      "file": "reports/development/plan-34-reusable-full-addition-task-patterns/evidence/plan34-fresh-reentry-360x740.png",
+      "caption": "Fresh production v6 encounter after return, with no stale inspect draft.",
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "layout": {
+        "viewport": {
+          "width": 360,
+          "height": 740
+        },
+        "dpr": 1,
+        "roundingTolerancePx": 1,
+        "document": {
+          "width": 360,
+          "height": 766
+        },
+        "horizontalOverflow": false,
+        "horizontalOverflowPx": 0,
+        "scroll": {
+          "x": 0,
+          "y": 12
+        },
+        "activeView": "app-visual-view",
+        "question": {
+          "x": 63,
+          "y": 420.72,
+          "width": 234,
+          "height": 25.19,
+          "visible": true,
+          "horizontallyContained": true,
+          "verticallyContained": true,
+          "withinViewport": true,
+          "intersectsViewport": true
+        },
+        "controls": {
+          "x": 63,
+          "y": 476.84,
+          "width": 234,
+          "height": 113,
+          "visible": true,
+          "horizontallyContained": true,
+          "verticallyContained": true,
+          "withinViewport": true,
+          "intersectsViewport": true
+        },
+        "nestedChoices": []
+      }
+    },
+    {
+      "routeId": "ROUTE-PLAN18-PRODUCTION-HIGH-VISUAL-COMPLETE",
+      "context": "historical-v6",
+      "motionMode": "standard-motion",
+      "file": "reports/development/plan-18-nested-denominator-addition/evidence/route-plan18-production-high-visual-complete-side-choice.png",
+      "caption": "Production set@6 nested side-choice state with stacked fraction controls.",
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "layout": {
+        "viewport": {
+          "width": 360,
+          "height": 740
+        },
+        "dpr": 1,
+        "roundingTolerancePx": 1,
+        "document": {
+          "width": 360,
+          "height": 889
+        },
+        "horizontalOverflow": false,
+        "horizontalOverflowPx": 0,
+        "scroll": {
+          "x": 0,
+          "y": 10
+        },
+        "activeView": "app-visual-view",
+        "question": {
+          "x": 63,
+          "y": 407.78,
+          "width": 234,
+          "height": 50.38,
+          "visible": true,
+          "horizontallyContained": true,
+          "verticallyContained": true,
+          "withinViewport": true,
+          "intersectsViewport": true
+        },
+        "controls": {
+          "x": 63,
+          "y": 407.78,
+          "width": 234,
+          "height": 287.13,
+          "visible": true,
+          "horizontallyContained": true,
+          "verticallyContained": true,
+          "withinViewport": true,
+          "intersectsViewport": true
+        },
+        "nestedChoices": [
+          {
+            "button": {
+              "x": 63,
+              "y": 458.16,
+              "width": 139.8,
+              "height": 82.38,
+              "visible": true,
+              "horizontallyContained": true,
+              "verticallyContained": true,
+              "withinViewport": true,
+              "intersectsViewport": true
+            },
+            "fraction": {
+              "x": 126.05,
+              "y": 490.34,
+              "width": 13.69,
+              "height": 39.19,
+              "visible": true,
+              "horizontallyContained": true,
+              "verticallyContained": true,
+              "withinViewport": true,
+              "intersectsViewport": true
+            },
+            "fractionRule": {
+              "x": 126.05,
+              "y": 508.94,
+              "width": 13.69,
+              "height": 2,
+              "visible": true,
+              "horizontallyContained": true,
+              "verticallyContained": true,
+              "withinViewport": true,
+              "intersectsViewport": true
+            }
+          },
+          {
+            "button": {
+              "x": 63,
+              "y": 552.53,
+              "width": 162.91,
+              "height": 82.38,
+              "visible": true,
+              "horizontallyContained": true,
+              "verticallyContained": true,
+              "withinViewport": true,
+              "intersectsViewport": true
+            },
+            "fraction": {
+              "x": 137.61,
+              "y": 584.72,
+              "width": 13.69,
+              "height": 39.19,
+              "visible": true,
+              "horizontallyContained": true,
+              "verticallyContained": true,
+              "withinViewport": true,
+              "intersectsViewport": true
+            },
+            "fractionRule": {
+              "x": 137.61,
+              "y": 603.31,
+              "width": 13.69,
+              "height": 2,
+              "visible": true,
+              "horizontallyContained": true,
+              "verticallyContained": true,
+              "withinViewport": true,
+              "intersectsViewport": true
+            }
+          }
+        ]
+      }
+    },
+    {
+      "routeId": "ROUTE-PLAN18-PRODUCTION-HIGH-VISUAL-COMPLETE",
+      "context": "historical-v6",
+      "motionMode": "standard-motion",
+      "file": "reports/development/plan-18-nested-denominator-addition/evidence/route-plan18-production-high-visual-complete-conversion-replay.png",
+      "caption": "Accepted one-sided conversion with the unchanged eighths operand visible.",
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "layout": {
+        "viewport": {
+          "width": 360,
+          "height": 740
+        },
+        "dpr": 1,
+        "roundingTolerancePx": 1,
+        "document": {
+          "width": 360,
+          "height": 961
+        },
+        "horizontalOverflow": false,
+        "horizontalOverflowPx": 0,
+        "scroll": {
+          "x": 0,
+          "y": 181
+        },
+        "activeView": "app-visual-view",
+        "question": {
+          "x": 63,
+          "y": 291.56,
+          "width": 234,
+          "height": 50.38,
+          "visible": true,
+          "horizontallyContained": true,
+          "verticallyContained": true,
+          "withinViewport": true,
+          "intersectsViewport": true
+        },
+        "controls": {
+          "x": 63,
+          "y": 372.88,
+          "width": 234,
+          "height": 75,
+          "visible": true,
+          "horizontallyContained": true,
+          "verticallyContained": true,
+          "withinViewport": true,
+          "intersectsViewport": true
+        },
+        "nestedChoices": []
+      }
+    },
+    {
+      "routeId": "ROUTE-PLAN18-PRODUCTION-MEDIUM-LINEAR-REDUCED",
+      "context": "historical-v6",
+      "motionMode": "reduced-motion",
+      "file": "reports/development/plan-18-nested-denominator-addition/evidence/route-plan18-production-medium-linear-reduced-side-choice.png",
+      "caption": "Production set@6 nested side-choice state with stacked fraction controls.",
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "layout": {
+        "viewport": {
+          "width": 360,
+          "height": 740
+        },
+        "dpr": 1,
+        "roundingTolerancePx": 1,
+        "document": {
+          "width": 360,
+          "height": 765
+        },
+        "horizontalOverflow": false,
+        "horizontalOverflowPx": 0,
+        "scroll": {
+          "x": 0,
+          "y": 0
+        },
+        "activeView": "app-linear-view",
+        "question": {
+          "x": 63,
+          "y": 293.78,
+          "width": 234,
+          "height": 50.38,
+          "visible": true,
+          "horizontallyContained": true,
+          "verticallyContained": true,
+          "withinViewport": true,
+          "intersectsViewport": true
+        },
+        "controls": {
+          "x": 63,
+          "y": 293.78,
+          "width": 234,
+          "height": 287.13,
+          "visible": true,
+          "horizontallyContained": true,
+          "verticallyContained": true,
+          "withinViewport": true,
+          "intersectsViewport": true
+        },
+        "nestedChoices": [
+          {
+            "button": {
+              "x": 63,
+              "y": 344.16,
+              "width": 139.8,
+              "height": 82.38,
+              "visible": true,
+              "horizontallyContained": true,
+              "verticallyContained": true,
+              "withinViewport": true,
+              "intersectsViewport": true
+            },
+            "fraction": {
+              "x": 126.05,
+              "y": 376.34,
+              "width": 13.69,
+              "height": 39.19,
+              "visible": true,
+              "horizontallyContained": true,
+              "verticallyContained": true,
+              "withinViewport": true,
+              "intersectsViewport": true
+            },
+            "fractionRule": {
+              "x": 126.05,
+              "y": 394.94,
+              "width": 13.69,
+              "height": 2,
+              "visible": true,
+              "horizontallyContained": true,
+              "verticallyContained": true,
+              "withinViewport": true,
+              "intersectsViewport": true
+            }
+          },
+          {
+            "button": {
+              "x": 63,
+              "y": 438.53,
+              "width": 162.91,
+              "height": 82.38,
+              "visible": true,
+              "horizontallyContained": true,
+              "verticallyContained": true,
+              "withinViewport": true,
+              "intersectsViewport": true
+            },
+            "fraction": {
+              "x": 137.61,
+              "y": 470.72,
+              "width": 13.69,
+              "height": 39.19,
+              "visible": true,
+              "horizontallyContained": true,
+              "verticallyContained": true,
+              "withinViewport": true,
+              "intersectsViewport": true
+            },
+            "fractionRule": {
+              "x": 137.61,
+              "y": 489.31,
+              "width": 13.69,
+              "height": 2,
+              "visible": true,
+              "horizontallyContained": true,
+              "verticallyContained": true,
+              "withinViewport": true,
+              "intersectsViewport": true
+            }
+          }
+        ]
+      }
+    },
+    {
+      "routeId": "ROUTE-PLAN18-PRODUCTION-MEDIUM-LINEAR-REDUCED",
+      "context": "historical-v6",
+      "motionMode": "reduced-motion",
+      "file": "reports/development/plan-18-nested-denominator-addition/evidence/route-plan18-production-medium-linear-reduced-conversion-replay.png",
+      "caption": "Accepted one-sided conversion with the unchanged eighths operand visible.",
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "layout": {
+        "viewport": {
+          "width": 360,
+          "height": 740
+        },
+        "dpr": 1,
+        "roundingTolerancePx": 1,
+        "document": {
+          "width": 360,
+          "height": 905
+        },
+        "horizontalOverflow": false,
+        "horizontalOverflowPx": 0,
+        "scroll": {
+          "x": 0,
+          "y": 142
+        },
+        "activeView": "app-linear-view",
+        "question": {
+          "x": 63,
+          "y": 271.34,
+          "width": 234,
+          "height": 50.38,
+          "visible": true,
+          "horizontallyContained": true,
+          "verticallyContained": true,
+          "withinViewport": true,
+          "intersectsViewport": true
+        },
+        "controls": {
+          "x": 63,
+          "y": 355.72,
+          "width": 234,
+          "height": 75,
+          "visible": true,
+          "horizontallyContained": true,
+          "verticallyContained": true,
+          "withinViewport": true,
+          "intersectsViewport": true
+        },
+        "nestedChoices": []
+      }
+    },
+    {
+      "routeId": "ROUTE-PLAN38-RESPONSIVE-VIEWPORTS",
+      "context": "production-default-v7",
+      "motionMode": "standard-motion",
+      "file": "reports/development/plan-38-like-denominator-subtraction-batch/evidence/encounter-360x740.png",
+      "caption": "Subtraction initial encounter at 360x740",
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "layout": {
+        "viewport": {
+          "width": 360,
+          "height": 740
+        },
+        "dpr": 1,
+        "roundingTolerancePx": 1,
+        "document": {
+          "width": 360,
+          "height": 740
+        },
+        "horizontalOverflow": false,
+        "horizontalOverflowPx": 0,
+        "scroll": {
+          "x": 0,
+          "y": 0
+        },
+        "activeView": "app-visual-view",
+        "question": {
+          "x": 63,
+          "y": 372.72,
+          "width": 234,
+          "height": 25.19,
+          "visible": true,
+          "horizontallyContained": true,
+          "verticallyContained": true,
+          "withinViewport": true,
+          "intersectsViewport": true
+        },
+        "controls": {
+          "x": 63,
+          "y": 428.84,
+          "width": 234,
+          "height": 44,
+          "visible": true,
+          "horizontallyContained": true,
+          "verticallyContained": true,
+          "withinViewport": true,
+          "intersectsViewport": true
+        },
+        "nestedChoices": []
+      }
+    },
+    {
+      "routeId": "ROUTE-PLAN38-RESPONSIVE-VIEWPORTS",
+      "context": "production-default-v7",
+      "motionMode": "standard-motion",
+      "file": "reports/development/plan-38-like-denominator-subtraction-batch/evidence/operate-hatch-360x740.png",
+      "caption": "Subtraction operate beat with removal hatch marks at 360x740",
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "layout": {
+        "viewport": {
+          "width": 360,
+          "height": 740
+        },
+        "dpr": 1,
+        "roundingTolerancePx": 1,
+        "document": {
+          "width": 360,
+          "height": 813
+        },
+        "horizontalOverflow": false,
+        "horizontalOverflowPx": 0,
+        "scroll": {
+          "x": 0,
+          "y": 0
+        },
+        "activeView": "app-visual-view",
+        "question": {
+          "x": 63,
+          "y": 372.72,
+          "width": 234,
+          "height": 25.19,
+          "visible": true,
+          "horizontallyContained": true,
+          "verticallyContained": true,
+          "withinViewport": true,
+          "intersectsViewport": true
+        },
+        "controls": {
+          "x": 63,
+          "y": 428.84,
+          "width": 234,
+          "height": 200.59,
+          "visible": true,
+          "horizontallyContained": true,
+          "verticallyContained": true,
+          "withinViewport": true,
+          "intersectsViewport": true
+        },
+        "nestedChoices": []
+      }
+    },
+    {
+      "routeId": "ROUTE-PLAN38-RESPONSIVE-VIEWPORTS",
+      "context": "production-default-v7",
+      "motionMode": "standard-motion",
+      "file": "reports/development/plan-38-like-denominator-subtraction-batch/evidence/help-360x740.png",
+      "caption": "Subtraction operate beat with help cue at 360x740",
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "layout": {
+        "viewport": {
+          "width": 360,
+          "height": 740
+        },
+        "dpr": 1,
+        "roundingTolerancePx": 1,
+        "document": {
+          "width": 360,
+          "height": 894
+        },
+        "horizontalOverflow": false,
+        "horizontalOverflowPx": 0,
+        "scroll": {
+          "x": 0,
+          "y": 0
+        },
+        "activeView": "app-visual-view",
+        "question": {
+          "x": 63,
+          "y": 372.72,
+          "width": 234,
+          "height": 25.19,
+          "visible": true,
+          "horizontallyContained": true,
+          "verticallyContained": true,
+          "withinViewport": true,
+          "intersectsViewport": true
+        },
+        "controls": {
+          "x": 63,
+          "y": 428.84,
+          "width": 234,
+          "height": 281.38,
+          "visible": true,
+          "horizontallyContained": true,
+          "verticallyContained": true,
+          "withinViewport": true,
+          "intersectsViewport": true
+        },
+        "nestedChoices": []
+      }
+    },
+    {
+      "routeId": "ROUTE-PLAN38-RESPONSIVE-VIEWPORTS",
+      "context": "production-default-v7",
+      "motionMode": "standard-motion",
+      "file": "reports/development/plan-38-like-denominator-subtraction-batch/evidence/resolve-360x740.png",
+      "caption": "Subtraction resolve beat at 360x740",
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "layout": {
+        "viewport": {
+          "width": 360,
+          "height": 740
+        },
+        "dpr": 1,
+        "roundingTolerancePx": 1,
+        "document": {
+          "width": 360,
+          "height": 740
+        },
+        "horizontalOverflow": false,
+        "horizontalOverflowPx": 0,
+        "scroll": {
+          "x": 0,
+          "y": 0
+        },
+        "activeView": "app-visual-view",
+        "question": {
+          "x": 63,
+          "y": 372.72,
+          "width": 234,
+          "height": 25.19,
+          "visible": true,
+          "horizontallyContained": true,
+          "verticallyContained": true,
+          "withinViewport": true,
+          "intersectsViewport": true
+        },
+        "controls": {
+          "x": 63,
+          "y": 428.84,
+          "width": 234,
+          "height": 44,
+          "visible": true,
+          "horizontallyContained": true,
+          "verticallyContained": true,
+          "withinViewport": true,
+          "intersectsViewport": true
+        },
+        "nestedChoices": []
+      }
+    },
+    {
+      "routeId": "ROUTE-PLAN40-UNLIKE-SUBTRACTION-MEDIUM-LINEAR-ALL",
+      "context": "production-default-v7",
+      "motionMode": "reduced-motion",
+      "file": "reports/development/plan-40-unlike-denominator-subtraction-batch/evidence/linear-operate-360x752.png",
+      "caption": "Unlike subtraction item 1 linear operate beat at 360x752",
+      "viewport": {
+        "width": 360,
+        "height": 752
+      },
+      "layout": {
+        "viewport": {
+          "width": 360,
+          "height": 752
+        },
+        "dpr": 1,
+        "roundingTolerancePx": 1,
+        "document": {
+          "width": 360,
+          "height": 831
+        },
+        "horizontalOverflow": false,
+        "horizontalOverflowPx": 0,
+        "scroll": {
+          "x": 0,
+          "y": 0
+        },
+        "activeView": "app-linear-view",
+        "question": {
+          "x": 63,
+          "y": 346.17,
+          "width": 234,
+          "height": 25.19,
+          "visible": true,
+          "horizontallyContained": true,
+          "verticallyContained": true,
+          "withinViewport": true,
+          "intersectsViewport": true
+        },
+        "controls": {
+          "x": 63,
+          "y": 405.36,
+          "width": 234,
+          "height": 200.59,
+          "visible": true,
+          "horizontallyContained": true,
+          "verticallyContained": true,
+          "withinViewport": true,
+          "intersectsViewport": true
+        },
+        "nestedChoices": []
+      }
+    },
+    {
+      "routeId": "ROUTE-PLAN40-DEEP-SAMPLE-INSPECT-REPAIR",
+      "context": "production-default-v7",
+      "motionMode": "standard-motion",
+      "file": "reports/development/plan-40-unlike-denominator-subtraction-batch/evidence/operate-hatch-largest-target30-1366x768.png",
+      "caption": "Unlike subtraction operate beat with largest admitted target 30 removal hatch marks at 1366x768",
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "layout": {
+        "viewport": {
+          "width": 1366,
+          "height": 768
+        },
+        "dpr": 1,
+        "roundingTolerancePx": 1,
+        "document": {
+          "width": 1366,
+          "height": 952
+        },
+        "horizontalOverflow": false,
+        "horizontalOverflowPx": 0,
+        "scroll": {
+          "x": 0,
+          "y": 41
+        },
+        "activeView": "app-visual-view",
+        "question": {
+          "x": 337,
+          "y": 380.69,
+          "width": 692,
+          "height": 25.19,
+          "visible": true,
+          "horizontallyContained": true,
+          "verticallyContained": true,
+          "withinViewport": true,
+          "intersectsViewport": true
+        },
+        "controls": {
+          "x": 337,
+          "y": 436.81,
+          "width": 692,
+          "height": 200.59,
+          "visible": true,
+          "horizontallyContained": true,
+          "verticallyContained": true,
+          "withinViewport": true,
+          "intersectsViewport": true
+        },
+        "nestedChoices": []
+      }
+    },
+    {
+      "routeId": "ROUTE-PLAN40-RESPONSIVE-VIEWPORTS",
+      "context": "production-default-v7",
+      "motionMode": "standard-motion",
+      "file": "reports/development/plan-40-unlike-denominator-subtraction-batch/evidence/encounter-360x740.png",
+      "caption": "Unlike subtraction initial encounter at 360x740",
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "layout": {
+        "viewport": {
+          "width": 360,
+          "height": 740
+        },
+        "dpr": 1,
+        "roundingTolerancePx": 1,
+        "document": {
+          "width": 360,
+          "height": 766
+        },
+        "horizontalOverflow": false,
+        "horizontalOverflowPx": 0,
+        "scroll": {
+          "x": 0,
+          "y": 12
+        },
+        "activeView": "app-visual-view",
+        "question": {
+          "x": 63,
+          "y": 420.72,
+          "width": 234,
+          "height": 25.19,
+          "visible": true,
+          "horizontallyContained": true,
+          "verticallyContained": true,
+          "withinViewport": true,
+          "intersectsViewport": true
+        },
+        "controls": {
+          "x": 63,
+          "y": 476.84,
+          "width": 234,
+          "height": 113,
+          "visible": true,
+          "horizontallyContained": true,
+          "verticallyContained": true,
+          "withinViewport": true,
+          "intersectsViewport": true
+        },
+        "nestedChoices": []
+      }
+    },
+    {
+      "routeId": "ROUTE-PLAN40-RESPONSIVE-VIEWPORTS",
+      "context": "production-default-v7",
+      "motionMode": "standard-motion",
+      "file": "reports/development/plan-40-unlike-denominator-subtraction-batch/evidence/transform-360x740.png",
+      "caption": "Unlike subtraction transform beat at 360x740",
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "layout": {
+        "viewport": {
+          "width": 360,
+          "height": 740
+        },
+        "dpr": 1,
+        "roundingTolerancePx": 1,
+        "document": {
+          "width": 360,
+          "height": 792
+        },
+        "horizontalOverflow": false,
+        "horizontalOverflowPx": 0,
+        "scroll": {
+          "x": 0,
+          "y": 12
+        },
+        "activeView": "app-visual-view",
+        "question": {
+          "x": 63,
+          "y": 405.78,
+          "width": 234,
+          "height": 75.56,
+          "visible": true,
+          "horizontallyContained": true,
+          "verticallyContained": true,
+          "withinViewport": true,
+          "intersectsViewport": true
+        },
+        "controls": {
+          "x": 63,
+          "y": 405.78,
+          "width": 234,
+          "height": 190.56,
+          "visible": true,
+          "horizontallyContained": true,
+          "verticallyContained": true,
+          "withinViewport": true,
+          "intersectsViewport": true
+        },
+        "nestedChoices": []
+      }
+    },
+    {
+      "routeId": "ROUTE-PLAN40-RESPONSIVE-VIEWPORTS",
+      "context": "production-default-v7",
+      "motionMode": "standard-motion",
+      "file": "reports/development/plan-40-unlike-denominator-subtraction-batch/evidence/operate-hatch-360x740.png",
+      "caption": "Unlike subtraction operate beat with removal hatch marks at 360x740",
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "layout": {
+        "viewport": {
+          "width": 360,
+          "height": 740
+        },
+        "dpr": 1,
+        "roundingTolerancePx": 1,
+        "document": {
+          "width": 360,
+          "height": 854
+        },
+        "horizontalOverflow": false,
+        "horizontalOverflowPx": 0,
+        "scroll": {
+          "x": 0,
+          "y": 12
+        },
+        "activeView": "app-visual-view",
+        "question": {
+          "x": 63,
+          "y": 360.72,
+          "width": 234,
+          "height": 25.19,
+          "visible": true,
+          "horizontallyContained": true,
+          "verticallyContained": true,
+          "withinViewport": true,
+          "intersectsViewport": true
+        },
+        "controls": {
+          "x": 63,
+          "y": 416.84,
+          "width": 234,
+          "height": 200.59,
+          "visible": true,
+          "horizontallyContained": true,
+          "verticallyContained": true,
+          "withinViewport": true,
+          "intersectsViewport": true
+        },
+        "nestedChoices": []
+      }
+    },
+    {
+      "routeId": "ROUTE-PLAN40-RESPONSIVE-VIEWPORTS",
+      "context": "production-default-v7",
+      "motionMode": "standard-motion",
+      "file": "reports/development/plan-40-unlike-denominator-subtraction-batch/evidence/help-360x740.png",
+      "caption": "Unlike subtraction operate beat with help cue at 360x740",
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "layout": {
+        "viewport": {
+          "width": 360,
+          "height": 740
+        },
+        "dpr": 1,
+        "roundingTolerancePx": 1,
+        "document": {
+          "width": 360,
+          "height": 935
+        },
+        "horizontalOverflow": false,
+        "horizontalOverflowPx": 0,
+        "scroll": {
+          "x": 0,
+          "y": 12
+        },
+        "activeView": "app-visual-view",
+        "question": {
+          "x": 63,
+          "y": 360.72,
+          "width": 234,
+          "height": 25.19,
+          "visible": true,
+          "horizontallyContained": true,
+          "verticallyContained": true,
+          "withinViewport": true,
+          "intersectsViewport": true
+        },
+        "controls": {
+          "x": 63,
+          "y": 416.84,
+          "width": 234,
+          "height": 281.38,
+          "visible": true,
+          "horizontallyContained": true,
+          "verticallyContained": true,
+          "withinViewport": true,
+          "intersectsViewport": true
+        },
+        "nestedChoices": []
+      }
+    },
+    {
+      "routeId": "ROUTE-PLAN40-RESPONSIVE-VIEWPORTS",
+      "context": "production-default-v7",
+      "motionMode": "standard-motion",
+      "file": "reports/development/plan-40-unlike-denominator-subtraction-batch/evidence/resolve-360x740.png",
+      "caption": "Unlike subtraction resolve beat at 360x740",
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "layout": {
+        "viewport": {
+          "width": 360,
+          "height": 740
+        },
+        "dpr": 1,
+        "roundingTolerancePx": 1,
+        "document": {
+          "width": 360,
+          "height": 740
+        },
+        "horizontalOverflow": false,
+        "horizontalOverflowPx": 0,
+        "scroll": {
+          "x": 0,
+          "y": 0
+        },
+        "activeView": "app-visual-view",
+        "question": {
+          "x": 63,
+          "y": 372.72,
+          "width": 234,
+          "height": 25.19,
+          "visible": true,
+          "horizontallyContained": true,
+          "verticallyContained": true,
+          "withinViewport": true,
+          "intersectsViewport": true
+        },
+        "controls": {
+          "x": 63,
+          "y": 428.84,
+          "width": 234,
+          "height": 44,
+          "visible": true,
+          "horizontallyContained": true,
+          "verticallyContained": true,
+          "withinViewport": true,
+          "intersectsViewport": true
+        },
+        "nestedChoices": []
+      }
+    },
+    {
+      "routeId": "ROUTE-PLAN40-CHROMEBOOK-SCALED-VIEWPORT",
+      "context": "production-default-v7",
+      "motionMode": "standard-motion",
+      "file": "reports/development/plan-40-unlike-denominator-subtraction-batch/evidence/chromebook-1093x614.png",
+      "caption": "Unlike subtraction resolved equation in Chromebook CSS viewport 1093x614 @ DPR 1.25",
+      "viewport": {
+        "width": 1093,
+        "height": 614
+      },
+      "layout": {
+        "viewport": {
+          "width": 1093,
+          "height": 614
+        },
+        "dpr": 1.25,
+        "roundingTolerancePx": 1,
+        "document": {
+          "width": 1093,
+          "height": 770
+        },
+        "horizontalOverflow": false,
+        "horizontalOverflowPx": 0,
+        "scroll": {
+          "x": 0,
+          "y": 33
+        },
+        "activeView": "app-visual-view",
+        "question": {
+          "x": 200.5,
+          "y": 375.81,
+          "width": 692,
+          "height": 25.19,
+          "visible": true,
+          "horizontallyContained": true,
+          "verticallyContained": true,
+          "withinViewport": true,
+          "intersectsViewport": true
+        },
+        "controls": {
+          "x": 200.5,
+          "y": 431.94,
+          "width": 692,
+          "height": 44,
+          "visible": true,
+          "horizontallyContained": true,
+          "verticallyContained": true,
+          "withinViewport": true,
+          "intersectsViewport": true
+        },
+        "nestedChoices": []
+      }
+    },
+    {
+      "routeId": "ROUTE-PLAN39-DEEP-SAMPLE-HIGH-EIGHTHS-B8",
+      "context": "historical-plan39-v7",
+      "motionMode": "standard-motion",
+      "file": "reports/development/plan-39-number-line-locate-and-bar-bridge-batch/evidence/high-eighths-360x740.png",
+      "caption": "Plan39 high-support eighths locate state at 360x740",
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "layout": {
+        "viewport": {
+          "width": 360,
+          "height": 740
+        },
+        "dpr": 1,
+        "roundingTolerancePx": 1,
+        "document": {
+          "width": 360,
+          "height": 740
+        },
+        "horizontalOverflow": false,
+        "horizontalOverflowPx": 0,
+        "scroll": {
+          "x": 0,
+          "y": 0
+        },
+        "activeView": "app-visual-view",
+        "question": {
+          "x": 25,
+          "y": 145,
+          "width": 310,
+          "height": 41.97,
+          "visible": true,
+          "horizontallyContained": true,
+          "verticallyContained": true,
+          "withinViewport": true,
+          "intersectsViewport": true
+        },
+        "controls": {
+          "x": 25,
+          "y": 335.08,
+          "width": 310,
+          "height": 124,
+          "visible": true,
+          "horizontallyContained": true,
+          "verticallyContained": true,
+          "withinViewport": true,
+          "intersectsViewport": true
+        },
+        "nestedChoices": []
+      }
+    },
+    {
+      "routeId": "ROUTE-PLAN39-RESPONSIVE-360X752",
+      "context": "historical-plan39-v7",
+      "motionMode": "standard-motion",
+      "file": "reports/development/plan-39-number-line-locate-and-bar-bridge-batch/evidence/high-eighths-360x752.png",
+      "caption": "Plan39 eighths at 360x752",
+      "viewport": {
+        "width": 360,
+        "height": 752
+      },
+      "layout": {
+        "viewport": {
+          "width": 360,
+          "height": 752
+        },
+        "dpr": 1,
+        "roundingTolerancePx": 1,
+        "document": {
+          "width": 360,
+          "height": 752
+        },
+        "horizontalOverflow": false,
+        "horizontalOverflowPx": 0,
+        "scroll": {
+          "x": 0,
+          "y": 0
+        },
+        "activeView": "app-visual-view",
+        "question": {
+          "x": 25,
+          "y": 145,
+          "width": 310,
+          "height": 41.97,
+          "visible": true,
+          "horizontallyContained": true,
+          "verticallyContained": true,
+          "withinViewport": true,
+          "intersectsViewport": true
+        },
+        "controls": {
+          "x": 25,
+          "y": 335.08,
+          "width": 310,
+          "height": 124,
+          "visible": true,
+          "horizontallyContained": true,
+          "verticallyContained": true,
+          "withinViewport": true,
+          "intersectsViewport": true
+        },
+        "nestedChoices": []
+      }
+    },
+    {
+      "routeId": "ROUTE-PLAN39-RESPONSIVE-1366X768",
+      "context": "historical-plan39-v7",
+      "motionMode": "standard-motion",
+      "file": "reports/development/plan-39-number-line-locate-and-bar-bridge-batch/evidence/high-eighths-1366x768.png",
+      "caption": "Plan39 eighths at 1366x768",
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "layout": {
+        "viewport": {
+          "width": 1366,
+          "height": 768
+        },
+        "dpr": 1,
+        "roundingTolerancePx": 1,
+        "document": {
+          "width": 1366,
+          "height": 768
+        },
+        "horizontalOverflow": false,
+        "horizontalOverflowPx": 0,
+        "scroll": {
+          "x": 0,
+          "y": 0
+        },
+        "activeView": "app-visual-view",
+        "question": {
+          "x": 347,
+          "y": 193.97,
+          "width": 672,
+          "height": 20.98,
+          "visible": true,
+          "horizontallyContained": true,
+          "verticallyContained": true,
+          "withinViewport": true,
+          "intersectsViewport": true
+        },
+        "controls": {
+          "x": 347,
+          "y": 380.64,
+          "width": 672,
+          "height": 104,
+          "visible": true,
+          "horizontallyContained": true,
+          "verticallyContained": true,
+          "withinViewport": true,
+          "intersectsViewport": true
+        },
+        "nestedChoices": []
+      }
+    },
+    {
+      "routeId": "ROUTE-PLAN39-RESPONSIVE-1093X614-DPR125",
+      "context": "historical-plan39-v7",
+      "motionMode": "standard-motion",
+      "file": "reports/development/plan-39-number-line-locate-and-bar-bridge-batch/evidence/high-eighths-1093x614-dpr125.png",
+      "caption": "Plan39 eighths at 1093x614 DPR1.25",
+      "viewport": {
+        "width": 1093,
+        "height": 614
+      },
+      "layout": {
+        "viewport": {
+          "width": 1093,
+          "height": 614
+        },
+        "dpr": 1.25,
+        "roundingTolerancePx": 1,
+        "document": {
+          "width": 1093,
+          "height": 614
+        },
+        "horizontalOverflow": false,
+        "horizontalOverflowPx": 0,
+        "scroll": {
+          "x": 0,
+          "y": 0
+        },
+        "activeView": "app-visual-view",
+        "question": {
+          "x": 210.5,
+          "y": 181.09,
+          "width": 672,
+          "height": 20.98,
+          "visible": true,
+          "horizontallyContained": true,
+          "verticallyContained": true,
+          "withinViewport": true,
+          "intersectsViewport": true
+        },
+        "controls": {
+          "x": 210.5,
+          "y": 367.77,
+          "width": 672,
+          "height": 104,
+          "visible": true,
+          "horizontallyContained": true,
+          "verticallyContained": true,
+          "withinViewport": true,
+          "intersectsViewport": true
+        },
+        "nestedChoices": []
+      }
+    }
+  ]
+}

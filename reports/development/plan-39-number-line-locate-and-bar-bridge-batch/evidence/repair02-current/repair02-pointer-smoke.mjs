@@ -4,6 +4,7 @@ import { createRequire } from 'node:module';
 import { writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { choosePlan39RadioByKeyboard, dragTokenToRatio, tapTrackAtRatio } from '../../../../../scripts/dev/plan39-repair02-playwright-helpers.mjs';
 
 const require = createRequire(import.meta.url);
 const { createStaticServer } = require('../../../../../scripts/dev/run-route-matrix.js');
@@ -77,10 +78,7 @@ try {
   frameBox = await visual.locator('.plan39-axis-frame').boundingBox();
   const tieX = frameBox.x + frameBox.width * (initial.points[0].ratio + initial.points[1].ratio) / 2;
   const axisY = await visual.locator('.plan39-axis-line').evaluate((el) => { const r=el.getBoundingClientRect(); return r.y+r.height/2; });
-  await page.mouse.move(tokenBox.x + tokenBox.width / 2, tokenBox.y + tokenBox.height / 2);
-  await page.mouse.down();
-  await page.mouse.move(tieX, axisY, { steps: 8 });
-  await page.mouse.up();
+  await dragTokenToRatio(page, { view: 'visual', ratio: (initial.points[0].ratio + initial.points[1].ratio) / 2 });
   assert.equal(await token.getAttribute('data-candidate-id'), initial.points[0].id, 'equidistant drag must stably choose the lower position');
   assert.equal(await visual.locator('.plan39-check-position').isEnabled(), true);
   assert.equal(await page.locator('.plan39-bar-track').count(), 0, 'selection alone cannot reveal a shaded bar');
@@ -109,7 +107,7 @@ try {
   frameBox = await visual.locator('.plan39-axis-frame').boundingBox();
   const sourceX = frameBox.x + frameBox.width * initial.source.numerator / initial.source.denominator;
   const tapY = await visual.locator('.plan39-axis-line').evaluate((el) => { const r=el.getBoundingClientRect(); return r.y+r.height/2; });
-  await page.mouse.click(sourceX, tapY);
+  await tapTrackAtRatio(page, { view: 'visual', ratio: initial.source.numerator / initial.source.denominator });
   const expectedCandidate = initial.points.find(({ ratio }) => Math.abs(ratio - initial.source.numerator / initial.source.denominator) < 1e-9);
   assert(expectedCandidate, 'authored source amount must match one rendered offered location');
   assert.equal(await visual.locator('.plan39-repair-token').getAttribute('data-candidate-id'), expectedCandidate.id, 'tap-to-place selects the exact offered source location after error redraw');
@@ -138,7 +136,7 @@ try {
   assert.equal(await linearRadio.count(), 1);
   const radioLabel = await linearRadio.getAttribute('aria-label');
   assert.match(radioLabel, /equal steps from 0/);
-  await linearRadio.press('Space');
+  await choosePlan39RadioByKeyboard(page, { view: 'linear', candidateId: expectedCandidate.id });
   assert.equal(await linearRadio.evaluate((el) => el.checked), true, 'native radio must select from the keyboard');
   const linearCheck = page.locator('.app-linear-view .plan39-check-position');
   assert.equal(await linearCheck.isEnabled(), true);

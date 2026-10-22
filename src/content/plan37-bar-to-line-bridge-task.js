@@ -276,6 +276,7 @@ export function plan37ExactLocationScale(context) {
   }
   return deepFreeze({
     totalUnits: scale.toString(),
+    partitionHasHalfPoint: context.supportMode === 'partitioned' && scale % 2n === 0n,
     scaleDescription: `0 to 1 has ${scale} equal steps.`,
     positions,
   });

@@ -60,6 +60,14 @@ describe('Plan 39 bar-to-line bridge content and interaction', () => {
     expect(() => replayEpisode(forgedV7)).toThrow();
   });
 
+  it('replays all twelve frozen pre-source v7 full-state oracles unchanged', () => {
+    const path = new URL('../reports/development/plan-39-number-line-locate-and-bar-bridge-batch/evidence/repair02-v7-baseline-oracles.json', import.meta.url);
+    const baseline = JSON.parse(readFileSync(path, 'utf8'));
+    const snapshots = Object.values(baseline.snapshots);
+    expect(snapshots).toHaveLength(12);
+    for (const snapshot of snapshots) expect(replayEpisode(snapshot.envelope)).toEqual(snapshot.fullState);
+  });
+
   it('admits exactly the eight registered unary records in both support modes', () => {
     expect(PLAN37_BAR_TO_LINE_BRIDGE_RECORDS).toHaveLength(8);
     for (const record of PLAN37_BAR_TO_LINE_BRIDGE_RECORDS) {
