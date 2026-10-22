@@ -96,7 +96,8 @@
     "ROUTE-PLAN39-REPAIR02-BOUNDARIES": "production-default-v8",
     "ROUTE-PLAN39-REPAIR02-ODD-THIRDS-360X740": "production-default-v8",
     "ROUTE-PLAN39-REPAIR02-MEDIUM-1366X768": "production-default-v8",
-    "ROUTE-PLAN39-REPAIR02-EIGHTHS-1093X614-DPR125": "production-default-v8"
+    "ROUTE-PLAN39-REPAIR02-EIGHTHS-1093X614-DPR125": "production-default-v8",
+    "ROUTE-PLAN39-REPAIR03-ANCHOR-RING": "production-default-v8"
   },
   "plan40-unlike-subtraction": {
     "practiceSetId": "unlike-subtraction-vetted-set",

@@ -1,0 +1,62 @@
+{
+  "capturedAt": "2026-10-22T21:07:27.009Z",
+  "browserChannel": "chrome",
+  "mode": "filtered",
+  "routeRows": 1,
+  "browserExecutions": 1,
+  "passed": 1,
+  "failed": 0,
+  "seedDetected": 0,
+  "results": [
+    {
+      "id": "ROUTE-PLAN39-REPAIR03-ANCHOR-RING [standard-motion]",
+      "routeId": "ROUTE-PLAN39-REPAIR03-ANCHOR-RING",
+      "context": "production-default-v8",
+      "motionMode": "standard-motion",
+      "status": "pass",
+      "geometryChecks": [],
+      "repair02Evidence": [],
+      "repair03Evidence": [
+        {
+          "candidateIds": [
+            "candidate-a",
+            "candidate-b",
+            "candidate-c",
+            "candidate-d"
+          ],
+          "first": {
+            "grip": "center",
+            "targetId": "candidate-c",
+            "anchor": {
+              "x": 180,
+              "y": 237.859375
+            },
+            "axisY": 237.859375,
+            "nearestId": "candidate-c",
+            "selectedId": "candidate-c",
+            "ringsBeforeRelease": [
+              "candidate-c"
+            ]
+          },
+          "second": {
+            "grip": "edge",
+            "targetId": "candidate-d",
+            "anchor": {
+              "x": 319,
+              "y": 237.859375
+            },
+            "axisY": 237.859375,
+            "nearestId": "candidate-d",
+            "selectedId": "candidate-d",
+            "ringsBeforeRelease": [
+              "candidate-d"
+            ]
+          },
+          "explicitCheckEnabled": true,
+          "barCountBeforeCheck": 0
+        }
+      ],
+      "screenshots": []
+    }
+  ]
+}

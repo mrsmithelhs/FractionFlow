@@ -16208,6 +16208,63 @@
           }
         ]
       }
+    },
+    {
+      "id": "ROUTE-PLAN39-REPAIR03-ANCHOR-RING",
+      "behavior": "Current Plan 39 Repair03 natural anchor drag and ring agreement",
+      "configuration": "phase2-bundle-1",
+      "startingSurface": "mounted-app-entry",
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "motionMode": "standard-motion",
+      "witness": "browser",
+      "inputMode": "mouse",
+      "actions": [
+        {
+          "method": "click",
+          "target": ".app-gear-button",
+          "description": "Open display settings"
+        },
+        {
+          "method": "click",
+          "target": "[data-support-id=\"medium-support\"]",
+          "description": "Select sparse offered locations"
+        },
+        {
+          "method": "click",
+          "target": "[data-practice-type=\"bar-to-line-same-amount\"]",
+          "description": "Start the current location task"
+        },
+        {
+          "method": "plan39Repair03AnchorWitness",
+          "description": "Check centre and edge grips, live nearest ring, and release agreement"
+        },
+        {
+          "method": "assert",
+          "target": ".app-episode",
+          "description": "Verify mounted Plan39 Repair03 task remains reachable",
+          "assertions": [
+            {
+              "type": "hasSelector",
+              "target": ".app-episode"
+            }
+          ]
+        }
+      ],
+      "expect": {
+        "capture": {
+          "target": ".app-episode",
+          "type": "innerHTML"
+        },
+        "assertions": [
+          {
+            "type": "hasSelector",
+            "target": ".app-episode"
+          }
+        ]
+      }
     }
   ]
 }

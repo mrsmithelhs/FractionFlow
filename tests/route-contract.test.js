@@ -14,6 +14,7 @@ const {
   plan38WitnessSeeds,
   plan39WitnessSeeds,
   plan39Repair02WitnessSeeds,
+  plan39Repair03WitnessSeeds,
   resolveStartingSurface,
   selectRoutesForRun,
   validateMatrixIntegrity,
@@ -134,15 +135,22 @@ describe('Plan 14 Reachable Behavior Route Contract & Matrix Schema', () => {
   });
 
   it('pins the original 91 route objects and migrates only Plan 39 context mappings to v1 history', async () => {
-    expect(matrix.routes).toHaveLength(98);
+    expect(matrix.routes).toHaveLength(99);
     expect(createHash('sha256').update(JSON.stringify(matrix.routes.slice(0, 91))).digest('hex'))
       .toBe('eee8367c25fdaa88612b516a05b6989a919ae10b8e822a6339bea9b4c3c631de');
+    expect(createHash('sha256').update(JSON.stringify(matrix.routes.slice(0, 98))).digest('hex'))
+      .toBe('e30aa7a3ee8a4f4f0567d245256ed954881d931f2d2136304320cc39a25a93ef');
     const contexts = JSON.parse(fs.readFileSync(path.resolve(__dirname, 'routes/plan34-context-map.json'), 'utf8')).contexts;
+    const contextsBeforeRepair03 = { ...contexts };
+    delete contextsBeforeRepair03['ROUTE-PLAN39-REPAIR03-ANCHOR-RING'];
+    expect(createHash('sha256').update(JSON.stringify(contextsBeforeRepair03)).digest('hex'))
+      .toBe('c2c83aee5eea3436a66deb4978ad8891fadb694fa4c2f48c212e48db9dee0c00');
     const nonPlan39 = Object.fromEntries(Object.entries(contexts).filter(([id]) => !id.startsWith('ROUTE-PLAN39-')));
     expect(Object.keys(nonPlan39)).toHaveLength(79);
     expect(createHash('sha256').update(JSON.stringify(nonPlan39)).digest('hex'))
       .toBe('bbba2bc77d74738de5f665e7da75e3a8284c1a80ef07f4e3f21146fbf0009954');
-    const legacy = matrix.routes.filter((route) => route.id.startsWith('ROUTE-PLAN39-') && !route.id.startsWith('ROUTE-PLAN39-REPAIR02-'));
+    const legacy = matrix.routes.filter((route) => route.id.startsWith('ROUTE-PLAN39-')
+      && !route.id.startsWith('ROUTE-PLAN39-REPAIR02-') && !route.id.startsWith('ROUTE-PLAN39-REPAIR03-'));
     expect(legacy).toHaveLength(10);
     expect(legacy.every((route) => contexts[route.id] === 'historical-plan39-v7')).toBe(true);
     const wrongLegacyMap = JSON.parse(fs.readFileSync(path.resolve(__dirname, 'routes/plan34-context-map.json'), 'utf8'));
@@ -164,6 +172,7 @@ describe('Plan 14 Reachable Behavior Route Contract & Matrix Schema', () => {
       'ROUTE-PLAN39-REPAIR02-KEYBOARD-ALL-8', 'ROUTE-PLAN39-REPAIR02-BOUNDARIES',
       'ROUTE-PLAN39-REPAIR02-ODD-THIRDS-360X740', 'ROUTE-PLAN39-REPAIR02-MEDIUM-1366X768',
       'ROUTE-PLAN39-REPAIR02-EIGHTHS-1093X614-DPR125',
+      'ROUTE-PLAN39-REPAIR03-ANCHOR-RING',
     ]);
     expect(rows.slice(0, 10).map(({ id }) => contexts[id])).toEqual(Array(10).fill('historical-plan39-v7'));
     expect(rows[0].actions.some((action) => action.method === 'completePlan39BridgeSet' && action.supportProfile === 'high-support')).toBe(true);
@@ -173,7 +182,7 @@ describe('Plan 14 Reachable Behavior Route Contract & Matrix Schema', () => {
       'coarse-bucket-sr-collapse', 'misaligned-endpoints', 'premature-target-leak',
       'single-tap-auto-submit', 'undersized-touch-target',
     ]);
-    const repair = rows.slice(10);
+    const repair = rows.slice(10, 17);
     expect(repair.map(({ id }) => id)).toEqual([
       'ROUTE-PLAN39-REPAIR02-DRAG-ALL-8',
       'ROUTE-PLAN39-REPAIR02-TOUCH-TAP-ALL-8',
@@ -194,7 +203,16 @@ describe('Plan 14 Reachable Behavior Route Contract & Matrix Schema', () => {
       'auto-check-on-placement', 'cancel-loses-prior-placement', 'correctness-aware-snap',
       'hidden-bar-before-check', 'outside-drop-accepted',
     ]);
-    expect(expandRouteExecutions(matrix.routes)).toHaveLength(100);
+    const repair03 = rows.slice(17);
+    expect(repair03.map(({ id }) => id)).toEqual(['ROUTE-PLAN39-REPAIR03-ANCHOR-RING']);
+    expect(repair03[0].actions.some((action) => action.method === 'plan39Repair03AnchorWitness')).toBe(true);
+    expect(contexts[repair03[0].id]).toBe('production-default-v8');
+    expect(Object.keys(plan39Repair03WitnessSeeds)).toEqual(['highlight-anchor-mismatch']);
+    expect(plan39Repair03WitnessSeeds['highlight-anchor-mismatch']).toMatchObject({
+      routeId: 'ROUTE-PLAN39-REPAIR03-ANCHOR-RING',
+      failure: 'Plan39 Repair03 shared anchor/highlight assertion failed',
+    });
+    expect(expandRouteExecutions(matrix.routes)).toHaveLength(101);
   });
 
   it('enforces Rule 1: fails if a registered condition has no declared route witness', async () => {
@@ -425,7 +443,7 @@ describe('Plan 14 Reachable Behavior Route Contract & Matrix Schema', () => {
 
   it('executes each prototype route in both motion modes and brings in its filtered negative control', () => {
     const executions = expandRouteExecutions(matrix.routes);
-    expect(executions).toHaveLength(100);
+    expect(executions).toHaveLength(101);
     expect(executions.filter((execution) => (
       execution.route.configuration === 'plan15-subtraction-prototype'
     ))).toHaveLength(4);

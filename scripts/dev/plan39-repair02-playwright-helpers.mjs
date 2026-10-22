@@ -9,15 +9,26 @@ export async function beginTokenDrag(page, { view = 'visual' } = {}) {
   const host = page.locator(`.app-${view}-view`);
   const tokenBox = await host.locator('.plan39-repair-token').boundingBox();
   const frameBox = await host.locator('.plan39-axis-frame').boundingBox();
-  if (!tokenBox || !frameBox) throw new Error('Plan39 pointer drag needs a visible token and track');
-  await page.mouse.move(tokenBox.x + tokenBox.width / 2, tokenBox.y + tokenBox.height / 2);
+  const axisBox = await host.locator('.plan39-axis-line').boundingBox();
+  if (!tokenBox || !frameBox || !axisBox) throw new Error('Plan39 pointer drag needs a visible token, axis and track');
+  const pointerX = tokenBox.x + tokenBox.width / 2;
+  const pointerY = tokenBox.y + tokenBox.height / 2;
+  const anchorX = tokenBox.x + tokenBox.width / 2;
+  const anchorY = tokenBox.y + tokenBox.height;
+  await page.mouse.move(pointerX, pointerY);
   await page.mouse.down();
-  return { page, frameBox, view };
+  return {
+    page,
+    frameBox,
+    axisY: axisBox.y + axisBox.height / 2,
+    grabOffset: { x: pointerX - anchorX, y: pointerY - anchorY },
+    view,
+  };
 }
 
 export async function moveTokenDrag(page, gesture, { ratio, yOffset = 0 } = {}) {
-  await page.mouse.move(gesture.frameBox.x + gesture.frameBox.width * ratio,
-    gesture.frameBox.y + gesture.frameBox.height / 2 + yOffset, { steps: 8 });
+  await page.mouse.move(gesture.frameBox.x + gesture.frameBox.width * ratio + gesture.grabOffset.x,
+    gesture.axisY + yOffset + gesture.grabOffset.y, { steps: 8 });
 }
 
 export async function endTokenDrag(page, gesture) {

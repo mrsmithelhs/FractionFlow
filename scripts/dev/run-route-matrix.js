@@ -177,6 +177,12 @@ const plan39Repair02WitnessSeeds = Object.freeze({
   'cancel-loses-prior-placement': { routeId: 'ROUTE-PLAN39-REPAIR02-BOUNDARIES', failure: 'Plan39 Repair02 cancel-restoration assertion failed' },
   'outside-drop-accepted': { routeId: 'ROUTE-PLAN39-REPAIR02-BOUNDARIES', failure: 'Plan39 Repair02 outside-drop assertion failed' },
 });
+const plan39Repair03WitnessSeeds = Object.freeze({
+  'highlight-anchor-mismatch': {
+    routeId: 'ROUTE-PLAN39-REPAIR03-ANCHOR-RING',
+    failure: 'Plan39 Repair03 shared anchor/highlight assertion failed',
+  },
+});
 const plan40WitnessSeeds = Object.freeze({
   'erased-takeaway-hatch-after-transform': {
     routeId: 'ROUTE-PLAN40-DEEP-SAMPLE-CONSTRUCT-OPERATE',
@@ -441,10 +447,10 @@ async function validateMatrixIntegrity(matrix, registeredConditions, suppliedCon
       if (route.id.startsWith('ROUTE-PLAN18-') && context !== 'historical-v6') {
         errors.push(`Historical Plan 18 route "${route.id}" must exercise its pinned historical-v6 fixture.`);
       }
-      if (route.id.startsWith('ROUTE-PLAN39-REPAIR02-') && context !== 'production-default-v8') {
-        errors.push(`Current Plan 39 Repair02 route "${route.id}" must exercise production-default-v8.`);
+      if ((route.id.startsWith('ROUTE-PLAN39-REPAIR02-') || route.id.startsWith('ROUTE-PLAN39-REPAIR03-')) && context !== 'production-default-v8') {
+        errors.push(`Current Plan 39 Repair02/03 route "${route.id}" must exercise production-default-v8.`);
       }
-      if (route.id.startsWith('ROUTE-PLAN39-') && !route.id.startsWith('ROUTE-PLAN39-REPAIR02-')
+      if (route.id.startsWith('ROUTE-PLAN39-') && !route.id.startsWith('ROUTE-PLAN39-REPAIR02-') && !route.id.startsWith('ROUTE-PLAN39-REPAIR03-')
         && context !== 'historical-plan39-v7') {
         errors.push(`Historical Plan 39 route "${route.id}" must exercise the pinned revision-1/replay-v7 fixture.`);
       }
@@ -495,6 +501,7 @@ async function validateMatrixIntegrity(matrix, registeredConditions, suppliedCon
     'plan39Witness',
     'completePlan39Repair02Set',
     'plan39Repair02Boundary',
+    'plan39Repair03AnchorWitness',
   ]);
 
   for (const route of matrix.routes) {
@@ -1589,6 +1596,11 @@ async function executeAction(page, action, routeId) {
     case 'plan39Repair02Boundary': {
       const { runPlan39Repair02BoundaryWitness } = await import('./plan39-repair02-route.mjs');
       action.repair02Evidence = await runPlan39Repair02BoundaryWitness(page, action);
+      break;
+    }
+    case 'plan39Repair03AnchorWitness': {
+      const { runPlan39Repair03AnchorWitness } = await import('./plan39-repair03-route.mjs');
+      action.repair03Evidence = await runPlan39Repair03AnchorWitness(page, action);
       break;
     }
     case 'completePlan39BridgeSet': {
@@ -2892,6 +2904,7 @@ async function runRouteMatrix(options = {}) {
     plan40WitnessSeed = null,
     plan39WitnessSeed = null,
     plan39Repair02WitnessSeed = null,
+    plan39Repair03WitnessSeed = null,
   } = options;
 
   if (seededVisualDefect !== null && !Object.hasOwn(seededPrototypeVisualDefects, seededVisualDefect)) {
@@ -2915,6 +2928,9 @@ async function runRouteMatrix(options = {}) {
   if (plan39WitnessSeed !== null && !Object.hasOwn(plan39WitnessSeeds, plan39WitnessSeed)) throw new Error(`Unknown Plan 39 witness seed "${plan39WitnessSeed}".`);
   if (plan39Repair02WitnessSeed !== null && !Object.hasOwn(plan39Repair02WitnessSeeds, plan39Repair02WitnessSeed)) {
     throw new Error(`Unknown Plan 39 Repair02 witness seed "${plan39Repair02WitnessSeed}".`);
+  }
+  if (plan39Repair03WitnessSeed !== null && !Object.hasOwn(plan39Repair03WitnessSeeds, plan39Repair03WitnessSeed)) {
+    throw new Error(`Unknown Plan 39 Repair03 witness seed "${plan39Repair03WitnessSeed}".`);
   }
 
   if (!fs.existsSync(distDir)) {
@@ -2998,7 +3014,8 @@ async function runRouteMatrix(options = {}) {
       : plan18WitnessSeed ? plan18WitnessSeeds[plan18WitnessSeed].routeId
         : plan38WitnessSeed ? plan38WitnessSeeds[plan38WitnessSeed].routeId
           : plan40WitnessSeed ? plan40WitnessSeeds[plan40WitnessSeed].routeId
-            : plan39Repair02WitnessSeed ? plan39Repair02WitnessSeeds[plan39Repair02WitnessSeed].routeId
+            : plan39Repair03WitnessSeed ? plan39Repair03WitnessSeeds[plan39Repair03WitnessSeed].routeId
+              : plan39Repair02WitnessSeed ? plan39Repair02WitnessSeeds[plan39Repair02WitnessSeed].routeId
               : plan39WitnessSeed ? plan39WitnessSeeds[plan39WitnessSeed].routeId : filter;
   const routesToRun = selectRoutesForRun(matrix.routes, effectiveFilter);
   const routeExecutions = expandRouteExecutions(routesToRun);
@@ -3159,6 +3176,9 @@ async function runRouteMatrix(options = {}) {
             : plan39Repair02WitnessSeed && route.id === plan39Repair02WitnessSeeds[plan39Repair02WitnessSeed].routeId
               && action.method === 'plan39Repair02Boundary'
               ? { ...action, seed: plan39Repair02WitnessSeed }
+            : plan39Repair03WitnessSeed && route.id === plan39Repair03WitnessSeeds[plan39Repair03WitnessSeed].routeId
+              && action.method === 'plan39Repair03AnchorWitness'
+              ? { ...action, seed: plan39Repair03WitnessSeed }
             : action;
           if (['completePlan39BridgeSet', 'completePlan39BridgeRecovery'].includes(seededAction.method)) {
             seededAction.inputMode = route.inputMode || 'mouse';
@@ -3213,6 +3233,10 @@ async function runRouteMatrix(options = {}) {
           && err.message.includes(plan39Repair02WitnessSeeds[plan39Repair02WitnessSeed].failure)) {
           routeResults.push({ id: resultId, routeId: route.id, context: routeContext.id, motionMode, status: 'seed-detected', error: err.message, duration, route });
           console.log(`  ✓ ${resultId} (${duration}ms) [Repair02 assertion detected seed: ${plan39Repair02WitnessSeed}; ${err.message}]`);
+        } else if (plan39Repair03WitnessSeed && route.id === plan39Repair03WitnessSeeds[plan39Repair03WitnessSeed].routeId
+          && err.message.includes(plan39Repair03WitnessSeeds[plan39Repair03WitnessSeed].failure)) {
+          routeResults.push({ id: resultId, routeId: route.id, context: routeContext.id, motionMode, status: 'seed-detected', error: err.message, duration, route });
+          console.log(`  ✓ ${resultId} (${duration}ms) [Repair03 assertion detected seed: ${plan39Repair03WitnessSeed}; ${err.message}]`);
         } else if (motionWitnessSeed && route.id === motionWitnessSeeds[motionWitnessSeed].routeId
           && err.message.includes(motionWitnessSeeds[motionWitnessSeed].failure)) {
           routeResults.push({ id: resultId, routeId: route.id, context: resolveRouteContext(route, contextMap).id, motionMode, status: 'seed-detected', error: err.message, duration, route });
@@ -3293,6 +3317,9 @@ async function runRouteMatrix(options = {}) {
   }
   if (plan40WitnessSeed) {
     assertPlan40SeedInvariant({ seedDetected, failed, total: routeResults.length }, plan40WitnessSeed);
+  }
+  if (plan39Repair03WitnessSeed && (seedDetected !== 1 || failed !== 0 || routeResults.length !== 1)) {
+    throw new Error(`Plan 39 Repair03 witness seed "${plan39Repair03WitnessSeed}" did not produce exactly one intended failure; detected=${seedDetected}, failed=${failed}, executions=${routeResults.length}.`);
   }
 
   if (routeResults.some((result) => result.routeId.startsWith('ROUTE-PLAN18-'))) {
@@ -3467,11 +3494,12 @@ async function runRouteMatrix(options = {}) {
           .map((assertion) => ({ description: action.description, ...assertion.measurements }))),
         repair02Evidence: actions.filter((action) => action.repair02Evidence).flatMap((action) => Array.isArray(action.repair02Evidence)
           ? action.repair02Evidence : [action.repair02Evidence]),
+        repair03Evidence: actions.filter((action) => action.repair03Evidence).map(({ repair03Evidence }) => repair03Evidence),
         screenshots: actions.filter((action) => action.method === 'screenshot' && action.screenshotEvidence)
           .map(({ screenshotEvidence }) => screenshotEvidence),
       };
     });
-    if (!filter && !plan39WitnessSeed && !plan39Repair02WitnessSeed) {
+    if (!filter && !plan39WitnessSeed && !plan39Repair02WitnessSeed && !plan39Repair03WitnessSeed) {
       const includesRepair02 = routeResults.some((result) => result.routeId.startsWith('ROUTE-PLAN39-REPAIR02-'));
       const finalEvidenceRoot = includesRepair02
         ? path.join(plan39EvidenceRoot, 'repair02-current')
@@ -3485,8 +3513,10 @@ async function runRouteMatrix(options = {}) {
         mode: 'clean',
         baseline: { routeRows: 81, browserExecutions: 83, preserved: true },
         appendedRouteRows: matrix.routes.filter((route) => route.id.startsWith('ROUTE-PLAN39-')).length,
-        historicalPlan39Rows: matrix.routes.filter((route) => route.id.startsWith('ROUTE-PLAN39-') && !route.id.startsWith('ROUTE-PLAN39-REPAIR02-')).length,
+        historicalPlan39Rows: matrix.routes.filter((route) => route.id.startsWith('ROUTE-PLAN39-')
+          && !route.id.startsWith('ROUTE-PLAN39-REPAIR02-') && !route.id.startsWith('ROUTE-PLAN39-REPAIR03-')).length,
         repair02AddedRows: matrix.routes.filter((route) => route.id.startsWith('ROUTE-PLAN39-REPAIR02-')).length,
+        repair03AddedRows: matrix.routes.filter((route) => route.id.startsWith('ROUTE-PLAN39-REPAIR03-')).length,
         routeRows: routesToRun.length,
         browserExecutions: routeResults.length,
         passed, failed, seedDetected,
@@ -3545,6 +3575,24 @@ async function runRouteMatrix(options = {}) {
         results: routeDetails,
       }, null, 2)}\n`);
     }
+    if (routeResults.some((result) => result.routeId.startsWith('ROUTE-PLAN39-REPAIR03-'))) {
+      const currentEvidenceDir = path.join(plan39EvidenceRoot, 'repair03-current', 'route-runs');
+      fs.mkdirSync(currentEvidenceDir, { recursive: true });
+      const runStamp = new Date().toISOString().replace(/[^0-9TZ]/g, '');
+      const runLabel = plan39Repair03WitnessSeed ? `seed-${plan39Repair03WitnessSeed}`
+        : filter ? `filtered-${filter.replace(/[^a-z0-9-]/gi, '-')}` : 'clean';
+      fs.writeFileSync(path.join(currentEvidenceDir, `repair03-${runLabel}-${runStamp}.json`), `${JSON.stringify({
+        capturedAt: new Date().toISOString(),
+        browserChannel: browserChannel || 'default chromium',
+        mode: plan39Repair03WitnessSeed ? `seed:${plan39Repair03WitnessSeed}` : filter ? 'filtered' : 'clean',
+        routeRows: routesToRun.length,
+        browserExecutions: routeResults.length,
+        passed,
+        failed,
+        seedDetected,
+        results: routeDetails,
+      }, null, 2)}\n`);
+    }
   }
 
   return {
@@ -3577,6 +3625,7 @@ module.exports = {
   plan40WitnessSeeds,
   plan39WitnessSeeds,
   plan39Repair02WitnessSeeds,
+  plan39Repair03WitnessSeeds,
   observeSubdivision,
   resolveStartingSurface,
   runRouteMatrix,
@@ -3598,6 +3647,7 @@ if (require.main === module) {
   let plan40WitnessSeed = null;
   let plan39WitnessSeed = null;
   let plan39Repair02WitnessSeed = null;
+  let plan39Repair03WitnessSeed = null;
   let preferredChannel = null;
 
   for (let i = 0; i < args.length; i++) {
@@ -3619,13 +3669,15 @@ if (require.main === module) {
       plan39WitnessSeed = args[++i];
     } else if (args[i] === '--plan39-repair02-witness-seed' && args[i + 1]) {
       plan39Repair02WitnessSeed = args[++i];
+    } else if (args[i] === '--plan39-repair03-witness-seed' && args[i + 1]) {
+      plan39Repair03WitnessSeed = args[++i];
     } else if (args[i] === '--browser-channel' && args[i + 1]) {
       preferredChannel = args[++i];
     }
   }
 
   console.log('--- FractionFlow Reachable Behavior Route Contract Runner ---');
-  runRouteMatrix({ filter, verbose, preferredChannel, motionWitnessSeed, plan34WitnessSeed, plan18WitnessSeed, plan38WitnessSeed, plan40WitnessSeed, plan39WitnessSeed, plan39Repair02WitnessSeed })
+  runRouteMatrix({ filter, verbose, preferredChannel, motionWitnessSeed, plan34WitnessSeed, plan18WitnessSeed, plan38WitnessSeed, plan40WitnessSeed, plan39WitnessSeed, plan39Repair02WitnessSeed, plan39Repair03WitnessSeed })
     .then((summary) => {
       const parts = [`${summary.passed} passed`];
       if (summary.seedDetected > 0) parts.push(`${summary.seedDetected} intended seed failure${summary.seedDetected === 1 ? '' : 's'} detected`);
@@ -3653,6 +3705,9 @@ if (require.main === module) {
         process.exit(1);
       } else if (plan39Repair02WitnessSeed && (summary.seedDetected !== 1 || summary.failed !== 0 || summary.total !== 1)) {
         console.error(`Plan 39 Repair02 witness seed "${plan39Repair02WitnessSeed}" did not produce exactly one intended failure (detected=${summary.seedDetected}, failed=${summary.failed}, total=${summary.total}).`);
+        process.exit(1);
+      } else if (plan39Repair03WitnessSeed && (summary.seedDetected !== 1 || summary.failed !== 0 || summary.total !== 1)) {
+        console.error(`Plan 39 Repair03 witness seed "${plan39Repair03WitnessSeed}" did not produce exactly one intended failure (detected=${summary.seedDetected}, failed=${summary.failed}, total=${summary.total}).`);
         process.exit(1);
       } else {
         process.exit(0);
