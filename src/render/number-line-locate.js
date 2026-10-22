@@ -349,6 +349,7 @@ export function createNumberLineLocateRenderer({
   let previewHandle = null;
   let tokenPointerState = null;
   let escapeListenerBound = false;
+  let viewportResizeListenerBound = false;
   let resizeObserver = null;
   let observedFrame = null;
   let grabCueShown = false;
@@ -380,11 +381,28 @@ export function createNumberLineLocateRenderer({
     document.addEventListener('keydown', stopGrabCue, true);
   }
 
+  function onViewportResize() {
+    if (!root?.isConnected || !currentScene || !isRepair02(currentScene)) return;
+    if (tokenPointerState) cancelActiveTokenGesture();
+    const selectedId = currentScene.meaning.currentTask.beat === 'locate'
+      && previewHandle?.contextKey === currentKey ? previewHandle.candidateId : null;
+    setTokenPlacement(selectedId);
+    refreshGeometry();
+  }
+
   function syncResizeObservation() {
     if (!isRepair02(currentScene)) {
       resizeObserver?.disconnect();
       observedFrame = null;
+      if (viewportResizeListenerBound && typeof window !== 'undefined') {
+        window.removeEventListener('resize', onViewportResize);
+        viewportResizeListenerBound = false;
+      }
       return;
+    }
+    if (!viewportResizeListenerBound && typeof window !== 'undefined') {
+      window.addEventListener('resize', onViewportResize);
+      viewportResizeListenerBound = true;
     }
     if (typeof ResizeObserver === 'undefined') return;
     const frame = root?.querySelector('.plan39-axis-frame');
@@ -407,6 +425,7 @@ export function createNumberLineLocateRenderer({
   function cancelActiveTokenGesture() {
     const active = tokenPointerState;
     if (!active) return;
+    showDropPreview(active.frame, null);
     tokenPointerState = null;
     try { active.token.releasePointerCapture?.(active.pointerId); } catch { /* capture may already be gone */ }
     restoreTokenAfterGesture(active.token, active.candidateId);
@@ -781,6 +800,10 @@ export function createNumberLineLocateRenderer({
       resizeObserver?.disconnect();
       resizeObserver = null;
       observedFrame = null;
+      if (viewportResizeListenerBound && typeof window !== 'undefined') {
+        window.removeEventListener('resize', onViewportResize);
+        viewportResizeListenerBound = false;
+      }
       if (escapeListenerBound) {
         document.removeEventListener('keydown', onDocumentKeyDown);
         escapeListenerBound = false;

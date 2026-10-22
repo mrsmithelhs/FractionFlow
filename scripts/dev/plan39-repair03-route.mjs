@@ -88,6 +88,56 @@ async function dragToOfferedPoint(page, targetId, grip, seed = null) {
   return { grip, targetId, anchor: observed.anchor, axisY: observed.axisY, nearestId: observed.nearestId, selectedId, ringsBeforeRelease: observed.rings, ringStyle: observed.ringStyle };
 }
 
+async function beginLitGesture(page, targetId) {
+  const token = page.locator('.app-visual-view .plan39-repair-token');
+  const frame = page.locator('.app-visual-view .plan39-axis-frame');
+  const priorId = await token.getAttribute('data-candidate-id');
+  const tokenBox = await token.boundingBox();
+  const target = await frame.locator(`.plan39-candidate-point[data-candidate-id="${targetId}"]`).boundingBox();
+  assert(tokenBox && target && priorId && targetId !== priorId, 'Repair03 cancellation witness needs a placed token and a different offered point');
+  const pointerStart = { x: tokenBox.x + tokenBox.width / 2, y: tokenBox.y + tokenBox.height / 2 };
+  const pointerTarget = { x: target.x + target.width / 2, y: pointerStart.y };
+  await page.mouse.move(pointerStart.x, pointerStart.y);
+  await page.mouse.down();
+  await page.mouse.move(pointerTarget.x, pointerTarget.y, { steps: 8 });
+  const rings = await frame.locator('.plan39-candidate-point.is-drop-preview').count();
+  assert.equal(rings, 1, 'Repair03 cancellation witness must begin with a lit live ring');
+  return { priorId, targetId };
+}
+
+async function assertCancellationCleanup(page, frame, token, points) {
+  const escape = await beginLitGesture(page, points[0].id);
+  await page.keyboard.press('Escape');
+  const escapeRings = await frame.locator('.plan39-candidate-point.is-drop-preview').count();
+  const afterEscape = await token.getAttribute('data-candidate-id');
+  assert.equal(escapeRings, 0, 'Escape cancellation clears the live ring');
+  assert.equal(afterEscape, escape.priorId, 'Escape cancellation restores the prior placement');
+  await page.mouse.up();
+
+  const originalViewport = page.viewportSize();
+  assert(originalViewport, 'Repair03 resize cancellation requires a fixed browser viewport');
+  await page.setViewportSize({ width: 1093, height: 614 });
+  await page.evaluate(() => new Promise((resolve) => requestAnimationFrame(() => requestAnimationFrame(resolve))));
+  const frameWidthBefore = await frame.evaluate((element) => element.getBoundingClientRect().width);
+  const resize = await beginLitGesture(page, points.find(({ id }) => id !== escape.priorId)?.id ?? points[1].id);
+  await page.setViewportSize({ width: 1000, height: 614 });
+  await page.evaluate(() => new Promise((resolve) => requestAnimationFrame(() => requestAnimationFrame(resolve))));
+  const frameWidthAfter = await frame.evaluate((element) => element.getBoundingClientRect().width);
+  const resizeRings = await frame.locator('.plan39-candidate-point.is-drop-preview').count();
+  const afterResize = await token.getAttribute('data-candidate-id');
+  assert.equal(frameWidthAfter, frameWidthBefore, 'Wide resize witness keeps the max-width frame unchanged');
+  assert.equal(resizeRings, 0, 'Resize cancellation clears the live ring');
+  assert.equal(afterResize, resize.priorId, 'Resize cancellation restores the prior placement');
+  await page.mouse.up();
+  await page.setViewportSize(originalViewport);
+  await page.evaluate(() => new Promise((resolve) => requestAnimationFrame(() => requestAnimationFrame(resolve))));
+  return {
+    escape: { ringsBefore: 1, ringsAfter: escapeRings, priorId: escape.priorId, selectedIdAfter: afterEscape },
+    resize: { viewportBefore: { width: 1093, height: 614 }, viewportAfter: { width: 1000, height: 614 }, frameWidthBefore, frameWidthAfter,
+      ringsBefore: 1, ringsAfter: resizeRings, priorId: resize.priorId, selectedIdAfter: afterResize },
+  };
+}
+
 export async function runPlan39Repair03AnchorWitness(page, { seed = null } = {}) {
   const token = page.locator('.app-visual-view .plan39-repair-token');
   const frame = page.locator('.app-visual-view .plan39-axis-frame');
@@ -106,5 +156,6 @@ export async function runPlan39Repair03AnchorWitness(page, { seed = null } = {})
   assert.equal(await token.getAttribute('data-candidate-id'), right.id);
   assert.equal(await page.locator('.app-visual-view .plan39-check-position').isEnabled(), true, 'placement enables explicit Check only');
   assert.equal(await page.locator('.plan39-bar-track').count(), 0, 'placement does not auto-submit');
-  return { candidateIds: points.map(({ id }) => id), first, second, explicitCheckEnabled: true, barCountBeforeCheck: 0 };
+  const cancellation = seed ? null : await assertCancellationCleanup(page, frame, token, points);
+  return { candidateIds: points.map(({ id }) => id), first, second, cancellation, explicitCheckEnabled: true, barCountBeforeCheck: 0 };
 }

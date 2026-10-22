@@ -1,0 +1,206 @@
+{
+  "capturedAt": "2026-10-22T21:19:00.161Z",
+  "browserChannel": "chrome",
+  "seed": "misaligned-endpoints",
+  "intendedFailure": "Plan39 endpoint alignment assertion failed",
+  "routeRows": 1,
+  "browserExecutions": 1,
+  "passed": 0,
+  "failed": 0,
+  "seedDetected": 1,
+  "results": [
+    {
+      "id": "ROUTE-PLAN39-DEEP-SAMPLE-HIGH-EIGHTHS-B8 [standard-motion]",
+      "routeId": "ROUTE-PLAN39-DEEP-SAMPLE-HIGH-EIGHTHS-B8",
+      "context": "historical-plan39-v7",
+      "motionMode": "standard-motion",
+      "status": "seed-detected",
+      "error": "Plan39 endpoint alignment assertion failed: {\"viewport\":{\"width\":360,\"height\":740,\"dpr\":1},\"beat\":\"locate\",\"status\":\"locate\",\"leak\":false,\"feedback\":false,\"sourceBox\":{\"left\":41,\"right\":319,\"top\":244.703125,\"bottom\":276.703125,\"width\":278,\"height\":32},\"axisBox\":{\"left\":46,\"right\":324,\"top\":279.890625,\"bottom\":327.890625,\"width\":278,\"height\":48},\"aligned\":false,\"targetCount\":3,\"undersized\":false,\"overlaps\":false,\"hitMiss\":false,\"boxesFit\":true,\"radioCount\":0,\"candidateCount\":9,\"labels\":[],\"distinctLabels\":true,\"selected\":\"partition-3-of-8\",\"checkEnabled\":true,\"accepted\":false,\"scroll\":{\"x\":0,\"y\":0},\"targets\":[{\"name\":\"fraction-control plan39-stepper-previous plan39-stepper-move\",\"left\":25,\"right\":137,\"top\":335.078125,\"bottom\":399.078125,\"width\":112,\"height\":64},{\"name\":\"fraction-control plan39-stepper-next plan39-stepper-move\",\"left\":223,\"right\":335,\"top\":335.078125,\"bottom\":399.078125,\"width\":112,\"height\":64},{\"name\":\"fraction-control plan39-check-position\",\"left\":25,\"right\":335,\"top\":415.078125,\"bottom\":459.078125,\"width\":310,\"height\":44}],\"promptBox\":{\"left\":25,\"right\":335,\"top\":145,\"bottom\":186.96875,\"width\":310,\"height\":41.96875},\"controlsBox\":{\"left\":25,\"right\":335,\"top\":335.078125,\"bottom\":459.078125,\"width\":310,\"height\":124}} (route action: Enforce ordinary Plan39 locate contract)",
+      "geometryChecks": [
+        {
+          "description": "Plan39 bridge-06-three-eighths-8: preview without grading, recovery, or resolve controls",
+          "viewport": {
+            "width": 360,
+            "height": 740,
+            "dpr": 1
+          },
+          "beat": "locate",
+          "status": "locate",
+          "leak": false,
+          "feedback": false,
+          "sourceBox": {
+            "left": 41,
+            "right": 319,
+            "top": 244.703125,
+            "bottom": 276.703125,
+            "width": 278,
+            "height": 32
+          },
+          "axisBox": {
+            "left": 41,
+            "right": 319,
+            "top": 279.890625,
+            "bottom": 327.890625,
+            "width": 278,
+            "height": 48
+          },
+          "aligned": true,
+          "targetCount": 3,
+          "undersized": false,
+          "overlaps": false,
+          "hitMiss": false,
+          "boxesFit": true,
+          "radioCount": 0,
+          "candidateCount": 9,
+          "labels": [],
+          "distinctLabels": true,
+          "selected": "partition-3-of-8",
+          "checkEnabled": true,
+          "accepted": false,
+          "scroll": {
+            "x": 0,
+            "y": 0
+          },
+          "targets": [
+            {
+              "name": "fraction-control plan39-stepper-previous plan39-stepper-move",
+              "left": 25,
+              "right": 137,
+              "top": 335.078125,
+              "bottom": 399.078125,
+              "width": 112,
+              "height": 64
+            },
+            {
+              "name": "fraction-control plan39-stepper-next plan39-stepper-move",
+              "left": 223,
+              "right": 335,
+              "top": 335.078125,
+              "bottom": 399.078125,
+              "width": 112,
+              "height": 64
+            },
+            {
+              "name": "fraction-control plan39-check-position",
+              "left": 25,
+              "right": 335,
+              "top": 415.078125,
+              "bottom": 459.078125,
+              "width": 310,
+              "height": 44
+            }
+          ],
+          "promptBox": {
+            "left": 25,
+            "right": 335,
+            "top": 145,
+            "bottom": 186.96875,
+            "width": 310,
+            "height": 41.96875
+          },
+          "controlsBox": {
+            "left": 25,
+            "right": 335,
+            "top": 335.078125,
+            "bottom": 459.078125,
+            "width": 310,
+            "height": 124
+          }
+        },
+        {
+          "description": "Enforce ordinary Plan39 locate contract",
+          "viewport": {
+            "width": 360,
+            "height": 740,
+            "dpr": 1
+          },
+          "beat": "locate",
+          "status": "locate",
+          "leak": false,
+          "feedback": false,
+          "sourceBox": {
+            "left": 41,
+            "right": 319,
+            "top": 244.703125,
+            "bottom": 276.703125,
+            "width": 278,
+            "height": 32
+          },
+          "axisBox": {
+            "left": 46,
+            "right": 324,
+            "top": 279.890625,
+            "bottom": 327.890625,
+            "width": 278,
+            "height": 48
+          },
+          "aligned": false,
+          "targetCount": 3,
+          "undersized": false,
+          "overlaps": false,
+          "hitMiss": false,
+          "boxesFit": true,
+          "radioCount": 0,
+          "candidateCount": 9,
+          "labels": [],
+          "distinctLabels": true,
+          "selected": "partition-3-of-8",
+          "checkEnabled": true,
+          "accepted": false,
+          "scroll": {
+            "x": 0,
+            "y": 0
+          },
+          "targets": [
+            {
+              "name": "fraction-control plan39-stepper-previous plan39-stepper-move",
+              "left": 25,
+              "right": 137,
+              "top": 335.078125,
+              "bottom": 399.078125,
+              "width": 112,
+              "height": 64
+            },
+            {
+              "name": "fraction-control plan39-stepper-next plan39-stepper-move",
+              "left": 223,
+              "right": 335,
+              "top": 335.078125,
+              "bottom": 399.078125,
+              "width": 112,
+              "height": 64
+            },
+            {
+              "name": "fraction-control plan39-check-position",
+              "left": 25,
+              "right": 335,
+              "top": 415.078125,
+              "bottom": 459.078125,
+              "width": 310,
+              "height": 44
+            }
+          ],
+          "promptBox": {
+            "left": 25,
+            "right": 335,
+            "top": 145,
+            "bottom": 186.96875,
+            "width": 310,
+            "height": 41.96875
+          },
+          "controlsBox": {
+            "left": 25,
+            "right": 335,
+            "top": 335.078125,
+            "bottom": 459.078125,
+            "width": 310,
+            "height": 124
+          }
+        }
+      ],
+      "repair02Evidence": [],
+      "repair03Evidence": [],
+      "screenshots": []
+    }
+  ]
+}
