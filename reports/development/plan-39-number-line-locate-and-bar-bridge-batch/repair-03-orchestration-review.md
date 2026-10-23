@@ -92,3 +92,12 @@ Follow-up obligations record a future, separately authorized independent
 implementer chat with permission to launch walkthrough children and trials in
 other harnesses. No additional plan/chat, Bootstrap write, distribution claim,
 installation, push or deployment is included in this repair.
+
+## Subsequent owner correction
+
+Owner found fraction text overflowing the fixed-height tile. Parent reproduced
+and corrected the scoped CSS, added a rendered containment guard, and verified
+three viewport sizes, doubled text and the existing drag/cancel route. See
+token-containment-review.md and evidence/token-containment-20261022/. The full
+unit and browser-matrix totals above predate this correction. Plan39 remains
+delivered pending owner acceptance. No further advisor was used.

@@ -6,6 +6,15 @@ and pause records retained later in this file.
 
 ## Current board and owner direction
 
+Owner follow-up 2026-10-22: corrected the number-line fraction tile overflowing
+its fixed 44px container. CSS now sizes the opaque white tile to its content,
+retains minimum touch dimensions and the existing stacking/anchor behavior.
+Read Plan 39 token-containment-review.md. Build and focused rendered checks passed
+at three viewport sizes, doubled text size, drag/drop and cancellation; restoring
+the old dimensions is rejected by the new containment assertion. The full suite
+and full matrix below predate this CSS correction. Plan 39 stays DELIVERED for
+owner review; no new advisor, push or deployment was used.
+
 Repair 03 current checkpoint (2026-10-22): technically accepted; Plan 39 is
 DELIVERED pending owner rendered-page/agency acceptance. Do not close, push or
 deploy without the applicable owner gate. Final implementation/evidence commit
