@@ -1,0 +1,164 @@
+{
+  "capturedAt": "2026-10-23T02:10:46.494Z",
+  "browserChannel": "chrome",
+  "mode": "filtered",
+  "routeRows": 1,
+  "browserExecutions": 1,
+  "passed": 1,
+  "failed": 0,
+  "seedDetected": 0,
+  "results": [
+    {
+      "id": "ROUTE-PLAN39-REPAIR03-ANCHOR-RING [standard-motion]",
+      "routeId": "ROUTE-PLAN39-REPAIR03-ANCHOR-RING",
+      "context": "production-default-v8",
+      "motionMode": "standard-motion",
+      "status": "pass",
+      "geometryChecks": [],
+      "repair02Evidence": [],
+      "repair03Evidence": [
+        {
+          "candidateIds": [
+            "candidate-a",
+            "candidate-b",
+            "candidate-c",
+            "candidate-d"
+          ],
+          "first": {
+            "grip": "center",
+            "targetId": "candidate-c",
+            "anchor": {
+              "x": 180,
+              "y": 237.859375
+            },
+            "axisY": 237.859375,
+            "nearestId": "candidate-c",
+            "selectedId": "candidate-c",
+            "ringsBeforeRelease": [
+              "candidate-c"
+            ],
+            "ringStyle": "rgb(255, 255, 255) 0px 0px 0px 5px, rgb(51, 65, 85) 0px 0px 0px 8px"
+          },
+          "second": {
+            "grip": "edge",
+            "targetId": "candidate-d",
+            "anchor": {
+              "x": 319,
+              "y": 237.859375
+            },
+            "axisY": 237.859375,
+            "nearestId": "candidate-d",
+            "selectedId": "candidate-d",
+            "ringsBeforeRelease": [
+              "candidate-d"
+            ],
+            "ringStyle": "rgb(255, 255, 255) 0px 0px 0px 5px, rgb(51, 65, 85) 0px 0px 0px 8px"
+          },
+          "cancellation": {
+            "escape": {
+              "ringsBefore": 1,
+              "ringsAfter": 0,
+              "priorId": "candidate-d",
+              "selectedIdAfter": "candidate-d"
+            },
+            "resize": {
+              "viewportBefore": {
+                "width": 1093,
+                "height": 614
+              },
+              "viewportAfter": {
+                "width": 1000,
+                "height": 614
+              },
+              "frameWidthBefore": 632,
+              "frameWidthAfter": 632,
+              "ringsBefore": 1,
+              "ringsAfter": 0,
+              "priorId": "candidate-d",
+              "selectedIdAfter": "candidate-d"
+            }
+          },
+          "unplacedContainment": {
+            "tile": {
+              "left": 156,
+              "right": 204,
+              "top": 171.578125,
+              "bottom": 233.328125,
+              "width": 48,
+              "height": 61.75
+            },
+            "content": [
+              {
+                "left": 171.28125,
+                "right": 188.71875,
+                "top": 177.578125,
+                "bottom": 227.328125,
+                "width": 17.4375,
+                "height": 49.75
+              },
+              {
+                "left": 171.28125,
+                "right": 188.71875,
+                "top": 177.578125,
+                "bottom": 200.453125,
+                "width": 17.4375,
+                "height": 22.875
+              },
+              {
+                "left": 171.28125,
+                "right": 188.71875,
+                "top": 204.453125,
+                "bottom": 227.328125,
+                "width": 17.4375,
+                "height": 22.875
+              }
+            ],
+            "background": "rgb(255, 255, 255)",
+            "zIndex": 3
+          },
+          "placedContainment": {
+            "tile": {
+              "left": 295,
+              "right": 343,
+              "top": 176.109375,
+              "bottom": 237.859375,
+              "width": 48,
+              "height": 61.75
+            },
+            "content": [
+              {
+                "left": 310.28125,
+                "right": 327.71875,
+                "top": 182.109375,
+                "bottom": 231.859375,
+                "width": 17.4375,
+                "height": 49.75
+              },
+              {
+                "left": 310.28125,
+                "right": 327.71875,
+                "top": 182.109375,
+                "bottom": 204.984375,
+                "width": 17.4375,
+                "height": 22.875
+              },
+              {
+                "left": 310.28125,
+                "right": 327.71875,
+                "top": 208.984375,
+                "bottom": 231.859375,
+                "width": 17.4375,
+                "height": 22.875
+              }
+            ],
+            "background": "rgb(255, 255, 255)",
+            "zIndex": 3
+          },
+          "explicitCheckEnabled": true,
+          "barCountBeforeCheck": 0
+        }
+      ],
+      "screenshots": []
+    }
+  ]
+}

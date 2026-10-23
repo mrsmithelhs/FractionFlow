@@ -2,6 +2,32 @@ import assert from 'node:assert/strict';
 
 const mismatchFailure = 'Plan39 Repair03 shared anchor/highlight assertion failed';
 
+export async function assertPlan39TokenContainment(page) {
+  const geometry = await page.locator('.app-visual-view .plan39-repair-token').evaluate((token) => {
+    const bounds = (element) => {
+      const { left, right, top, bottom, width, height } = element.getBoundingClientRect();
+      return { left, right, top, bottom, width, height };
+    };
+    const style = getComputedStyle(token);
+    return {
+      tile: bounds(token),
+      content: [...token.querySelectorAll('.symbolic-fraction, .symbolic-numerator, .symbolic-denominator')].map(bounds),
+      background: style.backgroundColor,
+      zIndex: Number(style.zIndex),
+    };
+  });
+  assert(geometry.tile.width >= 44 && geometry.tile.height >= 44, 'Fraction tile retains a minimum touch target');
+  assert.equal(geometry.content.length, 3, 'Fraction tile contains its fraction, numerator and denominator');
+  for (const content of geometry.content) {
+    assert(content.left >= geometry.tile.left + 2 && content.right <= geometry.tile.right - 2
+      && content.top >= geometry.tile.top + 2 && content.bottom <= geometry.tile.bottom - 2,
+    'Fraction glyphs must remain inside the opaque tile border');
+  }
+  assert.equal(geometry.background, 'rgb(255, 255, 255)', 'Fraction tile has an opaque white background');
+  assert(geometry.zIndex > 2, 'Fraction tile stays above the number-line points');
+  return geometry;
+}
+
 async function dragToOfferedPoint(page, targetId, grip, seed = null) {
   const token = page.locator('.app-visual-view .plan39-repair-token');
   const frame = page.locator('.app-visual-view .plan39-axis-frame');
@@ -142,6 +168,7 @@ export async function runPlan39Repair03AnchorWitness(page, { seed = null } = {})
   const token = page.locator('.app-visual-view .plan39-repair-token');
   const frame = page.locator('.app-visual-view .plan39-axis-frame');
   assert.equal(await page.locator('.plan39-bar-track').count(), 0, 'Repair03 starts with no answer bar before Check');
+  const unplacedContainment = await assertPlan39TokenContainment(page);
   await page.locator('.app-visual-view .plan39-stepper-previous').click();
   const points = await frame.locator('.plan39-candidate-point').evaluateAll((nodes) => nodes.map((node, index) => ({
     id: node.getAttribute('data-candidate-id'),
@@ -153,9 +180,11 @@ export async function runPlan39Repair03AnchorWitness(page, { seed = null } = {})
   const right = points.at(-1);
   const first = await dragToOfferedPoint(page, mid.id, 'center');
   const second = await dragToOfferedPoint(page, right.id, 'edge', seed);
+  const placedContainment = await assertPlan39TokenContainment(page);
   assert.equal(await token.getAttribute('data-candidate-id'), right.id);
   assert.equal(await page.locator('.app-visual-view .plan39-check-position').isEnabled(), true, 'placement enables explicit Check only');
   assert.equal(await page.locator('.plan39-bar-track').count(), 0, 'placement does not auto-submit');
   const cancellation = seed ? null : await assertCancellationCleanup(page, frame, token, points);
-  return { candidateIds: points.map(({ id }) => id), first, second, cancellation, explicitCheckEnabled: true, barCountBeforeCheck: 0 };
+  return { candidateIds: points.map(({ id }) => id), first, second, cancellation,
+    unplacedContainment, placedContainment, explicitCheckEnabled: true, barCountBeforeCheck: 0 };
 }

@@ -1,0 +1,492 @@
+{
+  "capturedAt": "2026-10-23T02:10:26.425Z",
+  "browser": "installed Chrome",
+  "results": [
+    {
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "deviceScaleFactor": 1,
+      "unplaced": {
+        "tile": {
+          "left": 156,
+          "right": 204,
+          "top": 171.578125,
+          "bottom": 233.328125,
+          "width": 48,
+          "height": 61.75
+        },
+        "content": [
+          {
+            "left": 171.28125,
+            "right": 188.71875,
+            "top": 177.578125,
+            "bottom": 227.328125,
+            "width": 17.4375,
+            "height": 49.75
+          },
+          {
+            "left": 171.28125,
+            "right": 188.71875,
+            "top": 177.578125,
+            "bottom": 200.453125,
+            "width": 17.4375,
+            "height": 22.875
+          },
+          {
+            "left": 171.28125,
+            "right": 188.71875,
+            "top": 204.453125,
+            "bottom": 227.328125,
+            "width": 17.4375,
+            "height": 22.875
+          }
+        ],
+        "background": "rgb(255, 255, 255)",
+        "zIndex": 3
+      },
+      "placed": {
+        "tile": {
+          "left": 156,
+          "right": 204,
+          "top": 176.109375,
+          "bottom": 237.859375,
+          "width": 48,
+          "height": 61.75
+        },
+        "content": [
+          {
+            "left": 171.28125,
+            "right": 188.71875,
+            "top": 182.109375,
+            "bottom": 231.859375,
+            "width": 17.4375,
+            "height": 49.75
+          },
+          {
+            "left": 171.28125,
+            "right": 188.71875,
+            "top": 182.109375,
+            "bottom": 204.984375,
+            "width": 17.4375,
+            "height": 22.875
+          },
+          {
+            "left": 171.28125,
+            "right": 188.71875,
+            "top": 208.984375,
+            "bottom": 231.859375,
+            "width": 17.4375,
+            "height": 22.875
+          }
+        ],
+        "background": "rgb(255, 255, 255)",
+        "zIndex": 3
+      },
+      "dragging": {
+        "tile": {
+          "left": 295,
+          "right": 343,
+          "top": 176.109375,
+          "bottom": 237.859375,
+          "width": 48,
+          "height": 61.75
+        },
+        "content": [
+          {
+            "left": 310.28125,
+            "right": 327.71875,
+            "top": 182.109375,
+            "bottom": 231.859375,
+            "width": 17.4375,
+            "height": 49.75
+          },
+          {
+            "left": 310.28125,
+            "right": 327.71875,
+            "top": 182.109375,
+            "bottom": 204.984375,
+            "width": 17.4375,
+            "height": 22.875
+          },
+          {
+            "left": 310.28125,
+            "right": 327.71875,
+            "top": 208.984375,
+            "bottom": 231.859375,
+            "width": 17.4375,
+            "height": 22.875
+          }
+        ],
+        "background": "rgb(255, 255, 255)",
+        "zIndex": 1000
+      },
+      "enlarged": {
+        "tile": {
+          "left": 453.546875,
+          "right": 508.453125,
+          "top": 407.734375,
+          "bottom": 523.234375,
+          "width": 54.90625,
+          "height": 115.5
+        },
+        "content": [
+          {
+            "left": 463.546875,
+            "right": 498.453125,
+            "top": 417.734375,
+            "bottom": 513.234375,
+            "width": 34.90625,
+            "height": 95.5
+          },
+          {
+            "left": 463.546875,
+            "right": 498.453125,
+            "top": 417.734375,
+            "bottom": 463.484375,
+            "width": 34.90625,
+            "height": 45.75
+          },
+          {
+            "left": 463.546875,
+            "right": 498.453125,
+            "top": 467.484375,
+            "bottom": 513.234375,
+            "width": 34.90625,
+            "height": 45.75
+          }
+        ],
+        "background": "rgb(255, 255, 255)",
+        "zIndex": 3
+      },
+      "ringMatchesDrop": true
+    },
+    {
+      "viewport": {
+        "width": 1093,
+        "height": 614
+      },
+      "deviceScaleFactor": 1.25,
+      "unplaced": {
+        "tile": {
+          "left": 522.5,
+          "right": 570.5,
+          "top": 210.875,
+          "bottom": 272.625,
+          "width": 48,
+          "height": 61.75
+        },
+        "content": [
+          {
+            "left": 537.78125,
+            "right": 555.21875,
+            "top": 216.875,
+            "bottom": 266.625,
+            "width": 17.4375,
+            "height": 49.75
+          },
+          {
+            "left": 537.78125,
+            "right": 555.21875,
+            "top": 216.875,
+            "bottom": 239.75,
+            "width": 17.4375,
+            "height": 22.875
+          },
+          {
+            "left": 537.78125,
+            "right": 555.21875,
+            "top": 243.75,
+            "bottom": 266.625,
+            "width": 17.4375,
+            "height": 22.875
+          }
+        ],
+        "background": "rgb(255, 255, 255)",
+        "zIndex": 3
+      },
+      "placed": {
+        "tile": {
+          "left": 522.5,
+          "right": 570.5,
+          "top": 217.796875,
+          "bottom": 279.546875,
+          "width": 48,
+          "height": 61.75
+        },
+        "content": [
+          {
+            "left": 537.78125,
+            "right": 555.21875,
+            "top": 223.796875,
+            "bottom": 273.546875,
+            "width": 17.4375,
+            "height": 49.75
+          },
+          {
+            "left": 537.78125,
+            "right": 555.21875,
+            "top": 223.796875,
+            "bottom": 246.671875,
+            "width": 17.4375,
+            "height": 22.875
+          },
+          {
+            "left": 537.78125,
+            "right": 555.21875,
+            "top": 250.671875,
+            "bottom": 273.546875,
+            "width": 17.4375,
+            "height": 22.875
+          }
+        ],
+        "background": "rgb(255, 255, 255)",
+        "zIndex": 3
+      },
+      "dragging": {
+        "tile": {
+          "left": 838.5,
+          "right": 886.5,
+          "top": 217.796875,
+          "bottom": 279.546875,
+          "width": 48,
+          "height": 61.75
+        },
+        "content": [
+          {
+            "left": 853.78125,
+            "right": 871.21875,
+            "top": 223.796875,
+            "bottom": 273.546875,
+            "width": 17.4375,
+            "height": 49.75
+          },
+          {
+            "left": 853.78125,
+            "right": 871.21875,
+            "top": 223.796875,
+            "bottom": 246.671875,
+            "width": 17.4375,
+            "height": 22.875
+          },
+          {
+            "left": 853.78125,
+            "right": 871.21875,
+            "top": 250.671875,
+            "bottom": 273.546875,
+            "width": 17.4375,
+            "height": 22.875
+          }
+        ],
+        "background": "rgb(255, 255, 255)",
+        "zIndex": 1000
+      },
+      "enlarged": {
+        "tile": {
+          "left": 951.765625,
+          "right": 1022.671875,
+          "top": 328.734375,
+          "bottom": 444.234375,
+          "width": 70.90625,
+          "height": 115.5
+        },
+        "content": [
+          {
+            "left": 969.765625,
+            "right": 1004.671875,
+            "top": 338.734375,
+            "bottom": 434.234375,
+            "width": 34.90625,
+            "height": 95.5
+          },
+          {
+            "left": 969.765625,
+            "right": 1004.671875,
+            "top": 338.734375,
+            "bottom": 384.484375,
+            "width": 34.90625,
+            "height": 45.75
+          },
+          {
+            "left": 969.765625,
+            "right": 1004.671875,
+            "top": 388.484375,
+            "bottom": 434.234375,
+            "width": 34.90625,
+            "height": 45.75
+          }
+        ],
+        "background": "rgb(255, 255, 255)",
+        "zIndex": 3
+      },
+      "ringMatchesDrop": true
+    },
+    {
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "deviceScaleFactor": 1,
+      "unplaced": {
+        "tile": {
+          "left": 659,
+          "right": 707,
+          "top": 223.75,
+          "bottom": 285.5,
+          "width": 48,
+          "height": 61.75
+        },
+        "content": [
+          {
+            "left": 674.28125,
+            "right": 691.71875,
+            "top": 229.75,
+            "bottom": 279.5,
+            "width": 17.4375,
+            "height": 49.75
+          },
+          {
+            "left": 674.28125,
+            "right": 691.71875,
+            "top": 229.75,
+            "bottom": 252.625,
+            "width": 17.4375,
+            "height": 22.875
+          },
+          {
+            "left": 674.28125,
+            "right": 691.71875,
+            "top": 256.625,
+            "bottom": 279.5,
+            "width": 17.4375,
+            "height": 22.875
+          }
+        ],
+        "background": "rgb(255, 255, 255)",
+        "zIndex": 3
+      },
+      "placed": {
+        "tile": {
+          "left": 659,
+          "right": 707,
+          "top": 230.671875,
+          "bottom": 292.421875,
+          "width": 48,
+          "height": 61.75
+        },
+        "content": [
+          {
+            "left": 674.28125,
+            "right": 691.71875,
+            "top": 236.671875,
+            "bottom": 286.421875,
+            "width": 17.4375,
+            "height": 49.75
+          },
+          {
+            "left": 674.28125,
+            "right": 691.71875,
+            "top": 236.671875,
+            "bottom": 259.546875,
+            "width": 17.4375,
+            "height": 22.875
+          },
+          {
+            "left": 674.28125,
+            "right": 691.71875,
+            "top": 263.546875,
+            "bottom": 286.421875,
+            "width": 17.4375,
+            "height": 22.875
+          }
+        ],
+        "background": "rgb(255, 255, 255)",
+        "zIndex": 3
+      },
+      "dragging": {
+        "tile": {
+          "left": 975,
+          "right": 1023,
+          "top": 230.671875,
+          "bottom": 292.421875,
+          "width": 48,
+          "height": 61.75
+        },
+        "content": [
+          {
+            "left": 990.28125,
+            "right": 1007.71875,
+            "top": 236.671875,
+            "bottom": 286.421875,
+            "width": 17.4375,
+            "height": 49.75
+          },
+          {
+            "left": 990.28125,
+            "right": 1007.71875,
+            "top": 236.671875,
+            "bottom": 259.546875,
+            "width": 17.4375,
+            "height": 22.875
+          },
+          {
+            "left": 990.28125,
+            "right": 1007.71875,
+            "top": 263.546875,
+            "bottom": 286.421875,
+            "width": 17.4375,
+            "height": 22.875
+          }
+        ],
+        "background": "rgb(255, 255, 255)",
+        "zIndex": 1000
+      },
+      "enlarged": {
+        "tile": {
+          "left": 1214.4375,
+          "right": 1285.34375,
+          "top": 339.0625,
+          "bottom": 454.5625,
+          "width": 70.90625,
+          "height": 115.5
+        },
+        "content": [
+          {
+            "left": 1232.4375,
+            "right": 1267.34375,
+            "top": 349.0625,
+            "bottom": 444.5625,
+            "width": 34.90625,
+            "height": 95.5
+          },
+          {
+            "left": 1232.4375,
+            "right": 1267.34375,
+            "top": 349.0625,
+            "bottom": 394.8125,
+            "width": 34.90625,
+            "height": 45.75
+          },
+          {
+            "left": 1232.4375,
+            "right": 1267.34375,
+            "top": 398.8125,
+            "bottom": 444.5625,
+            "width": 34.90625,
+            "height": 45.75
+          }
+        ],
+        "background": "rgb(255, 255, 255)",
+        "zIndex": 3
+      },
+      "ringMatchesDrop": true
+    }
+  ],
+  "seed": {
+    "restoredOld44pxRule": true,
+    "rejected": true,
+    "message": "Fraction glyphs must remain inside the opaque tile border",
+    "cleanAfterRemoval": true
+  }
+}

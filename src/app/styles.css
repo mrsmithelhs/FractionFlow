@@ -340,14 +340,15 @@ body,
   display: grid;
   place-items: center;
   box-sizing: border-box;
-  width: 48px;
+  width: max-content;
   min-width: 48px;
-  height: 48px;
+  height: auto;
   min-height: 48px;
+  padding: 0.25rem 0.5rem;
   justify-self: center;
   border: 2px solid var(--app-border);
   border-radius: 0.5rem;
-  background: var(--app-surface);
+  background: #fff;
   cursor: grab;
   touch-action: none;
   user-select: none;
@@ -358,12 +359,7 @@ body,
 }
 
 .plan39-repair-token.is-placed {
-  width: 44px;
-  min-width: 44px;
-  height: 44px;
-  min-height: 44px;
   border-color: #59636d;
-  background: #fff;
 }
 
 .plan39-axis-line {
