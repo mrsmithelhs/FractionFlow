@@ -1,10 +1,19 @@
 # FractionFlow orchestration handoff
 
-Updated 2026-10-22. Read AGENTS.md, the orchestrator starting prompt, packet board
+Updated 2026-10-23. Read AGENTS.md, the orchestrator starting prompt, packet board
 and git status before acting. Current direction below supersedes older delivery
 and pause records retained later in this file.
 
 ## Current board and owner direction
+
+Repair 04 design prepared 2026-10-23: owner selected a pale yellow starting tray,
+hover feedback for the draggable tile, a light green accepted-result header with
+borderless fraction, separated aligned graphics and direct Next problem instead
+of Finish. Read the Plan 39 repair-04-brief.md and packet amendment. Green appears
+only after correct Check, not merely after dropping. No source work or new chat
+was launched; status remains DELIVERED. Resolve dispatch/preflight ownership and
+approve the completion/advance/versioning mechanism before implementation. Keep
+the one consolidated Sol review cost limit and owner acceptance/deployment gates.
 
 Owner follow-up 2026-10-22: corrected the number-line fraction tile overflowing
 its fixed 44px container. CSS now sizes the opaque white tile to its content,

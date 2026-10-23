@@ -16,6 +16,21 @@ summary: >-
 ---
 # Plan 39: First Number-Line Locate and Bar-to-Line Bridge Batch
 
+## Owner Repair 04 design (2026-10-23)
+
+The owner adopted the layout and progression corrections in
+`reports/development/plan-39-number-line-locate-and-bar-bridge-batch/repair-04-brief.md`:
+a distinct pale yellow starting tray, neutral draggable hover feedback, a light
+green accepted-result header with a borderless stacked fraction, more space
+between aligned bar and line, and direct Next problem instead of an empty Finish
+acknowledgment. Green applies only after accepted Check. Preserve the separate
+tile-containment correction, non-drag alternatives and historical replay meaning.
+These requirements supersede conflicting layout/Finish requirements below for
+the new current implementation only. This turn prepares the repair; it does not
+launch implementation or alter delivered status. At dispatch, resolve the
+preflight/editing window and approve the exact layout, completion/advance and
+versioning mechanism before source work. Owner acceptance/deployment stay gated.
+
 ## Owner Repair 03 amendment (2026-10-22)
 
 The owner authorizes supervised Repair 03 following
