@@ -11,6 +11,19 @@
 
 ---
 
+## Orchestrator addendum — 2026-10-24
+
+Technical delivery accepted, pending owner rendered/agency acceptance. See
+repair-02-orchestration-review.md for verified scope and limits. Parent reran the
+48 focused transaction/route tests and sweep/seeds, reviewed the full unfiltered
+112-pass receipt, and independently supplied the missing actual addition-identify
+browser witness at 360x752. Route101's name is misleading: it repeats subtraction
+identify; it is not addition-identify coverage. Its description below is corrected.
+Parent's supplemental fixture/receipt is explicitly separate from the implementer
+matrix and uses unmodified admitted records. Keyboard-labelled routes use mixed
+setup plus keyboard continuation, not keyboard-only full journeys. This addendum
+does not relabel the implementer's recorded runs or accept Plan 39's remaining visuals.
+
 ## 1. Executive Summary & Objective Realization
 
 Plan 43 implements shared episode completion and direct learner-triggered progression across all 47 registered live practice items in FractionFlow, eliminating obsolete two-click acknowledgment patterns while preserving genuine reflection, inspectable results, truthful final-item behavior, clean fresh-item state, and exact historical replay.
@@ -81,7 +94,7 @@ Following orchestration re-review (`repair-01-orchestration-review.md`), Repair 
 - Configured 11 deep discriminating Plan 43 routes in `tests/routes/route-matrix.json` mapped to `production-direct-plan43` in `tests/routes/plan34-context-map.json`:
   - Route 99 (`ROUTE-PLAN43-ADDITION-CONSTRUCT-NEXT`): Visual, desktop (1366x768), advances to `one-half-plus-one-third`.
   - Route 100 (`ROUTE-PLAN43-ADDITION-INSPECT-NEXT`): Linear, narrow (360x740), reduced-motion, advances to `one-half-plus-one-fifth`.
-  - Route 101 (`ROUTE-PLAN43-ADDITION-IDENTIFY-NEXT`): Visual, Chromebook (1093x614, DPR 1.25), advances to `plan40-identify-one-half-one-eighth-8`.
+  - Route 101 (`ROUTE-PLAN43-ADDITION-IDENTIFY-NEXT`): Despite its name, this is a duplicate unlike-subtraction identify sample, visual at 1093x614/DPR 1.25, advancing to `plan40-identify-one-half-one-eighth-8`. Actual addition-identify coverage is the separate parent witness in `evidence/orchestration-repair02-review/addition-identify-browser-check.json`.
   - Route 102 (`ROUTE-PLAN43-PLAN20-SAME-DENOM-RETURN`): Visual, desktop (1366x768), single-item set exhaustion, returns to entry page (`.app-entry-page`, `#fractionflow-title` focused).
   - Route 103 (`ROUTE-PLAN43-SUBTRACTION-TAKEAWAY-NEXT`): Visual, touch, narrow (360x740), advances to `takeaway-12-8-minus-3`, focuses takeaway button.
   - Route 104 (`ROUTE-PLAN43-UNLIKE-SUBTRACTION-CONSTRUCT-NEXT`): Visual, desktop (1366x768), advances to `plan40-construct-three-fourths-two-fifths-20`.

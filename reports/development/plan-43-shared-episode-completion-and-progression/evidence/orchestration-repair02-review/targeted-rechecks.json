@@ -1,0 +1,54 @@
+{
+  "capturedAt": "2026-10-24T21:03:32.125Z",
+  "method": "Independent rerun; generator writes intercepted in memory, submitted artifacts unchanged",
+  "bank": {
+    "totalItems": 47,
+    "totalProtectedReflections": 8,
+    "status": "PASS",
+    "targetedConditionChecks": {
+      "conditionId": "phase2-bundle-4",
+      "connectionMaking": "CM-01-P",
+      "checksCount": 2,
+      "checks": [
+        {
+          "caseId": "premise-false-check-item2-den10",
+          "itemId": "one-half-plus-one-fifth",
+          "targetDenominator": "10",
+          "expectedResponse": "no",
+          "incorrectResponseTested": "yes",
+          "incorrectProducedRecovery": true,
+          "correctProducedResolution": true,
+          "progressionVerified": true,
+          "destinationItemId": "one-half-plus-two-fifths"
+        },
+        {
+          "caseId": "premise-linear-return-item3-den10",
+          "itemId": "one-half-plus-two-fifths",
+          "targetDenominator": "10",
+          "expectedResponse": "yes",
+          "view": "linear",
+          "correctProducedResolution": true,
+          "progressionVerified": true,
+          "destinationItemId": "entry-page"
+        }
+      ]
+    }
+  },
+  "seeds": [
+    {
+      "seedId": "SEED-PLAN43-01-TWO-CLICK-REGRESSION",
+      "result": "DEFECT_DETECTED_BY_ASSERTION",
+      "cleanPre": "PASS",
+      "cleanPost": "PASS",
+      "error": "Progression failed: expected single click to advance from \"two-thirds-plus-one-fourth\" to a fresh item, but observed itemId \"two-thirds-plus-one-fourth\"."
+    },
+    {
+      "seedId": "SEED-PLAN43-02-PREMATURE-ADVANCE-SKIPPING-REFLECTION",
+      "result": "DEFECT_DETECTED_BY_ASSERTION",
+      "cleanPre": "PASS",
+      "cleanPost": "PASS",
+      "error": "Reflection bypass detected: expected Continue to enter \"reflect\" beat on item \"curated-relatively-prime-addition-one-half-one-fifth\", but observed beat \"encounter\" on item \"curated-relatively-prime-addition-one-half-two-fifths\"."
+    }
+  ],
+  "bankRecheckedAt": "2026-10-24T21:07:05.962Z"
+}

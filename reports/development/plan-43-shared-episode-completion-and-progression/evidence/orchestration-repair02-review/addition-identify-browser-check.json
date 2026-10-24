@@ -1,0 +1,26 @@
+{
+  "capturedAt": "2026-10-24T21:05:17.340Z",
+  "browser": "installed Chrome",
+  "viewport": {
+    "width": 360,
+    "height": 752
+  },
+  "reducedMotion": true,
+  "composition": "Admitted two-record subset; same current app direct default, no record/definition changes",
+  "input": "mouse setup and keyboard Enter continuation",
+  "before": {
+    "item": "nested-one-half-plus-three-eighths",
+    "beat": "resolve",
+    "pattern": "full-addition.identify-side-construct",
+    "focusedText": "Next problem"
+  },
+  "after": {
+    "item": "nested-three-eighths-plus-one-half",
+    "beat": "encounter",
+    "historyLength": 0,
+    "recovery": null,
+    "focusedOnEpisode": true,
+    "headerNextHidden": true
+  },
+  "pageErrors": []
+}

@@ -1,11 +1,9 @@
 ---
 id: plan-43
 title: Shared Episode Completion and Direct Progression
-status: draft
+status: delivered
 depends_on: [plan-20, plan-35, plan-38, plan-40, plan-42]
 gate: "Requirement 0: approve the shared completion/advance transaction, final-item behavior, focus, compatibility/versioning and evidence mechanism before source. Preserve substantive reflection. Technical verification and owner rendered-page/agency acceptance precede closure; deployment remains separate."
-superseded_by: null
-resolution: null
 summary: >-
   Replace navigation-only Finish acknowledgments with direct learner-triggered
   Next problem after the last meaningful task, retaining inspectable results,
