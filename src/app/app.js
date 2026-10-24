@@ -280,6 +280,27 @@ function createInitialState(instance, practiceType, condition, supportLevel, epi
   });
 }
 
+export function getCompletionIntentFor(state) {
+  if (!state || state.status === 'resolved') return null;
+  const def = state.episodeDefinition;
+  if (!def) return null;
+  if (isPlan36SubtractionDefinition(def)
+    || isPlan40SubtractionRecipeDefinition(def)
+    || isPlan37BarToLineBridgeTaskDefinition(def)
+    || def.id === 'phase-3-like-denominator-takeaway-subtraction'
+    || def.id === 'phase-3-reusable-subtraction-recipes'
+    || def.id === 'phase-4-bar-to-line-same-amount'
+    || def.id === PLAN34_EPISODE_DEFINITION_ID
+    || def.id === PLAN35_RECIPE_DEFINITION_ID) {
+    return { type: 'finish-compact-episode' };
+  }
+  if (def.id === PLAN18_NESTED_DEFINITION_ID) {
+    return { type: 'finish-nested-episode' };
+  }
+  const proposed = state.established?.operation?.proposed;
+  return proposed ? { type: 'submit-resolution', proposed } : null;
+}
+
 /**
  * Compose the first learner-facing FractionFlow episode.
  *
@@ -293,6 +314,7 @@ export function createFractionFlowApp({
   presentationMode = 'auto',
   instance: suppliedInstance = null,
   practiceTypes = PRACTICE_TYPES,
+  navigationMode = 'direct',
 } = {}) {
   if (!root) throw new Error('app root element is required');
 
@@ -342,6 +364,8 @@ export function createFractionFlowApp({
   let nextProblemButton;
   let navigationNotice;
   let navigationRefusal = false;
+  let currentEpisodeGeneration = 0;
+  let isTransitioning = false;
 
   function practiceTypeFor(id) {
     return practiceTypes.find((practiceType) => practiceType.id === id) ?? null;
@@ -770,6 +794,7 @@ export function createFractionFlowApp({
   }
 
   function installFreshEpisode(practiceType, itemIndex, candidateState, { focusEpisode, updateFragment = false } = {}) {
+    currentEpisodeGeneration += 1;
     selectedPracticeType = practiceType;
     activePracticeItemIndex = itemIndex;
     state = candidateState;
@@ -826,25 +851,188 @@ export function createFractionFlowApp({
     installFreshEpisode(selectedPracticeType, activePracticeItemIndex, prepared, { focusEpisode: true });
   }
 
-  function advanceToNextItem() {
-    if (state?.status !== 'resolved' || activePracticeItemIndex === null || !selectedPracticeType) return;
-    const nextIndex = activePracticeItemIndex + 1;
-    if (nextIndex >= selectedPracticeType.items.length) return;
-    let prepared;
-    try {
-      prepared = registeredItemEpisode(selectedPracticeType, nextIndex);
-    } catch {
-      navigationRefusal = true;
-      navigationNotice.textContent = STRINGS.app.nextProblemUnavailable;
-      setHidden(navigationNotice, false);
-      render();
-      focusNavigationNotice();
+  function computeProgressionDescriptor() {
+    if (navigationMode !== 'direct' || !state || !selectedPracticeType || activePracticeItemIndex === null) {
+      return {
+        phase: 'idle',
+        actionKind: 'none',
+        label: null,
+        notice: null,
+        onAction: null,
+      };
+    }
+
+    const capturedGeneration = currentEpisodeGeneration;
+
+    // Phase 2: continue-milestone (in resolve, but reflect is scheduled next)
+    const nextEntry = state.beatSchedule?.[state.schedulePosition + 1];
+    if (state.status === 'active' && state.beat === 'resolve' && nextEntry?.kind === 'reflect') {
+      return {
+        phase: 'continue-milestone',
+        actionKind: 'continue',
+        label: STRINGS.resolve.continueReflectionButton || 'Continue',
+        notice: null,
+        onAction: () => handleContinueMilestone(capturedGeneration),
+      };
+    }
+
+    // Phase 3: terminal-accepted (in resolve, final task completed and accepted)
+    const isTerminalResolve = state.status === 'active'
+      && state.beat === 'resolve'
+      && state.schedulePosition === state.beatSchedule.length - 1
+      && Boolean(state.established?.operation || state.established?.numberLineLocation);
+
+    if (isTerminalResolve) {
+      const hasNext = activePracticeItemIndex < selectedPracticeType.items.length - 1;
+      if (hasNext) {
+        return {
+          phase: 'terminal-accepted',
+          actionKind: 'advance',
+          label: STRINGS.app.nextProblemButton,
+          notice: null,
+          onAction: () => advanceToNextItem(capturedGeneration),
+        };
+      }
+      return {
+        phase: 'terminal-accepted',
+        actionKind: 'return',
+        label: STRINGS.app.returnButton,
+        notice: STRINGS.app.problemsExhausted,
+        onAction: () => returnFromCompletedSet(capturedGeneration),
+      };
+    }
+
+    // Phase 4: resolved-reflection (reflection accepted, awaiting progression)
+    const isResolvedReflection = state.status === 'resolved'
+      && state.beat === 'reflect'
+      && Boolean(state.established?.reflection);
+
+    if (isResolvedReflection) {
+      const hasNext = activePracticeItemIndex < selectedPracticeType.items.length - 1;
+      if (hasNext) {
+        return {
+          phase: 'resolved-reflection',
+          actionKind: 'advance',
+          label: STRINGS.app.nextProblemButton,
+          notice: null,
+          onAction: () => advanceToNextItem(capturedGeneration),
+        };
+      }
+      return {
+        phase: 'resolved-reflection',
+        actionKind: 'return',
+        label: STRINGS.app.returnButton,
+        notice: STRINGS.app.problemsExhausted,
+        onAction: () => returnFromCompletedSet(capturedGeneration),
+      };
+    }
+
+    return {
+      phase: 'idle',
+      actionKind: 'none',
+      label: null,
+      notice: null,
+      onAction: null,
+    };
+  }
+
+  function handleContinueMilestone(capturedGeneration) {
+    if (isTransitioning) return;
+    if (capturedGeneration !== undefined && capturedGeneration !== currentEpisodeGeneration) return;
+    const nextEntry = state?.beatSchedule?.[state.schedulePosition + 1];
+    if (state?.status !== 'active' || state?.beat !== 'resolve' || nextEntry?.kind !== 'reflect') {
       return;
     }
-    installFreshEpisode(selectedPracticeType, nextIndex, prepared.state, { focusEpisode: true });
+    const proposed = state?.established?.operation?.proposed;
+    if (!proposed) return;
+
+    isTransitioning = true;
+    try {
+      dispatchAction({ type: 'submit-resolution', proposed });
+    } finally {
+      isTransitioning = false;
+    }
+  }
+
+  function advanceToNextItem(capturedGeneration) {
+    if (navigationMode === 'legacy-acknowledged') {
+      if (state?.status !== 'resolved' || activePracticeItemIndex === null || !selectedPracticeType) return;
+      const nextIndex = activePracticeItemIndex + 1;
+      if (nextIndex >= selectedPracticeType.items.length) return;
+      let prepared;
+      try {
+        prepared = registeredItemEpisode(selectedPracticeType, nextIndex);
+      } catch {
+        navigationRefusal = true;
+        navigationNotice.textContent = STRINGS.app.nextProblemUnavailable;
+        setHidden(navigationNotice, false);
+        render();
+        focusNavigationNotice();
+        return;
+      }
+      installFreshEpisode(selectedPracticeType, nextIndex, prepared.state, { focusEpisode: true });
+      return;
+    }
+
+    // Direct progression mode
+    if (isTransitioning) return;
+    if (capturedGeneration !== undefined && capturedGeneration !== currentEpisodeGeneration) return;
+    const desc = computeProgressionDescriptor();
+    if (desc.phase !== 'terminal-accepted' && desc.phase !== 'resolved-reflection') return;
+    if (desc.actionKind !== 'advance') return;
+
+    isTransitioning = true;
+    try {
+      const nextIndex = activePracticeItemIndex + 1;
+      let prepared;
+      try {
+        prepared = registeredItemEpisode(selectedPracticeType, nextIndex);
+      } catch {
+        navigationRefusal = true;
+        navigationNotice.textContent = STRINGS.app.nextProblemUnavailable;
+        setHidden(navigationNotice, false);
+        render();
+        focusNavigationNotice();
+        return;
+      }
+
+      // Pure completion recording on old state in memory
+      if (state.status !== 'resolved') {
+        const completionIntent = getCompletionIntentFor(state);
+        if (completionIntent) {
+          applyIntent(state, completionIntent);
+        }
+      }
+
+      installFreshEpisode(selectedPracticeType, nextIndex, prepared.state, { focusEpisode: true });
+    } finally {
+      isTransitioning = false;
+    }
+  }
+
+  function returnFromCompletedSet(capturedGeneration) {
+    if (isTransitioning) return;
+    if (capturedGeneration !== undefined && capturedGeneration !== currentEpisodeGeneration) return;
+    const desc = computeProgressionDescriptor();
+    if (desc.phase !== 'terminal-accepted' && desc.phase !== 'resolved-reflection') return;
+    if (desc.actionKind !== 'return') return;
+
+    isTransitioning = true;
+    try {
+      if (state.status !== 'resolved') {
+        const completionIntent = getCompletionIntentFor(state);
+        if (completionIntent) {
+          state = applyIntent(state, completionIntent);
+        }
+      }
+      returnToEntry();
+    } finally {
+      isTransitioning = false;
+    }
   }
 
   function returnToEntry() {
+    currentEpisodeGeneration += 1;
     if (selectedPracticeType && state) {
       try {
         const freshState = suppliedInstance !== null
@@ -947,6 +1135,17 @@ export function createFractionFlowApp({
   }
 
   function updateNavigation() {
+    if (navigationMode === 'direct') {
+      setHidden(nextProblemButton, true);
+      if (navigationRefusal) {
+        navigationNotice.textContent = STRINGS.app.nextProblemUnavailable;
+        setHidden(navigationNotice, false);
+      } else {
+        navigationNotice.textContent = '';
+        setHidden(navigationNotice, true);
+      }
+      return;
+    }
     const singlePlan20Item = selectedPracticeType?.id === 'like-denominator-addition'
       && selectedPracticeType.items.length === 1;
     const canNavigate = state?.status === 'resolved'
@@ -1237,6 +1436,7 @@ export function createFractionFlowApp({
           dispatchAction,
           onPreviewChange: setNumberLineDraft,
           getHelpOpen: () => numberLineHelpOpen,
+          getProgression: () => computeProgressionDescriptor(),
         });
         visualNumberLineRenderer.mount(scene);
       } else visualNumberLineRenderer.update(scene);
@@ -1248,6 +1448,7 @@ export function createFractionFlowApp({
           dispatchAction,
           onPreviewChange: setNumberLineDraft,
           getHelpOpen: () => numberLineHelpOpen,
+          getProgression: () => computeProgressionDescriptor(),
         });
         linearNumberLineRenderer.mount(scene);
       } else linearNumberLineRenderer.update(scene);
@@ -1278,6 +1479,7 @@ export function createFractionFlowApp({
           render();
           getVisibleTransformInput()?.focus();
         },
+        getProgression: () => computeProgressionDescriptor(),
       });
       visualRenderer.mount(scene);
     } else {
@@ -1296,6 +1498,7 @@ export function createFractionFlowApp({
           render();
           getVisibleTransformInput()?.focus();
         },
+        getProgression: () => computeProgressionDescriptor(),
       });
       linearRenderer.mount(scene);
     } else {
@@ -1367,9 +1570,11 @@ export function createFractionFlowApp({
           activityNotice = '';
         }
         navigationRefusal = false;
-        focusExhaustion = justResolved && isLastVettedItem
+        focusExhaustion = navigationMode !== 'direct'
+          && justResolved && isLastVettedItem
           && selectedPracticeType.items.length > 1;
-        focusSingleItemCompletion = justResolved
+        focusSingleItemCompletion = navigationMode !== 'direct'
+          && justResolved
           && state.episodeDefinition.id === PLAN20_LIKE_DENOMINATOR_EPISODE_DEFINITION.id;
       }
       render();
@@ -1410,8 +1615,22 @@ export function createFractionFlowApp({
           nextProblemButton.focus();
         }
       }
-      if (action.type === 'submit-operation-result'
-        && state.lastRecovery?.beat === 'operate') focusOperationInput();
+      if (action.type === 'submit-operation-result') {
+        if (state.beat === 'resolve') {
+          const host = visualView ? visualHost : linearHost;
+          const continuationBtn = host?.querySelector('.active-beat-controls button');
+          if (continuationBtn) continuationBtn.focus();
+        } else if (state.lastRecovery?.beat === 'operate') {
+          focusOperationInput();
+        }
+      }
+      if (action.type === 'submit-reflection') {
+        if (state.status === 'resolved') {
+          const host = visualView ? visualHost : linearHost;
+          const nextBtn = host?.querySelector('.active-beat-controls button');
+          if (nextBtn) nextBtn.focus();
+        }
+      }
       if (action.type === 'submit-transform-help-multiplier') getVisibleTransformInput()?.focus();
       if (action.type === 'select-renaming-side') {
         const host = visualView ? visualHost : linearHost;

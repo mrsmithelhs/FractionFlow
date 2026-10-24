@@ -227,6 +227,7 @@ describe('Plan 26 vetted addition practice set', () => {
       practiceTypes: PRACTICE_TYPES,
       initialConditionId: 'phase2-bundle-4',
       presentationMode: 'instant-test',
+      navigationMode: 'legacy-acknowledged',
     });
     app.mount();
     root.querySelector('.app-gear-button').click();
@@ -324,7 +325,7 @@ describe('Plan 26 vetted addition practice set', () => {
   });
 
   it('focuses exhaustion only on final completion and keeps return available without a Next control', () => {
-    app = createFractionFlowApp({ root, practiceTypes: PRACTICE_TYPES, presentationMode: 'instant-test' });
+    app = createFractionFlowApp({ root, practiceTypes: PRACTICE_TYPES, presentationMode: 'instant-test', navigationMode: 'legacy-acknowledged' });
     app.mount();
     root.querySelector('.app-practice-button').click();
     const items = PRACTICE_TYPES[0].items;
@@ -348,7 +349,7 @@ describe('Plan 26 vetted addition practice set', () => {
 
   it('keeps a supplied test instance outside the vetted set while Retry rebuilds that same instance', () => {
     const instance = secondInstance();
-    app = createFractionFlowApp({ root, practiceTypes: PRACTICE_TYPES, instance, presentationMode: 'instant-test' });
+    app = createFractionFlowApp({ root, practiceTypes: PRACTICE_TYPES, instance, presentationMode: 'instant-test', navigationMode: 'legacy-acknowledged' });
     app.mount();
     root.querySelector('.app-practice-button').click();
     finishCurrentEpisode(app, 6);
@@ -382,6 +383,7 @@ describe('Plan 26 vetted addition practice set', () => {
       root,
       practiceTypes: [brokenType],
       presentationMode: 'instant-test',
+      navigationMode: 'legacy-acknowledged',
     });
     app.mount();
     root.querySelector('.app-practice-button').click();
@@ -408,7 +410,7 @@ describe('Plan 26 vetted addition practice set', () => {
       choices[0], choices[1], { ...choices[2], form: fraction(7, 6) },
     ]],
   ])('refuses a second-item matching-data fault (%s) before mounted Next replaces completed work', (_label, corrupt) => {
-    app = createFractionFlowApp({ root, practiceTypes: PRACTICE_TYPES, presentationMode: 'instant-test' });
+    app = createFractionFlowApp({ root, practiceTypes: PRACTICE_TYPES, presentationMode: 'instant-test', navigationMode: 'legacy-acknowledged' });
     app.mount();
     root.querySelector('.app-practice-button').click();
     finishCurrentEpisode(app, 12);

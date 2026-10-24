@@ -8,7 +8,7 @@ function startApp({ supportId = 'high-support' } = {}) {
   const document = setupMockDOM();
   const root = document.createElement('div');
   document.body.appendChild(root);
-  const app = createFractionFlowApp({ root, presentationMode: 'instant-test' }).mount();
+  const app = createFractionFlowApp({ root, presentationMode: 'instant-test', navigationMode: 'legacy-acknowledged' }).mount();
   if (supportId !== 'high-support') {
     root.querySelector('.app-gear-button').click();
     root.querySelector(`[data-support-id="${supportId}"]`).click();

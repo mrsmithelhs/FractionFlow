@@ -338,6 +338,7 @@ export function createNumberLineLocateRenderer({
   dispatchAction,
   onPreviewChange = () => {},
   getHelpOpen = () => false,
+  getProgression = null,
 } = {}) {
   if (!container || !['visual', 'linear'].includes(view)) throw new TypeError('container and valid view are required');
   if (!dispatchAction || typeof dispatchAction !== 'function') throw new TypeError('dispatchAction is required');
@@ -768,7 +769,22 @@ export function createNumberLineLocateRenderer({
     } else if (scene.meaning.currentTask.beat === 'resolve' && scene.meaning.status.episode !== 'resolved') {
       activeControls = document.createElement('div');
       activeControls.className = 'active-beat-controls plan39-controls';
-      activeControls.appendChild(createButton({ label: strings.plan39.finish, className: 'plan39-finish', onClick: () => dispatchAction({ type: 'finish-compact-episode' }) }));
+      const progression = getProgression ? getProgression() : null;
+      if (progression && progression.actionKind !== 'none') {
+        if (progression.notice) {
+          const noticeEl = document.createElement('p');
+          noticeEl.className = 'progression-notice';
+          noticeEl.textContent = progression.notice;
+          activeControls.appendChild(noticeEl);
+        }
+        activeControls.appendChild(createButton({
+          label: progression.label,
+          className: 'plan39-finish',
+          onClick: () => progression.onAction?.(),
+        }));
+      } else {
+        activeControls.appendChild(createButton({ label: strings.plan39.finish, className: 'plan39-finish', onClick: () => dispatchAction({ type: 'finish-compact-episode' }) }));
+      }
     } else {
       activeControls = document.createElement('div');
       activeControls.className = 'active-beat-controls plan39-controls';

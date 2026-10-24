@@ -11,4 +11,4 @@ if (LEGACY_PRACTICE_TYPES_V4[0]?.setRevision !== '4'
   throw new Error('FractionFlow historical fixture did not load the pinned v4 practice set');
 }
 
-createFractionFlowApp({ root, practiceTypes: LEGACY_PRACTICE_TYPES_V4 }).mount();
+createFractionFlowApp({ root, practiceTypes: LEGACY_PRACTICE_TYPES_V4, navigationMode: 'legacy-acknowledged' }).mount();

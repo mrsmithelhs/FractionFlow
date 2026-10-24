@@ -13,7 +13,7 @@ describe('Plan 18 mounted nested addition', () => {
     const productionType = PLAN18_PRACTICE_TYPES_V6[0];
     for (const item of productionType.items.slice(11)) for (const view of ['visual', 'linear']) {
       const focusedType = Object.freeze({ ...productionType, items: Object.freeze([item]) });
-      const app = createFractionFlowApp({ root, practiceTypes: [focusedType], presentationMode: 'instant-test' });
+      const app = createFractionFlowApp({ root, practiceTypes: [focusedType], presentationMode: 'instant-test', navigationMode: 'legacy-acknowledged' });
       app.mount();
       root.querySelector('.app-practice-button').click();
       if (view === 'linear') root.querySelector('.app-view-toggle').click();

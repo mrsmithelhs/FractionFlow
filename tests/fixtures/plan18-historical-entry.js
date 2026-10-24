@@ -11,4 +11,4 @@ if (type?.setRevision !== '6' || type.items.length !== 13) {
   throw new Error('Plan 18 historical fixture did not load the pinned set@6');
 }
 
-createFractionFlowApp({ root, practiceTypes: PLAN18_PRACTICE_TYPES_V6 }).mount();
+createFractionFlowApp({ root, practiceTypes: PLAN18_PRACTICE_TYPES_V6, navigationMode: 'legacy-acknowledged' }).mount();

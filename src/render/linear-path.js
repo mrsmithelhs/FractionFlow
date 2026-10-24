@@ -29,6 +29,7 @@ export function createLinearPathRenderer({
   isTaskHelpOpen = () => false,
   isInspectChangeOpen = () => false,
   onInspectChangeOpen = () => {},
+  getProgression = null,
 } = {}) {
   if (!container) {
     throw new Error('container element is required for linear path renderer');
@@ -520,6 +521,23 @@ export function createLinearPathRenderer({
       promptText.textContent = completeMessage;
       promptHeader.appendChild(promptText);
       activeBeatEl.appendChild(promptHeader);
+
+      const progression = getProgression ? getProgression() : null;
+      if (progression && progression.actionKind !== 'none') {
+        if (progression.notice) {
+          const noticeEl = document.createElement('p');
+          noticeEl.className = 'progression-notice';
+          noticeEl.textContent = progression.notice;
+          controlsContainer.appendChild(noticeEl);
+        }
+        const actionBtn = createButton({
+          label: progression.label,
+          className: 'control-action-btn',
+          onClick: () => progression.onAction?.(),
+        });
+        controlsContainer.appendChild(actionBtn);
+        activeBeatEl.appendChild(controlsContainer);
+      }
       return;
     }
 
@@ -860,6 +878,7 @@ export function createLinearPathRenderer({
       }
 
       case 'resolve': {
+        const progression = getProgression ? getProgression() : null;
         if (scene.meaning.takeaway) {
           const accepted = scene.meaning.takeaway.acceptedResponseForm
             || scene.meaning.operation?.acceptedResponseForm
@@ -867,12 +886,26 @@ export function createLinearPathRenderer({
           promptText.textContent = typeof strings.subtraction.thatAmountLeft === 'function'
             ? strings.subtraction.thatAmountLeft(accepted.numerator, accepted.denominator)
             : `${accepted.numerator}/${accepted.denominator} is left.`;
-          const finishBtn = createButton({
-            label: strings.resolve.finishButton,
-            className: 'control-action-btn',
-            onClick: () => dispatchAction({ type: 'finish-compact-episode' }),
-          });
-          controlsContainer.appendChild(finishBtn);
+          if (progression && progression.actionKind !== 'none') {
+            if (progression.notice) {
+              const noticeEl = document.createElement('p');
+              noticeEl.className = 'progression-notice';
+              noticeEl.textContent = progression.notice;
+              controlsContainer.appendChild(noticeEl);
+            }
+            controlsContainer.appendChild(createButton({
+              label: progression.label,
+              className: 'control-action-btn',
+              onClick: () => progression.onAction?.(),
+            }));
+          } else {
+            const finishBtn = createButton({
+              label: strings.resolve.finishButton,
+              className: 'control-action-btn',
+              onClick: () => dispatchAction({ type: 'finish-compact-episode' }),
+            });
+            controlsContainer.appendChild(finishBtn);
+          }
           break;
         }
 
@@ -900,6 +933,21 @@ export function createLinearPathRenderer({
           promptText.textContent = strings.resolve.likeAdditionReady;
         } else if (pref) {
           promptText.textContent = strings.resolve.summary(pref.numerator, pref.denominator);
+        }
+
+        if (progression && progression.actionKind !== 'none') {
+          if (progression.notice) {
+            const noticeEl = document.createElement('p');
+            noticeEl.className = 'progression-notice';
+            noticeEl.textContent = progression.notice;
+            controlsContainer.appendChild(noticeEl);
+          }
+          controlsContainer.appendChild(createButton({
+            label: progression.label,
+            className: 'control-action-btn',
+            onClick: () => progression.onAction?.(),
+          }));
+          break;
         }
 
         const nextBtn = createButton({

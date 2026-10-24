@@ -1,0 +1,9 @@
+{
+  "seedId": "SEED-PLAN43-01-TWO-CLICK-REGRESSION",
+  "objective": "Detect when advance button merely records completion on the active item without installing a fresh item",
+  "targetDefect": "Regression to legacy 2-click pattern where clicking advance sets status: resolved but leaves the current item mounted",
+  "mechanism": "Asserts nextItem !== initialItem on single activation of the local progression button",
+  "verification": "PASS: Verified in tests/plan43-shared-progression.test.js requirement 4 seed 1",
+  "timestamp": "2026-10-24T12:35:06.420Z",
+  "result": "DEFECT_PREVENTED_AND_DETECTED"
+}

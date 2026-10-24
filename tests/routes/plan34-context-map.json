@@ -97,7 +97,11 @@
     "ROUTE-PLAN39-REPAIR02-ODD-THIRDS-360X740": "production-default-v8",
     "ROUTE-PLAN39-REPAIR02-MEDIUM-1366X768": "production-default-v8",
     "ROUTE-PLAN39-REPAIR02-EIGHTHS-1093X614-DPR125": "production-default-v8",
-    "ROUTE-PLAN39-REPAIR03-ANCHOR-RING": "production-default-v8"
+    "ROUTE-PLAN39-REPAIR03-ANCHOR-RING": "production-default-v8",
+    "ROUTE-PLAN43-ADDITION-DIRECT-NEXT": "production-direct-plan43",
+    "ROUTE-PLAN43-SUBTRACTION-DIRECT-NEXT": "production-direct-plan43",
+    "ROUTE-PLAN43-PLAN20-SINGLE-ITEM-RETURN": "production-direct-plan43",
+    "ROUTE-PLAN43-NUMBER-LINE-DIRECT-NEXT": "production-direct-plan43"
   },
   "plan40-unlike-subtraction": {
     "practiceSetId": "unlike-subtraction-vetted-set",

@@ -51,6 +51,7 @@ describe('Plan 38 rendered like-denominator subtraction batch', () => {
         root,
         practiceTypes: PRACTICE_TYPES,
         presentationMode: 'instant-test',
+        navigationMode: 'legacy-acknowledged',
       });
       app.mount();
 
@@ -87,6 +88,7 @@ describe('Plan 38 rendered like-denominator subtraction batch', () => {
             root,
             practiceTypes: [singleItemType],
             presentationMode: 'instant-test',
+            navigationMode: 'legacy-acknowledged',
           });
           app.mount();
 
@@ -324,6 +326,7 @@ describe('Plan 38 rendered like-denominator subtraction batch', () => {
           root,
           practiceTypes: [singleItemType],
           presentationMode: 'instant-test',
+          navigationMode: 'legacy-acknowledged',
         });
         app.mount();
 
@@ -431,6 +434,7 @@ describe('Plan 38 rendered like-denominator subtraction batch', () => {
         root,
         practiceTypes: PRACTICE_TYPES,
         presentationMode: 'instant-test',
+        navigationMode: 'legacy-acknowledged',
       });
       app.mount();
 
@@ -484,6 +488,7 @@ describe('Plan 38 rendered like-denominator subtraction batch', () => {
         root,
         practiceTypes: PRACTICE_TYPES,
         presentationMode: 'instant-test',
+        navigationMode: 'legacy-acknowledged',
       });
       app.mount();
 

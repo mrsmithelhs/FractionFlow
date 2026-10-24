@@ -135,7 +135,7 @@ describe('Plan 14 Reachable Behavior Route Contract & Matrix Schema', () => {
   });
 
   it('pins the original 91 route objects and migrates only Plan 39 context mappings to v1 history', async () => {
-    expect(matrix.routes).toHaveLength(99);
+    expect(matrix.routes).toHaveLength(103);
     expect(createHash('sha256').update(JSON.stringify(matrix.routes.slice(0, 91))).digest('hex'))
       .toBe('eee8367c25fdaa88612b516a05b6989a919ae10b8e822a6339bea9b4c3c631de');
     expect(createHash('sha256').update(JSON.stringify(matrix.routes.slice(0, 98))).digest('hex'))
@@ -143,9 +143,13 @@ describe('Plan 14 Reachable Behavior Route Contract & Matrix Schema', () => {
     const contexts = JSON.parse(fs.readFileSync(path.resolve(__dirname, 'routes/plan34-context-map.json'), 'utf8')).contexts;
     const contextsBeforeRepair03 = { ...contexts };
     delete contextsBeforeRepair03['ROUTE-PLAN39-REPAIR03-ANCHOR-RING'];
+    delete contextsBeforeRepair03['ROUTE-PLAN43-ADDITION-DIRECT-NEXT'];
+    delete contextsBeforeRepair03['ROUTE-PLAN43-SUBTRACTION-DIRECT-NEXT'];
+    delete contextsBeforeRepair03['ROUTE-PLAN43-PLAN20-SINGLE-ITEM-RETURN'];
+    delete contextsBeforeRepair03['ROUTE-PLAN43-NUMBER-LINE-DIRECT-NEXT'];
     expect(createHash('sha256').update(JSON.stringify(contextsBeforeRepair03)).digest('hex'))
       .toBe('c2c83aee5eea3436a66deb4978ad8891fadb694fa4c2f48c212e48db9dee0c00');
-    const nonPlan39 = Object.fromEntries(Object.entries(contexts).filter(([id]) => !id.startsWith('ROUTE-PLAN39-')));
+    const nonPlan39 = Object.fromEntries(Object.entries(contexts).filter(([id]) => !id.startsWith('ROUTE-PLAN39-') && !id.startsWith('ROUTE-PLAN43-')));
     expect(Object.keys(nonPlan39)).toHaveLength(79);
     expect(createHash('sha256').update(JSON.stringify(nonPlan39)).digest('hex'))
       .toBe('bbba2bc77d74738de5f665e7da75e3a8284c1a80ef07f4e3f21146fbf0009954');
@@ -157,6 +161,20 @@ describe('Plan 14 Reachable Behavior Route Contract & Matrix Schema', () => {
     wrongLegacyMap.contexts[legacy[0].id] = 'production-default-v8';
     expect((await validateMatrixIntegrity(matrix, REGISTERED_CONDITIONS, wrongLegacyMap)).errors.join('\n'))
       .toContain('must exercise the pinned revision-1/replay-v7 fixture');
+  });
+
+  it('appends current Plan 43 direct progression routes in production-direct-plan43', () => {
+    const plan43Routes = matrix.routes.filter((route) => route.id.startsWith('ROUTE-PLAN43-'));
+    const contexts = JSON.parse(fs.readFileSync(path.resolve(__dirname, 'routes/plan34-context-map.json'), 'utf8')).contexts;
+    expect(plan43Routes.map((route) => route.id)).toEqual([
+      'ROUTE-PLAN43-ADDITION-DIRECT-NEXT',
+      'ROUTE-PLAN43-SUBTRACTION-DIRECT-NEXT',
+      'ROUTE-PLAN43-PLAN20-SINGLE-ITEM-RETURN',
+      'ROUTE-PLAN43-NUMBER-LINE-DIRECT-NEXT',
+    ]);
+    expect(plan43Routes.map((route) => contexts[route.id])).toEqual(
+      Array(4).fill('production-direct-plan43')
+    );
   });
 
   it('appends current Repair02 routes in production-default-v8 with executable pointer and keyboard journeys', () => {
@@ -212,7 +230,7 @@ describe('Plan 14 Reachable Behavior Route Contract & Matrix Schema', () => {
       routeId: 'ROUTE-PLAN39-REPAIR03-ANCHOR-RING',
       failure: 'Plan39 Repair03 shared anchor/highlight assertion failed',
     });
-    expect(expandRouteExecutions(matrix.routes)).toHaveLength(101);
+    expect(expandRouteExecutions(matrix.routes)).toHaveLength(105);
   });
 
   it('enforces Rule 1: fails if a registered condition has no declared route witness', async () => {
@@ -443,7 +461,7 @@ describe('Plan 14 Reachable Behavior Route Contract & Matrix Schema', () => {
 
   it('executes each prototype route in both motion modes and brings in its filtered negative control', () => {
     const executions = expandRouteExecutions(matrix.routes);
-    expect(executions).toHaveLength(101);
+    expect(executions).toHaveLength(105);
     expect(executions.filter((execution) => (
       execution.route.configuration === 'plan15-subtraction-prototype'
     ))).toHaveLength(4);

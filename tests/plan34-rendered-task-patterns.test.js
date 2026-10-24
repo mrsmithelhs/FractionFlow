@@ -24,7 +24,7 @@ describe('Plan 34 pinned historical task patterns', () => {
     document = setupMockDOM();
     root = document.createElement('div');
     document.body.appendChild(root);
-    app = createFractionFlowApp({ root, practiceTypes: PLAN34_PRACTICE_TYPES_V5, presentationMode: 'instant-test' });
+    app = createFractionFlowApp({ root, practiceTypes: PLAN34_PRACTICE_TYPES_V5, presentationMode: 'instant-test', navigationMode: 'legacy-acknowledged' });
     app.mount();
     root.querySelector('.app-practice-button').click();
   });

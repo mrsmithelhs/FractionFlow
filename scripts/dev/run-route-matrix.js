@@ -36,6 +36,8 @@ const plan18HistoricalRootDir = path.join(os.tmpdir(), 'fractionflow-plan18-hist
 const plan18HistoricalBuilderPath = path.join(rootDir, 'scripts/dev/build-plan18-historical-fixture.mjs');
 const plan39HistoricalRootDir = path.join(os.tmpdir(), 'fractionflow-plan39-historical-v7-entry');
 const plan39HistoricalBuilderPath = path.join(rootDir, 'scripts/dev/build-plan39-historical-fixture.mjs');
+const legacyNavigationRootDir = path.join(os.tmpdir(), 'fractionflow-legacy-navigation-entry');
+const legacyNavigationBuilderPath = path.join(rootDir, 'scripts/dev/build-legacy-navigation-fixture.mjs');
 const validMotionModes = new Set(['standard-motion', 'reduced-motion']);
 const seededPrototypeVisualDefects = Object.freeze({
   hidden: `#representation-visual .fraction-whole,
@@ -250,6 +252,10 @@ const startingSurfaces = Object.freeze({
     path: '__test__/plan39-historical-v7/plan39-historical-v7-entry.html',
     readySelector: '.fractionflow-app',
   }),
+  'legacy-navigation-entry': Object.freeze({
+    path: '__test__/legacy-navigation/legacy-navigation-entry.html',
+    readySelector: '.fractionflow-app',
+  }),
   'subtraction-takeaway-prototype': Object.freeze({
     path: 'prototypes/subtraction/index.html?mode=takeaway&fixture=0',
     readySelector: '#subtraction-prototype[data-mode="takeaway"]',
@@ -314,7 +320,15 @@ function resolveRouteContext(route, contextMap) {
   if (context === 'historical-v4') return { id: context, startingSurface: 'plan34-historical-v4-entry' };
   if (context === 'historical-v6') return { id: context, startingSurface: 'plan18-historical-v6-entry' };
   if (context === 'historical-plan39-v7') return { id: context, startingSurface: 'plan39-historical-v7-entry' };
-  if (context === 'production-default-v7' || context === 'production-default-v8') return { id: context, startingSurface: route.startingSurface };
+  if (context === 'production-default-v7') {
+    return { id: context, startingSurface: 'legacy-navigation-entry' };
+  }
+  if (context === 'production-default-v8') {
+    return { id: context, startingSurface: 'mounted-app-entry' };
+  }
+  if (context === 'production-direct-plan43') {
+    return { id: context, startingSurface: 'mounted-app-entry' };
+  }
   return { id: route.startingSurface.startsWith('subtraction-') ? 'prototype' : null, startingSurface: route.startingSurface };
 }
 
@@ -367,7 +381,7 @@ const mimeTypes = {
   '.ico': 'image/x-icon',
 };
 
-function createStaticServer({ historicalRootDir = null, plan18HistoricalRootDir = null, plan39HistoricalRootDir = null } = {}) {
+function createStaticServer({ historicalRootDir = null, plan18HistoricalRootDir = null, plan39HistoricalRootDir = null, legacyNavigationRootDir = null } = {}) {
   return http.createServer((req, res) => {
     let reqPath = req.url.split('?')[0].replace(/^\/FractionFlow/, '');
     if (!reqPath || reqPath === '/') reqPath = '/index.html';
@@ -375,11 +389,14 @@ function createStaticServer({ historicalRootDir = null, plan18HistoricalRootDir 
     const historicalPrefix = '/__test__/plan34-historical/';
     const plan18Prefix = '/__test__/plan18-historical/';
     const plan39Prefix = '/__test__/plan39-historical-v7/';
+    const legacyPrefix = '/__test__/legacy-navigation/';
     const fixtureRoot = reqPath.startsWith(historicalPrefix) ? historicalRootDir
       : reqPath.startsWith(plan18Prefix) ? plan18HistoricalRootDir
-        : reqPath.startsWith(plan39Prefix) ? plan39HistoricalRootDir : null;
+        : reqPath.startsWith(plan39Prefix) ? plan39HistoricalRootDir
+          : reqPath.startsWith(legacyPrefix) ? legacyNavigationRootDir : null;
     const fixturePrefix = reqPath.startsWith(historicalPrefix) ? historicalPrefix
-      : reqPath.startsWith(plan18Prefix) ? plan18Prefix : plan39Prefix;
+      : reqPath.startsWith(plan18Prefix) ? plan18Prefix
+        : reqPath.startsWith(plan39Prefix) ? plan39Prefix : legacyPrefix;
     if (fixtureRoot) {
       filePath = path.resolve(fixtureRoot, path.normalize(reqPath.slice(fixturePrefix.length)));
       const relativeToRoot = path.relative(path.resolve(fixtureRoot), filePath);
@@ -433,6 +450,7 @@ async function validateMatrixIntegrity(matrix, registeredConditions, suppliedCon
       'historical-plan39-v7': 0,
       'production-default-v7': 0,
       'production-default-v8': 0,
+      'production-direct-plan43': 0,
     };
     for (const route of matrix.routes) {
       const context = routeContexts[route.id];
@@ -459,6 +477,9 @@ async function validateMatrixIntegrity(matrix, registeredConditions, suppliedCon
       }
       if (route.id.startsWith('ROUTE-PLAN40-') && context !== 'production-default-v7') {
         errors.push(`Current Plan 40 route "${route.id}" must exercise production-default-v7.`);
+      }
+      if (route.id.startsWith('ROUTE-PLAN43-') && context !== 'production-direct-plan43') {
+        errors.push(`Current Plan 43 route "${route.id}" must exercise production-direct-plan43.`);
       }
     }
     for (const routeId of idsInMap) {
@@ -2965,9 +2986,13 @@ async function runRouteMatrix(options = {}) {
   if (!fs.existsSync(path.join(plan39HistoricalRootDir, 'plan39-historical-v7-entry.html'))) {
     throw new Error('Plan 39 revision-1 historical fixture build did not produce its temporary entry HTML.');
   }
+  execFileSync(process.execPath, [legacyNavigationBuilderPath], { cwd: rootDir, stdio: verbose ? 'inherit' : 'ignore' });
+  if (!fs.existsSync(path.join(legacyNavigationRootDir, 'legacy-navigation-entry.html'))) {
+    throw new Error('Legacy navigation fixture build did not produce its temporary entry HTML.');
+  }
 
   // Start local server
-  const server = createStaticServer({ historicalRootDir: plan34HistoricalRootDir, plan18HistoricalRootDir, plan39HistoricalRootDir });
+  const server = createStaticServer({ historicalRootDir: plan34HistoricalRootDir, plan18HistoricalRootDir, plan39HistoricalRootDir, legacyNavigationRootDir });
   await new Promise((resolve) => server.listen(0, '127.0.0.1', resolve));
   const port = server.address().port;
   const baseUrl = `http://127.0.0.1:${port}/FractionFlow/`;

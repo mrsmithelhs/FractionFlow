@@ -27,7 +27,7 @@ function setupJourney({ itemId, view, support }) {
   const document = setupMockDOM();
   const root = document.createElement('div');
   document.body.appendChild(root);
-  const app = createFractionFlowApp({ root, practiceTypes: [focusedType], presentationMode: 'instant-test' });
+  const app = createFractionFlowApp({ root, practiceTypes: [focusedType], presentationMode: 'instant-test', navigationMode: 'legacy-acknowledged' });
   app.mount();
   root.querySelector('.app-gear-button').click();
   root.querySelector(`[data-support-id="${support}-support"]`).click();

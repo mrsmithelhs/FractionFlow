@@ -364,6 +364,7 @@ export const STRINGS = Object.freeze({
     displayChanged: (label) => `Now showing ${label}.`,
     problemRestarted: 'The same problem is ready again.',
     restartButton: 'Try this problem again',
+    returnButton: 'Back to start',
     nextProblemButton: 'Next problem',
     problemsExhausted: 'You’ve tried every problem in this set.',
     nextProblemUnavailable: 'This problem is not ready. Try again or go back to start.',

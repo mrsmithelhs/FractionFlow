@@ -48,6 +48,7 @@ describe('Plan 40 app shell subtraction recipes integration', () => {
         root,
         practiceTypes: PRACTICE_TYPES,
         presentationMode: 'instant-test',
+        navigationMode: 'legacy-acknowledged',
       });
       app.mount();
 
@@ -82,6 +83,7 @@ describe('Plan 40 app shell subtraction recipes integration', () => {
         root,
         practiceTypes: [singleItemType],
         presentationMode: 'instant-test',
+        navigationMode: 'legacy-acknowledged',
       });
       app.mount();
 
@@ -213,6 +215,7 @@ describe('Plan 40 app shell subtraction recipes integration', () => {
         root,
         practiceTypes: [singleItemType],
         presentationMode: 'instant-test',
+        navigationMode: 'legacy-acknowledged',
       });
       app.mount();
 
@@ -291,6 +294,7 @@ describe('Plan 40 app shell subtraction recipes integration', () => {
         root,
         practiceTypes: [singleItemType],
         presentationMode: 'instant-test',
+        navigationMode: 'legacy-acknowledged',
       });
       app.mount();
 
@@ -356,6 +360,7 @@ describe('Plan 40 app shell subtraction recipes integration', () => {
         root,
         practiceTypes: [twoItemType],
         presentationMode: 'instant-test',
+        navigationMode: 'legacy-acknowledged',
       });
       app.mount();
 

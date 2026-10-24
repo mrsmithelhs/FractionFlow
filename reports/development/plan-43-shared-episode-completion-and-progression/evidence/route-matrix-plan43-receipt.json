@@ -1,0 +1,435 @@
+{
+  "capturedAt": "2026-10-24T12:43:34.629Z",
+  "filter": "ROUTE-PLAN43",
+  "passed": 4,
+  "failed": 0,
+  "seedDetected": 0,
+  "results": [
+    {
+      "id": "ROUTE-PLAN43-ADDITION-DIRECT-NEXT [standard-motion]",
+      "routeId": "ROUTE-PLAN43-ADDITION-DIRECT-NEXT",
+      "context": "production-direct-plan43",
+      "motionMode": "standard-motion",
+      "status": "pass",
+      "duration": 467,
+      "route": {
+        "id": "ROUTE-PLAN43-ADDITION-DIRECT-NEXT",
+        "behavior": "A learner completes the first compact addition problem in production and advances directly to the next item via the local Next problem button.",
+        "configuration": "phase2-bundle-1",
+        "startingSurface": "mounted-app-entry",
+        "viewport": {
+          "width": 1366,
+          "height": 768
+        },
+        "motionMode": "standard-motion",
+        "witness": "browser",
+        "inputMode": "mouse",
+        "actions": [
+          {
+            "step": 1,
+            "method": "click",
+            "target": ".app-practice-button",
+            "description": "Start addition practice"
+          },
+          {
+            "step": 2,
+            "method": "click",
+            "target": ".app-visual-view .control-btn",
+            "description": "Acknowledge encounter"
+          },
+          {
+            "step": 3,
+            "method": "fill",
+            "target": "#transform-num-input-left",
+            "value": "8",
+            "description": "Transform left: enter numerator 8"
+          },
+          {
+            "step": 4,
+            "method": "click",
+            "target": ".app-visual-view .control-submit-btn",
+            "description": "Transform left: submit 8"
+          },
+          {
+            "step": 5,
+            "method": "fill",
+            "target": "#transform-num-input-right",
+            "value": "3",
+            "description": "Transform right: enter numerator 3"
+          },
+          {
+            "step": 6,
+            "method": "click",
+            "target": ".app-visual-view .control-submit-btn",
+            "description": "Transform right: submit 3"
+          },
+          {
+            "step": 7,
+            "method": "fill",
+            "target": "#operate-sum-input",
+            "value": "11",
+            "description": "Operate: enter sum 11"
+          },
+          {
+            "step": 8,
+            "method": "click",
+            "target": ".app-visual-view .control-submit-btn",
+            "description": "Operate: submit 11"
+          },
+          {
+            "step": 9,
+            "method": "assert",
+            "target": ".app-visual-view .active-beat-controls button",
+            "description": "Assert local Next problem button is present and header next button is hidden",
+            "assertions": [
+              {
+                "type": "containsText",
+                "target": ".app-visual-view .active-beat-controls button",
+                "value": "Next problem"
+              },
+              {
+                "type": "hasSelector",
+                "target": ".app-next-button[hidden]"
+              }
+            ]
+          },
+          {
+            "step": 10,
+            "method": "click",
+            "target": ".app-visual-view .active-beat-controls button",
+            "description": "Click local Next problem button to advance"
+          },
+          {
+            "step": 11,
+            "method": "assert",
+            "target": ".app-episode",
+            "description": "Assert next problem (1/2 + 1/3) is installed fresh",
+            "assertions": [
+              {
+                "type": "hasSelector",
+                "target": ".app-episode"
+              }
+            ]
+          }
+        ],
+        "expect": {
+          "capture": {
+            "target": ".app-episode",
+            "type": "innerHTML"
+          },
+          "assertions": [
+            {
+              "type": "hasSelector",
+              "target": ".app-episode"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "ROUTE-PLAN43-SUBTRACTION-DIRECT-NEXT [standard-motion]",
+      "routeId": "ROUTE-PLAN43-SUBTRACTION-DIRECT-NEXT",
+      "context": "production-direct-plan43",
+      "motionMode": "standard-motion",
+      "status": "pass",
+      "duration": 353,
+      "route": {
+        "id": "ROUTE-PLAN43-SUBTRACTION-DIRECT-NEXT",
+        "behavior": "A learner completes a like-denominator takeaway subtraction problem in production and advances directly via the local Next problem button.",
+        "configuration": "phase2-bundle-1",
+        "startingSurface": "mounted-app-entry",
+        "viewport": {
+          "width": 1366,
+          "height": 768
+        },
+        "motionMode": "standard-motion",
+        "witness": "browser",
+        "inputMode": "mouse",
+        "actions": [
+          {
+            "step": 1,
+            "method": "click",
+            "target": "[data-practice-type=\"like-denominator-subtraction\"]",
+            "description": "Start subtraction practice"
+          },
+          {
+            "step": 2,
+            "method": "click",
+            "target": ".app-visual-view .active-beat-controls button",
+            "description": "Acknowledge encounter"
+          },
+          {
+            "step": 3,
+            "method": "fill",
+            "target": "#operate-fraction-numerator-input",
+            "value": "3",
+            "description": "Enter remaining numerator"
+          },
+          {
+            "step": 4,
+            "method": "fill",
+            "target": "#operate-fraction-denominator-input",
+            "value": "8",
+            "description": "Enter remaining denominator"
+          },
+          {
+            "step": 5,
+            "method": "click",
+            "target": ".app-visual-view .control-submit-btn",
+            "description": "Submit difference"
+          },
+          {
+            "step": 6,
+            "method": "assert",
+            "target": ".app-visual-view .active-beat-controls button",
+            "description": "Assert local Next problem button is present and header next button is hidden",
+            "assertions": [
+              {
+                "type": "containsText",
+                "target": ".app-visual-view .active-beat-controls button",
+                "value": "Next problem"
+              },
+              {
+                "type": "hasSelector",
+                "target": ".app-next-button[hidden]"
+              }
+            ]
+          },
+          {
+            "step": 7,
+            "method": "click",
+            "target": ".app-visual-view .active-beat-controls button",
+            "description": "Advance directly to next subtraction problem"
+          },
+          {
+            "step": 8,
+            "method": "assert",
+            "target": ".app-episode",
+            "description": "Assert next subtraction item is installed fresh",
+            "assertions": [
+              {
+                "type": "hasSelector",
+                "target": ".app-episode"
+              }
+            ]
+          }
+        ],
+        "expect": {
+          "capture": {
+            "target": ".app-episode",
+            "type": "innerHTML"
+          },
+          "assertions": [
+            {
+              "type": "hasSelector",
+              "target": ".app-episode"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "ROUTE-PLAN43-PLAN20-SINGLE-ITEM-RETURN [standard-motion]",
+      "routeId": "ROUTE-PLAN43-PLAN20-SINGLE-ITEM-RETURN",
+      "context": "production-direct-plan43",
+      "motionMode": "standard-motion",
+      "status": "pass",
+      "duration": 366,
+      "route": {
+        "id": "ROUTE-PLAN43-PLAN20-SINGLE-ITEM-RETURN",
+        "behavior": "A learner completes the single-item Plan 20 same-denominator addition set in production and returns to entry via local Back to start.",
+        "configuration": "phase2-bundle-1",
+        "startingSurface": "mounted-app-entry",
+        "viewport": {
+          "width": 1366,
+          "height": 768
+        },
+        "motionMode": "standard-motion",
+        "witness": "browser",
+        "inputMode": "mouse",
+        "actions": [
+          {
+            "step": 1,
+            "method": "click",
+            "target": "[data-practice-type=\"like-denominator-addition\"]",
+            "description": "Start same-denominator addition practice"
+          },
+          {
+            "step": 2,
+            "method": "click",
+            "target": ".app-visual-view .control-btn",
+            "description": "Acknowledge encounter"
+          },
+          {
+            "step": 3,
+            "method": "click",
+            "target": ".app-visual-view .control-choice-btn >> nth=0",
+            "description": "Notice: choose same sized parts"
+          },
+          {
+            "step": 4,
+            "method": "fill",
+            "target": "#operate-fraction-numerator-input",
+            "value": "5",
+            "description": "Enter sum numerator"
+          },
+          {
+            "step": 5,
+            "method": "fill",
+            "target": "#operate-fraction-denominator-input",
+            "value": "7",
+            "description": "Enter sum denominator"
+          },
+          {
+            "step": 6,
+            "method": "click",
+            "target": ".app-visual-view .control-submit-btn",
+            "description": "Submit sum"
+          },
+          {
+            "step": 7,
+            "method": "assert",
+            "target": ".app-visual-view .active-beat-controls",
+            "description": "Assert local Back to start button and exhaustion notice are present",
+            "assertions": [
+              {
+                "type": "containsText",
+                "target": ".app-visual-view .active-beat-controls",
+                "value": "Back to start"
+              },
+              {
+                "type": "containsText",
+                "target": ".app-visual-view .active-beat-controls",
+                "value": "You’ve tried every problem in this set."
+              }
+            ]
+          },
+          {
+            "step": 8,
+            "method": "click",
+            "target": ".app-visual-view .active-beat-controls button",
+            "description": "Click local Back to start"
+          },
+          {
+            "step": 9,
+            "method": "assert",
+            "target": ".app-entry-page",
+            "description": "Assert returned to entry page",
+            "assertions": [
+              {
+                "type": "hasSelector",
+                "target": ".app-entry-page:not([hidden])"
+              }
+            ]
+          }
+        ],
+        "expect": {
+          "capture": {
+            "target": ".app-entry-page",
+            "type": "innerHTML"
+          },
+          "assertions": [
+            {
+              "type": "hasSelector",
+              "target": ".app-entry-page"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "ROUTE-PLAN43-NUMBER-LINE-DIRECT-NEXT [standard-motion]",
+      "routeId": "ROUTE-PLAN43-NUMBER-LINE-DIRECT-NEXT",
+      "context": "production-direct-plan43",
+      "motionMode": "standard-motion",
+      "status": "pass",
+      "duration": 339,
+      "route": {
+        "id": "ROUTE-PLAN43-NUMBER-LINE-DIRECT-NEXT",
+        "behavior": "A learner places a fraction on the number line in production and advances directly via the local Next problem button.",
+        "configuration": "phase2-bundle-1",
+        "startingSurface": "mounted-app-entry",
+        "viewport": {
+          "width": 1366,
+          "height": 768
+        },
+        "motionMode": "standard-motion",
+        "witness": "browser",
+        "inputMode": "mouse",
+        "actions": [
+          {
+            "step": 1,
+            "method": "click",
+            "target": "[data-practice-type=\"bar-to-line-same-amount\"]",
+            "description": "Start number line practice"
+          },
+          {
+            "step": 2,
+            "method": "click",
+            "target": ".app-visual-view .plan39-stepper-next",
+            "description": "Step to rightmost"
+          },
+          {
+            "step": 3,
+            "method": "click",
+            "target": ".app-visual-view .plan39-stepper-previous",
+            "description": "Step left to 1 of 2"
+          },
+          {
+            "step": 4,
+            "method": "click",
+            "target": ".app-visual-view .plan39-check-position",
+            "description": "Check position"
+          },
+          {
+            "step": 5,
+            "method": "assert",
+            "target": ".app-visual-view .plan39-finish",
+            "description": "Assert local Next problem button is present and focused",
+            "assertions": [
+              {
+                "type": "containsText",
+                "target": ".app-visual-view .plan39-finish",
+                "value": "Next problem"
+              },
+              {
+                "type": "hasSelector",
+                "target": ".app-next-button[hidden]"
+              }
+            ]
+          },
+          {
+            "step": 6,
+            "method": "click",
+            "target": ".app-visual-view .plan39-finish",
+            "description": "Advance directly to next number line problem"
+          },
+          {
+            "step": 7,
+            "method": "assert",
+            "target": ".app-episode",
+            "description": "Assert next number line item is installed fresh",
+            "assertions": [
+              {
+                "type": "hasSelector",
+                "target": ".app-episode"
+              }
+            ]
+          }
+        ],
+        "expect": {
+          "capture": {
+            "target": ".app-episode",
+            "type": "innerHTML"
+          },
+          "assertions": [
+            {
+              "type": "hasSelector",
+              "target": ".app-episode"
+            }
+          ]
+        }
+      }
+    }
+  ]
+}
