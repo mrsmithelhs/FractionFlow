@@ -27,8 +27,10 @@ export async function beginTokenDrag(page, { view = 'visual' } = {}) {
 }
 
 export async function moveTokenDrag(page, gesture, { ratio, yOffset = 0 } = {}) {
-  await page.mouse.move(gesture.frameBox.x + gesture.frameBox.width * ratio + gesture.grabOffset.x,
-    gesture.axisY + yOffset + gesture.grabOffset.y, { steps: 8 });
+  const targetX = gesture.frameBox.x + gesture.frameBox.width * ratio + gesture.grabOffset.x;
+  const targetY = gesture.axisY + yOffset + gesture.grabOffset.y;
+  await page.mouse.move(targetX, targetY + 8, { steps: 4 });
+  await page.mouse.move(targetX, targetY, { steps: 4 });
 }
 
 export async function endTokenDrag(page, gesture) {

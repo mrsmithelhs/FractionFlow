@@ -2,8 +2,14 @@
   "seedId": "SEED-PLAN43-01-TWO-CLICK-REGRESSION",
   "objective": "Detect when advance button merely records completion on the active item without installing a fresh item",
   "targetDefect": "Regression to legacy 2-click pattern where clicking advance sets status: resolved but leaves the current item mounted",
-  "mechanism": "Asserts nextItem !== initialItem on single activation of the local progression button",
-  "verification": "PASS: Verified in tests/plan43-shared-progression.test.js requirement 4 seed 1",
-  "timestamp": "2026-10-24T12:35:06.420Z",
-  "result": "DEFECT_PREVENTED_AND_DETECTED"
+  "mutationInjected": "Capture-phase interception of progression button; dispatches finish-compact-episode without advancing activePracticeItemIndex or installing destination item",
+  "executionResult": "DEFECT_DETECTED_BY_ASSERTION",
+  "cleanPreRun": "PASS",
+  "mutationAssertionFailure": {
+    "message": "Progression failed: expected single click to advance from \"two-thirds-plus-one-fourth\" to a fresh item, but observed itemId \"two-thirds-plus-one-fourth\".",
+    "name": "Error",
+    "stack": "Error: Progression failed: expected single click to advance from \"two-thirds-plus-one-fourth\" to a fresh item, but observed itemId \"two-thirds-plus-one-fourth\".\n    at assertAdvancesOnSingleClick (file:///C:/AI/FractionFlow/scripts/dev/record-plan43-evidence.mjs:49:11)\n    at runSeed1Falsification (file:///C:/AI/FractionFlow/scripts/dev/record-plan43-evidence.mjs:98:5)\n    at main (file:///C:/AI/FractionFlow/scripts/dev/record-plan43-evidence.mjs:230:9)\n    at file:///C:/AI/FractionFlow/scripts/dev/record-plan43-evidence.mjs:235:1\n    at ModuleJob.run (node:internal/modules/esm/module_job:569:25)\n    at async node:internal/modules/esm/loader:650:26\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)"
+  },
+  "cleanPostRun": "PASS",
+  "timestamp": "2026-10-24T19:36:27.831Z"
 }

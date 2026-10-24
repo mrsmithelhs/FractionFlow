@@ -320,11 +320,8 @@ function resolveRouteContext(route, contextMap) {
   if (context === 'historical-v4') return { id: context, startingSurface: 'plan34-historical-v4-entry' };
   if (context === 'historical-v6') return { id: context, startingSurface: 'plan18-historical-v6-entry' };
   if (context === 'historical-plan39-v7') return { id: context, startingSurface: 'plan39-historical-v7-entry' };
-  if (context === 'production-default-v7') {
+  if (context === 'production-default-v7' || context === 'production-default-v8') {
     return { id: context, startingSurface: 'legacy-navigation-entry' };
-  }
-  if (context === 'production-default-v8') {
-    return { id: context, startingSurface: 'mounted-app-entry' };
   }
   if (context === 'production-direct-plan43') {
     return { id: context, startingSurface: 'mounted-app-entry' };
@@ -523,6 +520,7 @@ async function validateMatrixIntegrity(matrix, registeredConditions, suppliedCon
     'completePlan39Repair02Set',
     'plan39Repair02Boundary',
     'plan39Repair03AnchorWitness',
+    'completePlan43Branch',
   ]);
 
   for (const route of matrix.routes) {
@@ -1702,6 +1700,20 @@ async function executeAction(page, action, routeId) {
     case 'completePlan40SubtractionSet': {
       const { buildPlan40SubtractionSetActions } = await import('./plan40-route-subtraction.mjs');
       const generated = buildPlan40SubtractionSetActions({ view: action.view, supportProfile: action.supportProfile });
+      action.generatedActions = generated;
+      for (const generatedAction of generated) {
+        try {
+          await executeAction(page, generatedAction, routeId);
+        } catch (error) {
+          error.message = `${generatedAction.description}: ${error.message}`;
+          throw error;
+        }
+      }
+      break;
+    }
+    case 'completePlan43Branch': {
+      const { buildPlan43WitnessActions } = await import('./plan43-route-witnesses.mjs');
+      const generated = buildPlan43WitnessActions(action);
       action.generatedActions = generated;
       for (const generatedAction of generated) {
         try {

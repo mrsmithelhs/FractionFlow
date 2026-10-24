@@ -2,8 +2,14 @@
   "seedId": "SEED-PLAN43-02-PREMATURE-ADVANCE-SKIPPING-REFLECTION",
   "objective": "Detect when Continue on a reflection item advances directly to the next item instead of entering reflect beat",
   "targetDefect": "Bypassing reflection or premise checks by skipping instructional beat schedule closure",
-  "mechanism": "Asserts beat === \"reflect\" and status === \"active\" with reflection remaining unanswered following Continue",
-  "verification": "PASS: Verified in tests/plan43-shared-progression.test.js requirement 4 seed 2",
-  "timestamp": "2026-10-24T12:35:06.421Z",
-  "result": "DEFECT_PREVENTED_AND_DETECTED"
+  "mutationInjected": "Capture-phase interception of Continue button; advances to next item without entering scheduled reflect beat",
+  "executionResult": "DEFECT_DETECTED_BY_ASSERTION",
+  "cleanPreRun": "PASS",
+  "mutationAssertionFailure": {
+    "message": "Reflection bypass detected: expected Continue to enter \"reflect\" beat, observed \"notice\" on item \"undefined\".",
+    "name": "Error",
+    "stack": "Error: Reflection bypass detected: expected Continue to enter \"reflect\" beat, observed \"notice\" on item \"undefined\".\n    at assertEntersReflectionOnContinue (file:///C:/AI/FractionFlow/scripts/dev/record-plan43-evidence.mjs:62:11)\n    at runSeed2Falsification (file:///C:/AI/FractionFlow/scripts/dev/record-plan43-evidence.mjs:183:5)\n    at main (file:///C:/AI/FractionFlow/scripts/dev/record-plan43-evidence.mjs:231:9)"
+  },
+  "cleanPostRun": "PASS",
+  "timestamp": "2026-10-24T19:36:27.889Z"
 }

@@ -1,0 +1,9 @@
+{
+  "seedId": "SEED-PLAN43-02-PREMATURE-ADVANCE-SKIPPING-REFLECTION",
+  "objective": "Detect when Continue on a reflection item advances directly to the next item instead of entering reflect beat",
+  "targetDefect": "Bypassing reflection or premise checks by skipping instructional beat schedule closure",
+  "mechanism": "Asserts beat === \"reflect\" and status === \"active\" with reflection remaining unanswered following Continue",
+  "verification": "PASS: Verified in tests/plan43-shared-progression.test.js requirement 4 seed 2",
+  "timestamp": "2026-10-24T12:35:06.421Z",
+  "result": "DEFECT_PREVENTED_AND_DETECTED"
+}

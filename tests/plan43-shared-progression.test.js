@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { createFractionFlowApp, getCompletionIntentFor } from '../src/app/app.js';
+import { createFractionFlowApp, getCompletionIntentFor, prepareProgressionTransaction } from '../src/app/app.js';
 import { PRACTICE_TYPES } from '../src/app/practice-types.js';
 import { STRINGS } from '../src/render/strings.js';
 import { setupMockDOM, teardownMockDOM } from './fixtures/mock-dom.js';
@@ -513,6 +513,280 @@ describe('Plan 43 — Shared Episode Completion and Progression Suite', () => {
       expect(app.getState().status).toBe('active');
       expect(app.getState().established.reflection).toBeNull();
       app.destroy();
+    });
+  });
+
+  describe('Requirement 5: Continue Focus and Keyboard Enter into Reflect', () => {
+    it('focuses connected reflection choice after submit-resolution enters reflect in visual view', () => {
+      const document = setupMockDOM();
+      const root = document.createElement('div');
+      document.body.appendChild(root);
+
+      const reflectionPracticeType = Object.freeze({
+        ...PRACTICE_TYPES[0],
+        items: Object.freeze(PRACTICE_TYPES[0].items.slice(2, 4)),
+      });
+
+      const app = createFractionFlowApp({
+        root,
+        practiceTypes: [reflectionPracticeType],
+        presentationMode: 'instant-test',
+      }).mount();
+
+      root.querySelector('.app-practice-button').click();
+
+      // Solve to resolve milestone
+      app.dispatch({ type: 'acknowledge-encounter' });
+      app.dispatch({ type: 'submit-notice', matchesUnits: false });
+      app.dispatch({ type: 'propose-common-denominator', proposed: whole(10) });
+      app.dispatch({ type: 'submit-equivalent-form', proposed: fraction(5, 10) });
+      app.dispatch({ type: 'submit-equivalent-form', proposed: fraction(2, 10) });
+      app.dispatch({ type: 'submit-operation-result', proposed: fraction(7, 10) });
+
+      const continueBtn = root.querySelector('.app-visual-view .active-beat-controls button');
+      expect(continueBtn.textContent).toBe('Continue');
+
+      // Click Continue to transition into reflect
+      continueBtn.click();
+      expect(app.getState().beat).toBe('reflect');
+
+      // Verify active element is the visible connected reflection choice, not BODY
+      const activeEl = document.activeElement;
+      expect(activeEl).not.toBe(document.body);
+      expect(activeEl.classList.contains('control-choice-btn')).toBe(true);
+      expect(root.querySelector('.app-visual-view .active-beat-controls').contains(activeEl)).toBe(true);
+      app.destroy();
+    });
+
+    it('focuses connected reflection choice after submit-resolution enters reflect in linear view', () => {
+      const document = setupMockDOM();
+      const root = document.createElement('div');
+      document.body.appendChild(root);
+
+      const reflectionPracticeType = Object.freeze({
+        ...PRACTICE_TYPES[0],
+        items: Object.freeze(PRACTICE_TYPES[0].items.slice(2, 4)),
+      });
+
+      const app = createFractionFlowApp({
+        root,
+        practiceTypes: [reflectionPracticeType],
+        presentationMode: 'instant-test',
+      }).mount();
+
+      root.querySelector('.app-practice-button').click();
+      // Switch to linear view
+      root.querySelector('.app-view-controls .app-secondary-button').click();
+
+      // Solve to resolve milestone
+      app.dispatch({ type: 'acknowledge-encounter' });
+      app.dispatch({ type: 'submit-notice', matchesUnits: false });
+      app.dispatch({ type: 'propose-common-denominator', proposed: whole(10) });
+      app.dispatch({ type: 'submit-equivalent-form', proposed: fraction(5, 10) });
+      app.dispatch({ type: 'submit-equivalent-form', proposed: fraction(2, 10) });
+      app.dispatch({ type: 'submit-operation-result', proposed: fraction(7, 10) });
+
+      const continueBtn = root.querySelector('.app-linear-view .active-beat-controls button');
+      expect(continueBtn.textContent).toBe('Continue');
+
+      continueBtn.click();
+      expect(app.getState().beat).toBe('reflect');
+
+      const activeEl = document.activeElement;
+      expect(activeEl).not.toBe(document.body);
+      expect(activeEl.classList.contains('control-choice-btn')).toBe(true);
+      expect(root.querySelector('.app-linear-view .active-beat-controls').contains(activeEl)).toBe(true);
+      app.destroy();
+    });
+  });
+
+  describe('Requirement 6: Completion Transaction Boundary', () => {
+    it('prepares advance transaction: returns candidate completedOldState with status resolved and validates destination', () => {
+      const document = setupMockDOM();
+      const root = document.createElement('div');
+      document.body.appendChild(root);
+
+      const app = createFractionFlowApp({ root, presentationMode: 'instant-test' }).mount();
+      root.querySelector('.app-practice-button').click();
+
+      // Solve item 0 to resolve
+      app.dispatch({ type: 'acknowledge-encounter' });
+      app.dispatch({ type: 'submit-equivalent-form', proposed: fraction(8, 12) });
+      app.dispatch({ type: 'submit-equivalent-form', proposed: fraction(3, 12) });
+      app.dispatch({ type: 'submit-operation-result', proposed: fraction(11, 12) });
+
+      const activeState = app.getState();
+      expect(activeState.beat).toBe('resolve');
+      expect(activeState.status).toBe('active');
+
+      const practiceType = PRACTICE_TYPES[0];
+      const prepared = prepareProgressionTransaction({
+        currentState: activeState,
+        actionKind: 'advance',
+        practiceType,
+        activeIndex: 0,
+        prepareDestination: (pt, idx) => ({ state: { dummyDestination: true, itemId: pt.items[idx].id } }),
+      });
+
+      expect(prepared.ok).toBe(true);
+      expect(prepared.actionKind).toBe('advance');
+      expect(prepared.nextIndex).toBe(1);
+      expect(prepared.completedOldState.status).toBe('resolved');
+      expect(prepared.destinationState.dummyDestination).toBe(true);
+      expect(prepared.destinationState.itemId).toBe('one-half-plus-one-third');
+      app.destroy();
+    });
+
+    it('prepares return transaction: preserves replay snapshot equality of completed candidate', () => {
+      const document = setupMockDOM();
+      const root = document.createElement('div');
+      document.body.appendChild(root);
+
+      const app = createFractionFlowApp({ root, presentationMode: 'instant-test' }).mount();
+      root.querySelector('[data-practice-type="like-denominator-addition"]').click();
+
+      app.dispatch({ type: 'acknowledge-encounter' });
+      app.dispatch({ type: 'submit-notice', matchesUnits: true });
+      app.dispatch({ type: 'submit-operation-result', proposed: fraction(5, 7) });
+
+      const activeState = app.getState();
+      expect(activeState.beat).toBe('resolve');
+      expect(activeState.status).toBe('active');
+
+      const prepared = prepareProgressionTransaction({
+        currentState: activeState,
+        actionKind: 'return',
+      });
+
+      expect(prepared.ok).toBe(true);
+      expect(prepared.actionKind).toBe('return');
+      expect(prepared.completedOldState.status).toBe('resolved');
+      expect(prepared.completedOldState.established.operation.proposed).toEqual(fraction(5, 7));
+      app.destroy();
+    });
+
+    it('identity completion: returns identical state when reflection is already resolved', () => {
+      const alreadyResolvedState = Object.freeze({
+        status: 'resolved',
+        beat: 'reflect',
+        episodeDefinition: { id: 'phase-2-unlike-proper-addition-reflection', revision: '3' },
+        established: { reflection: { response: 'mock' } },
+      });
+
+      const prepared = prepareProgressionTransaction({
+        currentState: alreadyResolvedState,
+        actionKind: 'advance',
+        practiceType: PRACTICE_TYPES[0],
+        activeIndex: 2,
+        prepareDestination: () => ({ state: { ready: true } }),
+      });
+
+      expect(prepared.ok).toBe(true);
+      expect(prepared.completedOldState).toBe(alreadyResolvedState);
+    });
+
+    it('refuses progression transaction atomically without state mutation when destination fails', () => {
+      const document = setupMockDOM();
+      const root = document.createElement('div');
+      document.body.appendChild(root);
+
+      const app = createFractionFlowApp({ root, presentationMode: 'instant-test' }).mount();
+      root.querySelector('.app-practice-button').click();
+
+      // Solve item 0 to resolve
+      app.dispatch({ type: 'acknowledge-encounter' });
+      app.dispatch({ type: 'submit-equivalent-form', proposed: fraction(8, 12) });
+      app.dispatch({ type: 'submit-equivalent-form', proposed: fraction(3, 12) });
+      app.dispatch({ type: 'submit-operation-result', proposed: fraction(11, 12) });
+
+      const activeState = app.getState();
+      expect(activeState.beat).toBe('resolve');
+      expect(activeState.status).toBe('active');
+
+      const prepared = prepareProgressionTransaction({
+        currentState: activeState,
+        actionKind: 'advance',
+        practiceType: PRACTICE_TYPES[0],
+        activeIndex: 0,
+        prepareDestination: () => {
+          throw new Error('Destination fixture corrupted');
+        },
+      });
+
+      expect(prepared.ok).toBe(false);
+      expect(prepared.reason).toBe('destination-refusal');
+      expect(prepared.error.message).toBe('Destination fixture corrupted');
+      expect(prepared.completedOldState.status).toBe('resolved');
+      app.destroy();
+    });
+  });
+
+  describe('Requirement 3 & Historical v8 Navigation Contrast', () => {
+    it('legacy-acknowledged v8 mode requires local Finish THEN separate header Next, whereas direct production advances directly with local Next', () => {
+      const document = setupMockDOM();
+      const root = document.createElement('div');
+      document.body.appendChild(root);
+
+      // 1. In legacy-acknowledged mode:
+      const legacyApp = createFractionFlowApp({
+        root,
+        navigationMode: 'legacy-acknowledged',
+        presentationMode: 'instant-test',
+      }).mount();
+
+      root.querySelector('.app-practice-button').click();
+
+      // Solve item 0 to resolve
+      legacyApp.dispatch({ type: 'acknowledge-encounter' });
+      legacyApp.dispatch({ type: 'submit-equivalent-form', proposed: fraction(8, 12) });
+      legacyApp.dispatch({ type: 'submit-equivalent-form', proposed: fraction(3, 12) });
+      legacyApp.dispatch({ type: 'submit-operation-result', proposed: fraction(11, 12) });
+
+      // In legacy mode, local button is 'Finish'
+      const legacyFinishBtn = root.querySelector('.app-visual-view .active-beat-controls button');
+      expect(legacyFinishBtn.textContent).toBe('Finish');
+      // Header Next is hidden while active
+      const headerNext = root.querySelector('.app-next-button');
+      expect(headerNext.hasAttribute('hidden')).toBe(true);
+
+      // Clicking Finish resolves the episode, but does NOT advance!
+      legacyFinishBtn.click();
+      expect(legacyApp.getState().status).toBe('resolved');
+      expect(legacyApp.getState().taskContext.itemId).toBe('two-thirds-plus-one-fourth'); // still on item 0!
+      // Header Next is revealed!
+      expect(headerNext.hasAttribute('hidden')).toBe(false);
+
+      // Clicking header Next advances to item 1
+      headerNext.click();
+      expect(legacyApp.getState().taskContext.itemId).toBe('one-half-plus-one-third');
+      expect(legacyApp.getState().status).toBe('active');
+      legacyApp.destroy();
+
+      // 2. In direct production mode:
+      const directApp = createFractionFlowApp({
+        root,
+        navigationMode: 'direct',
+        presentationMode: 'instant-test',
+      }).mount();
+
+      root.querySelector('.app-practice-button').click();
+
+      directApp.dispatch({ type: 'acknowledge-encounter' });
+      directApp.dispatch({ type: 'submit-equivalent-form', proposed: fraction(8, 12) });
+      directApp.dispatch({ type: 'submit-equivalent-form', proposed: fraction(3, 12) });
+      directApp.dispatch({ type: 'submit-operation-result', proposed: fraction(11, 12) });
+
+      // In direct mode, local button is 'Next problem' and header Next is NEVER shown
+      const directNextBtn = root.querySelector('.app-visual-view .active-beat-controls button');
+      expect(directNextBtn.textContent).toBe('Next problem');
+      expect(root.querySelector('.app-next-button').hasAttribute('hidden')).toBe(true);
+
+      // Clicking local Next problem advances directly to item 1 in a single click
+      directNextBtn.click();
+      expect(directApp.getState().taskContext.itemId).toBe('one-half-plus-one-third');
+      expect(directApp.getState().status).toBe('active');
+      expect(root.querySelector('.app-next-button').hasAttribute('hidden')).toBe(true);
+      directApp.destroy();
     });
   });
 });

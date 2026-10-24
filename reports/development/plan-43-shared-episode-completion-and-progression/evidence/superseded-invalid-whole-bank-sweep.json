@@ -1,0 +1,466 @@
+{
+  "timestamp": "2026-10-24T12:34:50.814Z",
+  "totalPracticeFamilies": 5,
+  "totalItems": 47,
+  "practiceFamilies": [
+    {
+      "practiceTypeId": "sum-under-one",
+      "label": "Add fractions with different denominators",
+      "itemCount": 21,
+      "items": [
+        {
+          "index": 0,
+          "itemId": "two-thirds-plus-one-fourth",
+          "definitionId": "phase-3-reusable-addition-recipes",
+          "isReflection": false,
+          "isLast": false,
+          "expectedTerminalLabel": "Next problem",
+          "expectedMilestoneLabel": null
+        },
+        {
+          "index": 1,
+          "itemId": "one-half-plus-one-third",
+          "definitionId": "phase-3-reusable-addition-recipes",
+          "isReflection": false,
+          "isLast": false,
+          "expectedTerminalLabel": "Next problem",
+          "expectedMilestoneLabel": null
+        },
+        {
+          "index": 2,
+          "itemId": "one-half-plus-one-fifth",
+          "definitionId": "phase-3-reusable-addition-recipes",
+          "isReflection": false,
+          "isLast": false,
+          "expectedTerminalLabel": "Next problem",
+          "expectedMilestoneLabel": null
+        },
+        {
+          "index": 3,
+          "itemId": "one-half-plus-two-fifths",
+          "definitionId": "phase-3-reusable-addition-recipes",
+          "isReflection": false,
+          "isLast": false,
+          "expectedTerminalLabel": "Next problem",
+          "expectedMilestoneLabel": null
+        },
+        {
+          "index": 4,
+          "itemId": "one-third-plus-one-fourth",
+          "definitionId": "phase-3-reusable-addition-recipes",
+          "isReflection": false,
+          "isLast": false,
+          "expectedTerminalLabel": "Next problem",
+          "expectedMilestoneLabel": null
+        },
+        {
+          "index": 5,
+          "itemId": "one-third-plus-one-fifth",
+          "definitionId": "phase-3-reusable-addition-recipes",
+          "isReflection": false,
+          "isLast": false,
+          "expectedTerminalLabel": "Next problem",
+          "expectedMilestoneLabel": null
+        },
+        {
+          "index": 6,
+          "itemId": "one-third-plus-two-fifths",
+          "definitionId": "phase-3-reusable-addition-recipes",
+          "isReflection": false,
+          "isLast": false,
+          "expectedTerminalLabel": "Next problem",
+          "expectedMilestoneLabel": null
+        },
+        {
+          "index": 7,
+          "itemId": "two-thirds-plus-one-fifth",
+          "definitionId": "phase-3-reusable-addition-recipes",
+          "isReflection": false,
+          "isLast": false,
+          "expectedTerminalLabel": "Next problem",
+          "expectedMilestoneLabel": null
+        },
+        {
+          "index": 8,
+          "itemId": "three-fifths-plus-one-third",
+          "definitionId": "phase-3-reusable-addition-recipes",
+          "isReflection": false,
+          "isLast": false,
+          "expectedTerminalLabel": "Next problem",
+          "expectedMilestoneLabel": null
+        },
+        {
+          "index": 9,
+          "itemId": "one-sixth-plus-one-fourth",
+          "definitionId": "phase-3-reusable-addition-recipes",
+          "isReflection": false,
+          "isLast": false,
+          "expectedTerminalLabel": "Next problem",
+          "expectedMilestoneLabel": null
+        },
+        {
+          "index": 10,
+          "itemId": "two-thirds-plus-three-fourths",
+          "definitionId": "phase-3-reusable-addition-recipes",
+          "isReflection": false,
+          "isLast": false,
+          "expectedTerminalLabel": "Next problem",
+          "expectedMilestoneLabel": null
+        },
+        {
+          "index": 11,
+          "itemId": "nested-one-half-plus-three-eighths",
+          "definitionId": "phase-3-reusable-addition-recipes",
+          "isReflection": false,
+          "isLast": false,
+          "expectedTerminalLabel": "Next problem",
+          "expectedMilestoneLabel": null
+        },
+        {
+          "index": 12,
+          "itemId": "nested-three-eighths-plus-one-half",
+          "definitionId": "phase-3-reusable-addition-recipes",
+          "isReflection": false,
+          "isLast": false,
+          "expectedTerminalLabel": "Next problem",
+          "expectedMilestoneLabel": null
+        },
+        {
+          "index": 13,
+          "itemId": "plan35-construct-half-fifth-10",
+          "definitionId": "phase-3-reusable-addition-recipes",
+          "isReflection": false,
+          "isLast": false,
+          "expectedTerminalLabel": "Next problem",
+          "expectedMilestoneLabel": null
+        },
+        {
+          "index": 14,
+          "itemId": "plan35-construct-three-fifths-third-30",
+          "definitionId": "phase-3-reusable-addition-recipes",
+          "isReflection": false,
+          "isLast": false,
+          "expectedTerminalLabel": "Next problem",
+          "expectedMilestoneLabel": null
+        },
+        {
+          "index": 15,
+          "itemId": "plan35-inspect-third-eighth-24",
+          "definitionId": "phase-3-reusable-addition-recipes",
+          "isReflection": false,
+          "isLast": false,
+          "expectedTerminalLabel": "Next problem",
+          "expectedMilestoneLabel": null
+        },
+        {
+          "index": 16,
+          "itemId": "plan35-inspect-fifth-third-30",
+          "definitionId": "phase-3-reusable-addition-recipes",
+          "isReflection": false,
+          "isLast": false,
+          "expectedTerminalLabel": "Next problem",
+          "expectedMilestoneLabel": null
+        },
+        {
+          "index": 17,
+          "itemId": "plan35-identify-half-three-tenths-10",
+          "definitionId": "phase-3-reusable-addition-recipes",
+          "isReflection": false,
+          "isLast": false,
+          "expectedTerminalLabel": "Next problem",
+          "expectedMilestoneLabel": null
+        },
+        {
+          "index": 18,
+          "itemId": "plan35-identify-three-tenths-half-10",
+          "definitionId": "phase-3-reusable-addition-recipes",
+          "isReflection": false,
+          "isLast": false,
+          "expectedTerminalLabel": "Next problem",
+          "expectedMilestoneLabel": null
+        },
+        {
+          "index": 19,
+          "itemId": "plan35-identify-third-five-twelfths-12",
+          "definitionId": "phase-3-reusable-addition-recipes",
+          "isReflection": false,
+          "isLast": false,
+          "expectedTerminalLabel": "Next problem",
+          "expectedMilestoneLabel": null
+        },
+        {
+          "index": 20,
+          "itemId": "plan35-identify-five-twelfths-third-12",
+          "definitionId": "phase-3-reusable-addition-recipes",
+          "isReflection": false,
+          "isLast": true,
+          "expectedTerminalLabel": "Back to start",
+          "expectedMilestoneLabel": null
+        }
+      ]
+    },
+    {
+      "practiceTypeId": "like-denominator-addition",
+      "label": "Add fractions with the same denominator",
+      "itemCount": 1,
+      "items": [
+        {
+          "index": 0,
+          "itemId": "two-sevenths-plus-three-sevenths",
+          "definitionId": "phase-3-like-denominator-addition",
+          "isReflection": false,
+          "isLast": true,
+          "expectedTerminalLabel": "Back to start",
+          "expectedMilestoneLabel": null
+        }
+      ]
+    },
+    {
+      "practiceTypeId": "like-denominator-subtraction",
+      "label": "Subtract fractions with the same denominator",
+      "itemCount": 8,
+      "items": [
+        {
+          "index": 0,
+          "itemId": "takeaway-8-5-minus-2",
+          "definitionId": "phase-3-like-denominator-takeaway-subtraction",
+          "isReflection": false,
+          "isLast": false,
+          "expectedTerminalLabel": "Next problem",
+          "expectedMilestoneLabel": null
+        },
+        {
+          "index": 1,
+          "itemId": "takeaway-12-8-minus-3",
+          "definitionId": "phase-3-like-denominator-takeaway-subtraction",
+          "isReflection": false,
+          "isLast": false,
+          "expectedTerminalLabel": "Next problem",
+          "expectedMilestoneLabel": null
+        },
+        {
+          "index": 2,
+          "itemId": "takeaway-10-7-minus-3",
+          "definitionId": "phase-3-like-denominator-takeaway-subtraction",
+          "isReflection": false,
+          "isLast": false,
+          "expectedTerminalLabel": "Next problem",
+          "expectedMilestoneLabel": null
+        },
+        {
+          "index": 3,
+          "itemId": "takeaway-11-9-minus-4",
+          "definitionId": "phase-3-like-denominator-takeaway-subtraction",
+          "isReflection": false,
+          "isLast": false,
+          "expectedTerminalLabel": "Next problem",
+          "expectedMilestoneLabel": null
+        },
+        {
+          "index": 4,
+          "itemId": "takeaway-9-6-minus-1",
+          "definitionId": "phase-3-like-denominator-takeaway-subtraction",
+          "isReflection": false,
+          "isLast": false,
+          "expectedTerminalLabel": "Next problem",
+          "expectedMilestoneLabel": null
+        },
+        {
+          "index": 5,
+          "itemId": "takeaway-9-6-minus-6",
+          "definitionId": "phase-3-like-denominator-takeaway-subtraction",
+          "isReflection": false,
+          "isLast": false,
+          "expectedTerminalLabel": "Next problem",
+          "expectedMilestoneLabel": null
+        },
+        {
+          "index": 6,
+          "itemId": "takeaway-6-5-minus-4",
+          "definitionId": "phase-3-like-denominator-takeaway-subtraction",
+          "isReflection": false,
+          "isLast": false,
+          "expectedTerminalLabel": "Next problem",
+          "expectedMilestoneLabel": null
+        },
+        {
+          "index": 7,
+          "itemId": "takeaway-8-7-minus-1",
+          "definitionId": "phase-3-like-denominator-takeaway-subtraction",
+          "isReflection": false,
+          "isLast": true,
+          "expectedTerminalLabel": "Back to start",
+          "expectedMilestoneLabel": null
+        }
+      ]
+    },
+    {
+      "practiceTypeId": "unlike-denominator-subtraction",
+      "label": "Subtract fractions with different denominators",
+      "itemCount": 9,
+      "items": [
+        {
+          "index": 0,
+          "itemId": "plan40-construct-half-fifth-10",
+          "definitionId": "phase-3-reusable-subtraction-recipes",
+          "isReflection": false,
+          "isLast": false,
+          "expectedTerminalLabel": "Next problem",
+          "expectedMilestoneLabel": null
+        },
+        {
+          "index": 1,
+          "itemId": "plan40-construct-three-fourths-two-fifths-20",
+          "definitionId": "phase-3-reusable-subtraction-recipes",
+          "isReflection": false,
+          "isLast": false,
+          "expectedTerminalLabel": "Next problem",
+          "expectedMilestoneLabel": null
+        },
+        {
+          "index": 2,
+          "itemId": "plan40-construct-five-sixths-three-eighths-24",
+          "definitionId": "phase-3-reusable-subtraction-recipes",
+          "isReflection": false,
+          "isLast": false,
+          "expectedTerminalLabel": "Next problem",
+          "expectedMilestoneLabel": null
+        },
+        {
+          "index": 3,
+          "itemId": "plan40-inspect-two-thirds-one-fourth-12",
+          "definitionId": "phase-3-reusable-subtraction-recipes",
+          "isReflection": false,
+          "isLast": false,
+          "expectedTerminalLabel": "Next problem",
+          "expectedMilestoneLabel": null
+        },
+        {
+          "index": 4,
+          "itemId": "plan40-inspect-seven-tenths-one-fourth-20",
+          "definitionId": "phase-3-reusable-subtraction-recipes",
+          "isReflection": false,
+          "isLast": false,
+          "expectedTerminalLabel": "Next problem",
+          "expectedMilestoneLabel": null
+        },
+        {
+          "index": 5,
+          "itemId": "plan40-inspect-five-sixths-seven-tenths-30",
+          "definitionId": "phase-3-reusable-subtraction-recipes",
+          "isReflection": false,
+          "isLast": false,
+          "expectedTerminalLabel": "Next problem",
+          "expectedMilestoneLabel": null
+        },
+        {
+          "index": 6,
+          "itemId": "plan40-identify-five-sixths-one-third-6",
+          "definitionId": "phase-3-reusable-subtraction-recipes",
+          "isReflection": false,
+          "isLast": false,
+          "expectedTerminalLabel": "Next problem",
+          "expectedMilestoneLabel": null
+        },
+        {
+          "index": 7,
+          "itemId": "plan40-identify-one-half-one-eighth-8",
+          "definitionId": "phase-3-reusable-subtraction-recipes",
+          "isReflection": false,
+          "isLast": false,
+          "expectedTerminalLabel": "Next problem",
+          "expectedMilestoneLabel": null
+        },
+        {
+          "index": 8,
+          "itemId": "plan40-identify-two-thirds-five-twelfths-12",
+          "definitionId": "phase-3-reusable-subtraction-recipes",
+          "isReflection": false,
+          "isLast": true,
+          "expectedTerminalLabel": "Back to start",
+          "expectedMilestoneLabel": null
+        }
+      ]
+    },
+    {
+      "practiceTypeId": "bar-to-line-same-amount",
+      "label": "Place fractions on a number line",
+      "itemCount": 8,
+      "items": [
+        {
+          "index": 0,
+          "itemId": "bridge-01-half-2",
+          "definitionId": "phase-4-bar-to-line-same-amount",
+          "isReflection": false,
+          "isLast": false,
+          "expectedTerminalLabel": "Next problem",
+          "expectedMilestoneLabel": null
+        },
+        {
+          "index": 1,
+          "itemId": "bridge-02-fourth-4",
+          "definitionId": "phase-4-bar-to-line-same-amount",
+          "isReflection": false,
+          "isLast": false,
+          "expectedTerminalLabel": "Next problem",
+          "expectedMilestoneLabel": null
+        },
+        {
+          "index": 2,
+          "itemId": "bridge-03-three-fourths-4",
+          "definitionId": "phase-4-bar-to-line-same-amount",
+          "isReflection": false,
+          "isLast": false,
+          "expectedTerminalLabel": "Next problem",
+          "expectedMilestoneLabel": null
+        },
+        {
+          "index": 3,
+          "itemId": "bridge-04-two-thirds-3",
+          "definitionId": "phase-4-bar-to-line-same-amount",
+          "isReflection": false,
+          "isLast": false,
+          "expectedTerminalLabel": "Next problem",
+          "expectedMilestoneLabel": null
+        },
+        {
+          "index": 4,
+          "itemId": "bridge-05-two-fourths-half",
+          "definitionId": "phase-4-bar-to-line-same-amount",
+          "isReflection": false,
+          "isLast": false,
+          "expectedTerminalLabel": "Next problem",
+          "expectedMilestoneLabel": null
+        },
+        {
+          "index": 5,
+          "itemId": "bridge-06-three-eighths-8",
+          "definitionId": "phase-4-bar-to-line-same-amount",
+          "isReflection": false,
+          "isLast": false,
+          "expectedTerminalLabel": "Next problem",
+          "expectedMilestoneLabel": null
+        },
+        {
+          "index": 6,
+          "itemId": "bridge-07-one-third-med",
+          "definitionId": "phase-4-bar-to-line-same-amount",
+          "isReflection": false,
+          "isLast": false,
+          "expectedTerminalLabel": "Next problem",
+          "expectedMilestoneLabel": null
+        },
+        {
+          "index": 7,
+          "itemId": "bridge-08-five-sixths-med",
+          "definitionId": "phase-4-bar-to-line-same-amount",
+          "isReflection": false,
+          "isLast": true,
+          "expectedTerminalLabel": "Back to start",
+          "expectedMilestoneLabel": null
+        }
+      ]
+    }
+  ],
+  "sweepStatus": "PASS"
+}

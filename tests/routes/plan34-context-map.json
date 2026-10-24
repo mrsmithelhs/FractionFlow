@@ -98,10 +98,16 @@
     "ROUTE-PLAN39-REPAIR02-MEDIUM-1366X768": "production-default-v8",
     "ROUTE-PLAN39-REPAIR02-EIGHTHS-1093X614-DPR125": "production-default-v8",
     "ROUTE-PLAN39-REPAIR03-ANCHOR-RING": "production-default-v8",
-    "ROUTE-PLAN43-ADDITION-DIRECT-NEXT": "production-direct-plan43",
-    "ROUTE-PLAN43-SUBTRACTION-DIRECT-NEXT": "production-direct-plan43",
-    "ROUTE-PLAN43-PLAN20-SINGLE-ITEM-RETURN": "production-direct-plan43",
-    "ROUTE-PLAN43-NUMBER-LINE-DIRECT-NEXT": "production-direct-plan43"
+    "ROUTE-PLAN43-ADDITION-CONSTRUCT-NEXT": "production-direct-plan43",
+    "ROUTE-PLAN43-ADDITION-INSPECT-NEXT": "production-direct-plan43",
+    "ROUTE-PLAN43-ADDITION-IDENTIFY-NEXT": "production-direct-plan43",
+    "ROUTE-PLAN43-PLAN20-SAME-DENOM-RETURN": "production-direct-plan43",
+    "ROUTE-PLAN43-SUBTRACTION-TAKEAWAY-NEXT": "production-direct-plan43",
+    "ROUTE-PLAN43-UNLIKE-SUBTRACTION-CONSTRUCT-NEXT": "production-direct-plan43",
+    "ROUTE-PLAN43-UNLIKE-SUBTRACTION-INSPECT-NEXT": "production-direct-plan43",
+    "ROUTE-PLAN43-UNLIKE-SUBTRACTION-IDENTIFY-NEXT": "production-direct-plan43",
+    "ROUTE-PLAN43-NUMBER-LINE-DIRECT-NEXT": "production-direct-plan43",
+    "ROUTE-PLAN43-REFLECTION-MILESTONE-CONTINUE-NEXT": "production-direct-plan43"
   },
   "plan40-unlike-subtraction": {
     "practiceSetId": "unlike-subtraction-vetted-set",

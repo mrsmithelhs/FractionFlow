@@ -16267,8 +16267,8 @@
       }
     },
     {
-      "id": "ROUTE-PLAN43-ADDITION-DIRECT-NEXT",
-      "behavior": "A learner completes the first compact addition problem in production and advances directly to the next item via the local Next problem button.",
+      "id": "ROUTE-PLAN43-ADDITION-CONSTRUCT-NEXT",
+      "behavior": "Complete addition construct recipe on item 1 (2/3 + 1/4), observe local Next problem in desktop 1366x768 viewport, advance directly to fresh item 2 (1/2 + 1/3) with deliberate focus, and assert clean state.",
       "configuration": "phase2-bundle-1",
       "startingSurface": "mounted-app-entry",
       "viewport": {
@@ -16280,90 +16280,11 @@
       "inputMode": "mouse",
       "actions": [
         {
-          "step": 1,
-          "method": "click",
-          "target": ".app-practice-button",
-          "description": "Start addition practice"
-        },
-        {
-          "step": 2,
-          "method": "click",
-          "target": ".app-visual-view .control-btn",
-          "description": "Acknowledge encounter"
-        },
-        {
-          "step": 3,
-          "method": "fill",
-          "target": "#transform-num-input-left",
-          "value": "8",
-          "description": "Transform left: enter numerator 8"
-        },
-        {
-          "step": 4,
-          "method": "click",
-          "target": ".app-visual-view .control-submit-btn",
-          "description": "Transform left: submit 8"
-        },
-        {
-          "step": 5,
-          "method": "fill",
-          "target": "#transform-num-input-right",
-          "value": "3",
-          "description": "Transform right: enter numerator 3"
-        },
-        {
-          "step": 6,
-          "method": "click",
-          "target": ".app-visual-view .control-submit-btn",
-          "description": "Transform right: submit 3"
-        },
-        {
-          "step": 7,
-          "method": "fill",
-          "target": "#operate-sum-input",
-          "value": "11",
-          "description": "Operate: enter sum 11"
-        },
-        {
-          "step": 8,
-          "method": "click",
-          "target": ".app-visual-view .control-submit-btn",
-          "description": "Operate: submit 11"
-        },
-        {
-          "step": 9,
-          "method": "assert",
-          "target": ".app-visual-view .active-beat-controls button",
-          "description": "Assert local Next problem button is present and header next button is hidden",
-          "assertions": [
-            {
-              "type": "containsText",
-              "target": ".app-visual-view .active-beat-controls button",
-              "value": "Next problem"
-            },
-            {
-              "type": "hasSelector",
-              "target": ".app-next-button[hidden]"
-            }
-          ]
-        },
-        {
-          "step": 10,
-          "method": "click",
-          "target": ".app-visual-view .active-beat-controls button",
-          "description": "Click local Next problem button to advance"
-        },
-        {
-          "step": 11,
-          "method": "assert",
-          "target": ".app-episode",
-          "description": "Assert next problem (1/2 + 1/3) is installed fresh",
-          "assertions": [
-            {
-              "type": "hasSelector",
-              "target": ".app-episode"
-            }
-          ]
+          "method": "completePlan43Branch",
+          "branch": "addition-construct",
+          "view": "visual",
+          "inputMode": "mouse",
+          "description": "Execute addition construct branch"
         }
       ],
       "expect": {
@@ -16375,89 +16296,41 @@
           {
             "type": "hasSelector",
             "target": ".app-episode"
+          },
+          {
+            "type": "hasSelector",
+            "target": ".app-visual-view .control-btn"
+          },
+          {
+            "type": "notHasSelector",
+            "target": "#transform-num-input-left"
+          },
+          {
+            "type": "notHasSelector",
+            "target": ".active-beat-recovery"
           }
         ]
       }
     },
     {
-      "id": "ROUTE-PLAN43-SUBTRACTION-DIRECT-NEXT",
-      "behavior": "A learner completes a like-denominator takeaway subtraction problem in production and advances directly via the local Next problem button.",
+      "id": "ROUTE-PLAN43-ADDITION-INSPECT-NEXT",
+      "behavior": "Complete addition inspect recipe on item 2 (1/2 + 1/3) in narrow 360x740 linear view with reduced motion, activate Next problem via keyboard Enter, advance to item 3 (1/2 + 1/5) with deliberate focus, and assert clean state.",
       "configuration": "phase2-bundle-1",
       "startingSurface": "mounted-app-entry",
       "viewport": {
-        "width": 1366,
-        "height": 768
+        "width": 360,
+        "height": 740
       },
-      "motionMode": "standard-motion",
+      "motionMode": "reduced-motion",
       "witness": "browser",
-      "inputMode": "mouse",
+      "inputMode": "keyboard",
       "actions": [
         {
-          "step": 1,
-          "method": "click",
-          "target": "[data-practice-type=\"like-denominator-subtraction\"]",
-          "description": "Start subtraction practice"
-        },
-        {
-          "step": 2,
-          "method": "click",
-          "target": ".app-visual-view .active-beat-controls button",
-          "description": "Acknowledge encounter"
-        },
-        {
-          "step": 3,
-          "method": "fill",
-          "target": "#operate-fraction-numerator-input",
-          "value": "3",
-          "description": "Enter remaining numerator"
-        },
-        {
-          "step": 4,
-          "method": "fill",
-          "target": "#operate-fraction-denominator-input",
-          "value": "8",
-          "description": "Enter remaining denominator"
-        },
-        {
-          "step": 5,
-          "method": "click",
-          "target": ".app-visual-view .control-submit-btn",
-          "description": "Submit difference"
-        },
-        {
-          "step": 6,
-          "method": "assert",
-          "target": ".app-visual-view .active-beat-controls button",
-          "description": "Assert local Next problem button is present and header next button is hidden",
-          "assertions": [
-            {
-              "type": "containsText",
-              "target": ".app-visual-view .active-beat-controls button",
-              "value": "Next problem"
-            },
-            {
-              "type": "hasSelector",
-              "target": ".app-next-button[hidden]"
-            }
-          ]
-        },
-        {
-          "step": 7,
-          "method": "click",
-          "target": ".app-visual-view .active-beat-controls button",
-          "description": "Advance directly to next subtraction problem"
-        },
-        {
-          "step": 8,
-          "method": "assert",
-          "target": ".app-episode",
-          "description": "Assert next subtraction item is installed fresh",
-          "assertions": [
-            {
-              "type": "hasSelector",
-              "target": ".app-episode"
-            }
-          ]
+          "method": "completePlan43Branch",
+          "branch": "addition-inspect",
+          "view": "linear",
+          "inputMode": "keyboard",
+          "description": "Execute addition inspect branch"
         }
       ],
       "expect": {
@@ -16469,13 +16342,157 @@
           {
             "type": "hasSelector",
             "target": ".app-episode"
+          },
+          {
+            "type": "hasSelector",
+            "target": ".app-linear-view .control-btn"
+          },
+          {
+            "type": "notHasSelector",
+            "target": "#linear-operate-sum-input"
+          },
+          {
+            "type": "notHasSelector",
+            "target": ".app-linear-view .active-beat-recovery"
           }
         ]
       }
     },
     {
-      "id": "ROUTE-PLAN43-PLAN20-SINGLE-ITEM-RETURN",
-      "behavior": "A learner completes the single-item Plan 20 same-denominator addition set in production and returns to entry via local Back to start.",
+      "id": "ROUTE-PLAN43-ADDITION-IDENTIFY-NEXT",
+      "behavior": "Witness identify-side recipe on scaled Chromebook 1093x614 DPR 1.25, observe local Next problem upon acceptance, advance directly to fresh destination item, and assert clean state.",
+      "configuration": "phase2-bundle-1",
+      "startingSurface": "mounted-app-entry",
+      "viewport": {
+        "width": 1093,
+        "height": 614
+      },
+      "deviceScaleFactor": 1.25,
+      "motionMode": "standard-motion",
+      "witness": "browser",
+      "inputMode": "mouse",
+      "actions": [
+        {
+          "method": "completePlan43Branch",
+          "branch": "addition-identify",
+          "view": "visual",
+          "inputMode": "mouse",
+          "description": "Execute identify-side branch"
+        }
+      ],
+      "expect": {
+        "capture": {
+          "target": ".app-episode",
+          "type": "innerHTML"
+        },
+        "assertions": [
+          {
+            "type": "hasSelector",
+            "target": ".app-episode"
+          },
+          {
+            "type": "hasSelector",
+            "target": ".app-visual-view .control-btn"
+          },
+          {
+            "type": "notHasSelector",
+            "target": ".active-beat-recovery"
+          }
+        ]
+      }
+    },
+    {
+      "id": "ROUTE-PLAN43-PLAN20-SAME-DENOM-RETURN",
+      "behavior": "Complete single-item Plan 20 same-denominator addition set (2/7 + 3/7 = 5/7) with keyboard input in desktop 1366x768, observe exhaustion notice and local Back to start, activate return, and assert return to entry with focused title.",
+      "configuration": "phase2-bundle-1",
+      "startingSurface": "mounted-app-entry",
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "motionMode": "standard-motion",
+      "witness": "browser",
+      "inputMode": "keyboard",
+      "actions": [
+        {
+          "method": "completePlan43Branch",
+          "branch": "plan20-same-denom-return",
+          "view": "visual",
+          "inputMode": "keyboard",
+          "description": "Execute Plan 20 return branch"
+        }
+      ],
+      "expect": {
+        "capture": {
+          "target": ".app-entry-page",
+          "type": "innerHTML"
+        },
+        "assertions": [
+          {
+            "type": "notHasSelector",
+            "target": ".app-entry-page[hidden]"
+          },
+          {
+            "type": "hasSelector",
+            "target": ".app-episode[hidden]"
+          },
+          {
+            "type": "containsText",
+            "target": "#fractionflow-title",
+            "value": "FractionFlow"
+          }
+        ]
+      }
+    },
+    {
+      "id": "ROUTE-PLAN43-SUBTRACTION-TAKEAWAY-NEXT",
+      "behavior": "Complete like-denominator takeaway subtraction (5/8 - 2/8 = 3/8) using browser touch in narrow 360x740 viewport, advance directly via local Next problem button, and assert item 2 mounted fresh with clean state.",
+      "configuration": "phase2-bundle-1",
+      "startingSurface": "mounted-app-entry",
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "motionMode": "standard-motion",
+      "witness": "browser",
+      "inputMode": "touch",
+      "actions": [
+        {
+          "method": "completePlan43Branch",
+          "branch": "subtraction-takeaway",
+          "view": "visual",
+          "inputMode": "touch",
+          "description": "Execute like-subtraction takeaway branch"
+        }
+      ],
+      "expect": {
+        "capture": {
+          "target": ".app-episode",
+          "type": "innerHTML"
+        },
+        "assertions": [
+          {
+            "type": "hasSelector",
+            "target": ".app-episode"
+          },
+          {
+            "type": "hasSelector",
+            "target": ".app-visual-view .active-beat-controls button"
+          },
+          {
+            "type": "notHasSelector",
+            "target": "#operate-fraction-numerator-input"
+          },
+          {
+            "type": "notHasSelector",
+            "target": ".active-beat-recovery"
+          }
+        ]
+      }
+    },
+    {
+      "id": "ROUTE-PLAN43-UNLIKE-SUBTRACTION-CONSTRUCT-NEXT",
+      "behavior": "Complete unlike-denominator subtraction construct recipe on item 1 (1/2 - 1/5 = 3/10) in desktop 1366x768 viewport, advance directly via local Next problem button, and assert item 2 mounted fresh with clean state.",
       "configuration": "phase2-bundle-1",
       "startingSurface": "mounted-app-entry",
       "viewport": {
@@ -16487,96 +16504,134 @@
       "inputMode": "mouse",
       "actions": [
         {
-          "step": 1,
-          "method": "click",
-          "target": "[data-practice-type=\"like-denominator-addition\"]",
-          "description": "Start same-denominator addition practice"
-        },
-        {
-          "step": 2,
-          "method": "click",
-          "target": ".app-visual-view .control-btn",
-          "description": "Acknowledge encounter"
-        },
-        {
-          "step": 3,
-          "method": "click",
-          "target": ".app-visual-view .control-choice-btn >> nth=0",
-          "description": "Notice: choose same sized parts"
-        },
-        {
-          "step": 4,
-          "method": "fill",
-          "target": "#operate-fraction-numerator-input",
-          "value": "5",
-          "description": "Enter sum numerator"
-        },
-        {
-          "step": 5,
-          "method": "fill",
-          "target": "#operate-fraction-denominator-input",
-          "value": "7",
-          "description": "Enter sum denominator"
-        },
-        {
-          "step": 6,
-          "method": "click",
-          "target": ".app-visual-view .control-submit-btn",
-          "description": "Submit sum"
-        },
-        {
-          "step": 7,
-          "method": "assert",
-          "target": ".app-visual-view .active-beat-controls",
-          "description": "Assert local Back to start button and exhaustion notice are present",
-          "assertions": [
-            {
-              "type": "containsText",
-              "target": ".app-visual-view .active-beat-controls",
-              "value": "Back to start"
-            },
-            {
-              "type": "containsText",
-              "target": ".app-visual-view .active-beat-controls",
-              "value": "You’ve tried every problem in this set."
-            }
-          ]
-        },
-        {
-          "step": 8,
-          "method": "click",
-          "target": ".app-visual-view .active-beat-controls button",
-          "description": "Click local Back to start"
-        },
-        {
-          "step": 9,
-          "method": "assert",
-          "target": ".app-entry-page",
-          "description": "Assert returned to entry page",
-          "assertions": [
-            {
-              "type": "hasSelector",
-              "target": ".app-entry-page:not([hidden])"
-            }
-          ]
+          "method": "completePlan43Branch",
+          "branch": "unlike-subtraction-construct",
+          "view": "visual",
+          "inputMode": "mouse",
+          "description": "Execute unlike subtraction construct branch"
         }
       ],
       "expect": {
         "capture": {
-          "target": ".app-entry-page",
+          "target": ".app-episode",
           "type": "innerHTML"
         },
         "assertions": [
           {
             "type": "hasSelector",
-            "target": ".app-entry-page"
+            "target": ".app-episode"
+          },
+          {
+            "type": "hasSelector",
+            "target": ".app-visual-view .control-btn"
+          },
+          {
+            "type": "notHasSelector",
+            "target": "#transform-num-input-left"
+          },
+          {
+            "type": "notHasSelector",
+            "target": ".active-beat-recovery"
+          }
+        ]
+      }
+    },
+    {
+      "id": "ROUTE-PLAN43-UNLIKE-SUBTRACTION-INSPECT-NEXT",
+      "behavior": "Complete unlike-denominator subtraction inspect recipe on item 4 in linear view with keyboard navigation and reduced motion, advance directly via local Next problem button, and assert fresh state on item 5.",
+      "configuration": "phase2-bundle-1",
+      "startingSurface": "mounted-app-entry",
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "motionMode": "reduced-motion",
+      "witness": "browser",
+      "inputMode": "keyboard",
+      "actions": [
+        {
+          "method": "completePlan43Branch",
+          "branch": "unlike-subtraction-inspect",
+          "view": "linear",
+          "inputMode": "keyboard",
+          "description": "Execute unlike subtraction inspect branch"
+        }
+      ],
+      "expect": {
+        "capture": {
+          "target": ".app-episode",
+          "type": "innerHTML"
+        },
+        "assertions": [
+          {
+            "type": "hasSelector",
+            "target": ".app-episode"
+          },
+          {
+            "type": "hasSelector",
+            "target": ".app-linear-view .control-btn"
+          },
+          {
+            "type": "notHasSelector",
+            "target": "#linear-operate-fraction-numerator-input"
+          },
+          {
+            "type": "notHasSelector",
+            "target": ".app-linear-view .active-beat-recovery"
+          }
+        ]
+      }
+    },
+    {
+      "id": "ROUTE-PLAN43-UNLIKE-SUBTRACTION-IDENTIFY-NEXT",
+      "behavior": "Complete unlike-denominator subtraction identify-side recipe on item 7 (5/6 - 1/3 = 3/6) on scaled Chromebook 1093x614 DPR 1.25, advance directly via local Next problem button, and assert fresh state on item 8.",
+      "configuration": "phase2-bundle-1",
+      "startingSurface": "mounted-app-entry",
+      "viewport": {
+        "width": 1093,
+        "height": 614
+      },
+      "deviceScaleFactor": 1.25,
+      "motionMode": "standard-motion",
+      "witness": "browser",
+      "inputMode": "mouse",
+      "actions": [
+        {
+          "method": "completePlan43Branch",
+          "branch": "unlike-subtraction-identify",
+          "view": "visual",
+          "inputMode": "mouse",
+          "description": "Execute unlike subtraction identify branch"
+        }
+      ],
+      "expect": {
+        "capture": {
+          "target": ".app-episode",
+          "type": "innerHTML"
+        },
+        "assertions": [
+          {
+            "type": "hasSelector",
+            "target": ".app-episode"
+          },
+          {
+            "type": "hasSelector",
+            "target": ".app-visual-view .control-btn"
+          },
+          {
+            "type": "notHasSelector",
+            "target": "#transform-num-input-right"
+          },
+          {
+            "type": "notHasSelector",
+            "target": ".active-beat-recovery"
           }
         ]
       }
     },
     {
       "id": "ROUTE-PLAN43-NUMBER-LINE-DIRECT-NEXT",
-      "behavior": "A learner places a fraction on the number line in production and advances directly via the local Next problem button.",
+      "behavior": "Place 1/2 on the number line in production, observe local Next problem upon check position acceptance, advance directly to fresh item 2, and assert disabled check position and reset stepper.",
       "configuration": "phase2-bundle-1",
       "startingSurface": "mounted-app-entry",
       "viewport": {
@@ -16588,63 +16643,11 @@
       "inputMode": "mouse",
       "actions": [
         {
-          "step": 1,
-          "method": "click",
-          "target": "[data-practice-type=\"bar-to-line-same-amount\"]",
-          "description": "Start number line practice"
-        },
-        {
-          "step": 2,
-          "method": "click",
-          "target": ".app-visual-view .plan39-stepper-next",
-          "description": "Step to rightmost"
-        },
-        {
-          "step": 3,
-          "method": "click",
-          "target": ".app-visual-view .plan39-stepper-previous",
-          "description": "Step left to 1 of 2"
-        },
-        {
-          "step": 4,
-          "method": "click",
-          "target": ".app-visual-view .plan39-check-position",
-          "description": "Check position"
-        },
-        {
-          "step": 5,
-          "method": "assert",
-          "target": ".app-visual-view .plan39-finish",
-          "description": "Assert local Next problem button is present and focused",
-          "assertions": [
-            {
-              "type": "containsText",
-              "target": ".app-visual-view .plan39-finish",
-              "value": "Next problem"
-            },
-            {
-              "type": "hasSelector",
-              "target": ".app-next-button[hidden]"
-            }
-          ]
-        },
-        {
-          "step": 6,
-          "method": "click",
-          "target": ".app-visual-view .plan39-finish",
-          "description": "Advance directly to next number line problem"
-        },
-        {
-          "step": 7,
-          "method": "assert",
-          "target": ".app-episode",
-          "description": "Assert next number line item is installed fresh",
-          "assertions": [
-            {
-              "type": "hasSelector",
-              "target": ".app-episode"
-            }
-          ]
+          "method": "completePlan43Branch",
+          "branch": "number-line-locate",
+          "view": "visual",
+          "inputMode": "mouse",
+          "description": "Execute number line locate branch"
         }
       ],
       "expect": {
@@ -16656,6 +16659,64 @@
           {
             "type": "hasSelector",
             "target": ".app-episode"
+          },
+          {
+            "type": "hasSelector",
+            "target": ".app-visual-view .plan39-stepper-next"
+          },
+          {
+            "type": "hasSelector",
+            "target": ".app-visual-view .plan39-check-position[disabled]"
+          },
+          {
+            "type": "notHasSelector",
+            "target": ".active-beat-recovery"
+          }
+        ]
+      }
+    },
+    {
+      "id": "ROUTE-PLAN43-REFLECTION-MILESTONE-CONTINUE-NEXT",
+      "behavior": "Witness milestone Continue on reflection item 3 (1/2 + 1/5) with keyboard navigation in narrow 360x740 viewport, verify deliberate focus onto connected reflection control, submit matching reflection, advance via Next problem, and assert item 4 clean state.",
+      "configuration": "phase2-bundle-1",
+      "startingSurface": "mounted-app-entry",
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "motionMode": "reduced-motion",
+      "witness": "browser",
+      "inputMode": "keyboard",
+      "actions": [
+        {
+          "method": "completePlan43Branch",
+          "branch": "substantive-reflection",
+          "view": "visual",
+          "inputMode": "keyboard",
+          "description": "Execute reflection milestone continue branch"
+        }
+      ],
+      "expect": {
+        "capture": {
+          "target": ".app-episode",
+          "type": "innerHTML"
+        },
+        "assertions": [
+          {
+            "type": "hasSelector",
+            "target": ".app-episode"
+          },
+          {
+            "type": "hasSelector",
+            "target": ".app-visual-view .control-btn"
+          },
+          {
+            "type": "notHasSelector",
+            "target": "#operate-sum-input"
+          },
+          {
+            "type": "notHasSelector",
+            "target": ".active-beat-recovery"
           }
         ]
       }

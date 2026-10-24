@@ -1,20 +1,20 @@
 {
-  "capturedAt": "2026-10-24T12:43:34.629Z",
+  "capturedAt": "2026-10-24T19:33:20.404Z",
   "filter": "ROUTE-PLAN43",
-  "passed": 4,
+  "passed": 10,
   "failed": 0,
   "seedDetected": 0,
   "results": [
     {
-      "id": "ROUTE-PLAN43-ADDITION-DIRECT-NEXT [standard-motion]",
-      "routeId": "ROUTE-PLAN43-ADDITION-DIRECT-NEXT",
+      "id": "ROUTE-PLAN43-ADDITION-CONSTRUCT-NEXT [standard-motion]",
+      "routeId": "ROUTE-PLAN43-ADDITION-CONSTRUCT-NEXT",
       "context": "production-direct-plan43",
       "motionMode": "standard-motion",
       "status": "pass",
-      "duration": 467,
+      "duration": 601,
       "route": {
-        "id": "ROUTE-PLAN43-ADDITION-DIRECT-NEXT",
-        "behavior": "A learner completes the first compact addition problem in production and advances directly to the next item via the local Next problem button.",
+        "id": "ROUTE-PLAN43-ADDITION-CONSTRUCT-NEXT",
+        "behavior": "Complete addition construct recipe on item 1 (2/3 + 1/4), observe local Next problem in desktop 1366x768 viewport, advance directly to fresh item 2 (1/2 + 1/3) with deliberate focus, and assert clean state.",
         "configuration": "phase2-bundle-1",
         "startingSurface": "mounted-app-entry",
         "viewport": {
@@ -26,88 +26,129 @@
         "inputMode": "mouse",
         "actions": [
           {
-            "step": 1,
-            "method": "click",
-            "target": ".app-practice-button",
-            "description": "Start addition practice"
-          },
-          {
-            "step": 2,
-            "method": "click",
-            "target": ".app-visual-view .control-btn",
-            "description": "Acknowledge encounter"
-          },
-          {
-            "step": 3,
-            "method": "fill",
-            "target": "#transform-num-input-left",
-            "value": "8",
-            "description": "Transform left: enter numerator 8"
-          },
-          {
-            "step": 4,
-            "method": "click",
-            "target": ".app-visual-view .control-submit-btn",
-            "description": "Transform left: submit 8"
-          },
-          {
-            "step": 5,
-            "method": "fill",
-            "target": "#transform-num-input-right",
-            "value": "3",
-            "description": "Transform right: enter numerator 3"
-          },
-          {
-            "step": 6,
-            "method": "click",
-            "target": ".app-visual-view .control-submit-btn",
-            "description": "Transform right: submit 3"
-          },
-          {
-            "step": 7,
-            "method": "fill",
-            "target": "#operate-sum-input",
-            "value": "11",
-            "description": "Operate: enter sum 11"
-          },
-          {
-            "step": 8,
-            "method": "click",
-            "target": ".app-visual-view .control-submit-btn",
-            "description": "Operate: submit 11"
-          },
-          {
-            "step": 9,
-            "method": "assert",
-            "target": ".app-visual-view .active-beat-controls button",
-            "description": "Assert local Next problem button is present and header next button is hidden",
-            "assertions": [
+            "method": "completePlan43Branch",
+            "branch": "addition-construct",
+            "view": "visual",
+            "inputMode": "mouse",
+            "description": "Execute addition construct branch",
+            "generatedActions": [
               {
-                "type": "containsText",
-                "target": ".app-visual-view .active-beat-controls button",
-                "value": "Next problem"
+                "method": "click",
+                "target": "[data-practice-type=\"sum-under-one\"]",
+                "description": "Start addition practice"
               },
               {
-                "type": "hasSelector",
-                "target": ".app-next-button[hidden]"
-              }
-            ]
-          },
-          {
-            "step": 10,
-            "method": "click",
-            "target": ".app-visual-view .active-beat-controls button",
-            "description": "Click local Next problem button to advance"
-          },
-          {
-            "step": 11,
-            "method": "assert",
-            "target": ".app-episode",
-            "description": "Assert next problem (1/2 + 1/3) is installed fresh",
-            "assertions": [
+                "method": "click",
+                "target": ".app-visual-view .control-btn",
+                "description": "Item 1 encounter: acknowledge"
+              },
               {
-                "type": "hasSelector",
-                "target": ".app-episode"
+                "method": "fill",
+                "target": ".app-visual-view #transform-num-input-left",
+                "value": "8",
+                "description": "Transform left: 8/12"
+              },
+              {
+                "method": "click",
+                "target": ".app-visual-view .control-submit-btn",
+                "description": "Submit left conversion"
+              },
+              {
+                "method": "fill",
+                "target": ".app-visual-view #transform-num-input-right",
+                "value": "3",
+                "description": "Transform right: 3/12"
+              },
+              {
+                "method": "click",
+                "target": ".app-visual-view .control-submit-btn",
+                "description": "Submit right conversion"
+              },
+              {
+                "method": "fill",
+                "target": ".app-visual-view #operate-sum-input",
+                "value": "11",
+                "description": "Operate sum: 11/12"
+              },
+              {
+                "method": "click",
+                "target": ".app-visual-view .control-submit-btn",
+                "description": "Submit operation sum"
+              },
+              {
+                "method": "assert",
+                "target": ".app-visual-view .active-beat-controls button",
+                "description": "Assert local Next problem button present in resolve",
+                "assertions": [
+                  {
+                    "type": "containsText",
+                    "target": ".app-visual-view .active-beat-controls button",
+                    "value": "Next problem"
+                  },
+                  {
+                    "type": "hasSelector",
+                    "target": ".app-next-button[hidden]"
+                  }
+                ]
+              },
+              {
+                "method": "assertFocused",
+                "target": ".app-visual-view .active-beat-controls button",
+                "description": "Assert focus landed on local progression button"
+              },
+              {
+                "method": "screenshot",
+                "target": "",
+                "file": "reports/development/plan-43-shared-episode-completion-and-progression/evidence/screenshots/branch-01-addition-construct-before.png",
+                "caption": "Addition construct before Next",
+                "description": "Capture accepted construct item before advance",
+                "screenshotEvidence": {
+                  "file": "reports/development/plan-43-shared-episode-completion-and-progression/evidence/screenshots/branch-01-addition-construct-before.png",
+                  "caption": "Addition construct before Next",
+                  "viewport": {
+                    "width": 1366,
+                    "height": 768
+                  }
+                }
+              },
+              {
+                "method": "click",
+                "target": ".app-visual-view .active-beat-controls button",
+                "description": "Advance directly to item 2"
+              },
+              {
+                "method": "screenshot",
+                "target": "",
+                "file": "reports/development/plan-43-shared-episode-completion-and-progression/evidence/screenshots/branch-01-addition-construct-after.png",
+                "caption": "Addition construct after Next",
+                "description": "Capture fresh item 2 mounted",
+                "screenshotEvidence": {
+                  "file": "reports/development/plan-43-shared-episode-completion-and-progression/evidence/screenshots/branch-01-addition-construct-after.png",
+                  "caption": "Addition construct after Next",
+                  "viewport": {
+                    "width": 1366,
+                    "height": 768
+                  }
+                }
+              },
+              {
+                "method": "assert",
+                "target": ".app-visual-view",
+                "description": "Assert item 2 mounted fresh with clean state",
+                "assertions": [
+                  {
+                    "type": "hasSelector",
+                    "target": ".app-visual-view .control-btn"
+                  },
+                  {
+                    "type": "notHasSelector",
+                    "target": ".app-visual-view #transform-num-input-left"
+                  },
+                  {
+                    "type": "notHasSelector",
+                    "target": ".app-visual-view .active-beat-recovery"
+                  }
+                ]
               }
             ]
           }
@@ -121,95 +162,206 @@
             {
               "type": "hasSelector",
               "target": ".app-episode"
+            },
+            {
+              "type": "hasSelector",
+              "target": ".app-visual-view .control-btn"
+            },
+            {
+              "type": "notHasSelector",
+              "target": "#transform-num-input-left"
+            },
+            {
+              "type": "notHasSelector",
+              "target": ".active-beat-recovery"
             }
           ]
         }
       }
     },
     {
-      "id": "ROUTE-PLAN43-SUBTRACTION-DIRECT-NEXT [standard-motion]",
-      "routeId": "ROUTE-PLAN43-SUBTRACTION-DIRECT-NEXT",
+      "id": "ROUTE-PLAN43-ADDITION-INSPECT-NEXT [reduced-motion]",
+      "routeId": "ROUTE-PLAN43-ADDITION-INSPECT-NEXT",
       "context": "production-direct-plan43",
-      "motionMode": "standard-motion",
+      "motionMode": "reduced-motion",
       "status": "pass",
-      "duration": 353,
+      "duration": 630,
       "route": {
-        "id": "ROUTE-PLAN43-SUBTRACTION-DIRECT-NEXT",
-        "behavior": "A learner completes a like-denominator takeaway subtraction problem in production and advances directly via the local Next problem button.",
+        "id": "ROUTE-PLAN43-ADDITION-INSPECT-NEXT",
+        "behavior": "Complete addition inspect recipe on item 2 (1/2 + 1/3) in narrow 360x740 linear view with reduced motion, activate Next problem via keyboard Enter, advance to item 3 (1/2 + 1/5) with deliberate focus, and assert clean state.",
         "configuration": "phase2-bundle-1",
         "startingSurface": "mounted-app-entry",
         "viewport": {
-          "width": 1366,
-          "height": 768
+          "width": 360,
+          "height": 740
         },
-        "motionMode": "standard-motion",
+        "motionMode": "reduced-motion",
         "witness": "browser",
-        "inputMode": "mouse",
+        "inputMode": "keyboard",
         "actions": [
           {
-            "step": 1,
-            "method": "click",
-            "target": "[data-practice-type=\"like-denominator-subtraction\"]",
-            "description": "Start subtraction practice"
-          },
-          {
-            "step": 2,
-            "method": "click",
-            "target": ".app-visual-view .active-beat-controls button",
-            "description": "Acknowledge encounter"
-          },
-          {
-            "step": 3,
-            "method": "fill",
-            "target": "#operate-fraction-numerator-input",
-            "value": "3",
-            "description": "Enter remaining numerator"
-          },
-          {
-            "step": 4,
-            "method": "fill",
-            "target": "#operate-fraction-denominator-input",
-            "value": "8",
-            "description": "Enter remaining denominator"
-          },
-          {
-            "step": 5,
-            "method": "click",
-            "target": ".app-visual-view .control-submit-btn",
-            "description": "Submit difference"
-          },
-          {
-            "step": 6,
-            "method": "assert",
-            "target": ".app-visual-view .active-beat-controls button",
-            "description": "Assert local Next problem button is present and header next button is hidden",
-            "assertions": [
+            "method": "completePlan43Branch",
+            "branch": "addition-inspect",
+            "view": "linear",
+            "inputMode": "keyboard",
+            "description": "Execute addition inspect branch",
+            "generatedActions": [
               {
-                "type": "containsText",
-                "target": ".app-visual-view .active-beat-controls button",
-                "value": "Next problem"
+                "method": "click",
+                "target": "[data-practice-type=\"sum-under-one\"]",
+                "description": "Start addition practice"
               },
               {
-                "type": "hasSelector",
-                "target": ".app-next-button[hidden]"
-              }
-            ]
-          },
-          {
-            "step": 7,
-            "method": "click",
-            "target": ".app-visual-view .active-beat-controls button",
-            "description": "Advance directly to next subtraction problem"
-          },
-          {
-            "step": 8,
-            "method": "assert",
-            "target": ".app-episode",
-            "description": "Assert next subtraction item is installed fresh",
-            "assertions": [
+                "method": "click",
+                "target": ".app-view-controls .app-secondary-button",
+                "description": "Switch to accessible linear view"
+              },
               {
-                "type": "hasSelector",
-                "target": ".app-episode"
+                "method": "click",
+                "target": ".app-linear-view .control-btn",
+                "description": "Item 1 encounter"
+              },
+              {
+                "method": "fill",
+                "target": ".app-linear-view #linear-transform-num-input-left",
+                "value": "8",
+                "description": "Item 1 left"
+              },
+              {
+                "method": "click",
+                "target": ".app-linear-view .control-submit-btn",
+                "description": "Item 1 submit left"
+              },
+              {
+                "method": "fill",
+                "target": ".app-linear-view #linear-transform-num-input-right",
+                "value": "3",
+                "description": "Item 1 right"
+              },
+              {
+                "method": "click",
+                "target": ".app-linear-view .control-submit-btn",
+                "description": "Item 1 submit right"
+              },
+              {
+                "method": "fill",
+                "target": ".app-linear-view #linear-operate-sum-input",
+                "value": "11",
+                "description": "Item 1 sum"
+              },
+              {
+                "method": "click",
+                "target": ".app-linear-view .control-submit-btn",
+                "description": "Item 1 submit sum"
+              },
+              {
+                "method": "click",
+                "target": ".app-linear-view .active-beat-controls button",
+                "description": "Advance to item 2"
+              },
+              {
+                "method": "click",
+                "target": ".app-linear-view .control-btn",
+                "description": "Item 2 encounter"
+              },
+              {
+                "method": "click",
+                "target": ".app-linear-view .inspect-change-button",
+                "description": "Repair left candidate 5/12"
+              },
+              {
+                "method": "fill",
+                "target": ".app-linear-view #linear-transform-num-input-left",
+                "value": "6",
+                "description": "Enter corrected left 6/12"
+              },
+              {
+                "method": "click",
+                "target": ".app-linear-view .control-submit-btn",
+                "description": "Submit left repair"
+              },
+              {
+                "method": "click",
+                "target": ".app-linear-view button[aria-label^=\"Keep\"]",
+                "description": "Keep valid right candidate 4/12"
+              },
+              {
+                "method": "fill",
+                "target": ".app-linear-view #linear-operate-sum-input",
+                "value": "10",
+                "description": "Item 2 sum 10/12"
+              },
+              {
+                "method": "click",
+                "target": ".app-linear-view .control-submit-btn",
+                "description": "Item 2 submit sum"
+              },
+              {
+                "method": "assert",
+                "target": ".app-linear-view .active-beat-controls button",
+                "description": "Assert local Next problem button present in resolve",
+                "assertions": [
+                  {
+                    "type": "containsText",
+                    "target": ".app-linear-view .active-beat-controls button",
+                    "value": "Next problem"
+                  }
+                ]
+              },
+              {
+                "method": "screenshot",
+                "target": "",
+                "file": "reports/development/plan-43-shared-episode-completion-and-progression/evidence/screenshots/branch-02-addition-inspect-before.png",
+                "caption": "Addition inspect before Next",
+                "description": "Capture accepted inspect item before advance",
+                "screenshotEvidence": {
+                  "file": "reports/development/plan-43-shared-episode-completion-and-progression/evidence/screenshots/branch-02-addition-inspect-before.png",
+                  "caption": "Addition inspect before Next",
+                  "viewport": {
+                    "width": 360,
+                    "height": 740
+                  }
+                }
+              },
+              {
+                "method": "pressKey",
+                "target": ".app-linear-view .active-beat-controls button",
+                "value": "Enter",
+                "description": "Keyboard Enter to advance to item 3"
+              },
+              {
+                "method": "screenshot",
+                "target": "",
+                "file": "reports/development/plan-43-shared-episode-completion-and-progression/evidence/screenshots/branch-02-addition-inspect-after.png",
+                "caption": "Addition inspect after Next",
+                "description": "Capture fresh item 3 mounted",
+                "screenshotEvidence": {
+                  "file": "reports/development/plan-43-shared-episode-completion-and-progression/evidence/screenshots/branch-02-addition-inspect-after.png",
+                  "caption": "Addition inspect after Next",
+                  "viewport": {
+                    "width": 360,
+                    "height": 740
+                  }
+                }
+              },
+              {
+                "method": "assert",
+                "target": ".app-linear-view",
+                "description": "Assert item 3 mounted fresh with clean state",
+                "assertions": [
+                  {
+                    "type": "hasSelector",
+                    "target": ".app-linear-view .control-btn"
+                  },
+                  {
+                    "type": "notHasSelector",
+                    "target": ".app-linear-view #linear-operate-sum-input"
+                  },
+                  {
+                    "type": "notHasSelector",
+                    "target": ".app-linear-view .active-beat-recovery"
+                  }
+                ]
               }
             ]
           }
@@ -223,21 +375,486 @@
             {
               "type": "hasSelector",
               "target": ".app-episode"
+            },
+            {
+              "type": "hasSelector",
+              "target": ".app-linear-view .control-btn"
+            },
+            {
+              "type": "notHasSelector",
+              "target": "#linear-operate-sum-input"
+            },
+            {
+              "type": "notHasSelector",
+              "target": ".app-linear-view .active-beat-recovery"
             }
           ]
         }
       }
     },
     {
-      "id": "ROUTE-PLAN43-PLAN20-SINGLE-ITEM-RETURN [standard-motion]",
-      "routeId": "ROUTE-PLAN43-PLAN20-SINGLE-ITEM-RETURN",
+      "id": "ROUTE-PLAN43-ADDITION-IDENTIFY-NEXT [standard-motion]",
+      "routeId": "ROUTE-PLAN43-ADDITION-IDENTIFY-NEXT",
       "context": "production-direct-plan43",
       "motionMode": "standard-motion",
       "status": "pass",
-      "duration": 366,
+      "duration": 1377,
       "route": {
-        "id": "ROUTE-PLAN43-PLAN20-SINGLE-ITEM-RETURN",
-        "behavior": "A learner completes the single-item Plan 20 same-denominator addition set in production and returns to entry via local Back to start.",
+        "id": "ROUTE-PLAN43-ADDITION-IDENTIFY-NEXT",
+        "behavior": "Witness identify-side recipe on scaled Chromebook 1093x614 DPR 1.25, observe local Next problem upon acceptance, advance directly to fresh destination item, and assert clean state.",
+        "configuration": "phase2-bundle-1",
+        "startingSurface": "mounted-app-entry",
+        "viewport": {
+          "width": 1093,
+          "height": 614
+        },
+        "deviceScaleFactor": 1.25,
+        "motionMode": "standard-motion",
+        "witness": "browser",
+        "inputMode": "mouse",
+        "actions": [
+          {
+            "method": "completePlan43Branch",
+            "branch": "addition-identify",
+            "view": "visual",
+            "inputMode": "mouse",
+            "description": "Execute identify-side branch",
+            "generatedActions": [
+              {
+                "method": "click",
+                "target": "[data-practice-type=\"unlike-denominator-subtraction\"]",
+                "description": "Start unlike subtraction practice"
+              },
+              {
+                "method": "click",
+                "target": ".app-visual-view .control-btn",
+                "description": "Item 1 encounter"
+              },
+              {
+                "method": "fill",
+                "target": ".app-visual-view #transform-num-input-left",
+                "value": "5",
+                "description": "Item 1 left"
+              },
+              {
+                "method": "click",
+                "target": ".app-visual-view .control-submit-btn",
+                "description": "Item 1 submit left"
+              },
+              {
+                "method": "fill",
+                "target": ".app-visual-view #transform-num-input-right",
+                "value": "2",
+                "description": "Item 1 right"
+              },
+              {
+                "method": "click",
+                "target": ".app-visual-view .control-submit-btn",
+                "description": "Item 1 submit right"
+              },
+              {
+                "method": "fill",
+                "target": ".app-visual-view #operate-fraction-numerator-input",
+                "value": "3",
+                "description": "Item 1 diff num"
+              },
+              {
+                "method": "fill",
+                "target": ".app-visual-view #operate-fraction-denominator-input",
+                "value": "10",
+                "description": "Item 1 diff den"
+              },
+              {
+                "method": "click",
+                "target": ".app-visual-view .control-submit-btn",
+                "description": "Item 1 submit diff"
+              },
+              {
+                "method": "click",
+                "target": ".app-visual-view .active-beat-controls button",
+                "description": "Advance to item 2"
+              },
+              {
+                "method": "click",
+                "target": ".app-visual-view .control-btn",
+                "description": "Item 2 encounter"
+              },
+              {
+                "method": "fill",
+                "target": ".app-visual-view #transform-num-input-left",
+                "value": "15",
+                "description": "Item 2 left"
+              },
+              {
+                "method": "click",
+                "target": ".app-visual-view .control-submit-btn",
+                "description": "Item 2 submit left"
+              },
+              {
+                "method": "fill",
+                "target": ".app-visual-view #transform-num-input-right",
+                "value": "8",
+                "description": "Item 2 right"
+              },
+              {
+                "method": "click",
+                "target": ".app-visual-view .control-submit-btn",
+                "description": "Item 2 submit right"
+              },
+              {
+                "method": "fill",
+                "target": ".app-visual-view #operate-fraction-numerator-input",
+                "value": "7",
+                "description": "Item 2 diff num"
+              },
+              {
+                "method": "fill",
+                "target": ".app-visual-view #operate-fraction-denominator-input",
+                "value": "20",
+                "description": "Item 2 diff den"
+              },
+              {
+                "method": "click",
+                "target": ".app-visual-view .control-submit-btn",
+                "description": "Item 2 submit diff"
+              },
+              {
+                "method": "click",
+                "target": ".app-visual-view .active-beat-controls button",
+                "description": "Advance to item 3"
+              },
+              {
+                "method": "click",
+                "target": ".app-visual-view .control-btn",
+                "description": "Item 3 encounter"
+              },
+              {
+                "method": "fill",
+                "target": ".app-visual-view #transform-num-input-left",
+                "value": "20",
+                "description": "Item 3 left"
+              },
+              {
+                "method": "click",
+                "target": ".app-visual-view .control-submit-btn",
+                "description": "Item 3 submit left"
+              },
+              {
+                "method": "fill",
+                "target": ".app-visual-view #transform-num-input-right",
+                "value": "9",
+                "description": "Item 3 right"
+              },
+              {
+                "method": "click",
+                "target": ".app-visual-view .control-submit-btn",
+                "description": "Item 3 submit right"
+              },
+              {
+                "method": "fill",
+                "target": ".app-visual-view #operate-fraction-numerator-input",
+                "value": "11",
+                "description": "Item 3 diff num"
+              },
+              {
+                "method": "fill",
+                "target": ".app-visual-view #operate-fraction-denominator-input",
+                "value": "24",
+                "description": "Item 3 diff den"
+              },
+              {
+                "method": "click",
+                "target": ".app-visual-view .control-submit-btn",
+                "description": "Item 3 submit diff"
+              },
+              {
+                "method": "click",
+                "target": ".app-visual-view .active-beat-controls button",
+                "description": "Advance to item 4"
+              },
+              {
+                "method": "click",
+                "target": ".app-visual-view .control-btn",
+                "description": "Item 4 encounter"
+              },
+              {
+                "method": "click",
+                "target": ".app-visual-view .inspect-change-button",
+                "description": "Item 4 repair left candidate"
+              },
+              {
+                "method": "fill",
+                "target": ".app-visual-view #transform-num-input-left",
+                "value": "8",
+                "description": "Enter corrected left 8/12"
+              },
+              {
+                "method": "click",
+                "target": ".app-visual-view .control-submit-btn",
+                "description": "Submit left repair"
+              },
+              {
+                "method": "click",
+                "target": ".app-visual-view button[aria-label^=\"Keep\"]",
+                "description": "Item 4 keep right candidate"
+              },
+              {
+                "method": "fill",
+                "target": ".app-visual-view #operate-fraction-numerator-input",
+                "value": "5",
+                "description": "Item 4 diff num"
+              },
+              {
+                "method": "fill",
+                "target": ".app-visual-view #operate-fraction-denominator-input",
+                "value": "12",
+                "description": "Item 4 diff den"
+              },
+              {
+                "method": "click",
+                "target": ".app-visual-view .control-submit-btn",
+                "description": "Item 4 submit diff"
+              },
+              {
+                "method": "click",
+                "target": ".app-visual-view .active-beat-controls button",
+                "description": "Advance to item 5"
+              },
+              {
+                "method": "click",
+                "target": ".app-visual-view .control-btn",
+                "description": "Item 5 encounter"
+              },
+              {
+                "method": "click",
+                "target": ".app-visual-view button[aria-label^=\"Keep\"]",
+                "description": "Item 5 keep left candidate"
+              },
+              {
+                "method": "click",
+                "target": ".app-visual-view .inspect-change-button",
+                "description": "Item 5 repair right candidate"
+              },
+              {
+                "method": "fill",
+                "target": ".app-visual-view #transform-num-input-right",
+                "value": "5",
+                "description": "Enter corrected right 5/20"
+              },
+              {
+                "method": "click",
+                "target": ".app-visual-view .control-submit-btn",
+                "description": "Submit right repair"
+              },
+              {
+                "method": "fill",
+                "target": ".app-visual-view #operate-fraction-numerator-input",
+                "value": "9",
+                "description": "Item 5 diff num"
+              },
+              {
+                "method": "fill",
+                "target": ".app-visual-view #operate-fraction-denominator-input",
+                "value": "20",
+                "description": "Item 5 diff den"
+              },
+              {
+                "method": "click",
+                "target": ".app-visual-view .control-submit-btn",
+                "description": "Item 5 submit diff"
+              },
+              {
+                "method": "click",
+                "target": ".app-visual-view .active-beat-controls button",
+                "description": "Advance to item 6"
+              },
+              {
+                "method": "click",
+                "target": ".app-visual-view .control-btn",
+                "description": "Item 6 encounter"
+              },
+              {
+                "method": "click",
+                "target": ".app-visual-view .inspect-change-button",
+                "description": "Item 6 repair left candidate"
+              },
+              {
+                "method": "fill",
+                "target": ".app-visual-view #transform-num-input-left",
+                "value": "25",
+                "description": "Enter corrected left 25/30"
+              },
+              {
+                "method": "click",
+                "target": ".app-visual-view .control-submit-btn",
+                "description": "Submit left repair"
+              },
+              {
+                "method": "click",
+                "target": ".app-visual-view button[aria-label^=\"Keep\"]",
+                "description": "Item 6 keep right candidate"
+              },
+              {
+                "method": "fill",
+                "target": ".app-visual-view #operate-fraction-numerator-input",
+                "value": "4",
+                "description": "Item 6 diff num"
+              },
+              {
+                "method": "fill",
+                "target": ".app-visual-view #operate-fraction-denominator-input",
+                "value": "30",
+                "description": "Item 6 diff den"
+              },
+              {
+                "method": "click",
+                "target": ".app-visual-view .control-submit-btn",
+                "description": "Item 6 submit diff"
+              },
+              {
+                "method": "click",
+                "target": ".app-visual-view .active-beat-controls button",
+                "description": "Advance to item 7"
+              },
+              {
+                "method": "click",
+                "target": ".app-visual-view .control-btn",
+                "description": "Item 7 encounter"
+              },
+              {
+                "method": "click",
+                "target": ".app-visual-view .nested-side-choice >> nth=1",
+                "description": "Select right side 1/3 for renaming"
+              },
+              {
+                "method": "fill",
+                "target": ".app-visual-view #transform-num-input-right",
+                "value": "2",
+                "description": "Transform right to 2/6"
+              },
+              {
+                "method": "click",
+                "target": ".app-visual-view .control-submit-btn",
+                "description": "Submit right conversion"
+              },
+              {
+                "method": "fill",
+                "target": ".app-visual-view #operate-fraction-numerator-input",
+                "value": "3",
+                "description": "Operate diff num 3/6"
+              },
+              {
+                "method": "fill",
+                "target": ".app-visual-view #operate-fraction-denominator-input",
+                "value": "6",
+                "description": "Operate diff den 6"
+              },
+              {
+                "method": "click",
+                "target": ".app-visual-view .control-submit-btn",
+                "description": "Submit operation diff"
+              },
+              {
+                "method": "assert",
+                "target": ".app-visual-view .active-beat-controls button",
+                "description": "Assert local Next problem button present in resolve",
+                "assertions": [
+                  {
+                    "type": "containsText",
+                    "target": ".app-visual-view .active-beat-controls button",
+                    "value": "Next problem"
+                  }
+                ]
+              },
+              {
+                "method": "screenshot",
+                "target": "",
+                "file": "reports/development/plan-43-shared-episode-completion-and-progression/evidence/screenshots/branch-03-addition-identify-before.png",
+                "caption": "Identify side before Next",
+                "description": "Capture accepted identify-side item before advance",
+                "screenshotEvidence": {
+                  "file": "reports/development/plan-43-shared-episode-completion-and-progression/evidence/screenshots/branch-03-addition-identify-before.png",
+                  "caption": "Identify side before Next",
+                  "viewport": {
+                    "width": 1093,
+                    "height": 614
+                  }
+                }
+              },
+              {
+                "method": "click",
+                "target": ".app-visual-view .active-beat-controls button",
+                "description": "Advance directly to item 8"
+              },
+              {
+                "method": "screenshot",
+                "target": "",
+                "file": "reports/development/plan-43-shared-episode-completion-and-progression/evidence/screenshots/branch-03-addition-identify-after.png",
+                "caption": "Identify side after Next",
+                "description": "Capture fresh item 8 mounted",
+                "screenshotEvidence": {
+                  "file": "reports/development/plan-43-shared-episode-completion-and-progression/evidence/screenshots/branch-03-addition-identify-after.png",
+                  "caption": "Identify side after Next",
+                  "viewport": {
+                    "width": 1093,
+                    "height": 614
+                  }
+                }
+              },
+              {
+                "method": "assert",
+                "target": ".app-visual-view",
+                "description": "Assert item 8 mounted fresh with clean state",
+                "assertions": [
+                  {
+                    "type": "hasSelector",
+                    "target": ".app-visual-view .control-btn"
+                  },
+                  {
+                    "type": "notHasSelector",
+                    "target": ".app-visual-view #transform-num-input-right"
+                  },
+                  {
+                    "type": "notHasSelector",
+                    "target": ".app-visual-view .active-beat-recovery"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "expect": {
+          "capture": {
+            "target": ".app-episode",
+            "type": "innerHTML"
+          },
+          "assertions": [
+            {
+              "type": "hasSelector",
+              "target": ".app-episode"
+            },
+            {
+              "type": "hasSelector",
+              "target": ".app-visual-view .control-btn"
+            },
+            {
+              "type": "notHasSelector",
+              "target": ".active-beat-recovery"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "ROUTE-PLAN43-PLAN20-SAME-DENOM-RETURN [standard-motion]",
+      "routeId": "ROUTE-PLAN43-PLAN20-SAME-DENOM-RETURN",
+      "context": "production-direct-plan43",
+      "motionMode": "standard-motion",
+      "status": "pass",
+      "duration": 472,
+      "route": {
+        "id": "ROUTE-PLAN43-PLAN20-SAME-DENOM-RETURN",
+        "behavior": "Complete single-item Plan 20 same-denominator addition set (2/7 + 3/7 = 5/7) with keyboard input in desktop 1366x768, observe exhaustion notice and local Back to start, activate return, and assert return to entry with focused title.",
         "configuration": "phase2-bundle-1",
         "startingSurface": "mounted-app-entry",
         "viewport": {
@@ -246,79 +863,113 @@
         },
         "motionMode": "standard-motion",
         "witness": "browser",
-        "inputMode": "mouse",
+        "inputMode": "keyboard",
         "actions": [
           {
-            "step": 1,
-            "method": "click",
-            "target": "[data-practice-type=\"like-denominator-addition\"]",
-            "description": "Start same-denominator addition practice"
-          },
-          {
-            "step": 2,
-            "method": "click",
-            "target": ".app-visual-view .control-btn",
-            "description": "Acknowledge encounter"
-          },
-          {
-            "step": 3,
-            "method": "click",
-            "target": ".app-visual-view .control-choice-btn >> nth=0",
-            "description": "Notice: choose same sized parts"
-          },
-          {
-            "step": 4,
-            "method": "fill",
-            "target": "#operate-fraction-numerator-input",
-            "value": "5",
-            "description": "Enter sum numerator"
-          },
-          {
-            "step": 5,
-            "method": "fill",
-            "target": "#operate-fraction-denominator-input",
-            "value": "7",
-            "description": "Enter sum denominator"
-          },
-          {
-            "step": 6,
-            "method": "click",
-            "target": ".app-visual-view .control-submit-btn",
-            "description": "Submit sum"
-          },
-          {
-            "step": 7,
-            "method": "assert",
-            "target": ".app-visual-view .active-beat-controls",
-            "description": "Assert local Back to start button and exhaustion notice are present",
-            "assertions": [
+            "method": "completePlan43Branch",
+            "branch": "plan20-same-denom-return",
+            "view": "visual",
+            "inputMode": "keyboard",
+            "description": "Execute Plan 20 return branch",
+            "generatedActions": [
               {
-                "type": "containsText",
-                "target": ".app-visual-view .active-beat-controls",
-                "value": "Back to start"
+                "method": "click",
+                "target": "[data-practice-type=\"like-denominator-addition\"]",
+                "description": "Start same-denominator addition practice"
               },
               {
-                "type": "containsText",
-                "target": ".app-visual-view .active-beat-controls",
-                "value": "You’ve tried every problem in this set."
-              }
-            ]
-          },
-          {
-            "step": 8,
-            "method": "click",
-            "target": ".app-visual-view .active-beat-controls button",
-            "description": "Click local Back to start"
-          },
-          {
-            "step": 9,
-            "method": "assert",
-            "target": ".app-entry-page",
-            "description": "Assert returned to entry page",
-            "assertions": [
+                "method": "click",
+                "target": ".app-visual-view .control-btn",
+                "description": "Item 1 encounter"
+              },
               {
-                "type": "hasSelector",
-                "target": ".app-entry-page:not([hidden])"
+                "method": "click",
+                "target": ".app-visual-view .control-choice-btn >> nth=0",
+                "description": "Notice: same units"
+              },
+              {
+                "method": "fill",
+                "target": ".app-visual-view #operate-fraction-numerator-input",
+                "value": "5",
+                "description": "Enter numerator 5"
+              },
+              {
+                "method": "fill",
+                "target": ".app-visual-view #operate-fraction-denominator-input",
+                "value": "7",
+                "description": "Enter denominator 7"
+              },
+              {
+                "method": "click",
+                "target": ".app-visual-view .control-submit-btn",
+                "description": "Submit sum 5/7"
+              },
+              {
+                "method": "assert",
+                "target": ".app-visual-view .active-beat-controls",
+                "description": "Assert terminal Back to start and exhaustion notice",
+                "assertions": [
+                  {
+                    "type": "containsText",
+                    "target": ".app-visual-view .active-beat-controls button",
+                    "value": "Back to start"
+                  },
+                  {
+                    "type": "containsText",
+                    "target": ".app-visual-view .progression-notice",
+                    "value": "You’ve tried every problem in this set."
+                  }
+                ]
+              },
+              {
+                "method": "screenshot",
+                "target": "",
+                "file": "reports/development/plan-43-shared-episode-completion-and-progression/evidence/screenshots/branch-04-plan20-same-denom-before.png",
+                "caption": "Plan 20 before return",
+                "description": "Capture single-item completion before return",
+                "screenshotEvidence": {
+                  "file": "reports/development/plan-43-shared-episode-completion-and-progression/evidence/screenshots/branch-04-plan20-same-denom-before.png",
+                  "caption": "Plan 20 before return",
+                  "viewport": {
+                    "width": 1366,
+                    "height": 768
+                  }
+                }
+              },
+              {
+                "method": "click",
+                "target": ".app-visual-view .active-beat-controls button",
+                "description": "Click Back to start"
+              },
+              {
+                "method": "screenshot",
+                "target": "",
+                "file": "reports/development/plan-43-shared-episode-completion-and-progression/evidence/screenshots/branch-04-plan20-same-denom-after.png",
+                "caption": "Plan 20 after return",
+                "description": "Capture entry page after return",
+                "screenshotEvidence": {
+                  "file": "reports/development/plan-43-shared-episode-completion-and-progression/evidence/screenshots/branch-04-plan20-same-denom-after.png",
+                  "caption": "Plan 20 after return",
+                  "viewport": {
+                    "width": 1366,
+                    "height": 768
+                  }
+                }
+              },
+              {
+                "method": "assert",
+                "target": ".app-entry-page",
+                "description": "Assert entry page visible after return",
+                "assertions": [
+                  {
+                    "type": "notHasSelector",
+                    "target": ".app-entry-page[hidden]"
+                  },
+                  {
+                    "type": "hasSelector",
+                    "target": ".app-episode[hidden]"
+                  }
+                ]
               }
             ]
           }
@@ -330,8 +981,1117 @@
           },
           "assertions": [
             {
+              "type": "notHasSelector",
+              "target": ".app-entry-page[hidden]"
+            },
+            {
               "type": "hasSelector",
-              "target": ".app-entry-page"
+              "target": ".app-episode[hidden]"
+            },
+            {
+              "type": "containsText",
+              "target": "#fractionflow-title",
+              "value": "FractionFlow"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "ROUTE-PLAN43-SUBTRACTION-TAKEAWAY-NEXT [standard-motion]",
+      "routeId": "ROUTE-PLAN43-SUBTRACTION-TAKEAWAY-NEXT",
+      "context": "production-direct-plan43",
+      "motionMode": "standard-motion",
+      "status": "pass",
+      "duration": 458,
+      "route": {
+        "id": "ROUTE-PLAN43-SUBTRACTION-TAKEAWAY-NEXT",
+        "behavior": "Complete like-denominator takeaway subtraction (5/8 - 2/8 = 3/8) using browser touch in narrow 360x740 viewport, advance directly via local Next problem button, and assert item 2 mounted fresh with clean state.",
+        "configuration": "phase2-bundle-1",
+        "startingSurface": "mounted-app-entry",
+        "viewport": {
+          "width": 360,
+          "height": 740
+        },
+        "motionMode": "standard-motion",
+        "witness": "browser",
+        "inputMode": "touch",
+        "actions": [
+          {
+            "method": "completePlan43Branch",
+            "branch": "subtraction-takeaway",
+            "view": "visual",
+            "inputMode": "touch",
+            "description": "Execute like-subtraction takeaway branch",
+            "generatedActions": [
+              {
+                "method": "tap",
+                "target": "[data-practice-type=\"like-denominator-subtraction\"]",
+                "description": "Start like-denominator subtraction practice"
+              },
+              {
+                "method": "tap",
+                "target": ".app-visual-view .active-beat-controls button",
+                "description": "Item 1 encounter: Take away"
+              },
+              {
+                "method": "fill",
+                "target": ".app-visual-view #operate-fraction-numerator-input",
+                "value": "3",
+                "description": "Enter numerator 3"
+              },
+              {
+                "method": "fill",
+                "target": ".app-visual-view #operate-fraction-denominator-input",
+                "value": "8",
+                "description": "Enter denominator 8"
+              },
+              {
+                "method": "tap",
+                "target": ".app-visual-view .control-submit-btn",
+                "description": "Submit difference 3/8"
+              },
+              {
+                "method": "assert",
+                "target": ".app-visual-view .active-beat-controls button",
+                "description": "Assert local Next problem button present in resolve",
+                "assertions": [
+                  {
+                    "type": "containsText",
+                    "target": ".app-visual-view .active-beat-controls button",
+                    "value": "Next problem"
+                  }
+                ]
+              },
+              {
+                "method": "screenshot",
+                "target": "",
+                "file": "reports/development/plan-43-shared-episode-completion-and-progression/evidence/screenshots/branch-05-subtraction-takeaway-before.png",
+                "caption": "Subtraction takeaway before Next",
+                "description": "Capture like-denominator takeaway before advance",
+                "screenshotEvidence": {
+                  "file": "reports/development/plan-43-shared-episode-completion-and-progression/evidence/screenshots/branch-05-subtraction-takeaway-before.png",
+                  "caption": "Subtraction takeaway before Next",
+                  "viewport": {
+                    "width": 360,
+                    "height": 740
+                  }
+                }
+              },
+              {
+                "method": "tap",
+                "target": ".app-visual-view .active-beat-controls button",
+                "description": "Advance to item 2"
+              },
+              {
+                "method": "screenshot",
+                "target": "",
+                "file": "reports/development/plan-43-shared-episode-completion-and-progression/evidence/screenshots/branch-05-subtraction-takeaway-after.png",
+                "caption": "Subtraction takeaway after Next",
+                "description": "Capture fresh item 2 mounted",
+                "screenshotEvidence": {
+                  "file": "reports/development/plan-43-shared-episode-completion-and-progression/evidence/screenshots/branch-05-subtraction-takeaway-after.png",
+                  "caption": "Subtraction takeaway after Next",
+                  "viewport": {
+                    "width": 360,
+                    "height": 740
+                  }
+                }
+              },
+              {
+                "method": "assert",
+                "target": ".app-visual-view",
+                "description": "Assert item 2 mounted fresh with clean state",
+                "assertions": [
+                  {
+                    "type": "hasSelector",
+                    "target": ".app-visual-view .active-beat-controls button"
+                  },
+                  {
+                    "type": "notHasSelector",
+                    "target": ".app-visual-view #operate-fraction-numerator-input"
+                  },
+                  {
+                    "type": "notHasSelector",
+                    "target": ".app-visual-view .active-beat-recovery"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "expect": {
+          "capture": {
+            "target": ".app-episode",
+            "type": "innerHTML"
+          },
+          "assertions": [
+            {
+              "type": "hasSelector",
+              "target": ".app-episode"
+            },
+            {
+              "type": "hasSelector",
+              "target": ".app-visual-view .active-beat-controls button"
+            },
+            {
+              "type": "notHasSelector",
+              "target": "#operate-fraction-numerator-input"
+            },
+            {
+              "type": "notHasSelector",
+              "target": ".active-beat-recovery"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "ROUTE-PLAN43-UNLIKE-SUBTRACTION-CONSTRUCT-NEXT [standard-motion]",
+      "routeId": "ROUTE-PLAN43-UNLIKE-SUBTRACTION-CONSTRUCT-NEXT",
+      "context": "production-direct-plan43",
+      "motionMode": "standard-motion",
+      "status": "pass",
+      "duration": 512,
+      "route": {
+        "id": "ROUTE-PLAN43-UNLIKE-SUBTRACTION-CONSTRUCT-NEXT",
+        "behavior": "Complete unlike-denominator subtraction construct recipe on item 1 (1/2 - 1/5 = 3/10) in desktop 1366x768 viewport, advance directly via local Next problem button, and assert item 2 mounted fresh with clean state.",
+        "configuration": "phase2-bundle-1",
+        "startingSurface": "mounted-app-entry",
+        "viewport": {
+          "width": 1366,
+          "height": 768
+        },
+        "motionMode": "standard-motion",
+        "witness": "browser",
+        "inputMode": "mouse",
+        "actions": [
+          {
+            "method": "completePlan43Branch",
+            "branch": "unlike-subtraction-construct",
+            "view": "visual",
+            "inputMode": "mouse",
+            "description": "Execute unlike subtraction construct branch",
+            "generatedActions": [
+              {
+                "method": "click",
+                "target": "[data-practice-type=\"unlike-denominator-subtraction\"]",
+                "description": "Start unlike subtraction practice"
+              },
+              {
+                "method": "click",
+                "target": ".app-visual-view .control-btn",
+                "description": "Item 1 encounter"
+              },
+              {
+                "method": "fill",
+                "target": ".app-visual-view #transform-num-input-left",
+                "value": "5",
+                "description": "Transform left: 5/10"
+              },
+              {
+                "method": "click",
+                "target": ".app-visual-view .control-submit-btn",
+                "description": "Submit left conversion"
+              },
+              {
+                "method": "fill",
+                "target": ".app-visual-view #transform-num-input-right",
+                "value": "2",
+                "description": "Transform right: 2/10"
+              },
+              {
+                "method": "click",
+                "target": ".app-visual-view .control-submit-btn",
+                "description": "Submit right conversion"
+              },
+              {
+                "method": "fill",
+                "target": ".app-visual-view #operate-fraction-numerator-input",
+                "value": "3",
+                "description": "Operate diff num: 3/10"
+              },
+              {
+                "method": "fill",
+                "target": ".app-visual-view #operate-fraction-denominator-input",
+                "value": "10",
+                "description": "Operate diff den: 10"
+              },
+              {
+                "method": "click",
+                "target": ".app-visual-view .control-submit-btn",
+                "description": "Submit difference"
+              },
+              {
+                "method": "assert",
+                "target": ".app-visual-view .active-beat-controls button",
+                "description": "Assert local Next problem button present in resolve",
+                "assertions": [
+                  {
+                    "type": "containsText",
+                    "target": ".app-visual-view .active-beat-controls button",
+                    "value": "Next problem"
+                  }
+                ]
+              },
+              {
+                "method": "screenshot",
+                "target": "",
+                "file": "reports/development/plan-43-shared-episode-completion-and-progression/evidence/screenshots/branch-06-unlike-subtraction-construct-before.png",
+                "caption": "Unlike subtraction construct before Next",
+                "description": "Capture unlike subtraction construct before advance",
+                "screenshotEvidence": {
+                  "file": "reports/development/plan-43-shared-episode-completion-and-progression/evidence/screenshots/branch-06-unlike-subtraction-construct-before.png",
+                  "caption": "Unlike subtraction construct before Next",
+                  "viewport": {
+                    "width": 1366,
+                    "height": 768
+                  }
+                }
+              },
+              {
+                "method": "click",
+                "target": ".app-visual-view .active-beat-controls button",
+                "description": "Advance to item 2"
+              },
+              {
+                "method": "screenshot",
+                "target": "",
+                "file": "reports/development/plan-43-shared-episode-completion-and-progression/evidence/screenshots/branch-06-unlike-subtraction-construct-after.png",
+                "caption": "Unlike subtraction construct after Next",
+                "description": "Capture fresh item 2 mounted",
+                "screenshotEvidence": {
+                  "file": "reports/development/plan-43-shared-episode-completion-and-progression/evidence/screenshots/branch-06-unlike-subtraction-construct-after.png",
+                  "caption": "Unlike subtraction construct after Next",
+                  "viewport": {
+                    "width": 1366,
+                    "height": 768
+                  }
+                }
+              },
+              {
+                "method": "assert",
+                "target": ".app-visual-view",
+                "description": "Assert item 2 mounted fresh with clean state",
+                "assertions": [
+                  {
+                    "type": "hasSelector",
+                    "target": ".app-visual-view .control-btn"
+                  },
+                  {
+                    "type": "notHasSelector",
+                    "target": ".app-visual-view #transform-num-input-left"
+                  },
+                  {
+                    "type": "notHasSelector",
+                    "target": ".app-visual-view .active-beat-recovery"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "expect": {
+          "capture": {
+            "target": ".app-episode",
+            "type": "innerHTML"
+          },
+          "assertions": [
+            {
+              "type": "hasSelector",
+              "target": ".app-episode"
+            },
+            {
+              "type": "hasSelector",
+              "target": ".app-visual-view .control-btn"
+            },
+            {
+              "type": "notHasSelector",
+              "target": "#transform-num-input-left"
+            },
+            {
+              "type": "notHasSelector",
+              "target": ".active-beat-recovery"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "ROUTE-PLAN43-UNLIKE-SUBTRACTION-INSPECT-NEXT [reduced-motion]",
+      "routeId": "ROUTE-PLAN43-UNLIKE-SUBTRACTION-INSPECT-NEXT",
+      "context": "production-direct-plan43",
+      "motionMode": "reduced-motion",
+      "status": "pass",
+      "duration": 947,
+      "route": {
+        "id": "ROUTE-PLAN43-UNLIKE-SUBTRACTION-INSPECT-NEXT",
+        "behavior": "Complete unlike-denominator subtraction inspect recipe on item 4 in linear view with keyboard navigation and reduced motion, advance directly via local Next problem button, and assert fresh state on item 5.",
+        "configuration": "phase2-bundle-1",
+        "startingSurface": "mounted-app-entry",
+        "viewport": {
+          "width": 1366,
+          "height": 768
+        },
+        "motionMode": "reduced-motion",
+        "witness": "browser",
+        "inputMode": "keyboard",
+        "actions": [
+          {
+            "method": "completePlan43Branch",
+            "branch": "unlike-subtraction-inspect",
+            "view": "linear",
+            "inputMode": "keyboard",
+            "description": "Execute unlike subtraction inspect branch",
+            "generatedActions": [
+              {
+                "method": "click",
+                "target": "[data-practice-type=\"unlike-denominator-subtraction\"]",
+                "description": "Start unlike subtraction practice"
+              },
+              {
+                "method": "click",
+                "target": ".app-view-controls .app-secondary-button",
+                "description": "Switch to accessible linear view"
+              },
+              {
+                "method": "click",
+                "target": ".app-linear-view .control-btn",
+                "description": "Item 1 encounter"
+              },
+              {
+                "method": "fill",
+                "target": ".app-linear-view #linear-transform-num-input-left",
+                "value": "5",
+                "description": "Item 1 left"
+              },
+              {
+                "method": "click",
+                "target": ".app-linear-view .control-submit-btn",
+                "description": "Item 1 submit left"
+              },
+              {
+                "method": "fill",
+                "target": ".app-linear-view #linear-transform-num-input-right",
+                "value": "2",
+                "description": "Item 1 right"
+              },
+              {
+                "method": "click",
+                "target": ".app-linear-view .control-submit-btn",
+                "description": "Item 1 submit right"
+              },
+              {
+                "method": "fill",
+                "target": ".app-linear-view #linear-operate-fraction-numerator-input",
+                "value": "3",
+                "description": "Item 1 diff num"
+              },
+              {
+                "method": "fill",
+                "target": ".app-linear-view #linear-operate-fraction-denominator-input",
+                "value": "10",
+                "description": "Item 1 diff den"
+              },
+              {
+                "method": "click",
+                "target": ".app-linear-view .control-submit-btn",
+                "description": "Item 1 submit diff"
+              },
+              {
+                "method": "click",
+                "target": ".app-linear-view .active-beat-controls button",
+                "description": "Advance to item 2"
+              },
+              {
+                "method": "click",
+                "target": ".app-linear-view .control-btn",
+                "description": "Item 2 encounter"
+              },
+              {
+                "method": "fill",
+                "target": ".app-linear-view #linear-transform-num-input-left",
+                "value": "15",
+                "description": "Item 2 left"
+              },
+              {
+                "method": "click",
+                "target": ".app-linear-view .control-submit-btn",
+                "description": "Item 2 submit left"
+              },
+              {
+                "method": "fill",
+                "target": ".app-linear-view #linear-transform-num-input-right",
+                "value": "8",
+                "description": "Item 2 right"
+              },
+              {
+                "method": "click",
+                "target": ".app-linear-view .control-submit-btn",
+                "description": "Item 2 submit right"
+              },
+              {
+                "method": "fill",
+                "target": ".app-linear-view #linear-operate-fraction-numerator-input",
+                "value": "7",
+                "description": "Item 2 diff num"
+              },
+              {
+                "method": "fill",
+                "target": ".app-linear-view #linear-operate-fraction-denominator-input",
+                "value": "20",
+                "description": "Item 2 diff den"
+              },
+              {
+                "method": "click",
+                "target": ".app-linear-view .control-submit-btn",
+                "description": "Item 2 submit diff"
+              },
+              {
+                "method": "click",
+                "target": ".app-linear-view .active-beat-controls button",
+                "description": "Advance to item 3"
+              },
+              {
+                "method": "click",
+                "target": ".app-linear-view .control-btn",
+                "description": "Item 3 encounter"
+              },
+              {
+                "method": "fill",
+                "target": ".app-linear-view #linear-transform-num-input-left",
+                "value": "20",
+                "description": "Item 3 left"
+              },
+              {
+                "method": "click",
+                "target": ".app-linear-view .control-submit-btn",
+                "description": "Item 3 submit left"
+              },
+              {
+                "method": "fill",
+                "target": ".app-linear-view #linear-transform-num-input-right",
+                "value": "9",
+                "description": "Item 3 right"
+              },
+              {
+                "method": "click",
+                "target": ".app-linear-view .control-submit-btn",
+                "description": "Item 3 submit right"
+              },
+              {
+                "method": "fill",
+                "target": ".app-linear-view #linear-operate-fraction-numerator-input",
+                "value": "11",
+                "description": "Item 3 diff num"
+              },
+              {
+                "method": "fill",
+                "target": ".app-linear-view #linear-operate-fraction-denominator-input",
+                "value": "24",
+                "description": "Item 3 diff den"
+              },
+              {
+                "method": "click",
+                "target": ".app-linear-view .control-submit-btn",
+                "description": "Item 3 submit diff"
+              },
+              {
+                "method": "click",
+                "target": ".app-linear-view .active-beat-controls button",
+                "description": "Advance to item 4"
+              },
+              {
+                "method": "click",
+                "target": ".app-linear-view .control-btn",
+                "description": "Item 4 encounter"
+              },
+              {
+                "method": "click",
+                "target": ".app-linear-view .inspect-change-button",
+                "description": "Item 4 repair left candidate"
+              },
+              {
+                "method": "fill",
+                "target": ".app-linear-view #linear-transform-num-input-left",
+                "value": "8",
+                "description": "Enter corrected left 8/12"
+              },
+              {
+                "method": "click",
+                "target": ".app-linear-view .control-submit-btn",
+                "description": "Submit left repair"
+              },
+              {
+                "method": "click",
+                "target": ".app-linear-view button[aria-label^=\"Keep\"]",
+                "description": "Item 4 keep right candidate"
+              },
+              {
+                "method": "fill",
+                "target": ".app-linear-view #linear-operate-fraction-numerator-input",
+                "value": "5",
+                "description": "Item 4 diff num"
+              },
+              {
+                "method": "fill",
+                "target": ".app-linear-view #linear-operate-fraction-denominator-input",
+                "value": "12",
+                "description": "Item 4 diff den"
+              },
+              {
+                "method": "click",
+                "target": ".app-linear-view .control-submit-btn",
+                "description": "Item 4 submit diff"
+              },
+              {
+                "method": "assert",
+                "target": ".app-linear-view .active-beat-controls button",
+                "description": "Assert local Next problem button present in resolve",
+                "assertions": [
+                  {
+                    "type": "containsText",
+                    "target": ".app-linear-view .active-beat-controls button",
+                    "value": "Next problem"
+                  }
+                ]
+              },
+              {
+                "method": "screenshot",
+                "target": "",
+                "file": "reports/development/plan-43-shared-episode-completion-and-progression/evidence/screenshots/branch-07-unlike-subtraction-inspect-before.png",
+                "caption": "Unlike subtraction inspect before Next",
+                "description": "Capture inspect subtraction before advance",
+                "screenshotEvidence": {
+                  "file": "reports/development/plan-43-shared-episode-completion-and-progression/evidence/screenshots/branch-07-unlike-subtraction-inspect-before.png",
+                  "caption": "Unlike subtraction inspect before Next",
+                  "viewport": {
+                    "width": 1366,
+                    "height": 768
+                  }
+                }
+              },
+              {
+                "method": "pressKey",
+                "target": ".app-linear-view .active-beat-controls button",
+                "value": "Enter",
+                "description": "Keyboard Enter to advance to item 5"
+              },
+              {
+                "method": "screenshot",
+                "target": "",
+                "file": "reports/development/plan-43-shared-episode-completion-and-progression/evidence/screenshots/branch-07-unlike-subtraction-inspect-after.png",
+                "caption": "Unlike subtraction inspect after Next",
+                "description": "Capture fresh item 5 mounted",
+                "screenshotEvidence": {
+                  "file": "reports/development/plan-43-shared-episode-completion-and-progression/evidence/screenshots/branch-07-unlike-subtraction-inspect-after.png",
+                  "caption": "Unlike subtraction inspect after Next",
+                  "viewport": {
+                    "width": 1366,
+                    "height": 768
+                  }
+                }
+              },
+              {
+                "method": "assert",
+                "target": ".app-linear-view",
+                "description": "Assert item 5 mounted fresh with clean state",
+                "assertions": [
+                  {
+                    "type": "hasSelector",
+                    "target": ".app-linear-view .control-btn"
+                  },
+                  {
+                    "type": "notHasSelector",
+                    "target": ".app-linear-view #linear-operate-fraction-numerator-input"
+                  },
+                  {
+                    "type": "notHasSelector",
+                    "target": ".app-linear-view .active-beat-recovery"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "expect": {
+          "capture": {
+            "target": ".app-episode",
+            "type": "innerHTML"
+          },
+          "assertions": [
+            {
+              "type": "hasSelector",
+              "target": ".app-episode"
+            },
+            {
+              "type": "hasSelector",
+              "target": ".app-linear-view .control-btn"
+            },
+            {
+              "type": "notHasSelector",
+              "target": "#linear-operate-fraction-numerator-input"
+            },
+            {
+              "type": "notHasSelector",
+              "target": ".app-linear-view .active-beat-recovery"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "ROUTE-PLAN43-UNLIKE-SUBTRACTION-IDENTIFY-NEXT [standard-motion]",
+      "routeId": "ROUTE-PLAN43-UNLIKE-SUBTRACTION-IDENTIFY-NEXT",
+      "context": "production-direct-plan43",
+      "motionMode": "standard-motion",
+      "status": "pass",
+      "duration": 1459,
+      "route": {
+        "id": "ROUTE-PLAN43-UNLIKE-SUBTRACTION-IDENTIFY-NEXT",
+        "behavior": "Complete unlike-denominator subtraction identify-side recipe on item 7 (5/6 - 1/3 = 3/6) on scaled Chromebook 1093x614 DPR 1.25, advance directly via local Next problem button, and assert fresh state on item 8.",
+        "configuration": "phase2-bundle-1",
+        "startingSurface": "mounted-app-entry",
+        "viewport": {
+          "width": 1093,
+          "height": 614
+        },
+        "deviceScaleFactor": 1.25,
+        "motionMode": "standard-motion",
+        "witness": "browser",
+        "inputMode": "mouse",
+        "actions": [
+          {
+            "method": "completePlan43Branch",
+            "branch": "unlike-subtraction-identify",
+            "view": "visual",
+            "inputMode": "mouse",
+            "description": "Execute unlike subtraction identify branch",
+            "generatedActions": [
+              {
+                "method": "click",
+                "target": "[data-practice-type=\"unlike-denominator-subtraction\"]",
+                "description": "Start unlike subtraction practice"
+              },
+              {
+                "method": "click",
+                "target": ".app-visual-view .control-btn",
+                "description": "Item 1 encounter"
+              },
+              {
+                "method": "fill",
+                "target": ".app-visual-view #transform-num-input-left",
+                "value": "5",
+                "description": "Item 1 left"
+              },
+              {
+                "method": "click",
+                "target": ".app-visual-view .control-submit-btn",
+                "description": "Item 1 submit left"
+              },
+              {
+                "method": "fill",
+                "target": ".app-visual-view #transform-num-input-right",
+                "value": "2",
+                "description": "Item 1 right"
+              },
+              {
+                "method": "click",
+                "target": ".app-visual-view .control-submit-btn",
+                "description": "Item 1 submit right"
+              },
+              {
+                "method": "fill",
+                "target": ".app-visual-view #operate-fraction-numerator-input",
+                "value": "3",
+                "description": "Item 1 diff num"
+              },
+              {
+                "method": "fill",
+                "target": ".app-visual-view #operate-fraction-denominator-input",
+                "value": "10",
+                "description": "Item 1 diff den"
+              },
+              {
+                "method": "click",
+                "target": ".app-visual-view .control-submit-btn",
+                "description": "Item 1 submit diff"
+              },
+              {
+                "method": "click",
+                "target": ".app-visual-view .active-beat-controls button",
+                "description": "Advance to item 2"
+              },
+              {
+                "method": "click",
+                "target": ".app-visual-view .control-btn",
+                "description": "Item 2 encounter"
+              },
+              {
+                "method": "fill",
+                "target": ".app-visual-view #transform-num-input-left",
+                "value": "15",
+                "description": "Item 2 left"
+              },
+              {
+                "method": "click",
+                "target": ".app-visual-view .control-submit-btn",
+                "description": "Item 2 submit left"
+              },
+              {
+                "method": "fill",
+                "target": ".app-visual-view #transform-num-input-right",
+                "value": "8",
+                "description": "Item 2 right"
+              },
+              {
+                "method": "click",
+                "target": ".app-visual-view .control-submit-btn",
+                "description": "Item 2 submit right"
+              },
+              {
+                "method": "fill",
+                "target": ".app-visual-view #operate-fraction-numerator-input",
+                "value": "7",
+                "description": "Item 2 diff num"
+              },
+              {
+                "method": "fill",
+                "target": ".app-visual-view #operate-fraction-denominator-input",
+                "value": "20",
+                "description": "Item 2 diff den"
+              },
+              {
+                "method": "click",
+                "target": ".app-visual-view .control-submit-btn",
+                "description": "Item 2 submit diff"
+              },
+              {
+                "method": "click",
+                "target": ".app-visual-view .active-beat-controls button",
+                "description": "Advance to item 3"
+              },
+              {
+                "method": "click",
+                "target": ".app-visual-view .control-btn",
+                "description": "Item 3 encounter"
+              },
+              {
+                "method": "fill",
+                "target": ".app-visual-view #transform-num-input-left",
+                "value": "20",
+                "description": "Item 3 left"
+              },
+              {
+                "method": "click",
+                "target": ".app-visual-view .control-submit-btn",
+                "description": "Item 3 submit left"
+              },
+              {
+                "method": "fill",
+                "target": ".app-visual-view #transform-num-input-right",
+                "value": "9",
+                "description": "Item 3 right"
+              },
+              {
+                "method": "click",
+                "target": ".app-visual-view .control-submit-btn",
+                "description": "Item 3 submit right"
+              },
+              {
+                "method": "fill",
+                "target": ".app-visual-view #operate-fraction-numerator-input",
+                "value": "11",
+                "description": "Item 3 diff num"
+              },
+              {
+                "method": "fill",
+                "target": ".app-visual-view #operate-fraction-denominator-input",
+                "value": "24",
+                "description": "Item 3 diff den"
+              },
+              {
+                "method": "click",
+                "target": ".app-visual-view .control-submit-btn",
+                "description": "Item 3 submit diff"
+              },
+              {
+                "method": "click",
+                "target": ".app-visual-view .active-beat-controls button",
+                "description": "Advance to item 4"
+              },
+              {
+                "method": "click",
+                "target": ".app-visual-view .control-btn",
+                "description": "Item 4 encounter"
+              },
+              {
+                "method": "click",
+                "target": ".app-visual-view .inspect-change-button",
+                "description": "Item 4 repair left candidate"
+              },
+              {
+                "method": "fill",
+                "target": ".app-visual-view #transform-num-input-left",
+                "value": "8",
+                "description": "Enter corrected left 8/12"
+              },
+              {
+                "method": "click",
+                "target": ".app-visual-view .control-submit-btn",
+                "description": "Submit left repair"
+              },
+              {
+                "method": "click",
+                "target": ".app-visual-view button[aria-label^=\"Keep\"]",
+                "description": "Item 4 keep right candidate"
+              },
+              {
+                "method": "fill",
+                "target": ".app-visual-view #operate-fraction-numerator-input",
+                "value": "5",
+                "description": "Item 4 diff num"
+              },
+              {
+                "method": "fill",
+                "target": ".app-visual-view #operate-fraction-denominator-input",
+                "value": "12",
+                "description": "Item 4 diff den"
+              },
+              {
+                "method": "click",
+                "target": ".app-visual-view .control-submit-btn",
+                "description": "Item 4 submit diff"
+              },
+              {
+                "method": "click",
+                "target": ".app-visual-view .active-beat-controls button",
+                "description": "Advance to item 5"
+              },
+              {
+                "method": "click",
+                "target": ".app-visual-view .control-btn",
+                "description": "Item 5 encounter"
+              },
+              {
+                "method": "click",
+                "target": ".app-visual-view button[aria-label^=\"Keep\"]",
+                "description": "Item 5 keep left candidate"
+              },
+              {
+                "method": "click",
+                "target": ".app-visual-view .inspect-change-button",
+                "description": "Item 5 repair right candidate"
+              },
+              {
+                "method": "fill",
+                "target": ".app-visual-view #transform-num-input-right",
+                "value": "5",
+                "description": "Enter corrected right 5/20"
+              },
+              {
+                "method": "click",
+                "target": ".app-visual-view .control-submit-btn",
+                "description": "Submit right repair"
+              },
+              {
+                "method": "fill",
+                "target": ".app-visual-view #operate-fraction-numerator-input",
+                "value": "9",
+                "description": "Item 5 diff num"
+              },
+              {
+                "method": "fill",
+                "target": ".app-visual-view #operate-fraction-denominator-input",
+                "value": "20",
+                "description": "Item 5 diff den"
+              },
+              {
+                "method": "click",
+                "target": ".app-visual-view .control-submit-btn",
+                "description": "Item 5 submit diff"
+              },
+              {
+                "method": "click",
+                "target": ".app-visual-view .active-beat-controls button",
+                "description": "Advance to item 6"
+              },
+              {
+                "method": "click",
+                "target": ".app-visual-view .control-btn",
+                "description": "Item 6 encounter"
+              },
+              {
+                "method": "click",
+                "target": ".app-visual-view .inspect-change-button",
+                "description": "Item 6 repair left candidate"
+              },
+              {
+                "method": "fill",
+                "target": ".app-visual-view #transform-num-input-left",
+                "value": "25",
+                "description": "Enter corrected left 25/30"
+              },
+              {
+                "method": "click",
+                "target": ".app-visual-view .control-submit-btn",
+                "description": "Submit left repair"
+              },
+              {
+                "method": "click",
+                "target": ".app-visual-view button[aria-label^=\"Keep\"]",
+                "description": "Item 6 keep right candidate"
+              },
+              {
+                "method": "fill",
+                "target": ".app-visual-view #operate-fraction-numerator-input",
+                "value": "4",
+                "description": "Item 6 diff num"
+              },
+              {
+                "method": "fill",
+                "target": ".app-visual-view #operate-fraction-denominator-input",
+                "value": "30",
+                "description": "Item 6 diff den"
+              },
+              {
+                "method": "click",
+                "target": ".app-visual-view .control-submit-btn",
+                "description": "Item 6 submit diff"
+              },
+              {
+                "method": "click",
+                "target": ".app-visual-view .active-beat-controls button",
+                "description": "Advance to item 7"
+              },
+              {
+                "method": "click",
+                "target": ".app-visual-view .control-btn",
+                "description": "Item 7 encounter"
+              },
+              {
+                "method": "click",
+                "target": ".app-visual-view .nested-side-choice >> nth=1",
+                "description": "Select right side 1/3"
+              },
+              {
+                "method": "fill",
+                "target": ".app-visual-view #transform-num-input-right",
+                "value": "2",
+                "description": "Transform right to 2/6"
+              },
+              {
+                "method": "click",
+                "target": ".app-visual-view .control-submit-btn",
+                "description": "Submit right conversion"
+              },
+              {
+                "method": "fill",
+                "target": ".app-visual-view #operate-fraction-numerator-input",
+                "value": "3",
+                "description": "Operate diff num 3/6"
+              },
+              {
+                "method": "fill",
+                "target": ".app-visual-view #operate-fraction-denominator-input",
+                "value": "6",
+                "description": "Operate diff den 6"
+              },
+              {
+                "method": "click",
+                "target": ".app-visual-view .control-submit-btn",
+                "description": "Submit diff"
+              },
+              {
+                "method": "assert",
+                "target": ".app-visual-view .active-beat-controls button",
+                "description": "Assert local Next problem button present in resolve",
+                "assertions": [
+                  {
+                    "type": "containsText",
+                    "target": ".app-visual-view .active-beat-controls button",
+                    "value": "Next problem"
+                  }
+                ]
+              },
+              {
+                "method": "screenshot",
+                "target": "",
+                "file": "reports/development/plan-43-shared-episode-completion-and-progression/evidence/screenshots/branch-08-unlike-subtraction-identify-before.png",
+                "caption": "Unlike subtraction identify before Next",
+                "description": "Capture identify subtraction before advance",
+                "screenshotEvidence": {
+                  "file": "reports/development/plan-43-shared-episode-completion-and-progression/evidence/screenshots/branch-08-unlike-subtraction-identify-before.png",
+                  "caption": "Unlike subtraction identify before Next",
+                  "viewport": {
+                    "width": 1093,
+                    "height": 614
+                  }
+                }
+              },
+              {
+                "method": "click",
+                "target": ".app-visual-view .active-beat-controls button",
+                "description": "Advance to item 8"
+              },
+              {
+                "method": "screenshot",
+                "target": "",
+                "file": "reports/development/plan-43-shared-episode-completion-and-progression/evidence/screenshots/branch-08-unlike-subtraction-identify-after.png",
+                "caption": "Unlike subtraction identify after Next",
+                "description": "Capture fresh item 8 mounted",
+                "screenshotEvidence": {
+                  "file": "reports/development/plan-43-shared-episode-completion-and-progression/evidence/screenshots/branch-08-unlike-subtraction-identify-after.png",
+                  "caption": "Unlike subtraction identify after Next",
+                  "viewport": {
+                    "width": 1093,
+                    "height": 614
+                  }
+                }
+              },
+              {
+                "method": "assert",
+                "target": ".app-visual-view",
+                "description": "Assert item 8 mounted fresh with clean state",
+                "assertions": [
+                  {
+                    "type": "hasSelector",
+                    "target": ".app-visual-view .control-btn"
+                  },
+                  {
+                    "type": "notHasSelector",
+                    "target": ".app-visual-view #transform-num-input-right"
+                  },
+                  {
+                    "type": "notHasSelector",
+                    "target": ".app-visual-view .active-beat-recovery"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "expect": {
+          "capture": {
+            "target": ".app-episode",
+            "type": "innerHTML"
+          },
+          "assertions": [
+            {
+              "type": "hasSelector",
+              "target": ".app-episode"
+            },
+            {
+              "type": "hasSelector",
+              "target": ".app-visual-view .control-btn"
+            },
+            {
+              "type": "notHasSelector",
+              "target": "#transform-num-input-right"
+            },
+            {
+              "type": "notHasSelector",
+              "target": ".active-beat-recovery"
             }
           ]
         }
@@ -343,10 +2103,10 @@
       "context": "production-direct-plan43",
       "motionMode": "standard-motion",
       "status": "pass",
-      "duration": 339,
+      "duration": 473,
       "route": {
         "id": "ROUTE-PLAN43-NUMBER-LINE-DIRECT-NEXT",
-        "behavior": "A learner places a fraction on the number line in production and advances directly via the local Next problem button.",
+        "behavior": "Place 1/2 on the number line in production, observe local Next problem upon check position acceptance, advance directly to fresh item 2, and assert disabled check position and reset stepper.",
         "configuration": "phase2-bundle-1",
         "startingSurface": "mounted-app-entry",
         "viewport": {
@@ -358,61 +2118,93 @@
         "inputMode": "mouse",
         "actions": [
           {
-            "step": 1,
-            "method": "click",
-            "target": "[data-practice-type=\"bar-to-line-same-amount\"]",
-            "description": "Start number line practice"
-          },
-          {
-            "step": 2,
-            "method": "click",
-            "target": ".app-visual-view .plan39-stepper-next",
-            "description": "Step to rightmost"
-          },
-          {
-            "step": 3,
-            "method": "click",
-            "target": ".app-visual-view .plan39-stepper-previous",
-            "description": "Step left to 1 of 2"
-          },
-          {
-            "step": 4,
-            "method": "click",
-            "target": ".app-visual-view .plan39-check-position",
-            "description": "Check position"
-          },
-          {
-            "step": 5,
-            "method": "assert",
-            "target": ".app-visual-view .plan39-finish",
-            "description": "Assert local Next problem button is present and focused",
-            "assertions": [
+            "method": "completePlan43Branch",
+            "branch": "number-line-locate",
+            "view": "visual",
+            "inputMode": "mouse",
+            "description": "Execute number line locate branch",
+            "generatedActions": [
               {
-                "type": "containsText",
-                "target": ".app-visual-view .plan39-finish",
-                "value": "Next problem"
+                "method": "click",
+                "target": "[data-practice-type=\"bar-to-line-same-amount\"]",
+                "description": "Start number line practice"
               },
               {
-                "type": "hasSelector",
-                "target": ".app-next-button[hidden]"
-              }
-            ]
-          },
-          {
-            "step": 6,
-            "method": "click",
-            "target": ".app-visual-view .plan39-finish",
-            "description": "Advance directly to next number line problem"
-          },
-          {
-            "step": 7,
-            "method": "assert",
-            "target": ".app-episode",
-            "description": "Assert next number line item is installed fresh",
-            "assertions": [
+                "method": "click",
+                "target": ".app-visual-view .plan39-stepper-next",
+                "description": "Step right"
+              },
               {
-                "type": "hasSelector",
-                "target": ".app-episode"
+                "method": "click",
+                "target": ".app-visual-view .plan39-stepper-previous",
+                "description": "Step left to 1/2"
+              },
+              {
+                "method": "click",
+                "target": ".app-visual-view .plan39-check-position",
+                "description": "Check position"
+              },
+              {
+                "method": "assert",
+                "target": ".app-visual-view .plan39-finish",
+                "description": "Assert local Next problem button present in resolve",
+                "assertions": [
+                  {
+                    "type": "containsText",
+                    "target": ".app-visual-view .plan39-finish",
+                    "value": "Next problem"
+                  }
+                ]
+              },
+              {
+                "method": "screenshot",
+                "target": "",
+                "file": "reports/development/plan-43-shared-episode-completion-and-progression/evidence/screenshots/branch-09-number-line-locate-before.png",
+                "caption": "Number line locate before Next",
+                "description": "Capture number line locate before advance",
+                "screenshotEvidence": {
+                  "file": "reports/development/plan-43-shared-episode-completion-and-progression/evidence/screenshots/branch-09-number-line-locate-before.png",
+                  "caption": "Number line locate before Next",
+                  "viewport": {
+                    "width": 1366,
+                    "height": 768
+                  }
+                }
+              },
+              {
+                "method": "click",
+                "target": ".app-visual-view .plan39-finish",
+                "description": "Advance to item 2"
+              },
+              {
+                "method": "screenshot",
+                "target": "",
+                "file": "reports/development/plan-43-shared-episode-completion-and-progression/evidence/screenshots/branch-09-number-line-locate-after.png",
+                "caption": "Number line locate after Next",
+                "description": "Capture fresh item 2 mounted",
+                "screenshotEvidence": {
+                  "file": "reports/development/plan-43-shared-episode-completion-and-progression/evidence/screenshots/branch-09-number-line-locate-after.png",
+                  "caption": "Number line locate after Next",
+                  "viewport": {
+                    "width": 1366,
+                    "height": 768
+                  }
+                }
+              },
+              {
+                "method": "assert",
+                "target": ".app-visual-view",
+                "description": "Assert item 2 mounted fresh with clean state",
+                "assertions": [
+                  {
+                    "type": "hasSelector",
+                    "target": ".app-visual-view .plan39-stepper-next"
+                  },
+                  {
+                    "type": "hasSelector",
+                    "target": ".app-visual-view .plan39-check-position[disabled]"
+                  }
+                ]
               }
             ]
           }
@@ -426,6 +2218,327 @@
             {
               "type": "hasSelector",
               "target": ".app-episode"
+            },
+            {
+              "type": "hasSelector",
+              "target": ".app-visual-view .plan39-stepper-next"
+            },
+            {
+              "type": "hasSelector",
+              "target": ".app-visual-view .plan39-check-position[disabled]"
+            },
+            {
+              "type": "notHasSelector",
+              "target": ".active-beat-recovery"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "ROUTE-PLAN43-REFLECTION-MILESTONE-CONTINUE-NEXT [reduced-motion]",
+      "routeId": "ROUTE-PLAN43-REFLECTION-MILESTONE-CONTINUE-NEXT",
+      "context": "production-direct-plan43",
+      "motionMode": "reduced-motion",
+      "status": "pass",
+      "duration": 841,
+      "route": {
+        "id": "ROUTE-PLAN43-REFLECTION-MILESTONE-CONTINUE-NEXT",
+        "behavior": "Witness milestone Continue on reflection item 3 (1/2 + 1/5) with keyboard navigation in narrow 360x740 viewport, verify deliberate focus onto connected reflection control, submit matching reflection, advance via Next problem, and assert item 4 clean state.",
+        "configuration": "phase2-bundle-1",
+        "startingSurface": "mounted-app-entry",
+        "viewport": {
+          "width": 360,
+          "height": 740
+        },
+        "motionMode": "reduced-motion",
+        "witness": "browser",
+        "inputMode": "keyboard",
+        "actions": [
+          {
+            "method": "completePlan43Branch",
+            "branch": "substantive-reflection",
+            "view": "visual",
+            "inputMode": "keyboard",
+            "description": "Execute reflection milestone continue branch",
+            "generatedActions": [
+              {
+                "method": "click",
+                "target": "[data-practice-type=\"sum-under-one\"]",
+                "description": "Start addition practice"
+              },
+              {
+                "method": "click",
+                "target": ".app-visual-view .control-btn",
+                "description": "Item 1 encounter"
+              },
+              {
+                "method": "fill",
+                "target": ".app-visual-view #transform-num-input-left",
+                "value": "8",
+                "description": "Item 1 left"
+              },
+              {
+                "method": "click",
+                "target": ".app-visual-view .control-submit-btn",
+                "description": "Item 1 submit left"
+              },
+              {
+                "method": "fill",
+                "target": ".app-visual-view #transform-num-input-right",
+                "value": "3",
+                "description": "Item 1 right"
+              },
+              {
+                "method": "click",
+                "target": ".app-visual-view .control-submit-btn",
+                "description": "Item 1 submit right"
+              },
+              {
+                "method": "fill",
+                "target": ".app-visual-view #operate-sum-input",
+                "value": "11",
+                "description": "Item 1 sum"
+              },
+              {
+                "method": "click",
+                "target": ".app-visual-view .control-submit-btn",
+                "description": "Item 1 submit sum"
+              },
+              {
+                "method": "click",
+                "target": ".app-visual-view .active-beat-controls button",
+                "description": "Advance to item 2"
+              },
+              {
+                "method": "click",
+                "target": ".app-visual-view .control-btn",
+                "description": "Item 2 encounter"
+              },
+              {
+                "method": "click",
+                "target": ".app-visual-view .inspect-change-button",
+                "description": "Repair left candidate 5/12"
+              },
+              {
+                "method": "fill",
+                "target": ".app-visual-view #transform-num-input-left",
+                "value": "6",
+                "description": "Enter corrected left 6/12"
+              },
+              {
+                "method": "click",
+                "target": ".app-visual-view .control-submit-btn",
+                "description": "Submit left repair"
+              },
+              {
+                "method": "click",
+                "target": ".app-visual-view button[aria-label^=\"Keep\"]",
+                "description": "Item 2 keep right"
+              },
+              {
+                "method": "fill",
+                "target": ".app-visual-view #operate-sum-input",
+                "value": "10",
+                "description": "Item 2 sum"
+              },
+              {
+                "method": "click",
+                "target": ".app-visual-view .control-submit-btn",
+                "description": "Item 2 submit sum"
+              },
+              {
+                "method": "click",
+                "target": ".app-visual-view .active-beat-controls button",
+                "description": "Advance to item 3"
+              },
+              {
+                "method": "click",
+                "target": ".app-visual-view .control-btn",
+                "description": "Item 3 encounter"
+              },
+              {
+                "method": "click",
+                "target": ".app-visual-view .control-choice-btn >> nth=1",
+                "description": "Notice: different units"
+              },
+              {
+                "method": "click",
+                "target": ".app-visual-view button[aria-label=\"Common denominator 10\"]",
+                "description": "Decide denominator 10"
+              },
+              {
+                "method": "fill",
+                "target": ".app-visual-view #transform-num-input-left",
+                "value": "5",
+                "description": "Transform left 5/10"
+              },
+              {
+                "method": "click",
+                "target": ".app-visual-view .control-submit-btn",
+                "description": "Submit left"
+              },
+              {
+                "method": "fill",
+                "target": ".app-visual-view #transform-num-input-right",
+                "value": "2",
+                "description": "Transform right 2/10"
+              },
+              {
+                "method": "click",
+                "target": ".app-visual-view .control-submit-btn",
+                "description": "Submit right"
+              },
+              {
+                "method": "fill",
+                "target": ".app-visual-view #operate-sum-input",
+                "value": "7",
+                "description": "Operate sum 7/10"
+              },
+              {
+                "method": "click",
+                "target": ".app-visual-view .control-submit-btn",
+                "description": "Submit sum"
+              },
+              {
+                "method": "assert",
+                "target": ".app-visual-view .active-beat-controls button",
+                "description": "Assert Continue button present at milestone resolve",
+                "assertions": [
+                  {
+                    "type": "containsText",
+                    "target": ".app-visual-view .active-beat-controls button",
+                    "value": "Continue"
+                  }
+                ]
+              },
+              {
+                "method": "assertFocused",
+                "target": ".app-visual-view .active-beat-controls button",
+                "description": "Assert Continue button is focused at milestone"
+              },
+              {
+                "method": "screenshot",
+                "target": "",
+                "file": "reports/development/plan-43-shared-episode-completion-and-progression/evidence/screenshots/branch-10-reflection-milestone-before.png",
+                "caption": "Reflection milestone before Continue",
+                "description": "Capture resolve milestone before Continue",
+                "screenshotEvidence": {
+                  "file": "reports/development/plan-43-shared-episode-completion-and-progression/evidence/screenshots/branch-10-reflection-milestone-before.png",
+                  "caption": "Reflection milestone before Continue",
+                  "viewport": {
+                    "width": 360,
+                    "height": 740
+                  }
+                }
+              },
+              {
+                "method": "pressKey",
+                "target": ".app-visual-view .active-beat-controls button",
+                "value": "Enter",
+                "description": "Keyboard Enter on Continue to enter reflection"
+              },
+              {
+                "method": "assert",
+                "target": ".app-visual-view",
+                "description": "Assert reflect beat active with connected reflection controls focused",
+                "assertions": [
+                  {
+                    "type": "hasSelector",
+                    "target": ".app-visual-view .active-beat-controls .control-choice-btn"
+                  },
+                  {
+                    "type": "notHasSelector",
+                    "target": ".app-visual-view .active-beat-controls .control-action-btn"
+                  }
+                ]
+              },
+              {
+                "method": "assertFocused",
+                "target": ".app-visual-view .active-beat-controls .control-choice-btn >> nth=0",
+                "description": "Assert focus landed on connected reflection control, not BODY"
+              },
+              {
+                "method": "click",
+                "target": ".app-visual-view button[aria-label*=\"5 of 10\"]",
+                "description": "Select matching reflection choice 5/10"
+              },
+              {
+                "method": "assert",
+                "target": ".app-visual-view .active-beat-controls button",
+                "description": "Assert local Next problem button present after reflection answered",
+                "assertions": [
+                  {
+                    "type": "containsText",
+                    "target": ".app-visual-view .active-beat-controls button",
+                    "value": "Next problem"
+                  }
+                ]
+              },
+              {
+                "method": "screenshot",
+                "target": "",
+                "file": "reports/development/plan-43-shared-episode-completion-and-progression/evidence/screenshots/branch-10-reflection-milestone-after.png",
+                "caption": "Reflection milestone after response",
+                "description": "Capture resolved reflection state",
+                "screenshotEvidence": {
+                  "file": "reports/development/plan-43-shared-episode-completion-and-progression/evidence/screenshots/branch-10-reflection-milestone-after.png",
+                  "caption": "Reflection milestone after response",
+                  "viewport": {
+                    "width": 360,
+                    "height": 740
+                  }
+                }
+              },
+              {
+                "method": "pressKey",
+                "target": ".app-visual-view .active-beat-controls button",
+                "value": "Enter",
+                "description": "Keyboard Enter on Next problem"
+              },
+              {
+                "method": "assert",
+                "target": ".app-visual-view",
+                "description": "Assert item 4 mounted fresh with clean state",
+                "assertions": [
+                  {
+                    "type": "hasSelector",
+                    "target": ".app-visual-view .control-btn"
+                  },
+                  {
+                    "type": "notHasSelector",
+                    "target": ".app-visual-view #operate-sum-input"
+                  },
+                  {
+                    "type": "notHasSelector",
+                    "target": ".app-visual-view .active-beat-recovery"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "expect": {
+          "capture": {
+            "target": ".app-episode",
+            "type": "innerHTML"
+          },
+          "assertions": [
+            {
+              "type": "hasSelector",
+              "target": ".app-episode"
+            },
+            {
+              "type": "hasSelector",
+              "target": ".app-visual-view .control-btn"
+            },
+            {
+              "type": "notHasSelector",
+              "target": "#operate-sum-input"
+            },
+            {
+              "type": "notHasSelector",
+              "target": ".active-beat-recovery"
             }
           ]
         }

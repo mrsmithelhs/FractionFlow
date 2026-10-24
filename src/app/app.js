@@ -301,6 +301,74 @@ export function getCompletionIntentFor(state) {
   return proposed ? { type: 'submit-resolution', proposed } : null;
 }
 
+export function prepareProgressionTransaction({
+  currentState,
+  practiceType,
+  activeIndex,
+  actionKind,
+  prepareDestination = null,
+}) {
+  if (!currentState || !currentState.episodeDefinition) {
+    return { ok: false, reason: 'missing-state' };
+  }
+
+  let completedOldState;
+  if (currentState.status === 'resolved') {
+    completedOldState = currentState;
+  } else {
+    const completionIntent = getCompletionIntentFor(currentState);
+    if (!completionIntent) {
+      return { ok: false, reason: 'unsupported-completion-intent' };
+    }
+    completedOldState = applyIntent(currentState, completionIntent);
+    if (completedOldState.status !== 'resolved') {
+      return { ok: false, reason: 'completion-did-not-resolve' };
+    }
+  }
+
+  if (actionKind === 'return') {
+    return {
+      ok: true,
+      actionKind: 'return',
+      completedOldState,
+    };
+  }
+
+  if (actionKind === 'advance') {
+    if (!practiceType || !Array.isArray(practiceType.items) || typeof activeIndex !== 'number') {
+      return { ok: false, reason: 'invalid-practice-context', completedOldState };
+    }
+    const nextIndex = activeIndex + 1;
+    if (nextIndex >= practiceType.items.length) {
+      return { ok: false, reason: 'set-exhausted', completedOldState };
+    }
+
+    let destination;
+    try {
+      if (typeof prepareDestination !== 'function') {
+        return { ok: false, reason: 'missing-destination-preparer', completedOldState };
+      }
+      destination = prepareDestination(practiceType, nextIndex);
+    } catch (err) {
+      return { ok: false, reason: 'destination-refusal', error: err, completedOldState };
+    }
+
+    if (!destination || !destination.state) {
+      return { ok: false, reason: 'destination-missing-state', completedOldState };
+    }
+
+    return {
+      ok: true,
+      actionKind: 'advance',
+      completedOldState,
+      nextIndex,
+      destinationState: destination.state,
+    };
+  }
+
+  return { ok: false, reason: 'unknown-action-kind' };
+}
+
 /**
  * Compose the first learner-facing FractionFlow episode.
  *
@@ -983,11 +1051,15 @@ export function createFractionFlowApp({
 
     isTransitioning = true;
     try {
-      const nextIndex = activePracticeItemIndex + 1;
-      let prepared;
-      try {
-        prepared = registeredItemEpisode(selectedPracticeType, nextIndex);
-      } catch {
+      const transaction = prepareProgressionTransaction({
+        currentState: state,
+        practiceType: selectedPracticeType,
+        activeIndex: activePracticeItemIndex,
+        actionKind: 'advance',
+        prepareDestination: registeredItemEpisode,
+      });
+
+      if (!transaction.ok) {
         navigationRefusal = true;
         navigationNotice.textContent = STRINGS.app.nextProblemUnavailable;
         setHidden(navigationNotice, false);
@@ -996,15 +1068,7 @@ export function createFractionFlowApp({
         return;
       }
 
-      // Pure completion recording on old state in memory
-      if (state.status !== 'resolved') {
-        const completionIntent = getCompletionIntentFor(state);
-        if (completionIntent) {
-          applyIntent(state, completionIntent);
-        }
-      }
-
-      installFreshEpisode(selectedPracticeType, nextIndex, prepared.state, { focusEpisode: true });
+      installFreshEpisode(selectedPracticeType, transaction.nextIndex, transaction.destinationState, { focusEpisode: true });
     } finally {
       isTransitioning = false;
     }
@@ -1019,12 +1083,14 @@ export function createFractionFlowApp({
 
     isTransitioning = true;
     try {
-      if (state.status !== 'resolved') {
-        const completionIntent = getCompletionIntentFor(state);
-        if (completionIntent) {
-          state = applyIntent(state, completionIntent);
-        }
-      }
+      const transaction = prepareProgressionTransaction({
+        currentState: state,
+        practiceType: selectedPracticeType,
+        activeIndex: activePracticeItemIndex,
+        actionKind: 'return',
+      });
+      if (!transaction.ok) return;
+
       returnToEntry();
     } finally {
       isTransitioning = false;
@@ -1629,6 +1695,20 @@ export function createFractionFlowApp({
           const host = visualView ? visualHost : linearHost;
           const nextBtn = host?.querySelector('.active-beat-controls button');
           if (nextBtn) nextBtn.focus();
+        }
+      }
+      if (action.type === 'submit-resolution') {
+        const host = visualView ? visualHost : linearHost;
+        if (state.beat === 'reflect') {
+          const reflectionControl = host?.querySelector('.active-beat-controls .control-choice-btn, .active-beat-controls button');
+          if (isVisibleControlInHost(reflectionControl, host)) {
+            reflectionControl.focus();
+          } else {
+            focusEpisodeLandmark();
+          }
+        } else if (state.status === 'resolved') {
+          const finishBtn = host?.querySelector('.active-beat-controls button');
+          if (finishBtn) finishBtn.focus();
         }
       }
       if (action.type === 'submit-transform-help-multiplier') getVisibleTransformInput()?.focus();
