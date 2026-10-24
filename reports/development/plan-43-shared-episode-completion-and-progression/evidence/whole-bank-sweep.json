@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-10-24T19:36:22.907Z",
+  "timestamp": "2026-10-24T20:19:43.286Z",
   "totalPracticeFamilies": 5,
   "totalItems": 47,
   "totalProtectedReflections": 8,
@@ -22,11 +22,11 @@
           "progressionLabel": "Next problem",
           "destinationMountedId": "one-half-plus-one-third",
           "verifiedAssertions": [
-            "mounted identity verified against catalog record",
+            "mounted identity verified from state.content provenance against catalog record",
             "solved all required instructional beats to terminal acceptance",
-            "response inputs cleared on progression",
-            "deliberate progression control verified",
-            "single click advanced to fresh destination state"
+            "deliberate progression control verified in active work area",
+            "header next control verified hidden in direct navigation mode",
+            "single click advanced to fresh destination state with schedulePosition 0 and empty drafts"
           ]
         },
         {
@@ -40,11 +40,11 @@
           "progressionLabel": "Next problem",
           "destinationMountedId": "one-half-plus-one-fifth",
           "verifiedAssertions": [
-            "mounted identity verified against catalog record",
+            "mounted identity verified from state.content provenance against catalog record",
             "solved all required instructional beats to terminal acceptance",
-            "response inputs cleared on progression",
-            "deliberate progression control verified",
-            "single click advanced to fresh destination state"
+            "deliberate progression control verified in active work area",
+            "header next control verified hidden in direct navigation mode",
+            "single click advanced to fresh destination state with schedulePosition 0 and empty drafts"
           ]
         },
         {
@@ -58,11 +58,11 @@
           "progressionLabel": "Next problem",
           "destinationMountedId": "one-half-plus-two-fifths",
           "verifiedAssertions": [
-            "mounted identity verified against catalog record",
+            "mounted identity verified from state.content provenance against catalog record",
             "solved all required instructional beats to terminal acceptance",
-            "response inputs cleared on progression",
-            "deliberate progression control verified",
-            "single click advanced to fresh destination state"
+            "deliberate progression control verified in active work area",
+            "header next control verified hidden in direct navigation mode",
+            "single click advanced to fresh destination state with schedulePosition 0 and empty drafts"
           ]
         },
         {
@@ -76,11 +76,11 @@
           "progressionLabel": "Next problem",
           "destinationMountedId": "one-third-plus-one-fourth",
           "verifiedAssertions": [
-            "mounted identity verified against catalog record",
+            "mounted identity verified from state.content provenance against catalog record",
             "solved all required instructional beats to terminal acceptance",
-            "response inputs cleared on progression",
-            "deliberate progression control verified",
-            "single click advanced to fresh destination state"
+            "deliberate progression control verified in active work area",
+            "header next control verified hidden in direct navigation mode",
+            "single click advanced to fresh destination state with schedulePosition 0 and empty drafts"
           ]
         },
         {
@@ -94,11 +94,11 @@
           "progressionLabel": "Next problem",
           "destinationMountedId": "one-third-plus-one-fifth",
           "verifiedAssertions": [
-            "mounted identity verified against catalog record",
+            "mounted identity verified from state.content provenance against catalog record",
             "solved all required instructional beats to terminal acceptance",
-            "response inputs cleared on progression",
-            "deliberate progression control verified",
-            "single click advanced to fresh destination state"
+            "deliberate progression control verified in active work area",
+            "header next control verified hidden in direct navigation mode",
+            "single click advanced to fresh destination state with schedulePosition 0 and empty drafts"
           ]
         },
         {
@@ -112,11 +112,11 @@
           "progressionLabel": "Next problem",
           "destinationMountedId": "one-third-plus-two-fifths",
           "verifiedAssertions": [
-            "mounted identity verified against catalog record",
+            "mounted identity verified from state.content provenance against catalog record",
             "solved all required instructional beats to terminal acceptance",
-            "response inputs cleared on progression",
-            "deliberate progression control verified",
-            "single click advanced to fresh destination state"
+            "deliberate progression control verified in active work area",
+            "header next control verified hidden in direct navigation mode",
+            "single click advanced to fresh destination state with schedulePosition 0 and empty drafts"
           ]
         },
         {
@@ -130,11 +130,11 @@
           "progressionLabel": "Next problem",
           "destinationMountedId": "two-thirds-plus-one-fifth",
           "verifiedAssertions": [
-            "mounted identity verified against catalog record",
+            "mounted identity verified from state.content provenance against catalog record",
             "solved all required instructional beats to terminal acceptance",
-            "response inputs cleared on progression",
-            "deliberate progression control verified",
-            "single click advanced to fresh destination state"
+            "deliberate progression control verified in active work area",
+            "header next control verified hidden in direct navigation mode",
+            "single click advanced to fresh destination state with schedulePosition 0 and empty drafts"
           ]
         },
         {
@@ -148,11 +148,11 @@
           "progressionLabel": "Next problem",
           "destinationMountedId": "three-fifths-plus-one-third",
           "verifiedAssertions": [
-            "mounted identity verified against catalog record",
+            "mounted identity verified from state.content provenance against catalog record",
             "solved all required instructional beats to terminal acceptance",
-            "response inputs cleared on progression",
-            "deliberate progression control verified",
-            "single click advanced to fresh destination state"
+            "deliberate progression control verified in active work area",
+            "header next control verified hidden in direct navigation mode",
+            "single click advanced to fresh destination state with schedulePosition 0 and empty drafts"
           ]
         },
         {
@@ -166,11 +166,11 @@
           "progressionLabel": "Next problem",
           "destinationMountedId": "one-sixth-plus-one-fourth",
           "verifiedAssertions": [
-            "mounted identity verified against catalog record",
+            "mounted identity verified from state.content provenance against catalog record",
             "solved all required instructional beats to terminal acceptance",
-            "response inputs cleared on progression",
-            "deliberate progression control verified",
-            "single click advanced to fresh destination state"
+            "deliberate progression control verified in active work area",
+            "header next control verified hidden in direct navigation mode",
+            "single click advanced to fresh destination state with schedulePosition 0 and empty drafts"
           ]
         },
         {
@@ -184,11 +184,11 @@
           "progressionLabel": "Next problem",
           "destinationMountedId": "two-thirds-plus-three-fourths",
           "verifiedAssertions": [
-            "mounted identity verified against catalog record",
+            "mounted identity verified from state.content provenance against catalog record",
             "solved all required instructional beats to terminal acceptance",
-            "response inputs cleared on progression",
-            "deliberate progression control verified",
-            "single click advanced to fresh destination state"
+            "deliberate progression control verified in active work area",
+            "header next control verified hidden in direct navigation mode",
+            "single click advanced to fresh destination state with schedulePosition 0 and empty drafts"
           ]
         },
         {
@@ -202,11 +202,11 @@
           "progressionLabel": "Next problem",
           "destinationMountedId": "nested-one-half-plus-three-eighths",
           "verifiedAssertions": [
-            "mounted identity verified against catalog record",
+            "mounted identity verified from state.content provenance against catalog record",
             "solved all required instructional beats to terminal acceptance",
-            "response inputs cleared on progression",
-            "deliberate progression control verified",
-            "single click advanced to fresh destination state"
+            "deliberate progression control verified in active work area",
+            "header next control verified hidden in direct navigation mode",
+            "single click advanced to fresh destination state with schedulePosition 0 and empty drafts"
           ]
         },
         {
@@ -220,11 +220,11 @@
           "progressionLabel": "Next problem",
           "destinationMountedId": "nested-three-eighths-plus-one-half",
           "verifiedAssertions": [
-            "mounted identity verified against catalog record",
+            "mounted identity verified from state.content provenance against catalog record",
             "solved all required instructional beats to terminal acceptance",
-            "response inputs cleared on progression",
-            "deliberate progression control verified",
-            "single click advanced to fresh destination state"
+            "deliberate progression control verified in active work area",
+            "header next control verified hidden in direct navigation mode",
+            "single click advanced to fresh destination state with schedulePosition 0 and empty drafts"
           ]
         },
         {
@@ -238,11 +238,11 @@
           "progressionLabel": "Next problem",
           "destinationMountedId": "plan35-construct-half-fifth-10",
           "verifiedAssertions": [
-            "mounted identity verified against catalog record",
+            "mounted identity verified from state.content provenance against catalog record",
             "solved all required instructional beats to terminal acceptance",
-            "response inputs cleared on progression",
-            "deliberate progression control verified",
-            "single click advanced to fresh destination state"
+            "deliberate progression control verified in active work area",
+            "header next control verified hidden in direct navigation mode",
+            "single click advanced to fresh destination state with schedulePosition 0 and empty drafts"
           ]
         },
         {
@@ -256,11 +256,11 @@
           "progressionLabel": "Next problem",
           "destinationMountedId": "plan35-construct-three-fifths-third-30",
           "verifiedAssertions": [
-            "mounted identity verified against catalog record",
+            "mounted identity verified from state.content provenance against catalog record",
             "solved all required instructional beats to terminal acceptance",
-            "response inputs cleared on progression",
-            "deliberate progression control verified",
-            "single click advanced to fresh destination state"
+            "deliberate progression control verified in active work area",
+            "header next control verified hidden in direct navigation mode",
+            "single click advanced to fresh destination state with schedulePosition 0 and empty drafts"
           ]
         },
         {
@@ -274,11 +274,11 @@
           "progressionLabel": "Next problem",
           "destinationMountedId": "plan35-inspect-third-eighth-24",
           "verifiedAssertions": [
-            "mounted identity verified against catalog record",
+            "mounted identity verified from state.content provenance against catalog record",
             "solved all required instructional beats to terminal acceptance",
-            "response inputs cleared on progression",
-            "deliberate progression control verified",
-            "single click advanced to fresh destination state"
+            "deliberate progression control verified in active work area",
+            "header next control verified hidden in direct navigation mode",
+            "single click advanced to fresh destination state with schedulePosition 0 and empty drafts"
           ]
         },
         {
@@ -292,11 +292,11 @@
           "progressionLabel": "Next problem",
           "destinationMountedId": "plan35-inspect-fifth-third-30",
           "verifiedAssertions": [
-            "mounted identity verified against catalog record",
+            "mounted identity verified from state.content provenance against catalog record",
             "solved all required instructional beats to terminal acceptance",
-            "response inputs cleared on progression",
-            "deliberate progression control verified",
-            "single click advanced to fresh destination state"
+            "deliberate progression control verified in active work area",
+            "header next control verified hidden in direct navigation mode",
+            "single click advanced to fresh destination state with schedulePosition 0 and empty drafts"
           ]
         },
         {
@@ -310,11 +310,11 @@
           "progressionLabel": "Next problem",
           "destinationMountedId": "plan35-identify-half-three-tenths-10",
           "verifiedAssertions": [
-            "mounted identity verified against catalog record",
+            "mounted identity verified from state.content provenance against catalog record",
             "solved all required instructional beats to terminal acceptance",
-            "response inputs cleared on progression",
-            "deliberate progression control verified",
-            "single click advanced to fresh destination state"
+            "deliberate progression control verified in active work area",
+            "header next control verified hidden in direct navigation mode",
+            "single click advanced to fresh destination state with schedulePosition 0 and empty drafts"
           ]
         },
         {
@@ -328,11 +328,11 @@
           "progressionLabel": "Next problem",
           "destinationMountedId": "plan35-identify-three-tenths-half-10",
           "verifiedAssertions": [
-            "mounted identity verified against catalog record",
+            "mounted identity verified from state.content provenance against catalog record",
             "solved all required instructional beats to terminal acceptance",
-            "response inputs cleared on progression",
-            "deliberate progression control verified",
-            "single click advanced to fresh destination state"
+            "deliberate progression control verified in active work area",
+            "header next control verified hidden in direct navigation mode",
+            "single click advanced to fresh destination state with schedulePosition 0 and empty drafts"
           ]
         },
         {
@@ -346,11 +346,11 @@
           "progressionLabel": "Next problem",
           "destinationMountedId": "plan35-identify-third-five-twelfths-12",
           "verifiedAssertions": [
-            "mounted identity verified against catalog record",
+            "mounted identity verified from state.content provenance against catalog record",
             "solved all required instructional beats to terminal acceptance",
-            "response inputs cleared on progression",
-            "deliberate progression control verified",
-            "single click advanced to fresh destination state"
+            "deliberate progression control verified in active work area",
+            "header next control verified hidden in direct navigation mode",
+            "single click advanced to fresh destination state with schedulePosition 0 and empty drafts"
           ]
         },
         {
@@ -364,11 +364,11 @@
           "progressionLabel": "Next problem",
           "destinationMountedId": "plan35-identify-five-twelfths-third-12",
           "verifiedAssertions": [
-            "mounted identity verified against catalog record",
+            "mounted identity verified from state.content provenance against catalog record",
             "solved all required instructional beats to terminal acceptance",
-            "response inputs cleared on progression",
-            "deliberate progression control verified",
-            "single click advanced to fresh destination state"
+            "deliberate progression control verified in active work area",
+            "header next control verified hidden in direct navigation mode",
+            "single click advanced to fresh destination state with schedulePosition 0 and empty drafts"
           ]
         },
         {
@@ -382,11 +382,11 @@
           "progressionLabel": "Back to start",
           "destinationMountedId": "entry-page",
           "verifiedAssertions": [
-            "mounted identity verified against catalog record",
+            "mounted identity verified from state.content provenance against catalog record",
             "solved all required instructional beats to terminal acceptance",
-            "response inputs cleared on progression",
-            "deliberate progression control verified",
-            "exhaustion observed and returned to entry"
+            "deliberate progression control verified in active work area",
+            "header next control verified hidden in direct navigation mode",
+            "exhaustion observed and returned cleanly to entry page with drafts cleared"
           ]
         }
       ]
@@ -407,11 +407,11 @@
           "progressionLabel": "Back to start",
           "destinationMountedId": "entry-page",
           "verifiedAssertions": [
-            "mounted identity verified against catalog record",
+            "mounted identity verified from state.content provenance against catalog record",
             "solved all required instructional beats to terminal acceptance",
-            "response inputs cleared on progression",
-            "deliberate progression control verified",
-            "exhaustion observed and returned to entry"
+            "deliberate progression control verified in active work area",
+            "header next control verified hidden in direct navigation mode",
+            "exhaustion observed and returned cleanly to entry page with drafts cleared"
           ]
         }
       ]
@@ -432,11 +432,11 @@
           "progressionLabel": "Next problem",
           "destinationMountedId": "takeaway-12-8-minus-3",
           "verifiedAssertions": [
-            "mounted identity verified against catalog record",
+            "mounted identity verified from state.content provenance against catalog record",
             "solved all required instructional beats to terminal acceptance",
-            "response inputs cleared on progression",
-            "deliberate progression control verified",
-            "single click advanced to fresh destination state"
+            "deliberate progression control verified in active work area",
+            "header next control verified hidden in direct navigation mode",
+            "single click advanced to fresh destination state with schedulePosition 0 and empty drafts"
           ]
         },
         {
@@ -450,11 +450,11 @@
           "progressionLabel": "Next problem",
           "destinationMountedId": "takeaway-10-7-minus-3",
           "verifiedAssertions": [
-            "mounted identity verified against catalog record",
+            "mounted identity verified from state.content provenance against catalog record",
             "solved all required instructional beats to terminal acceptance",
-            "response inputs cleared on progression",
-            "deliberate progression control verified",
-            "single click advanced to fresh destination state"
+            "deliberate progression control verified in active work area",
+            "header next control verified hidden in direct navigation mode",
+            "single click advanced to fresh destination state with schedulePosition 0 and empty drafts"
           ]
         },
         {
@@ -468,11 +468,11 @@
           "progressionLabel": "Next problem",
           "destinationMountedId": "takeaway-11-9-minus-4",
           "verifiedAssertions": [
-            "mounted identity verified against catalog record",
+            "mounted identity verified from state.content provenance against catalog record",
             "solved all required instructional beats to terminal acceptance",
-            "response inputs cleared on progression",
-            "deliberate progression control verified",
-            "single click advanced to fresh destination state"
+            "deliberate progression control verified in active work area",
+            "header next control verified hidden in direct navigation mode",
+            "single click advanced to fresh destination state with schedulePosition 0 and empty drafts"
           ]
         },
         {
@@ -486,11 +486,11 @@
           "progressionLabel": "Next problem",
           "destinationMountedId": "takeaway-9-6-minus-1",
           "verifiedAssertions": [
-            "mounted identity verified against catalog record",
+            "mounted identity verified from state.content provenance against catalog record",
             "solved all required instructional beats to terminal acceptance",
-            "response inputs cleared on progression",
-            "deliberate progression control verified",
-            "single click advanced to fresh destination state"
+            "deliberate progression control verified in active work area",
+            "header next control verified hidden in direct navigation mode",
+            "single click advanced to fresh destination state with schedulePosition 0 and empty drafts"
           ]
         },
         {
@@ -504,11 +504,11 @@
           "progressionLabel": "Next problem",
           "destinationMountedId": "takeaway-9-6-minus-6",
           "verifiedAssertions": [
-            "mounted identity verified against catalog record",
+            "mounted identity verified from state.content provenance against catalog record",
             "solved all required instructional beats to terminal acceptance",
-            "response inputs cleared on progression",
-            "deliberate progression control verified",
-            "single click advanced to fresh destination state"
+            "deliberate progression control verified in active work area",
+            "header next control verified hidden in direct navigation mode",
+            "single click advanced to fresh destination state with schedulePosition 0 and empty drafts"
           ]
         },
         {
@@ -522,11 +522,11 @@
           "progressionLabel": "Next problem",
           "destinationMountedId": "takeaway-6-5-minus-4",
           "verifiedAssertions": [
-            "mounted identity verified against catalog record",
+            "mounted identity verified from state.content provenance against catalog record",
             "solved all required instructional beats to terminal acceptance",
-            "response inputs cleared on progression",
-            "deliberate progression control verified",
-            "single click advanced to fresh destination state"
+            "deliberate progression control verified in active work area",
+            "header next control verified hidden in direct navigation mode",
+            "single click advanced to fresh destination state with schedulePosition 0 and empty drafts"
           ]
         },
         {
@@ -540,11 +540,11 @@
           "progressionLabel": "Next problem",
           "destinationMountedId": "takeaway-8-7-minus-1",
           "verifiedAssertions": [
-            "mounted identity verified against catalog record",
+            "mounted identity verified from state.content provenance against catalog record",
             "solved all required instructional beats to terminal acceptance",
-            "response inputs cleared on progression",
-            "deliberate progression control verified",
-            "single click advanced to fresh destination state"
+            "deliberate progression control verified in active work area",
+            "header next control verified hidden in direct navigation mode",
+            "single click advanced to fresh destination state with schedulePosition 0 and empty drafts"
           ]
         },
         {
@@ -558,11 +558,11 @@
           "progressionLabel": "Back to start",
           "destinationMountedId": "entry-page",
           "verifiedAssertions": [
-            "mounted identity verified against catalog record",
+            "mounted identity verified from state.content provenance against catalog record",
             "solved all required instructional beats to terminal acceptance",
-            "response inputs cleared on progression",
-            "deliberate progression control verified",
-            "exhaustion observed and returned to entry"
+            "deliberate progression control verified in active work area",
+            "header next control verified hidden in direct navigation mode",
+            "exhaustion observed and returned cleanly to entry page with drafts cleared"
           ]
         }
       ]
@@ -583,11 +583,11 @@
           "progressionLabel": "Next problem",
           "destinationMountedId": "plan40-construct-three-fourths-two-fifths-20",
           "verifiedAssertions": [
-            "mounted identity verified against catalog record",
+            "mounted identity verified from state.content provenance against catalog record",
             "solved all required instructional beats to terminal acceptance",
-            "response inputs cleared on progression",
-            "deliberate progression control verified",
-            "single click advanced to fresh destination state"
+            "deliberate progression control verified in active work area",
+            "header next control verified hidden in direct navigation mode",
+            "single click advanced to fresh destination state with schedulePosition 0 and empty drafts"
           ]
         },
         {
@@ -601,11 +601,11 @@
           "progressionLabel": "Next problem",
           "destinationMountedId": "plan40-construct-five-sixths-three-eighths-24",
           "verifiedAssertions": [
-            "mounted identity verified against catalog record",
+            "mounted identity verified from state.content provenance against catalog record",
             "solved all required instructional beats to terminal acceptance",
-            "response inputs cleared on progression",
-            "deliberate progression control verified",
-            "single click advanced to fresh destination state"
+            "deliberate progression control verified in active work area",
+            "header next control verified hidden in direct navigation mode",
+            "single click advanced to fresh destination state with schedulePosition 0 and empty drafts"
           ]
         },
         {
@@ -619,11 +619,11 @@
           "progressionLabel": "Next problem",
           "destinationMountedId": "plan40-inspect-two-thirds-one-fourth-12",
           "verifiedAssertions": [
-            "mounted identity verified against catalog record",
+            "mounted identity verified from state.content provenance against catalog record",
             "solved all required instructional beats to terminal acceptance",
-            "response inputs cleared on progression",
-            "deliberate progression control verified",
-            "single click advanced to fresh destination state"
+            "deliberate progression control verified in active work area",
+            "header next control verified hidden in direct navigation mode",
+            "single click advanced to fresh destination state with schedulePosition 0 and empty drafts"
           ]
         },
         {
@@ -637,11 +637,11 @@
           "progressionLabel": "Next problem",
           "destinationMountedId": "plan40-inspect-seven-tenths-one-fourth-20",
           "verifiedAssertions": [
-            "mounted identity verified against catalog record",
+            "mounted identity verified from state.content provenance against catalog record",
             "solved all required instructional beats to terminal acceptance",
-            "response inputs cleared on progression",
-            "deliberate progression control verified",
-            "single click advanced to fresh destination state"
+            "deliberate progression control verified in active work area",
+            "header next control verified hidden in direct navigation mode",
+            "single click advanced to fresh destination state with schedulePosition 0 and empty drafts"
           ]
         },
         {
@@ -655,11 +655,11 @@
           "progressionLabel": "Next problem",
           "destinationMountedId": "plan40-inspect-five-sixths-seven-tenths-30",
           "verifiedAssertions": [
-            "mounted identity verified against catalog record",
+            "mounted identity verified from state.content provenance against catalog record",
             "solved all required instructional beats to terminal acceptance",
-            "response inputs cleared on progression",
-            "deliberate progression control verified",
-            "single click advanced to fresh destination state"
+            "deliberate progression control verified in active work area",
+            "header next control verified hidden in direct navigation mode",
+            "single click advanced to fresh destination state with schedulePosition 0 and empty drafts"
           ]
         },
         {
@@ -673,11 +673,11 @@
           "progressionLabel": "Next problem",
           "destinationMountedId": "plan40-identify-five-sixths-one-third-6",
           "verifiedAssertions": [
-            "mounted identity verified against catalog record",
+            "mounted identity verified from state.content provenance against catalog record",
             "solved all required instructional beats to terminal acceptance",
-            "response inputs cleared on progression",
-            "deliberate progression control verified",
-            "single click advanced to fresh destination state"
+            "deliberate progression control verified in active work area",
+            "header next control verified hidden in direct navigation mode",
+            "single click advanced to fresh destination state with schedulePosition 0 and empty drafts"
           ]
         },
         {
@@ -691,11 +691,11 @@
           "progressionLabel": "Next problem",
           "destinationMountedId": "plan40-identify-one-half-one-eighth-8",
           "verifiedAssertions": [
-            "mounted identity verified against catalog record",
+            "mounted identity verified from state.content provenance against catalog record",
             "solved all required instructional beats to terminal acceptance",
-            "response inputs cleared on progression",
-            "deliberate progression control verified",
-            "single click advanced to fresh destination state"
+            "deliberate progression control verified in active work area",
+            "header next control verified hidden in direct navigation mode",
+            "single click advanced to fresh destination state with schedulePosition 0 and empty drafts"
           ]
         },
         {
@@ -709,11 +709,11 @@
           "progressionLabel": "Next problem",
           "destinationMountedId": "plan40-identify-two-thirds-five-twelfths-12",
           "verifiedAssertions": [
-            "mounted identity verified against catalog record",
+            "mounted identity verified from state.content provenance against catalog record",
             "solved all required instructional beats to terminal acceptance",
-            "response inputs cleared on progression",
-            "deliberate progression control verified",
-            "single click advanced to fresh destination state"
+            "deliberate progression control verified in active work area",
+            "header next control verified hidden in direct navigation mode",
+            "single click advanced to fresh destination state with schedulePosition 0 and empty drafts"
           ]
         },
         {
@@ -727,11 +727,11 @@
           "progressionLabel": "Back to start",
           "destinationMountedId": "entry-page",
           "verifiedAssertions": [
-            "mounted identity verified against catalog record",
+            "mounted identity verified from state.content provenance against catalog record",
             "solved all required instructional beats to terminal acceptance",
-            "response inputs cleared on progression",
-            "deliberate progression control verified",
-            "exhaustion observed and returned to entry"
+            "deliberate progression control verified in active work area",
+            "header next control verified hidden in direct navigation mode",
+            "exhaustion observed and returned cleanly to entry page with drafts cleared"
           ]
         }
       ]
@@ -752,11 +752,11 @@
           "progressionLabel": "Next problem",
           "destinationMountedId": "bridge-02-fourth-4",
           "verifiedAssertions": [
-            "mounted identity verified against catalog record",
+            "mounted identity verified from state.content provenance against catalog record",
             "solved all required instructional beats to terminal acceptance",
-            "response inputs cleared on progression",
-            "deliberate progression control verified",
-            "single click advanced to fresh destination state"
+            "deliberate progression control verified in active work area",
+            "header next control verified hidden in direct navigation mode",
+            "single click advanced to fresh destination state with schedulePosition 0 and empty drafts"
           ]
         },
         {
@@ -770,11 +770,11 @@
           "progressionLabel": "Next problem",
           "destinationMountedId": "bridge-03-three-fourths-4",
           "verifiedAssertions": [
-            "mounted identity verified against catalog record",
+            "mounted identity verified from state.content provenance against catalog record",
             "solved all required instructional beats to terminal acceptance",
-            "response inputs cleared on progression",
-            "deliberate progression control verified",
-            "single click advanced to fresh destination state"
+            "deliberate progression control verified in active work area",
+            "header next control verified hidden in direct navigation mode",
+            "single click advanced to fresh destination state with schedulePosition 0 and empty drafts"
           ]
         },
         {
@@ -788,11 +788,11 @@
           "progressionLabel": "Next problem",
           "destinationMountedId": "bridge-04-two-thirds-3",
           "verifiedAssertions": [
-            "mounted identity verified against catalog record",
+            "mounted identity verified from state.content provenance against catalog record",
             "solved all required instructional beats to terminal acceptance",
-            "response inputs cleared on progression",
-            "deliberate progression control verified",
-            "single click advanced to fresh destination state"
+            "deliberate progression control verified in active work area",
+            "header next control verified hidden in direct navigation mode",
+            "single click advanced to fresh destination state with schedulePosition 0 and empty drafts"
           ]
         },
         {
@@ -806,11 +806,11 @@
           "progressionLabel": "Next problem",
           "destinationMountedId": "bridge-05-two-fourths-half",
           "verifiedAssertions": [
-            "mounted identity verified against catalog record",
+            "mounted identity verified from state.content provenance against catalog record",
             "solved all required instructional beats to terminal acceptance",
-            "response inputs cleared on progression",
-            "deliberate progression control verified",
-            "single click advanced to fresh destination state"
+            "deliberate progression control verified in active work area",
+            "header next control verified hidden in direct navigation mode",
+            "single click advanced to fresh destination state with schedulePosition 0 and empty drafts"
           ]
         },
         {
@@ -824,11 +824,11 @@
           "progressionLabel": "Next problem",
           "destinationMountedId": "bridge-06-three-eighths-8",
           "verifiedAssertions": [
-            "mounted identity verified against catalog record",
+            "mounted identity verified from state.content provenance against catalog record",
             "solved all required instructional beats to terminal acceptance",
-            "response inputs cleared on progression",
-            "deliberate progression control verified",
-            "single click advanced to fresh destination state"
+            "deliberate progression control verified in active work area",
+            "header next control verified hidden in direct navigation mode",
+            "single click advanced to fresh destination state with schedulePosition 0 and empty drafts"
           ]
         },
         {
@@ -842,11 +842,11 @@
           "progressionLabel": "Next problem",
           "destinationMountedId": "bridge-07-one-third-med",
           "verifiedAssertions": [
-            "mounted identity verified against catalog record",
+            "mounted identity verified from state.content provenance against catalog record",
             "solved all required instructional beats to terminal acceptance",
-            "response inputs cleared on progression",
-            "deliberate progression control verified",
-            "single click advanced to fresh destination state"
+            "deliberate progression control verified in active work area",
+            "header next control verified hidden in direct navigation mode",
+            "single click advanced to fresh destination state with schedulePosition 0 and empty drafts"
           ]
         },
         {
@@ -860,11 +860,11 @@
           "progressionLabel": "Next problem",
           "destinationMountedId": "bridge-08-five-sixths-med",
           "verifiedAssertions": [
-            "mounted identity verified against catalog record",
+            "mounted identity verified from state.content provenance against catalog record",
             "solved all required instructional beats to terminal acceptance",
-            "response inputs cleared on progression",
-            "deliberate progression control verified",
-            "single click advanced to fresh destination state"
+            "deliberate progression control verified in active work area",
+            "header next control verified hidden in direct navigation mode",
+            "single click advanced to fresh destination state with schedulePosition 0 and empty drafts"
           ]
         },
         {
@@ -878,14 +878,42 @@
           "progressionLabel": "Back to start",
           "destinationMountedId": "entry-page",
           "verifiedAssertions": [
-            "mounted identity verified against catalog record",
+            "mounted identity verified from state.content provenance against catalog record",
             "solved all required instructional beats to terminal acceptance",
-            "response inputs cleared on progression",
-            "deliberate progression control verified",
-            "exhaustion observed and returned to entry"
+            "deliberate progression control verified in active work area",
+            "header next control verified hidden in direct navigation mode",
+            "exhaustion observed and returned cleanly to entry page with drafts cleared"
           ]
         }
       ]
     }
-  ]
+  ],
+  "targetedConditionChecks": {
+    "conditionId": "phase2-bundle-4",
+    "connectionMaking": "CM-01-P",
+    "checksCount": 2,
+    "checks": [
+      {
+        "caseId": "premise-false-check-item2-den10",
+        "itemId": "one-half-plus-one-fifth",
+        "targetDenominator": "10",
+        "expectedResponse": "no",
+        "incorrectResponseTested": "yes",
+        "incorrectProducedRecovery": true,
+        "correctProducedResolution": true,
+        "progressionVerified": true,
+        "destinationItemId": "one-half-plus-two-fifths"
+      },
+      {
+        "caseId": "premise-linear-return-item3-den10",
+        "itemId": "one-half-plus-two-fifths",
+        "targetDenominator": "10",
+        "expectedResponse": "yes",
+        "view": "linear",
+        "correctProducedResolution": true,
+        "progressionVerified": true,
+        "destinationItemId": "entry-page"
+      }
+    ]
+  }
 }

@@ -867,8 +867,15 @@ export function createFractionFlowApp({
     activePracticeItemIndex = itemIndex;
     state = candidateState;
     resetEpisodeUiState();
+    const episodeEl = appRoot.querySelector('.app-episode');
+    const currentItem = practiceType?.items?.[itemIndex];
+    if (episodeEl && currentItem) {
+      episodeEl.setAttribute('data-current-item-id', currentItem.id);
+    } else if (episodeEl) {
+      episodeEl.removeAttribute('data-current-item-id');
+    }
     setHidden(entryPage, true);
-    setHidden(appRoot.querySelector('.app-episode'), false);
+    setHidden(episodeEl, false);
     render();
     if (focusEpisode) {
       if (isPlan36SubtractionDefinition(state?.episodeDefinition) && state?.beat === 'encounter') {
@@ -1119,7 +1126,11 @@ export function createFractionFlowApp({
     setHidden(nextProblemButton, true);
     updateHelpPlacement();
     closeDisplayMenu();
-    setHidden(appRoot.querySelector('.app-episode'), true);
+    const episodeEl = appRoot.querySelector('.app-episode');
+    if (episodeEl) {
+      episodeEl.removeAttribute('data-current-item-id');
+      setHidden(episodeEl, true);
+    }
     setHidden(entryPage, false);
     if (typeof globalThis.location === 'object'
       && globalThis.location.hash

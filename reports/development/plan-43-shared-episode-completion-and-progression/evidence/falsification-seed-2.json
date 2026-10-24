@@ -2,14 +2,14 @@
   "seedId": "SEED-PLAN43-02-PREMATURE-ADVANCE-SKIPPING-REFLECTION",
   "objective": "Detect when Continue on a reflection item advances directly to the next item instead of entering reflect beat",
   "targetDefect": "Bypassing reflection or premise checks by skipping instructional beat schedule closure",
-  "mutationInjected": "Capture-phase interception of Continue button; advances to next item without entering scheduled reflect beat",
+  "mutationInjected": "Mock element click replacement on Continue button; forces resolution and advances to next registered item (curated-relatively-prime-addition-one-half-two-fifths) without entering scheduled reflect beat",
   "executionResult": "DEFECT_DETECTED_BY_ASSERTION",
   "cleanPreRun": "PASS",
   "mutationAssertionFailure": {
-    "message": "Reflection bypass detected: expected Continue to enter \"reflect\" beat, observed \"notice\" on item \"undefined\".",
+    "message": "Reflection bypass detected: expected Continue to enter \"reflect\" beat on item \"curated-relatively-prime-addition-one-half-one-fifth\", but observed beat \"encounter\" on item \"curated-relatively-prime-addition-one-half-two-fifths\".",
     "name": "Error",
-    "stack": "Error: Reflection bypass detected: expected Continue to enter \"reflect\" beat, observed \"notice\" on item \"undefined\".\n    at assertEntersReflectionOnContinue (file:///C:/AI/FractionFlow/scripts/dev/record-plan43-evidence.mjs:62:11)\n    at runSeed2Falsification (file:///C:/AI/FractionFlow/scripts/dev/record-plan43-evidence.mjs:183:5)\n    at main (file:///C:/AI/FractionFlow/scripts/dev/record-plan43-evidence.mjs:231:9)"
+    "stack": "Error: Reflection bypass detected: expected Continue to enter \"reflect\" beat on item \"curated-relatively-prime-addition-one-half-one-fifth\", but observed beat \"encounter\" on item \"curated-relatively-prime-addition-one-half-two-fifths\".\n    at assertEntersReflectionOnContinue (file:///C:/AI/FractionFlow/scripts/dev/record-plan43-evidence.mjs:58:11)\n    at runSeed2Falsification (file:///C:/AI/FractionFlow/scripts/dev/record-plan43-evidence.mjs:180:5)\n    at main (file:///C:/AI/FractionFlow/scripts/dev/record-plan43-evidence.mjs:228:9)"
   },
   "cleanPostRun": "PASS",
-  "timestamp": "2026-10-24T19:36:27.889Z"
+  "timestamp": "2026-10-24T20:22:26.666Z"
 }

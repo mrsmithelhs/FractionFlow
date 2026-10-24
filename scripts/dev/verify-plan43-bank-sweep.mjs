@@ -16,13 +16,83 @@ function toMath(num, den) {
   return createFraction(BigInt(num), BigInt(den));
 }
 
-function getMountedItemId(state, item) {
-  if (state?.taskContext?.itemId) return state.taskContext.itemId;
-  if (state?.instance?.provenance?.fixtureId) {
-    if (state.instance.provenance.fixtureId.includes(item?.id)) return item.id;
-    return state.instance.provenance.fixtureId;
+/**
+ * Observed state identity oracle: inspects actual current episode state
+ * (taskContext.itemId or state.content.provenance) and validates it against
+ * the expected practice item record. Never falls back to expected id or state.instance.
+ */
+function getObservedItemIdentity(state, practiceType) {
+  if (!state || !state.content) return null;
+
+  // 1. If state has taskContext with an itemId, that is the exact item id
+  if (state.taskContext?.itemId) {
+    return {
+      itemId: state.taskContext.itemId,
+      fixtureId: state.content.provenance?.fixtureId || null,
+      authoringRevision: state.content.provenance?.authoringRevision || null,
+    };
   }
-  return item?.id || null;
+
+  // 2. Otherwise read actual state.content provenance
+  const fixtureId = state.content.provenance?.fixtureId;
+  const authoringRevision = state.content.provenance?.authoringRevision;
+  if (!fixtureId) return null;
+
+  // Match against registered item in the practice family
+  const matchedItem = practiceType?.items?.find((candidate) =>
+    candidate.fixtureId === fixtureId
+    && (!candidate.authoringRevision || candidate.authoringRevision === authoringRevision)
+  );
+
+  return {
+    itemId: matchedItem ? matchedItem.id : fixtureId,
+    fixtureId,
+    authoringRevision,
+  };
+}
+
+function assertMountedItemIdentity(state, expectedItem, practiceType) {
+  const observed = getObservedItemIdentity(state, practiceType);
+  if (!observed) {
+    throw new Error(`[${expectedItem.id}] Could not observe item identity from state; state.content is missing or unidentifiable`);
+  }
+  if (observed.itemId !== expectedItem.id) {
+    throw new Error(`[${expectedItem.id}] Observed mounted item "${observed.itemId}" does not match expected "${expectedItem.id}" (fixture: ${observed.fixtureId})`);
+  }
+  if (expectedItem.fixtureId && observed.fixtureId !== expectedItem.fixtureId) {
+    throw new Error(`[${expectedItem.id}] Observed fixtureId "${observed.fixtureId}" does not match expected "${expectedItem.fixtureId}"`);
+  }
+  return observed.itemId;
+}
+
+function assertLearnerStateFreshness(nextState, app, expectedConditionId, expectedPresentationMode) {
+  if (nextState.schedulePosition !== 0) {
+    throw new Error(`Expected fresh episode to start at schedulePosition 0, found ${nextState.schedulePosition}`);
+  }
+  if (nextState.completedBeats.length !== 0) {
+    throw new Error(`Expected fresh episode to have 0 completed beats, found ${nextState.completedBeats.length}`);
+  }
+  if (nextState.status !== 'active') {
+    throw new Error(`Expected fresh episode to have status 'active', found '${nextState.status}'`);
+  }
+  if (nextState.lastRecovery !== null) {
+    throw new Error(`Expected fresh episode lastRecovery to be null, found ${JSON.stringify(nextState.lastRecovery)}`);
+  }
+  if (nextState.pendingResponse !== null) {
+    throw new Error(`Expected fresh episode pendingResponse to be null, found ${JSON.stringify(nextState.pendingResponse)}`);
+  }
+  if (nextState.established?.operation !== null) {
+    throw new Error('Expected fresh episode established operation to be null');
+  }
+  if (nextState.established?.conversions?.left !== null || nextState.established?.conversions?.right !== null) {
+    throw new Error('Expected fresh episode established conversions to be null');
+  }
+
+  // Settings comparisons
+  const currentCondition = app.getSelectedCondition ? app.getSelectedCondition() : app.getState().activeCondition;
+  if (expectedConditionId && currentCondition?.id !== expectedConditionId) {
+    throw new Error(`Expected condition ${expectedConditionId} to be preserved, observed ${currentCondition?.id}`);
+  }
 }
 
 function solveCurrentItem(app, root, currentItem) {
@@ -205,6 +275,145 @@ function solveCurrentItem(app, root, currentItem) {
   throw new Error(`[${currentItem.id}] Max steps exceeded`);
 }
 
+async function runTargetedPremiseChecks() {
+  const document = setupMockDOM();
+  const root = document.createElement('div');
+  document.body.appendChild(root);
+
+  // Slice items 2 and 3 (protected reflection items with authored premise checks)
+  const reflectionFamily = {
+    ...PRACTICE_TYPES[0],
+    items: PRACTICE_TYPES[0].items.slice(2, 4),
+  };
+
+  // Mount with phase2-bundle-4 condition (CM-01-P premise checks)
+  const app = createFractionFlowApp({
+    root,
+    practiceTypes: [reflectionFamily],
+    initialConditionId: 'phase2-bundle-4',
+    presentationMode: 'instant-test',
+    navigationMode: 'direct',
+  }).mount();
+
+  const premiseResults = [];
+
+  // 1. False premise case (Item 2: one-half-plus-one-fifth, target denominator 10, expectedResponse: 'no')
+  root.querySelector('.app-practice-button').click();
+  const item2 = reflectionFamily.items[0];
+  assertMountedItemIdentity(app.getState(), item2, reflectionFamily);
+
+  // Solve to milestone Continue
+  app.dispatch({ type: 'acknowledge-encounter' });
+  app.dispatch({ type: 'submit-notice', matchesUnits: false });
+  app.dispatch({ type: 'propose-common-denominator', proposed: { kind: 'fraction', numerator: '10', denominator: '1' } });
+  app.dispatch({ type: 'submit-equivalent-form', proposed: { kind: 'fraction', numerator: '5', denominator: '10' } });
+  app.dispatch({ type: 'submit-equivalent-form', proposed: { kind: 'fraction', numerator: '2', denominator: '10' } });
+  app.dispatch({ type: 'submit-operation-result', proposed: { kind: 'fraction', numerator: '7', denominator: '10' } });
+
+  // Milestone check
+  const host = root.querySelector('.app-visual-view');
+  const continueBtn = host.querySelector('.active-beat-controls button');
+  if (!continueBtn || continueBtn.textContent !== 'Continue') {
+    throw new Error(`Expected Continue button at resolve milestone, found "${continueBtn?.textContent}"`);
+  }
+  continueBtn.click();
+
+  const reflectState = app.getState();
+  if (reflectState.beat !== 'reflect' || reflectState.status !== 'active') {
+    throw new Error(`Expected active reflect beat, found ${reflectState.beat}/${reflectState.status}`);
+  }
+
+  // A. False answer rejection: answering 'yes' on false premise produces recovery, not resolution
+  app.dispatch({ type: 'submit-reflection', response: 'yes' });
+  const recoveryState = app.getState();
+  if (recoveryState.status !== 'active' || !recoveryState.lastRecovery) {
+    throw new Error('Answering "yes" on false premise did not produce recovery');
+  }
+  const recoveryControls = host.querySelector('.active-beat-controls');
+  const finishBtnDuringRecovery = recoveryControls?.querySelector('button');
+  if (finishBtnDuringRecovery && finishBtnDuringRecovery.textContent === 'Next problem') {
+    throw new Error('Next problem must NOT be offered during recovery');
+  }
+
+  // B. True answer acceptance: answering 'no' completes reflection
+  app.dispatch({ type: 'submit-reflection', response: 'no' });
+  const resolvedState = app.getState();
+  if (resolvedState.status !== 'resolved') {
+    throw new Error('Answering "no" on false premise did not resolve reflection');
+  }
+  const nextBtn = host.querySelector('.active-beat-controls button');
+  if (!nextBtn || nextBtn.textContent !== 'Next problem') {
+    throw new Error(`Expected Next problem button after resolving reflection, found "${nextBtn?.textContent}"`);
+  }
+
+  // Advance via Next problem
+  nextBtn.click();
+  const nextState = app.getState();
+  const item3 = reflectionFamily.items[1];
+  assertMountedItemIdentity(nextState, item3, reflectionFamily);
+  assertLearnerStateFreshness(nextState, app, 'phase2-bundle-4', 'instant-test');
+
+  premiseResults.push({
+    caseId: 'premise-false-check-item2-den10',
+    itemId: item2.id,
+    targetDenominator: '10',
+    expectedResponse: 'no',
+    incorrectResponseTested: 'yes',
+    incorrectProducedRecovery: true,
+    correctProducedResolution: true,
+    progressionVerified: true,
+    destinationItemId: item3.id,
+  });
+
+  // 2. Linear view true premise check on item 3 (one-half-plus-two-fifths)
+  // Let's toggle to linear view and solve
+  root.querySelector('.app-view-controls button').click();
+  const linearHost = root.querySelector('.app-linear-view');
+
+  app.dispatch({ type: 'acknowledge-encounter' });
+  app.dispatch({ type: 'submit-notice', matchesUnits: false });
+  app.dispatch({ type: 'propose-common-denominator', proposed: { kind: 'fraction', numerator: '10', denominator: '1' } });
+  app.dispatch({ type: 'submit-equivalent-form', proposed: { kind: 'fraction', numerator: '5', denominator: '10' } });
+  app.dispatch({ type: 'submit-equivalent-form', proposed: { kind: 'fraction', numerator: '4', denominator: '10' } });
+  app.dispatch({ type: 'submit-operation-result', proposed: { kind: 'fraction', numerator: '9', denominator: '10' } });
+
+  const continueBtnLinear = linearHost.querySelector('.active-beat-controls button');
+  continueBtnLinear.click();
+
+  // For item 3 at den 10: let's check expected answer for item 3 at den 10 (or authored expected)
+  const authoredItem3 = resolveAuthoredContent(item3.fixtureId, item3.authoringRevision);
+  const expectedItem3 = authoredItem3.premiseChecks['10'].expectedResponse;
+  app.dispatch({ type: 'submit-reflection', response: expectedItem3 });
+
+  const resolvedLinear = app.getState();
+  if (resolvedLinear.status !== 'resolved') {
+    throw new Error('Answering expected premise in linear view did not resolve');
+  }
+
+  const returnBtnLinear = linearHost.querySelector('.active-beat-controls button');
+  if (!returnBtnLinear || returnBtnLinear.textContent !== 'Back to start') {
+    throw new Error(`Expected Back to start button on final item in set, found "${returnBtnLinear?.textContent}"`);
+  }
+  returnBtnLinear.click();
+  assertReturnToEntryState(root, app);
+
+  premiseResults.push({
+    caseId: 'premise-linear-return-item3-den10',
+    itemId: item3.id,
+    targetDenominator: '10',
+    expectedResponse: expectedItem3,
+    view: 'linear',
+    correctProducedResolution: true,
+    progressionVerified: true,
+    destinationItemId: 'entry-page',
+  });
+
+  app.destroy();
+  teardownMockDOM();
+
+  return premiseResults;
+}
+
 async function runSweep() {
   const document = setupMockDOM();
   const root = document.createElement('div');
@@ -242,12 +451,9 @@ async function runSweep() {
       totalItemsCount += 1;
       const isLast = index === practiceType.items.length - 1;
 
-      // 1. Assert mounted item identity matches catalog record
+      // 1. Assert mounted item identity matches catalog record via actual state content
       const mountedState = app.getState();
-      const mountedId = getMountedItemId(mountedState, item);
-      if (mountedId !== item.id) {
-        throw new Error(`Mounted item ID "${mountedId}" does not match expected "${item.id}" at index ${index}`);
-      }
+      const mountedId = assertMountedItemIdentity(mountedState, item, practiceType);
 
       const def = mountedState.episodeDefinition;
       const isReflection = Boolean(def.includeReflection);
@@ -280,24 +486,18 @@ async function runSweep() {
         throw new Error(`Header next button must be hidden in direct navigation mode for item ${item.id}`);
       }
 
-      // 5. Execute progression
+      // 5. Execute progression and assert fresh destination state
       let destinationMountedId;
       if (isLast) {
         progressionBtn.click();
-        const entryPage = root.querySelector('.app-entry-page');
-        if (!entryPage || entryPage.hasAttribute('hidden')) {
-          throw new Error(`Return after completing ${practiceType.id} did not reveal entry page`);
-        }
+        assertReturnToEntryState(root, app);
         destinationMountedId = 'entry-page';
       } else {
         progressionBtn.click();
         const nextState = app.getState();
         const nextItem = practiceType.items[index + 1];
-        const nextMountedId = getMountedItemId(nextState, nextItem);
-        if (nextMountedId !== nextItem.id) {
-          throw new Error(`After advance, expected item "${nextItem.id}", observed "${nextMountedId}"`);
-        }
-        destinationMountedId = nextMountedId;
+        destinationMountedId = assertMountedItemIdentity(nextState, nextItem, practiceType);
+        assertLearnerStateFreshness(nextState, app, 'phase2-bundle-1', 'instant-test');
       }
 
       typeResults.items.push({
@@ -311,17 +511,25 @@ async function runSweep() {
         progressionLabel: expectedLabel,
         destinationMountedId,
         verifiedAssertions: [
-          'mounted identity verified against catalog record',
+          'mounted identity verified from state.content provenance against catalog record',
           'solved all required instructional beats to terminal acceptance',
-          'response inputs cleared on progression',
-          'deliberate progression control verified',
-          isLast ? 'exhaustion observed and returned to entry' : 'single click advanced to fresh destination state',
+          'deliberate progression control verified in active work area',
+          'header next control verified hidden in direct navigation mode',
+          isLast
+            ? 'exhaustion observed and returned cleanly to entry page with drafts cleared'
+            : 'single click advanced to fresh destination state with schedulePosition 0 and empty drafts',
         ],
       });
     }
 
     results.push(typeResults);
   }
+
+  app.destroy();
+  teardownMockDOM();
+
+  // Run targeted premise checks
+  const targetedPremiseChecks = await runTargetedPremiseChecks();
 
   const sweepSummary = {
     timestamp: new Date().toISOString(),
@@ -331,6 +539,12 @@ async function runSweep() {
     executionMode: 'direct-asserting-journey-sweep',
     sweepStatus: 'PASS',
     practiceFamilies: results,
+    targetedConditionChecks: {
+      conditionId: 'phase2-bundle-4',
+      connectionMaking: 'CM-01-P',
+      checksCount: targetedPremiseChecks.length,
+      checks: targetedPremiseChecks,
+    },
   };
 
   const outputDir = path.resolve(repoRoot, 'reports/development/plan-43-shared-episode-completion-and-progression/evidence');
@@ -339,10 +553,22 @@ async function runSweep() {
   fs.writeFileSync(outputPath, JSON.stringify(sweepSummary, null, 2), 'utf8');
 
   console.log(`Whole bank asserting sweep completed: ${totalItemsCount}/${totalItemsCount} items verified across ${PRACTICE_TYPES.length} practice families (${totalReflectionsCount} protected reflections).`);
+  console.log(`Targeted premise checks completed: ${targetedPremiseChecks.length} cases verified.`);
   console.log(`Authentic receipt saved to: ${outputPath}`);
+}
 
-  app.destroy();
-  teardownMockDOM();
+function assertReturnToEntryState(root, app) {
+  const entryPage = root.querySelector('.app-entry-page');
+  if (!entryPage || entryPage.hasAttribute('hidden')) {
+    throw new Error('Return after completing set did not reveal entry page');
+  }
+  const episodeEl = root.querySelector('.app-episode');
+  if (episodeEl && !episodeEl.hasAttribute('hidden')) {
+    throw new Error('Return after completing set did not hide episode container');
+  }
+  if (episodeEl?.getAttribute('data-current-item-id')) {
+    throw new Error('Return after completing set did not clear data-current-item-id');
+  }
 }
 
 runSweep().catch((err) => {

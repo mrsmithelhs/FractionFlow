@@ -135,7 +135,7 @@ describe('Plan 14 Reachable Behavior Route Contract & Matrix Schema', () => {
   });
 
   it('pins the original 91 route objects and migrates only Plan 39 context mappings to v1 history', async () => {
-    expect(matrix.routes).toHaveLength(109);
+    expect(matrix.routes).toHaveLength(110);
     expect(createHash('sha256').update(JSON.stringify(matrix.routes.slice(0, 91))).digest('hex'))
       .toBe('eee8367c25fdaa88612b516a05b6989a919ae10b8e822a6339bea9b4c3c631de');
     expect(createHash('sha256').update(JSON.stringify(matrix.routes.slice(0, 98))).digest('hex'))
@@ -178,9 +178,10 @@ describe('Plan 14 Reachable Behavior Route Contract & Matrix Schema', () => {
       'ROUTE-PLAN43-UNLIKE-SUBTRACTION-IDENTIFY-NEXT',
       'ROUTE-PLAN43-NUMBER-LINE-DIRECT-NEXT',
       'ROUTE-PLAN43-REFLECTION-MILESTONE-CONTINUE-NEXT',
+      'ROUTE-PLAN43-PREMISE-REFLECTION-NEXT',
     ]);
     expect(plan43Routes.map((route) => contexts[route.id])).toEqual(
-      Array(10).fill('production-direct-plan43')
+      Array(11).fill('production-direct-plan43')
     );
   });
 
@@ -237,7 +238,7 @@ describe('Plan 14 Reachable Behavior Route Contract & Matrix Schema', () => {
       routeId: 'ROUTE-PLAN39-REPAIR03-ANCHOR-RING',
       failure: 'Plan39 Repair03 shared anchor/highlight assertion failed',
     });
-    expect(expandRouteExecutions(matrix.routes)).toHaveLength(111);
+    expect(expandRouteExecutions(matrix.routes)).toHaveLength(112);
   });
 
   it('enforces Rule 1: fails if a registered condition has no declared route witness', async () => {
@@ -468,7 +469,7 @@ describe('Plan 14 Reachable Behavior Route Contract & Matrix Schema', () => {
 
   it('executes each prototype route in both motion modes and brings in its filtered negative control', () => {
     const executions = expandRouteExecutions(matrix.routes);
-    expect(executions).toHaveLength(111);
+    expect(executions).toHaveLength(112);
     expect(executions.filter((execution) => (
       execution.route.configuration === 'plan15-subtraction-prototype'
     ))).toHaveLength(4);

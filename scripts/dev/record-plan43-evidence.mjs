@@ -12,14 +12,6 @@ const evidenceDir = path.resolve(repoRoot, 'reports/development/plan-43-shared-e
 
 fs.mkdirSync(evidenceDir, { recursive: true });
 
-function whole(value) {
-  return { kind: 'fraction', numerator: String(value), denominator: '1' };
-}
-
-function fraction(numerator, denominator) {
-  return { kind: 'fraction', numerator: String(numerator), denominator: String(denominator) };
-}
-
 function solveAdditionConstructToResolve(app, root) {
   root.querySelector('.app-practice-button').click();
   root.querySelector('.app-visual-view .control-btn').click();
@@ -35,17 +27,18 @@ function solveReflectionItemToMilestone(app, root) {
   root.querySelector('.app-practice-button').click();
   app.dispatch({ type: 'acknowledge-encounter' });
   app.dispatch({ type: 'submit-notice', matchesUnits: false });
-  app.dispatch({ type: 'propose-common-denominator', proposed: whole(10) });
-  app.dispatch({ type: 'submit-equivalent-form', proposed: fraction(5, 10) });
-  app.dispatch({ type: 'submit-equivalent-form', proposed: fraction(2, 10) });
-  app.dispatch({ type: 'submit-operation-result', proposed: fraction(7, 10) });
+  app.dispatch({ type: 'propose-common-denominator', proposed: { kind: 'fraction', numerator: '10', denominator: '1' } });
+  app.dispatch({ type: 'submit-equivalent-form', proposed: { kind: 'fraction', numerator: '5', denominator: '10' } });
+  app.dispatch({ type: 'submit-equivalent-form', proposed: { kind: 'fraction', numerator: '2', denominator: '10' } });
+  app.dispatch({ type: 'submit-operation-result', proposed: { kind: 'fraction', numerator: '7', denominator: '10' } });
 }
 
-function assertAdvancesOnSingleClick(app, actionBtn, initialItemId) {
-  actionBtn.click();
+function assertAdvancesOnSingleClick(app, advanceBtn, initialItemId) {
+  const preGeneration = app.getState().currentEpisodeGeneration;
+  advanceBtn.click();
   const nextState = app.getState();
-  const nextItemId = nextState?.taskContext?.itemId;
-  if (!nextItemId || nextItemId === initialItemId) {
+  const nextItemId = nextState.taskContext?.itemId || nextState.content?.provenance?.fixtureId;
+  if (nextItemId === initialItemId) {
     throw new Error(
       `Progression failed: expected single click to advance from "${initialItemId}" to a fresh item, but observed itemId "${nextItemId}".`
     );
@@ -56,11 +49,14 @@ function assertAdvancesOnSingleClick(app, actionBtn, initialItemId) {
 }
 
 function assertEntersReflectionOnContinue(app, continueBtn) {
+  const preState = app.getState();
+  const preFixtureId = preState.content?.provenance?.fixtureId;
   continueBtn.click();
   const state = app.getState();
   if (state.beat !== 'reflect') {
+    const currentFixtureId = state.content?.provenance?.fixtureId;
     throw new Error(
-      `Reflection bypass detected: expected Continue to enter "reflect" beat, observed "${state.beat}" on item "${state?.taskContext?.itemId}".`
+      `Reflection bypass detected: expected Continue to enter "reflect" beat on item "${preFixtureId}", but observed beat "${state.beat}" on item "${currentFixtureId}".`
     );
   }
   if (state.status !== 'active') {
@@ -124,7 +120,7 @@ async function runSeed1Falsification() {
     seedId: 'SEED-PLAN43-01-TWO-CLICK-REGRESSION',
     objective: 'Detect when advance button merely records completion on the active item without installing a fresh item',
     targetDefect: 'Regression to legacy 2-click pattern where clicking advance sets status: resolved but leaves the current item mounted',
-    mutationInjected: 'Capture-phase interception of progression button; dispatches finish-compact-episode without advancing activePracticeItemIndex or installing destination item',
+    mutationInjected: 'Mock element click replacement on progression button; dispatches finish-compact-episode without advancing activePracticeItemIndex or installing destination item',
     executionResult: 'DEFECT_DETECTED_BY_ASSERTION',
     cleanPreRun: 'PASS',
     mutationAssertionFailure: caughtError,
@@ -159,7 +155,7 @@ async function runSeed2Falsification() {
   cleanApp.destroy();
 
   // 2. Mutated run: inject premature reflection bypass defect
-  // Under defect: Continue button bypasses the scheduled reflect beat and advances to the next item
+  // Under defect: Continue button bypasses the scheduled reflect beat and advances directly to the next registered item
   const mutatedApp = createFractionFlowApp({
     root,
     practiceTypes: [reflectionPracticeType],
@@ -172,11 +168,12 @@ async function runSeed2Falsification() {
   let caughtError = null;
   const originalContinueClick = mutatedContinue.click.bind(mutatedContinue);
   mutatedContinue.click = () => {
-    // Premature reflection bypass: directly advance to next item (skipping reflect beat)
-    mutatedApp.dispatch({ type: 'finish-nested-episode' });
-    // Advance index to item 3
-    root.querySelector('.app-practice-button').click();
-    mutatedApp.dispatch({ type: 'acknowledge-encounter' });
+    // Premature reflection bypass: simulates a continuation handler that bypasses the reflect beat
+    // by forcing reflection resolution and triggering advanceToNextItem to install the next registered item
+    mutatedApp.dispatch({ type: 'submit-resolution', proposed: { kind: 'fraction', numerator: '7', denominator: '10' } });
+    mutatedApp.dispatch({ type: 'submit-reflection', response: 'match-c' });
+    const localNext = root.querySelector('.active-beat-controls button');
+    localNext.click();
   };
 
   try {
@@ -214,7 +211,7 @@ async function runSeed2Falsification() {
     seedId: 'SEED-PLAN43-02-PREMATURE-ADVANCE-SKIPPING-REFLECTION',
     objective: 'Detect when Continue on a reflection item advances directly to the next item instead of entering reflect beat',
     targetDefect: 'Bypassing reflection or premise checks by skipping instructional beat schedule closure',
-    mutationInjected: 'Capture-phase interception of Continue button; advances to next item without entering scheduled reflect beat',
+    mutationInjected: 'Mock element click replacement on Continue button; forces resolution and advances to next registered item (curated-relatively-prime-addition-one-half-two-fifths) without entering scheduled reflect beat',
     executionResult: 'DEFECT_DETECTED_BY_ASSERTION',
     cleanPreRun: 'PASS',
     mutationAssertionFailure: caughtError,

@@ -3,6 +3,7 @@ import { createFractionFlowApp, getCompletionIntentFor, prepareProgressionTransa
 import { PRACTICE_TYPES } from '../src/app/practice-types.js';
 import { STRINGS } from '../src/render/strings.js';
 import { setupMockDOM, teardownMockDOM } from './fixtures/mock-dom.js';
+import { createReplayEnvelope, replayEpisode } from '../src/interaction/replay.js';
 
 function whole(value) {
   return { kind: 'fraction', numerator: String(value), denominator: '1' };
@@ -634,6 +635,11 @@ describe('Plan 43 — Shared Episode Completion and Progression Suite', () => {
       expect(prepared.completedOldState.status).toBe('resolved');
       expect(prepared.destinationState.dummyDestination).toBe(true);
       expect(prepared.destinationState.itemId).toBe('one-half-plus-one-third');
+
+      // Replay snapshot equality: candidate completed state round-trips exactly
+      const envelope = createReplayEnvelope(prepared.completedOldState);
+      const replayed = replayEpisode(envelope);
+      expect(replayed).toEqual(prepared.completedOldState);
       app.destroy();
     });
 
@@ -662,27 +668,62 @@ describe('Plan 43 — Shared Episode Completion and Progression Suite', () => {
       expect(prepared.actionKind).toBe('return');
       expect(prepared.completedOldState.status).toBe('resolved');
       expect(prepared.completedOldState.established.operation.proposed).toEqual(fraction(5, 7));
+
+      // Replay snapshot equality: completed return candidate round-trips exactly
+      const envelope = createReplayEnvelope(prepared.completedOldState);
+      const replayed = replayEpisode(envelope);
+      expect(replayed).toEqual(prepared.completedOldState);
       app.destroy();
     });
 
-    it('identity completion: returns identical state when reflection is already resolved', () => {
-      const alreadyResolvedState = Object.freeze({
-        status: 'resolved',
-        beat: 'reflect',
-        episodeDefinition: { id: 'phase-2-unlike-proper-addition-reflection', revision: '3' },
-        established: { reflection: { response: 'mock' } },
+    it('identity completion: returns identical state when reflection is already resolved without redundant mutation', () => {
+      const document = setupMockDOM();
+      const root = document.createElement('div');
+      document.body.appendChild(root);
+
+      const reflectionPracticeType = Object.freeze({
+        ...PRACTICE_TYPES[0],
+        items: Object.freeze(PRACTICE_TYPES[0].items.slice(2, 4)),
       });
 
+      const app = createFractionFlowApp({
+        root,
+        practiceTypes: [reflectionPracticeType],
+        presentationMode: 'instant-test',
+        navigationMode: 'direct',
+      }).mount();
+
+      root.querySelector('.app-practice-button').click();
+      app.dispatch({ type: 'acknowledge-encounter' });
+      app.dispatch({ type: 'submit-notice', matchesUnits: false });
+      app.dispatch({ type: 'propose-common-denominator', proposed: fraction(10, 1) });
+      app.dispatch({ type: 'submit-equivalent-form', proposed: fraction(5, 10) });
+      app.dispatch({ type: 'submit-equivalent-form', proposed: fraction(2, 10) });
+      app.dispatch({ type: 'submit-operation-result', proposed: fraction(7, 10) });
+      app.dispatch({ type: 'submit-resolution', proposed: fraction(7, 10) });
+      app.dispatch({ type: 'submit-reflection', response: 'match-c' });
+
+      const resolvedReflectionState = app.getState();
+      expect(resolvedReflectionState.status).toBe('resolved');
+      expect(resolvedReflectionState.beat).toBe('reflect');
+
       const prepared = prepareProgressionTransaction({
-        currentState: alreadyResolvedState,
+        currentState: resolvedReflectionState,
         actionKind: 'advance',
-        practiceType: PRACTICE_TYPES[0],
-        activeIndex: 2,
+        practiceType: reflectionPracticeType,
+        activeIndex: 0,
         prepareDestination: () => ({ state: { ready: true } }),
       });
 
       expect(prepared.ok).toBe(true);
-      expect(prepared.completedOldState).toBe(alreadyResolvedState);
+      // Identity completion: returns identical state reference, zero mutation
+      expect(prepared.completedOldState).toBe(resolvedReflectionState);
+
+      // Replay snapshot equality holds for resolved reflection
+      const envelope = createReplayEnvelope(prepared.completedOldState);
+      const replayed = replayEpisode(envelope);
+      expect(replayed).toEqual(prepared.completedOldState);
+      app.destroy();
     });
 
     it('refuses progression transaction atomically without state mutation when destination fails', () => {

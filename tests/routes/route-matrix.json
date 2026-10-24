@@ -16295,7 +16295,7 @@
         "assertions": [
           {
             "type": "hasSelector",
-            "target": ".app-episode"
+            "target": ".app-episode[data-current-item-id=\"one-half-plus-one-third\"]"
           },
           {
             "type": "hasSelector",
@@ -16307,7 +16307,7 @@
           },
           {
             "type": "notHasSelector",
-            "target": ".active-beat-recovery"
+            "target": ".recovery-feedback"
           }
         ]
       }
@@ -16341,7 +16341,7 @@
         "assertions": [
           {
             "type": "hasSelector",
-            "target": ".app-episode"
+            "target": ".app-episode[data-current-item-id=\"one-half-plus-one-fifth\"]"
           },
           {
             "type": "hasSelector",
@@ -16353,7 +16353,7 @@
           },
           {
             "type": "notHasSelector",
-            "target": ".app-linear-view .active-beat-recovery"
+            "target": ".recovery-feedback"
           }
         ]
       }
@@ -16388,7 +16388,7 @@
         "assertions": [
           {
             "type": "hasSelector",
-            "target": ".app-episode"
+            "target": ".app-episode[data-current-item-id=\"plan40-identify-one-half-one-eighth-8\"]"
           },
           {
             "type": "hasSelector",
@@ -16396,7 +16396,7 @@
           },
           {
             "type": "notHasSelector",
-            "target": ".active-beat-recovery"
+            "target": ".recovery-feedback"
           }
         ]
       }
@@ -16437,6 +16437,10 @@
             "target": ".app-episode[hidden]"
           },
           {
+            "type": "notHasSelector",
+            "target": ".app-episode[data-current-item-id]"
+          },
+          {
             "type": "containsText",
             "target": "#fractionflow-title",
             "value": "FractionFlow"
@@ -16473,7 +16477,7 @@
         "assertions": [
           {
             "type": "hasSelector",
-            "target": ".app-episode"
+            "target": ".app-episode[data-current-item-id=\"takeaway-12-8-minus-3\"]"
           },
           {
             "type": "hasSelector",
@@ -16485,7 +16489,7 @@
           },
           {
             "type": "notHasSelector",
-            "target": ".active-beat-recovery"
+            "target": ".recovery-feedback"
           }
         ]
       }
@@ -16519,7 +16523,7 @@
         "assertions": [
           {
             "type": "hasSelector",
-            "target": ".app-episode"
+            "target": ".app-episode[data-current-item-id=\"plan40-construct-three-fourths-two-fifths-20\"]"
           },
           {
             "type": "hasSelector",
@@ -16531,7 +16535,7 @@
           },
           {
             "type": "notHasSelector",
-            "target": ".active-beat-recovery"
+            "target": ".recovery-feedback"
           }
         ]
       }
@@ -16565,7 +16569,7 @@
         "assertions": [
           {
             "type": "hasSelector",
-            "target": ".app-episode"
+            "target": ".app-episode[data-current-item-id=\"plan40-inspect-seven-tenths-one-fourth-20\"]"
           },
           {
             "type": "hasSelector",
@@ -16577,7 +16581,7 @@
           },
           {
             "type": "notHasSelector",
-            "target": ".app-linear-view .active-beat-recovery"
+            "target": ".recovery-feedback"
           }
         ]
       }
@@ -16612,7 +16616,7 @@
         "assertions": [
           {
             "type": "hasSelector",
-            "target": ".app-episode"
+            "target": ".app-episode[data-current-item-id=\"plan40-identify-one-half-one-eighth-8\"]"
           },
           {
             "type": "hasSelector",
@@ -16624,7 +16628,7 @@
           },
           {
             "type": "notHasSelector",
-            "target": ".active-beat-recovery"
+            "target": ".recovery-feedback"
           }
         ]
       }
@@ -16658,7 +16662,7 @@
         "assertions": [
           {
             "type": "hasSelector",
-            "target": ".app-episode"
+            "target": ".app-episode[data-current-item-id=\"bridge-02-fourth-4\"]"
           },
           {
             "type": "hasSelector",
@@ -16670,14 +16674,14 @@
           },
           {
             "type": "notHasSelector",
-            "target": ".active-beat-recovery"
+            "target": ".recovery-feedback"
           }
         ]
       }
     },
     {
       "id": "ROUTE-PLAN43-REFLECTION-MILESTONE-CONTINUE-NEXT",
-      "behavior": "Witness milestone Continue on reflection item 3 (1/2 + 1/5) with keyboard navigation in narrow 360x740 viewport, verify deliberate focus onto connected reflection control, submit matching reflection, advance via Next problem, and assert item 4 clean state.",
+      "behavior": "Witness milestone Continue on reflection item 3 (1/2 + 1/5) with mixed input (mouse setup and keyboard Enter continuation) in narrow 360x740 viewport, verify deliberate focus onto connected reflection control, submit matching reflection, advance via Next problem, and assert item 4 clean state.",
       "configuration": "phase2-bundle-1",
       "startingSurface": "mounted-app-entry",
       "viewport": {
@@ -16692,8 +16696,8 @@
           "method": "completePlan43Branch",
           "branch": "substantive-reflection",
           "view": "visual",
-          "inputMode": "keyboard",
-          "description": "Execute reflection milestone continue branch"
+          "inputMode": "mixed",
+          "description": "Execute reflection milestone continue branch with mixed input (mouse setup, keyboard Enter continuation)"
         }
       ],
       "expect": {
@@ -16704,7 +16708,7 @@
         "assertions": [
           {
             "type": "hasSelector",
-            "target": ".app-episode"
+            "target": ".app-episode[data-current-item-id=\"one-half-plus-two-fifths\"]"
           },
           {
             "type": "hasSelector",
@@ -16716,7 +16720,53 @@
           },
           {
             "type": "notHasSelector",
-            "target": ".active-beat-recovery"
+            "target": ".recovery-feedback"
+          }
+        ]
+      }
+    },
+    {
+      "id": "ROUTE-PLAN43-PREMISE-REFLECTION-NEXT",
+      "behavior": "Complete reflection item under premise check condition CM-01-P in desktop 1366x768 viewport, observe milestone Continue, enter reflection, submit correct No response to false premise, observe local Next problem, and advance directly to fresh item.",
+      "configuration": "phase2-bundle-4",
+      "startingSurface": "mounted-app-entry",
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "motionMode": "standard-motion",
+      "witness": "browser",
+      "inputMode": "mouse",
+      "actions": [
+        {
+          "method": "completePlan43Branch",
+          "branch": "premise-reflection",
+          "view": "visual",
+          "inputMode": "mouse",
+          "description": "Execute premise reflection milestone continue branch"
+        }
+      ],
+      "expect": {
+        "capture": {
+          "target": ".app-episode",
+          "type": "innerHTML"
+        },
+        "assertions": [
+          {
+            "type": "hasSelector",
+            "target": ".app-episode[data-current-item-id=\"one-half-plus-two-fifths\"]"
+          },
+          {
+            "type": "hasSelector",
+            "target": ".app-visual-view .control-btn"
+          },
+          {
+            "type": "notHasSelector",
+            "target": "#operate-sum-input"
+          },
+          {
+            "type": "notHasSelector",
+            "target": ".recovery-feedback"
           }
         ]
       }

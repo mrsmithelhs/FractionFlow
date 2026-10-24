@@ -71,6 +71,9 @@ export function buildPlan43WitnessActions(config) {
     actions.push(action('assertFocused', `${host} .active-beat-controls button`, {
       description: 'Assert focus landed on local progression button',
     }));
+    actions.push(action('assertFocused', `${host} .active-beat-controls button`, {
+      description: 'Assert focus landed on local progression button',
+    }));
     actions.push(screenshot('branch-01-addition-construct-before.png', 'Addition construct before Next', 'Capture accepted construct item before advance'));
 
     // Advance directly via local button
@@ -81,10 +84,14 @@ export function buildPlan43WitnessActions(config) {
     actions.push(action('assert', host, {
       description: 'Assert item 2 mounted fresh with clean state',
       assertions: [
+        { type: 'hasSelector', target: '.app-episode[data-current-item-id="one-half-plus-one-third"]' },
         { type: 'hasSelector', target: `${host} .control-btn` },
         { type: 'notHasSelector', target: `${host} #${prefix}transform-num-input-left` },
-        { type: 'notHasSelector', target: `${host} .active-beat-recovery` },
+        { type: 'notHasSelector', target: `${host} .recovery-feedback` },
       ],
+    }));
+    actions.push(action('assertFocused', '.app-episode', {
+      description: 'Assert focus landed on episode landmark after advance',
     }));
     return actions;
   }
@@ -121,6 +128,9 @@ export function buildPlan43WitnessActions(config) {
         { type: 'containsText', target: `${host} .active-beat-controls button`, value: 'Next problem' },
       ],
     }));
+    actions.push(action('assertFocused', `${host} .active-beat-controls button`, {
+      description: 'Assert focus landed on local progression button',
+    }));
     actions.push(screenshot('branch-02-addition-inspect-before.png', 'Addition inspect before Next', 'Capture accepted inspect item before advance'));
 
     // Advance via keyboard Enter
@@ -130,10 +140,14 @@ export function buildPlan43WitnessActions(config) {
     actions.push(action('assert', host, {
       description: 'Assert item 3 mounted fresh with clean state',
       assertions: [
+        { type: 'hasSelector', target: '.app-episode[data-current-item-id="one-half-plus-one-fifth"]' },
         { type: 'hasSelector', target: `${host} .control-btn` },
         { type: 'notHasSelector', target: `${host} #${prefix}operate-sum-input` },
-        { type: 'notHasSelector', target: `${host} .active-beat-recovery` },
+        { type: 'notHasSelector', target: `${host} .recovery-feedback` },
       ],
+    }));
+    actions.push(action('assertFocused', '.app-episode', {
+      description: 'Assert focus landed on episode landmark after advance',
     }));
     return actions;
   }
@@ -223,6 +237,9 @@ export function buildPlan43WitnessActions(config) {
         { type: 'containsText', target: `${host} .active-beat-controls button`, value: 'Next problem' },
       ],
     }));
+    actions.push(action('assertFocused', `${host} .active-beat-controls button`, {
+      description: 'Assert focus landed on local progression button',
+    }));
     actions.push(screenshot('branch-03-addition-identify-before.png', 'Identify side before Next', 'Capture accepted identify-side item before advance'));
 
     actions.push(interact(`${host} .active-beat-controls button`, 'Advance directly to item 8'));
@@ -231,10 +248,14 @@ export function buildPlan43WitnessActions(config) {
     actions.push(action('assert', host, {
       description: 'Assert item 8 mounted fresh with clean state',
       assertions: [
+        { type: 'hasSelector', target: '.app-episode[data-current-item-id="plan40-identify-one-half-one-eighth-8"]' },
         { type: 'hasSelector', target: `${host} .control-btn` },
         { type: 'notHasSelector', target: `${host} #${prefix}transform-num-input-right` },
-        { type: 'notHasSelector', target: `${host} .active-beat-recovery` },
+        { type: 'notHasSelector', target: `${host} .recovery-feedback` },
       ],
+    }));
+    actions.push(action('assertFocused', '.app-episode', {
+      description: 'Assert focus landed on episode landmark after advance',
     }));
     return actions;
   }
@@ -256,6 +277,9 @@ export function buildPlan43WitnessActions(config) {
         { type: 'containsText', target: `${host} .progression-notice`, value: 'You’ve tried every problem in this set.' },
       ],
     }));
+    actions.push(action('assertFocused', `${host} .active-beat-controls button`, {
+      description: 'Assert focus landed on local Back to start button',
+    }));
     actions.push(screenshot('branch-04-plan20-same-denom-before.png', 'Plan 20 before return', 'Capture single-item completion before return'));
 
     // Activate Back to start
@@ -268,7 +292,11 @@ export function buildPlan43WitnessActions(config) {
       assertions: [
         { type: 'notHasSelector', target: '.app-entry-page[hidden]' },
         { type: 'hasSelector', target: '.app-episode[hidden]' },
+        { type: 'notHasSelector', target: '.app-episode[data-current-item-id]' },
       ],
+    }));
+    actions.push(action('assertFocused', '#fractionflow-title', {
+      description: 'Assert title focused upon return to entry',
     }));
     return actions;
   }
@@ -287,6 +315,9 @@ export function buildPlan43WitnessActions(config) {
         { type: 'containsText', target: `${host} .active-beat-controls button`, value: 'Next problem' },
       ],
     }));
+    actions.push(action('assertFocused', `${host} .active-beat-controls button`, {
+      description: 'Assert focus landed on local progression button',
+    }));
     actions.push(screenshot('branch-05-subtraction-takeaway-before.png', 'Subtraction takeaway before Next', 'Capture like-denominator takeaway before advance'));
 
     actions.push(interact(`${host} .active-beat-controls button`, 'Advance to item 2'));
@@ -295,10 +326,14 @@ export function buildPlan43WitnessActions(config) {
     actions.push(action('assert', host, {
       description: 'Assert item 2 mounted fresh with clean state',
       assertions: [
+        { type: 'hasSelector', target: '.app-episode[data-current-item-id="takeaway-12-8-minus-3"]' },
         { type: 'hasSelector', target: `${host} .active-beat-controls button` },
         { type: 'notHasSelector', target: `${host} #operate-fraction-numerator-input` },
-        { type: 'notHasSelector', target: `${host} .active-beat-recovery` },
+        { type: 'notHasSelector', target: `${host} .recovery-feedback` },
       ],
+    }));
+    actions.push(action('assertFocused', `${host} .active-beat-controls button`, {
+      description: 'Assert focus landed on takeaway button after advance',
     }));
     return actions;
   }
@@ -321,6 +356,9 @@ export function buildPlan43WitnessActions(config) {
         { type: 'containsText', target: `${host} .active-beat-controls button`, value: 'Next problem' },
       ],
     }));
+    actions.push(action('assertFocused', `${host} .active-beat-controls button`, {
+      description: 'Assert focus landed on local progression button',
+    }));
     actions.push(screenshot('branch-06-unlike-subtraction-construct-before.png', 'Unlike subtraction construct before Next', 'Capture unlike subtraction construct before advance'));
 
     actions.push(interact(`${host} .active-beat-controls button`, 'Advance to item 2'));
@@ -329,10 +367,14 @@ export function buildPlan43WitnessActions(config) {
     actions.push(action('assert', host, {
       description: 'Assert item 2 mounted fresh with clean state',
       assertions: [
+        { type: 'hasSelector', target: '.app-episode[data-current-item-id="plan40-construct-three-fourths-two-fifths-20"]' },
         { type: 'hasSelector', target: `${host} .control-btn` },
         { type: 'notHasSelector', target: `${host} #${prefix}transform-num-input-left` },
-        { type: 'notHasSelector', target: `${host} .active-beat-recovery` },
+        { type: 'notHasSelector', target: `${host} .recovery-feedback` },
       ],
+    }));
+    actions.push(action('assertFocused', '.app-episode', {
+      description: 'Assert focus landed on episode landmark after advance',
     }));
     return actions;
   }
@@ -389,6 +431,9 @@ export function buildPlan43WitnessActions(config) {
         { type: 'containsText', target: `${host} .active-beat-controls button`, value: 'Next problem' },
       ],
     }));
+    actions.push(action('assertFocused', `${host} .active-beat-controls button`, {
+      description: 'Assert focus landed on local progression button',
+    }));
     actions.push(screenshot('branch-07-unlike-subtraction-inspect-before.png', 'Unlike subtraction inspect before Next', 'Capture inspect subtraction before advance'));
 
     actions.push(pressKey(`${host} .active-beat-controls button`, 'Enter', 'Keyboard Enter to advance to item 5'));
@@ -397,10 +442,14 @@ export function buildPlan43WitnessActions(config) {
     actions.push(action('assert', host, {
       description: 'Assert item 5 mounted fresh with clean state',
       assertions: [
+        { type: 'hasSelector', target: '.app-episode[data-current-item-id="plan40-inspect-seven-tenths-one-fourth-20"]' },
         { type: 'hasSelector', target: `${host} .control-btn` },
         { type: 'notHasSelector', target: `${host} #${prefix}operate-fraction-numerator-input` },
-        { type: 'notHasSelector', target: `${host} .active-beat-recovery` },
+        { type: 'notHasSelector', target: `${host} .recovery-feedback` },
       ],
+    }));
+    actions.push(action('assertFocused', '.app-episode', {
+      description: 'Assert focus landed on episode landmark after advance',
     }));
     return actions;
   }
@@ -490,6 +539,9 @@ export function buildPlan43WitnessActions(config) {
         { type: 'containsText', target: `${host} .active-beat-controls button`, value: 'Next problem' },
       ],
     }));
+    actions.push(action('assertFocused', `${host} .active-beat-controls button`, {
+      description: 'Assert focus landed on local progression button',
+    }));
     actions.push(screenshot('branch-08-unlike-subtraction-identify-before.png', 'Unlike subtraction identify before Next', 'Capture identify subtraction before advance'));
 
     actions.push(interact(`${host} .active-beat-controls button`, 'Advance to item 8'));
@@ -498,10 +550,14 @@ export function buildPlan43WitnessActions(config) {
     actions.push(action('assert', host, {
       description: 'Assert item 8 mounted fresh with clean state',
       assertions: [
+        { type: 'hasSelector', target: '.app-episode[data-current-item-id="plan40-identify-one-half-one-eighth-8"]' },
         { type: 'hasSelector', target: `${host} .control-btn` },
         { type: 'notHasSelector', target: `${host} #${prefix}transform-num-input-right` },
-        { type: 'notHasSelector', target: `${host} .active-beat-recovery` },
+        { type: 'notHasSelector', target: `${host} .recovery-feedback` },
       ],
+    }));
+    actions.push(action('assertFocused', '.app-episode', {
+      description: 'Assert focus landed on episode landmark after advance',
     }));
     return actions;
   }
@@ -519,6 +575,9 @@ export function buildPlan43WitnessActions(config) {
         { type: 'containsText', target: `${host} .plan39-finish`, value: 'Next problem' },
       ],
     }));
+    actions.push(action('assertFocused', `${host} .plan39-finish`, {
+      description: 'Assert focus landed on local progression button',
+    }));
     actions.push(screenshot('branch-09-number-line-locate-before.png', 'Number line locate before Next', 'Capture number line locate before advance'));
 
     actions.push(interact(`${host} .plan39-finish`, 'Advance to item 2'));
@@ -527,9 +586,14 @@ export function buildPlan43WitnessActions(config) {
     actions.push(action('assert', host, {
       description: 'Assert item 2 mounted fresh with clean state',
       assertions: [
+        { type: 'hasSelector', target: '.app-episode[data-current-item-id="bridge-02-fourth-4"]' },
         { type: 'hasSelector', target: `${host} .plan39-stepper-next` },
         { type: 'hasSelector', target: `${host} .plan39-check-position[disabled]` },
+        { type: 'notHasSelector', target: `${host} .recovery-feedback` },
       ],
+    }));
+    actions.push(action('assertFocused', '.app-episode', {
+      description: 'Assert focus landed on episode landmark after advance',
     }));
     return actions;
   }
@@ -605,6 +669,9 @@ export function buildPlan43WitnessActions(config) {
         { type: 'containsText', target: `${host} .active-beat-controls button`, value: 'Next problem' },
       ],
     }));
+    actions.push(action('assertFocused', `${host} .active-beat-controls button`, {
+      description: 'Assert focus landed on local progression button',
+    }));
     actions.push(screenshot('branch-10-reflection-milestone-after.png', 'Reflection milestone after response', 'Capture resolved reflection state'));
 
     // Press Enter to advance to item 4
@@ -613,10 +680,112 @@ export function buildPlan43WitnessActions(config) {
     actions.push(action('assert', host, {
       description: 'Assert item 4 mounted fresh with clean state',
       assertions: [
+        { type: 'hasSelector', target: '.app-episode[data-current-item-id="one-half-plus-two-fifths"]' },
         { type: 'hasSelector', target: `${host} .control-btn` },
         { type: 'notHasSelector', target: `${host} #${prefix}operate-sum-input` },
-        { type: 'notHasSelector', target: `${host} .active-beat-recovery` },
+        { type: 'notHasSelector', target: `${host} .recovery-feedback` },
       ],
+    }));
+    actions.push(action('assertFocused', '.app-episode', {
+      description: 'Assert focus landed on episode landmark after advance',
+    }));
+    return actions;
+  }
+
+
+  // Branch 11: Direct-mode premise check milestone Continue -> reflect -> answer 'no' -> Next problem
+  if (branch === 'premise-reflection') {
+    // Select Check the premise condition first
+    actions.push(interact('.app-gear-button', 'Open settings'));
+    actions.push(interact('[data-condition-id="phase2-bundle-4"]', 'Select Check the premise condition'));
+    actions.push(interact('.app-gear-button', 'Close settings'));
+
+    startAndSwitchView('sum-under-one', 'Start addition practice in premise mode');
+
+    // Item 0: construct
+    actions.push(interact(`${host} .control-btn`, 'Item 1 encounter'));
+    actions.push(fill(`${host} #${prefix}transform-num-input-left`, '8', 'Item 1 left'));
+    actions.push(interact(`${host} .control-submit-btn`, 'Item 1 submit left'));
+    actions.push(fill(`${host} #${prefix}transform-num-input-right`, '3', 'Item 1 right'));
+    actions.push(interact(`${host} .control-submit-btn`, 'Item 1 submit right'));
+    actions.push(fill(`${host} #${prefix}operate-sum-input`, '11', 'Item 1 sum'));
+    actions.push(interact(`${host} .control-submit-btn`, 'Item 1 submit sum'));
+    actions.push(interact(`${host} .active-beat-controls button`, 'Advance to item 2'));
+
+    // Item 1: inspect
+    actions.push(interact(`${host} .control-btn`, 'Item 2 encounter'));
+    actions.push(interact(`${host} .inspect-change-button`, 'Repair left candidate 5/12'));
+    actions.push(fill(`${host} #${prefix}transform-num-input-left`, '6', 'Enter corrected left 6/12'));
+    actions.push(interact(`${host} .control-submit-btn`, 'Submit left repair'));
+    actions.push(interact(`${host} button[aria-label^="Keep"]`, 'Item 2 keep right'));
+    actions.push(fill(`${host} #${prefix}operate-sum-input`, '10', 'Item 2 sum'));
+    actions.push(interact(`${host} .control-submit-btn`, 'Item 2 submit sum'));
+    actions.push(interact(`${host} .active-beat-controls button`, 'Advance to item 3'));
+
+    // Item 2: reflection item with premise check (one-half-plus-one-fifth)
+    actions.push(interact(`${host} .control-btn`, 'Item 3 encounter'));
+    actions.push(interact(`${host} .control-choice-btn >> nth=1`, 'Notice: different units'));
+    actions.push(interact(`${host} button[aria-label="Common denominator 10"]`, 'Decide denominator 10'));
+    actions.push(fill(`${host} #${prefix}transform-num-input-left`, '5', 'Transform left 5/10'));
+    actions.push(interact(`${host} .control-submit-btn`, 'Submit left'));
+    actions.push(fill(`${host} #${prefix}transform-num-input-right`, '2', 'Transform right 2/10'));
+    actions.push(interact(`${host} .control-submit-btn`, 'Submit right'));
+    actions.push(fill(`${host} #${prefix}operate-sum-input`, '7', 'Operate sum 7/10'));
+    actions.push(interact(`${host} .control-submit-btn`, 'Submit sum'));
+
+    // At resolve milestone: button says Continue
+    actions.push(action('assert', `${host} .active-beat-controls button`, {
+      description: 'Assert Continue button present at milestone resolve',
+      assertions: [
+        { type: 'containsText', target: `${host} .active-beat-controls button`, value: 'Continue' },
+      ],
+    }));
+    actions.push(action('assertFocused', `${host} .active-beat-controls button`, {
+      description: 'Assert Continue button is focused at milestone',
+    }));
+    actions.push(screenshot('branch-11-premise-reflection-before.png', 'Premise reflection before Continue', 'Capture resolve milestone before Continue under premise check'));
+
+    // Click Continue to enter reflect beat
+    actions.push(interact(`${host} .active-beat-controls button`, 'Click Continue to enter premise reflection'));
+
+    // In reflect beat: assert active element is premise choice button ('No'/'Yes')
+    actions.push(action('assert', host, {
+      description: 'Assert reflect beat active with premise choices focused',
+      assertions: [
+        { type: 'hasSelector', target: `${host} .active-beat-controls .control-choice-btn` },
+        { type: 'notHasSelector', target: `${host} .active-beat-controls .control-action-btn` },
+      ],
+    }));
+    actions.push(action('assertFocused', `${host} .active-beat-controls .control-choice-btn >> nth=0`, {
+      description: 'Assert focus landed on connected premise control',
+    }));
+
+    // Submit 'No' (the correct premise answer for 1/2 vs 4/10)
+    actions.push(interact(`${host} .active-beat-controls .control-choice-btn >> nth=1`, 'Submit premise response No'));
+
+    // Now in resolved reflection: button says Next problem
+    actions.push(action('assert', `${host} .active-beat-controls button`, {
+      description: 'Assert local Next problem button present after premise check answered',
+      assertions: [
+        { type: 'containsText', target: `${host} .active-beat-controls button`, value: 'Next problem' },
+      ],
+    }));
+    actions.push(screenshot('branch-11-premise-reflection-after.png', 'Premise reflection after response', 'Capture resolved premise state'));
+
+    // Click Next problem to advance to item 4
+    actions.push(interact(`${host} .active-beat-controls button`, 'Click Next problem to advance'));
+
+    actions.push(action('assert', host, {
+      description: 'Assert item 4 mounted fresh with clean state under premise condition',
+      assertions: [
+        { type: 'hasSelector', target: '.app-episode[data-current-item-id="one-half-plus-two-fifths"]' },
+        { type: 'hasSelector', target: `${host} .control-btn` },
+        { type: 'notHasSelector', target: `${host} #${prefix}operate-sum-input` },
+        { type: 'notHasSelector', target: `${host} .recovery-feedback` },
+      ],
+    }));
+    actions.push(action('assertFocused', '.app-episode', {
+      description: 'Assert focus landed on episode landmark after advance',
     }));
     return actions;
   }

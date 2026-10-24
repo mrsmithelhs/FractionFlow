@@ -9,16 +9,17 @@ const repoRoot = path.resolve(__dirname, '../..');
 const evidenceDir = path.resolve(repoRoot, 'reports/development/plan-43-shared-episode-completion-and-progression/evidence');
 
 async function main() {
-  const summary = await runRouteMatrix({ filter: 'ROUTE-PLAN43' });
+  const summary = await runRouteMatrix({});
   const receipt = {
     capturedAt: new Date().toISOString(),
     browserChannel: summary.browserChannel,
-    filter: 'ROUTE-PLAN43',
-    routeRows: summary.routeRows,
-    browserExecutions: summary.browserExecutions,
+    mode: 'clean',
+    routeRows: summary.routeCount,
+    browserExecutions: summary.total,
     passed: summary.passed,
     failed: summary.failed,
     seedDetected: summary.seedDetected,
+    contexts: summary.contexts,
     results: summary.results,
   };
   fs.writeFileSync(path.join(evidenceDir, 'route-matrix-plan43-receipt.json'), JSON.stringify(receipt, null, 2), 'utf8');

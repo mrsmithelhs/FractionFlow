@@ -3581,6 +3581,26 @@ async function runRouteMatrix(options = {}) {
         ],
         screenshots: routeDetails.flatMap((result) => result.screenshots.map((screenshot) => ({ routeId: result.routeId, context: result.context, motionMode: result.motionMode, ...screenshot }))),
       }, null, 2)}\n`);
+
+      const plan43EvidenceRoot = path.join(rootDir, 'reports/development/plan-43-shared-episode-completion-and-progression/evidence');
+      if (fs.existsSync(plan43EvidenceRoot)) {
+        fs.writeFileSync(path.join(plan43EvidenceRoot, 'route-matrix-plan43-receipt.json'), `${JSON.stringify({
+          capturedAt: new Date().toISOString(),
+          browserChannel: browserChannel || 'default chromium',
+          mode: 'clean',
+          routeRows: routesToRun.length,
+          browserExecutions: routeResults.length,
+          passed,
+          failed,
+          seedDetected,
+          contexts: routeResults.reduce((counts, result) => {
+            const key = result.context || 'prototype';
+            counts[key] = (counts[key] || 0) + 1;
+            return counts;
+          }, {}),
+          results: routeDetails,
+        }, null, 2)}\n`);
+      }
     }
     if (plan39WitnessSeed) {
       fs.writeFileSync(path.join(plan39EvidenceRoot, `plan39-seed-${plan39WitnessSeed}-receipt.json`), `${JSON.stringify({
