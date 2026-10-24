@@ -1341,3 +1341,31 @@ device or assistive-technology behavior. Deployment remains separately gated.
 **Related:** Plan 39 Repair 02 mechanism proposal and review; browser-walkthrough-review.md;
 Plan 39 owner-review-repair-02-proposal.md; AGENTS.md owner consultation limits.
 
+### DECISION-050 - Replace empty completion acknowledgments with direct progression
+
+**Date:** 2026-10-23
+
+**Decision:** The owner adopted a shared progression repair after the Plan39
+review exposed the same navigation-only Finish step across current addition,
+subtraction and number-line families. Once the last meaningful task is accepted,
+retain the useful result and offer learner-triggered Next problem directly in
+the local action area. One activation advances one vetted identity with fresh
+state. At the final item, show concise exhaustion meaning and Back to start;
+do not add another acknowledgment or a new summary screen. Preserve substantive
+reflection/premise responses; an action opening another task says Continue.
+
+Plan43 owns the bounded shared behavior. Its pre-source mechanism gate must
+settle completion/intent timing, state ownership, focus, failure atomicity and
+historical definition/replay compatibility. Plan39 Repair04 follows acceptance
+of that shared behavior and retains only its visual layout/affordance work and
+integration checks. The owner requested packet preparation, not implementation
+launch, another chat, packet closure or deployment.
+
+This refines DECISION-041/042's resolve-navigation requirement: no extra learner
+acknowledgment is required when there is no further task or useful information.
+It does not remove actual completion/recording obligations or skip reflection,
+permit automatic item advance, change old envelopes or accept current rendering.
+No extra explanations should be invented to justify an otherwise empty button.
+
+**Related:** Plan43; Plan39 Repair04; DECISION-041/042/044/045/049.
+

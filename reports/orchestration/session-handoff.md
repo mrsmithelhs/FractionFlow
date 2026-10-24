@@ -6,6 +6,15 @@ and pause records retained later in this file.
 
 ## Current board and owner direction
 
+Plan 43 prepared 2026-10-23: Shared Episode Completion and Direct Progression.
+Owner adopted direct useful progression across affected current families and
+requested the packet. It is DRAFT, not assigned; no implementation/chat launched.
+Sequence: Plan 43 mechanism gate, implementation and acceptance, then Plan 39
+Repair 04 visual work. Repair 04 now consumes the shared behavior rather than
+redesigning completion. Preserve meaningful reflection, final-item return, fresh
+state/focus and historical replay. Plan 39 remains DELIVERED; it is deliberately
+not a dependency of Plan 43, avoiding a closure/repair cycle. See DECISION-050.
+
 Repair 04 design prepared 2026-10-23: owner selected a pale yellow starting tray,
 hover feedback for the draggable tile, a light green accepted-result header with
 borderless fraction, separated aligned graphics and direct Next problem instead

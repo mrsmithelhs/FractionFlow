@@ -26,10 +26,15 @@ between aligned bar and line, and direct Next problem instead of an empty Finish
 acknowledgment. Green applies only after accepted Check. Preserve the separate
 tile-containment correction, non-drag alternatives and historical replay meaning.
 These requirements supersede conflicting layout/Finish requirements below for
-the new current implementation only. This turn prepares the repair; it does not
+the new current implementation only. Sequencing update: Plan 43 owns the shared
+completion/progression change across current task families; accept it before
+launching Repair 04. Repair 04 then consumes that behavior and owns only its
+number-line layout/affordance integration, without a second completion redesign.
+This turn prepares the repair; it does not
 launch implementation or alter delivered status. At dispatch, resolve the
-preflight/editing window and approve the exact layout, completion/advance and
-versioning mechanism before source work. Owner acceptance/deployment stay gated.
+preflight/editing window and approve the layout and use of Plan 43's accepted
+interface before source. Stop if another completion/versioning change is needed.
+Owner acceptance/deployment stay gated.
 
 ## Owner Repair 03 amendment (2026-10-22)
 

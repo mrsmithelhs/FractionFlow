@@ -7,6 +7,12 @@ must authorize the bounded repair and resolve its status/preflight window.
 The implementer then investigates and proposes the mechanism before source work.
 Owner rendered-page/agency acceptance and deployment remain separate gates.
 
+Sequencing amendment 2026-10-23: implement and accept Plan 43 (Shared Episode
+Completion and Direct Progression) first. This repair then owns only the
+number-line layout/affordances and integration with that accepted progression.
+Do not independently redesign completion, replay or next-item navigation here.
+The original before-Plan 43 observations below remain the evidence for the need.
+
 ## Evidence and adopted decisions
 
 Owner's local use showed three problems: the unplaced tile sits centrally above
@@ -18,10 +24,11 @@ border, and a light gray hover affordance on the draggable tile.
 
 Current source corroborates these seams: src/render/number-line-locate.js creates
 the token and resolve controls; src/app/app.js gates next-item navigation on
-resolved status; src/app/styles.css owns the Plan39 layout. The fixed-height overflow was separately
+resolved status; src/app/styles.css owns the Plan 39 layout. The fixed-height overflow was separately
 repaired in 27c2eaf, with verification in token-containment-review.md. Preserve it.
-Starting baseline for this brief is 5f92b06; recheck HEAD and concurrent ownership
-at dispatch. Do not treat earlier full-run counts as current proof after changes.
+Original visual baseline was 5f92b06. At dispatch use the accepted post-Plan 43
+baseline and recheck HEAD/concurrent ownership. Do not treat earlier full-run
+counts as current proof after changes.
 
 ## Required learner behavior
 
@@ -62,32 +69,26 @@ at dispatch. Do not treat earlier full-run counts as current proof after changes
    independently or add heavy separate cards, repeated labels or captions.
    Retain the existing useful unit-relationship explanation, without adding a
    new paragraph merely to justify progression.
-5. **One useful progression action.** Replace Finish with Next problem below
-   the accepted explanation. One activation opens the next registered item in
-   fresh initial state; it must not merely expose another button or move the
-   continuation action into the upper-right navigation. Keep the accepted result
-   inspectable until activation, with no timer. Only one visible Next problem
-   action is needed for this task. On the final item retain truthful existing
-   exhaustion behavior and a meaningful return action; propose the exact final
-   state at the mechanism gate. Do not offer a nonexistent next item or invent
-   an extra summary/Finish set screen. Preserve equivalent linear-path access,
-   announcement of acceptance, and deliberate focus at the new task on advance.
+5. **Consume Plan 43 progression.** Retain its direct Next problem action below
+   the accepted explanation, fresh next-item state, final-item Back to start,
+   equivalent linear-path access, acceptance announcement and focus. Keep the
+   result inspectable until activation, with no timer or duplicate header Next.
+   This is an integration check, not a second implementation of completion.
 
 ## Requirement 0 — mechanism and compatibility stop
 
-Read the packet, this brief, token-containment-review.md, the Repair03 review,
+Read the packet, this brief, token-containment-review.md, the Repair 03 review,
 and current relevant source/tests. Propose the smallest ownership/layout changes,
-responsive behavior and completion-to-advance transaction, then stop for
-orchestrator approval. In particular:
+responsive behavior and use of Plan 43's accepted progression boundary, then stop
+for orchestrator approval. In particular:
 
-- Explain which state/intent records completion, when it occurs, and how Next
-  advances exactly once. Do not auto-dispatch the old Finish action from render
-  or a timer just to unlock app navigation. Mathematical/instructional truth
-  remains upstream; renderers do not decide success or advance registered items.
-- Preserve historical definition/replay semantics, including revision1/v7 and
-  revision2/v8. Determine whether this change needs the next sequential current
-  definition/replay revision; justify it rather than assuming either outcome.
-  No relabeling old envelopes or silently editing their expected behavior.
+- Name the accepted Plan 43 completion/advance interface and explain how layout
+  uses it without duplicating eligibility, completion intents or navigation.
+  Mathematical/instructional truth remains upstream.
+- Preserve all historical definition/replay semantics, including revision1/v7,
+  revision2/v8 and any new current contract accepted by Plan 43. This layout repair
+  should not need another instructional revision; stop if integration requires
+  changing that contract. Do not relabel old envelopes or expected behavior.
 - Identify historical versus current route contexts. Preserve historical action
   objects/mappings and evidence; add/version current witnesses as needed when
   their old Finish action no longer describes current behavior. Do not weaken
