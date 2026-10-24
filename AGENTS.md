@@ -187,6 +187,19 @@ verification in the orchestrator; do not repeatedly call Sol for incremental
 drafts or mechanical repairs. Use bounded Luna browser walkthroughs for fresh
 rendered-page observations, without treating them as actual learner evidence.
 
+Owner review-model amendment (2026-10-24): use **Luna at high reasoning effort**
+as the default for read-only review subagents, including review of another
+provider's implementation. This supersedes older Sol-default review instructions
+in packets and handoffs; implementation remains Luna medium by default. Use a
+cold, self-contained brief and a default role that honors the requested model
+and effort. Keep reviews bounded, normally one consolidated call, with another
+only for a substantial remaining issue. Do routine follow-up verification inline.
+Do not automatically escalate to Sol or Astra; seek owner direction if the Luna
+review proves insufficient or the allowed configuration is unavailable. Preserve
+read-only/no-fan-out constraints, capability/disposition reporting and all
+acceptance gates. Cross-provider benefit is a hypothesis to evaluate, not a
+claimed outcome. Never relabel earlier Sol consultations as Luna reviews.
+
 <!-- bootstrap:commit-discipline v2 begin -->
 ## Commit Discipline
 

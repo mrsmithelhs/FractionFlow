@@ -62,6 +62,14 @@ limits or authorize worker fan-out. A temporary implementation child reports
 questions/stops to its parent and persists checkpoints; parent retains mechanism,
 status, independent review and owner acceptance authority.
 
+Owner amendment 2026-10-24: default review subagents to **Luna at high effort**,
+read-only with a cold self-contained brief. This supersedes the older Sol-only
+review default above and in packets/handoffs; it does not grant worker fan-out.
+Normally use one consolidated review, with routine follow-up kept inline by the
+orchestrator. Do not automatically escalate to Sol/Astra or silently substitute
+unavailable settings. Implementation remains Luna medium. Follow AGENTS.md and
+report actual capability, requested/observed settings and review disposition.
+
 <!-- bootstrap:advisor-consultation v1 begin -->
 ## Advisor Consultation (thread-level capability)
 

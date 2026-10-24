@@ -1369,3 +1369,20 @@ No extra explanations should be invented to justify an otherwise empty button.
 
 **Related:** Plan43; Plan39 Repair04; DECISION-041/042/044/045/049.
 
+### DECISION-051 - Trial Luna high-effort review subagents
+
+**Date:** 2026-10-24
+
+**Decision:** The owner changed the standing default for read-only review
+subagents to Luna at high reasoning effort, aiming to reduce orchestration
+usage. This supersedes older Sol-default reviewer settings in packets/handoffs;
+implementation stays Luna medium by default. Use bounded cold-context reviews,
+normally one consolidated call, and keep routine follow-up verification inline.
+Do not automatically escalate to Sol/Astra or silently substitute unavailable
+settings. Retain independent artifact verification and owner acceptance gates.
+
+Cross-provider review may offer a useful different perspective; this is a pilot
+hypothesis, not evidence of measured effectiveness, cost or learner benefit.
+Record actual capabilities and review limits. Earlier Sol reviews retain their
+actual historical attribution. See the owner amendment in AGENTS.md.
+

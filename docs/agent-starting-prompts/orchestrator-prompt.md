@@ -95,6 +95,13 @@ silently substitute. This supersedes the earlier Sol-only orchestrator restricti
 and generic higher-tier advice; mechanism, owner and deployment gates still apply.
 
 <!-- bootstrap:advisor-consultation v1 begin -->
+Owner amendment 2026-10-24 supersedes the Sol-default review guidance above:
+default read-only review subagents to Luna at high effort, cold context and a
+role that honors those settings. Normally use one consolidated review; keep
+routine verification inline and do not automatically escalate model tier.
+Implementation remains Luna medium. See AGENTS.md for the standing cost rule;
+older packet/handoff reviewer defaults do not override this owner amendment.
+
 ## Advisor Consultation (expectations for reviewers)
 
 An implementer thread may report one of **three** compliant shapes for a packet:
