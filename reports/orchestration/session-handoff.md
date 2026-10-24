@@ -6,6 +6,19 @@ and pause records retained later in this file.
 
 ## Current board and owner direction
 
+Plan 43 revised mechanism APPROVED 2026-10-24: proposal revision 2 at 7a838b3,
+with binding corrections in the Plan43 report's mechanism-approval.md. SOURCE
+GATE IS OPEN for Alternative A. Use actual accepted form operation.proposed,
+dedicated legacy test compositions (no production ?nav=legacy switch), preserve
+all 99 route objects/map entries, pure completion/next/final-return transactions,
+one reset/focus policy, and real discriminating seeds. No new replay version is
+expected if frozen semantics remain identical; compatibility must be proved.
+No new advisor calls or source/test changes in the orchestrator review. Existing
+unstaged packet/index dispatch edits remain untouched. Implementer returns scoped
+source/evidence and progress for review; no status/push/deployment authority.
+Plan39 Repair04 still follows Plan43 acceptance. No Plan43-chat messaging
+permission has been supplied here; owner relays approval unless authorized later.
+
 Plan 43 mechanism review 2026-10-24: owner started an independent Gemini session;
 proposal committed at 1b2fb27. Packet is IN-PROGRESS/RUNNABLE; its unstaged status
 and index changes were present before review and left untouched. Alternative A
