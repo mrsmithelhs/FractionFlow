@@ -6,6 +6,27 @@ and pause records retained later in this file.
 
 ## Current board and owner direction
 
+Plan 43 delivery review resumed and finished 2026-10-24: NOT ACCEPTED.
+Delivery 1dafd5e/f322b62 requires bounded Repair 01. Read the Plan 43 report's
+orchestration-delivery-review.md and repair-01-brief.md. Key findings: bank sweep
+never solves the claimed 47 items; seed receipts are hard-coded without injection;
+v8 historical context still runs direct navigation and breaks old Repair02
+journeys; four browser rows have weak postconditions and miss required branches;
+Continue into reflection loses keyboard focus (parent reproduced BODY focus).
+Completion-candidate/replay proof is also missing. All 99 old route objects/map
+entries ARE preserved, but hashes alone do not prove executable compatibility.
+No product source was changed by orchestration. No broad test suite/matrix was
+rerun by parent. Existing unstaged packet/index dispatch edits stay untouched.
+Plan 43 remains in-progress pending repair; Plan 39 Repair04 remains deferred.
+
+Owner standing amendment 2026-10-24: default review subagents to Luna HIGH,
+read-only/cold, replacing older Sol-default packet/handoff recommendations.
+Implementation default stays Luna medium. No automatic higher-tier escalation.
+The one Sol LOW review for this delivery ran before the pause; no new Sol or
+Luna review was launched on resume. Parent completed source/evidence checks and
+focused Chrome reproductions. Review browser/server are closed. No messaging
+permission for the Plan43 chat has been supplied here; owner relays the brief.
+
 Plan 43 revised mechanism APPROVED 2026-10-24: proposal revision 2 at 7a838b3,
 with binding corrections in the Plan43 report's mechanism-approval.md. SOURCE
 GATE IS OPEN for Alternative A. Use actual accepted form operation.proposed,

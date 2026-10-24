@@ -1,0 +1,7 @@
+{
+  "capturedAt": "2026-10-24T18:21:39.878Z",
+  "method": "Existing unmodified Repair02 two-item helper on current direct app, matching production-default-v8 resolver target",
+  "failure": "locator.click: Timeout 2500ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('.app-next-button')\u001b[22m\n\u001b[2m    - locator resolved to <button hidden=\"\" type=\"button\" class=\"fraction-control app-secondary-button app-next-button\">Next problem</button>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    5 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 500ms\u001b[22m\n",
+  "headerNextVisible": false,
+  "tileLabel": "1/4, not placed"
+}

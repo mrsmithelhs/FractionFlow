@@ -1,0 +1,15 @@
+{
+  "capturedAt": "2026-10-24T14:28:33.456Z",
+  "method": "Current source via temporary Vite review fixture with actual protected records; mounted controls and Enter on focused Continue",
+  "before": {
+    "beat": "resolve",
+    "focused": "Continue"
+  },
+  "after": {
+    "beat": "reflect",
+    "focusedTag": "BODY",
+    "focusedId": "",
+    "focusedClass": ""
+  },
+  "pageErrors": []
+}
