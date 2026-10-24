@@ -1,0 +1,36 @@
+{
+  "baseline": "353b355",
+  "repair": "ea1a264",
+  "groups": {
+    "evidence/reports": {
+      "added": 3463,
+      "removed": 429,
+      "binaries": 20,
+      "files": 27
+    },
+    "test tooling": {
+      "added": 1153,
+      "removed": 65,
+      "binaries": 0,
+      "files": 5
+    },
+    "product source": {
+      "added": 100,
+      "removed": 20,
+      "binaries": 0,
+      "files": 1
+    },
+    "test code": {
+      "added": 293,
+      "removed": 12,
+      "binaries": 0,
+      "files": 2
+    },
+    "route data": {
+      "added": 349,
+      "removed": 282,
+      "binaries": 0,
+      "files": 2
+    }
+  }
+}

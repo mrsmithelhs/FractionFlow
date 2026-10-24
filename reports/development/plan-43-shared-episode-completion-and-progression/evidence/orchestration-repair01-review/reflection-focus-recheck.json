@@ -1,0 +1,22 @@
+{
+  "capturedAt": "2026-10-24T20:03:02.059Z",
+  "method": "Independent current-source Chrome check; actual protected records; Enter on naturally focused Continue after mounted-control setup",
+  "cases": [
+    {
+      "view": "visual",
+      "beat": "reflect",
+      "tag": "BUTTON",
+      "connected": true,
+      "inVisibleHost": true,
+      "className": "fraction-control matching-choice-btn control-choice-btn"
+    },
+    {
+      "view": "linear",
+      "beat": "reflect",
+      "tag": "BUTTON",
+      "connected": true,
+      "inVisibleHost": true,
+      "className": "fraction-control control-choice-btn linear-matching-choice-btn"
+    }
+  ]
+}

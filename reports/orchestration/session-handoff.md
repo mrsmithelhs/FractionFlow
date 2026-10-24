@@ -6,6 +6,23 @@ and pause records retained later in this file.
 
 ## Current board and owner direction
 
+Plan 43 Repair 01 re-review (2026-10-24): ea1a264/a24b4b2 materially improve
+product and evidence, but closure needs a SMALL finishing pass. Read the Plan 43
+report's repair-01-orchestration-review.md and repair-02-brief.md. Product diff is
+one file +100/-20; most volume is JSON evidence and test tooling, not app growth.
+One cold default-role Luna HIGH read-only review found no blocking source defect;
+no second reviewer/Sol. Parent reran 19 targeted tests, the genuine 47-item sweep
+and actual seed scripts with output redirected to separate review evidence, and
+independently verified keyboard Enter focus in BOTH visible reflection views.
+Remaining: real identity/freshness/settings assertions and targeted premise cases;
+seed2 currently restarts rather than advances; browser exact destination/focus
+and correct recovery selectors; actual replay equality and preserved full-clean
+matrix receipt. Keep product stable; no new feature, mechanism round or broad
+harness rewrite. Recover existing execution evidence or run final matrix once,
+not on every draft. Plan 43 stays in-progress/unaccepted; Plan 39 Repair04 deferred.
+Pre-existing unstaged packet/index dispatch edits stay untouched. No messaging
+permission for Plan43 chat is visible; owner relays brief. No push/deployment.
+
 Plan 43 delivery review resumed and finished 2026-10-24: NOT ACCEPTED.
 Delivery 1dafd5e/f322b62 requires bounded Repair 01. Read the Plan 43 report's
 orchestration-delivery-review.md and repair-01-brief.md. Key findings: bank sweep
