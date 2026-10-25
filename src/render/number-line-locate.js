@@ -59,6 +59,29 @@ function makeRepairToken(scene, strings) {
   return tray;
 }
 
+function makeRepairAcceptedBar(scene, strings) {
+  const form = scene.meaning.quantities.source.sourceForm;
+  const numerator = Number(form.numerator);
+  const denominator = Number(form.denominator);
+  const figure = document.createElement('figure');
+  figure.className = 'plan39-source-figure plan39-accepted-bar-figure';
+  const visual = document.createElement('div');
+  visual.className = 'plan39-bar-visual';
+  visual.setAttribute('role', 'img');
+  visual.setAttribute('aria-label', strings.plan39.sourceBarDescription(numerator, denominator));
+  const frame = document.createElement('div');
+  frame.className = 'plan39-unit-frame plan39-bar-track';
+  frame.style.setProperty('--partition-count', denominator);
+  for (let index = 0; index < denominator; index += 1) {
+    const segment = document.createElement('span');
+    segment.className = index < numerator ? 'plan39-bar-part plan39-bar-part-shaded' : 'plan39-bar-part';
+    frame.appendChild(segment);
+  }
+  visual.appendChild(frame);
+  figure.appendChild(visual);
+  return figure;
+}
+
 function makeRepairResolution(scene, strings) {
   const result = document.createElement('p');
   result.className = 'plan39-resolution-description';
@@ -441,9 +464,10 @@ export function createNumberLineLocateRenderer({
 
   function setTokenPlacement(candidateId) {
     const token = root?.querySelector('.plan39-repair-token');
+    const tray = root?.querySelector('.plan39-token-tray');
     const stack = root?.querySelector('.plan39-representation-stack');
     const frame = stack?.querySelector('.plan39-axis-frame');
-    if (!token || !stack || !frame || !candidateId || !isRepair02(currentScene)) {
+    if (!token || !tray || !stack || !frame || !isRepair02(currentScene)) {
       if (token) {
         token.classList.remove('is-placed', 'is-dragging');
         token.style.position = '';
@@ -457,23 +481,43 @@ export function createNumberLineLocateRenderer({
       }
       return;
     }
-    if (typeof stack.getBoundingClientRect !== 'function' || typeof frame.getBoundingClientRect !== 'function') return;
+    if (!candidateId) {
+      if (token.parentNode !== tray) {
+        if (token.parentNode) token.parentNode.removeChild(token);
+        tray.appendChild(token);
+      }
+      token.classList.remove('is-placed', 'is-dragging');
+      token.style.position = '';
+      token.style.left = '';
+      token.style.top = '';
+      token.style.transform = '';
+      token.style.zIndex = '';
+      token.removeAttribute('data-candidate-id');
+      const form = currentScene?.meaning.quantities.source.sourceForm;
+      if (form) token.setAttribute('aria-label', strings.plan39Repair02.tokenNotPlaced(form.numerator, form.denominator));
+      return;
+    }
     const candidate = currentScene.meaning.numberLine.candidatePositions.find(({ id }) => id === candidateId);
     if (!candidate) return;
-    const stackRect = stack.getBoundingClientRect();
-    const frameRect = frame.getBoundingClientRect();
-    const axis = frame.querySelector('.plan39-axis-line');
-    const axisRect = axis?.getBoundingClientRect() ?? frameRect;
+    if (token.parentNode !== stack) {
+      if (token.parentNode) token.parentNode.removeChild(token);
+      stack.appendChild(token);
+    }
     token.classList.add('is-placed');
     token.classList.remove('is-dragging');
     token.style.position = 'absolute';
-    token.style.left = `${frameRect.left - stackRect.left + frameRect.width * ratio(candidate.form)}px`;
-    token.style.top = `${axisRect.top - stackRect.top + axisRect.height / 2}px`;
     token.style.transform = 'translate(-50%, -100%)';
     token.style.zIndex = '3';
     token.setAttribute('data-candidate-id', candidateId);
     const form = currentScene.meaning.quantities.source.sourceForm;
     token.setAttribute('aria-label', strings.plan39Repair02.tokenPlaced(form.numerator, form.denominator, candidate.description));
+    if (typeof stack.getBoundingClientRect !== 'function' || typeof frame.getBoundingClientRect !== 'function') return;
+    const stackRect = stack.getBoundingClientRect();
+    const frameRect = frame.getBoundingClientRect();
+    const axis = frame.querySelector('.plan39-axis-line');
+    const axisRect = axis?.getBoundingClientRect() ?? frameRect;
+    token.style.left = `${frameRect.left - stackRect.left + frameRect.width * ratio(candidate.form)}px`;
+    token.style.top = `${axisRect.top - stackRect.top + axisRect.height / 2}px`;
   }
 
   function restoreTokenAfterGesture(token, candidateId) {
@@ -516,7 +560,7 @@ export function createNumberLineLocateRenderer({
   }
 
   function bindTokenDrag(stack, savePreview) {
-    const token = stack.querySelector('.plan39-repair-token');
+    const token = root?.querySelector('.plan39-repair-token');
     if (!token || token.getAttribute('data-pointer-bound') === 'true') return;
     token.setAttribute('data-pointer-bound', 'true');
     token.addEventListener('pointerdown', (event) => {
@@ -563,6 +607,7 @@ export function createNumberLineLocateRenderer({
       if (!active || (event.pointerId !== undefined && active.pointerId !== event.pointerId)) return;
       tokenPointerState = null;
       showDropPreview(active.frame, null);
+      try { token.releasePointerCapture?.(active.pointerId); } catch { /* capture may already be gone */ }
       restoreTokenAfterGesture(token, active.candidateId);
     };
     token.addEventListener('pointercancel', cancel);
@@ -576,6 +621,7 @@ export function createNumberLineLocateRenderer({
       const anchorY = event.clientY - active.grabOffsetY;
       if (active.dragging) selected = resolveCandidateAtAnchor(active.frame, anchorX, anchorY);
       showDropPreview(active.frame, null);
+      try { token.releasePointerCapture?.(event.pointerId); } catch { /* capture may already be gone */ }
       restoreTokenAfterGesture(token, selected?.id ?? active.candidateId);
       if (selected) savePreview({ contextKey: currentKey, candidateId: selected.id });
     });
@@ -661,21 +707,49 @@ export function createNumberLineLocateRenderer({
     heading.textContent = repair02
       ? accepted ? strings.plan39Repair02.resolvedPrompt : view === 'linear' ? strings.plan39Repair02.linearPrompt : strings.plan39Repair02.visualPrompt
       : scene.meaning.status.episode === 'resolved' ? strings.plan39.resolvedPrompt : strings.plan39.prompt;
-    root.appendChild(heading);
     const stack = document.createElement('div');
     stack.className = 'plan39-representation-stack';
     if (repair02 && !accepted) {
-      stack.appendChild(makeRepairToken(scene, strings));
+      const headerRegion = document.createElement('div');
+      headerRegion.className = 'plan39-header-region plan39-intro-header';
+      headerRegion.appendChild(heading);
+      headerRegion.appendChild(makeRepairToken(scene, strings));
+      root.appendChild(headerRegion);
+
       stack.appendChild(makeTrack(scene, strings, previewHandle?.contextKey === currentKey ? previewHandle.candidateId : null, view));
-    } else if (repair02 && view === 'linear') {
-      stack.appendChild(makeRepairAcceptedSource(scene));
+      root.appendChild(stack);
+
+      if (scene.meaning.currentTask.beat === 'locate') {
+        maybeStartGrabCue(root.querySelector('.plan39-repair-token'));
+      }
+    } else if (repair02 && accepted) {
+      const headerRegion = document.createElement('div');
+      headerRegion.className = 'plan39-header-region plan39-accepted-header';
+      heading.classList.add('plan39-accepted-text');
+      headerRegion.appendChild(heading);
+
+      const acceptedFractionWrapper = document.createElement('div');
+      acceptedFractionWrapper.className = 'plan39-accepted-fraction-wrapper';
+      const form = scene.meaning.quantities.source.sourceForm;
+      const fraction = createSymbolicFraction(form.numerator, form.denominator, { variant: 'compact' });
+      fraction.classList.add('plan39-accepted-fraction');
+      acceptedFractionWrapper.appendChild(fraction);
+      headerRegion.appendChild(acceptedFractionWrapper);
+      root.appendChild(headerRegion);
+
+      if (view === 'visual') {
+        stack.appendChild(makeRepairAcceptedBar(scene, strings));
+        stack.appendChild(makeTrack(scene, strings, previewHandle?.contextKey === currentKey ? previewHandle.candidateId : null, view));
+        root.appendChild(stack);
+      } else {
+        stack.appendChild(makeTrack(scene, strings, null, view));
+        root.appendChild(stack);
+      }
     } else {
+      root.appendChild(heading);
       stack.appendChild(makeBar(scene, strings, view));
       stack.appendChild(makeTrack(scene, strings, previewHandle?.contextKey === currentKey ? previewHandle.candidateId : null, view));
-    }
-    root.appendChild(stack);
-    if (repair02 && !accepted && scene.meaning.currentTask.beat === 'locate') {
-      maybeStartGrabCue(stack.querySelector('.plan39-repair-token'));
+      root.appendChild(stack);
     }
     refreshGeometry();
     if (accepted) root.appendChild(makeRepairResolution(scene, strings));

@@ -1,0 +1,1557 @@
+{
+  "timestamp": "2026-10-25T01:46:35.824Z",
+  "receipts": [
+    {
+      "viewport": {
+        "label": "360x740",
+        "width": 360,
+        "height": 740,
+        "dpr": 1
+      },
+      "initialGeom": {
+        "viewport": {
+          "width": 360,
+          "height": 740,
+          "dpr": 1
+        },
+        "header": {
+          "left": 25,
+          "right": 335,
+          "top": 145,
+          "bottom": 245.734375,
+          "width": 310,
+          "height": 100.734375
+        },
+        "introHeader": {
+          "left": 25,
+          "right": 335,
+          "top": 145,
+          "bottom": 245.734375,
+          "width": 310,
+          "height": 100.734375
+        },
+        "acceptedHeader": null,
+        "prompt": {
+          "left": 25,
+          "right": 314.71875,
+          "top": 145,
+          "bottom": 165.984375,
+          "width": 289.71875,
+          "height": 20.984375
+        },
+        "tray": {
+          "left": 269,
+          "right": 335,
+          "top": 173.984375,
+          "bottom": 245.734375,
+          "width": 66,
+          "height": 71.75
+        },
+        "token": {
+          "left": 278,
+          "right": 326,
+          "top": 178.984375,
+          "bottom": 240.734375,
+          "width": 48,
+          "height": 61.75
+        },
+        "stack": {
+          "left": 25,
+          "right": 335,
+          "top": 255.328125,
+          "bottom": 306.515625,
+          "width": 310,
+          "height": 51.1875
+        },
+        "frame": {
+          "left": 41,
+          "right": 319,
+          "top": 256.921875,
+          "bottom": 304.921875,
+          "width": 278,
+          "height": 48
+        },
+        "axisLine": {
+          "left": 41,
+          "right": 319,
+          "top": 272.109375,
+          "bottom": 275.109375,
+          "width": 278,
+          "height": 3
+        },
+        "bar": null,
+        "connector": null,
+        "resolution": null,
+        "finishBtn": null,
+        "barToAxisClearSpace": null,
+        "traySeparation": 26.38,
+        "trayOutsideBand": true,
+        "tokenInTray": true,
+        "tokenInStack": false
+      },
+      "pendingGeom": {
+        "viewport": {
+          "width": 360,
+          "height": 740,
+          "dpr": 1
+        },
+        "header": {
+          "left": 25,
+          "right": 335,
+          "top": 145,
+          "bottom": 225.984375,
+          "width": 310,
+          "height": 80.984375
+        },
+        "introHeader": {
+          "left": 25,
+          "right": 335,
+          "top": 145,
+          "bottom": 225.984375,
+          "width": 310,
+          "height": 80.984375
+        },
+        "acceptedHeader": null,
+        "prompt": {
+          "left": 25,
+          "right": 314.71875,
+          "top": 145,
+          "bottom": 165.984375,
+          "width": 289.71875,
+          "height": 20.984375
+        },
+        "tray": {
+          "left": 279,
+          "right": 335,
+          "top": 173.984375,
+          "bottom": 225.984375,
+          "width": 56,
+          "height": 52
+        },
+        "token": {
+          "left": 156,
+          "right": 204,
+          "top": 192.109375,
+          "bottom": 253.859375,
+          "width": 48,
+          "height": 61.75
+        },
+        "stack": {
+          "left": 25,
+          "right": 335,
+          "top": 235.578125,
+          "bottom": 286.765625,
+          "width": 310,
+          "height": 51.1875
+        },
+        "frame": {
+          "left": 41,
+          "right": 319,
+          "top": 237.171875,
+          "bottom": 285.171875,
+          "width": 278,
+          "height": 48
+        },
+        "axisLine": {
+          "left": 41,
+          "right": 319,
+          "top": 252.359375,
+          "bottom": 255.359375,
+          "width": 278,
+          "height": 3
+        },
+        "bar": null,
+        "connector": null,
+        "resolution": null,
+        "finishBtn": null,
+        "barToAxisClearSpace": null,
+        "traySeparation": 26.38,
+        "trayOutsideBand": true,
+        "tokenInTray": false,
+        "tokenInStack": true
+      },
+      "acceptedGeom": {
+        "viewport": {
+          "width": 360,
+          "height": 740,
+          "dpr": 1
+        },
+        "header": {
+          "left": 25,
+          "right": 335,
+          "top": 145,
+          "bottom": 220.75,
+          "width": 310,
+          "height": 75.75
+        },
+        "introHeader": null,
+        "acceptedHeader": {
+          "left": 25,
+          "right": 335,
+          "top": 145,
+          "bottom": 220.75,
+          "width": 310,
+          "height": 75.75
+        },
+        "prompt": {
+          "left": 42,
+          "right": 140.078125,
+          "top": 171.375,
+          "bottom": 194.375,
+          "width": 98.078125,
+          "height": 23
+        },
+        "tray": null,
+        "token": null,
+        "stack": {
+          "left": 25,
+          "right": 335,
+          "top": 230.34375,
+          "bottom": 320.703125,
+          "width": 310,
+          "height": 90.359375
+        },
+        "frame": {
+          "left": 41,
+          "right": 319,
+          "top": 271.109375,
+          "bottom": 319.109375,
+          "width": 278,
+          "height": 48
+        },
+        "axisLine": {
+          "left": 41,
+          "right": 319,
+          "top": 286.296875,
+          "bottom": 289.296875,
+          "width": 278,
+          "height": 3
+        },
+        "bar": {
+          "left": 41,
+          "right": 319,
+          "top": 232.734375,
+          "bottom": 264.734375,
+          "width": 278,
+          "height": 32
+        },
+        "connector": {
+          "left": 25,
+          "right": 335,
+          "top": 230.34375,
+          "bottom": 320.703125,
+          "width": 310,
+          "height": 90.359375
+        },
+        "resolution": {
+          "left": 25,
+          "right": 335,
+          "top": 331.890625,
+          "bottom": 354.28125,
+          "width": 310,
+          "height": 22.390625
+        },
+        "finishBtn": {
+          "left": 25,
+          "right": 335,
+          "top": 365.46875,
+          "bottom": 409.46875,
+          "width": 310,
+          "height": 44
+        },
+        "barToAxisClearSpace": 21.56,
+        "traySeparation": null,
+        "trayOutsideBand": false,
+        "tokenInTray": false,
+        "tokenInStack": false
+      },
+      "nextItemGeom": {
+        "viewport": {
+          "width": 360,
+          "height": 740,
+          "dpr": 1
+        },
+        "header": {
+          "left": 25,
+          "right": 335,
+          "top": 145,
+          "bottom": 245.734375,
+          "width": 310,
+          "height": 100.734375
+        },
+        "introHeader": {
+          "left": 25,
+          "right": 335,
+          "top": 145,
+          "bottom": 245.734375,
+          "width": 310,
+          "height": 100.734375
+        },
+        "acceptedHeader": null,
+        "prompt": {
+          "left": 25,
+          "right": 314.71875,
+          "top": 145,
+          "bottom": 165.984375,
+          "width": 289.71875,
+          "height": 20.984375
+        },
+        "tray": {
+          "left": 269,
+          "right": 335,
+          "top": 173.984375,
+          "bottom": 245.734375,
+          "width": 66,
+          "height": 71.75
+        },
+        "token": {
+          "left": 278,
+          "right": 326,
+          "top": 178.984375,
+          "bottom": 240.734375,
+          "width": 48,
+          "height": 61.75
+        },
+        "stack": {
+          "left": 25,
+          "right": 335,
+          "top": 255.328125,
+          "bottom": 306.515625,
+          "width": 310,
+          "height": 51.1875
+        },
+        "frame": {
+          "left": 41,
+          "right": 319,
+          "top": 256.921875,
+          "bottom": 304.921875,
+          "width": 278,
+          "height": 48
+        },
+        "axisLine": {
+          "left": 41,
+          "right": 319,
+          "top": 272.109375,
+          "bottom": 275.109375,
+          "width": 278,
+          "height": 3
+        },
+        "bar": null,
+        "connector": null,
+        "resolution": null,
+        "finishBtn": null,
+        "barToAxisClearSpace": null,
+        "traySeparation": 26.38,
+        "trayOutsideBand": true,
+        "tokenInTray": true,
+        "tokenInStack": false
+      },
+      "enlargedContainment": {
+        "tile": {
+          "left": 441.09375,
+          "right": 496,
+          "top": 453.96875,
+          "bottom": 569.46875,
+          "width": 54.90625,
+          "height": 115.5
+        },
+        "glyphs": [
+          {
+            "left": 451.09375,
+            "right": 486,
+            "top": 463.96875,
+            "bottom": 559.46875,
+            "width": 34.90625,
+            "height": 95.5
+          },
+          {
+            "left": 451.09375,
+            "right": 486,
+            "top": 463.96875,
+            "bottom": 509.71875,
+            "width": 34.90625,
+            "height": 45.75
+          },
+          {
+            "left": 451.09375,
+            "right": 486,
+            "top": 513.71875,
+            "bottom": 559.46875,
+            "width": 34.90625,
+            "height": 45.75
+          }
+        ],
+        "overflow": false,
+        "width": 54.90625,
+        "height": 115.5,
+        "backgroundColor": "rgb(255, 255, 255)",
+        "cursor": "grab",
+        "zIndex": "3"
+      }
+    },
+    {
+      "viewport": {
+        "label": "360x752",
+        "width": 360,
+        "height": 752,
+        "dpr": 1
+      },
+      "initialGeom": {
+        "viewport": {
+          "width": 360,
+          "height": 752,
+          "dpr": 1
+        },
+        "header": {
+          "left": 25,
+          "right": 335,
+          "top": 145,
+          "bottom": 245.734375,
+          "width": 310,
+          "height": 100.734375
+        },
+        "introHeader": {
+          "left": 25,
+          "right": 335,
+          "top": 145,
+          "bottom": 245.734375,
+          "width": 310,
+          "height": 100.734375
+        },
+        "acceptedHeader": null,
+        "prompt": {
+          "left": 25,
+          "right": 314.71875,
+          "top": 145,
+          "bottom": 165.984375,
+          "width": 289.71875,
+          "height": 20.984375
+        },
+        "tray": {
+          "left": 269,
+          "right": 335,
+          "top": 173.984375,
+          "bottom": 245.734375,
+          "width": 66,
+          "height": 71.75
+        },
+        "token": {
+          "left": 278,
+          "right": 326,
+          "top": 178.984375,
+          "bottom": 240.734375,
+          "width": 48,
+          "height": 61.75
+        },
+        "stack": {
+          "left": 25,
+          "right": 335,
+          "top": 255.328125,
+          "bottom": 306.515625,
+          "width": 310,
+          "height": 51.1875
+        },
+        "frame": {
+          "left": 41,
+          "right": 319,
+          "top": 256.921875,
+          "bottom": 304.921875,
+          "width": 278,
+          "height": 48
+        },
+        "axisLine": {
+          "left": 41,
+          "right": 319,
+          "top": 272.109375,
+          "bottom": 275.109375,
+          "width": 278,
+          "height": 3
+        },
+        "bar": null,
+        "connector": null,
+        "resolution": null,
+        "finishBtn": null,
+        "barToAxisClearSpace": null,
+        "traySeparation": 26.38,
+        "trayOutsideBand": true,
+        "tokenInTray": true,
+        "tokenInStack": false
+      },
+      "pendingGeom": {
+        "viewport": {
+          "width": 360,
+          "height": 752,
+          "dpr": 1
+        },
+        "header": {
+          "left": 25,
+          "right": 335,
+          "top": 145,
+          "bottom": 225.984375,
+          "width": 310,
+          "height": 80.984375
+        },
+        "introHeader": {
+          "left": 25,
+          "right": 335,
+          "top": 145,
+          "bottom": 225.984375,
+          "width": 310,
+          "height": 80.984375
+        },
+        "acceptedHeader": null,
+        "prompt": {
+          "left": 25,
+          "right": 314.71875,
+          "top": 145,
+          "bottom": 165.984375,
+          "width": 289.71875,
+          "height": 20.984375
+        },
+        "tray": {
+          "left": 279,
+          "right": 335,
+          "top": 173.984375,
+          "bottom": 225.984375,
+          "width": 56,
+          "height": 52
+        },
+        "token": {
+          "left": 156,
+          "right": 204,
+          "top": 192.109375,
+          "bottom": 253.859375,
+          "width": 48,
+          "height": 61.75
+        },
+        "stack": {
+          "left": 25,
+          "right": 335,
+          "top": 235.578125,
+          "bottom": 286.765625,
+          "width": 310,
+          "height": 51.1875
+        },
+        "frame": {
+          "left": 41,
+          "right": 319,
+          "top": 237.171875,
+          "bottom": 285.171875,
+          "width": 278,
+          "height": 48
+        },
+        "axisLine": {
+          "left": 41,
+          "right": 319,
+          "top": 252.359375,
+          "bottom": 255.359375,
+          "width": 278,
+          "height": 3
+        },
+        "bar": null,
+        "connector": null,
+        "resolution": null,
+        "finishBtn": null,
+        "barToAxisClearSpace": null,
+        "traySeparation": 26.38,
+        "trayOutsideBand": true,
+        "tokenInTray": false,
+        "tokenInStack": true
+      },
+      "acceptedGeom": {
+        "viewport": {
+          "width": 360,
+          "height": 752,
+          "dpr": 1
+        },
+        "header": {
+          "left": 25,
+          "right": 335,
+          "top": 145,
+          "bottom": 220.75,
+          "width": 310,
+          "height": 75.75
+        },
+        "introHeader": null,
+        "acceptedHeader": {
+          "left": 25,
+          "right": 335,
+          "top": 145,
+          "bottom": 220.75,
+          "width": 310,
+          "height": 75.75
+        },
+        "prompt": {
+          "left": 42,
+          "right": 140.078125,
+          "top": 171.375,
+          "bottom": 194.375,
+          "width": 98.078125,
+          "height": 23
+        },
+        "tray": null,
+        "token": null,
+        "stack": {
+          "left": 25,
+          "right": 335,
+          "top": 230.34375,
+          "bottom": 320.703125,
+          "width": 310,
+          "height": 90.359375
+        },
+        "frame": {
+          "left": 41,
+          "right": 319,
+          "top": 271.109375,
+          "bottom": 319.109375,
+          "width": 278,
+          "height": 48
+        },
+        "axisLine": {
+          "left": 41,
+          "right": 319,
+          "top": 286.296875,
+          "bottom": 289.296875,
+          "width": 278,
+          "height": 3
+        },
+        "bar": {
+          "left": 41,
+          "right": 319,
+          "top": 232.734375,
+          "bottom": 264.734375,
+          "width": 278,
+          "height": 32
+        },
+        "connector": {
+          "left": 25,
+          "right": 335,
+          "top": 230.34375,
+          "bottom": 320.703125,
+          "width": 310,
+          "height": 90.359375
+        },
+        "resolution": {
+          "left": 25,
+          "right": 335,
+          "top": 331.890625,
+          "bottom": 354.28125,
+          "width": 310,
+          "height": 22.390625
+        },
+        "finishBtn": {
+          "left": 25,
+          "right": 335,
+          "top": 365.46875,
+          "bottom": 409.46875,
+          "width": 310,
+          "height": 44
+        },
+        "barToAxisClearSpace": 21.56,
+        "traySeparation": null,
+        "trayOutsideBand": false,
+        "tokenInTray": false,
+        "tokenInStack": false
+      },
+      "nextItemGeom": {
+        "viewport": {
+          "width": 360,
+          "height": 752,
+          "dpr": 1
+        },
+        "header": {
+          "left": 25,
+          "right": 335,
+          "top": 145,
+          "bottom": 245.734375,
+          "width": 310,
+          "height": 100.734375
+        },
+        "introHeader": {
+          "left": 25,
+          "right": 335,
+          "top": 145,
+          "bottom": 245.734375,
+          "width": 310,
+          "height": 100.734375
+        },
+        "acceptedHeader": null,
+        "prompt": {
+          "left": 25,
+          "right": 314.71875,
+          "top": 145,
+          "bottom": 165.984375,
+          "width": 289.71875,
+          "height": 20.984375
+        },
+        "tray": {
+          "left": 269,
+          "right": 335,
+          "top": 173.984375,
+          "bottom": 245.734375,
+          "width": 66,
+          "height": 71.75
+        },
+        "token": {
+          "left": 278,
+          "right": 326,
+          "top": 178.984375,
+          "bottom": 240.734375,
+          "width": 48,
+          "height": 61.75
+        },
+        "stack": {
+          "left": 25,
+          "right": 335,
+          "top": 255.328125,
+          "bottom": 306.515625,
+          "width": 310,
+          "height": 51.1875
+        },
+        "frame": {
+          "left": 41,
+          "right": 319,
+          "top": 256.921875,
+          "bottom": 304.921875,
+          "width": 278,
+          "height": 48
+        },
+        "axisLine": {
+          "left": 41,
+          "right": 319,
+          "top": 272.109375,
+          "bottom": 275.109375,
+          "width": 278,
+          "height": 3
+        },
+        "bar": null,
+        "connector": null,
+        "resolution": null,
+        "finishBtn": null,
+        "barToAxisClearSpace": null,
+        "traySeparation": 26.38,
+        "trayOutsideBand": true,
+        "tokenInTray": true,
+        "tokenInStack": false
+      },
+      "enlargedContainment": {
+        "tile": {
+          "left": 441.09375,
+          "right": 496,
+          "top": 453.96875,
+          "bottom": 569.46875,
+          "width": 54.90625,
+          "height": 115.5
+        },
+        "glyphs": [
+          {
+            "left": 451.09375,
+            "right": 486,
+            "top": 463.96875,
+            "bottom": 559.46875,
+            "width": 34.90625,
+            "height": 95.5
+          },
+          {
+            "left": 451.09375,
+            "right": 486,
+            "top": 463.96875,
+            "bottom": 509.71875,
+            "width": 34.90625,
+            "height": 45.75
+          },
+          {
+            "left": 451.09375,
+            "right": 486,
+            "top": 513.71875,
+            "bottom": 559.46875,
+            "width": 34.90625,
+            "height": 45.75
+          }
+        ],
+        "overflow": false,
+        "width": 54.90625,
+        "height": 115.5,
+        "backgroundColor": "rgb(255, 255, 255)",
+        "cursor": "grab",
+        "zIndex": "3"
+      }
+    },
+    {
+      "viewport": {
+        "label": "1366x768",
+        "width": 1366,
+        "height": 768,
+        "dpr": 1
+      },
+      "initialGeom": {
+        "viewport": {
+          "width": 1366,
+          "height": 768,
+          "dpr": 1
+        },
+        "header": {
+          "left": 347,
+          "right": 1019,
+          "top": 193.96875,
+          "bottom": 265.71875,
+          "width": 672,
+          "height": 71.75
+        },
+        "introHeader": {
+          "left": 347,
+          "right": 1019,
+          "top": 193.96875,
+          "bottom": 265.71875,
+          "width": 672,
+          "height": 71.75
+        },
+        "acceptedHeader": null,
+        "prompt": {
+          "left": 347,
+          "right": 636.71875,
+          "top": 219.34375,
+          "bottom": 240.328125,
+          "width": 289.71875,
+          "height": 20.984375
+        },
+        "tray": {
+          "left": 953,
+          "right": 1019,
+          "top": 193.96875,
+          "bottom": 265.71875,
+          "width": 66,
+          "height": 71.75
+        },
+        "token": {
+          "left": 962,
+          "right": 1010,
+          "top": 198.96875,
+          "bottom": 260.71875,
+          "width": 48,
+          "height": 61.75
+        },
+        "stack": {
+          "left": 347,
+          "right": 1019,
+          "top": 278.515625,
+          "bottom": 332.890625,
+          "width": 672,
+          "height": 54.375
+        },
+        "frame": {
+          "left": 367,
+          "right": 999,
+          "top": 280.109375,
+          "bottom": 331.296875,
+          "width": 632,
+          "height": 51.1875
+        },
+        "axisLine": {
+          "left": 367,
+          "right": 999,
+          "top": 295.296875,
+          "bottom": 298.296875,
+          "width": 632,
+          "height": 3
+        },
+        "bar": null,
+        "connector": null,
+        "resolution": null,
+        "finishBtn": null,
+        "barToAxisClearSpace": null,
+        "traySeparation": 29.58,
+        "trayOutsideBand": true,
+        "tokenInTray": true,
+        "tokenInStack": false
+      },
+      "pendingGeom": {
+        "viewport": {
+          "width": 1366,
+          "height": 768,
+          "dpr": 1
+        },
+        "header": {
+          "left": 347,
+          "right": 1019,
+          "top": 193.96875,
+          "bottom": 245.96875,
+          "width": 672,
+          "height": 52
+        },
+        "introHeader": {
+          "left": 347,
+          "right": 1019,
+          "top": 193.96875,
+          "bottom": 245.96875,
+          "width": 672,
+          "height": 52
+        },
+        "acceptedHeader": null,
+        "prompt": {
+          "left": 347,
+          "right": 636.71875,
+          "top": 209.46875,
+          "bottom": 230.453125,
+          "width": 289.71875,
+          "height": 20.984375
+        },
+        "tray": {
+          "left": 963,
+          "right": 1019,
+          "top": 193.96875,
+          "bottom": 245.96875,
+          "width": 56,
+          "height": 52
+        },
+        "token": {
+          "left": 659,
+          "right": 707,
+          "top": 215.296875,
+          "bottom": 277.046875,
+          "width": 48,
+          "height": 61.75
+        },
+        "stack": {
+          "left": 347,
+          "right": 1019,
+          "top": 258.765625,
+          "bottom": 313.140625,
+          "width": 672,
+          "height": 54.375
+        },
+        "frame": {
+          "left": 367,
+          "right": 999,
+          "top": 260.359375,
+          "bottom": 311.546875,
+          "width": 632,
+          "height": 51.1875
+        },
+        "axisLine": {
+          "left": 367,
+          "right": 999,
+          "top": 275.546875,
+          "bottom": 278.546875,
+          "width": 632,
+          "height": 3
+        },
+        "bar": null,
+        "connector": null,
+        "resolution": null,
+        "finishBtn": null,
+        "barToAxisClearSpace": null,
+        "traySeparation": 29.58,
+        "trayOutsideBand": true,
+        "tokenInTray": false,
+        "tokenInStack": true
+      },
+      "acceptedGeom": {
+        "viewport": {
+          "width": 1366,
+          "height": 768,
+          "dpr": 1
+        },
+        "header": {
+          "left": 347,
+          "right": 1019,
+          "top": 193.96875,
+          "bottom": 269.71875,
+          "width": 672,
+          "height": 75.75
+        },
+        "introHeader": null,
+        "acceptedHeader": {
+          "left": 347,
+          "right": 1019,
+          "top": 193.96875,
+          "bottom": 269.71875,
+          "width": 672,
+          "height": 75.75
+        },
+        "prompt": {
+          "left": 364,
+          "right": 462.078125,
+          "top": 220.34375,
+          "bottom": 243.34375,
+          "width": 98.078125,
+          "height": 23
+        },
+        "tray": null,
+        "token": null,
+        "stack": {
+          "left": 347,
+          "right": 1019,
+          "top": 282.515625,
+          "bottom": 384.046875,
+          "width": 672,
+          "height": 101.53125
+        },
+        "frame": {
+          "left": 367,
+          "right": 999,
+          "top": 331.265625,
+          "bottom": 382.453125,
+          "width": 632,
+          "height": 51.1875
+        },
+        "axisLine": {
+          "left": 367,
+          "right": 999,
+          "top": 346.453125,
+          "bottom": 349.453125,
+          "width": 632,
+          "height": 3
+        },
+        "bar": {
+          "left": 367,
+          "right": 999,
+          "top": 284.90625,
+          "bottom": 322.5,
+          "width": 632,
+          "height": 37.59375
+        },
+        "connector": {
+          "left": 347,
+          "right": 1019,
+          "top": 282.515625,
+          "bottom": 384.046875,
+          "width": 672,
+          "height": 101.53125
+        },
+        "resolution": {
+          "left": 347,
+          "right": 1019,
+          "top": 398.4375,
+          "bottom": 420.828125,
+          "width": 672,
+          "height": 22.390625
+        },
+        "finishBtn": {
+          "left": 347,
+          "right": 1019,
+          "top": 435.21875,
+          "bottom": 479.21875,
+          "width": 672,
+          "height": 44
+        },
+        "barToAxisClearSpace": 23.95,
+        "traySeparation": null,
+        "trayOutsideBand": false,
+        "tokenInTray": false,
+        "tokenInStack": false
+      },
+      "nextItemGeom": {
+        "viewport": {
+          "width": 1366,
+          "height": 768,
+          "dpr": 1
+        },
+        "header": {
+          "left": 347,
+          "right": 1019,
+          "top": 193.96875,
+          "bottom": 265.71875,
+          "width": 672,
+          "height": 71.75
+        },
+        "introHeader": {
+          "left": 347,
+          "right": 1019,
+          "top": 193.96875,
+          "bottom": 265.71875,
+          "width": 672,
+          "height": 71.75
+        },
+        "acceptedHeader": null,
+        "prompt": {
+          "left": 347,
+          "right": 636.71875,
+          "top": 219.34375,
+          "bottom": 240.328125,
+          "width": 289.71875,
+          "height": 20.984375
+        },
+        "tray": {
+          "left": 953,
+          "right": 1019,
+          "top": 193.96875,
+          "bottom": 265.71875,
+          "width": 66,
+          "height": 71.75
+        },
+        "token": {
+          "left": 962,
+          "right": 1010,
+          "top": 198.96875,
+          "bottom": 260.71875,
+          "width": 48,
+          "height": 61.75
+        },
+        "stack": {
+          "left": 347,
+          "right": 1019,
+          "top": 278.515625,
+          "bottom": 332.890625,
+          "width": 672,
+          "height": 54.375
+        },
+        "frame": {
+          "left": 367,
+          "right": 999,
+          "top": 280.109375,
+          "bottom": 331.296875,
+          "width": 632,
+          "height": 51.1875
+        },
+        "axisLine": {
+          "left": 367,
+          "right": 999,
+          "top": 295.296875,
+          "bottom": 298.296875,
+          "width": 632,
+          "height": 3
+        },
+        "bar": null,
+        "connector": null,
+        "resolution": null,
+        "finishBtn": null,
+        "barToAxisClearSpace": null,
+        "traySeparation": 29.58,
+        "trayOutsideBand": true,
+        "tokenInTray": true,
+        "tokenInStack": false
+      },
+      "enlargedContainment": {
+        "tile": {
+          "left": 1201.984375,
+          "right": 1272.890625,
+          "top": 316.109375,
+          "bottom": 431.609375,
+          "width": 70.90625,
+          "height": 115.5
+        },
+        "glyphs": [
+          {
+            "left": 1219.984375,
+            "right": 1254.890625,
+            "top": 326.109375,
+            "bottom": 421.609375,
+            "width": 34.90625,
+            "height": 95.5
+          },
+          {
+            "left": 1219.984375,
+            "right": 1254.890625,
+            "top": 326.109375,
+            "bottom": 371.859375,
+            "width": 34.90625,
+            "height": 45.75
+          },
+          {
+            "left": 1219.984375,
+            "right": 1254.890625,
+            "top": 375.859375,
+            "bottom": 421.609375,
+            "width": 34.90625,
+            "height": 45.75
+          }
+        ],
+        "overflow": false,
+        "width": 70.90625,
+        "height": 115.5,
+        "backgroundColor": "rgb(255, 255, 255)",
+        "cursor": "grab",
+        "zIndex": "3"
+      }
+    },
+    {
+      "viewport": {
+        "label": "1093x614-dpr125",
+        "width": 1093,
+        "height": 614,
+        "dpr": 1.25
+      },
+      "initialGeom": {
+        "viewport": {
+          "width": 1093,
+          "height": 614,
+          "dpr": 1.25
+        },
+        "header": {
+          "left": 210.5,
+          "right": 882.5,
+          "top": 181.09375,
+          "bottom": 252.84375,
+          "width": 672,
+          "height": 71.75
+        },
+        "introHeader": {
+          "left": 210.5,
+          "right": 882.5,
+          "top": 181.09375,
+          "bottom": 252.84375,
+          "width": 672,
+          "height": 71.75
+        },
+        "acceptedHeader": null,
+        "prompt": {
+          "left": 210.5,
+          "right": 500.21875,
+          "top": 206.46875,
+          "bottom": 227.453125,
+          "width": 289.71875,
+          "height": 20.984375
+        },
+        "tray": {
+          "left": 816.5,
+          "right": 882.5,
+          "top": 181.09375,
+          "bottom": 252.84375,
+          "width": 66,
+          "height": 71.75
+        },
+        "token": {
+          "left": 825.5,
+          "right": 873.5,
+          "top": 186.09375,
+          "bottom": 247.84375,
+          "width": 48,
+          "height": 61.75
+        },
+        "stack": {
+          "left": 210.5,
+          "right": 882.5,
+          "top": 265.640625,
+          "bottom": 320.015625,
+          "width": 672,
+          "height": 54.375
+        },
+        "frame": {
+          "left": 230.5,
+          "right": 862.5,
+          "top": 267.234375,
+          "bottom": 318.421875,
+          "width": 632,
+          "height": 51.1875
+        },
+        "axisLine": {
+          "left": 230.5,
+          "right": 862.5,
+          "top": 282.421875,
+          "bottom": 285.421875,
+          "width": 632,
+          "height": 3
+        },
+        "bar": null,
+        "connector": null,
+        "resolution": null,
+        "finishBtn": null,
+        "barToAxisClearSpace": null,
+        "traySeparation": 29.58,
+        "trayOutsideBand": true,
+        "tokenInTray": true,
+        "tokenInStack": false
+      },
+      "pendingGeom": {
+        "viewport": {
+          "width": 1093,
+          "height": 614,
+          "dpr": 1.25
+        },
+        "header": {
+          "left": 210.5,
+          "right": 882.5,
+          "top": 181.09375,
+          "bottom": 233.09375,
+          "width": 672,
+          "height": 52
+        },
+        "introHeader": {
+          "left": 210.5,
+          "right": 882.5,
+          "top": 181.09375,
+          "bottom": 233.09375,
+          "width": 672,
+          "height": 52
+        },
+        "acceptedHeader": null,
+        "prompt": {
+          "left": 210.5,
+          "right": 500.21875,
+          "top": 196.59375,
+          "bottom": 217.578125,
+          "width": 289.71875,
+          "height": 20.984375
+        },
+        "tray": {
+          "left": 826.5,
+          "right": 882.5,
+          "top": 181.09375,
+          "bottom": 233.09375,
+          "width": 56,
+          "height": 52
+        },
+        "token": {
+          "left": 522.5,
+          "right": 570.5,
+          "top": 202.421875,
+          "bottom": 264.171875,
+          "width": 48,
+          "height": 61.75
+        },
+        "stack": {
+          "left": 210.5,
+          "right": 882.5,
+          "top": 245.890625,
+          "bottom": 300.265625,
+          "width": 672,
+          "height": 54.375
+        },
+        "frame": {
+          "left": 230.5,
+          "right": 862.5,
+          "top": 247.484375,
+          "bottom": 298.671875,
+          "width": 632,
+          "height": 51.1875
+        },
+        "axisLine": {
+          "left": 230.5,
+          "right": 862.5,
+          "top": 262.671875,
+          "bottom": 265.671875,
+          "width": 632,
+          "height": 3
+        },
+        "bar": null,
+        "connector": null,
+        "resolution": null,
+        "finishBtn": null,
+        "barToAxisClearSpace": null,
+        "traySeparation": 29.58,
+        "trayOutsideBand": true,
+        "tokenInTray": false,
+        "tokenInStack": true
+      },
+      "acceptedGeom": {
+        "viewport": {
+          "width": 1093,
+          "height": 614,
+          "dpr": 1.25
+        },
+        "header": {
+          "left": 210.5,
+          "right": 882.5,
+          "top": 181.09375,
+          "bottom": 256.84375,
+          "width": 672,
+          "height": 75.75
+        },
+        "introHeader": null,
+        "acceptedHeader": {
+          "left": 210.5,
+          "right": 882.5,
+          "top": 181.09375,
+          "bottom": 256.84375,
+          "width": 672,
+          "height": 75.75
+        },
+        "prompt": {
+          "left": 227.5,
+          "right": 325.578125,
+          "top": 207.46875,
+          "bottom": 230.46875,
+          "width": 98.078125,
+          "height": 23
+        },
+        "tray": null,
+        "token": null,
+        "stack": {
+          "left": 210.5,
+          "right": 882.5,
+          "top": 269.640625,
+          "bottom": 371.171875,
+          "width": 672,
+          "height": 101.53125
+        },
+        "frame": {
+          "left": 230.5,
+          "right": 862.5,
+          "top": 318.390625,
+          "bottom": 369.578125,
+          "width": 632,
+          "height": 51.1875
+        },
+        "axisLine": {
+          "left": 230.5,
+          "right": 862.5,
+          "top": 333.578125,
+          "bottom": 336.578125,
+          "width": 632,
+          "height": 3
+        },
+        "bar": {
+          "left": 230.5,
+          "right": 862.5,
+          "top": 272.03125,
+          "bottom": 309.625,
+          "width": 632,
+          "height": 37.59375
+        },
+        "connector": {
+          "left": 210.5,
+          "right": 882.5,
+          "top": 269.640625,
+          "bottom": 371.171875,
+          "width": 672,
+          "height": 101.53125
+        },
+        "resolution": {
+          "left": 210.5,
+          "right": 882.5,
+          "top": 385.5625,
+          "bottom": 407.953125,
+          "width": 672,
+          "height": 22.390625
+        },
+        "finishBtn": {
+          "left": 210.5,
+          "right": 882.5,
+          "top": 422.34375,
+          "bottom": 466.34375,
+          "width": 672,
+          "height": 44
+        },
+        "barToAxisClearSpace": 23.95,
+        "traySeparation": null,
+        "trayOutsideBand": false,
+        "tokenInTray": false,
+        "tokenInStack": false
+      },
+      "nextItemGeom": {
+        "viewport": {
+          "width": 1093,
+          "height": 614,
+          "dpr": 1.25
+        },
+        "header": {
+          "left": 210.5,
+          "right": 882.5,
+          "top": 181.09375,
+          "bottom": 252.84375,
+          "width": 672,
+          "height": 71.75
+        },
+        "introHeader": {
+          "left": 210.5,
+          "right": 882.5,
+          "top": 181.09375,
+          "bottom": 252.84375,
+          "width": 672,
+          "height": 71.75
+        },
+        "acceptedHeader": null,
+        "prompt": {
+          "left": 210.5,
+          "right": 500.21875,
+          "top": 206.46875,
+          "bottom": 227.453125,
+          "width": 289.71875,
+          "height": 20.984375
+        },
+        "tray": {
+          "left": 816.5,
+          "right": 882.5,
+          "top": 181.09375,
+          "bottom": 252.84375,
+          "width": 66,
+          "height": 71.75
+        },
+        "token": {
+          "left": 825.5,
+          "right": 873.5,
+          "top": 186.09375,
+          "bottom": 247.84375,
+          "width": 48,
+          "height": 61.75
+        },
+        "stack": {
+          "left": 210.5,
+          "right": 882.5,
+          "top": 265.640625,
+          "bottom": 320.015625,
+          "width": 672,
+          "height": 54.375
+        },
+        "frame": {
+          "left": 230.5,
+          "right": 862.5,
+          "top": 267.234375,
+          "bottom": 318.421875,
+          "width": 632,
+          "height": 51.1875
+        },
+        "axisLine": {
+          "left": 230.5,
+          "right": 862.5,
+          "top": 282.421875,
+          "bottom": 285.421875,
+          "width": 632,
+          "height": 3
+        },
+        "bar": null,
+        "connector": null,
+        "resolution": null,
+        "finishBtn": null,
+        "barToAxisClearSpace": null,
+        "traySeparation": 29.58,
+        "trayOutsideBand": true,
+        "tokenInTray": true,
+        "tokenInStack": false
+      },
+      "enlargedContainment": {
+        "tile": {
+          "left": 939.3125,
+          "right": 1010.21875,
+          "top": 305.78125,
+          "bottom": 421.28125,
+          "width": 70.90625,
+          "height": 115.5
+        },
+        "glyphs": [
+          {
+            "left": 957.3125,
+            "right": 992.21875,
+            "top": 315.78125,
+            "bottom": 411.28125,
+            "width": 34.90625,
+            "height": 95.5
+          },
+          {
+            "left": 957.3125,
+            "right": 992.21875,
+            "top": 315.78125,
+            "bottom": 361.53125,
+            "width": 34.90625,
+            "height": 45.75
+          },
+          {
+            "left": 957.3125,
+            "right": 992.21875,
+            "top": 365.53125,
+            "bottom": 411.28125,
+            "width": 34.90625,
+            "height": 45.75
+          }
+        ],
+        "overflow": false,
+        "width": 70.90625,
+        "height": 115.5,
+        "backgroundColor": "rgb(255, 255, 255)",
+        "cursor": "grab",
+        "zIndex": "3"
+      }
+    }
+  ]
+}

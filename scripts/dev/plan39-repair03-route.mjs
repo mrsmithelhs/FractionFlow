@@ -3,6 +3,7 @@ import assert from 'node:assert/strict';
 const mismatchFailure = 'Plan39 Repair03 shared anchor/highlight assertion failed';
 
 export async function assertPlan39TokenContainment(page) {
+  await page.mouse.move(0, 0);
   const geometry = await page.locator('.app-visual-view .plan39-repair-token').evaluate((token) => {
     const bounds = (element) => {
       const { left, right, top, bottom, width, height } = element.getBoundingClientRect();

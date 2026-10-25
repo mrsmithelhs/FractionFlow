@@ -146,4 +146,114 @@ describe('Plan 39 Repair 02 app wiring', () => {
     expect(root.querySelector('.app-episode').hasAttribute('hidden')).toBe(true);
     app.destroy();
   });
+
+  it('places unplaced token in the starting tray and moves it to the stack on placement without duplicate', () => {
+    const { root, app } = startApp();
+    expect(root.querySelector('.app-visual-view .plan39-intro-header')).not.toBeNull();
+    const tray = root.querySelector('.app-visual-view .plan39-token-tray');
+    expect(tray).not.toBeNull();
+    const token = root.querySelector('.app-visual-view .plan39-repair-token');
+    expect(token).not.toBeNull();
+    expect(tray.contains(token)).toBe(true);
+    expect(token.classList.contains('is-placed')).toBe(false);
+
+    root.querySelector('.app-visual-view .plan39-stepper-next').click();
+    expect(tray.contains(token)).toBe(false);
+    expect(tray.querySelectorAll('.plan39-repair-token')).toHaveLength(0);
+    const stack = root.querySelector('.app-visual-view .plan39-representation-stack');
+    expect(stack.contains(token)).toBe(true);
+    expect(token.classList.contains('is-placed')).toBe(true);
+
+    root.querySelector('.app-restart-button').click();
+    const refreshedTray = root.querySelector('.app-visual-view .plan39-token-tray');
+    const refreshedToken = root.querySelector('.app-visual-view .plan39-repair-token');
+    expect(refreshedTray.contains(refreshedToken)).toBe(true);
+    expect(refreshedToken.classList.contains('is-placed')).toBe(false);
+    app.destroy();
+  });
+
+  it('renders accepted-result header with That’s right and borderless stacked fraction only after correct Check in both views', () => {
+    const { root, app } = startApp();
+    expect(root.querySelector('.app-visual-view .plan39-accepted-header')).toBeNull();
+    expect(root.querySelector('.app-linear-view .plan39-accepted-header')).toBeNull();
+
+    // Wrong Check
+    root.querySelector('.app-visual-view .plan39-stepper-next').click(); // 1 of 1 (wrong)
+    root.querySelector('.app-visual-view .plan39-check-position').click();
+    expect(app.getState().beat).toBe('locate');
+    expect(root.querySelector('.app-visual-view .plan39-accepted-header')).toBeNull();
+    expect(root.querySelector('.app-visual-view .plan39-bar-track')).toBeNull();
+
+    // Correct Check: stepper starts from unselected after recovery; next selects 1, previous moves to 1/2
+    root.querySelector('.app-visual-view .plan39-stepper-next').click();
+    root.querySelector('.app-visual-view .plan39-stepper-previous').click();
+    root.querySelector('.app-visual-view .plan39-check-position').click();
+    expect(app.getState().beat).toBe('resolve');
+
+    // Visual view accepted header and graphics
+    const visualHeader = root.querySelector('.app-visual-view .plan39-accepted-header');
+    expect(visualHeader).not.toBeNull();
+    expect(visualHeader.querySelector('.plan39-accepted-text').textContent).toBe('That’s right.');
+    const visualFrac = visualHeader.querySelector('.plan39-accepted-fraction');
+    expect(visualFrac).not.toBeNull();
+    expect(visualFrac.querySelector('.symbolic-numerator').textContent).toBe('1');
+    expect(visualFrac.querySelector('.symbolic-denominator').textContent).toBe('2');
+    expect(root.querySelector('.app-visual-view .plan39-accepted-bar-figure')).not.toBeNull();
+    expect(root.querySelector('.app-visual-view .plan39-bar-track')).not.toBeNull();
+    expect(root.querySelector('.app-visual-view .plan39-accepted-bar-figure .plan39-source-fraction')).toBeNull();
+
+    // Linear view accepted header
+    const linearHeader = root.querySelector('.app-linear-view .plan39-accepted-header');
+    expect(linearHeader).not.toBeNull();
+    expect(linearHeader.querySelector('.plan39-accepted-text').textContent).toBe('That’s right.');
+    expect(linearHeader.querySelector('.plan39-accepted-fraction')).not.toBeNull();
+    expect(root.querySelector('.app-linear-view .plan39-bar-track')).toBeNull();
+    app.destroy();
+  });
+
+  it('consumes Plan 43 direct progression: Next advances fresh to item 2 and final item returns', () => {
+    const document = setupMockDOM();
+    const root = document.createElement('div');
+    document.body.appendChild(root);
+    const app = createFractionFlowApp({ root, presentationMode: 'instant-test', navigationMode: 'direct' }).mount();
+    root.querySelector('[data-practice-type="bar-to-line-same-amount"]').click();
+
+    // Item 1
+    root.querySelector('.app-visual-view .plan39-stepper-next').click();
+    root.querySelector('.app-visual-view .plan39-stepper-previous').click();
+    root.querySelector('.app-visual-view .plan39-check-position').click();
+    expect(app.getState().beat).toBe('resolve');
+
+    const nextBtn = root.querySelector('.app-visual-view .plan39-finish');
+    expect(nextBtn.textContent).toBe('Next problem');
+    nextBtn.click();
+
+    // Item 2 mounted fresh
+    expect(app.getState().beat).toBe('locate');
+    expect(root.querySelector('.app-episode').getAttribute('data-current-item-id')).toBe('bridge-02-fourth-4');
+    expect(root.querySelector('.app-visual-view .plan39-check-position').disabled).toBe(true);
+    const tray = root.querySelector('.app-visual-view .plan39-token-tray');
+    const token = root.querySelector('.app-visual-view .plan39-repair-token');
+    expect(tray.contains(token)).toBe(true);
+    expect(token.classList.contains('is-placed')).toBe(false);
+
+    // Fast-forward to final item (item 7 index)
+    for (let i = 1; i < 8; i += 1) {
+      if (app.getState().beat === 'locate') {
+        const record = PLAN37_BAR_TO_LINE_BRIDGE_RECORDS[i];
+        app.dispatch({ type: 'propose-number-line-location', proposed: record.sourceForm });
+      }
+      if (i < 7) {
+        expect(app.getState().beat).toBe('resolve');
+        root.querySelector('.app-visual-view .plan39-finish').click();
+      }
+    }
+    expect(app.getState().beat).toBe('resolve');
+    const finalBtn = root.querySelector('.app-visual-view .plan39-finish');
+    expect(finalBtn.textContent).toBe('Back to start');
+    expect(root.querySelector('.app-visual-view .progression-notice').textContent).toBe('You’ve tried every problem in this set.');
+    finalBtn.click();
+    expect(root.querySelector('.app-episode').hasAttribute('hidden')).toBe(true);
+    app.destroy();
+  });
 });

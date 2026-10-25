@@ -261,16 +261,86 @@ body,
   line-height: 1.25;
 }
 
+.plan39-header-region {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  min-width: 0;
+}
+
+.plan39-intro-header {
+  margin-bottom: 0.25rem;
+}
+
+.plan39-intro-header > .active-beat-prompt {
+  margin: 0;
+  font-size: 1.05rem;
+  line-height: 1.25;
+}
+
+.plan39-token-tray {
+  box-sizing: border-box;
+  display: grid;
+  place-items: center;
+  width: max-content;
+  min-width: 56px;
+  height: auto;
+  min-height: 52px;
+  padding: 0.25rem 0.5rem;
+  border: 1.5px dashed #ca8a04;
+  border-radius: 0.5rem;
+  background: #fefce8;
+  flex-shrink: 0;
+}
+
+.plan39-accepted-header {
+  box-sizing: border-box;
+  padding: 0.75rem 1rem;
+  border: 1px solid #b8d3c3;
+  border-radius: 0.5rem;
+  background: #f1faf4;
+  margin-bottom: 0.25rem;
+}
+
+.plan39-accepted-header > .active-beat-prompt {
+  margin: 0;
+  font-size: 1.15rem;
+  font-weight: 600;
+  line-height: 1.25;
+  color: var(--app-ink);
+}
+
+.plan39-accepted-fraction-wrapper {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.plan39-accepted-fraction-wrapper .plan39-accepted-fraction {
+  font-size: 1.3rem;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+}
+
+.plan39-source-figure.plan39-accepted-bar-figure {
+  margin-bottom: 0.2rem;
+}
+
+.plan39-resolution-description {
+  margin: 0.35rem 0;
+  font-size: 1rem;
+  line-height: 1.4;
+  color: var(--app-ink);
+}
+
 .plan39-representation-stack {
   position: relative;
   display: grid;
   gap: 0.15rem;
   min-width: 0;
-}
-
-.plan39-token-tray {
-  height: 48px;
-  min-height: 48px;
 }
 
 .plan39-connector-overlay {
@@ -353,6 +423,12 @@ body,
   cursor: grab;
   touch-action: none;
   user-select: none;
+}
+
+@media (hover: hover) {
+  .plan39-repair-token:hover:not(.is-dragging) {
+    background: #f1f5f9;
+  }
 }
 
 .plan39-repair-token.is-dragging {
@@ -709,5 +785,19 @@ body,
 
   .app-practice-choice {
     width: 100%;
+  }
+
+  .plan39-intro-header {
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .plan39-intro-header .plan39-token-tray {
+    margin-left: auto;
+  }
+
+  .plan39-accepted-header {
+    flex-wrap: wrap;
+    gap: 0.5rem;
   }
 }
