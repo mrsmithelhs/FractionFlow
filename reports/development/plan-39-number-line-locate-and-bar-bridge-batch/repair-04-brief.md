@@ -13,6 +13,16 @@ number-line layout/affordances and integration with that accepted progression.
 Do not independently redesign completion, replay or next-item navigation here.
 The original before-Plan 43 observations below remain the evidence for the need.
 
+Dispatch readiness update 2026-10-24: Plan 43 Repair 02 is technically accepted
+and the owner has accepted its rendered progression and closed Plan 43. The
+shared-progression prerequisite is satisfied. Baseline before closure is daa26fc;
+use the current closure commit at dispatch. The tree was clean before these
+orchestration-only edits, with no concurrent implementation seen. Plan 39 remains
+delivered until repair dispatch is authorized; this record does not launch a
+writer. At dispatch, orchestration must reopen Plan 39 to in-progress and run
+preflight before investigation. Requirement 0 still stops before source. Current
+AGENTS.md Luna HIGH review settings supersede older Sol defaults.
+
 ## Evidence and adopted decisions
 
 Owner's local use showed three problems: the unplaced tile sits centrally above
@@ -119,7 +129,7 @@ clean receipt. Isolate new evidence and restore regenerated historical artifacts
 
 Recommended execution remains one Luna-medium default-role implementation writer,
 with no implementation-child fan-out, no Astra and no model substitution. Use one
-consolidated Sol read-only LOW review; a second only for a substantial unresolved
+consolidated Luna read-only HIGH review; a second only for a substantial unresolved
 issue. Routine repair verification stays with orchestration. A bounded Luna
 screenshot-driven walkthrough may be authorized at dispatch; read the existing
 walkthrough workflow and pilot log first, and persist capability failures as well

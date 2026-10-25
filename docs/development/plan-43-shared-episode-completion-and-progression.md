@@ -1,7 +1,8 @@
 ---
 id: plan-43
 title: Shared Episode Completion and Direct Progression
-status: delivered
+status: complete
+resolution: "Owner accepted the rendered progression example and accepted coverage of the other episode types on 2026-10-24 following Repair 02 technical acceptance. Shared direct progression, preserved reflection, final-item return, fresh state and compatibility are accepted within the documented evidence limits. No deployment authorization; Plan 39 Repair 04 remains separate."
 depends_on: [plan-20, plan-35, plan-38, plan-40, plan-42]
 gate: "Requirement 0: approve the shared completion/advance transaction, final-item behavior, focus, compatibility/versioning and evidence mechanism before source. Preserve substantive reflection. Technical verification and owner rendered-page/agency acceptance precede closure; deployment remains separate."
 summary: >-

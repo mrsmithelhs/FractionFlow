@@ -6,6 +6,15 @@ and pause records retained later in this file.
 
 ## Current board and owner direction
 
+Owner accepted Plan 43 on 2026-10-24 after viewing the supplemental example and
+accepting the documented other-family evidence. Plan 43 is COMPLETE; see its
+resolution and owner-acceptance.md. No push/deployment was authorized. Plan 39
+Repair 04 is READY TO DISPATCH, but has not been launched or reopened. Its brief
+now records the accepted Plan 43 prerequisite and Luna HIGH read-only reviewer
+default. On authorized dispatch, reopen Plan 39 in-progress, run preflight, then
+investigate/propose at Requirement 0 before source changes. Older pending-owner
+and blocked-sequence statements below are historical.
+
 Plan 43 Repair 02 technically ACCEPTED 2026-10-24, delivery 370c867/7f06a4c.
 Status is DELIVERED pending OWNER rendered/agency acceptance; do not close, deploy
 or launch Plan 39 Repair 04 yet. Read the Plan 43 repair-02-orchestration-review.md.
