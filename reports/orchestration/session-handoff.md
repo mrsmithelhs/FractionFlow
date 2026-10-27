@@ -6,6 +6,18 @@ and pause records retained later in this file.
 
 ## Current board and owner direction
 
+Plan 39 Repair 04 review 2026-10-27: a451949 is NOT YET ACCEPTED. Read
+repair-04-orchestration-review.md and repair-04-finishing-brief.md in its report
+folder. Parent reproduced tray collapse moving the axis up 19.75px DURING initial
+drag at 360 and 1366 widths. Three negative controls use seed-specific checks
+instead of ordinary assertions. Keep adopted visuals/shared progression; bounded
+finishing pass only, no new mechanism round or second advisor. One Luna HIGH
+read-only review completed, no Sol. Parent ran 8 tests and current-source Chrome
+checks: linear result and direct Next/fresh-item focus work. Independent proof in
+evidence/orchestration-repair04-review/. Owner packet/index edits remain untouched;
+Plan39 stays in-progress, owner rendered acceptance/push/deployment not granted.
+Older readiness records below are historical. Communication currently owner-relayed.
+
 Owner accepted Plan 43 on 2026-10-24 after viewing the supplemental example and
 accepting the documented other-family evidence. Plan 43 is COMPLETE; see its
 resolution and owner-acceptance.md. No push/deployment was authorized. Plan 39

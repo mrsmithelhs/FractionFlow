@@ -1,0 +1,149 @@
+{
+  "source": "current source via Vite",
+  "observations": [
+    {
+      "width": 360,
+      "before": {
+        "axis": {
+          "x": 41,
+          "y": 272.109375,
+          "width": 278,
+          "height": 3
+        },
+        "tray": {
+          "x": 269,
+          "y": 173.984375,
+          "width": 66,
+          "height": 71.75
+        },
+        "token": {
+          "x": 278,
+          "y": 178.984375,
+          "width": 48,
+          "height": 61.75
+        }
+      },
+      "during": {
+        "axis": {
+          "x": 41,
+          "y": 252.359375,
+          "width": 278,
+          "height": 3
+        },
+        "tray": {
+          "x": 279,
+          "y": 173.984375,
+          "width": 56,
+          "height": 52
+        },
+        "token": {
+          "x": 156,
+          "y": 211.859375,
+          "width": 48,
+          "height": 61.75
+        }
+      },
+      "after": {
+        "axis": {
+          "x": 41,
+          "y": 252.359375,
+          "width": 278,
+          "height": 3
+        },
+        "tray": {
+          "x": 279,
+          "y": 173.984375,
+          "width": 56,
+          "height": 52
+        },
+        "token": {
+          "x": 156,
+          "y": 192.109375,
+          "width": 48,
+          "height": 61.75
+        }
+      },
+      "axisShiftDuring": -19.75,
+      "axisShiftAfter": -19.75,
+      "linearText": "That’s right.\n1\n2\n\n0 to 1 has 2 equal steps.\n\n1 of 2 equal steps from 0 is 1/2.\n\nNext problem",
+      "next": {
+        "itemId": "bridge-02-fourth-4",
+        "focusClass": "app-episode",
+        "focusTag": "MAIN"
+      },
+      "errors": []
+    },
+    {
+      "width": 1366,
+      "before": {
+        "axis": {
+          "x": 367,
+          "y": 295.296875,
+          "width": 632,
+          "height": 3
+        },
+        "tray": {
+          "x": 953,
+          "y": 193.96875,
+          "width": 66,
+          "height": 71.75
+        },
+        "token": {
+          "x": 962,
+          "y": 198.96875,
+          "width": 48,
+          "height": 61.75
+        }
+      },
+      "during": {
+        "axis": {
+          "x": 367,
+          "y": 275.546875,
+          "width": 632,
+          "height": 3
+        },
+        "tray": {
+          "x": 963,
+          "y": 193.96875,
+          "width": 56,
+          "height": 52
+        },
+        "token": {
+          "x": 659,
+          "y": 235.046875,
+          "width": 48,
+          "height": 61.75
+        }
+      },
+      "after": {
+        "axis": {
+          "x": 367,
+          "y": 275.546875,
+          "width": 632,
+          "height": 3
+        },
+        "tray": {
+          "x": 963,
+          "y": 193.96875,
+          "width": 56,
+          "height": 52
+        },
+        "token": {
+          "x": 659,
+          "y": 215.296875,
+          "width": 48,
+          "height": 61.75
+        }
+      },
+      "axisShiftDuring": -19.75,
+      "axisShiftAfter": -19.75,
+      "linearText": "That’s right.\n1\n2\n\n0 to 1 has 2 equal steps.\n\n1 of 2 equal steps from 0 is 1/2.\n\nNext problem",
+      "next": {
+        "itemId": "bridge-02-fourth-4",
+        "focusClass": "app-episode",
+        "focusTag": "MAIN"
+      },
+      "errors": []
+    }
+  ]
+}
