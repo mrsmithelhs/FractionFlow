@@ -3,7 +3,7 @@ import { setTimeout as delay } from 'node:timers/promises';
 import { serverInvocation } from './console-commands.mjs';
 
 const SERVERS = {
-  learner: { port: 5173, title: 'FractionFlow — Fraction practice', path: (env) => normalizeBase(env.BASE_PATH || '/FractionFlow/') },
+  learner: { port: 5199, title: 'FractionFlow — Fraction practice', path: (env) => normalizeBase(env.BASE_PATH || '/FractionFlow/') },
   prototype: { port: 5174, title: 'FractionFlow subtraction prototype', path: (env) => `${normalizeBase(env.BASE_PATH || '/FractionFlow/')}prototypes/subtraction/` },
 };
 const live = (entry) => Boolean(entry?.child && !entry.exited);
@@ -12,7 +12,7 @@ function normalizeBase(base) { const leading = base.startsWith('/') ? base : `/$
 export class OwnedServers {
   constructor({ platform = process.platform, env = process.env, spawnImpl = spawn, fetchImpl = fetch, output = process.stdout, timeoutMs = 15000, cleanupTimeoutMs = 5000, ports = {} } = {}) {
     this.platform = platform; this.env = env; this.spawnImpl = spawnImpl; this.fetchImpl = fetchImpl; this.output = output;
-    this.timeoutMs = timeoutMs; this.cleanupTimeoutMs = cleanupTimeoutMs; this.entries = new Map(); this.ports = { learner: 5173, prototype: 5174, ...ports };
+    this.timeoutMs = timeoutMs; this.cleanupTimeoutMs = cleanupTimeoutMs; this.entries = new Map(); this.ports = { learner: 5199, prototype: 5174, ...ports };
     for (const [name, port] of Object.entries(this.ports)) if (!SERVERS[name] || !Number.isInteger(port) || port < 1024 || port > 65535) throw new Error(`Invalid server port mapping for ${name}.`);
   }
   status() { return [...this.entries.values()].map(({ name, state, url }) => ({ name, state, url: state === 'ready' ? url : null })); }

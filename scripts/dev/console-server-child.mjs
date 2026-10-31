@@ -1,7 +1,7 @@
 import { createServer, loadConfigFromFile } from 'vite';
 
 const specs = {
-  learner: { configFile: 'vite.config.js', port: 5173, base: (value) => normalizeBase(value || '/FractionFlow/') },
+  learner: { configFile: 'vite.config.js', port: 5199, base: (value) => normalizeBase(value || '/FractionFlow/') },
   prototype: { configFile: 'vite.subtraction.config.js', port: 5174, base: (value) => `${normalizeBase(value || '/FractionFlow/')}prototypes/subtraction/` },
 };
 function normalizeBase(base) { const leading = base.startsWith('/') ? base : `/${base}`; return leading.endsWith('/') ? leading : `${leading}/`; }

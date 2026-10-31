@@ -38,10 +38,10 @@ async function runServerThroughMenu(name, port) {
 
 describe('local development console', () => {
 it('Windows package scripts use cmd.exe with shell disabled and a stable invocation object', () => {
-  const invocation = packageScriptInvocation('dev', ['--host', '127.0.0.1', '--port', '5173', '--strictPort'], 'win32');
+  const invocation = packageScriptInvocation('dev', ['--host', '127.0.0.1', '--port', '5199', '--strictPort'], 'win32');
   expect(invocation.executable).toBe('cmd.exe');
   expect(invocation.args.slice(0, 3)).toEqual(['/d', '/s', '/c']);
-  expect(invocation.args[3]).toBe('npm run dev -- --host 127.0.0.1 --port 5173 --strictPort');
+  expect(invocation.args[3]).toBe('npm run dev -- --host 127.0.0.1 --port 5199 --strictPort');
   expect(invocation.display).toMatch(/cmd\.exe \/d \/s \/c/);
   expect(invocation.cwd.endsWith('FractionFlow')).toBe(true);
   expect(() => packageScriptInvocation('dev', ['--foo & whoami'], 'win32')).toThrow(/Unsupported Windows/);
@@ -98,8 +98,8 @@ it('interactive menu exit stops a ready owned server and returns', async () => {
     if (text.includes('Choose an action:')) { mainMenus++; input.write(mainMenus === 1 ? '1\n' : '0\n'); }
   });
   const servers = {
-    async start(name) { starts++; return { ok: true, state: 'ready', url: `http://127.0.0.1:5173/${name}/` }; },
-    status() { return [{ name: 'learner', state: 'ready', url: 'http://127.0.0.1:5173/learner/' }]; },
+    async start(name) { starts++; return { ok: true, state: 'ready', url: `http://127.0.0.1:5199/${name}/` }; },
+    status() { return [{ name: 'learner', state: 'ready', url: 'http://127.0.0.1:5199/learner/' }]; },
     async stop() { return { ok: true }; },
     async stopAll() { cleanups++; return [{ name: 'learner', ok: true }]; },
   };
@@ -133,7 +133,7 @@ it('real learner/prototype helpers serve on isolated ports, exit-clean, and leav
 
 it('owned start is idempotent and Stop requests one cooperative child close', async () => {
   const serverChild = child(); const calls = [];
-  const spawnImpl = (file, args) => { calls.push([file, args]); setImmediate(() => serverChild.emit('message', { type: 'ready', url: 'http://127.0.0.1:5173/FractionFlow/' })); return serverChild; };
+  const spawnImpl = (file, args) => { calls.push([file, args]); setImmediate(() => serverChild.emit('message', { type: 'ready', url: 'http://127.0.0.1:5199/FractionFlow/' })); return serverChild; };
   const owned = new OwnedServers({ platform: 'win32', env: {}, spawnImpl, fetchImpl: async (url) => {
     if (new URL(url).pathname === '/FractionFlow/' && serverChild.exitCode === null) return { ok: true, text: async () => '<title>FractionFlow — Fraction practice</title>' };
     throw new Error('closed');
@@ -152,7 +152,7 @@ it('duplicate start during readiness does not claim a ready URL or spawn twice',
   const serverChild = child(); let resolveFetch; let spawned = 0;
   const owned = new OwnedServers({
     platform: 'win32', env: {}, timeoutMs: 1000, output: { write() {} },
-    spawnImpl: () => { spawned++; setImmediate(() => serverChild.emit('message', { type: 'ready', url: 'http://127.0.0.1:5173/FractionFlow/' })); return serverChild; },
+    spawnImpl: () => { spawned++; setImmediate(() => serverChild.emit('message', { type: 'ready', url: 'http://127.0.0.1:5199/FractionFlow/' })); return serverChild; },
     fetchImpl: () => new Promise((resolve) => { resolveFetch = resolve; }),
   });
   const starting = owned.start('learner');
@@ -170,7 +170,7 @@ it('late failure from a replaced child cannot stop or remove its replacement', a
   const first = child(2001); const second = child(2002); let spawns = 0;
   const owned = new OwnedServers({
     platform: 'win32', env: {}, output: { write() {} }, timeoutMs: 1000,
-    spawnImpl: () => { spawns++; if (spawns === 2) setImmediate(() => second.emit('message', { type: 'ready', url: 'http://127.0.0.1:5173/FractionFlow/' })); return spawns === 1 ? first : second; },
+    spawnImpl: () => { spawns++; if (spawns === 2) setImmediate(() => second.emit('message', { type: 'ready', url: 'http://127.0.0.1:5199/FractionFlow/' })); return spawns === 1 ? first : second; },
     fetchImpl: async () => ({ ok: true, text: async () => '<title>FractionFlow — Fraction practice</title>' }),
   });
   const firstStart = owned.start('learner');
@@ -179,7 +179,7 @@ it('late failure from a replaced child cannot stop or remove its replacement', a
   const secondStart = owned.start('learner');
   const firstResult = await firstStart; const secondResult = await secondStart;
   expect(firstResult.ok).toBe(false); expect(secondResult.state).toBe('ready');
-  expect(owned.status()).toEqual([{ name: 'learner', state: 'ready', url: 'http://127.0.0.1:5173/FractionFlow/' }]);
+  expect(owned.status()).toEqual([{ name: 'learner', state: 'ready', url: 'http://127.0.0.1:5199/FractionFlow/' }]);
   const cleanup = await owned.stop('learner'); expect(cleanup.ok).toBe(true);
   expect(owned.status()).toEqual([]);
 });
@@ -222,7 +222,7 @@ it('reports missing close acknowledgement instead of treating child exit as succ
   const serverChild = child();
   serverChild.send = (message) => { serverChild.sent.push(message); setImmediate(() => { serverChild.connected = false; serverChild.exitCode = 1; serverChild.emit('exit', 1, null); }); };
   const owned = new OwnedServers({ platform: 'win32', env: {}, cleanupTimeoutMs: 200, spawnImpl: () => serverChild });
-  const entry = { name: 'learner', state: 'ready', child: serverChild, exited: false, messages: [], waiters: [], url: 'http://127.0.0.1:5173/FractionFlow/' };
+  const entry = { name: 'learner', state: 'ready', child: serverChild, exited: false, messages: [], waiters: [], url: 'http://127.0.0.1:5199/FractionFlow/' };
   serverChild.on('exit', () => { entry.exited = true; for (const wake of entry.waiters.splice(0)) wake(); });
   owned.entries.set('learner', entry);
   const result = await owned.stop('learner');

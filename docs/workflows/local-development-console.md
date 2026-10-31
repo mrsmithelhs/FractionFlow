@@ -8,7 +8,7 @@ starting a process.
 ## Servers
 
 The console starts an owned Node child that creates the learner Vite server at
-`http://127.0.0.1:5173/FractionFlow/` or the subtraction prototype at
+`http://127.0.0.1:5199/FractionFlow/` or the subtraction prototype at
 `http://127.0.0.1:5174/FractionFlow/prototypes/subtraction/`. The child reports
 readiness over private IPC after Vite listens; the parent also checks the
 expected application title over HTTP and that the child is live. An occupied

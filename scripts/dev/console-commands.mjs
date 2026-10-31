@@ -26,7 +26,7 @@ export function nodeScriptInvocation(script, args = []) {
   return { kind: 'node-script', executable: process.execPath, args: argv, cwd: ROOT, stdio: 'inherit', display: [process.execPath, ...argv].map(quote).join(' ') };
 }
 
-export function serverInvocation(name, port = name === 'learner' ? 5173 : 5174) {
+export function serverInvocation(name, port = name === 'learner' ? 5199 : 5174) {
   if (!['learner', 'prototype'].includes(name)) throw new Error(`Unknown server: ${name}`);
   if (!Number.isInteger(port) || port < 1024 || port > 65535) throw new Error('Server port must be an integer from 1024 through 65535.');
   const helper = path.join(ROOT, 'scripts/dev/console-server-child.mjs');
