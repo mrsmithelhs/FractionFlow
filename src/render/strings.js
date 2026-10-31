@@ -38,7 +38,7 @@ export const STRINGS = Object.freeze({
     amount: Object.freeze({ first: 'First amount', second: 'Second amount' }),
     modelAria: (side, numerator, denominator) => `${side === 'first' ? 'First' : 'Second'} fraction model: ${numerator} of ${denominator} equal parts shaded in one whole`,
     linearModel: (side, numerator, denominator) => `${side === 'first' ? 'First' : 'Second'} amount: ${numerator} of ${denominator} equal parts in one whole.`,
-    promptVerification: 'Check with the bars.',
+    promptVerification: "That's right.",
     check: 'Check',
     recovery: 'That sign does not fit yet. Try again.',
     reasoningTip: 'Reasoning tip',

@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "run": "final-unfiltered-route-matrix",
-  "capturedAt": "2026-10-31T21:13:36Z",
+  "run": "final-unfiltered-route-matrix-repair01",
+  "capturedAt": "2026-10-31T21:21:14Z",
   "command": "node scripts/dev/run-route-matrix.js",
   "runnerSummary": "Route Matrix Run Complete: 118 passed, 0 failed (116 route rows; 118 browser executions).",
   "routeRowCount": 116,
@@ -1286,5 +1286,5 @@
       "witness": "browser"
     }
   ],
-  "note": "Per-row status is recorded as passed from the runner final aggregate (zero failures); the runner did not persist per-execution durations for this plan."
+  "note": "Per-row status is recorded as passed from the runner final aggregate (zero failures); the runner did not persist individual durations for Plan 45."
 }

@@ -99,6 +99,130 @@ describe('Plan 45 comparison app integration', () => {
     app.destroy();
   });
 
+  it('retires same-item controls after a remount and keeps current assistance and response controls live', () => {
+    const { root, app } = mount();
+    const retiredModelButton = root.querySelector('.app-visual-view [data-plan45-focus-key="model-second"]');
+    const retiredRelationInput = relationInput(root, 'visual', '<');
+    const retiredResponseForm = root.querySelector('.app-visual-view .plan45-response-region');
+    const retiredReasoningButton = root.querySelector('.app-visual-view [data-plan45-focus-key="reasoning"]');
+    const retiredDisclosure = root.querySelector('.app-visual-view .plan45-help');
+
+    retiredRelationInput.checked = true;
+    retiredRelationInput.dispatchEvent({ type: 'change' });
+    retiredReasoningButton.click();
+    const stateAfterCurrentHelp = app.getState();
+    const historyAfterCurrentHelp = JSON.stringify({
+      assistanceHistory: stateAfterCurrentHelp.assistanceHistory,
+      responseProvenance: stateAfterCurrentHelp.responseProvenance,
+    });
+
+    retiredModelButton.click();
+    retiredReasoningButton.click();
+    retiredRelationInput.checked = false;
+    retiredRelationInput.value = '>';
+    retiredRelationInput.dispatchEvent({ type: 'change' });
+    retiredResponseForm.dispatchEvent({ type: 'submit', preventDefault() {} });
+    retiredDisclosure.open = true;
+    retiredDisclosure.dispatchEvent({ type: 'toggle' });
+
+    expect(app.getState()).toBe(stateAfterCurrentHelp);
+    expect(app.getState().assistance.modelChoice).toBeNull();
+    expect(JSON.stringify({
+      assistanceHistory: app.getState().assistanceHistory,
+      responseProvenance: app.getState().responseProvenance,
+    })).toBe(historyAfterCurrentHelp);
+    expect(relationInput(root, 'visual', '<').checked).toBe(true);
+    expect(root.querySelector('.app-visual-view .plan45-help').open).toBe(false);
+
+    root.querySelector('.app-visual-view [data-plan45-focus-key="notation"]').click();
+    expect(relationInput(root, 'visual', '<').checked).toBe(true);
+
+    root.querySelector('.app-visual-view [data-plan45-focus-key="model-first"]').click();
+    expect(app.getState().assistance.modelChoice).toBe('first');
+    chooseRelation(root, 'visual', expectedRelation(app.getState().taskContext.sourceForms));
+    submitCheck(root, 'visual');
+    expect(app.getState().status).toBe('resolved');
+    app.destroy();
+  });
+
+  it('rejects retained assistance, response, draft, and disclosure controls after Next while fresh controls work', () => {
+    const { root, app } = mount();
+    root.querySelector('.app-visual-view [data-plan45-focus-key="model-second"]').click();
+    const retiredReasoningButton = root.querySelector('.app-visual-view [data-plan45-focus-key="reasoning"]');
+    const retiredRelationInput = relationInput(root, 'visual', '>');
+    const retiredResponseForm = root.querySelector('.app-visual-view .plan45-response-region');
+    const retiredDisclosure = root.querySelector('.app-visual-view .plan45-help');
+
+    chooseRelation(root, 'visual', expectedRelation(app.getState().taskContext.sourceForms));
+    submitCheck(root, 'visual');
+    root.querySelector('.app-visual-view .plan45-progression-button').click();
+    const stateAfterNext = app.getState();
+    const historyAfterNext = JSON.stringify({
+      assistanceHistory: stateAfterNext.assistanceHistory,
+      responseProvenance: stateAfterNext.responseProvenance,
+    });
+
+    retiredReasoningButton.click();
+    retiredRelationInput.checked = true;
+    retiredRelationInput.dispatchEvent({ type: 'change' });
+    retiredResponseForm.dispatchEvent({ type: 'submit', preventDefault() {} });
+    retiredDisclosure.open = true;
+    retiredDisclosure.dispatchEvent({ type: 'toggle' });
+
+    expect(app.getState()).toBe(stateAfterNext);
+    expect(app.getState().taskContext.itemId).toBe(PLAN45_COMPARISON_RECORDS[1].itemId);
+    expect(app.getState().assistance.modelChoice).toBeNull();
+    expect(JSON.stringify({
+      assistanceHistory: app.getState().assistanceHistory,
+      responseProvenance: app.getState().responseProvenance,
+    })).toBe(historyAfterNext);
+    expect([...root.querySelectorAll('.app-visual-view .plan45-relation-option input')]
+      .some((input) => input.checked)).toBe(false);
+    expect(root.querySelector('.app-visual-view .plan45-help').open).toBe(false);
+
+    root.querySelector('.app-visual-view [data-plan45-focus-key="reasoning"]').click();
+    expect([...root.querySelectorAll('.app-visual-view .plan45-relation-option input')]
+      .some((input) => input.checked)).toBe(false);
+
+    root.querySelector('.app-visual-view [data-plan45-focus-key="model-first"]').click();
+    chooseRelation(root, 'visual', expectedRelation(app.getState().taskContext.sourceForms));
+    submitCheck(root, 'visual');
+    expect(app.getState().status).toBe('resolved');
+    app.destroy();
+  });
+
+  it('links active retry feedback to each view response group and removes the association after acceptance', () => {
+    const { root, app } = mount();
+    const wrong = ['<', '=', '>'].find((choice) => choice !== expectedRelation(app.getState().taskContext.sourceForms));
+    chooseRelation(root, 'visual', wrong);
+    submitCheck(root, 'visual');
+
+    for (const view of ['visual', 'linear']) {
+      const recovery = root.querySelector(`.app-${view}-view .plan45-recovery`);
+      const group = root.querySelector(`.app-${view}-view .plan45-relation-group`);
+      expect(recovery?.id).toBe(`plan45-recovery-${view}`);
+      expect(group?.getAttribute('aria-describedby')).toBe(recovery.id);
+    }
+    expect(root.querySelector('#plan45-recovery-visual')?.id)
+      .not.toBe(root.querySelector('#plan45-recovery-linear')?.id);
+
+    chooseRelation(root, 'visual', expectedRelation(app.getState().taskContext.sourceForms));
+    submitCheck(root, 'visual');
+    expect(root.querySelector('.app-visual-view .plan45-recovery')).toBeNull();
+    expect(root.querySelector('.app-visual-view .plan45-relation-group')).toBeNull();
+    expect(root.querySelector('.app-linear-view .plan45-recovery')).toBeNull();
+    app.destroy();
+  });
+
+  it('uses neutral accepted copy in both visual and linear verification', () => {
+    const { root, app } = mount();
+    chooseRelation(root, 'visual', expectedRelation(app.getState().taskContext.sourceForms));
+    submitCheck(root, 'visual');
+    expect(root.querySelector('.app-visual-view .plan45-verification-heading').textContent).toBe("That's right.");
+    expect(root.querySelector('.app-linear-view .plan45-verification-heading').textContent).toBe("That's right.");
+    app.destroy();
+  });
+
   it('checks mounted response and local progression on every registered item identity', () => {
     const { root, app } = mount();
     for (let index = 0; index < PLAN45_COMPARISON_RECORDS.length; index += 1) {

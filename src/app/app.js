@@ -1408,6 +1408,12 @@ export function createFractionFlowApp({
         comparisonDraft = raw;
         return true;
       },
+      readHelpOpen: () => isCurrent() ? comparisonHelpOpen : false,
+      writeHelpOpen: (open) => {
+        if (!isCurrent()) return false;
+        comparisonHelpOpen = Boolean(open);
+        return true;
+      },
       focusPrimary: () => isCurrent() ? getVisibleComparisonRegion()?.focusPrimary() ?? false : false,
       dispatch: (intent) => {
         const current = isCurrent();
@@ -1638,29 +1644,23 @@ export function createFractionFlowApp({
       linearRenderer = null;
       visualNumberLineRenderer = null;
       linearNumberLineRenderer = null;
-      createComparisonResponseHandle();
+      const responseHandle = createComparisonResponseHandle();
       const rendererOptions = (view) => ({
-        container: view === 'visual' ? visualHost : linearHost,
-        view,
-        dispatchAction: (action) => comparisonResponseHandle?.dispatch(action),
-        getDraft: () => comparisonResponseHandle?.readDraft() ?? '',
-        setDraft: (value) => {
-          if (value !== '' && !['<', '=', '>'].includes(value)) return false;
-          comparisonDraft = value;
-          return comparisonResponseHandle?.writeDraft(value) ?? true;
-        },
-        getHelpOpen: () => comparisonHelpOpen,
-        setHelpOpen: (open) => { comparisonHelpOpen = Boolean(open); },
+        dispatchAction: (action) => responseHandle?.dispatch(action) ?? false,
+        getDraft: () => responseHandle?.readDraft() ?? '',
+        setDraft: (value) => responseHandle?.writeDraft(value) ?? false,
+        getHelpOpen: () => responseHandle?.readHelpOpen() ?? false,
+        setHelpOpen: (open) => responseHandle?.writeHelpOpen(open) ?? false,
         getProgression: () => computeProgressionDescriptor(),
       });
       if (!visualComparisonRenderer) {
-        visualComparisonRenderer = createPlan45ComparisonRenderer(rendererOptions('visual'));
-        visualComparisonRenderer.mount(scene);
-      } else visualComparisonRenderer.update(scene);
+        visualComparisonRenderer = createPlan45ComparisonRenderer({ container: visualHost, view: 'visual' });
+        visualComparisonRenderer.mount(scene, rendererOptions('visual'));
+      } else visualComparisonRenderer.update(scene, rendererOptions('visual'));
       if (!linearComparisonRenderer) {
-        linearComparisonRenderer = createPlan45ComparisonRenderer(rendererOptions('linear'));
-        linearComparisonRenderer.mount(scene);
-      } else linearComparisonRenderer.update(scene);
+        linearComparisonRenderer = createPlan45ComparisonRenderer({ container: linearHost, view: 'linear' });
+        linearComparisonRenderer.mount(scene, rendererOptions('linear'));
+      } else linearComparisonRenderer.update(scene, rendererOptions('linear'));
       updateConditionMetadata();
       updateSupportMetadata();
       updateSupportControls();

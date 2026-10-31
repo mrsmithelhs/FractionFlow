@@ -70,7 +70,7 @@ function makeLinearModel(form, side) {
   return text;
 }
 
-function makeProgression(scene, getProgression) {
+function makeProgression(scene, getProgression, isActive) {
   if (scene.meaning.status.episode !== 'resolved') return null;
   const progression = getProgression?.();
   if (!progression || progression.actionKind === 'none') return null;
@@ -83,7 +83,9 @@ function makeProgression(scene, getProgression) {
   const button = element('button', 'app-primary-button plan45-progression-button');
   button.type = 'button';
   button.textContent = progression.label;
-  button.addEventListener('click', () => progression.onAction?.());
+  button.addEventListener('click', () => {
+    if (isActive()) progression.onAction?.();
+  });
   append(wrap, button);
   return wrap;
 }
@@ -91,19 +93,29 @@ function makeProgression(scene, getProgression) {
 export function createPlan45ComparisonRenderer({
   container,
   view = 'visual',
-  dispatchAction,
-  getDraft = () => '',
-  setDraft = () => {},
-  getHelpOpen = () => false,
-  setHelpOpen = () => {},
-  getProgression = null,
 } = {}) {
-  if (!container || typeof dispatchAction !== 'function') throw new Error('Plan 45 renderer requires a container and dispatcher');
+  if (!container) throw new Error('Plan 45 renderer requires a container');
   let root = null;
   let responseRegion = null;
+  let activeRender = null;
 
-  function update(scene) {
+  function update(scene, callbacks = {}) {
     assertValidScene(scene);
+    if (typeof callbacks.dispatchAction !== 'function'
+      || typeof callbacks.getDraft !== 'function'
+      || typeof callbacks.setDraft !== 'function') {
+      throw new Error('Plan 45 renderer requires scoped response callbacks');
+    }
+    if (activeRender) activeRender.active = false;
+    const renderScope = { active: true };
+    activeRender = renderScope;
+    const isActive = () => renderScope.active && activeRender === renderScope;
+    const dispatchAction = (action) => isActive() ? callbacks.dispatchAction(action) : false;
+    const getDraft = () => isActive() ? callbacks.getDraft() : '';
+    const setDraft = (value) => isActive() ? callbacks.setDraft(value) : false;
+    const getHelpOpen = () => isActive() ? callbacks.getHelpOpen?.() ?? false : false;
+    const setHelpOpen = (open) => isActive() ? callbacks.setHelpOpen?.(open) ?? false : false;
+    const getProgression = callbacks.getProgression;
     if (scene.meaning.status?.episode !== 'resolved'
       && scene.meaning.currentTask?.responsibility !== 'compare-symbolic-fraction-magnitudes') {
       throw new Error('Plan 45 renderer requires a validated comparison scene');
@@ -135,7 +147,7 @@ export function createPlan45ComparisonRenderer({
         append(verification, models);
       }
       append(root, verification);
-      const progression = makeProgression(scene, getProgression);
+      const progression = makeProgression(scene, getProgression, isActive);
       if (progression) append(root, progression);
       container.replaceChildren(root);
       responseRegion = null;
@@ -157,6 +169,7 @@ export function createPlan45ComparisonRenderer({
 
     if (status.recovery) {
       const recovery = element('p', 'plan45-recovery');
+      recovery.id = `plan45-recovery-${view}`;
       recovery.setAttribute('role', 'status');
       recovery.textContent = STRINGS.plan45.recovery;
       append(root, recovery);
@@ -229,6 +242,7 @@ export function createPlan45ComparisonRenderer({
       dispatchAction({ type: 'submit-fraction-comparison', proposed });
     });
     const group = element('fieldset', 'plan45-relation-group');
+    if (status.recovery) group.setAttribute('aria-describedby', `plan45-recovery-${view}`);
     const legend = element('legend', 'sr-only');
     legend.textContent = STRINGS.plan45.relationLegend;
     append(group, legend);
@@ -288,8 +302,14 @@ export function createPlan45ComparisonRenderer({
     return id === 'compare' ? responseRegion : null;
   }
 
-  function mount(scene) { update(scene); }
-  function destroy() { container.replaceChildren(); root = null; responseRegion = null; }
+  function mount(scene, callbacks) { update(scene, callbacks); }
+  function destroy() {
+    if (activeRender) activeRender.active = false;
+    activeRender = null;
+    container.replaceChildren();
+    root = null;
+    responseRegion = null;
+  }
 
   return { mount, update, destroy, getResponseRegion };
 }
