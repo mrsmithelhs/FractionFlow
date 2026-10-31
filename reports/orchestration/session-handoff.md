@@ -6,6 +6,15 @@ and pause records retained later in this file.
 
 ## Current board and owner direction
 
+Latest Plan23 update 2026-10-31: replacement lifecycle proposal APPROVED in
+f9b19e1 / Plan23 mechanism-amendment-01.md and delivered directly to FF Impl23.
+Source gate reopened for one private-IPC Node child using installed Vite API and
+cooperative server.close; direct helper replaces npm only for console-owned server
+actions. No machine changes/native dependencies or taskkill fallback. Hold one
+Terra-medium review for settled implementation; owner live acceptance remains.
+This supersedes the earlier paused-mechanism note below. Plan44 remains DELIVERED
+pending owner design adoption; neither plan is closed or deployed.
+
 2026-10-31 supervision checkpoint: Plan44 dossier 37eaf70/d00dbb6 is technically
 ACCEPTED and DELIVERED pending OWNER design adoption. Parent reran exact probe,
 byte-identical JSON, reviewed report inline and shortened visible choices to
