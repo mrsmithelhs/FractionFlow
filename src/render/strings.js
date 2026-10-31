@@ -24,6 +24,35 @@ function equivalentPartsPrompt(sourceForm, targetDenominator) {
 }
 
 export const STRINGS = Object.freeze({
+  plan45: Object.freeze({
+    regionLabel: 'Compare fractions',
+    prompt: 'Compare these fractions.',
+    relationLegend: 'Choose how the first fraction compares with the second',
+    relationAria: Object.freeze({
+      '<': 'The first fraction is less than the second fraction',
+      '=': 'The first fraction is equal to the second fraction',
+      '>': 'The first fraction is greater than the second fraction',
+    }),
+    relationLabels: Object.freeze({ '<': 'Less than', '=': 'Equal to', '>': 'Greater than' }),
+    relationSpoken: Object.freeze({ '<': 'is less than', '=': 'is equal to', '>': 'is greater than' }),
+    amount: Object.freeze({ first: 'First amount', second: 'Second amount' }),
+    modelAria: (side, numerator, denominator) => `${side === 'first' ? 'First' : 'Second'} fraction model: ${numerator} of ${denominator} equal parts shaded in one whole`,
+    linearModel: (side, numerator, denominator) => `${side === 'first' ? 'First' : 'Second'} amount: ${numerator} of ${denominator} equal parts in one whole.`,
+    promptVerification: 'Check with the bars.',
+    check: 'Check',
+    recovery: 'That sign does not fit yet. Try again.',
+    reasoningTip: 'Reasoning tip',
+    notationTip: 'Sign tip',
+    needHelp: 'Need help?',
+    closeHelp: 'Close help',
+    chooseModel: 'Choose one amount to model.',
+    modelFirst: 'Model first amount',
+    modelSecond: 'Model second amount',
+    moreStrategy: 'Try a benchmark or compare same-size parts.',
+    helpCueLabel: 'Comparison help',
+    chosenModelLabel: 'Chosen fraction model',
+    verificationLabel: 'Check the two amounts',
+  }),
   plan39Repair02: Object.freeze({
     visualPrompt: 'Place this fraction on the number line.',
     linearPrompt: 'Choose a location.',

@@ -1,0 +1,1290 @@
+{
+  "schemaVersion": 1,
+  "run": "final-unfiltered-route-matrix",
+  "capturedAt": "2026-10-31T21:13:36Z",
+  "command": "node scripts/dev/run-route-matrix.js",
+  "runnerSummary": "Route Matrix Run Complete: 118 passed, 0 failed (116 route rows; 118 browser executions).",
+  "routeRowCount": 116,
+  "browserExecutionCount": 118,
+  "passed": 118,
+  "failed": 0,
+  "perRouteRows": [
+    {
+      "id": "ROUTE-TRAVERSAL-VISUAL-NO-DISPATCH",
+      "result": "passed",
+      "configuration": "phase2-bundle-1",
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "motionMode": "standard-motion",
+      "witness": "browser"
+    },
+    {
+      "id": "ROUTE-TRAVERSAL-LINEAR-NO-DISPATCH",
+      "result": "passed",
+      "configuration": "phase2-bundle-1",
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "motionMode": "standard-motion",
+      "witness": "browser"
+    },
+    {
+      "id": "ROUTE-COND-1-TRANSFORM",
+      "result": "passed",
+      "configuration": "phase2-bundle-1",
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "motionMode": "standard-motion",
+      "witness": "browser"
+    },
+    {
+      "id": "ROUTE-COND-2-TRANSFORM",
+      "result": "passed",
+      "configuration": "phase2-bundle-2",
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "motionMode": "standard-motion",
+      "witness": "browser"
+    },
+    {
+      "id": "ROUTE-COND-3-TRANSFORM",
+      "result": "passed",
+      "configuration": "phase2-bundle-3",
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "motionMode": "standard-motion",
+      "witness": "browser"
+    },
+    {
+      "id": "ROUTE-COND-4-TRANSFORM-SAME",
+      "result": "passed",
+      "configuration": "phase2-bundle-4",
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "motionMode": "standard-motion",
+      "witness": "browser"
+    },
+    {
+      "id": "ROUTE-COND-1-REFLECT",
+      "result": "passed",
+      "configuration": "phase2-bundle-1",
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "motionMode": "standard-motion",
+      "witness": "browser"
+    },
+    {
+      "id": "ROUTE-COND-4-REFLECT",
+      "result": "passed",
+      "configuration": "phase2-bundle-4",
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "motionMode": "standard-motion",
+      "witness": "browser"
+    },
+    {
+      "id": "ROUTE-REPLAY-COND-1",
+      "result": "passed",
+      "configuration": "phase2-bundle-1",
+      "viewport": {
+        "width": 360,
+        "height": 752
+      },
+      "motionMode": "standard-motion",
+      "witness": "browser"
+    },
+    {
+      "id": "ROUTE-REPLAY-NEW-CONVERSION-COND-1",
+      "result": "passed",
+      "configuration": "phase2-bundle-1",
+      "viewport": {
+        "width": 360,
+        "height": 752
+      },
+      "motionMode": "standard-motion",
+      "witness": "browser"
+    },
+    {
+      "id": "ROUTE-REPLAY-REDUCED-COND-1",
+      "result": "passed",
+      "configuration": "phase2-bundle-1",
+      "viewport": {
+        "width": 360,
+        "height": 752
+      },
+      "motionMode": "reduced-motion",
+      "witness": "browser"
+    },
+    {
+      "id": "ROUTE-REPLAY-COND-2",
+      "result": "passed",
+      "configuration": "phase2-bundle-2",
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "motionMode": "standard-motion",
+      "witness": "browser"
+    },
+    {
+      "id": "ROUTE-REPLAY-COND-3",
+      "result": "passed",
+      "configuration": "phase2-bundle-3",
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "motionMode": "standard-motion",
+      "witness": "browser"
+    },
+    {
+      "id": "ROUTE-RECOVERY-TRANSFORM",
+      "result": "passed",
+      "configuration": "phase2-bundle-1",
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "motionMode": "standard-motion",
+      "witness": "browser"
+    },
+    {
+      "id": "ROUTE-RECOVERY-OPERATE",
+      "result": "passed",
+      "configuration": "phase2-bundle-1",
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "motionMode": "standard-motion",
+      "witness": "browser"
+    },
+    {
+      "id": "ROUTE-PREMISE-12-FALSE-NO",
+      "result": "passed",
+      "configuration": "phase2-bundle-4",
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "motionMode": "standard-motion",
+      "witness": "browser"
+    },
+    {
+      "id": "ROUTE-PREMISE-12-FALSE-YES",
+      "result": "passed",
+      "configuration": "phase2-bundle-4",
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "motionMode": "standard-motion",
+      "witness": "browser"
+    },
+    {
+      "id": "ROUTE-PREMISE-24-TRUE-YES",
+      "result": "passed",
+      "configuration": "phase2-bundle-4",
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "motionMode": "standard-motion",
+      "witness": "browser"
+    },
+    {
+      "id": "ROUTE-PREMISE-24-TRUE-NO",
+      "result": "passed",
+      "configuration": "phase2-bundle-4",
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "motionMode": "standard-motion",
+      "witness": "browser"
+    },
+    {
+      "id": "ROUTE-REDUCED-MOTION",
+      "result": "passed",
+      "configuration": "phase2-bundle-1",
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "motionMode": "reduced-motion",
+      "witness": "browser"
+    },
+    {
+      "id": "ROUTE-FOCUS-REPLAY-INTERACTIVE",
+      "result": "passed",
+      "configuration": "phase2-bundle-1",
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "motionMode": "standard-motion",
+      "witness": "browser"
+    },
+    {
+      "id": "ROUTE-FOCUS-INSPECTION-RESTORE",
+      "result": "passed",
+      "configuration": "phase2-bundle-1",
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "motionMode": "standard-motion",
+      "witness": "browser"
+    },
+    {
+      "id": "ROUTE-FOCUS-INSPECTION-RESTORE-LINEAR",
+      "result": "passed",
+      "configuration": "phase2-bundle-1",
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "motionMode": "standard-motion",
+      "witness": "browser"
+    },
+    {
+      "id": "ROUTE-ENTRY-FIRST-TAB",
+      "result": "passed",
+      "configuration": "phase2-bundle-1",
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "motionMode": "standard-motion",
+      "witness": "browser"
+    },
+    {
+      "id": "ROUTE-ENTRY-GEAR-TAB",
+      "result": "passed",
+      "configuration": "phase2-bundle-1",
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "motionMode": "standard-motion",
+      "witness": "browser"
+    },
+    {
+      "id": "ROUTE-ENTRY-BEGIN-RETURN-FOCUS",
+      "result": "passed",
+      "configuration": "phase2-bundle-1",
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "motionMode": "standard-motion",
+      "witness": "browser"
+    },
+    {
+      "id": "ROUTE-RETRY-RESET-STATE",
+      "result": "passed",
+      "configuration": "phase2-bundle-1",
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "motionMode": "standard-motion",
+      "witness": "browser"
+    },
+    {
+      "id": "ROUTE-RETURN-REENTER-RESET-STATE",
+      "result": "passed",
+      "configuration": "phase2-bundle-1",
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "motionMode": "standard-motion",
+      "witness": "browser"
+    },
+    {
+      "id": "ROUTE-ENTRY-BEGIN-FIRST-TAB-EPISODE",
+      "result": "passed",
+      "configuration": "phase2-bundle-1",
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "motionMode": "standard-motion",
+      "witness": "browser"
+    },
+    {
+      "id": "ROUTE-PROTOTYPE-SUBTRACTION-TAKEAWAY",
+      "result": "passed",
+      "configuration": "plan15-subtraction-prototype",
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "motionMode": null,
+      "witness": "browser"
+    },
+    {
+      "id": "ROUTE-PROTOTYPE-SUBTRACTION-COMPARISON",
+      "result": "passed",
+      "configuration": "plan15-subtraction-prototype",
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "motionMode": null,
+      "witness": "browser"
+    },
+    {
+      "id": "ROUTE-PREMISE-MEDIUM-12-FALSE-NO",
+      "result": "passed",
+      "configuration": "phase2-bundle-4",
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "motionMode": "standard-motion",
+      "witness": "browser"
+    },
+    {
+      "id": "ROUTE-PREMISE-MEDIUM-12-FALSE-YES",
+      "result": "passed",
+      "configuration": "phase2-bundle-4",
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "motionMode": "standard-motion",
+      "witness": "browser"
+    },
+    {
+      "id": "ROUTE-PREMISE-MEDIUM-24-TRUE-YES",
+      "result": "passed",
+      "configuration": "phase2-bundle-4",
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "motionMode": "standard-motion",
+      "witness": "browser"
+    },
+    {
+      "id": "ROUTE-PREMISE-MEDIUM-24-TRUE-NO",
+      "result": "passed",
+      "configuration": "phase2-bundle-4",
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "motionMode": "standard-motion",
+      "witness": "browser"
+    },
+    {
+      "id": "ROUTE-SUPPORT-HIGH-DECIDE",
+      "result": "passed",
+      "configuration": "phase2-bundle-4",
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "motionMode": "standard-motion",
+      "witness": "browser"
+    },
+    {
+      "id": "ROUTE-SUPPORT-MEDIUM-DECIDE",
+      "result": "passed",
+      "configuration": "phase2-bundle-4",
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "motionMode": "standard-motion",
+      "witness": "browser"
+    },
+    {
+      "id": "ROUTE-SUPPORT-HIGH-PREMISE-12",
+      "result": "passed",
+      "configuration": "phase2-bundle-4",
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "motionMode": "standard-motion",
+      "witness": "browser"
+    },
+    {
+      "id": "ROUTE-SUPPORT-MEDIUM-PREMISE-12",
+      "result": "passed",
+      "configuration": "phase2-bundle-4",
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "motionMode": "standard-motion",
+      "witness": "browser"
+    },
+    {
+      "id": "ROUTE-SUPPORT-HIGH-PREMISE-24",
+      "result": "passed",
+      "configuration": "phase2-bundle-4",
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "motionMode": "standard-motion",
+      "witness": "browser"
+    },
+    {
+      "id": "ROUTE-SUPPORT-MEDIUM-PREMISE-24",
+      "result": "passed",
+      "configuration": "phase2-bundle-4",
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "motionMode": "standard-motion",
+      "witness": "browser"
+    },
+    {
+      "id": "ROUTE-PLAN22-36-MATCHING-VISUAL",
+      "result": "passed",
+      "configuration": "phase2-bundle-1",
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "motionMode": "standard-motion",
+      "witness": "browser"
+    },
+    {
+      "id": "ROUTE-PLAN22-36-PREMISE-LINEAR-REDUCED",
+      "result": "passed",
+      "configuration": "phase2-bundle-4",
+      "viewport": {
+        "width": 320,
+        "height": 740
+      },
+      "motionMode": "reduced-motion",
+      "witness": "browser"
+    },
+    {
+      "id": "ROUTE-PLAN22-36-RETRY-RETURN",
+      "result": "passed",
+      "configuration": "phase2-bundle-1",
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "motionMode": "standard-motion",
+      "witness": "browser"
+    },
+    {
+      "id": "ROUTE-PLAN24-MEDIUM-LOCAL-HELP",
+      "result": "passed",
+      "configuration": "phase2-bundle-1",
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "motionMode": "standard-motion",
+      "witness": "browser"
+    },
+    {
+      "id": "ROUTE-PLAN24-HIGH-LINEAR-HELP",
+      "result": "passed",
+      "configuration": "phase2-bundle-1",
+      "viewport": {
+        "width": 360,
+        "height": 752
+      },
+      "motionMode": "standard-motion",
+      "witness": "browser"
+    },
+    {
+      "id": "ROUTE-PLAN24-MEDIUM-HELP-RECOVERY-TOGGLE",
+      "result": "passed",
+      "configuration": "phase2-bundle-1",
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "motionMode": "standard-motion",
+      "witness": "browser"
+    },
+    {
+      "id": "ROUTE-PLAN24-HIGH-HELP-VIEW-TOGGLE-RESET",
+      "result": "passed",
+      "configuration": "phase2-bundle-1",
+      "viewport": {
+        "width": 360,
+        "height": 752
+      },
+      "motionMode": "standard-motion",
+      "witness": "browser"
+    },
+    {
+      "id": "ROUTE-PLAN25-TRANSFORM-HELP-REQUESTED",
+      "result": "passed",
+      "configuration": "phase2-bundle-1",
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "motionMode": "standard-motion",
+      "witness": "browser"
+    },
+    {
+      "id": "ROUTE-PLAN25-TRANSFORM-HELP-LINEAR-FOCUS",
+      "result": "passed",
+      "configuration": "phase2-bundle-1",
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "motionMode": "standard-motion",
+      "witness": "browser"
+    },
+    {
+      "id": "ROUTE-PLAN25-TRANSFORM-HELP-CLOSED",
+      "result": "passed",
+      "configuration": "phase2-bundle-1",
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "motionMode": "standard-motion",
+      "witness": "browser"
+    },
+    {
+      "id": "ROUTE-PLAN26-NEXT-WAITS-FOR-COMPLETION",
+      "result": "passed",
+      "configuration": "phase2-bundle-1",
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "motionMode": "standard-motion",
+      "witness": "browser"
+    },
+    {
+      "id": "ROUTE-PLAN32-NEXT-REACHES-NEW-BATCH",
+      "result": "passed",
+      "configuration": "phase2-bundle-1",
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "motionMode": "standard-motion",
+      "witness": "browser"
+    },
+    {
+      "id": "ROUTE-PLAN26-CHROMEBOOK-CSS-VIEWPORT",
+      "result": "passed",
+      "configuration": "phase2-bundle-1",
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "motionMode": "standard-motion",
+      "witness": "browser"
+    },
+    {
+      "id": "ROUTE-PLAN17-APPENDED-ITEM-REACHABLE",
+      "result": "passed",
+      "configuration": "phase2-bundle-1",
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "motionMode": "standard-motion",
+      "witness": "browser"
+    },
+    {
+      "id": "ROUTE-PLAN20-LIKE-ADDITION-VISUAL",
+      "result": "passed",
+      "configuration": "phase2-bundle-1",
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "motionMode": "reduced-motion",
+      "witness": "browser"
+    },
+    {
+      "id": "ROUTE-PLAN20-LIKE-ADDITION-LINEAR",
+      "result": "passed",
+      "configuration": "phase2-bundle-1",
+      "viewport": {
+        "width": 360,
+        "height": 752
+      },
+      "motionMode": "reduced-motion",
+      "witness": "browser"
+    },
+    {
+      "id": "ROUTE-PLAN34-CONSTRUCT-VISUAL-DEEP",
+      "result": "passed",
+      "configuration": "phase2-bundle-1",
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "motionMode": "standard-motion",
+      "witness": "browser"
+    },
+    {
+      "id": "ROUTE-PLAN34-INSPECT-LINEAR-DEEP",
+      "result": "passed",
+      "configuration": "phase2-bundle-2",
+      "viewport": {
+        "width": 360,
+        "height": 752
+      },
+      "motionMode": "reduced-motion",
+      "witness": "browser"
+    },
+    {
+      "id": "ROUTE-PLAN34-THIRD-IDENTITY-WIDE",
+      "result": "passed",
+      "configuration": "phase2-bundle-3",
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "motionMode": "standard-motion",
+      "witness": "browser"
+    },
+    {
+      "id": "ROUTE-PLAN34-RETRY-RETURN-REENTRY",
+      "result": "passed",
+      "configuration": "phase2-bundle-1",
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "motionMode": "reduced-motion",
+      "witness": "browser"
+    },
+    {
+      "id": "ROUTE-PLAN18-PRODUCTION-HIGH-VISUAL-COMPLETE",
+      "result": "passed",
+      "configuration": "phase2-bundle-1",
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "motionMode": "standard-motion",
+      "witness": "browser"
+    },
+    {
+      "id": "ROUTE-PLAN18-PRODUCTION-MEDIUM-LINEAR-REDUCED",
+      "result": "passed",
+      "configuration": "phase2-bundle-3",
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "motionMode": "reduced-motion",
+      "witness": "browser"
+    },
+    {
+      "id": "ROUTE-PLAN35-CURRENT-HIGH-VISUAL-ALL-21",
+      "result": "passed",
+      "configuration": "phase2-bundle-1",
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "motionMode": "standard-motion",
+      "witness": "browser"
+    },
+    {
+      "id": "ROUTE-PLAN35-CURRENT-MEDIUM-LINEAR-ALL-21",
+      "result": "passed",
+      "configuration": "phase2-bundle-3",
+      "viewport": {
+        "width": 360,
+        "height": 752
+      },
+      "motionMode": "reduced-motion",
+      "witness": "browser"
+    },
+    {
+      "id": "ROUTE-PLAN38-SUBTRACTION-HIGH-VISUAL-ALL-8",
+      "result": "passed",
+      "configuration": "phase2-bundle-1",
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "motionMode": "standard-motion",
+      "witness": "browser"
+    },
+    {
+      "id": "ROUTE-PLAN38-SUBTRACTION-MEDIUM-LINEAR-ALL-8",
+      "result": "passed",
+      "configuration": "phase2-bundle-3",
+      "viewport": {
+        "width": 360,
+        "height": 752
+      },
+      "motionMode": "reduced-motion",
+      "witness": "browser"
+    },
+    {
+      "id": "ROUTE-PLAN38-DEEP-SAMPLE-ZERO-DIFFERENCE",
+      "result": "passed",
+      "configuration": "phase2-bundle-1",
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "motionMode": "standard-motion",
+      "witness": "browser"
+    },
+    {
+      "id": "ROUTE-PLAN38-DEEP-SAMPLE-REDUCIBLE-DIFFERENCE",
+      "result": "passed",
+      "configuration": "phase2-bundle-3",
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "motionMode": "standard-motion",
+      "witness": "browser"
+    },
+    {
+      "id": "ROUTE-PLAN38-HELP-TOGGLE-REPEATED-ERROR",
+      "result": "passed",
+      "configuration": "phase2-bundle-1",
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "motionMode": "standard-motion",
+      "witness": "browser"
+    },
+    {
+      "id": "ROUTE-PLAN38-VIEW-TOGGLE-DRAFT-PRESERVATION",
+      "result": "passed",
+      "configuration": "phase2-bundle-1",
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "motionMode": "standard-motion",
+      "witness": "browser"
+    },
+    {
+      "id": "ROUTE-PLAN38-REDUCED-MOTION-NO-ANIMATION",
+      "result": "passed",
+      "configuration": "phase2-bundle-1",
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "motionMode": "reduced-motion",
+      "witness": "browser"
+    },
+    {
+      "id": "ROUTE-PLAN38-RESPONSIVE-VIEWPORTS",
+      "result": "passed",
+      "configuration": "phase2-bundle-1",
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "motionMode": "standard-motion",
+      "witness": "browser"
+    },
+    {
+      "id": "ROUTE-PLAN40-UNLIKE-SUBTRACTION-HIGH-VISUAL-ALL",
+      "result": "passed",
+      "configuration": "phase2-bundle-1",
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "motionMode": "standard-motion",
+      "witness": "browser"
+    },
+    {
+      "id": "ROUTE-PLAN40-UNLIKE-SUBTRACTION-MEDIUM-LINEAR-ALL",
+      "result": "passed",
+      "configuration": "phase2-bundle-3",
+      "viewport": {
+        "width": 360,
+        "height": 752
+      },
+      "motionMode": "reduced-motion",
+      "witness": "browser"
+    },
+    {
+      "id": "ROUTE-PLAN40-DEEP-SAMPLE-CONSTRUCT-OPERATE",
+      "result": "passed",
+      "configuration": "phase2-bundle-1",
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "motionMode": "standard-motion",
+      "witness": "browser"
+    },
+    {
+      "id": "ROUTE-PLAN40-DEEP-SAMPLE-INSPECT-REPAIR",
+      "result": "passed",
+      "configuration": "phase2-bundle-1",
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "motionMode": "standard-motion",
+      "witness": "browser"
+    },
+    {
+      "id": "ROUTE-PLAN40-DEEP-SAMPLE-IDENTIFY-REDUCIBLE",
+      "result": "passed",
+      "configuration": "phase2-bundle-1",
+      "viewport": {
+        "width": 360,
+        "height": 752
+      },
+      "motionMode": "standard-motion",
+      "witness": "browser"
+    },
+    {
+      "id": "ROUTE-PLAN40-HELP-RECOVERY-VIEW-TOGGLE",
+      "result": "passed",
+      "configuration": "phase2-bundle-1",
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "motionMode": "standard-motion",
+      "witness": "browser"
+    },
+    {
+      "id": "ROUTE-PLAN40-RESPONSIVE-VIEWPORTS",
+      "result": "passed",
+      "configuration": "phase2-bundle-1",
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "motionMode": "standard-motion",
+      "witness": "browser"
+    },
+    {
+      "id": "ROUTE-PLAN40-CHROMEBOOK-SCALED-VIEWPORT",
+      "result": "passed",
+      "configuration": "phase2-bundle-1",
+      "viewport": {
+        "width": 1093,
+        "height": 614
+      },
+      "motionMode": "standard-motion",
+      "witness": "browser"
+    },
+    {
+      "id": "ROUTE-PLAN39-BRIDGE-VISUAL-ALL-8",
+      "result": "passed",
+      "configuration": "phase2-bundle-1",
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "motionMode": "standard-motion",
+      "witness": "browser"
+    },
+    {
+      "id": "ROUTE-PLAN39-BRIDGE-LINEAR-ALL-8",
+      "result": "passed",
+      "configuration": "phase2-bundle-3",
+      "viewport": {
+        "width": 360,
+        "height": 752
+      },
+      "motionMode": "reduced-motion",
+      "witness": "browser"
+    },
+    {
+      "id": "ROUTE-PLAN39-DEEP-SAMPLE-UNREDUCED-TWO-FOURTHS",
+      "result": "passed",
+      "configuration": "phase2-bundle-1",
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "motionMode": "standard-motion",
+      "witness": "browser"
+    },
+    {
+      "id": "ROUTE-PLAN39-DEEP-SAMPLE-ODD-THIRDS-B3",
+      "result": "passed",
+      "configuration": "phase2-bundle-1",
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "motionMode": "standard-motion",
+      "witness": "browser"
+    },
+    {
+      "id": "ROUTE-PLAN39-DEEP-SAMPLE-HIGH-EIGHTHS-B8",
+      "result": "passed",
+      "configuration": "phase2-bundle-1",
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "motionMode": "standard-motion",
+      "witness": "browser"
+    },
+    {
+      "id": "ROUTE-PLAN39-DEEP-SAMPLE-MEDIUM-07-08",
+      "result": "passed",
+      "configuration": "phase2-bundle-1",
+      "viewport": {
+        "width": 360,
+        "height": 752
+      },
+      "motionMode": "standard-motion",
+      "witness": "browser"
+    },
+    {
+      "id": "ROUTE-PLAN39-RECOVERY-HELP-PREVIEW",
+      "result": "passed",
+      "configuration": "phase2-bundle-1",
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "motionMode": "standard-motion",
+      "witness": "browser"
+    },
+    {
+      "id": "ROUTE-PLAN39-RESPONSIVE-360X752",
+      "result": "passed",
+      "configuration": "phase2-bundle-1",
+      "viewport": {
+        "width": 360,
+        "height": 752
+      },
+      "motionMode": "standard-motion",
+      "witness": "browser"
+    },
+    {
+      "id": "ROUTE-PLAN39-RESPONSIVE-1366X768",
+      "result": "passed",
+      "configuration": "phase2-bundle-1",
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "motionMode": "standard-motion",
+      "witness": "browser"
+    },
+    {
+      "id": "ROUTE-PLAN39-RESPONSIVE-1093X614-DPR125",
+      "result": "passed",
+      "configuration": "phase2-bundle-1",
+      "viewport": {
+        "width": 1093,
+        "height": 614
+      },
+      "motionMode": "standard-motion",
+      "witness": "browser"
+    },
+    {
+      "id": "ROUTE-PLAN39-REPAIR02-DRAG-ALL-8",
+      "result": "passed",
+      "configuration": "phase2-bundle-1",
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "motionMode": "standard-motion",
+      "witness": "browser"
+    },
+    {
+      "id": "ROUTE-PLAN39-REPAIR02-TOUCH-TAP-ALL-8",
+      "result": "passed",
+      "configuration": "phase2-bundle-1",
+      "viewport": {
+        "width": 360,
+        "height": 752
+      },
+      "motionMode": "standard-motion",
+      "witness": "browser"
+    },
+    {
+      "id": "ROUTE-PLAN39-REPAIR02-KEYBOARD-ALL-8",
+      "result": "passed",
+      "configuration": "phase2-bundle-1",
+      "viewport": {
+        "width": 360,
+        "height": 752
+      },
+      "motionMode": "standard-motion",
+      "witness": "browser"
+    },
+    {
+      "id": "ROUTE-PLAN39-REPAIR02-BOUNDARIES",
+      "result": "passed",
+      "configuration": "phase2-bundle-1",
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "motionMode": "standard-motion",
+      "witness": "browser"
+    },
+    {
+      "id": "ROUTE-PLAN39-REPAIR02-ODD-THIRDS-360X740",
+      "result": "passed",
+      "configuration": "phase2-bundle-1",
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "motionMode": "standard-motion",
+      "witness": "browser"
+    },
+    {
+      "id": "ROUTE-PLAN39-REPAIR02-MEDIUM-1366X768",
+      "result": "passed",
+      "configuration": "phase2-bundle-1",
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "motionMode": "standard-motion",
+      "witness": "browser"
+    },
+    {
+      "id": "ROUTE-PLAN39-REPAIR02-EIGHTHS-1093X614-DPR125",
+      "result": "passed",
+      "configuration": "phase2-bundle-1",
+      "viewport": {
+        "width": 1093,
+        "height": 614
+      },
+      "motionMode": "standard-motion",
+      "witness": "browser"
+    },
+    {
+      "id": "ROUTE-PLAN39-REPAIR03-ANCHOR-RING",
+      "result": "passed",
+      "configuration": "phase2-bundle-1",
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "motionMode": "standard-motion",
+      "witness": "browser"
+    },
+    {
+      "id": "ROUTE-PLAN43-ADDITION-CONSTRUCT-NEXT",
+      "result": "passed",
+      "configuration": "phase2-bundle-1",
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "motionMode": "standard-motion",
+      "witness": "browser"
+    },
+    {
+      "id": "ROUTE-PLAN43-ADDITION-INSPECT-NEXT",
+      "result": "passed",
+      "configuration": "phase2-bundle-1",
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "motionMode": "reduced-motion",
+      "witness": "browser"
+    },
+    {
+      "id": "ROUTE-PLAN43-ADDITION-IDENTIFY-NEXT",
+      "result": "passed",
+      "configuration": "phase2-bundle-1",
+      "viewport": {
+        "width": 1093,
+        "height": 614
+      },
+      "motionMode": "standard-motion",
+      "witness": "browser"
+    },
+    {
+      "id": "ROUTE-PLAN43-PLAN20-SAME-DENOM-RETURN",
+      "result": "passed",
+      "configuration": "phase2-bundle-1",
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "motionMode": "standard-motion",
+      "witness": "browser"
+    },
+    {
+      "id": "ROUTE-PLAN43-SUBTRACTION-TAKEAWAY-NEXT",
+      "result": "passed",
+      "configuration": "phase2-bundle-1",
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "motionMode": "standard-motion",
+      "witness": "browser"
+    },
+    {
+      "id": "ROUTE-PLAN43-UNLIKE-SUBTRACTION-CONSTRUCT-NEXT",
+      "result": "passed",
+      "configuration": "phase2-bundle-1",
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "motionMode": "standard-motion",
+      "witness": "browser"
+    },
+    {
+      "id": "ROUTE-PLAN43-UNLIKE-SUBTRACTION-INSPECT-NEXT",
+      "result": "passed",
+      "configuration": "phase2-bundle-1",
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "motionMode": "reduced-motion",
+      "witness": "browser"
+    },
+    {
+      "id": "ROUTE-PLAN43-UNLIKE-SUBTRACTION-IDENTIFY-NEXT",
+      "result": "passed",
+      "configuration": "phase2-bundle-1",
+      "viewport": {
+        "width": 1093,
+        "height": 614
+      },
+      "motionMode": "standard-motion",
+      "witness": "browser"
+    },
+    {
+      "id": "ROUTE-PLAN43-NUMBER-LINE-DIRECT-NEXT",
+      "result": "passed",
+      "configuration": "phase2-bundle-1",
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "motionMode": "standard-motion",
+      "witness": "browser"
+    },
+    {
+      "id": "ROUTE-PLAN43-REFLECTION-MILESTONE-CONTINUE-NEXT",
+      "result": "passed",
+      "configuration": "phase2-bundle-1",
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "motionMode": "reduced-motion",
+      "witness": "browser"
+    },
+    {
+      "id": "ROUTE-PLAN43-PREMISE-REFLECTION-NEXT",
+      "result": "passed",
+      "configuration": "phase2-bundle-4",
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "motionMode": "standard-motion",
+      "witness": "browser"
+    },
+    {
+      "id": "ROUTE-PLAN45-VISUAL-360X740-MOUSE",
+      "result": "passed",
+      "configuration": "plan45-static-comparison",
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "motionMode": "standard-motion",
+      "witness": "browser"
+    },
+    {
+      "id": "ROUTE-PLAN45-LINEAR-360X752-KEYBOARD",
+      "result": "passed",
+      "configuration": "plan45-static-comparison",
+      "viewport": {
+        "width": 360,
+        "height": 752
+      },
+      "motionMode": "reduced-motion",
+      "witness": "browser"
+    },
+    {
+      "id": "ROUTE-PLAN45-TOUCH-1366X768",
+      "result": "passed",
+      "configuration": "plan45-static-comparison",
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "motionMode": "standard-motion",
+      "witness": "browser"
+    },
+    {
+      "id": "ROUTE-PLAN45-CHROMEBOOK-SCALED-1093X614",
+      "result": "passed",
+      "configuration": "plan45-static-comparison",
+      "viewport": {
+        "width": 1093,
+        "height": 614
+      },
+      "motionMode": "standard-motion",
+      "witness": "browser"
+    },
+    {
+      "id": "ROUTE-PLAN45-TEXT-SCALE-RESIZE-200PCT",
+      "result": "passed",
+      "configuration": "plan45-static-comparison",
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "motionMode": "standard-motion",
+      "witness": "browser"
+    },
+    {
+      "id": "ROUTE-PLAN45-FINAL-EXHAUSTION-RETURN",
+      "result": "passed",
+      "configuration": "plan45-static-comparison",
+      "viewport": {
+        "width": 360,
+        "height": 752
+      },
+      "motionMode": "standard-motion",
+      "witness": "browser"
+    }
+  ],
+  "note": "Per-row status is recorded as passed from the runner final aggregate (zero failures); the runner did not persist per-execution durations for this plan."
+}

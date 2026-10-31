@@ -24,4 +24,5 @@ export { createBeatContainer } from './beat-container.js';
 export { createLinearPathRenderer } from './linear-path.js';
 export { createNumberLineLocateRenderer } from './number-line-locate.js';
 export { createOperateResponse } from './operate-response.js';
+export { createPlan45ComparisonRenderer } from './plan45-comparison.js';
 

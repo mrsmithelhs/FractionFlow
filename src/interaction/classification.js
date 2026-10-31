@@ -303,7 +303,7 @@ export function classifyPlan45FractionComparison({ sourceForms, proposed }) {
   const exactRelation = compareFractions(parse(sourceForms.first, 'first source'), parse(sourceForms.second, 'second source'));
   const expectedRelation = exactRelation < 0 ? '<' : exactRelation > 0 ? '>' : '=';
   return {
-    kind: proposed === expectedRelation ? 'correct-comparison' : 'incorrect-comparison',
+    kind: proposed === expectedRelation ? 'correct-comparison' : 'comparison-retry',
     validity: proposed === expectedRelation ? 'valid' : 'incorrect',
     proposed,
     expectedRelation,

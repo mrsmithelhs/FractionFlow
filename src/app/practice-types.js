@@ -21,6 +21,8 @@ import {
 } from '../content/data/plan40-reusable-subtraction-recipes-records.js';
 import { deepFreeze } from '../content/schema.js';
 import { PLAN37_BAR_TO_LINE_BRIDGE_PRACTICE_SET, PLAN37_BAR_TO_LINE_BRIDGE_RECORDS } from '../content/data/plan37-bar-to-line-bridge-records.js';
+import { PLAN45_COMPARISON_PRACTICE_SET } from '../content/data/plan45-symbolic-fraction-comparison-records.js';
+import { PLAN45_SYMBOLIC_FRACTION_COMPARISON_EPISODE_DEFINITION } from '../interaction/episode-definition.js';
 
 /**
  * Learner-reachable practice types. A type is registered only when the app can
@@ -301,9 +303,23 @@ function plan39PracticeType(episodeDefinition) {
 export const PLAN39_BAR_TO_LINE_V1_HISTORICAL_PRACTICE_TYPE = plan39PracticeType(PLAN37_BAR_TO_LINE_BRIDGE_EPISODE_DEFINITION);
 export const PLAN39_BAR_TO_LINE_PRACTICE_TYPE = plan39PracticeType(PLAN37_BAR_TO_LINE_BRIDGE_REPAIR_EPISODE_DEFINITION);
 
+export const PLAN45_SYMBOLIC_COMPARISON_PRACTICE_TYPE = deepFreeze({
+  id: 'symbolic-fraction-comparison',
+  label: 'Compare fractions',
+  setId: PLAN45_COMPARISON_PRACTICE_SET.id,
+  setRevision: PLAN45_COMPARISON_PRACTICE_SET.revision,
+  items: PLAN45_COMPARISON_PRACTICE_SET.itemIds.map((itemId) => ({
+    id: itemId,
+    episodeDefinitionId: PLAN45_SYMBOLIC_FRACTION_COMPARISON_EPISODE_DEFINITION.id,
+    episodeDefinitionRevision: PLAN45_SYMBOLIC_FRACTION_COMPARISON_EPISODE_DEFINITION.revision,
+  })),
+  episodeDefinition: PLAN45_SYMBOLIC_FRACTION_COMPARISON_EPISODE_DEFINITION,
+});
+
 export const PRACTICE_TYPES = deepFreeze([
   ...PLAN40_PRACTICE_TYPES_V9,
   PLAN39_BAR_TO_LINE_PRACTICE_TYPE,
+  PLAN45_SYMBOLIC_COMPARISON_PRACTICE_TYPE,
 ]);
 
 export function getPracticeType(id) {

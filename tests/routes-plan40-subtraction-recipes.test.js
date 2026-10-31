@@ -257,7 +257,9 @@ describe('Plan 40 Reachable Behavior Route Contract & Subtraction Recipes Matrix
   });
 
   it('declares 99 route rows and 101 total browser executions for the expanded matrix', () => {
-    const prePlan43Routes = matrix.routes.filter((route) => !route.id.startsWith('ROUTE-PLAN43-'));
+    const prePlan43Routes = matrix.routes.filter((route) => (
+      !route.id.startsWith('ROUTE-PLAN43-') && !route.id.startsWith('ROUTE-PLAN45-')
+    ));
     expect(prePlan43Routes).toHaveLength(99);
     const executions = expandRouteExecutions(prePlan43Routes);
     expect(executions).toHaveLength(101);

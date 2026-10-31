@@ -801,3 +801,214 @@ body,
     gap: 0.5rem;
   }
 }
+
+.plan45-comparison {
+  width: min(100%, 48rem);
+  margin: 0 auto;
+  display: grid;
+  gap: 1rem;
+  box-sizing: border-box;
+}
+
+.plan45-expression {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(1rem, 6vw, 3rem);
+  padding: 0.75rem 0;
+}
+
+.plan45-expression .symbolic-fraction {
+  font-size: clamp(1.7rem, 6vw, 2.4rem);
+}
+
+.plan45-expression-separator,
+.plan45-accepted-relation {
+  min-width: 2rem;
+  text-align: center;
+  font-size: clamp(1.8rem, 6vw, 2.4rem);
+  font-weight: 700;
+}
+
+.plan45-prompt {
+  margin: 0;
+  text-align: center;
+  font-size: clamp(1.2rem, 4vw, 1.6rem);
+}
+
+.plan45-chosen-model,
+.plan45-verification {
+  display: grid;
+  justify-items: center;
+  gap: 0.6rem;
+  padding: 0.8rem;
+  border: 1px solid var(--app-border);
+  border-radius: 0.75rem;
+  background: var(--app-surface);
+}
+
+.plan45-model-pair,
+.plan45-linear-model-pair {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.plan45-model {
+  min-width: 0;
+  margin: 0;
+  display: grid;
+  gap: 0.45rem;
+}
+
+.plan45-model-caption {
+  text-align: center;
+  color: var(--app-muted);
+  font-size: 0.9rem;
+}
+
+.plan45-model-track {
+  width: 100%;
+  min-height: 3rem;
+  display: flex;
+  overflow: hidden;
+  border: 2px solid #45546b;
+  border-radius: 0.4rem;
+  background: #fff;
+  box-sizing: border-box;
+}
+
+.plan45-model-part {
+  flex: 1 1 0;
+  min-width: 0;
+  border-right: 1px solid #8793a5;
+  box-sizing: border-box;
+  background: #fff;
+}
+
+.plan45-model-part:last-child { border-right: 0; }
+.plan45-model-part.is-shaded { background: #8cb6ed; }
+
+.plan45-verification-heading {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.plan45-linear-model {
+  margin: 0;
+  padding: 0.75rem;
+  border-left: 0.25rem solid var(--app-accent);
+  background: var(--app-accent-soft);
+}
+
+.plan45-recovery,
+.plan45-help-cue,
+.plan45-strategy-cue,
+.plan45-model-prompt {
+  margin: 0;
+}
+
+.plan45-recovery { color: #6a3b00; font-weight: 600; }
+.plan45-help-cue { padding: 0.65rem 0.75rem; border-radius: 0.5rem; background: var(--app-accent-soft); }
+
+.plan45-help {
+  padding: 0.25rem 0;
+}
+
+.plan45-help-summary {
+  min-height: 2.75rem;
+  display: inline-flex;
+  align-items: center;
+  color: var(--app-accent);
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.plan45-help-choices {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.65rem 0;
+}
+
+.plan45-help-choices .app-secondary-button {
+  min-height: 2.75rem;
+}
+
+.plan45-response-region {
+  display: grid;
+  justify-items: center;
+  gap: 0.75rem;
+}
+
+.plan45-relation-group {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.plan45-relation-options {
+  display: flex;
+  justify-content: center;
+  gap: 0.65rem;
+}
+
+.plan45-relation-option {
+  position: relative;
+  min-width: 2.75rem;
+  min-height: 2.75rem;
+  display: grid;
+  place-items: center;
+  padding: 0.3rem;
+  border: 1px solid var(--app-border);
+  border-radius: 0.55rem;
+  background: var(--app-surface);
+  cursor: pointer;
+}
+
+.plan45-relation-option input {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.plan45-relation-option:has(input:checked) {
+  border-color: var(--app-accent);
+  background: var(--app-accent-soft);
+  box-shadow: inset 0 0 0 1px var(--app-accent);
+}
+
+.plan45-relation-option:focus-within {
+  outline: 3px solid #f0b429;
+  outline-offset: 2px;
+}
+
+.plan45-relation-glyph { font-size: 1.55rem; font-weight: 700; }
+.plan45-relation-label { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
+
+.plan45-check-button,
+.plan45-progression-button {
+  min-height: 2.75rem;
+  min-width: min(100%, 10rem);
+}
+
+.plan45-progression {
+  display: grid;
+  justify-items: center;
+  gap: 0.5rem;
+  padding-top: 0.5rem;
+}
+
+.plan45-progression-notice { margin: 0; color: var(--app-muted); }
+
+@media (max-width: 32rem) {
+  .plan45-model-pair,
+  .plan45-linear-model-pair { grid-template-columns: 1fr; }
+  .plan45-expression { gap: 1rem; }
+}

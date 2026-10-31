@@ -135,7 +135,7 @@ describe('Plan 14 Reachable Behavior Route Contract & Matrix Schema', () => {
   });
 
   it('pins the original 91 route objects and migrates only Plan 39 context mappings to v1 history', async () => {
-    expect(matrix.routes).toHaveLength(110);
+    expect(matrix.routes).toHaveLength(116);
     expect(createHash('sha256').update(JSON.stringify(matrix.routes.slice(0, 91))).digest('hex'))
       .toBe('eee8367c25fdaa88612b516a05b6989a919ae10b8e822a6339bea9b4c3c631de');
     expect(createHash('sha256').update(JSON.stringify(matrix.routes.slice(0, 98))).digest('hex'))
@@ -147,10 +147,15 @@ describe('Plan 14 Reachable Behavior Route Contract & Matrix Schema', () => {
       if (key.startsWith('ROUTE-PLAN43-')) {
         delete contextsBeforeRepair03[key];
       }
+      if (key.startsWith('ROUTE-PLAN45-')) {
+        delete contextsBeforeRepair03[key];
+      }
     }
     expect(createHash('sha256').update(JSON.stringify(contextsBeforeRepair03)).digest('hex'))
       .toBe('c2c83aee5eea3436a66deb4978ad8891fadb694fa4c2f48c212e48db9dee0c00');
-    const nonPlan39 = Object.fromEntries(Object.entries(contexts).filter(([id]) => !id.startsWith('ROUTE-PLAN39-') && !id.startsWith('ROUTE-PLAN43-')));
+    const nonPlan39 = Object.fromEntries(Object.entries(contexts).filter(([id]) => (
+      !id.startsWith('ROUTE-PLAN39-') && !id.startsWith('ROUTE-PLAN43-') && !id.startsWith('ROUTE-PLAN45-')
+    )));
     expect(Object.keys(nonPlan39)).toHaveLength(79);
     expect(createHash('sha256').update(JSON.stringify(nonPlan39)).digest('hex'))
       .toBe('bbba2bc77d74738de5f665e7da75e3a8284c1a80ef07f4e3f21146fbf0009954');
@@ -238,7 +243,7 @@ describe('Plan 14 Reachable Behavior Route Contract & Matrix Schema', () => {
       routeId: 'ROUTE-PLAN39-REPAIR03-ANCHOR-RING',
       failure: 'Plan39 Repair03 shared anchor/highlight assertion failed',
     });
-    expect(expandRouteExecutions(matrix.routes)).toHaveLength(112);
+    expect(expandRouteExecutions(matrix.routes)).toHaveLength(118);
   });
 
   it('enforces Rule 1: fails if a registered condition has no declared route witness', async () => {
@@ -469,7 +474,7 @@ describe('Plan 14 Reachable Behavior Route Contract & Matrix Schema', () => {
 
   it('executes each prototype route in both motion modes and brings in its filtered negative control', () => {
     const executions = expandRouteExecutions(matrix.routes);
-    expect(executions).toHaveLength(112);
+    expect(executions).toHaveLength(118);
     expect(executions.filter((execution) => (
       execution.route.configuration === 'plan15-subtraction-prototype'
     ))).toHaveLength(4);

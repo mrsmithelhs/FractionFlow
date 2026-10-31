@@ -41,6 +41,7 @@ export function createPlan45ComparisonResponseProvenance({ state, intent, classi
   return deepFreeze({
     schemaVersion: 'fractionflow.response-provenance/v1',
     responseIndex: state.responseProvenance.length,
+    contentIdentity: makePlan45ComparisonContentIdentity(state.taskContext),
     taskContext: state.taskContext,
     episodeDefinition: { id: state.episodeDefinition.id, revision: state.episodeDefinition.revision },
     activeCondition: state.activeCondition,
@@ -66,6 +67,21 @@ export function createPlan45ComparisonResponseProvenance({ state, intent, classi
       scheduleEntryId: currentScheduleEntry(nextState)?.id ?? scheduleEntry?.id ?? null,
       established: nextState.established,
       revision: nextState.revision,
+    },
+  });
+}
+
+export function makePlan45ComparisonContentIdentity(context) {
+  return deepFreeze({
+    schemaVersion: 'fractionflow.comparison-content-identity/v1',
+    id: `${context.practiceSetId}@${context.practiceSetRevision}/${context.itemId}`,
+    source: 'curated',
+    reconstruction: {
+      kind: 'plan45-symbolic-fraction-comparison',
+      practiceSetId: context.practiceSetId,
+      practiceSetRevision: context.practiceSetRevision,
+      itemId: context.itemId,
+      authoringRevision: context.authoringRevision,
     },
   });
 }

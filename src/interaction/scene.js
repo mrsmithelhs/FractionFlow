@@ -4,7 +4,11 @@ import { reflectionChoicesForInstance } from '../content/data/reflection-choices
 import { premiseCheckForInstance } from '../content/data/premise-checks.js';
 import { crossingResultStackForIdentity } from '../content/authored-content-catalog.js';
 import { makeContentIdentity } from './provenance.js';
+import { makePlan45ComparisonContentIdentity } from './provenance.js';
+import { isPlan45ComparisonEpisode } from './plan45-comparison-episode.js';
+import { plan45ComparisonHelpText, validatePlan45ComparisonContext } from '../content/plan45-symbolic-fraction-comparison-task.js';
 import { validateActiveCondition } from './episode-definition.js';
+import { PLAN45_STATIC_COMPARISON_ACTIVE_CONDITION } from './episode-definition.js';
 import { currentScheduleEntry } from './beat-schedule.js';
 import {
   classifyPlan37BenchmarkRelation,
@@ -191,6 +195,27 @@ function assertStateShape(state) {
       throw new SceneProjectionError('INVALID_SCENE_INPUT', `state.${key} must be an array`);
     }
   }
+  if (isPlan45ComparisonEpisode(state)) {
+    validatePlan45ComparisonContext(state.taskContext);
+    if (!Array.isArray(state.beatSchedule)
+      || state.beatSchedule.length !== 2
+      || state.beatSchedule[0]?.id !== 'compare'
+      || state.beatSchedule[1]?.id !== 'resolve'
+      || !['compare', 'resolve'].includes(state.beat)
+      || (state.status === 'active' && (state.beat !== 'compare' || state.schedulePosition !== 0))
+      || (state.status === 'resolved' && (state.beat !== 'resolve' || state.schedulePosition !== 1))) {
+      throw new SceneProjectionError('INVALID_SCENE_INPUT', 'Plan 45 comparison schedule is malformed');
+    }
+    try {
+      validateActiveCondition(state.activeCondition);
+    } catch (error) {
+      throw new SceneProjectionError('INVALID_SCENE_INPUT', `active condition is invalid: ${error.message}`);
+    }
+    if (JSON.stringify(state.activeCondition) !== JSON.stringify(PLAN45_STATIC_COMPARISON_ACTIVE_CONDITION)) {
+      throw new SceneProjectionError('INVALID_SCENE_INPUT', 'Plan 45 requires its registered static comparison condition');
+    }
+    return;
+  }
   if (!state.content || typeof state.content !== 'object') {
     throw new SceneProjectionError('INVALID_SCENE_INPUT', 'state.content is required');
   }
@@ -240,6 +265,7 @@ function assertProjectionOptions({ representationRole, presentationMode, isRepla
 }
 
 function contentIdentity(state) {
+  if (isPlan45ComparisonEpisode(state)) return makePlan45ComparisonContentIdentity(state.taskContext);
   try {
     return copyAndFreeze(makeContentIdentity(state.content), 'content identity');
   } catch (error) {
@@ -276,6 +302,21 @@ function currentSupportConsequence(state) {
 function sceneTaskIdentity(state) {
   if (!state.taskContext) return null;
   const context = state.taskContext;
+  if (isPlan45ComparisonEpisode(state)) return {
+    practiceSetId: context.practiceSetId,
+    practiceSetRevision: context.practiceSetRevision,
+    itemId: context.itemId,
+    authoringRevision: context.authoringRevision,
+    definitionId: context.definitionId,
+    definitionRevision: context.definitionRevision,
+    recipeId: context.recipeId,
+    recipeRevision: context.recipeRevision,
+    taskDataId: context.taskDataId,
+    taskDataRevision: context.taskDataRevision,
+    sourceForms: context.sourceForms,
+    teachingIntentId: context.teachingIntentId,
+    cueId: context.cueId,
+  };
   if (isPlan37BarToLineBridgeTaskDefinition(state.episodeDefinition)) return {
     practiceSetId: context.practiceSetId,
     practiceSetRevision: context.practiceSetRevision,
@@ -421,6 +462,9 @@ function instructionalSourceContext(state) {
 }
 
 function contentProjectionSource(state) {
+  if (isPlan45ComparisonEpisode(state)) {
+    return { comparisonSourceForms: state.taskContext.sourceForms };
+  }
   const facts = state.content.representationFacts;
   if (state.content.schemaVersion === 'fractionflow.bridge-instance/v1') {
     return {
@@ -538,6 +582,9 @@ function pathSummary(state) {
 }
 
 function capabilityFor(state, role, derivation) {
+  if (isPlan45ComparisonEpisode(state)) {
+    return { instance: 'eligible', activePath: null, authoredCoverage: null, continuation: null };
+  }
   const key = REPRESENTATION_VERDICT_KEYS[role];
   const eligibility = state.content?.representationFacts?.eligibility;
   if (!eligibility || typeof eligibility !== 'object') {
@@ -660,6 +707,20 @@ function taskMeaning(state) {
   const connectionForm = state.beat === 'reflect'
     ? (state.activeCondition?.connectionMaking === 'CM-01-P' ? 'premise' : 'matching')
     : null;
+  if (isPlan45ComparisonEpisode(state)) return {
+    beat: state.beat,
+    schedulePosition: state.schedulePosition,
+    scheduleEntryId: scheduleEntry.id,
+    responsibility: expected?.responsibility ?? null,
+    promptId: expected?.promptId ?? null,
+    inputKind: expected?.inputKind ?? null,
+    target: null,
+    evidenceCategory: 'supported-construction',
+    itemId: state.taskContext.itemId,
+    definitionRevision: state.episodeDefinition.revision,
+    recipeId: state.taskContext.recipeId,
+    recipeRevision: state.taskContext.recipeRevision,
+  };
   if (isPlan37BarToLineBridgeTaskDefinition(state.episodeDefinition)) {
     return {
       beat: state.beat,
@@ -1033,6 +1094,7 @@ function takeawayMeaning(state) {
 }
 
 function sceneMeaning(state, representationRole, capability) {
+  if (isPlan45ComparisonEpisode(state)) return plan45ComparisonMeaning(state, representationRole, capability);
   const isPlan37Bridge = isPlan37BarToLineBridgeTaskDefinition(state.episodeDefinition);
   const left = isPlan37Bridge ? null : quantityScene(state, 'left');
   const right = isPlan37Bridge ? null : quantityScene(state, 'right');
@@ -1100,6 +1162,46 @@ function sceneMeaning(state, representationRole, capability) {
     supportConsequence: currentSupportConsequence(state),
     taskHelp: currentTaskHelp(state),
     ...(isPlan37Bridge ? { numberLine: plan37NumberLineMeaning(state) } : {}),
+  };
+}
+
+function plan45ComparisonMeaning(state, representationRole, capability) {
+  const accepted = state.status === 'resolved' ? state.established.comparison : null;
+  const lastHelp = [...state.assistanceHistory].reverse().find((entry) => entry.type === 'comparison-help-request') ?? null;
+  return {
+    representationRole,
+    condition: state.activeCondition,
+    reflectionChoices: null,
+    premiseCase: null,
+    quantities: { first: null, second: null },
+    unitRelationship: null,
+    currentTask: taskMeaning(state),
+    availableAction: state.expectedResponse ? {
+      responsibility: state.expectedResponse.responsibility,
+      inputKind: state.expectedResponse.inputKind,
+      target: null,
+      schedulePosition: state.schedulePosition,
+      scheduleEntryId: currentScheduleEntry(state).id,
+    } : null,
+    status: {
+      episode: state.status,
+      recovery: state.lastRecovery ? { beat: 'compare', classification: state.lastRecovery.classification } : null,
+    },
+    operation: null,
+    takeaway: null,
+    transition: null,
+    capability,
+    support: state.support,
+    supportConsequence: { nextResponseSupport: null, premiseComparison: null, lastHelp: null, decideHelpRequested: Boolean(lastHelp) },
+    comparison: {
+      sourceForms: state.taskContext.sourceForms,
+      modelChoice: state.assistance.modelChoice,
+      pairedVerificationVisible: Boolean(accepted),
+      ...(accepted ? { acceptedRelation: accepted.acceptedRelation } : {}),
+      reasoningCue: lastHelp?.helpKind === 'reasoning' ? plan45ComparisonHelpText(state.taskContext, 'reasoning') : null,
+      notationCue: lastHelp?.helpKind === 'notation' ? plan45ComparisonHelpText(state.taskContext, 'notation') : null,
+    },
+    taskHelp: null,
   };
 }
 

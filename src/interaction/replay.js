@@ -2,6 +2,7 @@ import { buildCuratedProblem, generateProblem } from '../content/generator.js';
 import { resolveCuratedFixture } from '../content/authored-content-catalog.js';
 import { validateProblemInstance } from '../content/validation.js';
 import { resolvePlan37BarToLineBridgeInstance } from '../content/authored-content-catalog.js';
+import { isPlan45ComparisonDefinition, validatePlan45ComparisonContext } from '../content/plan45-symbolic-fraction-comparison-task.js';
 import {
   EXACT_PLAN37_BAR_TO_LINE_CONTEXT_KEYS,
   isPlan37BarToLineBridgeDefinition,
@@ -12,7 +13,8 @@ import {
 import { deepFreeze } from '../content/schema.js';
 import { applyIntent, createEpisode } from './episode.js';
 import { getEpisodeDefinition, validateActiveCondition } from './episode-definition.js';
-import { makeContentIdentity } from './provenance.js';
+import { makeContentIdentity, makePlan45ComparisonContentIdentity } from './provenance.js';
+import { isPlan45ComparisonEpisode } from './plan45-comparison-episode.js';
 import { validateSupportConfiguration } from './support.js';
 
 export const REPLAY_SCHEMA_VERSION = 'fractionflow.episode-replay/v1';
@@ -23,6 +25,7 @@ export const REPLAY_V5_SCHEMA_VERSION = 'fractionflow.episode-replay/v5';
 export const REPLAY_V6_SCHEMA_VERSION = 'fractionflow.episode-replay/v6';
 export const REPLAY_V7_SCHEMA_VERSION = 'fractionflow.episode-replay/v7';
 export const REPLAY_V8_SCHEMA_VERSION = 'fractionflow.episode-replay/v8';
+export const REPLAY_V9_SCHEMA_VERSION = 'fractionflow.episode-replay/v9';
 
 function sameJson(left, right) {
   return JSON.stringify(left) === JSON.stringify(right);
@@ -89,6 +92,14 @@ function assertRequestShape(request, name) {
 }
 
 function assertContentIdentityShape(identity) {
+  if (identity?.schemaVersion === 'fractionflow.comparison-content-identity/v1') {
+    assertExactKeys(identity, ['schemaVersion', 'id', 'source', 'reconstruction'], 'comparison contentIdentity');
+    assertExactKeys(identity.reconstruction, ['kind', 'practiceSetId', 'practiceSetRevision', 'itemId', 'authoringRevision'], 'comparison contentIdentity.reconstruction');
+    if (identity.source !== 'curated' || identity.reconstruction.kind !== 'plan45-symbolic-fraction-comparison'
+      || typeof identity.id !== 'string') throw new TypeError('comparison contentIdentity has invalid identity fields');
+    assertWireData(identity, 'comparison contentIdentity');
+    return;
+  }
   if (identity?.schemaVersion === 'fractionflow.bridge-content-identity/v1') {
     assertExactKeys(identity, ['schemaVersion', 'id', 'source', 'provenance', 'sourceForm', 'reconstruction'], 'bridge contentIdentity');
     if (identity.source !== 'curated' || typeof identity.id !== 'string') throw new TypeError('bridge contentIdentity has invalid identity fields');
@@ -130,6 +141,7 @@ function assertReplayEnvelopeShape(envelope) {
   const v6 = envelope?.schemaVersion === REPLAY_V6_SCHEMA_VERSION;
   const v7 = envelope?.schemaVersion === REPLAY_V7_SCHEMA_VERSION;
   const v8 = envelope?.schemaVersion === REPLAY_V8_SCHEMA_VERSION;
+  const v9 = envelope?.schemaVersion === REPLAY_V9_SCHEMA_VERSION;
   assertExactKeys(envelope, [
     'schemaVersion',
     'contentIdentity',
@@ -137,7 +149,7 @@ function assertReplayEnvelopeShape(envelope) {
     'support',
     'activeCondition',
     'learnerIntents',
-    ...(v2 || v3 || v4 || v5 || v6 || v7 || v8 ? ['taskContext'] : []),
+    ...(v2 || v3 || v4 || v5 || v6 || v7 || v8 || v9 ? ['taskContext'] : []),
   ], 'replay envelope');
   assertContentIdentityShape(envelope.contentIdentity);
   assertExactKeys(envelope.episodeDefinition, ['id', 'revision'], 'episodeDefinition');
@@ -283,6 +295,29 @@ function assertReplayEnvelopeShape(envelope) {
       }
     }
   }
+  if (v9) {
+    const context = envelope.taskContext;
+    assertExactKeys(context, [
+      'practiceSetId', 'practiceSetRevision', 'itemId', 'authoringRevision',
+      'definitionId', 'definitionRevision', 'recipeId', 'recipeRevision',
+      'taskDataId', 'taskDataRevision', 'sourceForms', 'teachingIntentId', 'cueId', 'hintContext',
+    ], 'replay v9 taskContext');
+    if (envelope.episodeDefinition.id !== 'phase-4-symbolic-fraction-comparison'
+      || envelope.episodeDefinition.revision !== '1') {
+      throw new TypeError('replay v9 is reserved for Plan 45 symbolic fraction comparison');
+    }
+    validatePlan45ComparisonContext(context);
+    const expectedIdentity = makePlan45ComparisonContentIdentity(context);
+    if (!sameJson(expectedIdentity, envelope.contentIdentity)) throw new TypeError('replay v9 comparison identity does not match its authoritative context');
+    const allowedIntentTypes = new Set([
+      'request-comparison-model', 'request-comparison-help', 'submit-fraction-comparison',
+    ]);
+    for (const intent of envelope.learnerIntents) {
+      if (!isPlainRecord(intent) || !allowedIntentTypes.has(intent.type)) {
+        throw new TypeError(`replay v9 does not permit intent type: ${intent?.type}`);
+      }
+    }
+  }
 }
 
 function contentReconstructionIdentity(content) {
@@ -403,8 +438,11 @@ export function createReplayEnvelope(state) {
   if (!state || state.schemaVersion !== 'fractionflow.episode-state/v1') {
     throw new TypeError('state must be a Plan 05 episode state');
   }
+  const isComparison = isPlan45ComparisonEpisode(state);
   const envelope = {
-    schemaVersion: isPlan37BarToLineBridgeRepairDefinition(state.episodeDefinition)
+    schemaVersion: isComparison
+      ? REPLAY_V9_SCHEMA_VERSION
+      : isPlan37BarToLineBridgeRepairDefinition(state.episodeDefinition)
       ? REPLAY_V8_SCHEMA_VERSION
       : isPlan37BarToLineBridgeDefinition(state.episodeDefinition)
         ? REPLAY_V7_SCHEMA_VERSION
@@ -417,7 +455,9 @@ export function createReplayEnvelope(state) {
           : state.episodeDefinition.id === 'phase-3-reusable-addition-recipes'
             ? REPLAY_V4_SCHEMA_VERSION
             : state.taskContext ? REPLAY_V2_SCHEMA_VERSION : REPLAY_SCHEMA_VERSION,
-    contentIdentity: contentReconstructionIdentity(state.content),
+    contentIdentity: isComparison
+      ? makePlan45ComparisonContentIdentity(state.taskContext)
+      : contentReconstructionIdentity(state.content),
     episodeDefinition: {
       id: state.episodeDefinition.id,
       revision: state.episodeDefinition.revision,
@@ -434,15 +474,20 @@ export function createReplayEnvelope(state) {
 export function replayEpisode(envelope) {
   assertJsonSafe(envelope, 'replay envelope');
   if (!envelope || typeof envelope !== 'object') throw new TypeError('replay envelope must be an object');
-  if (![REPLAY_SCHEMA_VERSION, REPLAY_V2_SCHEMA_VERSION, REPLAY_V3_SCHEMA_VERSION, REPLAY_V4_SCHEMA_VERSION, REPLAY_V5_SCHEMA_VERSION, REPLAY_V6_SCHEMA_VERSION, REPLAY_V7_SCHEMA_VERSION, REPLAY_V8_SCHEMA_VERSION].includes(envelope?.schemaVersion)) {
+  if (![REPLAY_SCHEMA_VERSION, REPLAY_V2_SCHEMA_VERSION, REPLAY_V3_SCHEMA_VERSION, REPLAY_V4_SCHEMA_VERSION, REPLAY_V5_SCHEMA_VERSION, REPLAY_V6_SCHEMA_VERSION, REPLAY_V7_SCHEMA_VERSION, REPLAY_V8_SCHEMA_VERSION, REPLAY_V9_SCHEMA_VERSION].includes(envelope?.schemaVersion)) {
     throw new Error('unsupported replay envelope version');
   }
   assertReplayEnvelopeShape(envelope);
-  const content = reconstructContent(envelope.contentIdentity);
+  const content = envelope.schemaVersion === REPLAY_V9_SCHEMA_VERSION
+    ? null
+    : reconstructContent(envelope.contentIdentity);
   const definition = getEpisodeDefinition(
     envelope.episodeDefinition?.id,
     envelope.episodeDefinition?.revision,
   );
+  if (isPlan45ComparisonDefinition(definition) !== (envelope.schemaVersion === REPLAY_V9_SCHEMA_VERSION)) {
+    throw new Error('Plan 45 comparison episodes require replay v9 and v9 is comparison-only');
+  }
   if ((isPlan37BarToLineBridgeDefinition(definition) && envelope.schemaVersion !== REPLAY_V7_SCHEMA_VERSION)
     || (isPlan37BarToLineBridgeRepairDefinition(definition) && envelope.schemaVersion !== REPLAY_V8_SCHEMA_VERSION)
     || (![isPlan37BarToLineBridgeDefinition(definition), isPlan37BarToLineBridgeRepairDefinition(definition)].some(Boolean)
@@ -467,11 +512,13 @@ export function replayEpisode(envelope) {
       || envelope.schemaVersion === REPLAY_V5_SCHEMA_VERSION
       || envelope.schemaVersion === REPLAY_V6_SCHEMA_VERSION
       || envelope.schemaVersion === REPLAY_V7_SCHEMA_VERSION
-      || envelope.schemaVersion === REPLAY_V8_SCHEMA_VERSION ? {
+      || envelope.schemaVersion === REPLAY_V8_SCHEMA_VERSION
+      || envelope.schemaVersion === REPLAY_V9_SCHEMA_VERSION ? {
       taskContext: envelope.taskContext,
       allowCompatibilityPair: envelope.schemaVersion !== REPLAY_V4_SCHEMA_VERSION
         && envelope.schemaVersion !== REPLAY_V5_SCHEMA_VERSION
         && envelope.schemaVersion !== REPLAY_V6_SCHEMA_VERSION
+        && envelope.schemaVersion !== REPLAY_V9_SCHEMA_VERSION
         && envelope.taskContext.practiceSetId === null
         && envelope.taskContext.practiceSetRevision === null,
     } : {}),

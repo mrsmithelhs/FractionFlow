@@ -18,13 +18,13 @@ export const REGISTERED_SUPPORT_LEVELS = deepFreeze([
   registerSupportLevel({
     id: 'high-support',
     label: 'More support',
-    description: 'Compare both fraction bars and choose from denominator suggestions.',
+    description: 'Offers more prompts and choices where a task supports them.',
     configuration: HIGH_SUPPORT_CONFIGURATION,
   }),
   registerSupportLevel({
     id: 'medium-support',
     label: 'Less support',
-    description: 'Enter the denominator and compare the new bar with the source fraction in words.',
+    description: 'Offers fewer prompts; optional help remains available where a task supports it.',
     configuration: MEDIUM_SUPPORT_CONFIGURATION,
   }),
 ]);

@@ -120,9 +120,13 @@ export function createPlan45ComparisonEpisode({
       choices: ['<', '=', '>'],
       evidenceCategory: 'supported-construction',
     },
+    pendingResponse: null,
     established: { comparison: null },
     completedBeats: [],
     intentHistory: [],
+    helpHistory: [],
+    replayHistory: [],
+    supportHistory: [],
     assistanceHistory: [],
     retryHistory: [],
     responseProvenance: [],
@@ -194,10 +198,10 @@ export function applyPlan45ComparisonIntent(state, rawIntent) {
     }
     : {
       ...withIntent,
-      retryHistory: [...state.retryHistory, { beat: 'compare', reason: 'incorrect-comparison' }],
+      retryHistory: [...state.retryHistory, { beat: 'compare', reason: 'comparison-retry' }],
       lastRecovery: {
         beat: 'compare',
-        classification: { kind: 'incorrect-comparison' },
+        classification: { kind: 'comparison-retry' },
         clearedPendingResponse: false,
       },
     };

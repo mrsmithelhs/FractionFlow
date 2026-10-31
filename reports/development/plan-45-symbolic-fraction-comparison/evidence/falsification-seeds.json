@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "seeds": [
+    {
+      "seed": "premature-paired-model",
+      "mutation": "inserted a paired model in the live pre-acceptance scene",
+      "observedAssertionFailure": "expected MockElement{ tagName: 'DIV', …(12) } to be null",
+      "cleanRecovery": true
+    },
+    {
+      "seed": "model-choice-switch-after-retry-or-view-change",
+      "mutation": "inserted the unchosen second source model after first-side commitment",
+      "observedAssertionFailure": "expected [ MockElement{ …(13) }, …(1) ] to have a length of 1 but got 2",
+      "cleanRecovery": true
+    },
+    {
+      "seed": "inverted-relation-equality",
+      "mutation": "changed the accepted equality symbol in rendered output to less-than",
+      "observedAssertionFailure": "expected '<' to be '=' // Object.is equality",
+      "cleanRecovery": true
+    },
+    {
+      "seed": "stale-or-no-op-next",
+      "mutation": "blocked the mounted Next event before its production handler",
+      "observedAssertionFailure": "expected 'plan45-compare-01' not to be 'plan45-compare-01' // Object.is equality",
+      "cleanRecovery": true
+    }
+  ]
+}

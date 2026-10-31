@@ -326,6 +326,9 @@ function resolveRouteContext(route, contextMap) {
   if (context === 'production-direct-plan43') {
     return { id: context, startingSurface: 'mounted-app-entry' };
   }
+  if (context === 'production-direct-plan45') {
+    return { id: context, startingSurface: 'mounted-app-entry' };
+  }
   return { id: route.startingSurface.startsWith('subtraction-') ? 'prototype' : null, startingSurface: route.startingSurface };
 }
 
@@ -448,6 +451,7 @@ async function validateMatrixIntegrity(matrix, registeredConditions, suppliedCon
       'production-default-v7': 0,
       'production-default-v8': 0,
       'production-direct-plan43': 0,
+      'production-direct-plan45': 0,
     };
     for (const route of matrix.routes) {
       const context = routeContexts[route.id];
@@ -477,6 +481,9 @@ async function validateMatrixIntegrity(matrix, registeredConditions, suppliedCon
       }
       if (route.id.startsWith('ROUTE-PLAN43-') && context !== 'production-direct-plan43') {
         errors.push(`Current Plan 43 route "${route.id}" must exercise production-direct-plan43.`);
+      }
+      if (route.id.startsWith('ROUTE-PLAN45-') && context !== 'production-direct-plan45') {
+        errors.push(`Current Plan 45 route "${route.id}" must exercise production-direct-plan45.`);
       }
     }
     for (const routeId of idsInMap) {
@@ -521,6 +528,10 @@ async function validateMatrixIntegrity(matrix, registeredConditions, suppliedCon
     'plan39Repair02Boundary',
     'plan39Repair03AnchorWitness',
     'completePlan43Branch',
+    'completePlan45ComparisonJourney',
+    'keyboardActivate',
+    'resizeViewport',
+    'textScale',
   ]);
 
   for (const route of matrix.routes) {
@@ -634,13 +645,24 @@ async function validateMatrixIntegrity(matrix, registeredConditions, suppliedCon
       if (action.method === 'restoreInputType' && !['number', 'text'].includes(action.value)) {
         errors.push(`Route "${route.id}" step ${action.step} input-type restoration supports only number or text.`);
       }
+      if (action.method === 'keyboardActivate' && (!action.target || typeof action.target !== 'string')) {
+        errors.push(`Route "${route.id}" step ${action.step} keyboardActivate requires a target.`);
+      }
+      if (action.method === 'resizeViewport' && (!Number.isInteger(action.width) || action.width <= 0
+        || !Number.isInteger(action.height) || action.height <= 0)) {
+        errors.push(`Route "${route.id}" step ${action.step} resizeViewport requires positive integer width and height.`);
+      }
+      if (action.method === 'textScale' && (!action.target || !['100%', '200%'].includes(action.value))) {
+        errors.push(`Route "${route.id}" step ${action.step} textScale requires a target and 100% or 200% value.`);
+      }
       if (action.method === 'screenshot'
         && (typeof action.file !== 'string'
           || !(action.file.startsWith('reports/development/plan-34-reusable-full-addition-task-patterns/evidence/')
             || action.file.startsWith('reports/development/plan-18-nested-denominator-addition/evidence/')
             || action.file.startsWith('reports/development/plan-38-like-denominator-subtraction-batch/evidence/')
             || action.file.startsWith('reports/development/plan-40-unlike-denominator-subtraction-batch/evidence/')
-            || action.file.startsWith('reports/development/plan-39-number-line-locate-and-bar-bridge-batch/evidence/'))
+            || action.file.startsWith('reports/development/plan-39-number-line-locate-and-bar-bridge-batch/evidence/')
+            || action.file.startsWith('reports/development/plan-45-symbolic-fraction-comparison/evidence/'))
           || action.file.includes('..') || typeof action.caption !== 'string' || !action.caption.trim())) {
         errors.push(`Route "${route.id}" screenshot action must name a scoped evidence file and caption.`);
       }
@@ -1725,6 +1747,25 @@ async function executeAction(page, action, routeId) {
       }
       break;
     }
+    case 'completePlan45ComparisonJourney': {
+      const { buildPlan45ComparisonActions } = await import('./plan45-route-comparison.mjs');
+      const generated = buildPlan45ComparisonActions({
+        ...action,
+        routeId,
+        originalViewport: action.routeViewport,
+        inputMode: action.inputMode || 'mouse',
+      });
+      action.generatedActions = generated;
+      for (const generatedAction of generated) {
+        try {
+          await executeAction(page, generatedAction, routeId);
+        } catch (error) {
+          error.message = `${generatedAction.description}: ${error.message}`;
+          throw error;
+        }
+      }
+      break;
+    }
     case 'screenshot': {
       if (action.settleAnimations) {
         await page.evaluate(async (maxWaitMs) => {
@@ -1738,6 +1779,7 @@ async function executeAction(page, action, routeId) {
           ]);
         }, 3000);
       }
+      if (action.scrollTop === true) await page.evaluate(() => window.scrollTo(0, 0));
       const screenshotPath = path.resolve(rootDir, action.file);
       fs.mkdirSync(path.dirname(screenshotPath), { recursive: true });
       await page.screenshot({ path: screenshotPath });
@@ -1783,8 +1825,8 @@ async function executeAction(page, action, routeId) {
             horizontalOverflowPx: Math.round(horizontalOverflowPx * 100) / 100,
             scroll: { x: scrollX, y: scrollY },
             activeView: activeView?.className ?? null,
-            question: measure(activeView?.querySelector('.active-beat-prompt')),
-            controls: measure(activeView?.querySelector('.active-beat-controls')),
+            question: measure(activeView?.querySelector('.active-beat-prompt, .plan45-prompt, .plan45-expression')),
+            controls: measure(activeView?.querySelector('.active-beat-controls, .plan45-response-region, .plan45-progression')),
             nestedChoices: [...(activeView?.querySelectorAll('.nested-side-choice') || [])].map((button) => ({
               button: measure(button),
               fraction: measure(button.querySelector('.symbolic-fraction')),
@@ -1814,6 +1856,13 @@ async function executeAction(page, action, routeId) {
         }
         if (routeId.startsWith('ROUTE-PLAN40-')) {
           validatePlan40ScreenshotLayout(action.screenshotEvidence.layout, action.file);
+        }
+        if (routeId.startsWith('ROUTE-PLAN45-') && action.measureLayout) {
+          const { question, controls, viewport, horizontalOverflow } = action.screenshotEvidence.layout;
+          const reachableAtScroll = (box) => box?.visible && box.horizontallyContained && box.intersectsViewport;
+          if (horizontalOverflow || (!reachableAtScroll(question) && !reachableAtScroll(controls))) {
+            throw new Error(`Plan 45 screenshot ${action.file} leaves both prompt and active controls out of reach at the documented scroll position or has horizontal overflow: ${JSON.stringify(action.screenshotEvidence.layout)}`);
+          }
         }
       }
       break;
@@ -1902,6 +1951,82 @@ async function executeAction(page, action, routeId) {
     case 'pressKey':
       await page.locator(action.target).press(action.value);
       break;
+
+    case 'keyboardActivate': {
+      const target = page.locator(action.target).first();
+      if (action.focusGroup) {
+        const count = await page.locator(action.focusGroup).count();
+        const targetIndex = await target.evaluate((element, selector) => (
+          [...document.querySelectorAll(selector)].indexOf(element)
+        ), action.focusGroup);
+        if (count === 0 || targetIndex < 0) throw new Error(`Keyboard radio target "${action.target}" is not in its radio group.`);
+        let activeIndex = -1;
+        for (let press = 0; press < 80; press += 1) {
+          activeIndex = await page.evaluate((selector) => (
+            [...document.querySelectorAll(selector)].indexOf(document.activeElement)
+          ), action.focusGroup);
+          if (activeIndex >= 0) break;
+          await page.keyboard.press('Tab');
+        }
+        if (activeIndex < 0) throw new Error(`Tab navigation could not reach radio group "${action.focusGroup}".`);
+        const arrows = (targetIndex - activeIndex + count) % count;
+        for (let step = 0; step < arrows; step += 1) await page.keyboard.press('ArrowRight');
+        await page.keyboard.press('Space');
+        if (!await target.isChecked()) throw new Error(`Keyboard activation did not select "${action.target}".`);
+        break;
+      }
+      if (!await target.isVisible()) throw new Error(`Keyboard activation target "${action.target}" is not visible.`);
+      let focused = await target.evaluate((element) => element === document.activeElement);
+      for (let press = 0; !focused && press < 80; press += 1) {
+        await page.keyboard.press('Tab');
+        focused = await target.evaluate((element) => element === document.activeElement);
+      }
+      if (!focused) throw new Error(`Tab navigation could not reach "${action.target}".`);
+      await page.keyboard.press('Enter');
+      break;
+    }
+
+    case 'resizeViewport':
+      await page.setViewportSize({ width: action.width, height: action.height });
+      break;
+
+    case 'textScale': {
+      const result = await page.locator(action.target).evaluate((host, scale) => {
+        const root = host.querySelector('.plan45-comparison');
+        if (!root) return { applied: false, reason: 'comparison renderer not mounted' };
+        const elements = [root, ...root.querySelectorAll('*')];
+        if (scale === '200%') {
+          const baselineSizes = elements.map((element) => Number.parseFloat(getComputedStyle(element).fontSize) || 0);
+          elements.forEach((element, index) => {
+            element.setAttribute('data-plan45-prior-font-size', element.style.getPropertyValue('font-size'));
+            element.setAttribute('data-plan45-prior-font-priority', element.style.getPropertyPriority('font-size'));
+            element.style.setProperty('font-size', `${baselineSizes[index] * 2}px`, 'important');
+          });
+          root.dataset.plan45TextScale = '200%';
+          return {
+            applied: true,
+            scale: root.dataset.plan45TextScale,
+            promptBefore: baselineSizes[elements.indexOf(root.querySelector('.plan45-prompt'))],
+            promptAfter: Number.parseFloat(getComputedStyle(root.querySelector('.plan45-prompt')).fontSize),
+          };
+        }
+        elements.forEach((element) => {
+          const priorSize = element.getAttribute('data-plan45-prior-font-size');
+          const priorPriority = element.getAttribute('data-plan45-prior-font-priority');
+          if (priorSize) element.style.setProperty('font-size', priorSize, priorPriority || '');
+          else element.style.removeProperty('font-size');
+          element.removeAttribute('data-plan45-prior-font-size');
+          element.removeAttribute('data-plan45-prior-font-priority');
+        });
+        delete root.dataset.plan45TextScale;
+        return { applied: true, scale: '100%', promptAfter: Number.parseFloat(getComputedStyle(root.querySelector('.plan45-prompt')).fontSize) };
+      }, action.value);
+      if (!result.applied || (action.value === '200%' && Math.abs(result.promptAfter - result.promptBefore * 2) > 0.1)) {
+        throw new Error(`Plan 45 text scaling did not apply the requested ${action.value} change: ${JSON.stringify(result)}`);
+      }
+      console.log(`Plan 45 learner text scale ${routeId}: ${JSON.stringify(result)}`);
+      break;
+    }
 
     case 'assertText': {
       const actual = await page.locator(action.target).first().textContent();
@@ -2646,6 +2771,89 @@ async function verifyAssertions(page, assertions, routeId) {
       continue;
     }
 
+    if (type === 'plan45ModelFidelity') {
+      const measurements = await page.evaluate((expectedModels) => {
+        const host = [...document.querySelectorAll('.app-visual-view')]
+          .find((element) => getComputedStyle(element).display !== 'none' && getComputedStyle(element).visibility !== 'hidden');
+        const figures = [...(host?.querySelectorAll('figure.plan45-model') || [])];
+        const expression = host?.querySelector('.plan45-expression');
+        const models = expectedModels.map((expected) => {
+          const prefix = expected.side === 'first' ? 'First amount' : 'Second amount';
+          const ariaPrefix = expected.side === 'first' ? 'First fraction' : 'Second fraction';
+          const figure = figures.find((candidate) => candidate.querySelector('figcaption')?.textContent?.trim() === prefix);
+          const track = figure?.querySelector('.plan45-model-track');
+          const parts = [...(track?.querySelectorAll('.plan45-model-part') || [])];
+          const shaded = parts.filter((part) => part.classList.contains('is-shaded'));
+          const trackRect = track?.getBoundingClientRect();
+          const widths = parts.map((part) => part.getBoundingClientRect().width);
+          const aria = track?.getAttribute('aria-label') || '';
+          const expressionFraction = [...(expression?.querySelectorAll('.symbolic-fraction') || [])]
+            .find((fraction) => fraction.getAttribute('aria-label') === `${ariaPrefix} ${expected.numerator} over ${expected.denominator}`);
+          const expressionRect = expression?.getBoundingClientRect();
+          const fractionRect = expressionFraction?.getBoundingClientRect();
+          return {
+            side: expected.side,
+            expectedFraction: `${expected.numerator}/${expected.denominator}`,
+            aria,
+            partCount: parts.length,
+            shadedCount: shaded.length,
+            trackWidth: trackRect?.width ?? null,
+            partWidths: widths,
+            horizontallyContained: Boolean(trackRect && trackRect.left >= -1 && trackRect.right <= innerWidth + 1),
+            sourceFractionMatchesExpression: Boolean(expressionFraction),
+            sourceFractionContained: Boolean(expressionRect && fractionRect
+              && fractionRect.left >= expressionRect.left - 1 && fractionRect.right <= expressionRect.right + 1
+              && fractionRect.left >= -1 && fractionRect.right <= innerWidth + 1),
+          };
+        });
+        const widths = models.map(({ trackWidth }) => trackWidth).filter(Number.isFinite);
+        return {
+          viewport: { width: innerWidth, height: innerHeight, dpr: devicePixelRatio },
+          modelCount: figures.length,
+          expectedCount: expectedModels.length,
+          models,
+          equalWholeWidths: widths.length < 2 || Math.max(...widths) - Math.min(...widths) <= 1,
+          horizontalOverflow: document.documentElement.scrollWidth > document.documentElement.clientWidth + 1,
+          scroll: { x: scrollX, y: scrollY },
+        };
+      }, assertion.models || []);
+      assertion.measurements = measurements;
+      if (measurements.modelCount !== measurements.expectedCount || !measurements.equalWholeWidths || measurements.horizontalOverflow
+        || measurements.models.some((model) => model.partCount !== Number(model.expectedFraction.split('/')[1])
+          || model.shadedCount !== Number(model.expectedFraction.split('/')[0])
+          || !model.aria.includes(`${model.expectedFraction.split('/')[0]} of ${model.expectedFraction.split('/')[1]} equal parts`)
+          || !model.horizontallyContained || !model.sourceFractionMatchesExpression || !model.sourceFractionContained)) {
+        throw new Error(`Plan 45 fraction containment or honest-unit fidelity failed: ${JSON.stringify(measurements)}`);
+      }
+      console.log(`Plan 45 model fidelity ${routeId}: ${JSON.stringify(measurements)}`);
+      continue;
+    }
+
+    if (type === 'plan45LinearModel') {
+      const actual = await page.evaluate((expected) => {
+        const host = [...document.querySelectorAll('.app-linear-view')]
+          .find((element) => getComputedStyle(element).display !== 'none' && getComputedStyle(element).visibility !== 'hidden');
+        const models = [...(host?.querySelectorAll('.plan45-linear-model') || [])];
+        const expectedLabel = expected.side === 'first' ? 'First amount' : 'Second amount';
+        return {
+          visibleCount: models.length,
+          modelText: models.map((model) => model.textContent.trim()),
+          expectedLabel,
+          expectedFraction: `${expected.numerator}/${expected.denominator}`,
+          viewport: { width: innerWidth, height: innerHeight, dpr: devicePixelRatio },
+          horizontalOverflow: document.documentElement.scrollWidth > document.documentElement.clientWidth + 1,
+        };
+      }, assertion);
+      assertion.measurements = actual;
+      if (actual.visibleCount !== 1 || actual.horizontalOverflow
+        || !actual.modelText[0].includes(actual.expectedLabel)
+        || !actual.modelText[0].includes(`${assertion.numerator} of ${assertion.denominator} equal parts`)) {
+        throw new Error(`Plan 45 linear source model did not communicate the selected fraction equivalently: ${JSON.stringify(actual)}`);
+      }
+      console.log(`Plan 45 linear model ${routeId}: ${JSON.stringify(actual)}`);
+      continue;
+    }
+
     if (type === 'activeElementEquals') {
       const activeDesc = await page.evaluate(() => {
         const el = document.activeElement;
@@ -3220,7 +3428,10 @@ async function runRouteMatrix(options = {}) {
           if (['completePlan39BridgeSet', 'completePlan39BridgeRecovery'].includes(seededAction.method)) {
             seededAction.inputMode = route.inputMode || 'mouse';
           }
-          await executeAction(page, seededAction, route.id);
+          const actionWithViewport = seededAction.method === 'completePlan45ComparisonJourney'
+            ? { ...seededAction, routeViewport: route.viewport }
+            : seededAction;
+          await executeAction(page, actionWithViewport, route.id);
         }
 
         // Capture output for negative control / sameness check

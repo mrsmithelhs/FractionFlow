@@ -17,6 +17,9 @@ import {
 } from '../content/plan40-reusable-subtraction-recipes.js';
 import { evaluateInstanceEligibility } from '../content/eligibility.js';
 import { isPlan37BarToLineBridgeTaskDefinition, resolvePlan37BarToLineBridgeContext } from '../content/plan37-bar-to-line-bridge-task.js';
+import { PLAN45_STATIC_COMPARISON_ACTIVE_CONDITION } from '../interaction/episode-definition.js';
+import { isPlan45ComparisonDefinition, resolvePlan45ComparisonContext } from '../content/plan45-symbolic-fraction-comparison-task.js';
+import { isPlan45ComparisonEpisode } from '../interaction/plan45-comparison-episode.js';
 import {
   applyIntent,
   createEpisode,
@@ -30,6 +33,7 @@ import {
   createButton,
   createLinearPathRenderer,
   createNumberLineLocateRenderer,
+  createPlan45ComparisonRenderer,
   STRINGS,
 } from '../render/index.js';
 import { resolveRenderableScene } from '../render/contract.js';
@@ -55,6 +59,7 @@ const APP_RENDER_STRINGS = Object.freeze({
 
 function canonicalInstance(item, conditions = REGISTERED_CONDITIONS, practiceType = null) {
   const definition = getEpisodeDefinition(item.episodeDefinitionId, item.episodeDefinitionRevision);
+  if (isPlan45ComparisonDefinition(definition)) return null;
   if (isPlan37BarToLineBridgeTaskDefinition(definition)) {
     const bridge = resolvePlan37BarToLineBridgeInstance(item.id, item.authoringRevision);
     if (!bridge || bridge.provenance.fixtureId !== item.fixtureId) throw new Error(`practice bridge item is not registered: ${item.id}`);
@@ -239,7 +244,12 @@ function presentationModeFor({ override, motionQuery }) {
 }
 
 function createInitialState(instance, practiceType, condition, supportLevel, episodeDefinition = practiceType.episodeDefinition, item = null) {
-  const taskContext = isPlan37BarToLineBridgeTaskDefinition(episodeDefinition) && item
+  const taskContext = isPlan45ComparisonDefinition(episodeDefinition) && item
+    ? resolvePlan45ComparisonContext(item.id, {
+      practiceSetId: practiceType.setId,
+      practiceSetRevision: practiceType.setRevision,
+    })
+    : isPlan37BarToLineBridgeTaskDefinition(episodeDefinition) && item
     ? resolvePlan37BarToLineBridgeContext(instance, item.id, {
       practiceSetId: practiceType.setId,
       practiceSetRevision: practiceType.setRevision,
@@ -274,7 +284,9 @@ function createInitialState(instance, practiceType, condition, supportLevel, epi
   return createEpisode({
     instance,
     episodeDefinition,
-    activeCondition: condition.activeCondition,
+    activeCondition: isPlan45ComparisonDefinition(episodeDefinition)
+      ? PLAN45_STATIC_COMPARISON_ACTIVE_CONDITION
+      : condition.activeCondition,
     support: supportLevel.configuration,
     taskContext,
   });
@@ -405,6 +417,7 @@ export function createFractionFlowApp({
   let preserveDecideInputFocusOnViewChange = false;
   let preserveTransformInputFocusOnViewChange = false;
   let preserveOperationInputFocusOnViewChange = false;
+  let comparisonFocusKeyOnViewChange = null;
   let mounted = false;
   let visualRenderer = null;
   let linearRenderer = null;
@@ -412,6 +425,11 @@ export function createFractionFlowApp({
   let linearNumberLineRenderer = null;
   let numberLineDraft = null;
   let numberLineHelpOpen = false;
+  let comparisonDraft = '';
+  let comparisonHelpOpen = false;
+  let visualComparisonRenderer = null;
+  let linearComparisonRenderer = null;
+  let comparisonResponseHandle = null;
   let motionQuery = null;
   let motionListener = null;
   let documentClickListener = null;
@@ -494,6 +512,11 @@ export function createFractionFlowApp({
     conditionLabel.textContent = STRINGS.app.displayChoicesHeading;
     displayMenu.appendChild(conditionLabel);
 
+    const conditionApplicability = makeElement('p', 'app-display-option-description');
+    conditionApplicability.id = 'fractionflow-condition-applicability';
+    conditionApplicability.textContent = 'Choose how display conditions apply to other practice goals.';
+    displayMenu.appendChild(conditionApplicability);
+
     const list = makeElement('div', 'app-display-options');
     for (const condition of REGISTERED_CONDITIONS) {
       const option = makeElement('button', 'app-display-option');
@@ -504,6 +527,7 @@ export function createFractionFlowApp({
       option.setAttribute('data-prompt-cadence-code', condition.activeCondition.promptCadence);
       option.setAttribute('data-connection-code', condition.activeCondition.connectionMaking);
       option.setAttribute('aria-pressed', String(condition.id === selectedCondition.id));
+      option.setAttribute('aria-describedby', 'fractionflow-condition-applicability');
 
       const optionLabel = makeElement('span', 'app-display-option-label');
       optionLabel.textContent = condition.label;
@@ -650,6 +674,7 @@ export function createFractionFlowApp({
         captureDecideDraft();
         captureTransformDrafts();
         captureOperationDraft();
+        captureComparisonDraft();
         const preserveInputFocus = preserveDecideInputFocusOnViewChange
           || Boolean(getVisibleDecideInput()?.isConnected
             && getVisibleDecideInput() === document.activeElement);
@@ -663,12 +688,16 @@ export function createFractionFlowApp({
           && state?.beat === 'encounter'
           && (document.activeElement?.classList?.contains('control-action-btn')
             || document.activeElement?.textContent === 'Take away');
+        const comparisonFocusKey = comparisonFocusKeyOnViewChange;
         preserveDecideInputFocusOnViewChange = false;
         preserveTransformInputFocusOnViewChange = false;
         preserveOperationInputFocusOnViewChange = false;
+        comparisonFocusKeyOnViewChange = null;
         saveNumberLineDraft();
+        captureComparisonDraft();
         visualView = !visualView;
         isReplaying = false;
+        if (isPlan45ComparisonEpisode(state)) render();
         updateViewVisibility();
         (visualView ? visualNumberLineRenderer : linearNumberLineRenderer)?.refreshGeometry();
         restoreDecideDraft();
@@ -683,12 +712,22 @@ export function createFractionFlowApp({
           const host = visualView ? visualHost : linearHost;
           host?.querySelector('.active-beat-controls button')?.focus();
         }
+        if (isPlan45ComparisonEpisode(state) && comparisonFocusKey) {
+          const host = visualView ? visualHost : linearHost;
+          const matching = [...(host?.querySelectorAll('[data-plan45-focus-key]') ?? [])]
+            .find((element) => element.getAttribute('data-plan45-focus-key') === comparisonFocusKey);
+          if (matching?.isConnected) matching.focus();
+          else comparisonResponseHandle?.focusPrimary();
+        }
       },
     });
   viewToggle.addEventListener('pointerdown', () => {
     preserveDecideInputFocusOnViewChange = getVisibleDecideInput() === document.activeElement;
     preserveTransformInputFocusOnViewChange = getVisibleTransformInput() === document.activeElement;
     preserveOperationInputFocusOnViewChange = getVisibleOperationInput() === document.activeElement;
+    comparisonFocusKeyOnViewChange = document.activeElement?.closest?.('.plan45-comparison')
+      ? document.activeElement.dataset?.plan45FocusKey ?? null
+      : null;
     });
     viewToggle.classList.add('app-view-toggle');
     viewToggle.setAttribute('aria-pressed', 'false');
@@ -831,6 +870,9 @@ export function createFractionFlowApp({
     preserveOperationInputFocusOnViewChange = false;
     numberLineDraft = null;
     numberLineHelpOpen = false;
+    comparisonDraft = '';
+    comparisonHelpOpen = false;
+    comparisonResponseHandle = null;
     visualNumberLineRenderer?.clearPreview();
     linearNumberLineRenderer?.clearPreview();
   }
@@ -927,7 +969,8 @@ export function createFractionFlowApp({
   }
 
   function computeProgressionDescriptor() {
-    if (navigationMode !== 'direct' || !state || !selectedPracticeType || activePracticeItemIndex === null) {
+    const comparisonEpisode = isPlan45ComparisonEpisode(state);
+    if ((navigationMode !== 'direct' && !comparisonEpisode) || !state || !selectedPracticeType || activePracticeItemIndex === null) {
       return {
         phase: 'idle',
         actionKind: 'none',
@@ -938,6 +981,19 @@ export function createFractionFlowApp({
     }
 
     const capturedGeneration = currentEpisodeGeneration;
+
+    if (comparisonEpisode && state.status === 'resolved' && state.established?.comparison) {
+      const hasNext = activePracticeItemIndex < selectedPracticeType.items.length - 1;
+      return {
+        phase: 'resolved-comparison',
+        actionKind: hasNext ? 'advance' : 'return',
+        label: hasNext ? STRINGS.app.nextProblemButton : STRINGS.app.returnButton,
+        notice: hasNext ? null : STRINGS.app.problemsExhausted,
+        onAction: () => hasNext
+          ? advanceToNextItem(capturedGeneration)
+          : returnFromCompletedSet(capturedGeneration),
+      };
+    }
 
     // Phase 2: continue-milestone (in resolve, but reflect is scheduled next)
     const nextEntry = state.beatSchedule?.[state.schedulePosition + 1];
@@ -1030,7 +1086,7 @@ export function createFractionFlowApp({
   }
 
   function advanceToNextItem(capturedGeneration) {
-    if (navigationMode === 'legacy-acknowledged') {
+    if (navigationMode === 'legacy-acknowledged' && !isPlan45ComparisonEpisode(state)) {
       if (state?.status !== 'resolved' || activePracticeItemIndex === null || !selectedPracticeType) return;
       const nextIndex = activePracticeItemIndex + 1;
       if (nextIndex >= selectedPracticeType.items.length) return;
@@ -1053,7 +1109,7 @@ export function createFractionFlowApp({
     if (isTransitioning) return;
     if (capturedGeneration !== undefined && capturedGeneration !== currentEpisodeGeneration) return;
     const desc = computeProgressionDescriptor();
-    if (desc.phase !== 'terminal-accepted' && desc.phase !== 'resolved-reflection') return;
+    if (desc.phase !== 'terminal-accepted' && desc.phase !== 'resolved-reflection' && desc.phase !== 'resolved-comparison') return;
     if (desc.actionKind !== 'advance') return;
 
     isTransitioning = true;
@@ -1085,7 +1141,7 @@ export function createFractionFlowApp({
     if (isTransitioning) return;
     if (capturedGeneration !== undefined && capturedGeneration !== currentEpisodeGeneration) return;
     const desc = computeProgressionDescriptor();
-    if (desc.phase !== 'terminal-accepted' && desc.phase !== 'resolved-reflection') return;
+    if (desc.phase !== 'terminal-accepted' && desc.phase !== 'resolved-reflection' && desc.phase !== 'resolved-comparison') return;
     if (desc.actionKind !== 'return') return;
 
     isTransitioning = true;
@@ -1161,11 +1217,18 @@ export function createFractionFlowApp({
   }
 
   function updateConditionMetadata() {
-    appRoot.setAttribute('data-condition-id', selectedCondition.id);
-    appRoot.setAttribute('data-display-code', selectedCondition.activeCondition.display);
-    appRoot.setAttribute('data-choreography-code', selectedCondition.activeCondition.choreography);
-    appRoot.setAttribute('data-prompt-cadence-code', selectedCondition.activeCondition.promptCadence);
-    appRoot.setAttribute('data-connection-code', selectedCondition.activeCondition.connectionMaking);
+    const applied = isPlan45ComparisonEpisode(state) ? state.activeCondition : selectedCondition.activeCondition;
+    const applicability = displayMenu.querySelector('#fractionflow-condition-applicability');
+    if (applicability) {
+      applicability.textContent = isPlan45ComparisonEpisode(state)
+        ? 'Compare fractions uses a fixed display; these selections apply to other practice goals.'
+        : 'Choose how display conditions apply to other practice goals.';
+    }
+    appRoot.setAttribute('data-condition-id', applied.id);
+    appRoot.setAttribute('data-display-code', applied.display);
+    appRoot.setAttribute('data-choreography-code', applied.choreography);
+    appRoot.setAttribute('data-prompt-cadence-code', applied.promptCadence);
+    appRoot.setAttribute('data-connection-code', applied.connectionMaking);
     for (const option of displayMenu.querySelectorAll('.app-display-options [data-condition-id]')) {
       option.setAttribute(
         'aria-pressed',
@@ -1195,15 +1258,17 @@ export function createFractionFlowApp({
       && state.taskContext?.patternId === PLAN35_RECIPE_IDS.identify;
     const isPlan36 = isPlan36SubtractionDefinition(state.episodeDefinition);
     const isPlan40 = isPlan40SubtractionRecipeDefinition(state.episodeDefinition);
+    const isPlan45 = isPlan45ComparisonEpisode(state);
     const isPlan40Identify = isPlan40 && isPlan40IdentifyRecipe(state.taskContext);
     helpButton.disabled = resolved;
+    helpButton.hidden = isPlan45;
     const hasConversion = Boolean(state.established?.lastConversion);
     const isPlan40NonIdentify = isPlan40 && !isPlan40Identify;
     const isPlan40IdentifySuppressed = isPlan40Identify && (!hasConversion || ['operate', 'resolve'].includes(state.beat));
-    replayButton.hidden = isPlan20 || isPlan34 || isPlan36 || isPlan39Bridge || isPlan40NonIdentify || isPlan40IdentifySuppressed
+    replayButton.hidden = isPlan20 || isPlan34 || isPlan36 || isPlan39Bridge || isPlan45 || isPlan40NonIdentify || isPlan40IdentifySuppressed
       || ((isPlan18 || isPlan35Identify) && !hasConversion)
       || (state.episodeDefinition.id === PLAN35_RECIPE_DEFINITION_ID && !isPlan35Identify);
-    replayButton.disabled = isPlan20 || isPlan34 || isPlan36 || isPlan39Bridge || resolved || state.beat === 'encounter'
+    replayButton.disabled = isPlan20 || isPlan34 || isPlan36 || isPlan39Bridge || isPlan45 || resolved || state.beat === 'encounter'
       || isPlan40NonIdentify || isPlan40IdentifySuppressed
       || ((isPlan18 || isPlan35Identify) && !hasConversion)
       || (state.episodeDefinition.id === PLAN35_RECIPE_DEFINITION_ID && !isPlan35Identify);
@@ -1212,6 +1277,12 @@ export function createFractionFlowApp({
   }
 
   function updateNavigation() {
+    if (isPlan45ComparisonEpisode(state)) {
+      setHidden(nextProblemButton, true);
+      navigationNotice.textContent = '';
+      setHidden(navigationNotice, true);
+      return;
+    }
     if (navigationMode === 'direct') {
       setHidden(nextProblemButton, true);
       if (navigationRefusal) {
@@ -1295,6 +1366,59 @@ export function createFractionFlowApp({
     return renderer?.getResponseRegion('operate')?.primaryInput() ?? null;
   }
 
+  function getVisibleComparisonRegion() {
+    const renderer = visualView ? visualComparisonRenderer : linearComparisonRenderer;
+    return renderer?.getResponseRegion('compare') ?? null;
+  }
+
+  function captureComparisonDraft() {
+    if (!isPlan45ComparisonEpisode(state) || state.status === 'resolved') return;
+    const host = visualView ? visualHost : linearHost;
+    const rawDraft = [...(host?.querySelectorAll('.plan45-relation-option input') ?? [])]
+      .find((input) => input.checked)?.value
+      ?? getVisibleComparisonRegion()?.readDraft();
+    if (typeof rawDraft === 'string') comparisonDraft = rawDraft;
+  }
+
+  function createComparisonResponseHandle() {
+    if (!isPlan45ComparisonEpisode(state) || state.status !== 'active') {
+      comparisonResponseHandle = null;
+      return null;
+    }
+    const scheduleEntry = state.beatSchedule[state.schedulePosition];
+    const scope = Object.freeze({
+      itemId: state.taskContext.itemId,
+      schedulePosition: state.schedulePosition,
+      scheduleEntryId: scheduleEntry.id,
+      promptId: state.expectedResponse.promptId,
+      episodeGeneration: currentEpisodeGeneration,
+    });
+    const isCurrent = () => isPlan45ComparisonEpisode(state)
+      && state.status === 'active'
+      && currentEpisodeGeneration === scope.episodeGeneration
+      && state.taskContext.itemId === scope.itemId
+      && state.schedulePosition === scope.schedulePosition
+      && state.beatSchedule[state.schedulePosition]?.id === scope.scheduleEntryId
+      && state.expectedResponse?.promptId === scope.promptId;
+    comparisonResponseHandle = Object.freeze({
+      ...scope,
+      readDraft: () => isCurrent() ? comparisonDraft : '',
+      writeDraft: (raw) => {
+        if (!isCurrent() || (raw !== '' && !['<', '=', '>'].includes(raw))) return false;
+        comparisonDraft = raw;
+        return true;
+      },
+      focusPrimary: () => isCurrent() ? getVisibleComparisonRegion()?.focusPrimary() ?? false : false,
+      dispatch: (intent) => {
+        const current = isCurrent();
+        if (!current) return false;
+        dispatchAction(intent);
+        return true;
+      },
+    });
+    return comparisonResponseHandle;
+  }
+
   function focusOperationInput() {
     if (state?.beat !== 'operate') return false;
     const renderer = visualView ? visualRenderer : linearRenderer;
@@ -1325,6 +1449,10 @@ export function createFractionFlowApp({
 
   function updateHelpPlacement(scene = currentScene) {
     if (!helpButton || !state) return;
+    if (isPlan45ComparisonEpisode(state)) {
+      helpButton.hidden = true;
+      return;
+    }
     if (isPlan37BarToLineBridgeTaskDefinition(state.episodeDefinition)) {
       const supportControls = appRoot.querySelector('.app-support-controls');
       if (helpButton.parentNode !== supportControls) {
@@ -1468,6 +1596,7 @@ export function createFractionFlowApp({
     captureDecideDraft();
     captureTransformDrafts();
     captureOperationDraft();
+    if (!isPlan45ComparisonEpisode(state)) captureComparisonDraft();
     if (state.beat !== 'decide') {
       decideHelpOpen = false;
       commonDenominatorDraft = '';
@@ -1499,6 +1628,52 @@ export function createFractionFlowApp({
       isReplaying,
     });
     currentScene = scene;
+
+    if (isPlan45ComparisonEpisode(state)) {
+      visualRenderer?.destroy();
+      linearRenderer?.destroy();
+      visualNumberLineRenderer?.destroy();
+      linearNumberLineRenderer?.destroy();
+      visualRenderer = null;
+      linearRenderer = null;
+      visualNumberLineRenderer = null;
+      linearNumberLineRenderer = null;
+      createComparisonResponseHandle();
+      const rendererOptions = (view) => ({
+        container: view === 'visual' ? visualHost : linearHost,
+        view,
+        dispatchAction: (action) => comparisonResponseHandle?.dispatch(action),
+        getDraft: () => comparisonResponseHandle?.readDraft() ?? '',
+        setDraft: (value) => {
+          if (value !== '' && !['<', '=', '>'].includes(value)) return false;
+          comparisonDraft = value;
+          return comparisonResponseHandle?.writeDraft(value) ?? true;
+        },
+        getHelpOpen: () => comparisonHelpOpen,
+        setHelpOpen: (open) => { comparisonHelpOpen = Boolean(open); },
+        getProgression: () => computeProgressionDescriptor(),
+      });
+      if (!visualComparisonRenderer) {
+        visualComparisonRenderer = createPlan45ComparisonRenderer(rendererOptions('visual'));
+        visualComparisonRenderer.mount(scene);
+      } else visualComparisonRenderer.update(scene);
+      if (!linearComparisonRenderer) {
+        linearComparisonRenderer = createPlan45ComparisonRenderer(rendererOptions('linear'));
+        linearComparisonRenderer.mount(scene);
+      } else linearComparisonRenderer.update(scene);
+      updateConditionMetadata();
+      updateSupportMetadata();
+      updateSupportControls();
+      updateNavigation();
+      updateViewVisibility();
+      updateHelpPlacement(scene);
+      return;
+    }
+    visualComparisonRenderer?.destroy();
+    linearComparisonRenderer?.destroy();
+    visualComparisonRenderer = null;
+    linearComparisonRenderer = null;
+    comparisonResponseHandle = null;
 
     if (isPlan37BarToLineBridgeTaskDefinition(state.episodeDefinition)) {
       visualRenderer?.destroy();
@@ -1607,9 +1782,11 @@ export function createFractionFlowApp({
       captureDecideDraft();
       captureTransformDrafts();
       captureOperationDraft();
+      captureComparisonDraft();
       if (action.type === 'propose-common-denominator') commonDenominatorDraft = '';
       const wasResolved = state.status === 'resolved';
       state = applyIntent(state, action);
+      if (action.type === 'submit-fraction-comparison' && state.status === 'resolved') comparisonDraft = '';
       if (action.type === 'request-help') {
         isReplaying = false;
         const help = state.helpHistory.at(-1);
@@ -1655,6 +1832,24 @@ export function createFractionFlowApp({
           && state.episodeDefinition.id === PLAN20_LIKE_DENOMINATOR_EPISODE_DEFINITION.id;
       }
       render();
+      if (isPlan45ComparisonEpisode(state)) {
+        if (action.type === 'submit-fraction-comparison') {
+          if (state.status === 'resolved') {
+            const progressionButton = (visualView ? visualHost : linearHost)?.querySelector('.plan45-progression-button');
+            if (progressionButton?.isConnected) progressionButton.focus();
+          } else {
+            comparisonResponseHandle?.focusPrimary();
+          }
+        } else if (action.type === 'request-comparison-model') {
+          comparisonResponseHandle?.focusPrimary();
+        } else if (action.type === 'request-comparison-help') {
+          const host = visualView ? visualHost : linearHost;
+          const key = action.helpKind === 'reasoning' ? 'reasoning' : 'notation';
+          const button = [...(host?.querySelectorAll('[data-plan45-focus-key]') ?? [])]
+            .find((element) => element.getAttribute('data-plan45-focus-key') === key);
+          button?.focus();
+        }
+      }
       if (focusExhaustion) focusNavigationNotice();
       if (focusSingleItemCompletion) focusEpisodeLandmark();
       if (action.type === 'request-task-help'
@@ -1775,6 +1970,8 @@ export function createFractionFlowApp({
       return this;
     },
     destroy() {
+      visualComparisonRenderer?.destroy();
+      linearComparisonRenderer?.destroy();
       if (motionQuery && motionListener && typeof motionQuery.removeEventListener === 'function') {
         motionQuery.removeEventListener('change', motionListener);
       }

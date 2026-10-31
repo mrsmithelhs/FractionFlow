@@ -16770,6 +16770,116 @@
           }
         ]
       }
+    },
+    {
+      "id": "ROUTE-PLAN45-VISUAL-360X740-MOUSE",
+      "behavior": "Complete a comparison in the visual view with optional help, one selected model, wrong response recovery, view-switch draft persistence, paired acceptance, and direct Next at 360x740.",
+      "configuration": "plan45-static-comparison",
+      "startingSurface": "mounted-app-entry",
+      "viewport": { "width": 360, "height": 740 },
+      "deviceScaleFactor": 1,
+      "motionMode": "standard-motion",
+      "witness": "browser",
+      "actions": [
+        { "step": 1, "method": "completePlan45ComparisonJourney", "itemIndex": 0, "support": "high-support", "model": "first", "inputMode": "mouse", "startView": "visual", "description": "Run registered > comparison through visual and linear states" }
+      ],
+      "expect": { "capture": { "target": ".app-episode", "type": "innerHTML" }, "assertions": [
+        { "type": "hasSelector", "target": ".app-episode[data-current-item-id=\"plan45-compare-02\"]" },
+        { "type": "notHasSelector", "target": ".plan45-recovery" },
+        { "type": "hasSelector", "target": ".app-next-button[hidden]" }
+      ] }
+    },
+    {
+      "id": "ROUTE-PLAN45-LINEAR-360X752-KEYBOARD",
+      "behavior": "Use keyboard-operable controls for an equality item, select the second model once, recover from an incorrect response, preserve its revised draft across views, and reach direct Next at 360x752 with reduced motion.",
+      "configuration": "plan45-static-comparison",
+      "startingSurface": "mounted-app-entry",
+      "viewport": { "width": 360, "height": 752 },
+      "deviceScaleFactor": 1,
+      "motionMode": "reduced-motion",
+      "inputMode": "keyboard",
+      "witness": "browser",
+      "actions": [
+        { "step": 1, "method": "completePlan45ComparisonJourney", "itemIndex": 2, "support": "medium-support", "model": "second", "inputMode": "keyboard", "startView": "linear", "description": "Run registered equality comparison through keyboard-only journey" }
+      ],
+      "expect": { "capture": { "target": ".app-episode", "type": "innerHTML" }, "assertions": [
+        { "type": "hasSelector", "target": ".app-episode[data-current-item-id=\"plan45-compare-04\"]" },
+        { "type": "notHasSelector", "target": ".plan45-recovery" },
+        { "type": "hasSelector", "target": ".app-next-button[hidden]" }
+      ] }
+    },
+    {
+      "id": "ROUTE-PLAN45-TOUCH-1366X768",
+      "behavior": "Use non-drag browser touch controls for a less-than item, retain one requested source model through retry, and advance after accepted paired verification at 1366x768.",
+      "configuration": "plan45-static-comparison",
+      "startingSurface": "mounted-app-entry",
+      "viewport": { "width": 1366, "height": 768 },
+      "deviceScaleFactor": 1,
+      "motionMode": "standard-motion",
+      "inputMode": "touch",
+      "witness": "browser",
+      "actions": [
+        { "step": 1, "method": "completePlan45ComparisonJourney", "itemIndex": 6, "support": "medium-support", "model": "first", "inputMode": "touch", "startView": "visual", "description": "Run registered < comparison using browser touch" }
+      ],
+      "expect": { "capture": { "target": ".app-episode", "type": "innerHTML" }, "assertions": [
+        { "type": "hasSelector", "target": ".app-episode[data-current-item-id=\"plan45-compare-08\"]" },
+        { "type": "notHasSelector", "target": ".plan45-recovery" },
+        { "type": "hasSelector", "target": ".app-next-button[hidden]" }
+      ] }
+    },
+    {
+      "id": "ROUTE-PLAN45-CHROMEBOOK-SCALED-1093X614",
+      "behavior": "Inspect the full comparison journey at 1093x614 with DPR 1.25, including the chosen source model, recovery, linear verification, and fresh Next.",
+      "configuration": "plan45-static-comparison",
+      "startingSurface": "mounted-app-entry",
+      "viewport": { "width": 1093, "height": 614 },
+      "deviceScaleFactor": 1.25,
+      "motionMode": "standard-motion",
+      "witness": "browser",
+      "actions": [
+        { "step": 1, "method": "completePlan45ComparisonJourney", "itemIndex": 0, "support": "high-support", "model": "second", "inputMode": "mouse", "startView": "visual", "description": "Run registered comparison at Chromebook-scaled viewport" }
+      ],
+      "expect": { "capture": { "target": ".app-episode", "type": "innerHTML" }, "assertions": [
+        { "type": "hasSelector", "target": ".app-episode[data-current-item-id=\"plan45-compare-02\"]" },
+        { "type": "notHasSelector", "target": ".plan45-recovery" },
+        { "type": "hasSelector", "target": ".app-next-button[hidden]" }
+      ] }
+    },
+    {
+      "id": "ROUTE-PLAN45-TEXT-SCALE-RESIZE-200PCT",
+      "behavior": "Retain the selected source model and relation while learner text is set to 200% at a narrow viewport and during resize, then accept and advance.",
+      "configuration": "plan45-static-comparison",
+      "startingSurface": "mounted-app-entry",
+      "viewport": { "width": 1366, "height": 768 },
+      "deviceScaleFactor": 1,
+      "motionMode": "standard-motion",
+      "witness": "browser",
+      "actions": [
+        { "step": 1, "method": "completePlan45ComparisonJourney", "itemIndex": 6, "support": "high-support", "model": "second", "inputMode": "mouse", "startView": "visual", "exerciseTextScale": true, "exerciseResize": true, "description": "Verify source and response persistence at 200% text scale and during resize" }
+      ],
+      "expect": { "capture": { "target": ".app-episode", "type": "innerHTML" }, "assertions": [
+        { "type": "hasSelector", "target": ".app-episode[data-current-item-id=\"plan45-compare-08\"]" },
+        { "type": "notHasSelector", "target": ".plan45-recovery" },
+        { "type": "hasSelector", "target": ".app-next-button[hidden]" }
+      ] }
+    },
+    {
+      "id": "ROUTE-PLAN45-FINAL-EXHAUSTION-RETURN",
+      "behavior": "Reach the final equality item through browser interactions, verify Back to start after acceptance, return to entry, and re-enter with a clean model choice and draft.",
+      "configuration": "plan45-static-comparison",
+      "startingSurface": "mounted-app-entry",
+      "viewport": { "width": 360, "height": 752 },
+      "deviceScaleFactor": 1,
+      "motionMode": "standard-motion",
+      "witness": "browser",
+      "actions": [
+        { "step": 1, "method": "completePlan45ComparisonJourney", "itemIndex": 11, "support": "medium-support", "model": "first", "inputMode": "mouse", "startView": "visual", "description": "Exercise the final item, Back to start, return, and fresh re-entry" }
+      ],
+      "expect": { "capture": { "target": ".app-episode", "type": "innerHTML" }, "assertions": [
+        { "type": "hasSelector", "target": ".app-episode[data-current-item-id=\"plan45-compare-01\"]" },
+        { "type": "notHasSelector", "target": ".plan45-model, .plan45-linear-model, .plan45-recovery" },
+        { "type": "hasSelector", "target": ".app-next-button[hidden]" }
+      ] }
     }
   ]
 }
