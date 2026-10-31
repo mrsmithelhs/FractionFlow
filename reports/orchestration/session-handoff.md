@@ -6,6 +6,19 @@ and pause records retained later in this file.
 
 ## Current board and owner direction
 
+Plan44 revision1 review 2026-10-31: dossier3276c56/progresse935682 technically
+ACCEPTED as revised recommendation; status DELIVERED pending OWNER design
+adoption. Read revision-01-orchestration-review.md. Parent reran exact probe,
+byte-identical JSON: 4/4/4 plus half-benchmark signs. Task is symbolic-first,
+one inequality selection + Check, optional one-model help, paired models after
+acceptance. Parent tightened copy/help disclosure and generic recovery semantics
+inline. Material owner choice remains: investigator permits model switching;
+parent recommends one chosen model per problem before acceptance to avoid rapid
+remembered-endpoint comparison. No policy adopted, no source packet authorized.
+FF Impl44 should hold, no additional reviewer or arithmetic recheck. Plans23/39
+are complete by owner acceptance; no push/deployment. Earlier revision0 endpoint-
+reading recommendation was not adopted and is historical.
+
 Owner review 2026-10-31: Plans23 and39 are COMPLETE on explicit owner instruction
 ("console works" / "number line looks good"). Acceptance files and resolutions
 record limits; no push/deployment. Plan44's direct two-aligned-bars task was NOT
