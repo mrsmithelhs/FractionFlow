@@ -1,6 +1,7 @@
 import { writeFile } from 'node:fs/promises';
 import {
   compareFractions,
+  compareToBenchmark,
   convertToDenominator,
   createFraction,
   leastCommonDenominator,
@@ -10,7 +11,7 @@ import {
 // this file intentionally contains no expected-answer table.
 const items = [
   { id: 'larger-integers-trap', left: [2, 3], right: [3, 5] },
-  { id: 'larger-integers-trap-swapped', left: [3, 5], right: [2, 3] },
+  { id: 'same-denominator-unit-count-swapped', left: [5, 8], right: [3, 8] },
   { id: 'unreduced-equality', left: [4, 6], right: [6, 9] },
   { id: 'unreduced-equality-swapped', left: [6, 9], right: [4, 6] },
   { id: 'equal-gap-unequal-amounts', left: [3, 4], right: [5, 6] },
@@ -18,7 +19,7 @@ const items = [
   { id: 'smaller-gap-predicts-wrong-way', left: [2, 3], right: [7, 10] },
   { id: 'same-denominator-unit-count', left: [3, 8], right: [5, 8] },
   { id: 'same-positive-numerator-unit-size', left: [3, 5], right: [3, 7] },
-  { id: 'smaller-gap-predicts-wrong-way-swapped', left: [7, 10], right: [2, 3] },
+  { id: 'separating-half-benchmark', left: [3, 8], right: [5, 9] },
   { id: 'equivalent-unreduced-and-reduced', left: [4, 8], right: [1, 2] },
   { id: 'equivalent-unreduced-and-reduced-swapped', left: [1, 2], right: [4, 8] },
 ];
@@ -40,6 +41,14 @@ const rows = items.map(({ id, left: leftPair, right: rightPair }) => {
     throw new Error(`common-unit conversion changed the exact relation for ${id}`);
   }
 
+  const benchmarkEvidence = id === 'separating-half-benchmark'
+    ? {
+      benchmark: 'half',
+      firstRelationToBenchmark: compareToBenchmark(left, 'half'),
+      secondRelationToBenchmark: compareToBenchmark(right, 'half'),
+    }
+    : null;
+
   return {
     id,
     sourceForms: {
@@ -49,6 +58,7 @@ const rows = items.map(({ id, left: leftPair, right: rightPair }) => {
     relation: relationNames.get(relation),
     relationCode: relation,
     positiveProper: true,
+    benchmarkEvidence,
     numeratorGap: {
       first: String(left.denominator - left.numerator),
       second: String(right.denominator - right.numerator),
@@ -78,7 +88,7 @@ if (rows.some((row) => BigInt(row.maxSourceDenominator) > 10n)) {
 const evidence = {
   evidenceType: 'read-only exact-example probe; not a product test or production content bank',
   mathModule: 'src/math/index.js',
-  apis: ['createFraction', 'compareFractions', 'leastCommonDenominator', 'convertToDenominator'],
+  apis: ['createFraction', 'compareFractions', 'compareToBenchmark', 'leastCommonDenominator', 'convertToDenominator'],
   denominatorBoundChecked: 10,
   counts,
   rows,
