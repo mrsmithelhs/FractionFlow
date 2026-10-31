@@ -8,6 +8,8 @@
 
 ---
 
+**Owner disposition 2026-10-31:** Plan44 is complete. DECISION-053 and `reports/development/plan-44-fraction-magnitude-comparison-design/adopted-task-contract.md` adopt symbolic-first comparison with one chosen model per problem and post-acceptance paired verification. Plan45 is the separate implementation packet; broader strategies below remain exploratory/deferred.
+
 ## 1. Founding Authorization & Two Distinct Instructional Goals
 
 ### 1.1 Founding Basis (Not a Scope Expansion)

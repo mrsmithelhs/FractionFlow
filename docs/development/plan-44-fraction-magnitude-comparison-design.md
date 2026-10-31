@@ -1,7 +1,8 @@
 ---
 id: plan-44
 title: Fraction Magnitude Comparison Task and First-Slice Design
-status: delivered
+status: complete
+resolution: "Owner adopted the revised symbolic-first comparison task with one chosen model per problem on 2026-10-31. Adopted-task-contract.md overrides prior aligned-bar/model-switching recommendations; exact illustrative evidence and technical review limits are retained. Plan45 is prepared separately with a pre-source mechanism gate. No implementation launch, push or deployment authorized."
 depends_on: [plan-29, plan-37, plan-40, plan-42, plan-43]
 gate: "Requirement 0: approve bounded investigation scope before the design dossier. Docs/report work only. Owner adoption of the recommended learner task, control grammar and first source slice precedes any implementation packet or activation. Plan 39 closure remains a prerequisite for subsequent number-line implementation."
 summary: >-

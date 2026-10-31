@@ -1,5 +1,7 @@
 # Plan 44 — Progress
 
+**Orchestration closure 2026-10-31:** The owner adopted the revised task with one chosen model per problem and closed Plan44. Read adopted-task-contract.md for the binding rule; the report below records the investigator delivery before adoption. Plan45 is the separate ready implementation packet, with its source gate intact.
+
 ## Revision 1 — owner-directed report revision
 
 The owner did not adopt revision 0's pre-answer aligned-bar comparison. Following the authorized bounded revision, the dossier now recommends a symbolic-first proper-fraction comparison: show both original fractions, ask for one `<`, `=`, or `>` judgment, and make at most one learner-selected source model available before acceptance. After acceptance, show both honest aligned bars as verification. The task offers authored hints for benchmark, same-unit, same-count, and close/equivalent reasoning, with recovery that preserves the response and permits switching the single model.

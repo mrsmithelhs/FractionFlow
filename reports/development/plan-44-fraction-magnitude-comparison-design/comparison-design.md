@@ -2,7 +2,7 @@
 
 **Source review baseline:** `0a5904f46980f3438323a7d8fba893b4a329b771`; scoped modules rechecked unchanged through `3677b51c82d011a39705fd1291a6d0c6d1b13a35` (2026-10-31)
 **Scope approval:** [Requirement 0 approval](scope-approval.md)
-**Status:** Recommended design for orchestration and owner disposition. This document does not adopt the task or authorize source work.
+**Status:** Owner adopted on 2026-10-31, with ONE CHOSEN MODEL PER PROBLEM before acceptance. Read [adopted-task-contract.md](adopted-task-contract.md), which overrides model-switching and pending-adoption language below. This dossier retains recommendation history; implementation requires the separate Plan45 mechanism gate.
 
 ## Revision 1 recommendation
 

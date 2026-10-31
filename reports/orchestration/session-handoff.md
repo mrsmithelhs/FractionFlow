@@ -6,6 +6,19 @@ and pause records retained later in this file.
 
 ## Current board and owner direction
 
+Owner adoption 2026-10-31: Plan44 COMPLETE. DECISION-053 and Plan44 report-folder
+adopted-task-contract.md bind symbolic-first inequality + Check, ONE chosen model
+per problem before acceptance, paired verification afterward, one help disclosure,
+existing support/access/progression. No pre-answer switching; preserve choice
+through wrong Check/help/view/remount, reset Next/explicit fresh restart. Dossier
+older switching paragraphs are historical and overridden. New Plan45 ready and
+preflight RUNNABLE, not dispatched/in-progress; no chat/child/source launch. It
+requires mechanism gate, pure-contract checkpoint, compact12-pair validation,
+one-model lock and leakage/focus/replay proof plus bounded rendered witnesses.
+One implementer Terra-medium review for substantial work, no duplicate parent
+Terra. Plans23/39 also complete; no push/deployment. Owner asked packet creation
+only; await dispatch direction rather than messaging FF Impl44 to implement45.
+
 Plan44 revision1 review 2026-10-31: dossier3276c56/progresse935682 technically
 ACCEPTED as revised recommendation; status DELIVERED pending OWNER design
 adoption. Read revision-01-orchestration-review.md. Parent reran exact probe,

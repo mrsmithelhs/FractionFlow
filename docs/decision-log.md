@@ -1400,3 +1400,14 @@ Use cold context and a default role honoring the requested model/effort, no sile
 substitution, no Sol/Astra authorization, and existing acceptance/deployment gates.
 This refines DECISION-051 without relabeling past Luna/Sol reviews or changing
 implementation settings. It is review policy, not a measured efficiency claim.
+
+
+### DECISION-053 - Adopt symbolic-first fraction comparison with one chosen model
+
+**Date:** 2026-10-31
+
+**Decision:** The owner adopted the revised Plan44 task with one chosen source model per problem, closed Plan44, and requested an implementation packet. Start with both original stacked fractions and no bars; use one direct inequality selection and Check. Optional help may model either source fraction, but the first choice persists through wrong responses, help/view changes and remounts until acceptance. Reveal both honest aligned models only after acceptance. Next or an explicit fresh-problem restart resets choice and assistance under existing fresh-state rules.
+
+Keep one concise help disclosure, exact-core truth, original unreduced forms, accessible spoken relation meanings, existing More/Less profiles and shared direct progression. Assistance is not independent mastery evidence. The initial compact 12-pair proposal remains bounded to positive proper source forms with denominators <=10; no automatic larger-capacity, adaptation or strategy-chooser activation. The adopted report contract governs over the earlier unadopted aligned-bar and switching recommendations.
+
+Plan45 implements only after its Requirement0 mechanism approval; no source launch, replay schema number, push or deployment follows from design adoption. Line comparison, unsigned distance, mixed values and broader task variation remain separate.
