@@ -6,6 +6,16 @@ and pause records retained later in this file.
 
 ## Current board and owner direction
 
+Plan45 Requirement0 reviewed 2026-10-31: proposal a4531c9/ded0239 APPROVED TO
+PURE REQUIREMENT1 CHECKPOINT ONLY in 7a4d9d2 / mechanism-approval.md. Message
+successfully delivered to FF Impl45. Fixed compare->resolve schedule; recovery is
+outcome, atomic model lock, generic wrong feedback allowed, exact-derived concrete
+hints. No app/render/conditions/styles/routes or replay-v9 serialization yet.
+Checkpoint1 must freeze literal intent/state/context/envelope wires, condition
+capability and response/progression handle before broad integration. One later
+Terra-medium review remains, no advisor at this gate. Plans46–48 draft wave is
+committed cef241a, none dispatched. No shared source/build work by orchestration.
+
 Next-wave drafts 2026-10-31: Plans46/47/48 now DRAFT only: number-line collection/
 equivalence, comparison-to-distance subtraction, and whole-boundary/mixed-entry
 readiness. Each is report-only with own report folder, Requirement0 scope stop
