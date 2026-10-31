@@ -1,6 +1,8 @@
 import {
   classifyConversionResponse as classifyMathConversionResponse,
   classifyOperationResponse as classifyMathOperationResponse,
+  compareFractions,
+  createFraction,
   equalFractions,
   PATTERNS,
   scaleFactorForDenominator,
@@ -269,6 +271,43 @@ export function classifyResolutionResponse({ instance, targetDenominator, propos
     proposed,
     simplifiedResult,
     reasons: [...validation.reasons],
+  };
+}
+
+/** Classify one raw inequality choice against the exact ordered source values. */
+export function classifyPlan45FractionComparison({ sourceForms, proposed }) {
+  if (!sourceForms || typeof sourceForms !== 'object'
+    || Array.isArray(sourceForms)
+    || JSON.stringify(Object.keys(sourceForms).sort()) !== JSON.stringify(['first', 'second'])) {
+    throw new TypeError('Plan 45 comparison source forms are required');
+  }
+  if (!['<', '=', '>'].includes(proposed)) {
+    const error = new TypeError('Plan 45 relation response must be exactly <, =, or >');
+    error.code = 'INVALID_PLAN45_RELATION_RESPONSE';
+    throw error;
+  }
+  const parse = (wire, name) => {
+    if (!wire || typeof wire !== 'object' || Array.isArray(wire)
+      || JSON.stringify(Object.keys(wire).sort()) !== JSON.stringify(['denominator', 'numerator'])
+      || typeof wire.numerator !== 'string' || !/^[1-9][0-9]*$/.test(wire.numerator)
+      || typeof wire.denominator !== 'string' || !/^[1-9][0-9]*$/.test(wire.denominator)) {
+      throw new TypeError(`${name} must be a canonical positive proper-fraction wire`);
+    }
+    const numerator = BigInt(wire.numerator);
+    const denominator = BigInt(wire.denominator);
+    if (numerator >= denominator || denominator > 10n) {
+      throw new TypeError(`${name} is outside Plan 45 positive proper-fraction eligibility`);
+    }
+    return createFraction(numerator, denominator);
+  };
+  const exactRelation = compareFractions(parse(sourceForms.first, 'first source'), parse(sourceForms.second, 'second source'));
+  const expectedRelation = exactRelation < 0 ? '<' : exactRelation > 0 ? '>' : '=';
+  return {
+    kind: proposed === expectedRelation ? 'correct-comparison' : 'incorrect-comparison',
+    validity: proposed === expectedRelation ? 'valid' : 'incorrect',
+    proposed,
+    expectedRelation,
+    continuation: proposed === expectedRelation ? 'resolved' : 'local-recovery',
   };
 }
 

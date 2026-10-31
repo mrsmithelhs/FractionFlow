@@ -42,6 +42,15 @@ import {
   validatePlan37BarToLineBridgeInstance,
 } from '../content/plan37-bar-to-line-bridge-task.js';
 import {
+  isPlan45ComparisonDefinition,
+} from '../content/plan45-symbolic-fraction-comparison-task.js';
+import {
+  applyPlan45ComparisonIntent,
+  createPlan45ComparisonEpisode,
+  isPlan45ComparisonEpisode,
+  plan45ComparisonStateSnapshot,
+} from './plan45-comparison-episode.js';
+import {
   EPISODE_BEATS,
   PHASE2_ACTIVE_CONDITION,
   PHASE2_EPISODE_DEFINITION,
@@ -264,6 +273,8 @@ function assertDefinition(definition) {
   }
   const approvedBeats = isPlan37BarToLineBridgeTaskDefinition(registered)
     ? (registered.revision === '2' ? ['locate', 'resolve'] : ['encounter', 'locate', 'resolve'])
+    : isPlan45ComparisonDefinition(registered)
+      ? ['compare', 'resolve']
     : registered.id === PLAN36_LIKE_DENOMINATOR_SUBTRACTION_EPISODE_DEFINITION.id
     ? ['encounter', 'operate', 'resolve']
     : [PLAN18_NESTED_DEFINITION_ID, 'phase-3-reusable-addition-recipes', 'phase-3-reusable-subtraction-recipes'].includes(registered.id)
@@ -375,6 +386,7 @@ function assertInstance(instance, definition) {
 }
 
 function stateSnapshot(state) {
+  if (isPlan45ComparisonEpisode(state)) return plan45ComparisonStateSnapshot(state);
   return {
     encounter: state.established.encounter,
     notice: state.established.notice,
@@ -1384,14 +1396,21 @@ export function createEpisode({
   instance,
   episodeDefinition = PHASE2_EPISODE_DEFINITION,
   support = DEFAULT_SUPPORT_CONFIGURATION,
-  activeCondition = PHASE2_ACTIVE_CONDITION,
+  activeCondition = null,
   taskContext = null,
   allowCompatibilityPair = false,
 } = {}) {
   const definition = assertDefinition(episodeDefinition);
+  if (isPlan45ComparisonDefinition(definition)) {
+    return createPlan45ComparisonEpisode({
+      taskContext,
+      support,
+      activeCondition: activeCondition ?? undefined,
+    });
+  }
   const content = assertInstance(instance, definition);
   const normalizedSupport = createSupportConfiguration(support);
-  const normalizedCondition = validateActiveCondition(activeCondition);
+  const normalizedCondition = validateActiveCondition(activeCondition ?? PHASE2_ACTIVE_CONDITION);
   const isCompact = [PLAN34_EPISODE_DEFINITION_ID, 'phase-3-reusable-addition-recipes', 'phase-3-reusable-subtraction-recipes'].includes(definition.id);
   const isNested = definition.id === PLAN18_NESTED_DEFINITION_ID;
   const isPlan36 = isPlan36SubtractionDefinition(definition);
@@ -1462,6 +1481,9 @@ export function createEpisode({
 export function applyIntent(state, rawIntent) {
   if (!state || state.schemaVersion !== 'fractionflow.episode-state/v1') {
     throw new EpisodeIntentError('INVALID_EPISODE_STATE', 'state is not a Plan 05 episode state');
+  }
+  if (isPlan45ComparisonEpisode(state)) {
+    return applyPlan45ComparisonIntent(state, rawIntent);
   }
   if (state.status !== 'active') {
     throw new EpisodeIntentError('EPISODE_RESOLVED', 'resolved episodes do not accept more instructional intents');

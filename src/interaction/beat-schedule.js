@@ -5,6 +5,10 @@ import { isPlan35AdditionRecipeDefinition, isPlan35IdentifyRecipe, validatePlan3
 import { isPlan36SubtractionDefinition, validatePlan36LikeDenominatorSubtractionContext } from '../content/plan36-like-denominator-takeaway-task.js';
 import { isPlan40SubtractionRecipeDefinition, isPlan40IdentifyRecipe, validatePlan40SubtractionRecipeContext } from '../content/plan40-reusable-subtraction-recipes.js';
 import { isPlan37BarToLineBridgeTaskDefinition, validatePlan37BarToLineBridgeContext } from '../content/plan37-bar-to-line-bridge-task.js';
+import {
+  PLAN45_COMPARISON_DEFINITION_ID,
+  validatePlan45ComparisonContext,
+} from '../content/plan45-symbolic-fraction-comparison-task.js';
 
 function scheduleError(message) {
   const error = new TypeError(message);
@@ -17,6 +21,14 @@ function scheduleError(message) {
  * This helper does not admit a problem family; createEpisode retains that gate.
  */
 export function computeBeatSchedule(instance, episodeDefinition, taskContext = null, { allowCompatibilityPair = false } = {}) {
+  if (episodeDefinition?.id === PLAN45_COMPARISON_DEFINITION_ID
+    && episodeDefinition?.revision === '1') {
+    validatePlan45ComparisonContext(taskContext);
+    return deepFreeze([
+      { id: 'compare', kind: 'compare' },
+      { id: 'resolve', kind: 'resolve' },
+    ]);
+  }
   if (isPlan37BarToLineBridgeTaskDefinition(episodeDefinition)) {
     validatePlan37BarToLineBridgeContext(instance, taskContext, taskContext?.supportMode);
     if (episodeDefinition.revision === '2') {

@@ -36,6 +36,40 @@ function contentIdentity(content) {
   };
 }
 
+export function createPlan45ComparisonResponseProvenance({ state, intent, classification, nextState }) {
+  const scheduleEntry = currentScheduleEntry(state);
+  return deepFreeze({
+    schemaVersion: 'fractionflow.response-provenance/v1',
+    responseIndex: state.responseProvenance.length,
+    taskContext: state.taskContext,
+    episodeDefinition: { id: state.episodeDefinition.id, revision: state.episodeDefinition.revision },
+    activeCondition: state.activeCondition,
+    support: state.support,
+    beat: state.beat,
+    schedulePosition: state.schedulePosition,
+    scheduleEntryId: scheduleEntry?.id ?? null,
+    expectedResponse: state.expectedResponse,
+    visibility: {
+      representationRole: 'symbolic',
+      visible: ['ordered-source-forms', 'relation-choice', 'submitted-relation'],
+      supplied: state.assistanceHistory.length ? ['requested-comparison-assistance'] : [],
+      hidden: nextState.status === 'resolved' ? [] : ['expected-relation', 'correct-option-identity'],
+    },
+    assistanceHistory: state.assistanceHistory,
+    learnerAction: intent,
+    classification,
+    evidenceCategory: 'supported-construction',
+    resultingState: {
+      status: nextState.status,
+      beat: nextState.beat,
+      schedulePosition: nextState.schedulePosition,
+      scheduleEntryId: currentScheduleEntry(nextState)?.id ?? scheduleEntry?.id ?? null,
+      established: nextState.established,
+      revision: nextState.revision,
+    },
+  });
+}
+
 function visibleFields(state) {
   if (state.episodeDefinition?.id === 'phase-4-bar-to-line-same-amount'
     && state.episodeDefinition?.revision === '1') {

@@ -4,5 +4,6 @@ export * from './support.js';
 export * from './classification.js';
 export * from './provenance.js';
 export * from './episode.js';
+export * from './plan45-comparison-episode.js';
 export * from './replay.js';
 export * from './scene.js';

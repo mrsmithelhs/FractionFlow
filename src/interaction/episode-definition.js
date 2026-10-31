@@ -14,6 +14,15 @@ export const PHASE2_ACTIVE_CONDITION = deepFreeze({
   connectionMaking: 'CM-01-M',
 });
 
+export const PLAN45_STATIC_COMPARISON_ACTIVE_CONDITION = deepFreeze({
+  id: 'plan45-static-comparison',
+  revision: '1',
+  display: 'not-applicable',
+  choreography: 'not-applicable',
+  promptCadence: 'D-05-focused-key-beats',
+  connectionMaking: 'not-applicable',
+});
+
 export const EPISODE_BEATS = Object.freeze([
   'encounter',
   'notice',
@@ -244,6 +253,18 @@ export const PLAN37_BAR_TO_LINE_BRIDGE_REPAIR_EPISODE_DEFINITION = deepFreeze({
   },
 });
 
+export const PLAN45_SYMBOLIC_FRACTION_COMPARISON_EPISODE_DEFINITION = deepFreeze({
+  id: 'phase-4-symbolic-fraction-comparison',
+  revision: '1',
+  family: 'symbolic-fraction-comparison',
+  beats: Object.freeze(['compare', 'resolve']),
+  includeReflection: false,
+  promptIdentities: {
+    compare: 'phase4.comparison.compare-symbolic-fractions',
+    resolve: 'phase4.comparison.accepted-result',
+  },
+});
+
 const EPISODE_DEFINITIONS = Object.freeze([
   LEGACY_PHASE2_EPISODE_DEFINITION,
   LEGACY_PHASE2_REFLECTION_EPISODE_DEFINITION,
@@ -261,6 +282,7 @@ const EPISODE_DEFINITIONS = Object.freeze([
   PLAN40_REUSABLE_SUBTRACTION_RECIPES_EPISODE_DEFINITION,
   PLAN37_BAR_TO_LINE_BRIDGE_EPISODE_DEFINITION,
   PLAN37_BAR_TO_LINE_BRIDGE_REPAIR_EPISODE_DEFINITION,
+  PLAN45_SYMBOLIC_FRACTION_COMPARISON_EPISODE_DEFINITION,
 ]);
 
 export function getEpisodeDefinition(id = EPISODE_DEFINITION_ID, revision = EPISODE_DEFINITION_REVISION) {
