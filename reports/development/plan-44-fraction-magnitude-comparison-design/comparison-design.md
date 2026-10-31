@@ -20,7 +20,7 @@ Use one interactive comparison step. Do not add an encounter acknowledgment or a
 
 | State | Proposed experience |
 |---|---|
-| Compare | Show two equally wide, left-origin fraction bars in one shared whole. Show the source fractions and meaningful names (“First fraction”, “Second fraction”). Prompt: **“Which amount is greater, or are they the same?”** Offer a relation group and a **Check** button. |
+| Compare | Show two equally wide, left-origin fraction bars with same-size wholes. Show the source fractions and meaningful names (“First fraction”, “Second fraction”). Prompt: **“Which amount is greater, or are they the same?”** Offer a relation group and a **Check** button. |
 | Recovery | Keep the prompt, bars, and all three choices. For a wrong submitted response, say: **“Look at the shaded amounts in the same-size wholes. Try again.”** The learner may change a choice and Check again. Do not diagnose a misconception from one response, remove an option, change the schedule, or claim guessing has been prevented. |
 | Requested help | Keep help optional and concise: **“Each bar shows one same-size whole. Compare the shaded amounts.”** The help identifies what to inspect without giving the relation. Record that help was requested as assistance provenance, not as a mastery judgment. |
 | Accepted result | Retain both models and source forms. State the accepted relation once in words and notation, e.g. **“The first amount is greater. `2/3 > 3/5`.”** Equality uses the same grammar: **“The amounts are equal. `4/6 = 6/9`.”** Then offer the existing learner-triggered **Next problem**. At the end of the fixed set, offer **Back to start** directly. |
@@ -29,11 +29,11 @@ Use one interactive comparison step. Do not add an encounter acknowledgment or a
 
 Recommend one three-option native radio group with a visible prompt and full labels:
 
-- **First fraction is less than the second**
-- **Both fractions show the same amount**
-- **First fraction is greater than the second**
+- **First fraction** (spoken label: “First fraction is greater”; submitted relation: greater)
+- **Same amount** (spoken label: “Both fractions show the same amount”; submitted relation: equal)
+- **Second fraction** (spoken label: “Second fraction is greater”; submitted relation: less)
 
-Selection remains a draft until deliberate **Check**. The labels carry the first/second direction and equality in ordinary language; bare glyphs are not the pre-answer control. One selected relation is the learner’s complete judgment. Resolution may then display the corresponding symbolic statement automatically, with no second learner decision.
+Selection remains a draft until deliberate **Check**. The prompt supplies the comparison question, so the visible labels need not repeat it in three full sentences. Full spoken labels retain direction and equality; bare glyphs are not the pre-answer control. “Less” and “greater” in submitted state always compare the first fraction with the second, independently of option order. One selected relation is the learner’s complete judgment. Resolution may then display the corresponding symbolic statement automatically, with no second learner decision.
 
 Use keyboard-operable native radio behavior and a visible Check button. Make the full option rows at least `44 × 44 CSS px` tall/tappable, in line with the adopted Plan 37 number-line target precedent. If three rows do not fit side-by-side at a 360px viewport, stack them. No drag, precise pointing, or bar-segment interaction is required. Rendered review must check text wrapping, spacing, focus order, and touch geometry at 360px and a Chromebook-sized viewport; the proposal alone does not establish those dimensions.
 
@@ -41,9 +41,9 @@ The linear/accessibility path must expose the same task: name both source forms 
 
 ### Worked journeys
 
-**Journey A — recovery on a larger-numbers trap.** The screen shows `2/3` and `3/5` as shaded portions of equally wide wholes. The learner selects “First fraction is less than the second” and presses Check. Recovery says, “Look at the shaded amounts in the same-size wholes. Try again.” Both amounts stay visible and all choices remain enabled. The learner revises to “First fraction is greater than the second” and checks again. The accepted result retains the models and reads “The first amount is greater. `2/3 > 3/5`.” The next control advances one vetted item with fresh task state.
+**Journey A — recovery on a larger-numbers trap.** The screen shows `2/3` and `3/5` as shaded portions of equally wide wholes. The learner selects “Second fraction” and presses Check. Recovery says, “Look at the shaded amounts in the same-size wholes. Try again.” Both amounts stay visible and all choices remain enabled. The learner revises to “First fraction” and checks again. The accepted result retains the models and reads “The first amount is greater. `2/3 > 3/5`.” The next control advances one vetted item with fresh task state.
 
-**Journey B — equality across unreduced forms.** The screen shows `4/6` and `6/9`, each in its own same-width whole. The shaded lengths end at the same location. The learner selects “Both fractions show the same amount” and checks. The accepted result says “The amounts are equal. `4/6 = 6/9`.” The learner can inspect both original forms and then choose Next. The equality response remains a full relation outcome; it is not a failed greater/less question.
+**Journey B — equality across unreduced forms.** The screen shows `4/6` and `6/9`, each in its own same-width whole. The shaded lengths end at the same location. The learner selects “Same amount” and checks. The accepted result says “The amounts are equal. `4/6 = 6/9`.” The learner can inspect both original forms and then choose Next. The equality response remains a full relation outcome; it is not a failed greater/less question.
 
 The recovery wording and journeys are proposed copy, not rendered acceptance. No response removes another option, and no single wrong response is treated as evidence of a named misconception. Three options remain guessable; varied authored cases and non-punitive retries are design safeguards, not an anti-guessing guarantee.
 
@@ -162,3 +162,7 @@ If the owner selects a task whose purpose is independent symbolic comparison, th
 ## Review disposition
 
 Advisor consultation was not warranted for this report-only investigation. The scoped `.mjs` file is a disposable exact-math evidence probe with no product/runtime behavioral surface. Orchestrator review and owner design adoption remain required before any implementation packet.
+
+## Orchestration copy refinement (2026-10-31)
+
+After delivery, orchestration shortened the visible option rows to First fraction / Same amount / Second fraction while preserving full spoken meaning and explicit first-relative-to-second state mapping. It also corrected the shared-whole wording to same-size wholes. These are recommended copy refinements for owner adoption, not a changed mathematical task or accepted product surface. Avoid adding separate headings or explanations that repeat the active question.

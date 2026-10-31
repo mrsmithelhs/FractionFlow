@@ -1,7 +1,7 @@
 ---
 id: plan-44
 title: Fraction Magnitude Comparison Task and First-Slice Design
-status: in-progress
+status: delivered
 depends_on: [plan-29, plan-37, plan-40, plan-42, plan-43]
 gate: "Requirement 0: approve bounded investigation scope before the design dossier. Docs/report work only. Owner adoption of the recommended learner task, control grammar and first source slice precedes any implementation packet or activation. Plan 39 closure remains a prerequisite for subsequent number-line implementation."
 summary: >-

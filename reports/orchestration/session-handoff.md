@@ -6,6 +6,32 @@ and pause records retained later in this file.
 
 ## Current board and owner direction
 
+2026-10-31 supervision checkpoint: Plan44 dossier 37eaf70/d00dbb6 is technically
+ACCEPTED and DELIVERED pending OWNER design adoption. Parent reran exact probe,
+byte-identical JSON, reviewed report inline and shortened visible choices to
+First fraction / Same amount / Second fraction with full spoken meaning. Read
+Plan44 orchestration-review.md. No implementation packet or closure authorized.
+Plan23 source mutation is PAUSED at a lifecycle mechanism blocker: Windows
+tracked-root taskkill reports authentication error even in owned-process tests.
+Do not claim cleanup or use PID discovery/system changes. Implementer may run one
+bounded owned-process investigation and propose cooperative IPC/Vite-close or
+another dependency-free replacement BEFORE further source changes. Hold Terra
+until the mechanism is settled. Await its proposal; owner still retains live
+acceptance. Messaging with both chats was explicitly authorized and works.
+
+2026-10-31 owner explicitly authorized bidirectional communication HERE with
+FF Impl 23 and FF Impl 44 through their respective completions. Both approval
+messages were successfully delivered after the earlier auto-review rejection;
+no remaining messaging gate. Plan23 mechanism 071dec8: source gate open with
+instance-attributed readiness and owned Windows tree cleanup; one Terra-medium
+review authorized. Plan44 scope 0a5904f: bounded dossier gate open, no source
+activation. Both chats acknowledged and are active. Supervise until owner decision
+or delivery review, then retain authorization after owner evaluates deliverables.
+Plan23 early inline feedback requested shared in-flight stop/cleanup and truthful
+starting-vs-ready duplicate status; implementer is addressing within its normal
+pass. Do not duplicate its planned Terra review. No owner acceptance/closure,
+push or deployment implied. Preserve disjoint writer scopes and shared resources.
+
 Owner dispatch preparation 2026-10-31: Plan23 and newly written Plan44 are both
 IN-PROGRESS and preflight RUNNABLE. Owner will start separate Codex implementer
 chats; orchestration has not created chats or launched children. Plan23 owns
