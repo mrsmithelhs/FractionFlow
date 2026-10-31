@@ -6,7 +6,17 @@ Plan 45 is implemented through the bounded app, renderer, replay, and route inte
 
 The fixed comparison condition is surfaced honestly in the app menu. Existing arithmetic tasks continue to use their selected display settings. The More/Less support copy is generic and does not claim the comparison task applies unrelated display or premise controls.
 
-The implementation is ready for orchestrator review. Packet status remains unchanged (`in-progress`). Owner rendered-page and agency acceptance remain outstanding; no push or deployment occurred.
+Delivery Review Repair 01 is implemented and ready for orchestrator re-review. Retained controls from older renderer generations can no longer act on the current attempt; retry feedback is associated with each view's response group; accepted verification uses the neutral heading “That's right.” Packet status remains unchanged (`in-progress`). Owner rendered-page and agency acceptance remain outstanding; no push or deployment occurred.
+
+Repair 01 implementation and refreshed evidence were committed as `3d33052`; this progress update is committed separately last.
+
+## Delivery Review Repair 01
+
+The orchestrator reproduced a stale-control scope bypass in the mounted app. The comparison renderer now issues a fresh, revocable callback lease for every render. Each lease closes over that render's scoped response handle; rerender and destroy revoke the previous lease. The response, model/help actions, relation draft, help disclosure, and progression callbacks all reject retired subtrees. The app no longer routes old renderer callbacks through a mutable current handle. Newly rendered controls are verified to remain usable after same-item rerender and after Next.
+
+Mounted regressions retain real model/help buttons, relation inputs, and disclosures across both a same-item rerender and item advancement. They check that stale actions leave the active state reference, model choice, assistance history, response provenance, draft, and disclosure unchanged, then exercise fresh controls. Retry status paragraphs now have unique `plan45-recovery-visual` / `plan45-recovery-linear` ids referenced from each view's relation fieldset; successful acceptance removes the recovery and association. The shared accepted heading is now “That's right.” in visual and linear views.
+
+I inspected the refreshed 360×740 wrong-response and accepted-linear screenshots. The accepted linear capture now uses the neutral heading; retry remains visible and concise. The full route matrix refreshed current Plan45 screenshots and its receipt. No additional reviewer pass was requested or run for this repair.
 
 ## Files changed
 
@@ -20,7 +30,7 @@ The implementation is ready for orchestrator review. Packet status remains uncha
 
 - `evidence/falsification-seeds.json` records four real mutations, their ordinary assertion failures, and clean recovery.
 - `evidence/full-route-matrix-receipt.json` records the final unfiltered runner aggregate and every route row. Runner summary: 118 passed, 0 failed across 116 route rows and 118 browser executions. Per-row pass status follows from that aggregate; the runner did not persist individual durations for Plan 45.
-- `evidence/screenshots/` contains route-prefixed captures for initial, chosen-source, wrong/recovery, accepted and Next states, plus 200% text-scale and final-reentry views. Prefixing prevents viewport routes from overwriting each other.
+- `evidence/screenshots/` contains route-prefixed captures for initial, chosen-source, wrong/recovery, accepted and Next states, plus 200% text-scale and final-reentry views. The wrong-response and accepted-linear captures were refreshed and visually inspected for Repair 01. Prefixing prevents viewport routes from overwriting each other.
 
 ## Exact behavior and coverage
 
@@ -53,25 +63,31 @@ The disposition on the then-submitted diff was **re-review needed**, with no fin
 2. Two viewport runs reused screenshot names. I made names route-specific and verified distinct captures exist for the 360×740 and DPR 1.25 scaled routes.
 3. Browser proof lacked authentic keyboard flow, resize/text-scale, final exhaustion/return, and explicit model geometry checks. I added Tab-driven focus with arrow/Space activation, resize plus injected 200% text scaling and measured scroll/control reach, final Back to start and fresh re-entry, and source-fraction/partition/shading/whole-width geometry assertions. All six filtered Plan45 browser routes passed before the final unfiltered run; the final full matrix passed all 118 executions.
 
-The reviewer did not run tests or inspect the rendered page. I independently ran the validations below after incorporating the findings. No second reviewer pass was run.
+The Terra reviewer did not run tests or inspect the rendered page. The later delivery review independently reproduced a distinct stale rendered-control issue, inspected mounted behavior and requested the bounded Repair 01 documented above. I independently ran the validations below after those fixes. No second Terra or other reviewer pass was run.
+
+The Repair 01 findings were addressed as follows:
+
+1. Stale renderer callbacks formerly looked up the mutable current response handle. Render-generation leases now bind callbacks to the scoped handle and reject retired controls; mounted tests exercise stale help/model, response/draft, and disclosure controls across same-item rerender and Next, while proving fresh controls still work.
+2. Recovery feedback now has unique per-view ids and `aria-describedby` references from the active relation groups. Mounted assertions verify both ids/references and that the association disappears when recovery clears.
+3. The accepted heading changed from “Check with the bars.” to “That's right.” in both paths; a mounted assertion checks both views and the updated linear screenshot was inspected.
 
 ## Commands run and validation
 
 - `node scripts/dev/plan-status.js check 45` before source changes and at delivery — `RUNNABLE`.
 - `node scripts/dev/plan-status.js lint` at delivery — passed with no violations.
-- Focused comparison/app/replay/route regressions — passed (83/83 in the broader focused run; later focused suite passed 42 tests).
-- Full `npx vitest run` — 62 files, 567 tests passed.
+- Focused Repair 01 and Plan 45 comparison tests: `npx vitest run tests/app-plan45-symbolic-fraction-comparison.test.js tests/interaction-plan45-symbolic-fraction-comparison.test.js tests/app-plan45-falsification-seeds.test.js` — 3 files, 17 tests passed.
+- Full `npx vitest run` after Repair 01 — 62 files, 571 tests passed.
 - Sequential `npm run build` — learner and subtraction prototype builds passed.
-- Final `node scripts/dev/run-route-matrix.js` — 118 passed, 0 failed (116 route rows; 118 browser executions).
-- Filtered Plan45 browser matrix — 6/6 passed; final unfiltered result is recorded in `evidence/full-route-matrix-receipt.json`.
-- `git diff --check` — run before commit; results recorded by the final diff check.
+- Final `node scripts/dev/run-route-matrix.js` after the app/renderer changes — 118 passed, 0 failed (116 route rows; 118 browser executions); results are recorded in `evidence/full-route-matrix-receipt.json`.
+- Filtered Plan45 browser matrix — 6/6 passed in the original delivery; the final unfiltered run also passed all six Plan45 route rows.
+- `git diff --check` — run before the Repair 01 commit; passed.
 
 ## Problems and resolution
 
-The initial Git restore of runner-generated historical evidence was denied because `.git/index.lock` could not be created, despite no lock file existing. `git add --refresh -- .` confirmed the sandbox denied Git metadata writes. The scoped `git restore` was then run with narrowly escalated Git permission and succeeded. No lock was removed and no ACL was changed. The full route run also wrote two Plan39 clean-run receipts as untracked outputs; those are retained and excluded from Plan45 staging to preserve shared-tree evidence.
+The first focused Repair 01 run exposed a mock-DOM limitation with a `:checked` selector; the mounted assertion was rewritten to inspect the radio's checked property, then passed. The earlier sandbox Git metadata limitation and narrowly escalated scoped restoration are recorded above through the existing commit. The final route run regenerated historical evidence, which I restored to keep the repair scoped. It also wrote three untracked Plan39 clean-run receipts; those are retained, excluded from Plan45 staging, and reported for orchestrator handling as shared-tree evidence.
 
 ## Remaining limits and next step
 
 The full suite, build, and route matrix establish repository and browser-simulation behavior for the described evidence only. Physical hardware, actual assistive technology, browser-chrome zoom, owner rendered-page review, and learner agency acceptance remain unverified. This report does not claim Plan 45 is accepted or complete.
 
-Ready for orchestrator review: **yes**. Please inspect the scoped commits and evidence, then route owner rendered-page/agency acceptance separately. Do not change packet status as part of this implementation report.
+Ready for orchestrator re-review: **yes**. Inspect the Repair 01 diff, refreshed retry and accepted-linear screenshots, and final receipt; route owner rendered-page/agency acceptance separately. Do not change packet status as part of this implementation report.
