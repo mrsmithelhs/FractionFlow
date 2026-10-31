@@ -1,0 +1,6 @@
+{
+  "seed": "seed-tile-overflow",
+  "detected": true,
+  "assertionError": "Fraction glyphs must be contained in tile",
+  "timestamp": "2026-10-31T15:30:56.086Z"
+}

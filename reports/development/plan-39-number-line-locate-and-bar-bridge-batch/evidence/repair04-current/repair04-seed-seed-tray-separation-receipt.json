@@ -1,0 +1,6 @@
+{
+  "seed": "seed-tray-separation",
+  "detected": true,
+  "assertionError": "Starting tray must be clearly outside number-line region (saw -151.5px separation)",
+  "timestamp": "2026-10-31T15:41:37.770Z"
+}

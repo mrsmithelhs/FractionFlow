@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-10-25T01:46:35.824Z",
+  "timestamp": "2026-10-31T15:42:16.591Z",
   "receipts": [
     {
       "viewport": {
@@ -89,86 +89,49 @@
         "tokenInTray": true,
         "tokenInStack": false
       },
-      "pendingGeom": {
-        "viewport": {
-          "width": 360,
-          "height": 740,
-          "dpr": 1
-        },
-        "header": {
-          "left": 25,
-          "right": 335,
-          "top": 145,
-          "bottom": 225.984375,
-          "width": 310,
-          "height": 80.984375
-        },
-        "introHeader": {
-          "left": 25,
-          "right": 335,
-          "top": 145,
-          "bottom": 225.984375,
-          "width": 310,
-          "height": 80.984375
-        },
-        "acceptedHeader": null,
-        "prompt": {
-          "left": 25,
-          "right": 314.71875,
-          "top": 145,
-          "bottom": 165.984375,
-          "width": 289.71875,
-          "height": 20.984375
+      "duringGeom": {
+        "axis": {
+          "left": 41,
+          "right": 319,
+          "top": 272.109375,
+          "bottom": 275.109375,
+          "width": 278,
+          "height": 3
         },
         "tray": {
-          "left": 279,
+          "left": 269,
           "right": 335,
           "top": 173.984375,
-          "bottom": 225.984375,
-          "width": 56,
-          "height": 52
+          "bottom": 245.734375,
+          "width": 66,
+          "height": 71.75
+        }
+      },
+      "pendingGeom": {
+        "axis": {
+          "left": 41,
+          "right": 319,
+          "top": 272.109375,
+          "bottom": 275.109375,
+          "width": 278,
+          "height": 3
+        },
+        "tray": {
+          "left": 269,
+          "right": 335,
+          "top": 173.984375,
+          "bottom": 245.734375,
+          "width": 66,
+          "height": 71.75
         },
         "token": {
           "left": 156,
           "right": 204,
-          "top": 192.109375,
-          "bottom": 253.859375,
+          "top": 211.859375,
+          "bottom": 273.609375,
           "width": 48,
           "height": 61.75
-        },
-        "stack": {
-          "left": 25,
-          "right": 335,
-          "top": 235.578125,
-          "bottom": 286.765625,
-          "width": 310,
-          "height": 51.1875
-        },
-        "frame": {
-          "left": 41,
-          "right": 319,
-          "top": 237.171875,
-          "bottom": 285.171875,
-          "width": 278,
-          "height": 48
-        },
-        "axisLine": {
-          "left": 41,
-          "right": 319,
-          "top": 252.359375,
-          "bottom": 255.359375,
-          "width": 278,
-          "height": 3
-        },
-        "bar": null,
-        "connector": null,
-        "resolution": null,
-        "finishBtn": null,
-        "barToAxisClearSpace": null,
-        "traySeparation": 26.38,
-        "trayOutsideBand": true,
-        "tokenInTray": false,
-        "tokenInStack": true
+        }
       },
       "acceptedGeom": {
         "viewport": {
@@ -477,86 +440,49 @@
         "tokenInTray": true,
         "tokenInStack": false
       },
-      "pendingGeom": {
-        "viewport": {
-          "width": 360,
-          "height": 752,
-          "dpr": 1
-        },
-        "header": {
-          "left": 25,
-          "right": 335,
-          "top": 145,
-          "bottom": 225.984375,
-          "width": 310,
-          "height": 80.984375
-        },
-        "introHeader": {
-          "left": 25,
-          "right": 335,
-          "top": 145,
-          "bottom": 225.984375,
-          "width": 310,
-          "height": 80.984375
-        },
-        "acceptedHeader": null,
-        "prompt": {
-          "left": 25,
-          "right": 314.71875,
-          "top": 145,
-          "bottom": 165.984375,
-          "width": 289.71875,
-          "height": 20.984375
+      "duringGeom": {
+        "axis": {
+          "left": 41,
+          "right": 319,
+          "top": 272.109375,
+          "bottom": 275.109375,
+          "width": 278,
+          "height": 3
         },
         "tray": {
-          "left": 279,
+          "left": 269,
           "right": 335,
           "top": 173.984375,
-          "bottom": 225.984375,
-          "width": 56,
-          "height": 52
+          "bottom": 245.734375,
+          "width": 66,
+          "height": 71.75
+        }
+      },
+      "pendingGeom": {
+        "axis": {
+          "left": 41,
+          "right": 319,
+          "top": 272.109375,
+          "bottom": 275.109375,
+          "width": 278,
+          "height": 3
+        },
+        "tray": {
+          "left": 269,
+          "right": 335,
+          "top": 173.984375,
+          "bottom": 245.734375,
+          "width": 66,
+          "height": 71.75
         },
         "token": {
           "left": 156,
           "right": 204,
-          "top": 192.109375,
-          "bottom": 253.859375,
+          "top": 211.859375,
+          "bottom": 273.609375,
           "width": 48,
           "height": 61.75
-        },
-        "stack": {
-          "left": 25,
-          "right": 335,
-          "top": 235.578125,
-          "bottom": 286.765625,
-          "width": 310,
-          "height": 51.1875
-        },
-        "frame": {
-          "left": 41,
-          "right": 319,
-          "top": 237.171875,
-          "bottom": 285.171875,
-          "width": 278,
-          "height": 48
-        },
-        "axisLine": {
-          "left": 41,
-          "right": 319,
-          "top": 252.359375,
-          "bottom": 255.359375,
-          "width": 278,
-          "height": 3
-        },
-        "bar": null,
-        "connector": null,
-        "resolution": null,
-        "finishBtn": null,
-        "barToAxisClearSpace": null,
-        "traySeparation": 26.38,
-        "trayOutsideBand": true,
-        "tokenInTray": false,
-        "tokenInStack": true
+        }
       },
       "acceptedGeom": {
         "viewport": {
@@ -865,86 +791,49 @@
         "tokenInTray": true,
         "tokenInStack": false
       },
-      "pendingGeom": {
-        "viewport": {
-          "width": 1366,
-          "height": 768,
-          "dpr": 1
-        },
-        "header": {
-          "left": 347,
-          "right": 1019,
-          "top": 193.96875,
-          "bottom": 245.96875,
-          "width": 672,
-          "height": 52
-        },
-        "introHeader": {
-          "left": 347,
-          "right": 1019,
-          "top": 193.96875,
-          "bottom": 245.96875,
-          "width": 672,
-          "height": 52
-        },
-        "acceptedHeader": null,
-        "prompt": {
-          "left": 347,
-          "right": 636.71875,
-          "top": 209.46875,
-          "bottom": 230.453125,
-          "width": 289.71875,
-          "height": 20.984375
+      "duringGeom": {
+        "axis": {
+          "left": 367,
+          "right": 999,
+          "top": 295.296875,
+          "bottom": 298.296875,
+          "width": 632,
+          "height": 3
         },
         "tray": {
-          "left": 963,
+          "left": 953,
           "right": 1019,
           "top": 193.96875,
-          "bottom": 245.96875,
-          "width": 56,
-          "height": 52
+          "bottom": 265.71875,
+          "width": 66,
+          "height": 71.75
+        }
+      },
+      "pendingGeom": {
+        "axis": {
+          "left": 367,
+          "right": 999,
+          "top": 295.296875,
+          "bottom": 298.296875,
+          "width": 632,
+          "height": 3
+        },
+        "tray": {
+          "left": 953,
+          "right": 1019,
+          "top": 193.96875,
+          "bottom": 265.71875,
+          "width": 66,
+          "height": 71.75
         },
         "token": {
           "left": 659,
           "right": 707,
-          "top": 215.296875,
-          "bottom": 277.046875,
+          "top": 235.046875,
+          "bottom": 296.796875,
           "width": 48,
           "height": 61.75
-        },
-        "stack": {
-          "left": 347,
-          "right": 1019,
-          "top": 258.765625,
-          "bottom": 313.140625,
-          "width": 672,
-          "height": 54.375
-        },
-        "frame": {
-          "left": 367,
-          "right": 999,
-          "top": 260.359375,
-          "bottom": 311.546875,
-          "width": 632,
-          "height": 51.1875
-        },
-        "axisLine": {
-          "left": 367,
-          "right": 999,
-          "top": 275.546875,
-          "bottom": 278.546875,
-          "width": 632,
-          "height": 3
-        },
-        "bar": null,
-        "connector": null,
-        "resolution": null,
-        "finishBtn": null,
-        "barToAxisClearSpace": null,
-        "traySeparation": 29.58,
-        "trayOutsideBand": true,
-        "tokenInTray": false,
-        "tokenInStack": true
+        }
       },
       "acceptedGeom": {
         "viewport": {
@@ -1253,86 +1142,49 @@
         "tokenInTray": true,
         "tokenInStack": false
       },
-      "pendingGeom": {
-        "viewport": {
-          "width": 1093,
-          "height": 614,
-          "dpr": 1.25
-        },
-        "header": {
-          "left": 210.5,
-          "right": 882.5,
-          "top": 181.09375,
-          "bottom": 233.09375,
-          "width": 672,
-          "height": 52
-        },
-        "introHeader": {
-          "left": 210.5,
-          "right": 882.5,
-          "top": 181.09375,
-          "bottom": 233.09375,
-          "width": 672,
-          "height": 52
-        },
-        "acceptedHeader": null,
-        "prompt": {
-          "left": 210.5,
-          "right": 500.21875,
-          "top": 196.59375,
-          "bottom": 217.578125,
-          "width": 289.71875,
-          "height": 20.984375
+      "duringGeom": {
+        "axis": {
+          "left": 230.5,
+          "right": 862.5,
+          "top": 282.421875,
+          "bottom": 285.421875,
+          "width": 632,
+          "height": 3
         },
         "tray": {
-          "left": 826.5,
+          "left": 816.5,
           "right": 882.5,
           "top": 181.09375,
-          "bottom": 233.09375,
-          "width": 56,
-          "height": 52
+          "bottom": 252.84375,
+          "width": 66,
+          "height": 71.75
+        }
+      },
+      "pendingGeom": {
+        "axis": {
+          "left": 230.5,
+          "right": 862.5,
+          "top": 282.421875,
+          "bottom": 285.421875,
+          "width": 632,
+          "height": 3
+        },
+        "tray": {
+          "left": 816.5,
+          "right": 882.5,
+          "top": 181.09375,
+          "bottom": 252.84375,
+          "width": 66,
+          "height": 71.75
         },
         "token": {
           "left": 522.5,
           "right": 570.5,
-          "top": 202.421875,
-          "bottom": 264.171875,
+          "top": 222.171875,
+          "bottom": 283.921875,
           "width": 48,
           "height": 61.75
-        },
-        "stack": {
-          "left": 210.5,
-          "right": 882.5,
-          "top": 245.890625,
-          "bottom": 300.265625,
-          "width": 672,
-          "height": 54.375
-        },
-        "frame": {
-          "left": 230.5,
-          "right": 862.5,
-          "top": 247.484375,
-          "bottom": 298.671875,
-          "width": 632,
-          "height": 51.1875
-        },
-        "axisLine": {
-          "left": 230.5,
-          "right": 862.5,
-          "top": 262.671875,
-          "bottom": 265.671875,
-          "width": 632,
-          "height": 3
-        },
-        "bar": null,
-        "connector": null,
-        "resolution": null,
-        "finishBtn": null,
-        "barToAxisClearSpace": null,
-        "traySeparation": 29.58,
-        "trayOutsideBand": true,
-        "tokenInTray": false,
-        "tokenInStack": true
+        }
       },
       "acceptedGeom": {
         "viewport": {

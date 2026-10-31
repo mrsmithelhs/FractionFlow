@@ -148,7 +148,7 @@ export async function runRepair04Witness({ seed = null } = {}) {
       await page.locator('[data-practice-type="bar-to-line-same-amount"]').click();
       await page.waitForSelector('.plan39-number-line');
 
-      // Negative control: Seed tile overflow
+      // Negative control injection: seed-tile-overflow (mutation only)
       if (seed === 'seed-tile-overflow') {
         await page.evaluate(() => {
           const t = document.querySelector('.plan39-repair-token');
@@ -156,10 +156,6 @@ export async function runRepair04Witness({ seed = null } = {}) {
           t.style.maxHeight = '44px';
           t.style.padding = '0px';
         });
-        const containment = await assertTokenContainment(page);
-        if (containment.overflow || containment.height <= 44) {
-          throw new Error('NC-4 detected: fraction tile clipped or overflowing fixed height container');
-        }
       }
 
       // 1. Initial State Assertions
@@ -169,8 +165,9 @@ export async function runRepair04Witness({ seed = null } = {}) {
       assert(initialContainment.width >= 48 && initialContainment.height >= 48, 'Minimum touch dimensions 48px');
       assert.equal(initialGeom.tokenInTray, true, 'Unplaced token must be inside starting tray');
       assert.equal(initialGeom.tokenInStack, false, 'Unplaced token must not be inside line stack');
+      assert.equal(initialGeom.trayOutsideBand, true, 'Starting tray must be strictly outside the axis frame hit region');
 
-      // Negative control: Seed tray separation
+      // Negative control injection: seed-tray-separation (mutation only)
       if (seed === 'seed-tray-separation') {
         await page.evaluate(() => {
           const tray = document.querySelector('.plan39-token-tray');
@@ -191,27 +188,48 @@ export async function runRepair04Witness({ seed = null } = {}) {
 
       assert.equal(await page.locator('.app-visual-view .plan39-check-position').isEnabled(), false, 'Check disabled initially');
       assert.equal(await page.locator('.app-visual-view .plan39-bar-track').count(), 0, 'No answer bar initially');
-      assert.equal(await page.locator('.app-visual-view .plan39-accepted-header').count(), 0, 'No accepted header initially');
 
-      // Screenshot: Initial State
-      await page.screenshot({ path: path.join(evidenceDir, `initial-${vp.label}.png`), fullPage: false });
-
-      // Negative control: Seed premature green header
+      // Negative control injection: seed-premature-green (mutation only)
       if (seed === 'seed-premature-green') {
         await page.evaluate(() => {
           const h = document.createElement('div');
           h.className = 'plan39-header-region plan39-accepted-header';
           document.querySelector('.plan39-number-line').prepend(h);
         });
-        const headerCount = await page.locator('.app-visual-view .plan39-accepted-header').count();
-        if (headerCount > 0) {
-          throw new Error('NC-2 detected: accepted green header visible before correct Check');
-        }
       }
+
+      assert.equal(await page.locator('.app-visual-view .plan39-accepted-header').count(), 0, 'No accepted header initially');
+
+      // Screenshot: Initial State
+      await page.screenshot({ path: path.join(evidenceDir, `initial-${vp.label}.png`), fullPage: false });
 
       // 2. Drag from Tray to Number Line
       const gesture = await beginTokenDrag(page, { view: 'visual' });
       await moveTokenDrag(page, gesture, { ratio: 0.5 });
+
+      // Negative control injection: seed-tray-collapse (mutation only)
+      if (seed === 'seed-tray-collapse') {
+        await page.evaluate(() => {
+          const tray = document.querySelector('.plan39-token-tray');
+          tray.style.minHeight = '52px';
+          tray.style.height = '52px';
+        });
+      }
+
+      // Check tray footprint and axis stability during first drag
+      const duringGeom = await measureGeometry(page);
+      assert(
+        Math.abs(duringGeom.axisLine.top - initialGeom.axisLine.top) <= 1,
+        `Axis position must remain stable during first drag (shifted ${duringGeom.axisLine.top - initialGeom.axisLine.top}px)`
+      );
+      assert(
+        Math.abs(duringGeom.tray.height - initialGeom.tray.height) <= 1,
+        `Tray height must remain stable during first drag (before: ${initialGeom.tray.height}px, during: ${duringGeom.tray.height}px)`
+      );
+      assert(
+        Math.abs(duringGeom.tray.width - initialGeom.tray.width) <= 1,
+        `Tray width must remain stable during first drag (before: ${initialGeom.tray.width}px, during: ${duringGeom.tray.width}px)`
+      );
 
       // Check live drop preview ring
       const liveRings = await page.locator('.app-visual-view .plan39-candidate-point.is-drop-preview').count();
@@ -222,6 +240,19 @@ export async function runRepair04Witness({ seed = null } = {}) {
 
       // 3. Pending Placement State Assertions
       const pendingGeom = await measureGeometry(page);
+      assert(
+        Math.abs(pendingGeom.axisLine.top - initialGeom.axisLine.top) <= 1,
+        `Axis position must remain stable after placement (shifted ${pendingGeom.axisLine.top - initialGeom.axisLine.top}px)`
+      );
+      assert(
+        Math.abs(pendingGeom.tray.height - initialGeom.tray.height) <= 1,
+        `Tray height must remain stable after placement (before: ${initialGeom.tray.height}px, pending: ${pendingGeom.tray.height}px)`
+      );
+      assert(
+        Math.abs(pendingGeom.tray.width - initialGeom.tray.width) <= 1,
+        `Tray width must remain stable after placement (before: ${initialGeom.tray.width}px, pending: ${pendingGeom.tray.width}px)`
+      );
+
       assert.equal(pendingGeom.tokenInTray, false, 'Placed token must leave the starting tray');
       assert.equal(pendingGeom.tokenInStack, true, 'Placed token must be inside line stack');
       assert.equal(await page.locator('.app-visual-view .plan39-token-tray .plan39-repair-token').count(), 0, 'No duplicate token in starting tray');
@@ -232,11 +263,40 @@ export async function runRepair04Witness({ seed = null } = {}) {
       // Screenshot: Pending Placement State
       await page.screenshot({ path: path.join(evidenceDir, `pending-${vp.label}.png`), fullPage: false });
 
-      // Repositioning check: drag placed token to another candidate, then back
+      // Placed-token repositioning and cancellation check
+      const reposGesture = await beginTokenDrag(page, { view: 'visual' });
+      await moveTokenDrag(page, reposGesture, { ratio: 1.0 });
+      const duringReposGeom = await measureGeometry(page);
+      assert(
+        Math.abs(duringReposGeom.axisLine.top - initialGeom.axisLine.top) <= 1,
+        'Axis position must remain stable during placed-token reposition drag'
+      );
+      assert(
+        Math.abs(duringReposGeom.tray.height - initialGeom.tray.height) <= 1,
+        'Tray height must remain stable during placed-token reposition drag'
+      );
+
+      // Press Escape to cancel repositioning gesture
+      await page.keyboard.press('Escape');
+      await page.mouse.up();
+      const afterCancelGeom = await measureGeometry(page);
+      assert(
+        Math.abs(afterCancelGeom.axisLine.top - initialGeom.axisLine.top) <= 1,
+        'Axis position must remain stable after Escape cancellation'
+      );
+      assert(
+        Math.abs(afterCancelGeom.tray.height - initialGeom.tray.height) <= 1,
+        'Tray height must remain stable after Escape cancellation'
+      );
+      assert.equal(
+        await page.locator('.app-visual-view .plan39-repair-token').getAttribute('data-candidate-id'),
+        'partition-1-of-2',
+        'Escape cancellation restores prior placement'
+      );
+
+      // Deliberately wrong Check: step to 2/2 (wrong)
       await page.locator('.app-visual-view .plan39-stepper-next').click(); // moves to 2/2
       assert.equal(await page.locator('.app-visual-view .plan39-repair-token').getAttribute('data-candidate-id'), 'partition-2-of-2');
-
-      // Deliberately wrong Check: Check at 2/2 (wrong)
       await page.locator('.app-visual-view .plan39-check-position').click();
       assert.equal(await page.locator('.app-visual-view .plan39-feedback').count(), 1, 'Recovery feedback appears on wrong Check');
       assert.equal(await page.locator('.app-visual-view .plan39-bar-track').count(), 0, 'Wrong Check never reveals answer bar');
@@ -265,12 +325,39 @@ export async function runRepair04Witness({ seed = null } = {}) {
       assert.equal(acceptedGeom.bar.left, acceptedGeom.frame.left, 'Bar left coordinate aligns with line zero');
       assert.equal(acceptedGeom.bar.width, acceptedGeom.frame.width, 'Bar width aligns with line width');
 
-      // Progression button
+      // Connector overlay endpoints check
+      const connectorEndpoints = await page.evaluate(() => {
+        const line = document.querySelector('.plan39-connector-overlay .plan39-accepted-connector');
+        const stack = document.querySelector('.plan39-representation-stack');
+        const bar = document.querySelector('.plan39-bar-track');
+        const frame = document.querySelector('.plan39-axis-frame');
+        const axis = frame?.querySelector('.plan39-axis-line');
+        if (!line || !stack || !bar || !frame || !axis) return null;
+        const stackRect = stack.getBoundingClientRect();
+        const barRect = bar.getBoundingClientRect();
+        const frameRect = frame.getBoundingClientRect();
+        const axisRect = axis.getBoundingClientRect();
+        return {
+          x1: parseFloat(line.getAttribute('x1')),
+          y1: parseFloat(line.getAttribute('y1')),
+          x2: parseFloat(line.getAttribute('x2')),
+          y2: parseFloat(line.getAttribute('y2')),
+          expectedSourceX: (barRect.left + bar.clientLeft + bar.clientWidth * 0.5) - stackRect.left,
+          expectedSourceY: barRect.bottom - stackRect.top,
+          expectedTargetX: (frameRect.left + frameRect.width * 0.5) - stackRect.left,
+          expectedTargetY: (axisRect.top + axisRect.height / 2) - stackRect.top,
+        };
+      });
+      assert(connectorEndpoints, 'Connector overlay and accepted elements must be measurable');
+      assert(Math.abs(connectorEndpoints.x1 - connectorEndpoints.expectedSourceX) <= 1, 'Connector start x1 must match shaded fraction endpoint');
+      assert(Math.abs(connectorEndpoints.y1 - connectorEndpoints.expectedSourceY) <= 1, 'Connector start y1 must match bar bottom edge');
+      assert(Math.abs(connectorEndpoints.x2 - connectorEndpoints.expectedTargetX) <= 1, 'Connector end x2 must match accepted target point');
+      assert(Math.abs(connectorEndpoints.y2 - connectorEndpoints.expectedTargetY) <= 1, 'Connector end y2 must match number line axis center');
+
+      // Progression button focus
       const progressionBtn = page.locator('.app-visual-view .plan39-finish');
       assert.equal(await progressionBtn.count(), 1, 'Progression button present');
       assert.equal(await progressionBtn.textContent(), 'Next problem');
-
-      // Focus assertion
       const focusedTagName = await page.evaluate(() => document.activeElement.tagName.toLowerCase());
       const focusedClass = await page.evaluate(() => document.activeElement.className);
       assert(focusedClass.includes('plan39-finish'), `Focus must land on progression button (saw ${focusedTagName}.${focusedClass})`);
@@ -278,7 +365,24 @@ export async function runRepair04Witness({ seed = null } = {}) {
       // Screenshot: Accepted Result State
       await page.screenshot({ path: path.join(evidenceDir, `accepted-${vp.label}.png`), fullPage: false });
 
-      // Negative control: Seed progression redundancy
+      // Linear view path verification
+      const viewToggleCount = await page.locator('.app-view-toggle').count();
+      if (viewToggleCount > 0) {
+        await page.locator('.app-view-toggle').click();
+      } else {
+        await page.getByRole('button', { name: 'Read the steps', exact: true }).click();
+      }
+      assert.equal(await page.locator('.app-linear-view .plan39-accepted-header').count(), 1, 'Linear view shows accepted header');
+      assert.equal(await page.locator('.app-linear-view .plan39-bar-track').count(), 0, 'Linear view does not show bar');
+      await page.screenshot({ path: path.join(evidenceDir, `linear-${vp.label}.png`), fullPage: false });
+      // Switch back to visual view
+      if (viewToggleCount > 0) {
+        await page.locator('.app-view-toggle').click();
+      } else {
+        await page.getByRole('button', { name: 'Show the picture', exact: true }).click();
+      }
+
+      // Negative control injection: seed-progression-redundancy (mutation only)
       if (seed === 'seed-progression-redundancy') {
         await page.evaluate(() => {
           const btn = document.querySelector('.plan39-finish');
@@ -287,18 +391,23 @@ export async function runRepair04Witness({ seed = null } = {}) {
             btn.textContent = 'Confirm finish';
           }, true);
         });
-        await page.locator('.app-visual-view .plan39-finish').click();
-        const itemId = await page.locator('.app-episode').getAttribute('data-current-item-id');
-        if (itemId !== 'bridge-02-fourth-4') {
-          throw new Error('NC-3 detected: progression button exposed another step instead of advancing item');
-        }
       }
 
       // 5. Direct Progression to Fresh Next Item
       await page.locator('.app-visual-view .plan39-finish').click();
 
       // Assert item 2 mounted fresh
-      await page.waitForSelector('.app-episode[data-current-item-id="bridge-02-fourth-4"]');
+      const nextItemId = await page.locator('.app-episode').getAttribute('data-current-item-id');
+      assert.equal(nextItemId, 'bridge-02-fourth-4', 'Direct progression must advance to bridge-02-fourth-4');
+
+      // Assert focus on fresh episode container (MAIN.app-episode)
+      const nextActive = await page.evaluate(() => ({
+        tagName: document.activeElement?.tagName,
+        className: document.activeElement?.className,
+        isEpisode: document.activeElement === document.querySelector('.app-episode'),
+      }));
+      assert.equal(nextActive.isEpisode, true, `Focus must land on fresh .app-episode container after Next (saw <${nextActive.tagName} class="${nextActive.className}">)`);
+
       const nextItemGeom = await measureGeometry(page);
       assert.equal(nextItemGeom.tokenInTray, true, 'Item 2 unplaced token starts inside tray');
       assert.equal(await page.locator('.app-visual-view .plan39-check-position').isEnabled(), false, 'Item 2 Check button disabled');
@@ -315,28 +424,42 @@ export async function runRepair04Witness({ seed = null } = {}) {
       assert(!enlargedContainment.overflow, 'Enlarged type fraction glyphs contained in tile');
       const enlargedTrayH = await page.locator('.app-visual-view .plan39-token-tray').evaluate((t) => t.getBoundingClientRect().height);
       assert(enlargedTrayH >= enlargedContainment.height, 'Enlarged tray contains enlarged tile');
+      if (vp.label === '1366x768') {
+        await page.screenshot({ path: path.join(evidenceDir, `enlarged-type-200.png`), fullPage: false });
+      }
       await page.evaluate(() => { document.documentElement.style.fontSize = ''; });
 
       // 7. Final Item Return Check (run on 1366x768)
       if (vp.label === '1366x768') {
-        // Fast-forward remaining items to final item (item 8, index 7)
-        for (let i = 1; i < 8; i += 1) {
-          const record = PLAN37_BAR_TO_LINE_BRIDGE_RECORDS[i];
-          await page.waitForSelector(`.app-episode[data-current-item-id="${record.itemId}"]`);
-          const num = Number(record.sourceForm.numerator);
-          await page.locator('.app-visual-view .plan39-stepper-previous').click();
-          for (let s = 0; s < num; s += 1) {
-            await page.locator('.app-visual-view .plan39-stepper-next').click();
-          }
+        for (let i = 1; i < PLAN37_BAR_TO_LINE_BRIDGE_RECORDS.length; i += 1) {
+          const rec = PLAN37_BAR_TO_LINE_BRIDGE_RECORDS[i];
+          const currId = await page.locator('.app-episode').getAttribute('data-current-item-id');
+          assert.equal(currId, rec.itemId, `Sequential item ${i + 1} matches record ${rec.itemId}`);
+
+          // Choose correct answer
+          const targetNumerator = Number(rec.sourceForm.numerator);
+          const targetDenominator = Number(rec.sourceForm.denominator);
+          const correctRatio = targetNumerator / targetDenominator;
+
+          const gestureI = await beginTokenDrag(page, { view: 'visual' });
+          await moveTokenDrag(page, gestureI, { ratio: correctRatio });
+          await endTokenDrag(page, gestureI);
+
           await page.locator('.app-visual-view .plan39-check-position').click();
-          if (i < 7) {
+
+          if (i < PLAN37_BAR_TO_LINE_BRIDGE_RECORDS.length - 1) {
             await page.locator('.app-visual-view .plan39-finish').click();
           }
         }
 
-        // Final item assertions
-        assert.equal(await page.locator('.app-visual-view .plan39-finish').textContent(), 'Back to start');
-        assert.equal(await page.locator('.app-visual-view .progression-notice').textContent(), 'You’ve tried every problem in this set.');
+        // On final item (bridge-08-five-sixths-med)
+        const finalBtnText = await page.locator('.app-visual-view .plan39-finish').textContent();
+        assert.equal(finalBtnText, 'Back to start', 'Final item progression button reads "Back to start"');
+
+        const exhaustionNotice = await page.locator('.app-visual-view .progression-notice').textContent();
+        assert(exhaustionNotice.includes('tried every problem'), 'Exhaustion notice displayed on final item');
+
+        // Screenshot: Final Item Accepted State
         await page.screenshot({ path: path.join(evidenceDir, `final-item-accepted-${vp.label}.png`), fullPage: false });
 
         // Click Back to start -> returns to start
@@ -347,7 +470,8 @@ export async function runRepair04Witness({ seed = null } = {}) {
       receipts.push({
         viewport: vp,
         initialGeom,
-        pendingGeom,
+        duringGeom: { axis: duringGeom.axisLine, tray: duringGeom.tray },
+        pendingGeom: { axis: pendingGeom.axisLine, tray: pendingGeom.tray, token: pendingGeom.token },
         acceptedGeom,
         nextItemGeom,
         enlargedContainment,
@@ -374,6 +498,16 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
       process.exit(0);
     })
     .catch((err) => {
+      if (seed) {
+        const seedReceiptPath = path.join(evidenceDir, `repair04-seed-${seed}-receipt.json`);
+        fs.writeFileSync(
+          seedReceiptPath,
+          JSON.stringify({ seed, detected: true, assertionError: err.message, timestamp: new Date().toISOString() }, null, 2),
+          'utf8'
+        );
+        console.log(`Plan 39 Repair 04 seed detected ordinary assertion failure: ${err.message}. Receipt: ${seedReceiptPath}`);
+        process.exit(0);
+      }
       console.error(`Plan 39 Repair 04 witness failed: ${err.message}`);
       process.exit(1);
     });

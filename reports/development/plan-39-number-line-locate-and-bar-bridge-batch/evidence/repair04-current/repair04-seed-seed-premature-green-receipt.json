@@ -1,0 +1,6 @@
+{
+  "seed": "seed-premature-green",
+  "detected": true,
+  "assertionError": "No accepted header initially\n\n1 !== 0\n",
+  "timestamp": "2026-10-31T15:41:58.382Z"
+}

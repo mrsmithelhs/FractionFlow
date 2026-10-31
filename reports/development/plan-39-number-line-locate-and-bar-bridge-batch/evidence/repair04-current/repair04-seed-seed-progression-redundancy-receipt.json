@@ -1,0 +1,6 @@
+{
+  "seed": "seed-progression-redundancy",
+  "detected": true,
+  "assertionError": "Direct progression must advance to bridge-02-fourth-4\n+ actual - expected\n\n+ 'bridge-01-half-2'\n- 'bridge-02-fourth-4'\n           ^\n",
+  "timestamp": "2026-10-31T15:42:03.524Z"
+}

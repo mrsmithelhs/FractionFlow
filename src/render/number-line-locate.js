@@ -430,6 +430,7 @@ export function createNumberLineLocateRenderer({
     }
     if (typeof ResizeObserver === 'undefined') return;
     const frame = root?.querySelector('.plan39-axis-frame');
+    const token = root?.querySelector('.plan39-repair-token');
     if (frame === observedFrame) return;
     resizeObserver?.disconnect();
     observedFrame = frame;
@@ -444,6 +445,7 @@ export function createNumberLineLocateRenderer({
       });
     }
     if (frame) resizeObserver.observe(frame);
+    if (token) resizeObserver.observe(token);
   }
 
   function cancelActiveTokenGesture() {
@@ -495,6 +497,7 @@ export function createNumberLineLocateRenderer({
       token.removeAttribute('data-candidate-id');
       const form = currentScene?.meaning.quantities.source.sourceForm;
       if (form) token.setAttribute('aria-label', strings.plan39Repair02.tokenNotPlaced(form.numerator, form.denominator));
+      syncTrayFootprint();
       return;
     }
     const candidate = currentScene.meaning.numberLine.candidatePositions.find(({ id }) => id === candidateId);
@@ -511,6 +514,7 @@ export function createNumberLineLocateRenderer({
     token.setAttribute('data-candidate-id', candidateId);
     const form = currentScene.meaning.quantities.source.sourceForm;
     token.setAttribute('aria-label', strings.plan39Repair02.tokenPlaced(form.numerator, form.denominator, candidate.description));
+    syncTrayFootprint();
     if (typeof stack.getBoundingClientRect !== 'function' || typeof frame.getBoundingClientRect !== 'function') return;
     const stackRect = stack.getBoundingClientRect();
     const frameRect = frame.getBoundingClientRect();
@@ -567,6 +571,7 @@ export function createNumberLineLocateRenderer({
       if (!event.isPrimary || (event.button !== undefined && event.button !== 0)) return;
       stopGrabCue();
       event.stopPropagation();
+      syncTrayFootprint();
       const frame = stack.querySelector('.plan39-axis-frame');
       if (!frame) return;
       const tokenRect = token.getBoundingClientRect();
@@ -681,12 +686,46 @@ export function createNumberLineLocateRenderer({
   }
 
   function refreshGeometry() {
+    syncTrayFootprint();
     const stack = root?.querySelector('.plan39-representation-stack');
     if (!stack) return;
     const previous = stack.querySelector('.plan39-connector-overlay');
     if (previous) stack.removeChild(previous);
     const connector = makeAcceptedConnectorOverlay(currentScene, stack);
     if (connector) stack.appendChild(connector);
+  }
+
+  function syncTrayFootprint() {
+    const tray = root?.querySelector('.plan39-token-tray');
+    const token = root?.querySelector('.plan39-repair-token');
+    if (!tray || !token || typeof token.getBoundingClientRect !== 'function') return;
+    const tokenRect = token.getBoundingClientRect();
+    if (tokenRect.width <= 0 || tokenRect.height <= 0) return;
+
+    if (token.parentNode === tray && !token.classList.contains('is-dragging')) {
+      const trayRect = tray.getBoundingClientRect();
+      if (trayRect.width > 0 && trayRect.height > 0) {
+        tray.style.minWidth = `${trayRect.width}px`;
+        tray.style.minHeight = `${trayRect.height}px`;
+        return;
+      }
+    }
+
+    const trayStyle = typeof getComputedStyle === 'function' ? getComputedStyle(tray) : null;
+    const padTop = parseFloat(trayStyle?.paddingTop || '0') || 0;
+    const padBottom = parseFloat(trayStyle?.paddingBottom || '0') || 0;
+    const padLeft = parseFloat(trayStyle?.paddingLeft || '0') || 0;
+    const padRight = parseFloat(trayStyle?.paddingRight || '0') || 0;
+    const borderTop = parseFloat(trayStyle?.borderTopWidth || '0') || 0;
+    const borderBottom = parseFloat(trayStyle?.borderBottomWidth || '0') || 0;
+    const borderLeft = parseFloat(trayStyle?.borderLeftWidth || '0') || 0;
+    const borderRight = parseFloat(trayStyle?.borderRightWidth || '0') || 0;
+
+    const reservedWidth = Math.max(56, tokenRect.width + padLeft + padRight + borderLeft + borderRight);
+    const reservedHeight = Math.max(52, tokenRect.height + padTop + padBottom + borderTop + borderBottom);
+
+    tray.style.minWidth = `${reservedWidth}px`;
+    tray.style.minHeight = `${reservedHeight}px`;
   }
 
   function update(scene) {
