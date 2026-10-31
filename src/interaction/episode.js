@@ -1396,7 +1396,7 @@ export function createEpisode({
   instance,
   episodeDefinition = PHASE2_EPISODE_DEFINITION,
   support = DEFAULT_SUPPORT_CONFIGURATION,
-  activeCondition = null,
+  activeCondition,
   taskContext = null,
   allowCompatibilityPair = false,
 } = {}) {
@@ -1405,12 +1405,14 @@ export function createEpisode({
     return createPlan45ComparisonEpisode({
       taskContext,
       support,
-      activeCondition: activeCondition ?? undefined,
+      activeCondition,
     });
   }
   const content = assertInstance(instance, definition);
   const normalizedSupport = createSupportConfiguration(support);
-  const normalizedCondition = validateActiveCondition(activeCondition ?? PHASE2_ACTIVE_CONDITION);
+  const normalizedCondition = validateActiveCondition(activeCondition === undefined
+    ? PHASE2_ACTIVE_CONDITION
+    : activeCondition);
   const isCompact = [PLAN34_EPISODE_DEFINITION_ID, 'phase-3-reusable-addition-recipes', 'phase-3-reusable-subtraction-recipes'].includes(definition.id);
   const isNested = definition.id === PLAN18_NESTED_DEFINITION_ID;
   const isPlan36 = isPlan36SubtractionDefinition(definition);

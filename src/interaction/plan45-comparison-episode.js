@@ -89,7 +89,9 @@ export function createPlan45ComparisonEpisode({
     throw new Plan45ComparisonIntentError('UNSUPPORTED_SUPPORT', 'Plan 45 supports only the existing More and Less support profiles');
   }
   const normalizedCondition = validateActiveCondition(activeCondition);
-  if (normalizedCondition.display !== 'not-applicable'
+  if (normalizedCondition.id !== PLAN45_STATIC_COMPARISON_ACTIVE_CONDITION.id
+    || normalizedCondition.revision !== PLAN45_STATIC_COMPARISON_ACTIVE_CONDITION.revision
+    || normalizedCondition.display !== 'not-applicable'
     || normalizedCondition.choreography !== 'not-applicable'
     || normalizedCondition.promptCadence !== 'D-05-focused-key-beats'
     || normalizedCondition.connectionMaking !== 'not-applicable') {

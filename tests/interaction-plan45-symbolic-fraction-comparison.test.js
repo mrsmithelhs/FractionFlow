@@ -6,10 +6,12 @@ import { resolvePlan45ComparisonContext } from '../src/content/plan45-symbolic-f
 import { applyIntent, createEpisode, episodeStateSnapshot } from '../src/interaction/episode.js';
 import {
   PHASE2_ACTIVE_CONDITION,
+  PHASE2_EPISODE_DEFINITION,
   PLAN45_SYMBOLIC_FRACTION_COMPARISON_EPISODE_DEFINITION,
 } from '../src/interaction/episode-definition.js';
 import { HIGH_SUPPORT_CONFIGURATION, MEDIUM_SUPPORT_CONFIGURATION } from '../src/interaction/support.js';
-import { classifyPlan45FractionComparison } from '../src/interaction/classification.js';
+import { validateCuratedFixtures } from '../src/content/index.js';
+import { compareFractions, createFraction } from '../src/math/index.js';
 
 function start(itemId, support = HIGH_SUPPORT_CONFIGURATION) {
   return createEpisode({
@@ -19,8 +21,15 @@ function start(itemId, support = HIGH_SUPPORT_CONFIGURATION) {
   });
 }
 
+function exactRelation(sourceForms) {
+  const first = createFraction(BigInt(sourceForms.first.numerator), BigInt(sourceForms.first.denominator));
+  const second = createFraction(BigInt(sourceForms.second.numerator), BigInt(sourceForms.second.denominator));
+  const order = compareFractions(first, second);
+  return order < 0 ? '<' : order > 0 ? '>' : '=';
+}
+
 function relationOtherThan(state) {
-  const correct = classifyPlan45FractionComparison({ sourceForms: state.taskContext.sourceForms, proposed: '<' }).expectedRelation;
+  const correct = exactRelation(state.taskContext.sourceForms);
   return ['<', '=', '>'].find((candidate) => candidate !== correct);
 }
 
@@ -45,6 +54,27 @@ describe('Plan 45 pure comparison episode contract', () => {
       taskContext: resolvePlan45ComparisonContext('plan45-compare-01'),
       activeCondition: PHASE2_ACTIVE_CONDITION,
     })).toThrow(/transformation display, choreography, and connection conditions do not apply/);
+    expect(() => createEpisode({
+      episodeDefinition: PLAN45_SYMBOLIC_FRACTION_COMPARISON_EPISODE_DEFINITION,
+      taskContext: resolvePlan45ComparisonContext('plan45-compare-01'),
+      activeCondition: { ...more.activeCondition, id: 'unregistered-static-condition' },
+    })).toThrow(/static comparison accepts focused prompt cadence only/);
+
+    const legacyInstance = validateCuratedFixtures().find((entry) => (
+      entry.fixture.id === 'curated-relatively-prime-addition-non-least'
+    )).instance;
+    expect(createEpisode({ instance: legacyInstance, episodeDefinition: PHASE2_EPISODE_DEFINITION }).activeCondition)
+      .toEqual(PHASE2_ACTIVE_CONDITION);
+    expect(() => createEpisode({
+      instance: legacyInstance,
+      episodeDefinition: PHASE2_EPISODE_DEFINITION,
+      activeCondition: null,
+    })).toThrow(/activeCondition must be an object/);
+    expect(() => createEpisode({
+      episodeDefinition: PLAN45_SYMBOLIC_FRACTION_COMPARISON_EPISODE_DEFINITION,
+      taskContext: resolvePlan45ComparisonContext('plan45-compare-01'),
+      activeCondition: null,
+    })).toThrow(/activeCondition must be an object/);
   });
 
   it('locks the first source-model request and retains it through help and wrong Check', () => {
@@ -72,9 +102,7 @@ describe('Plan 45 pure comparison episode contract', () => {
     });
     expect(state.lastRecovery).not.toHaveProperty('expectedRelation');
 
-    const correct = classifyPlan45FractionComparison({
-      sourceForms: state.taskContext.sourceForms, proposed: '<',
-    }).expectedRelation;
+    const correct = exactRelation(state.taskContext.sourceForms);
     state = applyIntent(state, { type: 'submit-fraction-comparison', proposed: correct });
     expect(state.status).toBe('resolved');
     expect(state.beat).toBe('resolve');
@@ -104,18 +132,29 @@ describe('Plan 45 pure comparison episode contract', () => {
     expect(state.established.comparison.acceptedRelation).toBe('=');
   });
 
-  it('resolves all 12 actual registered identities by exact classification and preserves authored forms', () => {
+  it('tests all three choices on all 12 registered identities using an independent exact-math oracle', () => {
     for (const record of PLAN45_COMPARISON_RECORDS) {
-      const state = start(record.itemId);
-      const expected = classifyPlan45FractionComparison({
-        sourceForms: state.taskContext.sourceForms,
-        proposed: '<',
-      }).expectedRelation;
-      const accepted = applyIntent(state, { type: 'submit-fraction-comparison', proposed: expected });
-      expect(accepted.status).toBe('resolved');
-      expect(accepted.established.comparison.sourceForms).toEqual(record.sourceForms);
-      expect(accepted.established.comparison.acceptedRelation).toBe(expected);
-      expect(episodeStateSnapshot(accepted)).toMatchObject({ acceptedComparison: { acceptedRelation: expected } });
+      const expected = exactRelation(record.sourceForms);
+      const results = ['<', '=', '>'].map((proposed) => applyIntent(
+        start(record.itemId),
+        { type: 'submit-fraction-comparison', proposed },
+      ));
+      expect(results.filter((result) => result.status === 'resolved')).toHaveLength(1);
+      for (let index = 0; index < results.length; index += 1) {
+        const proposed = ['<', '=', '>'][index];
+        const result = results[index];
+        expect(result.established.comparison?.acceptedRelation ?? null).toBe(proposed === expected ? expected : null);
+        if (proposed === expected) {
+          expect(result.status).toBe('resolved');
+          expect(result.established.comparison.sourceForms).toEqual(record.sourceForms);
+          expect(episodeStateSnapshot(result)).toMatchObject({ acceptedComparison: { acceptedRelation: expected } });
+        } else {
+          expect(result.status).toBe('active');
+          expect(result.beat).toBe('compare');
+          expect(result.schedulePosition).toBe(0);
+          expect(result.lastRecovery.classification.kind).toBe('incorrect-comparison');
+        }
+      }
     }
   });
 });

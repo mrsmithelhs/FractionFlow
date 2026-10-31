@@ -136,18 +136,19 @@ state's task context contains an expected relation or correct-option marker.
 
 The task module defines one authored reasoning cue per item family and a separate
 notation cue, “The open side faces the greater amount.” Close-pair help receives
-an exact-derived common-unit denominator; the copy names that unit only and
-never supplies converted numerators. The half cue is “Could one half separate
-these two amounts?” and renderer-facing context does not include which operand
-lies on either side. Equality help asks whether two names could describe the same
-amount. The optional More strategy cue is “Try a benchmark or compare same-size
-parts.” The same task, help and one-model limit apply to More and Less. Neither
-profile auto-selects or auto-shows a model. Only the existing high/medium support
-labels are admitted.
+an exact-derived common-unit denominator; copy says “Try naming each amount in
+parts out of {denominator}.” It never supplies converted numerators. The half
+cue is “Could one half separate these two amounts?” and renderer-facing context
+does not include which operand lies on either side. Equality help says “Try
+simplifying both fractions.” The optional More strategy cue is “Try a benchmark
+or compare same-size parts.” The same task, help and one-model limit apply to More
+and Less. Neither profile auto-selects or auto-shows a model. Only the existing
+high/medium support configurations are admitted.
 
 ## Condition/capability disposition
 
-The source has a task-local static capability and truthful default condition.
+The source has a task-local static capability and truthful default condition,
+bound to `plan45-static-comparison@1` as well as its semantic fields.
 Only `D-05-focused-key-beats` applies. `D-01-A/B` describe change/side-by-side
 display styles, `D-02-M/J/S` describe transformation choreography, and
 `CM-01-M/P` describe reflection/connection behavior; this fixed static comparison

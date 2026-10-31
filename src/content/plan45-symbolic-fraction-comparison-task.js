@@ -44,7 +44,7 @@ export const PLAN45_COMPARISON_CUE_IDS = Object.freeze([
 export const PLAN45_COMPARISON_REASONING_CUES = Object.freeze({
   'compare.shared-unit-close': 'Try expressing both amounts with the same-size parts.',
   'compare.same-denominator': 'Compare how many equal-size parts each fraction counts.',
-  'compare.equivalence': 'Could these two names describe the same amount?',
+  'compare.equivalence': 'Try simplifying both fractions.',
   'compare.complements-to-one': 'Compare what is missing from one whole in each fraction.',
   'compare.same-count-unit-size': 'Both fractions count the same number of parts. Compare the size of one part.',
   'compare.half-benchmark': 'Could one half separate these two amounts?',
@@ -252,8 +252,9 @@ export function plan45ComparisonHelpText(context, helpKind) {
   if (helpKind === 'notation') return PLAN45_COMPARISON_NOTATION_CUE;
   if (helpKind !== 'reasoning') throw invalid('helpKind must be reasoning or notation');
   if (valid.hintContext.kind === 'common-unit-target') {
-    return `Try expressing both amounts with ${valid.hintContext.denominator} same-size parts.`;
+    return `Try naming each amount in parts out of ${valid.hintContext.denominator}.`;
   }
+  if (valid.cueId === 'compare.equivalence') return 'Try simplifying both fractions.';
   return PLAN45_COMPARISON_REASONING_CUES[valid.cueId];
 }
 

@@ -54,10 +54,12 @@ describe('Plan 45 comparison content and pure admission', () => {
     expect(half.hintContext).toEqual({ kind: 'half-benchmark', benchmark: 'half' });
     const close = resolvePlan45ComparisonContext('plan45-compare-01');
     expect(close.hintContext).toEqual({ kind: 'common-unit-target', denominator: '15' });
-    expect(plan45ComparisonHelpText(close, 'reasoning')).toBe('Try expressing both amounts with 15 same-size parts.');
+    expect(plan45ComparisonHelpText(close, 'reasoning')).toBe('Try naming each amount in parts out of 15.');
     const beyondLegacyBarCap = resolvePlan45ComparisonContext('plan45-compare-10');
     expect(beyondLegacyBarCap.hintContext.kind).toBe('half-benchmark');
     expect(plan45ComparisonHelpText(beyondLegacyBarCap, 'reasoning')).toBe('Could one half separate these two amounts?');
+    expect(plan45ComparisonHelpText(resolvePlan45ComparisonContext('plan45-compare-03'), 'reasoning'))
+      .toBe('Try simplifying both fractions.');
     for (const record of PLAN45_COMPARISON_RECORDS) {
       const text = plan45ComparisonHelpText(resolvePlan45ComparisonContext(record.itemId), 'reasoning');
       expect(text).not.toMatch(/[<=>]/);
