@@ -1,0 +1,414 @@
+{
+  "evidenceType": "read-only exact-example probe; not a product test or production content bank",
+  "mathModule": "src/math/index.js",
+  "apis": [
+    "createFraction",
+    "compareFractions",
+    "leastCommonDenominator",
+    "convertToDenominator"
+  ],
+  "denominatorBoundChecked": 10,
+  "counts": {
+    "less": 4,
+    "equal": 4,
+    "greater": 4
+  },
+  "rows": [
+    {
+      "id": "larger-integers-trap",
+      "sourceForms": {
+        "first": {
+          "numerator": "2",
+          "denominator": "3"
+        },
+        "second": {
+          "numerator": "3",
+          "denominator": "5"
+        }
+      },
+      "relation": "greater",
+      "relationCode": 1,
+      "positiveProper": true,
+      "numeratorGap": {
+        "first": "1",
+        "second": "2"
+      },
+      "derivedCommonUnitCheck": {
+        "denominator": "15",
+        "first": {
+          "numerator": "10",
+          "denominator": "15"
+        },
+        "second": {
+          "numerator": "9",
+          "denominator": "15"
+        },
+        "relationPreserved": true
+      },
+      "maxSourceDenominator": "5"
+    },
+    {
+      "id": "larger-integers-trap-swapped",
+      "sourceForms": {
+        "first": {
+          "numerator": "3",
+          "denominator": "5"
+        },
+        "second": {
+          "numerator": "2",
+          "denominator": "3"
+        }
+      },
+      "relation": "less",
+      "relationCode": -1,
+      "positiveProper": true,
+      "numeratorGap": {
+        "first": "2",
+        "second": "1"
+      },
+      "derivedCommonUnitCheck": {
+        "denominator": "15",
+        "first": {
+          "numerator": "9",
+          "denominator": "15"
+        },
+        "second": {
+          "numerator": "10",
+          "denominator": "15"
+        },
+        "relationPreserved": true
+      },
+      "maxSourceDenominator": "5"
+    },
+    {
+      "id": "unreduced-equality",
+      "sourceForms": {
+        "first": {
+          "numerator": "4",
+          "denominator": "6"
+        },
+        "second": {
+          "numerator": "6",
+          "denominator": "9"
+        }
+      },
+      "relation": "equal",
+      "relationCode": 0,
+      "positiveProper": true,
+      "numeratorGap": {
+        "first": "2",
+        "second": "3"
+      },
+      "derivedCommonUnitCheck": {
+        "denominator": "18",
+        "first": {
+          "numerator": "12",
+          "denominator": "18"
+        },
+        "second": {
+          "numerator": "12",
+          "denominator": "18"
+        },
+        "relationPreserved": true
+      },
+      "maxSourceDenominator": "9"
+    },
+    {
+      "id": "unreduced-equality-swapped",
+      "sourceForms": {
+        "first": {
+          "numerator": "6",
+          "denominator": "9"
+        },
+        "second": {
+          "numerator": "4",
+          "denominator": "6"
+        }
+      },
+      "relation": "equal",
+      "relationCode": 0,
+      "positiveProper": true,
+      "numeratorGap": {
+        "first": "3",
+        "second": "2"
+      },
+      "derivedCommonUnitCheck": {
+        "denominator": "18",
+        "first": {
+          "numerator": "12",
+          "denominator": "18"
+        },
+        "second": {
+          "numerator": "12",
+          "denominator": "18"
+        },
+        "relationPreserved": true
+      },
+      "maxSourceDenominator": "9"
+    },
+    {
+      "id": "equal-gap-unequal-amounts",
+      "sourceForms": {
+        "first": {
+          "numerator": "3",
+          "denominator": "4"
+        },
+        "second": {
+          "numerator": "5",
+          "denominator": "6"
+        }
+      },
+      "relation": "less",
+      "relationCode": -1,
+      "positiveProper": true,
+      "numeratorGap": {
+        "first": "1",
+        "second": "1"
+      },
+      "derivedCommonUnitCheck": {
+        "denominator": "12",
+        "first": {
+          "numerator": "9",
+          "denominator": "12"
+        },
+        "second": {
+          "numerator": "10",
+          "denominator": "12"
+        },
+        "relationPreserved": true
+      },
+      "maxSourceDenominator": "6"
+    },
+    {
+      "id": "equal-gap-unequal-amounts-swapped",
+      "sourceForms": {
+        "first": {
+          "numerator": "5",
+          "denominator": "6"
+        },
+        "second": {
+          "numerator": "3",
+          "denominator": "4"
+        }
+      },
+      "relation": "greater",
+      "relationCode": 1,
+      "positiveProper": true,
+      "numeratorGap": {
+        "first": "1",
+        "second": "1"
+      },
+      "derivedCommonUnitCheck": {
+        "denominator": "12",
+        "first": {
+          "numerator": "10",
+          "denominator": "12"
+        },
+        "second": {
+          "numerator": "9",
+          "denominator": "12"
+        },
+        "relationPreserved": true
+      },
+      "maxSourceDenominator": "6"
+    },
+    {
+      "id": "smaller-gap-predicts-wrong-way",
+      "sourceForms": {
+        "first": {
+          "numerator": "2",
+          "denominator": "3"
+        },
+        "second": {
+          "numerator": "7",
+          "denominator": "10"
+        }
+      },
+      "relation": "less",
+      "relationCode": -1,
+      "positiveProper": true,
+      "numeratorGap": {
+        "first": "1",
+        "second": "3"
+      },
+      "derivedCommonUnitCheck": {
+        "denominator": "30",
+        "first": {
+          "numerator": "20",
+          "denominator": "30"
+        },
+        "second": {
+          "numerator": "21",
+          "denominator": "30"
+        },
+        "relationPreserved": true
+      },
+      "maxSourceDenominator": "10"
+    },
+    {
+      "id": "same-denominator-unit-count",
+      "sourceForms": {
+        "first": {
+          "numerator": "3",
+          "denominator": "8"
+        },
+        "second": {
+          "numerator": "5",
+          "denominator": "8"
+        }
+      },
+      "relation": "less",
+      "relationCode": -1,
+      "positiveProper": true,
+      "numeratorGap": {
+        "first": "5",
+        "second": "3"
+      },
+      "derivedCommonUnitCheck": {
+        "denominator": "8",
+        "first": {
+          "numerator": "3",
+          "denominator": "8"
+        },
+        "second": {
+          "numerator": "5",
+          "denominator": "8"
+        },
+        "relationPreserved": true
+      },
+      "maxSourceDenominator": "8"
+    },
+    {
+      "id": "same-positive-numerator-unit-size",
+      "sourceForms": {
+        "first": {
+          "numerator": "3",
+          "denominator": "5"
+        },
+        "second": {
+          "numerator": "3",
+          "denominator": "7"
+        }
+      },
+      "relation": "greater",
+      "relationCode": 1,
+      "positiveProper": true,
+      "numeratorGap": {
+        "first": "2",
+        "second": "4"
+      },
+      "derivedCommonUnitCheck": {
+        "denominator": "35",
+        "first": {
+          "numerator": "21",
+          "denominator": "35"
+        },
+        "second": {
+          "numerator": "15",
+          "denominator": "35"
+        },
+        "relationPreserved": true
+      },
+      "maxSourceDenominator": "7"
+    },
+    {
+      "id": "smaller-gap-predicts-wrong-way-swapped",
+      "sourceForms": {
+        "first": {
+          "numerator": "7",
+          "denominator": "10"
+        },
+        "second": {
+          "numerator": "2",
+          "denominator": "3"
+        }
+      },
+      "relation": "greater",
+      "relationCode": 1,
+      "positiveProper": true,
+      "numeratorGap": {
+        "first": "3",
+        "second": "1"
+      },
+      "derivedCommonUnitCheck": {
+        "denominator": "30",
+        "first": {
+          "numerator": "21",
+          "denominator": "30"
+        },
+        "second": {
+          "numerator": "20",
+          "denominator": "30"
+        },
+        "relationPreserved": true
+      },
+      "maxSourceDenominator": "10"
+    },
+    {
+      "id": "equivalent-unreduced-and-reduced",
+      "sourceForms": {
+        "first": {
+          "numerator": "4",
+          "denominator": "8"
+        },
+        "second": {
+          "numerator": "1",
+          "denominator": "2"
+        }
+      },
+      "relation": "equal",
+      "relationCode": 0,
+      "positiveProper": true,
+      "numeratorGap": {
+        "first": "4",
+        "second": "1"
+      },
+      "derivedCommonUnitCheck": {
+        "denominator": "8",
+        "first": {
+          "numerator": "4",
+          "denominator": "8"
+        },
+        "second": {
+          "numerator": "4",
+          "denominator": "8"
+        },
+        "relationPreserved": true
+      },
+      "maxSourceDenominator": "8"
+    },
+    {
+      "id": "equivalent-unreduced-and-reduced-swapped",
+      "sourceForms": {
+        "first": {
+          "numerator": "1",
+          "denominator": "2"
+        },
+        "second": {
+          "numerator": "4",
+          "denominator": "8"
+        }
+      },
+      "relation": "equal",
+      "relationCode": 0,
+      "positiveProper": true,
+      "numeratorGap": {
+        "first": "1",
+        "second": "4"
+      },
+      "derivedCommonUnitCheck": {
+        "denominator": "8",
+        "first": {
+          "numerator": "4",
+          "denominator": "8"
+        },
+        "second": {
+          "numerator": "4",
+          "denominator": "8"
+        },
+        "relationPreserved": true
+      },
+      "maxSourceDenominator": "8"
+    }
+  ]
+}
