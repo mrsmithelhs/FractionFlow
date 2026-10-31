@@ -6,6 +6,20 @@ and pause records retained later in this file.
 
 ## Current board and owner direction
 
+2026-10-31: Plan39 finishing delivery 2c88e03/dae242f remains NOT ACCEPTED.
+Read repair-04-finishing-orchestration-review.md: original normal-size collapse
+and seed checks fixed, but normal -> 200% -> normal unplaced font cycle leaves
+stale tray minima; subsequent drop shifts axis -61.75px at 360 and 1366. Parent
+reproduced current-source Chrome, isolated evidence in finishing-review folder,
+and reran 8/8 tests. Narrow intrinsic-size recomputation correction only; no new
+mechanism or advisor. No product/status edits. Owner packet/index edits preserved.
+Standing reviewer amendment DECISION-052: Terra medium for substantial implementer
+reviews when judged appropriate and cross-harness review unless inline efficient;
+no duplicate parent Terra if implementer used one that delivery turn. No Sol/Astra.
+Plan23 is the remaining existing unused tooling packet (draft); next recommended
+new docs-only packet is magnitude-comparison design from phase-4 notes. Neither
+has been started; no new implementation/chat or Bootstrap write authorized.
+
 Plan 39 Repair 04 review 2026-10-27: a451949 is NOT YET ACCEPTED. Read
 repair-04-orchestration-review.md and repair-04-finishing-brief.md in its report
 folder. Parent reproduced tray collapse moving the axis up 19.75px DURING initial

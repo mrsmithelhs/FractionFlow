@@ -94,6 +94,21 @@ unavailable, review inline or use orchestrator-gate-only disposition; do not
 silently substitute. This supersedes the earlier Sol-only orchestrator restriction
 and generic higher-tier advice; mechanism, owner and deployment gates still apply.
 
+### Owner review-model amendment (2026-10-31)
+
+Codex implementers may use one bounded, read-only Terra-medium reviewer pass when
+orchestration judges the implementation substantial. Use a cold self-contained
+brief and a default role that honors gpt-6.1-terra at medium effort. For
+cross-harness delivery review, orchestration uses Terra medium unless the work
+can be inspected efficiently inline. Do not run a duplicate orchestrator Terra
+pass when the implementer already used one for that delivery turn. Independent
+artifact verification remains required; inspect significant concerns in the
+orchestrator thread. No Sol or Astra review is authorized by this amendment.
+Do not silently substitute an unavailable configuration. Preserve no-fan-out,
+consultation disposition, owner acceptance and deployment gates. This amendment
+supersedes the 2026-10-24 Luna default where the rules above apply; implementation
+settings and existing historical consultation attributions are unchanged.
+
 <!-- bootstrap:advisor-consultation v1 begin -->
 Owner amendment 2026-10-24 supersedes the Sol-default review guidance above:
 default read-only review subagents to Luna at high effort, cold context and a

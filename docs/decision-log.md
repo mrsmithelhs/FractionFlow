@@ -1386,3 +1386,17 @@ hypothesis, not evidence of measured effectiveness, cost or learner benefit.
 Record actual capabilities and review limits. Earlier Sol reviews retain their
 actual historical attribution. See the owner amendment in AGENTS.md.
 
+
+### DECISION-052 - Bounded Terra-medium review and no duplicate review pass
+
+**Date:** 2026-10-31
+
+**Decision:** The owner permits Codex implementers to use a Terra-medium read-only
+review when orchestration judges their work substantial. Cross-harness review
+uses Terra medium unless efficient inline inspection is sufficient. Orchestration
+must not duplicate an implementer's Terra pass on the same delivery turn; retain
+independent artifact checks and inspect significant concerns in the parent thread.
+Use cold context and a default role honoring the requested model/effort, no silent
+substitution, no Sol/Astra authorization, and existing acceptance/deployment gates.
+This refines DECISION-051 without relabeling past Luna/Sol reviews or changing
+implementation settings. It is review policy, not a measured efficiency claim.
