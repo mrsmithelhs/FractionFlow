@@ -6,6 +6,17 @@ and pause records retained later in this file.
 
 ## Current board and owner direction
 
+Plan45 dispatch preparation 2026-10-31: owner set direction to begin, packet now
+IN-PROGRESS and preflight RUNNABLE. Owner will create a separate Codex implementer;
+no chat/child launched by orchestration. Short handoff directs Requirement0 stop,
+Plan44 adopted one-model contract, one Terra-medium review for substantial work,
+no duplicate parent Terra, no Sol/Astra/fan-out, pure checkpoint and final evidence.
+Plan23/39/44 are complete. Next-wave recommendation is bounded remaining Phase4
+representation design/implementation, not declaring Phase4 done or entering mixed
+number/adaptive runtime. Keep multi-placement/equivalence, comparison/distance,
+whole-boundary bridge and evidence-tooling obligations visible; no new wave packet
+or source work is authorized solely by discussing readiness.
+
 Owner adoption 2026-10-31: Plan44 COMPLETE. DECISION-053 and Plan44 report-folder
 adopted-task-contract.md bind symbolic-first inequality + Check, ONE chosen model
 per problem before acceptance, paired verification afterward, one help disclosure,

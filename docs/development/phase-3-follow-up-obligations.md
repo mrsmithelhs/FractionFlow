@@ -5,7 +5,7 @@ Owner dispositions include DECISION-035–046; current closure staging updated
 and review triggers, not implementation assignments or claims of delivered behavior.
 Plans 30/31/32, 19 and 17 are owner accepted and complete. Plans 20, 29, 33, 34,
 35, 36, 37 and 38 are also owner accepted and complete. Plan 18 is owner accepted and complete,
-including the simpler side-choice question; Plan 23 remains draft. Plan 32's accepted production
+including the simpler side-choice question; Plan 23 is owner-accepted and complete. Plan 32's accepted production
 authoring does not authorize further family expansion or deployment.
 Plan 26 is technically and owner accepted and
 complete. Plans 21, 22, 24 and 25 are complete. Remaining mechanism and
@@ -52,6 +52,8 @@ the [WWC fractions practice guide](https://ies.ed.gov/ncee/WWC/PracticeGuide/15/
 and the [2025 IES toolkit Module 3](https://ies.ed.gov/ncee/rel/fractions-grade-6/pdf/Module3_FacilitatorGuide.pdf).
 These are starting sources for a future bounded investigation, not a completed
 FractionFlow research review or evidence that its present models teach those operations.
+
+Current Phase 4 disposition (2026-10-31): Plan39 is owner-accepted and complete; Plan44 symbolic-first comparison design is adopted with ONE CHOSEN MODEL PER PROBLEM. Plan45 is in-progress with its pre-source mechanism gate intact. Number-line equivalence/ordering, multi-placement, comparison-to-distance, multi-whole transfer and the Phase4 exit remain future obligations. Earlier drafted/awaiting-acceptance wording in historical rows does not reopen completed packets or authorize new tasks.
 
 ## Maintainability checkpoints adopted with Plan 42 (DECISION-048)
 

@@ -1,11 +1,9 @@
 ---
 id: plan-45
 title: Symbolic Fraction Comparison with One Requested Model
-status: ready
+status: in-progress
 depends_on: [plan-39, plan-42, plan-43, plan-44]
 gate: "Requirement 0: approve comparison admission, instructional/scene and response ownership, one-model lock, support/help, compatibility/replay and bounded evidence mechanism before source. Staged technical review and owner rendered/agency acceptance precede closure; deployment remains separate."
-superseded_by: null
-resolution: null
 summary: >-
   Deliver the owner-adopted symbolic-first proper-fraction comparison task and
   compact 12-pair batch: one inequality response, optional help with one chosen
