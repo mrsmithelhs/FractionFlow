@@ -2,32 +2,43 @@
 
 ## Overall summary
 
-Completed the Requirement 0 bounded-scope proposal and stopped at the required orchestrator approval gate. The proposal identifies two serious candidate learner tasks, the limited current-source seams to trace, existing design/review evidence to reuse, falsifiable feasibility and eligibility claims, pedagogical hypotheses that source inspection cannot settle, and a fixed stopping point for targeted research. No comparison feature was implemented and the design dossier has not been expanded.
+Completed the approved report-only investigation and recommended one first task: direct comparison of two positive proper-fraction amounts using truthful equal-whole bars, one fully spoken less/equal/greater judgment, deliberate Check, and a 12-item fixed illustrative batch. The dossier defines recovery/help, linear and keyboard/touch participation, More/Less consequences, exact eligibility, source seams, replay boundaries, and later comparison-to-line/distance obligations. It leaves the learner task, response grammar, and support contract proposed for owner adoption. No comparison feature or implementation packet was created.
 
 ## Files changed
 
-- `reports/development/plan-44-fraction-magnitude-comparison-design/scope-proposal.md` — bounded scope proposal.
-- `reports/development/plan-44-fraction-magnitude-comparison-design/progress.md` — this checkpoint report.
+- `reports/development/plan-44-fraction-magnitude-comparison-design/comparison-design.md`
+- `reports/development/plan-44-fraction-magnitude-comparison-design/evidence/exact-examples.mjs`
+- `reports/development/plan-44-fraction-magnitude-comparison-design/evidence/exact-examples.json`
+- `reports/development/plan-44-fraction-magnitude-comparison-design/progress.md` — this report, committed separately last.
 
-The pre-existing edit to `docs/development/plan-39-number-line-locate-and-bar-bridge-batch.md` was present before work and was not modified or staged.
+Requirement 0 artifacts remain committed as `scope-proposal.md` (`8bf8964`) and `progress.md` checkpoint (`08a50e3`). Requirement 0 approval is recorded in `scope-approval.md` at source revision `0a5904f46980f3438323a7d8fba893b4a329b771`.
 
-## Artifacts and evidence
+## Evidence and commands
 
 - Re-ran `node scripts/dev/plan-status.js check 44`: `RUNNABLE: plan-44 is ready to implement`.
-- Initial `git status --short --branch`: `main...origin/main [ahead 98]`; one pre-existing modified Plan 39 packet.
-- Recorded starting HEAD: `93d62db8c8e07adb8caf96f770fd074e14a5c610`.
-- Read `AGENTS.md`, the implementer starting prompt, Plan 44, the existing Phase 4 comparison notes, and both skeptical review records to define this proposal. Also read the repository orientation documents surfaced by the guide.
+- Read the approved scope, Phase 4 comparison notes, both skeptical review records, Plans 29/37/42/43 design/acceptance artifacts, Plan 39's current packet and latest Repair 04 finishing review, relevant founding sections, and the bounded math/content/interaction/scene/render/support/replay seams.
+- `node reports/development/plan-44-fraction-magnitude-comparison-design/evidence/exact-examples.mjs`: passed. It used the existing exact APIs to derive the relation and common-unit conversion for each pair, checked positive proper-fraction/denominator eligibility and relation preservation, and wrote the JSON evidence. Derived counts are four less, four equal, and four greater; every source denominator is at most 10. The `3/5` vs `3/7` audit LCD of 35 exceeds the current 30-part ceiling; that audit form is not part of the proposed learner task.
 - `node scripts/dev/plan-status.js lint`: passed (`lint: OK (no violations)`).
-- `git diff --check`: passed; Git emitted only its existing LF-to-CRLF working-copy warning for the unrelated Plan 39 edit.
+- Verified the proposal's cited local source/report paths exist.
+- `git diff --cached --check`: passed after removing two detected Markdown trailing spaces.
+- The design/evidence commit is `37eaf70` (`docs(plan-44): recommend first fraction comparison slice`). It contains only the three dossier/evidence paths listed above.
 
-## Validation and limits
+No unit suite, application build, browser route, learner observation, or new external literature search was run. The exact probe is report evidence, not a product test or production-content validator. No automatic advisor consultation was warranted for this report-only work; the scoped probe has no product/runtime behavioral surface.
 
-No current source seam was traced and no deterministic math example was run: those are part of the post-approval dossier scope. No learner understanding, engagement, accessibility in actual assistive technology, or comparative instructional benefit is claimed. This is docs/report checkpoint work, so advisor consultation was not warranted.
+## Findings and limits
 
-The first commit saved `scope-proposal.md` only. The progress report will be committed separately as the final action for this checkpoint. No packet metadata, board, source, tests, tooling, canonical docs, Phase 4 notes, or concurrent Plan 39 work was changed.
+Current `src/math` already supplies exact fraction comparison, equality, benchmark, denominator conversion, and simplification APIs. Current content family admission and beat scheduling are addition/subtraction-specific; a comparison learner task needs a bounded task record, eligibility, instructional response/classification, scene projection, response control and replay identity. The design proposes those extensions without adding a compare arithmetic operation or choosing a replay version.
 
-## Remaining gate
+The task's visible bars intentionally convey the relation because model reading is the intended learner responsibility. The correctness-bearing relation remains absent from scene and accessible output until Check accepts the submitted response. Code and arithmetic evidence do not establish visual readability, screen-reader usability, learner understanding, engagement, anti-guessing effects, or transfer.
 
-**Awaiting orchestrator approval of `scope-proposal.md`.** Do not proceed to `comparison-design.md`, current-source verification, or exact-example checks until that approval arrives. After approval, return for the bounded Plan 44 dossier work. Owner design adoption remains required before any implementation packet.
+Current Plan 39 remains in progress. Its latest Repair 04 finishing review records a remaining tray-shrink/axis-jump issue; rendered owner acceptance and deployment remain gated. The dossier keeps line comparison downstream of Plan 39 closure and a separate packet. Plan 43 owner acceptance supports direct Next/final return, with its review's coverage limits preserved.
 
-**Ready for orchestrator review:** yes — Requirement 0 proposal only; packet remains in progress.
+## Concurrent work preserved
+
+The initial status contained a pre-existing Plan 39 packet edit. During this task, Plan 23 tooling changes and an orchestration `reports/orchestration/session-handoff.md` edit also appeared. None were staged, modified, reverted, or committed by this work. Git metadata permissions required narrowly scoped elevation for the explicit Plan 44 add/commit commands; no push or deployment occurred.
+
+## Remaining gates
+
+**Ready for orchestrator review:** yes — design and exact-example evidence are committed.
+
+The orchestrator should review the recommendation and route the following proposed decisions to the owner: adopt direct honest-bar comparison as the first purpose; adopt the spoken three-way relation group with Check and 44px targets; retain the same truthful models and fixed batch across existing More/Less levels with a local cue difference; defer common-unit construction, line comparison and compare-and-distance. Owner design adoption must precede any implementation packet. No packet status or canonical decision was changed.
