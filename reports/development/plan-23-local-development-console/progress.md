@@ -102,14 +102,14 @@ descendant-tree guarantee from a port check alone.
   reported no file edits or tests. A distinct immediate status snapshot before
   primary repair edits was not captured, so structural read-only isolation is
   not claimed.
-- Findings: all three findings were accepted and repaired inline. (1) Startup
-  cancellation and failed listen now await the startup promise and invoke
-  `server.close()` even before listening; close errors return `stop-error` and
-  do not send a false stopped acknowledgement. (2) Cleanup and deletion retain
-  entry identity, preventing a delayed earlier child from stopping or removing
-  its replacement. (3) A ChildProcess `error` with a live PID is treated as an
-  IPC/process communication error, not as proof the child exited. Tests cover
-  each path, including actual strict-port collision followed by Exit.
+- Reviewer findings (attribution clarified by orchestration 2026-10-31): all
+  three were accepted and repaired: startup cancellation must close Vite even
+  before listening; cleanup must retain entry identity across replacement;
+  strict-port/listen failure must close an already-created server before exit.
+- Separate parent feedback addressed overlapping cleanup, starting-vs-ready
+  status, IPC errors not proving process exit, and guarding the real Windows
+  command-execution test for the Ubuntu CI job. These are parent findings,
+  not additional findings attributed to the Terra-requested reviewer.
 - No findings were rejected. One review pass ran; no second review was used.
 
 ## Problems and follow-ups

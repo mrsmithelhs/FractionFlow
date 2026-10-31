@@ -1,7 +1,7 @@
 ---
 id: plan-23
 title: Local Development Console
-status: in-progress
+status: delivered
 depends_on: [plan-01]
 gate: "Requirement 0: propose the menu, Windows package-script invocation and owned-server lifecycle mechanism before source work. Technical review and owner live start/stop acceptance before completion. No remote operations or deployment."
 summary: >-
