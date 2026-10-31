@@ -55,6 +55,18 @@ FractionFlow research review or evidence that its present models teach those ope
 
 Current Phase 4 disposition (2026-10-31): Plan39 is owner-accepted and complete; Plan44 symbolic-first comparison design is adopted with ONE CHOSEN MODEL PER PROBLEM. Plan45 is in-progress with its pre-source mechanism gate intact. Number-line equivalence/ordering, multi-placement, comparison-to-distance, multi-whole transfer and the Phase4 exit remain future obligations. Earlier drafted/awaiting-acceptance wording in historical rows does not reopen completed packets or authorize new tasks.
 
+## Draft next-wave design staging (2026-10-31)
+
+Plans46–48 are draft report-only packets, not assigned work or accepted tasks:
+
+- Plan46: three-fraction number-line collection, ordering/equivalence and honest co-location.
+- Plan47: comparison-to-distance subtraction bridge, with one first source recommendation after Plan45 adoption.
+- Plan48: whole-boundary [0,2] bridge and mixed-number entry readiness, retaining Roadmap37/91 and OQ-24 owner gates.
+
+Each owns a separate report folder and may investigate against a pinned baseline while Plan45 proceeds, once explicitly started and preflight passes. No new representation/source activation or Phase4 exit is authorized by drafting. Prefer Plan46 as the first new task-design dispatch, Plan47 alongside/after the comparison implementation, and Plan48 as a later readiness/design synthesis refreshed against actual accepted work.
+
+The bounded representation-evidence tooling slice remains to be separately scoped before another source representation verifier needs it; serialize shared harness edits with Plan45. Feature implementation successors are written only after design adoption. This wave does not silently drop active simplification, operation movement, larger-denominator investigation, adaptation/session/local-progress or multiplication/division follow-ups.
+
 ## Maintainability checkpoints adopted with Plan 42 (DECISION-048)
 
 These are explicit review obligations, not approval to expand Plan 42's source scope.

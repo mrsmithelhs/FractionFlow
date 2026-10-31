@@ -6,6 +6,17 @@ and pause records retained later in this file.
 
 ## Current board and owner direction
 
+Next-wave drafts 2026-10-31: Plans46/47/48 now DRAFT only: number-line collection/
+equivalence, comparison-to-distance subtraction, and whole-boundary/mixed-entry
+readiness. Each is report-only with own report folder, Requirement0 scope stop
+and owner task adoption; no investigators started. Prefer46 first,47 as comparison
+contracts settle,48 later readiness synthesis; no automatic Phase4 exit/Phase5
+activation. Evidence-tooling source slice remains a separate scoped follow-up
+serialized with Plan45 harness work; source successors wait for adopted designs.
+FF Impl45 is active (owner explicitly authorized bidirectional supervision) and
+sent Requirement0 proposal a4531c9/checkpointded0239; review now pending. Orchestrator
+has no shared source/build work in flight. No push/deployment or new chats launched.
+
 Plan45 dispatch preparation 2026-10-31: owner set direction to begin, packet now
 IN-PROGRESS and preflight RUNNABLE. Owner will create a separate Codex implementer;
 no chat/child launched by orchestration. Short handoff directs Requirement0 stop,
