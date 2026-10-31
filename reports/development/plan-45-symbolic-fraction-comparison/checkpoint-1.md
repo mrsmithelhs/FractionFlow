@@ -237,12 +237,21 @@ Commands run:
 - `git diff --check` — passed.
 
 The new tests derive each of the 12 actual registered item relations through the
-exact classifier, verify each item resolves under its actual identity, preserve
-raw forms, test 4/4/4 balance and <=10 source denominators, validate hint targets,
+math core's `compareFractions` API as an independent oracle, then submit all three
+relation choices for each item and verify exactly one resolves. They preserve raw
+forms, test 4/4/4 balance and <=10 source denominators, validate hint targets,
 reject malformed records/contexts/intents, and exercise lock/no-op/refusal,
 wrong/revised response, equality, and More/Less invariants. Existing interaction,
-provenance/replay and Plan 40 tests passed as compatibility witnesses. No route
-matrix, context map, fixture, replay schema, or historical artifact changed.
+provenance/replay and Plan 40 tests passed as compatibility witnesses. Review
+corrections also verify that omitted `activeCondition` receives the documented
+default while explicit `null` is refused by both constructors, and pin the
+comparison condition's registered ID/revision. No route matrix, context map,
+fixture, replay schema, or historical artifact changed.
+
+The orchestrator's Checkpoint 1 review is recorded in
+`checkpoint-1-review.md`. Its bounded correction disposition was applied in
+`b04c356`; no integration scope was authorized by that review. This artifact is
+being resubmitted for the renewed Checkpoint 1 approval gate.
 
 No build, route matrix, browser, mounted renderer, device, or accessibility run
 was conducted: those are outside this checkpoint. No Terra pass was used here;
