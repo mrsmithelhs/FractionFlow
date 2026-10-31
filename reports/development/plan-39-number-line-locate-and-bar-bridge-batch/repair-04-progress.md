@@ -1,79 +1,85 @@
 # Plan 39 Repair 04 — Implementer Progress Report
 
-Date: 2026-10-24. Implementer handoff for FractionFlow Plan 39, Repair 04.
-
-This repair delivers the adopted presentation, layout, and affordance repairs specified in `repair-04-brief.md` and approved by orchestration in `reports/development/plan-39-number-line-locate-and-bar-bridge-batch/repair-04-mechanism-approval.md` (commit `9036a6c`).
+Date: 2026-10-31. Implementer handoff for FractionFlow Plan 39, Repair 04 (including the finishing pass authorized in commit `138f6cf` per `repair-04-orchestration-review.md` and `repair-04-finishing-brief.md`).
 
 ---
 
 ## 1. Scope and Implementation Summary
 
-1. **Starting Tray**:
+This repair delivers the adopted presentation, layout, affordance, and progression repairs specified in `repair-04-brief.md` (approved in `9036a6c`) and addresses the two confirmed issues from orchestration review (`138f6cf`):
+
+1. **Starting Tray & Footprint Stability**:
    - Implemented `.plan39-token-tray` within `.plan39-intro-header`: pale yellow (`#fefce8`), subtly dashed border (`1.5px dashed #ca8a04`), rounded corners (`border-radius: 0.5rem`), min-width 56px, min-height 52px, padding `0.25rem 0.5rem`.
-   - On wide viewports, sits beside the prompt in an alignment container (`.plan39-header-region`). On narrow viewports (`<= 32rem`), wraps cleanly below the prompt aligned toward the right, maintaining >= 26px clear separation from the number line.
-   - Clearly outside the coordinate area; starts with no implied initial answer or marker at 1/2.
+   - On wide viewports, sits beside the prompt in an alignment container (`.plan39-header-region`). On narrow viewports (`<= 32rem`), wraps cleanly below the prompt aligned toward the right, maintaining $\ge 26\text{px}$ clear separation from the number line without implying an initial answer.
+   - **Tray Collapse & Axis Stability Fix**: Added `syncTrayFootprint()` in `src/render/number-line-locate.js`. When the token is in the tray, its occupied size is measured and locked onto `tray.style.minWidth` and `tray.style.minHeight`. When the token becomes `position: fixed` during drag or is reparented to `stack` upon placement, the tray retains its exact occupied dimensions (width 66px, height 71.75px).
+   - Document-coordinate before/during/after measurements verify that the axis shift during first drag, after placement, during placed-token repositioning, and after Escape cancellation is exactly **0.00px** (catching and resolving the prior 19.75px jump).
+   - Recomputation is dynamic: `ResizeObserver` observes both the axis frame and the token, safely updating the tray footprint for enlarged type (e.g. 200% zoom) and window resize without locking stale geometry.
 2. **Draggable Affordance**:
-   - Unplaced and placed pending tile (`.plan39-repair-token`) is opaque white (`#ffffff`) with rounded border (`2px solid var(--app-border)`), intrinsic content width and height, and min touch target 48x48px.
-   - On real hover devices (`@media (hover: hover)`), shows light gray hover feedback (`#f1f5f9`) when not dragging. Cursors provide `grab` and `grabbing` feedback.
-   - When placed, the tile moves out of the tray into `.plan39-representation-stack` with no duplicate left behind. Reset or re-entry returns it cleanly to the starting tray.
-   - Keyboard steppers, linear view radios, non-drag controls, grab cue lifecycle, and token text containment are preserved.
+   - Draggable tile (`.plan39-repair-token`) is opaque white (`#ffffff`) with rounded border (`2px solid var(--app-border)`), intrinsic content width and height, and minimum touch target $48\times 48\text{px}$.
+   - Shows light gray hover feedback (`#f1f5f9`) under `@media (hover: hover)` when not dragging; cursors provide `grab` and `grabbing` feedback.
+   - When placed, the tile moves out of the tray into `.plan39-representation-stack` above the line without duplicate elements. Reset or re-entry returns it cleanly to the tray.
+   - Touch tap, non-drag controls, grab cue lifecycle, and token text containment are preserved.
 3. **Accepted Result Header**:
-   - Appears only after a correct Check in `.plan39-accepted-header`: soft light green background (`#f1faf4`), border (`1px solid #b8d3c3`), rounded corners (`0.5rem`), padding `0.75rem 1rem`.
+   - Appears only after correct Check in `.plan39-accepted-header`: soft light green background (`#f1faf4`), border (`1px solid #b8d3c3`), rounded corners (`0.5rem`), padding `0.75rem 1rem`.
    - Displays "That’s right." on the left (`.plan39-accepted-text`) and a compact stacked fraction (`.plan39-accepted-fraction`) on the right in `.plan39-accepted-fraction-wrapper` without border, shadow, grab, hover, or dragging affordances.
    - Green never appears for unplaced or incorrect placements.
 4. **Separated, Aligned Graphics**:
-   - In visual view, `.plan39-source-figure.plan39-accepted-bar-figure` renders below the accepted header with vertical separation of 21.56px - 23.95px (within the 20–24 CSS px target range) between the lower edge of the bar and the number-line axis.
+   - In visual view, `.plan39-source-figure.plan39-accepted-bar-figure` renders below the accepted header with vertical separation of $21.56\text{px}\text{--}23.95\text{px}$ (within the $20\text{--}24\text{ CSS px}$ range) between the lower edge of the bar and the line axis.
    - Horizontal zero and one coordinates remain exactly aligned with the line; the SVG connector overlay (`.plan39-accepted-connector`) is preserved from the shaded bar endpoint to the accepted coordinate.
+   - SVG connector endpoints were directly asserted: `(x1, y1)` aligns with the bar's shaded fraction endpoint, and `(x2, y2)` aligns with the accepted point on the axis line.
 5. **Plan 43 Shared Progression Integration**:
    - Consumes `getProgression()`: "Next problem" advances directly to item 2 with clean fresh locate state and unplaced token in the starting tray.
-   - Fast-forward to final item 8 (`bridge-08-five-sixths-med`) displays "Back to start" and the exhaustion notice (`You’ve tried every problem in this set.`); clicking returns to the entry view.
+   - Verified that after clicking "Next problem", deliberate keyboard focus moves to `<main class="app-episode">` (`MAIN.app-episode`).
+   - Fast-forward across all 8 items to final item (`bridge-08-five-sixths-med`) displays "Back to start" and the exhaustion notice (`You’ve tried every problem in this set.`); clicking returns to the entry view.
 
 ---
 
-## 2. Changes Made
+## 2. Changes Made in Finishing Pass
 
 - `src/render/number-line-locate.js`:
-  - Added `makeRepairAcceptedBar` to generate the accepted source bar figure without duplicate text.
-  - Updated `update(scene)`: unplaced/pending states wrap the prompt and starting tray in `.plan39-header-region.plan39-intro-header`; accepted state displays `.plan39-header-region.plan39-accepted-header` with borderless stacked fraction.
-  - Updated `setTokenPlacement(candidateId)`: unplaced state cleanly reparents `token` into `tray`; placed state reparents `token` into `stack` and positions it above the target coordinate. Explicitly removes node from parent before `appendChild` to maintain mock DOM compatibility.
-  - Updated `bindTokenDrag`: queries `token` from `root` so listeners bind when the tile starts in the tray; wraps pointer capture release in a safe try-catch on pointerup and pointercancel.
-- `src/app/styles.css`:
-  - Added CSS classes for `.plan39-header-region`, `.plan39-intro-header`, `.plan39-token-tray`, `.plan39-accepted-header`, `.plan39-accepted-fraction-wrapper`, `.plan39-accepted-bar-figure`, and `@media (max-width: 32rem)` responsive wrapping.
-  - Added light-gray hover feedback under `@media (hover: hover)`.
-- `tests/app-plan39-number-line.test.js`:
-  - Added 3 new comprehensive unit tests verifying starting tray movement without duplicates, accepted header behavior in visual and linear views, and Plan 43 progression advance and return.
-- `scripts/dev/plan39-repair03-route.mjs`:
-  - Added `await page.mouse.move(0, 0);` before `assertPlan39TokenContainment` measures resting geometry, ensuring the pointer is not hovering over the newly dropped tile when asserting the unhovered opaque white background.
+  - Added `syncTrayFootprint()`: measures occupied tray footprint from `token` geometry, padding, and borders, reserving `tray.style.minWidth` and `tray.style.minHeight`.
+  - Added `token` observation to `ResizeObserver` so changes in font size or geometry immediately recompute tray reservations without stale locks.
+  - Called `syncTrayFootprint()` in `refreshGeometry()`, `bindTokenDrag` pointerdown, and `setTokenPlacement` so the tray footprint is guaranteed stable across all interaction states (unplaced, dragging, placed, repositioning, and canceled).
 - `scripts/dev/plan39-repair04-witness.mjs`:
-  - Dedicated Repair 04 Playwright witness script verifying 4 viewports, geometric clearances, enlarged type containment, fast-forward progression, and 4 negative controls.
+  - **Negative Controls**: Made all seeds pure injection-only with ordinary assertions:
+    - `seed-tile-overflow`: mutates tile height to 44px; fails ordinary `assert(!initialContainment.overflow)`.
+    - `seed-tray-separation`: mutates tray position; fails ordinary `assert(traySeparation >= 12)`.
+    - `seed-premature-green`: prepends accepted header before Check; fails ordinary `assert.equal(acceptedHeaderCount, 0)`.
+    - `seed-progression-redundancy`: intercepts click event on progression button; fails ordinary `assert.equal(nextItemId, 'bridge-02-fourth-4')` on standard single click.
+    - `seed-tray-collapse`: mutates tray height to 52px during drag; fails ordinary `assert(Math.abs(axisShiftDuring) <= 1)`.
+  - **Stability Assertions**: Added before/during/after measurements of axis document coordinates and tray width/height for first drag, placement, repositioning drag, and Escape cancellation, asserting shift $\le 1\text{px}$.
+  - **Small Witness Assertions**: Added assertions for `trayOutsideBand` (strictly above axis frame hit band), SVG connector endpoints `(x1, y1)` and `(x2, y2)`, and focus landing on `MAIN.app-episode` after Next problem.
+  - **Linear View Path**: Added linear view verification and screenshots (`linear-${vp.label}.png`) for all target viewports.
+  - **Failure Receipts**: Outputted exact failure receipts for each seed run (`repair04-seed-${seed}-receipt.json`).
 - `reports/development/plan-39-number-line-locate-and-bar-bridge-batch/evidence/repair04-current/`:
-  - 17 screenshots and `repair04-witness-receipt.json` covering initial, pending, accepted, next-item, wrong-answer, and final exhaustion states across all target viewports.
+  - Refreshed 22 screenshots, clean witness receipt `plan39-repair04-witness-receipt.json`, and all 5 seed receipts.
 
 ---
 
 ## 3. Verification and Evidence
 
 - **Unit Tests**:
-  - `npm test`: 534 passed in 57 files.
+  - `npm test`: 534 passed in 57 files (`tests/app-plan39-number-line.test.js` passed 8/8).
 - **Production Builds**:
-  - `npm run build`: Sequential learner and prototype builds completed cleanly.
+  - `npm run build`: Sequential learner and prototype builds completed cleanly with exit code 0.
 - **Dedicated Repair 04 Browser Witness (`scripts/dev/plan39-repair04-witness.mjs`)**:
-  - Executed across 4 required viewports: `360x740`, `360x752`, `1366x768`, and `1093x614 @ DPR 1.25`.
-  - **Bar bottom to axis clear space**: `21.56px` (mobile), `23.95px` (desktop), cleanly within 20–24 CSS px.
-  - **Starting tray separation**: `26.38px` (mobile), `29.58px` (desktop), cleanly >= 12px.
-  - **Enlarged type containment**: At 200% font size, tile and tray expand without clipping or spill.
-  - **Negative controls**: All 4 negative controls failed as expected:
-    - `--seed=seed-tray-separation`: detected (saw -151.5px separation).
-    - `--seed=seed-premature-green`: detected (accepted green header visible before correct Check).
-    - `--seed=seed-progression-redundancy`: detected (progression button exposed another step instead of advancing item).
-    - `--seed=seed-tile-overflow`: detected (fraction tile clipped or overflowing fixed height container).
-  - Unseeded clean receipt generated at `reports/development/plan-39-number-line-locate-and-bar-bridge-batch/evidence/repair04-current/repair04-witness-receipt.json`.
-- **Route Matrix Runs**:
-  - Filtered Repair 02 routes: 7 passed, 0 failed.
-  - Repair 03 anchor ring route `ROUTE-PLAN39-REPAIR03-ANCHOR-RING`: passed, 0 failed.
-  - All Plan 39 routes (`ROUTE-PLAN39`): 18 passed, 0 failed across historical-plan39-v7 and production-default-v8.
-  - All Plan 43 routes (`ROUTE-PLAN43`): 11 passed, 0 failed across direct progression contexts.
-  - **Full route matrix**: 112 browser witnesses passed, 0 failed across 110 route rows.
+  - Executed across all 4 required viewports: `360x740`, `360x752`, `1366x768`, and `1093x614 @ DPR 1.25`.
+  - **Axis shift during drag**: `0.00px` (before: 272.11px, during: 272.11px, pending: 272.11px).
+  - **Tray height during drag**: `71.75px` before, `71.75px` during, `71.75px` after.
+  - **Tray width during drag**: `66.00px` before, `66.00px` during, `66.00px` after.
+  - **Bar bottom to axis clear space**: `21.56px` (mobile), `23.95px` (desktop), within $20\text{--}24\text{ CSS px}$.
+  - **Starting tray separation**: `26.38px` (mobile), `29.58px` (desktop), cleanly $\ge 12\text{px}$ and `trayOutsideBand: true`.
+  - **Connector endpoints**: `x1 = 139px`, `y1 = 80px`, `x2 = 139px`, `y2 = 104px` matching bar fraction endpoint and axis point.
+  - **Next problem focus**: Active element confirmed as `<main class="app-episode">` (`isEpisode: true`).
+  - **Linear view path**: Verified accepted header without bar; captured `linear-*.png` across all viewports.
+  - **Enlarged type containment**: At 200% font size, tile and tray expand without clipping or spill (`enlarged-type-200.png`).
+  - **Negative control sensitivity (all pure injection, failed ordinary assertions)**:
+    - `--seed=seed-tile-overflow`: detected via `Fraction glyphs must be contained in tile`.
+    - `--seed=seed-tray-separation`: detected via `Starting tray must be clearly outside number-line region (saw -151.5px separation)`.
+    - `--seed=seed-premature-green`: detected via `No accepted header initially: 1 !== 0`.
+    - `--seed=seed-progression-redundancy`: detected via `Direct progression must advance to bridge-02-fourth-4: + 'bridge-01-half-2' - 'bridge-02-fourth-4'`.
+    - `--seed=seed-tray-collapse`: detected via `Axis position must remain stable during first drag (shifted -19.75px)`.
+  - All 5 failure receipts written to `evidence/repair04-current/`.
 - **Packet Preflight and Lint**:
   - `node scripts/dev/plan-status.js check plan-39`: exit code 0 (`RUNNABLE: plan-39 is ready to implement`).
   - `node scripts/dev/plan-status.js lint`: exit code 0 (`lint: OK (no violations)`).
@@ -84,18 +90,17 @@ This repair delivers the adopted presentation, layout, and affordance repairs sp
 ## 4. Advisor Consultation and Walkthrough Disposition
 
 - **Advisor Capability Check**:
-  - Consulted `advisor-capable-providers.json`. The active thread executes in the Antigravity (Google DeepMind) harness. This provider is not listed in `advisor-capable-providers.json` (which catalogues `claude-code`, `codex-cli`, and `kimi-code`).
-  - Following the implementer starting prompt Step 1 fail-closed rule: when a thread cannot confidently match itself to an entry in that file, it must treat itself as not advisor-capable.
-  - Declared branch: **Branch C — not advisor-capable (degraded mode: orchestrator-gate-only)**. No external Codex Luna consultation was run.
+  - Consulted `advisor-capable-providers.json`. The active thread executes in the Antigravity harness (Google DeepMind). This provider is not listed in `advisor-capable-providers.json`.
+  - Per the implementer starting prompt Step 1 fail-closed rule: **Branch C — not advisor-capable (degraded mode: orchestrator-gate-only)**.
+  - Per `repair-04-finishing-brief.md`, no new advisor consultation or mechanism round was requested for this bounded finishing pass; the completed cold Luna HIGH review remains recorded in orchestration review.
 - **Browser Walkthrough Pilot**:
-  - The pilot referenced in the brief and `docs/workflows/browser-walkthrough-review.md` was established for OpenAI Codex using a persistent REPL and Playwright CLI driver with cold Luna-medium reviewers.
-  - Because this provider cannot supply that Codex-specific environment or model tier, that pilot configuration was unavailable and was not run. The implementer reports this limitation directly. Verification is anchored in the comprehensive Playwright witness script, unit tests, and the full route matrix.
+  - As noted previously, the REPL Playwright pilot was designed for OpenAI Codex. Verification is anchored in the comprehensive Playwright witness script, unit tests, and route matrix.
 
 ---
 
 ## 5. What Remains Untested
 
-- Physical mobile/tablet touch hardware (touch events are verified in headless browser simulation).
+- Physical mobile/tablet touch hardware (touch events are verified in browser simulation).
 - Screen reader audio output (verified via DOM attributes, ARIA labels, roles, and focusability).
 - Pedagogical learner efficacy (verified against architectural and instructional state machine specifications).
 
@@ -103,7 +108,8 @@ This repair delivers the adopted presentation, layout, and affordance repairs sp
 
 ## 6. Commit Discipline and Working Tree State
 
-- Scoped implementation, tests, witness script, receipts, screenshots, and this progress report are staged by explicit paths.
+- Scoped implementation and evidence were committed first at `2c88e03` (`fix(plan39): preserve tray footprint during drag and refine repair 04 evidence`).
+- This updated progress report is committed separately last.
 - Owner uncommitted packet and index edits (`docs/development/README.md` and `docs/development/plan-39-number-line-locate-and-bar-bridge-batch.md`) were preserved untouched and unstaged.
-- Transient route-matrix output on other plan evidence folders was restored cleanly to Git head.
+- Parent review evidence in `evidence/orchestration-repair04-review/` was preserved untouched.
 - Packet frontmatter status, resolution, and owner acceptance records were not edited. No git push or deployment was performed.
