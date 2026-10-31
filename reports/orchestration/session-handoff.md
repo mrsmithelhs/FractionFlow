@@ -6,6 +6,19 @@ and pause records retained later in this file.
 
 ## Current board and owner direction
 
+Owner review 2026-10-31: Plans23 and39 are COMPLETE on explicit owner instruction
+("console works" / "number line looks good"). Acceptance files and resolutions
+record limits; no push/deployment. Plan44's direct two-aligned-bars task was NOT
+adopted: owner questions endpoint-reading giveaway and recalls requested single
+model. Plan44 returns IN-PROGRESS for bounded docs revision per its report-folder
+owner-feedback-revision-01.md. Recommend symbolic-first comparison with at most
+one requested model before acceptance, honest aligned verification afterward,
+and revisit one inequality response vs verbal choices without duplicate tasks.
+No source feature, new research/reviewer or new implementation packet authorized.
+Reuse exact examples and return to owner adoption gate. FF Impl44 communication
+remains authorized through completion; send the brief directly. Earlier technical
+acceptance of dossier was not owner adoption. FF Impl23 should hold after closure.
+
 Plan23 delivery review 2026-10-31: implementation 2391654, report b94e8f5
 TECHNICALLY ACCEPTED; status DELIVERED pending OWNER live menu/start-stop use.
 Read Plan23 orchestration-review.md. Parent reran all17 console tests on Windows,

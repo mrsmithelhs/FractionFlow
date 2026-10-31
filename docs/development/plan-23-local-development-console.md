@@ -1,7 +1,8 @@
 ---
 id: plan-23
 title: Local Development Console
-status: delivered
+status: complete
+resolution: "Owner accepted the working local development console on 2026-10-31 following technical acceptance bbc99c0 and live use. Cooperative owned-server lifecycle, menu and command runner accepted within documented platform limits. No push or deployment authorized."
 depends_on: [plan-01]
 gate: "Requirement 0: propose the menu, Windows package-script invocation and owned-server lifecycle mechanism before source work. Technical review and owner live start/stop acceptance before completion. No remote operations or deployment."
 summary: >-
