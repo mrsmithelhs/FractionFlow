@@ -1,11 +1,9 @@
 ---
 id: plan-23
 title: Local Development Console
-status: draft
+status: in-progress
 depends_on: [plan-01]
 gate: "Requirement 0: propose the menu, Windows package-script invocation and owned-server lifecycle mechanism before source work. Technical review and owner live start/stop acceptance before completion. No remote operations or deployment."
-superseded_by: null
-resolution: null
 summary: >-
   Make Bootstrap's adopted dev-console-hub guidance usable in FractionFlow:
   an npm run dev:console menu for local server start/stop, tests, builds and

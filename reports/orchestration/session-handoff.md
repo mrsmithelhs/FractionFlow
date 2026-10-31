@@ -6,6 +6,21 @@ and pause records retained later in this file.
 
 ## Current board and owner direction
 
+Owner dispatch preparation 2026-10-31: Plan23 and newly written Plan44 are both
+IN-PROGRESS and preflight RUNNABLE. Owner will start separate Codex implementer
+chats; orchestration has not created chats or launched children. Plan23 owns
+console tooling/package script/tests/usage docs; its mechanism stop precedes
+source. Substantial lifecycle work merits one Terra-medium read-only review.
+Plan44 is docs/report-only comparison task/first-slice design, owning only its
+report folder; scope proposal precedes dossier and owner adoption precedes any
+feature packet. Docs-only advisor is not automatic. No Plan39 completion dependency
+blocks this read-only design; later number-line activation still needs closure.
+Concurrent writes are disjoint; serialize any shared build/server resources and
+Git commits. Implementers do not edit packet/index/status or each other's files.
+Use DECISION-052 Terra policy without duplicate parent review. Plan39 still needs
+the narrow font-resize reservation correction in its finishing review. No push,
+deployment, Bootstrap writes or new product activation authorized by dispatch.
+
 2026-10-31: Plan39 finishing delivery 2c88e03/dae242f remains NOT ACCEPTED.
 Read repair-04-finishing-orchestration-review.md: original normal-size collapse
 and seed checks fixed, but normal -> 200% -> normal unplaced font cycle leaves
