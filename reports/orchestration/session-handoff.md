@@ -6,6 +6,19 @@ and pause records retained later in this file.
 
 ## Current board and owner direction
 
+Plan39 final Repair04 review 2026-10-31: 610e093/93d62db TECHNICALLY ACCEPTED,
+status DELIVERED pending OWNER rendered/agency acceptance. No further repair.
+Read repair-04-final-orchestration-review.md. Parent current-source Chrome at
+360 and 1366 verified normal -> enlarged -> normal restores 71.75px tray and
+zero axis shift during/after drop, linear result and fresh Next/focus. Parent
+8/8 focused tests pass; submitted clean four-viewport and five ordinary-seed
+receipts inspected. No new advisor/full-matrix run; earlier Luna retains actual
+attribution. Independent proof in evidence/orchestration-repair04-final-review/.
+Owner should inspect final tray/drag, green header, aligned graphics and direct
+progression before closure. No push/deployment. Earlier blocked repair notes are
+historical. Plan23 continues approved cooperative lifecycle implementation;
+Plan44 remains delivered for owner design adoption. Preserve concurrent writers.
+
 Latest Plan23 update 2026-10-31: replacement lifecycle proposal APPROVED in
 f9b19e1 / Plan23 mechanism-amendment-01.md and delivered directly to FF Impl23.
 Source gate reopened for one private-IPC Node child using installed Vite API and
