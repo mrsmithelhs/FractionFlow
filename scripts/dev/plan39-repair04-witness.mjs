@@ -203,6 +203,38 @@ export async function runRepair04Witness({ seed = null } = {}) {
       // Screenshot: Initial State
       await page.screenshot({ path: path.join(evidenceDir, `initial-${vp.label}.png`), fullPage: false });
 
+      // 1b. Unplaced Normal -> Enlarged -> Normal Cycle Check
+      // Verify tray expands with enlarged type while unplaced and shrinks back to restored footprint
+      let restoredUnplacedGeom = null;
+      if (!seed) {
+        await page.evaluate(() => { document.documentElement.style.fontSize = '32px'; });
+        await page.evaluate(() => new Promise((resolve) => requestAnimationFrame(() => requestAnimationFrame(resolve))));
+        const enlargedUnplacedGeom = await measureGeometry(page);
+        const enlargedUnplacedContainment = await assertTokenContainment(page);
+        assert(!enlargedUnplacedContainment.overflow, 'Enlarged type fraction glyphs contained in unplaced tile');
+        assert(
+          enlargedUnplacedGeom.tray.height >= enlargedUnplacedContainment.height,
+          `Enlarged tray (${enlargedUnplacedGeom.tray.height}px) must contain enlarged tile (${enlargedUnplacedContainment.height}px)`
+        );
+
+        // Restore normal font size
+        await page.evaluate(() => { document.documentElement.style.fontSize = ''; });
+        await page.evaluate(() => new Promise((resolve) => requestAnimationFrame(() => requestAnimationFrame(resolve))));
+        restoredUnplacedGeom = await measureGeometry(page);
+        assert(
+          Math.abs(restoredUnplacedGeom.tray.height - initialGeom.tray.height) <= 1,
+          `Tray height must safely shrink back to initial size after font reset (saw ${restoredUnplacedGeom.tray.height}px, expected ${initialGeom.tray.height}px)`
+        );
+        assert(
+          Math.abs(restoredUnplacedGeom.tray.width - initialGeom.tray.width) <= 1,
+          `Tray width must safely shrink back to initial size after font reset (saw ${restoredUnplacedGeom.tray.width}px, expected ${initialGeom.tray.width}px)`
+        );
+        assert(
+          Math.abs(restoredUnplacedGeom.axisLine.top - initialGeom.axisLine.top) <= 1,
+          `Axis top must return to initial position after unplaced font reset (saw ${restoredUnplacedGeom.axisLine.top}px, expected ${initialGeom.axisLine.top}px)`
+        );
+      }
+
       // 2. Drag from Tray to Number Line
       const gesture = await beginTokenDrag(page, { view: 'visual' });
       await moveTokenDrag(page, gesture, { ratio: 0.5 });
@@ -470,6 +502,7 @@ export async function runRepair04Witness({ seed = null } = {}) {
       receipts.push({
         viewport: vp,
         initialGeom,
+        restoredUnplacedGeom,
         duringGeom: { axis: duringGeom.axisLine, tray: duringGeom.tray },
         pendingGeom: { axis: pendingGeom.axisLine, tray: pendingGeom.tray, token: pendingGeom.token },
         acceptedGeom,

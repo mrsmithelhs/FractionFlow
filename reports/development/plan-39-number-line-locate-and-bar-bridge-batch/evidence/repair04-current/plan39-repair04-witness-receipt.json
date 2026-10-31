@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-10-31T15:42:16.591Z",
+  "timestamp": "2026-10-31T16:55:01.187Z",
   "receipts": [
     {
       "viewport": {
@@ -9,6 +9,87 @@
         "dpr": 1
       },
       "initialGeom": {
+        "viewport": {
+          "width": 360,
+          "height": 740,
+          "dpr": 1
+        },
+        "header": {
+          "left": 25,
+          "right": 335,
+          "top": 145,
+          "bottom": 245.734375,
+          "width": 310,
+          "height": 100.734375
+        },
+        "introHeader": {
+          "left": 25,
+          "right": 335,
+          "top": 145,
+          "bottom": 245.734375,
+          "width": 310,
+          "height": 100.734375
+        },
+        "acceptedHeader": null,
+        "prompt": {
+          "left": 25,
+          "right": 314.71875,
+          "top": 145,
+          "bottom": 165.984375,
+          "width": 289.71875,
+          "height": 20.984375
+        },
+        "tray": {
+          "left": 269,
+          "right": 335,
+          "top": 173.984375,
+          "bottom": 245.734375,
+          "width": 66,
+          "height": 71.75
+        },
+        "token": {
+          "left": 278,
+          "right": 326,
+          "top": 178.984375,
+          "bottom": 240.734375,
+          "width": 48,
+          "height": 61.75
+        },
+        "stack": {
+          "left": 25,
+          "right": 335,
+          "top": 255.328125,
+          "bottom": 306.515625,
+          "width": 310,
+          "height": 51.1875
+        },
+        "frame": {
+          "left": 41,
+          "right": 319,
+          "top": 256.921875,
+          "bottom": 304.921875,
+          "width": 278,
+          "height": 48
+        },
+        "axisLine": {
+          "left": 41,
+          "right": 319,
+          "top": 272.109375,
+          "bottom": 275.109375,
+          "width": 278,
+          "height": 3
+        },
+        "bar": null,
+        "connector": null,
+        "resolution": null,
+        "finishBtn": null,
+        "barToAxisClearSpace": null,
+        "traySeparation": 26.38,
+        "trayOutsideBand": true,
+        "tokenInTray": true,
+        "tokenInStack": false
+      },
+      "restoredUnplacedGeom": {
         "viewport": {
           "width": 360,
           "height": 740,
@@ -440,6 +521,87 @@
         "tokenInTray": true,
         "tokenInStack": false
       },
+      "restoredUnplacedGeom": {
+        "viewport": {
+          "width": 360,
+          "height": 752,
+          "dpr": 1
+        },
+        "header": {
+          "left": 25,
+          "right": 335,
+          "top": 145,
+          "bottom": 245.734375,
+          "width": 310,
+          "height": 100.734375
+        },
+        "introHeader": {
+          "left": 25,
+          "right": 335,
+          "top": 145,
+          "bottom": 245.734375,
+          "width": 310,
+          "height": 100.734375
+        },
+        "acceptedHeader": null,
+        "prompt": {
+          "left": 25,
+          "right": 314.71875,
+          "top": 145,
+          "bottom": 165.984375,
+          "width": 289.71875,
+          "height": 20.984375
+        },
+        "tray": {
+          "left": 269,
+          "right": 335,
+          "top": 173.984375,
+          "bottom": 245.734375,
+          "width": 66,
+          "height": 71.75
+        },
+        "token": {
+          "left": 278,
+          "right": 326,
+          "top": 178.984375,
+          "bottom": 240.734375,
+          "width": 48,
+          "height": 61.75
+        },
+        "stack": {
+          "left": 25,
+          "right": 335,
+          "top": 255.328125,
+          "bottom": 306.515625,
+          "width": 310,
+          "height": 51.1875
+        },
+        "frame": {
+          "left": 41,
+          "right": 319,
+          "top": 256.921875,
+          "bottom": 304.921875,
+          "width": 278,
+          "height": 48
+        },
+        "axisLine": {
+          "left": 41,
+          "right": 319,
+          "top": 272.109375,
+          "bottom": 275.109375,
+          "width": 278,
+          "height": 3
+        },
+        "bar": null,
+        "connector": null,
+        "resolution": null,
+        "finishBtn": null,
+        "barToAxisClearSpace": null,
+        "traySeparation": 26.38,
+        "trayOutsideBand": true,
+        "tokenInTray": true,
+        "tokenInStack": false
+      },
       "duringGeom": {
         "axis": {
           "left": 41,
@@ -791,6 +953,87 @@
         "tokenInTray": true,
         "tokenInStack": false
       },
+      "restoredUnplacedGeom": {
+        "viewport": {
+          "width": 1366,
+          "height": 768,
+          "dpr": 1
+        },
+        "header": {
+          "left": 347,
+          "right": 1019,
+          "top": 193.96875,
+          "bottom": 265.71875,
+          "width": 672,
+          "height": 71.75
+        },
+        "introHeader": {
+          "left": 347,
+          "right": 1019,
+          "top": 193.96875,
+          "bottom": 265.71875,
+          "width": 672,
+          "height": 71.75
+        },
+        "acceptedHeader": null,
+        "prompt": {
+          "left": 347,
+          "right": 636.71875,
+          "top": 219.34375,
+          "bottom": 240.328125,
+          "width": 289.71875,
+          "height": 20.984375
+        },
+        "tray": {
+          "left": 953,
+          "right": 1019,
+          "top": 193.96875,
+          "bottom": 265.71875,
+          "width": 66,
+          "height": 71.75
+        },
+        "token": {
+          "left": 962,
+          "right": 1010,
+          "top": 198.96875,
+          "bottom": 260.71875,
+          "width": 48,
+          "height": 61.75
+        },
+        "stack": {
+          "left": 347,
+          "right": 1019,
+          "top": 278.515625,
+          "bottom": 332.890625,
+          "width": 672,
+          "height": 54.375
+        },
+        "frame": {
+          "left": 367,
+          "right": 999,
+          "top": 280.109375,
+          "bottom": 331.296875,
+          "width": 632,
+          "height": 51.1875
+        },
+        "axisLine": {
+          "left": 367,
+          "right": 999,
+          "top": 295.296875,
+          "bottom": 298.296875,
+          "width": 632,
+          "height": 3
+        },
+        "bar": null,
+        "connector": null,
+        "resolution": null,
+        "finishBtn": null,
+        "barToAxisClearSpace": null,
+        "traySeparation": 29.58,
+        "trayOutsideBand": true,
+        "tokenInTray": true,
+        "tokenInStack": false
+      },
       "duringGeom": {
         "axis": {
           "left": 367,
@@ -1062,6 +1305,87 @@
         "dpr": 1.25
       },
       "initialGeom": {
+        "viewport": {
+          "width": 1093,
+          "height": 614,
+          "dpr": 1.25
+        },
+        "header": {
+          "left": 210.5,
+          "right": 882.5,
+          "top": 181.09375,
+          "bottom": 252.84375,
+          "width": 672,
+          "height": 71.75
+        },
+        "introHeader": {
+          "left": 210.5,
+          "right": 882.5,
+          "top": 181.09375,
+          "bottom": 252.84375,
+          "width": 672,
+          "height": 71.75
+        },
+        "acceptedHeader": null,
+        "prompt": {
+          "left": 210.5,
+          "right": 500.21875,
+          "top": 206.46875,
+          "bottom": 227.453125,
+          "width": 289.71875,
+          "height": 20.984375
+        },
+        "tray": {
+          "left": 816.5,
+          "right": 882.5,
+          "top": 181.09375,
+          "bottom": 252.84375,
+          "width": 66,
+          "height": 71.75
+        },
+        "token": {
+          "left": 825.5,
+          "right": 873.5,
+          "top": 186.09375,
+          "bottom": 247.84375,
+          "width": 48,
+          "height": 61.75
+        },
+        "stack": {
+          "left": 210.5,
+          "right": 882.5,
+          "top": 265.640625,
+          "bottom": 320.015625,
+          "width": 672,
+          "height": 54.375
+        },
+        "frame": {
+          "left": 230.5,
+          "right": 862.5,
+          "top": 267.234375,
+          "bottom": 318.421875,
+          "width": 632,
+          "height": 51.1875
+        },
+        "axisLine": {
+          "left": 230.5,
+          "right": 862.5,
+          "top": 282.421875,
+          "bottom": 285.421875,
+          "width": 632,
+          "height": 3
+        },
+        "bar": null,
+        "connector": null,
+        "resolution": null,
+        "finishBtn": null,
+        "barToAxisClearSpace": null,
+        "traySeparation": 29.58,
+        "trayOutsideBand": true,
+        "tokenInTray": true,
+        "tokenInStack": false
+      },
+      "restoredUnplacedGeom": {
         "viewport": {
           "width": 1093,
           "height": 614,

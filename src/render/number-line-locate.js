@@ -376,6 +376,7 @@ export function createNumberLineLocateRenderer({
   let viewportResizeListenerBound = false;
   let resizeObserver = null;
   let observedFrame = null;
+  let observedToken = null;
   let grabCueShown = false;
   let grabCueActive = false;
 
@@ -418,6 +419,7 @@ export function createNumberLineLocateRenderer({
     if (!isRepair02(currentScene)) {
       resizeObserver?.disconnect();
       observedFrame = null;
+      observedToken = null;
       if (viewportResizeListenerBound && typeof window !== 'undefined') {
         window.removeEventListener('resize', onViewportResize);
         viewportResizeListenerBound = false;
@@ -431,9 +433,10 @@ export function createNumberLineLocateRenderer({
     if (typeof ResizeObserver === 'undefined') return;
     const frame = root?.querySelector('.plan39-axis-frame');
     const token = root?.querySelector('.plan39-repair-token');
-    if (frame === observedFrame) return;
+    if (frame === observedFrame && token === observedToken) return;
     resizeObserver?.disconnect();
     observedFrame = frame;
+    observedToken = token;
     if (!resizeObserver) {
       resizeObserver = new ResizeObserver(() => {
         if (!root?.isConnected || !currentScene) return;
@@ -701,15 +704,6 @@ export function createNumberLineLocateRenderer({
     if (!tray || !token || typeof token.getBoundingClientRect !== 'function') return;
     const tokenRect = token.getBoundingClientRect();
     if (tokenRect.width <= 0 || tokenRect.height <= 0) return;
-
-    if (token.parentNode === tray && !token.classList.contains('is-dragging')) {
-      const trayRect = tray.getBoundingClientRect();
-      if (trayRect.width > 0 && trayRect.height > 0) {
-        tray.style.minWidth = `${trayRect.width}px`;
-        tray.style.minHeight = `${trayRect.height}px`;
-        return;
-      }
-    }
 
     const trayStyle = typeof getComputedStyle === 'function' ? getComputedStyle(tray) : null;
     const padTop = parseFloat(trayStyle?.paddingTop || '0') || 0;
