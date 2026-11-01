@@ -1,0 +1,22 @@
+{
+  "seeds": [
+    {
+      "name": "future-form",
+      "mutation": "insert second answer into pre-construction projection",
+      "observedAssertionFailure": "expected { numerator: '9', denominator: '15' } to be null",
+      "cleanRecovery": true
+    },
+    {
+      "name": "stale-form",
+      "mutation": "retain old accepted form after revision",
+      "observedAssertionFailure": "expected { numerator: '10', denominator: '15' } to be null",
+      "cleanRecovery": true
+    },
+    {
+      "name": "wrong-conversion",
+      "mutation": "treat 11/15 as accepted equivalent of 2/3",
+      "observedAssertionFailure": "expected false to be true // Object.is equality",
+      "cleanRecovery": true
+    }
+  ]
+}

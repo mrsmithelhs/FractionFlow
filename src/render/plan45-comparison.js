@@ -90,6 +90,69 @@ function makeProgression(scene, getProgression, isActive) {
   return wrap;
 }
 
+function makeConstruction(comparison, callbacks) {
+  const work = comparison.construction;
+  const section = element('section', 'plan49-construction');
+  if (!work) return section;
+  const button = (label, action, primary = false) => {
+    const node = element('button', 'app-secondary-button'); node.type = 'button'; node.textContent = label;
+    if (primary) node.setAttribute('data-plan49-primary', '');
+    node.addEventListener('click', () => callbacks.dispatch(action)); return node;
+  };
+  if (work.phase === 'inactive') {
+    append(section, button('Use the same denominator', { type: 'open-comparison-construction' }));
+    return section;
+  }
+  const forms = work.acceptedForms;
+  for (const side of ['first', 'second']) if (forms[side]) {
+    const row = element('p', 'plan49-accepted-form');
+    row.textContent = `${side === 'first' ? 'First' : 'Second'}: ${comparison.sourceForms[side].numerator}/${comparison.sourceForms[side].denominator} = ${forms[side].numerator}/${forms[side].denominator}`;
+    append(section, row);
+  }
+  if (work.phase !== 'denominator') append(section, button('Change denominator', { type: 'revise-comparison-denominator' }));
+  if (work.phase === 'ready') return section;
+  const side = work.phase;
+  const source = comparison.sourceForms[side];
+  const isDenominator = side === 'denominator';
+  const askingMultiplier = !isDenominator && work.helpRequested && work.acceptedMultiplier === null;
+  const kind = isDenominator ? 'denominator' : askingMultiplier ? 'multiplier' : 'numerator';
+  const key = `${work.epoch}:${side}:${kind}`;
+  const form = element('form', 'plan49-helper-form');
+  const id = `plan49-${callbacks.view}-${kind}`;
+  const label = element('label', 'plan49-helper-question'); label.htmlFor = id;
+  label.textContent = isDenominator ? 'Choose a denominator both fractions can use.'
+    : askingMultiplier ? `What multiplier turns ${source.denominator} parts into ${work.target}?`
+    : `How many parts out of ${work.target} make the same amount as ${source.numerator}/${source.denominator}?`;
+  append(form, label);
+  if (isDenominator && work.helpRequested) {
+    const cue = element('p', 'plan49-helper-cue');
+    cue.textContent = `Try multiplying ${comparison.sourceForms.first.denominator} by ${comparison.sourceForms.second.denominator} to find one common denominator.`; append(form, cue);
+  } else if (!isDenominator && work.acceptedMultiplier !== null) {
+    const cue = element('p', 'plan49-helper-cue'); cue.textContent = `Multiply the top by ${work.acceptedMultiplier}, too.`; append(form, cue);
+  }
+  const input = element('input', 'plan49-helper-input'); input.id = id; input.type = 'text'; input.inputMode = 'numeric';
+  input.setAttribute('data-plan49-primary', ''); input.setAttribute('autocomplete', 'off'); input.value = callbacks.getDraft(key);
+  input.addEventListener('input', () => { callbacks.setDraft(key, input.value); input.setCustomValidity?.(''); });
+  if (work.recovery && work.recovery !== 'dependent-work-cleared') {
+    const error = element('p', 'plan49-helper-recovery'); error.id = `${id}-error`; error.setAttribute('role', 'status');
+    error.textContent = work.recovery === 'unavailable' ? 'That is a common denominator, but this workspace can use numbers up to 144. Try another.'
+      : work.recovery === 'not-common' ? 'That is not a common denominator. Try another number.'
+      : 'Not quite. Try again.'; input.setAttribute('aria-describedby', error.id); append(form, error);
+  }
+  if (work.recovery === 'dependent-work-cleared') { const notice = element('p'); notice.setAttribute('role', 'status'); notice.textContent = 'Choose a new denominator. Your earlier renaming was cleared.'; append(form, notice); }
+  append(form, input);
+  const check = element('button', 'app-secondary-button'); check.type = 'submit'; check.textContent = 'Check'; append(form, check);
+  form.addEventListener('submit', event => {
+    event.preventDefault();
+    if (!/^(0|[1-9][0-9]{0,29})$/.test(input.value)) { input.setCustomValidity?.('Enter a whole number.'); input.reportValidity?.(); return; }
+    callbacks.dispatch({ type: `submit-comparison-${kind}`, phase: side, proposed: input.value });
+  });
+  append(section, form);
+  if (!work.helpRequested) append(section, button(isDenominator ? 'Help me find one' : 'Help with this renaming',
+    { type: 'request-comparison-construction-help', helpKind: isDenominator ? 'denominator' : 'multiplier', phase: side }));
+  return section;
+}
+
 export function createPlan45ComparisonRenderer({
   container,
   view = 'visual',
@@ -188,6 +251,8 @@ export function createPlan45ComparisonRenderer({
     const summary = element('summary', 'plan45-help-summary');
     summary.setAttribute('data-plan45-focus-key', 'help-summary');
     summary.textContent = details.open ? STRINGS.plan45.closeHelp : STRINGS.plan45.needHelp;
+    // Record the impending native toggle synchronously before another action can rerender.
+    summary.addEventListener('click', () => setHelpOpen(!details.open));
     details.addEventListener('toggle', () => {
       summary.textContent = details.open ? STRINGS.plan45.closeHelp : STRINGS.plan45.needHelp;
     });
@@ -226,6 +291,9 @@ export function createPlan45ComparisonRenderer({
         strategy.textContent = STRINGS.plan45.moreStrategy;
         append(helpChoices, strategy);
       }
+    if (comparison.construction) append(helpChoices, makeConstruction(comparison, { view, dispatch: dispatchAction,
+      getDraft: (key) => isActive() ? callbacks.getConstructionDraft?.(key) ?? '' : '',
+      setDraft: (key, value) => isActive() ? callbacks.setConstructionDraft?.(key, value) ?? false : false }));
     append(details, helpChoices);
     append(root, details);
 

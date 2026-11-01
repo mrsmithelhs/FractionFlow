@@ -1,3 +1,4 @@
+import { leastCommonDenominator } from '../math/index.js';
 import { deepFreeze } from '../content/schema.js';
 import { PLAN34_EPISODE_DEFINITION_ID, resolvePlan34TaskContext } from '../content/full-addition-task-patterns.js';
 import { PLAN18_NESTED_DEFINITION_ID, resolvePlan18TaskContext } from '../content/nested-renaming-task.js';
@@ -22,8 +23,12 @@ function scheduleError(message) {
  */
 export function computeBeatSchedule(instance, episodeDefinition, taskContext = null, { allowCompatibilityPair = false } = {}) {
   if (episodeDefinition?.id === PLAN45_COMPARISON_DEFINITION_ID
-    && episodeDefinition?.revision === '1') {
-    validatePlan45ComparisonContext(taskContext);
+    && ['1', '2'].includes(episodeDefinition?.revision)) {
+    if (episodeDefinition.revision === '2') {
+      if (taskContext?.definitionRevision !== '2') throw scheduleError('comparison revision and context must match');
+      validatePlan45ComparisonContext({ ...taskContext, definitionRevision: '1' });
+      if (leastCommonDenominator(BigInt(taskContext.sourceForms.first.denominator), BigInt(taskContext.sourceForms.second.denominator)) > 144n) throw scheduleError('comparison item has no admitted common denominator');
+    } else validatePlan45ComparisonContext(taskContext);
     return deepFreeze([
       { id: 'compare', kind: 'compare' },
       { id: 'resolve', kind: 'resolve' },

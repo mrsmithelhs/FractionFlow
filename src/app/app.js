@@ -1,3 +1,4 @@
+import { resolvePlan49Context } from '../interaction/plan49-comparison-construction.js';
 import { buildCuratedProblem } from '../content/generator.js';
 import { resolveAuthoredContent, resolveCuratedFixture, resolvePlan37BarToLineBridgeInstance } from '../content/authored-content-catalog.js';
 import { validateProblemInstance } from '../content/validation.js';
@@ -245,7 +246,7 @@ function presentationModeFor({ override, motionQuery }) {
 
 function createInitialState(instance, practiceType, condition, supportLevel, episodeDefinition = practiceType.episodeDefinition, item = null) {
   const taskContext = isPlan45ComparisonDefinition(episodeDefinition) && item
-    ? resolvePlan45ComparisonContext(item.id, {
+    ? episodeDefinition.revision === '2' ? resolvePlan49Context(item.id) : resolvePlan45ComparisonContext(item.id, {
       practiceSetId: practiceType.setId,
       practiceSetRevision: practiceType.setRevision,
     })
@@ -426,6 +427,7 @@ export function createFractionFlowApp({
   let numberLineDraft = null;
   let numberLineHelpOpen = false;
   let comparisonDraft = '';
+  let comparisonConstructionDrafts = {};
   let comparisonHelpOpen = false;
   let visualComparisonRenderer = null;
   let linearComparisonRenderer = null;
@@ -871,6 +873,7 @@ export function createFractionFlowApp({
     numberLineDraft = null;
     numberLineHelpOpen = false;
     comparisonDraft = '';
+    comparisonConstructionDrafts = {};
     comparisonHelpOpen = false;
     comparisonResponseHandle = null;
     visualNumberLineRenderer?.clearPreview();
@@ -1392,6 +1395,8 @@ export function createFractionFlowApp({
       scheduleEntryId: scheduleEntry.id,
       promptId: state.expectedResponse.promptId,
       episodeGeneration: currentEpisodeGeneration,
+      helperEpoch: state.construction?.epoch ?? null,
+      helperPhase: state.construction?.phase ?? null,
     });
     const isCurrent = () => isPlan45ComparisonEpisode(state)
       && state.status === 'active'
@@ -1399,7 +1404,9 @@ export function createFractionFlowApp({
       && state.taskContext.itemId === scope.itemId
       && state.schedulePosition === scope.schedulePosition
       && state.beatSchedule[state.schedulePosition]?.id === scope.scheduleEntryId
-      && state.expectedResponse?.promptId === scope.promptId;
+      && state.expectedResponse?.promptId === scope.promptId
+      && (state.construction?.epoch ?? null) === scope.helperEpoch
+      && (state.construction?.phase ?? null) === scope.helperPhase;
     comparisonResponseHandle = Object.freeze({
       ...scope,
       readDraft: () => isCurrent() ? comparisonDraft : '',
@@ -1408,6 +1415,8 @@ export function createFractionFlowApp({
         comparisonDraft = raw;
         return true;
       },
+      readConstructionDraft: (key) => isCurrent() ? comparisonConstructionDrafts[key] ?? '' : '',
+      writeConstructionDraft: (key, raw) => { if (!isCurrent() || typeof raw !== 'string') return false; comparisonConstructionDrafts[key] = raw; return true; },
       readHelpOpen: () => isCurrent() ? comparisonHelpOpen : false,
       writeHelpOpen: (open) => {
         if (!isCurrent()) return false;
@@ -1649,6 +1658,8 @@ export function createFractionFlowApp({
         dispatchAction: (action) => responseHandle?.dispatch(action) ?? false,
         getDraft: () => responseHandle?.readDraft() ?? '',
         setDraft: (value) => responseHandle?.writeDraft(value) ?? false,
+        getConstructionDraft: (key) => responseHandle?.readConstructionDraft(key) ?? '',
+        setConstructionDraft: (key, raw) => responseHandle?.writeConstructionDraft(key, raw) ?? false,
         getHelpOpen: () => responseHandle?.readHelpOpen() ?? false,
         setHelpOpen: (open) => responseHandle?.writeHelpOpen(open) ?? false,
         getProgression: () => computeProgressionDescriptor(),
@@ -1786,6 +1797,7 @@ export function createFractionFlowApp({
       if (action.type === 'propose-common-denominator') commonDenominatorDraft = '';
       const wasResolved = state.status === 'resolved';
       state = applyIntent(state, action);
+      if (action.type === 'revise-comparison-denominator') comparisonConstructionDrafts = {};
       if (action.type === 'submit-fraction-comparison' && state.status === 'resolved') comparisonDraft = '';
       if (action.type === 'request-help') {
         isReplaying = false;
@@ -1840,6 +1852,10 @@ export function createFractionFlowApp({
           } else {
             comparisonResponseHandle?.focusPrimary();
           }
+        } else if (action.type.includes('comparison-construction') || action.type.startsWith('submit-comparison-') || action.type === 'revise-comparison-denominator') {
+          const host = visualView ? visualHost : linearHost;
+          const target = host?.querySelector('[data-plan49-primary]') || host?.querySelector('[data-plan45-focus-key=help-summary]');
+          if (target?.isConnected) target.focus();
         } else if (action.type === 'request-comparison-model') {
           comparisonResponseHandle?.focusPrimary();
         } else if (action.type === 'request-comparison-help') {

@@ -1031,3 +1031,9 @@
   white-space: nowrap;
   border-width: 0;
 }
+
+.plan49-construction { display: grid; gap: .5rem; margin-block: .5rem; }
+.plan49-helper-form { display: grid; gap: .4rem; justify-items: start; }
+.plan49-helper-question { font-weight: 600; }
+.plan49-helper-input { min-height: 44px; width: 8rem; max-width: 100%; font: inherit; }
+.plan49-helper-recovery, .plan49-helper-cue, .plan49-accepted-form { margin: 0; }

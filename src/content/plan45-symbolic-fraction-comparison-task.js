@@ -31,7 +31,7 @@ export const PLAN45_COMPARISON_CONDITION_CAPABILITY = Object.freeze({
 });
 export function isPlan45ComparisonDefinition(definition) {
   return definition?.id === PLAN45_COMPARISON_DEFINITION_ID
-    && definition?.revision === PLAN45_COMPARISON_DEFINITION_REVISION;
+    && ['1', '2'].includes(definition?.revision);
 }
 export const PLAN45_COMPARISON_CUE_IDS = Object.freeze([
   'compare.shared-unit-close',

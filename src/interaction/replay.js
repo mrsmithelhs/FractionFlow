@@ -1,3 +1,4 @@
+import { validatePlan49Context } from './plan49-comparison-construction.js';
 import { buildCuratedProblem, generateProblem } from '../content/generator.js';
 import { resolveCuratedFixture } from '../content/authored-content-catalog.js';
 import { validateProblemInstance } from '../content/validation.js';
@@ -26,6 +27,7 @@ export const REPLAY_V6_SCHEMA_VERSION = 'fractionflow.episode-replay/v6';
 export const REPLAY_V7_SCHEMA_VERSION = 'fractionflow.episode-replay/v7';
 export const REPLAY_V8_SCHEMA_VERSION = 'fractionflow.episode-replay/v8';
 export const REPLAY_V9_SCHEMA_VERSION = 'fractionflow.episode-replay/v9';
+export const REPLAY_V10_SCHEMA_VERSION = 'fractionflow.episode-replay/v10';
 
 function sameJson(left, right) {
   return JSON.stringify(left) === JSON.stringify(right);
@@ -142,6 +144,7 @@ function assertReplayEnvelopeShape(envelope) {
   const v7 = envelope?.schemaVersion === REPLAY_V7_SCHEMA_VERSION;
   const v8 = envelope?.schemaVersion === REPLAY_V8_SCHEMA_VERSION;
   const v9 = envelope?.schemaVersion === REPLAY_V9_SCHEMA_VERSION;
+  const v10 = envelope?.schemaVersion === REPLAY_V10_SCHEMA_VERSION;
   assertExactKeys(envelope, [
     'schemaVersion',
     'contentIdentity',
@@ -149,7 +152,7 @@ function assertReplayEnvelopeShape(envelope) {
     'support',
     'activeCondition',
     'learnerIntents',
-    ...(v2 || v3 || v4 || v5 || v6 || v7 || v8 || v9 ? ['taskContext'] : []),
+    ...(v2 || v3 || v4 || v5 || v6 || v7 || v8 || v9 || v10 ? ['taskContext'] : []),
   ], 'replay envelope');
   assertContentIdentityShape(envelope.contentIdentity);
   assertExactKeys(envelope.episodeDefinition, ['id', 'revision'], 'episodeDefinition');
@@ -318,6 +321,13 @@ function assertReplayEnvelopeShape(envelope) {
       }
     }
   }
+  if (v10) {
+    if (envelope.episodeDefinition.id !== 'phase-4-symbolic-fraction-comparison' || envelope.episodeDefinition.revision !== '2') throw new TypeError('replay v10 requires comparison revision 2');
+    validatePlan49Context(envelope.taskContext);
+    if (!sameJson(makePlan45ComparisonContentIdentity(envelope.taskContext), envelope.contentIdentity)) throw new TypeError('replay v10 identity mismatch');
+    const allowed = new Set(['request-comparison-model','request-comparison-help','submit-fraction-comparison','open-comparison-construction','revise-comparison-denominator','request-comparison-construction-help','submit-comparison-denominator','submit-comparison-multiplier','submit-comparison-numerator']);
+    for (const intent of envelope.learnerIntents) if (!isPlainRecord(intent) || !allowed.has(intent.type)) throw new TypeError('invalid v10 intent');
+  }
 }
 
 function contentReconstructionIdentity(content) {
@@ -441,7 +451,7 @@ export function createReplayEnvelope(state) {
   const isComparison = isPlan45ComparisonEpisode(state);
   const envelope = {
     schemaVersion: isComparison
-      ? REPLAY_V9_SCHEMA_VERSION
+      ? (state.episodeDefinition.revision === '2' ? REPLAY_V10_SCHEMA_VERSION : REPLAY_V9_SCHEMA_VERSION)
       : isPlan37BarToLineBridgeRepairDefinition(state.episodeDefinition)
       ? REPLAY_V8_SCHEMA_VERSION
       : isPlan37BarToLineBridgeDefinition(state.episodeDefinition)
@@ -474,18 +484,18 @@ export function createReplayEnvelope(state) {
 export function replayEpisode(envelope) {
   assertJsonSafe(envelope, 'replay envelope');
   if (!envelope || typeof envelope !== 'object') throw new TypeError('replay envelope must be an object');
-  if (![REPLAY_SCHEMA_VERSION, REPLAY_V2_SCHEMA_VERSION, REPLAY_V3_SCHEMA_VERSION, REPLAY_V4_SCHEMA_VERSION, REPLAY_V5_SCHEMA_VERSION, REPLAY_V6_SCHEMA_VERSION, REPLAY_V7_SCHEMA_VERSION, REPLAY_V8_SCHEMA_VERSION, REPLAY_V9_SCHEMA_VERSION].includes(envelope?.schemaVersion)) {
+  if (![REPLAY_SCHEMA_VERSION, REPLAY_V2_SCHEMA_VERSION, REPLAY_V3_SCHEMA_VERSION, REPLAY_V4_SCHEMA_VERSION, REPLAY_V5_SCHEMA_VERSION, REPLAY_V6_SCHEMA_VERSION, REPLAY_V7_SCHEMA_VERSION, REPLAY_V8_SCHEMA_VERSION, REPLAY_V9_SCHEMA_VERSION, REPLAY_V10_SCHEMA_VERSION].includes(envelope?.schemaVersion)) {
     throw new Error('unsupported replay envelope version');
   }
   assertReplayEnvelopeShape(envelope);
-  const content = envelope.schemaVersion === REPLAY_V9_SCHEMA_VERSION
+  const content = [REPLAY_V9_SCHEMA_VERSION, REPLAY_V10_SCHEMA_VERSION].includes(envelope.schemaVersion)
     ? null
     : reconstructContent(envelope.contentIdentity);
   const definition = getEpisodeDefinition(
     envelope.episodeDefinition?.id,
     envelope.episodeDefinition?.revision,
   );
-  if (isPlan45ComparisonDefinition(definition) !== (envelope.schemaVersion === REPLAY_V9_SCHEMA_VERSION)) {
+  if (isPlan45ComparisonDefinition(definition) !== [REPLAY_V9_SCHEMA_VERSION, REPLAY_V10_SCHEMA_VERSION].includes(envelope.schemaVersion) || (isPlan45ComparisonDefinition(definition) && definition.revision !== (envelope.schemaVersion === REPLAY_V9_SCHEMA_VERSION ? '1' : '2'))) {
     throw new Error('Plan 45 comparison episodes require replay v9 and v9 is comparison-only');
   }
   if ((isPlan37BarToLineBridgeDefinition(definition) && envelope.schemaVersion !== REPLAY_V7_SCHEMA_VERSION)
@@ -513,7 +523,8 @@ export function replayEpisode(envelope) {
       || envelope.schemaVersion === REPLAY_V6_SCHEMA_VERSION
       || envelope.schemaVersion === REPLAY_V7_SCHEMA_VERSION
       || envelope.schemaVersion === REPLAY_V8_SCHEMA_VERSION
-      || envelope.schemaVersion === REPLAY_V9_SCHEMA_VERSION ? {
+      || envelope.schemaVersion === REPLAY_V9_SCHEMA_VERSION
+      || envelope.schemaVersion === REPLAY_V10_SCHEMA_VERSION ? {
       taskContext: envelope.taskContext,
       allowCompatibilityPair: envelope.schemaVersion !== REPLAY_V4_SCHEMA_VERSION
         && envelope.schemaVersion !== REPLAY_V5_SCHEMA_VERSION

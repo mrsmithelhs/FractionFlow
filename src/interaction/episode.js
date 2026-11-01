@@ -1,3 +1,4 @@
+import { createPlan49PublicEpisode, applyPlan49PublicIntent, plan49PublicSnapshot } from './plan49-comparison-construction.js';
 import {
   evaluateInstanceEligibility,
   evaluateProposedPathEligibility,
@@ -386,7 +387,7 @@ function assertInstance(instance, definition) {
 }
 
 function stateSnapshot(state) {
-  if (isPlan45ComparisonEpisode(state)) return plan45ComparisonStateSnapshot(state);
+  if (isPlan45ComparisonEpisode(state)) return state.episodeDefinition.revision === '2' ? plan49PublicSnapshot(state) : plan45ComparisonStateSnapshot(state);
   return {
     encounter: state.established.encounter,
     notice: state.established.notice,
@@ -1402,6 +1403,7 @@ export function createEpisode({
 } = {}) {
   const definition = assertDefinition(episodeDefinition);
   if (isPlan45ComparisonDefinition(definition)) {
+    if (definition.revision === '2') return createPlan49PublicEpisode({ taskContext, support, activeCondition });
     return createPlan45ComparisonEpisode({
       taskContext,
       support,
@@ -1485,7 +1487,7 @@ export function applyIntent(state, rawIntent) {
     throw new EpisodeIntentError('INVALID_EPISODE_STATE', 'state is not a Plan 05 episode state');
   }
   if (isPlan45ComparisonEpisode(state)) {
-    return applyPlan45ComparisonIntent(state, rawIntent);
+    return state.episodeDefinition.revision === '2' ? applyPlan49PublicIntent(state, rawIntent) : applyPlan45ComparisonIntent(state, rawIntent);
   }
   if (state.status !== 'active') {
     throw new EpisodeIntentError('EPISODE_RESOLVED', 'resolved episodes do not accept more instructional intents');

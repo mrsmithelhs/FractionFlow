@@ -1,3 +1,4 @@
+import { validatePlan49Context, projectPlan49PublicConstruction } from './plan49-comparison-construction.js';
 import { deepFreeze } from '../content/schema.js';
 import { candidateDenominatorsForInstance } from '../content/eligibility.js';
 import { reflectionChoicesForInstance } from '../content/data/reflection-choices.js';
@@ -196,7 +197,8 @@ function assertStateShape(state) {
     }
   }
   if (isPlan45ComparisonEpisode(state)) {
-    validatePlan45ComparisonContext(state.taskContext);
+    if (state.episodeDefinition.revision === '2') validatePlan49Context(state.taskContext);
+    else validatePlan45ComparisonContext(state.taskContext);
     if (!Array.isArray(state.beatSchedule)
       || state.beatSchedule.length !== 2
       || state.beatSchedule[0]?.id !== 'compare'
@@ -1198,8 +1200,9 @@ function plan45ComparisonMeaning(state, representationRole, capability) {
       modelChoice: state.assistance.modelChoice,
       pairedVerificationVisible: Boolean(accepted),
       ...(accepted ? { acceptedRelation: accepted.acceptedRelation } : {}),
-      reasoningCue: lastHelp?.helpKind === 'reasoning' ? plan45ComparisonHelpText(state.taskContext, 'reasoning') : null,
-      notationCue: lastHelp?.helpKind === 'notation' ? plan45ComparisonHelpText(state.taskContext, 'notation') : null,
+      reasoningCue: lastHelp?.helpKind === 'reasoning' ? (state.episodeDefinition.revision === '2' && state.taskContext.hintContext.kind === 'common-unit-target' ? 'Try naming both amounts with the same-size parts.' : plan45ComparisonHelpText({ ...state.taskContext, definitionRevision: '1' }, 'reasoning')) : null,
+      notationCue: lastHelp?.helpKind === 'notation' ? plan45ComparisonHelpText({ ...state.taskContext, definitionRevision: '1' }, 'notation') : null,
+      ...(state.episodeDefinition.revision === '2' ? { construction: projectPlan49PublicConstruction(state) } : {}),
     },
     taskHelp: null,
   };

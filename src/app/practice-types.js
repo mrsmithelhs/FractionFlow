@@ -22,7 +22,7 @@ import {
 import { deepFreeze } from '../content/schema.js';
 import { PLAN37_BAR_TO_LINE_BRIDGE_PRACTICE_SET, PLAN37_BAR_TO_LINE_BRIDGE_RECORDS } from '../content/data/plan37-bar-to-line-bridge-records.js';
 import { PLAN45_COMPARISON_PRACTICE_SET } from '../content/data/plan45-symbolic-fraction-comparison-records.js';
-import { PLAN45_SYMBOLIC_FRACTION_COMPARISON_EPISODE_DEFINITION } from '../interaction/episode-definition.js';
+import { PLAN49_COMPARISON_EPISODE_DEFINITION as PLAN45_SYMBOLIC_FRACTION_COMPARISON_EPISODE_DEFINITION } from '../interaction/episode-definition.js';
 
 /**
  * Learner-reachable practice types. A type is registered only when the app can

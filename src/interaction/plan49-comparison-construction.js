@@ -2,7 +2,7 @@
 import { deepFreeze } from '../content/schema.js';
 import { resolvePlan45ComparisonContext, validatePlan45ComparisonContext, plan45ComparisonHelpText } from '../content/plan45-symbolic-fraction-comparison-task.js';
 import { createPlan45ComparisonEpisode, applyPlan45ComparisonIntent } from './plan45-comparison-episode.js';
-import { createFraction, validateCommonDenominator, validateEquivalentFraction, scaleFactorForDenominator } from '../math/index.js';
+import { createFraction, validateCommonDenominator, validateEquivalentFraction, scaleFactorForDenominator, leastCommonDenominator } from '../math/index.js';
 
 export const PLAN49_DEFINITION = deepFreeze({ id: 'phase-4-symbolic-fraction-comparison', revision: '2' });
 export const PLAN49_WORKSPACE_LIMIT = 144n;
@@ -18,6 +18,7 @@ export function resolvePlan49Context(itemId) {
 export function validatePlan49Context(context) {
   if (!context || context.definitionRevision !== '2') fail('Plan 49 requires revision 2 context');
   validatePlan45ComparisonContext({ ...context, definitionRevision: '1' });
+  if (leastCommonDenominator(BigInt(context.sourceForms.first.denominator), BigInt(context.sourceForms.second.denominator)) > PLAN49_WORKSPACE_LIMIT) fail('item has no admitted common denominator');
   return deepFreeze({ ...context });
 }
 export function createPlan49Episode({ taskContext, support, activeCondition } = {}) {
@@ -52,7 +53,7 @@ export function applyPlan49Intent(state, intent) {
     if (applied === state.base) return state;
     const base = intent.type === 'submit-fraction-comparison' ? { ...applied, assistanceHistory: state.base.assistanceHistory,
       responseProvenance: applied.responseProvenance.map((entry, index) => index === applied.responseProvenance.length - 1
-        ? { ...entry, episodeDefinition: PLAN49_DEFINITION, taskContext: state.taskContext } : entry) } : applied;
+        ? { ...entry, episodeDefinition: PLAN49_DEFINITION, taskContext: state.taskContext, construction: state.construction, constructionAttempts: state.attempts } : entry) } : applied;
     const addedAssistance = intent.type === 'submit-fraction-comparison' ? [] : applied.assistanceHistory.slice(state.base.assistanceHistory.length);
     return deepFreeze({ ...state, base, assistanceHistory: [...state.assistanceHistory, ...addedAssistance], intentHistory: [...state.intentHistory, intent] });
   }
@@ -99,4 +100,37 @@ export function projectPlan49Construction(state) {
     reasoningCue: state.base.assistanceHistory.some(e => e.type === 'comparison-help-request' && e.helpKind === 'reasoning')
       ? (state.taskContext.hintContext.kind === 'common-unit-target' ? 'Try naming both amounts with the same-size parts.' : plan45ComparisonHelpText(state.base.taskContext, 'reasoning')) : null,
     acceptedRelation: state.base.status === 'resolved' ? state.base.established.comparison.acceptedRelation : null });
+}
+
+// Translate at the reducer boundary only. No private legacy state escapes.
+export function createPlan49PublicEpisode(options) {
+  const wrapper = createPlan49Episode(options);
+  const { base, taskContext, construction } = wrapper;
+  return deepFreeze({ ...base, episodeDefinition: { ...base.episodeDefinition, revision: '2' }, taskContext,
+    construction, constructionAttempts: [], intentHistory: [], assistanceHistory: [] });
+}
+export function applyPlan49PublicIntent(state, intent) {
+  const { construction, constructionAttempts, ...publicBase } = state;
+  const legacyHistory = state.intentHistory.filter(i => ['request-comparison-model', 'request-comparison-help', 'submit-fraction-comparison'].includes(i.type));
+  const legacyAssistance = state.assistanceHistory.filter(e => ['comparison-model-request', 'comparison-help-request'].includes(e.type));
+  const base = { ...publicBase, episodeDefinition: { ...state.episodeDefinition, revision: '1' },
+    taskContext: { ...state.taskContext, definitionRevision: '1' }, intentHistory: legacyHistory, assistanceHistory: legacyAssistance };
+  const wrapper = { definition: PLAN49_DEFINITION, taskContext: state.taskContext, base, construction,
+    intentHistory: state.intentHistory, assistanceHistory: state.assistanceHistory, attempts: constructionAttempts };
+  const next = applyPlan49Intent(wrapper, intent);
+  if (next === wrapper) return state;
+  return deepFreeze({ ...next.base, episodeDefinition: state.episodeDefinition, taskContext: state.taskContext,
+    revision: state.revision + 1, construction: next.construction, constructionAttempts: next.attempts,
+    intentHistory: next.intentHistory, assistanceHistory: next.assistanceHistory });
+}
+export function plan49PublicSnapshot(state) {
+  return deepFreeze({ taskContext: state.taskContext, acceptedComparison: state.established.comparison,
+    modelChoice: state.assistance.modelChoice, construction: state.construction, constructionAttempts: state.constructionAttempts,
+    assistanceHistory: state.assistanceHistory, retryHistory: state.retryHistory });
+}
+export function projectPlan49PublicConstruction(state) {
+  const work = state.construction;
+  const requested = state.assistanceHistory.some(e => e.type === 'construction-help' && e.phase === work.phase && e.target === work.target && e.epoch === work.epoch);
+  return deepFreeze({ phase: work.phase, epoch: work.epoch, target: work.target, acceptedForms: work.acceptedForms,
+    recovery: work.recovery, helpRequested: requested, acceptedMultiplier: work.multiplier });
 }

@@ -1,0 +1,78 @@
+[
+  {
+    "name": "narrow",
+    "viewport": {
+      "width": 360,
+      "height": 740
+    },
+    "deviceScaleFactor": 1,
+    "touchContext": false,
+    "actionMode": "keyboard activation",
+    "support": "default More",
+    "measure": {
+      "question": {
+        "x": 25,
+        "y": 299.015625,
+        "width": 310,
+        "height": 42,
+        "bottom": 341.015625
+      },
+      "input": {
+        "x": 25,
+        "y": 347.40625,
+        "width": 136,
+        "height": 50,
+        "bottom": 397.40625
+      },
+      "check": {
+        "x": 25,
+        "y": 403.796875,
+        "width": 51.796875,
+        "height": 44,
+        "bottom": 447.796875
+      },
+      "scrollWidth": 360,
+      "clientWidth": 360,
+      "scrollHeight": 1100
+    },
+    "completed": true
+  },
+  {
+    "name": "chromebook",
+    "viewport": {
+      "width": 1093,
+      "height": 614
+    },
+    "deviceScaleFactor": 1.25,
+    "touchContext": true,
+    "actionMode": "non-drag touch activation",
+    "support": "Less",
+    "measure": {
+      "question": {
+        "x": 332.5,
+        "y": 200.734375,
+        "width": 417.390625,
+        "height": 21,
+        "bottom": 221.734375
+      },
+      "input": {
+        "x": 332.5,
+        "y": 228.125,
+        "width": 136,
+        "height": 50,
+        "bottom": 278.125
+      },
+      "check": {
+        "x": 332.5,
+        "y": 284.515625,
+        "width": 51.796875,
+        "height": 44,
+        "bottom": 328.515625
+      },
+      "scrollWidth": 1093,
+      "clientWidth": 1093,
+      "scrollHeight": 1082
+    },
+    "completed": true
+  }
+]

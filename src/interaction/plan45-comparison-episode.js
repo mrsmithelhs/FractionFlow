@@ -214,7 +214,7 @@ export function applyPlan45ComparisonIntent(state, rawIntent) {
 
 export function isPlan45ComparisonEpisode(state) {
   return state?.episodeDefinition?.id === PLAN45_COMPARISON_DEFINITION_ID
-    && state?.episodeDefinition?.revision === '1';
+    && ['1', '2'].includes(state?.episodeDefinition?.revision);
 }
 
 export function plan45ComparisonStateSnapshot(state) {

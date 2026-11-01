@@ -1,0 +1,19 @@
+{
+  "item": "plan45-compare-10",
+  "validUnavailable": "216",
+  "accepted": "72",
+  "bounds": {
+    "width": 360,
+    "viewport": 360,
+    "question": {
+      "x": 25,
+      "y": 574.234375,
+      "width": 310,
+      "height": 42,
+      "top": 574.234375,
+      "right": 335,
+      "bottom": 616.234375,
+      "left": 25
+    }
+  }
+}
