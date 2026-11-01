@@ -1,11 +1,9 @@
 ---
 id: plan-49
 title: Optional Common-Denominator Construction for Comparison
-status: ready
+status: in-progress
 depends_on: [plan-24, plan-25, plan-45]
 gate: "Requirement 0: approve reuse boundaries, local assistance flow, denominator admission, answer withholding and compatibility before source. Pure-contract checkpoint precedes mounted integration; owner rendered/task acceptance and deployment remain separate."
-superseded_by: null
-resolution: null
 summary: >-
   Add requested common-denominator construction within the existing comparison
   task. Reuse denominator-finding and equivalent-fraction help where appropriate,
