@@ -269,6 +269,8 @@ export const PLAN49_COMPARISON_EPISODE_DEFINITION = deepFreeze({
   ...PLAN45_SYMBOLIC_FRACTION_COMPARISON_EPISODE_DEFINITION, revision: '2',
 });
 
+export const PLAN50_COLLECTION_EPISODE_DEFINITION = deepFreeze({ id: 'phase-4-number-line-collection', revision: '1', family: 'number-line-collection', beats: ['place-collection', 'resolve'], includeReflection: false, promptIdentities: { 'place-collection': 'phase4.collection.place', resolve: 'phase4.collection.accepted' } });
+
 const EPISODE_DEFINITIONS = Object.freeze([
   LEGACY_PHASE2_EPISODE_DEFINITION,
   LEGACY_PHASE2_REFLECTION_EPISODE_DEFINITION,
@@ -288,6 +290,7 @@ const EPISODE_DEFINITIONS = Object.freeze([
   PLAN37_BAR_TO_LINE_BRIDGE_REPAIR_EPISODE_DEFINITION,
   PLAN45_SYMBOLIC_FRACTION_COMPARISON_EPISODE_DEFINITION,
   PLAN49_COMPARISON_EPISODE_DEFINITION,
+  PLAN50_COLLECTION_EPISODE_DEFINITION,
 ]);
 
 export function getEpisodeDefinition(id = EPISODE_DEFINITION_ID, revision = EPISODE_DEFINITION_REVISION) {

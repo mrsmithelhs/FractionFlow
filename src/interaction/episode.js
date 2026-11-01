@@ -1,3 +1,4 @@
+import { createPlan50Episode, applyPlan50Intent } from './plan50-number-line-collection-episode.js';
 import { createPlan49PublicEpisode, applyPlan49PublicIntent, plan49PublicSnapshot } from './plan49-comparison-construction.js';
 import {
   evaluateInstanceEligibility,
@@ -272,7 +273,9 @@ function assertDefinition(definition) {
       'episode definition semantics do not match its registered identity',
     );
   }
-  const approvedBeats = isPlan37BarToLineBridgeTaskDefinition(registered)
+  const approvedBeats = registered.id === 'phase-4-number-line-collection'
+    ? ['place-collection', 'resolve']
+    : isPlan37BarToLineBridgeTaskDefinition(registered)
     ? (registered.revision === '2' ? ['locate', 'resolve'] : ['encounter', 'locate', 'resolve'])
     : isPlan45ComparisonDefinition(registered)
       ? ['compare', 'resolve']
@@ -1402,6 +1405,7 @@ export function createEpisode({
   allowCompatibilityPair = false,
 } = {}) {
   const definition = assertDefinition(episodeDefinition);
+  if (definition.id === 'phase-4-number-line-collection' && definition.revision === '1') return createPlan50Episode({ taskContext, support, activeCondition, episodeDefinition: definition });
   if (isPlan45ComparisonDefinition(definition)) {
     if (definition.revision === '2') return createPlan49PublicEpisode({ taskContext, support, activeCondition });
     return createPlan45ComparisonEpisode({
@@ -1486,6 +1490,7 @@ export function applyIntent(state, rawIntent) {
   if (!state || state.schemaVersion !== 'fractionflow.episode-state/v1') {
     throw new EpisodeIntentError('INVALID_EPISODE_STATE', 'state is not a Plan 05 episode state');
   }
+  if (state.episodeDefinition?.id === 'phase-4-number-line-collection' && state.episodeDefinition.revision === '1') return applyPlan50Intent(state, rawIntent);
   if (isPlan45ComparisonEpisode(state)) {
     return state.episodeDefinition.revision === '2' ? applyPlan49PublicIntent(state, rawIntent) : applyPlan45ComparisonIntent(state, rawIntent);
   }
@@ -1515,6 +1520,7 @@ export function applyIntent(state, rawIntent) {
 }
 
 export function episodeStateSnapshot(state) {
+  if (state?.episodeDefinition?.id === 'phase-4-number-line-collection') return deepFreeze(structuredClone(state));
   return deepFreeze(stateSnapshot(state));
 }
 
@@ -1531,6 +1537,10 @@ export function withActiveCondition(state, activeCondition) {
     throw new EpisodeIntentError('INVALID_EPISODE_STATE', 'state is not a Plan 05 episode state');
   }
   const normalizedCondition = validateActiveCondition(activeCondition);
+  if (state.episodeDefinition?.id === 'phase-4-number-line-collection') {
+    if (!sameDefinitionValue(normalizedCondition, state.activeCondition)) throw new EpisodeIntentError('UNSUPPORTED_CONDITION', 'collection condition is frozen');
+    return state;
+  }
   return deepFreeze({
     ...state,
     activeCondition: normalizedCondition,
