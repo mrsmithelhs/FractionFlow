@@ -1,11 +1,9 @@
 ---
 id: plan-46
 title: Number-Line Collection, Ordering and Equivalence Task Design
-status: draft
+status: in-progress
 depends_on: [plan-29, plan-37, plan-39, plan-43]
 gate: "Requirement 0: approve bounded investigation scope before the dossier. Owner adoption of one short collection task, co-location/access grammar and first source slice precedes implementation. No source or learner activation in this packet."
-superseded_by: null
-resolution: null
 summary: >-
   Design a short task placing three fraction labels on one number line before
   one Check, with meaningful ordering/equivalence, truthful coincident positions,
