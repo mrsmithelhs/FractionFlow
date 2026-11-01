@@ -1,7 +1,8 @@
 ---
 id: plan-47
 title: Comparison-to-Distance Subtraction Bridge Design
-status: in-progress
+status: complete
+resolution: "Owner adopted the refined symbolic-first unsigned-distance task and four common-unit records. Plan 51 separately scopes implementation after Plan 50; no push or deployment."
 depends_on: [plan-15, plan-36, plan-38, plan-40, plan-44]
 gate: "Requirement 0 scope approval, then owner adoption of one comparison/distance task and first source slice. Report-only design may proceed beside Plan45; source activation requires its owner-accepted contracts and a separate implementation gate."
 summary: >-

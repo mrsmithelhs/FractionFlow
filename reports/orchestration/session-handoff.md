@@ -6,6 +6,26 @@ and pause records retained later in this file.
 
 ## Current board and owner direction
 
+Current 2026-11-01: Plan47 COMPLETE by owner adoption of the refined symbolic-first
+distance task and four common-unit records (94e106b, progress e44b558, review
+5879042). Owner-acceptance.md governs. New Plan51 READY but BLOCKED ON PLAN50;
+it implements that design only after Plan50 owner closure and fresh seam inspection.
+No Plan51 chat/source launch. Equality/unlike-unit distance reach stays deferred.
+
+Plan50 IN-PROGRESS: pure checkpoint c18eb9a/progress355be24 reviewed; parent reran
+38 tests and approved integration in checkpoint-1-approval.md. Renderer/app/scene,
+v11 replay, real drag/access/geometry and final validation remain to implement.
+FF Impl50 id01a1979f-1e9a-7103-be5b-a8f2e9e28c3f is explicitly owner-authorized
+for bidirectional supervision through owner review. It had gone idle believing it
+needed permission to message/request a Git window; no actual rejection was shown
+in the inspected status. Parent restated authorization, granted commit window and
+then integration approval. Do not wait on repeated permission for routine reporting;
+surface actual harness rejections explicitly. Use compact status snapshots to catch
+checkpoint waits. Coordinate Git windows and exact-path/--only commits; Plan47
+is closed and no longer writes. One later Terra-medium pass, no duplicate parent
+review. No status/push/deployment authority for implementers. Older blocks below
+are historical.
+
 Current 2026-11-01: Plan46 COMPLETE by explicit owner adoption of the refined
 task and four-record first slice. Dossier94afbaf, progressf4f0641, technical
 review50f7c8f; owner-acceptance.md governs. New Plan50 READY/RUNNABLE, not started:
