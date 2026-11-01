@@ -1,10 +1,27 @@
 # FractionFlow orchestration handoff
 
-Updated 2026-10-24. Read AGENTS.md, the orchestrator starting prompt, packet board
+Updated 2026-10-31. Read AGENTS.md, the orchestrator starting prompt, packet board
 and git status before acting. Current direction below supersedes older delivery
 and pause records retained later in this file.
 
 ## Current board and owner direction
+
+Current 2026-10-31: Plan45 is COMPLETE by explicit owner acceptance of the initial
+comparison slice on the local server. Repair01 3d33052/progress1e913bd technically
+accepted in 29702ba; see Plan45 owner-acceptance.md. Optional common-denominator
+construction was not delivered by45; owner requested separate Plan49, now READY,
+not started. It reuses Plans24/25 help where appropriate within comparison, with
+Requirement0 mechanism and pure checkpoint gates, exact symbolic target admission,
+one-model lock, concise local learner contributions and compatibility preservation.
+Recommend49 as the next source implementation before treating comparison strategy
+support as covered; Plans46–48 remain draft design work and may be considered
+separately with disjoint report ownership. No new implementer dispatched.
+
+FF Impl45 holds after delivery; authorized bidirectional chat id is
+01a1939b-869f-7712-b74e-cabe2c96032f. Closure authorizes no push/deployment.
+Learner dev server default is now5199 (e0f0194), including dev console; restart a
+running server to apply. Prototype stays5174. Existing browser/AT/text-scale limits
+remain. Older status/gate entries below are historical, superseded by this block.
 
 Plan45 Requirement0 reviewed 2026-10-31: proposal a4531c9/ded0239 APPROVED TO
 PURE REQUIREMENT1 CHECKPOINT ONLY in 7a4d9d2 / mechanism-approval.md. Message
