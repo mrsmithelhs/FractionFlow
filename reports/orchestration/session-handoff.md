@@ -1,10 +1,23 @@
 # FractionFlow orchestration handoff
 
-Updated 2026-10-31. Read AGENTS.md, the orchestrator starting prompt, packet board
+Updated 2026-11-01. Read AGENTS.md, the orchestrator starting prompt, packet board
 and git status before acting. Current direction below supersedes older delivery
 and pause records retained later in this file.
 
 ## Current board and owner direction
+
+Current 2026-11-01: Plan46 COMPLETE by explicit owner adoption of the refined
+task and four-record first slice. Dossier94afbaf, progressf4f0641, technical
+review50f7c8f; owner-acceptance.md governs. New Plan50 READY/RUNNABLE, not started:
+three-member equivalence-first collection, one Check, exact shared anchors and
+separate selectable tethered labels, persistent member list, bounded {4,6,8}
+lattice on [0,1], compact four-record bank. It requires mechanism and pure-contract
+gates, bounded ownership, historical replay and meaningful mounted/browser proof.
+Recommend Plan50 next for source; Plan47 draft design may proceed separately with
+disjoint reports if owner starts it. Plan48 remains later readiness. No automatic
+verifier refactor, new source launch, push or deployment. FF Impl46 holds after
+delivery; chat01a19790-505e-72d3-9482-26d408bd7726 was authorized through closure.
+Older next-plan/status entries below are historical and superseded by this block.
 
 Current 2026-11-01: Plan49 is COMPLETE by explicit owner local rendered/task
 acceptance after Repair01 technical acceptance e0055d7. Source c7a2988, repair

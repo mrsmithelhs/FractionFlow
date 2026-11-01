@@ -1,7 +1,8 @@
 ---
 id: plan-46
 title: Number-Line Collection, Ordering and Equivalence Task Design
-status: in-progress
+status: complete
+resolution: "Owner adopted the refined equivalence-first three-label collection task, co-location/access grammar and four-record first slice. Plan 50 separately scopes mechanism-gated implementation; no push or deployment."
 depends_on: [plan-29, plan-37, plan-39, plan-43]
 gate: "Requirement 0: approve bounded investigation scope before the dossier. Owner adoption of one short collection task, co-location/access grammar and first source slice precedes implementation. No source or learner activation in this packet."
 summary: >-
