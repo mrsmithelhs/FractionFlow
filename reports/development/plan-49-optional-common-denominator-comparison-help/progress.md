@@ -9,3 +9,11 @@ Preflight `node scripts/dev/plan-status.js check 49` returned RUNNABLE. Investig
 The initial tree contained three untracked Plan 39 route-run JSON files; they were left untouched. Ordinary staging and `git add --refresh -- .` failed because the sandbox denied `.git/index.lock` creation; no lock existed. Scoped elevated staging and local commit were used, with no ACL changes.
 
 **Stop:** awaiting orchestrator mechanism approval before source changes. The pure-contract checkpoint remains a separate subsequent gate. Owner rendered/task acceptance, delivery review and deployment remain outstanding. Ready for orchestrator mechanism review: yes; ready for delivery: no.
+
+## Pure checkpoint 1 — 2026-11-01
+
+Mechanism approval is recorded in `mechanism-approval.md`. The pure checkpoint artifacts are committed at `a171441`: an isolated revision-2 construction contract and projection, pre-change v9 capture script and full-state oracle, focused tests and `checkpoint-1.md`. No general dispatcher, scene, mounted app, renderer, route or replay serializer was changed. The checkpoint calls out that the outer revision-2 contract wraps the legacy pure relation reducer and corrects the emitted provenance identity; the orchestrator must review that seam before integration.
+
+Captured two v9 cases before source changes; focused tests replay both and compare full state, envelopes and old reasoning cue. All 12 records were checked at LCD and twice LCD with exact-core APIs; tests also cover admission, recovery, factors, forms, stale phase, model lock and partial-help relation acceptance. The combined focused three-file run passed 14 tests; after a provenance-only correction the new focused file passed its five tests. Packet lint passed and staged diff check passed. No full suite, browser, build, physical-device or assistive-technology checks were run at this pure gate. The three unrelated untracked Plan 39 evidence files remain untouched.
+
+Consultation disposition: no advisor consultation ran at this pure checkpoint; the single requested Terra-medium read-only review is reserved for substantial settled integration as directed by the mechanism approval. Ready for orchestrator checkpoint review: yes. Ready for delivery: no. Stop before app/renderer/routes/replay integration pending explicit checkpoint approval; owner acceptance and deployment remain separate.
