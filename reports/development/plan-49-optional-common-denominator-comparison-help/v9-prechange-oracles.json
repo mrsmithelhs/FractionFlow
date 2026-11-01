@@ -1,0 +1,715 @@
+{
+  "cases": [
+    {
+      "itemId": "plan45-compare-01",
+      "cue": "Try naming each amount in parts out of 15.",
+      "envelope": {
+        "schemaVersion": "fractionflow.episode-replay/v9",
+        "contentIdentity": {
+          "schemaVersion": "fractionflow.comparison-content-identity/v1",
+          "id": "symbolic-fraction-comparison-vetted-set@1/plan45-compare-01",
+          "source": "curated",
+          "reconstruction": {
+            "kind": "plan45-symbolic-fraction-comparison",
+            "practiceSetId": "symbolic-fraction-comparison-vetted-set",
+            "practiceSetRevision": "1",
+            "itemId": "plan45-compare-01",
+            "authoringRevision": "plan45-record-v1"
+          }
+        },
+        "episodeDefinition": {
+          "id": "phase-4-symbolic-fraction-comparison",
+          "revision": "1"
+        },
+        "support": {
+          "label": "high support",
+          "dimensions": {
+            "fractionBarModel": "high support",
+            "commonDenominator": "high support",
+            "equivalentNumerators": "high support",
+            "prediction": "high support",
+            "symbolicIntegration": "high support",
+            "helpAndReplay": "high support"
+          }
+        },
+        "activeCondition": {
+          "id": "plan45-static-comparison",
+          "revision": "1",
+          "display": "not-applicable",
+          "choreography": "not-applicable",
+          "promptCadence": "D-05-focused-key-beats",
+          "connectionMaking": "not-applicable"
+        },
+        "learnerIntents": [
+          {
+            "type": "request-comparison-help",
+            "helpKind": "reasoning"
+          },
+          {
+            "type": "request-comparison-model",
+            "side": "first"
+          },
+          {
+            "type": "submit-fraction-comparison",
+            "proposed": "<"
+          }
+        ],
+        "taskContext": {
+          "practiceSetId": "symbolic-fraction-comparison-vetted-set",
+          "practiceSetRevision": "1",
+          "itemId": "plan45-compare-01",
+          "authoringRevision": "plan45-record-v1",
+          "definitionId": "phase-4-symbolic-fraction-comparison",
+          "definitionRevision": "1",
+          "recipeId": "symbolic-fraction-comparison",
+          "recipeRevision": "1",
+          "taskDataId": "plan45-symbolic-fraction-comparison-task-data",
+          "taskDataRevision": "1",
+          "sourceForms": {
+            "first": {
+              "numerator": "2",
+              "denominator": "3"
+            },
+            "second": {
+              "numerator": "3",
+              "denominator": "5"
+            }
+          },
+          "teachingIntentId": "compare.symbolic-magnitude",
+          "cueId": "compare.shared-unit-close",
+          "hintContext": {
+            "kind": "common-unit-target",
+            "denominator": "15"
+          }
+        }
+      },
+      "expectedState": {
+        "schemaVersion": "fractionflow.episode-state/v1",
+        "status": "active",
+        "revision": 3,
+        "episodeDefinition": {
+          "id": "phase-4-symbolic-fraction-comparison",
+          "revision": "1",
+          "family": "symbolic-fraction-comparison",
+          "beats": [
+            "compare",
+            "resolve"
+          ],
+          "includeReflection": false,
+          "promptIdentities": {
+            "compare": "phase4.comparison.compare-symbolic-fractions",
+            "resolve": "phase4.comparison.accepted-result"
+          }
+        },
+        "taskContext": {
+          "practiceSetId": "symbolic-fraction-comparison-vetted-set",
+          "practiceSetRevision": "1",
+          "itemId": "plan45-compare-01",
+          "authoringRevision": "plan45-record-v1",
+          "definitionId": "phase-4-symbolic-fraction-comparison",
+          "definitionRevision": "1",
+          "recipeId": "symbolic-fraction-comparison",
+          "recipeRevision": "1",
+          "taskDataId": "plan45-symbolic-fraction-comparison-task-data",
+          "taskDataRevision": "1",
+          "sourceForms": {
+            "first": {
+              "numerator": "2",
+              "denominator": "3"
+            },
+            "second": {
+              "numerator": "3",
+              "denominator": "5"
+            }
+          },
+          "teachingIntentId": "compare.symbolic-magnitude",
+          "cueId": "compare.shared-unit-close",
+          "hintContext": {
+            "kind": "common-unit-target",
+            "denominator": "15"
+          }
+        },
+        "activeCondition": {
+          "id": "plan45-static-comparison",
+          "revision": "1",
+          "display": "not-applicable",
+          "choreography": "not-applicable",
+          "promptCadence": "D-05-focused-key-beats",
+          "connectionMaking": "not-applicable"
+        },
+        "beatSchedule": [
+          {
+            "id": "compare",
+            "kind": "compare"
+          },
+          {
+            "id": "resolve",
+            "kind": "resolve"
+          }
+        ],
+        "schedulePosition": 0,
+        "support": {
+          "label": "high support",
+          "dimensions": {
+            "fractionBarModel": "high support",
+            "commonDenominator": "high support",
+            "equivalentNumerators": "high support",
+            "prediction": "high support",
+            "symbolicIntegration": "high support",
+            "helpAndReplay": "high support"
+          }
+        },
+        "beat": "compare",
+        "expectedResponse": {
+          "promptId": "phase4.comparison.compare-symbolic-fractions",
+          "beat": "compare",
+          "responsibility": "compare-symbolic-fraction-magnitudes",
+          "inputKind": "relation",
+          "choices": [
+            "<",
+            "=",
+            ">"
+          ],
+          "evidenceCategory": "supported-construction"
+        },
+        "pendingResponse": null,
+        "established": {
+          "comparison": null
+        },
+        "completedBeats": [],
+        "intentHistory": [
+          {
+            "type": "request-comparison-help",
+            "helpKind": "reasoning"
+          },
+          {
+            "type": "request-comparison-model",
+            "side": "first"
+          },
+          {
+            "type": "submit-fraction-comparison",
+            "proposed": "<"
+          }
+        ],
+        "helpHistory": [],
+        "replayHistory": [],
+        "supportHistory": [],
+        "assistanceHistory": [
+          {
+            "type": "comparison-help-request",
+            "helpKind": "reasoning",
+            "cueId": "compare.shared-unit-close"
+          },
+          {
+            "type": "comparison-model-request",
+            "side": "first",
+            "cueId": "compare.shared-unit-close"
+          }
+        ],
+        "retryHistory": [
+          {
+            "beat": "compare",
+            "reason": "comparison-retry"
+          }
+        ],
+        "responseProvenance": [
+          {
+            "schemaVersion": "fractionflow.response-provenance/v1",
+            "responseIndex": 0,
+            "contentIdentity": {
+              "schemaVersion": "fractionflow.comparison-content-identity/v1",
+              "id": "symbolic-fraction-comparison-vetted-set@1/plan45-compare-01",
+              "source": "curated",
+              "reconstruction": {
+                "kind": "plan45-symbolic-fraction-comparison",
+                "practiceSetId": "symbolic-fraction-comparison-vetted-set",
+                "practiceSetRevision": "1",
+                "itemId": "plan45-compare-01",
+                "authoringRevision": "plan45-record-v1"
+              }
+            },
+            "taskContext": {
+              "practiceSetId": "symbolic-fraction-comparison-vetted-set",
+              "practiceSetRevision": "1",
+              "itemId": "plan45-compare-01",
+              "authoringRevision": "plan45-record-v1",
+              "definitionId": "phase-4-symbolic-fraction-comparison",
+              "definitionRevision": "1",
+              "recipeId": "symbolic-fraction-comparison",
+              "recipeRevision": "1",
+              "taskDataId": "plan45-symbolic-fraction-comparison-task-data",
+              "taskDataRevision": "1",
+              "sourceForms": {
+                "first": {
+                  "numerator": "2",
+                  "denominator": "3"
+                },
+                "second": {
+                  "numerator": "3",
+                  "denominator": "5"
+                }
+              },
+              "teachingIntentId": "compare.symbolic-magnitude",
+              "cueId": "compare.shared-unit-close",
+              "hintContext": {
+                "kind": "common-unit-target",
+                "denominator": "15"
+              }
+            },
+            "episodeDefinition": {
+              "id": "phase-4-symbolic-fraction-comparison",
+              "revision": "1"
+            },
+            "activeCondition": {
+              "id": "plan45-static-comparison",
+              "revision": "1",
+              "display": "not-applicable",
+              "choreography": "not-applicable",
+              "promptCadence": "D-05-focused-key-beats",
+              "connectionMaking": "not-applicable"
+            },
+            "support": {
+              "label": "high support",
+              "dimensions": {
+                "fractionBarModel": "high support",
+                "commonDenominator": "high support",
+                "equivalentNumerators": "high support",
+                "prediction": "high support",
+                "symbolicIntegration": "high support",
+                "helpAndReplay": "high support"
+              }
+            },
+            "beat": "compare",
+            "schedulePosition": 0,
+            "scheduleEntryId": "compare",
+            "expectedResponse": {
+              "promptId": "phase4.comparison.compare-symbolic-fractions",
+              "beat": "compare",
+              "responsibility": "compare-symbolic-fraction-magnitudes",
+              "inputKind": "relation",
+              "choices": [
+                "<",
+                "=",
+                ">"
+              ],
+              "evidenceCategory": "supported-construction"
+            },
+            "visibility": {
+              "representationRole": "symbolic",
+              "visible": [
+                "ordered-source-forms",
+                "relation-choice",
+                "submitted-relation"
+              ],
+              "supplied": [
+                "requested-comparison-assistance"
+              ],
+              "hidden": [
+                "expected-relation",
+                "correct-option-identity"
+              ]
+            },
+            "assistanceHistory": [
+              {
+                "type": "comparison-help-request",
+                "helpKind": "reasoning",
+                "cueId": "compare.shared-unit-close"
+              },
+              {
+                "type": "comparison-model-request",
+                "side": "first",
+                "cueId": "compare.shared-unit-close"
+              }
+            ],
+            "learnerAction": {
+              "type": "submit-fraction-comparison",
+              "proposed": "<"
+            },
+            "classification": {
+              "kind": "comparison-retry",
+              "validity": "incorrect",
+              "proposed": "<",
+              "expectedRelation": ">",
+              "continuation": "local-recovery"
+            },
+            "evidenceCategory": "supported-construction",
+            "resultingState": {
+              "status": "active",
+              "beat": "compare",
+              "schedulePosition": 0,
+              "scheduleEntryId": "compare",
+              "established": {
+                "comparison": null
+              },
+              "revision": 3
+            }
+          }
+        ],
+        "assistance": {
+          "modelChoice": "first"
+        },
+        "lastRecovery": {
+          "beat": "compare",
+          "classification": {
+            "kind": "comparison-retry"
+          },
+          "clearedPendingResponse": false
+        }
+      }
+    },
+    {
+      "itemId": "plan45-compare-03",
+      "cue": "Try simplifying both fractions.",
+      "envelope": {
+        "schemaVersion": "fractionflow.episode-replay/v9",
+        "contentIdentity": {
+          "schemaVersion": "fractionflow.comparison-content-identity/v1",
+          "id": "symbolic-fraction-comparison-vetted-set@1/plan45-compare-03",
+          "source": "curated",
+          "reconstruction": {
+            "kind": "plan45-symbolic-fraction-comparison",
+            "practiceSetId": "symbolic-fraction-comparison-vetted-set",
+            "practiceSetRevision": "1",
+            "itemId": "plan45-compare-03",
+            "authoringRevision": "plan45-record-v1"
+          }
+        },
+        "episodeDefinition": {
+          "id": "phase-4-symbolic-fraction-comparison",
+          "revision": "1"
+        },
+        "support": {
+          "label": "high support",
+          "dimensions": {
+            "fractionBarModel": "high support",
+            "commonDenominator": "high support",
+            "equivalentNumerators": "high support",
+            "prediction": "high support",
+            "symbolicIntegration": "high support",
+            "helpAndReplay": "high support"
+          }
+        },
+        "activeCondition": {
+          "id": "plan45-static-comparison",
+          "revision": "1",
+          "display": "not-applicable",
+          "choreography": "not-applicable",
+          "promptCadence": "D-05-focused-key-beats",
+          "connectionMaking": "not-applicable"
+        },
+        "learnerIntents": [
+          {
+            "type": "request-comparison-help",
+            "helpKind": "reasoning"
+          },
+          {
+            "type": "request-comparison-model",
+            "side": "first"
+          },
+          {
+            "type": "submit-fraction-comparison",
+            "proposed": "<"
+          }
+        ],
+        "taskContext": {
+          "practiceSetId": "symbolic-fraction-comparison-vetted-set",
+          "practiceSetRevision": "1",
+          "itemId": "plan45-compare-03",
+          "authoringRevision": "plan45-record-v1",
+          "definitionId": "phase-4-symbolic-fraction-comparison",
+          "definitionRevision": "1",
+          "recipeId": "symbolic-fraction-comparison",
+          "recipeRevision": "1",
+          "taskDataId": "plan45-symbolic-fraction-comparison-task-data",
+          "taskDataRevision": "1",
+          "sourceForms": {
+            "first": {
+              "numerator": "4",
+              "denominator": "6"
+            },
+            "second": {
+              "numerator": "6",
+              "denominator": "9"
+            }
+          },
+          "teachingIntentId": "compare.symbolic-magnitude",
+          "cueId": "compare.equivalence",
+          "hintContext": {
+            "kind": "equivalence"
+          }
+        }
+      },
+      "expectedState": {
+        "schemaVersion": "fractionflow.episode-state/v1",
+        "status": "active",
+        "revision": 3,
+        "episodeDefinition": {
+          "id": "phase-4-symbolic-fraction-comparison",
+          "revision": "1",
+          "family": "symbolic-fraction-comparison",
+          "beats": [
+            "compare",
+            "resolve"
+          ],
+          "includeReflection": false,
+          "promptIdentities": {
+            "compare": "phase4.comparison.compare-symbolic-fractions",
+            "resolve": "phase4.comparison.accepted-result"
+          }
+        },
+        "taskContext": {
+          "practiceSetId": "symbolic-fraction-comparison-vetted-set",
+          "practiceSetRevision": "1",
+          "itemId": "plan45-compare-03",
+          "authoringRevision": "plan45-record-v1",
+          "definitionId": "phase-4-symbolic-fraction-comparison",
+          "definitionRevision": "1",
+          "recipeId": "symbolic-fraction-comparison",
+          "recipeRevision": "1",
+          "taskDataId": "plan45-symbolic-fraction-comparison-task-data",
+          "taskDataRevision": "1",
+          "sourceForms": {
+            "first": {
+              "numerator": "4",
+              "denominator": "6"
+            },
+            "second": {
+              "numerator": "6",
+              "denominator": "9"
+            }
+          },
+          "teachingIntentId": "compare.symbolic-magnitude",
+          "cueId": "compare.equivalence",
+          "hintContext": {
+            "kind": "equivalence"
+          }
+        },
+        "activeCondition": {
+          "id": "plan45-static-comparison",
+          "revision": "1",
+          "display": "not-applicable",
+          "choreography": "not-applicable",
+          "promptCadence": "D-05-focused-key-beats",
+          "connectionMaking": "not-applicable"
+        },
+        "beatSchedule": [
+          {
+            "id": "compare",
+            "kind": "compare"
+          },
+          {
+            "id": "resolve",
+            "kind": "resolve"
+          }
+        ],
+        "schedulePosition": 0,
+        "support": {
+          "label": "high support",
+          "dimensions": {
+            "fractionBarModel": "high support",
+            "commonDenominator": "high support",
+            "equivalentNumerators": "high support",
+            "prediction": "high support",
+            "symbolicIntegration": "high support",
+            "helpAndReplay": "high support"
+          }
+        },
+        "beat": "compare",
+        "expectedResponse": {
+          "promptId": "phase4.comparison.compare-symbolic-fractions",
+          "beat": "compare",
+          "responsibility": "compare-symbolic-fraction-magnitudes",
+          "inputKind": "relation",
+          "choices": [
+            "<",
+            "=",
+            ">"
+          ],
+          "evidenceCategory": "supported-construction"
+        },
+        "pendingResponse": null,
+        "established": {
+          "comparison": null
+        },
+        "completedBeats": [],
+        "intentHistory": [
+          {
+            "type": "request-comparison-help",
+            "helpKind": "reasoning"
+          },
+          {
+            "type": "request-comparison-model",
+            "side": "first"
+          },
+          {
+            "type": "submit-fraction-comparison",
+            "proposed": "<"
+          }
+        ],
+        "helpHistory": [],
+        "replayHistory": [],
+        "supportHistory": [],
+        "assistanceHistory": [
+          {
+            "type": "comparison-help-request",
+            "helpKind": "reasoning",
+            "cueId": "compare.equivalence"
+          },
+          {
+            "type": "comparison-model-request",
+            "side": "first",
+            "cueId": "compare.equivalence"
+          }
+        ],
+        "retryHistory": [
+          {
+            "beat": "compare",
+            "reason": "comparison-retry"
+          }
+        ],
+        "responseProvenance": [
+          {
+            "schemaVersion": "fractionflow.response-provenance/v1",
+            "responseIndex": 0,
+            "contentIdentity": {
+              "schemaVersion": "fractionflow.comparison-content-identity/v1",
+              "id": "symbolic-fraction-comparison-vetted-set@1/plan45-compare-03",
+              "source": "curated",
+              "reconstruction": {
+                "kind": "plan45-symbolic-fraction-comparison",
+                "practiceSetId": "symbolic-fraction-comparison-vetted-set",
+                "practiceSetRevision": "1",
+                "itemId": "plan45-compare-03",
+                "authoringRevision": "plan45-record-v1"
+              }
+            },
+            "taskContext": {
+              "practiceSetId": "symbolic-fraction-comparison-vetted-set",
+              "practiceSetRevision": "1",
+              "itemId": "plan45-compare-03",
+              "authoringRevision": "plan45-record-v1",
+              "definitionId": "phase-4-symbolic-fraction-comparison",
+              "definitionRevision": "1",
+              "recipeId": "symbolic-fraction-comparison",
+              "recipeRevision": "1",
+              "taskDataId": "plan45-symbolic-fraction-comparison-task-data",
+              "taskDataRevision": "1",
+              "sourceForms": {
+                "first": {
+                  "numerator": "4",
+                  "denominator": "6"
+                },
+                "second": {
+                  "numerator": "6",
+                  "denominator": "9"
+                }
+              },
+              "teachingIntentId": "compare.symbolic-magnitude",
+              "cueId": "compare.equivalence",
+              "hintContext": {
+                "kind": "equivalence"
+              }
+            },
+            "episodeDefinition": {
+              "id": "phase-4-symbolic-fraction-comparison",
+              "revision": "1"
+            },
+            "activeCondition": {
+              "id": "plan45-static-comparison",
+              "revision": "1",
+              "display": "not-applicable",
+              "choreography": "not-applicable",
+              "promptCadence": "D-05-focused-key-beats",
+              "connectionMaking": "not-applicable"
+            },
+            "support": {
+              "label": "high support",
+              "dimensions": {
+                "fractionBarModel": "high support",
+                "commonDenominator": "high support",
+                "equivalentNumerators": "high support",
+                "prediction": "high support",
+                "symbolicIntegration": "high support",
+                "helpAndReplay": "high support"
+              }
+            },
+            "beat": "compare",
+            "schedulePosition": 0,
+            "scheduleEntryId": "compare",
+            "expectedResponse": {
+              "promptId": "phase4.comparison.compare-symbolic-fractions",
+              "beat": "compare",
+              "responsibility": "compare-symbolic-fraction-magnitudes",
+              "inputKind": "relation",
+              "choices": [
+                "<",
+                "=",
+                ">"
+              ],
+              "evidenceCategory": "supported-construction"
+            },
+            "visibility": {
+              "representationRole": "symbolic",
+              "visible": [
+                "ordered-source-forms",
+                "relation-choice",
+                "submitted-relation"
+              ],
+              "supplied": [
+                "requested-comparison-assistance"
+              ],
+              "hidden": [
+                "expected-relation",
+                "correct-option-identity"
+              ]
+            },
+            "assistanceHistory": [
+              {
+                "type": "comparison-help-request",
+                "helpKind": "reasoning",
+                "cueId": "compare.equivalence"
+              },
+              {
+                "type": "comparison-model-request",
+                "side": "first",
+                "cueId": "compare.equivalence"
+              }
+            ],
+            "learnerAction": {
+              "type": "submit-fraction-comparison",
+              "proposed": "<"
+            },
+            "classification": {
+              "kind": "comparison-retry",
+              "validity": "incorrect",
+              "proposed": "<",
+              "expectedRelation": "=",
+              "continuation": "local-recovery"
+            },
+            "evidenceCategory": "supported-construction",
+            "resultingState": {
+              "status": "active",
+              "beat": "compare",
+              "schedulePosition": 0,
+              "scheduleEntryId": "compare",
+              "established": {
+                "comparison": null
+              },
+              "revision": 3
+            }
+          }
+        ],
+        "assistance": {
+          "modelChoice": "first"
+        },
+        "lastRecovery": {
+          "beat": "compare",
+          "classification": {
+            "kind": "comparison-retry"
+          },
+          "clearedPendingResponse": false
+        }
+      }
+    }
+  ]
+}
