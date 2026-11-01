@@ -1,21 +1,22 @@
 {
+  "layer": "mounted mock DOM",
   "seeds": [
     {
       "name": "future-form",
-      "mutation": "insert second answer into pre-construction projection",
-      "observedAssertionFailure": "expected { numerator: '9', denominator: '15' } to be null",
-      "cleanRecovery": true
-    },
-    {
-      "name": "stale-form",
-      "mutation": "retain old accepted form after revision",
-      "observedAssertionFailure": "expected { numerator: '10', denominator: '15' } to be null",
+      "mutation": "inserted unconstructed second form into the mounted task",
+      "observedAssertionFailure": "expected MockElement{ tagName: 'P', …(12) } to be null",
       "cleanRecovery": true
     },
     {
       "name": "wrong-conversion",
-      "mutation": "treat 11/15 as accepted equivalent of 2/3",
-      "observedAssertionFailure": "expected false to be true // Object.is equality",
+      "mutation": "changed accepted 10/15 to displayed 11/15 in mounted task",
+      "observedAssertionFailure": "expected { kind: 'fraction', …(2) } to deeply equal { kind: 'fraction', …(2) }",
+      "cleanRecovery": true
+    },
+    {
+      "name": "stale-work",
+      "mutation": "reinserted prior accepted row into mounted task after target revision",
+      "observedAssertionFailure": "expected MockElement{ tagName: 'P', …(12) } to be null",
       "cleanRecovery": true
     }
   ]

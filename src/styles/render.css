@@ -1037,3 +1037,6 @@
 .plan49-helper-question { font-weight: 600; }
 .plan49-helper-input { min-height: 44px; width: 8rem; max-width: 100%; font: inherit; }
 .plan49-helper-recovery, .plan49-helper-cue, .plan49-accepted-form { margin: 0; }
+
+.plan49-accepted-form { display: flex; flex-wrap: wrap; align-items: center; gap: .4rem; }
+.plan49-helper-question .symbolic-fraction { vertical-align: middle; margin-inline: .15rem; }

@@ -1,0 +1,67 @@
+{
+  "completed": true,
+  "focusedTransitionsConnected": true,
+  "accessibleNamesVerified": true,
+  "focusLog": [
+    {
+      "tag": "BUTTON",
+      "text": "Read the steps",
+      "connected": true,
+      "match": false
+    },
+    {
+      "tag": "BUTTON",
+      "text": "Back to start",
+      "connected": true,
+      "match": false
+    },
+    {
+      "tag": "SUMMARY",
+      "text": "Need help?",
+      "connected": true,
+      "match": true
+    },
+    {
+      "tag": "BUTTON",
+      "text": "Reasoning tip",
+      "connected": true,
+      "match": false
+    },
+    {
+      "tag": "BUTTON",
+      "text": "Sign tip",
+      "connected": true,
+      "match": false
+    },
+    {
+      "tag": "BUTTON",
+      "text": "Model first amount",
+      "connected": true,
+      "match": false
+    },
+    {
+      "tag": "BUTTON",
+      "text": "Model second amount",
+      "connected": true,
+      "match": false
+    },
+    {
+      "tag": "BUTTON",
+      "text": "Use the same denominator",
+      "connected": true,
+      "match": true
+    },
+    {
+      "tag": "BUTTON",
+      "text": "Check",
+      "connected": true,
+      "match": true
+    },
+    {
+      "tag": "BUTTON",
+      "text": "Check",
+      "connected": true,
+      "match": true
+    }
+  ]
+}

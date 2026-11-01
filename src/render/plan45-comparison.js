@@ -106,7 +106,11 @@ function makeConstruction(comparison, callbacks) {
   const forms = work.acceptedForms;
   for (const side of ['first', 'second']) if (forms[side]) {
     const row = element('p', 'plan49-accepted-form');
-    row.textContent = `${side === 'first' ? 'First' : 'Second'}: ${comparison.sourceForms[side].numerator}/${comparison.sourceForms[side].denominator} = ${forms[side].numerator}/${forms[side].denominator}`;
+    row.setAttribute('data-plan49-side', side);
+    const caption = element('span'); caption.textContent = side === 'first' ? 'First:' : 'Second:';
+    const equal = element('span'); equal.textContent = '='; equal.setAttribute('aria-label', 'equals');
+    append(row, caption, createSymbolicFraction(comparison.sourceForms[side].numerator, comparison.sourceForms[side].denominator, { variant: 'compact' }), equal,
+      createSymbolicFraction(forms[side].numerator, forms[side].denominator, { variant: 'compact' }));
     append(section, row);
   }
   if (work.phase !== 'denominator') append(section, button('Change denominator', { type: 'revise-comparison-denominator' }));
@@ -120,9 +124,13 @@ function makeConstruction(comparison, callbacks) {
   const form = element('form', 'plan49-helper-form');
   const id = `plan49-${callbacks.view}-${kind}`;
   const label = element('label', 'plan49-helper-question'); label.htmlFor = id;
-  label.textContent = isDenominator ? 'Choose a denominator both fractions can use.'
-    : askingMultiplier ? `What multiplier turns ${source.denominator} parts into ${work.target}?`
-    : `How many parts out of ${work.target} make the same amount as ${source.numerator}/${source.denominator}?`;
+  if (isDenominator) label.textContent = 'Choose a denominator both fractions can use.';
+  else if (askingMultiplier) label.textContent = `What multiplier turns ${source.denominator} parts into ${work.target}?`;
+  else {
+    const text = element('span'); text.textContent = `How many parts out of ${work.target} make the same amount as `;
+    const punctuation = element('span'); punctuation.textContent = '?';
+    append(label, text, createSymbolicFraction(source.numerator, source.denominator, { variant: 'compact' }), punctuation);
+  }
   append(form, label);
   if (isDenominator && work.helpRequested) {
     const cue = element('p', 'plan49-helper-cue');
