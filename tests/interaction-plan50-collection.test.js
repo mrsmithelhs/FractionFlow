@@ -4,6 +4,7 @@ import { admitPlan50Record, resolvePlan50Context } from '../src/content/plan50-n
 import { createFraction, equalFractions } from '../src/math/index.js';
 import { getEpisodeDefinition } from '../src/interaction/episode-definition.js';
 import { createEpisode, applyIntent, episodeStateSnapshot, withActiveCondition } from '../src/interaction/episode.js';
+import { MEDIUM_SUPPORT_CONFIGURATION } from '../src/interaction/support.js';
 import { plan50IntentContext } from '../src/interaction/plan50-number-line-collection-episode.js';
 const definition = getEpisodeDefinition('phase-4-number-line-collection','1');
 const start = itemId => createEpisode({ episodeDefinition:definition, taskContext:resolvePlan50Context(itemId) });
@@ -38,6 +39,26 @@ describe('Plan 50 exact collection contract', () => {
     expect(withActiveCondition(s,s.activeCondition)).toBe(s);
     expect(()=>withActiveCondition(s,{...s.activeCondition,display:'D-01-A'})).toThrow();
   });
+  it('rejects each individually wrong member in every record without revealing its target', () => {
+    const exact=[[6,4,4],[7,2,4],[4,2,4],[4,0,2]];
+    PLAN50_RECORDS.forEach((record,r) => record.members.forEach((changed,j) => {
+      let s=start(record.itemId);
+      record.members.forEach((member,i) => {const index=i===j ? (exact[r][i]+1)%(record.lattice+1) : exact[r][i];s=place(s,member.id,`step-${index}`);});
+      s=send(s,'check-collection',{revision:s.placementRevision});
+      expect(s.status).toBe('active');expect(s.established.collection).toBeNull();
+      expect(s.evaluation.feedbackByMember[changed.id]).toBe('check-placement');
+      expect(Object.keys(s.evaluation)).toEqual(['status','placementRevision','feedbackByMember']);
+    }));
+  });
+  it('offers the same exact candidates and acceptance under More and Less', () => {
+    for(const record of PLAN50_RECORDS) {
+      let s=createEpisode({episodeDefinition:definition,taskContext:resolvePlan50Context(record.itemId),support:MEDIUM_SUPPORT_CONFIGURATION});
+      const answers=admitPlan50Record(record).correctPositions;
+      for(const member of record.members)s=place(s,member.id,answers[member.id]);
+      s=send(s,'check-collection',{revision:s.placementRevision});expect(s.status).toBe('resolved');
+      expect(s.established.collection).toEqual(answers);
+    }
+  });
   it('rejects unsupported records rather than grading them', () => {
     const base=structuredClone(PLAN50_RECORDS[0]);
     for (const mutate of [r=>r.members[1].id='a', r=>r.members[0].form={numerator:'1',denominator:'3'}, r=>r.members[0].form={numerator:'1',denominator:'10'}, r=>r.members[0].form={numerator:'01',denominator:'2'}, r=>r.members.forEach(m=>m.form={numerator:'1',denominator:'2'})]) {
@@ -62,5 +83,24 @@ describe('Plan 50 exact collection contract', () => {
     expect(episodeStateSnapshot(replay)).toEqual(episodeStateSnapshot(s));
     expect(()=>applyIntent(s,{type:'select-collection-member',context:{...plan50IntentContext(s),itemId:'collection-01'},memberId:'a'})).toThrow();
     expect(()=>send(s,'place-collection-member',{memberId:'b',candidateId:'step-9'})).toThrow();
+  });
+});
+import { createReplayEnvelope, replayEpisode } from '../src/interaction/replay.js';
+
+describe('Plan 50 replay v11', () => {
+  it('round trips partial, wrong, helped and accepted whole public state', () => {
+    let s=start('collection-01');
+    const verify=() => expect(replayEpisode(JSON.parse(JSON.stringify(createReplayEnvelope(s))))).toEqual(s);
+    verify(); s=place(s,'a','step-6'); s=send(s,'check-collection',{revision:s.placementRevision}); verify();
+    s=place(s,'b','step-6'); s=place(s,'c','step-6'); s=send(s,'check-collection',{revision:s.placementRevision}); verify();
+    s=send(s,'request-collection-help',{helpKind:'placement'}); s=place(s,'b','step-4'); s=place(s,'c','step-4'); verify();
+    s=send(s,'check-collection',{revision:s.placementRevision}); verify();
+    expect(s.responseProvenance[0].evaluatedPlacements).toEqual(s.established.collection);
+  });
+  it('rejects changed identity, definitions, extra keys and cross-version wires', () => {
+    const e=JSON.parse(JSON.stringify(createReplayEnvelope(start('collection-01'))));
+    for (const mutate of [x=>x.contentIdentity.id='collection-02',x=>x.episodeDefinition.revision='2',x=>x.taskContext.members[0].form.numerator='1',x=>x.extra=true,x=>x.schemaVersion='fractionflow.episode-replay/v10']) {
+      const bad=structuredClone(e); mutate(bad); expect(()=>replayEpisode(bad)).toThrow();
+    }
   });
 });

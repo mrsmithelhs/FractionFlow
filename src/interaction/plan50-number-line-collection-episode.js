@@ -15,7 +15,7 @@ export function createPlan50Episode({taskContext, support = HIGH_SUPPORT_CONFIGU
   const condition = validateActiveCondition(activeCondition);
   if (!same(condition,PLAN50_CONDITION)) fail('unsupported condition');
   const placements = Object.fromEntries(context.members.map(m => [m.id,null]));
-  return deepFreeze({ schemaVersion:'fractionflow.episode-state/v1', status:'active', revision:0, placementRevision:0, episodeDefinition, taskContext:context, support:profile, activeCondition:condition, beatSchedule:[{id:'place-collection',kind:'place-collection'},{id:'resolve',kind:'resolve'}], schedulePosition:0, beat:'place-collection', selectedMemberId:null, placements, evaluation:{status:'unchecked', placementRevision:null, feedbackByMember:{}}, established:{collection:null}, intentHistory:[], assistanceHistory:[], responseProvenance:[] });
+  return deepFreeze({ schemaVersion:'fractionflow.episode-state/v1', status:'active', revision:0, placementRevision:0, episodeDefinition, taskContext:context, support:profile, activeCondition:condition, beatSchedule:[{id:'place-collection',kind:'place-collection'},{id:'resolve',kind:'resolve'}], schedulePosition:0, beat:'place-collection', selectedMemberId:null, placements, evaluation:{status:'unchecked', placementRevision:null, feedbackByMember:{}}, established:{collection:null}, intentHistory:[], assistanceHistory:[], completedBeats:[], helpHistory:[], replayHistory:[], retryHistory:[], supportHistory:[], responseProvenance:[] });
 }
 export function applyPlan50Intent(state, intent) {
   if (state?.schemaVersion !== 'fractionflow.episode-state/v1' || state.episodeDefinition?.id !== 'phase-4-number-line-collection' || state.episodeDefinition?.revision !== '1') fail('state identity');
@@ -43,7 +43,7 @@ export function applyPlan50Intent(state, intent) {
     const feedback = Object.fromEntries(c.members.map(m => [m.id,unplaced.length ? (state.placements[m.id] === null ? 'unplaced' : 'not-graded') : (state.placements[m.id] === admitted.correctPositions[m.id] ? 'correct' : 'check-placement')]));
     const status = unplaced.length ? 'incomplete' : Object.values(feedback).every(v => v === 'correct') ? 'accepted' : 'incorrect';
     const evaluation = {status,placementRevision:state.placementRevision,feedbackByMember:feedback};
-    next = {...state,evaluation, ...(status === 'accepted' ? {status:'resolved',beat:'resolve',schedulePosition:1,established:{collection:{...state.placements}},responseProvenance:[...state.responseProvenance,{placements:{...state.placements},assistanceHistory:state.assistanceHistory}]} : {})};
+    next = {...state,evaluation, ...(status === 'accepted' ? {status:'resolved',beat:'resolve',schedulePosition:1,established:{collection:{...state.placements}},responseProvenance:[...state.responseProvenance,{episodeDefinition:{id:c.definitionId,revision:c.definitionRevision},taskContext:c,action:structuredClone(intent),evaluatedPlacements:{...state.placements},evaluation,assistanceHistory:state.assistanceHistory}]} : {})};
   } else fail('unknown intent');
   return deepFreeze({...next,revision:state.revision+1,intentHistory:[...state.intentHistory,structuredClone(intent)]});
 }

@@ -15,7 +15,7 @@ function fraction(numerator, denominator) {
 
 describe('Plan 43 — Shared Episode Completion and Progression Suite', () => {
   describe('Requirement 1 & 2: Inventory, Phases, and Pure Continuation Adapters', () => {
-    it('verifies the exact verified live content inventory of 59 items across 6 practice types', () => {
+    it('verifies the live content inventory of 63 items across 7 practice types', () => {
       // 1. sum-under-one: 21 items (13 Plan 35 recipes, 8 reflection/nested)
       const sumUnderOne = PRACTICE_TYPES.find((pt) => pt.id === 'sum-under-one');
       expect(sumUnderOne.items).toHaveLength(21);
@@ -36,10 +36,10 @@ describe('Plan 43 — Shared Episode Completion and Progression Suite', () => {
       const barToLine = PRACTICE_TYPES.find((pt) => pt.id === 'bar-to-line-same-amount');
       expect(barToLine.items).toHaveLength(8);
 
-      // Total bank = 47 existing items plus the 12-item Plan 45 comparison set.
+      // Total bank adds the four-item Plan 50 collection to the prior 59 items.
       const totalItems = PRACTICE_TYPES.reduce((acc, pt) => acc + pt.items.length, 0);
-      expect(totalItems).toBe(59);
-      expect(PRACTICE_TYPES).toHaveLength(6);
+      expect(totalItems).toBe(63);
+      expect(PRACTICE_TYPES).toHaveLength(7);
     });
 
     it('derives exact completion intents for all families without synthetic response attribution', () => {

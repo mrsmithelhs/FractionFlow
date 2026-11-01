@@ -1012,3 +1012,19 @@ body,
   .plan45-linear-model-pair { grid-template-columns: 1fr; }
   .plan45-expression { gap: 1rem; }
 }
+.plan50-member-list,.plan50-controls,.plan50-tray {display:flex;flex-wrap:wrap;gap:.5rem;margin:.75rem 0}
+.plan50-member,.plan50-controls button,.plan50-controls select,.plan50-token,.plan50-next {min-width:44px;min-height:44px}
+.plan50-member[aria-pressed="true"] {outline:3px solid #285b76;outline-offset:2px}
+.plan50-tray {min-height:62px;padding:8px;border:1px dashed #6b7c85;border-radius:8px}
+.plan50-area {--plan50-inset:max(26px, 1.75em);position:relative;height:calc(44px + 3 * max(48px, 4em));min-width:100%}
+.plan50-axis {position:absolute;left:var(--plan50-inset);right:var(--plan50-inset);bottom:0;height:44px;cursor:crosshair}
+.plan50-axis::before {content:"";position:absolute;left:0;right:0;top:50%;height:4px;background:#243d4b;transform:translateY(-50%)}
+.plan50-point {position:absolute;top:50%;width:8px;height:8px;border-radius:50%;background:#243d4b;transform:translate(-50%,-50%)}
+.plan50-point.plan50-unmarked {background:transparent}
+.plan50-point.plan50-highlight {background:#243d4b;outline:4px solid #ca852e;outline-offset:4px}
+.plan50-token {font:inherit;width:max(44px, 3.5em);box-sizing:border-box;position:relative;display:inline-flex;flex-direction:column;align-items:center;justify-content:center;line-height:1;min-width:44px;min-height:44px;background:white;touch-action:none;z-index:2}
+.plan50-area .plan50-token {position:absolute;transform:translateX(-50%)}
+.plan50-token.is-dragging {position:fixed;transform:translate(-50%,-100%);z-index:1000;pointer-events:none}
+.plan50-fraction-line {width:1.5em;border-top:1px solid currentColor;margin:2px 0}
+.plan50-tether {position:absolute;bottom:22px;border-left:1px solid #59727d;pointer-events:none}
+.plan50-endpoints {display:flex;justify-content:space-between;padding:0 20px}

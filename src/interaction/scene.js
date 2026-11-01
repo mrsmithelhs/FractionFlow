@@ -1,3 +1,5 @@
+import { admitPlan50Record, validatePlan50Context } from '../content/plan50-number-line-collection-task.js';
+import { PLAN50_CONDITION } from './plan50-number-line-collection-episode.js';
 import { validatePlan49Context, projectPlan49PublicConstruction } from './plan49-comparison-construction.js';
 import { deepFreeze } from '../content/schema.js';
 import { candidateDenominatorsForInstance } from '../content/eligibility.js';
@@ -195,6 +197,11 @@ function assertStateShape(state) {
     if (!Array.isArray(state[key])) {
       throw new SceneProjectionError('INVALID_SCENE_INPUT', `state.${key} must be an array`);
     }
+  }
+  if (state.episodeDefinition?.id === 'phase-4-number-line-collection') {
+    validatePlan50Context(state.taskContext);
+    if (state.episodeDefinition.revision !== '1' || JSON.stringify(state.activeCondition) !== JSON.stringify(PLAN50_CONDITION) || !((state.status === 'active' && state.beat === 'place-collection' && state.schedulePosition === 0) || (state.status === 'resolved' && state.beat === 'resolve' && state.schedulePosition === 1))) throw new SceneProjectionError('INVALID_SCENE_INPUT','invalid collection state');
+    return;
   }
   if (isPlan45ComparisonEpisode(state)) {
     if (state.episodeDefinition.revision === '2') validatePlan49Context(state.taskContext);
@@ -498,6 +505,7 @@ function contentProjectionSource(state) {
 }
 
 function sourceContext({ state, representationRole, presentationMode, isReplaying = false }) {
+  if (state.episodeDefinition?.id === 'phase-4-number-line-collection') return { collection: {taskContext:state.taskContext, revision:state.revision, placementRevision:state.placementRevision, selectedMemberId:state.selectedMemberId, placements:state.placements, evaluation:state.evaluation, status:state.status, support:state.support, activeCondition:state.activeCondition, helpRequested:state.assistanceHistory.length > 0}, representationRole,presentationMode,isReplaying };
   return {
     contentIdentity: contentIdentity(state),
     contentProjection: contentProjectionSource(state),
@@ -584,6 +592,7 @@ function pathSummary(state) {
 }
 
 function capabilityFor(state, role, derivation) {
+  if (state.episodeDefinition?.id === 'phase-4-number-line-collection') { if (role !== 'number-line') throw new SceneProjectionError('UNRESOLVED_CAPABILITY','collection requires number-line'); return {instance:'eligible',activePath:null,authoredCoverage:null,continuation:null}; }
   if (isPlan45ComparisonEpisode(state)) {
     return { instance: 'eligible', activePath: null, authoredCoverage: null, continuation: null };
   }
@@ -1096,6 +1105,10 @@ function takeawayMeaning(state) {
 }
 
 function sceneMeaning(state, representationRole, capability) {
+  if (state.episodeDefinition?.id === 'phase-4-number-line-collection') {
+    const c=state.taskContext; const {candidates}=admitPlan50Record({itemId:c.itemId,itemRevision:c.itemRevision,purpose:c.purpose,lattice:c.lattice,members:c.members});
+    return {representationRole,capability,collection:{context:{setId:c.setId,setRevision:c.setRevision,itemId:c.itemId,itemRevision:c.itemRevision,definitionId:c.definitionId,definitionRevision:c.definitionRevision},members:c.members,candidates,lattice:c.lattice,selectedMemberId:state.selectedMemberId,placements:state.placements,placementRevision:state.placementRevision,evaluation:state.evaluation,status:state.status,helpRequested:state.assistanceHistory.length > 0,showPartitions:state.support.label === 'high support'}};
+  }
   if (isPlan45ComparisonEpisode(state)) return plan45ComparisonMeaning(state, representationRole, capability);
   const isPlan37Bridge = isPlan37BarToLineBridgeTaskDefinition(state.episodeDefinition);
   const left = isPlan37Bridge ? null : quantityScene(state, 'left');

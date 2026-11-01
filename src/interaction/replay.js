@@ -1,3 +1,4 @@
+import { resolvePlan50Context, validatePlan50Context } from '../content/plan50-number-line-collection-task.js';
 import { validatePlan49Context } from './plan49-comparison-construction.js';
 import { buildCuratedProblem, generateProblem } from '../content/generator.js';
 import { resolveCuratedFixture } from '../content/authored-content-catalog.js';
@@ -28,6 +29,9 @@ export const REPLAY_V7_SCHEMA_VERSION = 'fractionflow.episode-replay/v7';
 export const REPLAY_V8_SCHEMA_VERSION = 'fractionflow.episode-replay/v8';
 export const REPLAY_V9_SCHEMA_VERSION = 'fractionflow.episode-replay/v9';
 export const REPLAY_V10_SCHEMA_VERSION = 'fractionflow.episode-replay/v10';
+export const REPLAY_V11_SCHEMA_VERSION = 'fractionflow.episode-replay/v11';
+
+function plan50Identity(c) { return { schemaVersion:'fractionflow.collection-content-identity/v1', id:c.itemId, source:'curated', reconstruction:{kind:'plan50-number-line-collection',setId:c.setId,setRevision:c.setRevision,itemId:c.itemId,itemRevision:c.itemRevision} }; }
 
 function sameJson(left, right) {
   return JSON.stringify(left) === JSON.stringify(right);
@@ -449,6 +453,12 @@ export function createReplayEnvelope(state) {
     throw new TypeError('state must be a Plan 05 episode state');
   }
   const isComparison = isPlan45ComparisonEpisode(state);
+  if (state.episodeDefinition?.id === 'phase-4-number-line-collection' && state.episodeDefinition.revision === '1') {
+    const c = validatePlan50Context(state.taskContext);
+    const envelope = { schemaVersion:REPLAY_V11_SCHEMA_VERSION, contentIdentity:plan50Identity(c), episodeDefinition:{id:state.episodeDefinition.id,revision:state.episodeDefinition.revision}, support:state.support, activeCondition:state.activeCondition, learnerIntents:state.intentHistory, taskContext:c };
+    assertJsonSafe(envelope, 'replay envelope');
+    return deepFreeze(envelope);
+  }
   const envelope = {
     schemaVersion: isComparison
       ? (state.episodeDefinition.revision === '2' ? REPLAY_V10_SCHEMA_VERSION : REPLAY_V9_SCHEMA_VERSION)
@@ -484,6 +494,19 @@ export function createReplayEnvelope(state) {
 export function replayEpisode(envelope) {
   assertJsonSafe(envelope, 'replay envelope');
   if (!envelope || typeof envelope !== 'object') throw new TypeError('replay envelope must be an object');
+  if (envelope.schemaVersion === REPLAY_V11_SCHEMA_VERSION) {
+    assertExactKeys(envelope,['schemaVersion','contentIdentity','episodeDefinition','support','activeCondition','learnerIntents','taskContext'],'replay v11');
+    assertExactKeys(envelope.episodeDefinition,['id','revision'],'replay v11 definition');
+    if (envelope.episodeDefinition.id !== 'phase-4-number-line-collection' || envelope.episodeDefinition.revision !== '1') throw new TypeError('invalid v11 definition');
+    const c = validatePlan50Context(envelope.taskContext);
+    assertExactKeys(envelope.contentIdentity,['schemaVersion','id','source','reconstruction'],'replay v11 identity');
+    assertExactKeys(envelope.contentIdentity.reconstruction,['kind','setId','setRevision','itemId','itemRevision'],'replay v11 reconstruction');
+    if (!sameJson(plan50Identity(c),envelope.contentIdentity)) throw new TypeError('invalid v11 identity');
+    if (!Array.isArray(envelope.learnerIntents)) throw new TypeError('invalid v11 intents');
+    let state = createEpisode({episodeDefinition:getEpisodeDefinition('phase-4-number-line-collection','1'),taskContext:resolvePlan50Context(c.itemId),support:envelope.support,activeCondition:envelope.activeCondition});
+    for (const intent of envelope.learnerIntents) state = applyIntent(state,intent);
+    return state;
+  }
   if (![REPLAY_SCHEMA_VERSION, REPLAY_V2_SCHEMA_VERSION, REPLAY_V3_SCHEMA_VERSION, REPLAY_V4_SCHEMA_VERSION, REPLAY_V5_SCHEMA_VERSION, REPLAY_V6_SCHEMA_VERSION, REPLAY_V7_SCHEMA_VERSION, REPLAY_V8_SCHEMA_VERSION, REPLAY_V9_SCHEMA_VERSION, REPLAY_V10_SCHEMA_VERSION].includes(envelope?.schemaVersion)) {
     throw new Error('unsupported replay envelope version');
   }

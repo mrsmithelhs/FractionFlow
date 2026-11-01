@@ -1,0 +1,26 @@
+{
+  "clean": {
+    "passed": true,
+    "injected": true
+  },
+  "premature": {
+    "passed": false,
+    "injected": true,
+    "error": "initial state must be unplaced\n\n3 !== 0\n"
+  },
+  "lostPartial": {
+    "passed": false,
+    "injected": true,
+    "error": "partial placement survives view change"
+  },
+  "unequalAnchors": {
+    "passed": false,
+    "injected": true,
+    "error": "same draft position has same anchor"
+  },
+  "wrongAcceptance": {
+    "passed": false,
+    "injected": true,
+    "error": "wrong member cannot be accepted"
+  }
+}

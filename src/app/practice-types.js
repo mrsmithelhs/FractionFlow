@@ -1,3 +1,5 @@
+import { PLAN50_RECORDS } from '../content/data/plan50-number-line-collection-records.js';
+import { PLAN50_COLLECTION_EPISODE_DEFINITION } from '../interaction/episode-definition.js';
 import {
   PHASE2_REFLECTION_EPISODE_DEFINITION,
   PLAN20_LIKE_DENOMINATOR_EPISODE_DEFINITION,
@@ -316,10 +318,13 @@ export const PLAN45_SYMBOLIC_COMPARISON_PRACTICE_TYPE = deepFreeze({
   episodeDefinition: PLAN45_SYMBOLIC_FRACTION_COMPARISON_EPISODE_DEFINITION,
 });
 
+export const PLAN50_COLLECTION_PRACTICE_TYPE = deepFreeze({id:'number-line-collection',label:'Place fractions together on a number line',setId:'number-line-collection',setRevision:'1',items:PLAN50_RECORDS.map(r=>({id:r.itemId,episodeDefinitionId:PLAN50_COLLECTION_EPISODE_DEFINITION.id,episodeDefinitionRevision:'1'})),episodeDefinition:PLAN50_COLLECTION_EPISODE_DEFINITION});
+
 export const PRACTICE_TYPES = deepFreeze([
   ...PLAN40_PRACTICE_TYPES_V9,
   PLAN39_BAR_TO_LINE_PRACTICE_TYPE,
   PLAN45_SYMBOLIC_COMPARISON_PRACTICE_TYPE,
+  PLAN50_COLLECTION_PRACTICE_TYPE,
 ]);
 
 export function getPracticeType(id) {

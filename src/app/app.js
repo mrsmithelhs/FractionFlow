@@ -1,3 +1,7 @@
+import { resolvePlan50Context } from '../content/plan50-number-line-collection-task.js';
+import { PLAN50_CONDITION } from '../interaction/plan50-number-line-collection-episode.js';
+import { createNumberLineCollectionRenderer } from '../render/number-line-collection.js';
+const isCollection = state => state?.episodeDefinition?.id === 'phase-4-number-line-collection';
 import { resolvePlan49Context } from '../interaction/plan49-comparison-construction.js';
 import { buildCuratedProblem } from '../content/generator.js';
 import { resolveAuthoredContent, resolveCuratedFixture, resolvePlan37BarToLineBridgeInstance } from '../content/authored-content-catalog.js';
@@ -60,7 +64,7 @@ const APP_RENDER_STRINGS = Object.freeze({
 
 function canonicalInstance(item, conditions = REGISTERED_CONDITIONS, practiceType = null) {
   const definition = getEpisodeDefinition(item.episodeDefinitionId, item.episodeDefinitionRevision);
-  if (isPlan45ComparisonDefinition(definition)) return null;
+  if (isPlan45ComparisonDefinition(definition) || definition.id === 'phase-4-number-line-collection') return null;
   if (isPlan37BarToLineBridgeTaskDefinition(definition)) {
     const bridge = resolvePlan37BarToLineBridgeInstance(item.id, item.authoringRevision);
     if (!bridge || bridge.provenance.fixtureId !== item.fixtureId) throw new Error(`practice bridge item is not registered: ${item.id}`);
@@ -245,7 +249,8 @@ function presentationModeFor({ override, motionQuery }) {
 }
 
 function createInitialState(instance, practiceType, condition, supportLevel, episodeDefinition = practiceType.episodeDefinition, item = null) {
-  const taskContext = isPlan45ComparisonDefinition(episodeDefinition) && item
+  const taskContext = episodeDefinition.id === 'phase-4-number-line-collection' && item ? resolvePlan50Context(item.id)
+    : isPlan45ComparisonDefinition(episodeDefinition) && item
     ? episodeDefinition.revision === '2' ? resolvePlan49Context(item.id) : resolvePlan45ComparisonContext(item.id, {
       practiceSetId: practiceType.setId,
       practiceSetRevision: practiceType.setRevision,
@@ -277,7 +282,7 @@ function createInitialState(instance, practiceType, condition, supportLevel, epi
     : item?.episodeDefinitionId === PLAN18_NESTED_DEFINITION_ID
       ? resolvePlan18TaskContext(instance, { practiceSetId: practiceType.setId, practiceSetRevision: practiceType.setRevision })
       : null;
-  if (taskContext && (taskContext.itemId !== item.id
+  if (taskContext && episodeDefinition.id !== 'phase-4-number-line-collection' && (taskContext.itemId !== item.id
     || taskContext.practiceSetId !== practiceType.setId
     || taskContext.practiceSetRevision !== practiceType.setRevision)) {
     throw new Error('practice item does not match its validated task association');
@@ -285,7 +290,7 @@ function createInitialState(instance, practiceType, condition, supportLevel, epi
   return createEpisode({
     instance,
     episodeDefinition,
-    activeCondition: isPlan45ComparisonDefinition(episodeDefinition)
+    activeCondition: episodeDefinition.id === 'phase-4-number-line-collection' ? PLAN50_CONDITION : isPlan45ComparisonDefinition(episodeDefinition)
       ? PLAN45_STATIC_COMPARISON_ACTIVE_CONDITION
       : condition.activeCondition,
     support: supportLevel.configuration,
@@ -426,9 +431,12 @@ export function createFractionFlowApp({
   let linearNumberLineRenderer = null;
   let numberLineDraft = null;
   let numberLineHelpOpen = false;
+  let collectionHelpOpen = false;
   let comparisonDraft = '';
   let comparisonConstructionDrafts = {};
   let comparisonHelpOpen = false;
+  let visualCollectionRenderer = null;
+  let linearCollectionRenderer = null;
   let visualComparisonRenderer = null;
   let linearComparisonRenderer = null;
   let comparisonResponseHandle = null;
@@ -697,9 +705,10 @@ export function createFractionFlowApp({
         comparisonFocusKeyOnViewChange = null;
         saveNumberLineDraft();
         captureComparisonDraft();
+        if (isCollection(state)) {visualCollectionRenderer?.cancelGesture();linearCollectionRenderer?.cancelGesture();}
         visualView = !visualView;
         isReplaying = false;
-        if (isPlan45ComparisonEpisode(state)) render();
+        if (isPlan45ComparisonEpisode(state) || isCollection(state)) render();
         updateViewVisibility();
         (visualView ? visualNumberLineRenderer : linearNumberLineRenderer)?.refreshGeometry();
         restoreDecideDraft();
@@ -872,6 +881,7 @@ export function createFractionFlowApp({
     preserveOperationInputFocusOnViewChange = false;
     numberLineDraft = null;
     numberLineHelpOpen = false;
+    collectionHelpOpen = false;
     comparisonDraft = '';
     comparisonConstructionDrafts = {};
     comparisonHelpOpen = false;
@@ -907,6 +917,9 @@ export function createFractionFlowApp({
   }
 
   function installFreshEpisode(practiceType, itemIndex, candidateState, { focusEpisode, updateFragment = false } = {}) {
+    visualCollectionRenderer?.destroy();
+    linearCollectionRenderer?.destroy();
+    visualCollectionRenderer=null; linearCollectionRenderer=null;
     currentEpisodeGeneration += 1;
     selectedPracticeType = practiceType;
     activePracticeItemIndex = itemIndex;
@@ -972,7 +985,7 @@ export function createFractionFlowApp({
   }
 
   function computeProgressionDescriptor() {
-    const comparisonEpisode = isPlan45ComparisonEpisode(state);
+    const comparisonEpisode = isPlan45ComparisonEpisode(state) || isCollection(state);
     if ((navigationMode !== 'direct' && !comparisonEpisode) || !state || !selectedPracticeType || activePracticeItemIndex === null) {
       return {
         phase: 'idle',
@@ -985,7 +998,7 @@ export function createFractionFlowApp({
 
     const capturedGeneration = currentEpisodeGeneration;
 
-    if (comparisonEpisode && state.status === 'resolved' && state.established?.comparison) {
+    if (comparisonEpisode && state.status === 'resolved' && (state.established?.comparison || state.established?.collection)) {
       const hasNext = activePracticeItemIndex < selectedPracticeType.items.length - 1;
       return {
         phase: 'resolved-comparison',
@@ -1089,7 +1102,7 @@ export function createFractionFlowApp({
   }
 
   function advanceToNextItem(capturedGeneration) {
-    if (navigationMode === 'legacy-acknowledged' && !isPlan45ComparisonEpisode(state)) {
+    if (navigationMode === 'legacy-acknowledged' && !isPlan45ComparisonEpisode(state) && !isCollection(state)) {
       if (state?.status !== 'resolved' || activePracticeItemIndex === null || !selectedPracticeType) return;
       const nextIndex = activePracticeItemIndex + 1;
       if (nextIndex >= selectedPracticeType.items.length) return;
@@ -1164,6 +1177,8 @@ export function createFractionFlowApp({
   }
 
   function returnToEntry() {
+    visualCollectionRenderer?.destroy(); linearCollectionRenderer?.destroy();
+    visualCollectionRenderer=null; linearCollectionRenderer=null;
     currentEpisodeGeneration += 1;
     if (selectedPracticeType && state) {
       try {
@@ -1220,10 +1235,10 @@ export function createFractionFlowApp({
   }
 
   function updateConditionMetadata() {
-    const applied = isPlan45ComparisonEpisode(state) ? state.activeCondition : selectedCondition.activeCondition;
+    const applied = (isPlan45ComparisonEpisode(state) || isCollection(state)) ? state.activeCondition : selectedCondition.activeCondition;
     const applicability = displayMenu.querySelector('#fractionflow-condition-applicability');
     if (applicability) {
-      applicability.textContent = isPlan45ComparisonEpisode(state)
+      applicability.textContent = isCollection(state) ? 'This collection uses a fixed display; these selections apply to other practice goals.' : isPlan45ComparisonEpisode(state)
         ? 'Compare fractions uses a fixed display; these selections apply to other practice goals.'
         : 'Choose how display conditions apply to other practice goals.';
     }
@@ -1242,7 +1257,7 @@ export function createFractionFlowApp({
 
   function updateSupportMetadata() {
     appRoot.setAttribute('data-support-level', selectedSupportLevel.id);
-    appRoot.setAttribute('data-support-code', selectedSupportLevel.configuration.label);
+    appRoot.setAttribute('data-support-code', isCollection(state) ? state.support.label : selectedSupportLevel.configuration.label);
     for (const option of displayMenu.querySelectorAll('.app-support-options [data-support-id]')) {
       option.setAttribute(
         'aria-pressed',
@@ -1261,7 +1276,7 @@ export function createFractionFlowApp({
       && state.taskContext?.patternId === PLAN35_RECIPE_IDS.identify;
     const isPlan36 = isPlan36SubtractionDefinition(state.episodeDefinition);
     const isPlan40 = isPlan40SubtractionRecipeDefinition(state.episodeDefinition);
-    const isPlan45 = isPlan45ComparisonEpisode(state);
+    const isPlan45 = isPlan45ComparisonEpisode(state) || isCollection(state);
     const isPlan40Identify = isPlan40 && isPlan40IdentifyRecipe(state.taskContext);
     helpButton.disabled = resolved;
     helpButton.hidden = isPlan45;
@@ -1464,7 +1479,7 @@ export function createFractionFlowApp({
 
   function updateHelpPlacement(scene = currentScene) {
     if (!helpButton || !state) return;
-    if (isPlan45ComparisonEpisode(state)) {
+    if (isPlan45ComparisonEpisode(state) || isCollection(state)) {
       helpButton.hidden = true;
       return;
     }
@@ -1638,11 +1653,23 @@ export function createFractionFlowApp({
     const mode = presentationModeFor({ override: presentationMode, motionQuery });
     const scene = resolveRenderableScene({
       state,
-      initialRole: isPlan37BarToLineBridgeTaskDefinition(state.episodeDefinition) ? 'number-line' : 'fraction-bar',
+      initialRole: (isCollection(state) || isPlan37BarToLineBridgeTaskDefinition(state.episodeDefinition)) ? 'number-line' : 'fraction-bar',
       presentationMode: mode,
       isReplaying,
     });
     currentScene = scene;
+
+    if (isCollection(state)) {
+      visualRenderer?.destroy(); linearRenderer?.destroy(); visualNumberLineRenderer?.destroy(); linearNumberLineRenderer?.destroy(); visualComparisonRenderer?.destroy(); linearComparisonRenderer?.destroy();
+      visualRenderer=null;linearRenderer=null;visualNumberLineRenderer=null;linearNumberLineRenderer=null;visualComparisonRenderer=null;linearComparisonRenderer=null;
+      const generation=currentEpisodeGeneration;
+      const onAction=(action,defer=false)=>{ if(generation!==currentEpisodeGeneration || !isCollection(state)) return; if(action) {try {state=applyIntent(state,action);} catch {render();return;}} if(!defer) {render(); if(action?.type==='check-collection') (visualView?visualCollectionRenderer:linearCollectionRenderer)?.focusFeedback();} };
+      const options=view=>({container:view==='visual'?visualHost:linearHost,view,dispatch:onAction,progression:()=>computeProgressionDescriptor(),helpOpen:()=>collectionHelpOpen,toggleHelp:()=>{collectionHelpOpen=!collectionHelpOpen;if(collectionHelpOpen) onAction({type:'request-collection-help',context:{setId:state.taskContext.setId,setRevision:state.taskContext.setRevision,itemId:state.taskContext.itemId,itemRevision:state.taskContext.itemRevision,definitionId:state.taskContext.definitionId,definitionRevision:state.taskContext.definitionRevision},helpKind:'placement'});else render();}});
+      if(!visualCollectionRenderer){visualCollectionRenderer=createNumberLineCollectionRenderer(options('visual'));visualCollectionRenderer.mount(scene);}else visualCollectionRenderer.update(scene);
+      if(!linearCollectionRenderer){linearCollectionRenderer=createNumberLineCollectionRenderer(options('linear'));linearCollectionRenderer.mount(scene);}else linearCollectionRenderer.update(scene);
+      updateConditionMetadata();updateSupportMetadata();updateSupportControls();updateNavigation();updateViewVisibility();updateHelpPlacement(scene);return;
+    }
+    visualCollectionRenderer?.destroy();linearCollectionRenderer?.destroy();visualCollectionRenderer=null;linearCollectionRenderer=null;
 
     if (isPlan45ComparisonEpisode(state)) {
       visualRenderer?.destroy();
@@ -1986,6 +2013,8 @@ export function createFractionFlowApp({
       return this;
     },
     destroy() {
+      visualCollectionRenderer?.destroy(); linearCollectionRenderer?.destroy();
+      visualCollectionRenderer=null; linearCollectionRenderer=null;
       visualComparisonRenderer?.destroy();
       linearComparisonRenderer?.destroy();
       if (motionQuery && motionListener && typeof motionQuery.removeEventListener === 'function') {
