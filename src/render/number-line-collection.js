@@ -1,10 +1,13 @@
 import { assertValidScene } from './contract.js';
+import { createButton } from './controls.js';
+import { createSymbolicFraction } from './symbolic.js';
 
 // One view owns its gesture; committed placements always arrive through scene.
 export function createNumberLineCollectionRenderer({container, view, dispatch, progression, helpOpen, toggleHelp}) {
   let root=null, scene=null, gesture=null, destroyed=false;
   const el=(tag, cls, text) => { const n=document.createElement(tag); if(cls)n.className=cls; if(text!==undefined)n.textContent=text; return n; };
-  const button=(label,handler,cls='') => {const b=el('button',cls,label); b.type='button'; b.addEventListener('click',event=>{if(!destroyed && root?.isConnected && root.contains(b)) handler(event);}); return b;};
+  const button=(label,handler,cls='') => {const b=createButton({label,className:cls==='plan50-next'?'control-btn':'app-secondary-button',onClick:event=>{if(!destroyed && root?.isConnected && root.contains(b)) handler(event);}});if(cls)b.classList.add(cls);return b;};
+  const fraction=(member,ariaHidden=false)=>createSymbolicFraction(member.form.numerator,member.form.denominator,{variant:'compact',ariaHidden});
   const c=()=>scene.meaning.collection;
   const intent=(type,fields={})=>({type,context:c().context,...fields});
   function cancelGesture() { if(!gesture)return; const g=gesture; gesture=null; try {g.token.releasePointerCapture(g.pointerId);} catch {} g.token.classList.remove('is-dragging'); root?.querySelector('.plan50-highlight')?.classList.remove('plan50-highlight'); }
@@ -21,8 +24,17 @@ export function createNumberLineCollectionRenderer({container, view, dispatch, p
     const list=el('div','plan50-member-list'); list.setAttribute('aria-label','Fractions'); list.setAttribute('aria-live','polite');
     for(const m of model.members) {
       const pos=model.placements[m.id]; const count=pos ? Object.values(model.placements).filter(v=>v===pos).length : 0; const status=pos ? `${pos.slice(5)} of ${model.lattice}${count>1 ? `, ${count} labels at this point` : ''}` : 'unplaced';
-      const b=button(`${m.form.numerator}/${m.form.denominator} — ${status}`,()=>dispatch(intent('select-collection-member',{memberId:m.id})), 'plan50-member');
-      b.dataset.focusKey=`member-${m.id}`; const memberFeedback=model.evaluation.feedbackByMember[m.id]; if(active && model.evaluation.status!=='unchecked' && memberFeedback && memberFeedback!=='not-graded') b.setAttribute('aria-describedby',`plan50-feedback-${view}-${m.id}`); b.setAttribute('aria-pressed',String(model.selectedMemberId===m.id)); b.disabled=!active; list.append(b);
+      const b=active ? button('',()=>dispatch(intent('select-collection-member',{memberId:m.id})), 'plan50-member') : el('span','plan50-member plan50-member-static');
+      b.dataset.memberId=m.id;
+      b.append(fraction(m,active),el('span','plan50-member-status',` — ${status}`));
+      if(active) {
+        b.dataset.focusKey=`member-${m.id}`;
+        b.setAttribute('aria-label',`${m.form.numerator} over ${m.form.denominator} — ${status}`);
+        const memberFeedback=model.evaluation.feedbackByMember[m.id];
+        if(model.evaluation.status!=='unchecked' && memberFeedback && memberFeedback!=='not-graded') b.setAttribute('aria-describedby',`plan50-feedback-${view}-${m.id}`);
+        b.setAttribute('aria-pressed',String(model.selectedMemberId===m.id));
+      }
+      list.append(b);
     }
     r.append(list);
     const feedback=el('p','plan50-feedback'); feedback.tabIndex=-1; feedback.dataset.focusKey='feedback'; feedback.setAttribute('role','status');
@@ -33,11 +45,11 @@ export function createNumberLineCollectionRenderer({container, view, dispatch, p
     r.append(feedback);
     if(active && model.evaluation.status!=='unchecked') {
       const details=el('ul','plan50-feedback-list');
-      for(const m of model.members) {const f=model.evaluation.feedbackByMember[m.id]; if(f && f!=='not-graded') {const item=el('li','',`${m.form.numerator}/${m.form.denominator}: ${f==='correct'?'placed correctly':f==='unplaced'?'unplaced':'check this placement'}`);item.id=`plan50-feedback-${view}-${m.id}`;details.append(item);}} r.append(details);
+      for(const m of model.members) {const f=model.evaluation.feedbackByMember[m.id]; if(f && f!=='not-graded') {const item=el('li');item.append(fraction(m),el('span','',`: ${f==='correct'?'placed correctly':f==='unplaced'?'unplaced':'check this placement'}`));item.id=`plan50-feedback-${view}-${m.id}`;details.append(item);}} r.append(details);
     }
     if(view==='visual') {
-      const tray=el('div','plan50-tray'); tray.setAttribute('aria-label','Unplaced fractions');
-      for(const m of model.members.filter(x=>!model.placements[x.id])) tray.append(makeToken(m)); r.append(tray);
+      if(active) {const tray=el('div','plan50-tray'); tray.setAttribute('aria-label','Unplaced fractions');
+        for(const m of model.members.filter(x=>!model.placements[x.id])) tray.append(makeToken(m)); r.append(tray);}
       const area=el('div','plan50-area');
       const axis=el('div','plan50-axis'); axis.setAttribute('aria-label','Number line from zero to one');
       for(const p of model.candidates) { const marker=el('span','plan50-point'); marker.dataset.candidateId=p.id; if(!model.showPartitions && ![0,model.lattice/2,model.lattice].includes(Number(p.form.numerator))) marker.classList.add('plan50-unmarked'); marker.style.left=`${Number(p.form.numerator)/model.lattice*100}%`; axis.append(marker); }
@@ -57,7 +69,7 @@ export function createNumberLineCollectionRenderer({container, view, dispatch, p
       const check=button('Check',()=>dispatch(intent('check-collection',{revision:model.placementRevision})));check.dataset.focusKey='check';controls.append(check);r.append(controls);
       if(helpOpen()) {const helpText=el('p','plan50-help','Think about the size of the parts and compare the positions.');helpText.id=`plan50-help-${view}`;r.append(helpText);}
     } else { const p=progression(); if(p?.actionKind!=='none'){if(p.notice)r.append(el('p','',p.notice));r.append(button(p.label,()=>p.onAction(),'plan50-next'));} }
-    function makeToken(m) {const t=button('',()=>{if(active)dispatch(intent('select-collection-member',{memberId:m.id}));},'plan50-token');t.tabIndex=-1;t.setAttribute('aria-label',`${m.form.numerator} over ${m.form.denominator}`);t.append(el('span','',m.form.numerator),el('span','plan50-fraction-line'),el('span','',m.form.denominator));if(active)t.addEventListener('pointerdown',e=>begin(e,t,m.id));else t.disabled=true;return t;}
+    function makeToken(m) {const t=active ? button('',()=>dispatch(intent('select-collection-member',{memberId:m.id})),'plan50-token') : el('span','plan50-token plan50-token-static');t.dataset.memberId=m.id;if(active){t.tabIndex=-1;t.setAttribute('aria-label',`${m.form.numerator} over ${m.form.denominator}`);}t.append(fraction(m,active));if(active)t.addEventListener('pointerdown',e=>begin(e,t,m.id));return t;}
     function nearest(axis,x,y) { const box=axis.getBoundingClientRect();const cy=box.top+box.height/2;if(x<box.left||x>box.right||Math.abs(y-cy)>44)return null;const f=(x-box.left)/box.width*model.lattice;return `step-${Math.max(0,Math.min(model.lattice,Math.ceil(f-0.5)))}`; }
     function begin(e,token,memberId) {if(destroyed || !root?.isConnected || !root.contains(token) || !e.isPrimary || e.button!==0)return; e.preventDefault(); const box=token.getBoundingClientRect(); gesture={pointerId:e.pointerId,token,memberId,x:e.clientX,y:e.clientY,offsetX:e.clientX-(box.left+box.width/2),offsetY:e.clientY-box.bottom,dragging:false};try{token.setPointerCapture(e.pointerId);}catch{gesture=null;return;} dispatch(intent('select-collection-member',{memberId}),true); }
     r.addEventListener('pointermove',e=>{const g=gesture;if(!g||e.pointerId!==g.pointerId)return;if(!g.dragging && Math.hypot(e.clientX-g.x,e.clientY-g.y)<6)return;g.dragging=true;g.token.classList.add('is-dragging');g.token.style.position='fixed';g.token.style.left=`${e.clientX-g.offsetX}px`;g.token.style.top=`${e.clientY-g.offsetY}px`;g.token.style.bottom='auto';const axis=r.querySelector('.plan50-axis');const candidate=nearest(axis,e.clientX-g.offsetX,e.clientY-g.offsetY);r.querySelector('.plan50-highlight')?.classList.remove('plan50-highlight');if(candidate)axis.querySelector(`[data-candidate-id="${candidate}"]`)?.classList.add('plan50-highlight');});
