@@ -53,7 +53,7 @@ and the [2025 IES toolkit Module 3](https://ies.ed.gov/ncee/rel/fractions-grade-
 These are starting sources for a future bounded investigation, not a completed
 FractionFlow research review or evidence that its present models teach those operations.
 
-Current Phase 4 disposition (2026-10-31): Plans39/44/45 are owner-accepted and complete. Plan45 is the initial symbolic comparison slice with ONE CHOSEN MODEL PER PROBLEM; its cues do not provide common-denominator construction. Owner-requested Plan49 is ready for a separate optional construction/help integration reusing Plans24/25 where appropriate, with mechanism and pure-contract gates; not started. Number-line equivalence/ordering, multi-placement, comparison-to-distance, multi-whole transfer and the Phase4 exit remain future obligations. Earlier drafted/awaiting-acceptance wording in historical rows does not reopen completed packets or authorize new tasks.
+Current Phase 4 disposition (2026-11-01): Plans39/44/45/49 are owner-accepted and complete. Plan45 is the initial symbolic comparison slice with ONE CHOSEN MODEL PER PROBLEM; Plan49 adds optional symbolic common-denominator construction and requested denominator/renaming assistance, target cap144 without increased bar capacity, revision2/v10 preserving historical v9. Number-line equivalence/ordering, multi-placement, comparison-to-distance, multi-whole transfer and the Phase4 exit remain future obligations. Recommend Plan46 design next; Plans46–48 remain drafts until separately initiated. Earlier drafted/awaiting-acceptance wording in historical rows does not reopen completed packets or authorize new tasks.
 
 ## Draft next-wave design staging (2026-10-31)
 

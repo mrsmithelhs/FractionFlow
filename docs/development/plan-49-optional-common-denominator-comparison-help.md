@@ -1,7 +1,8 @@
 ---
 id: plan-49
 title: Optional Common-Denominator Construction for Comparison
-status: in-progress
+status: complete
+resolution: "Owner accepted the optional comparison common-denominator construction locally following Repair 01 technical acceptance; documented evidence and device/AT limits retained. No push or deployment authorized."
 depends_on: [plan-24, plan-25, plan-45]
 gate: "Requirement 0: approve reuse boundaries, local assistance flow, denominator admission, answer withholding and compatibility before source. Pure-contract checkpoint precedes mounted integration; owner rendered/task acceptance and deployment remain separate."
 summary: >-

@@ -6,6 +6,23 @@ and pause records retained later in this file.
 
 ## Current board and owner direction
 
+Current 2026-11-01: Plan49 is COMPLETE by explicit owner local rendered/task
+acceptance after Repair01 technical acceptance e0055d7. Source c7a2988, repair
+76fbe21, progress4c7702a; see its owner-acceptance.md. Compare fractions now has
+optional common-denominator construction, symbolic target cap144, existing
+denominator/renaming assistance behavior, revision2/v10 with historical v9 intact.
+One-source-model-before-acceptance and shared progression remain. Evidence does
+not establish learner efficacy, physical-device or assistive-technology outcomes.
+FF Impl49 (01a19756-6b28-70b1-b898-189b0808c4c3) is owner-authorized for bidirectional
+supervision through completion; closure requests no further work. No push/deploy.
+
+Recommended next is Plan46's bounded report-only collection/ordering/equivalence
+design, then its separately adopted source slice; Plan47 distance-subtraction
+design is also available for disjoint report work now comparison is accepted.
+Plan48 remains later whole-boundary/mixed readiness. Plans46–48 are DRAFT and
+not launched or promoted by this recommendation. Older status blocks below are
+historical and superseded by this current block.
+
 Current 2026-10-31: Plan45 is COMPLETE by explicit owner acceptance of the initial
 comparison slice on the local server. Repair01 3d33052/progress1e913bd technically
 accepted in 29702ba; see Plan45 owner-acceptance.md. Optional common-denominator
