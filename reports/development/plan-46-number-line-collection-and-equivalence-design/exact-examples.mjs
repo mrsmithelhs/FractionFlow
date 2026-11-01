@@ -1,6 +1,6 @@
 import { createFraction, compareFractions, equalFractions } from '../../../src/math/fraction.js';
 const cases = [
-  ['contrast', 8, [[3,4],[1,2],[2,4]]],
+  ['contrast', 8, [[3,4],[1,2],[3,6]]],
   ['distinct', 8, [[7,8],[1,4],[1,2]]],
   ['thirds', 6, [[4,6],[1,3],[2,3]]],
   ['boundaries', 4, [[4,4],[0,2],[2,4]]],
