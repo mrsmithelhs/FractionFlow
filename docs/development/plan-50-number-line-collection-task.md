@@ -1,11 +1,9 @@
 ---
 id: plan-50
 title: Three-Fraction Number-Line Collection Task
-status: ready
+status: in-progress
 depends_on: [plan-39, plan-42, plan-43, plan-46]
 gate: "Requirement 0: approve collection state/scene, co-location/control geometry, access, replay and bounded evidence mechanism before source. Pure-contract checkpoint precedes mounted integration; owner rendered/task acceptance and deployment remain separate."
-superseded_by: null
-resolution: null
 summary: >-
   Implement the owner-adopted equivalence-first three-fraction placement task and
   four compact collections. Preserve exact shared positions, distinct selectable
