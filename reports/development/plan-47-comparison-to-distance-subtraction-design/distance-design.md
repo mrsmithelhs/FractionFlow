@@ -21,25 +21,25 @@ The rival measured-line interval is a legitimate *reading length* task, not inde
 | Accepted distance | Display original forms, accepted relation and the learner's accepted distance form. Show aligned bars and identify the portion between the two ends as distance, not removal. Direct Next or final Back to start. | Focus result/next action deliberately. No compulsory explanation, extra acknowledgment or empty Finish. Fresh item resets response, model choice, assistance and recovery. |
 | Equal relation | If an equality item is later admitted, establish equality and resolve directly with a concise informational “They are the same amount, so they are 0 apart.” No compulsory zero input. | Schedule branch comes from exact authored operands, never prior errors. The first proposed four-item slice below has no equality item; the branch is a required future admission gate, not claimed implemented. |
 
-Both visual and linear access paths expose the same ordered forms, choices, help consequences, accepted context and feedback. Native controls support keyboard and touch without dragging; relation choice is deliberate and Check submits. Use semantic stacked fractions with accessible spoken numerator/denominator, labels for first/second and full relation meanings. No color-only distinction. Model descriptions must say each bar represents the same one whole, the number and size of equal parts, and each represented amount; never announce the correct relation before relation acceptance. Help disclosure, view switch, resize and recovery preserve draft, accepted relation and choice; focus lands on the active question after transition and returns to the initiating control on disclosure close. Provenance records actual relation/distance submissions, retries, model/text help, support and access/view changes without inferring mastery. Assistance records survive view switches and replay.
+Both visual and linear access paths expose the same ordered forms, choices, help consequences, accepted context and feedback. Native controls support keyboard and touch without dragging; relation choice is deliberate and Check submits. Use semantic stacked fractions with accessible spoken numerator/denominator, labels for first/second and full relation meanings. No color-only distinction. Model descriptions must say each bar represents the same one whole, the number and size of equal parts, and each represented amount; never announce the correct relation before relation acceptance. Help disclosure, view switch, resize and recovery preserve draft, accepted relation and choice; focus lands on the active question after transition and returns to the initiating control on disclosure close. Provenance records actual relation/distance submissions, retries, model/text help and applicable support context without inferring mastery. Assistance records survive view switches and replay; view selection and drafts retain existing app-local presentation ownership. This does not require a new serialized navigation history or tracking.
 
 ### Two concrete journeys (values checked by evidence script)
 
 1. First `2/8`, second `6/8`: select `<`, Check; keep `2/8 < 6/8`. At distance enter `3/8`, receive local retry without losing the relation or draft; request text cue, revise to `4/8`, Check. Resolve displays `4/8` and equal-whole bars; Next. If the learner requested both bars before answering, counting four eighths is assisted reading.
-2. First `5/6`, second `1/6`: choose `>`, then distance `2/3` is accepted as exactly equivalent to `4/6`; retain `2/3` as entered. Model verification shows four sixth-sized intervals between endpoints. In a future equality case `3/6 = 1/2`, resolve with zero information after relation acceptance rather than an empty additional response; this unlike-form case is an exact audit, not initial admitted content.
+2. First `5/6`, second `3/6`: choose `>`, then distance `1/3` is accepted as exactly equivalent to `2/6`; retain `1/3` as entered. Model verification shows two sixth-sized intervals between endpoints. In a future equality case `3/6 = 1/2`, resolve with zero information after relation acceptance rather than an empty additional response; this unlike-form case is an exact audit, not initial admitted content.
 
 ### Layout sketches (proposals, not rendered evidence)
 
 ```text
 Narrow ~360 CSS px                      Chromebook ~1093 CSS px
-How far apart?                          How far apart are these amounts?
+How far apart are these amounts?        How far apart are these amounts?
   2       6                             2     <     6
   ─   <   ─                             ─           ─
   8       8                             8           8
-How far apart?                          How far apart?  [numerator]
-[numerator] / [denominator]                            ─────────────
-[Check]  [Help ▾]                                      [denominator] [Check]
-[Show both amounts]                      [Help ▾] [Show both amounts]
+[numerator] / [denominator]             [numerator]
+[Check]  [Help ▾]                                      ─────────────
+  Show both amounts                                    [denominator] [Check]
+                                        [Help ▾]  Show both amounts
 [Next] after acceptance                 [paired same-whole bars on request]
 ```
 
@@ -49,7 +49,7 @@ These are ordering sketches only; a future implementation must measure readable 
 
 `evidence/exact-examples.mjs` uses current `createFraction`, `compareFractions`, `equalFractions`, `leastCommonDenominator`, `convertToDenominator`, `subtractFractions` and `simplifyFraction`; its generated JSON records eight ordered cases including swaps, equivalent equality and unlike units. For `3/5` versus `5/9`, exact common units are 27/45 and 25/45 and distance 2/45; 45 parts are a deliberate capacity warning, not authorization to render that partition. Swaps preserve unsigned distance while computational order changes. First/second raw forms remain separate from normalized identity and computational order; select larger using exact comparison, then subtract. Core subtraction rejects negative results. Exact API results demonstrate arithmetic for these cases, not eligibility, UI or teaching efficacy.
 
-Recommend an initial fixed four-record batch from evidence rows: `2/8,6/8`; its swap; `1/6,5/6`; its swap. Positive proper operands, same denominator 6 or 8, no mixed/improper or random content. Denominator is the count of equal parts in **one whole**, not the number of shaded parts or available graphic width. Each bar must have the same whole width and subdivision scale even at resize. Readable common partition and content eligibility must be validated upstream; the existing general bar ceiling (decision log DECISION-008) is not by itself proof of readability for this new scene. A unit interval's length would be endpoint difference, not endpoint coordinate; a domain width is not necessarily one whole. Equality and unlike-denominator records are excluded from the first four but exact-audited above; require a separate admitted equality branch test and deliberate expansion decision before enabling either. No larger-denominator policy, multi-whole, random selection, mastery or persistence implied.
+Recommend an initial fixed four-record batch from evidence rows: `2/8,6/8`; its swap; `5/6,3/6`; `5/6,2/6`. Positive proper operands, same denominator 6 or 8, no mixed/improper or random content. Denominator is the count of equal parts in **one whole**, not the number of shaded parts or available graphic width. Each bar must have the same whole width and subdivision scale even at resize. Readable common partition and content eligibility must be validated upstream; the existing general bar ceiling (decision log DECISION-008) is not by itself proof of readability for this new scene. A unit interval's length would be endpoint difference, not endpoint coordinate; a domain width is not necessarily one whole. Equality and unlike-denominator records are excluded from the first four but exact-audited above; require a separate admitted equality branch test and deliberate expansion decision before enabling either. No larger-denominator policy, multi-whole, random selection, mastery or persistence implied.
 
 ## Proposed first source slice and ownership boundaries
 
