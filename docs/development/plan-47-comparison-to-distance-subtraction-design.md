@@ -1,11 +1,9 @@
 ---
 id: plan-47
 title: Comparison-to-Distance Subtraction Bridge Design
-status: draft
+status: in-progress
 depends_on: [plan-15, plan-36, plan-38, plan-40, plan-44]
 gate: "Requirement 0 scope approval, then owner adoption of one comparison/distance task and first source slice. Report-only design may proceed beside Plan45; source activation requires its owner-accepted contracts and a separate implementation gate."
-superseded_by: null
-resolution: null
 summary: >-
   Design one short connection from fraction comparison to unsigned difference,
   distinguishing takeaway from distance and preserving a meaningful learner
