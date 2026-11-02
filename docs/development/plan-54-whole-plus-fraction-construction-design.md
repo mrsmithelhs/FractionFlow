@@ -1,7 +1,7 @@
 ---
 id: plan-54
 title: Whole-Plus-Fraction Construction and Mixed-Form Connection Design
-status: in-progress
+status: delivered
 depends_on: [plan-48, plan-53, plan-31, plan-52]
 gate: "Approve bounded investigation scope before dossier work; owner adopts one task, first-slice boundaries and readiness disposition before any source packet. No automatic OQ-24 closure or Phase4 exit."
 summary: >-
