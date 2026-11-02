@@ -1231,6 +1231,8 @@ export function createFractionFlowApp({
   }
 
   function returnToEntry() {
+    visualPlan59Renderer?.destroy(); linearPlan59Renderer?.destroy();
+    visualPlan59Renderer = null; linearPlan59Renderer = null;
     visualCollectionRenderer?.destroy(); linearCollectionRenderer?.destroy();
     visualCollectionRenderer=null; linearCollectionRenderer=null;
     currentEpisodeGeneration += 1;
@@ -2251,6 +2253,8 @@ export function createFractionFlowApp({
       return this;
     },
     destroy() {
+      visualPlan59Renderer?.destroy(); linearPlan59Renderer?.destroy();
+      visualPlan59Renderer = null; linearPlan59Renderer = null;
       visualCollectionRenderer?.destroy(); linearCollectionRenderer?.destroy();
       visualCollectionRenderer=null; linearCollectionRenderer=null;
       visualComparisonRenderer?.destroy();

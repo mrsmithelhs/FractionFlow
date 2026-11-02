@@ -1086,3 +1086,9 @@ body,
 .plan59-start { bottom: 48px; background: #d8e8ee; border: 1px solid #365260; }
 .plan59-marker { bottom: 115px; background: white; border: 2px solid #684d24; }
 .plan59-arrow { position: absolute; bottom: 37px; left: 0; width: 100%; height: 24px; color: #8b4c0c; overflow: visible; pointer-events: none; }
+
+.plan59-tray { min-height: 64px; padding: 8px; border: 1px dashed #6b7c85; border-radius: 8px; box-sizing: border-box; }
+.plan59-tray-empty { border-color: transparent; }
+.plan59-drag-tile { display: inline-flex; align-items: center; justify-content: center; min-width: 44px; min-height: 44px; box-sizing: border-box; padding: .2rem .35rem; border: 2px solid #684d24; border-radius: .25rem; background: white; cursor: grab; touch-action: none; white-space: nowrap; }
+.plan59-drag-tile.is-dragging { position: fixed; bottom: auto; transform: translate(-50%, -100%); pointer-events: none; z-index: 1000; cursor: grabbing; }
+.plan59-tray-placeholder { visibility: hidden; }

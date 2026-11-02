@@ -1,0 +1,35 @@
+import { createServer } from 'vite';
+import { chromium } from 'playwright';
+import { strict as assert } from 'node:assert';
+const server=await createServer({server:{host:'127.0.0.1',port:5298,strictPort:true}}); await server.listen();
+const browser=await chromium.launch({channel:'chrome',headless:true});
+try {
+ const page=await browser.newPage({viewport:{width:360,height:740}});
+ await page.goto('http://127.0.0.1:5298/FractionFlow/#directed-number-line-endpoint');
+ const root=page.locator('.plan59-endpoint:visible'); await root.waitFor();
+ const position=root.locator('.plan59-position');
+ const initial=await root.locator('.plan59-axis').boundingBox();
+ assert.equal(await position.textContent(),'Endpoint not placed.');
+ const first=root.getByRole('button',{name:'Place at 0'});
+ assert.equal(await first.getAttribute('aria-describedby'),'plan59-position-visual');
+ await first.focus(); await page.keyboard.press('Enter');
+ const left=root.getByRole('button',{name:'Move left'});
+ assert.equal(await left.evaluate(el=>document.activeElement===el),true,'WITNESS_FOCUS_RESTORED');
+ assert.equal(await position.textContent(),'Endpoint at 0 over 4.');
+ assert.equal(await left.getAttribute('aria-describedby'),'plan59-position-visual','WITNESS_POSITION_DESCRIPTION');
+ const placed=await root.locator('.plan59-axis').boundingBox();
+ assert.equal(placed.y,initial.y,'WITNESS_ACTIVE_AXIS_STABILITY');
+ await page.keyboard.press('Enter');
+ assert.equal(await position.textContent(),'Endpoint at 0 over 4.','WITNESS_LEFT_CLAMP');
+ const right=root.getByRole('button',{name:'Move right'}); await right.focus(); await page.keyboard.press('Enter');
+ assert.equal(await right.evaluate(el=>document.activeElement===el),true);
+ assert.equal(await position.textContent(),'Endpoint at 1 over 4.');
+ assert.equal(await right.getAttribute('aria-describedby'),'plan59-position-visual');
+ await root.getByRole('button',{name:'Check',exact:true}).click();
+ assert.equal(await root.locator('.plan53-feedback').evaluate(el=>document.activeElement===el),true);
+ assert.equal(await root.locator('[role=status], [aria-live]').count(),0,'WITNESS_SINGLE_FEEDBACK_PATH');
+ const described=await root.getByRole('button',{name:'Move right'}).getAttribute('aria-describedby');
+ assert.equal(described,'plan59-position-visual plan59-guidance-visual');
+ assert.equal(await page.locator('#plan59-position-visual').first().textContent(),'Endpoint at 1 over 4.');
+ console.log('PASS keyboard focus, associated position, clamp, stable line and single feedback path');
+} finally { await browser.close(); await server.close(); }

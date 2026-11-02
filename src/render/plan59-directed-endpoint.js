@@ -12,16 +12,33 @@ export function createPlan59Renderer({ container, view, dispatch, progression, h
   let root = null;
   let destroyed = false;
   let preview = null;
+  let gesture = null;
   const valid = node => !destroyed && active() && root?.isConnected && root.contains(node);
   const cancelGesture = () => {
+    const current = gesture;
+    gesture = null;
     preview = null;
+    if (current) {
+      current.token.classList.remove('is-dragging');
+      current.token.style.cssText = current.originalStyle;
+      try { current.token.releasePointerCapture(current.pointerId); } catch { /* already released */ }
+    }
     root?.querySelector('.plan53-highlight')?.classList.remove('plan53-highlight');
   };
-  const onResize = () => cancelGesture();
-  window.addEventListener('resize', onResize);
-  const destroy = () => { cancelGesture(); window.removeEventListener('resize', onResize); destroyed = true; root?.remove(); root = null; };
+  const onEscape = event => { if (event.key === 'Escape' && gesture) cancelGesture(); };
+  window.addEventListener('resize', cancelGesture);
+  window.addEventListener('scroll', cancelGesture, true);
+  document.addEventListener('keydown', onEscape);
+  const destroy = () => {
+    cancelGesture();
+    window.removeEventListener('resize', cancelGesture);
+    window.removeEventListener('scroll', cancelGesture, true);
+    document.removeEventListener('keydown', onEscape);
+    destroyed = true; root?.remove(); root = null;
+  };
 
   function render(scene) {
+    cancelGesture();
     const model = scene.meaning.endpoint;
     const live = model.status === 'active';
     const denominator = Number(model.start.denominator);
@@ -45,7 +62,7 @@ export function createPlan59Renderer({ container, view, dispatch, progression, h
     if (!live) expression.append(element('span', '', '='), createSymbolicFraction(model.verification.endpoint.numerator, model.verification.endpoint.denominator, { variant: 'compact' }));
     section.append(expression);
     if (live) section.append(element('h2', 'plan53-prompt', view === 'visual'
-      ? 'Tap the line or use the position buttons.' : 'Choose an end position.'));
+      ? 'Drag End or tap the line.' : 'Choose an end position.'));
     const feedback = element('p', live ? 'plan53-feedback' : 'plan53-feedback plan50-success');
     feedback.tabIndex = -1; feedback.dataset.focusKey = 'feedback';
     if (model.evaluation.status === 'incomplete') feedback.textContent = 'Place the end first.';
@@ -57,10 +74,19 @@ export function createPlan59Renderer({ container, view, dispatch, progression, h
     }
     if (view === 'visual') {
       if (live) {
-        const status = element('p', 'plan59-position', selected === null
+        const status = element('p', 'plan59-position sr-only', selected === null
           ? 'Endpoint not placed.' : `Endpoint at ${selected} over ${denominator}.`);
         status.id = `plan59-position-${view}`;
         section.append(status);
+        const tray = element('div', selected === null ? 'plan59-tray' : 'plan59-tray plan59-tray-empty');
+        tray.setAttribute('aria-label', 'End starting area');
+        if (selected === null) tray.append(makeTile(false));
+        else {
+          tray.setAttribute('aria-hidden', 'true');
+          const placeholder = element('span', 'plan59-drag-tile plan59-tray-placeholder', 'End');
+          tray.append(placeholder);
+        }
+        section.append(tray);
       }
       const frame = element('div', 'plan53-frame plan59-frame');
       const axis = element('div', 'plan53-axis plan59-axis');
@@ -76,9 +102,13 @@ export function createPlan59Renderer({ container, view, dispatch, progression, h
       fixedStart.setAttribute('aria-label', `Supplied start ${model.start.numerator} over ${model.start.denominator}`);
       frame.append(axis, fixedStart);
       if (selected !== null) {
-        const marker = element('span', 'plan59-marker', 'End'); marker.style.left = `${selected / denominator * 100}%`;
-        marker.setAttribute('role', 'img');
-        marker.setAttribute('aria-label', `Endpoint at ${selected} over ${denominator}`); frame.append(marker);
+        const marker = live ? makeTile(true) : element('span', 'plan59-marker', 'End');
+        marker.style.left = `${selected / denominator * 100}%`;
+        if (!live) {
+          marker.setAttribute('role', 'img');
+          marker.setAttribute('aria-label', `Endpoint at ${selected} over ${denominator}`);
+        }
+        frame.append(marker);
       }
       if (!live) {
         const arrow = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
@@ -92,20 +122,65 @@ export function createPlan59Renderer({ container, view, dispatch, progression, h
         head.setAttribute('points', `${end},10 ${back},5 ${back},15`); head.setAttribute('fill', 'currentColor');
         arrow.append(line, head); frame.append(arrow);
       }
-      const nearest = event => {
+      function makeTile(positioned) {
+        const token = element('span', positioned ? 'plan59-marker plan59-drag-tile' : 'plan59-drag-tile', 'End');
+        token.setAttribute('role', 'img');
+        token.setAttribute('aria-label', positioned ? 'End, placed' : 'End, unplaced');
+        token.setAttribute('aria-describedby', `plan59-position-${view}`);
+        token.addEventListener('pointerdown', event => {
+          if (!valid(token) || gesture || !event.isPrimary || event.button !== 0) return;
+          event.preventDefault();
+          const box = token.getBoundingClientRect();
+          gesture = { token, pointerId: event.pointerId, x: event.clientX, y: event.clientY,
+            offsetX: event.clientX - (box.left + box.width / 2), offsetY: event.clientY - box.bottom,
+            originalStyle: token.style.cssText, dragging: false };
+          try { token.setPointerCapture(event.pointerId); } catch { cancelGesture(); }
+        });
+        return token;
+      }
+      const nearest = (x, y) => {
         const box = axis.getBoundingClientRect();
-        if (event.clientX < box.left || event.clientX > box.right || Math.abs(event.clientY - (box.top + box.height / 2)) > 44) return null;
-        return Math.max(0, Math.min(denominator, Math.round((event.clientX - box.left) / box.width * denominator)));
+        if (x < box.left || x > box.right || Math.abs(y - (box.top + box.height / 2)) > 44) return null;
+        return Math.max(0, Math.min(denominator, Math.round((x - box.left) / box.width * denominator)));
       };
       if (live) {
         axis.addEventListener('pointermove', event => {
-          if (!valid(axis)) return;
-          cancelGesture(); preview = nearest(event);
+          if (!valid(axis) || gesture) return;
+          cancelGesture(); preview = nearest(event.clientX, event.clientY);
           if (preview !== null) axis.querySelector(`[data-candidate-id="step-${preview}"]`)?.classList.add('plan53-highlight');
         });
-        axis.addEventListener('pointerleave', cancelGesture);
-        axis.addEventListener('pointercancel', cancelGesture);
-        axis.addEventListener('click', event => { if (valid(axis)) { const index = nearest(event); cancelGesture(); if (index !== null) place(index); } });
+        axis.addEventListener('pointerleave', () => { if (!gesture) cancelGesture(); });
+        axis.addEventListener('pointercancel', () => { if (!gesture) cancelGesture(); });
+        axis.addEventListener('click', event => {
+          if (valid(axis) && !gesture) {
+            const index = nearest(event.clientX, event.clientY);
+            cancelGesture(); if (index !== null) place(index);
+          }
+        });
+        section.addEventListener('pointermove', event => {
+          const current = gesture;
+          if (!current || event.pointerId !== current.pointerId || !valid(current.token)) return;
+          if (!current.dragging && Math.hypot(event.clientX - current.x, event.clientY - current.y) < 6) return;
+          current.dragging = true;
+          const x = event.clientX - current.offsetX, y = event.clientY - current.offsetY;
+          current.token.classList.add('is-dragging');
+          current.token.style.left = `${x}px`; current.token.style.top = `${y}px`;
+          preview = nearest(x, y);
+          section.querySelector('.plan53-highlight')?.classList.remove('plan53-highlight');
+          if (preview !== null) axis.querySelector(`[data-candidate-id="step-${preview}"]`)?.classList.add('plan53-highlight');
+        });
+        const finish = event => {
+          const current = gesture;
+          if (!current || event.pointerId !== current.pointerId) return;
+          const index = current.dragging && event.type === 'pointerup'
+            ? nearest(event.clientX - current.offsetX, event.clientY - current.offsetY) : null;
+          const allowed = valid(current.token) && valid(axis);
+          cancelGesture();
+          if (allowed && index !== null) place(index);
+        };
+        section.addEventListener('pointerup', finish);
+        section.addEventListener('pointercancel', finish);
+        section.addEventListener('lostpointercapture', finish);
       }
       section.append(frame);
     } else {

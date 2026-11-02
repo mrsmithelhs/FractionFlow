@@ -1,0 +1,17 @@
+{
+  "receipt": [
+    {
+      "name": "anchor-offset",
+      "marker": "WITNESS_TILE_ANCHOR",
+      "exit": 1,
+      "excerpt": "ernal/modules/run_main:107\r\n    triggerUncaughtException(\r\n    ^\r\n\r\nAssertionError [ERR_ASSERTION]: WITNESS_TILE_ANCHOR\r\n    at drag (file:///C:/AI/FractionFlow/reports/development/plan-59-directed-number-line-endpoint/evidence/repair-02/drag-probe.mjs:34:11)\r\n    at async file:///C:/AI/FractionFlow/reports/development/plan-59-directed-number-line-endpoint/evidence/repair-02/drag-probe.mjs:39:14 {\r\n  generatedMessage: false,\r\n  code: 'ERR_ASSERTI"
+    },
+    {
+      "name": "escape-cancellation",
+      "marker": "WITNESS_CANCEL_DRAFT",
+      "exit": 1,
+      "excerpt": "ernal/modules/run_main:107\r\n    triggerUncaughtException(\r\n    ^\r\n\r\nAssertionError [ERR_ASSERTION]: WITNESS_CANCEL_DRAFT\r\n+ actual - expected\r\n\r\n+ 'Endpoint at 1 over 4.'\r\n- 'Endpoint at 3 over 4.'\r\n               ^\r\n\r\n    at file:///C:/AI/FractionFlow/reports/development/plan-59-directed-number-line-endpoint/evidence/repair-02/drag-probe.mjs:52:10 {\r\n  generatedMessage: false,\r\n  code: 'ERR_ASSERTION',\r\n  actual: 'Endpoint at 1 over 4.',\r\n  expe"
+    }
+  ],
+  "restored": "clean pass"
+}
