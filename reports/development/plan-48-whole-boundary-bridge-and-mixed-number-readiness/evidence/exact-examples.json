@@ -1,0 +1,76 @@
+{
+  "cases": [
+    {
+      "raw": "0/4",
+      "latticeDenominator": 4,
+      "candidateIndex": 0,
+      "unitCount": "0",
+      "remainder": "0/4",
+      "roundTrip": "0/4"
+    },
+    {
+      "raw": "3/4",
+      "latticeDenominator": 4,
+      "candidateIndex": 3,
+      "unitCount": "0",
+      "remainder": "3/4",
+      "roundTrip": "3/4"
+    },
+    {
+      "raw": "4/4",
+      "latticeDenominator": 4,
+      "candidateIndex": 4,
+      "unitCount": "1",
+      "remainder": "0/4",
+      "roundTrip": "4/4"
+    },
+    {
+      "raw": "5/4",
+      "latticeDenominator": 4,
+      "candidateIndex": 5,
+      "unitCount": "1",
+      "remainder": "1/4",
+      "roundTrip": "5/4"
+    },
+    {
+      "raw": "6/4",
+      "latticeDenominator": 4,
+      "candidateIndex": 6,
+      "unitCount": "1",
+      "remainder": "2/4",
+      "roundTrip": "6/4"
+    },
+    {
+      "raw": "3/2",
+      "latticeDenominator": 2,
+      "candidateIndex": 3,
+      "unitCount": "1",
+      "remainder": "1/2",
+      "roundTrip": "3/2"
+    },
+    {
+      "raw": "8/4",
+      "latticeDenominator": 4,
+      "candidateIndex": 8,
+      "unitCount": "2",
+      "remainder": "0/4",
+      "roundTrip": "8/4"
+    },
+    {
+      "raw": "10/8",
+      "latticeDenominator": 8,
+      "candidateIndex": 10,
+      "unitCount": "1",
+      "remainder": "2/8",
+      "roundTrip": "10/8"
+    }
+  ],
+  "equivalent": [
+    "6/4",
+    "3/2"
+  ],
+  "regroup": {
+    "whole": "0",
+    "fraction": "5/4"
+  }
+}
