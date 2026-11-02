@@ -1,5 +1,11 @@
 # Plan 51 progress — Requirement 0 checkpoint
 
+## Pure checkpoint — 2026-11-01
+
+Mechanism approved to pure Requirement 1 only in `mechanism-approval.md`. The registered content, exact admission, public episode reducer and standalone scene projection plus checkpoint tests are committed as `7d899bd`; `checkpoint-1.md` pins the state, intents, scene, refusal and proposed replay contract. All four ordered records and equivalents were checked against exact-core operations; the `1/3` learner form is retained alongside a source-unit range of two sixths. `npx vitest run tests/interaction-plan51-distance.test.js tests/interaction-plan50-collection.test.js tests/interaction-plan49-public-replay.test.js` passed 3 files / 17 tests after the final source-type refinement. Packet lint passed and `git diff --check` was clean. These checks are pure and targeted: no common scene-router, serializer, mounted UI, route, browser, build or complete historical-oracle verification is claimed.
+
+The pure checkpoint is submitted for orchestrator review; stop before broad integration. The three unrelated Plan39 receipts remain untouched. Terra-medium review remains reserved for settled integration and has not run. Owner rendered/task acceptance and later delivery remain outstanding.
+
 2026-11-01. **Waiting for orchestrator mechanism approval; source implementation has not started.**
 
 Preflight `node scripts/dev/plan-status.js check plan-51` returned RUNNABLE. Investigated current source at `90b72f6662b7117743c8de395ecb10fc7a627533`, including the Plan 50 collection and replay v11, Plan 45/49 comparison and replay, exact arithmetic, scene withholding, response ownership and shared progression. The proposed task, literal wires, numerical bounds, compatibility, two journeys and validation gates are in `mechanism-proposal.md`, committed as `4a0c67a`. The orchestrator is reviewing it; the separate pure-contract checkpoint remains ahead. No source, browser, test suite or build was run or changed at this checkpoint.
