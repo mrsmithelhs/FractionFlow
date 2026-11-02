@@ -1,0 +1,57 @@
+{
+  "cases": [
+    {
+      "original": "0/4",
+      "whole": "0",
+      "remainder": "0/4",
+      "roundtrip": "0/4"
+    },
+    {
+      "original": "3/4",
+      "whole": "0",
+      "remainder": "3/4",
+      "roundtrip": "3/4"
+    },
+    {
+      "original": "4/4",
+      "whole": "1",
+      "remainder": "0/4",
+      "roundtrip": "4/4"
+    },
+    {
+      "original": "5/4",
+      "whole": "1",
+      "remainder": "1/4",
+      "roundtrip": "5/4"
+    },
+    {
+      "original": "6/4",
+      "whole": "1",
+      "remainder": "2/4",
+      "roundtrip": "6/4"
+    },
+    {
+      "original": "3/2",
+      "whole": "1",
+      "remainder": "1/2",
+      "roundtrip": "3/2"
+    },
+    {
+      "original": "8/4",
+      "whole": "2",
+      "remainder": "0/4",
+      "roundtrip": "8/4"
+    },
+    {
+      "original": "10/8",
+      "whole": "1",
+      "remainder": "2/8",
+      "roundtrip": "10/8"
+    }
+  ],
+  "equivalence": [
+    "0 + 5/4 equals 5/4 but has an improper remainder",
+    "1 + 2/4 equals 1 + 1/2",
+    "1 + 2/4 differs from 5/4"
+  ]
+}
