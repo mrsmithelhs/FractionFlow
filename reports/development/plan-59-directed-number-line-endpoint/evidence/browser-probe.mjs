@@ -65,8 +65,18 @@ try {
   await page.mouse.click(box.x+box.width/4, box.y+box.height/2);
   await root.getByRole('button',{name:'Check',exact:true}).click();
   assert.equal(await root.locator('.plan53-feedback').innerText(),"That's right.");
-  const subtract=await root.locator('.plan59-arrow line').evaluate(line=>({x1:+line.getAttribute('x1'),x2:+line.getAttribute('x2')}));
-  assert.deepEqual(subtract,{x1:75,x2:25},'WITNESS_REVERSE');
+  const subtract=await root.evaluate(el=>{
+   const rect=node=>{const r=node.getBoundingClientRect();return {left:r.left+scrollX,right:r.right+scrollX,width:r.width};};
+   const axis=el.querySelector('.plan59-axis'), line=el.querySelector('.plan59-arrow line'), matrix=line.getScreenCTM();
+   const point=(x,y)=>{const p=new DOMPoint(x,y).matrixTransform(matrix);return {x:p.x+scrollX,y:p.y+scrollY};};
+   return {axis:rect(axis),start:rect(el.querySelector('.plan59-start')),endpoint:rect(el.querySelector('.plan59-marker')),
+     ticks:[...axis.querySelectorAll('.plan53-mark')].map(rect), x1:+line.getAttribute('x1'),x2:+line.getAttribute('x2'),
+     from:point(+line.getAttribute('x1'),+line.getAttribute('y1')),to:point(+line.getAttribute('x2'),+line.getAttribute('y2'))};
+  });
+  assert.equal(subtract.x1,75,'WITNESS_REVERSE'); assert.equal(subtract.x2,25,'WITNESS_REVERSE');
+  assert.ok(Math.abs(subtract.from.x-center(subtract.start))<1,'WITNESS_REVERSE_START');
+  assert.ok(Math.abs(subtract.to.x-center(subtract.endpoint))<1,'WITNESS_REVERSE_END');
+  assert.ok(Math.abs(subtract.to.x-center(subtract.ticks[1]))<1,'WITNESS_REVERSE_SCALE');
   await page.screenshot({path:`${dir}/accepted-subtract-${config.width}.png`,fullPage:true});
   assert.deepEqual(errors,[]); receipts.push({config,geometry,subtract}); await context.close();
  }
