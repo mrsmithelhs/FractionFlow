@@ -1,0 +1,8 @@
+{
+  "failure": {
+    "exit": 1,
+    "marker": "WITNESS_BENCHMARK_FEEDBACK_CLEARANCE",
+    "excerpt": "node:internal/modules/run_main:107\r\n    triggerUncaughtException(\r\n    ^\r\n\r\nAssertionError [ERR_ASSERTION]: WITNESS_BENCHMARK_FEEDBACK_CLEARANCE\r\n    at file:///C:/AI/FractionFlow/reports/development/plan-59-directed-number-line-endpoint/evidence/repair-01/browser-probe.mjs:65:12 {\r\n  generatedMessage: false,\r\n  code: 'ERR_ASSERTION',\r\n  actual: false,\r\n  expected: true,\r\n  operator: '==',\r\n  diff: 'simple'\r\n}\r\n\r\nNode.js v26.7.0\r\n"
+  },
+  "restored": "clean pass"
+}

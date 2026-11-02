@@ -44,7 +44,8 @@ export function createPlan59Renderer({ container, view, dispatch, progression, h
       createSymbolicFraction(model.amount.numerator, model.amount.denominator, { variant: 'compact' }));
     if (!live) expression.append(element('span', '', '='), createSymbolicFraction(model.verification.endpoint.numerator, model.verification.endpoint.denominator, { variant: 'compact' }));
     section.append(expression);
-    if (live) section.append(element('h2', 'plan53-prompt', 'Place the end on the number line.'));
+    if (live) section.append(element('h2', 'plan53-prompt', view === 'visual'
+      ? 'Tap the line or use the position buttons.' : 'Choose an end position.'));
     const feedback = element('p', live ? 'plan53-feedback' : 'plan53-feedback plan50-success');
     feedback.tabIndex = -1; feedback.dataset.focusKey = 'feedback';
     if (model.evaluation.status === 'incomplete') feedback.textContent = 'Place the end first.';
@@ -55,14 +56,12 @@ export function createPlan59Renderer({ container, view, dispatch, progression, h
       feedback.classList.add(model.evaluation.status === 'incorrect' ? 'house-retry' : 'house-attention');
     }
     if (view === 'visual') {
-      const tray = element('div', 'plan53-tray');
-      if (selected === null) {
-        const tile = element('span', 'plan53-token', 'End');
-        tile.setAttribute('aria-label', 'Endpoint not placed'); tray.append(tile);
-      } else { tray.classList.add('plan53-tray-empty'); tray.setAttribute('aria-hidden', 'true'); }
-      section.append(tray);
-      const status = element('p', 'plan59-position', selected === null ? 'Endpoint not placed.' : `Endpoint at ${selected} over ${denominator}.`);
-      section.append(status);
+      if (live) {
+        const status = element('p', 'plan59-position', selected === null
+          ? 'Endpoint not placed.' : `Endpoint at ${selected} over ${denominator}.`);
+        status.id = `plan59-position-${view}`;
+        section.append(status);
+      }
       const frame = element('div', 'plan53-frame plan59-frame');
       const axis = element('div', 'plan53-axis plan59-axis');
       axis.setAttribute('aria-label', 'Number line from zero to one');
@@ -78,6 +77,7 @@ export function createPlan59Renderer({ container, view, dispatch, progression, h
       frame.append(axis, fixedStart);
       if (selected !== null) {
         const marker = element('span', 'plan59-marker', 'End'); marker.style.left = `${selected / denominator * 100}%`;
+        marker.setAttribute('role', 'img');
         marker.setAttribute('aria-label', `Endpoint at ${selected} over ${denominator}`); frame.append(marker);
       }
       if (!live) {
@@ -121,7 +121,9 @@ export function createPlan59Renderer({ container, view, dispatch, progression, h
       if (view === 'visual') {
         const left = button(selected === null ? 'Place at 0' : 'Move left', () => place(selected === null ? 0 : Math.max(0, selected - 1)), 'left');
         const right = button(selected === null ? 'Place at 1' : 'Move right', () => place(selected === null ? denominator : Math.min(denominator, selected + 1)), 'right');
-        if (feedback.id) { left.setAttribute('aria-describedby', feedback.id); right.setAttribute('aria-describedby', feedback.id); }
+        const description = [`plan59-position-${view}`, feedback.id].filter(Boolean).join(' ');
+        left.setAttribute('aria-describedby', description);
+        right.setAttribute('aria-describedby', description);
         controls.append(left, right);
       } else {
         const label = element('label', '', 'Choose a position '); const select = element('select'); select.dataset.focusKey = 'position';
