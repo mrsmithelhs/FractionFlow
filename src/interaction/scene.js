@@ -1,3 +1,4 @@
+import { projectPlan53Location } from './plan53-two-whole-location-scene.js';
 import { projectPlan51Distance } from './plan51-distance-scene.js';
 import { admitPlan50Record, validatePlan50Context } from '../content/plan50-number-line-collection-task.js';
 import { PLAN50_CONDITION } from './plan50-number-line-collection-episode.js';
@@ -198,6 +199,10 @@ function assertStateShape(state) {
     if (!Array.isArray(state[key])) {
       throw new SceneProjectionError('INVALID_SCENE_INPUT', `state.${key} must be an array`);
     }
+  }
+  if (state.episodeDefinition?.id === 'phase-4-two-whole-location') {
+    projectPlan53Location(state);
+    return;
   }
   if (state.episodeDefinition?.id === 'phase-4-fraction-distance') {
     projectPlan51Distance(state);
@@ -510,6 +515,7 @@ function contentProjectionSource(state) {
 }
 
 function sourceContext({ state, representationRole, presentationMode, isReplaying = false }) {
+  if (state.episodeDefinition?.id === 'phase-4-two-whole-location') return { location: projectPlan53Location(state), representationRole, presentationMode, isReplaying };
   if (state.episodeDefinition?.id === 'phase-4-fraction-distance') return { distance: projectPlan51Distance(state), context: state.taskContext, revision: state.revision, representationRole, presentationMode, isReplaying };
   if (state.episodeDefinition?.id === 'phase-4-number-line-collection') return { collection: {taskContext:state.taskContext, revision:state.revision, placementRevision:state.placementRevision, selectedMemberId:state.selectedMemberId, placements:state.placements, evaluation:state.evaluation, status:state.status, support:state.support, activeCondition:state.activeCondition, helpRequested:state.assistanceHistory.length > 0}, representationRole,presentationMode,isReplaying };
   return {
@@ -598,6 +604,10 @@ function pathSummary(state) {
 }
 
 function capabilityFor(state, role, derivation) {
+  if (state.episodeDefinition?.id === 'phase-4-two-whole-location') {
+    if (role !== 'number-line') throw new SceneProjectionError('UNRESOLVED_CAPABILITY', 'location requires number-line');
+    return { instance:'eligible', activePath:null, authoredCoverage:null, continuation:null };
+  }
   if (state.episodeDefinition?.id === 'phase-4-fraction-distance') return { instance: 'eligible', activePath: null, authoredCoverage: null, continuation: null };
   if (state.episodeDefinition?.id === 'phase-4-number-line-collection') { if (role !== 'number-line') throw new SceneProjectionError('UNRESOLVED_CAPABILITY','collection requires number-line'); return {instance:'eligible',activePath:null,authoredCoverage:null,continuation:null}; }
   if (isPlan45ComparisonEpisode(state)) {
@@ -1112,6 +1122,7 @@ function takeawayMeaning(state) {
 }
 
 function sceneMeaning(state, representationRole, capability) {
+  if (state.episodeDefinition?.id === 'phase-4-two-whole-location') return { representationRole, capability, location: projectPlan53Location(state), status: { episode: state.status }, support: state.support };
   if (state.episodeDefinition?.id === 'phase-4-fraction-distance') return { representationRole, capability, distance: projectPlan51Distance(state), status: { episode: state.status }, support: state.support };
   if (state.episodeDefinition?.id === 'phase-4-number-line-collection') {
     const c=state.taskContext; const {candidates}=admitPlan50Record({itemId:c.itemId,itemRevision:c.itemRevision,purpose:c.purpose,lattice:c.lattice,members:c.members});

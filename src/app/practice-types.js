@@ -1,3 +1,5 @@
+import { PLAN53_RECORDS } from '../content/data/plan53-two-whole-location-records.js';
+import { PLAN53_LOCATION_EPISODE_DEFINITION } from '../interaction/episode-definition.js';
 import { PLAN51_DISTANCE_RECORDS } from '../content/data/plan51-distance-records.js';
 import { PLAN51_DISTANCE_EPISODE_DEFINITION } from '../interaction/episode-definition.js';
 import { PLAN50_RECORDS } from '../content/data/plan50-number-line-collection-records.js';
@@ -328,12 +330,20 @@ export const PLAN51_DISTANCE_PRACTICE_TYPE = deepFreeze({
   episodeDefinition: PLAN51_DISTANCE_EPISODE_DEFINITION,
 });
 
+export const PLAN53_LOCATION_PRACTICE_TYPE = deepFreeze({
+  id: 'two-whole-location', label: 'Place fractions on a two-whole number line',
+  setId: 'two-whole-location', setRevision: '1',
+  items: PLAN53_RECORDS.map(record => ({ id: record.itemId, episodeDefinitionId: PLAN53_LOCATION_EPISODE_DEFINITION.id, episodeDefinitionRevision: '1' })),
+  episodeDefinition: PLAN53_LOCATION_EPISODE_DEFINITION,
+});
+
 export const PRACTICE_TYPES = deepFreeze([
   ...PLAN40_PRACTICE_TYPES_V9,
   PLAN39_BAR_TO_LINE_PRACTICE_TYPE,
   PLAN45_SYMBOLIC_COMPARISON_PRACTICE_TYPE,
   PLAN50_COLLECTION_PRACTICE_TYPE,
   PLAN51_DISTANCE_PRACTICE_TYPE,
+  PLAN53_LOCATION_PRACTICE_TYPE,
 ]);
 
 export function getPracticeType(id) {

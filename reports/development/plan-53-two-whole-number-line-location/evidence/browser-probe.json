@@ -1,0 +1,324 @@
+[
+  {
+    "config": {
+      "width": 360,
+      "height": 740,
+      "dpr": 1
+    },
+    "index": 0,
+    "n": 0,
+    "d": 4,
+    "geometry": {
+      "axisX": 57,
+      "axisWidth": 246,
+      "barX": 57,
+      "barWidth": 123,
+      "markCount": 9,
+      "scrollWidth": 360,
+      "viewport": 360
+    },
+    "spacing": 30.75
+  },
+  {
+    "config": {
+      "width": 360,
+      "height": 740,
+      "dpr": 1
+    },
+    "index": 1,
+    "n": 3,
+    "d": 4,
+    "geometry": {
+      "axisX": 57,
+      "axisWidth": 246,
+      "barX": 57,
+      "barWidth": 123,
+      "markCount": 9,
+      "scrollWidth": 360,
+      "viewport": 360
+    },
+    "spacing": 30.75
+  },
+  {
+    "config": {
+      "width": 360,
+      "height": 740,
+      "dpr": 1
+    },
+    "index": 2,
+    "n": 4,
+    "d": 4,
+    "geometry": {
+      "axisX": 57,
+      "axisWidth": 246,
+      "barX": 57,
+      "barWidth": 123,
+      "markCount": 9,
+      "scrollWidth": 360,
+      "viewport": 360
+    },
+    "spacing": 30.75
+  },
+  {
+    "config": {
+      "width": 360,
+      "height": 740,
+      "dpr": 1
+    },
+    "index": 3,
+    "n": 5,
+    "d": 4,
+    "geometry": {
+      "axisX": 57,
+      "axisWidth": 246,
+      "barX": 57,
+      "barWidth": 123,
+      "markCount": 9,
+      "scrollWidth": 360,
+      "viewport": 360
+    },
+    "spacing": 30.75
+  },
+  {
+    "config": {
+      "width": 360,
+      "height": 740,
+      "dpr": 1
+    },
+    "index": 4,
+    "n": 6,
+    "d": 4,
+    "geometry": {
+      "axisX": 57,
+      "axisWidth": 246,
+      "barX": 57,
+      "barWidth": 123,
+      "markCount": 9,
+      "scrollWidth": 360,
+      "viewport": 360
+    },
+    "spacing": 30.75
+  },
+  {
+    "config": {
+      "width": 360,
+      "height": 740,
+      "dpr": 1
+    },
+    "index": 5,
+    "n": 3,
+    "d": 2,
+    "geometry": {
+      "axisX": 57,
+      "axisWidth": 246,
+      "barX": 57,
+      "barWidth": 123,
+      "markCount": 5,
+      "scrollWidth": 360,
+      "viewport": 360
+    },
+    "spacing": 61.5
+  },
+  {
+    "config": {
+      "width": 360,
+      "height": 740,
+      "dpr": 1
+    },
+    "index": 6,
+    "n": 8,
+    "d": 4,
+    "geometry": {
+      "axisX": 57,
+      "axisWidth": 246,
+      "barX": 57,
+      "barWidth": 123,
+      "markCount": 9,
+      "scrollWidth": 360,
+      "viewport": 360
+    },
+    "spacing": 30.75
+  },
+  {
+    "config": {
+      "width": 360,
+      "height": 740,
+      "dpr": 1
+    },
+    "index": 7,
+    "n": 10,
+    "d": 8,
+    "geometry": {
+      "axisX": 57,
+      "axisWidth": 246,
+      "barX": 57,
+      "barWidth": 123,
+      "markCount": 17,
+      "scrollWidth": 360,
+      "viewport": 360,
+      "step10": 209.75
+    },
+    "spacing": 15.375
+  },
+  {
+    "config": {
+      "width": 1093,
+      "height": 614,
+      "dpr": 1.25
+    },
+    "index": 0,
+    "n": 0,
+    "d": 4,
+    "geometry": {
+      "axisX": 93.09375,
+      "axisWidth": 906.8125,
+      "barX": 93.09375,
+      "barWidth": 453.40625,
+      "markCount": 9,
+      "scrollWidth": 1093,
+      "viewport": 1093
+    },
+    "spacing": 113.3515625
+  },
+  {
+    "config": {
+      "width": 1093,
+      "height": 614,
+      "dpr": 1.25
+    },
+    "index": 1,
+    "n": 3,
+    "d": 4,
+    "geometry": {
+      "axisX": 93.09375,
+      "axisWidth": 906.8125,
+      "barX": 93.09375,
+      "barWidth": 453.40625,
+      "markCount": 9,
+      "scrollWidth": 1093,
+      "viewport": 1093
+    },
+    "spacing": 113.3515625
+  },
+  {
+    "config": {
+      "width": 1093,
+      "height": 614,
+      "dpr": 1.25
+    },
+    "index": 2,
+    "n": 4,
+    "d": 4,
+    "geometry": {
+      "axisX": 93.09375,
+      "axisWidth": 906.8125,
+      "barX": 93.09375,
+      "barWidth": 453.40625,
+      "markCount": 9,
+      "scrollWidth": 1093,
+      "viewport": 1093
+    },
+    "spacing": 113.3515625
+  },
+  {
+    "config": {
+      "width": 1093,
+      "height": 614,
+      "dpr": 1.25
+    },
+    "index": 3,
+    "n": 5,
+    "d": 4,
+    "geometry": {
+      "axisX": 93.09375,
+      "axisWidth": 906.8125,
+      "barX": 93.09375,
+      "barWidth": 453.40625,
+      "markCount": 9,
+      "scrollWidth": 1093,
+      "viewport": 1093
+    },
+    "spacing": 113.3515625
+  },
+  {
+    "config": {
+      "width": 1093,
+      "height": 614,
+      "dpr": 1.25
+    },
+    "index": 4,
+    "n": 6,
+    "d": 4,
+    "geometry": {
+      "axisX": 93.09375,
+      "axisWidth": 906.8125,
+      "barX": 93.09375,
+      "barWidth": 453.40625,
+      "markCount": 9,
+      "scrollWidth": 1093,
+      "viewport": 1093
+    },
+    "spacing": 113.3515625
+  },
+  {
+    "config": {
+      "width": 1093,
+      "height": 614,
+      "dpr": 1.25
+    },
+    "index": 5,
+    "n": 3,
+    "d": 2,
+    "geometry": {
+      "axisX": 93.09375,
+      "axisWidth": 906.8125,
+      "barX": 93.09375,
+      "barWidth": 453.40625,
+      "markCount": 5,
+      "scrollWidth": 1093,
+      "viewport": 1093
+    },
+    "spacing": 226.703125
+  },
+  {
+    "config": {
+      "width": 1093,
+      "height": 614,
+      "dpr": 1.25
+    },
+    "index": 6,
+    "n": 8,
+    "d": 4,
+    "geometry": {
+      "axisX": 93.09375,
+      "axisWidth": 906.8125,
+      "barX": 93.09375,
+      "barWidth": 453.40625,
+      "markCount": 9,
+      "scrollWidth": 1093,
+      "viewport": 1093
+    },
+    "spacing": 113.3515625
+  },
+  {
+    "config": {
+      "width": 1093,
+      "height": 614,
+      "dpr": 1.25
+    },
+    "index": 7,
+    "n": 10,
+    "d": 8,
+    "geometry": {
+      "axisX": 93.09375,
+      "axisWidth": 906.8125,
+      "barX": 93.09375,
+      "barWidth": 453.40625,
+      "markCount": 17,
+      "scrollWidth": 1093,
+      "viewport": 1093,
+      "step10": 658.84375
+    },
+    "spacing": 56.67578125
+  }
+]
