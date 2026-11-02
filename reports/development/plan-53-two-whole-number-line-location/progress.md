@@ -11,3 +11,26 @@ approval; a separate pure checkpoint is required before mounted integration.
 
 Consultation disposition: no reviewer consultation has run at this proposal stage;
 the permitted bounded Terra-medium review remains a later delivery decision.
+
+## Pure checkpoint — 2026-11-02
+
+Mechanism and conditional batch approved for pure implementation in
+`mechanism-approval.md`. Pure implementation commit `bd4e1e4` adds the eight raw
+records, exact admission and derived candidates/verification, task-local episode and
+scene projection, registered episode definition, and dedicated replay v13. The scene
+projects learner placement and feedback before acceptance and withholds verification;
+it is deliberately not connected to the common scene router or mounted app yet.
+
+Focused Vitest runs passed: Plan 53, Plan 50 and v6 compatibility (20 tests), and
+Plan 51, Plan 49 public replay and provenance replay (16 tests). Plan 53 checks all
+eight records and both support settings, boundary/remainder facts, initial and
+tentative withholding, incomplete/wrong/revised/help, stale/context refusal and
+new replay round trips/tampering. Historical tests were run unchanged. The initial
+focused run exposed missing approved-beat registration; it was corrected before the
+passing runs. `git diff --check` passed before commit.
+
+No mounted interaction, geometry, visual accessibility, eighth-density capability,
+physical device, assistive technology or learner behavior has been verified. No
+consultation ran for this checkpoint; the optional consolidated delivery review is
+still pending. Stop for orchestrator pure-checkpoint review before mounted integration.
+The three pre-existing untracked Plan 39 receipts remain untouched.
