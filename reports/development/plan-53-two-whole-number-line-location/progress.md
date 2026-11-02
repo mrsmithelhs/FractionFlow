@@ -34,3 +34,24 @@ physical device, assistive technology or learner behavior has been verified. No
 consultation ran for this checkpoint; the optional consolidated delivery review is
 still pending. Stop for orchestrator pure-checkpoint review before mounted integration.
 The three pre-existing untracked Plan 39 receipts remain untouched.
+
+## Mounted work in progress — density gate
+
+Pure checkpoint approved in `pure-checkpoint-review.md`. Work-in-progress commit
+`11cd8e3` connects the task and records an exploratory isolated Chrome probe, not a
+delivery. The probe exercised synthetic pointer selection and direct progression
+across all eight records at 360×740 and 1093×614 DPR 1.25, measuring line/bar widths
+and overflow. At 360 px the eighths line has 17 candidates spaced 15.375 px apart;
+at Chromebook size spacing is 56.68 px. Equal bar width and line origin matched in
+these samples. These synthetic clicks do not prove practical touch or AT usability.
+The narrow eighths density is a material capability concern; orchestration was asked
+for the packet's required amendment/direction before proceeding. Do not treat the
+batch or mounted work as accepted.
+
+The first integration probe identified missing projected context and progression
+recognition; both were repaired before the recorded probe. `build:learner` passed
+before those repairs, and Plan 53 pure tests passed during integration; final tests,
+full readability cleanup of new shared blocks, access/reset/help/drag verification,
+offset and mutation witnesses, historical browser regression, full build and the
+consolidated delivery review remain. No consultation has run at this checkpoint.
+Three unrelated Plan 39 receipts remain untouched.
