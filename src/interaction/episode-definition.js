@@ -271,6 +271,12 @@ export const PLAN49_COMPARISON_EPISODE_DEFINITION = deepFreeze({
 
 export const PLAN50_COLLECTION_EPISODE_DEFINITION = deepFreeze({ id: 'phase-4-number-line-collection', revision: '1', family: 'number-line-collection', beats: ['place-collection', 'resolve'], includeReflection: false, promptIdentities: { 'place-collection': 'phase4.collection.place', resolve: 'phase4.collection.accepted' } });
 
+export const PLAN51_DISTANCE_EPISODE_DEFINITION = deepFreeze({
+  id: 'phase-4-fraction-distance', revision: '1', family: 'fraction-distance',
+  beats: ['compare', 'distance', 'resolve'], includeReflection: false,
+  promptIdentities: { compare: 'phase4.distance.compare', distance: 'phase4.distance.respond', resolve: 'phase4.distance.accepted' },
+});
+
 const EPISODE_DEFINITIONS = Object.freeze([
   LEGACY_PHASE2_EPISODE_DEFINITION,
   LEGACY_PHASE2_REFLECTION_EPISODE_DEFINITION,
@@ -291,6 +297,7 @@ const EPISODE_DEFINITIONS = Object.freeze([
   PLAN45_SYMBOLIC_FRACTION_COMPARISON_EPISODE_DEFINITION,
   PLAN49_COMPARISON_EPISODE_DEFINITION,
   PLAN50_COLLECTION_EPISODE_DEFINITION,
+  PLAN51_DISTANCE_EPISODE_DEFINITION,
 ]);
 
 export function getEpisodeDefinition(id = EPISODE_DEFINITION_ID, revision = EPISODE_DEFINITION_REVISION) {
