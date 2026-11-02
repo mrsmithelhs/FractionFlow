@@ -3,48 +3,48 @@
     "mutation": "whole-scale",
     "injected": true,
     "exit": 1,
-    "expectedFailureMarker": "AssertionError",
-    "markerObserved": true,
+    "expectedFailureMarker": "WITNESS_WHOLE_SCALE",
+    "failedAssertionExcerpt": "    ^\n\nAssertionError [ERR_ASSERTION]: WITNESS_WHOLE_SCALE\n    at file:///C:/AI/FractionFlow/reports/development/plan-53-two-whole-number-line-location/evidence/browser-probe.mjs:22:11 {\n  generatedMessage: false,\n  code: 'ERR_ASSERTION',\n  actual: false,\n  expected: true,\n  operator: '==',\n  diff: 'simple'",
     "restored": true
   },
   {
     "mutation": "boundary-index",
     "injected": true,
     "exit": 1,
-    "expectedFailureMarker": "expected",
-    "markerObserved": true,
+    "expectedFailureMarker": "WITNESS_BOUNDARY_INDEX",
+    "failedAssertionExcerpt": " ❯ tests/interaction-plan53-two-whole.test.js (4 tests | 2 failed) 13ms\n   × Plan 53 pure location > derives every authored record and accepts only after Check, for both support settings 6ms\n     → WITNESS_BOUNDARY_INDEX: expected [ 'step-1', '0', '0' ] to deeply equal [ 'step-0', '0', '0' ]\n   ✓ Plan 53 pure location > rejects bad admission and changed or unregistered contexts 1ms\n   × Plan 53 pure location > preserves incorrect, revision and assistance; withholds truth; rejects stale and foreign intents 4ms\n     → expected 'active' to be 'resolved' // Object.is equality\n   ✓ Plan 53 pure location > rejects malformed and cross-version replay 1ms\n\n Test Files  1 failed (1)\n      Tests  2 failed | 2 passed (4)",
     "restored": true
   },
   {
     "mutation": "premature-verification",
     "injected": true,
     "exit": 1,
-    "expectedFailureMarker": "toBeNull",
-    "markerObserved": true,
+    "expectedFailureMarker": "WITNESS_PREMATURE_VERIFICATION",
+    "failedAssertionExcerpt": " ❯ tests/interaction-plan53-two-whole.test.js (4 tests | 2 failed) 11ms\n   × Plan 53 pure location > derives every authored record and accepts only after Check, for both support settings 6ms\n     → WITNESS_PREMATURE_VERIFICATION: expected { whole: '0', remainder: { …(2) } } to be null\n   ✓ Plan 53 pure location > rejects bad admission and changed or unregistered contexts 1ms\n   × Plan 53 pure location > preserves incorrect, revision and assistance; withholds truth; rejects stale and foreign intents 2ms\n     → WITNESS_PREMATURE_VERIFICATION: expected { whole: '1', remainder: { …(2) } } to be null\n   ✓ Plan 53 pure location > rejects malformed and cross-version replay 1ms\n\n Test Files  1 failed (1)\n      Tests  2 failed | 2 passed (4)",
     "restored": true
   },
   {
     "mutation": "lost-help-on-view-change",
     "injected": true,
     "exit": 1,
-    "expectedFailureMarker": "AssertionError",
-    "markerObserved": true,
+    "expectedFailureMarker": "WITNESS_HELP_VIEW_CHANGE",
+    "failedAssertionExcerpt": "    ^\n\nAssertionError [ERR_ASSERTION]: WITNESS_HELP_VIEW_CHANGE\n    at file:///C:/AI/FractionFlow/reports/development/plan-53-two-whole-number-line-location/evidence/lifecycle-probe.mjs:21:9 {\n  generatedMessage: false,\n  code: 'ERR_ASSERTION',\n  actual: 'Place this fraction on the number line.\\n' +\n    '\\n' +\n    'Fraction: \\n' +\n    '0\\n' +",
     "restored": true
   },
   {
     "mutation": "lost-draft-on-view-change",
     "injected": true,
     "exit": 1,
-    "expectedFailureMarker": "AssertionError",
-    "markerObserved": true,
+    "expectedFailureMarker": "WITNESS_DRAFT_VIEW_CHANGE",
+    "failedAssertionExcerpt": "    ^\n\nAssertionError [ERR_ASSERTION]: WITNESS_DRAFT_VIEW_CHANGE\n\n'' !== 'step-1'\n\n    at file:///C:/AI/FractionFlow/reports/development/plan-53-two-whole-number-line-location/evidence/lifecycle-probe.mjs:22:9 {\n  generatedMessage: false,\n  code: 'ERR_ASSERTION',\n  actual: '',",
     "restored": true
   },
   {
     "mutation": "lost-assistance",
     "injected": true,
     "exit": 1,
-    "expectedFailureMarker": "toHaveLength",
-    "markerObserved": true,
+    "expectedFailureMarker": "WITNESS_ASSISTANCE_HISTORY",
+    "failedAssertionExcerpt": "   ✓ Plan 53 pure location > rejects bad admission and changed or unregistered contexts 1ms\n   × Plan 53 pure location > preserves incorrect, revision and assistance; withholds truth; rejects stale and foreign intents 9ms\n     → WITNESS_ASSISTANCE_HISTORY: expected [] to have a length of 1 but got +0\n   ✓ Plan 53 pure location > rejects malformed and cross-version replay 1ms\n\n Test Files  1 failed (1)\n      Tests  1 failed | 3 passed (4)\n   Start at  01:06:49\n   Duration  976ms (transform 238ms, setup 0ms, collect 580ms, tests 28ms, environment 0ms, prepare 139ms)\n",
     "restored": true
   },
   {

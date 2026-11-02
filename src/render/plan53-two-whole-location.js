@@ -54,7 +54,8 @@ export function createPlan53Renderer({ container, view, dispatch, progression, h
     feedback.tabIndex = -1; feedback.dataset.focusKey = 'feedback';
     if (model.evaluation.status === 'incomplete') feedback.textContent = 'Choose a position first.';
     if (model.evaluation.status === 'incorrect') feedback.textContent = 'Check this placement and try again.';
-    if (model.evaluation.status === 'accepted') feedback.textContent = 'Placement accepted.';
+    if (model.evaluation.status === 'accepted') feedback.textContent = "That's right.";
+    if (live && feedback.textContent) feedback.id = `plan53-guidance-${view}`;
     if (live && feedback.textContent) feedback.classList.add(model.evaluation.status === 'incorrect' ? 'house-retry' : 'house-attention');
     if (live) section.append(element('h2', 'plan53-prompt', 'Place this fraction on the number line.'));
     else section.append(feedback);
@@ -101,7 +102,7 @@ export function createPlan53Renderer({ container, view, dispatch, progression, h
       section.append(frame);
       function makeToken() {
         const token = element(live ? 'button' : 'span', 'plan53-token');
-        if (live) { token.type = 'button'; token.setAttribute('aria-label', `${model.sourceForm.numerator} over ${model.sourceForm.denominator}, ${selected === null ? 'unplaced' : 'placed'}`); }
+        if (live) { token.type = 'button'; if (feedback.id) token.setAttribute('aria-describedby', feedback.id); token.setAttribute('aria-label', `${model.sourceForm.numerator} over ${model.sourceForm.denominator}, ${selected === null ? 'unplaced' : 'placed'}`); }
         token.append(fraction());
         if (live) token.addEventListener('pointerdown', event => {
           if (!valid(token) || !event.isPrimary || event.button !== 0) return;
@@ -149,13 +150,19 @@ export function createPlan53Renderer({ container, view, dispatch, progression, h
       section.append(feedback);
       const controls = element('div', 'plan53-controls');
       if (view === 'visual') {
-        controls.append(button(selected === null ? 'Place at rightmost point' : 'Move left', () => place(selected === null ? last : Math.max(0, selected - 1)), 'left'));
-        controls.append(button(selected === null ? 'Place at leftmost point' : 'Move right', () => place(selected === null ? 0 : Math.min(last, selected + 1)), 'right'));
+        const left = button(selected === null ? 'Place at rightmost point' : 'Move left', () => place(selected === null ? last : Math.max(0, selected - 1)), 'left');
+        const right = button(selected === null ? 'Place at leftmost point' : 'Move right', () => place(selected === null ? 0 : Math.min(last, selected + 1)), 'right');
+        if (feedback.id) {
+          left.setAttribute('aria-describedby', feedback.id);
+          right.setAttribute('aria-describedby', feedback.id);
+        }
+        controls.append(left, right);
       } else {
         const label = element('label', '', 'Choose a position '); const select = element('select'); select.dataset.focusKey = 'position';
         const empty = element('option', '', 'Choose a position'); empty.value = ''; select.append(empty);
         for (const c of model.candidates) { const option = element('option', '', `${c.form.numerator} over ${c.form.denominator}`); option.value = c.id; select.append(option); }
         select.value = model.placement || '';
+        if (feedback.id) select.setAttribute('aria-describedby', feedback.id);
         select.addEventListener('change', () => { if (valid(select) && select.value) dispatch(intent('place-two-whole', { candidateId: select.value })); });
         label.append(select); controls.append(label);
       }

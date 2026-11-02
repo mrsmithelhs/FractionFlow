@@ -18,15 +18,15 @@ describe("Plan 53 pure location", () => {
     const expected = [["step-0", "0", "0"], ["step-3", "0", "3"], ["step-4", "1", "0"], ["step-5", "1", "1"], ["step-6", "1", "2"], ["step-3", "1", "1"], ["step-8", "2", "0"], ["step-10", "1", "2"]];
     PLAN53_RECORDS.forEach((r, i) => {
       const a = admitPlan53Record(r);
-      expect([a.correctPosition, a.verification.whole, a.verification.remainder.numerator]).toEqual(expected[i]);
+      expect([a.correctPosition, a.verification.whole, a.verification.remainder.numerator], "WITNESS_BOUNDARY_INDEX").toEqual(expected[i]);
       expect(a.candidates).toHaveLength(2 * Number(r.form.denominator) + 1);
       for (const support of [void 0, MEDIUM_SUPPORT_CONFIGURATION]) {
         let s = start(r.itemId, support);
-        expect(projectPlan53Location(s).verification).toBeNull();
+        expect(projectPlan53Location(s).verification, "WITNESS_PREMATURE_VERIFICATION").toBeNull();
         s = place(s, Number(r.form.numerator));
         expect(s.status).toBe("active");
         expect(projectPlan53Location(s).placement).toBe(expected[i][0]);
-        expect(projectPlan53Location(s).verification).toBeNull();
+        expect(projectPlan53Location(s).verification, "WITNESS_PREMATURE_VERIFICATION").toBeNull();
         s = check(s);
         expect(s.status).toBe("resolved");
         expect(projectPlan53Location(s).verification).toEqual(a.verification);
@@ -50,13 +50,13 @@ describe("Plan 53 pure location", () => {
     s = place(s, 5);
     s = check(s);
     expect(s.evaluation.status).toBe("incorrect");
-    expect(projectPlan53Location(s).verification).toBeNull();
+    expect(projectPlan53Location(s).verification, "WITNESS_PREMATURE_VERIFICATION").toBeNull();
     roundtrip(s);
     s = send(s, "request-two-whole-help", { helpKind: "placement" });
     const rev = s.placementRevision;
     s = place(s, 6);
     expect(s.evaluation.status).toBe("unchecked");
-    expect(s.assistanceHistory).toHaveLength(1);
+    expect(s.assistanceHistory, "WITNESS_ASSISTANCE_HISTORY").toHaveLength(1);
     expect(() => send(s, "check-two-whole", { revision: rev })).toThrow();
     expect(() => applyIntent(s, { type: "place-two-whole", context: { ...plan53IntentContext(s), itemId: "three-halves" }, candidateId: "step-3" })).toThrow();
     expect(() => place(s, 9)).toThrow();

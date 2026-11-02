@@ -19,7 +19,7 @@ try {
    await page.getByRole('button',{name:'Check',exact:true}).filter({visible:true}).click();
    await page.locator('.plan53-bar:visible').first().waitFor();
    const geometry=await page.evaluate(()=>{const a=document.querySelector('.plan53-axis');const bar=document.querySelector('.plan53-bar'); const mark=document.querySelector('.plan53-mark[data-candidate-id="step-10"]'); const x=a.getBoundingClientRect(), b=bar.getBoundingClientRect(); return {axisX:x.x,axisWidth:x.width,barX:b.x,barWidth:b.width,markCount:a.querySelectorAll('.plan53-mark').length,scrollWidth:document.documentElement.scrollWidth,viewport:innerWidth,step10:mark?.getBoundingClientRect().x, partialEnd:document.querySelectorAll('.plan53-bar')[1]?.querySelectorAll('.is-shaded')[1]?.getBoundingClientRect().right};});
-   assert.ok(Math.abs(geometry.axisWidth/2-geometry.barWidth)<1);assert.ok(Math.abs(geometry.axisX-geometry.barX)<1);assert.ok(geometry.scrollWidth<=geometry.viewport);
+   assert.ok(Math.abs(geometry.axisWidth/2-geometry.barWidth)<1, 'WITNESS_WHOLE_SCALE');assert.ok(Math.abs(geometry.axisX-geometry.barX)<1);assert.ok(geometry.scrollWidth<=geometry.viewport);
    if(n===10 && d===8) assert.ok(Math.abs((geometry.step10 + 1 - geometry.partialEnd)-geometry.axisWidth/2)<2, 'partial bar end must be one whole left of the line point');
    if (n === 10 && d === 8) await page.screenshot({path:`reports/development/plan-53-two-whole-number-line-location/evidence/accepted-eighths-${config.width}.png`,fullPage:true});
    results.push({config,index,n,d,geometry,spacing:box.width/(2*d)});
