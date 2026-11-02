@@ -86,3 +86,16 @@ At 360 px and 200% root text, eighth candidates remain 8.375 px apart. Synthetic
 snap/correction checks do not establish real-finger or assistive-technology usability;
 owner/device judgment remains open. No packet status, acceptance, push or deployment
 change was made. The three unrelated untracked Plan 39 receipts remain untouched.
+
+## Repair 01 — 2026-11-02
+
+Orchestration independently ran the full suite (607/607) and requested the bounded
+repair in `repair-01-brief.md`. Commit `5752d2c` restores house success copy, adds
+per-view response/guidance associations, strengthens mutation assertion evidence,
+and records the isolated historical matrix. The matrix passed 119/119 browser
+executions across 117 rows; focused Plan 53/43 tests passed 23/23 and the lifecycle
+and keyboard probes passed. Packet lint and diff check passed. Exact scope, the
+interrupted preliminary matrix launch, evidence paths and limitations appear in
+`repair-01-progress.md`. No additional consultation ran for this bounded repair.
+Await orchestration disposition and owner rendered review; no status, acceptance,
+push or deployment changes. The known eighths density/device uncertainty remains.
