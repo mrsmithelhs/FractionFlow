@@ -1,7 +1,8 @@
 ---
 id: plan-54
 title: Whole-Plus-Fraction Construction and Mixed-Form Connection Design
-status: delivered
+status: complete
+resolution: "Owner adopted the count-entry whole-plus-fraction task and six-record slice on 2026-11-02 after refined design review. Plan58 separately gates implementation; Phase4/OQ24 and deployment remain open."
 depends_on: [plan-48, plan-53, plan-31, plan-52]
 gate: "Approve bounded investigation scope before dossier work; owner adopts one task, first-slice boundaries and readiness disposition before any source packet. No automatic OQ-24 closure or Phase4 exit."
 summary: >-
