@@ -1,0 +1,115 @@
+npm notice run fraction-flow@0.0.1 test
+npm notice run vitest run --passWithNoTests
+
+ RUN  v3.2.7 C:/AI/FractionFlow
+
+ ✓ tests/interaction-plan35-reusable-addition.test.js (9 tests) 526ms
+   ✓ Plan 35 reusable addition recipe foundation > admits, completes, and v4-round-trips every registered task under high and medium support  353ms
+ ✓ tests/content-generator.test.js (10 tests) 838ms
+   ✓ Plan 03 structural selectors and generated contract > keeps the seven ordinary like-denominator cases broadly comparable  624ms
+ ✓ tests/interaction-episode.test.js (15 tests) 687ms
+   ✓ Plan 05 instructional episode > retains the full validated content record and uses explicit beats  355ms
+ ✓ tests/leakage-invariants.test.js (11 tests) 605ms
+   ✓ Scaffold-Leakage Invariants Suite & Failing-First Verifications (Plan 08) > Invariant 1 (Notice): does not reveal unit match before learner submission, and catches leak fail-first  321ms
+ ✓ tests/content-bulk-validation.test.js (2 tests) 996ms
+   ✓ Plan 03 bulk validation reporting > distinguishes sampled draws, unique instances, duplicates, and finite coverage  346ms
+   ✓ Plan 03 bulk validation reporting > enumerates every declared overlay set and surfaces profile-unsatisfiable sets  648ms
+ ✓ tests/interaction-provenance-replay.test.js (8 tests) 839ms
+   ✓ Plan 05 provenance and replay > round-trips complete high and medium support profiles through replay v1  388ms
+ ✓ tests/access-parity.test.js (13 tests) 785ms
+   ✓ Access Parity & Participation Floor (Plan 08) > Requirement 4: Per-Decision Focus Reachability, Native Control Types & Non-Drag Tap Parity > evidences focus reachability, native element type, and non-drag tap completion for Decision 1 (acknowledge-encounter) across visual and linear paths  462ms
+ ✓ tests/interaction-scene.test.js (26 tests) 982ms
+   ✓ Plan 06 semantic Scene Model > is deterministic, immutable, and carries no instructional-history arrays  340ms
+ ✓ tests/plan35-mounted-recipes.test.js (7 tests) 923ms
+ ✓ tests/plan43-shared-progression.test.js (19 tests) 1101ms
+ ✓ tests/plan38-rendered-subtraction.test.js (22 tests) 1492ms
+ ✓ tests/plan26-practice-set.test.js (10 tests) 1543ms
+   ✓ Plan 26 vetted addition practice set > focuses exhaustion only on final completion and keeps return available without a Next control  683ms
+ ✓ tests/app-shell.test.js (22 tests) 1597ms
+ ✓ tests/math-core.test.js (15 tests) 2921ms
+   ✓ generated exact-arithmetic invariants > holds for 10,000 deterministic fraction-pair cases  1587ms
+   ✓ generated exact-arithmetic invariants > holds for 5,000 deterministic mixed-number and composition cases  553ms
+   ✓ generated exact-arithmetic invariants > proves LCD minimality exhaustively for denominator pairs 1..20  553ms
+ ✓ tests/plan34-rendered-task-patterns.test.js (3 tests) 425ms
+ ✓ tests/replay-plan40-v6-compatibility.test.js (6 tests) 571ms
+ ✓ tests/interaction-plan45-symbolic-fraction-comparison.test.js (6 tests) 449ms
+   ✓ Plan 45 pure comparison episode contract > uses one immutable compare-to-resolve schedule for both existing support profiles  333ms
+ ✓ tests/plan18-rendered-nested-addition.test.js (1 test) 487ms
+   ✓ Plan 18 mounted nested addition > shows one side question, task-local help, local recovery, one conversion and honest original operand in both views  486ms
+ ✓ tests/content-seed.test.js (3 tests) 553ms
+   ✓ Plan 03 deterministic seed utility > reproduces a generated instance in a separate Node process  547ms
+ ✓ tests/render-foundation.test.js (7 tests) 562ms
+   ✓ Renderer Foundation & Shared Boundary (Plan 07) > condition D: resolveRenderableScene performs data-driven role switch from refusal continuation  313ms
+ ✓ tests/app-plan40-subtraction-recipes.test.js (6 tests) 459ms
+ ✓ tests/plan32-compact-authored-problem-batch.test.js (6 tests) 726ms
+   ✓ Plan 32 compact authored addition batch > materializes each exact eligible route with the approved policies and safe unique forms  300ms
+   ✓ Plan 32 compact authored addition batch > completes every item/path through all conditions and support profiles, including replay reconstruction  400ms
+ ✓ tests/plan20-like-denominator-addition.test.js (7 tests) 631ms
+   ✓ Plan 20 like-denominator addition > accepts the canonical 5/7 result and keeps legacy state snapshots free of Plan 20 fields  433ms
+ ✓ tests/routes-plan40-subtraction-recipes.test.js (10 tests) 575ms
+   ✓ Plan 40 Reachable Behavior Route Contract & Subtraction Recipes Matrix > asserts fresh first-item identity and cleared state on re-entry in subtraction set helper  554ms
+ ✓ tests/linear-context.test.js (6 tests) 580ms
+   ✓ linear current-fraction context > shows only current stacked forms in ordinary context and hides their visual pieces from assistive technology  387ms
+ ✓ tests/entry-page.test.js (8 tests) 570ms
+ ✓ tests/plan25-task-help.test.js (5 tests) 586ms
+   ✓ Plan 25 requested equivalent-fraction task help > registers revision 3 as fresh for both existing definitions and rejects helper intents on revision 2  404ms
+ ✓ tests/premise-check.test.js (4 tests) 443ms
+   ✓ Premise Check (CM-01-P, Repair 05 Item 1) > failure mode 1: answering reassuringly ("yes") on a false premise case produces recovery rather than completion  387ms
+ ✓ tests/render-strings.test.js (12 tests) 304ms
+ ✓ tests/app-plan39-number-line.test.js (8 tests) 462ms
+ ✓ tests/content-curated.test.js (6 tests) 389ms
+   ✓ Plan 03 curated synthetic content > validates every curated fixture through the common generated/curated pipeline  352ms
+ ✓ tests/content-eligibility.test.js (5 tests) 384ms
+   ✓ Plan 05 representation eligibility > records eligible canonical and authored alternate paths without deferred verdicts  353ms
+ ✓ tests/interaction-crossing-addition.test.js (6 tests) 294ms
+ ✓ tests/render-plan40-subtraction-recipes.test.js (9 tests) 394ms
+ ✓ tests/plan39-bar-to-line-bridge.test.js (8 tests) 384ms
+ ✓ tests/plan19-shared-factor-addition.test.js (7 tests) 204ms
+ ✓ tests/app-plan45-symbolic-fraction-comparison.test.js (7 tests) 224ms
+ ✓ tests/app-crossing-addition.test.js (2 tests) 361ms
+ ✓ tests/interaction-plan40-subtraction-recipes.test.js (6 tests) 198ms
+ ✓ tests/route-contract.test.js (29 tests) 200ms
+ ✓ tests/interaction-plan18-nested-addition.test.js (4 tests) 360ms
+ ✓ tests/interaction-plan38-subtraction.test.js (7 tests) 343ms
+ ✓ tests/interaction-plan34-task-patterns.test.js (9 tests) 254ms
+ ✓ tests/content-plan40-subtraction-recipes.test.js (11 tests) 336ms
+ ✓ tests/app-plan49-comparison-construction.test.js (2 tests) 141ms
+ ✓ tests/interaction-plan50-collection.test.js (10 tests) 126ms
+ ✓ tests/content-crossing-addition.test.js (3 tests) 67ms
+ ✓ tests/render-purity.test.js (11 tests) 43ms
+ ✓ tests/app-plan18-practice-set.test.js (2 tests) 66ms
+ ✓ tests/plan49-falsification-seeds.test.js (3 tests) 88ms
+ ✓ tests/app-plan51-distance.test.js (4 tests) 144ms
+ ✓ tests/app-plan45-falsification-seeds.test.js (4 tests) 188ms
+ ✓ tests/plan38-content-subtraction.test.js (7 tests) 24ms
+ ✓ tests/interaction-plan51-distance.test.js (5 tests) 39ms
+ ✓ tests/interaction-plan49-comparison-construction.test.js (5 tests) 36ms
+ ✓ tests/render-recovery.test.js (16 tests) 29ms
+ ✓ tests/operate-response-region.test.js (8 tests) 15ms
+ ✓ tests/math-step-validation.test.js (30 tests) 17ms
+ ✓ tests/content-plan45-symbolic-fraction-comparison.test.js (3 tests) 16ms
+ ✓ tests/math-golden-cases.test.js (21 tests) 14ms
+ ✓ tests/math-classification.test.js (28 tests) 14ms
+ ✓ tests/support-configuration.test.js (2 tests) 5ms
+ ✓ tests/interaction-plan49-public-replay.test.js (3 tests) 22ms
+ ✓ tests/subtraction-prototype-model.test.js (2 tests) 5ms
+ ✓ tests/plan34-full-addition-task-patterns.test.js (4 tests) 13ms
+ ✓ tests/path-closure.test.js (5 tests) 11ms
+ ✓ tests/about-page.test.js (2 tests) 5ms
+ ✓ tests/render-crossing-addition.test.js (3 tests) 10ms
+ ✓ tests/dev-console.test.js (17 tests) 12204ms
+   ✓ local development console > Windows cmd wrapper launches the real console inventory script  2474ms
+   ✓ local development console > real learner/prototype helpers serve on isolated ports, exit-clean, and leave an independent server alive  8418ms
+   ✓ local development console > real startup cancellation awaits helper close and child exit  464ms
+   ✓ local development console > parent IPC disconnect cooperatively closes a ready server helper  428ms
+
+ Test Files  69 passed (69)
+      Tests  603 passed (603)
+   Start at  22:36:57
+   Duration  13.40s (transform 2.75s, setup 0ms, collect 44.22s, tests 41.88s, environment 19ms, prepare 25.08s)
+
+npm notice
+npm notice New minor version of npm available! 12.1.0 -> 12.2.1
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.1
+npm notice To update run: npm install -g npm@12.2.1
+npm notice

@@ -33,7 +33,7 @@ export function admitPlan51Record(record) {
   const distance = subtractFractions(order > 0 ? forms[0] : forms[1], order > 0 ? forms[1] : forms[0]);
   return deepFreeze({ relation: order < 0 ? '<' : '>', distance,
     range: { start: Number(order < 0 ? forms[0].numerator : forms[1].numerator),
-      end: Number(order > 0 ? forms[0].numerator : forms[1].numerator), denominator: Number(forms[0].denominator) } });
+      end: Number(order > 0 ? forms[0].numerator : forms[1].numerator), denominator: Number(forms[0].denominator), count: Number(distance.numerator) } });
 }
 
 export function resolvePlan51Context(itemId) {

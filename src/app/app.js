@@ -1,7 +1,11 @@
+import { resolvePlan51Context } from '../content/plan51-distance-task.js';
+import { PLAN51_CONDITION, plan51IntentContext } from '../interaction/plan51-distance-episode.js';
+import { renderPlan51Distance } from '../render/plan51-distance.js';
 import { resolvePlan50Context } from '../content/plan50-number-line-collection-task.js';
 import { PLAN50_CONDITION } from '../interaction/plan50-number-line-collection-episode.js';
 import { createNumberLineCollectionRenderer } from '../render/number-line-collection.js';
 const isCollection = state => state?.episodeDefinition?.id === 'phase-4-number-line-collection';
+const isDistance = state => state?.episodeDefinition?.id === 'phase-4-fraction-distance';
 import { resolvePlan49Context } from '../interaction/plan49-comparison-construction.js';
 import { buildCuratedProblem } from '../content/generator.js';
 import { resolveAuthoredContent, resolveCuratedFixture, resolvePlan37BarToLineBridgeInstance } from '../content/authored-content-catalog.js';
@@ -64,7 +68,7 @@ const APP_RENDER_STRINGS = Object.freeze({
 
 function canonicalInstance(item, conditions = REGISTERED_CONDITIONS, practiceType = null) {
   const definition = getEpisodeDefinition(item.episodeDefinitionId, item.episodeDefinitionRevision);
-  if (isPlan45ComparisonDefinition(definition) || definition.id === 'phase-4-number-line-collection') return null;
+  if (isPlan45ComparisonDefinition(definition) || ['phase-4-number-line-collection', 'phase-4-fraction-distance'].includes(definition.id)) return null;
   if (isPlan37BarToLineBridgeTaskDefinition(definition)) {
     const bridge = resolvePlan37BarToLineBridgeInstance(item.id, item.authoringRevision);
     if (!bridge || bridge.provenance.fixtureId !== item.fixtureId) throw new Error(`practice bridge item is not registered: ${item.id}`);
@@ -249,7 +253,8 @@ function presentationModeFor({ override, motionQuery }) {
 }
 
 function createInitialState(instance, practiceType, condition, supportLevel, episodeDefinition = practiceType.episodeDefinition, item = null) {
-  const taskContext = episodeDefinition.id === 'phase-4-number-line-collection' && item ? resolvePlan50Context(item.id)
+  const taskContext = episodeDefinition.id === 'phase-4-fraction-distance' && item ? resolvePlan51Context(item.id)
+    : episodeDefinition.id === 'phase-4-number-line-collection' && item ? resolvePlan50Context(item.id)
     : isPlan45ComparisonDefinition(episodeDefinition) && item
     ? episodeDefinition.revision === '2' ? resolvePlan49Context(item.id) : resolvePlan45ComparisonContext(item.id, {
       practiceSetId: practiceType.setId,
@@ -282,7 +287,7 @@ function createInitialState(instance, practiceType, condition, supportLevel, epi
     : item?.episodeDefinitionId === PLAN18_NESTED_DEFINITION_ID
       ? resolvePlan18TaskContext(instance, { practiceSetId: practiceType.setId, practiceSetRevision: practiceType.setRevision })
       : null;
-  if (taskContext && episodeDefinition.id !== 'phase-4-number-line-collection' && (taskContext.itemId !== item.id
+  if (taskContext && !['phase-4-number-line-collection', 'phase-4-fraction-distance'].includes(episodeDefinition.id) && (taskContext.itemId !== item.id
     || taskContext.practiceSetId !== practiceType.setId
     || taskContext.practiceSetRevision !== practiceType.setRevision)) {
     throw new Error('practice item does not match its validated task association');
@@ -290,7 +295,7 @@ function createInitialState(instance, practiceType, condition, supportLevel, epi
   return createEpisode({
     instance,
     episodeDefinition,
-    activeCondition: episodeDefinition.id === 'phase-4-number-line-collection' ? PLAN50_CONDITION : isPlan45ComparisonDefinition(episodeDefinition)
+    activeCondition: episodeDefinition.id === 'phase-4-fraction-distance' ? PLAN51_CONDITION : episodeDefinition.id === 'phase-4-number-line-collection' ? PLAN50_CONDITION : isPlan45ComparisonDefinition(episodeDefinition)
       ? PLAN45_STATIC_COMPARISON_ACTIVE_CONDITION
       : condition.activeCondition,
     support: supportLevel.configuration,
@@ -435,6 +440,11 @@ export function createFractionFlowApp({
   let comparisonDraft = '';
   let comparisonConstructionDrafts = {};
   let comparisonHelpOpen = false;
+  let distanceDraft = { relation: '', numerator: '', denominator: '' };
+  let distanceHelpOpen = false;
+  let distanceRefusal = '';
+  let distanceFocus = null;
+  let distanceRenderGeneration = 0;
   let visualCollectionRenderer = null;
   let linearCollectionRenderer = null;
   let visualComparisonRenderer = null;
@@ -708,7 +718,7 @@ export function createFractionFlowApp({
         if (isCollection(state)) {visualCollectionRenderer?.cancelGesture();linearCollectionRenderer?.cancelGesture();}
         visualView = !visualView;
         isReplaying = false;
-        if (isPlan45ComparisonEpisode(state) || isCollection(state)) render();
+        if (isPlan45ComparisonEpisode(state) || isCollection(state) || isDistance(state)) render();
         updateViewVisibility();
         (visualView ? visualNumberLineRenderer : linearNumberLineRenderer)?.refreshGeometry();
         restoreDecideDraft();
@@ -729,6 +739,10 @@ export function createFractionFlowApp({
             .find((element) => element.getAttribute('data-plan45-focus-key') === comparisonFocusKey);
           if (matching?.isConnected) matching.focus();
           else comparisonResponseHandle?.focusPrimary();
+        }
+        if (isDistance(state) && distanceFocus) {
+          const host = visualView ? visualHost : linearHost;
+          host?.querySelector(`[data-plan51-focus="${distanceFocus}"]`)?.focus();
         }
       },
     });
@@ -885,6 +899,10 @@ export function createFractionFlowApp({
     comparisonDraft = '';
     comparisonConstructionDrafts = {};
     comparisonHelpOpen = false;
+    distanceDraft = { relation: '', numerator: '', denominator: '' };
+    distanceHelpOpen = false;
+    distanceRefusal = '';
+    distanceFocus = null;
     comparisonResponseHandle = null;
     visualNumberLineRenderer?.clearPreview();
     linearNumberLineRenderer?.clearPreview();
@@ -985,7 +1003,7 @@ export function createFractionFlowApp({
   }
 
   function computeProgressionDescriptor() {
-    const comparisonEpisode = isPlan45ComparisonEpisode(state) || isCollection(state);
+    const comparisonEpisode = isPlan45ComparisonEpisode(state) || isCollection(state) || isDistance(state);
     if ((navigationMode !== 'direct' && !comparisonEpisode) || !state || !selectedPracticeType || activePracticeItemIndex === null) {
       return {
         phase: 'idle',
@@ -1102,7 +1120,7 @@ export function createFractionFlowApp({
   }
 
   function advanceToNextItem(capturedGeneration) {
-    if (navigationMode === 'legacy-acknowledged' && !isPlan45ComparisonEpisode(state) && !isCollection(state)) {
+    if (navigationMode === 'legacy-acknowledged' && !isPlan45ComparisonEpisode(state) && !isCollection(state) && !isDistance(state)) {
       if (state?.status !== 'resolved' || activePracticeItemIndex === null || !selectedPracticeType) return;
       const nextIndex = activePracticeItemIndex + 1;
       if (nextIndex >= selectedPracticeType.items.length) return;
@@ -1235,10 +1253,10 @@ export function createFractionFlowApp({
   }
 
   function updateConditionMetadata() {
-    const applied = (isPlan45ComparisonEpisode(state) || isCollection(state)) ? state.activeCondition : selectedCondition.activeCondition;
+    const applied = (isPlan45ComparisonEpisode(state) || isCollection(state) || isDistance(state)) ? state.activeCondition : selectedCondition.activeCondition;
     const applicability = displayMenu.querySelector('#fractionflow-condition-applicability');
     if (applicability) {
-      applicability.textContent = isCollection(state) ? 'This collection uses a fixed display; these selections apply to other practice goals.' : isPlan45ComparisonEpisode(state)
+      applicability.textContent = isDistance(state) ? 'This distance task uses a fixed display; these selections apply to other practice goals.' : isCollection(state) ? 'This collection uses a fixed display; these selections apply to other practice goals.' : isPlan45ComparisonEpisode(state)
         ? 'Compare fractions uses a fixed display; these selections apply to other practice goals.'
         : 'Choose how display conditions apply to other practice goals.';
     }
@@ -1276,7 +1294,7 @@ export function createFractionFlowApp({
       && state.taskContext?.patternId === PLAN35_RECIPE_IDS.identify;
     const isPlan36 = isPlan36SubtractionDefinition(state.episodeDefinition);
     const isPlan40 = isPlan40SubtractionRecipeDefinition(state.episodeDefinition);
-    const isPlan45 = isPlan45ComparisonEpisode(state) || isCollection(state);
+    const isPlan45 = isPlan45ComparisonEpisode(state) || isCollection(state) || isDistance(state);
     const isPlan40Identify = isPlan40 && isPlan40IdentifyRecipe(state.taskContext);
     helpButton.disabled = resolved;
     helpButton.hidden = isPlan45;
@@ -1479,7 +1497,7 @@ export function createFractionFlowApp({
 
   function updateHelpPlacement(scene = currentScene) {
     if (!helpButton || !state) return;
-    if (isPlan45ComparisonEpisode(state) || isCollection(state)) {
+    if (isPlan45ComparisonEpisode(state) || isCollection(state) || isDistance(state)) {
       helpButton.hidden = true;
       return;
     }
@@ -1658,6 +1676,50 @@ export function createFractionFlowApp({
       isReplaying,
     });
     currentScene = scene;
+
+    if (isDistance(state)) {
+      visualRenderer?.destroy(); linearRenderer?.destroy(); visualNumberLineRenderer?.destroy(); linearNumberLineRenderer?.destroy();
+      visualComparisonRenderer?.destroy(); linearComparisonRenderer?.destroy(); visualCollectionRenderer?.destroy(); linearCollectionRenderer?.destroy();
+      visualRenderer = null; linearRenderer = null; visualNumberLineRenderer = null; linearNumberLineRenderer = null;
+      visualComparisonRenderer = null; linearComparisonRenderer = null; visualCollectionRenderer = null; linearCollectionRenderer = null;
+      const generation = currentEpisodeGeneration;
+      const stage = state.beat;
+      const renderGeneration = ++distanceRenderGeneration;
+      const active = () => generation === currentEpisodeGeneration && renderGeneration === distanceRenderGeneration && isDistance(state) && state.beat === stage;
+      const action = proposed => {
+        if (!active() || !proposed) return;
+        try {
+          const priorStage = state.beat;
+          state = applyIntent(state, { ...proposed, context: plan51IntentContext(state) });
+          distanceRefusal = '';
+          if (state.beat !== priorStage) distanceHelpOpen = false;
+        } catch {
+          distanceRefusal = proposed.type === 'submit-distance-fraction'
+            ? 'Enter a numerator and a positive denominator using whole numbers of up to 18 digits.'
+            : 'Choose a relation before checking.';
+        }
+        render();
+        const host = visualView ? visualHost : linearHost;
+        const target = state.beat === 'resolve' ? host.querySelector('.plan51-next')
+          : proposed.type.startsWith('request-') ? host.querySelector('.plan45-help-summary')
+          : state.beat === 'distance' ? host.querySelector('[data-plan51-focus="numerator"]') : host.querySelector('.plan51-response input');
+        target?.focus();
+      };
+      for (const [host, view] of [[visualHost, 'visual'], [linearHost, 'linear']]) {
+        renderPlan51Distance(host, scene, {
+          view, draft: distanceDraft, refusal: distanceRefusal, helpOpen: distanceHelpOpen,
+          setDraft: (key, value) => { if (active()) distanceDraft[key] = value; },
+          setFocus: key => { if (active()) distanceFocus = key; },
+          setHelpOpen: value => { if (active()) distanceHelpOpen = value; },
+          action, progression: () => {
+            const descriptor = computeProgressionDescriptor();
+            return { ...descriptor, onAction: descriptor.onAction ? () => { if (active()) descriptor.onAction(); } : null };
+          },
+        });
+      }
+      updateConditionMetadata(); updateSupportMetadata(); updateSupportControls(); updateNavigation(); updateViewVisibility(); updateHelpPlacement(scene);
+      return;
+    }
 
     if (isCollection(state)) {
       visualRenderer?.destroy(); linearRenderer?.destroy(); visualNumberLineRenderer?.destroy(); linearNumberLineRenderer?.destroy(); visualComparisonRenderer?.destroy(); linearComparisonRenderer?.destroy();

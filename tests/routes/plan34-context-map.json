@@ -114,7 +114,8 @@
     "ROUTE-PLAN45-TOUCH-1366X768": "production-direct-plan45",
     "ROUTE-PLAN45-CHROMEBOOK-SCALED-1093X614": "production-direct-plan45",
     "ROUTE-PLAN45-TEXT-SCALE-RESIZE-200PCT": "production-direct-plan45",
-    "ROUTE-PLAN45-FINAL-EXHAUSTION-RETURN": "production-direct-plan45"
+    "ROUTE-PLAN45-FINAL-EXHAUSTION-RETURN": "production-direct-plan45",
+    "ROUTE-PLAN51-VISUAL-DISTANCE": "production-direct-plan51"
   },
   "plan40-unlike-subtraction": {
     "practiceSetId": "unlike-subtraction-vetted-set",

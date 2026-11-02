@@ -1,3 +1,5 @@
+import { PLAN51_DISTANCE_RECORDS } from '../content/data/plan51-distance-records.js';
+import { PLAN51_DISTANCE_EPISODE_DEFINITION } from '../interaction/episode-definition.js';
 import { PLAN50_RECORDS } from '../content/data/plan50-number-line-collection-records.js';
 import { PLAN50_COLLECTION_EPISODE_DEFINITION } from '../interaction/episode-definition.js';
 import {
@@ -320,11 +322,18 @@ export const PLAN45_SYMBOLIC_COMPARISON_PRACTICE_TYPE = deepFreeze({
 
 export const PLAN50_COLLECTION_PRACTICE_TYPE = deepFreeze({id:'number-line-collection',label:'Place fractions together on a number line',setId:'number-line-collection',setRevision:'1',items:PLAN50_RECORDS.map(r=>({id:r.itemId,episodeDefinitionId:PLAN50_COLLECTION_EPISODE_DEFINITION.id,episodeDefinitionRevision:'1'})),episodeDefinition:PLAN50_COLLECTION_EPISODE_DEFINITION});
 
+export const PLAN51_DISTANCE_PRACTICE_TYPE = deepFreeze({
+  id: 'fraction-distance', label: 'Find the distance between fractions', setId: 'fraction-distance', setRevision: '1',
+  items: PLAN51_DISTANCE_RECORDS.map(record => ({ id: record.itemId, episodeDefinitionId: PLAN51_DISTANCE_EPISODE_DEFINITION.id, episodeDefinitionRevision: '1' })),
+  episodeDefinition: PLAN51_DISTANCE_EPISODE_DEFINITION,
+});
+
 export const PRACTICE_TYPES = deepFreeze([
   ...PLAN40_PRACTICE_TYPES_V9,
   PLAN39_BAR_TO_LINE_PRACTICE_TYPE,
   PLAN45_SYMBOLIC_COMPARISON_PRACTICE_TYPE,
   PLAN50_COLLECTION_PRACTICE_TYPE,
+  PLAN51_DISTANCE_PRACTICE_TYPE,
 ]);
 
 export function getPracticeType(id) {

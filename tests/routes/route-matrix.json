@@ -16880,6 +16880,28 @@
         { "type": "notHasSelector", "target": ".plan45-model, .plan45-linear-model, .plan45-recovery" },
         { "type": "hasSelector", "target": ".app-next-button[hidden]" }
       ] }
+    },
+    {
+      "id": "ROUTE-PLAN51-VISUAL-DISTANCE",
+      "behavior": "Establish the original comparison and submit an equivalent unsigned distance, then inspect the accepted form and direct progression.",
+      "configuration": "plan51-static-distance",
+      "startingSurface": "mounted-app-entry",
+      "viewport": { "width": 360, "height": 740 },
+      "motionMode": "reduced-motion",
+      "witness": "browser",
+      "actions": [
+        { "step": 1, "method": "click", "target": "[data-practice-type=\"fraction-distance\"]", "description": "Start registered distance set" },
+        { "step": 2, "method": "click", "target": ".app-visual-view input[value=\"<\"]", "description": "Choose less than" },
+        { "step": 3, "method": "click", "target": ".app-visual-view .plan51-response button[type=\"submit\"]", "description": "Establish comparison" },
+        { "step": 4, "method": "fill", "target": ".app-visual-view [data-plan51-focus=\"numerator\"]", "value": "1", "description": "Enter equivalent numerator" },
+        { "step": 5, "method": "fill", "target": ".app-visual-view [data-plan51-focus=\"denominator\"]", "value": "2", "description": "Enter equivalent denominator" },
+        { "step": 6, "method": "click", "target": ".app-visual-view .plan51-response button[type=\"submit\"]", "description": "Accept distance" }
+      ],
+      "expect": { "capture": { "target": ".app-episode", "type": "innerHTML" }, "assertions": [
+        { "type": "hasSelector", "target": ".app-visual-view .plan51-result" },
+        { "type": "hasSelector", "target": ".app-visual-view .plan51-next" },
+        { "type": "hasSelector", "target": ".app-episode[data-current-item-id=\"distance-01\"]" }
+      ] }
     }
   ]
 }

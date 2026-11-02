@@ -329,6 +329,9 @@ function resolveRouteContext(route, contextMap) {
   if (context === 'production-direct-plan45') {
     return { id: context, startingSurface: 'mounted-app-entry' };
   }
+  if (context === 'production-direct-plan51') {
+    return { id: context, startingSurface: 'mounted-app-entry' };
+  }
   return { id: route.startingSurface.startsWith('subtraction-') ? 'prototype' : null, startingSurface: route.startingSurface };
 }
 
@@ -452,6 +455,7 @@ async function validateMatrixIntegrity(matrix, registeredConditions, suppliedCon
       'production-default-v8': 0,
       'production-direct-plan43': 0,
       'production-direct-plan45': 0,
+      'production-direct-plan51': 0,
     };
     for (const route of matrix.routes) {
       const context = routeContexts[route.id];
@@ -484,6 +488,9 @@ async function validateMatrixIntegrity(matrix, registeredConditions, suppliedCon
       }
       if (route.id.startsWith('ROUTE-PLAN45-') && context !== 'production-direct-plan45') {
         errors.push(`Current Plan 45 route "${route.id}" must exercise production-direct-plan45.`);
+      }
+      if (route.id.startsWith('ROUTE-PLAN51-') && context !== 'production-direct-plan51') {
+        errors.push(`Current Plan 51 route "${route.id}" must exercise production-direct-plan51.`);
       }
     }
     for (const routeId of idsInMap) {

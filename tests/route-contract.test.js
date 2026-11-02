@@ -135,7 +135,7 @@ describe('Plan 14 Reachable Behavior Route Contract & Matrix Schema', () => {
   });
 
   it('pins the original 91 route objects and migrates only Plan 39 context mappings to v1 history', async () => {
-    expect(matrix.routes).toHaveLength(116);
+    expect(matrix.routes).toHaveLength(117);
     expect(createHash('sha256').update(JSON.stringify(matrix.routes.slice(0, 91))).digest('hex'))
       .toBe('eee8367c25fdaa88612b516a05b6989a919ae10b8e822a6339bea9b4c3c631de');
     expect(createHash('sha256').update(JSON.stringify(matrix.routes.slice(0, 98))).digest('hex'))
@@ -150,11 +150,12 @@ describe('Plan 14 Reachable Behavior Route Contract & Matrix Schema', () => {
       if (key.startsWith('ROUTE-PLAN45-')) {
         delete contextsBeforeRepair03[key];
       }
+      if (key.startsWith('ROUTE-PLAN51-')) delete contextsBeforeRepair03[key];
     }
     expect(createHash('sha256').update(JSON.stringify(contextsBeforeRepair03)).digest('hex'))
       .toBe('c2c83aee5eea3436a66deb4978ad8891fadb694fa4c2f48c212e48db9dee0c00');
     const nonPlan39 = Object.fromEntries(Object.entries(contexts).filter(([id]) => (
-      !id.startsWith('ROUTE-PLAN39-') && !id.startsWith('ROUTE-PLAN43-') && !id.startsWith('ROUTE-PLAN45-')
+      !id.startsWith('ROUTE-PLAN39-') && !id.startsWith('ROUTE-PLAN43-') && !id.startsWith('ROUTE-PLAN45-') && !id.startsWith('ROUTE-PLAN51-')
     )));
     expect(Object.keys(nonPlan39)).toHaveLength(79);
     expect(createHash('sha256').update(JSON.stringify(nonPlan39)).digest('hex'))
@@ -243,7 +244,7 @@ describe('Plan 14 Reachable Behavior Route Contract & Matrix Schema', () => {
       routeId: 'ROUTE-PLAN39-REPAIR03-ANCHOR-RING',
       failure: 'Plan39 Repair03 shared anchor/highlight assertion failed',
     });
-    expect(expandRouteExecutions(matrix.routes)).toHaveLength(118);
+    expect(expandRouteExecutions(matrix.routes)).toHaveLength(119);
   });
 
   it('enforces Rule 1: fails if a registered condition has no declared route witness', async () => {
@@ -474,7 +475,7 @@ describe('Plan 14 Reachable Behavior Route Contract & Matrix Schema', () => {
 
   it('executes each prototype route in both motion modes and brings in its filtered negative control', () => {
     const executions = expandRouteExecutions(matrix.routes);
-    expect(executions).toHaveLength(118);
+    expect(executions).toHaveLength(119);
     expect(executions.filter((execution) => (
       execution.route.configuration === 'plan15-subtraction-prototype'
     ))).toHaveLength(4);

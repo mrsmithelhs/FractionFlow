@@ -19,7 +19,7 @@ export function projectPlan51Distance(state) {
     acceptedRelation: state.established.comparison,
     acceptedDistance: state.established.distance,
     modelChoice: state.beat === 'compare' ? state.modelChoice : null,
-    comparisonHelp: state.beat === 'compare' ? state.assistanceHistory.filter(event => event.kind === 'comparison-help').map(event => event.helpKind) : [],
+    comparisonHelp: state.beat === 'compare' ? ([...state.assistanceHistory].reverse().find(event => event.kind === 'comparison-help')?.helpKind ?? null) : null,
     distanceCue: state.beat === 'distance' && (state.support.label === 'high support' || asked('distance-help', 'cue')),
     pairedAmounts: state.beat === 'resolve' || (state.beat === 'distance' && asked('distance-help', 'both-amounts')),
     distanceRange: null,

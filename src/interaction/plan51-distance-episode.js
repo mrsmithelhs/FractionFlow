@@ -74,6 +74,9 @@ export function applyPlan51Intent(state, intent) {
       : { ...state, feedback: 'incorrect-distance', retryHistory: [...state.retryHistory, { stage: 'distance', eventRevision }] };
   } else fail('unexpected or out-of-stage action');
   if (verdict) next = { ...next, responseProvenance: [...state.responseProvenance,
-    { action: structuredClone(intent), verdict, eventRevision, assistanceHistory: structuredClone(state.assistanceHistory) }] };
+    { action: structuredClone(intent), stage: state.beat, promptId: state.episodeDefinition.promptIdentities[state.beat], verdict,
+      accepted: verdict === 'correct' ? (state.beat === 'compare' ? intent.proposed : { numerator: intent.numerator, denominator: intent.denominator }) : null,
+      eventRevision, assistanceHistory: structuredClone(state.assistanceHistory),
+      support: state.support, suppliedDistanceCue: state.beat === 'distance' && state.support.label === 'high support' }] };
   return deepFreeze({ ...next, revision: eventRevision, intentHistory: [...state.intentHistory, structuredClone(intent)] });
 }

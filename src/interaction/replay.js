@@ -1,3 +1,4 @@
+import { resolvePlan51Context, validatePlan51Context } from '../content/plan51-distance-task.js';
 import { resolvePlan50Context, validatePlan50Context } from '../content/plan50-number-line-collection-task.js';
 import { validatePlan49Context } from './plan49-comparison-construction.js';
 import { buildCuratedProblem, generateProblem } from '../content/generator.js';
@@ -30,6 +31,12 @@ export const REPLAY_V8_SCHEMA_VERSION = 'fractionflow.episode-replay/v8';
 export const REPLAY_V9_SCHEMA_VERSION = 'fractionflow.episode-replay/v9';
 export const REPLAY_V10_SCHEMA_VERSION = 'fractionflow.episode-replay/v10';
 export const REPLAY_V11_SCHEMA_VERSION = 'fractionflow.episode-replay/v11';
+export const REPLAY_V12_SCHEMA_VERSION = 'fractionflow.episode-replay/v12';
+
+function plan51Identity(c) {
+  return { schemaVersion: 'fractionflow.distance-content-identity/v1', id: c.itemId, source: 'curated',
+    reconstruction: { kind: 'plan51-fraction-distance', setId: c.setId, setRevision: c.setRevision, itemId: c.itemId, itemRevision: c.itemRevision } };
+}
 
 function plan50Identity(c) { return { schemaVersion:'fractionflow.collection-content-identity/v1', id:c.itemId, source:'curated', reconstruction:{kind:'plan50-number-line-collection',setId:c.setId,setRevision:c.setRevision,itemId:c.itemId,itemRevision:c.itemRevision} }; }
 
@@ -453,6 +460,14 @@ export function createReplayEnvelope(state) {
     throw new TypeError('state must be a Plan 05 episode state');
   }
   const isComparison = isPlan45ComparisonEpisode(state);
+  if (state.episodeDefinition?.id === 'phase-4-fraction-distance' && state.episodeDefinition.revision === '1') {
+    const c = validatePlan51Context(state.taskContext);
+    const envelope = { schemaVersion: REPLAY_V12_SCHEMA_VERSION, contentIdentity: plan51Identity(c),
+      episodeDefinition: { id: state.episodeDefinition.id, revision: state.episodeDefinition.revision },
+      support: state.support, activeCondition: state.activeCondition, learnerIntents: state.intentHistory, taskContext: c };
+    assertJsonSafe(envelope, 'replay envelope');
+    return deepFreeze(envelope);
+  }
   if (state.episodeDefinition?.id === 'phase-4-number-line-collection' && state.episodeDefinition.revision === '1') {
     const c = validatePlan50Context(state.taskContext);
     const envelope = { schemaVersion:REPLAY_V11_SCHEMA_VERSION, contentIdentity:plan50Identity(c), episodeDefinition:{id:state.episodeDefinition.id,revision:state.episodeDefinition.revision}, support:state.support, activeCondition:state.activeCondition, learnerIntents:state.intentHistory, taskContext:c };
@@ -494,6 +509,18 @@ export function createReplayEnvelope(state) {
 export function replayEpisode(envelope) {
   assertJsonSafe(envelope, 'replay envelope');
   if (!envelope || typeof envelope !== 'object') throw new TypeError('replay envelope must be an object');
+  if (envelope.schemaVersion === REPLAY_V12_SCHEMA_VERSION) {
+    assertExactKeys(envelope, ['schemaVersion', 'contentIdentity', 'episodeDefinition', 'support', 'activeCondition', 'learnerIntents', 'taskContext'], 'replay v12');
+    assertExactKeys(envelope.episodeDefinition, ['id', 'revision'], 'replay v12 definition');
+    if (envelope.episodeDefinition.id !== 'phase-4-fraction-distance' || envelope.episodeDefinition.revision !== '1') throw new TypeError('invalid v12 definition');
+    const c = validatePlan51Context(envelope.taskContext);
+    assertExactKeys(envelope.contentIdentity, ['schemaVersion', 'id', 'source', 'reconstruction'], 'replay v12 identity');
+    assertExactKeys(envelope.contentIdentity.reconstruction, ['kind', 'setId', 'setRevision', 'itemId', 'itemRevision'], 'replay v12 reconstruction');
+    if (!sameJson(plan51Identity(c), envelope.contentIdentity) || !Array.isArray(envelope.learnerIntents)) throw new TypeError('invalid v12 identity or intents');
+    let state = createEpisode({ episodeDefinition: getEpisodeDefinition('phase-4-fraction-distance', '1'), taskContext: resolvePlan51Context(c.itemId), support: envelope.support, activeCondition: envelope.activeCondition });
+    for (const intent of envelope.learnerIntents) state = applyIntent(state, intent);
+    return state;
+  }
   if (envelope.schemaVersion === REPLAY_V11_SCHEMA_VERSION) {
     assertExactKeys(envelope,['schemaVersion','contentIdentity','episodeDefinition','support','activeCondition','learnerIntents','taskContext'],'replay v11');
     assertExactKeys(envelope.episodeDefinition,['id','revision'],'replay v11 definition');

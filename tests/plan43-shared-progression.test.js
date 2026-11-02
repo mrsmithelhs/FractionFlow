@@ -36,10 +36,10 @@ describe('Plan 43 — Shared Episode Completion and Progression Suite', () => {
       const barToLine = PRACTICE_TYPES.find((pt) => pt.id === 'bar-to-line-same-amount');
       expect(barToLine.items).toHaveLength(8);
 
-      // Total bank adds the four-item Plan 50 collection to the prior 59 items.
+      // The live bank now includes the four-item Plan 51 distance task.
       const totalItems = PRACTICE_TYPES.reduce((acc, pt) => acc + pt.items.length, 0);
-      expect(totalItems).toBe(63);
-      expect(PRACTICE_TYPES).toHaveLength(7);
+      expect(totalItems).toBe(67);
+      expect(PRACTICE_TYPES).toHaveLength(8);
     });
 
     it('derives exact completion intents for all families without synthetic response attribution', () => {
