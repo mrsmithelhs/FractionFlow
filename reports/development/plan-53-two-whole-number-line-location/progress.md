@@ -64,3 +64,25 @@ touch cancellation preserved the draft, and large step controls corrected it.
 These observations do not establish real-finger usability. Recommended continuing
 the existing mechanism with eighths subject to owner rendered/device judgment;
 orchestrator disposition is pending. No new precision aid or delivery claim.
+
+## Technical delivery — 2026-11-02
+
+Orchestration subsequently approved continuing the existing mechanism with all eight
+records after the owner's keep-eighths/investigate direction; this is not owner
+acceptance. Mounted implementation began at `11cd8e3`; delivery repairs, validation
+and detailed evidence are in `044d977` and `delivery.md`. This is submitted for
+orchestrator technical and owner rendered/task review, not packet completion.
+
+One consolidated cold read-only reviewer was requested as `gpt-6.1-terra` medium;
+the reviewer could not independently establish observed model identity. Position
+announcement and resize-during-drag findings were repaired and browser-probed;
+readability cleanup was performed, with remaining compact renderer/test-helper lines
+disclosed in the delivery report. No second reviewer pass ran. The full test run had
+one outdated inventory failure (606 passed); after updating the inventory, affected
+tests passed, as did a later focused 60-test set and build. Mutation, browser,
+historical regression, and exact evidence are described in `delivery.md`.
+
+At 360 px and 200% root text, eighth candidates remain 8.375 px apart. Synthetic
+snap/correction checks do not establish real-finger or assistive-technology usability;
+owner/device judgment remains open. No packet status, acceptance, push or deployment
+change was made. The three unrelated untracked Plan 39 receipts remain untouched.
