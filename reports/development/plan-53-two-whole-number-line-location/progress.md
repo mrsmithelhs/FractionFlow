@@ -55,3 +55,12 @@ full readability cleanup of new shared blocks, access/reset/help/drag verificati
 offset and mutation witnesses, historical browser regression, full build and the
 consolidated delivery review remain. No consultation has run at this checkpoint.
 Three unrelated Plan 39 receipts remain untouched.
+
+The owner directed retaining eighths and bounded further investigation. Commit
+`f1741f2` records the investigation and synthetic receipts. The narrow eighths
+spacing is 15.375 px at default text and 8.375 px at 200% root text; sampled
+near-boundary and off-center pointer/touch events selected their expected candidates,
+touch cancellation preserved the draft, and large step controls corrected it.
+These observations do not establish real-finger usability. Recommended continuing
+the existing mechanism with eighths subject to owner rendered/device judgment;
+orchestrator disposition is pending. No new precision aid or delivery claim.
