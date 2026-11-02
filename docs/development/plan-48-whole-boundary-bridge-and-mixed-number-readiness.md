@@ -1,7 +1,8 @@
 ---
 id: plan-48
 title: Whole-Boundary Bridge and Mixed-Number Entry Readiness Design
-status: delivered
+status: complete
+resolution: "Owner adopted the refined two-whole location task and first-slice boundaries on 2026-11-02; design investigation closed. Plan53 separately gates implementation; Phase4 exit, OQ24 and deployment remain open."
 depends_on: [plan-17, plan-31, plan-39, plan-44, plan-49, plan-50, plan-51, plan-52]
 gate: "Approve bounded investigation scope, then owner disposition of the Phase4/§91 readiness assessment and one foundation-task recommendation. Design only: no declaration of Phase4 completion, OQ-24 closure, mixed-number activation or source packet without owner adoption."
 summary: >-
