@@ -4,11 +4,12 @@ import { strict as assert } from 'node:assert';
 const server = await createServer({server:{host:'127.0.0.1',port:5318,strictPort:true}}); await server.listen();
 const browser = await chromium.launch({channel:'chrome',headless:true});
 try {
- for (const config of [{width:360,height:740,dpr:1},{width:1093,height:614,dpr:1.25}]) {
+ for (const config of [{width:360,height:740,dpr:1},{width:1093,height:614,dpr:1.25},{width:360,height:740,dpr:1,large:true}]) {
   const context = await browser.newContext({viewport:{width:config.width,height:config.height},deviceScaleFactor:config.dpr,hasTouch:true});
   const page = await context.newPage(); const errors=[]; page.on('pageerror',e=>errors.push(e.message));
   await page.goto('http://127.0.0.1:5318/FractionFlow/#whole-plus-fraction-construction');
   const root=page.locator('.plan58-construction:visible'); await root.waitFor();
+  if (config.large) { await page.addStyleTag({content:'html { font-size: 200% !important; }'}); await page.locator('.app-gear-button').evaluate(n=>n.click()); await page.locator('[data-support-id=medium-support]').evaluate(n=>n.click()); await page.locator('.app-restart-button').evaluate(n=>n.click()); }
   const whole=root.locator('[data-field=whole]'), pieces=root.locator('[data-field=pieces]');
   assert.match(await root.innerText(),/not entered/);
   await whole.fill('2'); await pieces.fill('8');
@@ -30,3 +31,4 @@ try {
   assert.deepEqual(errors,[]); console.log(JSON.stringify({config,geo})); await context.close();
  }
 } finally {await browser.close();await server.close();}
+
