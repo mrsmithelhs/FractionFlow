@@ -1,7 +1,8 @@
 ---
 id: plan-57
 title: Short Composed Practice Session Design
-status: delivered
+status: complete
+resolution: "Owner adopted the four-episode magnitude-session design on 2026-11-02, including bounded unfinished-work exit confirmation. Plan60 separately gates implementation; dose efficacy, Phase7 exit and persistence remain unproved."
 depends_on: [plan-29, plan-35, plan-43, plan-49, plan-50, plan-51, plan-53]
 gate: "Approve bounded design scope; owner adopts one session purpose, composition and finite stopping contract before any source packet. No random/adaptive activation or durable progress."
 summary: >-

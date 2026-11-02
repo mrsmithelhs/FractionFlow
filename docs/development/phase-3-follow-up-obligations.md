@@ -70,7 +70,17 @@ historical staging below does not reopen packets or authorize new tasks.
 
 ## Parallel design wave drafted 2026-11-02
 
-Plans55–57 are draft report-only work, not assigned or adopted implementation:
+Disposition update 2026-11-02: Plans55 and57 are owner-adopted and complete;
+Plan56 remains draft. Plan55's directed endpoint task and literal six-record batch
+lead to Plan59. Its in-progress bar/line switch remains deferred, not established
+by endpoint movement. Plan57's four-record magnitude composition leads to Plan60;
+the pilot does not establish dose efficacy, mastery or durable continuity. Plan54
+is owner-adopted/complete and Plan58 construction is in-progress. Source order is
+Plan58 -> Plan59 -> Plan60 to serialize app/scene/replay/progression changes, not
+to impose learner prerequisites or expand session membership. Source packets retain
+mechanism, pure checkpoint, technical and owner rendered gates. No push/deployment.
+
+Original drafting boundaries (historical where superseded by dispositions above):
 
 - Plan55 owns remaining representation-continuity/operation-meaning assessment
   and one proper-fraction task or continuity recommendation.
