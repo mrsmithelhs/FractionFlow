@@ -53,9 +53,22 @@ and the [2025 IES toolkit Module 3](https://ies.ed.gov/ncee/rel/fractions-grade-
 These are starting sources for a future bounded investigation, not a completed
 FractionFlow research review or evidence that its present models teach those operations.
 
-Current Phase 4 disposition (2026-11-01): Plans39/44/45/46/47/49/50/51 are owner-accepted and complete. Plan45 is symbolic comparison with ONE CHOSEN MODEL PER PROBLEM; Plan49 adds optional symbolic common-denominator construction/help, cap144 without increased bar capacity, revision2/v10 preserving historical v9. Plan50 delivers the three-label collection and four records; Plan51 delivers the adopted symbolic-first unsigned-distance task and four common-unit records with requested model assistance and equivalent forms retained. Both use concise success treatment. Multi-whole transfer and the Phase4 exit remain future obligations; no efficacy/device/AT outcomes are implied. Plan48 remains draft readiness work. Plan52 is now in progress/runnable for bounded house-feedback consistency, with exact surface/style/focus approval before source. Earlier wording in historical rows does not reopen completed packets or authorize new tasks.
+Current Phase 4 disposition (2026-11-02): Plans39/44/45/46/47/48/49/50/51/52/53
+are owner-accepted and complete. Plan45 is symbolic comparison with ONE CHOSEN
+MODEL PER PROBLEM; Plan49 adds optional common-denominator construction/help,
+cap144 without increased bar capacity, revision2/v10 preserving historical v9.
+Plan50 delivers the three-label collection and four records; Plan51 delivers
+symbolic-first unsigned distance with requested models and equivalent forms.
+Plan52 establishes the accepted house feedback presentation. Plan48's adopted
+readiness design led to Plan53's eight-record [0,2] independent placement and
+post-acceptance equal-unit bar verification, retaining dense-eighth, device/AT
+and learner-evidence limits. Whole-plus-fraction construction and formal mixed
+notation remain unestablished learner responsibilities. Representation-switch
+coverage, operation movement, Phase4 exit and OQ-24 remain open; the completed
+bridge is evidence toward readiness, not automatic phase completion. Earlier
+historical staging below does not reopen packets or authorize new tasks.
 
-## Draft next-wave design staging (2026-10-31)
+## Historical draft next-wave design staging (2026-10-31)
 
 Plans46–48 are draft report-only packets, not assigned work or accepted tasks:
 
@@ -65,7 +78,13 @@ Plans46–48 are draft report-only packets, not assigned work or accepted tasks:
 
 Each owns a separate report folder and may investigate against a pinned baseline while Plan45 proceeds, once explicitly started and preflight passes. No new representation/source activation or Phase4 exit is authorized by drafting. Prefer Plan46 as the first new task-design dispatch, Plan47 alongside/after the comparison implementation, and Plan48 as a later readiness/design synthesis refreshed against actual accepted work.
 
-The bounded representation-evidence tooling slice remains to be separately scoped before another source representation verifier needs it; serialize shared harness edits with Plan45. Feature implementation successors are written only after design adoption. This wave does not silently drop active simplification, operation movement, larger-denominator investigation, adaptation/session/local-progress or multiplication/division follow-ups.
+Tooling disposition refreshed by Plan48/53: current active-view, receipt and seed
+mechanisms support task-local scale/offset assertions; no separate general tooling
+prerequisite was adopted. Revisit extraction on concrete duplication or unreliable
+measurement, preserving historical evidence isolation. Feature successors still
+require adopted designs. Active simplification, operation movement, larger-denominator
+investigation, adaptation/session/local-progress and multiplication/division remain
+follow-ups, not source assignments.
 
 ## Maintainability checkpoints adopted with Plan 42 (DECISION-048)
 
