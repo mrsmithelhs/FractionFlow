@@ -1,3 +1,5 @@
+import { PLAN59_RECORDS } from '../content/data/plan59-directed-endpoint-records.js';
+import { PLAN59_ENDPOINT_EPISODE_DEFINITION } from '../interaction/episode-definition.js';
 import { PLAN58_RECORDS } from '../content/data/plan58-whole-plus-fraction-records.js';
 import { PLAN58_CONSTRUCTION_EPISODE_DEFINITION } from '../interaction/episode-definition.js';
 import { PLAN53_RECORDS } from '../content/data/plan53-two-whole-location-records.js';
@@ -346,6 +348,13 @@ export const PLAN58_CONSTRUCTION_PRACTICE_TYPE = deepFreeze({
   episodeDefinition: PLAN58_CONSTRUCTION_EPISODE_DEFINITION,
 });
 
+export const PLAN59_ENDPOINT_PRACTICE_TYPE = deepFreeze({
+  id: 'directed-number-line-endpoint', label: 'Find the end on a number line',
+  setId: 'directed-number-line-endpoint', setRevision: '1',
+  items: PLAN59_RECORDS.map(record => ({ id: record.itemId, episodeDefinitionId: PLAN59_ENDPOINT_EPISODE_DEFINITION.id, episodeDefinitionRevision: '1' })),
+  episodeDefinition: PLAN59_ENDPOINT_EPISODE_DEFINITION,
+});
+
 export const PRACTICE_TYPES = deepFreeze([
   ...PLAN40_PRACTICE_TYPES_V9,
   PLAN39_BAR_TO_LINE_PRACTICE_TYPE,
@@ -354,6 +363,7 @@ export const PRACTICE_TYPES = deepFreeze([
   PLAN51_DISTANCE_PRACTICE_TYPE,
   PLAN53_LOCATION_PRACTICE_TYPE,
   PLAN58_CONSTRUCTION_PRACTICE_TYPE,
+  PLAN59_ENDPOINT_PRACTICE_TYPE,
 ]);
 
 export function getPracticeType(id) {

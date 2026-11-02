@@ -1079,3 +1079,9 @@ body,
 .symbolic-mixed-numeral { display: inline-flex; align-items: center; gap: .18em; white-space: nowrap; }
 
 .plan58-connection { display: flex; align-items: center; gap: .4em; margin-block: 1rem; }
+.plan59-expression { display: flex; align-items: center; gap: .5em; font-size: 1.25rem; }
+.plan59-frame { height: 145px; }
+.plan59-start, .plan59-marker { position: absolute; transform: translateX(-50%); padding: .2rem .35rem; border-radius: .25rem; white-space: nowrap; }
+.plan59-start { bottom: 48px; background: #d8e8ee; border: 1px solid #365260; }
+.plan59-marker { bottom: 87px; background: white; border: 2px solid #684d24; }
+.plan59-arrow { position: absolute; bottom: 37px; left: 0; width: 100%; height: 24px; color: #8b4c0c; overflow: visible; pointer-events: none; }

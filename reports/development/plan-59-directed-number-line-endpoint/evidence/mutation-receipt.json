@@ -1,0 +1,53 @@
+{
+  "receipt": [
+    {
+      "name": "wrong-start",
+      "marker": "WITNESS_START",
+      "exit": 1,
+      "excerpt": "node:internal/modules/run_main:107\r\n    triggerUncaughtException(\r\n    ^\r\n\r\nAssertionError [ERR_ASSERTION]: WITNESS_START\r\n    at file:///C:/AI/FractionFlow/reports/development/plan-59-directed-number-line-endpoint/evidence/browser-probe.mjs:50:10 {\r\n  generatedMessage: false,\r\n  code: 'ERR_ASSERTION',\r\n  actual: false,\r\n  expected: true,\r\n  operator: '==',\r\n  diff:"
+    },
+    {
+      "name": "wrong-arrow",
+      "marker": "WITNESS_DIRECTION_DISTANCE",
+      "exit": 1,
+      "excerpt": "node:internal/modules/run_main:107\r\n    triggerUncaughtException(\r\n    ^\r\n\r\nAssertionError [ERR_ASSERTION]: WITNESS_DIRECTION_DISTANCE\r\n\r\n75 !== 25\r\n\r\n    at file:///C:/AI/FractionFlow/reports/development/plan-59-directed-number-line-endpoint/evidence/browser-probe.mjs:53:10 {\r\n  generatedMessage: false,\r\n  code: 'ERR_ASSERTION',\r\n  actual: 75,\r\n  expected: 25,\r\n  o"
+    },
+    {
+      "name": "tick-drift",
+      "marker": "WITNESS_TICK_SCALE",
+      "exit": 1,
+      "excerpt": "node:internal/modules/run_main:107\r\n    triggerUncaughtException(\r\n    ^\r\n\r\nAssertionError [ERR_ASSERTION]: WITNESS_TICK_SCALE\r\n    at file:///C:/AI/FractionFlow/reports/development/plan-59-directed-number-line-endpoint/evidence/browser-probe.mjs:52:10 {\r\n  generatedMessage: false,\r\n  code: 'ERR_ASSERTION',\r\n  actual: false,\r\n  expected: true,\r\n  operator: '==',\r\n  "
+    },
+    {
+      "name": "premature-arrow",
+      "marker": "WITNESS_PREMATURE_ARROW",
+      "exit": 1,
+      "excerpt": "node:internal/modules/run_main:107\r\n    triggerUncaughtException(\r\n    ^\r\n\r\nAssertionError [ERR_ASSERTION]: WITNESS_PREMATURE_ARROW\r\n\r\n1 !== 0\r\n\r\n    at file:///C:/AI/FractionFlow/reports/development/plan-59-directed-number-line-endpoint/evidence/browser-probe.mjs:15:10 {\r\n  generatedMessage: false,\r\n  code: 'ERR_ASSERTION',\r\n  actual: 1,\r\n  expected: 0,\r\n  operator"
+    },
+    {
+      "name": "premature-result",
+      "marker": "WITNESS_PREMATURE_RESULT",
+      "exit": 1,
+      "excerpt": "node:internal/modules/run_main:107\r\n    triggerUncaughtException(\r\n    ^\r\n\r\nAssertionError [ERR_ASSERTION]: WITNESS_PREMATURE_RESULT\r\n\r\ntrue !== false\r\n\r\n    at file:///C:/AI/FractionFlow/reports/development/plan-59-directed-number-line-endpoint/evidence/browser-probe.mjs:17:10 {\r\n  generatedMessage: false,\r\n  code: 'ERR_ASSERTION',\r\n  actual: true,\r\n  expected: fal"
+    },
+    {
+      "name": "lost-draft",
+      "marker": "WITNESS_DRAFT_VIEW",
+      "exit": 1,
+      "excerpt": "node:internal/modules/run_main:107\r\n    triggerUncaughtException(\r\n    ^\r\n\r\nAssertionError [ERR_ASSERTION]: WITNESS_DRAFT_VIEW\r\n\r\n'' !== 'step-1'\r\n\r\n    at file:///C:/AI/FractionFlow/reports/development/plan-59-directed-number-line-endpoint/evidence/browser-probe.mjs:30:10 {\r\n  generatedMessage: false,\r\n  code: 'ERR_ASSERTION',\r\n  actual: '',\r\n  expected: 'step-1',\r"
+    },
+    {
+      "name": "lost-help",
+      "marker": "WITNESS_HELP_VIEW",
+      "exit": 1,
+      "excerpt": "node:internal/modules/run_main:107\r\n    triggerUncaughtException(\r\n    ^\r\n\r\nAssertionError [ERR_ASSERTION]: WITNESS_HELP_VIEW\r\n\r\n0 !== 1\r\n\r\n    at file:///C:/AI/FractionFlow/reports/development/plan-59-directed-number-line-endpoint/evidence/browser-probe.mjs:34:10 {\r\n  generatedMessage: false,\r\n  code: 'ERR_ASSERTION',\r\n  actual: 0,\r\n  expected: 1,\r\n  operator: 'str"
+    },
+    {
+      "name": "lost-assistance",
+      "marker": "WITNESS_ASSISTANCE_HISTORY",
+      "exit": 1,
+      "excerpt": "ed endpoint > preserves incomplete, wrong, revised and helped responses and rejects stale checks and context 9ms\n     → WITNESS_ASSISTANCE_HISTORY: expected [] to have a length of 1 but got +0\n   ✓ Plan 59 pure directed endpoint > rejects altered v15 envelopes and stale replay intents 1ms\n\n Test Files  1 failed (1)\n      Tests  1 failed | 3 passed (4)\n   Start at  17:55:03\n   D"
+    }
+  ],
+  "clean": "passed"
+}

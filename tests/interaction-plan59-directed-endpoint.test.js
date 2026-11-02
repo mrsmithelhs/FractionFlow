@@ -67,7 +67,7 @@ describe('Plan 59 pure directed endpoint', () => {
     expect(state.evaluation.status).toBe('incorrect');
     expect(projectPlan59Endpoint(state).verification).toBeNull();
     state = send(state, 'request-directed-endpoint-help', { helpKind: 'placement' });
-    expect(state.assistanceHistory).toHaveLength(1); roundtrip(state);
+    expect(state.assistanceHistory, 'WITNESS_ASSISTANCE_HISTORY').toHaveLength(1); roundtrip(state);
     const stale = state.placementRevision;
     state = place(state, 'step-2');
     expect(state.evaluation.status).toBe('unchecked');
