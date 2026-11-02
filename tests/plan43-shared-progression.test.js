@@ -36,10 +36,12 @@ describe('Plan 43 — Shared Episode Completion and Progression Suite', () => {
       const barToLine = PRACTICE_TYPES.find((pt) => pt.id === 'bar-to-line-same-amount');
       expect(barToLine.items).toHaveLength(8);
 
-      // The live bank now includes the four-item Plan 51 distance task.
+      // Plan 53 adds its eight-item location set to the live bank.
+      const twoWhole = PRACTICE_TYPES.find((pt) => pt.id === 'two-whole-location');
+      expect(twoWhole.items).toHaveLength(8);
       const totalItems = PRACTICE_TYPES.reduce((acc, pt) => acc + pt.items.length, 0);
-      expect(totalItems).toBe(67);
-      expect(PRACTICE_TYPES).toHaveLength(8);
+      expect(totalItems).toBe(75);
+      expect(PRACTICE_TYPES).toHaveLength(9);
     });
 
     it('derives exact completion intents for all families without synthetic response attribution', () => {

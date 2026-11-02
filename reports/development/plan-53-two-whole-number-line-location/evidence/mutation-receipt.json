@@ -1,0 +1,62 @@
+[
+  {
+    "mutation": "whole-scale",
+    "injected": true,
+    "exit": 1,
+    "expectedFailureMarker": "AssertionError",
+    "markerObserved": true,
+    "restored": true
+  },
+  {
+    "mutation": "boundary-index",
+    "injected": true,
+    "exit": 1,
+    "expectedFailureMarker": "expected",
+    "markerObserved": true,
+    "restored": true
+  },
+  {
+    "mutation": "premature-verification",
+    "injected": true,
+    "exit": 1,
+    "expectedFailureMarker": "toBeNull",
+    "markerObserved": true,
+    "restored": true
+  },
+  {
+    "mutation": "lost-help-on-view-change",
+    "injected": true,
+    "exit": 1,
+    "expectedFailureMarker": "AssertionError",
+    "markerObserved": true,
+    "restored": true
+  },
+  {
+    "mutation": "lost-draft-on-view-change",
+    "injected": true,
+    "exit": 1,
+    "expectedFailureMarker": "AssertionError",
+    "markerObserved": true,
+    "restored": true
+  },
+  {
+    "mutation": "lost-assistance",
+    "injected": true,
+    "exit": 1,
+    "expectedFailureMarker": "toHaveLength",
+    "markerObserved": true,
+    "restored": true
+  },
+  {
+    "restoredRun": "pure",
+    "exit": 0
+  },
+  {
+    "restoredRun": "geometry",
+    "exit": 0
+  },
+  {
+    "restoredRun": "lifecycle",
+    "exit": 0
+  }
+]

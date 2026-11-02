@@ -1690,29 +1690,72 @@ export function createFractionFlowApp({
     currentScene = scene;
 
     if (isPlan53(state)) {
-      visualRenderer?.destroy(); linearRenderer?.destroy(); visualNumberLineRenderer?.destroy(); linearNumberLineRenderer?.destroy();
-      visualComparisonRenderer?.destroy(); linearComparisonRenderer?.destroy(); visualCollectionRenderer?.destroy(); linearCollectionRenderer?.destroy();
-      visualRenderer = null; linearRenderer = null; visualNumberLineRenderer = null; linearNumberLineRenderer = null;
-      visualComparisonRenderer = null; linearComparisonRenderer = null; visualCollectionRenderer = null; linearCollectionRenderer = null;
+      visualRenderer?.destroy();
+      linearRenderer?.destroy();
+      visualNumberLineRenderer?.destroy();
+      linearNumberLineRenderer?.destroy();
+      visualComparisonRenderer?.destroy();
+      linearComparisonRenderer?.destroy();
+      visualCollectionRenderer?.destroy();
+      linearCollectionRenderer?.destroy();
+      visualRenderer = null;
+      linearRenderer = null;
+      visualNumberLineRenderer = null;
+      linearNumberLineRenderer = null;
+      visualComparisonRenderer = null;
+      linearComparisonRenderer = null;
+      visualCollectionRenderer = null;
+      linearCollectionRenderer = null;
       const generation = currentEpisodeGeneration;
       const active = () => generation === currentEpisodeGeneration && isPlan53(state);
       const onAction = action => {
         if (!active()) return;
-        if (action) { try { state = applyIntent(state, action); } catch { render(); return; } }
+        if (action) {
+          try { state = applyIntent(state, action); }
+          catch { render(); return; }
+        }
         render();
-        if (action?.type === 'check-two-whole') (visualView ? visualPlan53Renderer : linearPlan53Renderer)?.focusFeedback();
+        if (action?.type === 'check-two-whole') {
+          (visualView ? visualPlan53Renderer : linearPlan53Renderer)?.focusFeedback();
+        }
       };
-      const options = view => ({ container: view === 'visual' ? visualHost : linearHost, view, dispatch: onAction,
-        active, helpOpen: () => plan53HelpOpen,
-        toggleHelp: () => { if (!active()) return; plan53HelpOpen = !plan53HelpOpen;
-          if (plan53HelpOpen) onAction({type:'request-two-whole-help',context:scene.meaning.location.context,helpKind:'placement'}); else render(); },
-        progression: () => { const p = computeProgressionDescriptor(); return {...p, onAction: p.onAction ? () => { if (active()) p.onAction(); } : null}; },
+      const options = view => ({
+        container: view === 'visual' ? visualHost : linearHost,
+        view, dispatch: onAction, active, helpOpen: () => plan53HelpOpen,
+        toggleHelp: () => {
+          if (!active()) return;
+          plan53HelpOpen = !plan53HelpOpen;
+          if (plan53HelpOpen) {
+            onAction({ type: 'request-two-whole-help', context: scene.meaning.location.context, helpKind: 'placement' });
+          } else render();
+        },
+        progression: () => {
+          const descriptor = computeProgressionDescriptor();
+          return { ...descriptor, onAction: descriptor.onAction ? () => {
+            if (active()) descriptor.onAction();
+          } : null };
+        },
       });
-      if (!visualPlan53Renderer) { visualPlan53Renderer = createPlan53Renderer(options('visual')); visualPlan53Renderer.mount(scene); } else visualPlan53Renderer.update(scene);
-      if (!linearPlan53Renderer) { linearPlan53Renderer = createPlan53Renderer(options('linear')); linearPlan53Renderer.mount(scene); } else linearPlan53Renderer.update(scene);
-      updateConditionMetadata(); updateSupportMetadata(); updateSupportControls(); updateNavigation(); updateViewVisibility(); updateHelpPlacement(scene); return;
+      if (!visualPlan53Renderer) {
+        visualPlan53Renderer = createPlan53Renderer(options('visual'));
+        visualPlan53Renderer.mount(scene);
+      } else visualPlan53Renderer.update(scene);
+      if (!linearPlan53Renderer) {
+        linearPlan53Renderer = createPlan53Renderer(options('linear'));
+        linearPlan53Renderer.mount(scene);
+      } else linearPlan53Renderer.update(scene);
+      updateConditionMetadata();
+      updateSupportMetadata();
+      updateSupportControls();
+      updateNavigation();
+      updateViewVisibility();
+      updateHelpPlacement(scene);
+      return;
     }
-    visualPlan53Renderer?.destroy(); linearPlan53Renderer?.destroy(); visualPlan53Renderer = null; linearPlan53Renderer = null;
+    visualPlan53Renderer?.destroy();
+    linearPlan53Renderer?.destroy();
+    visualPlan53Renderer = null;
+    linearPlan53Renderer = null;
 
     if (isDistance(state)) {
       visualRenderer?.destroy(); linearRenderer?.destroy(); visualNumberLineRenderer?.destroy(); linearNumberLineRenderer?.destroy();

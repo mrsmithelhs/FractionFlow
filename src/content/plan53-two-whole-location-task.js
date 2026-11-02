@@ -1,37 +1,55 @@
-import { createFraction, equalFractions, improperToMixed } from "../math/index.js";
-import { deepFreeze } from "./schema.js";
-import { PLAN53_RECORDS } from "./data/plan53-two-whole-location-records.js";
-const PLAN53_IDENTITY = deepFreeze({ setId: "two-whole-location", setRevision: "1", definitionId: "phase-4-two-whole-location", definitionRevision: "1" });
-const keys = (v, k) => v && typeof v === "object" && !Array.isArray(v) && JSON.stringify(Object.keys(v).sort()) === JSON.stringify([...k].sort());
-const fail = () => {
-  throw new TypeError("invalid two-whole location content");
-};
-const canonical = (v) => Array.isArray(v) ? v.map(canonical) : v && typeof v === "object" ? Object.fromEntries(Object.keys(v).sort().map((k) => [k, canonical(v[k])])) : v;
-function admitPlan53Record(r) {
-  if (!keys(r, ["itemId", "itemRevision", "purpose", "form"]) || typeof r.itemId !== "string" || !/^[a-z][a-z0-9-]{0,63}$/.test(r.itemId) || r.itemRevision !== "1" || typeof r.purpose !== "string" || !/^[a-z][a-z0-9-]{0,63}$/.test(r.purpose) || !keys(r.form, ["numerator", "denominator"]) || typeof r.form.numerator !== "string" || !/^(0|[1-9][0-9]?)$/.test(r.form.numerator) || !["2", "4", "8"].includes(r.form.denominator)) fail();
-  const n = BigInt(r.form.numerator), d = BigInt(r.form.denominator);
-  if (n > 2n * d) fail();
-  const value = createFraction(n, d), mixed = improperToMixed(value);
-  const candidates = Array.from({ length: Number(2n * d) + 1 }, (_, i) => ({ id: `step-${i}`, form: { numerator: String(i), denominator: r.form.denominator } }));
-  const matches = candidates.filter((c) => equalFractions(value, createFraction(BigInt(c.form.numerator), d)));
+import { createFraction, equalFractions, improperToMixed } from '../math/index.js';
+import { deepFreeze } from './schema.js';
+import { PLAN53_RECORDS } from './data/plan53-two-whole-location-records.js';
+
+export const PLAN53_IDENTITY = deepFreeze({
+  setId: 'two-whole-location', setRevision: '1',
+  definitionId: 'phase-4-two-whole-location', definitionRevision: '1',
+});
+const keys = (value, expected) => value && typeof value === 'object' && !Array.isArray(value)
+  && JSON.stringify(Object.keys(value).sort()) === JSON.stringify([...expected].sort());
+const fail = () => { throw new TypeError('invalid two-whole location content'); };
+const canonical = value => Array.isArray(value) ? value.map(canonical)
+  : value && typeof value === 'object'
+    ? Object.fromEntries(Object.keys(value).sort().map(key => [key, canonical(value[key])]))
+    : value;
+
+export function admitPlan53Record(record) {
+  if (!keys(record, ['itemId', 'itemRevision', 'purpose', 'form'])
+    || typeof record.itemId !== 'string' || !/^[a-z][a-z0-9-]{0,63}$/.test(record.itemId)
+    || record.itemRevision !== '1' || typeof record.purpose !== 'string'
+    || !/^[a-z][a-z0-9-]{0,63}$/.test(record.purpose)
+    || !keys(record.form, ['numerator', 'denominator'])
+    || typeof record.form.numerator !== 'string' || !/^(0|[1-9][0-9]?)$/.test(record.form.numerator)
+    || !['2', '4', '8'].includes(record.form.denominator)) fail();
+  const numerator = BigInt(record.form.numerator);
+  const denominator = BigInt(record.form.denominator);
+  if (numerator > 2n * denominator) fail();
+  const value = createFraction(numerator, denominator);
+  const mixed = improperToMixed(value);
+  const candidates = Array.from({ length: Number(2n * denominator) + 1 }, (_, index) => ({
+    id: `step-${index}`, form: { numerator: String(index), denominator: record.form.denominator },
+  }));
+  const matches = candidates.filter(candidate => equalFractions(
+    value, createFraction(BigInt(candidate.form.numerator), denominator),
+  ));
   if (matches.length !== 1) fail();
-  return deepFreeze({ record: structuredClone(r), candidates, correctPosition: matches[0].id, verification: { whole: String(mixed.whole), remainder: { numerator: String(mixed.fraction.numerator), denominator: String(mixed.fraction.denominator) } } });
+  return deepFreeze({
+    record: structuredClone(record), candidates, correctPosition: matches[0].id,
+    verification: { whole: String(mixed.whole), remainder: {
+      numerator: String(mixed.fraction.numerator), denominator: String(mixed.fraction.denominator),
+    } },
+  });
 }
-function resolvePlan53Context(itemId) {
-  const record = PLAN53_RECORDS.find((r) => r.itemId === itemId);
+export function resolvePlan53Context(itemId) {
+  const record = PLAN53_RECORDS.find(candidate => candidate.itemId === itemId);
   if (!record) fail();
   admitPlan53Record(record);
   return deepFreeze({ ...PLAN53_IDENTITY, ...structuredClone(record) });
 }
-function validatePlan53Context(c) {
-  if (!keys(c, [...Object.keys(PLAN53_IDENTITY), "itemId", "itemRevision", "purpose", "form"])) fail();
-  const expected = resolvePlan53Context(c.itemId);
-  if (JSON.stringify(canonical(c)) !== JSON.stringify(canonical(expected))) fail();
+export function validatePlan53Context(context) {
+  if (!keys(context, [...Object.keys(PLAN53_IDENTITY), 'itemId', 'itemRevision', 'purpose', 'form'])) fail();
+  const expected = resolvePlan53Context(context.itemId);
+  if (JSON.stringify(canonical(context)) !== JSON.stringify(canonical(expected))) fail();
   return expected;
 }
-export {
-  PLAN53_IDENTITY,
-  admitPlan53Record,
-  resolvePlan53Context,
-  validatePlan53Context
-};

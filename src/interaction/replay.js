@@ -34,7 +34,16 @@ export const REPLAY_V10_SCHEMA_VERSION = 'fractionflow.episode-replay/v10';
 export const REPLAY_V11_SCHEMA_VERSION = 'fractionflow.episode-replay/v11';
 export const REPLAY_V12_SCHEMA_VERSION = 'fractionflow.episode-replay/v12';
 export const REPLAY_V13_SCHEMA_VERSION = 'fractionflow.episode-replay/v13';
-function plan53Identity(c) { return {schemaVersion:'fractionflow.two-whole-location-content-identity/v1',id:c.itemId,source:'curated',reconstruction:{kind:'plan53-two-whole-location',setId:c.setId,setRevision:c.setRevision,itemId:c.itemId,itemRevision:c.itemRevision}}; }
+function plan53Identity(context) {
+  return {
+    schemaVersion: 'fractionflow.two-whole-location-content-identity/v1',
+    id: context.itemId, source: 'curated',
+    reconstruction: {
+      kind: 'plan53-two-whole-location', setId: context.setId, setRevision: context.setRevision,
+      itemId: context.itemId, itemRevision: context.itemRevision,
+    },
+  };
+}
 
 function plan51Identity(c) {
   return { schemaVersion: 'fractionflow.distance-content-identity/v1', id: c.itemId, source: 'curated',
@@ -463,9 +472,15 @@ export function createReplayEnvelope(state) {
     throw new TypeError('state must be a Plan 05 episode state');
   }
   if (state.episodeDefinition?.id === 'phase-4-two-whole-location' && state.episodeDefinition.revision === '1') {
-    const c=validatePlan53Context(state.taskContext);
-    const envelope={schemaVersion:REPLAY_V13_SCHEMA_VERSION,contentIdentity:plan53Identity(c),episodeDefinition:{id:state.episodeDefinition.id,revision:state.episodeDefinition.revision},support:state.support,activeCondition:state.activeCondition,learnerIntents:state.intentHistory,taskContext:c};
-    assertJsonSafe(envelope,'replay envelope'); return deepFreeze(envelope);
+    const context = validatePlan53Context(state.taskContext);
+    const envelope = {
+      schemaVersion: REPLAY_V13_SCHEMA_VERSION, contentIdentity: plan53Identity(context),
+      episodeDefinition: { id: state.episodeDefinition.id, revision: state.episodeDefinition.revision },
+      support: state.support, activeCondition: state.activeCondition,
+      learnerIntents: state.intentHistory, taskContext: context,
+    };
+    assertJsonSafe(envelope, 'replay envelope');
+    return deepFreeze(envelope);
   }
   const isComparison = isPlan45ComparisonEpisode(state);
   if (state.episodeDefinition?.id === 'phase-4-fraction-distance' && state.episodeDefinition.revision === '1') {
@@ -518,15 +533,23 @@ export function replayEpisode(envelope) {
   assertJsonSafe(envelope, 'replay envelope');
   if (!envelope || typeof envelope !== 'object') throw new TypeError('replay envelope must be an object');
   if (envelope.schemaVersion === REPLAY_V13_SCHEMA_VERSION) {
-    assertExactKeys(envelope,['schemaVersion','contentIdentity','episodeDefinition','support','activeCondition','learnerIntents','taskContext'],'replay v13');
-    assertExactKeys(envelope.episodeDefinition,['id','revision'],'replay v13 definition');
-    if(envelope.episodeDefinition.id!=='phase-4-two-whole-location' || envelope.episodeDefinition.revision!=='1') throw new TypeError('invalid v13 definition');
-    const c=validatePlan53Context(envelope.taskContext);
-    assertExactKeys(envelope.contentIdentity,['schemaVersion','id','source','reconstruction'],'replay v13 identity');
-    assertExactKeys(envelope.contentIdentity.reconstruction,['kind','setId','setRevision','itemId','itemRevision'],'replay v13 reconstruction');
-    if(!sameJson(plan53Identity(c),envelope.contentIdentity) || !Array.isArray(envelope.learnerIntents)) throw new TypeError('invalid v13 identity or intents');
-    let state=createEpisode({episodeDefinition:getEpisodeDefinition('phase-4-two-whole-location','1'),taskContext:resolvePlan53Context(c.itemId),support:envelope.support,activeCondition:envelope.activeCondition});
-    for(const intent of envelope.learnerIntents) state=applyIntent(state,intent); return state;
+    assertExactKeys(envelope, ['schemaVersion', 'contentIdentity', 'episodeDefinition', 'support',
+      'activeCondition', 'learnerIntents', 'taskContext'], 'replay v13');
+    assertExactKeys(envelope.episodeDefinition, ['id', 'revision'], 'replay v13 definition');
+    if (envelope.episodeDefinition.id !== 'phase-4-two-whole-location'
+      || envelope.episodeDefinition.revision !== '1') throw new TypeError('invalid v13 definition');
+    const context = validatePlan53Context(envelope.taskContext);
+    assertExactKeys(envelope.contentIdentity, ['schemaVersion', 'id', 'source', 'reconstruction'], 'replay v13 identity');
+    assertExactKeys(envelope.contentIdentity.reconstruction, ['kind', 'setId', 'setRevision', 'itemId', 'itemRevision'], 'replay v13 reconstruction');
+    if (!sameJson(plan53Identity(context), envelope.contentIdentity) || !Array.isArray(envelope.learnerIntents)) {
+      throw new TypeError('invalid v13 identity or intents');
+    }
+    let state = createEpisode({
+      episodeDefinition: getEpisodeDefinition('phase-4-two-whole-location', '1'),
+      taskContext: resolvePlan53Context(context.itemId), support: envelope.support, activeCondition: envelope.activeCondition,
+    });
+    for (const intent of envelope.learnerIntents) state = applyIntent(state, intent);
+    return state;
   }
   if (envelope.schemaVersion === REPLAY_V12_SCHEMA_VERSION) {
     assertExactKeys(envelope, ['schemaVersion', 'contentIdentity', 'episodeDefinition', 'support', 'activeCondition', 'learnerIntents', 'taskContext'], 'replay v12');

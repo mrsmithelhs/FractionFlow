@@ -21,7 +21,17 @@ export function createPlan53Renderer({ container, view, dispatch, progression, h
     previous.token.classList.remove('is-dragging');
     root?.querySelector('.plan53-highlight')?.classList.remove('plan53-highlight');
   };
-  const destroy = () => { cancelGesture(); destroyed = true; root?.remove(); root = null; };
+  const onResize = () => {
+    if (!gesture) return;
+    cancelGesture();
+    if (active()) dispatch(null);
+  };
+  window.addEventListener('resize', onResize);
+  const destroy = () => {
+    cancelGesture();
+    window.removeEventListener('resize', onResize);
+    destroyed = true; root?.remove(); root = null;
+  };
   function render(next) {
     if (gesture) return;
     scene = next;
@@ -32,8 +42,10 @@ export function createPlan53Renderer({ container, view, dispatch, progression, h
     const live = model.status === 'active';
     const intent = (type, fields = {}) => ({ type, context: model.context, ...fields });
     const button = (label, action, key, primary = false) => {
-      const node = element('button', primary ? 'app-primary-button' : 'app-secondary-button', label);
-      node.type = 'button'; node.dataset.focusKey = key;
+      const node = element('button', primary ? 'control-btn' : 'app-secondary-button', label);
+      node.type = 'button';
+      node.dataset.focusKey = key;
+      if (primary) node.classList.add('plan53-primary');
       node.addEventListener('click', () => { if (valid(node)) action(); });
       return node;
     };
@@ -50,11 +62,22 @@ export function createPlan53Renderer({ container, view, dispatch, progression, h
     const last = denominator * 2;
     const selected = model.placement === null ? null : Number(model.placement.slice(5));
     const place = index => dispatch(intent('place-two-whole', { candidateId: `step-${index}` }));
+    if (live && view === 'visual') {
+      const positionStatus = element('p', 'plan53-position-status', selected === null
+        ? 'Fraction unplaced.'
+        : `Selected position: ${selected} over ${denominator}${selected === 0 ? ', zero' : selected === denominator ? ', one' : selected === last ? ', two' : ''}.`);
+      positionStatus.setAttribute('role', 'status');
+      section.append(positionStatus);
+    }
     if (view === 'visual') {
-      const tray = element('div', 'plan53-tray');
-      tray.setAttribute('aria-label', model.placement === null ? 'Unplaced fraction' : 'Fraction to place');
-      if (model.placement === null && live) tray.append(makeToken());
-      section.append(tray);
+      if (live) {
+        const tray = element('div', model.placement === null ? 'plan53-tray' : 'plan53-tray plan53-tray-empty');
+        if (model.placement === null) {
+          tray.setAttribute('aria-label', 'Unplaced fraction');
+          tray.append(makeToken());
+        } else tray.setAttribute('aria-hidden', 'true');
+        section.append(tray);
+      }
       const frame = element('div', 'plan53-frame');
       const axis = element('div', 'plan53-axis');
       axis.setAttribute('aria-label', 'Number line from zero to two');
@@ -141,7 +164,11 @@ export function createPlan53Renderer({ container, view, dispatch, progression, h
       section.append(controls);
       if (helpOpen()) section.append(element('p', 'plan53-help', 'Each whole is divided into equal parts. Find the two whole intervals.'));
     } else {
-      if (view === 'linear') section.append(element('p', 'plan53-information', `${model.verification.whole} whole and ${model.verification.remainder.numerator} of ${model.verification.remainder.denominator} equal parts.`));
+      if (view === 'linear') {
+        const whole = Number(model.verification.whole);
+        const remainder = Number(model.verification.remainder.numerator);
+        section.append(element('p', 'plan53-information', `${whole} ${whole === 1 ? 'whole' : 'wholes'}${remainder ? ` and ${remainder} of ${model.verification.remainder.denominator} equal parts` : ''}.`));
+      }
       const p = progression(); if (p?.notice) section.append(element('p', '', p.notice));
       if (p?.onAction) section.append(button(p.label, p.onAction, 'next', true));
     }

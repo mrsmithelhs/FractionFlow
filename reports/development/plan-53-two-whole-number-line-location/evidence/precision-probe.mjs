@@ -16,11 +16,14 @@ try {
   await task.locator('.plan53-axis').scrollIntoViewIfNeeded();
   let fourthAxis=await task.locator('.plan53-axis').boundingBox();
   for (const [delta,expected] of [[-0.12,2],[0.12,3]]) {
+    fourthAxis=await task.locator('.plan53-axis').boundingBox();
     await page.touchscreen.tap(fourthAxis.x+(2.5+delta)*fourthAxis.width/8,fourthAxis.y+fourthAxis.height/2);
     const percent=parseFloat(await task.locator('.plan53-positioned').evaluate(el=>el.style.left));
     assert.equal(percent,expected/8*100);
   }
-  for (const [offset,expected] of [[1,0],[fourthAxis.width-1,100]]) {
+  for (const [side,expected] of [['left',0],['right',100]]) {
+    fourthAxis=await task.locator('.plan53-axis').boundingBox();
+    const offset=side==='left' ? 1 : fourthAxis.width-1;
     await page.touchscreen.tap(fourthAxis.x+offset,fourthAxis.y+fourthAxis.height/2);
     const token=task.locator('.plan53-positioned'); const tile=await token.boundingBox();
     assert.equal(parseFloat(await token.evaluate(el=>el.style.left)),expected);
@@ -39,6 +42,7 @@ try {
   const spacing=box.width/16; const observed=[];
   // Grab near the token's left edge, release on either side of the 9/10 boundary.
   for(const [direction,delta,expected] of [['left',-0.12,9],['right',0.12,10]]) {
+   box=await axis.boundingBox();
    const token=task.locator('.plan53-token'); const before=await token.boundingBox();
    const grabX=before.x+5, grabY=before.y+before.height/2;
    const offsetX=grabX-(before.x+before.width/2), offsetY=grabY-(before.y+before.height);
@@ -53,6 +57,7 @@ try {
   const buttons=await task.locator('.plan53-controls button').evaluateAll(nodes=>nodes.map(n=>({text:n.textContent,width:n.getBoundingClientRect().width,height:n.getBoundingClientRect().height})));
   assert.ok(buttons.every(x=>x.width>=44 && x.height>=44));
   // Emulated touch uses the same off-center offset and must commit only on release.
+  box=await axis.boundingBox();
   const cdp=await context.newCDPSession(page); let token=task.locator('.plan53-positioned'); let tokenBox=await token.boundingBox();
   const tx=tokenBox.x+5, ty=tokenBox.y+tokenBox.height/2;
   const ox=tx-(tokenBox.x+tokenBox.width/2), oy=ty-(tokenBox.y+tokenBox.height);

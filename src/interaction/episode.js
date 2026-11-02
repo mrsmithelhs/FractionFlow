@@ -1411,7 +1411,9 @@ export function createEpisode({
   allowCompatibilityPair = false,
 } = {}) {
   const definition = assertDefinition(episodeDefinition);
-  if (definition.id === 'phase-4-two-whole-location' && definition.revision === '1') return createPlan53Episode({ taskContext, support, activeCondition, episodeDefinition: definition });
+  if (definition.id === 'phase-4-two-whole-location' && definition.revision === '1') {
+    return createPlan53Episode({ taskContext, support, activeCondition, episodeDefinition: definition });
+  }
   if (definition.id === 'phase-4-fraction-distance' && definition.revision === '1') return createPlan51Episode({ taskContext, support, activeCondition, episodeDefinition: definition });
   if (definition.id === 'phase-4-number-line-collection' && definition.revision === '1') return createPlan50Episode({ taskContext, support, activeCondition, episodeDefinition: definition });
   if (isPlan45ComparisonDefinition(definition)) {
@@ -1498,7 +1500,9 @@ export function applyIntent(state, rawIntent) {
   if (!state || state.schemaVersion !== 'fractionflow.episode-state/v1') {
     throw new EpisodeIntentError('INVALID_EPISODE_STATE', 'state is not a Plan 05 episode state');
   }
-  if (state.episodeDefinition?.id === 'phase-4-two-whole-location' && state.episodeDefinition.revision === '1') return applyPlan53Intent(state, rawIntent);
+  if (state.episodeDefinition?.id === 'phase-4-two-whole-location' && state.episodeDefinition.revision === '1') {
+    return applyPlan53Intent(state, rawIntent);
+  }
   if (state.episodeDefinition?.id === 'phase-4-fraction-distance' && state.episodeDefinition.revision === '1') return applyPlan51Intent(state, rawIntent);
   if (state.episodeDefinition?.id === 'phase-4-number-line-collection' && state.episodeDefinition.revision === '1') return applyPlan50Intent(state, rawIntent);
   if (isPlan45ComparisonEpisode(state)) {

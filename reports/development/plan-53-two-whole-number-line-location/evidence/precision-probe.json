@@ -42,7 +42,7 @@
       },
       {
         "text": "Check",
-        "width": 58.671875,
+        "width": 76.671875,
         "height": 44
       }
     ],
@@ -96,18 +96,18 @@
       {
         "text": "Help",
         "width": 63.515625,
-        "height": 44
+        "height": 62.78125
       },
       {
         "text": "Check",
-        "width": 80.015625,
-        "height": 44
+        "width": 114.015625,
+        "height": 62.78125
       }
     ],
     "fourthsBoundaryAndEndpointContainment": true,
     "touchCommit": true,
-    "scrollBefore": 33,
-    "scrollAfter": 33,
+    "scrollBefore": 103,
+    "scrollAfter": 103,
     "cancelPreserved": true,
     "stepCorrection": true,
     "doc": {
@@ -154,12 +154,12 @@
       {
         "text": "Help",
         "width": 80.015625,
-        "height": 49
+        "height": 83.375
       },
       {
         "text": "Check",
-        "width": 101.34375,
-        "height": 49
+        "width": 151.34375,
+        "height": 83.375
       }
     ],
     "fourthsBoundaryAndEndpointContainment": true,
@@ -216,14 +216,14 @@
       },
       {
         "text": "Check",
-        "width": 58.671875,
+        "width": 76.671875,
         "height": 44
       }
     ],
     "fourthsBoundaryAndEndpointContainment": true,
     "touchCommit": true,
-    "scrollBefore": 5,
-    "scrollAfter": 5,
+    "scrollBefore": 33,
+    "scrollAfter": 33,
     "cancelPreserved": true,
     "stepCorrection": true,
     "doc": {
