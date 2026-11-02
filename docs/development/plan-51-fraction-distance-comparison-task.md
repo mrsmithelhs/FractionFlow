@@ -1,11 +1,9 @@
 ---
 id: plan-51
 title: Fraction Comparison-to-Distance Task
-status: ready
+status: in-progress
 depends_on: [plan-47, plan-49, plan-50]
 gate: "After Plan50 closure: Requirement 0 mechanism approval before source, pure task/replay checkpoint before mounted integration, technical review and owner rendered/task acceptance. Deployment remains separate."
-superseded_by: null
-resolution: null
 summary: >-
   Implement the adopted short symbolic-first unsigned-distance task and four
   common-unit records. Establish one comparison, compute how far apart the

@@ -1,7 +1,8 @@
 ---
 id: plan-50
 title: Three-Fraction Number-Line Collection Task
-status: in-progress
+status: complete
+resolution: "Owner accepted the collection task and Repair02 success presentation following technical review; documented device/AT/learner-efficacy limits retained. No push or deployment."
 depends_on: [plan-39, plan-42, plan-43, plan-46]
 gate: "Requirement 0: approve collection state/scene, co-location/control geometry, access, replay and bounded evidence mechanism before source. Pure-contract checkpoint precedes mounted integration; owner rendered/task acceptance and deployment remain separate."
 summary: >-

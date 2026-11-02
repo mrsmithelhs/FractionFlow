@@ -6,6 +6,22 @@ and pause records retained later in this file.
 
 ## Current board and owner direction
 
+Latest 2026-11-01 owner disposition: Plan50 COMPLETE after accepted Repair02 success
+presentation b936046/progress233f17e, technical85685c7. See owner-acceptance.md.
+Plan51 is IN-PROGRESS/RUNNABLE on explicit owner instruction; a fresh Codex
+implementer will be started by the owner, no chat launched by orchestration.
+Its mechanism and pure checkpoint gates remain intact. Source baseline must now
+include accepted Plan50; use its concise success palette as a presentation
+reference without treating unadopted cross-episode rollout as implemented.
+
+Plan52 is newly DRAFT: bounded house-feedback consistency rollout after Plan51,
+with exact surface/style/focus gate before source. It is not started and broader
+house-style adoption remains gated. Audit/proposal43f5e9d records one owner-requested
+Terra-medium read-only style audit, distinct from Plan50 implementation review.
+No additional reviewer for the narrow Repair02, no full historical matrix rerun.
+FF Impl50 is closed/holding; bidirectional chat authorization ended at completion.
+No push/deployment. Older status entries below are historical and superseded.
+
 Current 2026-11-01: Plan47 COMPLETE by owner adoption of the refined symbolic-first
 distance task and four common-unit records (94e106b, progress e44b558, review
 5879042). Owner-acceptance.md governs. New Plan51 READY but BLOCKED ON PLAN50;
