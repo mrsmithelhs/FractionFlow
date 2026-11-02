@@ -1,5 +1,9 @@
 # Plan 51 progress — Requirement 0 checkpoint
 
+## Repair 01 — 2026-11-01
+
+Orchestrator delivery review requested a bounded Help timing, accessible association and success-cue repair. Repair and separate current screenshots/evidence are committed `45c5953`; see `repair01-evidence.md`. Same-turn Help requests now remain visible, radio names identify first/second, current feedback is associated with controls, bar tracks expose a graphic role/name, and accepted results receive one concise acknowledgment. Focused 45 tests, repaired build, isolated Plan51 route 1/1, packet lint and diff check passed. The earlier 603-test full suite and 119-execution matrix predate this repair; they were not repeated or represented as post-repair. Browser checks remain sampled and do not establish actual assistive-technology or physical-device behavior. No additional reviewer ran. Returned for orchestrator technical re-review; owner rendered/task acceptance remains pending. No status, push or deployment changed.
+
 ## Integration delivery — 2026-11-01
 
 Implementation and evidence committed `d597570`, following pure contract `7d899bd`. The four-record task now runs as comparison then unsigned distance, with raw equivalent form preservation, explicit assistance, v12 replay, common scene, both views and shared direct progression. Exact ownership, validations, browser/mutation receipts and limitations are detailed in `integration-evidence.md`. The one consolidated cold Terra-medium read-only review found six issues, dispositioned in `review-disposition.md`; fixes were verified inline and not independently re-reviewed. Reviewer-reported model/effort could not be independently observed; the configured request was Terra medium and no substitution was made.
