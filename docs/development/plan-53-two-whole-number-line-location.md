@@ -1,11 +1,9 @@
 ---
 id: plan-53
 title: Two-Whole Number-Line Location and Bar Verification
-status: ready
+status: in-progress
 depends_on: [plan-48, plan-39, plan-50, plan-52]
 gate: "Requirement 0 mechanism and exact batch approval before source; pure content/state/replay checkpoint before mounted integration; technical review and owner rendered/task acceptance. Deployment remains separate."
-superseded_by: null
-resolution: null
 summary: >-
   Implement one short independent fraction-location task on [0,2], with explicit
   Check, requested help, editable recovery and equal-unit stacked-bar verification
