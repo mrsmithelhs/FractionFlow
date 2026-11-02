@@ -72,7 +72,7 @@ export function renderPlan51Distance(container, scene, options) {
   }
   if (d.stage === 'compare' && d.modelChoice) append(root, model(d.modelChoice));
   if (d.feedback || options.refusal) {
-    const feedback = el('p', 'plan45-recovery', options.refusal || (d.stage === 'compare' ? 'Not quite. Try comparing the amounts again.' : 'Not quite. Check the size and number of parts between the amounts.'));
+    const feedback = el('p', `plan45-recovery ${options.refusal ? 'house-attention' : 'house-retry'}`, options.refusal || (d.stage === 'compare' ? 'Not quite. Try comparing the amounts again.' : 'Not quite. Check the size and number of parts between the amounts.'));
     feedback.id = `plan51-feedback-${options.view}`;
     feedback.setAttribute('role', 'status');
     append(root, feedback);

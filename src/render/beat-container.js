@@ -383,6 +383,7 @@ export function createBeatContainer({
     controlsContainer.classList.add('active-beat-controls');
 
     if (scene.meaning.status.episode === 'resolved') {
+      promptHeader.classList.add('house-success');
       let completeMessage = strings.resolve.complete || 'You finished this problem.';
       if (task.connectionForm === 'premise' && scene.meaning.premiseCase) {
         completeMessage = scene.meaning.premiseCase.expectedResponse === 'yes'
@@ -438,6 +439,7 @@ export function createBeatContainer({
           recoveryEl.textContent = strings.decide.invalidDenominator(denom);
         }
       } else if (recovery.classification.kind === 'valid-but-unavailable-task-path') {
+        recoveryEl.classList.add('house-attention');
         recoveryEl.textContent = strings.decide.validButUnavailable(
           recovery.classification.targetDenominator,
         );
@@ -689,7 +691,7 @@ export function createBeatContainer({
           multiplierInput.element.id = 'visual-transform-task-help';
           multiplierInput.element.querySelector('.control-label').classList.add('active-beat-prompt');
           const emptyNotice = document.createElement('p');
-          emptyNotice.classList.add('active-beat-feedback', 'recovery-feedback');
+          emptyNotice.classList.add('active-beat-feedback', 'recovery-feedback', 'house-attention');
           emptyNotice.setAttribute('role', 'alert');
           multiplierInput.element.querySelector('input').addEventListener('input', () => {
             if (emptyNotice.isConnected) emptyNotice.remove();
@@ -751,6 +753,7 @@ export function createBeatContainer({
       }
 
       case 'resolve': {
+        promptHeader.classList.add('house-success');
         const progression = getProgression ? getProgression() : null;
         if (scene.meaning.takeaway) {
           const accepted = scene.meaning.takeaway.acceptedResponseForm

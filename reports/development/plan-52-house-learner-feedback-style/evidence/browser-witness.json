@@ -1,0 +1,513 @@
+{
+  "results": [
+    {
+      "width": 360,
+      "view": "visual",
+      "refusal": {
+        "text": "Choose a relation before checking.",
+        "bg": "rgb(242, 246, 243)",
+        "color": "rgb(31, 41, 55)",
+        "padding": "10px 14px",
+        "role": "status",
+        "focused": false,
+        "outline": "none",
+        "overflow": false
+      },
+      "retry": {
+        "text": "Not quite. Try comparing the amounts again.",
+        "bg": "rgb(254, 242, 242)",
+        "color": "rgb(153, 27, 27)",
+        "padding": "10px 14px",
+        "role": "status",
+        "focused": false,
+        "outline": "none",
+        "overflow": false
+      },
+      "success": {
+        "text": "That's right.",
+        "bg": "rgb(241, 250, 244)",
+        "color": "rgb(20, 33, 61)",
+        "padding": "12px 16px",
+        "role": null,
+        "focused": false,
+        "outline": "none",
+        "overflow": false
+      },
+      "incomplete": {
+        "text": "Place the unplaced fractions before checking.",
+        "bg": "rgb(242, 246, 243)",
+        "color": "rgb(31, 41, 55)",
+        "padding": "10px 14px",
+        "role": null,
+        "focused": true,
+        "outline": "none",
+        "overflow": false
+      },
+      "collectionRetry": {
+        "text": "Check the marked placements. You can move any fraction.",
+        "bg": "rgb(254, 242, 242)",
+        "color": "rgb(153, 27, 27)",
+        "padding": "10px 14px",
+        "role": null,
+        "focused": true,
+        "outline": "none",
+        "overflow": false
+      },
+      "comparisonRetry": {
+        "text": "That sign does not fit yet. Try again.",
+        "bg": "rgb(254, 242, 242)",
+        "color": "rgb(153, 27, 27)",
+        "padding": "10px 14px",
+        "role": "status",
+        "focused": false,
+        "outline": "none",
+        "overflow": false
+      },
+      "comparisonSuccess": {
+        "text": "That's right.",
+        "bg": "rgb(241, 250, 244)",
+        "color": "rgb(31, 41, 55)",
+        "padding": "12px 16px",
+        "role": null,
+        "focused": false,
+        "outline": "none",
+        "overflow": false
+      },
+      "unaryRetry": {
+        "text": "That point is at an end. Try again.",
+        "bg": "rgb(254, 242, 242)",
+        "color": "rgb(153, 27, 27)",
+        "padding": "10px 14px",
+        "role": "alert",
+        "focused": false,
+        "outline": "none",
+        "overflow": false
+      },
+      "unarySuccess": {
+        "text": "That’s right.12",
+        "bg": "rgb(241, 250, 244)",
+        "color": "rgb(20, 33, 61)",
+        "padding": "12px 16px",
+        "role": null,
+        "focused": false,
+        "outline": "none",
+        "overflow": false
+      },
+      "arithmeticRetry": {
+        "text": "10 is not a common denominator. Try another number.",
+        "bg": "rgb(254, 242, 242)",
+        "color": "rgb(153, 27, 27)",
+        "padding": "10px 14px",
+        "role": "alert",
+        "focused": false,
+        "outline": "none",
+        "overflow": false
+      },
+      "unavailable": {
+        "text": "36 is a valid common denominator, but this practice cannot use it. Try another number.",
+        "bg": "rgb(242, 246, 243)",
+        "color": "rgb(31, 41, 55)",
+        "padding": "10px 14px",
+        "role": "alert",
+        "focused": false,
+        "outline": "none",
+        "overflow": false
+      },
+      "arithmeticSuccess": {
+        "text": "The answer is 11/12.",
+        "bg": "rgb(241, 250, 244)",
+        "color": "rgb(31, 41, 55)",
+        "padding": "12px 16px",
+        "role": null,
+        "focused": false,
+        "outline": "none",
+        "overflow": false
+      },
+      "enlarged": null
+    },
+    {
+      "width": 360,
+      "view": "linear",
+      "refusal": {
+        "text": "Choose a relation before checking.",
+        "bg": "rgb(242, 246, 243)",
+        "color": "rgb(31, 41, 55)",
+        "padding": "10px 14px",
+        "role": "status",
+        "focused": false,
+        "outline": "none",
+        "overflow": false
+      },
+      "retry": {
+        "text": "Not quite. Try comparing the amounts again.",
+        "bg": "rgb(254, 242, 242)",
+        "color": "rgb(153, 27, 27)",
+        "padding": "10px 14px",
+        "role": "status",
+        "focused": false,
+        "outline": "none",
+        "overflow": false
+      },
+      "success": {
+        "text": "That's right.",
+        "bg": "rgb(241, 250, 244)",
+        "color": "rgb(20, 33, 61)",
+        "padding": "12px 16px",
+        "role": null,
+        "focused": false,
+        "outline": "none",
+        "overflow": false
+      },
+      "incomplete": {
+        "text": "Place the unplaced fractions before checking.",
+        "bg": "rgb(242, 246, 243)",
+        "color": "rgb(31, 41, 55)",
+        "padding": "10px 14px",
+        "role": null,
+        "focused": true,
+        "outline": "none",
+        "overflow": false
+      },
+      "collectionRetry": {
+        "text": "Check the marked placements. You can move any fraction.",
+        "bg": "rgb(254, 242, 242)",
+        "color": "rgb(153, 27, 27)",
+        "padding": "10px 14px",
+        "role": null,
+        "focused": true,
+        "outline": "none",
+        "overflow": false
+      },
+      "comparisonRetry": {
+        "text": "That sign does not fit yet. Try again.",
+        "bg": "rgb(254, 242, 242)",
+        "color": "rgb(153, 27, 27)",
+        "padding": "10px 14px",
+        "role": "status",
+        "focused": false,
+        "outline": "none",
+        "overflow": false
+      },
+      "comparisonSuccess": {
+        "text": "That's right.",
+        "bg": "rgb(241, 250, 244)",
+        "color": "rgb(31, 41, 55)",
+        "padding": "12px 16px",
+        "role": null,
+        "focused": false,
+        "outline": "none",
+        "overflow": false
+      },
+      "unaryRetry": {
+        "text": "That point is at an end. Try again.",
+        "bg": "rgb(254, 242, 242)",
+        "color": "rgb(153, 27, 27)",
+        "padding": "10px 14px",
+        "role": "alert",
+        "focused": false,
+        "outline": "none",
+        "overflow": false
+      },
+      "unarySuccess": {
+        "text": "That’s right.12",
+        "bg": "rgb(241, 250, 244)",
+        "color": "rgb(20, 33, 61)",
+        "padding": "12px 16px",
+        "role": null,
+        "focused": false,
+        "outline": "none",
+        "overflow": false
+      },
+      "arithmeticRetry": {
+        "text": "10 is not a common denominator. Try another number.",
+        "bg": "rgb(254, 242, 242)",
+        "color": "rgb(153, 27, 27)",
+        "padding": "10px 14px",
+        "role": "alert",
+        "focused": false,
+        "outline": "none",
+        "overflow": false
+      },
+      "unavailable": {
+        "text": "36 is a valid common denominator, but this practice cannot use it. Try another number.",
+        "bg": "rgb(242, 246, 243)",
+        "color": "rgb(31, 41, 55)",
+        "padding": "10px 14px",
+        "role": "alert",
+        "focused": false,
+        "outline": "none",
+        "overflow": false
+      },
+      "arithmeticSuccess": {
+        "text": "The answer is 11/12.",
+        "bg": "rgb(241, 250, 244)",
+        "color": "rgb(31, 41, 55)",
+        "padding": "12px 16px",
+        "role": null,
+        "focused": false,
+        "outline": "none",
+        "overflow": false
+      },
+      "enlarged": {
+        "text": "The answer is 11/12.",
+        "bg": "rgb(241, 250, 244)",
+        "color": "rgb(31, 41, 55)",
+        "padding": "24px 32px",
+        "role": null,
+        "focused": false,
+        "outline": "none",
+        "overflow": false
+      }
+    },
+    {
+      "width": 1093,
+      "view": "visual",
+      "refusal": {
+        "text": "Choose a relation before checking.",
+        "bg": "rgb(242, 246, 243)",
+        "color": "rgb(31, 41, 55)",
+        "padding": "10px 14px",
+        "role": "status",
+        "focused": false,
+        "outline": "none",
+        "overflow": false
+      },
+      "retry": {
+        "text": "Not quite. Try comparing the amounts again.",
+        "bg": "rgb(254, 242, 242)",
+        "color": "rgb(153, 27, 27)",
+        "padding": "10px 14px",
+        "role": "status",
+        "focused": false,
+        "outline": "none",
+        "overflow": false
+      },
+      "success": {
+        "text": "That's right.",
+        "bg": "rgb(241, 250, 244)",
+        "color": "rgb(20, 33, 61)",
+        "padding": "12px 16px",
+        "role": null,
+        "focused": false,
+        "outline": "none",
+        "overflow": false
+      },
+      "incomplete": {
+        "text": "Place the unplaced fractions before checking.",
+        "bg": "rgb(242, 246, 243)",
+        "color": "rgb(31, 41, 55)",
+        "padding": "10px 14px",
+        "role": null,
+        "focused": true,
+        "outline": "none",
+        "overflow": false
+      },
+      "collectionRetry": {
+        "text": "Check the marked placements. You can move any fraction.",
+        "bg": "rgb(254, 242, 242)",
+        "color": "rgb(153, 27, 27)",
+        "padding": "10px 14px",
+        "role": null,
+        "focused": true,
+        "outline": "none",
+        "overflow": false
+      },
+      "comparisonRetry": {
+        "text": "That sign does not fit yet. Try again.",
+        "bg": "rgb(254, 242, 242)",
+        "color": "rgb(153, 27, 27)",
+        "padding": "10px 14px",
+        "role": "status",
+        "focused": false,
+        "outline": "none",
+        "overflow": false
+      },
+      "comparisonSuccess": {
+        "text": "That's right.",
+        "bg": "rgb(241, 250, 244)",
+        "color": "rgb(31, 41, 55)",
+        "padding": "12px 16px",
+        "role": null,
+        "focused": false,
+        "outline": "none",
+        "overflow": false
+      },
+      "unaryRetry": {
+        "text": "That point is at an end. Try again.",
+        "bg": "rgb(254, 242, 242)",
+        "color": "rgb(153, 27, 27)",
+        "padding": "10px 14px",
+        "role": "alert",
+        "focused": false,
+        "outline": "none",
+        "overflow": false
+      },
+      "unarySuccess": {
+        "text": "That’s right.12",
+        "bg": "rgb(241, 250, 244)",
+        "color": "rgb(20, 33, 61)",
+        "padding": "12px 16px",
+        "role": null,
+        "focused": false,
+        "outline": "none",
+        "overflow": false
+      },
+      "arithmeticRetry": {
+        "text": "10 is not a common denominator. Try another number.",
+        "bg": "rgb(254, 242, 242)",
+        "color": "rgb(153, 27, 27)",
+        "padding": "10px 14px",
+        "role": "alert",
+        "focused": false,
+        "outline": "none",
+        "overflow": false
+      },
+      "unavailable": {
+        "text": "36 is a valid common denominator, but this practice cannot use it. Try another number.",
+        "bg": "rgb(242, 246, 243)",
+        "color": "rgb(31, 41, 55)",
+        "padding": "10px 14px",
+        "role": "alert",
+        "focused": false,
+        "outline": "none",
+        "overflow": false
+      },
+      "arithmeticSuccess": {
+        "text": "The answer is 11/12.",
+        "bg": "rgb(241, 250, 244)",
+        "color": "rgb(31, 41, 55)",
+        "padding": "12px 16px",
+        "role": null,
+        "focused": false,
+        "outline": "none",
+        "overflow": false
+      },
+      "enlarged": null
+    },
+    {
+      "width": 1093,
+      "view": "linear",
+      "refusal": {
+        "text": "Choose a relation before checking.",
+        "bg": "rgb(242, 246, 243)",
+        "color": "rgb(31, 41, 55)",
+        "padding": "10px 14px",
+        "role": "status",
+        "focused": false,
+        "outline": "none",
+        "overflow": false
+      },
+      "retry": {
+        "text": "Not quite. Try comparing the amounts again.",
+        "bg": "rgb(254, 242, 242)",
+        "color": "rgb(153, 27, 27)",
+        "padding": "10px 14px",
+        "role": "status",
+        "focused": false,
+        "outline": "none",
+        "overflow": false
+      },
+      "success": {
+        "text": "That's right.",
+        "bg": "rgb(241, 250, 244)",
+        "color": "rgb(20, 33, 61)",
+        "padding": "12px 16px",
+        "role": null,
+        "focused": false,
+        "outline": "none",
+        "overflow": false
+      },
+      "incomplete": {
+        "text": "Place the unplaced fractions before checking.",
+        "bg": "rgb(242, 246, 243)",
+        "color": "rgb(31, 41, 55)",
+        "padding": "10px 14px",
+        "role": null,
+        "focused": true,
+        "outline": "none",
+        "overflow": false
+      },
+      "collectionRetry": {
+        "text": "Check the marked placements. You can move any fraction.",
+        "bg": "rgb(254, 242, 242)",
+        "color": "rgb(153, 27, 27)",
+        "padding": "10px 14px",
+        "role": null,
+        "focused": true,
+        "outline": "none",
+        "overflow": false
+      },
+      "comparisonRetry": {
+        "text": "That sign does not fit yet. Try again.",
+        "bg": "rgb(254, 242, 242)",
+        "color": "rgb(153, 27, 27)",
+        "padding": "10px 14px",
+        "role": "status",
+        "focused": false,
+        "outline": "none",
+        "overflow": false
+      },
+      "comparisonSuccess": {
+        "text": "That's right.",
+        "bg": "rgb(241, 250, 244)",
+        "color": "rgb(31, 41, 55)",
+        "padding": "12px 16px",
+        "role": null,
+        "focused": false,
+        "outline": "none",
+        "overflow": false
+      },
+      "unaryRetry": {
+        "text": "That point is at an end. Try again.",
+        "bg": "rgb(254, 242, 242)",
+        "color": "rgb(153, 27, 27)",
+        "padding": "10px 14px",
+        "role": "alert",
+        "focused": false,
+        "outline": "none",
+        "overflow": false
+      },
+      "unarySuccess": {
+        "text": "That’s right.12",
+        "bg": "rgb(241, 250, 244)",
+        "color": "rgb(20, 33, 61)",
+        "padding": "12px 16px",
+        "role": null,
+        "focused": false,
+        "outline": "none",
+        "overflow": false
+      },
+      "arithmeticRetry": {
+        "text": "10 is not a common denominator. Try another number.",
+        "bg": "rgb(254, 242, 242)",
+        "color": "rgb(153, 27, 27)",
+        "padding": "10px 14px",
+        "role": "alert",
+        "focused": false,
+        "outline": "none",
+        "overflow": false
+      },
+      "unavailable": {
+        "text": "36 is a valid common denominator, but this practice cannot use it. Try another number.",
+        "bg": "rgb(242, 246, 243)",
+        "color": "rgb(31, 41, 55)",
+        "padding": "10px 14px",
+        "role": "alert",
+        "focused": false,
+        "outline": "none",
+        "overflow": false
+      },
+      "arithmeticSuccess": {
+        "text": "The answer is 11/12.",
+        "bg": "rgb(241, 250, 244)",
+        "color": "rgb(31, 41, 55)",
+        "padding": "12px 16px",
+        "role": null,
+        "focused": false,
+        "outline": "none",
+        "overflow": false
+      },
+      "enlarged": null
+    }
+  ]
+}

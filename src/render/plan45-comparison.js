@@ -142,7 +142,7 @@ function makeConstruction(comparison, callbacks) {
   input.setAttribute('data-plan49-primary', ''); input.setAttribute('autocomplete', 'off'); input.value = callbacks.getDraft(key);
   input.addEventListener('input', () => { callbacks.setDraft(key, input.value); input.setCustomValidity?.(''); });
   if (work.recovery && work.recovery !== 'dependent-work-cleared') {
-    const error = element('p', 'plan49-helper-recovery'); error.id = `${id}-error`; error.setAttribute('role', 'status');
+    const error = element('p', `plan49-helper-recovery ${work.recovery === 'unavailable' ? 'house-attention' : 'house-retry'}`); error.id = `${id}-error`; error.setAttribute('role', 'status');
     error.textContent = work.recovery === 'unavailable' ? 'That is a common denominator, but this workspace can use numbers up to 144. Try another.'
       : work.recovery === 'not-common' ? 'That is not a common denominator. Try another number.'
       : 'Not quite. Try again.'; input.setAttribute('aria-describedby', error.id); append(form, error);
@@ -199,7 +199,7 @@ export function createPlan45ComparisonRenderer({
     if (status.episode === 'resolved') {
       const verification = element('section', 'plan45-verification');
       verification.setAttribute('aria-label', STRINGS.plan45.verificationLabel);
-      const heading = element('h2', 'plan45-verification-heading');
+      const heading = element('h2', 'plan45-verification-heading house-success');
       heading.textContent = STRINGS.plan45.promptVerification;
       append(verification, heading);
       if (view === 'visual') {
@@ -239,7 +239,7 @@ export function createPlan45ComparisonRenderer({
     }
 
     if (status.recovery) {
-      const recovery = element('p', 'plan45-recovery');
+      const recovery = element('p', 'plan45-recovery house-retry');
       recovery.id = `plan45-recovery-${view}`;
       recovery.setAttribute('role', 'status');
       recovery.textContent = STRINGS.plan45.recovery;

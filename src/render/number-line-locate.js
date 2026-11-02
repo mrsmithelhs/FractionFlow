@@ -779,6 +779,7 @@ export function createNumberLineLocateRenderer({
         root.appendChild(stack);
       }
     } else {
+      if (scene.meaning.status.episode === 'resolved') heading.classList.add('house-success');
       root.appendChild(heading);
       stack.appendChild(makeBar(scene, strings, view));
       stack.appendChild(makeTrack(scene, strings, previewHandle?.contextKey === currentKey ? previewHandle.candidateId : null, view));
@@ -792,7 +793,7 @@ export function createNumberLineLocateRenderer({
 
     if (scene.meaning.status.recovery?.beat === 'locate') {
       const feedback = document.createElement('p');
-      feedback.className = 'plan39-feedback';
+      feedback.className = 'plan39-feedback house-retry';
       feedback.setAttribute('role', 'alert');
       feedback.textContent = repair02
         ? strings.plan39Repair02.recovery(scene.meaning.status.recovery.classification.kind)
