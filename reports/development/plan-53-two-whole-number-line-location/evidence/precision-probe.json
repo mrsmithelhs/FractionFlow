@@ -1,0 +1,234 @@
+[
+  {
+    "config": {
+      "width": 360,
+      "height": 740,
+      "dpr": 1,
+      "scale": 1
+    },
+    "axisWidth": 246,
+    "spacing": 15.375,
+    "observed": [
+      {
+        "direction": "left",
+        "expected": 9,
+        "highlighted": "step-9",
+        "percent": "56.25%",
+        "grabOffsetX": -17
+      },
+      {
+        "direction": "right",
+        "expected": 10,
+        "highlighted": "step-10",
+        "percent": "62.5%",
+        "grabOffsetX": -17
+      }
+    ],
+    "buttons": [
+      {
+        "text": "Move left",
+        "width": 80.828125,
+        "height": 44
+      },
+      {
+        "text": "Move right",
+        "width": 91.5,
+        "height": 44
+      },
+      {
+        "text": "Help",
+        "width": 47.015625,
+        "height": 44
+      },
+      {
+        "text": "Check",
+        "width": 58.671875,
+        "height": 44
+      }
+    ],
+    "fourthsBoundaryAndEndpointContainment": true,
+    "touchCommit": true,
+    "scrollBefore": 0,
+    "scrollAfter": 0,
+    "cancelPreserved": true,
+    "stepCorrection": true,
+    "doc": {
+      "width": 360,
+      "viewport": 360
+    }
+  },
+  {
+    "config": {
+      "width": 360,
+      "height": 740,
+      "dpr": 1,
+      "scale": 1.5
+    },
+    "axisWidth": 190,
+    "spacing": 11.875,
+    "observed": [
+      {
+        "direction": "left",
+        "expected": 9,
+        "highlighted": "step-9",
+        "percent": "56.25%",
+        "grabOffsetX": -17
+      },
+      {
+        "direction": "right",
+        "expected": 10,
+        "highlighted": "step-10",
+        "percent": "62.5%",
+        "grabOffsetX": -17
+      }
+    ],
+    "buttons": [
+      {
+        "text": "Move left",
+        "width": 114.25,
+        "height": 44
+      },
+      {
+        "text": "Move right",
+        "width": 130.25,
+        "height": 44
+      },
+      {
+        "text": "Help",
+        "width": 63.515625,
+        "height": 44
+      },
+      {
+        "text": "Check",
+        "width": 80.015625,
+        "height": 44
+      }
+    ],
+    "fourthsBoundaryAndEndpointContainment": true,
+    "touchCommit": true,
+    "scrollBefore": 33,
+    "scrollAfter": 33,
+    "cancelPreserved": true,
+    "stepCorrection": true,
+    "doc": {
+      "width": 360,
+      "viewport": 360
+    }
+  },
+  {
+    "config": {
+      "width": 360,
+      "height": 740,
+      "dpr": 1,
+      "scale": 2
+    },
+    "axisWidth": 134,
+    "spacing": 8.375,
+    "observed": [
+      {
+        "direction": "left",
+        "expected": 9,
+        "highlighted": "step-9",
+        "percent": "56.25%",
+        "grabOffsetX": -17
+      },
+      {
+        "direction": "right",
+        "expected": 10,
+        "highlighted": "step-10",
+        "percent": "62.5%",
+        "grabOffsetX": -17
+      }
+    ],
+    "buttons": [
+      {
+        "text": "Move left",
+        "width": 147.65625,
+        "height": 47
+      },
+      {
+        "text": "Move right",
+        "width": 168.984375,
+        "height": 47
+      },
+      {
+        "text": "Help",
+        "width": 80.015625,
+        "height": 49
+      },
+      {
+        "text": "Check",
+        "width": 101.34375,
+        "height": 49
+      }
+    ],
+    "fourthsBoundaryAndEndpointContainment": true,
+    "touchCommit": true,
+    "scrollBefore": 345,
+    "scrollAfter": 345,
+    "cancelPreserved": true,
+    "stepCorrection": true,
+    "doc": {
+      "width": 360,
+      "viewport": 360
+    }
+  },
+  {
+    "config": {
+      "width": 1093,
+      "height": 614,
+      "dpr": 1.25,
+      "scale": 1
+    },
+    "axisWidth": 906.8125,
+    "spacing": 56.67578125,
+    "observed": [
+      {
+        "direction": "left",
+        "expected": 9,
+        "highlighted": "step-9",
+        "percent": "56.25%",
+        "grabOffsetX": -17
+      },
+      {
+        "direction": "right",
+        "expected": 10,
+        "highlighted": "step-10",
+        "percent": "62.5%",
+        "grabOffsetX": -17
+      }
+    ],
+    "buttons": [
+      {
+        "text": "Move left",
+        "width": 80.828125,
+        "height": 44
+      },
+      {
+        "text": "Move right",
+        "width": 91.5,
+        "height": 44
+      },
+      {
+        "text": "Help",
+        "width": 47.015625,
+        "height": 44
+      },
+      {
+        "text": "Check",
+        "width": 58.671875,
+        "height": 44
+      }
+    ],
+    "fourthsBoundaryAndEndpointContainment": true,
+    "touchCommit": true,
+    "scrollBefore": 5,
+    "scrollAfter": 5,
+    "cancelPreserved": true,
+    "stepCorrection": true,
+    "doc": {
+      "width": 1093,
+      "viewport": 1093
+    }
+  }
+]
