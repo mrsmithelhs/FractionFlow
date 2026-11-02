@@ -1,7 +1,8 @@
 ---
 id: plan-52
 title: House Learner Feedback Style Across Existing Episodes
-status: in-progress
+status: complete
+resolution: "Owner accepted the rendered house feedback presentation on 2026-11-01 after technical review; coverage limits and navigation announcement exception retained. No push or deployment authorized."
 depends_on: [plan-50, plan-51]
 gate: "Approve the exact surface matrix, shared visual/copy contract and focus/announcement plan before source. Serialize source after Plan51; owner rendered acceptance and deployment remain separate."
 summary: >-
