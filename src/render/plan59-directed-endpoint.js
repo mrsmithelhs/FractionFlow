@@ -21,6 +21,7 @@ export function createPlan59Renderer({ container, view, dispatch, progression, h
     if (current) {
       current.token.classList.remove('is-dragging');
       current.token.style.cssText = current.originalStyle;
+      current.placeholder?.remove();
       try { current.token.releasePointerCapture(current.pointerId); } catch { /* already released */ }
     }
     root?.querySelector('.plan53-highlight')?.classList.remove('plan53-highlight');
@@ -161,6 +162,16 @@ export function createPlan59Renderer({ container, view, dispatch, progression, h
           const current = gesture;
           if (!current || event.pointerId !== current.pointerId || !valid(current.token)) return;
           if (!current.dragging && Math.hypot(event.clientX - current.x, event.clientY - current.y) < 6) return;
+          if (!current.dragging && current.token.parentElement?.classList.contains('plan59-tray')) {
+            const placeholder = current.token.cloneNode(true);
+            placeholder.classList.add('plan59-tray-placeholder');
+            placeholder.setAttribute('aria-hidden', 'true');
+            placeholder.removeAttribute('role');
+            placeholder.removeAttribute('aria-label');
+            placeholder.removeAttribute('aria-describedby');
+            current.token.before(placeholder);
+            current.placeholder = placeholder;
+          }
           current.dragging = true;
           const x = event.clientX - current.offsetX, y = event.clientY - current.offsetY;
           current.token.classList.add('is-dragging');

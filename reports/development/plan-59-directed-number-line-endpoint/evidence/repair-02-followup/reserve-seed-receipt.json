@@ -1,0 +1,8 @@
+{
+  "failure": {
+    "marker": "WITNESS_DURING_TRAY",
+    "exit": 1,
+    "excerpt": "ernal/modules/run_main:107\r\n    triggerUncaughtException(\r\n    ^\r\n\r\nAssertionError [ERR_ASSERTION]: WITNESS_DURING_TRAY\r\n    at stable (file:///C:/AI/FractionFlow/reports/development/plan-59-directed-number-line-endpoint/evidence/repair-02-followup/drag-probe.mjs:31:11)\r\n    at drag (file:///C:/AI/FractionFlow/reports/development/plan-59-directed-number-line-endpoint/evidence/repair-02-followup/drag-probe.mjs:41:34)\r\n    at async file:///C:/AI/Fr"
+  },
+  "restored": "clean pass"
+}
