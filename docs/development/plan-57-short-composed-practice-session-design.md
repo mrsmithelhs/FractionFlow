@@ -1,11 +1,9 @@
 ---
 id: plan-57
 title: Short Composed Practice Session Design
-status: draft
+status: in-progress
 depends_on: [plan-29, plan-35, plan-43, plan-49, plan-50, plan-51, plan-53]
 gate: "Approve bounded design scope; owner adopts one session purpose, composition and finite stopping contract before any source packet. No random/adaptive activation or durable progress."
-superseded_by: null
-resolution: null
 summary: >-
   Compare a small number of finite practice compositions using accepted tasks,
   balancing stable runs, purposeful responsibility variation and a natural stop.
