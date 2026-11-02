@@ -1,11 +1,9 @@
 ---
 id: plan-58
 title: Whole-Plus-Fraction Construction with Mixed-Form Verification
-status: ready
+status: in-progress
 depends_on: [plan-54, plan-53, plan-31, plan-52]
 gate: "Mechanism and literal six-record batch approval before source; pure content/state/scene/replay checkpoint before mounted integration; technical review and owner rendered/task acceptance. Deployment remains separate."
-superseded_by: null
-resolution: null
 summary: >-
   Implement six compact whole-plus-fraction construction problems: learner enters
   whole and source-piece counts, checks an honest draft model, organizes equal
