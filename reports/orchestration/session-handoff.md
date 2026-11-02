@@ -6,6 +6,19 @@ and pause records retained later in this file.
 
 ## Current board and owner direction
 
+Latest 2026-11-01: Plan51 COMPLETE by explicit owner rendered/task acceptance;
+owner-acceptance.md records scope/limits. Final technical69c2235, stylea0a563f,
+progress5a069f1; earlier interaction/access repair45c5953. Original full603/matrix119
+are pre-repair; focused/browser/build/filtered checks are separately attributed.
+No push/deployment. FF Impl51 (01a19a3f-318c-7b23-bfc7-34c02e35e4ef) assignment closed.
+
+Plan52 IN-PROGRESS/RUNNABLE on explicit owner direction, fresh implementer to be
+created by owner. Start with exact surface matrix/shared style/copy and focus/
+announcement proposal, stop before source. Preserve meaningful prompts/math,
+specific recovery and unavailable semantics; no generic renderer/global focus
+rewrite. No new chat or source launched by orchestration. Plan48 remains draft
+readiness work; Phase4 exit not declared. Older status blocks below are historical.
+
 Latest 2026-11-01 owner disposition: Plan50 COMPLETE after accepted Repair02 success
 presentation b936046/progress233f17e, technical85685c7. See owner-acceptance.md.
 Plan51 is IN-PROGRESS/RUNNABLE on explicit owner instruction; a fresh Codex

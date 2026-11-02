@@ -1,11 +1,9 @@
 ---
 id: plan-52
 title: House Learner Feedback Style Across Existing Episodes
-status: draft
+status: in-progress
 depends_on: [plan-50, plan-51]
 gate: "Approve the exact surface matrix, shared visual/copy contract and focus/announcement plan before source. Serialize source after Plan51; owner rendered acceptance and deployment remain separate."
-superseded_by: null
-resolution: null
 summary: >-
   Reconcile demonstrated feedback styling differences across learner episodes
   using concise success, specific retry, neutral incomplete/help and truthful
@@ -33,10 +31,11 @@ apply one small house feedback vocabulary. Prior episodes currently mix green
 headers, plain verification headings, red panels, amber text and unstyled summaries.
 Fix demonstrated inconsistencies without forcing identical episode layouts.
 
-This is a DRAFT, not a started rollout or adoption of every audit recommendation.
-Plan51 is the sole next source writer; this packet waits for its closure and must
-refresh the surface inventory against its accepted output. No concurrent shared
-renderer/style/app changes. No new review of pedagogy or literature is needed.
+The owner closed Plan51 and set this packet in progress on 2026-11-01. This starts
+the bounded inventory/proposal, not source mutation or adoption of every audit
+recommendation. Refresh the surface inventory against accepted Plan51 output.
+No concurrent shared renderer/style/app changes. No new review of pedagogy or
+literature is needed.
 
 ## Requirement 0 — inventory, propose and stop
 

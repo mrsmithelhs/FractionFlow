@@ -1,7 +1,8 @@
 ---
 id: plan-51
 title: Fraction Comparison-to-Distance Task
-status: in-progress
+status: complete
+resolution: "Owner accepted the rendered four-record comparison-to-distance task following final technical repair review; validation baselines and device/AT/learner limits retained. No push or deployment."
 depends_on: [plan-47, plan-49, plan-50]
 gate: "After Plan50 closure: Requirement 0 mechanism approval before source, pure task/replay checkpoint before mounted integration, technical review and owner rendered/task acceptance. Deployment remains separate."
 summary: >-
