@@ -1,11 +1,9 @@
 ---
 id: plan-59
 title: Directed Number-Line Endpoint Task
-status: ready
+status: in-progress
 depends_on: [plan-55, plan-53, plan-58]
 gate: "After Plan58 closure, approve mechanism before source and pure content/state/scene/replay before mounting. Technical review and owner rendered/task acceptance; deployment separate."
-superseded_by: null
-resolution: null
 summary: >-
   Implement six same-unit proper-fraction addition/subtraction endpoint tasks on
   [0,1]. Learner places and checks the endpoint from a supplied start and operation;

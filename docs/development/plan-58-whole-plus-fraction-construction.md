@@ -1,7 +1,8 @@
 ---
 id: plan-58
 title: Whole-Plus-Fraction Construction with Mixed-Form Verification
-status: delivered
+status: complete
+resolution: "Owner accepted the rendered six-record construction task after repair and technical review on 2026-11-02; validation attribution and device/IME/AT/learner limits retained. No Phase4/OQ24 closure or push/deployment."
 depends_on: [plan-54, plan-53, plan-31, plan-52]
 gate: "Mechanism and literal six-record batch approval before source; pure content/state/scene/replay checkpoint before mounted integration; technical review and owner rendered/task acceptance. Deployment remains separate."
 summary: >-
