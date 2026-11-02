@@ -289,6 +289,12 @@ export const PLAN58_CONSTRUCTION_EPISODE_DEFINITION = deepFreeze({
   promptIdentities: { construct: 'phase4.construction.construct', resolve: 'phase4.construction.accepted' },
 });
 
+export const PLAN59_ENDPOINT_EPISODE_DEFINITION = deepFreeze({
+  id: 'phase-4-directed-number-line-endpoint', revision: '1', family: 'directed-number-line-endpoint',
+  beats: ['locate', 'resolve'], includeReflection: false,
+  promptIdentities: { locate: 'phase4.endpoint.place', resolve: 'phase4.endpoint.accepted' },
+});
+
 const EPISODE_DEFINITIONS = Object.freeze([
   LEGACY_PHASE2_EPISODE_DEFINITION,
   LEGACY_PHASE2_REFLECTION_EPISODE_DEFINITION,
@@ -312,6 +318,7 @@ const EPISODE_DEFINITIONS = Object.freeze([
   PLAN51_DISTANCE_EPISODE_DEFINITION,
   PLAN53_LOCATION_EPISODE_DEFINITION,
   PLAN58_CONSTRUCTION_EPISODE_DEFINITION,
+  PLAN59_ENDPOINT_EPISODE_DEFINITION,
 ]);
 
 export function getEpisodeDefinition(id = EPISODE_DEFINITION_ID, revision = EPISODE_DEFINITION_REVISION) {

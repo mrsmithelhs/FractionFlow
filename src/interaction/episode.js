@@ -1,3 +1,4 @@
+import { createPlan59Episode, applyPlan59Intent } from './plan59-directed-endpoint-episode.js';
 import { createPlan58Episode, applyPlan58Intent } from './plan58-whole-plus-fraction-episode.js';
 import { createPlan53Episode, applyPlan53Intent } from './plan53-two-whole-location-episode.js';
 import { createPlan51Episode, applyPlan51Intent } from './plan51-distance-episode.js';
@@ -276,7 +277,9 @@ function assertDefinition(definition) {
       'episode definition semantics do not match its registered identity',
     );
   }
-  const approvedBeats = registered.id === 'phase-4-whole-plus-fraction-construction'
+  const approvedBeats = registered.id === 'phase-4-directed-number-line-endpoint'
+    ? ['locate', 'resolve']
+    : registered.id === 'phase-4-whole-plus-fraction-construction'
     ? ['construct', 'resolve']
     : registered.id === 'phase-4-two-whole-location'
     ? ['locate', 'resolve']
@@ -1414,6 +1417,9 @@ export function createEpisode({
   allowCompatibilityPair = false,
 } = {}) {
   const definition = assertDefinition(episodeDefinition);
+  if (definition.id === 'phase-4-directed-number-line-endpoint' && definition.revision === '1') {
+    return createPlan59Episode({ taskContext, support, activeCondition, episodeDefinition: definition });
+  }
   if (definition.id === 'phase-4-whole-plus-fraction-construction' && definition.revision === '1') {
     return createPlan58Episode({ taskContext, support, activeCondition, episodeDefinition: definition });
   }
@@ -1506,6 +1512,9 @@ export function applyIntent(state, rawIntent) {
   if (!state || state.schemaVersion !== 'fractionflow.episode-state/v1') {
     throw new EpisodeIntentError('INVALID_EPISODE_STATE', 'state is not a Plan 05 episode state');
   }
+  if (state.episodeDefinition?.id === 'phase-4-directed-number-line-endpoint' && state.episodeDefinition.revision === '1') {
+    return applyPlan59Intent(state, rawIntent);
+  }
   if (state.episodeDefinition?.id === 'phase-4-whole-plus-fraction-construction' && state.episodeDefinition.revision === '1') {
     return applyPlan58Intent(state, rawIntent);
   }
@@ -1561,6 +1570,10 @@ export function withActiveCondition(state, activeCondition) {
     throw new EpisodeIntentError('INVALID_EPISODE_STATE', 'state is not a Plan 05 episode state');
   }
   const normalizedCondition = validateActiveCondition(activeCondition);
+  if (state.episodeDefinition?.id === 'phase-4-directed-number-line-endpoint') {
+    if (!sameDefinitionValue(normalizedCondition, state.activeCondition)) throw new EpisodeIntentError('UNSUPPORTED_CONDITION', 'endpoint condition is frozen');
+    return state;
+  }
   if (state.episodeDefinition?.id === 'phase-4-whole-plus-fraction-construction') {
     if (!sameDefinitionValue(normalizedCondition, state.activeCondition)) throw new EpisodeIntentError('UNSUPPORTED_CONDITION', 'construction condition is frozen');
     return state;

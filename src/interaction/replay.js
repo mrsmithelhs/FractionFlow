@@ -1,3 +1,4 @@
+import { resolvePlan59Context, validatePlan59Context } from '../content/plan59-directed-endpoint-task.js';
 import { resolvePlan58Context, validatePlan58Context } from '../content/plan58-whole-plus-fraction-task.js';
 import { resolvePlan53Context, validatePlan53Context } from '../content/plan53-two-whole-location-task.js';
 import { resolvePlan51Context, validatePlan51Context } from '../content/plan51-distance-task.js';
@@ -34,6 +35,12 @@ export const REPLAY_V9_SCHEMA_VERSION = 'fractionflow.episode-replay/v9';
 export const REPLAY_V10_SCHEMA_VERSION = 'fractionflow.episode-replay/v10';
 export const REPLAY_V11_SCHEMA_VERSION = 'fractionflow.episode-replay/v11';
 export const REPLAY_V12_SCHEMA_VERSION = 'fractionflow.episode-replay/v12';
+export const REPLAY_V15_SCHEMA_VERSION = 'fractionflow.episode-replay/v15';
+function plan59Identity(c) {
+  return { schemaVersion: 'fractionflow.directed-endpoint-content-identity/v1', id: c.itemId, source: 'curated',
+    reconstruction: { kind: 'plan59-directed-endpoint', setId: c.setId, setRevision: c.setRevision,
+      itemId: c.itemId, itemRevision: c.itemRevision } };
+}
 export const REPLAY_V14_SCHEMA_VERSION = 'fractionflow.episode-replay/v14';
 function plan58Identity(c) { return { schemaVersion: 'fractionflow.construction-content-identity/v1', id: c.itemId, source: 'curated', reconstruction: { kind: 'plan58-whole-plus-fraction', setId: c.setId, setRevision: c.setRevision, itemId: c.itemId, itemRevision: c.itemRevision } }; }
 export const REPLAY_V13_SCHEMA_VERSION = 'fractionflow.episode-replay/v13';
@@ -474,6 +481,14 @@ export function createReplayEnvelope(state) {
   if (!state || state.schemaVersion !== 'fractionflow.episode-state/v1') {
     throw new TypeError('state must be a Plan 05 episode state');
   }
+  if (state.episodeDefinition?.id === 'phase-4-directed-number-line-endpoint' && state.episodeDefinition.revision === '1') {
+    const context = validatePlan59Context(state.taskContext);
+    const envelope = { schemaVersion: REPLAY_V15_SCHEMA_VERSION, contentIdentity: plan59Identity(context),
+      episodeDefinition: { id: state.episodeDefinition.id, revision: state.episodeDefinition.revision },
+      support: state.support, activeCondition: state.activeCondition, learnerIntents: state.intentHistory, taskContext: context };
+    assertJsonSafe(envelope, 'replay envelope');
+    return deepFreeze(envelope);
+  }
   if (state.episodeDefinition?.id === 'phase-4-whole-plus-fraction-construction' && state.episodeDefinition.revision === '1') {
     const c = validatePlan58Context(state.taskContext);
     const envelope = { schemaVersion: REPLAY_V14_SCHEMA_VERSION, contentIdentity: plan58Identity(c), episodeDefinition: { id: state.episodeDefinition.id, revision: state.episodeDefinition.revision }, support: state.support, activeCondition: state.activeCondition, learnerIntents: state.intentHistory, taskContext: c };
@@ -541,6 +556,17 @@ export function createReplayEnvelope(state) {
 export function replayEpisode(envelope) {
   assertJsonSafe(envelope, 'replay envelope');
   if (!envelope || typeof envelope !== 'object') throw new TypeError('replay envelope must be an object');
+  if (envelope.schemaVersion === REPLAY_V15_SCHEMA_VERSION) {
+    assertExactKeys(envelope, ['schemaVersion', 'contentIdentity', 'episodeDefinition', 'support', 'activeCondition', 'learnerIntents', 'taskContext'], 'replay v15');
+    assertExactKeys(envelope.episodeDefinition, ['id', 'revision'], 'replay v15 definition');
+    if (envelope.episodeDefinition.id !== 'phase-4-directed-number-line-endpoint' || envelope.episodeDefinition.revision !== '1') throw new TypeError('invalid v15 definition');
+    const context = validatePlan59Context(envelope.taskContext);
+    if (!sameJson(plan59Identity(context), envelope.contentIdentity) || !Array.isArray(envelope.learnerIntents)) throw new TypeError('invalid v15 identity or intents');
+    let state = createEpisode({ episodeDefinition: getEpisodeDefinition('phase-4-directed-number-line-endpoint', '1'),
+      taskContext: resolvePlan59Context(context.itemId), support: envelope.support, activeCondition: envelope.activeCondition });
+    for (const intent of envelope.learnerIntents) state = applyIntent(state, intent);
+    return state;
+  }
   if (envelope.schemaVersion === REPLAY_V14_SCHEMA_VERSION) {
     assertExactKeys(envelope, ['schemaVersion', 'contentIdentity', 'episodeDefinition', 'support', 'activeCondition', 'learnerIntents', 'taskContext'], 'replay v14');
     assertExactKeys(envelope.episodeDefinition, ['id', 'revision'], 'replay v14 definition');
