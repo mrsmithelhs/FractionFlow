@@ -1077,3 +1077,5 @@ body,
 .plan58-feedback:focus { outline: 3px solid var(--ff-color-border-focus); outline-offset: 2px; }
 .plan58-result { display: flex; align-items: center; flex-wrap: wrap; gap: 1rem; }
 .symbolic-mixed-numeral { display: inline-flex; align-items: center; gap: .18em; white-space: nowrap; }
+
+.plan58-connection { display: flex; align-items: center; gap: .4em; margin-block: 1rem; }

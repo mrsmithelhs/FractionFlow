@@ -1,0 +1,115 @@
+{
+  "cases": [
+    {
+      "name": "unit-scale",
+      "edits": [
+        {
+          "file": "src/app/styles.css",
+          "target": "\n.plan58-controls,",
+          "originalSha256": "9b1653933c966361a1bc8e6ba85b0b21e2b751a81e24b64b7d4d9f0a592b14b1"
+        }
+      ],
+      "witness": "WITNESS_UNIT_SCALE",
+      "exitCode": 1,
+      "signal": null,
+      "failureExcerpt": "node:internal/modules/run_main:107\r\n    triggerUncaughtException(\r\n    ^\r\n\r\nAssertionError [ERR_ASSERTION]: WITNESS_UNIT_SCALE\r\n    at file:///<repo>/reports/development/plan-58-whole-plus-fraction-construction/evidence/browser-probe.mjs:17:38 {\r\n  generatedMessage: false,\r\n  code: 'ERR_ASSERTION',\r\n  actual: false,\r\n  expected: true,\r\n  operator: '==',\r\n  diff: 'simple'\r\n}\r\n\r\nNode.js v26.7.0\r",
+      "restored": true
+    },
+    {
+      "name": "premature-reveal",
+      "edits": [
+        {
+          "file": "src/interaction/plan58-whole-plus-fraction-scene.js",
+          "target": "verification: resolved ? structuredClone(state.established.grouping) : null",
+          "originalSha256": "07409389e007d1d59997a1f8a0c36c2dd3bcf9f46566a56cedb2a7b9b9884485"
+        }
+      ],
+      "witness": "expected { leaked: true } to be null",
+      "exitCode": 1,
+      "signal": null,
+      "failureExcerpt": "an58-construction.test.js (6 tests | 2 failed) 21ms\n   × Plan 58 pure construction > accepts the six raw identities and preserves their source units 9ms\n     → expected { leaked: true } to be null\n   ✓ Plan 58 pure construction > refuses unsupported representation roles 2ms\n   ✓ Plan 58 pure construction > rejects unregistered or changed source identities 1ms\n   ✓ Plan 58 pure construction > distinguishes missing, malformed, boundaries, explicit zero and l",
+      "restored": true
+    },
+    {
+      "name": "improper-accepted",
+      "edits": [
+        {
+          "file": "src/interaction/plan58-whole-plus-fraction-episode.js",
+          "target": "fields.pieces.value >= d ? 'organize'",
+          "originalSha256": "7822caace14d0187c116dbc2329a7834105e7da845a4c48f650c505c22e6d0d5"
+        }
+      ],
+      "witness": "expected 'accepted' to be 'organize'",
+      "exitCode": 1,
+      "signal": null,
+      "failureExcerpt": "cit zero and leading zeros 3ms\n   × Plan 58 pure construction > separates wrong amount from equivalent unorganized and retains help and raw revision 6ms\n     → expected 'accepted' to be 'organize' // Object.is equality\n   ✓ Plan 58 pure construction > rejects tampered replay identities and stale history 1ms\n\n Test Files  1 failed (1)\n      Tests  1 failed | 5 passed (6)\n   Start at  17:12:06\n   Duration  1.43s (transform 332ms, setup 0ms, collect 956ms, te",
+      "restored": true
+    },
+    {
+      "name": "raw-loss",
+      "edits": [
+        {
+          "file": "src/interaction/plan58-whole-plus-fraction-episode.js",
+          "target": "[intent.field]: intent.raw",
+          "originalSha256": "7822caace14d0187c116dbc2329a7834105e7da845a4c48f650c505c22e6d0d5"
+        }
+      ],
+      "witness": "WITNESS_RAW_DRAFT",
+      "exitCode": 1,
+      "signal": null,
+      "failureExcerpt": "lformed' // Object.is equality\n   × Plan 58 pure construction > separates wrong amount from equivalent unorganized and retains help and raw revision 4ms\n     → WITNESS_RAW_DRAFT: expected { whole: '1', pieces: '1' } to deeply equal { whole: '01', pieces: '01' }\n   ✓ Plan 58 pure construction > rejects tampered replay identities and stale history 1ms\n\n Test Files  1 failed (1)\n      Tests  2 failed | 4 passed (6)\n   Start at  17:12:08\n   Duration  1.39s (tr",
+      "restored": true
+    },
+    {
+      "name": "retired-callback",
+      "edits": [
+        {
+          "file": "src/render/plan58-whole-plus-fraction.js",
+          "target": "const valid = node => !destroyed && active() && root?.isConnected && root.contains(node);",
+          "originalSha256": "c08467e7da07ac8c07c2de8d997b8cfc72316da4fbdf2a8e72d23e2c1300f879"
+        },
+        {
+          "file": "src/app/app.js",
+          "target": "const active = () => generation === currentEpisodeGeneration && isPlan58(state);",
+          "originalSha256": "7eec3c8c755026842cea3c0452cb577fe14341dad3806c50eb56a8a6bc12b856"
+        }
+      ],
+      "witness": "WITNESS_SAME_ITEM_RETIRED_CALLBACK",
+      "exitCode": 1,
+      "signal": null,
+      "failureExcerpt": "node:internal/modules/run_main:107\r\n    triggerUncaughtException(\r\n    ^\r\n\r\nAssertionError [ERR_ASSERTION]: WITNESS_SAME_ITEM_RETIRED_CALLBACK\r\n\r\n'2' !== ''\r\n\r\n    at file:///<repo>/reports/development/plan-58-whole-plus-fraction-construction/evidence/lifecycle-probe.mjs:16:9 {\r\n  generatedMessage: false,\r\n  code: 'ERR_ASSERTION',\r\n  actual: '2',\r\n  expected: '',\r\n  operator: 'strictEqual',\r\n ",
+      "restored": true
+    }
+  ],
+  "clean": [
+    {
+      "command": [
+        "node",
+        "node_modules/vitest/vitest.mjs",
+        "run",
+        "tests/interaction-plan58-construction.test.js"
+      ],
+      "exitCode": 0,
+      "signal": null,
+      "excerpt": "\n RUN  v3.2.7 <repo>\n\n ✓ tests/interaction-plan58-construction.test.js (6 tests) 32ms\n\n Test Files  1 passed (1)\n      Tests  6 passed (6)\n   Start at  17:12:17\n   Duration  1.45s (transform 338ms, setup 0ms, collect 968ms, tests 32ms, environment 0ms, prepare 160ms)\n\n"
+    },
+    {
+      "command": [
+        "node",
+        "reports/development/plan-58-whole-plus-fraction-construction/evidence/browser-probe.mjs"
+      ],
+      "exitCode": 0,
+      "signal": null,
+      "excerpt": "{\"config\":{\"width\":360,\"height\":740,\"dpr\":1},\"geo\":[{\"width\":310,\"parts\":4,\"filled\":4},{\"width\":310,\"parts\":4,\"filled\":4},{\"width\":310,\"parts\":4,\"filled\":4},{\"width\":310,\"parts\":4,\"filled\":4}]}\n{\"config\":{\"width\":1093,\"height\":614,\"dpr\":1.25},\"geo\":[{\"width\":352,\"parts\":4,\"filled\":4},{\"width\":352,\"parts\":4,\"filled\":4},{\"width\":352,\"parts\":4,\"filled\":4},{\"width\":352,\"parts\":4,\"filled\":4}]}\n{\"config\":{\"width\":360,\"height\":740,\"dpr\":1,\"large\":true},\"geo\":[{\"width\":262,\"parts\":4,\"filled\":4},{\"width\":262,\"parts\":4,\"filled\":4},{\"width\":262,\"parts\":4,\"filled\":4},{\"width\":262,\"parts\":4,\"filled\":4}]}\n"
+    },
+    {
+      "command": [
+        "node",
+        "reports/development/plan-58-whole-plus-fraction-construction/evidence/lifecycle-probe.mjs"
+      ],
+      "exitCode": 0,
+      "signal": null,
+      "excerpt": "input lifecycle, composition, retired node, view and 200% overflow passed\n"
+    }
+  ]
+}

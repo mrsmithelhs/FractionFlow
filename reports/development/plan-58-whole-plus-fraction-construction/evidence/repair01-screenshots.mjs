@@ -1,0 +1,17 @@
+import { createServer } from 'vite'; import { chromium } from 'playwright'; import { strict as assert } from 'node:assert'; import { writeFile } from 'node:fs/promises';
+const out='reports/development/plan-58-whole-plus-fraction-construction/evidence';
+const server=await createServer({server:{host:'127.0.0.1',port:5324,strictPort:true}});await server.listen();const browser=await chromium.launch({channel:'chrome',headless:true});const receipt=[];
+try {for(const config of [{id:'narrow',width:360,height:740,dpr:1},{id:'chromebook',width:1093,height:614,dpr:1.25},{id:'large-text',width:360,height:740,dpr:1,large:true}]) {
+ const context=await browser.newContext({viewport:{width:config.width,height:config.height},deviceScaleFactor:config.dpr});const page=await context.newPage();const errors=[];page.on('pageerror',e=>errors.push(e.message));
+ await page.goto('http://127.0.0.1:5324/FractionFlow/#whole-plus-fraction-construction'); const root=page.locator('.plan58-construction:visible');await root.waitFor(); if(config.large)await page.addStyleTag({content:'html { font-size: 200% !important; }'});
+ const capture=async name=>{const file=`${out}/repair01-${config.id}-${name}.png`;await page.screenshot({path:file,fullPage:true});const geometry=await root.evaluate(n=>({ viewport:{width:innerWidth,height:innerHeight,dpr:devicePixelRatio},scrollWidth:document.documentElement.scrollWidth, bars:[...n.querySelectorAll('.plan58-bar')].map(b=>({width:b.getBoundingClientRect().width,parts:b.children.length,filled:b.querySelectorAll('.is-shaded').length})), connection:n.querySelector('.plan58-connection')?.innerText, feedback:n.querySelector('.plan58-feedback')?.innerText, controls:n.querySelectorAll('.plan58-controls input').length, focus:document.activeElement?.className }));assert.ok(geometry.scrollWidth<=config.width,`${name}: overflow`);receipt.push({config,name,file,geometry});};
+ const whole=root.locator('[data-field=whole]'), pieces=root.locator('[data-field=pieces]');const check=()=>root.getByRole('button',{name:'Check'}).click();const solve=async(w,p)=>{await whole.fill(w);await pieces.fill(p);await check();};
+ await capture('initial');await whole.fill('2');await pieces.fill('8');await capture('maximum');
+ let bars=receipt.at(-1).geometry.bars;assert.equal(bars.length,4);assert.ok(bars.every(b=>b.parts===4&&b.filled===4&&Math.abs(b.width-bars[0].width)<.1));
+ await solve('0','3');await root.getByRole('button',{name:/Next/}).click();await solve('1','0');await root.getByRole('button',{name:/Next/}).click();
+ await solve('1','2');assert.match(await root.locator('.plan58-feedback').innerText(),/try again/);await capture('wrong');
+ await solve('0','5');assert.match(await root.locator('.plan58-feedback').innerText(),/make a whole/);await capture('organize');
+ await solve('1','1');assert.equal(await root.locator('.plan58-controls input').count(),0);assert.equal(await root.locator('.plan58-feedback').evaluate(n=>n===document.activeElement),true);assert.equal(await root.locator('.symbolic-mixed-numeral').getAttribute('aria-label'),'1 and 1 fourth');assert.match(await root.locator('.plan58-connection').innerText(),/=/);await capture('accepted');
+ assert.deepEqual(errors,[]);await context.close();
+} await writeFile(`${out}/repair01-geometry.json`,JSON.stringify({method:'headless Chrome screenshots and DOM bounding boxes; root CSS 200% is not browser zoom',receipt},null,2)+'\n');console.log(`captured ${receipt.length} screenshots and geometry records`);
+} finally {await browser.close();await server.close();}

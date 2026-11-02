@@ -19,9 +19,11 @@ try {
  await pieces.fill('3'); await whole.evaluate(n=>{n.value='0'.repeat(33); n.dispatchEvent(new Event('input',{bubbles:true}));});
  assert.equal(await whole.inputValue(),'01'); assert.match(await root.locator('.plan58-feedback').innerText(),/32 characters/);
  await whole.evaluate(n=>{n.dispatchEvent(new CompositionEvent('compositionstart',{bubbles:true})); n.value='0'; n.dispatchEvent(new InputEvent('input',{bubbles:true,isComposing:true}));});
+ const retired=await whole.elementHandle();
  await root.getByRole('button',{name:'Check'}).click();
  assert.match(await root.innerText(),/That's right/,'Check commits composition buffer');
- const retired=await whole.elementHandle();
+ assert.equal(await root.locator('.plan58-controls input').count(),0,'accepted controls removed');
+ assert.equal(await root.locator('.plan58-feedback').evaluate(n=>n===document.activeElement),true,'accepted feedback focus');
  await root.getByRole('button',{name:/Next/}).click(); root=page.locator('.plan58-construction:visible'); whole=root.locator('[data-field=whole]'); pieces=root.locator('[data-field=pieces]');
  await retired.evaluate(n=>{n.value='2'; n.dispatchEvent(new Event('input',{bubbles:true}));}); assert.equal(await whole.inputValue(),'');
  await whole.evaluate(n=>{n.dispatchEvent(new CompositionEvent('compositionstart',{bubbles:true})); n.value='1'; n.dispatchEvent(new InputEvent('input',{bubbles:true,isComposing:true}));});
@@ -31,6 +33,10 @@ try {
  root=page.locator('.plan58-construction:visible'); assert.equal(await root.locator('[data-field=whole]').inputValue(),'1');
  await root.locator('[data-field=pieces]').fill('0'); await root.getByRole('button',{name:'Check'}).click();
  assert.equal(await root.locator('.symbolic-mixed-numeral').getAttribute('aria-label'),'1');
+ await page.getByRole('button',{name:'Read the steps'}).click(); root=page.locator('.plan58-construction:visible');
+ assert.equal(await root.locator('.plan58-controls input').count(),0); assert.equal(await root.locator('.symbolic-mixed-numeral').getAttribute('aria-label'),'1');
+ await page.getByRole('button',{name:'Show the picture'}).click(); root=page.locator('.plan58-construction:visible');
+ assert.equal(await root.locator('.plan58-controls input').count(),0); assert.equal(await root.locator('.symbolic-mixed-numeral').getAttribute('aria-label'),'1');
  await page.addStyleTag({content:'html { font-size: 200% !important; }'});
  assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),'200% text overflow');
  assert.deepEqual(errors,[]); console.log('input lifecycle, composition, retired node, view and 200% overflow passed');

@@ -51,6 +51,7 @@ export function createPlan58Renderer({ container, view, dispatch, progression, h
       input.addEventListener('input', event => { if (!composing.has(field) && !event.isComposing) commit(input, field); });
       label.append(caption, input); controls.append(label); inputs[field] = input;
     }
+    const connection = element('div', 'plan58-connection');
     const draft = element('div', 'plan58-draft');
     const feedback = element('p', 'plan58-feedback'); feedback.id = `plan58-guidance-${view}`; feedback.tabIndex = -1;
     const actions = element('div', 'plan58-actions');
@@ -61,7 +62,7 @@ export function createPlan58Renderer({ container, view, dispatch, progression, h
     actions.append(help, check);
     const helpRegion = element('div', 'plan58-help');
     const result = element('div', 'plan58-result');
-    root.append(prompt, controls, draft, feedback, actions, helpRegion, result); container.append(root);
+    root.append(prompt, feedback, controls, connection, draft, actions, helpRegion, result); container.append(root);
     update(scene);
   }
   function update(scene) {
@@ -70,13 +71,16 @@ export function createPlan58Renderer({ container, view, dispatch, progression, h
     const d = Number(model.sourceForm.denominator), unit = model.unit;
     const prompt = root.querySelector('.plan58-prompt'); prompt.replaceChildren();
     if (live) prompt.append('Show ', createSymbolicFraction(model.sourceForm.numerator, model.sourceForm.denominator, { variant: 'compact' }), ` as wholes and ${unit}.`);
-    else { prompt.hidden = false; prompt.append('Source: ', createSymbolicFraction(model.sourceForm.numerator, model.sourceForm.denominator, { variant: 'compact' })); }
+    prompt.hidden = !live;
+    const connection = root.querySelector('.plan58-connection');
+    connection.replaceChildren();
+    if (!live) connection.append(createSymbolicFraction(model.sourceForm.numerator, model.sourceForm.denominator, { variant: 'compact' }), document.createTextNode(' = '), createMixedNumeral(model.notation));
     for (const field of ['whole', 'pieces']) {
       const input = inputs[field];
       input.previousSibling.textContent = field === 'whole' ? 'Whole units' : `Remaining ${unit}`;
       if (!composing.has(field) && input.value !== model.draft[field]) input.value = model.draft[field];
-      input.disabled = !live;
     }
+    if (!live) root.querySelector('.plan58-controls')?.remove();
     const draft = root.querySelector('.plan58-draft'); draft.replaceChildren();
     for (const field of ['whole', 'pieces']) {
       const region = model.regions[field], title = field === 'whole' ? 'Whole units' : `Remaining ${unit}`;
@@ -121,7 +125,6 @@ export function createPlan58Renderer({ container, view, dispatch, progression, h
     }
     const result = root.querySelector('.plan58-result'); result.replaceChildren();
     if (!live) {
-      result.append(createMixedNumeral(model.notation));
       const p = progression();
       if (p?.notice) result.append(element('p', '', p.notice));
       if (p?.onAction) { const next = element('button', 'control-btn', p.label); next.type = 'button'; next.addEventListener('click', () => { if (valid(next)) p.onAction(); }); result.append(next); }

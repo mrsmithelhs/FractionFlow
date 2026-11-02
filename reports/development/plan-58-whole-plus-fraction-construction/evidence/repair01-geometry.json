@@ -1,0 +1,517 @@
+{
+  "method": "headless Chrome screenshots and DOM bounding boxes; root CSS 200% is not browser zoom",
+  "receipt": [
+    {
+      "config": {
+        "id": "narrow",
+        "width": 360,
+        "height": 740,
+        "dpr": 1
+      },
+      "name": "initial",
+      "file": "reports/development/plan-58-whole-plus-fraction-construction/evidence/repair01-narrow-initial.png",
+      "geometry": {
+        "viewport": {
+          "width": 360,
+          "height": 740,
+          "dpr": 1
+        },
+        "scrollWidth": 360,
+        "bars": [],
+        "connection": "",
+        "feedback": "",
+        "controls": 2,
+        "focus": "app-episode"
+      }
+    },
+    {
+      "config": {
+        "id": "narrow",
+        "width": 360,
+        "height": 740,
+        "dpr": 1
+      },
+      "name": "maximum",
+      "file": "reports/development/plan-58-whole-plus-fraction-construction/evidence/repair01-narrow-maximum.png",
+      "geometry": {
+        "viewport": {
+          "width": 360,
+          "height": 740,
+          "dpr": 1
+        },
+        "scrollWidth": 360,
+        "bars": [
+          {
+            "width": 310,
+            "parts": 4,
+            "filled": 4
+          },
+          {
+            "width": 310,
+            "parts": 4,
+            "filled": 4
+          },
+          {
+            "width": 310,
+            "parts": 4,
+            "filled": 4
+          },
+          {
+            "width": 310,
+            "parts": 4,
+            "filled": 4
+          }
+        ],
+        "connection": "",
+        "feedback": "",
+        "controls": 2,
+        "focus": ""
+      }
+    },
+    {
+      "config": {
+        "id": "narrow",
+        "width": 360,
+        "height": 740,
+        "dpr": 1
+      },
+      "name": "wrong",
+      "file": "reports/development/plan-58-whole-plus-fraction-construction/evidence/repair01-narrow-wrong.png",
+      "geometry": {
+        "viewport": {
+          "width": 360,
+          "height": 740,
+          "dpr": 1
+        },
+        "scrollWidth": 360,
+        "bars": [
+          {
+            "width": 310,
+            "parts": 4,
+            "filled": 4
+          },
+          {
+            "width": 310,
+            "parts": 4,
+            "filled": 2
+          }
+        ],
+        "connection": "",
+        "feedback": "Check the amount and try again.",
+        "controls": 2,
+        "focus": "plan58-feedback house-retry"
+      }
+    },
+    {
+      "config": {
+        "id": "narrow",
+        "width": 360,
+        "height": 740,
+        "dpr": 1
+      },
+      "name": "organize",
+      "file": "reports/development/plan-58-whole-plus-fraction-construction/evidence/repair01-narrow-organize.png",
+      "geometry": {
+        "viewport": {
+          "width": 360,
+          "height": 740,
+          "dpr": 1
+        },
+        "scrollWidth": 360,
+        "bars": [
+          {
+            "width": 310,
+            "parts": 4,
+            "filled": 4
+          },
+          {
+            "width": 310,
+            "parts": 4,
+            "filled": 1
+          }
+        ],
+        "connection": "",
+        "feedback": "That is \n5\n4\n. Can you make a whole from the fourths?",
+        "controls": 2,
+        "focus": "plan58-feedback house-attention"
+      }
+    },
+    {
+      "config": {
+        "id": "narrow",
+        "width": 360,
+        "height": 740,
+        "dpr": 1
+      },
+      "name": "accepted",
+      "file": "reports/development/plan-58-whole-plus-fraction-construction/evidence/repair01-narrow-accepted.png",
+      "geometry": {
+        "viewport": {
+          "width": 360,
+          "height": 740,
+          "dpr": 1
+        },
+        "scrollWidth": 360,
+        "bars": [
+          {
+            "width": 310,
+            "parts": 4,
+            "filled": 4
+          },
+          {
+            "width": 310,
+            "parts": 4,
+            "filled": 1
+          }
+        ],
+        "connection": "5\n4\n=\n1\n1\n4",
+        "feedback": "That's right.",
+        "controls": 0,
+        "focus": "plan58-feedback plan50-success"
+      }
+    },
+    {
+      "config": {
+        "id": "chromebook",
+        "width": 1093,
+        "height": 614,
+        "dpr": 1.25
+      },
+      "name": "initial",
+      "file": "reports/development/plan-58-whole-plus-fraction-construction/evidence/repair01-chromebook-initial.png",
+      "geometry": {
+        "viewport": {
+          "width": 1093,
+          "height": 614,
+          "dpr": 1.25
+        },
+        "scrollWidth": 1093,
+        "bars": [],
+        "connection": "",
+        "feedback": "",
+        "controls": 2,
+        "focus": "app-episode"
+      }
+    },
+    {
+      "config": {
+        "id": "chromebook",
+        "width": 1093,
+        "height": 614,
+        "dpr": 1.25
+      },
+      "name": "maximum",
+      "file": "reports/development/plan-58-whole-plus-fraction-construction/evidence/repair01-chromebook-maximum.png",
+      "geometry": {
+        "viewport": {
+          "width": 1093,
+          "height": 614,
+          "dpr": 1.25
+        },
+        "scrollWidth": 1093,
+        "bars": [
+          {
+            "width": 352,
+            "parts": 4,
+            "filled": 4
+          },
+          {
+            "width": 352,
+            "parts": 4,
+            "filled": 4
+          },
+          {
+            "width": 352,
+            "parts": 4,
+            "filled": 4
+          },
+          {
+            "width": 352,
+            "parts": 4,
+            "filled": 4
+          }
+        ],
+        "connection": "",
+        "feedback": "",
+        "controls": 2,
+        "focus": ""
+      }
+    },
+    {
+      "config": {
+        "id": "chromebook",
+        "width": 1093,
+        "height": 614,
+        "dpr": 1.25
+      },
+      "name": "wrong",
+      "file": "reports/development/plan-58-whole-plus-fraction-construction/evidence/repair01-chromebook-wrong.png",
+      "geometry": {
+        "viewport": {
+          "width": 1093,
+          "height": 614,
+          "dpr": 1.25
+        },
+        "scrollWidth": 1093,
+        "bars": [
+          {
+            "width": 352,
+            "parts": 4,
+            "filled": 4
+          },
+          {
+            "width": 352,
+            "parts": 4,
+            "filled": 2
+          }
+        ],
+        "connection": "",
+        "feedback": "Check the amount and try again.",
+        "controls": 2,
+        "focus": "plan58-feedback house-retry"
+      }
+    },
+    {
+      "config": {
+        "id": "chromebook",
+        "width": 1093,
+        "height": 614,
+        "dpr": 1.25
+      },
+      "name": "organize",
+      "file": "reports/development/plan-58-whole-plus-fraction-construction/evidence/repair01-chromebook-organize.png",
+      "geometry": {
+        "viewport": {
+          "width": 1093,
+          "height": 614,
+          "dpr": 1.25
+        },
+        "scrollWidth": 1093,
+        "bars": [
+          {
+            "width": 352,
+            "parts": 4,
+            "filled": 4
+          },
+          {
+            "width": 352,
+            "parts": 4,
+            "filled": 1
+          }
+        ],
+        "connection": "",
+        "feedback": "That is \n5\n4\n. Can you make a whole from the fourths?",
+        "controls": 2,
+        "focus": "plan58-feedback house-attention"
+      }
+    },
+    {
+      "config": {
+        "id": "chromebook",
+        "width": 1093,
+        "height": 614,
+        "dpr": 1.25
+      },
+      "name": "accepted",
+      "file": "reports/development/plan-58-whole-plus-fraction-construction/evidence/repair01-chromebook-accepted.png",
+      "geometry": {
+        "viewport": {
+          "width": 1093,
+          "height": 614,
+          "dpr": 1.25
+        },
+        "scrollWidth": 1093,
+        "bars": [
+          {
+            "width": 352,
+            "parts": 4,
+            "filled": 4
+          },
+          {
+            "width": 352,
+            "parts": 4,
+            "filled": 1
+          }
+        ],
+        "connection": "5\n4\n=\n1\n1\n4",
+        "feedback": "That's right.",
+        "controls": 0,
+        "focus": "plan58-feedback plan50-success"
+      }
+    },
+    {
+      "config": {
+        "id": "large-text",
+        "width": 360,
+        "height": 740,
+        "dpr": 1,
+        "large": true
+      },
+      "name": "initial",
+      "file": "reports/development/plan-58-whole-plus-fraction-construction/evidence/repair01-large-text-initial.png",
+      "geometry": {
+        "viewport": {
+          "width": 360,
+          "height": 740,
+          "dpr": 1
+        },
+        "scrollWidth": 360,
+        "bars": [],
+        "connection": "",
+        "feedback": "",
+        "controls": 2,
+        "focus": "app-episode"
+      }
+    },
+    {
+      "config": {
+        "id": "large-text",
+        "width": 360,
+        "height": 740,
+        "dpr": 1,
+        "large": true
+      },
+      "name": "maximum",
+      "file": "reports/development/plan-58-whole-plus-fraction-construction/evidence/repair01-large-text-maximum.png",
+      "geometry": {
+        "viewport": {
+          "width": 360,
+          "height": 740,
+          "dpr": 1
+        },
+        "scrollWidth": 360,
+        "bars": [
+          {
+            "width": 262,
+            "parts": 4,
+            "filled": 4
+          },
+          {
+            "width": 262,
+            "parts": 4,
+            "filled": 4
+          },
+          {
+            "width": 262,
+            "parts": 4,
+            "filled": 4
+          },
+          {
+            "width": 262,
+            "parts": 4,
+            "filled": 4
+          }
+        ],
+        "connection": "",
+        "feedback": "",
+        "controls": 2,
+        "focus": ""
+      }
+    },
+    {
+      "config": {
+        "id": "large-text",
+        "width": 360,
+        "height": 740,
+        "dpr": 1,
+        "large": true
+      },
+      "name": "wrong",
+      "file": "reports/development/plan-58-whole-plus-fraction-construction/evidence/repair01-large-text-wrong.png",
+      "geometry": {
+        "viewport": {
+          "width": 360,
+          "height": 740,
+          "dpr": 1
+        },
+        "scrollWidth": 360,
+        "bars": [
+          {
+            "width": 262,
+            "parts": 4,
+            "filled": 4
+          },
+          {
+            "width": 262,
+            "parts": 4,
+            "filled": 2
+          }
+        ],
+        "connection": "",
+        "feedback": "Check the amount and try again.",
+        "controls": 2,
+        "focus": "plan58-feedback house-retry"
+      }
+    },
+    {
+      "config": {
+        "id": "large-text",
+        "width": 360,
+        "height": 740,
+        "dpr": 1,
+        "large": true
+      },
+      "name": "organize",
+      "file": "reports/development/plan-58-whole-plus-fraction-construction/evidence/repair01-large-text-organize.png",
+      "geometry": {
+        "viewport": {
+          "width": 360,
+          "height": 740,
+          "dpr": 1
+        },
+        "scrollWidth": 360,
+        "bars": [
+          {
+            "width": 262,
+            "parts": 4,
+            "filled": 4
+          },
+          {
+            "width": 262,
+            "parts": 4,
+            "filled": 1
+          }
+        ],
+        "connection": "",
+        "feedback": "That is \n5\n4\n. Can you make a whole from the fourths?",
+        "controls": 2,
+        "focus": "plan58-feedback house-attention"
+      }
+    },
+    {
+      "config": {
+        "id": "large-text",
+        "width": 360,
+        "height": 740,
+        "dpr": 1,
+        "large": true
+      },
+      "name": "accepted",
+      "file": "reports/development/plan-58-whole-plus-fraction-construction/evidence/repair01-large-text-accepted.png",
+      "geometry": {
+        "viewport": {
+          "width": 360,
+          "height": 740,
+          "dpr": 1
+        },
+        "scrollWidth": 360,
+        "bars": [
+          {
+            "width": 262,
+            "parts": 4,
+            "filled": 4
+          },
+          {
+            "width": 262,
+            "parts": 4,
+            "filled": 1
+          }
+        ],
+        "connection": "5\n4\n=\n1\n1\n4",
+        "feedback": "That's right.",
+        "controls": 0,
+        "focus": "plan58-feedback plan50-success"
+      }
+    }
+  ]
+}
