@@ -1,5 +1,9 @@
 # Plan 51 progress — Requirement 0 checkpoint
 
+## Success-style correction — 2026-11-01
+
+Orchestrator re-review accepted Repair01's interaction/access fixes and requested the missing compact success treatment. Scoped CSS and separate rendered evidence are committed `a0a563f`; see `repair02-evidence.md`. Edge samples at 360×740 and 1093×614 DPR1.25 confirm the computed pale-green/dark-text style, accepted `1/2` and Next focus. Lint and diff check passed; no broad suite or matrix was repeated for this CSS-only correction, as directed. Returned for final technical inspection; owner rendered/task acceptance remains pending. No status, push or deployment changed.
+
 ## Repair 01 — 2026-11-01
 
 Orchestrator delivery review requested a bounded Help timing, accessible association and success-cue repair. Repair and separate current screenshots/evidence are committed `45c5953`; see `repair01-evidence.md`. Same-turn Help requests now remain visible, radio names identify first/second, current feedback is associated with controls, bar tracks expose a graphic role/name, and accepted results receive one concise acknowledgment. Focused 45 tests, repaired build, isolated Plan51 route 1/1, packet lint and diff check passed. The earlier 603-test full suite and 119-execution matrix predate this repair; they were not repeated or represented as post-repair. Browser checks remain sampled and do not establish actual assistive-technology or physical-device behavior. No additional reviewer ran. Returned for orchestrator technical re-review; owner rendered/task acceptance remains pending. No status, push or deployment changed.
