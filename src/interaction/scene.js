@@ -610,7 +610,10 @@ function pathSummary(state) {
 }
 
 function capabilityFor(state, role, derivation) {
-  if (state.episodeDefinition?.id === 'phase-4-whole-plus-fraction-construction') return { instance: 'eligible', activePath: null, authoredCoverage: null, continuation: null };
+  if (state.episodeDefinition?.id === 'phase-4-whole-plus-fraction-construction') {
+    if (role !== 'fraction-bar') throw new SceneProjectionError('UNRESOLVED_CAPABILITY', 'construction requires fraction-bar');
+    return { instance: 'eligible', activePath: null, authoredCoverage: null, continuation: null };
+  }
   if (state.episodeDefinition?.id === 'phase-4-two-whole-location') {
     if (role !== 'number-line') throw new SceneProjectionError('UNRESOLVED_CAPABILITY', 'location requires number-line');
     return { instance:'eligible', activePath:null, authoredCoverage:null, continuation:null };

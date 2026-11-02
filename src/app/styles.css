@@ -1066,3 +1066,14 @@ body,
 
 .plan53-primary { min-height: 44px; min-width: 44px; padding: .6rem 1rem; font: inherit; font-weight: 600; border-radius: .375rem; }
 .plan53-tray-empty { border-color: transparent; }
+.plan58-controls, .plan58-actions { display: flex; flex-wrap: wrap; gap: 1rem; margin-block: 1rem; }
+.plan58-label { display: flex; flex-direction: column; gap: .35rem; }
+.plan58-label input { width: 8rem; max-width: 100%; min-height: 44px; font: inherit; }
+.plan58-actions button, .plan58-result button { min-height: 44px; padding: .6rem 1rem; font: inherit; }
+.plan58-bar { display: flex; box-sizing: border-box; width: min(100%, 22rem); height: 32px; border: 1px solid #243d4b; margin-block: .4rem; }
+.plan58-part { flex: 1; border-right: 1px solid #526a75; }
+.plan58-part:last-child { border-right: 0; }
+.plan58-part.is-shaded { background: #8ac3d4; }
+.plan58-feedback:focus { outline: 3px solid var(--ff-color-border-focus); outline-offset: 2px; }
+.plan58-result { display: flex; align-items: center; flex-wrap: wrap; gap: 1rem; }
+.symbolic-mixed-numeral { display: inline-flex; align-items: center; gap: .18em; white-space: nowrap; }

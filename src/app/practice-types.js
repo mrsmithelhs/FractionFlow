@@ -1,3 +1,5 @@
+import { PLAN58_RECORDS } from '../content/data/plan58-whole-plus-fraction-records.js';
+import { PLAN58_CONSTRUCTION_EPISODE_DEFINITION } from '../interaction/episode-definition.js';
 import { PLAN53_RECORDS } from '../content/data/plan53-two-whole-location-records.js';
 import { PLAN53_LOCATION_EPISODE_DEFINITION } from '../interaction/episode-definition.js';
 import { PLAN51_DISTANCE_RECORDS } from '../content/data/plan51-distance-records.js';
@@ -337,6 +339,13 @@ export const PLAN53_LOCATION_PRACTICE_TYPE = deepFreeze({
   episodeDefinition: PLAN53_LOCATION_EPISODE_DEFINITION,
 });
 
+export const PLAN58_CONSTRUCTION_PRACTICE_TYPE = deepFreeze({
+  id: 'whole-plus-fraction-construction', label: 'Make wholes and remaining pieces',
+  setId: 'whole-plus-fraction-construction', setRevision: '1',
+  items: PLAN58_RECORDS.map(record => ({ id: record.itemId, episodeDefinitionId: PLAN58_CONSTRUCTION_EPISODE_DEFINITION.id, episodeDefinitionRevision: '1' })),
+  episodeDefinition: PLAN58_CONSTRUCTION_EPISODE_DEFINITION,
+});
+
 export const PRACTICE_TYPES = deepFreeze([
   ...PLAN40_PRACTICE_TYPES_V9,
   PLAN39_BAR_TO_LINE_PRACTICE_TYPE,
@@ -344,6 +353,7 @@ export const PRACTICE_TYPES = deepFreeze([
   PLAN50_COLLECTION_PRACTICE_TYPE,
   PLAN51_DISTANCE_PRACTICE_TYPE,
   PLAN53_LOCATION_PRACTICE_TYPE,
+  PLAN58_CONSTRUCTION_PRACTICE_TYPE,
 ]);
 
 export function getPracticeType(id) {

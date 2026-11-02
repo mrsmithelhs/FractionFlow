@@ -1,0 +1,37 @@
+import { createServer } from 'vite';
+import { chromium } from 'playwright';
+import { strict as assert } from 'node:assert';
+const server=await createServer({server:{host:'127.0.0.1',port:5319,strictPort:true}}); await server.listen();
+const browser=await chromium.launch({channel:'chrome',headless:true});
+try {
+ const page=await browser.newPage({viewport:{width:360,height:740},hasTouch:true,reducedMotion:'reduce'});
+ const errors=[]; page.on('pageerror',e=>errors.push(e.message));
+ await page.goto('http://127.0.0.1:5319/FractionFlow/#whole-plus-fraction-construction');
+ let root=page.locator('.plan58-construction:visible'); await root.waitFor();
+ let whole=root.locator('[data-field=whole]'), pieces=root.locator('[data-field=pieces]');
+ const sameItemRetired=await whole.elementHandle();
+ await page.locator('.app-restart-button').evaluate(n=>n.click());
+ root=page.locator('.plan58-construction:visible'); whole=root.locator('[data-field=whole]'); pieces=root.locator('[data-field=pieces]');
+ await sameItemRetired.evaluate(n=>{n.value='2';n.dispatchEvent(new Event('input',{bubbles:true}));});
+ assert.equal(await whole.inputValue(),'', 'WITNESS_SAME_ITEM_RETIRED_CALLBACK');
+ await whole.focus(); await whole.evaluate(n=>{window.originalInput=n; n.value='01'; n.setSelectionRange(1,1); n.dispatchEvent(new Event('input',{bubbles:true}));});
+ assert.equal(await whole.evaluate(n=>n===window.originalInput && document.activeElement===n && n.selectionStart===1),true,'input identity and caret');
+ await pieces.fill('3'); await whole.evaluate(n=>{n.value='0'.repeat(33); n.dispatchEvent(new Event('input',{bubbles:true}));});
+ assert.equal(await whole.inputValue(),'01'); assert.match(await root.locator('.plan58-feedback').innerText(),/32 characters/);
+ await whole.evaluate(n=>{n.dispatchEvent(new CompositionEvent('compositionstart',{bubbles:true})); n.value='0'; n.dispatchEvent(new InputEvent('input',{bubbles:true,isComposing:true}));});
+ await root.getByRole('button',{name:'Check'}).click();
+ assert.match(await root.innerText(),/That's right/,'Check commits composition buffer');
+ const retired=await whole.elementHandle();
+ await root.getByRole('button',{name:/Next/}).click(); root=page.locator('.plan58-construction:visible'); whole=root.locator('[data-field=whole]'); pieces=root.locator('[data-field=pieces]');
+ await retired.evaluate(n=>{n.value='2'; n.dispatchEvent(new Event('input',{bubbles:true}));}); assert.equal(await whole.inputValue(),'');
+ await whole.evaluate(n=>{n.dispatchEvent(new CompositionEvent('compositionstart',{bubbles:true})); n.value='1'; n.dispatchEvent(new InputEvent('input',{bubbles:true,isComposing:true}));});
+ await page.getByRole('button',{name:'Read the steps'}).click();
+ root=page.locator('.plan58-construction:visible'); assert.equal(await root.locator('[data-field=whole]').inputValue(),'1','view change commits composition');
+ await page.getByRole('button',{name:'Show the picture'}).click();
+ root=page.locator('.plan58-construction:visible'); assert.equal(await root.locator('[data-field=whole]').inputValue(),'1');
+ await root.locator('[data-field=pieces]').fill('0'); await root.getByRole('button',{name:'Check'}).click();
+ assert.equal(await root.locator('.symbolic-mixed-numeral').getAttribute('aria-label'),'1');
+ await page.addStyleTag({content:'html { font-size: 200% !important; }'});
+ assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),'200% text overflow');
+ assert.deepEqual(errors,[]); console.log('input lifecycle, composition, retired node, view and 200% overflow passed');
+} finally {await browser.close();await server.close();}

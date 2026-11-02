@@ -50,6 +50,20 @@ export function createSymbolicFraction(
   return fractionEl;
 }
 
+/** Present an accepted grouping as one named mathematical object. */
+export function createMixedNumeral(grouping) {
+  const { whole, remainder, hasWhole, hasRemainder, name } = grouping;
+  const node = document.createElement('span');
+  node.className = 'symbolic-mixed-numeral';
+  node.setAttribute('role', 'math');
+  node.setAttribute('aria-label', name);
+  if (hasWhole || !hasRemainder) {
+    const part = document.createElement('span'); part.textContent = whole; part.setAttribute('aria-hidden', 'true'); node.append(part);
+  }
+  if (hasRemainder) node.append(createSymbolicFraction(remainder.numerator, remainder.denominator, { ariaHidden: true, variant: 'compact' }));
+  return node;
+}
+
 function createFractionElement(numerator, denominator, ariaPrefix = '') {
   return createSymbolicFraction(numerator, denominator, { ariaPrefix });
 }

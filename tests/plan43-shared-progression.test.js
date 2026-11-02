@@ -40,8 +40,8 @@ describe('Plan 43 — Shared Episode Completion and Progression Suite', () => {
       const twoWhole = PRACTICE_TYPES.find((pt) => pt.id === 'two-whole-location');
       expect(twoWhole.items).toHaveLength(8);
       const totalItems = PRACTICE_TYPES.reduce((acc, pt) => acc + pt.items.length, 0);
-      expect(totalItems).toBe(75);
-      expect(PRACTICE_TYPES).toHaveLength(9);
+      expect(totalItems).toBe(81);
+      expect(PRACTICE_TYPES).toHaveLength(10);
     });
 
     it('derives exact completion intents for all families without synthetic response attribution', () => {
