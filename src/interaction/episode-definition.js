@@ -277,6 +277,8 @@ export const PLAN51_DISTANCE_EPISODE_DEFINITION = deepFreeze({
   promptIdentities: { compare: 'phase4.distance.compare', distance: 'phase4.distance.respond', resolve: 'phase4.distance.accepted' },
 });
 
+export const PLAN53_LOCATION_EPISODE_DEFINITION = deepFreeze({ id:'phase-4-two-whole-location', revision:'1', family:'two-whole-location', beats:['locate','resolve'], includeReflection:false, promptIdentities:{locate:'phase4.two-whole.place',resolve:'phase4.two-whole.accepted'} });
+
 const EPISODE_DEFINITIONS = Object.freeze([
   LEGACY_PHASE2_EPISODE_DEFINITION,
   LEGACY_PHASE2_REFLECTION_EPISODE_DEFINITION,
@@ -298,6 +300,7 @@ const EPISODE_DEFINITIONS = Object.freeze([
   PLAN49_COMPARISON_EPISODE_DEFINITION,
   PLAN50_COLLECTION_EPISODE_DEFINITION,
   PLAN51_DISTANCE_EPISODE_DEFINITION,
+  PLAN53_LOCATION_EPISODE_DEFINITION,
 ]);
 
 export function getEpisodeDefinition(id = EPISODE_DEFINITION_ID, revision = EPISODE_DEFINITION_REVISION) {
