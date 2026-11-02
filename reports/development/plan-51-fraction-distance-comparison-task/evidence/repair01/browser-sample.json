@@ -1,0 +1,243 @@
+{
+  "url": "http://127.0.0.1:5173/",
+  "source": "Vite served current working tree",
+  "results": [
+    {
+      "size": {
+        "width": 360,
+        "height": 740,
+        "deviceScaleFactor": 1
+      },
+      "beforePairedModels": 0,
+      "traversal": [
+        {
+          "tag": "BUTTON",
+          "text": "Try this problem again",
+          "value": ""
+        },
+        {
+          "tag": "BODY",
+          "text": "FractionFlowSee how different-sized fraction parts"
+        },
+        {
+          "tag": "BUTTON",
+          "text": "Read the steps",
+          "value": ""
+        },
+        {
+          "tag": "BUTTON",
+          "text": "Back to start",
+          "value": ""
+        },
+        {
+          "tag": "INPUT",
+          "text": "",
+          "value": "<"
+        }
+      ],
+      "activeMetrics": {
+        "viewportWidth": 360,
+        "prompt": {
+          "left": 25,
+          "right": 335,
+          "top": 248.84375,
+          "bottom": 274.84375,
+          "width": 310,
+          "height": 26
+        },
+        "controls": [
+          {
+            "left": 25,
+            "right": 161,
+            "top": 373.84375,
+            "bottom": 423.84375,
+            "width": 136,
+            "height": 50
+          },
+          {
+            "left": 173,
+            "right": 309,
+            "top": 373.84375,
+            "bottom": 423.84375,
+            "width": 136,
+            "height": 50
+          },
+          {
+            "left": 25,
+            "right": 103.90625,
+            "top": 435.84375,
+            "bottom": 479.84375,
+            "width": 78.90625,
+            "height": 44
+          }
+        ],
+        "fractions": [
+          {
+            "left": 135.84375,
+            "right": 158.515625,
+            "top": 157,
+            "bottom": 220.84375,
+            "width": 22.671875,
+            "height": 63.84375
+          },
+          {
+            "left": 201.46875,
+            "right": 224.140625,
+            "top": 157,
+            "bottom": 220.84375,
+            "width": 22.671875,
+            "height": 63.84375
+          }
+        ],
+        "documentHeight": 740
+      },
+      "metrics": {
+        "scrollWidth": 360,
+        "clientWidth": 360,
+        "next": {
+          "width": 310,
+          "height": 44
+        },
+        "tracks": [
+          {
+            "width": 310,
+            "left": 25,
+            "cells": 8
+          },
+          {
+            "width": 310,
+            "left": 25,
+            "cells": 8
+          }
+        ]
+      },
+      "repairHelpChecks": "same-turn visual comparison and distance, keyboard close, touch reopen and view switch passed"
+    },
+    {
+      "size": {
+        "width": 1093,
+        "height": 614,
+        "deviceScaleFactor": 1.25
+      },
+      "beforePairedModels": 0,
+      "traversal": [
+        {
+          "tag": "BUTTON",
+          "text": "Try this problem again",
+          "value": ""
+        },
+        {
+          "tag": "BODY",
+          "text": "FractionFlowSee how different-sized fraction parts"
+        },
+        {
+          "tag": "BUTTON",
+          "text": "Read the steps",
+          "value": ""
+        },
+        {
+          "tag": "BUTTON",
+          "text": "Back to start",
+          "value": ""
+        },
+        {
+          "tag": "INPUT",
+          "text": "",
+          "value": "<"
+        }
+      ],
+      "activeMetrics": {
+        "viewportWidth": 1093,
+        "prompt": {
+          "left": 61.09375,
+          "right": 829.09375,
+          "top": 306.5625,
+          "bottom": 340.5625,
+          "width": 768,
+          "height": 34
+        },
+        "controls": [
+          {
+            "left": 61.09375,
+            "right": 197.09375,
+            "top": 418.5625,
+            "bottom": 468.5625,
+            "width": 136,
+            "height": 50
+          },
+          {
+            "left": 209.09375,
+            "right": 345.09375,
+            "top": 418.5625,
+            "bottom": 468.5625,
+            "width": 136,
+            "height": 50
+          },
+          {
+            "left": 357.09375,
+            "right": 436,
+            "top": 424.5625,
+            "bottom": 468.5625,
+            "width": 78.90625,
+            "height": 44
+          }
+        ],
+        "fractions": [
+          {
+            "left": 362.90625,
+            "right": 391.609375,
+            "top": 190.09375,
+            "bottom": 278.5625,
+            "width": 28.703125,
+            "height": 88.46875
+          },
+          {
+            "left": 498.5625,
+            "right": 527.265625,
+            "top": 190.09375,
+            "bottom": 278.5625,
+            "width": 28.703125,
+            "height": 88.46875
+          }
+        ],
+        "documentHeight": 674
+      },
+      "metrics": {
+        "scrollWidth": 1093,
+        "clientWidth": 1093,
+        "next": {
+          "width": 768,
+          "height": 44
+        },
+        "tracks": [
+          {
+            "width": 768,
+            "left": 61.09375,
+            "cells": 8
+          },
+          {
+            "width": 768,
+            "left": 61.09375,
+            "cells": 8
+          }
+        ]
+      },
+      "repairHelpChecks": "same-turn visual comparison and distance, keyboard close, touch reopen and view switch passed"
+    },
+    {
+      "size": {
+        "width": 360,
+        "height": 740
+      },
+      "view": "linear",
+      "support": "Less",
+      "textScale": "200% root font",
+      "linearText": "2\n8\n<\n6\n8\n\nThat's right.\n\nDistance: \n1\n2\n\nThe distance is 4 of the 8 equal parts, from part 2 to part 6.\n\nFirst amount\n\nOne whole has 8 equal parts; 2 parts are shown.\n\nSecond amount\n\nOne whole has 8 equal parts; 6 parts are shown.\n\nNext problem",
+      "enlarged": {
+        "scrollWidth": 360,
+        "clientWidth": 360
+      },
+      "repairHelpChecks": "same-turn comparison and distance, keyboard close and explicit model request passed"
+    }
+  ]
+}
