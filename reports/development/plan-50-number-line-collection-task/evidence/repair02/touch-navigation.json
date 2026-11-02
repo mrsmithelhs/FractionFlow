@@ -1,0 +1,4 @@
+{
+  "emulatedTouch": "tap selected exact candidate",
+  "navigationRefusal": "accepted result retained after injected destination failure"
+}

@@ -20,7 +20,14 @@ export function createNumberLineCollectionRenderer({container, view, dispatch, p
     const wasFocus=root?.contains(document.activeElement) ? document.activeElement?.dataset?.focusKey : null;
     const model=c(); const active=model.status==='active';
     const r=el('section','plan50-collection'); r.setAttribute('aria-label','Place fractions on a number line');
-    const title=el('h2','plan50-prompt','Place each fraction on the number line. Some may belong at the same point.'); title.tabIndex=-1; r.append(title);
+    if(active) {const title=el('h2','plan50-prompt','Place each fraction on the number line. Some may belong at the same point.'); title.tabIndex=-1; r.append(title);}
+    const feedback=el('p',active?'plan50-feedback':'plan50-feedback plan50-success'); feedback.tabIndex=-1; feedback.dataset.focusKey='feedback';
+    if(active) feedback.setAttribute('role','status');
+    if(model.evaluation.status==='incomplete') feedback.textContent='Place the unplaced fractions before checking.';
+    else if(model.evaluation.status==='incorrect') feedback.textContent='Check the marked placements. You can move any fraction.';
+    else if(model.evaluation.status==='accepted') feedback.textContent='All placed correctly.';
+    else if(model.evaluation.placementRevision!==null) feedback.textContent='Placement changed. Check again.';
+    if(!active) r.append(feedback);
     const list=el('div','plan50-member-list'); list.setAttribute('aria-label','Fractions'); list.setAttribute('aria-live','polite');
     for(const m of model.members) {
       const pos=model.placements[m.id]; const count=pos ? Object.values(model.placements).filter(v=>v===pos).length : 0; const status=pos ? `${pos.slice(5)} of ${model.lattice}${count>1 ? `, ${count} labels at this point` : ''}` : 'unplaced';
@@ -37,12 +44,7 @@ export function createNumberLineCollectionRenderer({container, view, dispatch, p
       list.append(b);
     }
     r.append(list);
-    const feedback=el('p','plan50-feedback'); feedback.tabIndex=-1; feedback.dataset.focusKey='feedback'; feedback.setAttribute('role','status');
-    if(model.evaluation.status==='incomplete') feedback.textContent='Place the unplaced fractions before checking.';
-    else if(model.evaluation.status==='incorrect') feedback.textContent='Check the marked placements. You can move any fraction.';
-    else if(model.evaluation.status==='accepted') feedback.textContent='All fractions are placed. Labels at the same point name the same amount.';
-    else if(model.evaluation.placementRevision!==null) feedback.textContent='Placement changed. Check again.';
-    r.append(feedback);
+    if(active) r.append(feedback);
     if(active && model.evaluation.status!=='unchecked') {
       const details=el('ul','plan50-feedback-list');
       for(const m of model.members) {const f=model.evaluation.feedbackByMember[m.id]; if(f && f!=='not-graded') {const item=el('li');item.append(fraction(m),el('span','',`: ${f==='correct'?'placed correctly':f==='unplaced'?'unplaced':'check this placement'}`));item.id=`plan50-feedback-${view}-${m.id}`;details.append(item);}} r.append(details);

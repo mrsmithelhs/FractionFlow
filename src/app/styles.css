@@ -1032,3 +1032,6 @@ body,
 .plan50-token-static {cursor:default}
 .plan50-tether {position:absolute;bottom:22px;border-left:1px solid #59727d;pointer-events:none}
 .plan50-endpoints {display:flex;justify-content:space-between;padding:0 20px}
+
+.plan50-success {box-sizing:border-box;padding:.75rem 1rem;border:1px solid #b8d3c3;border-radius:.5rem;background:#f1faf4;margin:0 0 .25rem;color:var(--app-ink);font-size:1.15rem;font-weight:600;line-height:1.25}
+.plan50-success:focus {outline:3px solid var(--ff-color-border-focus);outline-offset:2px}
