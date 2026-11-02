@@ -1,7 +1,7 @@
 ---
 id: plan-59
 title: Directed Number-Line Endpoint Task
-status: in-progress
+status: delivered
 depends_on: [plan-55, plan-53, plan-58]
 gate: "After Plan58 closure, approve mechanism before source and pure content/state/scene/replay before mounting. Technical review and owner rendered/task acceptance; deployment separate."
 summary: >-
