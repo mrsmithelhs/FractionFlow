@@ -1,5 +1,13 @@
 # Plan 51 progress — Requirement 0 checkpoint
 
+## Integration delivery — 2026-11-01
+
+Implementation and evidence committed `d597570`, following pure contract `7d899bd`. The four-record task now runs as comparison then unsigned distance, with raw equivalent form preservation, explicit assistance, v12 replay, common scene, both views and shared direct progression. Exact ownership, validations, browser/mutation receipts and limitations are detailed in `integration-evidence.md`. The one consolidated cold Terra-medium read-only review found six issues, dispositioned in `review-disposition.md`; fixes were verified inline and not independently re-reviewed. Reviewer-reported model/effort could not be independently observed; the configured request was Terra medium and no substitution was made.
+
+Final `npm test` passed 69 files / 603 tests including the mounted navigation-refusal test. Sequential build passed, packet lint passed, `git diff --check` had no whitespace errors, and the isolated full browser route matrix passed 119/119 executions across 117 rows. The sampled visual and linear browser, simulated touch, keyboard and enlarged-text evidence is bounded; physical devices, assistive technologies and learner outcomes are not established. Port 5199 was occupied, left alone, and the sample used an owned temporary loopback Vite server with cleanup. Three unrelated pre-existing Plan39 receipts remain untouched.
+
+Ready for orchestrator technical review: yes. Owner rendered/task acceptance remains required; no packet status, owner disposition, push or deployment has been changed. The pure checkpoint and Requirement 0 entries below are historical, not the current state.
+
 ## Pure checkpoint — 2026-11-01
 
 Mechanism approved to pure Requirement 1 only in `mechanism-approval.md`. The registered content, exact admission, public episode reducer and standalone scene projection plus checkpoint tests are committed as `7d899bd`; `checkpoint-1.md` pins the state, intents, scene, refusal and proposed replay contract. All four ordered records and equivalents were checked against exact-core operations; the `1/3` learner form is retained alongside a source-unit range of two sixths. `npx vitest run tests/interaction-plan51-distance.test.js tests/interaction-plan50-collection.test.js tests/interaction-plan49-public-replay.test.js` passed 3 files / 17 tests after the final source-type refinement. Packet lint passed and `git diff --check` was clean. These checks are pure and targeted: no common scene-router, serializer, mounted UI, route, browser, build or complete historical-oracle verification is claimed.
