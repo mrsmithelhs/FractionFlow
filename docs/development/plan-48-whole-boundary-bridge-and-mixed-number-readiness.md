@@ -1,11 +1,9 @@
 ---
 id: plan-48
 title: Whole-Boundary Bridge and Mixed-Number Entry Readiness Design
-status: draft
-depends_on: [plan-17, plan-31, plan-39, plan-44]
+status: in-progress
+depends_on: [plan-17, plan-31, plan-39, plan-44, plan-49, plan-50, plan-51, plan-52]
 gate: "Approve bounded investigation scope, then owner disposition of the Phase4/§91 readiness assessment and one foundation-task recommendation. Design only: no declaration of Phase4 completion, OQ-24 closure, mixed-number activation or source packet without owner adoption."
-superseded_by: null
-resolution: null
 summary: >-
   Assess stable whole boundaries and remaining representation obligations, then
   recommend one bounded 0-to-2 bridge or whole-plus-fraction foundation before
@@ -21,6 +19,7 @@ summary: >-
 - Status: (see frontmatter)
 - Owner/model: one investigator; orchestrator review; owner readiness/task decision
 - Date: 2026-10-31
+- Refreshed: 2026-11-02 against owner-accepted Plans45–52
 - Packet type: bounded readiness investigation and foundation-task design
 - Mutation level: report-only, existing exact-API checks
 - Approval gate: scope proposal, owner readiness/design disposition, separate source work
@@ -34,7 +33,7 @@ obligations and recommend ONE small foundation task: a whole-boundary [0,2] brid
 or whole-plus-fraction/improper-form connection. Do not design all mixed addition,
 composition, subtraction and decomposition episodes in this packet.
 
-The current line task is [0,1]; Plan17's accepted crossing-one result uses multiple
+The current unary and collection line tasks use [0,1]; Plan17's accepted crossing-one result uses multiple
 bar wholes. Neither automatically proves coherent [0,2] geometry, learner-owned
 decomposition, notation or regrouping. The exact mixed-number core is existing
 capability, not evidence that learners understand its transformations.
@@ -47,11 +46,25 @@ Roadmap32–44 and91, and phase-3-follow-up-obligations.md. Read Plan17 adopted
 crossing-one/stack evidence, Plan31 typography contract, Plan39 final review and
 owner acceptance, Plan44 adopted task, and current exact mixed-number APIs.
 
-Dependencies provide accepted unit, notation and task precedents. Plans45–47 may
-be incomplete: distinguish adopted contracts, source evidence and unadopted design.
-Do not require their completion to investigate, or pretend their intended outputs
-are delivered. Any later source dispatch must refresh the readiness assessment
-against actual accepted representation work. No Phase4 exit is pre-decided.
+Dependencies provide accepted unit, notation and task precedents. Plans45–52 are
+now owner accepted and complete. Inspect the owner acceptance and final technical
+review/repair records in these report folders, using progress.md to locate them:
+
+- plan-45-symbolic-fraction-comparison: symbolic-first comparison with one requested
+  source model and paired verification only after acceptance.
+- plan-49-optional-common-denominator-comparison-help: requested denominator and
+  renaming construction, preserving meaningful learner work and raw forms.
+- plan-50-number-line-collection-task: three labels on [0,1], coincident equivalent
+  positions, aggregate Check, editable placement and accessible controls.
+- plan-51-fraction-distance-comparison-task: comparison followed by unsigned
+  distance for four common-unit records, equivalent answers and requested models.
+- plan-52-house-learner-feedback-style: concise success, specific retry, neutral
+  incomplete/unavailable guidance and deliberate focus/announcement treatment.
+
+These are engineering and owner task-acceptance precedents, not learner-transfer
+or efficacy evidence. Plan51 does not by itself establish number-line movement or
+an implemented [0,2] distance task. Refresh any later source dispatch against the
+then-current accepted work. No Phase4 exit is pre-decided.
 
 Own ONLY reports/development/plan-48-whole-boundary-bridge-and-mixed-number-readiness/.
 No source/tests/harness/canonical docs/open-question/decision/status/board changes.
@@ -80,7 +93,9 @@ Distinguish an engineering/design readiness recommendation from empirical learne
 efficacy. Identify which prerequisites the first foundation task needs and which
 later mixed-operation work needs. Recommend sequencing without declaring the phase
 complete or inventing a requirement that every imaginable representation must ship.
-Retain operation-movement/distance gaps explicitly if not covered elsewhere.
+Assess operation movement separately from the accepted symbolic/model-assisted
+distance task; retain remaining representation gaps explicitly without describing
+Plan51's delivered distance responsibility as absent.
 
 ## Requirement 2 — one foundation-task recommendation
 
@@ -110,6 +125,9 @@ and direct progression. Use existing stacked typography and propose a bounded
 mixed-number display contract if needed; avoid ambiguous inline whole-plus-slash
 notation. No long explanatory preamble, duplicated prompts or every regrouping
 step packed into one episode. Show two worked journeys and compact layout sketches.
+Apply Plan52's accepted feedback vocabulary in those sketches and distinguish
+initial unplaced, tentative, incorrect and accepted positions; do not let a tile's
+starting position or an aligned source model supply the answer before Check.
 
 ## Requirement 3 — exact examples and source seam recommendation
 
@@ -125,6 +143,9 @@ response/help ownership, scene withholding, display/capability and replay bounda
 for ONE later source slice. Call out actual missing seams and whether a small
 ownership/tooling prerequisite is justified. No general representation framework,
 global focus/refactor, schema-number assignment or source implementation here.
+Refresh the MAINT-42-B/C dispositions and the representation-evidence tooling
+obligation against current seams; recommend a prerequisite only for a concrete
+cost or defect, not as automatic permission for a broad refactor.
 
 Map subsequent mixed foundations, addition without composition, composition,
 subtraction without decomposition and decomposition only as later dependencies
