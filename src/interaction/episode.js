@@ -1,3 +1,4 @@
+import { createPlan58Episode, applyPlan58Intent } from './plan58-whole-plus-fraction-episode.js';
 import { createPlan53Episode, applyPlan53Intent } from './plan53-two-whole-location-episode.js';
 import { createPlan51Episode, applyPlan51Intent } from './plan51-distance-episode.js';
 import { createPlan50Episode, applyPlan50Intent } from './plan50-number-line-collection-episode.js';
@@ -275,7 +276,9 @@ function assertDefinition(definition) {
       'episode definition semantics do not match its registered identity',
     );
   }
-  const approvedBeats = registered.id === 'phase-4-two-whole-location'
+  const approvedBeats = registered.id === 'phase-4-whole-plus-fraction-construction'
+    ? ['construct', 'resolve']
+    : registered.id === 'phase-4-two-whole-location'
     ? ['locate', 'resolve']
     : registered.id === 'phase-4-fraction-distance'
     ? ['compare', 'distance', 'resolve']
@@ -1411,6 +1414,9 @@ export function createEpisode({
   allowCompatibilityPair = false,
 } = {}) {
   const definition = assertDefinition(episodeDefinition);
+  if (definition.id === 'phase-4-whole-plus-fraction-construction' && definition.revision === '1') {
+    return createPlan58Episode({ taskContext, support, activeCondition, episodeDefinition: definition });
+  }
   if (definition.id === 'phase-4-two-whole-location' && definition.revision === '1') {
     return createPlan53Episode({ taskContext, support, activeCondition, episodeDefinition: definition });
   }
@@ -1500,6 +1506,9 @@ export function applyIntent(state, rawIntent) {
   if (!state || state.schemaVersion !== 'fractionflow.episode-state/v1') {
     throw new EpisodeIntentError('INVALID_EPISODE_STATE', 'state is not a Plan 05 episode state');
   }
+  if (state.episodeDefinition?.id === 'phase-4-whole-plus-fraction-construction' && state.episodeDefinition.revision === '1') {
+    return applyPlan58Intent(state, rawIntent);
+  }
   if (state.episodeDefinition?.id === 'phase-4-two-whole-location' && state.episodeDefinition.revision === '1') {
     return applyPlan53Intent(state, rawIntent);
   }
@@ -1552,6 +1561,10 @@ export function withActiveCondition(state, activeCondition) {
     throw new EpisodeIntentError('INVALID_EPISODE_STATE', 'state is not a Plan 05 episode state');
   }
   const normalizedCondition = validateActiveCondition(activeCondition);
+  if (state.episodeDefinition?.id === 'phase-4-whole-plus-fraction-construction') {
+    if (!sameDefinitionValue(normalizedCondition, state.activeCondition)) throw new EpisodeIntentError('UNSUPPORTED_CONDITION', 'construction condition is frozen');
+    return state;
+  }
   if (state.episodeDefinition?.id === 'phase-4-two-whole-location') {
     if (!sameDefinitionValue(normalizedCondition, state.activeCondition)) throw new EpisodeIntentError('UNSUPPORTED_CONDITION', 'location condition is frozen');
     return state;

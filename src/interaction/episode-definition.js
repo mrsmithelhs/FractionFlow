@@ -283,6 +283,12 @@ export const PLAN53_LOCATION_EPISODE_DEFINITION = deepFreeze({
   promptIdentities: { locate: 'phase4.two-whole.place', resolve: 'phase4.two-whole.accepted' },
 });
 
+export const PLAN58_CONSTRUCTION_EPISODE_DEFINITION = deepFreeze({
+  id: 'phase-4-whole-plus-fraction-construction', revision: '1', family: 'whole-plus-fraction-construction',
+  beats: ['construct', 'resolve'], includeReflection: false,
+  promptIdentities: { construct: 'phase4.construction.construct', resolve: 'phase4.construction.accepted' },
+});
+
 const EPISODE_DEFINITIONS = Object.freeze([
   LEGACY_PHASE2_EPISODE_DEFINITION,
   LEGACY_PHASE2_REFLECTION_EPISODE_DEFINITION,
@@ -305,6 +311,7 @@ const EPISODE_DEFINITIONS = Object.freeze([
   PLAN50_COLLECTION_EPISODE_DEFINITION,
   PLAN51_DISTANCE_EPISODE_DEFINITION,
   PLAN53_LOCATION_EPISODE_DEFINITION,
+  PLAN58_CONSTRUCTION_EPISODE_DEFINITION,
 ]);
 
 export function getEpisodeDefinition(id = EPISODE_DEFINITION_ID, revision = EPISODE_DEFINITION_REVISION) {

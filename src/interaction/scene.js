@@ -1,3 +1,4 @@
+import { projectPlan58Construction } from './plan58-whole-plus-fraction-scene.js';
 import { projectPlan53Location } from './plan53-two-whole-location-scene.js';
 import { projectPlan51Distance } from './plan51-distance-scene.js';
 import { admitPlan50Record, validatePlan50Context } from '../content/plan50-number-line-collection-task.js';
@@ -199,6 +200,10 @@ function assertStateShape(state) {
     if (!Array.isArray(state[key])) {
       throw new SceneProjectionError('INVALID_SCENE_INPUT', `state.${key} must be an array`);
     }
+  }
+  if (state.episodeDefinition?.id === 'phase-4-whole-plus-fraction-construction') {
+    projectPlan58Construction(state);
+    return;
   }
   if (state.episodeDefinition?.id === 'phase-4-two-whole-location') {
     projectPlan53Location(state);
@@ -515,6 +520,7 @@ function contentProjectionSource(state) {
 }
 
 function sourceContext({ state, representationRole, presentationMode, isReplaying = false }) {
+  if (state.episodeDefinition?.id === 'phase-4-whole-plus-fraction-construction') return { construction: projectPlan58Construction(state), representationRole, presentationMode, isReplaying };
   if (state.episodeDefinition?.id === 'phase-4-two-whole-location') return { location: projectPlan53Location(state), representationRole, presentationMode, isReplaying };
   if (state.episodeDefinition?.id === 'phase-4-fraction-distance') return { distance: projectPlan51Distance(state), context: state.taskContext, revision: state.revision, representationRole, presentationMode, isReplaying };
   if (state.episodeDefinition?.id === 'phase-4-number-line-collection') return { collection: {taskContext:state.taskContext, revision:state.revision, placementRevision:state.placementRevision, selectedMemberId:state.selectedMemberId, placements:state.placements, evaluation:state.evaluation, status:state.status, support:state.support, activeCondition:state.activeCondition, helpRequested:state.assistanceHistory.length > 0}, representationRole,presentationMode,isReplaying };
@@ -604,6 +610,7 @@ function pathSummary(state) {
 }
 
 function capabilityFor(state, role, derivation) {
+  if (state.episodeDefinition?.id === 'phase-4-whole-plus-fraction-construction') return { instance: 'eligible', activePath: null, authoredCoverage: null, continuation: null };
   if (state.episodeDefinition?.id === 'phase-4-two-whole-location') {
     if (role !== 'number-line') throw new SceneProjectionError('UNRESOLVED_CAPABILITY', 'location requires number-line');
     return { instance:'eligible', activePath:null, authoredCoverage:null, continuation:null };
@@ -1122,6 +1129,7 @@ function takeawayMeaning(state) {
 }
 
 function sceneMeaning(state, representationRole, capability) {
+  if (state.episodeDefinition?.id === 'phase-4-whole-plus-fraction-construction') return { representationRole, capability, construction: projectPlan58Construction(state), status: { episode: state.status }, support: state.support };
   if (state.episodeDefinition?.id === 'phase-4-two-whole-location') return { representationRole, capability, location: projectPlan53Location(state), status: { episode: state.status }, support: state.support };
   if (state.episodeDefinition?.id === 'phase-4-fraction-distance') return { representationRole, capability, distance: projectPlan51Distance(state), status: { episode: state.status }, support: state.support };
   if (state.episodeDefinition?.id === 'phase-4-number-line-collection') {
