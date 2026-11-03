@@ -1,0 +1,171 @@
+[
+  {
+    "cfg": {
+      "width": 360,
+      "height": 740,
+      "dpr": 1
+    },
+    "axis": {
+      "left": 57,
+      "right": 303,
+      "top": 479.90625,
+      "bottom": 523.90625,
+      "width": 246,
+      "height": 44
+    },
+    "start": {
+      "left": 95.640625,
+      "right": 141.359375,
+      "top": 446.53125,
+      "bottom": 475.90625,
+      "width": 45.71875,
+      "height": 29.375
+    },
+    "end": {
+      "left": 127.25,
+      "right": 171.25,
+      "top": 364.90625,
+      "bottom": 408.90625,
+      "width": 44,
+      "height": 44
+    },
+    "frame": {
+      "left": 57,
+      "right": 303,
+      "top": 348.90625,
+      "bottom": 523.90625,
+      "width": 246,
+      "height": 175
+    },
+    "tray": {
+      "left": 25,
+      "right": 335,
+      "top": 284.90625,
+      "bottom": 348.90625,
+      "width": 310,
+      "height": 64
+    },
+    "feedback": {
+      "left": 25,
+      "right": 335,
+      "top": 563.90625,
+      "bottom": 563.90625,
+      "width": 310,
+      "height": 0
+    },
+    "horizontalOverlap": 14.109375
+  },
+  {
+    "cfg": {
+      "width": 1093,
+      "height": 614,
+      "dpr": 1.25
+    },
+    "axis": {
+      "left": 93.09375,
+      "right": 999.90625,
+      "top": 516,
+      "bottom": 560,
+      "width": 906.8125,
+      "height": 44
+    },
+    "start": {
+      "left": 296.9375,
+      "right": 342.65625,
+      "top": 482.625,
+      "bottom": 512,
+      "width": 45.71875,
+      "height": 29.375
+    },
+    "end": {
+      "left": 411.140625,
+      "right": 455.140625,
+      "top": 401,
+      "bottom": 445,
+      "width": 44,
+      "height": 44
+    },
+    "frame": {
+      "left": 93.09375,
+      "right": 999.90625,
+      "top": 385,
+      "bottom": 560,
+      "width": 906.8125,
+      "height": 175
+    },
+    "tray": {
+      "left": 61.09375,
+      "right": 1031.90625,
+      "top": 321,
+      "bottom": 385,
+      "width": 970.8125,
+      "height": 64
+    },
+    "feedback": {
+      "left": 61.09375,
+      "right": 1031.90625,
+      "top": 600,
+      "bottom": 600,
+      "width": 970.8125,
+      "height": 0
+    },
+    "horizontalOverlap": 0
+  },
+  {
+    "cfg": {
+      "width": 360,
+      "height": 740,
+      "dpr": 1,
+      "scale": 200
+    },
+    "axis": {
+      "left": 113,
+      "right": 247,
+      "top": 957.609375,
+      "bottom": 1001.609375,
+      "width": 134,
+      "height": 44
+    },
+    "start": {
+      "left": 101.78125,
+      "right": 191.21875,
+      "top": 895.828125,
+      "bottom": 953.609375,
+      "width": 89.4375,
+      "height": 57.78125
+    },
+    "end": {
+      "left": 123.4921875,
+      "right": 203.0078125,
+      "top": 826.828125,
+      "bottom": 886.609375,
+      "width": 79.515625,
+      "height": 59.78125
+    },
+    "frame": {
+      "left": 113,
+      "right": 247,
+      "top": 826.609375,
+      "bottom": 1001.609375,
+      "width": 134,
+      "height": 175
+    },
+    "tray": {
+      "left": 49,
+      "right": 311,
+      "top": 748.828125,
+      "bottom": 826.609375,
+      "width": 262,
+      "height": 77.78125
+    },
+    "feedback": {
+      "left": 49,
+      "right": 311,
+      "top": 1081.609375,
+      "bottom": 1081.609375,
+      "width": 262,
+      "height": 0
+    },
+    "horizontalOverlap": 67.7265625
+  }
+]
