@@ -1,7 +1,8 @@
 ---
 id: plan-59
 title: Directed Number-Line Endpoint Task
-status: delivered
+status: complete
+resolution: "Owner accepted the revised six-record directed endpoint task, draggable End, collision-aware compact labels and earlier success on 2026-11-02. Evidence limits and representation-switch deferral retained; no push/deployment."
 depends_on: [plan-55, plan-53, plan-58]
 gate: "After Plan58 closure, approve mechanism before source and pure content/state/scene/replay before mounting. Technical review and owner rendered/task acceptance; deployment separate."
 summary: >-
