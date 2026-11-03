@@ -1,0 +1,3 @@
+# Plan 60 progress
+
+2026-11-02: Requirement 0 mechanism approved by orchestration; pure manifest/admission/navigation implementation and focused checks are ready for the separate checkpoint. See `mechanism.md`, `mechanism-approval.md`, and `pure-checkpoint.md` for identities, mechanism, evidence and limitations. Mounted integration has not begun. Awaiting orchestration review; owner complete-session and early-exit review and deployment remain separate. Consultation: no review at this checkpoint; one consolidated instruction-read-only Terra-medium delivery review is planned under the approved gate, with actual identity and structural-read-only limitations to be reported.
