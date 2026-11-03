@@ -36,3 +36,19 @@ it('retains old work on preparation failure and exits safely on post-commit disp
  failPrepare=false; failDisplay=true; advance(root); expect(app.getState()).toBeNull(); expect(root.querySelector('.app-entry-page').hasAttribute('hidden')).toBe(false); expect(root.querySelector('.app-session-entry-notice').textContent).toContain('could not be displayed'); expect(root.querySelector('[data-support-id="medium-support"]').disabled).toBe(false);
  failDisplay=false; root.querySelector('[data-session-entry="magnitude"]').click(); expect(app.getState().taskContext.itemId).toBe('plan45-compare-02'); app.destroy();
 });
+
+it('tears down session and retired dialog callbacks before same-instance remount', () => {
+ const {root, app} = mount();
+ root.querySelector('.app-return-button').click();
+ const retiredStay=button(root,'Stay'), retiredLeave=button(root,'Leave');
+ expect(root.querySelector('[role="dialog"]').hasAttribute('hidden')).toBe(false);
+ app.destroy(); app.mount();
+ root.querySelector('[data-practice-type="fraction-distance"]').click();
+ const relation=[...root.querySelectorAll('.app-visual-view .plan45-relation-option input')].find(x=>x.value==='<');
+ relation.checked=true; relation.dispatchEvent({type:'change'}); submit(root.querySelector('.app-visual-view .plan51-response'));
+ expect(app.getState().beat).toBe('distance');
+ const standalone=app.getState(); retiredStay.click(); retiredLeave.click(); expect(app.getState()).toBe(standalone);
+ app.destroy(); app.mount(); root.querySelector('[data-session-entry="magnitude"]').click();
+ expect(app.getState().taskContext.itemId).toBe('plan45-compare-02');
+ const session=app.getState(); retiredStay.click(); retiredLeave.click(); expect(app.getState()).toBe(session); app.destroy();
+});

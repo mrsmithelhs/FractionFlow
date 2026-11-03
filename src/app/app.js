@@ -499,6 +499,7 @@ export function createFractionFlowApp({
   let navigationRefusal = false;
   let currentEpisodeGeneration = 0;
   let isTransitioning = false;
+  let shellLifetime = 0;
   let magnitudeSession = null;
   let sessionDialog, sessionStay, sessionLeave, sessionEntryNotice, sessionEntryButton;
   let exitFocus = null, pendingHashDestination = null;
@@ -722,6 +723,8 @@ export function createFractionFlowApp({
   }
 
   function createShell() {
+    const shellGeneration = ++shellLifetime;
+    const shellActive = () => mounted && shellGeneration === shellLifetime;
     appRoot = makeElement('div', 'fractionflow-app');
 
     entryPage = makeElement('main', 'app-entry-page');
@@ -761,7 +764,7 @@ export function createFractionFlowApp({
       for (const button of followingPracticeButtons) followingPracticeList.appendChild(button);
       entryPage.appendChild(followingPracticeList);
     }
-    sessionEntryButton = createButton({ label: 'Compare fractions, then find a distance', className: 'app-practice-choice', onClick: startMagnitudeSession });
+    sessionEntryButton = createButton({ label: 'Compare fractions, then find a distance', className: 'app-practice-choice', onClick: () => { if (shellActive()) startMagnitudeSession(); } });
     sessionEntryButton.setAttribute('data-session-entry', 'magnitude');
     entryPage.appendChild(sessionEntryButton);
     const sessionCue = makeElement('p', 'app-session-cue'); sessionCue.textContent = 'Your place in this practice is not saved.'; entryPage.appendChild(sessionCue);
@@ -784,7 +787,7 @@ export function createFractionFlowApp({
     returnButton = createButton({
       label: 'Back to start',
       className: 'app-secondary-button',
-      onClick: () => magnitudeSession ? askSessionExit() : returnToEntry(),
+      onClick: () => { if (shellActive()) { if (magnitudeSession) askSessionExit(); else returnToEntry(); } },
     });
     returnButton.classList.add('app-return-button');
     navigationNotice = makeElement('p', 'app-navigation-notice');
@@ -977,10 +980,11 @@ export function createFractionFlowApp({
     sessionDialog = makeElement('div', 'app-session-dialog'); sessionDialog.setAttribute('role', 'dialog'); sessionDialog.setAttribute('aria-modal', 'true'); sessionDialog.setAttribute('aria-labelledby', 'session-exit-title');
     const dialogPanel = makeElement('div', 'app-session-dialog-panel');
     const dialogTitle = makeElement('p'); dialogTitle.id = 'session-exit-title'; dialogTitle.textContent = 'Leave this practice? Your place will not be saved.'; dialogPanel.appendChild(dialogTitle);
-    sessionStay = createButton({ label: 'Stay', className: 'app-secondary-button', onClick: stayInSession });
-    sessionLeave = createButton({ label: 'Leave', className: 'app-secondary-button', onClick: () => leaveMagnitudeSession(pendingHashDestination) });
+    sessionStay = createButton({ label: 'Stay', className: 'app-secondary-button', onClick: () => { if (shellActive()) stayInSession(); } });
+    sessionLeave = createButton({ label: 'Leave', className: 'app-secondary-button', onClick: () => { if (shellActive()) leaveMagnitudeSession(pendingHashDestination); } });
     dialogPanel.appendChild(sessionStay); dialogPanel.appendChild(sessionLeave); sessionDialog.appendChild(dialogPanel); setHidden(sessionDialog, true);
     sessionDialog.addEventListener('keydown', event => {
+      if (!shellActive()) return;
       if (event.key === 'Escape') { event.preventDefault(); stayInSession(); }
       else if (event.key === 'Tab') { event.preventDefault(); (document.activeElement === sessionStay ? sessionLeave : sessionStay).focus(); }
     });
@@ -2373,6 +2377,15 @@ export function createFractionFlowApp({
       return this;
     },
     destroy() {
+      shellLifetime += 1;
+      currentEpisodeGeneration += 1;
+      distanceRenderGeneration += 1;
+      if (magnitudeSession) { magnitudeSession.exit(magnitudeSession.current().session); clearFragment(); }
+      magnitudeSession = null;
+      currentScene = null;
+      pendingHashDestination = null; exitFocus = null;
+      navigationRefusal = false; isTransitioning = false;
+      state = null; selectedPracticeType = null; activePracticeItemIndex = null;
       visualPlan59Renderer?.destroy(); linearPlan59Renderer?.destroy();
       visualPlan59Renderer = null; linearPlan59Renderer = null;
       visualCollectionRenderer?.destroy(); linearCollectionRenderer?.destroy();
