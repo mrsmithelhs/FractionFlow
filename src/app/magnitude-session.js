@@ -96,4 +96,3 @@ export function createMagnitudeSessionController(manifest = MAGNITUDE_SESSION_MA
   };
   return Object.freeze({ current, updateEpisode, prepareTransition, commit, exit });
 }
-
