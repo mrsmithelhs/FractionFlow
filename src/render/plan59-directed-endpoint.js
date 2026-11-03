@@ -13,6 +13,8 @@ export function createPlan59Renderer({ container, view, dispatch, progression, h
   let destroyed = false;
   let preview = null;
   let gesture = null;
+  let layoutObserver = null;
+  let layoutSignature = null;
   const valid = node => !destroyed && active() && root?.isConnected && root.contains(node);
   const cancelGesture = () => {
     const current = gesture;
@@ -26,13 +28,38 @@ export function createPlan59Renderer({ container, view, dispatch, progression, h
     }
     root?.querySelector('.plan53-highlight')?.classList.remove('plan53-highlight');
   };
+  const refreshLayout = () => {
+    const frame = root?.querySelector('.plan59-frame');
+    const startLabel = frame?.querySelector('.plan59-start');
+    const probe = frame?.querySelector('.plan59-measure');
+    if (!frame || !startLabel || !probe || !frame.isConnected) return;
+    const startBox = startLabel.getBoundingClientRect();
+    const probeBox = probe.getBoundingClientRect();
+    const fontSize = Number.parseFloat(getComputedStyle(startLabel).fontSize);
+    layoutSignature = JSON.stringify([startBox.width, startBox.height, probeBox.width, probeBox.height, fontSize]);
+    const gap = fontSize * 0.25;
+    frame.style.height = `${Math.ceil(48 + startBox.height + probeBox.height + gap)}px`;
+    const endLabel = frame.querySelector('.plan59-marker');
+    if (!endLabel) return;
+    endLabel.style.bottom = '48px';
+    const endBox = endLabel.getBoundingClientRect();
+    if (startBox.left < endBox.right && endBox.left < startBox.right) {
+      endLabel.style.bottom = `${48 + startBox.height + gap}px`;
+    }
+  };
+  const onResize = () => { cancelGesture(); refreshLayout(); };
+  const onFontsChanged = () => { cancelGesture(); refreshLayout(); };
   const onEscape = event => { if (event.key === 'Escape' && gesture) cancelGesture(); };
-  window.addEventListener('resize', cancelGesture);
+  window.addEventListener('resize', onResize);
+  document.fonts?.addEventListener('loadingdone', onFontsChanged);
   window.addEventListener('scroll', cancelGesture, true);
   document.addEventListener('keydown', onEscape);
   const destroy = () => {
     cancelGesture();
-    window.removeEventListener('resize', cancelGesture);
+    window.removeEventListener('resize', onResize);
+    document.fonts?.removeEventListener('loadingdone', onFontsChanged);
+    layoutObserver?.disconnect();
+    layoutObserver = null;
     window.removeEventListener('scroll', cancelGesture, true);
     document.removeEventListener('keydown', onEscape);
     destroyed = true; root?.remove(); root = null;
@@ -40,6 +67,8 @@ export function createPlan59Renderer({ container, view, dispatch, progression, h
 
   function render(scene) {
     cancelGesture();
+    layoutObserver?.disconnect();
+    layoutObserver = null;
     const model = scene.meaning.endpoint;
     const live = model.status === 'active';
     const denominator = Number(model.start.denominator);
@@ -69,6 +98,7 @@ export function createPlan59Renderer({ container, view, dispatch, progression, h
     if (model.evaluation.status === 'incomplete') feedback.textContent = 'Place the end first.';
     if (model.evaluation.status === 'incorrect') feedback.textContent = 'Check the direction and number of equal parts.';
     if (model.evaluation.status === 'accepted') feedback.textContent = "That's right.";
+    if (!live) section.append(feedback);
     if (live && feedback.textContent) {
       feedback.id = `plan59-guidance-${view}`;
       feedback.classList.add(model.evaluation.status === 'incorrect' ? 'house-retry' : 'house-attention');
@@ -101,7 +131,9 @@ export function createPlan59Renderer({ container, view, dispatch, progression, h
       fixedStart.style.left = `${start / denominator * 100}%`;
       fixedStart.setAttribute('role', 'img');
       fixedStart.setAttribute('aria-label', `Supplied start ${model.start.numerator} over ${model.start.denominator}`);
-      frame.append(axis, fixedStart);
+      const measure = element('span', 'plan59-drag-tile plan59-measure', 'End');
+      measure.setAttribute('aria-hidden', 'true');
+      frame.append(axis, fixedStart, measure);
       if (selected !== null) {
         const marker = live ? makeTile(true) : element('span', 'plan59-marker', 'End');
         marker.style.left = `${selected / denominator * 100}%`;
@@ -201,7 +233,7 @@ export function createPlan59Renderer({ container, view, dispatch, progression, h
         section.append(element('p', 'plan59-linear-verification', `From the start, move ${direction} ${amount.numerator} over ${amount.denominator} to ${endpoint.numerator} over ${endpoint.denominator}.`));
       }
     }
-    section.append(feedback);
+    if (live) section.append(feedback);
     if (live) {
       const controls = element('div', 'plan53-controls');
       if (view === 'visual') {
@@ -229,6 +261,20 @@ export function createPlan59Renderer({ container, view, dispatch, progression, h
     }
     if (root) root.replaceWith(section); else container.append(section);
     root = section;
+    refreshLayout();
+    const startLabel = root.querySelector('.plan59-start');
+    const probe = root.querySelector('.plan59-measure');
+    if (startLabel && probe && typeof ResizeObserver !== 'undefined') {
+      layoutObserver = new ResizeObserver(() => {
+        if (!root?.isConnected) return;
+        const startBox = startLabel.getBoundingClientRect(), probeBox = probe.getBoundingClientRect();
+        const fontSize = Number.parseFloat(getComputedStyle(startLabel).fontSize);
+        const signature = JSON.stringify([startBox.width, startBox.height, probeBox.width, probeBox.height, fontSize]);
+        if (signature !== layoutSignature) { cancelGesture(); refreshLayout(); }
+      });
+      layoutObserver.observe(startLabel);
+      layoutObserver.observe(probe);
+    }
     if (focusKey) root.querySelector(`[data-focus-key="${focusKey}"]`)?.focus();
   }
   return { mount: render, update: render, destroy, cancelGesture, focusFeedback: () => root?.querySelector('.plan53-feedback')?.focus() };

@@ -1,0 +1,17 @@
+{
+  "receipt": [
+    {
+      "name": "collision-overlap",
+      "marker": "WITNESS_COLLISION_STACK",
+      "exit": 1,
+      "excerpt": "ernal/modules/run_main:107\r\n    triggerUncaughtException(\r\n    ^\r\n\r\nAssertionError [ERR_ASSERTION]: WITNESS_COLLISION_STACK\r\n    at file:///C:/AI/FractionFlow/reports/development/plan-59-directed-number-line-endpoint/evidence/repair-03/layout-probe.mjs:51:25 {\r\n  generatedMessage: false,\r\n  code: 'ERR_ASSERTION',\r\n  actual: false,\r\n  expected: true,\r\n  operator: '==',\r\n  diff: 'simple'\r\n}\r\n\r\nNode.js v26.7.0\r\n"
+    },
+    {
+      "name": "success-order",
+      "marker": "WITNESS_SUCCESS_ORDER",
+      "exit": 1,
+      "excerpt": "ernal/modules/run_main:107\r\n    triggerUncaughtException(\r\n    ^\r\n\r\nAssertionError [ERR_ASSERTION]: WITNESS_SUCCESS_ORDER\r\n    at file:///C:/AI/FractionFlow/reports/development/plan-59-directed-number-line-endpoint/evidence/repair-03/layout-probe.mjs:35:38 {\r\n  generatedMessage: false,\r\n  code: 'ERR_ASSERTION',\r\n  actual: false,\r\n  expected: true,\r\n  operator: '==',\r\n  diff: 'simple'\r\n}\r\n\r\nNode.js v26.7.0\r\n"
+    }
+  ],
+  "restored": "clean pass"
+}

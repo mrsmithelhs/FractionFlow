@@ -1,0 +1,1878 @@
+[
+  {
+    "cfg": {
+      "width": 360,
+      "height": 740,
+      "dpr": 1
+    },
+    "initial": {
+      "axis": {
+        "left": 57,
+        "right": 303,
+        "top": 430.90625,
+        "bottom": 474.90625,
+        "width": 246,
+        "height": 44
+      },
+      "start": {
+        "left": 95.640625,
+        "right": 141.359375,
+        "top": 397.53125,
+        "bottom": 426.90625,
+        "width": 45.71875,
+        "height": 29.375
+      },
+      "end": null,
+      "frame": {
+        "left": 57,
+        "right": 303,
+        "top": 348.90625,
+        "bottom": 474.90625,
+        "width": 246,
+        "height": 126
+      },
+      "tray": {
+        "left": 25,
+        "right": 335,
+        "top": 284.90625,
+        "bottom": 348.90625,
+        "width": 310,
+        "height": 64
+      },
+      "labels": [
+        {
+          "left": 53.6875,
+          "right": 62.3125,
+          "top": 462.90625,
+          "bottom": 483.90625,
+          "width": 8.625,
+          "height": 21
+        },
+        {
+          "left": 299.6875,
+          "right": 308.3125,
+          "top": 462.90625,
+          "bottom": 483.90625,
+          "width": 8.625,
+          "height": 21
+        }
+      ],
+      "feedback": {
+        "left": 25,
+        "right": 335,
+        "top": 514.90625,
+        "bottom": 514.90625,
+        "width": 310,
+        "height": 0
+      },
+      "expression": {
+        "left": 25,
+        "right": 335,
+        "top": 165,
+        "bottom": 213,
+        "width": 310,
+        "height": 48
+      },
+      "scrollWidth": 360,
+      "viewport": 360,
+      "docHeight": 740
+    },
+    "before": {
+      "axis": {
+        "left": 57,
+        "right": 303,
+        "top": 430.90625,
+        "bottom": 474.90625,
+        "width": 246,
+        "height": 44
+      },
+      "start": {
+        "left": 95.640625,
+        "right": 141.359375,
+        "top": 397.53125,
+        "bottom": 426.90625,
+        "width": 45.71875,
+        "height": 29.375
+      },
+      "end": null,
+      "frame": {
+        "left": 57,
+        "right": 303,
+        "top": 348.90625,
+        "bottom": 474.90625,
+        "width": 246,
+        "height": 126
+      },
+      "tray": {
+        "left": 25,
+        "right": 335,
+        "top": 284.90625,
+        "bottom": 348.90625,
+        "width": 310,
+        "height": 64
+      },
+      "labels": [
+        {
+          "left": 53.6875,
+          "right": 62.3125,
+          "top": 462.90625,
+          "bottom": 483.90625,
+          "width": 8.625,
+          "height": 21
+        },
+        {
+          "left": 299.6875,
+          "right": 308.3125,
+          "top": 462.90625,
+          "bottom": 483.90625,
+          "width": 8.625,
+          "height": 21
+        }
+      ],
+      "feedback": {
+        "left": 25,
+        "right": 335,
+        "top": 514.90625,
+        "bottom": 514.90625,
+        "width": 310,
+        "height": 0
+      },
+      "expression": {
+        "left": 25,
+        "right": 335,
+        "top": 165,
+        "bottom": 213,
+        "width": 310,
+        "height": 48
+      },
+      "scrollWidth": 360,
+      "viewport": 360,
+      "docHeight": 740
+    },
+    "during": {
+      "axis": {
+        "left": 57,
+        "right": 303,
+        "top": 430.90625,
+        "bottom": 474.90625,
+        "width": 246,
+        "height": 44
+      },
+      "start": {
+        "left": 95.640625,
+        "right": 141.359375,
+        "top": 397.53125,
+        "bottom": 426.90625,
+        "width": 45.71875,
+        "height": 29.375
+      },
+      "end": null,
+      "frame": {
+        "left": 57,
+        "right": 303,
+        "top": 348.90625,
+        "bottom": 474.90625,
+        "width": 246,
+        "height": 126
+      },
+      "tray": {
+        "left": 25,
+        "right": 335,
+        "top": 284.90625,
+        "bottom": 348.90625,
+        "width": 310,
+        "height": 64
+      },
+      "labels": [
+        {
+          "left": 53.6875,
+          "right": 62.3125,
+          "top": 462.90625,
+          "bottom": 483.90625,
+          "width": 8.625,
+          "height": 21
+        },
+        {
+          "left": 299.6875,
+          "right": 308.3125,
+          "top": 462.90625,
+          "bottom": 483.90625,
+          "width": 8.625,
+          "height": 21
+        }
+      ],
+      "feedback": {
+        "left": 25,
+        "right": 335,
+        "top": 514.90625,
+        "bottom": 514.90625,
+        "width": 310,
+        "height": 0
+      },
+      "expression": {
+        "left": 25,
+        "right": 335,
+        "top": 165,
+        "bottom": 213,
+        "width": 310,
+        "height": 48
+      },
+      "scrollWidth": 360,
+      "viewport": 360,
+      "docHeight": 740
+    },
+    "after": {
+      "axis": {
+        "left": 57,
+        "right": 303,
+        "top": 430.90625,
+        "bottom": 474.90625,
+        "width": 246,
+        "height": 44
+      },
+      "start": {
+        "left": 95.640625,
+        "right": 141.359375,
+        "top": 397.53125,
+        "bottom": 426.90625,
+        "width": 45.71875,
+        "height": 29.375
+      },
+      "end": {
+        "left": 219.5,
+        "right": 263.5,
+        "top": 382.90625,
+        "bottom": 426.90625,
+        "width": 44,
+        "height": 44
+      },
+      "frame": {
+        "left": 57,
+        "right": 303,
+        "top": 348.90625,
+        "bottom": 474.90625,
+        "width": 246,
+        "height": 126
+      },
+      "tray": {
+        "left": 25,
+        "right": 335,
+        "top": 284.90625,
+        "bottom": 348.90625,
+        "width": 310,
+        "height": 64
+      },
+      "labels": [
+        {
+          "left": 53.6875,
+          "right": 62.3125,
+          "top": 462.90625,
+          "bottom": 483.90625,
+          "width": 8.625,
+          "height": 21
+        },
+        {
+          "left": 299.6875,
+          "right": 308.3125,
+          "top": 462.90625,
+          "bottom": 483.90625,
+          "width": 8.625,
+          "height": 21
+        }
+      ],
+      "feedback": {
+        "left": 25,
+        "right": 335,
+        "top": 514.90625,
+        "bottom": 514.90625,
+        "width": 310,
+        "height": 0
+      },
+      "expression": {
+        "left": 25,
+        "right": 335,
+        "top": 165,
+        "bottom": 213,
+        "width": 310,
+        "height": 48
+      },
+      "scrollWidth": 360,
+      "viewport": 360,
+      "docHeight": 740
+    },
+    "accepted": {
+      "axis": {
+        "left": 57,
+        "right": 303,
+        "top": 368,
+        "bottom": 412,
+        "width": 246,
+        "height": 44
+      },
+      "start": {
+        "left": 95.640625,
+        "right": 141.359375,
+        "top": 334.625,
+        "bottom": 364,
+        "width": 45.71875,
+        "height": 29.375
+      },
+      "end": {
+        "left": 220.6171875,
+        "right": 262.3828125,
+        "top": 332.625,
+        "bottom": 364,
+        "width": 41.765625,
+        "height": 31.375
+      },
+      "frame": {
+        "left": 57,
+        "right": 303,
+        "top": 286,
+        "bottom": 412,
+        "width": 246,
+        "height": 126
+      },
+      "tray": null,
+      "labels": [
+        {
+          "left": 53.6875,
+          "right": 62.3125,
+          "top": 400,
+          "bottom": 421,
+          "width": 8.625,
+          "height": 21
+        },
+        {
+          "left": 299.6875,
+          "right": 308.3125,
+          "top": 400,
+          "bottom": 421,
+          "width": 8.625,
+          "height": 21
+        }
+      ],
+      "feedback": {
+        "left": 25,
+        "right": 335,
+        "top": 233,
+        "bottom": 282,
+        "width": 310,
+        "height": 49
+      },
+      "expression": {
+        "left": 25,
+        "right": 335,
+        "top": 165,
+        "bottom": 213,
+        "width": 310,
+        "height": 48
+      },
+      "scrollWidth": 360,
+      "viewport": 360,
+      "docHeight": 740
+    },
+    "eighth": [
+      {
+        "i": 2,
+        "overlap": 44,
+        "geometry": {
+          "axis": {
+            "left": 57,
+            "right": 303,
+            "top": 430.90625,
+            "bottom": 474.90625,
+            "width": 246,
+            "height": 44
+          },
+          "start": {
+            "left": 95.640625,
+            "right": 141.359375,
+            "top": 397.53125,
+            "bottom": 426.90625,
+            "width": 45.71875,
+            "height": 29.375
+          },
+          "end": {
+            "left": 96.5,
+            "right": 140.5,
+            "top": 349.53125,
+            "bottom": 393.53125,
+            "width": 44,
+            "height": 44
+          },
+          "frame": {
+            "left": 57,
+            "right": 303,
+            "top": 348.90625,
+            "bottom": 474.90625,
+            "width": 246,
+            "height": 126
+          },
+          "tray": {
+            "left": 25,
+            "right": 335,
+            "top": 284.90625,
+            "bottom": 348.90625,
+            "width": 310,
+            "height": 64
+          },
+          "labels": [
+            {
+              "left": 53.6875,
+              "right": 62.3125,
+              "top": 462.90625,
+              "bottom": 483.90625,
+              "width": 8.625,
+              "height": 21
+            },
+            {
+              "left": 299.6875,
+              "right": 308.3125,
+              "top": 462.90625,
+              "bottom": 483.90625,
+              "width": 8.625,
+              "height": 21
+            }
+          ],
+          "feedback": {
+            "left": 25,
+            "right": 335,
+            "top": 514.90625,
+            "bottom": 514.90625,
+            "width": 310,
+            "height": 0
+          },
+          "expression": {
+            "left": 25,
+            "right": 335,
+            "top": 165,
+            "bottom": 213,
+            "width": 310,
+            "height": 48
+          },
+          "scrollWidth": 360,
+          "viewport": 360,
+          "docHeight": 740
+        }
+      },
+      {
+        "i": 3,
+        "overlap": 14.109375,
+        "geometry": {
+          "axis": {
+            "left": 57,
+            "right": 303,
+            "top": 430.90625,
+            "bottom": 474.90625,
+            "width": 246,
+            "height": 44
+          },
+          "start": {
+            "left": 95.640625,
+            "right": 141.359375,
+            "top": 397.53125,
+            "bottom": 426.90625,
+            "width": 45.71875,
+            "height": 29.375
+          },
+          "end": {
+            "left": 127.25,
+            "right": 171.25,
+            "top": 349.53125,
+            "bottom": 393.53125,
+            "width": 44,
+            "height": 44
+          },
+          "frame": {
+            "left": 57,
+            "right": 303,
+            "top": 348.90625,
+            "bottom": 474.90625,
+            "width": 246,
+            "height": 126
+          },
+          "tray": {
+            "left": 25,
+            "right": 335,
+            "top": 284.90625,
+            "bottom": 348.90625,
+            "width": 310,
+            "height": 64
+          },
+          "labels": [
+            {
+              "left": 53.6875,
+              "right": 62.3125,
+              "top": 462.90625,
+              "bottom": 483.90625,
+              "width": 8.625,
+              "height": 21
+            },
+            {
+              "left": 299.6875,
+              "right": 308.3125,
+              "top": 462.90625,
+              "bottom": 483.90625,
+              "width": 8.625,
+              "height": 21
+            }
+          ],
+          "feedback": {
+            "left": 25,
+            "right": 335,
+            "top": 514.90625,
+            "bottom": 514.90625,
+            "width": 310,
+            "height": 0
+          },
+          "expression": {
+            "left": 25,
+            "right": 335,
+            "top": 165,
+            "bottom": 213,
+            "width": 310,
+            "height": 48
+          },
+          "scrollWidth": 360,
+          "viewport": 360,
+          "docHeight": 740
+        }
+      },
+      {
+        "i": 8,
+        "overlap": -139.640625,
+        "geometry": {
+          "axis": {
+            "left": 57,
+            "right": 303,
+            "top": 430.90625,
+            "bottom": 474.90625,
+            "width": 246,
+            "height": 44
+          },
+          "start": {
+            "left": 95.640625,
+            "right": 141.359375,
+            "top": 397.53125,
+            "bottom": 426.90625,
+            "width": 45.71875,
+            "height": 29.375
+          },
+          "end": {
+            "left": 281,
+            "right": 325,
+            "top": 382.90625,
+            "bottom": 426.90625,
+            "width": 44,
+            "height": 44
+          },
+          "frame": {
+            "left": 57,
+            "right": 303,
+            "top": 348.90625,
+            "bottom": 474.90625,
+            "width": 246,
+            "height": 126
+          },
+          "tray": {
+            "left": 25,
+            "right": 335,
+            "top": 284.90625,
+            "bottom": 348.90625,
+            "width": 310,
+            "height": 64
+          },
+          "labels": [
+            {
+              "left": 53.6875,
+              "right": 62.3125,
+              "top": 462.90625,
+              "bottom": 483.90625,
+              "width": 8.625,
+              "height": 21
+            },
+            {
+              "left": 299.6875,
+              "right": 308.3125,
+              "top": 462.90625,
+              "bottom": 483.90625,
+              "width": 8.625,
+              "height": 21
+            }
+          ],
+          "feedback": {
+            "left": 25,
+            "right": 335,
+            "top": 514.90625,
+            "bottom": 514.90625,
+            "width": 310,
+            "height": 0
+          },
+          "expression": {
+            "left": 25,
+            "right": 335,
+            "top": 165,
+            "bottom": 213,
+            "width": 310,
+            "height": 48
+          },
+          "scrollWidth": 360,
+          "viewport": 360,
+          "docHeight": 740
+        }
+      }
+    ]
+  },
+  {
+    "cfg": {
+      "width": 1093,
+      "height": 614,
+      "dpr": 1.25
+    },
+    "initial": {
+      "axis": {
+        "left": 93.09375,
+        "right": 999.90625,
+        "top": 467,
+        "bottom": 511,
+        "width": 906.8125,
+        "height": 44
+      },
+      "start": {
+        "left": 296.9375,
+        "right": 342.65625,
+        "top": 433.625,
+        "bottom": 463,
+        "width": 45.71875,
+        "height": 29.375
+      },
+      "end": null,
+      "frame": {
+        "left": 93.09375,
+        "right": 999.90625,
+        "top": 385,
+        "bottom": 511,
+        "width": 906.8125,
+        "height": 126
+      },
+      "tray": {
+        "left": 61.09375,
+        "right": 1031.90625,
+        "top": 321,
+        "bottom": 385,
+        "width": 970.8125,
+        "height": 64
+      },
+      "labels": [
+        {
+          "left": 89.78125,
+          "right": 98.40625,
+          "top": 499,
+          "bottom": 520,
+          "width": 8.625,
+          "height": 21
+        },
+        {
+          "left": 996.59375,
+          "right": 1005.21875,
+          "top": 499,
+          "bottom": 520,
+          "width": 8.625,
+          "height": 21
+        }
+      ],
+      "feedback": {
+        "left": 61.09375,
+        "right": 1031.90625,
+        "top": 551,
+        "bottom": 551,
+        "width": 970.8125,
+        "height": 0
+      },
+      "expression": {
+        "left": 61.09375,
+        "right": 1031.90625,
+        "top": 201.09375,
+        "bottom": 249.09375,
+        "width": 970.8125,
+        "height": 48
+      },
+      "scrollWidth": 1093,
+      "viewport": 1093,
+      "docHeight": 737
+    },
+    "before": {
+      "axis": {
+        "left": 93.09375,
+        "right": 999.90625,
+        "top": 467,
+        "bottom": 511,
+        "width": 906.8125,
+        "height": 44
+      },
+      "start": {
+        "left": 296.9375,
+        "right": 342.65625,
+        "top": 433.625,
+        "bottom": 463,
+        "width": 45.71875,
+        "height": 29.375
+      },
+      "end": null,
+      "frame": {
+        "left": 93.09375,
+        "right": 999.90625,
+        "top": 385,
+        "bottom": 511,
+        "width": 906.8125,
+        "height": 126
+      },
+      "tray": {
+        "left": 61.09375,
+        "right": 1031.90625,
+        "top": 321,
+        "bottom": 385,
+        "width": 970.8125,
+        "height": 64
+      },
+      "labels": [
+        {
+          "left": 89.78125,
+          "right": 98.40625,
+          "top": 499,
+          "bottom": 520,
+          "width": 8.625,
+          "height": 21
+        },
+        {
+          "left": 996.59375,
+          "right": 1005.21875,
+          "top": 499,
+          "bottom": 520,
+          "width": 8.625,
+          "height": 21
+        }
+      ],
+      "feedback": {
+        "left": 61.09375,
+        "right": 1031.90625,
+        "top": 551,
+        "bottom": 551,
+        "width": 970.8125,
+        "height": 0
+      },
+      "expression": {
+        "left": 61.09375,
+        "right": 1031.90625,
+        "top": 201.09375,
+        "bottom": 249.09375,
+        "width": 970.8125,
+        "height": 48
+      },
+      "scrollWidth": 1093,
+      "viewport": 1093,
+      "docHeight": 737
+    },
+    "during": {
+      "axis": {
+        "left": 93.09375,
+        "right": 999.90625,
+        "top": 467,
+        "bottom": 511,
+        "width": 906.8125,
+        "height": 44
+      },
+      "start": {
+        "left": 296.9375,
+        "right": 342.65625,
+        "top": 433.625,
+        "bottom": 463,
+        "width": 45.71875,
+        "height": 29.375
+      },
+      "end": null,
+      "frame": {
+        "left": 93.09375,
+        "right": 999.90625,
+        "top": 385,
+        "bottom": 511,
+        "width": 906.8125,
+        "height": 126
+      },
+      "tray": {
+        "left": 61.09375,
+        "right": 1031.90625,
+        "top": 321,
+        "bottom": 385,
+        "width": 970.8125,
+        "height": 64
+      },
+      "labels": [
+        {
+          "left": 89.78125,
+          "right": 98.40625,
+          "top": 499,
+          "bottom": 520,
+          "width": 8.625,
+          "height": 21
+        },
+        {
+          "left": 996.59375,
+          "right": 1005.21875,
+          "top": 499,
+          "bottom": 520,
+          "width": 8.625,
+          "height": 21
+        }
+      ],
+      "feedback": {
+        "left": 61.09375,
+        "right": 1031.90625,
+        "top": 551,
+        "bottom": 551,
+        "width": 970.8125,
+        "height": 0
+      },
+      "expression": {
+        "left": 61.09375,
+        "right": 1031.90625,
+        "top": 201.09375,
+        "bottom": 249.09375,
+        "width": 970.8125,
+        "height": 48
+      },
+      "scrollWidth": 1093,
+      "viewport": 1093,
+      "docHeight": 737
+    },
+    "after": {
+      "axis": {
+        "left": 93.09375,
+        "right": 999.90625,
+        "top": 467,
+        "bottom": 511,
+        "width": 906.8125,
+        "height": 44
+      },
+      "start": {
+        "left": 296.9375,
+        "right": 342.65625,
+        "top": 433.625,
+        "bottom": 463,
+        "width": 45.71875,
+        "height": 29.375
+      },
+      "end": {
+        "left": 751.203125,
+        "right": 795.203125,
+        "top": 419,
+        "bottom": 463,
+        "width": 44,
+        "height": 44
+      },
+      "frame": {
+        "left": 93.09375,
+        "right": 999.90625,
+        "top": 385,
+        "bottom": 511,
+        "width": 906.8125,
+        "height": 126
+      },
+      "tray": {
+        "left": 61.09375,
+        "right": 1031.90625,
+        "top": 321,
+        "bottom": 385,
+        "width": 970.8125,
+        "height": 64
+      },
+      "labels": [
+        {
+          "left": 89.78125,
+          "right": 98.40625,
+          "top": 499,
+          "bottom": 520,
+          "width": 8.625,
+          "height": 21
+        },
+        {
+          "left": 996.59375,
+          "right": 1005.21875,
+          "top": 499,
+          "bottom": 520,
+          "width": 8.625,
+          "height": 21
+        }
+      ],
+      "feedback": {
+        "left": 61.09375,
+        "right": 1031.90625,
+        "top": 551,
+        "bottom": 551,
+        "width": 970.8125,
+        "height": 0
+      },
+      "expression": {
+        "left": 61.09375,
+        "right": 1031.90625,
+        "top": 201.09375,
+        "bottom": 249.09375,
+        "width": 970.8125,
+        "height": 48
+      },
+      "scrollWidth": 1093,
+      "viewport": 1093,
+      "docHeight": 737
+    },
+    "accepted": {
+      "axis": {
+        "left": 93.09375,
+        "right": 999.90625,
+        "top": 404.09375,
+        "bottom": 448.09375,
+        "width": 906.8125,
+        "height": 44
+      },
+      "start": {
+        "left": 296.9375,
+        "right": 342.65625,
+        "top": 370.71875,
+        "bottom": 400.09375,
+        "width": 45.71875,
+        "height": 29.375
+      },
+      "end": {
+        "left": 752.3203125,
+        "right": 794.0859375,
+        "top": 368.71875,
+        "bottom": 400.09375,
+        "width": 41.765625,
+        "height": 31.375
+      },
+      "frame": {
+        "left": 93.09375,
+        "right": 999.90625,
+        "top": 322.09375,
+        "bottom": 448.09375,
+        "width": 906.8125,
+        "height": 126
+      },
+      "tray": null,
+      "labels": [
+        {
+          "left": 89.78125,
+          "right": 98.40625,
+          "top": 436.09375,
+          "bottom": 457.09375,
+          "width": 8.625,
+          "height": 21
+        },
+        {
+          "left": 996.59375,
+          "right": 1005.21875,
+          "top": 436.09375,
+          "bottom": 457.09375,
+          "width": 8.625,
+          "height": 21
+        }
+      ],
+      "feedback": {
+        "left": 61.09375,
+        "right": 1031.90625,
+        "top": 269.09375,
+        "bottom": 318.09375,
+        "width": 970.8125,
+        "height": 49
+      },
+      "expression": {
+        "left": 61.09375,
+        "right": 1031.90625,
+        "top": 201.09375,
+        "bottom": 249.09375,
+        "width": 970.8125,
+        "height": 48
+      },
+      "scrollWidth": 1093,
+      "viewport": 1093,
+      "docHeight": 658
+    },
+    "eighth": [
+      {
+        "i": 2,
+        "overlap": 44,
+        "geometry": {
+          "axis": {
+            "left": 93.09375,
+            "right": 999.90625,
+            "top": 467,
+            "bottom": 511,
+            "width": 906.8125,
+            "height": 44
+          },
+          "start": {
+            "left": 296.9375,
+            "right": 342.65625,
+            "top": 433.625,
+            "bottom": 463,
+            "width": 45.71875,
+            "height": 29.375
+          },
+          "end": {
+            "left": 297.796875,
+            "right": 341.796875,
+            "top": 385.625,
+            "bottom": 429.625,
+            "width": 44,
+            "height": 44
+          },
+          "frame": {
+            "left": 93.09375,
+            "right": 999.90625,
+            "top": 385,
+            "bottom": 511,
+            "width": 906.8125,
+            "height": 126
+          },
+          "tray": {
+            "left": 61.09375,
+            "right": 1031.90625,
+            "top": 321,
+            "bottom": 385,
+            "width": 970.8125,
+            "height": 64
+          },
+          "labels": [
+            {
+              "left": 89.78125,
+              "right": 98.40625,
+              "top": 499,
+              "bottom": 520,
+              "width": 8.625,
+              "height": 21
+            },
+            {
+              "left": 996.59375,
+              "right": 1005.21875,
+              "top": 499,
+              "bottom": 520,
+              "width": 8.625,
+              "height": 21
+            }
+          ],
+          "feedback": {
+            "left": 61.09375,
+            "right": 1031.90625,
+            "top": 551,
+            "bottom": 551,
+            "width": 970.8125,
+            "height": 0
+          },
+          "expression": {
+            "left": 61.09375,
+            "right": 1031.90625,
+            "top": 201.09375,
+            "bottom": 249.09375,
+            "width": 970.8125,
+            "height": 48
+          },
+          "scrollWidth": 1093,
+          "viewport": 1093,
+          "docHeight": 737
+        }
+      },
+      {
+        "i": 3,
+        "overlap": -68.484375,
+        "geometry": {
+          "axis": {
+            "left": 93.09375,
+            "right": 999.90625,
+            "top": 467,
+            "bottom": 511,
+            "width": 906.8125,
+            "height": 44
+          },
+          "start": {
+            "left": 296.9375,
+            "right": 342.65625,
+            "top": 433.625,
+            "bottom": 463,
+            "width": 45.71875,
+            "height": 29.375
+          },
+          "end": {
+            "left": 411.140625,
+            "right": 455.140625,
+            "top": 419,
+            "bottom": 463,
+            "width": 44,
+            "height": 44
+          },
+          "frame": {
+            "left": 93.09375,
+            "right": 999.90625,
+            "top": 385,
+            "bottom": 511,
+            "width": 906.8125,
+            "height": 126
+          },
+          "tray": {
+            "left": 61.09375,
+            "right": 1031.90625,
+            "top": 321,
+            "bottom": 385,
+            "width": 970.8125,
+            "height": 64
+          },
+          "labels": [
+            {
+              "left": 89.78125,
+              "right": 98.40625,
+              "top": 499,
+              "bottom": 520,
+              "width": 8.625,
+              "height": 21
+            },
+            {
+              "left": 996.59375,
+              "right": 1005.21875,
+              "top": 499,
+              "bottom": 520,
+              "width": 8.625,
+              "height": 21
+            }
+          ],
+          "feedback": {
+            "left": 61.09375,
+            "right": 1031.90625,
+            "top": 551,
+            "bottom": 551,
+            "width": 970.8125,
+            "height": 0
+          },
+          "expression": {
+            "left": 61.09375,
+            "right": 1031.90625,
+            "top": 201.09375,
+            "bottom": 249.09375,
+            "width": 970.8125,
+            "height": 48
+          },
+          "scrollWidth": 1093,
+          "viewport": 1093,
+          "docHeight": 737
+        }
+      },
+      {
+        "i": 8,
+        "overlap": -635.25,
+        "geometry": {
+          "axis": {
+            "left": 93.09375,
+            "right": 999.90625,
+            "top": 467,
+            "bottom": 511,
+            "width": 906.8125,
+            "height": 44
+          },
+          "start": {
+            "left": 296.9375,
+            "right": 342.65625,
+            "top": 433.625,
+            "bottom": 463,
+            "width": 45.71875,
+            "height": 29.375
+          },
+          "end": {
+            "left": 977.90625,
+            "right": 1021.90625,
+            "top": 419,
+            "bottom": 463,
+            "width": 44,
+            "height": 44
+          },
+          "frame": {
+            "left": 93.09375,
+            "right": 999.90625,
+            "top": 385,
+            "bottom": 511,
+            "width": 906.8125,
+            "height": 126
+          },
+          "tray": {
+            "left": 61.09375,
+            "right": 1031.90625,
+            "top": 321,
+            "bottom": 385,
+            "width": 970.8125,
+            "height": 64
+          },
+          "labels": [
+            {
+              "left": 89.78125,
+              "right": 98.40625,
+              "top": 499,
+              "bottom": 520,
+              "width": 8.625,
+              "height": 21
+            },
+            {
+              "left": 996.59375,
+              "right": 1005.21875,
+              "top": 499,
+              "bottom": 520,
+              "width": 8.625,
+              "height": 21
+            }
+          ],
+          "feedback": {
+            "left": 61.09375,
+            "right": 1031.90625,
+            "top": 551,
+            "bottom": 551,
+            "width": 970.8125,
+            "height": 0
+          },
+          "expression": {
+            "left": 61.09375,
+            "right": 1031.90625,
+            "top": 201.09375,
+            "bottom": 249.09375,
+            "width": 970.8125,
+            "height": 48
+          },
+          "scrollWidth": 1093,
+          "viewport": 1093,
+          "docHeight": 737
+        }
+      }
+    ]
+  },
+  {
+    "cfg": {
+      "width": 360,
+      "height": 740,
+      "dpr": 1,
+      "scale": 200
+    },
+    "initial": {
+      "axis": {
+        "left": 113,
+        "right": 247,
+        "top": 956.609375,
+        "bottom": 1000.609375,
+        "width": 134,
+        "height": 44
+      },
+      "start": {
+        "left": 101.78125,
+        "right": 191.21875,
+        "top": 894.828125,
+        "bottom": 952.609375,
+        "width": 89.4375,
+        "height": 57.78125
+      },
+      "end": null,
+      "frame": {
+        "left": 113,
+        "right": 247,
+        "top": 826.609375,
+        "bottom": 1000.609375,
+        "width": 134,
+        "height": 174
+      },
+      "tray": {
+        "left": 49,
+        "right": 311,
+        "top": 748.828125,
+        "bottom": 826.609375,
+        "width": 262,
+        "height": 77.78125
+      },
+      "labels": [
+        {
+          "left": 105.375,
+          "right": 122.625,
+          "top": 988.609375,
+          "bottom": 1031.609375,
+          "width": 17.25,
+          "height": 43
+        },
+        {
+          "left": 239.375,
+          "right": 256.625,
+          "top": 988.609375,
+          "bottom": 1031.609375,
+          "width": 17.25,
+          "height": 43
+        }
+      ],
+      "feedback": {
+        "left": 49,
+        "right": 311,
+        "top": 1080.609375,
+        "bottom": 1080.609375,
+        "width": 262,
+        "height": 0
+      },
+      "expression": {
+        "left": 49,
+        "right": 311,
+        "top": 385,
+        "bottom": 477,
+        "width": 262,
+        "height": 92
+      },
+      "scrollWidth": 360,
+      "viewport": 360,
+      "docHeight": 1565
+    },
+    "before": {
+      "axis": {
+        "left": 113,
+        "right": 247,
+        "top": 956.609375,
+        "bottom": 1000.609375,
+        "width": 134,
+        "height": 44
+      },
+      "start": {
+        "left": 101.78125,
+        "right": 191.21875,
+        "top": 894.828125,
+        "bottom": 952.609375,
+        "width": 89.4375,
+        "height": 57.78125
+      },
+      "end": null,
+      "frame": {
+        "left": 113,
+        "right": 247,
+        "top": 826.609375,
+        "bottom": 1000.609375,
+        "width": 134,
+        "height": 174
+      },
+      "tray": {
+        "left": 49,
+        "right": 311,
+        "top": 748.828125,
+        "bottom": 826.609375,
+        "width": 262,
+        "height": 77.78125
+      },
+      "labels": [
+        {
+          "left": 105.375,
+          "right": 122.625,
+          "top": 988.609375,
+          "bottom": 1031.609375,
+          "width": 17.25,
+          "height": 43
+        },
+        {
+          "left": 239.375,
+          "right": 256.625,
+          "top": 988.609375,
+          "bottom": 1031.609375,
+          "width": 17.25,
+          "height": 43
+        }
+      ],
+      "feedback": {
+        "left": 49,
+        "right": 311,
+        "top": 1080.609375,
+        "bottom": 1080.609375,
+        "width": 262,
+        "height": 0
+      },
+      "expression": {
+        "left": 49,
+        "right": 311,
+        "top": 385,
+        "bottom": 477,
+        "width": 262,
+        "height": 92
+      },
+      "scrollWidth": 360,
+      "viewport": 360,
+      "docHeight": 1565
+    },
+    "during": {
+      "axis": {
+        "left": 113,
+        "right": 247,
+        "top": 956.609375,
+        "bottom": 1000.609375,
+        "width": 134,
+        "height": 44
+      },
+      "start": {
+        "left": 101.78125,
+        "right": 191.21875,
+        "top": 894.828125,
+        "bottom": 952.609375,
+        "width": 89.4375,
+        "height": 57.78125
+      },
+      "end": null,
+      "frame": {
+        "left": 113,
+        "right": 247,
+        "top": 826.609375,
+        "bottom": 1000.609375,
+        "width": 134,
+        "height": 174
+      },
+      "tray": {
+        "left": 49,
+        "right": 311,
+        "top": 748.828125,
+        "bottom": 826.609375,
+        "width": 262,
+        "height": 77.78125
+      },
+      "labels": [
+        {
+          "left": 105.375,
+          "right": 122.625,
+          "top": 988.609375,
+          "bottom": 1031.609375,
+          "width": 17.25,
+          "height": 43
+        },
+        {
+          "left": 239.375,
+          "right": 256.625,
+          "top": 988.609375,
+          "bottom": 1031.609375,
+          "width": 17.25,
+          "height": 43
+        }
+      ],
+      "feedback": {
+        "left": 49,
+        "right": 311,
+        "top": 1080.609375,
+        "bottom": 1080.609375,
+        "width": 262,
+        "height": 0
+      },
+      "expression": {
+        "left": 49,
+        "right": 311,
+        "top": 385,
+        "bottom": 477,
+        "width": 262,
+        "height": 92
+      },
+      "scrollWidth": 360,
+      "viewport": 360,
+      "docHeight": 1565
+    },
+    "after": {
+      "axis": {
+        "left": 113,
+        "right": 247,
+        "top": 956.609375,
+        "bottom": 1000.609375,
+        "width": 134,
+        "height": 44
+      },
+      "start": {
+        "left": 101.78125,
+        "right": 191.21875,
+        "top": 894.828125,
+        "bottom": 952.609375,
+        "width": 89.4375,
+        "height": 57.78125
+      },
+      "end": {
+        "left": 173.7421875,
+        "right": 253.2578125,
+        "top": 827.046875,
+        "bottom": 886.828125,
+        "width": 79.515625,
+        "height": 59.78125
+      },
+      "frame": {
+        "left": 113,
+        "right": 247,
+        "top": 826.609375,
+        "bottom": 1000.609375,
+        "width": 134,
+        "height": 174
+      },
+      "tray": {
+        "left": 49,
+        "right": 311,
+        "top": 748.828125,
+        "bottom": 826.609375,
+        "width": 262,
+        "height": 77.78125
+      },
+      "labels": [
+        {
+          "left": 105.375,
+          "right": 122.625,
+          "top": 988.609375,
+          "bottom": 1031.609375,
+          "width": 17.25,
+          "height": 43
+        },
+        {
+          "left": 239.375,
+          "right": 256.625,
+          "top": 988.609375,
+          "bottom": 1031.609375,
+          "width": 17.25,
+          "height": 43
+        }
+      ],
+      "feedback": {
+        "left": 49,
+        "right": 311,
+        "top": 1080.609375,
+        "bottom": 1080.609375,
+        "width": 262,
+        "height": 0
+      },
+      "expression": {
+        "left": 49,
+        "right": 311,
+        "top": 385,
+        "bottom": 477,
+        "width": 262,
+        "height": 92
+      },
+      "scrollWidth": 360,
+      "viewport": 360,
+      "docHeight": 1565
+    },
+    "accepted": {
+      "axis": {
+        "left": 113,
+        "right": 247,
+        "top": 796.96875,
+        "bottom": 840.96875,
+        "width": 134,
+        "height": 44
+      },
+      "start": {
+        "left": 101.78125,
+        "right": 191.21875,
+        "top": 735.1875,
+        "bottom": 792.96875,
+        "width": 89.4375,
+        "height": 57.78125
+      },
+      "end": {
+        "left": 173.7421875,
+        "right": 253.2578125,
+        "top": 667.40625,
+        "bottom": 727.1875,
+        "width": 79.515625,
+        "height": 59.78125
+      },
+      "frame": {
+        "left": 113,
+        "right": 247,
+        "top": 666.96875,
+        "bottom": 840.96875,
+        "width": 134,
+        "height": 174
+      },
+      "tray": null,
+      "labels": [
+        {
+          "left": 105.375,
+          "right": 122.625,
+          "top": 828.96875,
+          "bottom": 871.96875,
+          "width": 17.25,
+          "height": 43
+        },
+        {
+          "left": 239.375,
+          "right": 256.625,
+          "top": 828.96875,
+          "bottom": 871.96875,
+          "width": 17.25,
+          "height": 43
+        }
+      ],
+      "feedback": {
+        "left": 49,
+        "right": 311,
+        "top": 517,
+        "bottom": 658.96875,
+        "width": 262,
+        "height": 141.96875
+      },
+      "expression": {
+        "left": 49,
+        "right": 311,
+        "top": 385,
+        "bottom": 477,
+        "width": 262,
+        "height": 92
+      },
+      "scrollWidth": 360,
+      "viewport": 360,
+      "docHeight": 1290
+    },
+    "eighth": [
+      {
+        "i": 2,
+        "overlap": 79.515625,
+        "geometry": {
+          "axis": {
+            "left": 113,
+            "right": 247,
+            "top": 956.609375,
+            "bottom": 1000.609375,
+            "width": 134,
+            "height": 44
+          },
+          "start": {
+            "left": 101.78125,
+            "right": 191.21875,
+            "top": 894.828125,
+            "bottom": 952.609375,
+            "width": 89.4375,
+            "height": 57.78125
+          },
+          "end": {
+            "left": 106.7421875,
+            "right": 186.2578125,
+            "top": 827.046875,
+            "bottom": 886.828125,
+            "width": 79.515625,
+            "height": 59.78125
+          },
+          "frame": {
+            "left": 113,
+            "right": 247,
+            "top": 826.609375,
+            "bottom": 1000.609375,
+            "width": 134,
+            "height": 174
+          },
+          "tray": {
+            "left": 49,
+            "right": 311,
+            "top": 748.828125,
+            "bottom": 826.609375,
+            "width": 262,
+            "height": 77.78125
+          },
+          "labels": [
+            {
+              "left": 105.375,
+              "right": 122.625,
+              "top": 988.609375,
+              "bottom": 1031.609375,
+              "width": 17.25,
+              "height": 43
+            },
+            {
+              "left": 239.375,
+              "right": 256.625,
+              "top": 988.609375,
+              "bottom": 1031.609375,
+              "width": 17.25,
+              "height": 43
+            }
+          ],
+          "feedback": {
+            "left": 49,
+            "right": 311,
+            "top": 1080.609375,
+            "bottom": 1080.609375,
+            "width": 262,
+            "height": 0
+          },
+          "expression": {
+            "left": 49,
+            "right": 311,
+            "top": 385,
+            "bottom": 477,
+            "width": 262,
+            "height": 92
+          },
+          "scrollWidth": 360,
+          "viewport": 360,
+          "docHeight": 1565
+        }
+      },
+      {
+        "i": 3,
+        "overlap": 67.7265625,
+        "geometry": {
+          "axis": {
+            "left": 113,
+            "right": 247,
+            "top": 956.609375,
+            "bottom": 1000.609375,
+            "width": 134,
+            "height": 44
+          },
+          "start": {
+            "left": 101.78125,
+            "right": 191.21875,
+            "top": 894.828125,
+            "bottom": 952.609375,
+            "width": 89.4375,
+            "height": 57.78125
+          },
+          "end": {
+            "left": 123.4921875,
+            "right": 203.0078125,
+            "top": 827.046875,
+            "bottom": 886.828125,
+            "width": 79.515625,
+            "height": 59.78125
+          },
+          "frame": {
+            "left": 113,
+            "right": 247,
+            "top": 826.609375,
+            "bottom": 1000.609375,
+            "width": 134,
+            "height": 174
+          },
+          "tray": {
+            "left": 49,
+            "right": 311,
+            "top": 748.828125,
+            "bottom": 826.609375,
+            "width": 262,
+            "height": 77.78125
+          },
+          "labels": [
+            {
+              "left": 105.375,
+              "right": 122.625,
+              "top": 988.609375,
+              "bottom": 1031.609375,
+              "width": 17.25,
+              "height": 43
+            },
+            {
+              "left": 239.375,
+              "right": 256.625,
+              "top": 988.609375,
+              "bottom": 1031.609375,
+              "width": 17.25,
+              "height": 43
+            }
+          ],
+          "feedback": {
+            "left": 49,
+            "right": 311,
+            "top": 1080.609375,
+            "bottom": 1080.609375,
+            "width": 262,
+            "height": 0
+          },
+          "expression": {
+            "left": 49,
+            "right": 311,
+            "top": 385,
+            "bottom": 477,
+            "width": 262,
+            "height": 92
+          },
+          "scrollWidth": 360,
+          "viewport": 360,
+          "docHeight": 1565
+        }
+      },
+      {
+        "i": 8,
+        "overlap": -16.0234375,
+        "geometry": {
+          "axis": {
+            "left": 113,
+            "right": 247,
+            "top": 956.609375,
+            "bottom": 1000.609375,
+            "width": 134,
+            "height": 44
+          },
+          "start": {
+            "left": 101.78125,
+            "right": 191.21875,
+            "top": 894.828125,
+            "bottom": 952.609375,
+            "width": 89.4375,
+            "height": 57.78125
+          },
+          "end": {
+            "left": 207.2421875,
+            "right": 286.7578125,
+            "top": 892.828125,
+            "bottom": 952.609375,
+            "width": 79.515625,
+            "height": 59.78125
+          },
+          "frame": {
+            "left": 113,
+            "right": 247,
+            "top": 826.609375,
+            "bottom": 1000.609375,
+            "width": 134,
+            "height": 174
+          },
+          "tray": {
+            "left": 49,
+            "right": 311,
+            "top": 748.828125,
+            "bottom": 826.609375,
+            "width": 262,
+            "height": 77.78125
+          },
+          "labels": [
+            {
+              "left": 105.375,
+              "right": 122.625,
+              "top": 988.609375,
+              "bottom": 1031.609375,
+              "width": 17.25,
+              "height": 43
+            },
+            {
+              "left": 239.375,
+              "right": 256.625,
+              "top": 988.609375,
+              "bottom": 1031.609375,
+              "width": 17.25,
+              "height": 43
+            }
+          ],
+          "feedback": {
+            "left": 49,
+            "right": 311,
+            "top": 1080.609375,
+            "bottom": 1080.609375,
+            "width": 262,
+            "height": 0
+          },
+          "expression": {
+            "left": 49,
+            "right": 311,
+            "top": 385,
+            "bottom": 477,
+            "width": 262,
+            "height": 92
+          },
+          "scrollWidth": 360,
+          "viewport": 360,
+          "docHeight": 1565
+        }
+      }
+    ]
+  }
+]

@@ -1,0 +1,393 @@
+[
+  {
+    "config": {
+      "width": 360,
+      "height": 740,
+      "dpr": 1
+    },
+    "unplacedMeasurements": {
+      "highlight": "step-1",
+      "ox": 13.200000000000003,
+      "oy": -33,
+      "beforeLift": {
+        "trayHeight": 64,
+        "trayTop": 284.90625,
+        "axisY": 430.90625
+      },
+      "during": {
+        "trayHeight": 64,
+        "trayTop": 284.90625,
+        "axisY": 430.90625
+      },
+      "after": {
+        "trayHeight": 64,
+        "trayTop": 284.90625,
+        "axisY": 430.90625
+      }
+    },
+    "regrabMeasurements": {
+      "highlight": "step-3",
+      "ox": -13.200000000000003,
+      "oy": -33,
+      "beforeLift": {
+        "trayHeight": 64,
+        "trayTop": 284.90625,
+        "axisY": 430.90625
+      },
+      "during": {
+        "trayHeight": 64,
+        "trayTop": 284.90625,
+        "axisY": 430.90625
+      },
+      "after": {
+        "trayHeight": 64,
+        "trayTop": 284.90625,
+        "axisY": 430.90625
+      }
+    },
+    "cancelMeasurements": {
+      "highlight": "step-1",
+      "ox": 8.800000000000011,
+      "oy": -33,
+      "beforeLift": {
+        "trayHeight": 64,
+        "trayTop": 284.90625,
+        "axisY": 430.90625
+      },
+      "during": {
+        "trayHeight": 64,
+        "trayTop": 284.90625,
+        "axisY": 430.90625
+      },
+      "after": {
+        "trayHeight": 64,
+        "trayTop": 284.90625,
+        "axisY": 430.90625
+      }
+    },
+    "geometry": {
+      "axis": {
+        "left": 57,
+        "right": 303,
+        "top": 368,
+        "bottom": 412,
+        "width": 246
+      },
+      "start": {
+        "left": 95.640625,
+        "right": 141.359375,
+        "top": 334.625,
+        "bottom": 364,
+        "width": 45.71875
+      },
+      "end": {
+        "left": 220.6171875,
+        "right": 262.3828125,
+        "top": 332.625,
+        "bottom": 364,
+        "width": 41.765625
+      },
+      "labels": [
+        {
+          "left": 53.6875,
+          "right": 62.3125,
+          "top": 400,
+          "bottom": 421,
+          "width": 8.625
+        },
+        {
+          "left": 299.6875,
+          "right": 308.3125,
+          "top": 400,
+          "bottom": 421,
+          "width": 8.625
+        }
+      ],
+      "feedback": {
+        "left": 25,
+        "right": 335,
+        "top": 233,
+        "bottom": 282,
+        "width": 310
+      },
+      "arrowBox": {
+        "left": 57,
+        "right": 303,
+        "top": 351,
+        "bottom": 375,
+        "width": 246
+      },
+      "from": {
+        "x": 118.5,
+        "y": 363
+      },
+      "to": {
+        "x": 241.5,
+        "y": 363
+      },
+      "scrollWidth": 360,
+      "viewport": 360
+    }
+  },
+  {
+    "config": {
+      "width": 1093,
+      "height": 614,
+      "dpr": 1.25
+    },
+    "unplacedMeasurements": {
+      "highlight": "step-1",
+      "ox": 13.200000000000003,
+      "oy": -33,
+      "beforeLift": {
+        "trayHeight": 64,
+        "trayTop": 321,
+        "axisY": 467
+      },
+      "during": {
+        "trayHeight": 64,
+        "trayTop": 321,
+        "axisY": 467
+      },
+      "after": {
+        "trayHeight": 64,
+        "trayTop": 321,
+        "axisY": 467
+      }
+    },
+    "regrabMeasurements": {
+      "highlight": "step-3",
+      "ox": -13.199999999999989,
+      "oy": -33,
+      "beforeLift": {
+        "trayHeight": 64,
+        "trayTop": 321,
+        "axisY": 467
+      },
+      "during": {
+        "trayHeight": 64,
+        "trayTop": 321,
+        "axisY": 467
+      },
+      "after": {
+        "trayHeight": 64,
+        "trayTop": 321,
+        "axisY": 467
+      }
+    },
+    "cancelMeasurements": {
+      "highlight": "step-1",
+      "ox": 8.799999999999955,
+      "oy": -33,
+      "beforeLift": {
+        "trayHeight": 64,
+        "trayTop": 321,
+        "axisY": 467
+      },
+      "during": {
+        "trayHeight": 64,
+        "trayTop": 321,
+        "axisY": 467
+      },
+      "after": {
+        "trayHeight": 64,
+        "trayTop": 321,
+        "axisY": 467
+      }
+    },
+    "geometry": {
+      "axis": {
+        "left": 93.09375,
+        "right": 999.90625,
+        "top": 404.09375,
+        "bottom": 448.09375,
+        "width": 906.8125
+      },
+      "start": {
+        "left": 296.9375,
+        "right": 342.65625,
+        "top": 370.71875,
+        "bottom": 400.09375,
+        "width": 45.71875
+      },
+      "end": {
+        "left": 752.3203125,
+        "right": 794.0859375,
+        "top": 368.71875,
+        "bottom": 400.09375,
+        "width": 41.765625
+      },
+      "labels": [
+        {
+          "left": 89.78125,
+          "right": 98.40625,
+          "top": 436.09375,
+          "bottom": 457.09375,
+          "width": 8.625
+        },
+        {
+          "left": 996.59375,
+          "right": 1005.21875,
+          "top": 436.09375,
+          "bottom": 457.09375,
+          "width": 8.625
+        }
+      ],
+      "feedback": {
+        "left": 61.09375,
+        "right": 1031.90625,
+        "top": 269.09375,
+        "bottom": 318.09375,
+        "width": 970.8125
+      },
+      "arrowBox": {
+        "left": 93.09375,
+        "right": 999.90625,
+        "top": 387.09375,
+        "bottom": 411.09375,
+        "width": 906.8125
+      },
+      "from": {
+        "x": 319.796875,
+        "y": 399.09375
+      },
+      "to": {
+        "x": 773.203125,
+        "y": 399.09375
+      },
+      "scrollWidth": 1093,
+      "viewport": 1093
+    }
+  },
+  {
+    "config": {
+      "width": 360,
+      "height": 740,
+      "dpr": 1,
+      "scale": 200
+    },
+    "unplacedMeasurements": {
+      "highlight": "step-1",
+      "ox": 23.85468750000001,
+      "oy": -44.8359375,
+      "beforeLift": {
+        "trayHeight": 77.78125,
+        "trayTop": 748.828125,
+        "axisY": 956.609375
+      },
+      "during": {
+        "trayHeight": 77.78125,
+        "trayTop": 748.828125,
+        "axisY": 956.609375
+      },
+      "after": {
+        "trayHeight": 77.78125,
+        "trayTop": 748.828125,
+        "axisY": 956.609375
+      }
+    },
+    "regrabMeasurements": {
+      "highlight": "step-3",
+      "ox": -23.854687499999997,
+      "oy": -44.8359375,
+      "beforeLift": {
+        "trayHeight": 77.78125,
+        "trayTop": 748.828125,
+        "axisY": 956.609375
+      },
+      "during": {
+        "trayHeight": 77.78125,
+        "trayTop": 748.828125,
+        "axisY": 956.609375
+      },
+      "after": {
+        "trayHeight": 77.78125,
+        "trayTop": 748.828125,
+        "axisY": 956.609375
+      }
+    },
+    "cancelMeasurements": {
+      "highlight": "step-1",
+      "ox": 15.903124999999989,
+      "oy": -44.8359375,
+      "beforeLift": {
+        "trayHeight": 77.78125,
+        "trayTop": 748.828125,
+        "axisY": 956.609375
+      },
+      "during": {
+        "trayHeight": 77.78125,
+        "trayTop": 748.828125,
+        "axisY": 956.609375
+      },
+      "after": {
+        "trayHeight": 77.78125,
+        "trayTop": 748.828125,
+        "axisY": 956.609375
+      }
+    },
+    "geometry": {
+      "axis": {
+        "left": 113,
+        "right": 247,
+        "top": 796.96875,
+        "bottom": 840.96875,
+        "width": 134
+      },
+      "start": {
+        "left": 101.78125,
+        "right": 191.21875,
+        "top": 735.1875,
+        "bottom": 792.96875,
+        "width": 89.4375
+      },
+      "end": {
+        "left": 173.7421875,
+        "right": 253.2578125,
+        "top": 667.40625,
+        "bottom": 727.1875,
+        "width": 79.515625
+      },
+      "labels": [
+        {
+          "left": 105.375,
+          "right": 122.625,
+          "top": 828.96875,
+          "bottom": 871.96875,
+          "width": 17.25
+        },
+        {
+          "left": 239.375,
+          "right": 256.625,
+          "top": 828.96875,
+          "bottom": 871.96875,
+          "width": 17.25
+        }
+      ],
+      "feedback": {
+        "left": 49,
+        "right": 311,
+        "top": 517,
+        "bottom": 658.96875,
+        "width": 262
+      },
+      "arrowBox": {
+        "left": 113,
+        "right": 247,
+        "top": 779.96875,
+        "bottom": 803.96875,
+        "width": 134
+      },
+      "from": {
+        "x": 146.5,
+        "y": 791.96875
+      },
+      "to": {
+        "x": 213.5,
+        "y": 791.96875
+      },
+      "scrollWidth": 360,
+      "viewport": 360
+    }
+  }
+]
