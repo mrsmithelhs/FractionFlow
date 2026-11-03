@@ -144,6 +144,14 @@ advance index on failure or label correct math wrong. Invalidate retired session
 and episode controls on reset/exit/navigation; generation handles same-record restart.
 Focus a meaningful target on successful task change, with no redundant announcements.
 
+Installation-boundary clarification (2026-11-02 orchestration gate): expected
+destination preparation/validation failure retains old work; exact rollback after
+arbitrary post-commit renderer failure is not required. Preflight pure scene/capability
+before commit. Unexpected display failure ends the session safely at practice entry
+with neutral notice, no false completion/preservation claim and no stale controls.
+See reports/development/plan-60-short-magnitude-practice-session/mounted-install-boundary-disposition.md.
+No general detached staging/render transaction refactor is approved.
+
 ## Requirement 3 — complete-session evidence and delivery
 
 Verify entire four-episode runs, not just isolated task launches: exact identity/
