@@ -1,11 +1,9 @@
 ---
 id: plan-60
 title: Short Composed Magnitude Practice Session
-status: ready
+status: in-progress
 depends_on: [plan-57, plan-59, plan-49, plan-51, plan-43]
 gate: "After Plan59 closure, approve manifest/lifecycle mechanism before source and pure manifest/navigation checkpoint before mounting. Technical review and owner complete-session acceptance; deployment separate."
-superseded_by: null
-resolution: null
 summary: >-
   Implement one optional four-episode authored magnitude session using existing
   comparison and distance tasks. Add a small cross-type launch/progression boundary,
