@@ -59,3 +59,20 @@ describe('Plan 60 pure manifest and navigation', () => {
     expect(c.exit(old.session)).toBe(true); expect(c.commit(ticket.ticket)).toBe(false); expect(c.exit(old.session)).toBe(false); expect(c.current().episode).toBeNull();
   });
 });
+
+it('retains current work on restart failure or invalid candidate and rejects a ticket after an intervening reducer edit', () => {
+  let mode = 'fail';
+  const c = createMagnitudeSessionController(manifest, 'high-support', { prepare: (entry, support) => {
+    if (mode === 'fail') throw new Error('injected');
+    if (mode === 'invalid') return { state: {} };
+    return admitMagnitudeManifest(manifest, support).prepared[manifest.entries.findIndex(x => x.itemId === entry.itemId)];
+  } });
+  const initial = c.current();
+  expect(c.prepareTransition('restart', initial.session, initial.episode).reason).toBe('preparation-failed');
+  expect(c.current()).toEqual(initial);
+  mode = 'invalid'; expect(c.prepareTransition('restart', initial.session, initial.episode).reason).toBe('invalid-candidate');
+  expect(c.current()).toEqual(initial);
+  mode = 'good'; const ticket = c.prepareTransition('restart', initial.session, initial.episode);
+  const edited = act(c, { type: 'submit-fraction-comparison', proposed: '<' });
+  expect(c.commit(ticket.ticket)).toBe(false); expect(c.current().episode).toBe(edited); expect(c.current().session.index).toBe(0);
+});
