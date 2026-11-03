@@ -1,0 +1,50 @@
+[
+  {
+    "mutation": "reordered entries",
+    "exit": 1,
+    "detected": true,
+    "assertions": [
+      "FAIL  tests/app-plan60-magnitude-session.test.js > Plan 60 pure manifest and navigation > admits exact live registered references and both real support profiles deterministically",
+      "AssertionError: expected [ 'plan45-compare-08', \u2026(3) ] to deeply equal [ 'plan45-compare-02', \u2026(3) ]",
+      "FAIL  tests/app-plan60-magnitude-session.test.js > Plan 60 pure manifest and navigation > runs the full sequence with wrong correction, real replay, deliberate Next and final exhaustion"
+    ]
+  },
+  {
+    "mutation": "unwanted auto advance",
+    "exit": 1,
+    "detected": true,
+    "assertions": [
+      "FAIL  tests/app-plan60-magnitude-session.test.js > Plan 60 pure manifest and navigation > runs the full sequence with wrong correction, real replay, deliberate Next and final exhaustion",
+      "AssertionError: expected 1 to be +0 // Object.is equality",
+      "FAIL  tests/app-plan60-magnitude-session.test.js > Plan 60 pure manifest and navigation > preserves accepted state across each failed preparation, retries, and refuses stale or duplicate tickets"
+    ]
+  },
+  {
+    "mutation": "lost state on failed preparation",
+    "exit": 1,
+    "detected": true,
+    "assertions": [
+      "FAIL  tests/app-plan60-magnitude-session.test.js > Plan 60 pure manifest and navigation > preserves accepted state across each failed preparation, retries, and refuses stale or duplicate tickets",
+      "AssertionError: expected { session: { \u2026(6) }, \u2026(2) } to deeply equal { session: { \u2026(6) }, \u2026(2) }",
+      "FAIL  tests/app-plan60-magnitude-session.test.js > retains current work on restart failure or invalid candidate and rejects a ticket after an intervening reducer edit"
+    ]
+  },
+  {
+    "mutation": "stale callback after edit",
+    "exit": 1,
+    "detected": true,
+    "assertions": [
+      "FAIL  tests/app-plan60-magnitude-session.test.js > Plan 60 pure manifest and navigation > preserves accepted state across each failed preparation, retries, and refuses stale or duplicate tickets",
+      "AssertionError: expected true to be false // Object.is equality",
+      "FAIL  tests/app-plan60-magnitude-session.test.js > retains current work on restart failure or invalid candidate and rejects a ticket after an intervening reducer edit"
+    ]
+  },
+  {
+    "mutation": "durable session write",
+    "exit": 1,
+    "detected": true,
+    "assertions": [
+      "AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:"
+    ]
+  }
+]

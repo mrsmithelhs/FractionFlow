@@ -1,3 +1,4 @@
+import { MAGNITUDE_SESSION_MANIFEST, createMagnitudeSessionController, prepareMagnitudeEntry, isMagnitudeEpisodeComplete } from './magnitude-session.js';
 import { resolvePlan59Context } from '../content/plan59-directed-endpoint-task.js';
 import { PLAN59_CONDITION } from '../interaction/plan59-directed-endpoint-episode.js';
 import { createPlan59Renderer } from '../render/plan59-directed-endpoint.js';
@@ -421,6 +422,7 @@ export function createFractionFlowApp({
   instance: suppliedInstance = null,
   practiceTypes = PRACTICE_TYPES,
   navigationMode = 'direct',
+  sessionTestHooks = {},
 } = {}) {
   if (!root) throw new Error('app root element is required');
 
@@ -493,9 +495,94 @@ export function createFractionFlowApp({
   let entryTitle;
   let nextProblemButton;
   let navigationNotice;
+  let returnButton;
   let navigationRefusal = false;
   let currentEpisodeGeneration = 0;
   let isTransitioning = false;
+  let magnitudeSession = null;
+  let sessionDialog, sessionStay, sessionLeave, sessionEntryNotice, sessionEntryButton;
+  let exitFocus = null, pendingHashDestination = null;
+
+  function syncSessionEpisode(previous, next) {
+    if (magnitudeSession && !magnitudeSession.updateEpisode(previous, next)) throw new Error('stale session episode');
+    return next;
+  }
+  function sessionPreflight(candidate) {
+    resolveRenderableScene({ state: candidate.state, initialRole: 'fraction-bar',
+      presentationMode: presentationModeFor({ override: presentationMode, motionQuery }), isReplaying: false });
+    sessionTestHooks.prepare?.(candidate);
+    return candidate;
+  }
+  function clearFragment() {
+    if (typeof globalThis.location === 'object' && typeof globalThis.history?.replaceState === 'function')
+      globalThis.history.replaceState(null, '', `${globalThis.location.pathname}${globalThis.location.search}`);
+  }
+  function sessionDisplayFailure() {
+    if (magnitudeSession) magnitudeSession.exit(magnitudeSession.current().session);
+    magnitudeSession = null; currentEpisodeGeneration += 1; distanceRenderGeneration += 1;
+    state = null; selectedPracticeType = null; activePracticeItemIndex = null;
+    visualComparisonRenderer = null; linearComparisonRenderer = null;
+    visualHost.replaceChildren(); linearHost.replaceChildren();
+    setHidden(appRoot.querySelector('.app-episode'), true); setHidden(entryPage, false);
+    updateSupportMetadata(); clearFragment(); closeDisplayMenu();
+    sessionEntryNotice.textContent = 'This practice could not be displayed. Please try again or choose another practice.';
+    setHidden(sessionEntryNotice, false); sessionEntryNotice.focus();
+  }
+  function installSessionCurrent() {
+    const current = magnitudeSession.current();
+    try {
+      sessionTestHooks.display?.(current);
+      installFreshEpisode(current.installed.type, current.installed.itemIndex, current.episode, { focusEpisode: true });
+    } catch { sessionDisplayFailure(); }
+  }
+  function startMagnitudeSession() {
+    try {
+      const controller = createMagnitudeSessionController(MAGNITUDE_SESSION_MANIFEST, selectedSupportLevel.id,
+        { prepare: (entry, support) => sessionPreflight(prepareMagnitudeEntry(entry, support)) });
+      sessionPreflight(controller.current().installed);
+      magnitudeSession = controller; clearFragment(); setHidden(sessionEntryNotice, true);
+      installSessionCurrent();
+    } catch {
+      sessionEntryNotice.textContent = 'This practice could not be opened. Please try again or choose another practice.';
+      setHidden(sessionEntryNotice, false); sessionEntryNotice.focus();
+    }
+  }
+  function sessionTransition(kind, generation) {
+    if (!magnitudeSession || isTransitioning || (generation !== undefined && generation !== currentEpisodeGeneration)) return;
+    const { session, episode } = magnitudeSession.current();
+    if (episode !== state) return;
+    isTransitioning = true;
+    try {
+      const prepared = magnitudeSession.prepareTransition(kind, session, episode);
+      if (!prepared.ok || !magnitudeSession.commit(prepared.ticket)) {
+        navigationRefusal = true;
+        navigationNotice.textContent = kind === 'restart' ? 'This problem could not be restarted. Try again or return to practice.' : 'The next problem could not be opened. Try again or return to practice.';
+        setHidden(navigationNotice, false); focusNavigationNotice(); return;
+      }
+      installSessionCurrent();
+    } finally { isTransitioning = false; }
+  }
+  function leaveMagnitudeSession(destination = null) {
+    if (!magnitudeSession) return;
+    magnitudeSession.exit(magnitudeSession.current().session); magnitudeSession = null;
+    setHidden(sessionDialog, true); pendingHashDestination = null; entryPage.inert = false; appRoot.querySelector('.app-episode').inert = false;
+    returnToEntry(); updateSupportMetadata();
+    if (destination) startPractice(destination, { focusEpisode: true, updateFragment: true });
+  }
+  function askSessionExit(destination = null) {
+    if (!magnitudeSession) returnToEntry();
+    else if (isMagnitudeEpisodeComplete(state, MAGNITUDE_SESSION_MANIFEST.entries[magnitudeSession.current().session.index])) leaveMagnitudeSession(destination);
+    else {
+      pendingHashDestination = destination;
+      if (sessionDialog.hasAttribute('hidden')) exitFocus = document.activeElement;
+      entryPage.inert = true; appRoot.querySelector('.app-episode').inert = true;
+      setHidden(sessionDialog, false); sessionStay.focus();
+    }
+  }
+  function stayInSession() {
+    setHidden(sessionDialog, true); pendingHashDestination = null; entryPage.inert = false; appRoot.querySelector('.app-episode').inert = false;
+    if (exitFocus?.isConnected) exitFocus.focus(); else focusEpisodeLandmark();
+  }
 
   function practiceTypeFor(id) {
     return practiceTypes.find((practiceType) => practiceType.id === id) ?? null;
@@ -610,6 +697,7 @@ export function createFractionFlowApp({
       option.appendChild(optionDescription);
 
       option.addEventListener('click', () => {
+        if (magnitudeSession) return;
         selectedSupportLevel = getRegisteredSupportLevel(supportLevel.id);
         closeDisplayMenu();
         updateSupportMetadata();
@@ -673,6 +761,11 @@ export function createFractionFlowApp({
       for (const button of followingPracticeButtons) followingPracticeList.appendChild(button);
       entryPage.appendChild(followingPracticeList);
     }
+    sessionEntryButton = createButton({ label: 'Compare fractions, then find a distance', className: 'app-practice-choice', onClick: startMagnitudeSession });
+    sessionEntryButton.setAttribute('data-session-entry', 'magnitude');
+    entryPage.appendChild(sessionEntryButton);
+    const sessionCue = makeElement('p', 'app-session-cue'); sessionCue.textContent = 'Your place in this practice is not saved.'; entryPage.appendChild(sessionCue);
+    sessionEntryNotice = makeElement('p', 'app-session-entry-notice'); sessionEntryNotice.setAttribute('role', 'status'); sessionEntryNotice.tabIndex = -1; setHidden(sessionEntryNotice, true); entryPage.appendChild(sessionEntryNotice);
     const aboutLink = makeElement('a', 'app-about-link');
     aboutLink.setAttribute('href', './about.html');
     aboutLink.textContent = 'About FractionFlow';
@@ -688,10 +781,10 @@ export function createFractionFlowApp({
     setHidden(episode, true);
     const episodeNavigation = makeElement('nav', 'app-episode-navigation');
     episodeNavigation.setAttribute('aria-label', 'Episode navigation');
-    const returnButton = createButton({
+    returnButton = createButton({
       label: 'Back to start',
       className: 'app-secondary-button',
-      onClick: returnToEntry,
+      onClick: () => magnitudeSession ? askSessionExit() : returnToEntry(),
     });
     returnButton.classList.add('app-return-button');
     navigationNotice = makeElement('p', 'app-navigation-notice');
@@ -881,6 +974,17 @@ export function createFractionFlowApp({
     helpCue.setAttribute('aria-live', 'polite');
     episode.appendChild(supportPanel);
 
+    sessionDialog = makeElement('div', 'app-session-dialog'); sessionDialog.setAttribute('role', 'dialog'); sessionDialog.setAttribute('aria-modal', 'true'); sessionDialog.setAttribute('aria-labelledby', 'session-exit-title');
+    const dialogPanel = makeElement('div', 'app-session-dialog-panel');
+    const dialogTitle = makeElement('p'); dialogTitle.id = 'session-exit-title'; dialogTitle.textContent = 'Leave this practice? Your place will not be saved.'; dialogPanel.appendChild(dialogTitle);
+    sessionStay = createButton({ label: 'Stay', className: 'app-secondary-button', onClick: stayInSession });
+    sessionLeave = createButton({ label: 'Leave', className: 'app-secondary-button', onClick: () => leaveMagnitudeSession(pendingHashDestination) });
+    dialogPanel.appendChild(sessionStay); dialogPanel.appendChild(sessionLeave); sessionDialog.appendChild(dialogPanel); setHidden(sessionDialog, true);
+    sessionDialog.addEventListener('keydown', event => {
+      if (event.key === 'Escape') { event.preventDefault(); stayInSession(); }
+      else if (event.key === 'Tab') { event.preventDefault(); (document.activeElement === sessionStay ? sessionLeave : sessionStay).focus(); }
+    });
+    appRoot.appendChild(sessionDialog);
     appRoot.appendChild(episode);
     root.replaceChildren(appRoot);
   }
@@ -1021,6 +1125,7 @@ export function createFractionFlowApp({
   }
 
   function retryCurrentItem() {
+    if (magnitudeSession) { sessionTransition('restart', currentEpisodeGeneration); return; }
     if (!selectedPracticeType) return;
     let prepared;
     try {
@@ -1039,6 +1144,15 @@ export function createFractionFlowApp({
   }
 
   function computeProgressionDescriptor() {
+    if (magnitudeSession) {
+      const { session } = magnitudeSession.current();
+      if (!isMagnitudeEpisodeComplete(state, MAGNITUDE_SESSION_MANIFEST.entries[session.index])) return { phase: 'idle', actionKind: 'none', label: null, notice: null, onAction: null };
+      const generation = currentEpisodeGeneration, final = session.index === MAGNITUDE_SESSION_MANIFEST.entries.length - 1;
+      return { phase: 'resolved-comparison', actionKind: final ? 'return' : 'advance',
+        label: final ? 'Back to practice' : session.index === 2 ? 'Next: compare and find the distance' : STRINGS.app.nextProblemButton,
+        notice: final ? 'Practice complete.' : null,
+        onAction: () => { if (generation !== currentEpisodeGeneration) return; if (final) leaveMagnitudeSession(); else sessionTransition('next', generation); } };
+    }
     const comparisonEpisode = isPlan45ComparisonEpisode(state) || isCollection(state) || isDistance(state) || isPlan53(state) || isPlan58(state) || isPlan59(state);
     if ((navigationMode !== 'direct' && !comparisonEpisode) || !state || !selectedPracticeType || activePracticeItemIndex === null) {
       return {
@@ -1272,6 +1386,7 @@ export function createFractionFlowApp({
 
   function handleHashChange() {
     const practiceType = visiblePracticeTypeFromFragment();
+    if (magnitudeSession) { clearFragment(); askSessionExit(practiceType); return; }
     const episode = appRoot?.querySelector('.app-episode');
     if (practiceType) {
       if (selectedPracticeType?.id !== practiceType.id || episode?.hasAttribute('hidden')) {
@@ -1319,6 +1434,7 @@ export function createFractionFlowApp({
         'aria-pressed',
         String(option.getAttribute('data-support-id') === selectedSupportLevel.id),
       );
+      option.disabled = Boolean(magnitudeSession);
     }
   }
 
@@ -1351,8 +1467,12 @@ export function createFractionFlowApp({
   }
 
   function updateNavigation() {
+    const finalSessionResult = magnitudeSession && magnitudeSession.current().session.index === MAGNITUDE_SESSION_MANIFEST.entries.length - 1 && isMagnitudeEpisodeComplete(state, MAGNITUDE_SESSION_MANIFEST.entries.at(-1));
+    returnButton.textContent = magnitudeSession ? 'Back to practice' : 'Back to start';
+    setHidden(returnButton, Boolean(finalSessionResult));
     if (isPlan45ComparisonEpisode(state)) {
       setHidden(nextProblemButton, true);
+      if (magnitudeSession && navigationRefusal) { setHidden(navigationNotice, false); return; }
       navigationNotice.textContent = '';
       setHidden(navigationNotice, true);
       return;
@@ -1868,7 +1988,7 @@ export function createFractionFlowApp({
         if (!active() || !proposed) return;
         try {
           const priorStage = state.beat;
-          state = applyIntent(state, { ...proposed, context: plan51IntentContext(state) });
+          state = syncSessionEpisode(state, applyIntent(state, { ...proposed, context: plan51IntentContext(state) }));
           distanceRefusal = '';
           if (state.beat !== priorStage) distanceHelpOpen = false;
         } catch {
@@ -2063,7 +2183,7 @@ export function createFractionFlowApp({
       captureComparisonDraft();
       if (action.type === 'propose-common-denominator') commonDenominatorDraft = '';
       const wasResolved = state.status === 'resolved';
-      state = applyIntent(state, action);
+      state = syncSessionEpisode(state, applyIntent(state, action));
       if (action.type === 'revise-comparison-denominator') comparisonConstructionDrafts = {};
       if (action.type === 'submit-fraction-comparison' && state.status === 'resolved') comparisonDraft = '';
       if (action.type === 'request-help') {

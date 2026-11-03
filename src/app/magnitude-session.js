@@ -16,7 +16,7 @@ const canonical = value => Array.isArray(value) ? value.map(canonical) : value &
 const same = (a, b) => JSON.stringify(canonical(a)) === JSON.stringify(canonical(b));
 const fail = message => { throw new TypeError(`invalid magnitude session: ${message}`); };
 
-function prepareEntry(entry, supportId) {
+export function prepareMagnitudeEntry(entry, supportId) {
   const type = getPracticeType(entry.typeId);
   const item = type?.items.find(candidate => candidate.id === entry.itemId);
   if (!type || type.setId !== entry.setId || type.setRevision !== entry.setRevision || !item
@@ -40,7 +40,7 @@ function prepareEntry(entry, supportId) {
 export function admitMagnitudeManifest(manifest = MAGNITUDE_SESSION_MANIFEST, supportId = 'high-support') {
   if (!same(manifest, MAGNITUDE_SESSION_MANIFEST)) fail('manifest identity, shape, order or revision');
   // Resolve and construct every entry at admission, including actual profile capability.
-  const prepared = manifest.entries.map(entry => prepareEntry(entry, supportId));
+  const prepared = manifest.entries.map(entry => prepareMagnitudeEntry(entry, supportId));
   return deepFreeze({ manifest: structuredClone(manifest), supportId, prepared });
 }
 
@@ -53,7 +53,7 @@ export function isMagnitudeEpisodeComplete(state, entry) {
 // The controller owns only ephemeral navigation. Episode state is supplied by its owner.
 // A prepared transaction is an unforgeable, single-use capability bound to the exact
 // controller snapshot and old episode object. Preparation never mutates either.
-export function createMagnitudeSessionController(manifest = MAGNITUDE_SESSION_MANIFEST, supportId = 'high-support', { prepare = prepareEntry } = {}) {
+export function createMagnitudeSessionController(manifest = MAGNITUDE_SESSION_MANIFEST, supportId = 'high-support', { prepare = prepareMagnitudeEntry } = {}) {
   const admission = admitMagnitudeManifest(manifest, supportId);
   let snapshot = deepFreeze({ id: admission.manifest.id, revision: admission.manifest.revision, index: 0, generation: 0, active: true, supportId });
   let episode = admission.prepared[0].state;
@@ -73,7 +73,7 @@ export function createMagnitudeSessionController(manifest = MAGNITUDE_SESSION_MA
     try {
       const candidate = prepare(admission.manifest.entries[index], supportId);
       // Independently reconstruct and compare: injection cannot bypass authoritative admission.
-      const expected = prepareEntry(admission.manifest.entries[index], supportId);
+      const expected = prepareMagnitudeEntry(admission.manifest.entries[index], supportId);
       if (!candidate || !same(candidate, expected)) return { ok: false, reason: 'invalid-candidate' };
       const ticket = Object.freeze({});
       tickets.set(ticket, { snapshot, episode, candidate: expected, index });

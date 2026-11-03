@@ -1093,3 +1093,9 @@ body,
 .plan59-drag-tile.is-dragging { position: fixed; bottom: auto; transform: translate(-50%, -100%); pointer-events: none; z-index: 1000; cursor: grabbing; }
 .plan59-tray-placeholder { visibility: hidden; }
 .plan59-measure { position: absolute; visibility: hidden; pointer-events: none; }
+
+.app-session-cue, .app-session-entry-notice { margin: .5rem 0 1rem; }
+.app-session-dialog { position: fixed; inset: 0; z-index: 1000; display: grid; place-items: center; padding: 1rem; background: rgb(0 0 0 / 45%); }
+.app-session-dialog[hidden] { display: none; }
+.app-session-dialog-panel { max-width: 28rem; width: 100%; padding: 1.25rem; border-radius: .5rem; background: white; color: #202020; }
+.app-session-dialog-panel button { margin: .35rem .5rem .1rem 0; }
