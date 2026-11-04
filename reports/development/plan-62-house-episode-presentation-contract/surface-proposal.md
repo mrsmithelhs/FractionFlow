@@ -1,0 +1,39 @@
+# Requirement 0 surface proposal — awaiting mechanism approval
+
+Date: 2026-11-03. Baseline `e29ce35273997634d446549007e8cf27533dd436`; preflight RUNNABLE. Proposal only; no source authorization or owner acceptance implied. Plan60 owner acceptance records Repair02 and the separate entry-title issue.
+
+## Inspection and limitations
+
+Inspected current renderer branches, style rules and app focus routing, plus reachable initial standalone visual and linear surfaces in headless Chrome at 1093×614. Reproducible probe and raw computed-style/DOM observations: `evidence/baseline-inventory.mjs` and `.jsonl`. State descriptions below also trace current render/update branches and existing tests; they are not fresh browser walks of every state. Plan52's accepted surface approval and owner acceptance govern feedback; Plan43 governs deliberate progression. The probe does not establish physical-device or screen-reader speech behavior. Additional rendered state/focus evidence is required in implementation.
+
+| Representative | Initial and active work | Help / retry | Accepted / next; visual and linear |
+| --- | --- | --- | --- |
+| Plan45/49 comparison | Two source fractions and decorative `?`; choose one relation and Check. One concise prompt. | Disclosure before form; optional cue, one chosen model and, when available, common-denominator construction. Incorrect keeps relation task active with status feedback. | Accepted relation and two verification models, then deliberate Next/return. Visual bars versus textual model in linear; same relation responsibility. |
+| Plan51 compare → distance | Two fractions without separator; select relation then Check. | Form and Check precede disclosure; optional tip or one chosen model. Retry/status associated with form/group/inputs. | Correct relation advances to distance rather than resolving: numeric numerator/denominator and Check remain active, optional distance tip/paired amounts; accepted result and models then Next/return. Visual bars versus linear text. No early distance answer or extra model. |
+| Plan58 construction | Enter whole units and remaining pieces; draft summaries and visual bars reflect entries. | Help then Check after controls and draft; help explains unit; missing/invalid or incorrect feedback remains associated with inputs. | Accepted connection and result, Next; linear uses textual summaries rather than draft bars. |
+| Plan53 placement | Visual pointer/drag or left/right controls choose position; linear select chooses the same position. | Working line/controls precede Help and Check; retry/incomplete linked to controls; Help explains equal intervals. | Accepted placement and verification bars or textual equivalent, then Next. |
+
+Baseline probe: comparison roots are both 768px wide at 1093 viewport, but Plan45 has 101.406px left/right margins while Plan51 has zero; both grid gaps 16px. Plan45 child order is expression, prompt, Help, response/Check; Plan51 is expression, prompt, response/Check, Help. Plan58/53 roots measured 970.812px and have task-specific arrangements. These computed measurements apply only to this viewport and browser.
+
+Focus ownership: Plan45 renderer exposes response focus and keyed controls; app restores keyed focus on view change and routes help actions. Plan51 app action handler focuses first relation after compare actions, numerator during distance, Help after help requests, and Next on resolve; view changes restore tracked numeric field. Plan53 saves keyed focus across renderer updates; Plan58 retains inputs and app focuses feedback as appropriate. Do not infer actual speech from role/description markup. Plan51 help state is reset on stage change; preserve this existing behavior.
+
+## Proposed first slice: exact change
+
+1. In `src/render/plan51-distance.js`, add an aria-hidden `?` for unaccepted comparison using existing separator class. Apply existing accepted-relation class and spoken semantics to the accepted value; preserve existing source labels and provide a clear group question without duplicate spoken glyphs. Do not alter mathematical evaluation.
+2. In the same renderer, put Help before response in DOM for both active stages, keeping the help contents and stage-specific reveal rules. Use truthful open/close summary text, preserving native disclosure state and existing app focus targeting. Center the compare relation fieldset and Check as a group, while distance retains a distinct wrapping numeric form. Reuse existing Plan45 response classes where appropriate, with a stage-specific modifier; avoid a new helper unless exact duplication proves it necessary. Avoid unrequested changes to Plan45 unless a focused accessibility or shared presentation adjustment is required; any such adjustment remains within its named file.
+3. In `src/app/styles.css`, center and size Plan51 root like Plan45 (`width: min(100%, 48rem); margin-inline: auto; box-sizing: border-box`), share existing expression/relation styles and apply relation response grid without imposing it on the numeric form. Ensure choices can wrap when text/width demands. Keep existing feedback classes, colors and associations; reconcile overly broad Plan51 button overrides only as needed to retain accepted control treatment.
+4. Add focused tests for separator, visible/DOM Help-before-response-before-Check, accepted relation styling/meaning and stage distinction; use falsification of missing separator and wrong control order. Do not change app/session navigation, task state, content, math, help policy, replay or storage.
+
+Before: Plan45 expression→prompt→help→relation+Check; Plan51 expression (no ?)→prompt→relation+Check→help. After: both expression (unanswered ?)→prompt→conditional feedback/work→help→relation+Check. Plan51 accepted relation continues into a separate distance prompt, help and numeric response; no extra learner step is introduced. Ask orchestration/owner to assess this arrangement and the Help relocation as a pedagogical choice, not a decision already made.
+
+## Follow-up candidates (not this slice)
+
+- Entry title reflow at 200%/360px: known reachable horizontal overflow; medium priority, separate entry-shell reflow batch, not a comparison repair.
+- Plan58 and Plan53 width and task-local spacing diverge from proposed house defaults; low priority until rendered review of their complete work areas; small task-family batches, preserving interaction-specific ordering.
+- Other episodes are uninspected, not presumed defective. Inventory before migration; no blanket restyle.
+
+## Verification after approval
+
+Run focused comparison/distance and session tests, add negative controls, verify help state, drafts, view switch, feedback description/status, no premature answers/models, accepted relation, distance entry/retry/success/Next, standalone and composed session. Capture matched 360×740 and 1093×614 visual and linear pointer/keyboard states (initial, help/retry, acceptance/distance), plus 200% text; inspect actual geometry, gaps, wrap, controls, focus and overflow, including reduced motion. Distinguish pre-existing entry overflow. Preserve historical receipts; record exact HEAD/diff. Run suite, build, packet lint, diff check and one isolated historical browser matrix if shared renderer branches change. Headless evidence is not actual device or AT speech. Owner rendered acceptance remains separate. One cold read-only Terra-medium pass only if substantial implementation, at most one, with requested/observed model and read-only limitations recorded; no Sol/Astra, substitution or fan-out. No advisor for this paper proposal.
+
+Ownership: report files now; exclusive named renderer/CSS and focused tests/evidence plus proposed `docs/design/episode-presentation-contract.md` only after mechanism approval and coordinated window. No status, push or deploy.
