@@ -37,4 +37,3 @@ for (const [name,viewport,scale,textScale] of [['narrow',{width:360,height:740},
 }
 await writeFile('reports/development/plan-60-short-magnitude-practice-session/evidence/repair02-measurements.json',JSON.stringify(results,null,2)+'\n');
 console.log(JSON.stringify(results)); await browser.close();server.kill();
-
