@@ -1035,8 +1035,10 @@ body,
 
 .plan50-success, .plan51-success {box-sizing:border-box;padding:.75rem 1rem;border:1px solid #b8d3c3;border-radius:.5rem;background:#f1faf4;margin:0 0 .25rem;color:var(--app-ink);font-size:1.15rem;font-weight:600;line-height:1.25}
 .plan50-success:focus {outline:3px solid var(--ff-color-border-focus);outline-offset:2px}
-.plan51-distance { display: grid; gap: 1rem; max-width: 48rem; }
+.plan51-distance { display: grid; gap: 1rem; width: min(100%, 48rem); margin: 0 auto; box-sizing: border-box; }
 .plan51-response { display: flex; flex-wrap: wrap; align-items: end; gap: 0.75rem; }
+.plan51-response.plan45-response-region { display: grid; justify-items: center; }
+.plan51-distance .plan45-relation-options { flex-wrap: wrap; }
 .plan51-field { display: grid; gap: 0.25rem; }
 .plan51-field input { min-height: 44px; width: 8rem; max-width: 100%; font: inherit; }
 .plan51-between { outline: 3px solid #5948a2; outline-offset: -3px; }
@@ -1099,3 +1101,15 @@ body,
 .app-session-dialog[hidden] { display: none; }
 .app-session-dialog-panel { max-width: 28rem; width: 100%; padding: 1.25rem; border-radius: .5rem; background: white; color: #202020; }
 .app-session-dialog-panel button { margin: .35rem .5rem .1rem 0; }
+
+/* Keep comparison work and optional construction within a narrow text-scaled column. */
+.plan45-comparison { grid-template-columns: minmax(0, 1fr); }
+.plan45-comparison .plan45-response-region,
+.plan45-comparison .plan45-help,
+.plan45-comparison .plan45-relation-group,
+.plan45-comparison .plan49-construction { min-width: 0; max-width: 100%; }
+.plan45-comparison .plan45-relation-options { flex-wrap: wrap; }
+.plan45-comparison .plan45-help-choices > *,
+.plan45-comparison .plan49-construction button,
+.plan45-comparison .plan49-helper-input { max-width: 100%; box-sizing: border-box; }
+.plan45-comparison .plan49-accepted-form { display: flex; flex-wrap: wrap; align-items: center; gap: 0.4rem; }

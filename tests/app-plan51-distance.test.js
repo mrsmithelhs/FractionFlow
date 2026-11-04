@@ -130,3 +130,25 @@ it('retains accepted work when a mounted next item cannot be prepared', () => {
   expect(document.activeElement).toBe(root.querySelector('.app-navigation-notice'));
   app.destroy();
 });
+
+it('keeps the unanswered comparison and help before the response in both stages', () => {
+  const document = setupMockDOM();
+  const root = document.createElement('div'); document.body.appendChild(root);
+  const app = createFractionFlowApp({ root, presentationMode: 'instant-test' }).mount();
+  root.querySelector('[data-practice-type="fraction-distance"]').click();
+  const host = () => root.querySelector('.app-visual-view .plan51-distance');
+  const ordered = () => {
+    const children = [...host().children];
+    return children.indexOf(host().querySelector('.plan45-help')) < children.indexOf(host().querySelector('.plan51-response'));
+  };
+  expect(host().querySelector('.plan45-expression-separator')?.textContent).toBe('?');
+  expect(host().querySelector('.plan45-expression-separator')?.getAttribute('aria-hidden')).toBe('true');
+  expect(ordered()).toBe(true);
+  const relation = [...host().querySelectorAll('.plan45-relation-option input')].find(node => node.value === '<');
+  relation.checked = true; relation.dispatchEvent({ type: 'change' });
+  host().querySelector('.plan51-response').dispatchEvent({ type: 'submit', preventDefault() {} });
+  expect(host().querySelector('.plan45-accepted-relation')?.textContent).toBe('<');
+  expect(ordered()).toBe(true);
+  expect(host().querySelector('[data-plan51-focus="numerator"]')).toBeTruthy();
+  app.destroy();
+});

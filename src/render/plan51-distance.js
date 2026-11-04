@@ -15,9 +15,14 @@ export function renderPlan51Distance(container, scene, options) {
   const expression = el('div', 'plan45-expression');
   append(expression, createSymbolicFraction(d.sourceForms.first.numerator, d.sourceForms.first.denominator, { ariaPrefix: 'First amount' }));
   if (d.acceptedRelation) {
-    const relation = el('span', 'plan45-expression-relation', d.acceptedRelation);
-    relation.setAttribute('aria-label', d.acceptedRelation === '<' ? 'is less than' : 'is greater than');
+    const relation = el('span', 'plan45-accepted-relation', d.acceptedRelation);
+    relation.setAttribute('role', 'math');
+    relation.setAttribute('aria-label', d.acceptedRelation === '<' ? 'is less than' : d.acceptedRelation === '=' ? 'is equal to' : 'is greater than');
     append(expression, relation);
+  } else {
+    const separator = el('span', 'plan45-expression-separator', '?');
+    separator.setAttribute('aria-hidden', 'true');
+    append(expression, separator);
   }
   append(expression, createSymbolicFraction(d.sourceForms.second.numerator, d.sourceForms.second.denominator, { ariaPrefix: 'Second amount' }));
   append(root, expression);
@@ -77,12 +82,12 @@ export function renderPlan51Distance(container, scene, options) {
     feedback.setAttribute('role', 'status');
     append(root, feedback);
   }
-  const form = el('form', 'plan51-response');
+  const form = el('form', `plan51-response${d.stage === 'compare' ? ' plan45-response-region' : ''}`);
   if (d.feedback || options.refusal) form.setAttribute('aria-describedby', `plan51-feedback-${options.view}`);
   if (d.stage === 'compare') {
     const group = el('fieldset', 'plan45-relation-group');
     if (d.feedback || options.refusal) group.setAttribute('aria-describedby', `plan51-feedback-${options.view}`);
-    append(group, el('legend', 'sr-only', 'Choose a relation'));
+    append(group, el('legend', 'sr-only', 'Choose how the first amount compares with the second'));
     const choices = el('div', 'plan45-relation-options');
     for (const [glyph, label] of [['<', 'is less than'], ['=', 'is equal to'], ['>', 'is greater than']]) {
       const option = el('label', 'plan45-relation-option');
@@ -91,7 +96,9 @@ export function renderPlan51Distance(container, scene, options) {
       if (d.feedback || options.refusal) input.setAttribute('aria-describedby', `plan51-feedback-${options.view}`);
       input.checked = options.draft.relation === glyph;
       input.addEventListener('change', () => options.setDraft('relation', glyph));
-      append(option, input, el('span', 'plan45-relation-glyph', glyph), el('span', 'plan45-relation-label', label));
+      const visibleGlyph = el('span', 'plan45-relation-glyph', glyph);
+      visibleGlyph.setAttribute('aria-hidden', 'true');
+      append(option, input, visibleGlyph, el('span', 'plan45-relation-label', label));
       append(choices, option);
     }
     append(group, choices); append(form, group);
@@ -112,7 +119,6 @@ export function renderPlan51Distance(container, scene, options) {
     if (d.stage === 'compare') options.action({ type: 'submit-distance-comparison', proposed: options.draft.relation });
     else options.action({ type: 'submit-distance-fraction', numerator: options.draft.numerator, denominator: options.draft.denominator });
   });
-  append(root, form);
   const details = el('details', 'plan45-help'); details.open = options.helpOpen;
   const summary = el('summary', 'plan45-help-summary', 'Help');
   summary.addEventListener('click', () => options.setHelpOpen(!details.open));
@@ -128,6 +134,6 @@ export function renderPlan51Distance(container, scene, options) {
     if (!d.pairedAmounts) append(details, button('Show both amounts', { type: 'request-distance-help', helpKind: 'both-amounts' }));
     else { const pair = el('div', 'plan45-model-pair'); append(pair, model('first'), model('second')); append(details, pair); }
   }
-  append(root, details);
+  append(root, details, form);
   container.replaceChildren(root);
 }
