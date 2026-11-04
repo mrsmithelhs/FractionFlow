@@ -1,0 +1,9 @@
+# Plan 60 repair 02: session entry layout
+
+2026-11-03. The session entry uses the existing start-aligned practice-list wrapper; its unchanged unsaved-place cue is associated with the button using `aria-describedby`. Text, ordering, session start and task renderers remain unchanged. The broader comparison presentation investigation is separate Plan 62.
+
+Headless Chrome measurements and screenshots are in `evidence/repair02-measurements.json` and `repair02-{narrow,chromebook,large-text}.png`; the reproducible script is `evidence/repair02-entry.mjs`. At 360×740, the session and neighboring buttons align at x=12 and each fits 336px; at 1093×614 DPR1.25 they align at x=32.78 and the session button is 326.83px wide in a 1027.44px entry area, rather than stretching across it. At 200% root text and 360×740, the session button and cue fit within x=24–336 and button text wraps without internal overflow.
+
+The enlarged-text page still has existing horizontal overflow: document scrollWidth 384px in a 360px viewport, caused by the pre-existing `FractionFlow` heading. Temporarily restoring the old direct-child button arrangement measured the same 384px baseline. This repair does not claim full-page no-overflow at 200%; a global title change is outside this scope. The normal-size viewports showed no document overflow.
+
+The browser check used the real session button by keyboard, verified the first practice button and gear are first and second in Tab order, About can receive focus, credit remains present, and session launch focuses the episode and opens `plan45-compare-02`. This is headless viewport evidence, not physical-device or actual assistive-technology evidence. Focused entry/shell/session tests: 34 passed; build and packet lint passed, and diff check passed. The build retained its Vite large-chunk warning. No advisor was warranted for this bounded shell change. No packet status, acceptance, push or deployment changed.

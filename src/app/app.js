@@ -766,8 +766,11 @@ export function createFractionFlowApp({
     }
     sessionEntryButton = createButton({ label: 'Compare fractions, then find a distance', className: 'app-practice-choice', onClick: () => { if (shellActive()) startMagnitudeSession(); } });
     sessionEntryButton.setAttribute('data-session-entry', 'magnitude');
-    entryPage.appendChild(sessionEntryButton);
-    const sessionCue = makeElement('p', 'app-session-cue'); sessionCue.textContent = 'Your place in this practice is not saved.'; entryPage.appendChild(sessionCue);
+    sessionEntryButton.setAttribute('aria-describedby', 'fractionflow-session-cue');
+    const sessionEntryList = makeElement('div', 'app-practice-list');
+    sessionEntryList.appendChild(sessionEntryButton);
+    entryPage.appendChild(sessionEntryList);
+    const sessionCue = makeElement('p', 'app-session-cue'); sessionCue.id = 'fractionflow-session-cue'; sessionCue.textContent = 'Your place in this practice is not saved.'; entryPage.appendChild(sessionCue);
     sessionEntryNotice = makeElement('p', 'app-session-entry-notice'); sessionEntryNotice.setAttribute('role', 'status'); sessionEntryNotice.tabIndex = -1; setHidden(sessionEntryNotice, true); entryPage.appendChild(sessionEntryNotice);
     const aboutLink = makeElement('a', 'app-about-link');
     aboutLink.setAttribute('href', './about.html');

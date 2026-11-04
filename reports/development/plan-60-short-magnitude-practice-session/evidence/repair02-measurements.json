@@ -1,0 +1,149 @@
+[
+  {
+    "name": "narrow",
+    "viewport": {
+      "width": 360,
+      "height": 740
+    },
+    "deviceScaleFactor": 1,
+    "textScale": 100,
+    "session": {
+      "x": 12,
+      "y": 931.390625,
+      "width": 336,
+      "height": 44,
+      "right": 348
+    },
+    "sessionScrollWidth": 334,
+    "sessionClientWidth": 334,
+    "baselineScrollWidth": 360,
+    "neighbor": {
+      "x": 12,
+      "y": 875.390625,
+      "width": 336,
+      "height": 44,
+      "right": 348
+    },
+    "cue": {
+      "x": 12,
+      "y": 983.390625,
+      "width": 336,
+      "height": 21,
+      "right": 348
+    },
+    "cueText": "Your place in this practice is not saved.",
+    "entry": {
+      "x": 12,
+      "y": 12,
+      "width": 336,
+      "height": 1110.1875,
+      "right": 348
+    },
+    "scrollWidth": 360,
+    "innerWidth": 360,
+    "firstButton": "sum-under-one",
+    "secondButton": "fraction-control app-gear-button",
+    "about": true,
+    "credit": true,
+    "sessionStarts": true,
+    "focus": "episode"
+  },
+  {
+    "name": "chromebook",
+    "viewport": {
+      "width": 1093,
+      "height": 614
+    },
+    "deviceScaleFactor": 1.25,
+    "textScale": 100,
+    "session": {
+      "x": 32.78125,
+      "y": 856.84375,
+      "width": 326.828125,
+      "height": 44,
+      "right": 359.609375
+    },
+    "sessionScrollWidth": 325,
+    "sessionClientWidth": 325,
+    "baselineScrollWidth": 1093,
+    "neighbor": {
+      "x": 32.78125,
+      "y": 800.84375,
+      "width": 261,
+      "height": 44,
+      "right": 293.78125
+    },
+    "cue": {
+      "x": 32.78125,
+      "y": 908.84375,
+      "width": 1027.4375,
+      "height": 21,
+      "right": 1060.21875
+    },
+    "cueText": "Your place in this practice is not saved.",
+    "entry": {
+      "x": 32.78125,
+      "y": 32.78125,
+      "width": 1027.4375,
+      "height": 996.859375,
+      "right": 1060.21875
+    },
+    "scrollWidth": 1093,
+    "innerWidth": 1093,
+    "firstButton": "sum-under-one",
+    "secondButton": "fraction-control app-gear-button",
+    "about": true,
+    "credit": true,
+    "sessionStarts": true,
+    "focus": "episode"
+  },
+  {
+    "name": "large-text",
+    "viewport": {
+      "width": 360,
+      "height": 740
+    },
+    "deviceScaleFactor": 1,
+    "textScale": 200,
+    "session": {
+      "x": 24,
+      "y": 2622.796875,
+      "width": 312,
+      "height": 171,
+      "right": 336
+    },
+    "sessionScrollWidth": 310,
+    "sessionClientWidth": 310,
+    "baselineScrollWidth": 384,
+    "neighbor": {
+      "x": 24,
+      "y": 2470.796875,
+      "width": 312,
+      "height": 128,
+      "right": 336
+    },
+    "cue": {
+      "x": 24,
+      "y": 2809.796875,
+      "width": 312,
+      "height": 86,
+      "right": 336
+    },
+    "cueText": "Your place in this practice is not saved.",
+    "entry": {
+      "x": 24,
+      "y": 24,
+      "width": 312,
+      "height": 3144.390625,
+      "right": 336
+    },
+    "scrollWidth": 384,
+    "innerWidth": 360,
+    "firstButton": "sum-under-one",
+    "secondButton": "fraction-control app-gear-button",
+    "about": true,
+    "credit": true,
+    "sessionStarts": true,
+    "focus": "episode"
+  }
+]
