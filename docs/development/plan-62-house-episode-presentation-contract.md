@@ -1,11 +1,9 @@
 ---
 id: plan-62
 title: House Episode Presentation Contract and Comparison Alignment
-status: draft
+status: in-progress
 depends_on: [plan-52, plan-60]
 gate: "Approve representative surface inventory, flexible presentation contract and exact first-slice changes before source. Serialize shared edits after Plan60 repair/closure; owner rendered acceptance and deployment remain separate."
-superseded_by: null
-resolution: null
 summary: >-
   Define reusable presentation rules with explicit response-layout variants,
   then harmonize ordinary comparison and comparison-then-distance without

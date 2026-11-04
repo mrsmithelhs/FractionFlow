@@ -1,7 +1,8 @@
 ---
 id: plan-60
 title: Short Composed Magnitude Practice Session
-status: delivered
+status: complete
+resolution: "Owner accepted the composed session and repaired entry on 2026-11-03 after technical reviews; ephemeral lifecycle preserved. Known enlarged-text title reflow and cross-episode presentation remain separately recorded; no push/deployment."
 depends_on: [plan-57, plan-59, plan-49, plan-51, plan-43]
 gate: "After Plan59 closure, approve manifest/lifecycle mechanism before source and pure manifest/navigation checkpoint before mounting. Technical review and owner complete-session acceptance; deployment separate."
 summary: >-
