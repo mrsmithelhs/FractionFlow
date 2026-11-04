@@ -34,3 +34,9 @@ Disposition: Plan60 Repair02 owns entry choice layout only. Draft Plan62 owns a
 proposed flexible contract and bounded comparison alignment slice, with inventory
 and mechanism gate before source. Other renderer migrations require named follow-up
 scope. No framework change, task redesign or blanket restyling is authorized.
+
+Plan60 Repair02 follow-up: at 200% root text in a 360px viewport, the unchanged
+entry title produces a 384px document with both old and repaired button layouts.
+The repaired button/cue fit. Preserve this separate reflow issue in the later
+inventory; comparison-renderer harmonization does not resolve it and this record
+does not authorize a global heading change. See Plan60 repair-02.md and its receipts.
