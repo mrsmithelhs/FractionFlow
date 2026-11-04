@@ -1,0 +1,20 @@
+[
+  {
+    "version": "baseline",
+    "focus": "<input type=\"text\" inputmode=\"numeric\" data-plan51-focus=\"numerator\">",
+    "connected": true,
+    "visible": true,
+    "numerator": "3",
+    "denominator": "8",
+    "view": "visible"
+  },
+  {
+    "version": "current",
+    "focus": "<input type=\"text\" inputmode=\"numeric\" data-plan51-focus=\"numerator\">",
+    "connected": true,
+    "visible": true,
+    "numerator": "3",
+    "denominator": "8",
+    "view": "visible"
+  }
+]

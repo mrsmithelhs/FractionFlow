@@ -1,0 +1,3476 @@
+[
+  {
+    "size": "narrow",
+    "view": "visual",
+    "stage": "initial",
+    "viewport": 360,
+    "scrollWidth": 360,
+    "root": {
+      "left": 25,
+      "right": 335,
+      "width": 310,
+      "height": 325.4375
+    },
+    "controls": [
+      {
+        "text": "Need help?",
+        "rect": {
+          "left": 25,
+          "right": 109.046875,
+          "width": 84.046875,
+          "height": 44
+        }
+      },
+      {
+        "text": "button",
+        "rect": {
+          "left": 25,
+          "right": 120.53125,
+          "width": 95.53125,
+          "height": 44
+        }
+      },
+      {
+        "text": "button",
+        "rect": {
+          "left": 128.53125,
+          "right": 187,
+          "width": 58.46875,
+          "height": 44
+        }
+      },
+      {
+        "text": "button",
+        "rect": {
+          "left": 25,
+          "right": 148.65625,
+          "width": 123.65625,
+          "height": 44
+        }
+      },
+      {
+        "text": "button",
+        "rect": {
+          "left": 156.65625,
+          "right": 301.828125,
+          "width": 145.171875,
+          "height": 44
+        }
+      },
+      {
+        "text": "button",
+        "rect": {
+          "left": 25,
+          "right": 199.046875,
+          "width": 174.046875,
+          "height": 44
+        }
+      },
+      {
+        "text": "<",
+        "rect": {
+          "left": 87.21875,
+          "right": 140.8125,
+          "width": 53.59375,
+          "height": 53.59375
+        }
+      },
+      {
+        "text": "=",
+        "rect": {
+          "left": 153.203125,
+          "right": 206.796875,
+          "width": 53.59375,
+          "height": 53.59375
+        }
+      },
+      {
+        "text": ">",
+        "rect": {
+          "left": 219.1875,
+          "right": 272.78125,
+          "width": 53.59375,
+          "height": 53.59375
+        }
+      },
+      {
+        "text": "Check",
+        "rect": {
+          "left": 100,
+          "right": 260,
+          "width": 160,
+          "height": 44
+        }
+      }
+    ]
+  },
+  {
+    "size": "narrow",
+    "view": "visual",
+    "stage": "help",
+    "viewport": 360,
+    "scrollWidth": 360,
+    "root": {
+      "left": 25,
+      "right": 335,
+      "width": 310,
+      "height": 589.21875
+    },
+    "controls": [
+      {
+        "text": "Close help",
+        "rect": {
+          "left": 25,
+          "right": 102.1875,
+          "width": 77.1875,
+          "height": 44
+        }
+      },
+      {
+        "text": "Reasoning tip",
+        "rect": {
+          "left": 25,
+          "right": 120.53125,
+          "width": 95.53125,
+          "height": 44
+        }
+      },
+      {
+        "text": "Sign tip",
+        "rect": {
+          "left": 128.53125,
+          "right": 187,
+          "width": 58.46875,
+          "height": 44
+        }
+      },
+      {
+        "text": "Model first amount",
+        "rect": {
+          "left": 25,
+          "right": 148.65625,
+          "width": 123.65625,
+          "height": 44
+        }
+      },
+      {
+        "text": "Model second amount",
+        "rect": {
+          "left": 156.65625,
+          "right": 301.828125,
+          "width": 145.171875,
+          "height": 44
+        }
+      },
+      {
+        "text": "Use the same denominator",
+        "rect": {
+          "left": 25,
+          "right": 199.046875,
+          "width": 174.046875,
+          "height": 44
+        }
+      },
+      {
+        "text": "<",
+        "rect": {
+          "left": 87.21875,
+          "right": 140.8125,
+          "width": 53.59375,
+          "height": 53.59375
+        }
+      },
+      {
+        "text": "=",
+        "rect": {
+          "left": 153.203125,
+          "right": 206.796875,
+          "width": 53.59375,
+          "height": 53.59375
+        }
+      },
+      {
+        "text": ">",
+        "rect": {
+          "left": 219.1875,
+          "right": 272.78125,
+          "width": 53.59375,
+          "height": 53.59375
+        }
+      },
+      {
+        "text": "Check",
+        "rect": {
+          "left": 100,
+          "right": 260,
+          "width": 160,
+          "height": 44
+        }
+      }
+    ]
+  },
+  {
+    "size": "narrow",
+    "view": "visual",
+    "stage": "construction",
+    "viewport": 360,
+    "scrollWidth": 360,
+    "root": {
+      "left": 25,
+      "right": 335,
+      "width": 310,
+      "height": 740
+    },
+    "controls": [
+      {
+        "text": "Close help",
+        "rect": {
+          "left": 25,
+          "right": 102.1875,
+          "width": 77.1875,
+          "height": 44
+        }
+      },
+      {
+        "text": "Reasoning tip",
+        "rect": {
+          "left": 25,
+          "right": 120.53125,
+          "width": 95.53125,
+          "height": 44
+        }
+      },
+      {
+        "text": "Sign tip",
+        "rect": {
+          "left": 128.53125,
+          "right": 187,
+          "width": 58.46875,
+          "height": 44
+        }
+      },
+      {
+        "text": "Model first amount",
+        "rect": {
+          "left": 25,
+          "right": 148.65625,
+          "width": 123.65625,
+          "height": 44
+        }
+      },
+      {
+        "text": "Model second amount",
+        "rect": {
+          "left": 156.65625,
+          "right": 301.828125,
+          "width": 145.171875,
+          "height": 44
+        }
+      },
+      {
+        "text": "text",
+        "rect": {
+          "left": 25,
+          "right": 153,
+          "width": 128,
+          "height": 44
+        }
+      },
+      {
+        "text": "Check",
+        "rect": {
+          "left": 25,
+          "right": 76.796875,
+          "width": 51.796875,
+          "height": 44
+        }
+      },
+      {
+        "text": "Help me find one",
+        "rect": {
+          "left": 25,
+          "right": 335,
+          "width": 310,
+          "height": 44
+        }
+      },
+      {
+        "text": "<",
+        "rect": {
+          "left": 87.21875,
+          "right": 140.8125,
+          "width": 53.59375,
+          "height": 53.59375
+        }
+      },
+      {
+        "text": "=",
+        "rect": {
+          "left": 153.203125,
+          "right": 206.796875,
+          "width": 53.59375,
+          "height": 53.59375
+        }
+      },
+      {
+        "text": ">",
+        "rect": {
+          "left": 219.1875,
+          "right": 272.78125,
+          "width": 53.59375,
+          "height": 53.59375
+        }
+      },
+      {
+        "text": "Check",
+        "rect": {
+          "left": 100,
+          "right": 260,
+          "width": 160,
+          "height": 44
+        }
+      }
+    ]
+  },
+  {
+    "size": "narrow",
+    "view": "visual",
+    "stage": "construction-retry",
+    "viewport": 360,
+    "scrollWidth": 360,
+    "root": {
+      "left": 25,
+      "right": 335,
+      "width": 310,
+      "height": 810.390625
+    },
+    "controls": [
+      {
+        "text": "Close help",
+        "rect": {
+          "left": 25,
+          "right": 102.1875,
+          "width": 77.1875,
+          "height": 44
+        }
+      },
+      {
+        "text": "Reasoning tip",
+        "rect": {
+          "left": 25,
+          "right": 120.53125,
+          "width": 95.53125,
+          "height": 44
+        }
+      },
+      {
+        "text": "Sign tip",
+        "rect": {
+          "left": 128.53125,
+          "right": 187,
+          "width": 58.46875,
+          "height": 44
+        }
+      },
+      {
+        "text": "Model first amount",
+        "rect": {
+          "left": 25,
+          "right": 148.65625,
+          "width": 123.65625,
+          "height": 44
+        }
+      },
+      {
+        "text": "Model second amount",
+        "rect": {
+          "left": 156.65625,
+          "right": 301.828125,
+          "width": 145.171875,
+          "height": 44
+        }
+      },
+      {
+        "text": "8",
+        "rect": {
+          "left": 25,
+          "right": 153,
+          "width": 128,
+          "height": 44
+        }
+      },
+      {
+        "text": "Check",
+        "rect": {
+          "left": 25,
+          "right": 76.796875,
+          "width": 51.796875,
+          "height": 44
+        }
+      },
+      {
+        "text": "Help me find one",
+        "rect": {
+          "left": 25,
+          "right": 335,
+          "width": 310,
+          "height": 44
+        }
+      },
+      {
+        "text": "<",
+        "rect": {
+          "left": 87.21875,
+          "right": 140.8125,
+          "width": 53.59375,
+          "height": 53.59375
+        }
+      },
+      {
+        "text": "=",
+        "rect": {
+          "left": 153.203125,
+          "right": 206.796875,
+          "width": 53.59375,
+          "height": 53.59375
+        }
+      },
+      {
+        "text": ">",
+        "rect": {
+          "left": 219.1875,
+          "right": 272.78125,
+          "width": 53.59375,
+          "height": 53.59375
+        }
+      },
+      {
+        "text": "Check",
+        "rect": {
+          "left": 100,
+          "right": 260,
+          "width": 160,
+          "height": 44
+        }
+      }
+    ]
+  },
+  {
+    "size": "narrow",
+    "view": "visual",
+    "stage": "retry",
+    "viewport": 360,
+    "scrollWidth": 360,
+    "root": {
+      "left": 25,
+      "right": 335,
+      "width": 310,
+      "height": 869.390625
+    },
+    "controls": [
+      {
+        "text": "Close help",
+        "rect": {
+          "left": 25,
+          "right": 102.1875,
+          "width": 77.1875,
+          "height": 44
+        }
+      },
+      {
+        "text": "Reasoning tip",
+        "rect": {
+          "left": 25,
+          "right": 120.53125,
+          "width": 95.53125,
+          "height": 44
+        }
+      },
+      {
+        "text": "Sign tip",
+        "rect": {
+          "left": 128.53125,
+          "right": 187,
+          "width": 58.46875,
+          "height": 44
+        }
+      },
+      {
+        "text": "Model first amount",
+        "rect": {
+          "left": 25,
+          "right": 148.65625,
+          "width": 123.65625,
+          "height": 44
+        }
+      },
+      {
+        "text": "Model second amount",
+        "rect": {
+          "left": 156.65625,
+          "right": 301.828125,
+          "width": 145.171875,
+          "height": 44
+        }
+      },
+      {
+        "text": "8",
+        "rect": {
+          "left": 25,
+          "right": 153,
+          "width": 128,
+          "height": 44
+        }
+      },
+      {
+        "text": "Check",
+        "rect": {
+          "left": 25,
+          "right": 76.796875,
+          "width": 51.796875,
+          "height": 44
+        }
+      },
+      {
+        "text": "Help me find one",
+        "rect": {
+          "left": 25,
+          "right": 335,
+          "width": 310,
+          "height": 44
+        }
+      },
+      {
+        "text": "<",
+        "rect": {
+          "left": 87.21875,
+          "right": 140.8125,
+          "width": 53.59375,
+          "height": 53.59375
+        }
+      },
+      {
+        "text": "=",
+        "rect": {
+          "left": 153.203125,
+          "right": 206.796875,
+          "width": 53.59375,
+          "height": 53.59375
+        }
+      },
+      {
+        "text": ">",
+        "rect": {
+          "left": 219.1875,
+          "right": 272.78125,
+          "width": 53.59375,
+          "height": 53.59375
+        }
+      },
+      {
+        "text": "Check",
+        "rect": {
+          "left": 100,
+          "right": 260,
+          "width": 160,
+          "height": 44
+        }
+      }
+    ]
+  },
+  {
+    "size": "narrow",
+    "view": "linear",
+    "stage": "initial",
+    "viewport": 360,
+    "scrollWidth": 360,
+    "root": {
+      "left": 25,
+      "right": 335,
+      "width": 310,
+      "height": 325.4375
+    },
+    "controls": [
+      {
+        "text": "Need help?",
+        "rect": {
+          "left": 25,
+          "right": 109.046875,
+          "width": 84.046875,
+          "height": 44
+        }
+      },
+      {
+        "text": "button",
+        "rect": {
+          "left": 25,
+          "right": 120.53125,
+          "width": 95.53125,
+          "height": 44
+        }
+      },
+      {
+        "text": "button",
+        "rect": {
+          "left": 128.53125,
+          "right": 187,
+          "width": 58.46875,
+          "height": 44
+        }
+      },
+      {
+        "text": "button",
+        "rect": {
+          "left": 25,
+          "right": 148.65625,
+          "width": 123.65625,
+          "height": 44
+        }
+      },
+      {
+        "text": "button",
+        "rect": {
+          "left": 156.65625,
+          "right": 301.828125,
+          "width": 145.171875,
+          "height": 44
+        }
+      },
+      {
+        "text": "button",
+        "rect": {
+          "left": 25,
+          "right": 199.046875,
+          "width": 174.046875,
+          "height": 44
+        }
+      },
+      {
+        "text": "<",
+        "rect": {
+          "left": 87.21875,
+          "right": 140.8125,
+          "width": 53.59375,
+          "height": 53.59375
+        }
+      },
+      {
+        "text": "=",
+        "rect": {
+          "left": 153.203125,
+          "right": 206.796875,
+          "width": 53.59375,
+          "height": 53.59375
+        }
+      },
+      {
+        "text": ">",
+        "rect": {
+          "left": 219.1875,
+          "right": 272.78125,
+          "width": 53.59375,
+          "height": 53.59375
+        }
+      },
+      {
+        "text": "Check",
+        "rect": {
+          "left": 100,
+          "right": 260,
+          "width": 160,
+          "height": 44
+        }
+      }
+    ]
+  },
+  {
+    "size": "narrow",
+    "view": "linear",
+    "stage": "help",
+    "viewport": 360,
+    "scrollWidth": 360,
+    "root": {
+      "left": 25,
+      "right": 335,
+      "width": 310,
+      "height": 589.21875
+    },
+    "controls": [
+      {
+        "text": "Close help",
+        "rect": {
+          "left": 25,
+          "right": 102.1875,
+          "width": 77.1875,
+          "height": 44
+        }
+      },
+      {
+        "text": "Reasoning tip",
+        "rect": {
+          "left": 25,
+          "right": 120.53125,
+          "width": 95.53125,
+          "height": 44
+        }
+      },
+      {
+        "text": "Sign tip",
+        "rect": {
+          "left": 128.53125,
+          "right": 187,
+          "width": 58.46875,
+          "height": 44
+        }
+      },
+      {
+        "text": "Model first amount",
+        "rect": {
+          "left": 25,
+          "right": 148.65625,
+          "width": 123.65625,
+          "height": 44
+        }
+      },
+      {
+        "text": "Model second amount",
+        "rect": {
+          "left": 156.65625,
+          "right": 301.828125,
+          "width": 145.171875,
+          "height": 44
+        }
+      },
+      {
+        "text": "Use the same denominator",
+        "rect": {
+          "left": 25,
+          "right": 199.046875,
+          "width": 174.046875,
+          "height": 44
+        }
+      },
+      {
+        "text": "<",
+        "rect": {
+          "left": 87.21875,
+          "right": 140.8125,
+          "width": 53.59375,
+          "height": 53.59375
+        }
+      },
+      {
+        "text": "=",
+        "rect": {
+          "left": 153.203125,
+          "right": 206.796875,
+          "width": 53.59375,
+          "height": 53.59375
+        }
+      },
+      {
+        "text": ">",
+        "rect": {
+          "left": 219.1875,
+          "right": 272.78125,
+          "width": 53.59375,
+          "height": 53.59375
+        }
+      },
+      {
+        "text": "Check",
+        "rect": {
+          "left": 100,
+          "right": 260,
+          "width": 160,
+          "height": 44
+        }
+      }
+    ]
+  },
+  {
+    "size": "narrow",
+    "view": "linear",
+    "stage": "construction",
+    "viewport": 360,
+    "scrollWidth": 360,
+    "root": {
+      "left": 25,
+      "right": 335,
+      "width": 310,
+      "height": 740
+    },
+    "controls": [
+      {
+        "text": "Close help",
+        "rect": {
+          "left": 25,
+          "right": 102.1875,
+          "width": 77.1875,
+          "height": 44
+        }
+      },
+      {
+        "text": "Reasoning tip",
+        "rect": {
+          "left": 25,
+          "right": 120.53125,
+          "width": 95.53125,
+          "height": 44
+        }
+      },
+      {
+        "text": "Sign tip",
+        "rect": {
+          "left": 128.53125,
+          "right": 187,
+          "width": 58.46875,
+          "height": 44
+        }
+      },
+      {
+        "text": "Model first amount",
+        "rect": {
+          "left": 25,
+          "right": 148.65625,
+          "width": 123.65625,
+          "height": 44
+        }
+      },
+      {
+        "text": "Model second amount",
+        "rect": {
+          "left": 156.65625,
+          "right": 301.828125,
+          "width": 145.171875,
+          "height": 44
+        }
+      },
+      {
+        "text": "text",
+        "rect": {
+          "left": 25,
+          "right": 153,
+          "width": 128,
+          "height": 44
+        }
+      },
+      {
+        "text": "Check",
+        "rect": {
+          "left": 25,
+          "right": 76.796875,
+          "width": 51.796875,
+          "height": 44
+        }
+      },
+      {
+        "text": "Help me find one",
+        "rect": {
+          "left": 25,
+          "right": 335,
+          "width": 310,
+          "height": 44
+        }
+      },
+      {
+        "text": "<",
+        "rect": {
+          "left": 87.21875,
+          "right": 140.8125,
+          "width": 53.59375,
+          "height": 53.59375
+        }
+      },
+      {
+        "text": "=",
+        "rect": {
+          "left": 153.203125,
+          "right": 206.796875,
+          "width": 53.59375,
+          "height": 53.59375
+        }
+      },
+      {
+        "text": ">",
+        "rect": {
+          "left": 219.1875,
+          "right": 272.78125,
+          "width": 53.59375,
+          "height": 53.59375
+        }
+      },
+      {
+        "text": "Check",
+        "rect": {
+          "left": 100,
+          "right": 260,
+          "width": 160,
+          "height": 44
+        }
+      }
+    ]
+  },
+  {
+    "size": "narrow",
+    "view": "linear",
+    "stage": "construction-retry",
+    "viewport": 360,
+    "scrollWidth": 360,
+    "root": {
+      "left": 25,
+      "right": 335,
+      "width": 310,
+      "height": 810.390625
+    },
+    "controls": [
+      {
+        "text": "Close help",
+        "rect": {
+          "left": 25,
+          "right": 102.1875,
+          "width": 77.1875,
+          "height": 44
+        }
+      },
+      {
+        "text": "Reasoning tip",
+        "rect": {
+          "left": 25,
+          "right": 120.53125,
+          "width": 95.53125,
+          "height": 44
+        }
+      },
+      {
+        "text": "Sign tip",
+        "rect": {
+          "left": 128.53125,
+          "right": 187,
+          "width": 58.46875,
+          "height": 44
+        }
+      },
+      {
+        "text": "Model first amount",
+        "rect": {
+          "left": 25,
+          "right": 148.65625,
+          "width": 123.65625,
+          "height": 44
+        }
+      },
+      {
+        "text": "Model second amount",
+        "rect": {
+          "left": 156.65625,
+          "right": 301.828125,
+          "width": 145.171875,
+          "height": 44
+        }
+      },
+      {
+        "text": "8",
+        "rect": {
+          "left": 25,
+          "right": 153,
+          "width": 128,
+          "height": 44
+        }
+      },
+      {
+        "text": "Check",
+        "rect": {
+          "left": 25,
+          "right": 76.796875,
+          "width": 51.796875,
+          "height": 44
+        }
+      },
+      {
+        "text": "Help me find one",
+        "rect": {
+          "left": 25,
+          "right": 335,
+          "width": 310,
+          "height": 44
+        }
+      },
+      {
+        "text": "<",
+        "rect": {
+          "left": 87.21875,
+          "right": 140.8125,
+          "width": 53.59375,
+          "height": 53.59375
+        }
+      },
+      {
+        "text": "=",
+        "rect": {
+          "left": 153.203125,
+          "right": 206.796875,
+          "width": 53.59375,
+          "height": 53.59375
+        }
+      },
+      {
+        "text": ">",
+        "rect": {
+          "left": 219.1875,
+          "right": 272.78125,
+          "width": 53.59375,
+          "height": 53.59375
+        }
+      },
+      {
+        "text": "Check",
+        "rect": {
+          "left": 100,
+          "right": 260,
+          "width": 160,
+          "height": 44
+        }
+      }
+    ]
+  },
+  {
+    "size": "narrow",
+    "view": "linear",
+    "stage": "retry",
+    "viewport": 360,
+    "scrollWidth": 360,
+    "root": {
+      "left": 25,
+      "right": 335,
+      "width": 310,
+      "height": 869.390625
+    },
+    "controls": [
+      {
+        "text": "Close help",
+        "rect": {
+          "left": 25,
+          "right": 102.1875,
+          "width": 77.1875,
+          "height": 44
+        }
+      },
+      {
+        "text": "Reasoning tip",
+        "rect": {
+          "left": 25,
+          "right": 120.53125,
+          "width": 95.53125,
+          "height": 44
+        }
+      },
+      {
+        "text": "Sign tip",
+        "rect": {
+          "left": 128.53125,
+          "right": 187,
+          "width": 58.46875,
+          "height": 44
+        }
+      },
+      {
+        "text": "Model first amount",
+        "rect": {
+          "left": 25,
+          "right": 148.65625,
+          "width": 123.65625,
+          "height": 44
+        }
+      },
+      {
+        "text": "Model second amount",
+        "rect": {
+          "left": 156.65625,
+          "right": 301.828125,
+          "width": 145.171875,
+          "height": 44
+        }
+      },
+      {
+        "text": "8",
+        "rect": {
+          "left": 25,
+          "right": 153,
+          "width": 128,
+          "height": 44
+        }
+      },
+      {
+        "text": "Check",
+        "rect": {
+          "left": 25,
+          "right": 76.796875,
+          "width": 51.796875,
+          "height": 44
+        }
+      },
+      {
+        "text": "Help me find one",
+        "rect": {
+          "left": 25,
+          "right": 335,
+          "width": 310,
+          "height": 44
+        }
+      },
+      {
+        "text": "<",
+        "rect": {
+          "left": 87.21875,
+          "right": 140.8125,
+          "width": 53.59375,
+          "height": 53.59375
+        }
+      },
+      {
+        "text": "=",
+        "rect": {
+          "left": 153.203125,
+          "right": 206.796875,
+          "width": 53.59375,
+          "height": 53.59375
+        }
+      },
+      {
+        "text": ">",
+        "rect": {
+          "left": 219.1875,
+          "right": 272.78125,
+          "width": 53.59375,
+          "height": 53.59375
+        }
+      },
+      {
+        "text": "Check",
+        "rect": {
+          "left": 100,
+          "right": 260,
+          "width": 160,
+          "height": 44
+        }
+      }
+    ]
+  },
+  {
+    "size": "large",
+    "view": "visual",
+    "stage": "initial",
+    "viewport": 360,
+    "scrollWidth": 360,
+    "root": {
+      "left": 49,
+      "right": 311,
+      "width": 262,
+      "height": 875.859375
+    },
+    "controls": [
+      {
+        "text": "Need help?",
+        "rect": {
+          "left": 49,
+          "right": 217.078125,
+          "width": 168.078125,
+          "height": 88
+        }
+      },
+      {
+        "text": "button",
+        "rect": {
+          "left": 49,
+          "right": 144.53125,
+          "width": 95.53125,
+          "height": 88
+        }
+      },
+      {
+        "text": "button",
+        "rect": {
+          "left": 160.53125,
+          "right": 219,
+          "width": 58.46875,
+          "height": 88
+        }
+      },
+      {
+        "text": "button",
+        "rect": {
+          "left": 49,
+          "right": 172.65625,
+          "width": 123.65625,
+          "height": 88
+        }
+      },
+      {
+        "text": "button",
+        "rect": {
+          "left": 49,
+          "right": 194.171875,
+          "width": 145.171875,
+          "height": 88
+        }
+      },
+      {
+        "text": "button",
+        "rect": {
+          "left": 49,
+          "right": 223.046875,
+          "width": 174.046875,
+          "height": 88
+        }
+      },
+      {
+        "text": "<",
+        "rect": {
+          "left": 61.40625,
+          "right": 168.59375,
+          "width": 107.1875,
+          "height": 107.1875
+        }
+      },
+      {
+        "text": "=",
+        "rect": {
+          "left": 191.390625,
+          "right": 298.578125,
+          "width": 107.1875,
+          "height": 107.1875
+        }
+      },
+      {
+        "text": ">",
+        "rect": {
+          "left": 126.40625,
+          "right": 233.59375,
+          "width": 107.1875,
+          "height": 107.1875
+        }
+      },
+      {
+        "text": "Check",
+        "rect": {
+          "left": 49,
+          "right": 311,
+          "width": 262,
+          "height": 88
+        }
+      }
+    ]
+  },
+  {
+    "size": "large",
+    "view": "visual",
+    "stage": "help",
+    "viewport": 360,
+    "scrollWidth": 360,
+    "root": {
+      "left": 49,
+      "right": 311,
+      "width": 262,
+      "height": 1596.453125
+    },
+    "controls": [
+      {
+        "text": "Close help",
+        "rect": {
+          "left": 49,
+          "right": 203.359375,
+          "width": 154.359375,
+          "height": 88
+        }
+      },
+      {
+        "text": "Reasoning tip",
+        "rect": {
+          "left": 49,
+          "right": 144.53125,
+          "width": 95.53125,
+          "height": 88
+        }
+      },
+      {
+        "text": "Sign tip",
+        "rect": {
+          "left": 160.53125,
+          "right": 219,
+          "width": 58.46875,
+          "height": 88
+        }
+      },
+      {
+        "text": "Model first amount",
+        "rect": {
+          "left": 49,
+          "right": 172.65625,
+          "width": 123.65625,
+          "height": 88
+        }
+      },
+      {
+        "text": "Model second amount",
+        "rect": {
+          "left": 49,
+          "right": 194.171875,
+          "width": 145.171875,
+          "height": 88
+        }
+      },
+      {
+        "text": "Use the same denominator",
+        "rect": {
+          "left": 49,
+          "right": 223.046875,
+          "width": 174.046875,
+          "height": 88
+        }
+      },
+      {
+        "text": "<",
+        "rect": {
+          "left": 61.40625,
+          "right": 168.59375,
+          "width": 107.1875,
+          "height": 107.1875
+        }
+      },
+      {
+        "text": "=",
+        "rect": {
+          "left": 191.390625,
+          "right": 298.578125,
+          "width": 107.1875,
+          "height": 107.1875
+        }
+      },
+      {
+        "text": ">",
+        "rect": {
+          "left": 126.40625,
+          "right": 233.59375,
+          "width": 107.1875,
+          "height": 107.1875
+        }
+      },
+      {
+        "text": "Check",
+        "rect": {
+          "left": 49,
+          "right": 311,
+          "width": 262,
+          "height": 88
+        }
+      }
+    ]
+  },
+  {
+    "size": "large",
+    "view": "visual",
+    "stage": "construction",
+    "viewport": 360,
+    "scrollWidth": 360,
+    "root": {
+      "left": 49,
+      "right": 311,
+      "width": 262,
+      "height": 1947.046875
+    },
+    "controls": [
+      {
+        "text": "Close help",
+        "rect": {
+          "left": 49,
+          "right": 203.359375,
+          "width": 154.359375,
+          "height": 88
+        }
+      },
+      {
+        "text": "Reasoning tip",
+        "rect": {
+          "left": 49,
+          "right": 144.53125,
+          "width": 95.53125,
+          "height": 88
+        }
+      },
+      {
+        "text": "Sign tip",
+        "rect": {
+          "left": 160.53125,
+          "right": 219,
+          "width": 58.46875,
+          "height": 88
+        }
+      },
+      {
+        "text": "Model first amount",
+        "rect": {
+          "left": 49,
+          "right": 172.65625,
+          "width": 123.65625,
+          "height": 88
+        }
+      },
+      {
+        "text": "Model second amount",
+        "rect": {
+          "left": 49,
+          "right": 194.171875,
+          "width": 145.171875,
+          "height": 88
+        }
+      },
+      {
+        "text": "text",
+        "rect": {
+          "left": 49,
+          "right": 305,
+          "width": 256,
+          "height": 49
+        }
+      },
+      {
+        "text": "Check",
+        "rect": {
+          "left": 49,
+          "right": 100.796875,
+          "width": 51.796875,
+          "height": 88
+        }
+      },
+      {
+        "text": "Help me find one",
+        "rect": {
+          "left": 49,
+          "right": 311,
+          "width": 262,
+          "height": 88
+        }
+      },
+      {
+        "text": "<",
+        "rect": {
+          "left": 61.40625,
+          "right": 168.59375,
+          "width": 107.1875,
+          "height": 107.1875
+        }
+      },
+      {
+        "text": "=",
+        "rect": {
+          "left": 191.390625,
+          "right": 298.578125,
+          "width": 107.1875,
+          "height": 107.1875
+        }
+      },
+      {
+        "text": ">",
+        "rect": {
+          "left": 126.40625,
+          "right": 233.59375,
+          "width": 107.1875,
+          "height": 107.1875
+        }
+      },
+      {
+        "text": "Check",
+        "rect": {
+          "left": 49,
+          "right": 311,
+          "width": 262,
+          "height": 88
+        }
+      }
+    ]
+  },
+  {
+    "size": "large",
+    "view": "visual",
+    "stage": "construction-retry",
+    "viewport": 360,
+    "scrollWidth": 360,
+    "root": {
+      "left": 49,
+      "right": 311,
+      "width": 262,
+      "height": 2211.84375
+    },
+    "controls": [
+      {
+        "text": "Close help",
+        "rect": {
+          "left": 49,
+          "right": 203.359375,
+          "width": 154.359375,
+          "height": 88
+        }
+      },
+      {
+        "text": "Reasoning tip",
+        "rect": {
+          "left": 49,
+          "right": 144.53125,
+          "width": 95.53125,
+          "height": 88
+        }
+      },
+      {
+        "text": "Sign tip",
+        "rect": {
+          "left": 160.53125,
+          "right": 219,
+          "width": 58.46875,
+          "height": 88
+        }
+      },
+      {
+        "text": "Model first amount",
+        "rect": {
+          "left": 49,
+          "right": 172.65625,
+          "width": 123.65625,
+          "height": 88
+        }
+      },
+      {
+        "text": "Model second amount",
+        "rect": {
+          "left": 49,
+          "right": 194.171875,
+          "width": 145.171875,
+          "height": 88
+        }
+      },
+      {
+        "text": "8",
+        "rect": {
+          "left": 49,
+          "right": 305,
+          "width": 256,
+          "height": 49
+        }
+      },
+      {
+        "text": "Check",
+        "rect": {
+          "left": 49,
+          "right": 100.796875,
+          "width": 51.796875,
+          "height": 88
+        }
+      },
+      {
+        "text": "Help me find one",
+        "rect": {
+          "left": 49,
+          "right": 311,
+          "width": 262,
+          "height": 88
+        }
+      },
+      {
+        "text": "<",
+        "rect": {
+          "left": 61.40625,
+          "right": 168.59375,
+          "width": 107.1875,
+          "height": 107.1875
+        }
+      },
+      {
+        "text": "=",
+        "rect": {
+          "left": 191.390625,
+          "right": 298.578125,
+          "width": 107.1875,
+          "height": 107.1875
+        }
+      },
+      {
+        "text": ">",
+        "rect": {
+          "left": 126.40625,
+          "right": 233.59375,
+          "width": 107.1875,
+          "height": 107.1875
+        }
+      },
+      {
+        "text": "Check",
+        "rect": {
+          "left": 49,
+          "right": 311,
+          "width": 262,
+          "height": 88
+        }
+      }
+    ]
+  },
+  {
+    "size": "large",
+    "view": "visual",
+    "stage": "retry",
+    "viewport": 360,
+    "scrollWidth": 360,
+    "root": {
+      "left": 49,
+      "right": 311,
+      "width": 262,
+      "height": 2411.84375
+    },
+    "controls": [
+      {
+        "text": "Close help",
+        "rect": {
+          "left": 49,
+          "right": 203.359375,
+          "width": 154.359375,
+          "height": 88
+        }
+      },
+      {
+        "text": "Reasoning tip",
+        "rect": {
+          "left": 49,
+          "right": 144.53125,
+          "width": 95.53125,
+          "height": 88
+        }
+      },
+      {
+        "text": "Sign tip",
+        "rect": {
+          "left": 160.53125,
+          "right": 219,
+          "width": 58.46875,
+          "height": 88
+        }
+      },
+      {
+        "text": "Model first amount",
+        "rect": {
+          "left": 49,
+          "right": 172.65625,
+          "width": 123.65625,
+          "height": 88
+        }
+      },
+      {
+        "text": "Model second amount",
+        "rect": {
+          "left": 49,
+          "right": 194.171875,
+          "width": 145.171875,
+          "height": 88
+        }
+      },
+      {
+        "text": "8",
+        "rect": {
+          "left": 49,
+          "right": 305,
+          "width": 256,
+          "height": 49
+        }
+      },
+      {
+        "text": "Check",
+        "rect": {
+          "left": 49,
+          "right": 100.796875,
+          "width": 51.796875,
+          "height": 88
+        }
+      },
+      {
+        "text": "Help me find one",
+        "rect": {
+          "left": 49,
+          "right": 311,
+          "width": 262,
+          "height": 88
+        }
+      },
+      {
+        "text": "<",
+        "rect": {
+          "left": 61.40625,
+          "right": 168.59375,
+          "width": 107.1875,
+          "height": 107.1875
+        }
+      },
+      {
+        "text": "=",
+        "rect": {
+          "left": 191.390625,
+          "right": 298.578125,
+          "width": 107.1875,
+          "height": 107.1875
+        }
+      },
+      {
+        "text": ">",
+        "rect": {
+          "left": 126.40625,
+          "right": 233.59375,
+          "width": 107.1875,
+          "height": 107.1875
+        }
+      },
+      {
+        "text": "Check",
+        "rect": {
+          "left": 49,
+          "right": 311,
+          "width": 262,
+          "height": 88
+        }
+      }
+    ]
+  },
+  {
+    "size": "large",
+    "view": "linear",
+    "stage": "initial",
+    "viewport": 360,
+    "scrollWidth": 360,
+    "root": {
+      "left": 49,
+      "right": 311,
+      "width": 262,
+      "height": 875.859375
+    },
+    "controls": [
+      {
+        "text": "Need help?",
+        "rect": {
+          "left": 49,
+          "right": 217.078125,
+          "width": 168.078125,
+          "height": 88
+        }
+      },
+      {
+        "text": "button",
+        "rect": {
+          "left": 49,
+          "right": 144.53125,
+          "width": 95.53125,
+          "height": 88
+        }
+      },
+      {
+        "text": "button",
+        "rect": {
+          "left": 160.53125,
+          "right": 219,
+          "width": 58.46875,
+          "height": 88
+        }
+      },
+      {
+        "text": "button",
+        "rect": {
+          "left": 49,
+          "right": 172.65625,
+          "width": 123.65625,
+          "height": 88
+        }
+      },
+      {
+        "text": "button",
+        "rect": {
+          "left": 49,
+          "right": 194.171875,
+          "width": 145.171875,
+          "height": 88
+        }
+      },
+      {
+        "text": "button",
+        "rect": {
+          "left": 49,
+          "right": 223.046875,
+          "width": 174.046875,
+          "height": 88
+        }
+      },
+      {
+        "text": "<",
+        "rect": {
+          "left": 61.40625,
+          "right": 168.59375,
+          "width": 107.1875,
+          "height": 107.1875
+        }
+      },
+      {
+        "text": "=",
+        "rect": {
+          "left": 191.390625,
+          "right": 298.578125,
+          "width": 107.1875,
+          "height": 107.1875
+        }
+      },
+      {
+        "text": ">",
+        "rect": {
+          "left": 126.40625,
+          "right": 233.59375,
+          "width": 107.1875,
+          "height": 107.1875
+        }
+      },
+      {
+        "text": "Check",
+        "rect": {
+          "left": 49,
+          "right": 311,
+          "width": 262,
+          "height": 88
+        }
+      }
+    ]
+  },
+  {
+    "size": "large",
+    "view": "linear",
+    "stage": "help",
+    "viewport": 360,
+    "scrollWidth": 360,
+    "root": {
+      "left": 49,
+      "right": 311,
+      "width": 262,
+      "height": 1596.453125
+    },
+    "controls": [
+      {
+        "text": "Close help",
+        "rect": {
+          "left": 49,
+          "right": 203.359375,
+          "width": 154.359375,
+          "height": 88
+        }
+      },
+      {
+        "text": "Reasoning tip",
+        "rect": {
+          "left": 49,
+          "right": 144.53125,
+          "width": 95.53125,
+          "height": 88
+        }
+      },
+      {
+        "text": "Sign tip",
+        "rect": {
+          "left": 160.53125,
+          "right": 219,
+          "width": 58.46875,
+          "height": 88
+        }
+      },
+      {
+        "text": "Model first amount",
+        "rect": {
+          "left": 49,
+          "right": 172.65625,
+          "width": 123.65625,
+          "height": 88
+        }
+      },
+      {
+        "text": "Model second amount",
+        "rect": {
+          "left": 49,
+          "right": 194.171875,
+          "width": 145.171875,
+          "height": 88
+        }
+      },
+      {
+        "text": "Use the same denominator",
+        "rect": {
+          "left": 49,
+          "right": 223.046875,
+          "width": 174.046875,
+          "height": 88
+        }
+      },
+      {
+        "text": "<",
+        "rect": {
+          "left": 61.40625,
+          "right": 168.59375,
+          "width": 107.1875,
+          "height": 107.1875
+        }
+      },
+      {
+        "text": "=",
+        "rect": {
+          "left": 191.390625,
+          "right": 298.578125,
+          "width": 107.1875,
+          "height": 107.1875
+        }
+      },
+      {
+        "text": ">",
+        "rect": {
+          "left": 126.40625,
+          "right": 233.59375,
+          "width": 107.1875,
+          "height": 107.1875
+        }
+      },
+      {
+        "text": "Check",
+        "rect": {
+          "left": 49,
+          "right": 311,
+          "width": 262,
+          "height": 88
+        }
+      }
+    ]
+  },
+  {
+    "size": "large",
+    "view": "linear",
+    "stage": "construction",
+    "viewport": 360,
+    "scrollWidth": 360,
+    "root": {
+      "left": 49,
+      "right": 311,
+      "width": 262,
+      "height": 1947.046875
+    },
+    "controls": [
+      {
+        "text": "Close help",
+        "rect": {
+          "left": 49,
+          "right": 203.359375,
+          "width": 154.359375,
+          "height": 88
+        }
+      },
+      {
+        "text": "Reasoning tip",
+        "rect": {
+          "left": 49,
+          "right": 144.53125,
+          "width": 95.53125,
+          "height": 88
+        }
+      },
+      {
+        "text": "Sign tip",
+        "rect": {
+          "left": 160.53125,
+          "right": 219,
+          "width": 58.46875,
+          "height": 88
+        }
+      },
+      {
+        "text": "Model first amount",
+        "rect": {
+          "left": 49,
+          "right": 172.65625,
+          "width": 123.65625,
+          "height": 88
+        }
+      },
+      {
+        "text": "Model second amount",
+        "rect": {
+          "left": 49,
+          "right": 194.171875,
+          "width": 145.171875,
+          "height": 88
+        }
+      },
+      {
+        "text": "text",
+        "rect": {
+          "left": 49,
+          "right": 305,
+          "width": 256,
+          "height": 49
+        }
+      },
+      {
+        "text": "Check",
+        "rect": {
+          "left": 49,
+          "right": 100.796875,
+          "width": 51.796875,
+          "height": 88
+        }
+      },
+      {
+        "text": "Help me find one",
+        "rect": {
+          "left": 49,
+          "right": 311,
+          "width": 262,
+          "height": 88
+        }
+      },
+      {
+        "text": "<",
+        "rect": {
+          "left": 61.40625,
+          "right": 168.59375,
+          "width": 107.1875,
+          "height": 107.1875
+        }
+      },
+      {
+        "text": "=",
+        "rect": {
+          "left": 191.390625,
+          "right": 298.578125,
+          "width": 107.1875,
+          "height": 107.1875
+        }
+      },
+      {
+        "text": ">",
+        "rect": {
+          "left": 126.40625,
+          "right": 233.59375,
+          "width": 107.1875,
+          "height": 107.1875
+        }
+      },
+      {
+        "text": "Check",
+        "rect": {
+          "left": 49,
+          "right": 311,
+          "width": 262,
+          "height": 88
+        }
+      }
+    ]
+  },
+  {
+    "size": "large",
+    "view": "linear",
+    "stage": "construction-retry",
+    "viewport": 360,
+    "scrollWidth": 360,
+    "root": {
+      "left": 49,
+      "right": 311,
+      "width": 262,
+      "height": 2211.84375
+    },
+    "controls": [
+      {
+        "text": "Close help",
+        "rect": {
+          "left": 49,
+          "right": 203.359375,
+          "width": 154.359375,
+          "height": 88
+        }
+      },
+      {
+        "text": "Reasoning tip",
+        "rect": {
+          "left": 49,
+          "right": 144.53125,
+          "width": 95.53125,
+          "height": 88
+        }
+      },
+      {
+        "text": "Sign tip",
+        "rect": {
+          "left": 160.53125,
+          "right": 219,
+          "width": 58.46875,
+          "height": 88
+        }
+      },
+      {
+        "text": "Model first amount",
+        "rect": {
+          "left": 49,
+          "right": 172.65625,
+          "width": 123.65625,
+          "height": 88
+        }
+      },
+      {
+        "text": "Model second amount",
+        "rect": {
+          "left": 49,
+          "right": 194.171875,
+          "width": 145.171875,
+          "height": 88
+        }
+      },
+      {
+        "text": "8",
+        "rect": {
+          "left": 49,
+          "right": 305,
+          "width": 256,
+          "height": 49
+        }
+      },
+      {
+        "text": "Check",
+        "rect": {
+          "left": 49,
+          "right": 100.796875,
+          "width": 51.796875,
+          "height": 88
+        }
+      },
+      {
+        "text": "Help me find one",
+        "rect": {
+          "left": 49,
+          "right": 311,
+          "width": 262,
+          "height": 88
+        }
+      },
+      {
+        "text": "<",
+        "rect": {
+          "left": 61.40625,
+          "right": 168.59375,
+          "width": 107.1875,
+          "height": 107.1875
+        }
+      },
+      {
+        "text": "=",
+        "rect": {
+          "left": 191.390625,
+          "right": 298.578125,
+          "width": 107.1875,
+          "height": 107.1875
+        }
+      },
+      {
+        "text": ">",
+        "rect": {
+          "left": 126.40625,
+          "right": 233.59375,
+          "width": 107.1875,
+          "height": 107.1875
+        }
+      },
+      {
+        "text": "Check",
+        "rect": {
+          "left": 49,
+          "right": 311,
+          "width": 262,
+          "height": 88
+        }
+      }
+    ]
+  },
+  {
+    "size": "large",
+    "view": "linear",
+    "stage": "retry",
+    "viewport": 360,
+    "scrollWidth": 360,
+    "root": {
+      "left": 49,
+      "right": 311,
+      "width": 262,
+      "height": 2411.84375
+    },
+    "controls": [
+      {
+        "text": "Close help",
+        "rect": {
+          "left": 49,
+          "right": 203.359375,
+          "width": 154.359375,
+          "height": 88
+        }
+      },
+      {
+        "text": "Reasoning tip",
+        "rect": {
+          "left": 49,
+          "right": 144.53125,
+          "width": 95.53125,
+          "height": 88
+        }
+      },
+      {
+        "text": "Sign tip",
+        "rect": {
+          "left": 160.53125,
+          "right": 219,
+          "width": 58.46875,
+          "height": 88
+        }
+      },
+      {
+        "text": "Model first amount",
+        "rect": {
+          "left": 49,
+          "right": 172.65625,
+          "width": 123.65625,
+          "height": 88
+        }
+      },
+      {
+        "text": "Model second amount",
+        "rect": {
+          "left": 49,
+          "right": 194.171875,
+          "width": 145.171875,
+          "height": 88
+        }
+      },
+      {
+        "text": "8",
+        "rect": {
+          "left": 49,
+          "right": 305,
+          "width": 256,
+          "height": 49
+        }
+      },
+      {
+        "text": "Check",
+        "rect": {
+          "left": 49,
+          "right": 100.796875,
+          "width": 51.796875,
+          "height": 88
+        }
+      },
+      {
+        "text": "Help me find one",
+        "rect": {
+          "left": 49,
+          "right": 311,
+          "width": 262,
+          "height": 88
+        }
+      },
+      {
+        "text": "<",
+        "rect": {
+          "left": 61.40625,
+          "right": 168.59375,
+          "width": 107.1875,
+          "height": 107.1875
+        }
+      },
+      {
+        "text": "=",
+        "rect": {
+          "left": 191.390625,
+          "right": 298.578125,
+          "width": 107.1875,
+          "height": 107.1875
+        }
+      },
+      {
+        "text": ">",
+        "rect": {
+          "left": 126.40625,
+          "right": 233.59375,
+          "width": 107.1875,
+          "height": 107.1875
+        }
+      },
+      {
+        "text": "Check",
+        "rect": {
+          "left": 49,
+          "right": 311,
+          "width": 262,
+          "height": 88
+        }
+      }
+    ]
+  },
+  {
+    "size": "chromebook",
+    "view": "visual",
+    "stage": "initial",
+    "viewport": 1093,
+    "scrollWidth": 1093,
+    "root": {
+      "left": 162.5,
+      "right": 930.5,
+      "width": 768,
+      "height": 358.0625
+    },
+    "controls": [
+      {
+        "text": "Need help?",
+        "rect": {
+          "left": 162.5,
+          "right": 246.546875,
+          "width": 84.046875,
+          "height": 44
+        }
+      },
+      {
+        "text": "button",
+        "rect": {
+          "left": 162.5,
+          "right": 258.03125,
+          "width": 95.53125,
+          "height": 44
+        }
+      },
+      {
+        "text": "button",
+        "rect": {
+          "left": 266.03125,
+          "right": 324.5,
+          "width": 58.46875,
+          "height": 44
+        }
+      },
+      {
+        "text": "button",
+        "rect": {
+          "left": 555.609375,
+          "right": 679.265625,
+          "width": 123.65625,
+          "height": 44
+        }
+      },
+      {
+        "text": "button",
+        "rect": {
+          "left": 687.265625,
+          "right": 832.4375,
+          "width": 145.171875,
+          "height": 44
+        }
+      },
+      {
+        "text": "button",
+        "rect": {
+          "left": 489.4375,
+          "right": 663.484375,
+          "width": 174.046875,
+          "height": 44
+        }
+      },
+      {
+        "text": "<",
+        "rect": {
+          "left": 453.71875,
+          "right": 507.3125,
+          "width": 53.59375,
+          "height": 53.59375
+        }
+      },
+      {
+        "text": "=",
+        "rect": {
+          "left": 519.703125,
+          "right": 573.296875,
+          "width": 53.59375,
+          "height": 53.59375
+        }
+      },
+      {
+        "text": ">",
+        "rect": {
+          "left": 585.6875,
+          "right": 639.28125,
+          "width": 53.59375,
+          "height": 53.59375
+        }
+      },
+      {
+        "text": "Check",
+        "rect": {
+          "left": 466.5,
+          "right": 626.5,
+          "width": 160,
+          "height": 44
+        }
+      }
+    ]
+  },
+  {
+    "size": "chromebook",
+    "view": "visual",
+    "stage": "help",
+    "viewport": 1093,
+    "scrollWidth": 1093,
+    "root": {
+      "left": 162.5,
+      "right": 930.5,
+      "width": 768,
+      "height": 490.84375
+    },
+    "controls": [
+      {
+        "text": "Close help",
+        "rect": {
+          "left": 162.5,
+          "right": 239.6875,
+          "width": 77.1875,
+          "height": 44
+        }
+      },
+      {
+        "text": "Reasoning tip",
+        "rect": {
+          "left": 162.5,
+          "right": 258.03125,
+          "width": 95.53125,
+          "height": 44
+        }
+      },
+      {
+        "text": "Sign tip",
+        "rect": {
+          "left": 266.03125,
+          "right": 324.5,
+          "width": 58.46875,
+          "height": 44
+        }
+      },
+      {
+        "text": "Model first amount",
+        "rect": {
+          "left": 555.609375,
+          "right": 679.265625,
+          "width": 123.65625,
+          "height": 44
+        }
+      },
+      {
+        "text": "Model second amount",
+        "rect": {
+          "left": 687.265625,
+          "right": 832.4375,
+          "width": 145.171875,
+          "height": 44
+        }
+      },
+      {
+        "text": "Use the same denominator",
+        "rect": {
+          "left": 489.4375,
+          "right": 663.484375,
+          "width": 174.046875,
+          "height": 44
+        }
+      },
+      {
+        "text": "<",
+        "rect": {
+          "left": 453.71875,
+          "right": 507.3125,
+          "width": 53.59375,
+          "height": 53.59375
+        }
+      },
+      {
+        "text": "=",
+        "rect": {
+          "left": 519.703125,
+          "right": 573.296875,
+          "width": 53.59375,
+          "height": 53.59375
+        }
+      },
+      {
+        "text": ">",
+        "rect": {
+          "left": 585.6875,
+          "right": 639.28125,
+          "width": 53.59375,
+          "height": 53.59375
+        }
+      },
+      {
+        "text": "Check",
+        "rect": {
+          "left": 466.5,
+          "right": 626.5,
+          "width": 160,
+          "height": 44
+        }
+      }
+    ]
+  },
+  {
+    "size": "chromebook",
+    "view": "visual",
+    "stage": "construction",
+    "viewport": 1093,
+    "scrollWidth": 1093,
+    "root": {
+      "left": 162.5,
+      "right": 930.5,
+      "width": 768,
+      "height": 620.625
+    },
+    "controls": [
+      {
+        "text": "Close help",
+        "rect": {
+          "left": 162.5,
+          "right": 239.6875,
+          "width": 77.1875,
+          "height": 44
+        }
+      },
+      {
+        "text": "Reasoning tip",
+        "rect": {
+          "left": 162.5,
+          "right": 258.03125,
+          "width": 95.53125,
+          "height": 44
+        }
+      },
+      {
+        "text": "Sign tip",
+        "rect": {
+          "left": 266.03125,
+          "right": 324.5,
+          "width": 58.46875,
+          "height": 44
+        }
+      },
+      {
+        "text": "Model first amount",
+        "rect": {
+          "left": 555.609375,
+          "right": 679.265625,
+          "width": 123.65625,
+          "height": 44
+        }
+      },
+      {
+        "text": "Model second amount",
+        "rect": {
+          "left": 687.265625,
+          "right": 832.4375,
+          "width": 145.171875,
+          "height": 44
+        }
+      },
+      {
+        "text": "text",
+        "rect": {
+          "left": 489.4375,
+          "right": 617.4375,
+          "width": 128,
+          "height": 44
+        }
+      },
+      {
+        "text": "Check",
+        "rect": {
+          "left": 489.4375,
+          "right": 541.234375,
+          "width": 51.796875,
+          "height": 44
+        }
+      },
+      {
+        "text": "Help me find one",
+        "rect": {
+          "left": 489.4375,
+          "right": 823.328125,
+          "width": 333.890625,
+          "height": 44
+        }
+      },
+      {
+        "text": "<",
+        "rect": {
+          "left": 453.71875,
+          "right": 507.3125,
+          "width": 53.59375,
+          "height": 53.59375
+        }
+      },
+      {
+        "text": "=",
+        "rect": {
+          "left": 519.703125,
+          "right": 573.296875,
+          "width": 53.59375,
+          "height": 53.59375
+        }
+      },
+      {
+        "text": ">",
+        "rect": {
+          "left": 585.6875,
+          "right": 639.28125,
+          "width": 53.59375,
+          "height": 53.59375
+        }
+      },
+      {
+        "text": "Check",
+        "rect": {
+          "left": 466.5,
+          "right": 626.5,
+          "width": 160,
+          "height": 44
+        }
+      }
+    ]
+  },
+  {
+    "size": "chromebook",
+    "view": "visual",
+    "stage": "construction-retry",
+    "viewport": 1093,
+    "scrollWidth": 1093,
+    "root": {
+      "left": 162.5,
+      "right": 930.5,
+      "width": 768,
+      "height": 670.015625
+    },
+    "controls": [
+      {
+        "text": "Close help",
+        "rect": {
+          "left": 162.5,
+          "right": 239.6875,
+          "width": 77.1875,
+          "height": 44
+        }
+      },
+      {
+        "text": "Reasoning tip",
+        "rect": {
+          "left": 162.5,
+          "right": 258.03125,
+          "width": 95.53125,
+          "height": 44
+        }
+      },
+      {
+        "text": "Sign tip",
+        "rect": {
+          "left": 266.03125,
+          "right": 324.5,
+          "width": 58.46875,
+          "height": 44
+        }
+      },
+      {
+        "text": "Model first amount",
+        "rect": {
+          "left": 555.609375,
+          "right": 679.265625,
+          "width": 123.65625,
+          "height": 44
+        }
+      },
+      {
+        "text": "Model second amount",
+        "rect": {
+          "left": 687.265625,
+          "right": 832.4375,
+          "width": 145.171875,
+          "height": 44
+        }
+      },
+      {
+        "text": "8",
+        "rect": {
+          "left": 489.4375,
+          "right": 617.4375,
+          "width": 128,
+          "height": 44
+        }
+      },
+      {
+        "text": "Check",
+        "rect": {
+          "left": 489.4375,
+          "right": 541.234375,
+          "width": 51.796875,
+          "height": 44
+        }
+      },
+      {
+        "text": "Help me find one",
+        "rect": {
+          "left": 489.4375,
+          "right": 894.765625,
+          "width": 405.328125,
+          "height": 44
+        }
+      },
+      {
+        "text": "<",
+        "rect": {
+          "left": 453.71875,
+          "right": 507.3125,
+          "width": 53.59375,
+          "height": 53.59375
+        }
+      },
+      {
+        "text": "=",
+        "rect": {
+          "left": 519.703125,
+          "right": 573.296875,
+          "width": 53.59375,
+          "height": 53.59375
+        }
+      },
+      {
+        "text": ">",
+        "rect": {
+          "left": 585.6875,
+          "right": 639.28125,
+          "width": 53.59375,
+          "height": 53.59375
+        }
+      },
+      {
+        "text": "Check",
+        "rect": {
+          "left": 466.5,
+          "right": 626.5,
+          "width": 160,
+          "height": 44
+        }
+      }
+    ]
+  },
+  {
+    "size": "chromebook",
+    "view": "visual",
+    "stage": "retry",
+    "viewport": 1093,
+    "scrollWidth": 1093,
+    "root": {
+      "left": 162.5,
+      "right": 930.5,
+      "width": 768,
+      "height": 729.015625
+    },
+    "controls": [
+      {
+        "text": "Close help",
+        "rect": {
+          "left": 162.5,
+          "right": 239.6875,
+          "width": 77.1875,
+          "height": 44
+        }
+      },
+      {
+        "text": "Reasoning tip",
+        "rect": {
+          "left": 162.5,
+          "right": 258.03125,
+          "width": 95.53125,
+          "height": 44
+        }
+      },
+      {
+        "text": "Sign tip",
+        "rect": {
+          "left": 266.03125,
+          "right": 324.5,
+          "width": 58.46875,
+          "height": 44
+        }
+      },
+      {
+        "text": "Model first amount",
+        "rect": {
+          "left": 555.609375,
+          "right": 679.265625,
+          "width": 123.65625,
+          "height": 44
+        }
+      },
+      {
+        "text": "Model second amount",
+        "rect": {
+          "left": 687.265625,
+          "right": 832.4375,
+          "width": 145.171875,
+          "height": 44
+        }
+      },
+      {
+        "text": "8",
+        "rect": {
+          "left": 489.4375,
+          "right": 617.4375,
+          "width": 128,
+          "height": 44
+        }
+      },
+      {
+        "text": "Check",
+        "rect": {
+          "left": 489.4375,
+          "right": 541.234375,
+          "width": 51.796875,
+          "height": 44
+        }
+      },
+      {
+        "text": "Help me find one",
+        "rect": {
+          "left": 489.4375,
+          "right": 894.765625,
+          "width": 405.328125,
+          "height": 44
+        }
+      },
+      {
+        "text": "<",
+        "rect": {
+          "left": 453.71875,
+          "right": 507.3125,
+          "width": 53.59375,
+          "height": 53.59375
+        }
+      },
+      {
+        "text": "=",
+        "rect": {
+          "left": 519.703125,
+          "right": 573.296875,
+          "width": 53.59375,
+          "height": 53.59375
+        }
+      },
+      {
+        "text": ">",
+        "rect": {
+          "left": 585.6875,
+          "right": 639.28125,
+          "width": 53.59375,
+          "height": 53.59375
+        }
+      },
+      {
+        "text": "Check",
+        "rect": {
+          "left": 466.5,
+          "right": 626.5,
+          "width": 160,
+          "height": 44
+        }
+      }
+    ]
+  },
+  {
+    "size": "chromebook",
+    "view": "linear",
+    "stage": "initial",
+    "viewport": 1093,
+    "scrollWidth": 1093,
+    "root": {
+      "left": 162.5,
+      "right": 930.5,
+      "width": 768,
+      "height": 358.0625
+    },
+    "controls": [
+      {
+        "text": "Need help?",
+        "rect": {
+          "left": 162.5,
+          "right": 246.546875,
+          "width": 84.046875,
+          "height": 44
+        }
+      },
+      {
+        "text": "button",
+        "rect": {
+          "left": 162.5,
+          "right": 258.03125,
+          "width": 95.53125,
+          "height": 44
+        }
+      },
+      {
+        "text": "button",
+        "rect": {
+          "left": 266.03125,
+          "right": 324.5,
+          "width": 58.46875,
+          "height": 44
+        }
+      },
+      {
+        "text": "button",
+        "rect": {
+          "left": 555.609375,
+          "right": 679.265625,
+          "width": 123.65625,
+          "height": 44
+        }
+      },
+      {
+        "text": "button",
+        "rect": {
+          "left": 687.265625,
+          "right": 832.4375,
+          "width": 145.171875,
+          "height": 44
+        }
+      },
+      {
+        "text": "button",
+        "rect": {
+          "left": 489.4375,
+          "right": 663.484375,
+          "width": 174.046875,
+          "height": 44
+        }
+      },
+      {
+        "text": "<",
+        "rect": {
+          "left": 453.71875,
+          "right": 507.3125,
+          "width": 53.59375,
+          "height": 53.59375
+        }
+      },
+      {
+        "text": "=",
+        "rect": {
+          "left": 519.703125,
+          "right": 573.296875,
+          "width": 53.59375,
+          "height": 53.59375
+        }
+      },
+      {
+        "text": ">",
+        "rect": {
+          "left": 585.6875,
+          "right": 639.28125,
+          "width": 53.59375,
+          "height": 53.59375
+        }
+      },
+      {
+        "text": "Check",
+        "rect": {
+          "left": 466.5,
+          "right": 626.5,
+          "width": 160,
+          "height": 44
+        }
+      }
+    ]
+  },
+  {
+    "size": "chromebook",
+    "view": "linear",
+    "stage": "help",
+    "viewport": 1093,
+    "scrollWidth": 1093,
+    "root": {
+      "left": 162.5,
+      "right": 930.5,
+      "width": 768,
+      "height": 490.84375
+    },
+    "controls": [
+      {
+        "text": "Close help",
+        "rect": {
+          "left": 162.5,
+          "right": 239.6875,
+          "width": 77.1875,
+          "height": 44
+        }
+      },
+      {
+        "text": "Reasoning tip",
+        "rect": {
+          "left": 162.5,
+          "right": 258.03125,
+          "width": 95.53125,
+          "height": 44
+        }
+      },
+      {
+        "text": "Sign tip",
+        "rect": {
+          "left": 266.03125,
+          "right": 324.5,
+          "width": 58.46875,
+          "height": 44
+        }
+      },
+      {
+        "text": "Model first amount",
+        "rect": {
+          "left": 555.609375,
+          "right": 679.265625,
+          "width": 123.65625,
+          "height": 44
+        }
+      },
+      {
+        "text": "Model second amount",
+        "rect": {
+          "left": 687.265625,
+          "right": 832.4375,
+          "width": 145.171875,
+          "height": 44
+        }
+      },
+      {
+        "text": "Use the same denominator",
+        "rect": {
+          "left": 489.4375,
+          "right": 663.484375,
+          "width": 174.046875,
+          "height": 44
+        }
+      },
+      {
+        "text": "<",
+        "rect": {
+          "left": 453.71875,
+          "right": 507.3125,
+          "width": 53.59375,
+          "height": 53.59375
+        }
+      },
+      {
+        "text": "=",
+        "rect": {
+          "left": 519.703125,
+          "right": 573.296875,
+          "width": 53.59375,
+          "height": 53.59375
+        }
+      },
+      {
+        "text": ">",
+        "rect": {
+          "left": 585.6875,
+          "right": 639.28125,
+          "width": 53.59375,
+          "height": 53.59375
+        }
+      },
+      {
+        "text": "Check",
+        "rect": {
+          "left": 466.5,
+          "right": 626.5,
+          "width": 160,
+          "height": 44
+        }
+      }
+    ]
+  },
+  {
+    "size": "chromebook",
+    "view": "linear",
+    "stage": "construction",
+    "viewport": 1093,
+    "scrollWidth": 1093,
+    "root": {
+      "left": 162.5,
+      "right": 930.5,
+      "width": 768,
+      "height": 620.625
+    },
+    "controls": [
+      {
+        "text": "Close help",
+        "rect": {
+          "left": 162.5,
+          "right": 239.6875,
+          "width": 77.1875,
+          "height": 44
+        }
+      },
+      {
+        "text": "Reasoning tip",
+        "rect": {
+          "left": 162.5,
+          "right": 258.03125,
+          "width": 95.53125,
+          "height": 44
+        }
+      },
+      {
+        "text": "Sign tip",
+        "rect": {
+          "left": 266.03125,
+          "right": 324.5,
+          "width": 58.46875,
+          "height": 44
+        }
+      },
+      {
+        "text": "Model first amount",
+        "rect": {
+          "left": 555.609375,
+          "right": 679.265625,
+          "width": 123.65625,
+          "height": 44
+        }
+      },
+      {
+        "text": "Model second amount",
+        "rect": {
+          "left": 687.265625,
+          "right": 832.4375,
+          "width": 145.171875,
+          "height": 44
+        }
+      },
+      {
+        "text": "text",
+        "rect": {
+          "left": 489.4375,
+          "right": 617.4375,
+          "width": 128,
+          "height": 44
+        }
+      },
+      {
+        "text": "Check",
+        "rect": {
+          "left": 489.4375,
+          "right": 541.234375,
+          "width": 51.796875,
+          "height": 44
+        }
+      },
+      {
+        "text": "Help me find one",
+        "rect": {
+          "left": 489.4375,
+          "right": 823.328125,
+          "width": 333.890625,
+          "height": 44
+        }
+      },
+      {
+        "text": "<",
+        "rect": {
+          "left": 453.71875,
+          "right": 507.3125,
+          "width": 53.59375,
+          "height": 53.59375
+        }
+      },
+      {
+        "text": "=",
+        "rect": {
+          "left": 519.703125,
+          "right": 573.296875,
+          "width": 53.59375,
+          "height": 53.59375
+        }
+      },
+      {
+        "text": ">",
+        "rect": {
+          "left": 585.6875,
+          "right": 639.28125,
+          "width": 53.59375,
+          "height": 53.59375
+        }
+      },
+      {
+        "text": "Check",
+        "rect": {
+          "left": 466.5,
+          "right": 626.5,
+          "width": 160,
+          "height": 44
+        }
+      }
+    ]
+  },
+  {
+    "size": "chromebook",
+    "view": "linear",
+    "stage": "construction-retry",
+    "viewport": 1093,
+    "scrollWidth": 1093,
+    "root": {
+      "left": 162.5,
+      "right": 930.5,
+      "width": 768,
+      "height": 670.015625
+    },
+    "controls": [
+      {
+        "text": "Close help",
+        "rect": {
+          "left": 162.5,
+          "right": 239.6875,
+          "width": 77.1875,
+          "height": 44
+        }
+      },
+      {
+        "text": "Reasoning tip",
+        "rect": {
+          "left": 162.5,
+          "right": 258.03125,
+          "width": 95.53125,
+          "height": 44
+        }
+      },
+      {
+        "text": "Sign tip",
+        "rect": {
+          "left": 266.03125,
+          "right": 324.5,
+          "width": 58.46875,
+          "height": 44
+        }
+      },
+      {
+        "text": "Model first amount",
+        "rect": {
+          "left": 555.609375,
+          "right": 679.265625,
+          "width": 123.65625,
+          "height": 44
+        }
+      },
+      {
+        "text": "Model second amount",
+        "rect": {
+          "left": 687.265625,
+          "right": 832.4375,
+          "width": 145.171875,
+          "height": 44
+        }
+      },
+      {
+        "text": "8",
+        "rect": {
+          "left": 489.4375,
+          "right": 617.4375,
+          "width": 128,
+          "height": 44
+        }
+      },
+      {
+        "text": "Check",
+        "rect": {
+          "left": 489.4375,
+          "right": 541.234375,
+          "width": 51.796875,
+          "height": 44
+        }
+      },
+      {
+        "text": "Help me find one",
+        "rect": {
+          "left": 489.4375,
+          "right": 894.765625,
+          "width": 405.328125,
+          "height": 44
+        }
+      },
+      {
+        "text": "<",
+        "rect": {
+          "left": 453.71875,
+          "right": 507.3125,
+          "width": 53.59375,
+          "height": 53.59375
+        }
+      },
+      {
+        "text": "=",
+        "rect": {
+          "left": 519.703125,
+          "right": 573.296875,
+          "width": 53.59375,
+          "height": 53.59375
+        }
+      },
+      {
+        "text": ">",
+        "rect": {
+          "left": 585.6875,
+          "right": 639.28125,
+          "width": 53.59375,
+          "height": 53.59375
+        }
+      },
+      {
+        "text": "Check",
+        "rect": {
+          "left": 466.5,
+          "right": 626.5,
+          "width": 160,
+          "height": 44
+        }
+      }
+    ]
+  },
+  {
+    "size": "chromebook",
+    "view": "linear",
+    "stage": "retry",
+    "viewport": 1093,
+    "scrollWidth": 1093,
+    "root": {
+      "left": 162.5,
+      "right": 930.5,
+      "width": 768,
+      "height": 729.015625
+    },
+    "controls": [
+      {
+        "text": "Close help",
+        "rect": {
+          "left": 162.5,
+          "right": 239.6875,
+          "width": 77.1875,
+          "height": 44
+        }
+      },
+      {
+        "text": "Reasoning tip",
+        "rect": {
+          "left": 162.5,
+          "right": 258.03125,
+          "width": 95.53125,
+          "height": 44
+        }
+      },
+      {
+        "text": "Sign tip",
+        "rect": {
+          "left": 266.03125,
+          "right": 324.5,
+          "width": 58.46875,
+          "height": 44
+        }
+      },
+      {
+        "text": "Model first amount",
+        "rect": {
+          "left": 555.609375,
+          "right": 679.265625,
+          "width": 123.65625,
+          "height": 44
+        }
+      },
+      {
+        "text": "Model second amount",
+        "rect": {
+          "left": 687.265625,
+          "right": 832.4375,
+          "width": 145.171875,
+          "height": 44
+        }
+      },
+      {
+        "text": "8",
+        "rect": {
+          "left": 489.4375,
+          "right": 617.4375,
+          "width": 128,
+          "height": 44
+        }
+      },
+      {
+        "text": "Check",
+        "rect": {
+          "left": 489.4375,
+          "right": 541.234375,
+          "width": 51.796875,
+          "height": 44
+        }
+      },
+      {
+        "text": "Help me find one",
+        "rect": {
+          "left": 489.4375,
+          "right": 894.765625,
+          "width": 405.328125,
+          "height": 44
+        }
+      },
+      {
+        "text": "<",
+        "rect": {
+          "left": 453.71875,
+          "right": 507.3125,
+          "width": 53.59375,
+          "height": 53.59375
+        }
+      },
+      {
+        "text": "=",
+        "rect": {
+          "left": 519.703125,
+          "right": 573.296875,
+          "width": 53.59375,
+          "height": 53.59375
+        }
+      },
+      {
+        "text": ">",
+        "rect": {
+          "left": 585.6875,
+          "right": 639.28125,
+          "width": 53.59375,
+          "height": 53.59375
+        }
+      },
+      {
+        "text": "Check",
+        "rect": {
+          "left": 466.5,
+          "right": 626.5,
+          "width": 160,
+          "height": 44
+        }
+      }
+    ]
+  }
+]

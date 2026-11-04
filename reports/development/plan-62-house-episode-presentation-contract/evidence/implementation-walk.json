@@ -1,0 +1,584 @@
+[
+  {
+    "name": "narrow",
+    "label": "comparison-initial",
+    "root": {
+      "x": 25,
+      "y": 145,
+      "width": 310,
+      "height": 325.4375
+    },
+    "help": {
+      "x": 25,
+      "y": 290.84375,
+      "width": 310,
+      "height": 52
+    },
+    "form": {
+      "x": 25,
+      "y": 358.84375,
+      "width": 310,
+      "height": 111.59375
+    },
+    "focus": "<main class=\"app-episode\" aria-label=\"Fraction practice\" tabindex=\"-1\" data-current-item-id=\"plan45-compare-02\"><div class=\"app-view-controls\"><button type=\"button\" class=\"fraction-control app-secondary-button app-view-toggle\" aria-label=\"Read the st",
+    "scrollWidth": 360,
+    "viewport": 360,
+    "children": [
+      "plan45-expression",
+      "plan45-prompt",
+      "plan45-help",
+      "plan45-response-region"
+    ],
+    "gap": "16px"
+  },
+  {
+    "name": "narrow",
+    "label": "comparison-retry",
+    "root": {
+      "x": 25,
+      "y": -18,
+      "width": 310,
+      "height": 727
+    },
+    "help": {
+      "x": 25,
+      "y": 265.625,
+      "width": 310,
+      "height": 315.78125
+    },
+    "form": {
+      "x": 25,
+      "y": 597.40625,
+      "width": 310,
+      "height": 111.59375
+    },
+    "focus": "<input type=\"radio\" data-plan45-focus-key=\"relation-&lt;\" name=\"plan45-relation\" value=\"&lt;\" aria-label=\"The first fraction is less than the second fraction\" style=\"\">",
+    "scrollWidth": 360,
+    "viewport": 360,
+    "children": [
+      "plan45-expression",
+      "plan45-prompt",
+      "plan45-recovery house-retry",
+      "plan45-help-cue",
+      "plan45-help",
+      "plan45-response-region"
+    ],
+    "gap": "16px"
+  },
+  {
+    "name": "narrow",
+    "label": "distance-compare",
+    "root": {
+      "x": 25,
+      "y": 145,
+      "width": 310,
+      "height": 333.4375
+    },
+    "help": {
+      "x": 25,
+      "y": 290.84375,
+      "width": 310,
+      "height": 60
+    },
+    "form": {
+      "x": 25,
+      "y": 366.84375,
+      "width": 310,
+      "height": 111.59375
+    },
+    "focus": "<main class=\"app-episode\" aria-label=\"Fraction practice\" tabindex=\"-1\" data-current-item-id=\"distance-01\"><div class=\"app-view-controls\"><button type=\"button\" class=\"fraction-control app-secondary-button app-view-toggle\" aria-label=\"Read the steps\" a",
+    "scrollWidth": 360,
+    "viewport": 360,
+    "children": [
+      "plan45-expression",
+      "plan45-prompt",
+      "plan45-help",
+      "plan51-response plan45-response-region"
+    ],
+    "gap": "16px"
+  },
+  {
+    "name": "narrow",
+    "label": "distance-retry",
+    "root": {
+      "x": 25,
+      "y": 145,
+      "width": 310,
+      "height": 598.4375
+    },
+    "help": {
+      "x": 25,
+      "y": 370.84375,
+      "width": 310,
+      "height": 245
+    },
+    "form": {
+      "x": 25,
+      "y": 631.84375,
+      "width": 310,
+      "height": 111.59375
+    },
+    "focus": "<input type=\"radio\" name=\"plan51-relation-visual\" value=\"&lt;\" aria-label=\"First amount is less than second amount\" aria-describedby=\"plan51-feedback-visual\" style=\"\">",
+    "scrollWidth": 360,
+    "viewport": 360,
+    "children": [
+      "plan45-expression",
+      "plan45-prompt",
+      "plan45-recovery house-retry",
+      "plan45-help",
+      "plan51-response plan45-response-region"
+    ],
+    "gap": "16px"
+  },
+  {
+    "name": "narrow",
+    "label": "distance-fields",
+    "root": {
+      "x": 25,
+      "y": 145,
+      "width": 310,
+      "height": 410.84375
+    },
+    "help": {
+      "x": 25,
+      "y": 348.84375,
+      "width": 310,
+      "height": 60
+    },
+    "form": {
+      "x": 25,
+      "y": 424.84375,
+      "width": 310,
+      "height": 131
+    },
+    "focus": "<input type=\"text\" inputmode=\"numeric\" data-plan51-focus=\"numerator\" style=\"\">",
+    "scrollWidth": 360,
+    "viewport": 360,
+    "children": [
+      "plan45-expression",
+      "plan45-prompt",
+      "plan45-strategy-cue",
+      "plan45-help",
+      "plan51-response"
+    ],
+    "gap": "16px"
+  },
+  {
+    "name": "narrow",
+    "label": "help-to-view-switch",
+    "focus": "<input type=\"text\" inputmode=\"numeric\" data-plan51-focus=\"numerator\">"
+  },
+  {
+    "name": "narrow",
+    "label": "distance-success",
+    "root": {
+      "x": 25,
+      "y": -43,
+      "width": 310,
+      "height": 693.40625
+    },
+    "help": null,
+    "form": null,
+    "focus": "<button class=\"plan51-next\" type=\"button\">Back to practice</button>",
+    "scrollWidth": 360,
+    "viewport": 360,
+    "children": [
+      "plan45-expression",
+      "plan51-success",
+      "plan51-result",
+      "",
+      "plan45-model-pair",
+      "",
+      "plan51-next"
+    ],
+    "gap": "16px"
+  },
+  {
+    "name": "chromebook",
+    "label": "comparison-initial",
+    "root": {
+      "x": 162.5,
+      "y": 148.09375,
+      "width": 768,
+      "height": 358.0625
+    },
+    "help": {
+      "x": 162.5,
+      "y": 326.5625,
+      "width": 768,
+      "height": 52
+    },
+    "form": {
+      "x": 162.5,
+      "y": 394.5625,
+      "width": 768,
+      "height": 111.59375
+    },
+    "focus": "<button type=\"button\" class=\"fraction-control app-secondary-button app-view-toggle\" aria-label=\"Show the picture\" aria-pressed=\"true\">Show the picture</button>",
+    "scrollWidth": 1093,
+    "viewport": 1093,
+    "children": [
+      "plan45-expression",
+      "plan45-prompt",
+      "plan45-help",
+      "plan45-response-region"
+    ],
+    "gap": "16px"
+  },
+  {
+    "name": "chromebook",
+    "label": "comparison-retry",
+    "root": {
+      "x": 162.5,
+      "y": -60.90625,
+      "width": 768,
+      "height": 607.625
+    },
+    "help": {
+      "x": 162.5,
+      "y": 234.34375,
+      "width": 768,
+      "height": 184.78125
+    },
+    "form": {
+      "x": 162.5,
+      "y": 435.125,
+      "width": 768,
+      "height": 111.59375
+    },
+    "focus": "<input type=\"radio\" data-plan45-focus-key=\"relation-&lt;\" name=\"plan45-relation\" value=\"&lt;\" aria-label=\"The first fraction is less than the second fraction\" style=\"\">",
+    "scrollWidth": 1093,
+    "viewport": 1093,
+    "children": [
+      "plan45-expression",
+      "plan45-prompt",
+      "plan45-recovery house-retry",
+      "plan45-help-cue",
+      "plan45-help",
+      "plan45-response-region"
+    ],
+    "gap": "16px"
+  },
+  {
+    "name": "chromebook",
+    "label": "distance-compare",
+    "root": {
+      "x": 162.5,
+      "y": 148.09375,
+      "width": 768,
+      "height": 366.0625
+    },
+    "help": {
+      "x": 162.5,
+      "y": 326.5625,
+      "width": 768,
+      "height": 60
+    },
+    "form": {
+      "x": 162.5,
+      "y": 402.5625,
+      "width": 768,
+      "height": 111.59375
+    },
+    "focus": "<main class=\"app-episode\" aria-label=\"Fraction practice\" tabindex=\"-1\" data-current-item-id=\"distance-01\"><div class=\"app-view-controls\"><button type=\"button\" class=\"fraction-control app-secondary-button app-view-toggle\" aria-label=\"Show the picture\"",
+    "scrollWidth": 1093,
+    "viewport": 1093,
+    "children": [
+      "plan45-expression",
+      "plan45-prompt",
+      "plan45-help",
+      "plan51-response plan45-response-region"
+    ],
+    "gap": "16px"
+  },
+  {
+    "name": "chromebook",
+    "label": "distance-retry",
+    "root": {
+      "x": 162.5,
+      "y": 148.09375,
+      "width": 768,
+      "height": 522.0625
+    },
+    "help": {
+      "x": 162.5,
+      "y": 385.5625,
+      "width": 768,
+      "height": 157
+    },
+    "form": {
+      "x": 162.5,
+      "y": 558.5625,
+      "width": 768,
+      "height": 111.59375
+    },
+    "focus": "<input type=\"radio\" name=\"plan51-relation-linear\" value=\"&lt;\" aria-label=\"First amount is less than second amount\" aria-describedby=\"plan51-feedback-linear\" style=\"\">",
+    "scrollWidth": 1093,
+    "viewport": 1093,
+    "children": [
+      "plan45-expression",
+      "plan45-prompt",
+      "plan45-recovery house-retry",
+      "plan45-help",
+      "plan51-response plan45-response-region"
+    ],
+    "gap": "16px"
+  },
+  {
+    "name": "chromebook",
+    "label": "distance-fields",
+    "root": {
+      "x": 162.5,
+      "y": 121.09375,
+      "width": 768,
+      "height": 366.46875
+    },
+    "help": {
+      "x": 162.5,
+      "y": 336.5625,
+      "width": 768,
+      "height": 60
+    },
+    "form": {
+      "x": 162.5,
+      "y": 412.5625,
+      "width": 768,
+      "height": 75
+    },
+    "focus": "<input type=\"text\" inputmode=\"numeric\" data-plan51-focus=\"numerator\" style=\"\">",
+    "scrollWidth": 1093,
+    "viewport": 1093,
+    "children": [
+      "plan45-expression",
+      "plan45-prompt",
+      "plan45-strategy-cue",
+      "plan45-help",
+      "plan51-response"
+    ],
+    "gap": "16px"
+  },
+  {
+    "name": "chromebook",
+    "label": "help-to-view-switch",
+    "focus": "<input type=\"text\" inputmode=\"numeric\" data-plan51-focus=\"numerator\">"
+  },
+  {
+    "name": "chromebook",
+    "label": "distance-success",
+    "root": {
+      "x": 162.5,
+      "y": -156.90625,
+      "width": 768,
+      "height": 645.03125
+    },
+    "help": null,
+    "form": null,
+    "focus": "<button class=\"plan51-next\" type=\"button\">Back to practice</button>",
+    "scrollWidth": 1093,
+    "viewport": 1093,
+    "children": [
+      "plan45-expression",
+      "plan51-success",
+      "plan51-result",
+      "",
+      "plan45-model-pair",
+      "",
+      "plan51-next"
+    ],
+    "gap": "16px"
+  },
+  {
+    "name": "large",
+    "label": "comparison-initial",
+    "root": {
+      "x": 49,
+      "y": 345,
+      "width": 262,
+      "height": 875.859375
+    },
+    "help": {
+      "x": 49,
+      "y": 733.6875,
+      "width": 262,
+      "height": 104
+    },
+    "form": {
+      "x": 49,
+      "y": 869.6875,
+      "width": 262,
+      "height": 351.171875
+    },
+    "focus": "<button type=\"button\" class=\"fraction-control app-secondary-button app-view-toggle\" aria-label=\"Show the picture\" aria-pressed=\"true\">Show the picture</button>",
+    "scrollWidth": 360,
+    "viewport": 360,
+    "children": [
+      "plan45-expression",
+      "plan45-prompt",
+      "plan45-help",
+      "plan45-response-region"
+    ],
+    "gap": "32px"
+  },
+  {
+    "name": "large",
+    "label": "comparison-retry",
+    "root": {
+      "x": 49,
+      "y": -1218,
+      "width": 262,
+      "height": 2085.046875
+    },
+    "help": {
+      "x": 49,
+      "y": -340.71875,
+      "width": 262,
+      "height": 824.59375
+    },
+    "form": {
+      "x": 49,
+      "y": 515.875,
+      "width": 262,
+      "height": 351.171875
+    },
+    "focus": "<input type=\"radio\" data-plan45-focus-key=\"relation-&lt;\" name=\"plan45-relation\" value=\"&lt;\" aria-label=\"The first fraction is less than the second fraction\" style=\"\">",
+    "scrollWidth": 360,
+    "viewport": 360,
+    "children": [
+      "plan45-expression",
+      "plan45-prompt",
+      "plan45-recovery house-retry",
+      "plan45-help-cue",
+      "plan45-help",
+      "plan45-response-region"
+    ],
+    "gap": "32px"
+  },
+  {
+    "name": "large",
+    "label": "distance-compare",
+    "root": {
+      "x": 49,
+      "y": -366,
+      "width": 262,
+      "height": 887.234375
+    },
+    "help": {
+      "x": 49,
+      "y": 22.6875,
+      "width": 262,
+      "height": 120
+    },
+    "form": {
+      "x": 49,
+      "y": 174.6875,
+      "width": 262,
+      "height": 346.546875
+    },
+    "focus": "<main class=\"app-episode\" aria-label=\"Fraction practice\" tabindex=\"-1\" data-current-item-id=\"distance-01\"><div class=\"app-view-controls\"><button type=\"button\" class=\"fraction-control app-secondary-button app-view-toggle\" aria-label=\"Show the picture\"",
+    "scrollWidth": 360,
+    "viewport": 360,
+    "children": [
+      "plan45-expression",
+      "plan45-prompt",
+      "plan45-help",
+      "plan51-response plan45-response-region"
+    ],
+    "gap": "32px"
+  },
+  {
+    "name": "large",
+    "label": "distance-retry",
+    "root": {
+      "x": 49,
+      "y": -1054,
+      "width": 262,
+      "height": 1827.734375
+    },
+    "help": {
+      "x": 49,
+      "y": -423.3125,
+      "width": 262,
+      "height": 818.5
+    },
+    "form": {
+      "x": 49,
+      "y": 427.1875,
+      "width": 262,
+      "height": 346.546875
+    },
+    "focus": "<input type=\"radio\" name=\"plan51-relation-linear\" value=\"&lt;\" aria-label=\"First amount is less than second amount\" aria-describedby=\"plan51-feedback-linear\" style=\"\">",
+    "scrollWidth": 360,
+    "viewport": 360,
+    "children": [
+      "plan45-expression",
+      "plan45-prompt",
+      "plan45-recovery house-retry",
+      "plan45-help",
+      "plan51-response plan45-response-region"
+    ],
+    "gap": "32px"
+  },
+  {
+    "name": "large",
+    "label": "distance-fields",
+    "root": {
+      "x": 49,
+      "y": -624,
+      "width": 262,
+      "height": 1121.0625
+    },
+    "help": {
+      "x": 49,
+      "y": 11.6875,
+      "width": 264,
+      "height": 120
+    },
+    "form": {
+      "x": 49,
+      "y": 163.6875,
+      "width": 264,
+      "height": 333.375
+    },
+    "focus": "<input type=\"text\" inputmode=\"numeric\" data-plan51-focus=\"numerator\" style=\"\">",
+    "scrollWidth": 360,
+    "viewport": 360,
+    "children": [
+      "plan45-expression",
+      "plan45-prompt",
+      "plan45-strategy-cue",
+      "plan45-help",
+      "plan51-response"
+    ],
+    "gap": "32px"
+  },
+  {
+    "name": "large",
+    "label": "help-to-view-switch",
+    "focus": "<input type=\"text\" inputmode=\"numeric\" data-plan51-focus=\"numerator\">"
+  },
+  {
+    "name": "large",
+    "label": "distance-success",
+    "root": {
+      "x": 49,
+      "y": -778,
+      "width": 262,
+      "height": 1442.1875
+    },
+    "help": null,
+    "form": null,
+    "focus": "<button class=\"plan51-next\" type=\"button\">Back to practice</button>",
+    "scrollWidth": 360,
+    "viewport": 360,
+    "children": [
+      "plan45-expression",
+      "plan51-success",
+      "plan51-result",
+      "",
+      "plan45-model-pair",
+      "",
+      "plan51-next"
+    ],
+    "gap": "32px"
+  }
+]
