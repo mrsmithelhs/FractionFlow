@@ -1,7 +1,8 @@
 ---
 id: plan-61
 title: Local Learner History and Practice Guidance Design
-status: delivered
+status: complete
+resolution: "Owner adopted the reviewed local-history design on 2026-11-03; report-only investigation complete. Draft Plan63 proposes separately gated implementation; no storage, adaptation or deployment delivered."
 depends_on: [plan-29, plan-35, plan-57, plan-59]
 gate: "Approve evidence inventory and targeted research scope before dossier; owner adopts one bounded local-history contract before a separate implementation packet. Adaptive selection requires its own later gate."
 summary: >-
