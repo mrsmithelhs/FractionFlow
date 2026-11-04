@@ -1,11 +1,9 @@
 ---
 id: plan-61
 title: Local Learner History and Practice Guidance Design
-status: draft
+status: in-progress
 depends_on: [plan-29, plan-35, plan-57, plan-59]
 gate: "Approve evidence inventory and targeted research scope before dossier; owner adopts one bounded local-history contract before a separate implementation packet. Adaptive selection requires its own later gate."
-superseded_by: null
-resolution: null
 summary: >-
   Investigate optional browser-local history for understandable practice guidance
   and future history-informed sessions. Separate observed performance from
