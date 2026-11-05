@@ -2410,6 +2410,9 @@ export function createFractionFlowApp({
       visualCollectionRenderer=null; linearCollectionRenderer=null;
       visualComparisonRenderer?.destroy();
       linearComparisonRenderer?.destroy();
+      visualComparisonRenderer = null;
+      linearComparisonRenderer = null;
+      comparisonResponseHandle = null;
       if (motionQuery && motionListener && typeof motionQuery.removeEventListener === 'function') {
         motionQuery.removeEventListener('change', motionListener);
       }

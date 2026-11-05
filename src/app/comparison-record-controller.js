@@ -26,6 +26,7 @@ export function createComparisonRecordController({ storage = createComparisonRec
   const notify = () => { if (!disposed) onChange(snapshot()); };
   function snapshot() { return { ready, enabled:Boolean(root?.enabled), entries:root ? projectRecord(root) : [], message, eligible:Boolean(active) }; }
   async function refresh() {
+    if (disposed) return;
     const ticket=++epoch;
     try { const value=await storage.read(); if(disposed || ticket!==epoch)return; const invalidated=Boolean(active && (!value?.enabled || active.generation !== value.generation)); if (invalidated) retire(); root=value;ready=true;message=invalidated?'This problem is no longer being remembered.':''; }
     catch { if(disposed || ticket!==epoch)return;retire();root=null;ready=false;message='This record cannot be read. You can reset it.'; }
@@ -33,15 +34,16 @@ export function createComparisonRecordController({ storage = createComparisonRec
   }
   function retire() { active?.admission.retire();active=null; }
   function install(state) {
+    if (disposed) return false;
     retire();
     if (!ready || !root?.enabled) return false;
     const context=contextFor(state); if(!context)return false;
     try { active={admission:createRecordAdmission({token:randomRecordToken(),generation:root.generation,...context}),generation:root.generation,first:false,helpOpened:false}; return true; }
     catch { message='Practice is available, but this browser could not save the record.';notify();return false; }
   }
-  function helpOpened() { if(active) active.helpOpened=true; }
+  function helpOpened() { if(!disposed && active) active.helpOpened=true; }
   function observe(before,after,action) {
-    if (!active || action?.type !== 'submit-fraction-comparison' || !contextFor(before) || after?.responseProvenance?.length !== before.responseProvenance.length+1) return;
+    if (disposed || !active || action?.type !== 'submit-fraction-comparison' || !contextFor(before) || after?.responseProvenance?.length !== before.responseProvenance.length+1) return;
     const kind=after.responseProvenance.at(-1)?.classification?.kind;
     if (!['comparison-retry','correct-comparison'].includes(kind)) return;
     if (active.first && kind==='comparison-retry') return;
@@ -52,8 +54,9 @@ export function createComparisonRecordController({ storage = createComparisonRec
       .catch(()=>{if (!disposed && active===origin) {message='Practice is available, but this browser could not save the record.';notify();}});
   }
   async function change(method) {
+    if (disposed) return;
     const ticket=++epoch; retire();
-    try { const next=await storage[method](); if(disposed || ticket!==epoch)return; root=next;ready=true;channel?.postMessage('changed');message=method==='reset'?'Record reset. Remembering is off.': 'A new problem is needed before activity can be remembered.'; }
+    try { const next=await storage[method](); if(disposed || ticket!==epoch)return; root=next;ready=true;channel?.postMessage('changed');message=method==='reset'?'Record reset. Remembering is off.':method==='stop'?'Remembering is off. Earlier activity remains until cleared.':method==='clear'?(next?.enabled?'Record cleared. A new problem is needed before activity can be remembered.':'Record cleared. Remembering is off.'):'Remembering is on. A new problem is needed before activity can be remembered.'; }
     catch {if(disposed || ticket!==epoch)return;root=null;ready=false;message=method==='clear'?'The record could not be cleared. Please try again.':'Practice is available, but this browser could not save the record.';}
     notify();
   }

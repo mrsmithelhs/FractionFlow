@@ -1120,3 +1120,4 @@ body,
 .comparison-record-episode-notice { margin: .4rem 0; }
 .comparison-record-panel button { font: inherit; color: inherit; background: #fff; border: 1px solid currentColor; border-radius: .35rem; padding: .5rem .75rem; }
 .comparison-record-panel summary:focus-visible, .comparison-record-panel button:focus-visible { outline: 3px solid #1d4f9b; outline-offset: 2px; }
+.comparison-record-pair { display: inline-flex; align-items: center; gap: .2em; vertical-align: middle; }

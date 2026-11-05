@@ -39,4 +39,13 @@ describe('comparison record admission queue',()=>{
   const next=applyPlan49PublicIntent(state,{type:'submit-fraction-comparison',proposed:'<'});c.observe(state,next,{type:'submit-fraction-comparison'});await tick();
   const assertSingle=()=>expect(writes).toHaveLength(1);assertSingle();
   writes.push(writes[0]);expect(assertSingle).toThrow();writes.pop();assertSingle();c.destroy();
+ }); it('retired controller rejects new operations while a valid admitted write finishes',async()=>{
+  let release;const gate=new Promise(r=>{release=r;});const calls=[];
+  const storage={read:async()=>{calls.push('read');return emptyRoot(generation,true);},record:async()=>{calls.push('record');await gate;calls.push('saved');return 'inserted';},clear:async()=>calls.push('clear'),stop:async()=>calls.push('stop'),enable:async()=>calls.push('enable'),reset:async()=>calls.push('reset')};
+  const c=createComparisonRecordController({storage});await c.refresh();const state=initial();c.install(state);const next=applyPlan49PublicIntent(state,{type:'submit-fraction-comparison',proposed:'<'});c.observe(state,next,{type:'submit-fraction-comparison'});await tick();c.destroy();
+  await Promise.all([c.clear(),c.stop(),c.enable(),c.reset(),c.refresh()]);expect(c.install(state)).toBe(false);c.observe(state,next,{type:'submit-fraction-comparison'});release();await tick();expect(calls).toEqual(['read','record','saved']);
+ }); it('reports distinct clear and stop outcomes without implying off is on',async()=>{
+  let root=emptyRoot(generation,true);const storage={read:async()=>root,clear:async()=>root,stop:async()=>{root={...root,enabled:false};return root;}};
+  const c=createComparisonRecordController({storage});await c.refresh();await c.clear();expect(c.snapshot().message).toMatch(/Record cleared.*new problem/i);
+  await c.stop();expect(c.snapshot().message).toMatch(/Remembering is off.*remains/i);await c.clear();expect(c.snapshot().message).toBe('Record cleared. Remembering is off.');c.destroy();
  });});

@@ -76,7 +76,7 @@ export function projectRecord(rootValue) {
     const suffix = e.identity.itemId.slice(-2);
     const pair = pairs.find(p => p.includes(suffix))?.[0] ?? suffix;
     const repeated = seen.has(pair); seen.add(pair);
-    return { itemId: e.identity.itemId, repeated, first: e.first, outcome: e.outcome,
+    return { itemId: e.identity.itemId, sourceForms: structuredClone(resolvePlan49Context(e.identity.itemId).sourceForms), repeated, first: e.first, outcome: e.outcome,
       firstAssistance: e.firstAssistance, acceptedAssistance: e.acceptedAssistance };
   });
 }
