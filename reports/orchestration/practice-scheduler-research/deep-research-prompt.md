@@ -147,7 +147,9 @@ Include evidence about burden/frustration and comparison against simpler choice.
 - Label claims: **[E] empirical educational outcome**, **[M] model/measurement
   benchmark**, **[D] implementation/design account**, **[T] theory/synthesis**,
   **[H] your proposed inference**. A vendor claim is additionally identified as such.
-  An [M] prediction result is not an [E] learning gain. Include uncertainty/confounds.
+  An [M] prediction result is not an [E] learning gain. Self-reported confidence,
+  perceived learning or enjoyment is not a measured retention/transfer result.
+  Name the actual instrument/outcome and include uncertainty/confounds.
 - Quote little or not at all; paraphrase accurately. Never invent citations,
   samples, effect sizes, operating thresholds or inaccessible results. “No relevant
   evidence found in this search” is preferable to an unsupported recommendation.

@@ -51,3 +51,14 @@ returns, explicit empirical/theory/practitioner/inference distinctions, source
 access limits and claim-level correction against originals. That workflow informed
 this brief; Quackpot's musical findings are not pedagogical evidence. A peer reply,
 if received, will be recorded separately rather than implied by these artifact reads.
+
+QP Orch subsequently replied on 2026-11-04 within the authorized short exchange.
+It confirmed this workflow and emphasized shared-source deduplication, immutable
+originals with separate corrections, downloadable Markdown rather than claimed repo
+writes, empirical-versus-transfer distinctions and bounded synthesis with competing
+evidence/falsifiers. Its reported music-review overclaim confused a self-report
+outcome with physiological evidence; we do not reverify that musical result here,
+but apply its methodological warning by explicitly distinguishing self-reported
+confidence/perceived learning from measured retention/transfer in our prompt.
+This was workflow consultation only, with no new research or FractionFlow file
+inspection by the peer and no authority transferred over project decisions.
