@@ -1,7 +1,7 @@
 ---
 id: plan-66
 title: Research-Led Episode Scheduler and Learner Evidence Design
-status: in-progress
+status: delivered
 depends_on: [plan-29, plan-35, plan-57, plan-61, plan-63]
 gate: "Owner returns external deep-research reports; approve synthesis scope before dossier. Owner adopts a bounded scheduler/evidence contract before a separate implementation pilot; no adaptive runtime activation."
 summary: >-
