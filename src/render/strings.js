@@ -397,6 +397,8 @@ export const STRINGS = Object.freeze({
     nextProblemButton: 'Next problem',
     problemsExhausted: 'You’ve tried every problem in this set.',
     nextProblemUnavailable: 'This problem is not ready. Try again or go back to start.',
+    sessionRestartUnavailable: 'This problem could not be restarted. Try again or go back to start.',
+    sessionNextUnavailable: 'The next problem could not be opened. Try again or go back to start.',
     noReplayYet: 'Finish a change before replaying it.',
     doneLooking: 'Done looking',
     replayInspectionHeading: 'Looking back at the last change:',

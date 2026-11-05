@@ -561,7 +561,7 @@ export function createFractionFlowApp({
       const prepared = magnitudeSession.prepareTransition(kind, session, episode);
       if (!prepared.ok || !magnitudeSession.commit(prepared.ticket)) {
         navigationRefusal = true;
-        navigationNotice.textContent = kind === 'restart' ? 'This problem could not be restarted. Try again or return to practice.' : 'The next problem could not be opened. Try again or return to practice.';
+        navigationNotice.textContent = kind === 'restart' ? STRINGS.app.sessionRestartUnavailable : STRINGS.app.sessionNextUnavailable;
         setHidden(navigationNotice, false); focusNavigationNotice(); return;
       }
       installSessionCurrent();
@@ -793,7 +793,7 @@ export function createFractionFlowApp({
     const episodeNavigation = makeElement('nav', 'app-episode-navigation');
     episodeNavigation.setAttribute('aria-label', 'Episode navigation');
     returnButton = createButton({
-      label: 'Back to start',
+      label: STRINGS.app.returnButton,
       className: 'app-secondary-button',
       onClick: () => { if (shellActive()) { if (magnitudeSession) askSessionExit(); else returnToEntry(); } },
     });
@@ -1164,7 +1164,7 @@ export function createFractionFlowApp({
       if (!isMagnitudeEpisodeComplete(state, MAGNITUDE_SESSION_MANIFEST.entries[session.index])) return { phase: 'idle', actionKind: 'none', label: null, notice: null, onAction: null };
       const generation = currentEpisodeGeneration, final = session.index === MAGNITUDE_SESSION_MANIFEST.entries.length - 1;
       return { phase: 'resolved-comparison', actionKind: final ? 'return' : 'advance',
-        label: final ? 'Back to practice' : session.index === 2 ? 'Next: compare and find the distance' : STRINGS.app.nextProblemButton,
+        label: final ? STRINGS.app.returnButton : session.index === 2 ? 'Next: compare and find the distance' : STRINGS.app.nextProblemButton,
         notice: final ? 'Practice complete.' : null,
         onAction: () => { if (generation !== currentEpisodeGeneration) return; if (final) leaveMagnitudeSession(); else sessionTransition('next', generation); } };
     }
@@ -1484,8 +1484,13 @@ export function createFractionFlowApp({
 
   function updateNavigation() {
     const finalSessionResult = magnitudeSession && magnitudeSession.current().session.index === MAGNITUDE_SESSION_MANIFEST.entries.length - 1 && isMagnitudeEpisodeComplete(state, MAGNITUDE_SESSION_MANIFEST.entries.at(-1));
-    returnButton.textContent = magnitudeSession ? 'Back to practice' : 'Back to start';
+    returnButton.textContent = STRINGS.app.returnButton;
     setHidden(returnButton, Boolean(finalSessionResult));
+    if (magnitudeSession && navigationRefusal) {
+      setHidden(nextProblemButton, true);
+      setHidden(navigationNotice, false);
+      return;
+    }
     if (isPlan45ComparisonEpisode(state)) {
       setHidden(nextProblemButton, true);
       if (magnitudeSession && navigationRefusal) { setHidden(navigationNotice, false); return; }
