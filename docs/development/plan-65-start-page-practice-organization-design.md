@@ -1,7 +1,7 @@
 ---
 id: plan-65
 title: Start-Page Practice Organization Design
-status: in-progress
+status: delivered
 depends_on: [plan-26, plan-60, plan-62, plan-63]
 gate: "Approve compact inventory and two-option design scope; owner adopts one entry organization and first slice before a separate source packet. No scheduler behavior is assumed."
 summary: >-
