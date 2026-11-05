@@ -1,7 +1,8 @@
 ---
 id: plan-65
 title: Start-Page Practice Organization Design
-status: delivered
+status: complete
+resolution: "Owner adopted the recommended expandable chooser and current named addition primary on 2026-11-04; report-only design complete. Draft Plan67 proposes separately gated implementation, with no rendered claim or deployment."
 depends_on: [plan-26, plan-60, plan-62, plan-63]
 gate: "Approve compact inventory and two-option design scope; owner adopts one entry organization and first slice before a separate source packet. No scheduler behavior is assumed."
 summary: >-
