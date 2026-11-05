@@ -50,8 +50,20 @@ export function createComparisonRecordController({ storage = createComparisonRec
     const origin=active;
     const capture=active.admission.capture(active.first?'acceptance':kind==='correct-comparison'?'first-accepted':'first-retry',assistance(before,active.helpOpened));
     if (!capture)return; active.first=true;
-    queue=queue.then(async()=>{ const result=await storage.record(capture.generation,capture.observation); if(['stale','missing'].includes(result)) throw new Error(result); })
-      .catch(()=>{if (!disposed && active===origin) {message='Practice is available, but this browser could not save the record.';notify();}});
+    queue=queue.then(async()=>{
+      const ticket=epoch;
+      const result=await storage.record(capture.generation,capture.observation);
+      if(['stale','missing'].includes(result)) throw new Error(result);
+      // Read only after transaction completion. Do not let an older read replace a
+      // later clear/stop/refresh, or surface results after the shell is retired.
+      if (disposed || ticket!==epoch || root?.generation!==capture.generation) return;
+      try {
+        const latest=await storage.read();
+        if (!disposed && ticket===epoch && root?.generation===capture.generation && latest?.generation===capture.generation) {
+          root=latest;notify();
+        }
+      } catch { /* The committed write stands; a later explicit refresh can report availability. */ }
+    }).catch(()=>{if (!disposed && active===origin) {message='Practice is available, but this browser could not save the record.';notify();}});
   }
   async function change(method) {
     if (disposed) return;

@@ -37,14 +37,14 @@ export function createComparisonRecordPanel({ host, controller, practice }) {
       if(view){
         paragraph('Comparison activity on this browser');if(!s.entries.length)paragraph('No recorded comparison activity.');
         const list=doc.createElement('ol');content.appendChild(list);
-        for(const entry of [...s.entries].reverse()){
+        for(const {entry,index} of s.entries.map((entry,index)=>({entry,index})).reverse()){
           const li=doc.createElement('li');const pair=doc.createElement('span');pair.className='comparison-record-pair';
           pair.appendChild(createSymbolicFraction(entry.sourceForms.first.numerator,entry.sourceForms.first.denominator,{ariaPrefix:'First fraction'}));
           const separator=doc.createElement('span');separator.textContent=' and ';pair.appendChild(separator);
           pair.appendChild(createSymbolicFraction(entry.sourceForms.second.numerator,entry.sourceForms.second.denominator,{ariaPrefix:'Second fraction'}));li.appendChild(pair);
           const text=entry.first==='accepted'?'Compared correctly.':entry.outcome==='accepted'?'Tried again, then compared correctly.':'Tried again; no correct choice recorded.';
           const label=doc.createElement('span');label.textContent=' — '+text+(entry.repeated?' A repeated pair.':'');li.appendChild(label);
-          const details=doc.createElement('details'),heading=doc.createElement('summary');heading.textContent='Assistance details';details.appendChild(heading);
+          const details=doc.createElement('details'),heading=doc.createElement('summary');heading.textContent='Assistance details';heading.setAttribute('data-record-control',`detail-${entry.itemId}-${index}`);details.appendChild(heading);
           const p=doc.createElement('p');const describe=a=>['model','help','construction'].map(k=>`${k}: ${a[k]}`).join(', ');
           p.textContent=`Before first choice: ${describe(entry.firstAssistance)}.${entry.acceptedAssistance&&entry.first==='retry'?` Before correct choice: ${describe(entry.acceptedAssistance)}.`:''}`;details.appendChild(p);li.appendChild(details);list.appendChild(li);
         }

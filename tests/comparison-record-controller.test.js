@@ -1,7 +1,7 @@
-import { describe, it, expect } from 'vitest';
+import { describe, it, expect, vi } from 'vitest';
 import { createComparisonRecordController } from '../src/app/comparison-record-controller.js';
 import { createPlan49PublicEpisode, applyPlan49PublicIntent, resolvePlan49Context } from '../src/interaction/plan49-comparison-construction.js';
-import { emptyRoot } from '../src/app/comparison-record.js';
+import { emptyRoot, applyObservation } from '../src/app/comparison-record.js';
 import { HIGH_SUPPORT_CONFIGURATION } from '../src/interaction/support.js';
 import { PLAN45_STATIC_COMPARISON_ACTIVE_CONDITION } from '../src/interaction/episode-definition.js';
 const generation='a'.repeat(32);
@@ -48,4 +48,18 @@ describe('comparison record admission queue',()=>{
   let root=emptyRoot(generation,true);const storage={read:async()=>root,clear:async()=>root,stop:async()=>{root={...root,enabled:false};return root;}};
   const c=createComparisonRecordController({storage});await c.refresh();await c.clear();expect(c.snapshot().message).toMatch(/Record cleared.*new problem/i);
   await c.stop();expect(c.snapshot().message).toMatch(/Remembering is off.*remains/i);await c.clear();expect(c.snapshot().message).toBe('Record cleared. Remembering is off.');c.destroy();
+ }); it('refreshes the projection after delayed retry and acceptance without a duplicate',async()=>{
+  let root=emptyRoot(generation,true), release;const gate=new Promise(r=>{release=r;});
+  const storage={read:async()=>structuredClone(root),record:async(g,o)=>{if(o.kind==='acceptance')await gate;const applied=applyObservation(root,g,o);root=applied.root;return applied.result;}};
+  const c=createComparisonRecordController({storage});await c.refresh();let state=initial();c.install(state);
+  let next=applyPlan49PublicIntent(state,{type:'submit-fraction-comparison',proposed:'<'});c.observe(state,next,{type:'submit-fraction-comparison'});state=next;
+  next=applyPlan49PublicIntent(state,{type:'submit-fraction-comparison',proposed:'>'});c.observe(state,next,{type:'submit-fraction-comparison'});c.retire();
+  await vi.waitFor(()=>expect(c.snapshot().entries[0]?.outcome).toBe('unresolved'));release();
+  await vi.waitFor(()=>expect(c.snapshot().entries[0]?.outcome).toBe('accepted'));expect(c.snapshot().entries).toHaveLength(1);c.destroy();
+ });
+ it.each(['clear','stop'])('does not restore an old projection when a pending read finishes after %s',async(action)=>{
+  let root=emptyRoot(generation,true),release,blocked=false;const gate=new Promise(r=>{release=r;});
+  const storage={read:async()=>{const snapshot=structuredClone(root);if(blocked)await gate;return snapshot;},record:async(g,o)=>{const result=applyObservation(root,g,o);root=result.root;blocked=true;return result.result;},clear:async()=>{root=emptyRoot('b'.repeat(32),true);return structuredClone(root);},stop:async()=>{root=emptyRoot('b'.repeat(32),false);return structuredClone(root);}};
+  const c=createComparisonRecordController({storage});await c.refresh();const state=initial();c.install(state);const next=applyPlan49PublicIntent(state,{type:'submit-fraction-comparison',proposed:'<'});c.observe(state,next,{type:'submit-fraction-comparison'});
+  await vi.waitFor(()=>expect(blocked).toBe(true));await c[action]();release();await tick();expect(c.snapshot().entries).toHaveLength(0);expect(c.snapshot().enabled).toBe(action==='clear');c.destroy();
  });});
