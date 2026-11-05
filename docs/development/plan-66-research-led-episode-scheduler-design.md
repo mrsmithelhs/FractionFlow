@@ -1,7 +1,8 @@
 ---
 id: plan-66
 title: Research-Led Episode Scheduler and Learner Evidence Design
-status: delivered
+status: complete
+resolution: "Owner adopted the report-only scheduler architecture and evidence limits on 2026-11-05. Orchestration recommends deferring the retry-triggered pilot pending an authored baseline and a clear instructional purpose for the alternative."
 depends_on: [plan-29, plan-35, plan-57, plan-61, plan-63]
 gate: "Owner returns external deep-research reports; approve synthesis scope before dossier. Owner adopts a bounded scheduler/evidence contract before a separate implementation pilot; no adaptive runtime activation."
 summary: >-
