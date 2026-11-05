@@ -4,7 +4,7 @@ import { setupMockDOM, teardownMockDOM } from './fixtures/mock-dom.js';
 import { createReplayEnvelope, replayEpisode } from '../src/interaction/replay.js';
 import { resolveRenderableScene } from '../src/render/contract.js';
 const submit = form => form.dispatchEvent({type:'submit',preventDefault(){}});
-function mount() { const document=setupMockDOM(); const root=document.createElement('div'); document.body.appendChild(root); const app=createFractionFlowApp({root,presentationMode:'instant-test'}).mount(); root.querySelector('[data-practice-type="symbolic-fraction-comparison"]').click(); return {root,app}; }
+function mount() { const document=setupMockDOM(); const root=document.createElement('div'); document.body.appendChild(root); const app=createFractionFlowApp({root,presentationMode:'instant-test'}).mount(); openChooser(root); root.querySelector('[data-practice-type="symbolic-fraction-comparison"]').click(); return {root,app}; }
 function button(root,text) { return [...root.querySelectorAll('.app-visual-view button')].find(x=>x.textContent===text); }
 function enter(root,value) { const input=root.querySelector('.app-visual-view .plan49-helper-input'); input.value=value; input.dispatchEvent({type:'input'}); submit(root.querySelector('.app-visual-view .plan49-helper-form')); }
 function replay(state) { expect(replayEpisode(JSON.parse(JSON.stringify(createReplayEnvelope(state))))).toEqual(state); }
@@ -34,3 +34,8 @@ describe('Plan 49 mounted comparison',()=>{
   submit(root.querySelector('.app-linear-view .plan45-response-region')); expect(app.getState().status).toBe('resolved'); replay(app.getState()); app.destroy();
  });
 });
+
+function openChooser(root) {
+  const chooser = root.querySelector('[data-entry-chooser]');
+  if (chooser.getAttribute('aria-expanded') === 'false') chooser.click();
+}

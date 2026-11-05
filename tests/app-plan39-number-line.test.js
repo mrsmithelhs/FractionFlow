@@ -13,7 +13,7 @@ function startApp({ supportId = 'high-support' } = {}) {
     root.querySelector('.app-gear-button').click();
     root.querySelector(`[data-support-id="${supportId}"]`).click();
   }
-  root.querySelector('[data-practice-type="bar-to-line-same-amount"]').click();
+  openChooser(root); root.querySelector('[data-practice-type="bar-to-line-same-amount"]').click();
   return { document, root, app };
 }
 
@@ -216,7 +216,7 @@ describe('Plan 39 Repair 02 app wiring', () => {
     const root = document.createElement('div');
     document.body.appendChild(root);
     const app = createFractionFlowApp({ root, presentationMode: 'instant-test', navigationMode: 'direct' }).mount();
-    root.querySelector('[data-practice-type="bar-to-line-same-amount"]').click();
+    openChooser(root); root.querySelector('[data-practice-type="bar-to-line-same-amount"]').click();
 
     // Item 1
     root.querySelector('.app-visual-view .plan39-stepper-next').click();
@@ -257,3 +257,6 @@ describe('Plan 39 Repair 02 app wiring', () => {
     app.destroy();
   });
 });
+
+
+function openChooser(root) { const chooser = root.querySelector('[data-entry-chooser]'); if (chooser.getAttribute('aria-expanded') === 'false') chooser.click(); }

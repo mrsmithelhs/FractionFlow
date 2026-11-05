@@ -15,7 +15,7 @@ function candidateIndex(record, view, profile) {
   return { index, id: candidates[index].id, count: candidates.length };
 }
 
-export function buildPlan39BridgeActions({ view, supportProfile, startAt = 0, endAt = 7, returnReentry = false, stopBeforeCheck = false, inputMode = 'mouse' } = {}) {
+export function buildPlan39BridgeActions({ view, supportProfile, startAt = 0, endAt = 7, returnReentry = false, stopBeforeCheck = false, inputMode = 'mouse', currentEntry = false } = {}) {
   if (!['visual', 'linear'].includes(view) || !['high-support', 'medium-support'].includes(supportProfile)) {
     throw new TypeError('Plan39 route requires a supported view and support profile');
   }
@@ -73,7 +73,8 @@ export function buildPlan39BridgeActions({ view, supportProfile, startAt = 0, en
     else if (returnReentry) {
       actions.push(action('assert', host, { assertions: [{ type: 'containsText', target: '.app-navigation-notice', value: 'You’ve tried every problem in this set.' }], description: 'Plan39 verify exhaustion after eighth item' }));
       actions.push(activate('.app-return-button', { description: 'Plan39 return from exhaustion' }));
-      actions.push(activate('[data-practice-type="bar-to-line-same-amount"]', { description: 'Plan39 re-enter bridge set' }));
+      if (currentEntry) actions.push(activate('[data-entry-chooser]', { description: 'Open practice chooser' }));
+      actions.push(activate(`${currentEntry ? '[data-entry-role="browse"]' : ''}[data-practice-type="bar-to-line-same-amount"]`, { description: 'Plan39 re-enter bridge set' }));
       actions.push(action('assert', host, { assertions: [{ type: 'containsText', target: `${host} .plan39-continue`, value: 'Continue' }], description: 'Plan39 re-entry begins at encounter' }));
     }
   }

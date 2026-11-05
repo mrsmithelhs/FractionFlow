@@ -1,3 +1,4 @@
+import { projectEntryCapabilities } from './entry-projection.js';
 import { createComparisonRecordController } from './comparison-record-controller.js';
 import { createComparisonRecordPanel } from './comparison-record-panel.js';
 import { MAGNITUDE_SESSION_MANIFEST, createMagnitudeSessionController, prepareMagnitudeEntry, isMagnitudeEpisodeComplete } from './magnitude-session.js';
@@ -424,9 +425,12 @@ export function createFractionFlowApp({
   instance: suppliedInstance = null,
   practiceTypes = PRACTICE_TYPES,
   navigationMode = 'direct',
+  entryMode = 'compact',
   sessionTestHooks = {},
+  entryTestHooks = {},
 } = {}) {
   if (!root) throw new Error('app root element is required');
+  if (!['compact', 'historical-flat'].includes(entryMode)) throw new TypeError('unknown entry mode');
 
   let selectedCondition = getRegisteredCondition(initialConditionId);
   let selectedSupportLevel = getDefaultSupportLevel();
@@ -495,6 +499,7 @@ export function createFractionFlowApp({
   let isReplaying = false;
   let entryPage;
   let entryTitle;
+  let chooserButton, chooserRegion;
   let nextProblemButton;
   let navigationNotice;
   let returnButton;
@@ -502,6 +507,7 @@ export function createFractionFlowApp({
   let currentEpisodeGeneration = 0;
   let isTransitioning = false;
   let shellLifetime = 0;
+  let entryRendererLifetime = 0;
   let magnitudeSession = null;
   let recordController = null, recordPanel = null, recordEpisodeNotice = null;
   let sessionDialog, sessionStay, sessionLeave, sessionEntryNotice, sessionEntryButton;
@@ -726,6 +732,13 @@ export function createFractionFlowApp({
     return wrapper;
   }
 
+  function setChooserOpen(open) {
+    if (!chooserRegion || !chooserButton) return;
+    if (!open && chooserRegion.contains(document.activeElement)) chooserButton.focus();
+    setHidden(chooserRegion, !open);
+    chooserButton.setAttribute('aria-expanded', String(open));
+  }
+
   function createShell() {
     const shellGeneration = ++shellLifetime;
     const shellActive = () => mounted && shellGeneration === shellLifetime;
@@ -737,46 +750,102 @@ export function createFractionFlowApp({
     entryTitle = makeElement('h1', 'app-entry-title');
     entryTitle.id = 'fractionflow-title';
     entryTitle.tabIndex = -1;
-    entryTitle.textContent = STRINGS.app.title;
+    const titleFirst = makeElement('span'); titleFirst.textContent = STRINGS.app.title.slice(0, 8);
+    const titleSecond = makeElement('span'); titleSecond.textContent = STRINGS.app.title.slice(8);
+    entryTitle.appendChild(titleFirst); entryTitle.appendChild(makeElement('wbr')); entryTitle.appendChild(titleSecond);
     entryHeader.appendChild(entryTitle);
     const entryLine = makeElement('p', 'app-entry-line');
     entryLine.textContent = 'See how different-sized fraction parts fit together.';
     entryHeader.appendChild(entryLine);
     entryPage.appendChild(entryHeader);
 
-    const practiceList = makeElement('div', 'app-practice-list');
-    const followingPracticeButtons = [];
-    for (const practiceType of practiceTypes) {
-      const practiceButton = createButton({
-        label: practiceType.label,
-        className: practiceType.id === 'sum-under-one'
-          ? 'app-practice-button'
-          : 'app-practice-choice',
-        onClick: () => startPractice(practiceType, { focusEpisode: true, updateFragment: true }),
-      });
-      if (practiceType.id === 'sum-under-one') practiceButton.classList.add('app-practice-choice');
-      practiceButton.setAttribute('data-practice-type', practiceType.id);
-      if (practiceType.id === 'sum-under-one') practiceList.appendChild(practiceButton);
-      else followingPracticeButtons.push(practiceButton);
+    chooserButton = chooserRegion = null;
+    if (entryMode === 'historical-flat') {
+      const practiceList = makeElement('div', 'app-practice-list');
+      const followingPracticeButtons = [];
+      for (const practiceType of practiceTypes) {
+        const practiceButton = createButton({
+          label: practiceType.label,
+          className: practiceType.id === 'sum-under-one'
+            ? 'app-practice-button'
+            : 'app-practice-choice',
+          onClick: () => startPractice(practiceType, { focusEpisode: true, updateFragment: true }),
+        });
+        if (practiceType.id === 'sum-under-one') practiceButton.classList.add('app-practice-choice');
+        practiceButton.setAttribute('data-practice-type', practiceType.id);
+        if (practiceType.id === 'sum-under-one') practiceList.appendChild(practiceButton);
+        else followingPracticeButtons.push(practiceButton);
+      }
+      entryPage.appendChild(practiceList);
+      // Preserve the first-tab practice button, then put the reviewer gear next
+      // in keyboard order before exposing the additional practice goal.
+      entryPage.appendChild(createDisplayMenu());
+      if (followingPracticeButtons.length > 0) {
+        const followingPracticeList = makeElement('div', 'app-practice-list');
+        for (const button of followingPracticeButtons) followingPracticeList.appendChild(button);
+        entryPage.appendChild(followingPracticeList);
+      }
+      sessionEntryButton = createButton({ label: 'Compare fractions, then find a distance', className: 'app-practice-choice', onClick: () => { if (shellActive()) startMagnitudeSession(); } });
+      sessionEntryButton.setAttribute('data-session-entry', 'magnitude');
+      sessionEntryButton.setAttribute('aria-describedby', 'fractionflow-session-cue');
+      const sessionEntryList = makeElement('div', 'app-practice-list');
+      sessionEntryList.appendChild(sessionEntryButton);
+      entryPage.appendChild(sessionEntryList);
+      const sessionCue = makeElement('p', 'app-session-cue'); sessionCue.id = 'fractionflow-session-cue'; sessionCue.textContent = 'Your place in this practice is not saved.'; entryPage.appendChild(sessionCue);
+      sessionEntryNotice = makeElement('p', 'app-session-entry-notice'); sessionEntryNotice.setAttribute('role', 'status'); sessionEntryNotice.tabIndex = -1; setHidden(sessionEntryNotice, true); entryPage.appendChild(sessionEntryNotice);
+      recordPanel = createComparisonRecordPanel({ host: entryPage, controller: recordController, practice: () => { const type = practiceTypes.find(t => t.id === 'symbolic-fraction-comparison'); if (type) startPractice(type, { focusEpisode: true, updateFragment: true }); } });
+    } else {
+      const projection = projectEntryCapabilities(practiceTypes, MAGNITUDE_SESSION_MANIFEST);
+      const makePracticeButton = (type, role) => {
+        const button = createButton({ label: type.label,
+          className: 'app-practice-choice',
+          onClick: () => { if (shellActive()) launchEntryPractice(type, { focusEpisode: true, updateFragment: true }); },
+        });
+        if (role === 'primary') button.classList.add('app-practice-button');
+        button.setAttribute('data-practice-type', type.id);
+        button.setAttribute('data-entry-role', role);
+        return button;
+      };
+      if (projection.primary) entryPage.appendChild(makePracticeButton(projection.primary.type, 'primary'));
+      else {
+        const unavailable = makeElement('p', 'app-entry-unavailable');
+        unavailable.textContent = 'Add fractions with different denominators is unavailable.';
+        entryPage.appendChild(unavailable);
+      }
+      chooserButton = createButton({ label: 'Choose what to practice', className: 'app-chooser-button', onClick: () => { if (shellActive()) setChooserOpen(chooserRegion.hasAttribute('hidden')); } });
+      chooserButton.setAttribute('data-entry-chooser', '');
+      chooserButton.setAttribute('aria-controls', 'fractionflow-chooser');
+      chooserButton.setAttribute('aria-expanded', 'false');
+      entryPage.appendChild(chooserButton);
+      chooserRegion = makeElement('section', 'app-chooser-region');
+      chooserRegion.id = 'fractionflow-chooser';
+      chooserRegion.setAttribute('aria-label', 'Practice choices');
+      setHidden(chooserRegion, true);
+      for (const group of projection.groups) {
+        const section = makeElement('section', 'app-chooser-group');
+        const heading = makeElement('h2'); heading.textContent = group.label; section.appendChild(heading);
+        const list = makeElement('div', 'app-practice-list');
+        for (const capability of group.entries) {
+          if (capability.kind === 'practice') list.appendChild(makePracticeButton(capability.type, 'browse'));
+          else {
+            sessionEntryButton = createButton({ label: 'Compare fractions, then find a distance', className: 'app-practice-choice', onClick: () => { if (shellActive()) startMagnitudeSession(); } });
+            sessionEntryButton.setAttribute('data-session-entry', 'magnitude');
+            sessionEntryButton.setAttribute('aria-describedby', 'fractionflow-session-cue');
+            list.appendChild(sessionEntryButton);
+            const cue = makeElement('p', 'app-session-cue'); cue.id = 'fractionflow-session-cue'; cue.textContent = 'Your place in this practice is not saved.'; list.appendChild(cue);
+          }
+        }
+        section.appendChild(list); chooserRegion.appendChild(section);
+      }
+      entryPage.appendChild(chooserRegion);
+      if (projection.errors.length) {
+        const diagnostic = makeElement('p', 'app-entry-unavailable'); diagnostic.textContent = 'Some practice choices are unavailable.'; entryPage.appendChild(diagnostic);
+        console.error('Invalid entry capability projection:', projection.errors);
+      }
+      entryPage.appendChild(createDisplayMenu());
+      sessionEntryNotice = makeElement('p', 'app-session-entry-notice'); sessionEntryNotice.setAttribute('role', 'status'); sessionEntryNotice.tabIndex = -1; setHidden(sessionEntryNotice, true); entryPage.appendChild(sessionEntryNotice);
+      recordPanel = createComparisonRecordPanel({ host: entryPage, controller: recordController, practice: () => { const type = practiceTypes.find(t => t.id === 'symbolic-fraction-comparison'); if (type) launchEntryPractice(type, { focusEpisode: true, updateFragment: true }); } });
     }
-    entryPage.appendChild(practiceList);
-    // Preserve the first-tab practice button, then put the reviewer gear next
-    // in keyboard order before exposing the additional practice goal.
-    entryPage.appendChild(createDisplayMenu());
-    if (followingPracticeButtons.length > 0) {
-      const followingPracticeList = makeElement('div', 'app-practice-list');
-      for (const button of followingPracticeButtons) followingPracticeList.appendChild(button);
-      entryPage.appendChild(followingPracticeList);
-    }
-    sessionEntryButton = createButton({ label: 'Compare fractions, then find a distance', className: 'app-practice-choice', onClick: () => { if (shellActive()) startMagnitudeSession(); } });
-    sessionEntryButton.setAttribute('data-session-entry', 'magnitude');
-    sessionEntryButton.setAttribute('aria-describedby', 'fractionflow-session-cue');
-    const sessionEntryList = makeElement('div', 'app-practice-list');
-    sessionEntryList.appendChild(sessionEntryButton);
-    entryPage.appendChild(sessionEntryList);
-    const sessionCue = makeElement('p', 'app-session-cue'); sessionCue.id = 'fractionflow-session-cue'; sessionCue.textContent = 'Your place in this practice is not saved.'; entryPage.appendChild(sessionCue);
-    sessionEntryNotice = makeElement('p', 'app-session-entry-notice'); sessionEntryNotice.setAttribute('role', 'status'); sessionEntryNotice.tabIndex = -1; setHidden(sessionEntryNotice, true); entryPage.appendChild(sessionEntryNotice);
-    recordPanel = createComparisonRecordPanel({ host: entryPage, controller: recordController, practice: () => { const type = practiceTypes.find(t => t.id === 'symbolic-fraction-comparison'); if (type) startPractice(type, { focusEpisode: true, updateFragment: true }); } });
     const aboutLink = makeElement('a', 'app-about-link');
     aboutLink.setAttribute('href', './about.html');
     aboutLink.textContent = 'About FractionFlow';
@@ -1081,7 +1150,7 @@ export function createFractionFlowApp({
     return { item, instance, state: nextState };
   }
 
-  function installFreshEpisode(practiceType, itemIndex, candidateState, { focusEpisode, updateFragment = false } = {}) {
+  function installFreshEpisode(practiceType, itemIndex, candidateState, { focusEpisode, updateFragment = false, entryLaunch = false } = {}) {
     visualPlan59Renderer?.destroy(); linearPlan59Renderer?.destroy();
     visualPlan59Renderer = null; linearPlan59Renderer = null;
     visualPlan58Renderer?.destroy(); linearPlan58Renderer?.destroy();
@@ -1108,6 +1177,7 @@ export function createFractionFlowApp({
     setHidden(entryPage, true);
     setHidden(episodeEl, false);
     render();
+    if (entryLaunch) entryTestHooks.display?.(practiceType);
     if (focusEpisode) {
       if (isPlan36SubtractionDefinition(state?.episodeDefinition) && state?.beat === 'encounter') {
         const host = visualView ? visualHost : linearHost;
@@ -1128,6 +1198,44 @@ export function createFractionFlowApp({
 
   function focusNavigationNotice() {
     if (navigationNotice?.isConnected && !navigationNotice.hasAttribute('hidden')) navigationNotice.focus();
+  }
+
+  function launchEntryPractice(practiceType, options = {}) {
+    if (!practiceType || !practiceTypes.includes(practiceType)) return;
+    let prepared;
+    try {
+      entryTestHooks.prepare?.(practiceType);
+      prepared = suppliedInstance !== null
+        ? { state: createInitialState(suppliedInstance, practiceType, selectedCondition, selectedSupportLevel), itemIndex: null }
+        : { ...registeredItemEpisode(practiceType, 0), itemIndex: 0 };
+    } catch {
+      sessionEntryNotice.textContent = 'This practice could not be opened. Please try again or choose another practice.';
+      setHidden(sessionEntryNotice, false); sessionEntryNotice.focus(); return;
+    }
+    try {
+      setHidden(sessionEntryNotice, true);
+      installFreshEpisode(practiceType, prepared.itemIndex, prepared.state, { ...options, entryLaunch: true });
+    } catch {
+      recoverEntryDisplayFailure();
+    }
+  }
+
+  function recoverEntryDisplayFailure() {
+    recordController?.retire(); currentEpisodeGeneration += 1; distanceRenderGeneration += 1; entryRendererLifetime += 1;
+    for (const renderer of [visualRenderer, linearRenderer, visualNumberLineRenderer, linearNumberLineRenderer,
+      visualComparisonRenderer, linearComparisonRenderer, visualCollectionRenderer, linearCollectionRenderer,
+      visualPlan53Renderer, linearPlan53Renderer, visualPlan58Renderer, linearPlan58Renderer, visualPlan59Renderer, linearPlan59Renderer]) {
+      try { renderer?.destroy(); } catch (error) { console.error('Entry renderer cleanup failed:', error); }
+    }
+    visualRenderer = linearRenderer = visualNumberLineRenderer = linearNumberLineRenderer = null;
+    visualComparisonRenderer = linearComparisonRenderer = visualCollectionRenderer = linearCollectionRenderer = null;
+    visualPlan53Renderer = linearPlan53Renderer = visualPlan58Renderer = linearPlan58Renderer = visualPlan59Renderer = linearPlan59Renderer = null;
+    state = selectedPracticeType = activePracticeItemIndex = null;
+    visualHost.replaceChildren(); linearHost.replaceChildren();
+    setHidden(appRoot.querySelector('.app-episode'), true); setHidden(entryPage, false);
+    clearFragment(); closeDisplayMenu(); updateSupportMetadata();
+    sessionEntryNotice.textContent = 'This practice could not be displayed. Please try again or choose another practice.';
+    setHidden(sessionEntryNotice, false); sessionEntryNotice.focus();
   }
 
   function startPractice(practiceType, { focusEpisode = false, updateFragment = false } = {}) {
@@ -1392,6 +1500,7 @@ export function createFractionFlowApp({
       setHidden(episodeEl, true);
     }
     setHidden(entryPage, false);
+    setChooserOpen(false);
     if (typeof globalThis.location === 'object'
       && globalThis.location.hash
       && typeof globalThis.history?.replaceState === 'function') {
@@ -1406,7 +1515,8 @@ export function createFractionFlowApp({
     const episode = appRoot?.querySelector('.app-episode');
     if (practiceType) {
       if (selectedPracticeType?.id !== practiceType.id || episode?.hasAttribute('hidden')) {
-        startPractice(practiceType, { focusEpisode: true });
+        if (episode?.hasAttribute('hidden')) launchEntryPractice(practiceType, { focusEpisode: true });
+        else startPractice(practiceType, { focusEpisode: true });
       }
       return;
     }
@@ -2101,24 +2211,26 @@ export function createFractionFlowApp({
       visualRenderer = null;
       linearRenderer = null;
       if (!visualNumberLineRenderer) {
+        const rendererGeneration = entryRendererLifetime;
         visualNumberLineRenderer = createNumberLineLocateRenderer({
           container: visualHost,
           view: 'visual',
           strings: APP_RENDER_STRINGS,
-          dispatchAction,
-          onPreviewChange: setNumberLineDraft,
+          dispatchAction: action => { if (rendererGeneration === entryRendererLifetime) dispatchAction(action); },
+          onPreviewChange: value => { if (rendererGeneration === entryRendererLifetime) setNumberLineDraft(value); },
           getHelpOpen: () => numberLineHelpOpen,
           getProgression: () => computeProgressionDescriptor(),
         });
         visualNumberLineRenderer.mount(scene);
       } else visualNumberLineRenderer.update(scene);
       if (!linearNumberLineRenderer) {
+        const rendererGeneration = entryRendererLifetime;
         linearNumberLineRenderer = createNumberLineLocateRenderer({
           container: linearHost,
           view: 'linear',
           strings: APP_RENDER_STRINGS,
-          dispatchAction,
-          onPreviewChange: setNumberLineDraft,
+          dispatchAction: action => { if (rendererGeneration === entryRendererLifetime) dispatchAction(action); },
+          onPreviewChange: value => { if (rendererGeneration === entryRendererLifetime) setNumberLineDraft(value); },
           getHelpOpen: () => numberLineHelpOpen,
           getProgression: () => computeProgressionDescriptor(),
         });
@@ -2140,13 +2252,15 @@ export function createFractionFlowApp({
     linearNumberLineRenderer = null;
 
     if (!visualRenderer) {
+      const rendererGeneration = entryRendererLifetime;
       visualRenderer = createBeatContainer({
         container: visualHost,
-        dispatchAction,
+        dispatchAction: action => { if (rendererGeneration === entryRendererLifetime) dispatchAction(action); },
         strings: APP_RENDER_STRINGS,
         isTaskHelpOpen: () => transformHelpOpen || subtractionHelpOpen,
         isInspectChangeOpen: () => inspectChangeOpen,
         onInspectChangeOpen: () => {
+          if (rendererGeneration !== entryRendererLifetime) return;
           inspectChangeOpen = true;
           render();
           getVisibleTransformInput()?.focus();
@@ -2159,13 +2273,15 @@ export function createFractionFlowApp({
     }
 
     if (!linearRenderer) {
+      const rendererGeneration = entryRendererLifetime;
       linearRenderer = createLinearPathRenderer({
         container: linearHost,
-        dispatchAction,
+        dispatchAction: action => { if (rendererGeneration === entryRendererLifetime) dispatchAction(action); },
         strings: APP_RENDER_STRINGS,
         isTaskHelpOpen: () => transformHelpOpen || subtractionHelpOpen,
         isInspectChangeOpen: () => inspectChangeOpen,
         onInspectChangeOpen: () => {
+          if (rendererGeneration !== entryRendererLifetime) return;
           inspectChangeOpen = true;
           render();
           getVisibleTransformInput()?.focus();
@@ -2391,7 +2507,7 @@ export function createFractionFlowApp({
       }
       mounted = true;
       const fragmentPracticeType = visiblePracticeTypeFromFragment();
-      if (fragmentPracticeType) startPractice(fragmentPracticeType, { focusEpisode: true });
+      if (fragmentPracticeType) launchEntryPractice(fragmentPracticeType, { focusEpisode: true });
       return this;
     },
     update() {
@@ -2401,6 +2517,7 @@ export function createFractionFlowApp({
     destroy() {
       recordController?.destroy(); recordPanel?.destroy(); recordController = null; recordPanel = null;
       shellLifetime += 1;
+      entryRendererLifetime += 1;
       currentEpisodeGeneration += 1;
       distanceRenderGeneration += 1;
       if (magnitudeSession) { magnitudeSession.exit(magnitudeSession.current().session); clearFragment(); }

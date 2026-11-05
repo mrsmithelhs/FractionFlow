@@ -83,7 +83,8 @@ export function buildPlan38SubtractionSetActions({ view, supportProfile } = {}) 
       actions.push(action('assertFocused', '.app-entry-title', {
         description: 'Plan38: verify focus on entry title after return',
       }));
-      actions.push(action('click', '[data-practice-type="like-denominator-subtraction"]', {
+      actions.push(action('click', '[data-entry-chooser]', { description: 'Open practice chooser' }));
+      actions.push(action('click', '[data-entry-role="browse"][data-practice-type="like-denominator-subtraction"]', {
         description: 'Plan38: re-enter subtraction set',
       }));
       if (view === 'linear') {

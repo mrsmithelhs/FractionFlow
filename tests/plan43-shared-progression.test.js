@@ -171,7 +171,7 @@ describe('Plan 43 — Shared Episode Completion and Progression Suite', () => {
       document.body.appendChild(root);
 
       const app = createFractionFlowApp({ root, presentationMode: 'instant-test' }).mount();
-      root.querySelector('[data-practice-type="like-denominator-subtraction"]').click();
+      openChooser(root); root.querySelector('[data-practice-type="like-denominator-subtraction"]').click();
 
       // Item 1: takeaway 2 from 5/8 (3/8 left)
       expect(app.getState().beat).toBe('encounter');
@@ -204,7 +204,7 @@ describe('Plan 43 — Shared Episode Completion and Progression Suite', () => {
       document.body.appendChild(root);
 
       const app = createFractionFlowApp({ root, presentationMode: 'instant-test' }).mount();
-      root.querySelector('[data-practice-type="bar-to-line-same-amount"]').click();
+      openChooser(root); root.querySelector('[data-practice-type="bar-to-line-same-amount"]').click();
 
       // Item 1: place 1/2 on number line
       expect(app.getState().beat).toBe('locate');
@@ -296,7 +296,7 @@ describe('Plan 43 — Shared Episode Completion and Progression Suite', () => {
       document.body.appendChild(root);
 
       const app = createFractionFlowApp({ root, presentationMode: 'instant-test' }).mount();
-      root.querySelector('[data-practice-type="like-denominator-addition"]').click();
+      openChooser(root); root.querySelector('[data-practice-type="like-denominator-addition"]').click();
 
       expect(app.getState().beat).toBe('encounter');
       root.querySelector('.app-visual-view .control-btn').click(); // acknowledge
@@ -342,7 +342,7 @@ describe('Plan 43 — Shared Episode Completion and Progression Suite', () => {
         presentationMode: 'instant-test',
       }).mount();
 
-      root.querySelector('[data-practice-type="like-denominator-subtraction"]').click();
+      openChooser(root); root.querySelector('[data-practice-type="like-denominator-subtraction"]').click();
 
       // Encounter -> Take away -> Operate
       root.querySelector('.app-visual-view .active-beat-controls button').click();
@@ -653,7 +653,7 @@ describe('Plan 43 — Shared Episode Completion and Progression Suite', () => {
       document.body.appendChild(root);
 
       const app = createFractionFlowApp({ root, presentationMode: 'instant-test' }).mount();
-      root.querySelector('[data-practice-type="like-denominator-addition"]').click();
+      openChooser(root); root.querySelector('[data-practice-type="like-denominator-addition"]').click();
 
       app.dispatch({ type: 'acknowledge-encounter' });
       app.dispatch({ type: 'submit-notice', matchesUnits: true });
@@ -835,3 +835,8 @@ describe('Plan 43 — Shared Episode Completion and Progression Suite', () => {
     });
   });
 });
+
+function openChooser(root) {
+  const chooser = root.querySelector('[data-entry-chooser]');
+  if (chooser.getAttribute('aria-expanded') === 'false') chooser.click();
+}

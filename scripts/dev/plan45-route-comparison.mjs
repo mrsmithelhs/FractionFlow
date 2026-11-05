@@ -49,7 +49,8 @@ export function buildPlan45ComparisonActions({
 
   actions.push(interact('.app-gear-button', 'Open display and support settings'));
   actions.push(interact(`[data-support-id="${support}"]`, `Select ${support} support profile`));
-  actions.push(interact('[data-practice-type="symbolic-fraction-comparison"]', 'Start Compare fractions'));
+  actions.push(interact('[data-entry-chooser]', 'Open practice chooser'));
+  actions.push(interact('[data-entry-role="browse"][data-practice-type="symbolic-fraction-comparison"]', 'Start Compare fractions'));
   if (startView === 'linear') actions.push(interact('.app-view-toggle', 'Switch to the linear view'));
   const initialHost = host(startView);
   if (itemIndex > 0) {
@@ -156,7 +157,8 @@ export function buildPlan45ComparisonActions({
       { type: 'hasSelector', target: '[data-practice-type="symbolic-fraction-comparison"]' },
       { type: 'notVisible', target: '.app-episode' },
     ]));
-    actions.push(interact('[data-practice-type="symbolic-fraction-comparison"]', 'Re-enter a fresh comparison attempt'));
+    actions.push(interact('[data-entry-chooser]', 'Open practice chooser'));
+    actions.push(interact('[data-entry-role="browse"][data-practice-type="symbolic-fraction-comparison"]', 'Re-enter a fresh comparison attempt'));
     actions.push(assert('.app-episode', 'Assert re-entry starts with no retained model choice or selected relation', [
       { type: 'notHasSelector', target: '.plan45-model, .plan45-linear-model, .plan45-relation-option input:checked' },
     ]));

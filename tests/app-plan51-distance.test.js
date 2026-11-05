@@ -9,7 +9,7 @@ it('mounts the two stages, preserves a wrong draft, and progresses after accepta
   const document = setupMockDOM();
   const root = document.createElement('div'); document.body.appendChild(root);
   const app = createFractionFlowApp({ root, presentationMode: 'instant-test' }).mount();
-  root.querySelector('[data-practice-type="fraction-distance"]').click();
+  openChooser(root); root.querySelector('[data-practice-type="fraction-distance"]').click();
   const input = [...root.querySelectorAll('.app-visual-view .plan45-relation-option input')].find(node => node.value === '<');
   expect(input.getAttribute('aria-label')).toBe('First amount is less than second amount');
   input.checked = true; input.dispatchEvent({ type: 'change' });
@@ -49,7 +49,7 @@ it('records explicit assistance, refuses malformed input, and retains draft thro
   const document = setupMockDOM();
   const root = document.createElement('div'); document.body.appendChild(root);
   const app = createFractionFlowApp({ root, presentationMode: 'instant-test' }).mount();
-  root.querySelector('[data-practice-type="fraction-distance"]').click();
+  openChooser(root); root.querySelector('[data-practice-type="fraction-distance"]').click();
   root.querySelector('.app-gear-button').click();
   root.querySelector('[data-support-id="medium-support"]').click();
   [...root.querySelectorAll('button')].find(node => node.textContent === 'Try this problem again').click();
@@ -86,7 +86,7 @@ it('progresses through all four ordered records and finishes directly', () => {
   const document = setupMockDOM();
   const root = document.createElement('div'); document.body.appendChild(root);
   const app = createFractionFlowApp({ root, presentationMode: 'instant-test' }).mount();
-  root.querySelector('[data-practice-type="fraction-distance"]').click();
+  openChooser(root); root.querySelector('[data-practice-type="fraction-distance"]').click();
   const answers = [['<', '4', '8'], ['>', '4', '8'], ['>', '1', '3'], ['>', '1', '2']];
   for (let index = 0; index < answers.length; index += 1) {
     const [relation, numerator, denominator] = answers[index];
@@ -114,7 +114,7 @@ it('retains accepted work when a mounted next item cannot be prepared', () => {
   const broken = { ...PLAN51_DISTANCE_PRACTICE_TYPE, items: [PLAN51_DISTANCE_PRACTICE_TYPE.items[0],
     { ...PLAN51_DISTANCE_PRACTICE_TYPE.items[1], id: 'distance-unknown' }] };
   const app = createFractionFlowApp({ root, practiceTypes: [broken], presentationMode: 'instant-test' }).mount();
-  root.querySelector('[data-practice-type="fraction-distance"]').click();
+  openChooser(root); root.querySelector('[data-practice-type="fraction-distance"]').click();
   const relation = [...root.querySelectorAll('.app-visual-view .plan45-relation-option input')].find(node => node.value === '<');
   relation.checked = true; relation.dispatchEvent({ type: 'change' });
   root.querySelector('.app-visual-view .plan51-response').dispatchEvent({ type: 'submit', preventDefault() {} });
@@ -135,7 +135,7 @@ it('keeps the unanswered comparison and help before the response in both stages'
   const document = setupMockDOM();
   const root = document.createElement('div'); document.body.appendChild(root);
   const app = createFractionFlowApp({ root, presentationMode: 'instant-test' }).mount();
-  root.querySelector('[data-practice-type="fraction-distance"]').click();
+  openChooser(root); root.querySelector('[data-practice-type="fraction-distance"]').click();
   const host = () => root.querySelector('.app-visual-view .plan51-distance');
   const ordered = () => {
     const children = [...host().children];
@@ -152,3 +152,8 @@ it('keeps the unanswered comparison and help before the response in both stages'
   expect(host().querySelector('[data-plan51-focus="numerator"]')).toBeTruthy();
   app.destroy();
 });
+
+function openChooser(root) {
+  const chooser = root.querySelector('[data-entry-chooser]');
+  if (chooser.getAttribute('aria-expanded') === 'false') chooser.click();
+}

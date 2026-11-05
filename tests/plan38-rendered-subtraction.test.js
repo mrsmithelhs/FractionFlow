@@ -55,7 +55,7 @@ describe('Plan 38 rendered like-denominator subtraction batch', () => {
       });
       app.mount();
 
-      const choiceBtn = root.querySelector('[data-practice-type="like-denominator-subtraction"]');
+      openChooser(root); const choiceBtn = root.querySelector('[data-practice-type="like-denominator-subtraction"]');
       expect(choiceBtn).not.toBeNull();
       expect(choiceBtn.textContent).toBe('Subtract fractions with the same denominator');
 
@@ -93,7 +93,7 @@ describe('Plan 38 rendered like-denominator subtraction batch', () => {
           app.mount();
 
           // Enter practice
-          root.querySelector('[data-practice-type="like-denominator-subtraction"]').click();
+          openChooser(root); root.querySelector('[data-practice-type="like-denominator-subtraction"]').click();
           if (view === 'linear') {
             root.querySelector('.app-view-toggle').click();
           }
@@ -330,7 +330,7 @@ describe('Plan 38 rendered like-denominator subtraction batch', () => {
         });
         app.mount();
 
-        root.querySelector('[data-practice-type="like-denominator-subtraction"]').click();
+        openChooser(root); root.querySelector('[data-practice-type="like-denominator-subtraction"]').click();
         const host = root.querySelector('.app-visual-view');
 
         // Check bar aria-label at encounter does not leak remainder
@@ -397,7 +397,7 @@ describe('Plan 38 rendered like-denominator subtraction batch', () => {
       });
       app.mount();
 
-      root.querySelector('[data-practice-type="like-denominator-subtraction"]').click();
+      openChooser(root); root.querySelector('[data-practice-type="like-denominator-subtraction"]').click();
       const host = root.querySelector('.app-visual-view');
 
       host.querySelector('.active-beat-controls button').click();
@@ -438,7 +438,7 @@ describe('Plan 38 rendered like-denominator subtraction batch', () => {
       });
       app.mount();
 
-      root.querySelector('[data-practice-type="like-denominator-subtraction"]').click();
+      openChooser(root); root.querySelector('[data-practice-type="like-denominator-subtraction"]').click();
       const visualHost = root.querySelector('.app-visual-view');
 
       // Click Take away to enter operate
@@ -492,7 +492,7 @@ describe('Plan 38 rendered like-denominator subtraction batch', () => {
       });
       app.mount();
 
-      root.querySelector('[data-practice-type="like-denominator-subtraction"]').click();
+      openChooser(root); root.querySelector('[data-practice-type="like-denominator-subtraction"]').click();
 
       // Complete items 0 through 7 sequentially
       for (let index = 0; index < 8; index += 1) {
@@ -557,3 +557,6 @@ describe('Plan 38 rendered like-denominator subtraction batch', () => {
     });
   });
 });
+
+
+function openChooser(root) { const chooser = root.querySelector('[data-entry-chooser]'); if (chooser.getAttribute('aria-expanded') === 'false') chooser.click(); }

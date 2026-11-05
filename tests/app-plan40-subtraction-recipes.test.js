@@ -52,7 +52,7 @@ describe('Plan 40 app shell subtraction recipes integration', () => {
       });
       app.mount();
 
-      const choiceBtn = root.querySelector('[data-practice-type="unlike-denominator-subtraction"]');
+      openChooser(root); const choiceBtn = root.querySelector('[data-practice-type="unlike-denominator-subtraction"]');
       expect(choiceBtn).not.toBeNull();
       expect(choiceBtn.textContent).toBe('Subtract fractions with different denominators');
 
@@ -88,7 +88,7 @@ describe('Plan 40 app shell subtraction recipes integration', () => {
       app.mount();
 
       // Launch practice
-      root.querySelector('[data-practice-type="unlike-denominator-subtraction"]').click();
+      openChooser(root); root.querySelector('[data-practice-type="unlike-denominator-subtraction"]').click();
       const host = () => root.querySelector('.app-visual-view');
       const activeControls = () => host().querySelector('.active-beat-controls');
 
@@ -219,7 +219,7 @@ describe('Plan 40 app shell subtraction recipes integration', () => {
       });
       app.mount();
 
-      root.querySelector('[data-practice-type="unlike-denominator-subtraction"]').click();
+      openChooser(root); root.querySelector('[data-practice-type="unlike-denominator-subtraction"]').click();
       const host = () => root.querySelector('.app-visual-view');
       const activeControls = () => host().querySelector('.active-beat-controls');
 
@@ -298,7 +298,7 @@ describe('Plan 40 app shell subtraction recipes integration', () => {
       });
       app.mount();
 
-      root.querySelector('[data-practice-type="unlike-denominator-subtraction"]').click();
+      openChooser(root); root.querySelector('[data-practice-type="unlike-denominator-subtraction"]').click();
       const host = () => root.querySelector('.app-visual-view');
       const activeControls = () => host().querySelector('.active-beat-controls');
 
@@ -364,7 +364,7 @@ describe('Plan 40 app shell subtraction recipes integration', () => {
       });
       app.mount();
 
-      root.querySelector('[data-practice-type="unlike-denominator-subtraction"]').click();
+      openChooser(root); root.querySelector('[data-practice-type="unlike-denominator-subtraction"]').click();
       const host = () => root.querySelector('.app-visual-view');
       const activeControls = () => host().querySelector('.active-beat-controls');
 
@@ -413,3 +413,6 @@ describe('Plan 40 app shell subtraction recipes integration', () => {
     });
   });
 });
+
+
+function openChooser(root) { const chooser = root.querySelector('[data-entry-chooser]'); if (chooser.getAttribute('aria-expanded') === 'false') chooser.click(); }

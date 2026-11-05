@@ -41,7 +41,8 @@ export function buildPlan43WitnessActions(config) {
 
   // Switch view if linear requested: practice must be started first, then view switched
   const startAndSwitchView = (practiceTypeId, practiceDesc) => {
-    actions.push(interact(`[data-practice-type="${practiceTypeId}"]`, practiceDesc));
+    actions.push(interact('[data-entry-chooser]', 'Open practice chooser'));
+    actions.push(interact(`[data-entry-role="browse"][data-practice-type="${practiceTypeId}"]`, practiceDesc));
     if (view === 'linear') {
       actions.push(action('click', '.app-view-controls .app-secondary-button', {
         description: 'Switch to accessible linear view',

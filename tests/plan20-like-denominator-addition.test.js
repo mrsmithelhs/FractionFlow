@@ -301,7 +301,7 @@ describe('Plan 20 like-denominator addition', () => {
     const app = createFractionFlowApp({ root, presentationMode: 'instant-test' });
     try {
       app.mount();
-      root.querySelector('[data-practice-type="like-denominator-addition"]').click();
+      openChooser(root); root.querySelector('[data-practice-type="like-denominator-addition"]').click();
       root.querySelector('.app-visual-view .control-btn').click();
       root.querySelectorAll('.app-visual-view .control-choice-btn')[0].click();
       const numerator = root.querySelector('#operate-fraction-numerator-input');
@@ -363,7 +363,7 @@ describe('Plan 20 like-denominator addition', () => {
       expect(app.getState().intentHistory).toEqual([]);
       expect(root.querySelector('.app-support-notice').textContent).toBe('');
       expect(root.textContent).not.toContain(STRINGS.operate.likeAdditionHelp);
-      root.querySelector('[data-practice-type="like-denominator-addition"]').click();
+      openChooser(root); root.querySelector('[data-practice-type="like-denominator-addition"]').click();
       expect(app.getState().supportHistory).toEqual([]);
       expect(app.getState().intentHistory).toEqual([]);
       expect(root.querySelector('.active-denominator-help-cue')).toBeNull();
@@ -392,3 +392,8 @@ describe('Plan 20 like-denominator addition', () => {
     expect(episodeStateSnapshot(legacy)).not.toHaveProperty('sharedUnit');
   });
 });
+
+function openChooser(root) {
+  const chooser = root.querySelector('[data-entry-chooser]');
+  if (chooser.getAttribute('aria-expanded') === 'false') chooser.click();
+}

@@ -1634,7 +1634,7 @@ async function observeSubdivision(page, action, routeId) {
   return finalState;
 }
 
-async function executeAction(page, action, routeId) {
+async function executeAction(page, action, routeId, routeContext) {
   switch (action.method) {
     case 'completePlan39Repair02Set': {
       const { runPlan39Repair02Set } = await import('./plan39-repair02-route.mjs');
@@ -1653,7 +1653,7 @@ async function executeAction(page, action, routeId) {
     }
     case 'completePlan39BridgeSet': {
       const { buildPlan39BridgeActions } = await import('./plan39-route-bridge.mjs');
-      const generated = buildPlan39BridgeActions({ ...action, inputMode: action.inputMode || 'mouse' });
+      const generated = buildPlan39BridgeActions({ ...action, inputMode: action.inputMode || 'mouse', currentEntry: routeContext?.id === 'production-default-v8' });
       action.generatedActions = generated;
       for (const generatedAction of generated) {
         try { await executeAction(page, generatedAction, routeId); }
@@ -3438,7 +3438,7 @@ async function runRouteMatrix(options = {}) {
           const actionWithViewport = seededAction.method === 'completePlan45ComparisonJourney'
             ? { ...seededAction, routeViewport: route.viewport }
             : seededAction;
-          await executeAction(page, actionWithViewport, route.id);
+          await executeAction(page, actionWithViewport, route.id, routeContext);
         }
 
         // Capture output for negative control / sameness check

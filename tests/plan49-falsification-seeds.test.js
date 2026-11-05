@@ -10,7 +10,7 @@ const asFraction = node => createFraction(BigInt(node.querySelector('.symbolic-n
 function mount() {
   const document = setupMockDOM(); const root = document.createElement('div'); document.body.appendChild(root);
   const app = createFractionFlowApp({ root, presentationMode: 'instant-test' }).mount();
-  root.querySelector('[data-practice-type="symbolic-fraction-comparison"]').click();
+  openChooser(root); root.querySelector('[data-practice-type="symbolic-fraction-comparison"]').click();
   return { root, app, document };
 }
 function apply(app, type, fields = {}) { app.dispatch({ type, ...fields }); }
@@ -66,3 +66,8 @@ describe('Plan 49 mounted falsification', () => {
     capture('stale-work','reinserted prior accepted row into mounted task after target revision',check,()=>old.parentNode.removeChild(old)); app.destroy();
   });
 });
+
+function openChooser(root) {
+  const chooser = root.querySelector('[data-entry-chooser]');
+  if (chooser.getAttribute('aria-expanded') === 'false') chooser.click();
+}

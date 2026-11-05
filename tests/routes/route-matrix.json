@@ -8574,9 +8574,14 @@
           "description": "Select high support for the applicable operation help"
         },
         {
+          "method": "click",
+          "target": "[data-entry-chooser]",
+          "description": "Open practice chooser"
+        },
+        {
           "step": 3,
           "method": "click",
-          "target": "[data-practice-type=\"like-denominator-addition\"]",
+          "target": "[data-entry-role=\"browse\"][data-practice-type=\"like-denominator-addition\"]",
           "description": "Begin the separate same-denominator practice goal"
         },
         {
@@ -8841,9 +8846,14 @@
           "description": "Return to entry after completion"
         },
         {
+          "method": "click",
+          "target": "[data-entry-chooser]",
+          "description": "Open practice chooser"
+        },
+        {
           "step": 26,
           "method": "click",
-          "target": "[data-practice-type=\"like-denominator-addition\"]",
+          "target": "[data-entry-role=\"browse\"][data-practice-type=\"like-denominator-addition\"]",
           "description": "Re-enter a fresh same-denominator episode"
         },
         {
@@ -8923,9 +8933,14 @@
           "description": "Select the medium-support profile"
         },
         {
+          "method": "click",
+          "target": "[data-entry-chooser]",
+          "description": "Open practice chooser"
+        },
+        {
           "step": 3,
           "method": "click",
-          "target": "[data-practice-type=\"like-denominator-addition\"]",
+          "target": "[data-entry-role=\"browse\"][data-practice-type=\"like-denominator-addition\"]",
           "description": "Begin the same-denominator practice goal"
         },
         {
@@ -12041,9 +12056,14 @@
       "witness": "browser",
       "actions": [
         {
+          "method": "click",
+          "target": "[data-entry-chooser]",
+          "description": "Open practice chooser"
+        },
+        {
           "step": 1,
           "method": "click",
-          "target": "[data-practice-type=\"like-denominator-subtraction\"]",
+          "target": "[data-entry-role=\"browse\"][data-practice-type=\"like-denominator-subtraction\"]",
           "description": "Select like-denominator subtraction practice"
         },
         {
@@ -12085,9 +12105,14 @@
       "witness": "browser",
       "actions": [
         {
+          "method": "click",
+          "target": "[data-entry-chooser]",
+          "description": "Open practice chooser"
+        },
+        {
           "step": 1,
           "method": "click",
-          "target": "[data-practice-type=\"like-denominator-subtraction\"]",
+          "target": "[data-entry-role=\"browse\"][data-practice-type=\"like-denominator-subtraction\"]",
           "description": "Select like-denominator subtraction practice"
         },
         {
@@ -12135,9 +12160,14 @@
       "witness": "browser",
       "actions": [
         {
+          "method": "click",
+          "target": "[data-entry-chooser]",
+          "description": "Open practice chooser"
+        },
+        {
           "step": 1,
           "method": "click",
-          "target": "[data-practice-type=\"like-denominator-subtraction\"]",
+          "target": "[data-entry-role=\"browse\"][data-practice-type=\"like-denominator-subtraction\"]",
           "description": "Select like-denominator subtraction practice"
         },
         {
@@ -12479,9 +12509,14 @@
       "witness": "browser",
       "actions": [
         {
+          "method": "click",
+          "target": "[data-entry-chooser]",
+          "description": "Open practice chooser"
+        },
+        {
           "step": 1,
           "method": "click",
-          "target": "[data-practice-type=\"like-denominator-subtraction\"]",
+          "target": "[data-entry-role=\"browse\"][data-practice-type=\"like-denominator-subtraction\"]",
           "description": "Select like-denominator subtraction practice"
         },
         {
@@ -12682,9 +12717,14 @@
       "witness": "browser",
       "actions": [
         {
+          "method": "click",
+          "target": "[data-entry-chooser]",
+          "description": "Open practice chooser"
+        },
+        {
           "step": 1,
           "method": "click",
-          "target": "[data-practice-type=\"like-denominator-subtraction\"]",
+          "target": "[data-entry-role=\"browse\"][data-practice-type=\"like-denominator-subtraction\"]",
           "description": "Select like-denominator subtraction practice"
         },
         {
@@ -12880,9 +12920,14 @@
       "witness": "browser",
       "actions": [
         {
+          "method": "click",
+          "target": "[data-entry-chooser]",
+          "description": "Open practice chooser"
+        },
+        {
           "step": 1,
           "method": "click",
-          "target": "[data-practice-type=\"like-denominator-subtraction\"]",
+          "target": "[data-entry-role=\"browse\"][data-practice-type=\"like-denominator-subtraction\"]",
           "description": "Select like-denominator subtraction practice"
         },
         {
@@ -13025,9 +13070,14 @@
       "witness": "browser",
       "actions": [
         {
+          "method": "click",
+          "target": "[data-entry-chooser]",
+          "description": "Open practice chooser"
+        },
+        {
           "step": 1,
           "method": "click",
-          "target": "[data-practice-type=\"like-denominator-subtraction\"]",
+          "target": "[data-entry-role=\"browse\"][data-practice-type=\"like-denominator-subtraction\"]",
           "description": "Select like-denominator subtraction practice"
         },
         {
@@ -13084,9 +13134,14 @@
       "witness": "browser",
       "actions": [
         {
+          "method": "click",
+          "target": "[data-entry-chooser]",
+          "description": "Open practice chooser"
+        },
+        {
           "step": 1,
           "method": "click",
-          "target": "[data-practice-type=\"like-denominator-subtraction\"]",
+          "target": "[data-entry-role=\"browse\"][data-practice-type=\"like-denominator-subtraction\"]",
           "description": "Enter subtraction practice"
         },
         {
@@ -13185,9 +13240,14 @@
       "witness": "browser",
       "actions": [
         {
+          "method": "click",
+          "target": "[data-entry-chooser]",
+          "description": "Open practice chooser"
+        },
+        {
           "step": 1,
           "method": "click",
-          "target": "[data-practice-type=\"unlike-denominator-subtraction\"]",
+          "target": "[data-entry-role=\"browse\"][data-practice-type=\"unlike-denominator-subtraction\"]",
           "description": "Select unlike-denominator subtraction practice"
         },
         {
@@ -13229,9 +13289,14 @@
       "witness": "browser",
       "actions": [
         {
+          "method": "click",
+          "target": "[data-entry-chooser]",
+          "description": "Open practice chooser"
+        },
+        {
           "step": 1,
           "method": "click",
-          "target": "[data-practice-type=\"unlike-denominator-subtraction\"]",
+          "target": "[data-entry-role=\"browse\"][data-practice-type=\"unlike-denominator-subtraction\"]",
           "description": "Select unlike-denominator subtraction practice"
         },
         {
@@ -13279,9 +13344,14 @@
       "witness": "browser",
       "actions": [
         {
+          "method": "click",
+          "target": "[data-entry-chooser]",
+          "description": "Open practice chooser"
+        },
+        {
           "step": 1,
           "method": "click",
-          "target": "[data-practice-type=\"unlike-denominator-subtraction\"]",
+          "target": "[data-entry-role=\"browse\"][data-practice-type=\"unlike-denominator-subtraction\"]",
           "description": "Select unlike-denominator subtraction practice"
         },
         {
@@ -13437,9 +13507,14 @@
       "witness": "browser",
       "actions": [
         {
+          "method": "click",
+          "target": "[data-entry-chooser]",
+          "description": "Open practice chooser"
+        },
+        {
           "step": 1,
           "method": "click",
-          "target": "[data-practice-type=\"unlike-denominator-subtraction\"]",
+          "target": "[data-entry-role=\"browse\"][data-practice-type=\"unlike-denominator-subtraction\"]",
           "description": "Select unlike-denominator subtraction practice"
         },
         {
@@ -13928,9 +14003,14 @@
       "witness": "browser",
       "actions": [
         {
+          "method": "click",
+          "target": "[data-entry-chooser]",
+          "description": "Open practice chooser"
+        },
+        {
           "step": 1,
           "method": "click",
-          "target": "[data-practice-type=\"unlike-denominator-subtraction\"]",
+          "target": "[data-entry-role=\"browse\"][data-practice-type=\"unlike-denominator-subtraction\"]",
           "description": "Select practice"
         },
         {
@@ -14446,9 +14526,14 @@
       "witness": "browser",
       "actions": [
         {
+          "method": "click",
+          "target": "[data-entry-chooser]",
+          "description": "Open practice chooser"
+        },
+        {
           "step": 1,
           "method": "click",
-          "target": "[data-practice-type=\"unlike-denominator-subtraction\"]",
+          "target": "[data-entry-role=\"browse\"][data-practice-type=\"unlike-denominator-subtraction\"]",
           "description": "Select unlike-subtraction practice"
         },
         {
@@ -14871,9 +14956,14 @@
       "witness": "browser",
       "actions": [
         {
+          "method": "click",
+          "target": "[data-entry-chooser]",
+          "description": "Open practice chooser"
+        },
+        {
           "step": 1,
           "method": "click",
-          "target": "[data-practice-type=\"unlike-denominator-subtraction\"]",
+          "target": "[data-entry-role=\"browse\"][data-practice-type=\"unlike-denominator-subtraction\"]",
           "description": "Enter unlike-subtraction practice"
         },
         {
@@ -15013,9 +15103,14 @@
       "witness": "browser",
       "actions": [
         {
+          "method": "click",
+          "target": "[data-entry-chooser]",
+          "description": "Open practice chooser"
+        },
+        {
           "step": 1,
           "method": "click",
-          "target": "[data-practice-type=\"unlike-denominator-subtraction\"]",
+          "target": "[data-entry-role=\"browse\"][data-practice-type=\"unlike-denominator-subtraction\"]",
           "description": "Select unlike-denominator subtraction practice"
         },
         {
@@ -15784,7 +15879,12 @@
         },
         {
           "method": "click",
-          "target": "[data-practice-type=\"bar-to-line-same-amount\"]",
+          "target": "[data-entry-chooser]",
+          "description": "Open practice chooser"
+        },
+        {
+          "method": "click",
+          "target": "[data-entry-role=\"browse\"][data-practice-type=\"bar-to-line-same-amount\"]",
           "description": "Start the location task"
         },
         {
@@ -15851,7 +15951,12 @@
         },
         {
           "method": "click",
-          "target": "[data-practice-type=\"bar-to-line-same-amount\"]",
+          "target": "[data-entry-chooser]",
+          "description": "Open practice chooser"
+        },
+        {
+          "method": "click",
+          "target": "[data-entry-role=\"browse\"][data-practice-type=\"bar-to-line-same-amount\"]",
           "description": "Start the location task"
         },
         {
@@ -15914,7 +16019,12 @@
         },
         {
           "method": "click",
-          "target": "[data-practice-type=\"bar-to-line-same-amount\"]",
+          "target": "[data-entry-chooser]",
+          "description": "Open practice chooser"
+        },
+        {
+          "method": "click",
+          "target": "[data-entry-role=\"browse\"][data-practice-type=\"bar-to-line-same-amount\"]",
           "description": "Start the location task"
         },
         {
@@ -15982,7 +16092,12 @@
         },
         {
           "method": "click",
-          "target": "[data-practice-type=\"bar-to-line-same-amount\"]",
+          "target": "[data-entry-chooser]",
+          "description": "Open practice chooser"
+        },
+        {
+          "method": "click",
+          "target": "[data-entry-role=\"browse\"][data-practice-type=\"bar-to-line-same-amount\"]",
           "description": "Start the location task"
         },
         {
@@ -16039,7 +16154,12 @@
         },
         {
           "method": "click",
-          "target": "[data-practice-type=\"bar-to-line-same-amount\"]",
+          "target": "[data-entry-chooser]",
+          "description": "Open practice chooser"
+        },
+        {
+          "method": "click",
+          "target": "[data-entry-role=\"browse\"][data-practice-type=\"bar-to-line-same-amount\"]",
           "description": "Start the location task"
         },
         {
@@ -16102,7 +16222,12 @@
         },
         {
           "method": "click",
-          "target": "[data-practice-type=\"bar-to-line-same-amount\"]",
+          "target": "[data-entry-chooser]",
+          "description": "Open practice chooser"
+        },
+        {
+          "method": "click",
+          "target": "[data-entry-role=\"browse\"][data-practice-type=\"bar-to-line-same-amount\"]",
           "description": "Start the location task"
         },
         {
@@ -16167,7 +16292,12 @@
         },
         {
           "method": "click",
-          "target": "[data-practice-type=\"bar-to-line-same-amount\"]",
+          "target": "[data-entry-chooser]",
+          "description": "Open practice chooser"
+        },
+        {
+          "method": "click",
+          "target": "[data-entry-role=\"browse\"][data-practice-type=\"bar-to-line-same-amount\"]",
           "description": "Start the location task"
         },
         {
@@ -16234,7 +16364,12 @@
         },
         {
           "method": "click",
-          "target": "[data-practice-type=\"bar-to-line-same-amount\"]",
+          "target": "[data-entry-chooser]",
+          "description": "Open practice chooser"
+        },
+        {
+          "method": "click",
+          "target": "[data-entry-role=\"browse\"][data-practice-type=\"bar-to-line-same-amount\"]",
           "description": "Start the current location task"
         },
         {
@@ -16886,22 +17021,77 @@
       "behavior": "Establish the original comparison and submit an equivalent unsigned distance, then inspect the accepted form and direct progression.",
       "configuration": "plan51-static-distance",
       "startingSurface": "mounted-app-entry",
-      "viewport": { "width": 360, "height": 740 },
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
       "motionMode": "reduced-motion",
       "witness": "browser",
       "actions": [
-        { "step": 1, "method": "click", "target": "[data-practice-type=\"fraction-distance\"]", "description": "Start registered distance set" },
-        { "step": 2, "method": "click", "target": ".app-visual-view input[value=\"<\"]", "description": "Choose less than" },
-        { "step": 3, "method": "click", "target": ".app-visual-view .plan51-response button[type=\"submit\"]", "description": "Establish comparison" },
-        { "step": 4, "method": "fill", "target": ".app-visual-view [data-plan51-focus=\"numerator\"]", "value": "1", "description": "Enter equivalent numerator" },
-        { "step": 5, "method": "fill", "target": ".app-visual-view [data-plan51-focus=\"denominator\"]", "value": "2", "description": "Enter equivalent denominator" },
-        { "step": 6, "method": "click", "target": ".app-visual-view .plan51-response button[type=\"submit\"]", "description": "Accept distance" }
+        {
+          "method": "click",
+          "target": "[data-entry-chooser]",
+          "description": "Open practice chooser"
+        },
+        {
+          "step": 1,
+          "method": "click",
+          "target": "[data-entry-role=\"browse\"][data-practice-type=\"fraction-distance\"]",
+          "description": "Start registered distance set"
+        },
+        {
+          "step": 2,
+          "method": "click",
+          "target": ".app-visual-view input[value=\"<\"]",
+          "description": "Choose less than"
+        },
+        {
+          "step": 3,
+          "method": "click",
+          "target": ".app-visual-view .plan51-response button[type=\"submit\"]",
+          "description": "Establish comparison"
+        },
+        {
+          "step": 4,
+          "method": "fill",
+          "target": ".app-visual-view [data-plan51-focus=\"numerator\"]",
+          "value": "1",
+          "description": "Enter equivalent numerator"
+        },
+        {
+          "step": 5,
+          "method": "fill",
+          "target": ".app-visual-view [data-plan51-focus=\"denominator\"]",
+          "value": "2",
+          "description": "Enter equivalent denominator"
+        },
+        {
+          "step": 6,
+          "method": "click",
+          "target": ".app-visual-view .plan51-response button[type=\"submit\"]",
+          "description": "Accept distance"
+        }
       ],
-      "expect": { "capture": { "target": ".app-episode", "type": "innerHTML" }, "assertions": [
-        { "type": "hasSelector", "target": ".app-visual-view .plan51-result" },
-        { "type": "hasSelector", "target": ".app-visual-view .plan51-next" },
-        { "type": "hasSelector", "target": ".app-episode[data-current-item-id=\"distance-01\"]" }
-      ] }
+      "expect": {
+        "capture": {
+          "target": ".app-episode",
+          "type": "innerHTML"
+        },
+        "assertions": [
+          {
+            "type": "hasSelector",
+            "target": ".app-visual-view .plan51-result"
+          },
+          {
+            "type": "hasSelector",
+            "target": ".app-visual-view .plan51-next"
+          },
+          {
+            "type": "hasSelector",
+            "target": ".app-episode[data-current-item-id=\"distance-01\"]"
+          }
+        ]
+      }
     }
   ]
 }

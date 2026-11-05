@@ -1121,3 +1121,13 @@ body,
 .comparison-record-panel button { font: inherit; color: inherit; background: #fff; border: 1px solid currentColor; border-radius: .35rem; padding: .5rem .75rem; }
 .comparison-record-panel summary:focus-visible, .comparison-record-panel button:focus-visible { outline: 3px solid #1d4f9b; outline-offset: 2px; }
 .comparison-record-pair { display: inline-flex; align-items: center; gap: .2em; vertical-align: middle; }
+
+/* Compact entry: allow the title and controls to reflow at enlarged text. */
+.app-entry-title { overflow-wrap: anywhere; }
+.app-entry-header { padding-top: max(4rem, 12vh); }
+.app-entry-page > .app-practice-choice { align-self: flex-start; max-width: 100%; }
+.app-chooser-button { align-self: flex-start; margin-top: .75rem; min-height: 3.25rem; padding: .7rem 1rem; font: inherit; color: var(--app-accent); background: transparent; border: 1px solid currentColor; border-radius: .65rem; cursor: pointer; }
+.app-chooser-region { max-width: 100%; margin-block: .75rem 1rem; }
+.app-chooser-group { margin-block: 1rem; }
+.app-chooser-group h2 { font-size: 1.15rem; margin: 0 0 .6rem; }
+.app-chooser-region .app-practice-choice { max-width: 100%; white-space: normal; overflow-wrap: anywhere; }

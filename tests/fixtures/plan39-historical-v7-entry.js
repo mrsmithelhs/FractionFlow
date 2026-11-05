@@ -18,4 +18,4 @@ if (historicalPlan39?.episodeDefinition?.revision !== '1'
   throw new Error('Plan 39 historical fixture did not load all eight revision-1 items');
 }
 
-createFractionFlowApp({ root, practiceTypes, navigationMode: 'legacy-acknowledged' }).mount();
+createFractionFlowApp({ root, practiceTypes, navigationMode: 'legacy-acknowledged', entryMode: 'historical-flat' }).mount();

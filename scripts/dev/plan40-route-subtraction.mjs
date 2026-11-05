@@ -117,7 +117,8 @@ export function buildPlan40SubtractionSetActions({ view, supportProfile }) {
   }));
 
   // Re-enter the set
-  actions.push(action('click', '[data-practice-type="unlike-denominator-subtraction"]', {
+  actions.push(action('click', '[data-entry-chooser]', { description: 'Open practice chooser' }));
+      actions.push(action('click', '[data-entry-role="browse"][data-practice-type="unlike-denominator-subtraction"]', {
     description: 'Re-enter unlike-subtraction practice set',
   }));
   const host = view === 'visual' ? '.app-visual-view' : '.app-linear-view';

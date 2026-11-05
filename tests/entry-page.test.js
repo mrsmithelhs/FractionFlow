@@ -49,7 +49,7 @@ describe('Plan 12 entry page', () => {
   });
 
   it('reaches the new same-denominator episode from its separate entry goal', () => {
-    root.querySelector('[data-practice-type="like-denominator-addition"]').click();
+    openChooser(root); root.querySelector('[data-practice-type="like-denominator-addition"]').click();
     expect(app.getState().beat).toBe('encounter');
     expect(app.getState().episodeDefinition.id).toBe('phase-3-like-denominator-addition');
     expect(app.getState().episodeDefinition.includeReflection).toBe(false);
@@ -188,3 +188,8 @@ describe('Plan 12 entry page', () => {
     },
   );
 });
+
+function openChooser(root) {
+  const chooser = root.querySelector('[data-entry-chooser]');
+  if (chooser.getAttribute('aria-expanded') === 'false') chooser.click();
+}

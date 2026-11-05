@@ -26,6 +26,53 @@ const matrixPath = path.resolve(__dirname, 'routes/route-matrix.json');
 // 2252458a767a322b23946b701085958eafc2fb0f9c416d4a8c3ee4c6bafa8cbd.
 const PRE_PLAN17_ROUTE_PREFIX_HASH = '861c315fa1cff3a3e3daa949c53c41a27d7bf27ba54a0981b02a5bd3f0e87650';
 
+// Remove only the approved entry setup when checking the original route fingerprints.
+const migratedEntryIndices = new Set([55, 56, ...Array.from({ length: 16 }, (_, i) => i + 65), ...Array.from({ length: 8 }, (_, i) => i + 91), 116]);
+function originalEntryRoutes(routes) {
+  return routes.map((route, index) => {
+    if (!migratedEntryIndices.has(index)) return route;
+    const actions = [];
+    for (let i = 0; i < route.actions.length; i++) {
+      const action = route.actions[i];
+      if (action.target === '[data-entry-chooser]') {
+        expect(action).toEqual({ method: 'click', target: '[data-entry-chooser]', description: 'Open practice chooser' });
+        const next = route.actions[++i];
+        expect(next?.target).toMatch(/^\[data-entry-role="browse"\]\[data-practice-type=/);
+        actions.push({ ...next, target: next.target.replace('[data-entry-role="browse"]', '') });
+      } else {
+        expect(action.target || '').not.toMatch(/^\[data-entry-role="browse"\]\[data-practice-type=/);
+        actions.push(action);
+      }
+    }
+    expect(actions.length).toBeLessThan(route.actions.length);
+    return { ...route, actions };
+  });
+}
+
+it('changes historical fixture entries only by requesting the flat entry', () => {
+  const pins = {
+    'plan18-historical-entry.js': 'c510d3d60897c4aef774ff8ea66498df4f054bd5e5937bc33a81a9dec70951c2',
+    'plan34-historical-entry.js': '5adaaf045baa7b5ab5478cfb2cd4a88b1848733aa8d517019ca52a2ce71e9e0f',
+    'plan39-historical-v7-entry.js': 'bff50ae21a834b434c0aee430ffcf24b99460277ef90a71e895ce3a7ccc37b30',
+  };
+  for (const [name, pin] of Object.entries(pins)) {
+    const source = fs.readFileSync(path.resolve(__dirname, 'fixtures', name), 'utf8').replace(/\r\n/g, '\n');
+    const option = ", entryMode: 'historical-flat'";
+    expect(source.split(option)).toHaveLength(2);
+    expect(createHash('sha256').update(source.replace(option, '')).digest('hex')).toBe(pin);
+  }
+});
+
+it('uses the chooser only for current Plan 39 re-entry', async () => {
+  const { buildPlan39BridgeActions } = await import('../scripts/dev/plan39-route-bridge.mjs');
+  const base = { view: 'visual', supportProfile: 'high-support', returnReentry: true };
+  const historical = buildPlan39BridgeActions(base);
+  const current = buildPlan39BridgeActions({ ...base, currentEntry: true });
+  expect(historical.some(a => a.target === '[data-entry-chooser]')).toBe(false);
+  expect(current.some(a => a.target === '[data-entry-chooser]')).toBe(true);
+  expect(current.find(a => a.description === 'Plan39 re-enter bridge set').target).toBe('[data-entry-role="browse"][data-practice-type="bar-to-line-same-amount"]');
+});
+
 describe('Plan 14 Reachable Behavior Route Contract & Matrix Schema', () => {
   const matrix = JSON.parse(fs.readFileSync(matrixPath, 'utf8'));
 
@@ -136,9 +183,9 @@ describe('Plan 14 Reachable Behavior Route Contract & Matrix Schema', () => {
 
   it('pins the original 91 route objects and migrates only Plan 39 context mappings to v1 history', async () => {
     expect(matrix.routes).toHaveLength(117);
-    expect(createHash('sha256').update(JSON.stringify(matrix.routes.slice(0, 91))).digest('hex'))
+    expect(createHash('sha256').update(JSON.stringify(originalEntryRoutes(matrix.routes).slice(0, 91))).digest('hex'))
       .toBe('eee8367c25fdaa88612b516a05b6989a919ae10b8e822a6339bea9b4c3c631de');
-    expect(createHash('sha256').update(JSON.stringify(matrix.routes.slice(0, 98))).digest('hex'))
+    expect(createHash('sha256').update(JSON.stringify(originalEntryRoutes(matrix.routes).slice(0, 98))).digest('hex'))
       .toBe('e30aa7a3ee8a4f4f0567d245256ed954881d931f2d2136304320cc39a25a93ef');
     const contexts = JSON.parse(fs.readFileSync(path.resolve(__dirname, 'routes/plan34-context-map.json'), 'utf8')).contexts;
     const contextsBeforeRepair03 = { ...contexts };
@@ -325,7 +372,7 @@ describe('Plan 14 Reachable Behavior Route Contract & Matrix Schema', () => {
   });
 
   it('preserves learner and prototype routes while adding mounted high/medium support witnesses', () => {
-    const baselineRoutes = matrix.routes.slice(0, 57);
+    const baselineRoutes = originalEntryRoutes(matrix.routes).slice(0, 57);
     expect(matrix.routes.length).toBeGreaterThanOrEqual(57);
     expect(createHash('sha256').update(JSON.stringify(baselineRoutes)).digest('hex'))
       .toBe('97ed8bc2e0461611fba8eb8691f00ce76bce7f6c49452ff74cf5ef0124b3358c');
@@ -455,7 +502,7 @@ describe('Plan 14 Reachable Behavior Route Contract & Matrix Schema', () => {
       const actions = route.actions;
       const actionText = actions.map((action) => JSON.stringify(action)).join('\n');
       expect(actions.some((action) => action.target === `[data-support-id="${support}"]`)).toBe(true);
-      expect(actions.some((action) => action.target === `[data-practice-type="like-denominator-addition"]`)).toBe(true);
+      expect(actions.some((action) => action.target === `[data-entry-role="browse"][data-practice-type="like-denominator-addition"]`)).toBe(true);
       expect(actionText).toContain(`.app-${view}-view .recovery-feedback`);
       expect(actionText).toContain('Both bars have 7 equal parts. Those parts are the same size.');
       expect(actionText).toContain('The denominator stays the same. Add only the top numbers.');
@@ -546,7 +593,7 @@ describe('Plan 14 Reachable Behavior Route Contract & Matrix Schema', () => {
   });
 
   it('preserves the Plan 11 route baseline and witnesses executed motion, interruption, Replay, static arms, and both support profiles', () => {
-    const baselineRoutes = matrix.routes.slice(0, 57);
+    const baselineRoutes = originalEntryRoutes(matrix.routes).slice(0, 57);
     expect(createHash('sha256').update(JSON.stringify(baselineRoutes)).digest('hex'))
       .toBe('97ed8bc2e0461611fba8eb8691f00ce76bce7f6c49452ff74cf5ef0124b3358c');
     expect(baselineRoutes.filter((route) => !route.id.startsWith('ROUTE-PLAN22-36-'))).toHaveLength(54);

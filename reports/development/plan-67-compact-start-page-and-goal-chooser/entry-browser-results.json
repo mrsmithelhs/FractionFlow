@@ -1,0 +1,139 @@
+[
+  {
+    "capturedAt": "2026-11-05T05:59:57.202Z",
+    "sourceHashes": {
+      "src/app/app.js": "bb4bc9e6ae8f5fb7d87633534b99597d45655c080becbc62a1c399cc2023f6b5",
+      "src/app/styles.css": "f61c399105d8c843cf27197611d9bfb4b6ed6094a4c5bb45e6f81fe625c96fda",
+      "src/app/entry-projection.js": "da14cdade8c203a2269bdf4f0018eda5d792e386b1fc37a911eb3f7069a19fdc"
+    }
+  },
+  {
+    "width": 360,
+    "height": 740,
+    "scale": 100,
+    "geometry": {
+      "title": {
+        "left": 12,
+        "right": 348,
+        "top": 100.796875,
+        "bottom": 143.796875
+      },
+      "viewport": 360,
+      "scrollWidth": 360
+    },
+    "keyboardLaunch": true,
+    "returnFocus": true
+  },
+  {
+    "width": 360,
+    "height": 740,
+    "scale": 200,
+    "geometry": {
+      "title": {
+        "left": 24,
+        "right": 336,
+        "top": 49,
+        "bottom": 219
+      },
+      "viewport": 360,
+      "scrollWidth": 360
+    },
+    "keyboardLaunch": true,
+    "returnFocus": true
+  },
+  {
+    "width": 1093,
+    "height": 614,
+    "scale": 100,
+    "geometry": {
+      "title": {
+        "left": 32.78125,
+        "right": 1060.21875,
+        "top": 106.453125,
+        "bottom": 180.453125
+      },
+      "viewport": 1093,
+      "scrollWidth": 1093
+    },
+    "keyboardLaunch": true,
+    "returnFocus": true
+  },
+  {
+    "width": 1093,
+    "height": 614,
+    "scale": 200,
+    "geometry": {
+      "title": {
+        "left": 32.78125,
+        "right": 1060.21875,
+        "top": 160.78125,
+        "bottom": 262.78125
+      },
+      "viewport": 1093,
+      "scrollWidth": 1093
+    },
+    "keyboardLaunch": true,
+    "returnFocus": true
+  },
+  {
+    "browserZoomAttempt": {
+      "before": {
+        "dpr": 1,
+        "width": 1280
+      },
+      "after": {
+        "dpr": 1,
+        "width": 1280
+      },
+      "verified": false
+    }
+  },
+  {
+    "id": "sum-under-one",
+    "item": "two-thirds-plus-one-fourth"
+  },
+  {
+    "id": "like-denominator-addition",
+    "item": "two-sevenths-plus-three-sevenths"
+  },
+  {
+    "id": "like-denominator-subtraction",
+    "item": "takeaway-8-5-minus-2"
+  },
+  {
+    "id": "unlike-denominator-subtraction",
+    "item": "plan40-construct-half-fifth-10"
+  },
+  {
+    "id": "bar-to-line-same-amount",
+    "item": "bridge-01-half-2"
+  },
+  {
+    "id": "symbolic-fraction-comparison",
+    "item": "plan45-compare-01"
+  },
+  {
+    "id": "number-line-collection",
+    "item": "collection-01"
+  },
+  {
+    "id": "fraction-distance",
+    "item": "distance-01"
+  },
+  {
+    "id": "two-whole-location",
+    "item": "zero-fourths"
+  },
+  {
+    "id": "whole-plus-fraction-construction",
+    "item": "three-fourths"
+  },
+  {
+    "id": "directed-number-line-endpoint",
+    "item": "one-fourth-add-two-fourths"
+  },
+  {
+    "session": "short-magnitude-practice",
+    "item": "plan45-compare-02"
+  }
+]

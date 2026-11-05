@@ -17,7 +17,7 @@ function mount() {
   const root = document.createElement('div');
   document.body.appendChild(root);
   const app = createFractionFlowApp({ root, presentationMode: 'instant-test' }).mount();
-  root.querySelector('[data-practice-type="symbolic-fraction-comparison"]').click();
+  openChooser(root); root.querySelector('[data-practice-type="symbolic-fraction-comparison"]').click();
   return { root, app };
 }
 
@@ -247,3 +247,8 @@ describe('Plan 45 comparison app integration', () => {
     app.destroy();
   });
 });
+
+function openChooser(root) {
+  const chooser = root.querySelector('[data-entry-chooser]');
+  if (chooser.getAttribute('aria-expanded') === 'false') chooser.click();
+}
