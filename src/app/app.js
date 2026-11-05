@@ -1,3 +1,5 @@
+import { createComparisonRecordController } from './comparison-record-controller.js';
+import { createComparisonRecordPanel } from './comparison-record-panel.js';
 import { MAGNITUDE_SESSION_MANIFEST, createMagnitudeSessionController, prepareMagnitudeEntry, isMagnitudeEpisodeComplete } from './magnitude-session.js';
 import { resolvePlan59Context } from '../content/plan59-directed-endpoint-task.js';
 import { PLAN59_CONDITION } from '../interaction/plan59-directed-endpoint-episode.js';
@@ -501,6 +503,7 @@ export function createFractionFlowApp({
   let isTransitioning = false;
   let shellLifetime = 0;
   let magnitudeSession = null;
+  let recordController = null, recordPanel = null, recordEpisodeNotice = null;
   let sessionDialog, sessionStay, sessionLeave, sessionEntryNotice, sessionEntryButton;
   let exitFocus = null, pendingHashDestination = null;
 
@@ -519,6 +522,7 @@ export function createFractionFlowApp({
       globalThis.history.replaceState(null, '', `${globalThis.location.pathname}${globalThis.location.search}`);
   }
   function sessionDisplayFailure() {
+    recordController?.retire();
     if (magnitudeSession) magnitudeSession.exit(magnitudeSession.current().session);
     magnitudeSession = null; currentEpisodeGeneration += 1; distanceRenderGeneration += 1;
     state = null; selectedPracticeType = null; activePracticeItemIndex = null;
@@ -772,6 +776,7 @@ export function createFractionFlowApp({
     entryPage.appendChild(sessionEntryList);
     const sessionCue = makeElement('p', 'app-session-cue'); sessionCue.id = 'fractionflow-session-cue'; sessionCue.textContent = 'Your place in this practice is not saved.'; entryPage.appendChild(sessionCue);
     sessionEntryNotice = makeElement('p', 'app-session-entry-notice'); sessionEntryNotice.setAttribute('role', 'status'); sessionEntryNotice.tabIndex = -1; setHidden(sessionEntryNotice, true); entryPage.appendChild(sessionEntryNotice);
+    recordPanel = createComparisonRecordPanel({ host: entryPage, controller: recordController, practice: () => { const type = practiceTypes.find(t => t.id === 'symbolic-fraction-comparison'); if (type) startPractice(type, { focusEpisode: true, updateFragment: true }); } });
     const aboutLink = makeElement('a', 'app-about-link');
     aboutLink.setAttribute('href', './about.html');
     aboutLink.textContent = 'About FractionFlow';
@@ -808,6 +813,7 @@ export function createFractionFlowApp({
     episodeNavigation.appendChild(nextProblemButton);
     episodeNavigation.appendChild(returnButton);
 
+    recordEpisodeNotice = makeElement('p', 'comparison-record-episode-notice'); recordEpisodeNotice.setAttribute('role', 'status'); episodeNavigation.appendChild(recordEpisodeNotice);
     const viewControls = makeElement('div', 'app-view-controls');
     viewToggle = createButton({
       label: STRINGS.app.readSteps,
@@ -1089,6 +1095,8 @@ export function createFractionFlowApp({
     selectedPracticeType = practiceType;
     activePracticeItemIndex = itemIndex;
     state = candidateState;
+    const remembering = recordController?.install(state);
+    if (recordEpisodeNotice) recordEpisodeNotice.textContent = isPlan45ComparisonEpisode(state) && recordController?.snapshot().enabled && !remembering ? 'A new problem is needed before activity can be remembered.' : '';
     resetEpisodeUiState();
     const episodeEl = appRoot.querySelector('.app-episode');
     const currentItem = practiceType?.items?.[itemIndex];
@@ -1352,6 +1360,7 @@ export function createFractionFlowApp({
   }
 
   function returnToEntry() {
+    recordController?.retire();
     visualPlan59Renderer?.destroy(); linearPlan59Renderer?.destroy();
     visualPlan59Renderer = null; linearPlan59Renderer = null;
     visualCollectionRenderer?.destroy(); linearCollectionRenderer?.destroy();
@@ -1619,6 +1628,7 @@ export function createFractionFlowApp({
       writeHelpOpen: (open) => {
         if (!isCurrent()) return false;
         comparisonHelpOpen = Boolean(open);
+        if (comparisonHelpOpen) recordController?.helpOpened();
         return true;
       },
       focusPrimary: () => isCurrent() ? getVisibleComparisonRegion()?.focusPrimary() ?? false : false,
@@ -2190,7 +2200,9 @@ export function createFractionFlowApp({
       captureComparisonDraft();
       if (action.type === 'propose-common-denominator') commonDenominatorDraft = '';
       const wasResolved = state.status === 'resolved';
+      const recordPreviousState = state;
       state = syncSessionEpisode(state, applyIntent(state, action));
+      if (!isReplaying) recordController?.observe(recordPreviousState, state, action);
       if (action.type === 'revise-comparison-denominator') comparisonConstructionDrafts = {};
       if (action.type === 'submit-fraction-comparison' && state.status === 'resolved') comparisonDraft = '';
       if (action.type === 'request-help') {
@@ -2359,7 +2371,9 @@ export function createFractionFlowApp({
   return {
     mount() {
       if (mounted) return this;
+      recordController = createComparisonRecordController({ onChange: (info) => { recordPanel?.render(); if (recordEpisodeNotice && isPlan45ComparisonEpisode(state)) recordEpisodeNotice.textContent = info.message.includes('could not save') ? info.message : !info.eligible && info.enabled ? 'A new problem is needed before activity can be remembered.' : info.message === 'This problem is no longer being remembered.' ? info.message : '';  } });
       createShell();
+      recordController.refresh();
       if (typeof globalThis.addEventListener === 'function') {
         globalThis.addEventListener('hashchange', handleHashChange);
       }
@@ -2380,6 +2394,7 @@ export function createFractionFlowApp({
       return this;
     },
     destroy() {
+      recordController?.destroy(); recordPanel?.destroy(); recordController = null; recordPanel = null;
       shellLifetime += 1;
       currentEpisodeGeneration += 1;
       distanceRenderGeneration += 1;

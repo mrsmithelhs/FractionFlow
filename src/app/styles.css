@@ -1113,3 +1113,10 @@ body,
 .plan45-comparison .plan49-construction button,
 .plan45-comparison .plan49-helper-input { max-width: 100%; box-sizing: border-box; }
 .plan45-comparison .plan49-accepted-form { display: flex; flex-wrap: wrap; align-items: center; gap: 0.4rem; }
+.comparison-record-panel { margin: 1rem 0; max-width: 44rem; }
+.comparison-record-panel summary { cursor: pointer; }
+.comparison-record-panel button { margin: .25rem .35rem .25rem 0; min-height: 2.75rem; }
+.comparison-record-panel li { margin-block: .6rem; }
+.comparison-record-episode-notice { margin: .4rem 0; }
+.comparison-record-panel button { font: inherit; color: inherit; background: #fff; border: 1px solid currentColor; border-radius: .35rem; padding: .5rem .75rem; }
+.comparison-record-panel summary:focus-visible, .comparison-record-panel button:focus-visible { outline: 3px solid #1d4f9b; outline-offset: 2px; }
