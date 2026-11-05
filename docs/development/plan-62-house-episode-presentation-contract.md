@@ -1,7 +1,8 @@
 ---
 id: plan-62
 title: House Episode Presentation Contract and Comparison Alignment
-status: delivered
+status: complete
+resolution: "Owner accepted the rendered comparison/distance presentation and maintained house contract on 2026-11-04 after technical review. Other migrations and entry-title reflow remain follow-ups; no deployment."
 depends_on: [plan-52, plan-60]
 gate: "Approve representative surface inventory, flexible presentation contract and exact first-slice changes before source. Serialize shared edits after Plan60 repair/closure; owner rendered acceptance and deployment remain separate."
 summary: >-
