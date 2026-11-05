@@ -1,0 +1,38 @@
+# Plan 66 Requirement 0: proposed synthesis scope
+
+2026-11-05 · Proposal for orchestrator approval; not a dossier or an adopted design.
+
+## Intake and starting point
+
+Preflight `node scripts/dev/plan-status.js check 66` returned RUNNABLE. The three owner-supplied returns are present under `reports/orchestration/practice-scheduler-research/incoming/`: `chatgpt-practice-scheduler-research.md` (ChatGPT self-identification and date 2026-11-04), `claude-practice-scheduler-research.md` (owner-attributed Claude), and `gemini-practice-scheduler-research.md` (owner-attributed Gemini; self-label does not establish provider). Their SHA-256 hashes match `reports/orchestration/practice-scheduler-research/intake-2026-11-04.md`. The identical brief is `reports/orchestration/practice-scheduler-research/deep-research-prompt.md`. File presence, attribution and reported access are not independent validation of the research. Originals remain unchanged. ChatGPT's missing portable links, Claude's reported abstract/snippet limits, and Gemini's image placeholders and emphatic policy conclusions require care. No original study has been verified in this Requirement 0 pass.
+
+Existing project leads: `reports/orchestration/purposeful-episode-task-variation-research.md` and `docs/development/purposeful-task-variation-design/` describe prior variation research and limits; Plans 29, 35, 57, 61 and 63 are the packet's specified project baseline. Before drawing design conclusions, read their current adopted artifacts and Plan 63 compatibility obligations, founding instruction and architecture, roadmap phases 6–8 and §92, decision log and board. Plan 56 owns unadopted support/independence design; Plans 64/65 own shell and entry organization. Inventory and interpret those boundaries; do not decide them here. The packet identifies the Plan 63 record as comparison-only, ordered, without elapsed timestamps or verified identity. Verify actual owning artifacts before relying on further details.
+
+## Proposed questions and limits
+
+1. Which evaluated school-mathematics interventions improve measured learning, retention or transfer against what comparator, and what was bundled with scheduling? What null or negative outcomes and implementation limitations qualify them?
+2. What do fraction representation and variation studies actually test, and which ingredients can or cannot transfer to authored FractionFlow episodes?
+3. What can sparse, assistance-conditioned observations support, and where are prediction, measurement and model simulations distinct from causal educational outcomes? What stays unknown without learner identity, timestamps or broader observations?
+4. What is known about support, learner control, repetition and review, and what must remain a reversible, explicitly unvalidated design hypothesis? How do adult/MOOC results differ in population, selection, retention and infrastructure?
+5. For one small admitted concept/task pool, compare an authored nonadaptive baseline with at most one explainable rule-based direction; specify agency, no-history use, finite sessions, counterexamples, data boundaries and a later evaluation against that baseline. No numeric threshold becomes a fact through repetition.
+
+Use the three returns as discovery leads, not votes; reconcile citations by underlying study, cohort, dataset and outcome rather than report count. Target roughly 6–8 informative cases and 12–20 useful sources as ceilings/guides, not quotas; fewer is acceptable if originals or applicable outcomes are unavailable. Include a school-math null/qualified case, fraction-specific work, support/agency, measurement versus learning, and an adult or professional case only where an accessible relevant evaluation exists. Reuse existing variation research where appropriate without treating its summaries as a substitute for verification of newly load-bearing claims. This is targeted verification, not a new comprehensive literature search.
+
+## Verification priorities and sample
+
+Start with these leads, not established findings; identifiers and claims require confirmation in originals or official evaluation reports:
+
+- Pane et al. (2014), DOI `10.3102/0162373713507480`: resolve the reports' apparent overall-null versus year/subgroup discrepancy, population, comparator, outcome and implementation-year limitations.
+- Rau et al. (2014), DOI `10.1007/s40593-013-0011-7`, and relevant related Rau reports: check schedules, intervention, analyzed sample/exclusions, actual outcomes and possible cohort overlap before claiming interleaving or representation effects. Distinguish distinct papers from independent cohorts.
+- Roschelle et al. (2016), DOI `10.1177/2332858416673968`: identify actual comparator, teacher involvement, feedback and curriculum bundling; do not attribute a system-level effect to a selector.
+- Long and Aleven's shared-control/gamification work: check exact original DOI, allocation, control interface and learning outcomes; incoming ledgers differ in identifiers and claims. Consider Salden et al. on support fading if it becomes load-bearing, checking population and intervention.
+- Beck and Gong (2013), DOI `10.1007/978-3-642-39112-5_44`, and a relevant mastery/prediction paper such as Pelánek and Řihák: determine whether findings are observational, simulated or instructional outcomes; do not convert predicted non-mastery or numerical streaks into policy thresholds.
+- Rushkin et al. (2017) or another accessible adult/MOOC evaluation: inspect selection, post-test attrition, comparison and outcomes; document non-transfer to children and fractions. Check a negative or qualified result rather than requiring a positive adult example.
+
+For every decision-shaping claim inspect the original full text where legally accessible, or a primary official evaluation with its scope explicitly noted. Record stable link/DOI, actual access, sample, design, population, domain, comparator, intervention and support, duration, measured outcome, attrition, uncertainty and relevant confounds; verify source-to-claim fit. An abstract, secondhand summary or provider's assertion of full-text access is not a substitute for having inspected the needed detail. Mark an inaccessible or contradicted claim unverified, remove or qualify the dependent recommendation, and retain the gap. Keep distinct: educational outcomes; engagement/practice measures; prediction/measurement; implementation descriptions/vendor claims; theory; proposed heuristics. Record nulls and plausible failures. Review additional original sources only when they are genuinely load-bearing for an approved decision question, including contrary evidence and the earlier variation brief's overlap.
+
+## Stopping rule and gate
+
+Stop after the bounded cases and all claims actually used to support the proposed contract have either been checked to the necessary depth or explicitly downgraded/omitted for access or fit. If originals conflict, document the disagreement and its effect; do not force consensus. If an unresolved gap prevents a safe decision, present alternatives and ask orchestration whether to narrow the decision or authorize a targeted expansion; do not silently grow the search. Do not claim that synthetic histories establish learning, effectiveness or actual learner behavior. Do not collect learner data or change runtime, storage, source, tests, canonical documents or packet status.
+
+**Approval requested:** May the investigator proceed with this scope and verification order to the source-keyed matrix and bounded scheduler/evidence design? Approval of synthesis is not owner adoption, a pilot authorization or deployment permission.
