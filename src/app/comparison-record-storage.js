@@ -11,16 +11,26 @@ export function createComparisonRecordStorage({ indexedDB = globalThis.indexedDB
   let dbPromise;
   function open() {
     if (dbPromise) return dbPromise;
-    dbPromise = new Promise((resolve, reject) => {
+    let retired = false;
+    const pending = new Promise((resolve, reject) => {
       if (!indexedDB?.open) return reject(new Error('storage unavailable'));
       let request;
       try { request = indexedDB.open(name, 1); } catch (e) { reject(e); return; }
-      request.onupgradeneeded = () => { if (!request.result.objectStoreNames.contains(STORE)) request.result.createObjectStore(STORE); };
-      request.onerror = () => reject(request.error || new Error('open failed'));
-      request.onblocked = () => reject(new Error('open blocked'));
-      request.onsuccess = () => { const db = request.result; db.onversionchange = () => { db.close(); dbPromise = null; }; resolve(db); };
-    }).catch(e => { dbPromise = null; throw e; });
-    return dbPromise;
+      request.onupgradeneeded = () => {
+        if (retired) { request.transaction.abort(); return; }
+        if (!request.result.objectStoreNames.contains(STORE)) request.result.createObjectStore(STORE);
+      };
+      request.onerror = () => { retired = true; reject(request.error || new Error('open failed')); };
+      request.onblocked = () => { retired = true; reject(new Error('open blocked')); };
+      request.onsuccess = () => {
+        const db = request.result;
+        if (retired) { db.close(); return; }
+        db.onversionchange = () => { db.close(); if (dbPromise === cached) dbPromise = null; };
+        resolve(db);
+      };
+    });
+    const cached = pending.catch(e => { if (dbPromise === cached) dbPromise = null; throw e; });
+    dbPromise = cached;    return dbPromise;
   }
   async function transact(fn, { create = false } = {}) {
     const db = await open();

@@ -58,6 +58,33 @@ describe('comparison record', () => {
     const storage=createComparisonRecordStorage({indexedDB:fakeIdb});
     await expect(storage.record(token(100),obs(1))).rejects.toThrow('synthetic quota abort');
     expect(root.entries).toHaveLength(0);
+  });  it('rejects contradictory assistance on reads and acceptance updates', () => {
+    let root=emptyRoot(token(100),true);
+    const yes={...assistance,model:'yes'};
+    root=applyObservation(root,token(100),{...obs(1,'first-accepted'),assistance:yes}).root;
+    const corrupt=structuredClone(root); corrupt.entries[0].acceptedAssistance={...corrupt.entries[0].acceptedAssistance,model:'no'};
+    expect(()=>validateRoot(corrupt)).toThrow();
+    let retry=emptyRoot(token(100),true);
+    retry=applyObservation(retry,token(100),{...obs(2),assistance:yes}).root;
+    expect(()=>applyObservation(retry,token(100),obs(2,'acceptance'))).toThrow();
+    expect(()=>applyObservation(retry,token(100),{...obs(2,'acceptance'),assistance:{...assistance,model:'unknown'}})).toThrow();
+    const uncertain={...assistance,model:'unknown'};
+    let unknown=emptyRoot(token(100),true);
+    unknown=applyObservation(unknown,token(100),{...obs(3),assistance:uncertain}).root;
+    expect(applyObservation(unknown,token(100),{...obs(3,'acceptance'),assistance:uncertain}).result).toBe('updated');
+    expect(()=>applyObservation(unknown,token(100),obs(3,'acceptance'))).toThrow();
+  });
+  it('closes a late success after a blocked open without breaking a newer open', async () => {
+    const requests=[]; let oldClosed=0, newClosed=0;
+    const root=emptyRoot(token(100),true);
+    const working={close(){newClosed++;},transaction(){const tx={objectStore(){return {get(){const req={};queueMicrotask(()=>{req.result=root;req.onsuccess();queueMicrotask(()=>tx.oncomplete());});return req;}}}};return tx;}};
+    const fakeIdb={open(){const req={};requests.push(req);return req;}};
+    const storage=createComparisonRecordStorage({indexedDB:fakeIdb});
+    const first=storage.read(); requests[0].onblocked(); await expect(first).rejects.toThrow('open blocked');
+    const second=storage.read(); requests[1].result=working; requests[1].onsuccess();
+    requests[0].result={close(){oldClosed++;}}; requests[0].onsuccess();
+    expect((await second).generation).toBe(token(100)); expect(oldClosed).toBe(1); expect(newClosed).toBe(0);
+    expect((await storage.read()).generation).toBe(token(100));
   });  it('reports unavailable storage without claiming success', async () => {
     const storage=createComparisonRecordStorage({indexedDB:null});
     await expect(storage.enable()).rejects.toThrow('storage unavailable');

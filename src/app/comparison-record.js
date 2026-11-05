@@ -8,6 +8,7 @@ const exact = (v, keys) => v && typeof v === 'object' && !Array.isArray(v) && Ob
 const tokenOk = v => typeof v === 'string' && /^[0-9a-f]{32}$/.test(v);
 const flags = ['model','help','construction'];
 const assistanceOk = v => exact(v, flags) && flags.every(k => ['yes','no','unknown'].includes(v[k]));
+const assistanceConsistent = (first, later, same) => flags.every(k => same ? first[k] === later[k] : first[k] === 'no' || (first[k] === 'yes' ? later[k] === 'yes' : later[k] !== 'no'));
 const identityOk = identity => {
   if (!exact(identity, idKeys)) return false;
   try {
@@ -25,7 +26,8 @@ export function validateEntry(entry) {
       || !identityOk(entry.identity) || !['high','medium'].includes(entry.support)
       || !['accepted','retry'].includes(entry.first) || !['accepted','unresolved'].includes(entry.outcome)
       || !assistanceOk(entry.firstAssistance) || (entry.outcome === 'accepted' ? !assistanceOk(entry.acceptedAssistance) : entry.acceptedAssistance !== null)
-      || (entry.first === 'accepted' && entry.outcome !== 'accepted')) throw new TypeError('invalid record entry');
+      || (entry.first === 'accepted' && entry.outcome !== 'accepted')
+      || (entry.outcome === 'accepted' && !assistanceConsistent(entry.firstAssistance, entry.acceptedAssistance, entry.first === 'accepted'))) throw new TypeError('invalid record entry');
   return structuredClone(entry);
 }
 export function emptyRoot(generation, enabled = false) {
