@@ -1,7 +1,7 @@
 ---
 id: plan-63
 title: Optional Local Comparison Practice Record
-status: in-progress
+status: delivered
 depends_on: [plan-61, plan-60, plan-62]
 gate: "Approve observation/privacy/storage/UI mechanism before source; verify pure record and persistence checkpoint before mounted integration. Owner rendered acceptance and deployment remain separate."
 summary: >-
