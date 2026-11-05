@@ -20,3 +20,5 @@ Orchestrator review should verify the mapping and recommendation against source 
 Advisor consultation not warranted: this is prose-only report work with no behavioral surface; no advisor ran. Scope review was performed by the orchestrator, not an owner adoption or accessibility review.
 
 Three unrelated untracked Plan 39 route receipts were present at preflight and remain untouched. The ordinary Git stage failed because `.git/index.lock` creation was denied; the lock was absent and `git add --refresh -- .` confirmed the denial. Explicit-path staging and local commits used approved elevation. Ready for orchestrator review: yes; ready for owner adoption or implementation: pending orchestrator review and owner decision.
+
+Orchestrator's initial dossier read found no blocking draft issue and requested a clarification, recorded in `177a96e`: configure primary launch and grouping from admitted capabilities without a second catalog or hardcoded choice; the duplicated primary and reopening browse after return are owner-review tradeoffs, not usability evidence. This is still unrendered and pending formal delivery review and owner adoption.
