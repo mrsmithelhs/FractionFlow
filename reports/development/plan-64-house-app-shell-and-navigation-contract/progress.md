@@ -7,3 +7,11 @@ Validation: inspected current shell, session, record controller, relevant Plan 4
 Advisor consultation not warranted at this paper gate: docs-only proposal, and Plan 64 explicitly calls for no advisor here. A callable subagent tool with model override is present; a substantial later implementation may require the one bounded Terra-medium review under the packet and owner limits, with actual posture and disposition recorded then.
 
 Ready for orchestrator review of Requirement 0: **yes**. Ready for source implementation: **no**. Await approval of proposal and exact source window; owner approval is required for any new confirmation/discard/reset policy. Owner rendered acceptance and deployment remain separate.
+
+## First-slice delivery
+
+Implemented and locally committed at `478d8a0`: shared “Back to start” for active and final session return, precise session refusal copy retained across navigation updates, and maintained shell contract. Existing exit triggers, destinations, task responsibilities and record policies remain unchanged. No CSS, renderer, scheduler, record-controller or start-page changes. Source ownership and Git window are released on delivery.
+
+Verification and limits are in `evidence.md`: failing-first copy checks; focused mounted tests; representative visible-control Chrome walks and screenshots; isolated filtered Plan 43 matrix 11/11; build and lint passed. Full suite had 646 passes and one dev-console helper timeout; the separately rerun file passed 17 including that case. Browser coverage is representative, not exhaustive, and does not establish physical-device, screen-reader speech, every pending-save race or learner outcomes. Owner rendered acceptance remains required; the entry-title reflow issue is separate.
+
+Advisor consultation not warranted for this bounded label and notice-preservation slice: no change to routing destination, confirmation, controller or reset policy; the small conditional prevents approved copy being overwritten. No advisor ran; no Terra/Sol/Astra substitution or fan-out. Independent orchestrator verification remains required. Three pre-existing untracked Plan 39 route receipts remain untouched. No status, push or deployment changes. Ready for orchestrator delivery review: yes; owner acceptance: pending.
