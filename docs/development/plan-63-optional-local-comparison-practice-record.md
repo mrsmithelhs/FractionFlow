@@ -1,7 +1,8 @@
 ---
 id: plan-63
 title: Optional Local Comparison Practice Record
-status: delivered
+status: complete
+resolution: "Owner accepted and closed the optional local comparison record on 2026-11-04 after Repair02 technical review; new episode/task/support/revision/session changes must assess record compatibility and coverage explicitly. No adaptive policy, push or deployment."
 depends_on: [plan-61, plan-60, plan-62]
 gate: "Approve observation/privacy/storage/UI mechanism before source; verify pure record and persistence checkpoint before mounted integration. Owner rendered acceptance and deployment remain separate."
 summary: >-
