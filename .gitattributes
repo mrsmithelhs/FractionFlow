@@ -1,2 +1,5 @@
 # Auto detect text files and perform LF normalization
 * text=auto
+
+# Preserve downloaded external research originals, including provider line endings.
+reports/orchestration/practice-scheduler-research/incoming/*-research.md -text

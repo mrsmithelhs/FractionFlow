@@ -1,8 +1,10 @@
 # External practice-scheduler research returns
 
 This folder receives owner-downloaded original Markdown from web research tools.
-It contains no completed research reports yet. The providers do not have repository
-access and must not be asked to write here themselves.
+The owner reported all three returns on 2026-11-04; they are present under the
+filenames below. See `../intake-2026-11-04.md` for hashes and preliminary provenance/
+format limits. Presence is not source verification or approval of recommendations.
+The providers do not have repository access and must not be asked to write here.
 
 Use the identical full brief in `../deep-research-prompt.md` independently in
 ChatGPT Deep Research, Claude's research tool and Gemini's research tool. Do not

@@ -1,7 +1,8 @@
 ---
 id: plan-64
 title: House App Shell and Navigation Contract
-status: delivered
+status: complete
+resolution: "Owner accepted the bounded shell/navigation presentation and contract on 2026-11-04 after technical review. Existing exit-policy exceptions and evidence limits retained; no deployment."
 depends_on: [plan-43, plan-60, plan-62, plan-63]
 gate: "Approve shell inventory, navigation/loss matrix, exact copy and bounded implementation before source; relay new exit-policy choices to owner. Owner rendered acceptance and deployment remain separate."
 summary: >-

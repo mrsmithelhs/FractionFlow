@@ -1,11 +1,9 @@
 ---
 id: plan-65
 title: Start-Page Practice Organization Design
-status: draft
+status: in-progress
 depends_on: [plan-26, plan-60, plan-62, plan-63]
 gate: "Approve compact inventory and two-option design scope; owner adopts one entry organization and first slice before a separate source packet. No scheduler behavior is assumed."
-superseded_by: null
-resolution: null
 summary: >-
   Replace the growing first-screen episode catalog with a proposed compact
   practice/choose-practice organization, preserving current capabilities,
