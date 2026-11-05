@@ -1,7 +1,7 @@
 ---
 id: plan-64
 title: House App Shell and Navigation Contract
-status: in-progress
+status: delivered
 depends_on: [plan-43, plan-60, plan-62, plan-63]
 gate: "Approve shell inventory, navigation/loss matrix, exact copy and bounded implementation before source; relay new exit-policy choices to owner. Owner rendered acceptance and deployment remain separate."
 summary: >-
