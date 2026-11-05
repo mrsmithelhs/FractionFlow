@@ -1,7 +1,7 @@
 ---
 id: plan-67
 title: Compact Start Page and Goal Chooser
-status: in-progress
+status: delivered
 depends_on: [plan-65, plan-64, plan-63]
 gate: "Approve capability projection, disclosure/focus/failure contracts, exact source/test migration and reflow mechanism before source. Owner rendered acceptance and deployment remain separate."
 summary: >-
