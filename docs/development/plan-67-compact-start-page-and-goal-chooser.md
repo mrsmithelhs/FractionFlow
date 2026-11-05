@@ -1,11 +1,9 @@
 ---
 id: plan-67
 title: Compact Start Page and Goal Chooser
-status: draft
+status: in-progress
 depends_on: [plan-65, plan-64, plan-63]
 gate: "Approve capability projection, disclosure/focus/failure contracts, exact source/test migration and reflow mechanism before source. Owner rendered acceptance and deployment remain separate."
-superseded_by: null
-resolution: null
 summary: >-
   Implement the adopted compact entry with a named addition primary and one
   expandable goal chooser, preserving every current practice/fragment/session

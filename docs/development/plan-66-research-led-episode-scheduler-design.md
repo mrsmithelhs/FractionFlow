@@ -1,11 +1,9 @@
 ---
 id: plan-66
 title: Research-Led Episode Scheduler and Learner Evidence Design
-status: draft
+status: in-progress
 depends_on: [plan-29, plan-35, plan-57, plan-61, plan-63]
 gate: "Owner returns external deep-research reports; approve synthesis scope before dossier. Owner adopts a bounded scheduler/evidence contract before a separate implementation pilot; no adaptive runtime activation."
-superseded_by: null
-resolution: null
 summary: >-
   Synthesize independent ChatGPT Deep Research, Claude and Gemini reports on
   evaluated practice schedulers across school, MOOC and professional contexts.
