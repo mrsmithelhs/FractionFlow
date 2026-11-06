@@ -1,0 +1,3 @@
+# Plan 67 Repair 01 — investigation checkpoint
+
+2026-11-05. Ordinary Plan67 preflight is blocked because status is `delivered`; the owner authorized mechanism investigation only. `repair-01-mechanism.md` proposes the candidate cycle, UTC/day lifetime, empty-pool behavior, exact ownership and controlled-current-witness strategy. Source and protected route migration remain stopped pending orchestration approval. No source, status, push or deployment changes. The three unrelated untracked Plan39 receipts are preserved. No advisor consultation ran for this prose-only checkpoint; a single Terra-medium review is conditional on orchestrator judgment of the eventual repair.
