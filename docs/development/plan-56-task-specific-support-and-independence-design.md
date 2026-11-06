@@ -1,7 +1,7 @@
 ---
 id: plan-56
 title: Task-Specific Support and Independence Contract Design
-status: in-progress
+status: delivered
 depends_on: [plan-13, plan-24, plan-25, plan-49, plan-51, plan-52, plan-53, plan-63, plan-66]
 gate: "Approve inventory/research scope before dossier; owner adopts one bounded support-contract recommendation before any implementation. No automatic adaptation, mastery thresholds or Phase6 exit."
 summary: >-
