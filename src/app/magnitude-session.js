@@ -62,7 +62,7 @@ export function prepareMagnitudeEntry(entry, supportId) {
 }
 
 export function admitMagnitudeManifest(manifest = MAGNITUDE_SESSION_MANIFEST, supportId = 'high-support') {
-  const scheduled = manifest && same(Object.keys(manifest).sort(), ['entries', 'id', 'revision']) && manifest.id === 'scheduled-magnitude-practice' && manifest.revision === '1' && Array.isArray(manifest.entries) && manifest.entries.length === SCHEDULED_SLOTS.length && manifest.entries.every((entry, index) => SCHEDULED_SLOTS[index].some(candidate => same(entry, candidate)));
+  const scheduled = manifest && same(Object.keys(manifest).sort(), ['entries', 'id', 'revision']) && manifest.id === 'scheduled-magnitude-practice' && manifest.revision === '1' && Array.isArray(manifest.entries) && manifest.entries.length === SCHEDULED_SLOTS.length && SCHEDULED_SLOTS.every((slot, index) => Object.hasOwn(manifest.entries, index) && slot.some(candidate => same(manifest.entries[index], candidate)));
   if (!same(manifest, MAGNITUDE_SESSION_MANIFEST) && !same(manifest, COMPARISON_SESSION_MANIFEST) && !scheduled) fail('manifest identity, shape, order or revision');
   // Resolve and construct every entry at admission, including actual profile capability.
   const prepared = manifest.entries.map(entry => prepareMagnitudeEntry(entry, supportId));

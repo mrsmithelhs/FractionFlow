@@ -12,6 +12,11 @@ it('admits only the finite slot policy and rejects mutations',()=>{
  for(const mutate of mutations){const m=structuredClone(selectPracticeSession(0));mutate(m);expect(()=>admitMagnitudeManifest(m)).toThrow();}
  expect(()=>selectPracticeSession(-1)).toThrow(); expect(()=>selectPracticeSession(1.5)).toThrow();
 });
+it('rejects a sparse scheduled manifest with the middle slot missing',()=>{
+ const manifest=structuredClone(selectPracticeSession(0)); delete manifest.entries[1];
+ expect(manifest.entries.length).toBe(3); expect(Object.hasOwn(manifest.entries,1)).toBe(false);
+ expect(()=>admitMagnitudeManifest(manifest)).toThrow();
+});
 it.each([[0,'plan45-compare-02','distance-01','<','4','8'],[3,'plan45-compare-09','distance-04','>','3','6']])('launches mixed output %s and completes', (input,first,distance,relation,numerator,denominator)=>{
  const {root,app}=setup({selectionInput:()=>input}); expect(app.getState().taskContext.itemId).toBe(first); compare(root,'<'); expect(app.getState().status).toBe('active'); compare(root,'>'); root.querySelector('.app-visual-view .plan45-progression-button').click();
  expect(app.getState().taskContext.itemId).toBe('plan45-compare-10'); compare(root,'<'); root.querySelector('.app-visual-view .plan45-progression-button').click(); expect(app.getState().taskContext.itemId).toBe(distance); compare(root,relation);
