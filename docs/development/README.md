@@ -75,7 +75,7 @@ Packets are assigned to implementer agents. Each packet defines scope, required 
 | `plan-66` | Research-Led Episode Scheduler and Learner Evidence Design | complete | Synthesize independent ChatGPT Deep Research, Claude and Gemini reports on evaluated practice schedulers across school, MOOC and professional contexts. Recommend explainable challenge/support/learner-control rules, evidence limits and one small pilot while preserving local privacy and nonadaptive practice. |
 | `plan-67` | Compact Start Page and Goal Chooser | complete | Implement the adopted compact entry with a named addition primary and one expandable goal chooser, preserving every current practice/fragment/session and secondary controls. Correct title reflow and verify real mounted navigation without changing tasks, saved records or scheduling policy. |
 | `plan-68` | Authored Comparison Practice Sequence Design | complete | Design a short fixed sequence of symbolic fraction comparisons using distinct admitted pairs and purposeful variation. Evaluate whether a learner-requested extra practice opportunity adds enough value to study later. |
-| `plan-69` | Fixed Comparison Practice Session | in-progress | Add a visible Start a practice session action that opens the adopted four-comparison sequence in fixed order, using existing comparison tasks and help with an ephemeral session lifecycle. |
+| `plan-69` | Fixed Comparison Practice Session | delivered | Add a visible Start a practice session action that opens the adopted four-comparison sequence in fixed order, using existing comparison tasks and help with an ephemeral session lifecycle. |
 <!-- plan-index:end -->
 
 ## Report Folders

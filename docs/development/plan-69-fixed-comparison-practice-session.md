@@ -1,7 +1,7 @@
 ---
 id: plan-69
 title: Fixed Comparison Practice Session
-status: in-progress
+status: delivered
 depends_on: [plan-60, plan-63, plan-64, plan-67, plan-68]
 gate: "Approve the manifest, entry and lifecycle mechanism before source work. Technical delivery and owner review of the complete rendered session precede closure."
 summary: >-
