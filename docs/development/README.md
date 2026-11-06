@@ -76,6 +76,8 @@ Packets are assigned to implementer agents. Each packet defines scope, required 
 | `plan-67` | Compact Start Page and Goal Chooser | complete | Implement the adopted compact entry with a named addition primary and one expandable goal chooser, preserving every current practice/fragment/session and secondary controls. Correct title reflow and verify real mounted navigation without changing tasks, saved records or scheduling policy. |
 | `plan-68` | Authored Comparison Practice Sequence Design | complete | Design a short fixed sequence of symbolic fraction comparisons using distinct admitted pairs and purposeful variation. Evaluate whether a learner-requested extra practice opportunity adds enough value to study later. |
 | `plan-69` | Fixed Comparison Practice Session | complete | Add a visible Start a practice session action that opens the adopted four-comparison sequence in fixed order, using existing comparison tasks and help with an ephemeral session lifecycle. |
+| `plan-70` | First Working Practice Scheduler | draft | Start a short practice session directly from entry. Select a purposeful mix of existing episode types using explicit rules and no learner profile. |
+| `plan-71` | Mixed-Number Addition Without Regrouping Design | draft | Design the first mixed-number addition task with mixed-number operands and fractional parts that sum to less than one. Reuse the established whole and fraction representations and propose a small first batch. |
 <!-- plan-index:end -->
 
 ## Report Folders
