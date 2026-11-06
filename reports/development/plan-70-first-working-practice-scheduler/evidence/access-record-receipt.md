@@ -1,0 +1,10 @@
+# Plan 70 access and record evidence
+
+2026-11-06. Local Edge headless against Vite, separate fresh browser contexts at 360×740; controlled selection input 3 in both. Run `node reports/development/plan-70-first-working-practice-scheduler/evidence/access-record-check.mjs`. No historical route output was written.
+
+- **Keyboard / linear / remembering on:** Focused individual visible controls programmatically, then used Enter or Space and typed the fraction. Enabled remembering from the entry panel, used the visible Start action, selected Read the steps, and completed `plan45-compare-09`, `plan45-compare-10`, `distance-04`. IndexedDB reads after each comparison and after the completed distance showed exactly two records, identities 09 and 10; no distance record. Returned to entry, opened Choose and launched the legacy session, observing first identity `plan45-compare-02`.
+- **Emulated touch / remembering off:** A separate mobile touch context used tap for entry, relation and progression controls, and tapped fraction fields before typing via the automation keyboard. The same three identities completed in the same order; IndexedDB had no entries at each observation including after distance. Returned and launched the legacy chooser session, first identity 02.
+
+This establishes control operation with keyboard activation on programmatically focused controls, not an exhaustive Tab-order or screen-reader test. Touch is browser emulation, with text supplied by automation rather than a physical device or on-screen keyboard. The local record is factual observation coverage, not evidence of learner understanding. These are browser observations, not physical-device, assistive-technology, learner, or production validation.
+
+The separate `tests/app-plan70-pair-drift.test.js` mocks a single comparison record only within an isolated Vitest module graph: 3/4 and 1/4 are the same unordered values as distance-01's 2/8 and 6/8, with reversed order. The test requires admission to reject that output while another input remains admissible. Shipped registry data is unchanged. Results and any corrective disposition are recorded in progress.md.

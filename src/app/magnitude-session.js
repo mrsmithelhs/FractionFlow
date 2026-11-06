@@ -1,4 +1,4 @@
-import { createFraction } from '../math/index.js';
+import { createFraction, simplifyFraction } from '../math/index.js';
 import { deepFreeze } from '../content/schema.js';
 import { getPracticeType } from './practice-types.js';
 import { getRegisteredSupportLevel } from './support-levels.js';
@@ -70,7 +70,7 @@ export function admitMagnitudeManifest(manifest = MAGNITUDE_SESSION_MANIFEST, su
     const pairs = prepared.map(({ state }) => {
       const forms = state.taskContext.sourceForms;
       return [forms.first, forms.second].map(form => {
-        const value = createFraction(BigInt(form.numerator), BigInt(form.denominator));
+        const value = simplifyFraction(createFraction(BigInt(form.numerator), BigInt(form.denominator)));
         return `${value.numerator}/${value.denominator}`;
       }).sort().join('|');
     });
