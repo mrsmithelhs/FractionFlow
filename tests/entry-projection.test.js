@@ -47,6 +47,7 @@ describe('compact entry capabilities', () => {
     const distance = PRACTICE_TYPES.find(t => t.id === 'fraction-distance');
     const app = createFractionFlowApp({ root, practiceTypes: [distance], entryTestHooks: { rotationDay: 0 } }).mount();
     expect(root.querySelector('.app-practice-button')).toBeNull();
+    expect(root.querySelector('.app-featured-label')).toBeNull();
     expect(root.querySelector('.app-entry-page button')).toBe(root.querySelector('[data-entry-chooser]'));
     root.querySelector('[data-entry-chooser]').click(); root.querySelector('[data-practice-type="fraction-distance"]').click();
     expect(app.getState().taskContext.itemId).toBe('distance-01'); app.destroy();
@@ -64,6 +65,8 @@ describe('compact entry capabilities', () => {
     const doc = setupMockDOM(), root = doc.createElement('div'); doc.body.appendChild(root);
     const app = createFractionFlowApp({ root, navigationMode: 'direct', entryMode: 'historical-flat', presentationMode: 'instant-test' }).mount();
     expect(root.querySelector('[data-entry-chooser]')).toBeNull();
+    expect(root.querySelector('.app-featured-label')).toBeNull();
+    expect(root.querySelector('.app-entry-line').textContent).toBe('See how different-sized fraction parts fit together.');
     expect(root.querySelector('[data-practice-type="like-denominator-addition"]').hasAttribute('hidden')).toBe(false);
     root.querySelector('[data-practice-type="like-denominator-addition"]').click();
     expect(app.getState().episodeDefinition.id).toBe('phase-3-like-denominator-addition');

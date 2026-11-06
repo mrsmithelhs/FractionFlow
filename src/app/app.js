@@ -757,7 +757,9 @@ export function createFractionFlowApp({
     entryTitle.appendChild(titleFirst); entryTitle.appendChild(makeElement('wbr')); entryTitle.appendChild(titleSecond);
     entryHeader.appendChild(entryTitle);
     const entryLine = makeElement('p', 'app-entry-line');
-    entryLine.textContent = 'See how different-sized fraction parts fit together.';
+    entryLine.textContent = entryMode === 'historical-flat'
+      ? 'See how different-sized fraction parts fit together.'
+      : 'Explore fractions with pictures and numbers.';
     entryHeader.appendChild(entryLine);
     entryPage.appendChild(entryHeader);
 
@@ -808,7 +810,12 @@ export function createFractionFlowApp({
         button.setAttribute('data-entry-role', role);
         return button;
       };
-      if (projection.primary) entryPage.appendChild(makePracticeButton(projection.primary.type, 'primary'));
+      if (projection.primary) {
+        const featuredLabel = makeElement('p', 'app-featured-label');
+        featuredLabel.textContent = 'Featured today';
+        entryPage.appendChild(featuredLabel);
+        entryPage.appendChild(makePracticeButton(projection.primary.type, 'primary'));
+      }
 
       chooserButton = createButton({ label: 'Choose what to practice', className: 'app-chooser-button', onClick: () => { if (shellActive()) setChooserOpen(chooserRegion.hasAttribute('hidden')); } });
       chooserButton.setAttribute('data-entry-chooser', '');

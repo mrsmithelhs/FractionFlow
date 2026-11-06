@@ -1,0 +1,66 @@
+[
+  {
+    "capturedAt": "2026-11-06T03:53:56.784Z",
+    "hashes": {
+      "src/app/app.js": "012296cfbb22abc8df55e560e63a456f9ee1df68ae85c7bfc225f2ea08ceae88",
+      "src/app/styles.css": "4f49ace74e00fc9dc0de0210cdcf4afbfa41c6d375963e07660bc4f98bea97b0",
+      "src/app/entry-projection.js": "f7c7c3323f2a828952f8042bf099e117097ef722ed82b8a1efb1da5728fddea7"
+    }
+  },
+  {
+    "width": 360,
+    "height": 740,
+    "scale": 100,
+    "geometry": {
+      "labelBottom": 219.1875,
+      "buttonTop": 225.578125,
+      "scrollWidth": 360,
+      "width": 360
+    },
+    "firstThreeTabs": true,
+    "correctItem": true,
+    "stableAfterReturn": true
+  },
+  {
+    "width": 360,
+    "height": 740,
+    "scale": 200,
+    "geometry": {
+      "labelBottom": 557.796875,
+      "buttonTop": 570.59375,
+      "scrollWidth": 360,
+      "width": 360
+    },
+    "firstThreeTabs": true,
+    "correctItem": true,
+    "stableAfterReturn": true
+  },
+  {
+    "width": 1093,
+    "height": 614,
+    "scale": 100,
+    "geometry": {
+      "labelBottom": 260.84375,
+      "buttonTop": 267.234375,
+      "scrollWidth": 1093,
+      "width": 1093
+    },
+    "firstThreeTabs": true,
+    "correctItem": true,
+    "stableAfterReturn": true
+  },
+  {
+    "width": 1093,
+    "height": 614,
+    "scale": 200,
+    "geometry": {
+      "labelBottom": 412.578125,
+      "buttonTop": 425.375,
+      "scrollWidth": 1093,
+      "width": 1093
+    },
+    "firstThreeTabs": true,
+    "correctItem": true,
+    "stableAfterReturn": true
+  }
+]

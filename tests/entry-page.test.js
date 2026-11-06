@@ -24,7 +24,8 @@ describe('Plan 12 entry page', () => {
   it('opens on a restrained entry page with both staged registry goals and keyboard-reachable settings', () => {
     expect(root.querySelector('.app-entry-title').textContent).toBe('FractionFlow');
     expect(root.querySelector('.app-entry-line').textContent)
-      .toBe('See how different-sized fraction parts fit together.');
+      .toBe('Explore fractions with pictures and numbers.');
+    expect(root.querySelector('.app-featured-label').textContent).toBe('Featured today');
     expect(PRACTICE_TYPES).toHaveLength(2);
     expect(root.querySelectorAll('.app-practice-button')).toHaveLength(1);
     expect(root.querySelector('.app-practice-button').textContent)
