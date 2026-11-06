@@ -1,11 +1,9 @@
 ---
 id: plan-56
 title: Task-Specific Support and Independence Contract Design
-status: draft
-depends_on: [plan-13, plan-24, plan-25, plan-49, plan-51, plan-52, plan-53]
+status: in-progress
+depends_on: [plan-13, plan-24, plan-25, plan-49, plan-51, plan-52, plan-53, plan-63, plan-66]
 gate: "Approve inventory/research scope before dossier; owner adopts one bounded support-contract recommendation before any implementation. No automatic adaptation, mastery thresholds or Phase6 exit."
-superseded_by: null
-resolution: null
 summary: >-
   Reconcile actual support dimensions and requested help across accepted tasks,
   distinguishing learner choice, assistance history and independent performance.
@@ -46,7 +44,17 @@ Read AGENTS.md, implementer-prompt.md, decision-log.md, board, founding instruct
 grammar/architecture/quality and Roadmap45–50/92, follow-up obligations and the
 existing scaffold-fading research. Inspect accepted Plans13,24,25,45/49,50,51,52,53
 and current support configuration, help/provenance/replay and reviewer settings.
-Pin source HEAD; cite current behavior separately from historical intent.
+Use Plans 58 and 59 as candidate construction and placement examples, and Plan 62
+for accepted presentation conventions. Keep the inventory representative.
+Read Plan 63 owner acceptance and Plan 66 owner adoption. Distinguish current
+record eligibility and captured assistance from inferred independence. Preserve
+unknown evidence and the usefulness of practice with remembering off. Do not
+extend observation coverage or prescribe an adaptive policy.
+
+Pin a committed source baseline at the scope checkpoint. While Plan 69 edits
+session source, inspect the pinned version, not its working-tree changes.
+Cite behavior separately from historical intent. Plan 69 continues under
+existing support semantics and does not depend on this design's adoption.
 
 Own ONLY reports/development/plan-56-task-specific-support-and-independence-design/.
 No product/source/test/harness/canonical/status/decision changes or other folders.
