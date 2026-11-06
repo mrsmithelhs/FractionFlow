@@ -1,0 +1,7 @@
+# Plan 67 Repair 02 progress
+
+2026-11-05. **Ready for orchestrator technical review; fresh owner rendered acceptance remains open.** Compact entry now says “Explore fractions with pictures and numbers.” and shows noninteractive “Featured today” directly above the rotating featured button only when that button exists. The registered button name, rotation and focus behavior remain unchanged; historical-flat copy is preserved. The owner-approved future session placement is recorded in the brief and is not implemented in this repair.
+
+Implementation, focused tests and evidence were committed as `7cbdee8`; this progress report is the final scoped commit. Ordinary Plan67 preflight returned blocked because status is delivered; the owner explicitly authorized the bounded repair. No packet status, push or deployment change was made. Three pre-existing untracked Plan39 receipts were left untouched.
+
+Focused entry, projection and route-contract tests: 52 passed. Build, packet lint and diff whitespace checks passed; Vite emitted its large-chunk warning. Headless Chrome verified exact copy, label placement, first three Tab stops, registered first item, return focus and stable feature at 360×740 and 1093×614, normal and 200% root text. Screenshots, source hashes, commands and limits are in `verification.md`. Actual browser zoom, physical devices, screen-reader speech and learner usability were not tested. No additional advisor ran, as directed; review remains with the orchestrator and owner.
