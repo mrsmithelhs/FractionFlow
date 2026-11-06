@@ -1,0 +1,7 @@
+# Plan 69 checkpoint progress
+
+2026-11-05. Requirement 0 mechanism proposed in `mechanism.md`, checkpoint `80d43f1`. Preflight `node scripts/dev/plan-status.js check 69` returned RUNNABLE. Inspected the governing packet contracts, adopted sequence and entry placement, session controller/app, record admission and protected entry keyboard route. The proposal specifies both literal manifests, installed-session record ownership, preparation/install and failure boundaries, shell behavior, and browser witnesses. It requests explicit orchestration approval for new-session record coverage and the protected keyboard route migration.
+
+No source, test, route, packet status or acceptance changes were made. No browser or runtime behavior was tested at this proposal checkpoint; proposed coverage is not a claim of implementation. `git diff --check` passed before staging. Normal Git staging and the refresh probe were denied access to `.git/index.lock`; the lock did not exist, and narrowly elevated explicit-path staging and commit succeeded. Three unrelated untracked Plan 39 route receipts remain untouched.
+
+Advisor consultation not warranted for this prose-only checkpoint; no advisor ran. Any later substantial implementation review requires orchestration's explicit authorization for the bounded Terra-medium pass. Ready for mechanism review: yes. Ready for implementation or owner acceptance: no; stop pending mechanism, route and coverage dispositions and a source window. No push or deployment.
