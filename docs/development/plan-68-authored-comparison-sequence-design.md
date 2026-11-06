@@ -1,7 +1,7 @@
 ---
 id: plan-68
 title: Authored Comparison Practice Sequence Design
-status: draft
+status: in-progress
 depends_on: [plan-45, plan-49, plan-57, plan-66]
 gate: "Approve the report-only scope before the dossier. Owner adopts the fixed sequence before any separately gated implementation."
 summary: >-
