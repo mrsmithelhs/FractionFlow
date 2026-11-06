@@ -1,12 +1,14 @@
-# Plan 68 progress — Requirement 0 checkpoint
+# Plan 68 progress — delivery for orchestration review
 
-2026-11-05. **Scope approval pending; dossier not started.** FF Orch 12+ authorized a short Git window and requested the persisted proposal before the dossier. Owner adoption of any eventual sequence and later implementation remain separate gates.
+2026-11-05. FF Orch 12+ approved the Requirement 0 scope in its message to this chat and authorized the scoped Git window through delivery. Owner adoption and any later implementation remain separate gates.
 
-- Artifact: `scope-proposal.md`, committed as `cd36928`. It proposes a fixed three- or four-comparison baseline, a candidate pool, finite stopping rule, boundaries and conditions for considering one optional learner-requested extra.
-- Preflight: `node scripts/dev/plan-status.js check 68` returned `RUNNABLE`. Inspected Plan 66 adoption/design, accepted Plans 45, 49, 57 and 63, the authored comparison records and comparison/construction source paths. Candidate records are an investigation pool, not an adopted sequence; detailed admission and journey validation remain for the dossier.
-- Validation: reviewed the proposal diff and `git diff --cached --check` passed. No runtime, learner, device or assistive-technology validation was performed or claimed.
-- Git: initial scoped staging and the refresh probe encountered `.git/index.lock: Permission denied`; no lock existed. Scoped elevation allowed staging and committing the proposal. Three unrelated untracked Plan 39 evidence files were present and left untouched.
-- Advisor consultation is not warranted for this prose-only checkpoint. No advisor ran.
-- Remaining: await FF Orch 12+ scope approval before drafting; after approval, perform the specified catalog, support, lifecycle, link and lint checks, then report for orchestration review. No packet status, acceptance, runtime or deployment changes.
+- Proposal: `scope-proposal.md`, commit `cd36928`; checkpoint progress `d2b2280`.
+- Dossier: `sequence-design.md`, commit `23917e4`. Recommends 02 → 09 → 11 → 10, four distinct admitted pairs, with position rationale, actual help under More/Less, a finite visit and early exit. Recommends deferring a learner-requested 01 extra. Plan 57 remains separate; Plan 63 eligibility for a new session is not assumed.
+- Preflight: `node scripts/dev/plan-status.js check 68` returned `RUNNABLE`. Inspected Plan 66 adoption/design, accepted Plans 45, 49, 57 and 63, catalog records, comparison and construction source, renderer, current session manifest and app-shell contract.
+- Record validation: resolved and validated each selected record through `resolvePlan49Context` and `validatePlan49Context`; exact `compareFractions` returned 1, 1, 0, -1 respectively. All selected contexts returned set revision 1, authoring `plan45-record-v1`, effective definition revision 2, recipe and task revisions 1. Underlying Plan 45 definition revision 1 was checked in source. This verifies contexts and exact relations, not admission of a new session.
+- Documentation validation: `node scripts/dev/plan-status.js lint` returned `lint: OK (no violations)`; eight dossier local links resolved; scoped diff checks passed. No browser, learner, physical-device or assistive-technology validation was performed or claimed.
+- Git: initial staging and refresh probe encountered `.git/index.lock: Permission denied`; no lock existed. Scoped elevation allowed the authorized commits. Three unrelated untracked Plan 39 evidence files were present and left untouched. No push.
+- Advisor consultation not warranted: prose-only design; no advisor ran.
+- Remaining: orchestration verifies the actual artifact and decides delivery status; owner may adopt or reject the sequence. A separately gated implementation must establish session ownership and assess Plan 63 compatibility, access, lifecycle and rendered behavior. No runtime, status, profiling, instrumentation, study or deployment changes were made.
 
-Ready for orchestrator **scope** review: yes. Ready for dossier or owner acceptance: no.
+Ready for orchestrator delivery review: yes. Owner acceptance and implementation: not requested or implied.
