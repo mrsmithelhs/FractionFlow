@@ -2,7 +2,7 @@ import { projectEntryCapabilities } from './entry-projection.js';
 const DOCUMENT_ROTATION_DAY = Math.floor(Date.now() / 86_400_000);
 import { createComparisonRecordController } from './comparison-record-controller.js';
 import { createComparisonRecordPanel } from './comparison-record-panel.js';
-import { MAGNITUDE_SESSION_MANIFEST, COMPARISON_SESSION_MANIFEST, admitMagnitudeManifest, createMagnitudeSessionController, prepareMagnitudeEntry, isMagnitudeEpisodeComplete } from './magnitude-session.js';
+import { MAGNITUDE_SESSION_MANIFEST, COMPARISON_SESSION_MANIFEST, admitMagnitudeManifest, createMagnitudeSessionController, prepareMagnitudeEntry, isMagnitudeEpisodeComplete, selectPracticeSession } from './magnitude-session.js';
 import { resolvePlan59Context } from '../content/plan59-directed-endpoint-task.js';
 import { PLAN59_CONDITION } from '../interaction/plan59-directed-endpoint-episode.js';
 import { createPlan59Renderer } from '../render/plan59-directed-endpoint.js';
@@ -548,17 +548,30 @@ export function createFractionFlowApp({
       installFreshEpisode(current.installed.type, current.installed.itemIndex, current.episode, { focusEpisode: true });
     } catch { sessionDisplayFailure(); }
   }
-  function startMagnitudeSession(manifest = MAGNITUDE_SESSION_MANIFEST) {
+  function startMagnitudeSession(manifest = MAGNITUDE_SESSION_MANIFEST, { quiet = false, preflightAll = false } = {}) {
     try {
+      if (preflightAll) admitMagnitudeManifest(manifest, selectedSupportLevel.id).prepared.forEach(sessionPreflight);
       const controller = createMagnitudeSessionController(manifest, selectedSupportLevel.id,
         { prepare: (entry, support) => sessionPreflight(prepareMagnitudeEntry(entry, support)) });
       sessionPreflight(controller.current().installed);
       magnitudeSession = controller; clearFragment(); setHidden(sessionEntryNotice, true);
       installSessionCurrent();
+      return true;
     } catch {
+      if (quiet) return false;
       sessionEntryNotice.textContent = 'This practice could not be opened. Please try again or choose another practice.';
       setHidden(sessionEntryNotice, false); sessionEntryNotice.focus();
+      return false;
     }
+  }
+  function startScheduledSession() {
+    let manifest;
+    try {
+      const input = sessionTestHooks.selectionInput?.() ?? Math.floor(Math.random() * 0x100000000);
+      manifest = selectPracticeSession(input);
+    } catch { /* Try the fixed fallback below. */ }
+    if (manifest && startMagnitudeSession(manifest, { quiet: true, preflightAll: true })) return;
+    startMagnitudeSession(COMPARISON_SESSION_MANIFEST, { preflightAll: true });
   }
   function sessionTransition(kind, generation) {
     if (!magnitudeSession || isTransitioning || (generation !== undefined && generation !== currentEpisodeGeneration)) return;
@@ -817,16 +830,11 @@ export function createFractionFlowApp({
         entryPage.appendChild(makePracticeButton(projection.primary.type, 'primary'));
       }
 
-      try {
-        admitMagnitudeManifest(COMPARISON_SESSION_MANIFEST, selectedSupportLevel.id);
-        const button = createButton({ label: 'Start a practice session', className: 'app-practice-choice', onClick: () => { if (shellActive()) startMagnitudeSession(COMPARISON_SESSION_MANIFEST); } });
+      {
+        const button = createButton({ label: 'Start a practice session', className: 'app-practice-choice', onClick: () => { if (shellActive()) startScheduledSession(); } });
         button.classList.add('app-session-start');
         button.setAttribute('data-session-entry', 'comparison');
         entryPage.appendChild(button);
-      } catch {
-        const unavailable = makeElement('p', 'app-entry-unavailable');
-        unavailable.textContent = 'The practice session is unavailable. Please choose another practice.';
-        entryPage.appendChild(unavailable);
       }
 
       chooserButton = createButton({ label: 'Choose what to practice', className: 'app-chooser-button', onClick: () => { if (shellActive()) setChooserOpen(chooserRegion.hasAttribute('hidden')); } });

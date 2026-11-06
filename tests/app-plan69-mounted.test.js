@@ -4,8 +4,8 @@ import { setupMockDOM, teardownMockDOM } from './fixtures/mock-dom.js';
 const button=(root,text)=>[...root.querySelectorAll('button')].find(b=>b.textContent===text && !b.hasAttribute('hidden'));
 const compare=(root,relation)=>{const inputs=[...root.querySelectorAll('.app-visual-view .plan45-relation-option input')]; inputs.forEach(x=>{x.checked=x.value===relation;}); const input=inputs.find(x=>x.value===relation); input.dispatchEvent({type:'change'}); root.querySelector('.app-visual-view .plan45-response-region').dispatchEvent({type:'submit',preventDefault(){}});};
 afterEach(()=>teardownMockDOM());
-it('launches the new four comparisons, keeps retry and returns to a fresh start',()=>{
- const doc=setupMockDOM(),root=doc.createElement('div'); doc.body.appendChild(root); const app=createFractionFlowApp({root,presentationMode:'instant-test'}).mount();
+it('launches the fixed fallback after scheduled preparation fails, keeps retry and returns to a fresh start',()=>{
+ const doc=setupMockDOM(),root=doc.createElement('div'); doc.body.appendChild(root); const app=createFractionFlowApp({root,presentationMode:'instant-test',sessionTestHooks:{selectionInput:()=>3,prepare:c=>{if(c.state.taskContext.itemId==='distance-04')throw Error('unavailable');}}}).mount();
  root.querySelector('[data-session-entry="comparison"]').click(); compare(root,'<'); expect(app.getState().status).toBe('active');
  for(const [id,relation] of [['plan45-compare-02','>'],['plan45-compare-09','>'],['plan45-compare-11','='],['plan45-compare-10','<']]) {
   expect(app.getState().taskContext.itemId).toBe(id); compare(root,relation); expect(app.getState().status).toBe('resolved');

@@ -1,3 +1,4 @@
+import { createFraction } from '../math/index.js';
 import { deepFreeze } from '../content/schema.js';
 import { getPracticeType } from './practice-types.js';
 import { getRegisteredSupportLevel } from './support-levels.js';
@@ -15,6 +16,18 @@ export const MAGNITUDE_SESSION_MANIFEST = deepFreeze({ id: 'short-magnitude-prac
 export const COMPARISON_SESSION_MANIFEST = deepFreeze({ id: 'fixed-comparison-practice', revision: '1', entries: [
   comparison('plan45-compare-02'), comparison('plan45-compare-09'), comparison('plan45-compare-11'), comparison('plan45-compare-10'),
 ] });
+const distance = itemId => ({ typeId: 'fraction-distance', setId: 'fraction-distance', setRevision: '1', itemId, itemRevision: '1', definitionId: 'phase-4-fraction-distance', definitionRevision: '1', recipeId: 'common-unit-distance', recipeRevision: '1' });
+const SCHEDULED_SLOTS = deepFreeze([
+  [comparison('plan45-compare-02'), comparison('plan45-compare-09')],
+  [comparison('plan45-compare-10')],
+  [distance('distance-01'), distance('distance-04')],
+]);
+export function selectPracticeSession(input) {
+  if (!Number.isSafeInteger(input) || input < 0) fail('selection input');
+  return deepFreeze({ id: 'scheduled-magnitude-practice', revision: '1', entries: [
+    SCHEDULED_SLOTS[0][input % 2], SCHEDULED_SLOTS[1][0], SCHEDULED_SLOTS[2][Math.floor(input / 2) % 2],
+  ].map(entry => structuredClone(entry)) });
+}
 const canonical = value => Array.isArray(value) ? value.map(canonical) : value && typeof value === 'object' ? Object.fromEntries(Object.keys(value).sort().map(key => [key, canonical(value[key])])) : value;
 const same = (a, b) => JSON.stringify(canonical(a)) === JSON.stringify(canonical(b));
 const fail = message => { throw new TypeError(`invalid magnitude session: ${message}`); };
@@ -49,9 +62,20 @@ export function prepareMagnitudeEntry(entry, supportId) {
 }
 
 export function admitMagnitudeManifest(manifest = MAGNITUDE_SESSION_MANIFEST, supportId = 'high-support') {
-  if (!same(manifest, MAGNITUDE_SESSION_MANIFEST) && !same(manifest, COMPARISON_SESSION_MANIFEST)) fail('manifest identity, shape, order or revision');
+  const scheduled = manifest && same(Object.keys(manifest).sort(), ['entries', 'id', 'revision']) && manifest.id === 'scheduled-magnitude-practice' && manifest.revision === '1' && Array.isArray(manifest.entries) && manifest.entries.length === SCHEDULED_SLOTS.length && manifest.entries.every((entry, index) => SCHEDULED_SLOTS[index].some(candidate => same(entry, candidate)));
+  if (!same(manifest, MAGNITUDE_SESSION_MANIFEST) && !same(manifest, COMPARISON_SESSION_MANIFEST) && !scheduled) fail('manifest identity, shape, order or revision');
   // Resolve and construct every entry at admission, including actual profile capability.
   const prepared = manifest.entries.map(entry => prepareMagnitudeEntry(entry, supportId));
+  if (scheduled) {
+    const pairs = prepared.map(({ state }) => {
+      const forms = state.taskContext.sourceForms;
+      return [forms.first, forms.second].map(form => {
+        const value = createFraction(BigInt(form.numerator), BigInt(form.denominator));
+        return `${value.numerator}/${value.denominator}`;
+      }).sort().join('|');
+    });
+    if (new Set(manifest.entries.map(entry => `${entry.typeId}:${entry.itemId}`)).size !== manifest.entries.length || new Set(pairs).size !== pairs.length) fail('repeated item or pair');
+  }
   return deepFreeze({ manifest: structuredClone(manifest), supportId, prepared });
 }
 
