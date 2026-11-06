@@ -1,7 +1,8 @@
 ---
 id: plan-68
 title: Authored Comparison Practice Sequence Design
-status: delivered
+status: complete
+resolution: "Owner adopted fixed comparison sequence 02 → 09 → 11 → 10 and deferred the optional fifth on 2026-11-05. Plan 69 carries the separately gated implementation."
 depends_on: [plan-45, plan-49, plan-57, plan-66]
 gate: "Approve the report-only scope before the dossier. Owner adopts the fixed sequence before any separately gated implementation."
 summary: >-
