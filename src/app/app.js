@@ -2,7 +2,7 @@ import { projectEntryCapabilities } from './entry-projection.js';
 const DOCUMENT_ROTATION_DAY = Math.floor(Date.now() / 86_400_000);
 import { createComparisonRecordController } from './comparison-record-controller.js';
 import { createComparisonRecordPanel } from './comparison-record-panel.js';
-import { MAGNITUDE_SESSION_MANIFEST, createMagnitudeSessionController, prepareMagnitudeEntry, isMagnitudeEpisodeComplete } from './magnitude-session.js';
+import { MAGNITUDE_SESSION_MANIFEST, COMPARISON_SESSION_MANIFEST, admitMagnitudeManifest, createMagnitudeSessionController, prepareMagnitudeEntry, isMagnitudeEpisodeComplete } from './magnitude-session.js';
 import { resolvePlan59Context } from '../content/plan59-directed-endpoint-task.js';
 import { PLAN59_CONDITION } from '../interaction/plan59-directed-endpoint-episode.js';
 import { createPlan59Renderer } from '../render/plan59-directed-endpoint.js';
@@ -548,9 +548,9 @@ export function createFractionFlowApp({
       installFreshEpisode(current.installed.type, current.installed.itemIndex, current.episode, { focusEpisode: true });
     } catch { sessionDisplayFailure(); }
   }
-  function startMagnitudeSession() {
+  function startMagnitudeSession(manifest = MAGNITUDE_SESSION_MANIFEST) {
     try {
-      const controller = createMagnitudeSessionController(MAGNITUDE_SESSION_MANIFEST, selectedSupportLevel.id,
+      const controller = createMagnitudeSessionController(manifest, selectedSupportLevel.id,
         { prepare: (entry, support) => sessionPreflight(prepareMagnitudeEntry(entry, support)) });
       sessionPreflight(controller.current().installed);
       magnitudeSession = controller; clearFragment(); setHidden(sessionEntryNotice, true);
@@ -584,7 +584,7 @@ export function createFractionFlowApp({
   }
   function askSessionExit(destination = null) {
     if (!magnitudeSession) returnToEntry();
-    else if (isMagnitudeEpisodeComplete(state, MAGNITUDE_SESSION_MANIFEST.entries[magnitudeSession.current().session.index])) leaveMagnitudeSession(destination);
+    else if (isMagnitudeEpisodeComplete(state, magnitudeSession.current().manifest.entries[magnitudeSession.current().session.index])) leaveMagnitudeSession(destination);
     else {
       pendingHashDestination = destination;
       if (sessionDialog.hasAttribute('hidden')) exitFocus = document.activeElement;
@@ -815,6 +815,18 @@ export function createFractionFlowApp({
         featuredLabel.textContent = 'Featured today';
         entryPage.appendChild(featuredLabel);
         entryPage.appendChild(makePracticeButton(projection.primary.type, 'primary'));
+      }
+
+      try {
+        admitMagnitudeManifest(COMPARISON_SESSION_MANIFEST, selectedSupportLevel.id);
+        const button = createButton({ label: 'Start a practice session', className: 'app-practice-choice', onClick: () => { if (shellActive()) startMagnitudeSession(COMPARISON_SESSION_MANIFEST); } });
+        button.classList.add('app-session-start');
+        button.setAttribute('data-session-entry', 'comparison');
+        entryPage.appendChild(button);
+      } catch {
+        const unavailable = makeElement('p', 'app-entry-unavailable');
+        unavailable.textContent = 'The practice session is unavailable. Please choose another practice.';
+        entryPage.appendChild(unavailable);
       }
 
       chooserButton = createButton({ label: 'Choose what to practice', className: 'app-chooser-button', onClick: () => { if (shellActive()) setChooserOpen(chooserRegion.hasAttribute('hidden')); } });
@@ -1169,7 +1181,7 @@ export function createFractionFlowApp({
     selectedPracticeType = practiceType;
     activePracticeItemIndex = itemIndex;
     state = candidateState;
-    const remembering = recordController?.install(state);
+    const remembering = recordController?.install(state, magnitudeSession);
     if (recordEpisodeNotice) recordEpisodeNotice.textContent = isPlan45ComparisonEpisode(state) && recordController?.snapshot().enabled && !remembering ? 'A new problem is needed before activity can be remembered.' : '';
     resetEpisodeUiState();
     const episodeEl = appRoot.querySelector('.app-episode');
@@ -1273,11 +1285,11 @@ export function createFractionFlowApp({
 
   function computeProgressionDescriptor() {
     if (magnitudeSession) {
-      const { session } = magnitudeSession.current();
-      if (!isMagnitudeEpisodeComplete(state, MAGNITUDE_SESSION_MANIFEST.entries[session.index])) return { phase: 'idle', actionKind: 'none', label: null, notice: null, onAction: null };
-      const generation = currentEpisodeGeneration, final = session.index === MAGNITUDE_SESSION_MANIFEST.entries.length - 1;
+      const { session, manifest } = magnitudeSession.current();
+      if (!isMagnitudeEpisodeComplete(state, manifest.entries[session.index])) return { phase: 'idle', actionKind: 'none', label: null, notice: null, onAction: null };
+      const generation = currentEpisodeGeneration, final = session.index === manifest.entries.length - 1;
       return { phase: 'resolved-comparison', actionKind: final ? 'return' : 'advance',
-        label: final ? STRINGS.app.returnButton : session.index === 2 ? 'Next: compare and find the distance' : STRINGS.app.nextProblemButton,
+        label: final ? STRINGS.app.returnButton : manifest.id === MAGNITUDE_SESSION_MANIFEST.id && session.index === 2 ? 'Next: compare and find the distance' : STRINGS.app.nextProblemButton,
         notice: final ? 'Practice complete.' : null,
         onAction: () => { if (generation !== currentEpisodeGeneration) return; if (final) leaveMagnitudeSession(); else sessionTransition('next', generation); } };
     }
@@ -1598,7 +1610,8 @@ export function createFractionFlowApp({
   }
 
   function updateNavigation() {
-    const finalSessionResult = magnitudeSession && magnitudeSession.current().session.index === MAGNITUDE_SESSION_MANIFEST.entries.length - 1 && isMagnitudeEpisodeComplete(state, MAGNITUDE_SESSION_MANIFEST.entries.at(-1));
+    const currentSession = magnitudeSession?.current();
+    const finalSessionResult = currentSession && currentSession.session.index === currentSession.manifest.entries.length - 1 && isMagnitudeEpisodeComplete(state, currentSession.manifest.entries.at(-1));
     returnButton.textContent = STRINGS.app.returnButton;
     setHidden(returnButton, Boolean(finalSessionResult));
     if (magnitudeSession && navigationRefusal) {

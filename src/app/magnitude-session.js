@@ -12,9 +12,20 @@ export const MAGNITUDE_SESSION_MANIFEST = deepFreeze({ id: 'short-magnitude-prac
   comparison('plan45-compare-02'), comparison('plan45-compare-08'), comparison('plan45-compare-11'),
   { typeId: 'fraction-distance', setId: 'fraction-distance', setRevision: '1', itemId: 'distance-01', itemRevision: '1', definitionId: 'phase-4-fraction-distance', definitionRevision: '1', recipeId: 'common-unit-distance', recipeRevision: '1' },
 ] });
+export const COMPARISON_SESSION_MANIFEST = deepFreeze({ id: 'fixed-comparison-practice', revision: '1', entries: [
+  comparison('plan45-compare-02'), comparison('plan45-compare-09'), comparison('plan45-compare-11'), comparison('plan45-compare-10'),
+] });
 const canonical = value => Array.isArray(value) ? value.map(canonical) : value && typeof value === 'object' ? Object.fromEntries(Object.keys(value).sort().map(key => [key, canonical(value[key])])) : value;
 const same = (a, b) => JSON.stringify(canonical(a)) === JSON.stringify(canonical(b));
 const fail = message => { throw new TypeError(`invalid magnitude session: ${message}`); };
+const controllers = new WeakMap();
+
+// Only live controllers created here can supply a session record context.
+export function sessionRecordContext(controller, state) {
+  const current = controllers.get(controller)?.();
+  if (!current?.session.active || current.episode !== state) return null;
+  return current;
+}
 
 export function prepareMagnitudeEntry(entry, supportId) {
   const type = getPracticeType(entry.typeId);
@@ -38,7 +49,7 @@ export function prepareMagnitudeEntry(entry, supportId) {
 }
 
 export function admitMagnitudeManifest(manifest = MAGNITUDE_SESSION_MANIFEST, supportId = 'high-support') {
-  if (!same(manifest, MAGNITUDE_SESSION_MANIFEST)) fail('manifest identity, shape, order or revision');
+  if (!same(manifest, MAGNITUDE_SESSION_MANIFEST) && !same(manifest, COMPARISON_SESSION_MANIFEST)) fail('manifest identity, shape, order or revision');
   // Resolve and construct every entry at admission, including actual profile capability.
   const prepared = manifest.entries.map(entry => prepareMagnitudeEntry(entry, supportId));
   return deepFreeze({ manifest: structuredClone(manifest), supportId, prepared });
@@ -59,7 +70,7 @@ export function createMagnitudeSessionController(manifest = MAGNITUDE_SESSION_MA
   let episode = admission.prepared[0].state;
   let installed = admission.prepared[0];
   const tickets = new WeakMap();
-  const current = () => ({ session: snapshot, episode, installed });
+  const current = () => ({ session: snapshot, episode, installed, manifest: admission.manifest });
   const updateEpisode = (expected, next) => {
     if (!snapshot.active || episode !== expected || !next || next.taskContext?.itemId !== admission.manifest.entries[snapshot.index].itemId
       || next.episodeDefinition?.id !== admission.manifest.entries[snapshot.index].definitionId || next.episodeDefinition?.revision !== admission.manifest.entries[snapshot.index].definitionRevision) return false;
@@ -94,5 +105,7 @@ export function createMagnitudeSessionController(manifest = MAGNITUDE_SESSION_MA
     snapshot = deepFreeze({ ...snapshot, active: false, generation: snapshot.generation + 1 });
     episode = null; installed = null; return true;
   };
-  return Object.freeze({ current, updateEpisode, prepareTransition, commit, exit });
+  const controller = Object.freeze({ current, updateEpisode, prepareTransition, commit, exit });
+  controllers.set(controller, current);
+  return controller;
 }

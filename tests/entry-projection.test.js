@@ -42,13 +42,13 @@ describe('compact entry capabilities', () => {
     const b = createFractionFlowApp({ root }).mount();
     expect(root.querySelector('.app-practice-button').getAttribute('data-practice-type')).toBe(first); b.destroy();
   });
-  it('offers Choose first when no eligible featured capability exists', () => {
+  it('offers the session first when no eligible featured capability exists', () => {
     const doc = setupMockDOM(), root = doc.createElement('div'); doc.body.appendChild(root);
     const distance = PRACTICE_TYPES.find(t => t.id === 'fraction-distance');
     const app = createFractionFlowApp({ root, practiceTypes: [distance], entryTestHooks: { rotationDay: 0 } }).mount();
     expect(root.querySelector('.app-practice-button')).toBeNull();
     expect(root.querySelector('.app-featured-label')).toBeNull();
-    expect(root.querySelector('.app-entry-page button')).toBe(root.querySelector('[data-entry-chooser]'));
+    expect(root.querySelector('.app-entry-page button')).toBe(root.querySelector('[data-session-entry="comparison"]'));
     root.querySelector('[data-entry-chooser]').click(); root.querySelector('[data-practice-type="fraction-distance"]').click();
     expect(app.getState().taskContext.itemId).toBe('distance-01'); app.destroy();
   });

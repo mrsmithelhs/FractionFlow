@@ -1,0 +1,52 @@
+{
+  "browser": "Edge headless",
+  "results": [
+    {
+      "name": "phone",
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "touch": true,
+      "ids": [
+        "plan45-compare-02",
+        "plan45-compare-09",
+        "plan45-compare-11",
+        "plan45-compare-10"
+      ],
+      "retry": true,
+      "construction": true,
+      "finalReturn": true,
+      "freshStart": true,
+      "stayLeave": true
+    },
+    {
+      "name": "chromebook",
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "touch": false,
+      "ids": [
+        "plan45-compare-02",
+        "plan45-compare-09",
+        "plan45-compare-11",
+        "plan45-compare-10"
+      ],
+      "retry": true,
+      "construction": true,
+      "finalReturn": true,
+      "freshStart": true,
+      "stayLeave": true
+    },
+    {
+      "name": "linear-record-regressions",
+      "support": "medium",
+      "remembering": true,
+      "recordObserved": true,
+      "clear": true,
+      "legacySession": true,
+      "standalone": true
+    }
+  ]
+}

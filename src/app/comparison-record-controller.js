@@ -2,6 +2,7 @@ import { createRecordAdmission, identityFromContext, projectRecord } from './com
 import { createComparisonRecordStorage, randomRecordToken } from './comparison-record-storage.js';
 import { HIGH_SUPPORT_CONFIGURATION, MEDIUM_SUPPORT_CONFIGURATION } from '../interaction/support.js';
 import { PLAN45_STATIC_COMPARISON_ACTIVE_CONDITION } from '../interaction/episode-definition.js';
+import { admitMagnitudeManifest, sessionRecordContext } from './magnitude-session.js';
 
 const same = (a,b) => JSON.stringify(a) === JSON.stringify(b);
 function contextFor(state) {
@@ -33,17 +34,32 @@ export function createComparisonRecordController({ storage = createComparisonRec
     notify();
   }
   function retire() { active?.admission.retire();active=null; }
-  function install(state) {
+  function install(state, sessionController = null) {
     if (disposed) return false;
     retire();
     if (!ready || !root?.enabled) return false;
     const context=contextFor(state); if(!context)return false;
-    try { active={admission:createRecordAdmission({token:randomRecordToken(),generation:root.generation,...context}),generation:root.generation,first:false,helpOpened:false}; return true; }
+    let sessionGeneration = null;
+    if (sessionController !== null) {
+      try {
+        const sessionContext = sessionRecordContext(sessionController, state);
+        if (!sessionContext) return false;
+        const { session, manifest, episode, installed } = sessionContext;
+        const admitted = admitMagnitudeManifest(manifest, session.supportId);
+        const expected = admitted.prepared[session.index];
+        if (!session.active || session.id !== manifest.id || session.revision !== manifest.revision || episode !== state
+          || !expected || !installed || !same(installed.state.taskContext, expected.state.taskContext)
+          || !same(state.taskContext, expected.state.taskContext) || !same(state.support, expected.state.support)) return false;
+        sessionGeneration = session.generation;
+      } catch { return false; }
+    }
+    try { active={admission:createRecordAdmission({token:randomRecordToken(),generation:root.generation,...context}),generation:root.generation,sessionController,sessionGeneration,first:false,helpOpened:false}; return true; }
     catch { message='Practice is available, but this browser could not save the record.';notify();return false; }
   }
   function helpOpened() { if(!disposed && active) active.helpOpened=true; }
   function observe(before,after,action) {
     if (disposed || !active || action?.type !== 'submit-fraction-comparison' || !contextFor(before) || after?.responseProvenance?.length !== before.responseProvenance.length+1) return;
+    if (active.sessionController && sessionRecordContext(active.sessionController, after)?.session.generation !== active.sessionGeneration) { retire(); return; }
     const kind=after.responseProvenance.at(-1)?.classification?.kind;
     if (!['comparison-retry','correct-comparison'].includes(kind)) return;
     if (active.first && kind==='comparison-retry') return;

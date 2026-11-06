@@ -34,7 +34,9 @@ function originalEntryRoutes(routes) {
       expect(index).toBe(24);
       expect(route.actions).toEqual([
         { step: 1, method: 'pressKey', target: 'body', value: 'Tab', description: 'Tab to the practice button' },
-        { step: 2, method: 'pressKey', target: '.app-practice-button', value: 'Tab', description: 'Tab onward to Choose what to practice' },
+        { step: 2, method: 'pressKey', target: '.app-practice-button', value: 'Tab', description: 'Tab onward to Start a practice session' },
+        { method: 'assertFocused', target: '[data-session-entry="comparison"]', description: 'Verify Start a practice session has focus' },
+        { method: 'pressKey', target: '[data-session-entry="comparison"]', value: 'Tab', description: 'Tab onward to Choose what to practice' },
         { method: 'assertFocused', target: '.app-chooser-button', description: 'Verify Choose has focus' },
         { method: 'pressKey', target: '.app-chooser-button', value: 'Tab', description: 'Tab onward to Settings' },
       ]);

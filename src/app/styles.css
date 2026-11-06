@@ -1127,6 +1127,8 @@ body,
 .app-entry-header { padding-top: max(4rem, 12vh); }
 .app-featured-label { margin: 0 0 .4rem; color: var(--app-muted); font-size: .9rem; font-weight: 600; }
 .app-entry-page > .app-practice-choice { align-self: flex-start; max-width: 100%; }
+.app-entry-page > .app-session-start { margin-top: .75rem; color: var(--app-accent); background: #fff; }
+.app-entry-page > .app-session-start:hover { background: #e8effa; }
 .app-chooser-button { align-self: flex-start; margin-top: .75rem; min-height: 3.25rem; padding: .7rem 1rem; font: inherit; color: var(--app-accent); background: transparent; border: 1px solid currentColor; border-radius: .65rem; cursor: pointer; }
 .app-chooser-region { max-width: 100%; margin-block: .75rem 1rem; }
 .app-chooser-group { margin-block: 1rem; }
