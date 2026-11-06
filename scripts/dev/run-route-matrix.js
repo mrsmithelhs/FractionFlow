@@ -315,6 +315,16 @@ function readPlan34ContextMap() {
   return JSON.parse(fs.readFileSync(plan34ContextMapPath, 'utf8'));
 }
 
+const additionFeaturedRouteIds = new Set([
+  'ROUTE-ENTRY-GEAR-TAB', 'ROUTE-ENTRY-BEGIN-RETURN-FOCUS', 'ROUTE-ENTRY-BEGIN-FIRST-TAB-EPISODE',
+  'ROUTE-PLAN34-CONSTRUCT-VISUAL-DEEP', 'ROUTE-PLAN34-INSPECT-LINEAR-DEEP',
+  'ROUTE-PLAN34-THIRD-IDENTITY-WIDE', 'ROUTE-PLAN34-RETRY-RETURN-REENTRY',
+  'ROUTE-PLAN35-CURRENT-HIGH-VISUAL-ALL-21', 'ROUTE-PLAN35-CURRENT-MEDIUM-LINEAR-ALL-21',
+]);
+function usesFixedAdditionDay(routeId, contextId) {
+  return contextId === 'production-default-v7' && additionFeaturedRouteIds.has(routeId);
+}
+
 function resolveRouteContext(route, contextMap) {
   const context = contextMap?.contexts?.[route.id] ?? null;
   if (context === 'historical-v4') return { id: context, startingSurface: 'plan34-historical-v4-entry' };
@@ -3298,6 +3308,7 @@ async function runRouteMatrix(options = {}) {
         const startingSurface = resolveStartingSurface(routeContext.startingSurface);
         if (!startingSurface) throw new Error(`Route "${route.id}" has no resolved starting surface for context "${routeContext.id}".`);
         const startUrl = new URL(startingSurface.path, baseUrl).toString();
+        if (usesFixedAdditionDay(route.id, routeContext.id)) await page.clock.setFixedTime(new Date('1970-01-01T12:00:00Z'));
         await page.goto(startUrl);
         await page.waitForSelector(startingSurface.readySelector);
         if (motionWitnessSeed === 'static-accidental-motion'
@@ -3439,6 +3450,10 @@ async function runRouteMatrix(options = {}) {
             ? { ...seededAction, routeViewport: route.viewport }
             : seededAction;
           await executeAction(page, actionWithViewport, route.id, routeContext);
+          if (usesFixedAdditionDay(route.id, routeContext.id) && action.target === '.app-practice-button' && ['click', 'tap', 'keyboardActivate'].includes(action.method)) {
+            const current = await page.locator('.app-episode').getAttribute('data-current-item-id');
+            if (current !== 'two-thirds-plus-one-fourth') throw new Error(`Featured addition opened unexpected item: ${current}`);
+          }
         }
 
         // Capture output for negative control / sameness check
@@ -3906,6 +3921,7 @@ module.exports = {
   runRouteMatrix,
   selectRoutesForRun,
   validateMatrixIntegrity,
+  usesFixedAdditionDay,
   validatePlan40ScreenshotLayout,
   verifyAssertions,
 };

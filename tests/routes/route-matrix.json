@@ -3138,7 +3138,18 @@
           "method": "pressKey",
           "target": ".app-practice-button",
           "value": "Tab",
-          "description": "Tab onward to the reviewer gear"
+          "description": "Tab onward to Choose what to practice"
+        },
+        {
+          "method": "assertFocused",
+          "target": ".app-chooser-button",
+          "description": "Verify Choose has focus"
+        },
+        {
+          "method": "pressKey",
+          "target": ".app-chooser-button",
+          "value": "Tab",
+          "description": "Tab onward to Settings"
         }
       ],
       "expect": {
@@ -3200,7 +3211,7 @@
           {
             "type": "activeElementEquals",
             "target": "activeElement",
-            "value": "button.fraction-control.app-practice-button"
+            "value": "button.fraction-control.app-practice-choice.app-practice-button"
           }
         ]
       }

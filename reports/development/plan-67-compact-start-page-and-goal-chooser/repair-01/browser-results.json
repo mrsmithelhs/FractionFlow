@@ -1,0 +1,66 @@
+[
+  {
+    "capturedAt": "2026-11-06T03:11:49.330Z",
+    "hashes": {
+      "src/app/app.js": "121af35534d72b1f91390363d4c1830964ffe9a6d3c26dd2bd652bb4f66cd79b",
+      "src/app/entry-projection.js": "f7c7c3323f2a828952f8042bf099e117097ef722ed82b8a1efb1da5728fddea7",
+      "src/app/styles.css": "f61c399105d8c843cf27197611d9bfb4b6ed6094a4c5bb45e6f81fe625c96fda"
+    }
+  },
+  {
+    "day": 0,
+    "id": "sum-under-one",
+    "item": "two-thirds-plus-one-fourth",
+    "otherItem": "plan45-compare-01",
+    "scale": 100,
+    "label": "Add fractions with different denominators",
+    "bounds": {
+      "width": 360,
+      "scrollWidth": 360
+    },
+    "returnAndFirstTab": true,
+    "stableAfterDateChange": true
+  },
+  {
+    "day": 0,
+    "id": "sum-under-one",
+    "item": "two-thirds-plus-one-fourth",
+    "otherItem": "plan45-compare-01",
+    "scale": 200,
+    "label": "Add fractions with different denominators",
+    "bounds": {
+      "width": 360,
+      "scrollWidth": 360
+    },
+    "returnAndFirstTab": true,
+    "stableAfterDateChange": true
+  },
+  {
+    "day": 1,
+    "id": "symbolic-fraction-comparison",
+    "item": "plan45-compare-01",
+    "otherItem": "two-thirds-plus-one-fourth",
+    "scale": 100,
+    "label": "Compare fractions",
+    "bounds": {
+      "width": 360,
+      "scrollWidth": 360
+    },
+    "returnAndFirstTab": true,
+    "stableAfterDateChange": true
+  },
+  {
+    "day": 1,
+    "id": "symbolic-fraction-comparison",
+    "item": "plan45-compare-01",
+    "otherItem": "two-thirds-plus-one-fourth",
+    "scale": 200,
+    "label": "Compare fractions",
+    "bounds": {
+      "width": 360,
+      "scrollWidth": 360
+    },
+    "returnAndFirstTab": true,
+    "stableAfterDateChange": true
+  }
+]

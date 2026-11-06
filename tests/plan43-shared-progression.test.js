@@ -123,7 +123,7 @@ describe('Plan 43 — Shared Episode Completion and Progression Suite', () => {
       const root = document.createElement('div');
       document.body.appendChild(root);
 
-      const app = createFractionFlowApp({ root, presentationMode: 'instant-test' }).mount();
+      const app = createFractionFlowApp({ entryTestHooks: { rotationDay: 0 }, root, presentationMode: 'instant-test' }).mount();
       root.querySelector('.app-practice-button').click(); // sum-under-one
 
       // Problem 1: 2/3 + 1/4 (construct)
@@ -170,7 +170,7 @@ describe('Plan 43 — Shared Episode Completion and Progression Suite', () => {
       const root = document.createElement('div');
       document.body.appendChild(root);
 
-      const app = createFractionFlowApp({ root, presentationMode: 'instant-test' }).mount();
+      const app = createFractionFlowApp({ entryTestHooks: { rotationDay: 0 }, root, presentationMode: 'instant-test' }).mount();
       openChooser(root); root.querySelector('[data-practice-type="like-denominator-subtraction"]').click();
 
       // Item 1: takeaway 2 from 5/8 (3/8 left)
@@ -203,7 +203,7 @@ describe('Plan 43 — Shared Episode Completion and Progression Suite', () => {
       const root = document.createElement('div');
       document.body.appendChild(root);
 
-      const app = createFractionFlowApp({ root, presentationMode: 'instant-test' }).mount();
+      const app = createFractionFlowApp({ entryTestHooks: { rotationDay: 0 }, root, presentationMode: 'instant-test' }).mount();
       openChooser(root); root.querySelector('[data-practice-type="bar-to-line-same-amount"]').click();
 
       // Item 1: place 1/2 on number line
@@ -239,7 +239,7 @@ describe('Plan 43 — Shared Episode Completion and Progression Suite', () => {
         items: Object.freeze(PRACTICE_TYPES[0].items.slice(2, 4)),
       });
 
-      const app = createFractionFlowApp({
+      const app = createFractionFlowApp({ entryTestHooks: { rotationDay: 0 },
         root,
         practiceTypes: [reflectionPracticeType],
         presentationMode: 'instant-test',
@@ -295,7 +295,7 @@ describe('Plan 43 — Shared Episode Completion and Progression Suite', () => {
       const root = document.createElement('div');
       document.body.appendChild(root);
 
-      const app = createFractionFlowApp({ root, presentationMode: 'instant-test' }).mount();
+      const app = createFractionFlowApp({ entryTestHooks: { rotationDay: 0 }, root, presentationMode: 'instant-test' }).mount();
       openChooser(root); root.querySelector('[data-practice-type="like-denominator-addition"]').click();
 
       expect(app.getState().beat).toBe('encounter');
@@ -336,7 +336,7 @@ describe('Plan 43 — Shared Episode Completion and Progression Suite', () => {
         items: Object.freeze([PRACTICE_TYPES[2].items[7]]), // item 8 (last item: takeaway-8-7-minus-1: 7/8 - 1/8 = 6/8)
       });
 
-      const app = createFractionFlowApp({
+      const app = createFractionFlowApp({ entryTestHooks: { rotationDay: 0 },
         root,
         practiceTypes: [singleItemType],
         presentationMode: 'instant-test',
@@ -372,7 +372,7 @@ describe('Plan 43 — Shared Episode Completion and Progression Suite', () => {
       const root = document.createElement('div');
       document.body.appendChild(root);
 
-      const app = createFractionFlowApp({ root, presentationMode: 'instant-test' }).mount();
+      const app = createFractionFlowApp({ entryTestHooks: { rotationDay: 0 }, root, presentationMode: 'instant-test' }).mount();
       root.querySelector('.app-practice-button').click(); // sum-under-one
 
       // Solve item 0 to reach resolve
@@ -412,7 +412,7 @@ describe('Plan 43 — Shared Episode Completion and Progression Suite', () => {
         ]),
       });
 
-      const app = createFractionFlowApp({
+      const app = createFractionFlowApp({ entryTestHooks: { rotationDay: 0 },
         root,
         practiceTypes: [corruptedType],
         presentationMode: 'instant-test',
@@ -453,7 +453,7 @@ describe('Plan 43 — Shared Episode Completion and Progression Suite', () => {
 
       let defectActive = true;
 
-      const app = createFractionFlowApp({ root, presentationMode: 'instant-test' }).mount();
+      const app = createFractionFlowApp({ entryTestHooks: { rotationDay: 0 }, root, presentationMode: 'instant-test' }).mount();
       root.querySelector('.app-practice-button').click();
 
       // Solve item 0
@@ -490,7 +490,7 @@ describe('Plan 43 — Shared Episode Completion and Progression Suite', () => {
         items: Object.freeze(PRACTICE_TYPES[0].items.slice(2, 4)),
       });
 
-      const app = createFractionFlowApp({
+      const app = createFractionFlowApp({ entryTestHooks: { rotationDay: 0 },
         root,
         practiceTypes: [reflectionPracticeType],
         presentationMode: 'instant-test',
@@ -532,7 +532,7 @@ describe('Plan 43 — Shared Episode Completion and Progression Suite', () => {
         items: Object.freeze(PRACTICE_TYPES[0].items.slice(2, 4)),
       });
 
-      const app = createFractionFlowApp({
+      const app = createFractionFlowApp({ entryTestHooks: { rotationDay: 0 },
         root,
         practiceTypes: [reflectionPracticeType],
         presentationMode: 'instant-test',
@@ -573,7 +573,7 @@ describe('Plan 43 — Shared Episode Completion and Progression Suite', () => {
         items: Object.freeze(PRACTICE_TYPES[0].items.slice(2, 4)),
       });
 
-      const app = createFractionFlowApp({
+      const app = createFractionFlowApp({ entryTestHooks: { rotationDay: 0 },
         root,
         practiceTypes: [reflectionPracticeType],
         presentationMode: 'instant-test',
@@ -611,7 +611,7 @@ describe('Plan 43 — Shared Episode Completion and Progression Suite', () => {
       const root = document.createElement('div');
       document.body.appendChild(root);
 
-      const app = createFractionFlowApp({ root, presentationMode: 'instant-test' }).mount();
+      const app = createFractionFlowApp({ entryTestHooks: { rotationDay: 0 }, root, presentationMode: 'instant-test' }).mount();
       root.querySelector('.app-practice-button').click();
 
       // Solve item 0 to resolve
@@ -652,7 +652,7 @@ describe('Plan 43 — Shared Episode Completion and Progression Suite', () => {
       const root = document.createElement('div');
       document.body.appendChild(root);
 
-      const app = createFractionFlowApp({ root, presentationMode: 'instant-test' }).mount();
+      const app = createFractionFlowApp({ entryTestHooks: { rotationDay: 0 }, root, presentationMode: 'instant-test' }).mount();
       openChooser(root); root.querySelector('[data-practice-type="like-denominator-addition"]').click();
 
       app.dispatch({ type: 'acknowledge-encounter' });
@@ -690,7 +690,7 @@ describe('Plan 43 — Shared Episode Completion and Progression Suite', () => {
         items: Object.freeze(PRACTICE_TYPES[0].items.slice(2, 4)),
       });
 
-      const app = createFractionFlowApp({
+      const app = createFractionFlowApp({ entryTestHooks: { rotationDay: 0 },
         root,
         practiceTypes: [reflectionPracticeType],
         presentationMode: 'instant-test',
@@ -735,7 +735,7 @@ describe('Plan 43 — Shared Episode Completion and Progression Suite', () => {
       const root = document.createElement('div');
       document.body.appendChild(root);
 
-      const app = createFractionFlowApp({ root, presentationMode: 'instant-test' }).mount();
+      const app = createFractionFlowApp({ entryTestHooks: { rotationDay: 0 }, root, presentationMode: 'instant-test' }).mount();
       root.querySelector('.app-practice-button').click();
 
       // Solve item 0 to resolve
@@ -773,7 +773,7 @@ describe('Plan 43 — Shared Episode Completion and Progression Suite', () => {
       document.body.appendChild(root);
 
       // 1. In legacy-acknowledged mode:
-      const legacyApp = createFractionFlowApp({
+      const legacyApp = createFractionFlowApp({ entryTestHooks: { rotationDay: 0 },
         root,
         navigationMode: 'legacy-acknowledged',
         presentationMode: 'instant-test',
@@ -808,7 +808,7 @@ describe('Plan 43 — Shared Episode Completion and Progression Suite', () => {
       legacyApp.destroy();
 
       // 2. In direct production mode:
-      const directApp = createFractionFlowApp({
+      const directApp = createFractionFlowApp({ entryTestHooks: { rotationDay: 0 },
         root,
         navigationMode: 'direct',
         presentationMode: 'instant-test',

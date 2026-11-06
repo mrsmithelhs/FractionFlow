@@ -1,4 +1,5 @@
 import { projectEntryCapabilities } from './entry-projection.js';
+const DOCUMENT_ROTATION_DAY = Math.floor(Date.now() / 86_400_000);
 import { createComparisonRecordController } from './comparison-record-controller.js';
 import { createComparisonRecordPanel } from './comparison-record-panel.js';
 import { MAGNITUDE_SESSION_MANIFEST, createMagnitudeSessionController, prepareMagnitudeEntry, isMagnitudeEpisodeComplete } from './magnitude-session.js';
@@ -431,6 +432,7 @@ export function createFractionFlowApp({
 } = {}) {
   if (!root) throw new Error('app root element is required');
   if (!['compact', 'historical-flat'].includes(entryMode)) throw new TypeError('unknown entry mode');
+  const rotationDay = entryTestHooks.rotationDay ?? DOCUMENT_ROTATION_DAY;
 
   let selectedCondition = getRegisteredCondition(initialConditionId);
   let selectedSupportLevel = getDefaultSupportLevel();
@@ -795,7 +797,7 @@ export function createFractionFlowApp({
       sessionEntryNotice = makeElement('p', 'app-session-entry-notice'); sessionEntryNotice.setAttribute('role', 'status'); sessionEntryNotice.tabIndex = -1; setHidden(sessionEntryNotice, true); entryPage.appendChild(sessionEntryNotice);
       recordPanel = createComparisonRecordPanel({ host: entryPage, controller: recordController, practice: () => { const type = practiceTypes.find(t => t.id === 'symbolic-fraction-comparison'); if (type) startPractice(type, { focusEpisode: true, updateFragment: true }); } });
     } else {
-      const projection = projectEntryCapabilities(practiceTypes, MAGNITUDE_SESSION_MANIFEST);
+      const projection = projectEntryCapabilities(practiceTypes, MAGNITUDE_SESSION_MANIFEST, rotationDay);
       const makePracticeButton = (type, role) => {
         const button = createButton({ label: type.label,
           className: 'app-practice-choice',
@@ -807,11 +809,7 @@ export function createFractionFlowApp({
         return button;
       };
       if (projection.primary) entryPage.appendChild(makePracticeButton(projection.primary.type, 'primary'));
-      else {
-        const unavailable = makeElement('p', 'app-entry-unavailable');
-        unavailable.textContent = 'Add fractions with different denominators is unavailable.';
-        entryPage.appendChild(unavailable);
-      }
+
       chooserButton = createButton({ label: 'Choose what to practice', className: 'app-chooser-button', onClick: () => { if (shellActive()) setChooserOpen(chooserRegion.hasAttribute('hidden')); } });
       chooserButton.setAttribute('data-entry-chooser', '');
       chooserButton.setAttribute('aria-controls', 'fractionflow-chooser');

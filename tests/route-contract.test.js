@@ -30,6 +30,21 @@ const PRE_PLAN17_ROUTE_PREFIX_HASH = '861c315fa1cff3a3e3daa949c53c41a27d7bf27ba5
 const migratedEntryIndices = new Set([55, 56, ...Array.from({ length: 16 }, (_, i) => i + 65), ...Array.from({ length: 8 }, (_, i) => i + 91), 116]);
 function originalEntryRoutes(routes) {
   return routes.map((route, index) => {
+    if (route.id === 'ROUTE-ENTRY-GEAR-TAB') {
+      expect(index).toBe(24);
+      expect(route.actions).toEqual([
+        { step: 1, method: 'pressKey', target: 'body', value: 'Tab', description: 'Tab to the practice button' },
+        { step: 2, method: 'pressKey', target: '.app-practice-button', value: 'Tab', description: 'Tab onward to Choose what to practice' },
+        { method: 'assertFocused', target: '.app-chooser-button', description: 'Verify Choose has focus' },
+        { method: 'pressKey', target: '.app-chooser-button', value: 'Tab', description: 'Tab onward to Settings' },
+      ]);
+      return { ...route, actions: [route.actions[0], { ...route.actions[1], description: 'Tab onward to the reviewer gear' }] };
+    }
+    if (route.id === 'ROUTE-ENTRY-BEGIN-RETURN-FOCUS') {
+      expect(index).toBe(25);
+      expect(route.expect.assertions[1]).toEqual({ type: 'activeElementEquals', target: 'activeElement', value: 'button.fraction-control.app-practice-choice.app-practice-button' });
+      return { ...route, expect: { ...route.expect, assertions: [route.expect.assertions[0], { ...route.expect.assertions[1], value: 'button.fraction-control.app-practice-button' }] } };
+    }
     if (!migratedEntryIndices.has(index)) return route;
     const actions = [];
     for (let i = 0; i < route.actions.length; i++) {
@@ -48,6 +63,13 @@ function originalEntryRoutes(routes) {
     return { ...route, actions };
   });
 }
+
+it('fixes the addition day only for the named current production routes', () => {
+  const { usesFixedAdditionDay } = require('../scripts/dev/run-route-matrix.js');
+  expect(usesFixedAdditionDay('ROUTE-PLAN35-CURRENT-HIGH-VISUAL-ALL-21', 'production-default-v7')).toBe(true);
+  expect(usesFixedAdditionDay('ROUTE-PLAN35-CURRENT-HIGH-VISUAL-ALL-21', 'historical-v6')).toBe(false);
+  expect(usesFixedAdditionDay('ROUTE-PLAN43-ADDITION-CONSTRUCT', 'production-default-v7')).toBe(false);
+});
 
 it('changes historical fixture entries only by requesting the flat entry', () => {
   const pins = {
@@ -470,7 +492,7 @@ describe('Plan 14 Reachable Behavior Route Contract & Matrix Schema', () => {
   });
 
   it('preserves the frozen 54-route prefix and appends the Plan 17 learner-reach route', () => {
-    const originalPrefix = matrix.routes.slice(0, 54);
+    const originalPrefix = originalEntryRoutes(matrix.routes).slice(0, 54);
     const prefixHash = createHash('sha256').update(JSON.stringify(originalPrefix)).digest('hex');
     expect(prefixHash).toBe(PRE_PLAN17_ROUTE_PREFIX_HASH);
     const appended = matrix.routes[54];
