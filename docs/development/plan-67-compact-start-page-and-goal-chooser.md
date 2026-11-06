@@ -1,7 +1,8 @@
 ---
 id: plan-67
 title: Compact Start Page and Goal Chooser
-status: delivered
+status: complete
+resolution: "Owner accepted the compact entry, daily featured rotation, and revised subtitle and featured label after rendered review on 2026-11-05."
 depends_on: [plan-65, plan-64, plan-63]
 gate: "Approve capability projection, disclosure/focus/failure contracts, exact source/test migration and reflow mechanism before source. Owner rendered acceptance and deployment remain separate."
 summary: >-
