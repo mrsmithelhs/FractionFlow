@@ -1,7 +1,7 @@
 ---
 id: plan-70
 title: First Working Practice Scheduler
-status: draft
+status: in-progress
 depends_on: [plan-56, plan-60, plan-63, plan-64, plan-66, plan-67, plan-69]
 gate: "Approve the bounded slot policy, eligible item pool and session admission mechanism before source work. Technical and owner review of real sessions precede closure."
 summary: >-
