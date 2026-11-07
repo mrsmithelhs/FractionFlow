@@ -1198,3 +1198,5 @@ body,
 .plan82-exchanged { background: repeating-linear-gradient(45deg, #c9e4ed 0 4px, #fff 4px 8px); }
 .plan82-original { background: #c9e4ed; }
 .plan82-subtraction .plan58-label { min-width: 0; max-width: 100%; }
+
+.plan82-operand { flex-basis: 100%; }
