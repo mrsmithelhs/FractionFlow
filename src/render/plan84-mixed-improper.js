@@ -18,8 +18,9 @@ export function createPlan84Renderer({container,view,dispatch,progression,active
     if(model.evaluation.status==='incomplete')feedback.classList.add('house-attention');
     if(model.status==='resolved')feedback.classList.add('plan50-success');
     if(model.status==='active') {
-      section.append(el('h2','','Which fraction names the same amount?'),mixed(model.mixed));
-      const group=el('fieldset','plan84-options');group.append(el('legend','','Choose one fraction.'));
+      const question=el('h2','','Which fraction names the same amount?');question.id=`plan84-question-${view}`;
+      section.append(question,mixed(model.mixed));
+      const group=el('fieldset','plan84-options');group.setAttribute('aria-labelledby',question.id);
       model.options.forEach((option,index)=>{
         const label=el('label','plan84-option'),input=el('input');input.type='radio';input.name=`plan84-choice-${view}`;input.value=String(index);input.checked=model.selection===index;input.dataset.focusKey=`choice-${index}`;
         if(feedback.textContent) input.setAttribute('aria-describedby',feedback.id);
@@ -31,15 +32,15 @@ export function createPlan84Renderer({container,view,dispatch,progression,active
     } else {
       section.append(feedback);
       const v=model.verification;
-      const equality=el('p','plan84-equality');equality.append(mixed(model.mixed),document.createTextNode(' = '),fraction(v.fraction));section.append(equality);
+      const equality=el('p','plan84-equality');equality.append(mixed(model.mixed),document.createTextNode(' = '),fraction(v.fraction));
       if(view==='visual') {
         const frame=el('div','plan84-frame'),axis=el('div','plan84-axis');axis.setAttribute('aria-hidden','true');
         for(const item of v.ticks){const tick=el('span','plan84-tick');tick.style.left=`${item.percent}%`;if(item.benchmark!==null)tick.append(el('span','plan84-benchmark',item.benchmark));axis.append(tick);}
         const marker=el('span','plan84-marker');marker.style.left=`${v.markerPercent}%`;axis.append(marker);
-        const connector=el('span','plan84-connector');connector.style.left=`${v.markerPercent}%`;axis.append(connector);frame.append(axis);
-        const labels=el('div','plan84-point-labels');labels.append(el('span','','At the marked point:'),mixed(model.mixed),fraction(v.fraction));frame.append(labels);section.append(frame);
-      }
-      section.append(el('p','plan84-explanation',v.explanation),el('p','plan84-linear-description',`On a number line from 0 to 2, the whole intervals from 0 to 1 and 1 to 2 are equal. Both forms name the same point.`));
+        const svg=document.createElementNS('http://www.w3.org/2000/svg','svg');svg.classList.add('plan84-connector');svg.setAttribute('viewBox','0 0 100 100');svg.setAttribute('preserveAspectRatio','none');
+        const line=document.createElementNS('http://www.w3.org/2000/svg','polyline');line.setAttribute('points',`${v.markerPercent},0 ${v.markerPercent},55 50,100`);line.setAttribute('vector-effect','non-scaling-stroke');svg.append(line);axis.append(svg);frame.append(axis,equality);section.append(frame);
+      } else section.append(equality);
+      section.append(el('p','plan84-explanation',v.explanation),el('p',view==='visual'?'plan84-linear-description sr-only':'plan84-linear-description',`On a number line from 0 to 2, the whole intervals from 0 to 1 and 1 to 2 are equal. Both forms name the same point.`));
       const p=progression();if(p?.notice)section.append(el('p','',p.notice));if(p?.onAction){const next=el('button','control-btn',p.label);next.type='button';next.dataset.focusKey='next';next.addEventListener('click',()=>{if(valid(next))p.onAction();});section.append(next);}
     }
     if(root)root.replaceWith(section);else container.append(section);root=section;
