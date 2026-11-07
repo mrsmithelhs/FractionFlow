@@ -1,7 +1,7 @@
 ---
 id: plan-84
 title: Mixed-to-Improper Number-Line Bridge
-status: in-progress
+status: delivered
 depends_on: [plan-53, plan-56, plan-58, plan-77, plan-83]
 gate: "Approve Requirement 0 before source changes. Owner reviews the rendered bridge and decides Phase 5 exit separately."
 summary: >-
