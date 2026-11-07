@@ -1,7 +1,8 @@
 ---
 id: plan-73
 title: Mixed-Number Addition With Regrouping Design
-status: delivered
+status: complete
+resolution: "Owner accepted the single two-field response and both eighths cases. Plan 74 carries the adopted design into implementation."
 depends_on: [plan-56, plan-58, plan-72]
 gate: "Approve the report-only scope before the dossier. Owner adopts one response design and a bounded first slice before separate implementation."
 summary: >-
