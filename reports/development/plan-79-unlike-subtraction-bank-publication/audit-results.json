@@ -1,0 +1,2454 @@
+{
+  "baseline": "527815ee2f6eb2b467951cb189ad4a9b9ec68c5f",
+  "liveEntries": 93,
+  "inventory": [
+    {
+      "type": "sum-under-one",
+      "item": "two-thirds-plus-one-fourth",
+      "definition": "phase-3-reusable-addition-recipes",
+      "source": "curated:curated-relatively-prime-addition-non-least@plan03-fixtures-v1",
+      "kind": "addition",
+      "orderedOperands": [
+        {
+          "kind": "fraction",
+          "numerator": "2",
+          "denominator": "3"
+        },
+        {
+          "kind": "fraction",
+          "numerator": "1",
+          "denominator": "4"
+        }
+      ],
+      "normalized": "2/3 | 1/4"
+    },
+    {
+      "type": "sum-under-one",
+      "item": "one-half-plus-one-third",
+      "definition": "phase-3-reusable-addition-recipes",
+      "source": "curated:curated-relatively-prime-addition-one-half-one-third@plan26-fixtures-v1",
+      "kind": "addition",
+      "orderedOperands": [
+        {
+          "kind": "fraction",
+          "numerator": "1",
+          "denominator": "2"
+        },
+        {
+          "kind": "fraction",
+          "numerator": "1",
+          "denominator": "3"
+        }
+      ],
+      "normalized": "1/2 | 1/3"
+    },
+    {
+      "type": "sum-under-one",
+      "item": "one-half-plus-one-fifth",
+      "definition": "phase-2-unlike-proper-addition-reflection",
+      "source": "curated:curated-relatively-prime-addition-one-half-one-fifth@plan32-record-v1",
+      "kind": "addition",
+      "orderedOperands": [
+        {
+          "kind": "fraction",
+          "numerator": "1",
+          "denominator": "2"
+        },
+        {
+          "kind": "fraction",
+          "numerator": "1",
+          "denominator": "5"
+        }
+      ],
+      "normalized": "1/2 | 1/5"
+    },
+    {
+      "type": "sum-under-one",
+      "item": "one-half-plus-two-fifths",
+      "definition": "phase-2-unlike-proper-addition-reflection",
+      "source": "curated:curated-relatively-prime-addition-one-half-two-fifths@plan32-record-v1",
+      "kind": "addition",
+      "orderedOperands": [
+        {
+          "kind": "fraction",
+          "numerator": "1",
+          "denominator": "2"
+        },
+        {
+          "kind": "fraction",
+          "numerator": "2",
+          "denominator": "5"
+        }
+      ],
+      "normalized": "1/2 | 2/5"
+    },
+    {
+      "type": "sum-under-one",
+      "item": "one-third-plus-one-fourth",
+      "definition": "phase-3-reusable-addition-recipes",
+      "source": "curated:curated-relatively-prime-addition-one-third-one-fourth@plan32-record-v1",
+      "kind": "addition",
+      "orderedOperands": [
+        {
+          "kind": "fraction",
+          "numerator": "1",
+          "denominator": "3"
+        },
+        {
+          "kind": "fraction",
+          "numerator": "1",
+          "denominator": "4"
+        }
+      ],
+      "normalized": "1/3 | 1/4"
+    },
+    {
+      "type": "sum-under-one",
+      "item": "one-third-plus-one-fifth",
+      "definition": "phase-2-unlike-proper-addition-reflection",
+      "source": "curated:curated-relatively-prime-addition-one-third-one-fifth@plan32-record-v1",
+      "kind": "addition",
+      "orderedOperands": [
+        {
+          "kind": "fraction",
+          "numerator": "1",
+          "denominator": "3"
+        },
+        {
+          "kind": "fraction",
+          "numerator": "1",
+          "denominator": "5"
+        }
+      ],
+      "normalized": "1/3 | 1/5"
+    },
+    {
+      "type": "sum-under-one",
+      "item": "one-third-plus-two-fifths",
+      "definition": "phase-2-unlike-proper-addition-reflection",
+      "source": "curated:curated-relatively-prime-addition-one-third-two-fifths@plan32-record-v1",
+      "kind": "addition",
+      "orderedOperands": [
+        {
+          "kind": "fraction",
+          "numerator": "1",
+          "denominator": "3"
+        },
+        {
+          "kind": "fraction",
+          "numerator": "2",
+          "denominator": "5"
+        }
+      ],
+      "normalized": "1/3 | 2/5"
+    },
+    {
+      "type": "sum-under-one",
+      "item": "two-thirds-plus-one-fifth",
+      "definition": "phase-2-unlike-proper-addition-reflection",
+      "source": "curated:curated-relatively-prime-addition-two-thirds-one-fifth@plan32-record-v1",
+      "kind": "addition",
+      "orderedOperands": [
+        {
+          "kind": "fraction",
+          "numerator": "2",
+          "denominator": "3"
+        },
+        {
+          "kind": "fraction",
+          "numerator": "1",
+          "denominator": "5"
+        }
+      ],
+      "normalized": "2/3 | 1/5"
+    },
+    {
+      "type": "sum-under-one",
+      "item": "three-fifths-plus-one-third",
+      "definition": "phase-2-unlike-proper-addition-reflection",
+      "source": "curated:curated-relatively-prime-addition-three-fifths-one-third@plan32-record-v1",
+      "kind": "addition",
+      "orderedOperands": [
+        {
+          "kind": "fraction",
+          "numerator": "3",
+          "denominator": "5"
+        },
+        {
+          "kind": "fraction",
+          "numerator": "1",
+          "denominator": "3"
+        }
+      ],
+      "normalized": "3/5 | 1/3"
+    },
+    {
+      "type": "sum-under-one",
+      "item": "one-sixth-plus-one-fourth",
+      "definition": "phase-2-shared-factor-addition-reflection",
+      "source": "curated:curated-shared-factor-addition-one-sixth-one-fourth@plan19-record-v1",
+      "kind": "addition",
+      "orderedOperands": [
+        {
+          "kind": "fraction",
+          "numerator": "1",
+          "denominator": "6"
+        },
+        {
+          "kind": "fraction",
+          "numerator": "1",
+          "denominator": "4"
+        }
+      ],
+      "normalized": "1/6 | 1/4"
+    },
+    {
+      "type": "sum-under-one",
+      "item": "two-thirds-plus-three-fourths",
+      "definition": "phase-3-crossing-one-whole-addition-reflection",
+      "source": "curated:curated-relatively-prime-addition-crossing-one-whole-two-thirds-three-fourths@plan17-record-v1",
+      "kind": "addition",
+      "orderedOperands": [
+        {
+          "kind": "fraction",
+          "numerator": "2",
+          "denominator": "3"
+        },
+        {
+          "kind": "fraction",
+          "numerator": "3",
+          "denominator": "4"
+        }
+      ],
+      "normalized": "2/3 | 3/4"
+    },
+    {
+      "type": "sum-under-one",
+      "item": "nested-one-half-plus-three-eighths",
+      "definition": "phase-3-reusable-addition-recipes",
+      "source": "curated:curated-nested-addition-one-half-three-eighths@plan18-record-v1",
+      "kind": "addition",
+      "orderedOperands": [
+        {
+          "kind": "fraction",
+          "numerator": "1",
+          "denominator": "2"
+        },
+        {
+          "kind": "fraction",
+          "numerator": "3",
+          "denominator": "8"
+        }
+      ],
+      "normalized": "1/2 | 3/8"
+    },
+    {
+      "type": "sum-under-one",
+      "item": "nested-three-eighths-plus-one-half",
+      "definition": "phase-3-reusable-addition-recipes",
+      "source": "curated:curated-nested-addition-three-eighths-one-half@plan18-record-v1",
+      "kind": "addition",
+      "orderedOperands": [
+        {
+          "kind": "fraction",
+          "numerator": "3",
+          "denominator": "8"
+        },
+        {
+          "kind": "fraction",
+          "numerator": "1",
+          "denominator": "2"
+        }
+      ],
+      "normalized": "3/8 | 1/2"
+    },
+    {
+      "type": "sum-under-one",
+      "item": "plan35-construct-half-fifth-10",
+      "definition": "phase-3-reusable-addition-recipes",
+      "source": "curated:curated-relatively-prime-addition-one-half-one-fifth@plan32-record-v1",
+      "kind": "addition",
+      "orderedOperands": [
+        {
+          "kind": "fraction",
+          "numerator": "1",
+          "denominator": "2"
+        },
+        {
+          "kind": "fraction",
+          "numerator": "1",
+          "denominator": "5"
+        }
+      ],
+      "normalized": "1/2 | 1/5"
+    },
+    {
+      "type": "sum-under-one",
+      "item": "plan35-construct-three-fifths-third-30",
+      "definition": "phase-3-reusable-addition-recipes",
+      "source": "curated:curated-relatively-prime-addition-three-fifths-one-third@plan32-record-v1",
+      "kind": "addition",
+      "orderedOperands": [
+        {
+          "kind": "fraction",
+          "numerator": "3",
+          "denominator": "5"
+        },
+        {
+          "kind": "fraction",
+          "numerator": "1",
+          "denominator": "3"
+        }
+      ],
+      "normalized": "3/5 | 1/3"
+    },
+    {
+      "type": "sum-under-one",
+      "item": "plan35-inspect-third-eighth-24",
+      "definition": "phase-3-reusable-addition-recipes",
+      "source": "curated:curated-plan35-inspect-one-third-one-eighth@plan35-record-v1",
+      "kind": "addition",
+      "orderedOperands": [
+        {
+          "kind": "fraction",
+          "numerator": "1",
+          "denominator": "3"
+        },
+        {
+          "kind": "fraction",
+          "numerator": "1",
+          "denominator": "8"
+        }
+      ],
+      "normalized": "1/3 | 1/8"
+    },
+    {
+      "type": "sum-under-one",
+      "item": "plan35-inspect-fifth-third-30",
+      "definition": "phase-3-reusable-addition-recipes",
+      "source": "curated:curated-plan35-inspect-one-fifth-one-third@plan35-record-v1",
+      "kind": "addition",
+      "orderedOperands": [
+        {
+          "kind": "fraction",
+          "numerator": "1",
+          "denominator": "5"
+        },
+        {
+          "kind": "fraction",
+          "numerator": "1",
+          "denominator": "3"
+        }
+      ],
+      "normalized": "1/5 | 1/3"
+    },
+    {
+      "type": "sum-under-one",
+      "item": "plan35-identify-half-three-tenths-10",
+      "definition": "phase-3-reusable-addition-recipes",
+      "source": "curated:curated-plan35-identify-one-half-three-tenths@plan35-record-v1",
+      "kind": "addition",
+      "orderedOperands": [
+        {
+          "kind": "fraction",
+          "numerator": "1",
+          "denominator": "2"
+        },
+        {
+          "kind": "fraction",
+          "numerator": "3",
+          "denominator": "10"
+        }
+      ],
+      "normalized": "1/2 | 3/10"
+    },
+    {
+      "type": "sum-under-one",
+      "item": "plan35-identify-three-tenths-half-10",
+      "definition": "phase-3-reusable-addition-recipes",
+      "source": "curated:curated-plan35-identify-three-tenths-one-half@plan35-record-v1",
+      "kind": "addition",
+      "orderedOperands": [
+        {
+          "kind": "fraction",
+          "numerator": "3",
+          "denominator": "10"
+        },
+        {
+          "kind": "fraction",
+          "numerator": "1",
+          "denominator": "2"
+        }
+      ],
+      "normalized": "3/10 | 1/2"
+    },
+    {
+      "type": "sum-under-one",
+      "item": "plan35-identify-third-five-twelfths-12",
+      "definition": "phase-3-reusable-addition-recipes",
+      "source": "curated:curated-plan35-identify-one-third-five-twelfths@plan35-record-v1",
+      "kind": "addition",
+      "orderedOperands": [
+        {
+          "kind": "fraction",
+          "numerator": "1",
+          "denominator": "3"
+        },
+        {
+          "kind": "fraction",
+          "numerator": "5",
+          "denominator": "12"
+        }
+      ],
+      "normalized": "1/3 | 5/12"
+    },
+    {
+      "type": "sum-under-one",
+      "item": "plan35-identify-five-twelfths-third-12",
+      "definition": "phase-3-reusable-addition-recipes",
+      "source": "curated:curated-plan35-identify-five-twelfths-one-third@plan35-record-v1",
+      "kind": "addition",
+      "orderedOperands": [
+        {
+          "kind": "fraction",
+          "numerator": "5",
+          "denominator": "12"
+        },
+        {
+          "kind": "fraction",
+          "numerator": "1",
+          "denominator": "3"
+        }
+      ],
+      "normalized": "5/12 | 1/3"
+    },
+    {
+      "type": "like-denominator-addition",
+      "item": "two-sevenths-plus-three-sevenths",
+      "definition": "phase-3-like-denominator-addition",
+      "source": "curated:curated-like-denominator-addition-two-sevenths-three-sevenths@plan20-record-v1",
+      "kind": "addition",
+      "orderedOperands": [
+        {
+          "kind": "fraction",
+          "numerator": "2",
+          "denominator": "7"
+        },
+        {
+          "kind": "fraction",
+          "numerator": "3",
+          "denominator": "7"
+        }
+      ],
+      "normalized": "2/7 | 3/7"
+    },
+    {
+      "type": "like-denominator-subtraction",
+      "item": "takeaway-8-5-minus-2",
+      "definition": "phase-3-like-denominator-takeaway-subtraction",
+      "source": "curated:curated-plan36-takeaway-8-5-minus-2@plan36-record-v1",
+      "kind": "subtraction",
+      "orderedOperands": [
+        {
+          "kind": "fraction",
+          "numerator": "5",
+          "denominator": "8"
+        },
+        {
+          "kind": "fraction",
+          "numerator": "2",
+          "denominator": "8"
+        }
+      ],
+      "normalized": "5/8 | 1/4"
+    },
+    {
+      "type": "like-denominator-subtraction",
+      "item": "takeaway-12-8-minus-3",
+      "definition": "phase-3-like-denominator-takeaway-subtraction",
+      "source": "curated:curated-plan36-takeaway-12-8-minus-3@plan36-record-v1",
+      "kind": "subtraction",
+      "orderedOperands": [
+        {
+          "kind": "fraction",
+          "numerator": "8",
+          "denominator": "12"
+        },
+        {
+          "kind": "fraction",
+          "numerator": "3",
+          "denominator": "12"
+        }
+      ],
+      "normalized": "2/3 | 1/4"
+    },
+    {
+      "type": "like-denominator-subtraction",
+      "item": "takeaway-10-7-minus-3",
+      "definition": "phase-3-like-denominator-takeaway-subtraction",
+      "source": "curated:curated-plan36-takeaway-10-7-minus-3@plan36-record-v1",
+      "kind": "subtraction",
+      "orderedOperands": [
+        {
+          "kind": "fraction",
+          "numerator": "7",
+          "denominator": "10"
+        },
+        {
+          "kind": "fraction",
+          "numerator": "3",
+          "denominator": "10"
+        }
+      ],
+      "normalized": "7/10 | 3/10"
+    },
+    {
+      "type": "like-denominator-subtraction",
+      "item": "takeaway-11-9-minus-4",
+      "definition": "phase-3-like-denominator-takeaway-subtraction",
+      "source": "curated:curated-plan36-takeaway-11-9-minus-4@plan36-record-v1",
+      "kind": "subtraction",
+      "orderedOperands": [
+        {
+          "kind": "fraction",
+          "numerator": "9",
+          "denominator": "11"
+        },
+        {
+          "kind": "fraction",
+          "numerator": "4",
+          "denominator": "11"
+        }
+      ],
+      "normalized": "9/11 | 4/11"
+    },
+    {
+      "type": "like-denominator-subtraction",
+      "item": "takeaway-9-6-minus-1",
+      "definition": "phase-3-like-denominator-takeaway-subtraction",
+      "source": "curated:curated-plan36-takeaway-9-6-minus-1@plan36-record-v1",
+      "kind": "subtraction",
+      "orderedOperands": [
+        {
+          "kind": "fraction",
+          "numerator": "6",
+          "denominator": "9"
+        },
+        {
+          "kind": "fraction",
+          "numerator": "1",
+          "denominator": "9"
+        }
+      ],
+      "normalized": "2/3 | 1/9"
+    },
+    {
+      "type": "like-denominator-subtraction",
+      "item": "takeaway-9-6-minus-6",
+      "definition": "phase-3-like-denominator-takeaway-subtraction",
+      "source": "curated:curated-plan36-takeaway-9-6-minus-6@plan36-record-v1",
+      "kind": "subtraction",
+      "orderedOperands": [
+        {
+          "kind": "fraction",
+          "numerator": "6",
+          "denominator": "9"
+        },
+        {
+          "kind": "fraction",
+          "numerator": "6",
+          "denominator": "9"
+        }
+      ],
+      "normalized": "2/3 | 2/3"
+    },
+    {
+      "type": "like-denominator-subtraction",
+      "item": "takeaway-6-5-minus-4",
+      "definition": "phase-3-like-denominator-takeaway-subtraction",
+      "source": "curated:curated-plan36-takeaway-6-5-minus-4@plan36-record-v1",
+      "kind": "subtraction",
+      "orderedOperands": [
+        {
+          "kind": "fraction",
+          "numerator": "5",
+          "denominator": "6"
+        },
+        {
+          "kind": "fraction",
+          "numerator": "4",
+          "denominator": "6"
+        }
+      ],
+      "normalized": "5/6 | 2/3"
+    },
+    {
+      "type": "like-denominator-subtraction",
+      "item": "takeaway-8-7-minus-1",
+      "definition": "phase-3-like-denominator-takeaway-subtraction",
+      "source": "curated:curated-plan36-takeaway-8-7-minus-1@plan36-record-v1",
+      "kind": "subtraction",
+      "orderedOperands": [
+        {
+          "kind": "fraction",
+          "numerator": "7",
+          "denominator": "8"
+        },
+        {
+          "kind": "fraction",
+          "numerator": "1",
+          "denominator": "8"
+        }
+      ],
+      "normalized": "7/8 | 1/8"
+    },
+    {
+      "type": "unlike-denominator-subtraction",
+      "item": "plan40-construct-half-fifth-10",
+      "definition": "phase-3-reusable-subtraction-recipes",
+      "source": "curated:curated-plan40-construct-one-half-one-fifth@plan40-record-v1",
+      "kind": "subtraction",
+      "orderedOperands": [
+        {
+          "kind": "fraction",
+          "numerator": "1",
+          "denominator": "2"
+        },
+        {
+          "kind": "fraction",
+          "numerator": "1",
+          "denominator": "5"
+        }
+      ],
+      "normalized": "1/2 | 1/5"
+    },
+    {
+      "type": "unlike-denominator-subtraction",
+      "item": "plan40-construct-three-fourths-two-fifths-20",
+      "definition": "phase-3-reusable-subtraction-recipes",
+      "source": "curated:curated-relatively-prime-subtraction@plan03-fixtures-v1",
+      "kind": "subtraction",
+      "orderedOperands": [
+        {
+          "kind": "fraction",
+          "numerator": "3",
+          "denominator": "4"
+        },
+        {
+          "kind": "fraction",
+          "numerator": "2",
+          "denominator": "5"
+        }
+      ],
+      "normalized": "3/4 | 2/5"
+    },
+    {
+      "type": "unlike-denominator-subtraction",
+      "item": "plan40-construct-five-sixths-three-eighths-24",
+      "definition": "phase-3-reusable-subtraction-recipes",
+      "source": "curated:curated-shared-factor-subtraction@plan03-fixtures-v1",
+      "kind": "subtraction",
+      "orderedOperands": [
+        {
+          "kind": "fraction",
+          "numerator": "5",
+          "denominator": "6"
+        },
+        {
+          "kind": "fraction",
+          "numerator": "3",
+          "denominator": "8"
+        }
+      ],
+      "normalized": "5/6 | 3/8"
+    },
+    {
+      "type": "unlike-denominator-subtraction",
+      "item": "plan40-inspect-two-thirds-one-fourth-12",
+      "definition": "phase-3-reusable-subtraction-recipes",
+      "source": "curated:curated-plan40-inspect-two-thirds-one-fourth@plan40-record-v1",
+      "kind": "subtraction",
+      "orderedOperands": [
+        {
+          "kind": "fraction",
+          "numerator": "2",
+          "denominator": "3"
+        },
+        {
+          "kind": "fraction",
+          "numerator": "1",
+          "denominator": "4"
+        }
+      ],
+      "normalized": "2/3 | 1/4"
+    },
+    {
+      "type": "unlike-denominator-subtraction",
+      "item": "plan40-inspect-seven-tenths-one-fourth-20",
+      "definition": "phase-3-reusable-subtraction-recipes",
+      "source": "curated:curated-plan40-inspect-seven-tenths-one-fourth@plan40-record-v1",
+      "kind": "subtraction",
+      "orderedOperands": [
+        {
+          "kind": "fraction",
+          "numerator": "7",
+          "denominator": "10"
+        },
+        {
+          "kind": "fraction",
+          "numerator": "1",
+          "denominator": "4"
+        }
+      ],
+      "normalized": "7/10 | 1/4"
+    },
+    {
+      "type": "unlike-denominator-subtraction",
+      "item": "plan40-inspect-five-sixths-seven-tenths-30",
+      "definition": "phase-3-reusable-subtraction-recipes",
+      "source": "curated:curated-plan40-inspect-five-sixths-seven-tenths@plan40-record-v1",
+      "kind": "subtraction",
+      "orderedOperands": [
+        {
+          "kind": "fraction",
+          "numerator": "5",
+          "denominator": "6"
+        },
+        {
+          "kind": "fraction",
+          "numerator": "7",
+          "denominator": "10"
+        }
+      ],
+      "normalized": "5/6 | 7/10"
+    },
+    {
+      "type": "unlike-denominator-subtraction",
+      "item": "plan40-identify-five-sixths-one-third-6",
+      "definition": "phase-3-reusable-subtraction-recipes",
+      "source": "curated:curated-nested-subtraction-reducible@plan03-fixtures-v1",
+      "kind": "subtraction",
+      "orderedOperands": [
+        {
+          "kind": "fraction",
+          "numerator": "5",
+          "denominator": "6"
+        },
+        {
+          "kind": "fraction",
+          "numerator": "1",
+          "denominator": "3"
+        }
+      ],
+      "normalized": "5/6 | 1/3"
+    },
+    {
+      "type": "unlike-denominator-subtraction",
+      "item": "plan40-identify-one-half-one-eighth-8",
+      "definition": "phase-3-reusable-subtraction-recipes",
+      "source": "curated:curated-plan40-identify-one-half-one-eighth@plan40-record-v1",
+      "kind": "subtraction",
+      "orderedOperands": [
+        {
+          "kind": "fraction",
+          "numerator": "1",
+          "denominator": "2"
+        },
+        {
+          "kind": "fraction",
+          "numerator": "1",
+          "denominator": "8"
+        }
+      ],
+      "normalized": "1/2 | 1/8"
+    },
+    {
+      "type": "unlike-denominator-subtraction",
+      "item": "plan40-identify-two-thirds-five-twelfths-12",
+      "definition": "phase-3-reusable-subtraction-recipes",
+      "source": "curated:curated-plan40-identify-two-thirds-five-twelfths@plan40-record-v1",
+      "kind": "subtraction",
+      "orderedOperands": [
+        {
+          "kind": "fraction",
+          "numerator": "2",
+          "denominator": "3"
+        },
+        {
+          "kind": "fraction",
+          "numerator": "5",
+          "denominator": "12"
+        }
+      ],
+      "normalized": "2/3 | 5/12"
+    },
+    {
+      "type": "bar-to-line-same-amount",
+      "item": "bridge-01-half-2",
+      "definition": "phase-4-bar-to-line-same-amount",
+      "source": "plan37-bar-to-line-bridge-records",
+      "kind": "unary bridge",
+      "record": {
+        "itemId": "bridge-01-half-2",
+        "fixtureId": "curated-plan37-bridge-01-half-2",
+        "authoringRevision": "plan37-record-v1",
+        "taskDataId": "plan37-bar-to-line-same-amount",
+        "taskDataRevision": "1",
+        "recipe": {
+          "id": "plan37.bar-to-line-same-amount",
+          "revision": "1"
+        },
+        "sourceForm": {
+          "kind": "fraction",
+          "numerator": "1",
+          "denominator": "2"
+        },
+        "partitionDenominator": "2",
+        "sparseCandidates": [
+          {
+            "id": "candidate-a",
+            "form": {
+              "kind": "fraction",
+              "numerator": "0",
+              "denominator": "1"
+            }
+          },
+          {
+            "id": "candidate-b",
+            "form": {
+              "kind": "fraction",
+              "numerator": "1",
+              "denominator": "4"
+            }
+          },
+          {
+            "id": "candidate-c",
+            "form": {
+              "kind": "fraction",
+              "numerator": "1",
+              "denominator": "2"
+            }
+          },
+          {
+            "id": "candidate-d",
+            "form": {
+              "kind": "fraction",
+              "numerator": "1",
+              "denominator": "1"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "type": "bar-to-line-same-amount",
+      "item": "bridge-02-fourth-4",
+      "definition": "phase-4-bar-to-line-same-amount",
+      "source": "plan37-bar-to-line-bridge-records",
+      "kind": "unary bridge",
+      "record": {
+        "itemId": "bridge-02-fourth-4",
+        "fixtureId": "curated-plan37-bridge-02-fourth-4",
+        "authoringRevision": "plan37-record-v1",
+        "taskDataId": "plan37-bar-to-line-same-amount",
+        "taskDataRevision": "1",
+        "recipe": {
+          "id": "plan37.bar-to-line-same-amount",
+          "revision": "1"
+        },
+        "sourceForm": {
+          "kind": "fraction",
+          "numerator": "1",
+          "denominator": "4"
+        },
+        "partitionDenominator": "4",
+        "sparseCandidates": [
+          {
+            "id": "candidate-a",
+            "form": {
+              "kind": "fraction",
+              "numerator": "0",
+              "denominator": "1"
+            }
+          },
+          {
+            "id": "candidate-b",
+            "form": {
+              "kind": "fraction",
+              "numerator": "1",
+              "denominator": "4"
+            }
+          },
+          {
+            "id": "candidate-c",
+            "form": {
+              "kind": "fraction",
+              "numerator": "3",
+              "denominator": "8"
+            }
+          },
+          {
+            "id": "candidate-d",
+            "form": {
+              "kind": "fraction",
+              "numerator": "1",
+              "denominator": "2"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "type": "bar-to-line-same-amount",
+      "item": "bridge-03-three-fourths-4",
+      "definition": "phase-4-bar-to-line-same-amount",
+      "source": "plan37-bar-to-line-bridge-records",
+      "kind": "unary bridge",
+      "record": {
+        "itemId": "bridge-03-three-fourths-4",
+        "fixtureId": "curated-plan37-bridge-03-three-fourths-4",
+        "authoringRevision": "plan37-record-v1",
+        "taskDataId": "plan37-bar-to-line-same-amount",
+        "taskDataRevision": "1",
+        "recipe": {
+          "id": "plan37.bar-to-line-same-amount",
+          "revision": "1"
+        },
+        "sourceForm": {
+          "kind": "fraction",
+          "numerator": "3",
+          "denominator": "4"
+        },
+        "partitionDenominator": "4",
+        "sparseCandidates": [
+          {
+            "id": "candidate-a",
+            "form": {
+              "kind": "fraction",
+              "numerator": "1",
+              "denominator": "4"
+            }
+          },
+          {
+            "id": "candidate-b",
+            "form": {
+              "kind": "fraction",
+              "numerator": "1",
+              "denominator": "2"
+            }
+          },
+          {
+            "id": "candidate-c",
+            "form": {
+              "kind": "fraction",
+              "numerator": "3",
+              "denominator": "4"
+            }
+          },
+          {
+            "id": "candidate-d",
+            "form": {
+              "kind": "fraction",
+              "numerator": "1",
+              "denominator": "1"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "type": "bar-to-line-same-amount",
+      "item": "bridge-04-two-thirds-3",
+      "definition": "phase-4-bar-to-line-same-amount",
+      "source": "plan37-bar-to-line-bridge-records",
+      "kind": "unary bridge",
+      "record": {
+        "itemId": "bridge-04-two-thirds-3",
+        "fixtureId": "curated-plan37-bridge-04-two-thirds-3",
+        "authoringRevision": "plan37-record-v1",
+        "taskDataId": "plan37-bar-to-line-same-amount",
+        "taskDataRevision": "1",
+        "recipe": {
+          "id": "plan37.bar-to-line-same-amount",
+          "revision": "1"
+        },
+        "sourceForm": {
+          "kind": "fraction",
+          "numerator": "2",
+          "denominator": "3"
+        },
+        "partitionDenominator": "3",
+        "sparseCandidates": [
+          {
+            "id": "candidate-a",
+            "form": {
+              "kind": "fraction",
+              "numerator": "0",
+              "denominator": "1"
+            }
+          },
+          {
+            "id": "candidate-b",
+            "form": {
+              "kind": "fraction",
+              "numerator": "1",
+              "denominator": "3"
+            }
+          },
+          {
+            "id": "candidate-c",
+            "form": {
+              "kind": "fraction",
+              "numerator": "1",
+              "denominator": "2"
+            }
+          },
+          {
+            "id": "candidate-d",
+            "form": {
+              "kind": "fraction",
+              "numerator": "2",
+              "denominator": "3"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "type": "bar-to-line-same-amount",
+      "item": "bridge-05-two-fourths-half",
+      "definition": "phase-4-bar-to-line-same-amount",
+      "source": "plan37-bar-to-line-bridge-records",
+      "kind": "unary bridge",
+      "record": {
+        "itemId": "bridge-05-two-fourths-half",
+        "fixtureId": "curated-plan37-bridge-05-two-fourths-half",
+        "authoringRevision": "plan37-record-v1",
+        "taskDataId": "plan37-bar-to-line-same-amount",
+        "taskDataRevision": "1",
+        "recipe": {
+          "id": "plan37.bar-to-line-same-amount",
+          "revision": "1"
+        },
+        "sourceForm": {
+          "kind": "fraction",
+          "numerator": "2",
+          "denominator": "4"
+        },
+        "partitionDenominator": "4",
+        "sparseCandidates": [
+          {
+            "id": "candidate-a",
+            "form": {
+              "kind": "fraction",
+              "numerator": "1",
+              "denominator": "4"
+            }
+          },
+          {
+            "id": "candidate-b",
+            "form": {
+              "kind": "fraction",
+              "numerator": "2",
+              "denominator": "4"
+            }
+          },
+          {
+            "id": "candidate-c",
+            "form": {
+              "kind": "fraction",
+              "numerator": "3",
+              "denominator": "4"
+            }
+          },
+          {
+            "id": "candidate-d",
+            "form": {
+              "kind": "fraction",
+              "numerator": "1",
+              "denominator": "1"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "type": "bar-to-line-same-amount",
+      "item": "bridge-06-three-eighths-8",
+      "definition": "phase-4-bar-to-line-same-amount",
+      "source": "plan37-bar-to-line-bridge-records",
+      "kind": "unary bridge",
+      "record": {
+        "itemId": "bridge-06-three-eighths-8",
+        "fixtureId": "curated-plan37-bridge-06-three-eighths-8",
+        "authoringRevision": "plan37-record-v1",
+        "taskDataId": "plan37-bar-to-line-same-amount",
+        "taskDataRevision": "1",
+        "recipe": {
+          "id": "plan37.bar-to-line-same-amount",
+          "revision": "1"
+        },
+        "sourceForm": {
+          "kind": "fraction",
+          "numerator": "3",
+          "denominator": "8"
+        },
+        "partitionDenominator": "8",
+        "sparseCandidates": [
+          {
+            "id": "candidate-a",
+            "form": {
+              "kind": "fraction",
+              "numerator": "1",
+              "denominator": "8"
+            }
+          },
+          {
+            "id": "candidate-b",
+            "form": {
+              "kind": "fraction",
+              "numerator": "2",
+              "denominator": "8"
+            }
+          },
+          {
+            "id": "candidate-c",
+            "form": {
+              "kind": "fraction",
+              "numerator": "3",
+              "denominator": "8"
+            }
+          },
+          {
+            "id": "candidate-d",
+            "form": {
+              "kind": "fraction",
+              "numerator": "1",
+              "denominator": "2"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "type": "bar-to-line-same-amount",
+      "item": "bridge-07-one-third-med",
+      "definition": "phase-4-bar-to-line-same-amount",
+      "source": "plan37-bar-to-line-bridge-records",
+      "kind": "unary bridge",
+      "record": {
+        "itemId": "bridge-07-one-third-med",
+        "fixtureId": "curated-plan37-bridge-07-one-third-med",
+        "authoringRevision": "plan37-record-v1",
+        "taskDataId": "plan37-bar-to-line-same-amount",
+        "taskDataRevision": "1",
+        "recipe": {
+          "id": "plan37.bar-to-line-same-amount",
+          "revision": "1"
+        },
+        "sourceForm": {
+          "kind": "fraction",
+          "numerator": "1",
+          "denominator": "3"
+        },
+        "partitionDenominator": "3",
+        "sparseCandidates": [
+          {
+            "id": "candidate-a",
+            "form": {
+              "kind": "fraction",
+              "numerator": "1",
+              "denominator": "6"
+            }
+          },
+          {
+            "id": "candidate-b",
+            "form": {
+              "kind": "fraction",
+              "numerator": "1",
+              "denominator": "3"
+            }
+          },
+          {
+            "id": "candidate-c",
+            "form": {
+              "kind": "fraction",
+              "numerator": "1",
+              "denominator": "2"
+            }
+          },
+          {
+            "id": "candidate-d",
+            "form": {
+              "kind": "fraction",
+              "numerator": "2",
+              "denominator": "3"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "type": "bar-to-line-same-amount",
+      "item": "bridge-08-five-sixths-med",
+      "definition": "phase-4-bar-to-line-same-amount",
+      "source": "plan37-bar-to-line-bridge-records",
+      "kind": "unary bridge",
+      "record": {
+        "itemId": "bridge-08-five-sixths-med",
+        "fixtureId": "curated-plan37-bridge-08-five-sixths-med",
+        "authoringRevision": "plan37-record-v1",
+        "taskDataId": "plan37-bar-to-line-same-amount",
+        "taskDataRevision": "1",
+        "recipe": {
+          "id": "plan37.bar-to-line-same-amount",
+          "revision": "1"
+        },
+        "sourceForm": {
+          "kind": "fraction",
+          "numerator": "5",
+          "denominator": "6"
+        },
+        "partitionDenominator": "6",
+        "sparseCandidates": [
+          {
+            "id": "candidate-a",
+            "form": {
+              "kind": "fraction",
+              "numerator": "2",
+              "denominator": "6"
+            }
+          },
+          {
+            "id": "candidate-b",
+            "form": {
+              "kind": "fraction",
+              "numerator": "3",
+              "denominator": "6"
+            }
+          },
+          {
+            "id": "candidate-c",
+            "form": {
+              "kind": "fraction",
+              "numerator": "4",
+              "denominator": "6"
+            }
+          },
+          {
+            "id": "candidate-d",
+            "form": {
+              "kind": "fraction",
+              "numerator": "5",
+              "denominator": "6"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "type": "symbolic-fraction-comparison",
+      "item": "plan45-compare-01",
+      "definition": "phase-4-symbolic-fraction-comparison",
+      "source": "plan45-symbolic-fraction-comparison-records",
+      "kind": "comparison",
+      "orderedOperands": [
+        {
+          "numerator": "2",
+          "denominator": "3"
+        },
+        {
+          "numerator": "3",
+          "denominator": "5"
+        }
+      ],
+      "normalized": "2/3 | 3/5"
+    },
+    {
+      "type": "symbolic-fraction-comparison",
+      "item": "plan45-compare-02",
+      "definition": "phase-4-symbolic-fraction-comparison",
+      "source": "plan45-symbolic-fraction-comparison-records",
+      "kind": "comparison",
+      "orderedOperands": [
+        {
+          "numerator": "5",
+          "denominator": "8"
+        },
+        {
+          "numerator": "3",
+          "denominator": "8"
+        }
+      ],
+      "normalized": "5/8 | 3/8"
+    },
+    {
+      "type": "symbolic-fraction-comparison",
+      "item": "plan45-compare-03",
+      "definition": "phase-4-symbolic-fraction-comparison",
+      "source": "plan45-symbolic-fraction-comparison-records",
+      "kind": "comparison",
+      "orderedOperands": [
+        {
+          "numerator": "4",
+          "denominator": "6"
+        },
+        {
+          "numerator": "6",
+          "denominator": "9"
+        }
+      ],
+      "normalized": "2/3 | 2/3"
+    },
+    {
+      "type": "symbolic-fraction-comparison",
+      "item": "plan45-compare-04",
+      "definition": "phase-4-symbolic-fraction-comparison",
+      "source": "plan45-symbolic-fraction-comparison-records",
+      "kind": "comparison",
+      "orderedOperands": [
+        {
+          "numerator": "6",
+          "denominator": "9"
+        },
+        {
+          "numerator": "4",
+          "denominator": "6"
+        }
+      ],
+      "normalized": "2/3 | 2/3"
+    },
+    {
+      "type": "symbolic-fraction-comparison",
+      "item": "plan45-compare-05",
+      "definition": "phase-4-symbolic-fraction-comparison",
+      "source": "plan45-symbolic-fraction-comparison-records",
+      "kind": "comparison",
+      "orderedOperands": [
+        {
+          "numerator": "3",
+          "denominator": "4"
+        },
+        {
+          "numerator": "5",
+          "denominator": "6"
+        }
+      ],
+      "normalized": "3/4 | 5/6"
+    },
+    {
+      "type": "symbolic-fraction-comparison",
+      "item": "plan45-compare-06",
+      "definition": "phase-4-symbolic-fraction-comparison",
+      "source": "plan45-symbolic-fraction-comparison-records",
+      "kind": "comparison",
+      "orderedOperands": [
+        {
+          "numerator": "5",
+          "denominator": "6"
+        },
+        {
+          "numerator": "3",
+          "denominator": "4"
+        }
+      ],
+      "normalized": "5/6 | 3/4"
+    },
+    {
+      "type": "symbolic-fraction-comparison",
+      "item": "plan45-compare-07",
+      "definition": "phase-4-symbolic-fraction-comparison",
+      "source": "plan45-symbolic-fraction-comparison-records",
+      "kind": "comparison",
+      "orderedOperands": [
+        {
+          "numerator": "2",
+          "denominator": "3"
+        },
+        {
+          "numerator": "7",
+          "denominator": "10"
+        }
+      ],
+      "normalized": "2/3 | 7/10"
+    },
+    {
+      "type": "symbolic-fraction-comparison",
+      "item": "plan45-compare-08",
+      "definition": "phase-4-symbolic-fraction-comparison",
+      "source": "plan45-symbolic-fraction-comparison-records",
+      "kind": "comparison",
+      "orderedOperands": [
+        {
+          "numerator": "3",
+          "denominator": "8"
+        },
+        {
+          "numerator": "5",
+          "denominator": "8"
+        }
+      ],
+      "normalized": "3/8 | 5/8"
+    },
+    {
+      "type": "symbolic-fraction-comparison",
+      "item": "plan45-compare-09",
+      "definition": "phase-4-symbolic-fraction-comparison",
+      "source": "plan45-symbolic-fraction-comparison-records",
+      "kind": "comparison",
+      "orderedOperands": [
+        {
+          "numerator": "3",
+          "denominator": "5"
+        },
+        {
+          "numerator": "3",
+          "denominator": "7"
+        }
+      ],
+      "normalized": "3/5 | 3/7"
+    },
+    {
+      "type": "symbolic-fraction-comparison",
+      "item": "plan45-compare-10",
+      "definition": "phase-4-symbolic-fraction-comparison",
+      "source": "plan45-symbolic-fraction-comparison-records",
+      "kind": "comparison",
+      "orderedOperands": [
+        {
+          "numerator": "3",
+          "denominator": "8"
+        },
+        {
+          "numerator": "5",
+          "denominator": "9"
+        }
+      ],
+      "normalized": "3/8 | 5/9"
+    },
+    {
+      "type": "symbolic-fraction-comparison",
+      "item": "plan45-compare-11",
+      "definition": "phase-4-symbolic-fraction-comparison",
+      "source": "plan45-symbolic-fraction-comparison-records",
+      "kind": "comparison",
+      "orderedOperands": [
+        {
+          "numerator": "4",
+          "denominator": "8"
+        },
+        {
+          "numerator": "1",
+          "denominator": "2"
+        }
+      ],
+      "normalized": "1/2 | 1/2"
+    },
+    {
+      "type": "symbolic-fraction-comparison",
+      "item": "plan45-compare-12",
+      "definition": "phase-4-symbolic-fraction-comparison",
+      "source": "plan45-symbolic-fraction-comparison-records",
+      "kind": "comparison",
+      "orderedOperands": [
+        {
+          "numerator": "1",
+          "denominator": "2"
+        },
+        {
+          "numerator": "4",
+          "denominator": "8"
+        }
+      ],
+      "normalized": "1/2 | 1/2"
+    },
+    {
+      "type": "number-line-collection",
+      "item": "collection-01",
+      "definition": "phase-4-number-line-collection",
+      "source": "plan50-number-line-collection-records",
+      "kind": "collection",
+      "record": {
+        "itemId": "collection-01",
+        "itemRevision": "1",
+        "purpose": "equivalent-pair-and-contrast",
+        "lattice": 8,
+        "members": [
+          {
+            "id": "a",
+            "form": {
+              "numerator": "3",
+              "denominator": "4"
+            }
+          },
+          {
+            "id": "b",
+            "form": {
+              "numerator": "1",
+              "denominator": "2"
+            }
+          },
+          {
+            "id": "c",
+            "form": {
+              "numerator": "3",
+              "denominator": "6"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "type": "number-line-collection",
+      "item": "collection-02",
+      "definition": "phase-4-number-line-collection",
+      "source": "plan50-number-line-collection-records",
+      "kind": "collection",
+      "record": {
+        "itemId": "collection-02",
+        "itemRevision": "1",
+        "purpose": "distinct-ordering",
+        "lattice": 8,
+        "members": [
+          {
+            "id": "a",
+            "form": {
+              "numerator": "7",
+              "denominator": "8"
+            }
+          },
+          {
+            "id": "b",
+            "form": {
+              "numerator": "1",
+              "denominator": "4"
+            }
+          },
+          {
+            "id": "c",
+            "form": {
+              "numerator": "1",
+              "denominator": "2"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "type": "number-line-collection",
+      "item": "collection-03",
+      "definition": "phase-4-number-line-collection",
+      "source": "plan50-number-line-collection-records",
+      "kind": "collection",
+      "record": {
+        "itemId": "collection-03",
+        "itemRevision": "1",
+        "purpose": "thirds-and-equivalence",
+        "lattice": 6,
+        "members": [
+          {
+            "id": "a",
+            "form": {
+              "numerator": "4",
+              "denominator": "6"
+            }
+          },
+          {
+            "id": "b",
+            "form": {
+              "numerator": "1",
+              "denominator": "3"
+            }
+          },
+          {
+            "id": "c",
+            "form": {
+              "numerator": "2",
+              "denominator": "3"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "type": "number-line-collection",
+      "item": "collection-04",
+      "definition": "phase-4-number-line-collection",
+      "source": "plan50-number-line-collection-records",
+      "kind": "collection",
+      "record": {
+        "itemId": "collection-04",
+        "itemRevision": "1",
+        "purpose": "endpoints",
+        "lattice": 4,
+        "members": [
+          {
+            "id": "a",
+            "form": {
+              "numerator": "4",
+              "denominator": "4"
+            }
+          },
+          {
+            "id": "b",
+            "form": {
+              "numerator": "0",
+              "denominator": "2"
+            }
+          },
+          {
+            "id": "c",
+            "form": {
+              "numerator": "2",
+              "denominator": "4"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "type": "fraction-distance",
+      "item": "distance-01",
+      "definition": "phase-4-fraction-distance",
+      "source": "plan51-distance-records",
+      "kind": "distance",
+      "orderedOperands": [
+        {
+          "numerator": "2",
+          "denominator": "8"
+        },
+        {
+          "numerator": "6",
+          "denominator": "8"
+        }
+      ],
+      "normalized": "1/4 | 3/4"
+    },
+    {
+      "type": "fraction-distance",
+      "item": "distance-02",
+      "definition": "phase-4-fraction-distance",
+      "source": "plan51-distance-records",
+      "kind": "distance",
+      "orderedOperands": [
+        {
+          "numerator": "6",
+          "denominator": "8"
+        },
+        {
+          "numerator": "2",
+          "denominator": "8"
+        }
+      ],
+      "normalized": "3/4 | 1/4"
+    },
+    {
+      "type": "fraction-distance",
+      "item": "distance-03",
+      "definition": "phase-4-fraction-distance",
+      "source": "plan51-distance-records",
+      "kind": "distance",
+      "orderedOperands": [
+        {
+          "numerator": "5",
+          "denominator": "6"
+        },
+        {
+          "numerator": "3",
+          "denominator": "6"
+        }
+      ],
+      "normalized": "5/6 | 1/2"
+    },
+    {
+      "type": "fraction-distance",
+      "item": "distance-04",
+      "definition": "phase-4-fraction-distance",
+      "source": "plan51-distance-records",
+      "kind": "distance",
+      "orderedOperands": [
+        {
+          "numerator": "5",
+          "denominator": "6"
+        },
+        {
+          "numerator": "2",
+          "denominator": "6"
+        }
+      ],
+      "normalized": "5/6 | 1/3"
+    },
+    {
+      "type": "two-whole-location",
+      "item": "zero-fourths",
+      "definition": "phase-4-two-whole-location",
+      "source": "plan53-two-whole-location-records",
+      "kind": "unary location",
+      "record": {
+        "itemId": "zero-fourths",
+        "itemRevision": "1",
+        "purpose": "zero",
+        "form": {
+          "numerator": "0",
+          "denominator": "4"
+        }
+      }
+    },
+    {
+      "type": "two-whole-location",
+      "item": "three-fourths",
+      "definition": "phase-4-two-whole-location",
+      "source": "plan53-two-whole-location-records",
+      "kind": "unary location",
+      "record": {
+        "itemId": "three-fourths",
+        "itemRevision": "1",
+        "purpose": "proper",
+        "form": {
+          "numerator": "3",
+          "denominator": "4"
+        }
+      }
+    },
+    {
+      "type": "two-whole-location",
+      "item": "four-fourths",
+      "definition": "phase-4-two-whole-location",
+      "source": "plan53-two-whole-location-records",
+      "kind": "unary location",
+      "record": {
+        "itemId": "four-fourths",
+        "itemRevision": "1",
+        "purpose": "one",
+        "form": {
+          "numerator": "4",
+          "denominator": "4"
+        }
+      }
+    },
+    {
+      "type": "two-whole-location",
+      "item": "five-fourths",
+      "definition": "phase-4-two-whole-location",
+      "source": "plan53-two-whole-location-records",
+      "kind": "unary location",
+      "record": {
+        "itemId": "five-fourths",
+        "itemRevision": "1",
+        "purpose": "beyond-one",
+        "form": {
+          "numerator": "5",
+          "denominator": "4"
+        }
+      }
+    },
+    {
+      "type": "two-whole-location",
+      "item": "six-fourths",
+      "definition": "phase-4-two-whole-location",
+      "source": "plan53-two-whole-location-records",
+      "kind": "unary location",
+      "record": {
+        "itemId": "six-fourths",
+        "itemRevision": "1",
+        "purpose": "non-reduced",
+        "form": {
+          "numerator": "6",
+          "denominator": "4"
+        }
+      }
+    },
+    {
+      "type": "two-whole-location",
+      "item": "three-halves",
+      "definition": "phase-4-two-whole-location",
+      "source": "plan53-two-whole-location-records",
+      "kind": "unary location",
+      "record": {
+        "itemId": "three-halves",
+        "itemRevision": "1",
+        "purpose": "equivalent-unit",
+        "form": {
+          "numerator": "3",
+          "denominator": "2"
+        }
+      }
+    },
+    {
+      "type": "two-whole-location",
+      "item": "eight-fourths",
+      "definition": "phase-4-two-whole-location",
+      "source": "plan53-two-whole-location-records",
+      "kind": "unary location",
+      "record": {
+        "itemId": "eight-fourths",
+        "itemRevision": "1",
+        "purpose": "two",
+        "form": {
+          "numerator": "8",
+          "denominator": "4"
+        }
+      }
+    },
+    {
+      "type": "two-whole-location",
+      "item": "ten-eighths",
+      "definition": "phase-4-two-whole-location",
+      "source": "plan53-two-whole-location-records",
+      "kind": "unary location",
+      "record": {
+        "itemId": "ten-eighths",
+        "itemRevision": "1",
+        "purpose": "conditional-density",
+        "form": {
+          "numerator": "10",
+          "denominator": "8"
+        }
+      }
+    },
+    {
+      "type": "whole-plus-fraction-construction",
+      "item": "three-fourths",
+      "definition": "phase-4-whole-plus-fraction-construction",
+      "source": "plan58-whole-plus-fraction-records",
+      "kind": "unary construction",
+      "record": {
+        "itemId": "three-fourths",
+        "itemRevision": "1",
+        "purpose": "proper",
+        "form": {
+          "numerator": "3",
+          "denominator": "4"
+        }
+      }
+    },
+    {
+      "type": "whole-plus-fraction-construction",
+      "item": "four-fourths",
+      "definition": "phase-4-whole-plus-fraction-construction",
+      "source": "plan58-whole-plus-fraction-records",
+      "kind": "unary construction",
+      "record": {
+        "itemId": "four-fourths",
+        "itemRevision": "1",
+        "purpose": "one",
+        "form": {
+          "numerator": "4",
+          "denominator": "4"
+        }
+      }
+    },
+    {
+      "type": "whole-plus-fraction-construction",
+      "item": "five-fourths",
+      "definition": "phase-4-whole-plus-fraction-construction",
+      "source": "plan58-whole-plus-fraction-records",
+      "kind": "unary construction",
+      "record": {
+        "itemId": "five-fourths",
+        "itemRevision": "1",
+        "purpose": "mixed",
+        "form": {
+          "numerator": "5",
+          "denominator": "4"
+        }
+      }
+    },
+    {
+      "type": "whole-plus-fraction-construction",
+      "item": "six-fourths",
+      "definition": "phase-4-whole-plus-fraction-construction",
+      "source": "plan58-whole-plus-fraction-records",
+      "kind": "unary construction",
+      "record": {
+        "itemId": "six-fourths",
+        "itemRevision": "1",
+        "purpose": "unreduced",
+        "form": {
+          "numerator": "6",
+          "denominator": "4"
+        }
+      }
+    },
+    {
+      "type": "whole-plus-fraction-construction",
+      "item": "three-halves",
+      "definition": "phase-4-whole-plus-fraction-construction",
+      "source": "plan58-whole-plus-fraction-records",
+      "kind": "unary construction",
+      "record": {
+        "itemId": "three-halves",
+        "itemRevision": "1",
+        "purpose": "different-unit",
+        "form": {
+          "numerator": "3",
+          "denominator": "2"
+        }
+      }
+    },
+    {
+      "type": "whole-plus-fraction-construction",
+      "item": "eight-fourths",
+      "definition": "phase-4-whole-plus-fraction-construction",
+      "source": "plan58-whole-plus-fraction-records",
+      "kind": "unary construction",
+      "record": {
+        "itemId": "eight-fourths",
+        "itemRevision": "1",
+        "purpose": "two",
+        "form": {
+          "numerator": "8",
+          "denominator": "4"
+        }
+      }
+    },
+    {
+      "type": "directed-number-line-endpoint",
+      "item": "one-fourth-add-two-fourths",
+      "definition": "phase-4-directed-number-line-endpoint",
+      "source": "plan59-directed-endpoint-records",
+      "kind": "addition",
+      "orderedOperands": [
+        {
+          "numerator": "1",
+          "denominator": "4"
+        },
+        {
+          "numerator": "2",
+          "denominator": "4"
+        }
+      ],
+      "normalized": "1/4 | 1/2"
+    },
+    {
+      "type": "directed-number-line-endpoint",
+      "item": "three-fourths-subtract-two-fourths",
+      "definition": "phase-4-directed-number-line-endpoint",
+      "source": "plan59-directed-endpoint-records",
+      "kind": "subtraction",
+      "orderedOperands": [
+        {
+          "numerator": "3",
+          "denominator": "4"
+        },
+        {
+          "numerator": "2",
+          "denominator": "4"
+        }
+      ],
+      "normalized": "3/4 | 1/2"
+    },
+    {
+      "type": "directed-number-line-endpoint",
+      "item": "one-sixth-add-three-sixths",
+      "definition": "phase-4-directed-number-line-endpoint",
+      "source": "plan59-directed-endpoint-records",
+      "kind": "addition",
+      "orderedOperands": [
+        {
+          "numerator": "1",
+          "denominator": "6"
+        },
+        {
+          "numerator": "3",
+          "denominator": "6"
+        }
+      ],
+      "normalized": "1/6 | 1/2"
+    },
+    {
+      "type": "directed-number-line-endpoint",
+      "item": "five-sixths-subtract-three-sixths",
+      "definition": "phase-4-directed-number-line-endpoint",
+      "source": "plan59-directed-endpoint-records",
+      "kind": "subtraction",
+      "orderedOperands": [
+        {
+          "numerator": "5",
+          "denominator": "6"
+        },
+        {
+          "numerator": "3",
+          "denominator": "6"
+        }
+      ],
+      "normalized": "5/6 | 1/2"
+    },
+    {
+      "type": "directed-number-line-endpoint",
+      "item": "two-eighths-add-three-eighths",
+      "definition": "phase-4-directed-number-line-endpoint",
+      "source": "plan59-directed-endpoint-records",
+      "kind": "addition",
+      "orderedOperands": [
+        {
+          "numerator": "2",
+          "denominator": "8"
+        },
+        {
+          "numerator": "3",
+          "denominator": "8"
+        }
+      ],
+      "normalized": "1/4 | 3/8"
+    },
+    {
+      "type": "directed-number-line-endpoint",
+      "item": "seven-eighths-subtract-five-eighths",
+      "definition": "phase-4-directed-number-line-endpoint",
+      "source": "plan59-directed-endpoint-records",
+      "kind": "subtraction",
+      "orderedOperands": [
+        {
+          "numerator": "7",
+          "denominator": "8"
+        },
+        {
+          "numerator": "5",
+          "denominator": "8"
+        }
+      ],
+      "normalized": "7/8 | 5/8"
+    },
+    {
+      "type": "mixed-number-addition-without-regrouping",
+      "item": "plan72-add-01",
+      "definition": "phase-4-mixed-number-addition-without-regrouping",
+      "source": "plan72-mixed-addition-task",
+      "kind": "addition",
+      "orderedOperands": [
+        {
+          "whole": "1",
+          "numerator": "1",
+          "denominator": "4"
+        },
+        {
+          "whole": "1",
+          "numerator": "1",
+          "denominator": "4"
+        }
+      ],
+      "normalized": "5/4 | 5/4"
+    },
+    {
+      "type": "mixed-number-addition-without-regrouping",
+      "item": "plan72-add-02",
+      "definition": "phase-4-mixed-number-addition-without-regrouping",
+      "source": "plan72-mixed-addition-task",
+      "kind": "addition",
+      "orderedOperands": [
+        {
+          "whole": "1",
+          "numerator": "1",
+          "denominator": "3"
+        },
+        {
+          "whole": "2",
+          "numerator": "1",
+          "denominator": "3"
+        }
+      ],
+      "normalized": "4/3 | 7/3"
+    },
+    {
+      "type": "mixed-number-addition-without-regrouping",
+      "item": "plan72-add-03",
+      "definition": "phase-4-mixed-number-addition-without-regrouping",
+      "source": "plan72-mixed-addition-task",
+      "kind": "addition",
+      "orderedOperands": [
+        {
+          "whole": "2",
+          "numerator": "1",
+          "denominator": "4"
+        },
+        {
+          "whole": "1",
+          "numerator": "2",
+          "denominator": "4"
+        }
+      ],
+      "normalized": "9/4 | 3/2"
+    },
+    {
+      "type": "mixed-number-addition-without-regrouping",
+      "item": "plan72-add-04",
+      "definition": "phase-4-mixed-number-addition-without-regrouping",
+      "source": "plan72-mixed-addition-task",
+      "kind": "addition",
+      "orderedOperands": [
+        {
+          "whole": "1",
+          "numerator": "1",
+          "denominator": "8"
+        },
+        {
+          "whole": "2",
+          "numerator": "3",
+          "denominator": "8"
+        }
+      ],
+      "normalized": "9/8 | 19/8"
+    },
+    {
+      "type": "mixed-number-addition-with-regrouping",
+      "item": "plan74-add-01",
+      "definition": "phase-5-mixed-number-addition-with-regrouping",
+      "source": "plan74-mixed-addition-task",
+      "kind": "addition",
+      "orderedOperands": [
+        {
+          "whole": "1",
+          "numerator": "3",
+          "denominator": "8"
+        },
+        {
+          "whole": "2",
+          "numerator": "5",
+          "denominator": "8"
+        }
+      ],
+      "normalized": "11/8 | 21/8"
+    },
+    {
+      "type": "mixed-number-addition-with-regrouping",
+      "item": "plan74-add-02",
+      "definition": "phase-5-mixed-number-addition-with-regrouping",
+      "source": "plan74-mixed-addition-task",
+      "kind": "addition",
+      "orderedOperands": [
+        {
+          "whole": "1",
+          "numerator": "5",
+          "denominator": "8"
+        },
+        {
+          "whole": "2",
+          "numerator": "6",
+          "denominator": "8"
+        }
+      ],
+      "normalized": "13/8 | 11/4"
+    },
+    {
+      "type": "plan40 registry including holdouts",
+      "item": "plan40-construct-half-fifth-10",
+      "source": "plan40-reusable-subtraction-recipes-records",
+      "kind": "subtraction",
+      "orderedOperands": [
+        {
+          "kind": "fraction",
+          "numerator": "1",
+          "denominator": "2"
+        },
+        {
+          "kind": "fraction",
+          "numerator": "1",
+          "denominator": "5"
+        }
+      ],
+      "normalized": "1/2 | 1/5"
+    },
+    {
+      "type": "plan40 registry including holdouts",
+      "item": "plan40-construct-three-fourths-two-fifths-20",
+      "source": "plan40-reusable-subtraction-recipes-records",
+      "kind": "subtraction",
+      "orderedOperands": [
+        {
+          "kind": "fraction",
+          "numerator": "3",
+          "denominator": "4"
+        },
+        {
+          "kind": "fraction",
+          "numerator": "2",
+          "denominator": "5"
+        }
+      ],
+      "normalized": "3/4 | 2/5"
+    },
+    {
+      "type": "plan40 registry including holdouts",
+      "item": "plan40-construct-five-sixths-three-eighths-24",
+      "source": "plan40-reusable-subtraction-recipes-records",
+      "kind": "subtraction",
+      "orderedOperands": [
+        {
+          "kind": "fraction",
+          "numerator": "5",
+          "denominator": "6"
+        },
+        {
+          "kind": "fraction",
+          "numerator": "3",
+          "denominator": "8"
+        }
+      ],
+      "normalized": "5/6 | 3/8"
+    },
+    {
+      "type": "plan40 registry including holdouts",
+      "item": "plan40-inspect-two-thirds-one-fourth-12",
+      "source": "plan40-reusable-subtraction-recipes-records",
+      "kind": "subtraction",
+      "orderedOperands": [
+        {
+          "kind": "fraction",
+          "numerator": "2",
+          "denominator": "3"
+        },
+        {
+          "kind": "fraction",
+          "numerator": "1",
+          "denominator": "4"
+        }
+      ],
+      "normalized": "2/3 | 1/4"
+    },
+    {
+      "type": "plan40 registry including holdouts",
+      "item": "plan40-inspect-seven-tenths-one-fourth-20",
+      "source": "plan40-reusable-subtraction-recipes-records",
+      "kind": "subtraction",
+      "orderedOperands": [
+        {
+          "kind": "fraction",
+          "numerator": "7",
+          "denominator": "10"
+        },
+        {
+          "kind": "fraction",
+          "numerator": "1",
+          "denominator": "4"
+        }
+      ],
+      "normalized": "7/10 | 1/4"
+    },
+    {
+      "type": "plan40 registry including holdouts",
+      "item": "plan40-inspect-five-sixths-seven-tenths-30",
+      "source": "plan40-reusable-subtraction-recipes-records",
+      "kind": "subtraction",
+      "orderedOperands": [
+        {
+          "kind": "fraction",
+          "numerator": "5",
+          "denominator": "6"
+        },
+        {
+          "kind": "fraction",
+          "numerator": "7",
+          "denominator": "10"
+        }
+      ],
+      "normalized": "5/6 | 7/10"
+    },
+    {
+      "type": "plan40 registry including holdouts",
+      "item": "plan40-identify-five-sixths-one-third-6",
+      "source": "plan40-reusable-subtraction-recipes-records",
+      "kind": "subtraction",
+      "orderedOperands": [
+        {
+          "kind": "fraction",
+          "numerator": "5",
+          "denominator": "6"
+        },
+        {
+          "kind": "fraction",
+          "numerator": "1",
+          "denominator": "3"
+        }
+      ],
+      "normalized": "5/6 | 1/3"
+    },
+    {
+      "type": "plan40 registry including holdouts",
+      "item": "plan40-identify-one-half-one-eighth-8",
+      "source": "plan40-reusable-subtraction-recipes-records",
+      "kind": "subtraction",
+      "orderedOperands": [
+        {
+          "kind": "fraction",
+          "numerator": "1",
+          "denominator": "2"
+        },
+        {
+          "kind": "fraction",
+          "numerator": "1",
+          "denominator": "8"
+        }
+      ],
+      "normalized": "1/2 | 1/8"
+    },
+    {
+      "type": "plan40 registry including holdouts",
+      "item": "plan40-identify-two-thirds-five-twelfths-12",
+      "source": "plan40-reusable-subtraction-recipes-records",
+      "kind": "subtraction",
+      "orderedOperands": [
+        {
+          "kind": "fraction",
+          "numerator": "2",
+          "denominator": "3"
+        },
+        {
+          "kind": "fraction",
+          "numerator": "5",
+          "denominator": "12"
+        }
+      ],
+      "normalized": "2/3 | 5/12"
+    },
+    {
+      "type": "plan40 registry including holdouts",
+      "item": "plan40-holdout-construct-three-fifths-one-half-10",
+      "source": "plan40-reusable-subtraction-recipes-records",
+      "kind": "subtraction",
+      "orderedOperands": [
+        {
+          "kind": "fraction",
+          "numerator": "3",
+          "denominator": "5"
+        },
+        {
+          "kind": "fraction",
+          "numerator": "1",
+          "denominator": "2"
+        }
+      ],
+      "normalized": "3/5 | 1/2"
+    },
+    {
+      "type": "plan40 registry including holdouts",
+      "item": "plan40-holdout-inspect-three-fourths-one-sixth-12",
+      "source": "plan40-reusable-subtraction-recipes-records",
+      "kind": "subtraction",
+      "orderedOperands": [
+        {
+          "kind": "fraction",
+          "numerator": "3",
+          "denominator": "4"
+        },
+        {
+          "kind": "fraction",
+          "numerator": "1",
+          "denominator": "6"
+        }
+      ],
+      "normalized": "3/4 | 1/6"
+    }
+  ],
+  "collisions": [],
+  "crossOperation": [
+    {
+      "candidate": "plan76-construct-two-thirds-one-fifth-15",
+      "other": "two-thirds-plus-one-fifth",
+      "source": "curated:curated-relatively-prime-addition-two-thirds-one-fifth@plan32-record-v1",
+      "kind": "addition"
+    }
+  ],
+  "coverage": [
+    {
+      "item": "plan76-construct-two-thirds-one-fifth-15",
+      "recipe": "unlike-subtraction.construct-equivalent",
+      "target": "15",
+      "relationship": "relatively prime",
+      "requiredSides": [
+        "left",
+        "right"
+      ],
+      "invalid": [],
+      "difference": "7/15"
+    },
+    {
+      "item": "plan76-construct-five-sixths-one-tenth-30",
+      "recipe": "unlike-subtraction.construct-equivalent",
+      "target": "30",
+      "relationship": "shared factor",
+      "requiredSides": [
+        "left",
+        "right"
+      ],
+      "invalid": [],
+      "difference": "22/30"
+    },
+    {
+      "item": "plan76-construct-three-fifths-one-fourth-20",
+      "recipe": "unlike-subtraction.construct-equivalent",
+      "target": "20",
+      "relationship": "relatively prime",
+      "requiredSides": [
+        "left",
+        "right"
+      ],
+      "invalid": [],
+      "difference": "7/20"
+    },
+    {
+      "item": "plan76-inspect-three-fourths-one-fifth-20",
+      "recipe": "unlike-subtraction.inspect-keep-repair",
+      "target": "20",
+      "relationship": "relatively prime",
+      "requiredSides": [
+        "left",
+        "right"
+      ],
+      "invalid": [
+        "right"
+      ],
+      "difference": "11/20"
+    },
+    {
+      "item": "plan76-inspect-seven-eighths-one-sixth-24",
+      "recipe": "unlike-subtraction.inspect-keep-repair",
+      "target": "24",
+      "relationship": "shared factor",
+      "requiredSides": [
+        "left",
+        "right"
+      ],
+      "invalid": [
+        "left"
+      ],
+      "difference": "17/24"
+    },
+    {
+      "item": "plan76-inspect-four-fifths-one-third-15",
+      "recipe": "unlike-subtraction.inspect-keep-repair",
+      "target": "15",
+      "relationship": "relatively prime",
+      "requiredSides": [
+        "left",
+        "right"
+      ],
+      "invalid": [
+        "left"
+      ],
+      "difference": "7/15"
+    },
+    {
+      "item": "plan76-identify-seven-eighths-one-fourth-8",
+      "recipe": "unlike-subtraction.identify-side-construct",
+      "target": "8",
+      "relationship": "nested",
+      "requiredSides": [
+        "right"
+      ],
+      "invalid": [],
+      "difference": "5/8"
+    },
+    {
+      "item": "plan76-identify-three-fourths-one-eighth-8",
+      "recipe": "unlike-subtraction.identify-side-construct",
+      "target": "8",
+      "relationship": "nested",
+      "requiredSides": [
+        "left"
+      ],
+      "invalid": [],
+      "difference": "5/8"
+    }
+  ]
+}
