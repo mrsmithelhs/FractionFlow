@@ -7,7 +7,12 @@ export function projectPlan78Subtraction(state) {
   const active=state.status==='active' && state.beat==='construct' && state.schedulePosition===0;
   const resolved=state.status==='resolved' && state.beat==='resolve' && state.schedulePosition===1;
   if (state.episodeDefinition?.id!==PLAN78_ID || state.episodeDefinition.revision!=='1' || JSON.stringify(state.activeCondition)!==JSON.stringify(PLAN78_CONDITION) || !(active||resolved)) throw new TypeError('invalid subtraction scene state');
-  const operands=context.operands.map(o=>({...o,name:`${o.whole} and ${o.numerator} eighths`}));
+  const operands=context.operands.map(o=>{
+    const whole=Number(o.whole), pieces=Number(o.numerator);
+    return {...o,name:`${o.whole} and ${o.numerator} ${pieces===1?'eighth':'eighths'}`,
+      description:`${whole} whole ${whole===1?'unit':'units'} and ${pieces} ${pieces===1?'eighth':'eighths'}`,
+      rows:[...Array.from({length:whole},()=>Array(8).fill('filled')),Array.from({length:8},(_,i)=>i<pieces?'filled':'empty')]};
+  });
   let settled=null;
   if (resolved) {
     const [a,b]=context.operands, d=state.established.difference;

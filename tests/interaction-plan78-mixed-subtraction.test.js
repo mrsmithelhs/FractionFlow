@@ -29,7 +29,10 @@ describe('Plan 78 task boundary',()=>{
   });
   it('withholds settled data until acceptance and accounts for removal, remainder and empty cells',()=>{
     for(const [i,w,p] of [[0,'2','3'],[1,'2','0'],[2,'1','4'],[3,'1','0']]){
-      let s=start(i);expect(projectPlan78Subtraction(s).settled).toBeNull();s=check(edit(edit(s,'whole',w),'pieces',p));
+      let s=start(i);const initial=projectPlan78Subtraction(s);expect(initial.settled).toBeNull();
+      expect(initial.operands.every(o=>o.rows.every(row=>row.length===8 && row.every(cell=>['filled','empty'].includes(cell))))).toBe(true);
+      expect(initial.operands[0].rows.at(-1).filter(cell=>cell==='filled')).toHaveLength(Number(PLAN78_RECORDS[i].operands[0].numerator));
+      s=check(edit(edit(s,'whole',w),'pieces',p));
       const v=projectPlan78Subtraction(s).settled, [a,b]=PLAN78_RECORDS[i].operands;
       expect(v.wholeCells.filter(x=>x==='removed')).toHaveLength(Number(b.whole));
       expect(v.wholeCells.filter(x=>x==='remaining')).toHaveLength(Number(w));

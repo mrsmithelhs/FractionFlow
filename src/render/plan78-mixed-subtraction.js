@@ -1,6 +1,12 @@
 import { createMixedNumeral } from './symbolic.js';
 const el=(tag,cls,text)=>{const n=document.createElement(tag);if(cls)n.className=cls;if(text!==undefined)n.textContent=text;return n;};
 const numeral=o=>createMixedNumeral({whole:o.whole,remainder:{numerator:o.numerator,denominator:o.denominator},hasWhole:true,hasRemainder:true,name:o.name});
+const count=(n,one,many)=>`${n} ${n===1?one:many}`;
+function bars(rows,kind) {
+  const group=el('div',`plan78-model plan78-${kind}-model`);group.setAttribute('aria-hidden','true');
+  rows.forEach((row,i)=>{const line=el('div','plan78-row');line.append(el('span','plan78-row-label',i===rows.length-1?'Eighth pieces':`Whole ${i+1}`));const bar=el('div','plan58-bar plan78-bar');for(const cell of row)bar.append(el('span',`plan58-part plan78-${cell}`,cell==='removed'?'×':cell==='remaining'?'●':''));line.append(bar);group.append(line);});
+  return group;
+}
 export function createPlan78Renderer({container,view,dispatch,progression,helpOpen,toggleHelp,active}) {
   let root,model,destroyed=false; const inputs={},composing=new Set();
   const valid=n=>!destroyed&&active()&&root?.isConnected&&root.contains(n);
@@ -24,7 +30,8 @@ export function createPlan78Renderer({container,view,dispatch,progression,helpOp
   }
   function update(scene){
     model=scene.meaning.subtraction;const live=model.status==='active',operands=root.querySelector('.plan78-operands');operands.replaceChildren();
-    model.operands.forEach((o,i)=>{const section=el('section','plan78-operand');section.append(el('h3','',i?'Amount taken away':'Starting amount'),numeral(o));operands.append(section);});
+    model.operands.forEach((o,i)=>{const section=el('section','plan78-operand');section.append(el('h3','',i?'Amount taken away':'Starting amount'),numeral(o),el('p','plan78-operand-description',o.description));if(live&&view==='visual')section.append(bars(o.rows,'original'));operands.append(section);});
+    root.querySelector('.plan78-prompt')?.toggleAttribute('hidden',!live);
     const feedback=root.querySelector('.plan78-feedback');feedback.textContent='';feedback.className='plan78-feedback';
     if(model.evaluation.status==='incorrect'){feedback.textContent='Check the amount left and try again.';feedback.classList.add('house-retry');}
     if(model.evaluation.status==='organize'){feedback.textContent='Your amount is the same. Group eight pieces into a whole, then check again.';feedback.classList.add('house-attention');}
@@ -35,11 +42,11 @@ export function createPlan78Renderer({container,view,dispatch,progression,helpOp
     else {controls?.remove();actions?.remove();}
     const helpRegion=root.querySelector('.plan78-help');helpRegion.replaceChildren();if(live&&helpOpen())helpRegion.append(el('p','','Think about the whole units and eighth pieces in each number. Which amount is taken away?'));
     const result=root.querySelector('.plan78-result');result.replaceChildren();if(!live){
-      const s=model.settled;result.append(el('p','',`Taken away: ${s.removedWhole} whole units and ${s.removedPieces} eighths. Remaining: ${s.remainingWhole} whole units and ${s.remainingPieces} eighths.`));
+      const s=model.settled;result.append(el('p','',`Taken away: ${count(s.removedWhole,'whole unit','whole units')} and ${count(s.removedPieces,'eighth','eighths')}. Left: ${count(s.remainingWhole,'whole unit','whole units')}. ${s.remainingPieces===0?'No eighths left.':`${count(s.remainingPieces,'eighth','eighths')} left.`}`));
       if(view==='visual'){
-        const key=el('p','plan78-key','Taken away: ×   Left: ●   Never filled: empty');result.append(key);
+        const key=el('p','plan78-key','× taken away · ● left · empty never filled');result.append(key);
         const rows=[...s.wholeCells.map(x=>Array(8).fill(x)),s.pieceCells];
-        rows.forEach((row,i)=>{const group=el('div','plan78-row');group.setAttribute('aria-hidden','true');group.append(el('span','plan78-row-label',i===rows.length-1?'Eighth pieces':`Whole ${i+1}`));const bar=el('div','plan58-bar plan78-bar');for(const cell of row)bar.append(el('span',`plan58-part plan78-${cell}`,cell==='removed'?'×':cell==='remaining'?'●':''));group.append(bar);result.append(group);});
+        result.append(el('p','plan78-model-label','Starting amount after subtraction'),bars(rows,'settled'));
       }
       const line=el('p');line.append('The difference is ',createMixedNumeral(s.notation));result.append(line);
       const p=progression();if(p?.notice)result.append(el('p','',p.notice));if(p?.onAction){const next=el('button','control-btn',p.label);next.type='button';next.addEventListener('click',()=>{if(valid(next))p.onAction();});result.append(next);}
