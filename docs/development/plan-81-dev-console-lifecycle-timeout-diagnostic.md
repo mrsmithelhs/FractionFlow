@@ -1,11 +1,9 @@
 ---
 id: plan-81
 title: Dev-Console Lifecycle Timeout Diagnostic
-status: draft
+status: in-progress
 depends_on: [plan-23, plan-78, plan-79]
 gate: "Approve the bounded reproduction and instrumentation plan first. Review the evidence and proposed fix before any shared source or test change."
-superseded_by: null
-resolution: null
 summary: >-
   Localize the intermittent Windows dev-console real-server test timeout
   using phase timing, matched controls, and verified process ownership.

@@ -1,11 +1,9 @@
 ---
 id: plan-80
 title: Mixed-Number Subtraction With Decomposition Design
-status: draft
+status: in-progress
 depends_on: [plan-56, plan-74, plan-77, plan-78]
 gate: "Approve the report-only comparison scope first. Owner adopts one response design and a bounded batch before implementation."
-superseded_by: null
-resolution: null
 summary: >-
   Compare one final response with a brief learner-controlled renaming
   decision for mixed-number subtraction that decomposes one whole.
