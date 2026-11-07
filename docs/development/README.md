@@ -78,7 +78,7 @@ Packets are assigned to implementer agents. Each packet defines scope, required 
 | `plan-69` | Fixed Comparison Practice Session | complete | Add a visible Start a practice session action that opens the adopted four-comparison sequence in fixed order, using existing comparison tasks and help with an ephemeral session lifecycle. |
 | `plan-70` | First Working Practice Scheduler | complete | Start a short practice session directly from entry. Select a purposeful mix of existing episode types using explicit rules and no learner profile. |
 | `plan-71` | Mixed-Number Addition Without Regrouping Design | complete | Design the first mixed-number addition task with mixed-number operands and fractional parts that sum to less than one. Reuse the established whole and fraction representations and propose a small first batch. |
-| `plan-72` | Mixed-Number Addition Without Regrouping | delivered | Implement four same-denominator mixed-number sums without regrouping. Learners enter whole and source-piece totals and check once. Verify the eighths example at narrow width and enlarged text. |
+| `plan-72` | Mixed-Number Addition Without Regrouping | complete | Implement four same-denominator mixed-number sums without regrouping. Learners enter whole and source-piece totals and check once. Verify the eighths example at narrow width and enlarged text. |
 <!-- plan-index:end -->
 
 ## Report Folders
