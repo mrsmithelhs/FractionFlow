@@ -90,7 +90,7 @@ Packets are assigned to implementer agents. Each packet defines scope, required 
 | `plan-81` | Dev-Console Lifecycle Timeout Diagnostic | complete | Localize the intermittent Windows dev-console real-server test timeout using phase timing, matched controls, and verified process ownership. Report a bounded remedy only where the evidence supports it. |
 | `plan-82` | Mixed-Number Subtraction With Decomposition | complete | Implement the four adopted mixed-number subtraction problems in eighths with one final response and an optional learner-controlled renaming aid. Show quantity preservation and the difference at their respective checks. |
 | `plan-83` | Phase 5 Exit Review and Mixed-to-Improper Bridge Design | complete | Check the accepted mixed-number work against the Phase 5 exit criteria. If a learner-owned equivalence gap remains, propose one mixed-to-improper decision with the shared number-line point revealed after a correct Check. |
-| `plan-84` | Mixed-to-Improper Number-Line Bridge | draft | Implement the four adopted mixed-to-improper equivalence problems. Vary the correct option position and reveal the shared number-line point only after a correct Check. |
+| `plan-84` | Mixed-to-Improper Number-Line Bridge | in-progress | Implement the four adopted mixed-to-improper equivalence problems. Vary the correct option position and reveal the shared number-line point only after a correct Check. |
 <!-- plan-index:end -->
 
 ## Report Folders
