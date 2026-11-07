@@ -84,8 +84,8 @@ Packets are assigned to implementer agents. Each packet defines scope, required 
 | `plan-75` | Mixed-Number Subtraction Without Decomposition Design | complete | Design the first same-denominator mixed-number subtraction task, with no renaming of a whole. Compare a direct answer with one purposeful takeaway action and recommend a small exact batch. |
 | `plan-76` | Unlike-Denominator Subtraction Problem Bank Expansion | complete | Author and validate six to nine compact candidate records for the existing unlike-denominator subtraction recipes. Deliver a vetted bank and a versioned publication proposal with live integration separately gated. |
 | `plan-77` | Mixed-Addition Modular Authoring Pilot | complete | Separate records, task admission and versioned set membership for one mixed-number family. Measure whether a second author can add an unseen batch through data and membership alone while preserving existing replay. |
-| `plan-78` | Mixed-Number Subtraction Without Decomposition | delivered | Implement the adopted four-problem eighths slice of mixed-number subtraction without decomposition. Use one final two-field response and show the removed and remaining quantities after acceptance. |
-| `plan-79` | Unlike-Denominator Subtraction Bank Publication | delivered | Publish eight adopted records into the existing standalone unlike-denominator subtraction practice through an explicit new set revision. Preserve historical membership and replay and prove learner-facing reach. |
+| `plan-78` | Mixed-Number Subtraction Without Decomposition | complete | Implement the adopted four-problem eighths slice of mixed-number subtraction without decomposition. Use one final two-field response and show the removed and remaining quantities after acceptance. |
+| `plan-79` | Unlike-Denominator Subtraction Bank Publication | complete | Publish eight adopted records into the existing standalone unlike-denominator subtraction practice through an explicit new set revision. Preserve historical membership and replay and prove learner-facing reach. |
 <!-- plan-index:end -->
 
 ## Report Folders

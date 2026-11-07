@@ -1,7 +1,8 @@
 ---
 id: plan-79
 title: Unlike-Denominator Subtraction Bank Publication
-status: delivered
+status: complete
+resolution: "Owner accepted the rendered local v2 publication of the 17-item subtraction bank with v1 replay preserved."
 depends_on: [plan-40, plan-76, plan-77]
 gate: "Approve exact candidate and set integration, audit coverage and replay witness before source changes. Owner reviews the locally published practice before closure."
 summary: >-
