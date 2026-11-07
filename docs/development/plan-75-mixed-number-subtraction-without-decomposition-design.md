@@ -1,11 +1,9 @@
 ---
 id: plan-75
 title: Mixed-Number Subtraction Without Decomposition Design
-status: draft
+status: in-progress
 depends_on: [plan-38, plan-56, plan-72, plan-74]
 gate: "Approve report scope first. Owner adopts one task and a bounded first batch before separate implementation."
-superseded_by: null
-resolution: null
 summary: >-
   Design the first same-denominator mixed-number subtraction task, with no
   renaming of a whole. Compare a direct answer with one purposeful takeaway

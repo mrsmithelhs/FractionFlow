@@ -1,11 +1,9 @@
 ---
 id: plan-77
 title: Mixed-Addition Modular Authoring Pilot
-status: draft
+status: in-progress
 depends_on: [plan-30, plan-42, plan-74]
 gate: "Approve the Plan 74 content seam and holdout protocol before source changes. Broader adoption requires a separate decision."
-superseded_by: null
-resolution: null
 summary: >-
   Separate records, task admission and versioned set membership for one
   mixed-number family. Measure whether a second author can add an unseen

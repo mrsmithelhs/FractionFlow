@@ -1,11 +1,9 @@
 ---
 id: plan-76
 title: Unlike-Denominator Subtraction Problem Bank Expansion
-status: draft
+status: in-progress
 depends_on: [plan-35, plan-38, plan-40]
 gate: "Approve the candidate coverage and isolated validation mechanism before authoring. Owner adopts the vetted batch before live set integration."
-superseded_by: null
-resolution: null
 summary: >-
   Author and validate six to nine compact candidate records for the existing
   unlike-denominator subtraction recipes. Deliver a vetted bank and a
