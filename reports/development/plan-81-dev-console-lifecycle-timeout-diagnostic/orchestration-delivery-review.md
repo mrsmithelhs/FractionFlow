@@ -1,0 +1,7 @@
+# Plan 81 technical delivery review
+
+2026-11-07. Accepted the bounded diagnostic at `0319577` and progress at `32cf8f2` for owner review. The unchanged canonical timeout was reproduced. The instrumentation covered passing isolated runs, so it does not identify the failed await or prove a cause. Orchestration independently inspected the sanitized event sequence, confirmed the recorded aborts and distinct acknowledgement/exit intervals, checked driver syntax and verified its refusal of the canonical path without running a lifecycle test. Shared source, tests and configuration show no diff in this delivery.
+
+The safety stop is sustained. The timed-out run did not record its child handles or ports, so cleanup cannot be verified. No further tests or termination were authorized after that stop. No claim is made that a listener or process was left running. Passing traces account for the children and closed-port checks in those runs only. Synchronous trace writes and limited controls constrain timing interpretation.
+
+Recommend a separately scoped diagnostic supervisor before additional reproductions. Establish a run-scoped ownership ledger before any spawn, retain lifecycle events outside the test worker past its unchanged 20-second deadline, and verify cooperative cleanup and exact child exits. Confirm those properties with a controlled timeout before using the supervisor on the real intermittent case. This review authorizes neither that run nor a console fix.
