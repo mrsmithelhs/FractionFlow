@@ -1,0 +1,311 @@
+{
+  "browser": "157.0.8103.38",
+  "browserZoom": "default 100%, not independently measured",
+  "observations": [
+    {
+      "case": "normal",
+      "item": 1,
+      "text": "A: First amount\n1\n3\n8\n\n1 whole unit and 3 eighths\n\nA\nA\nA\nB: Second amount\n2\n5\n8\n\n2 whole units and 5 eighths\n\nB\nB\nB\nB\nB\n\nThat's right.\n\n3 original wholes; 3 eighths from A and 5 from B make one new whole. 0 eighths from B remain.\n\nA\nA\nA\nB\nB\nB\nB\nB\n\nThe sum is \n4\n\nNext problem",
+      "bars": [
+        {
+          "width": 288,
+          "parts": 8
+        },
+        {
+          "width": 288,
+          "parts": 8
+        },
+        {
+          "width": 288,
+          "parts": 8
+        },
+        {
+          "width": 288,
+          "parts": 8
+        },
+        {
+          "width": 288,
+          "parts": 8
+        },
+        {
+          "width": 288,
+          "parts": 8
+        }
+      ],
+      "sources": [
+        [
+          "A",
+          "A",
+          "A",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "B",
+          "B",
+          "B",
+          "B",
+          "B",
+          "",
+          "",
+          ""
+        ],
+        [
+          "A",
+          "A",
+          "A",
+          "B",
+          "B",
+          "B",
+          "B",
+          "B"
+        ]
+      ],
+      "focused": "plan74-feedback plan50-success",
+      "hiddenControls": "none",
+      "hiddenDraft": "none",
+      "hiddenPrompt": "none",
+      "scrollWidth": 360,
+      "clientWidth": 360
+    },
+    {
+      "case": "normal",
+      "item": 2,
+      "text": "A: First amount\n1\n5\n8\n\n1 whole unit and 5 eighths\n\nA\nA\nA\nA\nA\nB: Second amount\n2\n6\n8\n\n2 whole units and 6 eighths\n\nB\nB\nB\nB\nB\nB\n\nThat's right.\n\n3 original wholes; 5 eighths from A and 3 from B make one new whole. 3 eighths from B remain.\n\nA\nA\nA\nA\nA\nB\nB\nB\n\nRemaining eighths from B\n\nB\nB\nB\n\nThe sum is \n4\n3\n8\n\nYou’ve tried every problem in this set.\n\nBack to start",
+      "bars": [
+        {
+          "width": 288,
+          "parts": 8
+        },
+        {
+          "width": 288,
+          "parts": 8
+        },
+        {
+          "width": 288,
+          "parts": 8
+        },
+        {
+          "width": 288,
+          "parts": 8
+        },
+        {
+          "width": 288,
+          "parts": 8
+        },
+        {
+          "width": 288,
+          "parts": 8
+        },
+        {
+          "width": 288,
+          "parts": 8
+        }
+      ],
+      "sources": [
+        [
+          "A",
+          "A",
+          "A",
+          "A",
+          "A",
+          "",
+          "",
+          ""
+        ],
+        [
+          "B",
+          "B",
+          "B",
+          "B",
+          "B",
+          "B",
+          "",
+          ""
+        ],
+        [
+          "A",
+          "A",
+          "A",
+          "A",
+          "A",
+          "B",
+          "B",
+          "B"
+        ],
+        [
+          "B",
+          "B",
+          "B",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ]
+      ],
+      "focused": "plan74-feedback plan50-success",
+      "hiddenControls": "none",
+      "hiddenDraft": "none",
+      "hiddenPrompt": "none",
+      "scrollWidth": 360,
+      "clientWidth": 360
+    },
+    {
+      "case": "root200",
+      "item": 1,
+      "text": "A: First amount\n1\n3\n8\n\n1 whole unit and 3 eighths\n\nA\nA\nA\nB: Second amount\n2\n5\n8\n\n2 whole units and 5 eighths\n\nB\nB\nB\nB\nB\n\nThat's right.\n\n3 original wholes; 3 eighths from A and 5 from B make one new whole. 0 eighths from B remain.\n\nA\nA\nA\nB\nB\nB\nB\nB\n\nThe sum is \n4\n\nNext problem",
+      "bars": [
+        {
+          "width": 262,
+          "parts": 8
+        },
+        {
+          "width": 262,
+          "parts": 8
+        },
+        {
+          "width": 262,
+          "parts": 8
+        },
+        {
+          "width": 262,
+          "parts": 8
+        },
+        {
+          "width": 262,
+          "parts": 8
+        },
+        {
+          "width": 262,
+          "parts": 8
+        }
+      ],
+      "sources": [
+        [
+          "A",
+          "A",
+          "A",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "B",
+          "B",
+          "B",
+          "B",
+          "B",
+          "",
+          "",
+          ""
+        ],
+        [
+          "A",
+          "A",
+          "A",
+          "B",
+          "B",
+          "B",
+          "B",
+          "B"
+        ]
+      ],
+      "focused": "plan74-feedback plan50-success",
+      "hiddenControls": "none",
+      "hiddenDraft": "none",
+      "hiddenPrompt": "none",
+      "scrollWidth": 360,
+      "clientWidth": 360
+    },
+    {
+      "case": "root200",
+      "item": 2,
+      "text": "A: First amount\n1\n5\n8\n\n1 whole unit and 5 eighths\n\nA\nA\nA\nA\nA\nB: Second amount\n2\n6\n8\n\n2 whole units and 6 eighths\n\nB\nB\nB\nB\nB\nB\n\nThat's right.\n\n3 original wholes; 5 eighths from A and 3 from B make one new whole. 3 eighths from B remain.\n\nA\nA\nA\nA\nA\nB\nB\nB\n\nRemaining eighths from B\n\nB\nB\nB\n\nThe sum is \n4\n3\n8\n\nYou’ve tried every problem in this set.\n\nBack to start",
+      "bars": [
+        {
+          "width": 262,
+          "parts": 8
+        },
+        {
+          "width": 262,
+          "parts": 8
+        },
+        {
+          "width": 262,
+          "parts": 8
+        },
+        {
+          "width": 262,
+          "parts": 8
+        },
+        {
+          "width": 262,
+          "parts": 8
+        },
+        {
+          "width": 262,
+          "parts": 8
+        },
+        {
+          "width": 262,
+          "parts": 8
+        }
+      ],
+      "sources": [
+        [
+          "A",
+          "A",
+          "A",
+          "A",
+          "A",
+          "",
+          "",
+          ""
+        ],
+        [
+          "B",
+          "B",
+          "B",
+          "B",
+          "B",
+          "B",
+          "",
+          ""
+        ],
+        [
+          "A",
+          "A",
+          "A",
+          "A",
+          "A",
+          "B",
+          "B",
+          "B"
+        ],
+        [
+          "B",
+          "B",
+          "B",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ]
+      ],
+      "focused": "plan74-feedback plan50-success",
+      "hiddenControls": "none",
+      "hiddenDraft": "none",
+      "hiddenPrompt": "none",
+      "scrollWidth": 360,
+      "clientWidth": 360
+    }
+  ],
+  "errors": []
+}

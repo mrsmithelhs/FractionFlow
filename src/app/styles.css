@@ -1154,3 +1154,10 @@ body,
 .plan74-piece-entry { display: flex; align-items: center; gap: .4em; width: 10rem; max-width: 100%; }
 .plan74-piece-entry input { flex: 1 1 auto; min-width: 0; }
 .plan74-denominator { flex: none; white-space: nowrap; }
+
+/* Source letters and the heavier boundary keep the two groups distinct without color. */
+.plan74-source-bar .plan58-part { display: flex; align-items: center; justify-content: center; min-width: 0; font-size: .72rem; font-weight: 700; line-height: 1; color: #173442; }
+.plan74-source-bar .plan74-source-b { background: #f3d39a; }
+.plan74-source-bar .plan74-group-start { border-left: 3px solid #243d4b; }
+.plan74-remainder-label { margin-bottom: .2rem; }
+.plan74-addition [hidden] { display: none; }
