@@ -1,7 +1,7 @@
 ---
 id: plan-83
 title: Phase 5 Exit Review and Mixed-to-Improper Bridge Design
-status: in-progress
+status: delivered
 depends_on: [plan-53, plan-56, plan-58, plan-72, plan-74, plan-78, plan-82]
 gate: "Approve the report-only review scope first. Owner decides the Phase 5 exit disposition and whether to adopt a bridge design."
 summary: >-
