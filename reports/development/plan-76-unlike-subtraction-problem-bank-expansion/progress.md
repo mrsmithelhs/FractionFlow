@@ -1,0 +1,7 @@
+# Plan 76 progress — Requirement 0
+
+2026-11-07: Proposed eight coverage slots and an isolated validation and publication mechanism in `mechanism.md`. No candidate records were authored and no runtime, registry, route, historical evidence, status, or publication changes were made. Awaiting orchestration approval before authoring; owner batch adoption and live integration/publication remain separate gates.
+
+Baseline pinned at `42da0062310949ba79d6932e713f353d02ede759`; mechanism checkpoint `76a564f`. `node scripts/dev/plan-status.js check 76` returned RUNNABLE and `node scripts/dev/plan-status.js lint` passed. Inspected current Plan 40 records, fixture and association requirements, recipe validation, profile and representation ceilings, and existing content tests. No candidate admission, browser run, full test suite, or build was performed at this proposal gate. `git diff --check` passed for tracked changes; the proposal was then committed. A historical test filename mentioned in Plan 40 was absent; current Plan 40 tests were located by search and named in the proposal.
+
+Pre-existing unrelated untracked Plan 39 route-run JSON files and a concurrently appearing Plan 77 report folder were left untouched. The sandbox denied Git metadata writes; after confirming no lock existed and the refresh probe also failed, narrowly scoped staging and commit used elevation. No advisor consultation was warranted for this prose-only proposal; no advisor ran. Ready for orchestration mechanism review: yes; ready for authoring: pending approval.
