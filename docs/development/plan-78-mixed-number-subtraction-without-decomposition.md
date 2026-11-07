@@ -1,11 +1,9 @@
 ---
 id: plan-78
 title: Mixed-Number Subtraction Without Decomposition
-status: ready
+status: in-progress
 depends_on: [plan-38, plan-56, plan-74, plan-75, plan-77]
 gate: "Approve admission, response and representation mechanism before source changes. Owner reviews the rendered task before closeout."
-superseded_by: null
-resolution: null
 summary: >-
   Implement the adopted four-problem eighths slice of mixed-number
   subtraction without decomposition. Use one final two-field response

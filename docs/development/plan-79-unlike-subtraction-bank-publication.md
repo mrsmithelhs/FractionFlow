@@ -1,11 +1,9 @@
 ---
 id: plan-79
 title: Unlike-Denominator Subtraction Bank Publication
-status: ready
+status: in-progress
 depends_on: [plan-40, plan-76, plan-77]
 gate: "Approve exact candidate and set integration, audit coverage and replay witness before source changes. Owner reviews the locally published practice before closure."
-superseded_by: null
-resolution: null
 summary: >-
   Publish eight adopted records into the existing standalone unlike-denominator
   subtraction practice through an explicit new set revision. Preserve
