@@ -1,7 +1,8 @@
 ---
 id: plan-71
 title: Mixed-Number Addition Without Regrouping Design
-status: delivered
+status: complete
+resolution: "Owner adopted one two-field response and all four mixed addition problems, including eighths, on 2026-11-06. Plan 72 carries implementation and required eighths layout verification."
 depends_on: [plan-58, plan-70]
 gate: "Approve report-only scope before the dossier. Owner adopts the task and bounded first slice before any source implementation."
 summary: >-
