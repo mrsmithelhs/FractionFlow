@@ -1,0 +1,43 @@
+{
+  "viewport": {
+    "width": 360,
+    "height": 740
+  },
+  "checks": [
+    {
+      "id": "plan76-construct-five-sixths-one-tenth-30",
+      "removedSegments": 3,
+      "wrongResponse": "retry",
+      "linearAnswer": "11/15",
+      "result": "resolve"
+    },
+    {
+      "id": "plan76-inspect-three-fourths-one-fifth-20",
+      "removedSegments": 4,
+      "wrongResponse": "retry",
+      "linearAnswer": "11/20",
+      "result": "resolve"
+    },
+    {
+      "id": "plan76-inspect-seven-eighths-one-sixth-24",
+      "removedSegments": 4,
+      "wrongResponse": "retry",
+      "linearAnswer": "17/24",
+      "result": "resolve"
+    },
+    {
+      "id": "plan76-identify-seven-eighths-one-fourth-8",
+      "removedSegments": 2,
+      "wrongResponse": "retry",
+      "linearAnswer": "5/8",
+      "result": "resolve"
+    },
+    {
+      "id": "plan76-identify-three-fourths-one-eighth-8",
+      "removedSegments": 1,
+      "wrongResponse": "retry",
+      "linearAnswer": "5/8",
+      "result": "resolve"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "liveItemEntries": 93,
+  "resolvedBinaryFixtures": 39,
+  "unresolvedOrUnaryEntries": 54,
+  "plan40ExistingRecords": 11,
+  "collisions": [
+    {
+      "candidate": "plan76-construct-two-thirds-one-fifth-15",
+      "other": "two-thirds-plus-one-fifth",
+      "fixture": "curated-relatively-prime-addition-two-thirds-one-fifth",
+      "selector": "relatively-prime-addition"
+    }
+  ]
+}

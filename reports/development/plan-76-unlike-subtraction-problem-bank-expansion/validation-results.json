@@ -10,6 +10,8 @@
       ],
       "target": "15",
       "difference": "7/15",
+      "mounted": "mock DOM visual incorrect response and linear reduced response",
+      "alternateDisposition": "accepted by recipe validator",
       "paths": [
         {
           "target": "15",
@@ -34,6 +36,8 @@
       ],
       "target": "30",
       "difference": "22/30",
+      "mounted": "mock DOM visual incorrect response and linear reduced response",
+      "alternateDisposition": "invalid Plan 40 subtraction recipe context: target exceeds the admitted authored representation capability",
       "paths": [
         {
           "target": "30",
@@ -60,6 +64,8 @@
       ],
       "target": "20",
       "difference": "7/20",
+      "mounted": "mock DOM visual incorrect response and linear reduced response",
+      "alternateDisposition": "invalid Plan 40 subtraction recipe context: target exceeds the admitted authored representation capability",
       "paths": [
         {
           "target": "20",
@@ -86,6 +92,8 @@
       ],
       "target": "20",
       "difference": "11/20",
+      "mounted": "mock DOM visual incorrect response and linear reduced response",
+      "alternateDisposition": "invalid Plan 40 subtraction recipe context: target exceeds the admitted authored representation capability",
       "paths": [
         {
           "target": "20",
@@ -112,6 +120,8 @@
       ],
       "target": "24",
       "difference": "17/24",
+      "mounted": "mock DOM visual incorrect response and linear reduced response",
+      "alternateDisposition": "invalid Plan 40 subtraction recipe context: target exceeds the admitted authored representation capability",
       "paths": [
         {
           "target": "24",
@@ -138,6 +148,8 @@
       ],
       "target": "15",
       "difference": "7/15",
+      "mounted": "mock DOM visual incorrect response and linear reduced response",
+      "alternateDisposition": "invalid Plan 40 subtraction recipe context: invalid exact left inspect candidate",
       "paths": [
         {
           "target": "15",
@@ -161,6 +173,8 @@
       ],
       "target": "8",
       "difference": "5/8",
+      "mounted": "mock DOM visual incorrect response and linear reduced response",
+      "alternateDisposition": "invalid Plan 40 subtraction recipe context: recipe required sides do not match exact conversion truth",
       "paths": [
         {
           "target": "8",
@@ -184,6 +198,8 @@
       ],
       "target": "8",
       "difference": "5/8",
+      "mounted": "mock DOM visual incorrect response and linear reduced response",
+      "alternateDisposition": "invalid Plan 40 subtraction recipe context: recipe required sides do not match exact conversion truth",
       "paths": [
         {
           "target": "8",

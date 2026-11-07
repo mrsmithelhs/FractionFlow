@@ -1,0 +1,309 @@
+[
+  {
+    "itemId": "plan76-construct-two-thirds-one-fifth-15",
+    "fixtureId": "curated-plan76-construct-two-thirds-one-fifth-15",
+    "authoringRevision": "plan76-record-v1",
+    "fixtureProfileId": "curated-review",
+    "fixtureSelector": "relatively-prime-subtraction",
+    "fixtureOverlays": [],
+    "sourceForms": {
+      "left": {
+        "kind": "fraction",
+        "numerator": "2",
+        "denominator": "3"
+      },
+      "right": {
+        "kind": "fraction",
+        "numerator": "1",
+        "denominator": "5"
+      }
+    },
+    "recipeId": "unlike-subtraction.construct-equivalent",
+    "targetDenominator": "15",
+    "definitionId": "phase-3-reusable-subtraction-recipes",
+    "definitionRevision": "1",
+    "patternRevision": "1",
+    "taskDataId": "plan40-subtraction-recipe-task-data",
+    "taskDataRevision": "1",
+    "requiredSides": [
+      "left",
+      "right"
+    ],
+    "stimulusId": null,
+    "stimulusRevision": null,
+    "candidates": null
+  },
+  {
+    "itemId": "plan76-construct-five-sixths-one-tenth-30",
+    "fixtureId": "curated-plan76-construct-five-sixths-one-tenth-30",
+    "authoringRevision": "plan76-record-v1",
+    "fixtureProfileId": "curated-review",
+    "fixtureSelector": "shared-factor-subtraction",
+    "fixtureOverlays": [
+      "reducible-result"
+    ],
+    "sourceForms": {
+      "left": {
+        "kind": "fraction",
+        "numerator": "5",
+        "denominator": "6"
+      },
+      "right": {
+        "kind": "fraction",
+        "numerator": "1",
+        "denominator": "10"
+      }
+    },
+    "recipeId": "unlike-subtraction.construct-equivalent",
+    "targetDenominator": "30",
+    "definitionId": "phase-3-reusable-subtraction-recipes",
+    "definitionRevision": "1",
+    "patternRevision": "1",
+    "taskDataId": "plan40-subtraction-recipe-task-data",
+    "taskDataRevision": "1",
+    "requiredSides": [
+      "left",
+      "right"
+    ],
+    "stimulusId": null,
+    "stimulusRevision": null,
+    "candidates": null
+  },
+  {
+    "itemId": "plan76-construct-three-fifths-one-fourth-20",
+    "fixtureId": "curated-plan76-construct-three-fifths-one-fourth-20",
+    "authoringRevision": "plan76-record-v1",
+    "fixtureProfileId": "curated-review",
+    "fixtureSelector": "relatively-prime-subtraction",
+    "fixtureOverlays": [],
+    "sourceForms": {
+      "left": {
+        "kind": "fraction",
+        "numerator": "3",
+        "denominator": "5"
+      },
+      "right": {
+        "kind": "fraction",
+        "numerator": "1",
+        "denominator": "4"
+      }
+    },
+    "recipeId": "unlike-subtraction.construct-equivalent",
+    "targetDenominator": "20",
+    "definitionId": "phase-3-reusable-subtraction-recipes",
+    "definitionRevision": "1",
+    "patternRevision": "1",
+    "taskDataId": "plan40-subtraction-recipe-task-data",
+    "taskDataRevision": "1",
+    "requiredSides": [
+      "left",
+      "right"
+    ],
+    "stimulusId": null,
+    "stimulusRevision": null,
+    "candidates": null
+  },
+  {
+    "itemId": "plan76-inspect-three-fourths-one-fifth-20",
+    "fixtureId": "curated-plan76-inspect-three-fourths-one-fifth-20",
+    "authoringRevision": "plan76-record-v1",
+    "fixtureProfileId": "curated-review",
+    "fixtureSelector": "relatively-prime-subtraction",
+    "fixtureOverlays": [],
+    "sourceForms": {
+      "left": {
+        "kind": "fraction",
+        "numerator": "3",
+        "denominator": "4"
+      },
+      "right": {
+        "kind": "fraction",
+        "numerator": "1",
+        "denominator": "5"
+      }
+    },
+    "recipeId": "unlike-subtraction.inspect-keep-repair",
+    "targetDenominator": "20",
+    "stimulusId": "plan76-inspect-three-fourths-one-fifth-20-stimulus",
+    "stimulusRevision": "1",
+    "candidates": {
+      "left": {
+        "kind": "fraction",
+        "numerator": "15",
+        "denominator": "20"
+      },
+      "right": {
+        "kind": "fraction",
+        "numerator": "5",
+        "denominator": "20"
+      }
+    },
+    "definitionId": "phase-3-reusable-subtraction-recipes",
+    "definitionRevision": "1",
+    "patternRevision": "1",
+    "taskDataId": "plan40-subtraction-recipe-task-data",
+    "taskDataRevision": "1",
+    "requiredSides": [
+      "left",
+      "right"
+    ]
+  },
+  {
+    "itemId": "plan76-inspect-seven-eighths-one-sixth-24",
+    "fixtureId": "curated-plan76-inspect-seven-eighths-one-sixth-24",
+    "authoringRevision": "plan76-record-v1",
+    "fixtureProfileId": "curated-review",
+    "fixtureSelector": "shared-factor-subtraction",
+    "fixtureOverlays": [],
+    "sourceForms": {
+      "left": {
+        "kind": "fraction",
+        "numerator": "7",
+        "denominator": "8"
+      },
+      "right": {
+        "kind": "fraction",
+        "numerator": "1",
+        "denominator": "6"
+      }
+    },
+    "recipeId": "unlike-subtraction.inspect-keep-repair",
+    "targetDenominator": "24",
+    "stimulusId": "plan76-inspect-seven-eighths-one-sixth-24-stimulus",
+    "stimulusRevision": "1",
+    "candidates": {
+      "left": {
+        "kind": "fraction",
+        "numerator": "20",
+        "denominator": "24"
+      },
+      "right": {
+        "kind": "fraction",
+        "numerator": "4",
+        "denominator": "24"
+      }
+    },
+    "definitionId": "phase-3-reusable-subtraction-recipes",
+    "definitionRevision": "1",
+    "patternRevision": "1",
+    "taskDataId": "plan40-subtraction-recipe-task-data",
+    "taskDataRevision": "1",
+    "requiredSides": [
+      "left",
+      "right"
+    ]
+  },
+  {
+    "itemId": "plan76-inspect-four-fifths-one-third-15",
+    "fixtureId": "curated-plan76-inspect-four-fifths-one-third-15",
+    "authoringRevision": "plan76-record-v1",
+    "fixtureProfileId": "curated-review",
+    "fixtureSelector": "relatively-prime-subtraction",
+    "fixtureOverlays": [],
+    "sourceForms": {
+      "left": {
+        "kind": "fraction",
+        "numerator": "4",
+        "denominator": "5"
+      },
+      "right": {
+        "kind": "fraction",
+        "numerator": "1",
+        "denominator": "3"
+      }
+    },
+    "recipeId": "unlike-subtraction.inspect-keep-repair",
+    "targetDenominator": "15",
+    "stimulusId": "plan76-inspect-four-fifths-one-third-15-stimulus",
+    "stimulusRevision": "1",
+    "candidates": {
+      "left": {
+        "kind": "fraction",
+        "numerator": "11",
+        "denominator": "15"
+      },
+      "right": {
+        "kind": "fraction",
+        "numerator": "5",
+        "denominator": "15"
+      }
+    },
+    "definitionId": "phase-3-reusable-subtraction-recipes",
+    "definitionRevision": "1",
+    "patternRevision": "1",
+    "taskDataId": "plan40-subtraction-recipe-task-data",
+    "taskDataRevision": "1",
+    "requiredSides": [
+      "left",
+      "right"
+    ]
+  },
+  {
+    "itemId": "plan76-identify-seven-eighths-one-fourth-8",
+    "fixtureId": "curated-plan76-identify-seven-eighths-one-fourth-8",
+    "authoringRevision": "plan76-record-v1",
+    "fixtureProfileId": "curated-review",
+    "fixtureSelector": "nested-denominator-subtraction",
+    "fixtureOverlays": [],
+    "sourceForms": {
+      "left": {
+        "kind": "fraction",
+        "numerator": "7",
+        "denominator": "8"
+      },
+      "right": {
+        "kind": "fraction",
+        "numerator": "1",
+        "denominator": "4"
+      }
+    },
+    "recipeId": "unlike-subtraction.identify-side-construct",
+    "targetDenominator": "8",
+    "requiredSide": "right",
+    "definitionId": "phase-3-reusable-subtraction-recipes",
+    "definitionRevision": "1",
+    "patternRevision": "1",
+    "taskDataId": "plan40-subtraction-recipe-task-data",
+    "taskDataRevision": "1",
+    "requiredSides": [
+      "right"
+    ],
+    "stimulusId": null,
+    "stimulusRevision": null,
+    "candidates": null
+  },
+  {
+    "itemId": "plan76-identify-three-fourths-one-eighth-8",
+    "fixtureId": "curated-plan76-identify-three-fourths-one-eighth-8",
+    "authoringRevision": "plan76-record-v1",
+    "fixtureProfileId": "curated-review",
+    "fixtureSelector": "nested-denominator-subtraction",
+    "fixtureOverlays": [],
+    "sourceForms": {
+      "left": {
+        "kind": "fraction",
+        "numerator": "3",
+        "denominator": "4"
+      },
+      "right": {
+        "kind": "fraction",
+        "numerator": "1",
+        "denominator": "8"
+      }
+    },
+    "recipeId": "unlike-subtraction.identify-side-construct",
+    "targetDenominator": "8",
+    "requiredSide": "left",
+    "definitionId": "phase-3-reusable-subtraction-recipes",
+    "definitionRevision": "1",
+    "patternRevision": "1",
+    "taskDataId": "plan40-subtraction-recipe-task-data",
+    "taskDataRevision": "1",
+    "requiredSides": [
+      "left"
+    ],
+    "stimulusId": null,
+    "stimulusRevision": null,
+    "candidates": null
+  }
+]

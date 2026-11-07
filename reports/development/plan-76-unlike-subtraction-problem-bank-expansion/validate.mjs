@@ -15,6 +15,11 @@ const {createEpisode,applyIntent}=await load('src/interaction/episode.js');
 const {PLAN40_REUSABLE_SUBTRACTION_RECIPES_EPISODE_DEFINITION:definition}=await load('src/interaction/episode-definition.js');
 const {HIGH_SUPPORT_CONFIGURATION:support}=await load('src/interaction/support.js');
 const {createReplayEnvelope,replayEpisode}=await load('src/interaction/replay.js');
+const {setupMockDOM,teardownMockDOM}=await load('tests/fixtures/mock-dom.js');
+const {resolveRenderableScene}=await load('src/render/contract.js');
+const {createBeatContainer}=await load('src/render/beat-container.js');
+const {createLinearPathRenderer}=await load('src/render/linear-path.js');
+const {STRINGS}=await load('src/render/strings.js');
 const set=recordsModule.PLAN40_RECIPE_ASSOCIATION_SETS.find(x=>x.id==='plan76-isolated-set');
 assert.equal(set.itemIds.length,8);
 const records=recordsModule.PLAN40_SUBTRACTION_RECIPE_RECORDS.filter(x=>set.itemIds.includes(x.itemId));
@@ -31,6 +36,12 @@ for(const r of records){
  const eligibility=evaluateProposedPathEligibility(instance,r.targetDenominator);
  assert.equal(eligibility.mathematicalValidity,'valid'); assert.equal(eligibility.rendering,'eligible'); assert.notEqual(eligibility.authoredCoverage,'outside-authored-coverage');
  const sides=validatePlan40SubtractionRecipeRecord(instance,r);
+ const alternate=instance.alternatePaths[0];
+ let alternateDisposition='none';
+ if(alternate){
+   try { validatePlan40SubtractionRecipeRecord(instance,{...r,targetDenominator:alternate.targetDenominator}); alternateDisposition='accepted by recipe validator'; }
+   catch(e){ assert.equal(e.code,'INVALID_PLAN40_SUBTRACTION_TASK'); alternateDisposition=e.message; }
+ }
  const context=resolvePlan40SubtractionRecipeContext(instance,r.itemId,{practiceSetId:set.id,practiceSetRevision:set.revision}); assert.deepEqual(context.requiredSides,sides);
  const difference=math.subtractAtCommonDenominator(form(r.sourceForms.left),form(r.sourceForms.right),BigInt(r.targetDenominator));
  let state=createEpisode({instance,episodeDefinition:definition,taskContext:context,support});
@@ -43,9 +54,28 @@ for(const r of records){
    else state=applyIntent(state,{type:'submit-equivalent-form',proposed});
  }
  assert.equal(state.beat,'operate');
- state=applyIntent(state,{type:'submit-subtraction-result',proposed:{kind:'fraction',numerator:String(difference.numerator),denominator:String(difference.denominator)}});
+ const doc=setupMockDOM();
+ for(const mode of ['visual','linear']){
+   const container=doc.createElement('div'); doc.body.appendChild(container);
+   const renderer=(mode==='visual'?createBeatContainer:createLinearPathRenderer)({container,strings:STRINGS,dispatchAction:action=>{state=applyIntent(state,action)}});
+   renderer.mount(resolveRenderableScene({state,presentationMode:'instant-test'}));
+   assert(container.querySelector(mode==='visual'?'.fraction-bar-takeaway-track':'.linear-takeaway-removal-status'));
+   const prefix=mode==='visual'?'':'linear-';
+   const numerator=container.querySelector(`#${prefix}operate-fraction-numerator-input`);
+   const denominator=container.querySelector(`#${prefix}operate-fraction-denominator-input`);
+   assert(numerator && denominator);
+   if(mode==='visual'){
+     numerator.value='0'; denominator.value='1'; container.querySelector('.control-submit-btn').click();
+     assert.equal(state.beat,'operate'); assert(state.lastRecovery);
+   } else {
+     const gcd=(a,b)=>b===0n?a:gcd(b,a%b); const divisor=gcd(difference.numerator,difference.denominator);
+     numerator.value=String(difference.numerator/divisor); denominator.value=String(difference.denominator/divisor);
+     container.querySelector('.control-submit-btn').click();
+   }
+ }
+ teardownMockDOM();
  assert.equal(state.beat,'resolve'); assert.deepEqual(replayEpisode(createReplayEnvelope(state)),state);
- results.push({item:r.itemId,recipe:r.recipeId,sides,target:r.targetDenominator,difference:`${difference.numerator}/${difference.denominator}`,paths:paths.map(x=>({target:x.targetDenominator,rendering:x.rendering,coverage:x.authoredCoverage,reasons:x.reasons}))});
+ results.push({item:r.itemId,recipe:r.recipeId,sides,target:r.targetDenominator,difference:`${difference.numerator}/${difference.denominator}`,mounted:'mock DOM visual incorrect response and linear reduced response',alternateDisposition,paths:paths.map(x=>({target:x.targetDenominator,rendering:x.rendering,coverage:x.authoredCoverage,reasons:x.reasons}))});
 }
 const first=records[0], instance=instanceFor(first);
 for(const [label,mutation,expected] of [

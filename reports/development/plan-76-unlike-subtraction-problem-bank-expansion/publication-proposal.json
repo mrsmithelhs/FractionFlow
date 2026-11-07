@@ -1,0 +1,29 @@
+{
+  "status": "proposed-only-requires-owner-adoption-and-integration",
+  "setId": "unlike-subtraction-vetted-set",
+  "setRevision": "2",
+  "preserveExistingAssociation": {"setId":"unlike-subtraction-vetted-set","setRevision":"1","membership":"unchanged"},
+  "itemIds": [
+    "plan40-construct-half-fifth-10",
+    "plan40-construct-three-fourths-two-fifths-20",
+    "plan40-construct-five-sixths-three-eighths-24",
+    "plan40-inspect-two-thirds-one-fourth-12",
+    "plan40-inspect-seven-tenths-one-fourth-20",
+    "plan40-inspect-five-sixths-seven-tenths-30",
+    "plan40-identify-five-sixths-one-third-6",
+    "plan40-identify-one-half-one-eighth-8",
+    "plan40-identify-two-thirds-five-twelfths-12",
+    "plan76-construct-two-thirds-one-fifth-15",
+    "plan76-construct-five-sixths-one-tenth-30",
+    "plan76-construct-three-fifths-one-fourth-20",
+    "plan76-inspect-three-fourths-one-fifth-20",
+    "plan76-inspect-seven-eighths-one-sixth-24",
+    "plan76-inspect-four-fifths-one-third-15",
+    "plan76-identify-seven-eighths-one-fourth-8",
+    "plan76-identify-three-fourths-one-eighth-8"
+  ],
+  "candidateAuthoringRevision": "plan76-record-v1",
+  "candidateFixtureIdRule": "curated-<itemId>",
+  "candidateStimulusIdRule": "<itemId>-stimulus for inspect records; revision 1",
+  "integrationBlocker": "Repeated historical item membership makes findPlan40RecipeAssociationSet return null; explicit set identity propagation and historical replay must be addressed and reviewed in separately owned shared work before activation."
+}
