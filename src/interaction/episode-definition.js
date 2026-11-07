@@ -287,6 +287,7 @@ export const PLAN72_ADDITION_EPISODE_DEFINITION = deepFreeze({ id: 'phase-4-mixe
 export const PLAN74_ADDITION_EPISODE_DEFINITION = deepFreeze({ id: 'phase-5-mixed-number-addition-with-regrouping', revision: '1', family: 'mixed-number-addition-with-regrouping', beats: ['construct', 'resolve'], includeReflection: false, promptIdentities: { construct: 'phase5.mixed-addition-regrouping.construct', resolve: 'phase5.mixed-addition-regrouping.accepted' } });
 export const PLAN78_SUBTRACTION_EPISODE_DEFINITION = deepFreeze({ id: 'phase-5-mixed-number-subtraction-without-decomposition', revision: '1', family: 'mixed-number-subtraction-without-decomposition', beats: ['construct', 'resolve'], includeReflection: false, promptIdentities: { construct: 'phase5.mixed-subtraction.construct', resolve: 'phase5.mixed-subtraction.accepted' } });
 export const PLAN82_SUBTRACTION_EPISODE_DEFINITION = deepFreeze({ id: 'phase-5-mixed-number-subtraction-with-decomposition', revision: '1', family: 'mixed-number-subtraction-with-decomposition', beats: ['construct', 'resolve'], includeReflection: false, promptIdentities: { construct: 'phase5.mixed-subtraction-decomposition.construct', resolve: 'phase5.mixed-subtraction-decomposition.accepted' } });
+export const PLAN84_BRIDGE_EPISODE_DEFINITION = deepFreeze({ id:'phase-5-mixed-to-improper-bridge', revision:'1', family:'mixed-to-improper-bridge', beats:['compare','resolve'], includeReflection:false, promptIdentities:{compare:'phase5.mixed-improper.compare',resolve:'phase5.mixed-improper.accepted'} });
 
 export const PLAN58_CONSTRUCTION_EPISODE_DEFINITION = deepFreeze({
   id: 'phase-4-whole-plus-fraction-construction', revision: '1', family: 'whole-plus-fraction-construction',
@@ -326,6 +327,7 @@ const EPISODE_DEFINITIONS = Object.freeze([
   PLAN74_ADDITION_EPISODE_DEFINITION,
   PLAN78_SUBTRACTION_EPISODE_DEFINITION,
   PLAN82_SUBTRACTION_EPISODE_DEFINITION,
+  PLAN84_BRIDGE_EPISODE_DEFINITION,
   PLAN58_CONSTRUCTION_EPISODE_DEFINITION,
   PLAN59_ENDPOINT_EPISODE_DEFINITION,
 ]);

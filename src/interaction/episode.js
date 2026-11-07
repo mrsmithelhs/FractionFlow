@@ -1,4 +1,5 @@
 import { createPlan82Episode, applyPlan82Intent, PLAN82_ID } from './plan82-mixed-subtraction-episode.js';
+import { createPlan84Episode, applyPlan84Intent, PLAN84_ID } from './plan84-mixed-improper-episode.js';
 import { createPlan78Episode, applyPlan78Intent, PLAN78_ID } from './plan78-mixed-subtraction-episode.js';
 import { createPlan74Episode, applyPlan74Intent, PLAN74_ID } from './plan74-mixed-addition-episode.js';
 import { createPlan72Episode, applyPlan72Intent, PLAN72_ID } from './plan72-mixed-addition-episode.js';
@@ -281,7 +282,7 @@ function assertDefinition(definition) {
       'episode definition semantics do not match its registered identity',
     );
   }
-  const approvedBeats = (registered.id === PLAN72_ID || registered.id === PLAN74_ID || registered.id === PLAN78_ID || registered.id === PLAN82_ID)
+  const approvedBeats = registered.id === PLAN84_ID ? ['compare', 'resolve'] : (registered.id === PLAN72_ID || registered.id === PLAN74_ID || registered.id === PLAN78_ID || registered.id === PLAN82_ID)
     ? ['construct', 'resolve']
     : registered.id === 'phase-4-directed-number-line-endpoint'
     ? ['locate', 'resolve']
@@ -1424,6 +1425,7 @@ export function createEpisode({
 } = {}) {
   const definition = assertDefinition(episodeDefinition);
   if (definition.id === PLAN78_ID && definition.revision === '1') return createPlan78Episode({ taskContext, support, activeCondition, episodeDefinition: definition });
+  if (definition.id === PLAN84_ID && definition.revision === '1') return createPlan84Episode({ taskContext, support, activeCondition, episodeDefinition: definition });
   if (definition.id === PLAN82_ID && definition.revision === '1') return createPlan82Episode({ taskContext, support, activeCondition, episodeDefinition: definition });
   if (definition.id === PLAN74_ID && definition.revision === '1') return createPlan74Episode({ taskContext, support, activeCondition, episodeDefinition: definition });
   if (definition.id === PLAN72_ID && definition.revision === '1') return createPlan72Episode({ taskContext, support, activeCondition, episodeDefinition: definition });
@@ -1523,6 +1525,7 @@ export function applyIntent(state, rawIntent) {
     throw new EpisodeIntentError('INVALID_EPISODE_STATE', 'state is not a Plan 05 episode state');
   }
   if (state.episodeDefinition?.id === PLAN78_ID && state.episodeDefinition.revision === '1') return applyPlan78Intent(state, rawIntent);
+  if (state.episodeDefinition?.id === PLAN84_ID && state.episodeDefinition.revision === '1') return applyPlan84Intent(state, rawIntent);
   if (state.episodeDefinition?.id === PLAN82_ID && state.episodeDefinition.revision === '1') return applyPlan82Intent(state, rawIntent);
   if (state.episodeDefinition?.id === PLAN74_ID && state.episodeDefinition.revision === '1') return applyPlan74Intent(state, rawIntent);
   if (state.episodeDefinition?.id === PLAN72_ID && state.episodeDefinition.revision === '1') return applyPlan72Intent(state, rawIntent);
@@ -1588,7 +1591,7 @@ export function withActiveCondition(state, activeCondition) {
     if (!sameDefinitionValue(normalizedCondition, state.activeCondition)) throw new EpisodeIntentError('UNSUPPORTED_CONDITION', 'endpoint condition is frozen');
     return state;
   }
-  if ([PLAN72_ID, PLAN74_ID, PLAN78_ID, PLAN82_ID].includes(state.episodeDefinition?.id)) {
+  if ([PLAN72_ID, PLAN74_ID, PLAN78_ID, PLAN82_ID, PLAN84_ID].includes(state.episodeDefinition?.id)) {
     if (!sameDefinitionValue(normalizedCondition, state.activeCondition)) throw new EpisodeIntentError('UNSUPPORTED_CONDITION', 'addition condition is frozen');
     return state;
   }
