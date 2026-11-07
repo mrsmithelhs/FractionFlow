@@ -1,7 +1,7 @@
 ---
 id: plan-72
 title: Mixed-Number Addition Without Regrouping
-status: in-progress
+status: delivered
 depends_on: [plan-56, plan-58, plan-70, plan-71]
 gate: "Approve the admission, response and rendering mechanism before source work. Eighths must pass narrow-screen and enlarged-text rendered checks before owner acceptance."
 summary: >-
