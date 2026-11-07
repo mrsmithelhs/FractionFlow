@@ -1,7 +1,8 @@
 ---
 id: plan-81
 title: Dev-Console Lifecycle Timeout Diagnostic
-status: delivered
+status: complete
+resolution: "Owner accepted the bounded timeout diagnostic and controlled direct-child proof. The failed real phase and cleanup outcome remain unknown."
 depends_on: [plan-23, plan-78, plan-79]
 gate: "Approve the bounded reproduction and instrumentation plan first. Review the evidence and proposed fix before any shared source or test change."
 summary: >-
