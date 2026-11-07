@@ -1,0 +1,535 @@
+{
+  "capturedAt": "2026-11-07T16:15:34.004Z",
+  "measurements": [
+    {
+      "routeId": "ROUTE-PLAN40-UNLIKE-SUBTRACTION-HIGH-VISUAL-ALL",
+      "context": "production-default-v7",
+      "motionMode": "standard-motion",
+      "file": "reports/development/plan-79-unlike-subtraction-bank-publication/target30-visual.png",
+      "caption": "Target 30 recovery at narrow viewport",
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "layout": {
+        "viewport": {
+          "width": 360,
+          "height": 740
+        },
+        "dpr": 1,
+        "roundingTolerancePx": 1,
+        "document": {
+          "width": 360,
+          "height": 913
+        },
+        "horizontalOverflow": false,
+        "horizontalOverflowPx": 0,
+        "scroll": {
+          "x": 0,
+          "y": 12
+        },
+        "activeView": "app-visual-view",
+        "question": {
+          "x": 63,
+          "y": 419.72,
+          "width": 234,
+          "height": 25.19,
+          "visible": true,
+          "horizontallyContained": true,
+          "verticallyContained": true,
+          "withinViewport": true,
+          "intersectsViewport": true
+        },
+        "controls": {
+          "x": 63,
+          "y": 475.84,
+          "width": 234,
+          "height": 200.59,
+          "visible": true,
+          "horizontallyContained": true,
+          "verticallyContained": true,
+          "withinViewport": true,
+          "intersectsViewport": true
+        },
+        "nestedChoices": []
+      }
+    },
+    {
+      "routeId": "ROUTE-PLAN40-UNLIKE-SUBTRACTION-MEDIUM-LINEAR-ALL",
+      "context": "production-default-v7",
+      "motionMode": "reduced-motion",
+      "file": "reports/development/plan-40-unlike-denominator-subtraction-batch/evidence/linear-operate-360x752.png",
+      "caption": "Unlike subtraction item 1 linear operate beat at 360x752",
+      "viewport": {
+        "width": 360,
+        "height": 752
+      },
+      "layout": {
+        "viewport": {
+          "width": 360,
+          "height": 752
+        },
+        "dpr": 1,
+        "roundingTolerancePx": 1,
+        "document": {
+          "width": 360,
+          "height": 831
+        },
+        "horizontalOverflow": false,
+        "horizontalOverflowPx": 0,
+        "scroll": {
+          "x": 0,
+          "y": 0
+        },
+        "activeView": "app-linear-view",
+        "question": {
+          "x": 63,
+          "y": 346.17,
+          "width": 234,
+          "height": 25.19,
+          "visible": true,
+          "horizontallyContained": true,
+          "verticallyContained": true,
+          "withinViewport": true,
+          "intersectsViewport": true
+        },
+        "controls": {
+          "x": 63,
+          "y": 405.36,
+          "width": 234,
+          "height": 200.59,
+          "visible": true,
+          "horizontallyContained": true,
+          "verticallyContained": true,
+          "withinViewport": true,
+          "intersectsViewport": true
+        },
+        "nestedChoices": []
+      }
+    },
+    {
+      "routeId": "ROUTE-PLAN40-UNLIKE-SUBTRACTION-MEDIUM-LINEAR-ALL",
+      "context": "production-default-v7",
+      "motionMode": "reduced-motion",
+      "file": "reports/development/plan-79-unlike-subtraction-bank-publication/target30-linear.png",
+      "caption": "Target 30 recovery at narrow viewport",
+      "viewport": {
+        "width": 360,
+        "height": 752
+      },
+      "layout": {
+        "viewport": {
+          "width": 360,
+          "height": 752
+        },
+        "dpr": 1,
+        "roundingTolerancePx": 1,
+        "document": {
+          "width": 360,
+          "height": 890
+        },
+        "horizontalOverflow": false,
+        "horizontalOverflowPx": 0,
+        "scroll": {
+          "x": 0,
+          "y": 0
+        },
+        "activeView": "app-linear-view",
+        "question": {
+          "x": 63,
+          "y": 405.17,
+          "width": 234,
+          "height": 25.19,
+          "visible": true,
+          "horizontallyContained": true,
+          "verticallyContained": true,
+          "withinViewport": true,
+          "intersectsViewport": true
+        },
+        "controls": {
+          "x": 63,
+          "y": 464.36,
+          "width": 234,
+          "height": 200.59,
+          "visible": true,
+          "horizontallyContained": true,
+          "verticallyContained": true,
+          "withinViewport": true,
+          "intersectsViewport": true
+        },
+        "nestedChoices": []
+      }
+    },
+    {
+      "routeId": "ROUTE-PLAN40-DEEP-SAMPLE-INSPECT-REPAIR",
+      "context": "production-default-v7",
+      "motionMode": "standard-motion",
+      "file": "reports/development/plan-40-unlike-denominator-subtraction-batch/evidence/operate-hatch-largest-target30-1366x768.png",
+      "caption": "Unlike subtraction operate beat with largest admitted target 30 removal hatch marks at 1366x768",
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "layout": {
+        "viewport": {
+          "width": 1366,
+          "height": 768
+        },
+        "dpr": 1,
+        "roundingTolerancePx": 1,
+        "document": {
+          "width": 1366,
+          "height": 952
+        },
+        "horizontalOverflow": false,
+        "horizontalOverflowPx": 0,
+        "scroll": {
+          "x": 0,
+          "y": 41
+        },
+        "activeView": "app-visual-view",
+        "question": {
+          "x": 337,
+          "y": 380.69,
+          "width": 692,
+          "height": 25.19,
+          "visible": true,
+          "horizontallyContained": true,
+          "verticallyContained": true,
+          "withinViewport": true,
+          "intersectsViewport": true
+        },
+        "controls": {
+          "x": 337,
+          "y": 436.81,
+          "width": 692,
+          "height": 200.59,
+          "visible": true,
+          "horizontallyContained": true,
+          "verticallyContained": true,
+          "withinViewport": true,
+          "intersectsViewport": true
+        },
+        "nestedChoices": []
+      }
+    },
+    {
+      "routeId": "ROUTE-PLAN40-RESPONSIVE-VIEWPORTS",
+      "context": "production-default-v7",
+      "motionMode": "standard-motion",
+      "file": "reports/development/plan-40-unlike-denominator-subtraction-batch/evidence/encounter-360x740.png",
+      "caption": "Unlike subtraction initial encounter at 360x740",
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "layout": {
+        "viewport": {
+          "width": 360,
+          "height": 740
+        },
+        "dpr": 1,
+        "roundingTolerancePx": 1,
+        "document": {
+          "width": 360,
+          "height": 766
+        },
+        "horizontalOverflow": false,
+        "horizontalOverflowPx": 0,
+        "scroll": {
+          "x": 0,
+          "y": 14
+        },
+        "activeView": "app-visual-view",
+        "question": {
+          "x": 63,
+          "y": 418.72,
+          "width": 234,
+          "height": 25.19,
+          "visible": true,
+          "horizontallyContained": true,
+          "verticallyContained": true,
+          "withinViewport": true,
+          "intersectsViewport": true
+        },
+        "controls": {
+          "x": 63,
+          "y": 474.84,
+          "width": 234,
+          "height": 113,
+          "visible": true,
+          "horizontallyContained": true,
+          "verticallyContained": true,
+          "withinViewport": true,
+          "intersectsViewport": true
+        },
+        "nestedChoices": []
+      }
+    },
+    {
+      "routeId": "ROUTE-PLAN40-RESPONSIVE-VIEWPORTS",
+      "context": "production-default-v7",
+      "motionMode": "standard-motion",
+      "file": "reports/development/plan-40-unlike-denominator-subtraction-batch/evidence/transform-360x740.png",
+      "caption": "Unlike subtraction transform beat at 360x740",
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "layout": {
+        "viewport": {
+          "width": 360,
+          "height": 740
+        },
+        "dpr": 1,
+        "roundingTolerancePx": 1,
+        "document": {
+          "width": 360,
+          "height": 792
+        },
+        "horizontalOverflow": false,
+        "horizontalOverflowPx": 0,
+        "scroll": {
+          "x": 0,
+          "y": 14
+        },
+        "activeView": "app-visual-view",
+        "question": {
+          "x": 63,
+          "y": 403.78,
+          "width": 234,
+          "height": 75.56,
+          "visible": true,
+          "horizontallyContained": true,
+          "verticallyContained": true,
+          "withinViewport": true,
+          "intersectsViewport": true
+        },
+        "controls": {
+          "x": 63,
+          "y": 403.78,
+          "width": 234,
+          "height": 190.56,
+          "visible": true,
+          "horizontallyContained": true,
+          "verticallyContained": true,
+          "withinViewport": true,
+          "intersectsViewport": true
+        },
+        "nestedChoices": []
+      }
+    },
+    {
+      "routeId": "ROUTE-PLAN40-RESPONSIVE-VIEWPORTS",
+      "context": "production-default-v7",
+      "motionMode": "standard-motion",
+      "file": "reports/development/plan-40-unlike-denominator-subtraction-batch/evidence/operate-hatch-360x740.png",
+      "caption": "Unlike subtraction operate beat with removal hatch marks at 360x740",
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "layout": {
+        "viewport": {
+          "width": 360,
+          "height": 740
+        },
+        "dpr": 1,
+        "roundingTolerancePx": 1,
+        "document": {
+          "width": 360,
+          "height": 854
+        },
+        "horizontalOverflow": false,
+        "horizontalOverflowPx": 0,
+        "scroll": {
+          "x": 0,
+          "y": 14
+        },
+        "activeView": "app-visual-view",
+        "question": {
+          "x": 63,
+          "y": 358.72,
+          "width": 234,
+          "height": 25.19,
+          "visible": true,
+          "horizontallyContained": true,
+          "verticallyContained": true,
+          "withinViewport": true,
+          "intersectsViewport": true
+        },
+        "controls": {
+          "x": 63,
+          "y": 414.84,
+          "width": 234,
+          "height": 200.59,
+          "visible": true,
+          "horizontallyContained": true,
+          "verticallyContained": true,
+          "withinViewport": true,
+          "intersectsViewport": true
+        },
+        "nestedChoices": []
+      }
+    },
+    {
+      "routeId": "ROUTE-PLAN40-RESPONSIVE-VIEWPORTS",
+      "context": "production-default-v7",
+      "motionMode": "standard-motion",
+      "file": "reports/development/plan-40-unlike-denominator-subtraction-batch/evidence/help-360x740.png",
+      "caption": "Unlike subtraction operate beat with help cue at 360x740",
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "layout": {
+        "viewport": {
+          "width": 360,
+          "height": 740
+        },
+        "dpr": 1,
+        "roundingTolerancePx": 1,
+        "document": {
+          "width": 360,
+          "height": 935
+        },
+        "horizontalOverflow": false,
+        "horizontalOverflowPx": 0,
+        "scroll": {
+          "x": 0,
+          "y": 14
+        },
+        "activeView": "app-visual-view",
+        "question": {
+          "x": 63,
+          "y": 358.72,
+          "width": 234,
+          "height": 25.19,
+          "visible": true,
+          "horizontallyContained": true,
+          "verticallyContained": true,
+          "withinViewport": true,
+          "intersectsViewport": true
+        },
+        "controls": {
+          "x": 63,
+          "y": 414.84,
+          "width": 234,
+          "height": 281.38,
+          "visible": true,
+          "horizontallyContained": true,
+          "verticallyContained": true,
+          "withinViewport": true,
+          "intersectsViewport": true
+        },
+        "nestedChoices": []
+      }
+    },
+    {
+      "routeId": "ROUTE-PLAN40-RESPONSIVE-VIEWPORTS",
+      "context": "production-default-v7",
+      "motionMode": "standard-motion",
+      "file": "reports/development/plan-40-unlike-denominator-subtraction-batch/evidence/resolve-360x740.png",
+      "caption": "Unlike subtraction resolve beat at 360x740",
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "layout": {
+        "viewport": {
+          "width": 360,
+          "height": 740
+        },
+        "dpr": 1,
+        "roundingTolerancePx": 1,
+        "document": {
+          "width": 360,
+          "height": 740
+        },
+        "horizontalOverflow": false,
+        "horizontalOverflowPx": 0,
+        "scroll": {
+          "x": 0,
+          "y": 0
+        },
+        "activeView": "app-visual-view",
+        "question": {
+          "x": 80,
+          "y": 370.78,
+          "width": 200,
+          "height": 23,
+          "visible": true,
+          "horizontallyContained": true,
+          "verticallyContained": true,
+          "withinViewport": true,
+          "intersectsViewport": true
+        },
+        "controls": {
+          "x": 63,
+          "y": 422.78,
+          "width": 234,
+          "height": 44,
+          "visible": true,
+          "horizontallyContained": true,
+          "verticallyContained": true,
+          "withinViewport": true,
+          "intersectsViewport": true
+        },
+        "nestedChoices": []
+      }
+    },
+    {
+      "routeId": "ROUTE-PLAN40-CHROMEBOOK-SCALED-VIEWPORT",
+      "context": "production-default-v7",
+      "motionMode": "standard-motion",
+      "file": "reports/development/plan-40-unlike-denominator-subtraction-batch/evidence/chromebook-1093x614.png",
+      "caption": "Unlike subtraction resolved equation in Chromebook CSS viewport 1093x614 @ DPR 1.25",
+      "viewport": {
+        "width": 1093,
+        "height": 614
+      },
+      "layout": {
+        "viewport": {
+          "width": 1093,
+          "height": 614
+        },
+        "dpr": 1.25,
+        "roundingTolerancePx": 1,
+        "document": {
+          "width": 1093,
+          "height": 764
+        },
+        "horizontalOverflow": false,
+        "horizontalOverflowPx": 0,
+        "scroll": {
+          "x": 0,
+          "y": 150
+        },
+        "activeView": "app-visual-view",
+        "question": {
+          "x": 217.5,
+          "y": 256.88,
+          "width": 658,
+          "height": 23,
+          "visible": true,
+          "horizontallyContained": true,
+          "verticallyContained": true,
+          "withinViewport": true,
+          "intersectsViewport": true
+        },
+        "controls": {
+          "x": 200.5,
+          "y": 308.88,
+          "width": 692,
+          "height": 44,
+          "visible": true,
+          "horizontallyContained": true,
+          "verticallyContained": true,
+          "withinViewport": true,
+          "intersectsViewport": true
+        },
+        "nestedChoices": []
+      }
+    }
+  ]
+}

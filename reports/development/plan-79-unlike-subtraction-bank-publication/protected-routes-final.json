@@ -1,0 +1,72 @@
+{
+  "capturedAt": "2026-11-07T16:15:34.006Z",
+  "browserChannel": "chrome",
+  "mode": "clean",
+  "routeRows": 8,
+  "browserExecutions": 8,
+  "passed": 8,
+  "knownDefects": 0,
+  "failed": 0,
+  "seedDetected": 0,
+  "contexts": {
+    "production-default-v7": 8
+  },
+  "results": [
+    {
+      "id": "ROUTE-PLAN40-UNLIKE-SUBTRACTION-HIGH-VISUAL-ALL [standard-motion]",
+      "routeId": "ROUTE-PLAN40-UNLIKE-SUBTRACTION-HIGH-VISUAL-ALL",
+      "context": "production-default-v7",
+      "motionMode": "standard-motion",
+      "status": "pass"
+    },
+    {
+      "id": "ROUTE-PLAN40-UNLIKE-SUBTRACTION-MEDIUM-LINEAR-ALL [reduced-motion]",
+      "routeId": "ROUTE-PLAN40-UNLIKE-SUBTRACTION-MEDIUM-LINEAR-ALL",
+      "context": "production-default-v7",
+      "motionMode": "reduced-motion",
+      "status": "pass"
+    },
+    {
+      "id": "ROUTE-PLAN40-DEEP-SAMPLE-CONSTRUCT-OPERATE [standard-motion]",
+      "routeId": "ROUTE-PLAN40-DEEP-SAMPLE-CONSTRUCT-OPERATE",
+      "context": "production-default-v7",
+      "motionMode": "standard-motion",
+      "status": "pass"
+    },
+    {
+      "id": "ROUTE-PLAN40-DEEP-SAMPLE-INSPECT-REPAIR [standard-motion]",
+      "routeId": "ROUTE-PLAN40-DEEP-SAMPLE-INSPECT-REPAIR",
+      "context": "production-default-v7",
+      "motionMode": "standard-motion",
+      "status": "pass"
+    },
+    {
+      "id": "ROUTE-PLAN40-DEEP-SAMPLE-IDENTIFY-REDUCIBLE [standard-motion]",
+      "routeId": "ROUTE-PLAN40-DEEP-SAMPLE-IDENTIFY-REDUCIBLE",
+      "context": "production-default-v7",
+      "motionMode": "standard-motion",
+      "status": "pass"
+    },
+    {
+      "id": "ROUTE-PLAN40-HELP-RECOVERY-VIEW-TOGGLE [standard-motion]",
+      "routeId": "ROUTE-PLAN40-HELP-RECOVERY-VIEW-TOGGLE",
+      "context": "production-default-v7",
+      "motionMode": "standard-motion",
+      "status": "pass"
+    },
+    {
+      "id": "ROUTE-PLAN40-RESPONSIVE-VIEWPORTS [standard-motion]",
+      "routeId": "ROUTE-PLAN40-RESPONSIVE-VIEWPORTS",
+      "context": "production-default-v7",
+      "motionMode": "standard-motion",
+      "status": "pass"
+    },
+    {
+      "id": "ROUTE-PLAN40-CHROMEBOOK-SCALED-VIEWPORT [standard-motion]",
+      "routeId": "ROUTE-PLAN40-CHROMEBOOK-SCALED-VIEWPORT",
+      "context": "production-default-v7",
+      "motionMode": "standard-motion",
+      "status": "pass"
+    }
+  ]
+}
