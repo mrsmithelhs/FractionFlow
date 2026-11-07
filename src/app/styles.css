@@ -1178,3 +1178,23 @@ body,
 .plan78-subtraction .plan78-prompt[hidden] { display: none; }
 .plan78-feedback:focus { outline: 3px solid var(--ff-color-border-focus); outline-offset: 2px; }
 .plan78-result button { min-height: 44px; padding: .6rem 1rem; font: inherit; }
+
+.plan82-operands { display: flex; flex-wrap: wrap; gap: 1rem; }
+.plan82-operand { flex: 1 1 12rem; min-width: 0; }
+.plan82-row { display: flex; flex-wrap: wrap; align-items: center; gap: .3rem .75rem; margin: .35rem 0; }
+.plan82-row-label { flex: 0 0 7rem; }
+.plan82-bar { display: grid; grid-template-columns: repeat(8, minmax(0, 1fr)); width: min(100%, 18rem); }
+.plan82-bar .plan58-part { display: flex; justify-content: center; align-items: center; min-width: 0; box-sizing: border-box; font-weight: 700; }
+.plan82-removed { background: repeating-linear-gradient(135deg, #e2c7ab 0 4px, #fff 4px 8px); color: #543020; }
+.plan82-remaining { background: #c9e4ed; color: #173d4b; }
+.plan82-empty { background: white; }
+.plan82-filled { background: #c9e4ed; }
+.plan82-original-model .plan82-row { margin: .2rem 0; }
+.plan82-original-model .plan82-row-label { display: none; }
+.plan82-subtraction .plan82-feedback:not(:empty) { margin-block: 1.5rem 1rem; }
+.plan82-subtraction .plan82-prompt[hidden] { display: none; }
+.plan82-feedback:focus { outline: 3px solid var(--ff-color-border-focus); outline-offset: 2px; }
+.plan82-result button { min-height: 44px; padding: .6rem 1rem; font: inherit; }
+.plan82-exchanged { background: repeating-linear-gradient(45deg, #c9e4ed 0 4px, #fff 4px 8px); }
+.plan82-original { background: #c9e4ed; }
+.plan82-subtraction .plan58-label { min-width: 0; max-width: 100%; }

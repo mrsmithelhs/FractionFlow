@@ -1,3 +1,5 @@
+import { resolvePlan82Context, validatePlan82Context } from '../content/plan82-mixed-subtraction-task.js';
+import { PLAN82_ID } from './plan82-mixed-subtraction-episode.js';
 import { resolvePlan78Context, validatePlan78Context } from '../content/plan78-mixed-subtraction-task.js';
 import { PLAN78_ID } from './plan78-mixed-subtraction-episode.js';
 import { resolvePlan74Context, validatePlan74Context } from '../content/plan74-mixed-addition-task.js';
@@ -44,7 +46,9 @@ export const REPLAY_V12_SCHEMA_VERSION = 'fractionflow.episode-replay/v12';
 export const REPLAY_V16_SCHEMA_VERSION = 'fractionflow.episode-replay/v16';
 export const REPLAY_V17_SCHEMA_VERSION = 'fractionflow.episode-replay/v17';
 export const REPLAY_V18_SCHEMA_VERSION = 'fractionflow.episode-replay/v18';
+export const REPLAY_V19_SCHEMA_VERSION = 'fractionflow.episode-replay/v19';
 function plan78Identity(c) { return { schemaVersion:'fractionflow.mixed-subtraction-content-identity/v1', id:c.itemId, source:'curated', reconstruction:{kind:'plan78-mixed-subtraction',setId:c.setId,setRevision:c.setRevision,itemId:c.itemId,itemRevision:c.itemRevision} }; }
+function plan82Identity(c) { return { schemaVersion:'fractionflow.mixed-subtraction-content-identity/v1', id:c.itemId, source:'curated', reconstruction:{kind:'plan82-mixed-subtraction',setId:c.setId,setRevision:c.setRevision,itemId:c.itemId,itemRevision:c.itemRevision} }; }
 function plan72Identity(c) { return { schemaVersion:'fractionflow.mixed-addition-content-identity/v1', id:c.itemId, source:'curated', reconstruction:{kind:'plan72-mixed-addition',setId:c.setId,setRevision:c.setRevision,itemId:c.itemId,itemRevision:c.itemRevision} }; }
 function plan74Identity(c) { return { schemaVersion:'fractionflow.mixed-addition-content-identity/v1', id:c.itemId, source:'curated', reconstruction:{kind:'plan74-mixed-addition',setId:c.setId,setRevision:c.setRevision,itemId:c.itemId,itemRevision:c.itemRevision} }; }
 export const REPLAY_V15_SCHEMA_VERSION = 'fractionflow.episode-replay/v15';
@@ -493,6 +497,11 @@ export function createReplayEnvelope(state) {
   if (!state || state.schemaVersion !== 'fractionflow.episode-state/v1') {
     throw new TypeError('state must be a Plan 05 episode state');
   }
+  if (state.episodeDefinition?.id === PLAN82_ID && state.episodeDefinition.revision === '1') {
+    const c=validatePlan82Context(state.taskContext);
+    const envelope={schemaVersion:REPLAY_V19_SCHEMA_VERSION,contentIdentity:plan82Identity(c),episodeDefinition:{id:PLAN82_ID,revision:'1'},support:state.support,activeCondition:state.activeCondition,learnerIntents:state.intentHistory,taskContext:c};
+    assertJsonSafe(envelope,'replay envelope'); return deepFreeze(envelope);
+  }
   if (state.episodeDefinition?.id === PLAN78_ID && state.episodeDefinition.revision === '1') {
     const c=validatePlan78Context(state.taskContext);
     const envelope={schemaVersion:REPLAY_V18_SCHEMA_VERSION,contentIdentity:plan78Identity(c),episodeDefinition:{id:PLAN78_ID,revision:'1'},support:state.support,activeCondition:state.activeCondition,learnerIntents:state.intentHistory,taskContext:c};
@@ -583,6 +592,16 @@ export function createReplayEnvelope(state) {
 export function replayEpisode(envelope) {
   assertJsonSafe(envelope, 'replay envelope');
   if (!envelope || typeof envelope !== 'object') throw new TypeError('replay envelope must be an object');
+  if (envelope.schemaVersion === REPLAY_V19_SCHEMA_VERSION) {
+    assertExactKeys(envelope,['schemaVersion','contentIdentity','episodeDefinition','support','activeCondition','learnerIntents','taskContext'],'replay v19');
+    assertExactKeys(envelope.episodeDefinition,['id','revision'],'replay v19 definition');
+    if (envelope.episodeDefinition.id!==PLAN82_ID || envelope.episodeDefinition.revision!=='1') throw new TypeError('invalid v19 definition');
+    const c=validatePlan82Context(envelope.taskContext);
+    if (!sameJson(plan82Identity(c),envelope.contentIdentity) || !Array.isArray(envelope.learnerIntents)) throw new TypeError('invalid v19 identity or intents');
+    let state=createEpisode({episodeDefinition:getEpisodeDefinition(PLAN82_ID,'1'),taskContext:resolvePlan82Context(c.itemId),support:envelope.support,activeCondition:envelope.activeCondition});
+    for (const intent of envelope.learnerIntents) state=applyIntent(state,intent);
+    return state;
+  }
   if (envelope.schemaVersion === REPLAY_V18_SCHEMA_VERSION) {
     assertExactKeys(envelope,['schemaVersion','contentIdentity','episodeDefinition','support','activeCondition','learnerIntents','taskContext'],'replay v18');
     assertExactKeys(envelope.episodeDefinition,['id','revision'],'replay v18 definition');

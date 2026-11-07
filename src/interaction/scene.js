@@ -1,3 +1,5 @@
+import { projectPlan82Subtraction } from './plan82-mixed-subtraction-scene.js';
+import { PLAN82_ID } from './plan82-mixed-subtraction-episode.js';
 import { projectPlan78Subtraction } from './plan78-mixed-subtraction-scene.js';
 import { PLAN78_ID } from './plan78-mixed-subtraction-episode.js';
 import { projectPlan74Addition } from './plan74-mixed-addition-scene.js';
@@ -213,6 +215,7 @@ function assertStateShape(state) {
     return;
   }
   if (state.episodeDefinition?.id === PLAN78_ID) { projectPlan78Subtraction(state); return; }
+  if (state.episodeDefinition?.id === PLAN82_ID) { projectPlan82Subtraction(state); return; }
   if (state.episodeDefinition?.id === PLAN74_ID) { projectPlan74Addition(state); return; }
   if (state.episodeDefinition?.id === PLAN72_ID) { projectPlan72Addition(state); return; }
   if (state.episodeDefinition?.id === 'phase-4-whole-plus-fraction-construction') {
@@ -536,6 +539,7 @@ function contentProjectionSource(state) {
 function sourceContext({ state, representationRole, presentationMode, isReplaying = false }) {
   if (state.episodeDefinition?.id === 'phase-4-directed-number-line-endpoint') return { endpoint: projectPlan59Endpoint(state), representationRole, presentationMode, isReplaying };
   if (state.episodeDefinition?.id === PLAN78_ID) return { subtraction: projectPlan78Subtraction(state), representationRole, presentationMode, isReplaying };
+  if (state.episodeDefinition?.id === PLAN82_ID) return { subtraction: projectPlan82Subtraction(state), representationRole, presentationMode, isReplaying };
   if (state.episodeDefinition?.id === PLAN74_ID) return { addition: projectPlan74Addition(state), representationRole, presentationMode, isReplaying };
   if (state.episodeDefinition?.id === PLAN72_ID) return { addition: projectPlan72Addition(state), representationRole, presentationMode, isReplaying };
   if (state.episodeDefinition?.id === 'phase-4-whole-plus-fraction-construction') return { construction: projectPlan58Construction(state), representationRole, presentationMode, isReplaying };
@@ -632,7 +636,7 @@ function capabilityFor(state, role, derivation) {
     if (role !== 'number-line') throw new SceneProjectionError('UNRESOLVED_CAPABILITY', 'endpoint requires number-line');
     return { instance: 'eligible', activePath: null, authoredCoverage: null, continuation: null };
   }
-  if ([PLAN72_ID, PLAN74_ID, PLAN78_ID].includes(state.episodeDefinition?.id)) {
+  if ([PLAN72_ID, PLAN74_ID, PLAN78_ID, PLAN82_ID].includes(state.episodeDefinition?.id)) {
     if (role !== 'fraction-bar') throw new SceneProjectionError('UNRESOLVED_CAPABILITY', 'addition requires fraction-bar');
     return { instance: 'eligible', activePath: null, authoredCoverage: null, continuation: null };
   }
@@ -1160,6 +1164,7 @@ function takeawayMeaning(state) {
 function sceneMeaning(state, representationRole, capability) {
   if (state.episodeDefinition?.id === 'phase-4-directed-number-line-endpoint') return { representationRole, capability, endpoint: projectPlan59Endpoint(state), status: { episode: state.status }, support: state.support };
   if (state.episodeDefinition?.id === PLAN78_ID) return { representationRole, capability, subtraction: projectPlan78Subtraction(state), status: { episode: state.status }, support: state.support };
+  if (state.episodeDefinition?.id === PLAN82_ID) return { representationRole, capability, subtraction: projectPlan82Subtraction(state), status: { episode: state.status }, support: state.support };
   if (state.episodeDefinition?.id === PLAN74_ID) return { representationRole, capability, addition: projectPlan74Addition(state), status: { episode: state.status }, support: state.support };
   if (state.episodeDefinition?.id === PLAN72_ID) return { representationRole, capability, addition: projectPlan72Addition(state), status: { episode: state.status }, support: state.support };
   if (state.episodeDefinition?.id === 'phase-4-whole-plus-fraction-construction') return { representationRole, capability, construction: projectPlan58Construction(state), status: { episode: state.status }, support: state.support };

@@ -1,0 +1,84 @@
+[
+  {
+    "scale": 100,
+    "checks": [
+      {
+        "state": "0-initial",
+        "overflow": false
+      },
+      {
+        "state": "0-recovery",
+        "overflow": false
+      },
+      {
+        "state": "0-renamed",
+        "overflow": false
+      },
+      {
+        "state": "0-accepted",
+        "overflow": false
+      },
+      {
+        "state": "1-initial",
+        "overflow": false
+      },
+      {
+        "state": "1-renamed",
+        "overflow": false
+      },
+      {
+        "state": "1-accepted",
+        "overflow": false
+      },
+      {
+        "state": "2-renamed",
+        "overflow": false
+      },
+      {
+        "state": "3-accepted",
+        "overflow": false
+      }
+    ]
+  },
+  {
+    "scale": 200,
+    "checks": [
+      {
+        "state": "0-initial",
+        "overflow": false
+      },
+      {
+        "state": "0-recovery",
+        "overflow": false
+      },
+      {
+        "state": "0-renamed",
+        "overflow": false
+      },
+      {
+        "state": "0-accepted",
+        "overflow": false
+      },
+      {
+        "state": "1-initial",
+        "overflow": false
+      },
+      {
+        "state": "1-renamed",
+        "overflow": false
+      },
+      {
+        "state": "1-accepted",
+        "overflow": false
+      },
+      {
+        "state": "2-renamed",
+        "overflow": false
+      },
+      {
+        "state": "3-accepted",
+        "overflow": false
+      }
+    ]
+  }
+]

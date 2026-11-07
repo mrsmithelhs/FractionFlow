@@ -1,0 +1,12 @@
+{
+  "viewport": "1366x768",
+  "touchEmulatedRenameTap": true,
+  "composition": "synthetic composition events",
+  "viewSwitchSelection": {
+    "value": "10",
+    "start": 0,
+    "end": 2
+  },
+  "linearCompletion": true,
+  "keyboardCheck": true
+}
