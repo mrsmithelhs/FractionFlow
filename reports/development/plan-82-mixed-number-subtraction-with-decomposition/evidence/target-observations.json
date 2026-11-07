@@ -1,0 +1,30 @@
+[
+  {
+    "viewport": "360x740",
+    "rootTextPercent": 100,
+    "before": {
+      "width": 148.3125,
+      "height": 44
+    },
+    "recovery": {
+      "width": 148.3125,
+      "height": 44
+    },
+    "tapRecovery": true,
+    "tapValid": true
+  },
+  {
+    "viewport": "360x740",
+    "rootTextPercent": 200,
+    "before": {
+      "width": 262,
+      "height": 126.375
+    },
+    "recovery": {
+      "width": 262,
+      "height": 126.375
+    },
+    "tapRecovery": true,
+    "tapValid": true
+  }
+]

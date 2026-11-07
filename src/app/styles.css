@@ -1200,3 +1200,4 @@ body,
 .plan82-subtraction .plan58-label { min-width: 0; max-width: 100%; }
 
 .plan82-operand { flex-basis: 100%; }
+.plan82-help .control-btn { min-height: 44px; padding: .6rem 1rem; font: inherit; }
