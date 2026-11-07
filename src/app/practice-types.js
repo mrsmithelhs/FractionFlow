@@ -1,3 +1,5 @@
+import { PLAN72_RECORDS } from '../content/plan72-mixed-addition-task.js';
+import { PLAN72_ADDITION_EPISODE_DEFINITION } from '../interaction/episode-definition.js';
 import { PLAN59_RECORDS } from '../content/data/plan59-directed-endpoint-records.js';
 import { PLAN59_ENDPOINT_EPISODE_DEFINITION } from '../interaction/episode-definition.js';
 import { PLAN58_RECORDS } from '../content/data/plan58-whole-plus-fraction-records.js';
@@ -355,6 +357,8 @@ export const PLAN59_ENDPOINT_PRACTICE_TYPE = deepFreeze({
   episodeDefinition: PLAN59_ENDPOINT_EPISODE_DEFINITION,
 });
 
+export const PLAN72_ADDITION_PRACTICE_TYPE = deepFreeze({ id:'mixed-number-addition-without-regrouping', label:'Add mixed numbers', setId:'mixed-number-addition-without-regrouping', setRevision:'1', items:PLAN72_RECORDS.map(record => ({id:record.itemId, episodeDefinitionId:PLAN72_ADDITION_EPISODE_DEFINITION.id, episodeDefinitionRevision:'1'})), episodeDefinition:PLAN72_ADDITION_EPISODE_DEFINITION });
+
 export const PRACTICE_TYPES = deepFreeze([
   ...PLAN40_PRACTICE_TYPES_V9,
   PLAN39_BAR_TO_LINE_PRACTICE_TYPE,
@@ -364,6 +368,7 @@ export const PRACTICE_TYPES = deepFreeze([
   PLAN53_LOCATION_PRACTICE_TYPE,
   PLAN58_CONSTRUCTION_PRACTICE_TYPE,
   PLAN59_ENDPOINT_PRACTICE_TYPE,
+  PLAN72_ADDITION_PRACTICE_TYPE,
 ]);
 
 export function getPracticeType(id) {

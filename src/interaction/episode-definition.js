@@ -283,6 +283,8 @@ export const PLAN53_LOCATION_EPISODE_DEFINITION = deepFreeze({
   promptIdentities: { locate: 'phase4.two-whole.place', resolve: 'phase4.two-whole.accepted' },
 });
 
+export const PLAN72_ADDITION_EPISODE_DEFINITION = deepFreeze({ id: 'phase-4-mixed-number-addition-without-regrouping', revision: '1', family: 'mixed-number-addition-without-regrouping', beats: ['construct', 'resolve'], includeReflection: false, promptIdentities: { construct: 'phase4.mixed-addition.construct', resolve: 'phase4.mixed-addition.accepted' } });
+
 export const PLAN58_CONSTRUCTION_EPISODE_DEFINITION = deepFreeze({
   id: 'phase-4-whole-plus-fraction-construction', revision: '1', family: 'whole-plus-fraction-construction',
   beats: ['construct', 'resolve'], includeReflection: false,
@@ -317,6 +319,7 @@ const EPISODE_DEFINITIONS = Object.freeze([
   PLAN50_COLLECTION_EPISODE_DEFINITION,
   PLAN51_DISTANCE_EPISODE_DEFINITION,
   PLAN53_LOCATION_EPISODE_DEFINITION,
+  PLAN72_ADDITION_EPISODE_DEFINITION,
   PLAN58_CONSTRUCTION_EPISODE_DEFINITION,
   PLAN59_ENDPOINT_EPISODE_DEFINITION,
 ]);

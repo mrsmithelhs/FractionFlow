@@ -1,3 +1,5 @@
+import { resolvePlan72Context, validatePlan72Context } from '../content/plan72-mixed-addition-task.js';
+import { PLAN72_ID } from './plan72-mixed-addition-episode.js';
 import { resolvePlan59Context, validatePlan59Context } from '../content/plan59-directed-endpoint-task.js';
 import { resolvePlan58Context, validatePlan58Context } from '../content/plan58-whole-plus-fraction-task.js';
 import { resolvePlan53Context, validatePlan53Context } from '../content/plan53-two-whole-location-task.js';
@@ -35,6 +37,8 @@ export const REPLAY_V9_SCHEMA_VERSION = 'fractionflow.episode-replay/v9';
 export const REPLAY_V10_SCHEMA_VERSION = 'fractionflow.episode-replay/v10';
 export const REPLAY_V11_SCHEMA_VERSION = 'fractionflow.episode-replay/v11';
 export const REPLAY_V12_SCHEMA_VERSION = 'fractionflow.episode-replay/v12';
+export const REPLAY_V16_SCHEMA_VERSION = 'fractionflow.episode-replay/v16';
+function plan72Identity(c) { return { schemaVersion:'fractionflow.mixed-addition-content-identity/v1', id:c.itemId, source:'curated', reconstruction:{kind:'plan72-mixed-addition',setId:c.setId,setRevision:c.setRevision,itemId:c.itemId,itemRevision:c.itemRevision} }; }
 export const REPLAY_V15_SCHEMA_VERSION = 'fractionflow.episode-replay/v15';
 function plan59Identity(c) {
   return { schemaVersion: 'fractionflow.directed-endpoint-content-identity/v1', id: c.itemId, source: 'curated',
@@ -489,6 +493,11 @@ export function createReplayEnvelope(state) {
     assertJsonSafe(envelope, 'replay envelope');
     return deepFreeze(envelope);
   }
+  if (state.episodeDefinition?.id === PLAN72_ID && state.episodeDefinition.revision === '1') {
+    const c=validatePlan72Context(state.taskContext);
+    const envelope={schemaVersion:REPLAY_V16_SCHEMA_VERSION,contentIdentity:plan72Identity(c),episodeDefinition:{id:PLAN72_ID,revision:'1'},support:state.support,activeCondition:state.activeCondition,learnerIntents:state.intentHistory,taskContext:c};
+    assertJsonSafe(envelope, 'replay envelope'); return deepFreeze(envelope);
+  }
   if (state.episodeDefinition?.id === 'phase-4-whole-plus-fraction-construction' && state.episodeDefinition.revision === '1') {
     const c = validatePlan58Context(state.taskContext);
     const envelope = { schemaVersion: REPLAY_V14_SCHEMA_VERSION, contentIdentity: plan58Identity(c), episodeDefinition: { id: state.episodeDefinition.id, revision: state.episodeDefinition.revision }, support: state.support, activeCondition: state.activeCondition, learnerIntents: state.intentHistory, taskContext: c };
@@ -556,6 +565,16 @@ export function createReplayEnvelope(state) {
 export function replayEpisode(envelope) {
   assertJsonSafe(envelope, 'replay envelope');
   if (!envelope || typeof envelope !== 'object') throw new TypeError('replay envelope must be an object');
+  if (envelope.schemaVersion === REPLAY_V16_SCHEMA_VERSION) {
+    assertExactKeys(envelope, ['schemaVersion','contentIdentity','episodeDefinition','support','activeCondition','learnerIntents','taskContext'], 'replay v16');
+    assertExactKeys(envelope.episodeDefinition, ['id','revision'], 'replay v16 definition');
+    if (envelope.episodeDefinition.id !== PLAN72_ID || envelope.episodeDefinition.revision !== '1') throw new TypeError('invalid v16 definition');
+    const c=validatePlan72Context(envelope.taskContext);
+    if (!sameJson(plan72Identity(c),envelope.contentIdentity) || !Array.isArray(envelope.learnerIntents)) throw new TypeError('invalid v16 identity or intents');
+    let state=createEpisode({episodeDefinition:getEpisodeDefinition(PLAN72_ID,'1'),taskContext:resolvePlan72Context(c.itemId),support:envelope.support,activeCondition:envelope.activeCondition});
+    for (const intent of envelope.learnerIntents) state=applyIntent(state,intent);
+    return state;
+  }
   if (envelope.schemaVersion === REPLAY_V15_SCHEMA_VERSION) {
     assertExactKeys(envelope, ['schemaVersion', 'contentIdentity', 'episodeDefinition', 'support', 'activeCondition', 'learnerIntents', 'taskContext'], 'replay v15');
     assertExactKeys(envelope.episodeDefinition, ['id', 'revision'], 'replay v15 definition');

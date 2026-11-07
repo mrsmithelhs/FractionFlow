@@ -1,3 +1,4 @@
+import { createPlan72Episode, applyPlan72Intent, PLAN72_ID } from './plan72-mixed-addition-episode.js';
 import { createPlan59Episode, applyPlan59Intent } from './plan59-directed-endpoint-episode.js';
 import { createPlan58Episode, applyPlan58Intent } from './plan58-whole-plus-fraction-episode.js';
 import { createPlan53Episode, applyPlan53Intent } from './plan53-two-whole-location-episode.js';
@@ -277,7 +278,9 @@ function assertDefinition(definition) {
       'episode definition semantics do not match its registered identity',
     );
   }
-  const approvedBeats = registered.id === 'phase-4-directed-number-line-endpoint'
+  const approvedBeats = registered.id === PLAN72_ID
+    ? ['construct', 'resolve']
+    : registered.id === 'phase-4-directed-number-line-endpoint'
     ? ['locate', 'resolve']
     : registered.id === 'phase-4-whole-plus-fraction-construction'
     ? ['construct', 'resolve']
@@ -1417,6 +1420,7 @@ export function createEpisode({
   allowCompatibilityPair = false,
 } = {}) {
   const definition = assertDefinition(episodeDefinition);
+  if (definition.id === PLAN72_ID && definition.revision === '1') return createPlan72Episode({ taskContext, support, activeCondition, episodeDefinition: definition });
   if (definition.id === 'phase-4-directed-number-line-endpoint' && definition.revision === '1') {
     return createPlan59Episode({ taskContext, support, activeCondition, episodeDefinition: definition });
   }
@@ -1512,6 +1516,7 @@ export function applyIntent(state, rawIntent) {
   if (!state || state.schemaVersion !== 'fractionflow.episode-state/v1') {
     throw new EpisodeIntentError('INVALID_EPISODE_STATE', 'state is not a Plan 05 episode state');
   }
+  if (state.episodeDefinition?.id === PLAN72_ID && state.episodeDefinition.revision === '1') return applyPlan72Intent(state, rawIntent);
   if (state.episodeDefinition?.id === 'phase-4-directed-number-line-endpoint' && state.episodeDefinition.revision === '1') {
     return applyPlan59Intent(state, rawIntent);
   }
@@ -1572,6 +1577,10 @@ export function withActiveCondition(state, activeCondition) {
   const normalizedCondition = validateActiveCondition(activeCondition);
   if (state.episodeDefinition?.id === 'phase-4-directed-number-line-endpoint') {
     if (!sameDefinitionValue(normalizedCondition, state.activeCondition)) throw new EpisodeIntentError('UNSUPPORTED_CONDITION', 'endpoint condition is frozen');
+    return state;
+  }
+  if (state.episodeDefinition?.id === PLAN72_ID) {
+    if (!sameDefinitionValue(normalizedCondition, state.activeCondition)) throw new EpisodeIntentError('UNSUPPORTED_CONDITION', 'addition condition is frozen');
     return state;
   }
   if (state.episodeDefinition?.id === 'phase-4-whole-plus-fraction-construction') {

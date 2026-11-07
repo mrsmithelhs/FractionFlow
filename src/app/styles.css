@@ -1134,3 +1134,8 @@ body,
 .app-chooser-group { margin-block: 1rem; }
 .app-chooser-group h2 { font-size: 1.15rem; margin: 0 0 .6rem; }
 .app-chooser-region .app-practice-choice { max-width: 100%; white-space: normal; overflow-wrap: anywhere; }
+.plan72-operands { display: flex; flex-wrap: wrap; gap: 1rem; }
+.plan72-operand { flex: 1 1 22rem; min-width: 0; }
+.plan72-bar { width: min(100%, 18rem); }
+.plan72-feedback:focus { outline: 3px solid var(--ff-color-border-focus); outline-offset: 2px; }
+.plan72-result button { min-height: 44px; padding: .6rem 1rem; font: inherit; }

@@ -1,3 +1,5 @@
+import { projectPlan72Addition } from './plan72-mixed-addition-scene.js';
+import { PLAN72_ID } from './plan72-mixed-addition-episode.js';
 import { projectPlan59Endpoint } from './plan59-directed-endpoint-scene.js';
 import { projectPlan58Construction } from './plan58-whole-plus-fraction-scene.js';
 import { projectPlan53Location } from './plan53-two-whole-location-scene.js';
@@ -206,6 +208,7 @@ function assertStateShape(state) {
     projectPlan59Endpoint(state);
     return;
   }
+  if (state.episodeDefinition?.id === PLAN72_ID) { projectPlan72Addition(state); return; }
   if (state.episodeDefinition?.id === 'phase-4-whole-plus-fraction-construction') {
     projectPlan58Construction(state);
     return;
@@ -526,6 +529,7 @@ function contentProjectionSource(state) {
 
 function sourceContext({ state, representationRole, presentationMode, isReplaying = false }) {
   if (state.episodeDefinition?.id === 'phase-4-directed-number-line-endpoint') return { endpoint: projectPlan59Endpoint(state), representationRole, presentationMode, isReplaying };
+  if (state.episodeDefinition?.id === PLAN72_ID) return { addition: projectPlan72Addition(state), representationRole, presentationMode, isReplaying };
   if (state.episodeDefinition?.id === 'phase-4-whole-plus-fraction-construction') return { construction: projectPlan58Construction(state), representationRole, presentationMode, isReplaying };
   if (state.episodeDefinition?.id === 'phase-4-two-whole-location') return { location: projectPlan53Location(state), representationRole, presentationMode, isReplaying };
   if (state.episodeDefinition?.id === 'phase-4-fraction-distance') return { distance: projectPlan51Distance(state), context: state.taskContext, revision: state.revision, representationRole, presentationMode, isReplaying };
@@ -618,6 +622,10 @@ function pathSummary(state) {
 function capabilityFor(state, role, derivation) {
   if (state.episodeDefinition?.id === 'phase-4-directed-number-line-endpoint') {
     if (role !== 'number-line') throw new SceneProjectionError('UNRESOLVED_CAPABILITY', 'endpoint requires number-line');
+    return { instance: 'eligible', activePath: null, authoredCoverage: null, continuation: null };
+  }
+  if (state.episodeDefinition?.id === PLAN72_ID) {
+    if (role !== 'fraction-bar') throw new SceneProjectionError('UNRESOLVED_CAPABILITY', 'addition requires fraction-bar');
     return { instance: 'eligible', activePath: null, authoredCoverage: null, continuation: null };
   }
   if (state.episodeDefinition?.id === 'phase-4-whole-plus-fraction-construction') {
@@ -1143,6 +1151,7 @@ function takeawayMeaning(state) {
 
 function sceneMeaning(state, representationRole, capability) {
   if (state.episodeDefinition?.id === 'phase-4-directed-number-line-endpoint') return { representationRole, capability, endpoint: projectPlan59Endpoint(state), status: { episode: state.status }, support: state.support };
+  if (state.episodeDefinition?.id === PLAN72_ID) return { representationRole, capability, addition: projectPlan72Addition(state), status: { episode: state.status }, support: state.support };
   if (state.episodeDefinition?.id === 'phase-4-whole-plus-fraction-construction') return { representationRole, capability, construction: projectPlan58Construction(state), status: { episode: state.status }, support: state.support };
   if (state.episodeDefinition?.id === 'phase-4-two-whole-location') return { representationRole, capability, location: projectPlan53Location(state), status: { episode: state.status }, support: state.support };
   if (state.episodeDefinition?.id === 'phase-4-fraction-distance') return { representationRole, capability, distance: projectPlan51Distance(state), status: { episode: state.status }, support: state.support };
