@@ -89,7 +89,7 @@ Packets are assigned to implementer agents. Each packet defines scope, required 
 | `plan-80` | Mixed-Number Subtraction With Decomposition Design | complete | Compare one final response with a brief learner-controlled renaming decision for mixed-number subtraction that decomposes one whole. Preserve the starting amount and the source unit across the exchange. |
 | `plan-81` | Dev-Console Lifecycle Timeout Diagnostic | complete | Localize the intermittent Windows dev-console real-server test timeout using phase timing, matched controls, and verified process ownership. Report a bounded remedy only where the evidence supports it. |
 | `plan-82` | Mixed-Number Subtraction With Decomposition | complete | Implement the four adopted mixed-number subtraction problems in eighths with one final response and an optional learner-controlled renaming aid. Show quantity preservation and the difference at their respective checks. |
-| `plan-83` | Phase 5 Exit Review and Mixed-to-Improper Bridge Design | draft | Check the accepted mixed-number work against the Phase 5 exit criteria. If a learner-owned equivalence gap remains, propose one mixed-to-improper decision with the shared number-line point revealed after a correct Check. |
+| `plan-83` | Phase 5 Exit Review and Mixed-to-Improper Bridge Design | in-progress | Check the accepted mixed-number work against the Phase 5 exit criteria. If a learner-owned equivalence gap remains, propose one mixed-to-improper decision with the shared number-line point revealed after a correct Check. |
 <!-- plan-index:end -->
 
 ## Report Folders

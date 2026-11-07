@@ -1,11 +1,9 @@
 ---
 id: plan-83
 title: Phase 5 Exit Review and Mixed-to-Improper Bridge Design
-status: draft
+status: in-progress
 depends_on: [plan-53, plan-56, plan-58, plan-72, plan-74, plan-78, plan-82]
 gate: "Approve the report-only review scope first. Owner decides the Phase 5 exit disposition and whether to adopt a bridge design."
-superseded_by: null
-resolution: null
 summary: >-
   Check the accepted mixed-number work against the Phase 5 exit criteria.
   If a learner-owned equivalence gap remains, propose one mixed-to-improper
