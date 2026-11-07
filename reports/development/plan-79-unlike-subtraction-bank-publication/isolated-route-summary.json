@@ -1,0 +1,30 @@
+{
+  "capturedAt": "2026-11-07T16:10:24.991Z",
+  "browserChannel": "chrome",
+  "mode": "clean",
+  "routeRows": 2,
+  "browserExecutions": 2,
+  "passed": 2,
+  "knownDefects": 0,
+  "failed": 0,
+  "seedDetected": 0,
+  "contexts": {
+    "production-default-v7": 2
+  },
+  "results": [
+    {
+      "id": "ROUTE-PLAN40-UNLIKE-SUBTRACTION-HIGH-VISUAL-ALL [standard-motion]",
+      "routeId": "ROUTE-PLAN40-UNLIKE-SUBTRACTION-HIGH-VISUAL-ALL",
+      "context": "production-default-v7",
+      "motionMode": "standard-motion",
+      "status": "pass"
+    },
+    {
+      "id": "ROUTE-PLAN40-UNLIKE-SUBTRACTION-MEDIUM-LINEAR-ALL [reduced-motion]",
+      "routeId": "ROUTE-PLAN40-UNLIKE-SUBTRACTION-MEDIUM-LINEAR-ALL",
+      "context": "production-default-v7",
+      "motionMode": "reduced-motion",
+      "status": "pass"
+    }
+  ]
+}

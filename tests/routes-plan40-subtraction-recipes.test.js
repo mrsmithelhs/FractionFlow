@@ -199,6 +199,10 @@ describe('Plan 40 Reachable Behavior Route Contract & Subtraction Recipes Matrix
   it('asserts fresh first-item identity and cleared state on re-entry in subtraction set helper', async () => {
     const { buildPlan40SubtractionSetActions } = await import('../scripts/dev/plan40-route-subtraction.mjs');
     const actions = buildPlan40SubtractionSetActions({ view: 'visual', supportProfile: 'high-support' });
+    const boundary = actions.find(a => a.description?.startsWith('Plan79 boundary:'));
+    expect(boundary.assertions).toEqual(expect.arrayContaining([expect.objectContaining({type: 'notHasSelector', target: '.app-visual-view input'}), expect.objectContaining({value: '2 over 3'}), expect.objectContaining({value: '1 over 5'})]));
+    expect(actions.find(a => a.description?.includes('exhausted after the 17th'))).toBeDefined();
+    expect(actions.filter(a => a.description?.includes('acknowledge') && a.description.includes('encounter'))).toHaveLength(17);
     const reEntryEncounter = actions.find(
       (a) => a.description && a.description.includes('Re-entry resets to fresh item 1 identity'),
     );

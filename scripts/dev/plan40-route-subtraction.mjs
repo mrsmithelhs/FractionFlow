@@ -1,6 +1,8 @@
 import { PLAN40_UNLIKE_SUBTRACTION_PRACTICE_TYPE } from '../../src/app/practice-types.js';
 import {
   PLAN40_RECIPE_IDS,
+  PLAN40_SUBTRACTION_RECIPE_PRACTICE_SET,
+  PLAN40_SUBTRACTION_RECIPE_PRACTICE_SET_V2,
   PLAN40_SUBTRACTION_RECIPE_RECORDS,
 } from '../../src/content/data/plan40-reusable-subtraction-recipes-records.js';
 import { resolveCuratedFixture } from '../../src/content/authored-content-catalog.js';
@@ -36,6 +38,17 @@ function appendPlan40Recipe(actions, { item, record, fixture, view, index }) {
   const numerators = { left: String(left.numerator), right: String(right.numerator) };
   const recipe = item.patternId;
 
+  if (index === 9) {
+    const assertions = view === 'visual'
+      ? [
+        { type: 'attributeEquals', target: host + ' .symbolic-expression .symbolic-fraction:first-child', attribute: 'aria-label', value: '2 over 3' },
+        { type: 'attributeEquals', target: host + ' .symbolic-expression .symbolic-fraction:last-child', attribute: 'aria-label', value: '1 over 5' },
+      ]
+      : [{ type: 'attributeEquals', target: host + ' .symbolic-expression', attribute: 'aria-label', value: '2 over 3 minus 1 over 5' }];
+    assertions.push({ type: 'notHasSelector', target: host + ' input' });
+    actions.push(action('assert', host, { assertions, description: 'Plan79 boundary: item 9 Next opens fresh item 10 (2/3 minus 1/5)' }));
+  }
+
   // 1. Encounter beat
   append('click', `${control} button`, `Plan40 ${index + 1}: acknowledge ${recipe} encounter (${item.id})`);
 
@@ -65,8 +78,18 @@ function appendPlan40Recipe(actions, { item, record, fixture, view, index }) {
   }
 
   // 4. Operate beat
+  if (index === 10) {
+    append('fill', input('operate-fraction-numerator-input'), 'Plan79 wrong numerator', { value: '0' });
+    append('fill', input('operate-fraction-denominator-input'), 'Plan79 wrong denominator', { value: '1' });
+    submit('Plan79 submit wrong answer');
+    actions.push(action('assert', host, { assertions: [{ type: 'hasSelector', target: host + ' .recovery-feedback' }], description: 'Plan79 target 30 recovery' }));
+    actions.push(action('screenshot', null, { file: 'reports/development/plan-79-unlike-subtraction-bank-publication/target30-' + view + '.png', caption: 'Target 30 recovery at narrow viewport', measureLayout: true, description: 'Plan79 target 30 narrow recovery' }));
+    append('fill', input('operate-fraction-numerator-input'), 'Plan79 equivalent numerator', { value: '11' });
+    append('fill', input('operate-fraction-denominator-input'), 'Plan79 equivalent denominator', { value: '15' });
+  } else {
   append('fill', input('operate-fraction-numerator-input'), `Plan40 ${index + 1}: enter exact difference numerator`, { value: String(difference.numerator) });
   append('fill', input('operate-fraction-denominator-input'), `Plan40 ${index + 1}: enter exact difference denominator`, { value: String(difference.denominator) });
+  }
   if (view === 'linear' && index === 0) {
     actions.push(action('screenshot', null, {
       file: 'reports/development/plan-40-unlike-denominator-subtraction-batch/evidence/linear-operate-360x752.png',
@@ -89,7 +112,11 @@ function appendPlan40Recipe(actions, { item, record, fixture, view, index }) {
 export function buildPlan40SubtractionSetActions({ view, supportProfile }) {
   if (!['visual', 'linear'].includes(view)) throw new TypeError('Plan40 route view must be visual or linear');
   if (!['high-support', 'medium-support'].includes(supportProfile)) throw new TypeError('Plan40 support must be registered');
-  if (TYPE?.setRevision !== '1' || TYPE.items.length !== 9) throw new Error('Plan40 helper requires the exact registered set@1 with 9 items');
+  const ids = TYPE.items.map(item => item.id);
+  if (TYPE?.setRevision !== '2' || JSON.stringify(ids) !== JSON.stringify(PLAN40_SUBTRACTION_RECIPE_PRACTICE_SET_V2.itemIds)
+    || JSON.stringify(ids.slice(0, 9)) !== JSON.stringify(PLAN40_SUBTRACTION_RECIPE_PRACTICE_SET.itemIds)) {
+    throw new Error('Plan40 helper requires exact v2 membership with the unchanged v1 prefix');
+  }
   const actions = [];
   TYPE.items.forEach((item, index) => {
     const fixture = resolveCuratedFixture(item.fixtureId, item.authoringRevision);
@@ -105,7 +132,7 @@ export function buildPlan40SubtractionSetActions({ view, supportProfile }) {
       { type: 'containsText', target: '.app-navigation-notice', value: 'You’ve tried every problem in this set.' },
       { type: 'notHasSelector', target: '.app-next-button:not([hidden])' },
     ],
-    description: 'Plan40 set is exhausted after the 9th learner-completed task',
+    description: 'Plan79 v2 set is exhausted after the 17th learner-completed task',
   }));
 
   // Return to entry page
