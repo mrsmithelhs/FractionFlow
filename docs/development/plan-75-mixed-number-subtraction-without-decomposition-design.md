@@ -1,7 +1,8 @@
 ---
 id: plan-75
 title: Mixed-Number Subtraction Without Decomposition Design
-status: delivered
+status: complete
+resolution: "Owner adopted the direct two-field response and all four eighths problems. Plan 78 implements the design."
 depends_on: [plan-38, plan-56, plan-72, plan-74]
 gate: "Approve report scope first. Owner adopts one task and a bounded first batch before separate implementation."
 summary: >-
