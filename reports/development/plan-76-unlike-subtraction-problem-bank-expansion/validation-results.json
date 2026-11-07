@@ -1,0 +1,213 @@
+{
+  "status": "pass",
+  "records": [
+    {
+      "item": "plan76-construct-two-thirds-one-fifth-15",
+      "recipe": "unlike-subtraction.construct-equivalent",
+      "sides": [
+        "left",
+        "right"
+      ],
+      "target": "15",
+      "difference": "7/15",
+      "paths": [
+        {
+          "target": "15",
+          "rendering": "eligible",
+          "coverage": "canonical",
+          "reasons": []
+        },
+        {
+          "target": "30",
+          "rendering": "eligible",
+          "coverage": "authored-alternate",
+          "reasons": []
+        }
+      ]
+    },
+    {
+      "item": "plan76-construct-five-sixths-one-tenth-30",
+      "recipe": "unlike-subtraction.construct-equivalent",
+      "sides": [
+        "left",
+        "right"
+      ],
+      "target": "30",
+      "difference": "22/30",
+      "paths": [
+        {
+          "target": "30",
+          "rendering": "eligible",
+          "coverage": "canonical",
+          "reasons": []
+        },
+        {
+          "target": "60",
+          "rendering": "ineligible",
+          "coverage": "authored-alternate",
+          "reasons": [
+            "denominator-ceiling-exceeded"
+          ]
+        }
+      ]
+    },
+    {
+      "item": "plan76-construct-three-fifths-one-fourth-20",
+      "recipe": "unlike-subtraction.construct-equivalent",
+      "sides": [
+        "left",
+        "right"
+      ],
+      "target": "20",
+      "difference": "7/20",
+      "paths": [
+        {
+          "target": "20",
+          "rendering": "eligible",
+          "coverage": "canonical",
+          "reasons": []
+        },
+        {
+          "target": "40",
+          "rendering": "ineligible",
+          "coverage": "authored-alternate",
+          "reasons": [
+            "denominator-ceiling-exceeded"
+          ]
+        }
+      ]
+    },
+    {
+      "item": "plan76-inspect-three-fourths-one-fifth-20",
+      "recipe": "unlike-subtraction.inspect-keep-repair",
+      "sides": [
+        "left",
+        "right"
+      ],
+      "target": "20",
+      "difference": "11/20",
+      "paths": [
+        {
+          "target": "20",
+          "rendering": "eligible",
+          "coverage": "canonical",
+          "reasons": []
+        },
+        {
+          "target": "40",
+          "rendering": "ineligible",
+          "coverage": "authored-alternate",
+          "reasons": [
+            "denominator-ceiling-exceeded"
+          ]
+        }
+      ]
+    },
+    {
+      "item": "plan76-inspect-seven-eighths-one-sixth-24",
+      "recipe": "unlike-subtraction.inspect-keep-repair",
+      "sides": [
+        "left",
+        "right"
+      ],
+      "target": "24",
+      "difference": "17/24",
+      "paths": [
+        {
+          "target": "24",
+          "rendering": "eligible",
+          "coverage": "canonical",
+          "reasons": []
+        },
+        {
+          "target": "48",
+          "rendering": "ineligible",
+          "coverage": "authored-alternate",
+          "reasons": [
+            "denominator-ceiling-exceeded"
+          ]
+        }
+      ]
+    },
+    {
+      "item": "plan76-inspect-four-fifths-one-third-15",
+      "recipe": "unlike-subtraction.inspect-keep-repair",
+      "sides": [
+        "left",
+        "right"
+      ],
+      "target": "15",
+      "difference": "7/15",
+      "paths": [
+        {
+          "target": "15",
+          "rendering": "eligible",
+          "coverage": "canonical",
+          "reasons": []
+        },
+        {
+          "target": "30",
+          "rendering": "eligible",
+          "coverage": "authored-alternate",
+          "reasons": []
+        }
+      ]
+    },
+    {
+      "item": "plan76-identify-seven-eighths-one-fourth-8",
+      "recipe": "unlike-subtraction.identify-side-construct",
+      "sides": [
+        "right"
+      ],
+      "target": "8",
+      "difference": "5/8",
+      "paths": [
+        {
+          "target": "8",
+          "rendering": "eligible",
+          "coverage": "canonical",
+          "reasons": []
+        },
+        {
+          "target": "16",
+          "rendering": "eligible",
+          "coverage": "authored-alternate",
+          "reasons": []
+        }
+      ]
+    },
+    {
+      "item": "plan76-identify-three-fourths-one-eighth-8",
+      "recipe": "unlike-subtraction.identify-side-construct",
+      "sides": [
+        "left"
+      ],
+      "target": "8",
+      "difference": "5/8",
+      "paths": [
+        {
+          "target": "8",
+          "rendering": "eligible",
+          "coverage": "canonical",
+          "reasons": []
+        },
+        {
+          "target": "16",
+          "rendering": "eligible",
+          "coverage": "authored-alternate",
+          "reasons": []
+        }
+      ]
+    }
+  ],
+  "rejections": [
+    "non-common target",
+    "unsupported recipe",
+    "fixture mismatch",
+    "two valid stimuli",
+    "zero valid stimuli",
+    "wrong required side",
+    "over-ceiling target",
+    "reversed negative subtraction"
+  ]
+}

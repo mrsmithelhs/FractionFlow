@@ -1,0 +1,20 @@
+// Run only in a disposable checkout; inserts a data-only test association.
+import fs from 'node:fs';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+const here = path.dirname(fileURLToPath(import.meta.url));
+const root = process.argv[2];
+if (!root || path.resolve(root) === path.resolve(here, '../../..')) throw new Error('provide a disposable checkout, not the shared checkout');
+const data = JSON.parse(fs.readFileSync(path.join(here, 'candidates.json'), 'utf8'));
+const f = ([n,d]) => ({kind:'fraction', numerator:String(n), denominator:String(d)});
+const ids = {construct:'unlike-subtraction.construct-equivalent',inspect:'unlike-subtraction.inspect-keep-repair',identify:'unlike-subtraction.identify-side-construct'};
+const records = data.map(x => ({ itemId:x.itemId, fixtureId:`curated-${x.itemId}`, authoringRevision:'plan76-record-v1', fixtureProfileId:'curated-review', fixtureSelector:x.selector, fixtureOverlays:x.reducible?['reducible-result']:[], sourceForms:{left:f(x.left),right:f(x.right)}, recipeId:ids[x.recipe], targetDenominator:String(x.target), ...(x.requiredSide?{requiredSide:x.requiredSide}:{}), ...(x.candidates?{stimulusId:`${x.itemId}-stimulus`,stimulusRevision:'1',candidates:{left:f([x.candidates[0],x.target]),right:f([x.candidates[1],x.target])}}:{}) }));
+const file = path.join(root,'src/content/data/plan40-reusable-subtraction-recipes-records.js');
+let source=fs.readFileSync(file,'utf8');
+const marker='const records = [';
+if (!source.includes(marker) || source.includes('plan76-isolated-set')) throw new Error('unexpected checkout or overlay already applied');
+source=source.replace(marker, `${marker}\n  ...${JSON.stringify(records,null,2)},`);
+source=source.replace(/  PLAN40_DATA_ONLY_HOLDOUT_SET,\r?\n\]\);/, `  PLAN40_DATA_ONLY_HOLDOUT_SET,\n  { id: 'plan76-isolated-set', revision: '1', itemIds: ${JSON.stringify(data.map(x=>x.itemId))} },\n]);`);
+if (!source.includes("id: 'plan76-isolated-set'")) throw new Error('association seam changed');
+fs.writeFileSync(file,source);
+console.log(`Registered ${records.length} records in ${file}`);
