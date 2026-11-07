@@ -1,0 +1,129 @@
+{
+  "baseline": "6ce31af06f602e745ff7547fce772d88ccaf71de",
+  "cases": [
+    {
+      "id": "A",
+      "left": [
+        1,
+        1,
+        4
+      ],
+      "right": [
+        1,
+        1,
+        4
+      ],
+      "result": [
+        2,
+        2,
+        4
+      ],
+      "fractionalSum": [
+        "2",
+        "4"
+      ],
+      "exactImproper": [
+        "10",
+        "4"
+      ],
+      "observedResult": [
+        "2",
+        "2",
+        "4"
+      ]
+    },
+    {
+      "id": "B",
+      "left": [
+        1,
+        1,
+        3
+      ],
+      "right": [
+        2,
+        1,
+        3
+      ],
+      "result": [
+        3,
+        2,
+        3
+      ],
+      "fractionalSum": [
+        "2",
+        "3"
+      ],
+      "exactImproper": [
+        "11",
+        "3"
+      ],
+      "observedResult": [
+        "3",
+        "2",
+        "3"
+      ]
+    },
+    {
+      "id": "C",
+      "left": [
+        2,
+        1,
+        4
+      ],
+      "right": [
+        1,
+        2,
+        4
+      ],
+      "result": [
+        3,
+        3,
+        4
+      ],
+      "fractionalSum": [
+        "3",
+        "4"
+      ],
+      "exactImproper": [
+        "15",
+        "4"
+      ],
+      "observedResult": [
+        "3",
+        "3",
+        "4"
+      ]
+    },
+    {
+      "id": "D",
+      "left": [
+        1,
+        1,
+        8
+      ],
+      "right": [
+        2,
+        3,
+        8
+      ],
+      "result": [
+        3,
+        4,
+        8
+      ],
+      "fractionalSum": [
+        "4",
+        "8"
+      ],
+      "exactImproper": [
+        "28",
+        "8"
+      ],
+      "observedResult": [
+        "3",
+        "4",
+        "8"
+      ]
+    }
+  ]
+}
