@@ -1,7 +1,8 @@
 ---
 id: plan-82
 title: Mixed-Number Subtraction With Decomposition
-status: delivered
+status: complete
+resolution: "Owner accepted the rendered four-problem decomposition slice with optional renaming and original-eighths-first takeaway."
 depends_on: [plan-56, plan-74, plan-77, plan-78, plan-80]
 gate: "Approve the response, help, representation and replay mechanism before source changes. Owner reviews the rendered practice before closeout."
 summary: >-
