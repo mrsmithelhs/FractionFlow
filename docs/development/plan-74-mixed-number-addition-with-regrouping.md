@@ -1,7 +1,7 @@
 ---
 id: plan-74
 title: Mixed-Number Addition With Regrouping
-status: in-progress
+status: delivered
 depends_on: [plan-56, plan-72, plan-73]
 gate: "Approve the admission, response and representation mechanism before source work. Owner reviews both rendered remainder cases before closeout."
 summary: >-
