@@ -1,3 +1,5 @@
+import { PLAN78_RECORDS } from '../content/plan78-mixed-subtraction-task.js';
+import { PLAN78_SUBTRACTION_EPISODE_DEFINITION } from '../interaction/episode-definition.js';
 import { PLAN74_RECORDS } from '../content/plan74-mixed-addition-task.js';
 import { PLAN74_ADDITION_EPISODE_DEFINITION } from '../interaction/episode-definition.js';
 import { PLAN72_RECORDS } from '../content/plan72-mixed-addition-task.js';
@@ -361,6 +363,7 @@ export const PLAN59_ENDPOINT_PRACTICE_TYPE = deepFreeze({
 
 export const PLAN72_ADDITION_PRACTICE_TYPE = deepFreeze({ id:'mixed-number-addition-without-regrouping', label:'Add mixed numbers', setId:'mixed-number-addition-without-regrouping', setRevision:'1', items:PLAN72_RECORDS.map(record => ({id:record.itemId, episodeDefinitionId:PLAN72_ADDITION_EPISODE_DEFINITION.id, episodeDefinitionRevision:'1'})), episodeDefinition:PLAN72_ADDITION_EPISODE_DEFINITION });
 export const PLAN74_ADDITION_PRACTICE_TYPE = deepFreeze({ id:'mixed-number-addition-with-regrouping', label:'Add mixed numbers: make a whole', setId:'mixed-number-addition-with-regrouping', setRevision:'1', items:PLAN74_RECORDS.map(record => ({id:record.itemId, episodeDefinitionId:PLAN74_ADDITION_EPISODE_DEFINITION.id, episodeDefinitionRevision:'1'})), episodeDefinition:PLAN74_ADDITION_EPISODE_DEFINITION });
+export const PLAN78_SUBTRACTION_PRACTICE_TYPE = deepFreeze({ id:'mixed-number-subtraction-without-decomposition', label:'Subtract mixed numbers', setId:'mixed-number-subtraction-without-decomposition', setRevision:'1', items:PLAN78_RECORDS.map(record => ({id:record.itemId, episodeDefinitionId:PLAN78_SUBTRACTION_EPISODE_DEFINITION.id, episodeDefinitionRevision:'1'})), episodeDefinition:PLAN78_SUBTRACTION_EPISODE_DEFINITION });
 
 export const PRACTICE_TYPES = deepFreeze([
   ...PLAN40_PRACTICE_TYPES_V9,
@@ -373,6 +376,7 @@ export const PRACTICE_TYPES = deepFreeze([
   PLAN59_ENDPOINT_PRACTICE_TYPE,
   PLAN72_ADDITION_PRACTICE_TYPE,
   PLAN74_ADDITION_PRACTICE_TYPE,
+  PLAN78_SUBTRACTION_PRACTICE_TYPE,
 ]);
 
 export function getPracticeType(id) {

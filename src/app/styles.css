@@ -1162,3 +1162,14 @@ body,
 .plan74-source-bar .plan74-group-start { box-shadow: inset 3px 0 0 #243d4b; }
 .plan74-remainder-label { margin-bottom: .2rem; }
 .plan74-addition [hidden] { display: none; }
+.plan78-operands { display: flex; flex-wrap: wrap; gap: 1rem; }
+.plan78-operand { flex: 1 1 12rem; min-width: 0; }
+.plan78-row { display: flex; flex-wrap: wrap; align-items: center; gap: .3rem .75rem; margin: .35rem 0; }
+.plan78-row-label { flex: 0 0 7rem; }
+.plan78-bar { display: grid; grid-template-columns: repeat(8, minmax(0, 1fr)); width: min(100%, 18rem); }
+.plan78-bar .plan58-part { display: flex; justify-content: center; align-items: center; min-width: 0; box-sizing: border-box; font-weight: 700; }
+.plan78-removed { background: repeating-linear-gradient(135deg, #e2c7ab 0 4px, #fff 4px 8px); color: #543020; }
+.plan78-remaining { background: #c9e4ed; color: #173d4b; }
+.plan78-empty { background: white; }
+.plan78-feedback:focus { outline: 3px solid var(--ff-color-border-focus); outline-offset: 2px; }
+.plan78-result button { min-height: 44px; padding: .6rem 1rem; font: inherit; }

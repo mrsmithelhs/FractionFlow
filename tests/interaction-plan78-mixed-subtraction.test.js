@@ -3,6 +3,8 @@ import { PLAN78_RECORDS, admitPlan78Record, resolvePlan78Context, validatePlan78
 import { PLAN78_DATA, PLAN78_SET_V1 } from '../src/content/data/plan78-mixed-subtraction.js';
 import { PLAN78_ID, createPlan78Episode, applyPlan78Intent, plan78IntentContext } from '../src/interaction/plan78-mixed-subtraction-episode.js';
 import { projectPlan78Subtraction } from '../src/interaction/plan78-mixed-subtraction-scene.js';
+import { createReplayEnvelope, replayEpisode } from '../src/interaction/replay.js';
+import { getEpisodeDefinition } from '../src/interaction/episode-definition.js';
 const definition={id:PLAN78_ID,revision:'1'};
 const start=i=>createPlan78Episode({episodeDefinition:definition,taskContext:resolvePlan78Context(PLAN78_RECORDS[i].itemId)});
 const send=(s,type,fields={})=>applyPlan78Intent(s,{type,context:plan78IntentContext(s),...fields});
@@ -36,5 +38,15 @@ describe('Plan 78 task boundary',()=>{
       expect(v.pieceCells.filter(x=>x==='empty')).toHaveLength(8-Number(a.numerator));
       expect(v.notation.remainder.denominator).toBe('8');
     }
+  });
+  it('round trips v18 draft, assistance and resolved states and rejects tampered identity',()=>{
+    let s=createPlan78Episode({episodeDefinition:getEpisodeDefinition(PLAN78_ID,'1'),taskContext:resolvePlan78Context(PLAN78_RECORDS[0].itemId)});
+    s=send(s,'request-mixed-subtraction-help',{helpKind:'unit'});s=edit(s,'whole','2');
+    expect(replayEpisode(createReplayEnvelope(s))).toEqual(s);
+    s=check(edit(s,'pieces','3'));const envelope=createReplayEnvelope(s);
+    expect(envelope.schemaVersion).toBe('fractionflow.episode-replay/v18');
+    expect(replayEpisode(envelope)).toEqual(s);
+    const invalid=structuredClone(envelope);invalid.taskContext.operands[0].numerator='4';
+    expect(()=>replayEpisode(invalid)).toThrow();
   });
 });

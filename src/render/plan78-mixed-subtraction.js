@@ -37,9 +37,9 @@ export function createPlan78Renderer({container,view,dispatch,progression,helpOp
     const result=root.querySelector('.plan78-result');result.replaceChildren();if(!live){
       const s=model.settled;result.append(el('p','',`Taken away: ${s.removedWhole} whole units and ${s.removedPieces} eighths. Remaining: ${s.remainingWhole} whole units and ${s.remainingPieces} eighths.`));
       if(view==='visual'){
-        const key=el('p','','R = removed, L = left, – = not in the starting amount');result.append(key);
+        const key=el('p','plan78-key','Taken away: ×   Left: ●   Never filled: empty');result.append(key);
         const rows=[...s.wholeCells.map(x=>Array(8).fill(x)),s.pieceCells];
-        for(const row of rows){const bar=el('div','plan58-bar plan78-bar');bar.setAttribute('aria-hidden','true');for(const cell of row)bar.append(el('span',`plan58-part plan78-${cell}`,cell==='removed'?'R':cell==='remaining'?'L':'–'));result.append(bar);}
+        rows.forEach((row,i)=>{const group=el('div','plan78-row');group.setAttribute('aria-hidden','true');group.append(el('span','plan78-row-label',i===rows.length-1?'Eighth pieces':`Whole ${i+1}`));const bar=el('div','plan58-bar plan78-bar');for(const cell of row)bar.append(el('span',`plan58-part plan78-${cell}`,cell==='removed'?'×':cell==='remaining'?'●':''));group.append(bar);result.append(group);});
       }
       const line=el('p');line.append('The difference is ',createMixedNumeral(s.notation));result.append(line);
       const p=progression();if(p?.notice)result.append(el('p','',p.notice));if(p?.onAction){const next=el('button','control-btn',p.label);next.type='button';next.addEventListener('click',()=>{if(valid(next))p.onAction();});result.append(next);}

@@ -42,8 +42,9 @@ describe('Plan 43 — Shared Episode Completion and Progression Suite', () => {
       const totalItems = PRACTICE_TYPES.reduce((acc, pt) => acc + pt.items.length, 0);
       expect(PRACTICE_TYPES.find(pt => pt.id === 'directed-number-line-endpoint').items).toHaveLength(6);
       expect(PRACTICE_TYPES.find(pt => pt.id === 'mixed-number-addition-with-regrouping').items).toHaveLength(2);
-      expect(totalItems).toBe(101);
-      expect(PRACTICE_TYPES).toHaveLength(13);
+      expect(PRACTICE_TYPES.find(pt => pt.id === 'mixed-number-subtraction-without-decomposition').items).toHaveLength(4);
+      expect(totalItems).toBe(105);
+      expect(PRACTICE_TYPES).toHaveLength(14);
     });
 
     it('derives exact completion intents for all families without synthetic response attribution', () => {
