@@ -1,7 +1,8 @@
 ---
 id: plan-83
 title: Phase 5 Exit Review and Mixed-to-Improper Bridge Design
-status: delivered
+status: complete
+resolution: "Owner adopted the mixed-to-improper bridge design and OQ-24 update. Phase 5 exit remains open pending rendered review of Plan 84."
 depends_on: [plan-53, plan-56, plan-58, plan-72, plan-74, plan-78, plan-82]
 gate: "Approve the report-only review scope first. Owner decides the Phase 5 exit disposition and whether to adopt a bridge design."
 summary: >-
@@ -22,7 +23,7 @@ summary: >-
 - Mutation level: report-only
 - Approval gate: Requirement 0 scope approval, then owner exit and any bridge adoption decision
 
-Follow [AGENTS.md](../../AGENTS.md), the [decision log](../decision-log.md), and the [packet board](README.md). Use [Roadmap §39](../founding/06-roadmap.md#39-phase-5-mixed-number-foundations), [§44](../founding/06-roadmap.md#44-phase-5-exit-gate), [§91](../founding/06-roadmap.md#91-decision-checkpoint--before-mixed-numbers), and [OQ-24](../open-questions.md#oq-24--there-is-no-mixed-number-instructional-strategy).
+Follow [AGENTS.md](../../AGENTS.md), the [decision log](../decision-log.md), and the [packet board](README.md). Use [Roadmap §39](../founding/06-roadmap.md#39-phase-5-mixed-number-foundations), [§44](../founding/06-roadmap.md#44-phase-5-exit-gate), [§91](../founding/06-roadmap.md#91-decision-checkpoint--before-mixed-numbers), and [OQ-24](../open-questions.md#oq-24--how-should-mixed-and-improper-forms-connect).
 
 ## Requirement 0 — Propose and stop
 

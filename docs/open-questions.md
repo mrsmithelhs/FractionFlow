@@ -524,29 +524,25 @@ variety remains a separate obligation in the Phase 3 follow-up register.
 
 ---
 
-### OQ-24 — There is no mixed-number instructional strategy
+### OQ-24 — How should mixed and improper forms connect?
 
 **Raised:** 2026-09-21, by the owner, when accepting DECISION-033 — *"we will need a strategy for
 them."*
 
-The project has complete mixed-number **mathematics** and no mixed-number **pedagogy**.
-`src/math/mixed-number.js` carries composition, decomposition, and `regroupForSubtraction`, which is
-Roadmap §43. Roadmap §§38–44 describe what Phase 5 must cover — foundations, addition without
-composition, composition, subtraction without decomposition, decomposition — but describe outcomes,
-not an approach.
+A bounded mixed-number instructional approach now exists. Learners locate improper fractions
+on a two-whole number line, organize improper amounts into wholes and pieces, and practice mixed
+addition and subtraction with visual composition and optional checked renaming. The exact math
+core preserves numerical identity, and accepted app explanations connect forms within these tasks.
 
-Unanswered: how a learner first meets a quantity greater than one; whether the improper form or the
-mixed form is the primary notation and when that changes; what regrouping looks like on the bar, given
-that the multi-whole stack of DECISION-032 makes `1 + 2/8` visible but does nothing to show `1 2/8`
-being decomposed back into `10/8` for subtraction; and whether mixed numbers are their own episodes or
-an overlay on existing families.
+The Phase 5 review found a remaining learner decision. Given a mixed number, the learner chooses
+the improper fraction that names the same amount. The owner adopted this bridge design in Plan 83.
+Plan 84 specifies that both forms appear at the same number-line point only after a correct Check.
+Phase 5 exit remains open pending owner review of the implemented bridge. Evidence of learner
+understanding and broader transfer remains open.
 
-**Phase 3 owes this:** nothing except not foreclosing it. DECISION-032's stack is structurally the
-mixed-number visual already, which is why it was preferred.
-
-**Needs:** an instructional strategy before Phase 5 begins, written at the §91 decision checkpoint. It
-should be a design dossier in the shape of `plan-04` and `plan-10`, not a packet requirement invented
-mid-build.
+See the [Plan 83 exit review](../reports/development/plan-83-phase-5-exit-and-mixed-improper-bridge-design/phase-5-exit-review.md),
+[owner acceptance](../reports/development/plan-83-phase-5-exit-and-mixed-improper-bridge-design/owner-acceptance.md),
+and [Plan 84](development/plan-84-mixed-to-improper-number-line-bridge.md).
 
 ---
 
