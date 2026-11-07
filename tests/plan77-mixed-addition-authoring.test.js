@@ -29,6 +29,16 @@ describe('Plan 77 content seam', () => {
       expect(validatePlan74Batch(records,set).some(x => x.item && reason.test(x.reason))).toBe(true);
     }
   });
+  it('diagnoses sparse record, membership, operand and tuple slots without throwing', () => {
+    const records = copy(PLAN74_DATA), membership = copy(PLAN74_SET_V1);
+    const sparseRecords = [records[0], ,];
+    expect(validatePlan74Batch(sparseRecords, {...membership, items: [membership.items[0]]})).toContainEqual({item:'record[1]', reason:'missing record slot'});
+    expect(validatePlan74Batch([records[0]], {...membership, items: Array(1)})).toContainEqual({item:'membership[0]', reason:'missing membership slot'});
+    for (const operands of [[['1', , '8'], ['2','5','8']], [,['2','5','8']]]) {
+      const invalid = {...records[0], operands};
+      expect(validatePlan74Batch([invalid], {...membership, items:[membership.items[0]]})).toContainEqual({item:records[0].itemId, reason:'operands must be two [whole, numerator, denominator] arrays of positive integer strings'});
+    }
+  });
   it('does not widen live admission and preserves arithmetic eligibility independent of response limit', () => {
     const record=copy(PLAN74_RECORDS[0]); record.itemId='trial'; record.operands[0].whole='9';
     expect(() => validatePlan74Operands(record)).not.toThrow();

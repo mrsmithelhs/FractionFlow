@@ -30,14 +30,15 @@ export function validatePlan74Batch(records, membership, { checkReachability = t
   const exactKeys = (o, keys) => o && typeof o === 'object' && !Array.isArray(o) && same(Object.keys(o).sort(), [...keys].sort());
   const byId = new Map();
   if (!Array.isArray(records)) add('records', 'expected an array');
-  else records.forEach((record, index) => {
+  else Array.from(records).forEach((record, index) => {
+    if (!Object.hasOwn(records, index)) { add(`record[${index}]`, 'missing record slot'); return; }
     const label = validText(record?.itemId) ? record.itemId : `record[${index}]`;
     if (!exactKeys(record, ['itemId','itemRevision','operands']) || !validText(record.itemId) || !validText(record.itemRevision)) {
       add(label, 'record requires only itemId, itemRevision and operands'); return;
     }
     if (byId.has(record.itemId)) add(label, 'duplicate item ID');
     else byId.set(record.itemId, record);
-    if (!Array.isArray(record.operands) || record.operands.length !== 2 || record.operands.some(x => !Array.isArray(x) || x.length !== 3 || x.some(v => typeof v !== 'string' || !/^[1-9][0-9]*$/.test(v)))) {
+    if (!Array.isArray(record.operands) || record.operands.length !== 2 || Array.from(record.operands).some(x => !Array.isArray(x) || x.length !== 3 || Array.from(x).some(v => typeof v !== 'string' || !/^[1-9][0-9]*$/.test(v)))) {
       add(label, 'operands must be two [whole, numerator, denominator] arrays of positive integer strings'); return;
     }
     const operands = record.operands.map(([whole,numerator,denominator]) => ({whole,numerator,denominator}));
@@ -54,7 +55,8 @@ export function validatePlan74Batch(records, membership, { checkReachability = t
     add('membership', 'requires setId, setRevision and a nonempty items array');
   } else {
     const seen = new Set();
-    membership.items.forEach((entry,index) => {
+    Array.from(membership.items).forEach((entry,index) => {
+      if (!Object.hasOwn(membership.items, index)) { add(`membership[${index}]`, 'missing membership slot'); return; }
       const label = validText(entry?.itemId) ? entry.itemId : `membership[${index}]`;
       if (!exactKeys(entry,['itemId','itemRevision']) || !validText(entry.itemId) || !validText(entry.itemRevision)) { add(label, 'membership entry requires itemId and itemRevision'); return; }
       if (seen.has(entry.itemId)) add(label, 'duplicate membership item ID');
