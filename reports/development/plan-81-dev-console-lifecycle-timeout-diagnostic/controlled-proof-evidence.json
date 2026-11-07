@@ -1,0 +1,220 @@
+{
+  "version": 1,
+  "synthetic": true,
+  "deadlineMs": 2000,
+  "cleanupLimitMs": 3000,
+  "attempts": [
+    {
+      "mode": "pass",
+      "outcome": "pass",
+      "ledgerEstablishedBeforeLaunch": true,
+      "exactHandlesRetained": true,
+      "events": [
+        {
+          "ms": 3.42,
+          "event": "ledger-established-before-launch"
+        },
+        {
+          "ms": 26.69,
+          "event": "independent-listening",
+          "port": "independent-port"
+        },
+        {
+          "ms": 29.55,
+          "event": "launch-begin",
+          "name": "helper"
+        },
+        {
+          "ms": 49.61,
+          "event": "handle-recorded",
+          "name": "helper",
+          "pid": "helper-pid"
+        },
+        {
+          "ms": 141.81,
+          "event": "listener-ready",
+          "name": "helper",
+          "port": "owned-port"
+        },
+        {
+          "ms": 142.78,
+          "event": "launch-begin",
+          "name": "worker"
+        },
+        {
+          "ms": 157.9,
+          "event": "handle-recorded",
+          "name": "worker",
+          "pid": "worker-pid"
+        },
+        {
+          "ms": 223,
+          "event": "worker-started",
+          "name": "worker"
+        },
+        {
+          "ms": 223.89,
+          "event": "work-complete",
+          "name": "worker"
+        },
+        {
+          "ms": 224.34,
+          "event": "worker-complete-observed"
+        },
+        {
+          "ms": 225.1,
+          "event": "cooperative-stop-request",
+          "name": "helper"
+        },
+        {
+          "ms": 226.09,
+          "event": "cooperative-stop-request",
+          "name": "worker"
+        },
+        {
+          "ms": 226.78,
+          "event": "stop-ack",
+          "name": "worker"
+        },
+        {
+          "ms": 227.22,
+          "event": "stop-ack",
+          "name": "helper"
+        },
+        {
+          "ms": 234.3,
+          "event": "child-exit",
+          "name": "worker",
+          "code": 0,
+          "signal": null
+        },
+        {
+          "ms": 234.74,
+          "event": "child-exit",
+          "name": "helper",
+          "code": 0,
+          "signal": null
+        },
+        {
+          "ms": 237.33,
+          "event": "owned-listener-closed"
+        },
+        {
+          "ms": 239.08,
+          "event": "independent-survived"
+        },
+        {
+          "ms": 240.47,
+          "event": "independent-closed-by-owner"
+        }
+      ]
+    },
+    {
+      "mode": "timeout",
+      "outcome": "timeout",
+      "ledgerEstablishedBeforeLaunch": true,
+      "exactHandlesRetained": true,
+      "events": [
+        {
+          "ms": 2.04,
+          "event": "ledger-established-before-launch"
+        },
+        {
+          "ms": 5.27,
+          "event": "independent-listening",
+          "port": "independent-port"
+        },
+        {
+          "ms": 6.02,
+          "event": "launch-begin",
+          "name": "helper"
+        },
+        {
+          "ms": 20.1,
+          "event": "handle-recorded",
+          "name": "helper",
+          "pid": "helper-pid"
+        },
+        {
+          "ms": 106.67,
+          "event": "listener-ready",
+          "name": "helper",
+          "port": "owned-port"
+        },
+        {
+          "ms": 107.85,
+          "event": "launch-begin",
+          "name": "worker"
+        },
+        {
+          "ms": 123.03,
+          "event": "handle-recorded",
+          "name": "worker",
+          "pid": "worker-pid"
+        },
+        {
+          "ms": 189.67,
+          "event": "worker-started",
+          "name": "worker"
+        },
+        {
+          "ms": 190.4,
+          "event": "await-blocked",
+          "name": "worker"
+        },
+        {
+          "ms": 2109.57,
+          "event": "worker-deadline",
+          "lastCompleted": "await-blocked",
+          "firstMissing": "work-complete"
+        },
+        {
+          "ms": 2110.79,
+          "event": "cooperative-stop-request",
+          "name": "helper"
+        },
+        {
+          "ms": 2111.17,
+          "event": "cooperative-stop-request",
+          "name": "worker"
+        },
+        {
+          "ms": 2112.39,
+          "event": "stop-ack",
+          "name": "worker"
+        },
+        {
+          "ms": 2112.8,
+          "event": "stop-ack",
+          "name": "helper"
+        },
+        {
+          "ms": 2120.82,
+          "event": "child-exit",
+          "name": "helper",
+          "code": 0,
+          "signal": null
+        },
+        {
+          "ms": 2121.27,
+          "event": "child-exit",
+          "name": "worker",
+          "code": 0,
+          "signal": null
+        },
+        {
+          "ms": 2122.23,
+          "event": "owned-listener-closed"
+        },
+        {
+          "ms": 2123.16,
+          "event": "independent-survived"
+        },
+        {
+          "ms": 2124.28,
+          "event": "independent-closed-by-owner"
+        }
+      ]
+    }
+  ]
+}
