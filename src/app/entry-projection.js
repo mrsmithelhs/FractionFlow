@@ -2,7 +2,7 @@ const GROUPS = [
   ['Add and subtract', ['sum-under-one', 'like-denominator-addition', 'like-denominator-subtraction', 'unlike-denominator-subtraction']],
   ['Compare and distance', ['symbolic-fraction-comparison', 'fraction-distance', 'session:short-magnitude-practice']],
   ['Number lines', ['bar-to-line-same-amount', 'number-line-collection', 'two-whole-location', 'directed-number-line-endpoint']],
-  ['Wholes and parts', ['whole-plus-fraction-construction', 'mixed-number-addition-without-regrouping']],
+  ['Wholes and parts', ['whole-plus-fraction-construction', 'mixed-number-addition-without-regrouping', 'mixed-number-addition-with-regrouping']],
 ];
 
 const FEATURED_IDS = ['sum-under-one', 'symbolic-fraction-comparison', 'bar-to-line-same-amount', 'whole-plus-fraction-construction'];

@@ -1,7 +1,10 @@
+import { resolvePlan74Context } from '../content/plan74-mixed-addition-task.js';
+import { PLAN74_CONDITION, PLAN74_ID } from '../interaction/plan74-mixed-addition-episode.js';
+import { createPlan74Renderer } from '../render/plan74-mixed-addition.js';
 import { resolvePlan72Context } from '../content/plan72-mixed-addition-task.js';
 import { PLAN72_CONDITION, PLAN72_ID } from '../interaction/plan72-mixed-addition-episode.js';
 import { createPlan72Renderer } from '../render/plan72-mixed-addition.js';
-const isPlan72 = state => state?.episodeDefinition?.id === PLAN72_ID;
+const isPlan72 = state => [PLAN72_ID, PLAN74_ID].includes(state?.episodeDefinition?.id);
 import { projectEntryCapabilities } from './entry-projection.js';
 const DOCUMENT_ROTATION_DAY = Math.floor(Date.now() / 86_400_000);
 import { createComparisonRecordController } from './comparison-record-controller.js';
@@ -89,7 +92,7 @@ const APP_RENDER_STRINGS = Object.freeze({
 
 function canonicalInstance(item, conditions = REGISTERED_CONDITIONS, practiceType = null) {
   const definition = getEpisodeDefinition(item.episodeDefinitionId, item.episodeDefinitionRevision);
-  if (isPlan45ComparisonDefinition(definition) || ['phase-4-number-line-collection', 'phase-4-fraction-distance', 'phase-4-two-whole-location', 'phase-4-whole-plus-fraction-construction', 'phase-4-directed-number-line-endpoint', PLAN72_ID].includes(definition.id)) return null;
+  if (isPlan45ComparisonDefinition(definition) || ['phase-4-number-line-collection', 'phase-4-fraction-distance', 'phase-4-two-whole-location', 'phase-4-whole-plus-fraction-construction', 'phase-4-directed-number-line-endpoint', PLAN72_ID, PLAN74_ID].includes(definition.id)) return null;
   if (isPlan37BarToLineBridgeTaskDefinition(definition)) {
     const bridge = resolvePlan37BarToLineBridgeInstance(item.id, item.authoringRevision);
     if (!bridge || bridge.provenance.fixtureId !== item.fixtureId) throw new Error(`practice bridge item is not registered: ${item.id}`);
@@ -274,7 +277,8 @@ function presentationModeFor({ override, motionQuery }) {
 }
 
 function createInitialState(instance, practiceType, condition, supportLevel, episodeDefinition = practiceType.episodeDefinition, item = null) {
-  const taskContext = episodeDefinition.id === PLAN72_ID && item ? resolvePlan72Context(item.id)
+  const taskContext = episodeDefinition.id === PLAN74_ID && item ? resolvePlan74Context(item.id)
+    : episodeDefinition.id === PLAN72_ID && item ? resolvePlan72Context(item.id)
     : episodeDefinition.id === 'phase-4-directed-number-line-endpoint' && item ? resolvePlan59Context(item.id)
     : episodeDefinition.id === 'phase-4-whole-plus-fraction-construction' && item ? resolvePlan58Context(item.id)
     : episodeDefinition.id === 'phase-4-two-whole-location' && item ? resolvePlan53Context(item.id)
@@ -312,7 +316,7 @@ function createInitialState(instance, practiceType, condition, supportLevel, epi
     : item?.episodeDefinitionId === PLAN18_NESTED_DEFINITION_ID
       ? resolvePlan18TaskContext(instance, { practiceSetId: practiceType.setId, practiceSetRevision: practiceType.setRevision })
       : null;
-  if (taskContext && !['phase-4-number-line-collection', 'phase-4-fraction-distance', 'phase-4-two-whole-location', 'phase-4-whole-plus-fraction-construction', 'phase-4-directed-number-line-endpoint', PLAN72_ID].includes(episodeDefinition.id) && (taskContext.itemId !== item.id
+  if (taskContext && !['phase-4-number-line-collection', 'phase-4-fraction-distance', 'phase-4-two-whole-location', 'phase-4-whole-plus-fraction-construction', 'phase-4-directed-number-line-endpoint', PLAN72_ID, PLAN74_ID].includes(episodeDefinition.id) && (taskContext.itemId !== item.id
     || taskContext.practiceSetId !== practiceType.setId
     || taskContext.practiceSetRevision !== practiceType.setRevision)) {
     throw new Error('practice item does not match its validated task association');
@@ -320,7 +324,7 @@ function createInitialState(instance, practiceType, condition, supportLevel, epi
   return createEpisode({
     instance,
     episodeDefinition,
-    activeCondition: episodeDefinition.id === PLAN72_ID ? PLAN72_CONDITION : episodeDefinition.id === 'phase-4-directed-number-line-endpoint' ? PLAN59_CONDITION : episodeDefinition.id === 'phase-4-whole-plus-fraction-construction' ? PLAN58_CONDITION : episodeDefinition.id === 'phase-4-two-whole-location' ? PLAN53_CONDITION : episodeDefinition.id === 'phase-4-fraction-distance' ? PLAN51_CONDITION : episodeDefinition.id === 'phase-4-number-line-collection' ? PLAN50_CONDITION : isPlan45ComparisonDefinition(episodeDefinition)
+    activeCondition: episodeDefinition.id === PLAN74_ID ? PLAN74_CONDITION : episodeDefinition.id === PLAN72_ID ? PLAN72_CONDITION : episodeDefinition.id === 'phase-4-directed-number-line-endpoint' ? PLAN59_CONDITION : episodeDefinition.id === 'phase-4-whole-plus-fraction-construction' ? PLAN58_CONDITION : episodeDefinition.id === 'phase-4-two-whole-location' ? PLAN53_CONDITION : episodeDefinition.id === 'phase-4-fraction-distance' ? PLAN51_CONDITION : episodeDefinition.id === 'phase-4-number-line-collection' ? PLAN50_CONDITION : isPlan45ComparisonDefinition(episodeDefinition)
       ? PLAN45_STATIC_COMPARISON_ACTIVE_CONDITION
       : condition.activeCondition,
     support: supportLevel.configuration,
@@ -2073,9 +2077,9 @@ export function createFractionFlowApp({
         progression: () => { const descriptor = computeProgressionDescriptor(); return { ...descriptor,
           onAction: descriptor.onAction ? () => { if (active()) descriptor.onAction(); } : null }; },
       });
-      if (!visualPlan72Renderer) { visualPlan72Renderer = createPlan72Renderer(options('visual')); visualPlan72Renderer.mount(scene); }
+      if (!visualPlan72Renderer) { visualPlan72Renderer = (state.episodeDefinition.id === PLAN74_ID ? createPlan74Renderer : createPlan72Renderer)(options('visual')); visualPlan72Renderer.mount(scene); }
       else visualPlan72Renderer.update(scene);
-      if (!linearPlan72Renderer) { linearPlan72Renderer = createPlan72Renderer(options('linear')); linearPlan72Renderer.mount(scene); }
+      if (!linearPlan72Renderer) { linearPlan72Renderer = (state.episodeDefinition.id === PLAN74_ID ? createPlan74Renderer : createPlan72Renderer)(options('linear')); linearPlan72Renderer.mount(scene); }
       else linearPlan72Renderer.update(scene);
       updateConditionMetadata(); updateSupportMetadata(); updateSupportControls(); updateNavigation(); updateViewVisibility(); updateHelpPlacement(scene);
       return;

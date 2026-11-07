@@ -1144,3 +1144,13 @@ body,
 .plan72-piece-entry { display: flex; align-items: center; gap: .4em; width: 10rem; max-width: 100%; }
 .plan72-piece-entry input { flex: 1 1 auto; min-width: 0; }
 .plan72-denominator { flex: none; white-space: nowrap; }
+
+.plan74-operands { display: flex; flex-wrap: wrap; gap: 1rem; }
+.plan74-operand { flex: 1 1 22rem; min-width: 0; }
+.plan74-bar { width: min(100%, 18rem); }
+.plan74-feedback:focus { outline: 3px solid var(--ff-color-border-focus); outline-offset: 2px; }
+.plan74-result button { min-height: 44px; padding: .6rem 1rem; font: inherit; }
+.plan74-addition .plan58-label { min-width: 0; max-width: 100%; }
+.plan74-piece-entry { display: flex; align-items: center; gap: .4em; width: 10rem; max-width: 100%; }
+.plan74-piece-entry input { flex: 1 1 auto; min-width: 0; }
+.plan74-denominator { flex: none; white-space: nowrap; }

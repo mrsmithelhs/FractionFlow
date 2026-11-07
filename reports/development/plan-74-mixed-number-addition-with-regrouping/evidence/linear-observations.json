@@ -1,0 +1,8 @@
+{
+  "results": [
+    {
+      "case": "touch-emulated-entry-keyboard-linear",
+      "outcome": "passed: view switch preserves draft, help, organization feedback, explicit zero, accepted grouping and fresh next"
+    }
+  ]
+}

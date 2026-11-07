@@ -1,0 +1,23 @@
+import { describe,it,expect } from 'vitest';
+import { PLAN74_RECORDS,admitPlan74Record,resolvePlan74Context,validatePlan74Operands } from '../src/content/plan74-mixed-addition-task.js';
+import { PLAN74_ID,PLAN74_CONDITION,plan74IntentContext } from '../src/interaction/plan74-mixed-addition-episode.js';
+import { createEpisode,applyIntent } from '../src/interaction/episode.js';
+import { getEpisodeDefinition } from '../src/interaction/episode-definition.js';
+import { projectPlan74Addition } from '../src/interaction/plan74-mixed-addition-scene.js';
+import { createReplayEnvelope,replayEpisode } from '../src/interaction/replay.js';
+import { MEDIUM_SUPPORT_CONFIGURATION } from '../src/interaction/support.js';
+import { PRACTICE_TYPES } from '../src/app/practice-types.js';
+import { projectEntryCapabilities } from '../src/app/entry-projection.js';
+const start=id=>createEpisode({episodeDefinition:getEpisodeDefinition(PLAN74_ID,'1'),taskContext:resolvePlan74Context(id),activeCondition:PLAN74_CONDITION});
+const send=(s,type,x={})=>applyIntent(s,{type,context:plan74IntentContext(s),...x});
+const edit=(s,field,raw)=>send(s,'edit-mixed-addition',{field,raw});
+const check=s=>send(s,'check-mixed-addition',{revision:s.draftRevision});
+describe('Plan 74 regrouping',()=>{
+ it.each([['plan74-add-01','8','0'],['plan74-add-02','11','3']])('classifies and replays %s', (id,ungrouped,remainder)=>{
+ let s=start(id);let scene=projectPlan74Addition(s);expect(scene.grouping).toBeNull();expect(scene.notation).toBeNull();s=check(s);expect(s.evaluation.fields.whole.status).toBe('missing');s=edit(edit(s,'whole','3'),'pieces',ungrouped);s=check(s);expect(s.evaluation.status).toBe('organize');s=send(s,'request-mixed-addition-help',{helpKind:'unit'});s=edit(s,'whole','4');expect(s.draft.pieces).toBe(ungrouped);expect(s.evaluation.status).toBe('unchecked');s=edit(s,'pieces','1');s=check(s);expect(s.evaluation.status).toBe('incorrect');s=edit(s,'pieces',remainder);const stale=s.draftRevision-1;expect(()=>send(s,'check-mixed-addition',{revision:stale})).toThrow();s=check(s);expect(s.status).toBe('resolved');scene=projectPlan74Addition(s);expect(scene.grouping.remainder).toBe(Number(remainder));expect(scene.notation.hasRemainder).toBe(remainder!=='0');expect(replayEpisode(JSON.parse(JSON.stringify(createReplayEnvelope(s))))).toEqual(s);expect(createReplayEnvelope(s).schemaVersion).toBe('fractionflow.episode-replay/v17');
+ });
+ it('offers the same help and correct response with medium support and stays out of featured rotation',()=>{let s=createEpisode({episodeDefinition:getEpisodeDefinition(PLAN74_ID,'1'),taskContext:resolvePlan74Context('plan74-add-01'),activeCondition:PLAN74_CONDITION,support:MEDIUM_SUPPORT_CONFIGURATION});s=send(s,'request-mixed-addition-help',{helpKind:'unit'});s=check(edit(edit(s,'whole','4'),'pieces','0'));expect(s.status).toBe('resolved');expect(s.responseProvenance[0].assistanceHistory).toHaveLength(1);for(let day=0;day<8;day++)expect(projectEntryCapabilities(PRACTICE_TYPES,null,day).primary.type.id).not.toBe('mixed-number-addition-with-regrouping');});
+ it('rejects tampered identity and stale replay events',()=>{let s=start('plan74-add-02');s=edit(s,'whole','3');const envelope=JSON.parse(JSON.stringify(createReplayEnvelope(s)));for(const mutate of [x=>x.taskContext.operands[0].numerator='3',x=>x.contentIdentity.reconstruction.itemId='plan74-add-01',x=>x.extra=true,x=>x.learnerIntents.push({type:'check-mixed-addition',context:plan74IntentContext(s),revision:0})]){const bad=structuredClone(envelope);mutate(bad);expect(()=>replayEpisode(bad)).toThrow();}});
+ it('rejects the below-one boundary and malformed operands before registration',()=>{ for(const mutate of [r=>r.operands[1].numerator='4',r=>r.operands[1].denominator='4',r=>r.operands[0].numerator='0',r=>r.operands[0].numerator='8']) {const r=structuredClone(PLAN74_RECORDS[0]);mutate(r);expect(()=>validatePlan74Operands(r)).toThrow();} });
+ it('rejects unregistered altered operands and bounds drafts',()=>{for(const change of [r=>r.operands[1].numerator='4',r=>r.operands[1].denominator='4',r=>r.operands[0].whole='0']){const r=structuredClone(PLAN74_RECORDS[0]);change(r);expect(()=>admitPlan74Record(r)).toThrow();}let s=start('plan74-add-02');s=edit(edit(s,'whole','4'),'pieces','16');let scene=projectPlan74Addition(s);expect(scene.draftRows).toBeNull();expect(scene.regions.pieces.value).toBe(16);s=edit(s,'pieces','17');s=check(s);expect(s.evaluation.fields.pieces.status).toBe('out-of-range');s=edit(s,'pieces','-1');s=check(s);expect(s.evaluation.fields.pieces.status).toBe('malformed');});
+});

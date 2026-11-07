@@ -1,0 +1,1195 @@
+{
+  "browser": "157.0.8103.38",
+  "browserZoom": "default 100%; not independently measured",
+  "observations": [
+    {
+      "case": "normal",
+      "item": 1,
+      "state": "initial",
+      "text": "Add these amounts.\nFirst amount\n1\n3\n8\n\n1 whole unit and 3 eighths\n\nSecond amount\n2\n5\n8\n\n2 whole units and 5 eighths\n\nWhole units in the sum\nEighth pieces in the sum\n/ 8\nYour draft\n\nWhole units: not entered\n\neighth pieces: not entered\n\nHelp\nCheck",
+      "bars": [
+        {
+          "width": 288,
+          "parts": 8
+        },
+        {
+          "width": 288,
+          "parts": 8
+        },
+        {
+          "width": 288,
+          "parts": 8
+        },
+        {
+          "width": 288,
+          "parts": 8
+        },
+        {
+          "width": 288,
+          "parts": 8
+        }
+      ],
+      "focus": "<main class=\"app-episode\" aria-label=\"Fraction practice\" tabindex=\"-1\" data-current-item-id=\"plan74-add-01\"><div class=\"app-view-controls\"><button type=\"button\" class=\"fraction-control app-secondary-b",
+      "scrollWidth": 360,
+      "clientWidth": 360,
+      "rootFont": "16px"
+    },
+    {
+      "case": "normal",
+      "item": 1,
+      "state": "partial-zero",
+      "text": "Add these amounts.\nFirst amount\n1\n3\n8\n\n1 whole unit and 3 eighths\n\nSecond amount\n2\n5\n8\n\n2 whole units and 5 eighths\n\nWhole units in the sum\nEighth pieces in the sum\n/ 8\nYour draft\n\nWhole units: 0\n\neighth pieces: not entered\n\nHelp\nCheck",
+      "bars": [
+        {
+          "width": 288,
+          "parts": 8
+        },
+        {
+          "width": 288,
+          "parts": 8
+        },
+        {
+          "width": 288,
+          "parts": 8
+        },
+        {
+          "width": 288,
+          "parts": 8
+        },
+        {
+          "width": 288,
+          "parts": 8
+        }
+      ],
+      "focus": "<input type=\"text\" inputmode=\"numeric\" autocomplete=\"off\" data-field=\"whole\" aria-describedby=\"plan74-guidance-visual\" style=\"\">",
+      "scrollWidth": 360,
+      "clientWidth": 360,
+      "rootFont": "16px"
+    },
+    {
+      "case": "normal",
+      "item": 1,
+      "state": "maximum",
+      "text": "Add these amounts.\nFirst amount\n1\n3\n8\n\n1 whole unit and 3 eighths\n\nSecond amount\n2\n5\n8\n\n2 whole units and 5 eighths\n\nWhole units in the sum\nEighth pieces in the sum\n/ 8\nYour draft\n\nWhole units: 4\n\neighth pieces: 16\n\nHelp\nCheck",
+      "bars": [
+        {
+          "width": 288,
+          "parts": 8
+        },
+        {
+          "width": 288,
+          "parts": 8
+        },
+        {
+          "width": 288,
+          "parts": 8
+        },
+        {
+          "width": 288,
+          "parts": 8
+        },
+        {
+          "width": 288,
+          "parts": 8
+        }
+      ],
+      "focus": "<input type=\"text\" inputmode=\"numeric\" autocomplete=\"off\" data-field=\"pieces\" aria-describedby=\"plan74-guidance-visual\" style=\"\">",
+      "scrollWidth": 360,
+      "clientWidth": 360,
+      "rootFont": "16px"
+    },
+    {
+      "case": "normal",
+      "item": 1,
+      "state": "draft",
+      "text": "Add these amounts.\nFirst amount\n1\n3\n8\n\n1 whole unit and 3 eighths\n\nSecond amount\n2\n5\n8\n\n2 whole units and 5 eighths\n\nWhole units in the sum\nEighth pieces in the sum\n/ 8\nYour draft\n\nWhole units: 3\n\neighth pieces: 8\n\nHelp\nCheck",
+      "bars": [
+        {
+          "width": 288,
+          "parts": 8
+        },
+        {
+          "width": 288,
+          "parts": 8
+        },
+        {
+          "width": 288,
+          "parts": 8
+        },
+        {
+          "width": 288,
+          "parts": 8
+        },
+        {
+          "width": 288,
+          "parts": 8
+        }
+      ],
+      "focus": "<input type=\"text\" inputmode=\"numeric\" autocomplete=\"off\" data-field=\"pieces\" aria-describedby=\"plan74-guidance-visual\" style=\"\">",
+      "scrollWidth": 360,
+      "clientWidth": 360,
+      "rootFont": "16px"
+    },
+    {
+      "case": "normal",
+      "item": 1,
+      "state": "retry-help",
+      "text": "Add these amounts.\nFirst amount\n1\n3\n8\n\n1 whole unit and 3 eighths\n\nSecond amount\n2\n5\n8\n\n2 whole units and 5 eighths\n\nThat's the right amount. Make another whole.\n\nWhole units in the sum\nEighth pieces in the sum\n/ 8\nYour draft\n\nWhole units: 3\n\neighth pieces: 8\n\nClose help\nCheck\n\nLook at the whole units in each amount. Then count the eighth pieces in both amounts.",
+      "bars": [
+        {
+          "width": 288,
+          "parts": 8
+        },
+        {
+          "width": 288,
+          "parts": 8
+        },
+        {
+          "width": 288,
+          "parts": 8
+        },
+        {
+          "width": 288,
+          "parts": 8
+        },
+        {
+          "width": 288,
+          "parts": 8
+        }
+      ],
+      "focus": "<button class=\"app-secondary-button\" type=\"button\" aria-expanded=\"true\">Close help</button>",
+      "scrollWidth": 360,
+      "clientWidth": 360,
+      "rootFont": "16px"
+    },
+    {
+      "case": "normal",
+      "item": 1,
+      "state": "accepted",
+      "text": "Add these amounts.\nFirst amount\n1\n3\n8\n\n1 whole unit and 3 eighths\n\nSecond amount\n2\n5\n8\n\n2 whole units and 5 eighths\n\nThat's right.\n\nWhole units in the sum\nEighth pieces in the sum\n/ 8\nYour answer\n\nWhole units: 4\n\neighth pieces: 0\n\n3 original whole units and 8 original eighth pieces. The app groups all 3 eighth pieces from the first amount and 5 from the second amount into one new whole; 0 eighth pieces from the second amount remain. Together: 4 whole units and 0 eighth pieces.\n\nEight original eighth pieces form this new whole:\n\nNew whole: 3 pieces from the first amount and 5 pieces from the second amount.\n\nThe sum is \n4\n\nNext problem",
+      "bars": [
+        {
+          "width": 288,
+          "parts": 8
+        },
+        {
+          "width": 288,
+          "parts": 8
+        },
+        {
+          "width": 288,
+          "parts": 8
+        },
+        {
+          "width": 288,
+          "parts": 8
+        },
+        {
+          "width": 288,
+          "parts": 8
+        },
+        {
+          "width": 288,
+          "parts": 8
+        }
+      ],
+      "focus": "<p class=\"plan74-feedback plan50-success\" id=\"plan74-guidance-visual\" tabindex=\"-1\">That's right.</p>",
+      "scrollWidth": 360,
+      "clientWidth": 360,
+      "rootFont": "16px"
+    },
+    {
+      "case": "normal",
+      "item": 2,
+      "state": "initial",
+      "text": "Add these amounts.\nFirst amount\n1\n5\n8\n\n1 whole unit and 5 eighths\n\nSecond amount\n2\n6\n8\n\n2 whole units and 6 eighths\n\nWhole units in the sum\nEighth pieces in the sum\n/ 8\nYour draft\n\nWhole units: not entered\n\neighth pieces: not entered\n\nHelp\nCheck",
+      "bars": [
+        {
+          "width": 288,
+          "parts": 8
+        },
+        {
+          "width": 288,
+          "parts": 8
+        },
+        {
+          "width": 288,
+          "parts": 8
+        },
+        {
+          "width": 288,
+          "parts": 8
+        },
+        {
+          "width": 288,
+          "parts": 8
+        }
+      ],
+      "focus": "<main class=\"app-episode\" aria-label=\"Fraction practice\" tabindex=\"-1\" data-current-item-id=\"plan74-add-02\"><div class=\"app-view-controls\"><button type=\"button\" class=\"fraction-control app-secondary-b",
+      "scrollWidth": 360,
+      "clientWidth": 360,
+      "rootFont": "16px"
+    },
+    {
+      "case": "normal",
+      "item": 2,
+      "state": "partial-zero",
+      "text": "Add these amounts.\nFirst amount\n1\n5\n8\n\n1 whole unit and 5 eighths\n\nSecond amount\n2\n6\n8\n\n2 whole units and 6 eighths\n\nWhole units in the sum\nEighth pieces in the sum\n/ 8\nYour draft\n\nWhole units: 0\n\neighth pieces: not entered\n\nHelp\nCheck",
+      "bars": [
+        {
+          "width": 288,
+          "parts": 8
+        },
+        {
+          "width": 288,
+          "parts": 8
+        },
+        {
+          "width": 288,
+          "parts": 8
+        },
+        {
+          "width": 288,
+          "parts": 8
+        },
+        {
+          "width": 288,
+          "parts": 8
+        }
+      ],
+      "focus": "<input type=\"text\" inputmode=\"numeric\" autocomplete=\"off\" data-field=\"whole\" aria-describedby=\"plan74-guidance-visual\" style=\"\">",
+      "scrollWidth": 360,
+      "clientWidth": 360,
+      "rootFont": "16px"
+    },
+    {
+      "case": "normal",
+      "item": 2,
+      "state": "maximum",
+      "text": "Add these amounts.\nFirst amount\n1\n5\n8\n\n1 whole unit and 5 eighths\n\nSecond amount\n2\n6\n8\n\n2 whole units and 6 eighths\n\nWhole units in the sum\nEighth pieces in the sum\n/ 8\nYour draft\n\nWhole units: 4\n\neighth pieces: 16\n\nHelp\nCheck",
+      "bars": [
+        {
+          "width": 288,
+          "parts": 8
+        },
+        {
+          "width": 288,
+          "parts": 8
+        },
+        {
+          "width": 288,
+          "parts": 8
+        },
+        {
+          "width": 288,
+          "parts": 8
+        },
+        {
+          "width": 288,
+          "parts": 8
+        }
+      ],
+      "focus": "<input type=\"text\" inputmode=\"numeric\" autocomplete=\"off\" data-field=\"pieces\" aria-describedby=\"plan74-guidance-visual\" style=\"\">",
+      "scrollWidth": 360,
+      "clientWidth": 360,
+      "rootFont": "16px"
+    },
+    {
+      "case": "normal",
+      "item": 2,
+      "state": "draft",
+      "text": "Add these amounts.\nFirst amount\n1\n5\n8\n\n1 whole unit and 5 eighths\n\nSecond amount\n2\n6\n8\n\n2 whole units and 6 eighths\n\nWhole units in the sum\nEighth pieces in the sum\n/ 8\nYour draft\n\nWhole units: 3\n\neighth pieces: 11\n\nHelp\nCheck",
+      "bars": [
+        {
+          "width": 288,
+          "parts": 8
+        },
+        {
+          "width": 288,
+          "parts": 8
+        },
+        {
+          "width": 288,
+          "parts": 8
+        },
+        {
+          "width": 288,
+          "parts": 8
+        },
+        {
+          "width": 288,
+          "parts": 8
+        }
+      ],
+      "focus": "<input type=\"text\" inputmode=\"numeric\" autocomplete=\"off\" data-field=\"pieces\" aria-describedby=\"plan74-guidance-visual\" style=\"\">",
+      "scrollWidth": 360,
+      "clientWidth": 360,
+      "rootFont": "16px"
+    },
+    {
+      "case": "normal",
+      "item": 2,
+      "state": "retry-help",
+      "text": "Add these amounts.\nFirst amount\n1\n5\n8\n\n1 whole unit and 5 eighths\n\nSecond amount\n2\n6\n8\n\n2 whole units and 6 eighths\n\nThat's the right amount. Make another whole.\n\nWhole units in the sum\nEighth pieces in the sum\n/ 8\nYour draft\n\nWhole units: 3\n\neighth pieces: 11\n\nClose help\nCheck\n\nLook at the whole units in each amount. Then count the eighth pieces in both amounts.",
+      "bars": [
+        {
+          "width": 288,
+          "parts": 8
+        },
+        {
+          "width": 288,
+          "parts": 8
+        },
+        {
+          "width": 288,
+          "parts": 8
+        },
+        {
+          "width": 288,
+          "parts": 8
+        },
+        {
+          "width": 288,
+          "parts": 8
+        }
+      ],
+      "focus": "<button class=\"app-secondary-button\" type=\"button\" aria-expanded=\"true\">Close help</button>",
+      "scrollWidth": 360,
+      "clientWidth": 360,
+      "rootFont": "16px"
+    },
+    {
+      "case": "normal",
+      "item": 2,
+      "state": "accepted",
+      "text": "Add these amounts.\nFirst amount\n1\n5\n8\n\n1 whole unit and 5 eighths\n\nSecond amount\n2\n6\n8\n\n2 whole units and 6 eighths\n\nThat's right.\n\nWhole units in the sum\nEighth pieces in the sum\n/ 8\nYour answer\n\nWhole units: 4\n\neighth pieces: 3\n\n3 original whole units and 11 original eighth pieces. The app groups all 5 eighth pieces from the first amount and 3 from the second amount into one new whole; 3 eighth pieces from the second amount remain. Together: 4 whole units and 3 eighth pieces.\n\nEight original eighth pieces form this new whole:\n\nNew whole: 5 pieces from the first amount and 3 pieces from the second amount.\n\n3 original eighth pieces remain:\n\nThe sum is \n4\n3\n8\n\nYou’ve tried every problem in this set.\n\nBack to start",
+      "bars": [
+        {
+          "width": 288,
+          "parts": 8
+        },
+        {
+          "width": 288,
+          "parts": 8
+        },
+        {
+          "width": 288,
+          "parts": 8
+        },
+        {
+          "width": 288,
+          "parts": 8
+        },
+        {
+          "width": 288,
+          "parts": 8
+        },
+        {
+          "width": 288,
+          "parts": 8
+        },
+        {
+          "width": 288,
+          "parts": 8
+        }
+      ],
+      "focus": "<p class=\"plan74-feedback plan50-success\" id=\"plan74-guidance-visual\" tabindex=\"-1\">That's right.</p>",
+      "scrollWidth": 360,
+      "clientWidth": 360,
+      "rootFont": "16px"
+    },
+    {
+      "case": "root200",
+      "item": 1,
+      "state": "initial",
+      "text": "Add these amounts.\nFirst amount\n1\n3\n8\n\n1 whole unit and 3 eighths\n\nSecond amount\n2\n5\n8\n\n2 whole units and 5 eighths\n\nWhole units in the sum\nEighth pieces in the sum\n/ 8\nYour draft\n\nWhole units: not entered\n\neighth pieces: not entered\n\nHelp\nCheck",
+      "bars": [
+        {
+          "width": 262,
+          "parts": 8
+        },
+        {
+          "width": 262,
+          "parts": 8
+        },
+        {
+          "width": 262,
+          "parts": 8
+        },
+        {
+          "width": 262,
+          "parts": 8
+        },
+        {
+          "width": 262,
+          "parts": 8
+        }
+      ],
+      "focus": "<main class=\"app-episode\" aria-label=\"Fraction practice\" tabindex=\"-1\" data-current-item-id=\"plan74-add-01\"><div class=\"app-view-controls\"><button type=\"button\" class=\"fraction-control app-secondary-b",
+      "scrollWidth": 360,
+      "clientWidth": 360,
+      "rootFont": "32px"
+    },
+    {
+      "case": "root200",
+      "item": 1,
+      "state": "partial-zero",
+      "text": "Add these amounts.\nFirst amount\n1\n3\n8\n\n1 whole unit and 3 eighths\n\nSecond amount\n2\n5\n8\n\n2 whole units and 5 eighths\n\nWhole units in the sum\nEighth pieces in the sum\n/ 8\nYour draft\n\nWhole units: 0\n\neighth pieces: not entered\n\nHelp\nCheck",
+      "bars": [
+        {
+          "width": 262,
+          "parts": 8
+        },
+        {
+          "width": 262,
+          "parts": 8
+        },
+        {
+          "width": 262,
+          "parts": 8
+        },
+        {
+          "width": 262,
+          "parts": 8
+        },
+        {
+          "width": 262,
+          "parts": 8
+        }
+      ],
+      "focus": "<input type=\"text\" inputmode=\"numeric\" autocomplete=\"off\" data-field=\"whole\" aria-describedby=\"plan74-guidance-visual\" style=\"\">",
+      "scrollWidth": 360,
+      "clientWidth": 360,
+      "rootFont": "32px"
+    },
+    {
+      "case": "root200",
+      "item": 1,
+      "state": "maximum",
+      "text": "Add these amounts.\nFirst amount\n1\n3\n8\n\n1 whole unit and 3 eighths\n\nSecond amount\n2\n5\n8\n\n2 whole units and 5 eighths\n\nWhole units in the sum\nEighth pieces in the sum\n/ 8\nYour draft\n\nWhole units: 4\n\neighth pieces: 16\n\nHelp\nCheck",
+      "bars": [
+        {
+          "width": 262,
+          "parts": 8
+        },
+        {
+          "width": 262,
+          "parts": 8
+        },
+        {
+          "width": 262,
+          "parts": 8
+        },
+        {
+          "width": 262,
+          "parts": 8
+        },
+        {
+          "width": 262,
+          "parts": 8
+        }
+      ],
+      "focus": "<input type=\"text\" inputmode=\"numeric\" autocomplete=\"off\" data-field=\"pieces\" aria-describedby=\"plan74-guidance-visual\" style=\"\">",
+      "scrollWidth": 360,
+      "clientWidth": 360,
+      "rootFont": "32px"
+    },
+    {
+      "case": "root200",
+      "item": 1,
+      "state": "draft",
+      "text": "Add these amounts.\nFirst amount\n1\n3\n8\n\n1 whole unit and 3 eighths\n\nSecond amount\n2\n5\n8\n\n2 whole units and 5 eighths\n\nWhole units in the sum\nEighth pieces in the sum\n/ 8\nYour draft\n\nWhole units: 3\n\neighth pieces: 8\n\nHelp\nCheck",
+      "bars": [
+        {
+          "width": 262,
+          "parts": 8
+        },
+        {
+          "width": 262,
+          "parts": 8
+        },
+        {
+          "width": 262,
+          "parts": 8
+        },
+        {
+          "width": 262,
+          "parts": 8
+        },
+        {
+          "width": 262,
+          "parts": 8
+        }
+      ],
+      "focus": "<input type=\"text\" inputmode=\"numeric\" autocomplete=\"off\" data-field=\"pieces\" aria-describedby=\"plan74-guidance-visual\" style=\"\">",
+      "scrollWidth": 360,
+      "clientWidth": 360,
+      "rootFont": "32px"
+    },
+    {
+      "case": "root200",
+      "item": 1,
+      "state": "retry-help",
+      "text": "Add these amounts.\nFirst amount\n1\n3\n8\n\n1 whole unit and 3 eighths\n\nSecond amount\n2\n5\n8\n\n2 whole units and 5 eighths\n\nThat's the right amount. Make another whole.\n\nWhole units in the sum\nEighth pieces in the sum\n/ 8\nYour draft\n\nWhole units: 3\n\neighth pieces: 8\n\nClose help\nCheck\n\nLook at the whole units in each amount. Then count the eighth pieces in both amounts.",
+      "bars": [
+        {
+          "width": 262,
+          "parts": 8
+        },
+        {
+          "width": 262,
+          "parts": 8
+        },
+        {
+          "width": 262,
+          "parts": 8
+        },
+        {
+          "width": 262,
+          "parts": 8
+        },
+        {
+          "width": 262,
+          "parts": 8
+        }
+      ],
+      "focus": "<button class=\"app-secondary-button\" type=\"button\" aria-expanded=\"true\">Close help</button>",
+      "scrollWidth": 360,
+      "clientWidth": 360,
+      "rootFont": "32px"
+    },
+    {
+      "case": "root200",
+      "item": 1,
+      "state": "accepted",
+      "text": "Add these amounts.\nFirst amount\n1\n3\n8\n\n1 whole unit and 3 eighths\n\nSecond amount\n2\n5\n8\n\n2 whole units and 5 eighths\n\nThat's right.\n\nWhole units in the sum\nEighth pieces in the sum\n/ 8\nYour answer\n\nWhole units: 4\n\neighth pieces: 0\n\n3 original whole units and 8 original eighth pieces. The app groups all 3 eighth pieces from the first amount and 5 from the second amount into one new whole; 0 eighth pieces from the second amount remain. Together: 4 whole units and 0 eighth pieces.\n\nEight original eighth pieces form this new whole:\n\nNew whole: 3 pieces from the first amount and 5 pieces from the second amount.\n\nThe sum is \n4\n\nNext problem",
+      "bars": [
+        {
+          "width": 262,
+          "parts": 8
+        },
+        {
+          "width": 262,
+          "parts": 8
+        },
+        {
+          "width": 262,
+          "parts": 8
+        },
+        {
+          "width": 262,
+          "parts": 8
+        },
+        {
+          "width": 262,
+          "parts": 8
+        },
+        {
+          "width": 262,
+          "parts": 8
+        }
+      ],
+      "focus": "<p class=\"plan74-feedback plan50-success\" id=\"plan74-guidance-visual\" tabindex=\"-1\">That's right.</p>",
+      "scrollWidth": 360,
+      "clientWidth": 360,
+      "rootFont": "32px"
+    },
+    {
+      "case": "root200",
+      "item": 2,
+      "state": "initial",
+      "text": "Add these amounts.\nFirst amount\n1\n5\n8\n\n1 whole unit and 5 eighths\n\nSecond amount\n2\n6\n8\n\n2 whole units and 6 eighths\n\nWhole units in the sum\nEighth pieces in the sum\n/ 8\nYour draft\n\nWhole units: not entered\n\neighth pieces: not entered\n\nHelp\nCheck",
+      "bars": [
+        {
+          "width": 262,
+          "parts": 8
+        },
+        {
+          "width": 262,
+          "parts": 8
+        },
+        {
+          "width": 262,
+          "parts": 8
+        },
+        {
+          "width": 262,
+          "parts": 8
+        },
+        {
+          "width": 262,
+          "parts": 8
+        }
+      ],
+      "focus": "<main class=\"app-episode\" aria-label=\"Fraction practice\" tabindex=\"-1\" data-current-item-id=\"plan74-add-02\"><div class=\"app-view-controls\"><button type=\"button\" class=\"fraction-control app-secondary-b",
+      "scrollWidth": 360,
+      "clientWidth": 360,
+      "rootFont": "32px"
+    },
+    {
+      "case": "root200",
+      "item": 2,
+      "state": "partial-zero",
+      "text": "Add these amounts.\nFirst amount\n1\n5\n8\n\n1 whole unit and 5 eighths\n\nSecond amount\n2\n6\n8\n\n2 whole units and 6 eighths\n\nWhole units in the sum\nEighth pieces in the sum\n/ 8\nYour draft\n\nWhole units: 0\n\neighth pieces: not entered\n\nHelp\nCheck",
+      "bars": [
+        {
+          "width": 262,
+          "parts": 8
+        },
+        {
+          "width": 262,
+          "parts": 8
+        },
+        {
+          "width": 262,
+          "parts": 8
+        },
+        {
+          "width": 262,
+          "parts": 8
+        },
+        {
+          "width": 262,
+          "parts": 8
+        }
+      ],
+      "focus": "<input type=\"text\" inputmode=\"numeric\" autocomplete=\"off\" data-field=\"whole\" aria-describedby=\"plan74-guidance-visual\" style=\"\">",
+      "scrollWidth": 360,
+      "clientWidth": 360,
+      "rootFont": "32px"
+    },
+    {
+      "case": "root200",
+      "item": 2,
+      "state": "maximum",
+      "text": "Add these amounts.\nFirst amount\n1\n5\n8\n\n1 whole unit and 5 eighths\n\nSecond amount\n2\n6\n8\n\n2 whole units and 6 eighths\n\nWhole units in the sum\nEighth pieces in the sum\n/ 8\nYour draft\n\nWhole units: 4\n\neighth pieces: 16\n\nHelp\nCheck",
+      "bars": [
+        {
+          "width": 262,
+          "parts": 8
+        },
+        {
+          "width": 262,
+          "parts": 8
+        },
+        {
+          "width": 262,
+          "parts": 8
+        },
+        {
+          "width": 262,
+          "parts": 8
+        },
+        {
+          "width": 262,
+          "parts": 8
+        }
+      ],
+      "focus": "<input type=\"text\" inputmode=\"numeric\" autocomplete=\"off\" data-field=\"pieces\" aria-describedby=\"plan74-guidance-visual\" style=\"\">",
+      "scrollWidth": 360,
+      "clientWidth": 360,
+      "rootFont": "32px"
+    },
+    {
+      "case": "root200",
+      "item": 2,
+      "state": "draft",
+      "text": "Add these amounts.\nFirst amount\n1\n5\n8\n\n1 whole unit and 5 eighths\n\nSecond amount\n2\n6\n8\n\n2 whole units and 6 eighths\n\nWhole units in the sum\nEighth pieces in the sum\n/ 8\nYour draft\n\nWhole units: 3\n\neighth pieces: 11\n\nHelp\nCheck",
+      "bars": [
+        {
+          "width": 262,
+          "parts": 8
+        },
+        {
+          "width": 262,
+          "parts": 8
+        },
+        {
+          "width": 262,
+          "parts": 8
+        },
+        {
+          "width": 262,
+          "parts": 8
+        },
+        {
+          "width": 262,
+          "parts": 8
+        }
+      ],
+      "focus": "<input type=\"text\" inputmode=\"numeric\" autocomplete=\"off\" data-field=\"pieces\" aria-describedby=\"plan74-guidance-visual\" style=\"\">",
+      "scrollWidth": 360,
+      "clientWidth": 360,
+      "rootFont": "32px"
+    },
+    {
+      "case": "root200",
+      "item": 2,
+      "state": "retry-help",
+      "text": "Add these amounts.\nFirst amount\n1\n5\n8\n\n1 whole unit and 5 eighths\n\nSecond amount\n2\n6\n8\n\n2 whole units and 6 eighths\n\nThat's the right amount. Make another whole.\n\nWhole units in the sum\nEighth pieces in the sum\n/ 8\nYour draft\n\nWhole units: 3\n\neighth pieces: 11\n\nClose help\nCheck\n\nLook at the whole units in each amount. Then count the eighth pieces in both amounts.",
+      "bars": [
+        {
+          "width": 262,
+          "parts": 8
+        },
+        {
+          "width": 262,
+          "parts": 8
+        },
+        {
+          "width": 262,
+          "parts": 8
+        },
+        {
+          "width": 262,
+          "parts": 8
+        },
+        {
+          "width": 262,
+          "parts": 8
+        }
+      ],
+      "focus": "<button class=\"app-secondary-button\" type=\"button\" aria-expanded=\"true\">Close help</button>",
+      "scrollWidth": 360,
+      "clientWidth": 360,
+      "rootFont": "32px"
+    },
+    {
+      "case": "root200",
+      "item": 2,
+      "state": "accepted",
+      "text": "Add these amounts.\nFirst amount\n1\n5\n8\n\n1 whole unit and 5 eighths\n\nSecond amount\n2\n6\n8\n\n2 whole units and 6 eighths\n\nThat's right.\n\nWhole units in the sum\nEighth pieces in the sum\n/ 8\nYour answer\n\nWhole units: 4\n\neighth pieces: 3\n\n3 original whole units and 11 original eighth pieces. The app groups all 5 eighth pieces from the first amount and 3 from the second amount into one new whole; 3 eighth pieces from the second amount remain. Together: 4 whole units and 3 eighth pieces.\n\nEight original eighth pieces form this new whole:\n\nNew whole: 5 pieces from the first amount and 3 pieces from the second amount.\n\n3 original eighth pieces remain:\n\nThe sum is \n4\n3\n8\n\nYou’ve tried every problem in this set.\n\nBack to start",
+      "bars": [
+        {
+          "width": 262,
+          "parts": 8
+        },
+        {
+          "width": 262,
+          "parts": 8
+        },
+        {
+          "width": 262,
+          "parts": 8
+        },
+        {
+          "width": 262,
+          "parts": 8
+        },
+        {
+          "width": 262,
+          "parts": 8
+        },
+        {
+          "width": 262,
+          "parts": 8
+        },
+        {
+          "width": 262,
+          "parts": 8
+        }
+      ],
+      "focus": "<p class=\"plan74-feedback plan50-success\" id=\"plan74-guidance-visual\" tabindex=\"-1\">That's right.</p>",
+      "scrollWidth": 360,
+      "clientWidth": 360,
+      "rootFont": "32px"
+    },
+    {
+      "case": "chromebook",
+      "item": 1,
+      "state": "initial",
+      "text": "Add these amounts.\nFirst amount\n1\n3\n8\n\n1 whole unit and 3 eighths\n\nSecond amount\n2\n5\n8\n\n2 whole units and 5 eighths\n\nWhole units in the sum\nEighth pieces in the sum\n/ 8\nYour draft\n\nWhole units: not entered\n\neighth pieces: not entered\n\nHelp\nCheck",
+      "bars": [
+        {
+          "width": 288,
+          "parts": 8
+        },
+        {
+          "width": 288,
+          "parts": 8
+        },
+        {
+          "width": 288,
+          "parts": 8
+        },
+        {
+          "width": 288,
+          "parts": 8
+        },
+        {
+          "width": 288,
+          "parts": 8
+        }
+      ],
+      "focus": "<main class=\"app-episode\" aria-label=\"Fraction practice\" tabindex=\"-1\" data-current-item-id=\"plan74-add-01\"><div class=\"app-view-controls\"><button type=\"button\" class=\"fraction-control app-secondary-b",
+      "scrollWidth": 1093,
+      "clientWidth": 1093,
+      "rootFont": "16px"
+    },
+    {
+      "case": "chromebook",
+      "item": 1,
+      "state": "partial-zero",
+      "text": "Add these amounts.\nFirst amount\n1\n3\n8\n\n1 whole unit and 3 eighths\n\nSecond amount\n2\n5\n8\n\n2 whole units and 5 eighths\n\nWhole units in the sum\nEighth pieces in the sum\n/ 8\nYour draft\n\nWhole units: 0\n\neighth pieces: not entered\n\nHelp\nCheck",
+      "bars": [
+        {
+          "width": 288,
+          "parts": 8
+        },
+        {
+          "width": 288,
+          "parts": 8
+        },
+        {
+          "width": 288,
+          "parts": 8
+        },
+        {
+          "width": 288,
+          "parts": 8
+        },
+        {
+          "width": 288,
+          "parts": 8
+        }
+      ],
+      "focus": "<input type=\"text\" inputmode=\"numeric\" autocomplete=\"off\" data-field=\"whole\" aria-describedby=\"plan74-guidance-visual\">",
+      "scrollWidth": 1093,
+      "clientWidth": 1093,
+      "rootFont": "16px"
+    },
+    {
+      "case": "chromebook",
+      "item": 1,
+      "state": "maximum",
+      "text": "Add these amounts.\nFirst amount\n1\n3\n8\n\n1 whole unit and 3 eighths\n\nSecond amount\n2\n5\n8\n\n2 whole units and 5 eighths\n\nWhole units in the sum\nEighth pieces in the sum\n/ 8\nYour draft\n\nWhole units: 4\n\neighth pieces: 16\n\nHelp\nCheck",
+      "bars": [
+        {
+          "width": 288,
+          "parts": 8
+        },
+        {
+          "width": 288,
+          "parts": 8
+        },
+        {
+          "width": 288,
+          "parts": 8
+        },
+        {
+          "width": 288,
+          "parts": 8
+        },
+        {
+          "width": 288,
+          "parts": 8
+        }
+      ],
+      "focus": "<input type=\"text\" inputmode=\"numeric\" autocomplete=\"off\" data-field=\"pieces\" aria-describedby=\"plan74-guidance-visual\">",
+      "scrollWidth": 1093,
+      "clientWidth": 1093,
+      "rootFont": "16px"
+    },
+    {
+      "case": "chromebook",
+      "item": 1,
+      "state": "draft",
+      "text": "Add these amounts.\nFirst amount\n1\n3\n8\n\n1 whole unit and 3 eighths\n\nSecond amount\n2\n5\n8\n\n2 whole units and 5 eighths\n\nWhole units in the sum\nEighth pieces in the sum\n/ 8\nYour draft\n\nWhole units: 3\n\neighth pieces: 8\n\nHelp\nCheck",
+      "bars": [
+        {
+          "width": 288,
+          "parts": 8
+        },
+        {
+          "width": 288,
+          "parts": 8
+        },
+        {
+          "width": 288,
+          "parts": 8
+        },
+        {
+          "width": 288,
+          "parts": 8
+        },
+        {
+          "width": 288,
+          "parts": 8
+        }
+      ],
+      "focus": "<input type=\"text\" inputmode=\"numeric\" autocomplete=\"off\" data-field=\"pieces\" aria-describedby=\"plan74-guidance-visual\">",
+      "scrollWidth": 1093,
+      "clientWidth": 1093,
+      "rootFont": "16px"
+    },
+    {
+      "case": "chromebook",
+      "item": 1,
+      "state": "retry-help",
+      "text": "Add these amounts.\nFirst amount\n1\n3\n8\n\n1 whole unit and 3 eighths\n\nSecond amount\n2\n5\n8\n\n2 whole units and 5 eighths\n\nThat's the right amount. Make another whole.\n\nWhole units in the sum\nEighth pieces in the sum\n/ 8\nYour draft\n\nWhole units: 3\n\neighth pieces: 8\n\nClose help\nCheck\n\nLook at the whole units in each amount. Then count the eighth pieces in both amounts.",
+      "bars": [
+        {
+          "width": 288,
+          "parts": 8
+        },
+        {
+          "width": 288,
+          "parts": 8
+        },
+        {
+          "width": 288,
+          "parts": 8
+        },
+        {
+          "width": 288,
+          "parts": 8
+        },
+        {
+          "width": 288,
+          "parts": 8
+        }
+      ],
+      "focus": "<button class=\"app-secondary-button\" type=\"button\" aria-expanded=\"true\">Close help</button>",
+      "scrollWidth": 1093,
+      "clientWidth": 1093,
+      "rootFont": "16px"
+    },
+    {
+      "case": "chromebook",
+      "item": 1,
+      "state": "accepted",
+      "text": "Add these amounts.\nFirst amount\n1\n3\n8\n\n1 whole unit and 3 eighths\n\nSecond amount\n2\n5\n8\n\n2 whole units and 5 eighths\n\nThat's right.\n\nWhole units in the sum\nEighth pieces in the sum\n/ 8\nYour answer\n\nWhole units: 4\n\neighth pieces: 0\n\n3 original whole units and 8 original eighth pieces. The app groups all 3 eighth pieces from the first amount and 5 from the second amount into one new whole; 0 eighth pieces from the second amount remain. Together: 4 whole units and 0 eighth pieces.\n\nEight original eighth pieces form this new whole:\n\nNew whole: 3 pieces from the first amount and 5 pieces from the second amount.\n\nThe sum is \n4\n\nNext problem",
+      "bars": [
+        {
+          "width": 288,
+          "parts": 8
+        },
+        {
+          "width": 288,
+          "parts": 8
+        },
+        {
+          "width": 288,
+          "parts": 8
+        },
+        {
+          "width": 288,
+          "parts": 8
+        },
+        {
+          "width": 288,
+          "parts": 8
+        },
+        {
+          "width": 288,
+          "parts": 8
+        }
+      ],
+      "focus": "<p class=\"plan74-feedback plan50-success\" id=\"plan74-guidance-visual\" tabindex=\"-1\">That's right.</p>",
+      "scrollWidth": 1093,
+      "clientWidth": 1093,
+      "rootFont": "16px"
+    },
+    {
+      "case": "chromebook",
+      "item": 2,
+      "state": "initial",
+      "text": "Add these amounts.\nFirst amount\n1\n5\n8\n\n1 whole unit and 5 eighths\n\nSecond amount\n2\n6\n8\n\n2 whole units and 6 eighths\n\nWhole units in the sum\nEighth pieces in the sum\n/ 8\nYour draft\n\nWhole units: not entered\n\neighth pieces: not entered\n\nHelp\nCheck",
+      "bars": [
+        {
+          "width": 288,
+          "parts": 8
+        },
+        {
+          "width": 288,
+          "parts": 8
+        },
+        {
+          "width": 288,
+          "parts": 8
+        },
+        {
+          "width": 288,
+          "parts": 8
+        },
+        {
+          "width": 288,
+          "parts": 8
+        }
+      ],
+      "focus": "<main class=\"app-episode\" aria-label=\"Fraction practice\" tabindex=\"-1\" data-current-item-id=\"plan74-add-02\"><div class=\"app-view-controls\"><button type=\"button\" class=\"fraction-control app-secondary-b",
+      "scrollWidth": 1093,
+      "clientWidth": 1093,
+      "rootFont": "16px"
+    },
+    {
+      "case": "chromebook",
+      "item": 2,
+      "state": "partial-zero",
+      "text": "Add these amounts.\nFirst amount\n1\n5\n8\n\n1 whole unit and 5 eighths\n\nSecond amount\n2\n6\n8\n\n2 whole units and 6 eighths\n\nWhole units in the sum\nEighth pieces in the sum\n/ 8\nYour draft\n\nWhole units: 0\n\neighth pieces: not entered\n\nHelp\nCheck",
+      "bars": [
+        {
+          "width": 288,
+          "parts": 8
+        },
+        {
+          "width": 288,
+          "parts": 8
+        },
+        {
+          "width": 288,
+          "parts": 8
+        },
+        {
+          "width": 288,
+          "parts": 8
+        },
+        {
+          "width": 288,
+          "parts": 8
+        }
+      ],
+      "focus": "<input type=\"text\" inputmode=\"numeric\" autocomplete=\"off\" data-field=\"whole\" aria-describedby=\"plan74-guidance-visual\">",
+      "scrollWidth": 1093,
+      "clientWidth": 1093,
+      "rootFont": "16px"
+    },
+    {
+      "case": "chromebook",
+      "item": 2,
+      "state": "maximum",
+      "text": "Add these amounts.\nFirst amount\n1\n5\n8\n\n1 whole unit and 5 eighths\n\nSecond amount\n2\n6\n8\n\n2 whole units and 6 eighths\n\nWhole units in the sum\nEighth pieces in the sum\n/ 8\nYour draft\n\nWhole units: 4\n\neighth pieces: 16\n\nHelp\nCheck",
+      "bars": [
+        {
+          "width": 288,
+          "parts": 8
+        },
+        {
+          "width": 288,
+          "parts": 8
+        },
+        {
+          "width": 288,
+          "parts": 8
+        },
+        {
+          "width": 288,
+          "parts": 8
+        },
+        {
+          "width": 288,
+          "parts": 8
+        }
+      ],
+      "focus": "<input type=\"text\" inputmode=\"numeric\" autocomplete=\"off\" data-field=\"pieces\" aria-describedby=\"plan74-guidance-visual\">",
+      "scrollWidth": 1093,
+      "clientWidth": 1093,
+      "rootFont": "16px"
+    },
+    {
+      "case": "chromebook",
+      "item": 2,
+      "state": "draft",
+      "text": "Add these amounts.\nFirst amount\n1\n5\n8\n\n1 whole unit and 5 eighths\n\nSecond amount\n2\n6\n8\n\n2 whole units and 6 eighths\n\nWhole units in the sum\nEighth pieces in the sum\n/ 8\nYour draft\n\nWhole units: 3\n\neighth pieces: 11\n\nHelp\nCheck",
+      "bars": [
+        {
+          "width": 288,
+          "parts": 8
+        },
+        {
+          "width": 288,
+          "parts": 8
+        },
+        {
+          "width": 288,
+          "parts": 8
+        },
+        {
+          "width": 288,
+          "parts": 8
+        },
+        {
+          "width": 288,
+          "parts": 8
+        }
+      ],
+      "focus": "<input type=\"text\" inputmode=\"numeric\" autocomplete=\"off\" data-field=\"pieces\" aria-describedby=\"plan74-guidance-visual\">",
+      "scrollWidth": 1093,
+      "clientWidth": 1093,
+      "rootFont": "16px"
+    },
+    {
+      "case": "chromebook",
+      "item": 2,
+      "state": "retry-help",
+      "text": "Add these amounts.\nFirst amount\n1\n5\n8\n\n1 whole unit and 5 eighths\n\nSecond amount\n2\n6\n8\n\n2 whole units and 6 eighths\n\nThat's the right amount. Make another whole.\n\nWhole units in the sum\nEighth pieces in the sum\n/ 8\nYour draft\n\nWhole units: 3\n\neighth pieces: 11\n\nClose help\nCheck\n\nLook at the whole units in each amount. Then count the eighth pieces in both amounts.",
+      "bars": [
+        {
+          "width": 288,
+          "parts": 8
+        },
+        {
+          "width": 288,
+          "parts": 8
+        },
+        {
+          "width": 288,
+          "parts": 8
+        },
+        {
+          "width": 288,
+          "parts": 8
+        },
+        {
+          "width": 288,
+          "parts": 8
+        }
+      ],
+      "focus": "<button class=\"app-secondary-button\" type=\"button\" aria-expanded=\"true\">Close help</button>",
+      "scrollWidth": 1093,
+      "clientWidth": 1093,
+      "rootFont": "16px"
+    },
+    {
+      "case": "chromebook",
+      "item": 2,
+      "state": "accepted",
+      "text": "Add these amounts.\nFirst amount\n1\n5\n8\n\n1 whole unit and 5 eighths\n\nSecond amount\n2\n6\n8\n\n2 whole units and 6 eighths\n\nThat's right.\n\nWhole units in the sum\nEighth pieces in the sum\n/ 8\nYour answer\n\nWhole units: 4\n\neighth pieces: 3\n\n3 original whole units and 11 original eighth pieces. The app groups all 5 eighth pieces from the first amount and 3 from the second amount into one new whole; 3 eighth pieces from the second amount remain. Together: 4 whole units and 3 eighth pieces.\n\nEight original eighth pieces form this new whole:\n\nNew whole: 5 pieces from the first amount and 3 pieces from the second amount.\n\n3 original eighth pieces remain:\n\nThe sum is \n4\n3\n8\n\nYou’ve tried every problem in this set.\n\nBack to start",
+      "bars": [
+        {
+          "width": 288,
+          "parts": 8
+        },
+        {
+          "width": 288,
+          "parts": 8
+        },
+        {
+          "width": 288,
+          "parts": 8
+        },
+        {
+          "width": 288,
+          "parts": 8
+        },
+        {
+          "width": 288,
+          "parts": 8
+        },
+        {
+          "width": 288,
+          "parts": 8
+        },
+        {
+          "width": 288,
+          "parts": 8
+        }
+      ],
+      "focus": "<p class=\"plan74-feedback plan50-success\" id=\"plan74-guidance-visual\" tabindex=\"-1\">That's right.</p>",
+      "scrollWidth": 1093,
+      "clientWidth": 1093,
+      "rootFont": "16px"
+    }
+  ],
+  "errors": []
+}
