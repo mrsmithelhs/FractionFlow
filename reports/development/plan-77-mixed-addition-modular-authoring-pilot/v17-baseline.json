@@ -1,0 +1,544 @@
+[
+  {
+    "envelope": {
+      "schemaVersion": "fractionflow.episode-replay/v17",
+      "contentIdentity": {
+        "schemaVersion": "fractionflow.mixed-addition-content-identity/v1",
+        "id": "plan74-add-01",
+        "source": "curated",
+        "reconstruction": {
+          "kind": "plan74-mixed-addition",
+          "setId": "mixed-number-addition-with-regrouping",
+          "setRevision": "1",
+          "itemId": "plan74-add-01",
+          "itemRevision": "1"
+        }
+      },
+      "episodeDefinition": {
+        "id": "phase-5-mixed-number-addition-with-regrouping",
+        "revision": "1"
+      },
+      "support": {
+        "label": "high support",
+        "dimensions": {
+          "fractionBarModel": "high support",
+          "commonDenominator": "high support",
+          "equivalentNumerators": "high support",
+          "prediction": "high support",
+          "symbolicIntegration": "high support",
+          "helpAndReplay": "high support"
+        }
+      },
+      "activeCondition": {
+        "id": "plan74-static-addition",
+        "revision": "1",
+        "display": "not-applicable",
+        "choreography": "not-applicable",
+        "promptCadence": "D-05-focused-key-beats",
+        "connectionMaking": "not-applicable"
+      },
+      "learnerIntents": [
+        {
+          "type": "edit-mixed-addition",
+          "context": {
+            "setId": "mixed-number-addition-with-regrouping",
+            "setRevision": "1",
+            "itemId": "plan74-add-01",
+            "itemRevision": "1",
+            "definitionId": "phase-5-mixed-number-addition-with-regrouping",
+            "definitionRevision": "1"
+          },
+          "field": "whole",
+          "raw": "4"
+        },
+        {
+          "type": "edit-mixed-addition",
+          "context": {
+            "setId": "mixed-number-addition-with-regrouping",
+            "setRevision": "1",
+            "itemId": "plan74-add-01",
+            "itemRevision": "1",
+            "definitionId": "phase-5-mixed-number-addition-with-regrouping",
+            "definitionRevision": "1"
+          },
+          "field": "pieces",
+          "raw": "0"
+        },
+        {
+          "type": "check-mixed-addition",
+          "context": {
+            "setId": "mixed-number-addition-with-regrouping",
+            "setRevision": "1",
+            "itemId": "plan74-add-01",
+            "itemRevision": "1",
+            "definitionId": "phase-5-mixed-number-addition-with-regrouping",
+            "definitionRevision": "1"
+          },
+          "revision": 2
+        }
+      ],
+      "taskContext": {
+        "setId": "mixed-number-addition-with-regrouping",
+        "setRevision": "1",
+        "definitionId": "phase-5-mixed-number-addition-with-regrouping",
+        "definitionRevision": "1",
+        "itemId": "plan74-add-01",
+        "itemRevision": "1",
+        "operands": [
+          {
+            "whole": "1",
+            "numerator": "3",
+            "denominator": "8"
+          },
+          {
+            "whole": "2",
+            "numerator": "5",
+            "denominator": "8"
+          }
+        ]
+      }
+    },
+    "state": {
+      "schemaVersion": "fractionflow.episode-state/v1",
+      "status": "resolved",
+      "revision": 3,
+      "draftRevision": 2,
+      "episodeDefinition": {
+        "id": "phase-5-mixed-number-addition-with-regrouping",
+        "revision": "1",
+        "family": "mixed-number-addition-with-regrouping",
+        "beats": [
+          "construct",
+          "resolve"
+        ],
+        "includeReflection": false,
+        "promptIdentities": {
+          "construct": "phase5.mixed-addition-regrouping.construct",
+          "resolve": "phase5.mixed-addition-regrouping.accepted"
+        }
+      },
+      "taskContext": {
+        "setId": "mixed-number-addition-with-regrouping",
+        "setRevision": "1",
+        "definitionId": "phase-5-mixed-number-addition-with-regrouping",
+        "definitionRevision": "1",
+        "itemId": "plan74-add-01",
+        "itemRevision": "1",
+        "operands": [
+          {
+            "whole": "1",
+            "numerator": "3",
+            "denominator": "8"
+          },
+          {
+            "whole": "2",
+            "numerator": "5",
+            "denominator": "8"
+          }
+        ]
+      },
+      "support": {
+        "label": "high support",
+        "dimensions": {
+          "fractionBarModel": "high support",
+          "commonDenominator": "high support",
+          "equivalentNumerators": "high support",
+          "prediction": "high support",
+          "symbolicIntegration": "high support",
+          "helpAndReplay": "high support"
+        }
+      },
+      "activeCondition": {
+        "id": "plan74-static-addition",
+        "revision": "1",
+        "display": "not-applicable",
+        "choreography": "not-applicable",
+        "promptCadence": "D-05-focused-key-beats",
+        "connectionMaking": "not-applicable"
+      },
+      "beatSchedule": [
+        {
+          "id": "construct",
+          "kind": "construct"
+        },
+        {
+          "id": "resolve",
+          "kind": "resolve"
+        }
+      ],
+      "schedulePosition": 1,
+      "beat": "resolve",
+      "draft": {
+        "whole": "4",
+        "pieces": "0"
+      },
+      "evaluation": {
+        "status": "accepted",
+        "draftRevision": 2,
+        "fields": {
+          "whole": {
+            "status": "valid",
+            "value": 4
+          },
+          "pieces": {
+            "status": "valid",
+            "value": 0
+          }
+        }
+      },
+      "established": {
+        "grouping": {
+          "whole": "4",
+          "remainder": {
+            "numerator": "0",
+            "denominator": "8"
+          },
+          "exactValue": {
+            "numerator": "32",
+            "denominator": "8"
+          }
+        }
+      },
+      "intentHistory": [
+        {
+          "type": "edit-mixed-addition",
+          "context": {
+            "setId": "mixed-number-addition-with-regrouping",
+            "setRevision": "1",
+            "itemId": "plan74-add-01",
+            "itemRevision": "1",
+            "definitionId": "phase-5-mixed-number-addition-with-regrouping",
+            "definitionRevision": "1"
+          },
+          "field": "whole",
+          "raw": "4"
+        },
+        {
+          "type": "edit-mixed-addition",
+          "context": {
+            "setId": "mixed-number-addition-with-regrouping",
+            "setRevision": "1",
+            "itemId": "plan74-add-01",
+            "itemRevision": "1",
+            "definitionId": "phase-5-mixed-number-addition-with-regrouping",
+            "definitionRevision": "1"
+          },
+          "field": "pieces",
+          "raw": "0"
+        },
+        {
+          "type": "check-mixed-addition",
+          "context": {
+            "setId": "mixed-number-addition-with-regrouping",
+            "setRevision": "1",
+            "itemId": "plan74-add-01",
+            "itemRevision": "1",
+            "definitionId": "phase-5-mixed-number-addition-with-regrouping",
+            "definitionRevision": "1"
+          },
+          "revision": 2
+        }
+      ],
+      "assistanceHistory": [],
+      "retryHistory": [],
+      "responseProvenance": [
+        {
+          "action": {
+            "type": "check-mixed-addition",
+            "context": {
+              "setId": "mixed-number-addition-with-regrouping",
+              "setRevision": "1",
+              "itemId": "plan74-add-01",
+              "itemRevision": "1",
+              "definitionId": "phase-5-mixed-number-addition-with-regrouping",
+              "definitionRevision": "1"
+            },
+            "revision": 2
+          },
+          "draft": {
+            "whole": "4",
+            "pieces": "0"
+          },
+          "assistanceHistory": [],
+          "notation": "app-supplied",
+          "eventRevision": 3
+        }
+      ],
+      "completedBeats": [],
+      "helpHistory": [],
+      "replayHistory": [],
+      "supportHistory": []
+    }
+  },
+  {
+    "envelope": {
+      "schemaVersion": "fractionflow.episode-replay/v17",
+      "contentIdentity": {
+        "schemaVersion": "fractionflow.mixed-addition-content-identity/v1",
+        "id": "plan74-add-02",
+        "source": "curated",
+        "reconstruction": {
+          "kind": "plan74-mixed-addition",
+          "setId": "mixed-number-addition-with-regrouping",
+          "setRevision": "1",
+          "itemId": "plan74-add-02",
+          "itemRevision": "1"
+        }
+      },
+      "episodeDefinition": {
+        "id": "phase-5-mixed-number-addition-with-regrouping",
+        "revision": "1"
+      },
+      "support": {
+        "label": "high support",
+        "dimensions": {
+          "fractionBarModel": "high support",
+          "commonDenominator": "high support",
+          "equivalentNumerators": "high support",
+          "prediction": "high support",
+          "symbolicIntegration": "high support",
+          "helpAndReplay": "high support"
+        }
+      },
+      "activeCondition": {
+        "id": "plan74-static-addition",
+        "revision": "1",
+        "display": "not-applicable",
+        "choreography": "not-applicable",
+        "promptCadence": "D-05-focused-key-beats",
+        "connectionMaking": "not-applicable"
+      },
+      "learnerIntents": [
+        {
+          "type": "edit-mixed-addition",
+          "context": {
+            "setId": "mixed-number-addition-with-regrouping",
+            "setRevision": "1",
+            "itemId": "plan74-add-02",
+            "itemRevision": "1",
+            "definitionId": "phase-5-mixed-number-addition-with-regrouping",
+            "definitionRevision": "1"
+          },
+          "field": "whole",
+          "raw": "4"
+        },
+        {
+          "type": "edit-mixed-addition",
+          "context": {
+            "setId": "mixed-number-addition-with-regrouping",
+            "setRevision": "1",
+            "itemId": "plan74-add-02",
+            "itemRevision": "1",
+            "definitionId": "phase-5-mixed-number-addition-with-regrouping",
+            "definitionRevision": "1"
+          },
+          "field": "pieces",
+          "raw": "3"
+        },
+        {
+          "type": "check-mixed-addition",
+          "context": {
+            "setId": "mixed-number-addition-with-regrouping",
+            "setRevision": "1",
+            "itemId": "plan74-add-02",
+            "itemRevision": "1",
+            "definitionId": "phase-5-mixed-number-addition-with-regrouping",
+            "definitionRevision": "1"
+          },
+          "revision": 2
+        }
+      ],
+      "taskContext": {
+        "setId": "mixed-number-addition-with-regrouping",
+        "setRevision": "1",
+        "definitionId": "phase-5-mixed-number-addition-with-regrouping",
+        "definitionRevision": "1",
+        "itemId": "plan74-add-02",
+        "itemRevision": "1",
+        "operands": [
+          {
+            "whole": "1",
+            "numerator": "5",
+            "denominator": "8"
+          },
+          {
+            "whole": "2",
+            "numerator": "6",
+            "denominator": "8"
+          }
+        ]
+      }
+    },
+    "state": {
+      "schemaVersion": "fractionflow.episode-state/v1",
+      "status": "resolved",
+      "revision": 3,
+      "draftRevision": 2,
+      "episodeDefinition": {
+        "id": "phase-5-mixed-number-addition-with-regrouping",
+        "revision": "1",
+        "family": "mixed-number-addition-with-regrouping",
+        "beats": [
+          "construct",
+          "resolve"
+        ],
+        "includeReflection": false,
+        "promptIdentities": {
+          "construct": "phase5.mixed-addition-regrouping.construct",
+          "resolve": "phase5.mixed-addition-regrouping.accepted"
+        }
+      },
+      "taskContext": {
+        "setId": "mixed-number-addition-with-regrouping",
+        "setRevision": "1",
+        "definitionId": "phase-5-mixed-number-addition-with-regrouping",
+        "definitionRevision": "1",
+        "itemId": "plan74-add-02",
+        "itemRevision": "1",
+        "operands": [
+          {
+            "whole": "1",
+            "numerator": "5",
+            "denominator": "8"
+          },
+          {
+            "whole": "2",
+            "numerator": "6",
+            "denominator": "8"
+          }
+        ]
+      },
+      "support": {
+        "label": "high support",
+        "dimensions": {
+          "fractionBarModel": "high support",
+          "commonDenominator": "high support",
+          "equivalentNumerators": "high support",
+          "prediction": "high support",
+          "symbolicIntegration": "high support",
+          "helpAndReplay": "high support"
+        }
+      },
+      "activeCondition": {
+        "id": "plan74-static-addition",
+        "revision": "1",
+        "display": "not-applicable",
+        "choreography": "not-applicable",
+        "promptCadence": "D-05-focused-key-beats",
+        "connectionMaking": "not-applicable"
+      },
+      "beatSchedule": [
+        {
+          "id": "construct",
+          "kind": "construct"
+        },
+        {
+          "id": "resolve",
+          "kind": "resolve"
+        }
+      ],
+      "schedulePosition": 1,
+      "beat": "resolve",
+      "draft": {
+        "whole": "4",
+        "pieces": "3"
+      },
+      "evaluation": {
+        "status": "accepted",
+        "draftRevision": 2,
+        "fields": {
+          "whole": {
+            "status": "valid",
+            "value": 4
+          },
+          "pieces": {
+            "status": "valid",
+            "value": 3
+          }
+        }
+      },
+      "established": {
+        "grouping": {
+          "whole": "4",
+          "remainder": {
+            "numerator": "3",
+            "denominator": "8"
+          },
+          "exactValue": {
+            "numerator": "35",
+            "denominator": "8"
+          }
+        }
+      },
+      "intentHistory": [
+        {
+          "type": "edit-mixed-addition",
+          "context": {
+            "setId": "mixed-number-addition-with-regrouping",
+            "setRevision": "1",
+            "itemId": "plan74-add-02",
+            "itemRevision": "1",
+            "definitionId": "phase-5-mixed-number-addition-with-regrouping",
+            "definitionRevision": "1"
+          },
+          "field": "whole",
+          "raw": "4"
+        },
+        {
+          "type": "edit-mixed-addition",
+          "context": {
+            "setId": "mixed-number-addition-with-regrouping",
+            "setRevision": "1",
+            "itemId": "plan74-add-02",
+            "itemRevision": "1",
+            "definitionId": "phase-5-mixed-number-addition-with-regrouping",
+            "definitionRevision": "1"
+          },
+          "field": "pieces",
+          "raw": "3"
+        },
+        {
+          "type": "check-mixed-addition",
+          "context": {
+            "setId": "mixed-number-addition-with-regrouping",
+            "setRevision": "1",
+            "itemId": "plan74-add-02",
+            "itemRevision": "1",
+            "definitionId": "phase-5-mixed-number-addition-with-regrouping",
+            "definitionRevision": "1"
+          },
+          "revision": 2
+        }
+      ],
+      "assistanceHistory": [],
+      "retryHistory": [],
+      "responseProvenance": [
+        {
+          "action": {
+            "type": "check-mixed-addition",
+            "context": {
+              "setId": "mixed-number-addition-with-regrouping",
+              "setRevision": "1",
+              "itemId": "plan74-add-02",
+              "itemRevision": "1",
+              "definitionId": "phase-5-mixed-number-addition-with-regrouping",
+              "definitionRevision": "1"
+            },
+            "revision": 2
+          },
+          "draft": {
+            "whole": "4",
+            "pieces": "3"
+          },
+          "assistanceHistory": [],
+          "notation": "app-supplied",
+          "eventRevision": 3
+        }
+      ],
+      "completedBeats": [],
+      "helpHistory": [],
+      "replayHistory": [],
+      "supportHistory": []
+    }
+  }
+]
