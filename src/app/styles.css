@@ -1147,7 +1147,8 @@ body,
 
 .plan74-operands { display: flex; flex-wrap: wrap; gap: 1rem; }
 .plan74-operand { flex: 1 1 22rem; min-width: 0; }
-.plan74-bar { width: min(100%, 18rem); }
+.plan74-bar { display: grid; grid-template-columns: repeat(8, minmax(0, 1fr)); width: min(100%, 18rem); }
+.plan74-bar .plan58-part { flex: 1 1 0; min-width: 0; box-sizing: border-box; }
 .plan74-feedback:focus { outline: 3px solid var(--ff-color-border-focus); outline-offset: 2px; }
 .plan74-result button { min-height: 44px; padding: .6rem 1rem; font: inherit; }
 .plan74-addition .plan58-label { min-width: 0; max-width: 100%; }
@@ -1158,6 +1159,6 @@ body,
 /* Source letters and the heavier boundary keep the two groups distinct without color. */
 .plan74-source-bar .plan58-part { display: flex; align-items: center; justify-content: center; min-width: 0; font-size: .72rem; font-weight: 700; line-height: 1; color: #173442; }
 .plan74-source-bar .plan74-source-b { background: #f3d39a; }
-.plan74-source-bar .plan74-group-start { border-left: 3px solid #243d4b; }
+.plan74-source-bar .plan74-group-start { box-shadow: inset 3px 0 0 #243d4b; }
 .plan74-remainder-label { margin-bottom: .2rem; }
 .plan74-addition [hidden] { display: none; }
