@@ -1,6 +1,6 @@
 # Plan 83 Requirement 0 — scope proposal
 
-**Status:** Proposed for orchestration approval; review and design have not started.  
+**Status:** Proposed for orchestration approval; review and design have not started.
 **Committed baseline:** `6b1f985f4d2f0b71bf234bab5f64b905aadffee9`. Preflight `node scripts/dev/plan-status.js check plan-83` returned `RUNNABLE`. Unrelated existing working-tree changes are outside this scope; use the pinned committed artifacts for the review.
 
 ## Evidence to inspect
