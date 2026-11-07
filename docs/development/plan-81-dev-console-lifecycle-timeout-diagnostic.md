@@ -1,7 +1,7 @@
 ---
 id: plan-81
 title: Dev-Console Lifecycle Timeout Diagnostic
-status: delivered
+status: in-progress
 depends_on: [plan-23, plan-78, plan-79]
 gate: "Approve the bounded reproduction and instrumentation plan first. Review the evidence and proposed fix before any shared source or test change."
 summary: >-
@@ -36,3 +36,7 @@ Run packet preflight when dispatched and pin a baseline. Own only `reports/devel
 4. Deliver `diagnostic.md`, a reproducible command or driver, sanitized timings and a bounded remedy or next discriminating check, plus `progress.md` committed last. Preserve the 20-second deadline and existing assertions, confirmation and cleanup semantics. Do not terminate unowned processes, change default ports, weaken the test, alter shared source or tests, or deploy. Route a proven fix through a separate scope decision.
 
 Checklist. Resolve links, run packet lint and scoped diff checks, and account for all test-owned child processes and listeners. State the advisor disposition under AGENTS.md. Report for review and leave packet status and repair authorization to orchestration.
+
+## Controlled-timeout follow-up
+
+2026-11-07. The owner directed the existing implementer to continue this investigation under Plan 81. Preserve the [bounded diagnostic](../../reports/development/plan-81-dev-console-lifecycle-timeout-diagnostic/diagnostic.md) and its unknown cleanup outcome. Work only in the report folder and verified disposable setup. Before attempting the intermittent case again, prove on a controlled timeout that a supervisor records ownership before launch, retains phase events after the worker deadline, requests cooperative cleanup and confirms exact child exits and closure of owned listeners. Include a passing control and leave any independent listener untouched. Record failed cleanup or incomplete traces as a stop, with no port-based or name-based termination. Stop after the controlled proof for orchestration review before the real reproduction. Preserve the real test's 20-second deadline and assertions. No console fix is authorized.
