@@ -1,7 +1,8 @@
 ---
 id: plan-70
 title: First Working Practice Scheduler
-status: delivered
+status: complete
+resolution: "Owner accepted the rendered direct-launch practice scheduler on 2026-11-06 after technical review."
 depends_on: [plan-56, plan-60, plan-63, plan-64, plan-66, plan-67, plan-69]
 gate: "Approve the bounded slot policy, eligible item pool and session admission mechanism before source work. Technical and owner review of real sessions precede closure."
 summary: >-

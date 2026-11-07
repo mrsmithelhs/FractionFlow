@@ -1,7 +1,7 @@
 ---
 id: plan-71
 title: Mixed-Number Addition Without Regrouping Design
-status: draft
+status: in-progress
 depends_on: [plan-58, plan-70]
 gate: "Approve report-only scope before the dossier. Owner adopts the task and bounded first slice before any source implementation."
 summary: >-
