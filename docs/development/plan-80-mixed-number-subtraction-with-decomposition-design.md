@@ -1,7 +1,7 @@
 ---
 id: plan-80
 title: Mixed-Number Subtraction With Decomposition Design
-status: in-progress
+status: delivered
 depends_on: [plan-56, plan-74, plan-77, plan-78]
 gate: "Approve the report-only comparison scope first. Owner adopts one response design and a bounded batch before implementation."
 summary: >-
