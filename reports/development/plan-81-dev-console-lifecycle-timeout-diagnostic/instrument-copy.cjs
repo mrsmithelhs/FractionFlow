@@ -1,0 +1,45 @@
+// Run only against a verified disposable copy. The unchanged test remains the control.
+const fs = require('node:fs');
+const path = require('node:path');
+const crypto = require('node:crypto');
+const requested = process.argv[2];
+if (!requested) throw new Error('Expected the dedicated disposable FractionFlow copy');
+const canonical = fs.realpathSync(path.resolve(__dirname, '../../..'));
+const expectedParent = path.join(canonical, '.plan81-disposable');
+const expectedRoot = path.join(expectedParent, 'FractionFlow');
+const same = (a, b) => process.platform === 'win32' ? a.toLowerCase() === b.toLowerCase() : a === b;
+const root = fs.realpathSync(requested);
+if (same(root, canonical) || !same(root, expectedRoot) || fs.lstatSync(expectedParent).isSymbolicLink() || fs.lstatSync(expectedRoot).isSymbolicLink()) throw new Error('Refusing non-dedicated or linked checkout');
+const file = path.join(root, 'tests/dev-console.test.js');
+if (fs.lstatSync(path.dirname(file)).isSymbolicLink() || fs.lstatSync(file).isSymbolicLink() || !same(fs.realpathSync(file), file)) throw new Error('Refusing linked test path');
+let source = fs.readFileSync(file, 'utf8').replace(/\r\n/g, '\n');
+if (crypto.createHash('sha256').update(source).digest('hex') !== '37dce5b2b94872fd577b972d95f0269b0a10d7883571215d269b445bf10e753f') throw new Error('Test does not match the approved unchanged baseline');
+function replaceOnce(before, after) {
+  if (source.split(before).length !== 2) throw new Error(`Expected exactly one match: ${before.slice(0, 80)}`);
+  source = source.replace(before, after);
+}
+source = `import { appendFileSync } from 'node:fs';\nimport { performance } from 'node:perf_hooks';\nconst trace = (event, details = {}) => appendFileSync(process.env.FF81_TRACE, JSON.stringify({ event, ms: performance.now(), ...details }) + '\\n');\n` + source;
+replaceOnce("  const { port } = probe.address();", "  const { port } = probe.address(); trace('port-allocated', { port });");
+replaceOnce("  const servers = new OwnedServers({ ports: { [name]: port }, cleanupTimeoutMs: 5000 });\n  const exitCode = await runConsole({ inputStream: input, outputStream: output, servers, handleSigint: false });", `  const servers = new OwnedServers({ ports: { [name]: port }, cleanupTimeoutMs: 5000 });
+  const originalSpawn = servers.spawnImpl;
+  servers.spawnImpl = (...args) => { trace('spawn-begin', { name, port }); const child = originalSpawn(...args); trace('spawn-return', { name, port, pid: child.pid }); child.on('message', m => trace('ipc', { name, port, type: m?.type })); child.on('exit', (code, signal) => trace('child-exit', { name, port, pid: child.pid, code, signal })); child.on('error', e => trace('child-error', { name, port, message: e.message })); return child; };
+  const originalStart = servers.start.bind(servers); servers.start = async (...args) => { trace('start-begin', { name, port }); const result = await originalStart(...args); trace('start-end', { name, port, ok: result.ok, state: result.state }); return result; };
+  const originalStop = servers.stopOwnedEntry.bind(servers); servers.stopOwnedEntry = async entry => { trace('stop-begin', { name, port }); const originalSend = entry.child?.send?.bind(entry.child); if (originalSend) entry.child.send = (...args) => { trace('stop-send', { name, port }); return originalSend(...args); }; const result = await originalStop(entry); trace('stop-end', { name, port, ok: result.ok }); return result; };
+  trace('menu-begin', { name, port });
+  const exitCode = await runConsole({ inputStream: input, outputStream: output, servers, handleSigint: false }); trace('menu-end', { name, port });`);
+replaceOnce("    if (text.includes('Local: 1 learner')) input.write(name === 'learner' ? '1\\n' : '2\\n');", "    if (text.includes('Local: 1 learner')) { trace('menu-local-input', { name, port }); input.write(name === 'learner' ? '1\\n' : '2\\n'); }");
+source = source.replace("    if (text.includes('Choose an action:')) { mainMenus++; input.write(mainMenus === 1 ? '1\\n' : '0\\n'); }", "    if (text.includes('Choose an action:')) { mainMenus++; trace('menu-main-input', { name, port, mainMenus }); input.write(mainMenus === 1 ? '1\\n' : '0\\n'); }");
+replaceOnce("  const learnerPort = await unusedLoopbackPort();", `  trace('test-begin');
+  const originalFetch = globalThis.fetch;
+  globalThis.fetch = async (...args) => { const url = String(args[0]); trace('fetch-begin', { url }); try { const response = await originalFetch(...args); trace('fetch-response', { url, status: response.status }); const originalText = response.text.bind(response); response.text = async () => { trace('body-begin', { url }); try { const value = await originalText(); trace('body-end', { url }); return value; } catch (e) { trace('body-error', { url, message: e.message }); throw e; } }; return response; } catch (e) { trace('fetch-error', { url, message: e.message }); throw e; } };
+  const learnerPort = await unusedLoopbackPort();`);
+replaceOnce("  const external = await createServer({ configFile:", "  trace('external-create-begin'); const external = await createServer({ configFile:");
+replaceOnce("    await external.listen();", "    trace('external-listen-begin'); await external.listen(); trace('external-listen-end');");
+replaceOnce("    const stillIndependent = await fetch(", "    trace('collision-assertions-end'); const stillIndependent = await fetch(");
+replaceOnce("    const learner = await runServerThroughMenu", "    trace('independent-first-http-end'); const learner = await runServerThroughMenu");
+replaceOnce("    const prototype = await runServerThroughMenu", "    trace('learner-closed-http-end'); const prototype = await runServerThroughMenu");
+replaceOnce("    const independent = await fetch(", "    trace('prototype-closed-http-end'); const independent = await fetch(");
+replaceOnce("  } finally { await external.close(); }", "  } finally { trace('external-close-begin'); await external.close(); trace('external-close-end'); }");
+replaceOnce("  await expect(fetch(`http://127.0.0.1:${externalPort}/FractionFlow/`, { signal: AbortSignal.timeout(300) })).rejects.toThrow();", "  trace('external-final-fetch-begin'); await expect(fetch(`http://127.0.0.1:${externalPort}/FractionFlow/`, { signal: AbortSignal.timeout(300) })).rejects.toThrow(); globalThis.fetch = originalFetch; trace('test-end');");
+fs.writeFileSync(file, source);
+console.log('Instrumented disposable test only.');

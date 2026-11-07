@@ -1,0 +1,86 @@
+{"event":"test-begin","ms":0.0}
+{"event":"port-allocated","ms":5.51,"port":"port-1"}
+{"event":"port-allocated","ms":8.18,"port":"port-2"}
+{"event":"port-allocated","ms":9.15,"port":"port-3"}
+{"event":"external-create-begin","ms":9.56}
+{"event":"external-listen-begin","ms":87.62}
+{"event":"external-listen-end","ms":89.7}
+{"event":"menu-begin","ms":90.48,"name":"learner","port":"port-3"}
+{"event":"menu-main-input","ms":91.9,"name":"learner","port":"port-3","mainMenus":1}
+{"event":"menu-local-input","ms":92.36,"name":"learner","port":"port-3"}
+{"event":"start-begin","ms":92.73,"name":"learner","port":"port-3"}
+{"event":"spawn-begin","ms":94.03,"name":"learner","port":"port-3"}
+{"event":"spawn-return","ms":106.9,"name":"learner","port":"port-3","pid":"child-1"}
+{"event":"ipc","ms":952.5,"name":"learner","port":"port-3","type":"start-error"}
+{"event":"child-exit","ms":953.26,"name":"learner","port":"port-3","pid":"child-1","code":1,"signal":null}
+{"event":"start-end","ms":983.97,"name":"learner","port":"port-3","ok":false}
+{"event":"menu-main-input","ms":984.5,"name":"learner","port":"port-3","mainMenus":2}
+{"event":"menu-end","ms":985.04,"name":"learner","port":"port-3"}
+{"event":"collision-assertions-end","ms":985.88}
+{"event":"fetch-begin","ms":986.32,"url":"http://127.0.0.1:port-3/FractionFlow/"}
+{"event":"fetch-response","ms":2841.67,"url":"http://127.0.0.1:port-3/FractionFlow/","status":200}
+{"event":"body-begin","ms":2842.05,"url":"http://127.0.0.1:port-3/FractionFlow/"}
+{"event":"body-end","ms":2843.94,"url":"http://127.0.0.1:port-3/FractionFlow/"}
+{"event":"independent-first-http-end","ms":2844.37}
+{"event":"menu-begin","ms":2844.69,"name":"learner","port":"port-1"}
+{"event":"menu-main-input","ms":2845.02,"name":"learner","port":"port-1","mainMenus":1}
+{"event":"menu-local-input","ms":2845.33,"name":"learner","port":"port-1"}
+{"event":"start-begin","ms":2845.58,"name":"learner","port":"port-1"}
+{"event":"spawn-begin","ms":2846.24,"name":"learner","port":"port-1"}
+{"event":"spawn-return","ms":2863.43,"name":"learner","port":"port-1","pid":"child-2"}
+{"event":"ipc","ms":4738.55,"name":"learner","port":"port-1","type":"ready"}
+{"event":"fetch-begin","ms":4739.24,"url":"http://127.0.0.1:port-1/FractionFlow/"}
+{"event":"fetch-error","ms":6352.02,"url":"http://127.0.0.1:port-1/FractionFlow/","message":"The operation was aborted due to timeout"}
+{"event":"fetch-begin","ms":6453.77,"url":"http://127.0.0.1:port-1/FractionFlow/"}
+{"event":"fetch-error","ms":7458.15,"url":"http://127.0.0.1:port-1/FractionFlow/","message":"The operation was aborted due to timeout"}
+{"event":"fetch-begin","ms":7533.79,"url":"http://127.0.0.1:port-1/FractionFlow/"}
+{"event":"fetch-response","ms":8010.0,"url":"http://127.0.0.1:port-1/FractionFlow/","status":200}
+{"event":"body-begin","ms":8010.38,"url":"http://127.0.0.1:port-1/FractionFlow/"}
+{"event":"body-end","ms":8010.89,"url":"http://127.0.0.1:port-1/FractionFlow/"}
+{"event":"start-end","ms":8011.37,"name":"learner","port":"port-1","ok":true,"state":"ready"}
+{"event":"menu-main-input","ms":8011.96,"name":"learner","port":"port-1","mainMenus":2}
+{"event":"stop-begin","ms":8012.45,"name":"learner","port":"port-1"}
+{"event":"stop-send","ms":8012.93,"name":"learner","port":"port-1"}
+{"event":"ipc","ms":8052.01,"name":"learner","port":"port-1","type":"stopped"}
+{"event":"child-exit","ms":8064.34,"name":"learner","port":"port-1","pid":"child-2","code":0,"signal":null}
+{"event":"fetch-begin","ms":8084.71,"url":"http://127.0.0.1:port-1/"}
+{"event":"fetch-error","ms":8087.88,"url":"http://127.0.0.1:port-1/","message":"fetch failed"}
+{"event":"stop-end","ms":8088.27,"name":"learner","port":"port-1","ok":true}
+{"event":"menu-end","ms":8088.61,"name":"learner","port":"port-1"}
+{"event":"fetch-begin","ms":8088.99,"url":"http://127.0.0.1:port-1/FractionFlow/"}
+{"event":"fetch-error","ms":8091.03,"url":"http://127.0.0.1:port-1/FractionFlow/","message":"fetch failed"}
+{"event":"learner-closed-http-end","ms":8092.4}
+{"event":"menu-begin","ms":8092.74,"name":"prototype","port":"port-2"}
+{"event":"menu-main-input","ms":8093.16,"name":"prototype","port":"port-2","mainMenus":1}
+{"event":"menu-local-input","ms":8093.47,"name":"prototype","port":"port-2"}
+{"event":"start-begin","ms":8093.7,"name":"prototype","port":"port-2"}
+{"event":"spawn-begin","ms":8094.42,"name":"prototype","port":"port-2"}
+{"event":"spawn-return","ms":8111.14,"name":"prototype","port":"port-2","pid":"child-3"}
+{"event":"ipc","ms":8545.3,"name":"prototype","port":"port-2","type":"ready"}
+{"event":"fetch-begin","ms":8545.9,"url":"http://127.0.0.1:port-2/FractionFlow/prototypes/subtraction/"}
+{"event":"fetch-response","ms":8571.75,"url":"http://127.0.0.1:port-2/FractionFlow/prototypes/subtraction/","status":200}
+{"event":"body-begin","ms":8572.21,"url":"http://127.0.0.1:port-2/FractionFlow/prototypes/subtraction/"}
+{"event":"body-end","ms":8572.57,"url":"http://127.0.0.1:port-2/FractionFlow/prototypes/subtraction/"}
+{"event":"start-end","ms":8573.01,"name":"prototype","port":"port-2","ok":true,"state":"ready"}
+{"event":"menu-main-input","ms":8573.25,"name":"prototype","port":"port-2","mainMenus":2}
+{"event":"stop-begin","ms":8573.68,"name":"prototype","port":"port-2"}
+{"event":"stop-send","ms":8573.93,"name":"prototype","port":"port-2"}
+{"event":"ipc","ms":8577.01,"name":"prototype","port":"port-2","type":"stopped"}
+{"event":"child-exit","ms":9590.76,"name":"prototype","port":"port-2","pid":"child-3","code":0,"signal":null}
+{"event":"fetch-begin","ms":9598.04,"url":"http://127.0.0.1:port-2/"}
+{"event":"fetch-error","ms":9600.54,"url":"http://127.0.0.1:port-2/","message":"fetch failed"}
+{"event":"stop-end","ms":9600.99,"name":"prototype","port":"port-2","ok":true}
+{"event":"menu-end","ms":9601.26,"name":"prototype","port":"port-2"}
+{"event":"fetch-begin","ms":9601.76,"url":"http://127.0.0.1:port-2/FractionFlow/prototypes/subtraction/"}
+{"event":"fetch-error","ms":9603.18,"url":"http://127.0.0.1:port-2/FractionFlow/prototypes/subtraction/","message":"fetch failed"}
+{"event":"prototype-closed-http-end","ms":9603.55}
+{"event":"fetch-begin","ms":9603.77,"url":"http://127.0.0.1:port-3/FractionFlow/"}
+{"event":"fetch-response","ms":9609.11,"url":"http://127.0.0.1:port-3/FractionFlow/","status":200}
+{"event":"body-begin","ms":9609.41,"url":"http://127.0.0.1:port-3/FractionFlow/"}
+{"event":"body-end","ms":9609.71,"url":"http://127.0.0.1:port-3/FractionFlow/"}
+{"event":"external-close-begin","ms":9609.91}
+{"event":"external-close-end","ms":9644.58}
+{"event":"external-final-fetch-begin","ms":9644.98}
+{"event":"fetch-begin","ms":9645.21,"url":"http://127.0.0.1:port-3/FractionFlow/"}
+{"event":"fetch-error","ms":9652.31,"url":"http://127.0.0.1:port-3/FractionFlow/","message":"fetch failed"}
+{"event":"test-end","ms":9652.8}
