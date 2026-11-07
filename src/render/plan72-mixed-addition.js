@@ -8,7 +8,7 @@ function operand(form,label,view) {
   return section;
 }
 export function createPlan72Renderer({container,view,dispatch,progression,helpOpen,toggleHelp,active}) {
-  let root,model,destroyed=false; const inputs={}, composing=new Set();
+  let root,model,destroyed=false; const inputs={}, captions={}, composing=new Set(); let denominatorSuffix;
   const valid=n=>!destroyed&&active()&&root?.isConnected&&root.contains(n);
   const intent=(type,fields={})=>({type,context:model.context,...fields});
   function commit(input,field){if(!valid(input))return false;if(input.value.length>32){input.value=model.draft[field];root.querySelector('.plan72-feedback').textContent='Use at most 32 characters.';return false;}dispatch(intent('edit-mixed-addition',{field,raw:input.value}));return true;}
@@ -16,13 +16,14 @@ export function createPlan72Renderer({container,view,dispatch,progression,helpOp
   function mount(scene){model=scene.meaning.addition;root=el('section','plan72-addition');root.setAttribute('aria-label','Add mixed numbers');
     const prompt=el('h2','','Add these amounts.'); const operands=el('div','plan72-operands');
     const feedback=el('p','plan72-feedback');feedback.id=`plan72-guidance-${view}`;feedback.tabIndex=-1;
-    const controls=el('div','plan58-controls');for(const field of ['whole','pieces']){const label=el('label','plan58-label'),caption=el('span'),input=el('input');input.type='text';input.inputMode='numeric';input.autocomplete='off';input.dataset.field=field;input.setAttribute('aria-describedby',feedback.id);input.addEventListener('compositionstart',()=>composing.add(field));input.addEventListener('compositionend',()=>{if(composing.delete(field))commit(input,field);});input.addEventListener('input',e=>{if(!composing.has(field)&&!e.isComposing)commit(input,field);});label.append(caption,input);controls.append(label);inputs[field]=input;}
+    const controls=el('div','plan58-controls');for(const field of ['whole','pieces']){const label=el('label','plan58-label'),caption=el('span'),input=el('input');input.type='text';input.inputMode='numeric';input.autocomplete='off';input.dataset.field=field;input.setAttribute('aria-describedby',feedback.id);input.addEventListener('compositionstart',()=>composing.add(field));input.addEventListener('compositionend',()=>{if(composing.delete(field))commit(input,field);});input.addEventListener('input',e=>{if(!composing.has(field)&&!e.isComposing)commit(input,field);});label.append(caption); if(field==='pieces'){const row=el('span','plan72-piece-entry');denominatorSuffix=el('span','plan72-denominator');denominatorSuffix.setAttribute('aria-hidden','true');row.append(input,denominatorSuffix);label.append(row);}else label.append(input);controls.append(label);inputs[field]=input;captions[field]=caption;}
     const draft=el('div','plan72-draft');const actions=el('div','plan58-actions');const help=el('button','app-secondary-button','Help');help.type='button';help.addEventListener('click',()=>{if(valid(help)&&flushComposition())toggleHelp();});const check=el('button','control-btn','Check');check.type='button';check.addEventListener('click',()=>{if(valid(check)&&flushComposition())dispatch(intent('check-mixed-addition',{revision:model.draftRevision}));});actions.append(help,check);
     root.append(prompt,operands,feedback,controls,draft,actions,el('div','plan72-help'),el('div','plan72-result'));container.append(root);update(scene);
   }
   function update(scene){model=scene.meaning.addition;const live=model.status==='active',unit=model.unit, pieceUnit=model.pieceUnit;
     const operands=root.querySelector('.plan72-operands');operands.replaceChildren(operand(model.operands[0],'First amount',view),operand(model.operands[1],'Second amount',view));
-    for(const field of ['whole','pieces']){const input=inputs[field];input.previousSibling.textContent=field==='whole'?'Whole units in the sum':`${pieceUnit[0].toUpperCase()+pieceUnit.slice(1)} pieces in the sum`;if(!composing.has(field)&&input.value!==model.draft[field])input.value=model.draft[field];input.disabled=!live;}
+    for(const field of ['whole','pieces']){const input=inputs[field];captions[field].textContent=field==='whole'?'Whole units in the sum':`${pieceUnit[0].toUpperCase()+pieceUnit.slice(1)} pieces in the sum`;if(!composing.has(field)&&input.value!==model.draft[field])input.value=model.draft[field];input.disabled=!live;}
+    denominatorSuffix.textContent=`/ ${model.pieceLimit}`;
     const draft=root.querySelector('.plan72-draft');draft.replaceChildren(el('h3','',live?'Your draft':'Your answer'));
     for(const field of ['whole','pieces']){const region=model.regions[field],title=field==='whole'?'Whole units':`${pieceUnit} pieces`,summary=region.status==='valid'?String(region.value):region.status==='missing'?'not entered':'needs correction';draft.append(el('p','',`${title}: ${summary}`));if(view==='visual' && model.draftRows) draft.append(barsFor(model.draftRows[field]));}
     const feedback=root.querySelector('.plan72-feedback');feedback.className='plan72-feedback';feedback.textContent='';

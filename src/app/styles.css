@@ -1139,3 +1139,8 @@ body,
 .plan72-bar { width: min(100%, 18rem); }
 .plan72-feedback:focus { outline: 3px solid var(--ff-color-border-focus); outline-offset: 2px; }
 .plan72-result button { min-height: 44px; padding: .6rem 1rem; font: inherit; }
+
+.plan72-addition .plan58-label { min-width: 0; max-width: 100%; }
+.plan72-piece-entry { display: flex; align-items: center; gap: .4em; width: 10rem; max-width: 100%; }
+.plan72-piece-entry input { flex: 1 1 auto; min-width: 0; }
+.plan72-denominator { flex: none; white-space: nowrap; }
