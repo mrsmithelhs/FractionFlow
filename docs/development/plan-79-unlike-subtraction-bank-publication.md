@@ -1,7 +1,7 @@
 ---
 id: plan-79
 title: Unlike-Denominator Subtraction Bank Publication
-status: in-progress
+status: delivered
 depends_on: [plan-40, plan-76, plan-77]
 gate: "Approve exact candidate and set integration, audit coverage and replay witness before source changes. Owner reviews the locally published practice before closure."
 summary: >-
