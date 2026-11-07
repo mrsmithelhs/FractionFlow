@@ -1,0 +1,9 @@
+# Plan 76 technical delivery review
+
+2026-11-07. Technically accepted eight candidate records at `671efdf` and delivery report `eed34f0` for owner batch adoption at their registered targets. Orchestration reapplied the overlay to a fresh archive of `42da006`, reproduced both saved JSON receipts, and inspected the Chrome harness and representative capture. Eight candidates complete and replay after mock-DOM visual wrong-answer recovery and linear equivalent input. Five real Chrome witnesses cover operate controls and resolution. Earlier beats in that harness are supplied by intents. It establishes that a wrong answer does not advance and that a subsequent equivalent answer resolves, while input retention, earlier controls, view switching and live menu launch remain unverified.
+
+Recommend adopting all eight candidates for later integration. The same ordered operands found in an addition item are a different mathematical task. The audit covers the existing Plan 40 records and 39 resolvable binary live entries. The 54 unary or unresolved entries leave a broader pre-publication audit obligation. The eligible construct alternate that passes record validation remains outside the adopted targets.
+
+The publication manifest is a proposal. Repeating v1 items in v2 would make the exported item-only association helper ambiguous, but orchestration found no production caller of that helper. The Plan 40 app launch and context validation already pass explicit set identity. Treat this as an integration check rather than a proven runtime blocker or a reason for broad refactoring. A separate publication packet must preserve v1 membership and historical replay, prove chooser launch and Next under v2, and handle any actual identity failure found in that work.
+
+No shared runtime or live membership changes were made. Owner batch adoption and publication remain separate. No duplicate advisor review ran.

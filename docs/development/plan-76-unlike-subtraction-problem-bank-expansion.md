@@ -1,7 +1,7 @@
 ---
 id: plan-76
 title: Unlike-Denominator Subtraction Problem Bank Expansion
-status: in-progress
+status: delivered
 depends_on: [plan-35, plan-38, plan-40]
 gate: "Approve the candidate coverage and isolated validation mechanism before authoring. Owner adopts the vetted batch before live set integration."
 summary: >-

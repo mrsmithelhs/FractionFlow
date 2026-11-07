@@ -82,7 +82,7 @@ Packets are assigned to implementer agents. Each packet defines scope, required 
 | `plan-73` | Mixed-Number Addition With Regrouping Design | complete | Compare a single final answer with one brief learner-controlled exchange for same-denominator mixed addition, covering both zero and nonzero remainders after forming a new whole. |
 | `plan-74` | Mixed-Number Addition With Regrouping | complete | Add a standalone two-problem mixed-number practice that forms one new whole from eighths. Keep one final two-field response, then show the regrouping for both zero and nonzero remainders. |
 | `plan-75` | Mixed-Number Subtraction Without Decomposition Design | delivered | Design the first same-denominator mixed-number subtraction task, with no renaming of a whole. Compare a direct answer with one purposeful takeaway action and recommend a small exact batch. |
-| `plan-76` | Unlike-Denominator Subtraction Problem Bank Expansion | in-progress | Author and validate six to nine compact candidate records for the existing unlike-denominator subtraction recipes. Deliver a vetted bank and a versioned publication proposal with live integration separately gated. |
+| `plan-76` | Unlike-Denominator Subtraction Problem Bank Expansion | delivered | Author and validate six to nine compact candidate records for the existing unlike-denominator subtraction recipes. Deliver a vetted bank and a versioned publication proposal with live integration separately gated. |
 | `plan-77` | Mixed-Addition Modular Authoring Pilot | delivered | Separate records, task admission and versioned set membership for one mixed-number family. Measure whether a second author can add an unseen batch through data and membership alone while preserving existing replay. |
 <!-- plan-index:end -->
 
