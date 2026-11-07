@@ -1,0 +1,83 @@
+--- FractionFlow Reachable Behavior Route Contract Runner ---
+vite v6.4.3 building for production...
+transforming...
+✓ 107 modules transformed.
+rendering chunks...
+computing gzip size...
+../../temp/fractionflow-plan34-historical-entry/plan34-historical-entry.html                   0.53 kB │ gzip:   0.31 kB
+../../temp/fractionflow-plan34-historical-entry/assets/plan34-historical-entry-SmHMlE-S.css   42.30 kB │ gzip:   8.33 kB
+../../temp/fractionflow-plan34-historical-entry/assets/plan34-historical-entry-Cv---5eC.js   592.80 kB │ gzip: 139.26 kB
+
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rollupOptions.output.manualChunks to improve chunking: https://rollupjs.org/configuration-options/#output-manualchunks
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+✓ built in 935ms
+{
+  "outputDir": "C:\\AI\\FractionFlow\\.ff72-route-isolated\\temp\\fractionflow-plan34-historical-entry",
+  "entry": "plan34-historical-entry.html",
+  "practiceSet": "unlike-addition-vetted-set@4"
+}
+vite v6.4.3 building for production...
+transforming...
+✓ 107 modules transformed.
+rendering chunks...
+computing gzip size...
+../../temp/fractionflow-plan18-historical-entry/plan18-historical-entry.html                   0.53 kB │ gzip:   0.32 kB
+../../temp/fractionflow-plan18-historical-entry/assets/plan18-historical-entry-SmHMlE-S.css   42.30 kB │ gzip:   8.33 kB
+../../temp/fractionflow-plan18-historical-entry/assets/plan18-historical-entry-CcAczZ7i.js   592.77 kB │ gzip: 139.28 kB
+
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rollupOptions.output.manualChunks to improve chunking: https://rollupjs.org/configuration-options/#output-manualchunks
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+✓ built in 967ms
+{
+  "outputDir": "C:\\AI\\FractionFlow\\.ff72-route-isolated\\temp\\fractionflow-plan18-historical-entry",
+  "entry": "plan18-historical-entry.html",
+  "practiceSet": "unlike-addition-vetted-set@6"
+}
+vite v6.4.3 building for production...
+transforming...
+✓ 107 modules transformed.
+rendering chunks...
+computing gzip size...
+../../temp/fractionflow-plan39-historical-v7-entry/plan39-historical-v7-entry.html                   0.56 kB │ gzip:   0.33 kB
+../../temp/fractionflow-plan39-historical-v7-entry/assets/plan39-historical-v7-entry-SmHMlE-S.css   42.30 kB │ gzip:   8.33 kB
+../../temp/fractionflow-plan39-historical-v7-entry/assets/plan39-historical-v7-entry-C8ZojUaY.js   592.94 kB │ gzip: 139.31 kB
+
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rollupOptions.output.manualChunks to improve chunking: https://rollupjs.org/configuration-options/#output-manualchunks
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+✓ built in 954ms
+{
+  "outputDir": "C:\\AI\\FractionFlow\\.ff72-route-isolated\\temp\\fractionflow-plan39-historical-v7-entry",
+  "entry": "plan39-historical-v7-entry.html",
+  "practiceSet": "bar-to-line-same-amount-vetted-set@1",
+  "definitionRevision": "1",
+  "replaySchema": "fractionflow.episode-replay/v7"
+}
+vite v6.4.3 building for production...
+transforming...
+✓ 107 modules transformed.
+rendering chunks...
+computing gzip size...
+../../temp/fractionflow-legacy-navigation-entry/legacy-navigation-entry.html                   0.55 kB │ gzip:   0.33 kB
+../../temp/fractionflow-legacy-navigation-entry/assets/legacy-navigation-entry-SmHMlE-S.css   42.30 kB │ gzip:   8.33 kB
+../../temp/fractionflow-legacy-navigation-entry/assets/legacy-navigation-entry-eGqcxwJO.js   592.54 kB │ gzip: 139.17 kB
+
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rollupOptions.output.manualChunks to improve chunking: https://rollupjs.org/configuration-options/#output-manualchunks
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+✓ built in 923ms
+{
+  "outputDir": "C:\\AI\\FractionFlow\\.ff72-route-isolated\\temp\\fractionflow-legacy-navigation-entry",
+  "entry": "legacy-navigation-entry.html",
+  "navigationMode": "legacy-acknowledged"
+}
+Executing 1 browser witnesses from 1 route rows using browser channel: chrome...
+  ✓ ROUTE-ENTRY-GEAR-TAB [standard-motion] (274ms) [production-default-v7]
+
+Route Matrix Run Complete: 1 passed, 0 failed (1 route rows; 1 browser executions).

@@ -155,7 +155,7 @@
         }
       ],
       "focus": "<p class=\"plan72-feedback plan50-success\" id=\"plan72-guidance-visual\" tabindex=\"-1\">That's right.</p>",
-      "text": "Add these amounts.\nFirst amount\n1\n1\n8\n\n1 whole unit and 1 eighth\n\nSecond amount\n2\n3\n8\n\n2 whole units and 3 eighths\n\nThat's right.\n\nWhole units in the sum\nEighth pieces in the sum\nYour draft\n\nWhole units: 3\n\neighth pieces: 4\n\nThe sum is \n3\n4\n8\n\nYou’ve tried every problem in this set.\n\nBack to start"
+      "text": "Add these amounts.\nFirst amount\n1\n1\n8\n\n1 whole unit and 1 eighth\n\nSecond amount\n2\n3\n8\n\n2 whole units and 3 eighths\n\nThat's right.\n\nWhole units in the sum\nEighth pieces in the sum\nYour answer\n\nWhole units: 3\n\neighth pieces: 4\n\nThe sum is \n3\n4\n8\n\nYou’ve tried every problem in this set.\n\nBack to start"
     },
     {
       "case": "root200",
@@ -310,7 +310,7 @@
         }
       ],
       "focus": "<p class=\"plan72-feedback plan50-success\" id=\"plan72-guidance-visual\" tabindex=\"-1\">That's right.</p>",
-      "text": "Add these amounts.\nFirst amount\n1\n1\n8\n\n1 whole unit and 1 eighth\n\nSecond amount\n2\n3\n8\n\n2 whole units and 3 eighths\n\nThat's right.\n\nWhole units in the sum\nEighth pieces in the sum\nYour draft\n\nWhole units: 3\n\neighth pieces: 4\n\nThe sum is \n3\n4\n8\n\nYou’ve tried every problem in this set.\n\nBack to start"
+      "text": "Add these amounts.\nFirst amount\n1\n1\n8\n\n1 whole unit and 1 eighth\n\nSecond amount\n2\n3\n8\n\n2 whole units and 3 eighths\n\nThat's right.\n\nWhole units in the sum\nEighth pieces in the sum\nYour answer\n\nWhole units: 3\n\neighth pieces: 4\n\nThe sum is \n3\n4\n8\n\nYou’ve tried every problem in this set.\n\nBack to start"
     },
     {
       "case": "chromebook",
@@ -465,12 +465,22 @@
         }
       ],
       "focus": "<p class=\"plan72-feedback plan50-success\" id=\"plan72-guidance-visual\" tabindex=\"-1\">That's right.</p>",
-      "text": "Add these amounts.\nFirst amount\n1\n1\n8\n\n1 whole unit and 1 eighth\n\nSecond amount\n2\n3\n8\n\n2 whole units and 3 eighths\n\nThat's right.\n\nWhole units in the sum\nEighth pieces in the sum\nYour draft\n\nWhole units: 3\n\neighth pieces: 4\n\nThe sum is \n3\n4\n8\n\nYou’ve tried every problem in this set.\n\nBack to start"
+      "text": "Add these amounts.\nFirst amount\n1\n1\n8\n\n1 whole unit and 1 eighth\n\nSecond amount\n2\n3\n8\n\n2 whole units and 3 eighths\n\nThat's right.\n\nWhole units in the sum\nEighth pieces in the sum\nYour answer\n\nWhole units: 3\n\neighth pieces: 4\n\nThe sum is \n3\n4\n8\n\nYou’ve tried every problem in this set.\n\nBack to start"
     },
     {
       "case": "linear-keyboard-touch",
-      "text": "Add these amounts.\nFirst amount\n1\n1\n4\n\n1 whole unit and 1 fourth\n\nSecond amount\n1\n1\n4\n\n1 whole unit and 1 fourth\n\nThat's right.\n\nWhole units in the sum\nFourth pieces in the sum\nYour draft\n\nWhole units: 2\n\nfourth pieces: 2\n\nThe sum is \n2\n2\n4\n\nNext problem",
+      "text": "Add these amounts.\nFirst amount\n1\n1\n4\n\n1 whole unit and 1 fourth\n\nSecond amount\n1\n1\n4\n\n1 whole unit and 1 fourth\n\nThat's right.\n\nWhole units in the sum\nFourth pieces in the sum\nYour answer\n\nWhole units: 2\n\nfourth pieces: 2\n\nThe sum is \n2\n2\n4\n\nNext problem",
       "accepted": 1
+    },
+    {
+      "case": "touch-response",
+      "wholeFocused": true,
+      "piecesFocused": true,
+      "accepted": 1,
+      "answerHeading": 1,
+      "nextVisible": true,
+      "progressed": 1,
+      "entry": "hardware keyboard automation after taps; on-screen keyboard not observed"
     }
   ],
   "errors": []

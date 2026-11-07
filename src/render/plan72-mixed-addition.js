@@ -23,7 +23,7 @@ export function createPlan72Renderer({container,view,dispatch,progression,helpOp
   function update(scene){model=scene.meaning.addition;const live=model.status==='active',unit=model.unit, pieceUnit=model.pieceUnit;
     const operands=root.querySelector('.plan72-operands');operands.replaceChildren(operand(model.operands[0],'First amount',view),operand(model.operands[1],'Second amount',view));
     for(const field of ['whole','pieces']){const input=inputs[field];input.previousSibling.textContent=field==='whole'?'Whole units in the sum':`${pieceUnit[0].toUpperCase()+pieceUnit.slice(1)} pieces in the sum`;if(!composing.has(field)&&input.value!==model.draft[field])input.value=model.draft[field];input.disabled=!live;}
-    const draft=root.querySelector('.plan72-draft');draft.replaceChildren(el('h3','','Your draft'));
+    const draft=root.querySelector('.plan72-draft');draft.replaceChildren(el('h3','',live?'Your draft':'Your answer'));
     for(const field of ['whole','pieces']){const region=model.regions[field],title=field==='whole'?'Whole units':`${pieceUnit} pieces`,summary=region.status==='valid'?String(region.value):region.status==='missing'?'not entered':'needs correction';draft.append(el('p','',`${title}: ${summary}`));if(view==='visual' && model.draftRows) draft.append(barsFor(model.draftRows[field]));}
     const feedback=root.querySelector('.plan72-feedback');feedback.className='plan72-feedback';feedback.textContent='';
     if(model.evaluation.status==='incorrect'){feedback.textContent='Check both amounts and try again.';feedback.classList.add('house-retry');}
