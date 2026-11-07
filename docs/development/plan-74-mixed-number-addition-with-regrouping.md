@@ -1,7 +1,8 @@
 ---
 id: plan-74
 title: Mixed-Number Addition With Regrouping
-status: delivered
+status: complete
+resolution: "Owner accepted both rendered remainder cases after the presentation and equal-eighth geometry repairs."
 depends_on: [plan-56, plan-72, plan-73]
 gate: "Approve the admission, response and representation mechanism before source work. Owner reviews both rendered remainder cases before closeout."
 summary: >-
