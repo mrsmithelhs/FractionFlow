@@ -7,7 +7,7 @@ import {
 import { createFractionFlowApp } from '../src/app/app.js';
 import {
   PLAN40_RECIPE_IDS,
-  PLAN40_SUBTRACTION_RECIPE_PRACTICE_SET,
+  PLAN40_SUBTRACTION_RECIPE_PRACTICE_SET_V2,
   PLAN40_DATA_ONLY_HOLDOUT_SET,
 } from '../src/content/data/plan40-reusable-subtraction-recipes-records.js';
 import { setupMockDOM, teardownMockDOM } from './fixtures/mock-dom.js';
@@ -18,14 +18,14 @@ describe('Plan 40 app shell subtraction recipes integration', () => {
   });
 
   describe('Practice type registration and invariants', () => {
-    it('registers PLAN40_UNLIKE_SUBTRACTION_PRACTICE_TYPE in PRACTICE_TYPES with all 9 vetted items', () => {
+    it('registers PLAN40_UNLIKE_SUBTRACTION_PRACTICE_TYPE in PRACTICE_TYPES with all 17 vetted items', () => {
       expect(PLAN40_UNLIKE_SUBTRACTION_PRACTICE_TYPE.id).toBe('unlike-denominator-subtraction');
       expect(PLAN40_UNLIKE_SUBTRACTION_PRACTICE_TYPE.label).toBe('Subtract fractions with different denominators');
       expect(PLAN40_UNLIKE_SUBTRACTION_PRACTICE_TYPE.setId).toBe('unlike-subtraction-vetted-set');
-      expect(PLAN40_UNLIKE_SUBTRACTION_PRACTICE_TYPE.setRevision).toBe('1');
-      expect(PLAN40_UNLIKE_SUBTRACTION_PRACTICE_TYPE.items).toHaveLength(9);
+      expect(PLAN40_UNLIKE_SUBTRACTION_PRACTICE_TYPE.setRevision).toBe('2');
+      expect(PLAN40_UNLIKE_SUBTRACTION_PRACTICE_TYPE.items).toHaveLength(17);
       expect(PLAN40_UNLIKE_SUBTRACTION_PRACTICE_TYPE.items.map((it) => it.id)).toEqual(
-        PLAN40_SUBTRACTION_RECIPE_PRACTICE_SET.itemIds,
+        PLAN40_SUBTRACTION_RECIPE_PRACTICE_SET_V2.itemIds,
       );
 
       // Verify holdouts are excluded

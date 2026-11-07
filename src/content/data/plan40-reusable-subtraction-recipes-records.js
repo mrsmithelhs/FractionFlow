@@ -122,6 +122,15 @@ const records = [
     requiredSide: 'left',
   },
 
+  {"itemId":"plan76-construct-two-thirds-one-fifth-15","fixtureId":"curated-plan76-construct-two-thirds-one-fifth-15","authoringRevision":"plan76-record-v1","fixtureProfileId":"curated-review","fixtureSelector":"relatively-prime-subtraction","fixtureOverlays":[],"sourceForms":{"left":{"kind":"fraction","numerator":"2","denominator":"3"},"right":{"kind":"fraction","numerator":"1","denominator":"5"}},"recipeId":"unlike-subtraction.construct-equivalent","targetDenominator":"15"},
+  {"itemId":"plan76-construct-five-sixths-one-tenth-30","fixtureId":"curated-plan76-construct-five-sixths-one-tenth-30","authoringRevision":"plan76-record-v1","fixtureProfileId":"curated-review","fixtureSelector":"shared-factor-subtraction","fixtureOverlays":["reducible-result"],"sourceForms":{"left":{"kind":"fraction","numerator":"5","denominator":"6"},"right":{"kind":"fraction","numerator":"1","denominator":"10"}},"recipeId":"unlike-subtraction.construct-equivalent","targetDenominator":"30"},
+  {"itemId":"plan76-construct-three-fifths-one-fourth-20","fixtureId":"curated-plan76-construct-three-fifths-one-fourth-20","authoringRevision":"plan76-record-v1","fixtureProfileId":"curated-review","fixtureSelector":"relatively-prime-subtraction","fixtureOverlays":[],"sourceForms":{"left":{"kind":"fraction","numerator":"3","denominator":"5"},"right":{"kind":"fraction","numerator":"1","denominator":"4"}},"recipeId":"unlike-subtraction.construct-equivalent","targetDenominator":"20"},
+  {"itemId":"plan76-inspect-three-fourths-one-fifth-20","fixtureId":"curated-plan76-inspect-three-fourths-one-fifth-20","authoringRevision":"plan76-record-v1","fixtureProfileId":"curated-review","fixtureSelector":"relatively-prime-subtraction","fixtureOverlays":[],"sourceForms":{"left":{"kind":"fraction","numerator":"3","denominator":"4"},"right":{"kind":"fraction","numerator":"1","denominator":"5"}},"recipeId":"unlike-subtraction.inspect-keep-repair","targetDenominator":"20","stimulusId":"plan76-inspect-three-fourths-one-fifth-20-stimulus","stimulusRevision":"1","candidates":{"left":{"kind":"fraction","numerator":"15","denominator":"20"},"right":{"kind":"fraction","numerator":"5","denominator":"20"}}},
+  {"itemId":"plan76-inspect-seven-eighths-one-sixth-24","fixtureId":"curated-plan76-inspect-seven-eighths-one-sixth-24","authoringRevision":"plan76-record-v1","fixtureProfileId":"curated-review","fixtureSelector":"shared-factor-subtraction","fixtureOverlays":[],"sourceForms":{"left":{"kind":"fraction","numerator":"7","denominator":"8"},"right":{"kind":"fraction","numerator":"1","denominator":"6"}},"recipeId":"unlike-subtraction.inspect-keep-repair","targetDenominator":"24","stimulusId":"plan76-inspect-seven-eighths-one-sixth-24-stimulus","stimulusRevision":"1","candidates":{"left":{"kind":"fraction","numerator":"20","denominator":"24"},"right":{"kind":"fraction","numerator":"4","denominator":"24"}}},
+  {"itemId":"plan76-inspect-four-fifths-one-third-15","fixtureId":"curated-plan76-inspect-four-fifths-one-third-15","authoringRevision":"plan76-record-v1","fixtureProfileId":"curated-review","fixtureSelector":"relatively-prime-subtraction","fixtureOverlays":[],"sourceForms":{"left":{"kind":"fraction","numerator":"4","denominator":"5"},"right":{"kind":"fraction","numerator":"1","denominator":"3"}},"recipeId":"unlike-subtraction.inspect-keep-repair","targetDenominator":"15","stimulusId":"plan76-inspect-four-fifths-one-third-15-stimulus","stimulusRevision":"1","candidates":{"left":{"kind":"fraction","numerator":"11","denominator":"15"},"right":{"kind":"fraction","numerator":"5","denominator":"15"}}},
+  {"itemId":"plan76-identify-seven-eighths-one-fourth-8","fixtureId":"curated-plan76-identify-seven-eighths-one-fourth-8","authoringRevision":"plan76-record-v1","fixtureProfileId":"curated-review","fixtureSelector":"nested-denominator-subtraction","fixtureOverlays":[],"sourceForms":{"left":{"kind":"fraction","numerator":"7","denominator":"8"},"right":{"kind":"fraction","numerator":"1","denominator":"4"}},"recipeId":"unlike-subtraction.identify-side-construct","targetDenominator":"8","requiredSide":"right"},
+  {"itemId":"plan76-identify-three-fourths-one-eighth-8","fixtureId":"curated-plan76-identify-three-fourths-one-eighth-8","authoringRevision":"plan76-record-v1","fixtureProfileId":"curated-review","fixtureSelector":"nested-denominator-subtraction","fixtureOverlays":[],"sourceForms":{"left":{"kind":"fraction","numerator":"3","denominator":"4"},"right":{"kind":"fraction","numerator":"1","denominator":"8"}},"recipeId":"unlike-subtraction.identify-side-construct","targetDenominator":"8","requiredSide":"left"},
+
   // --- Data-Only Holdouts (2 items) ---
   {
     itemId: 'plan40-holdout-construct-three-fifths-one-half-10',
@@ -198,6 +207,21 @@ export const PLAN40_SUBTRACTION_RECIPE_PRACTICE_SET = deepFreeze({
   ],
 });
 
+export const PLAN40_SUBTRACTION_RECIPE_PRACTICE_SET_V2 = deepFreeze({
+  id: PLAN40_SUBTRACTION_RECIPE_PRACTICE_SET_ID,
+  revision: '2',
+  itemIds: [...PLAN40_SUBTRACTION_RECIPE_PRACTICE_SET.itemIds,
+    'plan76-construct-two-thirds-one-fifth-15',
+    'plan76-construct-five-sixths-one-tenth-30',
+    'plan76-construct-three-fifths-one-fourth-20',
+    'plan76-inspect-three-fourths-one-fifth-20',
+    'plan76-inspect-seven-eighths-one-sixth-24',
+    'plan76-inspect-four-fifths-one-third-15',
+    'plan76-identify-seven-eighths-one-fourth-8',
+    'plan76-identify-three-fourths-one-eighth-8',
+  ],
+});
+
 export const PLAN40_DATA_ONLY_HOLDOUT_SET = deepFreeze({
   id: PLAN40_DATA_ONLY_HOLDOUTS_ID,
   revision: PLAN40_DATA_ONLY_HOLDOUTS_REVISION,
@@ -209,6 +233,7 @@ export const PLAN40_DATA_ONLY_HOLDOUT_SET = deepFreeze({
 
 export const PLAN40_RECIPE_ASSOCIATION_SETS = deepFreeze([
   PLAN40_SUBTRACTION_RECIPE_PRACTICE_SET,
+  PLAN40_SUBTRACTION_RECIPE_PRACTICE_SET_V2,
   PLAN40_DATA_ONLY_HOLDOUT_SET,
 ]);
 

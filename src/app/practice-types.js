@@ -30,7 +30,7 @@ import {
   PLAN36_SUBTRACTION_RECORDS,
 } from '../content/data/plan36-like-denominator-subtraction-records.js';
 import {
-  PLAN40_SUBTRACTION_RECIPE_PRACTICE_SET,
+  PLAN40_SUBTRACTION_RECIPE_PRACTICE_SET_V2,
   PLAN40_SUBTRACTION_RECIPE_RECORDS,
 } from '../content/data/plan40-reusable-subtraction-recipes-records.js';
 import { deepFreeze } from '../content/schema.js';
@@ -264,7 +264,7 @@ export const PLAN38_PRACTICE_TYPES_V8 = deepFreeze([
 ]);
 
 const plan40RecordByItemId = new Map(PLAN40_SUBTRACTION_RECIPE_RECORDS.map((record) => [record.itemId, record]));
-const plan40LiveItems = PLAN40_SUBTRACTION_RECIPE_PRACTICE_SET.itemIds.map((itemId) => {
+const plan40LiveItems = PLAN40_SUBTRACTION_RECIPE_PRACTICE_SET_V2.itemIds.map((itemId) => {
   const record = plan40RecordByItemId.get(itemId);
   if (!record) {
     throw new TypeError(`Plan 40 live practice item has no exact task record: ${itemId}`);
@@ -286,8 +286,8 @@ const plan40LiveItems = PLAN40_SUBTRACTION_RECIPE_PRACTICE_SET.itemIds.map((item
 export const PLAN40_UNLIKE_SUBTRACTION_PRACTICE_TYPE = deepFreeze({
   id: 'unlike-denominator-subtraction',
   label: 'Subtract fractions with different denominators',
-  setId: PLAN40_SUBTRACTION_RECIPE_PRACTICE_SET.id,
-  setRevision: PLAN40_SUBTRACTION_RECIPE_PRACTICE_SET.revision,
+  setId: PLAN40_SUBTRACTION_RECIPE_PRACTICE_SET_V2.id,
+  setRevision: PLAN40_SUBTRACTION_RECIPE_PRACTICE_SET_V2.revision,
   items: plan40LiveItems,
   episodeDefinition: PLAN40_REUSABLE_SUBTRACTION_RECIPES_EPISODE_DEFINITION,
 });

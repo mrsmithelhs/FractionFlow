@@ -30,7 +30,7 @@ describe('Plan 43 — Shared Episode Completion and Progression Suite', () => {
 
       // 4. unlike-denominator-subtraction: 9 items (Plan 40)
       const unlikeSubtraction = PRACTICE_TYPES.find((pt) => pt.id === 'unlike-denominator-subtraction');
-      expect(unlikeSubtraction.items).toHaveLength(9);
+      expect(unlikeSubtraction.items).toHaveLength(17);
 
       // 5. bar-to-line-same-amount: 8 items (Plan 37/39)
       const barToLine = PRACTICE_TYPES.find((pt) => pt.id === 'bar-to-line-same-amount');
@@ -42,7 +42,7 @@ describe('Plan 43 — Shared Episode Completion and Progression Suite', () => {
       const totalItems = PRACTICE_TYPES.reduce((acc, pt) => acc + pt.items.length, 0);
       expect(PRACTICE_TYPES.find(pt => pt.id === 'directed-number-line-endpoint').items).toHaveLength(6);
       expect(PRACTICE_TYPES.find(pt => pt.id === 'mixed-number-addition-with-regrouping').items).toHaveLength(2);
-      expect(totalItems).toBe(93);
+      expect(totalItems).toBe(101);
       expect(PRACTICE_TYPES).toHaveLength(13);
     });
 

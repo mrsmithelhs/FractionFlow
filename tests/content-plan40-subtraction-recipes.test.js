@@ -64,7 +64,7 @@ describe('Plan 40 content: curated subtraction records and recipes (Stage 1)', (
   it('declares exactly 9 vetted records and 2 data-only holdouts', () => {
     expect(PLAN40_VETTED_BATCH).toHaveLength(9);
     expect(PLAN40_DATA_ONLY_HOLDOUTS).toHaveLength(2);
-    expect(PLAN40_SUBTRACTION_RECIPE_RECORDS).toHaveLength(11);
+    expect(PLAN40_SUBTRACTION_RECIPE_RECORDS).toHaveLength(19);
 
     const expectedVettedIds = [
       'plan40-construct-half-fifth-10',
@@ -148,7 +148,7 @@ describe('Plan 40 content: curated subtraction records and recipes (Stage 1)', (
 
     const invalidSides = [];
     for (const record of inspectRecords) {
-      expect(record.stimulusId).toMatch(/^plan40-stim-/);
+      expect(record.stimulusId).toMatch(/^(plan40-stim-|plan76-.*-stimulus$)/);
       expect(record.stimulusRevision).toBe('1');
       expect(record.candidates).toBeDefined();
 

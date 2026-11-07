@@ -1,0 +1,22 @@
+src/content\full-addition-task-patterns.js:72:    stimulusId: candidates ? `plan34-${record.itemId}-inspect-candidate` : null,
+src/content\plan35-addition-recipe-task.js:11:  'taskDataId', 'taskDataRevision', 'stimulusId', 'stimulusRevision', 'candidates',
+src/content\plan35-addition-recipe-task.js:79:    if (trueCount !== 1 || !record.stimulusId || record.stimulusRevision !== '1') throw taskError('inspect stimulus must contain one valid and one invalid authored candidate');
+src/content\plan35-addition-recipe-task.js:80:  } else if (record.candidates || record.stimulusId || record.stimulusRevision) {
+src/content\plan35-addition-recipe-task.js:105:    taskDataRevision: record.taskDataRevision, stimulusId: record.stimulusId,
+src/content\plan40-reusable-subtraction-recipes.js:33:  'stimulusId',
+src/content\plan40-reusable-subtraction-recipes.js:166:    if (trueCount !== 1 || !record.stimulusId || record.stimulusRevision !== '1') {
+src/content\plan40-reusable-subtraction-recipes.js:169:  } else if (record.candidates || record.stimulusId || record.stimulusRevision) {
+src/content\plan40-reusable-subtraction-recipes.js:188:  { practiceSetId = 'unlike-subtraction-vetted-set', practiceSetRevision = '1' } = {},
+src/content\plan40-reusable-subtraction-recipes.js:209:    stimulusId: record.stimulusId,
+src/content\data\plan35-addition-recipe-records.js:22:    stimulusId: 'plan34-one-half-plus-one-third-inspect-candidate', stimulusRevision: '1', candidates: { left: fraction('5', '12'), right: fraction('4', '12') },
+src/content\data\plan35-addition-recipe-records.js:27:    stimulusId: 'plan34-one-third-plus-one-fourth-inspect-candidate', stimulusRevision: '1', candidates: { left: fraction('4', '12'), right: fraction('7', '12') },
+src/content\data\plan35-addition-recipe-records.js:49:    stimulusId: 'plan35-stim-third-eighth-24', stimulusRevision: '1', candidates: { left: fraction('5', '24'), right: fraction('3', '24') },
+src/content\data\plan35-addition-recipe-records.js:55:    stimulusId: 'plan35-stim-fifth-third-30', stimulusRevision: '1', candidates: { left: fraction('6', '30'), right: fraction('11', '30') },
+src/content\data\plan35-addition-recipe-records.js:87:    taskDataRevision: '2', stimulusId: 'plan35-stim-holdout-half-fifth-20', stimulusRevision: '1',
+src/content\data\plan35-addition-recipe-records.js:100:  stimulusId: record.stimulusId ?? null,
+src/content\data\plan40-reusable-subtraction-recipes-records.js:57:    stimulusId: 'plan40-stim-inspect-two-thirds-one-fourth-12',
+src/content\data\plan40-reusable-subtraction-recipes-records.js:71:    stimulusId: 'plan40-stim-inspect-seven-tenths-one-fourth-20',
+src/content\data\plan40-reusable-subtraction-recipes-records.js:85:    stimulusId: 'plan40-stim-inspect-five-sixths-seven-tenths-30',
+src/content\data\plan40-reusable-subtraction-recipes-records.js:149:    stimulusId: 'plan40-stim-holdout-three-fourths-one-sixth-12',
+src/content\data\plan40-reusable-subtraction-recipes-records.js:163:  stimulusId: record.stimulusId ?? null,
+src/content\data\plan40-reusable-subtraction-recipes-records.js:180:export const PLAN40_SUBTRACTION_RECIPE_PRACTICE_SET_ID = 'unlike-subtraction-vetted-set';
