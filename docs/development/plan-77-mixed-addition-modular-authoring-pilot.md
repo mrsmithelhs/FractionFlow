@@ -1,7 +1,7 @@
 ---
 id: plan-77
 title: Mixed-Addition Modular Authoring Pilot
-status: in-progress
+status: delivered
 depends_on: [plan-30, plan-42, plan-74]
 gate: "Approve the Plan 74 content seam and holdout protocol before source changes. Broader adoption requires a separate decision."
 summary: >-
