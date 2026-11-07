@@ -1,11 +1,9 @@
 ---
 id: plan-82
 title: Mixed-Number Subtraction With Decomposition
-status: ready
+status: in-progress
 depends_on: [plan-56, plan-74, plan-77, plan-78, plan-80]
 gate: "Approve the response, help, representation and replay mechanism before source changes. Owner reviews the rendered practice before closeout."
-superseded_by: null
-resolution: null
 summary: >-
   Implement the four adopted mixed-number subtraction problems in eighths
   with one final response and an optional learner-controlled renaming aid.
