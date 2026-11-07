@@ -536,8 +536,8 @@ core preserves numerical identity, and accepted app explanations connect forms w
 
 The Phase 5 review found a remaining learner decision. Given a mixed number, the learner chooses
 the improper fraction that names the same amount. The owner adopted this bridge design in Plan 83.
-Plan 84 specifies that both forms appear at the same number-line point only after a correct Check.
-Phase 5 exit remains open pending owner review of the implemented bridge. Evidence of learner
+The owner accepted the rendered Plan 84 bridge. Both forms appear at the same number-line point
+only after a correct Check. The Phase 5 exit decision remains open. Evidence of learner
 understanding and broader transfer remains open.
 
 See the [Plan 83 exit review](../reports/development/plan-83-phase-5-exit-and-mixed-improper-bridge-design/phase-5-exit-review.md),
