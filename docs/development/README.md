@@ -80,7 +80,7 @@ Packets are assigned to implementer agents. Each packet defines scope, required 
 | `plan-71` | Mixed-Number Addition Without Regrouping Design | complete | Design the first mixed-number addition task with mixed-number operands and fractional parts that sum to less than one. Reuse the established whole and fraction representations and propose a small first batch. |
 | `plan-72` | Mixed-Number Addition Without Regrouping | complete | Implement four same-denominator mixed-number sums without regrouping. Learners enter whole and source-piece totals and check once. Verify the eighths example at narrow width and enlarged text. |
 | `plan-73` | Mixed-Number Addition With Regrouping Design | complete | Compare a single final answer with one brief learner-controlled exchange for same-denominator mixed addition, covering both zero and nonzero remainders after forming a new whole. |
-| `plan-74` | Mixed-Number Addition With Regrouping | ready | Add a standalone two-problem mixed-number practice that forms one new whole from eighths. Keep one final two-field response, then show the regrouping for both zero and nonzero remainders. |
+| `plan-74` | Mixed-Number Addition With Regrouping | in-progress | Add a standalone two-problem mixed-number practice that forms one new whole from eighths. Keep one final two-field response, then show the regrouping for both zero and nonzero remainders. |
 <!-- plan-index:end -->
 
 ## Report Folders

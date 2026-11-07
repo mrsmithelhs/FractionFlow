@@ -1,11 +1,9 @@
 ---
 id: plan-74
 title: Mixed-Number Addition With Regrouping
-status: ready
+status: in-progress
 depends_on: [plan-56, plan-72, plan-73]
 gate: "Approve the admission, response and representation mechanism before source work. Owner reviews both rendered remainder cases before closeout."
-superseded_by: null
-resolution: null
 summary: >-
   Add a standalone two-problem mixed-number practice that forms one new whole
   from eighths. Keep one final two-field response, then show the regrouping
