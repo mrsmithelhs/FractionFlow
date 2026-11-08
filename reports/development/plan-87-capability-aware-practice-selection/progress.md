@@ -1,0 +1,9 @@
+# Plan 87 — Requirement 0 progress
+
+2026-11-07. Proposal only; no source changes. Baseline `8244ea676aa5c8326e8ed8c55aaf674cabe35f58`, clean at preflight. `node scripts/dev/plan-status.js check plan-87` returned RUNNABLE. `mechanism.md` proposes a four-item seeded no-repeat draw, fit evidence and safe failure, stable active episodes, deterministic shrink handling, managed mix and replay boundaries, and isolated review of all four registered Plan 89 sets. Proposal committed as `27bdacb`; default exposure and rendered review remain owner gates.
+
+Read-only Luna-medium workers investigated the packet/bank ledger and current practice behavior; requested model was tool-selected, not independently observed. Lead checked the source and corrected the investigation's initial concern about the visible scheduled Start: `app.js` separately wires Start to `startScheduledSession` and the named magnitude entry to its fixed manifest. Advisor consultation was not warranted for this docs-only proposal; orchestration mechanism review remains required before behavioral work.
+
+Validation: packet preflight RUNNABLE; `node scripts/dev/plan-status.js lint` OK; `git diff --check` and the untracked-file whitespace check found no whitespace errors (the latter returned 1 because it compares a new file). No tests, build, browser or learner validation ran for this proposal. Initial Git staging hit `.git/index.lock: Permission denied`; the lock was absent and a refresh probe confirmed the same restriction. Scoped staging and local commit succeeded with elevated access. No push.
+
+Remaining: orchestration approval before source changes; establish concrete task-specific thresholds and classes with production-faithful evidence; technical and owner rendered review, followed by a separate owner decision on default exposure. Ready for Requirement 0 orchestration review: yes. Packet delivery and completion are not claimed.
