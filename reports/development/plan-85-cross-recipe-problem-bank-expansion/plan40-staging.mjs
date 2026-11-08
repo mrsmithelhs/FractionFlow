@@ -2,7 +2,7 @@
 // unchanged recipe and problem validators. No candidate gains live membership.
 import { mkdtemp,cp,writeFile,readFile,rm } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
-import { join,resolve } from 'node:path';
+import { join,resolve,relative,sep,isAbsolute } from 'node:path';
 import { pathToFileURL } from 'node:url';
 import assert from 'node:assert/strict';
 import { PLAN40_SUBTRACTION_RECIPE_RECORDS as original, PLAN40_SUBTRACTION_RECIPE_PRACTICE_SET_V2 as live, PLAN40_DATA_ONLY_HOLDOUT_SET as holdouts } from '../../../src/content/data/plan40-reusable-subtraction-recipes-records.js';
@@ -16,10 +16,12 @@ assert.equal(live.itemIds.length,17);assert.equal(existing.length,19);assert.equ
 const seen=new Set(existing.map(key));assert.equal(new Set(original.filter(r=>live.itemIds.includes(r.itemId)).map(key)).size,17);
 for(const r of candidates){const k=key(r);assert.ok(!seen.has(k),`duplicate ${k}`);seen.add(k);}
 const prefix=resolve(tmpdir(),'fractionflow-plan85-subtraction-'),sandbox=await mkdtemp(prefix);
+const inside=target=>{const rel=relative(resolve(sandbox),resolve(target));assert.ok(rel && rel!=='..'&&!rel.startsWith('..'+sep)&&!isAbsolute(rel),'destination outside disposable directory');return resolve(target);};
 try {
-  await cp(new URL('../../../src/',import.meta.url),join(sandbox,'src'),{recursive:true});
-  await writeFile(join(sandbox,'package.json'),'{"type":"module"}\n');
-  const file=join(sandbox,'src/content/data/plan40-reusable-subtraction-recipes-records.js');
+  assert.ok(resolve(sandbox).startsWith(prefix),'temporary destination is outside the expected prefix');
+  await cp(new URL('../../../src/',import.meta.url),inside(join(sandbox,'src')),{recursive:true});
+  await writeFile(inside(join(sandbox,'package.json')),'{"type":"module"}\n');
+  const file=inside(join(sandbox,'src/content/data/plan40-reusable-subtraction-recipes-records.js'));
   const text=await readFile(file,'utf8'),marker='];\n\nexport const PLAN40_SUBTRACTION_RECIPE_RECORDS';
   assert.equal(text.split(marker).length,2,'isolated insertion point must be unique');
   await writeFile(file,text.replace(marker,`${candidates.map(r=>JSON.stringify(r)+',').join('\n')}\n${marker}`));

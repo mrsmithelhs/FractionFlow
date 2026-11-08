@@ -172,12 +172,12 @@
     "candidates": {
       "left": {
         "kind": "fraction",
-        "numerator": "9",
+        "numerator": "10",
         "denominator": "18"
       },
       "right": {
         "kind": "fraction",
-        "numerator": "5",
+        "numerator": "4",
         "denominator": "18"
       }
     },
@@ -466,12 +466,12 @@
     "candidates": {
       "left": {
         "kind": "fraction",
-        "numerator": "7",
+        "numerator": "8",
         "denominator": "21"
       },
       "right": {
         "kind": "fraction",
-        "numerator": "10",
+        "numerator": "9",
         "denominator": "21"
       }
     },

@@ -2,7 +2,7 @@
 // Plan 59 validator with report-local candidate records. Production is untouched.
 import { mkdtemp, cp, writeFile, rm } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
-import { join, resolve } from 'node:path';
+import { join, resolve, relative, sep, isAbsolute } from 'node:path';
 import { pathToFileURL } from 'node:url';
 import { createHash } from 'node:crypto';
 import assert from 'node:assert/strict';
@@ -40,12 +40,14 @@ while(candidates.length<24) {
 }
 const prefix=resolve(tmpdir(),'fractionflow-plan85-');
 const sandbox=await mkdtemp(prefix);
+const inside=target=>{const rel=relative(resolve(sandbox),resolve(target));assert.ok(rel && rel!=='..'&&!rel.startsWith('..'+sep)&&!isAbsolute(rel),'destination outside disposable directory');return resolve(target);};
 try {
-  await cp(new URL('../../../src/',import.meta.url),join(sandbox,'src'),{recursive:true});
-  await writeFile(join(sandbox,'package.json'),'{"type":"module"}\n');
+  assert.ok(resolve(sandbox).startsWith(prefix),'temporary destination is outside the expected prefix');
+  await cp(new URL('../../../src/',import.meta.url),inside(join(sandbox,'src')),{recursive:true});
+  await writeFile(inside(join(sandbox,'package.json')),'{"type":"module"}\n');
   // Only this isolated data file changes; the validator and math modules are copied unchanged.
   const bad=structuredClone(candidates[0]); bad.itemId='endpoint-negative-control'; bad.amount.numerator='0';
-  await writeFile(join(sandbox,'src/content/data/plan59-directed-endpoint-records.js'),`export const PLAN59_RECORDS=${JSON.stringify([...PLAN59_RECORDS,...candidates,bad])};\n`);
+  await writeFile(inside(join(sandbox,'src/content/data/plan59-directed-endpoint-records.js')),`export const PLAN59_RECORDS=${JSON.stringify([...PLAN59_RECORDS,...candidates,bad])};\n`);
   const {admitPlan59Record}=await import(pathToFileURL(join(sandbox,'src/content/plan59-directed-endpoint-task.js')).href);
   const derived=[];
   for(const r of [...PLAN59_RECORDS,...candidates]) { const result=admitPlan59Record(r); assert.ok(result.correctPosition); derived.push({itemId:r.itemId,correctPosition:result.correctPosition}); }

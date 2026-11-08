@@ -1,0 +1,171 @@
+{
+  "baseline": "318b83eb01f7bc8646e0472047bfda629a2aca14",
+  "liveIds": [
+    "takeaway-8-5-minus-2",
+    "takeaway-12-8-minus-3",
+    "takeaway-10-7-minus-3",
+    "takeaway-11-9-minus-4",
+    "takeaway-9-6-minus-1",
+    "takeaway-9-6-minus-6",
+    "takeaway-6-5-minus-4",
+    "takeaway-8-7-minus-1"
+  ],
+  "candidates": [
+    {
+      "itemId": "plan85-takeaway-01",
+      "leftNumerator": "1",
+      "rightNumerator": "1",
+      "denominator": "2"
+    },
+    {
+      "itemId": "plan85-takeaway-02",
+      "leftNumerator": "2",
+      "rightNumerator": "1",
+      "denominator": "3"
+    },
+    {
+      "itemId": "plan85-takeaway-03",
+      "leftNumerator": "1",
+      "rightNumerator": "1",
+      "denominator": "3"
+    },
+    {
+      "itemId": "plan85-takeaway-04",
+      "leftNumerator": "2",
+      "rightNumerator": "1",
+      "denominator": "4"
+    },
+    {
+      "itemId": "plan85-takeaway-05",
+      "leftNumerator": "3",
+      "rightNumerator": "3",
+      "denominator": "4"
+    },
+    {
+      "itemId": "plan85-takeaway-06",
+      "leftNumerator": "4",
+      "rightNumerator": "1",
+      "denominator": "5"
+    },
+    {
+      "itemId": "plan85-takeaway-07",
+      "leftNumerator": "3",
+      "rightNumerator": "3",
+      "denominator": "5"
+    },
+    {
+      "itemId": "plan85-takeaway-08",
+      "leftNumerator": "4",
+      "rightNumerator": "1",
+      "denominator": "6"
+    },
+    {
+      "itemId": "plan85-takeaway-09",
+      "leftNumerator": "5",
+      "rightNumerator": "5",
+      "denominator": "6"
+    },
+    {
+      "itemId": "plan85-takeaway-10",
+      "leftNumerator": "5",
+      "rightNumerator": "2",
+      "denominator": "7"
+    },
+    {
+      "itemId": "plan85-takeaway-11",
+      "leftNumerator": "6",
+      "rightNumerator": "5",
+      "denominator": "8"
+    },
+    {
+      "itemId": "plan85-takeaway-12",
+      "leftNumerator": "8",
+      "rightNumerator": "7",
+      "denominator": "9"
+    },
+    {
+      "itemId": "plan85-takeaway-13",
+      "leftNumerator": "8",
+      "rightNumerator": "4",
+      "denominator": "10"
+    },
+    {
+      "itemId": "plan85-takeaway-14",
+      "leftNumerator": "3",
+      "rightNumerator": "2",
+      "denominator": "11"
+    },
+    {
+      "itemId": "plan85-takeaway-15",
+      "leftNumerator": "2",
+      "rightNumerator": "1",
+      "denominator": "12"
+    },
+    {
+      "itemId": "plan85-takeaway-16",
+      "leftNumerator": "3",
+      "rightNumerator": "2",
+      "denominator": "4"
+    },
+    {
+      "itemId": "plan85-takeaway-17",
+      "leftNumerator": "3",
+      "rightNumerator": "2",
+      "denominator": "5"
+    },
+    {
+      "itemId": "plan85-takeaway-18",
+      "leftNumerator": "3",
+      "rightNumerator": "2",
+      "denominator": "6"
+    },
+    {
+      "itemId": "plan85-takeaway-19",
+      "leftNumerator": "3",
+      "rightNumerator": "1",
+      "denominator": "7"
+    },
+    {
+      "itemId": "plan85-takeaway-20",
+      "leftNumerator": "5",
+      "rightNumerator": "1",
+      "denominator": "8"
+    },
+    {
+      "itemId": "plan85-takeaway-21",
+      "leftNumerator": "4",
+      "rightNumerator": "3",
+      "denominator": "9"
+    },
+    {
+      "itemId": "plan85-takeaway-22",
+      "leftNumerator": "7",
+      "rightNumerator": "1",
+      "denominator": "10"
+    },
+    {
+      "itemId": "plan85-takeaway-23",
+      "leftNumerator": "7",
+      "rightNumerator": "5",
+      "denominator": "11"
+    },
+    {
+      "itemId": "plan85-takeaway-24",
+      "leftNumerator": "11",
+      "rightNumerator": "8",
+      "denominator": "12"
+    },
+    {
+      "itemId": "plan85-takeaway-25",
+      "leftNumerator": "3",
+      "rightNumerator": "1",
+      "denominator": "4"
+    },
+    {
+      "itemId": "plan85-takeaway-26",
+      "leftNumerator": "4",
+      "rightNumerator": "3",
+      "denominator": "5"
+    }
+  ]
+}

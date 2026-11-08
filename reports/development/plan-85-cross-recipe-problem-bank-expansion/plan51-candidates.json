@@ -1,0 +1,405 @@
+{
+  "baseline": "318b83eb01f7bc8646e0472047bfda629a2aca14",
+  "liveIds": [
+    "distance-01",
+    "distance-02",
+    "distance-03",
+    "distance-04"
+  ],
+  "liveUnique": 3,
+  "maximumDistinct": 31,
+  "candidates": [
+    {
+      "itemId": "distance-plan85-01",
+      "itemRevision": "1",
+      "sourceForms": {
+        "first": {
+          "numerator": "3",
+          "denominator": "6"
+        },
+        "second": {
+          "numerator": "4",
+          "denominator": "6"
+        }
+      }
+    },
+    {
+      "itemId": "distance-plan85-02",
+      "itemRevision": "1",
+      "sourceForms": {
+        "first": {
+          "numerator": "4",
+          "denominator": "6"
+        },
+        "second": {
+          "numerator": "2",
+          "denominator": "6"
+        }
+      }
+    },
+    {
+      "itemId": "distance-plan85-03",
+      "itemRevision": "1",
+      "sourceForms": {
+        "first": {
+          "numerator": "1",
+          "denominator": "6"
+        },
+        "second": {
+          "numerator": "4",
+          "denominator": "6"
+        }
+      }
+    },
+    {
+      "itemId": "distance-plan85-04",
+      "itemRevision": "1",
+      "sourceForms": {
+        "first": {
+          "numerator": "5",
+          "denominator": "6"
+        },
+        "second": {
+          "numerator": "1",
+          "denominator": "6"
+        }
+      }
+    },
+    {
+      "itemId": "distance-plan85-05",
+      "itemRevision": "1",
+      "sourceForms": {
+        "first": {
+          "numerator": "2",
+          "denominator": "8"
+        },
+        "second": {
+          "numerator": "3",
+          "denominator": "8"
+        }
+      }
+    },
+    {
+      "itemId": "distance-plan85-06",
+      "itemRevision": "1",
+      "sourceForms": {
+        "first": {
+          "numerator": "7",
+          "denominator": "8"
+        },
+        "second": {
+          "numerator": "5",
+          "denominator": "8"
+        }
+      }
+    },
+    {
+      "itemId": "distance-plan85-07",
+      "itemRevision": "1",
+      "sourceForms": {
+        "first": {
+          "numerator": "3",
+          "denominator": "8"
+        },
+        "second": {
+          "numerator": "6",
+          "denominator": "8"
+        }
+      }
+    },
+    {
+      "itemId": "distance-plan85-08",
+      "itemRevision": "1",
+      "sourceForms": {
+        "first": {
+          "numerator": "7",
+          "denominator": "8"
+        },
+        "second": {
+          "numerator": "3",
+          "denominator": "8"
+        }
+      }
+    },
+    {
+      "itemId": "distance-plan85-09",
+      "itemRevision": "1",
+      "sourceForms": {
+        "first": {
+          "numerator": "2",
+          "denominator": "8"
+        },
+        "second": {
+          "numerator": "7",
+          "denominator": "8"
+        }
+      }
+    },
+    {
+      "itemId": "distance-plan85-10",
+      "itemRevision": "1",
+      "sourceForms": {
+        "first": {
+          "numerator": "7",
+          "denominator": "8"
+        },
+        "second": {
+          "numerator": "1",
+          "denominator": "8"
+        }
+      }
+    },
+    {
+      "itemId": "distance-plan85-11",
+      "itemRevision": "1",
+      "sourceForms": {
+        "first": {
+          "numerator": "2",
+          "denominator": "6"
+        },
+        "second": {
+          "numerator": "3",
+          "denominator": "6"
+        }
+      }
+    },
+    {
+      "itemId": "distance-plan85-12",
+      "itemRevision": "1",
+      "sourceForms": {
+        "first": {
+          "numerator": "3",
+          "denominator": "6"
+        },
+        "second": {
+          "numerator": "1",
+          "denominator": "6"
+        }
+      }
+    },
+    {
+      "itemId": "distance-plan85-13",
+      "itemRevision": "1",
+      "sourceForms": {
+        "first": {
+          "numerator": "6",
+          "denominator": "8"
+        },
+        "second": {
+          "numerator": "7",
+          "denominator": "8"
+        }
+      }
+    },
+    {
+      "itemId": "distance-plan85-14",
+      "itemRevision": "1",
+      "sourceForms": {
+        "first": {
+          "numerator": "4",
+          "denominator": "8"
+        },
+        "second": {
+          "numerator": "2",
+          "denominator": "8"
+        }
+      }
+    },
+    {
+      "itemId": "distance-plan85-15",
+      "itemRevision": "1",
+      "sourceForms": {
+        "first": {
+          "numerator": "4",
+          "denominator": "8"
+        },
+        "second": {
+          "numerator": "7",
+          "denominator": "8"
+        }
+      }
+    },
+    {
+      "itemId": "distance-plan85-16",
+      "itemRevision": "1",
+      "sourceForms": {
+        "first": {
+          "numerator": "5",
+          "denominator": "8"
+        },
+        "second": {
+          "numerator": "1",
+          "denominator": "8"
+        }
+      }
+    },
+    {
+      "itemId": "distance-plan85-17",
+      "itemRevision": "1",
+      "sourceForms": {
+        "first": {
+          "numerator": "1",
+          "denominator": "8"
+        },
+        "second": {
+          "numerator": "6",
+          "denominator": "8"
+        }
+      }
+    },
+    {
+      "itemId": "distance-plan85-18",
+      "itemRevision": "1",
+      "sourceForms": {
+        "first": {
+          "numerator": "5",
+          "denominator": "6"
+        },
+        "second": {
+          "numerator": "4",
+          "denominator": "6"
+        }
+      }
+    },
+    {
+      "itemId": "distance-plan85-19",
+      "itemRevision": "1",
+      "sourceForms": {
+        "first": {
+          "numerator": "3",
+          "denominator": "8"
+        },
+        "second": {
+          "numerator": "4",
+          "denominator": "8"
+        }
+      }
+    },
+    {
+      "itemId": "distance-plan85-20",
+      "itemRevision": "1",
+      "sourceForms": {
+        "first": {
+          "numerator": "5",
+          "denominator": "8"
+        },
+        "second": {
+          "numerator": "3",
+          "denominator": "8"
+        }
+      }
+    },
+    {
+      "itemId": "distance-plan85-21",
+      "itemRevision": "1",
+      "sourceForms": {
+        "first": {
+          "numerator": "1",
+          "denominator": "8"
+        },
+        "second": {
+          "numerator": "4",
+          "denominator": "8"
+        }
+      }
+    },
+    {
+      "itemId": "distance-plan85-22",
+      "itemRevision": "1",
+      "sourceForms": {
+        "first": {
+          "numerator": "2",
+          "denominator": "6"
+        },
+        "second": {
+          "numerator": "1",
+          "denominator": "6"
+        }
+      }
+    },
+    {
+      "itemId": "distance-plan85-23",
+      "itemRevision": "1",
+      "sourceForms": {
+        "first": {
+          "numerator": "4",
+          "denominator": "8"
+        },
+        "second": {
+          "numerator": "5",
+          "denominator": "8"
+        }
+      }
+    },
+    {
+      "itemId": "distance-plan85-24",
+      "itemRevision": "1",
+      "sourceForms": {
+        "first": {
+          "numerator": "3",
+          "denominator": "8"
+        },
+        "second": {
+          "numerator": "1",
+          "denominator": "8"
+        }
+      }
+    },
+    {
+      "itemId": "distance-plan85-25",
+      "itemRevision": "1",
+      "sourceForms": {
+        "first": {
+          "numerator": "2",
+          "denominator": "8"
+        },
+        "second": {
+          "numerator": "5",
+          "denominator": "8"
+        }
+      }
+    },
+    {
+      "itemId": "distance-plan85-26",
+      "itemRevision": "1",
+      "sourceForms": {
+        "first": {
+          "numerator": "2",
+          "denominator": "8"
+        },
+        "second": {
+          "numerator": "1",
+          "denominator": "8"
+        }
+      }
+    },
+    {
+      "itemId": "distance-plan85-27",
+      "itemRevision": "1",
+      "sourceForms": {
+        "first": {
+          "numerator": "4",
+          "denominator": "8"
+        },
+        "second": {
+          "numerator": "6",
+          "denominator": "8"
+        }
+      }
+    },
+    {
+      "itemId": "distance-plan85-28",
+      "itemRevision": "1",
+      "sourceForms": {
+        "first": {
+          "numerator": "6",
+          "denominator": "8"
+        },
+        "second": {
+          "numerator": "5",
+          "denominator": "8"
+        }
+      }
+    }
+  ]
+}

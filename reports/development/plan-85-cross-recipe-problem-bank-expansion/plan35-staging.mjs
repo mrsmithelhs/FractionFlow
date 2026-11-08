@@ -2,7 +2,7 @@
 // copy of the source graph; it is not production registration or membership.
 import { mkdtemp, cp, writeFile, readFile, rm } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
-import { join, resolve } from 'node:path';
+import { join, resolve, relative, sep, isAbsolute } from 'node:path';
 import { pathToFileURL } from 'node:url';
 import assert from 'node:assert/strict';
 import { PRACTICE_TYPES } from '../../../src/app/practice-types.js';
@@ -17,11 +17,16 @@ const known=new Set(live.items.map(item=>{const fixture=resolveCuratedFixture(it
 assert.equal(live.items.length,21); assert.equal(known.size,15); assert.equal(candidates.length,15);
 for(const r of candidates){const k=key(r.sourceForms.left,r.sourceForms.right);assert.ok(!known.has(k),`duplicate ${k}`);known.add(k);}
 assert.equal(known.size,30);
+const inspect=candidates.filter(r=>r.candidates);
+const correctSide=r=>['left','right'].find(s=>BigInt(r.sourceForms[s].numerator)*BigInt(r.candidates[s].denominator)===BigInt(r.candidates[s].numerator)*BigInt(r.sourceForms[s].denominator));
+assert.deepEqual(inspect.map(correctSide).sort(),['left','left','right','right']);
 const prefix=resolve(tmpdir(),'fractionflow-plan85-addition-'),sandbox=await mkdtemp(prefix);
+const inside=target=>{const rel=relative(resolve(sandbox),resolve(target));assert.ok(rel && rel!=='..'&&!rel.startsWith('..'+sep)&&!isAbsolute(rel),'destination outside disposable directory');return resolve(target);};
 try {
-  await cp(new URL('../../../src/',import.meta.url),join(sandbox,'src'),{recursive:true});
-  await writeFile(join(sandbox,'package.json'),'{"type":"module"}\n');
-  const dataFile=join(sandbox,'src/content/data/plan35-addition-recipe-records.js');
+  assert.ok(resolve(sandbox).startsWith(prefix),'temporary destination is outside the expected prefix');
+  await cp(new URL('../../../src/',import.meta.url),inside(join(sandbox,'src')),{recursive:true});
+  await writeFile(inside(join(sandbox,'package.json')),'{"type":"module"}\n');
+  const dataFile=inside(join(sandbox,'src/content/data/plan35-addition-recipe-records.js'));
   const data=await readFile(dataFile,'utf8'),marker='];\n\nexport const PLAN35_ADDITION_RECIPE_RECORDS';
   assert.equal(data.split(marker).length,2,'isolated data insertion point must be unique');
   await writeFile(dataFile,data.replace(marker,`${candidates.map(r=>JSON.stringify(r)+',').join('\n')}\n${marker}`));

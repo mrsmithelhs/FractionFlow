@@ -1,0 +1,244 @@
+[
+  {
+    "first": [
+      1,
+      3
+    ],
+    "second": [
+      1,
+      4
+    ],
+    "cue": "compare.shared-unit-close"
+  },
+  {
+    "first": [
+      1,
+      4
+    ],
+    "second": [
+      2,
+      8
+    ],
+    "cue": "compare.equivalence"
+  },
+  {
+    "first": [
+      4,
+      9
+    ],
+    "second": [
+      3,
+      7
+    ],
+    "cue": "compare.shared-unit-close"
+  },
+  {
+    "first": [
+      3,
+      4
+    ],
+    "second": [
+      6,
+      8
+    ],
+    "cue": "compare.equivalence"
+  },
+  {
+    "first": [
+      1,
+      5
+    ],
+    "second": [
+      2,
+      10
+    ],
+    "cue": "compare.equivalence"
+  },
+  {
+    "first": [
+      2,
+      5
+    ],
+    "second": [
+      4,
+      10
+    ],
+    "cue": "compare.equivalence"
+  },
+  {
+    "first": [
+      2,
+      9
+    ],
+    "second": [
+      1,
+      5
+    ],
+    "cue": "compare.shared-unit-close"
+  },
+  {
+    "first": [
+      7,
+      9
+    ],
+    "second": [
+      5,
+      7
+    ],
+    "cue": "compare.shared-unit-close"
+  },
+  {
+    "first": [
+      1,
+      5
+    ],
+    "second": [
+      1,
+      6
+    ],
+    "cue": "compare.shared-unit-close"
+  },
+  {
+    "first": [
+      7,
+      10
+    ],
+    "second": [
+      5,
+      8
+    ],
+    "cue": "compare.shared-unit-close"
+  },
+  {
+    "first": [
+      1,
+      7
+    ],
+    "second": [
+      1,
+      9
+    ],
+    "cue": "compare.same-count-unit-size"
+  },
+  {
+    "first": [
+      2,
+      7
+    ],
+    "second": [
+      2,
+      9
+    ],
+    "cue": "compare.same-count-unit-size"
+  },
+  {
+    "first": [
+      3,
+      7
+    ],
+    "second": [
+      3,
+      8
+    ],
+    "cue": "compare.same-count-unit-size"
+  },
+  {
+    "first": [
+      4,
+      9
+    ],
+    "second": [
+      4,
+      7
+    ],
+    "cue": "compare.same-count-unit-size"
+  },
+  {
+    "first": [
+      3,
+      10
+    ],
+    "second": [
+      8,
+      10
+    ],
+    "cue": "compare.same-denominator"
+  },
+  {
+    "first": [
+      2,
+      9
+    ],
+    "second": [
+      7,
+      9
+    ],
+    "cue": "compare.same-denominator"
+  },
+  {
+    "first": [
+      3,
+      10
+    ],
+    "second": [
+      7,
+      10
+    ],
+    "cue": "compare.same-denominator"
+  },
+  {
+    "first": [
+      4,
+      10
+    ],
+    "second": [
+      9,
+      10
+    ],
+    "cue": "compare.same-denominator"
+  },
+  {
+    "first": [
+      1,
+      8
+    ],
+    "second": [
+      7,
+      8
+    ],
+    "cue": "compare.complements-to-one"
+  },
+  {
+    "first": [
+      2,
+      7
+    ],
+    "second": [
+      5,
+      7
+    ],
+    "cue": "compare.complements-to-one"
+  },
+  {
+    "first": [
+      2,
+      5
+    ],
+    "second": [
+      4,
+      5
+    ],
+    "cue": "compare.half-benchmark"
+  },
+  {
+    "first": [
+      2,
+      5
+    ],
+    "second": [
+      3,
+      5
+    ],
+    "cue": "compare.half-benchmark"
+  }
+]
