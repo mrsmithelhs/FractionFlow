@@ -1,11 +1,9 @@
 ---
 id: plan-89
 title: Versioned Problem Bank Publication
-status: draft
+status: in-progress
 depends_on: [plan-79, plan-85]
 gate: "Approve the pilot mechanism and learner exposure before source changes. Review the subtraction pilot before authorizing the next family batch. Owner reviews the integrated journeys."
-superseded_by: null
-resolution: null
 summary: >-
   Turn accepted staged problems into replay-safe practice pools. Start with
   unlike-denominator subtraction, then apply the proven publication approach
