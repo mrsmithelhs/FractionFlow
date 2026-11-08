@@ -1,7 +1,8 @@
 ---
 id: plan-89
 title: Versioned Problem Bank Publication
-status: delivered
+status: complete
+resolution: "Owner accepted the four registered 30-item banks and historical replay evidence. Default chooser exposure remains gated."
 depends_on: [plan-79, plan-85]
 gate: "Approve the pilot mechanism and learner exposure before source changes. Review the subtraction pilot before authorizing the next family batch. Owner reviews the integrated journeys."
 summary: >-

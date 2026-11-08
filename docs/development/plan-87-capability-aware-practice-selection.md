@@ -1,11 +1,9 @@
 ---
 id: plan-87
 title: Capability-Aware Practice Selection
-status: draft
-depends_on: [plan-70, plan-85]
-gate: "Approve measured capability rules, selection and resize behavior before source changes. Owner reviews the rendered practice journeys."
-superseded_by: null
-resolution: null
+status: in-progress
+depends_on: [plan-70, plan-85, plan-89]
+gate: "Approve measured capability rules, selection and resize behavior before source changes. Owner reviews the rendered practice journeys and separately approves default chooser exposure of expanded pools."
 summary: >-
   Draw a short, varied sequence from expanded practice banks without repeats.
   Let standalone and managed practice select only already-admitted items that
@@ -18,17 +16,19 @@ summary: >-
 - Packet id: `plan-87`
 - Packet title: Capability-Aware Practice Selection
 - Status: (see frontmatter)
-- Owner/model: one lead implementer, orchestration mechanism and technical review, owner rendered review
+- Owner/model: Terra-high lead implementer, Luna-medium workers, orchestration mechanism and technical review, owner rendered review
 - Date: 2026-11-07
 - Packet type: bounded selection and app integration
 - Mutation level: candidate eligibility for launch, ordering, progression and verification
 - Approval gate: Requirement 0 before source changes
 
-Follow [AGENTS.md](../../AGENTS.md), the [decision log](../decision-log.md) and the [packet board](README.md). Use [Plan 70](plan-70-first-working-practice-scheduler.md) for direct managed-practice entry and [Plan 85](plan-85-cross-recipe-problem-bank-expansion.md) for capacity and bank evidence. Read the [larger-denominator follow-up](phase-3-follow-up-obligations.md) before proposing capability rules.
+Follow [AGENTS.md](../../AGENTS.md), the [decision log](../decision-log.md) and the [packet board](README.md). Use [Plan 70](plan-70-first-working-practice-scheduler.md) for direct managed-practice entry, [Plan 85](plan-85-cross-recipe-problem-bank-expansion.md) for capacity evidence, and the [Plan 89 exposure ledger](../../reports/development/plan-89-versioned-problem-bank-publication/integrated-review.md#exposure-ledger) for the four registered expanded pools and their held exposure. Read the [larger-denominator follow-up](phase-3-follow-up-obligations.md) before proposing capability rules.
 
 ## Requirement 0 — Propose and stop
 
-Run preflight and pin the baseline. Save `mechanism.md` under `reports/development/plan-87-capability-aware-practice-selection/`. Propose a small finite draw length and initial rollout, a reproducible seeded selection rule, a conservative fallback pool, and what gets measured before launch. Include a same-bank narrow/wide example and a resize scenario. Identify exact shared files, legacy routes and replay preservation. Stop before source work.
+Run preflight and pin the baseline. Save `mechanism.md` under `reports/development/plan-87-capability-aware-practice-selection/`. Propose a small finite draw length and initial rollout, a reproducible seeded selection rule, a conservative fallback pool, and what gets measured before launch. Include a same-bank narrow/wide example and a resize scenario. Identify exact shared files, legacy routes and replay preservation. Propose an isolated review path for draws from the registered Plan 89 pools. Default chooser exposure of those pools requires separate owner approval. Stop before source work.
+
+The lead may dispatch Luna-medium workers to disjoint investigations, implementation or read-only checks within the current gate. The lead owns shared app and scheduler integration and consolidated review. Children do not fan out. Serialize copied-source and fixture writes, verify their disposable destinations before writing, and run shared build and browser validation serially.
 
 ## Selection contract
 

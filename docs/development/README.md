@@ -93,9 +93,9 @@ Packets are assigned to implementer agents. Each packet defines scope, required 
 | `plan-84` | Mixed-to-Improper Number-Line Bridge | complete | Implement the four adopted mixed-to-improper equivalence problems. Vary the correct option position and reveal the shared number-line point only after a correct Check. |
 | `plan-85` | Cross-Recipe Problem Bank Expansion | complete | Target at least 30 meaningfully distinct problems per standalone episode type. Expand existing data-only recipes as a single wave and identify exact blockers to the target. Preserve fixed selection and historical replay. |
 | `plan-86` | Purposeful Variation Across Episode Types | draft | Compare short alternate task structures across existing episode types. Pilot a small cross-family set of approved variants that change learner work while preserving the underlying mathematical goal. |
-| `plan-87` | Capability-Aware Practice Selection | draft | Draw a short, varied sequence from expanded practice banks without repeats. Let standalone and managed practice select only already-admitted items that fit the available presentation, with a verified fallback on narrow layouts. |
+| `plan-87` | Capability-Aware Practice Selection | in-progress | Draw a short, varied sequence from expanded practice banks without repeats. Let standalone and managed practice select only already-admitted items that fit the available presentation, with a verified fallback on narrow layouts. |
 | `plan-88` | Practice Difficulty Ladder Design | draft | Design a small, inspectable practice progression using task-specific challenge features and purposeful variation, with separate presentation eligibility and no learner profiling. |
-| `plan-89` | Versioned Problem Bank Publication | delivered | Turn accepted staged problems into replay-safe practice pools. Start with unlike-denominator subtraction, then apply the proven publication approach to a bounded group of mixed-number practices. |
+| `plan-89` | Versioned Problem Bank Publication | complete | Turn accepted staged problems into replay-safe practice pools. Start with unlike-denominator subtraction, then apply the proven publication approach to a bounded group of mixed-number practices. |
 <!-- plan-index:end -->
 
 ## Report Folders
