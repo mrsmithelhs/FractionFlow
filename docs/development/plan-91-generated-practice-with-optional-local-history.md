@@ -1,7 +1,7 @@
 ---
 id: plan-91
 title: Generated Practice With Optional Local History
-status: in-progress
+status: delivered
 depends_on: [plan-61, plan-63, plan-66, plan-90]
 gate: "Orchestration approves Requirement 0 before investigation. The owner reviews the generated-session design and proposed observation and history-use contract before a separate implementation packet."
 summary: >-
