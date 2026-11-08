@@ -255,13 +255,17 @@ Packet status is tracked in each packet's YAML frontmatter and enforced by `scri
   1. **Confirm the working tree is clean** — per Commit Discipline above, resolve or commit
      any outstanding changes (yours or the packet's) before proceeding.
   2. Set `complete` with a one-line `resolution` through `plan-status.js`.
-  3. If this packet was advisor-eligible and a declaration was made — Branch A (a consultation
-     ran) or Branch C (advisor unavailable, or a degraded mode used) — author one fixed-schema
-     reflection note from the disposition record and place it in the project's configured
-     Bootstrap sync intake before committing. A Branch A note records the consultation and its
-     findings; a Branch C note records that no consultation ran and why — a deliberate data point,
-     not an omission. Do **not** author a note for Branch B (consultation not warranted), which
-     has no checkpoint to record. This is orchestrator-authored, not automation.
+  3. Keep the full advisor declaration and verification evidence in the packet's local
+     `progress.md`. Apply Bootstrap's selective reflection export policy in
+     `docs/bootstrap-sync.md`. Export requires authorization and a new runtime or authorization
+     mechanism or failure, a substantive counterexample to Bootstrap guidance, material
+     unexpected cost, a reusable capability improvement, or an active bounded study request.
+     Routine reviews and repeated known-unavailable outcomes stay local. For a qualifying
+     export, use the fixed schema and put the packet name in the filename or note.
+     `Checkpoint` must be exactly `pre-delivery`, `preflight`, `owner-mediated` or
+     `orchestrator-gate-only`, matching the event. Use `orchestrator-gate-only` for Branch C
+     when orchestration provided the only review. Record orchestration checks as local
+     verification evidence.
   4. Commit the repository.
   5. Recommend the next packet. If one is ready to go, offer the owner an in-chat choice
      between `ready` (runnable, initiate later) and `in-progress` (initiate now), revising it
