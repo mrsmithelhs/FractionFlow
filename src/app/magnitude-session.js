@@ -17,18 +17,17 @@ export const COMPARISON_SESSION_MANIFEST = deepFreeze({ id: 'fixed-comparison-pr
   comparison('plan45-compare-02'), comparison('plan45-compare-09'), comparison('plan45-compare-11'), comparison('plan45-compare-10'),
 ] });
 const distance = itemId => ({ typeId: 'fraction-distance', setId: 'fraction-distance', setRevision: '1', itemId, itemRevision: '1', definitionId: 'phase-4-fraction-distance', definitionRevision: '1', recipeId: 'common-unit-distance', recipeRevision: '1' });
-// Plan 90 comparison/distance checkpoint only. This is not connected to the
-// ordinary Start policy until the family and fit gate has been cleared.
+// Plan 90 comparison/distance batch. The later family patterns have separate gates.
 export const PLAN90_M0_SLOTS = deepFreeze([
   [comparison('plan45-compare-02'), comparison('plan45-compare-08')],
   [comparison('plan45-compare-09')],
   [comparison('plan45-compare-10')],
   [distance('distance-01')],
 ]);
-const PLAN90_REVIEW_CANDIDATES = deepFreeze([
+const PLAN90_CANDIDATES = deepFreeze([
   ...PLAN90_M0_SLOTS.flat(), distance('distance-04'),
 ]);
-const PLAN90_REVIEW_ID = 'plan90-comparison-distance-review';
+export const PLAN90_MANAGED_ID = 'goal-linked-comparison-distance';
 const SCHEDULED_SLOTS = deepFreeze([
   [comparison('plan45-compare-02'), comparison('plan45-compare-09')],
   [comparison('plan45-compare-10')],
@@ -45,10 +44,9 @@ const same = (a, b) => JSON.stringify(canonical(a)) === JSON.stringify(canonical
 const fail = message => { throw new TypeError(`invalid magnitude session: ${message}`); };
 const controllers = new WeakMap();
 
-/** Isolated first-batch selector. Eligibility is supplied by the caller; it is
- * not a measured production fit class and cannot activate the learner route. */
-export function selectPlan90ComparisonDistanceReview(eligible, supportId = 'high-support') {
-  if (typeof eligible !== 'function') fail('review eligibility');
+/** First-batch selector; the caller supplies the measured fit decision. */
+export function selectManagedComparisonDistance(eligible, supportId = 'high-support') {
+  if (typeof eligible !== 'function') fail('managed eligibility');
   const tryEntry = entry => {
     try {
       if (eligible(structuredClone(entry)) !== true) return null;
@@ -59,18 +57,18 @@ export function selectPlan90ComparisonDistanceReview(eligible, supportId = 'high
   const slots = PLAN90_M0_SLOTS.map(slot => slot.map(tryEntry).find(Boolean) ?? null);
   const entries = slots[0] && slots[3] ? slots.filter(Boolean) : [];
   if (!entries.length) {
-    const single = PLAN90_REVIEW_CANDIDATES.map(tryEntry).find(Boolean);
+    const single = PLAN90_CANDIDATES.map(tryEntry).find(Boolean);
     if (single) entries.push(single);
   }
-  return entries.length ? deepFreeze({ id: PLAN90_REVIEW_ID, revision: '1', entries }) : null;
+  return entries.length ? deepFreeze({ id: PLAN90_MANAGED_ID, revision: '1', entries }) : null;
 }
 
-function isPlan90ReviewManifest(manifest) {
+function isPlan90ManagedManifest(manifest) {
   if (!manifest || !same(Object.keys(manifest).sort(), ['entries', 'id', 'revision'])
-    || manifest.id !== PLAN90_REVIEW_ID || manifest.revision !== '1' || !Array.isArray(manifest.entries)
+    || manifest.id !== PLAN90_MANAGED_ID || manifest.revision !== '1' || !Array.isArray(manifest.entries)
     || manifest.entries.length === 0 || manifest.entries.length > 4) return false;
   if (Array.from({ length: manifest.entries.length }, (_, index) => Object.hasOwn(manifest.entries, index)).some(present => !present)) return false;
-  if (manifest.entries.length === 1) return PLAN90_REVIEW_CANDIDATES.some(entry => same(entry, manifest.entries[0]));
+  if (manifest.entries.length === 1) return PLAN90_CANDIDATES.some(entry => same(entry, manifest.entries[0]));
   if (!PLAN90_M0_SLOTS[0].some(entry => same(entry, manifest.entries[0]))
     || !same(PLAN90_M0_SLOTS[3][0], manifest.entries.at(-1))) return false;
   const middle = manifest.entries.slice(1, -1);
@@ -111,7 +109,7 @@ export function prepareMagnitudeEntry(entry, supportId) {
 
 export function admitMagnitudeManifest(manifest = MAGNITUDE_SESSION_MANIFEST, supportId = 'high-support') {
   const scheduled = manifest && same(Object.keys(manifest).sort(), ['entries', 'id', 'revision']) && manifest.id === 'scheduled-magnitude-practice' && manifest.revision === '1' && Array.isArray(manifest.entries) && manifest.entries.length === SCHEDULED_SLOTS.length && SCHEDULED_SLOTS.every((slot, index) => Object.hasOwn(manifest.entries, index) && slot.some(candidate => same(manifest.entries[index], candidate)));
-  if (!same(manifest, MAGNITUDE_SESSION_MANIFEST) && !same(manifest, COMPARISON_SESSION_MANIFEST) && !scheduled && !isPlan90ReviewManifest(manifest)) fail('manifest identity, shape, order or revision');
+  if (!same(manifest, MAGNITUDE_SESSION_MANIFEST) && !same(manifest, COMPARISON_SESSION_MANIFEST) && !scheduled && !isPlan90ManagedManifest(manifest)) fail('manifest identity, shape, order or revision');
   // Resolve and construct every entry at admission, including actual profile capability.
   const prepared = manifest.entries.map(entry => prepareMagnitudeEntry(entry, supportId));
   if (scheduled) {
@@ -156,7 +154,7 @@ export function createMagnitudeSessionController(manifest = MAGNITUDE_SESSION_MA
     const index = kind === 'next' ? snapshot.index + 1 : snapshot.index;
     let nextManifest = liveManifest;
     let fitToken;
-    if (kind === 'next' && liveManifest.id === PLAN90_REVIEW_ID && eligibleForNext !== null) {
+    if (kind === 'next' && liveManifest.id === PLAN90_MANAGED_ID && eligibleForNext !== null) {
       if (typeof eligibleForNext !== 'function') return { ok: false, reason: 'invalid-eligibility' };
       try {
         if (fitRevision !== null) {
@@ -219,8 +217,7 @@ export function createMagnitudeSessionController(manifest = MAGNITUDE_SESSION_MA
   return controller;
 }
 
-// Isolated policy seam: callers must supply a verified allow-list of item IDs.
-// The normal learner entry continues to call selectPracticeSession unchanged.
+// Historical isolated policy seam: callers supply a verified allow-list of item IDs.
 export function selectFittingPracticeSession(input, eligibleItemIds, supportId = 'high-support') {
   if (!Number.isSafeInteger(input) || input < 0) fail('selection input');
   if (!Array.isArray(eligibleItemIds) || eligibleItemIds.some(id => typeof id !== 'string' || !id) || new Set(eligibleItemIds).size !== eligibleItemIds.length) fail('eligibility');

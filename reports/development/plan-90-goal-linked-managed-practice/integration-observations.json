@@ -1,0 +1,112 @@
+{
+  "browser": "157.0.8103.38",
+  "method": "Real ordinary Start and production shell measurement; no selection or fit hook. Fault hook only for forced post-mount failures.",
+  "runs": [
+    {
+      "width": 360,
+      "height": 740,
+      "scale": 100,
+      "view": "visual",
+      "before": {
+        "font": 16,
+        "widths": [
+          310,
+          310
+        ],
+        "area": 310,
+        "contentWidth": 336,
+        "viewportWidth": 360,
+        "viewportHeight": 740,
+        "htmlScroll": "visible",
+        "bodyScroll": "visible",
+        "rootScroll": "visible"
+      },
+      "ids": [
+        "plan45-compare-02",
+        "plan45-compare-09",
+        "plan45-compare-10",
+        "distance-01"
+      ],
+      "finished": true
+    },
+    {
+      "width": 360,
+      "height": 740,
+      "scale": 200,
+      "view": "visual",
+      "before": {
+        "font": 32,
+        "widths": [
+          262,
+          262
+        ],
+        "area": 262,
+        "contentWidth": 312,
+        "viewportWidth": 360,
+        "viewportHeight": 740,
+        "htmlScroll": "visible",
+        "bodyScroll": "visible",
+        "rootScroll": "visible"
+      },
+      "refused": true,
+      "notice": "No practice fits this screen right now. Try a larger window or smaller text, or choose another practice."
+    },
+    {
+      "width": 1093,
+      "height": 614,
+      "scale": 100,
+      "view": "linear",
+      "before": {
+        "font": 16,
+        "widths": [
+          970.78125,
+          970.78125
+        ],
+        "area": 970.78125,
+        "contentWidth": 1027.42,
+        "viewportWidth": 1093,
+        "viewportHeight": 614,
+        "htmlScroll": "visible",
+        "bodyScroll": "visible",
+        "rootScroll": "visible"
+      },
+      "ids": [
+        "plan45-compare-02",
+        "plan45-compare-09",
+        "plan45-compare-10",
+        "distance-01"
+      ],
+      "finished": true
+    },
+    {
+      "width": 1440,
+      "height": 900,
+      "scale": 100,
+      "view": "visual",
+      "before": {
+        "font": 16,
+        "widths": [
+          1022,
+          1022
+        ],
+        "area": 1022,
+        "contentWidth": 1353.6,
+        "viewportWidth": 1440,
+        "viewportHeight": 900,
+        "htmlScroll": "visible",
+        "bodyScroll": "visible",
+        "rootScroll": "visible"
+      },
+      "ids": [
+        "plan45-compare-02",
+        "plan45-compare-09",
+        "plan45-compare-10",
+        "distance-01"
+      ],
+      "finished": true
+    }
+  ],
+  "rollback": "Post-mount Retry and Next failures retained task, draft or completed state, working controls and notice focus; later actions succeeded.",
+  "resize": "Measured 768→360 at 200% text preserved draft and finished at Next.",
+  "errors": []
+}

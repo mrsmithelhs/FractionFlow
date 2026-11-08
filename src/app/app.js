@@ -18,7 +18,8 @@ import { projectEntryCapabilities } from './entry-projection.js';
 const DOCUMENT_ROTATION_DAY = Math.floor(Date.now() / 86_400_000);
 import { createComparisonRecordController } from './comparison-record-controller.js';
 import { createComparisonRecordPanel } from './comparison-record-panel.js';
-import { MAGNITUDE_SESSION_MANIFEST, COMPARISON_SESSION_MANIFEST, admitMagnitudeManifest, createMagnitudeSessionController, prepareMagnitudeEntry, isMagnitudeEpisodeComplete, selectPracticeSession } from './magnitude-session.js';
+import { MAGNITUDE_SESSION_MANIFEST, PLAN90_MANAGED_ID, admitMagnitudeManifest, createMagnitudeSessionController, prepareMagnitudeEntry, isMagnitudeEpisodeComplete, selectManagedComparisonDistance } from './magnitude-session.js';
+import { measureManagedPracticeFit, isManagedComparisonDistanceFit, matchesManagedActiveHost } from './managed-fit.js';
 import { resolvePlan59Context } from '../content/plan59-directed-endpoint-task.js';
 import { PLAN59_CONDITION } from '../interaction/plan59-directed-endpoint-episode.js';
 import { createPlan59Renderer } from '../render/plan59-directed-endpoint.js';
@@ -536,6 +537,7 @@ export function createFractionFlowApp({
   let shellLifetime = 0;
   let entryRendererLifetime = 0;
   let magnitudeSession = null;
+  let measuredManagedSession = false;
   let recordController = null, recordPanel = null, recordEpisodeNotice = null;
   let sessionDialog, sessionStay, sessionLeave, sessionEntryNotice, sessionEntryButton;
   let exitFocus = null, pendingHashDestination = null;
@@ -557,7 +559,7 @@ export function createFractionFlowApp({
   function sessionDisplayFailure() {
     recordController?.retire();
     if (magnitudeSession) magnitudeSession.exit(magnitudeSession.current().session);
-    magnitudeSession = null; currentEpisodeGeneration += 1; distanceRenderGeneration += 1;
+    magnitudeSession = null; measuredManagedSession = false; currentEpisodeGeneration += 1; distanceRenderGeneration += 1;
     state = null; selectedPracticeType = null; activePracticeItemIndex = null;
     visualComparisonRenderer = null; linearComparisonRenderer = null;
     visualHost.replaceChildren(); linearHost.replaceChildren();
@@ -572,18 +574,24 @@ export function createFractionFlowApp({
       sessionTestHooks.display?.(current);
       installFreshEpisode(current.installed.type, current.installed.itemIndex, current.episode, { focusEpisode: true });
       sessionTestHooks.afterDisplay?.(current);
-    } catch (error) { if (propagateFailure) throw error; sessionDisplayFailure(); }
+      if (measuredManagedSession && !matchesManagedActiveHost(measureManagedPracticeFit(appRoot), visualView ? visualHost : linearHost)) throw new Error('managed fit changed during mount');
+      return true;
+    } catch (error) { if (propagateFailure) throw error; sessionDisplayFailure(); return false; }
   }
-  function startMagnitudeSession(manifest = MAGNITUDE_SESSION_MANIFEST, { quiet = false, preflightAll = false } = {}) {
+  function startMagnitudeSession(manifest = MAGNITUDE_SESSION_MANIFEST, { quiet = false, preflightAll = false, measuredFit = false } = {}) {
     try {
       if (preflightAll) admitMagnitudeManifest(manifest, selectedSupportLevel.id).prepared.forEach(sessionPreflight);
       const controller = createMagnitudeSessionController(manifest, selectedSupportLevel.id,
         { prepare: (entry, support) => sessionPreflight(prepareMagnitudeEntry(entry, support)),
-          eligibleForNext: sessionTestHooks.eligibleForNext, fitRevision: sessionTestHooks.fitRevision });
+          eligibleForNext: measuredFit ? entry => {
+            if (!isManagedComparisonDistanceFit(measureManagedPracticeFit(appRoot))) return false;
+            sessionPreflight(prepareMagnitudeEntry(entry, selectedSupportLevel.id));
+            return true;
+          } : sessionTestHooks.eligibleForNext,
+          fitRevision: measuredFit ? () => JSON.stringify(measureManagedPracticeFit(appRoot)) : sessionTestHooks.fitRevision });
       sessionPreflight(controller.current().installed);
-      magnitudeSession = controller; clearFragment(); setHidden(sessionEntryNotice, true);
-      installSessionCurrent();
-      return true;
+      magnitudeSession = controller; measuredManagedSession = measuredFit; clearFragment(); setHidden(sessionEntryNotice, true);
+      return installSessionCurrent();
     } catch {
       if (quiet) return false;
       sessionEntryNotice.textContent = 'This practice could not be opened. Please try again or choose another practice.';
@@ -604,11 +612,18 @@ export function createFractionFlowApp({
     }
     let manifest;
     try {
-      const input = sessionTestHooks.selectionInput?.() ?? Math.floor(Math.random() * 0x100000000);
-      manifest = selectPracticeSession(input);
-    } catch { /* Try the fixed fallback below. */ }
-    if (manifest && startMagnitudeSession(manifest, { quiet: true, preflightAll: true })) return;
-    startMagnitudeSession(COMPARISON_SESSION_MANIFEST, { preflightAll: true });
+      const fit = measureManagedPracticeFit(appRoot);
+      manifest = selectManagedComparisonDistance(entry => {
+        if (!isManagedComparisonDistanceFit(fit)) return false;
+        sessionPreflight(prepareMagnitudeEntry(entry, selectedSupportLevel.id));
+        return true;
+      }, selectedSupportLevel.id);
+    } catch { /* Unknown conditions are ineligible. */ }
+    if (manifest) {
+      if (startMagnitudeSession(manifest, { quiet: true, preflightAll: true, measuredFit: true })) return;
+      sessionEntryNotice.textContent = 'This practice could not be opened. Please try again or choose another practice.';
+    } else sessionEntryNotice.textContent = 'No practice fits this screen right now. Try a larger window or smaller text, or choose another practice.';
+    setHidden(sessionEntryNotice, false); sessionEntryNotice.focus();
   }
   function sessionTransition(kind, generation) {
     if (!magnitudeSession || isTransitioning || (generation !== undefined && generation !== currentEpisodeGeneration)) return;
@@ -627,12 +642,11 @@ export function createFractionFlowApp({
         navigationNotice.textContent = kind === 'restart' ? STRINGS.app.sessionRestartUnavailable : STRINGS.app.sessionNextUnavailable;
         setHidden(navigationNotice, false); focusNavigationNotice(); return;
       }
-      if (magnitudeSession.current().manifest.id !== 'plan90-comparison-distance-review') {
+      if (magnitudeSession.current().manifest.id !== PLAN90_MANAGED_ID) {
         installSessionCurrent();
         return;
       }
-      // Review path only: keep the active episode and its task-local drafts
-      // until the new mount succeeds. Ordinary Start is not wired to this path.
+      // Keep the active episode and its task-local drafts until the new mount succeeds.
       const prior = { state, selectedPracticeType, activePracticeItemIndex, comparisonDraft,
         comparisonConstructionDrafts, comparisonHelpOpen, distanceDraft, distanceHelpOpen,
         distanceRefusal, distanceFocus, activityNotice, isReplaying };
@@ -651,7 +665,7 @@ export function createFractionFlowApp({
   }
   function leaveMagnitudeSession(destination = null) {
     if (!magnitudeSession) return;
-    magnitudeSession.exit(magnitudeSession.current().session); magnitudeSession = null;
+    magnitudeSession.exit(magnitudeSession.current().session); magnitudeSession = null; measuredManagedSession = false;
     setHidden(sessionDialog, true); pendingHashDestination = null; entryPage.inert = false; appRoot.querySelector('.app-episode').inert = false;
     returnToEntry(); updateSupportMetadata();
     if (destination) startPractice(destination, { focusEpisode: true, updateFragment: true });

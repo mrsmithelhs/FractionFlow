@@ -1,0 +1,7 @@
+# Plan 90 arithmetic standalone fit witness
+
+This report-local witness measures the exact three adopted Plan 35 addition candidates and three Plan 40 subtraction candidates through their existing public standalone practice routes. It drives the mounted episode controls, exercises identify/inspect/construct, opens help, submits an incorrect operation response, completes the operation, and uses the resolve control. It records every stage's active item, support, view, viewport, root font, working-area and episode rectangles, visible control geometry, document overflow, and nested element overflow in `arithmetic-final-observations.json`.
+
+The default witness selects both support levels and views at 360/480/600/768×740, 1093×614, and 1440×900, with 100% and 200% root CSS text. It verifies exact item, support and view. Incomplete journeys cause a nonzero exit; observed overflow is recorded for interpretation rather than automatically classified as a failure. The separate 150% run used `PLAN90_ARITHMETIC_VIEWPORTS='360x740,480x740,600x740'`, `PLAN90_ARITHMETIC_SCALES='150'`, and `PLAN90_ARITHMETIC_OUTPUT='arithmetic-midscale-observations.json'`.
+
+Run from the repository root with `node reports/development/plan-90-goal-linked-managed-practice/arithmetic-fit-witness.mjs`. Run serially with other browser work. No managed session path is exercised. CSS text scaling is not browser zoom; these measurements do not establish physical-device, screen-reader, or learner fit.

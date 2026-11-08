@@ -1,5 +1,5 @@
 import { afterEach, expect, it } from 'vitest';
-import { admitMagnitudeManifest, createMagnitudeSessionController, selectPlan90ComparisonDistanceReview } from '../src/app/magnitude-session.js';
+import { admitMagnitudeManifest, createMagnitudeSessionController, selectManagedComparisonDistance } from '../src/app/magnitude-session.js';
 import { createComparisonRecordController } from '../src/app/comparison-record-controller.js';
 import { emptyRoot } from '../src/app/comparison-record.js';
 import { createFractionFlowApp } from '../src/app/app.js';
@@ -7,7 +7,7 @@ import { setupMockDOM, teardownMockDOM } from './fixtures/mock-dom.js';
 import { applyIntent } from '../src/interaction/episode.js';
 import { classifyReviewArea } from '../reports/development/plan-90-goal-linked-managed-practice/review-fit.js';
 
-const select = ids => selectPlan90ComparisonDistanceReview(entry => ids.includes(entry.itemId));
+const select = ids => selectManagedComparisonDistance(entry => ids.includes(entry.itemId));
 afterEach(() => teardownMockDOM());
 
 it('fails closed on unknown experimental fit and uses measured working area', () => {
@@ -26,7 +26,7 @@ it('selects only the first-batch ordered slots, a designated substitute or one e
   expect(select(all.filter(x => !['plan45-compare-02', 'plan45-compare-09'].includes(x))).entries.map(x => x.itemId)).toEqual(['plan45-compare-08', 'plan45-compare-10', 'distance-01']);
   expect(select(['distance-04']).entries.map(x => x.itemId)).toEqual(['distance-04']);
   expect(select([])).toBeNull();
-  expect(selectPlan90ComparisonDistanceReview(() => { throw Error('unknown fit'); })).toBeNull();
+  expect(selectManagedComparisonDistance(() => { throw Error('unknown fit'); })).toBeNull();
 });
 
 it('admits only exact review identities and legal slot order', () => {

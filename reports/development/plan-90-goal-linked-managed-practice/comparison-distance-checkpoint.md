@@ -1,5 +1,7 @@
 # Plan 90 — comparison and distance checkpoint in progress
 
+**Later status:** orchestration approved this six-record batch and its conservative fit class. The ordinary Start path subsequently gained the comparison/distance integration; see [later-family batch evidence](later-family-batch-evidence.md) and the current progress report. The review-only statements below describe this checkpoint at the time it was submitted.
+
 2026-11-08. **Comparison/distance batch review requested; full Plan 90 remains incomplete.** Requirement 0 was approved by FF Orch 12+ for the shared mechanism and this batch only. Normal Start still uses the legacy scheduler. The experimental review route includes a proposed measured-area classifier; the four-pattern policy and production integration remain to be built and verified. No held records were added. This is not delivery or owner acceptance.
 
 ## Exact six-record matrix

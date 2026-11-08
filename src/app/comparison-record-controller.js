@@ -45,8 +45,8 @@ export function createComparisonRecordController({ storage = createComparisonRec
         const sessionContext = sessionRecordContext(sessionController, state);
         if (!sessionContext) return false;
         const { session, manifest, episode, installed } = sessionContext;
-        // Review-only Plan 90 manifests do not expand the recording boundary.
-        if (manifest.id === 'plan90-comparison-distance-review') return false;
+        // The new managed catalog does not expand the recording boundary.
+        if (manifest.id === 'goal-linked-comparison-distance') return false;
         const admitted = admitMagnitudeManifest(manifest, session.supportId);
         const expected = admitted.prepared[session.index];
         if (!session.active || session.id !== manifest.id || session.revision !== manifest.revision || episode !== state
