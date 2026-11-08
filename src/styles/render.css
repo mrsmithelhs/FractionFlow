@@ -853,6 +853,25 @@
   align-items: center;
 }
 
+.plan86-repair .control-input-group {
+  flex-wrap: wrap;
+  min-width: 0;
+}
+
+.plan86-repair-fraction {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  max-width: 100%;
+  white-space: nowrap;
+}
+
+.plan86-repair-fraction .control-numeric-input {
+  width: 3rem;
+  min-width: 0;
+  padding-inline: 0.2rem;
+}
+
 .control-numeric-input {
   width: 6rem;
   text-align: center;

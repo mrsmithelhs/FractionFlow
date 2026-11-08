@@ -174,6 +174,14 @@ const records = [
     stimulusRevision: '1',
     candidates: { left: fraction('9', '12'), right: fraction('5', '12') },
   },
+  {
+    itemId: 'plan86-subtract-inspect-half-fifth-10',
+    fixtureId: 'curated-plan40-construct-one-half-one-fifth', authoringRevision: 'plan40-record-v1',
+    sourceForms: { left: fraction('1', '2'), right: fraction('1', '5') },
+    recipeId: PLAN40_RECIPE_IDS.inspect, targetDenominator: '10',
+    stimulusId: 'plan86-subtract-inspect-5-3-tenths', stimulusRevision: '1',
+    candidates: { left: fraction('5', '10'), right: fraction('3', '10') },
+  },
 ];
 
 export const PLAN40_SUBTRACTION_RECIPE_RECORDS = deepFreeze(records.map((record) => ({
@@ -267,11 +275,16 @@ export const PLAN40_DATA_ONLY_HOLDOUT_SET = deepFreeze({
   ],
 });
 
+export const PLAN86_SUBTRACTION_REVIEW_SET = deepFreeze({
+  id: 'plan86-subtraction-review', revision: '1', itemIds: ['plan86-subtract-inspect-half-fifth-10'],
+});
+
 export const PLAN40_RECIPE_ASSOCIATION_SETS = deepFreeze([
   PLAN40_SUBTRACTION_RECIPE_PRACTICE_SET,
   PLAN40_SUBTRACTION_RECIPE_PRACTICE_SET_V2,
   PLAN40_SUBTRACTION_RECIPE_PRACTICE_SET_V3,
   PLAN40_DATA_ONLY_HOLDOUT_SET,
+  PLAN86_SUBTRACTION_REVIEW_SET,
 ]);
 
 export const PLAN40_VETTED_BATCH = deepFreeze(

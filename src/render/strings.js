@@ -187,6 +187,8 @@ export const STRINGS = Object.freeze({
     // Minor note: Natural phrasing for grade 2–3 and clean screen-reader voicing.
     equivalentNumeratorPrompt: equivalentPartsPrompt,
     inspectPrompt: (side) => `Does this new fraction show the same amount as the ${side === 'left' ? 'first' : 'second'} fraction?`,
+    plan86InspectPrompt: (side) => `Keep if this matches the ${side === 'left' ? 'first' : 'second'} fraction. Otherwise, change the top number and check.`,
+    plan86RepairLabel: (denominator) => `Change the top number (over ${denominator}):`,
     changeTopPrompt: 'Change the top number:',
     changeTopButton: 'Change top number',
     inspectHelp: 'The top and bottom must use the same multiplier to keep the amount.',

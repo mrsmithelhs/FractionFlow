@@ -1,0 +1,183 @@
+{
+  "method": "Report-local Vite harness, real app and registered associations, Chrome headless; 360x740 emulated touch",
+  "browser": "157.0.8103.38",
+  "results": [
+    {
+      "case": "add-baseline",
+      "view": "visual",
+      "rootTextScale": "100%",
+      "successfulSubmissions": 3,
+      "transformEdits": 2,
+      "wrongKeepRecovered": false,
+      "width": 360,
+      "scrollWidth": 360,
+      "horizontalOverflow": false
+    },
+    {
+      "case": "add-baseline",
+      "view": "linear",
+      "rootTextScale": "100%",
+      "successfulSubmissions": 3,
+      "transformEdits": 2,
+      "wrongKeepRecovered": false,
+      "width": 360,
+      "scrollWidth": 360,
+      "horizontalOverflow": false
+    },
+    {
+      "case": "add-baseline",
+      "view": "visual",
+      "rootTextScale": "200%",
+      "successfulSubmissions": 3,
+      "transformEdits": 2,
+      "wrongKeepRecovered": false,
+      "width": 360,
+      "scrollWidth": 381,
+      "horizontalOverflow": true
+    },
+    {
+      "case": "add-baseline",
+      "view": "linear",
+      "rootTextScale": "200%",
+      "successfulSubmissions": 3,
+      "transformEdits": 2,
+      "wrongKeepRecovered": false,
+      "width": 360,
+      "scrollWidth": 360,
+      "horizontalOverflow": false
+    },
+    {
+      "case": "add-variant",
+      "view": "visual",
+      "rootTextScale": "100%",
+      "successfulSubmissions": 3,
+      "transformEdits": 1,
+      "wrongKeepRecovered": true,
+      "width": 360,
+      "scrollWidth": 360,
+      "horizontalOverflow": false
+    },
+    {
+      "case": "add-variant",
+      "view": "linear",
+      "rootTextScale": "100%",
+      "successfulSubmissions": 3,
+      "transformEdits": 1,
+      "wrongKeepRecovered": true,
+      "width": 360,
+      "scrollWidth": 360,
+      "horizontalOverflow": false
+    },
+    {
+      "case": "add-variant",
+      "view": "visual",
+      "rootTextScale": "200%",
+      "successfulSubmissions": 3,
+      "transformEdits": 1,
+      "wrongKeepRecovered": true,
+      "width": 360,
+      "scrollWidth": 381,
+      "horizontalOverflow": true
+    },
+    {
+      "case": "add-variant",
+      "view": "linear",
+      "rootTextScale": "200%",
+      "successfulSubmissions": 3,
+      "transformEdits": 1,
+      "wrongKeepRecovered": true,
+      "width": 360,
+      "scrollWidth": 360,
+      "horizontalOverflow": false
+    },
+    {
+      "case": "subtract-baseline",
+      "view": "visual",
+      "rootTextScale": "100%",
+      "successfulSubmissions": 3,
+      "transformEdits": 2,
+      "wrongKeepRecovered": false,
+      "width": 360,
+      "scrollWidth": 360,
+      "horizontalOverflow": false
+    },
+    {
+      "case": "subtract-baseline",
+      "view": "linear",
+      "rootTextScale": "100%",
+      "successfulSubmissions": 3,
+      "transformEdits": 2,
+      "wrongKeepRecovered": false,
+      "width": 360,
+      "scrollWidth": 360,
+      "horizontalOverflow": false
+    },
+    {
+      "case": "subtract-baseline",
+      "view": "visual",
+      "rootTextScale": "200%",
+      "successfulSubmissions": 3,
+      "transformEdits": 2,
+      "wrongKeepRecovered": false,
+      "width": 360,
+      "scrollWidth": 381,
+      "horizontalOverflow": true
+    },
+    {
+      "case": "subtract-baseline",
+      "view": "linear",
+      "rootTextScale": "200%",
+      "successfulSubmissions": 3,
+      "transformEdits": 2,
+      "wrongKeepRecovered": false,
+      "width": 360,
+      "scrollWidth": 381,
+      "horizontalOverflow": true
+    },
+    {
+      "case": "subtract-variant",
+      "view": "visual",
+      "rootTextScale": "100%",
+      "successfulSubmissions": 3,
+      "transformEdits": 1,
+      "wrongKeepRecovered": true,
+      "width": 360,
+      "scrollWidth": 360,
+      "horizontalOverflow": false
+    },
+    {
+      "case": "subtract-variant",
+      "view": "linear",
+      "rootTextScale": "100%",
+      "successfulSubmissions": 3,
+      "transformEdits": 1,
+      "wrongKeepRecovered": true,
+      "width": 360,
+      "scrollWidth": 360,
+      "horizontalOverflow": false
+    },
+    {
+      "case": "subtract-variant",
+      "view": "visual",
+      "rootTextScale": "200%",
+      "successfulSubmissions": 3,
+      "transformEdits": 1,
+      "wrongKeepRecovered": true,
+      "width": 360,
+      "scrollWidth": 381,
+      "horizontalOverflow": true
+    },
+    {
+      "case": "subtract-variant",
+      "view": "linear",
+      "rootTextScale": "200%",
+      "successfulSubmissions": 3,
+      "transformEdits": 1,
+      "wrongKeepRecovered": true,
+      "width": 360,
+      "scrollWidth": 381,
+      "horizontalOverflow": true
+    }
+  ],
+  "pageErrors": []
+}

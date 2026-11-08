@@ -1,5 +1,6 @@
 import { assertValidScene, RenderContractError } from './contract.js';
 import { STRINGS } from './strings.js';
+import { isPlan86ReviewInspect, showPlan86FixedDenominator } from './plan86-review-presentation.js';
 import { createFractionBarRenderer, createMultiWholeStack, createTakeawayBar, createTrackAndReadout } from './fraction-bar.js';
 import { createSymbolicRenderer } from './symbolic.js';
 import { createSymbolicFraction } from './symbolic.js';
@@ -618,7 +619,8 @@ export function createBeatContainer({
         if (inspect) {
           const candidate = task.candidate;
           if (!candidate) throw new RenderContractError('MISSING_INSPECT_CANDIDATE', 'inspect transform requires the current authored proposal');
-          promptText.textContent = strings.transform.inspectPrompt(side);
+          const directRepair = isPlan86ReviewInspect(scene);
+          promptText.textContent = directRepair ? strings.transform.plan86InspectPrompt(side) : strings.transform.inspectPrompt(side);
           controlsContainer.appendChild(createSymbolicFraction(
             candidate.numerator, candidate.denominator, { ariaPrefix: 'New fraction', variant: 'compact' },
           ));
@@ -629,17 +631,18 @@ export function createBeatContainer({
             onClick: () => dispatchAction({ type: 'keep-inspected-form' }),
           });
           controlsContainer.appendChild(keep);
-          if (isInspectChangeOpen()) {
+          if (directRepair || isInspectChangeOpen()) {
           const changeInput = createNumericInput({
             id: `transform-num-input-${side}`,
             label: strings.transform.changeTopPrompt,
             min: 0,
             max: Number(targetDen),
             initialValue: candidate.numerator,
-            buttonLabel: strings.transform.changeTopButton,
+            buttonLabel: directRepair ? strings.controls.check : strings.transform.changeTopButton,
             strings,
             onSubmit: (val) => dispatchAction({ type: 'repair-inspected-form', numerator: String(val) }),
           });
+          if (directRepair) showPlan86FixedDenominator(changeInput, targetDen, strings.transform.plan86RepairLabel(targetDen));
           controlsContainer.appendChild(changeInput.element);
           } else {
             const changeButton = createButton({

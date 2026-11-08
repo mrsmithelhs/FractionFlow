@@ -132,9 +132,10 @@ describe('Plan 40 Replay v6 and backwards compatibility suite (Stage 2)', () => 
     expect(JSON.parse(JSON.stringify(replayEpisode(oracle.envelope)))).toEqual(oracle.expectedState);
   });
   it('round-trips initial and completed episodes for all 32 registered items through Replay v6', () => {
-    expect(PLAN40_SUBTRACTION_RECIPE_RECORDS).toHaveLength(32);
+    const historicalRecords = PLAN40_SUBTRACTION_RECIPE_RECORDS.filter((record) => !record.itemId.startsWith('plan86-'));
+    expect(historicalRecords).toHaveLength(32);
 
-    for (const record of PLAN40_SUBTRACTION_RECIPE_RECORDS) {
+    for (const record of historicalRecords) {
       const { initial, completed } = completeEpisode(record);
 
       // Initial state round-trip

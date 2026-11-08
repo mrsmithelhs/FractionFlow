@@ -87,6 +87,11 @@ const records = [
     taskDataRevision: '2', stimulusId: 'plan35-stim-holdout-half-fifth-20', stimulusRevision: '1',
     candidates: { left: fraction('9', '20'), right: fraction('4', '20') },
   },
+  {
+    itemId: 'plan86-add-inspect-two-thirds-one-fourth-12', fixtureId: 'curated-relatively-prime-addition-non-least', authoringRevision: 'plan03-fixtures-v1',
+    sourceForms: { left: fraction('2', '3'), right: fraction('1', '4') }, recipeId: PLAN35_RECIPE_IDS.inspect, targetDenominator: '12',
+    stimulusId: 'plan86-add-inspect-7-3-twelfths', stimulusRevision: '1', candidates: { left: fraction('7', '12'), right: fraction('3', '12') },
+  },
 ];
 
 export const PLAN35_ADDITION_RECIPE_RECORDS = deepFreeze(records.map((record) => ({
@@ -131,9 +136,14 @@ export const PLAN35_DATA_ONLY_HOLDOUT_SET = deepFreeze({
   ],
 });
 
+export const PLAN86_ADDITION_REVIEW_SET = deepFreeze({
+  id: 'plan86-addition-review', revision: '1', itemIds: ['plan86-add-inspect-two-thirds-one-fourth-12'],
+});
+
 export const PLAN35_RECIPE_ASSOCIATION_SETS = deepFreeze([
   PLAN35_ADDITION_RECIPE_PRACTICE_SET,
   PLAN35_DATA_ONLY_HOLDOUT_SET,
+  PLAN86_ADDITION_REVIEW_SET,
 ]);
 
 export function resolvePlan35RecipeAssociationSet(setId, revision, itemId) {
