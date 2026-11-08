@@ -1,0 +1,21 @@
+// Record-only staging within existing Plan 84 bounds; no active membership.
+import assert from 'node:assert/strict';
+import {readFile} from 'node:fs/promises';
+import {PLAN84_DATA,PLAN84_SET_V1} from '../../../src/content/data/plan84-mixed-improper-records.js';
+import {validatePlan84Record,validatePlan84Membership,validatePlan84InitialCoverage,resolvePlan84Context} from '../../../src/content/plan84-mixed-improper-task.js';
+import {PRACTICE_TYPES} from '../../../src/app/practice-types.js';
+const records=JSON.parse(await readFile(new URL('./plan84-candidates.json',import.meta.url),'utf8'));
+const gcd=(a,b)=>b?gcd(b,a%b):a;
+const amount=r=>{const [w,n,d]=r.mixed.map(Number),a=w*d+n,g=gcd(a,d);return `${a/g}/${d/g}`;};
+const live=PLAN84_SET_V1.items.map(m=>PLAN84_DATA.find(r=>r.itemId===m.itemId&&r.itemRevision===m.itemRevision));
+assert.equal(live.length,4);assert.equal(new Set(live.map(amount)).size,3);
+assert.equal(records.length,4);assert.equal(new Set([...live,...records].map(amount)).size,7);
+assert.deepEqual(records.map(r=>validatePlan84Record(r).correctIndex),[0,1,2,3]);
+validatePlan84InitialCoverage(records);
+validatePlan84Membership([...PLAN84_DATA,...records],PLAN84_SET_V1);
+for(const r of records)assert.throws(()=>resolvePlan84Context(r.itemId));
+const duplicate=structuredClone(records[0]);duplicate.options[1]=duplicate.options[0];assert.throws(()=>validatePlan84Record(duplicate));
+const wrongUnit=structuredClone(records[0]);wrongUnit.options[0][1]='4';assert.throws(()=>validatePlan84Record(wrongUnit));
+const widened=structuredClone(records[0]);widened.mixed[2]='10';assert.throws(()=>validatePlan84Record(widened));
+assert.deepEqual(PRACTICE_TYPES.find(t=>t.id==='mixed-to-improper-bridge').items.map(i=>i.id),PLAN84_SET_V1.items.map(i=>i.itemId));
+console.log(JSON.stringify({liveIds:live.length,liveDistinct:3,staged:records.length,totalDistinct:7,currentBoundMaximum:7,correctIndices:[0,1,2,3],stagedMembership:0}));

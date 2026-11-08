@@ -1,0 +1,45 @@
+{
+  "method": "Vite-served current source; test-only route interception substitutes a single Plan 51 record module response",
+  "candidate": {
+    "itemId": "distance-plan85-01",
+    "itemRevision": "1",
+    "sourceForms": {
+      "first": {
+        "numerator": "3",
+        "denominator": "6"
+      },
+      "second": {
+        "numerator": "4",
+        "denominator": "6"
+      }
+    }
+  },
+  "expectedExactDistance": "4/6 - 3/6 = 1/6",
+  "results": [
+    {
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "view": "linear",
+      "candidateId": "distance-plan85-01",
+      "answer": "1/6",
+      "accepted": "That's right.",
+      "displayedResult": "Distance: \n1\n6",
+      "intercepted": 1
+    },
+    {
+      "viewport": {
+        "width": 1093,
+        "height": 614
+      },
+      "view": "visual",
+      "candidateId": "distance-plan85-01",
+      "answer": "1/6",
+      "accepted": "That's right.",
+      "displayedResult": "Distance: \n1\n6",
+      "intercepted": 1
+    }
+  ],
+  "pageErrors": []
+}

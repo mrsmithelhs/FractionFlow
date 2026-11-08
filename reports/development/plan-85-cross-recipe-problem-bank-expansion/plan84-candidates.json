@@ -1,0 +1,6 @@
+[
+  { "itemId":"plan85-bridge-01", "itemRevision":"1", "mixed":["1","1","8"], "options":[["9","8"],["8","8"],["10","8"],["12","8"]] },
+  { "itemId":"plan85-bridge-02", "itemRevision":"1", "mixed":["1","3","8"], "options":[["8","8"],["11","8"],["10","8"],["12","8"]] },
+  { "itemId":"plan85-bridge-03", "itemRevision":"1", "mixed":["1","5","8"], "options":[["8","8"],["12","8"],["13","8"],["14","8"]] },
+  { "itemId":"plan85-bridge-04", "itemRevision":"1", "mixed":["1","7","8"], "options":[["8","8"],["14","8"],["16","8"],["15","8"]] }
+]
