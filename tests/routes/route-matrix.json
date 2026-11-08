@@ -13496,7 +13496,7 @@
           {
             "type": "containsText",
             "target": ".app-visual-view .active-beat-prompt",
-            "value": "3/10 is left."
+            "value": "That's right."
           },
           {
             "type": "containsText",
@@ -14955,7 +14955,7 @@
           {
             "type": "containsText",
             "target": ".app-visual-view .active-beat-prompt",
-            "value": "3/10 is left."
+            "value": "That's right."
           },
           {
             "type": "containsText",

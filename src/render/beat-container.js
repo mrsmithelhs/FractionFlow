@@ -762,7 +762,10 @@ export function createBeatContainer({
           const accepted = scene.meaning.takeaway.acceptedResponseForm
             || scene.meaning.operation?.acceptedResponseForm
             || scene.meaning.operation?.rawResult;
-          promptText.textContent = typeof strings.subtraction.thatAmountLeft === 'function'
+          const taskContext = scene.derivation?.sourceContext?.instructional?.taskContext;
+          promptText.textContent = taskContext?.definitionId === 'phase-3-reusable-subtraction-recipes'
+            ? strings.resolve.crossingAcceptedCue
+            : typeof strings.subtraction.thatAmountLeft === 'function'
             ? strings.subtraction.thatAmountLeft(accepted.numerator, accepted.denominator)
             : `${accepted.numerator}/${accepted.denominator} is left.`;
           if (progression && progression.actionKind !== 'none') {

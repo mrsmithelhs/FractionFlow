@@ -53,6 +53,11 @@ async function operate(host,view,record,page){
   if(addition)await host.locator(`#${view==='linear'?'linear-':''}operate-sum-input`).fill(String(result.numerator));
   else {await host.locator(`#${view==='linear'?'linear-':''}operate-fraction-numerator-input`).fill(String(result.numerator));await host.locator(`#${view==='linear'?'linear-':''}operate-fraction-denominator-input`).fill(String(result.denominator));}
   await host.locator('.active-beat-controls .control-submit-btn').click();
+  if(!addition) {
+    assert.equal(await host.locator('.active-beat-prompt').innerText(),"That's right.");
+    const equation=await host.locator('.symbolic-expression').first().evaluate(node=>node.outerHTML);
+    assert.ok(equation.includes(`${result.numerator} over ${result.denominator}`));
+  }
   if(view==='visual'&&page&&record.itemId.startsWith('plan35-identify'))await page.screenshot({path:`${dir}/pattern-U0-result.png`,fullPage:true});
   if(view==='visual'&&page&&record.itemId.startsWith('plan40-identify'))await page.screenshot({path:`${dir}/pattern-U1-result.png`,fullPage:true});
   await host.locator('.active-beat-controls button').first().click();

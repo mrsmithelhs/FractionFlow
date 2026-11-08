@@ -1,0 +1,61 @@
+{
+  "browser": "157.0.8103.38",
+  "viewport": {
+    "width": 570,
+    "height": 668
+  },
+  "runs": [
+    {
+      "mode": "managed",
+      "view": "visual",
+      "item": "plan40-identify-one-half-one-eighth-8",
+      "banner": "That's right.",
+      "equation": {
+        "text": "48−18=38",
+        "html": "<div class=\"symbolic-expression\"><span class=\"symbolic-fraction\" role=\"math\" aria-label=\"4 over 8\"><span class=\"symbolic-numerator\" aria-hidden=\"true\">4</span><span class=\"symbolic-bar\" aria-hidden=\"true\"></span><span class=\"symbolic-denominator\" aria-hidden=\"true\">8</span></span><span class=\"symbolic-operator\" role=\"math\" aria-label=\"minus\">−</span><span class=\"symbolic-fraction\" role=\"math\" aria-label=\"1 over 8\"><span class=\"symbolic-numerator\" aria-hidden=\"true\">1</span><span class=\"symbolic-bar\" aria-hidden=\"true\"></span><span class=\"symbolic-denominator\" aria-hidden=\"true\">8</span></span><span class=\"symbolic-operator\" role=\"math\" aria-label=\"equals\">=</span><span class=\"symbolic-fraction\" role=\"math\" aria-label=\"3 over 8\"><span class=\"symbolic-numerator\" aria-hidden=\"true\">3</span><span class=\"symbolic-bar\" aria-hidden=\"true\"></span><span class=\"symbolic-denominator\" aria-hidden=\"true\">8</span></span></div>"
+      },
+      "bar": "Fraction bar: 4 of 8 equal parts started, 1 marked for removal.",
+      "button": "Next problem",
+      "nextItem": "plan40-inspect-two-thirds-one-fourth-12"
+    },
+    {
+      "mode": "managed",
+      "view": "linear",
+      "item": "plan40-identify-one-half-one-eighth-8",
+      "banner": "That's right.",
+      "equation": {
+        "text": "48−18=38",
+        "html": "<div class=\"symbolic-expression linear-context-expression\" role=\"math\" aria-label=\"4 over 8 minus 1 over 8 equals 3 over 8\"><span class=\"symbolic-fraction\" aria-hidden=\"true\"><span class=\"symbolic-numerator\" aria-hidden=\"true\">4</span><span class=\"symbolic-bar\" aria-hidden=\"true\"></span><span class=\"symbolic-denominator\" aria-hidden=\"true\">8</span></span><span class=\"symbolic-operator\" aria-hidden=\"true\">−</span><span class=\"symbolic-fraction\" aria-hidden=\"true\"><span class=\"symbolic-numerator\" aria-hidden=\"true\">1</span><span class=\"symbolic-bar\" aria-hidden=\"true\"></span><span class=\"symbolic-denominator\" aria-hidden=\"true\">8</span></span><span class=\"symbolic-operator\" aria-hidden=\"true\">=</span><span class=\"symbolic-fraction\" aria-hidden=\"true\"><span class=\"symbolic-numerator\" aria-hidden=\"true\">3</span><span class=\"symbolic-bar\" aria-hidden=\"true\"></span><span class=\"symbolic-denominator\" aria-hidden=\"true\">8</span></span></div>"
+      },
+      "bar": null,
+      "button": "Next problem",
+      "nextItem": "plan40-inspect-two-thirds-one-fourth-12"
+    },
+    {
+      "mode": "standalone",
+      "view": "visual",
+      "item": "plan40-construct-half-fifth-10",
+      "banner": "That's right.",
+      "equation": {
+        "text": "510−210=310",
+        "html": "<div class=\"symbolic-expression\"><span class=\"symbolic-fraction\" role=\"math\" aria-label=\"5 over 10\"><span class=\"symbolic-numerator\" aria-hidden=\"true\">5</span><span class=\"symbolic-bar\" aria-hidden=\"true\"></span><span class=\"symbolic-denominator\" aria-hidden=\"true\">10</span></span><span class=\"symbolic-operator\" role=\"math\" aria-label=\"minus\">−</span><span class=\"symbolic-fraction\" role=\"math\" aria-label=\"2 over 10\"><span class=\"symbolic-numerator\" aria-hidden=\"true\">2</span><span class=\"symbolic-bar\" aria-hidden=\"true\"></span><span class=\"symbolic-denominator\" aria-hidden=\"true\">10</span></span><span class=\"symbolic-operator\" role=\"math\" aria-label=\"equals\">=</span><span class=\"symbolic-fraction\" role=\"math\" aria-label=\"3 over 10\"><span class=\"symbolic-numerator\" aria-hidden=\"true\">3</span><span class=\"symbolic-bar\" aria-hidden=\"true\"></span><span class=\"symbolic-denominator\" aria-hidden=\"true\">10</span></span></div>"
+      },
+      "bar": "Fraction bar: 5 of 10 equal parts started, 2 marked for removal.",
+      "button": "Next problem",
+      "nextItem": "plan40-construct-three-fourths-two-fifths-20"
+    },
+    {
+      "mode": "standalone",
+      "view": "linear",
+      "item": "plan40-construct-half-fifth-10",
+      "banner": "That's right.",
+      "equation": {
+        "text": "510−210=310",
+        "html": "<div class=\"symbolic-expression linear-context-expression\" role=\"math\" aria-label=\"5 over 10 minus 2 over 10 equals 3 over 10\"><span class=\"symbolic-fraction\" aria-hidden=\"true\"><span class=\"symbolic-numerator\" aria-hidden=\"true\">5</span><span class=\"symbolic-bar\" aria-hidden=\"true\"></span><span class=\"symbolic-denominator\" aria-hidden=\"true\">10</span></span><span class=\"symbolic-operator\" aria-hidden=\"true\">−</span><span class=\"symbolic-fraction\" aria-hidden=\"true\"><span class=\"symbolic-numerator\" aria-hidden=\"true\">2</span><span class=\"symbolic-bar\" aria-hidden=\"true\"></span><span class=\"symbolic-denominator\" aria-hidden=\"true\">10</span></span><span class=\"symbolic-operator\" aria-hidden=\"true\">=</span><span class=\"symbolic-fraction\" aria-hidden=\"true\"><span class=\"symbolic-numerator\" aria-hidden=\"true\">3</span><span class=\"symbolic-bar\" aria-hidden=\"true\"></span><span class=\"symbolic-denominator\" aria-hidden=\"true\">10</span></span></div>"
+      },
+      "bar": null,
+      "button": "Next problem",
+      "nextItem": "plan40-construct-three-fourths-two-fifths-20"
+    }
+  ]
+}

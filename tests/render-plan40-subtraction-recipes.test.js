@@ -231,7 +231,7 @@ describe('Plan 40 rendered subtraction recipes', () => {
   });
 
   describe('Resolve beat rendering & history disclosure', () => {
-    it('renders resolved equation and is-left prompt while omitting redundant Difference milestone in history', () => {
+    it('renders resolved equation and success cue while omitting redundant Difference milestone in history', () => {
       const record = PLAN40_VETTED_BATCH.find((r) => r.itemId === 'plan40-construct-half-fifth-10');
       let state = startEpisode(record);
       state = applyIntent(state, { type: 'acknowledge-encounter' });
@@ -260,9 +260,9 @@ describe('Plan 40 rendered subtraction recipes', () => {
         // 3 milestones total (Problem established + 2 transforms) -> 2 older steps behind toggle
         expect(summary.textContent).toBe('Show previous steps (2 completed)');
 
-        // Resolve prompt displays accepted form
+        // The equation and model retain the accepted form; the banner confirms success.
         const prompt = container.querySelector('.active-beat-prompt');
-        expect(prompt.textContent).toBe('3/10 is left.');
+        expect(prompt.textContent).toBe(STRINGS.resolve.crossingAcceptedCue);
 
         // Finish button is present
         const finishBtn = container.querySelector('.active-beat-controls button');
@@ -409,7 +409,7 @@ describe('Plan 40 rendered subtraction recipes', () => {
         ({ visualContainer, linearContainer } = mountRenderers(scene));
 
         for (const container of [visualContainer, linearContainer]) {
-          expect(container.querySelector('.active-beat-prompt').textContent).toBe('1/10 is left.');
+          expect(container.querySelector('.active-beat-prompt').textContent).toBe(STRINGS.resolve.crossingAcceptedCue);
           expect(container.querySelector('.completed-beats-section').textContent).not.toContain('Difference:');
         }
       }
@@ -463,7 +463,7 @@ describe('Plan 40 rendered subtraction recipes', () => {
         let { visualContainer: visRes, linearContainer: linRes } = mountRenderers(scene);
 
         for (const container of [visRes, linRes]) {
-          expect(container.querySelector('.active-beat-prompt').textContent).toBe('7/12 is left.');
+          expect(container.querySelector('.active-beat-prompt').textContent).toBe(STRINGS.resolve.crossingAcceptedCue);
           expect(container.querySelector('.completed-beats-section').textContent).not.toContain('Difference:');
         }
       }
