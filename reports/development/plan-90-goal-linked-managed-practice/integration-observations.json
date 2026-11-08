@@ -10,14 +10,14 @@
       "before": {
         "font": 16,
         "widths": [
-          310,
-          310
+          295,
+          295
         ],
-        "area": 310,
-        "contentWidth": 336,
+        "area": 295,
+        "contentWidth": 321,
         "viewportWidth": 360,
         "viewportHeight": 740,
-        "htmlScroll": "visible",
+        "htmlScroll": "scroll",
         "bodyScroll": "visible",
         "rootScroll": "visible"
       },
@@ -37,14 +37,14 @@
       "before": {
         "font": 32,
         "widths": [
-          262,
-          262
+          247,
+          247
         ],
-        "area": 262,
-        "contentWidth": 312,
+        "area": 247,
+        "contentWidth": 297,
         "viewportWidth": 360,
         "viewportHeight": 740,
-        "htmlScroll": "visible",
+        "htmlScroll": "scroll",
         "bodyScroll": "visible",
         "rootScroll": "visible"
       },
@@ -59,14 +59,14 @@
       "before": {
         "font": 16,
         "widths": [
-          970.78125,
-          970.78125
+          955.78125,
+          955.78125
         ],
-        "area": 970.78125,
-        "contentWidth": 1027.42,
+        "area": 955.78125,
+        "contentWidth": 1012.4200000000001,
         "viewportWidth": 1093,
         "viewportHeight": 614,
-        "htmlScroll": "visible",
+        "htmlScroll": "scroll",
         "bodyScroll": "visible",
         "rootScroll": "visible"
       },
@@ -90,10 +90,10 @@
           1022
         ],
         "area": 1022,
-        "contentWidth": 1353.6,
+        "contentWidth": 1338.6,
         "viewportWidth": 1440,
         "viewportHeight": 900,
-        "htmlScroll": "visible",
+        "htmlScroll": "scroll",
         "bodyScroll": "visible",
         "rootScroll": "visible"
       },

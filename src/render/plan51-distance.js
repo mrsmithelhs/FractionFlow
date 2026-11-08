@@ -89,7 +89,7 @@ export function renderPlan51Distance(container, scene, options) {
     if (d.feedback || options.refusal) group.setAttribute('aria-describedby', `plan51-feedback-${options.view}`);
     append(group, el('legend', 'sr-only', 'Choose how the first amount compares with the second'));
     const choices = el('div', 'plan45-relation-options');
-    for (const [glyph, label] of [['<', 'is less than'], ['=', 'is equal to'], ['>', 'is greater than']]) {
+    for (const [glyph, label] of [['>', 'is greater than'], ['=', 'is equal to'], ['<', 'is less than']]) {
       const option = el('label', 'plan45-relation-option');
       const input = el('input'); input.type = 'radio'; input.name = `plan51-relation-${options.view}`; input.value = glyph;
       input.setAttribute('aria-label', `First amount ${label} second amount`);

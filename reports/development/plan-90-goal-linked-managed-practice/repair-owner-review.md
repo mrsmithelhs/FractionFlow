@@ -1,0 +1,20 @@
+# Plan 90 rendered-review repair evidence
+
+2026-11-08. Repair baseline: clean `3176fd7da1a4e4204dd85d560e004a364753ff2b`; Plan 90 preflight returned RUNNABLE. This is a technical handoff for orchestration and another owner rendered review, not acceptance or closure.
+
+## Changes and diagnosis
+
+Comparison and distance radio choices now appear in DOM and visual order `>`, `=`, `<`. Their existing values, labels, arithmetic, recording and replay are unchanged. Both views and both renderers were exercised with keyboard arrows in the browser journeys below.
+
+The owner reported that on the actual `/FractionFlow/` preview at 570 × 668, seed 0 opened while seeds 1–3 displayed the generic opening failure. In Chrome 157 headless on this machine, the original layout opened all four seeds, so that exact seed split was not reproduced. The entry and episode do differ in height: for seeds 2 and 3 the page grew from 668 to 715 CSS pixels. A scrollbar that consumes width could therefore change the measurement between entry and mount. We cannot establish from this environment that this was the owner's exact cause, including for seed 1.
+
+The existing installation guard compares the complete pre-mount and post-mount fit measurements. Introducing a 15px episode-only gutter reproduced its generic refusal on all four seeds at both tested window sizes. At 570 × 668 the measured working area fell from 501.796875px to 486.796875px. The repair reserves the document scrollbar gutter consistently across entry and episode, with a forced vertical scrollbar as a fallback. No admission, fit threshold, stale-measurement check, active draft, or rollback logic was weakened. With the repair, the same injected episode-only gutter no longer changes the working width and all starts succeed. A control disabling the repair and adding the episode-only gutter still reproduces the refusal. Headless scrollbar behavior is not evidence of a physical device's native scrollbar configuration.
+
+## Verification
+
+- [Before observations](repair-launch-before.json) capture the original route and the simulated gutter failure; [after observations](repair-launch-after.json) contain 48 asserted starts and controls, including the deliberately failing repair-disabled control. The [diagnostic](repair-launch-diagnostic.mjs) uses the existing configured port 5199 when `PLAN90_EXISTING=1`.
+- [570 × 668 journeys](repair-journeys-570.json) and [1093 × 614 journeys](repair-journeys-1093.json) each record 16 complete actual Start-to-finish journeys: four deterministic seeds, visual and linear views, and high and medium support. These use the existing `/FractionFlow/` preview, production admission and measured fit. Each also confirms an unseeded ordinary Start. The browser checks `>`, `=`, `<` DOM order and right-arrow focus order whenever comparison or distance choices appear. The [witness](all-patterns-witness.mjs) includes explicit fault cases separately from ordinary journeys.
+- [Integration observations](integration-observations.json) include a still-eligible text-size change during mount: Start refuses it, and Next restores the completed task and permits a later successful Next. Separate forced mount failures retain Retry drafts and completed state. Narrow fit refusal and measured resize also remain covered. CSS text scaling is not physical browser zoom.
+- Nine focused test files passed 51 tests, covering comparison, distance, pattern selection, fit, admission, scheduler, and public replay. The production and prototype builds passed, with Vite's existing large-chunk warning; packet lint and `git diff --check` passed.
+
+An earlier authorized Terra-medium consultation covered the full integration and was already recorded in the prior delivery. No new consultation was run for this repair; review is orchestration-gate-only. No Sol or Astra consultation ran. Physical-device behavior, screen-reader speech, and the owner's exact original seed split remain unverified. Held banks and review-only variants remain gated; owner rendered acceptance, packet closure, push and deployment have not occurred.

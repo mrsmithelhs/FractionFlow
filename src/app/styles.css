@@ -17,6 +17,12 @@
   font-family: var(--ff-font-family);
 }
 
+/* Keep the working width stable when the entry and episode differ in height. */
+html {
+  overflow-y: scroll;
+  scrollbar-gutter: stable;
+}
+
 html,
 body,
 #app {

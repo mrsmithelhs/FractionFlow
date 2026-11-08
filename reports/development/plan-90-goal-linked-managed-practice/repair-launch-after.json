@@ -1,0 +1,3559 @@
+{
+  "browser": "157.0.8103.38",
+  "base": "configured Vite /FractionFlow/ on port 5199",
+  "scrollModes": "auto, forced scroll, synthetic episode gutter, styled classic scrollbar with the repair, and styled classic scrollbar with the repair disabled; not a physical-device scrollbar claim",
+  "runs": [
+    {
+      "width": 570,
+      "height": 668,
+      "scroll": "auto",
+      "seed": 0,
+      "before": {
+        "fit": {
+          "font": 16,
+          "widths": [
+            486.796875,
+            486.796875
+          ],
+          "area": 486.796875,
+          "contentWidth": 520.8,
+          "viewportWidth": 570,
+          "viewportHeight": 668,
+          "htmlScroll": "scroll",
+          "bodyScroll": "visible",
+          "rootScroll": "visible"
+        },
+        "innerWidth": 570,
+        "clientWidth": 570,
+        "scrollHeight": 668,
+        "clientHeight": 668
+      },
+      "after": {
+        "state": "plan45-compare-02",
+        "notice": "",
+        "beforeAfterMount": [
+          {
+            "fit": {
+              "font": 16,
+              "widths": [
+                486.796875,
+                486.796875
+              ],
+              "area": 486.796875,
+              "contentWidth": 520.8,
+              "viewportWidth": 570,
+              "viewportHeight": 668,
+              "htmlScroll": "scroll",
+              "bodyScroll": "visible",
+              "rootScroll": "visible"
+            },
+            "activeHost": {
+              "width": 486.8125,
+              "left": 34.09375,
+              "right": 520.90625
+            },
+            "clientWidth": 570,
+            "scrollWidth": 555
+          }
+        ],
+        "fit": {
+          "font": 16,
+          "widths": [
+            486.796875,
+            486.796875
+          ],
+          "area": 486.796875,
+          "contentWidth": 520.8,
+          "viewportWidth": 570,
+          "viewportHeight": 668,
+          "htmlScroll": "scroll",
+          "bodyScroll": "visible",
+          "rootScroll": "visible"
+        },
+        "innerWidth": 570,
+        "clientWidth": 570,
+        "scrollHeight": 668,
+        "clientHeight": 668
+      },
+      "errors": []
+    },
+    {
+      "width": 570,
+      "height": 668,
+      "scroll": "auto",
+      "seed": 1,
+      "before": {
+        "fit": {
+          "font": 16,
+          "widths": [
+            486.796875,
+            486.796875
+          ],
+          "area": 486.796875,
+          "contentWidth": 520.8,
+          "viewportWidth": 570,
+          "viewportHeight": 668,
+          "htmlScroll": "scroll",
+          "bodyScroll": "visible",
+          "rootScroll": "visible"
+        },
+        "innerWidth": 570,
+        "clientWidth": 570,
+        "scrollHeight": 668,
+        "clientHeight": 668
+      },
+      "after": {
+        "state": "plan45-compare-08",
+        "notice": "",
+        "beforeAfterMount": [
+          {
+            "fit": {
+              "font": 16,
+              "widths": [
+                486.796875,
+                486.796875
+              ],
+              "area": 486.796875,
+              "contentWidth": 520.8,
+              "viewportWidth": 570,
+              "viewportHeight": 668,
+              "htmlScroll": "scroll",
+              "bodyScroll": "visible",
+              "rootScroll": "visible"
+            },
+            "activeHost": {
+              "width": 486.8125,
+              "left": 34.09375,
+              "right": 520.90625
+            },
+            "clientWidth": 570,
+            "scrollWidth": 555
+          }
+        ],
+        "fit": {
+          "font": 16,
+          "widths": [
+            486.796875,
+            486.796875
+          ],
+          "area": 486.796875,
+          "contentWidth": 520.8,
+          "viewportWidth": 570,
+          "viewportHeight": 668,
+          "htmlScroll": "scroll",
+          "bodyScroll": "visible",
+          "rootScroll": "visible"
+        },
+        "innerWidth": 570,
+        "clientWidth": 570,
+        "scrollHeight": 668,
+        "clientHeight": 668
+      },
+      "errors": []
+    },
+    {
+      "width": 570,
+      "height": 668,
+      "scroll": "auto",
+      "seed": 2,
+      "before": {
+        "fit": {
+          "font": 16,
+          "widths": [
+            486.796875,
+            486.796875
+          ],
+          "area": 486.796875,
+          "contentWidth": 520.8,
+          "viewportWidth": 570,
+          "viewportHeight": 668,
+          "htmlScroll": "scroll",
+          "bodyScroll": "visible",
+          "rootScroll": "visible"
+        },
+        "innerWidth": 570,
+        "clientWidth": 570,
+        "scrollHeight": 668,
+        "clientHeight": 668
+      },
+      "after": {
+        "state": "plan35-identify-half-three-tenths-10",
+        "notice": "",
+        "beforeAfterMount": [
+          {
+            "fit": {
+              "font": 16,
+              "widths": [
+                486.796875,
+                486.796875
+              ],
+              "area": 486.796875,
+              "contentWidth": 520.8,
+              "viewportWidth": 570,
+              "viewportHeight": 668,
+              "htmlScroll": "scroll",
+              "bodyScroll": "visible",
+              "rootScroll": "visible"
+            },
+            "activeHost": {
+              "width": 486.8125,
+              "left": 34.09375,
+              "right": 520.90625
+            },
+            "clientWidth": 570,
+            "scrollWidth": 555
+          }
+        ],
+        "fit": {
+          "font": 16,
+          "widths": [
+            486.796875,
+            486.796875
+          ],
+          "area": 486.796875,
+          "contentWidth": 520.8,
+          "viewportWidth": 570,
+          "viewportHeight": 668,
+          "htmlScroll": "scroll",
+          "bodyScroll": "visible",
+          "rootScroll": "visible"
+        },
+        "innerWidth": 570,
+        "clientWidth": 570,
+        "scrollHeight": 715,
+        "clientHeight": 668
+      },
+      "errors": []
+    },
+    {
+      "width": 570,
+      "height": 668,
+      "scroll": "auto",
+      "seed": 3,
+      "before": {
+        "fit": {
+          "font": 16,
+          "widths": [
+            486.796875,
+            486.796875
+          ],
+          "area": 486.796875,
+          "contentWidth": 520.8,
+          "viewportWidth": 570,
+          "viewportHeight": 668,
+          "htmlScroll": "scroll",
+          "bodyScroll": "visible",
+          "rootScroll": "visible"
+        },
+        "innerWidth": 570,
+        "clientWidth": 570,
+        "scrollHeight": 668,
+        "clientHeight": 668
+      },
+      "after": {
+        "state": "plan40-identify-one-half-one-eighth-8",
+        "notice": "",
+        "beforeAfterMount": [
+          {
+            "fit": {
+              "font": 16,
+              "widths": [
+                486.796875,
+                486.796875
+              ],
+              "area": 486.796875,
+              "contentWidth": 520.8,
+              "viewportWidth": 570,
+              "viewportHeight": 668,
+              "htmlScroll": "scroll",
+              "bodyScroll": "visible",
+              "rootScroll": "visible"
+            },
+            "activeHost": {
+              "width": 486.8125,
+              "left": 34.09375,
+              "right": 520.90625
+            },
+            "clientWidth": 570,
+            "scrollWidth": 555
+          }
+        ],
+        "fit": {
+          "font": 16,
+          "widths": [
+            486.796875,
+            486.796875
+          ],
+          "area": 486.796875,
+          "contentWidth": 520.8,
+          "viewportWidth": 570,
+          "viewportHeight": 668,
+          "htmlScroll": "scroll",
+          "bodyScroll": "visible",
+          "rootScroll": "visible"
+        },
+        "innerWidth": 570,
+        "clientWidth": 570,
+        "scrollHeight": 715,
+        "clientHeight": 668
+      },
+      "errors": []
+    },
+    {
+      "width": 570,
+      "height": 668,
+      "scroll": "always",
+      "seed": 0,
+      "before": {
+        "fit": {
+          "font": 16,
+          "widths": [
+            486.796875,
+            486.796875
+          ],
+          "area": 486.796875,
+          "contentWidth": 520.8,
+          "viewportWidth": 570,
+          "viewportHeight": 668,
+          "htmlScroll": "scroll",
+          "bodyScroll": "visible",
+          "rootScroll": "visible"
+        },
+        "innerWidth": 570,
+        "clientWidth": 570,
+        "scrollHeight": 668,
+        "clientHeight": 668
+      },
+      "after": {
+        "state": "plan45-compare-02",
+        "notice": "",
+        "beforeAfterMount": [
+          {
+            "fit": {
+              "font": 16,
+              "widths": [
+                486.796875,
+                486.796875
+              ],
+              "area": 486.796875,
+              "contentWidth": 520.8,
+              "viewportWidth": 570,
+              "viewportHeight": 668,
+              "htmlScroll": "scroll",
+              "bodyScroll": "visible",
+              "rootScroll": "visible"
+            },
+            "activeHost": {
+              "width": 486.8125,
+              "left": 34.09375,
+              "right": 520.90625
+            },
+            "clientWidth": 570,
+            "scrollWidth": 555
+          }
+        ],
+        "fit": {
+          "font": 16,
+          "widths": [
+            486.796875,
+            486.796875
+          ],
+          "area": 486.796875,
+          "contentWidth": 520.8,
+          "viewportWidth": 570,
+          "viewportHeight": 668,
+          "htmlScroll": "scroll",
+          "bodyScroll": "visible",
+          "rootScroll": "visible"
+        },
+        "innerWidth": 570,
+        "clientWidth": 570,
+        "scrollHeight": 668,
+        "clientHeight": 668
+      },
+      "errors": []
+    },
+    {
+      "width": 570,
+      "height": 668,
+      "scroll": "always",
+      "seed": 1,
+      "before": {
+        "fit": {
+          "font": 16,
+          "widths": [
+            486.796875,
+            486.796875
+          ],
+          "area": 486.796875,
+          "contentWidth": 520.8,
+          "viewportWidth": 570,
+          "viewportHeight": 668,
+          "htmlScroll": "scroll",
+          "bodyScroll": "visible",
+          "rootScroll": "visible"
+        },
+        "innerWidth": 570,
+        "clientWidth": 570,
+        "scrollHeight": 668,
+        "clientHeight": 668
+      },
+      "after": {
+        "state": "plan45-compare-08",
+        "notice": "",
+        "beforeAfterMount": [
+          {
+            "fit": {
+              "font": 16,
+              "widths": [
+                486.796875,
+                486.796875
+              ],
+              "area": 486.796875,
+              "contentWidth": 520.8,
+              "viewportWidth": 570,
+              "viewportHeight": 668,
+              "htmlScroll": "scroll",
+              "bodyScroll": "visible",
+              "rootScroll": "visible"
+            },
+            "activeHost": {
+              "width": 486.8125,
+              "left": 34.09375,
+              "right": 520.90625
+            },
+            "clientWidth": 570,
+            "scrollWidth": 555
+          }
+        ],
+        "fit": {
+          "font": 16,
+          "widths": [
+            486.796875,
+            486.796875
+          ],
+          "area": 486.796875,
+          "contentWidth": 520.8,
+          "viewportWidth": 570,
+          "viewportHeight": 668,
+          "htmlScroll": "scroll",
+          "bodyScroll": "visible",
+          "rootScroll": "visible"
+        },
+        "innerWidth": 570,
+        "clientWidth": 570,
+        "scrollHeight": 668,
+        "clientHeight": 668
+      },
+      "errors": []
+    },
+    {
+      "width": 570,
+      "height": 668,
+      "scroll": "always",
+      "seed": 2,
+      "before": {
+        "fit": {
+          "font": 16,
+          "widths": [
+            486.796875,
+            486.796875
+          ],
+          "area": 486.796875,
+          "contentWidth": 520.8,
+          "viewportWidth": 570,
+          "viewportHeight": 668,
+          "htmlScroll": "scroll",
+          "bodyScroll": "visible",
+          "rootScroll": "visible"
+        },
+        "innerWidth": 570,
+        "clientWidth": 570,
+        "scrollHeight": 668,
+        "clientHeight": 668
+      },
+      "after": {
+        "state": "plan35-identify-half-three-tenths-10",
+        "notice": "",
+        "beforeAfterMount": [
+          {
+            "fit": {
+              "font": 16,
+              "widths": [
+                486.796875,
+                486.796875
+              ],
+              "area": 486.796875,
+              "contentWidth": 520.8,
+              "viewportWidth": 570,
+              "viewportHeight": 668,
+              "htmlScroll": "scroll",
+              "bodyScroll": "visible",
+              "rootScroll": "visible"
+            },
+            "activeHost": {
+              "width": 486.8125,
+              "left": 34.09375,
+              "right": 520.90625
+            },
+            "clientWidth": 570,
+            "scrollWidth": 555
+          }
+        ],
+        "fit": {
+          "font": 16,
+          "widths": [
+            486.796875,
+            486.796875
+          ],
+          "area": 486.796875,
+          "contentWidth": 520.8,
+          "viewportWidth": 570,
+          "viewportHeight": 668,
+          "htmlScroll": "scroll",
+          "bodyScroll": "visible",
+          "rootScroll": "visible"
+        },
+        "innerWidth": 570,
+        "clientWidth": 570,
+        "scrollHeight": 715,
+        "clientHeight": 668
+      },
+      "errors": []
+    },
+    {
+      "width": 570,
+      "height": 668,
+      "scroll": "always",
+      "seed": 3,
+      "before": {
+        "fit": {
+          "font": 16,
+          "widths": [
+            486.796875,
+            486.796875
+          ],
+          "area": 486.796875,
+          "contentWidth": 520.8,
+          "viewportWidth": 570,
+          "viewportHeight": 668,
+          "htmlScroll": "scroll",
+          "bodyScroll": "visible",
+          "rootScroll": "visible"
+        },
+        "innerWidth": 570,
+        "clientWidth": 570,
+        "scrollHeight": 668,
+        "clientHeight": 668
+      },
+      "after": {
+        "state": "plan40-identify-one-half-one-eighth-8",
+        "notice": "",
+        "beforeAfterMount": [
+          {
+            "fit": {
+              "font": 16,
+              "widths": [
+                486.796875,
+                486.796875
+              ],
+              "area": 486.796875,
+              "contentWidth": 520.8,
+              "viewportWidth": 570,
+              "viewportHeight": 668,
+              "htmlScroll": "scroll",
+              "bodyScroll": "visible",
+              "rootScroll": "visible"
+            },
+            "activeHost": {
+              "width": 486.8125,
+              "left": 34.09375,
+              "right": 520.90625
+            },
+            "clientWidth": 570,
+            "scrollWidth": 555
+          }
+        ],
+        "fit": {
+          "font": 16,
+          "widths": [
+            486.796875,
+            486.796875
+          ],
+          "area": 486.796875,
+          "contentWidth": 520.8,
+          "viewportWidth": 570,
+          "viewportHeight": 668,
+          "htmlScroll": "scroll",
+          "bodyScroll": "visible",
+          "rootScroll": "visible"
+        },
+        "innerWidth": 570,
+        "clientWidth": 570,
+        "scrollHeight": 715,
+        "clientHeight": 668
+      },
+      "errors": []
+    },
+    {
+      "width": 570,
+      "height": 668,
+      "scroll": "episode-gutter",
+      "seed": 0,
+      "before": {
+        "fit": {
+          "font": 16,
+          "widths": [
+            486.796875,
+            486.796875
+          ],
+          "area": 486.796875,
+          "contentWidth": 520.8,
+          "viewportWidth": 570,
+          "viewportHeight": 668,
+          "htmlScroll": "scroll",
+          "bodyScroll": "visible",
+          "rootScroll": "visible"
+        },
+        "innerWidth": 570,
+        "clientWidth": 570,
+        "scrollHeight": 668,
+        "clientHeight": 668
+      },
+      "after": {
+        "state": "plan45-compare-02",
+        "notice": "",
+        "beforeAfterMount": [
+          {
+            "fit": {
+              "font": 16,
+              "widths": [
+                486.796875,
+                486.796875
+              ],
+              "area": 486.796875,
+              "contentWidth": 520.8,
+              "viewportWidth": 570,
+              "viewportHeight": 668,
+              "htmlScroll": "scroll",
+              "bodyScroll": "visible",
+              "rootScroll": "visible"
+            },
+            "activeHost": {
+              "width": 486.8125,
+              "left": 34.09375,
+              "right": 520.90625
+            },
+            "clientWidth": 570,
+            "scrollWidth": 555
+          }
+        ],
+        "fit": {
+          "font": 16,
+          "widths": [
+            486.796875,
+            486.796875
+          ],
+          "area": 486.796875,
+          "contentWidth": 520.8,
+          "viewportWidth": 570,
+          "viewportHeight": 668,
+          "htmlScroll": "scroll",
+          "bodyScroll": "visible",
+          "rootScroll": "visible"
+        },
+        "innerWidth": 570,
+        "clientWidth": 570,
+        "scrollHeight": 668,
+        "clientHeight": 668
+      },
+      "errors": []
+    },
+    {
+      "width": 570,
+      "height": 668,
+      "scroll": "episode-gutter",
+      "seed": 1,
+      "before": {
+        "fit": {
+          "font": 16,
+          "widths": [
+            486.796875,
+            486.796875
+          ],
+          "area": 486.796875,
+          "contentWidth": 520.8,
+          "viewportWidth": 570,
+          "viewportHeight": 668,
+          "htmlScroll": "scroll",
+          "bodyScroll": "visible",
+          "rootScroll": "visible"
+        },
+        "innerWidth": 570,
+        "clientWidth": 570,
+        "scrollHeight": 668,
+        "clientHeight": 668
+      },
+      "after": {
+        "state": "plan45-compare-08",
+        "notice": "",
+        "beforeAfterMount": [
+          {
+            "fit": {
+              "font": 16,
+              "widths": [
+                486.796875,
+                486.796875
+              ],
+              "area": 486.796875,
+              "contentWidth": 520.8,
+              "viewportWidth": 570,
+              "viewportHeight": 668,
+              "htmlScroll": "scroll",
+              "bodyScroll": "visible",
+              "rootScroll": "visible"
+            },
+            "activeHost": {
+              "width": 486.8125,
+              "left": 34.09375,
+              "right": 520.90625
+            },
+            "clientWidth": 570,
+            "scrollWidth": 555
+          }
+        ],
+        "fit": {
+          "font": 16,
+          "widths": [
+            486.796875,
+            486.796875
+          ],
+          "area": 486.796875,
+          "contentWidth": 520.8,
+          "viewportWidth": 570,
+          "viewportHeight": 668,
+          "htmlScroll": "scroll",
+          "bodyScroll": "visible",
+          "rootScroll": "visible"
+        },
+        "innerWidth": 570,
+        "clientWidth": 570,
+        "scrollHeight": 668,
+        "clientHeight": 668
+      },
+      "errors": []
+    },
+    {
+      "width": 570,
+      "height": 668,
+      "scroll": "episode-gutter",
+      "seed": 2,
+      "before": {
+        "fit": {
+          "font": 16,
+          "widths": [
+            486.796875,
+            486.796875
+          ],
+          "area": 486.796875,
+          "contentWidth": 520.8,
+          "viewportWidth": 570,
+          "viewportHeight": 668,
+          "htmlScroll": "scroll",
+          "bodyScroll": "visible",
+          "rootScroll": "visible"
+        },
+        "innerWidth": 570,
+        "clientWidth": 570,
+        "scrollHeight": 668,
+        "clientHeight": 668
+      },
+      "after": {
+        "state": "plan35-identify-half-three-tenths-10",
+        "notice": "",
+        "beforeAfterMount": [
+          {
+            "fit": {
+              "font": 16,
+              "widths": [
+                486.796875,
+                486.796875
+              ],
+              "area": 486.796875,
+              "contentWidth": 520.8,
+              "viewportWidth": 570,
+              "viewportHeight": 668,
+              "htmlScroll": "scroll",
+              "bodyScroll": "visible",
+              "rootScroll": "visible"
+            },
+            "activeHost": {
+              "width": 486.8125,
+              "left": 34.09375,
+              "right": 520.90625
+            },
+            "clientWidth": 570,
+            "scrollWidth": 555
+          }
+        ],
+        "fit": {
+          "font": 16,
+          "widths": [
+            486.796875,
+            486.796875
+          ],
+          "area": 486.796875,
+          "contentWidth": 520.8,
+          "viewportWidth": 570,
+          "viewportHeight": 668,
+          "htmlScroll": "scroll",
+          "bodyScroll": "visible",
+          "rootScroll": "visible"
+        },
+        "innerWidth": 570,
+        "clientWidth": 570,
+        "scrollHeight": 715,
+        "clientHeight": 668
+      },
+      "errors": []
+    },
+    {
+      "width": 570,
+      "height": 668,
+      "scroll": "episode-gutter",
+      "seed": 3,
+      "before": {
+        "fit": {
+          "font": 16,
+          "widths": [
+            486.796875,
+            486.796875
+          ],
+          "area": 486.796875,
+          "contentWidth": 520.8,
+          "viewportWidth": 570,
+          "viewportHeight": 668,
+          "htmlScroll": "scroll",
+          "bodyScroll": "visible",
+          "rootScroll": "visible"
+        },
+        "innerWidth": 570,
+        "clientWidth": 570,
+        "scrollHeight": 668,
+        "clientHeight": 668
+      },
+      "after": {
+        "state": "plan40-identify-one-half-one-eighth-8",
+        "notice": "",
+        "beforeAfterMount": [
+          {
+            "fit": {
+              "font": 16,
+              "widths": [
+                486.796875,
+                486.796875
+              ],
+              "area": 486.796875,
+              "contentWidth": 520.8,
+              "viewportWidth": 570,
+              "viewportHeight": 668,
+              "htmlScroll": "scroll",
+              "bodyScroll": "visible",
+              "rootScroll": "visible"
+            },
+            "activeHost": {
+              "width": 486.8125,
+              "left": 34.09375,
+              "right": 520.90625
+            },
+            "clientWidth": 570,
+            "scrollWidth": 555
+          }
+        ],
+        "fit": {
+          "font": 16,
+          "widths": [
+            486.796875,
+            486.796875
+          ],
+          "area": 486.796875,
+          "contentWidth": 520.8,
+          "viewportWidth": 570,
+          "viewportHeight": 668,
+          "htmlScroll": "scroll",
+          "bodyScroll": "visible",
+          "rootScroll": "visible"
+        },
+        "innerWidth": 570,
+        "clientWidth": 570,
+        "scrollHeight": 715,
+        "clientHeight": 668
+      },
+      "errors": []
+    },
+    {
+      "width": 570,
+      "height": 668,
+      "scroll": "episode-gutter-baseline",
+      "seed": 0,
+      "before": {
+        "fit": {
+          "font": 16,
+          "widths": [
+            501.796875,
+            501.796875
+          ],
+          "area": 501.796875,
+          "contentWidth": 535.8,
+          "viewportWidth": 570,
+          "viewportHeight": 668,
+          "htmlScroll": "auto",
+          "bodyScroll": "visible",
+          "rootScroll": "visible"
+        },
+        "innerWidth": 570,
+        "clientWidth": 570,
+        "scrollHeight": 668,
+        "clientHeight": 668
+      },
+      "after": {
+        "state": null,
+        "notice": "This practice could not be opened. Please try again or choose another practice.",
+        "beforeAfterMount": [
+          {
+            "fit": {
+              "font": 16,
+              "widths": [
+                486.796875,
+                486.796875
+              ],
+              "area": 486.796875,
+              "contentWidth": 520.8,
+              "viewportWidth": 570,
+              "viewportHeight": 668,
+              "htmlScroll": "auto",
+              "bodyScroll": "visible",
+              "rootScroll": "visible"
+            },
+            "activeHost": {
+              "width": 486.8125,
+              "left": 34.09375,
+              "right": 520.90625
+            },
+            "clientWidth": 570,
+            "scrollWidth": 555
+          }
+        ],
+        "fit": {
+          "font": 16,
+          "widths": [
+            501.796875,
+            501.796875
+          ],
+          "area": 501.796875,
+          "contentWidth": 535.8,
+          "viewportWidth": 570,
+          "viewportHeight": 668,
+          "htmlScroll": "auto",
+          "bodyScroll": "visible",
+          "rootScroll": "visible"
+        },
+        "innerWidth": 570,
+        "clientWidth": 570,
+        "scrollHeight": 668,
+        "clientHeight": 668
+      },
+      "errors": []
+    },
+    {
+      "width": 570,
+      "height": 668,
+      "scroll": "episode-gutter-baseline",
+      "seed": 1,
+      "before": {
+        "fit": {
+          "font": 16,
+          "widths": [
+            501.796875,
+            501.796875
+          ],
+          "area": 501.796875,
+          "contentWidth": 535.8,
+          "viewportWidth": 570,
+          "viewportHeight": 668,
+          "htmlScroll": "auto",
+          "bodyScroll": "visible",
+          "rootScroll": "visible"
+        },
+        "innerWidth": 570,
+        "clientWidth": 570,
+        "scrollHeight": 668,
+        "clientHeight": 668
+      },
+      "after": {
+        "state": null,
+        "notice": "This practice could not be opened. Please try again or choose another practice.",
+        "beforeAfterMount": [
+          {
+            "fit": {
+              "font": 16,
+              "widths": [
+                486.796875,
+                486.796875
+              ],
+              "area": 486.796875,
+              "contentWidth": 520.8,
+              "viewportWidth": 570,
+              "viewportHeight": 668,
+              "htmlScroll": "auto",
+              "bodyScroll": "visible",
+              "rootScroll": "visible"
+            },
+            "activeHost": {
+              "width": 486.8125,
+              "left": 34.09375,
+              "right": 520.90625
+            },
+            "clientWidth": 570,
+            "scrollWidth": 555
+          }
+        ],
+        "fit": {
+          "font": 16,
+          "widths": [
+            501.796875,
+            501.796875
+          ],
+          "area": 501.796875,
+          "contentWidth": 535.8,
+          "viewportWidth": 570,
+          "viewportHeight": 668,
+          "htmlScroll": "auto",
+          "bodyScroll": "visible",
+          "rootScroll": "visible"
+        },
+        "innerWidth": 570,
+        "clientWidth": 570,
+        "scrollHeight": 668,
+        "clientHeight": 668
+      },
+      "errors": []
+    },
+    {
+      "width": 570,
+      "height": 668,
+      "scroll": "episode-gutter-baseline",
+      "seed": 2,
+      "before": {
+        "fit": {
+          "font": 16,
+          "widths": [
+            501.796875,
+            501.796875
+          ],
+          "area": 501.796875,
+          "contentWidth": 535.8,
+          "viewportWidth": 570,
+          "viewportHeight": 668,
+          "htmlScroll": "auto",
+          "bodyScroll": "visible",
+          "rootScroll": "visible"
+        },
+        "innerWidth": 570,
+        "clientWidth": 570,
+        "scrollHeight": 668,
+        "clientHeight": 668
+      },
+      "after": {
+        "state": null,
+        "notice": "This practice could not be opened. Please try again or choose another practice.",
+        "beforeAfterMount": [
+          {
+            "fit": {
+              "font": 16,
+              "widths": [
+                486.796875,
+                486.796875
+              ],
+              "area": 486.796875,
+              "contentWidth": 520.8,
+              "viewportWidth": 570,
+              "viewportHeight": 668,
+              "htmlScroll": "auto",
+              "bodyScroll": "visible",
+              "rootScroll": "visible"
+            },
+            "activeHost": {
+              "width": 486.8125,
+              "left": 34.09375,
+              "right": 520.90625
+            },
+            "clientWidth": 570,
+            "scrollWidth": 555
+          }
+        ],
+        "fit": {
+          "font": 16,
+          "widths": [
+            501.796875,
+            501.796875
+          ],
+          "area": 501.796875,
+          "contentWidth": 535.8,
+          "viewportWidth": 570,
+          "viewportHeight": 668,
+          "htmlScroll": "auto",
+          "bodyScroll": "visible",
+          "rootScroll": "visible"
+        },
+        "innerWidth": 570,
+        "clientWidth": 570,
+        "scrollHeight": 668,
+        "clientHeight": 668
+      },
+      "errors": []
+    },
+    {
+      "width": 570,
+      "height": 668,
+      "scroll": "episode-gutter-baseline",
+      "seed": 3,
+      "before": {
+        "fit": {
+          "font": 16,
+          "widths": [
+            501.796875,
+            501.796875
+          ],
+          "area": 501.796875,
+          "contentWidth": 535.8,
+          "viewportWidth": 570,
+          "viewportHeight": 668,
+          "htmlScroll": "auto",
+          "bodyScroll": "visible",
+          "rootScroll": "visible"
+        },
+        "innerWidth": 570,
+        "clientWidth": 570,
+        "scrollHeight": 668,
+        "clientHeight": 668
+      },
+      "after": {
+        "state": null,
+        "notice": "This practice could not be opened. Please try again or choose another practice.",
+        "beforeAfterMount": [
+          {
+            "fit": {
+              "font": 16,
+              "widths": [
+                486.796875,
+                486.796875
+              ],
+              "area": 486.796875,
+              "contentWidth": 520.8,
+              "viewportWidth": 570,
+              "viewportHeight": 668,
+              "htmlScroll": "auto",
+              "bodyScroll": "visible",
+              "rootScroll": "visible"
+            },
+            "activeHost": {
+              "width": 486.8125,
+              "left": 34.09375,
+              "right": 520.90625
+            },
+            "clientWidth": 570,
+            "scrollWidth": 555
+          }
+        ],
+        "fit": {
+          "font": 16,
+          "widths": [
+            501.796875,
+            501.796875
+          ],
+          "area": 501.796875,
+          "contentWidth": 535.8,
+          "viewportWidth": 570,
+          "viewportHeight": 668,
+          "htmlScroll": "auto",
+          "bodyScroll": "visible",
+          "rootScroll": "visible"
+        },
+        "innerWidth": 570,
+        "clientWidth": 570,
+        "scrollHeight": 668,
+        "clientHeight": 668
+      },
+      "errors": []
+    },
+    {
+      "width": 570,
+      "height": 668,
+      "scroll": "classic-native",
+      "seed": 0,
+      "before": {
+        "fit": {
+          "font": 16,
+          "widths": [
+            486.796875,
+            486.796875
+          ],
+          "area": 486.796875,
+          "contentWidth": 520.8,
+          "viewportWidth": 570,
+          "viewportHeight": 668,
+          "htmlScroll": "scroll",
+          "bodyScroll": "visible",
+          "rootScroll": "visible"
+        },
+        "innerWidth": 570,
+        "clientWidth": 570,
+        "scrollHeight": 668,
+        "clientHeight": 668
+      },
+      "after": {
+        "state": "plan45-compare-02",
+        "notice": "",
+        "beforeAfterMount": [
+          {
+            "fit": {
+              "font": 16,
+              "widths": [
+                486.796875,
+                486.796875
+              ],
+              "area": 486.796875,
+              "contentWidth": 520.8,
+              "viewportWidth": 570,
+              "viewportHeight": 668,
+              "htmlScroll": "scroll",
+              "bodyScroll": "visible",
+              "rootScroll": "visible"
+            },
+            "activeHost": {
+              "width": 486.8125,
+              "left": 34.09375,
+              "right": 520.90625
+            },
+            "clientWidth": 570,
+            "scrollWidth": 555
+          }
+        ],
+        "fit": {
+          "font": 16,
+          "widths": [
+            486.796875,
+            486.796875
+          ],
+          "area": 486.796875,
+          "contentWidth": 520.8,
+          "viewportWidth": 570,
+          "viewportHeight": 668,
+          "htmlScroll": "scroll",
+          "bodyScroll": "visible",
+          "rootScroll": "visible"
+        },
+        "innerWidth": 570,
+        "clientWidth": 570,
+        "scrollHeight": 668,
+        "clientHeight": 668
+      },
+      "errors": []
+    },
+    {
+      "width": 570,
+      "height": 668,
+      "scroll": "classic-native",
+      "seed": 1,
+      "before": {
+        "fit": {
+          "font": 16,
+          "widths": [
+            486.796875,
+            486.796875
+          ],
+          "area": 486.796875,
+          "contentWidth": 520.8,
+          "viewportWidth": 570,
+          "viewportHeight": 668,
+          "htmlScroll": "scroll",
+          "bodyScroll": "visible",
+          "rootScroll": "visible"
+        },
+        "innerWidth": 570,
+        "clientWidth": 570,
+        "scrollHeight": 668,
+        "clientHeight": 668
+      },
+      "after": {
+        "state": "plan45-compare-08",
+        "notice": "",
+        "beforeAfterMount": [
+          {
+            "fit": {
+              "font": 16,
+              "widths": [
+                486.796875,
+                486.796875
+              ],
+              "area": 486.796875,
+              "contentWidth": 520.8,
+              "viewportWidth": 570,
+              "viewportHeight": 668,
+              "htmlScroll": "scroll",
+              "bodyScroll": "visible",
+              "rootScroll": "visible"
+            },
+            "activeHost": {
+              "width": 486.8125,
+              "left": 34.09375,
+              "right": 520.90625
+            },
+            "clientWidth": 570,
+            "scrollWidth": 555
+          }
+        ],
+        "fit": {
+          "font": 16,
+          "widths": [
+            486.796875,
+            486.796875
+          ],
+          "area": 486.796875,
+          "contentWidth": 520.8,
+          "viewportWidth": 570,
+          "viewportHeight": 668,
+          "htmlScroll": "scroll",
+          "bodyScroll": "visible",
+          "rootScroll": "visible"
+        },
+        "innerWidth": 570,
+        "clientWidth": 570,
+        "scrollHeight": 668,
+        "clientHeight": 668
+      },
+      "errors": []
+    },
+    {
+      "width": 570,
+      "height": 668,
+      "scroll": "classic-native",
+      "seed": 2,
+      "before": {
+        "fit": {
+          "font": 16,
+          "widths": [
+            486.796875,
+            486.796875
+          ],
+          "area": 486.796875,
+          "contentWidth": 520.8,
+          "viewportWidth": 570,
+          "viewportHeight": 668,
+          "htmlScroll": "scroll",
+          "bodyScroll": "visible",
+          "rootScroll": "visible"
+        },
+        "innerWidth": 570,
+        "clientWidth": 570,
+        "scrollHeight": 668,
+        "clientHeight": 668
+      },
+      "after": {
+        "state": "plan35-identify-half-three-tenths-10",
+        "notice": "",
+        "beforeAfterMount": [
+          {
+            "fit": {
+              "font": 16,
+              "widths": [
+                486.796875,
+                486.796875
+              ],
+              "area": 486.796875,
+              "contentWidth": 520.8,
+              "viewportWidth": 570,
+              "viewportHeight": 668,
+              "htmlScroll": "scroll",
+              "bodyScroll": "visible",
+              "rootScroll": "visible"
+            },
+            "activeHost": {
+              "width": 486.8125,
+              "left": 34.09375,
+              "right": 520.90625
+            },
+            "clientWidth": 570,
+            "scrollWidth": 555
+          }
+        ],
+        "fit": {
+          "font": 16,
+          "widths": [
+            486.796875,
+            486.796875
+          ],
+          "area": 486.796875,
+          "contentWidth": 520.8,
+          "viewportWidth": 570,
+          "viewportHeight": 668,
+          "htmlScroll": "scroll",
+          "bodyScroll": "visible",
+          "rootScroll": "visible"
+        },
+        "innerWidth": 570,
+        "clientWidth": 570,
+        "scrollHeight": 715,
+        "clientHeight": 668
+      },
+      "errors": []
+    },
+    {
+      "width": 570,
+      "height": 668,
+      "scroll": "classic-native",
+      "seed": 3,
+      "before": {
+        "fit": {
+          "font": 16,
+          "widths": [
+            486.796875,
+            486.796875
+          ],
+          "area": 486.796875,
+          "contentWidth": 520.8,
+          "viewportWidth": 570,
+          "viewportHeight": 668,
+          "htmlScroll": "scroll",
+          "bodyScroll": "visible",
+          "rootScroll": "visible"
+        },
+        "innerWidth": 570,
+        "clientWidth": 570,
+        "scrollHeight": 668,
+        "clientHeight": 668
+      },
+      "after": {
+        "state": "plan40-identify-one-half-one-eighth-8",
+        "notice": "",
+        "beforeAfterMount": [
+          {
+            "fit": {
+              "font": 16,
+              "widths": [
+                486.796875,
+                486.796875
+              ],
+              "area": 486.796875,
+              "contentWidth": 520.8,
+              "viewportWidth": 570,
+              "viewportHeight": 668,
+              "htmlScroll": "scroll",
+              "bodyScroll": "visible",
+              "rootScroll": "visible"
+            },
+            "activeHost": {
+              "width": 486.8125,
+              "left": 34.09375,
+              "right": 520.90625
+            },
+            "clientWidth": 570,
+            "scrollWidth": 555
+          }
+        ],
+        "fit": {
+          "font": 16,
+          "widths": [
+            486.796875,
+            486.796875
+          ],
+          "area": 486.796875,
+          "contentWidth": 520.8,
+          "viewportWidth": 570,
+          "viewportHeight": 668,
+          "htmlScroll": "scroll",
+          "bodyScroll": "visible",
+          "rootScroll": "visible"
+        },
+        "innerWidth": 570,
+        "clientWidth": 570,
+        "scrollHeight": 715,
+        "clientHeight": 668
+      },
+      "errors": []
+    },
+    {
+      "width": 570,
+      "height": 668,
+      "scroll": "classic-baseline",
+      "seed": 0,
+      "before": {
+        "fit": {
+          "font": 16,
+          "widths": [
+            501.796875,
+            501.796875
+          ],
+          "area": 501.796875,
+          "contentWidth": 535.8,
+          "viewportWidth": 570,
+          "viewportHeight": 668,
+          "htmlScroll": "auto",
+          "bodyScroll": "visible",
+          "rootScroll": "visible"
+        },
+        "innerWidth": 570,
+        "clientWidth": 570,
+        "scrollHeight": 668,
+        "clientHeight": 668
+      },
+      "after": {
+        "state": "plan45-compare-02",
+        "notice": "",
+        "beforeAfterMount": [
+          {
+            "fit": {
+              "font": 16,
+              "widths": [
+                501.796875,
+                501.796875
+              ],
+              "area": 501.796875,
+              "contentWidth": 535.8,
+              "viewportWidth": 570,
+              "viewportHeight": 668,
+              "htmlScroll": "auto",
+              "bodyScroll": "visible",
+              "rootScroll": "visible"
+            },
+            "activeHost": {
+              "width": 501.8125,
+              "left": 34.09375,
+              "right": 535.90625
+            },
+            "clientWidth": 570,
+            "scrollWidth": 570
+          }
+        ],
+        "fit": {
+          "font": 16,
+          "widths": [
+            501.796875,
+            501.796875
+          ],
+          "area": 501.796875,
+          "contentWidth": 535.8,
+          "viewportWidth": 570,
+          "viewportHeight": 668,
+          "htmlScroll": "auto",
+          "bodyScroll": "visible",
+          "rootScroll": "visible"
+        },
+        "innerWidth": 570,
+        "clientWidth": 570,
+        "scrollHeight": 668,
+        "clientHeight": 668
+      },
+      "errors": []
+    },
+    {
+      "width": 570,
+      "height": 668,
+      "scroll": "classic-baseline",
+      "seed": 1,
+      "before": {
+        "fit": {
+          "font": 16,
+          "widths": [
+            501.796875,
+            501.796875
+          ],
+          "area": 501.796875,
+          "contentWidth": 535.8,
+          "viewportWidth": 570,
+          "viewportHeight": 668,
+          "htmlScroll": "auto",
+          "bodyScroll": "visible",
+          "rootScroll": "visible"
+        },
+        "innerWidth": 570,
+        "clientWidth": 570,
+        "scrollHeight": 668,
+        "clientHeight": 668
+      },
+      "after": {
+        "state": "plan45-compare-08",
+        "notice": "",
+        "beforeAfterMount": [
+          {
+            "fit": {
+              "font": 16,
+              "widths": [
+                501.796875,
+                501.796875
+              ],
+              "area": 501.796875,
+              "contentWidth": 535.8,
+              "viewportWidth": 570,
+              "viewportHeight": 668,
+              "htmlScroll": "auto",
+              "bodyScroll": "visible",
+              "rootScroll": "visible"
+            },
+            "activeHost": {
+              "width": 501.8125,
+              "left": 34.09375,
+              "right": 535.90625
+            },
+            "clientWidth": 570,
+            "scrollWidth": 570
+          }
+        ],
+        "fit": {
+          "font": 16,
+          "widths": [
+            501.796875,
+            501.796875
+          ],
+          "area": 501.796875,
+          "contentWidth": 535.8,
+          "viewportWidth": 570,
+          "viewportHeight": 668,
+          "htmlScroll": "auto",
+          "bodyScroll": "visible",
+          "rootScroll": "visible"
+        },
+        "innerWidth": 570,
+        "clientWidth": 570,
+        "scrollHeight": 668,
+        "clientHeight": 668
+      },
+      "errors": []
+    },
+    {
+      "width": 570,
+      "height": 668,
+      "scroll": "classic-baseline",
+      "seed": 2,
+      "before": {
+        "fit": {
+          "font": 16,
+          "widths": [
+            501.796875,
+            501.796875
+          ],
+          "area": 501.796875,
+          "contentWidth": 535.8,
+          "viewportWidth": 570,
+          "viewportHeight": 668,
+          "htmlScroll": "auto",
+          "bodyScroll": "visible",
+          "rootScroll": "visible"
+        },
+        "innerWidth": 570,
+        "clientWidth": 570,
+        "scrollHeight": 668,
+        "clientHeight": 668
+      },
+      "after": {
+        "state": "plan35-identify-half-three-tenths-10",
+        "notice": "",
+        "beforeAfterMount": [
+          {
+            "fit": {
+              "font": 16,
+              "widths": [
+                501.796875,
+                501.796875
+              ],
+              "area": 501.796875,
+              "contentWidth": 535.8,
+              "viewportWidth": 570,
+              "viewportHeight": 668,
+              "htmlScroll": "auto",
+              "bodyScroll": "visible",
+              "rootScroll": "visible"
+            },
+            "activeHost": {
+              "width": 501.8125,
+              "left": 34.09375,
+              "right": 535.90625
+            },
+            "clientWidth": 570,
+            "scrollWidth": 570
+          }
+        ],
+        "fit": {
+          "font": 16,
+          "widths": [
+            501.796875,
+            501.796875
+          ],
+          "area": 501.796875,
+          "contentWidth": 535.8,
+          "viewportWidth": 570,
+          "viewportHeight": 668,
+          "htmlScroll": "auto",
+          "bodyScroll": "visible",
+          "rootScroll": "visible"
+        },
+        "innerWidth": 570,
+        "clientWidth": 570,
+        "scrollHeight": 715,
+        "clientHeight": 668
+      },
+      "errors": []
+    },
+    {
+      "width": 570,
+      "height": 668,
+      "scroll": "classic-baseline",
+      "seed": 3,
+      "before": {
+        "fit": {
+          "font": 16,
+          "widths": [
+            501.796875,
+            501.796875
+          ],
+          "area": 501.796875,
+          "contentWidth": 535.8,
+          "viewportWidth": 570,
+          "viewportHeight": 668,
+          "htmlScroll": "auto",
+          "bodyScroll": "visible",
+          "rootScroll": "visible"
+        },
+        "innerWidth": 570,
+        "clientWidth": 570,
+        "scrollHeight": 668,
+        "clientHeight": 668
+      },
+      "after": {
+        "state": "plan40-identify-one-half-one-eighth-8",
+        "notice": "",
+        "beforeAfterMount": [
+          {
+            "fit": {
+              "font": 16,
+              "widths": [
+                501.796875,
+                501.796875
+              ],
+              "area": 501.796875,
+              "contentWidth": 535.8,
+              "viewportWidth": 570,
+              "viewportHeight": 668,
+              "htmlScroll": "auto",
+              "bodyScroll": "visible",
+              "rootScroll": "visible"
+            },
+            "activeHost": {
+              "width": 501.8125,
+              "left": 34.09375,
+              "right": 535.90625
+            },
+            "clientWidth": 570,
+            "scrollWidth": 570
+          }
+        ],
+        "fit": {
+          "font": 16,
+          "widths": [
+            501.796875,
+            501.796875
+          ],
+          "area": 501.796875,
+          "contentWidth": 535.8,
+          "viewportWidth": 570,
+          "viewportHeight": 668,
+          "htmlScroll": "auto",
+          "bodyScroll": "visible",
+          "rootScroll": "visible"
+        },
+        "innerWidth": 570,
+        "clientWidth": 570,
+        "scrollHeight": 715,
+        "clientHeight": 668
+      },
+      "errors": []
+    },
+    {
+      "width": 1093,
+      "height": 614,
+      "scroll": "auto",
+      "seed": 0,
+      "before": {
+        "fit": {
+          "font": 16,
+          "widths": [
+            955.78125,
+            955.78125
+          ],
+          "area": 955.78125,
+          "contentWidth": 1012.4200000000001,
+          "viewportWidth": 1093,
+          "viewportHeight": 614,
+          "htmlScroll": "scroll",
+          "bodyScroll": "visible",
+          "rootScroll": "visible"
+        },
+        "innerWidth": 1093,
+        "clientWidth": 1093,
+        "scrollHeight": 614,
+        "clientHeight": 614
+      },
+      "after": {
+        "state": "plan45-compare-02",
+        "notice": "",
+        "beforeAfterMount": [
+          {
+            "fit": {
+              "font": 16,
+              "widths": [
+                955.78125,
+                955.78125
+              ],
+              "area": 955.78125,
+              "contentWidth": 1012.4200000000001,
+              "viewportWidth": 1093,
+              "viewportHeight": 614,
+              "htmlScroll": "scroll",
+              "bodyScroll": "visible",
+              "rootScroll": "visible"
+            },
+            "activeHost": {
+              "width": 955.8125,
+              "left": 61.09375,
+              "right": 1016.90625
+            },
+            "clientWidth": 1093,
+            "scrollWidth": 1078
+          }
+        ],
+        "fit": {
+          "font": 16,
+          "widths": [
+            955.78125,
+            955.78125
+          ],
+          "area": 955.78125,
+          "contentWidth": 1012.4200000000001,
+          "viewportWidth": 1093,
+          "viewportHeight": 614,
+          "htmlScroll": "scroll",
+          "bodyScroll": "visible",
+          "rootScroll": "visible"
+        },
+        "innerWidth": 1093,
+        "clientWidth": 1093,
+        "scrollHeight": 665,
+        "clientHeight": 614
+      },
+      "errors": []
+    },
+    {
+      "width": 1093,
+      "height": 614,
+      "scroll": "auto",
+      "seed": 1,
+      "before": {
+        "fit": {
+          "font": 16,
+          "widths": [
+            955.78125,
+            955.78125
+          ],
+          "area": 955.78125,
+          "contentWidth": 1012.4200000000001,
+          "viewportWidth": 1093,
+          "viewportHeight": 614,
+          "htmlScroll": "scroll",
+          "bodyScroll": "visible",
+          "rootScroll": "visible"
+        },
+        "innerWidth": 1093,
+        "clientWidth": 1093,
+        "scrollHeight": 614,
+        "clientHeight": 614
+      },
+      "after": {
+        "state": "plan45-compare-08",
+        "notice": "",
+        "beforeAfterMount": [
+          {
+            "fit": {
+              "font": 16,
+              "widths": [
+                955.78125,
+                955.78125
+              ],
+              "area": 955.78125,
+              "contentWidth": 1012.4200000000001,
+              "viewportWidth": 1093,
+              "viewportHeight": 614,
+              "htmlScroll": "scroll",
+              "bodyScroll": "visible",
+              "rootScroll": "visible"
+            },
+            "activeHost": {
+              "width": 955.8125,
+              "left": 61.09375,
+              "right": 1016.90625
+            },
+            "clientWidth": 1093,
+            "scrollWidth": 1078
+          }
+        ],
+        "fit": {
+          "font": 16,
+          "widths": [
+            955.78125,
+            955.78125
+          ],
+          "area": 955.78125,
+          "contentWidth": 1012.4200000000001,
+          "viewportWidth": 1093,
+          "viewportHeight": 614,
+          "htmlScroll": "scroll",
+          "bodyScroll": "visible",
+          "rootScroll": "visible"
+        },
+        "innerWidth": 1093,
+        "clientWidth": 1093,
+        "scrollHeight": 665,
+        "clientHeight": 614
+      },
+      "errors": []
+    },
+    {
+      "width": 1093,
+      "height": 614,
+      "scroll": "auto",
+      "seed": 2,
+      "before": {
+        "fit": {
+          "font": 16,
+          "widths": [
+            955.78125,
+            955.78125
+          ],
+          "area": 955.78125,
+          "contentWidth": 1012.4200000000001,
+          "viewportWidth": 1093,
+          "viewportHeight": 614,
+          "htmlScroll": "scroll",
+          "bodyScroll": "visible",
+          "rootScroll": "visible"
+        },
+        "innerWidth": 1093,
+        "clientWidth": 1093,
+        "scrollHeight": 614,
+        "clientHeight": 614
+      },
+      "after": {
+        "state": "plan35-identify-half-three-tenths-10",
+        "notice": "",
+        "beforeAfterMount": [
+          {
+            "fit": {
+              "font": 16,
+              "widths": [
+                955.78125,
+                955.78125
+              ],
+              "area": 955.78125,
+              "contentWidth": 1012.4200000000001,
+              "viewportWidth": 1093,
+              "viewportHeight": 614,
+              "htmlScroll": "scroll",
+              "bodyScroll": "visible",
+              "rootScroll": "visible"
+            },
+            "activeHost": {
+              "width": 955.8125,
+              "left": 61.09375,
+              "right": 1016.90625
+            },
+            "clientWidth": 1093,
+            "scrollWidth": 1078
+          }
+        ],
+        "fit": {
+          "font": 16,
+          "widths": [
+            955.78125,
+            955.78125
+          ],
+          "area": 955.78125,
+          "contentWidth": 1012.4200000000001,
+          "viewportWidth": 1093,
+          "viewportHeight": 614,
+          "htmlScroll": "scroll",
+          "bodyScroll": "visible",
+          "rootScroll": "visible"
+        },
+        "innerWidth": 1093,
+        "clientWidth": 1093,
+        "scrollHeight": 769,
+        "clientHeight": 614
+      },
+      "errors": []
+    },
+    {
+      "width": 1093,
+      "height": 614,
+      "scroll": "auto",
+      "seed": 3,
+      "before": {
+        "fit": {
+          "font": 16,
+          "widths": [
+            955.78125,
+            955.78125
+          ],
+          "area": 955.78125,
+          "contentWidth": 1012.4200000000001,
+          "viewportWidth": 1093,
+          "viewportHeight": 614,
+          "htmlScroll": "scroll",
+          "bodyScroll": "visible",
+          "rootScroll": "visible"
+        },
+        "innerWidth": 1093,
+        "clientWidth": 1093,
+        "scrollHeight": 614,
+        "clientHeight": 614
+      },
+      "after": {
+        "state": "plan40-identify-one-half-one-eighth-8",
+        "notice": "",
+        "beforeAfterMount": [
+          {
+            "fit": {
+              "font": 16,
+              "widths": [
+                955.78125,
+                955.78125
+              ],
+              "area": 955.78125,
+              "contentWidth": 1012.4200000000001,
+              "viewportWidth": 1093,
+              "viewportHeight": 614,
+              "htmlScroll": "scroll",
+              "bodyScroll": "visible",
+              "rootScroll": "visible"
+            },
+            "activeHost": {
+              "width": 955.8125,
+              "left": 61.09375,
+              "right": 1016.90625
+            },
+            "clientWidth": 1093,
+            "scrollWidth": 1078
+          }
+        ],
+        "fit": {
+          "font": 16,
+          "widths": [
+            955.78125,
+            955.78125
+          ],
+          "area": 955.78125,
+          "contentWidth": 1012.4200000000001,
+          "viewportWidth": 1093,
+          "viewportHeight": 614,
+          "htmlScroll": "scroll",
+          "bodyScroll": "visible",
+          "rootScroll": "visible"
+        },
+        "innerWidth": 1093,
+        "clientWidth": 1093,
+        "scrollHeight": 769,
+        "clientHeight": 614
+      },
+      "errors": []
+    },
+    {
+      "width": 1093,
+      "height": 614,
+      "scroll": "always",
+      "seed": 0,
+      "before": {
+        "fit": {
+          "font": 16,
+          "widths": [
+            955.78125,
+            955.78125
+          ],
+          "area": 955.78125,
+          "contentWidth": 1012.4200000000001,
+          "viewportWidth": 1093,
+          "viewportHeight": 614,
+          "htmlScroll": "scroll",
+          "bodyScroll": "visible",
+          "rootScroll": "visible"
+        },
+        "innerWidth": 1093,
+        "clientWidth": 1093,
+        "scrollHeight": 614,
+        "clientHeight": 614
+      },
+      "after": {
+        "state": "plan45-compare-02",
+        "notice": "",
+        "beforeAfterMount": [
+          {
+            "fit": {
+              "font": 16,
+              "widths": [
+                955.78125,
+                955.78125
+              ],
+              "area": 955.78125,
+              "contentWidth": 1012.4200000000001,
+              "viewportWidth": 1093,
+              "viewportHeight": 614,
+              "htmlScroll": "scroll",
+              "bodyScroll": "visible",
+              "rootScroll": "visible"
+            },
+            "activeHost": {
+              "width": 955.8125,
+              "left": 61.09375,
+              "right": 1016.90625
+            },
+            "clientWidth": 1093,
+            "scrollWidth": 1078
+          }
+        ],
+        "fit": {
+          "font": 16,
+          "widths": [
+            955.78125,
+            955.78125
+          ],
+          "area": 955.78125,
+          "contentWidth": 1012.4200000000001,
+          "viewportWidth": 1093,
+          "viewportHeight": 614,
+          "htmlScroll": "scroll",
+          "bodyScroll": "visible",
+          "rootScroll": "visible"
+        },
+        "innerWidth": 1093,
+        "clientWidth": 1093,
+        "scrollHeight": 665,
+        "clientHeight": 614
+      },
+      "errors": []
+    },
+    {
+      "width": 1093,
+      "height": 614,
+      "scroll": "always",
+      "seed": 1,
+      "before": {
+        "fit": {
+          "font": 16,
+          "widths": [
+            955.78125,
+            955.78125
+          ],
+          "area": 955.78125,
+          "contentWidth": 1012.4200000000001,
+          "viewportWidth": 1093,
+          "viewportHeight": 614,
+          "htmlScroll": "scroll",
+          "bodyScroll": "visible",
+          "rootScroll": "visible"
+        },
+        "innerWidth": 1093,
+        "clientWidth": 1093,
+        "scrollHeight": 614,
+        "clientHeight": 614
+      },
+      "after": {
+        "state": "plan45-compare-08",
+        "notice": "",
+        "beforeAfterMount": [
+          {
+            "fit": {
+              "font": 16,
+              "widths": [
+                955.78125,
+                955.78125
+              ],
+              "area": 955.78125,
+              "contentWidth": 1012.4200000000001,
+              "viewportWidth": 1093,
+              "viewportHeight": 614,
+              "htmlScroll": "scroll",
+              "bodyScroll": "visible",
+              "rootScroll": "visible"
+            },
+            "activeHost": {
+              "width": 955.8125,
+              "left": 61.09375,
+              "right": 1016.90625
+            },
+            "clientWidth": 1093,
+            "scrollWidth": 1078
+          }
+        ],
+        "fit": {
+          "font": 16,
+          "widths": [
+            955.78125,
+            955.78125
+          ],
+          "area": 955.78125,
+          "contentWidth": 1012.4200000000001,
+          "viewportWidth": 1093,
+          "viewportHeight": 614,
+          "htmlScroll": "scroll",
+          "bodyScroll": "visible",
+          "rootScroll": "visible"
+        },
+        "innerWidth": 1093,
+        "clientWidth": 1093,
+        "scrollHeight": 665,
+        "clientHeight": 614
+      },
+      "errors": []
+    },
+    {
+      "width": 1093,
+      "height": 614,
+      "scroll": "always",
+      "seed": 2,
+      "before": {
+        "fit": {
+          "font": 16,
+          "widths": [
+            955.78125,
+            955.78125
+          ],
+          "area": 955.78125,
+          "contentWidth": 1012.4200000000001,
+          "viewportWidth": 1093,
+          "viewportHeight": 614,
+          "htmlScroll": "scroll",
+          "bodyScroll": "visible",
+          "rootScroll": "visible"
+        },
+        "innerWidth": 1093,
+        "clientWidth": 1093,
+        "scrollHeight": 614,
+        "clientHeight": 614
+      },
+      "after": {
+        "state": "plan35-identify-half-three-tenths-10",
+        "notice": "",
+        "beforeAfterMount": [
+          {
+            "fit": {
+              "font": 16,
+              "widths": [
+                955.78125,
+                955.78125
+              ],
+              "area": 955.78125,
+              "contentWidth": 1012.4200000000001,
+              "viewportWidth": 1093,
+              "viewportHeight": 614,
+              "htmlScroll": "scroll",
+              "bodyScroll": "visible",
+              "rootScroll": "visible"
+            },
+            "activeHost": {
+              "width": 955.8125,
+              "left": 61.09375,
+              "right": 1016.90625
+            },
+            "clientWidth": 1093,
+            "scrollWidth": 1078
+          }
+        ],
+        "fit": {
+          "font": 16,
+          "widths": [
+            955.78125,
+            955.78125
+          ],
+          "area": 955.78125,
+          "contentWidth": 1012.4200000000001,
+          "viewportWidth": 1093,
+          "viewportHeight": 614,
+          "htmlScroll": "scroll",
+          "bodyScroll": "visible",
+          "rootScroll": "visible"
+        },
+        "innerWidth": 1093,
+        "clientWidth": 1093,
+        "scrollHeight": 769,
+        "clientHeight": 614
+      },
+      "errors": []
+    },
+    {
+      "width": 1093,
+      "height": 614,
+      "scroll": "always",
+      "seed": 3,
+      "before": {
+        "fit": {
+          "font": 16,
+          "widths": [
+            955.78125,
+            955.78125
+          ],
+          "area": 955.78125,
+          "contentWidth": 1012.4200000000001,
+          "viewportWidth": 1093,
+          "viewportHeight": 614,
+          "htmlScroll": "scroll",
+          "bodyScroll": "visible",
+          "rootScroll": "visible"
+        },
+        "innerWidth": 1093,
+        "clientWidth": 1093,
+        "scrollHeight": 614,
+        "clientHeight": 614
+      },
+      "after": {
+        "state": "plan40-identify-one-half-one-eighth-8",
+        "notice": "",
+        "beforeAfterMount": [
+          {
+            "fit": {
+              "font": 16,
+              "widths": [
+                955.78125,
+                955.78125
+              ],
+              "area": 955.78125,
+              "contentWidth": 1012.4200000000001,
+              "viewportWidth": 1093,
+              "viewportHeight": 614,
+              "htmlScroll": "scroll",
+              "bodyScroll": "visible",
+              "rootScroll": "visible"
+            },
+            "activeHost": {
+              "width": 955.8125,
+              "left": 61.09375,
+              "right": 1016.90625
+            },
+            "clientWidth": 1093,
+            "scrollWidth": 1078
+          }
+        ],
+        "fit": {
+          "font": 16,
+          "widths": [
+            955.78125,
+            955.78125
+          ],
+          "area": 955.78125,
+          "contentWidth": 1012.4200000000001,
+          "viewportWidth": 1093,
+          "viewportHeight": 614,
+          "htmlScroll": "scroll",
+          "bodyScroll": "visible",
+          "rootScroll": "visible"
+        },
+        "innerWidth": 1093,
+        "clientWidth": 1093,
+        "scrollHeight": 769,
+        "clientHeight": 614
+      },
+      "errors": []
+    },
+    {
+      "width": 1093,
+      "height": 614,
+      "scroll": "episode-gutter",
+      "seed": 0,
+      "before": {
+        "fit": {
+          "font": 16,
+          "widths": [
+            955.78125,
+            955.78125
+          ],
+          "area": 955.78125,
+          "contentWidth": 1012.4200000000001,
+          "viewportWidth": 1093,
+          "viewportHeight": 614,
+          "htmlScroll": "scroll",
+          "bodyScroll": "visible",
+          "rootScroll": "visible"
+        },
+        "innerWidth": 1093,
+        "clientWidth": 1093,
+        "scrollHeight": 614,
+        "clientHeight": 614
+      },
+      "after": {
+        "state": "plan45-compare-02",
+        "notice": "",
+        "beforeAfterMount": [
+          {
+            "fit": {
+              "font": 16,
+              "widths": [
+                955.78125,
+                955.78125
+              ],
+              "area": 955.78125,
+              "contentWidth": 1012.4200000000001,
+              "viewportWidth": 1093,
+              "viewportHeight": 614,
+              "htmlScroll": "scroll",
+              "bodyScroll": "visible",
+              "rootScroll": "visible"
+            },
+            "activeHost": {
+              "width": 955.8125,
+              "left": 61.09375,
+              "right": 1016.90625
+            },
+            "clientWidth": 1093,
+            "scrollWidth": 1078
+          }
+        ],
+        "fit": {
+          "font": 16,
+          "widths": [
+            955.78125,
+            955.78125
+          ],
+          "area": 955.78125,
+          "contentWidth": 1012.4200000000001,
+          "viewportWidth": 1093,
+          "viewportHeight": 614,
+          "htmlScroll": "scroll",
+          "bodyScroll": "visible",
+          "rootScroll": "visible"
+        },
+        "innerWidth": 1093,
+        "clientWidth": 1093,
+        "scrollHeight": 665,
+        "clientHeight": 614
+      },
+      "errors": []
+    },
+    {
+      "width": 1093,
+      "height": 614,
+      "scroll": "episode-gutter",
+      "seed": 1,
+      "before": {
+        "fit": {
+          "font": 16,
+          "widths": [
+            955.78125,
+            955.78125
+          ],
+          "area": 955.78125,
+          "contentWidth": 1012.4200000000001,
+          "viewportWidth": 1093,
+          "viewportHeight": 614,
+          "htmlScroll": "scroll",
+          "bodyScroll": "visible",
+          "rootScroll": "visible"
+        },
+        "innerWidth": 1093,
+        "clientWidth": 1093,
+        "scrollHeight": 614,
+        "clientHeight": 614
+      },
+      "after": {
+        "state": "plan45-compare-08",
+        "notice": "",
+        "beforeAfterMount": [
+          {
+            "fit": {
+              "font": 16,
+              "widths": [
+                955.78125,
+                955.78125
+              ],
+              "area": 955.78125,
+              "contentWidth": 1012.4200000000001,
+              "viewportWidth": 1093,
+              "viewportHeight": 614,
+              "htmlScroll": "scroll",
+              "bodyScroll": "visible",
+              "rootScroll": "visible"
+            },
+            "activeHost": {
+              "width": 955.8125,
+              "left": 61.09375,
+              "right": 1016.90625
+            },
+            "clientWidth": 1093,
+            "scrollWidth": 1078
+          }
+        ],
+        "fit": {
+          "font": 16,
+          "widths": [
+            955.78125,
+            955.78125
+          ],
+          "area": 955.78125,
+          "contentWidth": 1012.4200000000001,
+          "viewportWidth": 1093,
+          "viewportHeight": 614,
+          "htmlScroll": "scroll",
+          "bodyScroll": "visible",
+          "rootScroll": "visible"
+        },
+        "innerWidth": 1093,
+        "clientWidth": 1093,
+        "scrollHeight": 665,
+        "clientHeight": 614
+      },
+      "errors": []
+    },
+    {
+      "width": 1093,
+      "height": 614,
+      "scroll": "episode-gutter",
+      "seed": 2,
+      "before": {
+        "fit": {
+          "font": 16,
+          "widths": [
+            955.78125,
+            955.78125
+          ],
+          "area": 955.78125,
+          "contentWidth": 1012.4200000000001,
+          "viewportWidth": 1093,
+          "viewportHeight": 614,
+          "htmlScroll": "scroll",
+          "bodyScroll": "visible",
+          "rootScroll": "visible"
+        },
+        "innerWidth": 1093,
+        "clientWidth": 1093,
+        "scrollHeight": 614,
+        "clientHeight": 614
+      },
+      "after": {
+        "state": "plan35-identify-half-three-tenths-10",
+        "notice": "",
+        "beforeAfterMount": [
+          {
+            "fit": {
+              "font": 16,
+              "widths": [
+                955.78125,
+                955.78125
+              ],
+              "area": 955.78125,
+              "contentWidth": 1012.4200000000001,
+              "viewportWidth": 1093,
+              "viewportHeight": 614,
+              "htmlScroll": "scroll",
+              "bodyScroll": "visible",
+              "rootScroll": "visible"
+            },
+            "activeHost": {
+              "width": 955.8125,
+              "left": 61.09375,
+              "right": 1016.90625
+            },
+            "clientWidth": 1093,
+            "scrollWidth": 1078
+          }
+        ],
+        "fit": {
+          "font": 16,
+          "widths": [
+            955.78125,
+            955.78125
+          ],
+          "area": 955.78125,
+          "contentWidth": 1012.4200000000001,
+          "viewportWidth": 1093,
+          "viewportHeight": 614,
+          "htmlScroll": "scroll",
+          "bodyScroll": "visible",
+          "rootScroll": "visible"
+        },
+        "innerWidth": 1093,
+        "clientWidth": 1093,
+        "scrollHeight": 769,
+        "clientHeight": 614
+      },
+      "errors": []
+    },
+    {
+      "width": 1093,
+      "height": 614,
+      "scroll": "episode-gutter",
+      "seed": 3,
+      "before": {
+        "fit": {
+          "font": 16,
+          "widths": [
+            955.78125,
+            955.78125
+          ],
+          "area": 955.78125,
+          "contentWidth": 1012.4200000000001,
+          "viewportWidth": 1093,
+          "viewportHeight": 614,
+          "htmlScroll": "scroll",
+          "bodyScroll": "visible",
+          "rootScroll": "visible"
+        },
+        "innerWidth": 1093,
+        "clientWidth": 1093,
+        "scrollHeight": 614,
+        "clientHeight": 614
+      },
+      "after": {
+        "state": "plan40-identify-one-half-one-eighth-8",
+        "notice": "",
+        "beforeAfterMount": [
+          {
+            "fit": {
+              "font": 16,
+              "widths": [
+                955.78125,
+                955.78125
+              ],
+              "area": 955.78125,
+              "contentWidth": 1012.4200000000001,
+              "viewportWidth": 1093,
+              "viewportHeight": 614,
+              "htmlScroll": "scroll",
+              "bodyScroll": "visible",
+              "rootScroll": "visible"
+            },
+            "activeHost": {
+              "width": 955.8125,
+              "left": 61.09375,
+              "right": 1016.90625
+            },
+            "clientWidth": 1093,
+            "scrollWidth": 1078
+          }
+        ],
+        "fit": {
+          "font": 16,
+          "widths": [
+            955.78125,
+            955.78125
+          ],
+          "area": 955.78125,
+          "contentWidth": 1012.4200000000001,
+          "viewportWidth": 1093,
+          "viewportHeight": 614,
+          "htmlScroll": "scroll",
+          "bodyScroll": "visible",
+          "rootScroll": "visible"
+        },
+        "innerWidth": 1093,
+        "clientWidth": 1093,
+        "scrollHeight": 769,
+        "clientHeight": 614
+      },
+      "errors": []
+    },
+    {
+      "width": 1093,
+      "height": 614,
+      "scroll": "episode-gutter-baseline",
+      "seed": 0,
+      "before": {
+        "fit": {
+          "font": 16,
+          "widths": [
+            970.78125,
+            970.78125
+          ],
+          "area": 970.78125,
+          "contentWidth": 1027.42,
+          "viewportWidth": 1093,
+          "viewportHeight": 614,
+          "htmlScroll": "auto",
+          "bodyScroll": "visible",
+          "rootScroll": "visible"
+        },
+        "innerWidth": 1093,
+        "clientWidth": 1093,
+        "scrollHeight": 614,
+        "clientHeight": 614
+      },
+      "after": {
+        "state": null,
+        "notice": "This practice could not be opened. Please try again or choose another practice.",
+        "beforeAfterMount": [
+          {
+            "fit": {
+              "font": 16,
+              "widths": [
+                955.78125,
+                955.78125
+              ],
+              "area": 955.78125,
+              "contentWidth": 1012.4200000000001,
+              "viewportWidth": 1093,
+              "viewportHeight": 614,
+              "htmlScroll": "auto",
+              "bodyScroll": "visible",
+              "rootScroll": "visible"
+            },
+            "activeHost": {
+              "width": 955.8125,
+              "left": 61.09375,
+              "right": 1016.90625
+            },
+            "clientWidth": 1093,
+            "scrollWidth": 1078
+          }
+        ],
+        "fit": {
+          "font": 16,
+          "widths": [
+            970.78125,
+            970.78125
+          ],
+          "area": 970.78125,
+          "contentWidth": 1027.42,
+          "viewportWidth": 1093,
+          "viewportHeight": 614,
+          "htmlScroll": "auto",
+          "bodyScroll": "visible",
+          "rootScroll": "visible"
+        },
+        "innerWidth": 1093,
+        "clientWidth": 1093,
+        "scrollHeight": 638,
+        "clientHeight": 614
+      },
+      "errors": []
+    },
+    {
+      "width": 1093,
+      "height": 614,
+      "scroll": "episode-gutter-baseline",
+      "seed": 1,
+      "before": {
+        "fit": {
+          "font": 16,
+          "widths": [
+            970.78125,
+            970.78125
+          ],
+          "area": 970.78125,
+          "contentWidth": 1027.42,
+          "viewportWidth": 1093,
+          "viewportHeight": 614,
+          "htmlScroll": "auto",
+          "bodyScroll": "visible",
+          "rootScroll": "visible"
+        },
+        "innerWidth": 1093,
+        "clientWidth": 1093,
+        "scrollHeight": 614,
+        "clientHeight": 614
+      },
+      "after": {
+        "state": null,
+        "notice": "This practice could not be opened. Please try again or choose another practice.",
+        "beforeAfterMount": [
+          {
+            "fit": {
+              "font": 16,
+              "widths": [
+                955.78125,
+                955.78125
+              ],
+              "area": 955.78125,
+              "contentWidth": 1012.4200000000001,
+              "viewportWidth": 1093,
+              "viewportHeight": 614,
+              "htmlScroll": "auto",
+              "bodyScroll": "visible",
+              "rootScroll": "visible"
+            },
+            "activeHost": {
+              "width": 955.8125,
+              "left": 61.09375,
+              "right": 1016.90625
+            },
+            "clientWidth": 1093,
+            "scrollWidth": 1078
+          }
+        ],
+        "fit": {
+          "font": 16,
+          "widths": [
+            970.78125,
+            970.78125
+          ],
+          "area": 970.78125,
+          "contentWidth": 1027.42,
+          "viewportWidth": 1093,
+          "viewportHeight": 614,
+          "htmlScroll": "auto",
+          "bodyScroll": "visible",
+          "rootScroll": "visible"
+        },
+        "innerWidth": 1093,
+        "clientWidth": 1093,
+        "scrollHeight": 638,
+        "clientHeight": 614
+      },
+      "errors": []
+    },
+    {
+      "width": 1093,
+      "height": 614,
+      "scroll": "episode-gutter-baseline",
+      "seed": 2,
+      "before": {
+        "fit": {
+          "font": 16,
+          "widths": [
+            970.78125,
+            970.78125
+          ],
+          "area": 970.78125,
+          "contentWidth": 1027.42,
+          "viewportWidth": 1093,
+          "viewportHeight": 614,
+          "htmlScroll": "auto",
+          "bodyScroll": "visible",
+          "rootScroll": "visible"
+        },
+        "innerWidth": 1093,
+        "clientWidth": 1093,
+        "scrollHeight": 614,
+        "clientHeight": 614
+      },
+      "after": {
+        "state": null,
+        "notice": "This practice could not be opened. Please try again or choose another practice.",
+        "beforeAfterMount": [
+          {
+            "fit": {
+              "font": 16,
+              "widths": [
+                955.78125,
+                955.78125
+              ],
+              "area": 955.78125,
+              "contentWidth": 1012.4200000000001,
+              "viewportWidth": 1093,
+              "viewportHeight": 614,
+              "htmlScroll": "auto",
+              "bodyScroll": "visible",
+              "rootScroll": "visible"
+            },
+            "activeHost": {
+              "width": 955.8125,
+              "left": 61.09375,
+              "right": 1016.90625
+            },
+            "clientWidth": 1093,
+            "scrollWidth": 1078
+          }
+        ],
+        "fit": {
+          "font": 16,
+          "widths": [
+            970.78125,
+            970.78125
+          ],
+          "area": 970.78125,
+          "contentWidth": 1027.42,
+          "viewportWidth": 1093,
+          "viewportHeight": 614,
+          "htmlScroll": "auto",
+          "bodyScroll": "visible",
+          "rootScroll": "visible"
+        },
+        "innerWidth": 1093,
+        "clientWidth": 1093,
+        "scrollHeight": 638,
+        "clientHeight": 614
+      },
+      "errors": []
+    },
+    {
+      "width": 1093,
+      "height": 614,
+      "scroll": "episode-gutter-baseline",
+      "seed": 3,
+      "before": {
+        "fit": {
+          "font": 16,
+          "widths": [
+            970.78125,
+            970.78125
+          ],
+          "area": 970.78125,
+          "contentWidth": 1027.42,
+          "viewportWidth": 1093,
+          "viewportHeight": 614,
+          "htmlScroll": "auto",
+          "bodyScroll": "visible",
+          "rootScroll": "visible"
+        },
+        "innerWidth": 1093,
+        "clientWidth": 1093,
+        "scrollHeight": 614,
+        "clientHeight": 614
+      },
+      "after": {
+        "state": null,
+        "notice": "This practice could not be opened. Please try again or choose another practice.",
+        "beforeAfterMount": [
+          {
+            "fit": {
+              "font": 16,
+              "widths": [
+                955.78125,
+                955.78125
+              ],
+              "area": 955.78125,
+              "contentWidth": 1012.4200000000001,
+              "viewportWidth": 1093,
+              "viewportHeight": 614,
+              "htmlScroll": "auto",
+              "bodyScroll": "visible",
+              "rootScroll": "visible"
+            },
+            "activeHost": {
+              "width": 955.8125,
+              "left": 61.09375,
+              "right": 1016.90625
+            },
+            "clientWidth": 1093,
+            "scrollWidth": 1078
+          }
+        ],
+        "fit": {
+          "font": 16,
+          "widths": [
+            970.78125,
+            970.78125
+          ],
+          "area": 970.78125,
+          "contentWidth": 1027.42,
+          "viewportWidth": 1093,
+          "viewportHeight": 614,
+          "htmlScroll": "auto",
+          "bodyScroll": "visible",
+          "rootScroll": "visible"
+        },
+        "innerWidth": 1093,
+        "clientWidth": 1093,
+        "scrollHeight": 638,
+        "clientHeight": 614
+      },
+      "errors": []
+    },
+    {
+      "width": 1093,
+      "height": 614,
+      "scroll": "classic-native",
+      "seed": 0,
+      "before": {
+        "fit": {
+          "font": 16,
+          "widths": [
+            955.78125,
+            955.78125
+          ],
+          "area": 955.78125,
+          "contentWidth": 1012.4200000000001,
+          "viewportWidth": 1093,
+          "viewportHeight": 614,
+          "htmlScroll": "scroll",
+          "bodyScroll": "visible",
+          "rootScroll": "visible"
+        },
+        "innerWidth": 1093,
+        "clientWidth": 1093,
+        "scrollHeight": 614,
+        "clientHeight": 614
+      },
+      "after": {
+        "state": "plan45-compare-02",
+        "notice": "",
+        "beforeAfterMount": [
+          {
+            "fit": {
+              "font": 16,
+              "widths": [
+                955.78125,
+                955.78125
+              ],
+              "area": 955.78125,
+              "contentWidth": 1012.4200000000001,
+              "viewportWidth": 1093,
+              "viewportHeight": 614,
+              "htmlScroll": "scroll",
+              "bodyScroll": "visible",
+              "rootScroll": "visible"
+            },
+            "activeHost": {
+              "width": 955.8125,
+              "left": 61.09375,
+              "right": 1016.90625
+            },
+            "clientWidth": 1093,
+            "scrollWidth": 1078
+          }
+        ],
+        "fit": {
+          "font": 16,
+          "widths": [
+            955.78125,
+            955.78125
+          ],
+          "area": 955.78125,
+          "contentWidth": 1012.4200000000001,
+          "viewportWidth": 1093,
+          "viewportHeight": 614,
+          "htmlScroll": "scroll",
+          "bodyScroll": "visible",
+          "rootScroll": "visible"
+        },
+        "innerWidth": 1093,
+        "clientWidth": 1093,
+        "scrollHeight": 665,
+        "clientHeight": 614
+      },
+      "errors": []
+    },
+    {
+      "width": 1093,
+      "height": 614,
+      "scroll": "classic-native",
+      "seed": 1,
+      "before": {
+        "fit": {
+          "font": 16,
+          "widths": [
+            955.78125,
+            955.78125
+          ],
+          "area": 955.78125,
+          "contentWidth": 1012.4200000000001,
+          "viewportWidth": 1093,
+          "viewportHeight": 614,
+          "htmlScroll": "scroll",
+          "bodyScroll": "visible",
+          "rootScroll": "visible"
+        },
+        "innerWidth": 1093,
+        "clientWidth": 1093,
+        "scrollHeight": 614,
+        "clientHeight": 614
+      },
+      "after": {
+        "state": "plan45-compare-08",
+        "notice": "",
+        "beforeAfterMount": [
+          {
+            "fit": {
+              "font": 16,
+              "widths": [
+                955.78125,
+                955.78125
+              ],
+              "area": 955.78125,
+              "contentWidth": 1012.4200000000001,
+              "viewportWidth": 1093,
+              "viewportHeight": 614,
+              "htmlScroll": "scroll",
+              "bodyScroll": "visible",
+              "rootScroll": "visible"
+            },
+            "activeHost": {
+              "width": 955.8125,
+              "left": 61.09375,
+              "right": 1016.90625
+            },
+            "clientWidth": 1093,
+            "scrollWidth": 1078
+          }
+        ],
+        "fit": {
+          "font": 16,
+          "widths": [
+            955.78125,
+            955.78125
+          ],
+          "area": 955.78125,
+          "contentWidth": 1012.4200000000001,
+          "viewportWidth": 1093,
+          "viewportHeight": 614,
+          "htmlScroll": "scroll",
+          "bodyScroll": "visible",
+          "rootScroll": "visible"
+        },
+        "innerWidth": 1093,
+        "clientWidth": 1093,
+        "scrollHeight": 665,
+        "clientHeight": 614
+      },
+      "errors": []
+    },
+    {
+      "width": 1093,
+      "height": 614,
+      "scroll": "classic-native",
+      "seed": 2,
+      "before": {
+        "fit": {
+          "font": 16,
+          "widths": [
+            955.78125,
+            955.78125
+          ],
+          "area": 955.78125,
+          "contentWidth": 1012.4200000000001,
+          "viewportWidth": 1093,
+          "viewportHeight": 614,
+          "htmlScroll": "scroll",
+          "bodyScroll": "visible",
+          "rootScroll": "visible"
+        },
+        "innerWidth": 1093,
+        "clientWidth": 1093,
+        "scrollHeight": 614,
+        "clientHeight": 614
+      },
+      "after": {
+        "state": "plan35-identify-half-three-tenths-10",
+        "notice": "",
+        "beforeAfterMount": [
+          {
+            "fit": {
+              "font": 16,
+              "widths": [
+                955.78125,
+                955.78125
+              ],
+              "area": 955.78125,
+              "contentWidth": 1012.4200000000001,
+              "viewportWidth": 1093,
+              "viewportHeight": 614,
+              "htmlScroll": "scroll",
+              "bodyScroll": "visible",
+              "rootScroll": "visible"
+            },
+            "activeHost": {
+              "width": 955.8125,
+              "left": 61.09375,
+              "right": 1016.90625
+            },
+            "clientWidth": 1093,
+            "scrollWidth": 1078
+          }
+        ],
+        "fit": {
+          "font": 16,
+          "widths": [
+            955.78125,
+            955.78125
+          ],
+          "area": 955.78125,
+          "contentWidth": 1012.4200000000001,
+          "viewportWidth": 1093,
+          "viewportHeight": 614,
+          "htmlScroll": "scroll",
+          "bodyScroll": "visible",
+          "rootScroll": "visible"
+        },
+        "innerWidth": 1093,
+        "clientWidth": 1093,
+        "scrollHeight": 769,
+        "clientHeight": 614
+      },
+      "errors": []
+    },
+    {
+      "width": 1093,
+      "height": 614,
+      "scroll": "classic-native",
+      "seed": 3,
+      "before": {
+        "fit": {
+          "font": 16,
+          "widths": [
+            955.78125,
+            955.78125
+          ],
+          "area": 955.78125,
+          "contentWidth": 1012.4200000000001,
+          "viewportWidth": 1093,
+          "viewportHeight": 614,
+          "htmlScroll": "scroll",
+          "bodyScroll": "visible",
+          "rootScroll": "visible"
+        },
+        "innerWidth": 1093,
+        "clientWidth": 1093,
+        "scrollHeight": 614,
+        "clientHeight": 614
+      },
+      "after": {
+        "state": "plan40-identify-one-half-one-eighth-8",
+        "notice": "",
+        "beforeAfterMount": [
+          {
+            "fit": {
+              "font": 16,
+              "widths": [
+                955.78125,
+                955.78125
+              ],
+              "area": 955.78125,
+              "contentWidth": 1012.4200000000001,
+              "viewportWidth": 1093,
+              "viewportHeight": 614,
+              "htmlScroll": "scroll",
+              "bodyScroll": "visible",
+              "rootScroll": "visible"
+            },
+            "activeHost": {
+              "width": 955.8125,
+              "left": 61.09375,
+              "right": 1016.90625
+            },
+            "clientWidth": 1093,
+            "scrollWidth": 1078
+          }
+        ],
+        "fit": {
+          "font": 16,
+          "widths": [
+            955.78125,
+            955.78125
+          ],
+          "area": 955.78125,
+          "contentWidth": 1012.4200000000001,
+          "viewportWidth": 1093,
+          "viewportHeight": 614,
+          "htmlScroll": "scroll",
+          "bodyScroll": "visible",
+          "rootScroll": "visible"
+        },
+        "innerWidth": 1093,
+        "clientWidth": 1093,
+        "scrollHeight": 769,
+        "clientHeight": 614
+      },
+      "errors": []
+    },
+    {
+      "width": 1093,
+      "height": 614,
+      "scroll": "classic-baseline",
+      "seed": 0,
+      "before": {
+        "fit": {
+          "font": 16,
+          "widths": [
+            970.78125,
+            970.78125
+          ],
+          "area": 970.78125,
+          "contentWidth": 1027.42,
+          "viewportWidth": 1093,
+          "viewportHeight": 614,
+          "htmlScroll": "auto",
+          "bodyScroll": "visible",
+          "rootScroll": "visible"
+        },
+        "innerWidth": 1093,
+        "clientWidth": 1093,
+        "scrollHeight": 614,
+        "clientHeight": 614
+      },
+      "after": {
+        "state": "plan45-compare-02",
+        "notice": "",
+        "beforeAfterMount": [
+          {
+            "fit": {
+              "font": 16,
+              "widths": [
+                970.78125,
+                970.78125
+              ],
+              "area": 970.78125,
+              "contentWidth": 1027.42,
+              "viewportWidth": 1093,
+              "viewportHeight": 614,
+              "htmlScroll": "auto",
+              "bodyScroll": "visible",
+              "rootScroll": "visible"
+            },
+            "activeHost": {
+              "width": 970.8125,
+              "left": 61.09375,
+              "right": 1031.90625
+            },
+            "clientWidth": 1093,
+            "scrollWidth": 1093
+          }
+        ],
+        "fit": {
+          "font": 16,
+          "widths": [
+            970.78125,
+            970.78125
+          ],
+          "area": 970.78125,
+          "contentWidth": 1027.42,
+          "viewportWidth": 1093,
+          "viewportHeight": 614,
+          "htmlScroll": "auto",
+          "bodyScroll": "visible",
+          "rootScroll": "visible"
+        },
+        "innerWidth": 1093,
+        "clientWidth": 1093,
+        "scrollHeight": 665,
+        "clientHeight": 614
+      },
+      "errors": []
+    },
+    {
+      "width": 1093,
+      "height": 614,
+      "scroll": "classic-baseline",
+      "seed": 1,
+      "before": {
+        "fit": {
+          "font": 16,
+          "widths": [
+            970.78125,
+            970.78125
+          ],
+          "area": 970.78125,
+          "contentWidth": 1027.42,
+          "viewportWidth": 1093,
+          "viewportHeight": 614,
+          "htmlScroll": "auto",
+          "bodyScroll": "visible",
+          "rootScroll": "visible"
+        },
+        "innerWidth": 1093,
+        "clientWidth": 1093,
+        "scrollHeight": 614,
+        "clientHeight": 614
+      },
+      "after": {
+        "state": "plan45-compare-08",
+        "notice": "",
+        "beforeAfterMount": [
+          {
+            "fit": {
+              "font": 16,
+              "widths": [
+                970.78125,
+                970.78125
+              ],
+              "area": 970.78125,
+              "contentWidth": 1027.42,
+              "viewportWidth": 1093,
+              "viewportHeight": 614,
+              "htmlScroll": "auto",
+              "bodyScroll": "visible",
+              "rootScroll": "visible"
+            },
+            "activeHost": {
+              "width": 970.8125,
+              "left": 61.09375,
+              "right": 1031.90625
+            },
+            "clientWidth": 1093,
+            "scrollWidth": 1093
+          }
+        ],
+        "fit": {
+          "font": 16,
+          "widths": [
+            970.78125,
+            970.78125
+          ],
+          "area": 970.78125,
+          "contentWidth": 1027.42,
+          "viewportWidth": 1093,
+          "viewportHeight": 614,
+          "htmlScroll": "auto",
+          "bodyScroll": "visible",
+          "rootScroll": "visible"
+        },
+        "innerWidth": 1093,
+        "clientWidth": 1093,
+        "scrollHeight": 665,
+        "clientHeight": 614
+      },
+      "errors": []
+    },
+    {
+      "width": 1093,
+      "height": 614,
+      "scroll": "classic-baseline",
+      "seed": 2,
+      "before": {
+        "fit": {
+          "font": 16,
+          "widths": [
+            970.78125,
+            970.78125
+          ],
+          "area": 970.78125,
+          "contentWidth": 1027.42,
+          "viewportWidth": 1093,
+          "viewportHeight": 614,
+          "htmlScroll": "auto",
+          "bodyScroll": "visible",
+          "rootScroll": "visible"
+        },
+        "innerWidth": 1093,
+        "clientWidth": 1093,
+        "scrollHeight": 614,
+        "clientHeight": 614
+      },
+      "after": {
+        "state": "plan35-identify-half-three-tenths-10",
+        "notice": "",
+        "beforeAfterMount": [
+          {
+            "fit": {
+              "font": 16,
+              "widths": [
+                970.78125,
+                970.78125
+              ],
+              "area": 970.78125,
+              "contentWidth": 1027.42,
+              "viewportWidth": 1093,
+              "viewportHeight": 614,
+              "htmlScroll": "auto",
+              "bodyScroll": "visible",
+              "rootScroll": "visible"
+            },
+            "activeHost": {
+              "width": 970.8125,
+              "left": 61.09375,
+              "right": 1031.90625
+            },
+            "clientWidth": 1093,
+            "scrollWidth": 1093
+          }
+        ],
+        "fit": {
+          "font": 16,
+          "widths": [
+            970.78125,
+            970.78125
+          ],
+          "area": 970.78125,
+          "contentWidth": 1027.42,
+          "viewportWidth": 1093,
+          "viewportHeight": 614,
+          "htmlScroll": "auto",
+          "bodyScroll": "visible",
+          "rootScroll": "visible"
+        },
+        "innerWidth": 1093,
+        "clientWidth": 1093,
+        "scrollHeight": 769,
+        "clientHeight": 614
+      },
+      "errors": []
+    },
+    {
+      "width": 1093,
+      "height": 614,
+      "scroll": "classic-baseline",
+      "seed": 3,
+      "before": {
+        "fit": {
+          "font": 16,
+          "widths": [
+            970.78125,
+            970.78125
+          ],
+          "area": 970.78125,
+          "contentWidth": 1027.42,
+          "viewportWidth": 1093,
+          "viewportHeight": 614,
+          "htmlScroll": "auto",
+          "bodyScroll": "visible",
+          "rootScroll": "visible"
+        },
+        "innerWidth": 1093,
+        "clientWidth": 1093,
+        "scrollHeight": 614,
+        "clientHeight": 614
+      },
+      "after": {
+        "state": "plan40-identify-one-half-one-eighth-8",
+        "notice": "",
+        "beforeAfterMount": [
+          {
+            "fit": {
+              "font": 16,
+              "widths": [
+                970.78125,
+                970.78125
+              ],
+              "area": 970.78125,
+              "contentWidth": 1027.42,
+              "viewportWidth": 1093,
+              "viewportHeight": 614,
+              "htmlScroll": "auto",
+              "bodyScroll": "visible",
+              "rootScroll": "visible"
+            },
+            "activeHost": {
+              "width": 970.8125,
+              "left": 61.09375,
+              "right": 1031.90625
+            },
+            "clientWidth": 1093,
+            "scrollWidth": 1093
+          }
+        ],
+        "fit": {
+          "font": 16,
+          "widths": [
+            970.78125,
+            970.78125
+          ],
+          "area": 970.78125,
+          "contentWidth": 1027.42,
+          "viewportWidth": 1093,
+          "viewportHeight": 614,
+          "htmlScroll": "auto",
+          "bodyScroll": "visible",
+          "rootScroll": "visible"
+        },
+        "innerWidth": 1093,
+        "clientWidth": 1093,
+        "scrollHeight": 769,
+        "clientHeight": 614
+      },
+      "errors": []
+    }
+  ]
+}

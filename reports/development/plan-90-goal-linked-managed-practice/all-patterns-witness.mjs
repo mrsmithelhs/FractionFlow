@@ -16,7 +16,9 @@ const patterns=[
 ];
 const relations={'plan45-compare-02':'>','plan45-compare-08':'<','plan45-compare-09':'>','plan45-compare-10':'<','distance-01':'<','distance-04':'>'};
 const asFraction=form=>createFraction(BigInt(form.numerator),BigInt(form.denominator));
-const server=await createServer({configFile:false,root:process.cwd(),server:{host:'127.0.0.1',port:0,strictPort:true},logLevel:'error'});
+const server=process.env.PLAN90_EXISTING==='1'?null:await createServer({configFile:false,root:process.cwd(),server:{host:'127.0.0.1',port:0,strictPort:true},logLevel:'error'});
+const width=Number(process.env.PLAN90_REPAIR_WIDTH??1093),height=Number(process.env.PLAN90_REPAIR_HEIGHT??614);
+const screenshots=process.env.PLAN90_REPAIR_NO_SCREENSHOTS!=='1';
 let browser;const runs=[],errors=[];
 async function compare(host,id){await host.locator(`.plan45-relation-option input[value="${relations[id]}"]`).check();await host.locator('.plan45-check-button').click();await host.locator('.plan45-progression-button').click();}
 async function distance(host,id){await host.locator(`.plan51-response input[value="${relations[id]}"]`).check();await host.locator('.plan51-response button[type=submit]').click();await host.locator('[data-plan51-focus=numerator]').fill(id==='distance-01'?'4':'3');await host.locator('[data-plan51-focus=denominator]').fill(id==='distance-01'?'8':'6');await host.locator('.plan51-response button[type=submit]').click();await host.locator('.plan51-next').click();}
@@ -56,17 +58,22 @@ async function operate(host,view,record,page){
   await host.locator('.active-beat-controls button').first().click();
 }
 try{
-  await server.listen();browser=await chromium.launch({headless:true,channel:'chrome',args:['--no-proxy-server']});
-  const base=`http://127.0.0.1:${server.httpServer.address().port}/${dir}/integration-preview.html`;
+  await server?.listen();browser=await chromium.launch({headless:true,channel:'chrome',args:['--no-proxy-server']});
+  const base=server?`http://127.0.0.1:${server.httpServer.address().port}/${dir}/integration-preview.html`:`http://127.0.0.1:5199/FractionFlow/${dir}/integration-preview.html`;
   for(let seed=0;seed<4;seed++)for(const support of ['high-support','medium-support'])for(const view of ['visual','linear']){
-    const page=await browser.newPage({viewport:{width:1093,height:614}});page.setDefaultTimeout(10000);page.on('pageerror',e=>errors.push(e.message));
+    const page=await browser.newPage({viewport:{width,height}});page.setDefaultTimeout(10000);page.on('pageerror',e=>errors.push(e.message));
     await page.goto(`${base}?seed=${seed}&support=${support}`);await page.locator('[data-session-entry="comparison"]').click();
     if(view==='linear')await page.locator('.app-view-toggle').click();const host=page.locator(view==='visual'?'.app-visual-view':'.app-linear-view'),ids=[];
     const witness=await page.evaluate(()=>window.integrationApp.getManagedSessionWitness());assert.equal(witness.seed,seed);
     for(const id of patterns[seed].slice(1)){
       const state=await page.evaluate(()=>window.integrationApp.getState());ids.push(state.taskContext.itemId);assert.equal(ids.at(-1),id);
-      if(view==='visual'&&support==='high-support'&&ids.length===1)await page.screenshot({path:`${dir}/pattern-${patterns[seed][0]}.png`,fullPage:true});
-      if(id.startsWith('plan45-'))await compare(host,id);else if(id.startsWith('distance-'))await distance(host,id);else if(id.startsWith('bridge-'))await placement(host,view,support==='high-support'?page:null,support);else await operate(host,view,arithmetic.get(id),support==='high-support'?page:null);
+      if(screenshots&&view==='visual'&&support==='high-support'&&ids.length===1)await page.screenshot({path:`${dir}/pattern-${patterns[seed][0]}.png`,fullPage:true});
+      if(id.startsWith('plan45-')||id.startsWith('distance-')) {
+        const options=host.locator('.plan45-relation-option input');assert.deepEqual(await options.evaluateAll(nodes=>nodes.map(n=>n.value)),['>','=','<']);
+        await options.nth(0).focus();await page.keyboard.press('ArrowRight');assert.equal(await options.nth(1).evaluate(n=>n===document.activeElement),true);
+        await page.keyboard.press('ArrowRight');assert.equal(await options.nth(2).evaluate(n=>n===document.activeElement),true);
+      }
+      if(id.startsWith('plan45-'))await compare(host,id);else if(id.startsWith('distance-'))await distance(host,id);else if(id.startsWith('bridge-'))await placement(host,view,screenshots&&support==='high-support'?page:null,support);else await operate(host,view,arithmetic.get(id),screenshots&&support==='high-support'?page:null);
     }
     assert.equal(await page.locator('.app-entry-page').isVisible(),true);runs.push({seed,pattern:patterns[seed][0],view,support,ids,finished:true,fit:witness.fit});await page.close();
   }
@@ -121,6 +128,8 @@ try{
   const preflightWitness=await preflight.evaluate(()=>window.integrationApp.getManagedSessionWitness());
   assert.ok(preflightWitness.outcomes.some(x=>x.identity.itemId==='distance-01'&&x.reason==='preflight-failed'));
   assert.equal(await preflight.locator('[data-managed-renderer-preflight]').count(),0);await preflight.close();
-  await writeFile(`${dir}/all-patterns-observations.json`,JSON.stringify({browser:browser.version(),method:'Ordinary Start with deterministic seed injection only; production fit, admission and controls. Explicit fault injection for rollback, shortened visits, single fallback, renderer preflight and designated alternative cases.',runs,reduced:{width:360,height:740,rootText:'150%',seed:1,selected:'M0',witness:reducedWitness},condition:'Seed 2 started U0 with phase2-bundle-2 preserved.',shortened:'Forced inspection preflight refusal produced U0 identify → construct → return.',requiredEndpointLoss:'Forced later construct preflight refusal ended U0 after identify rather than proceeding to inspection.',single:'Only distance-04 preflighted; one-item practice completed and returned.',requiredPlacementLoss:'M1 ended on its completed comparison after narrowing made both unstarted placement candidates ineligible.',alternative:'With bridge-06 preflight forced to fail, M1 completed using the designated bridge-02 substitute.',detachedPreflight:'Forced failure after detached distance-01 renderer mount rejected M0 and selected M1 before the first task; no scratch host remained.',rollback:'Forced post-mount Retry failures restored an arithmetic transform draft and a placement stepper selection; cross-family Next failure restored completed comparison, then a later Next mounted placement. Notice focus and subsequent controls were checked.',errors},null,2)+'\n');
+  const unseeded=await browser.newPage({viewport:{width,height}});await unseeded.goto(base);await unseeded.locator('[data-session-entry="comparison"]').click();
+  const unseededWitness=await unseeded.evaluate(()=>window.integrationApp.getManagedSessionWitness());assert.ok(Number.isInteger(unseededWitness.seed));assert.ok(await unseeded.evaluate(()=>window.integrationApp.getState().taskContext.itemId));await unseeded.close();
+  await writeFile(`${dir}/${process.env.PLAN90_REPAIR_ALL_OUTPUT??'all-patterns-observations.json'}`,JSON.stringify({browser:browser.version(),viewport:{width,height},unseededStart:unseededWitness,method:'Ordinary Start with deterministic seed injection only; production fit, admission and controls. Explicit fault injection for rollback, shortened visits, single fallback, renderer preflight and designated alternative cases.',runs,reduced:{width:360,height:740,rootText:'150%',seed:1,selected:'M0',witness:reducedWitness},condition:'Seed 2 started U0 with phase2-bundle-2 preserved.',shortened:'Forced inspection preflight refusal produced U0 identify → construct → return.',requiredEndpointLoss:'Forced later construct preflight refusal ended U0 after identify rather than proceeding to inspection.',single:'Only distance-04 preflighted; one-item practice completed and returned.',requiredPlacementLoss:'M1 ended on its completed comparison after narrowing made both unstarted placement candidates ineligible.',alternative:'With bridge-06 preflight forced to fail, M1 completed using the designated bridge-02 substitute.',detachedPreflight:'Forced failure after detached distance-01 renderer mount rejected M0 and selected M1 before the first task; no scratch host remained.',rollback:'Forced post-mount Retry failures restored an arithmetic transform draft and a placement stepper selection; cross-family Next failure restored completed comparison, then a later Next mounted placement. Notice focus and subsequent controls were checked.',errors},null,2)+'\n');
   if(errors.length)throw Error(errors.join('\n'));console.log(`Completed ${runs.length} four-pattern journeys and a measured reduced pool.`);
-}finally{await browser?.close();await server.close();}
+}finally{await browser?.close();await server?.close();}

@@ -3,7 +3,7 @@ import { createSymbolicFraction } from './symbolic.js';
 import { STRINGS } from './strings.js';
 
 const RELATIONS = Object.freeze([
-  ...['<', '=', '>'].map((glyph) => ({
+  ...['>', '=', '<'].map((glyph) => ({
     glyph,
     label: STRINGS.plan45.relationLabels[glyph],
     aria: STRINGS.plan45.relationAria[glyph],
