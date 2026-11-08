@@ -136,31 +136,50 @@ export function isMagnitudeEpisodeComplete(state, entry) {
 // The controller owns only ephemeral navigation. Episode state is supplied by its owner.
 // A prepared transaction is an unforgeable, single-use capability bound to the exact
 // controller snapshot and old episode object. Preparation never mutates either.
-export function createMagnitudeSessionController(manifest = MAGNITUDE_SESSION_MANIFEST, supportId = 'high-support', { prepare = prepareMagnitudeEntry } = {}) {
+export function createMagnitudeSessionController(manifest = MAGNITUDE_SESSION_MANIFEST, supportId = 'high-support', { prepare = prepareMagnitudeEntry, eligibleForNext = null, fitRevision = null } = {}) {
   const admission = admitMagnitudeManifest(manifest, supportId);
+  let liveManifest = admission.manifest;
   let snapshot = deepFreeze({ id: admission.manifest.id, revision: admission.manifest.revision, index: 0, generation: 0, active: true, supportId });
   let episode = admission.prepared[0].state;
   let installed = admission.prepared[0];
   const tickets = new WeakMap();
   const rollbackTickets = new WeakMap();
-  const current = () => ({ session: snapshot, episode, installed, manifest: admission.manifest });
+  const current = () => ({ session: snapshot, episode, installed, manifest: liveManifest });
   const updateEpisode = (expected, next) => {
-    if (!snapshot.active || episode !== expected || !next || next.taskContext?.itemId !== admission.manifest.entries[snapshot.index].itemId
-      || next.episodeDefinition?.id !== admission.manifest.entries[snapshot.index].definitionId || next.episodeDefinition?.revision !== admission.manifest.entries[snapshot.index].definitionRevision) return false;
+    if (!snapshot.active || episode !== expected || !next || next.taskContext?.itemId !== liveManifest.entries[snapshot.index].itemId
+      || next.episodeDefinition?.id !== liveManifest.entries[snapshot.index].definitionId || next.episodeDefinition?.revision !== liveManifest.entries[snapshot.index].definitionRevision) return false;
     episode = next; return true;
   };
   const prepareTransition = (kind, expectedSession, expectedEpisode) => {
     if (!snapshot.active || snapshot !== expectedSession || episode !== expectedEpisode || !['next', 'restart'].includes(kind)) return { ok: false, reason: 'stale-or-invalid' };
-    if (kind === 'next' && !isMagnitudeEpisodeComplete(episode, admission.manifest.entries[snapshot.index])) return { ok: false, reason: 'unfinished' };
+    if (kind === 'next' && !isMagnitudeEpisodeComplete(episode, liveManifest.entries[snapshot.index])) return { ok: false, reason: 'unfinished' };
     const index = kind === 'next' ? snapshot.index + 1 : snapshot.index;
-    if (index >= admission.manifest.entries.length) return { ok: false, reason: 'exhausted' };
+    let nextManifest = liveManifest;
+    let fitToken;
+    if (kind === 'next' && liveManifest.id === PLAN90_REVIEW_ID && eligibleForNext !== null) {
+      if (typeof eligibleForNext !== 'function') return { ok: false, reason: 'invalid-eligibility' };
+      try {
+        if (fitRevision !== null) {
+          if (typeof fitRevision !== 'function') return { ok: false, reason: 'invalid-eligibility' };
+          fitToken = fitRevision();
+          if (typeof fitToken !== 'string' && !Number.isSafeInteger(fitToken)) return { ok: false, reason: 'invalid-eligibility' };
+        }
+      } catch { return { ok: false, reason: 'invalid-eligibility' }; }
+      const prefix = liveManifest.entries.slice(0, index);
+      const suffix = liveManifest.entries.slice(index).filter(entry => {
+        try { return eligibleForNext(structuredClone(entry)) === true; } catch { return false; }
+      });
+      if (!suffix.length) return { ok: false, reason: 'fit-exhausted' };
+      nextManifest = deepFreeze({ ...liveManifest, entries: [...prefix, ...suffix] });
+    }
+    if (index >= nextManifest.entries.length) return { ok: false, reason: 'exhausted' };
     try {
-      const candidate = prepare(admission.manifest.entries[index], supportId);
+      const candidate = prepare(nextManifest.entries[index], supportId);
       // Independently reconstruct and compare: injection cannot bypass authoritative admission.
-      const expected = prepareMagnitudeEntry(admission.manifest.entries[index], supportId);
+      const expected = prepareMagnitudeEntry(nextManifest.entries[index], supportId);
       if (!candidate || !same(candidate, expected)) return { ok: false, reason: 'invalid-candidate' };
       const ticket = Object.freeze({});
-      tickets.set(ticket, { snapshot, episode, candidate: expected, index });
+      tickets.set(ticket, { snapshot, episode, manifest: liveManifest, nextManifest, fitToken, candidate: expected, index });
       return { ok: true, ticket };
     } catch { return { ok: false, reason: 'preparation-failed' }; }
   };
@@ -168,8 +187,12 @@ export function createMagnitudeSessionController(manifest = MAGNITUDE_SESSION_MA
     const transaction = ticket && tickets.get(ticket);
     if (!transaction) return false;
     tickets.delete(ticket);
-    if (!snapshot.active || transaction.snapshot !== snapshot || transaction.episode !== episode) return false;
-    const previous = { snapshot, episode, installed };
+    if (!snapshot.active || transaction.snapshot !== snapshot || transaction.episode !== episode || transaction.manifest !== liveManifest) return false;
+    if (transaction.fitToken !== undefined) {
+      try { if (fitRevision() !== transaction.fitToken) return false; } catch { return false; }
+    }
+    const previous = { snapshot, episode, installed, manifest: liveManifest };
+    liveManifest = transaction.nextManifest;
     installed = transaction.candidate; episode = installed.state;
     snapshot = deepFreeze({ ...snapshot, index: transaction.index, generation: snapshot.generation + 1 });
     rollbackTickets.set(ticket, { previous, committed: snapshot, episode });
@@ -182,6 +205,7 @@ export function createMagnitudeSessionController(manifest = MAGNITUDE_SESSION_MA
     if (snapshot !== transaction.committed || episode !== transaction.episode) return false;
     episode = transaction.previous.episode;
     installed = transaction.previous.installed;
+    liveManifest = transaction.previous.manifest;
     snapshot = deepFreeze({ ...transaction.previous.snapshot, generation: snapshot.generation + 1 });
     return true;
   };

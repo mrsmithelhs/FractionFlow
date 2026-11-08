@@ -12,5 +12,10 @@ try {
   await host.locator('.plan51-response input[value="<"]').check();
   await host.locator('.plan51-response').evaluate(el=>el.requestSubmit());
   await page.screenshot({path:`${dir}/distance-enlarged.png`,fullPage:true});
-  console.log('Captured distance at 360px and 200% CSS root text.');
+  await host.locator('[data-plan51-focus="numerator"]').fill('4');
+  await host.locator('[data-plan51-focus="denominator"]').fill('8');
+  await host.locator('.plan51-response button[type=submit]').click();
+  await host.locator('.plan51-result').scrollIntoViewIfNeeded();
+  await page.screenshot({path:`${dir}/distance-result-enlarged.png`,fullPage:true});
+  console.log('Captured distance entry and result at 360px and 200% CSS root text.');
 } finally { await browser?.close(); await server.close(); }

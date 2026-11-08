@@ -1,6 +1,6 @@
 {
   "browser": "157.0.8103.38",
-  "method": "Review-only synthetic eligibility injected through the real Start control; not production fit.",
+  "method": "Review-only synthetic eligibility and unapproved experimental measured-area classifier injected through the real Start control; neither is production fit.",
   "runs": [
     {
       "width": 360,
@@ -87,7 +87,91 @@
       "eligibility": "synthetic all eligible"
     }
   ],
+  "measuredRuns": [
+    {
+      "width": 360,
+      "height": 740,
+      "scale": 100,
+      "fitBefore": {
+        "area": 310,
+        "font": 16,
+        "widths": [
+          310,
+          310
+        ],
+        "viewport": [
+          360,
+          740
+        ],
+        "scroll": "visible",
+        "bodyScroll": "visible"
+      },
+      "started": true
+    },
+    {
+      "width": 360,
+      "height": 740,
+      "scale": 200,
+      "fitBefore": {
+        "area": 262,
+        "font": 32,
+        "widths": [
+          262,
+          262
+        ],
+        "viewport": [
+          360,
+          740
+        ],
+        "scroll": "visible",
+        "bodyScroll": "visible"
+      },
+      "started": false
+    },
+    {
+      "width": 1093,
+      "height": 614,
+      "scale": 100,
+      "fitBefore": {
+        "area": 970.8125,
+        "font": 16,
+        "widths": [
+          970.8125,
+          970.8125
+        ],
+        "viewport": [
+          1093,
+          614
+        ],
+        "scroll": "visible",
+        "bodyScroll": "visible"
+      },
+      "started": true
+    },
+    {
+      "width": 1440,
+      "height": 900,
+      "scale": 100,
+      "fitBefore": {
+        "area": 1022,
+        "font": 16,
+        "widths": [
+          1022,
+          1022
+        ],
+        "viewport": [
+          1440,
+          900
+        ],
+        "scroll": "visible",
+        "bodyScroll": "visible"
+      },
+      "started": true
+    }
+  ],
   "emptyNotice": "No practice fits this screen right now. Try a larger window or smaller text, or choose another practice.",
+  "keyboard": "1093x614: Tab reaches Start, Enter focuses episode; programmatically focused relation/Check/Next operated by Space/Enter.",
   "rollback": "Forced post-mount Retry failure restored the same item, helper draft, focus to notice and editable input; a later Retry succeeded. Forced post-mount Next failure retained the completed item and focused the notice; a later Next succeeded.",
+  "changedFit": "Synthetic eligibility; resize and view change preserved helper draft, Next skipped an ineligible unstarted item, later exhaustion returned to entry with focused notice. Experimental measured-area case: 768 to 360 at 200% text preserved draft and ended at Next when the proposed bound failed.",
   "errors": []
 }

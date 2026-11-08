@@ -578,7 +578,8 @@ export function createFractionFlowApp({
     try {
       if (preflightAll) admitMagnitudeManifest(manifest, selectedSupportLevel.id).prepared.forEach(sessionPreflight);
       const controller = createMagnitudeSessionController(manifest, selectedSupportLevel.id,
-        { prepare: (entry, support) => sessionPreflight(prepareMagnitudeEntry(entry, support)) });
+        { prepare: (entry, support) => sessionPreflight(prepareMagnitudeEntry(entry, support)),
+          eligibleForNext: sessionTestHooks.eligibleForNext, fitRevision: sessionTestHooks.fitRevision });
       sessionPreflight(controller.current().installed);
       magnitudeSession = controller; clearFragment(); setHidden(sessionEntryNotice, true);
       installSessionCurrent();
@@ -616,6 +617,11 @@ export function createFractionFlowApp({
     isTransitioning = true;
     try {
       const prepared = magnitudeSession.prepareTransition(kind, session, episode);
+      if (!prepared.ok && prepared.reason === 'fit-exhausted') {
+        leaveMagnitudeSession();
+        sessionEntryNotice.textContent = 'Practice is complete for now. The remaining problems do not fit this screen.';
+        setHidden(sessionEntryNotice, false); sessionEntryNotice.focus(); return;
+      }
       if (!prepared.ok || !magnitudeSession.commit(prepared.ticket)) {
         navigationRefusal = true;
         navigationNotice.textContent = kind === 'restart' ? STRINGS.app.sessionRestartUnavailable : STRINGS.app.sessionNextUnavailable;

@@ -66,6 +66,76 @@ try {
   await host.locator('.plan45-progression-button').click();
   assert.equal((await rollback.evaluate(() => window.plan90Review.getState())).taskContext.itemId,'plan45-compare-09');
   await rollback.close();
-  await writeFile(`${dir}/review-witness-observations.json`, JSON.stringify({ browser: browser.version(), method: 'Review-only synthetic eligibility injected through the real Start control; not production fit.', runs, emptyNotice: notice, rollback: 'Forced post-mount Retry failure restored the same item, helper draft, focus to notice and editable input; a later Retry succeeded. Forced post-mount Next failure retained the completed item and focused the notice; a later Next succeeded.', errors }, null, 2) + '\n');
+  const changed = await browser.newPage({viewport:{width:768,height:740}});
+  await changed.goto(base); await changed.locator('[data-session-entry="comparison"]').click();
+  let active = changed.locator('.app-visual-view');
+  await active.locator('.plan45-help-summary').click();
+  await active.getByRole('button',{name:'Use the same denominator'}).click();
+  await active.locator('.plan49-helper-input').fill('8');
+  await changed.setViewportSize({width:360,height:740});
+  assert.equal(await active.locator('.plan49-helper-input').inputValue(),'8');
+  await changed.locator('.app-view-toggle').click(); active = changed.locator('.app-linear-view');
+  assert.equal(await active.locator('.plan49-helper-input').inputValue(),'8');
+  await changed.evaluate(() => window.plan90SetEligibility(['plan45-compare-10','distance-01']));
+  await active.locator('.plan45-relation-option input[value=">"]').check();
+  await active.locator('.plan45-check-button').click(); await active.locator('.plan45-progression-button').click();
+  assert.equal((await changed.evaluate(() => window.plan90Review.getState())).taskContext.itemId,'plan45-compare-10');
+  await changed.evaluate(() => window.plan90SetEligibility([]));
+  await active.locator('.plan45-relation-option input[value="<"]').check();
+  await active.locator('.plan45-check-button').click(); await active.locator('.plan45-progression-button').click();
+  assert.equal(await changed.locator('.app-entry-page').isVisible(),true);
+  assert.match(await changed.locator('.app-session-entry-notice').textContent(),/complete for now/);
+  assert.equal(await changed.evaluate(() => document.activeElement.classList.contains('app-session-entry-notice')),true);
+  await changed.close();
+  const measuredRuns = [];
+  for (const [width,height,scale,expectStart] of [[360,740,100,true],[360,740,200,false],[1093,614,100,true],[1440,900,100,true]]) {
+    const measured = await browser.newPage({viewport:{width,height}});
+    await measured.goto(`${base}?fit=measured`);
+    if (scale !== 100) await measured.addStyleTag({content:`html { font-size:${scale}% !important; }`});
+    const fitBefore = await measured.evaluate(() => window.plan90Fit());
+    await measured.locator('[data-session-entry="comparison"]').click();
+    const state = await measured.evaluate(() => window.plan90Review.getState());
+    assert.equal(Boolean(state),expectStart);
+    if (expectStart) {
+      assert.equal(state.taskContext.itemId,'plan45-compare-02');
+      const activeHost=measured.locator('.app-visual-view');
+      await activeHost.locator('.plan45-relation-option input[value=">"]').check();
+      await activeHost.locator('.plan45-check-button').click(); await activeHost.locator('.plan45-progression-button').click();
+      assert.equal((await measured.evaluate(() => window.plan90Review.getState())).taskContext.itemId,'plan45-compare-09');
+    } else assert.equal(await measured.evaluate(() => document.activeElement.classList.contains('app-session-entry-notice')),true);
+    measuredRuns.push({width,height,scale,fitBefore,started:expectStart}); await measured.close();
+  }
+  const measuredResize = await browser.newPage({viewport:{width:768,height:740}});
+  await measuredResize.goto(`${base}?fit=measured`);
+  await measuredResize.addStyleTag({content:'html { font-size:200% !important; }'});
+  await measuredResize.locator('[data-session-entry="comparison"]').click();
+  const resizeHost = measuredResize.locator('.app-visual-view');
+  await resizeHost.locator('.plan45-help-summary').click();
+  await resizeHost.getByRole('button',{name:'Use the same denominator'}).click();
+  await resizeHost.locator('.plan49-helper-input').fill('8');
+  await measuredResize.setViewportSize({width:360,height:740});
+  assert.equal(await resizeHost.locator('.plan49-helper-input').inputValue(),'8');
+  await resizeHost.locator('.plan45-relation-option input[value=">"]').check();
+  await resizeHost.locator('.plan45-check-button').click(); await resizeHost.locator('.plan45-progression-button').click();
+  assert.equal(await measuredResize.locator('.app-entry-page').isVisible(),true);
+  assert.match(await measuredResize.locator('.app-session-entry-notice').textContent(),/complete for now/);
+  await measuredResize.close();
+  const keyboard = await browser.newPage({viewport:{width:1093,height:614}});
+  await keyboard.goto(`${base}?fit=measured`);
+  let reachedStart = false;
+  for (let i = 0; i < 12 && !reachedStart; i += 1) {
+    await keyboard.keyboard.press('Tab');
+    reachedStart = await keyboard.evaluate(() => document.activeElement.matches('[data-session-entry="comparison"]'));
+  }
+  assert.equal(reachedStart,true);
+  await keyboard.keyboard.press('Enter');
+  assert.equal(await keyboard.evaluate(() => document.activeElement.classList.contains('app-episode')),true);
+  const keyHost=keyboard.locator('.app-visual-view');
+  await keyHost.locator('.plan45-relation-option input[value=">"]').focus(); await keyboard.keyboard.press('Space');
+  await keyHost.locator('.plan45-check-button').focus(); await keyboard.keyboard.press('Enter');
+  await keyHost.locator('.plan45-progression-button').focus(); await keyboard.keyboard.press('Enter');
+  assert.equal((await keyboard.evaluate(() => window.plan90Review.getState())).taskContext.itemId,'plan45-compare-09');
+  await keyboard.close();
+  await writeFile(`${dir}/review-witness-observations.json`, JSON.stringify({ browser: browser.version(), method: 'Review-only synthetic eligibility and unapproved experimental measured-area classifier injected through the real Start control; neither is production fit.', runs, measuredRuns, emptyNotice: notice, keyboard: '1093x614: Tab reaches Start, Enter focuses episode; programmatically focused relation/Check/Next operated by Space/Enter.', rollback: 'Forced post-mount Retry failure restored the same item, helper draft, focus to notice and editable input; a later Retry succeeded. Forced post-mount Next failure retained the completed item and focused the notice; a later Next succeeded.', changedFit: 'Synthetic eligibility; resize and view change preserved helper draft, Next skipped an ineligible unstarted item, later exhaustion returned to entry with focused notice. Experimental measured-area case: 768 to 360 at 200% text preserved draft and ended at Next when the proposed bound failed.', errors }, null, 2) + '\n');
   if (errors.length) throw Error(errors.join('\n')); console.log(`Completed ${runs.length} managed review journeys and empty refusal.`);
 } finally { await browser?.close(); await server.close(); }

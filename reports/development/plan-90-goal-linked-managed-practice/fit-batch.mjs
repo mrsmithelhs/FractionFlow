@@ -8,6 +8,7 @@ import { compareFractions, createFraction } from '../../../src/math/index.js';
 const directory = 'reports/development/plan-90-goal-linked-managed-practice';
 const items = [...PLAN45_COMPARISON_RECORDS.filter(x => ['plan45-compare-02','plan45-compare-08','plan45-compare-09','plan45-compare-10'].includes(x.itemId)), ...PLAN51_DISTANCE_RECORDS.filter(x => ['distance-01','distance-04'].includes(x.itemId))];
 const widths = (process.env.PLAN90_WIDTHS ?? '360,480,768,1093').split(',').map(Number);
+const heights = (process.env.PLAN90_HEIGHTS ?? '740').split(',').map(Number);
 const scales = (process.env.PLAN90_SCALES ?? '100,200').split(',').map(Number);
 const output = process.env.PLAN90_OUTPUT ?? 'fit-batch-observations.json';
 const supports = ['high-support', 'medium-support'];
@@ -33,11 +34,11 @@ async function metrics(page, stage) {
     return {stage:stageName,item:state?.taskContext?.itemId,definition:state?.episodeDefinition&&{id:state.episodeDefinition.id,revision:state.episodeDefinition.revision},beat:state?.beat,status:state?.status,support:state?.support?.label,view:active?.classList.contains('app-linear-view')?'linear':'visual',viewport:{width:innerWidth,height:innerHeight},rootFont:getComputedStyle(document.documentElement).fontSize,document:{clientWidth:document.documentElement.clientWidth,scrollWidth:document.documentElement.scrollWidth,clientHeight:document.documentElement.clientHeight,scrollHeight:document.documentElement.scrollHeight},episode:rect(episode),workingArea:rect(active),overflowElements:measured.filter(x=>x.scrollWidth>x.clientWidth+1||x.scrollHeight>x.clientHeight+1),elements:measured};
   }, stage);
 }
-async function runOne(context, record, support, view, width, scale) {
+async function runOne(context, record, support, view, width, height, scale) {
   const page = await context.newPage();
   const failures = [];
   page.on('pageerror', error => failures.push(`pageerror: ${error.message}`));
-  const result = {item:record.itemId,support,view,width,height:740,textScale:`${scale}% root CSS font`,stages:[],failures};
+  const result = {item:record.itemId,support,view,width,height,textScale:`${scale}% root CSS font`,stages:[],failures};
   try {
     await page.goto(`http://127.0.0.1:${server.httpServer.address().port}/${directory}/fit-batch.html?item=${encodeURIComponent(record.itemId)}&support=${support}&view=${view}`);
     if (scale !== 100) await page.addStyleTag({content:`html { font-size: ${scale}% !important; }`});
@@ -57,17 +58,17 @@ async function runOne(context, record, support, view, width, scale) {
     } else {
       const forms=record.sourceForms; const relation=expectedRelation(record); const wrong=['<','=','>'].find(x=>x!==relation);
       await host.getByRole('button', { name: 'Show first amount' }).click(); await stage('help-source-model');
-      await host.locator(`.plan51-response input[type=radio][value="${wrong}"]`).check(); await host.locator('.plan51-response').evaluate(el=>el.requestSubmit()); await stage('wrong-comparison');
-      await host.locator(`.plan51-response input[type=radio][value="${relation}"]`).check(); await host.locator('.plan51-response').evaluate(el=>el.requestSubmit()); await stage('correct-comparison');
+      await host.locator(`.plan51-response input[type=radio][value="${wrong}"]`).check(); await host.locator('.plan51-response button[type=submit]').click(); await stage('wrong-comparison');
+      await host.locator(`.plan51-response input[type=radio][value="${relation}"]`).check(); await host.locator('.plan51-response button[type=submit]').click(); await stage('correct-comparison');
       if (!await host.getByRole('button', { name: 'Show both amounts' }).isVisible()) await host.locator('.plan45-help-summary').click();
       await host.getByRole('button', { name: 'Show both amounts' }).click(); await stage('help-paired-models');
       const first=BigInt(forms.first.numerator), second=BigInt(forms.second.numerator), denominator=BigInt(forms.first.denominator), delta=first>second?first-second:second-first;
       const form=host.locator('.plan51-response');
       const gcd=(a,b)=>b===0n?a:gcd(b,a%b); const divisor=gcd(delta,denominator); const answerNumerator=delta/divisor, answerDenominator=denominator/divisor;
       await host.locator('[data-plan51-focus="numerator"]').fill(String(answerNumerator+1n)); await host.locator('[data-plan51-focus="denominator"]').fill(String(answerDenominator));
-      await form.evaluate(el=>el.requestSubmit()); await stage('wrong-distance');
+      await form.locator('button[type=submit]').click(); await stage('wrong-distance');
       await host.locator('[data-plan51-focus="numerator"]').fill(String(answerNumerator)); await host.locator('[data-plan51-focus="denominator"]').fill(String(answerDenominator));
-      await form.evaluate(el=>el.requestSubmit());
+      await form.locator('button[type=submit]').click();
       if (!(await host.locator('.plan51-next').isVisible())) throw Error('Distance accepted state has no progression control.');
       await stage('correct-distance-completion'); await host.locator('.plan51-next').click(); await stage('completion');
     }
@@ -78,12 +79,12 @@ async function runOne(context, record, support, view, width, scale) {
 
 try {
   await mkdir(directory,{recursive:true}); await server.listen(); browser=await chromium.launch({headless:true,channel:'chrome',args:['--no-proxy-server']});
-  for(const width of widths) for(const scale of scales) for(const support of supports) for(const view of views) {
-    const context=await browser.newContext({viewport:{width,height:740}});
-    for(const record of items) { const result=await runOne(context,record,support,view,width,scale);runs.push(result);if(result.failures.length)errors.push(`${record.itemId}/${support}/${view}/${width}/${result.textScale}: ${result.failures.join('; ')}`); }
-    await context.close(); console.log(`completed width=${width} text=${scale}% support=${support} view=${view}`);
+  for(const width of widths) for(const height of heights) for(const scale of scales) for(const support of supports) for(const view of views) {
+    const context=await browser.newContext({viewport:{width,height}});
+    for(const record of items) { const result=await runOne(context,record,support,view,width,height,scale);runs.push(result);if(result.failures.length)errors.push(`${record.itemId}/${support}/${view}/${width}x${height}/${result.textScale}: ${result.failures.join('; ')}`); }
+    await context.close(); console.log(`completed ${width}x${height} text=${scale}% support=${support} view=${view}`);
   }
-  const report={method:'Public practice type restricted to one exact registered record; each run selects a registered support level and uses the real chooser, mounted renderer and task controls. CSS root font enlargement is text scaling, not browser zoom. Measurements describe rendered geometry and do not themselves establish fit.',browser:{name:'Chrome',version:browser.version()},configurations:{widths,height:740,textScales:scales.map(s=>`${s}% root CSS font`),supports,views,records:items.map(x=>x.itemId)},runCount:runs.length,failures:errors,runs};
+  const report={method:'Public practice type restricted to one exact registered record; each run selects a registered support level and uses the real chooser, mounted renderer and task controls. CSS root font enlargement is text scaling, not browser zoom. Measurements describe rendered geometry and do not themselves establish fit.',browser:{name:'Chrome',version:browser.version()},configurations:{widths,heights,textScales:scales.map(s=>`${s}% root CSS font`),supports,views,records:items.map(x=>x.itemId)},runCount:runs.length,failures:errors,runs};
   await writeFile(`${directory}/${output}`,JSON.stringify(report,null,2)+'\n');
   if(errors.length) { console.error(`${errors.length} run(s) incomplete; see ${directory}/fit-batch-observations.json`); process.exitCode=1; }
   else console.log(`All ${runs.length} journeys completed. Geometry remains evidence for review, not an automatic fit decision.`);

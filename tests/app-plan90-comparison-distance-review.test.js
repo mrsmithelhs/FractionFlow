@@ -4,9 +4,21 @@ import { createComparisonRecordController } from '../src/app/comparison-record-c
 import { emptyRoot } from '../src/app/comparison-record.js';
 import { createFractionFlowApp } from '../src/app/app.js';
 import { setupMockDOM, teardownMockDOM } from './fixtures/mock-dom.js';
+import { applyIntent } from '../src/interaction/episode.js';
+import { classifyReviewArea } from '../reports/development/plan-90-goal-linked-managed-practice/review-fit.js';
 
 const select = ids => selectPlan90ComparisonDistanceReview(entry => ids.includes(entry.itemId));
 afterEach(() => teardownMockDOM());
+
+it('fails closed on unknown experimental fit and uses measured working area', () => {
+  const measure = { area: 263, font: 32, widths: [263, 263], scroll: 'visible', bodyScroll: 'visible' };
+  expect(classifyReviewArea(measure)).toBe(true);
+  expect(classifyReviewArea({ ...measure, area: 262, widths: [262, 262] })).toBe(false);
+  expect(classifyReviewArea({ ...measure, widths: [263, 0] })).toBe(false);
+  expect(classifyReviewArea({ ...measure, bodyScroll: 'hidden' })).toBe(false);
+  expect(classifyReviewArea({ ...measure, font: 33 })).toBe(false);
+  expect(classifyReviewArea(null)).toBe(false);
+});
 
 it('selects only the first-batch ordered slots, a designated substitute or one eligible fallback', () => {
   const all = ['plan45-compare-02', 'plan45-compare-08', 'plan45-compare-09', 'plan45-compare-10', 'distance-01', 'distance-04'];
@@ -48,6 +60,42 @@ it('invalidates other prepared tickets when a committed transition is rolled bac
   expect(session.current().episode).toBe(original.episode);
   expect(session.commit(stale.ticket)).toBe(false);
   expect(session.rollback(first.ticket)).toBe(false);
+});
+
+it('rechecks only the unstarted review suffix and commits its change with Next', () => {
+  let eligible = new Set(['plan45-compare-10', 'distance-01']);
+  const session = createMagnitudeSessionController(select(['plan45-compare-02', 'plan45-compare-09', 'plan45-compare-10', 'distance-01']), 'high-support',
+    { eligibleForNext: entry => eligible.has(entry.itemId) });
+  const start = session.current();
+  const resolved = applyIntent(start.episode, { type: 'submit-fraction-comparison', proposed: '>' });
+  expect(session.updateEpisode(start.episode, resolved)).toBe(true);
+  const before = session.current(), transition = session.prepareTransition('next', before.session, resolved);
+  expect(transition.ok).toBe(true);
+  expect(session.current().manifest.entries).toHaveLength(4);
+  expect(session.commit(transition.ticket)).toBe(true);
+  expect(session.current().manifest.entries.map(x => x.itemId)).toEqual(['plan45-compare-02', 'plan45-compare-10', 'distance-01']);
+  expect(session.current().episode.taskContext.itemId).toBe('plan45-compare-10');
+  expect(session.rollback(transition.ticket)).toBe(true);
+  expect(session.current().episode).toBe(resolved);
+  expect(session.current().manifest.entries).toHaveLength(4);
+  eligible = new Set();
+  const current = session.current();
+  expect(session.prepareTransition('next', current.session, current.episode).reason).toBe('fit-exhausted');
+  expect(session.current().episode).toBe(resolved);
+});
+
+it('rejects a transition if its fit snapshot changes after preparation', () => {
+  let revision = 1;
+  const session = createMagnitudeSessionController(select(['plan45-compare-02', 'distance-01']), 'high-support',
+    { eligibleForNext: () => true, fitRevision: () => revision });
+  const first = session.current();
+  const resolved = applyIntent(first.episode, { type: 'submit-fraction-comparison', proposed: '>' });
+  session.updateEpisode(first.episode, resolved);
+  const current = session.current(), transition = session.prepareTransition('next', current.session, resolved);
+  expect(transition.ok).toBe(true); revision += 1;
+  expect(session.commit(transition.ticket)).toBe(false);
+  expect(session.current().episode).toBe(resolved);
+  expect(session.current().manifest.entries).toHaveLength(2);
 });
 
 it('restores the episode, draft, usable controls and focus after a post-mount restart failure', () => {
