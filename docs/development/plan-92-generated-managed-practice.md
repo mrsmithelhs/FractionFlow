@@ -1,11 +1,9 @@
 ---
 id: plan-92
 title: Generated Managed Practice With Optional Local History
-status: ready
+status: in-progress
 depends_on: [plan-90, plan-91]
 gate: "Orchestration approves Requirement 0 before source work, then reviews admission and variety, consent and reset, and integration. Owner reviews the full rendered experience."
-superseded_by: null
-resolution: null
 summary: >-
   Generate coherent comparison and subtraction visits from measured public
   pools, with variation in problems and learner decisions, direct Start,
