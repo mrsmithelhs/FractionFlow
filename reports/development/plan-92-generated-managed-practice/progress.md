@@ -1,0 +1,3 @@
+# Plan 92 progress — Requirement 0
+
+2026-11-08. Baseline `ccd2fa15aa0eea07c6bcc515d8ea7a07d27e36a7`, clean `main`; packet check RUNNABLE. Wrote `mechanism.md` as a proposed, unapproved design. Reviewed public inventory and current Plan 90 fit and legacy comparison transaction boundary; seed indices are reference calculations, not executed visits or measured admission. No source changes, candidate admission, expanded consent or deployment. Hold at Requirement 0 for orchestration approval. Advisor consultation not warranted for this report-only checkpoint; any later Terra-medium review requires orchestration approval. No Sol or Astra.
