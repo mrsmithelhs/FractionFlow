@@ -17,6 +17,18 @@ export const COMPARISON_SESSION_MANIFEST = deepFreeze({ id: 'fixed-comparison-pr
   comparison('plan45-compare-02'), comparison('plan45-compare-09'), comparison('plan45-compare-11'), comparison('plan45-compare-10'),
 ] });
 const distance = itemId => ({ typeId: 'fraction-distance', setId: 'fraction-distance', setRevision: '1', itemId, itemRevision: '1', definitionId: 'phase-4-fraction-distance', definitionRevision: '1', recipeId: 'common-unit-distance', recipeRevision: '1' });
+// Plan 90 comparison/distance checkpoint only. This is not connected to the
+// ordinary Start policy until the family and fit gate has been cleared.
+export const PLAN90_M0_SLOTS = deepFreeze([
+  [comparison('plan45-compare-02'), comparison('plan45-compare-08')],
+  [comparison('plan45-compare-09')],
+  [comparison('plan45-compare-10')],
+  [distance('distance-01')],
+]);
+const PLAN90_REVIEW_CANDIDATES = deepFreeze([
+  ...PLAN90_M0_SLOTS.flat(), distance('distance-04'),
+]);
+const PLAN90_REVIEW_ID = 'plan90-comparison-distance-review';
 const SCHEDULED_SLOTS = deepFreeze([
   [comparison('plan45-compare-02'), comparison('plan45-compare-09')],
   [comparison('plan45-compare-10')],
@@ -32,6 +44,42 @@ const canonical = value => Array.isArray(value) ? value.map(canonical) : value &
 const same = (a, b) => JSON.stringify(canonical(a)) === JSON.stringify(canonical(b));
 const fail = message => { throw new TypeError(`invalid magnitude session: ${message}`); };
 const controllers = new WeakMap();
+
+/** Isolated first-batch selector. Eligibility is supplied by the caller; it is
+ * not a measured production fit class and cannot activate the learner route. */
+export function selectPlan90ComparisonDistanceReview(eligible, supportId = 'high-support') {
+  if (typeof eligible !== 'function') fail('review eligibility');
+  const tryEntry = entry => {
+    try {
+      if (eligible(structuredClone(entry)) !== true) return null;
+      prepareMagnitudeEntry(entry, supportId);
+      return structuredClone(entry);
+    } catch { return null; }
+  };
+  const slots = PLAN90_M0_SLOTS.map(slot => slot.map(tryEntry).find(Boolean) ?? null);
+  const entries = slots[0] && slots[3] ? slots.filter(Boolean) : [];
+  if (!entries.length) {
+    const single = PLAN90_REVIEW_CANDIDATES.map(tryEntry).find(Boolean);
+    if (single) entries.push(single);
+  }
+  return entries.length ? deepFreeze({ id: PLAN90_REVIEW_ID, revision: '1', entries }) : null;
+}
+
+function isPlan90ReviewManifest(manifest) {
+  if (!manifest || !same(Object.keys(manifest).sort(), ['entries', 'id', 'revision'])
+    || manifest.id !== PLAN90_REVIEW_ID || manifest.revision !== '1' || !Array.isArray(manifest.entries)
+    || manifest.entries.length === 0 || manifest.entries.length > 4) return false;
+  if (Array.from({ length: manifest.entries.length }, (_, index) => Object.hasOwn(manifest.entries, index)).some(present => !present)) return false;
+  if (manifest.entries.length === 1) return PLAN90_REVIEW_CANDIDATES.some(entry => same(entry, manifest.entries[0]));
+  if (!PLAN90_M0_SLOTS[0].some(entry => same(entry, manifest.entries[0]))
+    || !same(PLAN90_M0_SLOTS[3][0], manifest.entries.at(-1))) return false;
+  const middle = manifest.entries.slice(1, -1);
+  return middle.length <= 2 && middle.every((entry, i) => {
+    const slot = PLAN90_M0_SLOTS.findIndex(candidates => candidates.some(candidate => same(entry, candidate)));
+    const previous = i === 0 ? 0 : PLAN90_M0_SLOTS.findIndex(candidates => candidates.some(candidate => same(middle[i - 1], candidate)));
+    return slot > previous && slot < 3;
+  });
+}
 
 // Only live controllers created here can supply a session record context.
 export function sessionRecordContext(controller, state) {
@@ -63,7 +111,7 @@ export function prepareMagnitudeEntry(entry, supportId) {
 
 export function admitMagnitudeManifest(manifest = MAGNITUDE_SESSION_MANIFEST, supportId = 'high-support') {
   const scheduled = manifest && same(Object.keys(manifest).sort(), ['entries', 'id', 'revision']) && manifest.id === 'scheduled-magnitude-practice' && manifest.revision === '1' && Array.isArray(manifest.entries) && manifest.entries.length === SCHEDULED_SLOTS.length && SCHEDULED_SLOTS.every((slot, index) => Object.hasOwn(manifest.entries, index) && slot.some(candidate => same(manifest.entries[index], candidate)));
-  if (!same(manifest, MAGNITUDE_SESSION_MANIFEST) && !same(manifest, COMPARISON_SESSION_MANIFEST) && !scheduled) fail('manifest identity, shape, order or revision');
+  if (!same(manifest, MAGNITUDE_SESSION_MANIFEST) && !same(manifest, COMPARISON_SESSION_MANIFEST) && !scheduled && !isPlan90ReviewManifest(manifest)) fail('manifest identity, shape, order or revision');
   // Resolve and construct every entry at admission, including actual profile capability.
   const prepared = manifest.entries.map(entry => prepareMagnitudeEntry(entry, supportId));
   if (scheduled) {
@@ -94,6 +142,7 @@ export function createMagnitudeSessionController(manifest = MAGNITUDE_SESSION_MA
   let episode = admission.prepared[0].state;
   let installed = admission.prepared[0];
   const tickets = new WeakMap();
+  const rollbackTickets = new WeakMap();
   const current = () => ({ session: snapshot, episode, installed, manifest: admission.manifest });
   const updateEpisode = (expected, next) => {
     if (!snapshot.active || episode !== expected || !next || next.taskContext?.itemId !== admission.manifest.entries[snapshot.index].itemId
@@ -120,8 +169,20 @@ export function createMagnitudeSessionController(manifest = MAGNITUDE_SESSION_MA
     if (!transaction) return false;
     tickets.delete(ticket);
     if (!snapshot.active || transaction.snapshot !== snapshot || transaction.episode !== episode) return false;
+    const previous = { snapshot, episode, installed };
     installed = transaction.candidate; episode = installed.state;
     snapshot = deepFreeze({ ...snapshot, index: transaction.index, generation: snapshot.generation + 1 });
+    rollbackTickets.set(ticket, { previous, committed: snapshot, episode });
+    return true;
+  };
+  const rollback = ticket => {
+    const transaction = ticket && rollbackTickets.get(ticket);
+    if (!transaction) return false;
+    rollbackTickets.delete(ticket);
+    if (snapshot !== transaction.committed || episode !== transaction.episode) return false;
+    episode = transaction.previous.episode;
+    installed = transaction.previous.installed;
+    snapshot = deepFreeze({ ...transaction.previous.snapshot, generation: snapshot.generation + 1 });
     return true;
   };
   const exit = expected => {
@@ -129,7 +190,7 @@ export function createMagnitudeSessionController(manifest = MAGNITUDE_SESSION_MA
     snapshot = deepFreeze({ ...snapshot, active: false, generation: snapshot.generation + 1 });
     episode = null; installed = null; return true;
   };
-  const controller = Object.freeze({ current, updateEpisode, prepareTransition, commit, exit });
+  const controller = Object.freeze({ current, updateEpisode, prepareTransition, commit, rollback, exit });
   controllers.set(controller, current);
   return controller;
 }

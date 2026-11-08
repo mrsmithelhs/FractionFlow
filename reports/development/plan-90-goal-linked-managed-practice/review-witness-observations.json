@@ -1,0 +1,93 @@
+{
+  "browser": "157.0.8103.38",
+  "method": "Review-only synthetic eligibility injected through the real Start control; not production fit.",
+  "runs": [
+    {
+      "width": 360,
+      "height": 740,
+      "view": "visual",
+      "textScale": "100% CSS root",
+      "ids": [
+        "plan45-compare-02",
+        "plan45-compare-09",
+        "plan45-compare-10",
+        "distance-01"
+      ],
+      "finished": true,
+      "eligibility": "synthetic all eligible"
+    },
+    {
+      "width": 360,
+      "height": 740,
+      "view": "linear",
+      "textScale": "100% CSS root",
+      "ids": [
+        "plan45-compare-02",
+        "plan45-compare-09",
+        "plan45-compare-10",
+        "distance-01"
+      ],
+      "finished": true,
+      "eligibility": "synthetic all eligible"
+    },
+    {
+      "width": 360,
+      "height": 740,
+      "view": "visual",
+      "textScale": "200% CSS root",
+      "ids": [
+        "plan45-compare-02",
+        "plan45-compare-09",
+        "plan45-compare-10",
+        "distance-01"
+      ],
+      "finished": true,
+      "eligibility": "synthetic all eligible"
+    },
+    {
+      "width": 360,
+      "height": 740,
+      "view": "linear",
+      "textScale": "200% CSS root",
+      "ids": [
+        "plan45-compare-02",
+        "plan45-compare-09",
+        "plan45-compare-10",
+        "distance-01"
+      ],
+      "finished": true,
+      "eligibility": "synthetic all eligible"
+    },
+    {
+      "width": 1093,
+      "height": 740,
+      "view": "visual",
+      "textScale": "100% CSS root",
+      "ids": [
+        "plan45-compare-02",
+        "plan45-compare-09",
+        "plan45-compare-10",
+        "distance-01"
+      ],
+      "finished": true,
+      "eligibility": "synthetic all eligible"
+    },
+    {
+      "width": 1093,
+      "height": 740,
+      "view": "linear",
+      "textScale": "100% CSS root",
+      "ids": [
+        "plan45-compare-02",
+        "plan45-compare-09",
+        "plan45-compare-10",
+        "distance-01"
+      ],
+      "finished": true,
+      "eligibility": "synthetic all eligible"
+    }
+  ],
+  "emptyNotice": "No practice fits this screen right now. Try a larger window or smaller text, or choose another practice.",
+  "rollback": "Forced post-mount Retry failure restored the same item, helper draft, focus to notice and editable input; a later Retry succeeded. Forced post-mount Next failure retained the completed item and focused the notice; a later Next succeeded.",
+  "errors": []
+}

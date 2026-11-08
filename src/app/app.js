@@ -566,12 +566,13 @@ export function createFractionFlowApp({
     sessionEntryNotice.textContent = 'This practice could not be displayed. Please try again or choose another practice.';
     setHidden(sessionEntryNotice, false); sessionEntryNotice.focus();
   }
-  function installSessionCurrent() {
+  function installSessionCurrent({ propagateFailure = false } = {}) {
     const current = magnitudeSession.current();
     try {
       sessionTestHooks.display?.(current);
       installFreshEpisode(current.installed.type, current.installed.itemIndex, current.episode, { focusEpisode: true });
-    } catch { sessionDisplayFailure(); }
+      sessionTestHooks.afterDisplay?.(current);
+    } catch (error) { if (propagateFailure) throw error; sessionDisplayFailure(); }
   }
   function startMagnitudeSession(manifest = MAGNITUDE_SESSION_MANIFEST, { quiet = false, preflightAll = false } = {}) {
     try {
@@ -597,7 +598,7 @@ export function createFractionFlowApp({
         const candidate = sessionTestHooks.selectManifest(input);
         if (candidate && startMagnitudeSession(candidate, { quiet: true, preflightAll: true })) return;
       } catch { /* Refuse instead of falling back to unverified items. */ }
-      sessionEntryNotice.textContent = 'This practice could not be opened. Please try again or choose another practice.';
+      sessionEntryNotice.textContent = sessionTestHooks.unavailableNotice ?? 'This practice could not be opened. Please try again or choose another practice.';
       setHidden(sessionEntryNotice, false); sessionEntryNotice.focus(); return;
     }
     let manifest;
@@ -620,7 +621,26 @@ export function createFractionFlowApp({
         navigationNotice.textContent = kind === 'restart' ? STRINGS.app.sessionRestartUnavailable : STRINGS.app.sessionNextUnavailable;
         setHidden(navigationNotice, false); focusNavigationNotice(); return;
       }
-      installSessionCurrent();
+      if (magnitudeSession.current().manifest.id !== 'plan90-comparison-distance-review') {
+        installSessionCurrent();
+        return;
+      }
+      // Review path only: keep the active episode and its task-local drafts
+      // until the new mount succeeds. Ordinary Start is not wired to this path.
+      const prior = { state, selectedPracticeType, activePracticeItemIndex, comparisonDraft,
+        comparisonConstructionDrafts, comparisonHelpOpen, distanceDraft, distanceHelpOpen,
+        distanceRefusal, distanceFocus, activityNotice, isReplaying };
+      try { installSessionCurrent({ propagateFailure: true }); }
+      catch {
+        if (!magnitudeSession.rollback(prepared.ticket)) throw new Error('session rollback failed');
+        ({ state, selectedPracticeType, activePracticeItemIndex, comparisonDraft,
+          comparisonConstructionDrafts, comparisonHelpOpen, distanceDraft, distanceHelpOpen,
+          distanceRefusal, distanceFocus, activityNotice, isReplaying } = prior);
+        currentEpisodeGeneration += 1;
+        navigationRefusal = true;
+        navigationNotice.textContent = kind === 'restart' ? STRINGS.app.sessionRestartUnavailable : STRINGS.app.sessionNextUnavailable;
+        render(); setHidden(navigationNotice, false); focusNavigationNotice();
+      }
     } finally { isTransitioning = false; }
   }
   function leaveMagnitudeSession(destination = null) {

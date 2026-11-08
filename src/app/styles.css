@@ -1040,7 +1040,7 @@ body,
 .plan51-response.plan45-response-region { display: grid; justify-items: center; }
 .plan51-distance .plan45-relation-options { flex-wrap: wrap; }
 .plan51-field { display: grid; gap: 0.25rem; }
-.plan51-field input { min-height: 44px; width: 8rem; max-width: 100%; font: inherit; }
+.plan51-field input { min-height: 44px; width: 8rem; max-width: 100%; box-sizing: border-box; font: inherit; }
 .plan51-between { outline: 3px solid #5948a2; outline-offset: -3px; }
 .plan51-distance .plan45-model-pair { display: grid; grid-template-columns: minmax(0, 1fr); gap: 0.75rem; width: 100%; }
 .plan51-distance button { min-height: 44px; padding: 0.6rem 1rem; border: 1px solid var(--app-border); border-radius: 0.5rem; background: var(--app-surface); color: var(--app-ink); font: inherit; font-weight: 700; cursor: pointer; }
