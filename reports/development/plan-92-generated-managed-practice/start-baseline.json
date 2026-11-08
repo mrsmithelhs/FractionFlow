@@ -1,0 +1,70 @@
+{
+  "method": "Existing Plan 90 ordinary Start, seed 3 U1 identify/inspect/construct; full existing selector, preflight, install and fit checks; fresh Chrome contexts, cache disabled, 1365x768 and 4x CPU slowdown. Test preview uses instant-test presentation; not Plan 92 generated Start or physical Chromebook. Navigation includes Vite cold transformation.",
+  "browser": "157.0.8103.38",
+  "runs": [
+    {
+      "sample": 0,
+      "readyMs": 12403.4876,
+      "ms": 433.59999999403954,
+      "item": "plan40-identify-one-half-one-eighth-8",
+      "active": true,
+      "remainingScratch": 0
+    },
+    {
+      "sample": 1,
+      "readyMs": 697.648500000003,
+      "ms": 407.29999999701977,
+      "item": "plan40-identify-one-half-one-eighth-8",
+      "active": true,
+      "remainingScratch": 0
+    },
+    {
+      "sample": 2,
+      "readyMs": 853.9226000000017,
+      "ms": 423.79999999701977,
+      "item": "plan40-identify-one-half-one-eighth-8",
+      "active": true,
+      "remainingScratch": 0
+    },
+    {
+      "sample": 3,
+      "readyMs": 749.1140000000014,
+      "ms": 415.29999999701977,
+      "item": "plan40-identify-one-half-one-eighth-8",
+      "active": true,
+      "remainingScratch": 0
+    },
+    {
+      "sample": 4,
+      "readyMs": 731.7416000000012,
+      "ms": 460.1000000089407,
+      "item": "plan40-identify-one-half-one-eighth-8",
+      "active": true,
+      "remainingScratch": 0
+    },
+    {
+      "sample": 5,
+      "readyMs": 712.1169000000009,
+      "ms": 418.70000000298023,
+      "item": "plan40-identify-one-half-one-eighth-8",
+      "active": true,
+      "remainingScratch": 0
+    },
+    {
+      "sample": 6,
+      "readyMs": 717.2304000000004,
+      "ms": 446,
+      "item": "plan40-identify-one-half-one-eighth-8",
+      "active": true,
+      "remainingScratch": 0
+    },
+    {
+      "sample": 7,
+      "readyMs": 708.7597999999998,
+      "ms": 441.6000000089407,
+      "item": "plan40-identify-one-half-one-eighth-8",
+      "active": true,
+      "remainingScratch": 0
+    }
+  ]
+}

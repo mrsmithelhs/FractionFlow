@@ -1,0 +1,214 @@
+{
+  "method": "Cold fresh Chrome context, cache disabled, 1365x768, fourfold CPU slowdown; report-local four-item Plan 90 prepare and inert scratch mount, not Plan 92 integrated Start or physical Chromebook. Navigation-to-ready includes harness/network. Eight samples are exploratory, not a performance guarantee.",
+  "browser": "157.0.8103.38",
+  "runs": [
+    {
+      "sample": 0,
+      "readyMs": 12384.2372,
+      "preflight": {
+        "events": [
+          {
+            "item": "plan45-compare-02",
+            "ms": 47.5
+          },
+          {
+            "item": "plan40-identify-one-half-one-eighth-8",
+            "ms": 119.20000000298023
+          },
+          {
+            "item": "plan40-inspect-two-thirds-one-fourth-12",
+            "ms": 99.3999999910593
+          },
+          {
+            "item": "plan40-construct-half-fifth-10",
+            "ms": 18.5
+          }
+        ],
+        "totalMs": 284.79999999701977,
+        "scratchRemaining": 0
+      }
+    },
+    {
+      "sample": 1,
+      "readyMs": 694.3158000000003,
+      "preflight": {
+        "events": [
+          {
+            "item": "plan45-compare-02",
+            "ms": 45.1000000089407
+          },
+          {
+            "item": "plan40-identify-one-half-one-eighth-8",
+            "ms": 84.5
+          },
+          {
+            "item": "plan40-inspect-two-thirds-one-fourth-12",
+            "ms": 69
+          },
+          {
+            "item": "plan40-construct-half-fifth-10",
+            "ms": 20.099999994039536
+          }
+        ],
+        "totalMs": 218.90000000596046,
+        "scratchRemaining": 0
+      }
+    },
+    {
+      "sample": 2,
+      "readyMs": 730.8616000000002,
+      "preflight": {
+        "events": [
+          {
+            "item": "plan45-compare-02",
+            "ms": 42.79999999701977
+          },
+          {
+            "item": "plan40-identify-one-half-one-eighth-8",
+            "ms": 86.20000000298023
+          },
+          {
+            "item": "plan40-inspect-two-thirds-one-fourth-12",
+            "ms": 67.79999999701977
+          },
+          {
+            "item": "plan40-construct-half-fifth-10",
+            "ms": 14.900000005960464
+          }
+        ],
+        "totalMs": 212,
+        "scratchRemaining": 0
+      }
+    },
+    {
+      "sample": 3,
+      "readyMs": 728.875,
+      "preflight": {
+        "events": [
+          {
+            "item": "plan45-compare-02",
+            "ms": 51.79999999701977
+          },
+          {
+            "item": "plan40-identify-one-half-one-eighth-8",
+            "ms": 101.20000000298023
+          },
+          {
+            "item": "plan40-inspect-two-thirds-one-fourth-12",
+            "ms": 71.09999999403954
+          },
+          {
+            "item": "plan40-construct-half-fifth-10",
+            "ms": 24.100000008940697
+          }
+        ],
+        "totalMs": 248.5,
+        "scratchRemaining": 0
+      }
+    },
+    {
+      "sample": 4,
+      "readyMs": 674.4546000000009,
+      "preflight": {
+        "events": [
+          {
+            "item": "plan45-compare-02",
+            "ms": 45.099999994039536
+          },
+          {
+            "item": "plan40-identify-one-half-one-eighth-8",
+            "ms": 90.79999999701977
+          },
+          {
+            "item": "plan40-inspect-two-thirds-one-fourth-12",
+            "ms": 69.40000000596046
+          },
+          {
+            "item": "plan40-construct-half-fifth-10",
+            "ms": 18.399999991059303
+          }
+        ],
+        "totalMs": 223.8999999910593,
+        "scratchRemaining": 0
+      }
+    },
+    {
+      "sample": 5,
+      "readyMs": 686.5462000000007,
+      "preflight": {
+        "events": [
+          {
+            "item": "plan45-compare-02",
+            "ms": 41.6000000089407
+          },
+          {
+            "item": "plan40-identify-one-half-one-eighth-8",
+            "ms": 88.69999998807907
+          },
+          {
+            "item": "plan40-inspect-two-thirds-one-fourth-12",
+            "ms": 65.29999999701977
+          },
+          {
+            "item": "plan40-construct-half-fifth-10",
+            "ms": 17.700000002980232
+          }
+        ],
+        "totalMs": 213.6000000089407,
+        "scratchRemaining": 0
+      }
+    },
+    {
+      "sample": 6,
+      "readyMs": 683.1085999999996,
+      "preflight": {
+        "events": [
+          {
+            "item": "plan45-compare-02",
+            "ms": 48.8999999910593
+          },
+          {
+            "item": "plan40-identify-one-half-one-eighth-8",
+            "ms": 90.1000000089407
+          },
+          {
+            "item": "plan40-inspect-two-thirds-one-fourth-12",
+            "ms": 78.09999999403954
+          },
+          {
+            "item": "plan40-construct-half-fifth-10",
+            "ms": 24.900000005960464
+          }
+        ],
+        "totalMs": 242.3999999910593,
+        "scratchRemaining": 0
+      }
+    },
+    {
+      "sample": 7,
+      "readyMs": 792.8125,
+      "preflight": {
+        "events": [
+          {
+            "item": "plan45-compare-02",
+            "ms": 47.099999994039536
+          },
+          {
+            "item": "plan40-identify-one-half-one-eighth-8",
+            "ms": 92.70000000298023
+          },
+          {
+            "item": "plan40-inspect-two-thirds-one-fourth-12",
+            "ms": 75.29999999701977
+          },
+          {
+            "item": "plan40-construct-half-fifth-10",
+            "ms": 18.80000001192093
+          }
+        ],
+        "totalMs": 234.09999999403954,
+        "scratchRemaining": 0
+      }
+    }
+  ]
+}

@@ -1,0 +1,943 @@
+{
+  "schema": "ff92-candidate-ledger@1",
+  "generatedBy": "candidate-ledger.mjs",
+  "scope": "Plan 92 proposed fit-worker first batch; registry/task-contract reconciliation only",
+  "claims": {
+    "registeredAndExactMathValidated": true,
+    "managedFitMeasured": false,
+    "admissionApproved": false
+  },
+  "batchOrder": {
+    "C": [
+      "plan45-compare-02",
+      "plan45-compare-09",
+      "plan45-compare-10"
+    ],
+    "I": [
+      "plan40-identify-one-half-one-eighth-8",
+      "plan40-identify-two-thirds-five-twelfths-12",
+      "plan76-identify-seven-eighths-one-fourth-8"
+    ],
+    "S": [
+      "plan40-inspect-two-thirds-one-fourth-12",
+      "plan76-inspect-three-fourths-one-fifth-20"
+    ],
+    "T": [
+      "plan40-construct-half-fifth-10",
+      "plan40-construct-five-sixths-three-eighths-24",
+      "plan76-construct-five-sixths-one-tenth-30"
+    ]
+  },
+  "entries": [
+    {
+      "role": "C",
+      "identity": {
+        "typeId": "symbolic-fraction-comparison",
+        "setId": "symbolic-fraction-comparison-vetted-set",
+        "setRevision": "1",
+        "itemId": "plan45-compare-02",
+        "itemRevision": "plan45-record-v1",
+        "authoringRevision": "plan45-record-v1",
+        "definitionId": "phase-4-symbolic-fraction-comparison",
+        "definitionRevision": "2",
+        "underlyingDefinitionRevision": "1",
+        "recipeId": "symbolic-fraction-comparison",
+        "recipeRevision": "1",
+        "taskDataId": "plan45-symbolic-fraction-comparison-task-data",
+        "taskDataRevision": "1"
+      },
+      "sourceForms": {
+        "first": {
+          "numerator": "5",
+          "denominator": "8"
+        },
+        "second": {
+          "numerator": "3",
+          "denominator": "8"
+        }
+      },
+      "exact": {
+        "relation": ">",
+        "canonicalUnorderedKey": [
+          {
+            "numerator": "3",
+            "denominator": "8"
+          },
+          {
+            "numerator": "5",
+            "denominator": "8"
+          }
+        ]
+      },
+      "decision": {
+        "cueId": "compare.same-denominator",
+        "hintContext": {
+          "kind": "same-denominator",
+          "denominator": "8"
+        },
+        "structure": "same-denominator"
+      },
+      "taskContract": {
+        "response": "select <, =, or >; exact relation derived above",
+        "helpCue": "compare.same-denominator"
+      }
+    },
+    {
+      "role": "C",
+      "identity": {
+        "typeId": "symbolic-fraction-comparison",
+        "setId": "symbolic-fraction-comparison-vetted-set",
+        "setRevision": "1",
+        "itemId": "plan45-compare-09",
+        "itemRevision": "plan45-record-v1",
+        "authoringRevision": "plan45-record-v1",
+        "definitionId": "phase-4-symbolic-fraction-comparison",
+        "definitionRevision": "2",
+        "underlyingDefinitionRevision": "1",
+        "recipeId": "symbolic-fraction-comparison",
+        "recipeRevision": "1",
+        "taskDataId": "plan45-symbolic-fraction-comparison-task-data",
+        "taskDataRevision": "1"
+      },
+      "sourceForms": {
+        "first": {
+          "numerator": "3",
+          "denominator": "5"
+        },
+        "second": {
+          "numerator": "3",
+          "denominator": "7"
+        }
+      },
+      "exact": {
+        "relation": ">",
+        "canonicalUnorderedKey": [
+          {
+            "numerator": "3",
+            "denominator": "5"
+          },
+          {
+            "numerator": "3",
+            "denominator": "7"
+          }
+        ]
+      },
+      "decision": {
+        "cueId": "compare.same-count-unit-size",
+        "hintContext": {
+          "kind": "same-count-unit-size",
+          "numerator": "3"
+        },
+        "structure": "same-count-unit-size"
+      },
+      "taskContract": {
+        "response": "select <, =, or >; exact relation derived above",
+        "helpCue": "compare.same-count-unit-size"
+      }
+    },
+    {
+      "role": "C",
+      "identity": {
+        "typeId": "symbolic-fraction-comparison",
+        "setId": "symbolic-fraction-comparison-vetted-set",
+        "setRevision": "1",
+        "itemId": "plan45-compare-10",
+        "itemRevision": "plan45-record-v1",
+        "authoringRevision": "plan45-record-v1",
+        "definitionId": "phase-4-symbolic-fraction-comparison",
+        "definitionRevision": "2",
+        "underlyingDefinitionRevision": "1",
+        "recipeId": "symbolic-fraction-comparison",
+        "recipeRevision": "1",
+        "taskDataId": "plan45-symbolic-fraction-comparison-task-data",
+        "taskDataRevision": "1"
+      },
+      "sourceForms": {
+        "first": {
+          "numerator": "3",
+          "denominator": "8"
+        },
+        "second": {
+          "numerator": "5",
+          "denominator": "9"
+        }
+      },
+      "exact": {
+        "relation": "<",
+        "canonicalUnorderedKey": [
+          {
+            "numerator": "3",
+            "denominator": "8"
+          },
+          {
+            "numerator": "5",
+            "denominator": "9"
+          }
+        ]
+      },
+      "decision": {
+        "cueId": "compare.half-benchmark",
+        "hintContext": {
+          "kind": "half-benchmark",
+          "benchmark": "half"
+        },
+        "structure": "half-benchmark"
+      },
+      "taskContract": {
+        "response": "select <, =, or >; exact relation derived above",
+        "helpCue": "compare.half-benchmark"
+      }
+    },
+    {
+      "role": "I",
+      "identity": {
+        "setId": "unlike-subtraction-vetted-set",
+        "setRevision": "2",
+        "itemId": "plan40-identify-one-half-one-eighth-8",
+        "fixtureId": "curated-plan40-identify-one-half-one-eighth",
+        "authoringRevision": "plan40-record-v1",
+        "definitionId": "phase-3-reusable-subtraction-recipes",
+        "definitionRevision": "1",
+        "recipeId": "unlike-subtraction.identify-side-construct",
+        "patternRevision": "1",
+        "taskDataId": "plan40-subtraction-recipe-task-data",
+        "taskDataRevision": "1",
+        "stimulusId": null,
+        "stimulusRevision": null
+      },
+      "sourceForms": {
+        "left": {
+          "kind": "fraction",
+          "numerator": "1",
+          "denominator": "2"
+        },
+        "right": {
+          "kind": "fraction",
+          "numerator": "1",
+          "denominator": "8"
+        }
+      },
+      "targetDenominator": "8",
+      "exact": {
+        "canonicalProblemKey": "1/2-1/8",
+        "difference": {
+          "numerator": "3",
+          "denominator": "8"
+        }
+      },
+      "structure": {
+        "denominatorRelation": "nested",
+        "gcd": "2",
+        "leastCommonDenominator": "8",
+        "targetDenominator": "8",
+        "scaleFactors": {
+          "left": "4",
+          "right": "1"
+        },
+        "convertedForms": {
+          "left": {
+            "numerator": "4",
+            "denominator": "8"
+          },
+          "right": {
+            "numerator": "1",
+            "denominator": "8"
+          }
+        },
+        "exactDifference": {
+          "numerator": "3",
+          "denominator": "8"
+        }
+      },
+      "decision": {
+        "requiredSide": "left",
+        "convertedSide": "left",
+        "untouchedSide": "right",
+        "untouchedAlreadyAtTarget": true,
+        "action": "identify the operand needing equivalent common-unit renaming"
+      },
+      "taskContract": {
+        "requiredSides": [
+          "left"
+        ],
+        "candidates": null,
+        "standaloneContextValidated": true,
+        "managedFit": "not measured"
+      }
+    },
+    {
+      "role": "I",
+      "identity": {
+        "setId": "unlike-subtraction-vetted-set",
+        "setRevision": "2",
+        "itemId": "plan40-identify-two-thirds-five-twelfths-12",
+        "fixtureId": "curated-plan40-identify-two-thirds-five-twelfths",
+        "authoringRevision": "plan40-record-v1",
+        "definitionId": "phase-3-reusable-subtraction-recipes",
+        "definitionRevision": "1",
+        "recipeId": "unlike-subtraction.identify-side-construct",
+        "patternRevision": "1",
+        "taskDataId": "plan40-subtraction-recipe-task-data",
+        "taskDataRevision": "1",
+        "stimulusId": null,
+        "stimulusRevision": null
+      },
+      "sourceForms": {
+        "left": {
+          "kind": "fraction",
+          "numerator": "2",
+          "denominator": "3"
+        },
+        "right": {
+          "kind": "fraction",
+          "numerator": "5",
+          "denominator": "12"
+        }
+      },
+      "targetDenominator": "12",
+      "exact": {
+        "canonicalProblemKey": "2/3-5/12",
+        "difference": {
+          "numerator": "3",
+          "denominator": "12"
+        }
+      },
+      "structure": {
+        "denominatorRelation": "nested",
+        "gcd": "3",
+        "leastCommonDenominator": "12",
+        "targetDenominator": "12",
+        "scaleFactors": {
+          "left": "4",
+          "right": "1"
+        },
+        "convertedForms": {
+          "left": {
+            "numerator": "8",
+            "denominator": "12"
+          },
+          "right": {
+            "numerator": "5",
+            "denominator": "12"
+          }
+        },
+        "exactDifference": {
+          "numerator": "3",
+          "denominator": "12"
+        }
+      },
+      "decision": {
+        "requiredSide": "left",
+        "convertedSide": "left",
+        "untouchedSide": "right",
+        "untouchedAlreadyAtTarget": true,
+        "action": "identify the operand needing equivalent common-unit renaming"
+      },
+      "taskContract": {
+        "requiredSides": [
+          "left"
+        ],
+        "candidates": null,
+        "standaloneContextValidated": true,
+        "managedFit": "not measured"
+      }
+    },
+    {
+      "role": "I",
+      "identity": {
+        "setId": "unlike-subtraction-vetted-set",
+        "setRevision": "2",
+        "itemId": "plan76-identify-seven-eighths-one-fourth-8",
+        "fixtureId": "curated-plan76-identify-seven-eighths-one-fourth-8",
+        "authoringRevision": "plan76-record-v1",
+        "definitionId": "phase-3-reusable-subtraction-recipes",
+        "definitionRevision": "1",
+        "recipeId": "unlike-subtraction.identify-side-construct",
+        "patternRevision": "1",
+        "taskDataId": "plan40-subtraction-recipe-task-data",
+        "taskDataRevision": "1",
+        "stimulusId": null,
+        "stimulusRevision": null
+      },
+      "sourceForms": {
+        "left": {
+          "kind": "fraction",
+          "numerator": "7",
+          "denominator": "8"
+        },
+        "right": {
+          "kind": "fraction",
+          "numerator": "1",
+          "denominator": "4"
+        }
+      },
+      "targetDenominator": "8",
+      "exact": {
+        "canonicalProblemKey": "7/8-1/4",
+        "difference": {
+          "numerator": "5",
+          "denominator": "8"
+        }
+      },
+      "structure": {
+        "denominatorRelation": "nested",
+        "gcd": "4",
+        "leastCommonDenominator": "8",
+        "targetDenominator": "8",
+        "scaleFactors": {
+          "left": "1",
+          "right": "2"
+        },
+        "convertedForms": {
+          "left": {
+            "numerator": "7",
+            "denominator": "8"
+          },
+          "right": {
+            "numerator": "2",
+            "denominator": "8"
+          }
+        },
+        "exactDifference": {
+          "numerator": "5",
+          "denominator": "8"
+        }
+      },
+      "decision": {
+        "requiredSide": "right",
+        "convertedSide": "right",
+        "untouchedSide": "left",
+        "untouchedAlreadyAtTarget": true,
+        "action": "identify the operand needing equivalent common-unit renaming"
+      },
+      "taskContract": {
+        "requiredSides": [
+          "right"
+        ],
+        "candidates": null,
+        "standaloneContextValidated": true,
+        "managedFit": "not measured"
+      }
+    },
+    {
+      "role": "S",
+      "identity": {
+        "setId": "unlike-subtraction-vetted-set",
+        "setRevision": "2",
+        "itemId": "plan40-inspect-two-thirds-one-fourth-12",
+        "fixtureId": "curated-plan40-inspect-two-thirds-one-fourth",
+        "authoringRevision": "plan40-record-v1",
+        "definitionId": "phase-3-reusable-subtraction-recipes",
+        "definitionRevision": "1",
+        "recipeId": "unlike-subtraction.inspect-keep-repair",
+        "patternRevision": "1",
+        "taskDataId": "plan40-subtraction-recipe-task-data",
+        "taskDataRevision": "1",
+        "stimulusId": "plan40-stim-inspect-two-thirds-one-fourth-12",
+        "stimulusRevision": "1"
+      },
+      "sourceForms": {
+        "left": {
+          "kind": "fraction",
+          "numerator": "2",
+          "denominator": "3"
+        },
+        "right": {
+          "kind": "fraction",
+          "numerator": "1",
+          "denominator": "4"
+        }
+      },
+      "targetDenominator": "12",
+      "exact": {
+        "canonicalProblemKey": "2/3-1/4",
+        "difference": {
+          "numerator": "5",
+          "denominator": "12"
+        }
+      },
+      "structure": {
+        "denominatorRelation": "coprime",
+        "gcd": "1",
+        "leastCommonDenominator": "12",
+        "targetDenominator": "12",
+        "scaleFactors": {
+          "left": "4",
+          "right": "3"
+        },
+        "convertedForms": {
+          "left": {
+            "numerator": "8",
+            "denominator": "12"
+          },
+          "right": {
+            "numerator": "3",
+            "denominator": "12"
+          }
+        },
+        "exactDifference": {
+          "numerator": "5",
+          "denominator": "12"
+        }
+      },
+      "decision": {
+        "offeredCandidates": {
+          "left": {
+            "kind": "fraction",
+            "numerator": "5",
+            "denominator": "12"
+          },
+          "right": {
+            "kind": "fraction",
+            "numerator": "3",
+            "denominator": "12"
+          }
+        },
+        "judgments": {
+          "left": "repair",
+          "right": "keep"
+        },
+        "action": "judge each offered equivalent form"
+      },
+      "taskContract": {
+        "requiredSides": [
+          "left",
+          "right"
+        ],
+        "candidates": {
+          "left": {
+            "kind": "fraction",
+            "numerator": "5",
+            "denominator": "12"
+          },
+          "right": {
+            "kind": "fraction",
+            "numerator": "3",
+            "denominator": "12"
+          }
+        },
+        "standaloneContextValidated": true,
+        "managedFit": "not measured"
+      }
+    },
+    {
+      "role": "S",
+      "identity": {
+        "setId": "unlike-subtraction-vetted-set",
+        "setRevision": "2",
+        "itemId": "plan76-inspect-three-fourths-one-fifth-20",
+        "fixtureId": "curated-plan76-inspect-three-fourths-one-fifth-20",
+        "authoringRevision": "plan76-record-v1",
+        "definitionId": "phase-3-reusable-subtraction-recipes",
+        "definitionRevision": "1",
+        "recipeId": "unlike-subtraction.inspect-keep-repair",
+        "patternRevision": "1",
+        "taskDataId": "plan40-subtraction-recipe-task-data",
+        "taskDataRevision": "1",
+        "stimulusId": "plan76-inspect-three-fourths-one-fifth-20-stimulus",
+        "stimulusRevision": "1"
+      },
+      "sourceForms": {
+        "left": {
+          "kind": "fraction",
+          "numerator": "3",
+          "denominator": "4"
+        },
+        "right": {
+          "kind": "fraction",
+          "numerator": "1",
+          "denominator": "5"
+        }
+      },
+      "targetDenominator": "20",
+      "exact": {
+        "canonicalProblemKey": "3/4-1/5",
+        "difference": {
+          "numerator": "11",
+          "denominator": "20"
+        }
+      },
+      "structure": {
+        "denominatorRelation": "coprime",
+        "gcd": "1",
+        "leastCommonDenominator": "20",
+        "targetDenominator": "20",
+        "scaleFactors": {
+          "left": "5",
+          "right": "4"
+        },
+        "convertedForms": {
+          "left": {
+            "numerator": "15",
+            "denominator": "20"
+          },
+          "right": {
+            "numerator": "4",
+            "denominator": "20"
+          }
+        },
+        "exactDifference": {
+          "numerator": "11",
+          "denominator": "20"
+        }
+      },
+      "decision": {
+        "offeredCandidates": {
+          "left": {
+            "kind": "fraction",
+            "numerator": "15",
+            "denominator": "20"
+          },
+          "right": {
+            "kind": "fraction",
+            "numerator": "5",
+            "denominator": "20"
+          }
+        },
+        "judgments": {
+          "left": "keep",
+          "right": "repair"
+        },
+        "action": "judge each offered equivalent form"
+      },
+      "taskContract": {
+        "requiredSides": [
+          "left",
+          "right"
+        ],
+        "candidates": {
+          "left": {
+            "kind": "fraction",
+            "numerator": "15",
+            "denominator": "20"
+          },
+          "right": {
+            "kind": "fraction",
+            "numerator": "5",
+            "denominator": "20"
+          }
+        },
+        "standaloneContextValidated": true,
+        "managedFit": "not measured"
+      }
+    },
+    {
+      "role": "T",
+      "identity": {
+        "setId": "unlike-subtraction-vetted-set",
+        "setRevision": "2",
+        "itemId": "plan40-construct-half-fifth-10",
+        "fixtureId": "curated-plan40-construct-one-half-one-fifth",
+        "authoringRevision": "plan40-record-v1",
+        "definitionId": "phase-3-reusable-subtraction-recipes",
+        "definitionRevision": "1",
+        "recipeId": "unlike-subtraction.construct-equivalent",
+        "patternRevision": "1",
+        "taskDataId": "plan40-subtraction-recipe-task-data",
+        "taskDataRevision": "1",
+        "stimulusId": null,
+        "stimulusRevision": null
+      },
+      "sourceForms": {
+        "left": {
+          "kind": "fraction",
+          "numerator": "1",
+          "denominator": "2"
+        },
+        "right": {
+          "kind": "fraction",
+          "numerator": "1",
+          "denominator": "5"
+        }
+      },
+      "targetDenominator": "10",
+      "exact": {
+        "canonicalProblemKey": "1/2-1/5",
+        "difference": {
+          "numerator": "3",
+          "denominator": "10"
+        }
+      },
+      "structure": {
+        "denominatorRelation": "coprime",
+        "gcd": "1",
+        "leastCommonDenominator": "10",
+        "targetDenominator": "10",
+        "scaleFactors": {
+          "left": "5",
+          "right": "2"
+        },
+        "convertedForms": {
+          "left": {
+            "numerator": "5",
+            "denominator": "10"
+          },
+          "right": {
+            "numerator": "2",
+            "denominator": "10"
+          }
+        },
+        "exactDifference": {
+          "numerator": "3",
+          "denominator": "10"
+        }
+      },
+      "decision": {
+        "action": "construct both equivalent common-unit forms, then subtract",
+        "constructionWork": {
+          "denominatorRelation": "coprime",
+          "gcd": "1",
+          "leastCommonDenominator": "10",
+          "targetDenominator": "10",
+          "scaleFactors": {
+            "left": "5",
+            "right": "2"
+          },
+          "convertedForms": {
+            "left": {
+              "numerator": "5",
+              "denominator": "10"
+            },
+            "right": {
+              "numerator": "2",
+              "denominator": "10"
+            }
+          },
+          "exactDifference": {
+            "numerator": "3",
+            "denominator": "10"
+          }
+        }
+      },
+      "taskContract": {
+        "requiredSides": [
+          "left",
+          "right"
+        ],
+        "candidates": null,
+        "standaloneContextValidated": true,
+        "managedFit": "not measured"
+      }
+    },
+    {
+      "role": "T",
+      "identity": {
+        "setId": "unlike-subtraction-vetted-set",
+        "setRevision": "2",
+        "itemId": "plan40-construct-five-sixths-three-eighths-24",
+        "fixtureId": "curated-shared-factor-subtraction",
+        "authoringRevision": "plan03-fixtures-v1",
+        "definitionId": "phase-3-reusable-subtraction-recipes",
+        "definitionRevision": "1",
+        "recipeId": "unlike-subtraction.construct-equivalent",
+        "patternRevision": "1",
+        "taskDataId": "plan40-subtraction-recipe-task-data",
+        "taskDataRevision": "1",
+        "stimulusId": null,
+        "stimulusRevision": null
+      },
+      "sourceForms": {
+        "left": {
+          "kind": "fraction",
+          "numerator": "5",
+          "denominator": "6"
+        },
+        "right": {
+          "kind": "fraction",
+          "numerator": "3",
+          "denominator": "8"
+        }
+      },
+      "targetDenominator": "24",
+      "exact": {
+        "canonicalProblemKey": "5/6-3/8",
+        "difference": {
+          "numerator": "11",
+          "denominator": "24"
+        }
+      },
+      "structure": {
+        "denominatorRelation": "shared-factor",
+        "gcd": "2",
+        "leastCommonDenominator": "24",
+        "targetDenominator": "24",
+        "scaleFactors": {
+          "left": "4",
+          "right": "3"
+        },
+        "convertedForms": {
+          "left": {
+            "numerator": "20",
+            "denominator": "24"
+          },
+          "right": {
+            "numerator": "9",
+            "denominator": "24"
+          }
+        },
+        "exactDifference": {
+          "numerator": "11",
+          "denominator": "24"
+        }
+      },
+      "decision": {
+        "action": "construct both equivalent common-unit forms, then subtract",
+        "constructionWork": {
+          "denominatorRelation": "shared-factor",
+          "gcd": "2",
+          "leastCommonDenominator": "24",
+          "targetDenominator": "24",
+          "scaleFactors": {
+            "left": "4",
+            "right": "3"
+          },
+          "convertedForms": {
+            "left": {
+              "numerator": "20",
+              "denominator": "24"
+            },
+            "right": {
+              "numerator": "9",
+              "denominator": "24"
+            }
+          },
+          "exactDifference": {
+            "numerator": "11",
+            "denominator": "24"
+          }
+        }
+      },
+      "taskContract": {
+        "requiredSides": [
+          "left",
+          "right"
+        ],
+        "candidates": null,
+        "standaloneContextValidated": true,
+        "managedFit": "not measured"
+      }
+    },
+    {
+      "role": "T",
+      "identity": {
+        "setId": "unlike-subtraction-vetted-set",
+        "setRevision": "2",
+        "itemId": "plan76-construct-five-sixths-one-tenth-30",
+        "fixtureId": "curated-plan76-construct-five-sixths-one-tenth-30",
+        "authoringRevision": "plan76-record-v1",
+        "definitionId": "phase-3-reusable-subtraction-recipes",
+        "definitionRevision": "1",
+        "recipeId": "unlike-subtraction.construct-equivalent",
+        "patternRevision": "1",
+        "taskDataId": "plan40-subtraction-recipe-task-data",
+        "taskDataRevision": "1",
+        "stimulusId": null,
+        "stimulusRevision": null
+      },
+      "sourceForms": {
+        "left": {
+          "kind": "fraction",
+          "numerator": "5",
+          "denominator": "6"
+        },
+        "right": {
+          "kind": "fraction",
+          "numerator": "1",
+          "denominator": "10"
+        }
+      },
+      "targetDenominator": "30",
+      "exact": {
+        "canonicalProblemKey": "5/6-1/10",
+        "difference": {
+          "numerator": "22",
+          "denominator": "30"
+        }
+      },
+      "structure": {
+        "denominatorRelation": "shared-factor",
+        "gcd": "2",
+        "leastCommonDenominator": "30",
+        "targetDenominator": "30",
+        "scaleFactors": {
+          "left": "5",
+          "right": "3"
+        },
+        "convertedForms": {
+          "left": {
+            "numerator": "25",
+            "denominator": "30"
+          },
+          "right": {
+            "numerator": "3",
+            "denominator": "30"
+          }
+        },
+        "exactDifference": {
+          "numerator": "22",
+          "denominator": "30"
+        }
+      },
+      "decision": {
+        "action": "construct both equivalent common-unit forms, then subtract",
+        "constructionWork": {
+          "denominatorRelation": "shared-factor",
+          "gcd": "2",
+          "leastCommonDenominator": "30",
+          "targetDenominator": "30",
+          "scaleFactors": {
+            "left": "5",
+            "right": "3"
+          },
+          "convertedForms": {
+            "left": {
+              "numerator": "25",
+              "denominator": "30"
+            },
+            "right": {
+              "numerator": "3",
+              "denominator": "30"
+            }
+          },
+          "exactDifference": {
+            "numerator": "22",
+            "denominator": "30"
+          }
+        }
+      },
+      "taskContract": {
+        "requiredSides": [
+          "left",
+          "right"
+        ],
+        "candidates": null,
+        "standaloneContextValidated": true,
+        "managedFit": "not measured"
+      }
+    }
+  ],
+  "structuralSummary": {
+    "C": [
+      "same-denominator",
+      "same-count-unit-size",
+      "half-benchmark"
+    ],
+    "I": [
+      "left",
+      "right"
+    ],
+    "S": [
+      "repair/keep",
+      "keep/repair"
+    ],
+    "T": [
+      "coprime",
+      "shared-factor"
+    ]
+  },
+  "shortfalls": [
+    "Three T candidates yield only two denominator-relation classes in this signature scheme (coprime and shared-factor); a third distinct common-unit decision structure is not demonstrated by denominator relation alone.",
+    "This ledger validates public record associations, exact math, and standalone task-context contracts; it contains no mounted visual/linear fit, help/feedback geometry, condition or support measurements.",
+    "Inspect contract requires exactly one correct offered form; the batch contains left-repair/right-keep and left-keep/right-repair, and no both-keep decision."
+  ]
+}

@@ -1,0 +1,21 @@
+import '../../../src/app/styles.css';
+import '../../../src/styles/render.css';
+import { createFractionFlowApp } from '../../../src/app/app.js';
+import { PLAN45_SYMBOLIC_COMPARISON_PRACTICE_TYPE } from '../../../src/app/practice-types.js';
+import { PLAN45_COMPARISON_RECORDS } from '../../../src/content/data/plan45-symbolic-fraction-comparison-records.js';
+
+const allowed = new Set(['plan45-compare-02', 'plan45-compare-09', 'plan45-compare-10']);
+const params = new URLSearchParams(location.search);
+const itemId = params.get('item'), supportId = params.get('support'), view = params.get('view');
+if (!allowed.has(itemId) || !['high-support', 'medium-support'].includes(supportId) || !['visual', 'linear'].includes(view)) throw new Error('Expected an exact Plan 92 comparison candidate, support and view.');
+const base = PLAN45_SYMBOLIC_COMPARISON_PRACTICE_TYPE;
+const item = base.items.find(candidate => candidate.id === itemId);
+if (!item) throw new Error(`Public comparison route does not contain ${itemId}.`);
+const app = createFractionFlowApp({ root: document.querySelector('#app'), practiceTypes: [Object.freeze({ ...base, items: Object.freeze([item]) })], presentationMode: 'instant-test' }).mount();
+document.querySelector('.app-gear-button')?.click();
+document.querySelector(`[data-support-id="${supportId}"]`)?.click();
+const chooser = document.querySelector('[data-entry-chooser]');
+if (chooser?.getAttribute('aria-expanded') === 'false') chooser.click();
+document.querySelector(`[data-entry-role="browse"][data-practice-type="${base.id}"]`)?.click();
+if (view === 'linear') document.querySelector('.app-view-toggle')?.click();
+window.fit92 = { app, record: PLAN45_COMPARISON_RECORDS.find(record => record.itemId === itemId), itemId, supportId, view };

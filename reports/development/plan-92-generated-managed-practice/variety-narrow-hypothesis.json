@@ -1,0 +1,602 @@
+{
+  "scope": "Synthetic narrower pool, NOT measured fit or real sequential Starts; same first-batch inputs with four candidates excluded. It cannot establish the packet narrow measured-pool requirement.",
+  "excluded": [
+    "plan45-compare-10",
+    "plan40-identify-two-thirds-five-twelfths-12",
+    "plan76-inspect-three-fourths-one-fifth-20",
+    "plan76-construct-five-sixths-one-tenth-30"
+  ],
+  "runs": [
+    {
+      "seed": 0,
+      "shape": "C-I-S-T",
+      "ids": [
+        "plan45-compare-02",
+        "plan76-identify-seven-eighths-one-fourth-8",
+        "plan40-inspect-two-thirds-one-fourth-12",
+        "plan40-construct-half-fifth-10"
+      ]
+    },
+    {
+      "seed": 1,
+      "shape": "C-S-T",
+      "ids": [
+        "plan45-compare-02",
+        "plan40-inspect-two-thirds-one-fourth-12",
+        "plan40-construct-half-fifth-10"
+      ]
+    },
+    {
+      "seed": 2,
+      "shape": "C-S-T",
+      "ids": [
+        "plan45-compare-02",
+        "plan40-inspect-two-thirds-one-fourth-12",
+        "plan40-construct-half-fifth-10"
+      ]
+    },
+    {
+      "seed": 3,
+      "shape": "C-I-S-T",
+      "ids": [
+        "plan45-compare-09",
+        "plan40-identify-one-half-one-eighth-8",
+        "plan40-inspect-two-thirds-one-fourth-12",
+        "plan40-construct-half-fifth-10"
+      ]
+    },
+    {
+      "seed": 4,
+      "shape": "C-I-T",
+      "ids": [
+        "plan45-compare-09",
+        "plan76-identify-seven-eighths-one-fourth-8",
+        "plan40-construct-five-sixths-three-eighths-24"
+      ]
+    },
+    {
+      "seed": 5,
+      "shape": "C-S-T",
+      "ids": [
+        "plan45-compare-02",
+        "plan40-inspect-two-thirds-one-fourth-12",
+        "plan40-construct-half-fifth-10"
+      ]
+    },
+    {
+      "seed": 6,
+      "shape": "C-I-S-T",
+      "ids": [
+        "plan45-compare-09",
+        "plan40-identify-one-half-one-eighth-8",
+        "plan40-inspect-two-thirds-one-fourth-12",
+        "plan40-construct-half-fifth-10"
+      ]
+    },
+    {
+      "seed": 7,
+      "shape": "C-I-S-T",
+      "ids": [
+        "plan45-compare-02",
+        "plan40-identify-one-half-one-eighth-8",
+        "plan40-inspect-two-thirds-one-fourth-12",
+        "plan40-construct-half-fifth-10"
+      ]
+    },
+    {
+      "seed": 8,
+      "shape": "C-I-S-T",
+      "ids": [
+        "plan45-compare-09",
+        "plan40-identify-one-half-one-eighth-8",
+        "plan40-inspect-two-thirds-one-fourth-12",
+        "plan40-construct-half-fifth-10"
+      ]
+    },
+    {
+      "seed": 9,
+      "shape": "C-S-T",
+      "ids": [
+        "plan45-compare-02",
+        "plan40-inspect-two-thirds-one-fourth-12",
+        "plan40-construct-half-fifth-10"
+      ]
+    },
+    {
+      "seed": 10,
+      "shape": "C-I-T",
+      "ids": [
+        "plan45-compare-02",
+        "plan76-identify-seven-eighths-one-fourth-8",
+        "plan40-construct-five-sixths-three-eighths-24"
+      ]
+    },
+    {
+      "seed": 11,
+      "shape": "C-S-T",
+      "ids": [
+        "plan45-compare-09",
+        "plan40-inspect-two-thirds-one-fourth-12",
+        "plan40-construct-five-sixths-three-eighths-24"
+      ]
+    },
+    {
+      "seed": 12,
+      "shape": "C-S-T",
+      "ids": [
+        "plan45-compare-09",
+        "plan40-inspect-two-thirds-one-fourth-12",
+        "plan40-construct-half-fifth-10"
+      ]
+    },
+    {
+      "seed": 13,
+      "shape": "C-S-T",
+      "ids": [
+        "plan45-compare-09",
+        "plan40-inspect-two-thirds-one-fourth-12",
+        "plan40-construct-half-fifth-10"
+      ]
+    },
+    {
+      "seed": 14,
+      "shape": "C-I-S-T",
+      "ids": [
+        "plan45-compare-09",
+        "plan40-identify-one-half-one-eighth-8",
+        "plan40-inspect-two-thirds-one-fourth-12",
+        "plan40-construct-five-sixths-three-eighths-24"
+      ]
+    },
+    {
+      "seed": 15,
+      "shape": "C-I-T",
+      "ids": [
+        "plan45-compare-09",
+        "plan40-identify-one-half-one-eighth-8",
+        "plan40-construct-half-fifth-10"
+      ]
+    },
+    {
+      "seed": 16,
+      "shape": "C-S-T",
+      "ids": [
+        "plan45-compare-02",
+        "plan40-inspect-two-thirds-one-fourth-12",
+        "plan40-construct-half-fifth-10"
+      ]
+    },
+    {
+      "seed": 17,
+      "shape": "C-S-T",
+      "ids": [
+        "plan45-compare-02",
+        "plan40-inspect-two-thirds-one-fourth-12",
+        "plan40-construct-half-fifth-10"
+      ]
+    },
+    {
+      "seed": 18,
+      "shape": "C-I-S-T",
+      "ids": [
+        "plan45-compare-09",
+        "plan76-identify-seven-eighths-one-fourth-8",
+        "plan40-inspect-two-thirds-one-fourth-12",
+        "plan40-construct-half-fifth-10"
+      ]
+    },
+    {
+      "seed": 19,
+      "shape": "C-I-S-T",
+      "ids": [
+        "plan45-compare-09",
+        "plan76-identify-seven-eighths-one-fourth-8",
+        "plan40-inspect-two-thirds-one-fourth-12",
+        "plan40-construct-half-fifth-10"
+      ]
+    },
+    {
+      "seed": 20,
+      "shape": "C-I-T",
+      "ids": [
+        "plan45-compare-09",
+        "plan40-identify-one-half-one-eighth-8",
+        "plan40-construct-five-sixths-three-eighths-24"
+      ]
+    },
+    {
+      "seed": 21,
+      "shape": "C-I-S-T",
+      "ids": [
+        "plan45-compare-02",
+        "plan76-identify-seven-eighths-one-fourth-8",
+        "plan40-inspect-two-thirds-one-fourth-12",
+        "plan40-construct-half-fifth-10"
+      ]
+    },
+    {
+      "seed": 22,
+      "shape": "C-I-S-T",
+      "ids": [
+        "plan45-compare-09",
+        "plan76-identify-seven-eighths-one-fourth-8",
+        "plan40-inspect-two-thirds-one-fourth-12",
+        "plan40-construct-half-fifth-10"
+      ]
+    },
+    {
+      "seed": 23,
+      "shape": "C-I-T",
+      "ids": [
+        "plan45-compare-02",
+        "plan40-identify-one-half-one-eighth-8",
+        "plan40-construct-half-fifth-10"
+      ]
+    },
+    {
+      "seed": 24,
+      "shape": "C-I-T",
+      "ids": [
+        "plan45-compare-09",
+        "plan40-identify-one-half-one-eighth-8",
+        "plan40-construct-half-fifth-10"
+      ]
+    },
+    {
+      "seed": 25,
+      "shape": "C-I-S-T",
+      "ids": [
+        "plan45-compare-02",
+        "plan76-identify-seven-eighths-one-fourth-8",
+        "plan40-inspect-two-thirds-one-fourth-12",
+        "plan40-construct-half-fifth-10"
+      ]
+    },
+    {
+      "seed": 26,
+      "shape": "C-S-T",
+      "ids": [
+        "plan45-compare-09",
+        "plan40-inspect-two-thirds-one-fourth-12",
+        "plan40-construct-five-sixths-three-eighths-24"
+      ]
+    },
+    {
+      "seed": 27,
+      "shape": "C-I-T",
+      "ids": [
+        "plan45-compare-09",
+        "plan76-identify-seven-eighths-one-fourth-8",
+        "plan40-construct-five-sixths-three-eighths-24"
+      ]
+    },
+    {
+      "seed": 28,
+      "shape": "C-S-T",
+      "ids": [
+        "plan45-compare-02",
+        "plan40-inspect-two-thirds-one-fourth-12",
+        "plan40-construct-half-fifth-10"
+      ]
+    },
+    {
+      "seed": 29,
+      "shape": "C-I-S-T",
+      "ids": [
+        "plan45-compare-02",
+        "plan40-identify-one-half-one-eighth-8",
+        "plan40-inspect-two-thirds-one-fourth-12",
+        "plan40-construct-five-sixths-three-eighths-24"
+      ]
+    },
+    {
+      "seed": 30,
+      "shape": "C-I-T",
+      "ids": [
+        "plan45-compare-02",
+        "plan40-identify-one-half-one-eighth-8",
+        "plan40-construct-half-fifth-10"
+      ]
+    },
+    {
+      "seed": 31,
+      "shape": "C-I-T",
+      "ids": [
+        "plan45-compare-02",
+        "plan76-identify-seven-eighths-one-fourth-8",
+        "plan40-construct-half-fifth-10"
+      ]
+    },
+    {
+      "seed": 32,
+      "shape": "C-I-T",
+      "ids": [
+        "plan45-compare-09",
+        "plan40-identify-one-half-one-eighth-8",
+        "plan40-construct-half-fifth-10"
+      ]
+    },
+    {
+      "seed": 33,
+      "shape": "C-I-T",
+      "ids": [
+        "plan45-compare-02",
+        "plan40-identify-one-half-one-eighth-8",
+        "plan40-construct-five-sixths-three-eighths-24"
+      ]
+    },
+    {
+      "seed": 34,
+      "shape": "C-S-T",
+      "ids": [
+        "plan45-compare-02",
+        "plan40-inspect-two-thirds-one-fourth-12",
+        "plan40-construct-five-sixths-three-eighths-24"
+      ]
+    },
+    {
+      "seed": 35,
+      "shape": "C-I-T",
+      "ids": [
+        "plan45-compare-09",
+        "plan76-identify-seven-eighths-one-fourth-8",
+        "plan40-construct-half-fifth-10"
+      ]
+    },
+    {
+      "seed": 36,
+      "shape": "C-I-T",
+      "ids": [
+        "plan45-compare-09",
+        "plan76-identify-seven-eighths-one-fourth-8",
+        "plan40-construct-five-sixths-three-eighths-24"
+      ]
+    },
+    {
+      "seed": 37,
+      "shape": "C-S-T",
+      "ids": [
+        "plan45-compare-09",
+        "plan40-inspect-two-thirds-one-fourth-12",
+        "plan40-construct-half-fifth-10"
+      ]
+    },
+    {
+      "seed": 38,
+      "shape": "C-I-T",
+      "ids": [
+        "plan45-compare-09",
+        "plan40-identify-one-half-one-eighth-8",
+        "plan40-construct-half-fifth-10"
+      ]
+    },
+    {
+      "seed": 39,
+      "shape": "C-I-T",
+      "ids": [
+        "plan45-compare-09",
+        "plan76-identify-seven-eighths-one-fourth-8",
+        "plan40-construct-five-sixths-three-eighths-24"
+      ]
+    },
+    {
+      "seed": 40,
+      "shape": "C-I-T",
+      "ids": [
+        "plan45-compare-09",
+        "plan40-identify-one-half-one-eighth-8",
+        "plan40-construct-half-fifth-10"
+      ]
+    },
+    {
+      "seed": 41,
+      "shape": "C-I-T",
+      "ids": [
+        "plan45-compare-02",
+        "plan76-identify-seven-eighths-one-fourth-8",
+        "plan40-construct-half-fifth-10"
+      ]
+    },
+    {
+      "seed": 42,
+      "shape": "C-I-T",
+      "ids": [
+        "plan45-compare-02",
+        "plan40-identify-one-half-one-eighth-8",
+        "plan40-construct-half-fifth-10"
+      ]
+    },
+    {
+      "seed": 43,
+      "shape": "C-S-T",
+      "ids": [
+        "plan45-compare-09",
+        "plan40-inspect-two-thirds-one-fourth-12",
+        "plan40-construct-five-sixths-three-eighths-24"
+      ]
+    },
+    {
+      "seed": 44,
+      "shape": "C-I-S-T",
+      "ids": [
+        "plan45-compare-09",
+        "plan76-identify-seven-eighths-one-fourth-8",
+        "plan40-inspect-two-thirds-one-fourth-12",
+        "plan40-construct-half-fifth-10"
+      ]
+    },
+    {
+      "seed": 45,
+      "shape": "C-I-T",
+      "ids": [
+        "plan45-compare-02",
+        "plan76-identify-seven-eighths-one-fourth-8",
+        "plan40-construct-half-fifth-10"
+      ]
+    },
+    {
+      "seed": 46,
+      "shape": "C-I-S-T",
+      "ids": [
+        "plan45-compare-02",
+        "plan40-identify-one-half-one-eighth-8",
+        "plan40-inspect-two-thirds-one-fourth-12",
+        "plan40-construct-five-sixths-three-eighths-24"
+      ]
+    },
+    {
+      "seed": 47,
+      "shape": "C-S-T",
+      "ids": [
+        "plan45-compare-02",
+        "plan40-inspect-two-thirds-one-fourth-12",
+        "plan40-construct-half-fifth-10"
+      ]
+    },
+    {
+      "seed": 48,
+      "shape": "C-I-T",
+      "ids": [
+        "plan45-compare-09",
+        "plan40-identify-one-half-one-eighth-8",
+        "plan40-construct-half-fifth-10"
+      ]
+    },
+    {
+      "seed": 49,
+      "shape": "C-I-T",
+      "ids": [
+        "plan45-compare-09",
+        "plan40-identify-one-half-one-eighth-8",
+        "plan40-construct-half-fifth-10"
+      ]
+    },
+    {
+      "seed": 50,
+      "shape": "C-S-T",
+      "ids": [
+        "plan45-compare-02",
+        "plan40-inspect-two-thirds-one-fourth-12",
+        "plan40-construct-half-fifth-10"
+      ]
+    },
+    {
+      "seed": 51,
+      "shape": "C-S-T",
+      "ids": [
+        "plan45-compare-09",
+        "plan40-inspect-two-thirds-one-fourth-12",
+        "plan40-construct-five-sixths-three-eighths-24"
+      ]
+    },
+    {
+      "seed": 52,
+      "shape": "C-I-T",
+      "ids": [
+        "plan45-compare-02",
+        "plan76-identify-seven-eighths-one-fourth-8",
+        "plan40-construct-half-fifth-10"
+      ]
+    },
+    {
+      "seed": 53,
+      "shape": "C-S-T",
+      "ids": [
+        "plan45-compare-02",
+        "plan40-inspect-two-thirds-one-fourth-12",
+        "plan40-construct-five-sixths-three-eighths-24"
+      ]
+    },
+    {
+      "seed": 54,
+      "shape": "C-I-S-T",
+      "ids": [
+        "plan45-compare-02",
+        "plan76-identify-seven-eighths-one-fourth-8",
+        "plan40-inspect-two-thirds-one-fourth-12",
+        "plan40-construct-half-fifth-10"
+      ]
+    },
+    {
+      "seed": 55,
+      "shape": "C-I-T",
+      "ids": [
+        "plan45-compare-02",
+        "plan40-identify-one-half-one-eighth-8",
+        "plan40-construct-five-sixths-three-eighths-24"
+      ]
+    },
+    {
+      "seed": 56,
+      "shape": "C-I-T",
+      "ids": [
+        "plan45-compare-02",
+        "plan76-identify-seven-eighths-one-fourth-8",
+        "plan40-construct-five-sixths-three-eighths-24"
+      ]
+    },
+    {
+      "seed": 57,
+      "shape": "C-I-T",
+      "ids": [
+        "plan45-compare-09",
+        "plan40-identify-one-half-one-eighth-8",
+        "plan40-construct-five-sixths-three-eighths-24"
+      ]
+    },
+    {
+      "seed": 58,
+      "shape": "C-S-T",
+      "ids": [
+        "plan45-compare-02",
+        "plan40-inspect-two-thirds-one-fourth-12",
+        "plan40-construct-half-fifth-10"
+      ]
+    },
+    {
+      "seed": 59,
+      "shape": "C-S-T",
+      "ids": [
+        "plan45-compare-09",
+        "plan40-inspect-two-thirds-one-fourth-12",
+        "plan40-construct-half-fifth-10"
+      ]
+    },
+    {
+      "seed": 60,
+      "shape": "C-S-T",
+      "ids": [
+        "plan45-compare-02",
+        "plan40-inspect-two-thirds-one-fourth-12",
+        "plan40-construct-half-fifth-10"
+      ]
+    },
+    {
+      "seed": 61,
+      "shape": "C-S-T",
+      "ids": [
+        "plan45-compare-09",
+        "plan40-inspect-two-thirds-one-fourth-12",
+        "plan40-construct-half-fifth-10"
+      ]
+    },
+    {
+      "seed": 62,
+      "shape": "C-I-T",
+      "ids": [
+        "plan45-compare-02",
+        "plan76-identify-seven-eighths-one-fourth-8",
+        "plan40-construct-half-fifth-10"
+      ]
+    },
+    {
+      "seed": 63,
+      "shape": "C-S-T",
+      "ids": [
+        "plan45-compare-02",
+        "plan40-inspect-two-thirds-one-fourth-12",
+        "plan40-construct-five-sixths-three-eighths-24"
+      ]
+    }
+  ]
+}
