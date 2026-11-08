@@ -41,7 +41,7 @@ async function measure(page, id, support, view, stage) {
     const actualView = host?.classList.contains('app-linear-view')?'linear':'visual';
     const actualItem = state?.taskContext?.itemId ?? state?.item?.id ?? null;
     const actualSupport = window.fit92.app.getSelectedSupportLevel()?.id ?? null;
-    return {stage,expectedItem:id,actualItem,identityMatches:id===actualItem,expectedSupport:support,actualSupport,supportMatches:support===actualSupport,expectedView:view,actualView,viewMatches:view===actualView,viewport:{width:innerWidth,height:innerHeight},rootFont:getComputedStyle(document.documentElement).fontSize,document:{clientWidth:document.documentElement.clientWidth,scrollWidth:document.documentElement.scrollWidth,clientHeight:document.documentElement.clientHeight,scrollHeight:document.documentElement.scrollHeight},workingArea:rect(host?.closest('.app-working-area')||host),episode:rect(document.querySelector('.app-episode')),overflowElements:elements.filter(e=>e.scrollWidth>e.clientWidth+1||e.scrollHeight>e.clientHeight+1||e.x < -1||e.right>innerWidth+1),elements};
+    return {stage,expectedItem:id,actualItem,identityMatches:id===actualItem,expectedSupport:support,actualSupport,supportMatches:support===actualSupport,expectedView:view,actualView,viewMatches:view===actualView,conditionId:state?.activeCondition?.id??null,viewport:{width:innerWidth,height:innerHeight},rootFont:getComputedStyle(document.documentElement).fontSize,document:{clientWidth:document.documentElement.clientWidth,scrollWidth:document.documentElement.scrollWidth,clientHeight:document.documentElement.clientHeight,scrollHeight:document.documentElement.scrollHeight},workingArea:rect(host?.closest('.app-working-area')||host),episode:rect(document.querySelector('.app-episode')),overflowElements:elements.filter(e=>e.scrollWidth>e.clientWidth+1||e.scrollHeight>e.clientHeight+1||e.x < -1||e.right>innerWidth+1),elements};
   },{id,support,view,stage});
 }
 async function run(context, record, condition, support, view, port) {
@@ -51,9 +51,9 @@ async function run(context, record, condition, support, view, port) {
   page.on('pageerror',error=>result.failures.push(`pageerror: ${error.message}`));
   try {
     const fixture=isComparison?'fit92-comparison.html':'fit92-arithmetic.html';
-    await page.goto(`http://127.0.0.1:${port}/${dir}/${fixture}?item=${encodeURIComponent(id)}&support=${support}&view=${view}`);
+    await page.goto(`http://127.0.0.1:${port}/${dir}/${fixture}?item=${encodeURIComponent(id)}&support=${support}&view=${view}&condition=${process.env.FIT92_CONDITION ?? "phase2-bundle-1"}`);
     if(condition.rootScale!==100) await page.addStyleTag({content:`html { font-size:${condition.rootScale}% !important; }`});
-    const stage=async name=>{const sample=await measure(page,id,support,view,name);result.stages.push(sample);for(const key of ['identityMatches','supportMatches','viewMatches'])if(!sample[key])throw Error(`${name}: ${key} failed`);};
+    const stage=async name=>{const sample=await measure(page,id,support,view,name);result.stages.push(sample);for(const key of ['identityMatches','supportMatches','viewMatches'])if(!sample[key])throw Error(`${name}: ${key} failed`);const expectedCondition=isComparison?'plan45-static-comparison':(process.env.FIT92_CONDITION??'phase2-bundle-1');if(sample.conditionId!==expectedCondition)throw Error(`${name}: active condition ${sample.conditionId} != ${expectedCondition}`);if(process.env.FIT92_STAGE_SCREENSHOTS==='1'&&support==='high-support'){await mkdir(`${dir}/fit92-stage-screenshots`,{recursive:true});await page.screenshot({path:`${dir}/fit92-stage-screenshots/${id}-${view}-${name}.png`,fullPage:true});}};
     await stage('initial');
     if(process.env.FIT92_SCREENSHOTS==='1'){
       const wanted=(condition.width===480&&condition.rootScale===200&&subtractionIds.has(id))||(condition.width===1093&&condition.rootScale===100);

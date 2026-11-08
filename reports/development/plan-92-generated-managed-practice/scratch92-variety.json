@@ -1,0 +1,2988 @@
+{
+  "scope": "Provisional pools based on existing class threshold and successful initial scratch mount/host checks across two supports and four conditions. Full-episode per-candidate fit and enrollment are not established. 64 sequential seed inputs call the isolated prototype, not real fresh Starts.",
+  "reference": "Independent node:crypto draw and indexing for these collision-free pools.",
+  "pools": [
+    {
+      "width": 1093,
+      "scale": 100,
+      "eligible": [
+        "plan45-compare-02",
+        "plan45-compare-09",
+        "plan45-compare-10",
+        "plan40-identify-one-half-one-eighth-8",
+        "plan40-identify-two-thirds-five-twelfths-12",
+        "plan76-identify-seven-eighths-one-fourth-8",
+        "plan40-inspect-two-thirds-one-fourth-12",
+        "plan76-inspect-three-fourths-one-fifth-20",
+        "plan40-construct-half-fifth-10",
+        "plan40-construct-five-sixths-three-eighths-24",
+        "plan76-construct-five-sixths-one-tenth-30"
+      ],
+      "excluded": [],
+      "shapes": {
+        "C-I-S-T": 15,
+        "C-I-T": 26,
+        "C-S-T": 23
+      },
+      "decisions": {
+        "C:half-benchmark|I:left|S:keep/repair|T:shared-factor": 2,
+        "C:half-benchmark|I:left|T:coprime": 1,
+        "C:half-benchmark|I:left|T:shared-factor": 5,
+        "C:half-benchmark|I:right|S:keep/repair|T:shared-factor": 3,
+        "C:half-benchmark|I:right|S:repair/keep|T:shared-factor": 1,
+        "C:half-benchmark|I:right|T:shared-factor": 1,
+        "C:half-benchmark|S:keep/repair|T:coprime": 1,
+        "C:half-benchmark|S:keep/repair|T:shared-factor": 1,
+        "C:half-benchmark|S:repair/keep|T:coprime": 2,
+        "C:half-benchmark|S:repair/keep|T:shared-factor": 3,
+        "C:same-count-unit-size|I:left|S:keep/repair|T:shared-factor": 2,
+        "C:same-count-unit-size|I:left|S:repair/keep|T:coprime": 1,
+        "C:same-count-unit-size|I:left|T:coprime": 2,
+        "C:same-count-unit-size|I:left|T:shared-factor": 5,
+        "C:same-count-unit-size|I:right|S:keep/repair|T:shared-factor": 1,
+        "C:same-count-unit-size|I:right|T:coprime": 1,
+        "C:same-count-unit-size|I:right|T:shared-factor": 2,
+        "C:same-count-unit-size|S:keep/repair|T:coprime": 2,
+        "C:same-count-unit-size|S:keep/repair|T:shared-factor": 5,
+        "C:same-count-unit-size|S:repair/keep|T:coprime": 2,
+        "C:same-count-unit-size|S:repair/keep|T:shared-factor": 3,
+        "C:same-denominator|I:left|S:keep/repair|T:coprime": 1,
+        "C:same-denominator|I:left|S:repair/keep|T:shared-factor": 2,
+        "C:same-denominator|I:left|T:coprime": 2,
+        "C:same-denominator|I:left|T:shared-factor": 3,
+        "C:same-denominator|I:right|S:keep/repair|T:shared-factor": 2,
+        "C:same-denominator|I:right|T:coprime": 1,
+        "C:same-denominator|I:right|T:shared-factor": 3,
+        "C:same-denominator|S:keep/repair|T:coprime": 2,
+        "C:same-denominator|S:keep/repair|T:shared-factor": 1,
+        "C:same-denominator|S:repair/keep|T:coprime": 1
+      },
+      "identities": {
+        "plan40-construct-five-sixths-three-eighths-24": 19,
+        "plan40-construct-half-fifth-10": 19,
+        "plan40-identify-one-half-one-eighth-8": 10,
+        "plan40-identify-two-thirds-five-twelfths-12": 16,
+        "plan40-inspect-two-thirds-one-fourth-12": 15,
+        "plan45-compare-02": 18,
+        "plan45-compare-09": 26,
+        "plan45-compare-10": 20,
+        "plan76-construct-five-sixths-one-tenth-30": 26,
+        "plan76-identify-seven-eighths-one-fourth-8": 15,
+        "plan76-inspect-three-fourths-one-fifth-20": 23
+      },
+      "problemKeys": {
+        "[{\"numerator\":\"3\",\"denominator\":\"5\"},{\"numerator\":\"3\",\"denominator\":\"7\"}]": 26,
+        "[{\"numerator\":\"3\",\"denominator\":\"8\"},{\"numerator\":\"5\",\"denominator\":\"8\"}]": 18,
+        "[{\"numerator\":\"3\",\"denominator\":\"8\"},{\"numerator\":\"5\",\"denominator\":\"9\"}]": 20,
+        "1/2-1/5": 19,
+        "1/2-1/8": 10,
+        "2/3-1/4": 15,
+        "2/3-5/12": 16,
+        "3/4-1/5": 23,
+        "5/6-1/10": 26,
+        "5/6-3/8": 19,
+        "7/8-1/4": 15
+      },
+      "itineraries": {
+        "plan45-compare-02|plan40-identify-one-half-one-eighth-8|plan40-construct-half-fifth-10": 2,
+        "plan45-compare-02|plan40-identify-one-half-one-eighth-8|plan76-inspect-three-fourths-one-fifth-20|plan40-construct-half-fifth-10": 1,
+        "plan45-compare-02|plan40-identify-two-thirds-five-twelfths-12|plan40-construct-five-sixths-three-eighths-24": 2,
+        "plan45-compare-02|plan40-identify-two-thirds-five-twelfths-12|plan40-inspect-two-thirds-one-fourth-12|plan40-construct-five-sixths-three-eighths-24": 1,
+        "plan45-compare-02|plan40-identify-two-thirds-five-twelfths-12|plan40-inspect-two-thirds-one-fourth-12|plan76-construct-five-sixths-one-tenth-30": 1,
+        "plan45-compare-02|plan40-identify-two-thirds-five-twelfths-12|plan76-construct-five-sixths-one-tenth-30": 1,
+        "plan45-compare-02|plan40-inspect-two-thirds-one-fourth-12|plan40-construct-half-fifth-10": 1,
+        "plan45-compare-02|plan76-identify-seven-eighths-one-fourth-8|plan40-construct-half-fifth-10": 1,
+        "plan45-compare-02|plan76-identify-seven-eighths-one-fourth-8|plan76-construct-five-sixths-one-tenth-30": 3,
+        "plan45-compare-02|plan76-identify-seven-eighths-one-fourth-8|plan76-inspect-three-fourths-one-fifth-20|plan76-construct-five-sixths-one-tenth-30": 2,
+        "plan45-compare-02|plan76-inspect-three-fourths-one-fifth-20|plan40-construct-half-fifth-10": 2,
+        "plan45-compare-02|plan76-inspect-three-fourths-one-fifth-20|plan76-construct-five-sixths-one-tenth-30": 1,
+        "plan45-compare-09|plan40-identify-one-half-one-eighth-8|plan40-construct-half-fifth-10": 1,
+        "plan45-compare-09|plan40-identify-one-half-one-eighth-8|plan76-construct-five-sixths-one-tenth-30": 1,
+        "plan45-compare-09|plan40-identify-one-half-one-eighth-8|plan76-inspect-three-fourths-one-fifth-20|plan76-construct-five-sixths-one-tenth-30": 1,
+        "plan45-compare-09|plan40-identify-two-thirds-five-twelfths-12|plan40-construct-five-sixths-three-eighths-24": 2,
+        "plan45-compare-09|plan40-identify-two-thirds-five-twelfths-12|plan40-construct-half-fifth-10": 1,
+        "plan45-compare-09|plan40-identify-two-thirds-five-twelfths-12|plan40-inspect-two-thirds-one-fourth-12|plan40-construct-half-fifth-10": 1,
+        "plan45-compare-09|plan40-identify-two-thirds-five-twelfths-12|plan76-construct-five-sixths-one-tenth-30": 2,
+        "plan45-compare-09|plan40-identify-two-thirds-five-twelfths-12|plan76-inspect-three-fourths-one-fifth-20|plan76-construct-five-sixths-one-tenth-30": 1,
+        "plan45-compare-09|plan40-inspect-two-thirds-one-fourth-12|plan40-construct-five-sixths-three-eighths-24": 3,
+        "plan45-compare-09|plan40-inspect-two-thirds-one-fourth-12|plan40-construct-half-fifth-10": 2,
+        "plan45-compare-09|plan76-identify-seven-eighths-one-fourth-8|plan40-construct-half-fifth-10": 1,
+        "plan45-compare-09|plan76-identify-seven-eighths-one-fourth-8|plan76-construct-five-sixths-one-tenth-30": 2,
+        "plan45-compare-09|plan76-identify-seven-eighths-one-fourth-8|plan76-inspect-three-fourths-one-fifth-20|plan40-construct-five-sixths-three-eighths-24": 1,
+        "plan45-compare-09|plan76-inspect-three-fourths-one-fifth-20|plan40-construct-five-sixths-three-eighths-24": 1,
+        "plan45-compare-09|plan76-inspect-three-fourths-one-fifth-20|plan40-construct-half-fifth-10": 2,
+        "plan45-compare-09|plan76-inspect-three-fourths-one-fifth-20|plan76-construct-five-sixths-one-tenth-30": 4,
+        "plan45-compare-10|plan40-identify-one-half-one-eighth-8|plan40-construct-five-sixths-three-eighths-24": 1,
+        "plan45-compare-10|plan40-identify-one-half-one-eighth-8|plan40-construct-half-fifth-10": 1,
+        "plan45-compare-10|plan40-identify-one-half-one-eighth-8|plan76-construct-five-sixths-one-tenth-30": 2,
+        "plan45-compare-10|plan40-identify-two-thirds-five-twelfths-12|plan40-construct-five-sixths-three-eighths-24": 2,
+        "plan45-compare-10|plan40-identify-two-thirds-five-twelfths-12|plan76-inspect-three-fourths-one-fifth-20|plan40-construct-five-sixths-three-eighths-24": 2,
+        "plan45-compare-10|plan40-inspect-two-thirds-one-fourth-12|plan40-construct-five-sixths-three-eighths-24": 2,
+        "plan45-compare-10|plan40-inspect-two-thirds-one-fourth-12|plan40-construct-half-fifth-10": 2,
+        "plan45-compare-10|plan40-inspect-two-thirds-one-fourth-12|plan76-construct-five-sixths-one-tenth-30": 1,
+        "plan45-compare-10|plan76-identify-seven-eighths-one-fourth-8|plan40-construct-five-sixths-three-eighths-24": 1,
+        "plan45-compare-10|plan76-identify-seven-eighths-one-fourth-8|plan40-inspect-two-thirds-one-fourth-12|plan40-construct-five-sixths-three-eighths-24": 1,
+        "plan45-compare-10|plan76-identify-seven-eighths-one-fourth-8|plan76-inspect-three-fourths-one-fifth-20|plan76-construct-five-sixths-one-tenth-30": 3,
+        "plan45-compare-10|plan76-inspect-three-fourths-one-fifth-20|plan40-construct-half-fifth-10": 1,
+        "plan45-compare-10|plan76-inspect-three-fourths-one-fifth-20|plan76-construct-five-sixths-one-tenth-30": 1
+      },
+      "runs": [
+        {
+          "seed": 0,
+          "shape": "C-I-S-T",
+          "ids": [
+            "plan45-compare-02",
+            "plan40-identify-two-thirds-five-twelfths-12",
+            "plan40-inspect-two-thirds-one-fourth-12",
+            "plan76-construct-five-sixths-one-tenth-30"
+          ],
+          "keys": [
+            "[{\"numerator\":\"3\",\"denominator\":\"8\"},{\"numerator\":\"5\",\"denominator\":\"8\"}]",
+            "2/3-5/12",
+            "2/3-1/4",
+            "5/6-1/10"
+          ],
+          "decision": "C:same-denominator|I:left|S:repair/keep|T:shared-factor"
+        },
+        {
+          "seed": 1,
+          "shape": "C-S-T",
+          "ids": [
+            "plan45-compare-02",
+            "plan76-inspect-three-fourths-one-fifth-20",
+            "plan40-construct-half-fifth-10"
+          ],
+          "keys": [
+            "[{\"numerator\":\"3\",\"denominator\":\"8\"},{\"numerator\":\"5\",\"denominator\":\"8\"}]",
+            "3/4-1/5",
+            "1/2-1/5"
+          ],
+          "decision": "C:same-denominator|S:keep/repair|T:coprime"
+        },
+        {
+          "seed": 2,
+          "shape": "C-S-T",
+          "ids": [
+            "plan45-compare-09",
+            "plan40-inspect-two-thirds-one-fourth-12",
+            "plan40-construct-half-fifth-10"
+          ],
+          "keys": [
+            "[{\"numerator\":\"3\",\"denominator\":\"5\"},{\"numerator\":\"3\",\"denominator\":\"7\"}]",
+            "2/3-1/4",
+            "1/2-1/5"
+          ],
+          "decision": "C:same-count-unit-size|S:repair/keep|T:coprime"
+        },
+        {
+          "seed": 3,
+          "shape": "C-I-S-T",
+          "ids": [
+            "plan45-compare-02",
+            "plan40-identify-two-thirds-five-twelfths-12",
+            "plan40-inspect-two-thirds-one-fourth-12",
+            "plan40-construct-five-sixths-three-eighths-24"
+          ],
+          "keys": [
+            "[{\"numerator\":\"3\",\"denominator\":\"8\"},{\"numerator\":\"5\",\"denominator\":\"8\"}]",
+            "2/3-5/12",
+            "2/3-1/4",
+            "5/6-3/8"
+          ],
+          "decision": "C:same-denominator|I:left|S:repair/keep|T:shared-factor"
+        },
+        {
+          "seed": 4,
+          "shape": "C-I-T",
+          "ids": [
+            "plan45-compare-02",
+            "plan76-identify-seven-eighths-one-fourth-8",
+            "plan40-construct-half-fifth-10"
+          ],
+          "keys": [
+            "[{\"numerator\":\"3\",\"denominator\":\"8\"},{\"numerator\":\"5\",\"denominator\":\"8\"}]",
+            "7/8-1/4",
+            "1/2-1/5"
+          ],
+          "decision": "C:same-denominator|I:right|T:coprime"
+        },
+        {
+          "seed": 5,
+          "shape": "C-S-T",
+          "ids": [
+            "plan45-compare-10",
+            "plan40-inspect-two-thirds-one-fourth-12",
+            "plan40-construct-five-sixths-three-eighths-24"
+          ],
+          "keys": [
+            "[{\"numerator\":\"3\",\"denominator\":\"8\"},{\"numerator\":\"5\",\"denominator\":\"9\"}]",
+            "2/3-1/4",
+            "5/6-3/8"
+          ],
+          "decision": "C:half-benchmark|S:repair/keep|T:shared-factor"
+        },
+        {
+          "seed": 6,
+          "shape": "C-I-S-T",
+          "ids": [
+            "plan45-compare-09",
+            "plan40-identify-two-thirds-five-twelfths-12",
+            "plan40-inspect-two-thirds-one-fourth-12",
+            "plan40-construct-half-fifth-10"
+          ],
+          "keys": [
+            "[{\"numerator\":\"3\",\"denominator\":\"5\"},{\"numerator\":\"3\",\"denominator\":\"7\"}]",
+            "2/3-5/12",
+            "2/3-1/4",
+            "1/2-1/5"
+          ],
+          "decision": "C:same-count-unit-size|I:left|S:repair/keep|T:coprime"
+        },
+        {
+          "seed": 7,
+          "shape": "C-I-S-T",
+          "ids": [
+            "plan45-compare-10",
+            "plan76-identify-seven-eighths-one-fourth-8",
+            "plan40-inspect-two-thirds-one-fourth-12",
+            "plan40-construct-five-sixths-three-eighths-24"
+          ],
+          "keys": [
+            "[{\"numerator\":\"3\",\"denominator\":\"8\"},{\"numerator\":\"5\",\"denominator\":\"9\"}]",
+            "7/8-1/4",
+            "2/3-1/4",
+            "5/6-3/8"
+          ],
+          "decision": "C:half-benchmark|I:right|S:repair/keep|T:shared-factor"
+        },
+        {
+          "seed": 8,
+          "shape": "C-I-S-T",
+          "ids": [
+            "plan45-compare-10",
+            "plan40-identify-two-thirds-five-twelfths-12",
+            "plan76-inspect-three-fourths-one-fifth-20",
+            "plan40-construct-five-sixths-three-eighths-24"
+          ],
+          "keys": [
+            "[{\"numerator\":\"3\",\"denominator\":\"8\"},{\"numerator\":\"5\",\"denominator\":\"9\"}]",
+            "2/3-5/12",
+            "3/4-1/5",
+            "5/6-3/8"
+          ],
+          "decision": "C:half-benchmark|I:left|S:keep/repair|T:shared-factor"
+        },
+        {
+          "seed": 9,
+          "shape": "C-S-T",
+          "ids": [
+            "plan45-compare-10",
+            "plan40-inspect-two-thirds-one-fourth-12",
+            "plan40-construct-five-sixths-three-eighths-24"
+          ],
+          "keys": [
+            "[{\"numerator\":\"3\",\"denominator\":\"8\"},{\"numerator\":\"5\",\"denominator\":\"9\"}]",
+            "2/3-1/4",
+            "5/6-3/8"
+          ],
+          "decision": "C:half-benchmark|S:repair/keep|T:shared-factor"
+        },
+        {
+          "seed": 10,
+          "shape": "C-I-T",
+          "ids": [
+            "plan45-compare-10",
+            "plan40-identify-one-half-one-eighth-8",
+            "plan40-construct-five-sixths-three-eighths-24"
+          ],
+          "keys": [
+            "[{\"numerator\":\"3\",\"denominator\":\"8\"},{\"numerator\":\"5\",\"denominator\":\"9\"}]",
+            "1/2-1/8",
+            "5/6-3/8"
+          ],
+          "decision": "C:half-benchmark|I:left|T:shared-factor"
+        },
+        {
+          "seed": 11,
+          "shape": "C-S-T",
+          "ids": [
+            "plan45-compare-09",
+            "plan76-inspect-three-fourths-one-fifth-20",
+            "plan40-construct-five-sixths-three-eighths-24"
+          ],
+          "keys": [
+            "[{\"numerator\":\"3\",\"denominator\":\"5\"},{\"numerator\":\"3\",\"denominator\":\"7\"}]",
+            "3/4-1/5",
+            "5/6-3/8"
+          ],
+          "decision": "C:same-count-unit-size|S:keep/repair|T:shared-factor"
+        },
+        {
+          "seed": 12,
+          "shape": "C-S-T",
+          "ids": [
+            "plan45-compare-10",
+            "plan76-inspect-three-fourths-one-fifth-20",
+            "plan76-construct-five-sixths-one-tenth-30"
+          ],
+          "keys": [
+            "[{\"numerator\":\"3\",\"denominator\":\"8\"},{\"numerator\":\"5\",\"denominator\":\"9\"}]",
+            "3/4-1/5",
+            "5/6-1/10"
+          ],
+          "decision": "C:half-benchmark|S:keep/repair|T:shared-factor"
+        },
+        {
+          "seed": 13,
+          "shape": "C-S-T",
+          "ids": [
+            "plan45-compare-09",
+            "plan76-inspect-three-fourths-one-fifth-20",
+            "plan40-construct-half-fifth-10"
+          ],
+          "keys": [
+            "[{\"numerator\":\"3\",\"denominator\":\"5\"},{\"numerator\":\"3\",\"denominator\":\"7\"}]",
+            "3/4-1/5",
+            "1/2-1/5"
+          ],
+          "decision": "C:same-count-unit-size|S:keep/repair|T:coprime"
+        },
+        {
+          "seed": 14,
+          "shape": "C-I-S-T",
+          "ids": [
+            "plan45-compare-10",
+            "plan76-identify-seven-eighths-one-fourth-8",
+            "plan76-inspect-three-fourths-one-fifth-20",
+            "plan76-construct-five-sixths-one-tenth-30"
+          ],
+          "keys": [
+            "[{\"numerator\":\"3\",\"denominator\":\"8\"},{\"numerator\":\"5\",\"denominator\":\"9\"}]",
+            "7/8-1/4",
+            "3/4-1/5",
+            "5/6-1/10"
+          ],
+          "decision": "C:half-benchmark|I:right|S:keep/repair|T:shared-factor"
+        },
+        {
+          "seed": 15,
+          "shape": "C-I-T",
+          "ids": [
+            "plan45-compare-02",
+            "plan40-identify-one-half-one-eighth-8",
+            "plan40-construct-half-fifth-10"
+          ],
+          "keys": [
+            "[{\"numerator\":\"3\",\"denominator\":\"8\"},{\"numerator\":\"5\",\"denominator\":\"8\"}]",
+            "1/2-1/8",
+            "1/2-1/5"
+          ],
+          "decision": "C:same-denominator|I:left|T:coprime"
+        },
+        {
+          "seed": 16,
+          "shape": "C-S-T",
+          "ids": [
+            "plan45-compare-09",
+            "plan76-inspect-three-fourths-one-fifth-20",
+            "plan76-construct-five-sixths-one-tenth-30"
+          ],
+          "keys": [
+            "[{\"numerator\":\"3\",\"denominator\":\"5\"},{\"numerator\":\"3\",\"denominator\":\"7\"}]",
+            "3/4-1/5",
+            "5/6-1/10"
+          ],
+          "decision": "C:same-count-unit-size|S:keep/repair|T:shared-factor"
+        },
+        {
+          "seed": 17,
+          "shape": "C-S-T",
+          "ids": [
+            "plan45-compare-02",
+            "plan40-inspect-two-thirds-one-fourth-12",
+            "plan40-construct-half-fifth-10"
+          ],
+          "keys": [
+            "[{\"numerator\":\"3\",\"denominator\":\"8\"},{\"numerator\":\"5\",\"denominator\":\"8\"}]",
+            "2/3-1/4",
+            "1/2-1/5"
+          ],
+          "decision": "C:same-denominator|S:repair/keep|T:coprime"
+        },
+        {
+          "seed": 18,
+          "shape": "C-I-S-T",
+          "ids": [
+            "plan45-compare-10",
+            "plan40-identify-two-thirds-five-twelfths-12",
+            "plan76-inspect-three-fourths-one-fifth-20",
+            "plan40-construct-five-sixths-three-eighths-24"
+          ],
+          "keys": [
+            "[{\"numerator\":\"3\",\"denominator\":\"8\"},{\"numerator\":\"5\",\"denominator\":\"9\"}]",
+            "2/3-5/12",
+            "3/4-1/5",
+            "5/6-3/8"
+          ],
+          "decision": "C:half-benchmark|I:left|S:keep/repair|T:shared-factor"
+        },
+        {
+          "seed": 19,
+          "shape": "C-I-S-T",
+          "ids": [
+            "plan45-compare-09",
+            "plan40-identify-two-thirds-five-twelfths-12",
+            "plan76-inspect-three-fourths-one-fifth-20",
+            "plan76-construct-five-sixths-one-tenth-30"
+          ],
+          "keys": [
+            "[{\"numerator\":\"3\",\"denominator\":\"5\"},{\"numerator\":\"3\",\"denominator\":\"7\"}]",
+            "2/3-5/12",
+            "3/4-1/5",
+            "5/6-1/10"
+          ],
+          "decision": "C:same-count-unit-size|I:left|S:keep/repair|T:shared-factor"
+        },
+        {
+          "seed": 20,
+          "shape": "C-I-T",
+          "ids": [
+            "plan45-compare-02",
+            "plan76-identify-seven-eighths-one-fourth-8",
+            "plan76-construct-five-sixths-one-tenth-30"
+          ],
+          "keys": [
+            "[{\"numerator\":\"3\",\"denominator\":\"8\"},{\"numerator\":\"5\",\"denominator\":\"8\"}]",
+            "7/8-1/4",
+            "5/6-1/10"
+          ],
+          "decision": "C:same-denominator|I:right|T:shared-factor"
+        },
+        {
+          "seed": 21,
+          "shape": "C-I-S-T",
+          "ids": [
+            "plan45-compare-02",
+            "plan40-identify-one-half-one-eighth-8",
+            "plan76-inspect-three-fourths-one-fifth-20",
+            "plan40-construct-half-fifth-10"
+          ],
+          "keys": [
+            "[{\"numerator\":\"3\",\"denominator\":\"8\"},{\"numerator\":\"5\",\"denominator\":\"8\"}]",
+            "1/2-1/8",
+            "3/4-1/5",
+            "1/2-1/5"
+          ],
+          "decision": "C:same-denominator|I:left|S:keep/repair|T:coprime"
+        },
+        {
+          "seed": 22,
+          "shape": "C-I-S-T",
+          "ids": [
+            "plan45-compare-09",
+            "plan76-identify-seven-eighths-one-fourth-8",
+            "plan76-inspect-three-fourths-one-fifth-20",
+            "plan40-construct-five-sixths-three-eighths-24"
+          ],
+          "keys": [
+            "[{\"numerator\":\"3\",\"denominator\":\"5\"},{\"numerator\":\"3\",\"denominator\":\"7\"}]",
+            "7/8-1/4",
+            "3/4-1/5",
+            "5/6-3/8"
+          ],
+          "decision": "C:same-count-unit-size|I:right|S:keep/repair|T:shared-factor"
+        },
+        {
+          "seed": 23,
+          "shape": "C-I-T",
+          "ids": [
+            "plan45-compare-09",
+            "plan40-identify-two-thirds-five-twelfths-12",
+            "plan40-construct-half-fifth-10"
+          ],
+          "keys": [
+            "[{\"numerator\":\"3\",\"denominator\":\"5\"},{\"numerator\":\"3\",\"denominator\":\"7\"}]",
+            "2/3-5/12",
+            "1/2-1/5"
+          ],
+          "decision": "C:same-count-unit-size|I:left|T:coprime"
+        },
+        {
+          "seed": 24,
+          "shape": "C-I-T",
+          "ids": [
+            "plan45-compare-02",
+            "plan40-identify-two-thirds-five-twelfths-12",
+            "plan40-construct-five-sixths-three-eighths-24"
+          ],
+          "keys": [
+            "[{\"numerator\":\"3\",\"denominator\":\"8\"},{\"numerator\":\"5\",\"denominator\":\"8\"}]",
+            "2/3-5/12",
+            "5/6-3/8"
+          ],
+          "decision": "C:same-denominator|I:left|T:shared-factor"
+        },
+        {
+          "seed": 25,
+          "shape": "C-I-S-T",
+          "ids": [
+            "plan45-compare-02",
+            "plan76-identify-seven-eighths-one-fourth-8",
+            "plan76-inspect-three-fourths-one-fifth-20",
+            "plan76-construct-five-sixths-one-tenth-30"
+          ],
+          "keys": [
+            "[{\"numerator\":\"3\",\"denominator\":\"8\"},{\"numerator\":\"5\",\"denominator\":\"8\"}]",
+            "7/8-1/4",
+            "3/4-1/5",
+            "5/6-1/10"
+          ],
+          "decision": "C:same-denominator|I:right|S:keep/repair|T:shared-factor"
+        },
+        {
+          "seed": 26,
+          "shape": "C-S-T",
+          "ids": [
+            "plan45-compare-09",
+            "plan40-inspect-two-thirds-one-fourth-12",
+            "plan40-construct-five-sixths-three-eighths-24"
+          ],
+          "keys": [
+            "[{\"numerator\":\"3\",\"denominator\":\"5\"},{\"numerator\":\"3\",\"denominator\":\"7\"}]",
+            "2/3-1/4",
+            "5/6-3/8"
+          ],
+          "decision": "C:same-count-unit-size|S:repair/keep|T:shared-factor"
+        },
+        {
+          "seed": 27,
+          "shape": "C-I-T",
+          "ids": [
+            "plan45-compare-09",
+            "plan40-identify-one-half-one-eighth-8",
+            "plan76-construct-five-sixths-one-tenth-30"
+          ],
+          "keys": [
+            "[{\"numerator\":\"3\",\"denominator\":\"5\"},{\"numerator\":\"3\",\"denominator\":\"7\"}]",
+            "1/2-1/8",
+            "5/6-1/10"
+          ],
+          "decision": "C:same-count-unit-size|I:left|T:shared-factor"
+        },
+        {
+          "seed": 28,
+          "shape": "C-S-T",
+          "ids": [
+            "plan45-compare-09",
+            "plan76-inspect-three-fourths-one-fifth-20",
+            "plan76-construct-five-sixths-one-tenth-30"
+          ],
+          "keys": [
+            "[{\"numerator\":\"3\",\"denominator\":\"5\"},{\"numerator\":\"3\",\"denominator\":\"7\"}]",
+            "3/4-1/5",
+            "5/6-1/10"
+          ],
+          "decision": "C:same-count-unit-size|S:keep/repair|T:shared-factor"
+        },
+        {
+          "seed": 29,
+          "shape": "C-I-S-T",
+          "ids": [
+            "plan45-compare-02",
+            "plan76-identify-seven-eighths-one-fourth-8",
+            "plan76-inspect-three-fourths-one-fifth-20",
+            "plan76-construct-five-sixths-one-tenth-30"
+          ],
+          "keys": [
+            "[{\"numerator\":\"3\",\"denominator\":\"8\"},{\"numerator\":\"5\",\"denominator\":\"8\"}]",
+            "7/8-1/4",
+            "3/4-1/5",
+            "5/6-1/10"
+          ],
+          "decision": "C:same-denominator|I:right|S:keep/repair|T:shared-factor"
+        },
+        {
+          "seed": 30,
+          "shape": "C-I-T",
+          "ids": [
+            "plan45-compare-10",
+            "plan40-identify-one-half-one-eighth-8",
+            "plan76-construct-five-sixths-one-tenth-30"
+          ],
+          "keys": [
+            "[{\"numerator\":\"3\",\"denominator\":\"8\"},{\"numerator\":\"5\",\"denominator\":\"9\"}]",
+            "1/2-1/8",
+            "5/6-1/10"
+          ],
+          "decision": "C:half-benchmark|I:left|T:shared-factor"
+        },
+        {
+          "seed": 31,
+          "shape": "C-I-T",
+          "ids": [
+            "plan45-compare-02",
+            "plan40-identify-two-thirds-five-twelfths-12",
+            "plan76-construct-five-sixths-one-tenth-30"
+          ],
+          "keys": [
+            "[{\"numerator\":\"3\",\"denominator\":\"8\"},{\"numerator\":\"5\",\"denominator\":\"8\"}]",
+            "2/3-5/12",
+            "5/6-1/10"
+          ],
+          "decision": "C:same-denominator|I:left|T:shared-factor"
+        },
+        {
+          "seed": 32,
+          "shape": "C-I-T",
+          "ids": [
+            "plan45-compare-09",
+            "plan40-identify-two-thirds-five-twelfths-12",
+            "plan40-construct-five-sixths-three-eighths-24"
+          ],
+          "keys": [
+            "[{\"numerator\":\"3\",\"denominator\":\"5\"},{\"numerator\":\"3\",\"denominator\":\"7\"}]",
+            "2/3-5/12",
+            "5/6-3/8"
+          ],
+          "decision": "C:same-count-unit-size|I:left|T:shared-factor"
+        },
+        {
+          "seed": 33,
+          "shape": "C-I-T",
+          "ids": [
+            "plan45-compare-09",
+            "plan40-identify-two-thirds-five-twelfths-12",
+            "plan76-construct-five-sixths-one-tenth-30"
+          ],
+          "keys": [
+            "[{\"numerator\":\"3\",\"denominator\":\"5\"},{\"numerator\":\"3\",\"denominator\":\"7\"}]",
+            "2/3-5/12",
+            "5/6-1/10"
+          ],
+          "decision": "C:same-count-unit-size|I:left|T:shared-factor"
+        },
+        {
+          "seed": 34,
+          "shape": "C-S-T",
+          "ids": [
+            "plan45-compare-09",
+            "plan40-inspect-two-thirds-one-fourth-12",
+            "plan40-construct-five-sixths-three-eighths-24"
+          ],
+          "keys": [
+            "[{\"numerator\":\"3\",\"denominator\":\"5\"},{\"numerator\":\"3\",\"denominator\":\"7\"}]",
+            "2/3-1/4",
+            "5/6-3/8"
+          ],
+          "decision": "C:same-count-unit-size|S:repair/keep|T:shared-factor"
+        },
+        {
+          "seed": 35,
+          "shape": "C-I-T",
+          "ids": [
+            "plan45-compare-09",
+            "plan76-identify-seven-eighths-one-fourth-8",
+            "plan40-construct-half-fifth-10"
+          ],
+          "keys": [
+            "[{\"numerator\":\"3\",\"denominator\":\"5\"},{\"numerator\":\"3\",\"denominator\":\"7\"}]",
+            "7/8-1/4",
+            "1/2-1/5"
+          ],
+          "decision": "C:same-count-unit-size|I:right|T:coprime"
+        },
+        {
+          "seed": 36,
+          "shape": "C-I-T",
+          "ids": [
+            "plan45-compare-02",
+            "plan40-identify-one-half-one-eighth-8",
+            "plan40-construct-half-fifth-10"
+          ],
+          "keys": [
+            "[{\"numerator\":\"3\",\"denominator\":\"8\"},{\"numerator\":\"5\",\"denominator\":\"8\"}]",
+            "1/2-1/8",
+            "1/2-1/5"
+          ],
+          "decision": "C:same-denominator|I:left|T:coprime"
+        },
+        {
+          "seed": 37,
+          "shape": "C-S-T",
+          "ids": [
+            "plan45-compare-09",
+            "plan40-inspect-two-thirds-one-fourth-12",
+            "plan40-construct-half-fifth-10"
+          ],
+          "keys": [
+            "[{\"numerator\":\"3\",\"denominator\":\"5\"},{\"numerator\":\"3\",\"denominator\":\"7\"}]",
+            "2/3-1/4",
+            "1/2-1/5"
+          ],
+          "decision": "C:same-count-unit-size|S:repair/keep|T:coprime"
+        },
+        {
+          "seed": 38,
+          "shape": "C-I-T",
+          "ids": [
+            "plan45-compare-10",
+            "plan40-identify-one-half-one-eighth-8",
+            "plan76-construct-five-sixths-one-tenth-30"
+          ],
+          "keys": [
+            "[{\"numerator\":\"3\",\"denominator\":\"8\"},{\"numerator\":\"5\",\"denominator\":\"9\"}]",
+            "1/2-1/8",
+            "5/6-1/10"
+          ],
+          "decision": "C:half-benchmark|I:left|T:shared-factor"
+        },
+        {
+          "seed": 39,
+          "shape": "C-I-T",
+          "ids": [
+            "plan45-compare-09",
+            "plan40-identify-two-thirds-five-twelfths-12",
+            "plan76-construct-five-sixths-one-tenth-30"
+          ],
+          "keys": [
+            "[{\"numerator\":\"3\",\"denominator\":\"5\"},{\"numerator\":\"3\",\"denominator\":\"7\"}]",
+            "2/3-5/12",
+            "5/6-1/10"
+          ],
+          "decision": "C:same-count-unit-size|I:left|T:shared-factor"
+        },
+        {
+          "seed": 40,
+          "shape": "C-I-T",
+          "ids": [
+            "plan45-compare-10",
+            "plan40-identify-two-thirds-five-twelfths-12",
+            "plan40-construct-five-sixths-three-eighths-24"
+          ],
+          "keys": [
+            "[{\"numerator\":\"3\",\"denominator\":\"8\"},{\"numerator\":\"5\",\"denominator\":\"9\"}]",
+            "2/3-5/12",
+            "5/6-3/8"
+          ],
+          "decision": "C:half-benchmark|I:left|T:shared-factor"
+        },
+        {
+          "seed": 41,
+          "shape": "C-I-T",
+          "ids": [
+            "plan45-compare-09",
+            "plan40-identify-two-thirds-five-twelfths-12",
+            "plan40-construct-five-sixths-three-eighths-24"
+          ],
+          "keys": [
+            "[{\"numerator\":\"3\",\"denominator\":\"5\"},{\"numerator\":\"3\",\"denominator\":\"7\"}]",
+            "2/3-5/12",
+            "5/6-3/8"
+          ],
+          "decision": "C:same-count-unit-size|I:left|T:shared-factor"
+        },
+        {
+          "seed": 42,
+          "shape": "C-I-T",
+          "ids": [
+            "plan45-compare-09",
+            "plan76-identify-seven-eighths-one-fourth-8",
+            "plan76-construct-five-sixths-one-tenth-30"
+          ],
+          "keys": [
+            "[{\"numerator\":\"3\",\"denominator\":\"5\"},{\"numerator\":\"3\",\"denominator\":\"7\"}]",
+            "7/8-1/4",
+            "5/6-1/10"
+          ],
+          "decision": "C:same-count-unit-size|I:right|T:shared-factor"
+        },
+        {
+          "seed": 43,
+          "shape": "C-S-T",
+          "ids": [
+            "plan45-compare-09",
+            "plan76-inspect-three-fourths-one-fifth-20",
+            "plan40-construct-half-fifth-10"
+          ],
+          "keys": [
+            "[{\"numerator\":\"3\",\"denominator\":\"5\"},{\"numerator\":\"3\",\"denominator\":\"7\"}]",
+            "3/4-1/5",
+            "1/2-1/5"
+          ],
+          "decision": "C:same-count-unit-size|S:keep/repair|T:coprime"
+        },
+        {
+          "seed": 44,
+          "shape": "C-I-S-T",
+          "ids": [
+            "plan45-compare-10",
+            "plan76-identify-seven-eighths-one-fourth-8",
+            "plan76-inspect-three-fourths-one-fifth-20",
+            "plan76-construct-five-sixths-one-tenth-30"
+          ],
+          "keys": [
+            "[{\"numerator\":\"3\",\"denominator\":\"8\"},{\"numerator\":\"5\",\"denominator\":\"9\"}]",
+            "7/8-1/4",
+            "3/4-1/5",
+            "5/6-1/10"
+          ],
+          "decision": "C:half-benchmark|I:right|S:keep/repair|T:shared-factor"
+        },
+        {
+          "seed": 45,
+          "shape": "C-I-T",
+          "ids": [
+            "plan45-compare-02",
+            "plan40-identify-two-thirds-five-twelfths-12",
+            "plan40-construct-five-sixths-three-eighths-24"
+          ],
+          "keys": [
+            "[{\"numerator\":\"3\",\"denominator\":\"8\"},{\"numerator\":\"5\",\"denominator\":\"8\"}]",
+            "2/3-5/12",
+            "5/6-3/8"
+          ],
+          "decision": "C:same-denominator|I:left|T:shared-factor"
+        },
+        {
+          "seed": 46,
+          "shape": "C-I-S-T",
+          "ids": [
+            "plan45-compare-10",
+            "plan76-identify-seven-eighths-one-fourth-8",
+            "plan76-inspect-three-fourths-one-fifth-20",
+            "plan76-construct-five-sixths-one-tenth-30"
+          ],
+          "keys": [
+            "[{\"numerator\":\"3\",\"denominator\":\"8\"},{\"numerator\":\"5\",\"denominator\":\"9\"}]",
+            "7/8-1/4",
+            "3/4-1/5",
+            "5/6-1/10"
+          ],
+          "decision": "C:half-benchmark|I:right|S:keep/repair|T:shared-factor"
+        },
+        {
+          "seed": 47,
+          "shape": "C-S-T",
+          "ids": [
+            "plan45-compare-10",
+            "plan40-inspect-two-thirds-one-fourth-12",
+            "plan76-construct-five-sixths-one-tenth-30"
+          ],
+          "keys": [
+            "[{\"numerator\":\"3\",\"denominator\":\"8\"},{\"numerator\":\"5\",\"denominator\":\"9\"}]",
+            "2/3-1/4",
+            "5/6-1/10"
+          ],
+          "decision": "C:half-benchmark|S:repair/keep|T:shared-factor"
+        },
+        {
+          "seed": 48,
+          "shape": "C-I-T",
+          "ids": [
+            "plan45-compare-10",
+            "plan40-identify-two-thirds-five-twelfths-12",
+            "plan40-construct-five-sixths-three-eighths-24"
+          ],
+          "keys": [
+            "[{\"numerator\":\"3\",\"denominator\":\"8\"},{\"numerator\":\"5\",\"denominator\":\"9\"}]",
+            "2/3-5/12",
+            "5/6-3/8"
+          ],
+          "decision": "C:half-benchmark|I:left|T:shared-factor"
+        },
+        {
+          "seed": 49,
+          "shape": "C-I-T",
+          "ids": [
+            "plan45-compare-10",
+            "plan40-identify-one-half-one-eighth-8",
+            "plan40-construct-half-fifth-10"
+          ],
+          "keys": [
+            "[{\"numerator\":\"3\",\"denominator\":\"8\"},{\"numerator\":\"5\",\"denominator\":\"9\"}]",
+            "1/2-1/8",
+            "1/2-1/5"
+          ],
+          "decision": "C:half-benchmark|I:left|T:coprime"
+        },
+        {
+          "seed": 50,
+          "shape": "C-S-T",
+          "ids": [
+            "plan45-compare-02",
+            "plan76-inspect-three-fourths-one-fifth-20",
+            "plan40-construct-half-fifth-10"
+          ],
+          "keys": [
+            "[{\"numerator\":\"3\",\"denominator\":\"8\"},{\"numerator\":\"5\",\"denominator\":\"8\"}]",
+            "3/4-1/5",
+            "1/2-1/5"
+          ],
+          "decision": "C:same-denominator|S:keep/repair|T:coprime"
+        },
+        {
+          "seed": 51,
+          "shape": "C-S-T",
+          "ids": [
+            "plan45-compare-10",
+            "plan76-inspect-three-fourths-one-fifth-20",
+            "plan40-construct-half-fifth-10"
+          ],
+          "keys": [
+            "[{\"numerator\":\"3\",\"denominator\":\"8\"},{\"numerator\":\"5\",\"denominator\":\"9\"}]",
+            "3/4-1/5",
+            "1/2-1/5"
+          ],
+          "decision": "C:half-benchmark|S:keep/repair|T:coprime"
+        },
+        {
+          "seed": 52,
+          "shape": "C-I-T",
+          "ids": [
+            "plan45-compare-09",
+            "plan40-identify-one-half-one-eighth-8",
+            "plan40-construct-half-fifth-10"
+          ],
+          "keys": [
+            "[{\"numerator\":\"3\",\"denominator\":\"5\"},{\"numerator\":\"3\",\"denominator\":\"7\"}]",
+            "1/2-1/8",
+            "1/2-1/5"
+          ],
+          "decision": "C:same-count-unit-size|I:left|T:coprime"
+        },
+        {
+          "seed": 53,
+          "shape": "C-S-T",
+          "ids": [
+            "plan45-compare-10",
+            "plan40-inspect-two-thirds-one-fourth-12",
+            "plan40-construct-half-fifth-10"
+          ],
+          "keys": [
+            "[{\"numerator\":\"3\",\"denominator\":\"8\"},{\"numerator\":\"5\",\"denominator\":\"9\"}]",
+            "2/3-1/4",
+            "1/2-1/5"
+          ],
+          "decision": "C:half-benchmark|S:repair/keep|T:coprime"
+        },
+        {
+          "seed": 54,
+          "shape": "C-I-S-T",
+          "ids": [
+            "plan45-compare-09",
+            "plan40-identify-one-half-one-eighth-8",
+            "plan76-inspect-three-fourths-one-fifth-20",
+            "plan76-construct-five-sixths-one-tenth-30"
+          ],
+          "keys": [
+            "[{\"numerator\":\"3\",\"denominator\":\"5\"},{\"numerator\":\"3\",\"denominator\":\"7\"}]",
+            "1/2-1/8",
+            "3/4-1/5",
+            "5/6-1/10"
+          ],
+          "decision": "C:same-count-unit-size|I:left|S:keep/repair|T:shared-factor"
+        },
+        {
+          "seed": 55,
+          "shape": "C-I-T",
+          "ids": [
+            "plan45-compare-09",
+            "plan76-identify-seven-eighths-one-fourth-8",
+            "plan76-construct-five-sixths-one-tenth-30"
+          ],
+          "keys": [
+            "[{\"numerator\":\"3\",\"denominator\":\"5\"},{\"numerator\":\"3\",\"denominator\":\"7\"}]",
+            "7/8-1/4",
+            "5/6-1/10"
+          ],
+          "decision": "C:same-count-unit-size|I:right|T:shared-factor"
+        },
+        {
+          "seed": 56,
+          "shape": "C-I-T",
+          "ids": [
+            "plan45-compare-02",
+            "plan76-identify-seven-eighths-one-fourth-8",
+            "plan76-construct-five-sixths-one-tenth-30"
+          ],
+          "keys": [
+            "[{\"numerator\":\"3\",\"denominator\":\"8\"},{\"numerator\":\"5\",\"denominator\":\"8\"}]",
+            "7/8-1/4",
+            "5/6-1/10"
+          ],
+          "decision": "C:same-denominator|I:right|T:shared-factor"
+        },
+        {
+          "seed": 57,
+          "shape": "C-I-T",
+          "ids": [
+            "plan45-compare-02",
+            "plan76-identify-seven-eighths-one-fourth-8",
+            "plan76-construct-five-sixths-one-tenth-30"
+          ],
+          "keys": [
+            "[{\"numerator\":\"3\",\"denominator\":\"8\"},{\"numerator\":\"5\",\"denominator\":\"8\"}]",
+            "7/8-1/4",
+            "5/6-1/10"
+          ],
+          "decision": "C:same-denominator|I:right|T:shared-factor"
+        },
+        {
+          "seed": 58,
+          "shape": "C-S-T",
+          "ids": [
+            "plan45-compare-09",
+            "plan76-inspect-three-fourths-one-fifth-20",
+            "plan76-construct-five-sixths-one-tenth-30"
+          ],
+          "keys": [
+            "[{\"numerator\":\"3\",\"denominator\":\"5\"},{\"numerator\":\"3\",\"denominator\":\"7\"}]",
+            "3/4-1/5",
+            "5/6-1/10"
+          ],
+          "decision": "C:same-count-unit-size|S:keep/repair|T:shared-factor"
+        },
+        {
+          "seed": 59,
+          "shape": "C-S-T",
+          "ids": [
+            "plan45-compare-10",
+            "plan40-inspect-two-thirds-one-fourth-12",
+            "plan40-construct-half-fifth-10"
+          ],
+          "keys": [
+            "[{\"numerator\":\"3\",\"denominator\":\"8\"},{\"numerator\":\"5\",\"denominator\":\"9\"}]",
+            "2/3-1/4",
+            "1/2-1/5"
+          ],
+          "decision": "C:half-benchmark|S:repair/keep|T:coprime"
+        },
+        {
+          "seed": 60,
+          "shape": "C-S-T",
+          "ids": [
+            "plan45-compare-09",
+            "plan40-inspect-two-thirds-one-fourth-12",
+            "plan40-construct-five-sixths-three-eighths-24"
+          ],
+          "keys": [
+            "[{\"numerator\":\"3\",\"denominator\":\"5\"},{\"numerator\":\"3\",\"denominator\":\"7\"}]",
+            "2/3-1/4",
+            "5/6-3/8"
+          ],
+          "decision": "C:same-count-unit-size|S:repair/keep|T:shared-factor"
+        },
+        {
+          "seed": 61,
+          "shape": "C-S-T",
+          "ids": [
+            "plan45-compare-02",
+            "plan76-inspect-three-fourths-one-fifth-20",
+            "plan76-construct-five-sixths-one-tenth-30"
+          ],
+          "keys": [
+            "[{\"numerator\":\"3\",\"denominator\":\"8\"},{\"numerator\":\"5\",\"denominator\":\"8\"}]",
+            "3/4-1/5",
+            "5/6-1/10"
+          ],
+          "decision": "C:same-denominator|S:keep/repair|T:shared-factor"
+        },
+        {
+          "seed": 62,
+          "shape": "C-I-T",
+          "ids": [
+            "plan45-compare-10",
+            "plan76-identify-seven-eighths-one-fourth-8",
+            "plan40-construct-five-sixths-three-eighths-24"
+          ],
+          "keys": [
+            "[{\"numerator\":\"3\",\"denominator\":\"8\"},{\"numerator\":\"5\",\"denominator\":\"9\"}]",
+            "7/8-1/4",
+            "5/6-3/8"
+          ],
+          "decision": "C:half-benchmark|I:right|T:shared-factor"
+        },
+        {
+          "seed": 63,
+          "shape": "C-S-T",
+          "ids": [
+            "plan45-compare-09",
+            "plan76-inspect-three-fourths-one-fifth-20",
+            "plan76-construct-five-sixths-one-tenth-30"
+          ],
+          "keys": [
+            "[{\"numerator\":\"3\",\"denominator\":\"5\"},{\"numerator\":\"3\",\"denominator\":\"7\"}]",
+            "3/4-1/5",
+            "5/6-1/10"
+          ],
+          "decision": "C:same-count-unit-size|S:keep/repair|T:shared-factor"
+        }
+      ]
+    },
+    {
+      "width": 650,
+      "scale": 200,
+      "eligible": [
+        "plan45-compare-02",
+        "plan45-compare-09",
+        "plan45-compare-10",
+        "plan40-identify-one-half-one-eighth-8",
+        "plan40-identify-two-thirds-five-twelfths-12",
+        "plan76-identify-seven-eighths-one-fourth-8",
+        "plan40-inspect-two-thirds-one-fourth-12",
+        "plan76-inspect-three-fourths-one-fifth-20",
+        "plan40-construct-half-fifth-10",
+        "plan40-construct-five-sixths-three-eighths-24",
+        "plan76-construct-five-sixths-one-tenth-30"
+      ],
+      "excluded": [],
+      "shapes": {
+        "C-I-S-T": 15,
+        "C-I-T": 26,
+        "C-S-T": 23
+      },
+      "decisions": {
+        "C:half-benchmark|I:left|S:keep/repair|T:shared-factor": 2,
+        "C:half-benchmark|I:left|T:coprime": 1,
+        "C:half-benchmark|I:left|T:shared-factor": 5,
+        "C:half-benchmark|I:right|S:keep/repair|T:shared-factor": 3,
+        "C:half-benchmark|I:right|S:repair/keep|T:shared-factor": 1,
+        "C:half-benchmark|I:right|T:shared-factor": 1,
+        "C:half-benchmark|S:keep/repair|T:coprime": 1,
+        "C:half-benchmark|S:keep/repair|T:shared-factor": 1,
+        "C:half-benchmark|S:repair/keep|T:coprime": 2,
+        "C:half-benchmark|S:repair/keep|T:shared-factor": 3,
+        "C:same-count-unit-size|I:left|S:keep/repair|T:shared-factor": 2,
+        "C:same-count-unit-size|I:left|S:repair/keep|T:coprime": 1,
+        "C:same-count-unit-size|I:left|T:coprime": 2,
+        "C:same-count-unit-size|I:left|T:shared-factor": 5,
+        "C:same-count-unit-size|I:right|S:keep/repair|T:shared-factor": 1,
+        "C:same-count-unit-size|I:right|T:coprime": 1,
+        "C:same-count-unit-size|I:right|T:shared-factor": 2,
+        "C:same-count-unit-size|S:keep/repair|T:coprime": 2,
+        "C:same-count-unit-size|S:keep/repair|T:shared-factor": 5,
+        "C:same-count-unit-size|S:repair/keep|T:coprime": 2,
+        "C:same-count-unit-size|S:repair/keep|T:shared-factor": 3,
+        "C:same-denominator|I:left|S:keep/repair|T:coprime": 1,
+        "C:same-denominator|I:left|S:repair/keep|T:shared-factor": 2,
+        "C:same-denominator|I:left|T:coprime": 2,
+        "C:same-denominator|I:left|T:shared-factor": 3,
+        "C:same-denominator|I:right|S:keep/repair|T:shared-factor": 2,
+        "C:same-denominator|I:right|T:coprime": 1,
+        "C:same-denominator|I:right|T:shared-factor": 3,
+        "C:same-denominator|S:keep/repair|T:coprime": 2,
+        "C:same-denominator|S:keep/repair|T:shared-factor": 1,
+        "C:same-denominator|S:repair/keep|T:coprime": 1
+      },
+      "identities": {
+        "plan40-construct-five-sixths-three-eighths-24": 19,
+        "plan40-construct-half-fifth-10": 19,
+        "plan40-identify-one-half-one-eighth-8": 10,
+        "plan40-identify-two-thirds-five-twelfths-12": 16,
+        "plan40-inspect-two-thirds-one-fourth-12": 15,
+        "plan45-compare-02": 18,
+        "plan45-compare-09": 26,
+        "plan45-compare-10": 20,
+        "plan76-construct-five-sixths-one-tenth-30": 26,
+        "plan76-identify-seven-eighths-one-fourth-8": 15,
+        "plan76-inspect-three-fourths-one-fifth-20": 23
+      },
+      "problemKeys": {
+        "[{\"numerator\":\"3\",\"denominator\":\"5\"},{\"numerator\":\"3\",\"denominator\":\"7\"}]": 26,
+        "[{\"numerator\":\"3\",\"denominator\":\"8\"},{\"numerator\":\"5\",\"denominator\":\"8\"}]": 18,
+        "[{\"numerator\":\"3\",\"denominator\":\"8\"},{\"numerator\":\"5\",\"denominator\":\"9\"}]": 20,
+        "1/2-1/5": 19,
+        "1/2-1/8": 10,
+        "2/3-1/4": 15,
+        "2/3-5/12": 16,
+        "3/4-1/5": 23,
+        "5/6-1/10": 26,
+        "5/6-3/8": 19,
+        "7/8-1/4": 15
+      },
+      "itineraries": {
+        "plan45-compare-02|plan40-identify-one-half-one-eighth-8|plan40-construct-half-fifth-10": 2,
+        "plan45-compare-02|plan40-identify-one-half-one-eighth-8|plan76-inspect-three-fourths-one-fifth-20|plan40-construct-half-fifth-10": 1,
+        "plan45-compare-02|plan40-identify-two-thirds-five-twelfths-12|plan40-construct-five-sixths-three-eighths-24": 2,
+        "plan45-compare-02|plan40-identify-two-thirds-five-twelfths-12|plan40-inspect-two-thirds-one-fourth-12|plan40-construct-five-sixths-three-eighths-24": 1,
+        "plan45-compare-02|plan40-identify-two-thirds-five-twelfths-12|plan40-inspect-two-thirds-one-fourth-12|plan76-construct-five-sixths-one-tenth-30": 1,
+        "plan45-compare-02|plan40-identify-two-thirds-five-twelfths-12|plan76-construct-five-sixths-one-tenth-30": 1,
+        "plan45-compare-02|plan40-inspect-two-thirds-one-fourth-12|plan40-construct-half-fifth-10": 1,
+        "plan45-compare-02|plan76-identify-seven-eighths-one-fourth-8|plan40-construct-half-fifth-10": 1,
+        "plan45-compare-02|plan76-identify-seven-eighths-one-fourth-8|plan76-construct-five-sixths-one-tenth-30": 3,
+        "plan45-compare-02|plan76-identify-seven-eighths-one-fourth-8|plan76-inspect-three-fourths-one-fifth-20|plan76-construct-five-sixths-one-tenth-30": 2,
+        "plan45-compare-02|plan76-inspect-three-fourths-one-fifth-20|plan40-construct-half-fifth-10": 2,
+        "plan45-compare-02|plan76-inspect-three-fourths-one-fifth-20|plan76-construct-five-sixths-one-tenth-30": 1,
+        "plan45-compare-09|plan40-identify-one-half-one-eighth-8|plan40-construct-half-fifth-10": 1,
+        "plan45-compare-09|plan40-identify-one-half-one-eighth-8|plan76-construct-five-sixths-one-tenth-30": 1,
+        "plan45-compare-09|plan40-identify-one-half-one-eighth-8|plan76-inspect-three-fourths-one-fifth-20|plan76-construct-five-sixths-one-tenth-30": 1,
+        "plan45-compare-09|plan40-identify-two-thirds-five-twelfths-12|plan40-construct-five-sixths-three-eighths-24": 2,
+        "plan45-compare-09|plan40-identify-two-thirds-five-twelfths-12|plan40-construct-half-fifth-10": 1,
+        "plan45-compare-09|plan40-identify-two-thirds-five-twelfths-12|plan40-inspect-two-thirds-one-fourth-12|plan40-construct-half-fifth-10": 1,
+        "plan45-compare-09|plan40-identify-two-thirds-five-twelfths-12|plan76-construct-five-sixths-one-tenth-30": 2,
+        "plan45-compare-09|plan40-identify-two-thirds-five-twelfths-12|plan76-inspect-three-fourths-one-fifth-20|plan76-construct-five-sixths-one-tenth-30": 1,
+        "plan45-compare-09|plan40-inspect-two-thirds-one-fourth-12|plan40-construct-five-sixths-three-eighths-24": 3,
+        "plan45-compare-09|plan40-inspect-two-thirds-one-fourth-12|plan40-construct-half-fifth-10": 2,
+        "plan45-compare-09|plan76-identify-seven-eighths-one-fourth-8|plan40-construct-half-fifth-10": 1,
+        "plan45-compare-09|plan76-identify-seven-eighths-one-fourth-8|plan76-construct-five-sixths-one-tenth-30": 2,
+        "plan45-compare-09|plan76-identify-seven-eighths-one-fourth-8|plan76-inspect-three-fourths-one-fifth-20|plan40-construct-five-sixths-three-eighths-24": 1,
+        "plan45-compare-09|plan76-inspect-three-fourths-one-fifth-20|plan40-construct-five-sixths-three-eighths-24": 1,
+        "plan45-compare-09|plan76-inspect-three-fourths-one-fifth-20|plan40-construct-half-fifth-10": 2,
+        "plan45-compare-09|plan76-inspect-three-fourths-one-fifth-20|plan76-construct-five-sixths-one-tenth-30": 4,
+        "plan45-compare-10|plan40-identify-one-half-one-eighth-8|plan40-construct-five-sixths-three-eighths-24": 1,
+        "plan45-compare-10|plan40-identify-one-half-one-eighth-8|plan40-construct-half-fifth-10": 1,
+        "plan45-compare-10|plan40-identify-one-half-one-eighth-8|plan76-construct-five-sixths-one-tenth-30": 2,
+        "plan45-compare-10|plan40-identify-two-thirds-five-twelfths-12|plan40-construct-five-sixths-three-eighths-24": 2,
+        "plan45-compare-10|plan40-identify-two-thirds-five-twelfths-12|plan76-inspect-three-fourths-one-fifth-20|plan40-construct-five-sixths-three-eighths-24": 2,
+        "plan45-compare-10|plan40-inspect-two-thirds-one-fourth-12|plan40-construct-five-sixths-three-eighths-24": 2,
+        "plan45-compare-10|plan40-inspect-two-thirds-one-fourth-12|plan40-construct-half-fifth-10": 2,
+        "plan45-compare-10|plan40-inspect-two-thirds-one-fourth-12|plan76-construct-five-sixths-one-tenth-30": 1,
+        "plan45-compare-10|plan76-identify-seven-eighths-one-fourth-8|plan40-construct-five-sixths-three-eighths-24": 1,
+        "plan45-compare-10|plan76-identify-seven-eighths-one-fourth-8|plan40-inspect-two-thirds-one-fourth-12|plan40-construct-five-sixths-three-eighths-24": 1,
+        "plan45-compare-10|plan76-identify-seven-eighths-one-fourth-8|plan76-inspect-three-fourths-one-fifth-20|plan76-construct-five-sixths-one-tenth-30": 3,
+        "plan45-compare-10|plan76-inspect-three-fourths-one-fifth-20|plan40-construct-half-fifth-10": 1,
+        "plan45-compare-10|plan76-inspect-three-fourths-one-fifth-20|plan76-construct-five-sixths-one-tenth-30": 1
+      },
+      "runs": [
+        {
+          "seed": 0,
+          "shape": "C-I-S-T",
+          "ids": [
+            "plan45-compare-02",
+            "plan40-identify-two-thirds-five-twelfths-12",
+            "plan40-inspect-two-thirds-one-fourth-12",
+            "plan76-construct-five-sixths-one-tenth-30"
+          ],
+          "keys": [
+            "[{\"numerator\":\"3\",\"denominator\":\"8\"},{\"numerator\":\"5\",\"denominator\":\"8\"}]",
+            "2/3-5/12",
+            "2/3-1/4",
+            "5/6-1/10"
+          ],
+          "decision": "C:same-denominator|I:left|S:repair/keep|T:shared-factor"
+        },
+        {
+          "seed": 1,
+          "shape": "C-S-T",
+          "ids": [
+            "plan45-compare-02",
+            "plan76-inspect-three-fourths-one-fifth-20",
+            "plan40-construct-half-fifth-10"
+          ],
+          "keys": [
+            "[{\"numerator\":\"3\",\"denominator\":\"8\"},{\"numerator\":\"5\",\"denominator\":\"8\"}]",
+            "3/4-1/5",
+            "1/2-1/5"
+          ],
+          "decision": "C:same-denominator|S:keep/repair|T:coprime"
+        },
+        {
+          "seed": 2,
+          "shape": "C-S-T",
+          "ids": [
+            "plan45-compare-09",
+            "plan40-inspect-two-thirds-one-fourth-12",
+            "plan40-construct-half-fifth-10"
+          ],
+          "keys": [
+            "[{\"numerator\":\"3\",\"denominator\":\"5\"},{\"numerator\":\"3\",\"denominator\":\"7\"}]",
+            "2/3-1/4",
+            "1/2-1/5"
+          ],
+          "decision": "C:same-count-unit-size|S:repair/keep|T:coprime"
+        },
+        {
+          "seed": 3,
+          "shape": "C-I-S-T",
+          "ids": [
+            "plan45-compare-02",
+            "plan40-identify-two-thirds-five-twelfths-12",
+            "plan40-inspect-two-thirds-one-fourth-12",
+            "plan40-construct-five-sixths-three-eighths-24"
+          ],
+          "keys": [
+            "[{\"numerator\":\"3\",\"denominator\":\"8\"},{\"numerator\":\"5\",\"denominator\":\"8\"}]",
+            "2/3-5/12",
+            "2/3-1/4",
+            "5/6-3/8"
+          ],
+          "decision": "C:same-denominator|I:left|S:repair/keep|T:shared-factor"
+        },
+        {
+          "seed": 4,
+          "shape": "C-I-T",
+          "ids": [
+            "plan45-compare-02",
+            "plan76-identify-seven-eighths-one-fourth-8",
+            "plan40-construct-half-fifth-10"
+          ],
+          "keys": [
+            "[{\"numerator\":\"3\",\"denominator\":\"8\"},{\"numerator\":\"5\",\"denominator\":\"8\"}]",
+            "7/8-1/4",
+            "1/2-1/5"
+          ],
+          "decision": "C:same-denominator|I:right|T:coprime"
+        },
+        {
+          "seed": 5,
+          "shape": "C-S-T",
+          "ids": [
+            "plan45-compare-10",
+            "plan40-inspect-two-thirds-one-fourth-12",
+            "plan40-construct-five-sixths-three-eighths-24"
+          ],
+          "keys": [
+            "[{\"numerator\":\"3\",\"denominator\":\"8\"},{\"numerator\":\"5\",\"denominator\":\"9\"}]",
+            "2/3-1/4",
+            "5/6-3/8"
+          ],
+          "decision": "C:half-benchmark|S:repair/keep|T:shared-factor"
+        },
+        {
+          "seed": 6,
+          "shape": "C-I-S-T",
+          "ids": [
+            "plan45-compare-09",
+            "plan40-identify-two-thirds-five-twelfths-12",
+            "plan40-inspect-two-thirds-one-fourth-12",
+            "plan40-construct-half-fifth-10"
+          ],
+          "keys": [
+            "[{\"numerator\":\"3\",\"denominator\":\"5\"},{\"numerator\":\"3\",\"denominator\":\"7\"}]",
+            "2/3-5/12",
+            "2/3-1/4",
+            "1/2-1/5"
+          ],
+          "decision": "C:same-count-unit-size|I:left|S:repair/keep|T:coprime"
+        },
+        {
+          "seed": 7,
+          "shape": "C-I-S-T",
+          "ids": [
+            "plan45-compare-10",
+            "plan76-identify-seven-eighths-one-fourth-8",
+            "plan40-inspect-two-thirds-one-fourth-12",
+            "plan40-construct-five-sixths-three-eighths-24"
+          ],
+          "keys": [
+            "[{\"numerator\":\"3\",\"denominator\":\"8\"},{\"numerator\":\"5\",\"denominator\":\"9\"}]",
+            "7/8-1/4",
+            "2/3-1/4",
+            "5/6-3/8"
+          ],
+          "decision": "C:half-benchmark|I:right|S:repair/keep|T:shared-factor"
+        },
+        {
+          "seed": 8,
+          "shape": "C-I-S-T",
+          "ids": [
+            "plan45-compare-10",
+            "plan40-identify-two-thirds-five-twelfths-12",
+            "plan76-inspect-three-fourths-one-fifth-20",
+            "plan40-construct-five-sixths-three-eighths-24"
+          ],
+          "keys": [
+            "[{\"numerator\":\"3\",\"denominator\":\"8\"},{\"numerator\":\"5\",\"denominator\":\"9\"}]",
+            "2/3-5/12",
+            "3/4-1/5",
+            "5/6-3/8"
+          ],
+          "decision": "C:half-benchmark|I:left|S:keep/repair|T:shared-factor"
+        },
+        {
+          "seed": 9,
+          "shape": "C-S-T",
+          "ids": [
+            "plan45-compare-10",
+            "plan40-inspect-two-thirds-one-fourth-12",
+            "plan40-construct-five-sixths-three-eighths-24"
+          ],
+          "keys": [
+            "[{\"numerator\":\"3\",\"denominator\":\"8\"},{\"numerator\":\"5\",\"denominator\":\"9\"}]",
+            "2/3-1/4",
+            "5/6-3/8"
+          ],
+          "decision": "C:half-benchmark|S:repair/keep|T:shared-factor"
+        },
+        {
+          "seed": 10,
+          "shape": "C-I-T",
+          "ids": [
+            "plan45-compare-10",
+            "plan40-identify-one-half-one-eighth-8",
+            "plan40-construct-five-sixths-three-eighths-24"
+          ],
+          "keys": [
+            "[{\"numerator\":\"3\",\"denominator\":\"8\"},{\"numerator\":\"5\",\"denominator\":\"9\"}]",
+            "1/2-1/8",
+            "5/6-3/8"
+          ],
+          "decision": "C:half-benchmark|I:left|T:shared-factor"
+        },
+        {
+          "seed": 11,
+          "shape": "C-S-T",
+          "ids": [
+            "plan45-compare-09",
+            "plan76-inspect-three-fourths-one-fifth-20",
+            "plan40-construct-five-sixths-three-eighths-24"
+          ],
+          "keys": [
+            "[{\"numerator\":\"3\",\"denominator\":\"5\"},{\"numerator\":\"3\",\"denominator\":\"7\"}]",
+            "3/4-1/5",
+            "5/6-3/8"
+          ],
+          "decision": "C:same-count-unit-size|S:keep/repair|T:shared-factor"
+        },
+        {
+          "seed": 12,
+          "shape": "C-S-T",
+          "ids": [
+            "plan45-compare-10",
+            "plan76-inspect-three-fourths-one-fifth-20",
+            "plan76-construct-five-sixths-one-tenth-30"
+          ],
+          "keys": [
+            "[{\"numerator\":\"3\",\"denominator\":\"8\"},{\"numerator\":\"5\",\"denominator\":\"9\"}]",
+            "3/4-1/5",
+            "5/6-1/10"
+          ],
+          "decision": "C:half-benchmark|S:keep/repair|T:shared-factor"
+        },
+        {
+          "seed": 13,
+          "shape": "C-S-T",
+          "ids": [
+            "plan45-compare-09",
+            "plan76-inspect-three-fourths-one-fifth-20",
+            "plan40-construct-half-fifth-10"
+          ],
+          "keys": [
+            "[{\"numerator\":\"3\",\"denominator\":\"5\"},{\"numerator\":\"3\",\"denominator\":\"7\"}]",
+            "3/4-1/5",
+            "1/2-1/5"
+          ],
+          "decision": "C:same-count-unit-size|S:keep/repair|T:coprime"
+        },
+        {
+          "seed": 14,
+          "shape": "C-I-S-T",
+          "ids": [
+            "plan45-compare-10",
+            "plan76-identify-seven-eighths-one-fourth-8",
+            "plan76-inspect-three-fourths-one-fifth-20",
+            "plan76-construct-five-sixths-one-tenth-30"
+          ],
+          "keys": [
+            "[{\"numerator\":\"3\",\"denominator\":\"8\"},{\"numerator\":\"5\",\"denominator\":\"9\"}]",
+            "7/8-1/4",
+            "3/4-1/5",
+            "5/6-1/10"
+          ],
+          "decision": "C:half-benchmark|I:right|S:keep/repair|T:shared-factor"
+        },
+        {
+          "seed": 15,
+          "shape": "C-I-T",
+          "ids": [
+            "plan45-compare-02",
+            "plan40-identify-one-half-one-eighth-8",
+            "plan40-construct-half-fifth-10"
+          ],
+          "keys": [
+            "[{\"numerator\":\"3\",\"denominator\":\"8\"},{\"numerator\":\"5\",\"denominator\":\"8\"}]",
+            "1/2-1/8",
+            "1/2-1/5"
+          ],
+          "decision": "C:same-denominator|I:left|T:coprime"
+        },
+        {
+          "seed": 16,
+          "shape": "C-S-T",
+          "ids": [
+            "plan45-compare-09",
+            "plan76-inspect-three-fourths-one-fifth-20",
+            "plan76-construct-five-sixths-one-tenth-30"
+          ],
+          "keys": [
+            "[{\"numerator\":\"3\",\"denominator\":\"5\"},{\"numerator\":\"3\",\"denominator\":\"7\"}]",
+            "3/4-1/5",
+            "5/6-1/10"
+          ],
+          "decision": "C:same-count-unit-size|S:keep/repair|T:shared-factor"
+        },
+        {
+          "seed": 17,
+          "shape": "C-S-T",
+          "ids": [
+            "plan45-compare-02",
+            "plan40-inspect-two-thirds-one-fourth-12",
+            "plan40-construct-half-fifth-10"
+          ],
+          "keys": [
+            "[{\"numerator\":\"3\",\"denominator\":\"8\"},{\"numerator\":\"5\",\"denominator\":\"8\"}]",
+            "2/3-1/4",
+            "1/2-1/5"
+          ],
+          "decision": "C:same-denominator|S:repair/keep|T:coprime"
+        },
+        {
+          "seed": 18,
+          "shape": "C-I-S-T",
+          "ids": [
+            "plan45-compare-10",
+            "plan40-identify-two-thirds-five-twelfths-12",
+            "plan76-inspect-three-fourths-one-fifth-20",
+            "plan40-construct-five-sixths-three-eighths-24"
+          ],
+          "keys": [
+            "[{\"numerator\":\"3\",\"denominator\":\"8\"},{\"numerator\":\"5\",\"denominator\":\"9\"}]",
+            "2/3-5/12",
+            "3/4-1/5",
+            "5/6-3/8"
+          ],
+          "decision": "C:half-benchmark|I:left|S:keep/repair|T:shared-factor"
+        },
+        {
+          "seed": 19,
+          "shape": "C-I-S-T",
+          "ids": [
+            "plan45-compare-09",
+            "plan40-identify-two-thirds-five-twelfths-12",
+            "plan76-inspect-three-fourths-one-fifth-20",
+            "plan76-construct-five-sixths-one-tenth-30"
+          ],
+          "keys": [
+            "[{\"numerator\":\"3\",\"denominator\":\"5\"},{\"numerator\":\"3\",\"denominator\":\"7\"}]",
+            "2/3-5/12",
+            "3/4-1/5",
+            "5/6-1/10"
+          ],
+          "decision": "C:same-count-unit-size|I:left|S:keep/repair|T:shared-factor"
+        },
+        {
+          "seed": 20,
+          "shape": "C-I-T",
+          "ids": [
+            "plan45-compare-02",
+            "plan76-identify-seven-eighths-one-fourth-8",
+            "plan76-construct-five-sixths-one-tenth-30"
+          ],
+          "keys": [
+            "[{\"numerator\":\"3\",\"denominator\":\"8\"},{\"numerator\":\"5\",\"denominator\":\"8\"}]",
+            "7/8-1/4",
+            "5/6-1/10"
+          ],
+          "decision": "C:same-denominator|I:right|T:shared-factor"
+        },
+        {
+          "seed": 21,
+          "shape": "C-I-S-T",
+          "ids": [
+            "plan45-compare-02",
+            "plan40-identify-one-half-one-eighth-8",
+            "plan76-inspect-three-fourths-one-fifth-20",
+            "plan40-construct-half-fifth-10"
+          ],
+          "keys": [
+            "[{\"numerator\":\"3\",\"denominator\":\"8\"},{\"numerator\":\"5\",\"denominator\":\"8\"}]",
+            "1/2-1/8",
+            "3/4-1/5",
+            "1/2-1/5"
+          ],
+          "decision": "C:same-denominator|I:left|S:keep/repair|T:coprime"
+        },
+        {
+          "seed": 22,
+          "shape": "C-I-S-T",
+          "ids": [
+            "plan45-compare-09",
+            "plan76-identify-seven-eighths-one-fourth-8",
+            "plan76-inspect-three-fourths-one-fifth-20",
+            "plan40-construct-five-sixths-three-eighths-24"
+          ],
+          "keys": [
+            "[{\"numerator\":\"3\",\"denominator\":\"5\"},{\"numerator\":\"3\",\"denominator\":\"7\"}]",
+            "7/8-1/4",
+            "3/4-1/5",
+            "5/6-3/8"
+          ],
+          "decision": "C:same-count-unit-size|I:right|S:keep/repair|T:shared-factor"
+        },
+        {
+          "seed": 23,
+          "shape": "C-I-T",
+          "ids": [
+            "plan45-compare-09",
+            "plan40-identify-two-thirds-five-twelfths-12",
+            "plan40-construct-half-fifth-10"
+          ],
+          "keys": [
+            "[{\"numerator\":\"3\",\"denominator\":\"5\"},{\"numerator\":\"3\",\"denominator\":\"7\"}]",
+            "2/3-5/12",
+            "1/2-1/5"
+          ],
+          "decision": "C:same-count-unit-size|I:left|T:coprime"
+        },
+        {
+          "seed": 24,
+          "shape": "C-I-T",
+          "ids": [
+            "plan45-compare-02",
+            "plan40-identify-two-thirds-five-twelfths-12",
+            "plan40-construct-five-sixths-three-eighths-24"
+          ],
+          "keys": [
+            "[{\"numerator\":\"3\",\"denominator\":\"8\"},{\"numerator\":\"5\",\"denominator\":\"8\"}]",
+            "2/3-5/12",
+            "5/6-3/8"
+          ],
+          "decision": "C:same-denominator|I:left|T:shared-factor"
+        },
+        {
+          "seed": 25,
+          "shape": "C-I-S-T",
+          "ids": [
+            "plan45-compare-02",
+            "plan76-identify-seven-eighths-one-fourth-8",
+            "plan76-inspect-three-fourths-one-fifth-20",
+            "plan76-construct-five-sixths-one-tenth-30"
+          ],
+          "keys": [
+            "[{\"numerator\":\"3\",\"denominator\":\"8\"},{\"numerator\":\"5\",\"denominator\":\"8\"}]",
+            "7/8-1/4",
+            "3/4-1/5",
+            "5/6-1/10"
+          ],
+          "decision": "C:same-denominator|I:right|S:keep/repair|T:shared-factor"
+        },
+        {
+          "seed": 26,
+          "shape": "C-S-T",
+          "ids": [
+            "plan45-compare-09",
+            "plan40-inspect-two-thirds-one-fourth-12",
+            "plan40-construct-five-sixths-three-eighths-24"
+          ],
+          "keys": [
+            "[{\"numerator\":\"3\",\"denominator\":\"5\"},{\"numerator\":\"3\",\"denominator\":\"7\"}]",
+            "2/3-1/4",
+            "5/6-3/8"
+          ],
+          "decision": "C:same-count-unit-size|S:repair/keep|T:shared-factor"
+        },
+        {
+          "seed": 27,
+          "shape": "C-I-T",
+          "ids": [
+            "plan45-compare-09",
+            "plan40-identify-one-half-one-eighth-8",
+            "plan76-construct-five-sixths-one-tenth-30"
+          ],
+          "keys": [
+            "[{\"numerator\":\"3\",\"denominator\":\"5\"},{\"numerator\":\"3\",\"denominator\":\"7\"}]",
+            "1/2-1/8",
+            "5/6-1/10"
+          ],
+          "decision": "C:same-count-unit-size|I:left|T:shared-factor"
+        },
+        {
+          "seed": 28,
+          "shape": "C-S-T",
+          "ids": [
+            "plan45-compare-09",
+            "plan76-inspect-three-fourths-one-fifth-20",
+            "plan76-construct-five-sixths-one-tenth-30"
+          ],
+          "keys": [
+            "[{\"numerator\":\"3\",\"denominator\":\"5\"},{\"numerator\":\"3\",\"denominator\":\"7\"}]",
+            "3/4-1/5",
+            "5/6-1/10"
+          ],
+          "decision": "C:same-count-unit-size|S:keep/repair|T:shared-factor"
+        },
+        {
+          "seed": 29,
+          "shape": "C-I-S-T",
+          "ids": [
+            "plan45-compare-02",
+            "plan76-identify-seven-eighths-one-fourth-8",
+            "plan76-inspect-three-fourths-one-fifth-20",
+            "plan76-construct-five-sixths-one-tenth-30"
+          ],
+          "keys": [
+            "[{\"numerator\":\"3\",\"denominator\":\"8\"},{\"numerator\":\"5\",\"denominator\":\"8\"}]",
+            "7/8-1/4",
+            "3/4-1/5",
+            "5/6-1/10"
+          ],
+          "decision": "C:same-denominator|I:right|S:keep/repair|T:shared-factor"
+        },
+        {
+          "seed": 30,
+          "shape": "C-I-T",
+          "ids": [
+            "plan45-compare-10",
+            "plan40-identify-one-half-one-eighth-8",
+            "plan76-construct-five-sixths-one-tenth-30"
+          ],
+          "keys": [
+            "[{\"numerator\":\"3\",\"denominator\":\"8\"},{\"numerator\":\"5\",\"denominator\":\"9\"}]",
+            "1/2-1/8",
+            "5/6-1/10"
+          ],
+          "decision": "C:half-benchmark|I:left|T:shared-factor"
+        },
+        {
+          "seed": 31,
+          "shape": "C-I-T",
+          "ids": [
+            "plan45-compare-02",
+            "plan40-identify-two-thirds-five-twelfths-12",
+            "plan76-construct-five-sixths-one-tenth-30"
+          ],
+          "keys": [
+            "[{\"numerator\":\"3\",\"denominator\":\"8\"},{\"numerator\":\"5\",\"denominator\":\"8\"}]",
+            "2/3-5/12",
+            "5/6-1/10"
+          ],
+          "decision": "C:same-denominator|I:left|T:shared-factor"
+        },
+        {
+          "seed": 32,
+          "shape": "C-I-T",
+          "ids": [
+            "plan45-compare-09",
+            "plan40-identify-two-thirds-five-twelfths-12",
+            "plan40-construct-five-sixths-three-eighths-24"
+          ],
+          "keys": [
+            "[{\"numerator\":\"3\",\"denominator\":\"5\"},{\"numerator\":\"3\",\"denominator\":\"7\"}]",
+            "2/3-5/12",
+            "5/6-3/8"
+          ],
+          "decision": "C:same-count-unit-size|I:left|T:shared-factor"
+        },
+        {
+          "seed": 33,
+          "shape": "C-I-T",
+          "ids": [
+            "plan45-compare-09",
+            "plan40-identify-two-thirds-five-twelfths-12",
+            "plan76-construct-five-sixths-one-tenth-30"
+          ],
+          "keys": [
+            "[{\"numerator\":\"3\",\"denominator\":\"5\"},{\"numerator\":\"3\",\"denominator\":\"7\"}]",
+            "2/3-5/12",
+            "5/6-1/10"
+          ],
+          "decision": "C:same-count-unit-size|I:left|T:shared-factor"
+        },
+        {
+          "seed": 34,
+          "shape": "C-S-T",
+          "ids": [
+            "plan45-compare-09",
+            "plan40-inspect-two-thirds-one-fourth-12",
+            "plan40-construct-five-sixths-three-eighths-24"
+          ],
+          "keys": [
+            "[{\"numerator\":\"3\",\"denominator\":\"5\"},{\"numerator\":\"3\",\"denominator\":\"7\"}]",
+            "2/3-1/4",
+            "5/6-3/8"
+          ],
+          "decision": "C:same-count-unit-size|S:repair/keep|T:shared-factor"
+        },
+        {
+          "seed": 35,
+          "shape": "C-I-T",
+          "ids": [
+            "plan45-compare-09",
+            "plan76-identify-seven-eighths-one-fourth-8",
+            "plan40-construct-half-fifth-10"
+          ],
+          "keys": [
+            "[{\"numerator\":\"3\",\"denominator\":\"5\"},{\"numerator\":\"3\",\"denominator\":\"7\"}]",
+            "7/8-1/4",
+            "1/2-1/5"
+          ],
+          "decision": "C:same-count-unit-size|I:right|T:coprime"
+        },
+        {
+          "seed": 36,
+          "shape": "C-I-T",
+          "ids": [
+            "plan45-compare-02",
+            "plan40-identify-one-half-one-eighth-8",
+            "plan40-construct-half-fifth-10"
+          ],
+          "keys": [
+            "[{\"numerator\":\"3\",\"denominator\":\"8\"},{\"numerator\":\"5\",\"denominator\":\"8\"}]",
+            "1/2-1/8",
+            "1/2-1/5"
+          ],
+          "decision": "C:same-denominator|I:left|T:coprime"
+        },
+        {
+          "seed": 37,
+          "shape": "C-S-T",
+          "ids": [
+            "plan45-compare-09",
+            "plan40-inspect-two-thirds-one-fourth-12",
+            "plan40-construct-half-fifth-10"
+          ],
+          "keys": [
+            "[{\"numerator\":\"3\",\"denominator\":\"5\"},{\"numerator\":\"3\",\"denominator\":\"7\"}]",
+            "2/3-1/4",
+            "1/2-1/5"
+          ],
+          "decision": "C:same-count-unit-size|S:repair/keep|T:coprime"
+        },
+        {
+          "seed": 38,
+          "shape": "C-I-T",
+          "ids": [
+            "plan45-compare-10",
+            "plan40-identify-one-half-one-eighth-8",
+            "plan76-construct-five-sixths-one-tenth-30"
+          ],
+          "keys": [
+            "[{\"numerator\":\"3\",\"denominator\":\"8\"},{\"numerator\":\"5\",\"denominator\":\"9\"}]",
+            "1/2-1/8",
+            "5/6-1/10"
+          ],
+          "decision": "C:half-benchmark|I:left|T:shared-factor"
+        },
+        {
+          "seed": 39,
+          "shape": "C-I-T",
+          "ids": [
+            "plan45-compare-09",
+            "plan40-identify-two-thirds-five-twelfths-12",
+            "plan76-construct-five-sixths-one-tenth-30"
+          ],
+          "keys": [
+            "[{\"numerator\":\"3\",\"denominator\":\"5\"},{\"numerator\":\"3\",\"denominator\":\"7\"}]",
+            "2/3-5/12",
+            "5/6-1/10"
+          ],
+          "decision": "C:same-count-unit-size|I:left|T:shared-factor"
+        },
+        {
+          "seed": 40,
+          "shape": "C-I-T",
+          "ids": [
+            "plan45-compare-10",
+            "plan40-identify-two-thirds-five-twelfths-12",
+            "plan40-construct-five-sixths-three-eighths-24"
+          ],
+          "keys": [
+            "[{\"numerator\":\"3\",\"denominator\":\"8\"},{\"numerator\":\"5\",\"denominator\":\"9\"}]",
+            "2/3-5/12",
+            "5/6-3/8"
+          ],
+          "decision": "C:half-benchmark|I:left|T:shared-factor"
+        },
+        {
+          "seed": 41,
+          "shape": "C-I-T",
+          "ids": [
+            "plan45-compare-09",
+            "plan40-identify-two-thirds-five-twelfths-12",
+            "plan40-construct-five-sixths-three-eighths-24"
+          ],
+          "keys": [
+            "[{\"numerator\":\"3\",\"denominator\":\"5\"},{\"numerator\":\"3\",\"denominator\":\"7\"}]",
+            "2/3-5/12",
+            "5/6-3/8"
+          ],
+          "decision": "C:same-count-unit-size|I:left|T:shared-factor"
+        },
+        {
+          "seed": 42,
+          "shape": "C-I-T",
+          "ids": [
+            "plan45-compare-09",
+            "plan76-identify-seven-eighths-one-fourth-8",
+            "plan76-construct-five-sixths-one-tenth-30"
+          ],
+          "keys": [
+            "[{\"numerator\":\"3\",\"denominator\":\"5\"},{\"numerator\":\"3\",\"denominator\":\"7\"}]",
+            "7/8-1/4",
+            "5/6-1/10"
+          ],
+          "decision": "C:same-count-unit-size|I:right|T:shared-factor"
+        },
+        {
+          "seed": 43,
+          "shape": "C-S-T",
+          "ids": [
+            "plan45-compare-09",
+            "plan76-inspect-three-fourths-one-fifth-20",
+            "plan40-construct-half-fifth-10"
+          ],
+          "keys": [
+            "[{\"numerator\":\"3\",\"denominator\":\"5\"},{\"numerator\":\"3\",\"denominator\":\"7\"}]",
+            "3/4-1/5",
+            "1/2-1/5"
+          ],
+          "decision": "C:same-count-unit-size|S:keep/repair|T:coprime"
+        },
+        {
+          "seed": 44,
+          "shape": "C-I-S-T",
+          "ids": [
+            "plan45-compare-10",
+            "plan76-identify-seven-eighths-one-fourth-8",
+            "plan76-inspect-three-fourths-one-fifth-20",
+            "plan76-construct-five-sixths-one-tenth-30"
+          ],
+          "keys": [
+            "[{\"numerator\":\"3\",\"denominator\":\"8\"},{\"numerator\":\"5\",\"denominator\":\"9\"}]",
+            "7/8-1/4",
+            "3/4-1/5",
+            "5/6-1/10"
+          ],
+          "decision": "C:half-benchmark|I:right|S:keep/repair|T:shared-factor"
+        },
+        {
+          "seed": 45,
+          "shape": "C-I-T",
+          "ids": [
+            "plan45-compare-02",
+            "plan40-identify-two-thirds-five-twelfths-12",
+            "plan40-construct-five-sixths-three-eighths-24"
+          ],
+          "keys": [
+            "[{\"numerator\":\"3\",\"denominator\":\"8\"},{\"numerator\":\"5\",\"denominator\":\"8\"}]",
+            "2/3-5/12",
+            "5/6-3/8"
+          ],
+          "decision": "C:same-denominator|I:left|T:shared-factor"
+        },
+        {
+          "seed": 46,
+          "shape": "C-I-S-T",
+          "ids": [
+            "plan45-compare-10",
+            "plan76-identify-seven-eighths-one-fourth-8",
+            "plan76-inspect-three-fourths-one-fifth-20",
+            "plan76-construct-five-sixths-one-tenth-30"
+          ],
+          "keys": [
+            "[{\"numerator\":\"3\",\"denominator\":\"8\"},{\"numerator\":\"5\",\"denominator\":\"9\"}]",
+            "7/8-1/4",
+            "3/4-1/5",
+            "5/6-1/10"
+          ],
+          "decision": "C:half-benchmark|I:right|S:keep/repair|T:shared-factor"
+        },
+        {
+          "seed": 47,
+          "shape": "C-S-T",
+          "ids": [
+            "plan45-compare-10",
+            "plan40-inspect-two-thirds-one-fourth-12",
+            "plan76-construct-five-sixths-one-tenth-30"
+          ],
+          "keys": [
+            "[{\"numerator\":\"3\",\"denominator\":\"8\"},{\"numerator\":\"5\",\"denominator\":\"9\"}]",
+            "2/3-1/4",
+            "5/6-1/10"
+          ],
+          "decision": "C:half-benchmark|S:repair/keep|T:shared-factor"
+        },
+        {
+          "seed": 48,
+          "shape": "C-I-T",
+          "ids": [
+            "plan45-compare-10",
+            "plan40-identify-two-thirds-five-twelfths-12",
+            "plan40-construct-five-sixths-three-eighths-24"
+          ],
+          "keys": [
+            "[{\"numerator\":\"3\",\"denominator\":\"8\"},{\"numerator\":\"5\",\"denominator\":\"9\"}]",
+            "2/3-5/12",
+            "5/6-3/8"
+          ],
+          "decision": "C:half-benchmark|I:left|T:shared-factor"
+        },
+        {
+          "seed": 49,
+          "shape": "C-I-T",
+          "ids": [
+            "plan45-compare-10",
+            "plan40-identify-one-half-one-eighth-8",
+            "plan40-construct-half-fifth-10"
+          ],
+          "keys": [
+            "[{\"numerator\":\"3\",\"denominator\":\"8\"},{\"numerator\":\"5\",\"denominator\":\"9\"}]",
+            "1/2-1/8",
+            "1/2-1/5"
+          ],
+          "decision": "C:half-benchmark|I:left|T:coprime"
+        },
+        {
+          "seed": 50,
+          "shape": "C-S-T",
+          "ids": [
+            "plan45-compare-02",
+            "plan76-inspect-three-fourths-one-fifth-20",
+            "plan40-construct-half-fifth-10"
+          ],
+          "keys": [
+            "[{\"numerator\":\"3\",\"denominator\":\"8\"},{\"numerator\":\"5\",\"denominator\":\"8\"}]",
+            "3/4-1/5",
+            "1/2-1/5"
+          ],
+          "decision": "C:same-denominator|S:keep/repair|T:coprime"
+        },
+        {
+          "seed": 51,
+          "shape": "C-S-T",
+          "ids": [
+            "plan45-compare-10",
+            "plan76-inspect-three-fourths-one-fifth-20",
+            "plan40-construct-half-fifth-10"
+          ],
+          "keys": [
+            "[{\"numerator\":\"3\",\"denominator\":\"8\"},{\"numerator\":\"5\",\"denominator\":\"9\"}]",
+            "3/4-1/5",
+            "1/2-1/5"
+          ],
+          "decision": "C:half-benchmark|S:keep/repair|T:coprime"
+        },
+        {
+          "seed": 52,
+          "shape": "C-I-T",
+          "ids": [
+            "plan45-compare-09",
+            "plan40-identify-one-half-one-eighth-8",
+            "plan40-construct-half-fifth-10"
+          ],
+          "keys": [
+            "[{\"numerator\":\"3\",\"denominator\":\"5\"},{\"numerator\":\"3\",\"denominator\":\"7\"}]",
+            "1/2-1/8",
+            "1/2-1/5"
+          ],
+          "decision": "C:same-count-unit-size|I:left|T:coprime"
+        },
+        {
+          "seed": 53,
+          "shape": "C-S-T",
+          "ids": [
+            "plan45-compare-10",
+            "plan40-inspect-two-thirds-one-fourth-12",
+            "plan40-construct-half-fifth-10"
+          ],
+          "keys": [
+            "[{\"numerator\":\"3\",\"denominator\":\"8\"},{\"numerator\":\"5\",\"denominator\":\"9\"}]",
+            "2/3-1/4",
+            "1/2-1/5"
+          ],
+          "decision": "C:half-benchmark|S:repair/keep|T:coprime"
+        },
+        {
+          "seed": 54,
+          "shape": "C-I-S-T",
+          "ids": [
+            "plan45-compare-09",
+            "plan40-identify-one-half-one-eighth-8",
+            "plan76-inspect-three-fourths-one-fifth-20",
+            "plan76-construct-five-sixths-one-tenth-30"
+          ],
+          "keys": [
+            "[{\"numerator\":\"3\",\"denominator\":\"5\"},{\"numerator\":\"3\",\"denominator\":\"7\"}]",
+            "1/2-1/8",
+            "3/4-1/5",
+            "5/6-1/10"
+          ],
+          "decision": "C:same-count-unit-size|I:left|S:keep/repair|T:shared-factor"
+        },
+        {
+          "seed": 55,
+          "shape": "C-I-T",
+          "ids": [
+            "plan45-compare-09",
+            "plan76-identify-seven-eighths-one-fourth-8",
+            "plan76-construct-five-sixths-one-tenth-30"
+          ],
+          "keys": [
+            "[{\"numerator\":\"3\",\"denominator\":\"5\"},{\"numerator\":\"3\",\"denominator\":\"7\"}]",
+            "7/8-1/4",
+            "5/6-1/10"
+          ],
+          "decision": "C:same-count-unit-size|I:right|T:shared-factor"
+        },
+        {
+          "seed": 56,
+          "shape": "C-I-T",
+          "ids": [
+            "plan45-compare-02",
+            "plan76-identify-seven-eighths-one-fourth-8",
+            "plan76-construct-five-sixths-one-tenth-30"
+          ],
+          "keys": [
+            "[{\"numerator\":\"3\",\"denominator\":\"8\"},{\"numerator\":\"5\",\"denominator\":\"8\"}]",
+            "7/8-1/4",
+            "5/6-1/10"
+          ],
+          "decision": "C:same-denominator|I:right|T:shared-factor"
+        },
+        {
+          "seed": 57,
+          "shape": "C-I-T",
+          "ids": [
+            "plan45-compare-02",
+            "plan76-identify-seven-eighths-one-fourth-8",
+            "plan76-construct-five-sixths-one-tenth-30"
+          ],
+          "keys": [
+            "[{\"numerator\":\"3\",\"denominator\":\"8\"},{\"numerator\":\"5\",\"denominator\":\"8\"}]",
+            "7/8-1/4",
+            "5/6-1/10"
+          ],
+          "decision": "C:same-denominator|I:right|T:shared-factor"
+        },
+        {
+          "seed": 58,
+          "shape": "C-S-T",
+          "ids": [
+            "plan45-compare-09",
+            "plan76-inspect-three-fourths-one-fifth-20",
+            "plan76-construct-five-sixths-one-tenth-30"
+          ],
+          "keys": [
+            "[{\"numerator\":\"3\",\"denominator\":\"5\"},{\"numerator\":\"3\",\"denominator\":\"7\"}]",
+            "3/4-1/5",
+            "5/6-1/10"
+          ],
+          "decision": "C:same-count-unit-size|S:keep/repair|T:shared-factor"
+        },
+        {
+          "seed": 59,
+          "shape": "C-S-T",
+          "ids": [
+            "plan45-compare-10",
+            "plan40-inspect-two-thirds-one-fourth-12",
+            "plan40-construct-half-fifth-10"
+          ],
+          "keys": [
+            "[{\"numerator\":\"3\",\"denominator\":\"8\"},{\"numerator\":\"5\",\"denominator\":\"9\"}]",
+            "2/3-1/4",
+            "1/2-1/5"
+          ],
+          "decision": "C:half-benchmark|S:repair/keep|T:coprime"
+        },
+        {
+          "seed": 60,
+          "shape": "C-S-T",
+          "ids": [
+            "plan45-compare-09",
+            "plan40-inspect-two-thirds-one-fourth-12",
+            "plan40-construct-five-sixths-three-eighths-24"
+          ],
+          "keys": [
+            "[{\"numerator\":\"3\",\"denominator\":\"5\"},{\"numerator\":\"3\",\"denominator\":\"7\"}]",
+            "2/3-1/4",
+            "5/6-3/8"
+          ],
+          "decision": "C:same-count-unit-size|S:repair/keep|T:shared-factor"
+        },
+        {
+          "seed": 61,
+          "shape": "C-S-T",
+          "ids": [
+            "plan45-compare-02",
+            "plan76-inspect-three-fourths-one-fifth-20",
+            "plan76-construct-five-sixths-one-tenth-30"
+          ],
+          "keys": [
+            "[{\"numerator\":\"3\",\"denominator\":\"8\"},{\"numerator\":\"5\",\"denominator\":\"8\"}]",
+            "3/4-1/5",
+            "5/6-1/10"
+          ],
+          "decision": "C:same-denominator|S:keep/repair|T:shared-factor"
+        },
+        {
+          "seed": 62,
+          "shape": "C-I-T",
+          "ids": [
+            "plan45-compare-10",
+            "plan76-identify-seven-eighths-one-fourth-8",
+            "plan40-construct-five-sixths-three-eighths-24"
+          ],
+          "keys": [
+            "[{\"numerator\":\"3\",\"denominator\":\"8\"},{\"numerator\":\"5\",\"denominator\":\"9\"}]",
+            "7/8-1/4",
+            "5/6-3/8"
+          ],
+          "decision": "C:half-benchmark|I:right|T:shared-factor"
+        },
+        {
+          "seed": 63,
+          "shape": "C-S-T",
+          "ids": [
+            "plan45-compare-09",
+            "plan76-inspect-three-fourths-one-fifth-20",
+            "plan76-construct-five-sixths-one-tenth-30"
+          ],
+          "keys": [
+            "[{\"numerator\":\"3\",\"denominator\":\"5\"},{\"numerator\":\"3\",\"denominator\":\"7\"}]",
+            "3/4-1/5",
+            "5/6-1/10"
+          ],
+          "decision": "C:same-count-unit-size|S:keep/repair|T:shared-factor"
+        }
+      ]
+    },
+    {
+      "width": 600,
+      "scale": 200,
+      "eligible": [
+        "plan45-compare-02",
+        "plan45-compare-09",
+        "plan45-compare-10"
+      ],
+      "excluded": [
+        "plan40-identify-one-half-one-eighth-8",
+        "plan40-identify-two-thirds-five-twelfths-12",
+        "plan76-identify-seven-eighths-one-fourth-8",
+        "plan40-inspect-two-thirds-one-fourth-12",
+        "plan76-inspect-three-fourths-one-fifth-20",
+        "plan40-construct-half-fifth-10",
+        "plan40-construct-five-sixths-three-eighths-24",
+        "plan76-construct-five-sixths-one-tenth-30"
+      ],
+      "shapes": {
+        "single": 64
+      },
+      "decisions": {
+        "C:half-benchmark": 20,
+        "C:same-count-unit-size": 26,
+        "C:same-denominator": 18
+      },
+      "identities": {
+        "plan45-compare-02": 18,
+        "plan45-compare-09": 26,
+        "plan45-compare-10": 20
+      },
+      "problemKeys": {
+        "[{\"numerator\":\"3\",\"denominator\":\"5\"},{\"numerator\":\"3\",\"denominator\":\"7\"}]": 26,
+        "[{\"numerator\":\"3\",\"denominator\":\"8\"},{\"numerator\":\"5\",\"denominator\":\"8\"}]": 18,
+        "[{\"numerator\":\"3\",\"denominator\":\"8\"},{\"numerator\":\"5\",\"denominator\":\"9\"}]": 20
+      },
+      "itineraries": {
+        "plan45-compare-02": 18,
+        "plan45-compare-09": 26,
+        "plan45-compare-10": 20
+      },
+      "runs": [
+        {
+          "seed": 0,
+          "shape": "single",
+          "ids": [
+            "plan45-compare-02"
+          ],
+          "keys": [
+            "[{\"numerator\":\"3\",\"denominator\":\"8\"},{\"numerator\":\"5\",\"denominator\":\"8\"}]"
+          ],
+          "decision": "C:same-denominator"
+        },
+        {
+          "seed": 1,
+          "shape": "single",
+          "ids": [
+            "plan45-compare-02"
+          ],
+          "keys": [
+            "[{\"numerator\":\"3\",\"denominator\":\"8\"},{\"numerator\":\"5\",\"denominator\":\"8\"}]"
+          ],
+          "decision": "C:same-denominator"
+        },
+        {
+          "seed": 2,
+          "shape": "single",
+          "ids": [
+            "plan45-compare-09"
+          ],
+          "keys": [
+            "[{\"numerator\":\"3\",\"denominator\":\"5\"},{\"numerator\":\"3\",\"denominator\":\"7\"}]"
+          ],
+          "decision": "C:same-count-unit-size"
+        },
+        {
+          "seed": 3,
+          "shape": "single",
+          "ids": [
+            "plan45-compare-02"
+          ],
+          "keys": [
+            "[{\"numerator\":\"3\",\"denominator\":\"8\"},{\"numerator\":\"5\",\"denominator\":\"8\"}]"
+          ],
+          "decision": "C:same-denominator"
+        },
+        {
+          "seed": 4,
+          "shape": "single",
+          "ids": [
+            "plan45-compare-02"
+          ],
+          "keys": [
+            "[{\"numerator\":\"3\",\"denominator\":\"8\"},{\"numerator\":\"5\",\"denominator\":\"8\"}]"
+          ],
+          "decision": "C:same-denominator"
+        },
+        {
+          "seed": 5,
+          "shape": "single",
+          "ids": [
+            "plan45-compare-10"
+          ],
+          "keys": [
+            "[{\"numerator\":\"3\",\"denominator\":\"8\"},{\"numerator\":\"5\",\"denominator\":\"9\"}]"
+          ],
+          "decision": "C:half-benchmark"
+        },
+        {
+          "seed": 6,
+          "shape": "single",
+          "ids": [
+            "plan45-compare-09"
+          ],
+          "keys": [
+            "[{\"numerator\":\"3\",\"denominator\":\"5\"},{\"numerator\":\"3\",\"denominator\":\"7\"}]"
+          ],
+          "decision": "C:same-count-unit-size"
+        },
+        {
+          "seed": 7,
+          "shape": "single",
+          "ids": [
+            "plan45-compare-10"
+          ],
+          "keys": [
+            "[{\"numerator\":\"3\",\"denominator\":\"8\"},{\"numerator\":\"5\",\"denominator\":\"9\"}]"
+          ],
+          "decision": "C:half-benchmark"
+        },
+        {
+          "seed": 8,
+          "shape": "single",
+          "ids": [
+            "plan45-compare-10"
+          ],
+          "keys": [
+            "[{\"numerator\":\"3\",\"denominator\":\"8\"},{\"numerator\":\"5\",\"denominator\":\"9\"}]"
+          ],
+          "decision": "C:half-benchmark"
+        },
+        {
+          "seed": 9,
+          "shape": "single",
+          "ids": [
+            "plan45-compare-10"
+          ],
+          "keys": [
+            "[{\"numerator\":\"3\",\"denominator\":\"8\"},{\"numerator\":\"5\",\"denominator\":\"9\"}]"
+          ],
+          "decision": "C:half-benchmark"
+        },
+        {
+          "seed": 10,
+          "shape": "single",
+          "ids": [
+            "plan45-compare-10"
+          ],
+          "keys": [
+            "[{\"numerator\":\"3\",\"denominator\":\"8\"},{\"numerator\":\"5\",\"denominator\":\"9\"}]"
+          ],
+          "decision": "C:half-benchmark"
+        },
+        {
+          "seed": 11,
+          "shape": "single",
+          "ids": [
+            "plan45-compare-09"
+          ],
+          "keys": [
+            "[{\"numerator\":\"3\",\"denominator\":\"5\"},{\"numerator\":\"3\",\"denominator\":\"7\"}]"
+          ],
+          "decision": "C:same-count-unit-size"
+        },
+        {
+          "seed": 12,
+          "shape": "single",
+          "ids": [
+            "plan45-compare-10"
+          ],
+          "keys": [
+            "[{\"numerator\":\"3\",\"denominator\":\"8\"},{\"numerator\":\"5\",\"denominator\":\"9\"}]"
+          ],
+          "decision": "C:half-benchmark"
+        },
+        {
+          "seed": 13,
+          "shape": "single",
+          "ids": [
+            "plan45-compare-09"
+          ],
+          "keys": [
+            "[{\"numerator\":\"3\",\"denominator\":\"5\"},{\"numerator\":\"3\",\"denominator\":\"7\"}]"
+          ],
+          "decision": "C:same-count-unit-size"
+        },
+        {
+          "seed": 14,
+          "shape": "single",
+          "ids": [
+            "plan45-compare-10"
+          ],
+          "keys": [
+            "[{\"numerator\":\"3\",\"denominator\":\"8\"},{\"numerator\":\"5\",\"denominator\":\"9\"}]"
+          ],
+          "decision": "C:half-benchmark"
+        },
+        {
+          "seed": 15,
+          "shape": "single",
+          "ids": [
+            "plan45-compare-02"
+          ],
+          "keys": [
+            "[{\"numerator\":\"3\",\"denominator\":\"8\"},{\"numerator\":\"5\",\"denominator\":\"8\"}]"
+          ],
+          "decision": "C:same-denominator"
+        },
+        {
+          "seed": 16,
+          "shape": "single",
+          "ids": [
+            "plan45-compare-09"
+          ],
+          "keys": [
+            "[{\"numerator\":\"3\",\"denominator\":\"5\"},{\"numerator\":\"3\",\"denominator\":\"7\"}]"
+          ],
+          "decision": "C:same-count-unit-size"
+        },
+        {
+          "seed": 17,
+          "shape": "single",
+          "ids": [
+            "plan45-compare-02"
+          ],
+          "keys": [
+            "[{\"numerator\":\"3\",\"denominator\":\"8\"},{\"numerator\":\"5\",\"denominator\":\"8\"}]"
+          ],
+          "decision": "C:same-denominator"
+        },
+        {
+          "seed": 18,
+          "shape": "single",
+          "ids": [
+            "plan45-compare-10"
+          ],
+          "keys": [
+            "[{\"numerator\":\"3\",\"denominator\":\"8\"},{\"numerator\":\"5\",\"denominator\":\"9\"}]"
+          ],
+          "decision": "C:half-benchmark"
+        },
+        {
+          "seed": 19,
+          "shape": "single",
+          "ids": [
+            "plan45-compare-09"
+          ],
+          "keys": [
+            "[{\"numerator\":\"3\",\"denominator\":\"5\"},{\"numerator\":\"3\",\"denominator\":\"7\"}]"
+          ],
+          "decision": "C:same-count-unit-size"
+        },
+        {
+          "seed": 20,
+          "shape": "single",
+          "ids": [
+            "plan45-compare-02"
+          ],
+          "keys": [
+            "[{\"numerator\":\"3\",\"denominator\":\"8\"},{\"numerator\":\"5\",\"denominator\":\"8\"}]"
+          ],
+          "decision": "C:same-denominator"
+        },
+        {
+          "seed": 21,
+          "shape": "single",
+          "ids": [
+            "plan45-compare-02"
+          ],
+          "keys": [
+            "[{\"numerator\":\"3\",\"denominator\":\"8\"},{\"numerator\":\"5\",\"denominator\":\"8\"}]"
+          ],
+          "decision": "C:same-denominator"
+        },
+        {
+          "seed": 22,
+          "shape": "single",
+          "ids": [
+            "plan45-compare-09"
+          ],
+          "keys": [
+            "[{\"numerator\":\"3\",\"denominator\":\"5\"},{\"numerator\":\"3\",\"denominator\":\"7\"}]"
+          ],
+          "decision": "C:same-count-unit-size"
+        },
+        {
+          "seed": 23,
+          "shape": "single",
+          "ids": [
+            "plan45-compare-09"
+          ],
+          "keys": [
+            "[{\"numerator\":\"3\",\"denominator\":\"5\"},{\"numerator\":\"3\",\"denominator\":\"7\"}]"
+          ],
+          "decision": "C:same-count-unit-size"
+        },
+        {
+          "seed": 24,
+          "shape": "single",
+          "ids": [
+            "plan45-compare-02"
+          ],
+          "keys": [
+            "[{\"numerator\":\"3\",\"denominator\":\"8\"},{\"numerator\":\"5\",\"denominator\":\"8\"}]"
+          ],
+          "decision": "C:same-denominator"
+        },
+        {
+          "seed": 25,
+          "shape": "single",
+          "ids": [
+            "plan45-compare-02"
+          ],
+          "keys": [
+            "[{\"numerator\":\"3\",\"denominator\":\"8\"},{\"numerator\":\"5\",\"denominator\":\"8\"}]"
+          ],
+          "decision": "C:same-denominator"
+        },
+        {
+          "seed": 26,
+          "shape": "single",
+          "ids": [
+            "plan45-compare-09"
+          ],
+          "keys": [
+            "[{\"numerator\":\"3\",\"denominator\":\"5\"},{\"numerator\":\"3\",\"denominator\":\"7\"}]"
+          ],
+          "decision": "C:same-count-unit-size"
+        },
+        {
+          "seed": 27,
+          "shape": "single",
+          "ids": [
+            "plan45-compare-09"
+          ],
+          "keys": [
+            "[{\"numerator\":\"3\",\"denominator\":\"5\"},{\"numerator\":\"3\",\"denominator\":\"7\"}]"
+          ],
+          "decision": "C:same-count-unit-size"
+        },
+        {
+          "seed": 28,
+          "shape": "single",
+          "ids": [
+            "plan45-compare-09"
+          ],
+          "keys": [
+            "[{\"numerator\":\"3\",\"denominator\":\"5\"},{\"numerator\":\"3\",\"denominator\":\"7\"}]"
+          ],
+          "decision": "C:same-count-unit-size"
+        },
+        {
+          "seed": 29,
+          "shape": "single",
+          "ids": [
+            "plan45-compare-02"
+          ],
+          "keys": [
+            "[{\"numerator\":\"3\",\"denominator\":\"8\"},{\"numerator\":\"5\",\"denominator\":\"8\"}]"
+          ],
+          "decision": "C:same-denominator"
+        },
+        {
+          "seed": 30,
+          "shape": "single",
+          "ids": [
+            "plan45-compare-10"
+          ],
+          "keys": [
+            "[{\"numerator\":\"3\",\"denominator\":\"8\"},{\"numerator\":\"5\",\"denominator\":\"9\"}]"
+          ],
+          "decision": "C:half-benchmark"
+        },
+        {
+          "seed": 31,
+          "shape": "single",
+          "ids": [
+            "plan45-compare-02"
+          ],
+          "keys": [
+            "[{\"numerator\":\"3\",\"denominator\":\"8\"},{\"numerator\":\"5\",\"denominator\":\"8\"}]"
+          ],
+          "decision": "C:same-denominator"
+        },
+        {
+          "seed": 32,
+          "shape": "single",
+          "ids": [
+            "plan45-compare-09"
+          ],
+          "keys": [
+            "[{\"numerator\":\"3\",\"denominator\":\"5\"},{\"numerator\":\"3\",\"denominator\":\"7\"}]"
+          ],
+          "decision": "C:same-count-unit-size"
+        },
+        {
+          "seed": 33,
+          "shape": "single",
+          "ids": [
+            "plan45-compare-09"
+          ],
+          "keys": [
+            "[{\"numerator\":\"3\",\"denominator\":\"5\"},{\"numerator\":\"3\",\"denominator\":\"7\"}]"
+          ],
+          "decision": "C:same-count-unit-size"
+        },
+        {
+          "seed": 34,
+          "shape": "single",
+          "ids": [
+            "plan45-compare-09"
+          ],
+          "keys": [
+            "[{\"numerator\":\"3\",\"denominator\":\"5\"},{\"numerator\":\"3\",\"denominator\":\"7\"}]"
+          ],
+          "decision": "C:same-count-unit-size"
+        },
+        {
+          "seed": 35,
+          "shape": "single",
+          "ids": [
+            "plan45-compare-09"
+          ],
+          "keys": [
+            "[{\"numerator\":\"3\",\"denominator\":\"5\"},{\"numerator\":\"3\",\"denominator\":\"7\"}]"
+          ],
+          "decision": "C:same-count-unit-size"
+        },
+        {
+          "seed": 36,
+          "shape": "single",
+          "ids": [
+            "plan45-compare-02"
+          ],
+          "keys": [
+            "[{\"numerator\":\"3\",\"denominator\":\"8\"},{\"numerator\":\"5\",\"denominator\":\"8\"}]"
+          ],
+          "decision": "C:same-denominator"
+        },
+        {
+          "seed": 37,
+          "shape": "single",
+          "ids": [
+            "plan45-compare-09"
+          ],
+          "keys": [
+            "[{\"numerator\":\"3\",\"denominator\":\"5\"},{\"numerator\":\"3\",\"denominator\":\"7\"}]"
+          ],
+          "decision": "C:same-count-unit-size"
+        },
+        {
+          "seed": 38,
+          "shape": "single",
+          "ids": [
+            "plan45-compare-10"
+          ],
+          "keys": [
+            "[{\"numerator\":\"3\",\"denominator\":\"8\"},{\"numerator\":\"5\",\"denominator\":\"9\"}]"
+          ],
+          "decision": "C:half-benchmark"
+        },
+        {
+          "seed": 39,
+          "shape": "single",
+          "ids": [
+            "plan45-compare-09"
+          ],
+          "keys": [
+            "[{\"numerator\":\"3\",\"denominator\":\"5\"},{\"numerator\":\"3\",\"denominator\":\"7\"}]"
+          ],
+          "decision": "C:same-count-unit-size"
+        },
+        {
+          "seed": 40,
+          "shape": "single",
+          "ids": [
+            "plan45-compare-10"
+          ],
+          "keys": [
+            "[{\"numerator\":\"3\",\"denominator\":\"8\"},{\"numerator\":\"5\",\"denominator\":\"9\"}]"
+          ],
+          "decision": "C:half-benchmark"
+        },
+        {
+          "seed": 41,
+          "shape": "single",
+          "ids": [
+            "plan45-compare-09"
+          ],
+          "keys": [
+            "[{\"numerator\":\"3\",\"denominator\":\"5\"},{\"numerator\":\"3\",\"denominator\":\"7\"}]"
+          ],
+          "decision": "C:same-count-unit-size"
+        },
+        {
+          "seed": 42,
+          "shape": "single",
+          "ids": [
+            "plan45-compare-09"
+          ],
+          "keys": [
+            "[{\"numerator\":\"3\",\"denominator\":\"5\"},{\"numerator\":\"3\",\"denominator\":\"7\"}]"
+          ],
+          "decision": "C:same-count-unit-size"
+        },
+        {
+          "seed": 43,
+          "shape": "single",
+          "ids": [
+            "plan45-compare-09"
+          ],
+          "keys": [
+            "[{\"numerator\":\"3\",\"denominator\":\"5\"},{\"numerator\":\"3\",\"denominator\":\"7\"}]"
+          ],
+          "decision": "C:same-count-unit-size"
+        },
+        {
+          "seed": 44,
+          "shape": "single",
+          "ids": [
+            "plan45-compare-10"
+          ],
+          "keys": [
+            "[{\"numerator\":\"3\",\"denominator\":\"8\"},{\"numerator\":\"5\",\"denominator\":\"9\"}]"
+          ],
+          "decision": "C:half-benchmark"
+        },
+        {
+          "seed": 45,
+          "shape": "single",
+          "ids": [
+            "plan45-compare-02"
+          ],
+          "keys": [
+            "[{\"numerator\":\"3\",\"denominator\":\"8\"},{\"numerator\":\"5\",\"denominator\":\"8\"}]"
+          ],
+          "decision": "C:same-denominator"
+        },
+        {
+          "seed": 46,
+          "shape": "single",
+          "ids": [
+            "plan45-compare-10"
+          ],
+          "keys": [
+            "[{\"numerator\":\"3\",\"denominator\":\"8\"},{\"numerator\":\"5\",\"denominator\":\"9\"}]"
+          ],
+          "decision": "C:half-benchmark"
+        },
+        {
+          "seed": 47,
+          "shape": "single",
+          "ids": [
+            "plan45-compare-10"
+          ],
+          "keys": [
+            "[{\"numerator\":\"3\",\"denominator\":\"8\"},{\"numerator\":\"5\",\"denominator\":\"9\"}]"
+          ],
+          "decision": "C:half-benchmark"
+        },
+        {
+          "seed": 48,
+          "shape": "single",
+          "ids": [
+            "plan45-compare-10"
+          ],
+          "keys": [
+            "[{\"numerator\":\"3\",\"denominator\":\"8\"},{\"numerator\":\"5\",\"denominator\":\"9\"}]"
+          ],
+          "decision": "C:half-benchmark"
+        },
+        {
+          "seed": 49,
+          "shape": "single",
+          "ids": [
+            "plan45-compare-10"
+          ],
+          "keys": [
+            "[{\"numerator\":\"3\",\"denominator\":\"8\"},{\"numerator\":\"5\",\"denominator\":\"9\"}]"
+          ],
+          "decision": "C:half-benchmark"
+        },
+        {
+          "seed": 50,
+          "shape": "single",
+          "ids": [
+            "plan45-compare-02"
+          ],
+          "keys": [
+            "[{\"numerator\":\"3\",\"denominator\":\"8\"},{\"numerator\":\"5\",\"denominator\":\"8\"}]"
+          ],
+          "decision": "C:same-denominator"
+        },
+        {
+          "seed": 51,
+          "shape": "single",
+          "ids": [
+            "plan45-compare-10"
+          ],
+          "keys": [
+            "[{\"numerator\":\"3\",\"denominator\":\"8\"},{\"numerator\":\"5\",\"denominator\":\"9\"}]"
+          ],
+          "decision": "C:half-benchmark"
+        },
+        {
+          "seed": 52,
+          "shape": "single",
+          "ids": [
+            "plan45-compare-09"
+          ],
+          "keys": [
+            "[{\"numerator\":\"3\",\"denominator\":\"5\"},{\"numerator\":\"3\",\"denominator\":\"7\"}]"
+          ],
+          "decision": "C:same-count-unit-size"
+        },
+        {
+          "seed": 53,
+          "shape": "single",
+          "ids": [
+            "plan45-compare-10"
+          ],
+          "keys": [
+            "[{\"numerator\":\"3\",\"denominator\":\"8\"},{\"numerator\":\"5\",\"denominator\":\"9\"}]"
+          ],
+          "decision": "C:half-benchmark"
+        },
+        {
+          "seed": 54,
+          "shape": "single",
+          "ids": [
+            "plan45-compare-09"
+          ],
+          "keys": [
+            "[{\"numerator\":\"3\",\"denominator\":\"5\"},{\"numerator\":\"3\",\"denominator\":\"7\"}]"
+          ],
+          "decision": "C:same-count-unit-size"
+        },
+        {
+          "seed": 55,
+          "shape": "single",
+          "ids": [
+            "plan45-compare-09"
+          ],
+          "keys": [
+            "[{\"numerator\":\"3\",\"denominator\":\"5\"},{\"numerator\":\"3\",\"denominator\":\"7\"}]"
+          ],
+          "decision": "C:same-count-unit-size"
+        },
+        {
+          "seed": 56,
+          "shape": "single",
+          "ids": [
+            "plan45-compare-02"
+          ],
+          "keys": [
+            "[{\"numerator\":\"3\",\"denominator\":\"8\"},{\"numerator\":\"5\",\"denominator\":\"8\"}]"
+          ],
+          "decision": "C:same-denominator"
+        },
+        {
+          "seed": 57,
+          "shape": "single",
+          "ids": [
+            "plan45-compare-02"
+          ],
+          "keys": [
+            "[{\"numerator\":\"3\",\"denominator\":\"8\"},{\"numerator\":\"5\",\"denominator\":\"8\"}]"
+          ],
+          "decision": "C:same-denominator"
+        },
+        {
+          "seed": 58,
+          "shape": "single",
+          "ids": [
+            "plan45-compare-09"
+          ],
+          "keys": [
+            "[{\"numerator\":\"3\",\"denominator\":\"5\"},{\"numerator\":\"3\",\"denominator\":\"7\"}]"
+          ],
+          "decision": "C:same-count-unit-size"
+        },
+        {
+          "seed": 59,
+          "shape": "single",
+          "ids": [
+            "plan45-compare-10"
+          ],
+          "keys": [
+            "[{\"numerator\":\"3\",\"denominator\":\"8\"},{\"numerator\":\"5\",\"denominator\":\"9\"}]"
+          ],
+          "decision": "C:half-benchmark"
+        },
+        {
+          "seed": 60,
+          "shape": "single",
+          "ids": [
+            "plan45-compare-09"
+          ],
+          "keys": [
+            "[{\"numerator\":\"3\",\"denominator\":\"5\"},{\"numerator\":\"3\",\"denominator\":\"7\"}]"
+          ],
+          "decision": "C:same-count-unit-size"
+        },
+        {
+          "seed": 61,
+          "shape": "single",
+          "ids": [
+            "plan45-compare-02"
+          ],
+          "keys": [
+            "[{\"numerator\":\"3\",\"denominator\":\"8\"},{\"numerator\":\"5\",\"denominator\":\"8\"}]"
+          ],
+          "decision": "C:same-denominator"
+        },
+        {
+          "seed": 62,
+          "shape": "single",
+          "ids": [
+            "plan45-compare-10"
+          ],
+          "keys": [
+            "[{\"numerator\":\"3\",\"denominator\":\"8\"},{\"numerator\":\"5\",\"denominator\":\"9\"}]"
+          ],
+          "decision": "C:half-benchmark"
+        },
+        {
+          "seed": 63,
+          "shape": "single",
+          "ids": [
+            "plan45-compare-09"
+          ],
+          "keys": [
+            "[{\"numerator\":\"3\",\"denominator\":\"5\"},{\"numerator\":\"3\",\"denominator\":\"7\"}]"
+          ],
+          "decision": "C:same-count-unit-size"
+        }
+      ]
+    }
+  ]
+}

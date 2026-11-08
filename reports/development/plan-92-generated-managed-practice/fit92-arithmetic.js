@@ -23,6 +23,8 @@ const item = base.items.find(candidate => candidate.id === itemId);
 if (!item) throw new Error(`Public subtraction route does not contain ${itemId}.`);
 const app = createFractionFlowApp({ root: document.querySelector('#app'), practiceTypes: [Object.freeze({ ...base, items: Object.freeze([item]) })], presentationMode: 'instant-test' }).mount();
 document.querySelector('.app-gear-button')?.click();
+const conditionId = new URLSearchParams(location.search).get('condition');
+if (conditionId) [...document.querySelectorAll("[data-condition-id]")].find(option => option.getAttribute("data-condition-id") === conditionId)?.click();
 document.querySelector(`[data-support-id="${supportId}"]`)?.click();
 const chooser = document.querySelector('[data-entry-chooser]');
 if (chooser?.getAttribute('aria-expanded') === 'false') chooser.click();

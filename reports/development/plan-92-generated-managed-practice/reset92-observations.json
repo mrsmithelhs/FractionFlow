@@ -1,0 +1,22 @@
+{
+  "scope": "Disposable uniquely named same-origin test database; old production v1 adapter, report-local minimal v2 fixture, two pages of one browser context; no real learner data. Synthetic sequential orderings do not prove all races or production migration. No expanded recording integrated.",
+  "browser": "157.0.8103.38",
+  "results": {
+    "legacy enabled before upgrade": "passed",
+    "old v1 adapter fails closed after upgrade": "passed",
+    "both flags preserved": "passed",
+    "write before clear accepted": "passed",
+    "clear erases and preserves flags": "passed",
+    "delayed stale write refused": "passed",
+    "stale prepared choice refused": "passed",
+    "current choice installs": "passed",
+    "clear leaves already installed fixture active": "passed",
+    "clear queues while choice holds lock": "passed",
+    "held choice installs before queued clear": "passed",
+    "queued clear completes after choice": "passed",
+    "non-closing v1 upgrade reports blocked": "passed",
+    "late blocked upgrade retires without changing version": "passed",
+    "stop fences delayed write": "passed",
+    "missing lock fails closed": "passed"
+  }
+}

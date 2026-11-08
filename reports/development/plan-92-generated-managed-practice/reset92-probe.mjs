@@ -1,0 +1,34 @@
+import {createServer} from 'vite';import {chromium} from 'playwright';import {writeFile} from 'node:fs/promises';
+const dir='reports/development/plan-92-generated-managed-practice';const server=await createServer({configFile:false,root:process.cwd(),server:{host:'127.0.0.1',port:0,strictPort:true},logLevel:'error'});let browser;
+try{
+ await server.listen();browser=await chromium.launch({headless:true,channel:'chrome',args:['--no-proxy-server']});const context=await browser.newContext();const a=await context.newPage(),b=await context.newPage();const url=`http://127.0.0.1:${server.httpServer.address().port}/${dir}/reset92-fixture.html`;
+ await Promise.all([a.goto(url),b.goto(url)]);await Promise.all([a.waitForFunction(()=>window.resetReady),b.waitForFunction(()=>window.resetReady)]);
+ const name=`ff92-disposable-${Date.now()}-${Math.random()}`;const results={};
+ const assert=(test,label)=>{if(!test)throw Error(label);results[label]='passed';};
+ const old=await a.evaluate(name=>window.resetProbe.oldOpen(name),name);assert(old.enabled,'legacy enabled before upgrade');
+ await b.evaluate(name=>window.resetProbe.upgrade(name),name);await b.evaluate(()=>window.resetProbe.initialize());
+ const oldRead=await a.evaluate(()=>window.resetProbe.oldRead().then(()=>null,e=>e.name));assert(oldRead==='VersionError','old v1 adapter fails closed after upgrade');
+ await a.evaluate(name=>window.resetProbe.upgrade(name),name);
+ let initial=await a.evaluate(()=>window.resetProbe.snapshot());assert(initial.legacy.enabled&&initial.expanded.enabled,'both flags preserved');
+ const first=initial.expanded.epoch;assert(await a.evaluate(epoch=>window.resetProbe.add(epoch,'before-clear'),first)==='written','write before clear accepted');
+ await b.evaluate(()=>window.resetProbe.clear());let cleared=await a.evaluate(()=>window.resetProbe.snapshot());assert(cleared.expanded.entries.length===0&&cleared.legacy.enabled&&cleared.expanded.enabled&&cleared.expanded.epoch!==first,'clear erases and preserves flags');
+ assert(await a.evaluate(epoch=>window.resetProbe.add(epoch,'delayed'),first)==='stale','delayed stale write refused');
+ assert(await a.evaluate(epoch=>window.resetProbe.choice(epoch,()=>{window.installed=true}),first)==='stale','stale prepared choice refused');
+ const second=cleared.expanded.epoch;assert(await a.evaluate(epoch=>window.resetProbe.choice(epoch,()=>{window.installed=true}),second)==='installed','current choice installs');
+ await b.evaluate(()=>window.resetProbe.clear());assert(await a.evaluate(()=>window.installed===true),'clear leaves already installed fixture active');
+ const heldChoice=a.evaluate(epoch=>navigator.locks.request('ff92-disposable-probe',async()=>{const s=await window.resetProbe.snapshot();if(s.expanded.epoch!==epoch)throw Error('unexpected epoch');window.lockHeld=true;await new Promise(resolve=>window.releaseFixtureLock=resolve);window.heldChoiceInstalled=true;return 'installed';}), (await a.evaluate(()=>window.resetProbe.snapshot())).expanded.epoch);
+ await a.waitForFunction(()=>window.lockHeld===true);
+ const queuedClear=b.evaluate(async()=>{window.clearStarted=true;const r=await window.resetProbe.clear();window.clearDone=true;return r;});
+ await b.waitForFunction(()=>window.clearStarted===true);
+ await b.waitForFunction(async()=>{const q=await navigator.locks.query();return q.pending.some(x=>x.name==='ff92-disposable-probe');});
+ assert(!(await b.evaluate(()=>Boolean(window.clearDone))),'clear queues while choice holds lock');
+ await a.evaluate(()=>window.releaseFixtureLock());assert(await heldChoice==='installed','held choice installs before queued clear');assert(await queuedClear==='cleared','queued clear completes after choice');
+ const blockedName=`${name}-blocked`;await a.evaluate(name=>new Promise((resolve,reject)=>{const req=indexedDB.open(name,1);req.onupgradeneeded=()=>req.result.createObjectStore('record');req.onsuccess=()=>{window.nonClosingV1=req.result;resolve();};req.onerror=()=>reject(req.error);}),blockedName);
+ assert(await b.evaluate(name=>window.resetProbe.upgrade(name).then(()=>false,e=>e.message==='upgrade-blocked'),blockedName),'non-closing v1 upgrade reports blocked');
+ await a.evaluate(()=>window.nonClosingV1.close());
+ assert(await a.evaluate(name=>new Promise((resolve,reject)=>{const req=indexedDB.open(name,1);req.onsuccess=()=>{const version=req.result.version;req.result.close();resolve(version===1);};req.onerror=()=>reject(req.error);}),blockedName),'late blocked upgrade retires without changing version');
+ const current=await a.evaluate(()=>window.resetProbe.snapshot());await b.evaluate(()=>window.resetProbe.stop());assert(await a.evaluate(epoch=>window.resetProbe.add(epoch,'after-stop'),current.expanded.epoch)==='stale','stop fences delayed write');
+ assert(await a.evaluate(async()=>{const saved=navigator.locks;try{Object.defineProperty(navigator,'locks',{configurable:true,value:undefined});await window.resetProbe.clear();return false;}catch(e){return e.message==='lock-unavailable';}finally{Object.defineProperty(navigator,'locks',{configurable:true,value:saved});}}),'missing lock fails closed');
+ await Promise.all([a.evaluate(()=>window.resetProbe.close()),b.evaluate(()=>window.resetProbe.close())]);await context.close();
+ await writeFile(`${dir}/reset92-observations.json`,JSON.stringify({scope:'Disposable uniquely named same-origin test database; old production v1 adapter, report-local minimal v2 fixture, two pages of one browser context; no real learner data. Synthetic sequential orderings do not prove all races or production migration. No expanded recording integrated.',browser:browser.version(),results},null,2)+'\n');console.log(results);
+}finally{await browser?.close();await server.close();}
