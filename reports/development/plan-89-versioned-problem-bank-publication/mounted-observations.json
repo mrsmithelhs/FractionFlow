@@ -1,0 +1,39 @@
+{
+  "method": "local Vite report-only harness injects registered v3 practice type into real createFractionFlowApp; real chooser and controls",
+  "browser": "157.0.8103.38",
+  "results": [
+    {
+      "config": {
+        "name": "narrow-visual",
+        "width": 360,
+        "height": 740,
+        "linear": false,
+        "enlarged": false
+      },
+      "itemsCompleted": 30,
+      "boundary": [
+        "plan76-identify-three-fourths-one-eighth-8",
+        "plan85-isolated-construct-five-sixths-one-fourth-12"
+      ],
+      "last": "plan85-isolated-identify-five-sixths-one-half-6",
+      "endNextVisible": false
+    },
+    {
+      "config": {
+        "name": "enlarged-linear",
+        "width": 1093,
+        "height": 740,
+        "linear": true,
+        "enlarged": true
+      },
+      "itemsCompleted": 30,
+      "boundary": [
+        "plan76-identify-three-fourths-one-eighth-8",
+        "plan85-isolated-construct-five-sixths-one-fourth-12"
+      ],
+      "last": "plan85-isolated-identify-five-sixths-one-half-6",
+      "endNextVisible": false
+    }
+  ],
+  "pageErrors": []
+}

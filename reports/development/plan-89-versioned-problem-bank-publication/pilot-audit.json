@@ -1,0 +1,1020 @@
+{
+  "baseline": "fd97c687af922b9e341212c5e2c8d4502fd855fa",
+  "scope": "current chooser pairs, Plan 40 registry/holdouts; source-text identity scan",
+  "inventory": [
+    {
+      "type": "sum-under-one",
+      "item": "two-thirds-plus-one-fourth",
+      "kind": "addition",
+      "source": "fixture:curated-relatively-prime-addition-non-least@plan03-fixtures-v1",
+      "normalized": "2/3 | 1/4"
+    },
+    {
+      "type": "sum-under-one",
+      "item": "one-half-plus-one-third",
+      "kind": "addition",
+      "source": "fixture:curated-relatively-prime-addition-one-half-one-third@plan26-fixtures-v1",
+      "normalized": "1/2 | 1/3"
+    },
+    {
+      "type": "sum-under-one",
+      "item": "one-half-plus-one-fifth",
+      "kind": "addition",
+      "source": "fixture:curated-relatively-prime-addition-one-half-one-fifth@plan32-record-v1",
+      "normalized": "1/2 | 1/5"
+    },
+    {
+      "type": "sum-under-one",
+      "item": "one-half-plus-two-fifths",
+      "kind": "addition",
+      "source": "fixture:curated-relatively-prime-addition-one-half-two-fifths@plan32-record-v1",
+      "normalized": "1/2 | 2/5"
+    },
+    {
+      "type": "sum-under-one",
+      "item": "one-third-plus-one-fourth",
+      "kind": "addition",
+      "source": "fixture:curated-relatively-prime-addition-one-third-one-fourth@plan32-record-v1",
+      "normalized": "1/3 | 1/4"
+    },
+    {
+      "type": "sum-under-one",
+      "item": "one-third-plus-one-fifth",
+      "kind": "addition",
+      "source": "fixture:curated-relatively-prime-addition-one-third-one-fifth@plan32-record-v1",
+      "normalized": "1/3 | 1/5"
+    },
+    {
+      "type": "sum-under-one",
+      "item": "one-third-plus-two-fifths",
+      "kind": "addition",
+      "source": "fixture:curated-relatively-prime-addition-one-third-two-fifths@plan32-record-v1",
+      "normalized": "1/3 | 2/5"
+    },
+    {
+      "type": "sum-under-one",
+      "item": "two-thirds-plus-one-fifth",
+      "kind": "addition",
+      "source": "fixture:curated-relatively-prime-addition-two-thirds-one-fifth@plan32-record-v1",
+      "normalized": "2/3 | 1/5"
+    },
+    {
+      "type": "sum-under-one",
+      "item": "three-fifths-plus-one-third",
+      "kind": "addition",
+      "source": "fixture:curated-relatively-prime-addition-three-fifths-one-third@plan32-record-v1",
+      "normalized": "3/5 | 1/3"
+    },
+    {
+      "type": "sum-under-one",
+      "item": "one-sixth-plus-one-fourth",
+      "kind": "addition",
+      "source": "fixture:curated-shared-factor-addition-one-sixth-one-fourth@plan19-record-v1",
+      "normalized": "1/6 | 1/4"
+    },
+    {
+      "type": "sum-under-one",
+      "item": "two-thirds-plus-three-fourths",
+      "kind": "addition",
+      "source": "fixture:curated-relatively-prime-addition-crossing-one-whole-two-thirds-three-fourths@plan17-record-v1",
+      "normalized": "2/3 | 3/4"
+    },
+    {
+      "type": "sum-under-one",
+      "item": "nested-one-half-plus-three-eighths",
+      "kind": "addition",
+      "source": "fixture:curated-nested-addition-one-half-three-eighths@plan18-record-v1",
+      "normalized": "1/2 | 3/8"
+    },
+    {
+      "type": "sum-under-one",
+      "item": "nested-three-eighths-plus-one-half",
+      "kind": "addition",
+      "source": "fixture:curated-nested-addition-three-eighths-one-half@plan18-record-v1",
+      "normalized": "3/8 | 1/2"
+    },
+    {
+      "type": "sum-under-one",
+      "item": "plan35-construct-half-fifth-10",
+      "kind": "addition",
+      "source": "fixture:curated-relatively-prime-addition-one-half-one-fifth@plan32-record-v1",
+      "normalized": "1/2 | 1/5"
+    },
+    {
+      "type": "sum-under-one",
+      "item": "plan35-construct-three-fifths-third-30",
+      "kind": "addition",
+      "source": "fixture:curated-relatively-prime-addition-three-fifths-one-third@plan32-record-v1",
+      "normalized": "3/5 | 1/3"
+    },
+    {
+      "type": "sum-under-one",
+      "item": "plan35-inspect-third-eighth-24",
+      "kind": "addition",
+      "source": "fixture:curated-plan35-inspect-one-third-one-eighth@plan35-record-v1",
+      "normalized": "1/3 | 1/8"
+    },
+    {
+      "type": "sum-under-one",
+      "item": "plan35-inspect-fifth-third-30",
+      "kind": "addition",
+      "source": "fixture:curated-plan35-inspect-one-fifth-one-third@plan35-record-v1",
+      "normalized": "1/5 | 1/3"
+    },
+    {
+      "type": "sum-under-one",
+      "item": "plan35-identify-half-three-tenths-10",
+      "kind": "addition",
+      "source": "fixture:curated-plan35-identify-one-half-three-tenths@plan35-record-v1",
+      "normalized": "1/2 | 3/10"
+    },
+    {
+      "type": "sum-under-one",
+      "item": "plan35-identify-three-tenths-half-10",
+      "kind": "addition",
+      "source": "fixture:curated-plan35-identify-three-tenths-one-half@plan35-record-v1",
+      "normalized": "3/10 | 1/2"
+    },
+    {
+      "type": "sum-under-one",
+      "item": "plan35-identify-third-five-twelfths-12",
+      "kind": "addition",
+      "source": "fixture:curated-plan35-identify-one-third-five-twelfths@plan35-record-v1",
+      "normalized": "1/3 | 5/12"
+    },
+    {
+      "type": "sum-under-one",
+      "item": "plan35-identify-five-twelfths-third-12",
+      "kind": "addition",
+      "source": "fixture:curated-plan35-identify-five-twelfths-one-third@plan35-record-v1",
+      "normalized": "5/12 | 1/3"
+    },
+    {
+      "type": "like-denominator-addition",
+      "item": "two-sevenths-plus-three-sevenths",
+      "kind": "addition",
+      "source": "fixture:curated-like-denominator-addition-two-sevenths-three-sevenths@plan20-record-v1",
+      "normalized": "2/7 | 3/7"
+    },
+    {
+      "type": "like-denominator-subtraction",
+      "item": "takeaway-8-5-minus-2",
+      "kind": "subtraction",
+      "source": "fixture:curated-plan36-takeaway-8-5-minus-2@plan36-record-v1",
+      "normalized": "5/8 | 1/4"
+    },
+    {
+      "type": "like-denominator-subtraction",
+      "item": "takeaway-12-8-minus-3",
+      "kind": "subtraction",
+      "source": "fixture:curated-plan36-takeaway-12-8-minus-3@plan36-record-v1",
+      "normalized": "2/3 | 1/4"
+    },
+    {
+      "type": "like-denominator-subtraction",
+      "item": "takeaway-10-7-minus-3",
+      "kind": "subtraction",
+      "source": "fixture:curated-plan36-takeaway-10-7-minus-3@plan36-record-v1",
+      "normalized": "7/10 | 3/10"
+    },
+    {
+      "type": "like-denominator-subtraction",
+      "item": "takeaway-11-9-minus-4",
+      "kind": "subtraction",
+      "source": "fixture:curated-plan36-takeaway-11-9-minus-4@plan36-record-v1",
+      "normalized": "9/11 | 4/11"
+    },
+    {
+      "type": "like-denominator-subtraction",
+      "item": "takeaway-9-6-minus-1",
+      "kind": "subtraction",
+      "source": "fixture:curated-plan36-takeaway-9-6-minus-1@plan36-record-v1",
+      "normalized": "2/3 | 1/9"
+    },
+    {
+      "type": "like-denominator-subtraction",
+      "item": "takeaway-9-6-minus-6",
+      "kind": "subtraction",
+      "source": "fixture:curated-plan36-takeaway-9-6-minus-6@plan36-record-v1",
+      "normalized": "2/3 | 2/3"
+    },
+    {
+      "type": "like-denominator-subtraction",
+      "item": "takeaway-6-5-minus-4",
+      "kind": "subtraction",
+      "source": "fixture:curated-plan36-takeaway-6-5-minus-4@plan36-record-v1",
+      "normalized": "5/6 | 2/3"
+    },
+    {
+      "type": "like-denominator-subtraction",
+      "item": "takeaway-8-7-minus-1",
+      "kind": "subtraction",
+      "source": "fixture:curated-plan36-takeaway-8-7-minus-1@plan36-record-v1",
+      "normalized": "7/8 | 1/8"
+    },
+    {
+      "type": "unlike-denominator-subtraction",
+      "item": "plan40-construct-half-fifth-10",
+      "kind": "subtraction",
+      "source": "fixture:curated-plan40-construct-one-half-one-fifth@plan40-record-v1",
+      "normalized": "1/2 | 1/5"
+    },
+    {
+      "type": "unlike-denominator-subtraction",
+      "item": "plan40-construct-three-fourths-two-fifths-20",
+      "kind": "subtraction",
+      "source": "fixture:curated-relatively-prime-subtraction@plan03-fixtures-v1",
+      "normalized": "3/4 | 2/5"
+    },
+    {
+      "type": "unlike-denominator-subtraction",
+      "item": "plan40-construct-five-sixths-three-eighths-24",
+      "kind": "subtraction",
+      "source": "fixture:curated-shared-factor-subtraction@plan03-fixtures-v1",
+      "normalized": "5/6 | 3/8"
+    },
+    {
+      "type": "unlike-denominator-subtraction",
+      "item": "plan40-inspect-two-thirds-one-fourth-12",
+      "kind": "subtraction",
+      "source": "fixture:curated-plan40-inspect-two-thirds-one-fourth@plan40-record-v1",
+      "normalized": "2/3 | 1/4"
+    },
+    {
+      "type": "unlike-denominator-subtraction",
+      "item": "plan40-inspect-seven-tenths-one-fourth-20",
+      "kind": "subtraction",
+      "source": "fixture:curated-plan40-inspect-seven-tenths-one-fourth@plan40-record-v1",
+      "normalized": "7/10 | 1/4"
+    },
+    {
+      "type": "unlike-denominator-subtraction",
+      "item": "plan40-inspect-five-sixths-seven-tenths-30",
+      "kind": "subtraction",
+      "source": "fixture:curated-plan40-inspect-five-sixths-seven-tenths@plan40-record-v1",
+      "normalized": "5/6 | 7/10"
+    },
+    {
+      "type": "unlike-denominator-subtraction",
+      "item": "plan40-identify-five-sixths-one-third-6",
+      "kind": "subtraction",
+      "source": "fixture:curated-nested-subtraction-reducible@plan03-fixtures-v1",
+      "normalized": "5/6 | 1/3"
+    },
+    {
+      "type": "unlike-denominator-subtraction",
+      "item": "plan40-identify-one-half-one-eighth-8",
+      "kind": "subtraction",
+      "source": "fixture:curated-plan40-identify-one-half-one-eighth@plan40-record-v1",
+      "normalized": "1/2 | 1/8"
+    },
+    {
+      "type": "unlike-denominator-subtraction",
+      "item": "plan40-identify-two-thirds-five-twelfths-12",
+      "kind": "subtraction",
+      "source": "fixture:curated-plan40-identify-two-thirds-five-twelfths@plan40-record-v1",
+      "normalized": "2/3 | 5/12"
+    },
+    {
+      "type": "unlike-denominator-subtraction",
+      "item": "plan76-construct-two-thirds-one-fifth-15",
+      "kind": "subtraction",
+      "source": "fixture:curated-plan76-construct-two-thirds-one-fifth-15@plan76-record-v1",
+      "normalized": "2/3 | 1/5"
+    },
+    {
+      "type": "unlike-denominator-subtraction",
+      "item": "plan76-construct-five-sixths-one-tenth-30",
+      "kind": "subtraction",
+      "source": "fixture:curated-plan76-construct-five-sixths-one-tenth-30@plan76-record-v1",
+      "normalized": "5/6 | 1/10"
+    },
+    {
+      "type": "unlike-denominator-subtraction",
+      "item": "plan76-construct-three-fifths-one-fourth-20",
+      "kind": "subtraction",
+      "source": "fixture:curated-plan76-construct-three-fifths-one-fourth-20@plan76-record-v1",
+      "normalized": "3/5 | 1/4"
+    },
+    {
+      "type": "unlike-denominator-subtraction",
+      "item": "plan76-inspect-three-fourths-one-fifth-20",
+      "kind": "subtraction",
+      "source": "fixture:curated-plan76-inspect-three-fourths-one-fifth-20@plan76-record-v1",
+      "normalized": "3/4 | 1/5"
+    },
+    {
+      "type": "unlike-denominator-subtraction",
+      "item": "plan76-inspect-seven-eighths-one-sixth-24",
+      "kind": "subtraction",
+      "source": "fixture:curated-plan76-inspect-seven-eighths-one-sixth-24@plan76-record-v1",
+      "normalized": "7/8 | 1/6"
+    },
+    {
+      "type": "unlike-denominator-subtraction",
+      "item": "plan76-inspect-four-fifths-one-third-15",
+      "kind": "subtraction",
+      "source": "fixture:curated-plan76-inspect-four-fifths-one-third-15@plan76-record-v1",
+      "normalized": "4/5 | 1/3"
+    },
+    {
+      "type": "unlike-denominator-subtraction",
+      "item": "plan76-identify-seven-eighths-one-fourth-8",
+      "kind": "subtraction",
+      "source": "fixture:curated-plan76-identify-seven-eighths-one-fourth-8@plan76-record-v1",
+      "normalized": "7/8 | 1/4"
+    },
+    {
+      "type": "unlike-denominator-subtraction",
+      "item": "plan76-identify-three-fourths-one-eighth-8",
+      "kind": "subtraction",
+      "source": "fixture:curated-plan76-identify-three-fourths-one-eighth-8@plan76-record-v1",
+      "normalized": "3/4 | 1/8"
+    },
+    {
+      "type": "bar-to-line-same-amount",
+      "item": "bridge-01-half-2",
+      "kind": "other",
+      "source": "bar-to-line-same-amount"
+    },
+    {
+      "type": "bar-to-line-same-amount",
+      "item": "bridge-02-fourth-4",
+      "kind": "other",
+      "source": "bar-to-line-same-amount"
+    },
+    {
+      "type": "bar-to-line-same-amount",
+      "item": "bridge-03-three-fourths-4",
+      "kind": "other",
+      "source": "bar-to-line-same-amount"
+    },
+    {
+      "type": "bar-to-line-same-amount",
+      "item": "bridge-04-two-thirds-3",
+      "kind": "other",
+      "source": "bar-to-line-same-amount"
+    },
+    {
+      "type": "bar-to-line-same-amount",
+      "item": "bridge-05-two-fourths-half",
+      "kind": "other",
+      "source": "bar-to-line-same-amount"
+    },
+    {
+      "type": "bar-to-line-same-amount",
+      "item": "bridge-06-three-eighths-8",
+      "kind": "other",
+      "source": "bar-to-line-same-amount"
+    },
+    {
+      "type": "bar-to-line-same-amount",
+      "item": "bridge-07-one-third-med",
+      "kind": "other",
+      "source": "bar-to-line-same-amount"
+    },
+    {
+      "type": "bar-to-line-same-amount",
+      "item": "bridge-08-five-sixths-med",
+      "kind": "other",
+      "source": "bar-to-line-same-amount"
+    },
+    {
+      "type": "symbolic-fraction-comparison",
+      "item": "plan45-compare-01",
+      "kind": "other",
+      "source": "symbolic-fraction-comparison"
+    },
+    {
+      "type": "symbolic-fraction-comparison",
+      "item": "plan45-compare-02",
+      "kind": "other",
+      "source": "symbolic-fraction-comparison"
+    },
+    {
+      "type": "symbolic-fraction-comparison",
+      "item": "plan45-compare-03",
+      "kind": "other",
+      "source": "symbolic-fraction-comparison"
+    },
+    {
+      "type": "symbolic-fraction-comparison",
+      "item": "plan45-compare-04",
+      "kind": "other",
+      "source": "symbolic-fraction-comparison"
+    },
+    {
+      "type": "symbolic-fraction-comparison",
+      "item": "plan45-compare-05",
+      "kind": "other",
+      "source": "symbolic-fraction-comparison"
+    },
+    {
+      "type": "symbolic-fraction-comparison",
+      "item": "plan45-compare-06",
+      "kind": "other",
+      "source": "symbolic-fraction-comparison"
+    },
+    {
+      "type": "symbolic-fraction-comparison",
+      "item": "plan45-compare-07",
+      "kind": "other",
+      "source": "symbolic-fraction-comparison"
+    },
+    {
+      "type": "symbolic-fraction-comparison",
+      "item": "plan45-compare-08",
+      "kind": "other",
+      "source": "symbolic-fraction-comparison"
+    },
+    {
+      "type": "symbolic-fraction-comparison",
+      "item": "plan45-compare-09",
+      "kind": "other",
+      "source": "symbolic-fraction-comparison"
+    },
+    {
+      "type": "symbolic-fraction-comparison",
+      "item": "plan45-compare-10",
+      "kind": "other",
+      "source": "symbolic-fraction-comparison"
+    },
+    {
+      "type": "symbolic-fraction-comparison",
+      "item": "plan45-compare-11",
+      "kind": "other",
+      "source": "symbolic-fraction-comparison"
+    },
+    {
+      "type": "symbolic-fraction-comparison",
+      "item": "plan45-compare-12",
+      "kind": "other",
+      "source": "symbolic-fraction-comparison"
+    },
+    {
+      "type": "number-line-collection",
+      "item": "collection-01",
+      "kind": "other",
+      "source": "number-line-collection"
+    },
+    {
+      "type": "number-line-collection",
+      "item": "collection-02",
+      "kind": "other",
+      "source": "number-line-collection"
+    },
+    {
+      "type": "number-line-collection",
+      "item": "collection-03",
+      "kind": "other",
+      "source": "number-line-collection"
+    },
+    {
+      "type": "number-line-collection",
+      "item": "collection-04",
+      "kind": "other",
+      "source": "number-line-collection"
+    },
+    {
+      "type": "fraction-distance",
+      "item": "distance-01",
+      "kind": "other",
+      "source": "fraction-distance"
+    },
+    {
+      "type": "fraction-distance",
+      "item": "distance-02",
+      "kind": "other",
+      "source": "fraction-distance"
+    },
+    {
+      "type": "fraction-distance",
+      "item": "distance-03",
+      "kind": "other",
+      "source": "fraction-distance"
+    },
+    {
+      "type": "fraction-distance",
+      "item": "distance-04",
+      "kind": "other",
+      "source": "fraction-distance"
+    },
+    {
+      "type": "two-whole-location",
+      "item": "zero-fourths",
+      "kind": "other",
+      "source": "two-whole-location"
+    },
+    {
+      "type": "two-whole-location",
+      "item": "three-fourths",
+      "kind": "other",
+      "source": "two-whole-location"
+    },
+    {
+      "type": "two-whole-location",
+      "item": "four-fourths",
+      "kind": "other",
+      "source": "two-whole-location"
+    },
+    {
+      "type": "two-whole-location",
+      "item": "five-fourths",
+      "kind": "other",
+      "source": "two-whole-location"
+    },
+    {
+      "type": "two-whole-location",
+      "item": "six-fourths",
+      "kind": "other",
+      "source": "two-whole-location"
+    },
+    {
+      "type": "two-whole-location",
+      "item": "three-halves",
+      "kind": "other",
+      "source": "two-whole-location"
+    },
+    {
+      "type": "two-whole-location",
+      "item": "eight-fourths",
+      "kind": "other",
+      "source": "two-whole-location"
+    },
+    {
+      "type": "two-whole-location",
+      "item": "ten-eighths",
+      "kind": "other",
+      "source": "two-whole-location"
+    },
+    {
+      "type": "whole-plus-fraction-construction",
+      "item": "three-fourths",
+      "kind": "other",
+      "source": "whole-plus-fraction-construction"
+    },
+    {
+      "type": "whole-plus-fraction-construction",
+      "item": "four-fourths",
+      "kind": "other",
+      "source": "whole-plus-fraction-construction"
+    },
+    {
+      "type": "whole-plus-fraction-construction",
+      "item": "five-fourths",
+      "kind": "other",
+      "source": "whole-plus-fraction-construction"
+    },
+    {
+      "type": "whole-plus-fraction-construction",
+      "item": "six-fourths",
+      "kind": "other",
+      "source": "whole-plus-fraction-construction"
+    },
+    {
+      "type": "whole-plus-fraction-construction",
+      "item": "three-halves",
+      "kind": "other",
+      "source": "whole-plus-fraction-construction"
+    },
+    {
+      "type": "whole-plus-fraction-construction",
+      "item": "eight-fourths",
+      "kind": "other",
+      "source": "whole-plus-fraction-construction"
+    },
+    {
+      "type": "directed-number-line-endpoint",
+      "item": "one-fourth-add-two-fourths",
+      "kind": "addition",
+      "source": "plan59",
+      "normalized": "1/4 | 1/2"
+    },
+    {
+      "type": "directed-number-line-endpoint",
+      "item": "three-fourths-subtract-two-fourths",
+      "kind": "subtraction",
+      "source": "plan59",
+      "normalized": "3/4 | 1/2"
+    },
+    {
+      "type": "directed-number-line-endpoint",
+      "item": "one-sixth-add-three-sixths",
+      "kind": "addition",
+      "source": "plan59",
+      "normalized": "1/6 | 1/2"
+    },
+    {
+      "type": "directed-number-line-endpoint",
+      "item": "five-sixths-subtract-three-sixths",
+      "kind": "subtraction",
+      "source": "plan59",
+      "normalized": "5/6 | 1/2"
+    },
+    {
+      "type": "directed-number-line-endpoint",
+      "item": "two-eighths-add-three-eighths",
+      "kind": "addition",
+      "source": "plan59",
+      "normalized": "1/4 | 3/8"
+    },
+    {
+      "type": "directed-number-line-endpoint",
+      "item": "seven-eighths-subtract-five-eighths",
+      "kind": "subtraction",
+      "source": "plan59",
+      "normalized": "7/8 | 5/8"
+    },
+    {
+      "type": "mixed-number-addition-without-regrouping",
+      "item": "plan72-add-01",
+      "kind": "addition",
+      "source": "mixed-number-addition-without-regrouping",
+      "normalized": "5/4 | 5/4"
+    },
+    {
+      "type": "mixed-number-addition-without-regrouping",
+      "item": "plan72-add-02",
+      "kind": "addition",
+      "source": "mixed-number-addition-without-regrouping",
+      "normalized": "4/3 | 7/3"
+    },
+    {
+      "type": "mixed-number-addition-without-regrouping",
+      "item": "plan72-add-03",
+      "kind": "addition",
+      "source": "mixed-number-addition-without-regrouping",
+      "normalized": "9/4 | 3/2"
+    },
+    {
+      "type": "mixed-number-addition-without-regrouping",
+      "item": "plan72-add-04",
+      "kind": "addition",
+      "source": "mixed-number-addition-without-regrouping",
+      "normalized": "9/8 | 19/8"
+    },
+    {
+      "type": "mixed-number-addition-with-regrouping",
+      "item": "plan74-add-01",
+      "kind": "addition",
+      "source": "mixed-number-addition-with-regrouping",
+      "normalized": "11/8 | 21/8"
+    },
+    {
+      "type": "mixed-number-addition-with-regrouping",
+      "item": "plan74-add-02",
+      "kind": "addition",
+      "source": "mixed-number-addition-with-regrouping",
+      "normalized": "13/8 | 11/4"
+    },
+    {
+      "type": "mixed-number-subtraction-without-decomposition",
+      "item": "plan78-subtract-01",
+      "kind": "subtraction",
+      "source": "mixed-number-subtraction-without-decomposition",
+      "normalized": "29/8 | 5/4"
+    },
+    {
+      "type": "mixed-number-subtraction-without-decomposition",
+      "item": "plan78-subtract-02",
+      "kind": "subtraction",
+      "source": "mixed-number-subtraction-without-decomposition",
+      "normalized": "27/8 | 11/8"
+    },
+    {
+      "type": "mixed-number-subtraction-without-decomposition",
+      "item": "plan78-subtract-03",
+      "kind": "subtraction",
+      "source": "mixed-number-subtraction-without-decomposition",
+      "normalized": "11/4 | 5/4"
+    },
+    {
+      "type": "mixed-number-subtraction-without-decomposition",
+      "item": "plan78-subtract-04",
+      "kind": "subtraction",
+      "source": "mixed-number-subtraction-without-decomposition",
+      "normalized": "17/8 | 9/8"
+    },
+    {
+      "type": "mixed-number-subtraction-with-decomposition",
+      "item": "plan82-subtract-01",
+      "kind": "subtraction",
+      "source": "mixed-number-subtraction-with-decomposition",
+      "normalized": "13/4 | 13/8"
+    },
+    {
+      "type": "mixed-number-subtraction-with-decomposition",
+      "item": "plan82-subtract-02",
+      "kind": "subtraction",
+      "source": "mixed-number-subtraction-with-decomposition",
+      "normalized": "17/8 | 15/8"
+    },
+    {
+      "type": "mixed-number-subtraction-with-decomposition",
+      "item": "plan82-subtract-03",
+      "kind": "subtraction",
+      "source": "mixed-number-subtraction-with-decomposition",
+      "normalized": "35/8 | 23/8"
+    },
+    {
+      "type": "mixed-number-subtraction-with-decomposition",
+      "item": "plan82-subtract-04",
+      "kind": "subtraction",
+      "source": "mixed-number-subtraction-with-decomposition",
+      "normalized": "9/4 | 11/8"
+    },
+    {
+      "type": "mixed-to-improper-bridge",
+      "item": "plan84-01",
+      "kind": "other",
+      "source": "mixed-to-improper-bridge"
+    },
+    {
+      "type": "mixed-to-improper-bridge",
+      "item": "plan84-02",
+      "kind": "other",
+      "source": "mixed-to-improper-bridge"
+    },
+    {
+      "type": "mixed-to-improper-bridge",
+      "item": "plan84-03",
+      "kind": "other",
+      "source": "mixed-to-improper-bridge"
+    },
+    {
+      "type": "mixed-to-improper-bridge",
+      "item": "plan84-04",
+      "kind": "other",
+      "source": "mixed-to-improper-bridge"
+    },
+    {
+      "type": "plan40-registry-including-holdouts",
+      "item": "plan40-construct-half-fifth-10",
+      "kind": "subtraction",
+      "normalized": "1/2 | 1/5"
+    },
+    {
+      "type": "plan40-registry-including-holdouts",
+      "item": "plan40-construct-three-fourths-two-fifths-20",
+      "kind": "subtraction",
+      "normalized": "3/4 | 2/5"
+    },
+    {
+      "type": "plan40-registry-including-holdouts",
+      "item": "plan40-construct-five-sixths-three-eighths-24",
+      "kind": "subtraction",
+      "normalized": "5/6 | 3/8"
+    },
+    {
+      "type": "plan40-registry-including-holdouts",
+      "item": "plan40-inspect-two-thirds-one-fourth-12",
+      "kind": "subtraction",
+      "normalized": "2/3 | 1/4"
+    },
+    {
+      "type": "plan40-registry-including-holdouts",
+      "item": "plan40-inspect-seven-tenths-one-fourth-20",
+      "kind": "subtraction",
+      "normalized": "7/10 | 1/4"
+    },
+    {
+      "type": "plan40-registry-including-holdouts",
+      "item": "plan40-inspect-five-sixths-seven-tenths-30",
+      "kind": "subtraction",
+      "normalized": "5/6 | 7/10"
+    },
+    {
+      "type": "plan40-registry-including-holdouts",
+      "item": "plan40-identify-five-sixths-one-third-6",
+      "kind": "subtraction",
+      "normalized": "5/6 | 1/3"
+    },
+    {
+      "type": "plan40-registry-including-holdouts",
+      "item": "plan40-identify-one-half-one-eighth-8",
+      "kind": "subtraction",
+      "normalized": "1/2 | 1/8"
+    },
+    {
+      "type": "plan40-registry-including-holdouts",
+      "item": "plan40-identify-two-thirds-five-twelfths-12",
+      "kind": "subtraction",
+      "normalized": "2/3 | 5/12"
+    },
+    {
+      "type": "plan40-registry-including-holdouts",
+      "item": "plan76-construct-two-thirds-one-fifth-15",
+      "kind": "subtraction",
+      "normalized": "2/3 | 1/5"
+    },
+    {
+      "type": "plan40-registry-including-holdouts",
+      "item": "plan76-construct-five-sixths-one-tenth-30",
+      "kind": "subtraction",
+      "normalized": "5/6 | 1/10"
+    },
+    {
+      "type": "plan40-registry-including-holdouts",
+      "item": "plan76-construct-three-fifths-one-fourth-20",
+      "kind": "subtraction",
+      "normalized": "3/5 | 1/4"
+    },
+    {
+      "type": "plan40-registry-including-holdouts",
+      "item": "plan76-inspect-three-fourths-one-fifth-20",
+      "kind": "subtraction",
+      "normalized": "3/4 | 1/5"
+    },
+    {
+      "type": "plan40-registry-including-holdouts",
+      "item": "plan76-inspect-seven-eighths-one-sixth-24",
+      "kind": "subtraction",
+      "normalized": "7/8 | 1/6"
+    },
+    {
+      "type": "plan40-registry-including-holdouts",
+      "item": "plan76-inspect-four-fifths-one-third-15",
+      "kind": "subtraction",
+      "normalized": "4/5 | 1/3"
+    },
+    {
+      "type": "plan40-registry-including-holdouts",
+      "item": "plan76-identify-seven-eighths-one-fourth-8",
+      "kind": "subtraction",
+      "normalized": "7/8 | 1/4"
+    },
+    {
+      "type": "plan40-registry-including-holdouts",
+      "item": "plan76-identify-three-fourths-one-eighth-8",
+      "kind": "subtraction",
+      "normalized": "3/4 | 1/8"
+    },
+    {
+      "type": "plan40-registry-including-holdouts",
+      "item": "plan40-holdout-construct-three-fifths-one-half-10",
+      "kind": "subtraction",
+      "normalized": "3/5 | 1/2"
+    },
+    {
+      "type": "plan40-registry-including-holdouts",
+      "item": "plan40-holdout-inspect-three-fourths-one-sixth-12",
+      "kind": "subtraction",
+      "normalized": "3/4 | 1/6"
+    }
+  ],
+  "overlaps": [
+    {
+      "candidate": "plan85-isolated-identify-five-eighths-one-fourth-8",
+      "type": "like-denominator-subtraction",
+      "item": "takeaway-8-5-minus-2",
+      "kind": "subtraction",
+      "source": "fixture:curated-plan36-takeaway-8-5-minus-2@plan36-record-v1",
+      "normalized": "5/8 | 1/4"
+    },
+    {
+      "candidate": "plan85-isolated-identify-three-fourths-one-half-4",
+      "type": "directed-number-line-endpoint",
+      "item": "three-fourths-subtract-two-fourths",
+      "kind": "subtraction",
+      "source": "plan59",
+      "normalized": "3/4 | 1/2"
+    },
+    {
+      "candidate": "plan85-isolated-identify-five-sixths-one-half-6",
+      "type": "directed-number-line-endpoint",
+      "item": "five-sixths-subtract-three-sixths",
+      "kind": "subtraction",
+      "source": "plan59",
+      "normalized": "5/6 | 1/2"
+    }
+  ],
+  "unapproved": [],
+  "coverage": [
+    {
+      "item": "plan85-isolated-construct-five-sixths-one-fourth-12",
+      "recipe": "unlike-subtraction.construct-equivalent",
+      "fixture": "isolated-plan85-construct-five-sixths-one-fourth-12",
+      "target": "12",
+      "difference": "7/12",
+      "invalid": [],
+      "requiredSide": null
+    },
+    {
+      "item": "plan85-isolated-construct-five-eighths-one-sixth-24",
+      "recipe": "unlike-subtraction.construct-equivalent",
+      "fixture": "isolated-plan85-construct-five-eighths-one-sixth-24",
+      "target": "24",
+      "difference": "11/24",
+      "invalid": [],
+      "requiredSide": null
+    },
+    {
+      "item": "plan85-isolated-construct-seven-tenths-one-third-30",
+      "recipe": "unlike-subtraction.construct-equivalent",
+      "fixture": "isolated-plan85-construct-seven-tenths-one-third-30",
+      "target": "30",
+      "difference": "11/30",
+      "invalid": [],
+      "requiredSide": null
+    },
+    {
+      "item": "plan85-isolated-construct-four-fifths-one-sixth-30",
+      "recipe": "unlike-subtraction.construct-equivalent",
+      "fixture": "isolated-plan85-construct-four-fifths-one-sixth-30",
+      "target": "30",
+      "difference": "19/30",
+      "invalid": [],
+      "requiredSide": null
+    },
+    {
+      "item": "plan85-isolated-inspect-seven-eighths-one-third-24",
+      "recipe": "unlike-subtraction.inspect-keep-repair",
+      "fixture": "isolated-plan85-inspect-seven-eighths-one-third-24",
+      "target": "24",
+      "difference": "13/24",
+      "invalid": [
+        "right"
+      ],
+      "requiredSide": null
+    },
+    {
+      "item": "plan85-isolated-inspect-four-fifths-one-half-10",
+      "recipe": "unlike-subtraction.inspect-keep-repair",
+      "fixture": "isolated-plan85-inspect-four-fifths-one-half-10",
+      "target": "10",
+      "difference": "3/10",
+      "invalid": [
+        "right"
+      ],
+      "requiredSide": null
+    },
+    {
+      "item": "plan85-isolated-inspect-five-sixths-one-fifth-30",
+      "recipe": "unlike-subtraction.inspect-keep-repair",
+      "fixture": "isolated-plan85-inspect-five-sixths-one-fifth-30",
+      "target": "30",
+      "difference": "19/30",
+      "invalid": [
+        "right"
+      ],
+      "requiredSide": null
+    },
+    {
+      "item": "plan85-isolated-inspect-five-eighths-one-third-24",
+      "recipe": "unlike-subtraction.inspect-keep-repair",
+      "fixture": "isolated-plan85-inspect-five-eighths-one-third-24",
+      "target": "24",
+      "difference": "7/24",
+      "invalid": [
+        "right"
+      ],
+      "requiredSide": null
+    },
+    {
+      "item": "plan85-isolated-identify-five-eighths-one-fourth-8",
+      "recipe": "unlike-subtraction.identify-side-construct",
+      "fixture": "isolated-plan85-identify-five-eighths-one-fourth-8",
+      "target": "8",
+      "difference": "3/8",
+      "invalid": [],
+      "requiredSide": "right"
+    },
+    {
+      "item": "plan85-isolated-identify-three-fourths-one-half-4",
+      "recipe": "unlike-subtraction.identify-side-construct",
+      "fixture": "isolated-plan85-identify-three-fourths-one-half-4",
+      "target": "4",
+      "difference": "1/4",
+      "invalid": [],
+      "requiredSide": "right"
+    },
+    {
+      "item": "plan85-isolated-identify-seven-twelfths-one-third-12",
+      "recipe": "unlike-subtraction.identify-side-construct",
+      "fixture": "isolated-plan85-identify-seven-twelfths-one-third-12",
+      "target": "12",
+      "difference": "3/12",
+      "invalid": [],
+      "requiredSide": "right"
+    },
+    {
+      "item": "plan85-isolated-identify-two-thirds-one-sixth-6",
+      "recipe": "unlike-subtraction.identify-side-construct",
+      "fixture": "isolated-plan85-identify-two-thirds-one-sixth-6",
+      "target": "6",
+      "difference": "3/6",
+      "invalid": [],
+      "requiredSide": "left"
+    },
+    {
+      "item": "plan85-isolated-identify-five-sixths-one-half-6",
+      "recipe": "unlike-subtraction.identify-side-construct",
+      "fixture": "isolated-plan85-identify-five-sixths-one-half-6",
+      "target": "6",
+      "difference": "2/6",
+      "invalid": [],
+      "requiredSide": "right"
+    }
+  ],
+  "sourceFilesScanned": 129
+}

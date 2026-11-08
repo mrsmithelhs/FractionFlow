@@ -57,7 +57,7 @@ function startEpisode(record, support = HIGH_SUPPORT_CONFIGURATION) {
   const isHoldout = record.itemId.startsWith('plan40-holdout-');
   const taskContext = resolvePlan40SubtractionRecipeContext(instance, record.itemId, {
     practiceSetId: isHoldout ? PLAN40_DATA_ONLY_HOLDOUTS_ID : PLAN40_SUBTRACTION_RECIPE_PRACTICE_SET_ID,
-    practiceSetRevision: isHoldout ? PLAN40_DATA_ONLY_HOLDOUTS_REVISION : record.itemId.startsWith('plan76-') ? '2' : PLAN40_SUBTRACTION_RECIPE_PRACTICE_SET_REVISION,
+    practiceSetRevision: isHoldout ? PLAN40_DATA_ONLY_HOLDOUTS_REVISION : record.itemId.startsWith('plan85-') ? '3' : record.itemId.startsWith('plan76-') ? '2' : PLAN40_SUBTRACTION_RECIPE_PRACTICE_SET_REVISION,
   });
   const state = createEpisode({
     instance,
@@ -131,8 +131,8 @@ describe('Plan 40 Replay v6 and backwards compatibility suite (Stage 2)', () => 
     const oracle = JSON.parse(readFileSync(new URL('../reports/development/plan-79-unlike-subtraction-bank-publication/v1-v6-oracle.json', import.meta.url), 'utf8'));
     expect(JSON.parse(JSON.stringify(replayEpisode(oracle.envelope)))).toEqual(oracle.expectedState);
   });
-  it('round-trips initial and completed episodes for all 19 registered items through Replay v6', () => {
-    expect(PLAN40_SUBTRACTION_RECIPE_RECORDS).toHaveLength(19);
+  it('round-trips initial and completed episodes for all 32 registered items through Replay v6', () => {
+    expect(PLAN40_SUBTRACTION_RECIPE_RECORDS).toHaveLength(32);
 
     for (const record of PLAN40_SUBTRACTION_RECIPE_RECORDS) {
       const { initial, completed } = completeEpisode(record);

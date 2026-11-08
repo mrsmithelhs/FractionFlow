@@ -1,0 +1,5 @@
+--- FractionFlow Reachable Behavior Route Contract Runner ---
+Viewport measure ROUTE-PLAN40-RESPONSIVE-VIEWPORTS: {"viewport":{"width":360,"height":740},"deviceScaleFactor":1,"document":{"width":360,"height":740},"scroll":{"x":0,"y":0},"horizontalOverflow":false,"verticalScrollRange":0,"elements":{"prompt":{"x":80,"y":370.78,"width":200,"height":23,"visible":true},"finishButton":{"x":63,"y":422.78,"width":234,"height":44,"visible":true}}}
+Viewport measure ROUTE-PLAN40-CHROMEBOOK-SCALED-VIEWPORT: {"viewport":{"width":1093,"height":614},"deviceScaleFactor":1.25,"document":{"width":1093,"height":764},"scroll":{"x":0,"y":150},"horizontalOverflow":false,"verticalScrollRange":150,"elements":{"prompt":{"x":217.5,"y":256.88,"width":658,"height":23,"visible":true},"finishButton":{"x":200.5,"y":308.88,"width":692,"height":44,"visible":true}}}
+
+Route Matrix Run Complete: 8 passed, 0 failed (8 route rows; 8 browser executions).
