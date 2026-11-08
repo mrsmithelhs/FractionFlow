@@ -1,7 +1,8 @@
 ---
 id: plan-91
 title: Generated Practice With Optional Local History
-status: delivered
+status: complete
+resolution: "Owner adopted generated two-family practice with broader problem and decision variety, seed-based older review, separate expanded opt-in, direct Start, and a fresh Start after Clear. Plan 92 carries implementation and rendered review."
 depends_on: [plan-61, plan-63, plan-66, plan-90]
 gate: "Orchestration approves Requirement 0 before investigation. The owner reviews the generated-session design and proposed observation and history-use contract before a separate implementation packet."
 summary: >-

@@ -97,7 +97,8 @@ Packets are assigned to implementer agents. Each packet defines scope, required 
 | `plan-88` | Practice Difficulty Ladder Design | complete | Design varied, goal-linked managed practice across existing public families and prepare one gated implementation packet for the full adopted experience. Keep task demand, support and presentation eligibility separate. |
 | `plan-89` | Versioned Problem Bank Publication | complete | Turn accepted staged problems into replay-safe practice pools. Start with unlike-denominator subtraction, then apply the proven publication approach to a bounded group of mixed-number practices. |
 | `plan-90` | Goal-Linked Managed Practice | complete | Make Start a practice session launch one of four coherent practice patterns across five public problem families, with deterministic selection, measured presentation eligibility, and no learner profiling. |
-| `plan-91` | Generated Practice With Optional Local History | delivered | Design generated visits using symbolic comparison and unlike-denominator subtraction, with optional browser-local history, direct Start, and a fresh start after clearing the record. |
+| `plan-91` | Generated Practice With Optional Local History | complete | Design generated visits using symbolic comparison and unlike-denominator subtraction, with optional browser-local history, direct Start, and a fresh start after clearing the record. |
+| `plan-92` | Generated Managed Practice With Optional Local History | ready | Generate coherent comparison and subtraction visits from measured public pools, with variation in problems and learner decisions, direct Start, and optional browser-local history that resets on Clear. |
 <!-- plan-index:end -->
 
 ## Report Folders
