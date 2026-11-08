@@ -189,3 +189,18 @@ magnitude bridges (`[0, 2]`), and a mixed-number instructional strategy before
 Phase 5 (§91/OQ-24, DECISION-033). Adaptive fading, session composition and local
 progress retain their later phase boundaries. No learner observations, representation
 winner, deployment or new phase is authorized by this follow-up record.
+
+## Shared arithmetic equations at enlarged text
+
+Open as of 2026-11-07. Plan 86 measured a 381px document in a 360px viewport
+at 200% root text on accepted visual addition and subtraction equations and on
+accepted linear subtraction equations. It reproduced on the original construction
+paths and the review variants. The isolated harness wraps those equations and
+measures 360px after that correction. See the [integrated evidence](../../reports/development/plan-86-purposeful-variation-across-episode-types/integrated-evidence.md).
+
+Before broader exposure of these variants, revisit shared arithmetic equation
+layout alongside the enlarged-text overflow findings from Plan 87. Verify the
+ordinary app at narrow widths and enlarged text in both views. Keep complete
+equations and their reading order intact without clipping or horizontal page
+overflow. Use the existing examples as regression cases. Default chooser and
+scheduler exposure remain separately gated.

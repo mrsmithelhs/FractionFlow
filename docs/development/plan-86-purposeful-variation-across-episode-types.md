@@ -1,7 +1,8 @@
 ---
 id: plan-86
 title: Purposeful Variation Across Episode Types
-status: in-progress
+status: complete
+resolution: "Owner accepted the rendered addition and subtraction inspect/keep/repair variants in the isolated pilot. Default chooser and scheduler exposure remain gated. Track the shared enlarged-text equation overflow before broader exposure."
 depends_on: [plan-29, plan-35, plan-40, plan-84]
 gate: "Approve the comparative design and selected variants before source work. Review integrated behavior and rendered samples before acceptance."
 summary: >-
