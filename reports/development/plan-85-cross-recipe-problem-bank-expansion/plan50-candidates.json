@@ -1,0 +1,765 @@
+{
+  "baseline": "e3507cde52abc8d959c9f881441fc92ed8371f35",
+  "activeIds": [
+    "collection-01",
+    "collection-02",
+    "collection-03",
+    "collection-04"
+  ],
+  "candidates": [
+    {
+      "itemId": "collection-plan85-01",
+      "itemRevision": "1",
+      "purpose": "equivalent-pair-and-contrast",
+      "lattice": 4,
+      "members": [
+        {
+          "id": "a",
+          "form": {
+            "numerator": "2",
+            "denominator": "2"
+          }
+        },
+        {
+          "id": "b",
+          "form": {
+            "numerator": "1",
+            "denominator": "4"
+          }
+        },
+        {
+          "id": "c",
+          "form": {
+            "numerator": "2",
+            "denominator": "8"
+          }
+        }
+      ]
+    },
+    {
+      "itemId": "collection-plan85-02",
+      "itemRevision": "1",
+      "purpose": "equivalent-pair-and-contrast",
+      "lattice": 6,
+      "members": [
+        {
+          "id": "a",
+          "form": {
+            "numerator": "0",
+            "denominator": "2"
+          }
+        },
+        {
+          "id": "b",
+          "form": {
+            "numerator": "2",
+            "denominator": "3"
+          }
+        },
+        {
+          "id": "c",
+          "form": {
+            "numerator": "4",
+            "denominator": "6"
+          }
+        }
+      ]
+    },
+    {
+      "itemId": "collection-plan85-03",
+      "itemRevision": "1",
+      "purpose": "equivalent-pair-and-contrast",
+      "lattice": 8,
+      "members": [
+        {
+          "id": "a",
+          "form": {
+            "numerator": "2",
+            "denominator": "2"
+          }
+        },
+        {
+          "id": "b",
+          "form": {
+            "numerator": "3",
+            "denominator": "4"
+          }
+        },
+        {
+          "id": "c",
+          "form": {
+            "numerator": "6",
+            "denominator": "8"
+          }
+        }
+      ]
+    },
+    {
+      "itemId": "collection-plan85-04",
+      "itemRevision": "1",
+      "purpose": "equivalent-pair-and-contrast",
+      "lattice": 4,
+      "members": [
+        {
+          "id": "a",
+          "form": {
+            "numerator": "1",
+            "denominator": "4"
+          }
+        },
+        {
+          "id": "b",
+          "form": {
+            "numerator": "3",
+            "denominator": "4"
+          }
+        },
+        {
+          "id": "c",
+          "form": {
+            "numerator": "2",
+            "denominator": "8"
+          }
+        }
+      ]
+    },
+    {
+      "itemId": "collection-plan85-05",
+      "itemRevision": "1",
+      "purpose": "equivalent-pair-and-contrast",
+      "lattice": 6,
+      "members": [
+        {
+          "id": "a",
+          "form": {
+            "numerator": "2",
+            "denominator": "3"
+          }
+        },
+        {
+          "id": "b",
+          "form": {
+            "numerator": "1",
+            "denominator": "6"
+          }
+        },
+        {
+          "id": "c",
+          "form": {
+            "numerator": "4",
+            "denominator": "6"
+          }
+        }
+      ]
+    },
+    {
+      "itemId": "collection-plan85-06",
+      "itemRevision": "1",
+      "purpose": "equivalent-pair-and-contrast",
+      "lattice": 8,
+      "members": [
+        {
+          "id": "a",
+          "form": {
+            "numerator": "1",
+            "denominator": "4"
+          }
+        },
+        {
+          "id": "b",
+          "form": {
+            "numerator": "2",
+            "denominator": "8"
+          }
+        },
+        {
+          "id": "c",
+          "form": {
+            "numerator": "7",
+            "denominator": "8"
+          }
+        }
+      ]
+    },
+    {
+      "itemId": "collection-plan85-07",
+      "itemRevision": "1",
+      "purpose": "distinct-ordering",
+      "lattice": 4,
+      "members": [
+        {
+          "id": "a",
+          "form": {
+            "numerator": "1",
+            "denominator": "2"
+          }
+        },
+        {
+          "id": "b",
+          "form": {
+            "numerator": "2",
+            "denominator": "2"
+          }
+        },
+        {
+          "id": "c",
+          "form": {
+            "numerator": "3",
+            "denominator": "4"
+          }
+        }
+      ]
+    },
+    {
+      "itemId": "collection-plan85-08",
+      "itemRevision": "1",
+      "purpose": "distinct-ordering",
+      "lattice": 6,
+      "members": [
+        {
+          "id": "a",
+          "form": {
+            "numerator": "2",
+            "denominator": "2"
+          }
+        },
+        {
+          "id": "b",
+          "form": {
+            "numerator": "1",
+            "denominator": "3"
+          }
+        },
+        {
+          "id": "c",
+          "form": {
+            "numerator": "2",
+            "denominator": "3"
+          }
+        }
+      ]
+    },
+    {
+      "itemId": "collection-plan85-09",
+      "itemRevision": "1",
+      "purpose": "distinct-ordering",
+      "lattice": 8,
+      "members": [
+        {
+          "id": "a",
+          "form": {
+            "numerator": "0",
+            "denominator": "2"
+          }
+        },
+        {
+          "id": "b",
+          "form": {
+            "numerator": "3",
+            "denominator": "4"
+          }
+        },
+        {
+          "id": "c",
+          "form": {
+            "numerator": "7",
+            "denominator": "8"
+          }
+        }
+      ]
+    },
+    {
+      "itemId": "collection-plan85-10",
+      "itemRevision": "1",
+      "purpose": "distinct-ordering",
+      "lattice": 4,
+      "members": [
+        {
+          "id": "a",
+          "form": {
+            "numerator": "1",
+            "denominator": "2"
+          }
+        },
+        {
+          "id": "b",
+          "form": {
+            "numerator": "1",
+            "denominator": "4"
+          }
+        },
+        {
+          "id": "c",
+          "form": {
+            "numerator": "3",
+            "denominator": "4"
+          }
+        }
+      ]
+    },
+    {
+      "itemId": "collection-plan85-11",
+      "itemRevision": "1",
+      "purpose": "distinct-ordering",
+      "lattice": 6,
+      "members": [
+        {
+          "id": "a",
+          "form": {
+            "numerator": "1",
+            "denominator": "2"
+          }
+        },
+        {
+          "id": "b",
+          "form": {
+            "numerator": "1",
+            "denominator": "3"
+          }
+        },
+        {
+          "id": "c",
+          "form": {
+            "numerator": "2",
+            "denominator": "3"
+          }
+        }
+      ]
+    },
+    {
+      "itemId": "collection-plan85-12",
+      "itemRevision": "1",
+      "purpose": "distinct-ordering",
+      "lattice": 8,
+      "members": [
+        {
+          "id": "a",
+          "form": {
+            "numerator": "1",
+            "denominator": "4"
+          }
+        },
+        {
+          "id": "b",
+          "form": {
+            "numerator": "1",
+            "denominator": "8"
+          }
+        },
+        {
+          "id": "c",
+          "form": {
+            "numerator": "7",
+            "denominator": "8"
+          }
+        }
+      ]
+    },
+    {
+      "itemId": "collection-plan85-13",
+      "itemRevision": "1",
+      "purpose": "equivalent-pair-and-contrast",
+      "lattice": 4,
+      "members": [
+        {
+          "id": "a",
+          "form": {
+            "numerator": "0",
+            "denominator": "2"
+          }
+        },
+        {
+          "id": "b",
+          "form": {
+            "numerator": "3",
+            "denominator": "4"
+          }
+        },
+        {
+          "id": "c",
+          "form": {
+            "numerator": "6",
+            "denominator": "8"
+          }
+        }
+      ]
+    },
+    {
+      "itemId": "collection-plan85-14",
+      "itemRevision": "1",
+      "purpose": "equivalent-pair-and-contrast",
+      "lattice": 6,
+      "members": [
+        {
+          "id": "a",
+          "form": {
+            "numerator": "2",
+            "denominator": "2"
+          }
+        },
+        {
+          "id": "b",
+          "form": {
+            "numerator": "1",
+            "denominator": "3"
+          }
+        },
+        {
+          "id": "c",
+          "form": {
+            "numerator": "2",
+            "denominator": "6"
+          }
+        }
+      ]
+    },
+    {
+      "itemId": "collection-plan85-15",
+      "itemRevision": "1",
+      "purpose": "equivalent-pair-and-contrast",
+      "lattice": 8,
+      "members": [
+        {
+          "id": "a",
+          "form": {
+            "numerator": "0",
+            "denominator": "2"
+          }
+        },
+        {
+          "id": "b",
+          "form": {
+            "numerator": "1",
+            "denominator": "4"
+          }
+        },
+        {
+          "id": "c",
+          "form": {
+            "numerator": "2",
+            "denominator": "8"
+          }
+        }
+      ]
+    },
+    {
+      "itemId": "collection-plan85-16",
+      "itemRevision": "1",
+      "purpose": "equivalent-pair-and-contrast",
+      "lattice": 4,
+      "members": [
+        {
+          "id": "a",
+          "form": {
+            "numerator": "1",
+            "denominator": "2"
+          }
+        },
+        {
+          "id": "b",
+          "form": {
+            "numerator": "3",
+            "denominator": "4"
+          }
+        },
+        {
+          "id": "c",
+          "form": {
+            "numerator": "6",
+            "denominator": "8"
+          }
+        }
+      ]
+    },
+    {
+      "itemId": "collection-plan85-17",
+      "itemRevision": "1",
+      "purpose": "equivalent-pair-and-contrast",
+      "lattice": 6,
+      "members": [
+        {
+          "id": "a",
+          "form": {
+            "numerator": "1",
+            "denominator": "3"
+          }
+        },
+        {
+          "id": "b",
+          "form": {
+            "numerator": "2",
+            "denominator": "6"
+          }
+        },
+        {
+          "id": "c",
+          "form": {
+            "numerator": "5",
+            "denominator": "6"
+          }
+        }
+      ]
+    },
+    {
+      "itemId": "collection-plan85-18",
+      "itemRevision": "1",
+      "purpose": "equivalent-pair-and-contrast",
+      "lattice": 8,
+      "members": [
+        {
+          "id": "a",
+          "form": {
+            "numerator": "1",
+            "denominator": "2"
+          }
+        },
+        {
+          "id": "b",
+          "form": {
+            "numerator": "2",
+            "denominator": "4"
+          }
+        },
+        {
+          "id": "c",
+          "form": {
+            "numerator": "3",
+            "denominator": "8"
+          }
+        }
+      ]
+    },
+    {
+      "itemId": "collection-plan85-19",
+      "itemRevision": "1",
+      "purpose": "distinct-ordering",
+      "lattice": 4,
+      "members": [
+        {
+          "id": "a",
+          "form": {
+            "numerator": "0",
+            "denominator": "2"
+          }
+        },
+        {
+          "id": "b",
+          "form": {
+            "numerator": "2",
+            "denominator": "2"
+          }
+        },
+        {
+          "id": "c",
+          "form": {
+            "numerator": "3",
+            "denominator": "4"
+          }
+        }
+      ]
+    },
+    {
+      "itemId": "collection-plan85-20",
+      "itemRevision": "1",
+      "purpose": "distinct-ordering",
+      "lattice": 6,
+      "members": [
+        {
+          "id": "a",
+          "form": {
+            "numerator": "0",
+            "denominator": "2"
+          }
+        },
+        {
+          "id": "b",
+          "form": {
+            "numerator": "2",
+            "denominator": "3"
+          }
+        },
+        {
+          "id": "c",
+          "form": {
+            "numerator": "5",
+            "denominator": "6"
+          }
+        }
+      ]
+    },
+    {
+      "itemId": "collection-plan85-21",
+      "itemRevision": "1",
+      "purpose": "distinct-ordering",
+      "lattice": 8,
+      "members": [
+        {
+          "id": "a",
+          "form": {
+            "numerator": "0",
+            "denominator": "2"
+          }
+        },
+        {
+          "id": "b",
+          "form": {
+            "numerator": "1",
+            "denominator": "2"
+          }
+        },
+        {
+          "id": "c",
+          "form": {
+            "numerator": "5",
+            "denominator": "8"
+          }
+        }
+      ]
+    },
+    {
+      "itemId": "collection-plan85-22",
+      "itemRevision": "1",
+      "purpose": "distinct-ordering",
+      "lattice": 6,
+      "members": [
+        {
+          "id": "a",
+          "form": {
+            "numerator": "2",
+            "denominator": "3"
+          }
+        },
+        {
+          "id": "b",
+          "form": {
+            "numerator": "1",
+            "denominator": "6"
+          }
+        },
+        {
+          "id": "c",
+          "form": {
+            "numerator": "5",
+            "denominator": "6"
+          }
+        }
+      ]
+    },
+    {
+      "itemId": "collection-plan85-23",
+      "itemRevision": "1",
+      "purpose": "distinct-ordering",
+      "lattice": 8,
+      "members": [
+        {
+          "id": "a",
+          "form": {
+            "numerator": "1",
+            "denominator": "2"
+          }
+        },
+        {
+          "id": "b",
+          "form": {
+            "numerator": "1",
+            "denominator": "4"
+          }
+        },
+        {
+          "id": "c",
+          "form": {
+            "numerator": "5",
+            "denominator": "8"
+          }
+        }
+      ]
+    },
+    {
+      "itemId": "collection-plan85-24",
+      "itemRevision": "1",
+      "purpose": "equivalent-pair-and-contrast",
+      "lattice": 4,
+      "members": [
+        {
+          "id": "a",
+          "form": {
+            "numerator": "0",
+            "denominator": "2"
+          }
+        },
+        {
+          "id": "b",
+          "form": {
+            "numerator": "1",
+            "denominator": "2"
+          }
+        },
+        {
+          "id": "c",
+          "form": {
+            "numerator": "2",
+            "denominator": "4"
+          }
+        }
+      ]
+    },
+    {
+      "itemId": "collection-plan85-25",
+      "itemRevision": "1",
+      "purpose": "equivalent-pair-and-contrast",
+      "lattice": 6,
+      "members": [
+        {
+          "id": "a",
+          "form": {
+            "numerator": "0",
+            "denominator": "2"
+          }
+        },
+        {
+          "id": "b",
+          "form": {
+            "numerator": "1",
+            "denominator": "3"
+          }
+        },
+        {
+          "id": "c",
+          "form": {
+            "numerator": "2",
+            "denominator": "6"
+          }
+        }
+      ]
+    },
+    {
+      "itemId": "collection-plan85-26",
+      "itemRevision": "1",
+      "purpose": "equivalent-pair-and-contrast",
+      "lattice": 8,
+      "members": [
+        {
+          "id": "a",
+          "form": {
+            "numerator": "1",
+            "denominator": "2"
+          }
+        },
+        {
+          "id": "b",
+          "form": {
+            "numerator": "2",
+            "denominator": "2"
+          }
+        },
+        {
+          "id": "c",
+          "form": {
+            "numerator": "2",
+            "denominator": "4"
+          }
+        }
+      ]
+    }
+  ]
+}

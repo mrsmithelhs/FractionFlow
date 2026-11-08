@@ -1,0 +1,250 @@
+{
+  "scope": "isolated copy only; no production admission or live membership",
+  "counts": {
+    "existingLive": 17,
+    "historicalHoldouts": 2,
+    "stagedCandidateRecords": 13,
+    "livePlusCandidateNumericalCount": 30,
+    "orderedOperandDuplicatesAgainstLiveAndHoldouts": 0
+  },
+  "admission": [
+    {
+      "itemId": "plan85-isolated-construct-five-sixths-one-fourth-12",
+      "recipeId": "unlike-subtraction.construct-equivalent",
+      "orderedOperands": "5/6-1/4",
+      "targetDenominator": "12",
+      "requiredSides": [
+        "left",
+        "right"
+      ],
+      "fixtureId": "isolated-plan85-construct-five-sixths-one-fourth-12",
+      "authoringRevision": "plan85-isolated-v1",
+      "selector": "shared-factor-subtraction",
+      "overlays": []
+    },
+    {
+      "itemId": "plan85-isolated-construct-five-eighths-one-sixth-24",
+      "recipeId": "unlike-subtraction.construct-equivalent",
+      "orderedOperands": "5/8-1/6",
+      "targetDenominator": "24",
+      "requiredSides": [
+        "left",
+        "right"
+      ],
+      "fixtureId": "isolated-plan85-construct-five-eighths-one-sixth-24",
+      "authoringRevision": "plan85-isolated-v1",
+      "selector": "shared-factor-subtraction",
+      "overlays": []
+    },
+    {
+      "itemId": "plan85-isolated-construct-seven-tenths-one-third-30",
+      "recipeId": "unlike-subtraction.construct-equivalent",
+      "orderedOperands": "7/10-1/3",
+      "targetDenominator": "30",
+      "requiredSides": [
+        "left",
+        "right"
+      ],
+      "fixtureId": "isolated-plan85-construct-seven-tenths-one-third-30",
+      "authoringRevision": "plan85-isolated-v1",
+      "selector": "relatively-prime-subtraction",
+      "overlays": []
+    },
+    {
+      "itemId": "plan85-isolated-construct-four-fifths-one-sixth-30",
+      "recipeId": "unlike-subtraction.construct-equivalent",
+      "orderedOperands": "4/5-1/6",
+      "targetDenominator": "30",
+      "requiredSides": [
+        "left",
+        "right"
+      ],
+      "fixtureId": "isolated-plan85-construct-four-fifths-one-sixth-30",
+      "authoringRevision": "plan85-isolated-v1",
+      "selector": "relatively-prime-subtraction",
+      "overlays": []
+    },
+    {
+      "itemId": "plan85-isolated-inspect-seven-eighths-one-third-24",
+      "recipeId": "unlike-subtraction.inspect-keep-repair",
+      "orderedOperands": "7/8-1/3",
+      "targetDenominator": "24",
+      "requiredSides": [
+        "left",
+        "right"
+      ],
+      "fixtureId": "isolated-plan85-inspect-seven-eighths-one-third-24",
+      "authoringRevision": "plan85-isolated-v1",
+      "selector": "relatively-prime-subtraction",
+      "overlays": []
+    },
+    {
+      "itemId": "plan85-isolated-inspect-four-fifths-one-half-10",
+      "recipeId": "unlike-subtraction.inspect-keep-repair",
+      "orderedOperands": "4/5-1/2",
+      "targetDenominator": "10",
+      "requiredSides": [
+        "left",
+        "right"
+      ],
+      "fixtureId": "isolated-plan85-inspect-four-fifths-one-half-10",
+      "authoringRevision": "plan85-isolated-v1",
+      "selector": "relatively-prime-subtraction",
+      "overlays": []
+    },
+    {
+      "itemId": "plan85-isolated-inspect-five-sixths-one-fifth-30",
+      "recipeId": "unlike-subtraction.inspect-keep-repair",
+      "orderedOperands": "5/6-1/5",
+      "targetDenominator": "30",
+      "requiredSides": [
+        "left",
+        "right"
+      ],
+      "fixtureId": "isolated-plan85-inspect-five-sixths-one-fifth-30",
+      "authoringRevision": "plan85-isolated-v1",
+      "selector": "relatively-prime-subtraction",
+      "overlays": []
+    },
+    {
+      "itemId": "plan85-isolated-inspect-five-eighths-one-third-24",
+      "recipeId": "unlike-subtraction.inspect-keep-repair",
+      "orderedOperands": "5/8-1/3",
+      "targetDenominator": "24",
+      "requiredSides": [
+        "left",
+        "right"
+      ],
+      "fixtureId": "isolated-plan85-inspect-five-eighths-one-third-24",
+      "authoringRevision": "plan85-isolated-v1",
+      "selector": "relatively-prime-subtraction",
+      "overlays": []
+    },
+    {
+      "itemId": "plan85-isolated-identify-five-eighths-one-fourth-8",
+      "recipeId": "unlike-subtraction.identify-side-construct",
+      "orderedOperands": "5/8-1/4",
+      "targetDenominator": "8",
+      "requiredSides": [
+        "right"
+      ],
+      "fixtureId": "isolated-plan85-identify-five-eighths-one-fourth-8",
+      "authoringRevision": "plan85-isolated-v1",
+      "selector": "nested-denominator-subtraction",
+      "overlays": []
+    },
+    {
+      "itemId": "plan85-isolated-identify-three-fourths-one-half-4",
+      "recipeId": "unlike-subtraction.identify-side-construct",
+      "orderedOperands": "3/4-1/2",
+      "targetDenominator": "4",
+      "requiredSides": [
+        "right"
+      ],
+      "fixtureId": "isolated-plan85-identify-three-fourths-one-half-4",
+      "authoringRevision": "plan85-isolated-v1",
+      "selector": "nested-denominator-subtraction",
+      "overlays": []
+    },
+    {
+      "itemId": "plan85-isolated-identify-seven-twelfths-one-third-12",
+      "recipeId": "unlike-subtraction.identify-side-construct",
+      "orderedOperands": "7/12-1/3",
+      "targetDenominator": "12",
+      "requiredSides": [
+        "right"
+      ],
+      "fixtureId": "isolated-plan85-identify-seven-twelfths-one-third-12",
+      "authoringRevision": "plan85-isolated-v1",
+      "selector": "nested-denominator-subtraction",
+      "overlays": [
+        "reducible-result"
+      ]
+    },
+    {
+      "itemId": "plan85-isolated-identify-two-thirds-one-sixth-6",
+      "recipeId": "unlike-subtraction.identify-side-construct",
+      "orderedOperands": "2/3-1/6",
+      "targetDenominator": "6",
+      "requiredSides": [
+        "left"
+      ],
+      "fixtureId": "isolated-plan85-identify-two-thirds-one-sixth-6",
+      "authoringRevision": "plan85-isolated-v1",
+      "selector": "nested-denominator-subtraction",
+      "overlays": [
+        "reducible-result"
+      ]
+    },
+    {
+      "itemId": "plan85-isolated-identify-five-sixths-one-half-6",
+      "recipeId": "unlike-subtraction.identify-side-construct",
+      "orderedOperands": "5/6-1/2",
+      "targetDenominator": "6",
+      "requiredSides": [
+        "right"
+      ],
+      "fixtureId": "isolated-plan85-identify-five-sixths-one-half-6",
+      "authoringRevision": "plan85-isolated-v1",
+      "selector": "nested-denominator-subtraction",
+      "overlays": [
+        "reducible-result"
+      ]
+    }
+  ],
+  "negativeControls": [
+    {
+      "name": "wrong fixture/source forms",
+      "rejected": true,
+      "reason": "invalid Plan 40 subtraction recipe context: source forms do not match the exact authored fixture and instance"
+    },
+    {
+      "name": "non-common target denominator",
+      "rejected": true,
+      "reason": "invalid Plan 40 subtraction recipe context: target is not a common denominator"
+    },
+    {
+      "name": "common target beyond fraction-bar rendering ceiling",
+      "rejected": true,
+      "reason": "invalid Plan 40 subtraction recipe context: target exceeds the admitted authored representation capability"
+    },
+    {
+      "name": "inspect has two valid candidates",
+      "rejected": true,
+      "reason": "invalid Plan 40 subtraction recipe context: inspect stimulus must contain one valid and one invalid authored candidate"
+    },
+    {
+      "name": "unknown fixture identity",
+      "rejected": true,
+      "reason": "exact production resolver returned null"
+    },
+    {
+      "name": "staged item rejected by current live set resolver",
+      "rejected": true,
+      "reason": "invalid Plan 40 subtraction recipe context: exact registered practice-set and item membership is required"
+    },
+    {
+      "name": "staged item rejected by current fixed membership resolver",
+      "rejected": true,
+      "reason": "resolver returned null for staged item"
+    }
+  ],
+  "editorialDistribution": {
+    "construct": 4,
+    "inspect": 4,
+    "identify": 5,
+    "identifyRequiredSides": {
+      "left": 1,
+      "right": 4
+    },
+    "targetDenominators": [
+      "4",
+      "6",
+      "8",
+      "10",
+      "12",
+      "24",
+      "30"
+    ]
+  }
+}

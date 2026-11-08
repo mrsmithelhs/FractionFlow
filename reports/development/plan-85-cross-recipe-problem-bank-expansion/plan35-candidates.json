@@ -1,0 +1,556 @@
+[
+  {
+    "itemId": "plan85-candidate-01",
+    "fixtureId": "plan85-candidate-01",
+    "authoringRevision": "plan85-isolated-v1",
+    "fixtureProfileId": "curated-review",
+    "fixtureSelector": "relatively-prime-addition",
+    "fixtureOverlays": [],
+    "sourceForms": {
+      "left": {
+        "kind": "fraction",
+        "numerator": "1",
+        "denominator": "2"
+      },
+      "right": {
+        "kind": "fraction",
+        "numerator": "1",
+        "denominator": "7"
+      }
+    },
+    "recipeId": "full-addition.inspect-keep-repair",
+    "targetDenominator": "14",
+    "stimulusId": "plan85-candidate-01-stimulus",
+    "stimulusRevision": "1",
+    "candidates": {
+      "left": {
+        "kind": "fraction",
+        "numerator": "7",
+        "denominator": "14"
+      },
+      "right": {
+        "kind": "fraction",
+        "numerator": "3",
+        "denominator": "14"
+      }
+    },
+    "definitionId": "phase-3-reusable-addition-recipes",
+    "definitionRevision": "1",
+    "patternRevision": "1",
+    "taskDataId": "plan35-addition-recipe-task-data",
+    "taskDataRevision": "1",
+    "requiredSides": [
+      "left",
+      "right"
+    ]
+  },
+  {
+    "itemId": "plan85-candidate-02",
+    "fixtureId": "plan85-candidate-02",
+    "authoringRevision": "plan85-isolated-v1",
+    "fixtureProfileId": "curated-review",
+    "fixtureSelector": "relatively-prime-addition",
+    "fixtureOverlays": [],
+    "sourceForms": {
+      "left": {
+        "kind": "fraction",
+        "numerator": "1",
+        "denominator": "2"
+      },
+      "right": {
+        "kind": "fraction",
+        "numerator": "2",
+        "denominator": "7"
+      }
+    },
+    "recipeId": "full-addition.construct-equivalent",
+    "targetDenominator": "14",
+    "definitionId": "phase-3-reusable-addition-recipes",
+    "definitionRevision": "1",
+    "patternRevision": "1",
+    "taskDataId": "plan35-addition-recipe-task-data",
+    "taskDataRevision": "1",
+    "requiredSides": [
+      "left",
+      "right"
+    ],
+    "stimulusId": null,
+    "stimulusRevision": null,
+    "candidates": null
+  },
+  {
+    "itemId": "plan85-candidate-03",
+    "fixtureId": "plan85-candidate-03",
+    "authoringRevision": "plan85-isolated-v1",
+    "fixtureProfileId": "curated-review",
+    "fixtureSelector": "relatively-prime-addition",
+    "fixtureOverlays": [],
+    "sourceForms": {
+      "left": {
+        "kind": "fraction",
+        "numerator": "1",
+        "denominator": "2"
+      },
+      "right": {
+        "kind": "fraction",
+        "numerator": "3",
+        "denominator": "7"
+      }
+    },
+    "recipeId": "full-addition.construct-equivalent",
+    "targetDenominator": "14",
+    "definitionId": "phase-3-reusable-addition-recipes",
+    "definitionRevision": "1",
+    "patternRevision": "1",
+    "taskDataId": "plan35-addition-recipe-task-data",
+    "taskDataRevision": "1",
+    "requiredSides": [
+      "left",
+      "right"
+    ],
+    "stimulusId": null,
+    "stimulusRevision": null,
+    "candidates": null
+  },
+  {
+    "itemId": "plan85-candidate-04",
+    "fixtureId": "plan85-candidate-04",
+    "authoringRevision": "plan85-isolated-v1",
+    "fixtureProfileId": "curated-review",
+    "fixtureSelector": "relatively-prime-addition",
+    "fixtureOverlays": [],
+    "sourceForms": {
+      "left": {
+        "kind": "fraction",
+        "numerator": "1",
+        "denominator": "2"
+      },
+      "right": {
+        "kind": "fraction",
+        "numerator": "1",
+        "denominator": "9"
+      }
+    },
+    "recipeId": "full-addition.construct-equivalent",
+    "targetDenominator": "18",
+    "definitionId": "phase-3-reusable-addition-recipes",
+    "definitionRevision": "1",
+    "patternRevision": "1",
+    "taskDataId": "plan35-addition-recipe-task-data",
+    "taskDataRevision": "1",
+    "requiredSides": [
+      "left",
+      "right"
+    ],
+    "stimulusId": null,
+    "stimulusRevision": null,
+    "candidates": null
+  },
+  {
+    "itemId": "plan85-candidate-05",
+    "fixtureId": "plan85-candidate-05",
+    "authoringRevision": "plan85-isolated-v1",
+    "fixtureProfileId": "curated-review",
+    "fixtureSelector": "relatively-prime-addition",
+    "fixtureOverlays": [],
+    "sourceForms": {
+      "left": {
+        "kind": "fraction",
+        "numerator": "1",
+        "denominator": "2"
+      },
+      "right": {
+        "kind": "fraction",
+        "numerator": "2",
+        "denominator": "9"
+      }
+    },
+    "recipeId": "full-addition.inspect-keep-repair",
+    "targetDenominator": "18",
+    "stimulusId": "plan85-candidate-05-stimulus",
+    "stimulusRevision": "1",
+    "candidates": {
+      "left": {
+        "kind": "fraction",
+        "numerator": "9",
+        "denominator": "18"
+      },
+      "right": {
+        "kind": "fraction",
+        "numerator": "5",
+        "denominator": "18"
+      }
+    },
+    "definitionId": "phase-3-reusable-addition-recipes",
+    "definitionRevision": "1",
+    "patternRevision": "1",
+    "taskDataId": "plan35-addition-recipe-task-data",
+    "taskDataRevision": "1",
+    "requiredSides": [
+      "left",
+      "right"
+    ]
+  },
+  {
+    "itemId": "plan85-candidate-06",
+    "fixtureId": "plan85-candidate-06",
+    "authoringRevision": "plan85-isolated-v1",
+    "fixtureProfileId": "curated-review",
+    "fixtureSelector": "relatively-prime-addition",
+    "fixtureOverlays": [],
+    "sourceForms": {
+      "left": {
+        "kind": "fraction",
+        "numerator": "1",
+        "denominator": "2"
+      },
+      "right": {
+        "kind": "fraction",
+        "numerator": "4",
+        "denominator": "9"
+      }
+    },
+    "recipeId": "full-addition.construct-equivalent",
+    "targetDenominator": "18",
+    "definitionId": "phase-3-reusable-addition-recipes",
+    "definitionRevision": "1",
+    "patternRevision": "1",
+    "taskDataId": "plan35-addition-recipe-task-data",
+    "taskDataRevision": "1",
+    "requiredSides": [
+      "left",
+      "right"
+    ],
+    "stimulusId": null,
+    "stimulusRevision": null,
+    "candidates": null
+  },
+  {
+    "itemId": "plan85-candidate-07",
+    "fixtureId": "plan85-candidate-07",
+    "authoringRevision": "plan85-isolated-v1",
+    "fixtureProfileId": "curated-review",
+    "fixtureSelector": "relatively-prime-addition",
+    "fixtureOverlays": [],
+    "sourceForms": {
+      "left": {
+        "kind": "fraction",
+        "numerator": "1",
+        "denominator": "4"
+      },
+      "right": {
+        "kind": "fraction",
+        "numerator": "1",
+        "denominator": "5"
+      }
+    },
+    "recipeId": "full-addition.construct-equivalent",
+    "targetDenominator": "20",
+    "definitionId": "phase-3-reusable-addition-recipes",
+    "definitionRevision": "1",
+    "patternRevision": "1",
+    "taskDataId": "plan35-addition-recipe-task-data",
+    "taskDataRevision": "1",
+    "requiredSides": [
+      "left",
+      "right"
+    ],
+    "stimulusId": null,
+    "stimulusRevision": null,
+    "candidates": null
+  },
+  {
+    "itemId": "plan85-candidate-08",
+    "fixtureId": "plan85-candidate-08",
+    "authoringRevision": "plan85-isolated-v1",
+    "fixtureProfileId": "curated-review",
+    "fixtureSelector": "relatively-prime-addition",
+    "fixtureOverlays": [],
+    "sourceForms": {
+      "left": {
+        "kind": "fraction",
+        "numerator": "1",
+        "denominator": "4"
+      },
+      "right": {
+        "kind": "fraction",
+        "numerator": "2",
+        "denominator": "5"
+      }
+    },
+    "recipeId": "full-addition.construct-equivalent",
+    "targetDenominator": "20",
+    "definitionId": "phase-3-reusable-addition-recipes",
+    "definitionRevision": "1",
+    "patternRevision": "1",
+    "taskDataId": "plan35-addition-recipe-task-data",
+    "taskDataRevision": "1",
+    "requiredSides": [
+      "left",
+      "right"
+    ],
+    "stimulusId": null,
+    "stimulusRevision": null,
+    "candidates": null
+  },
+  {
+    "itemId": "plan85-candidate-09",
+    "fixtureId": "plan85-candidate-09",
+    "authoringRevision": "plan85-isolated-v1",
+    "fixtureProfileId": "curated-review",
+    "fixtureSelector": "relatively-prime-addition",
+    "fixtureOverlays": [],
+    "sourceForms": {
+      "left": {
+        "kind": "fraction",
+        "numerator": "1",
+        "denominator": "4"
+      },
+      "right": {
+        "kind": "fraction",
+        "numerator": "3",
+        "denominator": "5"
+      }
+    },
+    "recipeId": "full-addition.inspect-keep-repair",
+    "targetDenominator": "20",
+    "stimulusId": "plan85-candidate-09-stimulus",
+    "stimulusRevision": "1",
+    "candidates": {
+      "left": {
+        "kind": "fraction",
+        "numerator": "5",
+        "denominator": "20"
+      },
+      "right": {
+        "kind": "fraction",
+        "numerator": "13",
+        "denominator": "20"
+      }
+    },
+    "definitionId": "phase-3-reusable-addition-recipes",
+    "definitionRevision": "1",
+    "patternRevision": "1",
+    "taskDataId": "plan35-addition-recipe-task-data",
+    "taskDataRevision": "1",
+    "requiredSides": [
+      "left",
+      "right"
+    ]
+  },
+  {
+    "itemId": "plan85-candidate-10",
+    "fixtureId": "plan85-candidate-10",
+    "authoringRevision": "plan85-isolated-v1",
+    "fixtureProfileId": "curated-review",
+    "fixtureSelector": "relatively-prime-addition",
+    "fixtureOverlays": [],
+    "sourceForms": {
+      "left": {
+        "kind": "fraction",
+        "numerator": "3",
+        "denominator": "4"
+      },
+      "right": {
+        "kind": "fraction",
+        "numerator": "1",
+        "denominator": "5"
+      }
+    },
+    "recipeId": "full-addition.construct-equivalent",
+    "targetDenominator": "20",
+    "definitionId": "phase-3-reusable-addition-recipes",
+    "definitionRevision": "1",
+    "patternRevision": "1",
+    "taskDataId": "plan35-addition-recipe-task-data",
+    "taskDataRevision": "1",
+    "requiredSides": [
+      "left",
+      "right"
+    ],
+    "stimulusId": null,
+    "stimulusRevision": null,
+    "candidates": null
+  },
+  {
+    "itemId": "plan85-candidate-11",
+    "fixtureId": "plan85-candidate-11",
+    "authoringRevision": "plan85-isolated-v1",
+    "fixtureProfileId": "curated-review",
+    "fixtureSelector": "relatively-prime-addition",
+    "fixtureOverlays": [],
+    "sourceForms": {
+      "left": {
+        "kind": "fraction",
+        "numerator": "1",
+        "denominator": "3"
+      },
+      "right": {
+        "kind": "fraction",
+        "numerator": "1",
+        "denominator": "7"
+      }
+    },
+    "recipeId": "full-addition.construct-equivalent",
+    "targetDenominator": "21",
+    "definitionId": "phase-3-reusable-addition-recipes",
+    "definitionRevision": "1",
+    "patternRevision": "1",
+    "taskDataId": "plan35-addition-recipe-task-data",
+    "taskDataRevision": "1",
+    "requiredSides": [
+      "left",
+      "right"
+    ],
+    "stimulusId": null,
+    "stimulusRevision": null,
+    "candidates": null
+  },
+  {
+    "itemId": "plan85-candidate-12",
+    "fixtureId": "plan85-candidate-12",
+    "authoringRevision": "plan85-isolated-v1",
+    "fixtureProfileId": "curated-review",
+    "fixtureSelector": "relatively-prime-addition",
+    "fixtureOverlays": [],
+    "sourceForms": {
+      "left": {
+        "kind": "fraction",
+        "numerator": "1",
+        "denominator": "3"
+      },
+      "right": {
+        "kind": "fraction",
+        "numerator": "2",
+        "denominator": "7"
+      }
+    },
+    "recipeId": "full-addition.construct-equivalent",
+    "targetDenominator": "21",
+    "definitionId": "phase-3-reusable-addition-recipes",
+    "definitionRevision": "1",
+    "patternRevision": "1",
+    "taskDataId": "plan35-addition-recipe-task-data",
+    "taskDataRevision": "1",
+    "requiredSides": [
+      "left",
+      "right"
+    ],
+    "stimulusId": null,
+    "stimulusRevision": null,
+    "candidates": null
+  },
+  {
+    "itemId": "plan85-candidate-13",
+    "fixtureId": "plan85-candidate-13",
+    "authoringRevision": "plan85-isolated-v1",
+    "fixtureProfileId": "curated-review",
+    "fixtureSelector": "relatively-prime-addition",
+    "fixtureOverlays": [],
+    "sourceForms": {
+      "left": {
+        "kind": "fraction",
+        "numerator": "1",
+        "denominator": "3"
+      },
+      "right": {
+        "kind": "fraction",
+        "numerator": "3",
+        "denominator": "7"
+      }
+    },
+    "recipeId": "full-addition.inspect-keep-repair",
+    "targetDenominator": "21",
+    "stimulusId": "plan85-candidate-13-stimulus",
+    "stimulusRevision": "1",
+    "candidates": {
+      "left": {
+        "kind": "fraction",
+        "numerator": "7",
+        "denominator": "21"
+      },
+      "right": {
+        "kind": "fraction",
+        "numerator": "10",
+        "denominator": "21"
+      }
+    },
+    "definitionId": "phase-3-reusable-addition-recipes",
+    "definitionRevision": "1",
+    "patternRevision": "1",
+    "taskDataId": "plan35-addition-recipe-task-data",
+    "taskDataRevision": "1",
+    "requiredSides": [
+      "left",
+      "right"
+    ]
+  },
+  {
+    "itemId": "plan85-candidate-14",
+    "fixtureId": "plan85-candidate-14",
+    "authoringRevision": "plan85-isolated-v1",
+    "fixtureProfileId": "curated-review",
+    "fixtureSelector": "relatively-prime-addition",
+    "fixtureOverlays": [],
+    "sourceForms": {
+      "left": {
+        "kind": "fraction",
+        "numerator": "1",
+        "denominator": "3"
+      },
+      "right": {
+        "kind": "fraction",
+        "numerator": "4",
+        "denominator": "7"
+      }
+    },
+    "recipeId": "full-addition.construct-equivalent",
+    "targetDenominator": "21",
+    "definitionId": "phase-3-reusable-addition-recipes",
+    "definitionRevision": "1",
+    "patternRevision": "1",
+    "taskDataId": "plan35-addition-recipe-task-data",
+    "taskDataRevision": "1",
+    "requiredSides": [
+      "left",
+      "right"
+    ],
+    "stimulusId": null,
+    "stimulusRevision": null,
+    "candidates": null
+  },
+  {
+    "itemId": "plan85-candidate-15",
+    "fixtureId": "plan85-candidate-15",
+    "authoringRevision": "plan85-isolated-v1",
+    "fixtureProfileId": "curated-review",
+    "fixtureSelector": "relatively-prime-addition",
+    "fixtureOverlays": [],
+    "sourceForms": {
+      "left": {
+        "kind": "fraction",
+        "numerator": "2",
+        "denominator": "3"
+      },
+      "right": {
+        "kind": "fraction",
+        "numerator": "1",
+        "denominator": "7"
+      }
+    },
+    "recipeId": "full-addition.construct-equivalent",
+    "targetDenominator": "21",
+    "definitionId": "phase-3-reusable-addition-recipes",
+    "definitionRevision": "1",
+    "patternRevision": "1",
+    "taskDataId": "plan35-addition-recipe-task-data",
+    "taskDataRevision": "1",
+    "requiredSides": [
+      "left",
+      "right"
+    ],
+    "stimulusId": null,
+    "stimulusRevision": null,
+    "candidates": null
+  }
+]

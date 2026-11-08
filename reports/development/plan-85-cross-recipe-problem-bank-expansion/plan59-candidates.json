@@ -1,0 +1,423 @@
+{
+  "baseline": "e3507cde52abc8d959c9f881441fc92ed8371f35",
+  "activeIds": [
+    "one-fourth-add-two-fourths",
+    "three-fourths-subtract-two-fourths",
+    "one-sixth-add-three-sixths",
+    "five-sixths-subtract-three-sixths",
+    "two-eighths-add-three-eighths",
+    "seven-eighths-subtract-five-eighths"
+  ],
+  "candidates": [
+    {
+      "itemId": "endpoint-plan85-01",
+      "itemRevision": "1",
+      "start": {
+        "numerator": "1",
+        "denominator": "4"
+      },
+      "operation": "add",
+      "amount": {
+        "numerator": "1",
+        "denominator": "4"
+      }
+    },
+    {
+      "itemId": "endpoint-plan85-02",
+      "itemRevision": "1",
+      "start": {
+        "numerator": "2",
+        "denominator": "4"
+      },
+      "operation": "subtract",
+      "amount": {
+        "numerator": "1",
+        "denominator": "4"
+      }
+    },
+    {
+      "itemId": "endpoint-plan85-03",
+      "itemRevision": "1",
+      "start": {
+        "numerator": "3",
+        "denominator": "6"
+      },
+      "operation": "add",
+      "amount": {
+        "numerator": "2",
+        "denominator": "6"
+      }
+    },
+    {
+      "itemId": "endpoint-plan85-04",
+      "itemRevision": "1",
+      "start": {
+        "numerator": "4",
+        "denominator": "6"
+      },
+      "operation": "subtract",
+      "amount": {
+        "numerator": "2",
+        "denominator": "6"
+      }
+    },
+    {
+      "itemId": "endpoint-plan85-05",
+      "itemRevision": "1",
+      "start": {
+        "numerator": "2",
+        "denominator": "8"
+      },
+      "operation": "add",
+      "amount": {
+        "numerator": "5",
+        "denominator": "8"
+      }
+    },
+    {
+      "itemId": "endpoint-plan85-06",
+      "itemRevision": "1",
+      "start": {
+        "numerator": "7",
+        "denominator": "8"
+      },
+      "operation": "subtract",
+      "amount": {
+        "numerator": "6",
+        "denominator": "8"
+      }
+    },
+    {
+      "itemId": "endpoint-plan85-07",
+      "itemRevision": "1",
+      "start": {
+        "numerator": "2",
+        "denominator": "4"
+      },
+      "operation": "add",
+      "amount": {
+        "numerator": "1",
+        "denominator": "4"
+      }
+    },
+    {
+      "itemId": "endpoint-plan85-08",
+      "itemRevision": "1",
+      "start": {
+        "numerator": "3",
+        "denominator": "4"
+      },
+      "operation": "subtract",
+      "amount": {
+        "numerator": "1",
+        "denominator": "4"
+      }
+    },
+    {
+      "itemId": "endpoint-plan85-09",
+      "itemRevision": "1",
+      "start": {
+        "numerator": "1",
+        "denominator": "6"
+      },
+      "operation": "add",
+      "amount": {
+        "numerator": "2",
+        "denominator": "6"
+      }
+    },
+    {
+      "itemId": "endpoint-plan85-10",
+      "itemRevision": "1",
+      "start": {
+        "numerator": "3",
+        "denominator": "6"
+      },
+      "operation": "subtract",
+      "amount": {
+        "numerator": "2",
+        "denominator": "6"
+      }
+    },
+    {
+      "itemId": "endpoint-plan85-11",
+      "itemRevision": "1",
+      "start": {
+        "numerator": "4",
+        "denominator": "8"
+      },
+      "operation": "add",
+      "amount": {
+        "numerator": "1",
+        "denominator": "8"
+      }
+    },
+    {
+      "itemId": "endpoint-plan85-12",
+      "itemRevision": "1",
+      "start": {
+        "numerator": "3",
+        "denominator": "8"
+      },
+      "operation": "subtract",
+      "amount": {
+        "numerator": "1",
+        "denominator": "8"
+      }
+    },
+    {
+      "itemId": "endpoint-plan85-13",
+      "itemRevision": "1",
+      "start": {
+        "numerator": "2",
+        "denominator": "6"
+      },
+      "operation": "add",
+      "amount": {
+        "numerator": "1",
+        "denominator": "6"
+      }
+    },
+    {
+      "itemId": "endpoint-plan85-14",
+      "itemRevision": "1",
+      "start": {
+        "numerator": "3",
+        "denominator": "6"
+      },
+      "operation": "subtract",
+      "amount": {
+        "numerator": "1",
+        "denominator": "6"
+      }
+    },
+    {
+      "itemId": "endpoint-plan85-15",
+      "itemRevision": "1",
+      "start": {
+        "numerator": "3",
+        "denominator": "8"
+      },
+      "operation": "add",
+      "amount": {
+        "numerator": "2",
+        "denominator": "8"
+      }
+    },
+    {
+      "itemId": "endpoint-plan85-16",
+      "itemRevision": "1",
+      "start": {
+        "numerator": "2",
+        "denominator": "8"
+      },
+      "operation": "subtract",
+      "amount": {
+        "numerator": "1",
+        "denominator": "8"
+      }
+    },
+    {
+      "itemId": "endpoint-plan85-17",
+      "itemRevision": "1",
+      "start": {
+        "numerator": "1",
+        "denominator": "6"
+      },
+      "operation": "add",
+      "amount": {
+        "numerator": "4",
+        "denominator": "6"
+      }
+    },
+    {
+      "itemId": "endpoint-plan85-18",
+      "itemRevision": "1",
+      "start": {
+        "numerator": "4",
+        "denominator": "6"
+      },
+      "operation": "subtract",
+      "amount": {
+        "numerator": "3",
+        "denominator": "6"
+      }
+    },
+    {
+      "itemId": "endpoint-plan85-19",
+      "itemRevision": "1",
+      "start": {
+        "numerator": "6",
+        "denominator": "8"
+      },
+      "operation": "add",
+      "amount": {
+        "numerator": "1",
+        "denominator": "8"
+      }
+    },
+    {
+      "itemId": "endpoint-plan85-20",
+      "itemRevision": "1",
+      "start": {
+        "numerator": "4",
+        "denominator": "8"
+      },
+      "operation": "subtract",
+      "amount": {
+        "numerator": "3",
+        "denominator": "8"
+      }
+    },
+    {
+      "itemId": "endpoint-plan85-21",
+      "itemRevision": "1",
+      "start": {
+        "numerator": "1",
+        "denominator": "6"
+      },
+      "operation": "add",
+      "amount": {
+        "numerator": "1",
+        "denominator": "6"
+      }
+    },
+    {
+      "itemId": "endpoint-plan85-22",
+      "itemRevision": "1",
+      "start": {
+        "numerator": "2",
+        "denominator": "6"
+      },
+      "operation": "subtract",
+      "amount": {
+        "numerator": "1",
+        "denominator": "6"
+      }
+    },
+    {
+      "itemId": "endpoint-plan85-23",
+      "itemRevision": "1",
+      "start": {
+        "numerator": "5",
+        "denominator": "8"
+      },
+      "operation": "add",
+      "amount": {
+        "numerator": "2",
+        "denominator": "8"
+      }
+    },
+    {
+      "itemId": "endpoint-plan85-24",
+      "itemRevision": "1",
+      "start": {
+        "numerator": "7",
+        "denominator": "8"
+      },
+      "operation": "subtract",
+      "amount": {
+        "numerator": "1",
+        "denominator": "8"
+      }
+    }
+  ],
+  "isolatedDerived": [
+    {
+      "itemId": "endpoint-plan85-01",
+      "correctPosition": "step-2"
+    },
+    {
+      "itemId": "endpoint-plan85-02",
+      "correctPosition": "step-1"
+    },
+    {
+      "itemId": "endpoint-plan85-03",
+      "correctPosition": "step-5"
+    },
+    {
+      "itemId": "endpoint-plan85-04",
+      "correctPosition": "step-2"
+    },
+    {
+      "itemId": "endpoint-plan85-05",
+      "correctPosition": "step-7"
+    },
+    {
+      "itemId": "endpoint-plan85-06",
+      "correctPosition": "step-1"
+    },
+    {
+      "itemId": "endpoint-plan85-07",
+      "correctPosition": "step-3"
+    },
+    {
+      "itemId": "endpoint-plan85-08",
+      "correctPosition": "step-2"
+    },
+    {
+      "itemId": "endpoint-plan85-09",
+      "correctPosition": "step-3"
+    },
+    {
+      "itemId": "endpoint-plan85-10",
+      "correctPosition": "step-1"
+    },
+    {
+      "itemId": "endpoint-plan85-11",
+      "correctPosition": "step-5"
+    },
+    {
+      "itemId": "endpoint-plan85-12",
+      "correctPosition": "step-2"
+    },
+    {
+      "itemId": "endpoint-plan85-13",
+      "correctPosition": "step-3"
+    },
+    {
+      "itemId": "endpoint-plan85-14",
+      "correctPosition": "step-2"
+    },
+    {
+      "itemId": "endpoint-plan85-15",
+      "correctPosition": "step-5"
+    },
+    {
+      "itemId": "endpoint-plan85-16",
+      "correctPosition": "step-1"
+    },
+    {
+      "itemId": "endpoint-plan85-17",
+      "correctPosition": "step-5"
+    },
+    {
+      "itemId": "endpoint-plan85-18",
+      "correctPosition": "step-1"
+    },
+    {
+      "itemId": "endpoint-plan85-19",
+      "correctPosition": "step-7"
+    },
+    {
+      "itemId": "endpoint-plan85-20",
+      "correctPosition": "step-1"
+    },
+    {
+      "itemId": "endpoint-plan85-21",
+      "correctPosition": "step-2"
+    },
+    {
+      "itemId": "endpoint-plan85-22",
+      "correctPosition": "step-1"
+    },
+    {
+      "itemId": "endpoint-plan85-23",
+      "correctPosition": "step-7"
+    },
+    {
+      "itemId": "endpoint-plan85-24",
+      "correctPosition": "step-6"
+    }
+  ]
+}
