@@ -1,7 +1,8 @@
 ---
 id: plan-88
 title: Practice Difficulty Ladder Design
-status: delivered
+status: complete
+resolution: "Owner adopted all four goal-linked patterns across five public families and authorized orchestration to clear internal gates in one full-scope successor. Owner rendered acceptance and held-content exposure remain separate."
 depends_on: [plan-56, plan-66, plan-86, plan-87]
 gate: "Approve the report-only scope before investigation. Owner adopts the ladder and the full scope of its gated implementation separately."
 summary: >-
