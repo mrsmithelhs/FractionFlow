@@ -1,7 +1,8 @@
 ---
 id: plan-90
 title: Goal-Linked Managed Practice
-status: delivered
+status: complete
+resolution: "Owner accepted all four rendered managed practice patterns, the comparison choice order, and the repaired subtraction success message. Held banks and review variants remain separately gated."
 depends_on: [plan-70, plan-88]
 gate: "Orchestration clears Requirement 0 before source work, then reviews family admission and fit across batches and all-pattern integration. Owner reviews the full rendered experience."
 summary: >-

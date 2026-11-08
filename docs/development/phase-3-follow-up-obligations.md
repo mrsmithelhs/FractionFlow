@@ -204,3 +204,15 @@ ordinary app at narrow widths and enlarged text in both views. Keep complete
 equations and their reading order intact without clipping or horizontal page
 overflow. Use the existing examples as regression cases. Default chooser and
 scheduler exposure remain separately gated.
+
+## Correct-answer confirmation and mathematical results
+
+Open as of 2026-11-08. Apply [DECISION-054](../decision-log.md#decision-054---standardize-correct-answer-confirmation)
+to existing accepted-answer screens that use different confirmation copy. Start
+with the like-denominator subtraction result and the like-denominator addition
+branch that says “Your answer is ready.” Review the collection, equivalence and
+reflection variants identified in the [Plan 90 source audit](../../reports/development/plan-90-goal-linked-managed-practice/orchestration-delivery-review.md#subtraction-success-copy)
+to distinguish confirmation from a mathematical explanation or an active task.
+Put any useful explanation above the house confirmation in both views. Check
+the mounted result and progression, and preserve the accessible equation or
+representation. The audit did not verify rendered screens for these follow-ups.

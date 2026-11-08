@@ -1411,3 +1411,20 @@ implementation settings. It is review policy, not a measured efficiency claim.
 Keep one concise help disclosure, exact-core truth, original unreduced forms, accessible spoken relation meanings, existing More/Less profiles and shared direct progression. Assistance is not independent mastery evidence. The initial compact 12-pair proposal remains bounded to positive proper source forms with denominators <=10; no automatic larger-capacity, adaptation or strategy-chooser activation. The adopted report contract governs over the earlier unadopted aligned-bar and switching recommendations.
 
 Plan45 implements only after its Requirement0 mechanism approval; no source launch, replay schema number, push or deployment follows from design adoption. Line comparison, unsigned distance, mixed values and broader task variation remain separate.
+
+### DECISION-054 - Standardize correct-answer confirmation
+
+**Date:** 2026-11-08
+
+**Decision:** Use “That's right.” as the house confirmation of an accepted
+learner answer. When a task-specific explanation helps learners connect their
+work to the math, put it in the result area above the confirmation. An equation,
+model or brief explanation can show what the learner demonstrated. Avoid repeating
+what that area already shows. Preserve the same mathematical information in the
+linear view and keep active prompts and recovery feedback distinct from confirmation.
+
+This refines the copy guidance in the [Plan 52 feedback contract](../reports/development/plan-52-house-learner-feedback-style/surface-approval.md).
+The [Plan 90 subtraction repair](../reports/development/plan-90-goal-linked-managed-practice/subtraction-copy-repair.md)
+applies the rule to unlike-denominator subtraction. Review the remaining
+success messages before changing them, so any useful mathematical explanation
+has a clear place in the result.
