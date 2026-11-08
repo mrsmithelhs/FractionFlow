@@ -1,7 +1,7 @@
 ---
 id: plan-88
 title: Practice Difficulty Ladder Design
-status: in-progress
+status: delivered
 depends_on: [plan-56, plan-66, plan-86, plan-87]
 gate: "Approve the report-only scope before investigation. Owner adopts the ladder and the full scope of its gated implementation separately."
 summary: >-
