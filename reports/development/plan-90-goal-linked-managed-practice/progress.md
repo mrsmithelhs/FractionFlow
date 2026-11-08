@@ -1,5 +1,11 @@
 # Plan 90 progress — comparison and distance gate
 
+## 2026-11-08 — owner rendered-review repairs
+
+Repair and detailed evidence are committed at `4408fbe`; see [repair-owner-review.md](repair-owner-review.md). Relation choices are `>`, `=`, `<` in DOM, visual and browser arrow-key order. A stable document scrollbar gutter prevents the tested entry-to-episode width shift without weakening fit, stale-measurement or rollback checks. At both 570 × 668 and 1093 × 614, all four patterns completed through ordinary Start in both views and both support settings; unseeded Start also succeeded. A deliberately changed measurement remained safely rejected or rolled back. Focused tests (51), builds, packet lint and diff checks passed.
+
+The owner's exact seed 0 versus seeds 1–3 failure was not reproduced in headless Chrome. An episode-only gutter reproduced the same refusal for all seeds with the repair disabled and succeeded with it; this is a mechanism witness, not proof of the owner's exact failure. Physical-device behavior and owner rendered acceptance remain open. The prior authorized Terra-medium consultation covered the integrated delivery; this bounded repair uses orchestration-gate-only review, with no new consultation and no Sol or Astra. Ready for orchestration technical review and renewed owner rendered review; no packet closure, push or deployment.
+
 ## 2026-11-08 — full four-pattern technical delivery
 
 Implementation and evidence are committed at `0489e43`. Orchestration approved both family gates and, after the bounded boundary checks, the non-default display conditions within the same conservative classes. [Integrated evidence and owner preview](integrated-evidence.md) records exact behavior, route witnesses, fit classes and exclusions, recording and replay boundaries, reviewer findings/dispositions, validation, screenshots and the seed-specific preview instructions. All four patterns run through ordinary Start; the seeded report-local preview is for repeatable review only.
