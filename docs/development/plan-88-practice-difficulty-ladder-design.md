@@ -1,13 +1,13 @@
 ---
 id: plan-88
 title: Practice Difficulty Ladder Design
-status: delivered
+status: in-progress
 depends_on: [plan-56, plan-66, plan-86, plan-87]
 gate: "Approve the report-only scope before investigation. Owner adopts the ladder and the full scope of its gated implementation separately."
 summary: >-
-  Design an inspectable practice difficulty ladder across existing families and
-  prepare one gated implementation packet for the full adopted ladder. Keep
-  task demand, support and presentation eligibility separate.
+  Design varied, goal-linked managed practice across existing public families
+  and prepare one gated implementation packet for the full adopted experience.
+  Keep task demand, support and presentation eligibility separate.
 ---
 # Plan 88 — Practice Difficulty Ladder Design
 
@@ -29,6 +29,15 @@ Follow [AGENTS.md](../../AGENTS.md), the [decision log](../decision-log.md), [Ro
 Run preflight and pin the baseline. Propose two or three existing families for detailed worked comparisons, then outline the coverage review across the current managed-practice families. Identify the task features that may change their demands, the evidence to inspect, and what would falsify a plausible ordering. Propose disjoint investigation assignments and where the lead will reconcile their findings. Save a short scope proposal under `reports/development/plan-88-practice-difficulty-ladder-design/`. Stop for orchestration approval before the investigation.
 
 ## Design and deliver
+
+The owner requested a broader managed mix after reviewing the initial two-family
+proposal. Treat that comparison-to-distance ladder as one starting pattern.
+Design several complete visits across public families, including magnitude and
+common-unit or equivalence patterns. Show why the tasks belong together, how
+demand changes within each goal, and how direct Start varies visits without a
+required menu or learner profile. Map both current and proposed managed families
+to exact public records, fit evidence or gaps, and explicit exclusions. The
+successor delivers every adopted pattern through its internal gates.
 
 1. Compare the same bank under a short seeded draw and a modest authored progression. Consider features such as exchanging a whole, the relation to a familiar benchmark, and whether the learner constructs or evaluates an equivalent form. Explain counterexamples to a universal denominator-based ranking. Keep task demands, available help and viewport eligibility separate.
 2. Show concrete short journeys with variation within a comparable level and a reason for each change in demand. Keep Start a practice session a direct launch. Describe how the progression remains coherent if the wider pool is unavailable, and how a learner can move at their own pace using existing controls or one separately proposed optional action. Make assumptions and decisions inspectable. Use no learner profile or inference of mastery.
