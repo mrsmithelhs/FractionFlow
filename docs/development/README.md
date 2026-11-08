@@ -96,7 +96,7 @@ Packets are assigned to implementer agents. Each packet defines scope, required 
 | `plan-87` | Capability-Aware Practice Selection | complete | Draw a short, varied sequence from expanded practice banks without repeats. Let standalone and managed practice select only already-admitted items that fit the available presentation, with a verified fallback on narrow layouts. |
 | `plan-88` | Practice Difficulty Ladder Design | complete | Design varied, goal-linked managed practice across existing public families and prepare one gated implementation packet for the full adopted experience. Keep task demand, support and presentation eligibility separate. |
 | `plan-89` | Versioned Problem Bank Publication | complete | Turn accepted staged problems into replay-safe practice pools. Start with unlike-denominator subtraction, then apply the proven publication approach to a bounded group of mixed-number practices. |
-| `plan-90` | Goal-Linked Managed Practice | ready | Make Start a practice session launch one of four coherent practice patterns across five public problem families, with deterministic selection, measured presentation eligibility, and no learner profiling. |
+| `plan-90` | Goal-Linked Managed Practice | in-progress | Make Start a practice session launch one of four coherent practice patterns across five public problem families, with deterministic selection, measured presentation eligibility, and no learner profiling. |
 <!-- plan-index:end -->
 
 ## Report Folders
