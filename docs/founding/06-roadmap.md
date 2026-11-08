@@ -912,6 +912,10 @@ The project should demonstrate that:
 - bars and number lines remain coherent;
 - regrouping builds on equivalence rather than appearing as a separate trick.
 
+**Disposition (2026-11-07).** The owner closed Phase 5 for the accepted development scope
+after reviewing Plan 84. The [exit record](../../reports/orchestration/phase-5-exit.md)
+maps the accepted experiences and records the remaining evidence limits.
+
 ---
 
 # 45. Phase 6 — Scaffold System and Independence

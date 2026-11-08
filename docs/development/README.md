@@ -91,6 +91,8 @@ Packets are assigned to implementer agents. Each packet defines scope, required 
 | `plan-82` | Mixed-Number Subtraction With Decomposition | complete | Implement the four adopted mixed-number subtraction problems in eighths with one final response and an optional learner-controlled renaming aid. Show quantity preservation and the difference at their respective checks. |
 | `plan-83` | Phase 5 Exit Review and Mixed-to-Improper Bridge Design | complete | Check the accepted mixed-number work against the Phase 5 exit criteria. If a learner-owned equivalence gap remains, propose one mixed-to-improper decision with the shared number-line point revealed after a correct Check. |
 | `plan-84` | Mixed-to-Improper Number-Line Bridge | complete | Implement the four adopted mixed-to-improper equivalence problems. Vary the correct option position and reveal the shared number-line point only after a correct Check. |
+| `plan-85` | Cross-Recipe Problem Bank Expansion | draft | Target at least 30 meaningfully distinct problems per standalone episode type. Expand existing data-only recipes as a single wave and identify exact blockers to the target. Preserve fixed selection and historical replay. |
+| `plan-86` | Purposeful Variation Across Episode Types | draft | Compare short alternate task structures across existing episode types. Pilot a small cross-family set of approved variants that change learner work while preserving the underlying mathematical goal. |
 <!-- plan-index:end -->
 
 ## Report Folders
