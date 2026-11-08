@@ -1,0 +1,1260 @@
+{
+  "scope": "Six standalone comparison runs at 650x740/200% CSS root, high support, both views; tests element visibility, text font size and center-point hit test after scroll. Does not prove full keyboard or screen-reader behavior.",
+  "browser": "157.0.8103.38",
+  "runs": [
+    {
+      "id": "plan45-compare-02",
+      "view": "visual",
+      "hiddenHelpVisibleWhenClosed": false,
+      "initial": {
+        "stage": "closed-help",
+        "controls": [
+          {
+            "label": "Need help?",
+            "tag": "SUMMARY",
+            "font": "32px",
+            "width": 168.078125,
+            "height": 88,
+            "centerHit": true,
+            "disabled": false
+          },
+          {
+            "label": "The first fraction is greater than the second fraction",
+            "tag": "INPUT",
+            "font": "13.3333px",
+            "width": 107.1875,
+            "height": 107.1875,
+            "centerHit": true,
+            "disabled": false
+          },
+          {
+            "label": "The first fraction is equal to the second fraction",
+            "tag": "INPUT",
+            "font": "13.3333px",
+            "width": 107.1875,
+            "height": 107.1875,
+            "centerHit": true,
+            "disabled": false
+          },
+          {
+            "label": "The first fraction is less than the second fraction",
+            "tag": "INPUT",
+            "font": "13.3333px",
+            "width": 107.1875,
+            "height": 107.1875,
+            "centerHit": true,
+            "disabled": false
+          },
+          {
+            "label": "Check",
+            "tag": "BUTTON",
+            "font": "13.3333px",
+            "width": 320,
+            "height": 88,
+            "centerHit": true,
+            "disabled": false
+          }
+        ]
+      },
+      "open": {
+        "stage": "open-help",
+        "controls": [
+          {
+            "label": "Close help",
+            "tag": "SUMMARY",
+            "font": "32px",
+            "width": 154.359375,
+            "height": 88,
+            "centerHit": true,
+            "disabled": false
+          },
+          {
+            "label": "Reasoning tip",
+            "tag": "BUTTON",
+            "font": "13.3333px",
+            "width": 95.53125,
+            "height": 88,
+            "centerHit": true,
+            "disabled": false
+          },
+          {
+            "label": "Sign tip",
+            "tag": "BUTTON",
+            "font": "13.3333px",
+            "width": 58.46875,
+            "height": 88,
+            "centerHit": true,
+            "disabled": false
+          },
+          {
+            "label": "Model first amount",
+            "tag": "BUTTON",
+            "font": "13.3333px",
+            "width": 123.65625,
+            "height": 88,
+            "centerHit": true,
+            "disabled": false
+          },
+          {
+            "label": "Model second amount",
+            "tag": "BUTTON",
+            "font": "13.3333px",
+            "width": 145.171875,
+            "height": 88,
+            "centerHit": true,
+            "disabled": false
+          },
+          {
+            "label": "Use the same denominator",
+            "tag": "BUTTON",
+            "font": "13.3333px",
+            "width": 174.046875,
+            "height": 88,
+            "centerHit": true,
+            "disabled": false
+          },
+          {
+            "label": "The first fraction is greater than the second fraction",
+            "tag": "INPUT",
+            "font": "13.3333px",
+            "width": 107.1875,
+            "height": 107.1875,
+            "centerHit": true,
+            "disabled": false
+          },
+          {
+            "label": "The first fraction is equal to the second fraction",
+            "tag": "INPUT",
+            "font": "13.3333px",
+            "width": 107.1875,
+            "height": 107.1875,
+            "centerHit": true,
+            "disabled": false
+          },
+          {
+            "label": "The first fraction is less than the second fraction",
+            "tag": "INPUT",
+            "font": "13.3333px",
+            "width": 107.1875,
+            "height": 107.1875,
+            "centerHit": true,
+            "disabled": false
+          },
+          {
+            "label": "Check",
+            "tag": "BUTTON",
+            "font": "13.3333px",
+            "width": 320,
+            "height": 88,
+            "centerHit": true,
+            "disabled": false
+          }
+        ]
+      },
+      "keyboard": [
+        {
+          "tag": "BUTTON",
+          "label": "Reasoning tip"
+        },
+        {
+          "tag": "BUTTON",
+          "label": "Sign tip"
+        },
+        {
+          "tag": "BUTTON",
+          "label": "Model first amount"
+        },
+        {
+          "tag": "BUTTON",
+          "label": "Model second amount"
+        },
+        {
+          "tag": "BUTTON",
+          "label": "Use the same denominator"
+        },
+        {
+          "tag": "INPUT",
+          "label": "The first fraction is greater than the second fraction"
+        },
+        {
+          "tag": "BUTTON",
+          "label": "Check"
+        },
+        {
+          "tag": "BUTTON",
+          "label": "Try this problem again"
+        },
+        {
+          "tag": "BODY",
+          "label": ""
+        },
+        {
+          "tag": "BUTTON",
+          "label": "Read the steps"
+        },
+        {
+          "tag": "BUTTON",
+          "label": "Back to start"
+        },
+        {
+          "tag": "SUMMARY",
+          "label": "Close help"
+        },
+        {
+          "tag": "BUTTON",
+          "label": "Reasoning tip"
+        },
+        {
+          "tag": "BUTTON",
+          "label": "Sign tip"
+        }
+      ],
+      "errors": []
+    },
+    {
+      "id": "plan45-compare-02",
+      "view": "linear",
+      "hiddenHelpVisibleWhenClosed": false,
+      "initial": {
+        "stage": "closed-help",
+        "controls": [
+          {
+            "label": "Need help?",
+            "tag": "SUMMARY",
+            "font": "32px",
+            "width": 168.078125,
+            "height": 88,
+            "centerHit": true,
+            "disabled": false
+          },
+          {
+            "label": "The first fraction is greater than the second fraction",
+            "tag": "INPUT",
+            "font": "13.3333px",
+            "width": 107.1875,
+            "height": 107.1875,
+            "centerHit": true,
+            "disabled": false
+          },
+          {
+            "label": "The first fraction is equal to the second fraction",
+            "tag": "INPUT",
+            "font": "13.3333px",
+            "width": 107.1875,
+            "height": 107.1875,
+            "centerHit": true,
+            "disabled": false
+          },
+          {
+            "label": "The first fraction is less than the second fraction",
+            "tag": "INPUT",
+            "font": "13.3333px",
+            "width": 107.1875,
+            "height": 107.1875,
+            "centerHit": true,
+            "disabled": false
+          },
+          {
+            "label": "Check",
+            "tag": "BUTTON",
+            "font": "13.3333px",
+            "width": 320,
+            "height": 88,
+            "centerHit": true,
+            "disabled": false
+          }
+        ]
+      },
+      "open": {
+        "stage": "open-help",
+        "controls": [
+          {
+            "label": "Close help",
+            "tag": "SUMMARY",
+            "font": "32px",
+            "width": 154.359375,
+            "height": 88,
+            "centerHit": true,
+            "disabled": false
+          },
+          {
+            "label": "Reasoning tip",
+            "tag": "BUTTON",
+            "font": "13.3333px",
+            "width": 95.53125,
+            "height": 88,
+            "centerHit": true,
+            "disabled": false
+          },
+          {
+            "label": "Sign tip",
+            "tag": "BUTTON",
+            "font": "13.3333px",
+            "width": 58.46875,
+            "height": 88,
+            "centerHit": true,
+            "disabled": false
+          },
+          {
+            "label": "Model first amount",
+            "tag": "BUTTON",
+            "font": "13.3333px",
+            "width": 123.65625,
+            "height": 88,
+            "centerHit": true,
+            "disabled": false
+          },
+          {
+            "label": "Model second amount",
+            "tag": "BUTTON",
+            "font": "13.3333px",
+            "width": 145.171875,
+            "height": 88,
+            "centerHit": true,
+            "disabled": false
+          },
+          {
+            "label": "Use the same denominator",
+            "tag": "BUTTON",
+            "font": "13.3333px",
+            "width": 174.046875,
+            "height": 88,
+            "centerHit": true,
+            "disabled": false
+          },
+          {
+            "label": "The first fraction is greater than the second fraction",
+            "tag": "INPUT",
+            "font": "13.3333px",
+            "width": 107.1875,
+            "height": 107.1875,
+            "centerHit": true,
+            "disabled": false
+          },
+          {
+            "label": "The first fraction is equal to the second fraction",
+            "tag": "INPUT",
+            "font": "13.3333px",
+            "width": 107.1875,
+            "height": 107.1875,
+            "centerHit": true,
+            "disabled": false
+          },
+          {
+            "label": "The first fraction is less than the second fraction",
+            "tag": "INPUT",
+            "font": "13.3333px",
+            "width": 107.1875,
+            "height": 107.1875,
+            "centerHit": true,
+            "disabled": false
+          },
+          {
+            "label": "Check",
+            "tag": "BUTTON",
+            "font": "13.3333px",
+            "width": 320,
+            "height": 88,
+            "centerHit": true,
+            "disabled": false
+          }
+        ]
+      },
+      "keyboard": [
+        {
+          "tag": "BUTTON",
+          "label": "Reasoning tip"
+        },
+        {
+          "tag": "BUTTON",
+          "label": "Sign tip"
+        },
+        {
+          "tag": "BUTTON",
+          "label": "Model first amount"
+        },
+        {
+          "tag": "BUTTON",
+          "label": "Model second amount"
+        },
+        {
+          "tag": "BUTTON",
+          "label": "Use the same denominator"
+        },
+        {
+          "tag": "INPUT",
+          "label": "The first fraction is greater than the second fraction"
+        },
+        {
+          "tag": "BUTTON",
+          "label": "Check"
+        },
+        {
+          "tag": "BUTTON",
+          "label": "Try this problem again"
+        },
+        {
+          "tag": "BODY",
+          "label": ""
+        },
+        {
+          "tag": "BUTTON",
+          "label": "Show the picture"
+        },
+        {
+          "tag": "BUTTON",
+          "label": "Back to start"
+        },
+        {
+          "tag": "SUMMARY",
+          "label": "Close help"
+        },
+        {
+          "tag": "BUTTON",
+          "label": "Reasoning tip"
+        },
+        {
+          "tag": "BUTTON",
+          "label": "Sign tip"
+        }
+      ],
+      "errors": []
+    },
+    {
+      "id": "plan45-compare-09",
+      "view": "visual",
+      "hiddenHelpVisibleWhenClosed": false,
+      "initial": {
+        "stage": "closed-help",
+        "controls": [
+          {
+            "label": "Need help?",
+            "tag": "SUMMARY",
+            "font": "32px",
+            "width": 168.078125,
+            "height": 88,
+            "centerHit": true,
+            "disabled": false
+          },
+          {
+            "label": "The first fraction is greater than the second fraction",
+            "tag": "INPUT",
+            "font": "13.3333px",
+            "width": 107.1875,
+            "height": 107.1875,
+            "centerHit": true,
+            "disabled": false
+          },
+          {
+            "label": "The first fraction is equal to the second fraction",
+            "tag": "INPUT",
+            "font": "13.3333px",
+            "width": 107.1875,
+            "height": 107.1875,
+            "centerHit": true,
+            "disabled": false
+          },
+          {
+            "label": "The first fraction is less than the second fraction",
+            "tag": "INPUT",
+            "font": "13.3333px",
+            "width": 107.1875,
+            "height": 107.1875,
+            "centerHit": true,
+            "disabled": false
+          },
+          {
+            "label": "Check",
+            "tag": "BUTTON",
+            "font": "13.3333px",
+            "width": 320,
+            "height": 88,
+            "centerHit": true,
+            "disabled": false
+          }
+        ]
+      },
+      "open": {
+        "stage": "open-help",
+        "controls": [
+          {
+            "label": "Close help",
+            "tag": "SUMMARY",
+            "font": "32px",
+            "width": 154.359375,
+            "height": 88,
+            "centerHit": true,
+            "disabled": false
+          },
+          {
+            "label": "Reasoning tip",
+            "tag": "BUTTON",
+            "font": "13.3333px",
+            "width": 95.53125,
+            "height": 88,
+            "centerHit": true,
+            "disabled": false
+          },
+          {
+            "label": "Sign tip",
+            "tag": "BUTTON",
+            "font": "13.3333px",
+            "width": 58.46875,
+            "height": 88,
+            "centerHit": true,
+            "disabled": false
+          },
+          {
+            "label": "Model first amount",
+            "tag": "BUTTON",
+            "font": "13.3333px",
+            "width": 123.65625,
+            "height": 88,
+            "centerHit": true,
+            "disabled": false
+          },
+          {
+            "label": "Model second amount",
+            "tag": "BUTTON",
+            "font": "13.3333px",
+            "width": 145.171875,
+            "height": 88,
+            "centerHit": true,
+            "disabled": false
+          },
+          {
+            "label": "Use the same denominator",
+            "tag": "BUTTON",
+            "font": "13.3333px",
+            "width": 174.046875,
+            "height": 88,
+            "centerHit": true,
+            "disabled": false
+          },
+          {
+            "label": "The first fraction is greater than the second fraction",
+            "tag": "INPUT",
+            "font": "13.3333px",
+            "width": 107.1875,
+            "height": 107.1875,
+            "centerHit": true,
+            "disabled": false
+          },
+          {
+            "label": "The first fraction is equal to the second fraction",
+            "tag": "INPUT",
+            "font": "13.3333px",
+            "width": 107.1875,
+            "height": 107.1875,
+            "centerHit": true,
+            "disabled": false
+          },
+          {
+            "label": "The first fraction is less than the second fraction",
+            "tag": "INPUT",
+            "font": "13.3333px",
+            "width": 107.1875,
+            "height": 107.1875,
+            "centerHit": true,
+            "disabled": false
+          },
+          {
+            "label": "Check",
+            "tag": "BUTTON",
+            "font": "13.3333px",
+            "width": 320,
+            "height": 88,
+            "centerHit": true,
+            "disabled": false
+          }
+        ]
+      },
+      "keyboard": [
+        {
+          "tag": "BUTTON",
+          "label": "Reasoning tip"
+        },
+        {
+          "tag": "BUTTON",
+          "label": "Sign tip"
+        },
+        {
+          "tag": "BUTTON",
+          "label": "Model first amount"
+        },
+        {
+          "tag": "BUTTON",
+          "label": "Model second amount"
+        },
+        {
+          "tag": "BUTTON",
+          "label": "Use the same denominator"
+        },
+        {
+          "tag": "INPUT",
+          "label": "The first fraction is greater than the second fraction"
+        },
+        {
+          "tag": "BUTTON",
+          "label": "Check"
+        },
+        {
+          "tag": "BUTTON",
+          "label": "Try this problem again"
+        },
+        {
+          "tag": "BODY",
+          "label": ""
+        },
+        {
+          "tag": "BUTTON",
+          "label": "Read the steps"
+        },
+        {
+          "tag": "BUTTON",
+          "label": "Back to start"
+        },
+        {
+          "tag": "SUMMARY",
+          "label": "Close help"
+        },
+        {
+          "tag": "BUTTON",
+          "label": "Reasoning tip"
+        },
+        {
+          "tag": "BUTTON",
+          "label": "Sign tip"
+        }
+      ],
+      "errors": []
+    },
+    {
+      "id": "plan45-compare-09",
+      "view": "linear",
+      "hiddenHelpVisibleWhenClosed": false,
+      "initial": {
+        "stage": "closed-help",
+        "controls": [
+          {
+            "label": "Need help?",
+            "tag": "SUMMARY",
+            "font": "32px",
+            "width": 168.078125,
+            "height": 88,
+            "centerHit": true,
+            "disabled": false
+          },
+          {
+            "label": "The first fraction is greater than the second fraction",
+            "tag": "INPUT",
+            "font": "13.3333px",
+            "width": 107.1875,
+            "height": 107.1875,
+            "centerHit": true,
+            "disabled": false
+          },
+          {
+            "label": "The first fraction is equal to the second fraction",
+            "tag": "INPUT",
+            "font": "13.3333px",
+            "width": 107.1875,
+            "height": 107.1875,
+            "centerHit": true,
+            "disabled": false
+          },
+          {
+            "label": "The first fraction is less than the second fraction",
+            "tag": "INPUT",
+            "font": "13.3333px",
+            "width": 107.1875,
+            "height": 107.1875,
+            "centerHit": true,
+            "disabled": false
+          },
+          {
+            "label": "Check",
+            "tag": "BUTTON",
+            "font": "13.3333px",
+            "width": 320,
+            "height": 88,
+            "centerHit": true,
+            "disabled": false
+          }
+        ]
+      },
+      "open": {
+        "stage": "open-help",
+        "controls": [
+          {
+            "label": "Close help",
+            "tag": "SUMMARY",
+            "font": "32px",
+            "width": 154.359375,
+            "height": 88,
+            "centerHit": true,
+            "disabled": false
+          },
+          {
+            "label": "Reasoning tip",
+            "tag": "BUTTON",
+            "font": "13.3333px",
+            "width": 95.53125,
+            "height": 88,
+            "centerHit": true,
+            "disabled": false
+          },
+          {
+            "label": "Sign tip",
+            "tag": "BUTTON",
+            "font": "13.3333px",
+            "width": 58.46875,
+            "height": 88,
+            "centerHit": true,
+            "disabled": false
+          },
+          {
+            "label": "Model first amount",
+            "tag": "BUTTON",
+            "font": "13.3333px",
+            "width": 123.65625,
+            "height": 88,
+            "centerHit": true,
+            "disabled": false
+          },
+          {
+            "label": "Model second amount",
+            "tag": "BUTTON",
+            "font": "13.3333px",
+            "width": 145.171875,
+            "height": 88,
+            "centerHit": true,
+            "disabled": false
+          },
+          {
+            "label": "Use the same denominator",
+            "tag": "BUTTON",
+            "font": "13.3333px",
+            "width": 174.046875,
+            "height": 88,
+            "centerHit": true,
+            "disabled": false
+          },
+          {
+            "label": "The first fraction is greater than the second fraction",
+            "tag": "INPUT",
+            "font": "13.3333px",
+            "width": 107.1875,
+            "height": 107.1875,
+            "centerHit": true,
+            "disabled": false
+          },
+          {
+            "label": "The first fraction is equal to the second fraction",
+            "tag": "INPUT",
+            "font": "13.3333px",
+            "width": 107.1875,
+            "height": 107.1875,
+            "centerHit": true,
+            "disabled": false
+          },
+          {
+            "label": "The first fraction is less than the second fraction",
+            "tag": "INPUT",
+            "font": "13.3333px",
+            "width": 107.1875,
+            "height": 107.1875,
+            "centerHit": true,
+            "disabled": false
+          },
+          {
+            "label": "Check",
+            "tag": "BUTTON",
+            "font": "13.3333px",
+            "width": 320,
+            "height": 88,
+            "centerHit": true,
+            "disabled": false
+          }
+        ]
+      },
+      "keyboard": [
+        {
+          "tag": "BUTTON",
+          "label": "Reasoning tip"
+        },
+        {
+          "tag": "BUTTON",
+          "label": "Sign tip"
+        },
+        {
+          "tag": "BUTTON",
+          "label": "Model first amount"
+        },
+        {
+          "tag": "BUTTON",
+          "label": "Model second amount"
+        },
+        {
+          "tag": "BUTTON",
+          "label": "Use the same denominator"
+        },
+        {
+          "tag": "INPUT",
+          "label": "The first fraction is greater than the second fraction"
+        },
+        {
+          "tag": "BUTTON",
+          "label": "Check"
+        },
+        {
+          "tag": "BUTTON",
+          "label": "Try this problem again"
+        },
+        {
+          "tag": "BODY",
+          "label": ""
+        },
+        {
+          "tag": "BUTTON",
+          "label": "Show the picture"
+        },
+        {
+          "tag": "BUTTON",
+          "label": "Back to start"
+        },
+        {
+          "tag": "SUMMARY",
+          "label": "Close help"
+        },
+        {
+          "tag": "BUTTON",
+          "label": "Reasoning tip"
+        },
+        {
+          "tag": "BUTTON",
+          "label": "Sign tip"
+        }
+      ],
+      "errors": []
+    },
+    {
+      "id": "plan45-compare-10",
+      "view": "visual",
+      "hiddenHelpVisibleWhenClosed": false,
+      "initial": {
+        "stage": "closed-help",
+        "controls": [
+          {
+            "label": "Need help?",
+            "tag": "SUMMARY",
+            "font": "32px",
+            "width": 168.078125,
+            "height": 88,
+            "centerHit": true,
+            "disabled": false
+          },
+          {
+            "label": "The first fraction is greater than the second fraction",
+            "tag": "INPUT",
+            "font": "13.3333px",
+            "width": 107.1875,
+            "height": 107.1875,
+            "centerHit": true,
+            "disabled": false
+          },
+          {
+            "label": "The first fraction is equal to the second fraction",
+            "tag": "INPUT",
+            "font": "13.3333px",
+            "width": 107.1875,
+            "height": 107.1875,
+            "centerHit": true,
+            "disabled": false
+          },
+          {
+            "label": "The first fraction is less than the second fraction",
+            "tag": "INPUT",
+            "font": "13.3333px",
+            "width": 107.1875,
+            "height": 107.1875,
+            "centerHit": true,
+            "disabled": false
+          },
+          {
+            "label": "Check",
+            "tag": "BUTTON",
+            "font": "13.3333px",
+            "width": 320,
+            "height": 88,
+            "centerHit": true,
+            "disabled": false
+          }
+        ]
+      },
+      "open": {
+        "stage": "open-help",
+        "controls": [
+          {
+            "label": "Close help",
+            "tag": "SUMMARY",
+            "font": "32px",
+            "width": 154.359375,
+            "height": 88,
+            "centerHit": true,
+            "disabled": false
+          },
+          {
+            "label": "Reasoning tip",
+            "tag": "BUTTON",
+            "font": "13.3333px",
+            "width": 95.53125,
+            "height": 88,
+            "centerHit": true,
+            "disabled": false
+          },
+          {
+            "label": "Sign tip",
+            "tag": "BUTTON",
+            "font": "13.3333px",
+            "width": 58.46875,
+            "height": 88,
+            "centerHit": true,
+            "disabled": false
+          },
+          {
+            "label": "Model first amount",
+            "tag": "BUTTON",
+            "font": "13.3333px",
+            "width": 123.65625,
+            "height": 88,
+            "centerHit": true,
+            "disabled": false
+          },
+          {
+            "label": "Model second amount",
+            "tag": "BUTTON",
+            "font": "13.3333px",
+            "width": 145.171875,
+            "height": 88,
+            "centerHit": true,
+            "disabled": false
+          },
+          {
+            "label": "Use the same denominator",
+            "tag": "BUTTON",
+            "font": "13.3333px",
+            "width": 174.046875,
+            "height": 88,
+            "centerHit": true,
+            "disabled": false
+          },
+          {
+            "label": "The first fraction is greater than the second fraction",
+            "tag": "INPUT",
+            "font": "13.3333px",
+            "width": 107.1875,
+            "height": 107.1875,
+            "centerHit": true,
+            "disabled": false
+          },
+          {
+            "label": "The first fraction is equal to the second fraction",
+            "tag": "INPUT",
+            "font": "13.3333px",
+            "width": 107.1875,
+            "height": 107.1875,
+            "centerHit": true,
+            "disabled": false
+          },
+          {
+            "label": "The first fraction is less than the second fraction",
+            "tag": "INPUT",
+            "font": "13.3333px",
+            "width": 107.1875,
+            "height": 107.1875,
+            "centerHit": true,
+            "disabled": false
+          },
+          {
+            "label": "Check",
+            "tag": "BUTTON",
+            "font": "13.3333px",
+            "width": 320,
+            "height": 88,
+            "centerHit": true,
+            "disabled": false
+          }
+        ]
+      },
+      "keyboard": [
+        {
+          "tag": "BUTTON",
+          "label": "Reasoning tip"
+        },
+        {
+          "tag": "BUTTON",
+          "label": "Sign tip"
+        },
+        {
+          "tag": "BUTTON",
+          "label": "Model first amount"
+        },
+        {
+          "tag": "BUTTON",
+          "label": "Model second amount"
+        },
+        {
+          "tag": "BUTTON",
+          "label": "Use the same denominator"
+        },
+        {
+          "tag": "INPUT",
+          "label": "The first fraction is greater than the second fraction"
+        },
+        {
+          "tag": "BUTTON",
+          "label": "Check"
+        },
+        {
+          "tag": "BUTTON",
+          "label": "Try this problem again"
+        },
+        {
+          "tag": "BODY",
+          "label": ""
+        },
+        {
+          "tag": "BUTTON",
+          "label": "Read the steps"
+        },
+        {
+          "tag": "BUTTON",
+          "label": "Back to start"
+        },
+        {
+          "tag": "SUMMARY",
+          "label": "Close help"
+        },
+        {
+          "tag": "BUTTON",
+          "label": "Reasoning tip"
+        },
+        {
+          "tag": "BUTTON",
+          "label": "Sign tip"
+        }
+      ],
+      "errors": []
+    },
+    {
+      "id": "plan45-compare-10",
+      "view": "linear",
+      "hiddenHelpVisibleWhenClosed": false,
+      "initial": {
+        "stage": "closed-help",
+        "controls": [
+          {
+            "label": "Need help?",
+            "tag": "SUMMARY",
+            "font": "32px",
+            "width": 168.078125,
+            "height": 88,
+            "centerHit": true,
+            "disabled": false
+          },
+          {
+            "label": "The first fraction is greater than the second fraction",
+            "tag": "INPUT",
+            "font": "13.3333px",
+            "width": 107.1875,
+            "height": 107.1875,
+            "centerHit": true,
+            "disabled": false
+          },
+          {
+            "label": "The first fraction is equal to the second fraction",
+            "tag": "INPUT",
+            "font": "13.3333px",
+            "width": 107.1875,
+            "height": 107.1875,
+            "centerHit": true,
+            "disabled": false
+          },
+          {
+            "label": "The first fraction is less than the second fraction",
+            "tag": "INPUT",
+            "font": "13.3333px",
+            "width": 107.1875,
+            "height": 107.1875,
+            "centerHit": true,
+            "disabled": false
+          },
+          {
+            "label": "Check",
+            "tag": "BUTTON",
+            "font": "13.3333px",
+            "width": 320,
+            "height": 88,
+            "centerHit": true,
+            "disabled": false
+          }
+        ]
+      },
+      "open": {
+        "stage": "open-help",
+        "controls": [
+          {
+            "label": "Close help",
+            "tag": "SUMMARY",
+            "font": "32px",
+            "width": 154.359375,
+            "height": 88,
+            "centerHit": true,
+            "disabled": false
+          },
+          {
+            "label": "Reasoning tip",
+            "tag": "BUTTON",
+            "font": "13.3333px",
+            "width": 95.53125,
+            "height": 88,
+            "centerHit": true,
+            "disabled": false
+          },
+          {
+            "label": "Sign tip",
+            "tag": "BUTTON",
+            "font": "13.3333px",
+            "width": 58.46875,
+            "height": 88,
+            "centerHit": true,
+            "disabled": false
+          },
+          {
+            "label": "Model first amount",
+            "tag": "BUTTON",
+            "font": "13.3333px",
+            "width": 123.65625,
+            "height": 88,
+            "centerHit": true,
+            "disabled": false
+          },
+          {
+            "label": "Model second amount",
+            "tag": "BUTTON",
+            "font": "13.3333px",
+            "width": 145.171875,
+            "height": 88,
+            "centerHit": true,
+            "disabled": false
+          },
+          {
+            "label": "Use the same denominator",
+            "tag": "BUTTON",
+            "font": "13.3333px",
+            "width": 174.046875,
+            "height": 88,
+            "centerHit": true,
+            "disabled": false
+          },
+          {
+            "label": "The first fraction is greater than the second fraction",
+            "tag": "INPUT",
+            "font": "13.3333px",
+            "width": 107.1875,
+            "height": 107.1875,
+            "centerHit": true,
+            "disabled": false
+          },
+          {
+            "label": "The first fraction is equal to the second fraction",
+            "tag": "INPUT",
+            "font": "13.3333px",
+            "width": 107.1875,
+            "height": 107.1875,
+            "centerHit": true,
+            "disabled": false
+          },
+          {
+            "label": "The first fraction is less than the second fraction",
+            "tag": "INPUT",
+            "font": "13.3333px",
+            "width": 107.1875,
+            "height": 107.1875,
+            "centerHit": true,
+            "disabled": false
+          },
+          {
+            "label": "Check",
+            "tag": "BUTTON",
+            "font": "13.3333px",
+            "width": 320,
+            "height": 88,
+            "centerHit": true,
+            "disabled": false
+          }
+        ]
+      },
+      "keyboard": [
+        {
+          "tag": "BUTTON",
+          "label": "Reasoning tip"
+        },
+        {
+          "tag": "BUTTON",
+          "label": "Sign tip"
+        },
+        {
+          "tag": "BUTTON",
+          "label": "Model first amount"
+        },
+        {
+          "tag": "BUTTON",
+          "label": "Model second amount"
+        },
+        {
+          "tag": "BUTTON",
+          "label": "Use the same denominator"
+        },
+        {
+          "tag": "INPUT",
+          "label": "The first fraction is greater than the second fraction"
+        },
+        {
+          "tag": "BUTTON",
+          "label": "Check"
+        },
+        {
+          "tag": "BUTTON",
+          "label": "Try this problem again"
+        },
+        {
+          "tag": "BODY",
+          "label": ""
+        },
+        {
+          "tag": "BUTTON",
+          "label": "Show the picture"
+        },
+        {
+          "tag": "BUTTON",
+          "label": "Back to start"
+        },
+        {
+          "tag": "SUMMARY",
+          "label": "Close help"
+        },
+        {
+          "tag": "BUTTON",
+          "label": "Reasoning tip"
+        },
+        {
+          "tag": "BUTTON",
+          "label": "Sign tip"
+        }
+      ],
+      "errors": []
+    }
+  ]
+}
