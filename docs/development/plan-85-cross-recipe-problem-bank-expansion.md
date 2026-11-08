@@ -1,7 +1,8 @@
 ---
 id: plan-85
 title: Cross-Recipe Problem Bank Expansion
-status: delivered
+status: complete
+resolution: "Owner accepted the 238 staged records, 16-type disposition, and isolated bridge investigation. Publication remains separately gated."
 depends_on: [plan-35, plan-77, plan-79, plan-84]
 gate: "Approve the family inventory, bridge investigation method and publication mechanism before authoring or prototyping; review the integrated batch and rendered evidence before acceptance."
 summary: >-
