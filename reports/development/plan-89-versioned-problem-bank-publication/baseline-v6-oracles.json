@@ -1,0 +1,1994 @@
+{
+  "baseline": "fd97c687af922b9e341212c5e2c8d4502fd855fa",
+  "witnesses": [
+    {
+      "setId": "unlike-subtraction-vetted-set",
+      "revision": "1",
+      "itemId": "plan40-construct-half-fifth-10",
+      "envelope": {
+        "schemaVersion": "fractionflow.episode-replay/v6",
+        "contentIdentity": {
+          "schemaVersion": "fractionflow.problem-instance/v1",
+          "id": "relatively-prime-subtraction__none__1__2__1__5",
+          "source": "curated",
+          "request": {
+            "selector": "relatively-prime-subtraction",
+            "operation": "subtract",
+            "overlays": [],
+            "profileId": "curated-review",
+            "profileVersion": "1"
+          },
+          "provenance": {
+            "kind": "curated",
+            "fixtureId": "curated-plan40-construct-one-half-one-fifth",
+            "authoringRevision": "plan40-record-v1"
+          },
+          "selector": "relatively-prime-subtraction",
+          "overlays": [],
+          "sourceForms": {
+            "left": {
+              "kind": "fraction",
+              "numerator": "1",
+              "denominator": "2"
+            },
+            "right": {
+              "kind": "fraction",
+              "numerator": "1",
+              "denominator": "5"
+            }
+          },
+          "reconstruction": {
+            "kind": "curated",
+            "request": {
+              "selector": "relatively-prime-subtraction",
+              "operation": "subtract",
+              "overlays": [],
+              "profileId": "curated-review",
+              "profileVersion": "1"
+            },
+            "fixtureId": "curated-plan40-construct-one-half-one-fifth",
+            "authoringRevision": "plan40-record-v1"
+          }
+        },
+        "episodeDefinition": {
+          "id": "phase-3-reusable-subtraction-recipes",
+          "revision": "1"
+        },
+        "support": {
+          "label": "high support",
+          "dimensions": {
+            "fractionBarModel": "high support",
+            "commonDenominator": "high support",
+            "equivalentNumerators": "high support",
+            "prediction": "high support",
+            "symbolicIntegration": "high support",
+            "helpAndReplay": "high support"
+          }
+        },
+        "activeCondition": {
+          "id": "phase2-bundle-1",
+          "revision": "1",
+          "display": "D-01-A",
+          "choreography": "D-02-M",
+          "promptCadence": "D-05-focused-key-beats",
+          "connectionMaking": "CM-01-M"
+        },
+        "learnerIntents": [],
+        "taskContext": {
+          "practiceSetId": "unlike-subtraction-vetted-set",
+          "practiceSetRevision": "1",
+          "itemId": "plan40-construct-half-fifth-10",
+          "fixtureId": "curated-plan40-construct-one-half-one-fifth",
+          "authoringRevision": "plan40-record-v1",
+          "definitionId": "phase-3-reusable-subtraction-recipes",
+          "definitionRevision": "1",
+          "patternId": "unlike-subtraction.construct-equivalent",
+          "patternRevision": "1",
+          "targetDenominator": "10",
+          "taskDataId": "plan40-subtraction-recipe-task-data",
+          "taskDataRevision": "1",
+          "stimulusId": null,
+          "stimulusRevision": null,
+          "candidates": null,
+          "requiredSides": [
+            "left",
+            "right"
+          ],
+          "sourceForms": {
+            "left": {
+              "kind": "fraction",
+              "numerator": "1",
+              "denominator": "2"
+            },
+            "right": {
+              "kind": "fraction",
+              "numerator": "1",
+              "denominator": "5"
+            }
+          }
+        }
+      },
+      "expected": {
+        "schemaVersion": "fractionflow.episode-state/v1",
+        "status": "active",
+        "revision": 0,
+        "content": {
+          "schemaVersion": "fractionflow.problem-instance/v1",
+          "id": "relatively-prime-subtraction__none__1__2__1__5",
+          "source": "curated",
+          "request": {
+            "selector": "relatively-prime-subtraction",
+            "operation": "subtract",
+            "overlays": [],
+            "profileId": "curated-review",
+            "profileVersion": "1"
+          },
+          "provenance": {
+            "kind": "curated",
+            "fixtureId": "curated-plan40-construct-one-half-one-fifth",
+            "authoringRevision": "plan40-record-v1"
+          },
+          "operands": {
+            "left": {
+              "exactValue": {
+                "kind": "fraction",
+                "numerator": "1",
+                "denominator": "2"
+              },
+              "initialForm": {
+                "kind": "fraction",
+                "numerator": "1",
+                "denominator": "2"
+              },
+              "currentForm": {
+                "kind": "fraction",
+                "numerator": "1",
+                "denominator": "2"
+              },
+              "preferredFinalForm": {
+                "kind": "fraction",
+                "numerator": "1",
+                "denominator": "2"
+              },
+              "acceptedFormTransitions": []
+            },
+            "right": {
+              "exactValue": {
+                "kind": "fraction",
+                "numerator": "1",
+                "denominator": "5"
+              },
+              "initialForm": {
+                "kind": "fraction",
+                "numerator": "1",
+                "denominator": "5"
+              },
+              "currentForm": {
+                "kind": "fraction",
+                "numerator": "1",
+                "denominator": "5"
+              },
+              "preferredFinalForm": {
+                "kind": "fraction",
+                "numerator": "1",
+                "denominator": "5"
+              },
+              "acceptedFormTransitions": []
+            }
+          },
+          "resultState": {
+            "exactResult": {
+              "kind": "fraction",
+              "numerator": "3",
+              "denominator": "10"
+            },
+            "canonicalRawResultForm": {
+              "kind": "fraction",
+              "numerator": "3",
+              "denominator": "10"
+            },
+            "currentForm": {
+              "kind": "fraction",
+              "numerator": "3",
+              "denominator": "10"
+            },
+            "preferredFinalForm": {
+              "kind": "fraction",
+              "numerator": "3",
+              "denominator": "10"
+            }
+          },
+          "canonicalPath": {
+            "id": "canonical-lcd",
+            "kind": "lcd",
+            "status": "canonical",
+            "startingState": "initial",
+            "targetDenominator": "10",
+            "scaleFactors": {
+              "left": "5",
+              "right": "2"
+            },
+            "transformations": [
+              {
+                "type": "equivalent-renaming",
+                "target": "left",
+                "fromForm": {
+                  "kind": "fraction",
+                  "numerator": "1",
+                  "denominator": "2"
+                },
+                "toForm": {
+                  "kind": "fraction",
+                  "numerator": "5",
+                  "denominator": "10"
+                },
+                "scaleFactor": "5",
+                "preservesExactValue": true,
+                "validation": "valid"
+              },
+              {
+                "type": "equivalent-renaming",
+                "target": "right",
+                "fromForm": {
+                  "kind": "fraction",
+                  "numerator": "1",
+                  "denominator": "5"
+                },
+                "toForm": {
+                  "kind": "fraction",
+                  "numerator": "2",
+                  "denominator": "10"
+                },
+                "scaleFactor": "2",
+                "preservesExactValue": true,
+                "validation": "valid"
+              }
+            ],
+            "operation": {
+              "type": "operation",
+              "operation": "subtract",
+              "left": {
+                "kind": "fraction",
+                "numerator": "5",
+                "denominator": "10"
+              },
+              "right": {
+                "kind": "fraction",
+                "numerator": "2",
+                "denominator": "10"
+              },
+              "rawResult": {
+                "kind": "fraction",
+                "numerator": "3",
+                "denominator": "10"
+              }
+            },
+            "finalResult": {
+              "rawForm": {
+                "kind": "fraction",
+                "numerator": "3",
+                "denominator": "10"
+              },
+              "preferredFinalForm": {
+                "kind": "fraction",
+                "numerator": "3",
+                "denominator": "10"
+              }
+            }
+          },
+          "alternatePaths": [
+            {
+              "id": "alternate-non-least-common-denominator",
+              "kind": "non-least-common-denominator",
+              "status": "alternate-valid",
+              "startingState": "initial",
+              "targetDenominator": "20",
+              "scaleFactors": {
+                "left": "10",
+                "right": "4"
+              },
+              "transformations": [
+                {
+                  "type": "equivalent-renaming",
+                  "target": "left",
+                  "fromForm": {
+                    "kind": "fraction",
+                    "numerator": "1",
+                    "denominator": "2"
+                  },
+                  "toForm": {
+                    "kind": "fraction",
+                    "numerator": "10",
+                    "denominator": "20"
+                  },
+                  "scaleFactor": "10",
+                  "preservesExactValue": true,
+                  "validation": "valid"
+                },
+                {
+                  "type": "equivalent-renaming",
+                  "target": "right",
+                  "fromForm": {
+                    "kind": "fraction",
+                    "numerator": "1",
+                    "denominator": "5"
+                  },
+                  "toForm": {
+                    "kind": "fraction",
+                    "numerator": "4",
+                    "denominator": "20"
+                  },
+                  "scaleFactor": "4",
+                  "preservesExactValue": true,
+                  "validation": "valid"
+                }
+              ],
+              "operation": {
+                "type": "operation",
+                "operation": "subtract",
+                "left": {
+                  "kind": "fraction",
+                  "numerator": "10",
+                  "denominator": "20"
+                },
+                "right": {
+                  "kind": "fraction",
+                  "numerator": "4",
+                  "denominator": "20"
+                },
+                "rawResult": {
+                  "kind": "fraction",
+                  "numerator": "6",
+                  "denominator": "20"
+                }
+              },
+              "finalResult": {
+                "rawForm": {
+                  "kind": "fraction",
+                  "numerator": "6",
+                  "denominator": "20"
+                },
+                "preferredFinalForm": {
+                  "kind": "fraction",
+                  "numerator": "3",
+                  "denominator": "10"
+                }
+              }
+            }
+          ],
+          "classification": {
+            "family": {
+              "structuralSelector": "relatively-prime-subtraction",
+              "overlays": [],
+              "stateSnapshot": "initial"
+            },
+            "denominator": {
+              "relationship": "relatively-prime",
+              "leastCommonDenominator": "10",
+              "canonicalScaleFactors": {
+                "left": "5",
+                "right": "2"
+              },
+              "alternateCommonDenominators": [
+                "20"
+              ]
+            },
+            "transformations": {
+              "canonicalRenaming": {
+                "left": true,
+                "right": true,
+                "targetDenominator": "10"
+              },
+              "canonical": [
+                {
+                  "type": "equivalent-renaming",
+                  "target": "left",
+                  "fromForm": {
+                    "kind": "fraction",
+                    "numerator": "1",
+                    "denominator": "2"
+                  },
+                  "toForm": {
+                    "kind": "fraction",
+                    "numerator": "5",
+                    "denominator": "10"
+                  },
+                  "scaleFactor": "5",
+                  "preservesExactValue": true,
+                  "validation": "valid"
+                },
+                {
+                  "type": "equivalent-renaming",
+                  "target": "right",
+                  "fromForm": {
+                    "kind": "fraction",
+                    "numerator": "1",
+                    "denominator": "5"
+                  },
+                  "toForm": {
+                    "kind": "fraction",
+                    "numerator": "2",
+                    "denominator": "10"
+                  },
+                  "scaleFactor": "2",
+                  "preservesExactValue": true,
+                  "validation": "valid"
+                }
+              ],
+              "alternates": [
+                [
+                  {
+                    "type": "equivalent-renaming",
+                    "target": "left",
+                    "fromForm": {
+                      "kind": "fraction",
+                      "numerator": "1",
+                      "denominator": "2"
+                    },
+                    "toForm": {
+                      "kind": "fraction",
+                      "numerator": "10",
+                      "denominator": "20"
+                    },
+                    "scaleFactor": "10",
+                    "preservesExactValue": true,
+                    "validation": "valid"
+                  },
+                  {
+                    "type": "equivalent-renaming",
+                    "target": "right",
+                    "fromForm": {
+                      "kind": "fraction",
+                      "numerator": "1",
+                      "denominator": "5"
+                    },
+                    "toForm": {
+                      "kind": "fraction",
+                      "numerator": "4",
+                      "denominator": "20"
+                    },
+                    "scaleFactor": "4",
+                    "preservesExactValue": true,
+                    "validation": "valid"
+                  }
+                ]
+              ]
+            },
+            "result": {
+              "exactResult": {
+                "kind": "fraction",
+                "numerator": "3",
+                "denominator": "10"
+              },
+              "canonicalRawResultForm": {
+                "kind": "fraction",
+                "numerator": "3",
+                "denominator": "10"
+              },
+              "preferredFinalForm": {
+                "kind": "fraction",
+                "numerator": "3",
+                "denominator": "10"
+              },
+              "resultForm": "proper",
+              "simplificationStatus": "already-simplified",
+              "isWholeValued": false,
+              "crossesWhole": false
+            },
+            "regrouping": {
+              "type": "none",
+              "required": false
+            },
+            "magnitude": {
+              "benchmarkRegion": "between-0-and-half",
+              "lowerWhole": "0",
+              "upperWhole": "1",
+              "relativeToZero": 1,
+              "relativeToOne": -1,
+              "relativeToTwo": -1
+            }
+          },
+          "representationFacts": {
+            "operandDenominators": {
+              "left": "2",
+              "right": "5"
+            },
+            "canonicalDenominator": "10",
+            "resultDenominator": "10",
+            "wholeSpan": {
+              "lowerWhole": "0",
+              "upperWhole": "1"
+            },
+            "subdivisionCounts": {
+              "left": "2",
+              "right": "5",
+              "canonical": "10"
+            },
+            "eligibility": {
+              "fractionBar": "eligible",
+              "numberLine": "not-in-phase-2",
+              "symbolic": "eligible"
+            },
+            "alternateRepresentationRecommendation": "none"
+          },
+          "reviewMetadata": {
+            "scaleFactors": {
+              "left": "5",
+              "right": "2"
+            },
+            "magnitudeRange": {
+              "lowerWhole": "0",
+              "upperWhole": "1",
+              "benchmarkRegion": "between-0-and-half"
+            },
+            "intendedTargetConcept": "relatively-prime-subtraction",
+            "likelyAlternateValidPaths": [
+              "non-least-common-denominator"
+            ],
+            "authoredCoverageNote": "Canonical LCD path is preferred; valid alternate paths remain mathematical alternatives.",
+            "synthetic": true
+          }
+        },
+        "episodeDefinition": {
+          "operation": "subtract",
+          "selector": "unlike-denominator-subtraction",
+          "beats": [
+            "encounter",
+            "decide",
+            "transform",
+            "operate",
+            "resolve"
+          ],
+          "includeReflection": false,
+          "promptIdentities": {
+            "encounter": "phase3.reusable-subtraction.encounter",
+            "decide": "phase3.reusable-subtraction.decide",
+            "transform": "phase3.reusable-subtraction.transform",
+            "operate": "phase3.reusable-subtraction.operate",
+            "resolve": "phase3.reusable-subtraction.resolve"
+          },
+          "id": "phase-3-reusable-subtraction-recipes",
+          "revision": "1"
+        },
+        "taskContext": {
+          "practiceSetId": "unlike-subtraction-vetted-set",
+          "practiceSetRevision": "1",
+          "itemId": "plan40-construct-half-fifth-10",
+          "fixtureId": "curated-plan40-construct-one-half-one-fifth",
+          "authoringRevision": "plan40-record-v1",
+          "definitionId": "phase-3-reusable-subtraction-recipes",
+          "definitionRevision": "1",
+          "patternId": "unlike-subtraction.construct-equivalent",
+          "patternRevision": "1",
+          "targetDenominator": "10",
+          "taskDataId": "plan40-subtraction-recipe-task-data",
+          "taskDataRevision": "1",
+          "stimulusId": null,
+          "stimulusRevision": null,
+          "candidates": null,
+          "requiredSides": [
+            "left",
+            "right"
+          ],
+          "sourceForms": {
+            "left": {
+              "kind": "fraction",
+              "numerator": "1",
+              "denominator": "2"
+            },
+            "right": {
+              "kind": "fraction",
+              "numerator": "1",
+              "denominator": "5"
+            }
+          }
+        },
+        "activeCondition": {
+          "id": "phase2-bundle-1",
+          "revision": "1",
+          "display": "D-01-A",
+          "choreography": "D-02-M",
+          "promptCadence": "D-05-focused-key-beats",
+          "connectionMaking": "CM-01-M"
+        },
+        "beatSchedule": [
+          {
+            "id": "encounter",
+            "kind": "encounter"
+          },
+          {
+            "id": "transform-left",
+            "kind": "transform",
+            "side": "left"
+          },
+          {
+            "id": "transform-right",
+            "kind": "transform",
+            "side": "right"
+          },
+          {
+            "id": "operate",
+            "kind": "operate"
+          },
+          {
+            "id": "resolve",
+            "kind": "resolve"
+          }
+        ],
+        "schedulePosition": 0,
+        "support": {
+          "label": "high support",
+          "dimensions": {
+            "fractionBarModel": "high support",
+            "commonDenominator": "high support",
+            "equivalentNumerators": "high support",
+            "prediction": "high support",
+            "symbolicIntegration": "high support",
+            "helpAndReplay": "high support"
+          }
+        },
+        "beat": "encounter",
+        "expectedResponse": {
+          "promptId": "phase3.reusable-subtraction.encounter",
+          "beat": "encounter",
+          "evidenceCategory": "supported-construction",
+          "responsibility": "inspect-expression",
+          "inputKind": "acknowledge"
+        },
+        "established": {
+          "encounter": null,
+          "notice": null,
+          "commonDenominator": null,
+          "conversions": {
+            "left": null,
+            "right": null
+          },
+          "operation": null,
+          "resolution": null,
+          "reflection": null,
+          "route": "fraction-bar",
+          "compactCompletion": null,
+          "conversionOrigins": {},
+          "subtractionRemoval": "unmarked",
+          "selectedRenamingSide": null
+        },
+        "completedBeats": [],
+        "pendingResponse": null,
+        "nextResponseSupport": null,
+        "helpHistory": [],
+        "replayHistory": [],
+        "retryHistory": [],
+        "supportHistory": [],
+        "intentHistory": [],
+        "responseProvenance": [],
+        "lastRecovery": null
+      }
+    },
+    {
+      "setId": "unlike-subtraction-vetted-set",
+      "revision": "2",
+      "itemId": "plan40-construct-half-fifth-10",
+      "envelope": {
+        "schemaVersion": "fractionflow.episode-replay/v6",
+        "contentIdentity": {
+          "schemaVersion": "fractionflow.problem-instance/v1",
+          "id": "relatively-prime-subtraction__none__1__2__1__5",
+          "source": "curated",
+          "request": {
+            "selector": "relatively-prime-subtraction",
+            "operation": "subtract",
+            "overlays": [],
+            "profileId": "curated-review",
+            "profileVersion": "1"
+          },
+          "provenance": {
+            "kind": "curated",
+            "fixtureId": "curated-plan40-construct-one-half-one-fifth",
+            "authoringRevision": "plan40-record-v1"
+          },
+          "selector": "relatively-prime-subtraction",
+          "overlays": [],
+          "sourceForms": {
+            "left": {
+              "kind": "fraction",
+              "numerator": "1",
+              "denominator": "2"
+            },
+            "right": {
+              "kind": "fraction",
+              "numerator": "1",
+              "denominator": "5"
+            }
+          },
+          "reconstruction": {
+            "kind": "curated",
+            "request": {
+              "selector": "relatively-prime-subtraction",
+              "operation": "subtract",
+              "overlays": [],
+              "profileId": "curated-review",
+              "profileVersion": "1"
+            },
+            "fixtureId": "curated-plan40-construct-one-half-one-fifth",
+            "authoringRevision": "plan40-record-v1"
+          }
+        },
+        "episodeDefinition": {
+          "id": "phase-3-reusable-subtraction-recipes",
+          "revision": "1"
+        },
+        "support": {
+          "label": "high support",
+          "dimensions": {
+            "fractionBarModel": "high support",
+            "commonDenominator": "high support",
+            "equivalentNumerators": "high support",
+            "prediction": "high support",
+            "symbolicIntegration": "high support",
+            "helpAndReplay": "high support"
+          }
+        },
+        "activeCondition": {
+          "id": "phase2-bundle-1",
+          "revision": "1",
+          "display": "D-01-A",
+          "choreography": "D-02-M",
+          "promptCadence": "D-05-focused-key-beats",
+          "connectionMaking": "CM-01-M"
+        },
+        "learnerIntents": [],
+        "taskContext": {
+          "practiceSetId": "unlike-subtraction-vetted-set",
+          "practiceSetRevision": "2",
+          "itemId": "plan40-construct-half-fifth-10",
+          "fixtureId": "curated-plan40-construct-one-half-one-fifth",
+          "authoringRevision": "plan40-record-v1",
+          "definitionId": "phase-3-reusable-subtraction-recipes",
+          "definitionRevision": "1",
+          "patternId": "unlike-subtraction.construct-equivalent",
+          "patternRevision": "1",
+          "targetDenominator": "10",
+          "taskDataId": "plan40-subtraction-recipe-task-data",
+          "taskDataRevision": "1",
+          "stimulusId": null,
+          "stimulusRevision": null,
+          "candidates": null,
+          "requiredSides": [
+            "left",
+            "right"
+          ],
+          "sourceForms": {
+            "left": {
+              "kind": "fraction",
+              "numerator": "1",
+              "denominator": "2"
+            },
+            "right": {
+              "kind": "fraction",
+              "numerator": "1",
+              "denominator": "5"
+            }
+          }
+        }
+      },
+      "expected": {
+        "schemaVersion": "fractionflow.episode-state/v1",
+        "status": "active",
+        "revision": 0,
+        "content": {
+          "schemaVersion": "fractionflow.problem-instance/v1",
+          "id": "relatively-prime-subtraction__none__1__2__1__5",
+          "source": "curated",
+          "request": {
+            "selector": "relatively-prime-subtraction",
+            "operation": "subtract",
+            "overlays": [],
+            "profileId": "curated-review",
+            "profileVersion": "1"
+          },
+          "provenance": {
+            "kind": "curated",
+            "fixtureId": "curated-plan40-construct-one-half-one-fifth",
+            "authoringRevision": "plan40-record-v1"
+          },
+          "operands": {
+            "left": {
+              "exactValue": {
+                "kind": "fraction",
+                "numerator": "1",
+                "denominator": "2"
+              },
+              "initialForm": {
+                "kind": "fraction",
+                "numerator": "1",
+                "denominator": "2"
+              },
+              "currentForm": {
+                "kind": "fraction",
+                "numerator": "1",
+                "denominator": "2"
+              },
+              "preferredFinalForm": {
+                "kind": "fraction",
+                "numerator": "1",
+                "denominator": "2"
+              },
+              "acceptedFormTransitions": []
+            },
+            "right": {
+              "exactValue": {
+                "kind": "fraction",
+                "numerator": "1",
+                "denominator": "5"
+              },
+              "initialForm": {
+                "kind": "fraction",
+                "numerator": "1",
+                "denominator": "5"
+              },
+              "currentForm": {
+                "kind": "fraction",
+                "numerator": "1",
+                "denominator": "5"
+              },
+              "preferredFinalForm": {
+                "kind": "fraction",
+                "numerator": "1",
+                "denominator": "5"
+              },
+              "acceptedFormTransitions": []
+            }
+          },
+          "resultState": {
+            "exactResult": {
+              "kind": "fraction",
+              "numerator": "3",
+              "denominator": "10"
+            },
+            "canonicalRawResultForm": {
+              "kind": "fraction",
+              "numerator": "3",
+              "denominator": "10"
+            },
+            "currentForm": {
+              "kind": "fraction",
+              "numerator": "3",
+              "denominator": "10"
+            },
+            "preferredFinalForm": {
+              "kind": "fraction",
+              "numerator": "3",
+              "denominator": "10"
+            }
+          },
+          "canonicalPath": {
+            "id": "canonical-lcd",
+            "kind": "lcd",
+            "status": "canonical",
+            "startingState": "initial",
+            "targetDenominator": "10",
+            "scaleFactors": {
+              "left": "5",
+              "right": "2"
+            },
+            "transformations": [
+              {
+                "type": "equivalent-renaming",
+                "target": "left",
+                "fromForm": {
+                  "kind": "fraction",
+                  "numerator": "1",
+                  "denominator": "2"
+                },
+                "toForm": {
+                  "kind": "fraction",
+                  "numerator": "5",
+                  "denominator": "10"
+                },
+                "scaleFactor": "5",
+                "preservesExactValue": true,
+                "validation": "valid"
+              },
+              {
+                "type": "equivalent-renaming",
+                "target": "right",
+                "fromForm": {
+                  "kind": "fraction",
+                  "numerator": "1",
+                  "denominator": "5"
+                },
+                "toForm": {
+                  "kind": "fraction",
+                  "numerator": "2",
+                  "denominator": "10"
+                },
+                "scaleFactor": "2",
+                "preservesExactValue": true,
+                "validation": "valid"
+              }
+            ],
+            "operation": {
+              "type": "operation",
+              "operation": "subtract",
+              "left": {
+                "kind": "fraction",
+                "numerator": "5",
+                "denominator": "10"
+              },
+              "right": {
+                "kind": "fraction",
+                "numerator": "2",
+                "denominator": "10"
+              },
+              "rawResult": {
+                "kind": "fraction",
+                "numerator": "3",
+                "denominator": "10"
+              }
+            },
+            "finalResult": {
+              "rawForm": {
+                "kind": "fraction",
+                "numerator": "3",
+                "denominator": "10"
+              },
+              "preferredFinalForm": {
+                "kind": "fraction",
+                "numerator": "3",
+                "denominator": "10"
+              }
+            }
+          },
+          "alternatePaths": [
+            {
+              "id": "alternate-non-least-common-denominator",
+              "kind": "non-least-common-denominator",
+              "status": "alternate-valid",
+              "startingState": "initial",
+              "targetDenominator": "20",
+              "scaleFactors": {
+                "left": "10",
+                "right": "4"
+              },
+              "transformations": [
+                {
+                  "type": "equivalent-renaming",
+                  "target": "left",
+                  "fromForm": {
+                    "kind": "fraction",
+                    "numerator": "1",
+                    "denominator": "2"
+                  },
+                  "toForm": {
+                    "kind": "fraction",
+                    "numerator": "10",
+                    "denominator": "20"
+                  },
+                  "scaleFactor": "10",
+                  "preservesExactValue": true,
+                  "validation": "valid"
+                },
+                {
+                  "type": "equivalent-renaming",
+                  "target": "right",
+                  "fromForm": {
+                    "kind": "fraction",
+                    "numerator": "1",
+                    "denominator": "5"
+                  },
+                  "toForm": {
+                    "kind": "fraction",
+                    "numerator": "4",
+                    "denominator": "20"
+                  },
+                  "scaleFactor": "4",
+                  "preservesExactValue": true,
+                  "validation": "valid"
+                }
+              ],
+              "operation": {
+                "type": "operation",
+                "operation": "subtract",
+                "left": {
+                  "kind": "fraction",
+                  "numerator": "10",
+                  "denominator": "20"
+                },
+                "right": {
+                  "kind": "fraction",
+                  "numerator": "4",
+                  "denominator": "20"
+                },
+                "rawResult": {
+                  "kind": "fraction",
+                  "numerator": "6",
+                  "denominator": "20"
+                }
+              },
+              "finalResult": {
+                "rawForm": {
+                  "kind": "fraction",
+                  "numerator": "6",
+                  "denominator": "20"
+                },
+                "preferredFinalForm": {
+                  "kind": "fraction",
+                  "numerator": "3",
+                  "denominator": "10"
+                }
+              }
+            }
+          ],
+          "classification": {
+            "family": {
+              "structuralSelector": "relatively-prime-subtraction",
+              "overlays": [],
+              "stateSnapshot": "initial"
+            },
+            "denominator": {
+              "relationship": "relatively-prime",
+              "leastCommonDenominator": "10",
+              "canonicalScaleFactors": {
+                "left": "5",
+                "right": "2"
+              },
+              "alternateCommonDenominators": [
+                "20"
+              ]
+            },
+            "transformations": {
+              "canonicalRenaming": {
+                "left": true,
+                "right": true,
+                "targetDenominator": "10"
+              },
+              "canonical": [
+                {
+                  "type": "equivalent-renaming",
+                  "target": "left",
+                  "fromForm": {
+                    "kind": "fraction",
+                    "numerator": "1",
+                    "denominator": "2"
+                  },
+                  "toForm": {
+                    "kind": "fraction",
+                    "numerator": "5",
+                    "denominator": "10"
+                  },
+                  "scaleFactor": "5",
+                  "preservesExactValue": true,
+                  "validation": "valid"
+                },
+                {
+                  "type": "equivalent-renaming",
+                  "target": "right",
+                  "fromForm": {
+                    "kind": "fraction",
+                    "numerator": "1",
+                    "denominator": "5"
+                  },
+                  "toForm": {
+                    "kind": "fraction",
+                    "numerator": "2",
+                    "denominator": "10"
+                  },
+                  "scaleFactor": "2",
+                  "preservesExactValue": true,
+                  "validation": "valid"
+                }
+              ],
+              "alternates": [
+                [
+                  {
+                    "type": "equivalent-renaming",
+                    "target": "left",
+                    "fromForm": {
+                      "kind": "fraction",
+                      "numerator": "1",
+                      "denominator": "2"
+                    },
+                    "toForm": {
+                      "kind": "fraction",
+                      "numerator": "10",
+                      "denominator": "20"
+                    },
+                    "scaleFactor": "10",
+                    "preservesExactValue": true,
+                    "validation": "valid"
+                  },
+                  {
+                    "type": "equivalent-renaming",
+                    "target": "right",
+                    "fromForm": {
+                      "kind": "fraction",
+                      "numerator": "1",
+                      "denominator": "5"
+                    },
+                    "toForm": {
+                      "kind": "fraction",
+                      "numerator": "4",
+                      "denominator": "20"
+                    },
+                    "scaleFactor": "4",
+                    "preservesExactValue": true,
+                    "validation": "valid"
+                  }
+                ]
+              ]
+            },
+            "result": {
+              "exactResult": {
+                "kind": "fraction",
+                "numerator": "3",
+                "denominator": "10"
+              },
+              "canonicalRawResultForm": {
+                "kind": "fraction",
+                "numerator": "3",
+                "denominator": "10"
+              },
+              "preferredFinalForm": {
+                "kind": "fraction",
+                "numerator": "3",
+                "denominator": "10"
+              },
+              "resultForm": "proper",
+              "simplificationStatus": "already-simplified",
+              "isWholeValued": false,
+              "crossesWhole": false
+            },
+            "regrouping": {
+              "type": "none",
+              "required": false
+            },
+            "magnitude": {
+              "benchmarkRegion": "between-0-and-half",
+              "lowerWhole": "0",
+              "upperWhole": "1",
+              "relativeToZero": 1,
+              "relativeToOne": -1,
+              "relativeToTwo": -1
+            }
+          },
+          "representationFacts": {
+            "operandDenominators": {
+              "left": "2",
+              "right": "5"
+            },
+            "canonicalDenominator": "10",
+            "resultDenominator": "10",
+            "wholeSpan": {
+              "lowerWhole": "0",
+              "upperWhole": "1"
+            },
+            "subdivisionCounts": {
+              "left": "2",
+              "right": "5",
+              "canonical": "10"
+            },
+            "eligibility": {
+              "fractionBar": "eligible",
+              "numberLine": "not-in-phase-2",
+              "symbolic": "eligible"
+            },
+            "alternateRepresentationRecommendation": "none"
+          },
+          "reviewMetadata": {
+            "scaleFactors": {
+              "left": "5",
+              "right": "2"
+            },
+            "magnitudeRange": {
+              "lowerWhole": "0",
+              "upperWhole": "1",
+              "benchmarkRegion": "between-0-and-half"
+            },
+            "intendedTargetConcept": "relatively-prime-subtraction",
+            "likelyAlternateValidPaths": [
+              "non-least-common-denominator"
+            ],
+            "authoredCoverageNote": "Canonical LCD path is preferred; valid alternate paths remain mathematical alternatives.",
+            "synthetic": true
+          }
+        },
+        "episodeDefinition": {
+          "operation": "subtract",
+          "selector": "unlike-denominator-subtraction",
+          "beats": [
+            "encounter",
+            "decide",
+            "transform",
+            "operate",
+            "resolve"
+          ],
+          "includeReflection": false,
+          "promptIdentities": {
+            "encounter": "phase3.reusable-subtraction.encounter",
+            "decide": "phase3.reusable-subtraction.decide",
+            "transform": "phase3.reusable-subtraction.transform",
+            "operate": "phase3.reusable-subtraction.operate",
+            "resolve": "phase3.reusable-subtraction.resolve"
+          },
+          "id": "phase-3-reusable-subtraction-recipes",
+          "revision": "1"
+        },
+        "taskContext": {
+          "practiceSetId": "unlike-subtraction-vetted-set",
+          "practiceSetRevision": "2",
+          "itemId": "plan40-construct-half-fifth-10",
+          "fixtureId": "curated-plan40-construct-one-half-one-fifth",
+          "authoringRevision": "plan40-record-v1",
+          "definitionId": "phase-3-reusable-subtraction-recipes",
+          "definitionRevision": "1",
+          "patternId": "unlike-subtraction.construct-equivalent",
+          "patternRevision": "1",
+          "targetDenominator": "10",
+          "taskDataId": "plan40-subtraction-recipe-task-data",
+          "taskDataRevision": "1",
+          "stimulusId": null,
+          "stimulusRevision": null,
+          "candidates": null,
+          "requiredSides": [
+            "left",
+            "right"
+          ],
+          "sourceForms": {
+            "left": {
+              "kind": "fraction",
+              "numerator": "1",
+              "denominator": "2"
+            },
+            "right": {
+              "kind": "fraction",
+              "numerator": "1",
+              "denominator": "5"
+            }
+          }
+        },
+        "activeCondition": {
+          "id": "phase2-bundle-1",
+          "revision": "1",
+          "display": "D-01-A",
+          "choreography": "D-02-M",
+          "promptCadence": "D-05-focused-key-beats",
+          "connectionMaking": "CM-01-M"
+        },
+        "beatSchedule": [
+          {
+            "id": "encounter",
+            "kind": "encounter"
+          },
+          {
+            "id": "transform-left",
+            "kind": "transform",
+            "side": "left"
+          },
+          {
+            "id": "transform-right",
+            "kind": "transform",
+            "side": "right"
+          },
+          {
+            "id": "operate",
+            "kind": "operate"
+          },
+          {
+            "id": "resolve",
+            "kind": "resolve"
+          }
+        ],
+        "schedulePosition": 0,
+        "support": {
+          "label": "high support",
+          "dimensions": {
+            "fractionBarModel": "high support",
+            "commonDenominator": "high support",
+            "equivalentNumerators": "high support",
+            "prediction": "high support",
+            "symbolicIntegration": "high support",
+            "helpAndReplay": "high support"
+          }
+        },
+        "beat": "encounter",
+        "expectedResponse": {
+          "promptId": "phase3.reusable-subtraction.encounter",
+          "beat": "encounter",
+          "evidenceCategory": "supported-construction",
+          "responsibility": "inspect-expression",
+          "inputKind": "acknowledge"
+        },
+        "established": {
+          "encounter": null,
+          "notice": null,
+          "commonDenominator": null,
+          "conversions": {
+            "left": null,
+            "right": null
+          },
+          "operation": null,
+          "resolution": null,
+          "reflection": null,
+          "route": "fraction-bar",
+          "compactCompletion": null,
+          "conversionOrigins": {},
+          "subtractionRemoval": "unmarked",
+          "selectedRenamingSide": null
+        },
+        "completedBeats": [],
+        "pendingResponse": null,
+        "nextResponseSupport": null,
+        "helpHistory": [],
+        "replayHistory": [],
+        "retryHistory": [],
+        "supportHistory": [],
+        "intentHistory": [],
+        "responseProvenance": [],
+        "lastRecovery": null
+      }
+    },
+    {
+      "setId": "unlike-subtraction-vetted-set",
+      "revision": "2",
+      "itemId": "plan76-construct-two-thirds-one-fifth-15",
+      "envelope": {
+        "schemaVersion": "fractionflow.episode-replay/v6",
+        "contentIdentity": {
+          "schemaVersion": "fractionflow.problem-instance/v1",
+          "id": "relatively-prime-subtraction__none__2__3__1__5",
+          "source": "curated",
+          "request": {
+            "selector": "relatively-prime-subtraction",
+            "operation": "subtract",
+            "overlays": [],
+            "profileId": "curated-review",
+            "profileVersion": "1"
+          },
+          "provenance": {
+            "kind": "curated",
+            "fixtureId": "curated-plan76-construct-two-thirds-one-fifth-15",
+            "authoringRevision": "plan76-record-v1"
+          },
+          "selector": "relatively-prime-subtraction",
+          "overlays": [],
+          "sourceForms": {
+            "left": {
+              "kind": "fraction",
+              "numerator": "2",
+              "denominator": "3"
+            },
+            "right": {
+              "kind": "fraction",
+              "numerator": "1",
+              "denominator": "5"
+            }
+          },
+          "reconstruction": {
+            "kind": "curated",
+            "request": {
+              "selector": "relatively-prime-subtraction",
+              "operation": "subtract",
+              "overlays": [],
+              "profileId": "curated-review",
+              "profileVersion": "1"
+            },
+            "fixtureId": "curated-plan76-construct-two-thirds-one-fifth-15",
+            "authoringRevision": "plan76-record-v1"
+          }
+        },
+        "episodeDefinition": {
+          "id": "phase-3-reusable-subtraction-recipes",
+          "revision": "1"
+        },
+        "support": {
+          "label": "high support",
+          "dimensions": {
+            "fractionBarModel": "high support",
+            "commonDenominator": "high support",
+            "equivalentNumerators": "high support",
+            "prediction": "high support",
+            "symbolicIntegration": "high support",
+            "helpAndReplay": "high support"
+          }
+        },
+        "activeCondition": {
+          "id": "phase2-bundle-1",
+          "revision": "1",
+          "display": "D-01-A",
+          "choreography": "D-02-M",
+          "promptCadence": "D-05-focused-key-beats",
+          "connectionMaking": "CM-01-M"
+        },
+        "learnerIntents": [],
+        "taskContext": {
+          "practiceSetId": "unlike-subtraction-vetted-set",
+          "practiceSetRevision": "2",
+          "itemId": "plan76-construct-two-thirds-one-fifth-15",
+          "fixtureId": "curated-plan76-construct-two-thirds-one-fifth-15",
+          "authoringRevision": "plan76-record-v1",
+          "definitionId": "phase-3-reusable-subtraction-recipes",
+          "definitionRevision": "1",
+          "patternId": "unlike-subtraction.construct-equivalent",
+          "patternRevision": "1",
+          "targetDenominator": "15",
+          "taskDataId": "plan40-subtraction-recipe-task-data",
+          "taskDataRevision": "1",
+          "stimulusId": null,
+          "stimulusRevision": null,
+          "candidates": null,
+          "requiredSides": [
+            "left",
+            "right"
+          ],
+          "sourceForms": {
+            "left": {
+              "kind": "fraction",
+              "numerator": "2",
+              "denominator": "3"
+            },
+            "right": {
+              "kind": "fraction",
+              "numerator": "1",
+              "denominator": "5"
+            }
+          }
+        }
+      },
+      "expected": {
+        "schemaVersion": "fractionflow.episode-state/v1",
+        "status": "active",
+        "revision": 0,
+        "content": {
+          "schemaVersion": "fractionflow.problem-instance/v1",
+          "id": "relatively-prime-subtraction__none__2__3__1__5",
+          "source": "curated",
+          "request": {
+            "selector": "relatively-prime-subtraction",
+            "operation": "subtract",
+            "overlays": [],
+            "profileId": "curated-review",
+            "profileVersion": "1"
+          },
+          "provenance": {
+            "kind": "curated",
+            "fixtureId": "curated-plan76-construct-two-thirds-one-fifth-15",
+            "authoringRevision": "plan76-record-v1"
+          },
+          "operands": {
+            "left": {
+              "exactValue": {
+                "kind": "fraction",
+                "numerator": "2",
+                "denominator": "3"
+              },
+              "initialForm": {
+                "kind": "fraction",
+                "numerator": "2",
+                "denominator": "3"
+              },
+              "currentForm": {
+                "kind": "fraction",
+                "numerator": "2",
+                "denominator": "3"
+              },
+              "preferredFinalForm": {
+                "kind": "fraction",
+                "numerator": "2",
+                "denominator": "3"
+              },
+              "acceptedFormTransitions": []
+            },
+            "right": {
+              "exactValue": {
+                "kind": "fraction",
+                "numerator": "1",
+                "denominator": "5"
+              },
+              "initialForm": {
+                "kind": "fraction",
+                "numerator": "1",
+                "denominator": "5"
+              },
+              "currentForm": {
+                "kind": "fraction",
+                "numerator": "1",
+                "denominator": "5"
+              },
+              "preferredFinalForm": {
+                "kind": "fraction",
+                "numerator": "1",
+                "denominator": "5"
+              },
+              "acceptedFormTransitions": []
+            }
+          },
+          "resultState": {
+            "exactResult": {
+              "kind": "fraction",
+              "numerator": "7",
+              "denominator": "15"
+            },
+            "canonicalRawResultForm": {
+              "kind": "fraction",
+              "numerator": "7",
+              "denominator": "15"
+            },
+            "currentForm": {
+              "kind": "fraction",
+              "numerator": "7",
+              "denominator": "15"
+            },
+            "preferredFinalForm": {
+              "kind": "fraction",
+              "numerator": "7",
+              "denominator": "15"
+            }
+          },
+          "canonicalPath": {
+            "id": "canonical-lcd",
+            "kind": "lcd",
+            "status": "canonical",
+            "startingState": "initial",
+            "targetDenominator": "15",
+            "scaleFactors": {
+              "left": "5",
+              "right": "3"
+            },
+            "transformations": [
+              {
+                "type": "equivalent-renaming",
+                "target": "left",
+                "fromForm": {
+                  "kind": "fraction",
+                  "numerator": "2",
+                  "denominator": "3"
+                },
+                "toForm": {
+                  "kind": "fraction",
+                  "numerator": "10",
+                  "denominator": "15"
+                },
+                "scaleFactor": "5",
+                "preservesExactValue": true,
+                "validation": "valid"
+              },
+              {
+                "type": "equivalent-renaming",
+                "target": "right",
+                "fromForm": {
+                  "kind": "fraction",
+                  "numerator": "1",
+                  "denominator": "5"
+                },
+                "toForm": {
+                  "kind": "fraction",
+                  "numerator": "3",
+                  "denominator": "15"
+                },
+                "scaleFactor": "3",
+                "preservesExactValue": true,
+                "validation": "valid"
+              }
+            ],
+            "operation": {
+              "type": "operation",
+              "operation": "subtract",
+              "left": {
+                "kind": "fraction",
+                "numerator": "10",
+                "denominator": "15"
+              },
+              "right": {
+                "kind": "fraction",
+                "numerator": "3",
+                "denominator": "15"
+              },
+              "rawResult": {
+                "kind": "fraction",
+                "numerator": "7",
+                "denominator": "15"
+              }
+            },
+            "finalResult": {
+              "rawForm": {
+                "kind": "fraction",
+                "numerator": "7",
+                "denominator": "15"
+              },
+              "preferredFinalForm": {
+                "kind": "fraction",
+                "numerator": "7",
+                "denominator": "15"
+              }
+            }
+          },
+          "alternatePaths": [
+            {
+              "id": "alternate-non-least-common-denominator",
+              "kind": "non-least-common-denominator",
+              "status": "alternate-valid",
+              "startingState": "initial",
+              "targetDenominator": "30",
+              "scaleFactors": {
+                "left": "10",
+                "right": "6"
+              },
+              "transformations": [
+                {
+                  "type": "equivalent-renaming",
+                  "target": "left",
+                  "fromForm": {
+                    "kind": "fraction",
+                    "numerator": "2",
+                    "denominator": "3"
+                  },
+                  "toForm": {
+                    "kind": "fraction",
+                    "numerator": "20",
+                    "denominator": "30"
+                  },
+                  "scaleFactor": "10",
+                  "preservesExactValue": true,
+                  "validation": "valid"
+                },
+                {
+                  "type": "equivalent-renaming",
+                  "target": "right",
+                  "fromForm": {
+                    "kind": "fraction",
+                    "numerator": "1",
+                    "denominator": "5"
+                  },
+                  "toForm": {
+                    "kind": "fraction",
+                    "numerator": "6",
+                    "denominator": "30"
+                  },
+                  "scaleFactor": "6",
+                  "preservesExactValue": true,
+                  "validation": "valid"
+                }
+              ],
+              "operation": {
+                "type": "operation",
+                "operation": "subtract",
+                "left": {
+                  "kind": "fraction",
+                  "numerator": "20",
+                  "denominator": "30"
+                },
+                "right": {
+                  "kind": "fraction",
+                  "numerator": "6",
+                  "denominator": "30"
+                },
+                "rawResult": {
+                  "kind": "fraction",
+                  "numerator": "14",
+                  "denominator": "30"
+                }
+              },
+              "finalResult": {
+                "rawForm": {
+                  "kind": "fraction",
+                  "numerator": "14",
+                  "denominator": "30"
+                },
+                "preferredFinalForm": {
+                  "kind": "fraction",
+                  "numerator": "7",
+                  "denominator": "15"
+                }
+              }
+            }
+          ],
+          "classification": {
+            "family": {
+              "structuralSelector": "relatively-prime-subtraction",
+              "overlays": [],
+              "stateSnapshot": "initial"
+            },
+            "denominator": {
+              "relationship": "relatively-prime",
+              "leastCommonDenominator": "15",
+              "canonicalScaleFactors": {
+                "left": "5",
+                "right": "3"
+              },
+              "alternateCommonDenominators": [
+                "30"
+              ]
+            },
+            "transformations": {
+              "canonicalRenaming": {
+                "left": true,
+                "right": true,
+                "targetDenominator": "15"
+              },
+              "canonical": [
+                {
+                  "type": "equivalent-renaming",
+                  "target": "left",
+                  "fromForm": {
+                    "kind": "fraction",
+                    "numerator": "2",
+                    "denominator": "3"
+                  },
+                  "toForm": {
+                    "kind": "fraction",
+                    "numerator": "10",
+                    "denominator": "15"
+                  },
+                  "scaleFactor": "5",
+                  "preservesExactValue": true,
+                  "validation": "valid"
+                },
+                {
+                  "type": "equivalent-renaming",
+                  "target": "right",
+                  "fromForm": {
+                    "kind": "fraction",
+                    "numerator": "1",
+                    "denominator": "5"
+                  },
+                  "toForm": {
+                    "kind": "fraction",
+                    "numerator": "3",
+                    "denominator": "15"
+                  },
+                  "scaleFactor": "3",
+                  "preservesExactValue": true,
+                  "validation": "valid"
+                }
+              ],
+              "alternates": [
+                [
+                  {
+                    "type": "equivalent-renaming",
+                    "target": "left",
+                    "fromForm": {
+                      "kind": "fraction",
+                      "numerator": "2",
+                      "denominator": "3"
+                    },
+                    "toForm": {
+                      "kind": "fraction",
+                      "numerator": "20",
+                      "denominator": "30"
+                    },
+                    "scaleFactor": "10",
+                    "preservesExactValue": true,
+                    "validation": "valid"
+                  },
+                  {
+                    "type": "equivalent-renaming",
+                    "target": "right",
+                    "fromForm": {
+                      "kind": "fraction",
+                      "numerator": "1",
+                      "denominator": "5"
+                    },
+                    "toForm": {
+                      "kind": "fraction",
+                      "numerator": "6",
+                      "denominator": "30"
+                    },
+                    "scaleFactor": "6",
+                    "preservesExactValue": true,
+                    "validation": "valid"
+                  }
+                ]
+              ]
+            },
+            "result": {
+              "exactResult": {
+                "kind": "fraction",
+                "numerator": "7",
+                "denominator": "15"
+              },
+              "canonicalRawResultForm": {
+                "kind": "fraction",
+                "numerator": "7",
+                "denominator": "15"
+              },
+              "preferredFinalForm": {
+                "kind": "fraction",
+                "numerator": "7",
+                "denominator": "15"
+              },
+              "resultForm": "proper",
+              "simplificationStatus": "already-simplified",
+              "isWholeValued": false,
+              "crossesWhole": false
+            },
+            "regrouping": {
+              "type": "none",
+              "required": false
+            },
+            "magnitude": {
+              "benchmarkRegion": "between-0-and-half",
+              "lowerWhole": "0",
+              "upperWhole": "1",
+              "relativeToZero": 1,
+              "relativeToOne": -1,
+              "relativeToTwo": -1
+            }
+          },
+          "representationFacts": {
+            "operandDenominators": {
+              "left": "3",
+              "right": "5"
+            },
+            "canonicalDenominator": "15",
+            "resultDenominator": "15",
+            "wholeSpan": {
+              "lowerWhole": "0",
+              "upperWhole": "1"
+            },
+            "subdivisionCounts": {
+              "left": "3",
+              "right": "5",
+              "canonical": "15"
+            },
+            "eligibility": {
+              "fractionBar": "eligible",
+              "numberLine": "not-in-phase-2",
+              "symbolic": "eligible"
+            },
+            "alternateRepresentationRecommendation": "none"
+          },
+          "reviewMetadata": {
+            "scaleFactors": {
+              "left": "5",
+              "right": "3"
+            },
+            "magnitudeRange": {
+              "lowerWhole": "0",
+              "upperWhole": "1",
+              "benchmarkRegion": "between-0-and-half"
+            },
+            "intendedTargetConcept": "relatively-prime-subtraction",
+            "likelyAlternateValidPaths": [
+              "non-least-common-denominator"
+            ],
+            "authoredCoverageNote": "Canonical LCD path is preferred; valid alternate paths remain mathematical alternatives.",
+            "synthetic": true
+          }
+        },
+        "episodeDefinition": {
+          "operation": "subtract",
+          "selector": "unlike-denominator-subtraction",
+          "beats": [
+            "encounter",
+            "decide",
+            "transform",
+            "operate",
+            "resolve"
+          ],
+          "includeReflection": false,
+          "promptIdentities": {
+            "encounter": "phase3.reusable-subtraction.encounter",
+            "decide": "phase3.reusable-subtraction.decide",
+            "transform": "phase3.reusable-subtraction.transform",
+            "operate": "phase3.reusable-subtraction.operate",
+            "resolve": "phase3.reusable-subtraction.resolve"
+          },
+          "id": "phase-3-reusable-subtraction-recipes",
+          "revision": "1"
+        },
+        "taskContext": {
+          "practiceSetId": "unlike-subtraction-vetted-set",
+          "practiceSetRevision": "2",
+          "itemId": "plan76-construct-two-thirds-one-fifth-15",
+          "fixtureId": "curated-plan76-construct-two-thirds-one-fifth-15",
+          "authoringRevision": "plan76-record-v1",
+          "definitionId": "phase-3-reusable-subtraction-recipes",
+          "definitionRevision": "1",
+          "patternId": "unlike-subtraction.construct-equivalent",
+          "patternRevision": "1",
+          "targetDenominator": "15",
+          "taskDataId": "plan40-subtraction-recipe-task-data",
+          "taskDataRevision": "1",
+          "stimulusId": null,
+          "stimulusRevision": null,
+          "candidates": null,
+          "requiredSides": [
+            "left",
+            "right"
+          ],
+          "sourceForms": {
+            "left": {
+              "kind": "fraction",
+              "numerator": "2",
+              "denominator": "3"
+            },
+            "right": {
+              "kind": "fraction",
+              "numerator": "1",
+              "denominator": "5"
+            }
+          }
+        },
+        "activeCondition": {
+          "id": "phase2-bundle-1",
+          "revision": "1",
+          "display": "D-01-A",
+          "choreography": "D-02-M",
+          "promptCadence": "D-05-focused-key-beats",
+          "connectionMaking": "CM-01-M"
+        },
+        "beatSchedule": [
+          {
+            "id": "encounter",
+            "kind": "encounter"
+          },
+          {
+            "id": "transform-left",
+            "kind": "transform",
+            "side": "left"
+          },
+          {
+            "id": "transform-right",
+            "kind": "transform",
+            "side": "right"
+          },
+          {
+            "id": "operate",
+            "kind": "operate"
+          },
+          {
+            "id": "resolve",
+            "kind": "resolve"
+          }
+        ],
+        "schedulePosition": 0,
+        "support": {
+          "label": "high support",
+          "dimensions": {
+            "fractionBarModel": "high support",
+            "commonDenominator": "high support",
+            "equivalentNumerators": "high support",
+            "prediction": "high support",
+            "symbolicIntegration": "high support",
+            "helpAndReplay": "high support"
+          }
+        },
+        "beat": "encounter",
+        "expectedResponse": {
+          "promptId": "phase3.reusable-subtraction.encounter",
+          "beat": "encounter",
+          "evidenceCategory": "supported-construction",
+          "responsibility": "inspect-expression",
+          "inputKind": "acknowledge"
+        },
+        "established": {
+          "encounter": null,
+          "notice": null,
+          "commonDenominator": null,
+          "conversions": {
+            "left": null,
+            "right": null
+          },
+          "operation": null,
+          "resolution": null,
+          "reflection": null,
+          "route": "fraction-bar",
+          "compactCompletion": null,
+          "conversionOrigins": {},
+          "subtractionRemoval": "unmarked",
+          "selectedRenamingSide": null
+        },
+        "completedBeats": [],
+        "pendingResponse": null,
+        "nextResponseSupport": null,
+        "helpHistory": [],
+        "replayHistory": [],
+        "retryHistory": [],
+        "supportHistory": [],
+        "intentHistory": [],
+        "responseProvenance": [],
+        "lastRecovery": null
+      }
+    }
+  ]
+}
