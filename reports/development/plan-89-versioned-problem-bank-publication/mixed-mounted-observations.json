@@ -1,0 +1,109 @@
+{
+  "method": "local Vite report-only harness injects registered family v2 records into real createFractionFlowApp; real chooser and controls",
+  "browser": "157.0.8103.38",
+  "results": [
+    {
+      "family": 74,
+      "config": {
+        "name": "narrow-visual",
+        "width": 360,
+        "height": 740,
+        "linear": false,
+        "enlarged": false
+      },
+      "itemsCompleted": 30,
+      "boundary": [
+        "plan74-add-02",
+        "plan74-add-03"
+      ],
+      "last": "plan74-add-30",
+      "returnedToStart": true
+    },
+    {
+      "family": 78,
+      "config": {
+        "name": "narrow-visual",
+        "width": 360,
+        "height": 740,
+        "linear": false,
+        "enlarged": false
+      },
+      "itemsCompleted": 30,
+      "boundary": [
+        "plan78-subtract-04",
+        "plan78-subtract-05"
+      ],
+      "last": "plan78-subtract-30",
+      "returnedToStart": true
+    },
+    {
+      "family": 82,
+      "config": {
+        "name": "narrow-visual",
+        "width": 360,
+        "height": 740,
+        "linear": false,
+        "enlarged": false
+      },
+      "itemsCompleted": 30,
+      "boundary": [
+        "plan82-subtract-04",
+        "plan82-subtract-05"
+      ],
+      "last": "plan82-subtract-30",
+      "returnedToStart": true
+    },
+    {
+      "family": 74,
+      "config": {
+        "name": "enlarged-linear",
+        "width": 1093,
+        "height": 740,
+        "linear": true,
+        "enlarged": true
+      },
+      "itemsCompleted": 30,
+      "boundary": [
+        "plan74-add-02",
+        "plan74-add-03"
+      ],
+      "last": "plan74-add-30",
+      "returnedToStart": true
+    },
+    {
+      "family": 78,
+      "config": {
+        "name": "enlarged-linear",
+        "width": 1093,
+        "height": 740,
+        "linear": true,
+        "enlarged": true
+      },
+      "itemsCompleted": 30,
+      "boundary": [
+        "plan78-subtract-04",
+        "plan78-subtract-05"
+      ],
+      "last": "plan78-subtract-30",
+      "returnedToStart": true
+    },
+    {
+      "family": 82,
+      "config": {
+        "name": "enlarged-linear",
+        "width": 1093,
+        "height": 740,
+        "linear": true,
+        "enlarged": true
+      },
+      "itemsCompleted": 30,
+      "boundary": [
+        "plan82-subtract-04",
+        "plan82-subtract-05"
+      ],
+      "last": "plan82-subtract-30",
+      "returnedToStart": true
+    }
+  ],
+  "pageErrors": []
+}

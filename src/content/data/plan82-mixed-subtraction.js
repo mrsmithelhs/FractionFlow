@@ -34,3 +34,25 @@ export const PLAN82_SET_V1 = { setId:'mixed-number-subtraction-with-decompositio
   {itemId:'plan82-subtract-01',itemRevision:'1'}, {itemId:'plan82-subtract-02',itemRevision:'1'},
   {itemId:'plan82-subtract-03',itemRevision:'1'}, {itemId:'plan82-subtract-04',itemRevision:'1'},
 ] };
+// Revision 2 publishes the complete staged bank. This explicit ordered identity
+// list keeps the published membership stable if more records are authored later.
+export const PLAN82_SET_V2 = Object.freeze({
+  setId:'mixed-number-subtraction-with-decomposition', setRevision:'2',
+  items:Object.freeze([
+    Object.freeze({itemId:'plan82-subtract-01',itemRevision:'1'}), Object.freeze({itemId:'plan82-subtract-02',itemRevision:'1'}),
+    Object.freeze({itemId:'plan82-subtract-03',itemRevision:'1'}), Object.freeze({itemId:'plan82-subtract-04',itemRevision:'1'}),
+    Object.freeze({itemId:'plan82-subtract-05',itemRevision:'1'}), Object.freeze({itemId:'plan82-subtract-06',itemRevision:'1'}),
+    Object.freeze({itemId:'plan82-subtract-07',itemRevision:'1'}), Object.freeze({itemId:'plan82-subtract-08',itemRevision:'1'}),
+    Object.freeze({itemId:'plan82-subtract-09',itemRevision:'1'}), Object.freeze({itemId:'plan82-subtract-10',itemRevision:'1'}),
+    Object.freeze({itemId:'plan82-subtract-11',itemRevision:'1'}), Object.freeze({itemId:'plan82-subtract-12',itemRevision:'1'}),
+    Object.freeze({itemId:'plan82-subtract-13',itemRevision:'1'}), Object.freeze({itemId:'plan82-subtract-14',itemRevision:'1'}),
+    Object.freeze({itemId:'plan82-subtract-15',itemRevision:'1'}), Object.freeze({itemId:'plan82-subtract-16',itemRevision:'1'}),
+    Object.freeze({itemId:'plan82-subtract-17',itemRevision:'1'}), Object.freeze({itemId:'plan82-subtract-18',itemRevision:'1'}),
+    Object.freeze({itemId:'plan82-subtract-19',itemRevision:'1'}), Object.freeze({itemId:'plan82-subtract-20',itemRevision:'1'}),
+    Object.freeze({itemId:'plan82-subtract-21',itemRevision:'1'}), Object.freeze({itemId:'plan82-subtract-22',itemRevision:'1'}),
+    Object.freeze({itemId:'plan82-subtract-23',itemRevision:'1'}), Object.freeze({itemId:'plan82-subtract-24',itemRevision:'1'}),
+    Object.freeze({itemId:'plan82-subtract-25',itemRevision:'1'}), Object.freeze({itemId:'plan82-subtract-26',itemRevision:'1'}),
+    Object.freeze({itemId:'plan82-subtract-27',itemRevision:'1'}), Object.freeze({itemId:'plan82-subtract-28',itemRevision:'1'}),
+    Object.freeze({itemId:'plan82-subtract-29',itemRevision:'1'}), Object.freeze({itemId:'plan82-subtract-30',itemRevision:'1'}),
+  ]),
+});

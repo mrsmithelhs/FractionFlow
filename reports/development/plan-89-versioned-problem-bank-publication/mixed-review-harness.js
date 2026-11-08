@@ -1,0 +1,11 @@
+import '../../../src/app/styles.css';
+import '../../../src/styles/render.css';
+import { createFractionFlowApp } from '../../../src/app/app.js';
+import { PLAN74_ADDITION_PRACTICE_TYPE, PLAN78_SUBTRACTION_PRACTICE_TYPE, PLAN82_SUBTRACTION_PRACTICE_TYPE } from '../../../src/app/practice-types.js';
+import { PLAN74_RECORDS_V2 } from '../../../src/content/plan74-mixed-addition-task.js';
+import { PLAN78_RECORDS_V2 } from '../../../src/content/plan78-mixed-subtraction-task.js';
+import { PLAN82_RECORDS_V2 } from '../../../src/content/plan82-mixed-subtraction-task.js';
+const families={74:[PLAN74_ADDITION_PRACTICE_TYPE,PLAN74_RECORDS_V2],78:[PLAN78_SUBTRACTION_PRACTICE_TYPE,PLAN78_RECORDS_V2],82:[PLAN82_SUBTRACTION_PRACTICE_TYPE,PLAN82_RECORDS_V2]};
+const [base,records]=families[new URLSearchParams(location.search).get('family')]??[];if(!base)throw Error('unknown review family');
+const type={...base,setRevision:'2',items:records.map(r=>({id:r.itemId,episodeDefinitionId:base.episodeDefinition.id,episodeDefinitionRevision:'1'}))};
+window.mixedReviewApp=createFractionFlowApp({root:document.querySelector('#app'),practiceTypes:[type],presentationMode:'instant-test'});window.mixedReviewApp.mount();

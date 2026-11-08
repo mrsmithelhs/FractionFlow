@@ -1,0 +1,35 @@
+{
+  "method": "normal local Vite app entry, default chooser and real controls",
+  "browser": "157.0.8103.38",
+  "results": [
+    {
+      "family": 74,
+      "defaultItems": [
+        "plan74-add-01",
+        "plan74-add-02"
+      ],
+      "returnedToStart": true
+    },
+    {
+      "family": 78,
+      "defaultItems": [
+        "plan78-subtract-01",
+        "plan78-subtract-02",
+        "plan78-subtract-03",
+        "plan78-subtract-04"
+      ],
+      "returnedToStart": true
+    },
+    {
+      "family": 82,
+      "defaultItems": [
+        "plan82-subtract-01",
+        "plan82-subtract-02",
+        "plan82-subtract-03",
+        "plan82-subtract-04"
+      ],
+      "returnedToStart": true
+    }
+  ],
+  "pageErrors": []
+}

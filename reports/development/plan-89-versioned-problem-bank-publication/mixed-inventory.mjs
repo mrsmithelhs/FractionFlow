@@ -1,0 +1,7 @@
+import {writeFileSync} from 'node:fs';
+import {PLAN74_RECORDS_V2,admitPlan74Record} from '../../../src/content/plan74-mixed-addition-task.js';
+import {PLAN78_RECORDS_V2,admitPlan78Record} from '../../../src/content/plan78-mixed-subtraction-task.js';
+import {PLAN82_RECORDS_V2,admitPlan82Record} from '../../../src/content/plan82-mixed-subtraction-task.js';
+const banks=[{plan:74,records:PLAN74_RECORDS_V2,admit:admitPlan74Record},{plan:78,records:PLAN78_RECORDS_V2,admit:admitPlan78Record},{plan:82,records:PLAN82_RECORDS_V2,admit:admitPlan82Record}];
+const out=banks.map(({plan,records,admit})=>{const results={},pairs=new Set();let zero=0;for(const r of records){const forms=r.operands.map(x=>JSON.stringify(x));const k=plan===74?forms.sort().join('|'):forms.join('|');if(pairs.has(k))throw Error(`duplicate operands ${r.itemId}`);pairs.add(k);const x=admit(r).result,result=`${x.whole} ${x.fraction.numerator}/${x.fraction.denominator}`;(results[result]??=[]).push(r.itemId);if(x.fraction.numerator===0n)zero++;}return {plan,registered:records.length,operandKey:plan===74?'unordered':'ordered',distinctOperandPairs:pairs.size,zeroFractionalRemainders:zero,nonzeroFractionalRemainders:records.length-zero,repeatedResults:Object.entries(results).filter(([,ids])=>ids.length>1).map(([result,itemIds])=>({result,itemIds}))};});
+writeFileSync(new URL('./mixed-inventory.json',import.meta.url),JSON.stringify(out,null,2)+'\n');console.log(JSON.stringify(out));

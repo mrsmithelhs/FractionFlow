@@ -287,9 +287,9 @@ function presentationModeFor({ override, motionQuery }) {
 
 function createInitialState(instance, practiceType, condition, supportLevel, episodeDefinition = practiceType.episodeDefinition, item = null) {
   const taskContext = episodeDefinition.id === PLAN84_ID && item ? resolvePlan84Context(item.id)
-    : episodeDefinition.id === PLAN82_ID && item ? resolvePlan82Context(item.id)
-    : episodeDefinition.id === PLAN78_ID && item ? resolvePlan78Context(item.id)
-    : episodeDefinition.id === PLAN74_ID && item ? resolvePlan74Context(item.id)
+    : episodeDefinition.id === PLAN82_ID && item ? resolvePlan82Context(item.id, {setId:practiceType.setId,setRevision:practiceType.setRevision})
+    : episodeDefinition.id === PLAN78_ID && item ? resolvePlan78Context(item.id, {setId:practiceType.setId,setRevision:practiceType.setRevision})
+    : episodeDefinition.id === PLAN74_ID && item ? resolvePlan74Context(item.id, {setId:practiceType.setId,setRevision:practiceType.setRevision})
     : episodeDefinition.id === PLAN72_ID && item ? resolvePlan72Context(item.id)
     : episodeDefinition.id === 'phase-4-directed-number-line-endpoint' && item ? resolvePlan59Context(item.id)
     : episodeDefinition.id === 'phase-4-whole-plus-fraction-construction' && item ? resolvePlan58Context(item.id)

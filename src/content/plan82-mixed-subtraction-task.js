@@ -1,5 +1,5 @@
 import { deepFreeze } from './schema.js';
-import { PLAN82_DATA, PLAN82_SET_V1 } from './data/plan82-mixed-subtraction.js';
+import { PLAN82_DATA, PLAN82_SET_V1, PLAN82_SET_V2 } from './data/plan82-mixed-subtraction.js';
 import { createFraction, createMixedNumber, subtractMixedNumbers, equalMixedNumbers, regroupForSubtraction } from '../math/index.js';
 
 export const PLAN82_IDENTITY = deepFreeze({setId:'mixed-number-subtraction-with-decomposition',setRevision:'1',definitionId:'phase-5-mixed-number-subtraction-with-decomposition',definitionRevision:'1'});
@@ -46,17 +46,23 @@ export function validatePlan82Batch(records,membership) {
   }
   return errors;
 }
-if (validatePlan82Batch(PLAN82_DATA,PLAN82_SET_V1).length || PLAN82_SET_V1.setId!==PLAN82_IDENTITY.setId || PLAN82_SET_V1.setRevision!=='1') fail();
-export const PLAN82_RECORDS=deepFreeze(PLAN82_SET_V1.items.map(({itemId,itemRevision})=>{
+if (validatePlan82Batch(PLAN82_DATA,PLAN82_SET_V1).length || PLAN82_SET_V1.setId!==PLAN82_IDENTITY.setId || PLAN82_SET_V1.setRevision!=='1' || validatePlan82Batch(PLAN82_DATA,PLAN82_SET_V2).length || PLAN82_SET_V2.setId!==PLAN82_IDENTITY.setId || PLAN82_SET_V2.setRevision!=='2') fail();
+function materialize(membership) { return deepFreeze(membership.items.map(({itemId,itemRevision})=>{
   const record=PLAN82_DATA.find(r=>r.itemId===itemId && r.itemRevision===itemRevision);
   return {itemId,itemRevision,operands:record.operands.map(([whole,numerator,denominator])=>({whole,numerator,denominator}))};
-}));
-export function admitPlan82Record(record) { if (!PLAN82_RECORDS.some(r=>same(r,record))) fail(); return validatePlan82Operands(record); }
-export function resolvePlan82Context(itemId) {
-  const record=PLAN82_RECORDS.find(r=>r.itemId===itemId); if (!record) fail();
-  admitPlan82Record(record); return deepFreeze({...PLAN82_IDENTITY,...structuredClone(record)});
+})); }
+export const PLAN82_RECORDS=materialize(PLAN82_SET_V1);
+export const PLAN82_RECORDS_V2=materialize(PLAN82_SET_V2);
+export function admitPlan82Record(record) { if (!PLAN82_RECORDS_V2.some(r=>same(r,record))) fail(); return validatePlan82Operands(record); }
+export function resolvePlan82Context(itemId, identity=PLAN82_IDENTITY) {
+  const {setId,setRevision}=identity??{};
+  if (setId!==PLAN82_IDENTITY.setId) fail();
+  const records=setRevision==='1'?PLAN82_RECORDS:setRevision==='2'?PLAN82_RECORDS_V2:null;
+  if (!records) fail();
+  const record=records.find(r=>r.itemId===itemId); if (!record) fail();
+  admitPlan82Record(record); return deepFreeze({...PLAN82_IDENTITY,setRevision,...structuredClone(record)});
 }
 export function validatePlan82Context(context) {
-  if (!context || !same(context,resolvePlan82Context(context.itemId))) fail();
-  return resolvePlan82Context(context.itemId);
+  if (!context || !same(context,resolvePlan82Context(context.itemId,{setId:context.setId,setRevision:context.setRevision}))) fail();
+  return resolvePlan82Context(context.itemId,{setId:context.setId,setRevision:context.setRevision});
 }

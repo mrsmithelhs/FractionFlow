@@ -1,5 +1,5 @@
 import { deepFreeze } from './schema.js';
-import { PLAN78_DATA, PLAN78_SET_V1 } from './data/plan78-mixed-subtraction.js';
+import { PLAN78_DATA, PLAN78_SET_V1, PLAN78_SET_V2 } from './data/plan78-mixed-subtraction.js';
 import { createFraction, createMixedNumber, subtractMixedNumbers, equalMixedNumbers } from '../math/index.js';
 
 export const PLAN78_IDENTITY = deepFreeze({setId:'mixed-number-subtraction-without-decomposition',setRevision:'1',definitionId:'phase-5-mixed-number-subtraction-without-decomposition',definitionRevision:'1'});
@@ -45,17 +45,23 @@ export function validatePlan78Batch(records,membership) {
   }
   return errors;
 }
-if (validatePlan78Batch(PLAN78_DATA,PLAN78_SET_V1).length || PLAN78_SET_V1.setId!==PLAN78_IDENTITY.setId || PLAN78_SET_V1.setRevision!=='1') fail();
-export const PLAN78_RECORDS=deepFreeze(PLAN78_SET_V1.items.map(({itemId,itemRevision})=>{
+if (validatePlan78Batch(PLAN78_DATA,PLAN78_SET_V1).length || PLAN78_SET_V1.setId!==PLAN78_IDENTITY.setId || PLAN78_SET_V1.setRevision!=='1' || validatePlan78Batch(PLAN78_DATA,PLAN78_SET_V2).length || PLAN78_SET_V2.setId!==PLAN78_IDENTITY.setId || PLAN78_SET_V2.setRevision!=='2') fail();
+function materialize(membership) { return deepFreeze(membership.items.map(({itemId,itemRevision})=>{
   const record=PLAN78_DATA.find(r=>r.itemId===itemId && r.itemRevision===itemRevision);
   return {itemId,itemRevision,operands:record.operands.map(([whole,numerator,denominator])=>({whole,numerator,denominator}))};
-}));
-export function admitPlan78Record(record) { if (!PLAN78_RECORDS.some(r=>same(r,record))) fail(); return validatePlan78Operands(record); }
-export function resolvePlan78Context(itemId) {
-  const record=PLAN78_RECORDS.find(r=>r.itemId===itemId); if (!record) fail();
-  admitPlan78Record(record); return deepFreeze({...PLAN78_IDENTITY,...structuredClone(record)});
+})); }
+export const PLAN78_RECORDS=materialize(PLAN78_SET_V1);
+export const PLAN78_RECORDS_V2=materialize(PLAN78_SET_V2);
+export function admitPlan78Record(record) { if (!PLAN78_RECORDS_V2.some(r=>same(r,record))) fail(); return validatePlan78Operands(record); }
+export function resolvePlan78Context(itemId, identity=PLAN78_IDENTITY) {
+  const {setId,setRevision}=identity??{};
+  if (setId!==PLAN78_IDENTITY.setId) fail();
+  const records=setRevision==='1'?PLAN78_RECORDS:setRevision==='2'?PLAN78_RECORDS_V2:null;
+  if (!records) fail();
+  const record=records.find(r=>r.itemId===itemId); if (!record) fail();
+  admitPlan78Record(record); return deepFreeze({...PLAN78_IDENTITY,setRevision,...structuredClone(record)});
 }
 export function validatePlan78Context(context) {
-  if (!context || !same(context,resolvePlan78Context(context.itemId))) fail();
-  return resolvePlan78Context(context.itemId);
+  if (!context || !same(context,resolvePlan78Context(context.itemId,{setId:context.setId,setRevision:context.setRevision}))) fail();
+  return resolvePlan78Context(context.itemId,{setId:context.setId,setRevision:context.setRevision});
 }

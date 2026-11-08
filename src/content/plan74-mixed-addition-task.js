@@ -1,5 +1,5 @@
 import { deepFreeze } from './schema.js';
-import { PLAN74_DATA, PLAN74_SET_V1 } from './data/plan74-mixed-addition.js';
+import { PLAN74_DATA, PLAN74_SET_V1, PLAN74_SET_V2 } from './data/plan74-mixed-addition.js';
 import { createFraction, createMixedNumber, addMixedNumbers, addFractions, mixedToImproper, equalFractions } from '../math/index.js';
 
 export const PLAN74_IDENTITY = deepFreeze({ setId: 'mixed-number-addition-with-regrouping', setRevision: '1', definitionId: 'phase-5-mixed-number-addition-with-regrouping', definitionRevision: '1' });
@@ -71,24 +71,30 @@ export function validatePlan74Batch(records, membership, { checkReachability = t
 
 function materializeLiveRecords(records, membership) {
   const errors = validatePlan74Batch(records, membership, { checkReachability: false });
-  if (errors.length || membership.setId !== PLAN74_IDENTITY.setId || membership.setRevision !== PLAN74_IDENTITY.setRevision) fail();
+  if (errors.length || membership.setId !== PLAN74_IDENTITY.setId || !['1', '2'].includes(membership.setRevision)) fail();
   return deepFreeze(membership.items.map(({itemId,itemRevision}) => {
     const record = records.find(item => item.itemId === itemId && item.itemRevision === itemRevision);
     return {itemId, itemRevision, operands: record.operands.map(([whole,numerator,denominator]) => ({whole,numerator,denominator}))};
   }));
 }
 export const PLAN74_RECORDS = materializeLiveRecords(PLAN74_DATA, PLAN74_SET_V1);
+if (validatePlan74Batch(PLAN74_DATA, PLAN74_SET_V2).length || PLAN74_SET_V2.setId !== PLAN74_IDENTITY.setId || PLAN74_SET_V2.setRevision !== '2') fail();
+export const PLAN74_RECORDS_V2 = materializeLiveRecords(PLAN74_DATA, PLAN74_SET_V2);
 export function admitPlan74Record(record) {
-  if (!PLAN74_RECORDS.some(item => same(item, record))) fail();
+  if (!PLAN74_RECORDS_V2.some(item => same(item, record))) fail();
   return validatePlan74Operands(record);
 }
-export function resolvePlan74Context(itemId) {
-  const record = PLAN74_RECORDS.find(item => item.itemId === itemId);
+export function resolvePlan74Context(itemId, identity = PLAN74_IDENTITY) {
+  const { setId, setRevision } = identity ?? {};
+  if (setId !== PLAN74_IDENTITY.setId) fail();
+  const records = setRevision === '1' ? PLAN74_RECORDS : setRevision === '2' ? PLAN74_RECORDS_V2 : null;
+  if (!records) fail();
+  const record = records.find(item => item.itemId === itemId);
   if (!record) fail();
   admitPlan74Record(record);
-  return deepFreeze({ ...PLAN74_IDENTITY, ...structuredClone(record) });
+  return deepFreeze({ ...PLAN74_IDENTITY, setRevision, ...structuredClone(record) });
 }
 export function validatePlan74Context(context) {
-  if (!context || !same(context, resolvePlan74Context(context.itemId))) fail();
-  return resolvePlan74Context(context.itemId);
+  if (!context || !same(context, resolvePlan74Context(context.itemId, { setId: context.setId, setRevision: context.setRevision }))) fail();
+  return resolvePlan74Context(context.itemId, { setId: context.setId, setRevision: context.setRevision });
 }

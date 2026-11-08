@@ -617,7 +617,7 @@ export function replayEpisode(envelope) {
     if (envelope.episodeDefinition.id!==PLAN82_ID || envelope.episodeDefinition.revision!=='1') throw new TypeError('invalid v19 definition');
     const c=validatePlan82Context(envelope.taskContext);
     if (!sameJson(plan82Identity(c),envelope.contentIdentity) || !Array.isArray(envelope.learnerIntents)) throw new TypeError('invalid v19 identity or intents');
-    let state=createEpisode({episodeDefinition:getEpisodeDefinition(PLAN82_ID,'1'),taskContext:resolvePlan82Context(c.itemId),support:envelope.support,activeCondition:envelope.activeCondition});
+    let state=createEpisode({episodeDefinition:getEpisodeDefinition(PLAN82_ID,'1'),taskContext:resolvePlan82Context(c.itemId,{setId:c.setId,setRevision:c.setRevision}),support:envelope.support,activeCondition:envelope.activeCondition});
     for (const intent of envelope.learnerIntents) state=applyIntent(state,intent);
     return state;
   }
@@ -627,7 +627,7 @@ export function replayEpisode(envelope) {
     if (envelope.episodeDefinition.id!==PLAN78_ID || envelope.episodeDefinition.revision!=='1') throw new TypeError('invalid v18 definition');
     const c=validatePlan78Context(envelope.taskContext);
     if (!sameJson(plan78Identity(c),envelope.contentIdentity) || !Array.isArray(envelope.learnerIntents)) throw new TypeError('invalid v18 identity or intents');
-    let state=createEpisode({episodeDefinition:getEpisodeDefinition(PLAN78_ID,'1'),taskContext:resolvePlan78Context(c.itemId),support:envelope.support,activeCondition:envelope.activeCondition});
+    let state=createEpisode({episodeDefinition:getEpisodeDefinition(PLAN78_ID,'1'),taskContext:resolvePlan78Context(c.itemId,{setId:c.setId,setRevision:c.setRevision}),support:envelope.support,activeCondition:envelope.activeCondition});
     for (const intent of envelope.learnerIntents) state=applyIntent(state,intent);
     return state;
   }
@@ -637,7 +637,7 @@ export function replayEpisode(envelope) {
     if (envelope.episodeDefinition.id !== PLAN74_ID || envelope.episodeDefinition.revision !== '1') throw new TypeError('invalid v17 definition');
     const c=validatePlan74Context(envelope.taskContext);
     if (!sameJson(plan74Identity(c),envelope.contentIdentity) || !Array.isArray(envelope.learnerIntents)) throw new TypeError('invalid v17 identity or intents');
-    let state=createEpisode({episodeDefinition:getEpisodeDefinition(PLAN74_ID,'1'),taskContext:resolvePlan74Context(c.itemId),support:envelope.support,activeCondition:envelope.activeCondition});
+    let state=createEpisode({episodeDefinition:getEpisodeDefinition(PLAN74_ID,'1'),taskContext:resolvePlan74Context(c.itemId,{setId:c.setId,setRevision:c.setRevision}),support:envelope.support,activeCondition:envelope.activeCondition});
     for (const intent of envelope.learnerIntents) state=applyIntent(state,intent);
     return state;
   }
