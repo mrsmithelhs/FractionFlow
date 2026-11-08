@@ -1,7 +1,8 @@
 ---
 id: plan-87
 title: Capability-Aware Practice Selection
-status: delivered
+status: complete
+resolution: "Owner closed the measured fit investigation and isolated selection candidate. Production fit, automatic rollout, and default chooser exposure remain gated."
 depends_on: [plan-70, plan-85, plan-89]
 gate: "Approve measured capability rules, selection and resize behavior before source changes. Owner reviews the rendered practice journeys and separately approves default chooser exposure of expanded pools."
 summary: >-
