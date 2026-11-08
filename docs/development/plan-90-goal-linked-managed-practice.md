@@ -1,7 +1,7 @@
 ---
 id: plan-90
 title: Goal-Linked Managed Practice
-status: in-progress
+status: delivered
 depends_on: [plan-70, plan-88]
 gate: "Orchestration clears Requirement 0 before source work, then reviews family admission and fit across batches and all-pattern integration. Owner reviews the full rendered experience."
 summary: >-
