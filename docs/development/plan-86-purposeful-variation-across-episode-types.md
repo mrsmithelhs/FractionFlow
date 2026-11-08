@@ -1,11 +1,9 @@
 ---
 id: plan-86
 title: Purposeful Variation Across Episode Types
-status: draft
+status: in-progress
 depends_on: [plan-29, plan-35, plan-40, plan-84]
 gate: "Approve the comparative design and selected variants before source work. Review integrated behavior and rendered samples before acceptance."
-superseded_by: null
-resolution: null
 summary: >-
   Compare short alternate task structures across existing episode types.
   Pilot a small cross-family set of approved variants that change learner
