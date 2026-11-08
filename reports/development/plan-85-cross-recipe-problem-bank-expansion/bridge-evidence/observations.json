@@ -1,0 +1,1178 @@
+[
+  {
+    "case": {
+      "w": 1,
+      "max": 2,
+      "d": 10,
+      "n": 9,
+      "width": 360,
+      "scale": 100,
+      "name": "same-point-1whole-range2"
+    },
+    "admission": {
+      "choices": [
+        17,
+        18,
+        19,
+        20
+      ],
+      "min": 17,
+      "max": 20,
+      "rangeEnd": 20,
+      "correctCount": 1,
+      "wholeCountExplanation": "1 whole is 10/10; 10/10 + 9/10 = 19/10."
+    },
+    "wrong": {
+      "accepted": false,
+      "message": "Check your choice and try again."
+    },
+    "selectedAt360": {
+      "state": {
+        "selected": 2,
+        "accepted": false,
+        "linear": false,
+        "choices": [
+          17,
+          18,
+          19,
+          20
+        ],
+        "correctIndex": 2,
+        "rangeEnd": 20,
+        "wholeCountExplanation": "1 whole is 10/10; 10/10 + 9/10 = 19/10."
+      },
+      "viewport": 360,
+      "content": 328
+    },
+    "selectedResize": {
+      "selected": 2,
+      "accepted": false,
+      "linear": false,
+      "choices": [
+        17,
+        18,
+        19,
+        20
+      ],
+      "correctIndex": 2,
+      "rangeEnd": 20,
+      "wholeCountExplanation": "1 whole is 10/10; 10/10 + 9/10 = 19/10."
+    },
+    "acceptedAt360": {
+      "state": {
+        "selected": 2,
+        "accepted": true,
+        "linear": false,
+        "choices": [
+          17,
+          18,
+          19,
+          20
+        ],
+        "correctIndex": 2,
+        "rangeEnd": 20,
+        "wholeCountExplanation": "1 whole is 10/10; 10/10 + 9/10 = 19/10."
+      },
+      "viewport": 360,
+      "contentWidth": 328,
+      "axisWidth": 246,
+      "tickCount": 21,
+      "minTickSpacing": 12.296875,
+      "labelBoxes": [
+        {
+          "x": 54.3984375,
+          "y": 487.015625,
+          "w": 9.203125,
+          "h": 23.1875,
+          "left": 54.3984375,
+          "right": 63.6015625
+        },
+        {
+          "x": 177.3984375,
+          "y": 487.015625,
+          "w": 9.203125,
+          "h": 23.1875,
+          "left": 177.3984375,
+          "right": 186.6015625
+        },
+        {
+          "x": 300.3984375,
+          "y": 487.015625,
+          "w": 9.203125,
+          "h": 23.1875,
+          "left": 300.3984375,
+          "right": 309.6015625
+        }
+      ],
+      "labelOverlapIndices": [],
+      "scrollWidth": 360,
+      "controlBoxes": [
+        {
+          "x": 41,
+          "y": 395.03125,
+          "w": 78.671875,
+          "h": 46.375,
+          "left": 41,
+          "right": 119.671875
+        },
+        {
+          "x": 127.671875,
+          "y": 395.03125,
+          "w": 144.015625,
+          "h": 46.375,
+          "left": 127.671875,
+          "right": 271.6875
+        }
+      ],
+      "explanation": "1 whole is 10/10. Add 9/10: 10/10 + 9/10 = 19/10. The point is 19/10 on the number line."
+    },
+    "linearAt360": {
+      "state": {
+        "selected": 2,
+        "accepted": true,
+        "linear": true,
+        "choices": [
+          17,
+          18,
+          19,
+          20
+        ],
+        "correctIndex": 2,
+        "rangeEnd": 20,
+        "wholeCountExplanation": "1 whole is 10/10; 10/10 + 9/10 = 19/10."
+      },
+      "text": "1 9/10 = 19/10\n\nOn a number line from 0 to 2, whole-number marks show 0 and 1 and 2. Each whole interval is equal. Both forms name the same point.\n\n1 whole is 10/10. Add 9/10: 10/10 + 9/10 = 19/10. The point is 19/10 on the number line.",
+      "explanation": "1 whole is 10/10. Add 9/10: 10/10 + 9/10 = 19/10. The point is 19/10 on the number line.",
+      "scrollWidth": 360
+    },
+    "acceptedResize": {
+      "selected": 2,
+      "accepted": true,
+      "linear": true,
+      "choices": [
+        17,
+        18,
+        19,
+        20
+      ],
+      "correctIndex": 2,
+      "rangeEnd": 20,
+      "wholeCountExplanation": "1 whole is 10/10; 10/10 + 9/10 = 19/10."
+    }
+  },
+  {
+    "case": {
+      "w": 1,
+      "max": 3,
+      "d": 10,
+      "n": 9,
+      "width": 360,
+      "scale": 100,
+      "name": "same-point-1whole-range3"
+    },
+    "admission": {
+      "choices": [
+        18,
+        19,
+        20,
+        21
+      ],
+      "min": 18,
+      "max": 21,
+      "rangeEnd": 30,
+      "correctCount": 1,
+      "wholeCountExplanation": "1 whole is 10/10; 10/10 + 9/10 = 19/10."
+    },
+    "wrong": {
+      "accepted": false,
+      "message": "Check your choice and try again."
+    },
+    "selectedAt360": {
+      "state": {
+        "selected": 1,
+        "accepted": false,
+        "linear": false,
+        "choices": [
+          18,
+          19,
+          20,
+          21
+        ],
+        "correctIndex": 1,
+        "rangeEnd": 30,
+        "wholeCountExplanation": "1 whole is 10/10; 10/10 + 9/10 = 19/10."
+      },
+      "viewport": 360,
+      "content": 328
+    },
+    "selectedResize": {
+      "selected": 1,
+      "accepted": false,
+      "linear": false,
+      "choices": [
+        18,
+        19,
+        20,
+        21
+      ],
+      "correctIndex": 1,
+      "rangeEnd": 30,
+      "wholeCountExplanation": "1 whole is 10/10; 10/10 + 9/10 = 19/10."
+    },
+    "acceptedAt360": {
+      "state": {
+        "selected": 1,
+        "accepted": true,
+        "linear": false,
+        "choices": [
+          18,
+          19,
+          20,
+          21
+        ],
+        "correctIndex": 1,
+        "rangeEnd": 30,
+        "wholeCountExplanation": "1 whole is 10/10; 10/10 + 9/10 = 19/10."
+      },
+      "viewport": 360,
+      "contentWidth": 328,
+      "axisWidth": 246,
+      "tickCount": 31,
+      "minTickSpacing": 8.1875,
+      "labelBoxes": [
+        {
+          "x": 54.3984375,
+          "y": 487.015625,
+          "w": 9.203125,
+          "h": 23.1875,
+          "left": 54.3984375,
+          "right": 63.6015625
+        },
+        {
+          "x": 136.3984375,
+          "y": 487.015625,
+          "w": 9.203125,
+          "h": 23.1875,
+          "left": 136.3984375,
+          "right": 145.6015625
+        },
+        {
+          "x": 218.3984375,
+          "y": 487.015625,
+          "w": 9.203125,
+          "h": 23.1875,
+          "left": 218.3984375,
+          "right": 227.6015625
+        },
+        {
+          "x": 300.3984375,
+          "y": 487.015625,
+          "w": 9.203125,
+          "h": 23.1875,
+          "left": 300.3984375,
+          "right": 309.6015625
+        }
+      ],
+      "labelOverlapIndices": [],
+      "scrollWidth": 360,
+      "controlBoxes": [
+        {
+          "x": 41,
+          "y": 395.03125,
+          "w": 78.671875,
+          "h": 46.375,
+          "left": 41,
+          "right": 119.671875
+        },
+        {
+          "x": 127.671875,
+          "y": 395.03125,
+          "w": 144.015625,
+          "h": 46.375,
+          "left": 127.671875,
+          "right": 271.6875
+        }
+      ],
+      "explanation": "1 whole is 10/10. Add 9/10: 10/10 + 9/10 = 19/10. The point is 19/10 on the number line."
+    },
+    "linearAt360": {
+      "state": {
+        "selected": 1,
+        "accepted": true,
+        "linear": true,
+        "choices": [
+          18,
+          19,
+          20,
+          21
+        ],
+        "correctIndex": 1,
+        "rangeEnd": 30,
+        "wholeCountExplanation": "1 whole is 10/10; 10/10 + 9/10 = 19/10."
+      },
+      "text": "1 9/10 = 19/10\n\nOn a number line from 0 to 3, whole-number marks show 0 and 1 and 2 and 3. Each whole interval is equal. Both forms name the same point.\n\n1 whole is 10/10. Add 9/10: 10/10 + 9/10 = 19/10. The point is 19/10 on the number line.",
+      "explanation": "1 whole is 10/10. Add 9/10: 10/10 + 9/10 = 19/10. The point is 19/10 on the number line.",
+      "scrollWidth": 360
+    },
+    "acceptedResize": {
+      "selected": 1,
+      "accepted": true,
+      "linear": true,
+      "choices": [
+        18,
+        19,
+        20,
+        21
+      ],
+      "correctIndex": 1,
+      "rangeEnd": 30,
+      "wholeCountExplanation": "1 whole is 10/10; 10/10 + 9/10 = 19/10."
+    }
+  },
+  {
+    "case": {
+      "w": 2,
+      "max": 3,
+      "d": 10,
+      "n": 5,
+      "width": 360,
+      "scale": 100,
+      "name": "midpoint-2whole-range3"
+    },
+    "admission": {
+      "choices": [
+        24,
+        25,
+        26,
+        27
+      ],
+      "min": 24,
+      "max": 27,
+      "rangeEnd": 30,
+      "correctCount": 1,
+      "wholeCountExplanation": "2 wholes are 20/10; 20/10 + 5/10 = 25/10."
+    },
+    "wrong": {
+      "accepted": false,
+      "message": "Check your choice and try again."
+    },
+    "selectedAt360": {
+      "state": {
+        "selected": 1,
+        "accepted": false,
+        "linear": false,
+        "choices": [
+          24,
+          25,
+          26,
+          27
+        ],
+        "correctIndex": 1,
+        "rangeEnd": 30,
+        "wholeCountExplanation": "2 wholes are 20/10; 20/10 + 5/10 = 25/10."
+      },
+      "viewport": 360,
+      "content": 328
+    },
+    "selectedResize": {
+      "selected": 1,
+      "accepted": false,
+      "linear": false,
+      "choices": [
+        24,
+        25,
+        26,
+        27
+      ],
+      "correctIndex": 1,
+      "rangeEnd": 30,
+      "wholeCountExplanation": "2 wholes are 20/10; 20/10 + 5/10 = 25/10."
+    },
+    "acceptedAt360": {
+      "state": {
+        "selected": 1,
+        "accepted": true,
+        "linear": false,
+        "choices": [
+          24,
+          25,
+          26,
+          27
+        ],
+        "correctIndex": 1,
+        "rangeEnd": 30,
+        "wholeCountExplanation": "2 wholes are 20/10; 20/10 + 5/10 = 25/10."
+      },
+      "viewport": 360,
+      "contentWidth": 328,
+      "axisWidth": 246,
+      "tickCount": 31,
+      "minTickSpacing": 8.1875,
+      "labelBoxes": [
+        {
+          "x": 54.3984375,
+          "y": 487.015625,
+          "w": 9.203125,
+          "h": 23.1875,
+          "left": 54.3984375,
+          "right": 63.6015625
+        },
+        {
+          "x": 136.3984375,
+          "y": 487.015625,
+          "w": 9.203125,
+          "h": 23.1875,
+          "left": 136.3984375,
+          "right": 145.6015625
+        },
+        {
+          "x": 218.3984375,
+          "y": 487.015625,
+          "w": 9.203125,
+          "h": 23.1875,
+          "left": 218.3984375,
+          "right": 227.6015625
+        },
+        {
+          "x": 300.3984375,
+          "y": 487.015625,
+          "w": 9.203125,
+          "h": 23.1875,
+          "left": 300.3984375,
+          "right": 309.6015625
+        }
+      ],
+      "labelOverlapIndices": [],
+      "scrollWidth": 360,
+      "controlBoxes": [
+        {
+          "x": 41,
+          "y": 395.03125,
+          "w": 78.671875,
+          "h": 46.375,
+          "left": 41,
+          "right": 119.671875
+        },
+        {
+          "x": 127.671875,
+          "y": 395.03125,
+          "w": 144.015625,
+          "h": 46.375,
+          "left": 127.671875,
+          "right": 271.6875
+        }
+      ],
+      "explanation": "2 wholes are 20/10. Add 5/10: 20/10 + 5/10 = 25/10. The point is 25/10 on the number line."
+    },
+    "linearAt360": {
+      "state": {
+        "selected": 1,
+        "accepted": true,
+        "linear": true,
+        "choices": [
+          24,
+          25,
+          26,
+          27
+        ],
+        "correctIndex": 1,
+        "rangeEnd": 30,
+        "wholeCountExplanation": "2 wholes are 20/10; 20/10 + 5/10 = 25/10."
+      },
+      "text": "2 5/10 = 25/10\n\nOn a number line from 0 to 3, whole-number marks show 0 and 1 and 2 and 3. Each whole interval is equal. Both forms name the same point.\n\n2 wholes are 20/10. Add 5/10: 20/10 + 5/10 = 25/10. The point is 25/10 on the number line.",
+      "explanation": "2 wholes are 20/10. Add 5/10: 20/10 + 5/10 = 25/10. The point is 25/10 on the number line.",
+      "scrollWidth": 360
+    },
+    "acceptedResize": {
+      "selected": 1,
+      "accepted": true,
+      "linear": true,
+      "choices": [
+        24,
+        25,
+        26,
+        27
+      ],
+      "correctIndex": 1,
+      "rangeEnd": 30,
+      "wholeCountExplanation": "2 wholes are 20/10; 20/10 + 5/10 = 25/10."
+    }
+  },
+  {
+    "case": {
+      "w": 2,
+      "max": 3,
+      "d": 10,
+      "n": 9,
+      "width": 360,
+      "scale": 200,
+      "name": "near-whole-2-200"
+    },
+    "admission": {
+      "choices": [
+        27,
+        28,
+        29,
+        30
+      ],
+      "min": 27,
+      "max": 30,
+      "rangeEnd": 30,
+      "correctCount": 1,
+      "wholeCountExplanation": "2 wholes are 20/10; 20/10 + 9/10 = 29/10."
+    },
+    "wrong": {
+      "accepted": false,
+      "message": "Check your choice and try again."
+    },
+    "selectedAt360": {
+      "state": {
+        "selected": 2,
+        "accepted": false,
+        "linear": false,
+        "choices": [
+          27,
+          28,
+          29,
+          30
+        ],
+        "correctIndex": 2,
+        "rangeEnd": 30,
+        "wholeCountExplanation": "2 wholes are 20/10; 20/10 + 9/10 = 29/10."
+      },
+      "viewport": 360,
+      "content": 328
+    },
+    "selectedResize": {
+      "selected": 2,
+      "accepted": false,
+      "linear": false,
+      "choices": [
+        27,
+        28,
+        29,
+        30
+      ],
+      "correctIndex": 2,
+      "rangeEnd": 30,
+      "wholeCountExplanation": "2 wholes are 20/10; 20/10 + 9/10 = 29/10."
+    },
+    "acceptedAt360": {
+      "state": {
+        "selected": 2,
+        "accepted": true,
+        "linear": false,
+        "choices": [
+          27,
+          28,
+          29,
+          30
+        ],
+        "correctIndex": 2,
+        "rangeEnd": 30,
+        "wholeCountExplanation": "2 wholes are 20/10; 20/10 + 9/10 = 29/10."
+      },
+      "viewport": 360,
+      "contentWidth": 328,
+      "axisWidth": 206,
+      "tickCount": 31,
+      "minTickSpacing": 6.859375,
+      "labelBoxes": [
+        {
+          "x": 69.796875,
+          "y": 786.4375,
+          "w": 18.40625,
+          "h": 46.390625,
+          "left": 69.796875,
+          "right": 88.203125
+        },
+        {
+          "x": 138.453125,
+          "y": 786.4375,
+          "w": 18.40625,
+          "h": 46.390625,
+          "left": 138.453125,
+          "right": 156.859375
+        },
+        {
+          "x": 207.125,
+          "y": 786.4375,
+          "w": 18.40625,
+          "h": 46.390625,
+          "left": 207.125,
+          "right": 225.53125
+        },
+        {
+          "x": 275.796875,
+          "y": 786.4375,
+          "w": 18.40625,
+          "h": 46.390625,
+          "left": 275.796875,
+          "right": 294.203125
+        }
+      ],
+      "labelOverlapIndices": [],
+      "scrollWidth": 364,
+      "controlBoxes": [
+        {
+          "x": 45,
+          "y": 455.3125,
+          "w": 153.34375,
+          "h": 88.765625,
+          "left": 45,
+          "right": 198.34375
+        },
+        {
+          "x": 45,
+          "y": 560.078125,
+          "w": 270,
+          "h": 135.15625,
+          "left": 45,
+          "right": 315
+        }
+      ],
+      "explanation": "2 wholes are 20/10. Add 9/10: 20/10 + 9/10 = 29/10. The point is 29/10 on the number line."
+    },
+    "linearAt360": {
+      "state": {
+        "selected": 2,
+        "accepted": true,
+        "linear": true,
+        "choices": [
+          27,
+          28,
+          29,
+          30
+        ],
+        "correctIndex": 2,
+        "rangeEnd": 30,
+        "wholeCountExplanation": "2 wholes are 20/10; 20/10 + 9/10 = 29/10."
+      },
+      "text": "2 9/10 = 29/10\n\nOn a number line from 0 to 3, whole-number marks show 0 and 1 and 2 and 3. Each whole interval is equal. Both forms name the same point.\n\n2 wholes are 20/10. Add 9/10: 20/10 + 9/10 = 29/10. The point is 29/10 on the number line.",
+      "explanation": "2 wholes are 20/10. Add 9/10: 20/10 + 9/10 = 29/10. The point is 29/10 on the number line.",
+      "scrollWidth": 364
+    },
+    "acceptedResize": {
+      "selected": 2,
+      "accepted": true,
+      "linear": true,
+      "choices": [
+        27,
+        28,
+        29,
+        30
+      ],
+      "correctIndex": 2,
+      "rangeEnd": 30,
+      "wholeCountExplanation": "2 wholes are 20/10; 20/10 + 9/10 = 29/10."
+    }
+  },
+  {
+    "case": {
+      "w": 2,
+      "max": 3,
+      "d": 9,
+      "n": 8,
+      "width": 1366,
+      "scale": 100,
+      "name": "chromebook-proxy"
+    },
+    "admission": {
+      "choices": [
+        24,
+        25,
+        26,
+        27
+      ],
+      "min": 24,
+      "max": 27,
+      "rangeEnd": 27,
+      "correctCount": 1,
+      "wholeCountExplanation": "2 wholes are 18/9; 18/9 + 8/9 = 26/9."
+    },
+    "wrong": {
+      "accepted": false,
+      "message": "Check your choice and try again."
+    },
+    "selectedAt360": {
+      "state": {
+        "selected": 2,
+        "accepted": false,
+        "linear": false,
+        "choices": [
+          24,
+          25,
+          26,
+          27
+        ],
+        "correctIndex": 2,
+        "rangeEnd": 27,
+        "wholeCountExplanation": "2 wholes are 18/9; 18/9 + 8/9 = 26/9."
+      },
+      "viewport": 1366,
+      "content": 864
+    },
+    "selectedResize": {
+      "selected": 2,
+      "accepted": false,
+      "linear": false,
+      "choices": [
+        24,
+        25,
+        26,
+        27
+      ],
+      "correctIndex": 2,
+      "rangeEnd": 27,
+      "wholeCountExplanation": "2 wholes are 18/9; 18/9 + 8/9 = 26/9."
+    },
+    "acceptedAt360": {
+      "state": {
+        "selected": 2,
+        "accepted": true,
+        "linear": false,
+        "choices": [
+          24,
+          25,
+          26,
+          27
+        ],
+        "correctIndex": 2,
+        "rangeEnd": 27,
+        "wholeCountExplanation": "2 wholes are 18/9; 18/9 + 8/9 = 26/9."
+      },
+      "viewport": 1366,
+      "contentWidth": 864,
+      "axisWidth": 782,
+      "tickCount": 28,
+      "minTickSpacing": 28.953125,
+      "labelBoxes": [
+        {
+          "x": 289.3984375,
+          "y": 361.4375,
+          "w": 9.203125,
+          "h": 23.1875,
+          "left": 289.3984375,
+          "right": 298.6015625
+        },
+        {
+          "x": 550.0546875,
+          "y": 361.4375,
+          "w": 9.203125,
+          "h": 23.1875,
+          "left": 550.0546875,
+          "right": 559.2578125
+        },
+        {
+          "x": 810.7265625,
+          "y": 361.4375,
+          "w": 9.203125,
+          "h": 23.1875,
+          "left": 810.7265625,
+          "right": 819.9296875
+        },
+        {
+          "x": 1071.3984375,
+          "y": 361.4375,
+          "w": 9.203125,
+          "h": 23.1875,
+          "left": 1071.3984375,
+          "right": 1080.6015625
+        }
+      ],
+      "labelOverlapIndices": [],
+      "scrollWidth": 1366,
+      "controlBoxes": [
+        {
+          "x": 276,
+          "y": 269.453125,
+          "w": 78.671875,
+          "h": 46.375,
+          "left": 276,
+          "right": 354.671875
+        },
+        {
+          "x": 362.671875,
+          "y": 269.453125,
+          "w": 144.015625,
+          "h": 46.375,
+          "left": 362.671875,
+          "right": 506.6875
+        }
+      ],
+      "explanation": "2 wholes are 18/9. Add 8/9: 18/9 + 8/9 = 26/9. The point is 26/9 on the number line."
+    },
+    "linearAt360": {
+      "state": {
+        "selected": 2,
+        "accepted": true,
+        "linear": true,
+        "choices": [
+          24,
+          25,
+          26,
+          27
+        ],
+        "correctIndex": 2,
+        "rangeEnd": 27,
+        "wholeCountExplanation": "2 wholes are 18/9; 18/9 + 8/9 = 26/9."
+      },
+      "text": "2 8/9 = 26/9\n\nOn a number line from 0 to 3, whole-number marks show 0 and 1 and 2 and 3. Each whole interval is equal. Both forms name the same point.\n\n2 wholes are 18/9. Add 8/9: 18/9 + 8/9 = 26/9. The point is 26/9 on the number line.",
+      "explanation": "2 wholes are 18/9. Add 8/9: 18/9 + 8/9 = 26/9. The point is 26/9 on the number line.",
+      "scrollWidth": 1366
+    },
+    "acceptedResize": {
+      "selected": 2,
+      "accepted": true,
+      "linear": true,
+      "choices": [
+        24,
+        25,
+        26,
+        27
+      ],
+      "correctIndex": 2,
+      "rangeEnd": 27,
+      "wholeCountExplanation": "2 wholes are 18/9; 18/9 + 8/9 = 26/9."
+    }
+  },
+  {
+    "case": {
+      "w": 2,
+      "max": 3,
+      "d": 10,
+      "n": 9,
+      "width": 360,
+      "scale": 100,
+      "name": "constrained-328"
+    },
+    "admission": {
+      "choices": [
+        27,
+        28,
+        29,
+        30
+      ],
+      "min": 27,
+      "max": 30,
+      "rangeEnd": 30,
+      "correctCount": 1,
+      "wholeCountExplanation": "2 wholes are 20/10; 20/10 + 9/10 = 29/10."
+    },
+    "wrong": {
+      "accepted": false,
+      "message": "Check your choice and try again."
+    },
+    "selectedAt360": {
+      "state": {
+        "selected": 2,
+        "accepted": false,
+        "linear": false,
+        "choices": [
+          27,
+          28,
+          29,
+          30
+        ],
+        "correctIndex": 2,
+        "rangeEnd": 30,
+        "wholeCountExplanation": "2 wholes are 20/10; 20/10 + 9/10 = 29/10."
+      },
+      "viewport": 360,
+      "content": 328
+    },
+    "selectedResize": {
+      "selected": 2,
+      "accepted": false,
+      "linear": false,
+      "choices": [
+        27,
+        28,
+        29,
+        30
+      ],
+      "correctIndex": 2,
+      "rangeEnd": 30,
+      "wholeCountExplanation": "2 wholes are 20/10; 20/10 + 9/10 = 29/10."
+    },
+    "acceptedAt360": {
+      "state": {
+        "selected": 2,
+        "accepted": true,
+        "linear": false,
+        "choices": [
+          27,
+          28,
+          29,
+          30
+        ],
+        "correctIndex": 2,
+        "rangeEnd": 30,
+        "wholeCountExplanation": "2 wholes are 20/10; 20/10 + 9/10 = 29/10."
+      },
+      "viewport": 360,
+      "contentWidth": 328,
+      "axisWidth": 246,
+      "tickCount": 31,
+      "minTickSpacing": 8.1875,
+      "labelBoxes": [
+        {
+          "x": 54.3984375,
+          "y": 487.015625,
+          "w": 9.203125,
+          "h": 23.1875,
+          "left": 54.3984375,
+          "right": 63.6015625
+        },
+        {
+          "x": 136.3984375,
+          "y": 487.015625,
+          "w": 9.203125,
+          "h": 23.1875,
+          "left": 136.3984375,
+          "right": 145.6015625
+        },
+        {
+          "x": 218.3984375,
+          "y": 487.015625,
+          "w": 9.203125,
+          "h": 23.1875,
+          "left": 218.3984375,
+          "right": 227.6015625
+        },
+        {
+          "x": 300.3984375,
+          "y": 487.015625,
+          "w": 9.203125,
+          "h": 23.1875,
+          "left": 300.3984375,
+          "right": 309.6015625
+        }
+      ],
+      "labelOverlapIndices": [],
+      "scrollWidth": 360,
+      "controlBoxes": [
+        {
+          "x": 41,
+          "y": 395.03125,
+          "w": 78.671875,
+          "h": 46.375,
+          "left": 41,
+          "right": 119.671875
+        },
+        {
+          "x": 127.671875,
+          "y": 395.03125,
+          "w": 144.015625,
+          "h": 46.375,
+          "left": 127.671875,
+          "right": 271.6875
+        }
+      ],
+      "explanation": "2 wholes are 20/10. Add 9/10: 20/10 + 9/10 = 29/10. The point is 29/10 on the number line."
+    },
+    "linearAt360": {
+      "state": {
+        "selected": 2,
+        "accepted": true,
+        "linear": true,
+        "choices": [
+          27,
+          28,
+          29,
+          30
+        ],
+        "correctIndex": 2,
+        "rangeEnd": 30,
+        "wholeCountExplanation": "2 wholes are 20/10; 20/10 + 9/10 = 29/10."
+      },
+      "text": "2 9/10 = 29/10\n\nOn a number line from 0 to 3, whole-number marks show 0 and 1 and 2 and 3. Each whole interval is equal. Both forms name the same point.\n\n2 wholes are 20/10. Add 9/10: 20/10 + 9/10 = 29/10. The point is 29/10 on the number line.",
+      "explanation": "2 wholes are 20/10. Add 9/10: 20/10 + 9/10 = 29/10. The point is 29/10 on the number line.",
+      "scrollWidth": 360
+    },
+    "acceptedResize": {
+      "selected": 2,
+      "accepted": true,
+      "linear": true,
+      "choices": [
+        27,
+        28,
+        29,
+        30
+      ],
+      "correctIndex": 2,
+      "rangeEnd": 30,
+      "wholeCountExplanation": "2 wholes are 20/10; 20/10 + 9/10 = 29/10."
+    }
+  },
+  {
+    "case": {
+      "w": 1,
+      "max": 3,
+      "d": 10,
+      "n": 9,
+      "width": 360,
+      "scale": 100,
+      "sparse": true,
+      "name": "sparse-same-point-range3"
+    },
+    "admission": {
+      "choices": [
+        18,
+        19,
+        20,
+        21
+      ],
+      "min": 18,
+      "max": 21,
+      "rangeEnd": 30,
+      "correctCount": 1,
+      "wholeCountExplanation": "1 whole is 10/10; 10/10 + 9/10 = 19/10."
+    },
+    "wrong": {
+      "accepted": false,
+      "message": "Check your choice and try again."
+    },
+    "selectedAt360": {
+      "state": {
+        "selected": 1,
+        "accepted": false,
+        "linear": false,
+        "choices": [
+          18,
+          19,
+          20,
+          21
+        ],
+        "correctIndex": 1,
+        "rangeEnd": 30,
+        "wholeCountExplanation": "1 whole is 10/10; 10/10 + 9/10 = 19/10."
+      },
+      "viewport": 360,
+      "content": 328
+    },
+    "selectedResize": {
+      "selected": 1,
+      "accepted": false,
+      "linear": false,
+      "choices": [
+        18,
+        19,
+        20,
+        21
+      ],
+      "correctIndex": 1,
+      "rangeEnd": 30,
+      "wholeCountExplanation": "1 whole is 10/10; 10/10 + 9/10 = 19/10."
+    },
+    "acceptedAt360": {
+      "state": {
+        "selected": 1,
+        "accepted": true,
+        "linear": false,
+        "choices": [
+          18,
+          19,
+          20,
+          21
+        ],
+        "correctIndex": 1,
+        "rangeEnd": 30,
+        "wholeCountExplanation": "1 whole is 10/10; 10/10 + 9/10 = 19/10."
+      },
+      "viewport": 360,
+      "contentWidth": 328,
+      "axisWidth": 246,
+      "tickCount": 5,
+      "minTickSpacing": 8.203125,
+      "labelBoxes": [
+        {
+          "x": 54.3984375,
+          "y": 487.015625,
+          "w": 9.203125,
+          "h": 23.1875,
+          "left": 54.3984375,
+          "right": 63.6015625
+        },
+        {
+          "x": 136.3984375,
+          "y": 487.015625,
+          "w": 9.203125,
+          "h": 23.1875,
+          "left": 136.3984375,
+          "right": 145.6015625
+        },
+        {
+          "x": 218.3984375,
+          "y": 487.015625,
+          "w": 9.203125,
+          "h": 23.1875,
+          "left": 218.3984375,
+          "right": 227.6015625
+        },
+        {
+          "x": 300.3984375,
+          "y": 487.015625,
+          "w": 9.203125,
+          "h": 23.1875,
+          "left": 300.3984375,
+          "right": 309.6015625
+        }
+      ],
+      "labelOverlapIndices": [],
+      "scrollWidth": 360,
+      "controlBoxes": [
+        {
+          "x": 41,
+          "y": 395.03125,
+          "w": 78.671875,
+          "h": 46.375,
+          "left": 41,
+          "right": 119.671875
+        },
+        {
+          "x": 127.671875,
+          "y": 395.03125,
+          "w": 144.015625,
+          "h": 46.375,
+          "left": 127.671875,
+          "right": 271.6875
+        }
+      ],
+      "explanation": "1 whole is 10/10. Add 9/10: 10/10 + 9/10 = 19/10. The point is 19/10 on the number line."
+    },
+    "linearAt360": {
+      "state": {
+        "selected": 1,
+        "accepted": true,
+        "linear": true,
+        "choices": [
+          18,
+          19,
+          20,
+          21
+        ],
+        "correctIndex": 1,
+        "rangeEnd": 30,
+        "wholeCountExplanation": "1 whole is 10/10; 10/10 + 9/10 = 19/10."
+      },
+      "text": "1 9/10 = 19/10\n\nOn a number line from 0 to 3, whole-number marks show 0 and 1 and 2 and 3. Each whole interval is equal. Both forms name the same point.\n\n1 whole is 10/10. Add 9/10: 10/10 + 9/10 = 19/10. The point is 19/10 on the number line.",
+      "explanation": "1 whole is 10/10. Add 9/10: 10/10 + 9/10 = 19/10. The point is 19/10 on the number line.",
+      "scrollWidth": 360
+    },
+    "acceptedResize": {
+      "selected": 1,
+      "accepted": true,
+      "linear": true,
+      "choices": [
+        18,
+        19,
+        20,
+        21
+      ],
+      "correctIndex": 1,
+      "rangeEnd": 30,
+      "wholeCountExplanation": "1 whole is 10/10; 10/10 + 9/10 = 19/10."
+    }
+  }
+]
