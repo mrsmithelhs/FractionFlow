@@ -1,0 +1,7 @@
+# Plan 90 orchestration delivery review
+
+2026-11-08. Integrated technical review passed for the four-pattern managed-practice delivery at `0489e43`, with progress at `9769b32`. Plan 90 is delivered and awaits owner rendered acceptance. Held pools, review-only variants and deployment remain separately gated.
+
+Orchestration reviewed the exact catalog and family gates, the measured fit contract, mount preflight, suffix recheck and transactional rollback, and the existing opt-in recording boundary. The implementation preserves recording of the three comparison identities previously eligible through ordinary Start without admitting managed 08 or non-comparison families to recording. The sixteen mounted Chromebook-size journeys and reduced-pool and fault witnesses are recorded in the [integrated evidence](integrated-evidence.md). Orchestration independently reran 31 focused selection, admission, fit, rollback and legacy scheduler tests and packet lint. The implementer ran the final full unit suite and build; the full historical browser route matrix was not rerun.
+
+The owner preview is a local seeded entry to the actual Start route. All four visits should be reviewed at normal text and a Chromebook-sized or wider layout. At 360px with 200% CSS root text, the managed scheduler intentionally shows its unavailable notice. The approved fit ranges remain bounded technical evidence, with no physical-device, assistive speech or learner-outcome verification.
