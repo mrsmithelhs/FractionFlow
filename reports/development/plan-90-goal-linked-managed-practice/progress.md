@@ -1,5 +1,9 @@
 # Plan 90 progress — comparison and distance gate
 
+## 2026-11-08 — subtraction success-copy repair
+
+Owner confirmed all four previews work and approved the inequality order. Orchestration reopened Plan 90 for a bounded copy repair, now committed at `ccf94b1` with [verification evidence](subtraction-copy-repair.md). Unlike-denominator subtraction now uses the shared "That's right." success cue in visual and linear views. Mounted managed and standalone checks preserved the equation, accessible result, visual takeaway bar and Next; 16 complete managed journeys verified return to entry. Focused tests passed 35 checks, packet lint and diff checks passed. No new consultation ran; this repair uses orchestration-gate-only review. Ready for orchestration review; packet status, held exposure and deployment remain gated.
+
 ## 2026-11-08 — owner rendered-review repairs
 
 Repair and detailed evidence are committed at `4408fbe`; see [repair-owner-review.md](repair-owner-review.md). Relation choices are `>`, `=`, `<` in DOM, visual and browser arrow-key order. A stable document scrollbar gutter prevents the tested entry-to-episode width shift without weakening fit, stale-measurement or rollback checks. At both 570 × 668 and 1093 × 614, all four patterns completed through ordinary Start in both views and both support settings; unseeded Start also succeeded. A deliberately changed measurement remained safely rejected or rolled back. Focused tests (51), builds, packet lint and diff checks passed.
