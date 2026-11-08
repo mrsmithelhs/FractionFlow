@@ -66,6 +66,20 @@ function originalEntryRoutes(routes) {
   });
 }
 
+// Plan 90's accepted copy repair changed exactly these two live assertions.
+// Preserve the original prefix fingerprints without weakening the current copy check.
+function originalPlan40SuccessCopy(routes) {
+  const routeIds = ['ROUTE-PLAN40-DEEP-SAMPLE-CONSTRUCT-OPERATE', 'ROUTE-PLAN40-HELP-RECOVERY-VIEW-TOGGLE'];
+  for (const id of routeIds) expect(routes.filter(route => route.id === id)).toHaveLength(1);
+  return routes.map(route => {
+    if (!routeIds.includes(route.id)) return route;
+    const assertions = route.expect.assertions;
+    const matching = assertions.filter(assertion => assertion.type === 'containsText' && assertion.target === '.app-visual-view .active-beat-prompt');
+    expect(matching).toEqual([{ type: 'containsText', target: '.app-visual-view .active-beat-prompt', value: "That's right." }]);
+    return { ...route, expect: { ...route.expect, assertions: assertions.map(assertion => assertion === matching[0] ? { ...assertion, value: '3/10 is left.' } : assertion) } };
+  });
+}
+
 it('fixes the addition day only for the named current production routes', () => {
   const { usesFixedAdditionDay } = require('../scripts/dev/run-route-matrix.js');
   expect(usesFixedAdditionDay('ROUTE-PLAN35-CURRENT-HIGH-VISUAL-ALL-21', 'production-default-v7')).toBe(true);
@@ -207,9 +221,10 @@ describe('Plan 14 Reachable Behavior Route Contract & Matrix Schema', () => {
 
   it('pins the original 91 route objects and migrates only Plan 39 context mappings to v1 history', async () => {
     expect(matrix.routes).toHaveLength(117);
-    expect(createHash('sha256').update(JSON.stringify(originalEntryRoutes(matrix.routes).slice(0, 91))).digest('hex'))
+    const originalRoutes = originalPlan40SuccessCopy(originalEntryRoutes(matrix.routes));
+    expect(createHash('sha256').update(JSON.stringify(originalRoutes.slice(0, 91))).digest('hex'))
       .toBe('eee8367c25fdaa88612b516a05b6989a919ae10b8e822a6339bea9b4c3c631de');
-    expect(createHash('sha256').update(JSON.stringify(originalEntryRoutes(matrix.routes).slice(0, 98))).digest('hex'))
+    expect(createHash('sha256').update(JSON.stringify(originalRoutes.slice(0, 98))).digest('hex'))
       .toBe('e30aa7a3ee8a4f4f0567d245256ed954881d931f2d2136304320cc39a25a93ef');
     const contexts = JSON.parse(fs.readFileSync(path.resolve(__dirname, 'routes/plan34-context-map.json'), 'utf8')).contexts;
     const contextsBeforeRepair03 = { ...contexts };

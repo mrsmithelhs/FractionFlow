@@ -1,0 +1,66 @@
+{
+  "scope": "Exact two route-matrix action sequences and final assertions via existing executeAction/verifyAssertions against the mounted legacy-navigation fixture served by Vite, Chrome. No original route evidence paths are written. This does not perform full matrix negative-control capture or production-built route matrix run.",
+  "browser": "157.0.8103.38",
+  "results": [
+    {
+      "routeId": "ROUTE-PLAN40-DEEP-SAMPLE-CONSTRUCT-OPERATE",
+      "motionMode": "standard-motion",
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "completedActions": 11,
+      "expectedActions": 11,
+      "prompt": "That's right.",
+      "assertions": [
+        {
+          "type": "containsText",
+          "target": ".app-visual-view .active-beat-prompt",
+          "value": "That's right."
+        },
+        {
+          "type": "containsText",
+          "target": ".app-visual-view .active-beat-controls button",
+          "value": "Finish"
+        },
+        {
+          "type": "containsText",
+          "target": ".app-visual-view .symbolic-expression",
+          "value": "3"
+        },
+        {
+          "type": "containsText",
+          "target": ".app-visual-view .symbolic-expression",
+          "value": "10"
+        }
+      ],
+      "status": "pass",
+      "errors": []
+    },
+    {
+      "routeId": "ROUTE-PLAN40-HELP-RECOVERY-VIEW-TOGGLE",
+      "motionMode": "standard-motion",
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "completedActions": 36,
+      "expectedActions": 36,
+      "prompt": "That's right.",
+      "assertions": [
+        {
+          "type": "containsText",
+          "target": ".app-visual-view .active-beat-prompt",
+          "value": "That's right."
+        },
+        {
+          "type": "containsText",
+          "target": ".app-visual-view .active-beat-controls button",
+          "value": "Finish"
+        }
+      ],
+      "status": "pass",
+      "errors": []
+    }
+  ]
+}
