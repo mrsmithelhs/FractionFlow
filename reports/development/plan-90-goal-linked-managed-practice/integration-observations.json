@@ -1,6 +1,6 @@
 {
   "browser": "157.0.8103.38",
-  "method": "Real ordinary Start and production shell measurement; no selection or fit hook. Fault hook only for forced post-mount failures.",
+  "method": "Real ordinary Start and production shell measurement; no selection or fit hook. Fault hooks only for forced post-mount failures or changed measurement.",
   "runs": [
     {
       "width": 360,
@@ -107,6 +107,7 @@
     }
   ],
   "rollback": "Post-mount Retry and Next failures retained task, draft or completed state, working controls and notice focus; later actions succeeded.",
-  "resize": "Measured 768→360 at 200% text preserved draft and finished at Next.",
+  "resize": "Measured 768→360 at 200% text preserved draft; Retry remained usable at the same identity, then Next ended the visit.",
+  "changedMeasurement": "A still-eligible text-size change during Start refused the mount; during Next it restored the completed item and a later Next succeeded.",
   "errors": []
 }

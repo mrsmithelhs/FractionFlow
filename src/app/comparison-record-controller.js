@@ -44,21 +44,33 @@ export function createComparisonRecordController({ storage = createComparisonRec
       try {
         const sessionContext = sessionRecordContext(sessionController, state);
         if (!sessionContext) return false;
-        const { session, manifest, episode, installed } = sessionContext;
-        // The new managed catalog does not expand the recording boundary.
-        if (manifest.id === 'goal-linked-comparison-distance') return false;
-        const admitted = admitMagnitudeManifest(manifest, session.supportId);
-        const expected = admitted.prepared[session.index];
+        const { session, manifest, admittedManifest, episode, installed } = sessionContext;
+        const managed = ['goal-linked-comparison-distance','goal-linked-practice'].includes(manifest.id);
+        // Preserve the comparisons eligible through the old ordinary Start;
+        // other new managed identities do not expand observation coverage.
+        if (managed && !['plan45-compare-02','plan45-compare-09','plan45-compare-10'].includes(state.taskContext.itemId)) return false;
+        const admitted = admitMagnitudeManifest(managed ? admittedManifest : manifest, session.supportId);
+        const expected = managed ? admitted.prepared.find(candidate => candidate.state.taskContext?.itemId === state.taskContext.itemId) : admitted.prepared[session.index];
         if (!session.active || session.id !== manifest.id || session.revision !== manifest.revision || episode !== state
+          || manifest.entries[session.index]?.itemId !== state.taskContext.itemId
           || !expected || !installed || !same(installed.state.taskContext, expected.state.taskContext)
           || !same(state.taskContext, expected.state.taskContext) || !same(state.support, expected.state.support)) return false;
         sessionGeneration = session.generation;
       } catch { return false; }
     }
-    try { active={admission:createRecordAdmission({token:randomRecordToken(),generation:root.generation,...context}),generation:root.generation,sessionController,sessionGeneration,first:false,helpOpened:false}; return true; }
+    try { active={admission:createRecordAdmission({token:randomRecordToken(),generation:root.generation,...context}),generation:root.generation,sessionController,sessionGeneration,
+      taskContext:structuredClone(state.taskContext), support:structuredClone(state.support), first:false,helpOpened:false}; return true; }
     catch { message='Practice is available, but this browser could not save the record.';notify();return false; }
   }
   function helpOpened() { if(!disposed && active) active.helpOpened=true; }
+  function rebindAfterRollback(sessionController, state) {
+    if (disposed || !active || active.sessionController !== sessionController || !contextFor(state)
+      || !same(active.taskContext,state.taskContext) || !same(active.support,state.support)) return false;
+    const current = sessionRecordContext(sessionController,state);
+    if (!current?.session.active || current.manifest.entries[current.session.index]?.itemId !== state.taskContext.itemId) return false;
+    active.sessionGeneration = current.session.generation;
+    return true;
+  }
   function observe(before,after,action) {
     if (disposed || !active || action?.type !== 'submit-fraction-comparison' || !contextFor(before) || after?.responseProvenance?.length !== before.responseProvenance.length+1) return;
     if (active.sessionController && sessionRecordContext(active.sessionController, after)?.session.generation !== active.sessionGeneration) { retire(); return; }
@@ -90,5 +102,5 @@ export function createComparisonRecordController({ storage = createComparisonRec
     catch {if(disposed || ticket!==epoch)return;root=null;ready=false;message=method==='clear'?'The record could not be cleared. Please try again.':'Practice is available, but this browser could not save the record.';}
     notify();
   }
-  return {refresh,install,retire,observe,helpOpened,snapshot,enable:()=>change('enable'),stop:()=>change('stop'),clear:()=>change('clear'),reset:()=>change('reset'),destroy(){disposed=true;retire();++epoch;channel?.close();}};
+  return {refresh,install,retire,observe,helpOpened,rebindAfterRollback,snapshot,enable:()=>change('enable'),stop:()=>change('stop'),clear:()=>change('clear'),reset:()=>change('reset'),destroy(){disposed=true;retire();++epoch;channel?.close();}};
 }

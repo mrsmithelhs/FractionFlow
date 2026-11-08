@@ -1,0 +1,805 @@
+{
+  "browser": "157.0.8103.38",
+  "method": "Ordinary Start with deterministic seed injection only; production fit, admission and controls. Explicit fault injection for rollback, shortened visits, single fallback, renderer preflight and designated alternative cases.",
+  "runs": [
+    {
+      "seed": 0,
+      "pattern": "M0",
+      "view": "visual",
+      "support": "high-support",
+      "ids": [
+        "plan45-compare-02",
+        "plan45-compare-09",
+        "plan45-compare-10",
+        "distance-01"
+      ],
+      "finished": true,
+      "fit": {
+        "font": 16,
+        "widths": [
+          970.78125,
+          970.78125
+        ],
+        "area": 970.78125,
+        "contentWidth": 1027.42,
+        "viewportWidth": 1093,
+        "viewportHeight": 614,
+        "htmlScroll": "visible",
+        "bodyScroll": "visible",
+        "rootScroll": "visible"
+      }
+    },
+    {
+      "seed": 0,
+      "pattern": "M0",
+      "view": "linear",
+      "support": "high-support",
+      "ids": [
+        "plan45-compare-02",
+        "plan45-compare-09",
+        "plan45-compare-10",
+        "distance-01"
+      ],
+      "finished": true,
+      "fit": {
+        "font": 16,
+        "widths": [
+          970.78125,
+          970.78125
+        ],
+        "area": 970.78125,
+        "contentWidth": 1027.42,
+        "viewportWidth": 1093,
+        "viewportHeight": 614,
+        "htmlScroll": "visible",
+        "bodyScroll": "visible",
+        "rootScroll": "visible"
+      }
+    },
+    {
+      "seed": 0,
+      "pattern": "M0",
+      "view": "visual",
+      "support": "medium-support",
+      "ids": [
+        "plan45-compare-02",
+        "plan45-compare-09",
+        "plan45-compare-10",
+        "distance-01"
+      ],
+      "finished": true,
+      "fit": {
+        "font": 16,
+        "widths": [
+          970.78125,
+          970.78125
+        ],
+        "area": 970.78125,
+        "contentWidth": 1027.42,
+        "viewportWidth": 1093,
+        "viewportHeight": 614,
+        "htmlScroll": "visible",
+        "bodyScroll": "visible",
+        "rootScroll": "visible"
+      }
+    },
+    {
+      "seed": 0,
+      "pattern": "M0",
+      "view": "linear",
+      "support": "medium-support",
+      "ids": [
+        "plan45-compare-02",
+        "plan45-compare-09",
+        "plan45-compare-10",
+        "distance-01"
+      ],
+      "finished": true,
+      "fit": {
+        "font": 16,
+        "widths": [
+          970.78125,
+          970.78125
+        ],
+        "area": 970.78125,
+        "contentWidth": 1027.42,
+        "viewportWidth": 1093,
+        "viewportHeight": 614,
+        "htmlScroll": "visible",
+        "bodyScroll": "visible",
+        "rootScroll": "visible"
+      }
+    },
+    {
+      "seed": 1,
+      "pattern": "M1",
+      "view": "visual",
+      "support": "high-support",
+      "ids": [
+        "plan45-compare-08",
+        "bridge-06-three-eighths-8",
+        "plan45-compare-10",
+        "distance-04"
+      ],
+      "finished": true,
+      "fit": {
+        "font": 16,
+        "widths": [
+          970.78125,
+          970.78125
+        ],
+        "area": 970.78125,
+        "contentWidth": 1027.42,
+        "viewportWidth": 1093,
+        "viewportHeight": 614,
+        "htmlScroll": "visible",
+        "bodyScroll": "visible",
+        "rootScroll": "visible"
+      }
+    },
+    {
+      "seed": 1,
+      "pattern": "M1",
+      "view": "linear",
+      "support": "high-support",
+      "ids": [
+        "plan45-compare-08",
+        "bridge-06-three-eighths-8",
+        "plan45-compare-10",
+        "distance-04"
+      ],
+      "finished": true,
+      "fit": {
+        "font": 16,
+        "widths": [
+          970.78125,
+          970.78125
+        ],
+        "area": 970.78125,
+        "contentWidth": 1027.42,
+        "viewportWidth": 1093,
+        "viewportHeight": 614,
+        "htmlScroll": "visible",
+        "bodyScroll": "visible",
+        "rootScroll": "visible"
+      }
+    },
+    {
+      "seed": 1,
+      "pattern": "M1",
+      "view": "visual",
+      "support": "medium-support",
+      "ids": [
+        "plan45-compare-08",
+        "bridge-06-three-eighths-8",
+        "plan45-compare-10",
+        "distance-04"
+      ],
+      "finished": true,
+      "fit": {
+        "font": 16,
+        "widths": [
+          970.78125,
+          970.78125
+        ],
+        "area": 970.78125,
+        "contentWidth": 1027.42,
+        "viewportWidth": 1093,
+        "viewportHeight": 614,
+        "htmlScroll": "visible",
+        "bodyScroll": "visible",
+        "rootScroll": "visible"
+      }
+    },
+    {
+      "seed": 1,
+      "pattern": "M1",
+      "view": "linear",
+      "support": "medium-support",
+      "ids": [
+        "plan45-compare-08",
+        "bridge-06-three-eighths-8",
+        "plan45-compare-10",
+        "distance-04"
+      ],
+      "finished": true,
+      "fit": {
+        "font": 16,
+        "widths": [
+          970.78125,
+          970.78125
+        ],
+        "area": 970.78125,
+        "contentWidth": 1027.42,
+        "viewportWidth": 1093,
+        "viewportHeight": 614,
+        "htmlScroll": "visible",
+        "bodyScroll": "visible",
+        "rootScroll": "visible"
+      }
+    },
+    {
+      "seed": 2,
+      "pattern": "U0",
+      "view": "visual",
+      "support": "high-support",
+      "ids": [
+        "plan35-identify-half-three-tenths-10",
+        "one-half-plus-one-third",
+        "plan35-construct-half-fifth-10"
+      ],
+      "finished": true,
+      "fit": {
+        "font": 16,
+        "widths": [
+          970.78125,
+          970.78125
+        ],
+        "area": 970.78125,
+        "contentWidth": 1027.42,
+        "viewportWidth": 1093,
+        "viewportHeight": 614,
+        "htmlScroll": "visible",
+        "bodyScroll": "visible",
+        "rootScroll": "visible"
+      }
+    },
+    {
+      "seed": 2,
+      "pattern": "U0",
+      "view": "linear",
+      "support": "high-support",
+      "ids": [
+        "plan35-identify-half-three-tenths-10",
+        "one-half-plus-one-third",
+        "plan35-construct-half-fifth-10"
+      ],
+      "finished": true,
+      "fit": {
+        "font": 16,
+        "widths": [
+          970.78125,
+          970.78125
+        ],
+        "area": 970.78125,
+        "contentWidth": 1027.42,
+        "viewportWidth": 1093,
+        "viewportHeight": 614,
+        "htmlScroll": "visible",
+        "bodyScroll": "visible",
+        "rootScroll": "visible"
+      }
+    },
+    {
+      "seed": 2,
+      "pattern": "U0",
+      "view": "visual",
+      "support": "medium-support",
+      "ids": [
+        "plan35-identify-half-three-tenths-10",
+        "one-half-plus-one-third",
+        "plan35-construct-half-fifth-10"
+      ],
+      "finished": true,
+      "fit": {
+        "font": 16,
+        "widths": [
+          970.78125,
+          970.78125
+        ],
+        "area": 970.78125,
+        "contentWidth": 1027.42,
+        "viewportWidth": 1093,
+        "viewportHeight": 614,
+        "htmlScroll": "visible",
+        "bodyScroll": "visible",
+        "rootScroll": "visible"
+      }
+    },
+    {
+      "seed": 2,
+      "pattern": "U0",
+      "view": "linear",
+      "support": "medium-support",
+      "ids": [
+        "plan35-identify-half-three-tenths-10",
+        "one-half-plus-one-third",
+        "plan35-construct-half-fifth-10"
+      ],
+      "finished": true,
+      "fit": {
+        "font": 16,
+        "widths": [
+          970.78125,
+          970.78125
+        ],
+        "area": 970.78125,
+        "contentWidth": 1027.42,
+        "viewportWidth": 1093,
+        "viewportHeight": 614,
+        "htmlScroll": "visible",
+        "bodyScroll": "visible",
+        "rootScroll": "visible"
+      }
+    },
+    {
+      "seed": 3,
+      "pattern": "U1",
+      "view": "visual",
+      "support": "high-support",
+      "ids": [
+        "plan40-identify-one-half-one-eighth-8",
+        "plan40-inspect-two-thirds-one-fourth-12",
+        "plan40-construct-half-fifth-10"
+      ],
+      "finished": true,
+      "fit": {
+        "font": 16,
+        "widths": [
+          970.78125,
+          970.78125
+        ],
+        "area": 970.78125,
+        "contentWidth": 1027.42,
+        "viewportWidth": 1093,
+        "viewportHeight": 614,
+        "htmlScroll": "visible",
+        "bodyScroll": "visible",
+        "rootScroll": "visible"
+      }
+    },
+    {
+      "seed": 3,
+      "pattern": "U1",
+      "view": "linear",
+      "support": "high-support",
+      "ids": [
+        "plan40-identify-one-half-one-eighth-8",
+        "plan40-inspect-two-thirds-one-fourth-12",
+        "plan40-construct-half-fifth-10"
+      ],
+      "finished": true,
+      "fit": {
+        "font": 16,
+        "widths": [
+          970.78125,
+          970.78125
+        ],
+        "area": 970.78125,
+        "contentWidth": 1027.42,
+        "viewportWidth": 1093,
+        "viewportHeight": 614,
+        "htmlScroll": "visible",
+        "bodyScroll": "visible",
+        "rootScroll": "visible"
+      }
+    },
+    {
+      "seed": 3,
+      "pattern": "U1",
+      "view": "visual",
+      "support": "medium-support",
+      "ids": [
+        "plan40-identify-one-half-one-eighth-8",
+        "plan40-inspect-two-thirds-one-fourth-12",
+        "plan40-construct-half-fifth-10"
+      ],
+      "finished": true,
+      "fit": {
+        "font": 16,
+        "widths": [
+          970.78125,
+          970.78125
+        ],
+        "area": 970.78125,
+        "contentWidth": 1027.42,
+        "viewportWidth": 1093,
+        "viewportHeight": 614,
+        "htmlScroll": "visible",
+        "bodyScroll": "visible",
+        "rootScroll": "visible"
+      }
+    },
+    {
+      "seed": 3,
+      "pattern": "U1",
+      "view": "linear",
+      "support": "medium-support",
+      "ids": [
+        "plan40-identify-one-half-one-eighth-8",
+        "plan40-inspect-two-thirds-one-fourth-12",
+        "plan40-construct-half-fifth-10"
+      ],
+      "finished": true,
+      "fit": {
+        "font": 16,
+        "widths": [
+          970.78125,
+          970.78125
+        ],
+        "area": 970.78125,
+        "contentWidth": 1027.42,
+        "viewportWidth": 1093,
+        "viewportHeight": 614,
+        "htmlScroll": "visible",
+        "bodyScroll": "visible",
+        "rootScroll": "visible"
+      }
+    }
+  ],
+  "reduced": {
+    "width": 360,
+    "height": 740,
+    "rootText": "150%",
+    "seed": 1,
+    "selected": "M0",
+    "witness": {
+      "seed": 1,
+      "catalogRevision": "1",
+      "policyRevision": "1",
+      "outcomes": [
+        {
+          "pattern": "M1",
+          "slot": "M1-compare",
+          "identity": {
+            "typeId": "symbolic-fraction-comparison",
+            "setId": "symbolic-fraction-comparison-vetted-set",
+            "setRevision": "1",
+            "itemId": "plan45-compare-08",
+            "itemRevision": "plan45-record-v1",
+            "definitionId": "phase-4-symbolic-fraction-comparison",
+            "definitionRevision": "2",
+            "underlyingDefinitionRevision": "1",
+            "recipeId": "symbolic-fraction-comparison",
+            "recipeRevision": "1",
+            "taskDataId": "plan45-symbolic-fraction-comparison-task-data",
+            "taskDataRevision": "1"
+          },
+          "reason": "eligible"
+        },
+        {
+          "pattern": "M1",
+          "slot": "M1-placement",
+          "identity": {
+            "typeId": "bar-to-line-same-amount",
+            "setId": "bar-to-line-same-amount-vetted-set",
+            "setRevision": "1",
+            "itemId": "bridge-06-three-eighths-8",
+            "itemRevision": "plan37-record-v1",
+            "fixtureId": "curated-plan37-bridge-06-three-eighths-8",
+            "definitionId": "phase-4-bar-to-line-same-amount",
+            "definitionRevision": "2",
+            "recipeId": "plan37.bar-to-line-same-amount",
+            "recipeRevision": "1",
+            "taskDataId": "plan37-bar-to-line-same-amount",
+            "taskDataRevision": "1"
+          },
+          "reason": "ineligible"
+        },
+        {
+          "pattern": "M1",
+          "slot": "M1-placement",
+          "identity": {
+            "typeId": "bar-to-line-same-amount",
+            "setId": "bar-to-line-same-amount-vetted-set",
+            "setRevision": "1",
+            "itemId": "bridge-02-fourth-4",
+            "itemRevision": "plan37-record-v1",
+            "fixtureId": "curated-plan37-bridge-02-fourth-4",
+            "definitionId": "phase-4-bar-to-line-same-amount",
+            "definitionRevision": "2",
+            "recipeId": "plan37.bar-to-line-same-amount",
+            "recipeRevision": "1",
+            "taskDataId": "plan37-bar-to-line-same-amount",
+            "taskDataRevision": "1"
+          },
+          "reason": "ineligible"
+        },
+        {
+          "pattern": "M1",
+          "slot": "M1-half",
+          "identity": {
+            "typeId": "symbolic-fraction-comparison",
+            "setId": "symbolic-fraction-comparison-vetted-set",
+            "setRevision": "1",
+            "itemId": "plan45-compare-10",
+            "itemRevision": "plan45-record-v1",
+            "definitionId": "phase-4-symbolic-fraction-comparison",
+            "definitionRevision": "2",
+            "underlyingDefinitionRevision": "1",
+            "recipeId": "symbolic-fraction-comparison",
+            "recipeRevision": "1",
+            "taskDataId": "plan45-symbolic-fraction-comparison-task-data",
+            "taskDataRevision": "1"
+          },
+          "reason": "eligible"
+        },
+        {
+          "pattern": "M1",
+          "slot": "M1-distance",
+          "identity": {
+            "typeId": "fraction-distance",
+            "setId": "fraction-distance",
+            "setRevision": "1",
+            "itemId": "distance-04",
+            "itemRevision": "1",
+            "definitionId": "phase-4-fraction-distance",
+            "definitionRevision": "1",
+            "recipeId": "common-unit-distance",
+            "recipeRevision": "1"
+          },
+          "reason": "eligible"
+        },
+        {
+          "pattern": "U0",
+          "slot": "U0-identify",
+          "identity": {
+            "typeId": "sum-under-one",
+            "setId": "unlike-addition-vetted-set",
+            "setRevision": "7",
+            "itemId": "plan35-identify-half-three-tenths-10",
+            "itemRevision": "plan35-record-v1",
+            "fixtureId": "curated-plan35-identify-one-half-three-tenths",
+            "definitionId": "phase-3-reusable-addition-recipes",
+            "definitionRevision": "1",
+            "recipeId": "full-addition.identify-side-construct",
+            "recipeRevision": "1",
+            "taskDataId": "plan35-addition-recipe-task-data",
+            "taskDataRevision": "1"
+          },
+          "reason": "ineligible"
+        },
+        {
+          "pattern": "U0",
+          "slot": "U0-inspect",
+          "identity": {
+            "typeId": "sum-under-one",
+            "setId": "unlike-addition-vetted-set",
+            "setRevision": "7",
+            "itemId": "one-half-plus-one-third",
+            "itemRevision": "plan26-fixtures-v1",
+            "fixtureId": "curated-relatively-prime-addition-one-half-one-third",
+            "definitionId": "phase-3-reusable-addition-recipes",
+            "definitionRevision": "1",
+            "recipeId": "full-addition.inspect-keep-repair",
+            "recipeRevision": "1",
+            "taskDataId": "plan35-addition-recipe-task-data",
+            "taskDataRevision": "1",
+            "stimulusId": "plan34-one-half-plus-one-third-inspect-candidate",
+            "stimulusRevision": "1"
+          },
+          "reason": "ineligible"
+        },
+        {
+          "pattern": "U0",
+          "slot": "U0-construct",
+          "identity": {
+            "typeId": "sum-under-one",
+            "setId": "unlike-addition-vetted-set",
+            "setRevision": "7",
+            "itemId": "plan35-construct-half-fifth-10",
+            "itemRevision": "plan32-record-v1",
+            "fixtureId": "curated-relatively-prime-addition-one-half-one-fifth",
+            "definitionId": "phase-3-reusable-addition-recipes",
+            "definitionRevision": "1",
+            "recipeId": "full-addition.construct-equivalent",
+            "recipeRevision": "1",
+            "taskDataId": "plan35-addition-recipe-task-data",
+            "taskDataRevision": "1"
+          },
+          "reason": "ineligible"
+        },
+        {
+          "pattern": "U1",
+          "slot": "U1-identify",
+          "identity": {
+            "typeId": "unlike-denominator-subtraction",
+            "setId": "unlike-subtraction-vetted-set",
+            "setRevision": "2",
+            "itemId": "plan40-identify-one-half-one-eighth-8",
+            "itemRevision": "plan40-record-v1",
+            "fixtureId": "curated-plan40-identify-one-half-one-eighth",
+            "definitionId": "phase-3-reusable-subtraction-recipes",
+            "definitionRevision": "1",
+            "recipeId": "unlike-subtraction.identify-side-construct",
+            "recipeRevision": "1",
+            "taskDataId": "plan40-subtraction-recipe-task-data",
+            "taskDataRevision": "1"
+          },
+          "reason": "ineligible"
+        },
+        {
+          "pattern": "U1",
+          "slot": "U1-inspect",
+          "identity": {
+            "typeId": "unlike-denominator-subtraction",
+            "setId": "unlike-subtraction-vetted-set",
+            "setRevision": "2",
+            "itemId": "plan40-inspect-two-thirds-one-fourth-12",
+            "itemRevision": "plan40-record-v1",
+            "fixtureId": "curated-plan40-inspect-two-thirds-one-fourth",
+            "definitionId": "phase-3-reusable-subtraction-recipes",
+            "definitionRevision": "1",
+            "recipeId": "unlike-subtraction.inspect-keep-repair",
+            "recipeRevision": "1",
+            "taskDataId": "plan40-subtraction-recipe-task-data",
+            "taskDataRevision": "1",
+            "stimulusId": "plan40-stim-inspect-two-thirds-one-fourth-12",
+            "stimulusRevision": "1"
+          },
+          "reason": "ineligible"
+        },
+        {
+          "pattern": "U1",
+          "slot": "U1-construct",
+          "identity": {
+            "typeId": "unlike-denominator-subtraction",
+            "setId": "unlike-subtraction-vetted-set",
+            "setRevision": "2",
+            "itemId": "plan40-construct-half-fifth-10",
+            "itemRevision": "plan40-record-v1",
+            "fixtureId": "curated-plan40-construct-one-half-one-fifth",
+            "definitionId": "phase-3-reusable-subtraction-recipes",
+            "definitionRevision": "1",
+            "recipeId": "unlike-subtraction.construct-equivalent",
+            "recipeRevision": "1",
+            "taskDataId": "plan40-subtraction-recipe-task-data",
+            "taskDataRevision": "1"
+          },
+          "reason": "ineligible"
+        },
+        {
+          "pattern": "M0",
+          "slot": "M0-compare-units",
+          "identity": {
+            "typeId": "symbolic-fraction-comparison",
+            "setId": "symbolic-fraction-comparison-vetted-set",
+            "setRevision": "1",
+            "itemId": "plan45-compare-02",
+            "itemRevision": "plan45-record-v1",
+            "definitionId": "phase-4-symbolic-fraction-comparison",
+            "definitionRevision": "2",
+            "underlyingDefinitionRevision": "1",
+            "recipeId": "symbolic-fraction-comparison",
+            "recipeRevision": "1",
+            "taskDataId": "plan45-symbolic-fraction-comparison-task-data",
+            "taskDataRevision": "1"
+          },
+          "reason": "eligible"
+        },
+        {
+          "pattern": "M0",
+          "slot": "M0-equal-numerators",
+          "identity": {
+            "typeId": "symbolic-fraction-comparison",
+            "setId": "symbolic-fraction-comparison-vetted-set",
+            "setRevision": "1",
+            "itemId": "plan45-compare-09",
+            "itemRevision": "plan45-record-v1",
+            "definitionId": "phase-4-symbolic-fraction-comparison",
+            "definitionRevision": "2",
+            "underlyingDefinitionRevision": "1",
+            "recipeId": "symbolic-fraction-comparison",
+            "recipeRevision": "1",
+            "taskDataId": "plan45-symbolic-fraction-comparison-task-data",
+            "taskDataRevision": "1"
+          },
+          "reason": "eligible"
+        },
+        {
+          "pattern": "M0",
+          "slot": "M0-half",
+          "identity": {
+            "typeId": "symbolic-fraction-comparison",
+            "setId": "symbolic-fraction-comparison-vetted-set",
+            "setRevision": "1",
+            "itemId": "plan45-compare-10",
+            "itemRevision": "plan45-record-v1",
+            "definitionId": "phase-4-symbolic-fraction-comparison",
+            "definitionRevision": "2",
+            "underlyingDefinitionRevision": "1",
+            "recipeId": "symbolic-fraction-comparison",
+            "recipeRevision": "1",
+            "taskDataId": "plan45-symbolic-fraction-comparison-task-data",
+            "taskDataRevision": "1"
+          },
+          "reason": "eligible"
+        },
+        {
+          "pattern": "M0",
+          "slot": "M0-distance",
+          "identity": {
+            "typeId": "fraction-distance",
+            "setId": "fraction-distance",
+            "setRevision": "1",
+            "itemId": "distance-01",
+            "itemRevision": "1",
+            "definitionId": "phase-4-fraction-distance",
+            "definitionRevision": "1",
+            "recipeId": "common-unit-distance",
+            "recipeRevision": "1"
+          },
+          "reason": "eligible"
+        }
+      ],
+      "identities": [
+        {
+          "typeId": "symbolic-fraction-comparison",
+          "setId": "symbolic-fraction-comparison-vetted-set",
+          "setRevision": "1",
+          "itemId": "plan45-compare-02",
+          "itemRevision": "plan45-record-v1",
+          "definitionId": "phase-4-symbolic-fraction-comparison",
+          "definitionRevision": "2",
+          "underlyingDefinitionRevision": "1",
+          "recipeId": "symbolic-fraction-comparison",
+          "recipeRevision": "1",
+          "taskDataId": "plan45-symbolic-fraction-comparison-task-data",
+          "taskDataRevision": "1"
+        },
+        {
+          "typeId": "symbolic-fraction-comparison",
+          "setId": "symbolic-fraction-comparison-vetted-set",
+          "setRevision": "1",
+          "itemId": "plan45-compare-09",
+          "itemRevision": "plan45-record-v1",
+          "definitionId": "phase-4-symbolic-fraction-comparison",
+          "definitionRevision": "2",
+          "underlyingDefinitionRevision": "1",
+          "recipeId": "symbolic-fraction-comparison",
+          "recipeRevision": "1",
+          "taskDataId": "plan45-symbolic-fraction-comparison-task-data",
+          "taskDataRevision": "1"
+        },
+        {
+          "typeId": "symbolic-fraction-comparison",
+          "setId": "symbolic-fraction-comparison-vetted-set",
+          "setRevision": "1",
+          "itemId": "plan45-compare-10",
+          "itemRevision": "plan45-record-v1",
+          "definitionId": "phase-4-symbolic-fraction-comparison",
+          "definitionRevision": "2",
+          "underlyingDefinitionRevision": "1",
+          "recipeId": "symbolic-fraction-comparison",
+          "recipeRevision": "1",
+          "taskDataId": "plan45-symbolic-fraction-comparison-task-data",
+          "taskDataRevision": "1"
+        },
+        {
+          "typeId": "fraction-distance",
+          "setId": "fraction-distance",
+          "setRevision": "1",
+          "itemId": "distance-01",
+          "itemRevision": "1",
+          "definitionId": "phase-4-fraction-distance",
+          "definitionRevision": "1",
+          "recipeId": "common-unit-distance",
+          "recipeRevision": "1"
+        }
+      ],
+      "fit": {
+        "font": 24,
+        "widths": [
+          286,
+          286
+        ],
+        "area": 286,
+        "contentWidth": 324,
+        "viewportWidth": 360,
+        "viewportHeight": 740,
+        "htmlScroll": "visible",
+        "bodyScroll": "visible",
+        "rootScroll": "visible"
+      }
+    }
+  },
+  "condition": "Seed 2 started U0 with phase2-bundle-2 preserved.",
+  "shortened": "Forced inspection preflight refusal produced U0 identify → construct → return.",
+  "requiredEndpointLoss": "Forced later construct preflight refusal ended U0 after identify rather than proceeding to inspection.",
+  "single": "Only distance-04 preflighted; one-item practice completed and returned.",
+  "requiredPlacementLoss": "M1 ended on its completed comparison after narrowing made both unstarted placement candidates ineligible.",
+  "alternative": "With bridge-06 preflight forced to fail, M1 completed using the designated bridge-02 substitute.",
+  "detachedPreflight": "Forced failure after detached distance-01 renderer mount rejected M0 and selected M1 before the first task; no scratch host remained.",
+  "rollback": "Forced post-mount Retry failures restored an arithmetic transform draft and a placement stepper selection; cross-family Next failure restored completed comparison, then a later Next mounted placement. Notice focus and subsequent controls were checked.",
+  "errors": []
+}

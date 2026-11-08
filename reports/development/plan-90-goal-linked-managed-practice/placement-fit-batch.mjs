@@ -4,13 +4,14 @@ import { chromium } from 'playwright';
 import { PLAN37_BAR_TO_LINE_BRIDGE_RECORDS } from '../../../src/content/data/plan37-bar-to-line-bridge-records.js';
 
 const directory = 'reports/development/plan-90-goal-linked-managed-practice';
-const itemIds = ['bridge-06-three-eighths-8', 'bridge-02-fourth-4'];
+const itemIds = (process.env.PLAN90_PLACEMENT_ITEMS ?? 'bridge-06-three-eighths-8,bridge-02-fourth-4').split(',');
 const items = itemIds.map(id => PLAN37_BAR_TO_LINE_BRIDGE_RECORDS.find(record => record.itemId === id));
 if (items.some(item => !item)) throw new Error('Placement evidence records missing from Plan 37 registry.');
 const widths = (process.env.PLAN90_PLACEMENT_WIDTHS ?? '360,1093,1440').split(',').map(Number);
 const heights = (process.env.PLAN90_PLACEMENT_HEIGHTS ?? '740,614,900').split(',').map(Number);
 if (heights.length !== widths.length) throw new Error('Provide one height per width with PLAN90_PLACEMENT_HEIGHTS.');
 const scales = (process.env.PLAN90_PLACEMENT_SCALES ?? '100,200').split(',').map(Number);
+const conditions = (process.env.PLAN90_PLACEMENT_CONDITIONS ?? 'phase2-bundle-1').split(',');
 const output = process.env.PLAN90_PLACEMENT_OUTPUT ?? 'placement-fit-batch-observations.json';
 const supports = ['high-support', 'medium-support'];
 const views = ['visual', 'linear'];
@@ -58,19 +59,20 @@ async function choose(page, view, candidateId) {
   await radio.check();
 }
 
-async function runOne(context, record, support, view, width, height, scale) {
+async function runOne(context, record, support, view, width, height, scale, condition) {
   const page = await context.newPage();
   page.setDefaultTimeout(5000);
   page.setDefaultNavigationTimeout(30000);
   const pageErrors = [];
   page.on('pageerror', error => pageErrors.push(error.message));
-  const result = { itemId:record.itemId, support, view, viewport:{width,height}, rootFontScale:`${scale}%`, definitionRevision:'2', stages:[], failures:pageErrors };
+  const result = { itemId:record.itemId, support, view, condition, viewport:{width,height}, rootFontScale:`${scale}%`, definitionRevision:'2', stages:[], failures:pageErrors };
   try {
-    const params = new URLSearchParams({item:record.itemId,support,view});
+    const params = new URLSearchParams({item:record.itemId,support,view,condition});
     await page.goto(`http://127.0.0.1:${server.httpServer.address().port}/${directory}/placement-fit-batch.html?${params}`);
     if (scale !== 100) await page.addStyleTag({content:`html { font-size: ${scale}% !important; }`});
     const stage = async name => { const sample = await measure(page,name); result.stages.push(sample); if(sample.itemId!==record.itemId)throw new Error(`Mounted item ${sample.itemId} != ${record.itemId}`); if(sample.definition?.revision!=='2')throw new Error(`Definition revision is ${sample.definition?.revision}, expected 2`); if(sample.view!==view)throw new Error(`Active view ${sample.view} != ${view}`); if(sample.support !== (support==='high-support'?'high support':'medium support'))throw new Error(`Support mismatch: ${sample.support}`); };
     await stage('standalone-launch');
+    if ((await page.evaluate(()=>window.placementBatch.app.getState().activeCondition.id)) !== condition) throw Error('Display condition mismatch.');
     const host = page.locator(view==='linear'?'.app-linear-view':'.app-visual-view');
     const prompt = await host.locator('.active-beat-prompt').innerText();
     const initial = result.stages.at(-1);
@@ -104,15 +106,15 @@ async function runOne(context, record, support, view, width, height, scale) {
 try {
   await mkdir(directory,{recursive:true}); await server.listen();
   browser = await chromium.launch({headless:true,channel:'chrome',args:['--no-proxy-server']});
-  for(let i=0;i<widths.length;i++) for(const scale of scales) for(const support of supports) for(const view of views) {
+  for(let i=0;i<widths.length;i++) for(const scale of scales) for(const condition of conditions) for(const support of supports) for(const view of views) {
     const context = await browser.newContext({viewport:{width:widths[i],height:heights[i]}});
     for(const record of items) {
-      const run = await runOne(context,record,support,view,widths[i],heights[i],scale); runs.push(run);
+      const run = await runOne(context,record,support,view,widths[i],heights[i],scale,condition); runs.push(run);
       if(run.failures.length) failures.push(`${record.itemId}/${support}/${view}/${widths[i]}x${heights[i]}/${scale}%: ${run.failures.join('; ')}`);
     }
     await context.close();
   }
-  const report = { method:'Report-local fixture narrows the existing public Plan 39 practice type to one exact public record and launches through the learner-facing standalone chooser. Definition @2; real mounted controls; no managed Start/session changes.', browser:{engine:'Chrome via Playwright',version:browser.version()}, configurations:{records:itemIds,definitionRevision:'2',supports,views,viewports:widths.map((width,i)=>({width,height:heights[i]})),rootFontScales:scales.map(scale=>`${scale}% CSS root font`)}, runCount:runs.length, failures, runs, limits:['CSS root font scaling is not browser zoom.','No physical-device touch or assistive-technology speech was tested.','Rendered geometry and completed controls are evidence for orchestration review, not automatic fit classifications or learner outcome evidence.','Standalone single-item launch does not prove managed scheduler admission or cross-family navigation.'] };
+  const report = { method:'Report-local fixture narrows the existing public Plan 39 practice type to one exact public record and launches through the learner-facing standalone chooser. Definition @2; real mounted controls; no managed Start/session changes.', browser:{engine:'Chrome via Playwright',version:browser.version()}, configurations:{records:itemIds,definitionRevision:'2',supports,views,conditions,viewports:widths.map((width,i)=>({width,height:heights[i]})),rootFontScales:scales.map(scale=>`${scale}% CSS root font`)}, runCount:runs.length, failures, runs, limits:['CSS root font scaling is not browser zoom.','No physical-device touch or assistive-technology speech was tested.','Rendered geometry and completed controls are evidence for orchestration review, not automatic fit classifications or learner outcome evidence.','Standalone single-item launch does not prove managed scheduler admission or cross-family navigation.'] };
   await writeFile(`${directory}/${output}`,JSON.stringify(report,null,2)+'\n');
   if(failures.length) { console.error(`${failures.length} placement journey(s) incomplete; see ${directory}/${output}`); process.exitCode=1; }
   else console.log(`All ${runs.length} standalone placement journeys completed; observations saved to ${directory}/${output}.`);

@@ -21,9 +21,9 @@ const publicTypes = new Map([
 const conditions = [];
 const viewports = (process.env.PLAN90_ARITHMETIC_VIEWPORTS ?? '360x740,480x740,600x740,768x740,1093x614,1440x900').split(',').map(value => value.split('x').map(Number));
 for (const [width, height] of viewports) {
-    for (const rootScale of (process.env.PLAN90_ARITHMETIC_SCALES ?? '100,200').split(',').map(Number)) for (const support of ['high-support', 'medium-support']) for (const view of ['visual', 'linear']) {
+    for (const rootScale of (process.env.PLAN90_ARITHMETIC_SCALES ?? '100,200').split(',').map(Number)) for (const displayCondition of (process.env.PLAN90_ARITHMETIC_CONDITIONS ?? 'phase2-bundle-1').split(',')) for (const support of ['high-support', 'medium-support']) for (const view of ['visual', 'linear']) {
       if ((!process.env.PLAN90_ARITHMETIC_WIDTH || width === Number(process.env.PLAN90_ARITHMETIC_WIDTH))
-        && (!process.env.PLAN90_ARITHMETIC_SCALE || rootScale === Number(process.env.PLAN90_ARITHMETIC_SCALE))) conditions.push({ width, height, rootScale, support, view });
+        && (!process.env.PLAN90_ARITHMETIC_SCALE || rootScale === Number(process.env.PLAN90_ARITHMETIC_SCALE))) conditions.push({ width, height, rootScale, support, view, displayCondition });
     }
 }
 const failures = [], runs = [];
@@ -76,6 +76,8 @@ async function run(context, record, condition, port) {
     await page.goto(`http://127.0.0.1:${port}/${directory}/arithmetic-fit.html?item=${encodeURIComponent(record.itemId)}`);
     if (condition.rootScale !== 100) await page.addStyleTag({ content:`html { font-size:${condition.rootScale}% !important; }` });
     await page.locator('.app-gear-button').click();
+    await page.locator(`[data-condition-id="${condition.displayCondition}"]`).click();
+    await page.locator('.app-gear-button').click();
     await page.locator(`[data-support-id="${condition.support}"]`).click();
     const openChooser = page.locator('[data-entry-chooser]');
     if (await openChooser.getAttribute('aria-expanded') === 'false') await openChooser.click();
@@ -91,6 +93,7 @@ async function run(context, record, condition, port) {
     };
     const state = () => page.evaluate(() => window.arithmeticFit.app.getState());
     await stage('initial');
+    if ((await state()).activeCondition.id !== condition.displayCondition) throw Error('Display condition mismatch.');
     const recipe = record.recipeId;
     await host.locator('.active-beat-controls button').first().click();
     await stage('encounter');

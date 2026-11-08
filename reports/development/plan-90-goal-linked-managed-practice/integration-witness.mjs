@@ -6,7 +6,7 @@ const dir='reports/development/plan-90-goal-linked-managed-practice',runs=[],err
 const server=await createServer({configFile:false,root:process.cwd(),server:{host:'127.0.0.1',port:0,strictPort:true},logLevel:'error'}); let browser;
 try {
   await server.listen(); browser=await chromium.launch({headless:true,channel:'chrome',args:['--no-proxy-server']});
-  const base=`http://127.0.0.1:${server.httpServer.address().port}/${dir}/integration-preview.html`;
+  const base=`http://127.0.0.1:${server.httpServer.address().port}/${dir}/integration-preview.html?seed=0`;
   for(const [width,height,scale,view,admit] of [[360,740,100,'visual',true],[360,740,200,'visual',false],[1093,614,100,'linear',true],[1440,900,100,'visual',true]]) {
     const page=await browser.newPage({viewport:{width,height}}); page.on('pageerror',e=>errors.push(e.message));
     await page.goto(base); if(scale!==100)await page.addStyleTag({content:`html{font-size:${scale}% !important}`});
@@ -51,9 +51,19 @@ try {
   await resize.addStyleTag({content:'html{font-size:200% !important}'});await resize.locator('[data-session-entry="comparison"]').click();
   const resizeHost=resize.locator('.app-visual-view');await resizeHost.locator('.plan45-help-summary').click();await resizeHost.getByRole('button',{name:'Use the same denominator'}).click();
   await resizeHost.locator('.plan49-helper-input').fill('8');await resize.setViewportSize({width:360,height:740});
-  assert.equal(await resizeHost.locator('.plan49-helper-input').inputValue(),'8');await resizeHost.locator('.plan45-relation-option input[value=">"]').check();
+  assert.equal(await resizeHost.locator('.plan49-helper-input').inputValue(),'8');
+  await resize.getByRole('button',{name:'Try this problem again'}).click();assert.equal((await resize.evaluate(()=>window.integrationApp.getState())).taskContext.itemId,'plan45-compare-02');
+  await resizeHost.locator('.plan45-relation-option input[value=">"]').check();
   await resizeHost.locator('.plan45-check-button').click();await resizeHost.locator('.plan45-progression-button').click();
   assert.equal(await resize.locator('.app-entry-page').isVisible(),true);assert.match(await resize.locator('.app-session-entry-notice').textContent(),/complete for now/);await resize.close();
-  await writeFile(`${dir}/integration-observations.json`,JSON.stringify({browser:browser.version(),method:'Real ordinary Start and production shell measurement; no selection or fit hook. Fault hook only for forced post-mount failures.',runs,rollback:'Post-mount Retry and Next failures retained task, draft or completed state, working controls and notice focus; later actions succeeded.',resize:'Measured 768→360 at 200% text preserved draft and finished at Next.',errors},null,2)+'\n');
+  const changed=await browser.newPage({viewport:{width:1093,height:614}});await changed.goto(base);await changed.locator('[data-session-entry="comparison"]').click();
+  const changedHost=changed.locator('.app-visual-view');await changedHost.locator('.plan45-relation-option input[value=">"]').check();await changedHost.locator('.plan45-check-button').click();
+  await changed.evaluate(()=>window.integrationChangeFit());await changedHost.locator('.plan45-progression-button').click();
+  assert.equal((await changed.evaluate(()=>window.integrationApp.getState())).taskContext.itemId,'plan45-compare-02');
+  assert.equal(await changed.evaluate(()=>document.activeElement.classList.contains('app-navigation-notice')),true);
+  await changedHost.locator('.plan45-progression-button').click();assert.equal((await changed.evaluate(()=>window.integrationApp.getState())).taskContext.itemId,'plan45-compare-09');await changed.close();
+  const changedStart=await browser.newPage({viewport:{width:1093,height:614}});await changedStart.goto(base);await changedStart.evaluate(()=>window.integrationChangeFit());await changedStart.locator('[data-session-entry="comparison"]').click();
+  assert.equal(await changedStart.evaluate(()=>window.integrationApp.getState()),null);assert.equal(await changedStart.locator('.app-session-entry-notice').isVisible(),true);await changedStart.close();
+  await writeFile(`${dir}/integration-observations.json`,JSON.stringify({browser:browser.version(),method:'Real ordinary Start and production shell measurement; no selection or fit hook. Fault hooks only for forced post-mount failures or changed measurement.',runs,rollback:'Post-mount Retry and Next failures retained task, draft or completed state, working controls and notice focus; later actions succeeded.',resize:'Measured 768→360 at 200% text preserved draft; Retry remained usable at the same identity, then Next ended the visit.',changedMeasurement:'A still-eligible text-size change during Start refused the mount; during Next it restored the completed item and a later Next succeeded.',errors},null,2)+'\n');
   if(errors.length)throw Error(errors.join('\n')); console.log(`Completed ${runs.length} production Start cases.`);
 }finally{await browser?.close();await server.close();}

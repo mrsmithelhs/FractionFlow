@@ -42,11 +42,13 @@ it('admits only exact review identities and legal slot order', () => {
   }
 });
 
-it('does not extend the opted-in comparison recording boundary', async () => {
+it('preserves the old opted-in comparison boundary without recording new managed identities', async () => {
   const record = createComparisonRecordController({ storage: { read: async () => emptyRoot('a'.repeat(32), true) } });
   await record.refresh();
   const session = createMagnitudeSessionController(select(['plan45-compare-02', 'distance-01']));
-  expect(record.install(session.current().episode, session)).toBe(false);
+  expect(record.install(session.current().episode, session)).toBe(true);
+  const alternate = createMagnitudeSessionController(select(['plan45-compare-08', 'distance-01']));
+  expect(record.install(alternate.current().episode, alternate)).toBe(false);
   record.destroy();
 });
 

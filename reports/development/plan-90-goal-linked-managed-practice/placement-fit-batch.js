@@ -8,6 +8,7 @@ const query = new URLSearchParams(location.search);
 const itemId = query.get('item');
 const supportId = query.get('support');
 const startView = query.get('view');
+const conditionId = query.get('condition') ?? 'phase2-bundle-1';
 const record = PLAN37_BAR_TO_LINE_BRIDGE_RECORDS.find(item => item.itemId === itemId);
 if (!['bridge-06-three-eighths-8', 'bridge-02-fourth-4'].includes(itemId)
   || !record || !['high-support', 'medium-support'].includes(supportId)
@@ -19,6 +20,10 @@ if (!item || item.episodeDefinitionRevision !== '2') throw new Error('Exact Plan
 const practiceType = Object.freeze({ ...PLAN39_BAR_TO_LINE_PRACTICE_TYPE, items: Object.freeze([item]) });
 const app = createFractionFlowApp({ root: document.querySelector('#app'), practiceTypes: [practiceType], presentationMode: 'instant-test' });
 app.mount();
+document.querySelector('.app-gear-button').click();
+const condition = document.querySelector(`[data-condition-id="${conditionId}"]`);
+if (!condition) throw new Error('Requested display condition is unavailable.');
+condition.click();
 document.querySelector('.app-gear-button').click();
 const support = document.querySelector(`[data-support-id="${supportId}"]`);
 if (!support) throw new Error('Requested support option is unavailable.');

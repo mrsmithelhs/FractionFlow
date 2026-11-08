@@ -28,6 +28,10 @@ export function measureManagedPracticeFit(appRoot) {
 }
 
 export function isManagedComparisonDistanceFit(measurement) {
+  return isManagedFamilyFit(measurement, 'symbolic-fraction-comparison');
+}
+
+export function isManagedFamilyFit(measurement, typeId, conditionId = 'phase2-bundle-1') {
   if (!measurement || !Number.isFinite(measurement.font) || !Number.isFinite(measurement.area)
     || !Array.isArray(measurement.widths) || measurement.widths.length !== 2
     || measurement.widths.some(width => !Number.isFinite(width) || width <= 0)
@@ -35,13 +39,17 @@ export function isManagedComparisonDistanceFit(measurement) {
     || !['visible', 'auto', 'scroll'].includes(measurement.htmlScroll)
     || !['visible', 'auto', 'scroll'].includes(measurement.bodyScroll)
     || !['visible', 'auto', 'scroll'].includes(measurement.rootScroll)) return false;
-  return measurement.font >= 16 && measurement.font <= 32 && measurement.area >= 262 && measurement.area >= measurement.font * 8.2;
+  const factor = ['symbolic-fraction-comparison','fraction-distance'].includes(typeId) ? 8.2
+    : ['bar-to-line-same-amount','sum-under-one'].includes(typeId) ? 12
+    : typeId === 'unlike-denominator-subtraction' ? 15 : null;
+  if (factor !== 8.2 && !['phase2-bundle-1','phase2-bundle-2','phase2-bundle-3','phase2-bundle-4'].includes(conditionId)) return false;
+  return factor !== null && measurement.font >= 16 && measurement.font <= 32 && measurement.area >= 262 && measurement.area >= measurement.font * factor;
 }
 
 // A live renderer narrower than the independent probe is ambiguous; do not
 // let a scrollbar, host rule, or unexpected wrapper invalidate the receipt.
-export function matchesManagedActiveHost(measurement, host) {
-  if (!isManagedComparisonDistanceFit(measurement) || !host?.isConnected || host.hasAttribute('hidden')) return false;
+export function matchesManagedActiveHost(measurement, host, typeId = 'symbolic-fraction-comparison', conditionId = 'phase2-bundle-1', {requireFit = true} = {}) {
+  if (!measurement || (requireFit && !isManagedFamilyFit(measurement,typeId,conditionId)) || !host?.isConnected || host.hasAttribute('hidden')) return false;
   const width = host.getBoundingClientRect().width;
   return Number.isFinite(width) && width > 0 && Math.abs(width - measurement.area) <= 0.5;
 }
