@@ -1,0 +1,1281 @@
+{
+  "phase": "before",
+  "scope": "Report-local real mounted standalone or isolated scratch-prepared comparison. CSS root text enlargement, not browser zoom. Center hit, scroll, button overflow and limited Tab checks are sampled; no learner or screen-reader inference.",
+  "browser": "157.0.8103.38",
+  "conditions": [
+    "phase2-bundle-1"
+  ],
+  "ids": [
+    "plan45-compare-10"
+  ],
+  "supports": [
+    "high-support"
+  ],
+  "modes": [
+    "standalone",
+    "scratch"
+  ],
+  "runs": [
+    {
+      "id": "plan45-compare-10",
+      "view": "visual",
+      "mode": "standalone",
+      "condition": "phase2-bundle-1",
+      "support": "high-support",
+      "width": 1093,
+      "height": 614,
+      "scale": 100,
+      "errors": [],
+      "buttons": [
+        {
+          "label": "Reasoning tip",
+          "font": "13.3333px",
+          "width": 95.53125,
+          "height": 44,
+          "clientWidth": 94,
+          "scrollWidth": 94,
+          "clientHeight": 42,
+          "scrollHeight": 42,
+          "centerHit": true
+        },
+        {
+          "label": "Sign tip",
+          "font": "13.3333px",
+          "width": 58.46875,
+          "height": 44,
+          "clientWidth": 56,
+          "scrollWidth": 56,
+          "clientHeight": 42,
+          "scrollHeight": 42,
+          "centerHit": true
+        },
+        {
+          "label": "Model first amount",
+          "font": "13.3333px",
+          "width": 123.65625,
+          "height": 44,
+          "clientWidth": 122,
+          "scrollWidth": 122,
+          "clientHeight": 42,
+          "scrollHeight": 42,
+          "centerHit": true
+        },
+        {
+          "label": "Model second amount",
+          "font": "13.3333px",
+          "width": 145.171875,
+          "height": 44,
+          "clientWidth": 143,
+          "scrollWidth": 143,
+          "clientHeight": 42,
+          "scrollHeight": 42,
+          "centerHit": true
+        },
+        {
+          "label": "Check",
+          "font": "13.3333px",
+          "width": 51.796875,
+          "height": 44,
+          "clientWidth": 50,
+          "scrollWidth": 50,
+          "clientHeight": 42,
+          "scrollHeight": 42,
+          "centerHit": true
+        },
+        {
+          "label": "Help me find one",
+          "font": "13.3333px",
+          "width": 333.890625,
+          "height": 44,
+          "clientWidth": 332,
+          "scrollWidth": 332,
+          "clientHeight": 42,
+          "scrollHeight": 42,
+          "centerHit": true
+        },
+        {
+          "label": "Check",
+          "font": "13.3333px",
+          "width": 160,
+          "height": 44,
+          "clientWidth": 156,
+          "scrollWidth": 156,
+          "clientHeight": 40,
+          "scrollHeight": 40,
+          "centerHit": true
+        }
+      ],
+      "layout": {
+        "rootFont": "16px",
+        "scrollWidth": 1078,
+        "clientWidth": 1093,
+        "condition": "plan45-static-comparison",
+        "item": "plan45-compare-10"
+      },
+      "keys": [
+        {
+          "tag": "BUTTON",
+          "label": "Reasoning tip"
+        },
+        {
+          "tag": "BUTTON",
+          "label": "Sign tip"
+        },
+        {
+          "tag": "BUTTON",
+          "label": "Model first amount"
+        },
+        {
+          "tag": "BUTTON",
+          "label": "Model second amount"
+        },
+        {
+          "tag": "INPUT",
+          "label": ""
+        },
+        {
+          "tag": "BUTTON",
+          "label": "Check"
+        },
+        {
+          "tag": "BUTTON",
+          "label": "Help me find one"
+        },
+        {
+          "tag": "INPUT",
+          "label": "The first fraction is greater than the second fraction"
+        },
+        {
+          "tag": "BUTTON",
+          "label": "Check"
+        },
+        {
+          "tag": "BUTTON",
+          "label": "Try this problem again"
+        },
+        {
+          "tag": "BODY",
+          "label": ""
+        },
+        {
+          "tag": "BUTTON",
+          "label": "Read the steps"
+        },
+        {
+          "tag": "BUTTON",
+          "label": "Back to start"
+        },
+        {
+          "tag": "SUMMARY",
+          "label": "Close help"
+        }
+      ],
+      "accepted": true,
+      "progressionFont": "13.3333px",
+      "screenshot": "reports/development/plan-92-generated-managed-practice/type92-before-100-visual.png"
+    },
+    {
+      "id": "plan45-compare-10",
+      "view": "visual",
+      "mode": "scratch",
+      "condition": "phase2-bundle-1",
+      "support": "high-support",
+      "width": 1093,
+      "height": 614,
+      "scale": 100,
+      "errors": [],
+      "buttons": [
+        {
+          "label": "Reasoning tip",
+          "font": "13.3333px",
+          "width": 95.53125,
+          "height": 44,
+          "clientWidth": 94,
+          "scrollWidth": 94,
+          "clientHeight": 42,
+          "scrollHeight": 42,
+          "centerHit": true
+        },
+        {
+          "label": "Sign tip",
+          "font": "13.3333px",
+          "width": 58.46875,
+          "height": 44,
+          "clientWidth": 56,
+          "scrollWidth": 56,
+          "clientHeight": 42,
+          "scrollHeight": 42,
+          "centerHit": true
+        },
+        {
+          "label": "Model first amount",
+          "font": "13.3333px",
+          "width": 123.65625,
+          "height": 44,
+          "clientWidth": 122,
+          "scrollWidth": 122,
+          "clientHeight": 42,
+          "scrollHeight": 42,
+          "centerHit": true
+        },
+        {
+          "label": "Model second amount",
+          "font": "13.3333px",
+          "width": 145.171875,
+          "height": 44,
+          "clientWidth": 143,
+          "scrollWidth": 143,
+          "clientHeight": 42,
+          "scrollHeight": 42,
+          "centerHit": true
+        },
+        {
+          "label": "Check",
+          "font": "13.3333px",
+          "width": 51.796875,
+          "height": 44,
+          "clientWidth": 50,
+          "scrollWidth": 50,
+          "clientHeight": 42,
+          "scrollHeight": 42,
+          "centerHit": true
+        },
+        {
+          "label": "Help me find one",
+          "font": "13.3333px",
+          "width": 333.890625,
+          "height": 44,
+          "clientWidth": 332,
+          "scrollWidth": 332,
+          "clientHeight": 42,
+          "scrollHeight": 42,
+          "centerHit": true
+        },
+        {
+          "label": "Check",
+          "font": "13.3333px",
+          "width": 160,
+          "height": 44,
+          "clientWidth": 156,
+          "scrollWidth": 156,
+          "clientHeight": 40,
+          "scrollHeight": 40,
+          "centerHit": true
+        }
+      ],
+      "layout": {
+        "rootFont": "16px",
+        "scrollWidth": 1078,
+        "clientWidth": 1093,
+        "condition": "plan45-static-comparison",
+        "item": "plan45-compare-10"
+      },
+      "keys": [
+        {
+          "tag": "BUTTON",
+          "label": "Reasoning tip"
+        },
+        {
+          "tag": "BUTTON",
+          "label": "Sign tip"
+        },
+        {
+          "tag": "BUTTON",
+          "label": "Model first amount"
+        },
+        {
+          "tag": "BUTTON",
+          "label": "Model second amount"
+        },
+        {
+          "tag": "INPUT",
+          "label": ""
+        },
+        {
+          "tag": "BUTTON",
+          "label": "Check"
+        },
+        {
+          "tag": "BUTTON",
+          "label": "Help me find one"
+        },
+        {
+          "tag": "INPUT",
+          "label": "The first fraction is greater than the second fraction"
+        },
+        {
+          "tag": "BUTTON",
+          "label": "Check"
+        },
+        {
+          "tag": "BUTTON",
+          "label": "Try this problem again"
+        },
+        {
+          "tag": "BODY",
+          "label": ""
+        },
+        {
+          "tag": "BUTTON",
+          "label": "Read the steps"
+        },
+        {
+          "tag": "BUTTON",
+          "label": "Back to start"
+        },
+        {
+          "tag": "SUMMARY",
+          "label": "Close help"
+        }
+      ],
+      "accepted": true,
+      "progressionFont": "13.3333px"
+    },
+    {
+      "id": "plan45-compare-10",
+      "view": "linear",
+      "mode": "standalone",
+      "condition": "phase2-bundle-1",
+      "support": "high-support",
+      "width": 1093,
+      "height": 614,
+      "scale": 100,
+      "errors": [],
+      "buttons": [
+        {
+          "label": "Reasoning tip",
+          "font": "13.3333px",
+          "width": 95.53125,
+          "height": 44,
+          "clientWidth": 94,
+          "scrollWidth": 94,
+          "clientHeight": 42,
+          "scrollHeight": 42,
+          "centerHit": true
+        },
+        {
+          "label": "Sign tip",
+          "font": "13.3333px",
+          "width": 58.46875,
+          "height": 44,
+          "clientWidth": 56,
+          "scrollWidth": 56,
+          "clientHeight": 42,
+          "scrollHeight": 42,
+          "centerHit": true
+        },
+        {
+          "label": "Model first amount",
+          "font": "13.3333px",
+          "width": 123.65625,
+          "height": 44,
+          "clientWidth": 122,
+          "scrollWidth": 122,
+          "clientHeight": 42,
+          "scrollHeight": 42,
+          "centerHit": true
+        },
+        {
+          "label": "Model second amount",
+          "font": "13.3333px",
+          "width": 145.171875,
+          "height": 44,
+          "clientWidth": 143,
+          "scrollWidth": 143,
+          "clientHeight": 42,
+          "scrollHeight": 42,
+          "centerHit": true
+        },
+        {
+          "label": "Check",
+          "font": "13.3333px",
+          "width": 51.796875,
+          "height": 44,
+          "clientWidth": 50,
+          "scrollWidth": 50,
+          "clientHeight": 42,
+          "scrollHeight": 42,
+          "centerHit": true
+        },
+        {
+          "label": "Help me find one",
+          "font": "13.3333px",
+          "width": 333.890625,
+          "height": 44,
+          "clientWidth": 332,
+          "scrollWidth": 332,
+          "clientHeight": 42,
+          "scrollHeight": 42,
+          "centerHit": true
+        },
+        {
+          "label": "Check",
+          "font": "13.3333px",
+          "width": 160,
+          "height": 44,
+          "clientWidth": 156,
+          "scrollWidth": 156,
+          "clientHeight": 40,
+          "scrollHeight": 40,
+          "centerHit": true
+        }
+      ],
+      "layout": {
+        "rootFont": "16px",
+        "scrollWidth": 1078,
+        "clientWidth": 1093,
+        "condition": "plan45-static-comparison",
+        "item": "plan45-compare-10"
+      },
+      "keys": [
+        {
+          "tag": "BUTTON",
+          "label": "Reasoning tip"
+        },
+        {
+          "tag": "BUTTON",
+          "label": "Sign tip"
+        },
+        {
+          "tag": "BUTTON",
+          "label": "Model first amount"
+        },
+        {
+          "tag": "BUTTON",
+          "label": "Model second amount"
+        },
+        {
+          "tag": "INPUT",
+          "label": ""
+        },
+        {
+          "tag": "BUTTON",
+          "label": "Check"
+        },
+        {
+          "tag": "BUTTON",
+          "label": "Help me find one"
+        },
+        {
+          "tag": "INPUT",
+          "label": "The first fraction is greater than the second fraction"
+        },
+        {
+          "tag": "BUTTON",
+          "label": "Check"
+        },
+        {
+          "tag": "BUTTON",
+          "label": "Try this problem again"
+        },
+        {
+          "tag": "BODY",
+          "label": ""
+        },
+        {
+          "tag": "BUTTON",
+          "label": "Show the picture"
+        },
+        {
+          "tag": "BUTTON",
+          "label": "Back to start"
+        },
+        {
+          "tag": "SUMMARY",
+          "label": "Close help"
+        }
+      ],
+      "accepted": true,
+      "progressionFont": "13.3333px",
+      "screenshot": "reports/development/plan-92-generated-managed-practice/type92-before-100-linear.png"
+    },
+    {
+      "id": "plan45-compare-10",
+      "view": "linear",
+      "mode": "scratch",
+      "condition": "phase2-bundle-1",
+      "support": "high-support",
+      "width": 1093,
+      "height": 614,
+      "scale": 100,
+      "errors": [],
+      "buttons": [
+        {
+          "label": "Reasoning tip",
+          "font": "13.3333px",
+          "width": 95.53125,
+          "height": 44,
+          "clientWidth": 94,
+          "scrollWidth": 94,
+          "clientHeight": 42,
+          "scrollHeight": 42,
+          "centerHit": true
+        },
+        {
+          "label": "Sign tip",
+          "font": "13.3333px",
+          "width": 58.46875,
+          "height": 44,
+          "clientWidth": 56,
+          "scrollWidth": 56,
+          "clientHeight": 42,
+          "scrollHeight": 42,
+          "centerHit": true
+        },
+        {
+          "label": "Model first amount",
+          "font": "13.3333px",
+          "width": 123.65625,
+          "height": 44,
+          "clientWidth": 122,
+          "scrollWidth": 122,
+          "clientHeight": 42,
+          "scrollHeight": 42,
+          "centerHit": true
+        },
+        {
+          "label": "Model second amount",
+          "font": "13.3333px",
+          "width": 145.171875,
+          "height": 44,
+          "clientWidth": 143,
+          "scrollWidth": 143,
+          "clientHeight": 42,
+          "scrollHeight": 42,
+          "centerHit": true
+        },
+        {
+          "label": "Check",
+          "font": "13.3333px",
+          "width": 51.796875,
+          "height": 44,
+          "clientWidth": 50,
+          "scrollWidth": 50,
+          "clientHeight": 42,
+          "scrollHeight": 42,
+          "centerHit": true
+        },
+        {
+          "label": "Help me find one",
+          "font": "13.3333px",
+          "width": 333.890625,
+          "height": 44,
+          "clientWidth": 332,
+          "scrollWidth": 332,
+          "clientHeight": 42,
+          "scrollHeight": 42,
+          "centerHit": true
+        },
+        {
+          "label": "Check",
+          "font": "13.3333px",
+          "width": 160,
+          "height": 44,
+          "clientWidth": 156,
+          "scrollWidth": 156,
+          "clientHeight": 40,
+          "scrollHeight": 40,
+          "centerHit": true
+        }
+      ],
+      "layout": {
+        "rootFont": "16px",
+        "scrollWidth": 1078,
+        "clientWidth": 1093,
+        "condition": "plan45-static-comparison",
+        "item": "plan45-compare-10"
+      },
+      "keys": [
+        {
+          "tag": "BUTTON",
+          "label": "Reasoning tip"
+        },
+        {
+          "tag": "BUTTON",
+          "label": "Sign tip"
+        },
+        {
+          "tag": "BUTTON",
+          "label": "Model first amount"
+        },
+        {
+          "tag": "BUTTON",
+          "label": "Model second amount"
+        },
+        {
+          "tag": "INPUT",
+          "label": ""
+        },
+        {
+          "tag": "BUTTON",
+          "label": "Check"
+        },
+        {
+          "tag": "BUTTON",
+          "label": "Help me find one"
+        },
+        {
+          "tag": "INPUT",
+          "label": "The first fraction is greater than the second fraction"
+        },
+        {
+          "tag": "BUTTON",
+          "label": "Check"
+        },
+        {
+          "tag": "BUTTON",
+          "label": "Try this problem again"
+        },
+        {
+          "tag": "BODY",
+          "label": ""
+        },
+        {
+          "tag": "BUTTON",
+          "label": "Show the picture"
+        },
+        {
+          "tag": "BUTTON",
+          "label": "Back to start"
+        },
+        {
+          "tag": "SUMMARY",
+          "label": "Close help"
+        }
+      ],
+      "accepted": true,
+      "progressionFont": "13.3333px"
+    },
+    {
+      "id": "plan45-compare-10",
+      "view": "visual",
+      "mode": "standalone",
+      "condition": "phase2-bundle-1",
+      "support": "high-support",
+      "width": 650,
+      "height": 740,
+      "scale": 200,
+      "errors": [],
+      "buttons": [
+        {
+          "label": "Reasoning tip",
+          "font": "13.3333px",
+          "width": 95.53125,
+          "height": 88,
+          "clientWidth": 94,
+          "scrollWidth": 94,
+          "clientHeight": 86,
+          "scrollHeight": 86,
+          "centerHit": true
+        },
+        {
+          "label": "Sign tip",
+          "font": "13.3333px",
+          "width": 58.46875,
+          "height": 88,
+          "clientWidth": 56,
+          "scrollWidth": 56,
+          "clientHeight": 86,
+          "scrollHeight": 86,
+          "centerHit": true
+        },
+        {
+          "label": "Model first amount",
+          "font": "13.3333px",
+          "width": 123.65625,
+          "height": 88,
+          "clientWidth": 122,
+          "scrollWidth": 122,
+          "clientHeight": 86,
+          "scrollHeight": 86,
+          "centerHit": true
+        },
+        {
+          "label": "Model second amount",
+          "font": "13.3333px",
+          "width": 145.171875,
+          "height": 88,
+          "clientWidth": 143,
+          "scrollWidth": 143,
+          "clientHeight": 86,
+          "scrollHeight": 86,
+          "centerHit": true
+        },
+        {
+          "label": "Check",
+          "font": "13.3333px",
+          "width": 51.796875,
+          "height": 88,
+          "clientWidth": 50,
+          "scrollWidth": 50,
+          "clientHeight": 86,
+          "scrollHeight": 86,
+          "centerHit": true
+        },
+        {
+          "label": "Help me find one",
+          "font": "13.3333px",
+          "width": 505,
+          "height": 88,
+          "clientWidth": 503,
+          "scrollWidth": 503,
+          "clientHeight": 86,
+          "scrollHeight": 86,
+          "centerHit": true
+        },
+        {
+          "label": "Check",
+          "font": "13.3333px",
+          "width": 320,
+          "height": 88,
+          "clientWidth": 316,
+          "scrollWidth": 316,
+          "clientHeight": 84,
+          "scrollHeight": 84,
+          "centerHit": true
+        }
+      ],
+      "layout": {
+        "rootFont": "32px",
+        "scrollWidth": 635,
+        "clientWidth": 650,
+        "condition": "plan45-static-comparison",
+        "item": "plan45-compare-10"
+      },
+      "keys": [
+        {
+          "tag": "BUTTON",
+          "label": "Reasoning tip"
+        },
+        {
+          "tag": "BUTTON",
+          "label": "Sign tip"
+        },
+        {
+          "tag": "BUTTON",
+          "label": "Model first amount"
+        },
+        {
+          "tag": "BUTTON",
+          "label": "Model second amount"
+        },
+        {
+          "tag": "INPUT",
+          "label": ""
+        },
+        {
+          "tag": "BUTTON",
+          "label": "Check"
+        },
+        {
+          "tag": "BUTTON",
+          "label": "Help me find one"
+        },
+        {
+          "tag": "INPUT",
+          "label": "The first fraction is greater than the second fraction"
+        },
+        {
+          "tag": "BUTTON",
+          "label": "Check"
+        },
+        {
+          "tag": "BUTTON",
+          "label": "Try this problem again"
+        },
+        {
+          "tag": "BODY",
+          "label": ""
+        },
+        {
+          "tag": "BUTTON",
+          "label": "Read the steps"
+        },
+        {
+          "tag": "BUTTON",
+          "label": "Back to start"
+        },
+        {
+          "tag": "SUMMARY",
+          "label": "Close help"
+        }
+      ],
+      "accepted": true,
+      "progressionFont": "13.3333px",
+      "screenshot": "reports/development/plan-92-generated-managed-practice/type92-before-200-visual.png"
+    },
+    {
+      "id": "plan45-compare-10",
+      "view": "visual",
+      "mode": "scratch",
+      "condition": "phase2-bundle-1",
+      "support": "high-support",
+      "width": 650,
+      "height": 740,
+      "scale": 200,
+      "errors": [],
+      "buttons": [
+        {
+          "label": "Reasoning tip",
+          "font": "13.3333px",
+          "width": 95.53125,
+          "height": 88,
+          "clientWidth": 94,
+          "scrollWidth": 94,
+          "clientHeight": 86,
+          "scrollHeight": 86,
+          "centerHit": true
+        },
+        {
+          "label": "Sign tip",
+          "font": "13.3333px",
+          "width": 58.46875,
+          "height": 88,
+          "clientWidth": 56,
+          "scrollWidth": 56,
+          "clientHeight": 86,
+          "scrollHeight": 86,
+          "centerHit": true
+        },
+        {
+          "label": "Model first amount",
+          "font": "13.3333px",
+          "width": 123.65625,
+          "height": 88,
+          "clientWidth": 122,
+          "scrollWidth": 122,
+          "clientHeight": 86,
+          "scrollHeight": 86,
+          "centerHit": true
+        },
+        {
+          "label": "Model second amount",
+          "font": "13.3333px",
+          "width": 145.171875,
+          "height": 88,
+          "clientWidth": 143,
+          "scrollWidth": 143,
+          "clientHeight": 86,
+          "scrollHeight": 86,
+          "centerHit": true
+        },
+        {
+          "label": "Check",
+          "font": "13.3333px",
+          "width": 51.796875,
+          "height": 88,
+          "clientWidth": 50,
+          "scrollWidth": 50,
+          "clientHeight": 86,
+          "scrollHeight": 86,
+          "centerHit": true
+        },
+        {
+          "label": "Help me find one",
+          "font": "13.3333px",
+          "width": 505,
+          "height": 88,
+          "clientWidth": 503,
+          "scrollWidth": 503,
+          "clientHeight": 86,
+          "scrollHeight": 86,
+          "centerHit": true
+        },
+        {
+          "label": "Check",
+          "font": "13.3333px",
+          "width": 320,
+          "height": 88,
+          "clientWidth": 316,
+          "scrollWidth": 316,
+          "clientHeight": 84,
+          "scrollHeight": 84,
+          "centerHit": true
+        }
+      ],
+      "layout": {
+        "rootFont": "32px",
+        "scrollWidth": 635,
+        "clientWidth": 650,
+        "condition": "plan45-static-comparison",
+        "item": "plan45-compare-10"
+      },
+      "keys": [
+        {
+          "tag": "BUTTON",
+          "label": "Reasoning tip"
+        },
+        {
+          "tag": "BUTTON",
+          "label": "Sign tip"
+        },
+        {
+          "tag": "BUTTON",
+          "label": "Model first amount"
+        },
+        {
+          "tag": "BUTTON",
+          "label": "Model second amount"
+        },
+        {
+          "tag": "INPUT",
+          "label": ""
+        },
+        {
+          "tag": "BUTTON",
+          "label": "Check"
+        },
+        {
+          "tag": "BUTTON",
+          "label": "Help me find one"
+        },
+        {
+          "tag": "INPUT",
+          "label": "The first fraction is greater than the second fraction"
+        },
+        {
+          "tag": "BUTTON",
+          "label": "Check"
+        },
+        {
+          "tag": "BUTTON",
+          "label": "Try this problem again"
+        },
+        {
+          "tag": "BODY",
+          "label": ""
+        },
+        {
+          "tag": "BUTTON",
+          "label": "Read the steps"
+        },
+        {
+          "tag": "BUTTON",
+          "label": "Back to start"
+        },
+        {
+          "tag": "SUMMARY",
+          "label": "Close help"
+        }
+      ],
+      "accepted": true,
+      "progressionFont": "13.3333px"
+    },
+    {
+      "id": "plan45-compare-10",
+      "view": "linear",
+      "mode": "standalone",
+      "condition": "phase2-bundle-1",
+      "support": "high-support",
+      "width": 650,
+      "height": 740,
+      "scale": 200,
+      "errors": [],
+      "buttons": [
+        {
+          "label": "Reasoning tip",
+          "font": "13.3333px",
+          "width": 95.53125,
+          "height": 88,
+          "clientWidth": 94,
+          "scrollWidth": 94,
+          "clientHeight": 86,
+          "scrollHeight": 86,
+          "centerHit": true
+        },
+        {
+          "label": "Sign tip",
+          "font": "13.3333px",
+          "width": 58.46875,
+          "height": 88,
+          "clientWidth": 56,
+          "scrollWidth": 56,
+          "clientHeight": 86,
+          "scrollHeight": 86,
+          "centerHit": true
+        },
+        {
+          "label": "Model first amount",
+          "font": "13.3333px",
+          "width": 123.65625,
+          "height": 88,
+          "clientWidth": 122,
+          "scrollWidth": 122,
+          "clientHeight": 86,
+          "scrollHeight": 86,
+          "centerHit": true
+        },
+        {
+          "label": "Model second amount",
+          "font": "13.3333px",
+          "width": 145.171875,
+          "height": 88,
+          "clientWidth": 143,
+          "scrollWidth": 143,
+          "clientHeight": 86,
+          "scrollHeight": 86,
+          "centerHit": true
+        },
+        {
+          "label": "Check",
+          "font": "13.3333px",
+          "width": 51.796875,
+          "height": 88,
+          "clientWidth": 50,
+          "scrollWidth": 50,
+          "clientHeight": 86,
+          "scrollHeight": 86,
+          "centerHit": true
+        },
+        {
+          "label": "Help me find one",
+          "font": "13.3333px",
+          "width": 505,
+          "height": 88,
+          "clientWidth": 503,
+          "scrollWidth": 503,
+          "clientHeight": 86,
+          "scrollHeight": 86,
+          "centerHit": true
+        },
+        {
+          "label": "Check",
+          "font": "13.3333px",
+          "width": 320,
+          "height": 88,
+          "clientWidth": 316,
+          "scrollWidth": 316,
+          "clientHeight": 84,
+          "scrollHeight": 84,
+          "centerHit": true
+        }
+      ],
+      "layout": {
+        "rootFont": "32px",
+        "scrollWidth": 635,
+        "clientWidth": 650,
+        "condition": "plan45-static-comparison",
+        "item": "plan45-compare-10"
+      },
+      "keys": [
+        {
+          "tag": "BUTTON",
+          "label": "Reasoning tip"
+        },
+        {
+          "tag": "BUTTON",
+          "label": "Sign tip"
+        },
+        {
+          "tag": "BUTTON",
+          "label": "Model first amount"
+        },
+        {
+          "tag": "BUTTON",
+          "label": "Model second amount"
+        },
+        {
+          "tag": "INPUT",
+          "label": ""
+        },
+        {
+          "tag": "BUTTON",
+          "label": "Check"
+        },
+        {
+          "tag": "BUTTON",
+          "label": "Help me find one"
+        },
+        {
+          "tag": "INPUT",
+          "label": "The first fraction is greater than the second fraction"
+        },
+        {
+          "tag": "BUTTON",
+          "label": "Check"
+        },
+        {
+          "tag": "BUTTON",
+          "label": "Try this problem again"
+        },
+        {
+          "tag": "BODY",
+          "label": ""
+        },
+        {
+          "tag": "BUTTON",
+          "label": "Show the picture"
+        },
+        {
+          "tag": "BUTTON",
+          "label": "Back to start"
+        },
+        {
+          "tag": "SUMMARY",
+          "label": "Close help"
+        }
+      ],
+      "accepted": true,
+      "progressionFont": "13.3333px",
+      "screenshot": "reports/development/plan-92-generated-managed-practice/type92-before-200-linear.png"
+    },
+    {
+      "id": "plan45-compare-10",
+      "view": "linear",
+      "mode": "scratch",
+      "condition": "phase2-bundle-1",
+      "support": "high-support",
+      "width": 650,
+      "height": 740,
+      "scale": 200,
+      "errors": [],
+      "buttons": [
+        {
+          "label": "Reasoning tip",
+          "font": "13.3333px",
+          "width": 95.53125,
+          "height": 88,
+          "clientWidth": 94,
+          "scrollWidth": 94,
+          "clientHeight": 86,
+          "scrollHeight": 86,
+          "centerHit": true
+        },
+        {
+          "label": "Sign tip",
+          "font": "13.3333px",
+          "width": 58.46875,
+          "height": 88,
+          "clientWidth": 56,
+          "scrollWidth": 56,
+          "clientHeight": 86,
+          "scrollHeight": 86,
+          "centerHit": true
+        },
+        {
+          "label": "Model first amount",
+          "font": "13.3333px",
+          "width": 123.65625,
+          "height": 88,
+          "clientWidth": 122,
+          "scrollWidth": 122,
+          "clientHeight": 86,
+          "scrollHeight": 86,
+          "centerHit": true
+        },
+        {
+          "label": "Model second amount",
+          "font": "13.3333px",
+          "width": 145.171875,
+          "height": 88,
+          "clientWidth": 143,
+          "scrollWidth": 143,
+          "clientHeight": 86,
+          "scrollHeight": 86,
+          "centerHit": true
+        },
+        {
+          "label": "Check",
+          "font": "13.3333px",
+          "width": 51.796875,
+          "height": 88,
+          "clientWidth": 50,
+          "scrollWidth": 50,
+          "clientHeight": 86,
+          "scrollHeight": 86,
+          "centerHit": true
+        },
+        {
+          "label": "Help me find one",
+          "font": "13.3333px",
+          "width": 505,
+          "height": 88,
+          "clientWidth": 503,
+          "scrollWidth": 503,
+          "clientHeight": 86,
+          "scrollHeight": 86,
+          "centerHit": true
+        },
+        {
+          "label": "Check",
+          "font": "13.3333px",
+          "width": 320,
+          "height": 88,
+          "clientWidth": 316,
+          "scrollWidth": 316,
+          "clientHeight": 84,
+          "scrollHeight": 84,
+          "centerHit": true
+        }
+      ],
+      "layout": {
+        "rootFont": "32px",
+        "scrollWidth": 635,
+        "clientWidth": 650,
+        "condition": "plan45-static-comparison",
+        "item": "plan45-compare-10"
+      },
+      "keys": [
+        {
+          "tag": "BUTTON",
+          "label": "Reasoning tip"
+        },
+        {
+          "tag": "BUTTON",
+          "label": "Sign tip"
+        },
+        {
+          "tag": "BUTTON",
+          "label": "Model first amount"
+        },
+        {
+          "tag": "BUTTON",
+          "label": "Model second amount"
+        },
+        {
+          "tag": "INPUT",
+          "label": ""
+        },
+        {
+          "tag": "BUTTON",
+          "label": "Check"
+        },
+        {
+          "tag": "BUTTON",
+          "label": "Help me find one"
+        },
+        {
+          "tag": "INPUT",
+          "label": "The first fraction is greater than the second fraction"
+        },
+        {
+          "tag": "BUTTON",
+          "label": "Check"
+        },
+        {
+          "tag": "BUTTON",
+          "label": "Try this problem again"
+        },
+        {
+          "tag": "BODY",
+          "label": ""
+        },
+        {
+          "tag": "BUTTON",
+          "label": "Show the picture"
+        },
+        {
+          "tag": "BUTTON",
+          "label": "Back to start"
+        },
+        {
+          "tag": "SUMMARY",
+          "label": "Close help"
+        }
+      ],
+      "accepted": true,
+      "progressionFont": "13.3333px"
+    }
+  ],
+  "failures": []
+}

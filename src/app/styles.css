@@ -1110,6 +1110,7 @@ body,
 
 /* Keep comparison work and optional construction within a narrow text-scaled column. */
 .plan45-comparison { grid-template-columns: minmax(0, 1fr); }
+.plan45-comparison button { font-family: inherit; font-size: inherit; }
 .plan45-comparison .plan45-response-region,
 .plan45-comparison .plan45-help,
 .plan45-comparison .plan45-relation-group,

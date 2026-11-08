@@ -1,0 +1,135 @@
+{
+  "scope": "Mounted standalone distance-01 controls checked for matches against the comparison-scoped selector; this is not a complete distance regression matrix.",
+  "browser": "157.0.8103.38",
+  "runs": [
+    {
+      "view": "visual",
+      "scale": 100,
+      "item": "distance-01",
+      "buttons": [
+        {
+          "label": "Comparison tip",
+          "matchesNewRule": false,
+          "font": "16px"
+        },
+        {
+          "label": "Symbol tip",
+          "matchesNewRule": false,
+          "font": "16px"
+        },
+        {
+          "label": "Show first amount",
+          "matchesNewRule": false,
+          "font": "16px"
+        },
+        {
+          "label": "Show second amount",
+          "matchesNewRule": false,
+          "font": "16px"
+        },
+        {
+          "label": "Check",
+          "matchesNewRule": false,
+          "font": "16px"
+        }
+      ]
+    },
+    {
+      "view": "visual",
+      "scale": 200,
+      "item": "distance-01",
+      "buttons": [
+        {
+          "label": "Comparison tip",
+          "matchesNewRule": false,
+          "font": "32px"
+        },
+        {
+          "label": "Symbol tip",
+          "matchesNewRule": false,
+          "font": "32px"
+        },
+        {
+          "label": "Show first amount",
+          "matchesNewRule": false,
+          "font": "32px"
+        },
+        {
+          "label": "Show second amount",
+          "matchesNewRule": false,
+          "font": "32px"
+        },
+        {
+          "label": "Check",
+          "matchesNewRule": false,
+          "font": "32px"
+        }
+      ]
+    },
+    {
+      "view": "linear",
+      "scale": 100,
+      "item": "distance-01",
+      "buttons": [
+        {
+          "label": "Comparison tip",
+          "matchesNewRule": false,
+          "font": "16px"
+        },
+        {
+          "label": "Symbol tip",
+          "matchesNewRule": false,
+          "font": "16px"
+        },
+        {
+          "label": "Show first amount",
+          "matchesNewRule": false,
+          "font": "16px"
+        },
+        {
+          "label": "Show second amount",
+          "matchesNewRule": false,
+          "font": "16px"
+        },
+        {
+          "label": "Check",
+          "matchesNewRule": false,
+          "font": "16px"
+        }
+      ]
+    },
+    {
+      "view": "linear",
+      "scale": 200,
+      "item": "distance-01",
+      "buttons": [
+        {
+          "label": "Comparison tip",
+          "matchesNewRule": false,
+          "font": "32px"
+        },
+        {
+          "label": "Symbol tip",
+          "matchesNewRule": false,
+          "font": "32px"
+        },
+        {
+          "label": "Show first amount",
+          "matchesNewRule": false,
+          "font": "32px"
+        },
+        {
+          "label": "Show second amount",
+          "matchesNewRule": false,
+          "font": "32px"
+        },
+        {
+          "label": "Check",
+          "matchesNewRule": false,
+          "font": "32px"
+        }
+      ]
+    }
+  ],
+  "failures": []
+}
