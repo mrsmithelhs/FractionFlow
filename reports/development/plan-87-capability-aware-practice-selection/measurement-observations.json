@@ -1,0 +1,2169 @@
+{
+  "method": "Initial visible episode only; real registered item and real app mounted via report-local single-item injection. CSS root enlargement is not browser zoom.",
+  "browser": "157.0.8103.38",
+  "configs": [
+    {
+      "name": "narrow",
+      "width": 360,
+      "height": 740,
+      "enlarged": false
+    },
+    {
+      "name": "narrow-enlarged",
+      "width": 360,
+      "height": 740,
+      "enlarged": true
+    },
+    {
+      "name": "wide",
+      "width": 1093,
+      "height": 740,
+      "enlarged": false
+    }
+  ],
+  "results": [
+    {
+      "config": "narrow",
+      "family": 40,
+      "item": "plan40-construct-half-fifth-10",
+      "beat": "encounter",
+      "rootFont": "16px",
+      "episode": {
+        "width": 336,
+        "height": 741.84375,
+        "x": 12,
+        "y": 0,
+        "clientWidth": 334,
+        "scrollWidth": 334
+      },
+      "workingArea": {
+        "width": 310,
+        "height": 530.84375,
+        "x": 25,
+        "y": 133,
+        "clientWidth": 310,
+        "scrollWidth": 310
+      },
+      "documentWidth": 360,
+      "documentScrollWidth": 360,
+      "controls": [
+        {
+          "tag": "BUTTON",
+          "label": "Next",
+          "width": 234,
+          "height": 44,
+          "x": 63,
+          "y": 545.84375,
+          "clientWidth": 232,
+          "scrollWidth": 232
+        }
+      ]
+    },
+    {
+      "config": "narrow",
+      "family": 40,
+      "item": "plan76-inspect-four-fifths-one-third-15",
+      "beat": "encounter",
+      "rootFont": "16px",
+      "episode": {
+        "width": 336,
+        "height": 741.84375,
+        "x": 12,
+        "y": 0,
+        "clientWidth": 334,
+        "scrollWidth": 334
+      },
+      "workingArea": {
+        "width": 310,
+        "height": 530.84375,
+        "x": 25,
+        "y": 133,
+        "clientWidth": 310,
+        "scrollWidth": 310
+      },
+      "documentWidth": 360,
+      "documentScrollWidth": 360,
+      "controls": [
+        {
+          "tag": "BUTTON",
+          "label": "Next",
+          "width": 234,
+          "height": 44,
+          "x": 63,
+          "y": 545.84375,
+          "clientWidth": 232,
+          "scrollWidth": 232
+        }
+      ]
+    },
+    {
+      "config": "narrow",
+      "family": 40,
+      "item": "plan85-isolated-identify-five-sixths-one-half-6",
+      "beat": "encounter",
+      "rootFont": "16px",
+      "episode": {
+        "width": 336,
+        "height": 672.84375,
+        "x": 12,
+        "y": 12,
+        "clientWidth": 334,
+        "scrollWidth": 334
+      },
+      "workingArea": {
+        "width": 310,
+        "height": 461.84375,
+        "x": 25,
+        "y": 145,
+        "clientWidth": 310,
+        "scrollWidth": 310
+      },
+      "documentWidth": 360,
+      "documentScrollWidth": 360,
+      "controls": [
+        {
+          "tag": "BUTTON",
+          "label": "Next",
+          "width": 234,
+          "height": 44,
+          "x": 63,
+          "y": 488.84375,
+          "clientWidth": 232,
+          "scrollWidth": 232
+        }
+      ]
+    },
+    {
+      "config": "narrow",
+      "family": 74,
+      "item": "plan74-add-01",
+      "beat": "construct",
+      "rootFont": "16px",
+      "episode": {
+        "width": 336,
+        "height": 1181.640625,
+        "x": 12,
+        "y": 0,
+        "clientWidth": 334,
+        "scrollWidth": 334
+      },
+      "workingArea": {
+        "width": 310,
+        "height": 970.640625,
+        "x": 25,
+        "y": 133,
+        "clientWidth": 310,
+        "scrollWidth": 310
+      },
+      "documentWidth": 360,
+      "documentScrollWidth": 360,
+      "controls": [
+        {
+          "tag": "INPUT",
+          "label": "",
+          "width": 136,
+          "height": 50,
+          "x": 25,
+          "y": 764.609375,
+          "clientWidth": 128,
+          "scrollWidth": 128
+        },
+        {
+          "tag": "INPUT",
+          "label": "",
+          "width": 134.359375,
+          "height": 50,
+          "x": 25,
+          "y": 857.203125,
+          "clientWidth": 126,
+          "scrollWidth": 126
+        },
+        {
+          "tag": "BUTTON",
+          "label": "Help",
+          "width": 67.015625,
+          "height": 44,
+          "x": 25,
+          "y": 1043.640625,
+          "clientWidth": 65,
+          "scrollWidth": 65
+        },
+        {
+          "tag": "BUTTON",
+          "label": "Check",
+          "width": 76.671875,
+          "height": 44,
+          "x": 108.015625,
+          "y": 1043.640625,
+          "clientWidth": 75,
+          "scrollWidth": 75
+        }
+      ]
+    },
+    {
+      "config": "narrow",
+      "family": 74,
+      "item": "plan74-add-15",
+      "beat": "construct",
+      "rootFont": "16px",
+      "episode": {
+        "width": 336,
+        "height": 1143.25,
+        "x": 12,
+        "y": 0,
+        "clientWidth": 334,
+        "scrollWidth": 334
+      },
+      "workingArea": {
+        "width": 310,
+        "height": 932.25,
+        "x": 25,
+        "y": 133,
+        "clientWidth": 310,
+        "scrollWidth": 310
+      },
+      "documentWidth": 360,
+      "documentScrollWidth": 360,
+      "controls": [
+        {
+          "tag": "INPUT",
+          "label": "",
+          "width": 136,
+          "height": 50,
+          "x": 25,
+          "y": 726.21875,
+          "clientWidth": 128,
+          "scrollWidth": 128
+        },
+        {
+          "tag": "INPUT",
+          "label": "",
+          "width": 134.359375,
+          "height": 50,
+          "x": 25,
+          "y": 818.8125,
+          "clientWidth": 126,
+          "scrollWidth": 126
+        },
+        {
+          "tag": "BUTTON",
+          "label": "Help",
+          "width": 67.015625,
+          "height": 44,
+          "x": 25,
+          "y": 1005.25,
+          "clientWidth": 65,
+          "scrollWidth": 65
+        },
+        {
+          "tag": "BUTTON",
+          "label": "Check",
+          "width": 76.671875,
+          "height": 44,
+          "x": 108.015625,
+          "y": 1005.25,
+          "clientWidth": 75,
+          "scrollWidth": 75
+        }
+      ]
+    },
+    {
+      "config": "narrow",
+      "family": 74,
+      "item": "plan74-add-30",
+      "beat": "construct",
+      "rootFont": "16px",
+      "episode": {
+        "width": 336,
+        "height": 1143.25,
+        "x": 12,
+        "y": 0,
+        "clientWidth": 334,
+        "scrollWidth": 334
+      },
+      "workingArea": {
+        "width": 310,
+        "height": 932.25,
+        "x": 25,
+        "y": 133,
+        "clientWidth": 310,
+        "scrollWidth": 310
+      },
+      "documentWidth": 360,
+      "documentScrollWidth": 360,
+      "controls": [
+        {
+          "tag": "INPUT",
+          "label": "",
+          "width": 136,
+          "height": 50,
+          "x": 25,
+          "y": 726.21875,
+          "clientWidth": 128,
+          "scrollWidth": 128
+        },
+        {
+          "tag": "INPUT",
+          "label": "",
+          "width": 134.359375,
+          "height": 50,
+          "x": 25,
+          "y": 818.8125,
+          "clientWidth": 126,
+          "scrollWidth": 126
+        },
+        {
+          "tag": "BUTTON",
+          "label": "Help",
+          "width": 67.015625,
+          "height": 44,
+          "x": 25,
+          "y": 1005.25,
+          "clientWidth": 65,
+          "scrollWidth": 65
+        },
+        {
+          "tag": "BUTTON",
+          "label": "Check",
+          "width": 76.671875,
+          "height": 44,
+          "x": 108.015625,
+          "y": 1005.25,
+          "clientWidth": 75,
+          "scrollWidth": 75
+        }
+      ]
+    },
+    {
+      "config": "narrow",
+      "family": 78,
+      "item": "plan78-subtract-01",
+      "beat": "construct",
+      "rootFont": "16px",
+      "episode": {
+        "width": 336,
+        "height": 1157.0625,
+        "x": 12,
+        "y": 0,
+        "clientWidth": 334,
+        "scrollWidth": 334
+      },
+      "workingArea": {
+        "width": 310,
+        "height": 946.0625,
+        "x": 25,
+        "y": 133,
+        "clientWidth": 310,
+        "scrollWidth": 310
+      },
+      "documentWidth": 360,
+      "documentScrollWidth": 360,
+      "controls": [
+        {
+          "tag": "INPUT",
+          "label": "",
+          "width": 136,
+          "height": 50,
+          "x": 25,
+          "y": 860.46875,
+          "clientWidth": 128,
+          "scrollWidth": 128
+        },
+        {
+          "tag": "INPUT",
+          "label": "",
+          "width": 134.359375,
+          "height": 50,
+          "x": 25,
+          "y": 953.0625,
+          "clientWidth": 126,
+          "scrollWidth": 126
+        },
+        {
+          "tag": "BUTTON",
+          "label": "Help",
+          "width": 67.015625,
+          "height": 44,
+          "x": 25,
+          "y": 1019.0625,
+          "clientWidth": 65,
+          "scrollWidth": 65
+        },
+        {
+          "tag": "BUTTON",
+          "label": "Check",
+          "width": 76.671875,
+          "height": 44,
+          "x": 108.015625,
+          "y": 1019.0625,
+          "clientWidth": 75,
+          "scrollWidth": 75
+        }
+      ]
+    },
+    {
+      "config": "narrow",
+      "family": 78,
+      "item": "plan78-subtract-15",
+      "beat": "construct",
+      "rootFont": "16px",
+      "episode": {
+        "width": 336,
+        "height": 1061.125,
+        "x": 12,
+        "y": 0,
+        "clientWidth": 334,
+        "scrollWidth": 334
+      },
+      "workingArea": {
+        "width": 310,
+        "height": 850.125,
+        "x": 25,
+        "y": 133,
+        "clientWidth": 310,
+        "scrollWidth": 310
+      },
+      "documentWidth": 360,
+      "documentScrollWidth": 360,
+      "controls": [
+        {
+          "tag": "INPUT",
+          "label": "",
+          "width": 136,
+          "height": 50,
+          "x": 25,
+          "y": 764.53125,
+          "clientWidth": 128,
+          "scrollWidth": 128
+        },
+        {
+          "tag": "INPUT",
+          "label": "",
+          "width": 134.359375,
+          "height": 50,
+          "x": 25,
+          "y": 857.125,
+          "clientWidth": 126,
+          "scrollWidth": 126
+        },
+        {
+          "tag": "BUTTON",
+          "label": "Help",
+          "width": 67.015625,
+          "height": 44,
+          "x": 25,
+          "y": 923.125,
+          "clientWidth": 65,
+          "scrollWidth": 65
+        },
+        {
+          "tag": "BUTTON",
+          "label": "Check",
+          "width": 76.671875,
+          "height": 44,
+          "x": 108.015625,
+          "y": 923.125,
+          "clientWidth": 75,
+          "scrollWidth": 75
+        }
+      ]
+    },
+    {
+      "config": "narrow",
+      "family": 78,
+      "item": "plan78-subtract-30",
+      "beat": "construct",
+      "rootFont": "16px",
+      "episode": {
+        "width": 336,
+        "height": 1109.09375,
+        "x": 12,
+        "y": 0,
+        "clientWidth": 334,
+        "scrollWidth": 334
+      },
+      "workingArea": {
+        "width": 310,
+        "height": 898.09375,
+        "x": 25,
+        "y": 133,
+        "clientWidth": 310,
+        "scrollWidth": 310
+      },
+      "documentWidth": 360,
+      "documentScrollWidth": 360,
+      "controls": [
+        {
+          "tag": "INPUT",
+          "label": "",
+          "width": 136,
+          "height": 50,
+          "x": 25,
+          "y": 812.5,
+          "clientWidth": 128,
+          "scrollWidth": 128
+        },
+        {
+          "tag": "INPUT",
+          "label": "",
+          "width": 134.359375,
+          "height": 50,
+          "x": 25,
+          "y": 905.09375,
+          "clientWidth": 126,
+          "scrollWidth": 126
+        },
+        {
+          "tag": "BUTTON",
+          "label": "Help",
+          "width": 67.015625,
+          "height": 44,
+          "x": 25,
+          "y": 971.09375,
+          "clientWidth": 65,
+          "scrollWidth": 65
+        },
+        {
+          "tag": "BUTTON",
+          "label": "Check",
+          "width": 76.671875,
+          "height": 44,
+          "x": 108.015625,
+          "y": 971.09375,
+          "clientWidth": 75,
+          "scrollWidth": 75
+        }
+      ]
+    },
+    {
+      "config": "narrow",
+      "family": 82,
+      "item": "plan82-subtract-01",
+      "beat": "construct",
+      "rootFont": "16px",
+      "episode": {
+        "width": 336,
+        "height": 1217.0625,
+        "x": 12,
+        "y": 0,
+        "clientWidth": 334,
+        "scrollWidth": 334
+      },
+      "workingArea": {
+        "width": 310,
+        "height": 1006.0625,
+        "x": 25,
+        "y": 133,
+        "clientWidth": 310,
+        "scrollWidth": 310
+      },
+      "documentWidth": 360,
+      "documentScrollWidth": 360,
+      "controls": [
+        {
+          "tag": "BUTTON",
+          "label": "Rename one whole",
+          "width": 168.609375,
+          "height": 44,
+          "x": 25,
+          "y": 833.875,
+          "clientWidth": 167,
+          "scrollWidth": 167
+        },
+        {
+          "tag": "INPUT",
+          "label": "",
+          "width": 136,
+          "height": 50,
+          "x": 25,
+          "y": 920.46875,
+          "clientWidth": 128,
+          "scrollWidth": 128
+        },
+        {
+          "tag": "INPUT",
+          "label": "",
+          "width": 134.359375,
+          "height": 50,
+          "x": 25,
+          "y": 1013.0625,
+          "clientWidth": 126,
+          "scrollWidth": 126
+        },
+        {
+          "tag": "BUTTON",
+          "label": "Check",
+          "width": 76.671875,
+          "height": 44,
+          "x": 25,
+          "y": 1079.0625,
+          "clientWidth": 75,
+          "scrollWidth": 75
+        }
+      ]
+    },
+    {
+      "config": "narrow",
+      "family": 82,
+      "item": "plan82-subtract-15",
+      "beat": "construct",
+      "rootFont": "16px",
+      "episode": {
+        "width": 336,
+        "height": 1217.0625,
+        "x": 12,
+        "y": 0,
+        "clientWidth": 334,
+        "scrollWidth": 334
+      },
+      "workingArea": {
+        "width": 310,
+        "height": 1006.0625,
+        "x": 25,
+        "y": 133,
+        "clientWidth": 310,
+        "scrollWidth": 310
+      },
+      "documentWidth": 360,
+      "documentScrollWidth": 360,
+      "controls": [
+        {
+          "tag": "BUTTON",
+          "label": "Rename one whole",
+          "width": 168.609375,
+          "height": 44,
+          "x": 25,
+          "y": 833.875,
+          "clientWidth": 167,
+          "scrollWidth": 167
+        },
+        {
+          "tag": "INPUT",
+          "label": "",
+          "width": 136,
+          "height": 50,
+          "x": 25,
+          "y": 920.46875,
+          "clientWidth": 128,
+          "scrollWidth": 128
+        },
+        {
+          "tag": "INPUT",
+          "label": "",
+          "width": 134.359375,
+          "height": 50,
+          "x": 25,
+          "y": 1013.0625,
+          "clientWidth": 126,
+          "scrollWidth": 126
+        },
+        {
+          "tag": "BUTTON",
+          "label": "Check",
+          "width": 76.671875,
+          "height": 44,
+          "x": 25,
+          "y": 1079.0625,
+          "clientWidth": 75,
+          "scrollWidth": 75
+        }
+      ]
+    },
+    {
+      "config": "narrow",
+      "family": 82,
+      "item": "plan82-subtract-30",
+      "beat": "construct",
+      "rootFont": "16px",
+      "episode": {
+        "width": 336,
+        "height": 1265.03125,
+        "x": 12,
+        "y": 0,
+        "clientWidth": 334,
+        "scrollWidth": 334
+      },
+      "workingArea": {
+        "width": 310,
+        "height": 1054.03125,
+        "x": 25,
+        "y": 133,
+        "clientWidth": 310,
+        "scrollWidth": 310
+      },
+      "documentWidth": 360,
+      "documentScrollWidth": 360,
+      "controls": [
+        {
+          "tag": "BUTTON",
+          "label": "Rename one whole",
+          "width": 168.609375,
+          "height": 44,
+          "x": 25,
+          "y": 881.84375,
+          "clientWidth": 167,
+          "scrollWidth": 167
+        },
+        {
+          "tag": "INPUT",
+          "label": "",
+          "width": 136,
+          "height": 50,
+          "x": 25,
+          "y": 968.4375,
+          "clientWidth": 128,
+          "scrollWidth": 128
+        },
+        {
+          "tag": "INPUT",
+          "label": "",
+          "width": 134.359375,
+          "height": 50,
+          "x": 25,
+          "y": 1061.03125,
+          "clientWidth": 126,
+          "scrollWidth": 126
+        },
+        {
+          "tag": "BUTTON",
+          "label": "Check",
+          "width": 76.671875,
+          "height": 44,
+          "x": 25,
+          "y": 1127.03125,
+          "clientWidth": 75,
+          "scrollWidth": 75
+        }
+      ]
+    },
+    {
+      "config": "narrow-enlarged",
+      "family": 40,
+      "item": "plan40-construct-half-fifth-10",
+      "beat": "encounter",
+      "rootFont": "32px",
+      "episode": {
+        "width": 312,
+        "height": 1916.078125,
+        "x": 24,
+        "y": -661,
+        "clientWidth": 310,
+        "scrollWidth": 310
+      },
+      "workingArea": {
+        "width": 262,
+        "height": 1331.296875,
+        "x": 49,
+        "y": -295.21875,
+        "clientWidth": 262,
+        "scrollWidth": 262
+      },
+      "documentWidth": 360,
+      "documentScrollWidth": 360,
+      "controls": [
+        {
+          "tag": "BUTTON",
+          "label": "Next",
+          "width": 114,
+          "height": 79,
+          "x": 123,
+          "y": 811.078125,
+          "clientWidth": 112,
+          "scrollWidth": 112
+        }
+      ]
+    },
+    {
+      "config": "narrow-enlarged",
+      "family": 40,
+      "item": "plan76-inspect-four-fifths-one-third-15",
+      "beat": "encounter",
+      "rootFont": "32px",
+      "episode": {
+        "width": 312,
+        "height": 1916.078125,
+        "x": 24,
+        "y": -661,
+        "clientWidth": 310,
+        "scrollWidth": 310
+      },
+      "workingArea": {
+        "width": 262,
+        "height": 1331.296875,
+        "x": 49,
+        "y": -295.21875,
+        "clientWidth": 262,
+        "scrollWidth": 262
+      },
+      "documentWidth": 360,
+      "documentScrollWidth": 360,
+      "controls": [
+        {
+          "tag": "BUTTON",
+          "label": "Next",
+          "width": 114,
+          "height": 79,
+          "x": 123,
+          "y": 811.078125,
+          "clientWidth": 112,
+          "scrollWidth": 112
+        }
+      ]
+    },
+    {
+      "config": "narrow-enlarged",
+      "family": 40,
+      "item": "plan85-isolated-identify-five-sixths-one-half-6",
+      "beat": "encounter",
+      "rootFont": "32px",
+      "episode": {
+        "width": 312,
+        "height": 1691.078125,
+        "x": 24,
+        "y": -661,
+        "clientWidth": 310,
+        "scrollWidth": 310
+      },
+      "workingArea": {
+        "width": 262,
+        "height": 1106.296875,
+        "x": 49,
+        "y": -295.21875,
+        "clientWidth": 262,
+        "scrollWidth": 262
+      },
+      "documentWidth": 360,
+      "documentScrollWidth": 360,
+      "controls": [
+        {
+          "tag": "BUTTON",
+          "label": "Next",
+          "width": 114,
+          "height": 79,
+          "x": 123,
+          "y": 586.078125,
+          "clientWidth": 112,
+          "scrollWidth": 112
+        }
+      ]
+    },
+    {
+      "config": "narrow-enlarged",
+      "family": 74,
+      "item": "plan74-add-01",
+      "beat": "construct",
+      "rootFont": "32px",
+      "episode": {
+        "width": 312,
+        "height": 2742.921875,
+        "x": 24,
+        "y": -1118,
+        "clientWidth": 310,
+        "scrollWidth": 310
+      },
+      "workingArea": {
+        "width": 262,
+        "height": 2158.140625,
+        "x": 49,
+        "y": -752.21875,
+        "clientWidth": 262,
+        "scrollWidth": 264
+      },
+      "documentWidth": 360,
+      "documentScrollWidth": 360,
+      "controls": [
+        {
+          "tag": "INPUT",
+          "label": "",
+          "width": 264,
+          "height": 50,
+          "x": 49,
+          "y": 586.109375,
+          "clientWidth": 256,
+          "scrollWidth": 256
+        },
+        {
+          "tag": "INPUT",
+          "label": "",
+          "width": 210.71875,
+          "height": 50,
+          "x": 49,
+          "y": 765.296875,
+          "clientWidth": 203,
+          "scrollWidth": 203
+        },
+        {
+          "tag": "BUTTON",
+          "label": "Help",
+          "width": 132.015625,
+          "height": 83.375,
+          "x": 49,
+          "y": 1175.171875,
+          "clientWidth": 130,
+          "scrollWidth": 130
+        },
+        {
+          "tag": "BUTTON",
+          "label": "Check",
+          "width": 151.34375,
+          "height": 83.375,
+          "x": 49,
+          "y": 1290.546875,
+          "clientWidth": 149,
+          "scrollWidth": 149
+        }
+      ]
+    },
+    {
+      "config": "narrow-enlarged",
+      "family": 74,
+      "item": "plan74-add-15",
+      "beat": "construct",
+      "rootFont": "32px",
+      "episode": {
+        "width": 312,
+        "height": 2698.125,
+        "x": 24,
+        "y": -1118,
+        "clientWidth": 310,
+        "scrollWidth": 310
+      },
+      "workingArea": {
+        "width": 262,
+        "height": 2113.34375,
+        "x": 49,
+        "y": -752.21875,
+        "clientWidth": 262,
+        "scrollWidth": 264
+      },
+      "documentWidth": 360,
+      "documentScrollWidth": 360,
+      "controls": [
+        {
+          "tag": "INPUT",
+          "label": "",
+          "width": 264,
+          "height": 50,
+          "x": 49,
+          "y": 541.3125,
+          "clientWidth": 256,
+          "scrollWidth": 256
+        },
+        {
+          "tag": "INPUT",
+          "label": "",
+          "width": 210.71875,
+          "height": 50,
+          "x": 49,
+          "y": 720.5,
+          "clientWidth": 203,
+          "scrollWidth": 203
+        },
+        {
+          "tag": "BUTTON",
+          "label": "Help",
+          "width": 132.015625,
+          "height": 83.375,
+          "x": 49,
+          "y": 1130.375,
+          "clientWidth": 130,
+          "scrollWidth": 130
+        },
+        {
+          "tag": "BUTTON",
+          "label": "Check",
+          "width": 151.34375,
+          "height": 83.375,
+          "x": 49,
+          "y": 1245.75,
+          "clientWidth": 149,
+          "scrollWidth": 149
+        }
+      ]
+    },
+    {
+      "config": "narrow-enlarged",
+      "family": 74,
+      "item": "plan74-add-30",
+      "beat": "construct",
+      "rootFont": "32px",
+      "episode": {
+        "width": 312,
+        "height": 2698.125,
+        "x": 24,
+        "y": -1118,
+        "clientWidth": 310,
+        "scrollWidth": 310
+      },
+      "workingArea": {
+        "width": 262,
+        "height": 2113.34375,
+        "x": 49,
+        "y": -752.21875,
+        "clientWidth": 262,
+        "scrollWidth": 264
+      },
+      "documentWidth": 360,
+      "documentScrollWidth": 360,
+      "controls": [
+        {
+          "tag": "INPUT",
+          "label": "",
+          "width": 264,
+          "height": 50,
+          "x": 49,
+          "y": 541.3125,
+          "clientWidth": 256,
+          "scrollWidth": 256
+        },
+        {
+          "tag": "INPUT",
+          "label": "",
+          "width": 210.71875,
+          "height": 50,
+          "x": 49,
+          "y": 720.5,
+          "clientWidth": 203,
+          "scrollWidth": 203
+        },
+        {
+          "tag": "BUTTON",
+          "label": "Help",
+          "width": 132.015625,
+          "height": 83.375,
+          "x": 49,
+          "y": 1130.375,
+          "clientWidth": 130,
+          "scrollWidth": 130
+        },
+        {
+          "tag": "BUTTON",
+          "label": "Check",
+          "width": 151.34375,
+          "height": 83.375,
+          "x": 49,
+          "y": 1245.75,
+          "clientWidth": 149,
+          "scrollWidth": 149
+        }
+      ]
+    },
+    {
+      "config": "narrow-enlarged",
+      "family": 78,
+      "item": "plan78-subtract-01",
+      "beat": "construct",
+      "rootFont": "32px",
+      "episode": {
+        "width": 312,
+        "height": 2601.96875,
+        "x": 24,
+        "y": -1096,
+        "clientWidth": 310,
+        "scrollWidth": 344
+      },
+      "workingArea": {
+        "width": 262,
+        "height": 2017.1875,
+        "x": 49,
+        "y": -730.21875,
+        "clientWidth": 262,
+        "scrollWidth": 320
+      },
+      "documentWidth": 360,
+      "documentScrollWidth": 369,
+      "controls": [
+        {
+          "tag": "INPUT",
+          "label": "",
+          "width": 264,
+          "height": 50,
+          "x": 49,
+          "y": 838.03125,
+          "clientWidth": 256,
+          "scrollWidth": 256
+        },
+        {
+          "tag": "INPUT",
+          "label": "",
+          "width": 268.71875,
+          "height": 50,
+          "x": 49,
+          "y": 974.21875,
+          "clientWidth": 261,
+          "scrollWidth": 261
+        },
+        {
+          "tag": "BUTTON",
+          "label": "Help",
+          "width": 132.015625,
+          "height": 83.375,
+          "x": 49,
+          "y": 1056.21875,
+          "clientWidth": 130,
+          "scrollWidth": 130
+        },
+        {
+          "tag": "BUTTON",
+          "label": "Check",
+          "width": 151.34375,
+          "height": 83.375,
+          "x": 49,
+          "y": 1171.59375,
+          "clientWidth": 149,
+          "scrollWidth": 149
+        }
+      ]
+    },
+    {
+      "config": "narrow-enlarged",
+      "family": 78,
+      "item": "plan78-subtract-15",
+      "beat": "construct",
+      "rootFont": "32px",
+      "episode": {
+        "width": 312,
+        "height": 2474,
+        "x": 24,
+        "y": -1096,
+        "clientWidth": 310,
+        "scrollWidth": 344
+      },
+      "workingArea": {
+        "width": 262,
+        "height": 1889.21875,
+        "x": 49,
+        "y": -730.21875,
+        "clientWidth": 262,
+        "scrollWidth": 320
+      },
+      "documentWidth": 360,
+      "documentScrollWidth": 369,
+      "controls": [
+        {
+          "tag": "INPUT",
+          "label": "",
+          "width": 264,
+          "height": 50,
+          "x": 49,
+          "y": 710.0625,
+          "clientWidth": 256,
+          "scrollWidth": 256
+        },
+        {
+          "tag": "INPUT",
+          "label": "",
+          "width": 268.71875,
+          "height": 50,
+          "x": 49,
+          "y": 846.25,
+          "clientWidth": 261,
+          "scrollWidth": 261
+        },
+        {
+          "tag": "BUTTON",
+          "label": "Help",
+          "width": 132.015625,
+          "height": 83.375,
+          "x": 49,
+          "y": 928.25,
+          "clientWidth": 130,
+          "scrollWidth": 130
+        },
+        {
+          "tag": "BUTTON",
+          "label": "Check",
+          "width": 151.34375,
+          "height": 83.375,
+          "x": 49,
+          "y": 1043.625,
+          "clientWidth": 149,
+          "scrollWidth": 149
+        }
+      ]
+    },
+    {
+      "config": "narrow-enlarged",
+      "family": 78,
+      "item": "plan78-subtract-30",
+      "beat": "construct",
+      "rootFont": "32px",
+      "episode": {
+        "width": 312,
+        "height": 2537.984375,
+        "x": 24,
+        "y": -1096,
+        "clientWidth": 310,
+        "scrollWidth": 344
+      },
+      "workingArea": {
+        "width": 262,
+        "height": 1953.203125,
+        "x": 49,
+        "y": -730.21875,
+        "clientWidth": 262,
+        "scrollWidth": 320
+      },
+      "documentWidth": 360,
+      "documentScrollWidth": 369,
+      "controls": [
+        {
+          "tag": "INPUT",
+          "label": "",
+          "width": 264,
+          "height": 50,
+          "x": 49,
+          "y": 774.046875,
+          "clientWidth": 256,
+          "scrollWidth": 256
+        },
+        {
+          "tag": "INPUT",
+          "label": "",
+          "width": 268.71875,
+          "height": 50,
+          "x": 49,
+          "y": 910.234375,
+          "clientWidth": 261,
+          "scrollWidth": 261
+        },
+        {
+          "tag": "BUTTON",
+          "label": "Help",
+          "width": 132.015625,
+          "height": 83.375,
+          "x": 49,
+          "y": 992.234375,
+          "clientWidth": 130,
+          "scrollWidth": 130
+        },
+        {
+          "tag": "BUTTON",
+          "label": "Check",
+          "width": 151.34375,
+          "height": 83.375,
+          "x": 49,
+          "y": 1107.609375,
+          "clientWidth": 149,
+          "scrollWidth": 149
+        }
+      ]
+    },
+    {
+      "config": "narrow-enlarged",
+      "family": 82,
+      "item": "plan82-subtract-01",
+      "beat": "construct",
+      "rootFont": "32px",
+      "episode": {
+        "width": 312,
+        "height": 2644.96875,
+        "x": 24,
+        "y": -1139,
+        "clientWidth": 310,
+        "scrollWidth": 310
+      },
+      "workingArea": {
+        "width": 262,
+        "height": 2060.1875,
+        "x": 49,
+        "y": -773.21875,
+        "clientWidth": 262,
+        "scrollWidth": 264
+      },
+      "documentWidth": 360,
+      "documentScrollWidth": 360,
+      "controls": [
+        {
+          "tag": "BUTTON",
+          "label": "Rename one whole",
+          "width": 262,
+          "height": 126.375,
+          "x": 49,
+          "y": 740.84375,
+          "clientWidth": 260,
+          "scrollWidth": 260
+        },
+        {
+          "tag": "INPUT",
+          "label": "",
+          "width": 264,
+          "height": 50,
+          "x": 49,
+          "y": 953.40625,
+          "clientWidth": 256,
+          "scrollWidth": 256
+        },
+        {
+          "tag": "INPUT",
+          "label": "",
+          "width": 210.71875,
+          "height": 50,
+          "x": 49,
+          "y": 1089.59375,
+          "clientWidth": 203,
+          "scrollWidth": 203
+        },
+        {
+          "tag": "BUTTON",
+          "label": "Check",
+          "width": 151.34375,
+          "height": 83.375,
+          "x": 49,
+          "y": 1171.59375,
+          "clientWidth": 149,
+          "scrollWidth": 149
+        }
+      ]
+    },
+    {
+      "config": "narrow-enlarged",
+      "family": 82,
+      "item": "plan82-subtract-15",
+      "beat": "construct",
+      "rootFont": "32px",
+      "episode": {
+        "width": 312,
+        "height": 2644.96875,
+        "x": 24,
+        "y": -1139,
+        "clientWidth": 310,
+        "scrollWidth": 310
+      },
+      "workingArea": {
+        "width": 262,
+        "height": 2060.1875,
+        "x": 49,
+        "y": -773.21875,
+        "clientWidth": 262,
+        "scrollWidth": 264
+      },
+      "documentWidth": 360,
+      "documentScrollWidth": 360,
+      "controls": [
+        {
+          "tag": "BUTTON",
+          "label": "Rename one whole",
+          "width": 262,
+          "height": 126.375,
+          "x": 49,
+          "y": 740.84375,
+          "clientWidth": 260,
+          "scrollWidth": 260
+        },
+        {
+          "tag": "INPUT",
+          "label": "",
+          "width": 264,
+          "height": 50,
+          "x": 49,
+          "y": 953.40625,
+          "clientWidth": 256,
+          "scrollWidth": 256
+        },
+        {
+          "tag": "INPUT",
+          "label": "",
+          "width": 210.71875,
+          "height": 50,
+          "x": 49,
+          "y": 1089.59375,
+          "clientWidth": 203,
+          "scrollWidth": 203
+        },
+        {
+          "tag": "BUTTON",
+          "label": "Check",
+          "width": 151.34375,
+          "height": 83.375,
+          "x": 49,
+          "y": 1171.59375,
+          "clientWidth": 149,
+          "scrollWidth": 149
+        }
+      ]
+    },
+    {
+      "config": "narrow-enlarged",
+      "family": 82,
+      "item": "plan82-subtract-30",
+      "beat": "construct",
+      "rootFont": "32px",
+      "episode": {
+        "width": 312,
+        "height": 2708.953125,
+        "x": 24,
+        "y": -1139,
+        "clientWidth": 310,
+        "scrollWidth": 310
+      },
+      "workingArea": {
+        "width": 262,
+        "height": 2124.171875,
+        "x": 49,
+        "y": -773.21875,
+        "clientWidth": 262,
+        "scrollWidth": 264
+      },
+      "documentWidth": 360,
+      "documentScrollWidth": 360,
+      "controls": [
+        {
+          "tag": "BUTTON",
+          "label": "Rename one whole",
+          "width": 262,
+          "height": 126.375,
+          "x": 49,
+          "y": 804.828125,
+          "clientWidth": 260,
+          "scrollWidth": 260
+        },
+        {
+          "tag": "INPUT",
+          "label": "",
+          "width": 264,
+          "height": 50,
+          "x": 49,
+          "y": 1017.390625,
+          "clientWidth": 256,
+          "scrollWidth": 256
+        },
+        {
+          "tag": "INPUT",
+          "label": "",
+          "width": 210.71875,
+          "height": 50,
+          "x": 49,
+          "y": 1153.578125,
+          "clientWidth": 203,
+          "scrollWidth": 203
+        },
+        {
+          "tag": "BUTTON",
+          "label": "Check",
+          "width": 151.34375,
+          "height": 83.375,
+          "x": 49,
+          "y": 1235.578125,
+          "clientWidth": 149,
+          "scrollWidth": 149
+        }
+      ]
+    },
+    {
+      "config": "wide",
+      "family": 40,
+      "item": "plan40-construct-half-fifth-10",
+      "beat": "encounter",
+      "rootFont": "16px",
+      "episode": {
+        "width": 1027.4375,
+        "height": 772.46875,
+        "x": 32.78125,
+        "y": -0.21875,
+        "clientWidth": 1025,
+        "scrollWidth": 1025
+      },
+      "workingArea": {
+        "width": 970.8125,
+        "height": 530.84375,
+        "x": 61.09375,
+        "y": 148.09375,
+        "clientWidth": 971,
+        "scrollWidth": 971
+      },
+      "documentWidth": 1093,
+      "documentScrollWidth": 1093,
+      "controls": [
+        {
+          "tag": "BUTTON",
+          "label": "Next",
+          "width": 692,
+          "height": 44,
+          "x": 200.5,
+          "y": 560.9375,
+          "clientWidth": 690,
+          "scrollWidth": 690
+        }
+      ]
+    },
+    {
+      "config": "wide",
+      "family": 40,
+      "item": "plan76-inspect-four-fifths-one-third-15",
+      "beat": "encounter",
+      "rootFont": "16px",
+      "episode": {
+        "width": 1027.4375,
+        "height": 772.46875,
+        "x": 32.78125,
+        "y": -0.21875,
+        "clientWidth": 1025,
+        "scrollWidth": 1025
+      },
+      "workingArea": {
+        "width": 970.8125,
+        "height": 530.84375,
+        "x": 61.09375,
+        "y": 148.09375,
+        "clientWidth": 971,
+        "scrollWidth": 971
+      },
+      "documentWidth": 1093,
+      "documentScrollWidth": 1093,
+      "controls": [
+        {
+          "tag": "BUTTON",
+          "label": "Next",
+          "width": 692,
+          "height": 44,
+          "x": 200.5,
+          "y": 560.9375,
+          "clientWidth": 690,
+          "scrollWidth": 690
+        }
+      ]
+    },
+    {
+      "config": "wide",
+      "family": 40,
+      "item": "plan85-isolated-identify-five-sixths-one-half-6",
+      "beat": "encounter",
+      "rootFont": "16px",
+      "episode": {
+        "width": 1027.4375,
+        "height": 703.46875,
+        "x": 32.78125,
+        "y": 32.78125,
+        "clientWidth": 1025,
+        "scrollWidth": 1025
+      },
+      "workingArea": {
+        "width": 970.8125,
+        "height": 461.84375,
+        "x": 61.09375,
+        "y": 181.09375,
+        "clientWidth": 971,
+        "scrollWidth": 971
+      },
+      "documentWidth": 1093,
+      "documentScrollWidth": 1093,
+      "controls": [
+        {
+          "tag": "BUTTON",
+          "label": "Next",
+          "width": 692,
+          "height": 44,
+          "x": 200.5,
+          "y": 524.9375,
+          "clientWidth": 690,
+          "scrollWidth": 690
+        }
+      ]
+    },
+    {
+      "config": "wide",
+      "family": 74,
+      "item": "plan74-add-01",
+      "beat": "construct",
+      "rootFont": "16px",
+      "episode": {
+        "width": 1027.4375,
+        "height": 872.265625,
+        "x": 32.78125,
+        "y": -0.21875,
+        "clientWidth": 1025,
+        "scrollWidth": 1025
+      },
+      "workingArea": {
+        "width": 970.8125,
+        "height": 630.640625,
+        "x": 61.09375,
+        "y": 148.09375,
+        "clientWidth": 971,
+        "scrollWidth": 971
+      },
+      "documentWidth": 1093,
+      "documentScrollWidth": 1093,
+      "controls": [
+        {
+          "tag": "INPUT",
+          "label": "",
+          "width": 136,
+          "height": 50,
+          "x": 61.09375,
+          "y": 532.296875,
+          "clientWidth": 128,
+          "scrollWidth": 128
+        },
+        {
+          "tag": "INPUT",
+          "label": "",
+          "width": 134.359375,
+          "height": 50,
+          "x": 239.84375,
+          "y": 532.296875,
+          "clientWidth": 126,
+          "scrollWidth": 126
+        },
+        {
+          "tag": "BUTTON",
+          "label": "Help",
+          "width": 67.015625,
+          "height": 44,
+          "x": 61.09375,
+          "y": 718.734375,
+          "clientWidth": 65,
+          "scrollWidth": 65
+        },
+        {
+          "tag": "BUTTON",
+          "label": "Check",
+          "width": 76.671875,
+          "height": 44,
+          "x": 144.109375,
+          "y": 718.734375,
+          "clientWidth": 75,
+          "scrollWidth": 75
+        }
+      ]
+    },
+    {
+      "config": "wide",
+      "family": 74,
+      "item": "plan74-add-15",
+      "beat": "construct",
+      "rootFont": "16px",
+      "episode": {
+        "width": 1027.4375,
+        "height": 833.875,
+        "x": 32.78125,
+        "y": -0.21875,
+        "clientWidth": 1025,
+        "scrollWidth": 1025
+      },
+      "workingArea": {
+        "width": 970.8125,
+        "height": 592.25,
+        "x": 61.09375,
+        "y": 148.09375,
+        "clientWidth": 971,
+        "scrollWidth": 971
+      },
+      "documentWidth": 1093,
+      "documentScrollWidth": 1093,
+      "controls": [
+        {
+          "tag": "INPUT",
+          "label": "",
+          "width": 136,
+          "height": 50,
+          "x": 61.09375,
+          "y": 493.90625,
+          "clientWidth": 128,
+          "scrollWidth": 128
+        },
+        {
+          "tag": "INPUT",
+          "label": "",
+          "width": 134.359375,
+          "height": 50,
+          "x": 239.84375,
+          "y": 493.90625,
+          "clientWidth": 126,
+          "scrollWidth": 126
+        },
+        {
+          "tag": "BUTTON",
+          "label": "Help",
+          "width": 67.015625,
+          "height": 44,
+          "x": 61.09375,
+          "y": 680.34375,
+          "clientWidth": 65,
+          "scrollWidth": 65
+        },
+        {
+          "tag": "BUTTON",
+          "label": "Check",
+          "width": 76.671875,
+          "height": 44,
+          "x": 144.109375,
+          "y": 680.34375,
+          "clientWidth": 75,
+          "scrollWidth": 75
+        }
+      ]
+    },
+    {
+      "config": "wide",
+      "family": 74,
+      "item": "plan74-add-30",
+      "beat": "construct",
+      "rootFont": "16px",
+      "episode": {
+        "width": 1027.4375,
+        "height": 833.875,
+        "x": 32.78125,
+        "y": -0.21875,
+        "clientWidth": 1025,
+        "scrollWidth": 1025
+      },
+      "workingArea": {
+        "width": 970.8125,
+        "height": 592.25,
+        "x": 61.09375,
+        "y": 148.09375,
+        "clientWidth": 971,
+        "scrollWidth": 971
+      },
+      "documentWidth": 1093,
+      "documentScrollWidth": 1093,
+      "controls": [
+        {
+          "tag": "INPUT",
+          "label": "",
+          "width": 136,
+          "height": 50,
+          "x": 61.09375,
+          "y": 493.90625,
+          "clientWidth": 128,
+          "scrollWidth": 128
+        },
+        {
+          "tag": "INPUT",
+          "label": "",
+          "width": 134.359375,
+          "height": 50,
+          "x": 239.84375,
+          "y": 493.90625,
+          "clientWidth": 126,
+          "scrollWidth": 126
+        },
+        {
+          "tag": "BUTTON",
+          "label": "Help",
+          "width": 67.015625,
+          "height": 44,
+          "x": 61.09375,
+          "y": 680.34375,
+          "clientWidth": 65,
+          "scrollWidth": 65
+        },
+        {
+          "tag": "BUTTON",
+          "label": "Check",
+          "width": 76.671875,
+          "height": 44,
+          "x": 144.109375,
+          "y": 680.34375,
+          "clientWidth": 75,
+          "scrollWidth": 75
+        }
+      ]
+    },
+    {
+      "config": "wide",
+      "family": 78,
+      "item": "plan78-subtract-01",
+      "beat": "construct",
+      "rootFont": "16px",
+      "episode": {
+        "width": 1027.4375,
+        "height": 828.53125,
+        "x": 32.78125,
+        "y": -0.21875,
+        "clientWidth": 1025,
+        "scrollWidth": 1025
+      },
+      "workingArea": {
+        "width": 970.8125,
+        "height": 586.90625,
+        "x": 61.09375,
+        "y": 148.09375,
+        "clientWidth": 971,
+        "scrollWidth": 971
+      },
+      "documentWidth": 1093,
+      "documentScrollWidth": 1093,
+      "controls": [
+        {
+          "tag": "INPUT",
+          "label": "",
+          "width": 136,
+          "height": 50,
+          "x": 61.09375,
+          "y": 609,
+          "clientWidth": 128,
+          "scrollWidth": 128
+        },
+        {
+          "tag": "INPUT",
+          "label": "",
+          "width": 134.359375,
+          "height": 50,
+          "x": 213.09375,
+          "y": 609,
+          "clientWidth": 126,
+          "scrollWidth": 126
+        },
+        {
+          "tag": "BUTTON",
+          "label": "Help",
+          "width": 67.015625,
+          "height": 44,
+          "x": 61.09375,
+          "y": 675,
+          "clientWidth": 65,
+          "scrollWidth": 65
+        },
+        {
+          "tag": "BUTTON",
+          "label": "Check",
+          "width": 76.671875,
+          "height": 44,
+          "x": 144.109375,
+          "y": 675,
+          "clientWidth": 75,
+          "scrollWidth": 75
+        }
+      ]
+    },
+    {
+      "config": "wide",
+      "family": 78,
+      "item": "plan78-subtract-15",
+      "beat": "construct",
+      "rootFont": "16px",
+      "episode": {
+        "width": 1027.4375,
+        "height": 732.59375,
+        "x": 32.78125,
+        "y": 7.78125,
+        "clientWidth": 1025,
+        "scrollWidth": 1025
+      },
+      "workingArea": {
+        "width": 970.8125,
+        "height": 490.96875,
+        "x": 61.09375,
+        "y": 156.09375,
+        "clientWidth": 971,
+        "scrollWidth": 971
+      },
+      "documentWidth": 1093,
+      "documentScrollWidth": 1093,
+      "controls": [
+        {
+          "tag": "INPUT",
+          "label": "",
+          "width": 136,
+          "height": 50,
+          "x": 61.09375,
+          "y": 521.0625,
+          "clientWidth": 128,
+          "scrollWidth": 128
+        },
+        {
+          "tag": "INPUT",
+          "label": "",
+          "width": 134.359375,
+          "height": 50,
+          "x": 213.09375,
+          "y": 521.0625,
+          "clientWidth": 126,
+          "scrollWidth": 126
+        },
+        {
+          "tag": "BUTTON",
+          "label": "Help",
+          "width": 67.015625,
+          "height": 44,
+          "x": 61.09375,
+          "y": 587.0625,
+          "clientWidth": 65,
+          "scrollWidth": 65
+        },
+        {
+          "tag": "BUTTON",
+          "label": "Check",
+          "width": 76.671875,
+          "height": 44,
+          "x": 144.109375,
+          "y": 587.0625,
+          "clientWidth": 75,
+          "scrollWidth": 75
+        }
+      ]
+    },
+    {
+      "config": "wide",
+      "family": 78,
+      "item": "plan78-subtract-30",
+      "beat": "construct",
+      "rootFont": "16px",
+      "episode": {
+        "width": 1027.4375,
+        "height": 780.5625,
+        "x": 32.78125,
+        "y": -0.21875,
+        "clientWidth": 1025,
+        "scrollWidth": 1025
+      },
+      "workingArea": {
+        "width": 970.8125,
+        "height": 538.9375,
+        "x": 61.09375,
+        "y": 148.09375,
+        "clientWidth": 971,
+        "scrollWidth": 971
+      },
+      "documentWidth": 1093,
+      "documentScrollWidth": 1093,
+      "controls": [
+        {
+          "tag": "INPUT",
+          "label": "",
+          "width": 136,
+          "height": 50,
+          "x": 61.09375,
+          "y": 561.03125,
+          "clientWidth": 128,
+          "scrollWidth": 128
+        },
+        {
+          "tag": "INPUT",
+          "label": "",
+          "width": 134.359375,
+          "height": 50,
+          "x": 213.09375,
+          "y": 561.03125,
+          "clientWidth": 126,
+          "scrollWidth": 126
+        },
+        {
+          "tag": "BUTTON",
+          "label": "Help",
+          "width": 67.015625,
+          "height": 44,
+          "x": 61.09375,
+          "y": 627.03125,
+          "clientWidth": 65,
+          "scrollWidth": 65
+        },
+        {
+          "tag": "BUTTON",
+          "label": "Check",
+          "width": 76.671875,
+          "height": 44,
+          "x": 144.109375,
+          "y": 627.03125,
+          "clientWidth": 75,
+          "scrollWidth": 75
+        }
+      ]
+    },
+    {
+      "config": "wide",
+      "family": 82,
+      "item": "plan82-subtract-01",
+      "beat": "construct",
+      "rootFont": "16px",
+      "episode": {
+        "width": 1027.4375,
+        "height": 1155.09375,
+        "x": 32.78125,
+        "y": -0.21875,
+        "clientWidth": 1025,
+        "scrollWidth": 1025
+      },
+      "workingArea": {
+        "width": 970.8125,
+        "height": 913.46875,
+        "x": 61.09375,
+        "y": 148.09375,
+        "clientWidth": 971,
+        "scrollWidth": 971
+      },
+      "documentWidth": 1093,
+      "documentScrollWidth": 1093,
+      "controls": [
+        {
+          "tag": "BUTTON",
+          "label": "Rename one whole",
+          "width": 168.609375,
+          "height": 44,
+          "x": 61.09375,
+          "y": 848.96875,
+          "clientWidth": 167,
+          "scrollWidth": 167
+        },
+        {
+          "tag": "INPUT",
+          "label": "",
+          "width": 136,
+          "height": 50,
+          "x": 61.09375,
+          "y": 935.5625,
+          "clientWidth": 128,
+          "scrollWidth": 128
+        },
+        {
+          "tag": "INPUT",
+          "label": "",
+          "width": 134.359375,
+          "height": 50,
+          "x": 213.09375,
+          "y": 935.5625,
+          "clientWidth": 126,
+          "scrollWidth": 126
+        },
+        {
+          "tag": "BUTTON",
+          "label": "Check",
+          "width": 76.671875,
+          "height": 44,
+          "x": 61.09375,
+          "y": 1001.5625,
+          "clientWidth": 75,
+          "scrollWidth": 75
+        }
+      ]
+    },
+    {
+      "config": "wide",
+      "family": 82,
+      "item": "plan82-subtract-15",
+      "beat": "construct",
+      "rootFont": "16px",
+      "episode": {
+        "width": 1027.4375,
+        "height": 1155.09375,
+        "x": 32.78125,
+        "y": -0.21875,
+        "clientWidth": 1025,
+        "scrollWidth": 1025
+      },
+      "workingArea": {
+        "width": 970.8125,
+        "height": 913.46875,
+        "x": 61.09375,
+        "y": 148.09375,
+        "clientWidth": 971,
+        "scrollWidth": 971
+      },
+      "documentWidth": 1093,
+      "documentScrollWidth": 1093,
+      "controls": [
+        {
+          "tag": "BUTTON",
+          "label": "Rename one whole",
+          "width": 168.609375,
+          "height": 44,
+          "x": 61.09375,
+          "y": 848.96875,
+          "clientWidth": 167,
+          "scrollWidth": 167
+        },
+        {
+          "tag": "INPUT",
+          "label": "",
+          "width": 136,
+          "height": 50,
+          "x": 61.09375,
+          "y": 935.5625,
+          "clientWidth": 128,
+          "scrollWidth": 128
+        },
+        {
+          "tag": "INPUT",
+          "label": "",
+          "width": 134.359375,
+          "height": 50,
+          "x": 213.09375,
+          "y": 935.5625,
+          "clientWidth": 126,
+          "scrollWidth": 126
+        },
+        {
+          "tag": "BUTTON",
+          "label": "Check",
+          "width": 76.671875,
+          "height": 44,
+          "x": 61.09375,
+          "y": 1001.5625,
+          "clientWidth": 75,
+          "scrollWidth": 75
+        }
+      ]
+    },
+    {
+      "config": "wide",
+      "family": 82,
+      "item": "plan82-subtract-30",
+      "beat": "construct",
+      "rootFont": "16px",
+      "episode": {
+        "width": 1027.4375,
+        "height": 1203.0625,
+        "x": 32.78125,
+        "y": -0.21875,
+        "clientWidth": 1025,
+        "scrollWidth": 1025
+      },
+      "workingArea": {
+        "width": 970.8125,
+        "height": 961.4375,
+        "x": 61.09375,
+        "y": 148.09375,
+        "clientWidth": 971,
+        "scrollWidth": 971
+      },
+      "documentWidth": 1093,
+      "documentScrollWidth": 1093,
+      "controls": [
+        {
+          "tag": "BUTTON",
+          "label": "Rename one whole",
+          "width": 168.609375,
+          "height": 44,
+          "x": 61.09375,
+          "y": 896.9375,
+          "clientWidth": 167,
+          "scrollWidth": 167
+        },
+        {
+          "tag": "INPUT",
+          "label": "",
+          "width": 136,
+          "height": 50,
+          "x": 61.09375,
+          "y": 983.53125,
+          "clientWidth": 128,
+          "scrollWidth": 128
+        },
+        {
+          "tag": "INPUT",
+          "label": "",
+          "width": 134.359375,
+          "height": 50,
+          "x": 213.09375,
+          "y": 983.53125,
+          "clientWidth": 126,
+          "scrollWidth": 126
+        },
+        {
+          "tag": "BUTTON",
+          "label": "Check",
+          "width": 76.671875,
+          "height": 44,
+          "x": 61.09375,
+          "y": 1049.53125,
+          "clientWidth": 75,
+          "scrollWidth": 75
+        }
+      ]
+    }
+  ],
+  "errors": []
+}

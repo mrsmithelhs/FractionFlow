@@ -1,0 +1,132 @@
+{
+  "browser": "157.0.8103.38",
+  "method": "keyboard launch and input, 1093-to-360 resize, view toggle round trip with draft; completed after resize at narrow",
+  "results": [
+    {
+      "family": 74,
+      "item": "plan74-add-01",
+      "focusAfterShrink": true,
+      "draftPreserved": true,
+      "viewTogglePreserved": true,
+      "keyboardLaunchAndEntry": true,
+      "completedAfterShrink": true,
+      "dimensions": {
+        "client": 360,
+        "scroll": 360,
+        "root": "16px"
+      }
+    },
+    {
+      "family": 74,
+      "item": "plan74-add-15",
+      "focusAfterShrink": true,
+      "draftPreserved": true,
+      "viewTogglePreserved": true,
+      "keyboardLaunchAndEntry": true,
+      "completedAfterShrink": true,
+      "dimensions": {
+        "client": 360,
+        "scroll": 360,
+        "root": "16px"
+      }
+    },
+    {
+      "family": 74,
+      "item": "plan74-add-30",
+      "focusAfterShrink": true,
+      "draftPreserved": true,
+      "viewTogglePreserved": true,
+      "keyboardLaunchAndEntry": true,
+      "completedAfterShrink": true,
+      "dimensions": {
+        "client": 360,
+        "scroll": 360,
+        "root": "16px"
+      }
+    },
+    {
+      "family": 78,
+      "item": "plan78-subtract-01",
+      "focusAfterShrink": true,
+      "draftPreserved": true,
+      "viewTogglePreserved": true,
+      "keyboardLaunchAndEntry": true,
+      "completedAfterShrink": true,
+      "dimensions": {
+        "client": 360,
+        "scroll": 360,
+        "root": "16px"
+      }
+    },
+    {
+      "family": 78,
+      "item": "plan78-subtract-15",
+      "focusAfterShrink": true,
+      "draftPreserved": true,
+      "viewTogglePreserved": true,
+      "keyboardLaunchAndEntry": true,
+      "completedAfterShrink": true,
+      "dimensions": {
+        "client": 360,
+        "scroll": 360,
+        "root": "16px"
+      }
+    },
+    {
+      "family": 78,
+      "item": "plan78-subtract-30",
+      "focusAfterShrink": true,
+      "draftPreserved": true,
+      "viewTogglePreserved": true,
+      "keyboardLaunchAndEntry": true,
+      "completedAfterShrink": true,
+      "dimensions": {
+        "client": 360,
+        "scroll": 360,
+        "root": "16px"
+      }
+    },
+    {
+      "family": 82,
+      "item": "plan82-subtract-01",
+      "focusAfterShrink": true,
+      "draftPreserved": true,
+      "viewTogglePreserved": true,
+      "keyboardLaunchAndEntry": true,
+      "completedAfterShrink": true,
+      "dimensions": {
+        "client": 360,
+        "scroll": 360,
+        "root": "16px"
+      }
+    },
+    {
+      "family": 82,
+      "item": "plan82-subtract-15",
+      "focusAfterShrink": true,
+      "draftPreserved": true,
+      "viewTogglePreserved": true,
+      "keyboardLaunchAndEntry": true,
+      "completedAfterShrink": true,
+      "dimensions": {
+        "client": 360,
+        "scroll": 360,
+        "root": "16px"
+      }
+    },
+    {
+      "family": 82,
+      "item": "plan82-subtract-30",
+      "focusAfterShrink": true,
+      "draftPreserved": true,
+      "viewTogglePreserved": true,
+      "keyboardLaunchAndEntry": true,
+      "completedAfterShrink": true,
+      "dimensions": {
+        "client": 360,
+        "scroll": 360,
+        "root": "16px"
+      }
+    }
+  ]
+}

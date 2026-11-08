@@ -1,0 +1,20 @@
+{
+  "method": "synthetic explicit eligibility passed through injected real Start policy; not a managed fit class",
+  "browser": "157.0.8103.38",
+  "results": [
+    {
+      "fixture": "admit",
+      "ids": [
+        "plan45-compare-09",
+        "plan45-compare-10",
+        "distance-04"
+      ],
+      "completed": true
+    },
+    {
+      "fixture": "refuse",
+      "refused": true,
+      "entryUsable": true
+    }
+  ]
+}

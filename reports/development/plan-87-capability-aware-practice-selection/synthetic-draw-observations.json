@@ -1,0 +1,41 @@
+{
+  "browser": "157.0.8103.38",
+  "method": "real app with real v2 records; explicitly synthetic allow-list changed during active item; no fit claim",
+  "results": [
+    {
+      "mode": "replace",
+      "initial": [
+        "plan74-add-30",
+        "plan74-add-16",
+        "plan74-add-24",
+        "plan74-add-04"
+      ],
+      "afterSyntheticChange": [
+        "plan74-add-30",
+        "plan74-add-24",
+        "plan74-add-04",
+        "plan74-add-12"
+      ],
+      "draftPreserved": true,
+      "retrySame": true,
+      "completed": 4,
+      "returned": true
+    },
+    {
+      "mode": "early-end",
+      "initial": [
+        "plan74-add-30",
+        "plan74-add-16",
+        "plan74-add-24",
+        "plan74-add-04"
+      ],
+      "afterSyntheticChange": [
+        "plan74-add-30"
+      ],
+      "draftPreserved": true,
+      "retrySame": true,
+      "completed": 1,
+      "returned": true
+    }
+  ]
+}

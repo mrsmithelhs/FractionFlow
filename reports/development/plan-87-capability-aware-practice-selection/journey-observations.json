@@ -1,0 +1,4471 @@
+{
+  "browser": "157.0.8103.38",
+  "method": "sampled one-item real app journeys; shrink to 320px then restore; CSS text enlargement is not browser zoom",
+  "configs": [
+    {
+      "name": "narrow",
+      "width": 360,
+      "height": 740,
+      "enlarged": false
+    },
+    {
+      "name": "enlarged",
+      "width": 360,
+      "height": 740,
+      "enlarged": true
+    },
+    {
+      "name": "wide",
+      "width": 1093,
+      "height": 740,
+      "enlarged": false
+    }
+  ],
+  "runs": [
+    {
+      "config": "narrow",
+      "family": 40,
+      "item": "plan40-construct-half-fifth-10",
+      "view": "visual",
+      "captures": [
+        {
+          "stage": "initial",
+          "item": "plan40-construct-half-fifth-10",
+          "beat": "encounter",
+          "area": 310,
+          "font": "16px",
+          "docWidth": 360,
+          "scrollWidth": 360,
+          "overflowing": []
+        },
+        {
+          "stage": "after-encounter",
+          "item": "plan40-construct-half-fifth-10",
+          "beat": "transform",
+          "area": 310,
+          "font": "16px",
+          "docWidth": 360,
+          "scrollWidth": 360,
+          "overflowing": []
+        },
+        {
+          "stage": "transform-left",
+          "item": "plan40-construct-half-fifth-10",
+          "beat": "transform",
+          "area": 310,
+          "font": "16px",
+          "docWidth": 360,
+          "scrollWidth": 360,
+          "overflowing": []
+        },
+        {
+          "stage": "transform-right",
+          "item": "plan40-construct-half-fifth-10",
+          "beat": "operate",
+          "area": 310,
+          "font": "16px",
+          "docWidth": 360,
+          "scrollWidth": 360,
+          "overflowing": []
+        },
+        {
+          "stage": "draft-shrink-320",
+          "item": "plan40-construct-half-fifth-10",
+          "beat": "operate",
+          "area": 270,
+          "font": "16px",
+          "docWidth": 320,
+          "scrollWidth": 320,
+          "overflowing": []
+        },
+        {
+          "stage": "resolved",
+          "item": "plan40-construct-half-fifth-10",
+          "beat": "resolve",
+          "area": 310,
+          "font": "16px",
+          "docWidth": 360,
+          "scrollWidth": 360,
+          "overflowing": []
+        }
+      ],
+      "completed": true,
+      "draftPreservedOnShrink": true
+    },
+    {
+      "config": "narrow",
+      "family": 40,
+      "item": "plan40-construct-half-fifth-10",
+      "view": "linear",
+      "captures": [
+        {
+          "stage": "initial",
+          "item": "plan40-construct-half-fifth-10",
+          "beat": "encounter",
+          "area": 310,
+          "font": "16px",
+          "docWidth": 360,
+          "scrollWidth": 360,
+          "overflowing": []
+        },
+        {
+          "stage": "after-encounter",
+          "item": "plan40-construct-half-fifth-10",
+          "beat": "transform",
+          "area": 310,
+          "font": "16px",
+          "docWidth": 360,
+          "scrollWidth": 360,
+          "overflowing": []
+        },
+        {
+          "stage": "transform-left",
+          "item": "plan40-construct-half-fifth-10",
+          "beat": "transform",
+          "area": 310,
+          "font": "16px",
+          "docWidth": 360,
+          "scrollWidth": 360,
+          "overflowing": []
+        },
+        {
+          "stage": "transform-right",
+          "item": "plan40-construct-half-fifth-10",
+          "beat": "operate",
+          "area": 310,
+          "font": "16px",
+          "docWidth": 360,
+          "scrollWidth": 360,
+          "overflowing": []
+        },
+        {
+          "stage": "draft-shrink-320",
+          "item": "plan40-construct-half-fifth-10",
+          "beat": "operate",
+          "area": 270,
+          "font": "16px",
+          "docWidth": 320,
+          "scrollWidth": 320,
+          "overflowing": []
+        },
+        {
+          "stage": "resolved",
+          "item": "plan40-construct-half-fifth-10",
+          "beat": "resolve",
+          "area": 310,
+          "font": "16px",
+          "docWidth": 360,
+          "scrollWidth": 360,
+          "overflowing": []
+        }
+      ],
+      "completed": true,
+      "draftPreservedOnShrink": true
+    },
+    {
+      "config": "narrow",
+      "family": 40,
+      "item": "plan76-inspect-four-fifths-one-third-15",
+      "view": "visual",
+      "captures": [
+        {
+          "stage": "initial",
+          "item": "plan76-inspect-four-fifths-one-third-15",
+          "beat": "encounter",
+          "area": 310,
+          "font": "16px",
+          "docWidth": 360,
+          "scrollWidth": 360,
+          "overflowing": []
+        },
+        {
+          "stage": "after-encounter",
+          "item": "plan76-inspect-four-fifths-one-third-15",
+          "beat": "transform",
+          "area": 310,
+          "font": "16px",
+          "docWidth": 360,
+          "scrollWidth": 360,
+          "overflowing": []
+        },
+        {
+          "stage": "transform-left",
+          "item": "plan76-inspect-four-fifths-one-third-15",
+          "beat": "transform",
+          "area": 310,
+          "font": "16px",
+          "docWidth": 360,
+          "scrollWidth": 360,
+          "overflowing": []
+        },
+        {
+          "stage": "transform-right",
+          "item": "plan76-inspect-four-fifths-one-third-15",
+          "beat": "operate",
+          "area": 310,
+          "font": "16px",
+          "docWidth": 360,
+          "scrollWidth": 360,
+          "overflowing": []
+        },
+        {
+          "stage": "draft-shrink-320",
+          "item": "plan76-inspect-four-fifths-one-third-15",
+          "beat": "operate",
+          "area": 270,
+          "font": "16px",
+          "docWidth": 320,
+          "scrollWidth": 320,
+          "overflowing": []
+        },
+        {
+          "stage": "resolved",
+          "item": "plan76-inspect-four-fifths-one-third-15",
+          "beat": "resolve",
+          "area": 310,
+          "font": "16px",
+          "docWidth": 360,
+          "scrollWidth": 360,
+          "overflowing": []
+        }
+      ],
+      "completed": true,
+      "draftPreservedOnShrink": true
+    },
+    {
+      "config": "narrow",
+      "family": 40,
+      "item": "plan76-inspect-four-fifths-one-third-15",
+      "view": "linear",
+      "captures": [
+        {
+          "stage": "initial",
+          "item": "plan76-inspect-four-fifths-one-third-15",
+          "beat": "encounter",
+          "area": 310,
+          "font": "16px",
+          "docWidth": 360,
+          "scrollWidth": 360,
+          "overflowing": []
+        },
+        {
+          "stage": "after-encounter",
+          "item": "plan76-inspect-four-fifths-one-third-15",
+          "beat": "transform",
+          "area": 310,
+          "font": "16px",
+          "docWidth": 360,
+          "scrollWidth": 360,
+          "overflowing": []
+        },
+        {
+          "stage": "transform-left",
+          "item": "plan76-inspect-four-fifths-one-third-15",
+          "beat": "transform",
+          "area": 310,
+          "font": "16px",
+          "docWidth": 360,
+          "scrollWidth": 360,
+          "overflowing": []
+        },
+        {
+          "stage": "transform-right",
+          "item": "plan76-inspect-four-fifths-one-third-15",
+          "beat": "operate",
+          "area": 310,
+          "font": "16px",
+          "docWidth": 360,
+          "scrollWidth": 360,
+          "overflowing": []
+        },
+        {
+          "stage": "draft-shrink-320",
+          "item": "plan76-inspect-four-fifths-one-third-15",
+          "beat": "operate",
+          "area": 270,
+          "font": "16px",
+          "docWidth": 320,
+          "scrollWidth": 320,
+          "overflowing": []
+        },
+        {
+          "stage": "resolved",
+          "item": "plan76-inspect-four-fifths-one-third-15",
+          "beat": "resolve",
+          "area": 310,
+          "font": "16px",
+          "docWidth": 360,
+          "scrollWidth": 360,
+          "overflowing": []
+        }
+      ],
+      "completed": true,
+      "draftPreservedOnShrink": true
+    },
+    {
+      "config": "narrow",
+      "family": 40,
+      "item": "plan85-isolated-identify-five-sixths-one-half-6",
+      "view": "visual",
+      "captures": [
+        {
+          "stage": "initial",
+          "item": "plan85-isolated-identify-five-sixths-one-half-6",
+          "beat": "encounter",
+          "area": 310,
+          "font": "16px",
+          "docWidth": 360,
+          "scrollWidth": 360,
+          "overflowing": []
+        },
+        {
+          "stage": "after-encounter",
+          "item": "plan85-isolated-identify-five-sixths-one-half-6",
+          "beat": "decide",
+          "area": 310,
+          "font": "16px",
+          "docWidth": 360,
+          "scrollWidth": 360,
+          "overflowing": []
+        },
+        {
+          "stage": "transform-right",
+          "item": "plan85-isolated-identify-five-sixths-one-half-6",
+          "beat": "operate",
+          "area": 310,
+          "font": "16px",
+          "docWidth": 360,
+          "scrollWidth": 360,
+          "overflowing": []
+        },
+        {
+          "stage": "draft-shrink-320",
+          "item": "plan85-isolated-identify-five-sixths-one-half-6",
+          "beat": "operate",
+          "area": 270,
+          "font": "16px",
+          "docWidth": 320,
+          "scrollWidth": 320,
+          "overflowing": []
+        },
+        {
+          "stage": "resolved",
+          "item": "plan85-isolated-identify-five-sixths-one-half-6",
+          "beat": "resolve",
+          "area": 310,
+          "font": "16px",
+          "docWidth": 360,
+          "scrollWidth": 360,
+          "overflowing": []
+        }
+      ],
+      "completed": true,
+      "draftPreservedOnShrink": true
+    },
+    {
+      "config": "narrow",
+      "family": 40,
+      "item": "plan85-isolated-identify-five-sixths-one-half-6",
+      "view": "linear",
+      "captures": [
+        {
+          "stage": "initial",
+          "item": "plan85-isolated-identify-five-sixths-one-half-6",
+          "beat": "encounter",
+          "area": 310,
+          "font": "16px",
+          "docWidth": 360,
+          "scrollWidth": 360,
+          "overflowing": []
+        },
+        {
+          "stage": "after-encounter",
+          "item": "plan85-isolated-identify-five-sixths-one-half-6",
+          "beat": "decide",
+          "area": 310,
+          "font": "16px",
+          "docWidth": 360,
+          "scrollWidth": 360,
+          "overflowing": []
+        },
+        {
+          "stage": "transform-right",
+          "item": "plan85-isolated-identify-five-sixths-one-half-6",
+          "beat": "operate",
+          "area": 310,
+          "font": "16px",
+          "docWidth": 360,
+          "scrollWidth": 360,
+          "overflowing": []
+        },
+        {
+          "stage": "draft-shrink-320",
+          "item": "plan85-isolated-identify-five-sixths-one-half-6",
+          "beat": "operate",
+          "area": 270,
+          "font": "16px",
+          "docWidth": 320,
+          "scrollWidth": 320,
+          "overflowing": []
+        },
+        {
+          "stage": "resolved",
+          "item": "plan85-isolated-identify-five-sixths-one-half-6",
+          "beat": "resolve",
+          "area": 310,
+          "font": "16px",
+          "docWidth": 360,
+          "scrollWidth": 360,
+          "overflowing": []
+        }
+      ],
+      "completed": true,
+      "draftPreservedOnShrink": true
+    },
+    {
+      "config": "narrow",
+      "family": 74,
+      "item": "plan74-add-01",
+      "view": "visual",
+      "captures": [
+        {
+          "stage": "initial",
+          "item": "plan74-add-01",
+          "beat": "construct",
+          "area": 310,
+          "font": "16px",
+          "docWidth": 360,
+          "scrollWidth": 360,
+          "overflowing": []
+        },
+        {
+          "stage": "draft-shrink-320",
+          "item": "plan74-add-01",
+          "beat": "construct",
+          "area": 270,
+          "font": "16px",
+          "docWidth": 320,
+          "scrollWidth": 320,
+          "overflowing": []
+        },
+        {
+          "stage": "resolved",
+          "item": "plan74-add-01",
+          "beat": "resolve",
+          "area": 310,
+          "font": "16px",
+          "docWidth": 360,
+          "scrollWidth": 360,
+          "overflowing": []
+        }
+      ],
+      "completed": true,
+      "draftPreservedOnShrink": true
+    },
+    {
+      "config": "narrow",
+      "family": 74,
+      "item": "plan74-add-01",
+      "view": "linear",
+      "captures": [
+        {
+          "stage": "initial",
+          "item": "plan74-add-01",
+          "beat": "construct",
+          "area": 310,
+          "font": "16px",
+          "docWidth": 360,
+          "scrollWidth": 360,
+          "overflowing": []
+        },
+        {
+          "stage": "draft-shrink-320",
+          "item": "plan74-add-01",
+          "beat": "construct",
+          "area": 270,
+          "font": "16px",
+          "docWidth": 320,
+          "scrollWidth": 320,
+          "overflowing": []
+        },
+        {
+          "stage": "resolved",
+          "item": "plan74-add-01",
+          "beat": "resolve",
+          "area": 310,
+          "font": "16px",
+          "docWidth": 360,
+          "scrollWidth": 360,
+          "overflowing": []
+        }
+      ],
+      "completed": true,
+      "draftPreservedOnShrink": true
+    },
+    {
+      "config": "narrow",
+      "family": 74,
+      "item": "plan74-add-15",
+      "view": "visual",
+      "captures": [
+        {
+          "stage": "initial",
+          "item": "plan74-add-15",
+          "beat": "construct",
+          "area": 310,
+          "font": "16px",
+          "docWidth": 360,
+          "scrollWidth": 360,
+          "overflowing": []
+        },
+        {
+          "stage": "draft-shrink-320",
+          "item": "plan74-add-15",
+          "beat": "construct",
+          "area": 270,
+          "font": "16px",
+          "docWidth": 320,
+          "scrollWidth": 320,
+          "overflowing": []
+        },
+        {
+          "stage": "resolved",
+          "item": "plan74-add-15",
+          "beat": "resolve",
+          "area": 310,
+          "font": "16px",
+          "docWidth": 360,
+          "scrollWidth": 360,
+          "overflowing": []
+        }
+      ],
+      "completed": true,
+      "draftPreservedOnShrink": true
+    },
+    {
+      "config": "narrow",
+      "family": 74,
+      "item": "plan74-add-15",
+      "view": "linear",
+      "captures": [
+        {
+          "stage": "initial",
+          "item": "plan74-add-15",
+          "beat": "construct",
+          "area": 310,
+          "font": "16px",
+          "docWidth": 360,
+          "scrollWidth": 360,
+          "overflowing": []
+        },
+        {
+          "stage": "draft-shrink-320",
+          "item": "plan74-add-15",
+          "beat": "construct",
+          "area": 270,
+          "font": "16px",
+          "docWidth": 320,
+          "scrollWidth": 320,
+          "overflowing": []
+        },
+        {
+          "stage": "resolved",
+          "item": "plan74-add-15",
+          "beat": "resolve",
+          "area": 310,
+          "font": "16px",
+          "docWidth": 360,
+          "scrollWidth": 360,
+          "overflowing": []
+        }
+      ],
+      "completed": true,
+      "draftPreservedOnShrink": true
+    },
+    {
+      "config": "narrow",
+      "family": 74,
+      "item": "plan74-add-30",
+      "view": "visual",
+      "captures": [
+        {
+          "stage": "initial",
+          "item": "plan74-add-30",
+          "beat": "construct",
+          "area": 310,
+          "font": "16px",
+          "docWidth": 360,
+          "scrollWidth": 360,
+          "overflowing": []
+        },
+        {
+          "stage": "draft-shrink-320",
+          "item": "plan74-add-30",
+          "beat": "construct",
+          "area": 270,
+          "font": "16px",
+          "docWidth": 320,
+          "scrollWidth": 320,
+          "overflowing": []
+        },
+        {
+          "stage": "resolved",
+          "item": "plan74-add-30",
+          "beat": "resolve",
+          "area": 310,
+          "font": "16px",
+          "docWidth": 360,
+          "scrollWidth": 360,
+          "overflowing": []
+        }
+      ],
+      "completed": true,
+      "draftPreservedOnShrink": true
+    },
+    {
+      "config": "narrow",
+      "family": 74,
+      "item": "plan74-add-30",
+      "view": "linear",
+      "captures": [
+        {
+          "stage": "initial",
+          "item": "plan74-add-30",
+          "beat": "construct",
+          "area": 310,
+          "font": "16px",
+          "docWidth": 360,
+          "scrollWidth": 360,
+          "overflowing": []
+        },
+        {
+          "stage": "draft-shrink-320",
+          "item": "plan74-add-30",
+          "beat": "construct",
+          "area": 270,
+          "font": "16px",
+          "docWidth": 320,
+          "scrollWidth": 320,
+          "overflowing": []
+        },
+        {
+          "stage": "resolved",
+          "item": "plan74-add-30",
+          "beat": "resolve",
+          "area": 310,
+          "font": "16px",
+          "docWidth": 360,
+          "scrollWidth": 360,
+          "overflowing": []
+        }
+      ],
+      "completed": true,
+      "draftPreservedOnShrink": true
+    },
+    {
+      "config": "narrow",
+      "family": 78,
+      "item": "plan78-subtract-01",
+      "view": "visual",
+      "captures": [
+        {
+          "stage": "initial",
+          "item": "plan78-subtract-01",
+          "beat": "construct",
+          "area": 310,
+          "font": "16px",
+          "docWidth": 360,
+          "scrollWidth": 360,
+          "overflowing": []
+        },
+        {
+          "stage": "draft-shrink-320",
+          "item": "plan78-subtract-01",
+          "beat": "construct",
+          "area": 270,
+          "font": "16px",
+          "docWidth": 320,
+          "scrollWidth": 320,
+          "overflowing": []
+        },
+        {
+          "stage": "resolved",
+          "item": "plan78-subtract-01",
+          "beat": "resolve",
+          "area": 310,
+          "font": "16px",
+          "docWidth": 360,
+          "scrollWidth": 360,
+          "overflowing": []
+        }
+      ],
+      "completed": true,
+      "draftPreservedOnShrink": true
+    },
+    {
+      "config": "narrow",
+      "family": 78,
+      "item": "plan78-subtract-01",
+      "view": "linear",
+      "captures": [
+        {
+          "stage": "initial",
+          "item": "plan78-subtract-01",
+          "beat": "construct",
+          "area": 310,
+          "font": "16px",
+          "docWidth": 360,
+          "scrollWidth": 360,
+          "overflowing": []
+        },
+        {
+          "stage": "draft-shrink-320",
+          "item": "plan78-subtract-01",
+          "beat": "construct",
+          "area": 270,
+          "font": "16px",
+          "docWidth": 320,
+          "scrollWidth": 320,
+          "overflowing": []
+        },
+        {
+          "stage": "resolved",
+          "item": "plan78-subtract-01",
+          "beat": "resolve",
+          "area": 310,
+          "font": "16px",
+          "docWidth": 360,
+          "scrollWidth": 360,
+          "overflowing": []
+        }
+      ],
+      "completed": true,
+      "draftPreservedOnShrink": true
+    },
+    {
+      "config": "narrow",
+      "family": 78,
+      "item": "plan78-subtract-15",
+      "view": "visual",
+      "captures": [
+        {
+          "stage": "initial",
+          "item": "plan78-subtract-15",
+          "beat": "construct",
+          "area": 310,
+          "font": "16px",
+          "docWidth": 360,
+          "scrollWidth": 360,
+          "overflowing": []
+        },
+        {
+          "stage": "draft-shrink-320",
+          "item": "plan78-subtract-15",
+          "beat": "construct",
+          "area": 270,
+          "font": "16px",
+          "docWidth": 320,
+          "scrollWidth": 320,
+          "overflowing": []
+        },
+        {
+          "stage": "resolved",
+          "item": "plan78-subtract-15",
+          "beat": "resolve",
+          "area": 310,
+          "font": "16px",
+          "docWidth": 360,
+          "scrollWidth": 360,
+          "overflowing": []
+        }
+      ],
+      "completed": true,
+      "draftPreservedOnShrink": true
+    },
+    {
+      "config": "narrow",
+      "family": 78,
+      "item": "plan78-subtract-15",
+      "view": "linear",
+      "captures": [
+        {
+          "stage": "initial",
+          "item": "plan78-subtract-15",
+          "beat": "construct",
+          "area": 310,
+          "font": "16px",
+          "docWidth": 360,
+          "scrollWidth": 360,
+          "overflowing": []
+        },
+        {
+          "stage": "draft-shrink-320",
+          "item": "plan78-subtract-15",
+          "beat": "construct",
+          "area": 270,
+          "font": "16px",
+          "docWidth": 320,
+          "scrollWidth": 320,
+          "overflowing": []
+        },
+        {
+          "stage": "resolved",
+          "item": "plan78-subtract-15",
+          "beat": "resolve",
+          "area": 310,
+          "font": "16px",
+          "docWidth": 360,
+          "scrollWidth": 360,
+          "overflowing": []
+        }
+      ],
+      "completed": true,
+      "draftPreservedOnShrink": true
+    },
+    {
+      "config": "narrow",
+      "family": 78,
+      "item": "plan78-subtract-30",
+      "view": "visual",
+      "captures": [
+        {
+          "stage": "initial",
+          "item": "plan78-subtract-30",
+          "beat": "construct",
+          "area": 310,
+          "font": "16px",
+          "docWidth": 360,
+          "scrollWidth": 360,
+          "overflowing": []
+        },
+        {
+          "stage": "draft-shrink-320",
+          "item": "plan78-subtract-30",
+          "beat": "construct",
+          "area": 270,
+          "font": "16px",
+          "docWidth": 320,
+          "scrollWidth": 320,
+          "overflowing": []
+        },
+        {
+          "stage": "resolved",
+          "item": "plan78-subtract-30",
+          "beat": "resolve",
+          "area": 310,
+          "font": "16px",
+          "docWidth": 360,
+          "scrollWidth": 360,
+          "overflowing": []
+        }
+      ],
+      "completed": true,
+      "draftPreservedOnShrink": true
+    },
+    {
+      "config": "narrow",
+      "family": 78,
+      "item": "plan78-subtract-30",
+      "view": "linear",
+      "captures": [
+        {
+          "stage": "initial",
+          "item": "plan78-subtract-30",
+          "beat": "construct",
+          "area": 310,
+          "font": "16px",
+          "docWidth": 360,
+          "scrollWidth": 360,
+          "overflowing": []
+        },
+        {
+          "stage": "draft-shrink-320",
+          "item": "plan78-subtract-30",
+          "beat": "construct",
+          "area": 270,
+          "font": "16px",
+          "docWidth": 320,
+          "scrollWidth": 320,
+          "overflowing": []
+        },
+        {
+          "stage": "resolved",
+          "item": "plan78-subtract-30",
+          "beat": "resolve",
+          "area": 310,
+          "font": "16px",
+          "docWidth": 360,
+          "scrollWidth": 360,
+          "overflowing": []
+        }
+      ],
+      "completed": true,
+      "draftPreservedOnShrink": true
+    },
+    {
+      "config": "narrow",
+      "family": 82,
+      "item": "plan82-subtract-01",
+      "view": "visual",
+      "captures": [
+        {
+          "stage": "initial",
+          "item": "plan82-subtract-01",
+          "beat": "construct",
+          "area": 310,
+          "font": "16px",
+          "docWidth": 360,
+          "scrollWidth": 360,
+          "overflowing": []
+        },
+        {
+          "stage": "draft-shrink-320",
+          "item": "plan82-subtract-01",
+          "beat": "construct",
+          "area": 270,
+          "font": "16px",
+          "docWidth": 320,
+          "scrollWidth": 320,
+          "overflowing": []
+        },
+        {
+          "stage": "resolved",
+          "item": "plan82-subtract-01",
+          "beat": "resolve",
+          "area": 310,
+          "font": "16px",
+          "docWidth": 360,
+          "scrollWidth": 360,
+          "overflowing": []
+        }
+      ],
+      "completed": true,
+      "draftPreservedOnShrink": true
+    },
+    {
+      "config": "narrow",
+      "family": 82,
+      "item": "plan82-subtract-01",
+      "view": "linear",
+      "captures": [
+        {
+          "stage": "initial",
+          "item": "plan82-subtract-01",
+          "beat": "construct",
+          "area": 310,
+          "font": "16px",
+          "docWidth": 360,
+          "scrollWidth": 360,
+          "overflowing": []
+        },
+        {
+          "stage": "draft-shrink-320",
+          "item": "plan82-subtract-01",
+          "beat": "construct",
+          "area": 270,
+          "font": "16px",
+          "docWidth": 320,
+          "scrollWidth": 320,
+          "overflowing": []
+        },
+        {
+          "stage": "resolved",
+          "item": "plan82-subtract-01",
+          "beat": "resolve",
+          "area": 310,
+          "font": "16px",
+          "docWidth": 360,
+          "scrollWidth": 360,
+          "overflowing": []
+        }
+      ],
+      "completed": true,
+      "draftPreservedOnShrink": true
+    },
+    {
+      "config": "narrow",
+      "family": 82,
+      "item": "plan82-subtract-15",
+      "view": "visual",
+      "captures": [
+        {
+          "stage": "initial",
+          "item": "plan82-subtract-15",
+          "beat": "construct",
+          "area": 310,
+          "font": "16px",
+          "docWidth": 360,
+          "scrollWidth": 360,
+          "overflowing": []
+        },
+        {
+          "stage": "draft-shrink-320",
+          "item": "plan82-subtract-15",
+          "beat": "construct",
+          "area": 270,
+          "font": "16px",
+          "docWidth": 320,
+          "scrollWidth": 320,
+          "overflowing": []
+        },
+        {
+          "stage": "resolved",
+          "item": "plan82-subtract-15",
+          "beat": "resolve",
+          "area": 310,
+          "font": "16px",
+          "docWidth": 360,
+          "scrollWidth": 360,
+          "overflowing": []
+        }
+      ],
+      "completed": true,
+      "draftPreservedOnShrink": true
+    },
+    {
+      "config": "narrow",
+      "family": 82,
+      "item": "plan82-subtract-15",
+      "view": "linear",
+      "captures": [
+        {
+          "stage": "initial",
+          "item": "plan82-subtract-15",
+          "beat": "construct",
+          "area": 310,
+          "font": "16px",
+          "docWidth": 360,
+          "scrollWidth": 360,
+          "overflowing": []
+        },
+        {
+          "stage": "draft-shrink-320",
+          "item": "plan82-subtract-15",
+          "beat": "construct",
+          "area": 270,
+          "font": "16px",
+          "docWidth": 320,
+          "scrollWidth": 320,
+          "overflowing": []
+        },
+        {
+          "stage": "resolved",
+          "item": "plan82-subtract-15",
+          "beat": "resolve",
+          "area": 310,
+          "font": "16px",
+          "docWidth": 360,
+          "scrollWidth": 360,
+          "overflowing": []
+        }
+      ],
+      "completed": true,
+      "draftPreservedOnShrink": true
+    },
+    {
+      "config": "narrow",
+      "family": 82,
+      "item": "plan82-subtract-30",
+      "view": "visual",
+      "captures": [
+        {
+          "stage": "initial",
+          "item": "plan82-subtract-30",
+          "beat": "construct",
+          "area": 310,
+          "font": "16px",
+          "docWidth": 360,
+          "scrollWidth": 360,
+          "overflowing": []
+        },
+        {
+          "stage": "draft-shrink-320",
+          "item": "plan82-subtract-30",
+          "beat": "construct",
+          "area": 270,
+          "font": "16px",
+          "docWidth": 320,
+          "scrollWidth": 320,
+          "overflowing": []
+        },
+        {
+          "stage": "resolved",
+          "item": "plan82-subtract-30",
+          "beat": "resolve",
+          "area": 310,
+          "font": "16px",
+          "docWidth": 360,
+          "scrollWidth": 360,
+          "overflowing": []
+        }
+      ],
+      "completed": true,
+      "draftPreservedOnShrink": true
+    },
+    {
+      "config": "narrow",
+      "family": 82,
+      "item": "plan82-subtract-30",
+      "view": "linear",
+      "captures": [
+        {
+          "stage": "initial",
+          "item": "plan82-subtract-30",
+          "beat": "construct",
+          "area": 310,
+          "font": "16px",
+          "docWidth": 360,
+          "scrollWidth": 360,
+          "overflowing": []
+        },
+        {
+          "stage": "draft-shrink-320",
+          "item": "plan82-subtract-30",
+          "beat": "construct",
+          "area": 270,
+          "font": "16px",
+          "docWidth": 320,
+          "scrollWidth": 320,
+          "overflowing": []
+        },
+        {
+          "stage": "resolved",
+          "item": "plan82-subtract-30",
+          "beat": "resolve",
+          "area": 310,
+          "font": "16px",
+          "docWidth": 360,
+          "scrollWidth": 360,
+          "overflowing": []
+        }
+      ],
+      "completed": true,
+      "draftPreservedOnShrink": true
+    },
+    {
+      "config": "enlarged",
+      "family": 40,
+      "item": "plan40-construct-half-fifth-10",
+      "view": "visual",
+      "captures": [
+        {
+          "stage": "initial",
+          "item": "plan40-construct-half-fifth-10",
+          "beat": "encounter",
+          "area": 262,
+          "font": "32px",
+          "docWidth": 360,
+          "scrollWidth": 360,
+          "overflowing": []
+        },
+        {
+          "stage": "after-encounter",
+          "item": "plan40-construct-half-fifth-10",
+          "beat": "transform",
+          "area": 262,
+          "font": "32px",
+          "docWidth": 360,
+          "scrollWidth": 360,
+          "overflowing": []
+        },
+        {
+          "stage": "transform-left",
+          "item": "plan40-construct-half-fifth-10",
+          "beat": "transform",
+          "area": 262,
+          "font": "32px",
+          "docWidth": 360,
+          "scrollWidth": 360,
+          "overflowing": []
+        },
+        {
+          "stage": "transform-right",
+          "item": "plan40-construct-half-fifth-10",
+          "beat": "operate",
+          "area": 262,
+          "font": "32px",
+          "docWidth": 360,
+          "scrollWidth": 499,
+          "overflowing": [
+            {
+              "tag": "DIV",
+              "cls": "control-fraction-fields",
+              "id": "",
+              "right": 471.1
+            },
+            {
+              "tag": "DIV",
+              "cls": "control-fraction-field",
+              "id": "",
+              "right": 471.1
+            },
+            {
+              "tag": "LABEL",
+              "cls": "control-label",
+              "id": "",
+              "right": 471.1
+            },
+            {
+              "tag": "INPUT",
+              "cls": "fraction-control control-numeric-input control-fraction-input",
+              "id": "operate-fraction-denominator-input",
+              "right": 471.1
+            }
+          ]
+        },
+        {
+          "stage": "draft-shrink-320",
+          "item": "plan40-construct-half-fifth-10",
+          "beat": "operate",
+          "area": 222,
+          "font": "32px",
+          "docWidth": 320,
+          "scrollWidth": 499,
+          "overflowing": [
+            {
+              "tag": "DIV",
+              "cls": "",
+              "id": "app",
+              "right": 269
+            },
+            {
+              "tag": "DIV",
+              "cls": "fractionflow-app",
+              "id": "",
+              "right": 269
+            },
+            {
+              "tag": "MAIN",
+              "cls": "app-episode",
+              "id": "",
+              "right": 245
+            },
+            {
+              "tag": "DIV",
+              "cls": "app-view-controls",
+              "id": "",
+              "right": 220
+            },
+            {
+              "tag": "BUTTON",
+              "cls": "fraction-control app-secondary-button app-view-toggle",
+              "id": "",
+              "right": 220
+            },
+            {
+              "tag": "NAV",
+              "cls": "app-episode-navigation",
+              "id": "",
+              "right": 220
+            },
+            {
+              "tag": "BUTTON",
+              "cls": "fraction-control app-secondary-button app-return-button",
+              "id": "",
+              "right": 220
+            },
+            {
+              "tag": "SECTION",
+              "cls": "app-visual-view",
+              "id": "",
+              "right": 220
+            },
+            {
+              "tag": "DIV",
+              "cls": "episode-beat-container",
+              "id": "",
+              "right": 220
+            },
+            {
+              "tag": "DIV",
+              "cls": "symbolic-container",
+              "id": "",
+              "right": 227
+            },
+            {
+              "tag": "DIV",
+              "cls": "symbolic-expression",
+              "id": "",
+              "right": 227
+            },
+            {
+              "tag": "SPAN",
+              "cls": "symbolic-fraction",
+              "id": "",
+              "right": 60.3
+            },
+            {
+              "tag": "SPAN",
+              "cls": "symbolic-bar",
+              "id": "",
+              "right": 60.3
+            },
+            {
+              "tag": "SPAN",
+              "cls": "symbolic-denominator",
+              "id": "",
+              "right": 60.3
+            },
+            {
+              "tag": "DIV",
+              "cls": "control-fraction-fields",
+              "id": "",
+              "right": 420.1
+            }
+          ]
+        },
+        {
+          "stage": "resolved",
+          "item": "plan40-construct-half-fifth-10",
+          "beat": "resolve",
+          "area": 262,
+          "font": "32px",
+          "docWidth": 360,
+          "scrollWidth": 381,
+          "overflowing": [
+            {
+              "tag": "DIV",
+              "cls": "",
+              "id": "app",
+              "right": 339
+            },
+            {
+              "tag": "DIV",
+              "cls": "fractionflow-app",
+              "id": "",
+              "right": 339
+            },
+            {
+              "tag": "DIV",
+              "cls": "symbolic-container",
+              "id": "",
+              "right": 360.3
+            },
+            {
+              "tag": "DIV",
+              "cls": "symbolic-expression",
+              "id": "",
+              "right": 360.3
+            },
+            {
+              "tag": "SPAN",
+              "cls": "symbolic-fraction",
+              "id": "",
+              "right": 27
+            },
+            {
+              "tag": "SPAN",
+              "cls": "symbolic-numerator",
+              "id": "",
+              "right": 13.7
+            },
+            {
+              "tag": "SPAN",
+              "cls": "symbolic-bar",
+              "id": "",
+              "right": 27
+            },
+            {
+              "tag": "SPAN",
+              "cls": "symbolic-denominator",
+              "id": "",
+              "right": 27
+            }
+          ]
+        }
+      ],
+      "completed": true,
+      "draftPreservedOnShrink": true
+    },
+    {
+      "config": "enlarged",
+      "family": 40,
+      "item": "plan40-construct-half-fifth-10",
+      "view": "linear",
+      "captures": [
+        {
+          "stage": "initial",
+          "item": "plan40-construct-half-fifth-10",
+          "beat": "encounter",
+          "area": 262,
+          "font": "32px",
+          "docWidth": 360,
+          "scrollWidth": 360,
+          "overflowing": []
+        },
+        {
+          "stage": "after-encounter",
+          "item": "plan40-construct-half-fifth-10",
+          "beat": "transform",
+          "area": 262,
+          "font": "32px",
+          "docWidth": 360,
+          "scrollWidth": 360,
+          "overflowing": []
+        },
+        {
+          "stage": "transform-left",
+          "item": "plan40-construct-half-fifth-10",
+          "beat": "transform",
+          "area": 262,
+          "font": "32px",
+          "docWidth": 360,
+          "scrollWidth": 360,
+          "overflowing": []
+        },
+        {
+          "stage": "transform-right",
+          "item": "plan40-construct-half-fifth-10",
+          "beat": "operate",
+          "area": 262,
+          "font": "32px",
+          "docWidth": 360,
+          "scrollWidth": 499,
+          "overflowing": [
+            {
+              "tag": "DIV",
+              "cls": "control-fraction-fields",
+              "id": "",
+              "right": 471.1
+            },
+            {
+              "tag": "DIV",
+              "cls": "control-fraction-field",
+              "id": "",
+              "right": 471.1
+            },
+            {
+              "tag": "LABEL",
+              "cls": "control-label",
+              "id": "",
+              "right": 471.1
+            },
+            {
+              "tag": "INPUT",
+              "cls": "fraction-control control-numeric-input control-fraction-input",
+              "id": "linear-operate-fraction-denominator-input",
+              "right": 471.1
+            }
+          ]
+        },
+        {
+          "stage": "draft-shrink-320",
+          "item": "plan40-construct-half-fifth-10",
+          "beat": "operate",
+          "area": 222,
+          "font": "32px",
+          "docWidth": 320,
+          "scrollWidth": 499,
+          "overflowing": [
+            {
+              "tag": "DIV",
+              "cls": "",
+              "id": "app",
+              "right": 269
+            },
+            {
+              "tag": "DIV",
+              "cls": "fractionflow-app",
+              "id": "",
+              "right": 269
+            },
+            {
+              "tag": "MAIN",
+              "cls": "app-episode",
+              "id": "",
+              "right": 245
+            },
+            {
+              "tag": "DIV",
+              "cls": "app-view-controls",
+              "id": "",
+              "right": 220
+            },
+            {
+              "tag": "BUTTON",
+              "cls": "fraction-control app-secondary-button app-view-toggle",
+              "id": "",
+              "right": 220
+            },
+            {
+              "tag": "NAV",
+              "cls": "app-episode-navigation",
+              "id": "",
+              "right": 220
+            },
+            {
+              "tag": "BUTTON",
+              "cls": "fraction-control app-secondary-button app-return-button",
+              "id": "",
+              "right": 220
+            },
+            {
+              "tag": "SECTION",
+              "cls": "app-linear-view",
+              "id": "",
+              "right": 220
+            },
+            {
+              "tag": "DIV",
+              "cls": "accessible-linear-path",
+              "id": "",
+              "right": 220
+            },
+            {
+              "tag": "DIV",
+              "cls": "symbolic-expression linear-context-expression",
+              "id": "",
+              "right": 227
+            },
+            {
+              "tag": "SPAN",
+              "cls": "symbolic-fraction",
+              "id": "",
+              "right": 60.3
+            },
+            {
+              "tag": "SPAN",
+              "cls": "symbolic-bar",
+              "id": "",
+              "right": 60.3
+            },
+            {
+              "tag": "SPAN",
+              "cls": "symbolic-denominator",
+              "id": "",
+              "right": 60.3
+            },
+            {
+              "tag": "DIV",
+              "cls": "control-fraction-fields",
+              "id": "",
+              "right": 420.1
+            },
+            {
+              "tag": "DIV",
+              "cls": "control-fraction-field",
+              "id": "",
+              "right": 420.1
+            }
+          ]
+        },
+        {
+          "stage": "resolved",
+          "item": "plan40-construct-half-fifth-10",
+          "beat": "resolve",
+          "area": 262,
+          "font": "32px",
+          "docWidth": 360,
+          "scrollWidth": 381,
+          "overflowing": [
+            {
+              "tag": "DIV",
+              "cls": "",
+              "id": "app",
+              "right": 339
+            },
+            {
+              "tag": "DIV",
+              "cls": "fractionflow-app",
+              "id": "",
+              "right": 339
+            },
+            {
+              "tag": "DIV",
+              "cls": "symbolic-expression linear-context-expression",
+              "id": "",
+              "right": 360.3
+            },
+            {
+              "tag": "SPAN",
+              "cls": "symbolic-fraction",
+              "id": "",
+              "right": 27
+            },
+            {
+              "tag": "SPAN",
+              "cls": "symbolic-numerator",
+              "id": "",
+              "right": 13.7
+            },
+            {
+              "tag": "SPAN",
+              "cls": "symbolic-bar",
+              "id": "",
+              "right": 27
+            },
+            {
+              "tag": "SPAN",
+              "cls": "symbolic-denominator",
+              "id": "",
+              "right": 27
+            }
+          ]
+        }
+      ],
+      "completed": true,
+      "draftPreservedOnShrink": true
+    },
+    {
+      "config": "enlarged",
+      "family": 40,
+      "item": "plan76-inspect-four-fifths-one-third-15",
+      "view": "visual",
+      "captures": [
+        {
+          "stage": "initial",
+          "item": "plan76-inspect-four-fifths-one-third-15",
+          "beat": "encounter",
+          "area": 262,
+          "font": "32px",
+          "docWidth": 360,
+          "scrollWidth": 360,
+          "overflowing": []
+        },
+        {
+          "stage": "after-encounter",
+          "item": "plan76-inspect-four-fifths-one-third-15",
+          "beat": "transform",
+          "area": 262,
+          "font": "32px",
+          "docWidth": 360,
+          "scrollWidth": 360,
+          "overflowing": []
+        },
+        {
+          "stage": "transform-left",
+          "item": "plan76-inspect-four-fifths-one-third-15",
+          "beat": "transform",
+          "area": 262,
+          "font": "32px",
+          "docWidth": 360,
+          "scrollWidth": 360,
+          "overflowing": []
+        },
+        {
+          "stage": "transform-right",
+          "item": "plan76-inspect-four-fifths-one-third-15",
+          "beat": "operate",
+          "area": 262,
+          "font": "32px",
+          "docWidth": 360,
+          "scrollWidth": 499,
+          "overflowing": [
+            {
+              "tag": "DIV",
+              "cls": "control-fraction-fields",
+              "id": "",
+              "right": 471.1
+            },
+            {
+              "tag": "DIV",
+              "cls": "control-fraction-field",
+              "id": "",
+              "right": 471.1
+            },
+            {
+              "tag": "LABEL",
+              "cls": "control-label",
+              "id": "",
+              "right": 471.1
+            },
+            {
+              "tag": "INPUT",
+              "cls": "fraction-control control-numeric-input control-fraction-input",
+              "id": "operate-fraction-denominator-input",
+              "right": 471.1
+            }
+          ]
+        },
+        {
+          "stage": "draft-shrink-320",
+          "item": "plan76-inspect-four-fifths-one-third-15",
+          "beat": "operate",
+          "area": 222,
+          "font": "32px",
+          "docWidth": 320,
+          "scrollWidth": 499,
+          "overflowing": [
+            {
+              "tag": "DIV",
+              "cls": "",
+              "id": "app",
+              "right": 269
+            },
+            {
+              "tag": "DIV",
+              "cls": "fractionflow-app",
+              "id": "",
+              "right": 269
+            },
+            {
+              "tag": "MAIN",
+              "cls": "app-episode",
+              "id": "",
+              "right": 245
+            },
+            {
+              "tag": "DIV",
+              "cls": "app-view-controls",
+              "id": "",
+              "right": 220
+            },
+            {
+              "tag": "BUTTON",
+              "cls": "fraction-control app-secondary-button app-view-toggle",
+              "id": "",
+              "right": 220
+            },
+            {
+              "tag": "NAV",
+              "cls": "app-episode-navigation",
+              "id": "",
+              "right": 220
+            },
+            {
+              "tag": "BUTTON",
+              "cls": "fraction-control app-secondary-button app-return-button",
+              "id": "",
+              "right": 220
+            },
+            {
+              "tag": "SECTION",
+              "cls": "app-visual-view",
+              "id": "",
+              "right": 220
+            },
+            {
+              "tag": "DIV",
+              "cls": "episode-beat-container",
+              "id": "",
+              "right": 220
+            },
+            {
+              "tag": "DIV",
+              "cls": "symbolic-container",
+              "id": "",
+              "right": 227
+            },
+            {
+              "tag": "DIV",
+              "cls": "symbolic-expression",
+              "id": "",
+              "right": 227
+            },
+            {
+              "tag": "SPAN",
+              "cls": "symbolic-fraction",
+              "id": "",
+              "right": 60.3
+            },
+            {
+              "tag": "SPAN",
+              "cls": "symbolic-numerator",
+              "id": "",
+              "right": 60.3
+            },
+            {
+              "tag": "SPAN",
+              "cls": "symbolic-bar",
+              "id": "",
+              "right": 60.3
+            },
+            {
+              "tag": "SPAN",
+              "cls": "symbolic-denominator",
+              "id": "",
+              "right": 60.3
+            }
+          ]
+        },
+        {
+          "stage": "resolved",
+          "item": "plan76-inspect-four-fifths-one-third-15",
+          "beat": "resolve",
+          "area": 262,
+          "font": "32px",
+          "docWidth": 360,
+          "scrollWidth": 381,
+          "overflowing": [
+            {
+              "tag": "DIV",
+              "cls": "",
+              "id": "app",
+              "right": 339
+            },
+            {
+              "tag": "DIV",
+              "cls": "fractionflow-app",
+              "id": "",
+              "right": 339
+            },
+            {
+              "tag": "DIV",
+              "cls": "symbolic-container",
+              "id": "",
+              "right": 360.3
+            },
+            {
+              "tag": "DIV",
+              "cls": "symbolic-expression",
+              "id": "",
+              "right": 360.3
+            },
+            {
+              "tag": "SPAN",
+              "cls": "symbolic-fraction",
+              "id": "",
+              "right": 27
+            },
+            {
+              "tag": "SPAN",
+              "cls": "symbolic-numerator",
+              "id": "",
+              "right": 27
+            },
+            {
+              "tag": "SPAN",
+              "cls": "symbolic-bar",
+              "id": "",
+              "right": 27
+            },
+            {
+              "tag": "SPAN",
+              "cls": "symbolic-denominator",
+              "id": "",
+              "right": 27
+            }
+          ]
+        }
+      ],
+      "completed": true,
+      "draftPreservedOnShrink": true
+    },
+    {
+      "config": "enlarged",
+      "family": 40,
+      "item": "plan76-inspect-four-fifths-one-third-15",
+      "view": "linear",
+      "captures": [
+        {
+          "stage": "initial",
+          "item": "plan76-inspect-four-fifths-one-third-15",
+          "beat": "encounter",
+          "area": 262,
+          "font": "32px",
+          "docWidth": 360,
+          "scrollWidth": 360,
+          "overflowing": []
+        },
+        {
+          "stage": "after-encounter",
+          "item": "plan76-inspect-four-fifths-one-third-15",
+          "beat": "transform",
+          "area": 262,
+          "font": "32px",
+          "docWidth": 360,
+          "scrollWidth": 360,
+          "overflowing": []
+        },
+        {
+          "stage": "transform-left",
+          "item": "plan76-inspect-four-fifths-one-third-15",
+          "beat": "transform",
+          "area": 262,
+          "font": "32px",
+          "docWidth": 360,
+          "scrollWidth": 360,
+          "overflowing": []
+        },
+        {
+          "stage": "transform-right",
+          "item": "plan76-inspect-four-fifths-one-third-15",
+          "beat": "operate",
+          "area": 262,
+          "font": "32px",
+          "docWidth": 360,
+          "scrollWidth": 499,
+          "overflowing": [
+            {
+              "tag": "DIV",
+              "cls": "control-fraction-fields",
+              "id": "",
+              "right": 471.1
+            },
+            {
+              "tag": "DIV",
+              "cls": "control-fraction-field",
+              "id": "",
+              "right": 471.1
+            },
+            {
+              "tag": "LABEL",
+              "cls": "control-label",
+              "id": "",
+              "right": 471.1
+            },
+            {
+              "tag": "INPUT",
+              "cls": "fraction-control control-numeric-input control-fraction-input",
+              "id": "linear-operate-fraction-denominator-input",
+              "right": 471.1
+            }
+          ]
+        },
+        {
+          "stage": "draft-shrink-320",
+          "item": "plan76-inspect-four-fifths-one-third-15",
+          "beat": "operate",
+          "area": 222,
+          "font": "32px",
+          "docWidth": 320,
+          "scrollWidth": 499,
+          "overflowing": [
+            {
+              "tag": "DIV",
+              "cls": "",
+              "id": "app",
+              "right": 269
+            },
+            {
+              "tag": "DIV",
+              "cls": "fractionflow-app",
+              "id": "",
+              "right": 269
+            },
+            {
+              "tag": "MAIN",
+              "cls": "app-episode",
+              "id": "",
+              "right": 245
+            },
+            {
+              "tag": "DIV",
+              "cls": "app-view-controls",
+              "id": "",
+              "right": 220
+            },
+            {
+              "tag": "BUTTON",
+              "cls": "fraction-control app-secondary-button app-view-toggle",
+              "id": "",
+              "right": 220
+            },
+            {
+              "tag": "NAV",
+              "cls": "app-episode-navigation",
+              "id": "",
+              "right": 220
+            },
+            {
+              "tag": "BUTTON",
+              "cls": "fraction-control app-secondary-button app-return-button",
+              "id": "",
+              "right": 220
+            },
+            {
+              "tag": "SECTION",
+              "cls": "app-linear-view",
+              "id": "",
+              "right": 220
+            },
+            {
+              "tag": "DIV",
+              "cls": "accessible-linear-path",
+              "id": "",
+              "right": 220
+            },
+            {
+              "tag": "DIV",
+              "cls": "symbolic-expression linear-context-expression",
+              "id": "",
+              "right": 227
+            },
+            {
+              "tag": "SPAN",
+              "cls": "symbolic-fraction",
+              "id": "",
+              "right": 60.3
+            },
+            {
+              "tag": "SPAN",
+              "cls": "symbolic-numerator",
+              "id": "",
+              "right": 60.3
+            },
+            {
+              "tag": "SPAN",
+              "cls": "symbolic-bar",
+              "id": "",
+              "right": 60.3
+            },
+            {
+              "tag": "SPAN",
+              "cls": "symbolic-denominator",
+              "id": "",
+              "right": 60.3
+            },
+            {
+              "tag": "DIV",
+              "cls": "control-fraction-fields",
+              "id": "",
+              "right": 420.1
+            }
+          ]
+        },
+        {
+          "stage": "resolved",
+          "item": "plan76-inspect-four-fifths-one-third-15",
+          "beat": "resolve",
+          "area": 262,
+          "font": "32px",
+          "docWidth": 360,
+          "scrollWidth": 381,
+          "overflowing": [
+            {
+              "tag": "DIV",
+              "cls": "",
+              "id": "app",
+              "right": 339
+            },
+            {
+              "tag": "DIV",
+              "cls": "fractionflow-app",
+              "id": "",
+              "right": 339
+            },
+            {
+              "tag": "DIV",
+              "cls": "symbolic-expression linear-context-expression",
+              "id": "",
+              "right": 360.3
+            },
+            {
+              "tag": "SPAN",
+              "cls": "symbolic-fraction",
+              "id": "",
+              "right": 27
+            },
+            {
+              "tag": "SPAN",
+              "cls": "symbolic-numerator",
+              "id": "",
+              "right": 27
+            },
+            {
+              "tag": "SPAN",
+              "cls": "symbolic-bar",
+              "id": "",
+              "right": 27
+            },
+            {
+              "tag": "SPAN",
+              "cls": "symbolic-denominator",
+              "id": "",
+              "right": 27
+            }
+          ]
+        }
+      ],
+      "completed": true,
+      "draftPreservedOnShrink": true
+    },
+    {
+      "config": "enlarged",
+      "family": 40,
+      "item": "plan85-isolated-identify-five-sixths-one-half-6",
+      "view": "visual",
+      "captures": [
+        {
+          "stage": "initial",
+          "item": "plan85-isolated-identify-five-sixths-one-half-6",
+          "beat": "encounter",
+          "area": 262,
+          "font": "32px",
+          "docWidth": 360,
+          "scrollWidth": 360,
+          "overflowing": []
+        },
+        {
+          "stage": "after-encounter",
+          "item": "plan85-isolated-identify-five-sixths-one-half-6",
+          "beat": "decide",
+          "area": 262,
+          "font": "32px",
+          "docWidth": 360,
+          "scrollWidth": 360,
+          "overflowing": []
+        },
+        {
+          "stage": "transform-right",
+          "item": "plan85-isolated-identify-five-sixths-one-half-6",
+          "beat": "operate",
+          "area": 262,
+          "font": "32px",
+          "docWidth": 360,
+          "scrollWidth": 499,
+          "overflowing": [
+            {
+              "tag": "DIV",
+              "cls": "control-fraction-fields",
+              "id": "",
+              "right": 471.1
+            },
+            {
+              "tag": "DIV",
+              "cls": "control-fraction-field",
+              "id": "",
+              "right": 471.1
+            },
+            {
+              "tag": "LABEL",
+              "cls": "control-label",
+              "id": "",
+              "right": 471.1
+            },
+            {
+              "tag": "INPUT",
+              "cls": "fraction-control control-numeric-input control-fraction-input",
+              "id": "operate-fraction-denominator-input",
+              "right": 471.1
+            }
+          ]
+        },
+        {
+          "stage": "draft-shrink-320",
+          "item": "plan85-isolated-identify-five-sixths-one-half-6",
+          "beat": "operate",
+          "area": 222,
+          "font": "32px",
+          "docWidth": 320,
+          "scrollWidth": 499,
+          "overflowing": [
+            {
+              "tag": "DIV",
+              "cls": "",
+              "id": "app",
+              "right": 280
+            },
+            {
+              "tag": "DIV",
+              "cls": "fractionflow-app",
+              "id": "",
+              "right": 280
+            },
+            {
+              "tag": "MAIN",
+              "cls": "app-episode",
+              "id": "",
+              "right": 256
+            },
+            {
+              "tag": "DIV",
+              "cls": "control-fraction-fields",
+              "id": "",
+              "right": 431.1
+            },
+            {
+              "tag": "DIV",
+              "cls": "control-fraction-field",
+              "id": "",
+              "right": 431.1
+            },
+            {
+              "tag": "LABEL",
+              "cls": "control-label",
+              "id": "",
+              "right": 431.1
+            },
+            {
+              "tag": "INPUT",
+              "cls": "fraction-control control-numeric-input control-fraction-input",
+              "id": "operate-fraction-denominator-input",
+              "right": 431.1
+            }
+          ]
+        },
+        {
+          "stage": "resolved",
+          "item": "plan85-isolated-identify-five-sixths-one-half-6",
+          "beat": "resolve",
+          "area": 262,
+          "font": "32px",
+          "docWidth": 360,
+          "scrollWidth": 360,
+          "overflowing": []
+        }
+      ],
+      "completed": true,
+      "draftPreservedOnShrink": true
+    },
+    {
+      "config": "enlarged",
+      "family": 40,
+      "item": "plan85-isolated-identify-five-sixths-one-half-6",
+      "view": "linear",
+      "captures": [
+        {
+          "stage": "initial",
+          "item": "plan85-isolated-identify-five-sixths-one-half-6",
+          "beat": "encounter",
+          "area": 262,
+          "font": "32px",
+          "docWidth": 360,
+          "scrollWidth": 360,
+          "overflowing": []
+        },
+        {
+          "stage": "after-encounter",
+          "item": "plan85-isolated-identify-five-sixths-one-half-6",
+          "beat": "decide",
+          "area": 262,
+          "font": "32px",
+          "docWidth": 360,
+          "scrollWidth": 360,
+          "overflowing": []
+        },
+        {
+          "stage": "transform-right",
+          "item": "plan85-isolated-identify-five-sixths-one-half-6",
+          "beat": "operate",
+          "area": 262,
+          "font": "32px",
+          "docWidth": 360,
+          "scrollWidth": 499,
+          "overflowing": [
+            {
+              "tag": "DIV",
+              "cls": "control-fraction-fields",
+              "id": "",
+              "right": 471.1
+            },
+            {
+              "tag": "DIV",
+              "cls": "control-fraction-field",
+              "id": "",
+              "right": 471.1
+            },
+            {
+              "tag": "LABEL",
+              "cls": "control-label",
+              "id": "",
+              "right": 471.1
+            },
+            {
+              "tag": "INPUT",
+              "cls": "fraction-control control-numeric-input control-fraction-input",
+              "id": "linear-operate-fraction-denominator-input",
+              "right": 471.1
+            }
+          ]
+        },
+        {
+          "stage": "draft-shrink-320",
+          "item": "plan85-isolated-identify-five-sixths-one-half-6",
+          "beat": "operate",
+          "area": 222,
+          "font": "32px",
+          "docWidth": 320,
+          "scrollWidth": 499,
+          "overflowing": [
+            {
+              "tag": "DIV",
+              "cls": "",
+              "id": "app",
+              "right": 280
+            },
+            {
+              "tag": "DIV",
+              "cls": "fractionflow-app",
+              "id": "",
+              "right": 280
+            },
+            {
+              "tag": "MAIN",
+              "cls": "app-episode",
+              "id": "",
+              "right": 256
+            },
+            {
+              "tag": "DIV",
+              "cls": "control-fraction-fields",
+              "id": "",
+              "right": 431.1
+            },
+            {
+              "tag": "DIV",
+              "cls": "control-fraction-field",
+              "id": "",
+              "right": 431.1
+            },
+            {
+              "tag": "LABEL",
+              "cls": "control-label",
+              "id": "",
+              "right": 431.1
+            },
+            {
+              "tag": "INPUT",
+              "cls": "fraction-control control-numeric-input control-fraction-input",
+              "id": "linear-operate-fraction-denominator-input",
+              "right": 431.1
+            }
+          ]
+        },
+        {
+          "stage": "resolved",
+          "item": "plan85-isolated-identify-five-sixths-one-half-6",
+          "beat": "resolve",
+          "area": 262,
+          "font": "32px",
+          "docWidth": 360,
+          "scrollWidth": 360,
+          "overflowing": []
+        }
+      ],
+      "completed": true,
+      "draftPreservedOnShrink": true
+    },
+    {
+      "config": "enlarged",
+      "family": 74,
+      "item": "plan74-add-01",
+      "view": "visual",
+      "captures": [
+        {
+          "stage": "initial",
+          "item": "plan74-add-01",
+          "beat": "construct",
+          "area": 262,
+          "font": "32px",
+          "docWidth": 360,
+          "scrollWidth": 360,
+          "overflowing": []
+        },
+        {
+          "stage": "draft-shrink-320",
+          "item": "plan74-add-01",
+          "beat": "construct",
+          "area": 222,
+          "font": "32px",
+          "docWidth": 320,
+          "scrollWidth": 320,
+          "overflowing": []
+        },
+        {
+          "stage": "resolved",
+          "item": "plan74-add-01",
+          "beat": "resolve",
+          "area": 262,
+          "font": "32px",
+          "docWidth": 360,
+          "scrollWidth": 360,
+          "overflowing": []
+        }
+      ],
+      "completed": true,
+      "draftPreservedOnShrink": true
+    },
+    {
+      "config": "enlarged",
+      "family": 74,
+      "item": "plan74-add-01",
+      "view": "linear",
+      "captures": [
+        {
+          "stage": "initial",
+          "item": "plan74-add-01",
+          "beat": "construct",
+          "area": 262,
+          "font": "32px",
+          "docWidth": 360,
+          "scrollWidth": 360,
+          "overflowing": []
+        },
+        {
+          "stage": "draft-shrink-320",
+          "item": "plan74-add-01",
+          "beat": "construct",
+          "area": 222,
+          "font": "32px",
+          "docWidth": 320,
+          "scrollWidth": 320,
+          "overflowing": []
+        },
+        {
+          "stage": "resolved",
+          "item": "plan74-add-01",
+          "beat": "resolve",
+          "area": 262,
+          "font": "32px",
+          "docWidth": 360,
+          "scrollWidth": 360,
+          "overflowing": []
+        }
+      ],
+      "completed": true,
+      "draftPreservedOnShrink": true
+    },
+    {
+      "config": "enlarged",
+      "family": 74,
+      "item": "plan74-add-15",
+      "view": "visual",
+      "captures": [
+        {
+          "stage": "initial",
+          "item": "plan74-add-15",
+          "beat": "construct",
+          "area": 262,
+          "font": "32px",
+          "docWidth": 360,
+          "scrollWidth": 360,
+          "overflowing": []
+        },
+        {
+          "stage": "draft-shrink-320",
+          "item": "plan74-add-15",
+          "beat": "construct",
+          "area": 222,
+          "font": "32px",
+          "docWidth": 320,
+          "scrollWidth": 320,
+          "overflowing": []
+        },
+        {
+          "stage": "resolved",
+          "item": "plan74-add-15",
+          "beat": "resolve",
+          "area": 262,
+          "font": "32px",
+          "docWidth": 360,
+          "scrollWidth": 360,
+          "overflowing": []
+        }
+      ],
+      "completed": true,
+      "draftPreservedOnShrink": true
+    },
+    {
+      "config": "enlarged",
+      "family": 74,
+      "item": "plan74-add-15",
+      "view": "linear",
+      "captures": [
+        {
+          "stage": "initial",
+          "item": "plan74-add-15",
+          "beat": "construct",
+          "area": 262,
+          "font": "32px",
+          "docWidth": 360,
+          "scrollWidth": 360,
+          "overflowing": []
+        },
+        {
+          "stage": "draft-shrink-320",
+          "item": "plan74-add-15",
+          "beat": "construct",
+          "area": 222,
+          "font": "32px",
+          "docWidth": 320,
+          "scrollWidth": 320,
+          "overflowing": []
+        },
+        {
+          "stage": "resolved",
+          "item": "plan74-add-15",
+          "beat": "resolve",
+          "area": 262,
+          "font": "32px",
+          "docWidth": 360,
+          "scrollWidth": 360,
+          "overflowing": []
+        }
+      ],
+      "completed": true,
+      "draftPreservedOnShrink": true
+    },
+    {
+      "config": "enlarged",
+      "family": 74,
+      "item": "plan74-add-30",
+      "view": "visual",
+      "captures": [
+        {
+          "stage": "initial",
+          "item": "plan74-add-30",
+          "beat": "construct",
+          "area": 262,
+          "font": "32px",
+          "docWidth": 360,
+          "scrollWidth": 360,
+          "overflowing": []
+        },
+        {
+          "stage": "draft-shrink-320",
+          "item": "plan74-add-30",
+          "beat": "construct",
+          "area": 222,
+          "font": "32px",
+          "docWidth": 320,
+          "scrollWidth": 320,
+          "overflowing": []
+        },
+        {
+          "stage": "resolved",
+          "item": "plan74-add-30",
+          "beat": "resolve",
+          "area": 262,
+          "font": "32px",
+          "docWidth": 360,
+          "scrollWidth": 360,
+          "overflowing": []
+        }
+      ],
+      "completed": true,
+      "draftPreservedOnShrink": true
+    },
+    {
+      "config": "enlarged",
+      "family": 74,
+      "item": "plan74-add-30",
+      "view": "linear",
+      "captures": [
+        {
+          "stage": "initial",
+          "item": "plan74-add-30",
+          "beat": "construct",
+          "area": 262,
+          "font": "32px",
+          "docWidth": 360,
+          "scrollWidth": 360,
+          "overflowing": []
+        },
+        {
+          "stage": "draft-shrink-320",
+          "item": "plan74-add-30",
+          "beat": "construct",
+          "area": 222,
+          "font": "32px",
+          "docWidth": 320,
+          "scrollWidth": 320,
+          "overflowing": []
+        },
+        {
+          "stage": "resolved",
+          "item": "plan74-add-30",
+          "beat": "resolve",
+          "area": 262,
+          "font": "32px",
+          "docWidth": 360,
+          "scrollWidth": 360,
+          "overflowing": []
+        }
+      ],
+      "completed": true,
+      "draftPreservedOnShrink": true
+    },
+    {
+      "config": "enlarged",
+      "family": 78,
+      "item": "plan78-subtract-01",
+      "view": "visual",
+      "captures": [
+        {
+          "stage": "initial",
+          "item": "plan78-subtract-01",
+          "beat": "construct",
+          "area": 262,
+          "font": "32px",
+          "docWidth": 360,
+          "scrollWidth": 369,
+          "overflowing": [
+            {
+              "tag": "LABEL",
+              "cls": "plan58-label",
+              "id": "",
+              "right": 369
+            },
+            {
+              "tag": "SPAN",
+              "cls": "",
+              "id": "",
+              "right": 369
+            },
+            {
+              "tag": "SPAN",
+              "cls": "plan74-piece-entry",
+              "id": "",
+              "right": 369
+            },
+            {
+              "tag": "SPAN",
+              "cls": "plan74-denominator",
+              "id": "",
+              "right": 369
+            }
+          ]
+        },
+        {
+          "stage": "draft-shrink-320",
+          "item": "plan78-subtract-01",
+          "beat": "construct",
+          "area": 222,
+          "font": "32px",
+          "docWidth": 320,
+          "scrollWidth": 369,
+          "overflowing": [
+            {
+              "tag": "LABEL",
+              "cls": "plan58-label",
+              "id": "",
+              "right": 369
+            },
+            {
+              "tag": "SPAN",
+              "cls": "",
+              "id": "",
+              "right": 369
+            },
+            {
+              "tag": "SPAN",
+              "cls": "plan74-piece-entry",
+              "id": "",
+              "right": 369
+            },
+            {
+              "tag": "SPAN",
+              "cls": "plan74-denominator",
+              "id": "",
+              "right": 369
+            }
+          ]
+        },
+        {
+          "stage": "resolved",
+          "item": "plan78-subtract-01",
+          "beat": "resolve",
+          "area": 262,
+          "font": "32px",
+          "docWidth": 360,
+          "scrollWidth": 360,
+          "overflowing": []
+        }
+      ],
+      "completed": true,
+      "draftPreservedOnShrink": true
+    },
+    {
+      "config": "enlarged",
+      "family": 78,
+      "item": "plan78-subtract-01",
+      "view": "linear",
+      "captures": [
+        {
+          "stage": "initial",
+          "item": "plan78-subtract-01",
+          "beat": "construct",
+          "area": 262,
+          "font": "32px",
+          "docWidth": 360,
+          "scrollWidth": 369,
+          "overflowing": [
+            {
+              "tag": "LABEL",
+              "cls": "plan58-label",
+              "id": "",
+              "right": 369
+            },
+            {
+              "tag": "SPAN",
+              "cls": "",
+              "id": "",
+              "right": 369
+            },
+            {
+              "tag": "SPAN",
+              "cls": "plan74-piece-entry",
+              "id": "",
+              "right": 369
+            },
+            {
+              "tag": "SPAN",
+              "cls": "plan74-denominator",
+              "id": "",
+              "right": 369
+            }
+          ]
+        },
+        {
+          "stage": "draft-shrink-320",
+          "item": "plan78-subtract-01",
+          "beat": "construct",
+          "area": 222,
+          "font": "32px",
+          "docWidth": 320,
+          "scrollWidth": 369,
+          "overflowing": [
+            {
+              "tag": "LABEL",
+              "cls": "plan58-label",
+              "id": "",
+              "right": 369
+            },
+            {
+              "tag": "SPAN",
+              "cls": "",
+              "id": "",
+              "right": 369
+            },
+            {
+              "tag": "SPAN",
+              "cls": "plan74-piece-entry",
+              "id": "",
+              "right": 369
+            },
+            {
+              "tag": "SPAN",
+              "cls": "plan74-denominator",
+              "id": "",
+              "right": 369
+            }
+          ]
+        },
+        {
+          "stage": "resolved",
+          "item": "plan78-subtract-01",
+          "beat": "resolve",
+          "area": 262,
+          "font": "32px",
+          "docWidth": 360,
+          "scrollWidth": 360,
+          "overflowing": []
+        }
+      ],
+      "completed": true,
+      "draftPreservedOnShrink": true
+    },
+    {
+      "config": "enlarged",
+      "family": 78,
+      "item": "plan78-subtract-15",
+      "view": "visual",
+      "captures": [
+        {
+          "stage": "initial",
+          "item": "plan78-subtract-15",
+          "beat": "construct",
+          "area": 262,
+          "font": "32px",
+          "docWidth": 360,
+          "scrollWidth": 369,
+          "overflowing": [
+            {
+              "tag": "LABEL",
+              "cls": "plan58-label",
+              "id": "",
+              "right": 369
+            },
+            {
+              "tag": "SPAN",
+              "cls": "",
+              "id": "",
+              "right": 369
+            },
+            {
+              "tag": "SPAN",
+              "cls": "plan74-piece-entry",
+              "id": "",
+              "right": 369
+            },
+            {
+              "tag": "SPAN",
+              "cls": "plan74-denominator",
+              "id": "",
+              "right": 369
+            }
+          ]
+        },
+        {
+          "stage": "draft-shrink-320",
+          "item": "plan78-subtract-15",
+          "beat": "construct",
+          "area": 222,
+          "font": "32px",
+          "docWidth": 320,
+          "scrollWidth": 369,
+          "overflowing": [
+            {
+              "tag": "LABEL",
+              "cls": "plan58-label",
+              "id": "",
+              "right": 369
+            },
+            {
+              "tag": "SPAN",
+              "cls": "",
+              "id": "",
+              "right": 369
+            },
+            {
+              "tag": "SPAN",
+              "cls": "plan74-piece-entry",
+              "id": "",
+              "right": 369
+            },
+            {
+              "tag": "SPAN",
+              "cls": "plan74-denominator",
+              "id": "",
+              "right": 369
+            }
+          ]
+        },
+        {
+          "stage": "resolved",
+          "item": "plan78-subtract-15",
+          "beat": "resolve",
+          "area": 262,
+          "font": "32px",
+          "docWidth": 360,
+          "scrollWidth": 360,
+          "overflowing": []
+        }
+      ],
+      "completed": true,
+      "draftPreservedOnShrink": true
+    },
+    {
+      "config": "enlarged",
+      "family": 78,
+      "item": "plan78-subtract-15",
+      "view": "linear",
+      "captures": [
+        {
+          "stage": "initial",
+          "item": "plan78-subtract-15",
+          "beat": "construct",
+          "area": 262,
+          "font": "32px",
+          "docWidth": 360,
+          "scrollWidth": 369,
+          "overflowing": [
+            {
+              "tag": "LABEL",
+              "cls": "plan58-label",
+              "id": "",
+              "right": 369
+            },
+            {
+              "tag": "SPAN",
+              "cls": "",
+              "id": "",
+              "right": 369
+            },
+            {
+              "tag": "SPAN",
+              "cls": "plan74-piece-entry",
+              "id": "",
+              "right": 369
+            },
+            {
+              "tag": "SPAN",
+              "cls": "plan74-denominator",
+              "id": "",
+              "right": 369
+            }
+          ]
+        },
+        {
+          "stage": "draft-shrink-320",
+          "item": "plan78-subtract-15",
+          "beat": "construct",
+          "area": 222,
+          "font": "32px",
+          "docWidth": 320,
+          "scrollWidth": 369,
+          "overflowing": [
+            {
+              "tag": "LABEL",
+              "cls": "plan58-label",
+              "id": "",
+              "right": 369
+            },
+            {
+              "tag": "SPAN",
+              "cls": "",
+              "id": "",
+              "right": 369
+            },
+            {
+              "tag": "SPAN",
+              "cls": "plan74-piece-entry",
+              "id": "",
+              "right": 369
+            },
+            {
+              "tag": "SPAN",
+              "cls": "plan74-denominator",
+              "id": "",
+              "right": 369
+            }
+          ]
+        },
+        {
+          "stage": "resolved",
+          "item": "plan78-subtract-15",
+          "beat": "resolve",
+          "area": 262,
+          "font": "32px",
+          "docWidth": 360,
+          "scrollWidth": 360,
+          "overflowing": []
+        }
+      ],
+      "completed": true,
+      "draftPreservedOnShrink": true
+    },
+    {
+      "config": "enlarged",
+      "family": 78,
+      "item": "plan78-subtract-30",
+      "view": "visual",
+      "captures": [
+        {
+          "stage": "initial",
+          "item": "plan78-subtract-30",
+          "beat": "construct",
+          "area": 262,
+          "font": "32px",
+          "docWidth": 360,
+          "scrollWidth": 369,
+          "overflowing": [
+            {
+              "tag": "LABEL",
+              "cls": "plan58-label",
+              "id": "",
+              "right": 369
+            },
+            {
+              "tag": "SPAN",
+              "cls": "",
+              "id": "",
+              "right": 369
+            },
+            {
+              "tag": "SPAN",
+              "cls": "plan74-piece-entry",
+              "id": "",
+              "right": 369
+            },
+            {
+              "tag": "SPAN",
+              "cls": "plan74-denominator",
+              "id": "",
+              "right": 369
+            }
+          ]
+        },
+        {
+          "stage": "draft-shrink-320",
+          "item": "plan78-subtract-30",
+          "beat": "construct",
+          "area": 222,
+          "font": "32px",
+          "docWidth": 320,
+          "scrollWidth": 369,
+          "overflowing": [
+            {
+              "tag": "LABEL",
+              "cls": "plan58-label",
+              "id": "",
+              "right": 369
+            },
+            {
+              "tag": "SPAN",
+              "cls": "",
+              "id": "",
+              "right": 369
+            },
+            {
+              "tag": "SPAN",
+              "cls": "plan74-piece-entry",
+              "id": "",
+              "right": 369
+            },
+            {
+              "tag": "SPAN",
+              "cls": "plan74-denominator",
+              "id": "",
+              "right": 369
+            }
+          ]
+        },
+        {
+          "stage": "resolved",
+          "item": "plan78-subtract-30",
+          "beat": "resolve",
+          "area": 262,
+          "font": "32px",
+          "docWidth": 360,
+          "scrollWidth": 360,
+          "overflowing": []
+        }
+      ],
+      "completed": true,
+      "draftPreservedOnShrink": true
+    },
+    {
+      "config": "enlarged",
+      "family": 78,
+      "item": "plan78-subtract-30",
+      "view": "linear",
+      "captures": [
+        {
+          "stage": "initial",
+          "item": "plan78-subtract-30",
+          "beat": "construct",
+          "area": 262,
+          "font": "32px",
+          "docWidth": 360,
+          "scrollWidth": 369,
+          "overflowing": [
+            {
+              "tag": "LABEL",
+              "cls": "plan58-label",
+              "id": "",
+              "right": 369
+            },
+            {
+              "tag": "SPAN",
+              "cls": "",
+              "id": "",
+              "right": 369
+            },
+            {
+              "tag": "SPAN",
+              "cls": "plan74-piece-entry",
+              "id": "",
+              "right": 369
+            },
+            {
+              "tag": "SPAN",
+              "cls": "plan74-denominator",
+              "id": "",
+              "right": 369
+            }
+          ]
+        },
+        {
+          "stage": "draft-shrink-320",
+          "item": "plan78-subtract-30",
+          "beat": "construct",
+          "area": 222,
+          "font": "32px",
+          "docWidth": 320,
+          "scrollWidth": 369,
+          "overflowing": [
+            {
+              "tag": "LABEL",
+              "cls": "plan58-label",
+              "id": "",
+              "right": 369
+            },
+            {
+              "tag": "SPAN",
+              "cls": "",
+              "id": "",
+              "right": 369
+            },
+            {
+              "tag": "SPAN",
+              "cls": "plan74-piece-entry",
+              "id": "",
+              "right": 369
+            },
+            {
+              "tag": "SPAN",
+              "cls": "plan74-denominator",
+              "id": "",
+              "right": 369
+            }
+          ]
+        },
+        {
+          "stage": "resolved",
+          "item": "plan78-subtract-30",
+          "beat": "resolve",
+          "area": 262,
+          "font": "32px",
+          "docWidth": 360,
+          "scrollWidth": 360,
+          "overflowing": []
+        }
+      ],
+      "completed": true,
+      "draftPreservedOnShrink": true
+    },
+    {
+      "config": "enlarged",
+      "family": 82,
+      "item": "plan82-subtract-01",
+      "view": "visual",
+      "captures": [
+        {
+          "stage": "initial",
+          "item": "plan82-subtract-01",
+          "beat": "construct",
+          "area": 262,
+          "font": "32px",
+          "docWidth": 360,
+          "scrollWidth": 360,
+          "overflowing": []
+        },
+        {
+          "stage": "draft-shrink-320",
+          "item": "plan82-subtract-01",
+          "beat": "construct",
+          "area": 222,
+          "font": "32px",
+          "docWidth": 320,
+          "scrollWidth": 320,
+          "overflowing": []
+        },
+        {
+          "stage": "resolved",
+          "item": "plan82-subtract-01",
+          "beat": "resolve",
+          "area": 262,
+          "font": "32px",
+          "docWidth": 360,
+          "scrollWidth": 360,
+          "overflowing": []
+        }
+      ],
+      "completed": true,
+      "draftPreservedOnShrink": true
+    },
+    {
+      "config": "enlarged",
+      "family": 82,
+      "item": "plan82-subtract-01",
+      "view": "linear",
+      "captures": [
+        {
+          "stage": "initial",
+          "item": "plan82-subtract-01",
+          "beat": "construct",
+          "area": 262,
+          "font": "32px",
+          "docWidth": 360,
+          "scrollWidth": 360,
+          "overflowing": []
+        },
+        {
+          "stage": "draft-shrink-320",
+          "item": "plan82-subtract-01",
+          "beat": "construct",
+          "area": 222,
+          "font": "32px",
+          "docWidth": 320,
+          "scrollWidth": 320,
+          "overflowing": []
+        },
+        {
+          "stage": "resolved",
+          "item": "plan82-subtract-01",
+          "beat": "resolve",
+          "area": 262,
+          "font": "32px",
+          "docWidth": 360,
+          "scrollWidth": 360,
+          "overflowing": []
+        }
+      ],
+      "completed": true,
+      "draftPreservedOnShrink": true
+    },
+    {
+      "config": "enlarged",
+      "family": 82,
+      "item": "plan82-subtract-15",
+      "view": "visual",
+      "captures": [
+        {
+          "stage": "initial",
+          "item": "plan82-subtract-15",
+          "beat": "construct",
+          "area": 262,
+          "font": "32px",
+          "docWidth": 360,
+          "scrollWidth": 360,
+          "overflowing": []
+        },
+        {
+          "stage": "draft-shrink-320",
+          "item": "plan82-subtract-15",
+          "beat": "construct",
+          "area": 222,
+          "font": "32px",
+          "docWidth": 320,
+          "scrollWidth": 320,
+          "overflowing": []
+        },
+        {
+          "stage": "resolved",
+          "item": "plan82-subtract-15",
+          "beat": "resolve",
+          "area": 262,
+          "font": "32px",
+          "docWidth": 360,
+          "scrollWidth": 360,
+          "overflowing": []
+        }
+      ],
+      "completed": true,
+      "draftPreservedOnShrink": true
+    },
+    {
+      "config": "enlarged",
+      "family": 82,
+      "item": "plan82-subtract-15",
+      "view": "linear",
+      "captures": [
+        {
+          "stage": "initial",
+          "item": "plan82-subtract-15",
+          "beat": "construct",
+          "area": 262,
+          "font": "32px",
+          "docWidth": 360,
+          "scrollWidth": 360,
+          "overflowing": []
+        },
+        {
+          "stage": "draft-shrink-320",
+          "item": "plan82-subtract-15",
+          "beat": "construct",
+          "area": 222,
+          "font": "32px",
+          "docWidth": 320,
+          "scrollWidth": 320,
+          "overflowing": []
+        },
+        {
+          "stage": "resolved",
+          "item": "plan82-subtract-15",
+          "beat": "resolve",
+          "area": 262,
+          "font": "32px",
+          "docWidth": 360,
+          "scrollWidth": 360,
+          "overflowing": []
+        }
+      ],
+      "completed": true,
+      "draftPreservedOnShrink": true
+    },
+    {
+      "config": "enlarged",
+      "family": 82,
+      "item": "plan82-subtract-30",
+      "view": "visual",
+      "captures": [
+        {
+          "stage": "initial",
+          "item": "plan82-subtract-30",
+          "beat": "construct",
+          "area": 262,
+          "font": "32px",
+          "docWidth": 360,
+          "scrollWidth": 360,
+          "overflowing": []
+        },
+        {
+          "stage": "draft-shrink-320",
+          "item": "plan82-subtract-30",
+          "beat": "construct",
+          "area": 222,
+          "font": "32px",
+          "docWidth": 320,
+          "scrollWidth": 320,
+          "overflowing": []
+        },
+        {
+          "stage": "resolved",
+          "item": "plan82-subtract-30",
+          "beat": "resolve",
+          "area": 262,
+          "font": "32px",
+          "docWidth": 360,
+          "scrollWidth": 360,
+          "overflowing": []
+        }
+      ],
+      "completed": true,
+      "draftPreservedOnShrink": true
+    },
+    {
+      "config": "enlarged",
+      "family": 82,
+      "item": "plan82-subtract-30",
+      "view": "linear",
+      "captures": [
+        {
+          "stage": "initial",
+          "item": "plan82-subtract-30",
+          "beat": "construct",
+          "area": 262,
+          "font": "32px",
+          "docWidth": 360,
+          "scrollWidth": 360,
+          "overflowing": []
+        },
+        {
+          "stage": "draft-shrink-320",
+          "item": "plan82-subtract-30",
+          "beat": "construct",
+          "area": 222,
+          "font": "32px",
+          "docWidth": 320,
+          "scrollWidth": 320,
+          "overflowing": []
+        },
+        {
+          "stage": "resolved",
+          "item": "plan82-subtract-30",
+          "beat": "resolve",
+          "area": 262,
+          "font": "32px",
+          "docWidth": 360,
+          "scrollWidth": 360,
+          "overflowing": []
+        }
+      ],
+      "completed": true,
+      "draftPreservedOnShrink": true
+    },
+    {
+      "config": "wide",
+      "family": 40,
+      "item": "plan40-construct-half-fifth-10",
+      "view": "visual",
+      "captures": [
+        {
+          "stage": "initial",
+          "item": "plan40-construct-half-fifth-10",
+          "beat": "encounter",
+          "area": 970.8125,
+          "font": "16px",
+          "docWidth": 1093,
+          "scrollWidth": 1093,
+          "overflowing": []
+        },
+        {
+          "stage": "after-encounter",
+          "item": "plan40-construct-half-fifth-10",
+          "beat": "transform",
+          "area": 970.8125,
+          "font": "16px",
+          "docWidth": 1093,
+          "scrollWidth": 1093,
+          "overflowing": []
+        },
+        {
+          "stage": "transform-left",
+          "item": "plan40-construct-half-fifth-10",
+          "beat": "transform",
+          "area": 970.8125,
+          "font": "16px",
+          "docWidth": 1093,
+          "scrollWidth": 1093,
+          "overflowing": []
+        },
+        {
+          "stage": "transform-right",
+          "item": "plan40-construct-half-fifth-10",
+          "beat": "operate",
+          "area": 970.8125,
+          "font": "16px",
+          "docWidth": 1093,
+          "scrollWidth": 1093,
+          "overflowing": []
+        },
+        {
+          "stage": "draft-shrink-320",
+          "item": "plan40-construct-half-fifth-10",
+          "beat": "operate",
+          "area": 270,
+          "font": "16px",
+          "docWidth": 320,
+          "scrollWidth": 320,
+          "overflowing": []
+        },
+        {
+          "stage": "resolved",
+          "item": "plan40-construct-half-fifth-10",
+          "beat": "resolve",
+          "area": 970.8125,
+          "font": "16px",
+          "docWidth": 1093,
+          "scrollWidth": 1093,
+          "overflowing": []
+        }
+      ],
+      "completed": true,
+      "draftPreservedOnShrink": true
+    },
+    {
+      "config": "wide",
+      "family": 40,
+      "item": "plan40-construct-half-fifth-10",
+      "view": "linear",
+      "captures": [
+        {
+          "stage": "initial",
+          "item": "plan40-construct-half-fifth-10",
+          "beat": "encounter",
+          "area": 970.8125,
+          "font": "16px",
+          "docWidth": 1093,
+          "scrollWidth": 1093,
+          "overflowing": []
+        },
+        {
+          "stage": "after-encounter",
+          "item": "plan40-construct-half-fifth-10",
+          "beat": "transform",
+          "area": 970.8125,
+          "font": "16px",
+          "docWidth": 1093,
+          "scrollWidth": 1093,
+          "overflowing": []
+        },
+        {
+          "stage": "transform-left",
+          "item": "plan40-construct-half-fifth-10",
+          "beat": "transform",
+          "area": 970.8125,
+          "font": "16px",
+          "docWidth": 1093,
+          "scrollWidth": 1093,
+          "overflowing": []
+        },
+        {
+          "stage": "transform-right",
+          "item": "plan40-construct-half-fifth-10",
+          "beat": "operate",
+          "area": 970.8125,
+          "font": "16px",
+          "docWidth": 1093,
+          "scrollWidth": 1093,
+          "overflowing": []
+        },
+        {
+          "stage": "draft-shrink-320",
+          "item": "plan40-construct-half-fifth-10",
+          "beat": "operate",
+          "area": 270,
+          "font": "16px",
+          "docWidth": 320,
+          "scrollWidth": 320,
+          "overflowing": []
+        },
+        {
+          "stage": "resolved",
+          "item": "plan40-construct-half-fifth-10",
+          "beat": "resolve",
+          "area": 970.8125,
+          "font": "16px",
+          "docWidth": 1093,
+          "scrollWidth": 1093,
+          "overflowing": []
+        }
+      ],
+      "completed": true,
+      "draftPreservedOnShrink": true
+    },
+    {
+      "config": "wide",
+      "family": 40,
+      "item": "plan76-inspect-four-fifths-one-third-15",
+      "view": "visual",
+      "captures": [
+        {
+          "stage": "initial",
+          "item": "plan76-inspect-four-fifths-one-third-15",
+          "beat": "encounter",
+          "area": 970.8125,
+          "font": "16px",
+          "docWidth": 1093,
+          "scrollWidth": 1093,
+          "overflowing": []
+        },
+        {
+          "stage": "after-encounter",
+          "item": "plan76-inspect-four-fifths-one-third-15",
+          "beat": "transform",
+          "area": 970.8125,
+          "font": "16px",
+          "docWidth": 1093,
+          "scrollWidth": 1093,
+          "overflowing": []
+        },
+        {
+          "stage": "transform-left",
+          "item": "plan76-inspect-four-fifths-one-third-15",
+          "beat": "transform",
+          "area": 970.8125,
+          "font": "16px",
+          "docWidth": 1093,
+          "scrollWidth": 1093,
+          "overflowing": []
+        },
+        {
+          "stage": "transform-right",
+          "item": "plan76-inspect-four-fifths-one-third-15",
+          "beat": "operate",
+          "area": 970.8125,
+          "font": "16px",
+          "docWidth": 1093,
+          "scrollWidth": 1093,
+          "overflowing": []
+        },
+        {
+          "stage": "draft-shrink-320",
+          "item": "plan76-inspect-four-fifths-one-third-15",
+          "beat": "operate",
+          "area": 270,
+          "font": "16px",
+          "docWidth": 320,
+          "scrollWidth": 320,
+          "overflowing": []
+        },
+        {
+          "stage": "resolved",
+          "item": "plan76-inspect-four-fifths-one-third-15",
+          "beat": "resolve",
+          "area": 970.8125,
+          "font": "16px",
+          "docWidth": 1093,
+          "scrollWidth": 1093,
+          "overflowing": []
+        }
+      ],
+      "completed": true,
+      "draftPreservedOnShrink": true
+    },
+    {
+      "config": "wide",
+      "family": 40,
+      "item": "plan76-inspect-four-fifths-one-third-15",
+      "view": "linear",
+      "captures": [
+        {
+          "stage": "initial",
+          "item": "plan76-inspect-four-fifths-one-third-15",
+          "beat": "encounter",
+          "area": 970.8125,
+          "font": "16px",
+          "docWidth": 1093,
+          "scrollWidth": 1093,
+          "overflowing": []
+        },
+        {
+          "stage": "after-encounter",
+          "item": "plan76-inspect-four-fifths-one-third-15",
+          "beat": "transform",
+          "area": 970.8125,
+          "font": "16px",
+          "docWidth": 1093,
+          "scrollWidth": 1093,
+          "overflowing": []
+        },
+        {
+          "stage": "transform-left",
+          "item": "plan76-inspect-four-fifths-one-third-15",
+          "beat": "transform",
+          "area": 970.8125,
+          "font": "16px",
+          "docWidth": 1093,
+          "scrollWidth": 1093,
+          "overflowing": []
+        },
+        {
+          "stage": "transform-right",
+          "item": "plan76-inspect-four-fifths-one-third-15",
+          "beat": "operate",
+          "area": 970.8125,
+          "font": "16px",
+          "docWidth": 1093,
+          "scrollWidth": 1093,
+          "overflowing": []
+        },
+        {
+          "stage": "draft-shrink-320",
+          "item": "plan76-inspect-four-fifths-one-third-15",
+          "beat": "operate",
+          "area": 270,
+          "font": "16px",
+          "docWidth": 320,
+          "scrollWidth": 320,
+          "overflowing": []
+        },
+        {
+          "stage": "resolved",
+          "item": "plan76-inspect-four-fifths-one-third-15",
+          "beat": "resolve",
+          "area": 970.8125,
+          "font": "16px",
+          "docWidth": 1093,
+          "scrollWidth": 1093,
+          "overflowing": []
+        }
+      ],
+      "completed": true,
+      "draftPreservedOnShrink": true
+    },
+    {
+      "config": "wide",
+      "family": 40,
+      "item": "plan85-isolated-identify-five-sixths-one-half-6",
+      "view": "visual",
+      "captures": [
+        {
+          "stage": "initial",
+          "item": "plan85-isolated-identify-five-sixths-one-half-6",
+          "beat": "encounter",
+          "area": 970.8125,
+          "font": "16px",
+          "docWidth": 1093,
+          "scrollWidth": 1093,
+          "overflowing": []
+        },
+        {
+          "stage": "after-encounter",
+          "item": "plan85-isolated-identify-five-sixths-one-half-6",
+          "beat": "decide",
+          "area": 970.8125,
+          "font": "16px",
+          "docWidth": 1093,
+          "scrollWidth": 1093,
+          "overflowing": []
+        },
+        {
+          "stage": "transform-right",
+          "item": "plan85-isolated-identify-five-sixths-one-half-6",
+          "beat": "operate",
+          "area": 970.8125,
+          "font": "16px",
+          "docWidth": 1093,
+          "scrollWidth": 1093,
+          "overflowing": []
+        },
+        {
+          "stage": "draft-shrink-320",
+          "item": "plan85-isolated-identify-five-sixths-one-half-6",
+          "beat": "operate",
+          "area": 270,
+          "font": "16px",
+          "docWidth": 320,
+          "scrollWidth": 320,
+          "overflowing": []
+        },
+        {
+          "stage": "resolved",
+          "item": "plan85-isolated-identify-five-sixths-one-half-6",
+          "beat": "resolve",
+          "area": 970.8125,
+          "font": "16px",
+          "docWidth": 1093,
+          "scrollWidth": 1093,
+          "overflowing": []
+        }
+      ],
+      "completed": true,
+      "draftPreservedOnShrink": true
+    },
+    {
+      "config": "wide",
+      "family": 40,
+      "item": "plan85-isolated-identify-five-sixths-one-half-6",
+      "view": "linear",
+      "captures": [
+        {
+          "stage": "initial",
+          "item": "plan85-isolated-identify-five-sixths-one-half-6",
+          "beat": "encounter",
+          "area": 970.8125,
+          "font": "16px",
+          "docWidth": 1093,
+          "scrollWidth": 1093,
+          "overflowing": []
+        },
+        {
+          "stage": "after-encounter",
+          "item": "plan85-isolated-identify-five-sixths-one-half-6",
+          "beat": "decide",
+          "area": 970.8125,
+          "font": "16px",
+          "docWidth": 1093,
+          "scrollWidth": 1093,
+          "overflowing": []
+        },
+        {
+          "stage": "transform-right",
+          "item": "plan85-isolated-identify-five-sixths-one-half-6",
+          "beat": "operate",
+          "area": 970.8125,
+          "font": "16px",
+          "docWidth": 1093,
+          "scrollWidth": 1093,
+          "overflowing": []
+        },
+        {
+          "stage": "draft-shrink-320",
+          "item": "plan85-isolated-identify-five-sixths-one-half-6",
+          "beat": "operate",
+          "area": 270,
+          "font": "16px",
+          "docWidth": 320,
+          "scrollWidth": 320,
+          "overflowing": []
+        },
+        {
+          "stage": "resolved",
+          "item": "plan85-isolated-identify-five-sixths-one-half-6",
+          "beat": "resolve",
+          "area": 970.8125,
+          "font": "16px",
+          "docWidth": 1093,
+          "scrollWidth": 1093,
+          "overflowing": []
+        }
+      ],
+      "completed": true,
+      "draftPreservedOnShrink": true
+    },
+    {
+      "config": "wide",
+      "family": 74,
+      "item": "plan74-add-01",
+      "view": "visual",
+      "captures": [
+        {
+          "stage": "initial",
+          "item": "plan74-add-01",
+          "beat": "construct",
+          "area": 970.8125,
+          "font": "16px",
+          "docWidth": 1093,
+          "scrollWidth": 1093,
+          "overflowing": []
+        },
+        {
+          "stage": "draft-shrink-320",
+          "item": "plan74-add-01",
+          "beat": "construct",
+          "area": 270,
+          "font": "16px",
+          "docWidth": 320,
+          "scrollWidth": 320,
+          "overflowing": []
+        },
+        {
+          "stage": "resolved",
+          "item": "plan74-add-01",
+          "beat": "resolve",
+          "area": 970.8125,
+          "font": "16px",
+          "docWidth": 1093,
+          "scrollWidth": 1093,
+          "overflowing": []
+        }
+      ],
+      "completed": true,
+      "draftPreservedOnShrink": true
+    },
+    {
+      "config": "wide",
+      "family": 74,
+      "item": "plan74-add-01",
+      "view": "linear",
+      "captures": [
+        {
+          "stage": "initial",
+          "item": "plan74-add-01",
+          "beat": "construct",
+          "area": 970.8125,
+          "font": "16px",
+          "docWidth": 1093,
+          "scrollWidth": 1093,
+          "overflowing": []
+        },
+        {
+          "stage": "draft-shrink-320",
+          "item": "plan74-add-01",
+          "beat": "construct",
+          "area": 270,
+          "font": "16px",
+          "docWidth": 320,
+          "scrollWidth": 320,
+          "overflowing": []
+        },
+        {
+          "stage": "resolved",
+          "item": "plan74-add-01",
+          "beat": "resolve",
+          "area": 970.8125,
+          "font": "16px",
+          "docWidth": 1093,
+          "scrollWidth": 1093,
+          "overflowing": []
+        }
+      ],
+      "completed": true,
+      "draftPreservedOnShrink": true
+    },
+    {
+      "config": "wide",
+      "family": 74,
+      "item": "plan74-add-15",
+      "view": "visual",
+      "captures": [
+        {
+          "stage": "initial",
+          "item": "plan74-add-15",
+          "beat": "construct",
+          "area": 970.8125,
+          "font": "16px",
+          "docWidth": 1093,
+          "scrollWidth": 1093,
+          "overflowing": []
+        },
+        {
+          "stage": "draft-shrink-320",
+          "item": "plan74-add-15",
+          "beat": "construct",
+          "area": 270,
+          "font": "16px",
+          "docWidth": 320,
+          "scrollWidth": 320,
+          "overflowing": []
+        },
+        {
+          "stage": "resolved",
+          "item": "plan74-add-15",
+          "beat": "resolve",
+          "area": 970.8125,
+          "font": "16px",
+          "docWidth": 1093,
+          "scrollWidth": 1093,
+          "overflowing": []
+        }
+      ],
+      "completed": true,
+      "draftPreservedOnShrink": true
+    },
+    {
+      "config": "wide",
+      "family": 74,
+      "item": "plan74-add-15",
+      "view": "linear",
+      "captures": [
+        {
+          "stage": "initial",
+          "item": "plan74-add-15",
+          "beat": "construct",
+          "area": 970.8125,
+          "font": "16px",
+          "docWidth": 1093,
+          "scrollWidth": 1093,
+          "overflowing": []
+        },
+        {
+          "stage": "draft-shrink-320",
+          "item": "plan74-add-15",
+          "beat": "construct",
+          "area": 270,
+          "font": "16px",
+          "docWidth": 320,
+          "scrollWidth": 320,
+          "overflowing": []
+        },
+        {
+          "stage": "resolved",
+          "item": "plan74-add-15",
+          "beat": "resolve",
+          "area": 970.8125,
+          "font": "16px",
+          "docWidth": 1093,
+          "scrollWidth": 1093,
+          "overflowing": []
+        }
+      ],
+      "completed": true,
+      "draftPreservedOnShrink": true
+    },
+    {
+      "config": "wide",
+      "family": 74,
+      "item": "plan74-add-30",
+      "view": "visual",
+      "captures": [
+        {
+          "stage": "initial",
+          "item": "plan74-add-30",
+          "beat": "construct",
+          "area": 970.8125,
+          "font": "16px",
+          "docWidth": 1093,
+          "scrollWidth": 1093,
+          "overflowing": []
+        },
+        {
+          "stage": "draft-shrink-320",
+          "item": "plan74-add-30",
+          "beat": "construct",
+          "area": 270,
+          "font": "16px",
+          "docWidth": 320,
+          "scrollWidth": 320,
+          "overflowing": []
+        },
+        {
+          "stage": "resolved",
+          "item": "plan74-add-30",
+          "beat": "resolve",
+          "area": 970.8125,
+          "font": "16px",
+          "docWidth": 1093,
+          "scrollWidth": 1093,
+          "overflowing": []
+        }
+      ],
+      "completed": true,
+      "draftPreservedOnShrink": true
+    },
+    {
+      "config": "wide",
+      "family": 74,
+      "item": "plan74-add-30",
+      "view": "linear",
+      "captures": [
+        {
+          "stage": "initial",
+          "item": "plan74-add-30",
+          "beat": "construct",
+          "area": 970.8125,
+          "font": "16px",
+          "docWidth": 1093,
+          "scrollWidth": 1093,
+          "overflowing": []
+        },
+        {
+          "stage": "draft-shrink-320",
+          "item": "plan74-add-30",
+          "beat": "construct",
+          "area": 270,
+          "font": "16px",
+          "docWidth": 320,
+          "scrollWidth": 320,
+          "overflowing": []
+        },
+        {
+          "stage": "resolved",
+          "item": "plan74-add-30",
+          "beat": "resolve",
+          "area": 970.8125,
+          "font": "16px",
+          "docWidth": 1093,
+          "scrollWidth": 1093,
+          "overflowing": []
+        }
+      ],
+      "completed": true,
+      "draftPreservedOnShrink": true
+    },
+    {
+      "config": "wide",
+      "family": 78,
+      "item": "plan78-subtract-01",
+      "view": "visual",
+      "captures": [
+        {
+          "stage": "initial",
+          "item": "plan78-subtract-01",
+          "beat": "construct",
+          "area": 970.8125,
+          "font": "16px",
+          "docWidth": 1093,
+          "scrollWidth": 1093,
+          "overflowing": []
+        },
+        {
+          "stage": "draft-shrink-320",
+          "item": "plan78-subtract-01",
+          "beat": "construct",
+          "area": 270,
+          "font": "16px",
+          "docWidth": 320,
+          "scrollWidth": 320,
+          "overflowing": []
+        },
+        {
+          "stage": "resolved",
+          "item": "plan78-subtract-01",
+          "beat": "resolve",
+          "area": 970.8125,
+          "font": "16px",
+          "docWidth": 1093,
+          "scrollWidth": 1093,
+          "overflowing": []
+        }
+      ],
+      "completed": true,
+      "draftPreservedOnShrink": true
+    },
+    {
+      "config": "wide",
+      "family": 78,
+      "item": "plan78-subtract-01",
+      "view": "linear",
+      "captures": [
+        {
+          "stage": "initial",
+          "item": "plan78-subtract-01",
+          "beat": "construct",
+          "area": 970.8125,
+          "font": "16px",
+          "docWidth": 1093,
+          "scrollWidth": 1093,
+          "overflowing": []
+        },
+        {
+          "stage": "draft-shrink-320",
+          "item": "plan78-subtract-01",
+          "beat": "construct",
+          "area": 270,
+          "font": "16px",
+          "docWidth": 320,
+          "scrollWidth": 320,
+          "overflowing": []
+        },
+        {
+          "stage": "resolved",
+          "item": "plan78-subtract-01",
+          "beat": "resolve",
+          "area": 970.8125,
+          "font": "16px",
+          "docWidth": 1093,
+          "scrollWidth": 1093,
+          "overflowing": []
+        }
+      ],
+      "completed": true,
+      "draftPreservedOnShrink": true
+    },
+    {
+      "config": "wide",
+      "family": 78,
+      "item": "plan78-subtract-15",
+      "view": "visual",
+      "captures": [
+        {
+          "stage": "initial",
+          "item": "plan78-subtract-15",
+          "beat": "construct",
+          "area": 970.8125,
+          "font": "16px",
+          "docWidth": 1093,
+          "scrollWidth": 1093,
+          "overflowing": []
+        },
+        {
+          "stage": "draft-shrink-320",
+          "item": "plan78-subtract-15",
+          "beat": "construct",
+          "area": 270,
+          "font": "16px",
+          "docWidth": 320,
+          "scrollWidth": 320,
+          "overflowing": []
+        },
+        {
+          "stage": "resolved",
+          "item": "plan78-subtract-15",
+          "beat": "resolve",
+          "area": 970.8125,
+          "font": "16px",
+          "docWidth": 1093,
+          "scrollWidth": 1093,
+          "overflowing": []
+        }
+      ],
+      "completed": true,
+      "draftPreservedOnShrink": true
+    },
+    {
+      "config": "wide",
+      "family": 78,
+      "item": "plan78-subtract-15",
+      "view": "linear",
+      "captures": [
+        {
+          "stage": "initial",
+          "item": "plan78-subtract-15",
+          "beat": "construct",
+          "area": 970.8125,
+          "font": "16px",
+          "docWidth": 1093,
+          "scrollWidth": 1093,
+          "overflowing": []
+        },
+        {
+          "stage": "draft-shrink-320",
+          "item": "plan78-subtract-15",
+          "beat": "construct",
+          "area": 270,
+          "font": "16px",
+          "docWidth": 320,
+          "scrollWidth": 320,
+          "overflowing": []
+        },
+        {
+          "stage": "resolved",
+          "item": "plan78-subtract-15",
+          "beat": "resolve",
+          "area": 970.8125,
+          "font": "16px",
+          "docWidth": 1093,
+          "scrollWidth": 1093,
+          "overflowing": []
+        }
+      ],
+      "completed": true,
+      "draftPreservedOnShrink": true
+    },
+    {
+      "config": "wide",
+      "family": 78,
+      "item": "plan78-subtract-30",
+      "view": "visual",
+      "captures": [
+        {
+          "stage": "initial",
+          "item": "plan78-subtract-30",
+          "beat": "construct",
+          "area": 970.8125,
+          "font": "16px",
+          "docWidth": 1093,
+          "scrollWidth": 1093,
+          "overflowing": []
+        },
+        {
+          "stage": "draft-shrink-320",
+          "item": "plan78-subtract-30",
+          "beat": "construct",
+          "area": 270,
+          "font": "16px",
+          "docWidth": 320,
+          "scrollWidth": 320,
+          "overflowing": []
+        },
+        {
+          "stage": "resolved",
+          "item": "plan78-subtract-30",
+          "beat": "resolve",
+          "area": 970.8125,
+          "font": "16px",
+          "docWidth": 1093,
+          "scrollWidth": 1093,
+          "overflowing": []
+        }
+      ],
+      "completed": true,
+      "draftPreservedOnShrink": true
+    },
+    {
+      "config": "wide",
+      "family": 78,
+      "item": "plan78-subtract-30",
+      "view": "linear",
+      "captures": [
+        {
+          "stage": "initial",
+          "item": "plan78-subtract-30",
+          "beat": "construct",
+          "area": 970.8125,
+          "font": "16px",
+          "docWidth": 1093,
+          "scrollWidth": 1093,
+          "overflowing": []
+        },
+        {
+          "stage": "draft-shrink-320",
+          "item": "plan78-subtract-30",
+          "beat": "construct",
+          "area": 270,
+          "font": "16px",
+          "docWidth": 320,
+          "scrollWidth": 320,
+          "overflowing": []
+        },
+        {
+          "stage": "resolved",
+          "item": "plan78-subtract-30",
+          "beat": "resolve",
+          "area": 970.8125,
+          "font": "16px",
+          "docWidth": 1093,
+          "scrollWidth": 1093,
+          "overflowing": []
+        }
+      ],
+      "completed": true,
+      "draftPreservedOnShrink": true
+    },
+    {
+      "config": "wide",
+      "family": 82,
+      "item": "plan82-subtract-01",
+      "view": "visual",
+      "captures": [
+        {
+          "stage": "initial",
+          "item": "plan82-subtract-01",
+          "beat": "construct",
+          "area": 970.8125,
+          "font": "16px",
+          "docWidth": 1093,
+          "scrollWidth": 1093,
+          "overflowing": []
+        },
+        {
+          "stage": "draft-shrink-320",
+          "item": "plan82-subtract-01",
+          "beat": "construct",
+          "area": 270,
+          "font": "16px",
+          "docWidth": 320,
+          "scrollWidth": 320,
+          "overflowing": []
+        },
+        {
+          "stage": "resolved",
+          "item": "plan82-subtract-01",
+          "beat": "resolve",
+          "area": 970.8125,
+          "font": "16px",
+          "docWidth": 1093,
+          "scrollWidth": 1093,
+          "overflowing": []
+        }
+      ],
+      "completed": true,
+      "draftPreservedOnShrink": true
+    },
+    {
+      "config": "wide",
+      "family": 82,
+      "item": "plan82-subtract-01",
+      "view": "linear",
+      "captures": [
+        {
+          "stage": "initial",
+          "item": "plan82-subtract-01",
+          "beat": "construct",
+          "area": 970.8125,
+          "font": "16px",
+          "docWidth": 1093,
+          "scrollWidth": 1093,
+          "overflowing": []
+        },
+        {
+          "stage": "draft-shrink-320",
+          "item": "plan82-subtract-01",
+          "beat": "construct",
+          "area": 270,
+          "font": "16px",
+          "docWidth": 320,
+          "scrollWidth": 320,
+          "overflowing": []
+        },
+        {
+          "stage": "resolved",
+          "item": "plan82-subtract-01",
+          "beat": "resolve",
+          "area": 970.8125,
+          "font": "16px",
+          "docWidth": 1093,
+          "scrollWidth": 1093,
+          "overflowing": []
+        }
+      ],
+      "completed": true,
+      "draftPreservedOnShrink": true
+    },
+    {
+      "config": "wide",
+      "family": 82,
+      "item": "plan82-subtract-15",
+      "view": "visual",
+      "captures": [
+        {
+          "stage": "initial",
+          "item": "plan82-subtract-15",
+          "beat": "construct",
+          "area": 970.8125,
+          "font": "16px",
+          "docWidth": 1093,
+          "scrollWidth": 1093,
+          "overflowing": []
+        },
+        {
+          "stage": "draft-shrink-320",
+          "item": "plan82-subtract-15",
+          "beat": "construct",
+          "area": 270,
+          "font": "16px",
+          "docWidth": 320,
+          "scrollWidth": 320,
+          "overflowing": []
+        },
+        {
+          "stage": "resolved",
+          "item": "plan82-subtract-15",
+          "beat": "resolve",
+          "area": 970.8125,
+          "font": "16px",
+          "docWidth": 1093,
+          "scrollWidth": 1093,
+          "overflowing": []
+        }
+      ],
+      "completed": true,
+      "draftPreservedOnShrink": true
+    },
+    {
+      "config": "wide",
+      "family": 82,
+      "item": "plan82-subtract-15",
+      "view": "linear",
+      "captures": [
+        {
+          "stage": "initial",
+          "item": "plan82-subtract-15",
+          "beat": "construct",
+          "area": 970.8125,
+          "font": "16px",
+          "docWidth": 1093,
+          "scrollWidth": 1093,
+          "overflowing": []
+        },
+        {
+          "stage": "draft-shrink-320",
+          "item": "plan82-subtract-15",
+          "beat": "construct",
+          "area": 270,
+          "font": "16px",
+          "docWidth": 320,
+          "scrollWidth": 320,
+          "overflowing": []
+        },
+        {
+          "stage": "resolved",
+          "item": "plan82-subtract-15",
+          "beat": "resolve",
+          "area": 970.8125,
+          "font": "16px",
+          "docWidth": 1093,
+          "scrollWidth": 1093,
+          "overflowing": []
+        }
+      ],
+      "completed": true,
+      "draftPreservedOnShrink": true
+    },
+    {
+      "config": "wide",
+      "family": 82,
+      "item": "plan82-subtract-30",
+      "view": "visual",
+      "captures": [
+        {
+          "stage": "initial",
+          "item": "plan82-subtract-30",
+          "beat": "construct",
+          "area": 970.8125,
+          "font": "16px",
+          "docWidth": 1093,
+          "scrollWidth": 1093,
+          "overflowing": []
+        },
+        {
+          "stage": "draft-shrink-320",
+          "item": "plan82-subtract-30",
+          "beat": "construct",
+          "area": 270,
+          "font": "16px",
+          "docWidth": 320,
+          "scrollWidth": 320,
+          "overflowing": []
+        },
+        {
+          "stage": "resolved",
+          "item": "plan82-subtract-30",
+          "beat": "resolve",
+          "area": 970.8125,
+          "font": "16px",
+          "docWidth": 1093,
+          "scrollWidth": 1093,
+          "overflowing": []
+        }
+      ],
+      "completed": true,
+      "draftPreservedOnShrink": true
+    },
+    {
+      "config": "wide",
+      "family": 82,
+      "item": "plan82-subtract-30",
+      "view": "linear",
+      "captures": [
+        {
+          "stage": "initial",
+          "item": "plan82-subtract-30",
+          "beat": "construct",
+          "area": 970.8125,
+          "font": "16px",
+          "docWidth": 1093,
+          "scrollWidth": 1093,
+          "overflowing": []
+        },
+        {
+          "stage": "draft-shrink-320",
+          "item": "plan82-subtract-30",
+          "beat": "construct",
+          "area": 270,
+          "font": "16px",
+          "docWidth": 320,
+          "scrollWidth": 320,
+          "overflowing": []
+        },
+        {
+          "stage": "resolved",
+          "item": "plan82-subtract-30",
+          "beat": "resolve",
+          "area": 970.8125,
+          "font": "16px",
+          "docWidth": 1093,
+          "scrollWidth": 1093,
+          "overflowing": []
+        }
+      ],
+      "completed": true,
+      "draftPreservedOnShrink": true
+    }
+  ],
+  "errors": []
+}

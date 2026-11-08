@@ -1,0 +1,16 @@
+{
+  "browser": "157.0.8103.38",
+  "selection": [
+    "plan74-add-30",
+    "plan74-add-01",
+    "plan74-add-15"
+  ],
+  "recoveryAt500": true,
+  "draftPreserved": true,
+  "retrySame": true,
+  "resizeAfterResolution": true,
+  "nextChecks": 3,
+  "returned": true,
+  "recoveryExit": true,
+  "errors": []
+}

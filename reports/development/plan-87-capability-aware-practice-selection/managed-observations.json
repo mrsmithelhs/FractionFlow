@@ -1,0 +1,379 @@
+{
+  "browser": "157.0.8103.38",
+  "method": "actual Start scheduler and first two comparisons, then distance completion and return; CSS root scale, no resize claim",
+  "runs": [
+    {
+      "config": "narrow",
+      "seed": 0,
+      "view": "visual",
+      "captures": [
+        {
+          "item": "plan45-compare-02",
+          "beat": "compare",
+          "area": 310,
+          "font": "16px",
+          "docWidth": 360,
+          "scrollWidth": 360
+        },
+        {
+          "item": "plan45-compare-10",
+          "beat": "compare",
+          "area": 310,
+          "font": "16px",
+          "docWidth": 360,
+          "scrollWidth": 360
+        },
+        {
+          "item": "distance-01",
+          "beat": "compare",
+          "area": 310,
+          "font": "16px",
+          "docWidth": 360,
+          "scrollWidth": 360
+        }
+      ]
+    },
+    {
+      "config": "narrow",
+      "seed": 0,
+      "view": "linear",
+      "captures": [
+        {
+          "item": "plan45-compare-02",
+          "beat": "compare",
+          "area": 310,
+          "font": "16px",
+          "docWidth": 360,
+          "scrollWidth": 360
+        },
+        {
+          "item": "plan45-compare-10",
+          "beat": "compare",
+          "area": 310,
+          "font": "16px",
+          "docWidth": 360,
+          "scrollWidth": 360
+        },
+        {
+          "item": "distance-01",
+          "beat": "compare",
+          "area": 310,
+          "font": "16px",
+          "docWidth": 360,
+          "scrollWidth": 360
+        }
+      ]
+    },
+    {
+      "config": "narrow",
+      "seed": 3,
+      "view": "visual",
+      "captures": [
+        {
+          "item": "plan45-compare-09",
+          "beat": "compare",
+          "area": 310,
+          "font": "16px",
+          "docWidth": 360,
+          "scrollWidth": 360
+        },
+        {
+          "item": "plan45-compare-10",
+          "beat": "compare",
+          "area": 310,
+          "font": "16px",
+          "docWidth": 360,
+          "scrollWidth": 360
+        },
+        {
+          "item": "distance-04",
+          "beat": "compare",
+          "area": 310,
+          "font": "16px",
+          "docWidth": 360,
+          "scrollWidth": 360
+        }
+      ]
+    },
+    {
+      "config": "narrow",
+      "seed": 3,
+      "view": "linear",
+      "captures": [
+        {
+          "item": "plan45-compare-09",
+          "beat": "compare",
+          "area": 310,
+          "font": "16px",
+          "docWidth": 360,
+          "scrollWidth": 360
+        },
+        {
+          "item": "plan45-compare-10",
+          "beat": "compare",
+          "area": 310,
+          "font": "16px",
+          "docWidth": 360,
+          "scrollWidth": 360
+        },
+        {
+          "item": "distance-04",
+          "beat": "compare",
+          "area": 310,
+          "font": "16px",
+          "docWidth": 360,
+          "scrollWidth": 360
+        }
+      ]
+    },
+    {
+      "config": "enlarged",
+      "seed": 0,
+      "view": "visual",
+      "captures": [
+        {
+          "item": "plan45-compare-02",
+          "beat": "compare",
+          "area": 262,
+          "font": "32px",
+          "docWidth": 360,
+          "scrollWidth": 360
+        },
+        {
+          "item": "plan45-compare-10",
+          "beat": "compare",
+          "area": 262,
+          "font": "32px",
+          "docWidth": 360,
+          "scrollWidth": 360
+        },
+        {
+          "item": "distance-01",
+          "beat": "compare",
+          "area": 262,
+          "font": "32px",
+          "docWidth": 360,
+          "scrollWidth": 360
+        }
+      ]
+    },
+    {
+      "config": "enlarged",
+      "seed": 0,
+      "view": "linear",
+      "captures": [
+        {
+          "item": "plan45-compare-02",
+          "beat": "compare",
+          "area": 262,
+          "font": "32px",
+          "docWidth": 360,
+          "scrollWidth": 360
+        },
+        {
+          "item": "plan45-compare-10",
+          "beat": "compare",
+          "area": 262,
+          "font": "32px",
+          "docWidth": 360,
+          "scrollWidth": 360
+        },
+        {
+          "item": "distance-01",
+          "beat": "compare",
+          "area": 262,
+          "font": "32px",
+          "docWidth": 360,
+          "scrollWidth": 360
+        }
+      ]
+    },
+    {
+      "config": "enlarged",
+      "seed": 3,
+      "view": "visual",
+      "captures": [
+        {
+          "item": "plan45-compare-09",
+          "beat": "compare",
+          "area": 262,
+          "font": "32px",
+          "docWidth": 360,
+          "scrollWidth": 360
+        },
+        {
+          "item": "plan45-compare-10",
+          "beat": "compare",
+          "area": 262,
+          "font": "32px",
+          "docWidth": 360,
+          "scrollWidth": 360
+        },
+        {
+          "item": "distance-04",
+          "beat": "compare",
+          "area": 262,
+          "font": "32px",
+          "docWidth": 360,
+          "scrollWidth": 360
+        }
+      ]
+    },
+    {
+      "config": "enlarged",
+      "seed": 3,
+      "view": "linear",
+      "captures": [
+        {
+          "item": "plan45-compare-09",
+          "beat": "compare",
+          "area": 262,
+          "font": "32px",
+          "docWidth": 360,
+          "scrollWidth": 360
+        },
+        {
+          "item": "plan45-compare-10",
+          "beat": "compare",
+          "area": 262,
+          "font": "32px",
+          "docWidth": 360,
+          "scrollWidth": 360
+        },
+        {
+          "item": "distance-04",
+          "beat": "compare",
+          "area": 262,
+          "font": "32px",
+          "docWidth": 360,
+          "scrollWidth": 360
+        }
+      ]
+    },
+    {
+      "config": "wide",
+      "seed": 0,
+      "view": "visual",
+      "captures": [
+        {
+          "item": "plan45-compare-02",
+          "beat": "compare",
+          "area": 970.8125,
+          "font": "16px",
+          "docWidth": 1093,
+          "scrollWidth": 1093
+        },
+        {
+          "item": "plan45-compare-10",
+          "beat": "compare",
+          "area": 970.8125,
+          "font": "16px",
+          "docWidth": 1093,
+          "scrollWidth": 1093
+        },
+        {
+          "item": "distance-01",
+          "beat": "compare",
+          "area": 970.8125,
+          "font": "16px",
+          "docWidth": 1093,
+          "scrollWidth": 1093
+        }
+      ]
+    },
+    {
+      "config": "wide",
+      "seed": 0,
+      "view": "linear",
+      "captures": [
+        {
+          "item": "plan45-compare-02",
+          "beat": "compare",
+          "area": 970.8125,
+          "font": "16px",
+          "docWidth": 1093,
+          "scrollWidth": 1093
+        },
+        {
+          "item": "plan45-compare-10",
+          "beat": "compare",
+          "area": 970.8125,
+          "font": "16px",
+          "docWidth": 1093,
+          "scrollWidth": 1093
+        },
+        {
+          "item": "distance-01",
+          "beat": "compare",
+          "area": 970.8125,
+          "font": "16px",
+          "docWidth": 1093,
+          "scrollWidth": 1093
+        }
+      ]
+    },
+    {
+      "config": "wide",
+      "seed": 3,
+      "view": "visual",
+      "captures": [
+        {
+          "item": "plan45-compare-09",
+          "beat": "compare",
+          "area": 970.8125,
+          "font": "16px",
+          "docWidth": 1093,
+          "scrollWidth": 1093
+        },
+        {
+          "item": "plan45-compare-10",
+          "beat": "compare",
+          "area": 970.8125,
+          "font": "16px",
+          "docWidth": 1093,
+          "scrollWidth": 1093
+        },
+        {
+          "item": "distance-04",
+          "beat": "compare",
+          "area": 970.8125,
+          "font": "16px",
+          "docWidth": 1093,
+          "scrollWidth": 1093
+        }
+      ]
+    },
+    {
+      "config": "wide",
+      "seed": 3,
+      "view": "linear",
+      "captures": [
+        {
+          "item": "plan45-compare-09",
+          "beat": "compare",
+          "area": 970.8125,
+          "font": "16px",
+          "docWidth": 1093,
+          "scrollWidth": 1093
+        },
+        {
+          "item": "plan45-compare-10",
+          "beat": "compare",
+          "area": 970.8125,
+          "font": "16px",
+          "docWidth": 1093,
+          "scrollWidth": 1093
+        },
+        {
+          "item": "distance-04",
+          "beat": "compare",
+          "area": 970.8125,
+          "font": "16px",
+          "docWidth": 1093,
+          "scrollWidth": 1093
+        }
+      ]
+    }
+  ],
+  "errors": []
+}

@@ -133,3 +133,17 @@ export function createMagnitudeSessionController(manifest = MAGNITUDE_SESSION_MA
   controllers.set(controller, current);
   return controller;
 }
+
+// Isolated policy seam: callers must supply a verified allow-list of item IDs.
+// The normal learner entry continues to call selectPracticeSession unchanged.
+export function selectFittingPracticeSession(input, eligibleItemIds, supportId = 'high-support') {
+  if (!Number.isSafeInteger(input) || input < 0) fail('selection input');
+  if (!Array.isArray(eligibleItemIds) || eligibleItemIds.some(id => typeof id !== 'string' || !id) || new Set(eligibleItemIds).size !== eligibleItemIds.length) fail('eligibility');
+  const eligible = new Set(eligibleItemIds);
+  for (let offset = 0; offset < 4; offset += 1) {
+    const candidate = selectPracticeSession((input % 4 + offset) % 4);
+    if (!candidate.entries.every(entry => eligible.has(entry.itemId))) continue;
+    try { admitMagnitudeManifest(candidate, supportId); return candidate; } catch { /* Try another fully admitted combination. */ }
+  }
+  return null;
+}

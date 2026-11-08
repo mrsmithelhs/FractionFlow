@@ -590,6 +590,16 @@ export function createFractionFlowApp({
     }
   }
   function startScheduledSession() {
+    // Explicit injected review policy; ordinary entry retains its existing behavior.
+    if (sessionTestHooks.selectManifest) {
+      try {
+        const input = sessionTestHooks.selectionInput?.() ?? Math.floor(Math.random() * 0x100000000);
+        const candidate = sessionTestHooks.selectManifest(input);
+        if (candidate && startMagnitudeSession(candidate, { quiet: true, preflightAll: true })) return;
+      } catch { /* Refuse instead of falling back to unverified items. */ }
+      sessionEntryNotice.textContent = 'This practice could not be opened. Please try again or choose another practice.';
+      setHidden(sessionEntryNotice, false); sessionEntryNotice.focus(); return;
+    }
     let manifest;
     try {
       const input = sessionTestHooks.selectionInput?.() ?? Math.floor(Math.random() * 0x100000000);
