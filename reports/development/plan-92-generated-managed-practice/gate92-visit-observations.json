@@ -1,0 +1,1053 @@
+{
+  "scope": "Isolated report-local Start button: prototype selector, fit screen, exact scratch preparation, inert whole-visit preflight and first real renderer install; no production Start/controller/Next/history integration or admission. CSS text scaling is not actual zoom. Fresh seeds are cryptographic, recorded for reproducibility; timings use Chrome CPU throttling as a proxy, not physical Chromebook.",
+  "browser": "157.0.8103.38",
+  "runs": [
+    {
+      "case": "sequential fresh isolated Starts",
+      "width": 1093,
+      "scale": 100,
+      "readyMs": 11902.9959,
+      "dbOpens": 0,
+      "fresh": [
+        {
+          "seed": 1506559009,
+          "shape": "C-S-T",
+          "ids": [
+            "plan45-compare-10",
+            "plan76-inspect-three-fourths-one-fifth-20",
+            "plan76-construct-five-sixths-one-tenth-30"
+          ],
+          "first": "plan45-compare-10",
+          "fit": {
+            "font": 16,
+            "widths": [
+              955.78125,
+              955.78125
+            ],
+            "area": 955.78125,
+            "contentWidth": 1012.4200000000001,
+            "viewportWidth": 1093,
+            "viewportHeight": 614,
+            "htmlScroll": "scroll",
+            "bodyScroll": "visible",
+            "rootScroll": "visible"
+          },
+          "preflightMs": 29.5,
+          "totalMs": 35.6000000089407,
+          "perCandidate": [
+            15.900000005960464,
+            9.099999994039536,
+            4
+          ],
+          "scratchRemaining": 0
+        },
+        {
+          "seed": 2564016186,
+          "shape": "C-I-S-T",
+          "ids": [
+            "plan45-compare-09",
+            "plan76-identify-seven-eighths-one-fourth-8",
+            "plan76-inspect-three-fourths-one-fifth-20",
+            "plan40-construct-half-fifth-10"
+          ],
+          "first": "plan45-compare-09",
+          "fit": {
+            "font": 16,
+            "widths": [
+              955.78125,
+              955.78125
+            ],
+            "area": 955.78125,
+            "contentWidth": 1012.4200000000001,
+            "viewportWidth": 1093,
+            "viewportHeight": 614,
+            "htmlScroll": "scroll",
+            "bodyScroll": "visible",
+            "rootScroll": "visible"
+          },
+          "preflightMs": 13.200000002980232,
+          "totalMs": 17.600000008940697,
+          "perCandidate": [
+            3.5,
+            3.2999999970197678,
+            3.2999999970197678,
+            2.7000000029802322
+          ],
+          "scratchRemaining": 0
+        },
+        {
+          "seed": 1796693532,
+          "shape": "C-S-T",
+          "ids": [
+            "plan45-compare-09",
+            "plan76-inspect-three-fourths-one-fifth-20",
+            "plan40-construct-half-fifth-10"
+          ],
+          "first": "plan45-compare-09",
+          "fit": {
+            "font": 16,
+            "widths": [
+              955.78125,
+              955.78125
+            ],
+            "area": 955.78125,
+            "contentWidth": 1012.4200000000001,
+            "viewportWidth": 1093,
+            "viewportHeight": 614,
+            "htmlScroll": "scroll",
+            "bodyScroll": "visible",
+            "rootScroll": "visible"
+          },
+          "preflightMs": 11,
+          "totalMs": 15.200000002980232,
+          "perCandidate": [
+            4.699999988079071,
+            3.7000000029802322,
+            2.4000000059604645
+          ],
+          "scratchRemaining": 0
+        },
+        {
+          "seed": 4213072017,
+          "shape": "C-S-T",
+          "ids": [
+            "plan45-compare-02",
+            "plan76-inspect-three-fourths-one-fifth-20",
+            "plan40-construct-half-fifth-10"
+          ],
+          "first": "plan45-compare-02",
+          "fit": {
+            "font": 16,
+            "widths": [
+              955.78125,
+              955.78125
+            ],
+            "area": 955.78125,
+            "contentWidth": 1012.4200000000001,
+            "viewportWidth": 1093,
+            "viewportHeight": 614,
+            "htmlScroll": "scroll",
+            "bodyScroll": "visible",
+            "rootScroll": "visible"
+          },
+          "preflightMs": 11.599999994039536,
+          "totalMs": 15.200000002980232,
+          "perCandidate": [
+            4.700000002980232,
+            3.1000000089406967,
+            3.5999999940395355
+          ],
+          "scratchRemaining": 0
+        },
+        {
+          "seed": 3911088009,
+          "shape": "C-I-T",
+          "ids": [
+            "plan45-compare-02",
+            "plan76-identify-seven-eighths-one-fourth-8",
+            "plan40-construct-five-sixths-three-eighths-24"
+          ],
+          "first": "plan45-compare-02",
+          "fit": {
+            "font": 16,
+            "widths": [
+              955.78125,
+              955.78125
+            ],
+            "area": 955.78125,
+            "contentWidth": 1012.4200000000001,
+            "viewportWidth": 1093,
+            "viewportHeight": 614,
+            "htmlScroll": "scroll",
+            "bodyScroll": "visible",
+            "rootScroll": "visible"
+          },
+          "preflightMs": 12,
+          "totalMs": 17,
+          "perCandidate": [
+            4.800000011920929,
+            2.9000000059604645,
+            3.9000000059604645
+          ],
+          "scratchRemaining": 0
+        },
+        {
+          "seed": 1670682757,
+          "shape": "C-I-S-T",
+          "ids": [
+            "plan45-compare-09",
+            "plan40-identify-one-half-one-eighth-8",
+            "plan76-inspect-three-fourths-one-fifth-20",
+            "plan40-construct-five-sixths-three-eighths-24"
+          ],
+          "first": "plan45-compare-09",
+          "fit": {
+            "font": 16,
+            "widths": [
+              955.78125,
+              955.78125
+            ],
+            "area": 955.78125,
+            "contentWidth": 1012.4200000000001,
+            "viewportWidth": 1093,
+            "viewportHeight": 614,
+            "htmlScroll": "scroll",
+            "bodyScroll": "visible",
+            "rootScroll": "visible"
+          },
+          "preflightMs": 10.700000002980232,
+          "totalMs": 13.600000008940697,
+          "perCandidate": [
+            3.2000000029802322,
+            2.2000000029802322,
+            2.7999999970197678,
+            2.2000000029802322
+          ],
+          "scratchRemaining": 0
+        },
+        {
+          "seed": 2370524157,
+          "shape": "C-S-T",
+          "ids": [
+            "plan45-compare-09",
+            "plan76-inspect-three-fourths-one-fifth-20",
+            "plan40-construct-five-sixths-three-eighths-24"
+          ],
+          "first": "plan45-compare-09",
+          "fit": {
+            "font": 16,
+            "widths": [
+              955.78125,
+              955.78125
+            ],
+            "area": 955.78125,
+            "contentWidth": 1012.4200000000001,
+            "viewportWidth": 1093,
+            "viewportHeight": 614,
+            "htmlScroll": "scroll",
+            "bodyScroll": "visible",
+            "rootScroll": "visible"
+          },
+          "preflightMs": 11.799999997019768,
+          "totalMs": 16.200000002980232,
+          "perCandidate": [
+            4.700000002980232,
+            3.699999988079071,
+            3.300000011920929
+          ],
+          "scratchRemaining": 0
+        },
+        {
+          "seed": 2481220042,
+          "shape": "C-I-T",
+          "ids": [
+            "plan45-compare-02",
+            "plan76-identify-seven-eighths-one-fourth-8",
+            "plan40-construct-half-fifth-10"
+          ],
+          "first": "plan45-compare-02",
+          "fit": {
+            "font": 16,
+            "widths": [
+              955.78125,
+              955.78125
+            ],
+            "area": 955.78125,
+            "contentWidth": 1012.4200000000001,
+            "viewportWidth": 1093,
+            "viewportHeight": 614,
+            "htmlScroll": "scroll",
+            "bodyScroll": "visible",
+            "rootScroll": "visible"
+          },
+          "preflightMs": 10.599999994039536,
+          "totalMs": 14.800000011920929,
+          "perCandidate": [
+            3.7000000029802322,
+            3.6000000089406967,
+            3.0999999940395355
+          ],
+          "scratchRemaining": 0
+        },
+        {
+          "seed": 3831512288,
+          "shape": "C-I-S-T",
+          "ids": [
+            "plan45-compare-09",
+            "plan40-identify-one-half-one-eighth-8",
+            "plan76-inspect-three-fourths-one-fifth-20",
+            "plan40-construct-five-sixths-three-eighths-24"
+          ],
+          "first": "plan45-compare-09",
+          "fit": {
+            "font": 16,
+            "widths": [
+              955.78125,
+              955.78125
+            ],
+            "area": 955.78125,
+            "contentWidth": 1012.4200000000001,
+            "viewportWidth": 1093,
+            "viewportHeight": 614,
+            "htmlScroll": "scroll",
+            "bodyScroll": "visible",
+            "rootScroll": "visible"
+          },
+          "preflightMs": 12.399999991059303,
+          "totalMs": 16.5,
+          "perCandidate": [
+            4.5,
+            2.9000000059604645,
+            2.5,
+            2.2000000029802322
+          ],
+          "scratchRemaining": 0
+        },
+        {
+          "seed": 155877664,
+          "shape": "C-S-T",
+          "ids": [
+            "plan45-compare-10",
+            "plan40-inspect-two-thirds-one-fourth-12",
+            "plan40-construct-half-fifth-10"
+          ],
+          "first": "plan45-compare-10",
+          "fit": {
+            "font": 16,
+            "widths": [
+              955.78125,
+              955.78125
+            ],
+            "area": 955.78125,
+            "contentWidth": 1012.4200000000001,
+            "viewportWidth": 1093,
+            "viewportHeight": 614,
+            "htmlScroll": "scroll",
+            "bodyScroll": "visible",
+            "rootScroll": "visible"
+          },
+          "preflightMs": 10.100000008940697,
+          "totalMs": 13.299999997019768,
+          "perCandidate": [
+            4.799999997019768,
+            3.1000000089406967,
+            2.1000000089406967
+          ],
+          "scratchRemaining": 0
+        },
+        {
+          "seed": 1272533687,
+          "shape": "C-I-S-T",
+          "ids": [
+            "plan45-compare-02",
+            "plan40-identify-two-thirds-five-twelfths-12",
+            "plan76-inspect-three-fourths-one-fifth-20",
+            "plan76-construct-five-sixths-one-tenth-30"
+          ],
+          "first": "plan45-compare-02",
+          "fit": {
+            "font": 16,
+            "widths": [
+              955.78125,
+              955.78125
+            ],
+            "area": 955.78125,
+            "contentWidth": 1012.4200000000001,
+            "viewportWidth": 1093,
+            "viewportHeight": 614,
+            "htmlScroll": "scroll",
+            "bodyScroll": "visible",
+            "rootScroll": "visible"
+          },
+          "preflightMs": 13.200000002980232,
+          "totalMs": 18,
+          "perCandidate": [
+            3.2000000029802322,
+            2.6000000089406967,
+            3.5,
+            3.7000000029802322
+          ],
+          "scratchRemaining": 0
+        },
+        {
+          "seed": 4265594246,
+          "shape": "C-I-S-T",
+          "ids": [
+            "plan45-compare-02",
+            "plan40-identify-one-half-one-eighth-8",
+            "plan40-inspect-two-thirds-one-fourth-12",
+            "plan76-construct-five-sixths-one-tenth-30"
+          ],
+          "first": "plan45-compare-02",
+          "fit": {
+            "font": 16,
+            "widths": [
+              955.78125,
+              955.78125
+            ],
+            "area": 955.78125,
+            "contentWidth": 1012.4200000000001,
+            "viewportWidth": 1093,
+            "viewportHeight": 614,
+            "htmlScroll": "scroll",
+            "bodyScroll": "visible",
+            "rootScroll": "visible"
+          },
+          "preflightMs": 13.200000002980232,
+          "totalMs": 18.19999998807907,
+          "perCandidate": [
+            4.299999997019768,
+            2.3999999910593033,
+            2.8999999910593033,
+            3.2999999970197678
+          ],
+          "scratchRemaining": 0
+        },
+        {
+          "seed": 2466482612,
+          "shape": "C-S-T",
+          "ids": [
+            "plan45-compare-09",
+            "plan40-inspect-two-thirds-one-fourth-12",
+            "plan40-construct-half-fifth-10"
+          ],
+          "first": "plan45-compare-09",
+          "fit": {
+            "font": 16,
+            "widths": [
+              955.78125,
+              955.78125
+            ],
+            "area": 955.78125,
+            "contentWidth": 1012.4200000000001,
+            "viewportWidth": 1093,
+            "viewportHeight": 614,
+            "htmlScroll": "scroll",
+            "bodyScroll": "visible",
+            "rootScroll": "visible"
+          },
+          "preflightMs": 10.5,
+          "totalMs": 14.599999994039536,
+          "perCandidate": [
+            4.5999999940395355,
+            3.2000000029802322,
+            2.5
+          ],
+          "scratchRemaining": 0
+        },
+        {
+          "seed": 1997749541,
+          "shape": "C-I-S-T",
+          "ids": [
+            "plan45-compare-10",
+            "plan40-identify-two-thirds-five-twelfths-12",
+            "plan76-inspect-three-fourths-one-fifth-20",
+            "plan40-construct-five-sixths-three-eighths-24"
+          ],
+          "first": "plan45-compare-10",
+          "fit": {
+            "font": 16,
+            "widths": [
+              955.78125,
+              955.78125
+            ],
+            "area": 955.78125,
+            "contentWidth": 1012.4200000000001,
+            "viewportWidth": 1093,
+            "viewportHeight": 614,
+            "htmlScroll": "scroll",
+            "bodyScroll": "visible",
+            "rootScroll": "visible"
+          },
+          "preflightMs": 11.800000011920929,
+          "totalMs": 16.599999994039536,
+          "perCandidate": [
+            3,
+            2.2999999970197678,
+            2.5999999940395355,
+            3.5
+          ],
+          "scratchRemaining": 0
+        },
+        {
+          "seed": 4237156883,
+          "shape": "C-I-T",
+          "ids": [
+            "plan45-compare-09",
+            "plan40-identify-one-half-one-eighth-8",
+            "plan40-construct-half-fifth-10"
+          ],
+          "first": "plan45-compare-09",
+          "fit": {
+            "font": 16,
+            "widths": [
+              955.78125,
+              955.78125
+            ],
+            "area": 955.78125,
+            "contentWidth": 1012.4200000000001,
+            "viewportWidth": 1093,
+            "viewportHeight": 614,
+            "htmlScroll": "scroll",
+            "bodyScroll": "visible",
+            "rootScroll": "visible"
+          },
+          "preflightMs": 11.900000005960464,
+          "totalMs": 16.200000002980232,
+          "perCandidate": [
+            4.799999997019768,
+            3.3999999910593033,
+            3.5
+          ],
+          "scratchRemaining": 0
+        },
+        {
+          "seed": 478908383,
+          "shape": "C-I-S-T",
+          "ids": [
+            "plan45-compare-09",
+            "plan76-identify-seven-eighths-one-fourth-8",
+            "plan40-inspect-two-thirds-one-fourth-12",
+            "plan76-construct-five-sixths-one-tenth-30"
+          ],
+          "first": "plan45-compare-09",
+          "fit": {
+            "font": 16,
+            "widths": [
+              955.78125,
+              955.78125
+            ],
+            "area": 955.78125,
+            "contentWidth": 1012.4200000000001,
+            "viewportWidth": 1093,
+            "viewportHeight": 614,
+            "htmlScroll": "scroll",
+            "bodyScroll": "visible",
+            "rootScroll": "visible"
+          },
+          "preflightMs": 12.200000002980232,
+          "totalMs": 17.200000002980232,
+          "perCandidate": [
+            3.7000000029802322,
+            2.2000000029802322,
+            2.5,
+            3.7000000029802322
+          ],
+          "scratchRemaining": 0
+        }
+      ],
+      "fault": {
+        "seed": 478908383,
+        "failed": "Error: injected-preflight-failure",
+        "previous": "plan45-compare-09",
+        "stillActive": "plan45-compare-09",
+        "totalMs": 8.900000005960464,
+        "scratchRemaining": 0
+      }
+    },
+    {
+      "case": "narrow threshold single fallback",
+      "width": 600,
+      "scale": 200,
+      "readyMs": 275.5097999999998,
+      "dbOpens": 0,
+      "visits": [
+        {
+          "seed": 0,
+          "shape": "single",
+          "ids": [
+            "plan45-compare-02"
+          ],
+          "first": "plan45-compare-02",
+          "fit": {
+            "font": 32,
+            "widths": [
+              455,
+              455
+            ],
+            "area": 455,
+            "contentWidth": 521,
+            "viewportWidth": 600,
+            "viewportHeight": 740,
+            "htmlScroll": "scroll",
+            "bodyScroll": "visible",
+            "rootScroll": "visible"
+          },
+          "preflightMs": 16.200000002980232,
+          "totalMs": 20.100000008940697,
+          "perCandidate": [
+            16
+          ],
+          "scratchRemaining": 0
+        },
+        {
+          "seed": 1,
+          "shape": "single",
+          "ids": [
+            "plan45-compare-02"
+          ],
+          "first": "plan45-compare-02",
+          "fit": {
+            "font": 32,
+            "widths": [
+              455,
+              455
+            ],
+            "area": 455,
+            "contentWidth": 521,
+            "viewportWidth": 600,
+            "viewportHeight": 740,
+            "htmlScroll": "scroll",
+            "bodyScroll": "visible",
+            "rootScroll": "visible"
+          },
+          "preflightMs": 3.699999988079071,
+          "totalMs": 6.100000008940697,
+          "perCandidate": [
+            3.5999999940395355
+          ],
+          "scratchRemaining": 0
+        },
+        {
+          "seed": 2,
+          "shape": "single",
+          "ids": [
+            "plan45-compare-09"
+          ],
+          "first": "plan45-compare-09",
+          "fit": {
+            "font": 32,
+            "widths": [
+              455,
+              455
+            ],
+            "area": 455,
+            "contentWidth": 521,
+            "viewportWidth": 600,
+            "viewportHeight": 740,
+            "htmlScroll": "scroll",
+            "bodyScroll": "visible",
+            "rootScroll": "visible"
+          },
+          "preflightMs": 3.2999999970197678,
+          "totalMs": 5.200000002980232,
+          "perCandidate": [
+            3.2999999970197678
+          ],
+          "scratchRemaining": 0
+        },
+        {
+          "seed": 3,
+          "shape": "single",
+          "ids": [
+            "plan45-compare-02"
+          ],
+          "first": "plan45-compare-02",
+          "fit": {
+            "font": 32,
+            "widths": [
+              455,
+              455
+            ],
+            "area": 455,
+            "contentWidth": 521,
+            "viewportWidth": 600,
+            "viewportHeight": 740,
+            "htmlScroll": "scroll",
+            "bodyScroll": "visible",
+            "rootScroll": "visible"
+          },
+          "preflightMs": 3.6000000089406967,
+          "totalMs": 6.100000008940697,
+          "perCandidate": [
+            3.6000000089406967
+          ],
+          "scratchRemaining": 0
+        },
+        {
+          "seed": 4,
+          "shape": "single",
+          "ids": [
+            "plan45-compare-02"
+          ],
+          "first": "plan45-compare-02",
+          "fit": {
+            "font": 32,
+            "widths": [
+              455,
+              455
+            ],
+            "area": 455,
+            "contentWidth": 521,
+            "viewportWidth": 600,
+            "viewportHeight": 740,
+            "htmlScroll": "scroll",
+            "bodyScroll": "visible",
+            "rootScroll": "visible"
+          },
+          "preflightMs": 5,
+          "totalMs": 6.799999997019768,
+          "perCandidate": [
+            5
+          ],
+          "scratchRemaining": 0
+        },
+        {
+          "seed": 5,
+          "shape": "single",
+          "ids": [
+            "plan45-compare-10"
+          ],
+          "first": "plan45-compare-10",
+          "fit": {
+            "font": 32,
+            "widths": [
+              455,
+              455
+            ],
+            "area": 455,
+            "contentWidth": 521,
+            "viewportWidth": 600,
+            "viewportHeight": 740,
+            "htmlScroll": "scroll",
+            "bodyScroll": "visible",
+            "rootScroll": "visible"
+          },
+          "preflightMs": 6.399999991059303,
+          "totalMs": 8.400000005960464,
+          "perCandidate": [
+            6.199999988079071
+          ],
+          "scratchRemaining": 0
+        }
+      ]
+    },
+    {
+      "case": "cold-context preflight timing proxy",
+      "sample": 0,
+      "width": 1365,
+      "scale": 100,
+      "cpuSlowdown": 4,
+      "readyMs": 999.2783000000018,
+      "dbOpens": 0,
+      "visits": [
+        {
+          "seed": 0,
+          "shape": "C-I-S-T",
+          "ids": [
+            "plan45-compare-02",
+            "plan40-identify-two-thirds-five-twelfths-12",
+            "plan40-inspect-two-thirds-one-fourth-12",
+            "plan76-construct-five-sixths-one-tenth-30"
+          ],
+          "first": "plan45-compare-02",
+          "fit": {
+            "font": 16,
+            "widths": [
+              1022,
+              1022
+            ],
+            "area": 1022,
+            "contentWidth": 1268.1,
+            "viewportWidth": 1365,
+            "viewportHeight": 768,
+            "htmlScroll": "scroll",
+            "bodyScroll": "visible",
+            "rootScroll": "visible"
+          },
+          "preflightMs": 237,
+          "totalMs": 276.09999999403954,
+          "perCandidate": [
+            105.20000000298023,
+            64.70000000298023,
+            22.799999997019768,
+            40.5
+          ],
+          "scratchRemaining": 0
+        },
+        {
+          "seed": 1,
+          "shape": "C-S-T",
+          "ids": [
+            "plan45-compare-02",
+            "plan76-inspect-three-fourths-one-fifth-20",
+            "plan40-construct-half-fifth-10"
+          ],
+          "first": "plan45-compare-02",
+          "fit": {
+            "font": 16,
+            "widths": [
+              1022,
+              1022
+            ],
+            "area": 1022,
+            "contentWidth": 1268.1,
+            "viewportWidth": 1365,
+            "viewportHeight": 768,
+            "htmlScroll": "scroll",
+            "bodyScroll": "visible",
+            "rootScroll": "visible"
+          },
+          "preflightMs": 85.70000000298023,
+          "totalMs": 115.20000000298023,
+          "perCandidate": [
+            30.700000002980232,
+            22.200000002980232,
+            31.099999994039536
+          ],
+          "scratchRemaining": 0
+        },
+        {
+          "seed": 4,
+          "shape": "C-I-T",
+          "ids": [
+            "plan45-compare-02",
+            "plan76-identify-seven-eighths-one-fourth-8",
+            "plan40-construct-half-fifth-10"
+          ],
+          "first": "plan45-compare-02",
+          "fit": {
+            "font": 16,
+            "widths": [
+              1022,
+              1022
+            ],
+            "area": 1022,
+            "contentWidth": 1268.1,
+            "viewportWidth": 1365,
+            "viewportHeight": 768,
+            "htmlScroll": "scroll",
+            "bodyScroll": "visible",
+            "rootScroll": "visible"
+          },
+          "preflightMs": 70.5,
+          "totalMs": 100.8999999910593,
+          "perCandidate": [
+            23.100000008940697,
+            27.599999994039536,
+            18.299999997019768
+          ],
+          "scratchRemaining": 0
+        }
+      ]
+    },
+    {
+      "case": "cold-context preflight timing proxy",
+      "sample": 1,
+      "width": 1365,
+      "scale": 100,
+      "cpuSlowdown": 4,
+      "readyMs": 977.6376999999993,
+      "dbOpens": 0,
+      "visits": [
+        {
+          "seed": 0,
+          "shape": "C-I-S-T",
+          "ids": [
+            "plan45-compare-02",
+            "plan40-identify-two-thirds-five-twelfths-12",
+            "plan40-inspect-two-thirds-one-fourth-12",
+            "plan76-construct-five-sixths-one-tenth-30"
+          ],
+          "first": "plan45-compare-02",
+          "fit": {
+            "font": 16,
+            "widths": [
+              1022,
+              1022
+            ],
+            "area": 1022,
+            "contentWidth": 1268.1,
+            "viewportWidth": 1365,
+            "viewportHeight": 768,
+            "htmlScroll": "scroll",
+            "bodyScroll": "visible",
+            "rootScroll": "visible"
+          },
+          "preflightMs": 213.79999999701977,
+          "totalMs": 246.5,
+          "perCandidate": [
+            101.09999999403954,
+            57,
+            22.30000001192093,
+            29.900000005960464
+          ],
+          "scratchRemaining": 0
+        },
+        {
+          "seed": 1,
+          "shape": "C-S-T",
+          "ids": [
+            "plan45-compare-02",
+            "plan76-inspect-three-fourths-one-fifth-20",
+            "plan40-construct-half-fifth-10"
+          ],
+          "first": "plan45-compare-02",
+          "fit": {
+            "font": 16,
+            "widths": [
+              1022,
+              1022
+            ],
+            "area": 1022,
+            "contentWidth": 1268.1,
+            "viewportWidth": 1365,
+            "viewportHeight": 768,
+            "htmlScroll": "scroll",
+            "bodyScroll": "visible",
+            "rootScroll": "visible"
+          },
+          "preflightMs": 84.6000000089407,
+          "totalMs": 118.59999999403954,
+          "perCandidate": [
+            31,
+            32.19999998807907,
+            20
+          ],
+          "scratchRemaining": 0
+        },
+        {
+          "seed": 4,
+          "shape": "C-I-T",
+          "ids": [
+            "plan45-compare-02",
+            "plan76-identify-seven-eighths-one-fourth-8",
+            "plan40-construct-half-fifth-10"
+          ],
+          "first": "plan45-compare-02",
+          "fit": {
+            "font": 16,
+            "widths": [
+              1022,
+              1022
+            ],
+            "area": 1022,
+            "contentWidth": 1268.1,
+            "viewportWidth": 1365,
+            "viewportHeight": 768,
+            "htmlScroll": "scroll",
+            "bodyScroll": "visible",
+            "rootScroll": "visible"
+          },
+          "preflightMs": 76.70000000298023,
+          "totalMs": 99.70000000298023,
+          "perCandidate": [
+            26.700000002980232,
+            22.400000005960464,
+            26.400000005960464
+          ],
+          "scratchRemaining": 0
+        }
+      ]
+    },
+    {
+      "case": "cold-context preflight timing proxy",
+      "sample": 2,
+      "width": 1365,
+      "scale": 100,
+      "cpuSlowdown": 4,
+      "readyMs": 1013.3250000000007,
+      "dbOpens": 0,
+      "visits": [
+        {
+          "seed": 0,
+          "shape": "C-I-S-T",
+          "ids": [
+            "plan45-compare-02",
+            "plan40-identify-two-thirds-five-twelfths-12",
+            "plan40-inspect-two-thirds-one-fourth-12",
+            "plan76-construct-five-sixths-one-tenth-30"
+          ],
+          "first": "plan45-compare-02",
+          "fit": {
+            "font": 16,
+            "widths": [
+              1022,
+              1022
+            ],
+            "area": 1022,
+            "contentWidth": 1268.1,
+            "viewportWidth": 1365,
+            "viewportHeight": 768,
+            "htmlScroll": "scroll",
+            "bodyScroll": "visible",
+            "rootScroll": "visible"
+          },
+          "preflightMs": 242.8999999910593,
+          "totalMs": 280.90000000596046,
+          "perCandidate": [
+            92.79999999701977,
+            75.1000000089407,
+            33.5,
+            36.5
+          ],
+          "scratchRemaining": 0
+        },
+        {
+          "seed": 1,
+          "shape": "C-S-T",
+          "ids": [
+            "plan45-compare-02",
+            "plan76-inspect-three-fourths-one-fifth-20",
+            "plan40-construct-half-fifth-10"
+          ],
+          "first": "plan45-compare-02",
+          "fit": {
+            "font": 16,
+            "widths": [
+              1022,
+              1022
+            ],
+            "area": 1022,
+            "contentWidth": 1268.1,
+            "viewportWidth": 1365,
+            "viewportHeight": 768,
+            "htmlScroll": "scroll",
+            "bodyScroll": "visible",
+            "rootScroll": "visible"
+          },
+          "preflightMs": 93.29999999701977,
+          "totalMs": 125.20000000298023,
+          "perCandidate": [
+            31.900000005960464,
+            30.099999994039536,
+            29.700000002980232
+          ],
+          "scratchRemaining": 0
+        },
+        {
+          "seed": 4,
+          "shape": "C-I-T",
+          "ids": [
+            "plan45-compare-02",
+            "plan76-identify-seven-eighths-one-fourth-8",
+            "plan40-construct-half-fifth-10"
+          ],
+          "first": "plan45-compare-02",
+          "fit": {
+            "font": 16,
+            "widths": [
+              1022,
+              1022
+            ],
+            "area": 1022,
+            "contentWidth": 1268.1,
+            "viewportWidth": 1365,
+            "viewportHeight": 768,
+            "htmlScroll": "scroll",
+            "bodyScroll": "visible",
+            "rootScroll": "visible"
+          },
+          "preflightMs": 89,
+          "totalMs": 112.90000000596046,
+          "perCandidate": [
+            36.400000005960464,
+            27.700000002980232,
+            22.899999991059303
+          ],
+          "scratchRemaining": 0
+        }
+      ]
+    }
+  ]
+}

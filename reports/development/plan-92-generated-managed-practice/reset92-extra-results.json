@@ -1,0 +1,23 @@
+{
+  "browser": "157.0.8103.38",
+  "results": {
+    "actual v1 adapter initialized enabled disposable root": "passed",
+    "first write-order blocker installed": "passed",
+    "write-before-clear ordering accepts actual adapter write": "passed",
+    "clear-after-write erases it and preserves enabled state": "passed",
+    "second write-order blocker installed": "passed",
+    "clear-before-write establishes empty enabled root": "passed",
+    "write-after-clear with old generation is refused by actual adapter": "passed",
+    "stale write leaves durable root empty": "passed",
+    "legacy stop disables recording": "passed",
+    "disabled legacy adapter refuses writes": "passed",
+    "legacy adapter still reads its disabled record": "passed",
+    "uniquely named disposable database deleted": "passed"
+  },
+  "limitations": [
+    "Actual version-1 single-store adapter ordering only; does not prove proposed version-2 two-store atomic reset.",
+    "Does not exercise expanded consent state, history-aware scheduler reads, or choice installation protocol.",
+    "Disabled legacy adapter writes are refused, but read() intentionally still reads the legacy record; expanded opt-in-off read refusal is untestable with this adapter.",
+    "Synthetic valid comparison observation only; no learner data and no ordinary application database."
+  ]
+}
