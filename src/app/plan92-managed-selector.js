@@ -61,7 +61,7 @@ function validate(input) {
   if (input.candidates.length > MAX_CANDIDATES) fail('candidate list bound');
   const identities = new Set();
   for (const candidate of input.candidates) {
-    if (!isRecord(candidate) || !ROLES.includes(candidate.role) || ![true, false, undefined].includes(candidate.fit)
+    if (!isRecord(candidate) || !ROLES.includes(candidate.role) || ![true, false, undefined].includes(candidate.fit) || (candidate.priority !== undefined && !Number.isSafeInteger(candidate.priority))
       || !isRecord(candidate.identity) || !isRecord(candidate.problemKey)) fail('candidate descriptor or fit');
     if (typeof candidate.identity.typeId !== 'string' || typeof candidate.identity.setId !== 'string'
       || typeof candidate.identity.setRevision !== 'string' || typeof candidate.identity.itemId !== 'string'
@@ -106,7 +106,7 @@ function selectFromDraws(input, shapeDraw, roleDraws, reviewDraw) {
     const pool = ordered.filter(candidate => candidate.role === role && candidate.fit === true);
     if (!pool.length) return [];
     const start = roleDraws[role] % pool.length;
-    return [...pool.slice(start), ...pool.slice(0, start)];
+    return [...pool.slice(start), ...pool.slice(0, start)].sort((a,b)=>(a.priority??0)-(b.priority??0));
   };
   for (const shape of shapeOrder) {
     let attempts = 0;

@@ -1,0 +1,36 @@
+{
+  "scope": "Isolated preview with real consent panel, generated Start/Next, local bridge and synthetic Chrome browser; not ordinary activation or learner evidence.",
+  "browser": "157.0.8103.38",
+  "first": [
+    "plan45-compare-02",
+    "plan40-identify-two-thirds-five-twelfths-12",
+    "plan40-inspect-two-thirds-one-fourth-12",
+    "plan76-construct-five-sixths-one-tenth-30"
+  ],
+  "second": [
+    "plan45-compare-09",
+    "plan76-identify-seven-eighths-one-fourth-8",
+    "plan76-inspect-three-fourths-one-fifth-20",
+    "plan40-construct-half-fifth-10"
+  ],
+  "results": {
+    "stale off-state tab can stop another tab’s enabled choice": "passed",
+    "view switches and Retry do not duplicate an installed exposure": "passed",
+    "real installed episodes record first response and eventual acceptance": "passed",
+    "first response recorded with no raw answers": "passed",
+    "legacy Clear explains the expanded record will also be cleared": "passed",
+    "same seed plus history changes comparison and subtraction choices": "passed",
+    "Clear leaves active episode and retires stored history and diagnostic evidence": "passed",
+    "Next after other tab clears discards stale choice and uses fresh seed choice": "passed",
+    "other tab Clear preserves open arithmetic draft": "passed",
+    "second unstarted role also uses fresh seed after Clear": "passed",
+    "Stop before later Next uses fresh seed without repeating completed work": "passed",
+    "fresh Start after Clear returns to same-seed no-history selection": "passed",
+    "observable comparison help is retained separately": "passed",
+    "Stop turns off expanded history": "passed",
+    "Start while remembering off reads no expanded events": "passed",
+    "explicit View can inspect retained entries while remembering is off": "passed",
+    "Stop retains earlier entries when remembering is later enabled": "passed",
+    "real retry and later acceptance remain distinct": "passed"
+  }
+}

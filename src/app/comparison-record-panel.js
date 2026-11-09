@@ -1,6 +1,6 @@
 import { createSymbolicFraction } from '../render/symbolic.js';
 
-export function createComparisonRecordPanel({ host, controller, practice }) {
+export function createComparisonRecordPanel({ host, controller, practice, clearIncludesExpanded = false }) {
   const doc=host.ownerDocument ?? globalThis.document;
   const box=doc.createElement('details'); box.className='comparison-record-panel';
   const summary=doc.createElement('summary'); summary.textContent='Practice record'; box.appendChild(summary);
@@ -23,7 +23,7 @@ export function createComparisonRecordPanel({ host, controller, practice }) {
     const s=controller.snapshot();++renderVersion;content.replaceChildren();
     if(s.message){const p=paragraph(s.message);p.setAttribute('role','status');}
     if(confirmation){
-      const prompt={stop:'Stop remembering? Earlier activity stays until you clear it.',clear:`Clear comparison activity on this browser? Remembering stays ${s.enabled?'on':'off'}.`,reset:'Reset this unreadable record? This clears it and stops remembering.'}[confirmation];
+      const prompt={stop:'Stop remembering? Earlier activity stays until you clear it.',clear:clearIncludesExpanded?'Clear the comparison record and expanded practice history on this browser? Both remembering choices will stay as they are.':`Clear comparison activity on this browser? Remembering stays ${s.enabled?'on':'off'}.`,reset:'Reset this unreadable record? This clears it and stops remembering.'}[confirmation];
       paragraph(prompt);button('confirm',confirmation==='stop'?'Stop remembering':confirmation==='clear'?'Clear record':'Reset record',()=>perform(confirmation));
       button('cancel','Cancel',()=>{const target=confirmation==='stop'?'toggle':confirmation;confirmation=null;render(target);});
     } else if(!s.ready){

@@ -38,12 +38,12 @@ export function validateGate92Visit(descriptors){
 let cachedDescriptors;
 export function allGate92Descriptors(){return cachedDescriptors??=deepFreeze(PLAN92_SCRATCH_IDENTITIES.map(identity=>describeGate92(identity)));}
 
-// Approval covers the measured viewport/text samples, not every larger or nearby screen.
-// The established Plan 90 policy remains the fallback outside these exact samples.
+// The normal-text desktop range is bounded by the reviewed working-area floor.
+// The established Plan 90 policy remains the fallback outside the approved range/samples.
 export function isPlan92MeasuredFit(measurement, identity, conditionId) {
  if(!measurement||!identity||!isManagedFamilyFit(measurement,identity.typeId,conditionId))return false;
  const {viewportWidth:w,viewportHeight:h,font}=measurement;
- if(w===1093&&h===614&&font===16)return true;
+ if(font===16&&w>=1024&&w<=1366&&h>=614&&h<=768&&measurement.area>=894.359375)return true;
  if(w===650&&h===740&&font===32)return true;
  return w===600&&h===740&&font===32&&identity.role==='C';
 }

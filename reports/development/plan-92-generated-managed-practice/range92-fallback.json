@@ -1,0 +1,156 @@
+{
+  "scope": "Ordinary Start, 1023×614/root 16px, just outside approved desktop width; deterministic seed.",
+  "browser": "157.0.8103.38",
+  "result": {
+    "witness": {
+      "seed": 0,
+      "catalogRevision": "1",
+      "policyRevision": "1",
+      "outcomes": [
+        {
+          "pattern": "M0",
+          "slot": "M0-compare-units",
+          "identity": {
+            "typeId": "symbolic-fraction-comparison",
+            "setId": "symbolic-fraction-comparison-vetted-set",
+            "setRevision": "1",
+            "itemId": "plan45-compare-02",
+            "itemRevision": "plan45-record-v1",
+            "definitionId": "phase-4-symbolic-fraction-comparison",
+            "definitionRevision": "2",
+            "underlyingDefinitionRevision": "1",
+            "recipeId": "symbolic-fraction-comparison",
+            "recipeRevision": "1",
+            "taskDataId": "plan45-symbolic-fraction-comparison-task-data",
+            "taskDataRevision": "1"
+          },
+          "reason": "eligible"
+        },
+        {
+          "pattern": "M0",
+          "slot": "M0-equal-numerators",
+          "identity": {
+            "typeId": "symbolic-fraction-comparison",
+            "setId": "symbolic-fraction-comparison-vetted-set",
+            "setRevision": "1",
+            "itemId": "plan45-compare-09",
+            "itemRevision": "plan45-record-v1",
+            "definitionId": "phase-4-symbolic-fraction-comparison",
+            "definitionRevision": "2",
+            "underlyingDefinitionRevision": "1",
+            "recipeId": "symbolic-fraction-comparison",
+            "recipeRevision": "1",
+            "taskDataId": "plan45-symbolic-fraction-comparison-task-data",
+            "taskDataRevision": "1"
+          },
+          "reason": "eligible"
+        },
+        {
+          "pattern": "M0",
+          "slot": "M0-half",
+          "identity": {
+            "typeId": "symbolic-fraction-comparison",
+            "setId": "symbolic-fraction-comparison-vetted-set",
+            "setRevision": "1",
+            "itemId": "plan45-compare-10",
+            "itemRevision": "plan45-record-v1",
+            "definitionId": "phase-4-symbolic-fraction-comparison",
+            "definitionRevision": "2",
+            "underlyingDefinitionRevision": "1",
+            "recipeId": "symbolic-fraction-comparison",
+            "recipeRevision": "1",
+            "taskDataId": "plan45-symbolic-fraction-comparison-task-data",
+            "taskDataRevision": "1"
+          },
+          "reason": "eligible"
+        },
+        {
+          "pattern": "M0",
+          "slot": "M0-distance",
+          "identity": {
+            "typeId": "fraction-distance",
+            "setId": "fraction-distance",
+            "setRevision": "1",
+            "itemId": "distance-01",
+            "itemRevision": "1",
+            "definitionId": "phase-4-fraction-distance",
+            "definitionRevision": "1",
+            "recipeId": "common-unit-distance",
+            "recipeRevision": "1"
+          },
+          "reason": "eligible"
+        }
+      ],
+      "identities": [
+        {
+          "typeId": "symbolic-fraction-comparison",
+          "setId": "symbolic-fraction-comparison-vetted-set",
+          "setRevision": "1",
+          "itemId": "plan45-compare-02",
+          "itemRevision": "plan45-record-v1",
+          "definitionId": "phase-4-symbolic-fraction-comparison",
+          "definitionRevision": "2",
+          "underlyingDefinitionRevision": "1",
+          "recipeId": "symbolic-fraction-comparison",
+          "recipeRevision": "1",
+          "taskDataId": "plan45-symbolic-fraction-comparison-task-data",
+          "taskDataRevision": "1"
+        },
+        {
+          "typeId": "symbolic-fraction-comparison",
+          "setId": "symbolic-fraction-comparison-vetted-set",
+          "setRevision": "1",
+          "itemId": "plan45-compare-09",
+          "itemRevision": "plan45-record-v1",
+          "definitionId": "phase-4-symbolic-fraction-comparison",
+          "definitionRevision": "2",
+          "underlyingDefinitionRevision": "1",
+          "recipeId": "symbolic-fraction-comparison",
+          "recipeRevision": "1",
+          "taskDataId": "plan45-symbolic-fraction-comparison-task-data",
+          "taskDataRevision": "1"
+        },
+        {
+          "typeId": "symbolic-fraction-comparison",
+          "setId": "symbolic-fraction-comparison-vetted-set",
+          "setRevision": "1",
+          "itemId": "plan45-compare-10",
+          "itemRevision": "plan45-record-v1",
+          "definitionId": "phase-4-symbolic-fraction-comparison",
+          "definitionRevision": "2",
+          "underlyingDefinitionRevision": "1",
+          "recipeId": "symbolic-fraction-comparison",
+          "recipeRevision": "1",
+          "taskDataId": "plan45-symbolic-fraction-comparison-task-data",
+          "taskDataRevision": "1"
+        },
+        {
+          "typeId": "fraction-distance",
+          "setId": "fraction-distance",
+          "setRevision": "1",
+          "itemId": "distance-01",
+          "itemRevision": "1",
+          "definitionId": "phase-4-fraction-distance",
+          "definitionRevision": "1",
+          "recipeId": "common-unit-distance",
+          "recipeRevision": "1"
+        }
+      ],
+      "fit": {
+        "font": 16,
+        "widths": [
+          893.484375,
+          893.484375
+        ],
+        "area": 893.484375,
+        "contentWidth": 946.6199999999999,
+        "viewportWidth": 1023,
+        "viewportHeight": 614,
+        "htmlScroll": "scroll",
+        "bodyScroll": "visible",
+        "rootScroll": "visible"
+      }
+    },
+    "item": "plan45-compare-02"
+  }
+}

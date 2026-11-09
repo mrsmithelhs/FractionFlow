@@ -1,0 +1,16 @@
+{
+  "scope": "Isolated preview, unavailable Web Locks or IndexedDB injected, disposable Chrome contexts.",
+  "browser": "157.0.8103.38",
+  "results": {
+    "no-lock": {
+      "shape": "C-I-S-T",
+      "status": "",
+      "practiceAvailable": true
+    },
+    "no-storage": {
+      "shape": "C-I-S-T",
+      "status": "Practice started without using the record.",
+      "practiceAvailable": true
+    }
+  }
+}

@@ -34,6 +34,8 @@ export function createPlan92RecordBridge({indexedDB=globalThis.indexedDB,crypto=
   clear:()=>route(()=>legacy.clear(),async()=>{await existing.clear();return existing.readLegacy()}),
   reset:()=>route(()=>legacy.reset(),()=>Promise.reject(new Error('v2 recovery requires explicit disposition'))),
   readHistory:()=>route(()=>null,()=>existing.readHistory()),
+  readExpandedMeta:()=>route(()=>null,()=>existing.readMeta()),
+  inspectHistory:()=>route(()=>null,()=>existing.inspectHistory()),
   async enableExpanded(){if(!locks?.request)throw new Error('history lock unavailable');legacy.close();return upgrading.enable()},
   stopExpanded:()=>route(()=>null,()=>existing.stop()),
   writeExposure:(epoch,identity,token)=>route(()=> 'stale',()=>existing.writeExposure(epoch,identity,token)),

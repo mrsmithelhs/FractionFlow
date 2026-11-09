@@ -14,11 +14,17 @@ describe('Plan 92 generated session integration',()=>{
    const bad=structuredClone(m);bad.entries.at(-1).itemRevision='changed';expect(()=>admitMagnitudeManifest(bad)).toThrow();
    const reordered=structuredClone(m);reordered.entries.reverse();expect(()=>admitMagnitudeManifest(reordered)).toThrow();}
  });
- it('restricts new eligibility to the exact evidenced screen samples',()=>{
+ it('limits eligibility to the reviewed desktop range and exact enlarged samples',()=>{
   const c=descriptors.find(d=>d.role==='C').identity,t=descriptors.find(d=>d.role==='T').identity;
   for(const e of [c,t]){expect(isPlan92MeasuredFit(fit(1093,614,16,955),e,'phase2-bundle-1')).toBe(true);expect(isPlan92MeasuredFit(fit(650,740,32,505),e,'phase2-bundle-4')).toBe(true);expect(isPlan92MeasuredFit(fit(650,741,32,505),e,'phase2-bundle-1')).toBe(false);}
   expect(isPlan92MeasuredFit(fit(600,740,32,455),c,'phase2-bundle-1')).toBe(true);expect(isPlan92MeasuredFit(fit(600,740,32,455),t,'phase2-bundle-1')).toBe(false);
   expect(isPlan92MeasuredFit(fit(360,740,16,295),c,'phase2-bundle-1')).toBe(false);
+  expect(isPlan92MeasuredFit(fit(1024,614,16,894.359375),t,'phase2-bundle-1')).toBe(true);
+  expect(isPlan92MeasuredFit(fit(1024,614,16,894.359374),t,'phase2-bundle-1')).toBe(false);
+  expect(isPlan92MeasuredFit(fit(1366,768,16,1022),t,'phase2-bundle-1')).toBe(true);
+  expect(isPlan92MeasuredFit(fit(1023,614,16,894.5),t,'phase2-bundle-1')).toBe(false);
+  expect(isPlan92MeasuredFit(fit(1367,768,16,1022),t,'phase2-bundle-1')).toBe(false);
+  expect(isPlan92MeasuredFit(fit(1024,613,16,895),t,'phase2-bundle-1')).toBe(false);
  });
  it('uses an eligible replacement in the same future role and refuses a changed fit token',()=>{
   const m=choose(4),original=m.entries[1].itemId;let revision='a';

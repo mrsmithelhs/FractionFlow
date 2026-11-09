@@ -207,7 +207,7 @@ export function isMagnitudeEpisodeComplete(state, entry) {
 // The controller owns only ephemeral navigation. Episode state is supplied by its owner.
 // A prepared transaction is an unforgeable, single-use capability bound to the exact
 // controller snapshot and old episode object. Preparation never mutates either.
-export function createMagnitudeSessionController(manifest = MAGNITUDE_SESSION_MANIFEST, supportId = 'high-support', { prepare = prepareMagnitudeEntry, eligibleForNext = null, fitRevision = null, activeCondition = getDefaultCondition().activeCondition, getNextCondition = null } = {}) {
+export function createMagnitudeSessionController(manifest = MAGNITUDE_SESSION_MANIFEST, supportId = 'high-support', { prepare = prepareMagnitudeEntry, eligibleForNext = null, fitRevision = null, activeCondition = getDefaultCondition().activeCondition, getNextCondition = null, orderNextCandidates = null } = {}) {
   const admission = admitMagnitudeManifest(manifest, supportId, activeCondition);
   let liveManifest = admission.manifest;
   let snapshot = deepFreeze({ id: admission.manifest.id, revision: admission.manifest.revision, index: 0, generation: 0, active: true, supportId });
@@ -241,7 +241,12 @@ export function createMagnitudeSessionController(manifest = MAGNITUDE_SESSION_MA
         const eligible = entry => { try { return eligibleForNext(structuredClone(entry)) === true; } catch { return false; } };
         const remaining=liveManifest.entries.slice(index), suffix=[];
         for(const current of remaining){
-          const candidates=[current,...allGate92Descriptors().filter(d=>d.role===current.role).map(d=>d.identity).filter(e=>!same(e,current))];
+          let candidates=[current,...allGate92Descriptors().filter(d=>d.role===current.role).map(d=>d.identity).filter(e=>!same(e,current))];
+          if(orderNextCandidates){
+            let ordered;try{ordered=orderNextCandidates(structuredClone(current),structuredClone(candidates));}catch{return {ok:false,reason:'fit-exhausted'};}
+            if(!Array.isArray(ordered)||ordered.length!==candidates.length||ordered.some(e=>!candidates.some(c=>same(c,e)))||ordered.some((e,i)=>ordered.slice(0,i).some(p=>same(p,e))))return {ok:false,reason:'fit-exhausted'};
+            candidates=ordered;
+          }
           const chosen=candidates.find(entry=>![...prefix,...suffix].some(previous=>same(previous,entry))&&eligible(entry));
           if(!chosen && !['I','S'].includes(current.role))return {ok:false,reason:'fit-exhausted'};
           if(chosen)suffix.push(chosen);

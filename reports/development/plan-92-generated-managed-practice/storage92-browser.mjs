@@ -22,9 +22,12 @@ try{
  const enabled=await a.evaluate(()=>store.enable());const episode='1'.repeat(32);
  check(await a.evaluate(({epoch,episode})=>store.writeExposure(epoch,storage92.identity,episode),{epoch:enabled.epoch,episode})==='inserted','enabled exposure inserted');
  check(await b.evaluate(({epoch,episode})=>store.writeExposure(epoch,storage92.identity,episode),{epoch:enabled.epoch,episode})==='duplicate','duplicate token refused across tabs');
+ await a.evaluate(epoch=>store.writeExposure(epoch,storage92.identity,'9'.repeat(32)),enabled.epoch);
+ await a.evaluate(epoch=>store.recordFirst(epoch,'9'.repeat(32),'accepted','unknown'),enabled.epoch);
+ check((await a.evaluate(()=>store.readHistory())).entries.find(e=>e.token==='9'.repeat(32)).accepted==='unknown','first correct decision is not episode acceptance');
  await a.evaluate(async({epoch,episode})=>{await store.recordFirst(epoch,episode,'retry','unknown');await store.recordAcceptance(epoch,episode,'unassisted')},{epoch:enabled.epoch,episode});
  const history=await b.evaluate(()=>store.readHistory());
- check(history.entries.length===1&&history.entries[0].first==='retry'&&history.entries[0].accepted==='yes'&&history.entries[0].acceptedAssistance==='unknown','separate first and accepted outcomes retain unknown assistance');
+ check(history.entries.length===2&&history.entries[0].first==='retry'&&history.entries[0].accepted==='yes'&&history.entries[0].acceptedAssistance==='unknown','separate first and accepted outcomes retain unknown assistance');
  async function block(){await b.evaluate(name=>{const req=indexedDB.open(name,2);req.onsuccess=()=>{const db=req.result,tx=db.transaction(['record','expanded'],'readwrite'),s=tx.objectStore('expanded');let release=false;window.release=()=>{release=true};const loop=()=>{const r=s.get('meta');r.onsuccess=()=>{if(!release)loop()}};loop();window.held=true;tx.oncomplete=()=>{window.held=false;db.close()}}},name);await b.waitForFunction(()=>window.held)}
  for(const p of [a,b])await p.evaluate(()=>{const o=IDBDatabase.prototype.transaction;window.txCount=0;IDBDatabase.prototype.transaction=function(n,m,x){if(m==='readwrite')window.txCount++;return o.call(this,n,m,x)}});
  async function waitTx(p,old){await p.waitForFunction(n=>window.txCount>n,old)}

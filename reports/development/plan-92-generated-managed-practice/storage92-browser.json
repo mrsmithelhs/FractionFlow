@@ -7,6 +7,7 @@
     "disabled access issues no event read": "passed",
     "enabled exposure inserted": "passed",
     "duplicate token refused across tabs": "passed",
+    "first correct decision is not episode acceptance": "passed",
     "separate first and accepted outcomes retain unknown assistance": "passed",
     "write before clear is erased and both choices preserved": "passed",
     "clear before old write rejects stale generation": "passed",

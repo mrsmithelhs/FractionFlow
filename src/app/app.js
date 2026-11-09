@@ -604,6 +604,7 @@ export function createFractionFlowApp({
         const remembering = recordController?.install(state, magnitudeSession);
         if (recordEpisodeNotice) recordEpisodeNotice.textContent = isPlan45ComparisonEpisode(state) && recordController?.snapshot().enabled && !remembering ? 'A new problem is needed before activity can be remembered.' : '';
       }
+      try { sessionTestHooks.onEpisodeInstalled?.(magnitudeSession.current()); } catch { /* Review instrumentation cannot break practice. */ }
       return true;
     } catch (error) { if (propagateFailure) throw error; sessionDisplayFailure(); return false; }
   }
@@ -620,7 +621,8 @@ export function createFractionFlowApp({
             sessionPreflight(prepareMagnitudeEntry(entry, selectedSupportLevel.id, selectedCondition.activeCondition),{mountRenderer:true});
             return true;
           } : sessionTestHooks.eligibleForNext,
-          fitRevision: measuredFit ? () => JSON.stringify(measureManagedPracticeFit(appRoot)) : sessionTestHooks.fitRevision });
+          fitRevision: measuredFit ? () => JSON.stringify(measureManagedPracticeFit(appRoot)) : sessionTestHooks.fitRevision,
+          orderNextCandidates:sessionTestHooks.orderNextCandidates });
       sessionPreflight(controller.current().installed);
       magnitudeSession = controller; measuredManagedSession = measuredFit; clearFragment(); setHidden(sessionEntryNotice, true);
       return installSessionCurrent({expectedFit});
@@ -632,6 +634,10 @@ export function createFractionFlowApp({
     }
   }
   function startScheduledSession() {
+    if (sessionTestHooks.interceptStart) { sessionTestHooks.interceptStart(startScheduledSessionCore); return; }
+    startScheduledSessionCore();
+  }
+  function startScheduledSessionCore() {
     // Explicit injected review policy; ordinary entry retains its existing behavior.
     if (sessionTestHooks.selectManifest) {
       try {
@@ -653,7 +659,7 @@ export function createFractionFlowApp({
       if (approvedSample) {
         const refused=new Set(), checked=new Set();
         for(let attempt=0;attempt<=descriptors.length;attempt++){
-          const candidates=descriptors.map(d=>({role:d.role,identity:d.identity,problemKey:d.problemKey,fit:!refused.has(d.identity.itemId)&&isPlan92MeasuredFit(fit,d.identity,selectedCondition.id)}));
+          const candidates=descriptors.map(d=>({role:d.role,identity:d.identity,problemKey:d.problemKey,fit:!refused.has(d.identity.itemId)&&isPlan92MeasuredFit(fit,d.identity,selectedCondition.id),...(sessionTestHooks.candidatePriority ? {priority:sessionTestHooks.candidatePriority(d,seed)} : {})}));
           selection=selectPlan92Sync({seed,candidates,catalogRevision:'ff92-catalog@1',policyRevision:'ff92-policy@1',compatibilityRevision:'ff92-compat@1',demandsRevision:'ff92-demands@1'});
           if(!selection.manifest)break;
           let rejected=null;
@@ -681,6 +687,10 @@ export function createFractionFlowApp({
     setHidden(sessionEntryNotice, false); sessionEntryNotice.focus();
   }
   function sessionTransition(kind, generation) {
+    if(kind==='next' && sessionTestHooks.interceptTransition){sessionTestHooks.interceptTransition(()=>sessionTransitionCore(kind,generation));return;}
+    sessionTransitionCore(kind,generation);
+  }
+  function sessionTransitionCore(kind, generation) {
     if (!magnitudeSession || isTransitioning || (generation !== undefined && generation !== currentEpisodeGeneration)) return;
     const { session, episode } = magnitudeSession.current();
     if (episode !== state) return;
@@ -951,7 +961,7 @@ export function createFractionFlowApp({
       entryPage.appendChild(sessionEntryList);
       const sessionCue = makeElement('p', 'app-session-cue'); sessionCue.id = 'fractionflow-session-cue'; sessionCue.textContent = 'Your place in this practice is not saved.'; entryPage.appendChild(sessionCue);
       sessionEntryNotice = makeElement('p', 'app-session-entry-notice'); sessionEntryNotice.setAttribute('role', 'status'); sessionEntryNotice.tabIndex = -1; setHidden(sessionEntryNotice, true); entryPage.appendChild(sessionEntryNotice);
-      if (!rendererPreflight) recordPanel = createComparisonRecordPanel({ host: entryPage, controller: recordController, practice: () => { const type = practiceTypes.find(t => t.id === 'symbolic-fraction-comparison'); if (type) startPractice(type, { focusEpisode: true, updateFragment: true }); } });
+      if (!rendererPreflight) recordPanel = createComparisonRecordPanel({ host: entryPage, controller: recordController, clearIncludesExpanded:sessionTestHooks.comparisonClearIncludesExpanded===true, practice: () => { const type = practiceTypes.find(t => t.id === 'symbolic-fraction-comparison'); if (type) startPractice(type, { focusEpisode: true, updateFragment: true }); } });
     } else {
       const projection = projectEntryCapabilities(practiceTypes, MAGNITUDE_SESSION_MANIFEST, rotationDay);
       const makePracticeButton = (type, role) => {
@@ -1010,7 +1020,7 @@ export function createFractionFlowApp({
       }
       entryPage.appendChild(createDisplayMenu());
       sessionEntryNotice = makeElement('p', 'app-session-entry-notice'); sessionEntryNotice.setAttribute('role', 'status'); sessionEntryNotice.tabIndex = -1; setHidden(sessionEntryNotice, true); entryPage.appendChild(sessionEntryNotice);
-      if (!rendererPreflight) recordPanel = createComparisonRecordPanel({ host: entryPage, controller: recordController, practice: () => { const type = practiceTypes.find(t => t.id === 'symbolic-fraction-comparison'); if (type) launchEntryPractice(type, { focusEpisode: true, updateFragment: true }); } });
+      if (!rendererPreflight) recordPanel = createComparisonRecordPanel({ host: entryPage, controller: recordController, clearIncludesExpanded:sessionTestHooks.comparisonClearIncludesExpanded===true, practice: () => { const type = practiceTypes.find(t => t.id === 'symbolic-fraction-comparison'); if (type) launchEntryPractice(type, { focusEpisode: true, updateFragment: true }); } });
     }
     const aboutLink = makeElement('a', 'app-about-link');
     aboutLink.setAttribute('href', './about.html');
@@ -1933,7 +1943,7 @@ export function createFractionFlowApp({
       writeHelpOpen: (open) => {
         if (!isCurrent()) return false;
         comparisonHelpOpen = Boolean(open);
-        if (comparisonHelpOpen) recordController?.helpOpened();
+        if (comparisonHelpOpen) { recordController?.helpOpened(); try { sessionTestHooks.onHelpOpened?.(); } catch { /* Review instrumentation cannot break practice. */ } }
         return true;
       },
       focusPrimary: () => isCurrent() ? getVisibleComparisonRegion()?.focusPrimary() ?? false : false,
@@ -2553,6 +2563,7 @@ export function createFractionFlowApp({
       const recordPreviousState = state;
       state = syncSessionEpisode(state, applyIntent(state, action));
       if (!isReplaying) recordController?.observe(recordPreviousState, state, action);
+      if (!isReplaying && magnitudeSession) { try { sessionTestHooks.onEpisodeIntent?.({before:recordPreviousState,after:state,action}); } catch { /* Review instrumentation cannot break practice. */ } }
       if (action.type === 'revise-comparison-denominator') comparisonConstructionDrafts = {};
       if (action.type === 'submit-fraction-comparison' && state.status === 'resolved') comparisonDraft = '';
       if (action.type === 'request-help') {

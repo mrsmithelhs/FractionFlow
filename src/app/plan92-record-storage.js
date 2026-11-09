@@ -26,7 +26,6 @@ function validateEntries(events,meta){
   const d=descriptorFor(e.identity);if(!d||e.role!==d.role||e.demand!==JSON.stringify(d.decision))throw new TypeError('invalid expanded identity');
   if(!['unknown','accepted','retry'].includes(e.first)||!['unknown','yes'].includes(e.accepted)||!assistance(e.firstAssistance)||!assistance(e.acceptedAssistance))throw new TypeError('invalid expanded observation');
   if(e.first==='unknown'&&(e.accepted!=='unknown'||e.firstAssistance!=='unknown'||e.acceptedAssistance!=='unknown'))throw new TypeError('outcome without first response');
-  if(e.first==='accepted'&&(e.accepted!=='yes'||e.acceptedAssistance!==e.firstAssistance))throw new TypeError('inconsistent first acceptance');
   if(e.accepted==='unknown'&&e.acceptedAssistance!=='unknown')throw new TypeError('assistance without acceptance');
   if(e.firstAssistance==='assisted'&&e.accepted==='yes'&&e.acceptedAssistance==='unassisted')throw new TypeError('inconsistent assistance');
   if(e.firstAssistance==='unknown'&&e.first==='retry'&&e.accepted==='yes'&&e.acceptedAssistance==='unassisted')throw new TypeError('unsupported independence');
@@ -82,6 +81,10 @@ export function createPlan92RecordStorage({indexedDB=globalThis.indexedDB,crypto
   async recordLegacy(generation,observation){const copy=structuredClone(observation);return transact(l=>{if(!l)return {result:'stale'};const applied=applyObservation(l,generation,copy);return {...(['inserted','updated'].includes(applied.result)?{legacy:applied.root}:{}),result:applied.result}},{legacy:true,expanded:false});},
   async stop(){return withLock(()=>transact((_l,m)=>({meta:{...m,enabled:false,epoch:token(),coverage:'unknown'},result:'stopped'})));},
   async clear(){return withLock(()=>transact((l,m)=>({...(l?{legacy:emptyRoot(token(),l.enabled)}:{}),meta:emptyPlan92Meta(token(),m.enabled),clearEvents:true,result:{legacyEnabled:l?.enabled??false,expandedEnabled:m.enabled}}),{legacy:true}));},
+  async readMeta(){return transact((_l,m)=>({result:structuredClone(m)}));},
+  // Explicit inspection is user initiated; unlike scheduler reads, it can
+  // show retained entries after remembering has been stopped.
+  async inspectHistory(){return transact((_l,m,events)=>({result:{meta:structuredClone(m),entries:events}}),{events:'always'});},
   // Disabled access never requests the separate event key; scheduler must not call it at all when off.
   async readHistory(){return transact((_l,m,events)=>({result:m.enabled?{meta:structuredClone(m),entries:events}:null}),{events:m=>m.enabled});},
   async writeExposure(epoch,identity,episodeToken){
@@ -93,7 +96,7 @@ export function createPlan92RecordStorage({indexedDB=globalThis.indexedDB,crypto
   },
   async recordFirst(epoch,episodeToken,result,usedAssistance='unknown'){
    if(!tokenOk(episodeToken)||!['accepted','retry'].includes(result)||!assistance(usedAssistance))throw new TypeError('invalid first observation');
-   return transact((_l,m,events)=>{if(!m.enabled||m.epoch!==epoch)return {result:'stale'};const index=events.findIndex(e=>e.token===episodeToken);if(index<0)return {result:'missing'};const old=events[index];if(old.first!=='unknown')return {result:'duplicate'};const entries=events.slice();entries[index]={...old,first:result,firstAssistance:usedAssistance,...(result==='accepted'?{accepted:'yes',acceptedAssistance:usedAssistance}:{})};return {events:entries,result:'updated'};},{events:m=>m.enabled&&m.epoch===epoch});
+   return transact((_l,m,events)=>{if(!m.enabled||m.epoch!==epoch)return {result:'stale'};const index=events.findIndex(e=>e.token===episodeToken);if(index<0)return {result:'missing'};const old=events[index];if(old.first!=='unknown')return {result:'duplicate'};const entries=events.slice();entries[index]={...old,first:result,firstAssistance:usedAssistance};return {events:entries,result:'updated'};},{events:m=>m.enabled&&m.epoch===epoch});
   },
   async recordAcceptance(epoch,episodeToken,usedAssistance='unknown'){
    if(!tokenOk(episodeToken)||!assistance(usedAssistance))throw new TypeError('invalid acceptance');
