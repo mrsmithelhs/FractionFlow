@@ -1,0 +1,180 @@
+{
+  "scope": "Ordinary mounted Start in a disposable Chrome context with synthetic legacy v1 comparison remembering enabled and no expanded consent; captures initial open/get calls through Start.",
+  "browser": "157.0.8103.38",
+  "legacyEnabled": true,
+  "trace": {
+    "opens": [
+      {
+        "name": "fractionflow-comparison-record-v1",
+        "version": 1
+      }
+    ],
+    "gets": [
+      {
+        "store": "record",
+        "key": "root"
+      }
+    ]
+  },
+  "witness": {
+    "seedDraws": {
+      "shape": 2197871165,
+      "C": 4201984440,
+      "I": 70367929,
+      "S": 449786134,
+      "T": 2707570586,
+      "review": 794434498
+    },
+    "shapeId": "C-I-S-T",
+    "reviewOpportunity": false,
+    "outcomes": [
+      {
+        "shape": "C-I-S-T",
+        "role": "C",
+        "candidate": "plan45-compare-02",
+        "reason": "candidate-tried"
+      },
+      {
+        "shape": "C-I-S-T",
+        "role": "I",
+        "candidate": "plan40-identify-two-thirds-five-twelfths-12",
+        "reason": "candidate-tried"
+      },
+      {
+        "shape": "C-I-S-T",
+        "role": "S",
+        "candidate": "plan40-inspect-two-thirds-one-fourth-12",
+        "reason": "candidate-tried"
+      },
+      {
+        "shape": "C-I-S-T",
+        "role": "T",
+        "candidate": "plan76-construct-five-sixths-one-tenth-30",
+        "reason": "candidate-tried"
+      }
+    ],
+    "selected": [
+      {
+        "role": "C",
+        "identity": {
+          "role": "C",
+          "typeId": "symbolic-fraction-comparison",
+          "setId": "symbolic-fraction-comparison-vetted-set",
+          "setRevision": "1",
+          "itemId": "plan45-compare-02",
+          "itemRevision": "plan45-record-v1",
+          "authoringRevision": "plan45-record-v1",
+          "definitionId": "phase-4-symbolic-fraction-comparison",
+          "definitionRevision": "2",
+          "underlyingDefinitionRevision": "1",
+          "recipeId": "symbolic-fraction-comparison",
+          "recipeRevision": "1",
+          "taskDataId": "plan45-symbolic-fraction-comparison-task-data",
+          "taskDataRevision": "1",
+          "cueId": "compare.same-denominator"
+        },
+        "problemKey": {
+          "family": "comparison",
+          "pair": [
+            "3/8",
+            "5/8"
+          ]
+        }
+      },
+      {
+        "role": "I",
+        "identity": {
+          "role": "I",
+          "typeId": "unlike-denominator-subtraction",
+          "setId": "unlike-subtraction-vetted-set",
+          "setRevision": "2",
+          "itemId": "plan40-identify-two-thirds-five-twelfths-12",
+          "fixtureId": "curated-plan40-identify-two-thirds-five-twelfths",
+          "authoringRevision": "plan40-record-v1",
+          "definitionId": "phase-3-reusable-subtraction-recipes",
+          "definitionRevision": "1",
+          "recipeId": "unlike-subtraction.identify-side-construct",
+          "patternRevision": "1",
+          "taskDataId": "plan40-subtraction-recipe-task-data",
+          "taskDataRevision": "1",
+          "stimulusId": null,
+          "stimulusRevision": null,
+          "itemRevision": "plan40-record-v1"
+        },
+        "problemKey": {
+          "family": "subtraction",
+          "left": "2/3",
+          "right": "5/12"
+        }
+      },
+      {
+        "role": "S",
+        "identity": {
+          "role": "S",
+          "typeId": "unlike-denominator-subtraction",
+          "setId": "unlike-subtraction-vetted-set",
+          "setRevision": "2",
+          "itemId": "plan40-inspect-two-thirds-one-fourth-12",
+          "fixtureId": "curated-plan40-inspect-two-thirds-one-fourth",
+          "authoringRevision": "plan40-record-v1",
+          "definitionId": "phase-3-reusable-subtraction-recipes",
+          "definitionRevision": "1",
+          "recipeId": "unlike-subtraction.inspect-keep-repair",
+          "patternRevision": "1",
+          "taskDataId": "plan40-subtraction-recipe-task-data",
+          "taskDataRevision": "1",
+          "stimulusId": "plan40-stim-inspect-two-thirds-one-fourth-12",
+          "stimulusRevision": "1",
+          "itemRevision": "plan40-record-v1"
+        },
+        "problemKey": {
+          "family": "subtraction",
+          "left": "2/3",
+          "right": "1/4"
+        }
+      },
+      {
+        "role": "T",
+        "identity": {
+          "role": "T",
+          "typeId": "unlike-denominator-subtraction",
+          "setId": "unlike-subtraction-vetted-set",
+          "setRevision": "2",
+          "itemId": "plan76-construct-five-sixths-one-tenth-30",
+          "fixtureId": "curated-plan76-construct-five-sixths-one-tenth-30",
+          "authoringRevision": "plan76-record-v1",
+          "definitionId": "phase-3-reusable-subtraction-recipes",
+          "definitionRevision": "1",
+          "recipeId": "unlike-subtraction.construct-equivalent",
+          "patternRevision": "1",
+          "taskDataId": "plan40-subtraction-recipe-task-data",
+          "taskDataRevision": "1",
+          "stimulusId": null,
+          "stimulusRevision": null,
+          "itemRevision": "plan76-record-v1"
+        },
+        "problemKey": {
+          "family": "subtraction",
+          "left": "5/6",
+          "right": "1/10"
+        }
+      }
+    ],
+    "seed": 0,
+    "fit": {
+      "font": 16,
+      "widths": [
+        955.78125,
+        955.78125
+      ],
+      "area": 955.78125,
+      "contentWidth": 1012.4200000000001,
+      "viewportWidth": 1093,
+      "viewportHeight": 614,
+      "htmlScroll": "scroll",
+      "bodyScroll": "visible",
+      "rootScroll": "visible"
+    }
+  },
+  "version": 1
+}

@@ -3109,7 +3109,7 @@
           {
             "type": "activeElementEquals",
             "target": "activeElement",
-            "value": "button.fraction-control.app-practice-button"
+            "value": "button.fraction-control.app-practice-choice.app-practice-button"
           }
         ]
       }
@@ -14002,7 +14002,7 @@
           {
             "type": "containsText",
             "target": ".app-visual-view .active-beat-prompt",
-            "value": "4/30 is left."
+            "value": "That's right."
           },
           {
             "type": "containsText",
@@ -14515,7 +14515,7 @@
           {
             "type": "containsText",
             "target": ".app-visual-view .active-beat-prompt",
-            "value": "1/2 is left."
+            "value": "That's right."
           },
           {
             "type": "containsText",

@@ -1,0 +1,31 @@
+import {createServer} from 'vite';import {chromium} from 'playwright';import {writeFile} from 'node:fs/promises';
+const dir='reports/development/plan-92-generated-managed-practice',server=await createServer({configFile:false,root:process.cwd(),server:{host:'127.0.0.1',port:0},logLevel:'error'});let browser,context;const results={};
+const check=(yes,label)=>{if(!yes)throw Error(label);results[label]='passed'};
+try{
+ await server.listen();browser=await chromium.launch({headless:true,channel:'chrome',args:['--no-proxy-server']});context=await browser.newContext({viewport:{width:1093,height:614}});
+ await context.addInitScript(()=>{window.bridgeTrace={opens:[],gets:[]};const open=IDBFactory.prototype.open;IDBFactory.prototype.open=function(name,version){bridgeTrace.opens.push({name,version:version??null});return open.call(this,name,version)};const get=IDBObjectStore.prototype.get;IDBObjectStore.prototype.get=function(key){bridgeTrace.gets.push({store:this.name,key});return get.call(this,key)}});
+ const [old,modern]=await Promise.all([context.newPage(),context.newPage()]),name=`bridge92-${Date.now()}-${Math.random().toString(16).slice(2)}`,base=`http://127.0.0.1:${server.httpServer.address().port}/${dir}/bridge92-preview.html?name=${encodeURIComponent(name)}`;
+ await old.goto(base+'&mode=old');await old.waitForFunction(()=>window.bridge92App);await old.evaluate(()=>bridge92.enable());await old.reload();await old.waitForFunction(()=>document.querySelector('.comparison-record-panel')?.textContent.includes('Remembering comparison'));
+ await modern.goto(base);await modern.waitForFunction(()=>window.bridge92App);const before=await modern.evaluate(async()=>({version:await bridge92.version(),legacy:await bridge92.read(),history:await bridge92.readHistory()}));
+ const trace=await modern.evaluate(()=>structuredClone(bridgeTrace));
+ check(before.version===1&&before.legacy.enabled&&before.history===null&&!trace.opens.some(x=>x.version===2)&&!trace.gets.some(x=>x.store==='expanded'||x.key==='events'),'v1 legacy remains enabled and expanded off without upgrade or event read');
+ await old.locator('[data-session-entry="comparison"]').click();const oldItem=await old.evaluate(()=>bridge92App.getState().taskContext.itemId);
+ // This explicit test action represents affirmative expanded consent; no real consent UI is wired.
+ const enabled=await modern.evaluate(()=>bridge92.enableExpanded());const upgraded=await modern.evaluate(async()=>({version:await bridge92.version(),legacy:await bridge92.read(),history:await bridge92.readHistory()}));
+ check(upgraded.version===2&&upgraded.legacy.enabled&&upgraded.history.meta.enabled,'explicit expanded enable upgrades and preserves legacy choice');
+ await modern.reload();await modern.waitForFunction(()=>document.querySelector('.comparison-record-panel')?.textContent.includes('Remembering comparison'));const reopened=await modern.evaluate(async()=>({version:await bridge92.version(),legacy:await bridge92.read(),history:await bridge92.readHistory()}));
+ check(reopened.version===2&&reopened.legacy.enabled&&reopened.history.meta.epoch===enabled.epoch,'reopen reads authoritative v2 flags');
+ await modern.locator('[data-session-entry="comparison"]').click();const current=await modern.evaluate(()=>bridge92App.getState().taskContext.itemId);check(current==='plan45-compare-02','mounted Start installs generated comparison');
+ let host=modern.locator('.app-visual-view:not([hidden])');await host.locator('.plan45-relation-option input[value=">"]').check();await host.locator('.plan45-check-button').click();
+ await modern.waitForFunction(async()=>{const x=await bridge92.read();return x?.entries?.length===1});
+ check((await modern.evaluate(()=>bridge92.read())).entries.length===1,'real comparison producer writes through v2 bridge');
+ await host.locator('.plan45-progression-button').click();const task=await modern.evaluate(()=>bridge92App.getState().taskContext);await host.locator('.active-beat-controls button').first().click();await host.locator('.nested-side-choice').nth(task.requiredSides[0]==='left'?0:1).click();const input=host.locator(`#transform-num-input-${task.requiredSides[0]}`);await input.fill('7');
+ const epoch=reopened.history.meta.epoch;await modern.evaluate(()=>bridge92.clear());check(await input.inputValue()==='7'&&(await modern.evaluate(()=>bridge92App.getState().taskContext.itemId))===task.itemId,'Clear preserves mounted Next task and draft');
+ host=old.locator('.app-visual-view:not([hidden])');const relation=oldItem==='plan45-compare-10'?'<':'>';await host.locator(`.plan45-relation-option input[value="${relation}"]`).check();await host.locator('.plan45-check-button').click();
+ await old.waitForTimeout(300);const after=await modern.evaluate(async()=>({legacy:await bridge92.read(),history:await bridge92.readHistory()}));
+ check(after.legacy.enabled&&after.legacy.entries.length===0&&after.history.meta.enabled&&after.history.entries.length===0,'old mounted comparison write cannot resurrect data after Clear');
+ check(await modern.evaluate(async epoch=>bridge92.installHistoryChoice(epoch,()=>{window.staleInstalled=true}),epoch)==='stale'&&!await modern.evaluate(()=>window.staleInstalled===true),'pre-Clear expanded choice is stale');
+ await modern.evaluate(()=>bridge92.stop());const stopped=await modern.evaluate(async()=>({legacy:await bridge92.read(),history:await bridge92.readHistory()}));check(!stopped.legacy.enabled&&stopped.history.meta.enabled,'legacy Stop remains independent of expanded consent');
+ await old.evaluate(()=>{bridge92App.destroy();bridge92.close()});await modern.evaluate(()=>{bridge92App.destroy();bridge92.close()});await modern.evaluate(name=>new Promise((resolve,reject)=>{const r=indexedDB.deleteDatabase(name);r.onsuccess=resolve;r.onerror=()=>reject(r.error)}),name);
+ await writeFile(`${dir}/bridge92-mounted.json`,JSON.stringify({scope:'Isolated test-hook bridge with real mounted Start/Next and legacy comparison producer in two same-origin Chrome tabs using a disposable DB. Expanded opt-in is a synthetic test action, not a product consent flow.',browser:browser.version(),results},null,2)+'\n');console.log(JSON.stringify(results));
+}finally{await context?.close();await browser?.close();await server.close()}

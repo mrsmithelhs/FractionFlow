@@ -1,0 +1,15 @@
+{
+  "scope": "Isolated test-hook bridge with real mounted Start/Next and legacy comparison producer in two same-origin Chrome tabs using a disposable DB. Expanded opt-in is a synthetic test action, not a product consent flow.",
+  "browser": "157.0.8103.38",
+  "results": {
+    "v1 legacy remains enabled and expanded off without upgrade or event read": "passed",
+    "explicit expanded enable upgrades and preserves legacy choice": "passed",
+    "reopen reads authoritative v2 flags": "passed",
+    "mounted Start installs generated comparison": "passed",
+    "real comparison producer writes through v2 bridge": "passed",
+    "Clear preserves mounted Next task and draft": "passed",
+    "old mounted comparison write cannot resurrect data after Clear": "passed",
+    "pre-Clear expanded choice is stale": "passed",
+    "legacy Stop remains independent of expanded consent": "passed"
+  }
+}

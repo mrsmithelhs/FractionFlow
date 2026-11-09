@@ -2721,7 +2721,7 @@ export function createFractionFlowApp({
   return {
     mount() {
       if (mounted) return this;
-      if (!rendererPreflight) recordController = createComparisonRecordController({ onChange: (info) => { recordPanel?.render(); if (recordEpisodeNotice && isPlan45ComparisonEpisode(state)) recordEpisodeNotice.textContent = info.message.includes('could not save') ? info.message : !info.eligible && info.enabled ? 'A new problem is needed before activity can be remembered.' : info.message === 'This problem is no longer being remembered.' ? info.message : '';  } });
+      if (!rendererPreflight) recordController = createComparisonRecordController({ ...(sessionTestHooks.recordStorage ? {storage:sessionTestHooks.recordStorage} : {}), onChange: (info) => { recordPanel?.render(); if (recordEpisodeNotice && isPlan45ComparisonEpisode(state)) recordEpisodeNotice.textContent = info.message.includes('could not save') ? info.message : !info.eligible && info.enabled ? 'A new problem is needed before activity can be remembered.' : info.message === 'This problem is no longer being remembered.' ? info.message : '';  } });
       try { createShell(); }
       catch (error) {
         if (documentClickListener && typeof document !== 'undefined') document.removeEventListener('click', documentClickListener);

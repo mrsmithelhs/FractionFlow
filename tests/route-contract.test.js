@@ -30,6 +30,11 @@ const PRE_PLAN17_ROUTE_PREFIX_HASH = '861c315fa1cff3a3e3daa949c53c41a27d7bf27ba5
 const migratedEntryIndices = new Set([55, 56, ...Array.from({ length: 16 }, (_, i) => i + 65), ...Array.from({ length: 8 }, (_, i) => i + 91), 116]);
 function originalEntryRoutes(routes) {
   return routes.map((route, index) => {
+    if (route.id === 'ROUTE-ENTRY-FIRST-TAB') {
+      expect(index).toBe(23);
+      expect(route.expect.assertions).toEqual([{ type: 'activeElementEquals', target: 'activeElement', value: 'button.fraction-control.app-practice-choice.app-practice-button' }]);
+      return { ...route, expect: { ...route.expect, assertions: [{ ...route.expect.assertions[0], value: 'button.fraction-control.app-practice-button' }] } };
+    }
     if (route.id === 'ROUTE-ENTRY-GEAR-TAB') {
       expect(index).toBe(24);
       expect(route.actions).toEqual([
@@ -66,17 +71,23 @@ function originalEntryRoutes(routes) {
   });
 }
 
-// Plan 90's accepted copy repair changed exactly these two live assertions.
+// Plan 90's accepted copy repair changed exactly these live assertions.
 // Preserve the original prefix fingerprints without weakening the current copy check.
 function originalPlan40SuccessCopy(routes) {
-  const routeIds = ['ROUTE-PLAN40-DEEP-SAMPLE-CONSTRUCT-OPERATE', 'ROUTE-PLAN40-HELP-RECOVERY-VIEW-TOGGLE'];
+  const originalCopy = {
+    'ROUTE-PLAN40-DEEP-SAMPLE-CONSTRUCT-OPERATE': '3/10 is left.',
+    'ROUTE-PLAN40-HELP-RECOVERY-VIEW-TOGGLE': '3/10 is left.',
+    'ROUTE-PLAN40-DEEP-SAMPLE-INSPECT-REPAIR': '4/30 is left.',
+    'ROUTE-PLAN40-DEEP-SAMPLE-IDENTIFY-REDUCIBLE': '1/2 is left.',
+  };
+  const routeIds = Object.keys(originalCopy);
   for (const id of routeIds) expect(routes.filter(route => route.id === id)).toHaveLength(1);
   return routes.map(route => {
     if (!routeIds.includes(route.id)) return route;
     const assertions = route.expect.assertions;
     const matching = assertions.filter(assertion => assertion.type === 'containsText' && assertion.target === '.app-visual-view .active-beat-prompt');
     expect(matching).toEqual([{ type: 'containsText', target: '.app-visual-view .active-beat-prompt', value: "That's right." }]);
-    return { ...route, expect: { ...route.expect, assertions: assertions.map(assertion => assertion === matching[0] ? { ...assertion, value: '3/10 is left.' } : assertion) } };
+    return { ...route, expect: { ...route.expect, assertions: assertions.map(assertion => assertion === matching[0] ? { ...assertion, value: originalCopy[route.id] } : assertion) } };
   });
 }
 

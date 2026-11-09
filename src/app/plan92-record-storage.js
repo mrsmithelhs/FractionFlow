@@ -34,14 +34,14 @@ function validateEntries(events,meta){
  }
  return structuredClone(events);
 }
-export function createPlan92RecordStorage({indexedDB=globalThis.indexedDB,crypto=globalThis.crypto,locks=globalThis.navigator?.locks,name='fractionflow-comparison-record-v1'}={}){
+export function createPlan92RecordStorage({indexedDB=globalThis.indexedDB,crypto=globalThis.crypto,locks=globalThis.navigator?.locks,name='fractionflow-comparison-record-v1',allowUpgrade=false}={}){
  let dbPromise;const token=()=>randomRecordToken(crypto);
  function open(){
   if(dbPromise)return dbPromise;let retired=false;
   const pending=new Promise((resolve,reject)=>{
-   if(!indexedDB?.open)return reject(new Error('storage unavailable'));let req;try{req=indexedDB.open(name,2)}catch(e){reject(e);return;}
+   if(!indexedDB?.open)return reject(new Error('storage unavailable'));let req;try{req=allowUpgrade?indexedDB.open(name,2):indexedDB.open(name)}catch(e){reject(e);return;}
    req.onupgradeneeded=event=>{
-    if(retired){req.transaction.abort();return;}
+    if(retired||!allowUpgrade){req.transaction.abort();return;}
     try{
      const db=req.result,tx=req.transaction;if(!db.objectStoreNames.contains(LEGACY))db.createObjectStore(LEGACY);if(!db.objectStoreNames.contains(EXPANDED))db.createObjectStore(EXPANDED);
      if(![0,1].includes(event.oldVersion)){tx.abort();return;}
@@ -51,7 +51,7 @@ export function createPlan92RecordStorage({indexedDB=globalThis.indexedDB,crypto
    };
    req.onerror=()=>{retired=true;reject(req.error||new Error('open failed'));};
    req.onblocked=()=>{retired=true;reject(new Error('upgrade blocked'));};
-   req.onsuccess=()=>{const db=req.result;if(retired){db.close();return;}db.onversionchange=()=>{db.close();if(dbPromise===cached)dbPromise=null};resolve(db);};
+   req.onsuccess=()=>{const db=req.result;if(retired){db.close();return;}if(db.version!==2){db.close();reject(new Error('expanded version unavailable'));return;}db.onversionchange=()=>{db.close();if(dbPromise===cached)dbPromise=null};resolve(db);};
   });
   const cached=pending.catch(e=>{if(dbPromise===cached)dbPromise=null;throw e});dbPromise=cached;return cached;
  }

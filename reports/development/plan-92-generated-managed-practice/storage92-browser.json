@@ -11,6 +11,9 @@
     "write before clear is erased and both choices preserved": "passed",
     "clear before old write rejects stale generation": "passed",
     "old history choice cannot install after clear": "passed",
-    "stop disables reads and stale writes across tabs": "passed"
+    "choice installed before clear is serialized ahead of clear": "passed",
+    "clear before queued choice prevents stale installation": "passed",
+    "stop disables reads and stale writes across tabs": "passed",
+    "corrupt legacy blocked upgrade and missing lock fail closed": "passed"
   }
 }

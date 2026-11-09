@@ -11,7 +11,7 @@ try{
  await Promise.all([a,b].map(async p=>{await p.goto(url);await p.waitForFunction(()=>window.storage92);}));
  const name=`ff92-isolated-${Date.now()}-${Math.random().toString(16).slice(2)}`;
  const legacy=await a.evaluate(async name=>{window.old=storage92.createComparisonRecordStorage({name});return old.enable()},name);
- await b.evaluate(name=>{window.store=storage92.createPlan92RecordStorage({name});},name);
+ await b.evaluate(name=>{window.store=storage92.createPlan92RecordStorage({name,allowUpgrade:true});},name);
  const upgraded=await b.evaluate(async()=>({history:await store.readHistory(),legacy:await store.readLegacy()}));
  check(upgraded.history===null&&JSON.stringify(upgraded.legacy)===JSON.stringify(legacy),'upgrade preserves legacy and starts expanded off');
  const oldReopen=await a.evaluate(async()=>{try{await old.read();return 'unexpected'}catch(e){return e.name}});
@@ -40,8 +40,32 @@ try{
  check(w2==='stale'&&(await a.evaluate(()=>store.readHistory())).entries.length===0,'clear before old write rejects stale generation');
  let installed=await a.evaluate(epoch=>store.installHistoryChoice(epoch,()=>{window.installed=true}),next.meta.epoch);
  check(installed==='stale'&&!await a.evaluate(()=>window.installed===true),'old history choice cannot install after clear');
+ // Hold the shared origin lock so requests from separate tabs can be queued in
+ // a witnessed order. The installed choice is a synthetic synchronous callback.
+ async function holdLock(){await b.evaluate(()=>{window.lockHeld=false;window.lockBlock=navigator.locks.request('fractionflow-plan92-history',async()=>{window.lockHeld=true;await new Promise(resolve=>window.releaseLock=resolve)});});await b.waitForFunction(()=>window.lockHeld)}
+ async function pending(count){await b.waitForFunction(async count=>(await navigator.locks.query()).pending.filter(x=>x.name==='fractionflow-plan92-history').length>=count,count)}
+ let epoch=(await a.evaluate(()=>store.readHistory())).meta.epoch;
+ await holdLock();await a.evaluate(epoch=>{window.choiceBefore=store.installHistoryChoice(epoch,()=>{window.choiceWasInstalled=true})},epoch);await pending(1);
+ await b.evaluate(()=>{window.clearAfter=store.clear()});await pending(2);await b.evaluate(()=>releaseLock());
+ const choiceBefore=await a.evaluate(()=>window.choiceBefore),clearAfter=await b.evaluate(()=>window.clearAfter);
+ check(choiceBefore==='installed'&&clearAfter.expandedEnabled&&await a.evaluate(()=>window.choiceWasInstalled===true),'choice installed before clear is serialized ahead of clear');
+ epoch=(await a.evaluate(()=>store.readHistory())).meta.epoch;
+ await holdLock();await b.evaluate(()=>{window.clearBefore=store.clear()});await pending(1);
+ await a.evaluate(epoch=>{window.choiceAfter=store.installHistoryChoice(epoch,()=>{window.staleChoiceInstalled=true})},epoch);await pending(2);await b.evaluate(()=>releaseLock());
+ await b.evaluate(()=>window.clearBefore);const choiceAfter=await a.evaluate(()=>window.choiceAfter);
+ check(choiceAfter==='stale'&&!await a.evaluate(()=>window.staleChoiceInstalled===true),'clear before queued choice prevents stale installation');
  const beforeStop=await a.evaluate(()=>store.readHistory());await b.evaluate(()=>store.stop());
  check(await a.evaluate(()=>store.readHistory())===null&&await a.evaluate(epoch=>store.writeExposure(epoch,storage92.identity,'4'.repeat(32)),beforeStop.meta.epoch)==='stale','stop disables reads and stale writes across tabs');
+ const failures=await a.evaluate(async name=>{
+  const makeV1=(dbName,bad)=>new Promise((resolve,reject)=>{const r=indexedDB.open(dbName,1);r.onupgradeneeded=()=>{const s=r.result.createObjectStore('record');if(bad)s.put({unexpected:'corrupt'},'root')};r.onerror=()=>reject(r.error);r.onsuccess=()=>resolve(r.result)});
+  const badName=name+'-corrupt',blockedName=name+'-blocked',bad=await makeV1(badName,true);bad.close();
+  const invalid=storage92.createPlan92RecordStorage({name:badName,allowUpgrade:true});let corruptRejected=false;try{await invalid.readHistory()}catch{corruptRejected=true}invalid.close();
+  const holder=await makeV1(blockedName,false),blocked=storage92.createPlan92RecordStorage({name:blockedName,allowUpgrade:true});let blockedRejected=false;try{await blocked.readHistory()}catch(e){blockedRejected=/blocked/.test(e.message)}holder.close();blocked.close();
+  const noLock=storage92.createPlan92RecordStorage({name,locks:null});let lockRejected=false;try{await noLock.enable()}catch(e){lockRejected=/lock unavailable/.test(e.message)}noLock.close();
+  const del=n=>new Promise((resolve,reject)=>{const r=indexedDB.deleteDatabase(n);r.onsuccess=resolve;r.onerror=()=>reject(r.error)});await del(badName);await del(blockedName);
+  return {corruptRejected,blockedRejected,lockRejected};
+ },name);
+ check(failures.corruptRejected&&failures.blockedRejected&&failures.lockRejected,'corrupt legacy blocked upgrade and missing lock fail closed');
  await a.evaluate(()=>store.close());await b.evaluate(()=>store.close());await a.evaluate(name=>new Promise((resolve,reject)=>{const r=indexedDB.deleteDatabase(name);r.onsuccess=resolve;r.onerror=()=>reject(r.error)}),name);
  await writeFile(`${dir}/storage92-browser.json`,JSON.stringify({scope:'Production isolated v2 seam, two same-origin Chrome tabs and disposable database; no app wiring or real learner data.',browser:browser.version(),results},null,2)+'\n');console.log(JSON.stringify(results));
 }finally{await context?.close();await browser?.close();await server.close()}
