@@ -3,6 +3,7 @@ import { createComparisonRecordStorage, randomRecordToken } from './comparison-r
 import { HIGH_SUPPORT_CONFIGURATION, MEDIUM_SUPPORT_CONFIGURATION } from '../interaction/support.js';
 import { PLAN45_STATIC_COMPARISON_ACTIVE_CONDITION } from '../interaction/episode-definition.js';
 import { admitMagnitudeManifest, sessionRecordContext } from './magnitude-session.js';
+import { PLAN92_MANAGED_ID } from './plan92-catalog.js';
 
 const same = (a,b) => JSON.stringify(a) === JSON.stringify(b);
 function contextFor(state) {
@@ -45,7 +46,7 @@ export function createComparisonRecordController({ storage = createComparisonRec
         const sessionContext = sessionRecordContext(sessionController, state);
         if (!sessionContext) return false;
         const { session, manifest, admittedManifest, episode, installed } = sessionContext;
-        const managed = ['goal-linked-comparison-distance','goal-linked-practice'].includes(manifest.id);
+        const managed = ['goal-linked-comparison-distance','goal-linked-practice',PLAN92_MANAGED_ID].includes(manifest.id);
         // Preserve the comparisons eligible through the old ordinary Start;
         // other new managed identities do not expand observation coverage.
         if (managed && !['plan45-compare-02','plan45-compare-09','plan45-compare-10'].includes(state.taskContext.itemId)) return false;

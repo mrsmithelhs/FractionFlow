@@ -9,6 +9,8 @@ import { PLAN45_STATIC_COMPARISON_ACTIVE_CONDITION, getEpisodeDefinition } from 
 import { createEpisode } from '../interaction/episode.js';
 import { PLAN90_FAMILY_ENTRIES, prepareManagedFamilyEntry } from './managed-family-entry.js';
 import { getDefaultCondition } from './conditions.js';
+import { PLAN92_MANAGED_ID, isPlan92Manifest, allGate92Descriptors } from './plan92-catalog.js';
+import { preparePlan92ScratchCandidate } from './plan92-scratch-candidates.js';
 
 const comparison = itemId => ({ typeId: 'symbolic-fraction-comparison', setId: 'symbolic-fraction-comparison-vetted-set', setRevision: '1', itemId, itemRevision: 'plan45-record-v1', definitionId: 'phase-4-symbolic-fraction-comparison', definitionRevision: '2', underlyingDefinitionRevision: '1', recipeId: 'symbolic-fraction-comparison', recipeRevision: '1', taskDataId: 'plan45-symbolic-fraction-comparison-task-data', taskDataRevision: '1' });
 export const MAGNITUDE_SESSION_MANIFEST = deepFreeze({ id: 'short-magnitude-practice', revision: '1', entries: [
@@ -148,6 +150,7 @@ export function sessionRecordContext(controller, state) {
 }
 
 export function prepareMagnitudeEntry(entry, supportId, activeCondition = getDefaultCondition().activeCondition) {
+  if (entry?.role) return preparePlan92ScratchCandidate(entry, supportId, entry.role === 'C' ? 'phase2-bundle-1' : activeCondition.id);
   if (['bar-to-line-same-amount','sum-under-one','unlike-denominator-subtraction'].includes(entry?.typeId)) return prepareManagedFamilyEntry(entry,supportId,activeCondition);
   if (!['symbolic-fraction-comparison','fraction-distance'].includes(entry?.typeId)) fail('unsupported family');
   const type = getPracticeType(entry.typeId);
@@ -172,7 +175,7 @@ export function prepareMagnitudeEntry(entry, supportId, activeCondition = getDef
 
 export function admitMagnitudeManifest(manifest = MAGNITUDE_SESSION_MANIFEST, supportId = 'high-support', activeCondition = getDefaultCondition().activeCondition) {
   const scheduled = manifest && same(Object.keys(manifest).sort(), ['entries', 'id', 'revision']) && manifest.id === 'scheduled-magnitude-practice' && manifest.revision === '1' && Array.isArray(manifest.entries) && manifest.entries.length === SCHEDULED_SLOTS.length && SCHEDULED_SLOTS.every((slot, index) => Object.hasOwn(manifest.entries, index) && slot.some(candidate => same(manifest.entries[index], candidate)));
-  if (!same(manifest, MAGNITUDE_SESSION_MANIFEST) && !same(manifest, COMPARISON_SESSION_MANIFEST) && !scheduled && !isPlan90ManagedManifest(manifest) && !isPlan90FullManifest(manifest)) fail('manifest identity, shape, order or revision');
+  if (!same(manifest, MAGNITUDE_SESSION_MANIFEST) && !same(manifest, COMPARISON_SESSION_MANIFEST) && !scheduled && !isPlan90ManagedManifest(manifest) && !isPlan90FullManifest(manifest) && !isPlan92Manifest(manifest)) fail('manifest identity, shape, order or revision');
   // Resolve and construct every entry at admission, including actual profile capability.
   const prepared = manifest.entries.map(entry => prepareMagnitudeEntry(entry, supportId, activeCondition));
   if (scheduled) {
@@ -224,7 +227,7 @@ export function createMagnitudeSessionController(manifest = MAGNITUDE_SESSION_MA
     const index = kind === 'next' ? snapshot.index + 1 : snapshot.index;
     let nextManifest = liveManifest;
     let fitToken;
-    if (kind === 'next' && [PLAN90_MANAGED_ID,PLAN90_FULL_ID].includes(liveManifest.id) && eligibleForNext !== null) {
+    if (kind === 'next' && [PLAN90_MANAGED_ID,PLAN90_FULL_ID,PLAN92_MANAGED_ID].includes(liveManifest.id) && eligibleForNext !== null) {
       if (typeof eligibleForNext !== 'function') return { ok: false, reason: 'invalid-eligibility' };
       try {
         if (fitRevision !== null) {
@@ -234,6 +237,20 @@ export function createMagnitudeSessionController(manifest = MAGNITUDE_SESSION_MA
         }
       } catch { return { ok: false, reason: 'invalid-eligibility' }; }
       const prefix = liveManifest.entries.slice(0, index);
+      if (liveManifest.id === PLAN92_MANAGED_ID) {
+        const eligible = entry => { try { return eligibleForNext(structuredClone(entry)) === true; } catch { return false; } };
+        const remaining=liveManifest.entries.slice(index), suffix=[];
+        for(const current of remaining){
+          const candidates=[current,...allGate92Descriptors().filter(d=>d.role===current.role).map(d=>d.identity).filter(e=>!same(e,current))];
+          const chosen=candidates.find(entry=>![...prefix,...suffix].some(previous=>same(previous,entry))&&eligible(entry));
+          if(!chosen && !['I','S'].includes(current.role))return {ok:false,reason:'fit-exhausted'};
+          if(chosen)suffix.push(chosen);
+        }
+        if(!suffix.length)return {ok:false,reason:'fit-exhausted'};
+        const entries=[...prefix,...suffix], shapeId=entries.map(entry=>entry.role).join('-');
+        if(!['C-I-S-T','C-I-T','C-S-T'].includes(shapeId))return {ok:false,reason:'fit-exhausted'};
+        nextManifest=deepFreeze({...liveManifest,shapeId,entries});
+      } else {
       const suffix = [], suffixSlots = [];
       const pattern = liveManifest.id === PLAN90_FULL_ID ? PLAN90_CATALOG.patterns.find(item => item.id === liveManifest.patternId) : null;
       const eligible = entry => { try { return eligibleForNext(structuredClone(entry)) === true; } catch { return false; } };
@@ -248,6 +265,7 @@ export function createMagnitudeSessionController(manifest = MAGNITUDE_SESSION_MA
       if (!suffix.length) return { ok: false, reason: 'fit-exhausted' };
       nextManifest = deepFreeze({ ...liveManifest, entries: [...prefix, ...suffix],
         ...(pattern ? {slots:[...liveManifest.slots.slice(0,index),...suffixSlots]} : {}) });
+      }
     }
     if (index >= nextManifest.entries.length) return { ok: false, reason: 'exhausted' };
     try {

@@ -1,0 +1,7 @@
+<!doctype html><meta charset="utf-8"><title>Plan 92 disposable storage witness</title>
+<script type="module">
+import {createPlan92RecordStorage} from '/src/app/plan92-record-storage.js';
+import {createComparisonRecordStorage} from '/src/app/comparison-record-storage.js';
+import {allGate92Descriptors} from '/src/app/plan92-catalog.js';
+window.storage92={createPlan92RecordStorage,createComparisonRecordStorage,identity:allGate92Descriptors()[0].identity};
+</script>

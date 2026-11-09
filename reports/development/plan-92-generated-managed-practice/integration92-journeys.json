@@ -1,0 +1,374 @@
+{
+  "scope": "Ordinary Start, generated no-history selector and real controls; deterministic seed hook; synthetic Chrome viewport and CSS text scaling. Legacy record control was left at default off. No expanded record enabled. No owner or learner assessment.",
+  "browser": "157.0.8103.38",
+  "runs": [
+    {
+      "width": 1093,
+      "height": 614,
+      "scale": 100,
+      "seed": 0,
+      "view": "visual",
+      "support": "high-support",
+      "shape": "C-I-S-T",
+      "ids": [
+        "plan45-compare-02",
+        "plan40-identify-two-thirds-five-twelfths-12",
+        "plan40-inspect-two-thirds-one-fourth-12",
+        "plan76-construct-five-sixths-one-tenth-30"
+      ],
+      "finished": true
+    },
+    {
+      "width": 1093,
+      "height": 614,
+      "scale": 100,
+      "seed": 0,
+      "view": "visual",
+      "support": "medium-support",
+      "shape": "C-I-S-T",
+      "ids": [
+        "plan45-compare-02",
+        "plan40-identify-two-thirds-five-twelfths-12",
+        "plan40-inspect-two-thirds-one-fourth-12",
+        "plan76-construct-five-sixths-one-tenth-30"
+      ],
+      "finished": true
+    },
+    {
+      "width": 1093,
+      "height": 614,
+      "scale": 100,
+      "seed": 0,
+      "view": "linear",
+      "support": "high-support",
+      "shape": "C-I-S-T",
+      "ids": [
+        "plan45-compare-02",
+        "plan40-identify-two-thirds-five-twelfths-12",
+        "plan40-inspect-two-thirds-one-fourth-12",
+        "plan76-construct-five-sixths-one-tenth-30"
+      ],
+      "finished": true
+    },
+    {
+      "width": 1093,
+      "height": 614,
+      "scale": 100,
+      "seed": 0,
+      "view": "linear",
+      "support": "medium-support",
+      "shape": "C-I-S-T",
+      "ids": [
+        "plan45-compare-02",
+        "plan40-identify-two-thirds-five-twelfths-12",
+        "plan40-inspect-two-thirds-one-fourth-12",
+        "plan76-construct-five-sixths-one-tenth-30"
+      ],
+      "finished": true
+    },
+    {
+      "width": 1093,
+      "height": 614,
+      "scale": 100,
+      "seed": 1,
+      "view": "visual",
+      "support": "high-support",
+      "shape": "C-S-T",
+      "ids": [
+        "plan45-compare-02",
+        "plan76-inspect-three-fourths-one-fifth-20",
+        "plan40-construct-half-fifth-10"
+      ],
+      "finished": true
+    },
+    {
+      "width": 1093,
+      "height": 614,
+      "scale": 100,
+      "seed": 1,
+      "view": "visual",
+      "support": "medium-support",
+      "shape": "C-S-T",
+      "ids": [
+        "plan45-compare-02",
+        "plan76-inspect-three-fourths-one-fifth-20",
+        "plan40-construct-half-fifth-10"
+      ],
+      "finished": true
+    },
+    {
+      "width": 1093,
+      "height": 614,
+      "scale": 100,
+      "seed": 1,
+      "view": "linear",
+      "support": "high-support",
+      "shape": "C-S-T",
+      "ids": [
+        "plan45-compare-02",
+        "plan76-inspect-three-fourths-one-fifth-20",
+        "plan40-construct-half-fifth-10"
+      ],
+      "finished": true
+    },
+    {
+      "width": 1093,
+      "height": 614,
+      "scale": 100,
+      "seed": 1,
+      "view": "linear",
+      "support": "medium-support",
+      "shape": "C-S-T",
+      "ids": [
+        "plan45-compare-02",
+        "plan76-inspect-three-fourths-one-fifth-20",
+        "plan40-construct-half-fifth-10"
+      ],
+      "finished": true
+    },
+    {
+      "width": 1093,
+      "height": 614,
+      "scale": 100,
+      "seed": 4,
+      "view": "visual",
+      "support": "high-support",
+      "shape": "C-I-T",
+      "ids": [
+        "plan45-compare-02",
+        "plan76-identify-seven-eighths-one-fourth-8",
+        "plan40-construct-half-fifth-10"
+      ],
+      "finished": true
+    },
+    {
+      "width": 1093,
+      "height": 614,
+      "scale": 100,
+      "seed": 4,
+      "view": "visual",
+      "support": "medium-support",
+      "shape": "C-I-T",
+      "ids": [
+        "plan45-compare-02",
+        "plan76-identify-seven-eighths-one-fourth-8",
+        "plan40-construct-half-fifth-10"
+      ],
+      "finished": true
+    },
+    {
+      "width": 1093,
+      "height": 614,
+      "scale": 100,
+      "seed": 4,
+      "view": "linear",
+      "support": "high-support",
+      "shape": "C-I-T",
+      "ids": [
+        "plan45-compare-02",
+        "plan76-identify-seven-eighths-one-fourth-8",
+        "plan40-construct-half-fifth-10"
+      ],
+      "finished": true
+    },
+    {
+      "width": 1093,
+      "height": 614,
+      "scale": 100,
+      "seed": 4,
+      "view": "linear",
+      "support": "medium-support",
+      "shape": "C-I-T",
+      "ids": [
+        "plan45-compare-02",
+        "plan76-identify-seven-eighths-one-fourth-8",
+        "plan40-construct-half-fifth-10"
+      ],
+      "finished": true
+    },
+    {
+      "width": 650,
+      "height": 740,
+      "scale": 200,
+      "seed": 0,
+      "view": "visual",
+      "support": "high-support",
+      "shape": "C-I-S-T",
+      "ids": [
+        "plan45-compare-02",
+        "plan40-identify-two-thirds-five-twelfths-12",
+        "plan40-inspect-two-thirds-one-fourth-12",
+        "plan76-construct-five-sixths-one-tenth-30"
+      ],
+      "finished": true
+    },
+    {
+      "width": 650,
+      "height": 740,
+      "scale": 200,
+      "seed": 0,
+      "view": "visual",
+      "support": "medium-support",
+      "shape": "C-I-S-T",
+      "ids": [
+        "plan45-compare-02",
+        "plan40-identify-two-thirds-five-twelfths-12",
+        "plan40-inspect-two-thirds-one-fourth-12",
+        "plan76-construct-five-sixths-one-tenth-30"
+      ],
+      "finished": true
+    },
+    {
+      "width": 650,
+      "height": 740,
+      "scale": 200,
+      "seed": 0,
+      "view": "linear",
+      "support": "high-support",
+      "shape": "C-I-S-T",
+      "ids": [
+        "plan45-compare-02",
+        "plan40-identify-two-thirds-five-twelfths-12",
+        "plan40-inspect-two-thirds-one-fourth-12",
+        "plan76-construct-five-sixths-one-tenth-30"
+      ],
+      "finished": true
+    },
+    {
+      "width": 650,
+      "height": 740,
+      "scale": 200,
+      "seed": 0,
+      "view": "linear",
+      "support": "medium-support",
+      "shape": "C-I-S-T",
+      "ids": [
+        "plan45-compare-02",
+        "plan40-identify-two-thirds-five-twelfths-12",
+        "plan40-inspect-two-thirds-one-fourth-12",
+        "plan76-construct-five-sixths-one-tenth-30"
+      ],
+      "finished": true
+    },
+    {
+      "width": 650,
+      "height": 740,
+      "scale": 200,
+      "seed": 1,
+      "view": "visual",
+      "support": "high-support",
+      "shape": "C-S-T",
+      "ids": [
+        "plan45-compare-02",
+        "plan76-inspect-three-fourths-one-fifth-20",
+        "plan40-construct-half-fifth-10"
+      ],
+      "finished": true
+    },
+    {
+      "width": 650,
+      "height": 740,
+      "scale": 200,
+      "seed": 1,
+      "view": "visual",
+      "support": "medium-support",
+      "shape": "C-S-T",
+      "ids": [
+        "plan45-compare-02",
+        "plan76-inspect-three-fourths-one-fifth-20",
+        "plan40-construct-half-fifth-10"
+      ],
+      "finished": true
+    },
+    {
+      "width": 650,
+      "height": 740,
+      "scale": 200,
+      "seed": 1,
+      "view": "linear",
+      "support": "high-support",
+      "shape": "C-S-T",
+      "ids": [
+        "plan45-compare-02",
+        "plan76-inspect-three-fourths-one-fifth-20",
+        "plan40-construct-half-fifth-10"
+      ],
+      "finished": true
+    },
+    {
+      "width": 650,
+      "height": 740,
+      "scale": 200,
+      "seed": 1,
+      "view": "linear",
+      "support": "medium-support",
+      "shape": "C-S-T",
+      "ids": [
+        "plan45-compare-02",
+        "plan76-inspect-three-fourths-one-fifth-20",
+        "plan40-construct-half-fifth-10"
+      ],
+      "finished": true
+    },
+    {
+      "width": 650,
+      "height": 740,
+      "scale": 200,
+      "seed": 4,
+      "view": "visual",
+      "support": "high-support",
+      "shape": "C-I-T",
+      "ids": [
+        "plan45-compare-02",
+        "plan76-identify-seven-eighths-one-fourth-8",
+        "plan40-construct-half-fifth-10"
+      ],
+      "finished": true
+    },
+    {
+      "width": 650,
+      "height": 740,
+      "scale": 200,
+      "seed": 4,
+      "view": "visual",
+      "support": "medium-support",
+      "shape": "C-I-T",
+      "ids": [
+        "plan45-compare-02",
+        "plan76-identify-seven-eighths-one-fourth-8",
+        "plan40-construct-half-fifth-10"
+      ],
+      "finished": true
+    },
+    {
+      "width": 650,
+      "height": 740,
+      "scale": 200,
+      "seed": 4,
+      "view": "linear",
+      "support": "high-support",
+      "shape": "C-I-T",
+      "ids": [
+        "plan45-compare-02",
+        "plan76-identify-seven-eighths-one-fourth-8",
+        "plan40-construct-half-fifth-10"
+      ],
+      "finished": true
+    },
+    {
+      "width": 650,
+      "height": 740,
+      "scale": 200,
+      "seed": 4,
+      "view": "linear",
+      "support": "medium-support",
+      "shape": "C-I-T",
+      "ids": [
+        "plan45-compare-02",
+        "plan76-identify-seven-eighths-one-fourth-8",
+        "plan40-construct-half-fifth-10"
+      ],
+      "finished": true
+    }
+  ]
+}

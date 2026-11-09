@@ -1,0 +1,16 @@
+{
+  "scope": "Production isolated v2 seam, two same-origin Chrome tabs and disposable database; no app wiring or real learner data.",
+  "browser": "157.0.8103.38",
+  "results": {
+    "upgrade preserves legacy and starts expanded off": "passed",
+    "old adapter fails closed after version upgrade": "passed",
+    "disabled access issues no event read": "passed",
+    "enabled exposure inserted": "passed",
+    "duplicate token refused across tabs": "passed",
+    "separate first and accepted outcomes retain unknown assistance": "passed",
+    "write before clear is erased and both choices preserved": "passed",
+    "clear before old write rejects stale generation": "passed",
+    "old history choice cannot install after clear": "passed",
+    "stop disables reads and stale writes across tabs": "passed"
+  }
+}

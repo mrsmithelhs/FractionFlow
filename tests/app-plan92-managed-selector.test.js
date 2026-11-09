@@ -1,6 +1,6 @@
 import { createHash } from 'node:crypto';
 import { describe, expect, it } from 'vitest';
-import { selectPlan92Prototype } from '../src/app/plan92-managed-selector.js';
+import { selectPlan92Prototype, selectPlan92Sync } from '../src/app/plan92-managed-selector.js';
 
 const revisions = { policyRevision: 'ff92-policy@1', catalogRevision: 'ff92-catalog@1',
   compatibilityRevision: 'ff92-compat@1', demandsRevision: 'ff92-demands@1' };
@@ -18,6 +18,12 @@ function candidate(role, itemId, key = `${role}:${itemId}`, fit = true) {
 }
 const inventory = () => Object.entries(roleIds).flatMap(([role, ids]) => ids.map(id => candidate(role, id)));
 const input = (seed, candidates = inventory()) => ({ ...revisions, seed, candidates });
+
+it('keeps synchronous Start draws identical to the Web Crypto reference across diverse seeds', async () => {
+  for (const seed of [...Array.from({length:256},(_,i)=>i), 0x12345678, 0xffffffff]) {
+    expect(selectPlan92Sync(input(seed))).toEqual(await selectPlan92Prototype(input(seed)));
+  }
+});
 
 // Independent reference implementation: no production imports, it uses Node's hash API and
 // separately performs the domain encoding, cyclic shape search, role indexing, and modulo.

@@ -1,0 +1,336 @@
+{
+  "scope": "Actual ordinary Start with deterministic seed hook, Chrome fresh contexts, 1093x614 at normal CSS root text, cache disabled and 4x CPU slowdown; 1093x614 is the measured approved sample. Vite preview, instant-test presentation, not physical Chromebook or production bundle.",
+  "browser": "157.0.8103.38",
+  "runs": [
+    {
+      "sample": 0,
+      "seed": 0,
+      "readyMs": 10864.9785,
+      "startMs": 486.80000001192093,
+      "item": "plan45-compare-02",
+      "shape": "C-I-S-T",
+      "preflights": [
+        {
+          "item": "plan45-compare-02",
+          "time": 11110.70000000298
+        },
+        {
+          "item": "plan40-identify-two-thirds-five-twelfths-12",
+          "time": 11147.40000000596
+        },
+        {
+          "item": "plan40-inspect-two-thirds-one-fourth-12",
+          "time": 11164.79999999702
+        },
+        {
+          "item": "plan76-construct-five-sixths-one-tenth-30",
+          "time": 11181.79999999702
+        },
+        {
+          "item": "plan45-compare-02",
+          "time": 11218
+        },
+        {
+          "item": "plan40-identify-two-thirds-five-twelfths-12",
+          "time": 11232.70000000298
+        },
+        {
+          "item": "plan40-inspect-two-thirds-one-fourth-12",
+          "time": 11247.09999999404
+        },
+        {
+          "item": "plan76-construct-five-sixths-one-tenth-30",
+          "time": 11259.5
+        }
+      ]
+    },
+    {
+      "sample": 0,
+      "seed": 1,
+      "readyMs": 674.7056999999986,
+      "startMs": 609.2000000029802,
+      "item": "plan45-compare-02",
+      "shape": "C-S-T",
+      "preflights": [
+        {
+          "item": "plan45-compare-02",
+          "time": 1059.9000000059605
+        },
+        {
+          "item": "plan76-inspect-three-fourths-one-fifth-20",
+          "time": 1111.7000000029802
+        },
+        {
+          "item": "plan40-construct-half-fifth-10",
+          "time": 1145
+        },
+        {
+          "item": "plan45-compare-02",
+          "time": 1177.1000000089407
+        },
+        {
+          "item": "plan76-inspect-three-fourths-one-fifth-20",
+          "time": 1191.7999999970198
+        },
+        {
+          "item": "plan40-construct-half-fifth-10",
+          "time": 1204.7999999970198
+        }
+      ]
+    },
+    {
+      "sample": 0,
+      "seed": 4,
+      "readyMs": 674.5787,
+      "startMs": 546.4000000059605,
+      "item": "plan45-compare-02",
+      "shape": "C-I-T",
+      "preflights": [
+        {
+          "item": "plan45-compare-02",
+          "time": 1014.0999999940395
+        },
+        {
+          "item": "plan76-identify-seven-eighths-one-fourth-8",
+          "time": 1045.9000000059605
+        },
+        {
+          "item": "plan40-construct-half-fifth-10",
+          "time": 1070.5999999940395
+        },
+        {
+          "item": "plan45-compare-02",
+          "time": 1106.5
+        },
+        {
+          "item": "plan76-identify-seven-eighths-one-fourth-8",
+          "time": 1123.5999999940395
+        },
+        {
+          "item": "plan40-construct-half-fifth-10",
+          "time": 1135.7000000029802
+        }
+      ]
+    },
+    {
+      "sample": 1,
+      "seed": 0,
+      "readyMs": 636.0316999999995,
+      "startMs": 563.2000000029802,
+      "item": "plan45-compare-02",
+      "shape": "C-I-S-T",
+      "preflights": [
+        {
+          "item": "plan45-compare-02",
+          "time": 976.5
+        },
+        {
+          "item": "plan40-identify-two-thirds-five-twelfths-12",
+          "time": 1009.2000000029802
+        },
+        {
+          "item": "plan40-inspect-two-thirds-one-fourth-12",
+          "time": 1028.2000000029802
+        },
+        {
+          "item": "plan76-construct-five-sixths-one-tenth-30",
+          "time": 1047.1000000089407
+        },
+        {
+          "item": "plan45-compare-02",
+          "time": 1078
+        },
+        {
+          "item": "plan40-identify-two-thirds-five-twelfths-12",
+          "time": 1089.9000000059605
+        },
+        {
+          "item": "plan40-inspect-two-thirds-one-fourth-12",
+          "time": 1104.2999999970198
+        },
+        {
+          "item": "plan76-construct-five-sixths-one-tenth-30",
+          "time": 1119.2999999970198
+        }
+      ]
+    },
+    {
+      "sample": 1,
+      "seed": 1,
+      "readyMs": 668.6384999999973,
+      "startMs": 568.7999999970198,
+      "item": "plan45-compare-02",
+      "shape": "C-S-T",
+      "preflights": [
+        {
+          "item": "plan45-compare-02",
+          "time": 1030.7000000029802
+        },
+        {
+          "item": "plan76-inspect-three-fourths-one-fifth-20",
+          "time": 1077.6000000089407
+        },
+        {
+          "item": "plan40-construct-half-fifth-10",
+          "time": 1109.2000000029802
+        },
+        {
+          "item": "plan45-compare-02",
+          "time": 1143.2999999970198
+        },
+        {
+          "item": "plan76-inspect-three-fourths-one-fifth-20",
+          "time": 1159
+        },
+        {
+          "item": "plan40-construct-half-fifth-10",
+          "time": 1172.1000000089407
+        }
+      ]
+    },
+    {
+      "sample": 1,
+      "seed": 4,
+      "readyMs": 647.1837999999989,
+      "startMs": 497.70000000298023,
+      "item": "plan45-compare-02",
+      "shape": "C-I-T",
+      "preflights": [
+        {
+          "item": "plan45-compare-02",
+          "time": 966.3000000119209
+        },
+        {
+          "item": "plan76-identify-seven-eighths-one-fourth-8",
+          "time": 998.1000000089407
+        },
+        {
+          "item": "plan40-construct-half-fifth-10",
+          "time": 1013.7000000029802
+        },
+        {
+          "item": "plan45-compare-02",
+          "time": 1041.300000011921
+        },
+        {
+          "item": "plan76-identify-seven-eighths-one-fourth-8",
+          "time": 1054.9000000059605
+        },
+        {
+          "item": "plan40-construct-half-fifth-10",
+          "time": 1072.9000000059605
+        }
+      ]
+    },
+    {
+      "sample": 2,
+      "seed": 0,
+      "readyMs": 677.3310999999994,
+      "startMs": 619.5,
+      "item": "plan45-compare-02",
+      "shape": "C-I-S-T",
+      "preflights": [
+        {
+          "item": "plan45-compare-02",
+          "time": 1056.3999999910593
+        },
+        {
+          "item": "plan40-identify-two-thirds-five-twelfths-12",
+          "time": 1096
+        },
+        {
+          "item": "plan40-inspect-two-thirds-one-fourth-12",
+          "time": 1116.2000000029802
+        },
+        {
+          "item": "plan76-construct-five-sixths-one-tenth-30",
+          "time": 1147.7000000029802
+        },
+        {
+          "item": "plan45-compare-02",
+          "time": 1183.3999999910593
+        },
+        {
+          "item": "plan40-identify-two-thirds-five-twelfths-12",
+          "time": 1197.7999999970198
+        },
+        {
+          "item": "plan40-inspect-two-thirds-one-fourth-12",
+          "time": 1213.7999999970198
+        },
+        {
+          "item": "plan76-construct-five-sixths-one-tenth-30",
+          "time": 1231.5999999940395
+        }
+      ]
+    },
+    {
+      "sample": 2,
+      "seed": 1,
+      "readyMs": 663.7504000000008,
+      "startMs": 554.1999999880791,
+      "item": "plan45-compare-02",
+      "shape": "C-S-T",
+      "preflights": [
+        {
+          "item": "plan45-compare-02",
+          "time": 1019
+        },
+        {
+          "item": "plan76-inspect-three-fourths-one-fifth-20",
+          "time": 1058.0999999940395
+        },
+        {
+          "item": "plan40-construct-half-fifth-10",
+          "time": 1093.7000000029802
+        },
+        {
+          "item": "plan45-compare-02",
+          "time": 1124.5999999940395
+        },
+        {
+          "item": "plan76-inspect-three-fourths-one-fifth-20",
+          "time": 1137.7999999970198
+        },
+        {
+          "item": "plan40-construct-half-fifth-10",
+          "time": 1149.0999999940395
+        }
+      ]
+    },
+    {
+      "sample": 2,
+      "seed": 4,
+      "readyMs": 649.895800000002,
+      "startMs": 536.7000000029802,
+      "item": "plan45-compare-02",
+      "shape": "C-I-T",
+      "preflights": [
+        {
+          "item": "plan45-compare-02",
+          "time": 996.7999999970198
+        },
+        {
+          "item": "plan76-identify-seven-eighths-one-fourth-8",
+          "time": 1035.2999999970198
+        },
+        {
+          "item": "plan40-construct-half-fifth-10",
+          "time": 1057.8999999910593
+        },
+        {
+          "item": "plan45-compare-02",
+          "time": 1089.5
+        },
+        {
+          "item": "plan76-identify-seven-eighths-one-fourth-8",
+          "time": 1105.0999999940395
+        },
+        {
+          "item": "plan40-construct-half-fifth-10",
+          "time": 1116.0999999940395
+        }
+      ]
+    }
+  ]
+}

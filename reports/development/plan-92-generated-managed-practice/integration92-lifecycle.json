@@ -1,0 +1,33 @@
+{
+  "scope": "Ordinary Start at explicit measured samples; synthetic resize and forced mount failure; default comparison remembering off. No expanded record. Chrome emulation, not learner or device evidence.",
+  "browser": "157.0.8103.38",
+  "results": [
+    {
+      "case": "approved narrow comparison fallback",
+      "shape": "single",
+      "item": "plan45-compare-02"
+    },
+    {
+      "case": "normal narrow uses prior verified no-history policy",
+      "policy": "1",
+      "item": "plan45-compare-02"
+    },
+    {
+      "case": "Retry retains comparison identity",
+      "item": "plan45-compare-02"
+    },
+    {
+      "case": "resize preserves active arithmetic draft",
+      "item": "plan76-identify-seven-eighths-one-fourth-8",
+      "draft": "7"
+    },
+    {
+      "case": "failed Next mount rolls back then succeeds",
+      "item": "plan45-compare-02"
+    },
+    {
+      "case": "unsupported future work ends after completed task",
+      "item": "plan45-compare-02"
+    }
+  ]
+}

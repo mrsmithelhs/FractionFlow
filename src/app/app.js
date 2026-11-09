@@ -19,6 +19,8 @@ const DOCUMENT_ROTATION_DAY = Math.floor(Date.now() / 86_400_000);
 import { createComparisonRecordController } from './comparison-record-controller.js';
 import { createComparisonRecordPanel } from './comparison-record-panel.js';
 import { MAGNITUDE_SESSION_MANIFEST, PLAN90_MANAGED_ID, PLAN90_FULL_ID, admitMagnitudeManifest, createMagnitudeSessionController, prepareMagnitudeEntry, isMagnitudeEpisodeComplete, selectManagedPractice } from './magnitude-session.js';
+import { PLAN92_MANAGED_ID, allGate92Descriptors, isPlan92MeasuredFit } from './plan92-catalog.js';
+import { selectPlan92Sync } from './plan92-managed-selector.js';
 import { measureManagedPracticeFit, isManagedFamilyFit, matchesManagedActiveHost } from './managed-fit.js';
 import { resolvePlan59Context } from '../content/plan59-directed-endpoint-task.js';
 import { PLAN59_CONDITION } from '../interaction/plan59-directed-endpoint-episode.js';
@@ -590,7 +592,7 @@ export function createFractionFlowApp({
     const current = magnitudeSession.current();
     try {
       sessionTestHooks.display?.(current);
-      const managed = [PLAN90_MANAGED_ID,PLAN90_FULL_ID].includes(current.manifest.id);
+      const managed = [PLAN90_MANAGED_ID,PLAN90_FULL_ID,PLAN92_MANAGED_ID].includes(current.manifest.id);
       installFreshEpisode(current.installed.type, current.installed.itemIndex, current.episode, { focusEpisode: true, deferRecord:managed });
       sessionTestHooks.afterDisplay?.(current);
       if (measuredManagedSession) {
@@ -613,7 +615,8 @@ export function createFractionFlowApp({
         { activeCondition:sessionCondition, getNextCondition:()=>selectedCondition.activeCondition,
           prepare: (entry, support, condition) => sessionPreflight(prepareMagnitudeEntry(entry, support, condition),{mountRenderer:measuredFit}),
           eligibleForNext: measuredFit ? entry => {
-            if (!isManagedFamilyFit(measureManagedPracticeFit(appRoot), entry.typeId, selectedCondition.activeCondition.id)) return false;
+            const currentFit=measureManagedPracticeFit(appRoot);
+            if (manifest.id===PLAN92_MANAGED_ID ? !isPlan92MeasuredFit(currentFit,entry,selectedCondition.activeCondition.id) : !isManagedFamilyFit(currentFit, entry.typeId, selectedCondition.activeCondition.id)) return false;
             sessionPreflight(prepareMagnitudeEntry(entry, selectedSupportLevel.id, selectedCondition.activeCondition),{mountRenderer:true});
             return true;
           } : sessionTestHooks.eligibleForNext,
@@ -644,14 +647,32 @@ export function createFractionFlowApp({
       const fit = measureManagedPracticeFit(appRoot);
       selectionFit = fit;
       const seed = sessionTestHooks.selectionInput?.() ?? globalThis.crypto.getRandomValues(new Uint32Array(1))[0];
-      const selection = selectManagedPractice(seed, entry => {
+      const descriptors=allGate92Descriptors();
+      const approvedSample=descriptors.some(d=>isPlan92MeasuredFit(fit,d.identity,selectedCondition.id));
+      let selection;
+      if (approvedSample) {
+        const refused=new Set(), checked=new Set();
+        for(let attempt=0;attempt<=descriptors.length;attempt++){
+          const candidates=descriptors.map(d=>({role:d.role,identity:d.identity,problemKey:d.problemKey,fit:!refused.has(d.identity.itemId)&&isPlan92MeasuredFit(fit,d.identity,selectedCondition.id)}));
+          selection=selectPlan92Sync({seed,candidates,catalogRevision:'ff92-catalog@1',policyRevision:'ff92-policy@1',compatibilityRevision:'ff92-compat@1',demandsRevision:'ff92-demands@1'});
+          if(!selection.manifest)break;
+          let rejected=null;
+          for(const entry of selection.manifest.entries){
+            if(checked.has(entry.itemId))continue;
+            try{sessionPreflight(prepareMagnitudeEntry(entry,selectedSupportLevel.id,selectedCondition.activeCondition),{mountRenderer:true});checked.add(entry.itemId);}
+            catch{rejected=entry.itemId;break;}
+          }
+          if(!rejected)break;
+          refused.add(rejected);
+        }
+      } else selection = selectManagedPractice(seed, entry => {
         if (!isManagedFamilyFit(fit, entry.typeId, selectedCondition.activeCondition.id)) return false;
         sessionPreflight(prepareMagnitudeEntry(entry, selectedSupportLevel.id, selectedCondition.activeCondition),{mountRenderer:true});
         return true;
       }, selectedSupportLevel.id, selectedCondition.activeCondition);
       manifest = selection.manifest;
       failed = !manifest && selection.witness.outcomes.some(outcome => outcome.reason === 'preflight-failed');
-      managedSessionWitness = { ...selection.witness, fit };
+      managedSessionWitness = { ...selection.witness, seed, fit };
     } catch { failed = true; }
     if (manifest) {
       if (startMagnitudeSession(manifest, { quiet: true, preflightAll: true, measuredFit: true, expectedFit:selectionFit })) return;
@@ -679,7 +700,7 @@ export function createFractionFlowApp({
         navigationNotice.textContent = kind === 'restart' ? STRINGS.app.sessionRestartUnavailable : STRINGS.app.sessionNextUnavailable;
         setHidden(navigationNotice, false); focusNavigationNotice(); return;
       }
-      if (![PLAN90_MANAGED_ID,PLAN90_FULL_ID].includes(magnitudeSession.current().manifest.id)) {
+      if (![PLAN90_MANAGED_ID,PLAN90_FULL_ID,PLAN92_MANAGED_ID].includes(magnitudeSession.current().manifest.id)) {
         installSessionCurrent();
         return;
       }
