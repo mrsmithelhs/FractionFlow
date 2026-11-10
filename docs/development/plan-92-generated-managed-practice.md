@@ -1,7 +1,7 @@
 ---
 id: plan-92
 title: Generated Managed Practice With Optional Local History
-status: in-progress
+status: delivered
 depends_on: [plan-90, plan-91]
 gate: "Orchestration approves Requirement 0 before source work, then reviews admission and variety, consent and reset, and integration. Owner reviews the full rendered experience."
 summary: >-
