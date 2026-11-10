@@ -31,17 +31,47 @@ function parsedDemand(event) {
 
 /**
  * Rank fit candidates from least to most recently repeated / best-supported.
- * Input: {candidates, events?, reviewOpportunity?}; event shape is the validated
- * Plan 92 stored-event shape. `reviewOpportunity` must come from the selector's
- * independent session-seed review draw (about 1/4); no visit counter is used.
- * Result includes ranked candidates plus transparent per-candidate evidence.
+ * Input: {candidates, events?, recordedSnapshot?, reviewOpportunity?}. `events`
+ * supplies retained validated observations across epochs. `recordedSnapshot`
+ * is the optional same-epoch `{meta, entries, lagWindow}` ordering witness; it
+ * alone supplies lag endpoints. `reviewOpportunity` comes from the independent
+ * session-seed draw. Diagnostics include the endpoint tokens and ordinals.
  */
-export function rankPlan92HistoryCandidates({ candidates, events = [], reviewOpportunity = false, coverage = 'unknown' }) {
-  if (!Array.isArray(candidates) || !Array.isArray(events) || typeof reviewOpportunity !== 'boolean'
+export function rankPlan92HistoryCandidates({ candidates, events = null, reviewOpportunity = false, coverage = 'unknown', recordedSnapshot = null }) {
+  const snapshotEvents = recordedSnapshot?.entries;
+  const historyEvents = events ?? (Array.isArray(snapshotEvents) ? snapshotEvents : []);
+  const orderingEvents = Array.isArray(snapshotEvents) ? snapshotEvents : [];
+  if (!Array.isArray(candidates) || !Array.isArray(historyEvents) || typeof reviewOpportunity !== 'boolean'
     || !['unknown', 'continuous'].includes(coverage)) throw new TypeError('invalid Plan 92 history policy input');
-  const usable = events.filter(e => Number.isSafeInteger(e.ordinal) && e.ordinal > 0
+  // Recency is based only on retained recorded episodes. The caller must attest
+  // that the bounded snapshot belongs to the active epoch and that writes and
+  // ordering are reliable; this module then checks the visible ordinal run.
+  const window = recordedSnapshot?.lagWindow;
+  const snapshotEpoch = recordedSnapshot?.meta?.epoch;
+  const snapshotValid = typeof snapshotEpoch === 'string' && snapshotEpoch.length > 0
+    && recordedSnapshot.meta.enabled === true && recordedSnapshot.meta.ordering === 'continuous'
+    && window?.reliable === true && window.ordering === 'continuous' && window.epoch === snapshotEpoch
+    && Number.isSafeInteger(window.earliestOrdinal) && window.earliestOrdinal > 0
+    && Number.isSafeInteger(window.latestOrdinal) && window.latestOrdinal >= window.earliestOrdinal
+    && Number.isSafeInteger(window.retainedCount) && window.retainedCount > 0 && window.retainedCount <= 100
+    && recordedSnapshot.meta.nextOrdinal === window.latestOrdinal + 1
+    && recordedSnapshot.meta.revision === window.revision
+    && orderingEvents.length === window.retainedCount
+    && orderingEvents.every((e, i, list) => Number.isSafeInteger(e?.ordinal)
+      && e.ordinal === window.earliestOrdinal + i && e.ordinal <= window.latestOrdinal
+      && e.epoch === snapshotEpoch && typeof e.token === 'string' && /^[0-9a-f]{32}$/.test(e.token)
+      && list.findIndex(other => other?.token === e.token) === i)
+    && orderingEvents[orderingEvents.length - 1]?.ordinal === window.latestOrdinal
+    && orderingEvents[0]?.token === window.earliestToken
+    && orderingEvents.at(-1)?.token === window.latestToken
+    && window.latestOrdinal - window.earliestOrdinal + 1 === window.retainedCount;
+  const reliableRecordedOrder = snapshotValid;
+  const usable = historyEvents.filter(e => Number.isSafeInteger(e.ordinal) && e.ordinal > 0
     && e.identity && ['unknown', 'accepted', 'retry'].includes(e.first));
-  const maxOrdinal = usable.reduce((n, e) => Math.max(n, e.ordinal), 0);
+  const orderingUsable = reliableRecordedOrder ? orderingEvents.filter(e => Number.isSafeInteger(e.ordinal) && e.ordinal > 0
+    && e.identity && ['unknown', 'accepted', 'retry'].includes(e.first)) : [];
+  const orderingTokens = new Set(orderingUsable.map(e => e.token));
+  const maxOrdinal = orderingUsable.reduce((n, e) => Math.max(n, e.ordinal), 0);
   const summaries = candidates.map((candidate, index) => {
     const sameProblem = usable.filter(e => {
       const descriptor = catalogDescriptor(e.identity);
@@ -51,31 +81,51 @@ export function rankPlan92HistoryCandidates({ candidates, events = [], reviewOpp
     // this when present, while role remains the validated comparable boundary.
     const comparable = usable.filter(e => e.role === candidate.role && broadEventSkill(e) === skillKey(candidate));
     const exact = usable.filter(e => stable(e.identity) === identityKey(candidate));
-    const latest = list => coverage === 'continuous' ? list.reduce((n, e) => Math.max(n, e.ordinal), 0) : 0;
+    const latest = list => reliableRecordedOrder ? list.reduce((n, e) => Math.max(n, e.ordinal), 0) : 0;
     // Retries and repeated episodes for one mathematical problem provide one
     // current signal: only its latest observed event contributes to need.
     const latestByProblem = new Map();
     for (const e of comparable) {
       const descriptor = catalogDescriptor(e.identity);
       if (!descriptor) continue;
-      const key = problemKey(descriptor), prior = latestByProblem.get(key);
-      if (!prior || (coverage === 'continuous' ? e.ordinal > prior.ordinal : evidence(e) > evidence(prior))) latestByProblem.set(key, e);
+      const key = problemKey(descriptor), bucket = latestByProblem.get(key) ?? { current: null, historical: null };
+      if (reliableRecordedOrder && orderingTokens.has(e.token)) {
+        if (!bucket.current || e.ordinal > bucket.current.ordinal) bucket.current = e;
+      } else if (!bucket.historical || evidence(e) > evidence(bucket.historical)
+        || (evidence(e) === evidence(bucket.historical) && stable(e) < stable(bucket.historical))) {
+        // Ordinals have meaning only within the witnessed generation. For older
+        // retained rows use their strongest observation and a stable tie-break.
+        bucket.historical = e;
+      }
+      latestByProblem.set(key, bucket);
     }
-    const currentEvidence = [...latestByProblem.values()];
+    const currentEvidence = [...latestByProblem.values()].map(bucket => bucket.current ?? bucket.historical);
     const need = currentEvidence.reduce((n, e) => n + evidence(e), 0);
-    const decisionRepeated = usable.some(e => e.role === candidate.role && parsedDemand(e) === stable(candidate.decision));
-    const latestExposure = latest(comparable), gap = latestExposure ? maxOrdinal - latestExposure - 1 : null;
-    const recent = coverage === 'continuous' && gap >= 2 && gap <= 6;
-    const reviewEligible = coverage === 'continuous' && reviewOpportunity && gap >= 7 &&
-      (sameProblem.some(e => evidence(e) < 0) || decisionRepeated) && need <= 0;
+    // Both lag endpoints must be retained recorded episodes: the candidate's
+    // latest comparable exposure and the snapshot's latest recorded exposure.
+    const comparableInWindow = orderingUsable.filter(e => e.role === candidate.role && broadEventSkill(e) === skillKey(candidate));
+    const sameProblemInWindow = orderingUsable.filter(e => {
+      const descriptor = catalogDescriptor(e.identity);
+      return descriptor && problemKey(descriptor) === problemKey(candidate);
+    });
+    const decisionRepeatedInWindow = orderingUsable.some(e => e.role === candidate.role && parsedDemand(e) === stable(candidate.decision));
+    const latestExposure = latest(comparableInWindow), gap = latestExposure && maxOrdinal > latestExposure
+      ? maxOrdinal - latestExposure - 1 : null;
+    const latestExact = latest(orderingUsable.filter(e => stable(e.identity) === identityKey(candidate)));
+    const latestProblem = latest(orderingUsable.filter(e => { const d = catalogDescriptor(e.identity); return d && problemKey(d) === problemKey(candidate); }));
+    const recent = reliableRecordedOrder && gap >= 2 && gap <= 6;
+    const latestComparableEvent = comparableInWindow.find(e => e.ordinal === latestExposure);
+    const recentNeed = recent && Boolean(latestComparableEvent) && evidence(latestComparableEvent) > 0;
+    const reviewEligible = reliableRecordedOrder && reviewOpportunity && gap >= 7 &&
+      (sameProblemInWindow.some(e => evidence(e) < 0) || decisionRepeatedInWindow) && need <= 0;
     return { candidate, index, exactCount: exact.length, problemCount: new Set(sameProblem.map(e => {
       const d = catalogDescriptor(e.identity); return d ? problemKey(d) : stable(e.identity);
     })).size,
-      comparableCount: currentEvidence.length, need, latestExact: latest(exact), latestProblem: latest(sameProblem),
-      latestComparable: latestExposure, recent, gap, reviewEligible, coverage };
+      comparableCount: currentEvidence.length, need, latestExact, latestProblem,
+      latestComparable: latestExposure, recent, recentNeed, gap, reviewEligible, coverage };
   });
   const reviewWinners = new Set();
-  if (reviewOpportunity && coverage === 'continuous') {
+  if (reviewOpportunity && reliableRecordedOrder) {
     for (const role of new Set(summaries.map(s => s.candidate.role))) {
       const eligible = summaries.filter(s => s.candidate.role === role && s.reviewEligible)
         .sort((a, b) => a.latestProblem - b.latestProblem || a.index - b.index);
@@ -85,13 +135,14 @@ export function rankPlan92HistoryCandidates({ candidates, events = [], reviewOpp
   const ranked = [...summaries].sort((a, b) => {
     // Recent tentative need outranks older review. Need is scoped to comparable
     // distinct problems; exact repetition is a separate, softer penalty.
-    const countOrder = coverage === 'unknown'
+    const countOrder = !reliableRecordedOrder
       ? a.exactCount - b.exactCount || a.problemCount - b.problemCount
-      : a.latestExact - b.latestExact || a.latestProblem - b.latestProblem || a.latestComparable - b.latestComparable;
-    return b.need - a.need || Number(reviewWinners.has(b)) - Number(reviewWinners.has(a)) || countOrder || a.index - b.index;
+      : a.exactCount - b.exactCount || a.latestExact - b.latestExact || a.latestProblem - b.latestProblem || a.latestComparable - b.latestComparable;
+    return Number(b.recentNeed) - Number(a.recentNeed) || b.need - a.need
+      || Number(reviewWinners.has(b)) - Number(reviewWinners.has(a)) || countOrder || a.index - b.index;
   });
-  const evidenceKey = s => stable([s.need, reviewWinners.has(s), s.recent,
-    coverage === 'continuous' ? [s.latestExact, s.latestProblem, s.latestComparable] : [s.exactCount, s.problemCount]]);
+  const evidenceKey = s => stable([s.recentNeed, s.need, reviewWinners.has(s),
+    reliableRecordedOrder ? [s.latestExact, s.latestProblem, s.latestComparable] : [s.exactCount, s.problemCount]]);
   const priorities = new Map(); let priority = -1, previous = null;
   for (const s of ranked) {
     const key = evidenceKey(s);
@@ -102,7 +153,14 @@ export function rankPlan92HistoryCandidates({ candidates, events = [], reviewOpp
     evidence: { comparableCount: s.comparableCount, tentativeNeed: s.need,
       exactReuseCount: s.exactCount, problemExposureCount: s.problemCount,
       reviewOpportunity: reviewWinners.has(s), coverage: s.coverage,
-      reason: coverage === 'unknown' ? 'coverage-unknown-no-recency' : s.recent ? 'recent-repetition' : reviewWinners.has(s) ? 'older-review-draw' : 'observed-evidence' } }));
+      recentSkillReturn: s.recentNeed, olderReviewEligible: s.reviewEligible,
+      recordedLag: s.gap, recordedOlderEndpointOrdinal: s.latestComparable || null,
+      recordedOlderEndpointToken: s.latestComparable ? orderingUsable.filter(e => e.role === s.candidate.role && broadEventSkill(e) === skillKey(s.candidate)).reduce((latestEvent, e) => !latestEvent || e.ordinal > latestEvent.ordinal ? e : latestEvent, null)?.token ?? null : null,
+      recordedNewerEndpointOrdinal: reliableRecordedOrder ? maxOrdinal || null : null,
+      recordedNewerEndpointToken: reliableRecordedOrder ? orderingUsable.reduce((latestEvent, e) => !latestEvent || e.ordinal > latestEvent.ordinal ? e : latestEvent, null)?.token ?? null : null,
+      recordedOrderValid: reliableRecordedOrder,
+      reason: !reliableRecordedOrder ? 'recorded-order-unverified' : s.recentNeed ? 'recent-skill-return'
+        : reviewWinners.has(s) ? 'older-review-draw' : 'observed-evidence' } }));
 }
 
 function broadEventSkill(event) {

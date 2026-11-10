@@ -1,0 +1,5 @@
+# Plan 92 recorded-episode lag: owner disposition
+
+2026-11-10. Orion approved, through FF Orch 12+, using the number of intervening **recorded episodes** as a limited recency signal. The signal may use retained, validated endpoints in the same record generation only when their recorded ordering is reliable. Missing or evicted endpoints, a known record-write or ordering failure, an invalid snapshot, or reset must suppress the affected signal. It must not be described as elapsed time or as the number of problems practiced outside the record.
+
+The policy must retain priority for recent mixed evidence, distinguish a return to a skill from repetition of an exact problem, and use the independent session seed for an occasional longer-lag review opportunity. This decision authorizes work in the isolated preview and its evidence; it does not authorize expanded-history activation in ordinary Start, held content, deployment, packet completion or owner acceptance. Consent/reset and subsequent integration gates remain in force.

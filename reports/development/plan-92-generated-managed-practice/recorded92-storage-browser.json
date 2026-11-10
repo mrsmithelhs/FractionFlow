@@ -1,0 +1,18 @@
+{
+  "scope": "Real isolated v2 adapter and two Chrome tabs, disposable database; synthetic IndexedDB outcome-write failure.",
+  "browser": "157.0.8103.51",
+  "results": {
+    "retained ordered snapshot does not assert all-practice coverage": "passed",
+    "lag counts only recorded episodes strictly between endpoints": "passed",
+    "Start refuses changed snapshot": "passed",
+    "Next accepts appended records with original endpoints intact": "passed",
+    "Next rejects changed captured outcome": "passed",
+    "failed outcome write fences lag in another tab": "passed",
+    "committed failure fence survives reopen": "passed",
+    "Clear retires old fence and permits a fresh enabled generation": "passed",
+    "Stop and re-enable exclude old-generation endpoints": "passed",
+    "generation change refuses old recorded choice": "passed",
+    "simultaneous marker failures suppress lag in the reporting tab": "passed",
+    "dual persistent failure after all tabs close": "UNFENCED: owner disposition required"
+  }
+}

@@ -1,0 +1,172 @@
+{
+  "executionStatus": "passed",
+  "scope": "isolated mounted preview, disposable same-origin browser databases",
+  "apiPreflight": {
+    "release": true,
+    "recorderState": true,
+    "inspect": true,
+    "history": true,
+    "lagSnapshot": true,
+    "state": {
+      "active": false,
+      "faulted": false,
+      "epoch": null
+    }
+  },
+  "checks": {
+    "Lease API exposes releaseRecorder, recorderState, retained history inspection, and current-owner reads": "passed",
+    "First tab owns the opted-in recorder epoch": "passed",
+    "First mounted Start created a real observer exposure": "passed",
+    "Second tab cannot acquire the active recorder lease": "passed",
+    "Second tab Start uses no-history selection and writes no expanded exposure": "passed",
+    "Second tab can Stop remembering while another tab holds the former lease": "passed",
+    "Second tab can Clear both retained records": "passed",
+    "Clean-release case has an active writer and a real exposure": "passed",
+    "releaseRecorder drains and records a clean release": "passed",
+    "Clean release preserves epoch and events": "passed",
+    "Clean reopen reclaims the same epoch": "passed",
+    "Clean reopen preserves exact prior events": "passed",
+    "Clean reopen retains lag endpoints in the same epoch": "passed",
+    "Abrupt-recovery case has real prior exposure rows": "passed",
+    "Abrupt reopen rotates to a fresh active epoch": "passed",
+    "Abrupt recovery retains every old row": "passed",
+    "Abrupt recovery exposes no old event as a lag endpoint": "passed",
+    "Fresh epoch receives a real mounted exposure": "passed",
+    "Fresh lag snapshot contains only new-epoch endpoints": "passed",
+    "Dual-failure case has a real stored exposure before injection": "passed",
+    "Both marker and localStorage failure paths were injected during a real episode transition": "passed",
+    "Dual failure suppresses reliable lag endpoints before abrupt close": "passed",
+    "Dual failure and abrupt close force a fresh epoch": "passed",
+    "Dual-failure recovery retains pre-failure rows": "passed",
+    "Dual-failure recovery excludes old rows from lag endpoints": "passed",
+    "Recovered writer records a real new-epoch exposure": "passed",
+    "Recovered lag snapshot contains no pre-failure endpoints": "passed",
+    "Legacy-upgrade case installs a real comparison episode": "passed",
+    "Explicit v1-to-v2 upgrade preserves the legacy record and enabled choice": "passed",
+    "Upgraded legacy database supports a real registered expanded exposure": "passed",
+    "Pre-registration v2 rows remain readable and inspectable": "passed",
+    "Pre-registration v2 metadata fails closed for writer ownership": "passed",
+    "Old v2 schema neither rotates nor appends through an unregistered preview": "passed",
+    "Old v2 schema creates no current-owner lag snapshot": "passed"
+  },
+  "phases": {
+    "contention": {
+      "firstRecorder": {
+        "status": null,
+        "epoch": "6d15ec638d475bf9d8ea2140c62008c6",
+        "active": true
+      },
+      "firstExposureCount": 1,
+      "secondRecorderBefore": {
+        "status": null,
+        "epoch": null,
+        "active": false
+      },
+      "secondRecorderAfter": {
+        "status": null,
+        "epoch": null,
+        "active": false
+      },
+      "secondStartWitness": "C-S-T",
+      "stop": "passed",
+      "clear": "passed"
+    },
+    "cleanRelease": {
+      "epoch": "bd9b5f0b47262ec50e5c0f6b51da9b65",
+      "release": "released",
+      "afterRelease": null,
+      "events": [
+        {
+          "token": "5f6365630dcf9d85580b139ae229348b",
+          "ordinal": 1,
+          "epoch": "bd9b5f0b47262ec50e5c0f6b51da9b65"
+        }
+      ],
+      "reopenedState": {
+        "status": null,
+        "epoch": "bd9b5f0b47262ec50e5c0f6b51da9b65",
+        "active": true
+      },
+      "snapshot": {
+        "epoch": "bd9b5f0b47262ec50e5c0f6b51da9b65",
+        "revision": 6,
+        "earliestOrdinal": 1,
+        "latestOrdinal": 2,
+        "earliestToken": "5f6365630dcf9d85580b139ae229348b",
+        "latestToken": "2c61694618fc62a6e5d46ba7d2e13d83",
+        "retainedCount": 2,
+        "ordering": "continuous",
+        "reliable": true
+      }
+    },
+    "abruptRecovery": {
+      "priorEpoch": "422d760f8890b85fce9a4c24d8e3d82b",
+      "freshEpoch": "0be0da46cd1e48c679fcd283c16e6d82",
+      "oldRowsRetained": 1,
+      "lagBeforeStart": null,
+      "lagAfterStart": {
+        "epoch": "0be0da46cd1e48c679fcd283c16e6d82",
+        "revision": 5,
+        "earliestOrdinal": 2,
+        "latestOrdinal": 2,
+        "earliestToken": "ce117242f2dd1d9a97d6f2a28eaf6338",
+        "latestToken": "ce117242f2dd1d9a97d6f2a28eaf6338",
+        "retainedCount": 1,
+        "ordering": "continuous",
+        "reliable": true
+      }
+    },
+    "dualFailureBeforeRecovery": {
+      "oldEpoch": "ba14e6fa09f4e17d68d6b85357967837",
+      "injected": {
+        "marker": 2,
+        "localStorage": 2
+      },
+      "lagResponse": "stale"
+    },
+    "dualFailure": {
+      "oldEpoch": "ba14e6fa09f4e17d68d6b85357967837",
+      "freshEpoch": "e404fe60507c3a1e5506d00d00b921d4",
+      "injected": {
+        "marker": 2,
+        "localStorage": 2
+      },
+      "preCloseLagSuppressed": true,
+      "retainedOldRows": 1,
+      "postRecoveryLag": {
+        "epoch": "e404fe60507c3a1e5506d00d00b921d4",
+        "revision": 6,
+        "earliestOrdinal": 2,
+        "latestOrdinal": 2,
+        "earliestToken": "5f11a8628ed8cdcfb0c2fe624f08caf3",
+        "latestToken": "5f11a8628ed8cdcfb0c2fe624f08caf3",
+        "retainedCount": 1,
+        "ordering": "continuous",
+        "reliable": true
+      }
+    },
+    "legacyUpgrade": {
+      "version": 2,
+      "legacyEnabled": true,
+      "legacyEntries": [
+        {
+          "itemId": "plan45-compare-02",
+          "sequence": 1,
+          "token": "2792ae1fcf183c9f07395425c5dfee03"
+        }
+      ],
+      "expandedEpoch": "3e9794a4338997fd9d2b336d6c54998d",
+      "expandedEvents": 1
+    },
+    "oldV2Schema": {
+      "schema": "absent",
+      "epoch": "f6951dc3e5ced8f4d7026882aa57fde6",
+      "retainedToken": "d3692c7d7ba1ce330ebcb7e6fe09ad3f",
+      "writerActive": false,
+      "entriesAfterStart": 1,
+      "nextOrdinal": 2
+    }
+  },
+  "failures": [],
+  "limitations": []
+}

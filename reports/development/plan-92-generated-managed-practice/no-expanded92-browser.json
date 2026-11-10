@@ -1,6 +1,6 @@
 {
   "scope": "Ordinary mounted Start in a disposable Chrome context with synthetic legacy v1 comparison remembering enabled and no expanded consent; captures initial open/get calls through Start.",
-  "browser": "157.0.8103.38",
+  "browser": "157.0.8103.51",
   "legacyEnabled": true,
   "trace": {
     "opens": [
