@@ -452,10 +452,12 @@ export function createFractionFlowApp({
   navigationMode = 'direct',
   entryMode = 'compact',
   sessionTestHooks = {},
+  practiceRecordHooks = {},
   entryTestHooks = {},
   rendererPreflight = false,
   initialSupportLevelId = getDefaultSupportLevel().id,
 } = {}) {
+  const sessionHooks = { ...practiceRecordHooks, ...sessionTestHooks };
   if (!root) throw new Error('app root element is required');
   if (!['compact', 'historical-flat'].includes(entryMode)) throw new TypeError('unknown entry mode');
   const rotationDay = entryTestHooks.rotationDay ?? DOCUMENT_ROTATION_DAY;
@@ -566,10 +568,10 @@ export function createFractionFlowApp({
         scratch = createFractionFlowApp({root:scratchRoot, practiceTypes:[candidate.type], initialConditionId:selectedCondition.id,
           initialSupportLevelId:selectedSupportLevel.id, presentationMode:presentationModeFor({override:presentationMode,motionQuery}), rendererPreflight:true});
         scratch.mount(); scratch.mountPreparedForPreflight(candidate);
-        sessionTestHooks.preflightMount?.(candidate);
+        sessionHooks.preflightMount?.(candidate);
       } finally { scratch?.destroy(); scratchRoot.remove(); }
     }
-    sessionTestHooks.prepare?.(candidate);
+    sessionHooks.prepare?.(candidate);
     return candidate;
   }
   function clearFragment() {
@@ -591,10 +593,10 @@ export function createFractionFlowApp({
   function installSessionCurrent({ propagateFailure = false, expectedFit = null, allowActiveFit = false } = {}) {
     const current = magnitudeSession.current();
     try {
-      sessionTestHooks.display?.(current);
+      sessionHooks.display?.(current);
       const managed = [PLAN90_MANAGED_ID,PLAN90_FULL_ID,PLAN92_MANAGED_ID].includes(current.manifest.id);
       installFreshEpisode(current.installed.type, current.installed.itemIndex, current.episode, { focusEpisode: true, deferRecord:managed });
-      sessionTestHooks.afterDisplay?.(current);
+      sessionHooks.afterDisplay?.(current);
       if (measuredManagedSession) {
         const afterFit = measureManagedPracticeFit(appRoot);
         if ((!allowActiveFit || expectedFit) && (!afterFit || JSON.stringify(afterFit) !== JSON.stringify(expectedFit)
@@ -604,7 +606,7 @@ export function createFractionFlowApp({
         const remembering = recordController?.install(state, magnitudeSession);
         if (recordEpisodeNotice) recordEpisodeNotice.textContent = isPlan45ComparisonEpisode(state) && recordController?.snapshot().enabled && !remembering ? 'A new problem is needed before activity can be remembered.' : '';
       }
-      try { sessionTestHooks.onEpisodeInstalled?.(magnitudeSession.current()); } catch { /* Review instrumentation cannot break practice. */ }
+      try { sessionHooks.onEpisodeInstalled?.(magnitudeSession.current()); } catch { /* Review instrumentation cannot break practice. */ }
       return true;
     } catch (error) { if (propagateFailure) throw error; sessionDisplayFailure(); return false; }
   }
@@ -620,9 +622,9 @@ export function createFractionFlowApp({
             if (manifest.id===PLAN92_MANAGED_ID ? !isPlan92MeasuredFit(currentFit,entry,selectedCondition.activeCondition.id) : !isManagedFamilyFit(currentFit, entry.typeId, selectedCondition.activeCondition.id)) return false;
             sessionPreflight(prepareMagnitudeEntry(entry, selectedSupportLevel.id, selectedCondition.activeCondition),{mountRenderer:true});
             return true;
-          } : sessionTestHooks.eligibleForNext,
-          fitRevision: measuredFit ? () => JSON.stringify(measureManagedPracticeFit(appRoot)) : sessionTestHooks.fitRevision,
-          orderNextCandidates:sessionTestHooks.orderNextCandidates });
+          } : sessionHooks.eligibleForNext,
+          fitRevision: measuredFit ? () => JSON.stringify(measureManagedPracticeFit(appRoot)) : sessionHooks.fitRevision,
+          orderNextCandidates:sessionHooks.orderNextCandidates });
       sessionPreflight(controller.current().installed);
       magnitudeSession = controller; measuredManagedSession = measuredFit; clearFragment(); setHidden(sessionEntryNotice, true);
       return installSessionCurrent({expectedFit});
@@ -634,32 +636,39 @@ export function createFractionFlowApp({
     }
   }
   function startScheduledSession() {
-    if (sessionTestHooks.interceptStart) { sessionTestHooks.interceptStart(startScheduledSessionCore); return; }
+    if (sessionHooks.interceptStart) {
+      const generation = entryRendererLifetime, shell = shellLifetime;
+      sessionHooks.interceptStart(() => {
+        if (!mounted || shell !== shellLifetime || generation !== entryRendererLifetime || entryPage.hasAttribute('hidden')) return false;
+        return startScheduledSessionCore();
+      });
+      return;
+    }
     startScheduledSessionCore();
   }
   function startScheduledSessionCore() {
     // Explicit injected review policy; ordinary entry retains its existing behavior.
-    if (sessionTestHooks.selectManifest) {
+    if (sessionHooks.selectManifest) {
       try {
-        const input = sessionTestHooks.selectionInput?.() ?? Math.floor(Math.random() * 0x100000000);
-        const candidate = sessionTestHooks.selectManifest(input);
-        if (candidate && startMagnitudeSession(candidate, { quiet: true, preflightAll: true })) return;
+        const input = sessionHooks.selectionInput?.() ?? Math.floor(Math.random() * 0x100000000);
+        const candidate = sessionHooks.selectManifest(input);
+        if (candidate && startMagnitudeSession(candidate, { quiet: true, preflightAll: true })) return true;
       } catch { /* Refuse instead of falling back to unverified items. */ }
-      sessionEntryNotice.textContent = sessionTestHooks.unavailableNotice ?? 'This practice could not be opened. Please try again or choose another practice.';
-      setHidden(sessionEntryNotice, false); sessionEntryNotice.focus(); return;
+      sessionEntryNotice.textContent = sessionHooks.unavailableNotice ?? 'This practice could not be opened. Please try again or choose another practice.';
+      setHidden(sessionEntryNotice, false); sessionEntryNotice.focus(); return false;
     }
     let manifest, failed = false, selectionFit = null;
     try {
       const fit = measureManagedPracticeFit(appRoot);
       selectionFit = fit;
-      const seed = sessionTestHooks.selectionInput?.() ?? globalThis.crypto.getRandomValues(new Uint32Array(1))[0];
+      const seed = sessionHooks.selectionInput?.() ?? globalThis.crypto.getRandomValues(new Uint32Array(1))[0];
       const descriptors=allGate92Descriptors();
       const approvedSample=descriptors.some(d=>isPlan92MeasuredFit(fit,d.identity,selectedCondition.id));
       let selection;
       if (approvedSample) {
         const refused=new Set(), checked=new Set();
         for(let attempt=0;attempt<=descriptors.length;attempt++){
-          const candidates=descriptors.map(d=>({role:d.role,identity:d.identity,problemKey:d.problemKey,fit:!refused.has(d.identity.itemId)&&isPlan92MeasuredFit(fit,d.identity,selectedCondition.id),...(sessionTestHooks.candidatePriority ? {priority:sessionTestHooks.candidatePriority(d,seed)} : {})}));
+          const candidates=descriptors.map(d=>({role:d.role,identity:d.identity,problemKey:d.problemKey,fit:!refused.has(d.identity.itemId)&&isPlan92MeasuredFit(fit,d.identity,selectedCondition.id),...(sessionHooks.candidatePriority ? {priority:sessionHooks.candidatePriority(d,seed)} : {})}));
           selection=selectPlan92Sync({seed,candidates,catalogRevision:'ff92-catalog@1',policyRevision:'ff92-policy@1',compatibilityRevision:'ff92-compat@1',demandsRevision:'ff92-demands@1'});
           if(!selection.manifest)break;
           let rejected=null;
@@ -681,13 +690,13 @@ export function createFractionFlowApp({
       managedSessionWitness = { ...selection.witness, seed, fit };
     } catch { failed = true; }
     if (manifest) {
-      if (startMagnitudeSession(manifest, { quiet: true, preflightAll: true, measuredFit: true, expectedFit:selectionFit })) return;
+      if (startMagnitudeSession(manifest, { quiet: true, preflightAll: true, measuredFit: true, expectedFit:selectionFit })) return true;
       sessionEntryNotice.textContent = 'This practice could not be opened. Please try again or choose another practice.';
     } else sessionEntryNotice.textContent = failed ? 'This practice could not be opened. Please try again or choose another practice.' : 'No practice fits this screen right now. Try a larger window or smaller text, or choose another practice.';
-    setHidden(sessionEntryNotice, false); sessionEntryNotice.focus();
+    setHidden(sessionEntryNotice, false); sessionEntryNotice.focus(); return false;
   }
   function sessionTransition(kind, generation) {
-    if(kind==='next' && sessionTestHooks.interceptTransition){sessionTestHooks.interceptTransition(()=>sessionTransitionCore(kind,generation));return;}
+    if(kind==='next' && sessionHooks.interceptTransition){sessionHooks.interceptTransition(()=>sessionTransitionCore(kind,generation));return;}
     sessionTransitionCore(kind,generation);
   }
   function sessionTransitionCore(kind, generation) {
@@ -738,6 +747,7 @@ export function createFractionFlowApp({
   }
   function leaveMagnitudeSession(destination = null) {
     if (!magnitudeSession) return;
+    sessionHooks.onSessionLeave?.();
     magnitudeSession.exit(magnitudeSession.current().session); magnitudeSession = null; measuredManagedSession = false; managedSessionWitness = null;
     setHidden(sessionDialog, true); pendingHashDestination = null; entryPage.inert = false; appRoot.querySelector('.app-episode').inert = false;
     returnToEntry(); updateSupportMetadata();
@@ -961,7 +971,7 @@ export function createFractionFlowApp({
       entryPage.appendChild(sessionEntryList);
       const sessionCue = makeElement('p', 'app-session-cue'); sessionCue.id = 'fractionflow-session-cue'; sessionCue.textContent = 'Your place in this practice is not saved.'; entryPage.appendChild(sessionCue);
       sessionEntryNotice = makeElement('p', 'app-session-entry-notice'); sessionEntryNotice.setAttribute('role', 'status'); sessionEntryNotice.tabIndex = -1; setHidden(sessionEntryNotice, true); entryPage.appendChild(sessionEntryNotice);
-      if (!rendererPreflight) recordPanel = createComparisonRecordPanel({ host: entryPage, controller: recordController, clearIncludesExpanded:sessionTestHooks.comparisonClearIncludesExpanded===true, practice: () => { const type = practiceTypes.find(t => t.id === 'symbolic-fraction-comparison'); if (type) startPractice(type, { focusEpisode: true, updateFragment: true }); } });
+      if (!rendererPreflight) recordPanel = createComparisonRecordPanel({ host: entryPage, controller: recordController, clearIncludesExpanded:sessionHooks.comparisonClearIncludesExpanded===true, practice: () => { const type = practiceTypes.find(t => t.id === 'symbolic-fraction-comparison'); if (type) startPractice(type, { focusEpisode: true, updateFragment: true }); } });
     } else {
       const projection = projectEntryCapabilities(practiceTypes, MAGNITUDE_SESSION_MANIFEST, rotationDay);
       const makePracticeButton = (type, role) => {
@@ -1020,8 +1030,9 @@ export function createFractionFlowApp({
       }
       entryPage.appendChild(createDisplayMenu());
       sessionEntryNotice = makeElement('p', 'app-session-entry-notice'); sessionEntryNotice.setAttribute('role', 'status'); sessionEntryNotice.tabIndex = -1; setHidden(sessionEntryNotice, true); entryPage.appendChild(sessionEntryNotice);
-      if (!rendererPreflight) recordPanel = createComparisonRecordPanel({ host: entryPage, controller: recordController, clearIncludesExpanded:sessionTestHooks.comparisonClearIncludesExpanded===true, practice: () => { const type = practiceTypes.find(t => t.id === 'symbolic-fraction-comparison'); if (type) launchEntryPractice(type, { focusEpisode: true, updateFragment: true }); } });
+      if (!rendererPreflight) recordPanel = createComparisonRecordPanel({ host: entryPage, controller: recordController, clearIncludesExpanded:sessionHooks.comparisonClearIncludesExpanded===true, practice: () => { const type = practiceTypes.find(t => t.id === 'symbolic-fraction-comparison'); if (type) launchEntryPractice(type, { focusEpisode: true, updateFragment: true }); } });
     }
+    if (!rendererPreflight) sessionHooks.mountPracticeRecord?.(entryPage);
     const aboutLink = makeElement('a', 'app-about-link');
     aboutLink.setAttribute('href', './about.html');
     aboutLink.textContent = 'About FractionFlow';
@@ -1059,6 +1070,11 @@ export function createFractionFlowApp({
     episodeNavigation.appendChild(returnButton);
 
     recordEpisodeNotice = makeElement('p', 'comparison-record-episode-notice'); recordEpisodeNotice.setAttribute('role', 'status'); episodeNavigation.appendChild(recordEpisodeNotice);
+    if (!rendererPreflight && sessionHooks.setPracticeRecordNotice) {
+      const practiceRecordNotice = makeElement('p', 'practice-record-episode-notice');
+      practiceRecordNotice.setAttribute('role', 'status'); episodeNavigation.appendChild(practiceRecordNotice);
+      sessionHooks.setPracticeRecordNotice(message => { practiceRecordNotice.textContent = message; });
+    }
     const viewControls = makeElement('div', 'app-view-controls');
     viewToggle = createButton({
       label: STRINGS.app.readSteps,
@@ -1943,7 +1959,7 @@ export function createFractionFlowApp({
       writeHelpOpen: (open) => {
         if (!isCurrent()) return false;
         comparisonHelpOpen = Boolean(open);
-        if (comparisonHelpOpen) { recordController?.helpOpened(); try { sessionTestHooks.onHelpOpened?.(); } catch { /* Review instrumentation cannot break practice. */ } }
+        if (comparisonHelpOpen) { recordController?.helpOpened(); try { sessionHooks.onHelpOpened?.(); } catch { /* Review instrumentation cannot break practice. */ } }
         return true;
       },
       focusPrimary: () => isCurrent() ? getVisibleComparisonRegion()?.focusPrimary() ?? false : false,
@@ -2563,7 +2579,7 @@ export function createFractionFlowApp({
       const recordPreviousState = state;
       state = syncSessionEpisode(state, applyIntent(state, action));
       if (!isReplaying) recordController?.observe(recordPreviousState, state, action);
-      if (!isReplaying && magnitudeSession) { try { sessionTestHooks.onEpisodeIntent?.({before:recordPreviousState,after:state,action}); } catch { /* Review instrumentation cannot break practice. */ } }
+      if (!isReplaying && magnitudeSession) { try { sessionHooks.onEpisodeIntent?.({before:recordPreviousState,after:state,action}); } catch { /* Review instrumentation cannot break practice. */ } }
       if (action.type === 'revise-comparison-denominator') comparisonConstructionDrafts = {};
       if (action.type === 'submit-fraction-comparison' && state.status === 'resolved') comparisonDraft = '';
       if (action.type === 'request-help') {
@@ -2732,7 +2748,7 @@ export function createFractionFlowApp({
   return {
     mount() {
       if (mounted) return this;
-      if (!rendererPreflight) recordController = createComparisonRecordController({ ...(sessionTestHooks.recordStorage ? {storage:sessionTestHooks.recordStorage} : {}), onChange: (info) => { recordPanel?.render(); if (recordEpisodeNotice && isPlan45ComparisonEpisode(state)) recordEpisodeNotice.textContent = info.message.includes('could not save') ? info.message : !info.eligible && info.enabled ? 'A new problem is needed before activity can be remembered.' : info.message === 'This problem is no longer being remembered.' ? info.message : '';  } });
+      if (!rendererPreflight) recordController = createComparisonRecordController({ ...(sessionHooks.recordStorage ? {storage:sessionHooks.recordStorage} : {}), onChange: (info) => { recordPanel?.render(); if (recordEpisodeNotice && isPlan45ComparisonEpisode(state)) recordEpisodeNotice.textContent = info.message.includes('could not save') ? info.message : !info.eligible && info.enabled ? 'A new problem is needed before activity can be remembered.' : info.message === 'This problem is no longer being remembered.' ? info.message : '';  } });
       try { createShell(); }
       catch (error) {
         if (documentClickListener && typeof document !== 'undefined') document.removeEventListener('click', documentClickListener);
@@ -2764,6 +2780,7 @@ export function createFractionFlowApp({
       installFreshEpisode(candidate.type, candidate.itemIndex, candidate.state, {focusEpisode:false, deferRecord:true});
     },
     destroy() {
+      sessionHooks.destroyPracticeRecord?.();
       recordController?.destroy(); recordPanel?.destroy(); recordController = null; recordPanel = null;
       shellLifetime += 1;
       entryRendererLifetime += 1;

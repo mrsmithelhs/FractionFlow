@@ -1,0 +1,166 @@
+{
+  "scope": "Ordinary / app in an isolated disposable Playwright BrowserContext; both opt-ins, direct Start, recorder-written mounted exposure, clean Leave, Stop and Clear through visible UI. Synthetic browser evidence only; no fixture, existing profile or learner data.",
+  "browser": "157.0.8103.51",
+  "database": "fractionflow-comparison-record-v1",
+  "initial": {
+    "legacyEnabled": true,
+    "expandedEnabled": true,
+    "expandedEvents": 0
+  },
+  "mountedExposure": {
+    "token": "bde6e128bf75960605c280a5b5d7de01",
+    "ordinal": 1,
+    "epoch": "889376df4d02afc4f81870915ea57d45",
+    "identity": {
+      "role": "C",
+      "typeId": "symbolic-fraction-comparison",
+      "setId": "symbolic-fraction-comparison-vetted-set",
+      "setRevision": "1",
+      "itemId": "plan45-compare-10",
+      "itemRevision": "plan45-record-v1",
+      "authoringRevision": "plan45-record-v1",
+      "definitionId": "phase-4-symbolic-fraction-comparison",
+      "definitionRevision": "2",
+      "underlyingDefinitionRevision": "1",
+      "recipeId": "symbolic-fraction-comparison",
+      "recipeRevision": "1",
+      "taskDataId": "plan45-symbolic-fraction-comparison-task-data",
+      "taskDataRevision": "1",
+      "cueId": "compare.half-benchmark"
+    },
+    "role": "C",
+    "demand": "{\"role\":\"C\",\"structure\":\"half-benchmark\",\"relation\":\"<\"}",
+    "first": "unknown",
+    "accepted": "unknown",
+    "firstAssistance": "unknown",
+    "acceptedAssistance": "unknown"
+  },
+  "afterStop": {
+    "meta": {
+      "schema": 1,
+      "epoch": "79bc071a3a3294b82ec8769fbfd709ff",
+      "enabled": false,
+      "nextOrdinal": 2,
+      "earliestOrdinal": 1,
+      "coverage": "unknown",
+      "ordering": "unknown",
+      "revision": 5,
+      "registrationSchema": 1,
+      "writerRegistration": null
+    },
+    "events": [
+      {
+        "token": "bde6e128bf75960605c280a5b5d7de01",
+        "ordinal": 1,
+        "epoch": "889376df4d02afc4f81870915ea57d45",
+        "identity": {
+          "role": "C",
+          "typeId": "symbolic-fraction-comparison",
+          "setId": "symbolic-fraction-comparison-vetted-set",
+          "setRevision": "1",
+          "itemId": "plan45-compare-10",
+          "itemRevision": "plan45-record-v1",
+          "authoringRevision": "plan45-record-v1",
+          "definitionId": "phase-4-symbolic-fraction-comparison",
+          "definitionRevision": "2",
+          "underlyingDefinitionRevision": "1",
+          "recipeId": "symbolic-fraction-comparison",
+          "recipeRevision": "1",
+          "taskDataId": "plan45-symbolic-fraction-comparison-task-data",
+          "taskDataRevision": "1",
+          "cueId": "compare.half-benchmark"
+        },
+        "role": "C",
+        "demand": "{\"role\":\"C\",\"structure\":\"half-benchmark\",\"relation\":\"<\"}",
+        "first": "unknown",
+        "accepted": "unknown",
+        "firstAssistance": "unknown",
+        "acceptedAssistance": "unknown"
+      }
+    ],
+    "legacy": {
+      "schema": 1,
+      "contract": 1,
+      "generation": "a71b893931b33179987b6cc787ad927b",
+      "enabled": true,
+      "nextSequence": 1,
+      "entries": []
+    }
+  },
+  "afterClear": {
+    "meta": {
+      "schema": 1,
+      "epoch": "e09b56336407d815243f4eafd5505654",
+      "enabled": false,
+      "nextOrdinal": 1,
+      "earliestOrdinal": 1,
+      "coverage": "unknown",
+      "ordering": "unknown",
+      "revision": 0,
+      "registrationSchema": 1,
+      "writerRegistration": null
+    },
+    "events": [],
+    "intent": null,
+    "legacy": {
+      "schema": 1,
+      "contract": 1,
+      "generation": "e2e0f19a2b8867ed5d0705d5a8a832cd",
+      "enabled": true,
+      "nextSequence": 1,
+      "entries": []
+    },
+    "confirmation": "Clear the expanded history, if present, and the separate comparison practice record on this browser? Your remembering choices will stay as they are."
+  },
+  "checks": {
+    "legacy comparison remembering is persisted on before expanded opt-in": {
+      "status": "passed"
+    },
+    "expanded consent is persisted on after visible opt-in": {
+      "status": "passed"
+    },
+    "expanded event store starts empty": {
+      "status": "passed"
+    },
+    "ordinary mounted Start records a genuine installed exposure": {
+      "status": "passed"
+    },
+    "exposure is stored with unknown response and acceptance until learner acts": {
+      "status": "passed"
+    },
+    "Stop disables expanded consent in stored metadata": {
+      "status": "passed"
+    },
+    "Stop retains the mounted exposure row": {
+      "status": "passed"
+    },
+    "Stop leaves independent legacy comparison consent enabled": {
+      "status": "passed"
+    },
+    "Clear prompt names the expanded and comparison records": {
+      "status": "passed"
+    },
+    "legacy comparison entries remain empty after Clear": {
+      "status": "passed"
+    },
+    "Clear removes expanded exposure rows and intent marker": {
+      "status": "passed"
+    },
+    "Clear preserves expanded consent choice as off": {
+      "status": "passed"
+    },
+    "Clear preserves independent legacy comparison consent choice as on": {
+      "status": "passed"
+    },
+    "no browser page errors": {
+      "status": "passed"
+    }
+  },
+  "missing": [
+    "No first-response or acceptance event was created; the authentic mounted exposure remains unknown until learner action.",
+    "Legacy comparison entries were empty throughout, so removal of a previously populated legacy record by Clear was not verified.",
+    "Abrupt-close epoch recovery and forced-failed Start takeover were not exercised.",
+    "A full reopen after Clear was not exercised; the database was read back directly in the same isolated context."
+  ],
+  "pageErrors": []
+}

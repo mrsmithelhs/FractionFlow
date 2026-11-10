@@ -1,0 +1,925 @@
+{
+  "scope": "ordinary production route /, isolated disposable Playwright BrowserContext, visible controls only; synthetic browser evidence, not learner evidence",
+  "database": "fractionflow-comparison-record-v1",
+  "seedControl": "test-only Crypto.getRandomValues shim for Uint32Array(1); secure token requests are untouched",
+  "visits": [
+    {
+      "seed": 0,
+      "consumedSeed": 0,
+      "selected": [
+        {
+          "role": "C",
+          "itemId": "plan45-compare-02"
+        },
+        {
+          "role": "I",
+          "itemId": "plan40-identify-two-thirds-five-twelfths-12"
+        },
+        {
+          "role": "S",
+          "itemId": "plan40-inspect-two-thirds-one-fourth-12"
+        },
+        {
+          "role": "T",
+          "itemId": "plan76-construct-five-sixths-one-tenth-30"
+        }
+      ],
+      "beforeEntries": 0,
+      "afterEntries": 4,
+      "lagSnapshotReliable": false,
+      "lagSnapshot": null,
+      "roleComparisons": [
+        {
+          "role": "C",
+          "itemId": "plan45-compare-02",
+          "cleanSameSeedItemId": "plan45-compare-02",
+          "chosenRank": null,
+          "cleanBaselineRank": null,
+          "differsAndRanksHigher": false
+        },
+        {
+          "role": "I",
+          "itemId": "plan40-identify-two-thirds-five-twelfths-12",
+          "cleanSameSeedItemId": "plan40-identify-two-thirds-five-twelfths-12",
+          "chosenRank": null,
+          "cleanBaselineRank": null,
+          "differsAndRanksHigher": false
+        },
+        {
+          "role": "S",
+          "itemId": "plan40-inspect-two-thirds-one-fourth-12",
+          "cleanSameSeedItemId": "plan40-inspect-two-thirds-one-fourth-12",
+          "chosenRank": null,
+          "cleanBaselineRank": null,
+          "differsAndRanksHigher": false
+        },
+        {
+          "role": "T",
+          "itemId": "plan76-construct-five-sixths-one-tenth-30",
+          "cleanSameSeedItemId": "plan76-construct-five-sixths-one-tenth-30",
+          "chosenRank": null,
+          "cleanBaselineRank": null,
+          "differsAndRanksHigher": false
+        }
+      ],
+      "observerCreatedEvents": [
+        {
+          "itemId": "plan45-compare-02",
+          "role": "C",
+          "ordinal": 1,
+          "first": "retry",
+          "accepted": "yes"
+        },
+        {
+          "itemId": "plan40-identify-two-thirds-five-twelfths-12",
+          "role": "I",
+          "ordinal": 2,
+          "first": "accepted",
+          "accepted": "yes"
+        },
+        {
+          "itemId": "plan40-inspect-two-thirds-one-fourth-12",
+          "role": "S",
+          "ordinal": 3,
+          "first": "accepted",
+          "accepted": "yes"
+        },
+        {
+          "itemId": "plan76-construct-five-sixths-one-tenth-30",
+          "role": "T",
+          "ordinal": 4,
+          "first": "accepted",
+          "accepted": "yes"
+        }
+      ]
+    },
+    {
+      "seed": 2,
+      "consumedSeed": 2,
+      "selected": [
+        {
+          "role": "C",
+          "itemId": "plan45-compare-02"
+        },
+        {
+          "role": "S",
+          "itemId": "plan76-inspect-three-fourths-one-fifth-20"
+        },
+        {
+          "role": "T",
+          "itemId": "plan40-construct-half-fifth-10"
+        }
+      ],
+      "beforeEntries": 4,
+      "afterEntries": 7,
+      "lagSnapshotReliable": true,
+      "lagSnapshot": {
+        "earliestOrdinal": 1,
+        "latestOrdinal": 4,
+        "retainedCount": 4
+      },
+      "roleComparisons": [
+        {
+          "role": "C",
+          "itemId": "plan45-compare-02",
+          "cleanSameSeedItemId": "plan45-compare-09",
+          "chosenRank": {
+            "priority": 0,
+            "comparableCount": 1,
+            "tentativeNeed": 3,
+            "exactReuseCount": 1,
+            "problemExposureCount": 1,
+            "reviewOpportunity": false,
+            "coverage": "unknown",
+            "recentSkillReturn": true,
+            "olderReviewEligible": false,
+            "recordedLag": 2,
+            "recordedOlderEndpointOrdinal": 1,
+            "recordedOlderEndpointToken": "746c707a85770d006d39900b85e2c0bf",
+            "recordedNewerEndpointOrdinal": 4,
+            "recordedNewerEndpointToken": "d0f55293757fb04d77b7c135a088186b",
+            "recordedOrderValid": true,
+            "reason": "recent-skill-return"
+          },
+          "cleanBaselineRank": {
+            "priority": 1,
+            "comparableCount": 0,
+            "tentativeNeed": 0,
+            "exactReuseCount": 0,
+            "problemExposureCount": 0,
+            "reviewOpportunity": false,
+            "coverage": "unknown",
+            "recentSkillReturn": false,
+            "olderReviewEligible": false,
+            "recordedLag": null,
+            "recordedOlderEndpointOrdinal": null,
+            "recordedOlderEndpointToken": null,
+            "recordedNewerEndpointOrdinal": 4,
+            "recordedNewerEndpointToken": "d0f55293757fb04d77b7c135a088186b",
+            "recordedOrderValid": true,
+            "reason": "observed-evidence"
+          },
+          "differsAndRanksHigher": true
+        },
+        {
+          "role": "S",
+          "itemId": "plan76-inspect-three-fourths-one-fifth-20",
+          "cleanSameSeedItemId": "plan40-inspect-two-thirds-one-fourth-12",
+          "chosenRank": {
+            "priority": 0,
+            "comparableCount": 0,
+            "tentativeNeed": 0,
+            "exactReuseCount": 0,
+            "problemExposureCount": 0,
+            "reviewOpportunity": false,
+            "coverage": "unknown",
+            "recentSkillReturn": false,
+            "olderReviewEligible": false,
+            "recordedLag": null,
+            "recordedOlderEndpointOrdinal": null,
+            "recordedOlderEndpointToken": null,
+            "recordedNewerEndpointOrdinal": 4,
+            "recordedNewerEndpointToken": "d0f55293757fb04d77b7c135a088186b",
+            "recordedOrderValid": true,
+            "reason": "observed-evidence"
+          },
+          "cleanBaselineRank": {
+            "priority": 1,
+            "comparableCount": 1,
+            "tentativeNeed": 0,
+            "exactReuseCount": 1,
+            "problemExposureCount": 1,
+            "reviewOpportunity": false,
+            "coverage": "unknown",
+            "recentSkillReturn": false,
+            "olderReviewEligible": false,
+            "recordedLag": 0,
+            "recordedOlderEndpointOrdinal": 3,
+            "recordedOlderEndpointToken": "a0ddf2804f1fb769780e99030a33369a",
+            "recordedNewerEndpointOrdinal": 4,
+            "recordedNewerEndpointToken": "d0f55293757fb04d77b7c135a088186b",
+            "recordedOrderValid": true,
+            "reason": "observed-evidence"
+          },
+          "differsAndRanksHigher": true
+        },
+        {
+          "role": "T",
+          "itemId": "plan40-construct-half-fifth-10",
+          "cleanSameSeedItemId": "plan40-construct-half-fifth-10",
+          "chosenRank": {
+            "priority": 0,
+            "comparableCount": 0,
+            "tentativeNeed": 0,
+            "exactReuseCount": 0,
+            "problemExposureCount": 0,
+            "reviewOpportunity": false,
+            "coverage": "unknown",
+            "recentSkillReturn": false,
+            "olderReviewEligible": false,
+            "recordedLag": null,
+            "recordedOlderEndpointOrdinal": null,
+            "recordedOlderEndpointToken": null,
+            "recordedNewerEndpointOrdinal": 4,
+            "recordedNewerEndpointToken": "d0f55293757fb04d77b7c135a088186b",
+            "recordedOrderValid": true,
+            "reason": "observed-evidence"
+          },
+          "cleanBaselineRank": {
+            "priority": 0,
+            "comparableCount": 0,
+            "tentativeNeed": 0,
+            "exactReuseCount": 0,
+            "problemExposureCount": 0,
+            "reviewOpportunity": false,
+            "coverage": "unknown",
+            "recentSkillReturn": false,
+            "olderReviewEligible": false,
+            "recordedLag": null,
+            "recordedOlderEndpointOrdinal": null,
+            "recordedOlderEndpointToken": null,
+            "recordedNewerEndpointOrdinal": 4,
+            "recordedNewerEndpointToken": "d0f55293757fb04d77b7c135a088186b",
+            "recordedOrderValid": true,
+            "reason": "observed-evidence"
+          },
+          "differsAndRanksHigher": false
+        }
+      ],
+      "observerCreatedEvents": [
+        {
+          "itemId": "plan45-compare-02",
+          "role": "C",
+          "ordinal": 5,
+          "first": "accepted",
+          "accepted": "yes"
+        },
+        {
+          "itemId": "plan76-inspect-three-fourths-one-fifth-20",
+          "role": "S",
+          "ordinal": 6,
+          "first": "accepted",
+          "accepted": "yes"
+        },
+        {
+          "itemId": "plan40-construct-half-fifth-10",
+          "role": "T",
+          "ordinal": 7,
+          "first": "accepted",
+          "accepted": "yes"
+        }
+      ]
+    },
+    {
+      "seed": 4,
+      "consumedSeed": 4,
+      "selected": [
+        {
+          "role": "C",
+          "itemId": "plan45-compare-09"
+        },
+        {
+          "role": "I",
+          "itemId": "plan76-identify-seven-eighths-one-fourth-8"
+        },
+        {
+          "role": "T",
+          "itemId": "plan40-construct-five-sixths-three-eighths-24"
+        }
+      ],
+      "beforeEntries": 7,
+      "afterEntries": 10,
+      "lagSnapshotReliable": true,
+      "lagSnapshot": {
+        "earliestOrdinal": 1,
+        "latestOrdinal": 7,
+        "retainedCount": 7
+      },
+      "roleComparisons": [
+        {
+          "role": "C",
+          "itemId": "plan45-compare-09",
+          "cleanSameSeedItemId": "plan45-compare-02",
+          "chosenRank": {
+            "priority": 0,
+            "comparableCount": 0,
+            "tentativeNeed": 0,
+            "exactReuseCount": 0,
+            "problemExposureCount": 0,
+            "reviewOpportunity": false,
+            "coverage": "unknown",
+            "recentSkillReturn": false,
+            "olderReviewEligible": false,
+            "recordedLag": null,
+            "recordedOlderEndpointOrdinal": null,
+            "recordedOlderEndpointToken": null,
+            "recordedNewerEndpointOrdinal": 7,
+            "recordedNewerEndpointToken": "085a3647c49607bb2c89625bab5b0fb3",
+            "recordedOrderValid": true,
+            "reason": "observed-evidence"
+          },
+          "cleanBaselineRank": {
+            "priority": 1,
+            "comparableCount": 1,
+            "tentativeNeed": 0,
+            "exactReuseCount": 2,
+            "problemExposureCount": 1,
+            "reviewOpportunity": false,
+            "coverage": "unknown",
+            "recentSkillReturn": false,
+            "olderReviewEligible": false,
+            "recordedLag": 1,
+            "recordedOlderEndpointOrdinal": 5,
+            "recordedOlderEndpointToken": "514510f216a3bb1edfcb76d974f51eaf",
+            "recordedNewerEndpointOrdinal": 7,
+            "recordedNewerEndpointToken": "085a3647c49607bb2c89625bab5b0fb3",
+            "recordedOrderValid": true,
+            "reason": "observed-evidence"
+          },
+          "differsAndRanksHigher": true
+        },
+        {
+          "role": "I",
+          "itemId": "plan76-identify-seven-eighths-one-fourth-8",
+          "cleanSameSeedItemId": "plan76-identify-seven-eighths-one-fourth-8",
+          "chosenRank": {
+            "priority": 0,
+            "comparableCount": 0,
+            "tentativeNeed": 0,
+            "exactReuseCount": 0,
+            "problemExposureCount": 0,
+            "reviewOpportunity": false,
+            "coverage": "unknown",
+            "recentSkillReturn": false,
+            "olderReviewEligible": false,
+            "recordedLag": null,
+            "recordedOlderEndpointOrdinal": null,
+            "recordedOlderEndpointToken": null,
+            "recordedNewerEndpointOrdinal": 7,
+            "recordedNewerEndpointToken": "085a3647c49607bb2c89625bab5b0fb3",
+            "recordedOrderValid": true,
+            "reason": "observed-evidence"
+          },
+          "cleanBaselineRank": {
+            "priority": 0,
+            "comparableCount": 0,
+            "tentativeNeed": 0,
+            "exactReuseCount": 0,
+            "problemExposureCount": 0,
+            "reviewOpportunity": false,
+            "coverage": "unknown",
+            "recentSkillReturn": false,
+            "olderReviewEligible": false,
+            "recordedLag": null,
+            "recordedOlderEndpointOrdinal": null,
+            "recordedOlderEndpointToken": null,
+            "recordedNewerEndpointOrdinal": 7,
+            "recordedNewerEndpointToken": "085a3647c49607bb2c89625bab5b0fb3",
+            "recordedOrderValid": true,
+            "reason": "observed-evidence"
+          },
+          "differsAndRanksHigher": false
+        },
+        {
+          "role": "T",
+          "itemId": "plan40-construct-five-sixths-three-eighths-24",
+          "cleanSameSeedItemId": "plan40-construct-half-fifth-10",
+          "chosenRank": {
+            "priority": 0,
+            "comparableCount": 1,
+            "tentativeNeed": 0,
+            "exactReuseCount": 0,
+            "problemExposureCount": 0,
+            "reviewOpportunity": false,
+            "coverage": "unknown",
+            "recentSkillReturn": false,
+            "olderReviewEligible": false,
+            "recordedLag": 2,
+            "recordedOlderEndpointOrdinal": 4,
+            "recordedOlderEndpointToken": "d0f55293757fb04d77b7c135a088186b",
+            "recordedNewerEndpointOrdinal": 7,
+            "recordedNewerEndpointToken": "085a3647c49607bb2c89625bab5b0fb3",
+            "recordedOrderValid": true,
+            "reason": "observed-evidence"
+          },
+          "cleanBaselineRank": {
+            "priority": 2,
+            "comparableCount": 1,
+            "tentativeNeed": 0,
+            "exactReuseCount": 1,
+            "problemExposureCount": 1,
+            "reviewOpportunity": false,
+            "coverage": "unknown",
+            "recentSkillReturn": false,
+            "olderReviewEligible": false,
+            "recordedLag": null,
+            "recordedOlderEndpointOrdinal": 7,
+            "recordedOlderEndpointToken": "085a3647c49607bb2c89625bab5b0fb3",
+            "recordedNewerEndpointOrdinal": 7,
+            "recordedNewerEndpointToken": "085a3647c49607bb2c89625bab5b0fb3",
+            "recordedOrderValid": true,
+            "reason": "observed-evidence"
+          },
+          "differsAndRanksHigher": true
+        }
+      ],
+      "observerCreatedEvents": [
+        {
+          "itemId": "plan45-compare-09",
+          "role": "C",
+          "ordinal": 8,
+          "first": "accepted",
+          "accepted": "yes"
+        },
+        {
+          "itemId": "plan76-identify-seven-eighths-one-fourth-8",
+          "role": "I",
+          "ordinal": 9,
+          "first": "accepted",
+          "accepted": "yes"
+        },
+        {
+          "itemId": "plan40-construct-five-sixths-three-eighths-24",
+          "role": "T",
+          "ordinal": 10,
+          "first": "accepted",
+          "accepted": "yes"
+        }
+      ]
+    },
+    {
+      "seed": 3,
+      "consumedSeed": 3,
+      "selected": [
+        {
+          "role": "C",
+          "itemId": "plan45-compare-10"
+        },
+        {
+          "role": "I",
+          "itemId": "plan40-identify-one-half-one-eighth-8"
+        },
+        {
+          "role": "S",
+          "itemId": "plan40-inspect-two-thirds-one-fourth-12"
+        },
+        {
+          "role": "T",
+          "itemId": "plan76-construct-five-sixths-one-tenth-30"
+        }
+      ],
+      "beforeEntries": 10,
+      "afterEntries": 14,
+      "lagSnapshotReliable": true,
+      "lagSnapshot": {
+        "earliestOrdinal": 1,
+        "latestOrdinal": 10,
+        "retainedCount": 10
+      },
+      "roleComparisons": [
+        {
+          "role": "C",
+          "itemId": "plan45-compare-10",
+          "cleanSameSeedItemId": "plan45-compare-02",
+          "chosenRank": {
+            "priority": 0,
+            "comparableCount": 0,
+            "tentativeNeed": 0,
+            "exactReuseCount": 0,
+            "problemExposureCount": 0,
+            "reviewOpportunity": false,
+            "coverage": "unknown",
+            "recentSkillReturn": false,
+            "olderReviewEligible": false,
+            "recordedLag": null,
+            "recordedOlderEndpointOrdinal": null,
+            "recordedOlderEndpointToken": null,
+            "recordedNewerEndpointOrdinal": 10,
+            "recordedNewerEndpointToken": "c9854cbd82710cbe6c3a501b048c3ef5",
+            "recordedOrderValid": true,
+            "reason": "observed-evidence"
+          },
+          "cleanBaselineRank": {
+            "priority": 2,
+            "comparableCount": 1,
+            "tentativeNeed": 0,
+            "exactReuseCount": 2,
+            "problemExposureCount": 1,
+            "reviewOpportunity": false,
+            "coverage": "unknown",
+            "recentSkillReturn": false,
+            "olderReviewEligible": false,
+            "recordedLag": 4,
+            "recordedOlderEndpointOrdinal": 5,
+            "recordedOlderEndpointToken": "514510f216a3bb1edfcb76d974f51eaf",
+            "recordedNewerEndpointOrdinal": 10,
+            "recordedNewerEndpointToken": "c9854cbd82710cbe6c3a501b048c3ef5",
+            "recordedOrderValid": true,
+            "reason": "observed-evidence"
+          },
+          "differsAndRanksHigher": true
+        },
+        {
+          "role": "I",
+          "itemId": "plan40-identify-one-half-one-eighth-8",
+          "cleanSameSeedItemId": "plan40-identify-two-thirds-five-twelfths-12",
+          "chosenRank": {
+            "priority": 0,
+            "comparableCount": 1,
+            "tentativeNeed": 0,
+            "exactReuseCount": 0,
+            "problemExposureCount": 0,
+            "reviewOpportunity": true,
+            "coverage": "unknown",
+            "recentSkillReturn": false,
+            "olderReviewEligible": true,
+            "recordedLag": 7,
+            "recordedOlderEndpointOrdinal": 2,
+            "recordedOlderEndpointToken": "f01f1d07c3009a6b551433e7313e9fd4",
+            "recordedNewerEndpointOrdinal": 10,
+            "recordedNewerEndpointToken": "c9854cbd82710cbe6c3a501b048c3ef5",
+            "recordedOrderValid": true,
+            "reason": "older-review-draw"
+          },
+          "cleanBaselineRank": {
+            "priority": 1,
+            "comparableCount": 1,
+            "tentativeNeed": 0,
+            "exactReuseCount": 1,
+            "problemExposureCount": 1,
+            "reviewOpportunity": false,
+            "coverage": "unknown",
+            "recentSkillReturn": false,
+            "olderReviewEligible": true,
+            "recordedLag": 7,
+            "recordedOlderEndpointOrdinal": 2,
+            "recordedOlderEndpointToken": "f01f1d07c3009a6b551433e7313e9fd4",
+            "recordedNewerEndpointOrdinal": 10,
+            "recordedNewerEndpointToken": "c9854cbd82710cbe6c3a501b048c3ef5",
+            "recordedOrderValid": true,
+            "reason": "observed-evidence"
+          },
+          "differsAndRanksHigher": true
+        },
+        {
+          "role": "S",
+          "itemId": "plan40-inspect-two-thirds-one-fourth-12",
+          "cleanSameSeedItemId": "plan40-inspect-two-thirds-one-fourth-12",
+          "chosenRank": {
+            "priority": 0,
+            "comparableCount": 1,
+            "tentativeNeed": 0,
+            "exactReuseCount": 1,
+            "problemExposureCount": 1,
+            "reviewOpportunity": false,
+            "coverage": "unknown",
+            "recentSkillReturn": false,
+            "olderReviewEligible": false,
+            "recordedLag": 6,
+            "recordedOlderEndpointOrdinal": 3,
+            "recordedOlderEndpointToken": "a0ddf2804f1fb769780e99030a33369a",
+            "recordedNewerEndpointOrdinal": 10,
+            "recordedNewerEndpointToken": "c9854cbd82710cbe6c3a501b048c3ef5",
+            "recordedOrderValid": true,
+            "reason": "observed-evidence"
+          },
+          "cleanBaselineRank": {
+            "priority": 0,
+            "comparableCount": 1,
+            "tentativeNeed": 0,
+            "exactReuseCount": 1,
+            "problemExposureCount": 1,
+            "reviewOpportunity": false,
+            "coverage": "unknown",
+            "recentSkillReturn": false,
+            "olderReviewEligible": false,
+            "recordedLag": 6,
+            "recordedOlderEndpointOrdinal": 3,
+            "recordedOlderEndpointToken": "a0ddf2804f1fb769780e99030a33369a",
+            "recordedNewerEndpointOrdinal": 10,
+            "recordedNewerEndpointToken": "c9854cbd82710cbe6c3a501b048c3ef5",
+            "recordedOrderValid": true,
+            "reason": "observed-evidence"
+          },
+          "differsAndRanksHigher": false
+        },
+        {
+          "role": "T",
+          "itemId": "plan76-construct-five-sixths-one-tenth-30",
+          "cleanSameSeedItemId": "plan40-construct-five-sixths-three-eighths-24",
+          "chosenRank": {
+            "priority": 0,
+            "comparableCount": 2,
+            "tentativeNeed": 0,
+            "exactReuseCount": 1,
+            "problemExposureCount": 1,
+            "reviewOpportunity": false,
+            "coverage": "unknown",
+            "recentSkillReturn": false,
+            "olderReviewEligible": false,
+            "recordedLag": null,
+            "recordedOlderEndpointOrdinal": 10,
+            "recordedOlderEndpointToken": "c9854cbd82710cbe6c3a501b048c3ef5",
+            "recordedNewerEndpointOrdinal": 10,
+            "recordedNewerEndpointToken": "c9854cbd82710cbe6c3a501b048c3ef5",
+            "recordedOrderValid": true,
+            "reason": "observed-evidence"
+          },
+          "cleanBaselineRank": {
+            "priority": 2,
+            "comparableCount": 2,
+            "tentativeNeed": 0,
+            "exactReuseCount": 1,
+            "problemExposureCount": 1,
+            "reviewOpportunity": false,
+            "coverage": "unknown",
+            "recentSkillReturn": false,
+            "olderReviewEligible": false,
+            "recordedLag": null,
+            "recordedOlderEndpointOrdinal": 10,
+            "recordedOlderEndpointToken": "c9854cbd82710cbe6c3a501b048c3ef5",
+            "recordedNewerEndpointOrdinal": 10,
+            "recordedNewerEndpointToken": "c9854cbd82710cbe6c3a501b048c3ef5",
+            "recordedOrderValid": true,
+            "reason": "observed-evidence"
+          },
+          "differsAndRanksHigher": true
+        }
+      ],
+      "observerCreatedEvents": [
+        {
+          "itemId": "plan45-compare-10",
+          "role": "C",
+          "ordinal": 11,
+          "first": "accepted",
+          "accepted": "yes"
+        },
+        {
+          "itemId": "plan40-identify-one-half-one-eighth-8",
+          "role": "I",
+          "ordinal": 12,
+          "first": "accepted",
+          "accepted": "yes"
+        },
+        {
+          "itemId": "plan40-inspect-two-thirds-one-fourth-12",
+          "role": "S",
+          "ordinal": 13,
+          "first": "accepted",
+          "accepted": "yes"
+        },
+        {
+          "itemId": "plan76-construct-five-sixths-one-tenth-30",
+          "role": "T",
+          "ordinal": 14,
+          "first": "accepted",
+          "accepted": "yes"
+        }
+      ]
+    }
+  ],
+  "actualObserverEvents": [
+    {
+      "itemId": "plan45-compare-02",
+      "role": "C",
+      "token": "746c707a85770d006d39900b85e2c0bf",
+      "ordinal": 1,
+      "first": "retry",
+      "accepted": "yes",
+      "epoch": "026b781cf1912a14b3a89aeaf85e2fa4"
+    },
+    {
+      "itemId": "plan40-identify-two-thirds-five-twelfths-12",
+      "role": "I",
+      "token": "f01f1d07c3009a6b551433e7313e9fd4",
+      "ordinal": 2,
+      "first": "accepted",
+      "accepted": "yes",
+      "epoch": "026b781cf1912a14b3a89aeaf85e2fa4"
+    },
+    {
+      "itemId": "plan40-inspect-two-thirds-one-fourth-12",
+      "role": "S",
+      "token": "a0ddf2804f1fb769780e99030a33369a",
+      "ordinal": 3,
+      "first": "accepted",
+      "accepted": "yes",
+      "epoch": "026b781cf1912a14b3a89aeaf85e2fa4"
+    },
+    {
+      "itemId": "plan76-construct-five-sixths-one-tenth-30",
+      "role": "T",
+      "token": "d0f55293757fb04d77b7c135a088186b",
+      "ordinal": 4,
+      "first": "accepted",
+      "accepted": "yes",
+      "epoch": "026b781cf1912a14b3a89aeaf85e2fa4"
+    },
+    {
+      "itemId": "plan45-compare-02",
+      "role": "C",
+      "token": "514510f216a3bb1edfcb76d974f51eaf",
+      "ordinal": 5,
+      "first": "accepted",
+      "accepted": "yes",
+      "epoch": "026b781cf1912a14b3a89aeaf85e2fa4"
+    },
+    {
+      "itemId": "plan76-inspect-three-fourths-one-fifth-20",
+      "role": "S",
+      "token": "b219d320a8c78a1bc230d4952ee57dad",
+      "ordinal": 6,
+      "first": "accepted",
+      "accepted": "yes",
+      "epoch": "026b781cf1912a14b3a89aeaf85e2fa4"
+    },
+    {
+      "itemId": "plan40-construct-half-fifth-10",
+      "role": "T",
+      "token": "085a3647c49607bb2c89625bab5b0fb3",
+      "ordinal": 7,
+      "first": "accepted",
+      "accepted": "yes",
+      "epoch": "026b781cf1912a14b3a89aeaf85e2fa4"
+    },
+    {
+      "itemId": "plan45-compare-09",
+      "role": "C",
+      "token": "45412f4b6c88b40b37302d81e724f10a",
+      "ordinal": 8,
+      "first": "accepted",
+      "accepted": "yes",
+      "epoch": "026b781cf1912a14b3a89aeaf85e2fa4"
+    },
+    {
+      "itemId": "plan76-identify-seven-eighths-one-fourth-8",
+      "role": "I",
+      "token": "566dde21296df80ee637f3c6b5b63344",
+      "ordinal": 9,
+      "first": "accepted",
+      "accepted": "yes",
+      "epoch": "026b781cf1912a14b3a89aeaf85e2fa4"
+    },
+    {
+      "itemId": "plan40-construct-five-sixths-three-eighths-24",
+      "role": "T",
+      "token": "c9854cbd82710cbe6c3a501b048c3ef5",
+      "ordinal": 10,
+      "first": "accepted",
+      "accepted": "yes",
+      "epoch": "026b781cf1912a14b3a89aeaf85e2fa4"
+    },
+    {
+      "itemId": "plan45-compare-10",
+      "role": "C",
+      "token": "2b9e30fca591218fb35672243dc02b46",
+      "ordinal": 11,
+      "first": "accepted",
+      "accepted": "yes",
+      "epoch": "026b781cf1912a14b3a89aeaf85e2fa4"
+    },
+    {
+      "itemId": "plan40-identify-one-half-one-eighth-8",
+      "role": "I",
+      "token": "f2f380523ad090f868d1685fcaf2391d",
+      "ordinal": 12,
+      "first": "accepted",
+      "accepted": "yes",
+      "epoch": "026b781cf1912a14b3a89aeaf85e2fa4"
+    },
+    {
+      "itemId": "plan40-inspect-two-thirds-one-fourth-12",
+      "role": "S",
+      "token": "561dc132309ca49a5260bdaa160f1481",
+      "ordinal": 13,
+      "first": "accepted",
+      "accepted": "yes",
+      "epoch": "026b781cf1912a14b3a89aeaf85e2fa4"
+    },
+    {
+      "itemId": "plan76-construct-five-sixths-one-tenth-30",
+      "role": "T",
+      "token": "315e4a1fd29ddc499bab73b066267747",
+      "ordinal": 14,
+      "first": "accepted",
+      "accepted": "yes",
+      "epoch": "026b781cf1912a14b3a89aeaf85e2fa4"
+    }
+  ],
+  "baselineComparisons": [
+    {
+      "seed": 0,
+      "consumedSeed": 0,
+      "selected": [
+        {
+          "role": "C",
+          "itemId": "plan45-compare-02"
+        },
+        {
+          "role": "I",
+          "itemId": "plan40-identify-two-thirds-five-twelfths-12"
+        },
+        {
+          "role": "S",
+          "itemId": "plan40-inspect-two-thirds-one-fourth-12"
+        },
+        {
+          "role": "T",
+          "itemId": "plan76-construct-five-sixths-one-tenth-30"
+        }
+      ]
+    },
+    {
+      "seed": 2,
+      "consumedSeed": 2,
+      "selected": [
+        {
+          "role": "C",
+          "itemId": "plan45-compare-09"
+        },
+        {
+          "role": "S",
+          "itemId": "plan40-inspect-two-thirds-one-fourth-12"
+        },
+        {
+          "role": "T",
+          "itemId": "plan40-construct-half-fifth-10"
+        }
+      ]
+    },
+    {
+      "seed": 4,
+      "consumedSeed": 4,
+      "selected": [
+        {
+          "role": "C",
+          "itemId": "plan45-compare-02"
+        },
+        {
+          "role": "I",
+          "itemId": "plan76-identify-seven-eighths-one-fourth-8"
+        },
+        {
+          "role": "T",
+          "itemId": "plan40-construct-half-fifth-10"
+        }
+      ]
+    },
+    {
+      "seed": 3,
+      "consumedSeed": 3,
+      "selected": [
+        {
+          "role": "C",
+          "itemId": "plan45-compare-02"
+        },
+        {
+          "role": "I",
+          "itemId": "plan40-identify-two-thirds-five-twelfths-12"
+        },
+        {
+          "role": "S",
+          "itemId": "plan40-inspect-two-thirds-one-fourth-12"
+        },
+        {
+          "role": "T",
+          "itemId": "plan40-construct-five-sixths-three-eighths-24"
+        }
+      ]
+    }
+  ],
+  "limitations": [],
+  "pageErrors": [],
+  "summary": {
+    "recentChoiceWitness": {
+      "seed": 2,
+      "role": "C",
+      "chosenItemId": "plan45-compare-02",
+      "seedOnlyItemId": "plan45-compare-09",
+      "chosenPriority": 0,
+      "seedOnlyCandidatePriority": 1,
+      "reason": "recent-skill-return",
+      "recordedLag": 2,
+      "olderEndpointOrdinal": 1,
+      "newerEndpointOrdinal": 4
+    },
+    "olderReviewChoiceWitness": {
+      "seed": 3,
+      "role": "I",
+      "chosenItemId": "plan40-identify-one-half-one-eighth-8",
+      "seedOnlyItemId": "plan40-identify-two-thirds-five-twelfths-12",
+      "chosenPriority": 0,
+      "seedOnlyCandidatePriority": 1,
+      "reason": "older-review-draw",
+      "recordedLag": 7,
+      "olderEndpointOrdinal": 2,
+      "newerEndpointOrdinal": 10
+    },
+    "completedAllRoleVisits": 4,
+    "readBackObserverEvents": 14,
+    "baselineSeeds": 4,
+    "readBackExposureCount": 14,
+    "acceptedEvents": 13,
+    "exposuresWithUnknownFirstOrAcceptance": 0
+  }
+}

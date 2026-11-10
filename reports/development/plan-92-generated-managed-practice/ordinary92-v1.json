@@ -1,0 +1,101 @@
+{
+  "scope": "Ordinary / app only. Synthetic v1 comparison record in a fresh disposable Playwright BrowserContext; no owner fixture and no existing browser profile/data.",
+  "database": "fractionflow-comparison-record-v1",
+  "stages": {
+    "pageLoad": {
+      "enabled": true,
+      "opens": [
+        {
+          "name": "fractionflow-comparison-record-v1",
+          "version": null
+        },
+        {
+          "name": "fractionflow-comparison-record-v1",
+          "version": null
+        },
+        {
+          "name": "fractionflow-comparison-record-v1",
+          "version": 1
+        }
+      ],
+      "gets": [
+        {
+          "name": "fractionflow-comparison-record-v1",
+          "store": "record",
+          "key": "root"
+        }
+      ]
+    },
+    "afterStart": {
+      "enabled": true,
+      "opens": [
+        {
+          "name": "fractionflow-comparison-record-v1",
+          "version": null
+        },
+        {
+          "name": "fractionflow-comparison-record-v1",
+          "version": null
+        },
+        {
+          "name": "fractionflow-comparison-record-v1",
+          "version": 1
+        },
+        {
+          "name": "fractionflow-comparison-record-v1",
+          "version": null
+        }
+      ],
+      "gets": [
+        {
+          "name": "fractionflow-comparison-record-v1",
+          "store": "record",
+          "key": "root"
+        }
+      ]
+    }
+  },
+  "trace": {
+    "enabled": true,
+    "opens": [
+      {
+        "name": "fractionflow-comparison-record-v1",
+        "version": null
+      },
+      {
+        "name": "fractionflow-comparison-record-v1",
+        "version": null
+      },
+      {
+        "name": "fractionflow-comparison-record-v1",
+        "version": 1
+      },
+      {
+        "name": "fractionflow-comparison-record-v1",
+        "version": null
+      }
+    ],
+    "gets": [
+      {
+        "name": "fractionflow-comparison-record-v1",
+        "store": "record",
+        "key": "root"
+      }
+    ]
+  },
+  "errors": [],
+  "persisted": {
+    "version": 1,
+    "schema": 1,
+    "enabled": true,
+    "entries": 1
+  },
+  "checks": {
+    "synthetic v1 legacy root persisted before ordinary app load": true,
+    "ordinary load and Start only request v1 or versionless opens": true,
+    "ordinary load and Start never read expanded events": true,
+    "legacy stored record remains unchanged through ordinary Start": true,
+    "no browser page errors": true
+  },
+  "browser": "157.0.8103.51"
+}

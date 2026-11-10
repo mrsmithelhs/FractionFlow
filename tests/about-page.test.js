@@ -21,9 +21,10 @@ describe('Plan 33 static About page', () => {
     expect(aboutHtml).toContain('Practice adding fractions with the same or different denominators.');
     expect(aboutHtml).toContain('More support offers denominator suggestions');
     expect(aboutHtml).toContain('Less support asks you to enter one');
-    expect(aboutHtml).toMatch(/choose to keep a small comparison practice record in this browser/i);
-    expect(aboutHtml).toMatch(/anyone using this browser may see or add to it/i);
-    expect(aboutHtml).toMatch(/stop remembering or clear it, and browser data can be lost/i);
+    expect(aboutHtml).toMatch(/separately choose to keep a small comparison practice record and an expanded practice history in this browser/i);
+    expect(aboutHtml).toMatch(/expanded history can help choose future practice/i);
+    expect(aboutHtml).toMatch(/anyone using this browser may see or add to these records/i);
+    expect(aboutHtml).toMatch(/stop either choice or clear both records, and browser data can be lost/i);
     expect(aboutHtml).toMatch(/unfinished practice and your place in a session are not saved/i);
     expect(aboutHtml).toMatch(/does not use accounts or send learner records to a server/i);
     expect(aboutHtml).toMatch(/website host may handle ordinary technical data/i);

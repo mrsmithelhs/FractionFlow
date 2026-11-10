@@ -1,0 +1,16 @@
+{
+  "description": "Protected Chrome route matrix, isolated archive of 0318022 plus the five final ordinary integration and privacy-copy files",
+  "command": "node scripts/dev/run-route-matrix.js --browser-channel chrome --quiet",
+  "routeRows": 117,
+  "browserExecutions": 119,
+  "passed": 119,
+  "failed": 0,
+  "evidenceLimit": "This summary records the runner's final console totals, not per-route results. The snapshot's five changed production files were SHA-256 compared to the working tree after the run.",
+  "sourceSha256": {
+    "src/app/app.js": "F303835EB8AB598C7867C2269570F47CDAC7E34CA0AEC49DA8BEDA7B1E0C2290",
+    "src/app/main.js": "8AC0ED5D2266D01087677B376B0D646C62AD01960671BDC9E14438E7B4ADAA6A",
+    "src/app/plan92-record-panel.js": "42A768568AE419E685F4809F99115A39864476B5BE2226F2F702425FFC90443D",
+    "src/app/plan92-practice-record.js": "90DADEE9071B5E72E2CC7FF69BC47D7B61BAE588F97D05AFD4A452C5B6AC8016",
+    "public/about.html": "E18515C804A0012B64F4637C1712C4A3FEE9FDC2FF0C64165A77C1D89AA57EE4"
+  }
+}

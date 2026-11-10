@@ -1,0 +1,75 @@
+{
+  "scope": "one isolated ordinary-app browser attempt; no production hooks, injected entries, or direct storage writes",
+  "database": "fractionflow-comparison-record-v1",
+  "checks": {
+    "expandedOptIn": "passed",
+    "realNarrowViewportStartRefusal": {
+      "result": "passed",
+      "viewport": {
+        "width": 240,
+        "height": 220
+      },
+      "visibleMessage": "No practice fits this screen right now. Try a larger window or smaller text, or choose another practice.",
+      "beforeClick": {
+        "noticeVisible": false,
+        "noticeText": "",
+        "episodeVisible": false
+      }
+    },
+    "secondTabRecorderAcquisition": {
+      "result": "passed",
+      "writerState": "active",
+      "notice": ""
+    },
+    "secondTabMountedObserverWrite": {
+      "result": "passed",
+      "before": 0,
+      "after": 1,
+      "latest": {
+        "token": "ede494e4249470253d832f46d113466a",
+        "ordinal": 1,
+        "epoch": "5160e8f3fb28dccb821459ac7db63d83",
+        "identity": {
+          "role": "C",
+          "typeId": "symbolic-fraction-comparison",
+          "setId": "symbolic-fraction-comparison-vetted-set",
+          "setRevision": "1",
+          "itemId": "plan45-compare-10",
+          "itemRevision": "plan45-record-v1",
+          "authoringRevision": "plan45-record-v1",
+          "definitionId": "phase-4-symbolic-fraction-comparison",
+          "definitionRevision": "2",
+          "underlyingDefinitionRevision": "1",
+          "recipeId": "symbolic-fraction-comparison",
+          "recipeRevision": "1",
+          "taskDataId": "plan45-symbolic-fraction-comparison-task-data",
+          "taskDataRevision": "1",
+          "cueId": "compare.half-benchmark"
+        },
+        "role": "C",
+        "demand": "{\"role\":\"C\",\"structure\":\"half-benchmark\",\"relation\":\"<\"}",
+        "first": "unknown",
+        "accepted": "unknown",
+        "firstAssistance": "unknown",
+        "acceptedAssistance": "unknown"
+      }
+    }
+  },
+  "limitations": [],
+  "errors": [],
+  "beforeRefusalClick": {
+    "noticeVisible": false,
+    "noticeText": "",
+    "episodeVisible": false
+  },
+  "afterRefusal": {
+    "writerState": "clean",
+    "revision": 3,
+    "eventCount": 0
+  },
+  "secondTab": {
+    "mountedItem": "plan45-compare-10",
+    "initialEventCount": 0,
+    "afterStartEventCount": 1
+  }
+}

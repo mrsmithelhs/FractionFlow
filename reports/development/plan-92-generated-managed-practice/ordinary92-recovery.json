@@ -1,0 +1,219 @@
+{
+  "scope": "Ordinary app / in fresh isolated Playwright context. One synthetic populated legacy v1 entry seeds the Clear case; Plan 92 exposures are created only by ordinary mounted Start. No owner fixture, existing profile or learner data.",
+  "database": "fractionflow-comparison-record-v1",
+  "checks": {
+    "synthetic populated v1 record is present before UI Clear": "passed",
+    "ordinary opt-in upgrades while preserving populated legacy entry": "passed",
+    "Clear removes populated synthetic legacy entries": "passed",
+    "Clear preserves both enabled choices": "passed",
+    "Clear empties expanded rows and intent": "passed",
+    "Clear confirmation described both records": "passed",
+    "new ordinary page sees cleared records and preserved choices": "passed",
+    "first ordinary Start creates mounted exposure before abrupt close": "passed",
+    "abrupt-close recovery retains prior exposure and records a new one": "passed",
+    "abrupt-close recovery rotates to a new active epoch": "passed",
+    "recovered writer registration is active in the new epoch": "passed",
+    "ordinary pages had no JavaScript errors": "passed"
+  },
+  "browser": "157.0.8103.51",
+  "initialLegacySeed": {
+    "source": "synthetic valid v1 comparison-record root; one seeded test entry, enabled true",
+    "record": {
+      "schema": 1,
+      "contract": 1,
+      "generation": "33333333333333333333333333333333",
+      "enabled": true,
+      "nextSequence": 2,
+      "entries": [
+        {
+          "token": "44444444444444444444444444444444",
+          "sequence": 1,
+          "identity": {
+            "practiceSetId": "symbolic-fraction-comparison-vetted-set",
+            "practiceSetRevision": "1",
+            "itemId": "plan45-compare-02",
+            "authoringRevision": "plan45-record-v1",
+            "definitionId": "phase-4-symbolic-fraction-comparison",
+            "definitionRevision": "2",
+            "recipeId": "symbolic-fraction-comparison",
+            "recipeRevision": "1",
+            "taskDataId": "plan45-symbolic-fraction-comparison-task-data",
+            "taskDataRevision": "1",
+            "cueId": "compare.same-denominator"
+          },
+          "support": "high",
+          "first": "accepted",
+          "outcome": "accepted",
+          "firstAssistance": {
+            "model": "no",
+            "help": "no",
+            "construction": "no"
+          },
+          "acceptedAssistance": {
+            "model": "no",
+            "help": "no",
+            "construction": "no"
+          }
+        }
+      ]
+    }
+  },
+  "afterClear": {
+    "confirmation": "Clear the expanded history, if present, and the separate comparison practice record on this browser? Your remembering choices will stay as they are.",
+    "legacy": {
+      "schema": 1,
+      "contract": 1,
+      "generation": "905e2c7250c72be518742c2166bc23be",
+      "enabled": true,
+      "nextSequence": 1,
+      "entries": []
+    },
+    "meta": {
+      "schema": 1,
+      "epoch": "e37284b951a0865cc5da884463a46dfc",
+      "enabled": true,
+      "nextOrdinal": 1,
+      "earliestOrdinal": 1,
+      "coverage": "unknown",
+      "ordering": "unknown",
+      "revision": 0,
+      "registrationSchema": 1,
+      "writerRegistration": null
+    },
+    "events": [],
+    "intent": null
+  },
+  "afterReopen": {
+    "legacy": {
+      "schema": 1,
+      "contract": 1,
+      "generation": "905e2c7250c72be518742c2166bc23be",
+      "enabled": true,
+      "nextSequence": 1,
+      "entries": []
+    },
+    "meta": {
+      "schema": 1,
+      "epoch": "e37284b951a0865cc5da884463a46dfc",
+      "enabled": true,
+      "nextOrdinal": 1,
+      "earliestOrdinal": 1,
+      "coverage": "unknown",
+      "ordering": "unknown",
+      "revision": 0,
+      "registrationSchema": 1,
+      "writerRegistration": null
+    },
+    "events": []
+  },
+  "abruptClose": {
+    "oldEpoch": "e37284b951a0865cc5da884463a46dfc",
+    "retainedOldEvent": {
+      "token": "19f8cf8909952914e40d58b85dce5f2f",
+      "ordinal": 1,
+      "epoch": "e37284b951a0865cc5da884463a46dfc",
+      "identity": {
+        "role": "C",
+        "typeId": "symbolic-fraction-comparison",
+        "setId": "symbolic-fraction-comparison-vetted-set",
+        "setRevision": "1",
+        "itemId": "plan45-compare-02",
+        "itemRevision": "plan45-record-v1",
+        "authoringRevision": "plan45-record-v1",
+        "definitionId": "phase-4-symbolic-fraction-comparison",
+        "definitionRevision": "2",
+        "underlyingDefinitionRevision": "1",
+        "recipeId": "symbolic-fraction-comparison",
+        "recipeRevision": "1",
+        "taskDataId": "plan45-symbolic-fraction-comparison-task-data",
+        "taskDataRevision": "1",
+        "cueId": "compare.same-denominator"
+      },
+      "role": "C",
+      "demand": "{\"role\":\"C\",\"structure\":\"same-denominator\",\"relation\":\">\"}",
+      "first": "unknown",
+      "accepted": "unknown",
+      "firstAssistance": "unknown",
+      "acceptedAssistance": "unknown"
+    },
+    "recoveredMeta": {
+      "schema": 1,
+      "epoch": "3664c484fc49ada54fc39ad23f9bda64",
+      "enabled": true,
+      "nextOrdinal": 3,
+      "earliestOrdinal": 1,
+      "coverage": "unknown",
+      "ordering": "continuous",
+      "revision": 4,
+      "registrationSchema": 1,
+      "writerRegistration": {
+        "epoch": "3664c484fc49ada54fc39ad23f9bda64",
+        "token": "06f3450544ed9814317af8c006139e08",
+        "state": "active"
+      }
+    },
+    "recoveredEvents": [
+      {
+        "token": "19f8cf8909952914e40d58b85dce5f2f",
+        "ordinal": 1,
+        "epoch": "e37284b951a0865cc5da884463a46dfc",
+        "identity": {
+          "role": "C",
+          "typeId": "symbolic-fraction-comparison",
+          "setId": "symbolic-fraction-comparison-vetted-set",
+          "setRevision": "1",
+          "itemId": "plan45-compare-02",
+          "itemRevision": "plan45-record-v1",
+          "authoringRevision": "plan45-record-v1",
+          "definitionId": "phase-4-symbolic-fraction-comparison",
+          "definitionRevision": "2",
+          "underlyingDefinitionRevision": "1",
+          "recipeId": "symbolic-fraction-comparison",
+          "recipeRevision": "1",
+          "taskDataId": "plan45-symbolic-fraction-comparison-task-data",
+          "taskDataRevision": "1",
+          "cueId": "compare.same-denominator"
+        },
+        "role": "C",
+        "demand": "{\"role\":\"C\",\"structure\":\"same-denominator\",\"relation\":\">\"}",
+        "first": "unknown",
+        "accepted": "unknown",
+        "firstAssistance": "unknown",
+        "acceptedAssistance": "unknown"
+      },
+      {
+        "token": "e3e0d8f835529ef14590e48455486a8c",
+        "ordinal": 2,
+        "epoch": "3664c484fc49ada54fc39ad23f9bda64",
+        "identity": {
+          "role": "C",
+          "typeId": "symbolic-fraction-comparison",
+          "setId": "symbolic-fraction-comparison-vetted-set",
+          "setRevision": "1",
+          "itemId": "plan45-compare-09",
+          "itemRevision": "plan45-record-v1",
+          "authoringRevision": "plan45-record-v1",
+          "definitionId": "phase-4-symbolic-fraction-comparison",
+          "definitionRevision": "2",
+          "underlyingDefinitionRevision": "1",
+          "recipeId": "symbolic-fraction-comparison",
+          "recipeRevision": "1",
+          "taskDataId": "plan45-symbolic-fraction-comparison-task-data",
+          "taskDataRevision": "1",
+          "cueId": "compare.same-count-unit-size"
+        },
+        "role": "C",
+        "demand": "{\"role\":\"C\",\"structure\":\"same-count-unit-size\",\"relation\":\">\"}",
+        "first": "unknown",
+        "accepted": "unknown",
+        "firstAssistance": "unknown",
+        "acceptedAssistance": "unknown"
+      }
+    ]
+  },
+  "missing": [
+    "No first-response or acceptance outcome was created; exposure rows remain unknown until learner action.",
+    "Forced-failed Start and second-tab acquisition after a real refusal were not exercised; delegated to the separate refused-start run."
+  ],
+  "errors": []
+}

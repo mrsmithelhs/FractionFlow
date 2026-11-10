@@ -1,0 +1,24 @@
+{
+  "scope": "Ordinary Vite app at /, isolated Playwright BrowserContext, ordinary local controls and real same-origin tabs. Synthetic browser evidence only; no owner preview or learner data.",
+  "browser": "157.0.8103.51",
+  "database": "fractionflow-comparison-record-v1",
+  "checks": {
+    "ordinary-app opt-in enables expanded remembering": "passed",
+    "direct Start enters an ordinary practice episode while remembering is enabled": "passed",
+    "same-origin tab contention continues practice and announces recording limit": "passed",
+    "Stop from second tab updates its visible control status while the first episode remains open": "passed",
+    "Stop in another tab preserves open arithmetic draft": "missing: no active response input was mounted",
+    "Clear displays confirmation and reports both record types and consent choice wording": "passed",
+    "Durable record clearing and actual consent state": "unverified: this driver checks visible wording only; it does not inspect persisted IndexedDB contents or consent metadata",
+    "Stop displays the expanded-remembering stopped status": "passed",
+    "ordinary browser run has no page errors": "passed"
+  },
+  "missing": [
+    "A fully completed episode and Next were not exercised.",
+    "Open arithmetic draft preservation was not exercised because the guessed active-beat input selector did not resolve.",
+    "Forced refused Start and second-tab recorder acquisition after the first tab releases were not exercised.",
+    "No synthetic storage failure or abrupt tab teardown was induced.",
+    "Durable Clear results and actual enabled/disabled consent state were not read back from IndexedDB; only user-visible wording was checked."
+  ],
+  "errors": []
+}
